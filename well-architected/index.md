@@ -57,7 +57,7 @@ In the center, is the Well-Architected Framework, which includes the five pillar
 
 - [Azure Well-Architected Review](/assessments/?mode=pre-assessment&session=local)
 - [Azure Advisor](/azure/advisor/)
-- [Documentation](/azure/architecture/framework/)
+- [Documentation](/azure/architecture/well-architected/)
 - [Partners](https://azure.microsoft.com/partners/), [Support](https://azure.microsoft.com/support/options/#support-plans), and Services Offers
 - [Reference Architectures](/azure/architecture/guide/)
 - [Design Principles](/azure/architecture/guide/design-principles/)
@@ -117,7 +117,7 @@ For more information, reference [Overview of the security pillar](./security/ove
 
 ## Cost optimization
 
-When you're designing a cloud solution, focus on generating incremental value early. Apply the principles of **[Build-Measure-Learn](/azure/cloud-adoption-framework/innovate/considerations/)**, to accelerate your time to market while avoiding capital-intensive solutions.
+When you're designing a cloud solution, focus on generating incremental value early. Apply the principles of **[Build-Measure-Learn](/azure/cloud-adoption-well-architected/innovate/considerations/)**, to accelerate your time to market while avoiding capital-intensive solutions.
 
 For more information, reference [Cost optimization](./cost/index.yml) and the following video on how to start optimizing your Azure costs:
 <p>
@@ -181,11 +181,11 @@ Learn more about:
 - [Well-Architected Series](https://channel9.msdn.com/Tags/well-architected-series)
 - [Introduction to the Microsoft Azure Well-Architected Framework](/learn/modules/azure-well-architected-introduction/)
 - [Microsoft Defender for Cloud](/azure/security-center/)
-- [Cloud Adoption Framework](/azure/cloud-adoption-framework/)
+- [Cloud Adoption Framework](/azure/cloud-adoption-well-architected/)
 
 <!-- links -->
 
-[resiliency]: ../framework/resiliency/principles.md
+[resiliency]: ../well-architected/resiliency/principles.md
 
 <!-- practices -->
 [autoscale]: ../best-practices/auto-scaling.md

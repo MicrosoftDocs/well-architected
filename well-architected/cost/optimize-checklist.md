@@ -50,7 +50,7 @@ Continue to monitor and optimize the workload by using the right resources and s
 
 - **Reevaluate design choices**. Analyze the cost reports and forecast the capacity needs. You might need to change some design choices.
 
-  - **Choose the right storage tier**. Consider using hot, cold, archive tier for storage account data. Storage accounts can provide automated tiering and lifecycle management. For more information, see [Review your storage options](/azure/cloud-adoption-framework/ready/considerations/storage-options)
+  - **Choose the right storage tier**. Consider using hot, cold, archive tier for storage account data. Storage accounts can provide automated tiering and lifecycle management. For more information, see [Review your storage options](/azure/cloud-adoption-well-architected/ready/considerations/storage-options)
 
   - **Choose the right data store**. Instead of using one data store service, use a mix of data store depending on the type of data you need to store for each workload. For more information, see [Choose the right data store](../../guide/technology-choices/data-store-overview.md).
 

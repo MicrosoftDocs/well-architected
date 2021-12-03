@@ -84,7 +84,7 @@ The Azure Security Benchmark includes a collection of high-impact security recom
 
 Here are some reference architectures related to governance:
 
-[Cloud Adoption Framework enterprise-scale landing zone architecture](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
+[Cloud Adoption Framework enterprise-scale landing zone architecture](/azure/cloud-adoption-well-architected/ready/enterprise-scale/architecture)
 
 ## Next steps
 

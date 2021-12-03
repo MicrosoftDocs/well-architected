@@ -80,7 +80,7 @@ Create a risk containment strategy that blends proven approaches including:
 
 ## Learn more
 
-For information about creating a segmentation strategy, see [Enterprise segmentation strategy](/azure/architecture/framework/security/design-segmentation).
+For information about creating a segmentation strategy, see [Enterprise segmentation strategy](/azure/architecture/well-architected/security/design-segmentation).
 
 ## Azure features for segmentation
 

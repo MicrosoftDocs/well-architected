@@ -71,4 +71,4 @@ We recommend monitoring activities that maintain the security posture. These act
 ## Learn more
 - [Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/)
 - [Agile Principles in Practice](/devops/plan/how-microsoft-plans-devops)
-- [Platform automation and DevOps](/azure/cloud-adoption-framework/ready/enterprise-scale/platform-automation-and-devops)
+- [Platform automation and DevOps](/azure/cloud-adoption-well-architected/ready/enterprise-scale/platform-automation-and-devops)

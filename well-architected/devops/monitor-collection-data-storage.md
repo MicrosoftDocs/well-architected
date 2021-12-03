@@ -42,7 +42,7 @@ This image shows a typical instrumentation data-collection process.
 - If you need data to be analyzed quickly, local components that operate outside the collection service might perform the analysis tasks immediately. The results can be sent directly to the visualization and alerting systems. 
 - If you don't need immediate analysis, data is held in storage while it awaits processing.
 
-The hot, warm, and cold analysis patterns are summarized in [Analysis patterns](/azure/architecture/framework/devops/monitor-analysis#analysis-patterns).
+The hot, warm, and cold analysis patterns are summarized in [Analysis patterns](/azure/architecture/well-architected/devops/monitor-analysis#analysis-patterns).
 
 ## Application data
 

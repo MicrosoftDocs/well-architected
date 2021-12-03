@@ -37,9 +37,9 @@ Each VM type has specific features and different combinations of CPU, memory, an
 
 For a list of sizes and a description of the recommended use, see [sizes for virtual machines in Azure](/azure/virtual-machines/sizes).
 
-Continually monitor workloads after migration to find out if your VMs aren't optimized or have frequent periods when they aren't used. If you discover this, it makes sense to either shut down the VMs or downscale them by using virtual machine scale sets. You can optimize a VM with Azure Automation, virtual machine scale sets, auto-shutdown, and scripted or third-party solutions. To learn more, see [Automate VM optimization](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs#best-practice-automate-vm-optimization).
+Continually monitor workloads after migration to find out if your VMs aren't optimized or have frequent periods when they aren't used. If you discover this, it makes sense to either shut down the VMs or downscale them by using virtual machine scale sets. You can optimize a VM with Azure Automation, virtual machine scale sets, auto-shutdown, and scripted or third-party solutions. To learn more, see [Automate VM optimization](/azure/cloud-adoption-well-architected/migrate/azure-best-practices/migrate-best-practices-costs#best-practice-automate-vm-optimization).
 
-Along with choosing the right VMs, selecting the right storage type can save your organization significant cost every month. For a list of storage data types, access tiers, storage account types, and storage redundancy options, see [Select the right storage](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs#best-practice-select-the-right-storage).
+Along with choosing the right VMs, selecting the right storage type can save your organization significant cost every month. For a list of storage data types, access tiers, storage account types, and storage redundancy options, see [Select the right storage](/azure/cloud-adoption-well-architected/migrate/azure-best-practices/migrate-best-practices-costs#best-practice-select-the-right-storage).
 
 ## Use metrics to fine-tune scaling
 

@@ -39,7 +39,7 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "breadcrumb_path": "/azure/architecture/framework/breadcrumb/toc.json",
+      "breadcrumb_path": "/azure/architecture/well-architected/breadcrumb/toc.json",
       "extendBreadcrumb": true,
       "feedback_system": "None"
     },

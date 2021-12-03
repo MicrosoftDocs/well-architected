@@ -29,7 +29,7 @@ The preceding examples are conceptually simple but the implementation can get co
 
 **Learn more**
 
-[What is the Microsoft Cloud Adoption Framework for Azure?](/azure/cloud-adoption-framework/overview)
+[What is the Microsoft Cloud Adoption Framework for Azure?](/azure/cloud-adoption-well-architected/overview)
 
 ## Increase automation with Azure Blueprints
 
@@ -51,15 +51,15 @@ For more information on how to do this in Azure, please review [Tutorial: Create
 
 ## Architecture
 
-For information about an enterprise-scale reference architecture, see [Cloud Adoption Framework enterprise-scale landing zone architecture](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture). The architecture provides considerations in these critical design areas:
-- [Enterprise Agreement (EA) enrollment and Azure Active Directory tenants](/azure/cloud-adoption-framework/ready/enterprise-scale/enterprise-enrollment-and-azure-ad-tenants)
-- [Identity and access management](/azure/cloud-adoption-framework/ready/enterprise-scale/identity-and-access-management)
-- [Management group and subscription organization](/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization)
-- [Network topology and connectivity](/azure/cloud-adoption-framework/ready/enterprise-scale/network-topology-and-connectivity)
-- [Management and monitoring](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
-- [Business continuity and disaster recovery](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
-- [Security, governance, and compliance](/azure/cloud-adoption-framework/ready/enterprise-scale/security-governance-and-compliance)
-- [Platform automation and DevOps](/azure/cloud-adoption-framework/ready/enterprise-scale/platform-automation-and-devops)
+For information about an enterprise-scale reference architecture, see [Cloud Adoption Framework enterprise-scale landing zone architecture](/azure/cloud-adoption-well-architected/ready/enterprise-scale/architecture). The architecture provides considerations in these critical design areas:
+- [Enterprise Agreement (EA) enrollment and Azure Active Directory tenants](/azure/cloud-adoption-well-architected/ready/enterprise-scale/enterprise-enrollment-and-azure-ad-tenants)
+- [Identity and access management](/azure/cloud-adoption-well-architected/ready/enterprise-scale/identity-and-access-management)
+- [Management group and subscription organization](/azure/cloud-adoption-well-architected/ready/enterprise-scale/management-group-and-subscription-organization)
+- [Network topology and connectivity](/azure/cloud-adoption-well-architected/ready/enterprise-scale/network-topology-and-connectivity)
+- [Management and monitoring](/azure/cloud-adoption-well-architected/ready/enterprise-scale/management-and-monitoring)
+- [Business continuity and disaster recovery](/azure/cloud-adoption-well-architected/ready/enterprise-scale/business-continuity-and-disaster-recovery)
+- [Security, governance, and compliance](/azure/cloud-adoption-well-architected/ready/enterprise-scale/security-governance-and-compliance)
+- [Platform automation and DevOps](/azure/cloud-adoption-well-architected/ready/enterprise-scale/platform-automation-and-devops)
 
 ## Azure services
 

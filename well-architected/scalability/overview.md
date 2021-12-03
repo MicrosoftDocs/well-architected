@@ -20,7 +20,7 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 
 Just as you need to anticipate increases in load in on-premises environments, you need to expect increases in cloud environments to meet business requirements. One difference is that you may no longer need to make long-term predictions for expected changes to ensure you'll have enough capacity in the future. Another difference is in the approach used to manage performance.
 
-To assess your workload using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/), reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+To assess your workload using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/architecture/well-architected/), reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
 To boost performance efficiency, we recommend the following video about optimizing for quick and reliable VM deployments:
 
