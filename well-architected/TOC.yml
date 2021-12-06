@@ -2,11 +2,11 @@ items:
       - name: Microsoft Azure Well-Architected Framework
         items:
       - name: Overview
-        href: well-architected/index.md
+        href: ./index.md
       - name: Reliability
         items:
               - name: About
-                href: well-architected/resiliency/index.yml
+                href: resiliency/index.yml
               - name: Overview
                 href: well-architected/resiliency/overview.md
               - name: Principles
