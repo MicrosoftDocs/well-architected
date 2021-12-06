@@ -1,58 +1,58 @@
 items:
-      - name: Microsoft Azure Well-Architected Framework
-        items:
+  - name: Microsoft Azure Well-Architected Framework
+    items:
       - name: Overview
         href: ./index.md
       - name: Reliability
         items:
-              - name: About
-                href: resiliency/index.yml
-              - name: Overview
-                href: resiliency/overview.md
-              - name: Principles
-                href: resiliency/principles.md
-              - name: Design
+          - name: About
+            href: resiliency/index.yml
+          - name: Overview
+            href: resiliency/overview.md
+          - name: Principles
+            href: resiliency/principles.md
+          - name: Design
+            items:
+              - name: Checklist
+                href: resiliency/design-checklist.md
+              - name: Requirements
+                href: resiliency/design-requirements.md
+              - name: Application design
+                href: resiliency/app-design.md
+              - name: Resiliency & dependencies
+                href: resiliency/design-resiliency.md
+              - name: Best practices
+                href: resiliency/design-best-practices.md
+          - name: Testing
+            items:
+              - name: Checklist
+                href: resiliency/test-checklist.md
+              - name: Resiliency testing
+                href: resiliency/testing.md
+              - name: Backup & recovery
                 items:
-                  - name: Checklist
-                    href: resiliency/design-checklist.md
-                  - name: Requirements
-                    href: resiliency/design-requirements.md
-                  - name: Application design
-                    href: resiliency/app-design.md
-                  - name: Resiliency & dependencies
-                    href: resiliency/design-resiliency.md
-                  - name: Best practices
-                    href: resiliency/design-best-practices.md
-              - name: Testing
-                items:
-                  - name: Checklist
-                    href: resiliency/test-checklist.md
-                  - name: Resiliency testing
-                    href: resiliency/testing.md
-                  - name: Backup & recovery
-                    items:
-                      - name: Backup and recovery
-                        href: resiliency/backup-and-recovery.md
-                      - name: Automatic retry of failed backup jobs
-                        href: resiliency/auto-retry.md
-                  - name: Error handling
-                    href: resiliency/app-design-error-handling.md
-                  - name: Chaos engineering
-                    href: resiliency/chaos-engineering.md
-                  - name: Best practices
-                    href: resiliency/test-best-practices.md
-              - name: Monitoring
-                items:
-                  - name: Checklist
-                    href: resiliency/monitor-checklist.md
-                  - name: Application health
-                    href: resiliency/monitoring.md
-                  - name: Health modeling
-                    href: resiliency/monitor-model.md
-                  - name: Best practices
-                    href: resiliency/monitor-best-practices.md
-              - name: Reliability patterns
-                href: resiliency/reliability-patterns.md
+                  - name: Backup and recovery
+                    href: resiliency/backup-and-recovery.md
+                  - name: Automatic retry of failed backup jobs
+                    href: resiliency/auto-retry.md
+              - name: Error handling
+                href: resiliency/app-design-error-handling.md
+              - name: Chaos engineering
+                href: resiliency/chaos-engineering.md
+              - name: Best practices
+                href: resiliency/test-best-practices.md
+          - name: Monitoring
+            items:
+              - name: Checklist
+                href: resiliency/monitor-checklist.md
+              - name: Application health
+                href: resiliency/monitoring.md
+              - name: Health modeling
+                href: resiliency/monitor-model.md
+              - name: Best practices
+                href: resiliency/monitor-best-practices.md
+          - name: Reliability patterns
+            href: resiliency/reliability-patterns.md
       - name: Security
         items:
           - name: Quick links
@@ -138,7 +138,7 @@ items:
               - name: Code deployments
                 href: security/deploy-code.md
           - name: Monitor-remediate
-            items: 
+            items:
               - name: Checklist
                 href: security/monitor.md
               - name: Tools
@@ -269,7 +269,7 @@ items:
                   - name: Monitoring stages
                     href: devops/monitor-pipeline.md
                   - name: Data sources
-                    href: devops/monitor-data-sources.md                  
+                    href: devops/monitor-data-sources.md
                   - name: Instrumentation
                     href: devops/monitor-instrument.md
                   - name: Collection and storage
@@ -358,10 +358,10 @@ items:
                 href: hybrid/hybrid-reliability.md
               - name: Security
                 href: hybrid/hybrid-security.md
-      - name: Services 
+      - name: Services
         items:
           - name: Compute
-            items: 
+            items:
               - name: Azure App Service
                 items:
                   - name: Reliability
@@ -369,7 +369,7 @@ items:
                   - name: Cost optimization
                     href: services/compute/azure-app-service/cost-optimization.md
                   - name: Operational excellence
-                    href: services/compute/azure-app-service/operational-excellence.md                  
+                    href: services/compute/azure-app-service/operational-excellence.md
               - name: Azure Batch
                 items:
                   - name: Reliability
@@ -379,7 +379,7 @@ items:
                   - name: Performance efficiency
                     href: services/compute/azure-batch/performance-efficiency.md
               - name: Azure Kubernetes Service
-                items: 
+                items:
                   - name: Reliability
                     href: services/compute/azure-kubernetes-service/reliability.md
                   - name: Security
@@ -397,7 +397,7 @@ items:
               - name: Service Fabric
                 items:
                   - name: Reliability
-                    href: services/compute/service-fabric/reliability.md 
+                    href: services/compute/service-fabric/reliability.md
                   - name: Security
                     href: services/compute/service-fabric/security.md
                   - name: Operational excellence
@@ -452,7 +452,7 @@ items:
                     href: services/data/cosmos-db/reliability.md
                   - name: Operational excellence
                     href: services/data/cosmos-db/operational-excellence.md
-          - name: Hybrid  
+          - name: Hybrid
             items:
               - name: Azure Stack Hub
                 items:
