@@ -24,7 +24,7 @@ The security of complex systems depends on understanding the business context, s
 
 :::image type="content" source="./images/security-areas.png" alt-text="Screenshot showing security design areas.":::
 
-Understanding an IT solution as it interacts with its surrounding environment holds the key to preventing unauthorized activity and to identifying anomalous behavior that may represent a security risk. Another key success factor is adopting a mindset of assuming failure of security controls so that you design compensating controls that limit risk and damage in the event a primary control fails. Assuming failures is sometimes referred to as "assume breach" or "assume compromise" and is closely related to the "Zero Trust" approach of continuously validating security assurances. The "Zero Trust" approach is described in the [Security Design Principles](../../well-architected/security/security-principles.md) section in more detail.
+Understanding an IT solution as it interacts with its surrounding environment holds the key to preventing unauthorized activity and to identifying anomalous behavior that may represent a security risk. Another key success factor is adopting a mindset of assuming failure of security controls so that you design compensating controls that limit risk and damage in the event a primary control fails. Assuming failures is sometimes referred to as "assume breach" or "assume compromise" and is closely related to the "Zero Trust" approach of continuously validating security assurances. The "Zero Trust" approach is described in the [Security Design Principles](../../framework/security/security-principles.md) section in more detail.
 
 Cloud architectures can help simplify the complex task of securing an enterprise estate through specialization and shared responsibilities:
 
@@ -47,7 +47,7 @@ This results in three key strategies:
 - **Establish a modern perimeter:** For the elements that your organization controls to ensure you have a consistent set of controls (a perimeter)
     between those assets and the threats to them. This should be designed based on intercepting authentication requests for the resources (identity controls) vs. the traditional approach of intercepting network traffic on enterprise networks, which isn't feasible for enterprise assets outside the network.
 
-    More on this and how it relates to Zero Trust and Enterprise Segmentation are in the [Governance, Risk, and Compliance](/azure/architecture/well-architected/security/design-segmentation) and [Network Security & Containment](/azure/architecture/well-architected/security/design-network-segmentation) sections.
+    More on this and how it relates to Zero Trust and Enterprise Segmentation are in the [Governance, Risk, and Compliance](/azure/architecture/framework/security/design-segmentation) and [Network Security & Containment](/azure/architecture/framework/security/design-network-segmentation) sections.
 
 - **Modernize infrastructure security:** For operating systems and middleware elements that are required by legacy applications; take advantage of cloud technology to reduce security risk to the organization. For example, knowing whether all servers in a physical datacenter are updated with security patches has always been extremely challenging because of discoverability. Software-defined datacenters allow easy and rapid discovery of all resources, enabling technology like Microsoft Defender for Cloud to quickly and accurately measure the patch state of all servers and remediate them.
 
@@ -114,14 +114,14 @@ Use Key Vault to safeguard cryptographic keys and secrets. By using Key Vault, y
 [design]: ./security-principles.md
 [regulatory]: ./design-regulatory-compliance.md
 [org-risk]: ./resilience.md
-[admin]: /azure/architecture/well-architected/security/design-admins
+[admin]: /azure/architecture/framework/security/design-admins
 [info]: ./storage-data-encryption.md
 [sec-ops]: ./security-operations.md
 
 <!-- links -->
 
 [identity-ref-arch]: /azure/architecture/reference-architectures/identity/
-[resiliency]: ../../well-architected/resiliency/principles.md
+[resiliency]: ../../framework/resiliency/principles.md
 [ad-subscriptions]: /azure/active-directory/active-directory-how-subscriptions-associated-directory
 [data-warehouse-encryption]: /azure/data-lake-store/data-lake-store-security-overview#data-protection
 [cosmos-db-encryption]: /azure/cosmos-db/database-security

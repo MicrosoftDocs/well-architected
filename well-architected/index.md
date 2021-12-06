@@ -57,7 +57,7 @@ In the center, is the Well-Architected Framework, which includes the five pillar
 
 - [Azure Well-Architected Review](/assessments/?mode=pre-assessment&session=local)
 - [Azure Advisor](/azure/advisor/)
-- [Documentation](/azure/architecture/well-architected/)
+- [Documentation](/azure/architecture/framework/)
 - [Partners](https://azure.microsoft.com/partners/), [Support](https://azure.microsoft.com/support/options/#support-plans), and Services Offers
 - [Reference Architectures](/azure/architecture/guide/)
 - [Design Principles](/azure/architecture/guide/design-principles/)
@@ -185,7 +185,7 @@ Learn more about:
 
 <!-- links -->
 
-[resiliency]: ../../well-architected/resiliency/principles.md
+[resiliency]: ../../framework/resiliency/principles.md
 
 <!-- practices -->
 [autoscale]: ../../best-practices/auto-scaling.md

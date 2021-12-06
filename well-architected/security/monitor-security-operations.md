@@ -120,7 +120,7 @@ Integrate network device log information in advanced SIEM solutions or other ana
 
 ### Learn more
 
-[Enable enhanced network visibility](/azure/architecture/well-architected/security/design-network-segmentation#enable-enhanced-network-visibility)
+[Enable enhanced network visibility](/azure/architecture/framework/security/design-network-segmentation#enable-enhanced-network-visibility)
 
 ## Next steps
 
