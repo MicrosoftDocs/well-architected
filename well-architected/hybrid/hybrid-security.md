@@ -20,11 +20,11 @@ Microsoft Sentinel can help simplify data collection across different sources, i
 
 ## Azure Architecture Center (AAC) resources
 
-- [Hybrid Security Monitoring using Microsoft Defender for Cloud and Microsoft Sentinel](../hybrid/hybrid-security-monitoring.yml)
-- [DevSecOps in Azure](../solution-ideas/articles/devsecops-in-azure.yml)
-- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](../hybrid/azure-arc-sql-server.yml)
-- [Implement a secure hybrid network](../reference-architectures/dmz/secure-vnet-dmz.yml)
-- [Securely managed web applications](../example-scenario/apps/fully-managed-secure-apps.yml)
+- [Hybrid Security Monitoring using Microsoft Defender for Cloud and Microsoft Sentinel](../../hybrid/hybrid-security-monitoring.yml)
+- [DevSecOps in Azure](../../solution-ideas/articles/devsecops-in-azure.yml)
+- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](../../hybrid/azure-arc-sql-server.yml)
+- [Implement a secure hybrid network](../../reference-architectures/dmz/secure-vnet-dmz.yml)
+- [Securely managed web applications](../../example-scenario/apps/fully-managed-secure-apps.yml)
 
 ## Principles
 

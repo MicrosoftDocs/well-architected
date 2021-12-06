@@ -41,9 +41,9 @@ Regular testing should be performed as part of each major change and if possible
 
 ## Reference architecture
 
-- [Failure Mode Analysis for Azure applications](../resiliency/failure-mode-analysis.md)
-- [High availability and disaster recovery scenarios for IaaS apps](../example-scenario/infrastructure/iaas-high-availability-disaster-recovery.yml)
-- [Back up files and applications on Azure Stack Hub](../hybrid/azure-stack-backup.yml)
+- [Failure Mode Analysis for Azure applications](../../resiliency/failure-mode-analysis.md)
+- [High availability and disaster recovery scenarios for IaaS apps](../../example-scenario/infrastructure/iaas-high-availability-disaster-recovery.yml)
+- [Back up files and applications on Azure Stack Hub](../../hybrid/azure-stack-backup.yml)
 
 ## Next step
 
@@ -52,7 +52,7 @@ Regular testing should be performed as part of each major change and if possible
 
 ## Related links
 
-- For information on performance testing, see [Performance testing](../scalability/performance-test.md).
+- For information on performance testing, see [Performance testing](../../scalability/performance-test.md).
 - For information on chaos engineering, see [Chaos engineering](./chaos-engineering.md).
 - For information on failure and disaster recovery, see [Failure and disaster recovery for Azure applications](./backup-and-recovery.md).
-- For information on testing applications, see [Testing your application and Azure environment](../devops/release-engineering-testing.md).
+- For information on testing applications, see [Testing your application and Azure environment](../../devops/release-engineering-testing.md).

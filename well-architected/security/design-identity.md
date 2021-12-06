@@ -41,7 +41,7 @@ Provide security assurance through _identity management_: the process of authent
 
 The Azure Security Benchmark includes a collection of high-impact security recommendations you can use to help secure the services you use in Azure:
 
-> ![Security Benchmark](../_images/benchmark-security.svg) The questions in this section are aligned to the [Azure Security Benchmarks Identity and Access Control](/azure/security/benchmarks/security-controls-v2-identity-management).
+> ![Security Benchmark](../../_images/benchmark-security.svg) The questions in this section are aligned to the [Azure Security Benchmarks Identity and Access Control](/azure/security/benchmarks/security-controls-v2-identity-management).
 
 ## Azure services for identity
 
@@ -55,9 +55,9 @@ The considerations and best practices in this section are based on these Azure s
 
 Here are some reference architectures related to identity and access management:
 
-[Integrate on-premises AD domains with Azure AD](../reference-architectures/identity/azure-ad.yml)
+[Integrate on-premises AD domains with Azure AD](../../reference-architectures/identity/azure-ad.yml)
 
-[Integrate on-premises AD with Azure](../reference-architectures/identity/index.yml)
+[Integrate on-premises AD with Azure](../../reference-architectures/identity/index.yml)
 
 ## Next steps
 

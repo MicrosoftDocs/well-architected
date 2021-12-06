@@ -75,7 +75,7 @@ Follow these questions to assess the workload at a deeper level.
 
 The Azure Security Benchmark includes a collection of high-impact security recommendations you can use to help secure the services you use in Azure:
 
-> ![Security Benchmark](../_images/benchmark-security.svg) The questions in this section are aligned to these controls:
+> ![Security Benchmark](../../_images/benchmark-security.svg) The questions in this section are aligned to these controls:
 >
 > - [Governance and Strategy](/azure/security/benchmarks/security-controls-v2-governance-strategy)
 > - [Posture and vulnerability management](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)

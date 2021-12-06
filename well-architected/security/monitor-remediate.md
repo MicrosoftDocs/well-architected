@@ -64,7 +64,7 @@ As a technical workload owner, work with your organization's dedicated team that
 |Networking Resources||Networking Team and Network Security Team|
 |IoT Security|IoT Resources | IoT Operations Team|
 
-:::image type="icon" source="../_images/github.png" border="false"::: The [Azure Secure Score sample](https://github.com/mspnp/samples/tree/master/Security/AzureSecureScoreSample) shows how to get your Azure Secure Score for a subscription by calling the Microsoft Defender for Cloud REST API. The API methods provide the flexibility to query the data and build your own reporting mechanism of your secure scores over time.
+:::image type="icon" source="../../_images/github.png" border="false"::: The [Azure Secure Score sample](https://github.com/mspnp/samples/tree/master/Security/AzureSecureScoreSample) shows how to get your Azure Secure Score for a subscription by calling the Microsoft Defender for Cloud REST API. The API methods provide the flexibility to query the data and build your own reporting mechanism of your secure scores over time.
 
 ## Review and remediate recommendations
 

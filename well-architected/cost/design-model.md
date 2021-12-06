@@ -82,7 +82,7 @@ Map the organization's needs to logical groupings offered by cloud services. Thi
 
     Identify resources that can be used as shared services and review their billing meters. Examples include a virtual network and its hybrid connectivity or a shared app service environment (ASE). If the meter data isn't able to be split across consumers, decide on custom solutions to allocate proportional costs. Move shared services to dedicated resources for consumers for cost reporting.
 
-    > ![Task](../_images/i-best-practices.svg)  Build chargeback reports per consumer to identify metered costs for shared cloud services. Aim for granular reports to understand which workload is consuming what amount of the shared cloud service.
+    > ![Task](../../_images/i-best-practices.svg)  Build chargeback reports per consumer to identify metered costs for shared cloud services. Aim for granular reports to understand which workload is consuming what amount of the shared cloud service.
 
 ### Next step
 
@@ -111,7 +111,7 @@ Break down high-level goals into functional requirements. For each of those requ
 **What resources are needed for a single transaction, and how many transactions are done per second, day, year?** 
 ***
 
-> ![Task](../_images/i-best-practices.svg) Start with a fixed cost of operations and a rough estimate of transaction volume to work out a cost-per-transaction to establish a baseline. Consider the difference between cost models based on fixed, static provisioning of services, more variable costs based upon autoscaling such as serverless technologies.
+> ![Task](../../_images/i-best-practices.svg) Start with a fixed cost of operations and a rough estimate of transaction volume to work out a cost-per-transaction to establish a baseline. Consider the difference between cost models based on fixed, static provisioning of services, more variable costs based upon autoscaling such as serverless technologies.
 
 ### Use T-shirt sizes for choosing SKUs
 

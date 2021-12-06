@@ -106,4 +106,4 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Batch and reliability](../azure-batch/reliability.md)
+> [Azure Batch and reliability](../../azure-batch/reliability.md)

@@ -74,5 +74,5 @@ Protect data while it's being transferred between components, locations or progr
 
 Sometimes you need to isolate your entire communication channel between your on-premises and cloud infrastructure by using either a virtual private network (VPN) or [ExpressRoute](/azure/expressroute/). For more information, see  these articles:
 
-- [Extending on-premises data solutions to the cloud](../data-guide/scenarios/hybrid-on-premises-and-cloud.md)
+- [Extending on-premises data solutions to the cloud](../../data-guide/scenarios/hybrid-on-premises-and-cloud.md)
 - [Configure a Point-to-Site VPN connection to a VNet using native Azure certificate authentication: Azure portal](/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#architecture)

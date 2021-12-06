@@ -50,7 +50,7 @@ With the scope of Azure Arc extended to Azure Stack HCI VMs, you'll be able to [
 
 In remote office/branch office scenarios, you must consider storage resiliency versus usage efficiency, versus performance. Planning for Azure Stack HCI volumes involves identifying the optimal balance between resiliency, usage efficiency, and performance. The challenge results from the fact that maximizing one of these characteristics typically has a negative impact on at least one of the other two.
 
-To learn more, see [Use Azure Stack HCI switchless interconnect and lightweight quorum for Remote Office/Branch Office](../hybrid/azure-stack-robo.yml#performance-efficiency).
+To learn more, see [Use Azure Stack HCI switchless interconnect and lightweight quorum for Remote Office/Branch Office](../../hybrid/azure-stack-robo.yml#performance-efficiency).
 
 ## Monitoring in a hybrid environment
 
@@ -63,7 +63,7 @@ Monitoring in a hybrid environment can be a challenge. However, with tools like 
 
 ## Monitoring containers
 
-[Monitoring your containers is critical](../hybrid/arc-hybrid-kubernetes.yml). Azure Monitor for containers provides a rich monitoring experience for the AKS and AKS engine clusters.
+[Monitoring your containers is critical](../../hybrid/arc-hybrid-kubernetes.yml). Azure Monitor for containers provides a rich monitoring experience for the AKS and AKS engine clusters.
 
 Configure Azure Monitor for containers to monitor Azure Arc enabled Kubernetes clusters hosted outside of Azure. This helps achieve comprehensive monitoring of your Kubernetes clusters across Azure, on-premises, and third-party cloud environments.
 

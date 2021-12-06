@@ -43,7 +43,7 @@ Azure provides these tools to determine cost.
 
 ## Example estimate for a microservices workload
 
-Let's consider this [scenario](../microservices/design/index.md#scenario) as an example. We'll use the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the initial cost before the workload is deployed. The cost is calculated per month or for 730 hours.
+Let's consider this [scenario](../../microservices/design/index.md#scenario) as an example. We'll use the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the initial cost before the workload is deployed. The cost is calculated per month or for 730 hours.
 
 In this example, we've chosen the microservices pattern. As the container orchestrator, one of the options could be [Azure Kubernetes Service](/azure/aks/) (AKS) that manages a cluster of pods. We choose NGINX ingress controller because it's well-known controller for such workloads.
 
@@ -81,7 +81,7 @@ We estimate 2-TB outbound traffic. The first 5 GB/month are free in Zone 1 (Zone
 ### External data source
 Because the schema-on read nature of the data handled by the workload, we choose Azure Cosmos DB as the external data store. By using the [Cosmos DB capacity calculator](https://cosmos.azure.com/capacitycalculator/), we can calculate the throughput to reserve.
 
-![Azure Cosmos DB Capacity calculator](../_images/cosmosdb-capacity.png)
+![Azure Cosmos DB Capacity calculator](../../_images/cosmosdb-capacity.png)
 
 #### Cost variables
 - For lower latency, in this scenario we enable geo-replication by using the **Multi-regions writes** feature. By default Cosmos DB uses one region for writes and the rest for reads.
@@ -96,7 +96,7 @@ Because the schema-on read nature of the data handled by the workload, we choose
 
 Now, we use those values in the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/).
 
-![Azure Pricing calculator for Cosmos DB](../_images/cosmosdb-price.png)
+![Azure Pricing calculator for Cosmos DB](../../_images/cosmosdb-price.png)
 
 The average throughput based on these settings is 20,000 RUs/sec which is the minimum throughput required for a **3-year reserved capacity** plan.
 

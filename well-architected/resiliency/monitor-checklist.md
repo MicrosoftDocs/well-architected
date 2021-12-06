@@ -38,8 +38,8 @@ Monitoring and diagnostics are crucial for resiliency. If something fails, you n
 
 ## Reference architecture
 
-- [Hybrid availability and performance monitoring](../hybrid/hybrid-perf-monitoring.yml)
-- [Unified logging for microservices applications](../example-scenario/logging/unified-logging.yml)
+- [Hybrid availability and performance monitoring](../../hybrid/hybrid-perf-monitoring.yml)
+- [Unified logging for microservices applications](../../example-scenario/logging/unified-logging.yml)
 
 ## Next step
 

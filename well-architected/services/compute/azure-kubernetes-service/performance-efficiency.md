@@ -45,4 +45,4 @@ The following table reflects scalability recommendations and descriptions relate
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Functions and security](../functions/security.md)
+> [Azure Functions and security](../../functions/security.md)

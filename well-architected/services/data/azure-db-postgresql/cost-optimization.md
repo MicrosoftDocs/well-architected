@@ -77,4 +77,4 @@ Explore the following table of recommendations to optimize your Azure Database f
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure SQL Database and reliability](../azure-sql-database/reliability.md)
+> [Azure SQL Database and reliability](../../azure-sql-database/reliability.md)

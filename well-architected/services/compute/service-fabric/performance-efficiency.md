@@ -44,4 +44,4 @@ Consider the following recommendation to optimize your Azure Service Fabric conf
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Virtual Machines and reliability](../virtual-machines/reliability.md)
+> [Azure Virtual Machines and reliability](../../virtual-machines/reliability.md)

@@ -46,7 +46,7 @@ A good Azure IP addressing schema provides flexibility, room for growth, and int
 **How do you isolate and protect traffic within the workload VNet?**
 ***
 To secure communication within a VNet, set rules that inspect traffic. Then, *allow* or *deny* traffic to, or from specific sources, and route them to the specified destinations.
-> ![Task](../_images/i-best-practices.svg) Review the rule set and confirm that the required services are not unintentionally blocked.
+> ![Task](../../_images/i-best-practices.svg) Review the rule set and confirm that the required services are not unintentionally blocked.
 
 For traffic between subnets, the recommended way is through [Network Security Groups (NSG)](/azure/virtual-network/security-overview). Define rules on each NSG that checks traffic to and from single IP address, multiple IP addresses, or entire subnets.
 
@@ -66,9 +66,9 @@ You can also use NVAs for egress traffic. For instance, all workload traffic is 
 > [!TIP]
 > Here are the resources for the preceding example:
 >
-> ![GitHub logo](../_images/github.svg) [GitHub: Automated failover for network virtual appliances](https://github.com/Azure/ha-nva-fo).
+> ![GitHub logo](../../_images/github.svg) [GitHub: Automated failover for network virtual appliances](https://github.com/Azure/ha-nva-fo).
 >
-> The design considerations are described in [Deploy highly available NVAs](../reference-architectures/dmz/nva-ha.yml).
+> The design considerations are described in [Deploy highly available NVAs](../../reference-architectures/dmz/nva-ha.yml).
 
 Azure Firewall can serve as an NVA. Azure supports third-party network device providers. They're available in Azure Marketplace.
 

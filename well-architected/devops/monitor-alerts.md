@@ -110,7 +110,7 @@ When defining alerts, analyze the potential business impact and prioritize accor
 
 One way of specifying the priority is by using a severity level that indicates how critical a situation is. This image shows this case in Azure Monitor.
 
-![Screenshot of an Azure Monitor alert severity as seen in the Azure portal.](../_images/devops/alert-severity.png)
+![Screenshot of an Azure Monitor alert severity as seen in the Azure portal.](../../_images/devops/alert-severity.png)
 
 
 ## Next steps

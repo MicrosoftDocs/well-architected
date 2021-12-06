@@ -185,17 +185,17 @@ Learn more about:
 
 <!-- links -->
 
-[resiliency]: ../well-architected/resiliency/principles.md
+[resiliency]: ../../well-architected/resiliency/principles.md
 
 <!-- practices -->
-[autoscale]: ../best-practices/auto-scaling.md
-[background-jobs]: ../best-practices/background-jobs.md
-[caching]: ../best-practices/caching.md
-[cdn]: ../best-practices/cdn.md
-[data-partitioning]: ../best-practices/data-partitioning.md
-[monitoring]: ../best-practices/monitoring.md
-[retry-service-specific]: ../best-practices/retry-service-specific.md
-[transient-fault-handling]: ../best-practices/transient-faults.md
+[autoscale]: ../../best-practices/auto-scaling.md
+[background-jobs]: ../../best-practices/background-jobs.md
+[caching]: ../../best-practices/caching.md
+[cdn]: ../../best-practices/cdn.md
+[data-partitioning]: ../../best-practices/data-partitioning.md
+[monitoring]: ../../best-practices/monitoring.md
+[retry-service-specific]: ../../best-practices/retry-service-specific.md
+[transient-fault-handling]: ../../best-practices/transient-faults.md
 
 <!-- pillars -->
 [cost-pillar]: ./cost/index.yml

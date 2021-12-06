@@ -34,14 +34,14 @@ Classify, protect, and monitor sensitive data assets using access control, encry
 
 The Azure Security Benchmark includes a collection of high-impact security recommendations you can use to help secure the services you use in Azure:
 
-> ![GitHub logo](../_images/benchmark-security.svg) The questions in this section are aligned to the Azure Security Benchmarks [Data Protection](/azure/security/benchmarks/security-controls-v2-data-protection).
+> ![GitHub logo](../../_images/benchmark-security.svg) The questions in this section are aligned to the Azure Security Benchmarks [Data Protection](/azure/security/benchmarks/security-controls-v2-data-protection).
 
 ## Reference architecture
 Here are some reference architectures related to secure storage:
 
-- [Using Azure file shares in a hybrid environment](../hybrid/azure-file-share.yml)
+- [Using Azure file shares in a hybrid environment](../../hybrid/azure-file-share.yml)
 
-- [DevSecOps in Azure](../solution-ideas/articles/devsecops-in-azure.yml)
+- [DevSecOps in Azure](../../solution-ideas/articles/devsecops-in-azure.yml)
 
 ## Next steps
 

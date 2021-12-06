@@ -21,7 +21,7 @@ A key benefit of hybrid cloud environments is the ability to scale dynamically a
 
 Azure Arc helps minimize or even eliminate the need for on-premises management and monitoring systems, which reduces operational complexity and cost, especially in large, diverse, and distributed environments. This helps offset additional costs associated with Azure Arc-related services. For example, advanced data security for Azure Arc enabled SQL Server instance requires Microsoft Defender for Cloud functionality of Microsoft Defender for Cloud, which has [pricing implications](https://azure.microsoft.com/pricing/details/security-center/).
 
-Other considerations are described in the [Principles of cost optimization](../cost/design-model.md) section in the Microsoft Azure Well-Architected Framework.
+Other considerations are described in the [Principles of cost optimization](../../cost/design-model.md) section in the Microsoft Azure Well-Architected Framework.
 
 ## Workload definitions
 
@@ -61,13 +61,13 @@ For budget concerns, you get a considerable amount of functionality at no cost t
 
 ## Azure Architecture Center (AAC) resources related to hybrid cost
 
-- [Manage configurations for Azure Arc enabled servers](../hybrid/azure-arc-hybrid-config.yml)
-- [Azure Arc hybrid management and deployment for Kubernetes clusters](../hybrid/arc-hybrid-kubernetes.yml)
-- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](../hybrid/azure-arc-sql-server.yml)
-- [Disaster Recovery for Azure Stack Hub virtual machines](../hybrid/azure-stack-vm-dr.yml)
-- [Build high availability into your BCDR strategy](../solution-ideas/articles/build-high-availability-into-your-bcdr-strategy.yml)
-- [Use Azure Stack HCI switchless interconnect and lightweight quorum for Remote Office/Branch Office](../hybrid/azure-stack-robo.yml)
-- [Archive on-premises data to cloud](../solution-ideas/articles/backup-archive-on-premises.yml)
+- [Manage configurations for Azure Arc enabled servers](../../hybrid/azure-arc-hybrid-config.yml)
+- [Azure Arc hybrid management and deployment for Kubernetes clusters](../../hybrid/arc-hybrid-kubernetes.yml)
+- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](../../hybrid/azure-arc-sql-server.yml)
+- [Disaster Recovery for Azure Stack Hub virtual machines](../../hybrid/azure-stack-vm-dr.yml)
+- [Build high availability into your BCDR strategy](../../solution-ideas/articles/build-high-availability-into-your-bcdr-strategy.yml)
+- [Use Azure Stack HCI switchless interconnect and lightweight quorum for Remote Office/Branch Office](../../hybrid/azure-stack-robo.yml)
+- [Archive on-premises data to cloud](../../solution-ideas/articles/backup-archive-on-premises.yml)
 
 ## Infrastructure Decisions
 
@@ -81,7 +81,7 @@ Lastly, you can slowly begin migrating out of your datacenter and use Azure Arc 
 
 ### Capacity planning
 
-Check out our checklist under the [Cost Optimization pillar](../cost/design-checklist.md) in the Well-Framework to learn more about capacity planning, and build a checklist to design cost-effective workloads.
+Check out our checklist under the [Cost Optimization pillar](../../cost/design-checklist.md) in the Well-Framework to learn more about capacity planning, and build a checklist to design cost-effective workloads.
 
 - Define SLAs
 - Determine regulatory needs

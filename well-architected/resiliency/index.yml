@@ -144,7 +144,7 @@ landingContent:
           - text: Azure API Management
             url: /azure/api-management/zone-redundancy
           - text: Application Gateway (V2)
-            url: ../networking/guide/waf-application-gateway.md#reliability
+            url: ../../networking/guide/waf-application-gateway.md#reliability
           - text: Key Vault
             url: /azure/key-vault/general/disaster-recovery-guidance
           - text: Azure Backup

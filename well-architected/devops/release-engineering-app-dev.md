@@ -84,7 +84,7 @@ Beyond providing us with a place to store code, source control systems allow us 
 
 The following image demonstrates how Git and GitHub are used to see the proposed code changes.
 
-:::image type="content" source="../_images/devops/git-changes.png" alt-text="Image alt text" lightbox="../_images/devops/git-changes-full.png":::
+:::image type="content" source="../../_images/devops/git-changes.png" alt-text="Image alt text" lightbox="../../_images/devops/git-changes-full.png":::
 
 **Forking and Pull Requests**
 

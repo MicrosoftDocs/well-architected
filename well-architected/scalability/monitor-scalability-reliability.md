@@ -42,7 +42,7 @@ The raw data for monitoring can come from various sources, including:
 - [Azure Service Health](/azure/service-health/overview), which offers a dashboard to help you track active events.
 - [Azure AD logs](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) built into the Azure platform.
 
-To learn more, see [Monitoring health for reliability](../resiliency/monitoring.md).
+To learn more, see [Monitoring health for reliability](../../resiliency/monitoring.md).
 
 ## Next section
 

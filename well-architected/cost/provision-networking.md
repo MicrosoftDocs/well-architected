@@ -38,7 +38,7 @@ Here's the matrix for choosing load balancers by considering both dimensions.
 |[Application Gateway](/azure/application-gateway/overview)|Regional| HTTP(S)|
 |[Azure Load Balancer](/azure/load-balancer/load-balancer-overview)|Regional| non-HTTP(S)|
 
-For more information, see [Choose a load balancing service](../guide/technology-choices/load-balancing-overview.md).
+For more information, see [Choose a load balancing service](../../guide/technology-choices/load-balancing-overview.md).
 
 ### Example cost analysis
 
@@ -49,11 +49,11 @@ By using the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calc
 
 #### Azure Front Door (West US), Zone 1.
 
-![Azure Front Door ](../_images/cost-net-lb.png)
+![Azure Front Door ](../../_images/cost-net-lb.png)
 
 #### Application Gateway (West US)
 
-![Application Gateway (West US)](../_images/cost-net-ag.png)
+![Application Gateway (West US)](../../_images/cost-net-ag.png)
 
 Consider a similar example where the type of traffic is changed. Instead the application is a UDP streaming service that is deployed across regions and traffic goes over the internet.  We can use a combination of Traffic Manager and Azure Load Balancer. Traffic Manager is a simple routing service that uses DNS to direct clients to specific service. Here are the cost estimates:
 
@@ -86,7 +86,7 @@ Consider a similar example where the type of traffic is changed. Instead the app
 [Peering technology](/azure/virtual-network/virtual-network-peering-overview) is a service used for Azure virtual networks to connect with other virtual networks in the same or different Azure region. Peering technology is used often in hub and spoke architectures.
 
 An important consideration is the additional costs incurred by peering connections on both egress and ingress traffic traversing the peering connections.
-> ![Task](../_images/i-best-practices.svg) Keeping the top talking services of a workload within the same virtual network, zone and/or region unless otherwise required. Use virtual networks as shared resources for multiple workloads against a single virtual network per workload approach. This approach will localize traffic to a single virtual network and avoid the additional costs on peering charges.
+> ![Task](../../_images/i-best-practices.svg) Keeping the top talking services of a workload within the same virtual network, zone and/or region unless otherwise required. Use virtual networks as shared resources for multiple workloads against a single virtual network per workload approach. This approach will localize traffic to a single virtual network and avoid the additional costs on peering charges.
 
 ### Example cost analysis
 
@@ -124,7 +124,7 @@ Another consideration is security. Unlike VPN Gateway traffic, ExpressRoute conn
 
 For both services, inbound transfers are free and outbound transfers are billed per the billing zone.
 
-For more information, see [Choose a solution for connecting an on-premises network to Azure](../reference-architectures/hybrid-networking/index.yml).
+For more information, see [Choose a solution for connecting an on-premises network to Azure](../../reference-architectures/hybrid-networking/index.yml).
 
 This [blog post](https://azure.microsoft.com/blog/expressroute-or-virtual-network-vpn-whats-right-for-me/) provides a comparison of the two services.
 

@@ -80,7 +80,7 @@ Use paired regions that exist within the same geography and provide native repli
 
 ### Availability Zones and sets
 
-Platform services that can leverage Availability Zones are deployed in either a zonal manner within a particular zone, or in a zone-redundant configuration across multiple zones. To learn more, see [Building solutions for high availability using Availability Zones](../high-availability/building-solutions-for-high-availability.md).
+Platform services that can leverage Availability Zones are deployed in either a zonal manner within a particular zone, or in a zone-redundant configuration across multiple zones. To learn more, see [Building solutions for high availability using Availability Zones](../../high-availability/building-solutions-for-high-availability.md).
 
 An Availability Set (AS) is a logical construct to inform Azure that it should distribute contained virtual machine instances across multiple fault and update domains within an Azure region. Availability Zones (AZ) elevate the fault level for virtual machines to a physical datacenter by allowing replica instances to be deployed across multiple datacenters within an Azure region. While zones provide greater resiliency than sets, there are performance and cost considerations where applications are extremely 'chatty' across zones given the implied physical separation and inter-zone bandwidth charges. Ultimately, Azure Virtual Machines and Azure PaaS services, such as Service Fabric and Azure Kubernetes Service (AKS) which use virtual machines underneath, can leverage either AZs or an AS to provide application resiliency within a region. To learn more, see [Business continuity with data resiliency](https://azurecomcdn.azureedge.net/cvt-27012b3bd03d67c9fa81a9e2f53f7d081c94f3a68c13cdeb7958edf43b7771e8/mediahandler/files/resourcefiles/azure-resiliency-infographic/Azure_resiliency_infographic.pdf).
 
@@ -138,7 +138,7 @@ Consider these guidelines to ensure connection availability and improve reliabil
 
 - **Simulate a failure path to ensure connectivity is available over alternative paths.** The failure of a connection path onto other connection paths should be tested to validate connectivity and operational effectiveness. Using Site-to-Site VPN connectivity as a backup path for ExpressRoute provides an additional layer of network resiliency for cross-premises connectivity. To learn more, see [Using site-to-site VPN as a backup for ExpressRoute private peering](/azure/expressroute/use-s2s-vpn-as-backup-for-expressroute-privatepeering).
 
-- **Eliminate all single points of failure from the data path (on-premises and Azure.** Single-instance Network Virtual Appliances (NVAs), whether deployed in Azure or within an on-premises datacenter, introduce significant connectivity risk. To learn more, see [Deploy highly available network virtual appliances](../reference-architectures/dmz/nva-ha.yml).
+- **Eliminate all single points of failure from the data path (on-premises and Azure.** Single-instance Network Virtual Appliances (NVAs), whether deployed in Azure or within an on-premises datacenter, introduce significant connectivity risk. To learn more, see [Deploy highly available network virtual appliances](../../reference-architectures/dmz/nva-ha.yml).
 
 ### Zone-aware services
 
@@ -150,7 +150,7 @@ Consider these guidelines to ensure connection availability and improve reliabil
 
 - **Configure health probes for Azure Load Balancer(s)/Azure Application Gateways.** Health probes allow Azure Load Balancers to assess the health of backend endpoints to prevent traffic from being sent to unhealthy instances. To learn more, see [Load Balancer health probes](/azure/load-balancer/load-balancer-custom-probe-overview).
 
-- **Assess critical application dependencies with health probes.** Custom health probes should be used to assess overall application health including downstream components and dependent services, such as APIs and datastores, so that traffic is not sent to backend instances that cannot successfully process requests due to dependency failures. To learn more, see [Health Endpoint Monitoring Pattern](../patterns/health-endpoint-monitoring.md).
+- **Assess critical application dependencies with health probes.** Custom health probes should be used to assess overall application health including downstream components and dependent services, such as APIs and datastores, so that traffic is not sent to backend instances that cannot successfully process requests due to dependency failures. To learn more, see [Health Endpoint Monitoring Pattern](../../patterns/health-endpoint-monitoring.md).
 
 ## Next step
 
@@ -160,8 +160,8 @@ Consider these guidelines to ensure connection availability and improve reliabil
 ## Related links
 
 - To understand business metrics to design resilient Azure applications, see [Workload availability targets](./business-metrics.md).
-- For information on Availability Zones, see [Building solutions for high availability using Availability Zones](../high-availability/building-solutions-for-high-availability.md).
-- For information on health probes, see [Load Balancer health probes](/azure/load-balancer/load-balancer-custom-probe-overview) and [Health Endpoint Monitoring Pattern](../patterns/health-endpoint-monitoring.md).
-- To learn about connectivity risk, see [Deploy highly available network virtual appliances](../reference-architectures/dmz/nva-ha.yml).
+- For information on Availability Zones, see [Building solutions for high availability using Availability Zones](../../high-availability/building-solutions-for-high-availability.md).
+- For information on health probes, see [Load Balancer health probes](/azure/load-balancer/load-balancer-custom-probe-overview) and [Health Endpoint Monitoring Pattern](../../patterns/health-endpoint-monitoring.md).
+- To learn about connectivity risk, see [Deploy highly available network virtual appliances](../../reference-architectures/dmz/nva-ha.yml).
 
 > Go back to the main article: [Design](design-checklist.md)

@@ -21,9 +21,9 @@ Security provides confidentiality, integrity, and availability assurances agains
 
 |                    Pattern                     |                                                                                                         Summary                                                                                                         |
 |------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Federated Identity](../patterns/federated-identity.md) |                                                                                Delegate authentication to an external identity provider.                                                                                |
-|         [Gatekeeper](../patterns/gatekeeper.md)         | Protect applications and services by using a dedicated host instance that acts as a broker between clients and the application or service, validates and sanitizes requests, and passes requests and data between them. |
-|          [Valet Key](../patterns/valet-key.md)          |                                                        Use a token or key that provides clients with restricted direct access to a specific resource or service.                                                        |
+| [Federated Identity](../../patterns/federated-identity.md) |                                                                                Delegate authentication to an external identity provider.                                                                                |
+|         [Gatekeeper](../../patterns/gatekeeper.md)         | Protect applications and services by using a dedicated host instance that acts as a broker between clients and the application or service, validates and sanitizes requests, and passes requests and data between them. |
+|          [Valet Key](../../patterns/valet-key.md)          |                                                        Use a token or key that provides clients with restricted direct access to a specific resource or service.                                                        |
 
 ## Key Security Resources
 

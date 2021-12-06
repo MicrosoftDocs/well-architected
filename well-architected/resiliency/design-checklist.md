@@ -39,9 +39,9 @@ Reliable applications should maintain a pre-defined percentage of uptime (*avail
 
 ## Reference architecture
 
-- [Deploy highly available network virtual appliances](../reference-architectures/dmz/nva-ha.yml)
-- [Failure Mode Analysis for Azure applications](../resiliency/failure-mode-analysis.md)
-- [Minimize coordination](../guide/design-principles/minimize-coordination.md)
+- [Deploy highly available network virtual appliances](../../reference-architectures/dmz/nva-ha.yml)
+- [Failure Mode Analysis for Azure applications](../../resiliency/failure-mode-analysis.md)
+- [Minimize coordination](../../guide/design-principles/minimize-coordination.md)
 
 ## Next step
 
@@ -50,8 +50,8 @@ Reliable applications should maintain a pre-defined percentage of uptime (*avail
 
 ## Related links
 
-- [Use platform as a service (PaaS) options](../guide/design-principles/managed-services.md)
-- [Design to scale out](../guide/design-principles/scale-out.md)
+- [Use platform as a service (PaaS) options](../../guide/design-principles/managed-services.md)
+- [Design to scale out](../../guide/design-principles/scale-out.md)
 - [Workload availability targets](./business-metrics.md).
-- [Building solutions for high availability using Availability Zones](../high-availability/building-solutions-for-high-availability.md)
-- [Make all things redundant](../guide/design-principles/redundancy.md)
+- [Building solutions for high availability using Availability Zones](../../high-availability/building-solutions-for-high-availability.md)
+- [Make all things redundant](../../guide/design-principles/redundancy.md)
