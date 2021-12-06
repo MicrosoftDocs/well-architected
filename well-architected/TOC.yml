@@ -1,2 +1,486 @@
-- name: Index
-  href: index.md
+items:
+      - name: Microsoft Azure Well-Architected Framework
+        items:
+      - name: Overview
+        href: well-architected/index.md
+      - name: Reliability
+        items:
+              - name: About
+                href: well-architected/resiliency/index.yml
+              - name: Overview
+                href: well-architected/resiliency/overview.md
+              - name: Principles
+                href: well-architected/resiliency/principles.md
+              - name: Design
+                items:
+                  - name: Checklist
+                    href: well-architected/resiliency/design-checklist.md
+                  - name: Requirements
+                    href: well-architected/resiliency/design-requirements.md
+                  - name: Application design
+                    href: well-architected/resiliency/app-design.md
+                  - name: Resiliency & dependencies
+                    href: well-architected/resiliency/design-resiliency.md
+                  - name: Best practices
+                    href: well-architected/resiliency/design-best-practices.md
+              - name: Testing
+                items:
+                  - name: Checklist
+                    href: well-architected/resiliency/test-checklist.md
+                  - name: Resiliency testing
+                    href: well-architected/resiliency/testing.md
+                  - name: Backup & recovery
+                    items:
+                      - name: Backup and recovery
+                        href: well-architected/resiliency/backup-and-recovery.md
+                      - name: Automatic retry of failed backup jobs
+                        href: well-architected/resiliency/auto-retry.md
+                  - name: Error handling
+                    href: well-architected/resiliency/app-design-error-handling.md
+                  - name: Chaos engineering
+                    href: well-architected/resiliency/chaos-engineering.md
+                  - name: Best practices
+                    href: well-architected/resiliency/test-best-practices.md
+              - name: Monitoring
+                items:
+                  - name: Checklist
+                    href: well-architected/resiliency/monitor-checklist.md
+                  - name: Application health
+                    href: well-architected/resiliency/monitoring.md
+                  - name: Health modeling
+                    href: well-architected/resiliency/monitor-model.md
+                  - name: Best practices
+                    href: well-architected/resiliency/monitor-best-practices.md
+              - name: Reliability patterns
+                href: well-architected/resiliency/reliability-patterns.md
+      - name: Security
+        items:
+          - name: Quick links
+            href: well-architected/security/index.yml
+          - name: About
+            href: well-architected/security/overview.md
+          - name: Principles
+            href: well-architected/security/security-principles.md
+          - name: Design
+            items:
+              - name: Governance
+                items:
+                  - name: Checklist
+                    href: well-architected/security/design-governance.md
+                  - name: Compliance requirements
+                    href: well-architected/security/design-regulatory-compliance.md
+                  - name: Landing zone
+                    href: well-architected/security/design-governance-landing-zone.md
+                  - name: Segmentation strategy
+                    href: well-architected/security/design-segmentation.md
+                  - name: Management groups
+                    href: well-architected/security/design-management-groups.md
+                  - name: Administration
+                    href: well-architected/security/design-admins.md
+              - name: Identity and access management
+                items:
+                  - name: Checklist
+                    href: well-architected/security/design-identity.md
+                  - name: Roles and responsibilities
+                    href: well-architected/security/design-identity-role-definitions.md
+                  - name: Control plane
+                    href: well-architected/security/design-identity-control-plane.md
+                  - name: Authentication
+                    href: well-architected/security/design-identity-authentication.md
+                  - name: Authorization
+                    href: well-architected/security/design-identity-authorization.md
+                  - name: Best practices
+                    href: /azure/security/fundamentals/identity-management-best-practices?bc=%2fazure%2farchitecture%2fbread%2ftoc.json&toc=%2fazure%2farchitecture%2ftoc.json
+              - name: Networking
+                items:
+                  - name: Checklist
+                    href: well-architected/security/design-network.md
+                  - name: Network segmentation
+                    href: well-architected/security/design-network-segmentation.md
+                  - name: Connectivity
+                    href: well-architected/security/design-network-connectivity.md
+                  - name: Application endpoints
+                    href: well-architected/security/design-network-endpoints.md
+                  - name: Data flow
+                    href: well-architected/security/design-network-flow.md
+                  - name: Best practices
+                    href: /azure/security/fundamentals/network-best-practices?bc=%2fazure%2farchitecture%2fbread%2ftoc.json&toc=%2fazure%2farchitecture%2ftoc.json
+              - name: Data protection
+                items:
+                  - name: Checklist
+                    href: well-architected/security/design-storage.md
+                  - name: Encryption
+                    href: well-architected/security/design-storage-encryption.md
+                  - name: Key and secret management
+                    href: well-architected/security/design-storage-keys.md
+                  - name: Best practices
+                    href: /azure/security/fundamentals/encryption-overview?bc=%2fazure%2farchitecture%2fbread%2ftoc.json&toc=%2fazure%2farchitecture%2ftoc.json
+              - name: Applications and services
+                items:
+                  - name: Application security considerations
+                    href: well-architected/security/design-apps-services.md
+                  - name: Application classification
+                    href: well-architected/security/design-apps-considerations.md
+                  - name: Threat analysis
+                    href: well-architected/security/design-threat-model.md
+                  - name: Secure PaaS deployments
+                    href: /azure/security/fundamentals/paas-deployments?bc=%2fazure%2farchitecture%2fbread%2ftoc.json&toc=%2fazure%2farchitecture%2ftoc.json
+                  - name: Configuration and dependencies
+                    href: well-architected/security/design-app-dependencies.md
+          - name: Build-deploy
+            items:
+              - name: Checklist
+                href: well-architected/security/deploy.md
+              - name: Governance considerations
+                href: well-architected/security/deploy-governance.md
+              - name: Infrastructure provisioning
+                href: well-architected/security/deploy-infrastructure.md
+              - name: Code deployments
+                href: well-architected/security/deploy-code.md
+          - name: Monitor-remediate
+            items: 
+              - name: Checklist
+                href: well-architected/security/monitor.md
+              - name: Tools
+                href: well-architected/security/monitor-tools.md
+              - name: Azure resources
+                href: well-architected/security/monitor-resources.md
+              - name: Logs and alerts
+                href: well-architected/security/monitor-logs-alerts.md
+              - name: Review and remediate
+                href: well-architected/security/monitor-remediate.md
+              - name: Compliance review
+                href: well-architected/security/monitor-audit.md
+              - name: Validate and test
+                href: well-architected/security/monitor-test.md
+              - name: Security operations
+                href: well-architected/security/monitor-security-operations.md
+          - name: Tradeoffs
+            href: well-architected/security/security-tradeoffs.md
+      - name: Cost Optimization
+        items:
+          - name: About
+            href: well-architected/cost/index.yml
+          - name: Principles
+            href: well-architected/cost/overview.md
+          - name: Design
+            items:
+              - name: Checklist
+                href: well-architected/cost/design-checklist.md
+              - name: Cost model
+                href: well-architected/cost/design-model.md
+              - name: Capture requirements
+                href: well-architected/cost/design-capture-requirements.md
+              - name: Azure regions
+                href: well-architected/cost/design-regions.md
+              - name: Azure resources
+                href: well-architected/cost/design-resources.md
+              - name: Governance
+                href: well-architected/cost/design-governance.md
+              - name: Initial estimate
+                href: well-architected/cost/design-initial-estimate.md
+              - name: Managed services
+                href: well-architected/cost/design-paas.md
+              - name: Performance and price options
+                href: well-architected/cost/design-price.md
+          - name: Provision
+            items:
+              - name: Checklist
+                href: well-architected/cost/provision-checklist.md
+              - name: AI + Machine Learning
+                href: well-architected/cost/provision-ai-ml.md
+              - name: Big data
+                href: well-architected/cost/provision-analytics.md
+              - name: Compute
+                href: well-architected/cost/provision-compute.md
+              - name: Data stores
+                href: well-architected/cost/provision-datastores.md
+              - name: Messaging
+                href: well-architected/cost/provision-messaging.md
+              - name: Networking
+                href: well-architected/cost/provision-networking.md
+                items:
+                  - name: Cost for networking services
+                    href: well-architected/cost/provision-networking-services.md
+              - name: Web apps
+                href: well-architected/cost/provision-webapps.md
+          - name: Monitor
+            items:
+              - name: Checklist
+                href: well-architected/cost/monitor-checklist.md
+              - name: Budgets and alerts
+                href: well-architected/cost/monitor-alert.md
+              - name: Reports
+                href: well-architected/cost/monitor-reports.md
+              - name: Reviews
+                href: well-architected/cost/monitor-reviews.md
+          - name: Optimize
+            items:
+              - name: Checklist
+                href: well-architected/cost/optimize-checklist.md
+              - name: Autoscale
+                href: well-architected/cost/optimize-autoscale.md
+              - name: Reserved instances
+                href: well-architected/cost/optimize-reserved.md
+              - name: VM instances
+                href: well-architected/cost/optimize-vm.md
+              - name: Caching
+                href: well-architected/cost/optimize-cache.md
+          - name: Tradeoffs
+            href: well-architected/cost/tradeoffs.md
+      - name: Operational Excellence
+        items:
+          - name: About
+            href: well-architected/devops/index.yml
+          - name: Overview
+            href: well-architected/devops/overview.md
+          - name: Principles
+            href: well-architected/devops/principles.md
+          - name: Automation
+            items:
+              - name: Automation Overview
+                href: well-architected/devops/automation-overview.md
+              - name: Repeatable infrastructure
+                href: well-architected/devops/automation-infrastructure.md
+              - name: Configure infrastructure
+                href: well-architected/devops/automation-configuration.md
+              - name: Automate operational tasks
+                href: well-architected/devops/automation-tasks.md
+          - name: Release engineering
+            items:
+              - name: Application development
+                href: well-architected/devops/release-engineering-app-dev.md
+              - name: Continuous integration
+                href: well-architected/devops/release-engineering-ci.md
+              - name: Release testing
+                href: well-architected/devops/release-engineering-testing.md
+              - name: Performance
+                href: well-architected/devops/release-engineering-performance.md
+              - name: Release deployment
+                href: well-architected/devops/release-engineering-cd.md
+              - name: Rollback
+                href: well-architected/devops/release-engineering-rollback.md
+          - name: Monitor
+            items:
+              - name: Checklist
+                href: well-architected/devops/checklist.md
+              - name: Monitor cloud applications
+                items:
+                  - name: Monitoring stages
+                    href: well-architected/devops/monitor-pipeline.md
+                  - name: Data sources
+                    href: well-architected/devops/monitor-data-sources.md                  
+                  - name: Instrumentation
+                    href: well-architected/devops/monitor-instrument.md
+                  - name: Collection and storage
+                    href: well-architected/devops/monitor-collection-data-storage.md
+                  - name: Analysis
+                    href: well-architected/devops/monitor-analysis.md
+                  - name: Visualization
+                    href: well-architected/devops/monitor-visualize-data.md
+                  - name: Alerting
+                    href: well-architected/devops/monitor-alerts.md
+              - name: Common use cases
+                items:
+                  - name: Health monitoring
+                    href: well-architected/devops/health-monitoring.md
+                  - name: Usage monitoring
+                    href: well-architected/devops/usage.md
+                  - name: Issue tracking
+                    href: well-architected/devops/issue-tracking.md
+                  - name: Tracing and debugging
+                    href: well-architected/devops/tracing.md
+                  - name: Auditing
+                    href: well-architected/devops/auditing.md
+          - name: Checklist
+            href: checklist/dev-ops.md
+          - name: Operational Excellence patterns
+            href: well-architected/devops/devops-patterns.md
+      - name: Performance Efficiency
+        items:
+          - name: About
+            href: well-architected/scalability/index.yml
+          - name: Overview
+            href: well-architected/scalability/overview.md
+          - name: Principles
+            href: well-architected/scalability/principles.md
+          - name: Design
+            items:
+              - name: Checklist
+                href: well-architected/scalability/design-checklist.md
+              - name: Distributed architecture challenges
+                href: well-architected/scalability/design-distributed.md
+              - name: Application design
+                href: well-architected/scalability/design-apps.md
+              - name: Application efficiency
+                href: well-architected/scalability/design-efficiency.md
+              - name: Scalability
+                href: well-architected/scalability/design-scale.md
+              - name: Capacity planning
+                href: well-architected/scalability/design-capacity.md
+          - name: Test
+            items:
+              - name: Checklist
+                href: well-architected/scalability/test-checklist.md
+              - name: Performance testing
+                href: well-architected/scalability/performance-test.md
+              - name: Testing tools
+                href: well-architected/scalability/test-tools.md
+          - name: Monitoring
+            items:
+              - name: Checklist
+                href: well-architected/scalability/checklist.md
+              - name: Application profiling
+                href: well-architected/scalability/monitor-application.md
+              - name: Analyze infrastructure
+                href: well-architected/scalability/monitor-infrastructure.md
+              - name: Performance data
+                href: well-architected/scalability/monitor-analyze.md
+          - name: Performance Efficiency patterns
+            href: well-architected/scalability/performance-efficiency-patterns.md
+          - name: Checklist
+            href: well-architected/scalability/performance-efficiency.md
+          - name: Tradeoffs
+            href: well-architected/scalability/tradeoffs.md
+      - name: Workloads
+        items:
+          - name: Hybrid
+            items:
+              - name: Overview
+                href: well-architected/hybrid/hybrid-overview.md
+              - name: Cost Optimization
+                href: well-architected/hybrid/hybrid-cost.md
+              - name: Operational Excellence
+                href: well-architected/hybrid/hybrid-opex.md
+              - name: Performance Efficiency
+                href: well-architected/hybrid/hybrid-performance-efficiency.md
+              - name: Reliability
+                href: well-architected/hybrid/hybrid-reliability.md
+              - name: Security
+                href: well-architected/hybrid/hybrid-security.md
+      - name: Services 
+        items:
+          - name: Compute
+            items: 
+              - name: Azure App Service
+                items:
+                  - name: Reliability
+                    href: well-architected/services/compute/azure-app-service/reliability.md
+                  - name: Cost optimization
+                    href: well-architected/services/compute/azure-app-service/cost-optimization.md
+                  - name: Operational excellence
+                    href: well-architected/services/compute/azure-app-service/operational-excellence.md                  
+              - name: Azure Batch
+                items:
+                  - name: Reliability
+                    href: well-architected/services/compute/azure-batch/reliability.md
+                  - name: Operational excellence
+                    href: well-architected/services/compute/azure-batch/operational-excellence.md
+                  - name: Performance efficiency
+                    href: well-architected/services/compute/azure-batch/performance-efficiency.md
+              - name: Azure Kubernetes Service
+                items: 
+                  - name: Reliability
+                    href: well-architected/services/compute/azure-kubernetes-service/reliability.md
+                  - name: Security
+                    href: well-architected/services/compute/azure-kubernetes-service/security.md
+                  - name: Cost optimization
+                    href: well-architected/services/compute/azure-kubernetes-service/cost-optimization.md
+                  - name: Operational excellence
+                    href: well-architected/services/compute/azure-kubernetes-service/operational-excellence.md
+                  - name: Performance efficiency
+                    href: well-architected/services/compute/azure-kubernetes-service/performance-efficiency.md
+              - name: Functions
+                items:
+                  - name: Security
+                    href: well-architected/services/compute/functions/security.md
+              - name: Service Fabric
+                items:
+                  - name: Reliability
+                    href: well-architected/services/compute/service-fabric/reliability.md 
+                  - name: Security
+                    href: well-architected/services/compute/service-fabric/security.md
+                  - name: Operational excellence
+                    href: well-architected/services/compute/service-fabric/operational-excellence.md
+                  - name: Performance efficiency
+                    href: well-architected/services/compute/service-fabric/performance-efficiency.md
+              - name: Virtual Machines
+                items:
+                  - name: Reliability
+                    href: well-architected/services/compute/virtual-machines/reliability.md
+                  - name: Cost optimization
+                    href: well-architected/services/compute/virtual-machines/cost-optimization.md
+                  - name: Operational excellence
+                    href: well-architected/services/compute/virtual-machines/operational-excellence.md
+          - name: Data
+            items:
+              - name: Azure Cache for Redis
+                items:
+                  - name: Reliability
+                    href: well-architected/services/data/azure-cache-redis/reliability.md
+                  - name: Operational excellence
+                    href: well-architected/services/data/azure-cache-redis/operational-excellence.md
+              - name: Azure Databricks
+                items:
+                  - name: Security
+                    href: well-architected/services/data/azure-databricks/security.md
+              - name: Azure Database for MySQL
+                items:
+                  - name: Cost optimization
+                    href: well-architected/services/data/azure-db-mysql/cost-optimization.md
+              - name: Azure Database for PostgreSQL
+                items:
+                  - name: Cost optimization
+                    href: well-architected/services/data/azure-db-postgresql/cost-optimization.md
+              - name: Azure SQL Database
+                items:
+                  - name: Reliability
+                    href: well-architected/services/data/azure-sql-database/reliability.md
+                  - name: Cost optimization
+                    href: well-architected/services/data/azure-sql-database/cost-optimization.md
+                  - name: Operational excellence
+                    href: well-architected/services/data/azure-sql-database/operational-excellence.md
+              - name: Azure SQL Managed Instance
+                items:
+                  - name: Reliability
+                    href: well-architected/services/data/azure-sql-managed-instance/reliability.md
+                  - name: Operational excellence
+                    href: well-architected/services/data/azure-sql-managed-instance/operational-excellence.md
+              - name: Cosmos DB
+                items:
+                  - name: Reliability
+                    href: well-architected/services/data/cosmos-db/reliability.md
+                  - name: Operational excellence
+                    href: well-architected/services/data/cosmos-db/operational-excellence.md
+          - name: Hybrid  
+            items:
+              - name: Azure Stack Hub
+                items:
+                  - name: Reliability
+                    href: well-architected/services/hybrid/azure-stack-hub/reliability.md
+                  - name: Operational excellence
+                    href: well-architected/services/hybrid/azure-stack-hub/operational-excellence.md
+          - name: Storage
+            items:
+              - name: Storage Accounts
+                items:
+                  - name: Reliability
+                    href: well-architected/services/storage/storage-accounts/reliability.md
+                  - name: Security
+                    href: well-architected/services/storage/storage-accounts/security.md
+                  - name: Cost optimization
+                    href: well-architected/services/storage/storage-accounts/cost-optimization.md
+                  - name: Operational excellence
+                    href: well-architected/services/storage/storage-accounts/operational-excellence.md
+              - name: Disks
+                items:
+                  - name: Cost optimization
+                    href: well-architected/services/storage/disks/cost-optimization.md
+          - name: Messaging
+            items:
+              - name: Event Grid
+                items:
+                  - name: Reliability
+                    href: well-architected/services/messaging/event-grid/reliability.md
+                  - name: Operational excellence
+                    href: well-architected/services/messaging/event-grid/operational-excellence.md
