@@ -2,7 +2,7 @@ items:
       - name: Microsoft Azure Well-Architected Framework
         items:
       - name: Overview
-        href: ./index.md
+        href: /azure/architecture/framework
       - name: Reliability
         items:
               - name: About
