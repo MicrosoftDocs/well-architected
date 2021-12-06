@@ -3,7 +3,7 @@ title: Cost checklist
 titleSuffix: Azure Design Review Framework
 description: Cost checklist guidance for design concerns
 author: david-stanford
-ms.date: 10/10/2019
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -15,7 +15,7 @@ ms.custom:
 
 ## Organization
 
-- Plan your hierarchy around management groups, subscriptions, and resource groups. Mapping your organization to your Azure hierarchy will help with reporting costs across business units, applications, IT infrastructure shared services, etc.
+- Plan your hierarchy around management groups, subscriptions, and resource groups. Mapping your organization to your Azure hierarchy will help with reporting costs across business units, applications, IT infrastructure shared services, and so on.
 
 - Use subscription types that offer lower rates for Azure resources, such as Dev/Test subscriptions.
 
@@ -39,7 +39,7 @@ ms.custom:
 
 - Choose the correct consumption model for your service (Consumption, Pre-Provisioned)
 
-- Choose the right data store for the job (SQL, Cosmos, Storage etc)
+- Choose the right data store for the job (SQL, Cosmos, Storage, and so on)
 
 - Don't over engineer services for requirements that are not clearly defined.
 
@@ -51,7 +51,7 @@ ms.custom:
 
 ## Provisioning
 
-- Use Hybrid Use Benefit where possible on VM images Windows Server and/or SQL Server software.
+- Use Hybrid Benefit where possible on VM images Windows Server and/or SQL Server software.
 
 - Provision resources starting on the smaller tier and scale up/out as needed. For example, start with a smaller managed disk and scale up as needed. Some resources, such as managed disks or ExpressRoute circuits charge for allocated capacity and not consumption. Resources in Azure generally allow for scaling up/out with little to no downtime. Scaling down or in may involve downtime or redeployment.
 

@@ -2,7 +2,7 @@
 title: Data store cost estimates
 description: Get detailed information about making cost estimates for your Azure data stores. Learn cost strategies for database design.
 author: v-aangie
-ms.date: 08/25/2020
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -26,7 +26,7 @@ Learn about data stores in [Understand data store models](../../guide/technology
 
 The following list of questions address the requirements that can have the greatest impact your cost estimate. For example, your monthly bill may be within your budget now, but if you scale up or add storage space later, your cost may increase well over your budget.
 
-- Will your data need to be migrated to on-premises, external data centers, or other cloud hosting environments?
+- Will your data need to be migrated to on-premises, external data centers, or other cloud-hosting environments?
 - What type of data are you intending to store?
 - How large are the entities you need to store?
 - What is the overall amount of storage capacity you need?
@@ -55,8 +55,8 @@ Use the [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) to
 For example, one business transaction can be processed by these distinct operations:
 
 - 10-15 database calls
-- three append operations on blob, and
-- two list operations on two separate file shares
+- Three append operations on blob, and
+- Two list operations on two separate file shares
 
 **How does data type in each operation effect cost?**
 ***
@@ -135,7 +135,7 @@ If the on-premises data is already on an SQL server on Azure Virtual Machines (I
 
 Cost considerations for data analytics stores include data storage, multiple servers to maximize scalability, and the ability to access large data as external tables.
 
-Azure has many services that support data analytics stores: [Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/), [Azure Data Lake](https://azure.microsoft.com/pricing/details/data-lake-analytics/), [Azure Data Explorer](https://azure.microsoft.com/pricing/details/data-explorer/), [Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/), [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/), and [Azure Databricks](https://azure.microsoft.com/pricing/details/databricks/). As an example of use, historical data is typically stored in data stores such as blob storage or Azure Data Lake Storage Gen2, which are then accessed by Azure Synapse, Databricks, or HDInsights as external tables.
+Azure has many services that support data analytics stores: [Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/), [Azure Data Lake](https://azure.microsoft.com/pricing/details/data-lake-analytics/), [Azure Data Explorer](https://azure.microsoft.com/pricing/details/data-explorer/), [Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/), [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/), and [Azure Databricks](https://azure.microsoft.com/pricing/details/databricks/). As an example of use, historical data is typically stored in data stores such as blob storage or Azure Data Lake Storage Gen2, which are then accessed by Azure Synapse, Databricks, or HDInsight as external tables.
 
 When using Azure Synapse, you will only pay for the capabilities you opt in to use. During public preview, there will not be a cost for provisioning an Azure Synapse workspace. Enabling a managed VNET and Customer Managed Keys may incur a workspace fee after public preview. Pricing of workspaces with additional capabilities will be announced at a future date.
 
