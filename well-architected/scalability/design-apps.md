@@ -13,7 +13,7 @@ ms.custom:
 
 # Design scalable Azure applications
 
-Application design is critical to handling scale as load increases. This article will give you insight on the most important topics. For more topics related to handling scale, see the [Design Azure applications for efficiency](/azure/architecture/well-architected/scalability/design-efficiency) article in the Performance efficiency pillar.
+Application design is critical to handling scale as load increases. This article will give you insight on the most important topics. For more topics related to handling scale, see the [Design Azure applications for efficiency](/azure/architecture/framework/scalability/design-efficiency) article in the Performance efficiency pillar.
 
 ## Choose the right data storage
 
@@ -102,7 +102,7 @@ Establishing connections to databases is typically an expensive operation that i
 
 Azure limits the number of network connections a virtual machine or AppService instance can make. Exceeding this limit would cause connections to be slowed down or terminated. With connection pooling, a fixed set of connections are established at the startup time and maintained. In many cases, a default pool size might only consist of a small handful of connections that performs quickly in basic test scenarios, but become a bottleneck under scale when the pool is exhausted. Establishing a pool size that maps to the number of concurrent transactions supported on each application instance is a best practice.
 
-Each database and application platform will have slightly different requirements for the right way to set up and leverage the pool. See [SQL Server Connection Pooling](/dotnet/well-architected/data/adonet/sql-server-connection-pooling) for a .NET code example using SQL Server and Azure Database. In all cases, testing is paramount to ensure a connection pool is properly established and working as designed under load.
+Each database and application platform will have slightly different requirements for the right way to set up and leverage the pool. See [SQL Server Connection Pooling](/dotnet/framework/data/adonet/sql-server-connection-pooling) for a .NET code example using SQL Server and Azure Database. In all cases, testing is paramount to ensure a connection pool is properly established and working as designed under load.
 
 > [!TIP]
 > Use a pool size that uses the same number of concurrent connections. Choose a size that can handle more than the existing connections so you can quickly handle a new request coming in.
@@ -111,7 +111,7 @@ Each database and application platform will have slightly different requirements
 
 Integrated security is a singular unified solution to protect every service that a business runs through a set of common policies and configuration settings. In addition to reducing issues associated with scaling, provisioning, and managing (including higher costs and complexity), integrated security also increases control and overall security. However, there may be times when you may not want to use connection pooling for security reasons. For example, although connection pooling improves the performance of subsequent database requests for a single user, that user cannot take advantage of connections made by other users. It also results in at least one connection per user to the database server.
 
-Measure your business' security requirements against the advantages and disadvantages of connection pooling. To learn more, see [Pool fragmentation](/dotnet/well-architected/data/adonet/sql-server-connection-pooling#pool-fragmentation.)
+Measure your business' security requirements against the advantages and disadvantages of connection pooling. To learn more, see [Pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation.)
 
 ## Next steps
 

@@ -28,7 +28,7 @@ Management groups offer the ability to consistently and efficiently manage resou
 
 Microsoft recommends aligning the top level of management groups (MGs) into a simple enterprise segmentation strategy and limit the levels to no more than two.
 
-In the [example reference](/azure/architecture/well-architected/security/design-segmentation#reference-model), there are enterprise-wide resources used by all segments, a set of core services that share services, additional segments for each workload.
+In the [example reference](/azure/architecture/framework/security/design-segmentation#reference-model), there are enterprise-wide resources used by all segments, a set of core services that share services, additional segments for each workload.
 
 - Root management group for enterprise-wide resources.
 

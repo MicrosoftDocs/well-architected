@@ -206,14 +206,14 @@ Assess if organizational policies and applicable regulatory requirements are fol
 
 The organizations' cloud infrastructure should be well documented, with security team access to all resources required for monitoring and insight. Conduct frequent scans of the cloud-connected assets to ensure no additional subscriptions or tenants have been added outside of organizational controls. Regularly review Microsoft guidance to ensure security team access best practices are consulted and followed.
 
-For information about permissions for this access, see [Assign privileges for managing the environment section](/azure/architecture/well-architected/security/governance?branch=master#assign-privileges-for-managing-the-environment).
+For information about permissions for this access, see [Assign privileges for managing the environment section](/azure/architecture/framework/security/governance?branch=master#assign-privileges-for-managing-the-environment).
 
 #### Suggested actions
 
 Ensure all Azure environments that connect to your production environment and network apply your organization's policy, and IT governance controls for security.
 
 You can discover existing connected tenants using a
-[tool](/azure/role-based-access-control/elevate-access-global-admin?toc=%252fazure%252factive-directory%252fprivileged-identity-management%252ftoc.json) provided by Microsoft. Guidance on permissions you may assign to security is in the [Assign privileges for managing the environment](/azure/architecture/well-architected/security/design-identity-role-definitions#clear-lines-of-responsibility) section.
+[tool](/azure/role-based-access-control/elevate-access-global-admin?toc=%252fazure%252factive-directory%252fprivileged-identity-management%252ftoc.json) provided by Microsoft. Guidance on permissions you may assign to security is in the [Assign privileges for managing the environment](/azure/architecture/framework/security/design-identity-role-definitions#clear-lines-of-responsibility) section.
 
 ## CI/CD pipelines
 
