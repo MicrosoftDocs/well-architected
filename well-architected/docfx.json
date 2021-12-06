@@ -27,7 +27,7 @@
         "files": [
           "**/*.css",
           "**/*.png",
-          "**/*.jpg"
+          "**/*.jpg",
           "**/*.jpeg",
           "**/*.gif",
           "**/*.svg",
@@ -51,7 +51,7 @@
     "globalMetadata": {
       "breadcrumb_path": "/azure/architecture/well-architected/breadcrumb/toc.json",
       "extendBreadcrumb": true,
-      "feedback_system": "None"
+      "feedback_system": "None",
       "feedback_github_repo": "MicrosoftDocs/well-architected",
       "brand": "azure",
       "uhfHeaderId": "azure",
@@ -65,7 +65,7 @@
     "template": [
       "docs.html"
     ],
-    "dest": "well-architected"
+    "dest": "well-architected",
     "markdownEngineName": "markdig"
   }
 }
