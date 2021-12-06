@@ -61,13 +61,13 @@ For budget concerns, you get a considerable amount of functionality at no cost t
 
 ## Azure Architecture Center (AAC) resources related to hybrid cost
 
-- [Manage configurations for Azure Arc enabled servers](../../hybrid/azure-arc-hybrid-config.yml)
-- [Azure Arc hybrid management and deployment for Kubernetes clusters](../../hybrid/arc-hybrid-kubernetes.yml)
-- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](../../hybrid/azure-arc-sql-server.yml)
-- [Disaster Recovery for Azure Stack Hub virtual machines](../../hybrid/azure-stack-vm-dr.yml)
-- [Build high availability into your BCDR strategy](../../solution-ideas/articles/build-high-availability-into-your-bcdr-strategy.yml)
-- [Use Azure Stack HCI switchless interconnect and lightweight quorum for Remote Office/Branch Office](../../hybrid/azure-stack-robo.yml)
-- [Archive on-premises data to cloud](../../solution-ideas/articles/backup-archive-on-premises.yml)
+- [Manage configurations for Azure Arc enabled servers](../hybrid/azure-arc-hybrid-config.yml)
+- [Azure Arc hybrid management and deployment for Kubernetes clusters](../hybrid/arc-hybrid-kubernetes.yml)
+- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](../hybrid/azure-arc-sql-server.yml)
+- [Disaster Recovery for Azure Stack Hub virtual machines](../hybrid/azure-stack-vm-dr.yml)
+- [Build high availability into your BCDR strategy](../solution-ideas/articles/build-high-availability-into-your-bcdr-strategy.yml)
+- [Use Azure Stack HCI switchless interconnect and lightweight quorum for Remote Office/Branch Office](../hybrid/azure-stack-robo.yml)
+- [Archive on-premises data to cloud](../solution-ideas/articles/backup-archive-on-premises.yml)
 
 ## Infrastructure Decisions
 

@@ -128,4 +128,4 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Stack Hub and reliability](../../hybrid/azure-stack-hub/reliability.md)
+> [Azure Stack Hub and reliability](../hybrid/azure-stack-hub/reliability.md)

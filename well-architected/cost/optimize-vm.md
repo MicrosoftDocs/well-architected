@@ -24,7 +24,7 @@ Here are some strategies that you can use to lower cost for virtual machines.
 
 ## Resize virtual machines 
 You can lower cost by managing the size and the number of VMs.
-> ![Task](../../_images/i-best-practices.svg) Determine the load by analyzing the CPU utilization to make sure that the instance is adequately utilized.
+> ![Task](../_images/i-best-practices.svg) Determine the load by analyzing the CPU utilization to make sure that the instance is adequately utilized.
 
 Ideally, with the right size, the current load should fit in a lower SKU of the same tier. Another way is to lower the number instances and still keep the load below a reasonable utilization. [Azure Advisor](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/docs)  recommends load less than 80% utilization for non-user facing workloads and 40% when user-facing workload. It also provides current and target SKU information.
 

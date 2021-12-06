@@ -26,8 +26,8 @@ Azure provides a wide range of PaaS resources. Here are some examples of when yo
 |Secure access to virtual machine|[Azure Bastion](/azure/bastion) instead of virtual machines as jump boxes.|
 |Network security|[Azure Firewall](/azure/firewall/) instead of virtual network appliances.|
 
-For more information, see [Use platform as a service (PaaS) options](../../guide/design-principles/managed-services.md).
+For more information, see [Use platform as a service (PaaS) options](../guide/design-principles/managed-services.md).
 
 **Reference architecture**
 
-To see an implementation that provides better security and lowers cost through PaaS services, see [Network DMZ between Azure and an on-premises datacenter](../../reference-architectures/dmz/secure-vnet-dmz.yml).
+To see an implementation that provides better security and lowers cost through PaaS services, see [Network DMZ between Azure and an on-premises datacenter](../reference-architectures/dmz/secure-vnet-dmz.yml).

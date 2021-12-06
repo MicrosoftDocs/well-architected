@@ -52,12 +52,12 @@ Follow these questions to assess the workload at a deeper level.
 ## Azure security benchmark
 The Azure Security Benchmark includes a collection of high-impact security recommendations. Use them to secure the services and processes you use to run the workload in Azure:
 
-> ![Security Benchmark](../../_images/benchmark-security.svg) The questions in this section are aligned to the [Azure Security Benchmark controls](/azure/security/benchmarks/overview?branch=master).
+> ![Security Benchmark](../_images/benchmark-security.svg) The questions in this section are aligned to the [Azure Security Benchmark controls](/azure/security/benchmarks/overview?branch=master).
 
 ## Reference architecture
 Here are some reference architectures related to building CI/CD pipelines:
-- [CI/CD for microservices architectures](../../microservices/ci-cd.md)
-- [CI/CD for microservices on Kubernetes](../../microservices/ci-cd-kubernetes.md)
+- [CI/CD for microservices architectures](../microservices/ci-cd.md)
+- [CI/CD for microservices on Kubernetes](../microservices/ci-cd-kubernetes.md)
 
 ## Next step
 We recommend monitoring activities that maintain the security posture. These activities can highlight, if the current security practices are effective or are there new requirements.

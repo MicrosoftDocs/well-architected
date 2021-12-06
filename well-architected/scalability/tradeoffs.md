@@ -52,7 +52,7 @@ As you determine how to scale your workload to meet the demands placed on it by 
 
 ### Automated performance testing
 
-One operational process that can help to identify performance issues early is [automated performance testing](../../checklist/dev-ops.md#testing). The impact of a serious performance issue can be as severe as a bug in the code. While automated functional tests can prevent application bugs, they might not detect performance problems. Define acceptable performance goals for metrics such as latency, load times, and resource usage. Include automated performance tests in your release pipeline, to make sure the application meets those goals.
+One operational process that can help to identify performance issues early is [automated performance testing](../checklist/dev-ops.md#testing). The impact of a serious performance issue can be as severe as a bug in the code. While automated functional tests can prevent application bugs, they might not detect performance problems. Define acceptable performance goals for metrics such as latency, load times, and resource usage. Include automated performance tests in your release pipeline, to make sure the application meets those goals.
 
 ### Fast builds
 
@@ -81,11 +81,11 @@ Reliable applications are *resilient* and *highly available* (HA). Resiliency al
 
 Some reliability considerations are:
 
-- Use the [Circuit Breaker](../../patterns/circuit-breaker.md) pattern to provide stability while the system recovers from a failure and minimizes the impact on performance.
+- Use the [Circuit Breaker](../patterns/circuit-breaker.md) pattern to provide stability while the system recovers from a failure and minimizes the impact on performance.
 
-- Achieve levels of scale and performance needed for your solution by segregating read and write interfaces by implementing the [CQRS pattern](../../patterns/cqrs.md).
+- Achieve levels of scale and performance needed for your solution by segregating read and write interfaces by implementing the [CQRS pattern](../patterns/cqrs.md).
 
-- Often, you can achieve higher availability by adopting an *eventual consistency* model. To learn about selecting the correct data store, see [Use the best data store for the job](../../guide/design-principles/use-the-best-data-store.md).
+- Often, you can achieve higher availability by adopting an *eventual consistency* model. To learn about selecting the correct data store, see [Use the best data store for the job](../guide/design-principles/use-the-best-data-store.md).
 
 - If your application requires more storage accounts than are currently available in your subscription, create a new subscription with additional storage accounts. For more information, see [Scalability and performance targets](/azure/storage/common/scalability-targets-standard-account).
 

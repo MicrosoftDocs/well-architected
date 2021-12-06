@@ -14,7 +14,7 @@ ms.custom:
 
 Caching is a strategy where you store a copy of the data in front of the main data store. The cache store is typically located closer to the consuming client than the main store. Advantages of caching include faster response times and the ability to serve data quickly. In doing so, you can save on the overall cost. Be sure to assess the built-in caching features of Azure services used in your architecture. Azure also offers caching services, such as Azure Cache for Redis or Azure CDN.
 
-For information about what type of data is suitable for caching, see [Caching](../../best-practices/caching.md).
+For information about what type of data is suitable for caching, see [Caching](../best-practices/caching.md).
 
 ## Lower costs associated with reliability and latency
 

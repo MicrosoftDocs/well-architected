@@ -43,7 +43,7 @@ Run tests in production using both synthetic and real user data. Test and produc
 As part of your test plan, include:
 
 - [Chaos engineering](./chaos-engineering.md)
-- [Automated pre-deployment testing](../../checklist/dev-ops.md#testing)
+- [Automated pre-deployment testing](../checklist/dev-ops.md#testing)
 - [Fault injection testing](#fault-injection-testing)
 - [Peak load testing](../scalability/performance-test.md#load-testing)
 - [Disaster recovery testing](./backup-and-recovery.md#failover-and-failback-testing)
@@ -95,7 +95,7 @@ Load testing is crucial for identifying failures that only happen under load, su
 
 ## Related links
 
-- For more test types, see [Test types](../../checklist/dev-ops.md#testing).
+- For more test types, see [Test types](../checklist/dev-ops.md#testing).
 - To learn about load and stress tests, see [Performance testing](../scalability/performance-test.md).
 - To learn about chaos testing, see [Chaos engineering](./chaos-engineering.md).
 

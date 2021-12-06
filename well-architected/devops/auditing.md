@@ -46,4 +46,4 @@ An analyst must access all the raw data in its original form. Aside from the com
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [DevOps Checklist](../../checklist/dev-ops.md)
+> [DevOps Checklist](../checklist/dev-ops.md)

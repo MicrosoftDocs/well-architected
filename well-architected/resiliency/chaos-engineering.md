@@ -101,7 +101,7 @@ Shift-right testing means that you verify that the service is resilient where it
 
 ### Blast radius
 
-Stop the experiment when it goes beyond scope. Unknown results are an expected outcome of chaos experiments. Strive to achieve balance between collecting substantial result data and affecting as few production users as possible. For an example of this principle in practice, see the [Bulkhead pattern](../../patterns/bulkhead.md) article.
+Stop the experiment when it goes beyond scope. Unknown results are an expected outcome of chaos experiments. Strive to achieve balance between collecting substantial result data and affecting as few production users as possible. For an example of this principle in practice, see the [Bulkhead pattern](../patterns/bulkhead.md) article.
 
 ### Error budget testing
 
@@ -145,6 +145,6 @@ The process must be very *low tax*. That is, the process must make it easy for d
 ## Related links
 
 - For information on release testing, see [Testing your application and Azure environment](../devops/release-engineering-testing.md).
-- For more information, see [Bulkhead pattern](../../patterns/bulkhead.md).
+- For more information, see [Bulkhead pattern](../patterns/bulkhead.md).
 
 Go back to the main article: [Testing](test-checklist.md)

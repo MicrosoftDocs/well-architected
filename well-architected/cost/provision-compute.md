@@ -14,7 +14,7 @@ ms.custom:
 
 # Compute cost estimates
 
-*Compute* refers to the hosting model for the computing resources that your application runs on. Whether you're hosting model is Infrastructure as a Service (IaaS), Platform as a Service (PaaS), or Function as a service (FaaS), each resource requires your evaluation to understand the tradeoffs that can be made that impact your cost. To learn more about hosting models, read [Understand the hosting models](../../guide/technology-choices/compute-decision-tree.md#understand-the-hosting-models).
+*Compute* refers to the hosting model for the computing resources that your application runs on. Whether you're hosting model is Infrastructure as a Service (IaaS), Platform as a Service (PaaS), or Function as a service (FaaS), each resource requires your evaluation to understand the tradeoffs that can be made that impact your cost. To learn more about hosting models, read [Understand the hosting models](../guide/technology-choices/compute-decision-tree.md#understand-the-hosting-models).
 
 - **Infrastructure-as-a-Service** (IaaS) lets you provision individual virtual machines (VMs) along with the associated networking and storage components. Then you deploy whatever software and applications you want onto those VMs. This model is the closest to a traditional on-premises environment, except that Microsoft manages the infrastructure. You still manage the individual VMs.
 
@@ -34,7 +34,7 @@ If you are migrating your infrastructure from on-premises to Azure, IaaS will gr
 **What are the main cost drivers for Azure services?**
 ***
 
-You will be charged differently for each service depending on your region, licensing plan (e.g., [Azure Hybrid Benefit for Windows Server](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)), number and type of instances you need, operating system, lifespan, and other parameters required by the service. Assess the need for each compute service by using the flowchart in [Choose a candidate service](../../guide/technology-choices/compute-decision-tree.md#understand-the-basic-features). Consider the tradeoffs that will impact your cost by creating different estimates using the Pricing Calculator. If your application consists of multiple workloads, we recommend that you evaluate each workload separately. See [Consider limits and costs](../../guide/technology-choices/compute-decision-tree.md#consider-limits-and-cost) to perform a more detailed evaluation on service limits, cost, SLAs, and regional availability.
+You will be charged differently for each service depending on your region, licensing plan (e.g., [Azure Hybrid Benefit for Windows Server](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)), number and type of instances you need, operating system, lifespan, and other parameters required by the service. Assess the need for each compute service by using the flowchart in [Choose a candidate service](../guide/technology-choices/compute-decision-tree.md#understand-the-basic-features). Consider the tradeoffs that will impact your cost by creating different estimates using the Pricing Calculator. If your application consists of multiple workloads, we recommend that you evaluate each workload separately. See [Consider limits and costs](../guide/technology-choices/compute-decision-tree.md#consider-limits-and-cost) to perform a more detailed evaluation on service limits, cost, SLAs, and regional availability.
 
 **Are there payment options for Virtual Machines (VMs) to help meet my budget?**
 ***

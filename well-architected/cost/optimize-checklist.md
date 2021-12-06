@@ -52,7 +52,7 @@ Continue to monitor and optimize the workload by using the right resources and s
 
   - **Choose the right storage tier**. Consider using hot, cold, archive tier for storage account data. Storage accounts can provide automated tiering and lifecycle management. For more information, see [Review your storage options](/azure/cloud-adoption-well-architected/ready/considerations/storage-options)
 
-  - **Choose the right data store**. Instead of using one data store service, use a mix of data store depending on the type of data you need to store for each workload. For more information, see [Choose the right data store](../../guide/technology-choices/data-store-overview.md).
+  - **Choose the right data store**. Instead of using one data store service, use a mix of data store depending on the type of data you need to store for each workload. For more information, see [Choose the right data store](../guide/technology-choices/data-store-overview.md).
 
   - **Choose Spot VMs for low priority workloads**. Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs.
 

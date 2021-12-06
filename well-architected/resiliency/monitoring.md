@@ -61,7 +61,7 @@ You can also get a full-stack view of application state by using [Azure dashboar
 
 ### Samples
 
-:::image type="icon" source="../../_images/github.png" border="false"::: Here are some samples about creating and querying alerts:
+:::image type="icon" source="../_images/github.png" border="false"::: Here are some samples about creating and querying alerts:
 
 - [HealthAlert](https://github.com/mspnp/samples/tree/master/Reliability/HealthAlerts): A sample about creating resource-level health activity log alerts. The sample uses Azure Resource Manager to create alerts.
 - [GraphAlertsPsSample](https://github.com/mspnp/samples/tree/master/Reliability/GraphAlertsPsSample): A set of PowerShell commands that queries for alerts generated against your subscription.
@@ -127,7 +127,7 @@ Long-running workflows often include multiple steps, each of which should be ind
 Track the progress of long-running processes to minimize the likelihood that the entire workflow will need to be rolled back or that multiple compensating transactions will need to be executed.
 
 > [!TIP]
-> Monitor and manage the progress of long-running workflows by implementing a pattern such as [Scheduler Agent Supervisor](../../patterns/scheduler-agent-supervisor.md).
+> Monitor and manage the progress of long-running workflows by implementing a pattern such as [Scheduler Agent Supervisor](../patterns/scheduler-agent-supervisor.md).
 
 ## Analysis and diagnosis
 

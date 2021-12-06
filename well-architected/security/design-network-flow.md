@@ -50,9 +50,9 @@ When analyzing the network flow of a workload, distinguish between east-west tra
 > [!TIP]
 > Here are the resources for the preceding AKS example:
 >
-> ![GitHub logo](../../_images/github.svg) [GitHub: Azure Kubernetes Service (AKS) Secure Baseline Reference Implementation](https://github.com/mspnp/aks-secure-baseline).
+> ![GitHub logo](../_images/github.svg) [GitHub: Azure Kubernetes Service (AKS) Secure Baseline Reference Implementation](https://github.com/mspnp/aks-secure-baseline).
 >
-> The design considerations are described in [Azure Kubernetes Service (AKS) production baseline](../../reference-architectures/containers/aks/secure-baseline-aks.yml).
+> The design considerations are described in [Azure Kubernetes Service (AKS) production baseline](../reference-architectures/containers/aks/secure-baseline-aks.yml).
 
 ## Data exfiltration
 

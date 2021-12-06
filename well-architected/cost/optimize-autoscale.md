@@ -19,7 +19,7 @@ For certain application, capacity requirements may swing over time. Autoscaling 
 ## Virtual machine instances
 
 For auto scaling, consider the choice of instance size. The size can significantly change the cost of your workload.
-> ![Task](../../_images/i-best-practices.svg) Choose smaller instances where workload is highly variable and scale out to get the desired level of performance, rather than up. This choice will enable you to make your cost calculations and estimates granular.
+> ![Task](../_images/i-best-practices.svg) Choose smaller instances where workload is highly variable and scale out to get the desired level of performance, rather than up. This choice will enable you to make your cost calculations and estimates granular.
 
 ![Autoscale oversize](../_images/over-sizing.png)
 

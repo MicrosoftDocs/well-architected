@@ -53,9 +53,9 @@ Suppose you need to store sensitive data in Azure Blob Storage. You can use Azur
 > Using SAS tokens is a common way to control access. SAS tokens are created by using the service owner's Azure AD credentials. The tokens are created per resource and you can use Azure RBAC to restrict access. SAS tokens have a time limit, which controls the window of exposure.
 > Here are the resources for the preceding example:
 >
-> ![GitHub logo](../../_images/github.svg) [GitHub: Azure Cognitive Services Reference Implementation](https://github.com/mspnp/cognitive-services-reference-implementation).
+> ![GitHub logo](../_images/github.svg) [GitHub: Azure Cognitive Services Reference Implementation](https://github.com/mspnp/cognitive-services-reference-implementation).
 >
-> The design considerations are described in [Speech transcription with Azure Cognitive Services](../../reference-architectures/ai/speech-to-text-transcription-pipeline.yml).
+> The design considerations are described in [Speech transcription with Azure Cognitive Services](../reference-architectures/ai/speech-to-text-transcription-pipeline.yml).
 
 ## Key storage
 

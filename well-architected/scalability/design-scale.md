@@ -62,7 +62,7 @@ Then, check the SKUs available in the Azure portal.
 
 ### Add scale units
 
-For each resource, know the upper scaling limits, and use [sharding](/azure/azure-sql/database/elastic-scale-introduction#sharding) or decomposition to go beyond those limits. Design the application so that it's easily scaled by adding one or more scale units, such as by using the [Deployment Stamps pattern](../../patterns/deployment-stamp.md). Determine the scale units for the system for well-defined sets of resources.
+For each resource, know the upper scaling limits, and use [sharding](/azure/azure-sql/database/elastic-scale-introduction#sharding) or decomposition to go beyond those limits. Design the application so that it's easily scaled by adding one or more scale units, such as by using the [Deployment Stamps pattern](../patterns/deployment-stamp.md). Determine the scale units for the system for well-defined sets of resources.
 
 The next step might be to use built-in scaling features or tools to understand which resources need to scale concurrently with other resources. For example, adding X number of front-end VMs might require Y number of extra queues and Z number of storage accounts to handle the extra workload. So a scale unit could consist of X VM instances, Y queues, and Z storage accounts.
 
@@ -74,7 +74,7 @@ You automatically scale between the minimum and maximum number of instances to r
 
 ![Autoscale](../_images/design-autoscale.png)
 
-For more information, see [Autoscaling](../../best-practices/auto-scaling.md).
+For more information, see [Autoscaling](../best-practices/auto-scaling.md).
 
 ### Understand scale targets
 
@@ -93,7 +93,7 @@ Here's how you can benefit from autoscaling features:
 > [!NOTE]
 > If your application is explicitly designed to handle the termination of some of its instances, ensure you use autoscaling to scale down and scale in resources no longer necessary for the given load to reduce operational costs.
 
-For more information, reference [Autoscaling](../../best-practices/auto-scaling.md).
+For more information, reference [Autoscaling](../best-practices/auto-scaling.md).
 
 ## Autoscale CPU or memory-intensive applications
 

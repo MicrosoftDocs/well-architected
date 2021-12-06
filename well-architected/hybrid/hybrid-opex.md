@@ -14,7 +14,7 @@ ms.custom:
 
 Operational excellence consists of the operations processes that keep a system running in production. Applications must be designed with DevOps principles in mind, and deployments must be reliable and predictable. Use monitoring tools to verify that your application is running correctly and to gather custom business telemetry that will tell you whether your application is being used as intended.
 
-Use *Azure Arc enabled infrastructure* to add support for cloud [Operational Excellence](../devops/overview.md) practices and tools to any environment. Be sure to utilize reference architectures and other resources from this section that illustrate applying these principles in hybrid and multicloud scenarios. The architectures referenced here can also be found in the Azure Architecture Center, [Hybrid and Multicloud](../../browse/index.yml?azure_categories=hybrid) category.
+Use *Azure Arc enabled infrastructure* to add support for cloud [Operational Excellence](../devops/overview.md) practices and tools to any environment. Be sure to utilize reference architectures and other resources from this section that illustrate applying these principles in hybrid and multicloud scenarios. The architectures referenced here can also be found in the Azure Architecture Center, [Hybrid and Multicloud](../browse/index.yml?azure_categories=hybrid) category.
 
 ## Build cloud native apps anywhere, at scale
 
@@ -67,13 +67,13 @@ Click the following links for architecture details and diagrams that enable appl
 
 ### Application design
 
-- [Azure Arc hybrid management and deployment for Kubernetes clusters](../../hybrid/arc-hybrid-kubernetes.yml)
-- [Run containers in a hybrid environment](../../hybrid/hybrid-containers.yml)
+- [Azure Arc hybrid management and deployment for Kubernetes clusters](../hybrid/arc-hybrid-kubernetes.yml)
+- [Run containers in a hybrid environment](../hybrid/hybrid-containers.yml)
 - [Managing K8 clusters outside of Azure with Azure Arc](https://azure.microsoft.com/resources/videos/kubernetes-app-management-with-azure-arc)
-- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](../../hybrid/azure-arc-sql-server.yml)
+- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](../hybrid/azure-arc-sql-server.yml)
 - [Azure Data Studio dashboards](/azure/azure-arc/data/azure-data-studio-dashboards)
 - [microsoft/azure_arc: Azure Arc environments bootstrapping for everyone](https://github.com/microsoft/azure_arc) (in github.com)
-- [All Azure Architecture Center Hybrid and Multicloud Architectures](../../browse/index.yml?azure_categories=hybrid)
+- [All Azure Architecture Center Hybrid and Multicloud Architectures](../browse/index.yml?azure_categories=hybrid)
 
 ### Monitoring
 
@@ -82,7 +82,7 @@ Click the following links for architecture details and diagrams that enable appl
 
 ### Application performance management
 
-- [Hybrid availability and performance monitoring](../../hybrid/hybrid-perf-monitoring.yml)
+- [Hybrid availability and performance monitoring](../hybrid/hybrid-perf-monitoring.yml)
 
 ## Manage data anywhere
 

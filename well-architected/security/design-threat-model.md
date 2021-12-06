@@ -56,7 +56,7 @@ Popular methodologies include:
 
 Microsoft Security Development Lifecycle uses STRIDE and provides a tool to assist with this process. This tool is available at no additional cost. For more information, see [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling).
 - [Open Web Application Security Project (OWASP)](https://owasp.org/www-community/Threat_Modeling_Process) has documented a threat modeling approach for applications.
-> ![Best practice](../../_images/i-best-practices.svg) Integrate threat modeling through automation using secure operations. Here are some resources:
+> ![Best practice](../_images/i-best-practices.svg) Integrate threat modeling through automation using secure operations. Here are some resources:
 >
 > - Toolkit for [Secure DevOps on Azure](https://azsk.azurewebsites.net/).
 > - [Guidance on DevOps pipeline security](https://www.owasp.org/index.php/OWASP_AppSec_Pipeline#tab=Main) by OWASP.

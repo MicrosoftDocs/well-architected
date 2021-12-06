@@ -63,7 +63,7 @@ For example, your workload is hosted in Application Service Environments(ILB ASE
 
 > [!TIP]
 >
-> The design considerations for the preceding example are described in [Publishing internal APIs to external users](../../example-scenario/apps/publish-internal-apis-externally.yml).
+> The design considerations for the preceding example are described in [Publishing internal APIs to external users](../example-scenario/apps/publish-internal-apis-externally.yml).
 
 Azure Front Door and Azure Content Delivery Network (CDN) also have WAF capabilities.
 
@@ -85,7 +85,7 @@ Protect the entire virtual network against potentially malicious traffic from th
 A common design is to implement a DMZ or a perimeter network in front of the application. The DMZ is a separate subnet with the firewall.
 
 > [!TIP]
-> The design considerations are described in [Deploy highly available NVAs](../../reference-architectures/dmz/nva-ha.yml).
+> The design considerations are described in [Deploy highly available NVAs](../reference-architectures/dmz/nva-ha.yml).
 
 ### Combination approach
 
@@ -95,7 +95,7 @@ For example, you want to filter egress traffic. You want to allow connectivity t
 
 Another popular design is when you want Azure Firewall to inspect all traffic and WAF to protect web traffic, and the application needs to know the client's source IP address. In this case, place Application Gateway in front of Firewall. Conversely, you can place Firewall in front of WAF if you want to inspect and filter traffic before it reaches the Application Gateway.
 
-For more information, see [Firewall and Application Gateway for virtual networks](../../example-scenario/gateway/firewall-application-gateway.yml).
+For more information, see [Firewall and Application Gateway for virtual networks](../example-scenario/gateway/firewall-application-gateway.yml).
 
 It's challenging to write concise firewall rules for networks where different cloud resources dynamically spin up and down. Use [Microsoft Defender for Cloud](/azure/security-center/) to detect misconfiguration risks.
 
@@ -119,7 +119,7 @@ Here are some considerations:
 - DDoS protection with caching. Content delivery network (CDN) can add another layer of protection. In a DDoS attack, a CDN intercepts the traffic and stops it from reaching the backend server. Azure CDN is natively protected. Azure also supports popular CDNs that are protected with proprietary DDoS mitigation platform.
 - Advanced DDoS protection. In your security baseline, consider features with monitoring techniques that use machine learning to detect anomalous traffic and proactively protect your application before service degradation occurs.
 
-For example, the [Windows N-tier application on Azure with SQL Server](../../reference-architectures/n-tier/n-tier-sql-server.yml) reference architecture uses Azure DDoS Protection Standard because this option:
+For example, the [Windows N-tier application on Azure with SQL Server](../reference-architectures/n-tier/n-tier-sql-server.yml) reference architecture uses Azure DDoS Protection Standard because this option:
 - Uses adaptive tuning, based on the application's network traffic patterns, to detect threats.
 - Guarantees 100% SLA.
 - Can be cost effective. For example, during a DDoS attack, the first set of attacks cause the provisioned resources to scale out. For a resource such as a virtual machine scale set, 10 machines can grow to 100, increasing overall costs. With Standard protection, you don't have to worry about the cost of the scaled resources because Azure will provide a cost credit.
