@@ -2,7 +2,8 @@
 title: Monitor Azure resources in Microsoft Defender for Cloud
 description: Use Microsoft Defender for Cloud to monitor the security posture of machines, networks, storage and data services, and applications to discover potential security issues.
 author: PageWriter-MSFT
-ms.date: 03/18/2021
+ms.author: robbymillsap
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

@@ -1,8 +1,9 @@
 ---
 title: Business Metrics
 description: Learn to use business metrics to design resilient Azure applications. Review workload availability targets. Understand recovery and availability metrics.
+ms.author: robbymillsap
 author: david-stanford
-ms.date: 11/11/2021
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
