@@ -208,17 +208,17 @@ Learn more about:
 
 <!-- links -->
 
-[resiliency]: ../../framework/resiliency/principles.md
+[resiliency]: ./resiliency/principles.md
 
 <!-- practices -->
-[autoscale]: ../../best-practices/auto-scaling.md
-[background-jobs]: ../../best-practices/background-jobs.md
-[caching]: ../../best-practices/caching.md
-[cdn]: ../../best-practices/cdn.md
-[data-partitioning]: ../../best-practices/data-partitioning.md
-[monitoring]: ../../best-practices/monitoring.md
-[retry-service-specific]: ../../best-practices/retry-service-specific.md
-[transient-fault-handling]: ../../best-practices/transient-faults.md
+[autoscale]: /azure/architecture/best-practices/auto-scaling
+[background-jobs]: /azure/architecture/best-practices/background-jobs
+[caching]: /azure/architecture/best-practices/caching
+[cdn]: /azure/architecture/best-practices/cdn
+[data-partitioning]: /azure/architecture/best-practices/data-partitioning
+[monitoring]: /azure/architecture/best-practices/monitoring
+[retry-service-specific]: /azure/architecture/best-practices/retry-service-specific
+[transient-fault-handling]: /azure/architecture/best-practices/transient-faults
 
 <!-- pillars -->
 [cost-pillar]: ./cost/index.yml
