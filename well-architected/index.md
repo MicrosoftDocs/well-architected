@@ -45,7 +45,7 @@ Incorporating these pillars helps produce a high quality, stable, and efficient 
 
 Reference the following video about how to architect successful workloads on Azure with the Well-Architected Framework:
 <p>
-<iframe src="/shows/Azure-Enablement/Architect-successful-workloads-on-Azure--Introduction-Ep-1-Well-Architected-series/player" width="760" height="340" allowFullScreen frameBorder="0" title="Architect successful workloads on Azure - Microsoft Channel 9 Video"></iframe></p>
+<iframe src="https://docs.microsoft.com/shows/Azure-Enablement/Architect-successful-workloads-on-Azure--Introduction-Ep-1-Well-Architected-series/player" width="760" height="340" allowFullScreen frameBorder="0" title="Architect successful workloads on Azure - Microsoft Channel 9 Video"></iframe></p>
 
 ## Overview
 
