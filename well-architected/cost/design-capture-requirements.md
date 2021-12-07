@@ -46,7 +46,7 @@ Security is one of the most important aspects of any architecture. Security meas
 
 Factor in the cost of security controls, such as authentication, MFA, conditional access, information protection, JIT/PIM, and premium Azure AD features. Those options will drive up the cost.
 
-For security considerations, see the [Security Pillar](../../security/overview.md).
+For security considerations, see the [Security Pillar](../security/overview.md).
 
 ## Business continuity
 

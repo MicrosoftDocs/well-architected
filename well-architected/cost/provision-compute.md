@@ -98,7 +98,7 @@ Use the Pricing Calculator to create your total cost estimate. After you run you
 > [!NOTE]
 > The costs in this example are based on the current price and are subject to change. The calculation is for information purposes only. It shows the Collapsed view of the cost in this estimate.
 
-![Azure Pricing Calculator - Collapsed view](../../_images/pricing-calc-collapsed.png)
+![Azure Pricing Calculator - Collapsed view](../_images/pricing-calc-collapsed.png)
 
 > [!TIP]
 > You can start building your cost estimate at any time and re-visit it later. The changes will be saved until you modify or delete your estimate.

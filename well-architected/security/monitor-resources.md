@@ -3,7 +3,7 @@ title: Monitor Azure resources in Microsoft Defender for Cloud
 description: Use Microsoft Defender for Cloud to monitor the security posture of machines, networks, storage and data services, and applications to discover potential security issues.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/06/2021
+ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -25,8 +25,7 @@ Microsoft Defender for Cloud has many plans that monitor the security posture of
 
 ## Key points
 
- [!div class="checklist"]
->
+> [!div class="checklist"]
 > - Enable Microsoft Defender for Cloud as a defense-in-depth measure. Use resource-specific Defender for Cloud features such as Microsoft Defender for servers, Microsoft Defender for Endpoint, Microsoft Defender for Storage.
 > - Observe container hygiene through container aware tools and regular scanning.
 > - Review all network flow logs through network watcher. See diagnostic logs in Microsoft Defender for Cloud.
@@ -101,7 +100,7 @@ Containerized workloads have an extra layer of abstraction and orchestration. Th
     > [!TIP]
     > Here are the resources for the preceding example:
     >
-    > ![GitHub logo](/azure/architecture/_images/github.svg) [GitHub: Azure Kubernetes Service (AKS) Secure Baseline Reference Implementation](https://github.com/mspnp/aks-secure-baseline).
+    > ![GitHub logo](./images/github.svg) [GitHub: Azure Kubernetes Service (AKS) Secure Baseline Reference Implementation](https://github.com/mspnp/aks-secure-baseline).
     >
     > The design considerations are described in [Baseline architecture for an AKS cluster](/azure/architecture/reference-architectures/containers/aks/secure-baseline-aks).
 
