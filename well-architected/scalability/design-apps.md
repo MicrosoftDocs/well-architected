@@ -36,7 +36,7 @@ Each service is accessed through a storage account. To get started, see [Create 
 
 The choice of database can affect an application's performance and scalability. Database reads and writes involve a network call and storage I/O, both of which are expensive operations. Choosing the right database service to store and retrieve data is therefore a critical decision and must be considered to ensure application scalability. Azure has many database services that will fit most needs. In addition, there are third-party options that can be considered from [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace).
 
-To help you choose a database type, determine if the application's storage requirements fit a relational design (SQL) versus a key-value/document/graph design (NoSQL). Some applications may have both a SQL and a NoSQL database for different storage needs. Use the [Azure data store decision tree](../../guide/technology-choices/data-store-decision-tree.md) to help you find the appropriate managed data storage solution.
+To help you choose a database type, determine if the application's storage requirements fit a relational design (SQL) versus a key-value/document/graph design (NoSQL). Some applications may have both a SQL and a NoSQL database for different storage needs. Use the [Azure data store decision tree](azure/architecture/guide/technology-choices/data-store-decision-tree) to help you find the appropriate managed data storage solution.
 
 ### Why use a relational database?
 
@@ -78,11 +78,11 @@ Microservices are a popular architectural style for building applications that a
 
 One of the many benefits of microservices is that they can be scaled independently. This lets you scale out subsystems that require more resources, without scaling out the entire application. Another benefit is fault isolation. If an individual microservice becomes unavailable, it won't disrupt the entire application, as long as any upstream microservices are designed to handle faults correctly (for example, by implementing circuit breaking).
 
-To learn more about the benefits of microservices, see [Benefits](../../microservices/index.md#benefits).
+To learn more about the benefits of microservices, see [Benefits](/azure/architecture/microservices/#benefits).
 
 Building with microservices comes with challenges such as development and testing. Writing a small service that relies on other dependent services requires a different approach than writing a traditional monolithic or layered application. Existing tools are not always designed to work with service dependencies. Refactoring across service boundaries can be difficult. It is also challenging to test service dependencies, especially when the application is evolving quickly.
 
-See [Challenges](../../microservices/index.md#challenges) for a list of possible drawbacks of a microservice architecture.
+Reference [Challenges](/azure/architecture/microservices/#challenges) for a list of possible drawbacks of a microservice architecture.
 
 ## Use dynamic service discovery for microservices applications
 
@@ -90,10 +90,10 @@ When there are many separate services or instances of services in play, they wil
 
 When combined with an orchestration platform designed to execute and manage microservices such as Kubernetes or Service Fabric, individual services can be right sized, scaled up, scaled down, and dynamically configured to match user demand. Using an orchestrator such as Kubernetes or Service Fabric, you can pack a higher density of services onto a single host, which allows for more efficient utilization of resources. Both of these platforms provide built-in services for executing, scaling, and operating a microservices architecture; and one of those key services is discovery and finding where a particular service is running.
 
-Kubernetes supports pod autoscaling and cluster autoscaling. To learn more, see [Autoscaling](../../reference-architectures/containers/aks-microservices/aks-microservices-advanced.yml#autoscaling). A Service Fabric architecture takes a different approach to scaling for stateless and stateful services. To learn more, see [Scaling considerations](../../reference-architectures/microservices/service-fabric.yml#scaling-services).
+Kubernetes supports pod autoscaling and cluster autoscaling. To learn more, see [Autoscaling](/azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices-advanced#autoscaling). A Service Fabric architecture takes a different approach to scaling for stateless and stateful services. To learn more, reference [Scaling considerations](/azure/architecture/reference-architectures/microservices/service-fabric#scaling-services).
 
 > [!TIP]
-> When appropriate, decomposing an application into microservices is a level of decoupling that is an architectural best practice. A microservices architecture can also bring some challenges. The design patterns in [Design patterns for microservices](../../microservices/design/patterns.md) can help mitigate these challenges.
+> When appropriate, decomposing an application into microservices is a level of decoupling that is an architectural best practice. A microservices architecture can also bring some challenges. The design patterns in [Design patterns for microservices](/azure/architecture/microservices/design/patterns) can help mitigate these challenges.
 
 ## Establish connection pooling
 
@@ -103,7 +103,7 @@ Establishing connections to databases is typically an expensive operation that i
 
 Azure limits the number of network connections a virtual machine or AppService instance can make. Exceeding this limit would cause connections to be slowed down or terminated. With connection pooling, a fixed set of connections are established at the startup time and maintained. In many cases, a default pool size might only consist of a small handful of connections that performs quickly in basic test scenarios, but become a bottleneck under scale when the pool is exhausted. Establishing a pool size that maps to the number of concurrent transactions supported on each application instance is a best practice.
 
-Each database and application platform will have slightly different requirements for the right way to set up and leverage the pool. See [SQL Server Connection Pooling](/dotnet/framework/data/adonet/sql-server-connection-pooling) for a .NET code example using SQL Server and Azure Database. In all cases, testing is paramount to ensure a connection pool is properly established and working as designed under load.
+Each database and application platform will have slightly different requirements for the right way to set up and leverage the pool. Reference [SQL Server Connection Pooling](/dotnet/framework/data/adonet/sql-server-connection-pooling) for a .NET code example using SQL Server and Azure Database. In all cases, testing is paramount to ensure a connection pool is properly established and working as designed under load.
 
 > [!TIP]
 > Use a pool size that uses the same number of concurrent connections. Choose a size that can handle more than the existing connections so you can quickly handle a new request coming in.
