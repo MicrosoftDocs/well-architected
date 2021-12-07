@@ -36,7 +36,7 @@ Each service is accessed through a storage account. To get started, see [Create 
 
 The choice of database can affect an application's performance and scalability. Database reads and writes involve a network call and storage I/O, both of which are expensive operations. Choosing the right database service to store and retrieve data is therefore a critical decision and must be considered to ensure application scalability. Azure has many database services that will fit most needs. In addition, there are third-party options that can be considered from [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace).
 
-To help you choose a database type, determine if the application's storage requirements fit a relational design (SQL) versus a key-value/document/graph design (NoSQL). Some applications may have both a SQL and a NoSQL database for different storage needs. Use the [Azure data store decision tree](azure/architecture/guide/technology-choices/data-store-decision-tree) to help you find the appropriate managed data storage solution.
+To help you choose a database type, determine if the application's storage requirements fit a relational design (SQL) versus a key-value/document/graph design (NoSQL). Some applications may have both a SQL and a NoSQL database for different storage needs. Use the [Azure data store decision tree](/azure/architecture/guide/technology-choices/data-store-decision-tree) to help you find the appropriate managed data storage solution.
 
 ### Why use a relational database?
 
