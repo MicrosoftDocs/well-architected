@@ -1,5 +1,6 @@
 items:
   - name: Microsoft Azure Well-Architected Framework
+    href: ./index.md
     items:
       - name: Overview
         href: ./index.md
