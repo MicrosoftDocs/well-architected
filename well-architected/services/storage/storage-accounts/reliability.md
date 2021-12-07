@@ -2,7 +2,8 @@
 title: Storage Accounts and reliability
 description: Focuses on the Storage Accounts service used in the Storage solution to provide best-practice, configuration recommendations, and design considerations related to Reliability.
 author: v-stacywray
-ms.date: 11/30/2021
+ms.author: robbymillsap
+ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -29,7 +30,7 @@ For more information about the different types of storage accounts that support 
 
 To understand how an Azure storage account supports resiliency for your application workload, reference the following articles:
 
-- [Azure storage redundancy](/storage/common/storage-redundancy?toc=/azure/storage/blobs/toc.json)
+- [Azure storage redundancy](/azure/storage/common/storage-redundancy?toc=/azure/storage/blobs/toc.json)
 - [Disaster recovery and storage account failover](/azure/storage/common/storage-disaster-recovery-guidance?toc=/azure/storage/blobs/toc.json)
 
 The following sections include design considerations, a configuration checklist, and recommended configuration options specific to Azure storage accounts and reliability.

@@ -3,7 +3,7 @@ title: Overview of the operational excellence pillar
 description: Understand the operational excellence pillar, which covers the operations processes that keep an application running in production.
 ms.author: robbymillsap
 author: david-stanford
-ms.date: 12/06/2021
+ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -26,7 +26,7 @@ We recommend the following video to help you achieve operational excellence with
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/en-us/shows/Azure-Enablement/Achieve-Operational-Excellence-With-Azure-Well-Architected-well-architected/player]
+> [!VIDEO https://docs.microsoft.com/shows/azure-enablement/achieve-operational-excellence-with-azure-well-architected-framework/player]
 
 <!-- markdownlint-enable MD034 -->
 
