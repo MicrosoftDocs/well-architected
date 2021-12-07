@@ -90,7 +90,7 @@ items:
                   - name: Authorization
                     href: security/design-identity-authorization.md
                   - name: Best practices
-                    href: /azure/security/fundamentals/identity-management-best-practices?bc=%2fazure%2farchitecture%2fbread%2ftoc.json&toc=%2fazure%2farchitecture%2ftoc.json
+                    href: /azure/security/fundamentals/identity-management-best-practices
               - name: Networking
                 items:
                   - name: Checklist
@@ -104,7 +104,7 @@ items:
                   - name: Data flow
                     href: security/design-network-flow.md
                   - name: Best practices
-                    href: /azure/security/fundamentals/network-best-practices?bc=%2fazure%2farchitecture%2fbread%2ftoc.json&toc=%2fazure%2farchitecture%2ftoc.json
+                    href: /azure/security/fundamentals/network-best-practices
               - name: Data protection
                 items:
                   - name: Checklist
@@ -114,7 +114,7 @@ items:
                   - name: Key and secret management
                     href: security/design-storage-keys.md
                   - name: Best practices
-                    href: /azure/security/fundamentals/encryption-overview?bc=%2fazure%2farchitecture%2fbread%2ftoc.json&toc=%2fazure%2farchitecture%2ftoc.json
+                    href: /azure/security/fundamentals/encryption-overview
               - name: Applications and services
                 items:
                   - name: Application security considerations
@@ -124,7 +124,7 @@ items:
                   - name: Threat analysis
                     href: security/design-threat-model.md
                   - name: Secure PaaS deployments
-                    href: /azure/security/fundamentals/paas-deployments?bc=%2fazure%2farchitecture%2fbread%2ftoc.json&toc=%2fazure%2farchitecture%2ftoc.json
+                    href: /azure/security/fundamentals/paas-deployments
                   - name: Configuration and dependencies
                     href: security/design-app-dependencies.md
           - name: Build-deploy
@@ -293,7 +293,7 @@ items:
                   - name: Auditing
                     href: devops/auditing.md
           - name: Checklist
-            href: checklist/dev-ops.md
+            href: /azure/architecture/checklist/dev-ops
           - name: Operational Excellence patterns
             href: devops/devops-patterns.md
       - name: Performance Efficiency

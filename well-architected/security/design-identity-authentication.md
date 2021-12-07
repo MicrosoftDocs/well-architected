@@ -2,7 +2,8 @@
 title: Authentication with Azure AD
 description: Review the authentication considerations when you're using Azure Active Directory (Azure AD) for a workload.
 author: PageWriter-MSFT
-ms.date: 07/09/2019
+ms.author: robbymillsap
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -53,9 +54,9 @@ This approach is secure because Azure handles the management of the underlying c
 > [!TIP]
 > Here are the resources for the preceding example:
 >
-> ![GitHub logo](../../_images/github.svg) [GitHub: Azure Kubernetes Service (AKS) Secure Baseline Reference Implementation](https://github.com/mspnp/aks-secure-baseline).
+> ![GitHub logo](/azure/architecture/_images/github.svg) [GitHub: Azure Kubernetes Service (AKS) Secure Baseline Reference Implementation](https://github.com/mspnp/aks-secure-baseline).
 >
-> The design considerations are described in [Azure Kubernetes Service (AKS) production baseline](../../reference-architectures/containers/aks/secure-baseline-aks.yml).
+> The design considerations are described in [Azure Kubernetes Service (AKS) production baseline](/azure/architecture/reference-architectures/containers/aks/secure-baseline-aks).
 
 **Suggested actions**
 
@@ -114,7 +115,7 @@ For more information, see [hybrid identity providers](/azure/active-directory/hy
 > [!TIP]
 > Here are the resources for the preceding example::
 >
-> The design considerations are described in [Integrate on-premises Active Directory domains with Azure AD](../../reference-architectures/identity/azure-ad.yml).
+> The design considerations are described in [Integrate on-premises Active Directory domains with Azure AD](/azure/architecture/reference-architectures/identity/).
 
 **Learn more**
 

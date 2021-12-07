@@ -2,7 +2,8 @@
 title: Overview of the security pillar
 description: Learn about the key architectural considerations and principles for security and how they apply to the Microsoft Azure Well-Architected Framework.
 author: david-stanford
-ms.date: 09/08/2021
+ms.author: robbymillsap
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -24,7 +25,7 @@ The security of complex systems depends on understanding the business context, s
 
 :::image type="content" source="./images/security-areas.png" alt-text="Screenshot showing security design areas.":::
 
-Understanding an IT solution as it interacts with its surrounding environment holds the key to preventing unauthorized activity and to identifying anomalous behavior that may represent a security risk. Another key success factor is adopting a mindset of assuming failure of security controls so that you design compensating controls that limit risk and damage in the event a primary control fails. Assuming failures is sometimes referred to as "assume breach" or "assume compromise" and is closely related to the "Zero Trust" approach of continuously validating security assurances. The "Zero Trust" approach is described in the [Security Design Principles](../../framework/security/security-principles.md) section in more detail.
+Understanding an IT solution as it interacts with its surrounding environment holds the key to preventing unauthorized activity and to identifying anomalous behavior that may represent a security risk. Another key success factor is adopting a mindset of assuming failure of security controls so that you design compensating controls that limit risk and damage in the event a primary control fails. Assuming failures is sometimes referred to as "assume breach" or "assume compromise" and is closely related to the "Zero Trust" approach of continuously validating security assurances. The "Zero Trust" approach is described in the [Security Design Principles](/azure/architecture/framework/security/security-principles) section in more detail.
 
 Cloud architectures can help simplify the complex task of securing an enterprise estate through specialization and shared responsibilities:
 

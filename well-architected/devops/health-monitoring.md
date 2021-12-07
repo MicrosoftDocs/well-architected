@@ -1,9 +1,10 @@
 ---
 title: Health monitoring
 description: Provides an overview of health modeling and monitoring as it relates to the Operational Excellence pillar.
+ms.author: robbymillsap
 author: v-stacywray
 manager: david-stanford
-ms.date: 11/16/2021
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

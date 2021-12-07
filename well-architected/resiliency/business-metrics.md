@@ -1,8 +1,9 @@
 ---
 title: Business Metrics
 description: Learn to use business metrics to design resilient Azure applications. Review workload availability targets. Understand recovery and availability metrics.
+ms.author: robbymillsap
 author: david-stanford
-ms.date: 11/11/2021
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -85,7 +86,7 @@ In Azure, the [Service Level Agreement](https://azure.microsoft.com/support/lega
 
 The Azure SLA also includes provisions for obtaining a service credit if the SLA is not met, along with specific definitions of *availability* for each service. That aspect of the SLA acts as an enforcement policy.
 
-:::image type="icon" source="../../_images/github.png" border="false"::: The [Service Level Agreement Estimator](https://github.com/mspnp/samples/tree/master/Reliability/SLAEstimator) sample shows how to calculate the SLA of your architecture.
+:::image type="icon" source="https://docs.microsoft.com/azure/architecture/_images/github.png" border="false"::: The [Service Level Agreement Estimator](https://github.com/mspnp/samples/tree/master/Reliability/SLAEstimator) sample shows how to calculate the SLA of your architecture.
 
 ### Composite SLAs
 
@@ -96,9 +97,9 @@ The Azure SLA also includes provisions for obtaining a service credit if the SLA
 
 What is the maximum downtime you would expect for this application? If either service fails, the whole application fails. The probability of each service failing is independent, so the composite SLA for this application is `99.95% × 99.99% = 99.94%`. That's lower than the individual SLAs, which isn't surprising because an application that relies on multiple services has more potential failure points.
 
-You can improve the composite SLA by creating independent fallback paths. For example, if SQL Database is unavailable, put transactions into a queue to be processed later.
+You can improve the composite SLA by creating independent fallback paths. For example, if SQL Database is unavailable, put transactions into a queue to be processed later:
 
-![Composite SLA](../../framework/_images/composite-sla.png)
+![Composite SLA](https://docs.microsoft.com/azure/architecture/framework/_images/composite-sla.png)
 
 With this design, the application is still available even if it can't connect to the database. However, it fails if the database and the queue both fail at the same time. The expected percentage of time for a simultaneous failure is `0.0001 × 0.001`, so the composite SLA for this combined path is:
 

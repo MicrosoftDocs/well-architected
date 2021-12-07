@@ -2,7 +2,8 @@
 title: Monitor Azure resources in Microsoft Defender for Cloud
 description: Use Microsoft Defender for Cloud to monitor the security posture of machines, networks, storage and data services, and applications to discover potential security issues.
 author: PageWriter-MSFT
-ms.date: 03/18/2021
+ms.author: robbymillsap
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -83,7 +84,7 @@ For Azure, you can enforce policies by:
 
 - **Restrict management ports** (RDP, SSH) using [Just in Time access](/azure/security-center/security-center-just-in-time) in Microsoft Defender for Cloud.
 
-One way of managing VMs in the virtual network is by using [Azure Bastion](/azure/bastion/). This service allows you to log into VMs in the virtual network through SSH or remote desktop protocol (RDP) without exposing the VMs directly to the internet. To see a reference architecture that uses Bastion, see [Network DMZ between Azure and an on-premises datacenter](../../reference-architectures/dmz/secure-vnet-dmz.yml).
+One way of managing VMs in the virtual network is by using [Azure Bastion](/azure/bastion/). This service allows you to log into VMs in the virtual network through SSH or remote desktop protocol (RDP) without exposing the VMs directly to the internet. To see a reference architecture that uses Bastion, see [Network DMZ between Azure and an on-premises datacenter](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?tabs=portal).
 
 ## Containers
 
@@ -100,9 +101,9 @@ Containerized workloads have an extra layer of abstraction and orchestration. Th
     > [!TIP]
     > Here are the resources for the preceding example:
     >
-    > ![GitHub logo](../../_images/github.svg) [GitHub: Azure Kubernetes Service (AKS) Secure Baseline Reference Implementation](https://github.com/mspnp/aks-secure-baseline).
+    > ![GitHub logo](/azure/architecture/_images/github.svg) [GitHub: Azure Kubernetes Service (AKS) Secure Baseline Reference Implementation](https://github.com/mspnp/aks-secure-baseline).
     >
-    > The design considerations are described in [Baseline architecture for an AKS cluster](../../reference-architectures/containers/aks/secure-baseline-aks.yml).
+    > The design considerations are described in [Baseline architecture for an AKS cluster](/azure/architecture/reference-architectures/containers/aks/secure-baseline-aks).
 
 - Regularly scan containers for known risks in the container registry, before use, and during use.
 

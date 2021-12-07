@@ -2,7 +2,8 @@
 title: Roles, responsibilities, and permissions
 description: Learn to define clear lines of responsibility and establish separation of duties as part of Azure identity and access management.
 author: PageWriter-MSFT
-ms.date: 07/09/2019
+ms.author: robbymillsap
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

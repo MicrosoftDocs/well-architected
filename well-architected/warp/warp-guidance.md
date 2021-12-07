@@ -2,7 +2,8 @@
 title: Well-Architected Recommendation Process Guidance
 description: A guide for using Well-Architected Review and Advisor Recommendations for continuous workload improvement.
 author: JoeyBarnes
-ms.date: 10/08/2021
+ms.author: robbymillsap
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

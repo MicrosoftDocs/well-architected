@@ -2,7 +2,8 @@
 title: Security Operations Center (SOC or SecOps) monitoring in Azure
 description: Guidance for security operation team (SecOps) is to rapidly detect, prioritize, and triage potential attacks.
 author: PageWriter-MSFT
-ms.date: 11/03/2020
+ms.author: robbymillsap
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

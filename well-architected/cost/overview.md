@@ -1,9 +1,10 @@
 ---
 title: Overview of the cost optimization pillar
 description: Provides an overview of the cost optimization pillar in the Azure Well-Architected Framework.
+ms.author: robbymillsap
 author: v-stacywray
 manager: david-stanford
-ms.date: 09/20/2021
+ms.date: 12/06/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
