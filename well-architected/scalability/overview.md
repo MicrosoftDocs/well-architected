@@ -27,7 +27,7 @@ To boost performance efficiency, we recommend the following video about optimizi
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/en-us/events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency/player]
+> [!VIDEO https://docs.microsoft.com/events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency/player]
 
 <!-- markdownlint-enable MD034 -->
 

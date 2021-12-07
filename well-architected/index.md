@@ -86,7 +86,7 @@ For more information about resiliency, reference the following video that will s
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/shows/azure-enablement/start-improving-the-reliability-of-your-azure-workloads--reliability-ep-1--well-architected-series?tab=tab-embed/player]
+> [!VIDEO https://docs.microsoft.com/shows/azure-enablement/start-improving-the-reliability-of-your-azure-workloads--reliability-ep-1--well-architected-series/player]
 
 <!-- markdownlint-enable MD034 -->
 
@@ -180,7 +180,7 @@ For more information, reference the following video about optimizing for reliabl
 
 > [!VIDEO https://docs.microsoft.com/events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency/player]
 
-<!-- markdownlint-disable MD034 -->
+<!-- markdownlint-enable MD034 -->
 
 ### Performance efficiency guidance
 

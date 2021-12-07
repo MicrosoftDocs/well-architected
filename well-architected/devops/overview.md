@@ -26,7 +26,7 @@ We recommend the following video to help you achieve operational excellence with
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/en-us/shows/Azure-Enablement/Achieve-Operational-Excellence-With-Azure-Well-Architected-well-architected/player]
+> [!VIDEO https://docs.microsoft.com/shows/Azure-Enablement/Achieve-Operational-Excellence-With-Azure-Well-Architected-well-architected/player]
 
 <!-- markdownlint-enable MD034 -->
 
