@@ -2,7 +2,8 @@
 title: Remediate security risks in Microsoft Defender for Cloud
 description: Remediate the common risks identified by Microsoft Defender for Cloud.
 author: PageWriter-MSFT
-ms.date: 03/18/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -64,7 +65,7 @@ As a technical workload owner, work with your organization's dedicated team that
 |Networking Resources||Networking Team and Network Security Team|
 |IoT Security|IoT Resources | IoT Operations Team|
 
-:::image type="icon" source="../../_images/github.png" border="false"::: The [Azure Secure Score sample](https://github.com/mspnp/samples/tree/master/Security/AzureSecureScoreSample) shows how to get your Azure Secure Score for a subscription by calling the Microsoft Defender for Cloud REST API. The API methods provide the flexibility to query the data and build your own reporting mechanism of your secure scores over time.
+:::image type="icon" source="./images/github.png" border="false"::: The [Azure Secure Score sample](https://github.com/mspnp/samples/tree/master/Security/AzureSecureScoreSample) shows how to get your Azure Secure Score for a subscription by calling the Microsoft Defender for Cloud REST API. The API methods provide the flexibility to query the data and build your own reporting mechanism of your secure scores over time.
 
 ## Review and remediate recommendations
 
@@ -97,7 +98,7 @@ Another use case is that it can be automatically remediated by deploying related
 
 ## Manage alerts
 
-Microsoft Defender for Cloud shows a list of alerts that's based on logs collected from resources within a scope. Alerts include context information such as severity, status, activity time. Most alerts have MITRE ATT&CK® tactics that can help you understand the kill chain intent. Select the alert and investigate the problem with detailed information.
+Microsoft Defender for Cloud shows a list of alerts that's based on logs collected from resources within a scope. Alerts include context information such as severity, status, activity time. Most alerts have MITRE ATT&CK&reg; tactics that can help you understand the kill chain intent. Select the alert and investigate the problem with detailed information.
 
 Finally take action. That action can be to fix the resources that are out of compliance with actionable remediation steps. You can also suppress alerts that are false positives.
 

@@ -2,7 +2,8 @@
 title: Security monitoring in Azure
 description: Security logging and monitoring are activities related to enabling, acquiring, and storing audit logs for Azure services.
 author: PageWriter-MSFT
-ms.date: 11/03/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -42,18 +43,19 @@ Regularly monitor resources to maintain the security posture and detect vulnerab
 
 The Azure Security Benchmark includes a collection of high-impact security recommendations. Use them to secure the services and processes you use to run the workload in Azure:
 
-> ![Security Benchmark](../../_images/benchmark-security.svg) The questions in this section are aligned to these controls:
+> ![Security Benchmark](../_images/benchmark-security.svg) The questions in this section are aligned to these controls:
+
 > - [Azure Security Benchmarks Logging and threat detection](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).
 > - [Azure Security Benchmarks Incident response](/azure/security/benchmarks/security-controls-v2-incident-response).
 > - [Posture and Vulnerability Management](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 ## Reference architecture
 
-- [Hybrid Security Monitoring using Microsoft Defender for Cloud and Microsoft Sentinel](../../hybrid/hybrid-security-monitoring.yml)
+- [Hybrid Security Monitoring using Microsoft Defender for Cloud and Microsoft Sentinel](/azure/architecture/hybrid/hybrid-security-monitoring)
 
   This reference architecture illustrates how to use Microsoft Defender for Cloud and Microsoft Sentinel to monitor the security configuration and telemetry of on-premises and Azure operating system workloads.
 
-- [Azure security solutions for AWS](../../reference-architectures/aws/aws-azure-security-solutions.yml)
+- [Azure security solutions for AWS](/azure/architecture/reference-architectures/aws/aws-azure-security-solutions)
 
   This article provides AWS identity architects, administrators, and security analysts with immediate insights and detailed guidance for deploying several Microsoft security solutions.
 

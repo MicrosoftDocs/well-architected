@@ -2,7 +2,8 @@
 title: Release Engineering Rollback
 description: Review deployment rollback options in Azure release engineering, such as with Azure App Service, Azure Kubernetes Service (AKS), or Azure Resource Manager.
 author: david-stanford
-ms.date: 09/28/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -19,7 +20,7 @@ In some cases, a new software deployment can harm or degrade the functionality o
 
 When deploying an application to Azure App Service, consider utilizing deployment slots. Deployment slots are running instances of the application, each with a separate host name. Slots can be used to stage and test applications before promoting to a production slot. A deployment slot can be created to hold the last known good instance of your application. In the event of an issue or problematic deployment, the production slot can be swapped with the known good slot to bring the application back to a known good state.
 
-![Image of Azure DevOps pipeline tests in the Azure DevOps portal.](../../_images/devops/app-service-slots.png)
+![Image of Azure DevOps pipeline tests in the Azure DevOps portal.](../devops/app-service-slots.png)
 
 **Learn more**
 
@@ -68,7 +69,7 @@ For more information, see [Kubernetes Deployments](https://kubernetes.io/docs/co
 
 A deployment record is created when deploying Azure infrastructure and solutions with Azure Resource Manager (ARM) templates. When creating a new deployment, you can provide a previously known good deployment so that if the current deployment fails, the previous know good deployment is redeployed. There are several considerations and caveats when using this functionality. See the documentation linked below for these details.
 
-:::image type="content" source="../../_images/devops/arm-deployments.png" alt-text="Image showing Azure Resource Manager Deployments in the Azure portal." lightbox="../../_images/devops/arm-deployments-full.png":::
+:::image type="content" source="../devops/arm-deployments.png" alt-text="Image showing Azure Resource Manager Deployments in the Azure portal." lightbox="../devops/arm-deployments-full.png":::
 
 **Learn more**
 
@@ -78,7 +79,7 @@ For more information, see [Rollback on an error to successful deployment](/azure
 
 When making changes to an Azure logic application, a new version of the application is created. Azure maintains a history of versions and can revert or promote any previous version. To do so, in the Azure portal, select your logic app > **Versions**. Previous versions can be selected on the versions pane, and the application can be inspected both in the code view and the visual designer view. Select the version you would like to revert to, and click the **Promote** option and then **Save**.
 
-:::image type="content" source="../../_images/devops/revert-logic-app.png" alt-text="Image showing Azure logic application version history." lightbox="../../_images/devops/revert-logic-app-full.png":::
+:::image type="content" source="../devops/revert-logic-app.png" alt-text="Image showing Azure logic application version history." lightbox="../devops/revert-logic-app-full.png":::
 
 **Learn more**
 

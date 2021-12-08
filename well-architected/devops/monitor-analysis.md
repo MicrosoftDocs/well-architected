@@ -2,7 +2,8 @@
 title: Analyze monitoring data for cloud applications
 description: Analyze monitoring data collected from various resources to get a view of the overall well-being of the system. This stage is important for root cause analysis for failures and determining quality of the system.
 author: PageWriter-MSFT
-ms.date: 11/18/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -58,11 +59,11 @@ In a distributed application, an operation will lead to multiple transactions. E
 
 Here's an Application Map of an application that has several microservices. With this visual representation, you can see that Workflow service is getting errors from the Delivery service.  
  
-![Application Map for microservices](/azure/architecture/performance/images/workflow/1-application-map.png) 
+![Application Map for microservices](../devops/1-application-map.png) 
 
 When you look at the end-to-end transaction, you can see that an exception is thrown due to memory limits in Azure Cache for Redis.
 
-![End to end transaction](/azure/architecture/performance/images/workflow/1-transaction.png) 
+![End to end transaction](../devops/1-transaction.png) 
 
 When correlating data make sure that the raw instrumentation data includes sufficient context and activity ID information to support the required aggregations for correlating events. Additionally, this data might be held in different formats, and it might be necessary to parse this information to convert it into a standardized format for analysis.
 

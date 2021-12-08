@@ -33,11 +33,10 @@ This article provides best practices for collecting data from various sources, c
 
 - In the event of a transient failure in sending information to a data sink, the collection service should be prepared to reorder telemetry data so that the newest information is sent first. (The monitoring agent/data-collection service might elect to drop the older data, or save it locally and transmit it later to catch up, at its own discretion.)
 
-
 ## Architecture
 This image shows a typical instrumentation data-collection process.
 
-![Example of collecting instrumentation data](/azure/architecture/best-practices/images/monitoring/telemetryservice.png)
+![Example of collecting instrumentation data](../devops/telemetryservice.png)
 
 - Data collection service collects data from various sources is not necessarily a single process and might comprise many constituent parts running on different machines. 
 - If you need data to be analyzed quickly, local components that operate outside the collection service might perform the analysis tasks immediately. The results can be sent directly to the visualization and alerting systems. 
@@ -98,7 +97,7 @@ The collection service can collect instrumentation data in  mainly two models:
 ### Monitoring agents
 Monitoring agents work in pull model. Agents run locally in a separate process with each instance of the application and periodically pull data and write this information directly to centralized storage shared by all instances of the application. 
 
-![Illustration of using a monitoring agent to pull information and write to shared storage](/azure/architecture/best-practices/images/monitoring/pullmodel.png)
+![Illustration of using a monitoring agent to pull information and write to shared storage](../devops/pullmodel.png)
 
 For more information, see [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](/azure/cloud-services/cloud-services-dotnet-diagnostics) provides more details on this process. Some elements, such as IIS logs, crash dumps, and custom error logs, are written to blob storage. Data from the Windows event log, ETW events, and performance counters is recorded in table storage. Figure 3 illustrates this mechanism.
 
@@ -111,7 +110,7 @@ A complex, highly scalable, application might generate huge volumes of data. The
 
 One approach is through queuing. 
 
-![Illustration of using a queue to buffer instrumentation data](/azure/architecture/best-practices/images/monitoring/bufferedqueue.png)
+![Illustration of using a queue to buffer instrumentation data](../devops/bufferedqueue.png)
 
 In this architecture, the data-collection service posts data to a queue. A message queue is suitable because it provides "at least once" semantics that help ensure that queued data will not be lost after it's posted. You can implement the storage writing service by using a separate worker role. You can implement this with the [Priority Queue pattern](/azure/architecture/patterns/priority-queue). 
 
@@ -121,7 +120,7 @@ For scalability, you can run multiple instances of the storage writing service. 
 
 The data collected from a single instance of an application gives a localized view of the health and performance of that instance. To assess the overall health of the system, it's necessary to consolidate some aspects of the data in the local views. You can perform this after the data has been stored, but in some cases, you can also achieve it as the data is collected. 
 
-![Example of using a service to consolidate instrumentation data](/azure/architecture/best-practices/images/monitoring/consolidation.png)
+![Example of using a service to consolidate instrumentation data](../devops/consolidation.png)
 
 
 The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, instrumentation data that includes the same correlation information such as an activity ID can be amalgamated. (It's possible that a user starts performing a business operation on one node and then gets transferred to another node in the event of node failure, or depending on how load balancing is configured.) This process can also detect and remove any duplicated data (always a possibility if the telemetry service uses message queues to push instrumentation data out to storage). 
@@ -148,7 +147,7 @@ The same instrumentation data might be required for more than one purpose. For e
 
 You can implement an additional service that periodically retrieves the data from shared storage, partitions and filters the data according to its purpose, and then writes it to an appropriate set of data stores.
 
-![Partitioning and storage of data](/azure/architecture/best-practices/images/monitoring/datastorage.png)
+![Partitioning and storage of data](../devops/datastorage.png)
 
 An alternative approach is to include this functionality in the consolidation and cleanup process and write the data directly to these stores as it's retrieved rather than saving it in an intermediate shared storage area. 
 

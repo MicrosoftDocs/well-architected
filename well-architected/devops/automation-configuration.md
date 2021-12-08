@@ -2,7 +2,8 @@
 title: Configure infrastructure
 description: Get information about configuring Azure infrastructure programmatically using bootstrap automation or configuration management tools.
 author: david-stanford
-ms.date: 10/15/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -150,14 +151,14 @@ configuration linuxpackage {
 
 Once imported into Azure State Configuration and assigned to nodes, the state configuration dashboard provides compliance results.
 
-![State Configuration dashboard showing six compliant virtual machines](../../_images/devops/azure-dsc.png)
+![State Configuration dashboard showing six compliant virtual machines](./azure-dsc.png)
 
 **Learn more**
 
 Use the included code sample to deploy Azure Automation State Configuration and several Azure virtual machines. The virtual machines are also onboarded to state configuration, and a configuration applied.
 
 - [Documentation: Get started with Azure Automation State Configuration](/azure/automation/automation-dsc-overview)
-- [Example Scenario: Azure Automation State Configuration](../../example-scenario/state-configuration/state-configuration.yml)
+- [Example Scenario: Azure Automation State Configuration](/azure/architecture/example-scenario/state-configuration/state-configuration)
 
 ### Chef
 

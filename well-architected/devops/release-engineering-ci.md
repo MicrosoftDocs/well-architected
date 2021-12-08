@@ -2,7 +2,8 @@
 title: Release Engineering Continuous integration
 description: Examine continuous integration (CI) in release engineering. Explore using Azure CI pipelines, including source control integration, test integration, and more.
 author: david-stanford
-ms.date: 09/28/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -54,7 +55,7 @@ The integration of your continuous integration pipeline with your source control
 
 The following image shows the integration between GitHub and an Azure DevOps pipeline. In this example, a pull request has been created, which in turn has triggered an Azure DevOps pipeline. The pipeline status can be seen directly in the pull request.
 
-![Image of Azure DevOps status badge in GitHub repository.](../../_images/devops/ado-github-status.png)
+![Image of Azure DevOps status badge in GitHub repository.](../devops/ado-github-status.png)
 
 #### Test Integration
 
@@ -82,7 +83,7 @@ The following code snippet shows a test step from an Azure DevOps pipeline. Ther
 
 The following image shows the test results as seen in the Azure DevOps portal.
 
-![Image of Azure DevOps pipeline tests in the Azure DevOps portal.](../../_images/devops/ado-tests.png)
+![Image of Azure DevOps pipeline tests in the Azure DevOps portal.](../devops/ado-tests.png)
 
 #### Failed tests
 
@@ -92,7 +93,7 @@ Failed tests should temporarily block a deployment and lead to a deeper analysis
 
 Many developers like to show that they're keeping their code quality high by displaying a status badge in their repo. The following image shows an Azure Pipelines badge as displayed on the Readme file for an open-source project on GitHub.
 
-![Image of Azure DevOps integration with GitHub.](../../_images/devops/github-status-badge.png)
+![Image of Azure DevOps integration with GitHub.](../devops/github-status-badge.png)
 
 **Learn more**
 

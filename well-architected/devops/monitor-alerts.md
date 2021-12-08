@@ -2,7 +2,8 @@
 title: Alerting for operations
 description: Explore alerting, which is the process of analyzing the monitoring and instrumentation data and generating a notification if a significant event is detected.
 author: PageWriter-MSFT
-ms.date: 11/18/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -110,7 +111,7 @@ When defining alerts, analyze the potential business impact and prioritize accor
 
 One way of specifying the priority is by using a severity level that indicates how critical a situation is. This image shows this case in Azure Monitor.
 
-![Screenshot of an Azure Monitor alert severity as seen in the Azure portal.](../../_images/devops/alert-severity.png)
+![Screenshot of an Azure Monitor alert severity as seen in the Azure portal.](../devops/alert-severity.png)
 
 
 ## Next steps

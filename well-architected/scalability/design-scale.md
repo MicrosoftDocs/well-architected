@@ -2,7 +2,8 @@
 title: Design for scaling
 description: Examine the scaling options for performance efficiency. Services covered by Azure Autoscale can scale automatically to match demand to accommodate workload.
 author: v-aangie
-ms.date: 10/01/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -56,13 +57,13 @@ Another critical component of planning for scale is to make sure the region that
 
 To verify your region and available SKUs, first select the product and regions in [Products available by region](https://azure.microsoft.com/global-infrastructure/services/).
 
-![Products available by region](../../_images/design-scale-1a.png)
+![Products available by region](../_images/design-scale-1a.png)
 
 Then, check the SKUs available in the Azure portal.
 
 ### Add scale units
 
-For each resource, know the upper scaling limits, and use [sharding](/azure/azure-sql/database/elastic-scale-introduction#sharding) or decomposition to go beyond those limits. Design the application so that it's easily scaled by adding one or more scale units, such as by using the [Deployment Stamps pattern](../../patterns/deployment-stamp.md). Determine the scale units for the system for well-defined sets of resources.
+For each resource, know the upper scaling limits, and use [sharding](/azure/azure-sql/database/elastic-scale-introduction#sharding) or decomposition to go beyond those limits. Design the application so that it's easily scaled by adding one or more scale units, such as by using the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp). Determine the scale units for the system for well-defined sets of resources.
 
 The next step might be to use built-in scaling features or tools to understand which resources need to scale concurrently with other resources. For example, adding X number of front-end VMs might require Y number of extra queues and Z number of storage accounts to handle the extra workload. So a scale unit could consist of X VM instances, Y queues, and Z storage accounts.
 
@@ -72,9 +73,9 @@ Autoscaling enables you to run the right amount of resources to handle the load 
 
 You automatically scale between the minimum and maximum number of instances to run, and add, or remove VMs automatically based on a set of rules.
 
-![Autoscale](../../_images/design-autoscale.png)
+![Autoscale](../_images/design-autoscale.png)
 
-For more information, see [Autoscaling](../../best-practices/auto-scaling.md).
+For more information, see [Autoscaling](/azure/architecture/best-practices/auto-scaling).
 
 ### Understand scale targets
 
@@ -93,7 +94,7 @@ Here's how you can benefit from autoscaling features:
 > [!NOTE]
 > If your application is explicitly designed to handle the termination of some of its instances, ensure you use autoscaling to scale down and scale in resources no longer necessary for the given load to reduce operational costs.
 
-For more information, reference [Autoscaling](../../best-practices/auto-scaling.md).
+For more information, reference [Autoscaling](/azure/architecture/best-practices/auto-scaling).
 
 ## Autoscale CPU or memory-intensive applications
 
@@ -105,7 +106,7 @@ For example, you may have an application that processes images, videos, or music
 
 Autoscaling works by collecting metrics for the resource (CPU and memory usage), and the application (requests queued and requests per second). Rules can then be created to add and remove instances depending on how the rule evaluates. An [App Services](/azure/app-service/overview-hosting-plans#how-does-my-app-run-and-scale) app plan allows autoscale rules to be set for scale-out/scale-in and scale-up/scale-down. Scaling also applies to [Azure Automation](/azure/automation/automation-intro).
 
-:::image type="icon" source="../../_images/github.png" border="false"::: The [Application Service autoscaling](https://github.com/mspnp/samples/tree/master/PerformanceEfficiency/AppServiceAutoscalingSample) sample shows how to create an Azure App Service plan, which includes an Azure App Service.
+:::image type="icon" source="../_images/github.png" border="false"::: The [Application Service autoscaling](https://github.com/mspnp/samples/tree/master/PerformanceEfficiency/AppServiceAutoscalingSample) sample shows how to create an Azure App Service plan, which includes an Azure App Service.
 
 [Azure Kubernetes Service](/azure/aks/intro-kubernetes) (AKS) offers two levels of autoscale:
 

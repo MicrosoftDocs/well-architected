@@ -2,7 +2,8 @@
 title: Release engineering app development
 description: Understand application development in release engineering. Build systems so your teams can turn ideas into production-delivered software with minimal friction.
 author: david-stanford
-ms.date: 09/28/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -84,7 +85,7 @@ Beyond providing us with a place to store code, source control systems allow us 
 
 The following image demonstrates how Git and GitHub are used to see the proposed code changes.
 
-:::image type="content" source="../../_images/devops/git-changes.png" alt-text="Image alt text" lightbox="../../_images/devops/git-changes-full.png":::
+:::image type="content" source="../devops/git-changes.png" alt-text="Image alt text" lightbox="./devops/git-changes-full.png":::
 
 **Forking and Pull Requests**
 

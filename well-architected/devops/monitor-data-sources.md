@@ -2,7 +2,8 @@
 title: Data sources for diagnostic data
 description: Start by evaluating the data sources from which you need to capture monitoring data. 
 author: PageWriter-MSFT
-ms.date: 11/18/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -64,7 +65,7 @@ Another important source is the operating system where the application runs. It 
 
   Operators who prefer using the open-source Kubernetes monitoring tool Prometheus can take advantage of its integration with container insights.
 
-  :::image type="icon" source="../../_images/github.png" border="false"::: The [Sidecar Pattern](https://github.com/mspnp/samples/blob/master/OperationalExcellence/Patterns/SidecarPattern/Sidecar-pattern.md) adds a separate container with responsibilities that are required by the main container. A common use case is for running logging utilities and monitoring agents.
+  :::image type="icon" source="../_images/github.png" border="false"::: The [Sidecar Pattern](https://github.com/mspnp/samples/blob/master/OperationalExcellence/Patterns/SidecarPattern/Sidecar-pattern.md) adds a separate container with responsibilities that are required by the main container. A common use case is for running logging utilities and monitoring agents.
 
 - **Network monitoring**&mdash;Networking is key to an application running without issues. Consider using [Network Watcher](/azure/network-watcher/network-watcher-monitoring-overview), a collection of network monitoring and troubleshooting tools. Some of these tools are:
 
