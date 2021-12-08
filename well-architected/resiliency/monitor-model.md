@@ -2,7 +2,8 @@
 title: Health modeling for reliability
 description: Use health modeling to improve application reliability in Azure. Differentiate between healthy and unhealthy states. Know how to quantify application states.
 author: v-aangie
-ms.date: 02/17/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -72,7 +73,7 @@ Implement probes or check functions, and run them regularly from outside the app
 
 Check functions can run processes to ensure that they produce valid results, measure latency and check availability, and extract information from the system.
 
-:::image type="icon" source="../../_images/github.png" border="false"::: The [HealthProbesSample](https://github.com/mspnp/samples/tree/master/Reliability/HealthProbesSample) sample shows how to set up health probes. It provides an Azure Resource Manager (ARM) template to set up the infrastructure. A load balancer accepts public requests and load balance to a set of virtual machines. The health probe is set up so that it can check for service's path /Health.
+:::image type="icon" source="../_images/github.png" border="false"::: The [HealthProbesSample](https://github.com/mspnp/samples/tree/master/Reliability/HealthProbesSample) sample shows how to set up health probes. It provides an Azure Resource Manager (ARM) template to set up the infrastructure. A load balancer accepts public requests and load balance to a set of virtual machines. The health probe is set up so that it can check for service's path /Health.
 
 ## Next step
 

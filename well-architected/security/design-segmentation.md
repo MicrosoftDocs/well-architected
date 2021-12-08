@@ -2,7 +2,8 @@
 title: Segmentation strategies
 description: Strategies for creating isolation between technical teams.
 author: PageWriter-MSFT
-ms.date: 09/07/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

@@ -2,7 +2,8 @@
 title: Generate cost reports
 description: Explore ways to gather cost data for reporting purposes. Use Azure cost tools, consumption APIs, and custom scripts. Analyze and visualize the data.
 author: PageWriter-MSFT
-ms.date: 05/12/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

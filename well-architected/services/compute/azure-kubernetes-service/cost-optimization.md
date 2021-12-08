@@ -2,7 +2,8 @@
 title: Azure Kubernetes Service (AKS) and cost optimization
 description: Focuses on the Azure Kubernetes Service (AKS) used in the Compute solution to provide best-practice and configuration recommendations related to service cost.
 author: v-stacywray
-ms.date: 11/10/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

@@ -2,7 +2,8 @@
 title: Security alerts in Azure
 description: Use security logs to view operations and raise alerts on anomalous activities in Microsoft Defender for Cloud.
 author: PageWriter-MSFT
-ms.date: 03/18/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

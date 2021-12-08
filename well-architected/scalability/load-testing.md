@@ -2,7 +2,8 @@
 title: Load Testing
 description: Learn how load testing in Azure can help you assess the performance, stability, and behavior of your application.
 author: david-stanford
-ms.date: 10/16/2019
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -21,11 +22,11 @@ Load test your application at the expected peak load to ensure there are no chal
 
 Different Azure services have soft and hard limits associated with them. Understand the limits for the services you consume so that you are not blocked if you need to exceed them. Review [Azure subscription and service limits, quotas, and constraints](/azure/azure-subscription-service-limits) to get a list of the most common Azure limits.
 
-  :::image type="icon" source="../../_images/github.png" border="false"::: The [ResourceLimits](https://github.com/mspnp/samples/tree/master/OperationalExcellence/ResourceLimits) sample shows how to query the limits and quotas for commonly used resources.
+  :::image type="icon" source="../_images/github.png" border="false"::: The [ResourceLimits](https://github.com/mspnp/samples/tree/master/OperationalExcellence/ResourceLimits) sample shows how to query the limits and quotas for commonly used resources.
 
 ## Understanding application behavior under load
 
-Load test your application to understand how it performs at various scales. Review [Autoscale best practices](../../best-practices/auto-scaling.md) to get additional insight into how to evaluate your application as the amount of traffic sent to it increases.
+Load test your application to understand how it performs at various scales. Review [Autoscale best practices](/azure/architecture/best-practices/auto-scaling) to get additional insight into how to evaluate your application as the amount of traffic sent to it increases.
 
 ## Measuring typical loads
 
@@ -33,11 +34,11 @@ Knowing the typical and maximum loads on your system help you understand when so
 
 ## Caching
 
-Applications should implement a strategy that helps to ensure that the data in the cache is as up to date as possible but can also detect and handle situations that arise when the data in the cache has become stale. Review the [Cache-Aside pattern](../../patterns/cache-aside.md) to learn how to load data on demand into a cache from a data store. This can improve performance and also helps to maintain consistency between data held in the cache and data in the underlying data store.
+Applications should implement a strategy that helps to ensure that the data in the cache is as up to date as possible but can also detect and handle situations that arise when the data in the cache has become stale. Review the [Cache-Aside pattern](/azure/architecture/patterns/cache-aside) to learn how to load data on demand into a cache from a data store. This can improve performance and also helps to maintain consistency between data held in the cache and data in the underlying data store.
 
 ## Availability of SKUs
 
 Certain Azure SKUs are only available in certain regions. Understand which SKUs are available in the regions you operate in so you can plan accordingly. Read about [global infrastructure services](https://azure.microsoft.com/global-infrastructure/services/).
 
 ## Related sections
-[Performance tuning scenario: Event streaming with Azure Functions](../../performance/event-streaming.md)
+[Performance tuning scenario: Event streaming with Azure Functions](/azure/architecture/performance/event-streaming)

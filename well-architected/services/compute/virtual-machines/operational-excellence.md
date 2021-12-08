@@ -2,7 +2,8 @@
 title: Virtual Machines and operational excellence
 description: Focuses on the Virtual Machine service used in the Compute solution to provide best-practice, configuration recommendations, and design considerations related to operational excellence.
 author: v-stacywray
-ms.date: 11/24/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -107,3 +108,4 @@ Resources
 
 > [!div class="nextstepaction"]
 > [Azure Cache for Redis and reliability](../../data/azure-cache-redis/reliability.md)
+

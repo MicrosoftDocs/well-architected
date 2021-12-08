@@ -2,7 +2,8 @@
 title: Security in a hybrid workload
 description: Includes guidance and recommendations that apply to the Security pillar in a hybrid and multi-cloud workload.
 author: v-aangie
-ms.date: 02/19/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -20,11 +21,11 @@ Microsoft Sentinel can help simplify data collection across different sources, i
 
 ## Azure Architecture Center (AAC) resources
 
-- [Hybrid Security Monitoring using Microsoft Defender for Cloud and Microsoft Sentinel](../../hybrid/hybrid-security-monitoring.yml)
-- [DevSecOps in Azure](../../solution-ideas/articles/devsecops-in-azure.yml)
-- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](../../hybrid/azure-arc-sql-server.yml)
-- [Implement a secure hybrid network](../../reference-architectures/dmz/secure-vnet-dmz.yml)
-- [Securely managed web applications](../../example-scenario/apps/fully-managed-secure-apps.yml)
+- [Hybrid Security Monitoring using Microsoft Defender for Cloud and Microsoft Sentinel](/azure/architecture/hybrid/hybrid-security-monitoring)
+- [DevSecOps in Azure](/azure/architecture/solution-ideas/articles/devsecops-in-azure)
+- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](/azure/architecture/hybrid/azure-arc-sql-server)
+- [Implement a secure hybrid network](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz)
+- [Securely managed web applications](/azure/architecture/example-scenario/apps/fully-managed-secure-apps)
 
 ## Principles
 

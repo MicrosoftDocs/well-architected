@@ -2,7 +2,8 @@
 title: Use Azure PaaS and SaaS services
 description: Review the design choices for managed services in Azure. Find architecture areas where platform as a service (PaaS) is appropriate, such as caching and queues.
 author: PageWriter-MSFT
-ms.date: 05/12/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -26,8 +27,8 @@ Azure provides a wide range of PaaS resources. Here are some examples of when yo
 |Secure access to virtual machine|[Azure Bastion](/azure/bastion) instead of virtual machines as jump boxes.|
 |Network security|[Azure Firewall](/azure/firewall/) instead of virtual network appliances.|
 
-For more information, see [Use platform as a service (PaaS) options](../../guide/design-principles/managed-services.md).
+For more information, reference [Use platform as a service (PaaS) options](/azure/architecture/guide/design-principles/managed-services).
 
 **Reference architecture**
 
-To see an implementation that provides better security and lowers cost through PaaS services, see [Network DMZ between Azure and an on-premises datacenter](../../reference-architectures/dmz/secure-vnet-dmz.yml).
+To see an implementation that provides better security and lowers cost through PaaS services, see [Network DMZ between Azure and an on-premises datacenter]((/azure/architecture/reference-architectures/dmz/secure-vnet-dmz).

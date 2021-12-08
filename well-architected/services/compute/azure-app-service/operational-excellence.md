@@ -2,7 +2,8 @@
 title: Azure App Service and operational excellence
 description: Focuses on the Azure App Service used in the Compute solution to provide best-practice, configuration recommendations, and design considerations related to Service Operational Excellence.
 author: v-stacywray
-ms.date: 11/24/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -106,4 +107,4 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Batch and reliability](../../azure-batch/reliability.md)
+> [Azure Batch and reliability](../azure-batch/reliability.md)

@@ -2,7 +2,8 @@
 title: Application classification for security
 description: Understanding the Azure hosting models of legacy and modern apps through IaaS and PaaS, and the security responsibilities of those models.
 author: v-aangie
-ms.date: 09/17/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -17,7 +18,7 @@ subject:
 ---
 # Application classification for security
 
-Azure can host both legacy and modern applications through Infrastructure as a Service (IaaS) virtual machines and 	Platform as a Service (PaaS). With legacy applications, you have the responsibility of securing all dependencies including OS, middleware, and other components. For PaaS applications, you don't need to manage and secure the underlying server OS. You are responsible for the application configuration.
+Azure can host both legacy and modern applications through Infrastructure as a Service (IaaS) virtual machines and     Platform as a Service (PaaS). With legacy applications, you have the responsibility of securing all dependencies including OS, middleware, and other components. For PaaS applications, you don't need to manage and secure the underlying server OS. You are responsible for the application configuration.
 
 This article describes the considerations for understanding the hosting models and the security responsibility of each, identifying critical applications.
 

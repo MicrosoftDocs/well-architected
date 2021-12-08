@@ -3,7 +3,8 @@ title: Cost checklist
 titleSuffix: Azure Design Review Framework
 description: Cost checklist guidance for design concerns
 author: david-stanford
-ms.date: 12/06/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

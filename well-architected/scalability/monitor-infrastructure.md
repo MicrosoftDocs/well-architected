@@ -2,7 +2,8 @@
 title: Infrastructure metrics and logs
 description: View platform metrics and logs to get visibility into the health and performance of services that are part of the architecture.
 author: PageWriter-MSFT
-ms.date: 10/19/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

@@ -2,7 +2,8 @@
 title: Zero-trust landing zone in Azure
 description: Security controls on a prepared infrastructure into which a workload can get deployed.
 author: PageWriter-MSFT
-ms.date: 03/05/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

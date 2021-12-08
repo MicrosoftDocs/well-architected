@@ -2,7 +2,8 @@
 title: Monitor performance for scalability and reliability
 description: Monitoring strategy should take into consideration scalability and reliability of the infrastructure, application, and dependent services.
 author: PageWriter-MSFT
-ms.date: 11/01/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -42,7 +43,7 @@ The raw data for monitoring can come from various sources, including:
 - [Azure Service Health](/azure/service-health/overview), which offers a dashboard to help you track active events.
 - [Azure AD logs](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) built into the Azure platform.
 
-To learn more, see [Monitoring health for reliability](../../resiliency/monitoring.md).
+To learn more, see [Monitoring health for reliability](../resiliency/monitoring.md).
 
 ## Next section
 

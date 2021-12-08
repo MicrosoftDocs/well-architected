@@ -2,7 +2,8 @@
 title: Cost governance for an Azure workload
 description: Understand how centralized governance functions in Azure can support your team with cost management. Follow organizational policies that define cost boundaries.
 author: PageWriter-MSFT
-ms.date: 05/12/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

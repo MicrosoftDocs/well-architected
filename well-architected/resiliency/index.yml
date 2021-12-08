@@ -8,9 +8,9 @@ metadata:
   description: Learn how to apply resiliency principles to your architecture to ensure an application returns to a fully functioning state after a failure occurs.
   services: na
   author: v-stacywray
-  ms.author: v-stacywray
+  ms.author: robbymillsap
   manager: david-stanford
-  ms.date: 10/07/2021
+  ms.date: 12/08/2021
   ms.topic: landing-page
   ms.service: architecture-center
   ms.subservice: well-architected
@@ -144,7 +144,7 @@ landingContent:
           - text: Azure API Management
             url: /azure/api-management/zone-redundancy
           - text: Application Gateway (V2)
-            url: ../../networking/guide/waf-application-gateway.md#reliability
+            url: /azure/architecture/networking/guide/waf-application-gateway#reliability
           - text: Key Vault
             url: /azure/key-vault/general/disaster-recovery-guidance
           - text: Azure Backup

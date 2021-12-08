@@ -2,7 +2,8 @@
 title: Checklist - Design for cost
 description: View checklists for the cost model and architecture to use when you design a cost-effective workload in Azure.
 author: david-stanford
-ms.date: 05/12/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

@@ -2,7 +2,8 @@
 title: Optimize scalability and reliability of cloud applications
 description: Determine options for improvement based on the monitored data.
 author: PageWriter-MSFT
-ms.date: 04/28/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
