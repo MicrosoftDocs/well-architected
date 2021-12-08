@@ -1,6 +1,6 @@
 ---
 title: Alerting for operations
-description: Explore alerting, which is the process of analyzing the monitoring and instrumentation data and generating a notification if a significant event is detected.
+description: Explore alerting for operations, which is the process of analyzing the monitoring and instrumentation data and generating a notification if a significant event is detected.
 author: PageWriter-MSFT
 ms.author: robbymillsap
 ms.date: 12/08/2021
