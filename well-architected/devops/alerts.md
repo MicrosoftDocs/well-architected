@@ -1,8 +1,9 @@
 ---
 title: Alerting for DevOps
-description: Explore alerting, which is the process of analyzing the monitoring and instrumentation data and generating a notification if a significant event is detected.
+description: Explore alerting for operational excellence, which is the process of analyzing the monitoring and instrumentation data and generating a notification if a significant event is detected.
 author: david-stanford
-ms.date: 09/23/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -46,7 +47,7 @@ For more information on alerts, reference [Overview of alerts in Microsoft Azure
 
 Prioritizing alerts with a specific severity or urgency helps operational teams in cases where multiple events require intervention at the same time. For example, alerts concerning critical system flows might require special attention. When creating an alert, ensure you establish and set the correct priority.
 
-![Screenshot of an Azure Monitor alert severity as seen in the Azure portal.](../../_images/devops/alert-severity.png)
+![Screenshot of an Azure Monitor alert severity as seen in the Azure portal.](../devops/alert-severity.png)
 
 ## Alert owners
 
@@ -70,7 +71,7 @@ For more information on using Azure Monitor action groups, reference [Create and
 
 The default Alerts page provides a summary of alerts that are created within a particular time range. It displays the total alerts for each severity, with columns that identify the total number of alerts in each state for each severity.
 
-![Screenshot of Azure Monitor alert dashboard as seen in the Azure portal.](../../_images/devops/alerts-dash.png)
+![Screenshot of Azure Monitor alert dashboard as seen in the Azure portal.](../devops/alerts-dash.png)
 
 In addition to the default Azure Monitor alert dashboard, custom dashboards can be created using log analytics data. This dashboard can be tailored to reflect the current and past start of all alerts.
 

@@ -2,7 +2,8 @@
 title: Automated Tasks
 description: Automate operational tasks, which can include any action or activity you may perform while managing systems, system access, and processes in Azure.
 author: david-stanford
-ms.date: 10/15/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -48,7 +49,7 @@ Functions provide event-driven automation; each function has a trigger associate
 
 Below are example triggers seen in the Azure portal when creating a new function
 
-![Azure Function triggers as seenin the Azure portal.](../../_images/devops/function-triggers.png)
+![Azure Function triggers as seenin the Azure portal.](../devops/function-triggers.png)
 
 Once an event has occurred that initiates a Function, you may also want to consume data from this event or from another source. Once a Function has been completed, you may want to publish or push data to an Azure service such as a Blob Storage. Input and output are achieved using input and output bindings. For more information about triggers and bindings, see [Azure Functions triggers and binding concepts](/azure/azure-functions/functions-triggers-bindings).
 
@@ -72,7 +73,7 @@ Azure Automation provides an Azure-hosted platform for hosting and running Power
 
 As seen in the following image, Azure Automation provides a portal experience for managing Azure Automation Runbooks. Use the included code sample (ARM template) to deploy an Azure automation account, automation runbook, and explore Azure Automation for yourself.
 
-![Azure Automation PowerShell Runbook as seen in the Azure portal.](../../_images/devops/azure-automation-powershell.png)
+![Azure Automation PowerShell Runbook as seen in the Azure portal.](../devops/azure-automation-powershell.png)
 
 **Learn more**
 
@@ -95,11 +96,11 @@ Some Azure services support automatic scale-out, which is the focus of this sect
 
 Azure Monitor autoscale can be used to autoscale Virtual Machine Scale Sets, Cloud Services, App Service Web Apps, and API Management service. To configure scale-out operations for these services, while in the Azure portal, select the service, and then **scale-out** under the resource settings. Select **Custom** To configure autoscaling rules. Automatic scale operations can also be configured using an Azure Resource Manager Template, the Azure PowerShell module, and the Azure CLI.
 
-![Azure App Service scale configuration as seen in the Azure portal.](../../_images/devops/auto-scale.png)
+![Azure App Service scale configuration as seen in the Azure portal.](../devops/auto-scale.png)
 
 When creating the autoscale rules, configure minimum and maximum instance counts. These settings prevent inadvertent costly scale operations. Next, configure autoscale rules, at minimum one to add more instances, and one to remove instances when no longer needed. Azure Monitor autoscale rules give you fine-grain control over when a scale operation is initiated. See the Learn more section below for more information on configuring these rules.
 
-![Azure App Service scale detailed configuration as seen in the Azure portal.](../../_images/devops/scale-rules.png)
+![Azure App Service scale detailed configuration as seen in the Azure portal.](../devops/scale-rules.png)
 
 **Learn more**
 

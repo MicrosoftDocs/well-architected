@@ -2,7 +2,8 @@
 title: Big data cost estimates
 description: Know how to make cost estimates for big data analytics services, including Azure Synapse analytics, Azure Databricks, Azure Stream Analytics, and more.
 author: PageWriter-MSFT
-ms.date: 08/24/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -25,12 +26,12 @@ Those workloads have different needs. Batch processing is done with long-running
 For information about choosing technologies for each workload, see these articles:
 
 - Batch processing
-    - [Technology choices for batch processing](../../data-guide/technology-choices/batch-processing.md#technology-choices-for-batch-processing)
-    - [Capability matrix](../../data-guide/technology-choices/batch-processing.md#capability-matrix)
+    - [Technology choices for batch processing](/azure/architecture/data-guide/technology-choices/batch-processing#technology-choices-for-batch-processing)
+    - [Capability matrix](/azure/architecture/data-guide/technology-choices/batch-processing#capability-matrix)
 
 - Stream processing
-    - [What are your options when choosing a technology for real-time processing?](../../data-guide/technology-choices/stream-processing.md#what-are-your-options-when-choosing-a-technology-for-real-time-processing)
-    - [Capability matrix](../../data-guide/technology-choices/stream-processing.md#capability-matrix)
+    - [What are your options when choosing a technology for real-time processing?](/azure/architecture/data-guide/technology-choices/stream-processing#what-are-your-options-when-choosing-a-technology-for-real-time-processing)
+    - [Capability matrix](/azure/architecture/data-guide/technology-choices/stream-processing#capability-matrix)
 
 This article provides cost considerations for some of those choices. This is not meant to be an exhaustive list, but a subset of options.
 
@@ -42,7 +43,7 @@ You can provision the resources in one of two service levels.
 - **Compute Optimized Gen1** tracks usage in DWUs and is offered in a pay-as-you-go model.
 - **Compute Optimized Gen2** tracks the compute DWUs (cDWUs) which allows you to scale the compute nodes. This level is intended for intensive workloads with higher query performance and compute scalability. You can choose the pay-as-you-go model or save 37% to 65% by using reserved instances if you can commit to one or three years. For more information, see [Reserved instances](./optimize-vm.md#reserved-vms).
 
-> ![Task](../../_images/i-best-practices.svg) Start with smaller DWUs and measure performance for resource intensive operations, such as heavy data loading or transformation. This will help you determine the number of units you need to increase or decrease. Measure usage during the peak business hours so you can assess the number of concurrent queries and accordingly add units to increase the parallelism. Conversely, measure off-peak usage so that you can pause compute when needed.
+> ![Task](./images/i-best-practices.png) Start with smaller DWUs and measure performance for resource intensive operations, such as heavy data loading or transformation. This will help you determine the number of units you need to increase or decrease. Measure usage during the peak business hours so you can assess the number of concurrent queries and accordingly add units to increase the parallelism. Conversely, measure off-peak usage so that you can pause compute when needed.
 
 In Azure Synapse Analytics, you can import or export data from an external data store, such as Azure Blob Storage and Azure Data Lake Store. Storage and analytics resources aren't included in the price. There is additional bandwidth cost for moving data in and out of the data warehouse.
 
@@ -52,8 +53,8 @@ For more information, see these articles:
 
 ### Reference architecture
 
-- [Automated enterprise BI with Azure Synapse Analytics and Azure Data Factory](../../reference-architectures/data/enterprise-bi-adf.yml)
-- [Enterprise BI in Azure with Azure Synapse Analytics](../../reference-architectures/data/enterprise-bi-synapse.yml)
+- [Automated enterprise BI with Azure Synapse Analytics and Azure Data Factory](/azure/architecture/reference-architectures/data/enterprise-bi-adf)
+- [Enterprise BI in Azure with Azure Synapse Analytics](/azure/architecture/reference-architectures/data/enterprise-bi-synapse)
 
 ## Azure Databricks
 Azure Databricks offers two SKUs **Standard** and **Premium**, each with these options, listed in the order of least to most expensive.
@@ -82,19 +83,20 @@ For more information, see [Azure Databricks Pricing](https://azure.microsoft.com
 
 If you can commit to one or three years, opt for reserved instances, which can save 38% - 59%. For more information, see [Reserved instances](./optimize-vm.md#reserved-vms).
 
-> ![Task](../../_images/i-best-practices.svg) Turning off the Spark cluster when not in use to prevent unnecessary charges.
+> ![Task](./images/i-best-practices.png) Turning off the Spark cluster when not in use to prevent unnecessary charges.
 
 #### Reference architecture
-- [Stream processing with Azure Databricks](../../reference-architectures/data/stream-processing-databricks.yml)
-- [Build a Real-time Recommendation API on Azure](../../reference-architectures/ai/real-time-recommendation.yml)
-- [Batch scoring of Spark models on Azure Databricks](../../reference-architectures/ai/real-time-recommendation.yml)
+
+- [Stream processing with Azure Databricks](/azure/architecture/reference-architectures/data/stream-processing-databricks)
+- [Build a Real-time Recommendation API on Azure](/azure/architecture/reference-architectures/ai/real-time-recommendation)
+- [Batch scoring of Spark models on Azure Databricks](/azure/architecture/reference-architectures/ai/real-time-recommendation)
 
 ## Azure Stream Analytics
 Stream analytics uses *streaming units (SUs)* to measure the amount of compute, memory, and throughput required to process data. When provisioning a stream processing job, you're expected to specify an initial number of SUs. Higher streaming units mean higher cost because more resources are used.
 
 Stream processing with low latency requires a significant amount of memory. This resource is tracked by the SU% utilization metric. Lower utilization indicates that the workload requires more compute resources. You can set an alert on 80% SU Utilization metric to prevent resource exhaustion.
 
-> ![Task](../../_images/i-best-practices.svg) To evaluate the number of units you need, process an amount of data that is realistic for your production level workload, observe the SU% Utilization metric, and accordingly adjust the SU value.
+> ![Task](./images/i-best-practices.png) To evaluate the number of units you need, process an amount of data that is realistic for your production level workload, observe the SU% Utilization metric, and accordingly adjust the SU value.
 
 You can create stream processing jobs in Azure Stream Analytics and deploy them to devices running Azure IoT Edge through Azure IoT Hub. The number of devices impacts over all cost. Billing starts when a job is deployed to devices, regardless of the job status (running, failed, stopped).
 
@@ -103,8 +105,8 @@ SUs are based on the partition configuration for the inputs and the query that's
 For pricing details, see [Azure Stream Analytics pricing](https://azure.microsoft.com/pricing/details/stream-analytics/).
 
 #### Reference architecture
-- [Batch scoring of Python machine learning models on Azure](../../reference-architectures/ai/batch-scoring-python.yml)
-- [Azure IoT reference architecture](../../reference-architectures/iot.yml#cost-considerations)
+- [Batch scoring of Python machine learning models on Azure](/azure/architecture/reference-architectures/ai/batch-scoring-python)
+- [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot#cost-considerations)
 
 ## Azure Analysis Services
 
@@ -124,8 +126,9 @@ Each tier offers one or more instances. The main cost drivers are the QPUs and m
 - [Azure Analysis Services pricing](https://azure.microsoft.com/pricing/details/analysis-services)
 
 #### Reference architecture
-- [Enterprise business intelligence - Azure Reference Architectures](../../reference-architectures/data/enterprise-bi-synapse.yml)
-- [Automated enterprise BI - Azure Architecture Center](../../reference-architectures/data/enterprise-bi-adf.yml)
+
+- [Enterprise business intelligence - Azure Reference Architectures](/azure/architecture/reference-architectures/data/enterprise-bi-synapse)
+- [Automated enterprise BI - Azure Architecture Center](/azure/architecture/reference-architectures/data/enterprise-bi-adf)
 
 ## Azure Data Factory V2
 Azure Data Factory is a big data orchestrator. The service transfers data to and from diverse types of data stores. It transforms the data by using other compute services. It creates workflows that automate data movement and transformation.  You are only charged for consumption. Consumption is measured by these factors:
@@ -138,6 +141,7 @@ Azure Data Factory is a big data orchestrator. The service transfers data to and
 You are also charged for execution activities, such as copying data, lookups, and external activities. Each activity is individually priced. You are also charged for pipelines with no associated triggers or runs within the month. All activities are prorated by the minute and rounded up.
 
 #### Reference architecture
-- [Automated enterprise BI - Azure Architecture Center](../../reference-architectures/data/enterprise-bi-adf.yml)
-- [Enterprise business intelligence - Azure Reference Architectures](../../reference-architectures/data/enterprise-bi-synapse.yml)
-- [Build an enterprise-grade conversational bot - Azure Architecture Center](../../reference-architectures/ai/conversational-bot.yml)
+
+- [Automated enterprise BI - Azure Architecture Center](/azure/architecture/reference-architectures/data/enterprise-bi-adf)
+- [Enterprise business intelligence - Azure Reference Architectures](/azure/architecture/reference-architectures/data/enterprise-bi-synapse)
+- [Build an enterprise-grade conversational bot - Azure Architecture Center](/azure/architecture/reference-architectures/ai/conversational-bot)
