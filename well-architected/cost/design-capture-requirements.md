@@ -2,7 +2,8 @@
 title: Capture cost requirements for an Azure
 description: Learn to enumerate cost requirements and considerations, and how to align costs with business goals.
 author: PageWriter-MSFT
-ms.date: 05/12/2020
+ms.author: robbymillsap
+ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -46,7 +47,7 @@ Security is one of the most important aspects of any architecture. Security meas
 
 Factor in the cost of security controls, such as authentication, MFA, conditional access, information protection, JIT/PIM, and premium Azure AD features. Those options will drive up the cost.
 
-For security considerations, see the [Security Pillar](../../security/overview.md).
+For security considerations, see the [Security Pillar](../security/overview.md).
 
 ## Business continuity
 
@@ -81,7 +82,7 @@ If your application runs intermittently, consider using Azure Functions in a con
 
 You may not have a business goal to leave the service running all the time. Doing so will incur a consistent cost. Can you save by shutting down the service or scaling it down outside normal business hours? If you can,
 - Azure has a rich set of APIs, SDKs, and automation technology that utilizes DevOps and traditional automation principles. Those technologies ensure that the workload is available at an appropriate level of scale as needed.
-- Repurpose some compute and data resources for other tasks that run out of regular business hours. See the [Compute Resource Consolidation](../../patterns/compute-resource-consolidation.md) pattern and consider containers or elastic pools for more compute and data cost flexibility.
+- Repurpose some compute and data resources for other tasks that run out of regular business hours. Reference the [Compute Resource Consolidation](/azure/architecture/patterns/compute-resource-consolidation) pattern and consider containers or elastic pools for more compute and data cost flexibility.
 
 ## Budget for staff education
 Keep the technical staff up to date in cloud management skills so that the invested services are optimally used.

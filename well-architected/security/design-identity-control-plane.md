@@ -2,7 +2,8 @@
 title: Azure control plane security
 description: Examine security considerations for Azure control plane. A control plane refers to the management of resources in your subscription.
 author: PageWriter-MSFT
-ms.date: 10/26/2021
+ms.author: robbymillsap
+ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -44,7 +45,7 @@ Azure role-based access control (Azure RBAC) provides the necessary tools to mai
 - Only the SecOps team can read and manage Key Vault secrets.
 - If there are multiple teams, Project A team can access and manage Resource Group A and all resources within.
 
-> ![Task](../../_images/i-best-practices.svg) Grant roles the appropriate permissions that start with least privilege and add more based on your operational needs. Provide clear guidance to your technical teams that implement permissions. This clarity makes it easier to detect and correct which reduces human errors such as overpermissioning.
+> ![Task](./images/i-best-practices.png) Grant roles the appropriate permissions that start with least privilege and add more based on your operational needs. Provide clear guidance to your technical teams that implement permissions. This clarity makes it easier to detect and correct which reduces human errors such as overpermissioning.
 
 Azure RBAC helps you manage that separation. You can assign permissions to users, groups, and applications at a certain scope. The scope of a role assignment can be a subscription, a resource group, or a single resource. For details, see [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview).
 

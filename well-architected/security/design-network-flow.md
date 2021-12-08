@@ -2,7 +2,8 @@
 title: Traffic flow security in Azure
 description: Examine traffic flow security in Azure. Learn about best practices for protecting a workload from data exfiltration.
 author: PageWriter-MSFT
-ms.date: 02/03/2021
+ms.author: robbymillsap
+ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -50,9 +51,9 @@ When analyzing the network flow of a workload, distinguish between east-west tra
 > [!TIP]
 > Here are the resources for the preceding AKS example:
 >
-> ![GitHub logo](../../_images/github.svg) [GitHub: Azure Kubernetes Service (AKS) Secure Baseline Reference Implementation](https://github.com/mspnp/aks-secure-baseline).
->
-> The design considerations are described in [Azure Kubernetes Service (AKS) production baseline](../../reference-architectures/containers/aks/secure-baseline-aks.yml).
+> ![GitHub logo](./images/github.svg) [GitHub: Azure Kubernetes Service (AKS) Secure Baseline Reference Implementation](https://github.com/mspnp/aks-secure-baseline).
+
+> The design considerations are described in [Azure Kubernetes Service (AKS) production baseline](/azure/architecture/reference-architectures/containers/aks/secure-baseline-aks).
 
 ## Data exfiltration
 

@@ -2,7 +2,8 @@
 title: Key and secret management in Azure
 description: Examine key and secret management considerations in Azure. Protect keys by storing them in the managed key vault service.
 author: PageWriter-MSFT
-ms.date: 09/23/2021
+ms.author: robbymillsap
+ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -53,9 +54,9 @@ Suppose you need to store sensitive data in Azure Blob Storage. You can use Azur
 > Using SAS tokens is a common way to control access. SAS tokens are created by using the service owner's Azure AD credentials. The tokens are created per resource and you can use Azure RBAC to restrict access. SAS tokens have a time limit, which controls the window of exposure.
 > Here are the resources for the preceding example:
 >
-> ![GitHub logo](../../_images/github.svg) [GitHub: Azure Cognitive Services Reference Implementation](https://github.com/mspnp/cognitive-services-reference-implementation).
+> ![GitHub logo](./images/github.svg) [GitHub: Azure Cognitive Services Reference Implementation](https://github.com/mspnp/cognitive-services-reference-implementation).
 >
-> The design considerations are described in [Speech transcription with Azure Cognitive Services](../../reference-architectures/ai/speech-to-text-transcription-pipeline.yml).
+> The design considerations are described in [Speech transcription with Azure Cognitive Services](/azure/architecture/reference-architectures/ai/speech-to-text-transcription-pipeline).
 
 ## Key storage
 

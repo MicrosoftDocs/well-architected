@@ -2,8 +2,8 @@
 title: Implement network segmentation patterns
 description: Use network-level segmentation to secure virtual networks. Understand Azure features for segmentation. Review three different segmentation patterns.
 author: tremansdoerfer
-ms.author: rimansdo
-ms.date: 07/28/2021
+ms.author: robbymillsap
+ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -136,9 +136,9 @@ With Azure Firewall Manager preview, you can centrally manage policies across mu
 > [!TIP]
 > Here are some resources that illustrate provisioning of  resources in a hub and spoke topology:
 >
-> ![GitHub logo](../../_images/github.svg) [GitHub: Hub and Spoke Topology Sandbox](https://azure.microsoft.com/resources/templates/hub-and-spoke-sandbox/).
+> ![GitHub logo](./images/github.svg) [GitHub: Hub and Spoke Topology Sandbox](https://azure.microsoft.com/resources/templates/hub-and-spoke-sandbox/).
 >
-> The design considerations are described in [Hub-spoke network topology in Azure](../../reference-architectures/hybrid-networking/hub-spoke.yml).
+> The design considerations are described in [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke).
 
 ## Pattern comparison
 
@@ -157,10 +157,10 @@ With Azure Firewall Manager preview, you can centrally manage policies across mu
 
 ## Related links
 
-- For information about setting up peering, see [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview).
+- For information about setting up peering, reference [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview).
 
-- For best practices about using Azure Firewall in various configurations, see [Azure Firewall Architecture Guide](../../example-scenario/firewalls/index.yml).
+- For best practices about using Azure Firewall in various configurations, reference [Azure Firewall Architecture Guide](/azure/architecture/example-scenario/firewalls/).
 
-- For information about different access policies and control flow within a VNet, see [Azure Virtual Network Subnet](/azure/virtual-network/virtual-network-manage-subnet)
+- For information about different access policies and control flow within a VNet, reference [Azure Virtual Network Subnet](/azure/virtual-network/virtual-network-manage-subnet)
 
 > Back to the main article: [Network security](design-network.md)

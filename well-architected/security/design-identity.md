@@ -2,7 +2,8 @@
 title: Identity and access management checklist
 description: Use Azure Active Directory (Azure AD) to grant access based on identity authentication and authorization.
 author: PageWriter-MSFT
-ms.date: 07/09/2019
+ms.author: robbymillsap
+ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -41,7 +42,7 @@ Provide security assurance through _identity management_: the process of authent
 
 The Azure Security Benchmark includes a collection of high-impact security recommendations you can use to help secure the services you use in Azure:
 
-> ![Security Benchmark](../../_images/benchmark-security.svg) The questions in this section are aligned to the [Azure Security Benchmarks Identity and Access Control](/azure/security/benchmarks/security-controls-v2-identity-management).
+> ![Security Benchmark](../_images/benchmark-security.svg) The questions in this section are aligned to the [Azure Security Benchmarks Identity and Access Control](/azure/security/benchmarks/security-controls-v2-identity-management).
 
 ## Azure services for identity
 
@@ -55,9 +56,9 @@ The considerations and best practices in this section are based on these Azure s
 
 Here are some reference architectures related to identity and access management:
 
-[Integrate on-premises AD domains with Azure AD](../../reference-architectures/identity/azure-ad.yml)
+[Integrate on-premises AD domains with Azure AD](/azure/architecture/reference-architectures/identity/azure-ad)
 
-[Integrate on-premises AD with Azure](../../reference-architectures/identity/index.yml)
+[Integrate on-premises AD with Azure](/azure/architecture/reference-architectures/identity/)
 
 ## Next steps
 
