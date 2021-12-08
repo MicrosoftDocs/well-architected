@@ -24,7 +24,7 @@ Availability is measured as a percentage of uptime, and defines the proportion o
 |----------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
 |           [Deployment Stamps](/azure/architecture/patterns/deployment-stamp)          |                 Deploy multiple independent copies of application components, including data stores.                         |
 | [Geodes](/azure/architecture/patterns/geodes) | Deploy backend services into a set of geographical nodes, each of which can service any client request in any region. |
-| [Health Endpoint Monitoring](pattern/azure/architecture/s/health-endpoint-monitoring) | Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. |
+| [Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring) | Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. |
 |  [Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling)  | Use a queue that acts as a buffer between a task and a service that it invokes, to smooth intermittent heavy loads.  |
 |                 [Throttling](/azure/architecture/patterns/throttling)                 |   Control the consumption of resources by an instance of an application, an individual tenant, or an entire service.    |
 

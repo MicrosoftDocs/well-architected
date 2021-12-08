@@ -36,7 +36,7 @@ Regular testing should be performed as part of each major change and if possible
 ## Azure services
 
 - [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)
-- [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops)
+- [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops&preserve-view=true)
 - [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview)
 - [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)
 
