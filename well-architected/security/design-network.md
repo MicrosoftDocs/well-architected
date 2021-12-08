@@ -2,7 +2,8 @@
 title: Network security strategies on Azure
 description: Best practices for network security in Azure, including network segmentation, network management, containment strategy, and internet edge strategy.
 author: PageWriter-MSFT
-ms.date: 02/03/2021
+ms.author: robbymillsap
+ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -37,7 +38,7 @@ Protect assets by placing controls on network traffic originating in Azure, betw
 ## Azure security benchmark
 The Azure Security Benchmark includes a collection of high-impact security recommendations you can use to help secure the services you use in Azure:
 
-> ![Security Benchmark](../../_images/benchmark-security.svg) The questions in this section are aligned to the [Azure Security Benchmarks Network Security](/azure/security/benchmarks/security-controls-v2-network-security).
+> ![Security Benchmark](../_images/benchmark-security.svg) The questions in this section are aligned to the [Azure Security Benchmarks Network Security](/azure/security/benchmarks/security-controls-v2-network-security).
 
 ## Azure services
 - [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview)
@@ -48,10 +49,10 @@ The Azure Security Benchmark includes a collection of high-impact security recom
 ## Reference architecture
 Here are some reference architectures related to network security:
 
-- [Hub-spoke network topology in Azure](../../reference-architectures/hybrid-networking/hub-spoke.yml)
-- [Deploy highly available NVAs](../../reference-architectures/dmz/nva-ha.yml)
-- [Windows N-tier application on Azure with SQL Server](../../reference-architectures/n-tier/n-tier-sql-server.yml)
-- [Azure Kubernetes Service (AKS) production baseline](../../reference-architectures/containers/aks/secure-baseline-aks.yml)
+- [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
+- [Deploy highly available NVAs](/azure/architecture/reference-architectures/dmz/nva-ha)
+- [Windows N-tier application on Azure with SQL Server](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+- [Azure Kubernetes Service (AKS) production baseline](/azure/architecture/reference-architectures/containers/aks/secure-baseline-aks)
 
 ## Next steps
 

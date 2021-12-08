@@ -2,7 +2,8 @@
 title: Monitor application health for reliability
 description: Use application health monitoring to improve application reliability in Azure. Work with alerts, subscriptions, service limits, instrumentation, and more.
 author: v-aangie
-ms.date: 09/23/2021
+ms.author: robbymillsap
+ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -61,7 +62,7 @@ You can also get a full-stack view of application state by using [Azure dashboar
 
 ### Samples
 
-:::image type="icon" source="../../_images/github.png" border="false"::: Here are some samples about creating and querying alerts:
+:::image type="icon" source="../_images/github.png" border="false"::: Here are some samples about creating and querying alerts:
 
 - [HealthAlert](https://github.com/mspnp/samples/tree/master/Reliability/HealthAlerts): A sample about creating resource-level health activity log alerts. The sample uses Azure Resource Manager to create alerts.
 - [GraphAlertsPsSample](https://github.com/mspnp/samples/tree/master/Reliability/GraphAlertsPsSample): A set of PowerShell commands that queries for alerts generated against your subscription.
