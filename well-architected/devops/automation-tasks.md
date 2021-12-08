@@ -49,7 +49,7 @@ Functions provide event-driven automation; each function has a trigger associate
 
 Below are example triggers seen in the Azure portal when creating a new function
 
-![Azure Function triggers as seenin the Azure portal.](../devops/function-triggers.png)
+![Azure Function triggers as seen in the Azure portal.](../devops/function-triggers.png)
 
 Once an event has occurred that initiates a Function, you may also want to consume data from this event or from another source. Once a Function has been completed, you may want to publish or push data to an Azure service such as a Blob Storage. Input and output are achieved using input and output bindings. For more information about triggers and bindings, see [Azure Functions triggers and binding concepts](/azure/azure-functions/functions-triggers-bindings).
 
