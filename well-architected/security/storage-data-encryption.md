@@ -2,7 +2,8 @@
 title: Storage, data, and encryption in Azure | Microsoft Docs
 description: Secure data storage in Azure. Use identity-based storage access controls. Encrypt virtual disk files and data in transit. Enable platform encryption services.
 author: dsk-2015
-ms.date: 11/05/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -74,5 +75,5 @@ Protect data while it's being transferred between components, locations or progr
 
 Sometimes you need to isolate your entire communication channel between your on-premises and cloud infrastructure by using either a virtual private network (VPN) or [ExpressRoute](/azure/expressroute/). For more information, see  these articles:
 
-- [Extending on-premises data solutions to the cloud](../../data-guide/scenarios/hybrid-on-premises-and-cloud.md)
+- [Extending on-premises data solutions to the cloud](/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)
 - [Configure a Point-to-Site VPN connection to a VNet using native Azure certificate authentication: Azure portal](/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#architecture)

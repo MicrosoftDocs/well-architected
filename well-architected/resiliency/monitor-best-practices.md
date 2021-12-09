@@ -2,7 +2,8 @@
 title: Best practices for reliability in apps
 description: Review best practices for reliability monitoring in Azure applications within the Azure Well-Architected Framework.
 author: v-aangie
-ms.date: 02/17/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

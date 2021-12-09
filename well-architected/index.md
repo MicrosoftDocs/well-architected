@@ -174,13 +174,7 @@ For a high-level summary, reference [Overview of the operational excellence pill
 
 [Performance efficiency](./scalability/index.yml) is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. The main ways to achieve performance efficiency include using scaling appropriately and implementing PaaS offerings that have scaling built in.
 
-For more information, reference the following video about optimizing for reliable VM deployments:
-
-<!-- markdownlint-disable MD034 -->
-
-> [!VIDEO https://docs.microsoft.com/events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency/player]
-
-<!-- markdownlint-enable MD034 -->
+For more information, watch [Performance Efficiency: Fast & Furious: Optimizing for Quick and Reliable VM Deployments](/events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency).
 
 ### Performance efficiency guidance
 

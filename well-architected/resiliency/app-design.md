@@ -2,7 +2,8 @@
 title: Design reliable Azure applications
 description: Review the design considerations for making sure that Azure applications are reliable and resilient to failure.
 author: v-aangie
-ms.date: 02/17/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -53,7 +54,7 @@ To drive cost down consider splitting application components and data into group
 **Is the application designed to use managed services?**
 ***
 
-Azure-managed services provide native resiliency capabilities to support overall application reliability. Platform as a service (PaaS) offerings should be used to leverage these capabilities. PaaS options are easier to configure and administer. You don't need to provision VMs, set up VNets, manage patches and updates, and all of the other overhead associated with running software on a VM. To learn more, see [Use managed services](../../guide/design-principles/managed-services.md).
+Azure-managed services provide native resiliency capabilities to support overall application reliability. Platform as a service (PaaS) offerings should be used to leverage these capabilities. PaaS options are easier to configure and administer. You don't need to provision VMs, set up VNets, manage patches and updates, and all of the other overhead associated with running software on a VM. To learn more, see [Use managed services](/azure/architecture/guide/design-principles/managed-services).
 
 **Has the application been designed to scale out?**
 ***
@@ -72,8 +73,8 @@ Understanding the subscription landscape of the application and how components a
 
 ## Related links
 
-- For information on minimizing dependencies, see [Minimize coordination](../../guide/design-principles/minimize-coordination.md).
-- For more information on fault-points and fault-modes, see [Failure Mode Analysis for Azure applications](../../resiliency/failure-mode-analysis.md).
-- For information on managed services, see [Use platform as a service (PaaS) options](../../guide/design-principles/managed-services.md).
+- For information on minimizing dependencies, see [Minimize coordination](/azure/architecture/guide/design-principles/minimize-coordination).
+- For more information on fault-points and fault-modes, see [Failure Mode Analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
+- For information on managed services, see [Use platform as a service (PaaS) options](/azure/architecture/guide/design-principles/managed-services).
 
 > Go back to the main article: [Design](design-checklist.md)

@@ -2,7 +2,8 @@
 title: Monitoring for performance efficiency
 description: Consider scalability, app and infrastructure performance, and resiliency.
 author: v-aangie
-ms.date: 01/28/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

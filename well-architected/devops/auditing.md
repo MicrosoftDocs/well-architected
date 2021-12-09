@@ -2,7 +2,8 @@
 title: Auditing
 description: Provides requirements and use cases for auditing software releases as it relates to monitoring, and diagnostics. 
 author: v-stacywray
-ms.date: 11/16/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -46,4 +47,4 @@ An analyst must access all the raw data in its original form. Aside from the com
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [DevOps Checklist](../../checklist/dev-ops.md)
+> [DevOps Checklist](/azure/architecture/checklist/dev-ops)

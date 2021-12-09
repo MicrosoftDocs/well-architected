@@ -2,7 +2,8 @@
 title: Principles of the reliability pillar
 description: Understand the principles of the reliability pillar. Review application framework tips to make the application more reliable.
 author: v-aangie
-ms.date: 02/17/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

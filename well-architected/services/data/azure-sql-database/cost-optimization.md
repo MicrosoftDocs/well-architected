@@ -2,7 +2,8 @@
 title: Azure SQL Database and cost optimization
 description: Focuses on the Azure SQL Database service used in the Data solution to provide best-practice and configuration recommendations related to Cost Optimization.
 author: v-stacywray
-ms.date: 11/15/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

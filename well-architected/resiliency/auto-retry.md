@@ -2,7 +2,8 @@
 title: Automatic retry of failed backup jobs
 description: Provides guidance and code examples for how to retry backups for all failed jobs in Azure.
 author: v-stacywray
-ms.date: 11/17/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

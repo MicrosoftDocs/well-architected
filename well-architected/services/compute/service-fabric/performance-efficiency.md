@@ -2,7 +2,8 @@
 title: Azure Service Fabric and performance efficiency
 description: Focuses on the Azure Service Fabric used in the Compute solution to provide best-practice, configuration recommendations, and design considerations related to service performance efficiency.
 author: v-stacywray
-ms.date: 11/17/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -44,4 +45,4 @@ Consider the following recommendation to optimize your Azure Service Fabric conf
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Virtual Machines and reliability](../../virtual-machines/reliability.md)
+> [Azure Virtual Machines and reliability](../virtual-machines/reliability.md)

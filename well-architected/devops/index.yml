@@ -8,9 +8,9 @@ metadata:
   description: Learn how to apply operations processes to your architecture to keep an application running in production.
   services: na
   author: v-stacywray
-  ms.author: v-stacywray
+  ms.author: robbymillsap
   manager: david-stanford
-  ms.date: 08/16/2021
+  ms.date: 12/08/2021
   ms.topic: landing-page
   ms.service: architecture-center
   ms.subservice: well-architected
@@ -32,9 +32,9 @@ landingContent:
           - text: Application design
             url: release-engineering-app-dev.md
           - text: Monitoring checklist
-            url: ../../checklist/dev-ops.md
+            url: /azure/architecture/checklist/dev-ops
           - text: DevOps culture
-            url: ../../checklist/dev-ops.md#culture
+            url: /azure/architecture/checklist/dev-ops#culture
           - text: DevOps patterns
             url: devops-patterns.md
       - linkListType: learn

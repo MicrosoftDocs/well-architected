@@ -3,7 +3,8 @@ title: Security patterns
 titleSuffix: Cloud Design Patterns
 description: Use these security patterns to help design and deploy applications in a way that protects them from attacks, restricts access, and protects sensitive data.
 author: dragon119
-ms.date: 06/23/2017
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -21,9 +22,9 @@ Security provides confidentiality, integrity, and availability assurances agains
 
 |                    Pattern                     |                                                                                                         Summary                                                                                                         |
 |------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Federated Identity](../../patterns/federated-identity.md) |                                                                                Delegate authentication to an external identity provider.                                                                                |
-|         [Gatekeeper](../../patterns/gatekeeper.md)         | Protect applications and services by using a dedicated host instance that acts as a broker between clients and the application or service, validates and sanitizes requests, and passes requests and data between them. |
-|          [Valet Key](../../patterns/valet-key.md)          |                                                        Use a token or key that provides clients with restricted direct access to a specific resource or service.                                                        |
+| [Federated Identity](/azure/architecture/patterns/federated-identity) |                                                                                Delegate authentication to an external identity provider.                                                                                |
+|         [Gatekeeper](/azure/architecture/patterns/gatekeeper)         | Protect applications and services by using a dedicated host instance that acts as a broker between clients and the application or service, validates and sanitizes requests, and passes requests and data between them. |
+|          [Valet Key](/azure/architecture/patterns/valet-key)          |                                                        Use a token or key that provides clients with restricted direct access to a specific resource or service.                                                        |
 
 ## Key Security Resources
 

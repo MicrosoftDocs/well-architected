@@ -2,7 +2,8 @@
 title: Azure SQL Database and reliability
 description: Focuses on the Azure SQL Database service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Reliability.
 author: v-stacywray
-ms.date: 11/15/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

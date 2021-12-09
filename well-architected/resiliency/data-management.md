@@ -2,7 +2,8 @@
 title: Data Management for Reliability
 description: Data Management for Reliability
 author: david-stanford
-ms.date: 10/16/2019
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -63,7 +64,7 @@ A variety of options are available for recovery and high availability for SQL Se
 
 Alternatively, you can use SQL Always On Availability Groups for high availability by creating a single availability group that includes the SQL Server instances in both regions.
 
-As an example, [Multi-region N-tier application](../../reference-architectures/n-tier/multi-region-sql-server.yml) reference architecture shows a set of practices for running an N-tier application in multiple Azure regions to achieve availability and a robust disaster recovery infrastructure. It uses a SQL Server Always On Availability Group and Azure Traffic Manager.
+As an example, [Multi-region N-tier application](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server) reference architecture shows a set of practices for running an N-tier application in multiple Azure regions to achieve availability and a robust disaster recovery infrastructure. It uses a SQL Server Always On Availability Group and Azure Traffic Manager.
 
 ## Storage resiliency
 
@@ -75,7 +76,7 @@ Azure Storage provides data resiliency through automated replicas. However, this
 
 - **Tables**. Use AzCopy to export the table data into another storage account in another region.
 
-:::image type="icon" source="../../_images/github.png" border="false"::: Samples related to storage resiliency are [here](https://github.com/mspnp/samples/tree/master/Reliability/StorageSnapshotsSample). The scripts perform these tasks:
+:::image type="icon" source="../_images/github.png" border="false"::: Samples related to storage resiliency are [here](https://github.com/mspnp/samples/tree/master/Reliability/StorageSnapshotsSample). The scripts perform these tasks:
 
 - ARM template to deploy a storage account and blob container.
 - Copies file into the blob container.

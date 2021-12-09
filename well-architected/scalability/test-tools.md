@@ -2,7 +2,8 @@
 title: Testing tools
 description: Review testing tools for performance efficiency. Identify baselines and goals for performance. Cache data, run benchmark tests, and use metrics.
 author: v-aangie
-ms.date: 12/02/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -19,7 +20,7 @@ ms.custom:
 
 There are multiple stages in the development and deployment life cycle in which tests can be performed. Application code, infrastructure automation, and fault tolerance should all be tested. This can ensure that the application will perform as expected in every situation. You'll want to test early enough in the application life cycle to catch and fix errors. Errors are cheaper to repair when caught early and can be expensive or impossible to fix later.
 
-Testing can be automated or manual. Automating tests is the best way to make sure that they are executed. Depending on how frequently tests are performed, they are typically limited in duration and scope. Manual testing is run much less frequently. For a list of tests that you should consider while developing and deploying applications, see [Testing your application and Azure environment](../../devops/release-engineering-testing.md).
+Testing can be automated or manual. Automating tests is the best way to make sure that they are executed. Depending on how frequently tests are performed, they are typically limited in duration and scope. Manual testing is run much less frequently. For a list of tests that you should consider while developing and deploying applications, see [Testing your application and Azure environment](../devops/release-engineering-testing.md).
 
 ## Identify baselines and goals for performance
 
@@ -43,13 +44,13 @@ Caching can dramatically improve performance, scalability, and availability. The
 
 Use performance testing and usage analysis to determine whether pre-populating or on-demand loading of the cache, or a combination of both, is appropriate. The decision should be based on the volatility and usage pattern of the data. Cache utilization and performance analysis are particularly important in applications that encounter heavy loads and must be highly scalable.
 
-To learn more about how to use caching as a solution in testing, see [Caching](../../best-practices/caching.md#determine-how-to-cache-data-effectively).
+To learn more about how to use caching as a solution in testing, see [Caching](/azure/architecture/best-practices/caching#determine-how-to-cache-data-effectively).
 
 ### Use Azure Redis to cache data
 
 Azure Cache for Redis is a caching service that can be accessed from any Azure application, whether the application is implemented as a cloud service, a website, or inside an Azure virtual machine. Caches can be shared by client applications that have the appropriate access key. It is a high-performance caching solution that provides availability, scalability, and security.
 
-To learn more about using Azure Cache for Redis, see [Considerations for implementing caching in Azure](../../best-practices/caching.md#considerations-for-implementing-caching-in-azure).
+To learn more about using Azure Cache for Redis, see [Considerations for implementing caching in Azure](/azure/architecture/best-practices/caching#considerations-for-implementing-caching-in-azure).
 
 ## Content delivery network
 
@@ -57,7 +58,7 @@ Content delivery networks (CDNs) are typically used to deliver static content su
 
 Decide how you will handle local development and testing when some static content is expected to be served from a CDN. For example, you could pre-deploy the content to the CDN as part of your build script. Alternatively, use compile directives or flags to control how the application loads the resources. For example, in debug mode, the application could load static resources from a local folder. In release mode, the application would use the CDN.
 
-To learn more about CDNs, see [Best practices for using content delivery networks (CDNs)](../../best-practices/cdn.md).
+To learn more about CDNs, see [Best practices for using content delivery networks (CDNs)](/azure/architecture/best-practices/cdn).
 
 ## Benchmark testing
 

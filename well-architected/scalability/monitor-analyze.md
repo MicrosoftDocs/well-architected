@@ -2,7 +2,8 @@
 title: Performance data integration
 description: Analyze performance data holistically to detect fault types, bottlenecks regressions, and health states.
 author: PageWriter-MSFT
-ms.date: 11/01/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

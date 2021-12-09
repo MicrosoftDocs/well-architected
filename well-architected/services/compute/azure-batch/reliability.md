@@ -2,7 +2,8 @@
 title: Azure Batch and reliability
 description: Focuses on the Azure Batch service used in the Compute solution to provide best-practice, configuration recommendations, and design considerations related to Service Reliability.
 author: v-stacywray
-ms.date: 10/11/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

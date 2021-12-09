@@ -2,7 +2,8 @@
 title: Plan for capacity
 description: Plan to meet capacity design requirements for performance efficiency. Understand options to reduce cost.
 author: v-aangie
-ms.date: 12/01/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -49,7 +50,7 @@ After configuring the autoscaling rules, monitor the performance of your applica
 
 [Azure Monitor autoscale](/azure/azure-monitor/platform/autoscale-overview) provides a common set of autoscaling functionality for virtual machine scale sets, Azure App Service, and Azure Cloud Service. Scaling can be performed on a schedule, or based on a runtime metric, such as CPU or memory usage. For example, you can scale out by one instance if average CPU usage is above 70%, and scale in by one instance if CPU usage falls below 50 percent.
 
-The default autoscaling rules are set to know when it's time to execute an autoscaling action in order to prevent the system from reacting too quickly. To learn more, see [Autoscaling](../../best-practices/auto-scaling.md).
+The default autoscaling rules are set to know when it's time to execute an autoscaling action in order to prevent the system from reacting too quickly. To learn more, see [Autoscaling](/azure/architecture/best-practices/auto-scaling).
 
 For a list of built-in metrics, see [Azure Monitor autoscaling common metrics](/azure/azure-monitor/platform/autoscale-common-metrics). You can also implement custom metrics by using [Application Insights](/azure/azure-monitor/app/app-insights-overview) to monitor the performance of your live applications. Some Azure services use different scaling methods.
 
@@ -57,7 +58,7 @@ For a list of built-in metrics, see [Azure Monitor autoscaling common metrics](/
 
 Preemptively scaling based on historical data can ensure your application has consistent performance, even though your metrics haven't yet indicated the need to scale. Schedule-based rules allow you to scale when you see time patterns in your load and want to scale before a possible load increase or decrease occurs. For example, you can set a trigger attribute to scale out to 10 instances on weekdays, and scale in to four (4) instances on Saturday and Sunday. If you can predict the load on the application, consider using scheduled autoscaling, which adds and removes instances to meet anticipated peaks in demand.
 
-To learn more, see [Use Azure Monitor autoscale](../../best-practices/auto-scaling.md#use-azure-monitor-autoscale).
+To learn more, see [Use Azure Monitor autoscale](/azure/architecture/best-practices/auto-scaling#use-azure-monitor-autoscale).
 
 ## Next steps
 

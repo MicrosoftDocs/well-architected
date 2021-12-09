@@ -2,7 +2,8 @@
 title: Data encryption in Azure
 description: Protect data in transit and at rest through encryption in Azure. Learn about Azure encryption features and standard encryption algorithms.
 author: PageWriter-MSFT
-ms.date: 9/17/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -175,7 +176,7 @@ When traffic from clients using older versions of TLS is minimal, or it's accept
 
 Sometimes you need to isolate your entire communication channel between your on-premises and the cloud infrastructure by using either a virtual private network (VPN) or [ExpressRoute](/azure/expressroute/). For more information, see  these articles:
 
-- [Extending on-premises data solutions to the cloud](../../data-guide/scenarios/hybrid-on-premises-and-cloud.md)
+- [Extending on-premises data solutions to the cloud](/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)
 - [Configure a Point-to-Site VPN connection to a VNet using native Azure certificate authentication: Azure portal](/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#architecture)
 
 For more information, see [Protect data in transit](/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit).

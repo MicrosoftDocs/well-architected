@@ -2,7 +2,8 @@
 title: Azure Kubernetes Service (AKS) and security
 description: Focuses on the Azure Kubernetes Service (AKS) used in the Compute solution to provide best-practice, configuration recommendations, and design considerations related to service security.
 author: v-stacywray
-ms.date: 11/11/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

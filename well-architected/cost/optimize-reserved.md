@@ -2,7 +2,8 @@
 title: Reserved instances
 description: Use reserved instances through Azure Reservations to lower cost. With reserved instances, there's a significant discount when compared to pay-as-you-go pricing.
 author: PageWriter-MSFT
-ms.date: 05/12/2020
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

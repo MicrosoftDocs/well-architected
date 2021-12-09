@@ -2,7 +2,8 @@
 title: Challenges of monitoring distributed architectures
 description: Team expertise, scaling issues, antipatterns, and resiliency tracking issues when monitoring for performance efficiency
 author: PageWriter-MSFT
-ms.date: 04/28/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -39,7 +40,7 @@ For more information about monitoring for scalability, see [Monitor performance 
 
 ## Antipatterns in design
 
-Antipatterns in design and code are a common cause for performance problems when an application is under pressure. For example, an application behaves as expected during performance testing. However, when it's released to production and starts to handle live workloads, performance decreases. Problems such as rejecting user requests, stalling, or throwing exceptions may arise. To learn how to identify and fix these antipatterns, see [Performance antipatterns for cloud applications](../../antipatterns/index.md).
+Antipatterns in design and code are a common cause for performance problems when an application is under pressure. For example, an application behaves as expected during performance testing. However, when it's released to production and starts to handle live workloads, performance decreases. Problems such as rejecting user requests, stalling, or throwing exceptions may arise. To learn how to identify and fix these antipatterns, see [Performance antipatterns for cloud applications](/azure/architecture/antipatterns/).
 
 ## Fault tracking
 
@@ -56,6 +57,7 @@ For more information about reliability impacts on performance, see [Monitor perf
 To learn more about chaos testing, see [Advancing resilience through chaos engineering and fault injection](https://azure.microsoft.com/blog/advancing-resilience-through-chaos-engineering-and-fault-injection/).
 
 ## Related links
-- [Performance antipatterns for cloud applications](../../antipatterns/index.md)
+
+- [Performance antipatterns for cloud applications](/azure/architecture/antipatterns/)
 - [Monitor performance for scalability and reliability](monitor-scalability-reliability.md)
 > [Back to the main article](design-checklist.md)

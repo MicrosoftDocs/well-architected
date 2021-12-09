@@ -2,7 +2,8 @@
 title: Azure Kubernetes Service (AKS) and reliability
 description: Focuses on the Azure Kubernetes Service (AKS) used in the Compute solution to provide best-practice, configuration recommendations, and design considerations related to service reliability.
 author: v-stacywray
-ms.date: 10/19/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

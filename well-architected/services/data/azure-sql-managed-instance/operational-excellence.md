@@ -2,7 +2,8 @@
 title: Azure SQL Managed Instance and operational excellence
 description: Focuses on the Azure SQL Managed Instance service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Operational Excellence.
 author: v-stacywray
-ms.date: 11/17/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -63,4 +64,4 @@ Explore the following table of recommendations to optimize your Azure SQL Manage
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Cosmos DB and reliability](../../cosmos-db/reliability.md)
+> [Cosmos DB and reliability](../cosmos-db/reliability.md)

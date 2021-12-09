@@ -2,7 +2,8 @@
 title: Monitoring workloads
 description: Set up a pipe to collect, store, analyze, and visualize data for monitoring and diagnostics. 
 author: PageWriter-MSFT
-ms.date: 12/06/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -17,11 +18,11 @@ ms.custom:
 
 # Monitoring workloads
 
-Monitoring a workload and the infrastructure in which it runs, should not be processed or analyzed in isolation. Build a pipeline that gives you holistic observability of the system. 
+Monitoring a workload and the infrastructure in which it runs, should not be processed or analyzed in isolation. Build a pipeline that gives you holistic observability of the system.
 
 This article describes the stages of a common pipeline design.
 
-![Stages in the monitoring and diagnostics pipeline](https://docs.microsoft.com/azure/architecture/best-practices/images/monitoring/pipeline.png)
+![Stages in the monitoring and diagnostics pipeline](../devops/pipeline.png)
 
 ## 1. Data sources and instrumentation
 

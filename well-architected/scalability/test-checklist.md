@@ -3,7 +3,8 @@ title: Performance efficiency checklist
 titleSuffix: Azure Testing Review Framework
 description: Review checklist guidance for testing concerns with Azure performance efficiency. Maintain systems properly and fix defects before problems reach system users.
 author: v-aangie
-ms.date: 09/22/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -20,7 +21,7 @@ ms.custom:
 
 Is the application tested for performance, scalability, and resiliency?
 
-Performance testing helps to maintain systems properly and fix defects before problems reach system users. It's part of the Performance Efficiency pillar in the [Microsoft Azure Well-Architected Framework](../../index.md).
+Performance testing helps to maintain systems properly and fix defects before problems reach system users. It's part of the Performance Efficiency pillar in the [Microsoft Azure Well-Architected Framework](../index.md).
 
 *Performance testing* is the superset of both load and stress testing. The primary goal of performance testing is to validate benchmark behavior for the application.
 
@@ -38,7 +39,7 @@ Use the following checklist to review your application architecture from a perfo
 
 - **Identify a path forward to leveraging existing tests or the creation of new tests**. There are different types of performance testing: load testing, stress testing, API testing, client-side/browser testing, and so on. It's important that you understand and articulate the different types of tests, along with their advantages and disadvantages, to the customer.
 
-- **Perform testing in all stages in the development and deployment life cycle**.  Application code, infrastructure automation, and fault tolerance should all be tested. This can ensure that the application will perform as expected in every situation. You'll want to test early enough in the application life cycle to catch and fix errors. Errors are cheaper to repair when caught early and can be expensive or impossible to fix later. To learn more, reference [Testing your application and Azure environment](../../devops/release-engineering-testing.md).
+- **Perform testing in all stages in the development and deployment life cycle**.  Application code, infrastructure automation, and fault tolerance should all be tested. This can ensure that the application will perform as expected in every situation. You'll want to test early enough in the application life cycle to catch and fix errors. Errors are cheaper to repair when caught early and can be expensive or impossible to fix later. To learn more, reference [Testing your application and Azure environment](../devops/release-engineering-testing.md).
 
 - **Avoid experiencing poor performance with testing**. Two subsets of performance testing, load testing and stress testing, can determine the upper limit, and maximum point of failure, respectively, of the application's capacity. By performing these tests, you can determine the necessary infrastructure to support the anticipated workloads.
 

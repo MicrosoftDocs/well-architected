@@ -2,7 +2,8 @@
 title: Monitoring for reliability
 description: Review considerations for reliability in application monitoring. See a list of Azure services that you can use for monitoring.
 author: v-aangie
-ms.date: 02/17/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -38,8 +39,8 @@ Monitoring and diagnostics are crucial for resiliency. If something fails, you n
 
 ## Reference architecture
 
-- [Hybrid availability and performance monitoring](../../hybrid/hybrid-perf-monitoring.yml)
-- [Unified logging for microservices applications](../../example-scenario/logging/unified-logging.yml)
+- [Hybrid availability and performance monitoring](/azure/architecture/hybrid/hybrid-perf-monitoring)
+- [Unified logging for microservices applications](/azure/architecture/example-scenario/logging/unified-logging)
 
 ## Next step
 

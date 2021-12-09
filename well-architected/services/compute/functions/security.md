@@ -2,7 +2,8 @@
 title: Azure Functions and security
 description: Focuses on the Azure Functions service used in the Compute solution to provide best-practice, configuration recommendations, and design considerations related to service security.
 author: v-stacywray
-ms.date: 11/24/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -46,4 +47,4 @@ The following table reflects design consideration recommendations and descriptio
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Service Fabric and reliability](../../service-fabric/reliability.md)
+> [Azure Service Fabric and reliability](../service-fabric/reliability.md)

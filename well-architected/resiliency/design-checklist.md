@@ -2,7 +2,8 @@
 title: Design for reliability
 description: Review a checklist for reliability in application design. Considerations include uptime (availability), high resiliency, low latency, and cost.
 author: v-aangie
-ms.date: 02/17/2021
+ms.author: robbymillsap
+ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -39,9 +40,9 @@ Reliable applications should maintain a pre-defined percentage of uptime (*avail
 
 ## Reference architecture
 
-- [Deploy highly available network virtual appliances](../../reference-architectures/dmz/nva-ha.yml)
-- [Failure Mode Analysis for Azure applications](../../resiliency/failure-mode-analysis.md)
-- [Minimize coordination](../../guide/design-principles/minimize-coordination.md)
+- [Deploy highly available network virtual appliances](/azure/architecture/reference-architectures/dmz/nva-ha)
+- [Failure Mode Analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis)
+- [Minimize coordination](/azure/architecture/guide/design-principles/minimize-coordination)
 
 ## Next step
 
@@ -50,8 +51,8 @@ Reliable applications should maintain a pre-defined percentage of uptime (*avail
 
 ## Related links
 
-- [Use platform as a service (PaaS) options](../../guide/design-principles/managed-services.md)
-- [Design to scale out](../../guide/design-principles/scale-out.md)
+- [Use platform as a service (PaaS) options](/azure/architecture/guide/design-principles/managed-services)
+- [Design to scale out](/azure/architecture/guide/design-principles/scale-out)
 - [Workload availability targets](./business-metrics.md).
-- [Building solutions for high availability using Availability Zones](../../high-availability/building-solutions-for-high-availability.md)
-- [Make all things redundant](../../guide/design-principles/redundancy.md)
+- [Building solutions for high availability using Availability Zones](/azure/architecture/high-availability/building-solutions-for-high-availability)
+- [Make all things redundant](/azure/architecture/guide/design-principles/redundancy)
