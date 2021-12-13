@@ -4,7 +4,9 @@
       {
         "files": [
           "**/*.md",
-          "**/*.yml"
+          "**/*.yml",
+          "**/toc.yml",
+          "**/index.yml"
         ],
         "exclude": [
           "**/obj/**",
@@ -23,8 +25,16 @@
     "resource": [
       {
         "files": [
+          "**/*.css",
           "**/*.png",
-          "**/*.jpg"
+          "**/*.jpg",
+          "**/*.jpeg",
+          "**/*.gif",
+          "**/*.svg",
+          "**/*.js",
+          "**/*.json",
+          "**/*.docx",
+          "feed.atom"
         ],
         "exclude": [
           "**/obj/**",
@@ -41,10 +51,21 @@
     "globalMetadata": {
       "breadcrumb_path": "/azure/architecture/framework/breadcrumb/toc.json",
       "extendBreadcrumb": true,
-      "feedback_system": "None"
+      "feedback_system": "None",
+      "feedback_github_repo": "MicrosoftDocs/well-architected",
+      "brand": "azure",
+      "uhfHeaderId": "azure",
+      "titleSuffix": "Microsoft Azure Well-Architected Framework",
+      "searchScope": [ "Azure", "Microsoft Azure Well-Architected Framework" ]     
+    },
+    "open_to_public_contributors": {
+      "**/*.yml": false
     },
     "fileMetadata": {},
-    "template": [],
-    "dest": "well-architected"
+    "template": [
+      "docs.html"
+    ],
+    "dest": "well-architected",
+    "markdownEngineName": "markdig"
   }
 }
