@@ -10,11 +10,15 @@ metadata:
   author: v-stacywray
   ms.author: robbymillsap
   manager: david-stanford
-  ms.date: 12/08/2021
+  ms.date: 12/15/2021
   ms.topic: landing-page
   ms.service: architecture-center
   ms.subservice: well-architected
   ms.collection: na
+  products:
+    - azure
+  categories:
+    - management-and-governance
 
 landingContent:
 # Cards and links should be based on top customer tasks or top subjects
@@ -45,6 +49,21 @@ landingContent:
         links:
           - text: Inside Azure Datacenter Architecture with Mark Russinovich
             url: https://www.youtube.com/watch?v=69PrhWQorEM
+  # Card
+  - title: Region and availability zone fundamentals
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Explore business continuity management in Azure
+            url: /azure/availability-zones/business-continuity-management-program
+          - text: Achieve reliability through regions and availability zones
+            url: /azure/availability-zones/az-overview
+          - text: Understand Azure service offerings across region types
+            url: /azure/availability-zones/region-types-service-categories-azure
+          - text: Consider Azure services that support availability zones
+            url: /azure/availability-zones/az-region
+          - text: Understand region and availability zone terminology
+            url: /azure/availability-zones/glossary 
   # Card
   - title: Design for availability and resiliency
     linkLists:
@@ -151,19 +170,6 @@ landingContent:
             url: /azure/backup/backup-create-rs-vault#set-storage-redundancy
           - text: Azure Site Recovery
             url: /azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery
-# Card
-  - title: Region and availability zone fundamentals
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Achieve reliability through regions and availability zones
-            url: /azure/availability-zones/az-overview
-          - text: Understand service offerings across region types
-            url: /azure/availability-zones/region-types-service-categories-azure
-          - text: Consider Azure services that support availability zones
-            url: /azure/availability-zones/az-region
-          - text: Understand region and availability zone terminology
-            url: /azure/availability-zones/glossary 
  # Card
   - title: Reliability APIs
     linkLists:
