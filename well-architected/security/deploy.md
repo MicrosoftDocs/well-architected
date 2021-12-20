@@ -3,7 +3,7 @@ title: Secure deployment in Azure
 description: DevOps considerations to ensure security and feature enhancements can be quickly deployed.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -73,4 +73,4 @@ We recommend monitoring activities that maintain the security posture. These act
 ## Learn more
 - [Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/)
 - [Agile Principles in Practice](/devops/plan/how-microsoft-plans-devops)
-- [Platform automation and DevOps](/azure/cloud-adoption-well-architected/ready/enterprise-scale/platform-automation-and-devops)
+- [Platform automation and DevOps](/azure/cloud-adoption-framework/ready/enterprise-scale/platform-automation-and-devops)

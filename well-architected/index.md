@@ -128,7 +128,7 @@ For more information, reference [Overview of the security pillar](./security/ove
 
 ## Cost optimization
 
-When you're designing a cloud solution, focus on generating incremental value early. Apply the principles of **[Build-Measure-Learn](/azure/cloud-adoption-well-architected/innovate/considerations/)**, to accelerate your time to market while avoiding capital-intensive solutions.
+When you're designing a cloud solution, focus on generating incremental value early. Apply the principles of **[Build-Measure-Learn](/azure/cloud-adoption-framework/innovate/considerations/adoption#what-is-the-build-measure-learn-feedback-loop)**, to accelerate your time to market while avoiding capital-intensive solutions.
 
 For more information, reference [Cost optimization](./cost/index.yml) and the following video on how to start optimizing your Azure costs:
 
@@ -198,7 +198,7 @@ Learn more about:
 - [Well-Architected Series](https://channel9.msdn.com/Tags/well-architected-series)
 - [Introduction to the Microsoft Azure Well-Architected Framework](/learn/modules/azure-well-architected-introduction/)
 - [Microsoft Defender for Cloud](/azure/security-center/)
-- [Cloud Adoption Framework](/azure/cloud-adoption-well-architected/)
+- [Cloud Adoption Framework](/azure/cloud-adoption-framework/)
 
 <!-- links -->
 

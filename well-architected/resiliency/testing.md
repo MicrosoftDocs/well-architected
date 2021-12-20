@@ -3,7 +3,7 @@ title: Test apps for availability and resiliency
 description: Testing is an iterative process. Test the application, measure the outcome, analyze and address any failures that result, and repeat the process.
 author: v-aangie
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -96,7 +96,7 @@ Load testing is crucial for identifying failures that only happen under load, su
 
 ## Related links
 
-- For more test types, see [Test types](/azure/architecture/checklist/dev-ops.md#testing).
+- For more test types, see [Test types](/azure/architecture/checklist/dev-ops#testing).
 - To learn about load and stress tests, see [Performance testing](../scalability/performance-test.md).
 - To learn about chaos testing, see [Chaos engineering](./chaos-engineering.md).
 

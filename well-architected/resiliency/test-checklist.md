@@ -3,7 +3,7 @@ title: Testing for reliability
 description: Use a reliability checklist for app testing. Validate existing thresholds, targets, assumptions, the health and capacity models, and operational procedures.
 author: v-aangie
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -42,7 +42,7 @@ Regular testing should be performed as part of each major change and if possible
 
 ## Reference architecture
 
-- [Failure Mode Analysis for Azure applications](/azure/architecuret/resiliency/failure-mode-analysis)
+- [Failure Mode Analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis)
 - [High availability and disaster recovery scenarios for IaaS apps](/azure/architecture/example-scenario/infrastructure/iaas-high-availability-disaster-recovery)
 - [Back up files and applications on Azure Stack Hub](/azure/architecture/hybrid/azure-stack-backup)
 

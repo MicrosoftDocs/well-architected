@@ -3,7 +3,7 @@ title: Operational excellence design principles
 description: Understand the design principles for operational excellence within the Azure Well-Architected Framework.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -39,7 +39,7 @@ Reviewing operational incidents where the response and remediation to issues eit
 
 <a id="metadata">**Operational metadata**</a>
 
-Azure Tags provide the ability to associate critical metadata as a name-value pair, such as billing information (e.g., cost center code), environment information (e.g., environment type), with Azure resources, resource groups, and subscriptions. See [Tagging Strategies](/azure/cloud-adoption-well-architected/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-strategy)  for best practices.
+Azure Tags provide the ability to associate critical metadata as a name-value pair, such as billing information (e.g., cost center code), environment information (e.g., environment type), with Azure resources, resource groups, and subscriptions. See [Tagging Strategies](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-strategy)  for best practices.
 
 **Optimize build and release processes**
 

@@ -3,7 +3,7 @@ title: Capture cost requirements for an Azure
 description: Learn to enumerate cost requirements and considerations, and how to align costs with business goals.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/07/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -40,7 +40,7 @@ Consider the cost implications of the geographic region to which the landing zon
 
 The landing zone consists of the subscription and resource group, in which your cloud infrastructure components exist. This zone impacts the overall cost. Consider the tradeoffs. For example, there are additional costs for network ingress and egress for cross-zonal traffic. For more information, see [Azure regions](design-regions.md) and [Azure resources](design-resources.md).
 
-For information about landing zone for the entire organization, see [CAF: Implement landing zone best practices](/azure/cloud-adoption-well-architected/get-started/manage-costs#step-4-implement-landing-zone-best-practices).
+For information about landing zone for the entire organization, see [CAF: Implement landing zone best practices](/azure/cloud-adoption-framework/get-started/manage-costs#step-4-implement-landing-zone-best-practices).
 
 ## Security
 Security is one of the most important aspects of any architecture. Security measures protect the valuable data of the organization. It provides confidentiality, integrity, and availability assurances against attacks and misuse of the systems.

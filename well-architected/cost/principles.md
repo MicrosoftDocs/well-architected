@@ -3,7 +3,7 @@ title: Principles of cost optimization
 description: Understand cost optimization principles, which are a series of important considerations that can help achieve both business objectives and cost justification.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -45,4 +45,4 @@ Certain infrastructure resources are delivered as fix-sized building blocks. Ens
 
 Treat cost monitoring and optimization as a process, rather than a point-in-time activity. Conduct regular cost reviews and measure and forecast the capacity needs so that you can provision resources dynamically and scale with demand. Review the cost management recommendations and take action to optimize workload costs.  Use [Advisor Score](/azure/advisor/azure-advisor-score) to identify the greatest opportunities for cost optimization for your workload.
 
-If you're just starting in this process review [enable success during a cloud adoption journey](/azure/cloud-adoption-well-architected/getting-started/enable).
+If you're just starting in this process review [enable success during a cloud adoption journey](/azure/cloud-adoption-framework/getting-started/enable).

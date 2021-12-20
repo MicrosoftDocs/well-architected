@@ -3,7 +3,7 @@ title: Repeatable Infrastructure
 description: Review the concept of repeatable infrastructure. Use Azure Landing Zones. Deploy infrastructure with code. Automate deployments with ARM templates and Terraform.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -28,14 +28,14 @@ Organizations which centrally manage, govern, or support multiple workloads in t
 
 The following is a series of links from the Cloud Adoption Framework to help deploy Azure Landing Zones:
 
-- All Azure Landing Zones adhere to a [common set of design areas](/azure/cloud-adoption-well-architected/ready/landing-zone/design-areas) to guide configuration of required environment considerations including: Identity, Network topology and connectivity, Resource organization, Governance disciplines, Operations baseline, and Business continuity and disaster recovery (BCDR)
-- All Azure Landing Zones can be deployed through the Azure portal, but are designed to leverage infrastructure as code to create, [test](/azure/cloud-adoption-well-architected/ready/considerations/test-driven-development), and [refactor](/azure/cloud-adoption-well-architected/ready/landing-zone/refactor) repeatable deployments of the environmental configuration.
-- The Cloud Adoption Framework provides a number of [Azure Landing Zone implementation options](/azure/cloud-adoption-well-architected/ready/landing-zone/implementation-options), including:
+- All Azure Landing Zones adhere to a [common set of design areas](/azure/cloud-adoption-framework/ready/landing-zone/design-areas) to guide configuration of required environment considerations including: Identity, Network topology and connectivity, Resource organization, Governance disciplines, Operations baseline, and Business continuity and disaster recovery (BCDR)
+- All Azure Landing Zones can be deployed through the Azure portal, but are designed to leverage infrastructure as code to create, [test](/azure/cloud-adoption-framework/ready/considerations/test-driven-development), and [refactor](/azure/cloud-adoption-framework/ready/landing-zone/refactor) repeatable deployments of the environmental configuration.
+- The Cloud Adoption Framework provides a number of [Azure Landing Zone implementation options](/azure/cloud-adoption-framework/ready/landing-zone/implementation-options), including:
   - Start small & expand implementation using Azure Blueprints and ARM Templates
   - Enterprise-Scale implementation using Azure Policy and ARM Templates
   - CAF Terraform modules and a variety of landing zone options
 
-To get started with Azure Landing Zones to create consistent, repeatable environment configuration see the article series on [Azure Landing Zones](/azure/cloud-adoption-well-architected/ready/landing-zone/).
+To get started with Azure Landing Zones to create consistent, repeatable environment configuration see the article series on [Azure Landing Zones](/azure/cloud-adoption-framework/ready/landing-zone/).
 
 If Azure Landing Zones are not a fit for your organization, you should consider the following sections of this article to manual integrate environment configuration into your Azure Pipelines.
 
@@ -78,9 +78,10 @@ Many organizations maintain multiple environments, for example, test, staging, a
 
 **Disaster recovery.** In some situations, where recovery time may not be time-sensitive, IaC configurations can be used as part of a disaster recovery plan. For example, if infrastructure needs to be recreated in a second region, your IaC configurations can be used to do so. You need to consider deployment time and things like handling disaster recovery for your databases, storage accounts, and other resources that store state. All things considered, using IaC does provide an option for rapid re-creation of infrastructural assets.
 
-When planning for disaster and recovery, ensure that your disaster recovery plans are fully tested and that they meet your recovery time requirements. This process is often referred to as a [Recovery Time Objective](/azure/architecture/resiliency/business-metrics#recovery-metrics)).
+When planning for disaster and recovery, ensure that your disaster recovery plans are fully tested and that they meet your recovery time requirements. This process is often referred to as a [Recovery Time Objective](/azure/architecture/resiliency/business-metrics#recovery-metrics).
 
 ### Better understand your cloud resources
+
 IaC can also help you better understand the state of your cloud resources.
 
 **Audit changes.** Changes to your IaC configurations will be version-controlled in the same way as your code, such as through Git's version history. This means you can review each change that has happened, and understand who made it and when. This can be helpful if you're trying to understand why a resource is configured a specific way.

@@ -3,7 +3,7 @@ title: Error handling for resilient apps
 description: Review best practices for handling errors in resilient Azure applications. Understand transient fault handling, request timeouts, cascading failures, and more.
 author: v-aangie
 ms.author: robbymillsap
-ms.date: 12/07/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -38,7 +38,7 @@ Use the [Retry pattern](/azure/architecture/patterns/retry), paying particular a
 
 When making a service call or a database call, ensure that appropriate request timeouts are set. Database Connection timeouts are typically set to 30 seconds. For guidance on how to troubleshoot, diagnose, and prevent SQL connection errors, see [transient errors for SQL Database](/azure/sql-database/sql-database-connectivity-issues).
 
-Leverage design patterns that encapsulate robust timeout strategies like [Choreography pattern](/azure/architecture/patterns/choreography.md) or [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction).
+Leverage design patterns that encapsulate robust timeout strategies like [Choreography pattern](/azure/architecture/patterns/choreography) or [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction).
 
 :::image type="icon" source="../_images/github.png" border="false"::: A reference implementation is available on [GitHub](https://github.com/mspnp/microservices-reference-implementation).
 

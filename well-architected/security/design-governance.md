@@ -3,7 +3,7 @@ title: Governance, risk, and compliance
 description: Security priorities around governance, risk, and compliance.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/07/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -85,7 +85,7 @@ The Azure Security Benchmark includes a collection of high-impact security recom
 
 Here are some reference architectures related to governance:
 
-[Cloud Adoption Framework enterprise-scale landing zone architecture](/azure/cloud-adoption-well-architected/ready/enterprise-scale/architecture)
+[Cloud Adoption Framework enterprise-scale landing zone architecture](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
 
 ## Next steps
 
