@@ -3,7 +3,7 @@ title: Automatic retry of failed backup jobs
 description: Provides guidance and code examples for how to retry backups for all failed jobs in Azure.
 author: v-stacywray
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/15/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -32,7 +32,7 @@ You'll need an [Azure Automation](/azure/automation/automation-security-overview
 
 ## Assign permissions to managed identities
 
-To assign permissions to managed identities to stop and start a virtual machine, complete the following steps:
+To assign permissions to managed identities, complete the following steps:
 
 1. Sign in to Azure interactively using the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-6.6.0add&preserve-view=true) `cmdlet` and follow the instructions:
 
@@ -103,7 +103,7 @@ For the preceding scripts to work, install the following modules by navigating t
 
 ## Create a PowerShell runbook
 
- The runbook starts a stopped VM, or stops a running VM. To create a runbook that managed identities can run, complete the following steps:
+ To create a runbook that managed identities can run, complete the following steps:
 
 1. Sign in to the [Azure portal](https://ms.portal.azure.com/#home) and navigate to your Automation account.
 1. Under **Process Automation**, select **Runbooks**.

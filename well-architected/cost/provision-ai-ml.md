@@ -3,7 +3,7 @@ title: Cost for AI + Machine Learning services
 description: Develop cost estimates and strategies for serverless technologies using Azure Machine Learning, Azure Cognitive Services, or Azure Bot Service.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -50,7 +50,7 @@ For more information, see these articles:
 
 -   [Training of Python scikit-learn and deep learning models on Azure](/azure/architecture/reference-architectures/ai/training-python-models)
 -   [Distributed training of deep learning models on Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)
--   [Batch scoring of Python machine learning models on Azure](/azure/architecture/refere/azure/architecture/nce-architectures/ai/batch-scoring-python)
+-   [Batch scoring of Python machine learning models on Azure](/azure/architecture/reference-architectures/ai/batch-scoring-python)
 -   [Batch scoring of deep learning models on Azure](/azure/architecture/reference-architectures/ai/batch-scoring-deep-learning)
 -   [Real-time scoring of Python scikit-learn and deep learning models on Azure](/azure/architecture/reference-architectures/ai/real-time-scoring-machine-learning-models)
 -   [Machine learning operationalization (MLOps) for Python models using Azure MachineLearning](/azure/architecture/reference-architectures/ai/mlops-python)

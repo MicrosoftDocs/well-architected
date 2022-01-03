@@ -3,7 +3,7 @@ title: Chaos engineering
 description: Understand chaos engineering fundamentals for improving the reliability of a service that's built on Azure.
 author: v-aangie
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -124,7 +124,7 @@ An external team can't hypothesize faults for your team. A study of failures fro
 
 Simulate production failures. Treat injected faults in the same way that you would treat production-level faults. Enforcing a tighter limit on the blast radius will enable you to simulate a production environment. Each fault-injection effort must be accompanied by tooling that's designed to inject the types of faults that are relevant to your team's scenarios. Here are two basic ways:
 
-- Inject faults in a non-production environment, such as [Canary](/azure/architecture/devops/release-engineering-testing#acceptance-testing) or [Test In Production](https://azure.microsoft.com/resources/videos/azure-friday-testing-in-production-with-azure-app-service/) (TIP).
+- Inject faults in a non-production environment, such as [Canary](../devops/release-engineering-testing.md#acceptance-testing) or [Test In Production](https://azure.microsoft.com/resources/videos/azure-friday-testing-in-production-with-azure-app-service/) (TIP).
 - Partition the production service or environment.
 
 Halt all faults and roll back the state to its last-known good configuration if the state seems severe.
@@ -145,7 +145,7 @@ The process must be very *low tax*. That is, the process must make it easy for d
 
 ## Related links
 
-- For information on release testing, see [Testing your application and Azure environment](/azure/architecture/devops/release-engineering-testing).
+- For information on release testing, see [Testing your application and Azure environment](../devops/release-engineering-testing.md).
 - For more information, see [Bulkhead pattern](/azure/architecture/patterns/bulkhead).
 
 Go back to the main article: [Testing](test-checklist.md)

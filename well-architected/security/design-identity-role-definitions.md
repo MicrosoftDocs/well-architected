@@ -3,7 +3,7 @@ title: Roles, responsibilities, and permissions
 description: Learn to define clear lines of responsibility and establish separation of duties as part of Azure identity and access management.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/06/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -70,7 +70,7 @@ This segment hosts shared services utilized across the organization. These share
 **Security Visibility across all resources:** For security teams, grant read-only access to security attributes for all technical environments. This access level is needed to assess risk factors, identify potential mitigations, and advise organizational stakeholders who accept the risk. See
 [Security Team Visibility](#security-team-visibility) for more details.
 
-**Policy management across some or all resources:** To monitor and enforce compliance with external (or internal) regulations, standards, and security policy, assign appropriate permission to those roles. The roles and permissions you choose will depend on the organizational culture and expectations of the policy program. See [Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-well-architected/govern/security-baseline).
+**Policy management across some or all resources:** To monitor and enforce compliance with external (or internal) regulations, standards, and security policy, assign appropriate permission to those roles. The roles and permissions you choose will depend on the organizational culture and expectations of the policy program. See [Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/govern/security-baseline).
 
 Before defining the policies, consider:
 - How is the organization's security audited and reported? Is there mandatory reporting?
@@ -79,7 +79,7 @@ Before defining the policies, consider:
 
 Designate group(s) (or individual roles) for central functions that affect shared services and applications.
 
-After the policies are set, continuously improve those standards incrementally. Make sure that the security posture doesn't degrade over time by having auditing and monitoring compliance. For information about managing security standards of an organization, see [governance, risk, and compliance (GRC)](/azure/cloud-adoption-well-architected/migrate/azure-best-practices/governance-or-compliance).
+After the policies are set, continuously improve those standards incrementally. Make sure that the security posture doesn't degrade over time by having auditing and monitoring compliance. For information about managing security standards of an organization, see [governance, risk, and compliance (GRC)](/azure/cloud-adoption-framework/migrate/azure-best-practices/governance-or-compliance).
 
 **Central IT operations across all resources:** Grant permissions to the central IT department (often the infrastructure team) to create, modify, and delete resources like virtual machines and storage. **Contributor** or **Owner** roles are appropriate for this function.
 
@@ -100,7 +100,7 @@ This segment permission design provides consistency while allowing flexibility t
 **Security visibility across all resources:** For security teams, grant read-only access to security attributes for all technical environments. This access level is needed to assess risk factors, identify potential mitigations, and advise organizational stakeholders who accept the risk. See
 [Security Team Visibility](#security-team-visibility).
 
-**Policy management across some or all resources:** To monitor and enforce compliance with external (or internal) regulations, standards, and security policy assign appropriate permission to those roles. The roles and permissions you choose will depend on the organizational culture and expectations of the policy program. See [Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-well-architected/govern/security-baseline).
+**Policy management across some or all resources:** To monitor and enforce compliance with external (or internal) regulations, standards, and security policy assign appropriate permission to those roles. The roles and permissions you choose will depend on the organizational culture and expectations of the policy program. See [Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/govern/security-baseline).
 
 **IT Operations across all resources:** Grant permission to create, modify, and delete resources. The purpose of the segment (and resulting permissions) will depend on your organization structure.
 
@@ -170,6 +170,6 @@ Restrict access to Azure resources based on a need-to-know basis starting with t
 
 ## Related links
 
-For considerations about using management groups to reflect the organization's structure within an Azure Active Directory (Azure AD) tenant, see [CAF: Management group and subscription organization](/azure/cloud-adoption-well-architected/ready/enterprise-scale/management-group-and-subscription-organization).
+For considerations about using management groups to reflect the organization's structure within an Azure Active Directory (Azure AD) tenant, see [CAF: Management group and subscription organization](/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization).
 
 > Back to the main article: [Azure identity and access management considerations](design-identity.md)

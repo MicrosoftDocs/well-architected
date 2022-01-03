@@ -3,7 +3,7 @@ title: Establish segmentation with management groups
 description: Strategies using management groups to manage resources across multiple subscriptions consistently and efficiently.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/06/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -38,7 +38,7 @@ In the [example reference](/azure/architecture/framework/security/design-segment
   > [!CAUTION]
   > Be careful when using the root management group because the policies can affect all resources on Azure and potentially cause downtime or other negative impacts. For considerations, see [Use root management group with caution](#use-root-management-group-with-caution) later in this article.
   >
-  > For complete guidance about using management groups for an enterprise, see [CAF: Management group and subscription organization](/azure/cloud-adoption-well-architected/ready/enterprise-scale/management-group-and-subscription-organization).
+  > For complete guidance about using management groups for an enterprise, see [CAF: Management group and subscription organization](/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization).
 
 - Management group for each workload segment.
 

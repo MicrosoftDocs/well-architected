@@ -3,7 +3,7 @@ title: Operational excellence in hybrid workload
 description: Includes guidance and recommendations that apply to the Operational Excellence pillar in a hybrid and multi-cloud workload.
 author: v-aangie
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -15,7 +15,7 @@ ms.custom:
 
 Operational excellence consists of the operations processes that keep a system running in production. Applications must be designed with DevOps principles in mind, and deployments must be reliable and predictable. Use monitoring tools to verify that your application is running correctly and to gather custom business telemetry that will tell you whether your application is being used as intended.
 
-Use *Azure Arc enabled infrastructure* to add support for cloud [Operational Excellence](/azure/architecture/devops/overview) practices and tools to any environment. Be sure to utilize reference architectures and other resources from this section that illustrate applying these principles in hybrid and multicloud scenarios. The architectures referenced here can also be found in the Azure Architecture Center, [Hybrid and Multicloud](/azure/architecture/browse/index?azure_categories=hybrid) category.
+Use *Azure Arc enabled infrastructure* to add support for cloud [Operational Excellence](../devops/overview.md) practices and tools to any environment. Be sure to utilize reference architectures and other resources from this section that illustrate applying these principles in hybrid and multicloud scenarios. The architectures referenced here can also be found in the Azure Architecture Center, [Hybrid and Multicloud](/azure/architecture/browse/index?azure_categories=hybrid) category.
 
 ## Build cloud native apps anywhere, at scale
 
@@ -64,7 +64,7 @@ AKS clusters on Azure Stack HCI can be connected to Azure Arc for centralized ma
 
 The introduction of cloud computing had a significant impact on how software is developed, delivered, and run. With *Azure Arc enabled infrastructure* and Azure Arc components like [Azure Arc enabled Kubernetes](/azure/azure-arc/kubernetes/overview) and [Azure Arc enabled data services](/azure/azure-arc/data/overview) it becomes possible to design cloud native applications with a consistent set of principles and tooling across public cloud, private cloud, and the edge.
 
-Click the following links for architecture details and diagrams that enable application design and DevOps practices consistent with [Operational excellence principles](/azure/architecture/devops/principles).
+Click the following links for architecture details and diagrams that enable application design and DevOps practices consistent with [Operational excellence principles](../devops/principles.md).
 
 ### Application design
 

@@ -3,7 +3,7 @@ title: Develop a cost model
 description: Do cost modeling to map logical groups of cloud resources to an organization&apos;s hierarchy, and then estimate costs for those groups.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -55,17 +55,17 @@ Map the organization's needs to logical groupings offered by cloud services. Thi
 
 1. Understand how your workload fits into cost optimization across the portfolio of cloud workloads.
 
-    If you are working on a workload that fits into a broader portfolio of workloads, see CAF to [get started guide to document foundational decisions](/azure/cloud-adoption-well-architected/get-started/cloud-concepts). That guide will help your team capture the broader portfolio view of business units, resources organizations, responsibilities, and a view of the long term portfolio.
+    If you are working on a workload that fits into a broader portfolio of workloads, see CAF to [get started guide to document foundational decisions](/azure/cloud-adoption-framework/get-started/cloud-concepts). That guide will help your team capture the broader portfolio view of business units, resources organizations, responsibilities, and a view of the long term portfolio.
 
-    If cost optimization is being executed by a central team across the portfolio, see CAF to [get started managing enterprise costs](/azure/cloud-adoption-well-architected/get-started/manage-costs).
+    If cost optimization is being executed by a central team across the portfolio, see CAF to [get started managing enterprise costs](/azure/cloud-adoption-framework/get-started/manage-costs).
 
 2. Encourage a culture of democratized cost optimization decisions.
 
-    As a workload owner, you can have a measurable impact on cost optimization. There are other roles in the organization which can help improve cost management activities. To help embed the pillar of cost optimization into your organization beyond your workload team, see the CAF article: [Build a cost-conscious organization](/azure/cloud-adoption-well-architected/organize/cost-conscious-organization).
+    As a workload owner, you can have a measurable impact on cost optimization. There are other roles in the organization which can help improve cost management activities. To help embed the pillar of cost optimization into your organization beyond your workload team, see the CAF article: [Build a cost-conscious organization](/azure/cloud-adoption-framework/organize/cost-conscious-organization).
 
 3. Reduce costs through shared cloud services and landing zones.
 
-    If your workload has dependencies on shared assets like Active Directory, Network connectivity, security devices, or other services that are also used by other workloads, encourage your central IT organization to provide those services through a centrally managed landing zone to reduce duplicate costs. See the CAF article: [get started with centralized design &amp; configuration](/azure/cloud-adoption-well-architected/get-started/design-and-configuration) to get started with the development of landing zones.
+    If your workload has dependencies on shared assets like Active Directory, Network connectivity, security devices, or other services that are also used by other workloads, encourage your central IT organization to provide those services through a centrally managed landing zone to reduce duplicate costs. See the CAF article: [get started with centralized design &amp; configuration](/azure/cloud-adoption-framework/get-started/design-and-configuration) to get started with the development of landing zones.
 
 4. Calculate the ROI by understanding what is included in each grouping and what isn't.
 

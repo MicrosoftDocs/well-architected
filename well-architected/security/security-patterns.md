@@ -4,7 +4,7 @@ titleSuffix: Cloud Design Patterns
 description: Use these security patterns to help design and deploy applications in a way that protects them from attacks, restricts access, and protects sensitive data.
 author: dragon119
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -32,15 +32,15 @@ Security provides confidentiality, integrity, and availability assurances agains
 |------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Azure Security Benchmarks](/azure/security/benchmarks/) |                                                                                Prescriptive best practices and recommendations to integrate into architectures for securing workloads, data, services, and enterprise environments on Azure.                                                                             |
 |         [Microsoft Defender for Cloud](/azure/security-center/azure-defender)         | Native security controls to simplify integration of threat detection and monitoring in Azure architectures |
-|          [Security Strategy Guidance](/azure/cloud-adoption-well-architected/strategy/define-security-strategy)          |                                                        Building and updating a security strategy for cloud adoption and modern threat environment                                                       |
-|          [Security Roles and Responsibilities](/azure/cloud-adoption-well-architected/organize/cloud-security)          |                                                        Guidance on security roles and responsibilities including definitions of mission/outcome for each organizational function and how each should evolve with the adoption of cloud.           |
-|          [Getting Started Guide for Security](/azure/cloud-adoption-well-architected/get-started/security)          |                                                        Guidance for planning and implementing security throughout cloud adoption         |
+|          [Security Strategy Guidance](/azure/cloud-adoption-framework/strategy/define-security-strategy)          |                                                        Building and updating a security strategy for cloud adoption and modern threat environment                                                       |
+|          [Security Roles and Responsibilities](/azure/cloud-adoption-framework/organize/cloud-security)          |                                                        Guidance on security roles and responsibilities including definitions of mission/outcome for each organizational function and how each should evolve with the adoption of cloud.           |
+|          [Getting Started Guide for Security](/azure/cloud-adoption-framework/get-started/security)          |                                                        Guidance for planning and implementing security throughout cloud adoption         |
 
 ### Security Resiliency
 
 Achieving security resilience requires a combination of preventive measures to block attacks, responsive measures detect and quickly remediate active attacks, and governance to ensure consistent application of best practices.
 
-- **Security strategy** should include lessons learned described in [security strategy guidance](/azure/cloud-adoption-well-architected/strategy/define-security-strategy).
+- **Security strategy** should include lessons learned described in [security strategy guidance](/azure/cloud-adoption-framework/strategy/define-security-strategy).
 - **Azure security configurations** should align to the best practices and controls in the [Azure Security Benchmark (ASB)](/azure/security/benchmarks/). Security configurations for Azure services should align to the [Security baselines for Azure](/azure/security/benchmarks/security-baselines-overview) in the ASB.
 - **Azure architectures** should integrate native security capabilities to protect and monitor workloads including [Microsoft Defender for Cloud](/azure/security-center/azure-defender), [Azure DDoS protection](/azure/ddos-protection/ddos-protection-overview), [Azure Firewall](/azure/firewall/), and [Azure Web Application Firewall (WAF)](/azure/web-application-firewall/).
 
