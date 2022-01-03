@@ -3,7 +3,7 @@ title: Sustain performance efficiency over time
 description: Learn to sustain performance efficiency over time. Optimize autoscaling, separate out critical workload, right-size your resources, and remote antipatterns.
 author: v-aangie
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -43,19 +43,19 @@ Follow the best practices in this section below to achieve right-sizing.
 
 Identify right-size opportunities by reviewing your current resource utilization and performance requirements across the environment. Then, modify each resource to use the smallest instance or SKU that can support the performance requirements of each resource.
 
-For additional best practices, see [Best practices by team and accountability](/azure/cloud-adoption-well-architected/govern/cost-management/best-practices#best-practices-by-team-and-accountability).
+For additional best practices, see [Best practices by team and accountability](/azure/cloud-adoption-framework/govern/cost-management/best-practices#best-practices-by-team-and-accountability).
 
 ### For operational cost management purposes
 
 Identify right size opportunities by reviewing your current resource utilization and performance requirements across the environment. Then, identify resources which have remained underutilized for a period of time (generally more than 90 days). Also, right-size provisioned SKUs by modifying underutilized resources to use the smallest instance or SKU that can support the performance requirements of each resource. Finally, right-size redundancy. If the resource doesn't require a high degree of redundancy, remove geo-redundant storage.
 
-For additional best practices, see [Operational cost management best practices](/azure/cloud-adoption-well-architected/govern/cost-management/best-practices#operational-cost-management-best-practices).
+For additional best practices, see [Operational cost management best practices](/azure/cloud-adoption-framework/govern/cost-management/best-practices#operational-cost-management-best-practices).
 
 ### Right-size VMs
 
 When considering costing and sizing resources hosted in Azure, right-sizing VMs is a best practice. Choosing the right storage type for data can save your organization several thousands of dollars every month. Microsoft offers many options when you deploy Azure VMs to support workloads. Each VM type has specific features and different combinations of CPU, memory, and disks.
 
-To learn more about VM types, see [Best practice: Right-size VMs](/azure/cloud-adoption-well-architected/govern/cost-management/best-practices#best-practice-right-size-vms).
+To learn more about VM types, see [Best practice: Right-size VMs](/azure/cloud-adoption-framework/govern/cost-management/best-practices#best-practice-right-size-vms).
 
 ## Remove antipatterns
 

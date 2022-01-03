@@ -3,7 +3,7 @@ title: Tradeoffs for cost
 description: View tradeoffs you may decide to make when optimizing a workload for cost, such as with reliability, performance efficiency, security, or operational excellence.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -35,7 +35,7 @@ For example, to support high availability, you choose to host the application ac
 
 If the cost of high availability exceeds the cost of downtime, you can save by using Azure platform-managed replication and recover data from the backup storage.
 
-For resiliency, availability, and reliability considerations, see the [Reliability](/azure/architecture/resiliency/principles?branch=master) pillar.
+For resiliency, availability, and reliability considerations, see the [Reliability](../resiliency/index.yml) pillar.
 
 ## Cost vs performance efficiency
 

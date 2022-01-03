@@ -3,7 +3,7 @@ title: Security audits
 description: Use benchmarking to assess your current security state with respect to other organizations.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -30,7 +30,7 @@ To make sure that the security posture doesn't degrade over time, have regular a
 > - Use an industry standard benchmark to evaluate your organizations current security posture.
 > - Perform regular internal and external compliance audits, including regulatory compliance attestations.
 > - Review the policy requirements.
-> - Use [Azure Governance Visualizer](https://github.com/microsoft/CloudAdoptionwell-architected/tree/master/govern/AzureGovernanceVisualizer) for a holistic overview of your technical Azure Governance implementation.
+> - Use [Azure Governance Visualizer](https://github.com/microsoft/CloudAdoptionframework/tree/master/govern/AzureGovernanceVisualizer) for a holistic overview of your technical Azure Governance implementation.
 
 ## Evaluate using standard benchmarks
 
@@ -111,7 +111,7 @@ For Azure, use Azure Policy to create and manage policies that enforce complianc
 
 ## Capture critical data
 
-[Azure Governance Visualizer](https://github.com/microsoft/CloudAdoptionwell-architected/tree/master/govern/AzureGovernanceVisualizer) captures data from the most relevant Azure governance capabilities such as Azure Policy, Azure role-based access control (Azure RBAC), and Azure Blueprints. The visualizer PowerShell script iterates through an Azure tenant's management group hierarchy down to the subscription level. From the collected data, the visualizer shows your hierarchy map, creates a tenant summary, and builds granular scope insights about your management groups and subscriptions.
+[Azure Governance Visualizer](https://github.com/microsoft/CloudAdoptionframework/tree/master/govern/AzureGovernanceVisualizer) captures data from the most relevant Azure governance capabilities such as Azure Policy, Azure role-based access control (Azure RBAC), and Azure Blueprints. The visualizer PowerShell script iterates through an Azure tenant's management group hierarchy down to the subscription level. From the collected data, the visualizer shows your hierarchy map, creates a tenant summary, and builds granular scope insights about your management groups and subscriptions.
 
 ## Next steps
 
