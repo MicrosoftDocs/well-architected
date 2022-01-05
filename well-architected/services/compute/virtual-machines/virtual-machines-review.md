@@ -1,6 +1,6 @@
 ---
 title: Azure Well-Architected Framework review - Virtual Machines
-description: Focuses on the Virtual Machine service used in the Compute solution to provide best-practice and configuration recommendations related to cost optimization.
+description: Design considerations and recommendations about Azure Virtual Machine.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 12/08/2021
@@ -36,7 +36,7 @@ As you make design choices for virtual machines, review the [design principles](
   
 - Monitor and measure health by using virtual machine Resource Health alerts and enable diagnostic logging for all virtual machines.
 
-## Recommendations
+### Recommendations
 Explore the following table of recommendations to optimize your Virtual Machine configuration for service reliability:
 
 |Recommendation|Benefit|
@@ -48,7 +48,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |Enable diagnostic logging for all virtual machines to ensure you route health metrics, boot diagnostics, and infrastructure logs to Log Analytics or an alternative log aggregation technology.|Platform logs provide detailed diagnostic and auditing information for Azure resources, and the Azure platform they depend on. Reference [Overview of Azure platform logs](/azure/azure-monitor/essentials/platform-logs-overview) for more information.|
 |Enable [Azure Backup Soft Delete](/azure/backup/backup-azure-security-feature-cloud) for the Recovery Services vault to protect against accidental or malicious deletion of backup data, ensuring the ability to recover.|Even if a malicious actor deletes a backup (or backup data is accidentally deleted), the backup data is kept for `14` more days, allowing the recovery of that backup item with no data loss. The extra `14` days of retention for backup data in the soft delete state don't incur any cost to you.|
 
-## Azure Advisor recommendations
+### Azure Advisor recommendations
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. You can get reliability recommendations on the **Reliability** tab of the Azure Advisor.
 
 Here are some key recommendations:
@@ -119,7 +119,7 @@ To optimize costs, review the [design principles](/azure/architecture/framework/
 - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
 - Review SKUs that could benefit from Reserved Instances for one year, three years, or more.
 
-## Recommendations
+### Recommendations
 
 Explore the following table of recommendations to optimize your Virtual Machine configuration for service cost:
 
@@ -131,11 +131,11 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.| Replicate, failover, and failback your business-critical virtual machines within the same region with zones. Ideal for those customers that have complicated networking infrastructure and want to avoid the cost, and complexity of recreating infrastructure in a secondary region. For more information about regions, reference [Products available by region](https://azure.microsoft.com/global-infrastructure/services/).|
 |Review SKUs that could benefit from Reserved Instances for one year, three years, or more.|Purchasing reserved instances is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep RI instances simple and keep management overhead low to prevent increasing cost.|
 
-## Azure Advisor recommendations
+### Azure Advisor recommendations
 Azure Advisor evaluates virtual machines based on CPU and network usage over a time period. Advisor recommends actions that can reduce cost overtime.
 
 - [Optimize virtual machine spend by resizing or shutting down underutilized instances](/azure/advisor/advisor-cost-recommendations#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](https://docs.microsoft.com/en-us/azure/advisor/advisor-cost-recommendations#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
+- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
 
 ### Related resources
 Planned versus actual spending can be managed through [Azure Cost Management + Billing](/azure/cost-management-billing/costs/quick-acm-cost-analysis).
