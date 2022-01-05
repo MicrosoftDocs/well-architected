@@ -59,7 +59,7 @@ Here are some key recommendations:
 
 ### Policy definitions
 
-- Azure policy definition is to *audit standalone single instance VMs that aren't protected by an SLA*. It will flag an audit event for all Virtual Machine instances that aren't deployed within an Availability Set, across Availability Zones, and aren't using Premium Storage for both OS and Data disks. It also encompasses both Virtual Machine and Virtual Machine Scale Set resources. To view all VM instances that belong to this category, run the query described in [Related resources](related-resources).
+- Azure policy definition is to *audit standalone single instance VMs that aren't protected by an SLA*. It will flag an audit event for all Virtual Machine instances that aren't deployed within an Availability Set, across Availability Zones, and aren't using Premium Storage for both OS and Data disks. It also encompasses both Virtual Machine and Virtual Machine Scale Set resources. To view all VM instances that belong to this category, run the query described in [Related resources](#related-sources).
 
 
 - To identify resiliency risks to existing compute resources and support continuous compliance for new resources within a customer tenant, it's recommended you use Azure Policy and Azure Resource Graph to Audit the use of non-resilient deployment configurations.
@@ -135,7 +135,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 Azure Advisor evaluates virtual machines based on CPU and network usage over a time period. Advisor recommends actions that can reduce cost overtime.
 
 - [Optimize virtual machine spend by resizing or shutting down underutilized instances](/azure/advisor/advisor-cost-recommendations#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
+- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](/azure/advisor/advisor-cost-recommendations#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
 
 ### Related resources
 Planned versus actual spending can be managed through [Azure Cost Management + Billing](/azure/cost-management-billing/costs/quick-acm-cost-analysis).
