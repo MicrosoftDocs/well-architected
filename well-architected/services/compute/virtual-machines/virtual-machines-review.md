@@ -16,9 +16,15 @@ categories:
 
 # Azure Well-Architected Framework review - Virtual Machines
 
-[Virtual Machines](/azure/virtual-machines/) is an on-demand, scalable computing resource that gives you the flexibility of virtualization without having to buy and maintain physical hardware to run it.
+[Virtual Machines](/azure/virtual-machines/) is an on-demand, scalable computing resource that gives you the flexibility of virtualization without having to buy and maintain physical hardware to run it. The intent of this article is to give you guidance about this resource based on the pillars of architecture excellence: Reliability, Cost Optimization, Operational Excellence. If you are provisioning virtual machines in your design, consider the design principles and recommendations described in this article. 
 
-The guidance is based on the pillars of architecture excellence: Reliability, Cost Optimization, Operational Excellence. If you are provisioning virtual machines in your design, consider the design principles and recommendations described in this article. 
+## Prerequisites
+
+- Understand the pillars that can help produce a high quality, stable, and efficient cloud architecture. We recommend that you review your workload, using the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
+
+- Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/). 
+
+- Review the built-in definitions provided by Azure Policy that apply to Virtual Machines. They are listed in the [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies#compute).
 
 ## Reliability
 As you make design choices for virtual machines, review the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture. 
@@ -48,26 +54,66 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |Enable diagnostic logging for all virtual machines to ensure you route health metrics, boot diagnostics, and infrastructure logs to Log Analytics or an alternative log aggregation technology.|Platform logs provide detailed diagnostic and auditing information for Azure resources, and the Azure platform they depend on. Reference [Overview of Azure platform logs](/azure/azure-monitor/essentials/platform-logs-overview) for more information.|
 |Enable [Azure Backup Soft Delete](/azure/backup/backup-azure-security-feature-cloud) for the Recovery Services vault to protect against accidental or malicious deletion of backup data, ensuring the ability to recover.|Even if a malicious actor deletes a backup (or backup data is accidentally deleted), the backup data is kept for `14` more days, allowing the recovery of that backup item with no data loss. The extra `14` days of retention for backup data in the soft delete state don't incur any cost to you.|
 
-### Azure Advisor recommendations
-Azure Advisor helps you ensure and improve the continuity of your business-critical applications. You can get reliability recommendations on the **Reliability** tab of the Azure Advisor.
-
-Here are some key recommendations:
-
-- [Use managed disks to improve data reliability](/azure/advisor/advisor-high-availability-recommendations#use-managed-disks-to-improve-data-reliability)
-- [Protect your virtual machine data from accidental deletion](/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion)
+Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the recommentations [here](#azure-advisor-recommendations).
 
 
 ### Policy definitions
 
 - Azure policy definition is to *audit standalone single instance VMs that aren't protected by an SLA*. It will flag an audit event for all Virtual Machine instances that aren't deployed within an Availability Set, across Availability Zones, and aren't using Premium Storage for both OS and Data disks. It also encompasses both Virtual Machine and Virtual Machine Scale Set resources. To view all VM instances that belong to this category, run the query described in [Related resources](#related-sources).
-
-
 - To identify resiliency risks to existing compute resources and support continuous compliance for new resources within a customer tenant, it's recommended you use Azure Policy and Azure Resource Graph to Audit the use of non-resilient deployment configurations.
 - Azure policy definition is to audit Availability Sets containing single instance VMs that aren't protected by an SLA. It will flag an audit event for all Availability Sets that don't contain multiple instances.
 
 All built-in policy definitions are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies#compute).
 
-### Related sources 
+## Cost optimization
+
+To estimate costs related to virtual machines, use these tools.
+
+- Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.
+- Use this [pricing calculator](https://azure.microsoft.com/pricing/calculator/#virtual-machines) to configure and estimate the costs of your Azure VMs.
+
+To optimize costs, review the [design principles](/azure/architecture/framework/cost/principles). 
+
+### Design considerations
+
+- Shut down VM instances which aren't in use.
+- Use Spot VMs when appropriate.
+- Consider using Burstable (B) series VM sizes for VMs that are idle most of the time and have high usage for a certain period of time.
+- Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
+- Review SKUs that could benefit from Reserved Instances for one year, three years, or more.
+
+### Recommendations
+
+Explore the following table of recommendations to optimize your Virtual Machine configuration for service cost:
+
+|Recommendation|Benefit|
+|------------------------------|-----------|
+|Use the Start and Stop VMs during off-hours feature of virtual machines to minimize waste.| Configuring start and stop times will shut down instances that aren't in use. The feature is suitable as a low-cost automation option. |
+|Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions.|
+|Consider using Burstable (B) series VM sizes for VMs that are idle most of the time and have high usage for a certain period of time.|The B-series VMs are ideal for workloads that don't need the full performance of the CPU continuously such as web servers, proof of concepts, small databases, and development build environments.|
+|Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.| Replicate, failover, and failback your business-critical virtual machines within the same region with zones. Ideal for those customers that have complicated networking infrastructure and want to avoid the cost, and complexity of recreating infrastructure in a secondary region. For more information about regions, reference [Products available by region](https://azure.microsoft.com/global-infrastructure/services/).|
+|Review SKUs that could benefit from Reserved Instances for one year, three years, or more.|Purchasing reserved instances is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep RI instances simple and keep management overhead low to prevent increasing cost.|
+
+Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the recommentations [here](#azure-advisor-recommendations).
+
+## Azure Advisor recommendations
+
+[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Virtual Machines.
+
+Determine which recommendations to apply. 
+
+|Recommendation|Reliability|Security|Cost optimization|Operational Excellence|Performance Efficiency|
+|---|---|---|---|---|---|
+|[Use managed disks to improve data reliability](/azure/advisor/advisor-high-availability-recommendations#use-managed-disks-to-improve-data-reliability)|:ballot_box_with_check:|:black_square_button:|:black_square_button:|:black_square_button:|:black_square_button:|
+|[Protect your virtual machine data from accidental deletion](/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion)|:ballot_box_with_check:|:black_square_button:|:black_square_button:|:black_square_button:|:black_square_button:|
+|[Optimize virtual machine spend by resizing or shutting down underutilized instances](/azure/advisor/advisor-cost-recommendations#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)|:black_square_button:|:black_square_button:|:ballot_box_with_check:|:black_square_button:|:black_square_button:|
+|[Buy reserved virtual machine instances to save money over pay-as-you-go costs](/azure/advisor/advisor-cost-recommendations#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)|:black_square_button:|:black_square_button:|:ballot_box_with_check:|:black_square_button:|:black_square_button:|
+
+
+## Related resources
+Here are some additional resources.
+
+### Query to identify unprotected resources 
 Use the following query to *identify standalone single instance VMs that aren't protected by a minimum SLA of at least `99.5%`*. The query will return all VM instances that aren't deployed within an Availability Set, across Availability Zones, and aren't using either Standard SSD or Premium SSD for both OS and Data disks. This query can be altered easily to identify all single instance VMs, including those using Premium Storage, which are protected by a minimum SLA of at least `99.5%`. Remove the trailing `where` condition:
 
 ```sql
@@ -102,44 +148,10 @@ Resources
     properties.platformFaultDomainCount <= 1
 ```
 
-## Cost optimization
-
-To estimate costs related to virtual machines, use these tools.
-
-- Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.
-- Use this [pricing calculator](https://azure.microsoft.com/pricing/calculator/#virtual-machines) to configure and estimate the costs of your Azure VMs.
-
-To optimize costs, review the [design principles](/azure/architecture/framework/cost/principles). 
-
-### Design considerations
-
-- Shut down VM instances which aren't in use.
-- Use Spot VMs when appropriate.
-- Consider using Burstable (B) series VM sizes for VMs that are idle most of the time and have high usage for a certain period of time.
-- Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
-- Review SKUs that could benefit from Reserved Instances for one year, three years, or more.
-
-### Recommendations
-
-Explore the following table of recommendations to optimize your Virtual Machine configuration for service cost:
-
-|Recommendation|Benefit|
-|------------------------------|-----------|
-|Use the Start and Stop VMs during off-hours feature of virtual machines to minimize waste.| Configuring start and stop times will shut down instances that aren't in use. The feature is suitable as a low-cost automation option. |
-|Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions.|
-|Consider using Burstable (B) series VM sizes for VMs that are idle most of the time and have high usage for a certain period of time.|The B-series VMs are ideal for workloads that don't need the full performance of the CPU continuously such as web servers, proof of concepts, small databases, and development build environments.|
-|Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.| Replicate, failover, and failback your business-critical virtual machines within the same region with zones. Ideal for those customers that have complicated networking infrastructure and want to avoid the cost, and complexity of recreating infrastructure in a secondary region. For more information about regions, reference [Products available by region](https://azure.microsoft.com/global-infrastructure/services/).|
-|Review SKUs that could benefit from Reserved Instances for one year, three years, or more.|Purchasing reserved instances is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep RI instances simple and keep management overhead low to prevent increasing cost.|
-
-### Azure Advisor recommendations
-Azure Advisor evaluates virtual machines based on CPU and network usage over a time period. Advisor recommends actions that can reduce cost overtime.
-
-- [Optimize virtual machine spend by resizing or shutting down underutilized instances](/azure/advisor/advisor-cost-recommendations#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](/azure/advisor/advisor-cost-recommendations#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
-
-### Related resources
+### Cost analysis
 Planned versus actual spending can be managed through [Azure Cost Management + Billing](/azure/cost-management-billing/costs/quick-acm-cost-analysis).
 There are several options for grouping resources by billing unit. 
+
 
 ## Next steps
 Use the recommendations as you provision virtual machines for your solution.
