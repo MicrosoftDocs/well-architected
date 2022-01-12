@@ -489,5 +489,11 @@ items:
                 items:
                   - name: Reliability
                     href: services/messaging/event-hubs/reliability.md
-                  - name: Operational Excellence
+                  - name: Operational excellence
                     href: services/messaging/event-hubs/operational-excellence.md
+              - name: Service Bus
+                items:
+                  - name: Reliability
+                    href: services/messaging/service-bus/reliability.md
+                  - name: Operational excellence
+                    href: services/messaging/service-bus/operational-excellence.md
