@@ -517,9 +517,9 @@ items:
                     href: services/messaging/event-grid/reliability.md
                   - name: Operational excellence
                     href: services/messaging/event-grid/operational-excellence.md
-              - name: Event Hub
+              - name: Event Hubs
                 items:
                   - name: Reliability
-                    href: services/messaging/event-hub/reliability.md
+                    href: services/messaging/event-hubs/reliability.md
                   - name: Operational Excellence
-                    href: services/messaging/event-hub/operational-excellence.md
+                    href: services/messaging/event-hubs/operational-excellence.md
