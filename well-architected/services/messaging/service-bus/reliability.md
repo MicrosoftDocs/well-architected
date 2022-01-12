@@ -88,35 +88,35 @@ Consider the following recommendations to optimize reliability when configuring 
 
 - To identify premium Service Bus Instances that aren't using private endpoints, use the following query:
 
-```sql
-Resources
-| where
+  ```sql
+  Resources
+  | where
     type == 'microsoft.servicebus/namespaces'
-| where
+  | where
     sku.tier == 'Premium'
     and isempty(properties.privateEndpointConnections)
-```
+  ```
 
 - To identify Service Bus Instances that aren't on the premium tier, use the following query:
 
-```sql
-Resources
-| where
+  ```sql
+  Resources
+  | where
     type == 'microsoft.servicebus/namespaces'
-| where
+  | where
     sku.tier != 'Premium'
-```
+  ```
 
 - To identify premium Service Bus Instances that aren't zone redundant, use the following query:
 
-```sql
-Resources
-| where
+  ```sql
+  Resources
+  | where
     type == 'microsoft.servicebus/namespaces'
-| where
+  | where
     sku.tier == 'Premium'
     and properties.zoneRedundant == 'false'
-```
+  ```
 
 ## Next step
 

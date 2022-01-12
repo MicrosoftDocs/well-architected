@@ -70,7 +70,7 @@ Consider the following recommendations to optimize reliability when configuring 
 
 ## Source artifacts
 
-To find Event Hubs namespaces with **Basic** SKU, use the following query:
+To find Event Hub namespaces with **Basic** SKU, use the following query:
 
 ```sql
 Resources 
