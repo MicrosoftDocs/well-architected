@@ -20,7 +20,7 @@ categories:
 
 For more information about using Event Hubs, reference the [Azure Event Hubs documentation](/azure/event-hubs/) to learn how to use Event Hubs to ingest millions of events per second from connected devices and applications.
 
-To understand how using Event Hubs creates a more reliable workload, reference [Azure Event Hubs - Geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr?tabs=portal)
+To understand how using Event Hubs creates a more reliable workload, reference [Azure Event Hubs - Geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr?tabs=portal).
 
 The following sections are specific to Azure Event Hubs and reliability:
 
@@ -43,7 +43,7 @@ Azure Event Hubs provides an uptime SLA. For more information, reference [SLA fo
 > - In high-throughput scenarios, use batched events.
 > - Every consumer can read events from one to `32` partitions.
 > - When developing new applications, use `EventProcessorClient` (.NET and Java) or `EventHubConsumerClient` (Python and JavaScript) as the client SDK.
-> - As part of your solution-wide availability and disaster recovery strategy, consider enabling the EventHub geo disaster-recovery option.
+> - As part of your solution-wide availability and disaster recovery strategy, consider enabling the Event Hubs geo disaster-recovery option.
 > - When a solution has a large number of independent event publishers, consider using Event Publishers for fine-grained access control.
 > - Don't publish events to a specific partition.
 > - When publishing events frequently, use the AMQP protocol when possible.
@@ -60,8 +60,8 @@ Consider the following recommendations to optimize reliability when configuring 
 |When using the SDK to send events to Event Hubs, ensure the exceptions thrown by the retry policy (`EventHubsException` or `OperationCancelledException`) are properly caught.|When using `HTTPS`, ensure a proper retry pattern is implemented.|
 |In high-throughput scenarios, use batched events.|The service will deliver a `json` array with multiple events to the subscribers, instead of an array with one event. The consuming application must process these arrays.|
 |Every consumer can read events from one to `32` partitions.|To achieve maximum scale on the side of the consuming application, every consumer should read from a single partition.|
-|When developing new applications, use `EventProcessorClient` (.Net and Java) or `EventHubConsumerClient` (Python and JavaScript) as the client SDK.|`EventProcessorHost` has been deprecated.|
-|As part of your solution-wide availability and disaster recovery strategy, consider enabling the Event Hub geo disaster-recovery option.|This option allows the creation of a secondary namespace in a different region. Only the active namespace receives messages at any time. Messages and events aren't replicated to the secondary region. The RTO for the regional failover is *up to 30 minutes*. Confirm this RTO aligns with the requirements of the customer and fits in the broader availability strategy. If a higher RTO is required, consider implementing a client-side failover pattern.|
+|When developing new applications, use `EventProcessorClient` (.NET and Java) or `EventHubConsumerClient` (Python and JavaScript) as the client SDK.|`EventProcessorHost` has been deprecated.|
+|As part of your solution-wide availability and disaster recovery strategy, consider enabling the Event Hubs geo disaster-recovery option.|This option allows the creation of a secondary namespace in a different region. Only the active namespace receives messages at any time. Messages and events aren't replicated to the secondary region. The RTO for the regional failover is *up to 30 minutes*. Confirm this RTO aligns with the requirements of the customer and fits in the broader availability strategy. If a higher RTO is required, consider implementing a client-side failover pattern.|
 |When a solution has a large number of independent event publishers, consider using Event Publishers for fine-grained access control.|Event Publishers automatically set the partition key to the publisher name, so this feature should only be used if the events originate from all publishers evenly.|
 |Don't publish events to a specific partition.|If ordering events is essential, implement ordering downstream or use a different messaging service instead.|
 |When publishing events frequently, use the AMQP protocol when possible.| AMQP has higher network costs when initializing the session, but `HTTPS` requires TLS overhead for every request. AMQP has higher performance for frequent publishers.|
