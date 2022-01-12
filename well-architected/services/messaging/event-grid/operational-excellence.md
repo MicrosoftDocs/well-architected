@@ -3,7 +3,7 @@ title: Event Grid and operational excellence
 description: Focuses on the Event Grid service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to Operational excellence.
 author: v-stacywray
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 01/12/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -130,4 +130,5 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Event Hub and reliability](reliability.md)
+> [Event Hubs and reliability](../event-hubs/reliability.md)
+
