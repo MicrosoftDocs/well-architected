@@ -16,7 +16,7 @@ categories:
 
 # Service Bus and reliability
 
-[Azure Service Bus](/azure/service-bus-messaging/service-bus-messaging-overview) is a fully-managed enterprise message broker with message queues and publish-subscribe topics. This service stores messages in a *broker* (for example, a *queue*) until the consuming party is ready to receive the messages.
+[Azure Service Bus](/azure/service-bus-messaging/service-bus-messaging-overview) is a fully managed enterprise message broker with message queues and publish-subscribe topics. This service stores messages in a *broker* (for example, a *queue*) until the consuming party is ready to receive the messages.
 
 Benefits include:
 
@@ -41,11 +41,11 @@ The following sections are specific to Azure Service Bus and reliability:
 
 ## Design considerations
 
-Azure Service Bus provides an uptime SLA so that properly configured applications can send or receive messages, or perform other operations on a deployed Queue or Topic. For more information, reference the [Service Bus SLA](/support/legal/sla/service-bus/v1_1/).
+Azure Service Bus provides an uptime SLA so that properly configured applications can send or receive messages, or do other operations on a deployed Queue or Topic. For more information, reference the [Service Bus SLA](/support/legal/sla/service-bus/v1_1/).
 
 Other design considerations include:
 
-- [Express Entities](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress?view=azure-dotnet)
+- [Express Entities](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress?view=azure-dotnet&preserve-view=true)
 - [Partitioned queues and topics](/azure/service-bus-messaging/service-bus-partitioning)
 
 Besides the documentation on [Service Bus Premium and Standard messaging tiers](/azure/service-bus-messaging/service-bus-premium-messaging), the following features are only available on the Premium SKU:
@@ -68,7 +68,7 @@ When deploying Service Bus with Geo-disaster recovery and in availability zones,
 
 > [!div class="checklist"]
 > - Ensure that [Service Bus Messaging Exceptions](/azure/service-bus-messaging/service-bus-messaging-exceptions) are handled properly.
-> - Connect to Service Bus with the AMQP protocol and utilize Service Endpoints or Private Endpoints when possible.
+> - Connect to Service Bus with the AMQP protocol and use Service Endpoints or Private Endpoints when possible.
 > - Review the [Best Practices for performance improvements using Service Bus Messaging](/azure/service-bus-messaging/service-bus-performance-improvements?tabs=net-standard-sdk-2).
 > - Configure Geo-Disaster.
 > - If you need mission critical messaging with queues and topics, Service Bus Premium is recommended with Geo-Disaster Recovery.
@@ -80,7 +80,7 @@ Consider the following recommendations to optimize reliability when configuring 
 
 |Recommendation|Description|
 |--------------|-----------|
-|Connect to Service Bus with the AMQP protocol and utilize Service Endpoints or Private Endpoints when possible.|This recommendation keeps traffic on the Azure Backbone. *Note: The default connection protocol for `Microsoft.Azure.ServiceBus` and `Windows.Azure.ServiceBus` namespaces is `AMQP`.*|
+|Connect to Service Bus with the AMQP protocol and use Service Endpoints or Private Endpoints when possible.|This recommendation keeps traffic on the Azure Backbone. *Note: The default connection protocol for `Microsoft.Azure.ServiceBus` and `Windows.Azure.ServiceBus` namespaces is `AMQP`.*|
 |Configure Geo-Disaster.|- [Active/Active](/azure/service-bus-messaging/service-bus-outages-disasters#active-replication) <br>- [Active/Passive](/azure/service-bus-messaging/service-bus-outages-disasters#passive-replication) <br>- [Paired Namespace (Active/Passive)](/azure/service-bus-messaging/service-bus-geo-dr) <br>- *Note: The secondary region should preferably be an [Azure paired region](/azure/availability-zones/cross-region-replication-azure)*.|
 |If you need mission critical messaging with queues and topics, Service Bus Premium is recommended with Geo-Disaster Recovery.| Choosing the pattern is dependent on the business requirements and the recovery time objective (RTO).|
 
