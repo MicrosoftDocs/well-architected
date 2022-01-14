@@ -1,6 +1,6 @@
 ---
-title: AlwaysOn Design Guidelines
-description: AlwaysOn Design Guidelines
+title: AlwaysOn Design Methodology
+description: AlwaysOn Design Methodology
 author: CAT
 ms.author: CAT
 ms.date: 02/01/2022
@@ -11,4 +11,4 @@ ms.custom:
   - alwayson
 ---
 
-# Design Guidelines
+# Design Methodology

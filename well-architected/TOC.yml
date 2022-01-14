@@ -345,6 +345,34 @@ items:
             href: scalability/tradeoffs.md
       - name: Workloads
         items:
+          - name: Mission-Critical
+            items:
+              - name: Overview
+                href: mission-critical/alwayson-overview.md
+              - name: Design Methodology
+                href: mission-critical/alwayson-design-methodology.md
+              - name: Design Principles
+                href: mission-critical/alwayson-design-principles.md
+              - name: Design Areas
+                items:
+                - name: Overview
+                  href: mission-critical/alwayson-design-areas.md
+                - name: Application Design
+                  href: mission-critical/alwayson-application-design.md
+                - name: Application Platform
+                  href: mission-critical/alwayson-application-platform.md
+                - name: Data Platform
+                  href: mission-critical/alwayson-data-platform.md
+                - name: Health Modeling
+                  href: mission-critical/alwayson-health-modeling.md
+                - name: Deployment and Testing
+                  href: mission-critical/alwayson-deployment-testing.md
+                - name: Networking and Connectivity
+                  href: mission-critical/alwayson-networking-connectivity.md
+                - name: Security
+                  href: mission-critical/alwayson-security.md
+                - name: Operational Procedures
+                  href: mission-critical/alwayson-operational-procedures.md
           - name: Hybrid
             items:
               - name: Overview
@@ -359,34 +387,6 @@ items:
                 href: hybrid/hybrid-reliability.md
               - name: Security
                 href: hybrid/hybrid-security.md
-          - name: AlwaysOn
-            items:
-              - name: Overview
-                href: alwayson/alwayson-overview.md
-              - name: Design Guidelines
-                items:
-                - name: Design Guidelines
-                  href: alwayson/alwayson-design-guidelines.md
-              - name: Critical Design Areas
-                items:
-                - name: Critical Design Areas
-                  href: alwayson/alwayson-design-areas.md
-                - name: Application Design
-                  href: alwayson/alwayson-application-design.md
-                - name: Application Platform
-                  href: alwayson/alwayson-application-platform.md
-                - name: Data Platform
-                  href: alwayson/alwayson-data-platform.md
-                - name: Health Modeling
-                  href: alwayson/alwayson-health-modeling.md
-                - name: Deployment and Testing
-                  href: alwayson/alwayson-deployment-testing.md
-                - name: Networking and Connectivity
-                  href: alwayson/alwayson-networking-connectivity.md
-                - name: Security
-                  href: alwayson/alwayson-security.md
-                - name: Operational Procedures
-                  href: alwayson/alwayson-operational-procedures.md
       - name: Services
         items:
           - name: Compute
