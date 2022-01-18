@@ -50,7 +50,7 @@ Other design considerations include:
 Besides the documentation on [Service Bus Premium and Standard messaging tiers](/azure/service-bus-messaging/service-bus-premium-messaging), the following features are only available on the Premium SKU:
 
 - Dedicated resources.
-- Virtual network integration: Limits the networks that can connect to the Service Bus instance. Requires Service Endpoints to be enabled on the subnet. There are Trusted Microsoft services that aren't supported when Virtual Networks are implemented (for example, integration with Event Grid). For more information, reference [Allow access to Azure Service Bus namespace from specific virtual networks](/azure/service-bus-messaging/service-bus-service-endpoints).
+- Virtual network integration: Limits the networks that can connect to the Service Bus instance. Requires Service Endpoints to be enabled on the subnet. There are Trusted Microsoft services that aren't supported when implementing Virtual Networks (for example, integration with Event Grid). For more information, reference [Allow access to Azure Service Bus namespace from specific virtual networks](/azure/service-bus-messaging/service-bus-service-endpoints).
 - Private endpoints.
 - IP Filtering/Firewall: Restrict connections to only defined `IPv4` addresses or `IPv4` address ranges.
 - [Availability zones](/azure/availability-zones/az-overview): Provides enhanced availability by spreading replicas across availability zones within one region at no extra cost.
