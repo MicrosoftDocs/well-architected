@@ -3,7 +3,7 @@ title: Service Bus and reliability
 description: Focuses on the Service Bus service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to Reliability.
 author: v-stacywray
 ms.author: robbymillsap
-ms.date: 01/12/2022
+ms.date: 01/18/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -71,7 +71,7 @@ When deploying Service Bus with Geo-disaster recovery and in availability zones,
 > - Connect to Service Bus with the AMQP protocol and use Service Endpoints or Private Endpoints when possible.
 > - Review the [Best Practices for performance improvements using Service Bus Messaging](/azure/service-bus-messaging/service-bus-performance-improvements?tabs=net-standard-sdk-2).
 > - Configure Geo-Disaster.
-> - If you need mission critical messaging with queues and topics, Service Bus Premium is recommended with Geo-Disaster Recovery.
+> - If you need mission-critical messaging with queues and topics, Service Bus Premium is recommended with Geo-Disaster Recovery.
 > - Make the namespace zone redundant (only available with Premium tier).
 
 ## Configuration recommendations
