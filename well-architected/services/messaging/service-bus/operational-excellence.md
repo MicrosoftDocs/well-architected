@@ -68,7 +68,9 @@ When deploying Service Bus with Geo-disaster recovery and in availability zones,
 > [!div class="checklist"]
 > - Ensure that [Service Bus Messaging Exceptions](/azure/service-bus-messaging/service-bus-messaging-exceptions) are handled properly.
 > - Connect to Service Bus with the AMQP protocol and use Service Endpoints or Private Endpoints when possible.
+> - Establish a process to actively monitor the dead-letter queue (dlq) messages.
 > - Review the [Best Practices for performance improvements using Service Bus Messaging](/azure/service-bus-messaging/service-bus-performance-improvements?tabs=net-standard-sdk-2).
+> - Analyze the differences between Azure Storage Queues and Azure Service Bus Queues.
 
 ## Configuration recommendations
 
@@ -77,6 +79,8 @@ Consider the following recommendation to optimize reliability when configuring A
 |Recommendation|Description|
 |--------------|-----------|
 |Connect to Service Bus with the AMQP protocol and use Service Endpoints or Private Endpoints when possible.|This recommendation keeps traffic on the Azure Backbone. *Note: The default connection protocol for `Microsoft.Azure.ServiceBus` and `Windows.Azure.ServiceBus` namespaces is `AMQP`.*|
+|Establish a process to actively monitor the dead-letter queue (dlq) messages.|The dead-letter queue holds messages that can't be processed or can't be delivered to any receiver. It's important to monitor this queue to examine the issue cause, apply required corrections, and to resubmit messages.|
+|Analyze the differences between Azure Storage Queues and Azure Service Bus Queues.|Azure Service Bus Messaging Entities are more advanced, reliable, and feature-rich than Azure Storage Queues. If your requirement is for simple queue messaging without requirements for reliable messaging or for the more advanced features that Service Bus offers, then Azure Storage Queues may be a more suitable option.|
 
 ## Source artifacts
 
