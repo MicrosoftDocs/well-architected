@@ -485,3 +485,15 @@ items:
                     href: services/messaging/event-grid/reliability.md
                   - name: Operational excellence
                     href: services/messaging/event-grid/operational-excellence.md
+              - name: Event Hubs
+                items:
+                  - name: Reliability
+                    href: services/messaging/event-hubs/reliability.md
+                  - name: Operational excellence
+                    href: services/messaging/event-hubs/operational-excellence.md
+              - name: Service Bus
+                items:
+                  - name: Reliability
+                    href: services/messaging/service-bus/reliability.md
+                  - name: Operational excellence
+                    href: services/messaging/service-bus/operational-excellence.md
