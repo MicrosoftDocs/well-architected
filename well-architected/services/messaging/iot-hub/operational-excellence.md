@@ -81,4 +81,4 @@ Consider the following recommendations for increasing operational excellence whe
 ## Next step
 
 > [!div class="nextstepaction"]
-> [IoT Hub Device Provisioning Service and reliability](reliability.md)
+> [IoT Hub Device Provisioning Service and reliability](../iot-hub-device-provisioning-service/reliability.md)
