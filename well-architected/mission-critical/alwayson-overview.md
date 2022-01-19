@@ -45,10 +45,3 @@ AlwaysOn addresses this complex consumption experience by expanding the [Well-Ar
 
 > [!div class="nextstepaction"]
 > [Cost optimization](./alwayon-design0methodology.md)
-
-
-|Previous Page|Next Page|
-|--|--|
-|[Home](../../README.md)|[How to use the AlwaysOn Design Guidelines](../design-guidelines/README.md)
-
----
