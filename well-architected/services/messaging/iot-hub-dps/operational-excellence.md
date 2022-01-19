@@ -20,11 +20,11 @@ The [IoT Hub Device Provisioning Service (DPS)](/azure/iot-dps/) is a helper ser
 
 For more information, reference [What is Azure IoT Hub Device Provisioning Service?](/azure/iot-dps/about-iot-dps)
 
-To understand how IoT DPS promotes operational excellence, reference [How to manage device enrollments with Azure portal](/azure/iot-dps/how-to-manage-enrollments).
+To understand how IoT Hub DPS promotes operational excellence, reference [How to manage device enrollments with Azure portal](/azure/iot-dps/how-to-manage-enrollments).
 
 ## Design considerations
 
-For more information about the Service Level Agreement for Azure IoT DPS, reference [SLA for Azure IoT Hub](https://azure.microsoft.com/support/legal/sla/iot-hub/v1_2/).
+For more information about the Service Level Agreement for Azure IoT Hub DPS, reference [SLA for Azure IoT Hub](https://azure.microsoft.com/support/legal/sla/iot-hub/v1_2/).
 
 ## Next step
 
