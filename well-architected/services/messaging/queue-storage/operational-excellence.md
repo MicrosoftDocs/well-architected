@@ -58,4 +58,4 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [IoT Hub and reliability](reliability.md)
+> [IoT Hub and reliability](../iot-hub/reliability.md)
