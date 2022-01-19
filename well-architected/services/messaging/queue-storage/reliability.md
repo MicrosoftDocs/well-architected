@@ -18,7 +18,7 @@ categories:
 
 [Azure Queue Storage](/azure/storage/queues/storage-queues-introduction) is a service for storing large numbers of messages that you can access from anywhere in the world through authenticated calls using `HTTP` or `HTTPS`. Queues are commonly used to create a backlog of work to process asynchronously.
 
-For more information about Queue Storage, reference [What is Azure Queue Storage?](/azure/storage/queues/storage-queues-introduction).
+For more information about Queue Storage, reference [What is Azure Queue Storage?](/azure/storage/queues/storage-queues-introduction)
 
 To understand how Azure Queue Storage helps maintain a reliable workload, reference the following topics:
 
@@ -34,7 +34,7 @@ The following sections are specific to Azure Queue Storage and reliability:
 
 ## Design considerations
 
-Azure Storage Queues follow the SLA statements of the general [Storage Account service](https://azure.microsoft.com/support/legal/sla/storage/v1_5/).
+Azure Queue Storage follows the SLA statements of the general [Storage Account service](https://azure.microsoft.com/support/legal/sla/storage/v1_5/).
 
 ## Checklist
 
