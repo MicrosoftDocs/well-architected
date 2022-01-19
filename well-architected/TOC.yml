@@ -535,3 +535,9 @@ items:
                     href: services/messaging/queue-storage/reliability.md
                   - name: Operational excellence
                     href: services/messaging/queue-storage/operational-excellence.md
+              - name: IoT Hub
+                items:
+                  - name: Reliability
+                    href: services/messaging/iot-hub/reliability.md
+                  - name: Operational excellence
+                    href: services/messaging/iot-hub/operational-excellence.md
