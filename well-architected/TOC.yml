@@ -512,7 +512,7 @@ items:
               - name: IoT Hub Device Provisioning Service
                 items:
                   - name: Reliability
-                    href: services/messaging/iot-hub-device-provisioning-service/reliability.md
+                    href: services/messaging/iot-hub-dps/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/iot-hub-device-provisioning-service/operational-excellence.md
+                    href: services/messaging/iot-hub-dps/operational-excellence.md
                     
