@@ -497,3 +497,9 @@ items:
                     href: services/messaging/service-bus/reliability.md
                   - name: Operational excellence
                     href: services/messaging/service-bus/operational-excellence.md
+              - name: Storage Queues
+                items:
+                  - name: Reliability
+                    href: services/messaging/storage-queues/reliability.md
+                  - name: Operational excellence
+                    href: services/messaging/storage-queues/operational-excellence.md
