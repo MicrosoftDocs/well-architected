@@ -98,7 +98,6 @@ Consider the following recommendations to optimize reliability when configuring 
 |Evaluate different JMS features through the JMS API.|Features available through the JMS 2.0 API (and its SDK) aren't the same as the features available through the native SDK. For example, Service Bus Sessions aren't available in JMS.|
 |Implement resilience for transient fault handling when sending or receiving messages.|It's essential to implement suitable transient fault handling and error handling for send and receive operations to maintain throughput and to prevent message loss.|
 
-
 ## Source artifacts
 
 - To identify premium Service Bus Instances that aren't using private endpoints, use the following query:
