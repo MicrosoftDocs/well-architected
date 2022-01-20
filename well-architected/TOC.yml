@@ -547,4 +547,11 @@ items:
                     href: services/messaging/iot-hub-dps/reliability.md
                   - name: Operational excellence
                     href: services/messaging/iot-hub-dps/operational-excellence.md
-                    
+          - name: Networking
+            items: 
+              - name: Application Delivery (General)
+                items:
+                  - name: Reliability
+                    href: services/networking/application-delivery/reliability.md
+                  - name: Operational excellence
+                    href: services/networking/application-delivery/operational-excellence.md
