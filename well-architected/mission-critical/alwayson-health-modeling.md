@@ -437,7 +437,7 @@ There are multiple analytical technologies within Azure, such as Azure Synapse a
 > [!div class="nextstepaction"]
 > [Application Design - Critical Design Area](/alwayson-application-design.md)
 > [Application Platform - Critical Design Area](/alwayson-application-platform.md)
-> [Health Modeling and Observability - Critical Design Area](/alwayson-health-modeling.md)
+> [Data Platform - Critical Design Area](/alwayson-data-platform.md)
 > [Deployment and Testing - Critical Design Area](/alwayson-deployment-testing.md)
 > [Networking and Connectivity - Critical Design Area](/alwayson-networking.md)
 > [Security - Critical Design Area](/alwayson-Security.md)
