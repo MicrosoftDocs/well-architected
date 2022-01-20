@@ -1,5 +1,5 @@
 ---
-title: Mission-Critical Workloads Critical Design Area - Security
+title: Mission-Critical Workloads - Security
 description: This section provides detailed design considerations and recommondations for the security critical desgin area.
 author: Customer Architecture Team
 ms.author: hjscherer
@@ -355,10 +355,10 @@ This section will therefore explore key considerations and recommendations surro
 ---
 
 > [!div class="nextstepaction"]
-> [Application Design - Critical Design Area](/alwayson-application-design.md)
-> [Application Platform - Critical Design Area](/alwayson-application-platform.md)
-> [Data Platform - Critical Design Area](/alwayson-data-platform.md)
-> [Health Modeling and Observability - Critical Design Area](/alwayson-health-modeling.md)
-> [Deployment and Testing - Critical Design Area](/alwayson-deployment-testing.md)
-> [Networking and Connectivity - Critical Design Area](/alwayson-networking.md)
-> [Operational Procedures - Critical Design Area](/alwayson-operational-procedures.md)
+> [Application Design](/alwayson-application-design.md)
+> [Application Platform](/alwayson-application-platform.md)
+> [Data Platform](/alwayson-data-platform.md)
+> [Health Modeling and Observability](/alwayson-health-modeling.md)
+> [Deployment and Testing](/alwayson-deployment-testing.md)
+> [Networking and Connectivity](/alwayson-networking.md)
+> [Operational Procedures](/alwayson-operational-procedures.md)

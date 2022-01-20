@@ -1,6 +1,6 @@
 ---
-title: Mission-Critical Workloads Critical Design Area - Deployment and Testing
-description: This section provides detailed design considerations and recommondations for the deployment and testing critical desgin area.
+title: Mission-Critical Workloads - Deployment and Testing
+description: This design area will focus on how to eradicate downtime and maintain application health for deployment operations, providing key considerations and recommendations intended to inform the design of optimal CI/CD pipelines for an AlwaysOn application
 author: Customer Architecture Team
 ms.author: hjscherer
 ms.date: 02/01/2022
@@ -540,10 +540,10 @@ AIOps methodologies can be applied within CI/CD pipelines to supplement traditio
 ---
 
 > [!div class="nextstepaction"]
-> [Application Design - Critical Design Area](/alwayson-application-design.md)
-> [Application Platform - Critical Design Area](/alwayson-application-platform.md)
-> [Data Platform - Critical Design Area](/alwayson-data-platform.md)
-> [Health Modeling and Observability - Critical Design Area](/alwayson-health-modeling.md)
-> [Networking and Connectivity - Critical Design Area](/alwayson-networking.md)
-> [Security - Critical Design Area](/alwayson-Security.md)
-> [Operational Procedures - Critical Design Area](/alwayson-operational-procedures.md)
+> [Application Design](/alwayson-application-design.md)
+> [Application Platform](/alwayson-application-platform.md)
+> [Data Platform](/alwayson-data-platform.md)
+> [Health Modeling and Observability](/alwayson-health-modeling.md)
+> [Networking and Connectivity](/alwayson-networking.md)
+> [Security](/alwayson-Security.md)
+> [Operational Procedures](/alwayson-operational-procedures.md)

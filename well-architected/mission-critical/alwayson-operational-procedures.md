@@ -1,6 +1,6 @@
 ---
-title: Mission-Critical Workloads Critical Design Area - Operational Procedures
-description: This section provides detailed design considerations and recommondations for the operational procedures critical desgin area.
+title: Mission-Critical Workloads - Operational Procedures
+description: This design area will explore reliable and effective operations through DevOps processes, with automated deployment pipelines used to execute versioned application and infrastructure code artifacts within a source repository
 author: Customer Architecture Team
 ms.author: hjscherer
 ms.date: 02/01/2022
@@ -165,10 +165,10 @@ Azure [resources can be locked](/azure/azure-resource-manager/management/lock-re
 ---
 
 > [!div class="nextstepaction"]
-> [Application Design - Critical Design Area](/alwayson-application-design.md)
-> [Application Platform - Critical Design Area](/alwayson-application-platform.md)
-> [Data Platform - Critical Design Area](/alwayson-data-platform.md)
-> [Health Modeling and Observability - Critical Design Area](/alwayson-health-modeling.md)
-> [Deployment and Testing - Critical Design Area](/alwayson-deployment-testing.md)
-> [Networking and Connectivity - Critical Design Area](/alwayson-networking.md)
-> [Security - Critical Design Area](/alwayson-Security.md)
+> [Application Design](/alwayson-application-design.md)
+> [Application Platform](/alwayson-application-platform.md)
+> [Data Platform](/alwayson-data-platform.md)
+> [Health Modeling and Observability](/alwayson-health-modeling.md)
+> [Deployment and Testing](/alwayson-deployment-testing.md)
+> [Networking and Connectivity](/alwayson-networking.md)
+> [Security](/alwayson-Security.md)

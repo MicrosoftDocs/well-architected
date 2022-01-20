@@ -1,6 +1,6 @@
 ---
 title: Mission-Critical Workloads - AlwaysOn Design Principles
-description: A cloud-native design methodology to guide readers through the architectural process of building a mature mission-critical application on Microsoft Azure
+description: Key design principles which serve as a compass for subsequent design decisions across technical domains and the critical design areas
 author: Customer Architecture Team
 ms.author: calcof
 ms.date: 02/01/2022
@@ -91,27 +91,5 @@ The [AlwaysOn](http://github.com/azure/alwayson) design methodology is underpinn
 
 ---
 
-|Previous Page|Next Page|
-|--|--|
-|[How to use the AlwaysOn Design Guidelines](./README.md)|[AlwaysOn Design Areas](./Design-Areas.md)
-
----
-
-|Design Guidelines|
-|--|
-|[How to use the AlwaysOn Design Guidelines](./README.md)
-|[AlwaysOn Design Principles](./Principles.md)
-|[AlwaysOn Design Areas](./Design-Areas.md)
-|[Application Design](./App-Design.md)
-|[Application Platform](./App-Platform.md)
-|[Data Platform](./Data-Platform.md)
-|[Health Modeling and Observability](./Health-Modeling.md)
-|[Deployment and Testing](./Deployment-Testing.md)
-|[Networking and Connectivity](./Networking.md)
-|[Security](./Security.md)
-|[Operational Procedures](./Operational-Procedures.md)
-
----
-
-[AlwaysOn - Full List of Documentation](/docs/README.md)
-
+> [!div class="nextstepaction"]
+> [Design Areas](/alwayson-design-areas.md)

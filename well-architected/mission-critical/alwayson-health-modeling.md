@@ -1,8 +1,8 @@
 ---
-title: Mission-Critical Workloads Critical Design Area - Health Modeling and Observability
-description: This section provides detailed design considerations and recommondations for the health modeling and observability critical desgin area.
+title: Mission-Critical Workloads - Health Modeling and Observability
+description: This design area will focus on the process to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity
 author: Customer Architecture Team
-ms.author: hjscherer
+ms.author: calcof
 ms.date: 02/01/2022
 ms.topic: conceptual
 ms.service: well-architected
@@ -435,10 +435,10 @@ There are multiple analytical technologies within Azure, such as Azure Synapse a
 ---
 
 > [!div class="nextstepaction"]
-> [Application Design - Critical Design Area](/alwayson-application-design.md)
-> [Application Platform - Critical Design Area](/alwayson-application-platform.md)
-> [Data Platform - Critical Design Area](/alwayson-data-platform.md)
-> [Deployment and Testing - Critical Design Area](/alwayson-deployment-testing.md)
-> [Networking and Connectivity - Critical Design Area](/alwayson-networking.md)
-> [Security - Critical Design Area](/alwayson-Security.md)
-> [Operational Procedures - Critical Design Area](/alwayson-operational-procedures.md)
+> [Application Design](/alwayson-application-design.md)
+> [Application Platform](/alwayson-application-platform.md)
+> [Data Platform](/alwayson-data-platform.md)
+> [Deployment and Testing](/alwayson-deployment-testing.md)
+> [Networking and Connectivity](/alwayson-networking.md)
+> [Security](/alwayson-Security.md)
+> [Operational Procedures](/alwayson-operational-procedures.md)
