@@ -1,5 +1,5 @@
 ---
-title: Mission-Critical Workloads - Design Methodology
+title: Mission-Critical Workloads - AlwaysOn Design Methodology
 description: A cloud-native design methodology to guide readers through the architectural process of building a mature mission-critical application on Microsoft Azure
 author: Customer Architecture Team
 ms.author: calcof
