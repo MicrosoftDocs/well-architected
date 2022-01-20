@@ -1,8 +1,8 @@
 ---
 title: Mission-Critical Workloads Critical Design Area - Application Design
-description: This section provides detailed design considerations and recommondation for the application desgin critical desgin area to building highly-reliable applications on Microsoft Azure for mission-critical workloads
+description: This section provides detailed design considerations and recommondations for the application design critical desgin area.
 author: Customer Architecture Team
-ms.author: calcof
+ms.author: hjscherer
 ms.date: 02/01/2022
 ms.topic: conceptual
 ms.service: well-architected
@@ -311,4 +311,10 @@ When issues are not transient in-nature and cannot be fully mitigated within app
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Critical Design Area - Application Platform](./alwayson-application-platform.md)
+> [Application Platform - Critical Design Area](/alwayson-application-platform.md)
+> [Data Platform - Critical Design Area](/alwayson-data-Platform.md)
+> [Health Modeling and Observability](/alwayson-health-modeling.md)
+> [Deployment and Testing](/alwayson-deployment-testing.md)
+> [Networking and Connectivity](/alwayson-networking.md)
+> [Security](/alwayson-Security.md)
+> [Operational Procedures](/alwayson-operational-procedures.md)
