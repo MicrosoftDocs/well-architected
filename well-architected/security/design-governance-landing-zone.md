@@ -24,7 +24,7 @@ From a security perspective, there are several benefits. First, a landing zone o
 
 Another benefit is consistent adoption of organizational policies. Policies govern which resources can be used and their usage limits. Policies also provide identity controls. Only authenticated and authorized entities are allowed access. This approach decouples the governance requirements from the workload requirements. It's crucial that a landing zone is handed over to the workload owner with the security guardrails deployed.
 
-A well-architected landing zone supports the zero-trust principle. The landing zone is configured with least privileges that is in compliance with enterprise security. The workload requirements must align those requirements. For instance when design networking controls, support zero-trust by opening communication paths only when necessary and only to trusted entities.
+A well-architected landing zone supports the zero-trust principle. The landing zone is configured with least privileges that is in compliance with enterprise security. The workload requirements must align those requirements. For instance when designing networking controls, apply the zero-trust approach by opening communication paths only when necessary and only to trusted entities.
 
 The preceding examples are conceptually simple but the implementation can get complicated for an enterprise-scale deployment. This article provides links to articles in Cloud Adoption Framework (CAF) that describe the design considerations and best practices.
 
@@ -53,6 +53,7 @@ For more information on how to do this in Azure, please review [Tutorial: Create
 ## Architecture
 
 For information about an enterprise-scale reference architecture, see [Cloud Adoption Framework enterprise-scale landing zone architecture](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture). The architecture provides considerations in these critical design areas:
+
 - [Enterprise Agreement (EA) enrollment and Azure Active Directory tenants](/azure/cloud-adoption-framework/ready/enterprise-scale/enterprise-enrollment-and-azure-ad-tenants)
 - [Identity and access management](/azure/cloud-adoption-framework/ready/enterprise-scale/identity-and-access-management)
 - [Management group and subscription organization](/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization)

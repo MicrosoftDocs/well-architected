@@ -24,23 +24,23 @@ It's often the case that the workload and the supporting components of a cloud a
 
 ## Key points
 
-- Protect non-public accessible services with network restrictions and IP firewall.
+- Protect non-publicly accessible services with network restrictions and IP firewall.
 - Use Network Security Groups (NSGs) or Azure Firewall to protect and control traffic within the VNet.
 - Use Service Endpoints or Private Link for accessing Azure PaaS services.
 - Use Azure Firewall to protect against data exfiltration attacks.
-- Restrict access to backend services to a minimal set of public IP addresses, only those services that really need it.
-- Use Azure controls over third-party solutions for basic security needs. They're easy to configure and scale.
+- Restrict access to backend services to a minimal set of public IP addresses.
+- Use Azure controls over third-party solutions for basic security needs. These controls are native to the platform and are easy to configure and scale.
 - Define access policies based on the type of workload and control flow between the different application tiers.
 
 ## Connectivity between network segments
 
-When designing a workload, you'll typically start by provisioning an Azure Virtual Network (VNet) in a private address space which has the  workload. No traffic is allowed by default between any two virtual networks. If there's a need, define the communication paths explicitly. One way of connecting VNets is through [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview).
+When designing a workload, you'll typically start by provisioning an Azure Virtual Network (VNet) in a private address space which has the workload. No traffic is allowed by default between any two virtual networks. If there's a need, define the communication paths explicitly. One way of connecting VNets is through [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview).
 
-A key aspect is protecting the VMs in the VNet. The network interfaces on the VMs allow them to communicate with other VMs, the internet, and on-premises networks. To control traffic on VMs within a VNet (and subnet), use [Application Security Groups (ASGs)](/azure/virtual-network/application-security-groups). You can group a set of VMs under an application tag and define traffic rules. Those rules are then applied to each of the underlying VMs.
+A key aspect of protecting VMs in a VNet is to control the flow of network traffic. The network interfaces on the VMs allow them to communicate with other VMs, the internet, and on-premises networks. To control traffic on VMs within a VNet (and subnet), use [Application Security Groups (ASGs)](/azure/virtual-network/application-security-groups). ASGs allow you to group a set of VMs under an application tag and define traffic rules. Those rules are then applied to each of the underlying VMs.
 
-A VNet is segmented into subnets based on business requirements. Provide proper network security controls that allow or deny inbound network traffic to, or outbound network traffic from, within larger network space.
+A VNet is segmented into subnets based on business requirements. Ensure that proper network security controls are configured to allow or deny inbound network traffic to, or outbound network traffic from, within larger network space.
 
-You can also provision VMs with private IP addresses for protection. Take advantage of the Azure IP address to determine incoming traffic, how and where it's translated on to the virtual network.
+By default VMs are provisioned with private IP addresses. This allows you to take advantage of the Azure IP address to determine incoming traffic, how and where it's translated on to the virtual network.
 
 A good Azure IP addressing schema provides flexibility, room for growth, and integration with on-premises networks. The schema ensures that communication works for deployed resources, minimizes public exposure of systems, and gives the organization flexibility in its network. If not properly designed, systems might not be able to communicate, and additional work will be required to remediate.
 
@@ -49,11 +49,11 @@ A good Azure IP addressing schema provides flexibility, room for growth, and int
 To secure communication within a VNet, set rules that inspect traffic. Then, *allow* or *deny* traffic to, or from specific sources, and route them to the specified destinations.
 > ![Task](./images/i-best-practices.png) Review the rule set and confirm that the required services are not unintentionally blocked.
 
-For traffic between subnets, the recommended way is through [Network Security Groups (NSG)](/azure/virtual-network/security-overview). Define rules on each NSG that checks traffic to and from single IP address, multiple IP addresses, or entire subnets.
+For traffic between subnets (also referred to as east-west traffic), it's recommended to use [Network Security Groups (NSG)](/azure/virtual-network/security-overview). NSGs allow you to define rules that check the source and destination address, protocol and port of Inbound and Outbound traffic. The address can be a single IP address, multiple IP addresses, an [Azure service tag](azure/virtual-network/service-tags-overview) or an entire subnet.
 
-If NSGs are being used to isolate and protect the application, the rule set should be reviewed to confirm that required services are not unintentionally blocked, or more permissive access than expected is allowed. Azure Firewall (and Firewall Manager) can be used to centralize and manage firewall policies.
+If NSGs are being used to isolate and protect the application, the rule set should be reviewed to confirm that required services are not unintentionally blocked, or more permissive access than expected is allowed.
 
-Another way is to use network virtual appliances (NVAs) that check inbound (ingress) and outbound (egress) traffic and filters based on rules.
+For advanced networking controls, use [Azure Firewall](/azure/firewall/overview). It can be used to perform deep packet inspection on both east-west and north-south traffic. Firewalls rules can be defined as policies and centrally managed. An alternative solution is to use network virtual appliances (NVAs) that check inbound (ingress) and outbound (egress) traffic and filters based on rules.
 
 **How do you route network traffic through NVAs for security boundary policy enforcement, auditing, and inspection?**
 ***

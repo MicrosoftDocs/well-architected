@@ -17,7 +17,7 @@ subject:
 
 # Infrastructure provisioning considerations in Azure
 
-Azure resources can be provisioned in through code or user tools such as the Azure portal or via Azure CLI. It's not recommended that resources are provisioned or configured manually. Those methods are error prone and can lead to security gaps. Even the smallest of changes should be through code. The recommended approach is Infrastructure as code (IaC). It's easy to track because the provisioned infrastructure can be fully reproduced and reversed.
+Azure resources can be provisioned by code or user tools such as the Azure portal or via Azure CLI. It's not recommended that resources are provisioned or configured manually. Those methods are error prone and can lead to security gaps. Even the smallest of changes should be through code. The recommended approach is Infrastructure as code (IaC). It's easy to track because the provisioned infrastructure can be fully reproduced and reversed.
 
 ## Key points
 
@@ -28,17 +28,20 @@ Azure resources can be provisioned in through code or user tools such as the Azu
 
 ## Infrastructure as code (IaC)
 
-Make all operational changes and modifications through IaC. This is a key DevOps practice, and it's often used with continuous delivery. IaC manages the infrastructure - such as networks, virtual machines, and others - with a descriptive model, using a versioning system that is similar to what is used for source code. IaC model generates the same environment every time it's applied. Common examples of IaC are Azure Resource Manager or Terraform.
+Make all operational changes and modifications through IaC. This is a key DevOps practice, and it's often used with continuous delivery. IaC manages the infrastructure - such as networks, virtual machines, and others - with a descriptive model, using a versioning system that is similar to what is used for source code. IaC model generates the same environment every time it's applied. Common examples of IaC are Azure Resource Manager, Bicep or Terraform.
 
 IaC reduces configuration effort and automates full environment deployment (production and pre-production). Also, IaC allows you to develop and release changes faster. All those factors enhance the security of the workload.
 
 For detailed information about IaC, see [What is Infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code).
 
 ## Pipeline secret management
+
 **How are credentials, certificates, and other secrets used in the operations for the workload managed during deployment?**
 ***
 
-Store keys and secrets outside of deployment pipeline in a managed key store, such as Azure Key Vault. Or, in a secure store for the pipeline. When deploying application infrastructure with Azure Resource Manager or Terraform, the process might generate credentials and keys. Store them in a managed key store and make sure the deployed resources reference the store. Do not hard-code credentials.
+Store keys and secrets outside of deployment pipeline in a managed key store, such as Azure Key Vault. Or, in a secure store for the pipeline. When deploying application infrastructure with Azure Resource Manager, Bicep or Terraform, the process might generate credentials and keys. Store them in a managed key store and make sure the deployed resources reference the store. Do not hard-code credentials.
+
+Secret scanning tools like [GitHub Secret Scanner](https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning) can be used to scan for existing hard-coded credentials. Add the scanning process in your continuous integration (CI) pipeline to prevent new hard-coded credentials from being added.
 
 ## Build environments
 
