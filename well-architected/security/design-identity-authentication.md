@@ -33,7 +33,7 @@ Authentication is a process that grants or denies access to a system by verifyin
 **How is the application authenticated when communicating with Azure platform services?**
 ***
 
-Managed identities enable Azure Services to authenticate to each other without presenting explicit credentials via code and increase security.
+Managed identities enable Azure Services to authenticate to each other without presenting explicit credentials via code.
 
 Managed identities for Azure resources is a feature of Azure Active Directory. Each of the Azure services that support managed identities for Azure resources are subject to their own timeline. Make sure you review the availability status of managed identities for your resource and known issues before you begin. The feature provides Azure services with an automatically managed identity in Azure AD. You can use the identity to authenticate to any service that supports Azure AD authentication, including Key Vault, without any credentials in your code. The managed identities for Azure resources feature is free with Azure AD for Azure subscriptions, there's no additional cost.
 
@@ -70,7 +70,7 @@ This approach is secure because Azure handles the management of the underlying c
 **What kind of authentication is required by application APIs?**
 ***
 
-Don't assume that API URLs used by a workload are hidden and can't get exposed to attackers. For example, JavaScript code on a website can be viewed. A mobile application can be decompiled and inspected. Even for internal APIs used only on the backend, a requirement of  authentication can increase the difficulty of lateral movement if an attacker gets network access. Typical mechanisms include API keys, authorization tokens, IP restrictions.
+Don't assume that API URLs used by a workload are hidden and can't get exposed to attackers. For example, JavaScript code on a website can be viewed. A mobile application can be decompiled and inspected. Even for internal APIs used only on the backend, a requirement of authentication can increase the difficulty of lateral movement if an attacker gets network access. Typical mechanisms include API keys, authorization tokens and IP restrictions.
 
 Managed Identity can help an API be more secure because it replaces the use of human-managed service principals and can request authorization tokens.
 
@@ -178,9 +178,9 @@ Review workloads that do not leverage modern authentication protocols and conver
 
 For Azure, enable protections in Azure AD:
 
-1.    Configure Azure AD Connect to synchronize password hashes. For information, see [Implement password hash synchronization with Azure AD Connect sync](/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization).
+1. Configure Azure AD Connect to synchronize password hashes. For information, see [Implement password hash synchronization with Azure AD Connect sync](/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization).
 
-2.    Choose whether to automatically or manually remediate issues found in a report. For more information, see [Monitor identity risks](monitor-remediate.md).
+2. Choose whether to automatically or manually remediate issues found in a report. For more information, see [Monitor identity risks](monitor-remediate.md).
 
 For more information about supporting modern passwords in Azure AD, see the following articles:
 
