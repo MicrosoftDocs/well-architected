@@ -108,4 +108,4 @@ Consider the following recommendation to optimize reliability when configuring A
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Storage Queues and reliability](reliability.md)
+> [Queue Storage and reliability](../queue-storage/reliability.md)
