@@ -1,5 +1,5 @@
 ---
-title: Mission-Critical Workloads - AlwaysOn Design Methodology
+title: Mission-Critical Workloads - Design Methodology
 description: A cloud-native design methodology to guide readers through the architectural process of building a mature mission-critical application on Microsoft Azure
 author: Customer Architecture Team
 ms.author: calcof
@@ -59,7 +59,7 @@ In parallel to design activities, it is highly recommended that a synthetic Alwa
 
 ## Target Architecture Evolution
 
-Application architectures established using the AlwaysOn design methodology must continue to evolve in alignment with Azure platform roadmaps to support optimized sustainability.
+Application architectures established using this design methodology must continue to evolve in alignment with Azure platform roadmaps to support optimized sustainability.
 
 ---
 
