@@ -330,9 +330,9 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - There is a significant cost delta between a multi-region-write and single-region-write configuration which in many cases may make a multi-master CosmosDB data platform cost prohibitive.
 
-| | Single Region Read/Write | Single Region Write - Dual Region Read | Dual Region Read/Write |
-| --- | --- | --- | --- |
-| Cost Model | 1 RU | 2 RU | 4 RU |
+| Single Region Read/Write | Single Region Write - Dual Region Read | Dual Region Read/Write |
+|---|---|---|
+| 1 RU | 2 RU | 4 RU |
 
 > The delta between single-region-write and multi-region-write is actually less than the 1:2 ratio reflected in the table above. More specifically, there is a cross-region data transfer charge associated with write updates in a single-write configuration which is not captured within the RU costs as with the multi-write configuration.  
 
@@ -708,7 +708,7 @@ It is increasingly common for mission-critical applications to consider analytic
 
 Analytical and transactional workloads require different data platform capabilities and optimizations for acceptable performance within their respective contexts.
 
-| | Analytical | Transactional |
+| Description | Analytical | Transactional |
 | --- | --- | --- |
 | Use Case | Analyze very large volumes of data ("big data") | Process very large volumes of individual transactions |
 | Optimized for | Read queries and aggregations over very many records | Near real-time Create/Read/Update/Delete (CRUD) queries over few records |

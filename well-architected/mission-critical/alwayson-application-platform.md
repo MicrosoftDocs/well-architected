@@ -159,7 +159,7 @@ For web and API based workload scenarios Azure App Services offers a feasible al
 
 - TCP port exhaustion is a further common failure scenario which occurs when the sum of outbound connections from a given worker exceeds the capacity. The number of available TCP ports depend on the size of the worker, as captured below in the following table:
 
-    |  |Small (B1, S1, P1, I1)|Medium (B2, S2, P2, I2)|Large (B3, S3, P3, I3)|
+    | Protocol  |Small (B1, S1, P1, I1)|Medium (B2, S2, P2, I2)|Large (B3, S3, P3, I3)|
     |---------|---------|---------|---------|
     |TCP ports|1920|3968|8064|
 
