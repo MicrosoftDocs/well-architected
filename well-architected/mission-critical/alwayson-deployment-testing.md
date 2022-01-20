@@ -100,7 +100,7 @@ This section will therefore explore key considerations and recommendations for a
   - Use of a constant synthetic user load generation is required to provide a realistic test bed for changes on one of the pre-production environments.
     - The AlwaysOn reference implementation provides an example [user load generator](/src/testing/userload-generator/README.md).
 
-![AlwaysOn Azure Subscription Organization](/images/alwayson-subscription-organization.png)
+![AlwaysOn Azure Subscription Organization](./images/alwayson-subscription-organization.png)
 
 ## Ephemeral Blue/Green Deployments
 
@@ -162,7 +162,7 @@ Achieving zero-downtime deployments is a fundamental goal of an AlwaysOn applica
 
 The [AlwaysOn reference implementation](/docs/reference-implementation/DeployAndTest-DevOps-Zero-Downtime-Update-Strategy.md) serves as a practical example for these concepts and recommendations, to establish an optimized zero-downtime deployment approach as represented in the illustration below.
 
-![Zero-Downtime DevOps Pipeline Reference](/images/alwayson-zero-downtime-pipeline.png)
+![Zero-Downtime DevOps Pipeline Reference](./images/alwayson-zero-downtime-pipeline.png)
 
 ## Infrastructure-As-Code Deployments
 
