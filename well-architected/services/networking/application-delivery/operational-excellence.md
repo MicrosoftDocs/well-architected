@@ -77,4 +77,4 @@ Consider the following recommendations for operational excellence when configuri
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Application Gateway v2 and reliability](reliability.md)
+> [Azure Application Gateway v2 and reliability](../../networking/application-gateway-v2/reliability.md)
