@@ -1,6 +1,6 @@
 ---
-title: Mission-Critical Workloads Critical Design Area - Networking and Connectivity
-description: This section provides detailed design considerations and recommondations for the networking and connectivity critical desgin area.
+title: Mission-Critical Workloads - Networking and Connectivity
+description: This design area will explore various network topology topics at an application level, considering requisite connectivity and redundant traffic management
 author: Customer Architecture Team
 ms.author: hjscherer
 ms.date: 02/01/2022
@@ -542,10 +542,10 @@ The delivery of network policies is consistent regardless of whether Azure or Ca
 ---
 
 > [!div class="nextstepaction"]
-> [Application Design - Critical Design Area](/alwayson-application-design.md)
-> [Application Platform - Critical Design Area](/alwayson-application-platform.md)
-> [Data Platform - Critical Design Area](/alwayson-data-platform.md)
-> [Health Modeling and Observability - Critical Design Area](/alwayson-health-modeling.md)
-> [Deployment and Testing - Critical Design Area](/alwayson-deployment-testing.md)
-> [Security - Critical Design Area](/alwayson-Security.md)
-> [Operational Procedures - Critical Design Area](/alwayson-operational-procedures.md)
+> [Application Design](/alwayson-application-design.md)
+> [Application Platform](/alwayson-application-platform.md)
+> [Data Platform](/alwayson-data-platform.md)
+> [Health Modeling and Observability](/alwayson-health-modeling.md)
+> [Deployment and Testing](/alwayson-deployment-testing.md)
+> [Security](/alwayson-Security.md)
+> [Operational Procedures](/alwayson-operational-procedures.md)

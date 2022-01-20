@@ -1,6 +1,6 @@
 ---
-title: Mission-Critical Workloads Critical Design Area - Application Platform
-description: This section provides detailed design considerations and recommondations for the application platform critical desgin area.
+title: Mission-Critical Workloads - Application Platform
+description: This design area explores requisite decision factors and provide recommendations related to the selection, design, and configuration of an appropriate application hosting platform for an AlwaysOn application on Azure
 author: Customer Architecture Team
 ms.author: hjscherer
 ms.date: 02/01/2022
@@ -475,10 +475,10 @@ This section will therefore explore key decision factors when selecting an appro
 ---
 
 > [!div class="nextstepaction"]
-> [Application Design - Critical Design Area](/alwayson-application-design.md)
-> [Data Platform - Critical Design Area](/alwayson-data-platform.md)
-> [Health Modeling and Observability - Critical Design Area](/alwayson-health-modeling.md)
-> [Deployment and Testing - Critical Design Area](/alwayson-deployment-testing.md)
-> [Networking and Connectivity - Critical Design Area](/alwayson-networking.md)
-> [Security - Critical Design Area](/alwayson-Security.md)
-> [Operational Procedures - Critical Design Area](/alwayson-operational-procedures.md)
+> [Application Design](/alwayson-application-design.md)
+> [Data Platform](/alwayson-data-platform.md)
+> [Health Modeling and Observability](/alwayson-health-modeling.md)
+> [Deployment and Testing](/alwayson-deployment-testing.md)
+> [Networking and Connectivity](/alwayson-networking.md)
+> [Security](/alwayson-Security.md)
+> [Operational Procedures](/alwayson-operational-procedures.md)

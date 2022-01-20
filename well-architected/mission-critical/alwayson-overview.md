@@ -43,7 +43,5 @@ AlwaysOn addresses this complex consumption experience by expanding the [Well-Ar
 
 ---
 
-## Next steps
-
 > [!div class="nextstepaction"]
 > [Design Methodology](./alwayson-design-methodology.md)

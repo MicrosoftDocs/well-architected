@@ -1,6 +1,6 @@
 ---
-title: Mission-Critical Workloads Critical Design Area - Application Design
-description: This section provides detailed design considerations and recommondations for the application design critical desgin area.
+title: Mission-Critical Workloads - Application Design
+description: This design area explores requisite application design patterns for building a best of breed reliable application on Azure
 author: Customer Architecture Team
 ms.author: hjscherer
 ms.date: 02/01/2022
@@ -32,7 +32,7 @@ A scale-unit is a logical unit or function which can be scaled independently as 
 
 For example, the foundational reference implementation considers a user flow for processing game results which encompasses APIs for retrieving and posting game outcomes as well as supporting components such as an OAuth endpoint, datastore, and message queues. These stateless API endpoints for retrieving and posting results represent granular functional units that must be able to adapt to changes in demand, however, for these to be truly scalable the underlying application platform must also be able to scale in-kind. Similarly, to avoid performance bottlenecks in the end-to-end user flow and achieve sustainable scale, the downstream components and dependencies must also be able to scale to an appropriate degree, either independently as a separate scale-unit or together as part of a single logical unit.
 
-![ScaleUnits](./images/scale-units.png)
+[![AlwaysOn Scale Units](./images/alwayson-scale-units.png)](./alwayson-application-design.md)
 
 The image above depicts the multiple scale-unit scopes considered by this reference implementation user flow, from microservice pods to cluster nodes and regional deployment stamps. 
 
@@ -40,7 +40,7 @@ Ultimately, a scale-unit architecture should be applied to optimize the end-to-e
 
 ### Design Considerations
 
-- [Azure Subscription scale limits and quotas](/azure/azure-resource-manager/management/azure-subscription-service-limits) might have a bearing on application design, technology choices, and the definition of scale-units.
+- [Azure Subscription scale limits and quotas](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) might have a bearing on application design, technology choices, and the definition of scale-units.
 
 - The scale-unit architecture pattern goes great lengths to address scale limits of individual resources and the application as a whole.
   
@@ -308,13 +308,11 @@ When issues are not transient in-nature and cannot be fully mitigated within app
 
 ---
 
-## Next steps
-
 > [!div class="nextstepaction"]
-> [Application Platform - Critical Design Area](/alwayson-application-platform.md)
-> [Data Platform - Critical Design Area](/alwayson-data-Platform.md)
-> [Health Modeling and Observability - Critical Design Area](/alwayson-health-modeling.md)
-> [Deployment and Testing - Critical Design Area](/alwayson-deployment-testing.md)
-> [Networking and Connectivity - Critical Design Area](/alwayson-networking.md)
-> [Security - Critical Design Area](/alwayson-Security.md)
-> [Operational Procedures - Critical Design Area](/alwayson-operational-procedures.md)
+> [Application Platform](/alwayson-application-platform.md)
+> [Data Platform](/alwayson-data-platform.md)
+> [Health Modeling and Observability](/alwayson-health-modeling.md)
+> [Deployment and Testing](/alwayson-deployment-testing.md)
+> [Networking and Connectivity](/alwayson-networking.md)
+> [Security](/alwayson-Security.md)
+> [Operational Procedures](/alwayson-operational-procedures.md)

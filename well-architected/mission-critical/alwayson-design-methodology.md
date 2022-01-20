@@ -63,7 +63,5 @@ Application architectures established using this design methodology must continu
 
 ---
 
-## Next steps
-
 > [!div class="nextstepaction"]
 > [Principles](./alwayon-design-principles.md)

@@ -1,6 +1,6 @@
 ---
-title: Mission-Critical Workloads Critical Design Area - Data Platform
-description: This section provides detailed design considerations and recommondations for the data platform critical desgin area.
+title: Mission-Critical Workloads - Data Platform
+description: This design area provides key considerations and recommendations to inform the selection of an optimal data platform
 author: Customer Architecture Team
 ms.author: hjscherer
 ms.date: 02/01/2022
@@ -15,7 +15,7 @@ ms.custom:
 
 The selection of an effective application data platform is a further crucial decision area which has far-reaching implications across other AlwaysOn design areas. Azure ultimately offers a multitude of relational, non-relational, and analytical data platforms which differ greatly in capability. It is therefore essential that key non-functional requirements be fully considered alongside other decision factors such as consistency, operability, cost, and complexity. For example, the ability to operate in a multi-write configuration will have a critical bearing on suitability for a globally available platform.
 
-This section will therefore expand on the AlwaysOn application design, providing key considerations and recommendations aligned with critical design themes to inform the selection of an optimal data platform.
+This section will therefore expand on the AlwaysOn application design, providing key considerations and recommendations to inform the selection of an optimal data platform.
 
 - [The Four Vs of Big Data](#the-four-vs-of-big-data)
 - [Globally Distributed Multi-Write Datastore](#globally-distributed-multi-write-datastore)
@@ -793,10 +793,10 @@ Azure Synapse provides an enterprise analytical platform that brings together re
 ---
 
 > [!div class="nextstepaction"]
-> [Application Design - Critical Design Area](/alwayson-application-design.md)
-> [Application Platform - Critical Design Area](/alwayson-application-platform.md)
-> [Health Modeling and Observability - Critical Design Area](/alwayson-health-modeling.md)
-> [Deployment and Testing - Critical Design Area](/alwayson-deployment-testing.md)
-> [Networking and Connectivity - Critical Design Area](/alwayson-networking.md)
-> [Security - Critical Design Area](/alwayson-Security.md)
-> [Operational Procedures - Critical Design Area](/alwayson-operational-procedures.md)
+> [Application Design](/alwayson-application-design.md)
+> [Application Platform](/alwayson-application-platform.md)
+> [Health Modeling and Observability](/alwayson-health-modeling.md)
+> [Deployment and Testing](/alwayson-deployment-testing.md)
+> [Networking and Connectivity](/alwayson-networking.md)
+> [Security](/alwayson-Security.md)
+> [Operational Procedures](/alwayson-operational-procedures.md)
