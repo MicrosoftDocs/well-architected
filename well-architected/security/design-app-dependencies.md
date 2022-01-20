@@ -119,7 +119,7 @@ Tracking expiry dates of SSL/TLS certificates and renewing them in due time is h
 - [Azure Key Vault](/azure/key-vault/general/overview)
 - [Azure CDN](/azure/cdn/cdn-features)
 - [Azure Policy](/azure/governance/policy/overview)
-- [Azure Front Door](azure/frontdoor/front-door-overview)
+- [Azure Front Door](/azure/frontdoor/front-door-overview)
 - [Azure API Management](/azure/api-management)
 
 ## Next steps

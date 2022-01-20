@@ -49,7 +49,7 @@ A good Azure IP addressing schema provides flexibility, room for growth, and int
 To secure communication within a VNet, set rules that inspect traffic. Then, *allow* or *deny* traffic to, or from specific sources, and route them to the specified destinations.
 > ![Task](./images/i-best-practices.png) Review the rule set and confirm that the required services are not unintentionally blocked.
 
-For traffic between subnets (also referred to as east-west traffic), it's recommended to use [Network Security Groups (NSG)](/azure/virtual-network/security-overview). NSGs allow you to define rules that check the source and destination address, protocol and port of Inbound and Outbound traffic. The address can be a single IP address, multiple IP addresses, an [Azure service tag](azure/virtual-network/service-tags-overview) or an entire subnet.
+For traffic between subnets (also referred to as east-west traffic), it's recommended to use [Network Security Groups (NSG)](/azure/virtual-network/security-overview). NSGs allow you to define rules that check the source and destination address, protocol and port of Inbound and Outbound traffic. The address can be a single IP address, multiple IP addresses, an [Azure service tag](/azure/virtual-network/service-tags-overview) or an entire subnet.
 
 If NSGs are being used to isolate and protect the application, the rule set should be reviewed to confirm that required services are not unintentionally blocked, or more permissive access than expected is allowed.
 
