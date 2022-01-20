@@ -313,8 +313,8 @@ When issues are not transient in-nature and cannot be fully mitigated within app
 > [!div class="nextstepaction"]
 > [Application Platform - Critical Design Area](/alwayson-application-platform.md)
 > [Data Platform - Critical Design Area](/alwayson-data-Platform.md)
-> [Health Modeling and Observability](/alwayson-health-modeling.md)
-> [Deployment and Testing](/alwayson-deployment-testing.md)
-> [Networking and Connectivity](/alwayson-networking.md)
-> [Security](/alwayson-Security.md)
-> [Operational Procedures](/alwayson-operational-procedures.md)
+> [Health Modeling and Observability - Critical Design Area](/alwayson-health-modeling.md)
+> [Deployment and Testing - Critical Design Area](/alwayson-deployment-testing.md)
+> [Networking and Connectivity - Critical Design Area](/alwayson-networking.md)
+> [Security - Critical Design Area](/alwayson-Security.md)
+> [Operational Procedures - Critical Design Area](/alwayson-operational-procedures.md)
