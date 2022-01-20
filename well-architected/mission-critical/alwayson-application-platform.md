@@ -1,5 +1,5 @@
 ---
-title: Mission-Critical Workloads Critical Design Area - Application Platfrom
+title: Mission-Critical Workloads Critical Design Area - Application Platform
 description: This section provides detailed design considerations and recommondations for the application platform critical desgin area.
 author: Customer Architecture Team
 ms.author: hjscherer
@@ -473,3 +473,12 @@ This section will therefore explore key decision factors when selecting an appro
 - Use Event Grid for scenarios where services need to react to changes in another service/component.
 
 ---
+
+> [!div class="nextstepaction"]
+> [Application Design - Critical Design Area](/alwayson-application-design.md)
+> [Data Platform - Critical Design Area](/alwayson-data-platform.md)
+> [Health Modeling and Observability - Critical Design Area](/alwayson-health-modeling.md)
+> [Deployment and Testing - Critical Design Area](/alwayson-deployment-testing.md)
+> [Networking and Connectivity - Critical Design Area](/alwayson-networking.md)
+> [Security - Critical Design Area](/alwayson-Security.md)
+> [Operational Procedures - Critical Design Area](/alwayson-operational-procedures.md)
