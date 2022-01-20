@@ -22,7 +22,7 @@ categories:
 - Zone redundancy
 - Support for static VIPs
 
-For more information, reference [What is Azure Application Gateway v2?](/azure/application-gateway/overview-v2).
+For more information, reference [What is Azure Application Gateway v2?](/azure/application-gateway/overview-v2)
 
 To understand how Application Gateway v2 supports a reliable workload, reference the following topics:
 
