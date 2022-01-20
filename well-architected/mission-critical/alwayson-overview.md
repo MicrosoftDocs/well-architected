@@ -1,6 +1,6 @@
 ---
-title: Mission-Critical Workloads Overview
-description: This section captures the AlwaysOn design methodology and approach to building highly-reliable applications on Microsoft Azure for mission-critical workloads
+title: Mission-Critical Workloads - Overview
+description: This section provides a design methodology and approach to building highly-reliable applications on Microsoft Azure for mission-critical workloads
 author: Customer Architecture Team
 ms.author: calcof
 ms.date: 02/01/2022
@@ -11,7 +11,7 @@ ms.custom:
   - alwayson
 ---
 
-[![Mission-Critical Banner](./images/alwayson-banner.png)](./alwayson-overview.md)
+[![Mission-Critical Banner](./images/alwayson-banner.png "Always On Mission Critical Workloads")](./alwayson-overview.md)
 
 Getting started on Microsoft Azure is now easier than ever, however, building mission-critical solutions that are highly reliable on the platform remains a challenge for three main reasons:
 
@@ -21,7 +21,7 @@ Getting started on Microsoft Azure is now easier than ever, however, building mi
 
 - Operationalizing mission-critical workloads requires a high degree of engineering rigor and maturity throughout the end-to-end engineering lifecycle as well as the ability to learn from failure.
 
-This mission-critical section of the Well-Architected Framework strives to address the challenge of building highly reliable applications on Azure, leveraging lessons from numerous customer applications and first-party solutions, such as Xbox Live, to provide actionable and authoritative guidance. It therefore extends Well-Architected best practices to provide the technical foundation for building and operating a highly reliable mission-critical solution on Azure at-scale.
+This mission-critical section of the [Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/) strives to address the challenge of building highly reliable applications on Azure, leveraging lessons from numerous customer applications and first-party solutions, such as Xbox Live, to provide actionable and authoritative guidance. It therefore extends Well-Architected best practices to provide the technical foundation for building and operating a highly reliable mission-critical solution on Azure at-scale.
 
 More specifically, the [AlwaysOn open source project](http://github.com/azure/alwayson) is applied as a design methodology to guide readers through the process of building a highly reliable cloud-native application on Azure, providing key considerations and recommendations to inform requisite design decisions. Additionally, the AlwaysOn project provides a gallery of fully functional production-ready reference implementations, which can serve as a basis for further solution development.
 
@@ -37,11 +37,11 @@ Building mission-critical applications on Azure requires significant technical e
 
 AlwaysOn addresses this complex consumption experience by expanding the [Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/) within the context of mission-critical application scenarios, providing prescriptive and opinionated technical guidance alongside streamlined consumption mechanisms for common industry patterns through  reference implementations; turn-key AlwaysOn solutions that are implicitly aligned with Microsoft Well-Architected best practices.
 
-[![Always On Positioning](./images/alwayson-positioning.png)](./alwayson-overview.md)
+[![AlwaysOn Positioning](./images/alwayson-positioning.png "Extending Well-Architected for Mission-Critical")](./alwayson-overview.md)
 
 ---
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Cost optimization](./alwayon-design0methodology.md)
+> [Design Methodology](./alwayon-design-methodology.md)
