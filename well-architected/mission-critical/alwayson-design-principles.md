@@ -21,7 +21,7 @@ The [AlwaysOn](http://github.com/azure/alwayson) design methodology is underpinn
 1. **Cloud-Native Design** - Focus on using native platforms services to minimize operational burdens, while mitigating known gaps.
 1. **Always Secure** - Design for end-to-end security to maintain application stability and ensure availability.
 
-[![AlwaysOn Design Principles](./alwayson-design-principles.png "AlwaysOn Design Principles")](./alwayson-principles.md)
+[![AlwaysOn Design Principles](./images/alwayson-design-principles.png "AlwaysOn Design Principles")](./alwayson-design-principles.md)
 
 ## Maximum Reliability
 
@@ -65,7 +65,7 @@ The [AlwaysOn](http://github.com/azure/alwayson) design methodology is underpinn
 
 - **Embrace preview capabilities and mitigate known gaps** - While Generally Available (GA) services are prioritized for supportability, Azure service previews are actively explored for rapid incorporation, providing technical and actionable feedback to Azure product groups to address gaps.
 
-- **Landing Zone alignment** - Deployable within an [Azure Landing Zone](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/) and aligned to the Azure Landing Zone design methodology, but also fully functional and deployable in a bare environment outside of a Landing Zone.
+- **Landing Zone alignment** - Deployable within an [Azure Landing Zone](/azure/cloud-adoption-framework/ready/landing-zone/) and aligned to the Azure Landing Zone design methodology, but also fully functional and deployable in a bare environment outside of a Landing Zone.
 
 ## Always Secure
 
@@ -81,7 +81,7 @@ The [AlwaysOn](http://github.com/azure/alwayson) design methodology is underpinn
 
 - **Classify and encrypt data** - Classify data according to risk and apply industry standard encryption at rest and in transit, ensuring keys and certificates are stored securely and managed properly.
 
-# Additional AlwaysOn Project Principles
+## Additional AlwaysOn Project Principles
 
 - **Production ready artifacts**: Every technical artifact within the [AlwaysOn repo](http://github.com/azure/alwayson) will be ready for use in production environments with all end-to-end operational aspects considered.
 

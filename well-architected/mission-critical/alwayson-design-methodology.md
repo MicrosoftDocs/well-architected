@@ -17,7 +17,7 @@ This design methodology provides easy to follow guidance surrounding the critica
 
 ## Critical Design Path
 
-At the heart of an AlwaysOn target architecture definition lies a critical design path, comprised of 5 foundational [design principles](./alwayson-principles.md) and 8 [fundamental design areas](./alwayson-design-areas.md) with heavily interrelated and dependent design decisions.
+At the heart of an AlwaysOn target architecture definition lies a critical design path, comprised of 5 foundational [design principles](./alwayson-design-principles.md) and 8 [fundamental design areas](./alwayson-design-areas.md) with heavily interrelated and dependent design decisions.
 
 Ultimately, the impact of decisions made within each area will reverberate across other design areas and design decisions. Readers are strongly advised to familiarize themselves with these 8 critical design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions, which may later produce trade-offs or unforeseen consequences within related areas. For example, to define a target architecture it is critical to determine how best to monitor application health across key components. In this instance, the reader should review the Health Modelling design area, using the outlined recommendations to help drive decisions.
 
@@ -64,4 +64,4 @@ Application architectures established using this design methodology must continu
 ---
 
 > [!div class="nextstepaction"]
-> [Principles](./alwayon-design-principles.md)
+> [Principles](./alwayson-design-principles.md)

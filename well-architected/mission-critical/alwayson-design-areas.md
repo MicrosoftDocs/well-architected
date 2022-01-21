@@ -44,7 +44,7 @@ There are several critical cross-cutting themes which traverse the 8 design area
 
 ### Scale Limits
 
-Various [limits and quotas within the Azure platform](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) may have a significant bearing on large AlwaysOn application scenarios and must be appropriately considered by the target architecture.
+Various [limits and quotas within the Azure platform](/azure/azure-resource-manager/management/azure-subscription-service-limits) may have a significant bearing on large AlwaysOn application scenarios and must be appropriately considered by the target architecture.
 
 > Limits and quotas may change as Azure seeks to further enhance the platform and user experience.
 
@@ -72,7 +72,7 @@ Align the target architecture with the Azure platform roadmap to inform the appl
 
 ### Azure Landing Zone Integration
 
-[Azure Landing Zones](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/) provides prescriptive architectural guidance to define a reliable and scalable shared-service platform for enterprise Azure deployments with requisite centralised governance. 
+[Azure Landing Zones](/azure/cloud-adoption-framework/ready/landing-zone/) provides prescriptive architectural guidance to define a reliable and scalable shared-service platform for enterprise Azure deployments with requisite centralised governance. 
 
 AlwaysOn can integrate seamlessly within an Azure Landing Zone, and is deployable within both the *Online* or *Corp. Connected* Landing Zone formats as demonstrated within the image below.
 
@@ -80,7 +80,7 @@ AlwaysOn can integrate seamlessly within an Azure Landing Zone, and is deployabl
 
 It is crucial to understand and identify in which connectivity scenario an AlwaysOn application requires since Azure Landing Zones support different landing zones archetypes separated into different Management Group scopes.
 
-- In the context of an *Online* Landing Zone archetype, AlwaysOn operates as a completely independent solution, without any direct corporate network connectivity to the rest of the Azure Landing Zone architecture. The application will, however, be further safeguarded through the [*policy-driven management*](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) approach which is foundational to Azure Landing Zones, and will automatically integrate with centralized platform logging through policy.
+- In the context of an *Online* Landing Zone archetype, AlwaysOn operates as a completely independent solution, without any direct corporate network connectivity to the rest of the Azure Landing Zone architecture. The application will, however, be further safeguarded through the [*policy-driven management*](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) approach which is foundational to Azure Landing Zones, and will automatically integrate with centralized platform logging through policy.
 
   - A *Online* deployment can only really consider a public AlwaysOn application deployment since there is no private corporate connectivity provided.
 

@@ -40,7 +40,7 @@ Ultimately, a scale-unit architecture should be applied to optimize the end-to-e
 
 ### Design Considerations
 
-- [Azure Subscription scale limits and quotas](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) might have a bearing on application design, technology choices, and the definition of scale-units.
+- [Azure Subscription scale limits and quotas](/azure/azure-resource-manager/management/azure-subscription-service-limits) might have a bearing on application design, technology choices, and the definition of scale-units.
 
 - The scale-unit architecture pattern goes great lengths to address scale limits of individual resources and the application as a whole.
   
