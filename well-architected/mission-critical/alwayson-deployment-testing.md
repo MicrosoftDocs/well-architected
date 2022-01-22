@@ -2,7 +2,7 @@
 title: Mission-Critical Workloads - Deployment and Testing
 description: This design area will focus on how to eradicate downtime and maintain application health for deployment operations, providing key considerations and recommendations intended to inform the design of optimal CI/CD pipelines for an AlwaysOn application
 author: Customer Architecture Team
-ms.author: hjscherer
+ms.author: calcof
 ms.date: 02/01/2022
 ms.topic: conceptual
 ms.service: well-architected
