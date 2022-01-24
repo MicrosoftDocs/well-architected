@@ -3,7 +3,7 @@ title: Application Gateway v2 and operational excellence
 description: Focuses on the Application Gateway v2 service used in the Networking solution to provide best-practice, configuration recommendations, and design considerations related to Operational excellence.
 author: v-stacywray
 ms.author: robbymillsap
-ms.date: 01/20/2022
+ms.date: 01/24/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -52,4 +52,4 @@ Consider the following recommendation for operational excellence when configurin
 ## Next step
 
 > [!div class="nextstepaction"]
-> [API Management and reliability](reliability.md)
+> [API Management and reliability](../api-management/reliability.md)
