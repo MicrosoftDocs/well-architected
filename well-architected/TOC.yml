@@ -10,6 +10,8 @@ items:
             href: resiliency/index.yml
           - name: Overview
             href: resiliency/overview.md
+          - name: Business Metrics
+            href: resiliency/business-metrics.md
           - name: Principles
             href: resiliency/principles.md
           - name: Design
