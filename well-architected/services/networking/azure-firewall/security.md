@@ -1,6 +1,6 @@
 ---
 title: Azure Firewall and security
-description: Focuses on the Azure Firewall service used in the Networking solution to provide best-practice and configuration recommendations related to Security.
+description: Focuses on the Azure Firewall service used in the Networking solution to provide design considerations, best-practice, and configuration recommendations related to Security.
 author: v-stacywray
 ms.author: robbymillsap
 ms.date: 01/24/2022
