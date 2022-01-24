@@ -41,7 +41,7 @@ The following sections are specific to Azure Service Bus and reliability:
 
 ## Design considerations
 
-Azure Service Bus provides an uptime SLA so that properly configured applications can send or receive messages, or do other operations on a deployed Queue or Topic. For more information, reference the [Service Bus SLA](/support/legal/sla/service-bus/v1_1/).
+Azure Service Bus provides an uptime SLA so that properly configured applications can send or receive messages, or do other operations on a deployed Queue or Topic. For more information, reference the [Service Bus SLA](https://azure.microsoft.com/support/legal/sla/service-bus/v1_1/).
 
 Other design considerations include:
 
