@@ -47,7 +47,7 @@ To understand how API Management supports operational excellence, reference the 
 > - Trace calls in Azure API Management to help with debugging and testing.
 > - Configure logging using Azure Monitor for the API Management service.
 > - Choose the right modes to access private site connections.
-> - Evaluate firewall rules and IP whitelisting based on the API Management public IP address.
+> - Evaluate firewall rules and IP allowlists based on the API Management public IP address.
 
 ## Configuration recommendations
 
@@ -62,7 +62,7 @@ Consider the following recommendations for operational excellence when configuri
 |Trace calls in Azure API Management to help with debugging and testing.|Tracing must be enabled on the subscription used to make the request. Tracing is enabled on a request-by-request basis using the [Ocp-Apim-Trace](/azure/api-management/api-management-howto-api-inspector) header value. API Tracing is also built into the admin portal and is enabled by default when testing APIs from the portal.|
 |Configure logging using Azure Monitor for the API Management service.|Logs can be sent to a Logs Analytics workspace to enable complex querying and analysis. Metrics can be ingested for longer term analysis. All data is then surfaced using Azure Monitor. It is possible to integrate Application Insights for Application Performance Management.|
 |Choose the right modes to access private site connections.|Supports Virtual Network integration in internal and external mode.|
-|Evaluate firewall rules and IP whitelisting based on the API Management public IP address.|A fixed public IP address is available for the lifetime of the service with the Basic, Developer, Standard, and Premium plans for API Management.|
+|Evaluate firewall rules and IP allowlists based on the API Management public IP address.|A fixed public IP address is available for the lifetime of the service with the Basic, Developer, Standard, and Premium plans for API Management.|
 
 ## Next step
 
