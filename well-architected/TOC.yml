@@ -577,3 +577,11 @@ items:
                     href: services/networking/azure-firewall/security.md
                   - name: Operational excellence
                     href: services/networking/azure-firewall/operational-excellence.md
+              - name: Azure Front Door
+                items:
+                  - name: Reliability
+                    href: services/networking/azure-front-door/reliability.md
+                  - name: Security
+                    href: services/networking/azure-front-door/security.md
+                  - name: Operational excellence
+                    href: services/networking/azure-front-door/operational-excellence.md
