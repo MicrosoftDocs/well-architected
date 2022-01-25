@@ -16,20 +16,19 @@ categories:
 
 # Azure Well-Architected Framework review - Virtual Machines
 
-[Virtual Machines](/azure/virtual-machines/) is an on-demand, scalable computing resource that gives you the flexibility of virtualization without having to buy and maintain physical hardware to run it. The intent of this article is to give you guidance about this resource based on the pillars of architecture excellence: Reliability, Cost Optimization, Operational Excellence. If you are provisioning virtual machines in your design, consider the design principles and recommendations described in this article. 
+[Virtual Machines](/azure/virtual-machines/) is an on-demand, scalable computing resource that gives you the flexibility of virtualization without having to buy and maintain physical hardware to run it. The intent of this article is to provide guidance about this resource based on the pillars of architecture excellence: Reliability, and Cost Optimization. If you are provisioning virtual machines in your design, consider the design principles and recommendations described in this article. 
 
 ## Prerequisites
 
 - Understand the pillars that can help produce a high quality, stable, and efficient cloud architecture. We recommend that you review your workload, using the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
 
-- Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/). 
+- Use a reference architecture to review the design choices based on the guidance provided in this article. We recommend, you start with [Run a Linux VM on Azure](/azure/architecture/reference-architectures/n-tier/linux-vm).
 
-- Review the built-in definitions provided by Azure Policy that apply to Virtual Machines. They are listed in the [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies#compute).
 
 ## Reliability
 As you make design choices for virtual machines, review the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture. 
 
-### Design considerations
+### Design checklist
 - When defining test availability and recovery targets, review [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/). 
     - Singleton workloads should use Premium Managed Disks to enhance resiliency and obtain a 99.9% SLA as well as dedicated performance characteristics.
     - Non-Singleton workloads should consider two or more replica instances with Managed disks (Standard or Premium) that are deployed within an [Availability Set](/azure/virtual-machines/manage-availability) to obtain a `99.95%` SLA or across [Availability Zones](/azure/availability-zones/az-overview#availability-zones) to obtain a `99.99%` SLA.
@@ -100,8 +99,6 @@ Azure Advisor helps you ensure and improve the continuity of your business-criti
 
 [Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Virtual Machines.
 
-Determine which recommendations to apply. 
-
 |Recommendation|Reliability|Security|Cost optimization|Operational Excellence|Performance Efficiency|
 |---|---|---|---|---|---|
 |[Use managed disks to improve data reliability](/azure/advisor/advisor-high-availability-recommendations#use-managed-disks-to-improve-data-reliability)|:ballot_box_with_check:|:black_square_button:|:black_square_button:|:black_square_button:|:black_square_button:|
@@ -110,8 +107,8 @@ Determine which recommendations to apply.
 |[Buy reserved virtual machine instances to save money over pay-as-you-go costs](/azure/advisor/advisor-cost-recommendations#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)|:black_square_button:|:black_square_button:|:ballot_box_with_check:|:black_square_button:|:black_square_button:|
 
 
-## Related resources
-Here are some additional resources.
+## Additional resources
+Here are other resources.
 
 ### Query to identify unprotected resources 
 Use the following query to *identify standalone single instance VMs that aren't protected by a minimum SLA of at least `99.5%`*. The query will return all VM instances that aren't deployed within an Availability Set, across Availability Zones, and aren't using either Standard SSD or Premium SSD for both OS and Data disks. This query can be altered easily to identify all single instance VMs, including those using Premium Storage, which are protected by a minimum SLA of at least `99.5%`. Remove the trailing `where` condition:
@@ -157,3 +154,7 @@ There are several options for grouping resources by billing unit.
 Use the recommendations as you provision virtual machines for your solution.
 - [Quickstart: Create a Linux virtual machine in the Azure portal](/azure/virtual-machines/linux/quick-create-portal)
 - [Quickstart: Create a Windows virtual machine in the Azure portal](/azure/virtual-machines/Windows/quick-create-portal)
+
+- Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/). 
+
+- Review the built-in definitions provided by Azure Policy that apply to Virtual Machines. They are listed in the [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies#compute).
