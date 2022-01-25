@@ -71,4 +71,4 @@ Consider the following recommendations for operational excellence when configuri
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Reliability and Azure Front Door](reliability.md)
+> [Reliability and Azure Front Door](../azure-front-door/reliability.md)
