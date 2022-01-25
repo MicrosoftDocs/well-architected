@@ -1,6 +1,6 @@
 ---
 title: Reliability and Azure Front Door
-description: Focuses on the Azure Firewall service used in the Networking solution to provide best-practice and configuration recommendations related to Reliability.
+description: Focuses on the Azure Front Door service used in the Networking solution to provide best-practice and configuration recommendations related to Reliability.
 author: v-stacywray
 ms.author: robbymillsap
 ms.date: 01/25/2022
@@ -57,4 +57,4 @@ Consider the following recommendation to optimize reliability when configuring A
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Operational excellence and Azure Front Door](operational-excellence.md)
+> [Security and Azure Front Door](security.md)
