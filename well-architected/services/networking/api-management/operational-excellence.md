@@ -3,7 +3,7 @@ title: API Management and operational excellence
 description: Focuses on the API Management service used in the Networking solution to provide best-practice and configuration recommendations related to Operational excellence.
 author: v-stacywray
 ms.author: robbymillsap
-ms.date: 01/24/2022
+ms.date: 01/25/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -58,7 +58,7 @@ Consider the following recommendations for operational excellence when configuri
 |Ensure you set quotas and rate limits when exposing APIs to third parties.|Protect backend services and reduce the load placed on an API Management scale unit. Rate limiting policies can be applied at Global, Product, API, and Operation levels to provide rate limit customization applied to API consumers.|
 |Understand the Microsoft REST API design and architecture guidance.|Follow standards and best practices when using the REST API. Following best practices enables maximum compatibility across platforms and implementations. Review the REST API Guidelines and API Design guidance.|
 |Understand the API import restrictions in API Management.|Every effort is made to ensure the API import process runs smoothly, which includes requiring no customizations. Some scenarios impose restrictions that will require modification to the import source. Applies to both REST and SOAP services. Reference [Policy Restrictions](/rest/api/policy/policy-restrictions) for the current API Import restrictions.|
-|Understand the Event logging feature.|Supports event logging to an Azure Event Hub to perform near real-time analysis. This feature integrates with external logging, security information and event management (SIEM) solutions, or analyzing API usage in near real time.|
+|Understand the Event logging feature.|Supports event logging to an Azure event hub to perform near real-time analysis. This feature integrates with external logging, security information and event management (SIEM) solutions, or analyzing API usage in near real time.|
 |Trace calls in Azure API Management to help with debugging and testing.|Tracing must be enabled on the subscription used to make the request. Tracing is enabled on a request-by-request basis using the [Ocp-Apim-Trace](/azure/api-management/api-management-howto-api-inspector) header value. API Tracing is also built into the admin portal and is enabled by default when testing APIs from the portal.|
 |Configure logging using Azure Monitor for the API Management service.|Logs can be sent to a Logs Analytics workspace to enable complex querying and analysis. Metrics can be ingested for longer term analysis. All data is then surfaced using Azure Monitor. It is possible to integrate Application Insights for Application Performance Management.|
 |Choose the right modes to access private site connections.|Supports Virtual Network integration in internal and external mode.|
@@ -67,4 +67,4 @@ Consider the following recommendations for operational excellence when configuri
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Firewall and reliability](reliability.md)
+> [Reliability and Azure Firewall](../azure-firewall/reliability.md)
