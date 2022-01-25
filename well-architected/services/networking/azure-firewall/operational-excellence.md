@@ -29,9 +29,9 @@ For more information, reference [What is Azure Firewall?](/azure/firewall/overvi
 
 To learn how Azure Firewall supports operational excellence, reference the following topics:
 
-- [Azure Firewall Manager policy overview](/azure/firewall-manager/policy-overview)
-- [Azure Firewall Policy rule sets](/azure/firewall/policy-rule-sets)
-- [Azure Firewall central management](/azure/firewall/central-management)
+- [Firewall Manager policy overview](/azure/firewall-manager/policy-overview)
+- [Firewall Policy rule sets](/azure/firewall/policy-rule-sets)
+- [Firewall central management](/azure/firewall/central-management)
 
 ## Design considerations
 
@@ -65,7 +65,7 @@ Consider the following recommendations for operational excellence when configuri
 |--------------|-----------|
 |Create a global Azure Firewall policy to govern the security posture across global network environments. Assign the policy to all Azure Firewalls.|Allow for granular policies to meet requirements of specific regions. Delegate incremental Firewall Policies to local security teams through role-based access control (RBAC).|
 |Turn on logs for Azure Firewall.|You can monitor Azure Firewall using firewall logs or workbooks. You can also use activity logs to audit operations on Azure Firewall resources.|
-|Use FQDN tags on Azure Firewall.|FQDN tags make it easy to allow known Azure service network traffic through your firewall. For example, say you want to allow Windows Update network traffic through your firewall. You create an application rule and use the Windows Update tag. Now network traffic from Windows Update can flow through your firewall.|
+|Use Fully Qualified Domain Name (FQDN) tags on Azure Firewall.|FQDN tags make it easy to allow known Azure service network traffic through your firewall. For example, say you want to allow Windows Update network traffic through your firewall. You create an application rule and use the Windows Update tag. Now network traffic from Windows Update can flow through your firewall.|
 |Enable Azure Firewall connector in Azure Sentinel.|You can use Azure Sentinel to create detections and logic apps for Azure Firewall.|
 
 ## Next step

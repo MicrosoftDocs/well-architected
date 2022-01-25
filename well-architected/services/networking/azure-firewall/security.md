@@ -29,8 +29,8 @@ For more information, reference [What is Azure Firewall?](/azure/firewall/overvi
 
 To learn how Azure Firewall supports a secure workload, reference the following topics:
 
-- [Azure security baseline for Azure Firewall](/security/benchmark/azure/baselines/firewall-security-baseline?toc=/azure/firewall/toc.json)
-- [Azure Firewall threat intelligence-based filtering](/azure/firewall/threat-intel)
+- [Security baseline for Azure Firewall](/security/benchmark/azure/baselines/firewall-security-baseline?toc=/azure/firewall/toc.json)
+- [Firewall threat intelligence-based filtering](/azure/firewall/threat-intel)
 - [Deploy a security partner provider](/azure/firewall-manager/deploy-trusted-security-partner)
 
 ## Checklist
@@ -54,8 +54,8 @@ Consider the following recommendations to optimize security when configuring Azu
 |Recommendation|Description|
 |--------------|-----------|
 |Create a global Azure Firewall policy to govern the security posture across global network environments. Assign the policy to all Azure Firewalls.|Allow for granular policies to meet requirements of specific regions. Delegate incremental Firewall Policies to local security teams through role-based access control (RBAC).|
-|Enable threat intelligence on Azure Firewall.|You can enable threat intelligence-based filtering for your firewall to alert and deny traffic from or to unknown IP addresses and domains. The IP addresses and domains are sourced from the Microsoft Threat Intelligence Feed. Intelligent Security Graph powers Microsoft threat intelligence and is used by multiple services including Azure Security Center.|
-|Enable DNS Proxy and point the infrastructure DNS to Azure Firewall.|By default, Azure Firewall uses Azure DNS. Custom DNS allows you to configure Azure Firewall to use Corporate DNS to resolve external and internal names.|
+|Enable threat intelligence on Azure Firewall.|You can enable threat intelligence-based filtering for your firewall to alert and deny traffic from or to unknown IP addresses and domains. The IP addresses and domains are sourced from the Microsoft Threat Intelligence Feed. Intelligent Security Graph powers Microsoft threat intelligence and is used by multiple services including Azure Security Center.
+|Enable Domain Name System (DNS) Proxy and point the infrastructure DNS to Azure Firewall.|By default, Azure Firewall uses Azure DNS. Custom DNS allows you to configure Azure Firewall to use Corporate DNS to resolve external and internal names.|
 |Configure the user-defined routes (UDR) to force traffic to Azure Firewall.|Configure UDRs to force traffic to Azure Firewall for `SpoketoSpoke`, `SpoketoInternet`, and `SpoketoHybrid` connectivity.|
 |Validate any overlapping or missing peering in spoke networks.|Check if there's any overlapping or missing peering in spoke networks.|
 |Leverage Security Partner Providers for third-party Security as a Service (SECaaS) Offerings.|Security partner providers help to filter internet traffic through Virtual Private Network (VNET) to internet or Branch to internet.|
