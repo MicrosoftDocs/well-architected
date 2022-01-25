@@ -529,3 +529,27 @@ items:
                     href: services/networking/application-gateway-v2/reliability.md
                   - name: Operational excellence
                     href: services/networking/application-gateway-v2/operational-excellence.md
+              - name: API Management
+                items:
+                  - name: Reliability
+                    href: services/networking/api-management/reliability.md
+                  - name: Cost optimization
+                    href: services/networking/api-management/cost-optimization.md
+                  - name: Operational excellence
+                    href: services/networking/api-management/operational-excellence.md
+              - name: Azure Firewall
+                items:
+                  - name: Reliability
+                    href: services/networking/azure-firewall/reliability.md
+                  - name: Security
+                    href: services/networking/azure-firewall/security.md
+                  - name: Operational excellence
+                    href: services/networking/azure-firewall/operational-excellence.md
+              - name: Azure Front Door
+                items:
+                  - name: Reliability
+                    href: services/networking/azure-front-door/reliability.md
+                  - name: Security
+                    href: services/networking/azure-front-door/security.md
+                  - name: Operational excellence
+                    href: services/networking/azure-front-door/operational-excellence.md
