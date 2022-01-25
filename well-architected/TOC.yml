@@ -569,3 +569,11 @@ items:
                     href: services/networking/api-management/cost-optimization.md
                   - name: Operational excellence
                     href: services/networking/api-management/operational-excellence.md
+              - name: Azure Firewall
+                items:
+                  - name: Reliability
+                    href: services/networking/azure-firewall/reliability.md
+                  - name: Security
+                    href: services/networking/azure-firewall/security.md
+                  - name: Operational excellence
+                    href: services/networking/azure-firewall/operational-excellence.md
