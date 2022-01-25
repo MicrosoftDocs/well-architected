@@ -69,12 +69,12 @@ To estimate costs related to virtual machines, use these tools.
 To optimize costs, review the [design principles](/azure/architecture/framework/cost/principles). 
 
 ### Design considerations
-
-- Shut down VM instances which aren't in use.
-- Use Spot VMs when appropriate.
-- Consider using Burstable (B) series VM sizes for VMs that are idle most of the time and have high usage for a certain period of time.
-- Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
-- Review SKUs that could benefit from Reserved Instances for one year, three years, or more.
+> [!div class="checklist"]
+> - Shut down VM instances which aren't in use.
+> - Use Spot VMs when appropriate.
+> - Consider using Burstable (B) series VM sizes for VMs that are idle most of the time and have high usage for a certain period of time.
+> - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
+> - Review SKUs that could benefit from Reserved Instances for one year, three years, or more.
 
 ### Recommendations
 
@@ -94,16 +94,17 @@ Azure Advisor helps you ensure and improve the continuity of your business-criti
 
 [Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Virtual Machines.
 
-|Recommendation|Reliability|Security|Cost optimization|Operational Excellence|Performance Efficiency|
-|---|---|---|---|---|---|
-|[Use managed disks to improve data reliability](/azure/advisor/advisor-high-availability-recommendations#use-managed-disks-to-improve-data-reliability)|:ballot_box_with_check:|:black_square_button:|:black_square_button:|:black_square_button:|:black_square_button:|
-|[Protect your virtual machine data from accidental deletion](/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion)|:ballot_box_with_check:|:black_square_button:|:black_square_button:|:black_square_button:|:black_square_button:|
-|[Optimize virtual machine spend by resizing or shutting down underutilized instances](/azure/advisor/advisor-cost-recommendations#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)|:black_square_button:|:black_square_button:|:ballot_box_with_check:|:black_square_button:|:black_square_button:|
-|[Buy reserved virtual machine instances to save money over pay-as-you-go costs](/azure/advisor/advisor-cost-recommendations#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)|:black_square_button:|:black_square_button:|:ballot_box_with_check:|:black_square_button:|:black_square_button:|
+### Reliability
+- [Use managed disks to improve data reliability](/azure/advisor/advisor-high-availability-recommendations#use-managed-disks-to-improve-data-reliability)
+- [Protect your virtual machine data from accidental deletion](/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion)
+
+### Cost Optimization
+- [Optimize virtual machine spend by resizing or shutting down underutilized instances](/azure/advisor/advisor-cost-recommendations#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
+- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](/azure/advisor/advisor-cost-recommendations#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)|
 
 
 ## Additional resources
-Here are other resources.
+Here are other resources to help you query for unhealthy instances.
 
 ### Query to identify unprotected resources 
 Use the following query to *identify standalone single instance VMs that aren't protected by a minimum SLA of at least `99.5%`*. The query will return all VM instances that aren't deployed within an Availability Set, across Availability Zones, and aren't using either Standard SSD or Premium SSD for both OS and Data disks. This query can be altered easily to identify all single instance VMs, including those using Premium Storage, which are protected by a minimum SLA of at least `99.5%`. Remove the trailing `where` condition:
