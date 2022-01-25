@@ -20,26 +20,21 @@ categories:
 
 ## Prerequisites
 
-- Understand the pillars that can help produce a high quality, stable, and efficient cloud architecture. We recommend that you review your workload, using the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
+- Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. We recommend that you review your workload using the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
 
-- Use a reference architecture to review the design choices based on the guidance provided in this article. We recommend, you start with [Run a Linux VM on Azure](/azure/architecture/reference-architectures/n-tier/linux-vm).
+- Use a reference architecture to review the considerations based on the guidance provided in this article. We recommend, you start with [Run a Linux VM on Azure](/azure/architecture/reference-architectures/n-tier/linux-vm).
 
 
 ## Reliability
 As you make design choices for virtual machines, review the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture. 
 
 ### Design checklist
-- When defining test availability and recovery targets, review [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/). 
-    - Singleton workloads should use Premium Managed Disks to enhance resiliency and obtain a 99.9% SLA as well as dedicated performance characteristics.
-    - Non-Singleton workloads should consider two or more replica instances with Managed disks (Standard or Premium) that are deployed within an [Availability Set](/azure/virtual-machines/manage-availability) to obtain a `99.95%` SLA or across [Availability Zones](/azure/availability-zones/az-overview#availability-zones) to obtain a `99.99%` SLA.
-
-- Where appropriate, virtual machines should be deployed across Availability Zones to maximize resilience within a specific Azure region.    
-
-- Provide resiliency to failures by using Managed Disks should for all virtual machine OS and data disks to ensure resiliency across underlying storage stamps within a data center. 
-    
-- Allow for reliability in scalability and performance.  To ensure application scalability while navigating within disk sizing thresholds, it's highly recommended that applications be installed on data disks rather than on the OS disk. 
-  
-- Monitor and measure health by using virtual machine Resource Health alerts and enable diagnostic logging for all virtual machines.
+> [!div class="checklist"]
+> - When defining test availability and recovery targets, review [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/). Singleton workloads should use Premium Managed Disks to enhance resiliency and obtain a 99.9% SLA as well as dedicated performance characteristics. Non-Singleton workloads should consider two or more replica instances with Managed disks (Standard or Premium) that are deployed within an [Availability Set](/azure/virtual-machines/manage-availability) to obtain a `99.95%` SLA or across [Availability Zones](/azure/availability-zones/az-overview#availability-zones) to obtain a `99.99%` SLA.
+> - Where appropriate, virtual machines should be deployed across Availability Zones to maximize resilience within a specific Azure region.    
+> - Provide resiliency to failures by using Managed Disks should for all virtual machine OS and data disks to ensure resiliency across underlying storage stamps within a data center. 
+> - Allow for reliability in scalability and performance.  To ensure application scalability while navigating within disk sizing thresholds, it's highly recommended that applications be installed on data disks rather than on the OS disk. 
+> - Monitor and measure health by using virtual machine Resource Health alerts and enable diagnostic logging for all virtual machines.
 
 ### Recommendations
 Explore the following table of recommendations to optimize your Virtual Machine configuration for service reliability:
