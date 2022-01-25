@@ -16,7 +16,7 @@ categories:
 
 # Reliability and Azure Firewall
 
-An intelligent network firewall security service, [Azure Firewall](/azure/firewall/) provides threat protection for your cloud workloads running in Azure.
+An intelligent firewall security service, [Azure Firewall](/azure/firewall/) provides threat protection for your cloud workloads running in Azure.
 
 Features include:
 
@@ -58,7 +58,7 @@ Consider the following recommendation to optimize reliability when configuring A
 
 |Recommendation|Description|
 |--------------|-----------|
-|Create a global Azure Firewall policy to govern the security posture across global network environments. Assign the policy to all Azure Firewalls.|Allow for granular policies to meet requirements of specific regions by delegating incremental Firewall Policies to local security teams through role-based access control (RBAC).|
+|Create a global Azure Firewall policy to govern the security posture across global network environments. Assign the policy to all Azure Firewalls.|Allow for granular policies to meet requirements of specific regions. Delegate incremental Firewall Policies to local security teams through role-based access control (RBAC).|
 
 ## Next step
 
