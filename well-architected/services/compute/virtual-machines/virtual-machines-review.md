@@ -151,6 +151,8 @@ Use the recommendations as you provision virtual machines for your solution.
 - [Quickstart: Create a Linux virtual machine in the Azure portal](/azure/virtual-machines/linux/quick-create-portal)
 - [Quickstart: Create a Windows virtual machine in the Azure portal](/azure/virtual-machines/Windows/quick-create-portal)
 
+- Learn module: [Introduction to Azure virtual machines](/learn/modules/intro-to-azure-virtual-machines/)
+
 - Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/). 
 
 - Review the built-in definitions provided by Azure Policy that apply to Virtual Machines. They are listed in the [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies#compute).
