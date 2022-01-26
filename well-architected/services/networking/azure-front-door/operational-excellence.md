@@ -56,4 +56,4 @@ Consider the following recommendation to optimize operational excellence when co
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Network Virtual Appliances and reliability](reliability.md)
+> [Reliability and Network Virtual Appliances](../network-virtual-appliances/reliability.md)
