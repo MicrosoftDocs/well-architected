@@ -57,4 +57,4 @@ Consider the following recommendation to optimize reliability when configuring y
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Reliability and Network Connectivity](../network-connectivity/reliability.md)
+> [Reliability and Network connectivity](../network-connectivity/reliability.md)
