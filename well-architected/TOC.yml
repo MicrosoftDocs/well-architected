@@ -593,3 +593,12 @@ items:
                     href: services/networking/network-virtual-appliances/cost-optimization.md
                   - name: Operational excellence
                     href: services/networking/network-virtual-appliances/operational-excellence.md
+              - name: Network Connectivity
+                items:
+                  - name: Reliability
+                    href: services/networking/network-connectivity/reliability.md
+                  - name: Cost optimization
+                    href: services/networking/network-connectivity/cost-optimization.md
+                  - name: Operational excellence
+                    href: services/networking/network-connectivity/operational-excellence.md
+            
