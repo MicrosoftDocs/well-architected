@@ -29,7 +29,7 @@ Examples of NVAs include:
 
 For more information about Network Virtual Appliances, reference [Deploy highly available NVAs](/azure/architecture/reference-architectures/dmz/nva-ha?tabs=cli).
 
-To understand how NVAs support operational excellence, reference the following topics:
+To understand how NVAs promote operational excellence, reference the following topics:
 
 - [Scenario: Route traffic through an NVA](/azure/virtual-wan/scenario-route-through-nva)
 - [Scenario: Route traffic through NVAs by using custom settings](/azure/virtual-wan/scenario-route-through-nvas-custom)
