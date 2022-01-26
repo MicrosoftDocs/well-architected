@@ -585,3 +585,11 @@ items:
                     href: services/networking/azure-front-door/security.md
                   - name: Operational excellence
                     href: services/networking/azure-front-door/operational-excellence.md
+              - name: Network Virtual Appliances (NVA)
+                items:
+                  - name: Reliability
+                    href: services/networking/network-virtual-appliances/reliability.md
+                  - name: Cost optimization
+                    href: services/networking/network-virtual-appliances/cost-optimization.md
+                  - name: Operational excellence
+                    href: services/networking/network-virtual-appliances/operational-excellence.md
