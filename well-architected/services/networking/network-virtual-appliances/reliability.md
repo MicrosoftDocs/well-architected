@@ -41,7 +41,7 @@ To understand how NVAs support a reliable workload, reference the following topi
 
 > [!div class="checklist"]
 > - NVAs should be deployed within a *Landing Zone* or *solution-level* Virtual Network.
-> - For Virtual Wide Area Network (VWAN) topologies, deploy the NVAs to a separate Virtual Network (VNet) (such as, NVA VNet) and connect it to the regional Virtual WAN Hub and to the *Landing Zones* that require access to NVAs.
+> - For Virtual Wide Area Network (VWAN) topologies, deploy the NVAs to a separate Virtual Network (such as, NVA VNet). Connect the NVA to the regional Virtual WAN Hub and to the *Landing Zones* that require access to NVAs.
 > - For non-Virtual Wide Are Network (WAN) topologies, deploy the third-party NVAs in the central Hub Virtual Network (VNet).
 
 ## Configuration recommendations
