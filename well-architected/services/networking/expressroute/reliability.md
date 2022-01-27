@@ -73,10 +73,7 @@ Consider the following recommendations to optimize reliability when configuring 
 |Use Virtual Private Network (VPN) Gateways to connect branches or remote locations to Azure.|For higher resiliency, deploy Zone-Redundant Gateways (where available).|
 |Enable FastPath to bypass the ExpressRoute Gateway from the data path.|When very low latency is required, or throughput from on-premises to Azure must be greater than `10 Gbps`.|
 |Use dual ExpressRoute circuits from different peering locations when connecting an on-premises location to virtual networks in Azure.|This setup will ensure redundant paths to Azure, removing single points of failure between on-premises and Azure.|
-|Use ExpressRoute as the primary connectivity channel for connecting an on-premises network to Microsoft Azure.|VPNs can be used as a source of backup connectivity to enhance connectivity resiliency.|## Next step
-
-> [!div class="nextstepaction"]
-> [Operational excellence and Azure Virtual Network](operational-excellence.md)
+|Use ExpressRoute as the primary connectivity channel for connecting an on-premises network to Microsoft Azure.|VPNs can be used as a source of backup connectivity to enhance connectivity resiliency.|
 |Use different ExpressRoute circuits to ensure isolated routing domains and to mitigate noisy neighbor risks.|When traffic isolation or dedicated bandwidth is required, such as for separating production and non-production environments.|
 
 ## Next step
