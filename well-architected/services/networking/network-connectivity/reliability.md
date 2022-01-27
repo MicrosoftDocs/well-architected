@@ -59,7 +59,7 @@ Network connectivity includes the following design considerations related to a r
 
 > [!div class="checklist"]
 > - Don't implement forced tunneling to enable communication from Azure to Azure resources.
-> - Unless you use network virutal appliance (NVA) filtering, don't use virtual network service endpoints when there are concerns about unauthorized movement of data.
+> - Unless you use network virtual appliance (NVA) filtering, don't use virtual network service endpoints when there are concerns about unauthorized movement of data.
 > - Don't enable virtual network service endpoints by default on all subnets.
 
 ## Next step
