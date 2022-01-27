@@ -16,7 +16,7 @@ categories:
 
 # Operational excellence and Network Virtual Appliances (NVA)
 
-Network Virtual Appliances (NVA) are typically used to control the flow of traffic between network segments classified with different security levels, for example between a De-Militarized Zone (DMZ) Virtual Network and the public internet.
+Network Virtual Appliances (NVA) are typically used to control the flow of traffic between network segments classified with different security levels, for example between a perimeter network (also known as DMZ, demilitarized zone, and screened subnet) and the public internet.
 
 Examples of NVAs include:
 
@@ -46,7 +46,7 @@ To understand how NVAs promote operational excellence, reference the following t
 
 ## Configuration recommendations
 
-Consider the following recommendation to optimize reliability when configuring your Network Virtual Appliances (NVA):
+Consider the following recommendations to optimize reliability when configuring your Network Virtual Appliances (NVA):
 
 |Recommendation|Description|
 |--------------|-----------|
@@ -57,4 +57,4 @@ Consider the following recommendation to optimize reliability when configuring y
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Reliability and Network Connectivity](reliability.md)
+> [Reliability and Network connectivity](../network-connectivity/reliability.md)

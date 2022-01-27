@@ -16,7 +16,7 @@ categories:
 
 # Cost optimization and Network Virtual Appliances (NVA)
 
-Network Virtual Appliances (NVA) are typically used to control the flow of traffic between network segments classified with different security levels, for example between a De-Militarized Zone (DMZ) Virtual Network and the public internet.
+Network Virtual Appliances (NVA) are typically used to control the flow of traffic between network segments classified with different security levels, for example between a perimeter network (also known as DMZ, demilitarized zone, and screened subnet) and the public internet.
 
 Examples of NVAs include:
 
