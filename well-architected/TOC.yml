@@ -601,4 +601,10 @@ items:
                     href: services/networking/network-connectivity/cost-optimization.md
                   - name: Operational excellence
                     href: services/networking/network-connectivity/operational-excellence.md
+              - name: Azure Virtual Networks
+                items:
+                  - name: Reliability
+                    href: services/networking/azure-virtual-networks/reliability.md
+                  - name: Operational excellence
+                    href: services/networking/azure-virtual-networks/operational-excellence.md
             
