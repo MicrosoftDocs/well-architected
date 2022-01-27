@@ -46,7 +46,7 @@ To understand how NVAs support a reliable workload, reference the following topi
 
 ## Configuration recommendations
 
-Consider the following recommendation to optimize reliability when configuring your Network Virtual Appliances (NVA):
+Consider the following recommendations to optimize reliability when configuring your Network Virtual Appliances (NVA):
 
 |Recommendation|Description|
 |--------------|-----------|

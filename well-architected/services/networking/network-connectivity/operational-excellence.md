@@ -65,4 +65,4 @@ Network connectivity includes the following design considerations related to ope
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Reliability and Azure Virtual Networks](reliability.md)
+> [Reliability and Azure Virtual Network](../azure-virtual-network/reliability.md)
