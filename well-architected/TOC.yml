@@ -607,4 +607,10 @@ items:
                     href: services/networking/azure-virtual-network/reliability.md
                   - name: Operational excellence
                     href: services/networking/azure-virtual-network/operational-excellence.md
+              - name: ExpressRoute
+                items:
+                  - name: Reliability
+                    href: services/networking/expressroute/reliability.md
+                  - name: Operational excellence
+                    href: services/networking/expressroute/operational-excellence.md
             
