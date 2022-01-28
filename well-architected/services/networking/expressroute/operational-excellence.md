@@ -79,4 +79,4 @@ Consider the following recommendations for operational excellence when configuri
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Reliability and Azure Load Balancer](reliability.md)
+> [Reliability and Azure Load Balancer](../azure-load-balancer/reliability.md)
