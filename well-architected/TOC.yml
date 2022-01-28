@@ -625,4 +625,8 @@ items:
                     href: services/networking/traffic-manager/reliability.md
                   - name: Operational excellence
                     href: services/networking/traffic-manager/operational-excellence.md
+              - name: IP Addresses
+                items:
+                  - name: Cost optimization
+                    href: services/networking/ip-addresses/cost-optimization.md
             
