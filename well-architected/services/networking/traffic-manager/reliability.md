@@ -28,7 +28,7 @@ Features include:
 
 For more information, reference [What is Traffic Manager?](/azure/traffic-manager/traffic-manager-overview)
 
-To learn how Traffic Manager supports a reliable workload, reference the following topics:
+To learn how Traffic Manager supports a reliable workload, reference the following articles:
 
 - [Enhance your service availability and data locality by using Azure Traffic Manager](/learn/modules/distribute-load-with-traffic-manager/)
 - [Using load-balancing services in Azure](/azure/traffic-manager/traffic-manager-load-balancing-azure)
