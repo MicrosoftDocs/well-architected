@@ -581,4 +581,10 @@ items:
                     href: services/networking/expressroute/reliability.md
                   - name: Operational excellence
                     href: services/networking/expressroute/operational-excellence.md
+              - name: Azure Load Balancer
+                items:
+                  - name: Reliability
+                    href: services/networking/azure-load-balancer/reliability.md
+                  - name: Operational excellence
+                    href: services/networking/azure-load-balancer/operational-excellence.md
             
