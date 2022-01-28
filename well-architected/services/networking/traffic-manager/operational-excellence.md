@@ -52,4 +52,4 @@ Consider the following recommendation for operational excellence when configurin
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Cost optimization and IP Addresses](operational-excellence.md)
+> [Cost optimization and IP Addresses](../ip-addresses/cost-optimization.md)
