@@ -619,4 +619,10 @@ items:
                     href: services/networking/azure-load-balancer/reliability.md
                   - name: Operational excellence
                     href: services/networking/azure-load-balancer/operational-excellence.md
+              - name: Traffic Manager
+                items:
+                  - name: Reliability
+                    href: services/networking/traffic-manager/reliability.md
+                  - name: Operational excellence
+                    href: services/networking/traffic-manager/operational-excellence.md
             
