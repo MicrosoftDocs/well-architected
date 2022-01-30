@@ -36,6 +36,7 @@ Azure provides several monitoring tools that observe the operations and detect a
 |[**Azure Rights Management (RMS)**](/azure/information-protection/what-is-azure-rms)| Protect files and emails across multiple devices.|
 |[**Microsoft Information Protection (MIP)**](/information-protection/develop/overview)| Secure email, documents, and sensitive data that you share outside your company.|
 |[**Azure Governance Visualizer**](https://github.com/microsoft/CloudAdoptionframework/tree/master/govern/AzureGovernanceVisualizer)|Gain granular insight into policies, Azure role-based access control (Azure RBAC), Azure Blueprints, subscriptions, and more.|
+|[**PSRule for Azure**](https://aka.ms/ps-rule-azure)| Scan Azure Infrastructure as Code (IaC) artifacts for issues across Azure Well-Architected pillars.|
 
 ## Microsoft Defender for Cloud
 
@@ -80,6 +81,12 @@ With proper *file protection*, you can analyze data flows to gain insight into y
 Azure Governance Visualizer is a PowerShell script that iterates through an Azure tenant's management group hierarchy down to the subscription level. You can run the script either for your Tenant Root Group or any other Management Group. It captures data from the most relevant Azure governance capabilities such as Azure Policy, Azure role-based access control (Azure RBAC), and Azure Blueprints. From the collected data, the visualizer shows your hierarchy map, creates a tenant summary, and builds granular scope insights about your management groups and subscriptions.
 
 The visualizer provides a holistic overview of your technical Azure Governance implementation by connecting the dots.
+
+## PSRule for Azure
+
+PSRule for Azure is a pre-built set of tests and documentation to help you configure Azure solutions.
+These tests allow you to check your Azure Template or Bicep Infrastructure as Code (IaC) before deployment to Azure.
+PSRule for Azure includes tests that check how IaC is written and how Azure resources are configured.
 
 ## Next
 
