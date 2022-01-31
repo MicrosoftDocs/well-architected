@@ -56,7 +56,7 @@ A Distributed Denial of Service (DDoS) attack attempts to exhaust an application
 
 Every property in Azure is protected by Azure's infrastructure DDoS (Basic) Protection at no additional cost. The scale and capacity of the globally deployed Azure network provides defense against common network-layer attacks through always-on traffic monitoring and real-time mitigation. DDoS Protection Basic requires no user configuration or application changes. DDoS Protection Basic helps protect all Azure services, including PaaS services like Azure DNS.
 
-Azure DDoS Protection Standard provides enhanced DDoS mitigation features to defend against DDoS attacks. It is automatically tuned to help protect your specific Azure resources in a virtual network. Protection is simple to enable on any new or existing virtual network, and it requires no application or resource changes. It has several advantages over the basic service, including logging, alerting, telemetry, SLA guarantee, and cost protection.
+Azure DDoS Protection Standard provides enhanced DDoS mitigation features to defend against DDoS attacks. It's automatically tuned to help protect your specific Azure resources in a virtual network. Protection is simple to enable on any new or existing virtual network, and it requires no application or resource changes. It has several advantages over the basic service, including logging, alerting, telemetry, SLA guarantee, and cost protection.
 
 Azure DDoS Protection Standard is designed for [services that are deployed in a virtual network](/azure/virtual-network/virtual-network-for-azure-services). For other services, the default DDoS Protection Basic service applies. To learn more about supported architectures, see [DDoS Protection reference architectures](/azure/ddos-protection/ddos-protection-reference-architectures).
 
@@ -73,7 +73,7 @@ To learn more about how RMS can address these issues, see [Business problems sol
 
 The *data classification* process categorizes data by sensitivity and business impact in order to identify risks. When data is classified, you can manage it in ways that protect sensitive or important data from theft or loss.
 
-With proper *file protection*, you can analyze data flows to gain insight into your business, detect risky behaviors and take corrective measures, track access to documents, and more. The protection technology in AIP uses encryption, identity, and authorization policies. Protection stays with the documents and emails, independently of the location, regardless of whether they are inside or outside your organization, networks, file servers, and applications
+With proper *file protection*, you can analyze data flows to gain insight into your business, detect risky behaviors and take corrective measures, track access to documents, and more. The protection technology in AIP uses encryption, identity, and authorization policies. Protection stays with the documents and emails, independently of the location, regardless of whether they're inside or outside your organization, networks, file servers, and applications
 
 [Azure Information Protection (AIP)](/azure/information-protection/what-is-information-protection) is part of Microsoft Information Protection (MIP) solution, and extends the labeling and classification functionality provided by Microsoft 365. For more information, see [this article about classification](/microsoft-365/compliance/data-classification-overview).
 
