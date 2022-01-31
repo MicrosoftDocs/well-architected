@@ -3,7 +3,7 @@ title: Cost optimization and IP Addresses
 description: Focuses on the IP Addresses service used in the Networking solution to provide best-practice and configuration recommendations related to Cost optimization.
 author: v-stacywray
 ms.author: robbymillsap
-ms.date: 01/28/2022
+ms.date: 01/31/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -14,7 +14,7 @@ categories:
   - management-and-governance
 ---
 
-# Cost optimization and IP Addresses
+# Cost optimization and IP addresses
 
 [IP services](/azure/virtual-network/ip-services/) are a collection of IP address-related services that enable communication in an Azure Virtual Network. Public and private IP addresses are used in Azure for communication between resources. The communication with resources can occur in a private Azure Virtual Network and the public internet.
 
@@ -36,14 +36,14 @@ To understand how IP services support a cost-optimized workload, reference the f
 
 ## Checklist
 
-**Have you configured IP Addresses with cost optimization in mind?**
+**Have you configured IP addresses with cost optimization in mind?**
 
 > [!div class="checklist"]
 > - PIPs (Public IPs) are free until used. Static PIPs are paid even when not assigned to resources.
 
 ## Configuration recommendations
 
-Consider the following recommendation for cost optimization when configuring IP Addresses:
+Consider the following recommendation for cost optimization when configuring IP addresses:
 
 |Recommendation|Description|
 |--------------|-----------|
