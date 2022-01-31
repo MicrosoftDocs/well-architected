@@ -3,7 +3,7 @@ title: Operational excellence and Azure Firewall
 description: Focuses on the Azure Firewall service used in the Networking solution to provide design considerations, best-practice, and configuration recommendations related to Operational excellence.
 author: v-stacywray
 ms.author: robbymillsap
-ms.date: 01/25/2022
+ms.date: 01/31/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -27,7 +27,7 @@ Features include:
 
 For more information, reference [What is Azure Firewall?](/azure/firewall/overview)
 
-To learn how Azure Firewall supports operational excellence, reference the following topics:
+To learn how Azure Firewall supports operational excellence, reference the following articles:
 
 - [Firewall Manager policy overview](/azure/firewall-manager/policy-overview)
 - [Firewall Policy rule sets](/azure/firewall/policy-rule-sets)
@@ -35,7 +35,7 @@ To learn how Azure Firewall supports operational excellence, reference the follo
 
 ## Design considerations
 
-For more information about the Azure Firewall Service Level Agreement (SLA), reference [SLA for Azure Firewall](/support/legal/sla/azure-firewall/v1_1/).
+For more information about the Azure Firewall Service Level Agreement (SLA), reference [SLA for Azure Firewall](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_1/).
 
 Use Azure Firewall to govern:
 
@@ -63,7 +63,7 @@ Consider the following recommendations for operational excellence when configuri
 
 |Recommendation|Description|
 |--------------|-----------|
-|Create a global Azure Firewall policy to govern the security posture across global network environments. Assign the policy to all Azure Firewalls.|Allow for granular policies to meet requirements of specific regions. Delegate incremental Firewall Policies to local security teams through role-based access control (RBAC).|
+|Create a global Azure Firewall policy to govern the security posture across global network environments. Assign the policy to all Azure Firewalls.|Allow for granular policies to meet requirements of specific regions. Delegate incremental Firewall Policies to local security Teams through role-based access control (RBAC).|
 |Turn on logs for Azure Firewall.|You can monitor Azure Firewall using firewall logs or workbooks. You can also use activity logs to audit operations on Azure Firewall resources.|
 |Use Fully Qualified Domain Name (FQDN) tags on Azure Firewall.|FQDN tags make it easy to allow known Azure service network traffic through your firewall. For example, say you want to allow Windows Update network traffic through your firewall. You create an application rule and use the Windows Update tag. Now network traffic from Windows Update can flow through your firewall.|
 |Enable Azure Firewall connector in Azure Sentinel.|You can use Azure Sentinel to create detections and logic apps for Azure Firewall.|
