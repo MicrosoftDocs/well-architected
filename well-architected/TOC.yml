@@ -635,3 +635,11 @@ items:
                 items:
                   - name: Cost optimization
                     href: services/monitoring/log-analytics/cost-optimization.md
+              - name: Application Insights
+                items:
+                  - name: Security
+                    href: services/monitoring/application-insights/security.md
+                  - name: Cost optimization
+                    href: services/monitoring/application-insights/cost-optimization.md
+                  - name: Operational excellence
+                    href: services/monitoring/application-insights/operational-excellence.md
