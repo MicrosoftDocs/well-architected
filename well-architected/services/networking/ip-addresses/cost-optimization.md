@@ -1,6 +1,6 @@
 ---
-title: Cost optimization and IP Addresses
-description: Focuses on the IP Addresses service used in the Networking solution to provide best-practice and configuration recommendations related to Cost optimization.
+title: Cost optimization and IP addresses
+description: Focuses on the IP addresses service used in the Networking solution to provide best-practice and configuration recommendations related to Cost optimization.
 author: v-stacywray
 ms.author: robbymillsap
 ms.date: 01/31/2022
@@ -30,7 +30,7 @@ For more information, reference [What is Azure Virtual Network IP Services?](/az
 
 To understand how IP services support a cost-optimized workload, reference the following articles:
 
-- [IP Addresses pricing](https://azure.microsoft.com/pricing/details/ip-addresses/)
+- [IP addresses pricing](https://azure.microsoft.com/pricing/details/ip-addresses/)
 - [Create, change, or delete an Azure public IP address](/azure/virtual-network/ip-services/virtual-network-public-ip-address)
 - [Routing over public Internet (ISP network)](/azure/virtual-network/ip-services/routing-preference-overview#routing-over-public-internet-isp-network)
 
@@ -52,4 +52,4 @@ Consider the following recommendation for cost optimization when configuring IP 
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Cost optimization and Log Analytics Workspace](cost-optimization.md)
+> [Cost optimization and Log Analytics workspace](cost-optimization.md)
