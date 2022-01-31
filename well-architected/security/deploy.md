@@ -42,6 +42,7 @@ Many traditional IT operating models aren't compatible with the cloud, and organ
 > - No infrastructure changes, provisioning or configuring, should be done manually outside of IaC.
 
 ## In this section
+
 Follow these questions to assess the workload at a deeper level.
 
 |Assessment|Description|
@@ -51,26 +52,32 @@ Follow these questions to assess the workload at a deeper level.
 |[**Can you roll back or forward code quickly through automated pipelines?**](deploy-code.md)|Automated deployment pipelines should allow for quick roll-forward and roll-back deployments to address critical bugs and code updates outside of the normal deployment lifecycle.|
 
 ## Azure security benchmark
+
 The Azure Security Benchmark includes a collection of high-impact security recommendations. Use them to secure the services and processes you use to run the workload in Azure:
 
 > ![Security Benchmark](../_images/benchmark-security.svg) The questions in this section are aligned to the [Azure Security Benchmark controls](/azure/security/benchmarks/overview?branch=master).
 
 ## Reference architecture
+
 Here are some reference architectures related to building CI/CD pipelines:
 
 - [CI/CD for microservices architectures](/azure/architecture/microservices/ci-cd)
 - [CI/CD for microservices on Kubernetes](/azure/architecture/microservices/ci-cd-kubernetes)
 
 ## Next step
+
 We recommend monitoring activities that maintain the security posture. These activities can highlight, if the current security practices are effective or are there new requirements.
 
 > [!div class="nextstepaction"]
 > [Security monitoring](./monitor.md)
 
 ## Related link
+
 > Go back to the main article: [Security](overview.md)
 
 ## Learn more
+
 - [Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/)
 - [Agile Principles in Practice](/devops/plan/how-microsoft-plans-devops)
 - [Platform automation and DevOps](/azure/cloud-adoption-framework/ready/enterprise-scale/platform-automation-and-devops)
+- [PsRules for Azure](https://aka.ms/ps-rule-azure)

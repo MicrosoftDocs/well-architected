@@ -40,7 +40,7 @@ The collective role of organization(s) is to manage the security standards of th
 
 Security best practices are ideally applied proactively and completely to all systems as you build your cloud program, but this isn't reality for most enterprise organizations. Business goals, project constraints, and other factors often cause organizations to balance security risk against other risks and apply a subset of best practices at any given point.
 
-We recommend applying as many of the best practices as early as possible, and then working to retrofit any gaps over time as you mature your security program to include review, prioritization, and proactive application of best practices  to cloud resources. We recommend evaluating the following considerations when  prioritizing which to follow first:
+We recommend applying as many of the best practices as early as possible, and then working to retrofit any gaps over time as you mature your security program to include review, prioritization, and proactive application of best practices to cloud resources. We recommend evaluating the following considerations when  prioritizing which to follow first:
 
 - **High business impact and highly exposed systems:** These include systems with direct intrinsic value as well as the systems that provide attackers a path to them. For more information, see [Identify and classify business critical applications](./design-apps-services.md).
 
@@ -95,4 +95,5 @@ Provide security assurance through identity management to authenticate and grant
 > [Identity and access management](./design-identity.md)
 
 ## Related links
+
 > Go back to the main article: [Security](overview.md)
