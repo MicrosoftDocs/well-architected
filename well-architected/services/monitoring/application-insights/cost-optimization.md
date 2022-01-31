@@ -58,7 +58,7 @@ Consider the following recommendations for cost optimization when configuring Ap
 
 |Recommendation|Description|
 |--------------|-----------|
-|Evaluate daily cap usage to limit the daily ingestion for your workspace.|Daily cap is used to manage an unexpected increase in data volume. Use daily cap when you want to limit unplanned charges for your workspace. Use care with this configuration as it can cause some data to be unwritten on Log Analytics workspace if the daily cap is reached. This configuration can impact services whose functionality may depend on the availability of up-to-date data in the workspace. Refer to [Set the Daily Cap](/azure/azure-monitor/app/pricing#set-the-daily-cap) about how to set the daily cap in Application Insights. *Note: If you have a workspace-based Application Insights, use workspace's daily cap to limit ingestion and costs instead of using the cap in Application Insights.*|
+|Evaluate daily cap usage to limit the daily ingestion for your workspace.|Daily cap is used to manage an unexpected increase in data volume. Use daily cap when you want to limit unplanned charges for your workspace. Use care with this configuration as it can cause some data to be unwritten on Log Analytics workspace if the daily cap is reached. This configuration can impact services whose functionality may depend on the availability of up-to-date data in the workspace. Refer to [Set the Daily Cap](/azure/azure-monitor/app/pricing#set-the-daily-cap) about how to set the daily cap in Application Insights. *Note: If you have a workspace-based Application Insights, use the daily cap in workspace to limit ingestion and costs instead of using the cap in Application Insights.*|
 
 ## Next step
 
