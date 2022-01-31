@@ -27,14 +27,14 @@ Features include:
 
 For more information, reference [What is Azure Firewall?](/azure/firewall/overview)
 
-To learn how Azure Firewall supports a reliable workload, reference the following topics:
+To learn how Azure Firewall supports a reliable workload, reference the following articles:
 
 - [Introduction to Azure Firewall](/learn/modules/introduction-azure-firewall/)
 - [Quickstart: Deploy Azure Firewall with Availability Zones](/azure/firewall/deploy-template)
 
 ## Design considerations
 
-For more information about the Azure Firewall Service Level Agreement (SLA), reference [SLA for Azure Firewall](/support/legal/sla/azure-firewall/v1_1/).
+For more information about the Azure Firewall Service Level Agreement (SLA), reference [SLA for Azure Firewall](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_1/).
 
 Use Azure Firewall to govern:
 
@@ -58,7 +58,7 @@ Consider the following recommendation to optimize reliability when configuring A
 
 |Recommendation|Description|
 |--------------|-----------|
-|Create a global Azure Firewall policy to govern the security posture across global network environments. Assign the policy to all Azure Firewalls.|Allow for granular policies to meet requirements of specific regions. Delegate incremental Firewall Policies to local security teams through role-based access control (RBAC).|
+|Create a global Azure Firewall policy to govern the security posture across global network environments. Assign the policy to all Azure Firewalls.|Allow for granular policies to meet requirements of specific regions. Delegate incremental Firewall Policies to local security Teams through role-based access control (RBAC).|
 
 ## Next step
 
