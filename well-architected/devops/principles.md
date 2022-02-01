@@ -72,11 +72,15 @@ Telemetry is critical to understanding the health of a workload and whether the 
 
 ## Rehearse recovery and practice failure
 
+Rehearse recovery and practice failure using the following methods:
+
 - Run disaster recovery (DR) drills on a regular cadence.  
 - Use chaos engineering practices to identify and remediate weak points in application reliability.
 - Rehearse failure to validate the effectiveness of recovery processes and ensure teams are familiar with their responsibilities.
 
 ## Embrace continuous operational improvement
+
+Embrace continuous operational improvement through the following methods:
 
 - Continuously evaluate and refine operational procedures and tasks.
 - Strive to reduce complexity and ambiguity.
@@ -89,7 +93,7 @@ This approach enables an organization to:
 
 ## Use loosely coupled architecture
 
-Enable teams to independently:
+Use loosely coupled architecture to enable teams to independently:
 
 - Test
 - Deploy
