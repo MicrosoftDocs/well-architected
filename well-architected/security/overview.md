@@ -85,7 +85,7 @@ Use [Azure role-based access control (Azure RBAC)][rbac] to grant users within y
 
 ## Application security
 
-In general, the security best practices for application development still apply in the cloud. These include things like using SSL everywhere, protecting against CSRF and XSS attacks, preventing SQL injection attacks, and so on.
+In general, the security best practices for application development still apply in the cloud. These include things like using SSL/TLS everywhere, protecting against CSRF and XSS attacks, preventing SQL injection attacks, and so on.
 
 Cloud applications often use managed services that have access keys. Never check these keys into source control. Consider storing application secrets in [Azure Key Vault](/azure/key-vault/general/overview).
 
