@@ -11,6 +11,8 @@ ms.subservice: well-architected
 
 # Operational excellence principles
 
+The principles of operational excellence are a series of considerations that can help achieve superior operational practices.
+
 To achieve a higher competency in operations, consider and improve how software is:
 
 - Developed
@@ -24,8 +26,6 @@ Equally important, provide a team culture, which includes:
 - Solutions for rationalizing the current state of operations
 - Incident response plans
 
-The principles of operational excellence are a series of considerations that can help achieve excellent operational practices.
-
 To assess your workload using the tenets found in the Azure Well-Architected Framework, reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
 The following design principles provide:
@@ -35,6 +35,8 @@ The following design principles provide:
 - How an aspect is applicable to Operational excellence
 
 These critical design principles are used as lenses to assess the Operational excellence of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
+
+## Design principles
 
 Operational excellence design principles include:
 
