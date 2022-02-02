@@ -1,6 +1,6 @@
 ---
 title: Reliability design principles
-description: Understand the design principles of the reliability pillar. Review application framework tips to make the application more reliable.
+description: Understand the design principles of the reliability pillar.
 author: v-stacywray
 ms.author: robbymillsap
 ms.date: 02/02/2022
@@ -55,7 +55,7 @@ By anticipating failures, from individual components to entire Azure regions, a 
 
 Before mitigating issues that impact application reliability, you must first detect these issues.
 
-By monitoring the operation of an application relative to a healthy state, you can detect and predict reliability issues. 
+By monitoring the operation of an application relative to a healthy state, you can detect and predict reliability issues.
 
 Monitoring allows you to take swift and remedial action.
 
