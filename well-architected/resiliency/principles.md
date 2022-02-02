@@ -49,7 +49,7 @@ Cost implications are inevitable when introducing greater reliability and high a
 
 Failure is impossible to avoid in a highly distributed and multi-tenant environment like Azure.
 
-By anticipating failures, from individual components to entire Azure regions, a solution can be developed in a resilient way to increase reliability.
+By anticipating failures, from individual components to entire Azure regions, you can develop a solution in a resilient way to increase reliability.
 
 ## Observe application health
 
