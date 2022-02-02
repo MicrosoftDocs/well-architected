@@ -16,7 +16,7 @@ ms.custom:
 
 Building a reliable application in the cloud is different from traditional application development. Historically, you may have purchased levels of redundant higher-end hardware to minimize the chance of an entire application platform failing.
 
-In the cloud, we acknowledge, in advance, that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component.
+In the cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component.
 
 To assess your workload using the tenets found in the Azure Well-Architected Framework, reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
@@ -55,7 +55,9 @@ By anticipating failures, from individual components to entire Azure regions, a 
 
 Before mitigating issues that impact application reliability, you must first detect these issues.
 
-By monitoring the operation of an application relative to a healthy state, you can detect and predict reliability issues. Monitoring allows you to take swift and remedial action.
+By monitoring the operation of an application relative to a healthy state, you can detect and predict reliability issues. 
+
+Monitoring allows you to take swift and remedial action.
 
 ## Drive automation
 
@@ -82,7 +84,9 @@ From inception, self-healing should be an aspiration to maximize reliability.
 
 *Scale-out* is a concept that focuses on the ability of a system to respond to demand through horizontal growth. As traffic grows, *more* resource units are added in parallel, instead of increasing the size of the existing resources.
 
-Through scale-units, a system can handle expected and unexpected traffic increases, essential to overall reliability. Scale-units further reduce the effects of a single resource failure.
+Through scale-units, a system can handle expected and unexpected traffic increases, essential to overall reliability.
+
+Scale-units further reduce the effects of a single resource failure.
 
 ### Next step
 
