@@ -9,7 +9,7 @@ ms.service: architecture-center
 ms.subservice: well-architected
 ---
 
-# Operational excellence principles
+# Operational excellence design principles
 
 The principles of operational excellence are a series of considerations that can help achieve superior operational practices.
 
