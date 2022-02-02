@@ -3,7 +3,7 @@ title: Operational excellence design principles
 description: Understand the design principles for operational excellence within the Azure Well-Architected Framework.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 02/01/2022
+ms.date: 02/02/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -60,7 +60,7 @@ This approach ensures the creation and management of environments throughout the
   
 ## Understand operational health
 
-Understand operational health through focused and assertive monitoring.
+Evaluate operational health through focused and assertive monitoring.
 
 Implement systems and processes to monitor the following components:
   
@@ -68,7 +68,7 @@ Implement systems and processes to monitor the following components:
 - Infrastructure health
 - Application health
   
-Telemetry is critical to understanding the health of a workload and whether the service is meeting the business goals.
+Customer data is critical to understanding the health of a workload and whether the service is meeting the business goals.
 
 ## Rehearse recovery and practice failure
 
