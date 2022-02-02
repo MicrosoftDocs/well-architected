@@ -84,9 +84,9 @@ From inception, self-healing should be an aspiration to maximize reliability.
 
 *Scale-out* is a concept that focuses on the ability of a system to respond to demand through horizontal growth. As traffic grows, *more* resource units are added in parallel, instead of increasing the size of the existing resources.
 
-Through scale-units, a system can handle expected and unexpected traffic increases, essential to overall reliability.
+Through scale units, a system can handle expected and unexpected traffic increases, essential to overall reliability.
 
-Scale-units further reduce the effects of a single resource failure.
+Scale units further reduce the effects of a single resource failure.
 
 ### Next step
 
