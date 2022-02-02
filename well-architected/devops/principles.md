@@ -49,7 +49,7 @@ These critical design principles are used as lenses to assess the Operational ex
 Embrace software engineering disciplines across your entire environment, which include the following disciplines:
   
 - Provision with Infrastructure as Code
-- Build and release with continuous integration and continuous development (CI/CD) pipelines
+- Build and release with continuous integration and continuous delivery (CI/CD) pipelines
 - Automated testing
   
 This approach ensures the creation and management of environments throughout the software development lifecycle enables:
