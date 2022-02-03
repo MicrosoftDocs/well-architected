@@ -1,9 +1,9 @@
 ---
-title: Principles of cost optimization
-description: Understand cost optimization principles, which are a series of important considerations that can help achieve both business objectives and cost justification.
+title: Cost optimization design principles
+description: Understand cost optimization principles. These principles are a series of important considerations that can help achieve business objectives and cost justification.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 12/20/2021
+ms.date: 02/03/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -15,34 +15,89 @@ categories:
   - management-and-governance
 ---
 
-# Principles of cost optimization
+# Cost optimization design principles
 
 A cost-effective workload is driven by business goals and the return on investment (ROI) while staying within a given budget. The principles of cost optimization are a series of important considerations that can help achieve both business objectives and cost justification.
 
-To assess your workload using the tenets found in the Azure Well-Architected Framework, see the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+To assess your workload using the tenets found in the Azure Well-Architected Framework, reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
-## Keep within the cost constraints
+The following design principles provide:
 
-Every design choice has cost implications. Before choosing an architectural pattern, Azure service, or a price model for the service, consider the budget constraints set by the company. As part of design, identify acceptable boundaries on scale, redundancy, and performance against cost. After estimating the initial cost, set budgets and alerts at different scopes to measure the cost. One of cost drivers can be unrestricted resources. These resources typically need to scale and consume more cost to meet demand.
+- Context for questions
+- Why a certain aspect is important
+- How an aspect is applicable to Cost optimization
 
-## Aim for scalable costs
+Design principles:
 
-A key benefit of the cloud is the ability to scale dynamically. The workload cost should scale linearly with demand. You can save cost through automatic scaling. Consider the usage metrics and performance to determine the number of instances. Choose smaller instances for a highly variable workload and scale out to get the required level of performance, rather than up. This choice will enable you to make your cost calculations and estimates granular.
+- [Choose the correct resources for your business goals](#choose-the-correct-resources)
+- [Set up budgets and maintain cost constraints](#set-up-budgets-and-maintain-cost-constraints)
+- [Dynamically allocate and de-allocate resources](#dynamically-allocate-and-de-allocate-resources)
+- [Optimize workloads, aim for scalable costs](#optimize-workloads-aim-for-scalable-costs)
+- [Continuously monitor and optimize cost management](#continuously-monitor-and-optimize-cost-management)
 
-## Pay for consumption
+These critical design principles are used as lenses to assess the Cost optimization of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
 
-Adopt a leasing model instead of owning infrastructure. Azure offers many SaaS and PaaS resources that simplify overall architecture. The  cost of hardware, software, development, operations, security, and data center space included in the pricing model.
+## Choose the correct resources
 
-Also, choose pay-as-you-go over fixed pricing. That way, as a consumer, you're charged for only what you use.
+Choose the right resources that are aligned with business goals and can handle the performance of the workload.
 
-## Right resources, right size
+When onboarding new workloads, explore the possibility of modernization and cloud native offerings where possible. It's typically more cost effective to use  Platform as a Service (PaaS) or Software as a Service (SaaS), as opposed to Infrastructure as a Service (IaaS).
 
-Choose the right resources that are aligned with business goals and can handle the performance of the workload. An inappropriate or misconfigured service can impact cost. For example, building a multi-region service when the service levels don't require high-availability or geo-redundancy will increase cost without any reasonable business justification.
+An inappropriate or misconfigured service can affect cost. For example, building a multi-region service when the service levels don't require high-availability or geo-redundancy will increase cost without any reasonable business justification.
 
-Certain infrastructure resources are delivered as fix-sized building blocks. Ensure that these blocks are adequately sized to meet capacity demand, deliver expected performance without wasting resources.
+## Set up budgets and maintain cost constraints
 
-## Monitor and optimize
+Every design choice has cost implications. Consider the budget constraints set by the company, before choosing:
 
-Treat cost monitoring and optimization as a process, rather than a point-in-time activity. Conduct regular cost reviews and measure and forecast the capacity needs so that you can provision resources dynamically and scale with demand. Review the cost management recommendations and take action to optimize workload costs.  Use [Advisor Score](/azure/advisor/azure-advisor-score) to identify the greatest opportunities for cost optimization for your workload.
+- An architectural pattern
+- Azure service
+- A price model for the service
 
-If you're just starting in this process review [enable success during a cloud adoption journey](/azure/cloud-adoption-framework/getting-started/enable).
+As part of design, identify acceptable boundaries on:
+
+- Scale
+- Redundancy
+- Performance against cost
+
+After estimating the initial cost, set budgets and alerts at different scopes to measure the cost. One cost driver can be unrestricted resources. These resources typically need to scale and consume more cost to meet demand.
+
+## Dynamically allocate and de-allocate resources
+
+To match performance needs, dynamically allocate and de-allocate resources.
+
+Identify idle or underutilized resources through Azure Advisor or other tools, and:
+
+- Reconfigure
+- Consolidate
+- (or) Shut down
+
+## Optimize workloads, aim for scalable costs
+
+A key benefit of the cloud is the ability to scale dynamically. The workload cost should scale linearly with demand. You can save cost through automatic scaling.
+
+Recommendations:
+
+- Consider the usage metrics and performance to determine the number of instances.
+- Choose smaller instances for a highly variable workload.
+- Scale out, rather than up, to get the required level of performance. This choice will enable you to make your cost calculations and estimates granular.
+
+The cost management process should be:
+
+- Rigorous
+- Iterative
+- A key principle of responsible cloud optimization
+
+## Continuously monitor and optimize cost management
+
+To provision resources dynamically and to scale with demand:
+
+- Conduct regular cost reviews
+- Measure capacity needs
+- Forecast capacity needs
+
+If you're just starting this process, review [enable success during a cloud adoption journey](/azure/cloud-adoption-framework/get-started/enable).
+
+### Next step
+
+> [!div class="nextstepaction"]
+> [Design checklist](./design-checklist.md)
