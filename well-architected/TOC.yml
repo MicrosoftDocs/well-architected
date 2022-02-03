@@ -162,8 +162,10 @@ items:
         items:
           - name: About
             href: cost/index.yml
-          - name: Principles
+          - name: Overview
             href: cost/overview.md
+          - name: Principles
+            href: cost/principles.md
           - name: Design
             items:
               - name: Checklist
