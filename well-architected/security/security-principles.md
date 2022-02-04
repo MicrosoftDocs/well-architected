@@ -72,7 +72,7 @@ Recommendations:
 
 - Monitor and protect the network integrity of internal and external endpoints through security appliances, such as:
   - Firewalls
-  - Web application firewalls.
+  - Web application firewalls
 - Use industry standard approaches to protect against common attack vectors, such as distributed denial of service (DDoS) attacks like SlowLoris.
 
 ## Protect against code-level vulnerabilities
