@@ -3,7 +3,7 @@ title: Overview of the security pillar
 description: Learn about the key architectural considerations and principles for security and how they apply to the Microsoft Azure Well-Architected Framework.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 12/06/2021
+ms.date: 02/04/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -62,7 +62,7 @@ These are the topics we cover in the security pillar of the Microsoft Azure Well
 
 | Security Topic | Description |
 |-------------------|-------------|
-| [Security design principles][design] | These principles support these three key strategies and describe a securely architected system hosted on cloud or on-premises datacenters (or a combination of both). |
+| [Security design principles][design] | These principles describe a securely architected system hosted on cloud or on-premises datacenters, or a combination of both. |
 | [Governance, risk, and compliance][compliance] | How is the organization's security going to be monitored, audited, and reported? What types of risks does the organization face while trying to protect identifiable information, Intellectual Property (IP), financial information? Are there specific industry, government, or regulatory requirements that dictate or provide recommendation on criteria that your organization's security controls must meet? |
 | [Regulatory compliance][regulatory] | Governments and other organizations frequently publish standards to help define good security practices (due diligence) so that organizations can avoid being negligent in security. |
 | [Administration][admin] | Administration is the practice of monitoring, maintaining, and operating Information Technology (IT) systems to meet service levels that the business requires. Administration introduces some of the highest impact security risks because performing these tasks requires privileged access to a very broad set of these systems and applications. |
@@ -105,6 +105,11 @@ Use Key Vault to safeguard cryptographic keys and secrets. By using Key Vault, y
 - [Microsoft Defender for Cloud][security-center] provides integrated security monitoring and policy management for your workload.
 - [Azure Security Documentation][security-documentation]
 - [Microsoft Trust Center][trust-center]
+
+### Next step
+
+> [!div class="nextstepaction"]
+> [Principles](./security-principles.md)
 
 <!-- security links -->
 
