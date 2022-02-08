@@ -25,7 +25,7 @@ Security is one of the most important aspects of any architecture. It provides t
 - Integrity
 - Availability
 
-Losing these assurances can negatively impact your business operations and revenue, and your organization's reputation. For the security pillar, we'll discuss key architectural considerations and principles for security and how they apply to Azure.
+Losing these assurances can negatively affect your business operations and revenue, and your organization's reputation. For the security pillar, we'll discuss key architectural considerations and principles for security and how they apply to Azure.
 
 The security of complex systems depends on understanding the business context, social context, and technical context. As you design your system, cover these areas:
 
@@ -72,9 +72,9 @@ Increasing security risks result in three key strategies:
 
 More on perimeters and how they relate to Zero Trust and Enterprise Segmentation are in the [Governance, Risk, and Compliance](/azure/architecture/framework/security/design-segmentation) and [Network Security & Containment](/azure/architecture/framework/security/design-network-segmentation) sections.
 
-- **Modernize infrastructure security:** For operating systems and middleware elements that legacy applications require, take advantage of cloud technology to reduce security risk to the organization. For example, knowing whether all servers in a physical datacenter are updated with security patches has always been challenging because of discoverability. Software-defined datacenters allow easy and rapid discovery of all resources, enabling technology like Microsoft Defender for Cloud to quickly and accurately measure the patch state of all servers and remediate them.
+- **Modernize infrastructure security:** For operating systems and middleware elements that legacy applications require, take advantage of cloud technology to reduce security risk to the organization. For example, knowing whether all servers in a physical datacenter are updated with security patches has always been challenging because of discoverability. Software-defined datacenters allow easy and rapid discovery of all resources. This rapid discovery enables technology like Microsoft Defender for Cloud to measure quickly and accurately the patch state of all servers and remediate them.
 
-- **"Trust but verify" each cloud provider:** For the elements which are under the control of the cloud provider. You should ensure the security practices and regulatory compliance of each cloud provider (large and small) meet your requirements.
+- **"Trust but verify" each cloud provider:** For the elements, which are under the control of the cloud provider. You should ensure the security practices and regulatory compliance of each cloud provider (large and small) meet your requirements.
 
 To assess your workload using the tenets found in the Microsoft Azure Well-Architected Framework, see the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
@@ -85,7 +85,7 @@ We cover the following areas in the security pillar of the Microsoft Azure Well-
 | Security Topic | Description |
 |-------------------|-------------|
 | [Security design principles][design] | These principles describe a securely architected system hosted on cloud or on-premises datacenters, or a combination of both. |
-| [Governance, risk, and compliance][compliance] | How is the organization's security going to be monitored, audited, and reported? What types of risks does the organization face while trying to protect identifiable information, Intellectual Property (IP), financial information? Are there specific industry, government, or regulatory requirements that dictate or provide recommendations on criteria that your organization's security controls must meet? |
+| [Governance, risk, and compliance][compliance] | How is the organization's security going to be monitored, audited, and reported? What types of risks does the organization face while trying to protect identifiable information, Intellectual Property (IP), financial information? Is there specific industry, government, or regulatory requirements that dictate or provide recommendations on criteria that your organization's security controls must meet? |
 | [Regulatory compliance][regulatory] | Governments and other organizations frequently publish standards to help define good security practices (due diligence) so that organizations can avoid being negligent in security. |
 | [Administration][admin] | Administration is the practice of monitoring, maintaining, and operating Information Technology (IT) systems to meet service levels that the business requires. Administration introduces some of the highest impact security risks because performing these tasks requires privileged access to a broad set of these systems and applications. |
 | [Applications and services][app] | Applications and the data associated with them ultimately act as the primary store of business value on a cloud platform. |
@@ -118,7 +118,7 @@ If you want to integrate an on-premises Active Directory environment with an Azu
 
 Control access to the Azure resources that you deploy. Every Azure subscription has a [trust relationship][ad-subscriptions] with an Azure AD tenant.
 
-Use [Azure role-based access control (Azure RBAC)][rbac] to grant users within your organization the correct permissions to Azure resources. Grant access by assigning Azure roles to users or groups at a certain scope. The scope can be a:
+Use [Azure role-based access control (Azure RBAC role)][rbac] to grant users within your organization the correct permissions to Azure resources. Grant access by assigning Azure roles to users or groups at a certain scope. The scope can be a:
 
 - Subscription
 - Resource group
