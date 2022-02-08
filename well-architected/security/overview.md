@@ -3,7 +3,7 @@ title: Overview of the security pillar
 description: Learn about the key architectural considerations and principles for security and how they apply to the Microsoft Azure Well-Architected Framework.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 02/04/2022
+ms.date: 02/07/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -17,40 +17,62 @@ ms.custom:
 
 # Overview of the security pillar
 
-Information Security has always been a complex subject, and it evolves quickly with the creative ideas and implementations of attackers and security researchers. The origin of security vulnerabilities started with identifying and exploiting common programming errors and unexpected edge cases. However over time, the attack surface that an attacker may explore and exploit has expanded well beyond that. Attackers now freely exploit vulnerabilities in system configurations, operational practices, and the social habits of the systems' users. As system complexity, connectedness, and the variety of users increase, attackers have more opportunities to identify unprotected edge cases and to "hack" systems into doing things they were not designed to do.
+Information Security has always been a complex subject, and it evolves quickly with the creative ideas and implementations of attackers and security researchers. The origin of security vulnerabilities started with identifying and exploiting common programming errors and unexpected edge cases. However over time, the attack surface that an attacker may explore and exploit has expanded well beyond these common errors and edge cases. Attackers now freely exploit vulnerabilities in system configurations, operational practices, and the social habits of the systems' users. As system complexity, connectedness, and the variety of users increase, attackers have more opportunities to identify unprotected edge cases. Attackers can *hack* systems into doing things they weren't designed to do.
 
-Security is one of the most important aspects of any architecture. It provides confidentiality, integrity, and availability assurances against deliberate attacks and abuse of your valuable data and systems. Losing these assurances can negatively impact your business operations and revenue, and your organization's reputation. For the security pillar, we'll discuss key architectural considerations and principles for security and how they apply to Azure.
+Security is one of the most important aspects of any architecture. It provides the following assurances against deliberate attacks and abuse of your valuable data and systems:
+
+- Confidentiality
+- Integrity
+- Availability
+
+Losing these assurances can negatively impact your business operations and revenue, and your organization's reputation. For the security pillar, we'll discuss key architectural considerations and principles for security and how they apply to Azure.
 
 The security of complex systems depends on understanding the business context, social context, and technical context. As you design your system, cover these areas:
 
 :::image type="content" source="./images/security-areas.png" alt-text="Screenshot showing security design areas.":::
 
-Understanding an IT solution as it interacts with its surrounding environment holds the key to preventing unauthorized activity and to identifying anomalous behavior that may represent a security risk. Another key success factor is adopting a mindset of assuming failure of security controls so that you design compensating controls that limit risk and damage in the event a primary control fails. Assuming failures is sometimes referred to as "assume breach" or "assume compromise" and is closely related to the "Zero Trust" approach of continuously validating security assurances. The "Zero Trust" approach is described in the [Security Design Principles](/azure/architecture/framework/security/security-principles) section in more detail.
+Understanding an IT solution as it interacts with its surrounding environment holds the key to preventing unauthorized activity and to identifying anomalous behavior that may represent a security risk.
+
+Another key factor in success: Adopt a mindset of assuming failure of security controls. Assuming failure allows you to design compensating controls that limit risk and damage if a primary control fails.
+
+Assuming failures can be referred to as *assume breach* or *assume compromise*. Assume breach is closely related to the *Zero Trust* approach of continuously validating security assurances. The Zero Trust approach is described in the [Security Design Principles](/azure/architecture/framework/security/security-principles) section in more detail.
 
 Cloud architectures can help simplify the complex task of securing an enterprise estate through specialization and shared responsibilities:
 
-**Specialization:** Instead of hundreds of thousands of organizations individually developing deep expertise on managing and securing common elements like datacenter physical security, firmware patching, and hypervisor configuration, specialist teams at cloud providers can develop advanced capabilities to operate and secure the systems on behalf of these organizations. The economies of scale allow cloud provider specialist teams to invest in optimization of management and security that far exceeds the ability of most organizations.
+**Specialization:**  Specialist teams at cloud providers can develop advanced capabilities to operate and secure systems on behalf of organizations. This approach is preferable to numerous organizations individually developing deep expertise on managing and securing common elements, such as:
 
-Cloud providers must be compliant with the same IT regulatory requirements as the aggregate of all their customers and must develop expertise to defend against the aggregate set of adversaries attacking their customers. As a consequence, the default security posture of applications deployed to the cloud is frequently much better than that of applications hosted on-premises.
+- Datacenter physical security
+- Firmware patching
+- Hypervisor configuration
 
-**Shared Responsibility Model:** As computing environments move from customer-controlled datacenters to the cloud, the responsibility of security also shifts. Security of the operational environment is now a concern shared by both cloud providers and customers. By shifting these responsibilities to a cloud service like Azure, organizations can reduce focus on activities that aren't core business competencies. Depending on the specific technology choices, some security protections will be built into the particular service, while addressing others will remain the customer's responsibility. To ensure that the proper security controls are provided, a careful evaluation of the services and technology choices becomes necessary.
+The economies of scale allow cloud provider specialist teams to invest in optimization of management and security that far exceeds the ability of most organizations.
+
+Cloud providers must be compliant with the same IT regulatory requirements as the aggregate of all their customers. Providers must develop expertise to defend against the aggregate set of adversaries who attack their customers. As a consequence, the default security posture of applications deployed to the cloud is frequently much better than that of applications hosted on-premises.
+
+**Shared Responsibility Model:** As computing environments move from customer-controlled datacenters to the cloud, the responsibility of security also shifts. Security of the operational environment is now a concern shared by both cloud providers and customers. By shifting these responsibilities to a cloud service like Azure, organizations can reduce focus on activities that aren't core business competencies. Depending on the specific technology choices, some security protections will be built into the particular service, while addressing others will remain the customer's responsibility. To ensure that proper security controls are provided, organizations must carefully evaluate the services and technology choices.
 
 :::image type="content" source="./images/shared-resp-color.png" alt-text="A diagram of shared responsibility and key strategies.":::
 
 **Shared Responsibility and Key Strategies**
 
-After reading this document, you will be equipped with key insights on how to improve the security posture of your architecture.
+After reading this document, you'll be equipped with key insights about how to improve the security posture of your architecture.
 
-As part of your architecture design, you should consider all relevant areas that affect the success of your application. While this article is concerned primarily with security principles, you should also prioritize other requirements of a well-designed system including your applications' availability, scalability, costs, and operational characteristics (trading off one over the other as necessary). It is important to note that consistently sacrificing security for gains in the other areas is not advisable as security risks tend to increase dynamically over time.
+As part of your architecture design, you should consider all relevant areas that affect the success of your application. While this article is concerned primarily with security principles, you should also prioritize other requirements of a well-designed system, such as:
 
-This results in three key strategies:
+- Availability
+- Scalability
+- Costs
+- Operational characteristics (trading off one over the other as necessary)
 
-- **Establish a modern perimeter:** For the elements that your organization controls to ensure you have a consistent set of controls (a perimeter)
-    between those assets and the threats to them. This should be designed based on intercepting authentication requests for the resources (identity controls) vs. the traditional approach of intercepting network traffic on enterprise networks, which isn't feasible for enterprise assets outside the network.
+Consistently sacrificing security for gains in other areas isn't advisable because security risks tend to increase dynamically over time.
 
-    More on this and how it relates to Zero Trust and Enterprise Segmentation are in the [Governance, Risk, and Compliance](/azure/architecture/framework/security/design-segmentation) and [Network Security & Containment](/azure/architecture/framework/security/design-network-segmentation) sections.
+Increasing security risks result in three key strategies:
 
-- **Modernize infrastructure security:** For operating systems and middleware elements that are required by legacy applications; take advantage of cloud technology to reduce security risk to the organization. For example, knowing whether all servers in a physical datacenter are updated with security patches has always been extremely challenging because of discoverability. Software-defined datacenters allow easy and rapid discovery of all resources, enabling technology like Microsoft Defender for Cloud to quickly and accurately measure the patch state of all servers and remediate them.
+- **Establish a modern perimeter:** For the elements that your organization controls to ensure you have a consistent set of controls (a perimeter) between those assets and the threats to them. Perimeters should be designed based on intercepting authentication requests for the resources (identity controls) versus intercepting network traffic on enterprise networks. This traditional approach isn't feasible for enterprise assets outside the network.
+
+More on perimeters and how they relate to Zero Trust and Enterprise Segmentation are in the [Governance, Risk, and Compliance](/azure/architecture/framework/security/design-segmentation) and [Network Security & Containment](/azure/architecture/framework/security/design-network-segmentation) sections.
+
+- **Modernize infrastructure security:** For operating systems and middleware elements that legacy applications require, take advantage of cloud technology to reduce security risk to the organization. For example, knowing whether all servers in a physical datacenter are updated with security patches has always been challenging because of discoverability. Software-defined datacenters allow easy and rapid discovery of all resources, enabling technology like Microsoft Defender for Cloud to quickly and accurately measure the patch state of all servers and remediate them.
 
 - **"Trust but verify" each cloud provider:** For the elements which are under the control of the cloud provider. You should ensure the security practices and regulatory compliance of each cloud provider (large and small) meet your requirements.
 
@@ -58,14 +80,14 @@ To assess your workload using the tenets found in the Microsoft Azure Well-Archi
 
 :::image type="content" source="./images/devops-security.png" alt-text="A diagram of the security cycle.":::
 
-These are the topics we cover in the security pillar of the Microsoft Azure Well-Architected Framework
+We cover the following areas in the security pillar of the Microsoft Azure Well-Architected Framework:
 
 | Security Topic | Description |
 |-------------------|-------------|
 | [Security design principles][design] | These principles describe a securely architected system hosted on cloud or on-premises datacenters, or a combination of both. |
-| [Governance, risk, and compliance][compliance] | How is the organization's security going to be monitored, audited, and reported? What types of risks does the organization face while trying to protect identifiable information, Intellectual Property (IP), financial information? Are there specific industry, government, or regulatory requirements that dictate or provide recommendation on criteria that your organization's security controls must meet? |
+| [Governance, risk, and compliance][compliance] | How is the organization's security going to be monitored, audited, and reported? What types of risks does the organization face while trying to protect identifiable information, Intellectual Property (IP), financial information? Are there specific industry, government, or regulatory requirements that dictate or provide recommendations on criteria that your organization's security controls must meet? |
 | [Regulatory compliance][regulatory] | Governments and other organizations frequently publish standards to help define good security practices (due diligence) so that organizations can avoid being negligent in security. |
-| [Administration][admin] | Administration is the practice of monitoring, maintaining, and operating Information Technology (IT) systems to meet service levels that the business requires. Administration introduces some of the highest impact security risks because performing these tasks requires privileged access to a very broad set of these systems and applications. |
+| [Administration][admin] | Administration is the practice of monitoring, maintaining, and operating Information Technology (IT) systems to meet service levels that the business requires. Administration introduces some of the highest impact security risks because performing these tasks requires privileged access to a broad set of these systems and applications. |
 | [Applications and services][app] | Applications and the data associated with them ultimately act as the primary store of business value on a cloud platform. |
 | [Identity and access management][identity] | Identity provides the basis of a large percentage of security assurances. |
 | [Information protection and storage][info] | Protecting data at rest is required to maintain confidentiality, integrity, and availability assurances across all workloads. |
@@ -74,18 +96,43 @@ These are the topics we cover in the security pillar of the Microsoft Azure Well
 
 ## Identity management
 
-Consider using Azure Active Directory (Azure AD) to authenticate and authorize users. Azure AD is a fully managed identity and access management service. You can use it to create domains that exist purely on Azure, or integrate with your on-premises Active Directory identities. Azure AD also integrates with Office365, Dynamics CRM Online, and many third-party SaaS applications. For consumer-facing applications, Azure Active Directory B2C lets users authenticate with their existing social accounts such as Facebook, Google, or LinkedIn, or create a new user account that is managed by Azure AD.
+Consider using Azure Active Directory (Azure AD) to authenticate and authorize users. Azure AD is a fully managed identity and access management service. You can use it to create domains that exist purely on Azure, or integrate with your on-premises Active Directory identities. 
 
-If you want to integrate an on-premises Active Directory environment with an Azure network, several approaches are possible, depending on your requirements. For more information, see our [Identity Management][identity-ref-arch] reference architectures.
+Azure AD also integrates with:
+
+- Office365
+- Dynamics CRM Online
+- Many third-party SaaS applications
+
+For consumer-facing applications, Azure Active Directory B2C lets users authenticate with their existing social accounts, such as:
+
+- Facebook
+- Google
+- LinkedIn
+
+Users can also create a new user account managed by Azure AD.
+
+If you want to integrate an on-premises Active Directory environment with an Azure network, several approaches are possible, depending on your requirements. For more information, reference [Identity Management][identity-ref-arch] reference architectures.
 
 ## Protect your infrastructure
 
 Control access to the Azure resources that you deploy. Every Azure subscription has a [trust relationship][ad-subscriptions] with an Azure AD tenant.
-Use [Azure role-based access control (Azure RBAC)][rbac] to grant users within your organization the correct permissions to Azure resources. Grant access by assigning Azure roles to users or groups at a certain scope. The scope can be a subscription, a resource group, or a single resource. [Audit][resource-manager-auditing] all changes to infrastructure.
+
+Use [Azure role-based access control (Azure RBAC)][rbac] to grant users within your organization the correct permissions to Azure resources. Grant access by assigning Azure roles to users or groups at a certain scope. The scope can be a:
+
+- Subscription
+- Resource group
+- Single resource
+
+[Audit][resource-manager-auditing] all changes to infrastructure.
 
 ## Application security
 
-In general, the security best practices for application development still apply in the cloud. These include things like using SSL/TLS everywhere, protecting against CSRF and XSS attacks, preventing SQL injection attacks, and so on.
+In general, the security best practices for application development still apply in the cloud. Best practices include:
+
+- Use `SSL/TLS` everywhere
+- Protect against `CSRF` and `XSS` attacks
+- Prevent SQL injection attacks
 
 Cloud applications often use managed services that have access keys. Never check these keys into source control. Consider storing application secrets in [Azure Key Vault](/azure/key-vault/general/overview).
 
