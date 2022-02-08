@@ -47,7 +47,7 @@ Availability targets for any dependencies leveraged by the application should be
 A composite SLA captures the end-to-end SLA across all application components and dependencies. It is calculated using the individual SLAs of Azure services housing application components and provides an important indicator of designed availability in relation to customer expectations and targets. Make sure the composite SLA of all components and dependencies on the critical paths are understood. To learn more, see [Composite SLAs](./business-metrics.md#understand-service-level-agreements).
 
 > [!NOTE]
-> if you have contractual commitments to an SLA for your Azure solution, additional allowances on top of the Azure composite SLA must be made to accommodate outages caused by code-level issues and deployments. This is often overlooked and customers directly put the composite SLA forward to their customers.
+> If you have contractual commitments to an SLA for your Azure solution, additional allowances on top of the Azure composite SLA must be made to accommodate outages caused by code-level issues and deployments. This is often overlooked and customers directly put the composite SLA forward to their customers.
 
 **Are availability targets considered while the system is running in disaster recovery mode?**
 ***
