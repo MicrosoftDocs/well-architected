@@ -3,7 +3,7 @@ title: Security design principles
 description: Security design principles describe a securely architected system hosted on cloud or on-premises datacenters (or a combination of both).
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 02/04/2022
+ms.date: 02/10/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -70,7 +70,7 @@ Recommendations:
 
 Recommendations:
 
-- Monitor and protect the network integrity of internal and external endpoints through security appliances, such as:
+- Monitor and protect the network integrity of internal and external endpoints through security appliances or Azure services, such as:
   - Firewalls
   - Web application firewalls
 - Use industry standard approaches to protect against common attack vectors, such as distributed denial of service (DDoS) attacks like SlowLoris.
