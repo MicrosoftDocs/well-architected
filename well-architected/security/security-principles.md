@@ -23,16 +23,6 @@ The following design principles provide:
 - Why a certain aspect is important
 - How an aspect is applicable to Security
 
-Design principles:
-
-- [Plan resources and how to harden them](#plan-resources-and-how-to-harden-them)
-- [Automate and use least privilege](#automate-and-use-least-privilege)
-- [Classify and encrypt data](#classify-and-encrypt-data)
-- [Monitor system security, plan incident response](#monitor-system-security-plan-incident-response)
-- [Identify and protect endpoints](#identify-and-protect-endpoints)
-- [Protect against code-level vulnerabilities](#protect-against-code-level-vulnerabilities)
-- [Model and test against potential threats](#model-and-test-against-potential-threats)
-
 These critical design principles are used as lenses to assess the Security of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
 
 ## Plan resources and how to harden them

@@ -3,7 +3,7 @@ title: Operational excellence design principles
 description: Understand the design principles for operational excellence within the Azure Well-Architected Framework.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 02/02/2022
+ms.date: 02/10/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -33,14 +33,6 @@ The following design principles provide:
 - Context for questions
 - Why a certain aspect is important
 - How an aspect is applicable to Operational excellence
-
-Design principles:
-
-- [Optimize build and release processes](#optimize-build-and-release-processes)
-- [Understand operational health](#understand-operational-health)
-- [Rehearse recovery and practice failure](#rehearse-recovery-and-practice-failure)
-- [Embrace continuous operational improvement](#embrace-continuous-operational-improvement)
-- [Use loosely coupled architecture](#use-loosely-coupled-architecture)
 
 These critical design principles are used as lenses to assess the Operational excellence of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
 
