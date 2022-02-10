@@ -3,7 +3,7 @@ title: Reliability design principles
 description: Understand the design principles of the reliability pillar.
 author: v-stacywray
 ms.author: robbymillsap
-ms.date: 02/02/2022
+ms.date: 02/10/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -25,15 +25,6 @@ The following design principles provide:
 - Context for questions
 - Why a certain aspect is important
 - How an aspect is applicable to Reliability
-
-Design principles:
-
-- [Design for business requirements](#design-for-business-requirements)
-- [Design for failure](#design-for-failure)
-- [Observe application health](#observe-application-health)
-- [Drive automation](#drive-automation)
-- [Design for self-healing](#design-for-self-healing)
-- [Design for scale-out](#design-for-scale-out)
 
 These critical design principles are used as lenses to assess the Reliability of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
 

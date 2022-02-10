@@ -3,7 +3,7 @@ title: Cost optimization design principles
 description: Understand cost optimization principles. These principles are a series of important considerations that can help achieve business objectives and cost justification.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 02/03/2022
+ms.date: 02/10/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -26,14 +26,6 @@ The following design principles provide:
 - Context for questions
 - Why a certain aspect is important
 - How an aspect is applicable to Cost optimization
-
-Design principles:
-
-- [Choose the correct resources for your business goals](#choose-the-correct-resources)
-- [Set up budgets and maintain cost constraints](#set-up-budgets-and-maintain-cost-constraints)
-- [Dynamically allocate and de-allocate resources](#dynamically-allocate-and-de-allocate-resources)
-- [Optimize workloads, aim for scalable costs](#optimize-workloads-aim-for-scalable-costs)
-- [Continuously monitor and optimize cost management](#continuously-monitor-and-optimize-cost-management)
 
 These critical design principles are used as lenses to assess the Cost optimization of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
 
