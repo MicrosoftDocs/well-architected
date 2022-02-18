@@ -16,7 +16,7 @@ ms.custom:
 
 # Overview
 
-![Mission-Critical Banner](./images/alwayson-waf-banner.png "Always On Mission Critical Applications")
+![Mission-critical Banner](./images/alwayson-waf-banner.png "Always On Mission Critical Applications")
 
 Getting started on Microsoft Azure is now easier than ever, however, building mission-critical solutions that are highly reliable on the platform remains a challenge for three main reasons:
 
