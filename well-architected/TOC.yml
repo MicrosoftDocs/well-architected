@@ -345,7 +345,7 @@ items:
             href: scalability/tradeoffs.md
       - name: Workloads
         items:
-          - name: Mission-Critical
+          - name: Mission-critical
             items:
               - name: Overview
                 href: mission-critical/alwayson-overview.md
