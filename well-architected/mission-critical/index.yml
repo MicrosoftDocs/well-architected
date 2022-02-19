@@ -28,14 +28,14 @@ landingContent:
             url: mission-critical-overview.md
           - text: Design methodology
             url: mission-critical-design-methodology.md
-          - text: Design principles
-            url: mission-critical-design-principles.md
       - linkListType: architecture
         links:
           - text: Architecture pattern 
             url: mission-critical-architecture-pattern.md
           - text: Common issues 
             url: mission-critical-common-issues.md
+          - text: Design principles for addressing issues
+            url: mission-critical-design-principles.md            
   # Card
   - title: Design areas
     linkLists:
