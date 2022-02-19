@@ -68,6 +68,18 @@ This provides hands-on opportunities to validate design decisions by replicating
 
 Application architectures established using this design methodology must continue to [evolve in alignment with Azure platform roadmaps](/azure/architecture/guide/design-principles/design-for-evolution) to support optimized sustainability.
 
+|Design area|About|
+|---|---|
+|Application design| Cloud application design patterns that allow for scaling, and error handling. 	|
+|Hosting infrastructure| Hosting environment choices, application dependencies, frameworks, and libraries.	|
+|Networking| Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.|
+|Data storage|Choices in data store technologies by evaluating the volume, velocity, variety, and veracity characteristics.|
+|Monitoring|Observability considerations through raw monitoring logs and metrics to determine the overall health.	|
+|Deployment| Strategies for CI/CD pipelines and automation considerations.	|
+|Testing| Scenarios, such as unit, build, static, security, integration, regression, UX, performance, capacity and failure injection (chaos). |
+|Security|Mitigation of attack vectors through Microsoft Zero Trust model.|
+|Operations|Processes related to deployment, key management, patching and updates.|
+
 ## Next steps
 
 - Review the AlwaysOn [Design Principles](./alwayson-design-principles.md) for mission-critical application scenarios.

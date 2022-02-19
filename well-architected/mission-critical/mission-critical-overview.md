@@ -16,32 +16,32 @@ ms.custom:
 ---
 # Azure Well-Architected mission-critical workload
 
-This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenge of building mission-critical workloads on Azure. It contains actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation. 
+This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. It contains actionable and authoritative guidance based on Well-Architected best practices as the technical foundation. 
 
 ## What is a mission-critical workload?
 
-The term _workload_ refers to a set of components on a cloud platform, which collectively provides end-to-end functionality to one or multiple clients. A workload can be a collection of cloud resources that serve a single or multiple applications, APIs, and data stores working together to deliver a specific functionality. 
+The term _workload_ refers to a set of components that collectively provides an end-to-end functionality to one or multiple clients. A workload can be a collection of cloud resources that serve a single or multiple applications, APIs, and data stores working together to deliver a specific functionality. 
 
-An example of a workload is a simple web catalog where end users can browse through a catalog of items, see details of an item, and post ratings and comments for items. The architecture can have these main components:
+Consider a web catalog as a simple example of a workload. End users can browse through a catalog of items, see details of an item, and post ratings and comments for items. One approach is to divide the work into these components:
 
 - Frontend web application used by both requestors and reviewers.
 - Backend APIs to accept the request and return to the caller.
 - Worker application that communicates with the data store.
-- Data layer to store data related to each transaction 
+- Data layer to store data related to each transaction. 
 
-In this example, the web catalog can fail at several points. The frontend might not be able to handle an increase in load, the API might not handle an error, resources might not be available due to an outage. 
+In this example, the workload can fail at several points. The frontend might not be able to handle an increase in load, the API might not handle errors properly, resources might not be available due to an outage. 
 
-If the business requirements allow for lower reliability targets, occasional failures might be acceptable. However, if business requirements demand a much higher level of reliability and operational rigor, the design decisions will be different resulting in a different target architecture.
+If the business requirements allow for lower reliability targets, occasional failures might be acceptable. However, if the requirements demand a much higher level of reliability and operational rigor; the design decisions will be different, resulting in a significantly different target architecture.
 
 A _mission-critical workload_ is a workload that is highly reliable on the platform. This means the workload should be resilient to most failures and always be operational and available. For example, a mission-critical application with a 99.999% availability Service Level Objective (SLO) may need components to be distributed globally than another application with an SLO of 99.9%. 
 
 ## What are the common challenges?
 
-Failure is inevitable in any complex distributed system and designing such a workload is challenging because,
+Failure is inevitable in any distributed system and designing such a workload is challenging because,
 
 - Designing at scale is complex. It requires extensive platform knowledge about selecting the right technologies _and_ optimally configuring them to deliver the end-to-end functionality.
 - Designing with focus on handling failures and evaluating the correlated or cascading impact requires a change in mindset for many developers and architects who are new to the cloud. 
-- Operationalizing requires a high degree of engineering rigor and maturity throughout the end-to-end engineering lifecycle and the ability to learn from failure.
+- Operationalizing requires a high degree of engineering rigor and maturity throughout the engineering lifecycle and the ability to learn from failure.
 
 ## Is it only about reliability?
 
@@ -55,25 +55,17 @@ Mission-critical guidance is composed of architectural considerations and recomm
 
 ![AlwaysOn Design Areas](./images/alwayson-design-areas.png "AlwaysOn Critical Design Areas")
 
-|Design area|About|
-|---|---|
-|Application design| Cloud application design patterns that allow for scaling, and error handling. 	|
-|Hosting infrastructure| Hosting environment choices, application dependencies, frameworks, and libraries.	|
-|Networking| Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.|
-|Data storage|Choices in data store technologies by evaluating the volume, velocity, variety, and veracity characteristics.|
-|Monitoring|Observability considerations through raw monitoring logs and metrics to determine the overall health.	|
-|Deployment| Strategies for CI/CD pipelines and automation considerations.	|
-|Testing| Scenarios, such as unit, build, static, security, integration, regression, UX, performance, capacity and failure injection (chaos). |
-|Security|Mitigation of attack vectors through Microsoft Zero Trust model.|
-|Operations|Processes related to deployment, key management, patching and updates.|
+- **Application design**&mdash;Cloud application design patterns that allow for scaling, and error handling. - **Hosting infrastructure**&mdash;| Hosting environment choices, application dependencies, frameworks, and libraries.
+- **Networking**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
+- **Data storage**&mdash;Choices in data store technologies by evaluating the volume, velocity, variety, and veracity characteristics.
+- **Monitoring**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.
+- **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation considerations. Incorporating testing scenarios, such as unit, build, static, security, integration, regression, UX, performance, capacity and failure injection (chaos).
+- **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
+-**Operations**&mdash;Processes related to deployment, key management, patching and updates.
 
-## Are there any illustrative examples?
+## Illustrative examples?
 
-The guidance is based on a solution-orientated approach to illustrate the key design considerations and recommendations of mission-critical application. 
-
-> [!IMPORTANT]
-> The reference implementations are part of an open source project available on GitHub.  
-> ![GitHub logo](./../_images/github.png) [AlwaysOn open source project](http://github.com/azure/alwayson).
+The guidance is based on a solution-orientated approach to illustrate the key design considerations and recommendations. 
 
 There are two foundational implementations that serve as a basis for further solution development:
 
@@ -85,15 +77,13 @@ There are two foundational implementations that serve as a basis for further sol
 
   The workload needs connectivity to other company resources. The pipeline deploys the application Azure Subscription security and compliance guardrails and takes a dependency on pre-provided Virtual Networks for connectivity to other company resources. This is usually achieved through a hub-and-spoke model through peering. This use case is intended for scenarios that require integration with an organizational technical estate for either public-facing or internal-facing workloads.
 
+> [!IMPORTANT]
+> The reference implementations are part of an open source project available on GitHub.  
+> ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson).
 
 ## Next step
 
-Review the design methodology for mission-critical application scenarios.
+Start by reviewing the design methodology for mission-critical application scenarios.
 
 > [!div class="nextstepaction"]
 > [Design methodology](./alwayson-design-methodology.md)
-
-
-
-Compared to reviewing the whole Azure landscape of an organization, this focus allows us to go deeper into the workload and architecture and provide more relevant recommendations, which are quite often transferrable to other workloads within the same customer as well.
-![Azure Well-Architected mission-critical workload](./images/alwayson-waf-banner.png "Always On Mission Critical Applications")
