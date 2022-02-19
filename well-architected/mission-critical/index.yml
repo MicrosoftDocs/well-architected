@@ -32,10 +32,10 @@ landingContent:
         links:
           - text: Architecture pattern 
             url: mission-critical-architecture-pattern.md
-          - text: Common issues 
-            url: mission-critical-common-issues.md
-          - text: Design principles for addressing issues
-            url: mission-critical-design-principles.md            
+          - text: Design principles
+            url: mission-critical-design-principles.md             
+          - text: Cross-cutting concerns
+            url: mission-critical-common-issues.md           
   # Card
   - title: Design areas
     linkLists:

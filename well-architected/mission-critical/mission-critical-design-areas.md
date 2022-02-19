@@ -46,37 +46,6 @@ The image below represents a target technical state recommended for mission-crit
 
 > The [foundational-online](https://github.com/Azure/AlwaysOn-Foundational-Online) and [foundational-connected](https://github.com/Azure/AlwaysOn-Foundational-Connected) reference implementations provide solution orientated showcases for the AlwaysOn design methodology, demonstrating how this architecture pattern can be implemented alongside the operational wrappers required to maximize reliability and operational effectiveness.
 
-## Cross Cutting Concerns
-
-There are several critical cross-cutting themes which traverse the 8 design areas and are contextualized below for subsequent consideration within each design area.
-
-### Scale limits
-
-Various [limits and quotas within the Azure platform](/azure/azure-resource-manager/management/azure-subscription-service-limits) may have a significant bearing on large AlwaysOn application scenarios and must be appropriately considered by the target architecture.
-
-> Limits and quotas may change as Azure seeks to further enhance the platform and user experience.
-
-- Leverage subscriptions as scale units, scaling out resources and subscriptions as required
-- Employ a scale unit approach for resource composition, deployment, and management
-- Ensure scale limits are considered as part of capacity planning
-- If available, use data gathered about existing application environments to explore which limits might be encountered
-
-### Automation
-
-Maximize reliability and operability through the holistic automation of all deployment and management activities.
-
-- Automate CI/CD deployments for all application components
-- Automate application management activities, such as patching and monitoring
-- Use declarative management semantics over imperative
-- Prioritize templating over scripting; only use scripting when it is not possible to use templates
-
-### Azure roadmap alignment and regional service availability
-
-Align the target architecture with the Azure platform roadmap to inform the application trajectory, and ensure that required services and features are available within the chosen deployment regions.
-
-- Align with Azure engineering roadmaps and regional role out plans
-- Unblock with preview services or by taking dependencies on the Azure platform roadmap
-- Only take a dependency on committed services and features; validate roadmap dependencies with Microsoft engineering product groups
 
 ### Azure Landing Zone integration
 
