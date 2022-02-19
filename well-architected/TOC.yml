@@ -347,6 +347,8 @@ items:
         items:
           - name: Mission-critical
             items:
+              - name: Quick links
+                href: mission-critical/index.yml
               - name: Get started ...
                 href: mission-critical/mission-critical-overview.md
               - name: Design Methodology
