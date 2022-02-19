@@ -351,29 +351,29 @@ items:
                 href: mission-critical/index.yml
               - name: Get started ...
                 href: mission-critical/mission-critical-overview.md
-              - name: Design Methodology
+              - name: Design methodology
                 href: mission-critical/mission-critical-design-methodology.md
-              - name: Design Principles
+              - name: Design principles
                 href: mission-critical/mission-critical-design-principles.md
-              - name: Design Areas
+              - name: Design areas
                 items:
                 - name: Overview
                   href: mission-critical/mission-critical-design-areas.md
-                - name: Application Design
+                - name: Application design
                   href: mission-critical/mission-critical-application-design.md
-                - name: Application Platform
+                - name: Application platform
                   href: mission-critical/mission-critical-application-platform.md
-                - name: Data Platform
+                - name: Data platform
                   href: mission-critical/mission-critical-data-platform.md
-                - name: Health Modeling
+                - name: Health modeling
                   href: mission-critical/mission-critical-health-modeling.md
-                - name: Deployment and Testing
+                - name: Deployment and testing
                   href: mission-critical/mission-critical-deployment-testing.md
-                - name: Networking and Connectivity
+                - name: Networking and connectivity
                   href: mission-critical/mission-critical-networking-connectivity.md
                 - name: Security
                   href: mission-critical/mission-critical-security.md
-                - name: Operational Procedures
+                - name: Operational procedures
                   href: mission-critical/mission-critical-operational-procedures.md
           - name: Hybrid
             items:

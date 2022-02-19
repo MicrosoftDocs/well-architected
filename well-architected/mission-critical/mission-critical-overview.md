@@ -55,7 +55,8 @@ Mission-critical guidance is composed of architectural considerations and recomm
 
 ![AlwaysOn Design Areas](./images/alwayson-design-areas.png "AlwaysOn Critical Design Areas")
 
-- **Application design**&mdash;Cloud application design patterns that allow for scaling, and error handling. - **Hosting infrastructure**&mdash;| Hosting environment choices, application dependencies, frameworks, and libraries.
+- **Application design**&mdash;Cloud application design patterns that allow for scaling, and error handling. 
+- **Hosting infrastructure**&mdash; Hosting environment choices, application dependencies, frameworks, and libraries.
 - **Networking**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
 - **Data storage**&mdash;Choices in data store technologies by evaluating the volume, velocity, variety, and veracity characteristics.
 - **Monitoring**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.
