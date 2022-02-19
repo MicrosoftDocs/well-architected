@@ -61,7 +61,7 @@ Mission-critical guidance is composed of architectural considerations and recomm
 - **Monitoring**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.
 - **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation considerations. Incorporating testing scenarios, such as unit, build, static, security, integration, regression, UX, performance, capacity and failure injection (chaos).
 - **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
--**Operations**&mdash;Processes related to deployment, key management, patching and updates.
+- **Operations**&mdash;Processes related to deployment, key management, patching and updates.
 
 ## Illustrative examples?
 
