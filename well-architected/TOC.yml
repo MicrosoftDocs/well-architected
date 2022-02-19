@@ -349,8 +349,8 @@ items:
         items:
           - name: Mission-critical
             items:
-              - name: Overview
-                href: mission-critical/alwayson-overview.md
+              - name: Get started ...
+                href: mission-critical/mission-critical-overview.md
               - name: Design Methodology
                 href: mission-critical/alwayson-design-methodology.md
               - name: Design Principles
