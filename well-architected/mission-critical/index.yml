@@ -22,7 +22,7 @@ landingContent:
  # Card
   - title: Get started ...
     linkLists:
-      - linkListType: get-started
+      - linkListType: overview
         links:
           - text: What is mission critical?
             url: mission-critical-overview.md

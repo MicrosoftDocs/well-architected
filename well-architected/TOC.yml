@@ -354,29 +354,29 @@ items:
               - name: Get started ...
                 href: mission-critical/mission-critical-overview.md
               - name: Design Methodology
-                href: mission-critical/alwayson-design-methodology.md
+                href: mission-critical/mission-critical-design-methodology.md
               - name: Design Principles
-                href: mission-critical/alwayson-design-principles.md
+                href: mission-critical/mission-critical-design-principles.md
               - name: Design Areas
                 items:
                 - name: Overview
-                  href: mission-critical/alwayson-design-areas.md
+                  href: mission-critical/mission-critical-design-areas.md
                 - name: Application Design
-                  href: mission-critical/alwayson-application-design.md
+                  href: mission-critical/mission-critical-application-design.md
                 - name: Application Platform
-                  href: mission-critical/alwayson-application-platform.md
+                  href: mission-critical/mission-critical-application-platform.md
                 - name: Data Platform
-                  href: mission-critical/alwayson-data-platform.md
+                  href: mission-critical/mission-critical-data-platform.md
                 - name: Health Modeling
-                  href: mission-critical/alwayson-health-modeling.md
+                  href: mission-critical/mission-critical-health-modeling.md
                 - name: Deployment and Testing
-                  href: mission-critical/alwayson-deployment-testing.md
+                  href: mission-critical/mission-critical-deployment-testing.md
                 - name: Networking and Connectivity
-                  href: mission-critical/alwayson-networking-connectivity.md
+                  href: mission-critical/mission-critical-networking-connectivity.md
                 - name: Security
-                  href: mission-critical/alwayson-security.md
+                  href: mission-critical/mission-critical-security.md
                 - name: Operational Procedures
-                  href: mission-critical/alwayson-operational-procedures.md
+                  href: mission-critical/mission-critical-operational-procedures.md
           - name: Hybrid
             items:
               - name: Overview
