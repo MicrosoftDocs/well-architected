@@ -1,0 +1,68 @@
+### YamlMime:Landing
+
+title: Azure Well-Architected mission-critical workload documentation
+summary: Learn about building highly-reliable workloads on Azure. The section contains architecture guidance for designing applications that are resilient to failures, always operational, and available.
+metadata: 
+  title: Azure Well-Architected mission-critical workload documentation
+  description: Apply design methodology and approach to building highly-reliable applications on Microsoft Azure.
+  services: na
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  manager: david-stanford
+  ms.date: 02/28/2022
+  ms.topic: landing-page
+  ms.service: architecture-center
+  ms.subservice: well-architected
+  ms.collection: na
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+ # Card
+  - title: Get started ...
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: What is mission critical?
+            url: mission-critical-overview.md
+          - text: Design methodology
+            url: mission-critical-design-methodology.md
+          - text: Design principles
+            url: mission-critical-design-principles.md
+      - linkListType: architecture
+        links:
+          - text: Architecture pattern 
+            url: mission-critical-architecture-pattern.md
+          - text: Common issues 
+            url: mission-critical-common-issues.md
+  # Card
+  - title: Design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Application design
+            url: mission-critical-application-design.md
+          - text: Hosting infrastructure
+            url: mission-critical-application-platform.md
+          - text: Networking and connectivity
+            url: mission-critical-networking-connectivity.md
+          - text: Data storage
+            url: mission-critical-data-platform.md
+          - text: Monitoring
+            url: mission-critical-health-modeling.md            
+          - text: Deployment and testing
+            url: mission-critical-deployment-testing.md
+          - text: Security
+            url: mission-critical-security.md
+          - text: Operations
+            url: mission-critical-operational-procedures.md                                                                          
+ # Card
+  - title: Reference implementation
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Azure AlwaysOn Foundational Online
+            url: https://github.com/Azure/AlwaysOn-Foundational-Online
+          - text: Azure AlwaysOn Foundational Connected
+            url: https://github.com/azure/alwayson-foundational-connected
