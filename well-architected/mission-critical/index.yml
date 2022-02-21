@@ -20,7 +20,7 @@ landingContent:
 # Start card title with a verb
 
  # Card
-  - title: Get started ...
+  - title: Get started
     linkLists:
       - linkListType: overview
         links:
