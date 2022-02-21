@@ -37,11 +37,13 @@ If the business requirements allow for lower reliability targets, occasional fai
 
 ## What are the common challenges?
 
-Failure is inevitable in any distributed system and designing such a workload is challenging because,
+Getting started on Microsoft Azure is now easier than ever, however, building mission-critical solutions that are highly reliable on the platform remains a challenge for three main reasons:
 
-- Designing at scale is complex. It requires extensive platform knowledge about selecting the right technologies _and_ optimally configuring them to deliver the end-to-end functionality.
-- Designing with focus on handling failures and evaluating the correlated or cascading impact requires a change in mindset for many developers and architects who are new to the cloud. 
-- Operationalizing requires a high degree of engineering rigor and maturity throughout the engineering lifecycle and the ability to learn from failure.
+- Designing a reliable application at scale is complex. It requires extensive platform knowledge to select the right technologies _and_ optimally configure them to deliver end-to-end functionality.
+
+- Failure is inevitable in any complex distributed system, and the solution must therefore be architected to handle failures with correlated or cascading impact. This is a change in mindset for many developers and architects entering the cloud from an on-premises environment; reliability engineering is no longer an infrastructure topic, but should be a first-class concern within the application development process.
+
+- Operationalizing mission-critical workloads requires a high degree of engineering rigor and maturity throughout the end-to-end engineering lifecycle as well as the ability to learn from failure.
 
 ## Is it only about reliability?
 
