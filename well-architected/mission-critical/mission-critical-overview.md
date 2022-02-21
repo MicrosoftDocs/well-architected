@@ -20,9 +20,9 @@ This section of the [Microsoft Azure Well-Architected Framework](/azure/architec
 
 ## What is a mission-critical workload?
 
-The term _workload_ refers to a collection of cloud resources that serve a single or multiple applications, APIs, and data stores working together to deliver a specific functionality, end to end. 
+The term _workload_ refers to a collection of application resources that serve a particular technical or business purpose, with multiple services, APIs, and data stores working together to deliver specific end-to-end functionality. 
 
-A _mission-critical workload_ is a workload that is highly reliable on the platform. This means the workload should be resilient to most failures and always be operational and available. 
+A _mission-critical workload_ is a workload that must be highly reliable on the platform. This means the workload should be resilient to most failures and always be operational and available. 
 
 Consider a web catalog as a simple example of a workload. End users can browse through a catalog of items, see details of an item, and post ratings and comments for items. One approach is to divide the work into these components:
 
