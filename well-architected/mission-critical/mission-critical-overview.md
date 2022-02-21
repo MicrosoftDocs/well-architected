@@ -22,6 +22,8 @@ This section of the [Microsoft Azure Well-Architected Framework](/azure/architec
 
 The term _workload_ refers to a collection of cloud resources that serve a single or multiple applications, APIs, and data stores working together to deliver a specific functionality, end to end. 
 
+A _mission-critical workload_ is a workload that is highly reliable on the platform. This means the workload should be resilient to most failures and always be operational and available. 
+
 Consider a web catalog as a simple example of a workload. End users can browse through a catalog of items, see details of an item, and post ratings and comments for items. One approach is to divide the work into these components:
 
 - Frontend web application used by both requestors and reviewers.
@@ -31,9 +33,7 @@ Consider a web catalog as a simple example of a workload. End users can browse t
 
 In this example, the workload can fail at several points. The frontend might not be able to handle an increase in load, the API might not handle errors properly, resources might not be available due to an outage. 
 
-If the business requirements allow for lower reliability targets, occasional failures might be acceptable. However, if the requirements demand a much higher level of reliability and operational rigor; the design decisions will be different, resulting in a significantly different target architecture.
-
-A _mission-critical workload_ is a workload that is highly reliable on the platform. This means the workload should be resilient to most failures and always be operational and available. For example, a mission-critical application with a 99.999% availability Service Level Objective (SLO) may need components to be distributed globally than another application with an SLO of 99.9%. 
+If the business requirements allow for lower reliability targets, occasional failures might be acceptable. However, if the requirements demand a much higher level of reliability and operational rigor; the design decisions will be different, resulting in a significantly different target architecture. For example, a mission-critical application with a 99.999% availability Service Level Objective (SLO) may need components to be distributed globally than another application with an SLO of 99.9%. 
 
 ## What are the common challenges?
 
@@ -68,7 +68,11 @@ Mission-critical guidance is composed of architectural considerations and recomm
 
 The guidance is based on a solution-orientated approach to illustrate the key design considerations and recommendations. 
 
-There are two foundational implementations that serve as a basis for further solution development:
+There are two foundational implementations that serve as a basis for further solution development.
+
+> [!IMPORTANT]
+> The reference implementations are part of an open source project available on GitHub.  
+> ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson).
 
 - [Azure AlwaysOn Foundational Online](https://github.com/azure/alwayson-foundational-online)
 
@@ -78,9 +82,6 @@ There are two foundational implementations that serve as a basis for further sol
 
   The workload needs connectivity to other company resources. The pipeline deploys the application Azure Subscription security and compliance guardrails and takes a dependency on pre-provided Virtual Networks for connectivity to other company resources. This is usually achieved through a hub-and-spoke model through peering. This use case is intended for scenarios that require integration with an organizational technical estate for either public-facing or internal-facing workloads.
 
-> [!IMPORTANT]
-> The reference implementations are part of an open source project available on GitHub.  
-> ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson).
 
 ## Next step
 

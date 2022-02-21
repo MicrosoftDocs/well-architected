@@ -17,9 +17,9 @@ ms.custom:
 
 # Cross-cutting concerns of a mission-critical workload
 
-There are several cross-cutting concerns that traverse the [key design areas](/mission-critical-overview.md#what-are-the-key-design-areas). This article provides recommendations for the common concerns. 
+There are several cross-cutting concerns that traverse the [key design areas](./mission-critical-overview.md#what-are-the-key-design-areas). This article provides recommendations for the common concerns. 
 
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
 
 ## Scale limits
 
@@ -39,7 +39,7 @@ Service limits may have a significant bearing on a large mission-critical worklo
 
 ## Automation
 
-A holistic approach in automation of deployment and management activities can maximize the reliability and operability of the workload.
+A holistic approach to automation of deployment and management activities can maximize the reliability and operability of the workload.
 
 ### Recommendations
 
@@ -48,7 +48,7 @@ A holistic approach in automation of deployment and management activities can ma
 - Use declarative management semantics, such as Infrastructure as code (IaC), instead of over imperative approaches.
 - Prioritize templating over scripting. Defer to scripting only when using templates isn't possible.
 
-## Azure roadmap alignment and regional service availability
+## Azure roadmap alignment
 
 Azure is constantly evolving and there are frequent updates to services, features, and regional availability. Keeping track of the updates might help you make informed decisions about the application trajectory. For example, making sure that the required services and features are available within the chosen deployment regions.
 

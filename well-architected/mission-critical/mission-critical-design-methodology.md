@@ -1,22 +1,30 @@
 ---
-title: Mission-critical workloads - AlwaysOn design methodology
-description: A cloud-native design methodology to guide readers through the architectural process of building a mature mission-critical application on Microsoft Azure.
+title: Design methodology of mission-critical workloads
+description: A design methodology to guide readers through the architectural process of building a mature mission-critical application on Microsoft Azure.
 author: calcof
 ms.author: calcof
-ms.date: 02/02/2022
+ms.date: 02/28/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-categories: web
+categories:
+  - management-and-governance
+  - web
 products: Azure
 ms.custom:
   - mission-critical
-  - alwayson
 ---
 
 # Design methodology
 
 This design methodology provides easy to follow guidance surrounding the critical design decisions required to produce a target [AlwaysOn](https://github.com/azure/alwayson) architecture.
+
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
+
+## Architecture pattern
+
+### Components
+
 
 ## Critical design path
 
