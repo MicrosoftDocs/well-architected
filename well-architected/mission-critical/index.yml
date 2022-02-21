@@ -58,7 +58,7 @@ landingContent:
           - text: Operations
             url: mission-critical-operational-procedures.md                                                                          
  # Card
-  - title: Reference implementation
+  - title: Reference implementations
     linkLists:
       - linkListType: deploy
         links:
