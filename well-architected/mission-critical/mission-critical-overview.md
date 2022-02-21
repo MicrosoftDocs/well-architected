@@ -20,7 +20,7 @@ This section of the [Microsoft Azure Well-Architected Framework](/azure/architec
 
 ## What is a mission-critical workload?
 
-The term _workload_ refers to a set of components that collectively provides an end-to-end functionality to one or multiple clients. A workload can be a collection of cloud resources that serve a single or multiple applications, APIs, and data stores working together to deliver a specific functionality. 
+The term _workload_ refers to a collection of cloud resources that serve a single or multiple applications, APIs, and data stores working together to deliver a specific functionality, end to end. 
 
 Consider a web catalog as a simple example of a workload. End users can browse through a catalog of items, see details of an item, and post ratings and comments for items. One approach is to divide the work into these components:
 
@@ -47,7 +47,7 @@ Failure is inevitable in any distributed system and designing such a workload is
 
 While the primary focus is [Reliability](/azure/architecture/framework/#reliability), other pillars of the Well-Architected Framework&mdash;[Peformance Efficiency](/azure/architecture/framework/scalability/), [Operational Excellence](/azure/architecture/framework/devops/), [Security](/azure/architecture/framework/security/), and [Cost Optimization](/azure/architecture/framework/cost/), are equally important for building and operating a mission-critical workload on Azure at-scale.  
 
-A common approach for mission-critical workload is a globally distributed and highly scalable architecture. However, achieving high reliability comes at a development cost and may not be justifiable for every workload. So, we highly recommend that design decisions are driven by business requirements but informed by the opinionated guidance provided in this section.
+A common approach is a globally distributed and highly scalable architecture. However, achieving high reliability comes at a development cost and may not be justifiable for every workload. So, we highly recommend that design decisions are driven by business requirements but informed by the opinionated guidance provided in this section.
 
 ## What are the key design areas?
 
@@ -56,7 +56,7 @@ Mission-critical guidance is composed of architectural considerations and recomm
 ![AlwaysOn Design Areas](./images/alwayson-design-areas.png "AlwaysOn Critical Design Areas")
 
 - **Application design**&mdash;Cloud application design patterns that allow for scaling, and error handling. 
-- **Hosting infrastructure**&mdash; Hosting environment choices, application dependencies, frameworks, and libraries.
+- **Hosting infrastructure**&mdash;Hosting environment choices, application dependencies, frameworks, and libraries.
 - **Networking**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
 - **Data storage**&mdash;Choices in data store technologies by evaluating the volume, velocity, variety, and veracity characteristics.
 - **Monitoring**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.

@@ -375,6 +375,8 @@ items:
                   href: mission-critical/mission-critical-security.md
                 - name: Operational procedures
                   href: mission-critical/mission-critical-operational-procedures.md
+              - name: Cross-cutting concerns
+                href: mission-critical/mission-critical-cross-cutting-issues.md
           - name: Hybrid
             items:
               - name: Overview
