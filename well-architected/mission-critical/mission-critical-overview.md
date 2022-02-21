@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected mission-critical workload
+title: Mission-critical workloads
 description: Overview of mission-critical solutions on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
@@ -14,9 +14,9 @@ products: Azure
 ms.custom:
   - mission-critical
 ---
-# Azure Well-Architected mission-critical workload
+# Mission-critical workloads
 
-This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. It contains actionable and authoritative guidance based on Well-Architected best practices as the technical foundation. 
+This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. Leveraging lessons from numerous customer applications and first-party solutions, such as Xbox Live, this section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
 
 ## What is a mission-critical workload?
 
