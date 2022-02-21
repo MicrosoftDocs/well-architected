@@ -43,19 +43,19 @@ landingContent:
         links:
           - text: Application design
             url: mission-critical-application-design.md
-          - text: Hosting infrastructure
+          - text: Application platform
             url: mission-critical-application-platform.md
+          - text: Data platform
+            url: mission-critical-data-platform.md
           - text: Networking and connectivity
             url: mission-critical-networking-connectivity.md
-          - text: Data storage
-            url: mission-critical-data-platform.md
-          - text: Monitoring
+          - text: Health modeling
             url: mission-critical-health-modeling.md            
           - text: Deployment and testing
             url: mission-critical-deployment-testing.md
           - text: Security
             url: mission-critical-security.md
-          - text: Operations
+          - text: Operational procedures
             url: mission-critical-operational-procedures.md                                                                          
  # Card
   - title: Reference implementations
