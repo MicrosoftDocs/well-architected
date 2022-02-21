@@ -52,7 +52,7 @@ A holistic approach in automation of deployment and management activities can ma
 
 Azure is constantly evolving and there are frequent updates to services, features, and regional availability. Keeping track of the updates might help you make informed decisions about the application trajectory. For example, making sure that the required services and features are available within the chosen deployment regions.
 
-See [Azure updates](https://azure.microsoft.com/en-us/updates/) for latest information about services and features. 
+See [Azure updates](https://azure.microsoft.com/updates/) for latest information about services and features. 
 
 ### Recommendations
 
@@ -65,4 +65,4 @@ See [Azure updates](https://azure.microsoft.com/en-us/updates/) for latest infor
 Review each design area associated with a  mission-critical application.
 
 > [!div class="nextstepaction"]
-> [Design areas](./alwayson-design-methodology.md)
+> [Design areas](./mission-critical-design-areas.md)
