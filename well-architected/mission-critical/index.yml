@@ -35,7 +35,7 @@ landingContent:
           - text: Design principles
             url: mission-critical-design-principles.md             
           - text: Cross-cutting concerns
-            url: mission-critical-common-issues.md           
+            url: mission-critical-cross-cutting-issues.md           
   # Card
   - title: Design areas
     linkLists:
