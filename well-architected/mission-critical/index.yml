@@ -1,10 +1,10 @@
 ### YamlMime:Landing
 
-title: Azure Well-Architected mission-critical workload documentation
-summary: Learn about building highly-reliable workloads on Azure. The section contains architecture guidance for designing applications that are resilient to failures, always operational, and available.
+title: Mission-critical workload documentation
+summary: Learn about building highly-reliable applications for mission-critical workloads on Microsoft Azure. This section provdes a prescriptive architectural approach to designing, building, and operating highly reliable applications on Microsoft Azure, where for given set of business requirements, an application should always be operational and available
 metadata: 
-  title: Azure Well-Architected mission-critical workload documentation
-  description: Apply design methodology and approach to building highly-reliable applications on Microsoft Azure.
+  title: Mission-critical workload documentation
+  description: Apply the AlwaysOn design methodology and approach to building highly-reliable applications on Microsoft Azure.
   services: na
   author: PageWriter-MSFT
   ms.author: prwilk
@@ -20,7 +20,7 @@ landingContent:
 # Start card title with a verb
 
  # Card
-  - title: Get started ...
+  - title: Get started
     linkLists:
       - linkListType: overview
         links:
@@ -43,19 +43,19 @@ landingContent:
         links:
           - text: Application design
             url: mission-critical-application-design.md
-          - text: Hosting infrastructure
+          - text: Application platform
             url: mission-critical-application-platform.md
+          - text: Data platform
+            url: mission-critical-data-platform.md
           - text: Networking and connectivity
             url: mission-critical-networking-connectivity.md
-          - text: Data storage
-            url: mission-critical-data-platform.md
-          - text: Monitoring
+          - text: Health modeling
             url: mission-critical-health-modeling.md            
           - text: Deployment and testing
             url: mission-critical-deployment-testing.md
           - text: Security
             url: mission-critical-security.md
-          - text: Operations
+          - text: Operational procedures
             url: mission-critical-operational-procedures.md                                                                          
  # Card
   - title: Reference implementations

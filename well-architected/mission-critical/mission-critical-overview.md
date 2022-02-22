@@ -1,5 +1,5 @@
 ---
-title: Azure Well-Architected mission-critical workload
+title: Mission-critical workloads
 description: Overview of mission-critical solutions on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
@@ -14,15 +14,15 @@ products: Azure
 ms.custom:
   - mission-critical
 ---
-# Azure Well-Architected mission-critical workload
+# Mission-critical workloads
 
-This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. It contains actionable and authoritative guidance based on Well-Architected best practices as the technical foundation. 
+This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. Leveraging lessons from numerous customer applications and first-party solutions, such as Xbox Live, this section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
 
 ## What is a mission-critical workload?
 
-The term _workload_ refers to a collection of cloud resources that serve a single or multiple applications, APIs, and data stores working together to deliver a specific functionality, end to end. 
+The term _workload_ refers to a collection of application resources that serve a particular technical or business purpose, with multiple services, APIs, and data stores working together to deliver specific end-to-end functionality. 
 
-A _mission-critical workload_ is a workload that is highly reliable on the platform. This means the workload should be resilient to most failures and always be operational and available. 
+A _mission-critical workload_ is a workload that must be highly reliable on the platform. This means the workload should be resilient to most failures and always be operational and available. 
 
 Consider a web catalog as a simple example of a workload. End users can browse through a catalog of items, see details of an item, and post ratings and comments for items. One approach is to divide the work into these components:
 
@@ -37,11 +37,13 @@ If the business requirements allow for lower reliability targets, occasional fai
 
 ## What are the common challenges?
 
-Failure is inevitable in any distributed system and designing such a workload is challenging because,
+Getting started on Microsoft Azure is now easier than ever, however, building mission-critical solutions that are highly reliable on the platform remains a challenge for three main reasons:
 
-- Designing at scale is complex. It requires extensive platform knowledge about selecting the right technologies _and_ optimally configuring them to deliver the end-to-end functionality.
-- Designing with focus on handling failures and evaluating the correlated or cascading impact requires a change in mindset for many developers and architects who are new to the cloud. 
-- Operationalizing requires a high degree of engineering rigor and maturity throughout the engineering lifecycle and the ability to learn from failure.
+- Designing a reliable application at scale is complex. It requires extensive platform knowledge to select the right technologies _and_ optimally configure them to deliver end-to-end functionality.
+
+- Failure is inevitable in any complex distributed system, and the solution must therefore be architected to handle failures with correlated or cascading impact. This is a change in mindset for many developers and architects entering the cloud from an on-premises environment; reliability engineering is no longer an infrastructure topic, but should be a first-class concern within the application development process.
+
+- Operationalizing mission-critical workloads requires a high degree of engineering rigor and maturity throughout the end-to-end engineering lifecycle as well as the ability to learn from failure.
 
 ## Is it only about reliability?
 
