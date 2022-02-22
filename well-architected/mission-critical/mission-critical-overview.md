@@ -16,24 +16,24 @@ ms.custom:
 ---
 # Mission-critical workloads
 
-This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. More specifically, this section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale. The guidance is based on lessons learned from numerous customer applications and first-party solutions, such as Xbox Live. 
+This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. More specifically, this section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale. The guidance is based on lessons learned from numerous customer applications and first-party solutions.
 
 ## What is a mission-critical workload?
 
-The term _workload_ refers to a collection of application resources that serve a particular technical or business purpose, with multiple services, APIs, and data stores working together to deliver specific end-to-end functionality. 
+The term _workload_ refers to a collection of application resources that serve a particular technical or business purpose, with multiple services, APIs, and data stores working together to deliver specific end-to-end functionality.
 
-A _mission-critical workload_ is a workload that must be highly reliable on the platform. This means the workload should be resilient to most failures and always be operational and available. 
+A _mission-critical workload_ is a workload that must be highly reliable on the platform. This means the workload should be resilient to most failures and always be operational and available.
 
 Consider a web catalog as a simple example of a workload. End users can browse through a catalog of items, see details of an item, and post ratings and comments for items. One approach is to divide the work into these components:
 
 - Frontend web application used by both requestors and reviewers.
 - Backend APIs to accept the request and return to the caller.
 - Worker application that communicates with the data store.
-- Data layer to store data related to each transaction. 
+- Data layer to store data related to each transaction.
 
-In this example, the workload can fail at several points. The frontend might not be able to handle an increase in load, the API might not handle errors properly, resources might not be available due to an outage. 
+In this example, the workload can fail at several points. The frontend might not be able to handle an increase in load, the API might not handle errors properly, resources might not be available due to an outage.
 
-If the business requirements allow for lower reliability targets, occasional failures might be acceptable. However, if the requirements demand a much higher level of reliability and operational rigor; the design decisions will be different, resulting in a significantly different target architecture. For example, a mission-critical application with a 99.999% availability Service Level Objective (SLO) may need components to be distributed globally than another application with an SLO of 99.9%. 
+If the business requirements allow for lower reliability targets, occasional failures might be acceptable. However, if the requirements demand a much higher level of reliability and operational rigor; the design decisions will be different, resulting in a significantly different target architecture. For example, a mission-critical application with a 99.999% availability Service Level Objective (SLO) may need components to be distributed globally than another application with an SLO of 99.9%.
 
 ## What are the common challenges?
 
