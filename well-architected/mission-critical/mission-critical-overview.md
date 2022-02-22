@@ -16,7 +16,7 @@ ms.custom:
 ---
 # Mission-critical workloads
 
-This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. The guidance is based on lessons learned from revewing numerous customer applications and first-party solutions. This section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
+This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. More specifically, this section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale. The guidance is based on lessons learned from numerous customer applications and first-party solutions, such as Xbox Live. 
 
 ## What is a mission-critical workload?
 
@@ -37,7 +37,7 @@ If the business requirements allow for lower reliability targets, occasional fai
 
 ## What are the common challenges?
 
-Microsoft Azure makes it easy to deploy cloud solutions. However, building mission-critical workloads that are highly reliable on the platform remains a challenge for these main reasons:
+Microsoft Azure makes it easy to deploy and manage cloud solutions. However, building mission-critical workloads that are highly reliable on the platform remains a challenge for these main reasons:
 
 - Designing a reliable application at scale is complex. It requires extensive platform knowledge to select the right technologies _and_ optimally configure them to deliver end-to-end functionality.
 
@@ -58,15 +58,15 @@ Mission-critical guidance is composed of architectural considerations and recomm
 ![AlwaysOn Design Areas](./images/alwayson-design-areas.png "AlwaysOn Critical Design Areas")
 
 - **Application design**&mdash;Cloud application design patterns that allow for scaling, and error handling. 
-- **Hosting infrastructure**&mdash;Hosting environment choices, application dependencies, frameworks, and libraries.
-- **Networking**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
-- **Data storage**&mdash;Choices in data store technologies by evaluating the volume, velocity, variety, and veracity characteristics.
-- **Monitoring**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.
+- **Application platform**&mdash;Hosting environment choices, application dependencies, frameworks, and libraries.
+- **Data platform**&mdash;Choices in data store technologies by evaluating the volume, velocity, variety, and veracity characteristics.
+- **Networking and Connectivity**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
+- **Health Modelling**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.
 - **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation considerations. Incorporating testing scenarios, such as unit, build, static, security, integration, regression, UX, performance, capacity and failure injection (chaos).
 - **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
-- **Operations**&mdash;Processes related to deployment, key management, patching and updates.
+- **Operational procedures**&mdash; Processes related to deployment, key management, patching and updates.
 
-## Illustrative examples?
+## Illustrative examples
 
 The guidance is based on a solution-orientated approach to illustrate the key design considerations and recommendations. 
 
@@ -83,7 +83,6 @@ There are two foundational implementations that serve as a basis for further sol
 - [Azure AlwaysOn Foundational Connected](https://github.com/azure/alwayson-foundational-connected) 
 
   The workload needs connectivity to other company resources. The pipeline deploys the application Azure Subscription security and compliance guardrails and takes a dependency on pre-provided Virtual Networks for connectivity to other company resources. This is usually achieved through a hub-and-spoke model through peering. This use case is intended for scenarios that require integration with an organizational technical estate for either public-facing or internal-facing workloads.
-
 
 ## Next step
 
