@@ -88,6 +88,15 @@ Application architectures established using this design methodology must continu
 |Security|Mitigation of attack vectors through Microsoft Zero Trust model.|
 |Operations|Processes related to deployment, key management, patching and updates.|
 
+
+## Additional AlwaysOn project principles
+
+- **Production ready artifacts**: Every technical artifact within the [AlwaysOn repo](http://github.com/azure/alwayson) will be ready for use in production environments with all end-to-end operational aspects considered.
+
+- **Rooted in 'customer truth'** - All technical decisions will be guided by the experience real Azure customers have on the platform and the feedback they share.
+
+- **Azure roadmap alignment** - The AlwaysOn architecture will have its own roadmap that is aligned with Azure product roadmaps.
+
 ## Next steps
 
 - Review the AlwaysOn [Design Principles](./alwayson-design-principles.md) for mission-critical application scenarios.

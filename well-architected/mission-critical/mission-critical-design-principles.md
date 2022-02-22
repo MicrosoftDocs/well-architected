@@ -16,52 +16,48 @@ ms.custom:
 
 # Design principles
 
-The design methodology is underpinned by 5 key design principles which serve as a compass for subsequent design decisions across technical domains and the critical design areas. Readers are strongly advised to familiarize themselves with these principles to better understand their impact and the trade-offs associated with non-adherence.
+The five key design principles serve as a compass for subsequent architecture decisions across technical domains and the critical design areas. We highly recommend that you familiarize yourselves with these principles to better understand their impact and the trade-offs associated with non-adherence.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
 >
-> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub.  
+> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate the implementations associated with the design principles highlighted in this article.
 > ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson).
 
-1. **Maximum Reliability** - Fundamental pursuit of the most reliable solution, ensuring trade-offs are properly understood.
-1. **Sustainable Performance and Scalability** - Design for scalability across the end-to-end solution without performance bottlenecks.
-1. **Operations by Design** - Engineered to last with robust and assertive operational management.
-1. **Cloud-Native Design** - Focus on using native platforms services to minimize operational burdens, while mitigating known gaps.
-1. **Always Secure** - Design for end-to-end security to maintain application stability and ensure availability.
+At the core, design decisions for a mission critical architecture is based on the quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](/azure/architecture/framework/#reliability), [Peformance Efficiency](/azure/architecture/framework/scalability/), [Operational Excellence](/azure/architecture/framework/devops/), [Security](/azure/architecture/framework/security/). This article reinforces the important of the design principles for each pillar in the context of building a reliable and scalable workload.
 
-![AlwaysOn Design Principles](./images/alwayson-design-principles.png "AlwaysOn Design Principles")
+![Mission critical design principles](./images/mission-critical-design-principles.png "Mission critical Design Principles")
 
-At the core, a mission critical design is based on the quality pillars of the Azure Well-Architected Framework.  
+This article extends the guidance to include princiles for achieving a cloud native design.
 
 ## Reliability
 
-A mission critical workload strives for maximum reliability. Design for the most reliable solution, ensuring trade-offs are properly understood.
+A mission critical workload strives for *maximum reliability*. Design for the most reliable solution, ensuring trade-offs are properly understood.
 
 |Design principle|Considerations|
 |---|---|
 |[**Design for failure**](/azure/architecture/framework/resiliency/principles#design-for-failure)|Evaluate potential failures in the critical path to avoid single points of failure by building redundancy. This principle not only applies to each component of the architecture but also the entire regional deployment.|
 |[**Observe application health**](/azure/architecture/framework/resiliency/principles#observe-application-health)|Detect and predict issues early by monitoring application health against a known baseline. In case of failures, have remedial actions ready to address the issues.|
 |[**Drive automation**](/azure/architecture/framework/resiliency/principles#drive-automation)|Minimize errors caused by human interactions by automating actions related to testing, deployment, and management.|
-|[**Design for self-healing**](/azure/architecture/framework/resiliency/principles#design-for-self-healing)|Build  capabilities in the application design to gracefully recover on it's own without needing external intervention. |
+|[**Design for self-healing**](/azure/architecture/framework/resiliency/principles#design-for-self-healing)|Build  capabilities in the application design to gracefully recover on its own without needing external intervention. |
 
 
 ## Performance Efficiency
 
-A mission critical workload strives for sustainable performance and scalability. Design for scalability across the end-to-end solution without performance bottlenecks.
+A mission critical workload strives for _sustainable performance and scalability_. Design for scalability across the end-to-end solution without performance bottlenecks.
 
 |Design principle|Considerations|
 |---|---|
-|[**Design for scale-out**](/azure/architecture/framework/resiliency/principles#design-for-scale-out)|Identity the scale-out requirements for each component in the architecture. As load increases, the workload may experience resource exhaustion. To be highly reliable, the application must be able to handle sudden surges. Aggresively add capacity through scale units. |
+|[**Design for scale-out**](/azure/architecture/framework/resiliency/principles#design-for-scale-out)|Identity the scale-out requirements for each component in the architecture. As load increases, the workload may experience resource exhaustion. To be highly reliable, the application must be able to handle sudden surges. Aggressively add capacity through scale units. |
 |[**Model capacity**](/azure/architecture/framework/scalability/test-checklist)|Conduct load and performance tests to determine the expected performance under various load profiles as load can be impacted by several factors. This capacity model enables testing variations to ensure that your application can scale. It will help you determine how components perform in relation to each other, therefore enabling system-wide capacity allocation planning. Also, ensure that all regions can adequately scale to support total load, should one region fail.|
 |[**Test and experiment often**](/azure/architecture/framework/scalability/performance-test)|Test each major change and on a regular cadence. Perform tests in Dev/Test environments and run a subset of critical tests against the production environment. Ongoing testing validates existing thresholds, targets and assumptions and will help to quickly identify risks to resiliency and availability.|
 |[**Baseline performance and identify bottlenecks**](/azure/architecture/framework/scalability/test-tools#identify-baselines-and-goals-for-performance)| Establish baselines to stay on track and measure progress with detailed telemetry from every component. This will help you identify bottlenecks within the system and the components that need to be scaled. Baselines can influence decisions made during the capacity planning.|
-|[**Reduce overhead with managed compute services**](/azure/architecture/guide/design-principles/managed-services)| Use containerized and serverless architectures to reduce the ongoing administrative and operational overhead of designing, operating, and scaling applications. These services shift infrastructure deployment and maintenance to the managed service provider.|
+|[**Reduce overhead with managed compute services**](/azure/architecture/guide/design-principles/managed-services)| Opt for containerized and serverless architectures to reduce the ongoing administrative and operational overhead of designing, operating, and scaling applications. These services shift infrastructure deployment and maintenance to the managed service provider.|
 
 ## Operational Excellence
 
-A mission critical workload strives to build operations by design. Incorporate engineering practices that are meant last with robust and assertive operational management.
- 
+A mission critical workload strives to _build operations as part of the overall design_. Incorporate engineering practices that are meant last with robust and assertive operational management.
+
 |Design principle|Considerations|
 |---|---|
 |[**Loosely coupled components**](/azure/architecture/framework/devops/principles#use-loosely-coupled-architecture)|Enable independent and on-demand testing, deployments, and updates to components of the application while minimizing inter-team dependencies for support, services, resources, or approvals.|
@@ -71,7 +67,7 @@ A mission critical workload strives to build operations by design. Incorporate e
 |[**Embrace continuous operational improvement**](/azure/architecture/framework/devops/principles#embrace-continuous-operational-improvement)|Prioritize routine improvement of the system and user experience, using a health model to understand and measure operational efficiency with feedback mechanisms to enable application teams to understand and address gaps in an iterative manner.|
 
 ## Security
-A mission critical workload strives to always secure. Design for end-to-end security with the Zero-Trust model to maintain application stability and ensure availability.
+A mission critical workload strives to be _always secure_. Design for end-to-end security with the Zero-Trust model to maintain application stability and ensure availability.
 
 |Design principle|Considerations|
 |---|---|
@@ -92,18 +88,11 @@ A mission critical workload strives to always secure. Design for end-to-end secu
 
 - **Azure Landing Zone alignment** - Deployable within an [Azure Landing Zone](/azure/cloud-adoption-framework/ready/landing-zone) and aligned to the Azure Landing Zone design methodology, but also fully functional and deployable in a bare environment outside of a landing zone.
 
+## Next step
+
+Explore the eight design areas that provide critical considerations and recommendations that are significant for building a mission-critical workload.
+
+> [!div class="nextstepaction"]
+> [Design areas](./mission-critical-design-areas.md)
 
 
-
-
-## Additional AlwaysOn project principles
-
-- **Production ready artifacts**: Every technical artifact within the [AlwaysOn repo](http://github.com/azure/alwayson) will be ready for use in production environments with all end-to-end operational aspects considered.
-
-- **Rooted in 'customer truth'** - All technical decisions will be guided by the experience real Azure customers have on the platform and the feedback they share.
-
-- **Azure roadmap alignment** - The AlwaysOn architecture will have its own roadmap that is aligned with Azure product roadmaps.
-
-## Next steps
-
-- Explore the AlwaysOn [Design Areas](./alwayson-design-areas.md).
