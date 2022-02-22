@@ -21,14 +21,16 @@ The five key design principles serve as a compass for subsequent architecture de
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
 >
+> ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson)
+>
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate the implementations associated with the design principles highlighted in this article.
-> ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson).
 
-At the core, design decisions for a mission critical architecture is based on the quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](/azure/architecture/framework/#reliability), [Peformance Efficiency](/azure/architecture/framework/scalability/), [Operational Excellence](/azure/architecture/framework/devops/), [Security](/azure/architecture/framework/security/). This article reinforces the important of the design principles for each pillar in the context of building a reliable and scalable workload.
+
+At the core, design decisions for a mission critical architecture is based on the quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](/azure/architecture/framework/#reliability), [Peformance Efficiency](/azure/architecture/framework/scalability/), [Operational Excellence](/azure/architecture/framework/devops/), [Security](/azure/architecture/framework/security/). This article reinforces the importance of the design principles for each pillar in the context of building a reliable and scalable workload.
 
 ![Mission critical design principles](./images/mission-critical-design-principles.png "Mission critical Design Principles")
 
-This article extends the guidance to include princiles for achieving a cloud native design.
+This article extends the guidance to include principles for achieving a cloud native design.
 
 ## Reliability
 
