@@ -16,7 +16,7 @@ ms.custom:
 ---
 # Mission-critical workloads
 
-This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. Leveraging lessons from numerous customer applications and first-party solutions, such as Xbox Live, this section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
+This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. The guidance is based on lessons learned from revewing numerous customer applications and first-party solutions. This section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
 
 ## What is a mission-critical workload?
 
@@ -37,7 +37,7 @@ If the business requirements allow for lower reliability targets, occasional fai
 
 ## What are the common challenges?
 
-Getting started on Microsoft Azure is now easier than ever, however, building mission-critical solutions that are highly reliable on the platform remains a challenge for three main reasons:
+Microsoft Azure makes it easy to deploy cloud solutions. However, building mission-critical workloads that are highly reliable on the platform remains a challenge for these main reasons:
 
 - Designing a reliable application at scale is complex. It requires extensive platform knowledge to select the right technologies _and_ optimally configure them to deliver end-to-end functionality.
 
