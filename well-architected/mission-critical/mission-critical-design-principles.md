@@ -1,5 +1,5 @@
 ---
-title: Mission-critical workloads - AlwaysOn design principles
+title: Design principles of a mission-critical workload
 description: Key design principles that serve as a compass for subsequent design decisions across technical domains and the critical design areas.
 author: calcof
 ms.author: calcof
@@ -14,7 +14,7 @@ ms.custom:
   - alwayson
 ---
 
-# Design principles
+# Design principles of a mission-critical workload on Azure
 
 The five key design principles serve as a compass for subsequent architecture decisions across technical domains and the critical design areas. We highly recommend that you familiarize yourselves with these principles to better understand their impact and the trade-offs associated with non-adherence.
 
