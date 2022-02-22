@@ -17,7 +17,7 @@ ms.custom:
 
 # Cross-cutting concerns of a mission-critical workload
 
-There are several cross-cutting concerns that traverse the [key design areas](./mission-critical-overview.md#what-are-the-key-design-areas). This article provides recommendations for the common concerns. 
+There are several cross-cutting concerns that traverse the [key design areas](mission-critical-overview.md#what-are-the-key-design-areas). This article provides recommendations for the common concerns. 
 
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
 
