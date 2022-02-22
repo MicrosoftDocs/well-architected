@@ -24,7 +24,7 @@ This design methodology provides easy to follow guidance surrounding the critica
 ## Architecture pattern
 
 ### Components
-
+Most cloud applications consist of multiple application services — web front ends, databases, business processes, reporting and analysis, and so on. To achieve scalability and reliability, each of those services should run on multiple instances.
 
 ## Critical design path
 
