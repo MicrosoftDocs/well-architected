@@ -16,7 +16,7 @@ ms.custom:
 
 # Design principles of a mission-critical workload
 
-The mission-critical design methodology is underpinned by 5 key design principles which serve as a compass for subsequent design decisions across technical domains and the critical design areas. We highly recommend that you familiarize yourselves with these principles to better understand their impact and the trade-offs associated with non-adherence.
+The mission-critical design methodology is underpinned by five key design principles which serve as a compass for subsequent design decisions across technical domains and the critical design areas. We highly recommend that you familiarize yourselves with these principles to better understand their impact and the trade-offs associated with non-adherence.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
