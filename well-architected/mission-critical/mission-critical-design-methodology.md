@@ -49,7 +49,7 @@ Here's the reliability tier for the AlwaysOn mission-critical application. It sh
 
 ![AlwaysOn Reliability Tiers](./images/alwayson-slo.gif "AlwaysOn Reliability Tiers")
 
-### Consider the trade-off on cost
+### Consider cost trade-offs
 There are obvious financial and opportunity cost implications for introducing greater reliability. Consider the trade-offs carefully.
 
 There is cost associated with the significant engineering investment in reliability concepts, such as fully embracing infrastructure as code, deployment automation, and chaos engineering. This investment comes at a cost in terms of time and effort, which could be invested elsewhere to deliver new application functionality and features.
