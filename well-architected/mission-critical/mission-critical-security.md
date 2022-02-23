@@ -364,14 +364,13 @@ This section will therefore explore key considerations and recommendations surro
 ## Next steps
 
 - Review the remaining 7 critical design areas to inform key design decisions surrounding the definition of a target architecture.
-  - [Application Design](./alwayson-application-design.md)
-  - [Application Platform](./alwayson-application-platform.md)
-  - [Data Platform](./alwayson-data-platform.md)
-  - [Health Modeling and Observability](./alwayson-health-modeling.md)
-  - [Deployment and Testing](./alwayson-deployment-testing.md)
-  - [Networking and Connectivity](./alwayson-networking-connectivity.md)
-  - Security
-  - [Operational Procedures](./alwayson-operational-procedures.md)
+  - [Application Design](./mission-critical-application-design.md)
+  - [Application Platform](./mission-critical-application-platform.md)
+  - [Data Platform](./mission-critical-data-platform.md)
+  - [Health Modeling and Observability](./mission-critical-health-modeling.md)
+  - [Deployment and Testing](./mission-critical-deployment-testing.md)
+  - [Networking and Connectivity](./mission-critical-networking-connectivity.md)
+  - [Operational Procedures](./mission-critical-operational-procedures.md)
 
 ### Reference implementation
 
