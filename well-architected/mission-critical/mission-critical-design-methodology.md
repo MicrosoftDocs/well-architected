@@ -48,7 +48,7 @@ To meet a 99.999% availability Service Level Objective (SLO), a mission-critical
 
 Here's the reliability tier for the AlwaysOn mission-critical application. It shows how the different reliability tiers and the underlying business requirements influence the target architecture. Particularly the number of regional deployments and the used global technologies.
 
-![AlwaysOn Reliability Tiers](./images/alwayson-slo.gif "AlwaysOn Reliability Tiers")
+![AlwaysOn Reliability Tiers](./images/alwayson-slo.gif "AlwaysOn Reliability Dial")
 
 ### Consider cost trade-offs
 There are obvious financial and opportunity cost implications for introducing greater reliability. Consider the trade-offs carefully.
@@ -78,7 +78,7 @@ The AlwaysOn open source project strives to illustrate the design decisions.
 
 At the core of the methodology, lies a critical design path comprised of foundational design principles and fundamental design areas with heavily interrelated and dependent design decisions.
 
-Apply the [design principles](mission-critical-design-principles.md) of the quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](/azure/architecture/framework/#reliability), [Peformance Efficiency](/azure/architecture/framework/scalability/), [Operational Excellence](/azure/architecture/framework/devops/), [Security](/azure/architecture/framework/security/). In addition strive for a cloud native design. 
+Apply the [design principles](mission-critical-design-principles.md) of the quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](/azure/architecture/framework/#reliability), [Performance Efficiency](/azure/architecture/framework/scalability/), [Operational Excellence](/azure/architecture/framework/devops/), [Security](/azure/architecture/framework/security/). In addition strive for a cloud native design. 
 
 The impact of decisions made within each [design area](mission-critical-design-areas.md) will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of the encompassed decisions, which may later produce trade-offs or unforeseen consequences within related areas. For example, to define a target architecture it is critical to determine how best to monitor application health across key components. In this instance, the reader should review the health modeling design area, using the outlined recommendations to help drive decisions.
 

@@ -23,14 +23,14 @@ ms.custom:
 
 The eight design areas below represent the architecturally significant topics which must be discussed and designed for when defining a target AlwaysOn application architecture. In this regard, this section of the repository is intended to provide prescriptive and opinionated guidance to support readers in designing an AlwaysOn solution.
 
-- [Application Design](./alwayson-application-design.md)
-- [Application Platform](./alwayson-application-platform.md)
-- [Data Platform](./alwayson-data-platform.md)
-- [Health Modeling and Observability](./alwayson-health-modeling.md)
-- [Deployment and Testing](./alwayson-deployment-testing.md)
-- [Networking and Connectivity](./alwayson-networking-connectivity.md)
-- [Security](./alwayson-security.md)
-- [Operational Procedures](./alwayson-operational-procedures.md)
+- [Application Design](./mission-critical-application-design.md)
+- [Application Platform](./mission-critical-application-platform.md)
+- [Data Platform](./mission-critical-data-platform.md)
+- [Health Modeling and Observability](./mission-critical-health-modeling.md)
+- [Deployment and Testing](./mission-critical-deployment-testing.md)
+- [Networking and Connectivity](./mission-critical-networking-connectivity.md)
+- [Security](./mission-critical-security.md)
+- [Operational Procedures](./mission-critical-operational-procedures.md)
 
 These 8 critical design areas will be explored at length within ensuing pages, for which critical review considerations and design recommendations are provided along with their broader design impact across other areas. Ultimately, the design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design, so readers are encouraged to use the provided design guidance to navigate the key design decisions.
 
@@ -69,14 +69,14 @@ It is crucial to understand and identify in which connectivity scenario an Alway
 ## Next steps
 
 - Review all 8 critical design areas to inform key design decisions surrounding the definition of a target architecture.
-  - [Application Design](./alwayson-application-design.md)
-  - [Application Platform](./alwayson-application-platform.md)
-  - [Data Platform](./alwayson-data-platform.md)
-  - [Health Modeling and Observability](./alwayson-health-modeling.md)
-  - [Deployment and Testing](./alwayson-deployment-testing.md)
-  - [Networking and Connectivity](./alwayson-networking-connectivity.md)
-  - [Security](./alwayson-Security.md)
-  - [Operational Procedures](./alwayson-operational-procedures.md)
+  - [Application Design](./mission-critical-application-design.md)
+  - [Application Platform](./mission-critical-application-platform.md)
+  - [Data Platform](./mission-critical-data-platform.md)
+  - [Health Modeling and Observability](./mission-critical-health-modeling.md)
+  - [Deployment and Testing](./mission-critical-deployment-testing.md)
+  - [Networking and Connectivity](./mission-critical-networking-connectivity.md)
+  - [Security](./mission-critical-Security.md)
+  - [Operational Procedures](./mission-critical-operational-procedures.md)
 
 ### Reference implementation
 

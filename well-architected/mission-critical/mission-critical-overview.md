@@ -89,4 +89,4 @@ There are two foundational implementations that serve as a basis for further sol
 Start by reviewing the design methodology for mission-critical application scenarios.
 
 > [!div class="nextstepaction"]
-> [Design methodology](./alwayson-design-methodology.md)
+> [Design methodology](./mission-critical-design-methodology.md)

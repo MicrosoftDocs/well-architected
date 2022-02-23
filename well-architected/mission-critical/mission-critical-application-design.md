@@ -309,19 +309,18 @@ When issues are not transient in-nature and cannot be fully mitigated within app
 - Use [structured logging](https://stackify.com/what-is-structured-logging-and-why-developers-need-it/) for all log messages.
 
 - Select a unified operational data sink for application traces, metrics, and logs to enable operators to seamlessly debug issues.
-  - Ensure operational data is used in conjunction with business requirements to inform an [application health model](./alwayson-health-modeling.md).
+  - Ensure operational data is used in conjunction with business requirements to inform an [application health model](./mission-critical-health-modeling.md).
 
 ## Next steps
 
 - Review the remaining 7 critical design areas to inform key design decisions surrounding the definition of a target architecture.
-  - Application Design
-  - [Application Platform](./alwayson-application-platform.md)
-  - [Data Platform](./alwayson-data-platform.md)
-  - [Health Modeling and Observability](./alwayson-health-modeling.md)
-  - [Deployment and Testing](./alwayson-deployment-testing.md)
-  - [Networking and Connectivity](./alwayson-networking-connectivity.md)
-  - [Security](./alwayson-Security.md)
-  - [Operational Procedures](./alwayson-operational-procedures.md)
+  - [Application Platform](./mission-critical-application-platform.md)
+  - [Data Platform](./mission-critical-data-platform.md)
+  - [Health Modeling and Observability](./mission-critical-health-modeling.md)
+  - [Deployment and Testing](./mission-critical-deployment-testing.md)
+  - [Networking and Connectivity](./mission-critical-networking-connectivity.md)
+  - [Security](./mission-critical-Security.md)
+  - [Operational Procedures](./mission-critical-operational-procedures.md)
 
 ### Reference implementation
 
