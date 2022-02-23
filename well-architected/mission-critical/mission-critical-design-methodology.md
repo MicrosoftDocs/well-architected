@@ -24,7 +24,7 @@ Building a mission-critical application on any cloud platform requires significa
 - Constantly aligning with the latest best practices, and 
 - All while meeting the business requirements. 
 
-This design methodology aims to provide an easy design path to follow guidance about the critical architecture decisions needed to produce the target architecture.
+This design methodology aims to provide an easy design path. Follow this path as you learn about the architecture decisions needed to produce the target architecture.
 
 <!insert visual>
 
@@ -45,7 +45,7 @@ To meet a 99.999% availability Service Level Objective (SLO), a mission-critical
 > [!IMPORTANT]
 > This example shows the expected annual downtime. We recommend defining reliability tiers for a week and month to introduce further specificity to design recommendations.
 
-Here's the reliability tier for the AlwaysOn misson-critical application. It shows how the different reliability tiers and the underlying business requirements influence the target architecture. Particularly the number of regional deployments and the used global technologies.
+Here's the reliability tier for the AlwaysOn mission-critical application. It shows how the different reliability tiers and the underlying business requirements influence the target architecture. Particularly the number of regional deployments and the used global technologies.
 
 ![AlwaysOn Reliability Tiers](./images/alwayson-slo.gif "AlwaysOn Reliability Tiers")
 
@@ -54,14 +54,14 @@ There are obvious financial and opportunity cost implications for introducing gr
 
 There is cost associated with the significant engineering investment in reliability concepts, such as fully embracing infrastructure as code, deployment automation, and chaos engineering. This investment comes at a cost in terms of time and effort, which could be invested elsewhere to deliver new application functionality and features.
 
-Furthermore, maximizing reliability can impact overall cost of the solution. For example, to achieve high availability you might choose to globally distribute the application. This will lead to duplication of resources and the distribution of resources across regions. To avoid excess costs, optimize by avoiding over-engineering and over-provisioned beyond the relevant business requirements.
+Furthermore, maximizing reliability can impact overall cost of the solution. For example, to achieve high availability you might choose to globally distribute the application. This design will lead to duplication of resources and the distribution of resources across regions. To avoid excess costs, optimize by avoiding over-engineering and over-provisioned beyond the relevant business requirements.
 
 ## 2&mdash;Refer to the AlwaysOn implementations
-The AlwaysOn project strives to illustrate the design decisions.
+The AlwaysOn open source project strives to illustrate the design decisions.
 
 > ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson)
 
-- **Production-ready artifacts**: Every technical artifacts are ready for use in production environments with all end-to-end operational aspects considered. There are two [reference implementations](mission-critical-overview.md#illustrative-examples):
+- **Production-ready artifacts**: Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered. There are two [reference implementations](mission-critical-overview.md#illustrative-examples):
 
   - [Azure AlwaysOn Foundational Online](https://github.com/azure/alwayson-foundational-online)
 
@@ -75,15 +75,15 @@ The AlwaysOn project strives to illustrate the design decisions.
 
 ## 3&mdash;Evaluate the design areas using the design principles
 
-At the core a critical design path, comprised of  foundational design principles and fundamental design areas with heavily interrelated and dependent design decisions.
+At the core of the methodology, lies a critical design path comprised of foundational design principles and fundamental design areas with heavily interrelated and dependent design decisions.
 
-Apply the [design principles](mission-critical-design-principles.md) of quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](/azure/architecture/framework/#reliability), [Peformance Efficiency](/azure/architecture/framework/scalability/), [Operational Excellence](/azure/architecture/framework/devops/), [Security](/azure/architecture/framework/security/). In addition strive for a cloud native design. 
+Apply the [design principles](mission-critical-design-principles.md) of the quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](/azure/architecture/framework/#reliability), [Peformance Efficiency](/azure/architecture/framework/scalability/), [Operational Excellence](/azure/architecture/framework/devops/), [Security](/azure/architecture/framework/security/). In addition strive for a cloud native design. 
 
-The impact of decisions made within each [design area](mission-critical-design-areas.md) will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of encompassed decisions, which may later produce trade-offs or unforeseen consequences within related areas. For example, to define a target architecture it is critical to determine how best to monitor application health across key components. In this instance, the reader should review the health modeling design area, using the outlined recommendations to help drive decisions.
+The impact of decisions made within each [design area](mission-critical-design-areas.md) will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of the encompassed decisions, which may later produce trade-offs or unforeseen consequences within related areas. For example, to define a target architecture it is critical to determine how best to monitor application health across key components. In this instance, the reader should review the health modeling design area, using the outlined recommendations to help drive decisions.
 
 ## 4&mdash;Deploy environment for a synthetic application
 
-In parallel to design activities, it's highly recommended that you establish a synthetic  application environment based on the AlwaysOn reference implementations.
+In parallel to design activities, it's highly recommended that you establish a synthetic application environment based on the AlwaysOn reference implementations.
 
 This provides hands-on opportunities to validate design decisions by replicating the target architecture, allowing for design uncertainty to be swiftly assessed. If applied correctly with representative requirement coverage, most problematic issues likely to hinder progress can be uncovered and subsequently addressed.
 
