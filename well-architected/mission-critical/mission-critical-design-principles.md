@@ -67,7 +67,7 @@ These mission-critical design principles resonate and extend the quality pillars
 
 ## Security
 
-**_always secure_** - Design for end-to-end security to maintain application stability and ensure availability.
+**_Always secure_** - Design for end-to-end security to maintain application stability and ensure availability.
 
 |Design principle|Considerations|
 |---|---|

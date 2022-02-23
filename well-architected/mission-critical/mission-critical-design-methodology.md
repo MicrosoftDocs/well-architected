@@ -18,11 +18,12 @@ ms.custom:
 # Design methodology for mission-critical workloads
 
 Building a mission-critical application on any cloud platform requires significant technical expertise and engineering investment. Many factors can make the design process complex,
-- Understanding the cloud platform, 
-- Choosing the right services, 
-- Configuring the right set of features, 
-- Constantly aligning with the latest best practices, and 
-- All while meeting the business requirements. 
+
+- Understanding the cloud platform,
+- Choosing the right services,
+- Apply the right set of service configuration and composition,
+- Constantly aligning with the latest best practices and services roadmap, and
+- All while meeting the business requirements.
 
 This design methodology aims to provide an easy design path. Follow this path as you learn about the architecture decisions needed to produce the target architecture.
 
