@@ -613,3 +613,5 @@ items:
                     href: services/monitoring/application-insights/cost-optimization.md
                   - name: Operational excellence
                     href: services/monitoring/application-insights/operational-excellence.md
+      - name: Implementing Recommendations
+        href: warp/warp-guidance.md
