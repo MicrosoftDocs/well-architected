@@ -358,7 +358,7 @@ items:
               - name: Design areas
                 items:
                 - name: Overview
-                  href: mission-critical/mission-critical-design-areas.md
+                  href: mission-critical/mission-critical-architecture-pattern.md
                 - name: Application design
                   href: mission-critical/mission-critical-application-design.md
                 - name: Application platform
