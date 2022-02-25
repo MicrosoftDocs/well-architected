@@ -16,9 +16,9 @@ ms.custom:
 
 # Networking and connectivity
 
-Networking is a fundamental design topic for an AlwaysOn application, particularly given the recommended globally distributed active-active design approach.
+Networking is a fundamental design topic for a mission-critical application, particularly given the recommended globally distributed active-active design approach.
 
-This section will therefore explore various network topology topics at an application level, considering requisite connectivity and redundant traffic management. More specifically, it will highlight critical considerations and recommendations intended to inform the design of a secure and scalable global network topology for an AlwaysOn application.
+This article explores various network topology topics at an application level, considering requisite connectivity and redundant traffic management. More specifically, it will highlight critical considerations and recommendations intended to inform the design of a secure and scalable global network topology for an AlwaysOn application.
 
 - [Global Traffic Routing](#global-traffic-routing)
 - [Application Delivery Services](#application-delivery-services)
