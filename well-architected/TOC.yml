@@ -359,7 +359,7 @@ items:
                 href: mission-critical/mission-critical-design-principles.md
               - name: Design areas
                 items:
-                - name: Overview
+                - name: Architecture pattern
                   href: mission-critical/mission-critical-architecture-pattern.md
                 - name: Application design
                   href: mission-critical/mission-critical-application-design.md
