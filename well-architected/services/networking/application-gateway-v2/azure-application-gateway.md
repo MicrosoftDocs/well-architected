@@ -6,17 +6,18 @@ ms.author: victorh
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
+ms.date: 02/25/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Application Gateway v2
 
 This article provides architectural best practices for the Azure Application Gateway v2 family of SKUs. The guidance is based on the five pillars of architecture excellence: 
 
-- Reliability
-- Security
-- Cost optimization
-- Operational excellence
-- Performance efficiency
+- [Reliability](#reliability)
+- [Security](#security)
+- [Cost optimization](#cost-optimization)
+- [Operational excellence](#operational-excellence)
+- [Performance efficiency](#performance-efficiency)
 
 We assume that you have working knowledge of Azure Application Gateway and are well versed with v2 SKU features. For more information, see [Azure Application Gateway features](/azure/application-gateway/features).
 
