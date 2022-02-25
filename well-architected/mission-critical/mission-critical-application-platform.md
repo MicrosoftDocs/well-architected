@@ -18,17 +18,20 @@ ms.custom:
 
 # Application Platform
 
-The selection of an appropriate application hosting platform is a critical decision which has reverberations across the AlwaysOn design areas and encompassed design decisions. Azure ultimately provides several highly available [computational platforms](/azure/architecture/guide/technology-choices/compute-decision-tree) that differ in capability and complexity. It is therefore essential that key non-functional requirements surrounding reliability, availability, performance, and security are fully considered alongside other decision factors such as scalability, cost, operability, and complexity. For example, the scale-limits of a particular technology will have a key bearing on suitability as well as the overall AlwaysOn application design in terms of scale-unit definitions.
+Azure provides many [compute services](/azure/architecture/guide/technology-choices/compute-decision-tree) for hosting highly available applications. The services differ in capability and complexity. We recommend that you fully understand the capabitlity matrix with focus on:
+- Non-functional requirements surrounding reliability, availability, performance, and security.
+- Decision factors such as scalability, cost, operability, and complexity. 
 
-This design area will therefore explore requisite decision factors and provide recommendations related to the selection, design, and configuration of an appropriate application hosting platform for an AlwaysOn application on Azure.
+The selection of an appropriate application hosting platform is a critical decision that has impact on all other design areas. For example, the scale-limits of a particular service will have a key bearing on suitability and the overall application design in terms of scale-unit definitions. A mission-critical application can use more than one compute service in parallel to support multiple composite workloads and microservices with distinct platform requirements.
 
-- [Programming Language Selection](#programming-language-selection)
-- [Containerization](#containerization)
-- [Container Orchestration and Kubernetes](#container-orchestration-and-kubernetes)
-- [Serverless Compute](#serverless-compute)
-- [Asynchronous Messaging](#asynchronous-messaging)
+This design area explores the important decision factors and provide recommendations related to the selection, design, and configuration of an appropriate application hosting platform.
 
-> An AlwaysOn application can use more than one application platform in parallel to support multiple composite workloads and microservices with distinct platform requirements.
+> [!IMPORTANT]
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
+>
+> ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson)
+>
+> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate the considerations and implementations for a selected compute service.
 
 ## Programming Language Selection
 
