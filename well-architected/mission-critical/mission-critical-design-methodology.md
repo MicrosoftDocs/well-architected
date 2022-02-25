@@ -82,9 +82,9 @@ Apply the [design principles](mission-critical-design-principles.md) of the qual
 
 The impact of decisions made within each [design area](mission-critical-design-areas.md) will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of the encompassed decisions, which may later produce trade-offs or unforeseen consequences within related areas. For example, to define a target architecture it is critical to determine how best to monitor application health across key components. In this instance, the reader should review the health modeling design area, using the outlined recommendations to help drive decisions.
 
-## 4&mdash;Deploy a synthetic application environment
+## 4&mdash;Deploy a sandbox application environment
 
-In parallel to design activities, it's highly recommended that you establish a synthetic application environment based on the AlwaysOn reference implementations.
+In parallel to design activities, it's highly recommended that you establish a sandbox application environment based on the AlwaysOn reference implementations.
 
 This provides hands-on opportunities to validate design decisions by replicating the target architecture, allowing for design uncertainty to be swiftly assessed. If applied correctly with representative requirement coverage, most problematic issues likely to hinder progress can be uncovered and subsequently addressed.
 

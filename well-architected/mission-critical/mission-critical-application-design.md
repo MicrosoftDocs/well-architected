@@ -16,32 +16,30 @@ ms.custom:
 
 # Application design
 
-Both functional application requirements and non-functional requirements, such as those surrounding high-availability and performance, are critical to inform key design decisions for an AlwaysOn application design. However, these requirements should be examined alongside key cloud application design patterns to ensure AlwaysOn aspirations are fully achieved. This design area will therefore explore requisite application design patterns for building a 'best of breed' reliable application on Azure.
+Both functional application requirements and non-functional requirements, such as those surrounding high-availability and performance, are critical to inform key design decisions for a mission-critical application design. However, these requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved. This article explores the important application design patterns for building a highly reliable application on Azure.
 
-There are a myriad of design patterns that can be applied to build reliable applications on Azure, from reliable virtual actors to a circuit breaker pattern for fault handling. This design area is not intended to cover all relevant patterns or substitute our [Cloud Design Patterns](/azure/architecture/patterns), but rather it strives to cover key requisite themes to create an AlwaysOn application design. It establishes breadcrumbs for the readers to follow as they embark on a critical design path to define a target 'north star' architecture.
-
-This article includes the following sections:
-
-- [Scale-unit architecture](#scale-unit-architecture)
-- [Global distribution](#global-distribution)
-- [Loose coupled event-driven architecture](#loose-coupled-event-driven-architecture)
-- [Application-level resiliency patterns and error handling](#application-level-resiliency-patterns-and-error-handling)
-
-> The [foundational-online](https://github.com/Azure/AlwaysOn-Foundational-Online) and [foundational-connected](https://github.com/Azure/AlwaysOn-Foundational-Connected) reference implementations provide solution-orientated showcases for how these foundational design concepts can be leveraged, alongside Azure-native capabilities, to maximize reliability.
+> [!IMPORTANT]
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
+>
+> ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson)
+>
+> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. provide solution-orientated showcases for how these foundational design concepts can be leveraged, alongside Azure-native capabilities, to maximize reliability.
 
 ## Scale-unit architecture
 
-A scale-unit is a logical unit or function that can be scaled independently as required. It is a vital concept for achieving an AlwaysOn application design, since all functional aspects of the solution must be capable of scaling to meet changes in demand. Architecturally, it is critical to optimize end-to-end scalability through the logical compartmentalization of operational functions into scale-units, at all levels of the application stack. The levels range from code components to application hosting platforms and deployment stamps that encompass related components.
+A scale-unit is a logical unit or function that can be scaled independently as required. It is a vital concept for achieving an highly available application design, since all functional aspects of the solution must be capable of scaling to meet changes in demand. Architecturally, it is critical to optimize end-to-end scalability through the logical compartmentalization of operational functions into scale-units, at all levels of the application stack. The levels range from code components to application hosting platforms and deployment stamps that encompass related components.
 
+> [!TIP]
 > Refer to the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) for further details.
 
 For example, the foundational reference implementation considers a user flow for processing game results that encompass APIs for retrieving and posting game outcomes, as well as supporting components such as an OAuth endpoint, datastore, and message queues. These stateless API endpoints for retrieving and posting results represent granular functional units that must be able to adapt to changes in demand. However, for these to be truly scalable, the underlying application platform must also be able to scale in-kind. Similarly, to avoid performance bottlenecks in the end-to-end user flow and to achieve sustainable scale, the downstream components and dependencies must also be able to scale to an appropriate degree, either independently, as a separate scale-unit, or together, as part of a single logical unit.
 
+This image shows the multiple scale-unit scopes that are considered by this reference implementation user flow. These scopes range from microservice pods to cluster nodes and regional deployment stamps.
+
 ![AlwaysOn scale units](./images/alwayson-scale-units.png)
 
-The previous image depicts the multiple scale-unit scopes that are considered by this reference implementation user flow. These scopes range from microservice pods to cluster nodes and regional deployment stamps.
 
-Ultimately, a scale-unit architecture should be applied to optimize the end-to-end scalability of an AlwaysOn application design, so that all levels of the solution can appropriately scale. The relationship between related scale-units, as well as components inside a single scale-unit, should be defined according to a capacity model, taking into consideration non-functional requirements around performance.
+Ultimately, a scale-unit architecture should be applied to optimize the end-to-end scalability of an AlwaysOn application design, so that all levels of the solution can appropriately scale. The relationship between related scale-units, and the components inside a single scale-unit, should be defined according to a capacity model, taking into consideration non-functional requirements around performance.
 
 ### Design considerations
 
@@ -73,7 +71,7 @@ Ultimately, a scale-unit architecture should be applied to optimize the end-to-e
 - **Define a regional deployment stamp** to unify the provisioning, management, and operation of regional application resources, into a heterogenous but inter-dependent scale-unit.
   - As the load increases, additional stamps can be deployed within the same or different Azure regions, in order to horizontally scale the solution.
 
-> When deploying an AlwaysOn solution within an Azure Landing Zone, ensure the Landing Zone subscription is dedicated to the application, in order to provide a clear management boundary and to avoid potential 'noisy neighbor' capacity risks. See the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
+> When deploying an AlwaysOn solution within an Azure Landing Zone, ensure the Landing Zone subscription is dedicated to the application, in order to provide a clear management boundary and to avoid potential the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
 
 - For high-scale application scenarios with significant volumes of traffic, design the solution to scale across multiple Azure subscriptions, to ensure the inherit scale-limits within a single subscription do not constrain the scalability.
   - Define a subscription-scoped deployment as a scale-unit to avoid a 'spill-and-fill' subscription model.
@@ -81,14 +79,15 @@ Ultimately, a scale-unit architecture should be applied to optimize the end-to-e
       - Where appropriate, multiple deployment stamps can be considered within a single region, but you should deploy them across independent subscriptions.
     - Separate the 'global' shared resources within a dedicated subscription to allow for consistent regional subscription deployment. Avoid using a specialized deployment for a 'primary' region.
 
-> The use of multiple subscriptions necessitates additional CI/CD complexity, which must be appropriately managed. Therefore, it is only recommended in extreme scale scenarios, where the limits of a single subscription are likely to become a hindrance.
+> [!IMPORTANT]
+> The use of multiple subscriptions necessitates additional CI/CD complexity, which must be appropriately managed. Therefore, it's only recommended in extreme scale scenarios, where the limits of a single subscription are likely to become a hindrance.
 
 - Where multiple production subscriptions are needed to ensure requisite scale, consider using a dedicated application management group, to simplify policy assignment through a policy aggregation boundary.
 
 - Deploy any considered environments, such as production, development, or test environments, into separate subscriptions. This practice ensures that lower environments do not contribute towards scale limits, and it reduces the risk of lower environment updates polluting production, by providing a clear management and identity boundary.
 
 - Define and analyze non-functional requirements, such as the availability SLO, within the context of key end-to-end user-flows. Technical and business scenarios will likely have distinct considerations for resilience, availability, latency, capacity, and observability.
-  - This practice will allow for relative flexibility in the AlwaysOn design approach, tailoring design decisions and technology choices at a user-flow level, since one size may not fit all.
+  - This practice will allow for relative flexibility in the design approach, tailoring design decisions and technology choices at a user-flow level, since one size may not fit all.
 
 - Model the required capacity around identified traffic patterns, in order to ensure sufficient capacity is provisioned at peak times and to prevent service degradation.
   - Leverage traffic patterns to optimize capacity and resource utilization, during periods of reduced traffic.
@@ -98,7 +97,7 @@ Ultimately, a scale-unit architecture should be applied to optimize the end-to-e
 
 ### Reference subscription scale-unit approach
 
-The following image demonstrates how the single subscription reference deployment model can be expanded across multiple subscriptions, in an extreme scale scenario, to navigate subscription scale-limits.
+This image demonstrates how the single subscription reference deployment model can be expanded across multiple subscriptions, in an extreme scale scenario, to navigate subscription scale-limits.
 
 ![AlwaysOn Subscription Scale Units](./images/alwayson-subscription-scale.gif "AlwaysOn Subscription Scale Units")
 
@@ -108,17 +107,18 @@ Unfortunately, failure is impossible to avoid in a highly distributed environmen
 
 [Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) allows highly-available regional deployments across different data centers within a region. Nearly all Azure services are available in either a zonal configuration (where service is pinned to a specific zone) or zone-redundant configuration (where the platform automatically ensures the service spans across zones and can withstand a zone outage). These configurations allow for fault-tolerance up to a datacenter level.
 
-While Availability Zones can be used to mitigate many fault scenarios, to maximize reliability multiple Azure regions should be used to ensure regional fault tolerance, so that application availability remains even in the event of a disaster scenario, such as Godzilla stepping on an Azure region. When defining a multi-region AlwaysOn application design, consideration should be given to different deployment strategies, such as active-active and active-passive, alongside application requirements, since there are significant trade-offs between each approach.
+While Availability Zones can be used to mitigate many fault scenarios, to maximize reliability multiple Azure regions should be used to ensure regional fault tolerance, so that application availability remains even in the event of a disaster scenario. When designing a multi-region highly available application, consider different deployment strategies, such as active-active and active-passive, alongside application requirements, because there are significant trade-offs between each approach.
 
 An active-active deployment strategy represents the gold standard for an AlwaysOn solution, since it maximizes availability and allows for higher composite SLAs. While active-active is the recommended approach, it can introduce challenges around data synchronization and consistency for many application scenarios, and these challenges must be fully addressed at a data platform level, alongside additional trade-offs, from increased cost exposure and increased engineering effort.
 
 Not every workload supports or requires multiple regions running simultaneously, and hence the precise application requirements should be weighed against these trade-offs to inform an optimal design decision. For certain application scenarios with lower reliability targets, different deployment models, such as active-passive or sharding, can be suitable alternatives.
 
-It's important to note that some Azure services are deployable or configurable as global resources, which are not constrained to a particular Azure region. Consequently, when accommodating both 'Scale-Unit Architecture' and 'Global Distribution', careful consideration should be given to how resources are optimally distributed across Azure regions. For example, the foundational reference implementation for AlwaysOn consists of both global and regional resources, with regional resources deployed across multiple regions to provide geo-availability, in the case of regional outages and to bring services closer to end-users. These regional deployments also serve as scale-unit "stamps" to provide additional capacity and availability when required.
+It's important to note that some Azure services are deployable or configurable as global resources, which are not constrained to a particular Azure region. Consequently, when accommodating both 'Scale-Unit Architecture' and 'Global Distribution', carefully consider to how resources are optimally distributed across Azure regions. For example, the foundational reference implementation for AlwaysOn consists of both global and regional resources, with regional resources deployed across multiple regions to provide geo-availability, in the case of regional outages and to bring services closer to end-users. These regional deployments also serve as scale-unit "stamps" to provide additional capacity and availability when required.
+
+This image depicts the high-level active-active design for the [foundational-online reference implementation](https://github.com/azure/alwayson-foundational-online), where a user accesses the application via a central global entry point that then redirects requests to a suitable regional deployment stamp.
 
 ![AlwaysOn Foundational-Online Architecture](./images/alwayson-high-level-architecture.png)
 
-The previous image depicts the high-level active-active design for the [foundational-online reference implementation](https://github.com/azure/alwayson-foundational-online), where a user accesses the application via a central global entry point that then redirects requests to a suitable regional deployment stamp.
 
 ### Design considerations
 
@@ -139,7 +139,7 @@ The previous image depicts the high-level active-active design for the [foundati
 - Compliance requirements around geographical data residency, data protection, and data retention can have a significant bearing on appropriate geographical distribution.
   - *Are there specific regions where data must reside or where resources have to be deployed?*
 
-- The geographic proximity and density of users or dependent systems should inform design decisions around the global distribution of an AlwaysOn application.
+- The geographic proximity and density of users or dependent systems should inform design decisions around the global distribution.
   - *Where are the requests physically originating from?*
 
 - The connectivity method by which users or systems access the application, whether over the public Internet or private networks leveraging either VPN or Express Route connectivity.
@@ -158,7 +158,8 @@ The previous image depicts the high-level active-active design for the [foundati
 
 - Deploy the solution within a minimum of 2 Azure regions to protect against regional outages.
   - Prioritize the use of paired regions to benefit from SDP risk mitigations and platform recovery capabilities.
-  > For scenarios targeting a >= 99.99% SLO, a minimum of 3 deployment regions should be used to maximize the composite SLA and overall reliability.
+  > [!IMPORTANT]
+  > For scenarios targeting a >= 99.99% SLO, a minimum of three deployment regions is recommended to maximize the composite SLA and overall reliability.
 
 - Use an active-active deployment strategy where possible to maximize reliability.
   - Where data/state consistency challenges exist explore the use of a) a globally distributed data store, b) stamped regional architecture, or c) a partially active-active deployment, where some components are active across all regions while others are located centrally within a primary region.
@@ -179,7 +180,7 @@ The previous image depicts the high-level active-active design for the [foundati
 - Select deployment regions which offer requisite capabilities and characteristics to achieve performance and availability targets, while fulfilling data residency and retention requirements.
   - Within a single geography, prioritize the use of regional pairs to benefit from SDP serialized rollouts for planned maintenance, and regional prioritization in the event of unplanned maintenance.
   
-- It is not uncommon that data compliance requirements will constrain the number of available regions and potentially force AlwaysOn design compromises. In such cases, additional investment in operational wrappers is highly recommended to predict, detect, and respond to failures.
+- It is not uncommon that data compliance requirements will constrain the number of available regions and potentially force design compromises. In such cases, additional investment in operational wrappers is highly recommended to predict, detect, and respond to failures.
   - If only a single Azure region is suitable, multiple deployment stamps ('regional scale-units') should be deployed within the selected region to mitigate some risk, leveraging Availability Zones to provide datacenter-level fault tolerance. However, such a significant compromise in geographical distribution will drastically constrain the attainable composite SLA and overall reliability.
   - If suitable Azure regions do not all offer requisite capabilities, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability.
     - For example, when constrained to a geography with two regions where only one region supports Availability Zones (3 + 1 datacenter model), create a secondary deployment pattern using fault domain isolation to allow for both regions to be deployed in an active configuration, ensuring the primary region houses multiple deployment stamps.
@@ -190,13 +191,15 @@ The previous image depicts the high-level active-active design for the [foundati
 
 ### Reference global distribution approach
 
-The image below demonstrates how the the AlwaysOn reference application can be designed to scale across multiple Azure regions, with consideration given to scenarios where constraints on available regions necessitate multiple deployment stamps within a single region.
+This image shows how the the AlwaysOn reference application can be designed to scale across multiple Azure regions, with consideration given to scenarios where constraints on available regions necessitate multiple deployment stamps within a single region.
 
 ![AlwaysOn Global Distribution](./images/alwayson-global-distribution.gif "AlwaysOn Global Distribution")
 
-## Loose coupled event-driven architecture
+## Loosely-coupled event-driven architecture
 
-Loose coupling provides the cornerstone of a microservice architecture by allowing services to be designed in a way that each service has little or no knowledge of surrounding services. More specifically, it allows a service to operate independently ("loose") while still communicating with other services through well-defined interfaces ("coupling"), and in the context of AlwaysOn it further facilitates high-availability by preventing downstream failures from cascading to frontends or different deployment stamps. The following list captures the key characteristics of loose coupling, which should be evaluated when defining an AlwaysOn application design.
+Loose coupling provides the cornerstone of a microservice architecture by allowing services to be designed in a way that each service has little or no knowledge of surrounding services. More specifically, it allows a service to operate independently ("loose") while still communicating with other services through well-defined interfaces ("coupling"), and in the context of AlwaysOn it further facilitates high-availability by preventing downstream failures from cascading to frontends or different deployment stamps. 
+
+Evaluate these key characteristics of loose coupling for application design:
 
 - Services are not constrained to use the same compute platform, programming language, runtime, or operating system.
 - Services can scale independently, optimizing the use of infrastructure and platform resources.
@@ -205,6 +208,9 @@ Loose coupling provides the cornerstone of a microservice architecture by allowi
 - End-to-end tracing requires more complex orchestration.
 
 When implementing loose coupling, **Event-driven architecture** and **asynchronous processing** are key design patterns which should be applied for interactions which do not require an immediate response. Events represent a change in state within entities and are generated by event *producers* (emitters). Producers do not know anything about how events should be processed or handled, since that is the responsibility of event *consumers*. When using asynchronous event-driven communication, a producer publishes an event when something happens within its domain which another component needs to be aware of, such as a price change in a product catalogue, which consumers will subscribe to receive so they can process the events asynchronously.
+
+> [!TIP]
+> Refer to the [Event-driven architecture](/azure/architecture/guide/architecture-styles/event-driven) and [asynchronous processing](/azure/architecture/patterns/async-request-reply) patterns for further details.
 
 ![Asynchronous Event-Driven Communication](./images/alwayson-asynchronous-communication.png)
 *Image source: [Asynchronous Message-Based Communication](/dotnet/architecture/microservices/architect-microservice-container-applications/asynchronous-message-based-communication)*
@@ -220,7 +226,7 @@ In reality, applications can combine loose and tight-coupling, depending on busi
   - [Azure Front Door](/azure/frontdoor/front-door-caching) provides Azure-native edge caching capabilities as well as routing features to divide static and dynamic content.
     - By creating the appropriate routing rules in Azure Front Door, `/static/*` traffic can be transparently redirected to static content.
   - More complex caching scenarios can be implemented using the [Azure CDN](https://azure.microsoft.com/services/cdn) service to establish a full-fledged content delivery network for significant static content volumes.
-    - The Azure CDN service will likely be more cost effective, but does not provide the same advanced routing and Web Application Firewall (WAF) capabilities which are recommended for other areas of an AlwaysOn application design. It does, however, offer further flexibility to integrate with similar services from third-party solutions, such as Akamai and Verizon.
+    - The Azure CDN service will likely be more cost effective, but does not provide the same advanced routing and Web Application Firewall (WAF) capabilities which are recommended for other areas of an application design. It does, however, offer further flexibility to integrate with similar services from third-party solutions, such as Akamai and Verizon.
   - When comparing the Azure Front Door and Azure CDN services, the following decision factors should be explored:
     - Can required caching rules be accomplished using the rules engine.
     - Size of the stored content and the associated cost.
@@ -246,11 +252,11 @@ More specifically, all application components should be designed from the ground
 
 When issues are not transient in-nature and cannot be fully mitigated within application logic, it becomes the role of the health model and operational wrappers to take corrective action. However, for this to happen effectively, it is essential that application code incorporate proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis when required. More specifically, application code should be implemented to facilitate [Distributed Tracing](/dotnet/core/diagnostics/distributed-tracing-concepts), by providing the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
 
-> Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tracing) can help significantly to query, correlate, and visualize application traces.
+Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tracing) can help significantly to query, correlate, and visualize application traces.
 
 ### Design considerations
 
-- Vendor provided SDKs, such as the Azure service SDKs, will typically provide built-in resiliency capabilities like retry mechanisms.
+- Vendor-provided SDKs, such as the Azure service SDKs, will typically provide built-in resiliency capabilities like retry mechanisms.
 
 - It is not uncommon for application responses to transient issues to cause cascading failures.
   - For example, retry without appropriate back-off will exacerbate when a service is being throttled will likely exacerbate the issue.
@@ -311,19 +317,11 @@ When issues are not transient in-nature and cannot be fully mitigated within app
 - Select a unified operational data sink for application traces, metrics, and logs to enable operators to seamlessly debug issues.
   - Ensure operational data is used in conjunction with business requirements to inform an [application health model](./mission-critical-health-modeling.md).
 
-## Next steps
+## Next step
 
-- Review the remaining 7 critical design areas to inform key design decisions surrounding the definition of a target architecture.
-  - [Application Platform](./mission-critical-application-platform.md)
-  - [Data Platform](./mission-critical-data-platform.md)
-  - [Health Modeling and Observability](./mission-critical-health-modeling.md)
-  - [Deployment and Testing](./mission-critical-deployment-testing.md)
-  - [Networking and Connectivity](./mission-critical-networking-connectivity.md)
-  - [Security](./mission-critical-Security.md)
-  - [Operational Procedures](./mission-critical-operational-procedures.md)
+Review the considerations for the application platform.
 
-### Reference implementation
+> [!div class="nextstepaction"]
+> [Application Platform](./mission-critical-application-platform.md)
 
-- Use the foundational reference implementations to construct a synthetic application environment that can be used to validate key design decisions. 
-  - [Foundational-Online reference implementation](https://github.com/azure/alwayson-foundational-online) on GitHub.
-  - [Foundational-Connected reference implementation](https://github.com/azure/alwayson-foundational-connected) on GitHub.
+
