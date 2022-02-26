@@ -1,6 +1,6 @@
 ---
 title: Mission-critical workloads
-description: Overview of mission-critical solutions on Azure that are highly reliable.
+description: Overview of mission-critical workloads on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
 ms.date: 02/28/2022
@@ -24,9 +24,7 @@ The term _workload_ refers to a collection of application resources that support
 
 The term _mission-critical_ refers to a [criticality classification](/azure/cloud-adoption-framework/manage/considerations/criticality) where a significant financial cost (business-critical) or human cost (safety-critical) is associated with unavailability or underperformance.
 
-A _mission-critical workload_ therefore describes a collection of application resources which must be highly reliable on the platform, striving to always be operational and available.
-
-For example, a mission-critical workload with a 99.999% availability Service Level Objective (SLO) requires a much higher level of reliability and operational rigour than another workload with an SLO of 99.9%. However, there are obvious financial and opportunity cost implications associated with introducing greater reliability, and such trade-offs should be carefully considered in the context of workload requirements.
+A _mission-critical workload_ therefore describes a collection of application resources which must be highly reliable on the platform, and strive to always be operational and available.
 
 ## What are the common challenges?
 
@@ -63,6 +61,8 @@ Mission-critical guidance is composed of architectural considerations and recomm
 - **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
 - **Operational procedures**&mdash; Processes related to deployment, key management, patching and updates.
 
+Readers are advised to familiarize themselves with these 8 critical design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions. For example, to define a target architecture it is critical to determine how best to monitor application health across key components. In this instance, the reader should review the Health Modelling design area, using the outlined recommendations to help drive decisions.
+
 ## Illustrative examples
 
 The guidance is based on a solution-orientated approach to illustrate the key design considerations and recommendations. 
@@ -76,12 +76,14 @@ There are two foundational implementations that serve as a basis for further sol
 - [Azure Mission-Critical Online](https://github.com/azure/alwayson-foundational-online)
 
   Provides a foundation for building a cloud-native, highly-scalable, internet-facing application on Microsoft Azure.
-  The workload is accessed over a public endpoint and does not require private network connectivity to a surrounding organizational technical estate.
+  
+  _The workload is accessed over a public endpoint and does not require private network connectivity to a surrounding organizational technical estate._
 
 - [Azure Mission-Critical Connected](https://github.com/azure/alwayson-foundational-connected) 
 
   Provides a foundation for building a corp-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints.
-  The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads.
+  
+  _The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads._
 
 ## Next step
 
