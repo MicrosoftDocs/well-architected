@@ -81,7 +81,7 @@ There are two foundational implementations that serve as a basis for further sol
 
 - [Azure Mission-Critical Connected](https://github.com/azure/alwayson-foundational-connected) 
 
-  Provides a foundation for building a corp-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints.
+  Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints.
   
   _The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads._
 
