@@ -430,9 +430,9 @@ AIOps is used to drive predictive action, interpreting and correlating complex o
 
 ## Next step
 
-Review the considerations for networking considerations.
+Review the deployment and tesing considerations.
 
 > [!div class="nextstepaction"]
-> [Network and connectivity](./mission-critical-networking-connectivity.md)
+> [Deployment and Testing](mission-critical-deployment-testing.md)
 
 
