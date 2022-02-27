@@ -1,9 +1,9 @@
 ---
-title: Mission-critical workloads - Application design
-description: This design area explores requisite application design patterns for building a best-of-breed reliable application on Azure.
+title: Application design for mission-critical workloads on Azure
+description: This design area explores requisite application design patterns for building a highly reliable application on Azure.
 author: calcof
 ms.author: calcof
-ms.date: 02/02/2022
+ms.date: 02/28/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -14,12 +14,12 @@ ms.custom:
   - alwayson
 ---
 
-# Application design
+# Application design for mission-critical workloads on Azure
 
 Both functional application requirements and non-functional requirements are critical to inform key design decisions for a mission-critical application design. However, these requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved. This article explores the important application design patterns for building a highly reliable application on Azure.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
 > ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson)
 >
@@ -82,7 +82,7 @@ The required performance of the solution under load is a critical decision facto
 
   As the load increases, additional stamps can be deployed within the same or different Azure regions, in order to horizontally scale the solution.
 
-> [!IMPORTANT]
+> [!CAUTION]
 > When deploying within an Azure Landing Zone, ensure the Landing Zone subscription is dedicated to the application, in order to provide a clear management boundary and to avoid potential the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
 
 - For high-scale application scenarios with significant volumes of traffic, design the solution to scale across multiple Azure subscriptions, to ensure the inherit scale-limits within a single subscription don't constrain the scalability.
