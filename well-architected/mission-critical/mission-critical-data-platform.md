@@ -800,7 +800,7 @@ Azure Synapse provides an enterprise analytical platform that brings together re
 
 ## Next step
 
-Review the considerations for the monitoring the application and the infrastruction in which it resides.
+Review the considerations for monitoring the application and the overall workload.
 
 > [!div class="nextstepaction"]
 > [Health Modeling and observability](./mission-critical-health-modeling.md)
