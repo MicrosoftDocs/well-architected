@@ -25,7 +25,7 @@ Azure provides several options that can help analyze usage and make recommendati
 Reserved instances can lower cost for long running workloads. For intermittent workloads, prepaid capacity might go unused and it doesn't carry over to the next billing period. Usage exceeding the reserved quantity is charged using more expensive pay-as-you-go rates. But there are some flexible options. You can exchange or refund a reservation within limits. For more information, see [Self-service exchanges and refunds for Azure Reservations](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
 
 ## Scope
-Reservations can be applied to a specific scope—subscription, resource group, or a single resource. Suppose you set the scope as the resource group, the reservation savings will apply to the applicable resources provisioned in that group. For more information, see [Scope reservations](/azure/cost-management-billing/reservations/prepare-buy-reservation#scope-reservations).
+Reservations can be applied to a shared scope, a specific scope—subscription, or resource group. Suppose you set the scope as the resource group, the reservation savings will apply to the applicable resources provisioned in that group. For more information, see [Scope reservations](/azure/cost-management-billing/reservations/prepare-buy-reservation#scope-reservations).
 
 ## Services, subscription, and offer types
 Many services are eligible for reservations. This range covers virtual machines and a wide variety of managed services. For information about the services that are eligible for reservations, see [Charges covered by reservation](/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation).
