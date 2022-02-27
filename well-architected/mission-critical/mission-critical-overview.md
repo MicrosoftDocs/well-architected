@@ -76,11 +76,11 @@ There are two foundational implementations that serve as a basis for further sol
 > The reference implementations are part of an open source project available on GitHub.  
 > ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson).
 
-- [Azure AlwaysOn Foundational Online](https://github.com/azure/alwayson-foundational-online)
+- [AlwaysOn Foundational Online](https://github.com/azure/alwayson-foundational-online)
 
   The application is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate. The pipeline deploys the application Azure Subscription security and compliance guardrails and has no network connectivity requirements. 
 
-- [Azure AlwaysOn Foundational Connected](https://github.com/azure/alwayson-foundational-connected) 
+- [AlwaysOn Foundational Connected](https://github.com/azure/alwayson-foundational-connected) 
 
   The workload needs connectivity to other company resources. The pipeline deploys the application Azure Subscription security and compliance guardrails and takes a dependency on pre-provided Virtual Networks for connectivity to other company resources. This is usually achieved through a hub-and-spoke model through peering. This use case is intended for scenarios that require integration with an organizational technical estate for either public-facing or internal-facing workloads.
 
