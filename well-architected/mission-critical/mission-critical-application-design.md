@@ -16,7 +16,7 @@ ms.custom:
 
 # Application design
 
-Both functional application requirements and non-functional requirements, such as those surrounding high-availability and performance, are critical to inform key design decisions for a mission-critical application design. However, these requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved. This article explores the important application design patterns for building a highly reliable application on Azure.
+Both functional application requirements and non-functional requirements are critical to inform key design decisions for a mission-critical application design. However, these requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved. This article explores the important application design patterns for building a highly reliable application on Azure.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
@@ -63,7 +63,7 @@ The expected peak request rate (requests per second) and daily/weekly/seasonal t
  
 **Is traffic expected to grow? At what rate will it grow?**
 
-The expected growth patterns for both traffic and data volume inform the design, with regards to sustainable scale.
+The expected growth patterns for both traffic and data volume inform the design, with regard to sustainable scale.
 
 **Is a degraded service with high response times acceptable under load?**
 
@@ -116,7 +116,7 @@ Failure is impossible to avoid in any highly distributed environment. So, always
 
 Here are some strategies to mitigate many fault scenarios.
 
-- [Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) allows highly-available regional deployments across different data centers within a region. Nearly all Azure services are available in either a zonal configuration (where service is pinned to a specific zone) or zone-redundant configuration (where the platform automatically ensures the service spans across zones and can withstand a zone outage). These configurations allow for fault-tolerance up to a datacenter level.
+- [Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) allows highly available regional deployments across different data centers within a region. Nearly all Azure services are available in either a zonal configuration (where service is pinned to a specific zone) or zone-redundant configuration (where the platform automatically ensures the service spans across zones and can withstand a zone outage). These configurations allow for fault-tolerance up to a datacenter level.
 
 To maximize reliability, consider using multiple Azure regions to ensure regional fault tolerance, so that application availability remains even when an entire region goes down. When designing a multi-region application, consider different deployment strategies, such as active-active and active-passive, alongside application requirements, because there are significant trade-offs between each approach.
 
@@ -160,7 +160,7 @@ The connectivity method by which users or systems access the application, whethe
 - Availability Zones have a latency perimeter of less than two milliseconds between availability zones.
   - For workloads which are particularly 'chatty' across zones this latency can accumulate to form a non-trivial performance penalty, as well as incurring bandwidth charges for inter-zone data transfer.
 
-  - An active-active deployment across Microsoft Azure and other cloud providers can be considered to further mitigate reliance on global dependencies within a single cloud provider. A multi-cloud active-active deployment strategy introduces a significant amount of complexity where CI/CD is concerned, particularly given the significant difference in resource specifications and capabilities between cloud providers, which necessitates specialized deployment stamps for each cloud.  
+  - An active-active deployment across Azure and other cloud providers can be considered to further mitigate reliance on global dependencies within a single cloud provider. A multi-cloud active-active deployment strategy introduces a significant amount of complexity where CI/CD is concerned, particularly given the significant difference in resource specifications and capabilities between cloud providers. This necessitates specialized deployment stamps for each cloud.  
 
 ### Design recommendations
 
@@ -214,7 +214,7 @@ Evaluate these key characteristics of loose coupling for application design:
 - Transactional integrity is harder to maintain because data creation and persistence happens within separate services.
 - End-to-end tracing requires more complex orchestration.
 
-When implementing loose coupling, **Event-driven architecture** and **asynchronous message processing** are key design patterns which should be applied for interactions which do not require an immediate response. Events indicate a change in state within entities and are generated by event *producers*. Producers do not know anything about how events should be processed or handled. The is the responsibility of *consumers*. When using asynchronous event-driven communication, a producer publishes an event when something happens within its domain which another component needs to be aware of, such as a price change in a product catalogue, which consumers will subscribe to receive so they can process the events asynchronously.
+When implementing loose coupling, **event-driven architecture** and **asynchronous message processing** are key design patterns which should be applied for interactions which do not require an immediate response. Events indicate a change in state within entities and are generated by event *producers*. Producers do not know anything about how events should be processed or handled. The is the responsibility of *consumers*. When using asynchronous event-driven communication, a producer publishes an event when something happens within its domain which another component needs to be aware of, such as a price change in a product catalogue, which consumers will subscribe to receive so they can process the events asynchronously.
 
 > [!TIP]
 > Refer to the [Event-driven architecture](/azure/architecture/guide/architecture-styles/event-driven) and [asynchronous processing](/azure/architecture/patterns/async-request-reply) patterns for further details.
@@ -261,9 +261,9 @@ The AlwaysOn reference implementation uses microservices to process a single bus
 
 A mission-critical application architecture must be developed with resiliency in-mind. It's therefore critical that application code be designed and developed to be resilient, ensuring that the application can respond to failure, which is ultimately an unavoidable characteristic of highly distributed multi-tenant cloud environments like Azure.
 
-More specifically, all application components should be designed from the ground-up to apply key resiliency patterns for self-healing, such as [retries with back-off](/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly) and [circuit breaker](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern). Such patterns go great lengths to transparently handle transient faults such as network packet loss, or the temporary loss of a downstream dependency. Ultimately, it is paramount that the application code cater for as many failure scenarios as possible in order to maximize service availability and reliability.
+More specifically, all application components should be designed from the ground-up to apply key resiliency patterns for self-healing, such as [retries with back-off](/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly) and [circuit breaker](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern). Such patterns go great lengths to transparently handle transient faults such as network packet loss, or the temporary loss of a downstream dependency. So, the application code should address as many failure scenarios as possible in order to maximize service availability and reliability.
 
-When issues are not transient in-nature and cannot be fully mitigated within application logic, it becomes the role of the health model and operational wrappers to take corrective action. However, for this to happen effectively, it is essential that application code incorporate proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis when required. More specifically, application code should be implemented to facilitate [Distributed Tracing](/dotnet/core/diagnostics/distributed-tracing-concepts), by providing the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
+When issues are not transient in-nature and cannot be fully mitigated within application logic, it becomes the role of the health model and operational wrappers to take corrective action. However, for this to happen effectively, it's essential that the application code incorporates proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis when required. More specifically, application code should be implemented to facilitate [Distributed Tracing](/dotnet/core/diagnostics/distributed-tracing-concepts), by providing the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
 
 Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tracing) can help significantly to query, correlate, and visualize application traces.
 
@@ -283,7 +283,7 @@ Here are some other resiliency-related patterns:
 |[Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling)| Introduces a buffer between consumers and requested resources to ensure consistent load levels. As consumer requests are enqueued, a worker process dequeues the requests and processes them against the requested resource at a pace set by the worker and the requested resource's ability to process the requests. If consumers expect replies to their requests, a separate response mechanism will also need to be implemented.|
 |[Circuit Breaker](/azure/architecture/patterns/circuit-breaker)| Provides stability by either waiting for recovery, or quickly rejecting requests rather than blocking while waiting for an unavailable remote service or resource.|
 |[Bulkhead](/azure/architecture/patterns/bulkhead)|Strives to partition service instances into groups based on load and availability requirements, isolating failures to sustain service functionality.|
-|[Saga](/azure/architecture/reference-architectures/saga/saga)| Manage data consistency across microservices with independent datastores by ensuring services update each other through defined event or message channels. <ul><li>Each service performs local transactions to update its own state and publishes an event to trigger the next local transaction in the saga.</li><li>If a service update fails, the saga executes compensating transactions to counteract preceding service update steps.</li><li>Individual service update steps can themselves implement resiliency patterns, such as retry.</li>|
+|[Saga](/azure/architecture/reference-architectures/saga/saga)| Manage data consistency across microservices with independent datastores by ensuring services update each other through defined event or message channels. Each service performs local transactions to update its own state and publishes an event to trigger the next local transaction in the saga. If a service update fails, the saga executes compensating transactions to counteract preceding service update steps.Individual service update steps can themselves implement resiliency patterns, such as retry.|
 |[Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring)|Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals.|
 |[Retry](/azure/architecture/patterns/retry)|Handles transient failures elegantly and transparently.|
 |[Circuit Breaker](/azure/architecture/patterns/circuit-breaker)|Handles faults that might take a variable amount of time to recover from when connecting to a remote service or resource.|
@@ -302,7 +302,7 @@ Here are some other resiliency-related patterns:
 
 - Implement resiliency patterns using proven standardized packages, such as [Polly for C#](http://www.thepollyproject.org/) or [Sentinel for Java](https://github.com/alibaba/Sentinel).
 
-- Implement [Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring) by exposing functional checks within application code through health endpoints which external monitoring solutions can poll to retrieve application component health statuses. Responses should be interpreted alongside key operational metrics to inform application health and trigger a operational responses, such as raising an alert or performing a compensating roll-back deployment.
+- Implement [Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring) by exposing functional checks within application code through health endpoints which external monitoring solutions can poll to retrieve application component health statuses. Responses should be interpreted alongside key operational metrics to inform application health and trigger an operational responses, such as raising an alert or performing a compensating roll-back deployment.
 
 - Implement [Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling) by applying a prioritized ordering so that the most important activities are performed first.
 

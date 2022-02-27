@@ -56,7 +56,7 @@ Mission-critical guidance is composed of architectural considerations and recomm
 - **Application platform**&mdash;Hosting environment choices, application dependencies, frameworks, and libraries.
 - **Data platform**&mdash;Choices in data store technologies by evaluating the volume, velocity, variety, and veracity characteristics.
 - **Networking and Connectivity**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
-- **Health Modelling**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.
+- **Health Modeling**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.
 - **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation considerations. Incorporating testing scenarios, such as unit, build, static, security, integration, regression, UX, performance, capacity and failure injection (chaos).
 - **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
 - **Operational procedures**&mdash; Processes related to deployment, key management, patching and updates.
@@ -71,7 +71,7 @@ There are two foundational implementations that serve as a basis for further sol
 
 > [!IMPORTANT]
 > The reference implementations are part of an open source project available on GitHub.  
-> ![GitHub logo](./../_images/github.svg) [Azure Mission-Critical open source project](http://github.com/azure/alwayson).
+> ![GitHub logo](./../_images/github.svg) [ Mission-Critical open source project](http://github.com/azure/alwayson).
 
 - [Azure Mission-Critical Online](https://github.com/azure/alwayson-foundational-online)
 

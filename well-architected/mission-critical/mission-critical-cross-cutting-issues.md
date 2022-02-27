@@ -20,7 +20,7 @@ ms.custom:
 There are several cross-cutting concerns that traverse the [key design areas](mission-critical-overview.md#what-are-the-key-design-areas). This article provides recommendations for the common concerns. 
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
 > ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson)
 >
@@ -70,4 +70,4 @@ See [Azure updates](https://azure.microsoft.com/updates/) for latest information
 Review each design area associated with a  mission-critical application.
 
 > [!div class="nextstepaction"]
-> [Design areas](./mission-critical-design-areas.md)
+> [Design areas](./mission-critical-application-pattern.md)
