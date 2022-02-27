@@ -1,9 +1,9 @@
 ---
 title: Application platform considerations for mission-critical workloads on Azure
-description: This design area explores requisite decision factors and provide recommendations related to the selection, design, and configuration of an appropriate application hosting platform for a mission critical application on Azure
+description: This design area explores requisite decision factors and provides recommendations related to the selection, design, and configuration of an appropriate application hosting platform for a mission critical application on Azure
 author: calcof
 ms.author: calcof
-ms.date: 02/02/2022
+ms.date: 02/28/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -17,13 +17,13 @@ ms.custom:
 
 # Application platform considerations for mission-critical workloads on Azure
 
-Azure provides many [compute services](/azure/architecture/guide/technology-choices/compute-decision-tree) for hosting highly available applications. The services differ in capability and complexity. We recommend that you fully understand the capabitlity matrix with focus on:
+Azure provides many [compute services](/azure/architecture/guide/technology-choices/compute-decision-tree) for hosting highly available applications. The services differ in capability and complexity. We recommend that you fully understand the capability matrix with focus on:
 - Non-functional requirements surrounding reliability, availability, performance, and security.
 - Decision factors such as scalability, cost, operability, and complexity. 
 
 The selection of an appropriate application hosting platform is a critical decision that has impact on all other design areas. For example, the scale-limits of a particular service will have a key bearing on suitability and the overall application design in terms of scale-unit definitions. A mission-critical application can use more than one compute service in parallel to support multiple composite workloads and microservices with distinct platform requirements.
 
-This design area explores the important decision factors and provide recommendations related to the selection, design, and configuration of an appropriate application hosting platform.
+This design area explores the important decision factors and provides recommendations related to the selection, design, and configuration of an appropriate application hosting platform.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
@@ -76,7 +76,7 @@ Containerization allows developers to create and deploy applications faster and 
 - Containerization enables workloads to run on Azure without application code needing to be re-written.
   - Provides a good opportunity to modernize legacy applications without significant code change, and can therefore be suitable for 'lift and shift' scenarios depending on the considered application frameworks and external dependencies.
 
-- While it is possible to store data within a running container's filesystem, the data will not persist when the container is recreated, so instead persistence is typically achieved by 'mounting' external storage.
+- While it'spossible to store data within a running container's filesystem, the data will not persist when the container is recreated, so instead persistence is typically achieved by 'mounting' external storage.
 
 ### Design recommendations
 
@@ -94,21 +94,21 @@ There are several Azure application platforms capable of effectively hosting con
 - [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/)
 - [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)
 
-There are advantages and disadvantages associated with each of these Azure container platforms which should be analyzed in the context of business requirements to inform an optimal technical choice; each platform serves an optimal choice for certain scenarios. However, given the principles underpinning the  design methodology strive to optimize reliability, scalability, and performance, it is strongly recommended to prioritize the use of Azure Kubernetes Service.
+There are advantages and disadvantages associated with each of these Azure container platforms which should be analyzed in the context of business requirements to inform an optimal technical choice; each platform serves an optimal choice for certain scenarios. However, given the principles underpinning the  design methodology strive to optimize reliability, scalability, and performance, it'sstrongly recommended to prioritize the use of Azure Kubernetes Service.
 
-Azure Kubernetes Service (AKS) is Microsoft Azure's native managed Kubernetes service which allows for rapid Kubernetes cluster provisioning without complex cluster administration activities, and enhances standard Kubernetes with a rich feature set that includes advanced networking and identity capabilities. It is important to note that AKS is the target application compute platform across Azure engineering teams within Microsoft, as well other Microsoft engineering organizations, such as Xbox and LinkedIn.
+Azure Kubernetes Service (AKS) is Microsoft Azure's native managed Kubernetes service which allows for rapid Kubernetes cluster provisioning without complex cluster administration activities, and enhances standard Kubernetes with a rich feature set that includes advanced networking and identity capabilities. 
+
+### Design considerations
 
 For web and API based workload scenarios Azure App Services offers a feasible alternative to AKS, providing a low-friction container platform without the complexity of Kubernetes.
 
-> The Design considerations and recommendations within this section will therefore focus on optimal AKS usage as well as App Services for low-scale scenarios.
-
-### Design Considerations
+The considerations and recommendations within this section will therefore focus on optimal AKS usage as well as App Services for low-scale scenarios.
 
 **Azure Kubernetes Service**
 
 - There are many different container orchestrators, but Kubernetes has become the clear market leader and is best supported across the open source community and major cloud providers.
   - Kubernetes expertise is readily available within the employment market.
-  - Kubernetes has a steep learning curve, so if development teams are new, it will require non-trivial engineering investment to set up and maintain an Kubernetes environment in a secure and reliable way.
+  - Kubernetes has a steep learning curve, so if development teams are new, it will require non-trivial engineering investment to set up and maintain a Kubernetes environment in a secure and reliable way.
   - Kubernetes as well as managed Kubernetes offerings like AKS are widely available and can address concerns reg. vendor lock-in.
 
 - AKS provides a [control plane](https://kubernetes.io/docs/concepts/overview/components/) that is managed by Microsoft.
@@ -139,12 +139,12 @@ For web and API based workload scenarios Azure App Services offers a feasible al
 - AKS supports different network plugins. The [Azure CNI plugin](/azure/aks/concepts-network#compare-network-models) is required to enable certain capabilities within AKS, such as Windows-based node pools or Kubernetes Network Policies.
 
 - AKS differentiates between [system node pools](/azure/aks/use-system-pools#system-and-user-node-pools) and user node pools.
-  - AKS prefers scheduling system pods on node pools that are labelled as system.
+  - AKS prefers scheduling system pods on node pools that are labeled as system.
   - User node pools allow you to [scale down to 0](/azure/aks/scale-cluster#scale-user-node-pools-to-0).
 
 - The [AKS Stop/Start cluster feature](/azure/aks/start-stop-cluster) allows an AKS cluster in dev/test scenarios to be paused while  maintaining cluster configuration, saving time and cost compared to re-provisioning.
 
-- Azure Monitor for containers (Container Insights) provides a seamless onboarding experience, enables various monitoring capabilities out of the box as well as more advanced scenarios via its built in [Prometheus scraping](/azure/azure-monitor/insights/container-insights-prometheus-integration) support.
+- Azure Monitor for containers (Container Insights) provides a seamless onboarding experience, enables various monitoring capabilities out of the box as well as more advanced scenarios via its built-in [Prometheus scraping](/azure/azure-monitor/insights/container-insights-prometheus-integration) support.
 
 - AKS offers integration with Azure AD to enable the use of Managed Identities for AKS as well as for node pool and individual pods, Role Based Access Control (RBAC) using Azure AD credentials as well as [authentication with Azure Container Registry (ACR)](/azure/aks/cluster-container-registry-integration).
 
@@ -182,7 +182,7 @@ For web and API based workload scenarios Azure App Services offers a feasible al
 - The App Service Premium (v3) Plan has a 20% discount versus comparable Pv2 configurations.
   - Reserved Instance commitment (1Y, 3Y, Dev/Test) discounts are available for App Services running in the Premium v3 plan.
 
-- Diagnostic logging provides the ability to ingest application and platform level logs into either Log Analytics, Azure Storage, or a third party tool via Event Hub.
+- Diagnostic logging provides the ability to ingest application and platform level logs into either Log Analytics, Azure Storage, or a third party tool via Event Hubs.
 
 - Application performance monitoring with Application Insights provides deep insights into application performance.
   - For Linux Plans a code-based enablement (SDK) is required.
@@ -197,7 +197,7 @@ For web and API based workload scenarios Azure App Services offers a feasible al
 - Deploy [AKS clusters across different Azure regions](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) as a scale-unit to maximize reliability and availability.
 
 - Configure the use of AKS node pools to maximize reliability.
-  - Utilize Virtual Machine Scale Set (VMSS) with Standard Load Balancer (SLB) configuration format.
+  - Utilize Virtual Machine Scale Set (virtual machine scale set) with Standard Load Balancer (SLB) configuration format.
   - Use [Availability Zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS control plane and agent nodes across physically separate datacenters.
     - Where co-locality latency requirements exist, either a VMSS-based AKS deployment within a single zone or [proximity placement groups](/azure/aks/reduce-latency-ppg) should be used to minimize inter-node latency.
   - Ensure the System node pool is isolated from application workloads.
@@ -290,9 +290,9 @@ For web and API based workload scenarios Azure App Services offers a feasible al
   - Consider opening a support ticket to increase the maximum number of workers to twice the instance count required to serve normal peak load.
 
 - Evaluate the use of TCP and SNAT ports to avoid outbound connection errors.
-  - Predictively detect SNAT port exhaustion through load testing while monitoring ports using Azure Monitor, and if SNAT errors occur, it is necessary to either scale across more/larger workers, or implement coding practices to help preserve and re-use SNAT ports, such as connection pooling or the lazy loading of resources.
+  - Predictively detect SNAT port exhaustion through load testing while monitoring ports using Azure Monitor, and if SNAT errors occur, it'snecessary to either scale across more/larger workers, or implement coding practices to help preserve and re-use SNAT ports, such as connection pooling or the lazy loading of resources.
 
-  - It is recommended not to exceed 100 simultaneous outbound connections to a public IP Address per worker, and to avoid communicating with downstream services via public IP addresses when a [Private Endpoint](/azure/private-link/private-endpoint-overview) or [Service Endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) could be used.
+  - It's recommended not to exceed 100 simultaneous outbound connections to a public IP Address per worker, and to avoid communicating with downstream services via public IP addresses when a [Private Endpoint](/azure/private-link/private-endpoint-overview) or [Service Endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) could be used.
 
 - Avoid unnecessary worker restarts.
   - Make changes within a deployment slot other than the slot currently configured to accept production traffic. After workers are recycled and warmed up, a 'swap' can be performed without unnecessary down time.
@@ -311,7 +311,7 @@ For web and API based workload scenarios Azure App Services offers a feasible al
 - Enable [Application Insights Alerts](/Azure/azure-monitor/app/azure-web-apps) to be made aware of fault conditions.
 
 - Review [Azure App Service diagnostics](/azure/app-service/overview-diagnostics) to ensure common problems are addressed.
-  - It is a good practice to regularly review service-related diagnostics and recommendations, taking action as appropriate.
+  - It's a good practice to regularly review service-related diagnostics and recommendations, taking action as appropriate.
 
 - Evaluate [per-app scaling](/azure/app-service/manage-scale-per-app) for high-density hosting on Azure App Service Plans.
 
@@ -321,7 +321,7 @@ Serverless computing provides compute resources on-demand and eliminates the nee
 
 Microsoft Azure provides several serverless compute platforms:
 
-- [Azure Functions](/azure/azure-functions/functions-overview): Application logic is implemented as distinct blocks of code ("functions") which run in response to events, such as a HTTP request or queue message, with each function scaling as necessary to meet demand.
+- [Azure Functions](/azure/azure-functions/functions-overview): Application logic is implemented as distinct blocks of code ("functions") which run in response to events, such as an HTTP request or queue message, with each function scaling as necessary to meet demand.
 - [Azure Logic Apps](/azure/logic-apps/logic-apps-overview): Platform for creating and running automated workflows that integrate various apps, data sources, services and systems. Similar to Azure Functions, there are built-in triggers for event-driven processing but instead of deploying application code, Logic Apps can be composed using a graphical user interface which supports code blocks like conditionals and loops.
 - [Azure API Management](https://azure.microsoft.com/services/api-management/): Publish, secure, transform, maintain, and monitor APIs using the Consumption tier.
 - [Power Apps & Power Automate](/powerapps/powerapps-overview): Provides a 'low-code/no-code' development experience, with simple workflow logic and integrations configurable through connections in a user interface. Developed Power Apps can subsequently be deployed to a Microsoft 365 tenant and consumed from either a web browser or the Power Apps mobile client.
@@ -336,14 +336,14 @@ The design methodology therefore positions serverless technologies as an alterna
 
 **Azure Functions**
 
-- In most cases Azure Functions do not require additional code to call external services or to enable external events trigger function execution since these can be achieved with Azure Function [Bindings](/azure/azure-functions/functions-triggers-bindings).
+- In most cases Azure Functions don't require additional code to call external services or to enable external events trigger function execution since these can be achieved with Azure Function [Bindings](/azure/azure-functions/functions-triggers-bindings).
   - Azure Functions supports multiple triggers, such as the HTTP trigger, and bindings for Azure Services, such as Azure Cosmos DB, Azure Service Bus and Azure Blob Storage.
 
 - There are 3 [hosting plans](/azure/azure-functions/functions-scale) available for Azure Functions:
   - *Consumption* is the fully serverless pay-per-use option, with instances dynamically added and removed based on the number of incoming events; underlying compute resources are charged only when running.
-  - *Premium* uses a Premium SKU App Service plan to host functions and allows the configuration of compute instance size. Additionally, it is possible to set up a number of pre-warmed instances to eliminate cold starts.
+  - *Premium* uses a Premium SKU App Service plan to host functions and allows the configuration of compute instance size. Additionally, it'spossible to set up a number of pre-warmed instances to eliminate cold starts.
     - There will always be at least one billed instance in the Premium plan.
-  - *Dedicated* is the least serverless option as it is tied to a provisioned App Service plan or App Service Environment. Autoscale can be enabled, but scale operations are slower than with the Consumption and Premium plans.
+  - *Dedicated* is the least serverless option as it'stied to a provisioned App Service plan or App Service Environment. Autoscale can be enabled, but scale operations are slower than with the Consumption and Premium plans.
 
 - Fully serverless hosting options, which help optimize costs by de-provisioning allocated resources when workloads are not running, may incur "cold start" delays, especially for applications comprised of many files, such as Node.js or PHP applications.
 
@@ -372,7 +372,7 @@ The design methodology therefore positions serverless technologies as an alterna
   - Low-critical scenarios can also be hosted as separate containers within AKS to drive consistency, provided affinity and anti-affinity requirements are fully considered when collocating containers on nodes.
 
 - Azure Functions should perform distinct operations that run as fast as possible.
-  - This makes them very flexible and highly-scalable, ensuring they will work well in event-driven workloads with short-lived processes.
+  - This makes them very flexible and highly scalable, ensuring they will work well in event-driven workloads with short-lived processes.
 
 - Use the Premium Function Linux hosting plan to maximize reliability and performance while maintaining the serverless promise.
 
@@ -383,7 +383,7 @@ The design methodology therefore positions serverless technologies as an alterna
 - For internal workloads, consider the use of Service Endpoints or Private Endpoints to restrict access to private Virtual Networks.
   - If required, use Private Endpoints to mitigate data exfiltration risks, such as malicious admin scenarios.
 
-- Treat Azure Functions code just like any other code; subject it to code scanning tools that are integrate it with CI/CD pipelines.
+- Treat Azure Functions code just like any other code; subject it to code scanning tools that  integrate it with CI/CD pipelines.
 
 **Azure Logic Apps**
 
@@ -391,9 +391,9 @@ The design methodology therefore positions serverless technologies as an alterna
 
 ## Asynchronous messaging
 
-The recommendation for a loosely-coupled microservice architecture relies heavily on asynchronous messaging to provide requisite integration between application components through a well-defined message bus. Azure provides several native messaging services which can be used to facilitate asynchronous message interfaces, including **Azure Event Hub**, **Azure Service Bus**, **Azure Storage Queues** and **Azure Event Grid**.
+The recommendation for a loosely coupled microservice architecture relies heavily on asynchronous messaging to provide requisite integration between application components through a well-defined message bus. Azure provides several native messaging services which can be used to facilitate asynchronous message interfaces, including **Azure Event Hub**, **Azure Service Bus**, **Azure Storage Queues** and **Azure Event Grid**.
 
-This section will therefore explore key decision factors when selecting an appropriate Azure message service, and how to optimally configure each service in the context of an mission-critical workload scenario to maximize reliability.
+This section will therefore explore key decision factors when selecting an appropriate Azure message service, and how to optimally configure each service in the context of a mission-critical workload scenario to maximize reliability.
 
 ### Design considerations
 
@@ -413,11 +413,11 @@ This section will therefore explore key decision factors when selecting an appro
 
 - Event Hubs supports Availability Zones (AZs) for zonal redundancy within supported regions in all pricing tiers.
 
-- Azure Event Hub Namespaces support configurable failover replication between regions, however, only configuration metadata is replicated, but **not messages themselves**.
+- Azure Event Hubs Namespaces support configurable failover replication between regions, however, only configuration metadata is replicated, but **not messages themselves**.
   - Configuration that is being replicated includes: Event Hubs (inside a Namespace), Consumer Groups, Namespace Authorization Rules, and Event Hubs Authorization Rules.
 
 - Azure Event Hubs can be configured to [capture raw data into Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview)
-  - Event Hub Capture to Azure Storage or Data Lake Storage records the captured data within .avro file.
+  - Event Hubs Capture to Azure Storage or Data Lake Storage records the captured data within.Avro file.
 
 - Data can be processed from Event Hubs by a client using the [Event Processor SDK](/azure/event-hubs/event-processor-balance-partition-load), or by [Azure Stream Analytics](/azure/event-hubs/process-data-azure-stream-analytics).
 
@@ -425,7 +425,7 @@ This section will therefore explore key decision factors when selecting an appro
   - Premium tier also offers a 99.99% SLA.
   - The Basic and Standard tiers for a single tenant provide a 99.95% SLA.
 
-- Event Hubs provide a Apache Kafka-compatible [messaging interface](/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview).
+- Event Hubs provide an Apache Kafka-compatible [messaging interface](/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview).
 
 **Azure Service Bus**
 
@@ -469,7 +469,7 @@ This section will therefore explore key decision factors when selecting an appro
 
 ### Design recommendations
 
-- Prioritise the use of Event Hub for scenarios which require high throughput and which can work with message ordering on a partition-basis.
+- Prioritize the use of Event Hubs for scenarios which require high throughput and which can work with message ordering on a partition-basis.
 
 - Use Service Bus for scenarios requiring a higher QoS and message guarantee by implementing two phase commits.
   - Use Service Bus Premium in an zonal redundant configuration to provide high-availability within a region.

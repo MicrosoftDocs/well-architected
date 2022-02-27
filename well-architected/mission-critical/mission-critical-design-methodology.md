@@ -81,7 +81,7 @@ There are two foundational [reference implementations](mission-critical-overview
 
 ## 3&mdash;Evaluate the design areas using the design principles
 
-At the core of this methodology lies a critical design path comprised of foundational [design principles](mission-critical-design-principles.md) and fundamental [design area](mission-critical-application-pattern.md) with heavily interrelated and dependent design decisions.
+At the core of this methodology lies a critical design path comprised of foundational [design principles](mission-critical-design-principles.md) and fundamental [design area](mission-critical-architecture-pattern.md) with heavily interrelated and dependent design decisions.
 
 The impact of decisions made within each design area will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of encompassed decisions, which may produce trade-offs within related design areas. 
 
