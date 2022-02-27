@@ -65,12 +65,9 @@ Readers are advised to familiarize themselves with these 8 critical design areas
 
 ## Illustrative examples
 
-The guidance is based on a solution-orientated approach to illustrate the key design considerations and recommendations. 
-
-There are two foundational implementations that serve as a basis for further solution development.
+The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available as part of an open source project on GitHub. These implementations can be used as a basis for further solution development.
 
 > [!IMPORTANT]
-> The reference implementations are part of an open source project available on GitHub.  
 > ![GitHub logo](./../_images/github.svg) [Azure Mission-Critical open source project](http://github.com/azure/alwayson).
 
 - [Azure Mission-Critical Online](https://github.com/azure/alwayson-foundational-online)
