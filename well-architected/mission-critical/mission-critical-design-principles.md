@@ -93,4 +93,4 @@ These mission-critical design principles resonate and extend the quality pillars
 Explore the eight design areas that provide critical considerations and recommendations for building a mission-critical workload.
 
 > [!div class="nextstepaction"]
-> [Design areas](mission-critical-application-pattern.md)
+> [Design areas](mission-critical-architecture-pattern.md)

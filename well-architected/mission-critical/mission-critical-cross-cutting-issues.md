@@ -70,4 +70,4 @@ See [Azure updates](https://azure.microsoft.com/updates/) for latest information
 Review each design area associated with a  mission-critical application.
 
 > [!div class="nextstepaction"]
-> [Design areas](./mission-critical-application-pattern.md)
+> [Architecture pattern](mission-critical-architecture-pattern.md)
