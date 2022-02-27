@@ -3,7 +3,7 @@ title: Mission-critical workloads - Health modeling and observability
 description: This design area will focus on the process to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity
 author: calcof
 ms.author: calcof
-ms.date: 02/02/2022
+ms.date: 02/28/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -14,57 +14,57 @@ categories:
 products: azure
 ms.custom:
   - mission-critical
-  - alwayson
 ---
 
 # Health modeling and observability
 
-Health modeling and observability are essential concepts to maximize reliability, which focus on robust and contextualized instrumentation and monitoring to gain critical insight into application health, promoting the swift identification and resolution of issues.
+Health modeling and observability are essential concepts to maximize reliability, which focus on robust and contextualized instrumentation and monitoring. These concepts provide critical insight into application health, promoting the swift identification and resolution of issues.
 
-Most business-critical applications are significant in terms of both scale and complexity and therefore generate high volumes of operational data which makes it extremely challenging to evaluate and determine optimal operational action. Health modeling ultimately strives to maximize observability by augmenting raw monitoring logs and metrics with key business requirements to quantify application health, driving automated evaluation of health states to achieve consistent and expedited operations.
+Most mission-critical applications are significant in terms of both scale and complexity and therefore generate high volumes of operational data which makes it challenging to evaluate and determine optimal operational action. Health modeling ultimately strives to maximize observability by augmenting raw monitoring logs and metrics with key business requirements to quantify application health, driving automated evaluation of health states to achieve consistent and expedited operations.
 
-This design area will therefore focus on the process to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity.
+This design area focuses on the process to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity.
 
-- [Layered Application Health](#layered-application-health)
-- [Unified Data Sink for Correlated Analysis](#unified-data-sink-for-correlated-analysis)
-- [Dashboarding](#dashboarding)
-- [Automated Incident Response](#automated-incident-response)
-- [Predictive Action and AIOps](#predictive-action-and-aiops)
+> [!IMPORTANT]
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+>
+> ![GitHub logo](./../_images/github.svg) [Mission Critical open source project](http://github.com/azure/alwayson)
+>
+> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for observing application health.
 
-> There are ultimately three overarching levels of operational maturity which should be used as a reference when striving to maximize reliability.
->   1) *Detect* and respond to issues as they happen.
->   1) *Diagnose* issues that are occurring or have already occurred.
->   1) *Predict* and prevent issues before they take place.
+There are three main levels of operational maturity when striving to maximize reliability.
+1) *Detect* and respond to issues as they happen.
+1) *Diagnose* issues that are occurring or have already occurred.
+1) *Predict* and prevent issues before they take place.
 
-## Layered Application Health
+## Layered application health
 
-In order to build a health model it is first necessary to define what application health means in the context of key business requirements, quantifying ‘healthy’ and ‘unhealthy’ states in a layered and measurable format. More specifically, health definitions for each distinct application component should be captured in the context of a steady running state and aggregated according to application user flows in conjunction with key non-functional business requirements for performance and availability. The health states for each individual user flow can then subsequently be aggregated to form a meaningful representation of overall application health. Once established, these layered health definitions should be used to inform critical monitoring metrics across all system components and validate operational sub-system composition.
+To build a health model, first define  application health in the context of key business requirements by quantifying ‘healthy’ and ‘unhealthy’ states in a layered and measurable format. Then, for each  application component, refine the definition in the context of a steady running state and aggregated according to the application user flows. Superimpose with key non-functional business requirements for performance and availability. Finally, aggregate the health states for each individual user flow to form an acceptable representation of the overall application health. Once established, these layered health definitions should be used to inform critical monitoring metrics across all system components and validate operational sub-system composition.
 
-> When defining what 'unhealthy' states represent for all levels of the application, it is important to distinguish between transient and non-transient failure states to qualify service degradation relative to unavailability.
+[!IMPORTANT]
+> When defining what 'unhealthy' states, represent for all levels of the application. It's important to distinguish between transient and non-transient failure states to qualify service degradation relative to unavailability.
 
-### Design Considerations
+### Design considerations
 
-- The process of modeling health is a top-down design activity that starts with an architectural exercise to define all user flows and map dependencies between functional/logical components, thereby implicitly mapping dependencies between Azure resources.
+- The process of modeling health is a top-down design activity that starts with an architectural exercise to define all user flows and map dependencies between functional and logical components, thereby implicitly mapping dependencies between Azure resources.
 
-- A health model is entirely dependent on the context of the solution it represents, and therefore cannot be solved 'out-of-the-box' since 'one size does not fit all'.
+- A health model is entirely dependent on the context of the solution it represents, and therefore cannot be solved 'out-of-the-box' because 'one size does not fit all'.
   - Applications will differ in composition and dependencies
   - Metrics and metric thresholds for resources must also be finely tuned in terms of what values represent healthy and unhealthy states, which is heavily influenced by encompassed application functionality and target non-functional requirements.
 
 - A layered health model enables application health to be traced back to lower level dependencies which helps to quickly root cause service degradation.
 
-- To capture health states for an individual component, that component's distinct operational characteristics must be understood under a steady state that is reflective of production load. Performance testing is therefore a requisite capability to define and continually evaluate application health.
+- To capture health states for an individual component, that component's distinct operational characteristics must be understood under a steady state that is reflective of production load. Performance testing is therefore a key capability to define and continualy evaluate application health.
 
 - Failures within a cloud solution may not happen in isolation. An outage in a single component may lead to several capabilities or additional components becoming unavailable.
   - Such errors may not be immediately observable.
 
-### Design Recommendations
+### Design recommendations
 
 - Define a measurable health model as a priority to ensure a clear operational understanding of the entire application.
   - The health model should be layered and reflective of the application structure.
-  - The foundational layer should consider individual application components (i.e. Azure resources).
+  - The foundational layer should consider individual application components, such as  Azure resources.
   - Foundational components should be aggregated alongside key non-functional requirements to build a business-contextualized lens into the health of system flows.
-  - System flows should be aggregated with appropriate weights based on business criticality to build a meaningful definition of overall application health.
-    - Financially significant or customer-facing user flows should be prioritized.
+  - System flows should be aggregated with appropriate weights based on business criticality to build a meaningful definition of overall application health. Financially significant or customer-facing user flows should be prioritized.
   - Each layer of the health model should capture what ‘healthy’ and ‘unhealthy’ states represent.
   - Ensure the heath model can distinguish between transient and non-transient unhealthy states to isolate service degradation from unavailability.
 
@@ -76,7 +76,7 @@ In order to build a health model it is first necessary to define what applicatio
 - The health score must be calculated automatically based on underlying metrics, which can be visualized through observability patterns and acted on through automated operational procedures.
   - The health score should become core to the monitoring solution, so that operating teams no longer have to interpret and map operational data to application health.
 
-- Leverage the health model to calculate availability SLO attainment instead of raw availability, ensuring the demarcation between service degradation and unavailability is reflected as separate SLOs.
+- Use the health model to calculate availability ervice Level Objective (SLO) attainment instead of raw availability, ensuring the demarcation between service degradation and unavailability is reflected as separate SLOs.
 
 - Leverage the health model within CI/CD pipelines and test cycles to validate application health is maintained after code and configuration updates.
   - The health model should be used to observe and validate health during load testing and chaos testing as part of CI/CD processes.
@@ -84,13 +84,15 @@ In order to build a health model it is first necessary to define what applicatio
 - Building and maintaining a health model is an iterative process and engineering investment should be aligned to drive continuous improvements.
   - Define a process to continually evaluate and fine-tune the accuracy of the model, and consider investing in machine learning models to further train the model.
 
-### Reference layered health model
+### Example of a layered health model
 
-> Please note that this section provides a simplified representation of a layered application health model to assist readers with the underlying concept. For a more comprehensive and contextualized health model reference please refer to the [foundational-online](https://github.com/azure/alwayson-foundational-online) and [foundational-connected](https://github.com/azure/alwayson-foundational-connected) reference implementations.
+This is a simplified representation of a layered application health model for illustrative purposes. A comprehensive and contextualized health model is provided in the Mission-Critical reference implementations:
+- [Foundational Online](https://github.com/azure/alwayson-foundational-online)
+- [Foundational Connected](https://github.com/azure/alwayson-foundational-connected)
 
-When implementing a health model it is critical to first define the health of individual components through the aggregation and interpretation of key resource-level metrics. An example of how resource metrics can used is the image below:
+When implementing a health model it's important to define the health of individual components through the aggregation and interpretation of key resource-level metrics. An example of how resource metrics can used is the image below:
 
-![AlwaysOn Example Health Definitions](./images/alwayson-example-health-definitions.png "AlwaysOn Example Health Definitions")
+![Mission Critical Example Health Definitions](./images/alwayson-example-health-definitions.png "Mission Critical Example Health Definitions")
 
 This definition of health can subsequently be represented by a KQL query, as demonstrated by the example AKS query below that aggregates InsightsMetrics (AKS Container insights) and AzureMetrics (Azure diagnostics) and compares (inner join) against modelled health thresholds.
 
@@ -132,17 +134,19 @@ ClusterHealthStatus
 | extend HealthScore = 1-(YellowScore*0.25)-(RedScore*0.5)
 ```
 
-These aggregated scores can subsequently be represented as a dependency chart using visualization tools like Grafana to illustrate the health model. The image below depicts an example layered health model from the [foundational-online](https://github.com/azure/alwayson-foundational-online) reference implementation, and demonstrates how a change in health state for a foundational component can have a cascading impact to user flows and overall application health (the example values correspond to the table in the previous image).
+These aggregated scores can subsequently be represented as a dependency chart using visualization tools such as Grafana to illustrate the health model. 
 
-![AlwaysOn Example Health Model Visualization](./images/alwayson-example-fault-states.png "AlwaysOn Example Health Model Visualization")
+This image shows an example layered health model from the [foundational-online](https://github.com/azure/alwayson-foundational-online) reference implementation, and demonstrates how a change in health state for a foundational component can have a cascading impact to user flows and overall application health (the example values correspond to the table in the previous image).
+
+![Mission Critical Example Health Model Visualization](./images/alwayson-example-fault-states.png "Mission Critical Example Health Model Visualization")
 
 ## Unified data sink for correlated analysis
 
-Numerous operational datasets must be gathered from all system components to accurately represent a defined heath model, considering logs and metrics from both application components and underlying Azure resources. This vast amount of data ultimately needs to be stored in a format that allows for near-real time interpretation to facilitate swift operational action. Moreover, correlation across all encompassed data sets is required to ensure effective analysis is unbounded, allowing for the layered representation of health.
+Many operational datasets must be gathered from all system components to accurately represent a defined heath model, considering logs and metrics from both application components and underlying Azure resources. This vast amount of data ultimately needs to be stored in a format that allows for near-real time interpretation to facilitate swift operational action. Moreover, correlation across all encompassed data sets is required to ensure effective analysis is unbounded, allowing for the layered representation of health.
 
-A unified data sink is therefore required to ensure all operational data is swiftly stored and made available for correlated analysis to build a 'single pane' representation of application health. Azure provides several different operational technologies under the umbrella of [Azure Monitor](/azure/azure-monitor/overview#overview), and Azure Monitor Log Analytics serves as the core Azure-native data sink to store and analyze operational data.
+A unified data sink is required to ensure all operational data is swiftly stored and made available for correlated analysis to build a 'single pane' representation of application health. Azure provides several different operational technologies under the umbrella of [Azure Monitor](/azure/azure-monitor/overview#overview), and Azure Monitor Log Analytics serves as the core Azure-native data sink to store and analyze operational data.
 
-![AlwaysOn Health Data Collection](./images/alwayson-health-data-collection.png "AlwaysOn Health Data Collection")
+![Mission Critical Health Data Collection](./images/alwayson-health-data-collection.png "Mission Critical Health Data Collection")
 
 ### Design considerations
 
@@ -150,49 +154,36 @@ A unified data sink is therefore required to ensure all operational data is swif
 
 - Azure Monitor is enabled by default for all Azure subscriptions, but Azure Monitor for Logs (Log Analytics) and Azure Application Insights resources must be deployed and configured to incorporate data collection and querying capabilities.
 
-- Azure Monitor supports three types of observability data: Logs, Metrics, and Distributed Traces.
-  - Logs are stored in Azure Monitor Logs (previously called Log Analytics) workspaces based on [Azure Data Explorer](/azure/data-explorer/).
-    - Log queries are stored in query packs that can be shared across subscriptions, and are used to drive observability components such as dashboards, workbooks, or other reporting and visualization tools.
-  - Metrics are stored in an internal time-series diagnostic service database, which for most Azure resources is [retained](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics) for 93 days.
-    - Metric collection is configured through resource Diagnostic settings.
+- Azure Monitor supports three types of observability data: logs, metrics, and distributed traces.
+  - Logs are stored in Azure Monitor Logs  workspaces based on [Azure Data Explorer](/azure/data-explorer/). Log queries are stored in query packs that can be shared across subscriptions, and are used to drive observability components such as dashboards, workbooks, or other reporting and visualization tools.
+  - Metrics are stored in an internal time-series diagnostic service database, which for most Azure resources is [retained](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics) for 93 days. Metric collection is configured through resource Diagnostic settings.
 
 - All Azure resources expose logs and metrics, but resources must be appropriately configured to route diagnostic data to your desired data sink.
 
+>[!TIP]
 > Azure provides a variety of [Built-In Policies](/azure/azure-monitor/policy-reference) which can be applied to ensure deployed resources are configured to send logs and metrics to an Azure Monitor instance.
 
-- It is not uncommon for regulatory controls to require operational data remains within originating geographies or countries.
+- It's not uncommon for regulatory controls to require operational data remains within originating geographies or countries.  Regulatory requirements may stipulate the retention of critical data types for an extended period of time. For example, in regulated banking, audit data must be retained for at least seven years.
 
-- Regulatory requirements may stipulate the retention of critical data types for an extended period of time.
-  - For example, in regulated banking, audit data must be retained for at least 7 years.
-
-- Different operational data types may require different retention periods.
-  - For example, security logs may need to be retained for a long period, while performance data is unlikely to require long-term retention outside the context of AIOps.
+- Different operational data types may require different retention periods. For example, security logs may need to be retained for a long period, while performance data is unlikely to require long-term retention outside the context of AIOps.
 
 - Data can be [exported](/azure/azure-monitor/logs/logs-data-export?tabs=portal) from Log Analytics Workspaces for long term retention and/or auditing purposes.
 
-- [Azure Monitor Logs Dedicated Clusters](/azure/azure-monitor/logs/logs-dedicated-clusters) provides a deployment option which enables Availability Zones for protection from zonal failures in supported Azure regions.
-  - Dedicated Clusters require a minimum daily data ingest commitment.
+- [Azure Monitor Logs Dedicated Clusters](/azure/azure-monitor/logs/logs-dedicated-clusters) provides a deployment option which enables Availability Zones for protection from zonal failures in supported Azure regions. Dedicated Clusters require a minimum daily data ingest commitment.
 
 - Azure Monitor for Logs resources, including underlying log and metrics storage, are deployed into a specified Azure region.
 
-- To protect against loss of data from unavailability of an Azure Monitor for Logs workspace, resources can be configured with multiple Diagnostics configurations.
-  - Each Diagnostic configuration can target metrics and logs at a separate Azure Monitor for Log workspace.
-    - Each additional Azure Monitor for Logs workspace will incur extra costs.
-    - The redundant Azure Monitor for Logs workspaces can be deployed into the same Azure region, or into separate Azure regions for additional regional redundancy.
-      - Sending logs and metrics from an Azure resource to an Azure Monitor for Logs workspace in a different region will incur inter-region data egress costs.
-      - Some Azure resources require an Azure Monitor for Logs workspace within the same region as the resource itself.
+- To protect against loss of data from unavailability of an Azure Monitor for Logs workspace, resources can be configured with multiple Diagnostics configurations. Each Diagnostic configuration can target metrics and logs at a separate Azure Monitor for Log workspace.
+  - Each additional Azure Monitor for Logs workspace will incur extra costs.
+  - The redundant Azure Monitor for Logs workspaces can be deployed into the same Azure region, or into separate Azure regions for additional regional redundancy.
+  - Sending logs and metrics from an Azure resource to an Azure Monitor for Logs workspace in a different region will incur inter-region data egress costs.
+  - Some Azure resources require an Azure Monitor for Logs workspace within the same region as the resource itself.
 
 - Azure Monitor Logs workspace data [can be exported to Azure Storage or Azure Event Hubs on a continuous, scheduled, or one-time basis](/azure/azure-monitor/logs/logs-data-export).
   - Data export allows for long-term data archiving and protects against possible operational data loss due to unavailability.
-  - Available export destinations are Azure Storage or Azure Event Hub.
-    - Azure Storage can be configured for different [redundancy levels](/azure/storage/common/storage-redundancy) including zonal or regional.
-    - Data export to Azure Storage stores the data within .json files.
-  - Data export destinations must be within the same Azure region as the Azure Monitor Logs workspace.
-    - An Event Hub data export destination to be within the same region as the Azure Monitor Logs workspace.
-      - Azure Event Hubs geo-disaster recovery is not applicable for this scenario.
-  - There are several [data export limitations](/azure/azure-monitor/logs/logs-data-export?tabs=portal#limitations).
-
-> Only specific Azure Monitor Logs [tables are supported](/azure/azure-monitor/logs/logs-data-export#supported-tables) for data export.
+  - Available export destinations are Azure Storage or Azure Event Hub. Azure Storage can be configured for different [redundancy levels](/azure/storage/common/storage-redundancy) including zonal or regional. Data export to Azure Storage stores the data within .json files.
+  - Data export destinations must be within the same Azure region as the Azure Monitor Logs workspace. An Event Hub data export destination to be within the same region as the Azure Monitor Logs workspace. Azure Event Hubs geo-disaster recovery is not applicable for this scenario.
+  - There are several [data export limitations](/azure/azure-monitor/logs/logs-data-export?tabs=portal#limitations). Only specific Azure Monitor Logs [tables are supported](/azure/azure-monitor/logs/logs-data-export#supported-tables) for data export.
 
 - Azure Monitor Logs has [user query throttling limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#user-query-throttling) which may appear as reduced availability to clients, such as observability dashboards.
   - Five concurrent queries per user: if five queries are already running, additional queries are placed in a per-user concurrency queue until a running query ends.
@@ -251,8 +242,9 @@ A unified data sink is therefore required to ensure all operational data is swif
 
 - Use Azure Policy to ensure all regional resources route operational data to the correct Log Analytics Workspace.
 
-> In an Enterprise Scale environment, if there is a requirement for centralized storage of operational data, either a) [fork](/azure/azure-monitor/logs/logs-data-export?tabs=portal) data at instantiation so it is ingested into both centralized tooling and Log Analytics Workspaces dedicated to the application, or b) expose access to application Log Analytics workspaces so that central teams can query application data. It is ultimately critical that operational data originating from the solution is available within Log Analytics Workspaces dedicated to the application.
-
+>[!CAUTION]
+> When deploying into an Azure Landing Zone,  if there is a requirement for centralized storage of operational data, you can [fork](/azure/azure-monitor/logs/logs-data-export?tabs=portal) data at instantiation so it is ingested into both centralized tooling and Log Analytics Workspaces dedicated to the application. Alternatively expose access to application Log Analytics workspaces so that central teams can query application data. It's ultimately critical that operational data originating from the solution is available within Log Analytics Workspaces dedicated to the application.
+>
 > If SIEM integration is required, do not send raw log entries, but instead send critical alerts.
 
 - Only configure sampling within Application Insights if it is required to optimize performance, or if not sampling becomes cost prohibitive.
@@ -281,15 +273,13 @@ A unified data sink is therefore required to ensure all operational data is swif
 
 - It is strongly recommended to store Log Analytics queries using source control and use CI/CD automation to deploy them to relevant Log Analytics instances.
 
-## Dashboarding
+## Visualization
 
-Visually representing the health model alongside critical operational data is essential to achieve effective operations and maximize reliability. Dashboards should ultimately be utilized to provide near-real time insights into application health for DevOps teams, facilitating the swift diagnosis of deviations from steady state.
+Visually representing the health model with critical operational data is essential to achieve effective operations and maximize reliability. Dashboards should ultimately be utilized to provide near-real time insights into application health for DevOps teams, facilitating the swift diagnosis of deviations from steady state.
 
-Microsoft provides several data visualization technologies, including Azure Dashboards, PowerBI, and Azure Managed Grafana (currently in-preview). Azure Dashboards is positioned to provide a tightly integrated out-of-the-box visualization solution for operational data within Azure Monitor. It therefore has a fundamental role to play in the visual representation of operational data and application health for an AlwaysOn solution. However, there are several limitations in terms of the positioning of Azure Dashboards as a holistic observability platform, and as a result consideration should be given to the supplemental use of market-leading observability solutions, such as Grafana which is also provided as a managed solution within Azure.
+Microsoft provides several data visualization technologies, including Azure Dashboards, PowerBI, and Azure Managed Grafana (currently in-preview). Azure Dashboards is positioned to provide a tightly integrated out-of-the-box visualization solution for operational data within Azure Monitor. It therefore has a fundamental role to play in the visual representation of operational data and application health for a mission-critical workload. However, there are several limitations in terms of the positioning of Azure Dashboards as a holistic observability platform, and as a result consideration should be given to the supplemental use of market-leading observability solutions, such as Grafana which is also provided as a managed solution within Azure.
 
-This section will therefore focus on the use of Azure Dashboards and Grafana to build a robust dashboarding experience capable of providing technical and business lenses into application health, enabling DevOps teams and effective operation.
-
->Robust dashboarding is essential to diagnose issues that have already occurred, and support operational teams in detecting and responding to issues as they happen.
+This section focuses on the use of Azure Dashboards and Grafana to build a robust dashboarding experience capable of providing technical and business lenses into application health, enabling DevOps teams and effective operation. Robust dashboarding is essential to diagnose issues that have already occurred, and support operational teams in detecting and responding to issues as they happen.
 
 ### Design considerations
 
@@ -309,18 +299,16 @@ This section will therefore focus on the use of Azure Dashboards and Grafana to 
 
 - Collect and present queried outputs from all regional Log Analytics Workspaces and the global Log Analytics Workspace to build a unified view of application health.
 
-> When deploying into an Enterprise-Scale architecture, consideration should be given to also query the [central platform Log Analytics Workspace](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring#plan-platform-management-and-monitoring) if key dependencies on platform resources exist, such as Express Route for scenarios involving on-premises communication.
+>[!CAUTION]
+> If deploying into an Azure Landing Zone, consideration should be given to also query the [central platform Log Analytics Workspace](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring#plan-platform-management-and-monitoring) if key dependencies on platform resources exist, such as Express Route for scenarios involving on-premises communication.
 
-- A ‘traffic light’ model should be used to visually represent 'healthy' and 'unhealthy' states, with green used to illustrate when key non-functional requirements are fully satisfied and resources are optimally utilized.
-  - Use "Green", "Amber, and "Red" to represent "Healthy", "Degraded", and "Unavailable" states.
+- A ‘traffic light’ model should be used to visually represent 'healthy' and 'unhealthy' states, with green used to illustrate when key non-functional requirements are fully satisfied and resources are optimally utilized. Use "Green", "Amber, and "Red" to represent "Healthy", "Degraded", and "Unavailable" states.
 
-- Leverage Azure Dashboards to create operational lenses for global resources and regional deployment stamps, representing key metrics such as request count for Azure Front Door, server side latency for Cosmos DB, incoming/outgoing messages for Event Hub, and CPU utilization or deployment statuses for AKS.
-  - Dashboards should be tailored to drive operational effectiveness, infusing learnings from failure scenarios to ensure DevOps teams have direct visibility into key metrics.
+- Leverage Azure Dashboards to create operational lenses for global resources and regional deployment stamps, representing key metrics such as request count for Azure Front Door, server side latency for Cosmos DB, incoming/outgoing messages for Event Hub, and CPU utilization or deployment statuses for AKS.  Dashboards should be tailored to drive operational effectiveness, infusing learnings from failure scenarios to ensure DevOps teams have direct visibility into key metrics.
 
-- If Azure Dashboards cannot be used to accurately represent the health model and requisite business requirements, then it is strongly recommended to consider Grafana as an alternative visualization solution, providing market-leading capabilities and an extensive open-source plugin ecosystem.
-  - Evaluate the managed Grafana preview offering to avoid the operational complexities of managing Grafana infrastructure.
+- If Azure Dashboards cannot be used to accurately represent the health model and requisite business requirements, then it is strongly recommended to consider Grafana as an alternative visualization solution, providing market-leading capabilities and an extensive open-source plugin ecosystem. Evaluate the managed Grafana preview offering to avoid the operational complexities of managing Grafana infrastructure.
 
-- When deploying self-hosted Grafana, employ a highly-available and geo-distributed design to ensure critical operational dashboards can be resilient to regional platform failures and cascading error scenarios.
+- When deploying self-hosted Grafana, employ a highly-available and geo-distributed design to ensure critical operational dashboards can be resilient to regional platform failures and cascading error scenarios. 
   - Separate configuration state into an external datastore, such as Azure Database for Postgres or MySQL, to ensure Grafana application nodes remain stateless.
     - Configure database replication across deployment regions.
   - Deploy Grafana nodes to App Services in a highly-available configuration across ones within a region, using container based deployments.
@@ -344,6 +332,7 @@ While the visual representations of application health provides invaluable opera
 
 [Azure Monitor](/azure/azure-monitor/alerts/alerts-overview) provides an extensive alerting framework to detect, categorize, and respond to operational signals through [Action Groups](/azure/azure-monitor/alerts/action-groups). This section will therefore focus on the use of Azure Monitor alerts to drive automated actions in response to current or potential deviations from a healthy application state.
 
+>[!IMPORTANT]
 >Alerting and automated action is critical to effectively detect and swiftly respond to issues as they happen, before greater negative impact can occur. Alerting also provides a mechanism to interpret incoming signals and respond to prevent issues before they occur.
 
 ### Design considerations
@@ -362,8 +351,7 @@ While the visual representations of application health provides invaluable opera
   - Action Groups have [several hard limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#action-groups) for the number of configurable responses which must be designed for.
     - Each response type has a limit of 10 actions, apart from email which has a limit of 1,000 actions.
 
-- Alerts can be integrated within a layered health model by creating an Alert Rule for a saved log search query from the model's 'root' scoring function.
-  - For example, using 'WebsiteHealthScore' and alerting on a numeric value that represents an 'Unhealthy' state.
+- Alerts can be integrated within a layered health model by creating an Alert Rule for a saved log search query from the model's 'root' scoring function. For example, using 'WebsiteHealthScore' and alerting on a numeric value that represents an 'Unhealthy' state.
 
 ### Design recommendations
 
@@ -371,31 +359,29 @@ While the visual representations of application health provides invaluable opera
 
 - Consolidate automated actions within a minimal number of Action Groups, aligned with service teams to support a DevOps approach.
 
-- Respond to excessive resource utilization signals through automated scale operations, leveraging Azure-native auto-scale capabilities where possible. Where built-in auto-scale functionality is not applicable, use the component health score to model signals and determine when to respond with automated scale operations.
-  - Ensure automated scale operations are defined according to a capacity model which quantifies scale relationships between components, so that scale responses encompass components which need to be scaled in relation to other components.
+- Respond to excessive resource utilization signals through automated scale operations, leveraging Azure-native auto-scale capabilities where possible. Where built-in auto-scale functionality is not applicable, use the component health score to model signals and determine when to respond with automated scale operations. Ensure automated scale operations are defined according to a capacity model which quantifies scale relationships between components, so that scale responses encompass components which need to be scaled in relation to other components.
 
 - Model actions to accommodate a prioritized ordering which should be determined by business impact.
 
 - Leverage the Azure Monitor Alerts API to gather historic alerts to incorporate within 'cold' operational storage for advanced analytics.
 
-- For critical failure scenarios which cannot be met with an automated response, ensure operational 'runbook automation' is in-place to drive swift and consistent action once manual interpretation and sign-off is provided.
-  - Leverage alert notifications to drive swift identification of issues requiring manual interpretation
+- For critical failure scenarios which cannot be met with an automated response, ensure operational 'runbook automation' is in-place to drive swift and consistent action once manual interpretation and sign-off is provided. Use alert notifications to drive swift identification of issues requiring manual interpretation
   
 - Create allowances within engineering sprints to drive incremental improvements in alerting to ensure new failure scenarios which have not previously been considered can be fully accommodated within new automated actions.
 
 - Conduct operational readiness tests as part of CI/CD processes to validate key alert rules for deployment updates.
 
-## Predictive action and AIOps
+## Predictive action and AI operations (AIOps)
 
 Machine learning models can be applied to correlate and prioritize operational data, helping to gather critical insights related to filtering excessive alert 'noise' and predicting issues before they cause impact, as well as accelerating incident response when they do.
 
 More specifically, an AIOps methodology can be applied to distil critical insights about the behavior of the system, users, and DevOps processes. These insights can include identifying a problem happening now (*detect*), quantifying why the problem is happening (*diagnose*), or signaling what will happen in the future (*predict*). Such insights can be used to drive actions which adjust and optimize the application to mitigate active or potential issues, leveraging key business metrics, system quality metrics, and DevOps productivity metrics, to prioritize according to business impact. Conducted actions can themselves be infused into the system though a feedback loop which further trains the underlying model to drive additional efficiencies.
 
-![AlwaysOn AIOps Methodologies](./images/alwayson-aiops-methodology.png "AlwaysOn AIOps Methodologies")
+![Mission Critical AIOps Methodologies](./images/alwayson-aiops-methodology.png "Mission Critical AIOps Methodologies")
 
-There are multiple analytical technologies within Azure, such as Azure Synapse and Azure Databricks, which can be leveraged to build and train analytical models for AIOps. This section will therefore focus on how these technologies can be positioned within an AlwaysOn application design to accommodate AIOps and drive predictive action, focusing on Azure Synapse which reduces friction by bringing together the best of Azure's data services along with powerful new features.
+There are multiple analytical technologies within Azure, such as Azure Synapse and Azure Databricks, which can be leveraged to build and train analytical models for AIOps. This section will therefore focus on how these technologies can be positioned within an application design to accommodate AIOps and drive predictive action, focusing on Azure Synapse which reduces friction by bringing together the best of Azure's data services along with powerful new features.
 
->AIOps is used to drive predictive action, interpreting and correlating complex operational signals observed over a sustained period in order to better respond to and prevent issues before they occur.
+AIOps is used to drive predictive action, interpreting and correlating complex operational signals observed over a sustained period in order to better respond to and prevent issues before they occur.
 
 ### Design considerations
 
@@ -438,25 +424,15 @@ There are multiple analytical technologies within Azure, such as Azure Synapse a
 
 - Ensure ML model operationalization supports both batch and real-time scoring.
 
-- As AIOps models are created, implement MLOps and apply DevOps practices to [automate the ML lifecycle](/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) for training, operationalization, scoring, and continuous improvement.
-  - Create an iterative CI/CD process for AIOps ML models.
+- As AIOps models are created, implement MLOps and apply DevOps practices to [automate the ML lifecycle](/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) for training, operationalization, scoring, and continuous improvement. Create an iterative CI/CD process for AIOps ML models.
 
-- Evaluate [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services) for specific predictive scenarios due to their low administrative and integration overhead.
-  - Consider [Anomaly Detection](/azure/cognitive-services/anomaly-detector/) to quickly flag unexpected variances in observability data streams.
+- Evaluate [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services) for specific predictive scenarios due to their low administrative and integration overhead.  Consider [Anomaly Detection](/azure/cognitive-services/anomaly-detector/) to quickly flag unexpected variances in observability data streams.
 
-## Next steps
+## Next step
 
-- Review the remaining 7 critical design areas to inform key design decisions surrounding the definition of a target architecture.
-  - [Application Design](./mission-critical-application-design.md)
-  - [Application Platform](./mission-critical-application-platform.md)
-  - [Data Platform](./mission-critical-data-platform.md)
-  - [Deployment and Testing](./mission-critical-deployment-testing.md)
-  - [Networking and Connectivity](./mission-critical-networking-connectivity.md)
-  - [Security](./mission-critical-Security.md)
-  - [Operational Procedures](./mission-critical-operational-procedures.md)
+Review the considerations for networking considerations.
 
-### Reference implementation
+> [!div class="nextstepaction"]
+> [Network and connectivity](./mission-critical-networking-connectivity.md)
 
-- Use the foundational reference implementations to construct a synthetic application environment that can be used to validate key design decisions. 
-  - [Foundational-Online reference implementation](https://github.com/azure/alwayson-foundational-online) on GitHub.
-  - [Foundational-Connected reference implementation](https://github.com/azure/alwayson-foundational-connected) on GitHub.
+
