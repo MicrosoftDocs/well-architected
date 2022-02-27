@@ -18,7 +18,7 @@ ms.custom:
 
 # Health modeling and observability
 
-Health modeling and observability are essential concepts to maximize reliability, which focus on robust and contextualized instrumentation and monitoring. These concepts provide critical insight into application health, promoting the swift identification and resolution of issues.
+Health modeling and observability are essential concepts to maximize reliability, which focuses on robust and contextualized instrumentation and monitoring. These concepts provide critical insight into application health, promoting the swift identification and resolution of issues.
 
 Most mission-critical applications are significant in terms of both scale and complexity and therefore generate high volumes of operational data which makes it challenging to evaluate and determine optimal operational action. Health modeling ultimately strives to maximize observability by augmenting raw monitoring logs and metrics with key business requirements to quantify application health, driving automated evaluation of health states to achieve consistent and expedited operations.
 
@@ -49,11 +49,11 @@ To build a health model, first define  application health in the context of key 
 
 - A health model is entirely dependent on the context of the solution it represents, and therefore cannot be solved 'out-of-the-box' because 'one size does not fit all'.
   - Applications will differ in composition and dependencies
-  - Metrics and metric thresholds for resources must also be finely tuned in terms of what values represent healthy and unhealthy states, which is heavily influenced by encompassed application functionality and target non-functional requirements.
+  - Metrics and metric thresholds for resources must also be finely tuned in terms of what values represent healthy and unhealthy states, which are heavily influenced by encompassed application functionality and target non-functional requirements.
 
 - A layered health model enables application health to be traced back to lower level dependencies which helps to quickly root cause service degradation.
 
-- To capture health states for an individual component, that component's distinct operational characteristics must be understood under a steady state that is reflective of production load. Performance testing is therefore a key capability to define and continualy evaluate application health.
+- To capture health states for an individual component, that component's distinct operational characteristics must be understood under a steady state that is reflective of production load. Performance testing is therefore a key capability to define and continually evaluate application health.
 
 - Failures within a cloud solution may not happen in isolation. An outage in a single component may lead to several capabilities or additional components becoming unavailable.
   - Such errors may not be immediately observable.
@@ -76,7 +76,7 @@ To build a health model, first define  application health in the context of key 
 - The health score must be calculated automatically based on underlying metrics, which can be visualized through observability patterns and acted on through automated operational procedures.
   - The health score should become core to the monitoring solution, so that operating teams no longer have to interpret and map operational data to application health.
 
-- Use the health model to calculate availability ervice Level Objective (SLO) attainment instead of raw availability, ensuring the demarcation between service degradation and unavailability is reflected as separate SLOs.
+- Use the health model to calculate availability Service Level Objective (SLO) attainment instead of raw availability, ensuring the demarcation between service degradation and unavailability is reflected as separate SLOs.
 
 - Leverage the health model within CI/CD pipelines and test cycles to validate application health is maintained after code and configuration updates.
   - The health model should be used to observe and validate health during load testing and chaos testing as part of CI/CD processes.
@@ -90,11 +90,11 @@ This is a simplified representation of a layered application health model for il
 - [Foundational Online](https://github.com/azure/alwayson-foundational-online)
 - [Foundational Connected](https://github.com/azure/alwayson-foundational-connected)
 
-When implementing a health model it's important to define the health of individual components through the aggregation and interpretation of key resource-level metrics. An example of how resource metrics can used is the image below:
+When implementing a health model it's important to define the health of individual components through the aggregation and interpretation of key resource-level metrics. An example of how resource metrics can be used is the image below:
 
 ![Mission Critical Example Health Definitions](./images/alwayson-example-health-definitions.png "Mission Critical Example Health Definitions")
 
-This definition of health can subsequently be represented by a KQL query, as demonstrated by the example AKS query below that aggregates InsightsMetrics (AKS Container insights) and AzureMetrics (Azure diagnostics) and compares (inner join) against modelled health thresholds.
+This definition of health can subsequently be represented by a KQL query, as demonstrated by the example AKS query below that aggregates InsightsMetrics (AKS Container insights) and AzureMetrics (Azure diagnostics) and compares (inner join) against modeled health thresholds.
 
 ``` kql
 // ClusterHealthStatus
@@ -156,7 +156,7 @@ A unified data sink is required to ensure all operational data is swiftly stored
 
 - Azure Monitor supports three types of observability data: logs, metrics, and distributed traces.
   - Logs are stored in Azure Monitor Logs  workspaces based on [Azure Data Explorer](/azure/data-explorer/). Log queries are stored in query packs that can be shared across subscriptions, and are used to drive observability components such as dashboards, workbooks, or other reporting and visualization tools.
-  - Metrics are stored in an internal time-series diagnostic service database, which for most Azure resources is [retained](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics) for 93 days. Metric collection is configured through resource Diagnostic settings.
+  - Metrics are stored in an internal time-series diagnostic service database. For most Azure resources, the retention period is [retained](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics) for 93 days. Metric collection is configured through resource Diagnostic settings.
 
 - All Azure resources expose logs and metrics, but resources must be appropriately configured to route diagnostic data to your desired data sink.
 
@@ -232,7 +232,7 @@ A unified data sink is required to ensure all operational data is swiftly stored
 
 - All Log Analytics Workspaces should be treated as long-running resources with a different life-cycle to application resources within a regional deployment stamp.
 
-- Export critical operational data from Log Analytics for long-term retention and analytics to facilitate AIOps and advanced analytics to refine the underlying the health model and inform predictive action.
+- Export critical operational data from Log Analytics for long-term retention and analytics to facilitate AIOps and advanced analytics to refine the underlying health model and inform predictive action.
 
 - Carefully evaluate which data store should be used for long-term retention; not all data has to be stored in a hot and queryable data store.
   - It is strongly recommended to use Azure Storage in a GRS configuration for long-term operational data storage.
@@ -264,9 +264,9 @@ A unified data sink is required to ensure all operational data is swiftly stored
 
 > If the application is subscribed to Microsoft Mission-Critical Support, consider exposing key health probes to Microsoft Support, so application health can be modelled more accurately by Microsoft Support.
 
-- Log successful health check requests, unless increased data volumes cannot be tolerated in the context of application performance, since they provide additional insights for analytical modelling.
+- Log successful health check requests, unless increased data volumes cannot be tolerated in the context of application performance, since they provide additional insights for analytical modeling.
 
-- Do not configure production Log Analytics Workspaces to apply a daily cap, which limits the daily ingestion of operational data, since this can lead to the lose of critical operational data.
+- Do not configure production Log Analytics Workspaces to apply a daily cap, which limits the daily ingestion of operational data, since this can lead to the loss of critical operational data.
   - In lower environments, such as Development and Test, it can be considered as an optional cost saving mechanism.
 
 - Provided operational data ingest volumes meet the minimum tier threshold, configure Log Analytics Workspaces to use Commitment Tier based pricing to drive cost efficiencies relative to the 'pay-as-you-go' pricing model.
@@ -308,10 +308,10 @@ This section focuses on the use of Azure Dashboards and Grafana to build a robus
 
 - If Azure Dashboards cannot be used to accurately represent the health model and requisite business requirements, then it is strongly recommended to consider Grafana as an alternative visualization solution, providing market-leading capabilities and an extensive open-source plugin ecosystem. Evaluate the managed Grafana preview offering to avoid the operational complexities of managing Grafana infrastructure.
 
-- When deploying self-hosted Grafana, employ a highly-available and geo-distributed design to ensure critical operational dashboards can be resilient to regional platform failures and cascading error scenarios. 
+- When deploying self-hosted Grafana, employ a highly available and geo-distributed design to ensure critical operational dashboards can be resilient to regional platform failures and cascading error scenarios. 
   - Separate configuration state into an external datastore, such as Azure Database for Postgres or MySQL, to ensure Grafana application nodes remain stateless.
     - Configure database replication across deployment regions.
-  - Deploy Grafana nodes to App Services in a highly-available configuration across ones within a region, using container based deployments.
+  - Deploy Grafana nodes to App Services in a highly available configuration across ones within a region, using container based deployments.
     - Deploy App Service instances across considered deployment regions.
 
     > App Services provides a low-friction container platform which is ideal for low-scale scenarios such as operational dashboards, and isolating Grafana from AKS provides a clear separation of concern between the primary application platform and operational representations for that platform. Please refer to the Application Platform deign area for further configuration recommendations.
@@ -328,7 +328,7 @@ This section focuses on the use of Azure Dashboards and Grafana to build a robus
 
 ## Automated incident response
 
-While the visual representations of application health provides invaluable operational and business insights to support issue detection and diagnosis, it relies on the readiness and interpretations of operational teams, as well as the effectiveness of subsequent human-triggered responses. Therefore, to maximize reliability it is necessary to implement extensive alerting to detect proactively respond to issues in near real-time.
+While the visual representations of application health provide invaluable operational and business insights to support issue detection and diagnosis, it relies on the readiness and interpretations of operational teams, as well as the effectiveness of subsequent human-triggered responses. Therefore, to maximize reliability it is necessary to implement extensive alerting to detect proactively and respond to issues in near real-time.
 
 [Azure Monitor](/azure/azure-monitor/alerts/alerts-overview) provides an extensive alerting framework to detect, categorize, and respond to operational signals through [Action Groups](/azure/azure-monitor/alerts/action-groups). This section will therefore focus on the use of Azure Monitor alerts to drive automated actions in response to current or potential deviations from a healthy application state.
 
@@ -375,7 +375,7 @@ While the visual representations of application health provides invaluable opera
 
 Machine learning models can be applied to correlate and prioritize operational data, helping to gather critical insights related to filtering excessive alert 'noise' and predicting issues before they cause impact, as well as accelerating incident response when they do.
 
-More specifically, an AIOps methodology can be applied to distil critical insights about the behavior of the system, users, and DevOps processes. These insights can include identifying a problem happening now (*detect*), quantifying why the problem is happening (*diagnose*), or signaling what will happen in the future (*predict*). Such insights can be used to drive actions which adjust and optimize the application to mitigate active or potential issues, leveraging key business metrics, system quality metrics, and DevOps productivity metrics, to prioritize according to business impact. Conducted actions can themselves be infused into the system though a feedback loop which further trains the underlying model to drive additional efficiencies.
+More specifically, an AIOps methodology can be applied to critical insights about the behavior of the system, users, and DevOps processes. These insights can include identifying a problem happening now (*detect*), quantifying why the problem is happening (*diagnose*), or signaling what will happen in the future (*predict*). Such insights can be used to drive actions which adjust and optimize the application to mitigate active or potential issues, leveraging key business metrics, system quality metrics, and DevOps productivity metrics, to prioritize according to business impact. Conducted actions can themselves be infused into the system through a feedback loop which further trains the underlying model to drive additional efficiencies.
 
 ![Mission Critical AIOps Methodologies](./images/alwayson-aiops-methodology.png "Mission Critical AIOps Methodologies")
 
