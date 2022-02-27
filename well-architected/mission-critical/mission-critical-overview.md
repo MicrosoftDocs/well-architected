@@ -56,7 +56,7 @@ Mission-critical guidance is composed of architectural considerations and recomm
 - **Application platform**&mdash;Hosting environment choices, application dependencies, frameworks, and libraries.
 - **Data platform**&mdash;Choices in data store technologies by evaluating the volume, velocity, variety, and veracity characteristics.
 - **Networking and Connectivity**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
-- **Health Modelling**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.
+- **Health Modeling**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.
 - **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation considerations. Incorporating testing scenarios, such as unit, build, static, security, integration, regression, UX, performance, capacity and failure injection (chaos).
 - **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
 - **Operational procedures**&mdash; Processes related to deployment, key management, patching and updates.
@@ -70,17 +70,17 @@ The guidance provided within this series is based on a solution-orientated appro
 > [!IMPORTANT]
 > ![GitHub logo](./../_images/github.svg) [Azure Mission-Critical open source project](http://github.com/azure/alwayson).
 
-- [Azure Mission-Critical Online](https://github.com/azure/alwayson-foundational-online)
+- [AlwaysOn Foundational Online](https://github.com/azure/alwayson-foundational-online)
 
   Provides a foundation for building a cloud-native, highly-scalable, internet-facing application on Microsoft Azure.
   
-  _The workload is accessed over a public endpoint and does not require private network connectivity to a surrounding organizational technical estate._
+  The workload is accessed over a public endpoint and does not require private network connectivity to a surrounding organizational technical estate.
 
-- [Azure Mission-Critical Connected](https://github.com/azure/alwayson-foundational-connected) 
+- [AlwaysOn Foundational Connected](https://github.com/azure/alwayson-foundational-connected) 
 
   Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints.
   
-  _The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads._
+  The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads.
 
 ## Next step
 

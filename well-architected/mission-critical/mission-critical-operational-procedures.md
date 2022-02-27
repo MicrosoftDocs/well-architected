@@ -175,4 +175,4 @@ This section will therefore highlight key operational aspects associated with ap
 Review the cross-cutting concerns for mission-critical application scenarios.
 
 > [!div class="nextstepaction"]
-> [Operational procedures](mission-critical-cross-cutting-issues.md)
+> [Architecture pattern](mission-critical-architecture-pattern.md)

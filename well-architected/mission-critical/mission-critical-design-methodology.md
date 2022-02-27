@@ -50,7 +50,7 @@ This design methodology applies the concept of reliability tiers expressed as av
 
 As an initial exercise, readers are advised to select a target reliability tier by determining how much downtime is acceptable? The pursuit of a particular reliability tier will ultimately have a significant bearing on the design path and encompassed design decisions, which will result in a different target architecture. 
 
-The image below demonstrates how the different reliability tiers and underlying business requirements influence the target architecture for a conceptual reference implementation, particularly concerning the number of regional deployments and utilized global technologies.
+This image shows how the different reliability tiers and underlying business requirements influence the target architecture for a conceptual reference implementation, particularly concerning the number of regional deployments and utilized global technologies.
 
 ![Mission-critical reliability dial](./images/alwayson-slo.gif "Mission-critical reliability dial")
 
@@ -66,30 +66,31 @@ Furthermore, maximizing reliability can impact the overall financial cost of the
 
 The Azure Mission-Critical open source project strives to illustrate the design recommendations provided by this methodology, and should be used as a source of reference to inform the art of the possible.
 
-> ![GitHub logo](./../_images/github.svg) [Azure Mission-Critical open source project](http://github.com/azure/alwayson)
+> ![GitHub logo](./../_images/github.svg) [ Mission-Critical open source project](http://github.com/azure/alwayson)
 
 There are two foundational [reference implementations](mission-critical-overview.md#illustrative-examples):
 
-  - [Azure Mission-Critical Online](https://github.com/azure/alwayson-foundational-online)
-  - [Azure Mission-Critical Connected](https://github.com/azure/alwayson-foundational-connected) 
+  - [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online)
+  - [Mission-Critical Connected](https://github.com/azure/alwayson-foundational-connected) 
 
-- **Production-grade artifacts**: Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered.
 
-- **Rooted in 'customer truth'** - All technical decisions are guided by the real-wold experiences of Azure customers and lessons learned from those engagements.
+**Production-grade artifacts**: Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered.
 
-- **Azure roadmap alignment** - The mission-critical reference architectures have their own roadmap that is aligned with Azure product roadmaps.
+**Rooted in 'customer truth'** - All technical decisions are guided by the real-wold experiences of Azure customers and lessons learned from those engagements.
+
+**Azure roadmap alignment** - The mission-critical reference architectures have their own roadmap that is aligned with Azure product roadmaps.
 
 ## 3&mdash;Evaluate the design areas using the design principles
 
-At the core of this methodology lies a critical design path comprised of foundational [design principles](mission-critical-design-principles.md) and fundamental [design area](mission-critical-design-areas.md) with heavily interrelated and dependent design decisions.
+At the core of this methodology lies a critical design path comprised of foundational [design principles](mission-critical-design-principles.md) and fundamental [design area](mission-critical-architecture-pattern.md) with heavily interrelated and dependent design decisions.
 
 The impact of decisions made within each design area will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of encompassed decisions, which may produce trade-offs within related design areas. 
 
-For example, to define a target architecture it is critical to determine how best to monitor application health across key components. In this instance, the reader should review the health modeling design area, using the outlined recommendations to help drive decisions.
+For example, to define a target architecture it's critical to determine how best to monitor application health across key components. We highly recommend that you review the health modeling design area, using the outlined recommendations to help drive decisions.
 
 ## 4&mdash;Deploy a sandbox application environment
 
-In parallel to design activities, it is highly recommended that a sandbox application environment be established using the Azure Mission-Critical reference implementations.
+In parallel to design activities, it's highly recommended that a sandbox application environment be established using the Azure Mission-Critical reference implementations.
 
 This provides hands-on opportunities to validate design decisions by replicating the target architecture, allowing for design uncertainty to be swiftly assessed. If applied correctly with representative requirement coverage, most problematic issues likely to hinder progress can be uncovered and subsequently addressed.
 
