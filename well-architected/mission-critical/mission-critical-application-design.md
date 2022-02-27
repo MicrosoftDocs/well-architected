@@ -278,6 +278,7 @@ Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tra
 - Retry delays can be linearly spaced, or increase exponentially to 'backoff' via growing delays.
 
 Here are some other resiliency-related patterns:
+
 |Pattern|Summary|
 |---|---|
 |[Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling)| Introduces a buffer between consumers and requested resources to ensure consistent load levels. As consumer requests are enqueued, a worker process dequeues the requests and processes them against the requested resource at a pace set by the worker and the requested resource's ability to process the requests. If consumers expect replies to their requests, a separate response mechanism will also need to be implemented.|
