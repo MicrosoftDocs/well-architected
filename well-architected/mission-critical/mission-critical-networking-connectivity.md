@@ -23,7 +23,7 @@ This design area explores various network topology topics at an application leve
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [Mission Critical open source project](http://github.com/azure/alwayson)
+> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for networking and connectivity for a globally distributed active-active design approach.
 

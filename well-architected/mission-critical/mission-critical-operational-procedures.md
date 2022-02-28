@@ -22,7 +22,7 @@ The mission-critical design methodology leans heavily on the principles *automat
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [Mission Critical open source project](http://github.com/azure/alwayson)
+> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. 
 
@@ -78,7 +78,7 @@ DevOps provides the engineering mindset, processes, and tooling to deliver appli
 
 ## Application Operations
 
-The application design and platform recommendations have a significant bearing on effective operations, and the extent to which these recommendations are adhered to will therefore greatly influence optimal operational procedures.
+The application design and platform recommendations have a significant bearing on effective operations, and the extent to which these recommendations are adhered,  will therefore greatly influence optimal operational procedures.
 
 Furthermore, there's a varied set of operational capabilities provided by different Azure services, particularly when it comes to high availability and recovery. It's therefore also important to understand and use the operational capabilities of used services.
 
@@ -106,7 +106,7 @@ This section will therefore highlight key operational aspects associated with ap
 
 **Update Management**
 
-- Key, secret, and certificate expiration are common causes of application outage.
+- Key, secret, and certificate expirations are common causes of application outage.
 
 - The Kubernetes version within AKS needs to be updated regularly, especially given support for older versions isn't sustained.
   - Components running on K8s also need to be updated, such as cert-manager and Key Vault-csi, and aligned with the k8s version within AKS.
