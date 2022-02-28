@@ -1,5 +1,5 @@
 ---
-title: Mission-critical workloads - Health modeling and observability
+title: Health modeling and observability of mission-critical workloads on Azure
 description: This design area will focus on the process to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity
 author: calcof
 ms.author: calcof
@@ -16,7 +16,7 @@ ms.custom:
   - mission-critical
 ---
 
-# Health modeling and observability
+# Health modeling and observability of mission-critical workloads on Azure
 
 Health modeling and observability are essential concepts to maximize reliability, which focuses on robust and contextualized instrumentation and monitoring. These concepts provide critical insight into application health, promoting the swift identification and resolution of issues.
 
