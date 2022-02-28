@@ -80,7 +80,7 @@ These mission-critical design principles resonate and extend the quality pillars
 
 ## Cost Optimization
 
-There are obvious trade-offs associated with introducing greater reliability, which should be carefully considered in the context of workload requirements.
+There are obvious cost trade-offs associated with introducing greater reliability, which should be carefully considered in the context of workload requirements.
 
 Maximizing reliability can impact the overall financial cost of the solution. For example, the duplication of resources and the distribution of resources across regions to achieve high availability has clear cost implications. To avoid excess costs, don't over-engineer or over-provision beyond the relevant business requirements.
 
