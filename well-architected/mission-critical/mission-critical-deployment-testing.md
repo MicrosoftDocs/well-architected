@@ -515,7 +515,7 @@ AIOps methodologies can be applied within CI/CD pipelines to supplement traditio
 
 ## Next step
 
-Review the considerations for networking considerations.
+Review the security considerations.
 
 > [!div class="nextstepaction"]
-> [Network and connectivity](mission-critical-networking-connectivity.md)
+> [Security](./mission-critical-Security.md)
