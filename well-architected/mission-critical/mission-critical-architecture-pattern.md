@@ -75,7 +75,7 @@ It is crucial to understand and identify in which connectivity scenario a missio
 
 - When deployed in a *Corp. Connected* Landing Zone context, the mission-critical workload takes a dependency on the Azure Landing Zones platform to provide connectivity resources which allow for integration with other applications and shared services. This necessitates some transformation on-top of the *Online* integration approach, since some foundational resources are expected to exist up-front as part of the shared-service platform. More specifically, the regional deployment stamp should not longer encompass an ephemeral Virtual Network or Azure Private DNS Zone since these will exist within the Azure Landing Zones *connectivity* subscription. 
 
-  - A *Corp. Connected* deployment can consider both a public or private AlwaysOn application deployment.
+  - A *Corp. Connected* deployment can consider both a public or private application deployment.
 
 > The mission-critical reference implementations are fully aligned with the Azure Landing Zones architectural approach and are immediately deployable within an *Online* or *Connected* Landing Zone subscription.
 
