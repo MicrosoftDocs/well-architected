@@ -48,7 +48,7 @@ While the primary focus of mission-critical workloads is [Reliability](/azure/ar
 
 ## What are the key design areas?
 
-Mission-critical guidance within this series is composed of architectural considerations and recommendations orientated around these key design areas.
+Mission-critical guidance within this series is composed of architectural considerations and recommendations orientated around these key design areas.  The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. The focus is ultimately on building a highly reliable application.
 
 ![Mission-critical design areas](./images/mission-critical-design-areas.png "Mission-critical design areas")
 
