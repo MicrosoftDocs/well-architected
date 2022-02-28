@@ -270,7 +270,7 @@ The considerations and recommendations within this section will therefore focus 
   > [!CAUTION]
   > 
   > When deploying into an Azure Landing Zone, requisite Azure Policy to ensure the consistent reliability and security should be delivered by the Enterprise Scale platform through policy assignments within the Landing Zone definition.
-  > The AlwaysOn reference implementations provide a suite of baseline policies to drive recommended reliability and security configurations.
+  > The Mission-Critical reference implementations provide a suite of baseline policies to drive recommended reliability and security configurations.
 
 **Azure App Service**
 

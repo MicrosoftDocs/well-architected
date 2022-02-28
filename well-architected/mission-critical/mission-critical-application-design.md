@@ -40,7 +40,7 @@ For example, the foundational reference implementation considers a user flow for
 
 This image shows the multiple scale-unit scopes that are considered by this reference implementation user flow. These scopes range from microservice pods to cluster nodes and regional deployment stamps.
 
-![AlwaysOn scale units](./images/alwayson-scale-units.png)
+![Mission-Critical scale units](./images/alwayson-scale-units.png)
 
 
 Using a scale-unit architecture is recommended to optimize the end-to-end scalability of a mission-critical application so that all levels of the solution can appropriately scale. The relationship between related scale-units, and the components inside a single scale-unit, should be defined according to a capacity model, taking into consideration non-functional requirements around performance.
@@ -110,7 +110,7 @@ The required performance of the solution under load is a critical decision facto
 
 This image demonstrates how the single subscription reference deployment model can be expanded across multiple subscriptions, in an extreme scale scenario, to navigate subscription scale-limits.
 
-![AlwaysOn Subscription Scale Units](./images/alwayson-subscription-scale.gif "AlwaysOn Subscription Scale Units")
+![Mission-Critical Subscription Scale Units](./images/alwayson-subscription-scale.gif "Mission-Critical Subscription Scale Units")
 
 ## Global distribution
 
@@ -130,7 +130,7 @@ It's important to note that some Azure services are deployable or configurable a
 
 This image shows the high-level active-active design. A user accesses the application through a central global entry point that then redirects requests to a suitable regional deployment stamp.
 
-![AlwaysOn Foundational-Online Architecture](./images/alwayson-high-level-architecture.png)
+![Mission-Critical Foundational-Online Architecture](./images/alwayson-high-level-architecture.png)
 
 
 ### Design considerations
@@ -200,9 +200,9 @@ The connectivity method by which users or systems access the application, whethe
 
 ### Example for global distribution approach
 
-The AlwaysOn reference implementations consist of both global and regional resources, with regional resources deployed across multiple regions to provide geo-availability, in the case of regional outages and to bring services closer to end-users. These regional deployments also serve as scale-unit "stamps" to provide additional capacity and availability when required.
+The Mission-Critical reference implementations consist of both global and regional resources, with regional resources deployed across multiple regions to provide geo-availability, in the case of regional outages and to bring services closer to end-users. These regional deployments also serve as scale-unit "stamps" to provide additional capacity and availability when required.
 
-![AlwaysOn Global Distribution](./images/alwayson-global-distribution.gif "AlwaysOn Global Distribution")
+![Mission-Critical Global Distribution](./images/alwayson-global-distribution.gif "Mission-Critical Global Distribution")
 
 ## Loosely coupled event-driven architecture
 
@@ -255,9 +255,9 @@ In reality, applications can combine loose and tight-coupling, depending on busi
 
 ### Example for event-driven approach
 
-The AlwaysOn reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker, while read operations are synchronous with the result directly returned to the caller.
+The Mission-Critical reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker, while read operations are synchronous with the result directly returned to the caller.
 
-![AlwaysOn event driven architecture](./images/alwayson-event-driven.png "AlwaysOn event-driven approach")
+![Mission-Critical event driven architecture](./images/alwayson-event-driven.png "Mission-Critical event-driven approach")
 
 ## Application-level resiliency patterns and error handling
 
