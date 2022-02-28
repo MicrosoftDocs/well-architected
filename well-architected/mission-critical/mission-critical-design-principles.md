@@ -89,7 +89,7 @@ These mission-critical design principles resonate and extend the quality pillars
 
 ## Next step
 
-Explore the design areas that provide critical considerations and recommendations for building a mission-critical workload.
+Review cross-cutting concerns associated with mission-critical workloads.
 
 > [!div class="nextstepaction"]
-> [Design areas](mission-critical-architecture-pattern.md)
+> [Cross-cutting concerns](mission-critical-cross-cutting-concerns.md)

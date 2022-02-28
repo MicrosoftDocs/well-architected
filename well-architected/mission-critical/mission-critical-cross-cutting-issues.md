@@ -67,7 +67,7 @@ Refer to [Azure updates](https://azure.microsoft.com/updates/) for the latest in
 
 ## Next step
 
-Review each design area associated with a mission-critical workload.
+Explore the design areas that provide critical considerations and recommendations for building a mission-critical workload.
 
 > [!div class="nextstepaction"]
-> [Architecture pattern](mission-critical-architecture-pattern.md)
+> [Design areas](mission-critical-architecture-pattern.md)
