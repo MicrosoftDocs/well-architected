@@ -67,16 +67,17 @@ The mission-critical [reference implementations](mission-critical-overview.md#il
 
 ![Mission-critical workload and Landing Zone integration](./images/alwayson-landing-zones.gif "Mission-critical workload and Landing Zone integration")
 
-It's crucial to understand and identify in which connectivity scenario an AlwaysOn application requires since Azure Landing Zones support different landing zones archetypes separated into different Management Group scopes.
+It is crucial to understand and identify in which connectivity scenario a mission-critical application requires since Azure Landing Zones support different landing zones archetypes separated into different Management Group scopes.
 
-- In the context of an *Online* Landing Zone archetype, AlwaysOn operates as an independent solution, without any direct corporate network connectivity to the rest of the Azure Landing Zone architecture. The application will, however, be further safeguarded through the [*policy-driven management*](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) approach, which is foundational to Azure Landing Zones, and will automatically integrate with centralized platform logging through policy.
+- In the context of an *Online* Landing Zone archetype, a mission-critical workload operates as a completely independent solution, without any direct corporate network connectivity to the rest of the Azure Landing Zone architecture. The application will, however, be further safeguarded through the [*policy-driven management*](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) approach which is foundational to Azure Landing Zones, and will automatically integrate with centralized platform logging through policy.
 
-  - A *Online* deployment can only consider a public AlwaysOn application deployment because there's no private corporate connectivity provided.
+  - A *Online* deployment can only really consider a public application deployment since there is no private corporate connectivity provided.
 
-- When deployed in a *Corp. Connected* Landing Zone context, the AlwaysOn application takes a dependency on the Azure Landing Zones platform to provide connectivity resources which allow for integration with other applications and shared services existing on the platform. This necessitates some transformation on-top of the *Online* integration approach, since some foundational resources are expected to exist up-front as part of the shared-service platform. More specifically, the AlwaysOn regional deployment stamp shouldn't longer encompass an ephemeral Virtual Network or Azure Private DNS Zone since these will exist within the Azure Landing Zones *connectivity* subscription. 
+- When deployed in a *Corp. Connected* Landing Zone context, the mission-critical workload takes a dependency on the Azure Landing Zones platform to provide connectivity resources which allow for integration with other applications and shared services. This necessitates some transformation on-top of the *Online* integration approach, since some foundational resources are expected to exist up-front as part of the shared-service platform. More specifically, the regional deployment stamp should not longer encompass an ephemeral Virtual Network or Azure Private DNS Zone since these will exist within the Azure Landing Zones *connectivity* subscription. 
+
   - A *Corp. Connected* deployment can consider both a public or private AlwaysOn application deployment.
 
-> The AlwaysOn reference implementations are fully aligned with the Azure Landing Zones architectural approach and are immediately deployable within an *Online* or *Connected* Landing Zone subscription.
+> The mission-critical reference implementations are fully aligned with the Azure Landing Zones architectural approach and are immediately deployable within an *Online* or *Connected* Landing Zone subscription.
 
 ## Next step
 
@@ -84,4 +85,3 @@ Review the best practices for architecting mission-critical application scenario
 
 > [!div class="nextstepaction"]
 > [Application Design](./mission-critical-application-design.md)
-
