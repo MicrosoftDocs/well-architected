@@ -1,5 +1,5 @@
 ---
-title: Zero-trust landing zone in Azure
+title: Azure landing zone integration
 description: Security controls on a prepared infrastructure into which a workload can get deployed.
 author: PageWriter-MSFT
 ms.author: robbymillsap
@@ -16,21 +16,23 @@ ms.custom:
   - article
 ---
 
-# Zero-trust landing zone in Azure
+# Azure landing zone integration
 
-A *landing zone* refers to a prepared infrastructure into which a workload gets deployed. It already has the compute, data sources, access controls, and networking components provisioned. When a workload lands on Azure, the required plumbing is ready; the workload needs to plug into it.
+From a workload perspective, a *landing zone* refers to a prepared platform into which the application gets deployed. A landing zone implementation can have compute, data sources, access controls, and networking components already provisioned. With the required plumbing ready in place; the workload needs to plug into it. When considering the overall security, a landing zone offers centralized security capabilities that adds a threat mitigation layer for the workload. Implementations can vary but here are some common strategies that enhance the security posture.
 
-From a security perspective, there are several benefits. First, a landing zone offers isolation by creating segments. You can isolate assets at several layers from Azure enrollment down to a subscription that has the resources for the workload. This strategy of having resources within a boundary that is separate from other parts of the organization is an effective way of detecting and containing adversary movements.
+- Isolation through segmentation. You can isolate assets at several layers from Azure enrollment down to a subscription that has the resources for the workload. This strategy of having resources within a boundary that is separate from other parts of the organization is an effective way of detecting and containing adversary movements.
 
-Another benefit is consistent adoption of organizational policies. Policies govern which resources can be used and their usage limits. Policies also provide identity controls. Only authenticated and authorized entities are allowed access. This approach decouples the governance requirements from the workload requirements. It's crucial that a landing zone is handed over to the workload owner with the security guardrails deployed.
+- Consistent adoption of organizational policies. Policies govern which resources can be used and their usage limits. Policies also provide identity controls. Only authenticated and authorized entities are allowed access. This approach decouples the governance requirements from the workload requirements. It's crucial that a landing zone is handed over to the workload owner with the security guardrails deployed.
 
-A well-architected landing zone supports the zero-trust principle. The landing zone is configured with least privileges that is in compliance with enterprise security. The workload requirements must align those requirements. For instance when designing networking controls, apply the zero-trust approach by opening communication paths only when necessary and only to trusted entities.
+- Configurations that align with [principles of Zero Trust ](https://review.docs.microsoft.com/en-us/security/zero-trust/]). For instance an implementation might have network connectivity to on-premises data centers. When designing networking controls, the landing zone may apply the least-privilege principle by opening communication paths only when necessary and only to trusted entities.
 
-The preceding examples are conceptually simple but the implementation can get complicated for an enterprise-scale deployment. This article provides links to articles in Cloud Adoption Framework (CAF) that describe the design considerations and best practices.
+The preceding examples are conceptually simple but the implementation can get complicated for an enterprise-scale deployment. Azure landing zone as part of the Cloud Adoption Framework (CAF) provides architecture guidance about identity and access management, networking, and other design areas necessary to achieve an optimal implementation.  
 
 **Learn more**
 
-[What is the Microsoft Cloud Adoption Framework for Azure?](/azure/cloud-adoption-framework/overview)
+[What is an Azure landing zone?](/azure/cloud-adoption-framework/ready/landing-zone/)
+
+[Landing zone implementation options](/azure/cloud-adoption-framework/ready/landing-zone/implementation-options)
 
 ## Increase automation with Azure Blueprints
 
@@ -50,6 +52,18 @@ In Azure, you can take advantage of Azure Policy to create and manage policies t
 
 For more information on how to do this in Azure, please review [Tutorial: Create and manage policies to enforce compliance](/azure/governance/policy/tutorials/create-and-manage).
 
+**How do you consistently deploy landing zones that follow organizational policies?**
+***
+
+Key Azure services that can help in creating a landing zone:
+
+- [Azure Blueprints](/azure/governance/blueprints/overview) sketches a solution's design parameters based on an organization's standards, patterns, and requirements.
+- [Azure Resource Manager template specs](/azure/azure-resource-manager/templates/template-specs)  stores an Azure Resource Manager template (ARM template) in Azure for later deployment.
+- [Azure Policy](/azure/governance/policy/overview) enforces organizational standards and to assess compliance at-scale.
+- [Azure AD](https://azure.microsoft.com/services/active-directory/) and [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) work in conjunction to provide identity and access controls.
+- [Microsoft Defender for Cloud](/azure/security-center/security-center-intro)
+- [Microsoft Defender for Cloud](/azure/security-center/azure-defender)
+
 ## Architecture
 
 For information about an enterprise-scale reference architecture, see [Cloud Adoption Framework enterprise-scale landing zone architecture](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture). The architecture provides considerations in these critical design areas:
@@ -63,19 +77,6 @@ For information about an enterprise-scale reference architecture, see [Cloud Ado
 - [Security, governance, and compliance](/azure/cloud-adoption-framework/ready/enterprise-scale/security-governance-and-compliance)
 - [Platform automation and DevOps](/azure/cloud-adoption-framework/ready/enterprise-scale/platform-automation-and-devops)
 
-## Azure services
-
-**How do you consistently deploy landing zones that follow organizational policies?**
-***
-
-Key Azure services that can help in creating a landing zone:
-
-- [Azure Blueprints](/azure/governance/blueprints/overview) sketches a solution's design parameters based on an organization's standards, patterns, and requirements.
-- [Azure Resource Manager template specs](/azure/azure-resource-manager/templates/template-specs)  stores an Azure Resource Manager template (ARM template) in Azure for later deployment.
-- [Azure Policy](/azure/governance/policy/overview) enforces organizational standards and to assess compliance at-scale.
-- [Azure AD](https://azure.microsoft.com/services/active-directory/) and [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) work in conjunction to provide identity and access controls.
-- [Microsoft Defender for Cloud](/azure/security-center/security-center-intro)
-- [Microsoft Defender for Cloud](/azure/security-center/azure-defender)
 
 ## Next
 
