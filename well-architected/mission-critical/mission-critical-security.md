@@ -26,18 +26,18 @@ Security is a one of the foundational design principles and also a key design ar
 
 Given that the primary focus of a mission-critical design is to maximize reliability so that the application remains performant and available, the security considerations and recommendations applied within this design area will focus on mitigating threats with the capacity to impact availability and hinder overall reliability. For example, successful Denial-Of-Service (DDoS) attacks are known to have a catastrophic impact on availability and performance. How an application mitigates those attack vectors, such as SlowLoris will impact the overall reliability. So, the application must be fully protected against threats intended to directly or indirectly compromise application reliability to be truly mission critical in nature.
 
-It's is also important to note that there are often significant trade-offs associated with a hardened security posture, particularly with respect to performance, operational agility, and in some cases reliability. For example, the inclusion of inline Network Virtual Appliances (NVA) for Next-Generation Firewall (NGFW) capabilities, such as deep packet inspection, will introduce a significant performance penalty, additional operational complexity, and a reliability risk if scalability and recovery operations are not closely aligned with that of the application. It's therefore essential that additional security components and practices intended to mitigate key threat vectors are also designed to support the reliability target of an  application, which will form a key aspect of the recommendations and considerations presented within this section.
+It's also important to note that there are often significant trade-offs associated with a hardened security posture, particularly with respect to performance, operational agility, and in some cases reliability. For example, the inclusion of inline Network Virtual Appliances (NVA) for Next-Generation Firewall (NGFW) capabilities, such as deep packet inspection, will introduce a significant performance penalty, additional operational complexity, and a reliability risk if scalability and recovery operations are not closely aligned with that of the application. It's therefore essential that additional security components and practices intended to mitigate key threat vectors are also designed to support the reliability target of an  application, which will form a key aspect of the recommendations and considerations presented within this section.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
 >
-> ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson)
+> ![GitHub logo](./../_images/github.svg) [Mission Critical open source project](http://github.com/azure/alwayson)
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets adopt a Zero Trust model to structure and guide the security design and implementation approach.
 
 ## Alignment with the Zero Trust model
 
-The Microsoft [Zero Trust](https://www.microsoft.com/security/business/zero-trust) model provides a proactive and integrated approach to applying security across all layers of an application. The [guiding principles of Zero Trust](/security/zero-trust/) strives to explicitly and continuously verify every transaction, assert least privilege, leverage intelligence, and advanced detection to respond to threats in near real-time. It's is ultimately centered on eliminating trust inside and outside of application perimeters, enforcing verification for anything attempting to connect to the system.
+The Microsoft [Zero Trust](https://www.microsoft.com/security/business/zero-trust) model provides a proactive and integrated approach to applying security across all layers of an application. The [guiding principles of Zero Trust](/security/zero-trust/) strives to explicitly and continuously verify every transaction, assert least privilege, use intelligence, and advanced detection to respond to threats in near real-time. It's ultimately centered on eliminating trust inside and outside of application perimeters, enforcing verification for anything attempting to connect to the system.
 
 ### Design considerations
 As you assess the security posture of the application, start with these questions as the basis for each consideration.
@@ -84,18 +84,18 @@ As you assess the security posture of the application, start with these question
 
 - Use first-party [Microsoft identity platform authentication libraries](/azure/active-directory/develop/reference-v2-libraries) within application code to integrate with Azure AD.
 
-- Consider secure token caching to allow for a degraded but available experience in the event that the Azure AD, or the chosen identity platform, is not available or is only partially available for application authorization.
+- Consider secure token caching to allow for a degraded but available experience if the chosen identity platform, isn' available or is only partially available for application authorization.
   - If the provider is unable to issue new access tokens, but still validates existing ones, the application and dependent services can operate without issues until their tokens expire.
   - Token caching is typically handled automatically by authentication libraries ([such as MSAL](/azure/active-directory/fundamentals/resilience-client-app?tabs=csharp)).
 
 - Use Infrastructure-as-Code (IaC) and automated CI/CD pipelines to drive updates to all application components, including under failure circumstances.
-  - Ensure CI/CD tooling service connections are safeguarded as critical sensitive information, and should not be directly available to any service team.
+  - Ensure CI/CD tooling service connections are safeguarded as critical sensitive information, and shouldn' be directly available to any service team.
   - Apply granular RBAC to production CD pipelines to mitigate 'malicious admin' risks.
   - Consider the use of manual approval gates within production deployment pipelines to further mitigate 'malicious admin' risks and provide additional technical assurance for all production changes.
     - Additional security gates may come at a trade-off in terms of agility and should be carefully evaluated, with consideration given to how agility can be maintained even with manual gates.
 
 - Define an appropriate security posture for all lower environments to ensure key vulnerabilities are mitigated.
-  - Do not apply the same security posture as production, particularly with regards to data exfiltration, unless regulatory requirements stipulate the need to do so, since this will significantly compromise developer agility.
+  - Do not apply the same security posture as production, particularly with regard to data exfiltration, unless regulatory requirements stipulate the need to do so, since this will significantly compromise developer agility.
 
 - Enable Microsoft Defender for Cloud (formerly known as Azure Security Center) for all subscriptions that contain the resources for a mission-critical workload.
   - Use Azure Policy to enforce compliance.
@@ -107,9 +107,9 @@ As you assess the security posture of the application, start with these question
     - If security testing each release jeopardizes operational agility, ensure a suitable security testing cadence is applied.
   
 - Limit public network access to the absolute minimum required for the application to fulfill its business purpose to reduce the external attack surface.
-  - Use [Azure Private Link](/azure/private-link/private-endpoint-overview#private-link-resource) to establish [private endpoints](/azure/private-link/private-endpoint-overview) for Azure resources which require secure network integration.
+  - Use [Azure Private Link](/azure/private-link/private-endpoint-overview#private-link-resource) to establish [private endpoints](/azure/private-link/private-endpoint-overview) for Azure resources that  require secure network integration.
     - Use a secure network path and [hosted private build agents](/azure/devops/pipelines/agents/agents#install) for CI/CD tooling to deploy and configure Azure resources protected by Azure Private Link.
-      - [Microsoft-hosted agents](/azure/devops/pipelines/agents/agents#microsoft-hosted-agents) will not be able to directly connect to network integrated resources.
+      - [Microsoft-hosted agents](/azure/devops/pipelines/agents/agents#microsoft-hosted-agents) won't be able to directly connect to network integrated resources.
 
 - Enable [secret scanning](https://github.blog/2020-08-27-secure-at-every-step-putting-devsecops-into-practice-with-code-scanning/) and dependency scanning within the source code repository.
 
@@ -131,7 +131,7 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 
 [STRIDE](https://en.wikipedia.org/wiki/STRIDE_(security)) provides a lightweight risk framework for evaluating security threats across key threat vectors. 
 
-- Spoofed Identity: Impersonation of individuals with authority. For example, an attacker impersonating another user by leveraging their -
+- Spoofed Identity: Impersonation of individuals with authority. For example, an attacker impersonating another user by using their -
   - Identity
   - Authentication
 - Tampering Input: Modification of input sent to the application, or the breach of trust boundaries to modify application code. For example, an attacker using SQL Injection to delete data in a database table.
@@ -164,7 +164,7 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 
 ## Network intrusion protection
 
-Preventing unauthorized access to an mission-critical application and encompassed data is vital to maintain availability and safeguard data integrity. 
+Preventing unauthorized access to a mission-critical application and encompassed data is vital to maintain availability and safeguard data integrity. 
 
 ### Design considerations
 
@@ -180,19 +180,19 @@ Preventing unauthorized access to an mission-critical application and encompasse
 - For supported services, Azure Private Link using Azure Private Endpoints addresses [data exfiltration risks associated with Service Endpoints](/azure/private-link/private-link-faq#what-is-the-difference-between-service-endpoints-and-private-endpoints-), such as a malicious admin writing data to an external resource.
 
 - When restricting network access to Azure PaaS services using Private Endpoints or Service Endpoints, a secure network channel will be required for deployment pipelines to access both the Azure control plane and data plane of Azure resources in order to deploy and manage the application.
-  - [Private self-hosted build agents](/azure/devops/pipelines/agents/agents?tabs=browser#install) deployed onto the a private network as the Azure resource can be used as a proxy to execute CI/CD functions over a private connection. A separate virtual network should be used for build agents.
+  - [Private self-hosted build agents](/azure/devops/pipelines/agents/agents?tabs=browser#install) deployed onto a private network as the Azure resource can be used as a proxy to execute CI/CD functions over a private connection. A separate virtual network should be used for build agents.
     - Connectivity to the private build agents from CI/CD tooling is required.
   - An alternative approach is to modify the firewall rules for the resource on-the-fly within the pipeline to allow a connection from an Azure DevOps agent public IP address, with the firewall subsequently removed after the task is completed. 
-    - However, this approach is only applicable for a subset of Azure services. For example, this is not feasible for private AKS clusters.
+    - However, this approach is only applicable for a subset of Azure services. For example, this isn't feasible for private AKS clusters.
   - To perform developer and administrative tasks on the application service jump boxes can be used.
   
 - The completion of administration and maintenance tasks is a further scenario requiring connectivity to the data plane of Azure resources.
 
-- Service Connections with a corresponding Azure AD service principals can be leveraged within Azure DevOps to apply RBAC through Azure AD.
+- Service Connections with a corresponding Azure AD service principal can be used within Azure DevOps to apply RBAC through Azure AD.
 
 - Service Tags can be applied to Network Security Groups to facilitate connectivity with Azure PaaS services.
 
-- Application Security Groups do not span across multiple virtual networks.
+- Application Security Groups don't span across multiple virtual networks.
 
 - Packet capture in Azure Network Watcher is limited to a maximum period of five hours.
 
@@ -207,7 +207,7 @@ Preventing unauthorized access to an mission-critical application and encompasse
 - Use a DDoS standard protection plan to secure all public IP addresses within the application.
 
 - Use Azure Front Door with web application firewall policies to deliver and help protect global HTTP/S  applications that span multiple Azure regions.
-  - Use Header Id validation to lock down public application endpoints so they only accept traffic originating from the Azure Front Door instance.
+  - Use Header ID validation to lock down public application endpoints so they only accept traffic originating from the Azure Front Door instance.
 
 - If additional in-line network security requirements, such as deep packet inspection or TLS inspection, mandate the use of Azure Firewall Premium or Network Virtual Appliance (NVA), ensure it is configured for maximum high availability and redundancy.
 
@@ -221,7 +221,7 @@ Preventing unauthorized access to an mission-critical application and encompasse
 
 - Use Azure Private Link/Private Endpoints, where available, to secure access to Azure PaaS services within the application design. For information on Azure services that support Private Link, see [Azure Private Link availability](/azure/private-link/availability). 
 
-- If Private Endpoint is not available and data exfiltration risks are acceptable, use Virtual Network Service Endpoints to secure access to Azure PaaS services from within a virtual network.
+- If Private Endpoint isn't available and data exfiltration risks are acceptable, use Virtual Network Service Endpoints to secure access to Azure PaaS services from within a virtual network.
   - Don't enable virtual network service endpoints by default on all subnets as this will introduce significant data exfiltration channels.
 
 - For hybrid application scenarios, access Azure PaaS services from on-premises via ExpressRoute with private peering.
@@ -230,7 +230,7 @@ Preventing unauthorized access to an mission-critical application and encompasse
 
 ## Data integrity protection
 
-Encryption is a vital step toward ensuring data integrity and is ultimately one of the most important security capabilities which can be applied to mitigate a wide array of threats. This section will therefore provide key considerations and recommendations related to encryption and key management in order to safeguard data without compromising application reliability.
+Encryption is a vital step toward ensuring data integrity and is ultimately one of the most important security capabilities that can be applied to mitigate a wide array of threats. This section will therefore provide key considerations and recommendations related to encryption and key management in order to safeguard data without compromising application reliability.
 
 ### Design considerations
 
@@ -240,20 +240,20 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
   - Key Vault access policy assignments grant permissions separately to keys, secrets, or certificates.
     - Granular [object-level permissions](/azure/key-vault/general/rbac-guide?tabs=azure-cli#best-practices-for-individual-keys-secrets-and-certificates) to a specific key, secret, or certificate are now possible.
 
-- Role assignments innur a latency, taking up to 10 minutes (600 seconds) for a role to be applied after a role assignment is changed.
-  - There is a AAD limit of 2,000 Azure role assignments per subscription.
+- Role assignments incur a latency, taking up to 10 minutes (600 seconds) for a role to be applied after a role assignment is changed.
+  - There is an AAD limit of 2,000 Azure role assignments per subscription.
 
 - Azure Key Vault underlying hardware security modules (HSMs) are FIPS 140-2 Level 2 compliant.
   - A dedicated [Azure Key Vault managed HSM](/azure/key-vault/managed-hsm/overview) is available for scenarios requiring FIPS 140-2 Level 3 compliance.
 
 - Azure Key Vault provides high availability and redundancy to help maintain availability and prevent data loss.
 
-- In the event of a region failover, it may take a few minutes for the Key Vault service to fail over.
-  - During a failover Key Vault will be in a read-only mode, so it will not be possible to change key vault properties such as firewall configurations and settings.
+- During a region failover, it may take a few minutes for the Key Vault service to fail over.
+  - During a failover Key Vault will be in a read-only mode, so it won't be possible to change key vault properties such as firewall configurations and settings.
 
-- If private link is used to connect to Azure Key Vault, it may take up to 20 minutes for the connection to be re-established in the event of a regional failover.
+- If private link is used to connect to Azure Key Vault, it may take up to 20 minutes for the connection to be re-established during a regional failover.
 
-- A backup creates a [point-in-time snapshot](/azure/key-vault/general/backup?tabs=azure-cli#overview) of a secret, key, or certificate, as an encrypted blob which cannot be decrypted outside of Azure. To get usable data from the blob, it must be restored into a Key Vault within the same Azure subscription and Azure geography.
+- A backup creates a [point-in-time snapshot](/azure/key-vault/general/backup?tabs=azure-cli#overview) of a secret, key, or certificate, as an encrypted blob that can't be decrypted outside of Azure. To get usable data from the blob, it must be restored into a Key Vault within the same Azure subscription and Azure geography.
   - Secrets may renew during a backup, causing a mismatch.
 
 - With service-managed keys, Azure will perform key management functions, such as rotation, thereby reducing the scope of application operations.
@@ -268,7 +268,7 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
   - Deploy a separate collocated Azure Key Vault with every regional deployment stamp.
 
 - Use service-managed keys for data protection where possible, removing the need to manage encryption keys and handle operational tasks such as key rotation.
-  - Only use customer-managed keys when there is a clear regulatory requirement to do so.
+  - Only use customer-managed keys when there's a clear regulatory requirement to do so.
 
 - Use [Azure Key Vault](/azure/key-vault/general/overview) as a secure repository for all secrets, certificates, and keys if additional encryption mechanisms or customer-managed keys need considered.
   - Provision Azure Key Vault with the soft delete and purge policies enabled to allow retention protection for deleted objects.
@@ -294,7 +294,7 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
 
 ## Policy-driven governance
 
-Security conventions are ultimately only effective if consistently and holistically enforced across all application services and teams. Azure Policy provides a framework to enforce security and reliability baselines, ensuring continued compliance with a common engineering criteria for a mission-critical application. More specifically, Azure Policy forms a key part of the Azure Resource Manager (ARM) control plane, supplementing RBAC by restricting what actions authorized users can perform, and can be leveraged to enforce vital security and reliability conventions across utilized platform services.
+Security conventions are ultimately only effective if consistently and holistically enforced across all application services and teams. Azure Policy provides a framework to enforce security and reliability baselines, ensuring continued compliance with a common engineering criteria for a mission-critical application. More specifically, Azure Policy forms a key part of the Azure Resource Manager (ARM) control plane, supplementing RBAC by restricting what actions authorized users can perform, and can be used to enforce vital security and reliability conventions across utilized platform services.
 
 This section will therefore explore key considerations and recommendations surrounding the use of Azure Policy driven governance for a mission-critical application, ensuring security and reliability conventions are continuously enforced.
 
@@ -333,13 +333,13 @@ This section will therefore explore key considerations and recommendations surro
 - Use built-in policies where possible to minimize operational overhead of maintaining custom policy definitions.
 
 - Where custom policy definitions are required, ensure definitions are deployed at suitable management group scope to allow for reuse across encompassed environment subscriptions to this allow for policy reuse across production and lower environments.
-  - When aligning the application roadmap with Azure roadmaps, leverage available Microsoft resources to explore if critical custom definitions could be incorporated as built-in definitions.
+  - When aligning the application roadmap with Azure roadmaps, use available Microsoft resources to explore if critical custom definitions could be incorporated as built-in definitions.
 
 > When deployed within an Enterprise Scale context, consider deploying custom Azure Policy Definitions within the intermediate company root management group scope to enable reuse across all applications within the broader Azure estate.
 > When deployed in an Enterprise Scale environment, certain centralized security policies will be applied by default within higher management group scopes to enforce security compliance across the entire Azure estate. For example, Azure policies should be applied to automatically deploy software configurations through VM extensions and enforce a compliant baseline VM configuration as part of the Enterprise-Scale foundation.
 
 - Use Azure Policy to enforce a consistent tagging schema across the application.
-  - Identify required Azure tags and leverage the append policy mode to enforce usage.
+  - Identify required Azure tags and use the append policy mode to enforce usage.
 
 > If the application is subscribed to Microsoft Mission-Critical Support, ensure that the applied tagging schema provides meaningful context to enrichen the support experience with deep application understanding.
 
