@@ -1,5 +1,5 @@
 ---
-title: Application design for mission-critical workloads on Azure
+title: Application design of mission-critical workloads on Azure
 description: This design area explores requisite application design patterns for building a highly reliable application on Azure.
 author: calcof
 ms.author: calcof
@@ -14,14 +14,16 @@ ms.custom:
   - alwayson
 ---
 
-# Application design for mission-critical workloads on Azure
+# Application design of mission-critical workloads on Azure
 
-Both functional application requirements and non-functional requirements are critical to inform key design decisions for a mission-critical application design. However, these requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved. This article explores the important application design patterns for building a highly reliable application on Azure.
+Both functional application requirements and non-functional requirements are critical to inform key design decisions for a mission-critical application design. However, these requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved. 
+
+This design area explores the important application design patterns for building a highly reliable application on Azure.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [AlwaysOn open source project](http://github.com/azure/alwayson)
+> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The implementations provide solution-orientated showcases for how these foundational design concepts can be leveraged, alongside Azure-native capabilities, to maximize reliability.
 
@@ -32,9 +34,9 @@ Architecturally, it's critical to optimize end-to-end scalability through the lo
 A _scale-unit_ is a logical unit or function that can be scaled independently. A unit can be code components, application hosting platforms, or even deployment stamps that encompass related components.
 
 > [!TIP]
-> Refer to the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) for further details.
+> For more information, see the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) for further details.
 
-For example, the foundational reference implementation considers a user flow for processing game results that use APIs for retrieving and posting game outcomes, as well as supporting components such as an OAuth endpoint, datastore, and message queues. These stateless API endpoints for retrieving and posting results represent granular functional units that must be able to adapt to changes in demand. However, for these to be truly scalable, the underlying application platform must also be able to scale in-kind. Similarly, to avoid performance bottlenecks in the end-to-end user flow and to achieve sustainable scale, the downstream components and dependencies must also be able to scale to an appropriate degree, either independently, as a separate scale-unit, or together, as part of a single logical unit.
+For example, the foundational reference implementation considers a user flow for processing game results that use APIs for retrieving and posting game outcomes, and supporting components such as an OAuth endpoint, datastore, and message queues. These stateless API endpoints for retrieving and posting results represent granular functional units that must be able to adapt to changes in demand. However, for these to be truly scalable, the underlying application platform must also be able to scale in-kind. Similarly, to avoid performance bottlenecks in the end-to-end user flow and to achieve sustainable scale, the downstream components and dependencies must also be able to scale to an appropriate degree, either independently, as a separate scale-unit, or together, as part of a single logical unit.
 
 This image shows the multiple scale-unit scopes that are considered by this reference implementation user flow. These scopes range from microservice pods to cluster nodes and regional deployment stamps.
 
@@ -55,7 +57,7 @@ Here are some benefits of using a scale-unit architecture:
 
 [Azure subscription scale limits and quotas](/azure/azure-resource-manager/management/azure-subscription-service-limits) might have a bearing on application design, technology choices, and the definition of scale-units.
 
-When designing a highly-available architecture, start by asking these questions.
+When designing a highly available architecture, start by asking these questions.
 
 **How many requests is the solution required to support for each user flow? Are the usage patterns predictable?**
 
@@ -63,7 +65,7 @@ The expected peak request rate (requests per second) and daily/weekly/seasonal t
  
 **Is traffic expected to grow? At what rate will it grow?**
 
-The expected growth patterns for both traffic and data volume inform the design, with regard to sustainable scale.
+The expected growth patterns for both traffic and data volume inform the design, about sustainable scale.
 
 **Is a degraded service with high response times acceptable under load?**
 
@@ -80,7 +82,7 @@ The required performance of the solution under load is a critical decision facto
 
 - Define a regional deployment stamp to unify the provisioning, management, and operation of regional application resources, into a heterogenous but inter-dependent scale-unit.
 
-  As the load increases, additional stamps can be deployed within the same or different Azure regions, in order to horizontally scale the solution.
+  As the load increases, extra stamps can be deployed within the same or different Azure regions, in order to horizontally scale the solution.
 
 > [!CAUTION]
 > When deploying within an Azure Landing Zone, ensure the Landing Zone subscription is dedicated to the application, in order to provide a clear management boundary and to avoid potential the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
@@ -96,11 +98,11 @@ The required performance of the solution under load is a critical decision facto
 
 - Where multiple production subscriptions are needed to ensure requisite scale, consider using a dedicated application management group, to simplify policy assignment through a policy aggregation boundary.
 
-- Deploy any considered environments, such as production, development, or test environments, into separate subscriptions. This practice ensures that lower environments do not contribute towards scale limits, and it reduces the risk of lower environment updates polluting production, by providing a clear management and identity boundary.
+- Deploy any considered environments, such as production, development, or test environments, into separate subscriptions. This practice ensures that lower environments don't contribute towards scale limits, and it reduces the risk of lower environment updates polluting production, by providing a clear management and identity boundary.
 
 - Define and analyze non-functional requirements, such as the availability SLO, within the context of key end-to-end user-flows. Technical and business scenarios will likely have distinct considerations for resilience, availability, latency, capacity, and observability. This practice will allow for relative flexibility in the design approach, tailoring design decisions and technology choices at a user-flow level, since one size may not fit all.
 
-- Model the required capacity around identified traffic patterns, in order to ensure sufficient capacity is provisioned at peak times and to prevent service degradation. Leverage traffic patterns to optimize capacity and resource utilization, during periods of reduced traffic.
+- Model the required capacity around identified traffic patterns, in order to ensure sufficient capacity is provisioned at peak times and to prevent service degradation. Use traffic patterns to optimize capacity and resource utilization, during periods of reduced traffic.
 
 - Measure the time it takes to perform scale-out and scale-in operations, in order to ensure that the natural variations in traffic don't create an unacceptable level of service degradation.   - To drive continuous improvement, track the scale operation durations as an operational metric.
 
@@ -120,28 +122,28 @@ Here are some strategies to mitigate many fault scenarios.
 
 To maximize reliability, consider using multiple Azure regions to ensure regional fault tolerance, so that application availability remains even when an entire region goes down. When designing a multi-region application, consider different deployment strategies, such as active-active and active-passive, alongside application requirements, because there are significant trade-offs between each approach.
 
-An active-active deployment strategy represents the gold standard because it maximizes availability and allows for higher composite SLAs. While active-active is the recommended approach, it can introduce challenges around data synchronization and consistency for many application scenarios, and these challenges must be fully addressed at a data platform level, alongside additional trade-offs, from increased cost exposure and increased engineering effort.
+An active-active deployment strategy represents the gold standard because it maximizes availability and allows for higher composite SLAs. While active-active is the recommended approach, it can introduce challenges around data synchronization and consistency for many application scenarios, and these challenges must be fully addressed at a data platform level, with other trade-offs, from increased cost exposure and increased engineering effort.
 
 Not every workload supports or requires multiple regions running simultaneously, and hence the precise application requirements should be weighed against these trade-offs to inform an optimal design decision. For certain application scenarios with lower reliability targets, different deployment models, such as active-passive or sharding, can be suitable alternatives.
 
-It's important to note that some Azure services are deployable or configurable as global resources, which are not constrained to a particular Azure region. Consequently, when accommodating both 'Scale-Unit Architecture' and 'Global Distribution', carefully consider to how resources are optimally distributed across Azure regions. 
+It's important to note that some Azure services are deployable or configurable as global resources, which aren't constrained to a particular Azure region. So, when accommodating both 'Scale-Unit Architecture' and 'Global Distribution', carefully consider to how resources are optimally distributed across Azure regions. 
 
-This image show the high-level active-active design. A user accesses the application through a central global entry point that then redirects requests to a suitable regional deployment stamp.
+This image shows the high-level active-active design. A user accesses the application through a central global entry point that then redirects requests to a suitable regional deployment stamp.
 
 ![AlwaysOn Foundational-Online Architecture](./images/alwayson-high-level-architecture.png)
 
 
 ### Design considerations
 
-- Not all services or capabilities are available in every Azure region, and consequently there can be service availability implications depending on the selected deployment regions.  - For example, [Availability Zones](/azure/availability-zones/az-region) are not available in every region.
+- Not all services or capabilities are available in every Azure region, and so there can be service availability implications depending on the selected deployment regions.  - For example, [Availability Zones](/azure/availability-zones/az-region) aren't available in every region.
 
-- Azure regions are grouped into [regional pairs](/azure/best-practices-availability-paired-regions) consisting of two regions within the same geography. Some Azure services leverage paired regions to ensure business continuity and to protect against data loss. For example, Azure Geo-redundant Storage (GRS) replicates data to a secondary paired region automatically, ensuring that data is durable in the event that the primary region is not recoverable. If an outage affects multiple Azure regions, at least one region in each pair will be prioritized for recovery.
+- Azure regions are grouped into [regional pairs](/azure/best-practices-availability-paired-regions) consisting of two regions within the same geography. Some Azure services use paired regions to ensure business continuity and to protect against data loss. For example, Azure Geo-redundant Storage (GRS) replicates data to a secondary paired region automatically, ensuring that data is durable if the primary region isn't recoverable. If an outage affects multiple Azure regions, at least one region in each pair will be prioritized for recovery.
 
 - The [Azure Safe Deploy Practice (SDP)](https://azure.microsoft.com/blog/advancing-safe-deployment-practices) ensures all code and configuration changes (planned maintenance) to the Azure platform undergo a phased roll-out, with health analyzed in case any degradation is detected during the release.  After the Canary and Pilot phases have  successfully completed, platform updates are serialized across regional pairs, ensuring that only one region in each pair is updated at a time.
 
-- Like any cloud provider, Azure ultimately has a finite amount of resources and as a result there are situations which can lead to the unavailability of capacity in individual regions. In the event of a regional outage there will be a significant increase in demand for resources within the paired region as impacted customer workloads seek to recover within the paired region. In certain scenarios this may create a capacity challenge where supply temporarily does not satisfy demand.
+- Like any cloud provider, Azure ultimately has a finite amount of resources and as a result there are situations that can lead to the unavailability of capacity in individual regions. In the event of a regional outage there will be a significant increase in demand for resources within the paired region as impacted customer workloads seek to recover within the paired region. In certain scenarios this may create a capacity challenge where supply temporarily does not satisfy demand.
 
-When designing a globally-distributed architecture, start by asking these questions.
+When designing a globally distributed architecture, start by asking these questions.
 
 **Are there specific regions where data must reside or where resources have to be deployed?**
 
@@ -153,14 +155,14 @@ The geographic proximity and density of users or dependent systems should inform
 
 **Are users going to connect from home and/or organizational networks? Can all users be expected to have fast internet connections?**
 
-The connectivity method by which users or systems access the application, whether over the public Internet or private networks leveraging either VPN or Express Route connectivity.
+The connectivity method by which users or systems access the application, whether over the public Internet or private networks using either VPN or Express Route connectivity.
 
 - Different Azure regions have slightly different cost profiles for some services. There may be further cost implications depending on the precise deployment regions chosen.
 
-- Availability Zones have a latency perimeter of less than two milliseconds between availability zones.
-  - For workloads which are particularly 'chatty' across zones this latency can accumulate to form a non-trivial performance penalty, as well as incurring bandwidth charges for inter-zone data transfer.
+- Availability Zones have a latency perimeter of less than 2 milliseconds between availability zones.
+  - For workloads that are particularly 'chatty' across zones this latency can accumulate to form a non-trivial performance penalty, ands incurring bandwidth charges for inter-zone data transfer.
 
-  - An active-active deployment across Azure and other cloud providers can be considered to further mitigate reliance on global dependencies within a single cloud provider. A multi-cloud active-active deployment strategy introduces a significant amount of complexity where CI/CD is concerned, particularly given the significant difference in resource specifications and capabilities between cloud providers. This necessitates specialized deployment stamps for each cloud.  
+  - An active-active deployment across Azure and other cloud providers can be considered to further mitigate reliance on global dependencies within a single cloud provider. A multi-cloud active-active deployment strategy introduces a significant amount of complexity around CI/CD, given the significant difference in resource specifications and capabilities between cloud providers. This necessitates specialized deployment stamps for each cloud.  
 
 ### Design recommendations
 
@@ -183,18 +185,18 @@ The connectivity method by which users or systems access the application, whethe
 
 - For high-scale application scenarios with significant volumes of traffic, design the solution to scale across multiple regions to navigate potential capacity constraints within a single region.
 
-- Select deployment regions which offer requisite capabilities and characteristics to achieve performance and availability targets, while fulfilling data residency and retention requirements. 
+- Select deployment regions that offer requisite capabilities and characteristics to achieve performance and availability targets, while fulfilling data residency and retention requirements. 
 
   Within a single geography, prioritize the use of regional pairs to benefit from SDP serialized rollouts for planned maintenance, and regional prioritization in the event of unplanned maintenance.
   
-- It is not uncommon that data compliance requirements will constrain the number of available regions and potentially force design compromises. In such cases, additional investment in operational wrappers is highly recommended to predict, detect, and respond to failures.
-  - If only a single Azure region is suitable, multiple deployment stamps ('regional scale-units') should be deployed within the selected region to mitigate some risk, leveraging Availability Zones to provide datacenter-level fault tolerance. However, such a significant compromise in geographical distribution will drastically constrain the attainable composite SLA and overall reliability.
-  - If suitable Azure regions do not all offer requisite capabilities, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability.
+- It's not uncommon that data compliance requirements will constrain the number of available regions and potentially force design compromises. In such cases, additional investment in operational wrappers is highly recommended to predict, detect, and respond to failures.
+  - If only a single Azure region is suitable, multiple deployment stamps ('regional scale-units') should be deployed within the selected region to mitigate some risk, using Availability Zones to provide datacenter-level fault tolerance. However, such a significant compromise in geographical distribution will drastically constrain the attainable composite SLA and overall reliability.
+  - If suitable Azure regions don't all offer requisite capabilities, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability.
     - For example, when constrained to a geography with two regions where only one region supports Availability Zones (3 + 1 datacenter model), create a secondary deployment pattern using fault domain isolation to allow for both regions to be deployed in an active configuration, ensuring the primary region houses multiple deployment stamps.
 
 - Align current service availability with product roadmaps when selecting deployment regions; not all services may be available in every region on day 1.
 
-- Leverage Availability Zones where possible to maximize availability within a single Azure region.
+- Use Availability Zones where possible to maximize availability within a single Azure region.
 
 ### Example for global distribution approach
 
@@ -202,19 +204,19 @@ The AlwaysOn reference implementations consist of both global and regional resou
 
 ![AlwaysOn Global Distribution](./images/alwayson-global-distribution.gif "AlwaysOn Global Distribution")
 
-## Loosely-coupled event-driven architecture
+## Loosely coupled event-driven architecture
 
 Loose coupling provides the cornerstone of a microservice architecture by allowing services to be designed in a way that each service has little or no knowledge of surrounding services. The _loose_ aspect allows a service to operate independently. The coupling aspect allows for inter-service communication through well-defined interfaces. In the context of a mission critical application it further facilitates high-availability by preventing downstream failures from cascading to frontends or different deployment stamps. 
 
 Evaluate these key characteristics of loose coupling for application design:
 
-- Services are not constrained to use the same compute platform, programming language, runtime, or operating system.
+- Services aren't constrained to use the same compute platform, programming language, runtime, or operating system.
 - Services can scale independently, optimizing the use of infrastructure and platform resources.
-- Failures can be handled separately and do not affect client transactions.
+- Failures can be handled separately and don't affect client transactions.
 - Transactional integrity is harder to maintain because data creation and persistence happens within separate services.
 - End-to-end tracing requires more complex orchestration.
 
-When implementing loose coupling, **event-driven architecture** and **asynchronous message processing** are key design patterns which should be applied for interactions which do not require an immediate response. Events indicate a change in state within entities and are generated by event *producers*. Producers do not know anything about how events should be processed or handled. The is the responsibility of *consumers*. When using asynchronous event-driven communication, a producer publishes an event when something happens within its domain which another component needs to be aware of, such as a price change in a product catalogue, which consumers will subscribe to receive so they can process the events asynchronously.
+When implementing loose coupling, **event-driven architecture** and **asynchronous message processing** are key design patterns for interactions which don't require an immediate response. Events indicate a change in state within entities and are generated by event *producers*. Producers don't know anything about how events should be processed or handled. That is the responsibility of *consumers*. When using asynchronous event-driven communication, a producer publishes an event when something happens within its domain, which another component needs to be aware of, such as a price change in a product catalog, which consumers will subscribe to receive so they can process the events asynchronously.
 
 > [!TIP]
 > Refer to the [Event-driven architecture](/azure/architecture/guide/architecture-styles/event-driven) and [asynchronous processing](/azure/architecture/patterns/async-request-reply) patterns for further details.
@@ -230,7 +232,7 @@ In reality, applications can combine loose and tight-coupling, depending on busi
   - Workloads with frequently accessed static content benefit greatly from caching since it reduces the load on backend services and reduces content access latency for end users.
 
 - Caching can be implemented natively within Azure using either Azure Front Door or Azure Content Delivery Network (CDN).
-  - [Azure Front Door](/azure/frontdoor/front-door-caching) provides Azure-native edge caching capabilities as well as routing features to divide static and dynamic content.
+  - [Azure Front Door](/azure/frontdoor/front-door-caching) provides Azure-native edge caching capabilities and routing features to divide static and dynamic content.
     - By creating the appropriate routing rules in Azure Front Door, `/static/*` traffic can be transparently redirected to static content.
   - More complex caching scenarios can be implemented using the [Azure CDN](https://azure.microsoft.com/services/cdn) service to establish a full-fledged content delivery network for significant static content volumes.
     - The Azure CDN service will likely be more cost effective, but does not provide the same advanced routing and Web Application Firewall (WAF) capabilities which are recommended for other areas of an application design. It does, however, offer further flexibility to integrate with similar services from third-party solutions, such as Akamai and Verizon.
@@ -242,14 +244,14 @@ In reality, applications can combine loose and tight-coupling, depending on busi
 
 ### Design recommendations
 
-- Key functionality should be deployed and managed as independent loosely-coupled microservices with event-driven interaction through well-defined interfaces (synchronous and asynchronous).
+- Key functionality should be deployed and managed as independent loosely coupled microservices with event-driven interaction through well-defined interfaces (synchronous and asynchronous).
   - The definition of microservice boundaries should consider and align with critical user-flows.
 
 - Use event-driven asynchronous communication where possible to support sustainable scale and optimal performance.
 
 - Separate the delivery of static and dynamic content to users and deliver relevant content from a cache to reduce load on backend services optimize performance for end-users.
 
-- Given the strong recommendation (Network and Connectivity design area) to use Azure Front Door for global routing and WAF purposes, it is recommended to prioritize the use of Azure Front Door caching capabilities unless gaps exist.
+- Given the strong recommendation (Network and Connectivity design area) to use Azure Front Door for global routing and WAF purposes, it's recommended to prioritize the use of Azure Front Door caching capabilities unless gaps exist.
 
 ### Example for event-driven approach
 
@@ -263,7 +265,7 @@ A mission-critical application architecture must be developed with resiliency in
 
 More specifically, all application components should be designed from the ground-up to apply key resiliency patterns for self-healing, such as [retries with back-off](/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly) and [circuit breaker](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern). Such patterns go great lengths to transparently handle transient faults such as network packet loss, or the temporary loss of a downstream dependency. So, the application code should address as many failure scenarios as possible in order to maximize service availability and reliability.
 
-When issues are not transient in-nature and cannot be fully mitigated within application logic, it becomes the role of the health model and operational wrappers to take corrective action. However, for this to happen effectively, it's essential that the application code incorporates proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis when required. More specifically, application code should be implemented to facilitate [Distributed Tracing](/dotnet/core/diagnostics/distributed-tracing-concepts), by providing the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
+When issues aren't transient in-nature and canbe fully mitigated within application logic, it becomes the role of the health model and operational wrappers to take corrective action. However, for this to happen effectively, it's essential that the application code incorporates proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis when required. More specifically, application code should be implemented to facilitate [Distributed Tracing](/dotnet/core/diagnostics/distributed-tracing-concepts), by providing the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
 
 Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tracing) can help significantly to query, correlate, and visualize application traces.
 
@@ -271,7 +273,7 @@ Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tra
 
 - Vendor-provided SDKs, such as the Azure service SDKs, will typically provide built-in resiliency capabilities like retry mechanisms.
 
-- It is not uncommon for application responses to transient issues to cause cascading failures.
+- It's not uncommon for application responses to transient issues to cause cascading failures.
   
   For example, retry without appropriate back-off will exacerbate when a service is being throttled will likely exacerbate the issue.
 
@@ -284,7 +286,7 @@ Here are some other resiliency-related patterns:
 |[Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling)| Introduces a buffer between consumers and requested resources to ensure consistent load levels. As consumer requests are enqueued, a worker process dequeues the requests and processes them against the requested resource at a pace set by the worker and the requested resource's ability to process the requests. If consumers expect replies to their requests, a separate response mechanism will also need to be implemented.|
 |[Circuit Breaker](/azure/architecture/patterns/circuit-breaker)| Provides stability by either waiting for recovery, or quickly rejecting requests rather than blocking while waiting for an unavailable remote service or resource.|
 |[Bulkhead](/azure/architecture/patterns/bulkhead)|Strives to partition service instances into groups based on load and availability requirements, isolating failures to sustain service functionality.|
-|[Saga](/azure/architecture/reference-architectures/saga/saga)| Manage data consistency across microservices with independent datastores by ensuring services update each other through defined event or message channels. Each service performs local transactions to update its own state and publishes an event to trigger the next local transaction in the saga. If a service update fails, the saga executes compensating transactions to counteract preceding service update steps.Individual service update steps can themselves implement resiliency patterns, such as retry.|
+|[Saga](/azure/architecture/reference-architectures/saga/saga)| Manage data consistency across microservices with independent datastores by ensuring services update each other through defined event or message channels. Each service performs local transactions to update its own state and publishes an event to trigger the next local transaction in the saga. If a service update fails, the saga executes compensating transactions to counteract preceding service update steps. Individual service update steps can themselves implement resiliency patterns, such as retry.|
 |[Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring)|Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals.|
 |[Retry](/azure/architecture/patterns/retry)|Handles transient failures elegantly and transparently.|
 |[Circuit Breaker](/azure/architecture/patterns/circuit-breaker)|Handles faults that might take a variable amount of time to recover from when connecting to a remote service or resource.|
@@ -295,7 +297,7 @@ Here are some other resiliency-related patterns:
 - Design and develop application code to anticipate and handle failures.
 
 - Use vendor provided SDKs, such as the Azure SDKs, to connect to dependent services.
-  - Leverage the resiliency capabilities provided by utilized SDKs instead of re-implementing resiliency functionality.
+  - Use the resiliency capabilities provided by utilized SDKs instead of reimplementing resiliency functionality.
   - Ensure a suitable back-off strategy is applied when retrying failed dependency calls to avoid a self-inflicted DDoS scenario.
 
 - Define **common engineering criteria** for all application microservice teams to drive consistency and acceleration regarding the use application-level resiliency patterns.
@@ -303,12 +305,12 @@ Here are some other resiliency-related patterns:
 
 - Implement resiliency patterns using proven standardized packages, such as [Polly for C#](http://www.thepollyproject.org/) or [Sentinel for Java](https://github.com/alibaba/Sentinel).
 
-- Implement [Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring) by exposing functional checks within application code through health endpoints which external monitoring solutions can poll to retrieve application component health statuses. Responses should be interpreted alongside key operational metrics to inform application health and trigger an operational responses, such as raising an alert or performing a compensating roll-back deployment.
+- Implement [Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring) by exposing functional checks within application code through health endpoints which external monitoring solutions can poll to retrieve application component health statuses. Responses should be interpreted alongside key operational metrics to inform application health and trigger operational responses, such as raising an alert or performing a compensating roll-back deployment.
 
 - Implement [Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling) by applying a prioritized ordering so that the most important activities are performed first.
 
 - Implement the [Retry](/azure/architecture/patterns/retry) pattern to enable application code to handle transient failures elegantly and transparently.
-  - Cancel if the fault is unlikely to be transient and is unlikely to succeed if the operation is re-attempted.
+  - Cancel if the fault is unlikely to be transient and is unlikely to succeed if the operation is reattempted.
   - Retry if the fault is unusual or rare and the operation is likely to succeed if attempted again immediately.
   - Retry after a delay if the fault is caused by a condition that may need a short time to recover, such as network connectivity or high load failures.
     - Apply a suitable 'backoff' strategy with growing retry delays.
@@ -326,6 +328,6 @@ Here are some other resiliency-related patterns:
 Review the considerations for the application platform.
 
 > [!div class="nextstepaction"]
-> [Application Platform](./mission-critical-application-platform.md)
+> [Application platform](./mission-critical-application-platform.md)
 
 
