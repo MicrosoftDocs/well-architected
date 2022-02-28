@@ -54,6 +54,8 @@ This image shows how the different reliability tiers and underlying business req
 
 ![Mission-critical reliability dial](./images/alwayson-slo.gif "Mission-critical reliability dial")
 
+However, this globally distributed approach to achieve high reliability comes at a development cost which may not be justifiable for every workload scenario. It's recommended that design decisions are driven by business requirements.
+
 ## 2&mdash;Refer to the mission-critical implementations
 
 The Mission-Critical open source project strives to illustrate the design recommendations provided by this methodology, and should be used as a source of reference to inform the art of the possible.
