@@ -486,7 +486,9 @@ The delivery of network policies is consistent regardless of whether Azure or Ca
 
 ## Next step
 
-Review the security considerations.
+Review the considerations for monitoring the application and the overall workload.
 
 > [!div class="nextstepaction"]
-> [Security](./mission-critical-Security.md)
+> [Health Modeling and observability](./mission-critical-health-modeling.md)
+
+
