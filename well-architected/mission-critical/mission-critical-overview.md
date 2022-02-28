@@ -32,7 +32,7 @@ Microsoft Azure makes it easy to deploy and manage cloud solutions. However, bui
 
 - Designing a reliable application at scale is complex. It requires extensive platform knowledge to select the right technologies _and_ optimally configure them to deliver end-to-end functionality.
 
-- Failure is inevitable in any complex distributed system, and the solution must therefore be architected to handle failures with correlated or cascading impact. This is a change in mindset for many developers and architects entering the cloud from an on-premises environment; reliability engineering is no longer an infrastructure topic, but should be a first-class concern within the application development process.
+- Failure is inevitable in any complex distributed system, and the solution must therefore be architected to handle failures with correlated or cascading impact. This is a change in mindset for many developers and architects entering the cloud from an on-premises environment; reliability engineering is no longer an infrastructure subject, but should be a first-class concern within the application development process.
 
 - Operationalizing mission-critical workloads requires a high degree of engineering rigor and maturity throughout the end-to-end engineering lifecycle as well as the ability to learn from failure.
 
@@ -61,22 +61,22 @@ Mission-critical guidance is composed of architectural considerations and recomm
 - **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
 - **Operational procedures**&mdash; Processes related to deployment, key management, patching and updates.
 
-Readers are advised to familiarize themselves with these 8 critical design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions. For example, to define a target architecture it is critical to determine how best to monitor application health across key components. In this instance, the reader should review the Health Modelling design area, using the outlined recommendations to help drive decisions.
+Readers are advised to familiarize themselves with those critical design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions. For example, to define a target architecture it's critical to determine how best to monitor application health across key components. In this instance, the reader should review the Health Modeling design area, using the outlined recommendations to help drive decisions.
 
 ## Illustrative examples
 
 The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available as part of an open source project on GitHub. These implementations can be used as a basis for further solution development.
 
 > [!IMPORTANT]
-> ![GitHub logo](./../_images/github.svg) [Azure Mission-Critical open source project](http://github.com/azure/alwayson).
+> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson).
 
-- [AlwaysOn Foundational Online](https://github.com/azure/alwayson-foundational-online)
+- [Mission-Critical Foundational Online](https://github.com/azure/alwayson-foundational-online)
 
-  Provides a foundation for building a cloud-native, highly-scalable, internet-facing application on Microsoft Azure.
+  Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure.
   
-  The workload is accessed over a public endpoint and does not require private network connectivity to a surrounding organizational technical estate.
+  The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate.
 
-- [AlwaysOn Foundational Connected](https://github.com/azure/alwayson-foundational-connected) 
+- [Mission-Critical Foundational Connected](https://github.com/azure/alwayson-foundational-connected) 
 
   Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints.
   
@@ -87,4 +87,4 @@ The guidance provided within this series is based on a solution-orientated appro
 Start by reviewing the design methodology for mission-critical application scenarios.
 
 > [!div class="nextstepaction"]
-> [Design methodology](./mission-critical-design-methodology.md)
+> [Design methodology](mission-critical-design-methodology.md)
