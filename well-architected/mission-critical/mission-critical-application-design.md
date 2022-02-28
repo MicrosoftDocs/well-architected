@@ -11,7 +11,6 @@ categories: networking
 products: azure
 ms.custom:
   - mission-critical
-  - alwayson
 ---
 
 # Application design of mission-critical workloads on Azure
@@ -84,8 +83,8 @@ The required performance of the solution under load is a critical decision facto
 
   As the load increases, extra stamps can be deployed within the same or different Azure regions, in order to horizontally scale the solution.
 
-> [!CAUTION]
-> When deploying within an Azure Landing Zone, ensure the Landing Zone subscription is dedicated to the application, in order to provide a clear management boundary and to avoid potential the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
+> [!NOTE]
+> When deploying within an Azure landing zone, ensure the landing zone subscription is dedicated to the application, in order to provide a clear management boundary and to avoid potential the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
 
 - For high-scale application scenarios with significant volumes of traffic, design the solution to scale across multiple Azure subscriptions, to ensure the inherit scale-limits within a single subscription don't constrain the scalability.
 

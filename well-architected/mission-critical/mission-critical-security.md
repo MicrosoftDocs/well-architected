@@ -125,8 +125,8 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 1. Application code and security logic.
 1. Operational processes and DevSecOps.
 
-> [!CAUTION]
-> When deploying within an Azure Landing Zone, be aware that the foundational platform provides an additional threat mitigation layer through the provisioning of centralized security capabilities within the Enterprise-Scale architecture.
+> [!NOTE]
+> When deploying within an Azure landing zone, be aware that an additional threat mitigation layer through the provisioning of centralized security capabilities is provided by the landing zone implementation.
 
 
 ### Design considerations
@@ -228,8 +228,8 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 - For hybrid application scenarios, access Azure PaaS services from on-premises via ExpressRoute with private peering.
 
-> [!CAUTION]
-> When deploying within an Azure Landing Zone, be aware that the foundational platform will provide network connectivity to on-premises data centers using ExpressRoute configured with private peering.
+> [!NOTE]
+> When deploying within an Azure landing zone, be aware that network connectivity to on-premises data centers is provided by the landing zone implementation. One approach is by using ExpressRoute configured with private peering.
 
 
 ## Data integrity protection
@@ -306,8 +306,8 @@ This section will therefore explore key considerations and recommendations surro
 
 - Azure Policy provides a mechanism to drive compliance by enforcing security and reliability conventions, such as the use of Private Endpoints or the use of Availability Zones.
 
-> [!CAUTION]
-> When deploying within an Azure Landing Zone, be aware that the enforcement of centralized baseline policy assignments will likely be applied for Landing Zone management groups and subscriptions.
+> [!NOTE]
+> When deploying within an Azure landing zone, be aware that the enforcement of centralized baseline policy assignments will likely be applied in the implementation for landing zone management groups and subscriptions.
 
 - Azure Policy can be used to drive automated management activities, such as provisioning and configuration.
   - Resource Provider registration.
@@ -340,8 +340,9 @@ This section will therefore explore key considerations and recommendations surro
 - Where custom policy definitions are required, ensure definitions are deployed at suitable management group scope to allow for reuse across encompassed environment subscriptions to this allow for policy reuse across production and lower environments.
   - When aligning the application roadmap with Azure roadmaps, use available Microsoft resources to explore if critical custom definitions could be incorporated as built-in definitions.
 
-> When deployed within an Enterprise Scale context, consider deploying custom Azure Policy Definitions within the intermediate company root management group scope to enable reuse across all applications within the broader Azure estate.
-> When deployed in an Enterprise Scale environment, certain centralized security policies will be applied by default within higher management group scopes to enforce security compliance across the entire Azure estate. For example, Azure policies should be applied to automatically deploy software configurations through VM extensions and enforce a compliant baseline VM configuration as part of the Enterprise-Scale foundation.
+> [!NOTE]
+> When deploying within an Azure landing zone, consider deploying custom Azure Policy Definitions within the intermediate company root management group scope to enable reuse across all applications within the broader Azure estate.
+> In a landing zone environment, certain centralized security policies will be applied by default within higher management group scopes to enforce security compliance across the entire Azure estate. For example, Azure policies should be applied to automatically deploy software configurations through VM extensions and enforce a compliant baseline VM configuration.
 
 - Use Azure Policy to enforce a consistent tagging schema across the application.
   - Identify required Azure tags and use the append policy mode to enforce usage.
@@ -351,7 +352,7 @@ This section will therefore explore key considerations and recommendations surro
 - Export Azure AD activity logs to the global Log Analytics Workspace used by the application.
   - Ensure Azure activity logs are archived within the global Storage Account along with operational data for long-term retention.
 
-> In an Enterprise-Scale context, Azure AD activity logs will also be ingested into the centralized platform Log Analytics workspace. It needs to be evaluated in this case if Azure AD are still required in the global Log Analytics workspace.
+> In an Azure landing zone, Azure AD activity logs will also be ingested into the centralized platform Log Analytics workspace. It needs to be evaluated in this case if Azure AD are still required in the global Log Analytics workspace.
 
 - Integrate security information and event management with Microsoft Defender for Cloud (formerly known as Azure Security Center).
 

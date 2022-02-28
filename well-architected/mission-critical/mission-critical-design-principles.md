@@ -85,7 +85,7 @@ These mission-critical design principles resonate and extend the quality pillars
 
 - **Embrace preview capabilities and mitigate known gaps** - While Generally Available (GA) services are prioritized for supportability, Azure service previews are actively explored for rapid incorporation, providing technical and actionable feedback to Azure product groups to address gaps.
 
-- **Azure Landing Zone alignment** - Deployable within an [Azure Landing Zone](/azure/cloud-adoption-framework/ready/landing-zone) and aligned to the Azure Landing Zone design methodology, but also fully functional and deployable in a bare environment outside of a landing zone.
+- **Azure landing zone alignment** - Deployable within an [Azure landing zone](/azure/cloud-adoption-framework/ready/landing-zone) and aligned to the Azure landing zone design methodology, but also fully functional and deployable in a bare environment outside of a landing zone.
 
 ## Next step
 

@@ -267,9 +267,9 @@ The considerations and recommendations within this section will therefore focus 
     - Policy assignments should be enforced at a subscription scope or higher to drive consistency across development teams.
 
 
-  > [!CAUTION]
+  > [!NOTE]
   > 
-  > When deploying into an Azure Landing Zone, requisite Azure Policy to ensure the consistent reliability and security should be delivered by the Enterprise Scale platform through policy assignments within the Landing Zone definition.
+  > When deploying into an Azure landing zone, be aware that the required Azure Policy to ensure the consistent reliability and security should be provided by the landing zone implementation.
   > The Mission-Critical reference implementations provide a suite of baseline policies to drive recommended reliability and security configurations.
 
 **Azure App Service**
