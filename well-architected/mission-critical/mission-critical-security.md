@@ -84,12 +84,12 @@ As you assess the security posture of the application, start with these question
 
 - Use first-party [Microsoft identity platform authentication libraries](/azure/active-directory/develop/reference-v2-libraries) within application code to integrate with Azure AD.
 
-- Consider secure token caching to allow for a degraded but available experience if the chosen identity platform, isn' available or is only partially available for application authorization.
+- Consider secure token caching to allow for a degraded but available experience if the chosen identity platform, isn't available or is only partially available for application authorization.
   - If the provider is unable to issue new access tokens, but still validates existing ones, the application and dependent services can operate without issues until their tokens expire.
   - Token caching is typically handled automatically by authentication libraries ([such as MSAL](/azure/active-directory/fundamentals/resilience-client-app?tabs=csharp)).
 
 - Use Infrastructure-as-Code (IaC) and automated CI/CD pipelines to drive updates to all application components, including under failure circumstances.
-  - Ensure CI/CD tooling service connections are safeguarded as critical sensitive information, and shouldn' be directly available to any service team.
+  - Ensure CI/CD tooling service connections are safeguarded as critical sensitive information, and shouldn't be directly available to any service team.
   - Apply granular RBAC to production CD pipelines to mitigate 'malicious admin' risks.
   - Consider the use of manual approval gates within production deployment pipelines to further mitigate 'malicious admin' risks and provide additional technical assurance for all production changes.
     - Additional security gates may come at a trade-off in terms of agility and should be carefully evaluated, with consideration given to how agility can be maintained even with manual gates.
@@ -125,7 +125,9 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 1. Application code and security logic.
 1. Operational processes and DevSecOps.
 
-> In an Enterprise-Scale context, the foundational platform provides an additional threat mitigation layer through the provision of centralized security capabilities within the Enterprise-Scale architecture.
+> [!CAUTION]
+> When deploying within an Azure Landing Zone, be aware that the foundational platform provides an additional threat mitigation layer through the provisioning of centralized security capabilities within the Enterprise-Scale architecture.
+
 
 ### Design considerations
 
@@ -172,7 +174,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
   - An advanced zero-trust network implementation employs micro-segmentation and distributed ingress/egress micro-perimeters.
 
 - Azure PaaS services are typically accessed over public endpoints. Azure provides capabilities to secure public endpoints or even make them entirely private.
-  - Azure Private Link/Private Endpoints provides dedicated access to an Azure PaaS resource using private IP addresses and private network connectivity.
+  - Azure Private Link/Private Endpoints provide dedicated access to an Azure PaaS resource using private IP addresses and private network connectivity.
   - Virtual Network Service Endpoints provide service-level access from selected subnets to selected PaaS services.
   - Virtual Network Injection provides dedicated private deployments for supported services, such as App Service through an App Service Environment.
     - Management plane traffic still flows through public IP addresses.
@@ -198,7 +200,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 ### Design Recommendations
 
-- To maximize network security, limit network access to the absolute minimum required for the application to fulfil its purpose.
+- To maximize network security, limit network access to the absolute minimum required for the application to fulfill its purpose.
   - Use internal network paths, such as Azure Bastion, or automatically managed temporary firewall rules to enable direct data-plane infrastructure access.
 
 - When dealing with private build agents, never open an RDP or SSH port directly to the internet.
@@ -209,7 +211,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
 - Use Azure Front Door with web application firewall policies to deliver and help protect global HTTP/S  applications that span multiple Azure regions.
   - Use Header ID validation to lock down public application endpoints so they only accept traffic originating from the Azure Front Door instance.
 
-- If additional in-line network security requirements, such as deep packet inspection or TLS inspection, mandate the use of Azure Firewall Premium or Network Virtual Appliance (NVA), ensure it is configured for maximum high availability and redundancy.
+- If additional in-line network security requirements, such as deep packet inspection or TLS inspection, mandate the use of Azure Firewall Premium or Network Virtual Appliance (NVA), ensure it's configured for maximum high availability and redundancy.
 
 - If packet capture requirements exist, use Network Watcher packets to capture despite the limited capture window.
 
@@ -226,7 +228,9 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 - For hybrid application scenarios, access Azure PaaS services from on-premises via ExpressRoute with private peering.
 
-> In an Enterprise-Scale context, the foundational platform will provide network connectivity to on-premises data centers using Express Route configured with private peering.
+> [!CAUTION]
+> When deploying within an Azure Landing Zone, be aware that the foundational platform will provide network connectivity to on-premises data centers using ExpressRoute configured with private peering.
+
 
 ## Data integrity protection
 
@@ -241,7 +245,7 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
     - Granular [object-level permissions](/azure/key-vault/general/rbac-guide?tabs=azure-cli#best-practices-for-individual-keys-secrets-and-certificates) to a specific key, secret, or certificate are now possible.
 
 - Role assignments incur a latency, taking up to 10 minutes (600 seconds) for a role to be applied after a role assignment is changed.
-  - There is an AAD limit of 2,000 Azure role assignments per subscription.
+  - There's an Azure AD limit of 2,000 Azure role assignments per subscription.
 
 - Azure Key Vault underlying hardware security modules (HSMs) are FIPS 140-2 Level 2 compliant.
   - A dedicated [Azure Key Vault managed HSM](/azure/key-vault/managed-hsm/overview) is available for scenarios requiring FIPS 140-2 Level 3 compliance.
@@ -302,7 +306,8 @@ This section will therefore explore key considerations and recommendations surro
 
 - Azure Policy provides a mechanism to drive compliance by enforcing security and reliability conventions, such as the use of Private Endpoints or the use of Availability Zones.
 
-> In the context of an Enterprise Scale environment, the enforcement of centralized baseline policy assignments will likely be applied for Landing Zone management groups and subscriptions.
+> [!CAUTION]
+> When deploying within an Azure Landing Zone, be aware that the enforcement of centralized baseline policy assignments will likely be applied for Landing Zone management groups and subscriptions.
 
 - Azure Policy can be used to drive automated management activities, such as provisioning and configuration.
   - Resource Provider registration.
@@ -322,9 +327,9 @@ This section will therefore explore key considerations and recommendations surro
   - For example, if there are data residency requirements, a policy should be applied to restrict available deployment regions.
 
 - Define a common engineering criteria to capture secure and reliable configuration definitions for all utilized Azure services, ensuring this criteria is mapped to Azure Policy assignments to enforce compliance.
-  - For example, apply a Azure Policy to enforce the use of Availability Zones for all relevant services, ensuring reliable intra-region deployment configurations.
+  - For example, apply an Azure Policy to enforce the use of Availability Zones for all relevant services, ensuring reliable intra-region deployment configurations.
 
-> The AlwaysOn Foundational Reference Implementation contains a wide array of [security and reliability centric policies](https://github.com/Azure/AlwaysOn/blob/main/docs/reference-implementation/Policy-Driven-Governance.md) to define and enforce a sample common engineering criteria.
+> The Mission Critical reference tmplementations contain a wide array of [security and reliability centric policies](https://github.com/Azure/AlwaysOn/blob/main/docs/reference-implementation/Policy-Driven-Governance.md) to define and enforce a sample common engineering criteria.
 
 - Monitor service configuration drift, relative to the common engineering criteria, using Azure Policy.
 
