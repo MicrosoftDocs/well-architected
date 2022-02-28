@@ -1,5 +1,5 @@
 ---
-title: Design methodology for mission-critical workloads
+title: Design methodology for mission-critical workloads on Azure
 description: Understand the architectural process of building a mature mission-critical application on Microsoft Azure.
 author: calcof
 ms.author: calcof
@@ -15,7 +15,7 @@ ms.custom:
   - mission-critical
 ---
 
-# Design methodology for mission-critical workloads
+# Design methodology for mission-critical workloads on Azure
 
 Building a mission-critical application on any cloud platform requires significant technical expertise and engineering investment, particularly since there's significant complexity associated with:
 
