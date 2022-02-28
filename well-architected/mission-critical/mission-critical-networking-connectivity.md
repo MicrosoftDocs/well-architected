@@ -42,7 +42,7 @@ This section explores the key differences Azure routing services to define how e
 - A routing service bound to a single region represents a single-point-of-failure and a significant risk with regard to regional outages.
 
 - If the application workload encompasses client control, such as with mobile or desktop client applications, it's possible to provide service redundancy within client routing logic.
-  - Multiple global routing technologies, such as Azure Front Door and Azure Traffic Manager, can be considered in parallel for redundancy, with clients configured to failover to an alternative technology when certain failure conditions are met. The introduction of multiple global routing services introduces significant complexities around edge caching and Web Application Firewall capabilities, and certificate management for SSL offload and application validation for ingress paths.
+  - Multiple global routing technologies, such as Azure Front Door and Azure Traffic Manager, can be considered in parallel for redundancy, with clients configured to fail over to an alternative technology when certain failure conditions are met. The introduction of multiple global routing services introduces significant complexities around edge caching and Web Application Firewall capabilities, and certificate management for SSL offload and application validation for ingress paths.
   - Third-party technologies can also be considered, providing global routing resiliency to all levels of Azure platform failures.
 
 - Capability disparity between Azure Front Door and Traffic Manager means that if the two technologies are positioned alongside one another for redundancy, a different ingress path or design changes would be required to ensure a consistent and acceptable level of service is maintained.
@@ -50,7 +50,7 @@ This section explores the key differences Azure routing services to define how e
 - Azure Front Door and Azure Traffic Manager are globally distributed services with built-in multi-region redundancy and availability.
   - Hypothetical failure scenarios of a scale large enough to threaten the global availability of these resilient routing services presents a broader risk to the application in terms of cascading and correlated failures.
     - Failure scenarios of this scale are only feasibly caused by shared foundational services, such as Azure DNS or Azure AD, which serve as global platform dependencies for almost all Azure services. If a redundant Azure technology is applied, it's likely that the secondary service will also be experiencing unavailability or a degraded service.
-    - Global routing service failure scenarios are highly likely to significantly impact many other services used for key application components through interservice dependencies. Even if a third-party technology is used, the application will likely be in an unheathy state due to the broader impact of the underlying issue, meaning that routing to application endpoints on Azure will provide little value anyway.
+    - Global routing service failure scenarios are highly likely to significantly impact many other services used for key application components through interservice dependencies. Even if a third-party technology is used, the application will likely be in an unhealthy state due to the broader impact of the underlying issue, meaning that routing to application endpoints on Azure will provide little value anyway.
 
 - Global routing service redundancy provides mitigation for an extremely small number of hypothetical failure scenarios, where the impact of a global outage is constrained to the routing service itself.
 
@@ -83,7 +83,7 @@ This section explores the key differences Azure routing services to define how e
 
 - Azure Front Door Premium supports private endpoints, enabling traffic to flow from the internet directly onto Azure virtual networks. This would eliminate the need of using public IPs on the VNet for making the backends accessible via Azure Front Door Premium.
 
-- Azure Front Door relies on health probes and backend health endpoints (URLs) that are called on an interval basis to return a HTTP status code reflecting if the backend is operating normally, with an HTTP 200 (OK) response reflecting a healthy status. As soon as a backend reflects an unhealthy status, from the perspective of a certain edge node, that edge node will stop sending requests there. Unhealthy backends are therefore transparently removed from traffic circulation without any delay.
+- Azure Front Door relies on health probes and backend health endpoints (URLs) that are called on an interval basis to return an HTTP status code reflecting if the backend is operating normally, with an HTTP 200 (OK) response reflecting a healthy status. As soon as a backend reflects an unhealthy status, from the perspective of a certain edge node, that edge node will stop sending requests there. Unhealthy backends are therefore transparently removed from traffic circulation without any delay.
 
 - Supports HTTP/S protocols only.
 
@@ -106,7 +106,7 @@ This section explores the key differences Azure routing services to define how e
   - The actual request payload isn't processed, but instead Traffic Manager returns the DNS name of one of the backends it the pool, based on configured rules for the selected traffic routing method.
   - The backend DNS name is then resolved to its final IP address that is subsequently directly called by the client.
 
-- The DNS response is cached and re-used by the client for a specified Time-To-Live (TTL) period, and requests made during this period will go directly to the backend endpoint without Traffic Manager interaction. Eliminates the extra connectivity step that provides cost benefits compared to Front Door.
+- The DNS response is cached and reused by the client for a specified Time-To-Live (TTL) period, and requests made during this period will go directly to the backend endpoint without Traffic Manager interaction. Eliminates the extra connectivity step that provides cost benefits compared to Front Door.
 
 - Since the request is made directly from the client to the backend service, any protocol supported by the backend can be leveraged.
 
@@ -121,10 +121,10 @@ This section explores the key differences Azure routing services to define how e
 
 ### Design recommendations
 
-- Use Azure Front Door as the primary global traffic routing service for HTTP/S scenarios. Azure Front Door is strongly advocated for HTTP/S workloads as it provides optimized traffic routing, transparent failover, private backend endpoints (with the Premium SKU), edge caching and integration with Web Application Firewall (WAF).
+- Use Azure Front Door as the primary global traffic routing service for HTTP/S scenarios. Azure Front Door is strongly advocated for HTTP/S workloads as it provides optimized traffic routing, transparent fail over, private backend endpoints (with the Premium SKU), edge caching and integration with Web Application Firewall (WAF).
 
-- For application scenarios where client control is possible, apply client side routing logic to consider failover scenarios where the primary global routing technology fails. Two or more global routing technologies should be positioned in parallel for added redundancy, if single service SLA isn't sufficient. Client logic is required to route to the redundant technology ifa global service failure.
-  - Two distinct URLs should be used, with one applied to each of the different global routing services to simplify the overall certificate management experience and routing logic ifa failover.
+- For application scenarios where client control is possible, apply client side routing logic to consider failover scenarios where the primary global routing technology fails. Two or more global routing technologies should be positioned in parallel for added redundancy, if single service SLA isn't sufficient. Client logic is required to route to the redundant technology in case of a global service failure.
+  - Two distinct URLs should be used, with one applied to each of the different global routing services to simplify the overall certificate management experience and routing logic for a failover.
   - Prioritize the use of third-party routing technologies as the secondary failover service, since this will mitigate the largest number of global failure scenarios and the capabilities offered by industry leading CDN providers will allow for a consistent design approach.
   - Consideration should also be given to directly routing to a single regional stamp rather than a separate routing service. While this will result in a degraded level of service, it represents a far simpler design approach.
 
@@ -172,7 +172,7 @@ It's recommended to consider a third-party global routing service in place of tw
 
 - Similar to with Azure Front Door, a custom TCP health endpoint should be defined to validate critical downstream dependencies within a regional deployment stamp, which should be reflected in the response provided by health endpoints. 
 
-  However, in the case of Traffic Manager additional consideration should be given to service level regional failover. such as 'dog legging', to mitigate the potential delay associated with the removal of an unhealthy backend due to dependency failures, particularly if it's not possible to set a low TTL for DNS records.
+  However, for Traffic Manager additional consideration should be given to service level regional fail over. such as 'dog legging', to mitigate the potential delay associated with the removal of an unhealthy backend due to dependency failures, particularly if it's not possible to set a low TTL for DNS records.
 
 - Consideration should be given to third-party CDN providers in order to achieve edge caching when using Azure Traffic Manager as a primary global routing service. Where edge WAF capabilities are also offered by the third-party service, consideration should be given to simplify the ingress path and potentially remove the need for Application Gateway.
 
@@ -315,7 +315,7 @@ This section explores these network integration scenarios, layering in the appro
 
 - For application scenarios that don't require corporate network connectivity, treat all virtual networks as ephemeral resources that are replaced when a new regional deployment is conducted.
 
-- When connecting to other Azure or on-premises networks, application virtual networks should not be treated as ephemeral since it creates significant complications where virtual network peering and virtual network gateway resources are concerned. All relevant application resources within the virtual network should continue to be ephemeral, with parallel subnets used to facilitate blue-green deployments of updated regional deployment stamps.
+- When connecting to other Azure or on-premises networks, application virtual networks shouldn't be treated as ephemeral since it creates significant complications where virtual network peering and virtual network gateway resources are concerned. All relevant application resources within the virtual network should continue to be ephemeral, with parallel subnets used to facilitate blue-green deployments of updated regional deployment stamps.
 
 - In scenarios where corporate network connectivity is required to facilitate application integration over private networks, ensure that the IPv4 address space used for regional application virtual networks doesn't overlap with other connected networks and is properly sized to facilitate required scale without needing to update the virtual network resource and incur downtime.
   - It's strongly recommended to only use IP addresses from the address allocation for private internet (RFC 1918).
@@ -373,7 +373,7 @@ This section explores how internet egress can be achieved while ensuring securit
   - Up to 16 IP addresses can be assigned to a single NAT gateway.
   - A default TCP idle timeout of 4 minutes. If idle timeout is altered to a higher value, flows will be held for longer, which will increase the pressure on the SNAT port inventory.
 
-- NAT gateway cannot provide zonal isolation out-of-the-box. To get zonal redundancy, a subnet containing zonal resources must be aligned with corresponding zonal NAT gateways.
+- NAT gateway can't provide zonal isolation out-of-the-box. To get zonal redundancy, a subnet containing zonal resources must be aligned with corresponding zonal NAT gateways.
 
 ### Design recommendations
 
@@ -460,7 +460,7 @@ This section explores the optimal use of these capabilities, providing key consi
   - AKS provides two ways to implement Network Policy, and both implementations use Linux IPTables to enforce specified policies.
     - _Azure Network Policies_
     - _Calico Network Policies_
-  - Network policies don't conflict since they are additive.
+  - Network policies don't conflict since they're additive.
   - For a network flow between two pods to be allowed, both the egress policy on the source pod and the ingress policy on the destination pod need to allow the traffic.
   - The network policy feature can only be enabled at cluster instantiation time. It's not possible to enable network policy on an existing AKS cluster.
 
