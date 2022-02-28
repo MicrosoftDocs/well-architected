@@ -29,7 +29,7 @@ This design methodology strives to provide an easy to follow design path to help
 
 ## 1&mdash;Design for business requirements
 
-Not all mission-critical workloads have the same requirements. It's therefore expected that the review considerations and design recommendations provided by this design methodology will yield different design decisions and trade-offs for different application scenarios.
+Not all mission-critical workloads have the same requirements. Expect that the review considerations and design recommendations provided by this design methodology will yield different design decisions and trade-offs for different application scenarios.
 
 ### Select a reliability tier
 
@@ -58,7 +58,7 @@ This image shows how the different reliability tiers and underlying business req
 
 There are obvious trade-offs associated with introducing greater reliability, which should be carefully considered in the context of workload requirements.
 
-More specifically, there is an opportunity cost associated with engineering investment in fundamental reliability concepts, such as fully embracing infrastructure as code, deployment automation, and chaos engineering. This comes at a cost in terms of both time and effort, which could be invested elsewhere to deliver new application functionality and features.
+More specifically, there is an opportunity cost associated with engineering investment in fundamental reliability concepts, such as embracing infrastructure as code, deployment automation, and chaos engineering. This comes at a cost in terms of both time and effort, which could be invested elsewhere to deliver new application functionality and features.
 
 Furthermore, maximizing reliability can impact the overall financial cost of the solution. For example, the duplication of resources and the distribution of resources across regions to achieve high availability has clear cost implications. To avoid excess costs, don't over-engineer or over-provision beyond the relevant business requirements.
 
