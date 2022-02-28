@@ -92,4 +92,4 @@ These mission-critical design principles resonate and extend the quality pillars
 Review cross-cutting concerns associated with mission-critical workloads.
 
 > [!div class="nextstepaction"]
-> [Cross-cutting concerns](mission-critical-cross-cutting-concerns.md)
+> [Cross-cutting concerns](mission-critical-cross-cutting-issues.md)
