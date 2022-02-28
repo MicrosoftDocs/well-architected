@@ -39,7 +39,7 @@ Selecting the right programming languages and frameworks is a critical design de
 ### Design considerations
 
 - There are sometimes significant differences in the capabilities offered by Azure service SDKs in different languages, and this may influence the selection of an Azure service or programming language.
-  - For instance, if Cosmos DB is a significant dependency, 'Go' may not be an appropriate development language since there is no first-party SDK.
+  - For instance, if Cosmos DB is a significant dependency, 'Go' may not be an appropriate development language since there's no first-party SDK.
 
 - New features are typically added to the .NET and Java libraries first, and there can be a delay in feature availability for other [supported languages](https://azure.github.io/azure-sdk/).
 
@@ -62,9 +62,9 @@ Containerization allows developers to create and deploy applications faster and 
 ### Design considerations
 
 - Containerization has become a major trend in software development since it provides measurable benefits for developers and operations teams as well as optimizing infrastructure utilization. More specifically, the benefits of containerizing application components include:
-  - **Improved infrastructure utilization**: Containers do not include operating system images so require less system resources. Multiple containers can therefore be hosted on the same virtualized infrastructure, and this helps to optimize resource utilization by consolidating on fewer resources with higher container density.
+  - **Improved infrastructure utilization**: Containers don't include operating system images so require less system resources. Multiple containers can therefore be hosted on the same virtualized infrastructure, and this helps to optimize resource utilization by consolidating on fewer resources with higher container density.
   - **Portability**: Including all software dependencies within the container ensures that it will work across different operating systems regardless of runtimes or library versions. Containerized applications are therefore easier to move between application platforms due to the standardized container format.
-  - **Faster scaling operations**: Containers are lightweight and do not suffer from the slow start-up and shutdown times afflicting virtual machines, and since container images are pre-built, the start-up activity can be minimized to focus only on bootstrapping the application.
+  - **Faster scaling operations**: Containers are lightweight and don't suffer from the slow start-up and shutdown times afflicting virtual machines, and since container images are pre-built, the start-up activity can be minimized to focus only on bootstrapping the application.
   - **Simplified management**: The consistent portability and ephemeral nature of containers provides a simplified infrastructure management experience compared to traditional virtualized hosting.
   - **Agile development**: Containers support accelerated development, test, and production cycles through consistent operation and less overhead.
 - The drawbacks of containerizing application components include:
@@ -76,7 +76,7 @@ Containerization allows developers to create and deploy applications faster and 
 - Containerization enables workloads to run on Azure without application code needing to be re-written.
   - Provides a good opportunity to modernize legacy applications without significant code change, and can therefore be suitable for 'lift and shift' scenarios depending on the considered application frameworks and external dependencies.
 
-- While it'spossible to store data within a running container's filesystem, the data will not persist when the container is recreated, so instead persistence is typically achieved by 'mounting' external storage.
+- While it's possible to store data within a running container's filesystem, the data will not persist when the container is recreated, so instead persistence is typically achieved by 'mounting' external storage.
 
 ### Design recommendations
 
@@ -94,7 +94,7 @@ There are several Azure application platforms capable of effectively hosting con
 - [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/)
 - [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)
 
-There are advantages and disadvantages associated with each of these Azure container platforms which should be analyzed in the context of business requirements to inform an optimal technical choice; each platform serves an optimal choice for certain scenarios. However, given the principles underpinning the  design methodology strive to optimize reliability, scalability, and performance, it'sstrongly recommended to prioritize the use of Azure Kubernetes Service.
+There are advantages and disadvantages associated with each of these Azure container platforms which should be analyzed in the context of business requirements to inform an optimal technical choice; each platform serves an optimal choice for certain scenarios. However, given the principles underpinning the  design methodology strive to optimize reliability, scalability, and performance, it's strongly recommended to prioritize the use of Azure Kubernetes Service.
 
 Azure Kubernetes Service (AKS) is Microsoft Azure's native managed Kubernetes service which allows for rapid Kubernetes cluster provisioning without complex cluster administration activities, and enhances standard Kubernetes with a rich feature set that includes advanced networking and identity capabilities. 
 
@@ -118,9 +118,9 @@ The considerations and recommendations within this section will therefore focus 
 
 - The optional [AKS Uptime SLA](/azure/aks/uptime-sla) provides availability guarantees for the Kubernetes control plane.
   - 99.95% availability of the Kubernetes API server endpoint for AKS Clusters that use Azure Availability Zones.
-  - 99.9% availability for AKS Clusters that do not use Azure Availability Zones.
+  - 99.9% availability for AKS Clusters that don't use Azure Availability Zones.
 
-- Some foundational configuration decisions have to be made upfront and cannot be changed without re-deploying an AKS cluster.
+- Some foundational configuration decisions have to be made upfront and can't be changed without re-deploying an AKS cluster.
   - Selection between public and private AKS clusters.
   - Enabling Azure Network Policy.
   - Azure AD integration and the use of Managed Identities for AKS instead of Service Principals.
@@ -173,7 +173,7 @@ The considerations and recommendations within this section will therefore focus 
   - This default limit can be increased by opening a support ticket, if the App Service routinely uses 15 or more instances.
 
 - Per-app scaling can be enabled at the App Service Plan level to allow an application to scale independently from the App Service plan that hosts it. For example, an App Service Plan can be scaled to 10 instances, but an app can be set to use only 5.
-  - Apps are allocated to available nodes using a best effort approach for an even distribution. While an even distribution is not guaranteed, the platform will make sure that two instances of the same app will not be hosted on the same instance.
+  - Apps are allocated to available nodes using a best effort approach for an even distribution. While an even distribution isn't guaranteed, the platform will make sure that two instances of the same app will not be hosted on the same instance.
 
 - There are a number of events that can lead App Service workers to restart, such as content deployment, App Settings changes, and Virtual Network integration configuration changes.
 
@@ -208,7 +208,7 @@ The considerations and recommendations within this section will therefore focus 
   - Avoid deploying large numbers of node pools to reduce additional management overhead.
   - Use [taints and tolerations](/azure/aks/operator-best-practices-advanced-scheduler#provide-dedicated-nodes-using-taints-and-tolerations) to provide dedicated nodes and limit resource intensive applications.
   - For high scale scenarios, consider the use of [Virtual Nodes](/azure/aks/virtual-nodes-cli) ([vKubelet](https://github.com/virtual-kubelet/virtual-kubelet)) with ACI for extensive and rapid scale.
-  - Using [Azure Spot VMs](/azure/aks/spot-node-pool) is not recommended for highly available workloads. However, you can consider this option for development and testing environments as a way to optimize cost.
+  - Using [Azure Spot VMs](/azure/aks/spot-node-pool) isn't recommended for highly available workloads. However, you can consider this option for development and testing environments as a way to optimize cost.
   - Evaluate application affinity and anti-affinity requirements and configure the appropriate colocation of containers on nodes.
 
 - Avoid modifying resources within the [node resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks) ('MC_')
@@ -229,8 +229,8 @@ The considerations and recommendations within this section will therefore focus 
 - Harden the AKS cluster to remove critical security risks associated with Kubernetes deployments.
   - Use [Pod Identities](/azure/aks/operator-best-practices-identity#use-pod-identities) and [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) to protect secrets, certificates, and connection strings.
   - Use [Managed Identities](/azure/aks/use-managed-identity) to avoid having to manage and rotate service principal credentials.
-  - Utilize [AAD integration](/azure/aks/managed-aad) to take advantage of centralized account management and passwords, application access management, and identity protection.
-  - Use Kubernetes RBAC with AAD for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to protect configuration and secrets access.
+  - Utilize [Azure Active Directory integration](/azure/aks/managed-aad) to take advantage of centralized account management and passwords, application access management, and identity protection.
+  - Use Kubernetes RBAC with Azure Active Directory for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to protect configuration and secrets access.
   - Limit access to the [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file with Azure role-based access control.
   - Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources).
     - Provide the least number of permissions, and avoid the use of root / privileged escalation.
@@ -263,7 +263,7 @@ The considerations and recommendations within this section will therefore focus 
   - Authenticate using Azure AD to access Azure Container Registry.
 
   - Establish a consistent reliability and security baseline for AKS cluster and [pod](/azure/aks/use-pod-security-on-azure-policy) configurations using [Azure Policy](/azure/governance/policy/overview).
-    - Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, such as root privileges, and disallow pods which do not conform to policy.
+    - Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, such as root privileges, and disallow pods which don't conform to policy.
     - Policy assignments should be enforced at a subscription scope or higher to drive consistency across development teams.
 
 
@@ -290,7 +290,7 @@ The considerations and recommendations within this section will therefore focus 
   - Consider opening a support ticket to increase the maximum number of workers to twice the instance count required to serve normal peak load.
 
 - Evaluate the use of TCP and SNAT ports to avoid outbound connection errors.
-  - Predictively detect SNAT port exhaustion through load testing while monitoring ports using Azure Monitor, and if SNAT errors occur, it'snecessary to either scale across more/larger workers, or implement coding practices to help preserve and re-use SNAT ports, such as connection pooling or the lazy loading of resources.
+  - Predictively detect SNAT port exhaustion through load testing while monitoring ports using Azure Monitor, and if SNAT errors occur, it's necessary to either scale across more/larger workers, or implement coding practices to help preserve and re-use SNAT ports, such as connection pooling or the lazy loading of resources.
 
   - It's recommended not to exceed 100 simultaneous outbound connections to a public IP Address per worker, and to avoid communicating with downstream services via public IP addresses when a [Private Endpoint](/azure/private-link/private-endpoint-overview) or [Service Endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) could be used.
 
@@ -328,7 +328,7 @@ Microsoft Azure provides several serverless compute platforms:
 
 In the context of a reliable application platform, serverless technologies provide a near-zero friction development and operational experience, which can be highly valuable for simple business process scenarios. However, this relative simplicity comes at the cost of flexibility in terms of scalability, reliability, and performance, which is likely unacceptable for most business-critical application scenarios.
 
-The design methodology therefore positions serverless technologies as an alternative platform for simple business process scenarios which do not share the same stringent business requirements as critical system flows.
+The design methodology therefore positions serverless technologies as an alternative platform for simple business process scenarios which don't share the same stringent business requirements as critical system flows.
 
 > The design considerations and recommendations within this section will focus on optimal Azure Function and Azure Logic Apps usage as alternative platforms for non-critical workflow scenarios.
 
@@ -341,9 +341,9 @@ The design methodology therefore positions serverless technologies as an alterna
 
 - There are 3 [hosting plans](/azure/azure-functions/functions-scale) available for Azure Functions:
   - *Consumption* is the fully serverless pay-per-use option, with instances dynamically added and removed based on the number of incoming events; underlying compute resources are charged only when running.
-  - *Premium* uses a Premium SKU App Service plan to host functions and allows the configuration of compute instance size. Additionally, it'spossible to set up a number of pre-warmed instances to eliminate cold starts.
+  - *Premium* uses a Premium SKU App Service plan to host functions and allows the configuration of compute instance size. Additionally,  possible to set up a number of pre-warmed instances to eliminate cold starts.
     - There will always be at least one billed instance in the Premium plan.
-  - *Dedicated* is the least serverless option as it'stied to a provisioned App Service plan or App Service Environment. Autoscale can be enabled, but scale operations are slower than with the Consumption and Premium plans.
+  - *Dedicated* is the least serverless option as it's tied to a provisioned App Service plan or App Service Environment. Autoscale can be enabled, but scale operations are slower than with the Consumption and Premium plans.
 
 - Fully serverless hosting options, which help optimize costs by de-provisioning allocated resources when workloads are not running, may incur "cold start" delays, especially for applications comprised of many files, such as Node.js or PHP applications.
 
@@ -368,7 +368,7 @@ The design methodology therefore positions serverless technologies as an alterna
 
 **Azure Functions**
 
-- Consider Azure Functions for simple business process scenarios which do not have the same stringent business requirements as business-critical system flows.
+- Consider Azure Functions for simple business process scenarios which don't have the same stringent business requirements as business-critical system flows.
   - Low-critical scenarios can also be hosted as separate containers within AKS to drive consistency, provided affinity and anti-affinity requirements are fully considered when collocating containers on nodes.
 
 - Azure Functions should perform distinct operations that run as fast as possible.
@@ -443,7 +443,7 @@ This section will therefore explore key decision factors when selecting an appro
 
 - Storage Queues support message sizes of up to 64 KB.
 
-- Storage queues do not guarantee message ordering.
+- Storage queues don't guarantee message ordering.
 
 - Maximum throughput is limited to up to 20,000 messages per second (assuming 1 KB message size) per storage account.
   - Target throughput for a single queue (1 KB messages) is limited to 2,000 messages per second.
@@ -472,7 +472,7 @@ This section will therefore explore key decision factors when selecting an appro
 - Prioritize the use of Event Hubs for scenarios which require high throughput and which can work with message ordering on a partition-basis.
 
 - Use Service Bus for scenarios requiring a higher QoS and message guarantee by implementing two phase commits.
-  - Use Service Bus Premium in an zonal redundant configuration to provide high-availability within a region.
+  - Use Service Bus Premium in a zonal redundant configuration to provide high-availability within a region.
   
 - Consider Storage Queues when message geo-replication is required provided the message size is less than 64 KB.
   - Use an AZ-redundant tier for the underlying Storage Account (ZRS or GZRS).
