@@ -20,9 +20,9 @@ ms.custom:
 There are several cross-cutting concerns that traverse the [key design areas](mission-critical-overview.md#what-are-the-key-design-areas). This article contextualizes these cross-cutting concerns for subsequent consideration within each design area.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you are not familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you are not familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [Azure Mission-Critical open source project](http://github.com/azure/alwayson)
+> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
 > There are [reference implementations](mission-critical-overview.md#illustrative-examples) available as part of an open source project on GitHub. The code assets provided by these implementations illustrate the recommendations highlighted in this article.
 
@@ -51,11 +51,11 @@ A holistic approach to automation of deployment and management activities can ma
 - Automate continuous integration and continuous delivery (CI/CD) pipelines for all application components.
 - Automate application management activities, such as patching and monitoring.
 - Use declarative management semantics, such as Infrastructure as code (IaC), instead of over imperative approaches.
-- Prioritize templating over scripting. Defer to scripting only when using templates is not possible.
+- Prioritize templating over scripting. Defer to scripting only when using templates isn't possible.
 
 ## Azure roadmap alignment
 
-Azure is constantly evolving through frequent updates to services, features, and regional availability. It is therefore important to align the target architecture with Azure platform roadmaps to inform an optimal application trajectory. For example, making sure that the required services and features are available within the chosen deployment regions.
+Azure is constantly evolving through frequent updates to services, features, and regional availability. It's important to align the target architecture with Azure platform roadmaps to inform an optimal application trajectory. For example, making sure that the required services and features are available within the chosen deployment regions.
 
 Refer to [Azure updates](https://azure.microsoft.com/updates/) for the latest information about new services and features. 
 
@@ -67,7 +67,7 @@ Refer to [Azure updates](https://azure.microsoft.com/updates/) for the latest in
 
 ## Next step
 
-Review each design area associated with a mission-critical workload.
+Explore the design areas that provide critical considerations and recommendations for building a mission-critical workload.
 
 > [!div class="nextstepaction"]
-> [Architecture pattern](mission-critical-architecture-pattern.md)
+> [Design areas](mission-critical-architecture-pattern.md)

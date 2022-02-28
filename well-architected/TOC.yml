@@ -367,12 +367,12 @@ items:
                   href: mission-critical/mission-critical-application-platform.md
                 - name: Data platform
                   href: mission-critical/mission-critical-data-platform.md
+                - name: Networking and connectivity
+                  href: mission-critical/mission-critical-networking-connectivity.md                  
                 - name: Health modeling
                   href: mission-critical/mission-critical-health-modeling.md
                 - name: Deployment and testing
                   href: mission-critical/mission-critical-deployment-testing.md
-                - name: Networking and connectivity
-                  href: mission-critical/mission-critical-networking-connectivity.md
                 - name: Security
                   href: mission-critical/mission-critical-security.md
                 - name: Operational procedures
