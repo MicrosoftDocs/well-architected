@@ -37,7 +37,7 @@ We recommend that you use the provided design guidance to navigate the key desig
 |---|---|
 |[Application design](mission-critical-application-design.md)|Learn about the importance of a scale-unit architecture in the context of building a highly reliable application. Also explores the cloud application design patterns to ensure aspirations are fully achieved.|
 |[Application platform](mission-critical-application-platform.md)| Decision factors and recommendations related to the selection, design, and configuration of an appropriate application hosting platform.|
-|[Data platform](mission-critical-data-platform.md)|Make decisions using key characteristics of a data platform&mdash;volume, velocity, variety, veracity. |
+|[Data platform](mission-critical-data-platform.md)|Make decisions by using key characteristics of a data platform&mdash;volume, velocity, variety, veracity. |
 |[Networking and connectivity](mission-critical-networking-connectivity.md)|Network topology concepts at an application level, considering requisite connectivity and redundant traffic management. It highlights critical considerations and recommendations intended to inform the design of a secure and scalable global network topology for a mission-critical application.|
 |[Health modeling and observability](mission-critical-health-modeling.md)|Processes to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity.|
 |[Deployment and testing](mission-critical-deployment-testing.md)| Eradicate downtime and maintain application health for deployment operations, providing key considerations and recommendations intended to inform the design of optimal CI/CD pipelines for a mission-critical application.|
@@ -51,7 +51,7 @@ A mission-critical workload architecture is defined by the various design decisi
 
 The image below represents a reference architecture recommended for mission-critical workloads on Azure. It leverages a reference set of business requirements to achieve an optimized architecture for different target reliability tiers.
 
-![Mission-critical online reference architecture](./images/alwayson-architecture-foundational-online.png "ission-critical online reference architecture")
+![Mission-critical online reference architecture](./images/alwayson-architecture-foundational-online.png "Mission-critical online reference architecture")
 
 >The [Mission-Critical Foundational Online](https://github.com/azure/alwayson-foundational-online) and [Mission-Critical Foundational Connected](https://github.com/azure/alwayson-foundational-connected) provide solution orientated showcases for this design methodology, demonstrating how this architecture pattern can be implemented alongside the operational wrappers required to maximize reliability and operational effectiveness.
 
