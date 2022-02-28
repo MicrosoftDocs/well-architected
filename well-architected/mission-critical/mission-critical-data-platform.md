@@ -288,7 +288,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - In a multi-region write configuration, [update (insert, replace, delete) conflicts](/azure/cosmos-db/conflict-resolution-policies) can occur where writers concurrently update the same item in multiple regions.
 
 - Cosmos DB provides two conflict resolution policies, which can be applied to automatically address conflicts.
-  - Last Write Wins (LWW) applies a time-synchronization clock protocol using a system-defined timestamp `_ts` property as the conflict resolution path. In the event of a conflict the item with the highest value for the conflict resolution path becomes the winner, and if multiple items have the same numeric value then the system selects a winner so that all regions can converge to the same version of the committed item.
+  - Last Write Wins (LWW) applies a time-synchronization clock protocol using a system-defined timestamp `_ts` property as the conflict resolution path. If of a conflict the item with the highest value for the conflict resolution path becomes the winner, and if multiple items have the same numeric value then the system selects a winner so that all regions can converge to the same version of the committed item.
     - With delete conflicts, the deleted version always wins over either insert or replace conflicts regardless of conflict resolution path value.
     - Last Write Wins is the default conflict resolution policy.
     - When using the SQL API a custom numerical property, such as a custom timestamp definition, can be used for conflict resolution.
@@ -342,7 +342,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 |---|---|---|
 | 1 RU | 2 RU | 4 RU |
 
-> The delta between single-region-write and multi-region-write is actually less than the 1:2 ratio reflected in the table above. More specifically, there's a cross-region data transfer charge associated with write updates in a single-write configuration, which is not captured within the RU costs as with the multi-write configuration.  
+> The delta between single-region-write and multi-region-write is actually less than the 1:2 ratio reflected in the table above. More specifically, there's a cross-region data transfer charge associated with write updates in a single-write configuration, which isn't captured within the RU costs as with the multi-write configuration.  
 
 - Consumed storage is billed as a flat rate for the total amount of storage (GB) consumed to host data and indexes for a given hour.
 
@@ -367,7 +367,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
   - Resource Locks can be set at the account, database, or container level.
   - A Resource Lock set at on a resource will be inherited by all child resources. For example, a Resource Lock set on the Cosmos DB account will be inherited by all databases and containers within the account.
   - Resource Locks **only** apply to control plane operations and do **not** prevent data plane operations, such as creating, changing, or deleting data.
-  - If control plane access is not restricted with `disableKeyBasedMetadataWriteAccess`, then clients will be able to perform control plane operations using account keys.
+  - If control plane access isn't restricted with `disableKeyBasedMetadataWriteAccess`, then clients will be able to perform control plane operations using account keys.
 
 - The [Cosmos DB Change Feed](/azure/cosmos-db/change-feed) provides a time-ordered feed of changes to data in a Cosmos DB Container.
   - The Change Feed only includes insert and update operations to the source Cosmos DB Container; it doesn't include deletes.
@@ -393,7 +393,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
       - The maximum retention period extends to a month with a minimum backup interval of one hour.
       - A role assignment to the Azure "Cosmos DB Account Reader Role" is required to configure backup storage redundancy.
     - Two backup copies are included at no extra cost, but additional backups incur additional costs.
-    - By default, periodic backups are stored within separate Geo-Redundant Storage (GRS) that is not directly accessible.
+    - By default, periodic backups are stored within separate Geo-Redundant Storage (GRS) that isn't directly accessible.
       - Backup storage exists within the primary 'hub' region and is replicated to the paired region through underlying storage replication.
       - The redundancy configuration of the underlying backup storage account is configurable to [Zone-Redundant Storage or Locally-Redundant Storage](/azure/cosmos-db/configure-periodic-backup-restore#backup-storage-redundancy).
     - Performing a **restore operation requires a [Support Request](/azure/cosmos-db/configure-periodic-backup-restore#request-restore)** since customers can't directly perform a restore.
@@ -411,8 +411,8 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
     - Continuous backups are taken within every Azure region where the Cosmos DB account exists.
       - Continuous backups are stored within the same Azure region as each Cosmos DB replica, using Locally-Redundant Storage (LRS) or Zone Redundant Storage (ZRS) within regions that support Availability Zones.
     - A self-service restore can be performed using the [Azure portal](/azure/cosmos-db/restore-account-continuous-backup#restore-account-portal) or IaC artifacts such as [ARM templates](/azure/cosmos-db/restore-account-continuous-backup#restore-arm-template).
-    - There several [limitations](/azure/cosmos-db/continuous-backup-restore-introduction#current-limitations) with Continuous Backup.
-      - The continuous backup mode is not currently available in a multi-region-write configuration.
+    - There are several [limitations](/azure/cosmos-db/continuous-backup-restore-introduction#current-limitations) with Continuous Backup.
+      - The continuous backup mode isn't currently available in a multi-region-write configuration.
       - Only SQL API and MongoDB API can be configured for Continuous backup at this time.
       - If a container has TTL configured, restored data that has exceeded its TTL may be _immediately deleted_
     - A restore operation creates a new Cosmos DB account for the point-in-time restore.
@@ -520,7 +520,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - It's strongly recommended to practice recovery procedures on non-production resources and data, as part of standard business continuity operation preparation.
 
-- Define IaC artifacts to re-establish configuration settings and capabilities if a Cosmos DB backup restore.
+- Define IaC artifacts to re-establish configuration settings and capabilities of a Cosmos DB backup restore.
 
 - Evaluate and apply the [Azure Security Baseline](/security/benchmark/azure/baselines/cosmos-db-security-baseline#backup-and-recovery) control guidance for Cosmos DB Backup and Recovery.
   - [BR-1: Ensure regular automated backups](/security/benchmark/azure/baselines/cosmos-db-security-baseline#br-1-ensure-regular-automated-backups)
@@ -549,7 +549,7 @@ Azure provides many managed relational data platforms, including Azure SQL Datab
 
 - Azure SQL Database provides built-in regional high availability and turnkey geo-replication to distribute read-replicas across Azure regions.
   - With geo-replication, secondary database replicas remain read-only until a failover is initiated.
-  - Up to foursecondaries are supported in the same or different regions.
+  - Up to four secondaries are supported in the same or different regions.
   - Secondary replicas can also be used for read-only query access to optimize read performance.
   - Failover must be initiated manually but can be wrapped in automated operational procedures.
 
@@ -607,7 +607,7 @@ Azure provides many managed relational data platforms, including Azure SQL Datab
 
 - Consider sharding to partition relational databases based on different application and data contexts, helping to navigate platform constraints, maximize scalability and availability, and fault isolation.
   - This recommendation is particularly prevalent when the application design considers three or more Azure regions since relational technology constraints can significantly hinder globally distributed data platforms.
-  - Sharding is not appropriate for all application scenarios, so a contextualized evaluation is required.
+  - Sharding isn't appropriate for all application scenarios, so a contextualized evaluation is required.
 
 - Prioritize the use of Azure SQL Database where relational requirements exist due to its maturity on the Azure platform and wide array of reliability capabilities.
 
@@ -629,7 +629,7 @@ Azure provides many managed relational data platforms, including Azure SQL Datab
 - Consider automated operational triggers, based on alerting aligned to the application health model, to conduct failovers to geo-replicated instances if a failure impacting the primary and secondary within the Auto Failover Group.
 
 >[!IMPORTANT]
-> For applications considering more than fourdeployment regions, serious consideration should be given to application scoped sharding or refactoring the application to support multi-region write technologies, such as Azure Cosmos DB. However, if this is not feasible within the application workload scenario, it's advised to elevate a region within a single geography to a primary status encompassing a geo-replicated instance to more evenly distribute read access.
+> For applications considering more than fourdeployment regions, serious consideration should be given to application scoped sharding or refactoring the application to support multi-region write technologies, such as Azure Cosmos DB. However, if this isn't feasible within the application workload scenario, it's advised to elevate a region within a single geography to a primary status encompassing a geo-replicated instance to more evenly distribute read access.
 
 - Configure the application to query replica instances for read queries to optimize read performance.
 
@@ -747,7 +747,7 @@ Azure Synapse provides an enterprise analytical platform that brings together re
 
 - Using Azure Synapse Link, the Cosmos DB Analytical Store can be queried directly from Azure Synapse. This enables no-ETL, Hybrid Transactional-Analytical Processing (HTAP) from Synapse, so that Cosmos DB data can be queried together with other analytical workloads from Synapse in near real-time.
 
-- The Cosmos DB Analytical Store is not partitioned by default.
+- The Cosmos DB Analytical Store isn't partitioned by default.
   - For certain query scenarios, performance will improve by [partitioning Analytical Store](/azure/cosmos-db/configure-custom-partitioning) data using keys that are frequently used in query predicates.
   - Partitioning is triggered by a job in Azure Synapse that runs a Spark notebook using Synapse Link, which loads the data from the Cosmos DB Analytical Store and writes it into the Synapse partitioned store in the primary storage account of the Synapse workspace.
 
