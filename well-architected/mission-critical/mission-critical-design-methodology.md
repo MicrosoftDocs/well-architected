@@ -1,6 +1,6 @@
 ---
 title: Design methodology for mission-critical workloads
-description: A design methodology to guide readers through the architectural process of building a mature mission-critical application on Microsoft Azure.
+description: Understand the architectural process of building a mature mission-critical application on Microsoft Azure.
 author: calcof
 ms.author: calcof
 ms.date: 02/28/2022
@@ -17,7 +17,7 @@ ms.custom:
 
 # Design methodology for mission-critical workloads
 
-Building a mission-critical application on any cloud platform requires significant technical expertise and engineering investment, particularly since there is significant complexity associated with:
+Building a mission-critical application on any cloud platform requires significant technical expertise and engineering investment, particularly since there's significant complexity associated with:
 
 - Understanding the cloud platform,
 - Choosing the right services and composition,
@@ -29,7 +29,7 @@ This design methodology strives to provide an easy to follow design path to help
 
 ## 1&mdash;Design for business requirements
 
-Not all mission-critical workloads have the same requirements. It is therefore expected that the review considerations and design recommendations provided by this design methodology will yield different design decisions and trade-offs for different application scenarios.
+Not all mission-critical workloads have the same requirements. It's therefore expected that the review considerations and design recommendations provided by this design methodology will yield different design decisions and trade-offs for different application scenarios.
 
 ### Select a reliability tier
 
@@ -60,23 +60,23 @@ There are obvious trade-offs associated with introducing greater reliability, wh
 
 More specifically, there is an opportunity cost associated with engineering investment in fundamental reliability concepts, such as fully embracing infrastructure as code, deployment automation, and chaos engineering. This comes at a cost in terms of both time and effort, which could be invested elsewhere to deliver new application functionality and features.
 
-Furthermore, maximizing reliability can impact the overall financial cost of the solution. For example, the duplication of resources and the distribution of resources across regions to achieve high availability has clear cost implications. To avoid excess costs, do not over-engineer or over-provision beyond the relevant business requirements.
+Furthermore, maximizing reliability can impact the overall financial cost of the solution. For example, the duplication of resources and the distribution of resources across regions to achieve high availability has clear cost implications. To avoid excess costs, don't over-engineer or over-provision beyond the relevant business requirements.
 
 ## 2&mdash;Refer to the mission-critical implementations
 
-The Azure Mission-Critical open source project strives to illustrate the design recommendations provided by this methodology, and should be used as a source of reference to inform the art of the possible.
+The Mission-Critical open source project strives to illustrate the design recommendations provided by this methodology, and should be used as a source of reference to inform the art of the possible.
 
 > ![GitHub logo](./../_images/github.svg) [ Mission-Critical open source project](http://github.com/azure/alwayson)
 
 There are two foundational [reference implementations](mission-critical-overview.md#illustrative-examples):
 
-  - [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online)
-  - [Mission-Critical Connected](https://github.com/azure/alwayson-foundational-connected) 
+  - [Mission-Critical Foundational Online](https://github.com/azure/alwayson-foundational-online)
+  - [Mission-Critical Foundational Connected](https://github.com/azure/alwayson-foundational-connected) 
 
 
 **Production-grade artifacts**: Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered.
 
-**Rooted in 'customer truth'** - All technical decisions are guided by the real-wold experiences of Azure customers and lessons learned from those engagements.
+**Rooted in customer truth** - All technical decisions are guided by the real-wold experiences of Azure customers and lessons learned from those engagements.
 
 **Azure roadmap alignment** - The mission-critical reference architectures have their own roadmap that is aligned with Azure product roadmaps.
 
