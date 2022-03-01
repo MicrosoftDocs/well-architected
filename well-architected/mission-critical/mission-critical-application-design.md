@@ -103,7 +103,7 @@ The required performance of the solution under load is a critical decision facto
 
 - Measure the time it takes to perform scale-out and scale-in operations, in order to ensure that the natural variations in traffic don't create an unacceptable level of service degradation.   - To drive continuous improvement, track the scale operation durations as an operational metric.
 
-### Example for subscription scale-unit approach
+### Example for the subscription scale-unit approach
 
 This image demonstrates how the single subscription reference deployment model can be expanded across multiple subscriptions, in an extreme scale scenario, to navigate subscription scale-limits.
 
@@ -111,24 +111,21 @@ This image demonstrates how the single subscription reference deployment model c
 
 ## Global distribution
 
-Failure is impossible to avoid in any highly distributed environment. So, always plan for failure.
+Unfortunately, failure is impossible to avoid in a highly distributed environment. Only by planning for failure can a solution be truly 'always on'.
 
-Here are some strategies to mitigate many fault scenarios.
-
-- [Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) allows highly available regional deployments across different data centers within a region. Nearly all Azure services are available in either a zonal configuration (where service is pinned to a specific zone) or zone-redundant configuration (where the platform automatically ensures the service spans across zones and can withstand a zone outage). These configurations allow for fault-tolerance up to a datacenter level.
+- [Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) allow for highly available regional deployments across different data centers within a region. Nearly all Azure services are available in either a zonal configuration (where service is pinned to a specific zone) or zone-redundant configuration (where the platform automatically ensures the service spans across zones and can withstand a zone outage). These configurations allow for fault-tolerance up to a datacenter level.
 
 - To maximize reliability, consider using multiple Azure regions to ensure regional fault tolerance, so that application availability remains even when an entire region goes down. When designing a multi-region application, consider different deployment strategies, such as active-active and active-passive, alongside application requirements, because there are significant trade-offs between each approach.
 
-An active-active deployment strategy represents the gold standard because it maximizes availability and allows for higher composite  Service Level Agreement (SLA). While active-active is the recommended approach, it can introduce challenges around data synchronization and consistency for many application scenarios, and these challenges must be fully addressed at a data platform level, with other trade-offs, from increased cost exposure and increased engineering effort.
+An active-active deployment strategy represents the gold standard because it maximizes availability and allows for higher composite Service Level Agreement (SLA). While active-active is the recommended approach, it can introduce challenges around data synchronization and consistency for many application scenarios, and these challenges must be fully addressed at a data platform level, with other trade-offs from increased cost exposure and increased engineering effort.
 
 Not every workload supports or requires multiple regions running simultaneously, and hence the precise application requirements should be weighed against these trade-offs to inform an optimal design decision. For certain application scenarios with lower reliability targets, different deployment models, such as active-passive or sharding, can be suitable alternatives.
 
-It's important to note that some Azure services are deployable or configurable as global resources, which aren't constrained to a particular Azure region. So, when accommodating both 'Scale-Unit Architecture' and 'Global Distribution', carefully consider to how resources are optimally distributed across Azure regions. 
+It's important to note that some Azure services are deployable or configurable as global resources, which are not constrained to a particular Azure region. So, when accommodating both 'scale-unit architecture' and 'global distribution', carefully consider to how resources are optimally distributed across Azure regions. 
 
 This image shows the high-level active-active design. A user accesses the application through a central global entry point that then redirects requests to a suitable regional deployment stamp.
 
-![Mission-Critical Foundational-Online Architecture](./images/alwayson-high-level-architecture.png)
-
+![Mission-Critical Online architecture](./images/mission-critical-high-level-architecture.png)
 
 ### Design considerations
 
