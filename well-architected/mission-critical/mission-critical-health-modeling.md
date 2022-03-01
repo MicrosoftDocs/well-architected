@@ -391,7 +391,7 @@ AIOps is used to drive predictive action, interpreting and correlating complex o
 
 - Synapse Analytics is integrated with Azure ML through Azure Synapse Notebooks, which enables ML models to be trained in an Azure ML Workspace using [Automated ML](/azure/machine-learning/concept-automated-ml).
 
-- Synapse Analytics also enables ML capabilities using [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services) to solve general problems in various domains, such as [Anomaly Detection](/azure/cognitive-services/anomaly-detector/). Cognitive Services can be used in Azure Synapse, Azure Databricks, and via SDKs and REST APIs in client applications.
+- Synapse Analytics also enables ML capabilities using [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services) to solve general problems in various domains, such as [anomaly detection](/azure/cognitive-services/anomaly-detector/). Cognitive Services can be used in Azure Synapse, Azure Databricks, and via SDKs and REST APIs in client applications.
 
 - Azure Synapse natively integrates with [Azure Data Factory](/azure/data-factory/introduction) tools to extract, transform, and load (ETL) or ingest data within orchestration pipelines.
 
@@ -424,15 +424,13 @@ AIOps is used to drive predictive action, interpreting and correlating complex o
 
 - Ensure ML model operationalization supports both batch and real-time scoring.
 
-- As AIOps models are created, implement MLOps and apply DevOps practices to [automate the ML lifecycle](/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) for training, operationalization, scoring, and continuous improvement. Create an iterative CI/CD process for AIOps ML models.
+- As AIOps models are created, implement MLOps and apply DevOps practices to [automate the machine learning lifecycle](/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) for training, operationalization, scoring, and continuous improvement. Create an iterative CI/CD process for AIOps ML models.
 
 - Evaluate [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services) for specific predictive scenarios due to their low administrative and integration overhead.  Consider [Anomaly Detection](/azure/cognitive-services/anomaly-detector/) to quickly flag unexpected variances in observability data streams.
 
 ## Next step
 
-Review the deployment and tesing considerations.
+Review the deployment and testing considerations.
 
 > [!div class="nextstepaction"]
 > [Deployment and Testing](mission-critical-deployment-testing.md)
-
-
