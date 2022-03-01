@@ -15,31 +15,29 @@ ms.custom:
   - mission-critical
 ---
 
-# Application platform considerations for mission-critical workloads on Azure
+# Application platform considerations for mission-critical workloads
 
-Azure provides many [compute services](/azure/architecture/guide/technology-choices/compute-decision-tree) for hosting highly available applications. The services differ in capability and complexity. We recommend that you fully understand the capability matrix with focus on:
-- Non-functional requirements surrounding reliability, availability, performance, and security.
-- Decision factors such as scalability, cost, operability, and complexity. 
+Azure provides several [compute services](/azure/architecture/guide/technology-choices/compute-decision-tree) for hosting highly available applications. These services differ in capability and complexity. It is therefore essential that key non-functional requirements surrounding reliability, availability, performance, and security are fully considered alongside other decision factors such as scalability, cost, operability, and complexity.
 
 The selection of an appropriate application hosting platform is a critical decision that has impact on all other design areas. For example, the scale-limits of a particular service will have a key bearing on suitability and the overall application design in terms of scale-unit definitions. A mission-critical application can use more than one compute service in parallel to support multiple composite workloads and microservices with distinct platform requirements.
 
 This design area explores the important decision factors and provides recommendations related to the selection, design, and configuration of an appropriate application hosting platform.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
-> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate the considerations and implementations for a selected compute service.
+> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate the considerations and implementations for recommended compute services.
 
 ## Programming language selection
 
-Selecting the right programming languages and frameworks is a critical design decision. Typically this decision is driven by the availability of development skills or by the use of standardized technologies within an organization. However, given the reliable aspirations, it's essential to also evaluate the performance and resilience aspects of different languages/frameworks as well as the capability differences within required Azure SDKs.
+Selecting the right programming languages and frameworks is a critical design decision. Typically this decision is driven by the availability of development skills or by the use of standardized technologies within an organization. However, given the reliable aspirations, it is essential to also evaluate the performance and resilience aspects of different languages/frameworks as well as the capability differences within required Azure SDKs.
 
 ### Design considerations
 
 - There are sometimes significant differences in the capabilities offered by Azure service SDKs in different languages, and this may influence the selection of an Azure service or programming language.
-  - For instance, if Cosmos DB is a significant dependency, 'Go' may not be an appropriate development language since there's no first-party SDK.
+  - For instance, if Cosmos DB is a significant dependency, 'Go' may not be an appropriate development language since there is no first-party SDK available today.
 
 - New features are typically added to the .NET and Java libraries first, and there can be a delay in feature availability for other [supported languages](https://azure.github.io/azure-sdk/).
 
@@ -81,7 +79,9 @@ Containerization allows developers to create and deploy applications faster and 
 ### Design recommendations
 
 - Containerize all application components, using container images as the primary model for application deployment packages.
+
 - Prioritize Linux-based container runtimes when possible.
+
 - Avoid persisting state/data within a container since containers should be immutable and replaceable with short lifecycles.
 
 ## Container Orchestration and Kubernetes
@@ -156,7 +156,6 @@ The considerations and recommendations within this section will therefore focus 
   - Azure Policy can control what functions pods are granted, and if running contradicts policy. This access is defined through built-in policies provided by the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes).
 
 - AKS has certain [scale limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-kubernetes-service-limits), such as the number of nodes and number of node pools per cluster, as well as the number of clusters per subscription.
-
 
 **Azure App Service**
 
@@ -266,11 +265,10 @@ The considerations and recommendations within this section will therefore focus 
     - Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, such as root privileges, and disallow pods which don't conform to policy.
     - Policy assignments should be enforced at a subscription scope or higher to drive consistency across development teams.
 
-
   > [!NOTE]
   > 
-  > When deploying into an Azure landing zone, be aware that the required Azure Policy to ensure the consistent reliability and security should be provided by the landing zone implementation.
-  > The Mission-Critical reference implementations provide a suite of baseline policies to drive recommended reliability and security configurations.
+  > When deploying into an Azure landing zone, be aware that the required Azure Policy to ensure consistent reliability and security should be provided by the landing zone implementation.
+  > The mission-critical [reference implementations](mission-critical-overview.md#illustrative-examples) provide a suite of baseline policies to drive recommended reliability and security configurations.
 
 **Azure App Service**
 
@@ -484,4 +482,3 @@ This section will therefore explore key decision factors when selecting an appro
 Review the considerations for the data platform.
 > [!div class="nextstepaction"]
 > [Data platform](./mission-critical-data-platform.md)
-
