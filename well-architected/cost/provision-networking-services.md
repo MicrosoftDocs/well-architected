@@ -10,6 +10,8 @@ ms.subservice: well-architected
 products:
   - azure-application-gateway
   - azure-load-balancer
+  - azure
+  - azure-cost-management
 ms.custom:
   - article
 ---
