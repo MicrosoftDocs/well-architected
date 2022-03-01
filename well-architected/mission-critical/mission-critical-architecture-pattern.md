@@ -1,5 +1,5 @@
 ---
-title: Design areas for a mission-critical workload on Azure
+title: Architecture pattern for a mission-critical workload on Azure
 description: The design areas represent the architecturally significant topics that must be discussed and designed for when defining a target architecture
 author: calcof
 ms.author: calcof
@@ -19,7 +19,7 @@ ms.custom:
   - alwayson
 ---
 
-# Design areas for mission-critical workloads
+# Architecture pattern for mission-critical workloads
 
 This section provides design considerations and recommendations across architecturally significant topics that are relevant for a mission-critical workload. The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design.
 
