@@ -351,8 +351,6 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - Cosmos DB supports authentication via either an Azure Active Directory identity or Cosmos DB keys and resource tokens, which provide overlapping capabilities.
 
-![Cosmos DB Access Capabilities](/azure/cosmos-db/media/how-to-restrict-user-data/operations.png "Cosmos DB Access Capabilities")
-
 - It's possible to disable resource management operations using keys or resource tokens to limit keys and resource tokens to data operations only, allowing for fine-grained resource access control using Azure Active Directory Role-Based Access Control (RBAC).
   - Restricting control plane access via keys or resource tokens will disable control plane operations for clients using Cosmos DB SDKs and should therefore be thoroughly [evaluated and tested](/azure/cosmos-db/role-based-access-control#check-list-before-enabling).
   - The `disableKeyBasedMetadataWriteAccess` setting can be configured via [ARM Template](/azure/cosmos-db/role-based-access-control#set-via-arm-template) IaC definitions, or via a [Built-In Azure Policy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4750c32b-89c0-46af-bfcb-2e4541a818d5).
