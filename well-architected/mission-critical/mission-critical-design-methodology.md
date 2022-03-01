@@ -52,7 +52,7 @@ As an initial exercise, readers are advised to select a target reliability tier 
 
 This image shows how the different reliability tiers and underlying business requirements influence the target architecture for a conceptual reference implementation, particularly concerning the number of regional deployments and utilized global technologies.
 
-![Mission-critical reliability dial](./images/alwayson-slo.gif "Mission-critical reliability dial")
+![Mission-critical reliability dial](./images/mission-critical-slo.gif "Mission-critical reliability dial")
 
 However, this globally distributed approach to achieve high reliability comes at a development cost which may not be justifiable for every workload scenario. It's recommended that design decisions are driven by business requirements.
 
