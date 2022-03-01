@@ -130,11 +130,8 @@ This section explores the key differences Azure routing services to define how e
 
 This image shows a redundant global load balancer configuration with client failover using Azure Front Door as primary global load balancer.
 
-<<<<<<< HEAD
-![Mission-Critical Global Load Balancer Configuration](./images/mission-critical-global-routing.gif "Mission-Critical Global Load Balancer Configuration")
-=======
+
 ![Mission-critical global load balancer configuration](./images/mission-citical-global-routing.gif "Mission-critical global load balancer configuration")
->>>>>>> ed6d953b75a13f297759d2c8601202788c05a256
 
 >[!IMPORTANT]
 > To truly mitigate the risk of global failures within the Azure platform, a multi-cloud active-active deployment approach should be considered, with active deployment stamps hosted across two or more cloud providers and redundant third-party routing technologies used for global routing.
