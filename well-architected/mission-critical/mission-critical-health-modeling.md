@@ -377,7 +377,7 @@ Machine learning models can be applied to correlate and prioritize operational d
 
 More specifically, an AIOps methodology can be applied to critical insights about the behavior of the system, users, and DevOps processes. These insights can include identifying a problem happening now (*detect*), quantifying why the problem is happening (*diagnose*), or signaling what will happen in the future (*predict*). Such insights can be used to drive actions that adjust and optimize the application to mitigate active or potential issues, using key business metrics, system quality metrics, and DevOps productivity metrics, to prioritize according to business impact. Conducted actions can themselves be infused into the system through a feedback loop that further trains the underlying model to drive additional efficiencies.
 
-![Mission Critical AIOps Methodologies](./images/alwayson-aiops-methodology.png "Mission Critical AIOps Methodologies")
+![Mission Critical AIOps Methodologies](./images/mission-critical-aiops-methodology.png "Mission Critical AIOps Methodologies")
 
 There are multiple analytical technologies within Azure, such as Azure Synapse and Azure Databricks, which can be used to build and train analytical models for AIOps. This section will therefore focus on how these technologies can be positioned within an application design to accommodate AIOps and drive predictive action, focusing on Azure Synapse that reduces friction by bringing together the best of Azure's data services along with powerful new features.
 
