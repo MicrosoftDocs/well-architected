@@ -24,7 +24,7 @@ From a workload perspective, a *landing zone* refers to a prepared platform into
 
 - Consistent adoption of organizational policies. Policies govern which resources can be used and their usage limits. Policies also provide identity controls. Only authenticated and authorized entities are allowed access. This approach decouples the governance requirements from the workload requirements. It's crucial that a landing zone is handed over to the workload owner with the security guardrails deployed.
 
-- Configurations that align with [principles of Zero Trust ](/security/zero-trust/]). For instance an implementation might have network connectivity to on-premises data centers. When designing networking controls, the landing zone may apply the least-privilege principle by opening communication paths only when necessary and only to trusted entities.
+- Configurations that align with [principles of Zero Trust ](/security/zero-trust/#guiding-principles-of-zero-trust). For instance an implementation might have network connectivity to on-premises data centers. When designing networking controls, the landing zone may apply the least-privilege principle by opening communication paths only when necessary and only to trusted entities.
 
 The preceding examples are conceptually simple but the implementation can get complicated for an enterprise-scale deployment. Azure landing zone as part of the Cloud Adoption Framework (CAF) provides architecture guidance about identity and access management, networking, and other design areas necessary to achieve an optimal implementation.  
 
