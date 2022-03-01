@@ -11,6 +11,7 @@ ms.custom:
   - overview
 products:
   - azure
+  - azure-cost-management
 categories:
   - management-and-governance
 ---
