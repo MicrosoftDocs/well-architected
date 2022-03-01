@@ -255,11 +255,11 @@ The [Mission-Critical Online](https://github.com/azure/alwayson-foundational-onl
 
 ## Application-level resiliency patterns and error handling
 
-A mission-critical application architecture must be developed with resiliency in-mind. It's therefore critical that application code be designed and developed to be resilient, ensuring that the application can respond to failure, which is ultimately an unavoidable characteristic of highly distributed multi-tenant cloud environments like Azure.
+A mission-critical application must be developed with resiliency in-mind. It is therefore critical that application code be designed and developed to be resilient, ensuring that the application can respond to failure, which is ultimately an unavoidable characteristic of highly distributed multi-tenant cloud environments like Azure.
 
 More specifically, all application components should be designed from the ground-up to apply key resiliency patterns for self-healing, such as [retries with back-off](/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly) and [circuit breaker](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern). Such patterns go great lengths to transparently handle transient faults such as network packet loss, or the temporary loss of a downstream dependency. So, the application code should address as many failure scenarios as possible in order to maximize service availability and reliability.
 
-When issues aren't transient in-nature and canbe fully mitigated within application logic, it becomes the role of the health model and operational wrappers to take corrective action. However, for this to happen effectively, it's essential that the application code incorporates proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis when required. More specifically, application code should be implemented to facilitate [Distributed Tracing](/dotnet/core/diagnostics/distributed-tracing-concepts), by providing the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
+When issues are not transient in-nature and cannot be fully mitigated within application logic, it becomes the role of the health model and operational wrappers to take corrective action. However, for this to happen effectively, it is essential that the application code incorporates proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis when required. More specifically, application code should be implemented to facilitate [distributed tracing](/dotnet/core/diagnostics/distributed-tracing-concepts), by providing the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
 
 Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tracing) can help significantly to query, correlate, and visualize application traces.
 
@@ -267,13 +267,11 @@ Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tra
 
 - Vendor-provided SDKs, such as the Azure service SDKs, will typically provide built-in resiliency capabilities like retry mechanisms.
 
-- It's not uncommon for application responses to transient issues to cause cascading failures.
+- It is not uncommon for application responses to transient issues to cause cascading failures.
   
   For example, retry without appropriate back-off will exacerbate when a service is being throttled will likely exacerbate the issue.
 
 - Retry delays can be linearly spaced, or increase exponentially to 'backoff' via growing delays.
-
-Here are some other resiliency-related patterns:
 
 |Pattern|Summary|
 |---|---|
@@ -299,11 +297,11 @@ Here are some other resiliency-related patterns:
 
 - Implement resiliency patterns using proven standardized packages, such as [Polly for C#](http://www.thepollyproject.org/) or [Sentinel for Java](https://github.com/alibaba/Sentinel).
 
-- Implement [Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring) by exposing functional checks within application code through health endpoints which external monitoring solutions can poll to retrieve application component health statuses. Responses should be interpreted alongside key operational metrics to inform application health and trigger operational responses, such as raising an alert or performing a compensating roll-back deployment.
+- Implement [health endpoint monitoring](/azure/architecture/patterns/health-endpoint-monitoring) by exposing functional checks within application code through health endpoints which external monitoring solutions can poll to retrieve application component health statuses. Responses should be interpreted alongside key operational metrics to inform application health and trigger operational responses, such as raising an alert or performing a compensating roll-back deployment.
 
-- Implement [Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling) by applying a prioritized ordering so that the most important activities are performed first.
+- Implement [queue-based load leveling](/azure/architecture/patterns/queue-based-load-leveling) by applying a prioritized ordering so that the most important activities are performed first.
 
-- Implement the [Retry](/azure/architecture/patterns/retry) pattern to enable application code to handle transient failures elegantly and transparently.
+- Implement the [retry](/azure/architecture/patterns/retry) pattern to enable application code to handle transient failures elegantly and transparently.
   - Cancel if the fault is unlikely to be transient and is unlikely to succeed if the operation is reattempted.
   - Retry if the fault is unusual or rare and the operation is likely to succeed if attempted again immediately.
   - Retry after a delay if the fault is caused by a condition that may need a short time to recover, such as network connectivity or high load failures.
@@ -323,5 +321,3 @@ Review the considerations for the application platform.
 
 > [!div class="nextstepaction"]
 > [Application platform](./mission-critical-application-platform.md)
-
-
