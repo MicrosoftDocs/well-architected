@@ -241,9 +241,10 @@ The 'Four Vs of Big Data' provide a framework to better understand requisite cha
 - When applying encryption, it's strongly recommended to use service-managed encryption keys as a way of reducing management complexity.
   - If there's a specific security requirement for customer-managed keys, ensure appropriate key management procedures are applied to ensure availability, backup, and rotation of all considered keys.
 
-> In an Enterprise Scale context, it's critical that an application centric approach be applied for the provisioning and operation of data platform components in an application design.
+[!NOTE]
+> When integrating with a broader organizational implementation, it's critical that an application centric approach be applied for the provisioning and operation of data platform components in an application design.
 > More specifically, to maximize reliability it's critical that individual data platform components appropriately respond to application health through operational actions which may include other application components. For example, in a scenario where additional data platform resources are needed, scaling the data platform along with other application components according to a capacity model will likely be required, potentially through the provision of additional scale units. This approach will ultimately be constrained if there's a hard dependency of a centralized operations team to address issues related to the data platform in isolation.
-> Ultimately, the use of centralized data services (i.e. Central IT DBaaS) introduces operational bottlenecks that significantly hinder agility through a largely uncontextualized management experience, and should be avoided in a mission-critical or business-critical context.
+> Ultimately, the use of centralized data services (that is Central IT DBaaS) introduces operational bottlenecks that significantly hinder agility through a largely uncontextualized management experience, and should be avoided in a mission-critical or business-critical context.
 
 ### Additional references
 

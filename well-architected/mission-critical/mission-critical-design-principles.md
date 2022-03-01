@@ -77,6 +77,16 @@ These mission-critical design principles resonate and extend the quality pillars
 |[**Automate and use least privilege**](/azure/architecture/framework/devops/principles#embrace-continuous-operational-improvement)|Drive automation to minimize the need for human interaction and implement least privilege across both the application and control plane to protect against data exfiltration and malicious actor scenarios.|
 |[**Classify and encrypt data**](/azure/architecture/framework/security/security-principles#classify-and-encrypt-data)|Classify data according to risk and apply industry standard encryption at rest and in transit, ensuring keys and certificates are stored securely and managed properly.|
 
+
+## Cost Optimization
+
+There are obvious cost trade-offs associated with introducing greater reliability, which should be carefully considered in the context of workload requirements.
+
+Maximizing reliability can impact the overall financial cost of the solution. For example, the duplication of resources and the distribution of resources across regions to achieve high availability has clear cost implications. To avoid excess costs, don't over-engineer or over-provision beyond the relevant business requirements.
+
+Also, there is added cost associated with engineering investment in fundamental reliability concepts, such as embracing infrastructure as code, deployment automation, and chaos engineering. This comes at a cost in terms of both time and effort, which could be invested elsewhere to deliver new application functionality and features.
+
+
 ## Cloud native design
 
 - [**Azure-native managed services**](/azure/architecture/guide/design-principles/managed-services) - Azure-native managed services are prioritized due to their lower administrative and operational overhead as well as tight integration with consistent configuration and instrumentation across the application stack.
@@ -85,7 +95,7 @@ These mission-critical design principles resonate and extend the quality pillars
 
 - **Embrace preview capabilities and mitigate known gaps** - While Generally Available (GA) services are prioritized for supportability, Azure service previews are actively explored for rapid incorporation, providing technical and actionable feedback to Azure product groups to address gaps.
 
-- **Azure Landing Zone alignment** - Deployable within an [Azure Landing Zone](/azure/cloud-adoption-framework/ready/landing-zone) and aligned to the Azure Landing Zone design methodology, but also fully functional and deployable in a bare environment outside of a landing zone.
+- **Azure landing zone alignment** - Deployable within an [Azure landing zone](/azure/cloud-adoption-framework/ready/landing-zone) and aligned to the Azure landing zone design methodology, but also fully functional and deployable in a bare environment outside of a landing zone.
 
 ## Next step
 

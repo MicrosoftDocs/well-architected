@@ -242,8 +242,8 @@ A unified data sink is required to ensure all operational data is swiftly stored
 
 - Use Azure Policy to ensure all regional resources route operational data to the correct Log Analytics Workspace.
 
->[!CAUTION]
-> When deploying into an Azure Landing Zone,  if there's a requirement for centralized storage of operational data, you can [fork](/azure/azure-monitor/logs/logs-data-export?tabs=portal) data at instantiation so it's ingested into both centralized tooling and Log Analytics Workspaces dedicated to the application. Alternatively expose access to application Log Analytics workspaces so that central teams can query application data. It's ultimately critical that operational data originating from the solution is available within Log Analytics Workspaces dedicated to the application.
+>[!NOTE]
+> When deploying into an Azure landing zone,  if there's a requirement for centralized storage of operational data, you can [fork](/azure/azure-monitor/logs/logs-data-export?tabs=portal) data at instantiation so it's ingested into both centralized tooling and Log Analytics Workspaces dedicated to the application. Alternatively, expose access to application Log Analytics workspaces so that central teams can query application data. It's ultimately critical that operational data originating from the solution is available within Log Analytics Workspaces dedicated to the application.
 >
 > If SIEM integration is required, do not send raw log entries, but instead send critical alerts.
 
@@ -299,8 +299,8 @@ This section focuses on the use of Azure Dashboards and Grafana to build a robus
 
 - Collect and present queried outputs from all regional Log Analytics Workspaces and the global Log Analytics Workspace to build a unified view of application health.
 
->[!CAUTION]
-> If deploying into an Azure Landing Zone, consideration should be given to also query the [central platform Log Analytics Workspace](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring#plan-platform-management-and-monitoring) if key dependencies on platform resources exist, such as Express Route for scenarios involving on-premises communication.
+>[!NOTE]
+> If deploying into an Azure landing zone, consider querying the [central platform Log Analytics Workspace](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring#plan-platform-management-and-monitoring) if key dependencies on platform resources exist, such as ExpressRoute for on-premises communication.
 
 - A ‘traffic light’ model should be used to visually represent 'healthy' and 'unhealthy' states, with green used to illustrate when key non-functional requirements are fully satisfied and resources are optimally utilized. Use "Green", "Amber, and "Red" to represent "Healthy", "Degraded", and "Unavailable" states.
 

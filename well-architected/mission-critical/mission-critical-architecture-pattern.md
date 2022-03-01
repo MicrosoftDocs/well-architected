@@ -57,27 +57,27 @@ The image below represents a reference architecture recommended for mission-crit
 
 Use these reference implementations to construct a sandbox application environment for validating key design decisions.
 
-## Azure Landing Zone integration
+## Azure landing zone integration
 
-[Azure Landing Zones](/azure/cloud-adoption-framework/ready/landing-zone/) provides prescriptive architectural guidance to define a reliable and scalable shared-service platform for enterprise Azure deployments with requisite centralized governance. 
+[Azure landing zones](/azure/cloud-adoption-framework/ready/landing-zone/) provides prescriptive architectural guidance to define a reliable and scalable shared-service platform for enterprise Azure deployments with requisite centralized governance. 
 
-This mission-critical workload series provides prescriptive architectural guidance to define a highly reliable application for mission-critical workloads that could be deployed within an Azure Landing Zone.
+This mission-critical workload series provides prescriptive architectural guidance to define a highly reliable application for mission-critical workloads that could be deployed within an Azure landing zone.
 
-The mission-critical [reference implementations](mission-critical-overview.md#illustrative-examples) can integrate seamlessly within an Azure Landing Zone, and is deployable within both the *Online* or *Corp. Connected* Landing Zone formats as demonstrated within the image below.
+The mission-critical [reference implementations](mission-critical-overview.md#illustrative-examples) can integrate seamlessly within an Azure landing zone, and is deployable within both the *Online* or *Corp. Connected* Landing Zone formats as demonstrated within the image below.
 
 ![Mission-critical workload and Landing Zone integration](./images/alwayson-landing-zones.gif "Mission-critical workload and Landing Zone integration")
 
-It is crucial to understand and identify in which connectivity scenario a mission-critical application requires since Azure Landing Zones support different landing zones archetypes separated into different Management Group scopes.
+It is crucial to understand and identify in which connectivity scenario a mission-critical application requires since Azure landing zones support different landing zones archetypes separated into different Management Group scopes.
 
-- In the context of an *Online* Landing Zone archetype, a mission-critical workload operates as a completely independent solution, without any direct corporate network connectivity to the rest of the Azure Landing Zone architecture. The application will, however, be further safeguarded through the [*policy-driven management*](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) approach which is foundational to Azure Landing Zones, and will automatically integrate with centralized platform logging through policy.
+- In the context of an *Online* Landing Zone archetype, a mission-critical workload operates as a completely independent solution, without any direct corporate network connectivity to the rest of the Azure landing zone architecture. The application will, however, be further safeguarded through the [*policy-driven management*](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) approach which is foundational to Azure landing zones, and will automatically integrate with centralized platform logging through policy.
 
   - A *Online* deployment can only really consider a public application deployment since there is no private corporate connectivity provided.
 
-- When deployed in a *Corp. Connected* Landing Zone context, the mission-critical workload takes a dependency on the Azure Landing Zones platform to provide connectivity resources which allow for integration with other applications and shared services. This necessitates some transformation on-top of the *Online* integration approach, since some foundational resources are expected to exist up-front as part of the shared-service platform. More specifically, the regional deployment stamp should not longer encompass an ephemeral Virtual Network or Azure Private DNS Zone since these will exist within the Azure Landing Zones *connectivity* subscription. 
+- When deployed in a *Corp. Connected* Landing Zone context, the mission-critical workload takes a dependency on the Azure landing zone to provide connectivity resources which allow for integration with other applications and shared services. This necessitates some transformation on-top of the *Online* integration approach, because some foundational resources are expected to exist up-front as part of the shared-service platform. More specifically, the regional deployment stamp should not longer encompass an ephemeral Virtual Network or Azure Private DNS Zone since these will exist within the Azure landing zones *connectivity* subscription. 
 
-  - A *Corp. Connected* deployment can consider both a public or private AlwaysOn application deployment.
+  A *Corp. Connected* deployment can consider both a public or private application deployment.
 
-> The mission-critical reference implementations are fully aligned with the Azure Landing Zones architectural approach and are immediately deployable within an *Online* or *Connected* Landing Zone subscription.
+> The mission-critical reference implementations are fully aligned with the Azure landing zones architectural approach and are immediately deployable within an *Online* or *Connected* Landing Zone subscription.
 
 ## Next step
 

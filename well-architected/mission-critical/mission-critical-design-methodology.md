@@ -54,13 +54,7 @@ This image shows how the different reliability tiers and underlying business req
 
 ![Mission-critical reliability dial](./images/alwayson-slo.gif "Mission-critical reliability dial")
 
-### Consider trade-offs and opportunity cost
-
-There are obvious trade-offs associated with introducing greater reliability, which should be carefully considered in the context of workload requirements.
-
-More specifically, there is an opportunity cost associated with engineering investment in fundamental reliability concepts, such as embracing infrastructure as code, deployment automation, and chaos engineering. This comes at a cost in terms of both time and effort, which could be invested elsewhere to deliver new application functionality and features.
-
-Furthermore, maximizing reliability can impact the overall financial cost of the solution. For example, the duplication of resources and the distribution of resources across regions to achieve high availability has clear cost implications. To avoid excess costs, don't over-engineer or over-provision beyond the relevant business requirements.
+However, this globally distributed approach to achieve high reliability comes at a development cost which may not be justifiable for every workload scenario. It's recommended that design decisions are driven by business requirements.
 
 ## 2&mdash;Refer to the mission-critical implementations
 

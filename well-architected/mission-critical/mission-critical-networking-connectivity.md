@@ -254,7 +254,7 @@ A mission-critical application can be deployed within one of three overarching n
 1. **Private** application **with** corporate network connectivity.
 
 > [!CAUTION]
-> When deploying within an Azure Landing Zone, configuration 1. should be deployed within an Online Landing Zone, while both 2) and 3) should be deployed within a Corp. Connected Landing Zone to facilitate network-level integration.
+> When deploying within an Azure landing zone, configuration 1. should be deployed within an Online Landing Zone, while both 2) and 3) should be deployed within a Corp. Connected Landing Zone to facilitate network-level integration.
 
 This section explores these network integration scenarios, layering in the appropriate use of Azure Virtual Networks and surrounding Azure networking services to ensure integration requirements are optimally satisfied.
 
@@ -303,8 +303,8 @@ This section explores these network integration scenarios, layering in the appro
   - An ExpressRoute circuit can be sized to provide bandwidths up to 100 Gbps.
   - A Virtual Private Network (VPN) can be sized to provide aggregated bandwidth up to 10 Gbps in hub and spoke networks, and up to 20 Gbps in Azure Virtual WAN.
 
-> [!CAUTION]
-> When deploying within an Azure Landing Zone, the foundational platform will provide requisite connectivity to on-premises networks using ExpressRoute and other virtual networks in Azure using either Virtual WAN or a hub-and-spoke network design.
+> [!NOTE]
+> When deploying within an Azure landing zone, be aware that any required connectivity to on-premises networks should be provided by the landing zone implementation. The design can use ExpressRoute and other virtual networks in Azure using either Virtual WAN or a hub-and-spoke network design.
 
 - The inclusion of additional network paths and resources introduces additional reliability and operational considerations for the application to ensure health is maintained.
 
@@ -333,8 +333,8 @@ This section explores these network integration scenarios, layering in the appro
 
 - Ensure all components on critical network paths are in line with the reliability and availability requirements of associated user flows, regardless of whether the management of these paths and associated component is delivered by the application team of central IT teams.
 
-> [!CAUTION]
-> When deploying within an Azure Landing Zone and integrating with a broader organizational network topology, careful consideration should be given to the [Enterprise Scale Landing Zones Network Guidance](/azure/cloud-adoption-framework/ready/enterprise-scale/network-topology-and-connectivity) to ensure the foundational network is aligned with Microsoft best-practices.
+  > [!NOTE]
+  > When deploying within an Azure landing zone and integrating with a broader organizational network topology, consider the [network guidance](/azure/cloud-adoption-framework/ready/enterprise-scale/network-topology-and-connectivity) to ensure the foundational network is aligned with Microsoft best-practices.
 
 - Use [Azure Bastion](/azure/bastion/bastion-overview) or proxied private connections to access the data plane of Azure resources or perform management operations.
 
@@ -384,7 +384,7 @@ This section explores how internet egress can be achieved while ensuring securit
   - Ensure Azure Firewall isn't used to inspect traffic between Azure services.
 
 > [!CAUTION]
-> When deploying within an Azure Landing Zone, consider using the foundational platform Azure Firewall resource (or equivalent NVA).
+> When deploying within an Azure landing zone, consider using the foundational platform Azure Firewall resource (or equivalent NVA).
 > If a dependency is taken on a central platform resource for internet egress, then the reliability level of that resource and associated network path should be closely aligned with application requirements. Operational data from the resource should also be made available to the application in order to inform potential operational action in failure scenarios.
  
 If there are high-scale requirements associated with outbound traffic, consideration should be given to a dedicated Azure Firewall resource for a mission-critical application, to mitigate risks associated with using a centrally shared resource, such as noisy neighbor scenarios.
