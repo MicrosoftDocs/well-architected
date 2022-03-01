@@ -39,7 +39,6 @@ These mission-critical design principles resonate and extend the quality pillars
 |[**Drive automation**](/azure/architecture/framework/resiliency/principles#drive-automation)|One of the leading causes of application downtime is human error, whether that is due to the deployment of insufficiently tested software or misconfiguration. To minimize the possibility and impact of human errors, it's vital to strive for automation in all aspects of a cloud solution to improve reliability; automated testing, deployment, and management.|
 |[**Design for self-healing**](/azure/architecture/framework/resiliency/principles#design-for-self-healing)|Self healing describes a system's ability to deal with failures automatically through pre-defined remediation protocols connected to failure modes within the solution. It's an advanced concept that requires a high level of system maturity with monitoring and automation, but should be an aspiration from inception to maximize reliability.|
 
-
 ## Performance Efficiency
 
 **_Sustainable performance and scalability_** - Design for scalability across the end-to-end solution without performance bottlenecks.
@@ -77,15 +76,13 @@ These mission-critical design principles resonate and extend the quality pillars
 |[**Automate and use least privilege**](/azure/architecture/framework/devops/principles#embrace-continuous-operational-improvement)|Drive automation to minimize the need for human interaction and implement least privilege across both the application and control plane to protect against data exfiltration and malicious actor scenarios.|
 |[**Classify and encrypt data**](/azure/architecture/framework/security/security-principles#classify-and-encrypt-data)|Classify data according to risk and apply industry standard encryption at rest and in transit, ensuring keys and certificates are stored securely and managed properly.|
 
-
 ## Cost Optimization
 
 There are obvious cost trade-offs associated with introducing greater reliability, which should be carefully considered in the context of workload requirements.
 
-Maximizing reliability can impact the overall financial cost of the solution. For example, the duplication of resources and the distribution of resources across regions to achieve high availability has clear cost implications. To avoid excess costs, don't over-engineer or over-provision beyond the relevant business requirements.
+More specifically, maximizing reliability can impact the overall _financial cost_ of the solution. For example, the duplication of resources and the distribution of resources across regions to achieve high availability has clear cost implications. To avoid excess costs, don't over-engineer or over-provision beyond the relevant business requirements.
 
-Also, there is added cost associated with engineering investment in fundamental reliability concepts, such as embracing infrastructure as code, deployment automation, and chaos engineering. This comes at a cost in terms of both time and effort, which could be invested elsewhere to deliver new application functionality and features.
-
+Also, there is an _opportunity cost_ associated with engineering investment in fundamental reliability concepts, such as embracing infrastructure as code, deployment automation, and chaos engineering. This comes at a cost in terms of both time and effort, which could be invested elsewhere to deliver new application functionality and features.
 
 ## Cloud native design
 
