@@ -117,7 +117,7 @@ This section explores the key differences Azure routing services to define how e
 **Azure Standard Load Balancer**
 
 > [!IMPORTANT]
-> Cross-Region Standard Load Balancer is available in preview with [technical limitations](/azure/load-balancer/cross-region-overview#limitations). This option isn't recommended for mission-critical workloads.
+> Cross-Region Standard Load Balancer is available in preview with [technical limitations](/azure/load-balancer/cross-region-overview#limitations). This option is not yet recommended for mission-critical workloads.
 
 ### Design recommendations
 
@@ -130,17 +130,21 @@ This section explores the key differences Azure routing services to define how e
 
 This image shows a redundant global load balancer configuration with client failover using Azure Front Door as primary global load balancer.
 
+<<<<<<< HEAD
 ![Mission-Critical Global Load Balancer Configuration](./images/mission-critical-global-routing.gif "Mission-Critical Global Load Balancer Configuration")
+=======
+![Mission-critical global load balancer configuration](./images/mission-citical-global-routing.gif "Mission-critical global load balancer configuration")
+>>>>>>> ed6d953b75a13f297759d2c8601202788c05a256
 
 >[!IMPORTANT]
 > To truly mitigate the risk of global failures within the Azure platform, a multi-cloud active-active deployment approach should be considered, with active deployment stamps hosted across two or more cloud providers and redundant third-party routing technologies used for global routing.
-> However, it's strongly recommended not to apply a multi-cloud approach since it introduces significant operational complexity, with different deployment stamp definitions and representations of operational health across the different cloud platforms. This complexity in-turn introduces numerous resiliency risks within the normal operation of the application, which far outweigh the hypothetical risks of a global platform outage.
+> However, it is strongly recommended _not_ to apply a multi-cloud approach since it introduces significant operational complexity, with different deployment stamp definitions and representations of operational health across the different cloud platforms. This complexity in-turn introduces numerous resiliency risks within the normal operation of the application, which far outweigh the hypothetical risks of a global platform outage.
 
-- Although not recommended, for HTTP(s) workloads using Azure Traffic Manager for global routing redundancy to Azure Front Door, consider offloading Web Application Firewall (WAF) to Application Gateway for acceptable traffic flowing through Azure Front Door.
+- Although not recommended, for HTTP(s) workloads using Azure Front Door and Azure Traffic Manager for global routing redundancy, consider offloading Web Application Firewall (WAF) to Application Gateway for acceptable traffic flowing through Azure Front Door.
   - This will introduce an additional failure point to the standard ingress path, an additional critical-path component to manage and scale, and will also incur additional costs to ensure global high-availability. It will, however, greatly simplify the failure scenario by providing consistency between the acceptable and not acceptable ingress paths through Azure Front Door and Azure Traffic Manager, both in terms of WAF execution but also private application endpoints.
   - The loss of edge caching in a failure scenario will impact overall performance, and this must be aligned with an acceptable level of service or mitigating design approach. To ensure a consistent level of service, consider offloading edge caching to a third-party CDN provider for both paths.
 
-It's recommended to consider a third-party global routing service in place of two Azure global routing services. This provides the maximum level of fault mitigation and a more simple design approach since most industry leading CDN providers offer edge capabilities largely consistent with that offered by Azure Front Door.
+It is recommended to consider a third-party global routing service in place of two Azure global routing services. This provides the maximum level of fault mitigation and a more simple design approach since most industry leading CDN providers offer edge capabilities largely consistent with that offered by Azure Front Door.
 
 **Azure Front Door**
 
