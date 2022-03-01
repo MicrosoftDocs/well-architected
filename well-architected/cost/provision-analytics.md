@@ -10,6 +10,8 @@ ms.subservice: well-architected
 products:
   - azure-synapse-analytics
   - azure-databricks
+  - azure
+  - azure-cost-management
 ms.custom:
   - article
 ---
