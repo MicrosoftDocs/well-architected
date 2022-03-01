@@ -9,6 +9,9 @@ ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom:
   - article
+products:
+  - azure
+  - azure-cost-management
 ---
 
 # Virtual machines

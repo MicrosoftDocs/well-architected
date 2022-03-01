@@ -9,6 +9,8 @@ ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom:
   - article
+  - azure
+  - azure-cost-management
 ---
 
 # Develop a cost model

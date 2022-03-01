@@ -9,6 +9,8 @@ ms.service: architecture-center
 ms.subservice: well-architected
 products:
   - azure-event-grid
+  - azure
+  - azure-cost-management
 ms.custom:
   - article
 ---
