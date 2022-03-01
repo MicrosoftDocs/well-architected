@@ -129,11 +129,11 @@ This image shows the high-level active-active design. A user accesses the applic
 
 ### Design considerations
 
-- Not all services or capabilities are available in every Azure region, and so there can be service availability implications depending on the selected deployment regions.  - For example, [Availability Zones](/azure/availability-zones/az-region) aren't available in every region.
+- Not all services or capabilities are available in every Azure region, and so there can be service availability implications depending on the selected deployment regions. For example, [Availability Zones](/azure/availability-zones/az-region) are not available in every region.
 
 - Azure regions are grouped into [regional pairs](/azure/best-practices-availability-paired-regions) consisting of two regions within the same geography. Some Azure services use paired regions to ensure business continuity and to protect against data loss. For example, Azure Geo-redundant Storage (GRS) replicates data to a secondary paired region automatically, ensuring that data is durable if the primary region isn't recoverable. If an outage affects multiple Azure regions, at least one region in each pair will be prioritized for recovery.
 
-- The [Azure Safe Deploy Practice (SDP)](https://azure.microsoft.com/blog/advancing-safe-deployment-practices) ensures all code and configuration changes (planned maintenance) to the Azure platform undergo a phased roll-out, with health analyzed in case any degradation is detected during the release.  After the Canary and Pilot phases have  successfully completed, platform updates are serialized across regional pairs, ensuring that only one region in each pair is updated at a time.
+- The [Azure Safe Deploy Practice (SDP)](https://azure.microsoft.com/blog/advancing-safe-deployment-practices) ensures all code and configuration changes (planned maintenance) to the Azure platform undergo a phased roll-out, with health analyzed in case any degradation is detected during the release.  After the Canary and Pilot phases have successfully completed, platform updates are serialized across regional pairs, ensuring that only one region in each pair is updated at a time.
 
 - Like any cloud provider, Azure ultimately has a finite amount of resources and as a result there are situations that can lead to the unavailability of capacity in individual regions. In the event of a regional outage there will be a significant increase in demand for resources within the paired region as impacted customer workloads seek to recover within the paired region. In certain scenarios this may create a capacity challenge where supply temporarily does not satisfy demand.
 
@@ -154,9 +154,9 @@ The connectivity method by which users or systems access the application, whethe
 - Different Azure regions have slightly different cost profiles for some services. There may be further cost implications depending on the precise deployment regions chosen.
 
 - Availability Zones have a latency perimeter of less than 2 milliseconds between availability zones.
-  - For workloads that are particularly 'chatty' across zones this latency can accumulate to form a non-trivial performance penalty, ands incurring bandwidth charges for inter-zone data transfer.
+  - For workloads that are particularly 'chatty' across zones this latency can accumulate to form a non-trivial performance penalty, as well as incurring bandwidth charges for inter-zone data transfer.
 
-  - An active-active deployment across Azure and other cloud providers can be considered to further mitigate reliance on global dependencies within a single cloud provider. A multi-cloud active-active deployment strategy introduces a significant amount of complexity around CI/CD, given the significant difference in resource specifications and capabilities between cloud providers. This necessitates specialized deployment stamps for each cloud.  
+- An active-active deployment across Azure and other cloud providers can be considered to further mitigate reliance on global dependencies within a single cloud provider. A multi-cloud active-active deployment strategy introduces a significant amount of complexity around CI/CD, given the significant difference in resource specifications and capabilities between cloud providers. This necessitates specialized deployment stamps for each cloud.  
 
 ### Design recommendations
 
@@ -185,7 +185,7 @@ The connectivity method by which users or systems access the application, whethe
   
 - It's not uncommon that data compliance requirements will constrain the number of available regions and potentially force design compromises. In such cases, additional investment in operational wrappers is highly recommended to predict, detect, and respond to failures.
   - If only a single Azure region is suitable, multiple deployment stamps ('regional scale-units') should be deployed within the selected region to mitigate some risk, using Availability Zones to provide datacenter-level fault tolerance. However, such a significant compromise in geographical distribution will drastically constrain the attainable composite SLA and overall reliability.
-  - If suitable Azure regions don't all offer requisite capabilities, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability.
+  - If suitable Azure regions do not all offer requisite capabilities, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability.
     - For example, when constrained to a geography with two regions where only one region supports Availability Zones (3 + 1 datacenter model), create a secondary deployment pattern using fault domain isolation to allow for both regions to be deployed in an active configuration, ensuring the primary region houses multiple deployment stamps.
 
 - Align current service availability with product roadmaps when selecting deployment regions; not all services may be available in every region on day 1.

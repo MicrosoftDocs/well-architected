@@ -359,8 +359,8 @@ items:
                 href: mission-critical/mission-critical-cross-cutting-issues.md
               - name: Design areas
                 items:
-                - name: Architecture pattern
-                  href: mission-critical/mission-critical-architecture-pattern.md
+                - name: overview
+                  href: mission-critical/mission-critical-design-areas.md
                 - name: Application design
                   href: mission-critical/mission-critical-application-design.md
                 - name: Application platform
