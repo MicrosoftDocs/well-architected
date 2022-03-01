@@ -215,7 +215,7 @@ When implementing loose coupling, **event-driven architecture** and **asynchrono
 > [!TIP]
 > Refer to the [event-driven architecture](/azure/architecture/guide/architecture-styles/event-driven) and [asynchronous processing](/azure/architecture/patterns/async-request-reply) patterns for further details.
 
-![Asynchronous event-driven communication](./images/alwayson-asynchronous-communication.png)
+![Asynchronous event-driven communication](./images/mission-critical-asynchronous-communication.png)
 *Image source: [asynchronous message-based communication](/dotnet/architecture/microservices/architect-microservice-container-applications/asynchronous-message-based-communication)*
 
 In reality, applications can combine loose and tight-coupling, depending on business objectives. 
@@ -257,7 +257,7 @@ The [Mission-Critical Online](https://github.com/azure/alwayson-foundational-onl
 
 The AlwaysOn reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker, while read operations are synchronous with the result directly returned to the caller.
 
-![AlwaysOn event driven architecture](./images/alwayson-event-driven.png "AlwaysOn event-driven approach")
+![AlwaysOn event driven architecture](./images/mission-critical-event-driven.png "AlwaysOn event-driven approach")
 
 ## Application-level resiliency patterns and error handling
 

@@ -50,7 +50,7 @@ A mission-critical workload architecture is defined by the various design decisi
 
 The image below represents a reference architecture recommended for mission-critical workloads on Azure. It leverages a reference set of business requirements to achieve an optimized architecture for different target reliability tiers.
 
-![Mission-critical online reference architecture](./images/alwayson-architecture-foundational-online.png "Mission-critical online reference architecture")
+![Mission-critical online reference architecture](./images/mission-critical-architecture-foundational-online.png "Mission-critical online reference architecture")
 
 >The [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online) and [Mission-Critical Connected](https://github.com/azure/alwayson-foundational-connected) provide solution orientated showcases for this design methodology, demonstrating how this architecture pattern can be implemented alongside the operational wrappers required to maximize reliability and operational effectiveness.
 
@@ -83,4 +83,4 @@ It is crucial to understand and identify in which connectivity scenario a missio
 Review the best practices for architecting mission-critical application scenarios.
 
 > [!div class="nextstepaction"]
-> [Application Design](./mission-critical-application-design.md)
+> [Application design](./mission-critical-application-design.md)

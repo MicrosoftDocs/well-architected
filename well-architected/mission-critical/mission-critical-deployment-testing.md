@@ -158,7 +158,7 @@ Achieving zero-downtime deployments is a fundamental goal of a mission-critical 
 
 The [Mission-Critical Foundational Online](https://github.com/Azure/AlwaysOn-Foundational-Online) and [Azure Mission-Critical Foundational Connected](https://github.com/Azure/AlwaysOn-Foundational-Connected) reference implementations serve as practical examples for these concepts and recommendations, to establish an optimized zero-downtime deployment approach as represented in the illustration below.
 
-![Zero-Downtime DevOps Pipeline Reference](./images/alwayson-zero-downtime-pipeline.png "[Zero-Downtime DevOps Pipeline Reference")
+![Zero-Downtime DevOps Pipeline Reference](./images/mission-critical-zero-downtime-pipeline.png "[Zero-Downtime DevOps Pipeline Reference")
 
 ## Infrastructure-as-Code deployments
 

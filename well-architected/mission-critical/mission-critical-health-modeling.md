@@ -92,7 +92,7 @@ This is a simplified representation of a layered application health model for il
 
 When implementing a health model it's important to define the health of individual components through the aggregation and interpretation of key resource-level metrics. An example of how resource metrics can be used is the image below:
 
-![Mission Critical Example Health Definitions](./images/alwayson-example-health-definitions.png "Mission Critical Example Health Definitions")
+![Mission Critical Example Health Definitions](./images/mission-critical-example-health-definitions.png "Mission Critical Example Health Definitions")
 
 This definition of health can subsequently be represented by a KQL query, as demonstrated by the example AKS query below that aggregates InsightsMetrics (AKS Container insights) and AzureMetrics (Azure diagnostics) and compares (inner join) against modeled health thresholds.
 
@@ -138,7 +138,7 @@ These aggregated scores can subsequently be represented as a dependency chart us
 
 This image shows an example layered health model from the [foundational-online](https://github.com/azure/alwayson-foundational-online) reference implementation, and demonstrates how a change in health state for a foundational component can have a cascading impact to user flows and overall application health (the example values correspond to the table in the previous image).
 
-![Mission Critical Example Health Model Visualization](./images/alwayson-example-fault-states.png "Mission Critical Example Health Model Visualization")
+![Mission Critical Example Health Model Visualization](./images/mission-critical-example-fault-states.png "Mission Critical Example Health Model Visualization")
 
 ## Unified data sink for correlated analysis
 
@@ -146,7 +146,7 @@ Many operational datasets must be gathered from all system components to accurat
 
 A unified data sink is required to ensure all operational data is swiftly stored and made available for correlated analysis to build a 'single pane' representation of application health. Azure provides several different operational technologies under the umbrella of [Azure Monitor](/azure/azure-monitor/overview#overview), and Azure Monitor Log Analytics serves as the core Azure-native data sink to store and analyze operational data.
 
-![Mission Critical Health Data Collection](./images/alwayson-health-data-collection.png "Mission Critical Health Data Collection")
+![Mission Critical Health Data Collection](./images/mission-critical-health-data-collection.png "Mission Critical Health Data Collection")
 
 ### Design considerations
 
