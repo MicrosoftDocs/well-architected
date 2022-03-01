@@ -22,11 +22,7 @@ There are several cross-cutting concerns that traverse the [key design areas](mi
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you are not familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-<<<<<<< HEAD
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
-=======
-> ![GitHub logo](./../_images/github.svg) [Azure Mission-Critical open source project](http://github.com/azure/alwayson)
->>>>>>> cross cutting tweaks
 >
 > There are [reference implementations](mission-critical-overview.md#illustrative-examples) available as part of an open source project on GitHub. The code assets provided by these implementations illustrate the recommendations highlighted in this article.
 

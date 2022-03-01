@@ -128,11 +128,6 @@ This section explores the key differences Azure routing services to define how e
   - Prioritize the use of third-party routing technologies as the secondary failover service, since this will mitigate the largest number of global failure scenarios and the capabilities offered by industry leading CDN providers will allow for a consistent design approach.
   - Consideration should also be given to directly routing to a single regional stamp rather than a separate routing service. While this will result in a degraded level of service, it represents a far simpler design approach.
 
-This image shows a redundant global load balancer configuration with client failover using Azure Front Door as primary global load balancer.
-
-
-![Mission-critical global load balancer configuration](./images/mission-citical-global-routing.gif "Mission-critical global load balancer configuration")
-
 >[!IMPORTANT]
 > To truly mitigate the risk of global failures within the Azure platform, a multi-cloud active-active deployment approach should be considered, with active deployment stamps hosted across two or more cloud providers and redundant third-party routing technologies used for global routing.
 > However, it is strongly recommended _not_ to apply a multi-cloud approach since it introduces significant operational complexity, with different deployment stamp definitions and representations of operational health across the different cloud platforms. This complexity in-turn introduces numerous resiliency risks within the normal operation of the application, which far outweigh the hypothetical risks of a global platform outage.
