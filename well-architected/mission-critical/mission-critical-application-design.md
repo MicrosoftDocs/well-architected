@@ -13,14 +13,14 @@ ms.custom:
   - mission-critical
 ---
 
-# Application design of mission-critical workloads on Azure
+# Application design of mission-critical workloads
 
 Both functional application requirements and non-functional requirements are critical to inform key design decisions for a mission-critical application design. However, these requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved. 
 
 This design area explores the important application design patterns for building a highly reliable application on Azure.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
@@ -28,19 +28,18 @@ This design area explores the important application design patterns for building
 
 ## Scale-unit architecture
 
-Architecturally, it's critical to optimize end-to-end scalability through the logical compartmentalization of operational functions at all levels of the application stack. For achieving a highly available application design, all functional aspects of the solution must be capable of scaling to meet changes in demand.
+Architecturally, it is critical to optimize end-to-end scalability through the logical compartmentalization of operational functions at all levels of the application stack. For achieving a highly available application design, all functional aspects of the solution must be capable of scaling to meet changes in demand.
 
 A _scale-unit_ is a logical unit or function that can be scaled independently. A unit can be code components, application hosting platforms, or even deployment stamps that encompass related components.
 
 > [!TIP]
-> For more information, see the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) for further details.
+> For more information, refer to the [deployment stamps pattern](/azure/architecture/patterns/deployment-stamp) for further details.
 
 For example, the foundational reference implementation considers a user flow for processing game results that use APIs for retrieving and posting game outcomes, and supporting components such as an OAuth endpoint, datastore, and message queues. These stateless API endpoints for retrieving and posting results represent granular functional units that must be able to adapt to changes in demand. However, for these to be truly scalable, the underlying application platform must also be able to scale in-kind. Similarly, to avoid performance bottlenecks in the end-to-end user flow and to achieve sustainable scale, the downstream components and dependencies must also be able to scale to an appropriate degree, either independently, as a separate scale-unit, or together, as part of a single logical unit.
 
 This image shows the multiple scale-unit scopes that are considered by this reference implementation user flow. These scopes range from microservice pods to cluster nodes and regional deployment stamps.
 
-![Mission-Critical scale units](./images/alwayson-scale-units.png)
-
+![Mission-critical scale units](./images/mission-critical-scale-units.png)
 
 Using a scale-unit architecture is recommended to optimize the end-to-end scalability of a mission-critical application so that all levels of the solution can appropriately scale. The relationship between related scale-units, and the components inside a single scale-unit, should be defined according to a capacity model, taking into consideration non-functional requirements around performance.
 
@@ -70,7 +69,6 @@ The expected growth patterns for both traffic and data volume inform the design,
 
 The required performance of the solution under load is a critical decision factor when modeling required capacity.
 
-
 ### Design recommendations
 
 - Define a scale-unit when the scale-limits of a single deployment are likely to be exceeded.
@@ -84,7 +82,7 @@ The required performance of the solution under load is a critical decision facto
   As the load increases, extra stamps can be deployed within the same or different Azure regions, in order to horizontally scale the solution.
 
 > [!NOTE]
-> When deploying within an Azure landing zone, ensure the landing zone subscription is dedicated to the application, in order to provide a clear management boundary and to avoid potential the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
+> When deploying within an Azure landing zone, ensure the landing zone subscription is dedicated to the application, in order to provide a clear management boundary and to avoid potential [noisy neighbor issues](/azure/architecture/antipatterns/noisy-neighbor).
 
 - For high-scale application scenarios with significant volumes of traffic, design the solution to scale across multiple Azure subscriptions, to ensure the inherit scale-limits within a single subscription don't constrain the scalability.
 
@@ -109,7 +107,7 @@ The required performance of the solution under load is a critical decision facto
 
 This image demonstrates how the single subscription reference deployment model can be expanded across multiple subscriptions, in an extreme scale scenario, to navigate subscription scale-limits.
 
-![Mission-Critical Subscription Scale Units](./images/alwayson-subscription-scale.gif "Mission-Critical Subscription Scale Units")
+![Mission-critical subscription scale units](./images/mission-critical-subscription-scale.gif "Mission-critical subscription scale units")
 
 ## Global distribution
 

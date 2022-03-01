@@ -15,7 +15,7 @@ ms.custom:
   - mission-critical
 ---
 
-# Cross-cutting concerns of a mission-critical workload
+# Cross-cutting concerns of mission-critical workloads
 
 There are several cross-cutting concerns that traverse the [key design areas](mission-critical-overview.md#what-are-the-key-design-areas). This article contextualizes these cross-cutting concerns for subsequent consideration within each design area.
 
