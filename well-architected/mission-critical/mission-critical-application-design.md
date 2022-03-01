@@ -253,6 +253,12 @@ The [Mission-Critical Online](https://github.com/azure/alwayson-foundational-onl
 
 ![Mission-Critical event driven architecture](./images/mission-critical-event-driven.png "Mission-Critical event-driven approach")
 
+### Example for event-driven approach
+
+The AlwaysOn reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker, while read operations are synchronous with the result directly returned to the caller.
+
+![AlwaysOn event driven architecture](./images/alwayson-event-driven.png "AlwaysOn event-driven approach")
+
 ## Application-level resiliency patterns and error handling
 
 A mission-critical application must be developed with resiliency in-mind. It is therefore critical that application code be designed and developed to be resilient, ensuring that the application can respond to failure, which is ultimately an unavoidable characteristic of highly distributed multi-tenant cloud environments like Azure.

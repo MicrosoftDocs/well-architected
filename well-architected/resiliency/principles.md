@@ -1,9 +1,9 @@
 ---
-title: Principles of the reliability pillar
-description: Understand the principles of the reliability pillar. Review application framework tips to make the application more reliable.
-author: v-aangie
+title: Reliability design principles
+description: Understand the design principles of the reliability pillar.
+author: v-stacywray
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 02/10/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -12,43 +12,74 @@ ms.custom:
   - overview
 ---
 
-# Principles of the reliability pillar
+# Reliability design principles
 
-Building a reliable application in the cloud is different from traditional application development. While historically you may have purchased levels of redundant higher-end hardware to minimize the chance of an entire application platform failing, in the cloud, we acknowledge up front that failures will happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component.
+Building a reliable application in the cloud is different from traditional application development. Historically, you may have purchased levels of redundant higher-end hardware to minimize the chance of an entire application platform failing.
 
-## Application framework
+In the cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component.
 
-These critical principles are used as lenses to assess the reliability of an application deployed on Azure. They provide a framework for the application assessment questions that follow.
+To assess your workload using the tenets found in the Azure Well-Architected Framework, reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
-To assess your workload using the tenets found in the Microsoft Azure Well-Architected Framework, see the [Microsoft Azure Well-Architected Review](/assessments/).
+The following design principles provide:
 
-- **Define and test availability and recovery targets:** Availability targets, such as Service Level Agreements (SLA) and Service Level Objectives (SLO), and Recovery targets, such as Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO), should be defined and tested to ensure application reliability aligns with business requirements.
+- Context for questions
+- Why a certain aspect is important
+- How an aspect is applicable to Reliability
 
-- **Design applications to be resistant to failures:** Resilient application architectures should be designed to recover gracefully from failures in alignment with defined reliability targets.
+These critical design principles are used as lenses to assess the Reliability of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
 
-- **Ensure required capacity and services are available in targeted regions:** Azure services and capacity can vary by region, so it's important to understand if targeted regions offer required capabilities.
+## Design for business requirements
 
-- **Plan for disaster recovery:** Disaster recovery is the process of restoring application functionality in the wake of a catastrophic failure. It might be acceptable for some applications to be unavailable or partially available with reduced functionality for a period of time, while other applications may not be able to tolerate reduced functionality.
+Reliability is a subjective concept. For an application to be appropriately reliable, it must reflect the business requirements surrounding it.
 
-- **Design the application platform to meet reliability requirements:** Designing application platform resiliency and availability is critical to ensuring overall application reliability.
+For example, a mission-critical application with a `99.999%` service level agreement (SLA) requires a higher level of reliability than another application with an SLA of `95%`.
 
-- **Design the data platform to meet reliability requirements:** Designing data platform resiliency and availability is critical to ensuring overall application reliability.
+Cost implications are inevitable when introducing greater reliability and high availability. This trade-off should be carefully considered.
 
-- **Recover from errors:** Resilient applications should be able to automatically recover from errors by leveraging modern cloud application code patterns.
+## Design for failure
 
-- **Ensure networking and connectivity meets reliability requirements:** Identifying and mitigating potential network bottle-necks or points-of-failure supports a reliable and scalable foundation over which resilient application components can communicate.
+Failure is impossible to avoid in a highly distributed and multi-tenant environment like Azure.
 
-- **Allow for reliability in scalability and performance:** Resilient applications should be able to automatically scale in response to changing load to maintain application availability and meet performance requirements.
+By anticipating failures, from individual components to entire Azure regions, you can develop a solution in a resilient way to increase reliability.
 
-- **Address security-related risks:** Identifying and addressing security-related risks helps to minimize application downtime and data loss caused by unexpected security exposures.
+## Observe application health
 
-- **Define, automate, and test operational processes:** Operational processes for application deployment, such as roll-forward and roll-back, should be defined, sufficiently automated, and tested to help ensure alignment with reliability targets.
+Before mitigating issues that impact application reliability, you must first detect these issues.
 
-- **Test for fault tolerance:** Application workloads should be tested to validate reliability against defined reliability targets.
+By monitoring the operation of an application relative to a healthy state, you can detect and predict reliability issues.
 
-- **Monitor and measure application health:** Monitoring and measuring application availability is vital to qualifying overall application health and progress towards defined reliability targets.
+Monitoring allows you to take swift and remedial action.
 
-## Next step
+## Drive automation
+
+One of the leading causes of application downtime is human error due to the deployment of insufficiently tested software or through misconfiguration.
+
+To minimize the possibility and consequence of human errors, it's vital to strive for automation in all aspects of a cloud solution.
+
+Automation improves:
+
+- Reliability
+- Automated testing
+- Deployment
+- Management
+
+## Design for self-healing
+
+*Self-healing* describes the ability of a system to deal with failures automatically. Handling failures happens through pre-defined remediation protocols. These protocols connect to failure modes within the solution.
+
+It's an advanced concept that requires a high level of system maturity with monitoring and automation.
+
+From inception, self-healing should be an aspiration to maximize reliability.
+
+## Design for scale-out
+
+*Scale-out* is a concept that focuses on the ability of a system to respond to demand through horizontal growth. As traffic grows, *more* resource units are added in parallel, instead of increasing the size of the existing resources.
+
+Through scale units, a system can handle expected and unexpected traffic increases, essential to overall reliability.
+
+Scale units further reduce the effects of a single resource failure.
+
+### Next step
 
 > [!div class="nextstepaction"]
 > [Design](./design-checklist.md)
