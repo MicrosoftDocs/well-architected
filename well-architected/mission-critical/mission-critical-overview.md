@@ -56,10 +56,10 @@ Mission-critical guidance within this series is composed of architectural consid
 
 - **Application design**&mdash;Cloud application design patterns that allow for scaling, and error handling. 
 - **Application platform**&mdash;Hosting environment choices, application dependencies, frameworks, and libraries.
-- **Data platform**&mdash;Choices in data store technologies by evaluating the volume, velocity, variety, and veracity characteristics.
+- **Data platform**&mdash;Choices in data store technologies, informed by evaluating required volume, velocity, variety, and veracity characteristics.
 - **Networking and Connectivity**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
-- **Health Modeling**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.
-- **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation considerations. Incorporating testing scenarios, such as unit, build, static, security, integration, regression, UX, performance, capacity and failure injection (chaos).
+- **Health Modeling**&mdash;Observability considerations through customer impact analysis correlated monitoring to determine overall application health.
+- **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation considerations, with incorporated testing scenarios, such as synchronized load testing and failure injection (chaos) testing.
 - **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
 - **Operational procedures**&mdash; Processes related to deployment, key management, patching and updates.
 
