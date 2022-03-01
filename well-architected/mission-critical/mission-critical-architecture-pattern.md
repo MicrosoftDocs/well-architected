@@ -64,7 +64,7 @@ This mission-critical workload series provides prescriptive architectural guidan
 
 The mission-critical [reference implementations](mission-critical-overview.md#illustrative-examples) can integrate seamlessly within an Azure landing zone, and is deployable within both the *Online* or *Corp. Connected* Landing Zone formats as demonstrated within the image below.
 
-![Mission-critical workload and Landing Zone integration](./images/alwayson-landing-zones.gif "Mission-critical workload and Landing Zone integration")
+![Mission-critical workload and Landing Zone integration](./images/mission-critical-landing-zones.gif "Mission-critical workload and Landing Zone integration")
 
 It is crucial to understand and identify in which connectivity scenario a mission-critical application requires since Azure landing zones support different workload agnostic landing zones archetypes separated into different Management Group scopes.
 
