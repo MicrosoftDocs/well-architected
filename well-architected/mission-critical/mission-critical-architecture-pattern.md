@@ -53,7 +53,11 @@ The image below represents a reference architecture recommended for mission-crit
 
 ![Mission-critical online reference architecture](./images/alwayson-architecture-foundational-online.png "Mission-critical online reference architecture")
 
+<<<<<<< Updated upstream
 >The [Mission-Critical Foundational Online](https://github.com/azure/alwayson-foundational-online) and [Mission-Critical Foundational Connected](https://github.com/azure/alwayson-foundational-connected) provide solution orientated showcases for this design methodology, demonstrating how this architecture pattern can be implemented alongside the operational wrappers required to maximize reliability and operational effectiveness.
+=======
+The [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online) and [Mission-Critical Connected](https://github.com/azure/alwayson-foundational-connected) provide solution orientated showcases for this design methodology, demonstrating how this architecture pattern can be implemented alongside the operational wrappers required to maximize reliability and operational effectiveness.
+>>>>>>> Stashed changes
 
 Use these reference implementations to construct a sandbox application environment for validating key design decisions.
 
