@@ -95,7 +95,7 @@ This section explores the key considerations and recommendations for application
   - Use of a constant synthetic user load generation is required to provide a realistic test case for changes on one of the pre-production environments.
     - The [Mission Critical Foundational Online](https://github.com/Azure/AlwaysOn-Foundational-Online) reference implementation provides an example [user load generator](https://github.com/Azure/AlwaysOn-Foundational-Online/src/testing/userload-generator/README.md).
 
-![Mission Critical Azure Subscription Organization](./images/alwayson-subscription-organization.png)
+![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png "Mission Critical Azure Subscription Organization")
 
 ## Ephemeral blue/green deployments
 
