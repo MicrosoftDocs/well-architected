@@ -18,7 +18,7 @@ ms.custom:
 The mission-critical design methodology is underpinned by five key design principles which serve as a compass for subsequent design decisions across the critical design areas. We highly recommend that you familiarize yourselves with these principles to better understand their impact and the trade-offs associated with non-adherence.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
@@ -39,7 +39,10 @@ These mission-critical design principles resonate and extend the quality pillars
 |[**Drive automation**](/azure/architecture/framework/resiliency/principles#drive-automation)|One of the leading causes of application downtime is human error, whether that is due to the deployment of insufficiently tested software or misconfiguration. To minimize the possibility and impact of human errors, it's vital to strive for automation in all aspects of a cloud solution to improve reliability; automated testing, deployment, and management.|
 |[**Design for self-healing**](/azure/architecture/framework/resiliency/principles#design-for-self-healing)|Self healing describes a system's ability to deal with failures automatically through pre-defined remediation protocols connected to failure modes within the solution. It's an advanced concept that requires a high level of system maturity with monitoring and automation, but should be an aspiration from inception to maximize reliability.|
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 ## Performance Efficiency
 
 **_Sustainable performance and scalability_** - Design for scalability across the end-to-end solution without performance bottlenecks.
@@ -76,7 +79,6 @@ These mission-critical design principles resonate and extend the quality pillars
 |[**Protect against code level vulnerabilities**](/azure/architecture/framework/devops/principles#rehearse-recovery-and-practice-failure)|Identify and mitigate code-level vulnerabilities, such as cross-site scripting or SQL injection, and incorporate security patching into operational lifecycles for all parts of the codebase, including dependencies.|
 |[**Automate and use least privilege**](/azure/architecture/framework/devops/principles#embrace-continuous-operational-improvement)|Drive automation to minimize the need for human interaction and implement least privilege across both the application and control plane to protect against data exfiltration and malicious actor scenarios.|
 |[**Classify and encrypt data**](/azure/architecture/framework/security/security-principles#classify-and-encrypt-data)|Classify data according to risk and apply industry standard encryption at rest and in transit, ensuring keys and certificates are stored securely and managed properly.|
-
 
 ## Cost Optimization
 

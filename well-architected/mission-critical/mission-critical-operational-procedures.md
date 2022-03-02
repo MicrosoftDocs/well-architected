@@ -20,7 +20,11 @@ The mission-critical design methodology leans heavily on the principles *automat
  This design area explores how the adoption of DevOps and related deployment methods is used to drive effective and consistent operational procedures.
 
 > [!IMPORTANT]
+<<<<<<< HEAD
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+=======
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >

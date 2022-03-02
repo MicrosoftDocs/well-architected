@@ -31,7 +31,11 @@ Deployment and testing shouldn't be constrained to the delivery of planned appli
 This design area focuses on how to eradicate downtime and maintain application health for deployment operations, providing key considerations and recommendations intended to inform the design of optimal CI/CD pipelines for a mission-critical application.
 
 > [!IMPORTANT]
+<<<<<<< HEAD
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+=======
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
@@ -95,7 +99,11 @@ This section explores the key considerations and recommendations for application
   - Use of a constant synthetic user load generation is required to provide a realistic test case for changes on one of the pre-production environments.
     - The [Mission Critical Foundational Online](https://github.com/Azure/AlwaysOn-Foundational-Online) reference implementation provides an example [user load generator](https://github.com/Azure/AlwaysOn-Foundational-Online/src/testing/userload-generator/README.md).
 
+<<<<<<< HEAD
 ![Mission Critical Azure Subscription Organization](./images/alwayson-subscription-organization.png)
+=======
+![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png "Mission Critical Azure Subscription Organization")
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 
 ## Ephemeral blue/green deployments
 
@@ -158,7 +166,11 @@ Achieving zero-downtime deployments is a fundamental goal of a mission-critical 
 
 The [Mission-Critical Foundational Online](https://github.com/Azure/AlwaysOn-Foundational-Online) and [Azure Mission-Critical Foundational Connected](https://github.com/Azure/AlwaysOn-Foundational-Connected) reference implementations serve as practical examples for these concepts and recommendations, to establish an optimized zero-downtime deployment approach as represented in the illustration below.
 
+<<<<<<< HEAD
 ![Zero-Downtime DevOps Pipeline Reference](./images/alwayson-zero-downtime-pipeline.png "[Zero-Downtime DevOps Pipeline Reference")
+=======
+![Zero-Downtime DevOps Pipeline Reference](./images/mission-critical-zero-downtime-pipeline.png "[Zero-Downtime DevOps Pipeline Reference")
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 
 ## Infrastructure-as-Code deployments
 

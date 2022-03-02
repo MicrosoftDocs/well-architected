@@ -157,7 +157,10 @@ The considerations and recommendations within this section will therefore focus 
 
 - AKS has certain [scale limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-kubernetes-service-limits), such as the number of nodes and number of node pools per cluster, as well as the number of clusters per subscription.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 **Azure App Service**
 
 - SNAT port exhaustion is a common failure scenario with Azure App Services, which can be predicted through load testing while monitoring ports using Azure Diagnostics.
@@ -266,11 +269,10 @@ The considerations and recommendations within this section will therefore focus 
     - Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, such as root privileges, and disallow pods which don't conform to policy.
     - Policy assignments should be enforced at a subscription scope or higher to drive consistency across development teams.
 
-
   > [!NOTE]
   > 
-  > When deploying into an Azure landing zone, be aware that the required Azure Policy to ensure the consistent reliability and security should be provided by the landing zone implementation.
-  > The Mission-Critical reference implementations provide a suite of baseline policies to drive recommended reliability and security configurations.
+  > When deploying into an Azure landing zone, be aware that the required Azure Policy to ensure consistent reliability and security should be provided by the landing zone implementation.
+  > The mission-critical [reference implementations](mission-critical-overview.md#illustrative-examples) provide a suite of baseline policies to drive recommended reliability and security configurations.
 
 **Azure App Service**
 
@@ -484,4 +486,7 @@ This section will therefore explore key decision factors when selecting an appro
 Review the considerations for the data platform.
 > [!div class="nextstepaction"]
 > [Data platform](./mission-critical-data-platform.md)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48

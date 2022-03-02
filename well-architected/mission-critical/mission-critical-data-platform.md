@@ -23,7 +23,11 @@ The selection of an effective application data platform is a further crucial dec
 This design area expands on [application design](mission-critical-application-design.md), providing key considerations and recommendations to inform the selection of an optimal data platform.
 
 > [!IMPORTANT]
+<<<<<<< HEAD
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+=======
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
@@ -241,7 +245,11 @@ The 'Four Vs of Big Data' provide a framework to better understand requisite cha
 - When applying encryption, it's strongly recommended to use service-managed encryption keys as a way of reducing management complexity.
   - If there's a specific security requirement for customer-managed keys, ensure appropriate key management procedures are applied to ensure availability, backup, and rotation of all considered keys.
 
+<<<<<<< HEAD
 [!NOTE]
+=======
+> [!NOTE]
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 > When integrating with a broader organizational implementation, it's critical that an application centric approach be applied for the provisioning and operation of data platform components in an application design.
 > More specifically, to maximize reliability it's critical that individual data platform components appropriately respond to application health through operational actions which may include other application components. For example, in a scenario where additional data platform resources are needed, scaling the data platform along with other application components according to a capacity model will likely be required, potentially through the provision of additional scale units. This approach will ultimately be constrained if there's a hard dependency of a centralized operations team to address issues related to the data platform in isolation.
 > Ultimately, the use of centralized data services (that is Central IT DBaaS) introduces operational bottlenecks that significantly hinder agility through a largely uncontextualized management experience, and should be avoided in a mission-critical or business-critical context.
@@ -351,8 +359,11 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - Cosmos DB supports authentication via either an Azure Active Directory identity or Cosmos DB keys and resource tokens, which provide overlapping capabilities.
 
+<<<<<<< HEAD
 ![Cosmos DB Access Capabilities](/azure/cosmos-db/media/how-to-restrict-user-data/operations.png "Cosmos DB Access Capabilities")
 
+=======
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 - It's possible to disable resource management operations using keys or resource tokens to limit keys and resource tokens to data operations only, allowing for fine-grained resource access control using Azure Active Directory Role-Based Access Control (RBAC).
   - Restricting control plane access via keys or resource tokens will disable control plane operations for clients using Cosmos DB SDKs and should therefore be thoroughly [evaluated and tested](/azure/cosmos-db/role-based-access-control#check-list-before-enabling).
   - The `disableKeyBasedMetadataWriteAccess` setting can be configured via [ARM Template](/azure/cosmos-db/role-based-access-control#set-via-arm-template) IaC definitions, or via a [Built-In Azure Policy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4750c32b-89c0-46af-bfcb-2e4541a818d5).

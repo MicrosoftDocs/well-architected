@@ -35,7 +35,7 @@ We recommend that you use the provided design guidance to navigate the key desig
 
 |Design area|Summary|
 |---|---|
-|[Application design](mission-critical-application-design.md)|Learn about the importance of a scale-unit architecture in the context of building a highly reliable application. Also explores the cloud application design patterns to ensure aspirations are fully achieved.|
+|[Application design](mission-critical-application-design.md)|Learn about the importance of a scale-unit architecture in the context of building a highly reliable application. Also explores the cloud application design patterns to ensure reliability aspirations are fully achieved.|
 |[Application platform](mission-critical-application-platform.md)| Decision factors and recommendations related to the selection, design, and configuration of an appropriate application hosting platform.|
 |[Data platform](mission-critical-data-platform.md)|Make decisions by using key characteristics of a data platform&mdash;volume, velocity, variety, veracity. |
 |[Networking and connectivity](mission-critical-networking-connectivity.md)|Network topology concepts at an application level, considering requisite connectivity and redundant traffic management. It highlights critical considerations and recommendations intended to inform the design of a secure and scalable global network topology for a mission-critical application.|
@@ -48,6 +48,7 @@ We recommend that you use the provided design guidance to navigate the key desig
 
 A mission-critical workload architecture is defined by the various design decisions required to ensure both functional and non-functional business-requirements are fully satisfied. The target architecture is therefore greatly influenced by the relevant business requirements, and as a result may vary between different application contexts.
 
+<<<<<<< HEAD
 
 The image below represents a reference architecture recommended for mission-critical workloads on Azure. It leverages a reference set of business requirements to achieve an optimized architecture for different target reliability tiers.
 
@@ -58,6 +59,13 @@ The image below represents a reference architecture recommended for mission-crit
 =======
 The [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online) and [Mission-Critical Connected](https://github.com/azure/alwayson-foundational-connected) provide solution orientated showcases for this design methodology, demonstrating how this architecture pattern can be implemented alongside the operational wrappers required to maximize reliability and operational effectiveness.
 >>>>>>> Stashed changes
+=======
+The image below represents a reference architecture recommended for mission-critical workloads on Azure. It leverages a reference set of business requirements to achieve an optimized architecture for different target reliability tiers.
+
+![Mission-critical online reference architecture](./images/mission-critical-architecture-foundational-online.png "Mission-critical online reference architecture")
+
+>The [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online) and [Mission-Critical Connected](https://github.com/azure/alwayson-foundational-connected) provide solution orientated showcases for this design methodology, demonstrating how this architecture pattern can be implemented alongside the operational wrappers required to maximize reliability and operational effectiveness.
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 
 Use these reference implementations to construct a sandbox application environment for validating key design decisions.
 
@@ -69,9 +77,15 @@ This mission-critical workload series provides prescriptive architectural guidan
 
 The mission-critical [reference implementations](mission-critical-overview.md#illustrative-examples) can integrate seamlessly within an Azure landing zone, and is deployable within both the *Online* or *Corp. Connected* Landing Zone formats as demonstrated within the image below.
 
+<<<<<<< HEAD
 ![Mission-critical workload and Landing Zone integration](./images/alwayson-landing-zones.gif "Mission-critical workload and Landing Zone integration")
 
 It is crucial to understand and identify in which connectivity scenario a mission-critical application requires since Azure landing zones support different landing zones archetypes separated into different Management Group scopes.
+=======
+![Mission-critical workload and Landing Zone integration](./images/mission-critical-landing-zones.gif "Mission-critical workload and Landing Zone integration")
+
+It is crucial to understand and identify in which connectivity scenario a mission-critical application requires since Azure landing zones support different workload agnostic landing zones archetypes separated into different Management Group scopes.
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 
 - In the context of an *Online* Landing Zone archetype, a mission-critical workload operates as a completely independent solution, without any direct corporate network connectivity to the rest of the Azure landing zone architecture. The application will, however, be further safeguarded through the [*policy-driven management*](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) approach which is foundational to Azure landing zones, and will automatically integrate with centralized platform logging through policy.
 
@@ -88,4 +102,8 @@ It is crucial to understand and identify in which connectivity scenario a missio
 Review the best practices for architecting mission-critical application scenarios.
 
 > [!div class="nextstepaction"]
+<<<<<<< HEAD
 > [Application Design](./mission-critical-application-design.md)
+=======
+> [Application design](./mission-critical-application-design.md)
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48

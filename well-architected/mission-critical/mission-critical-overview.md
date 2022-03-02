@@ -48,20 +48,22 @@ While the primary focus of mission-critical workloads is [Reliability](/azure/ar
 
 ## What are the key design areas?
 
-Mission-critical guidance within this series is composed of architectural considerations and recommendations orientated around these key design areas.  The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. The focus is ultimately on building a highly reliable application.
+Mission-critical guidance within this series is composed of architectural considerations and recommendations orientated around these key design areas.
 
 ![Mission-critical design areas](./images/mission-critical-design-areas.png "Mission-critical design areas")
 
+> The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. The focus is ultimately on building a highly reliable application.
+
 - **Application design**&mdash;Cloud application design patterns that allow for scaling, and error handling. 
 - **Application platform**&mdash;Hosting environment choices, application dependencies, frameworks, and libraries.
-- **Data platform**&mdash;Choices in data store technologies by evaluating the volume, velocity, variety, and veracity characteristics.
+- **Data platform**&mdash;Choices in data store technologies, informed by evaluating required volume, velocity, variety, and veracity characteristics.
 - **Networking and Connectivity**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
-- **Health Modeling**&mdash;Observability considerations through raw monitoring logs and metrics to determine the overall health.
-- **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation considerations. Incorporating testing scenarios, such as unit, build, static, security, integration, regression, UX, performance, capacity and failure injection (chaos).
+- **Health Modeling**&mdash;Observability considerations through customer impact analysis correlated monitoring to determine overall application health.
+- **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation considerations, with incorporated testing scenarios, such as synchronized load testing and failure injection (chaos) testing.
 - **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
 - **Operational procedures**&mdash; Processes related to deployment, key management, patching and updates.
 
-Readers are advised to familiarize themselves with those critical design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions. For example, to define a target architecture it's critical to determine how best to monitor application health across key components. In this instance, the reader should review the Health Modeling design area, using the outlined recommendations to help drive decisions.
+Readers are advised to familiarize themselves with these design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions. For example, to define a target architecture it's critical to determine how best to monitor application health across key components. In this instance, the reader should review the health modeling design area, using the outlined recommendations to help drive decisions.
 
 ## Illustrative examples
 
@@ -70,7 +72,7 @@ The guidance provided within this series is based on a solution-orientated appro
 > [!IMPORTANT]
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson).
 
-- [Mission-Critical Foundational Online](https://github.com/azure/alwayson-foundational-online)
+- [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online)
 
   Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure.
   

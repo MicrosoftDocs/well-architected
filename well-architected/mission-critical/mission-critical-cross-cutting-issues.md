@@ -15,12 +15,12 @@ ms.custom:
   - mission-critical
 ---
 
-# Cross-cutting concerns of a mission-critical workload
+# Cross-cutting concerns of mission-critical workloads
 
 There are several cross-cutting concerns that traverse the [key design areas](mission-critical-overview.md#what-are-the-key-design-areas). This article contextualizes these cross-cutting concerns for subsequent consideration within each design area.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you are not familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you are not familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
@@ -70,4 +70,4 @@ Refer to [Azure updates](https://azure.microsoft.com/updates/) for the latest in
 Explore the design areas that provide critical considerations and recommendations for building a mission-critical workload.
 
 > [!div class="nextstepaction"]
-> [Design areas](mission-critical-architecture-pattern.md)
+> [Architecture pattern](mission-critical-architecture-pattern.md)

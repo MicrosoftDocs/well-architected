@@ -13,14 +13,14 @@ ms.custom:
   - mission-critical
 ---
 
-# Application design of mission-critical workloads on Azure
+# Application design of mission-critical workloads
 
 Both functional application requirements and non-functional requirements are critical to inform key design decisions for a mission-critical application design. However, these requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved. 
 
 This design area explores the important application design patterns for building a highly reliable application on Azure.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
@@ -28,7 +28,7 @@ This design area explores the important application design patterns for building
 
 ## Scale-unit architecture
 
-Architecturally, it's critical to optimize end-to-end scalability through the logical compartmentalization of operational functions at all levels of the application stack. For achieving a highly available application design, all functional aspects of the solution must be capable of scaling to meet changes in demand.
+Architecturally, it is critical to optimize end-to-end scalability through the logical compartmentalization of operational functions at all levels of the application stack. For achieving a highly available application design, all functional aspects of the solution must be capable of scaling to meet changes in demand.
 
 A _scale-unit_ is a logical unit or function that can be scaled independently. A unit can be code components, application hosting platforms, or even deployment stamps that encompass related components.
 
@@ -39,8 +39,7 @@ For example, the foundational reference implementation considers a user flow for
 
 This image shows the multiple scale-unit scopes that are considered by this reference implementation user flow. These scopes range from microservice pods to cluster nodes and regional deployment stamps.
 
-![Mission-Critical scale units](./images/alwayson-scale-units.png)
-
+![Mission-critical scale units](./images/mission-critical-scale-units.png)
 
 Using a scale-unit architecture is recommended to optimize the end-to-end scalability of a mission-critical application so that all levels of the solution can appropriately scale. The relationship between related scale-units, and the components inside a single scale-unit, should be defined according to a capacity model, taking into consideration non-functional requirements around performance.
 
@@ -70,7 +69,10 @@ The expected growth patterns for both traffic and data volume inform the design,
 
 The required performance of the solution under load is a critical decision factor when modeling required capacity.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 ### Design recommendations
 
 - Define a scale-unit when the scale-limits of a single deployment are likely to be exceeded.
@@ -159,9 +161,9 @@ The connectivity method by which users or systems access the application, whethe
 - Different Azure regions have slightly different cost profiles for some services. There may be further cost implications depending on the precise deployment regions chosen.
 
 - Availability Zones have a latency perimeter of less than 2 milliseconds between availability zones.
-  - For workloads that are particularly 'chatty' across zones this latency can accumulate to form a non-trivial performance penalty, ands incurring bandwidth charges for inter-zone data transfer.
+  - For workloads that are particularly 'chatty' across zones this latency can accumulate to form a non-trivial performance penalty, as well as incurring bandwidth charges for inter-zone data transfer.
 
-  - An active-active deployment across Azure and other cloud providers can be considered to further mitigate reliance on global dependencies within a single cloud provider. A multi-cloud active-active deployment strategy introduces a significant amount of complexity around CI/CD, given the significant difference in resource specifications and capabilities between cloud providers. This necessitates specialized deployment stamps for each cloud.  
+- An active-active deployment across Azure and other cloud providers can be considered to further mitigate reliance on global dependencies within a single cloud provider. A multi-cloud active-active deployment strategy introduces a significant amount of complexity around CI/CD, given the significant difference in resource specifications and capabilities between cloud providers. This necessitates specialized deployment stamps for each cloud.  
 
 ### Design recommendations
 
@@ -190,7 +192,7 @@ The connectivity method by which users or systems access the application, whethe
   
 - It's not uncommon that data compliance requirements will constrain the number of available regions and potentially force design compromises. In such cases, additional investment in operational wrappers is highly recommended to predict, detect, and respond to failures.
   - If only a single Azure region is suitable, multiple deployment stamps ('regional scale-units') should be deployed within the selected region to mitigate some risk, using Availability Zones to provide datacenter-level fault tolerance. However, such a significant compromise in geographical distribution will drastically constrain the attainable composite SLA and overall reliability.
-  - If suitable Azure regions don't all offer requisite capabilities, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability.
+  - If suitable Azure regions do not all offer requisite capabilities, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability.
     - For example, when constrained to a geography with two regions where only one region supports Availability Zones (3 + 1 datacenter model), create a secondary deployment pattern using fault domain isolation to allow for both regions to be deployed in an active configuration, ensuring the primary region houses multiple deployment stamps.
 
 - Align current service availability with product roadmaps when selecting deployment regions; not all services may be available in every region on day 1.
@@ -215,13 +217,13 @@ Evaluate these key characteristics of loose coupling for application design:
 - Transactional integrity is harder to maintain because data creation and persistence happens within separate services.
 - End-to-end tracing requires more complex orchestration.
 
-When implementing loose coupling, **event-driven architecture** and **asynchronous message processing** are key design patterns for interactions which don't require an immediate response. Events indicate a change in state within entities and are generated by event *producers*. Producers don't know anything about how events should be processed or handled. That is the responsibility of *consumers*. When using asynchronous event-driven communication, a producer publishes an event when something happens within its domain, which another component needs to be aware of, such as a price change in a product catalog, which consumers will subscribe to receive so they can process the events asynchronously.
+When implementing loose coupling, **event-driven architecture** and **asynchronous message processing** are key design patterns for interactions which don't require an immediate response. Events indicate a change in state within entities and are generated by event *producers*. Producers don't know anything about how events should be processed or handled. That is the responsibility of *consumers*. When using asynchronous event-driven communication, a producer publishes an event when something happens within its domain, which another component needs to be aware of. An example would be a price change in a product catalog, which consumers will subscribe to receive so they can process the event asynchronously.
 
 > [!TIP]
-> Refer to the [Event-driven architecture](/azure/architecture/guide/architecture-styles/event-driven) and [asynchronous processing](/azure/architecture/patterns/async-request-reply) patterns for further details.
+> Refer to the [event-driven architecture](/azure/architecture/guide/architecture-styles/event-driven) and [asynchronous processing](/azure/architecture/patterns/async-request-reply) patterns for further details.
 
-![Asynchronous Event-Driven Communication](./images/alwayson-asynchronous-communication.png)
-*Image source: [Asynchronous Message-Based Communication](/dotnet/architecture/microservices/architect-microservice-container-applications/asynchronous-message-based-communication)*
+![Asynchronous event-driven communication](./images/mission-critical-asynchronous-communication.png)
+*Image source: [asynchronous message-based communication](/dotnet/architecture/microservices/architect-microservice-container-applications/asynchronous-message-based-communication)*
 
 In reality, applications can combine loose and tight-coupling, depending on business objectives. 
 
@@ -250,21 +252,27 @@ In reality, applications can combine loose and tight-coupling, depending on busi
 
 - Separate the delivery of static and dynamic content to users and deliver relevant content from a cache to reduce load on backend services optimize performance for end-users.
 
-- Given the strong recommendation (Network and Connectivity design area) to use Azure Front Door for global routing and WAF purposes, it's recommended to prioritize the use of Azure Front Door caching capabilities unless gaps exist.
+- Given the strong recommendation ([Network and connectivity](./mission-critical-networking-connectivity.md) design area) to use Azure Front Door for global routing and Web Application Firewall (WAF) purposes, it's recommended to prioritize the use of Azure Front Door caching capabilities unless gaps exist.
 
 ### Example for event-driven approach
 
-The Mission-Critical reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker, while read operations are synchronous with the result directly returned to the caller.
+The [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online) reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker, while read operations are synchronous with the result directly returned to the caller.
 
-![Mission-Critical event driven architecture](./images/alwayson-event-driven.png "Mission-Critical event-driven approach")
+![Mission-Critical event driven architecture](./images/mission-critical-event-driven.png "Mission-Critical event-driven approach")
+
+### Example for event-driven approach
+
+The AlwaysOn reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker, while read operations are synchronous with the result directly returned to the caller.
+
+![AlwaysOn event driven architecture](./images/mission-critical-event-driven.png "AlwaysOn event-driven approach")
 
 ## Application-level resiliency patterns and error handling
 
-A mission-critical application architecture must be developed with resiliency in-mind. It's therefore critical that application code be designed and developed to be resilient, ensuring that the application can respond to failure, which is ultimately an unavoidable characteristic of highly distributed multi-tenant cloud environments like Azure.
+A mission-critical application must be developed with resiliency in-mind. It is therefore critical that application code be designed and developed to be resilient, ensuring that the application can respond to failure, which is ultimately an unavoidable characteristic of highly distributed multi-tenant cloud environments like Azure.
 
 More specifically, all application components should be designed from the ground-up to apply key resiliency patterns for self-healing, such as [retries with back-off](/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly) and [circuit breaker](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern). Such patterns go great lengths to transparently handle transient faults such as network packet loss, or the temporary loss of a downstream dependency. So, the application code should address as many failure scenarios as possible in order to maximize service availability and reliability.
 
-When issues aren't transient in-nature and canbe fully mitigated within application logic, it becomes the role of the health model and operational wrappers to take corrective action. However, for this to happen effectively, it's essential that the application code incorporates proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis when required. More specifically, application code should be implemented to facilitate [Distributed Tracing](/dotnet/core/diagnostics/distributed-tracing-concepts), by providing the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
+When issues are not transient in-nature and cannot be fully mitigated within application logic, it becomes the role of the health model and operational wrappers to take corrective action. However, for this to happen effectively, it is essential that the application code incorporates proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis when required. More specifically, application code should be implemented to facilitate [distributed tracing](/dotnet/core/diagnostics/distributed-tracing-concepts), by providing the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
 
 Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tracing) can help significantly to query, correlate, and visualize application traces.
 
@@ -328,5 +336,4 @@ Review the considerations for the application platform.
 
 > [!div class="nextstepaction"]
 > [Application platform](./mission-critical-application-platform.md)
-
 
