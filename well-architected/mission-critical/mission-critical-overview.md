@@ -52,7 +52,7 @@ Mission-critical guidance within this series is composed of architectural consid
 
 ![Mission-critical design areas](./images/mission-critical-design-areas.png "Mission-critical design areas")
 
-> The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. The focus is ultimately on building a highly reliable application.
+The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. The focus is ultimately on building a highly reliable application.
 
 - **Application design**&mdash;Cloud application design patterns that allow for scaling, and error handling. 
 - **Application platform**&mdash;Hosting environment choices, application dependencies, frameworks, and libraries.
@@ -63,7 +63,7 @@ Mission-critical guidance within this series is composed of architectural consid
 - **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
 - **Operational procedures**&mdash; Processes related to deployment, key management, patching and updates.
 
-Readers are advised to familiarize themselves with these design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions. For example, to define a target architecture it's critical to determine how best to monitor application health across key components. In this instance, the reader should review the health modeling design area, using the outlined recommendations to help drive decisions.
+We recommend that readers familiarize themselves with these design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions. For example, to define a target architecture it's critical to determine how best to monitor application health across key components. In this instance, the reader should review the **health modeling** design area, using the outlined recommendations to help drive decisions.
 
 ## Illustrative examples
 
@@ -72,11 +72,11 @@ The guidance provided within this series is based on a solution-orientated appro
 > [!IMPORTANT]
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson).
 
-- [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online)
+- [Mission-Critical Foundational Online](https://github.com/azure/alwayson-foundational-online)
 
   Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure.
   
-  The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate.
+  _The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate._
 
 - [Mission-Critical Foundational Connected](https://github.com/azure/alwayson-foundational-connected) 
 

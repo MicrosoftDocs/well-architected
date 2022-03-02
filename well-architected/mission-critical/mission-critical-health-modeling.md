@@ -97,7 +97,7 @@ This is a simplified representation of a layered application health model for il
 When implementing a health model it's important to define the health of individual components through the aggregation and interpretation of key resource-level metrics. An example of how resource metrics can be used is the image below:
 
 <<<<<<< HEAD
-![Mission Critical Example Health Definitions](./images/alwayson-example-health-definitions.png "Mission Critical Example Health Definitions")
+![Mission Critical Example Health Definitions](./images/mission-critical-example-health-definitions.png "Mission Critical Example Health Definitions")
 =======
 ![Mission Critical Example Health Definitions](./images/mission-critical-example-health-definitions.png "Mission Critical Example Health Definitions")
 >>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
@@ -147,7 +147,7 @@ These aggregated scores can subsequently be represented as a dependency chart us
 This image shows an example layered health model from the [foundational-online](https://github.com/azure/alwayson-foundational-online) reference implementation, and demonstrates how a change in health state for a foundational component can have a cascading impact to user flows and overall application health (the example values correspond to the table in the previous image).
 
 <<<<<<< HEAD
-![Mission Critical Example Health Model Visualization](./images/alwayson-example-fault-states.png "Mission Critical Example Health Model Visualization")
+![Mission Critical Example Health Model Visualization](./images/mission-critical-example-fault-states.png "Mission Critical Example Health Model Visualization")
 =======
 ![Mission Critical Example Health Model Visualization](./images/mission-critical-example-fault-states.png "Mission Critical Example Health Model Visualization")
 >>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
@@ -159,7 +159,7 @@ Many operational datasets must be gathered from all system components to accurat
 A unified data sink is required to ensure all operational data is swiftly stored and made available for correlated analysis to build a 'single pane' representation of application health. Azure provides several different operational technologies under the umbrella of [Azure Monitor](/azure/azure-monitor/overview#overview), and Azure Monitor Log Analytics serves as the core Azure-native data sink to store and analyze operational data.
 
 <<<<<<< HEAD
-![Mission Critical Health Data Collection](./images/alwayson-health-data-collection.png "Mission Critical Health Data Collection")
+![Mission Critical Health Data Collection](./images/mission-critical-health-data-collection.png "Mission Critical Health Data Collection")
 =======
 ![Mission Critical Health Data Collection](./images/mission-critical-health-data-collection.png "Mission Critical Health Data Collection")
 >>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
@@ -394,7 +394,7 @@ Machine learning models can be applied to correlate and prioritize operational d
 More specifically, an AIOps methodology can be applied to critical insights about the behavior of the system, users, and DevOps processes. These insights can include identifying a problem happening now (*detect*), quantifying why the problem is happening (*diagnose*), or signaling what will happen in the future (*predict*). Such insights can be used to drive actions that adjust and optimize the application to mitigate active or potential issues, using key business metrics, system quality metrics, and DevOps productivity metrics, to prioritize according to business impact. Conducted actions can themselves be infused into the system through a feedback loop that further trains the underlying model to drive additional efficiencies.
 
 <<<<<<< HEAD
-![Mission Critical AIOps Methodologies](./images/alwayson-aiops-methodology.png "Mission Critical AIOps Methodologies")
+![Mission Critical AIOps Methodologies](./images/mission-critical-aiops-methodology.png "Mission Critical AIOps Methodologies")
 =======
 ![Mission-critical AIOps methodologies](./images/mission-critical-aiops-methodology.png "Mission-critical AIOps methodologies")
 >>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48

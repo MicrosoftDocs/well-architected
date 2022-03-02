@@ -76,7 +76,7 @@ There are two foundational [reference implementations](mission-critical-overview
 
 ## 3&mdash;Evaluate the design areas using the design principles
 
-At the core of this methodology lies a critical design path comprised of foundational [design principles](mission-critical-design-principles.md) and fundamental [design area](mission-critical-architecture-pattern.md) with heavily interrelated and dependent design decisions.
+At the core of this methodology lies a critical design path comprised of foundational **[design principles](mission-critical-design-principles.md)** and fundamental **[design area](mission-critical-architecture-pattern.md)** with heavily interrelated and dependent design decisions.
 
 The impact of decisions made within each design area will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of encompassed decisions, which may produce trade-offs within related design areas. 
 
@@ -84,7 +84,7 @@ For example, to define a target architecture it's critical to determine how best
 
 ## 4&mdash;Deploy a sandbox application environment
 
-In parallel to design activities, it's highly recommended that a sandbox application environment be established using the Azure Mission-Critical reference implementations.
+In parallel to design activities, it's highly recommended that a sandbox application environment be established using the Mission-Critical reference implementations.
 
 This provides hands-on opportunities to validate design decisions by replicating the target architecture, allowing for design uncertainty to be swiftly assessed. If applied correctly with representative requirement coverage, most problematic issues likely to hinder progress can be uncovered and subsequently addressed.
 

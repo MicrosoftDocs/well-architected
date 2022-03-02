@@ -69,10 +69,6 @@ The expected growth patterns for both traffic and data volume inform the design,
 
 The required performance of the solution under load is a critical decision factor when modeling required capacity.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 ### Design recommendations
 
 - Define a scale-unit when the scale-limits of a single deployment are likely to be exceeded.
@@ -107,11 +103,11 @@ The required performance of the solution under load is a critical decision facto
 
 - Measure the time it takes to perform scale-out and scale-in operations, in order to ensure that the natural variations in traffic don't create an unacceptable level of service degradation.   - To drive continuous improvement, track the scale operation durations as an operational metric.
 
-### Example for subscription scale-unit approach
+### Example - Subscription scale-unit approach
 
 This image demonstrates how the single subscription reference deployment model can be expanded across multiple subscriptions, in an extreme scale scenario, to navigate subscription scale-limits.
 
-![Mission-Critical Subscription Scale Units](./images/alwayson-subscription-scale.gif "Mission-Critical Subscription Scale Units")
+![Mission-Critical Subscription Scale Units](./images/mission-critical-subscription-scale.gif "Mission-Critical Subscription Scale Units")
 
 ## Global distribution
 
@@ -131,7 +127,7 @@ It's important to note that some Azure services are deployable or configurable a
 
 This image shows the high-level active-active design. A user accesses the application through a central global entry point that then redirects requests to a suitable regional deployment stamp.
 
-![Mission-Critical Foundational-Online Architecture](./images/alwayson-high-level-architecture.png)
+![Mission-Critical Foundational-Online Architecture](./images/mission-critical-high-level-architecture.png)
 
 
 ### Design considerations
@@ -144,7 +140,7 @@ This image shows the high-level active-active design. A user accesses the applic
 
 - Like any cloud provider, Azure ultimately has a finite amount of resources and as a result there are situations that can lead to the unavailability of capacity in individual regions. In the event of a regional outage there will be a significant increase in demand for resources within the paired region as impacted customer workloads seek to recover within the paired region. In certain scenarios this may create a capacity challenge where supply temporarily does not satisfy demand.
 
-When designing a globally distributed architecture, start by asking these questions.
+When designing a globally distributed architecture, start with these questions.
 
 **Are there specific regions where data must reside or where resources have to be deployed?**
 
@@ -199,11 +195,11 @@ The connectivity method by which users or systems access the application, whethe
 
 - Use Availability Zones where possible to maximize availability within a single Azure region.
 
-### Example for global distribution approach
+### Example - Global distribution approach
 
 The Mission-Critical reference implementations consist of both global and regional resources, with regional resources deployed across multiple regions to provide geo-availability, in the case of regional outages and to bring services closer to end-users. These regional deployments also serve as scale-unit "stamps" to provide additional capacity and availability when required.
 
-![Mission-Critical Global Distribution](./images/alwayson-global-distribution.gif "Mission-Critical Global Distribution")
+![Mission-Critical Global Distribution](./images/mission-critical-global-distribution.gif "Mission-Critical Global Distribution")
 
 ## Loosely coupled event-driven architecture
 
@@ -254,7 +250,7 @@ In reality, applications can combine loose and tight-coupling, depending on busi
 
 - Given the strong recommendation ([Network and connectivity](./mission-critical-networking-connectivity.md) design area) to use Azure Front Door for global routing and Web Application Firewall (WAF) purposes, it's recommended to prioritize the use of Azure Front Door caching capabilities unless gaps exist.
 
-### Example for event-driven approach
+### Example - Event-driven approach
 
 The [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online) reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker, while read operations are synchronous with the result directly returned to the caller.
 

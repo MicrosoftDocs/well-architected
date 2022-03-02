@@ -100,7 +100,7 @@ This section explores the key considerations and recommendations for application
     - The [Mission Critical Foundational Online](https://github.com/Azure/AlwaysOn-Foundational-Online) reference implementation provides an example [user load generator](https://github.com/Azure/AlwaysOn-Foundational-Online/src/testing/userload-generator/README.md).
 
 <<<<<<< HEAD
-![Mission Critical Azure Subscription Organization](./images/alwayson-subscription-organization.png)
+![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png)
 =======
 ![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png "Mission Critical Azure Subscription Organization")
 >>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
@@ -167,7 +167,7 @@ Achieving zero-downtime deployments is a fundamental goal of a mission-critical 
 The [Mission-Critical Foundational Online](https://github.com/Azure/AlwaysOn-Foundational-Online) and [Azure Mission-Critical Foundational Connected](https://github.com/Azure/AlwaysOn-Foundational-Connected) reference implementations serve as practical examples for these concepts and recommendations, to establish an optimized zero-downtime deployment approach as represented in the illustration below.
 
 <<<<<<< HEAD
-![Zero-Downtime DevOps Pipeline Reference](./images/alwayson-zero-downtime-pipeline.png "[Zero-Downtime DevOps Pipeline Reference")
+![Zero-Downtime DevOps Pipeline Reference](./images/mission-critical-zero-downtime-pipeline.png "[Zero-Downtime DevOps Pipeline Reference")
 =======
 ![Zero-Downtime DevOps Pipeline Reference](./images/mission-critical-zero-downtime-pipeline.png "[Zero-Downtime DevOps Pipeline Reference")
 >>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
