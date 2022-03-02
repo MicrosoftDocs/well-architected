@@ -21,7 +21,7 @@ categories:
   - management-and-governance
 ---
 
-# Well-Architected Recommendation Process Guidance (Preview)
+# Well-Architected Recommendation Process Guidance
 
 ## Overview
 
