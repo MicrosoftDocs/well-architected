@@ -46,6 +46,8 @@ While the primary focus of mission-critical workloads is [Reliability](/azure/ar
 
 - [Performance Efficiency](/azure/architecture/framework/scalability/): availability is more than simple uptime, but rather a consistent level of application service and performance relative to a known healthy state.
 
+However, high reliability has cost tradeoffs, which may not be justifiable for every workload. It's recommended that design decisions are driven by business requirements.
+
 ## What are the key design areas?
 
 Mission-critical guidance within this series is composed of architectural considerations and recommendations orientated around these key design areas.

@@ -383,7 +383,7 @@ This section explores how internet egress can be achieved while ensuring securit
 - Use Azure Firewall where requirements to control and inspect outbound internet traffic exist.
   - Ensure Azure Firewall isn't used to inspect traffic between Azure services.
 
-> [!CAUTION]
+> [!NOTE]
 > When deploying within an Azure landing zone, consider using the foundational platform Azure Firewall resource (or equivalent NVA).
 > If a dependency is taken on a central platform resource for internet egress, then the reliability level of that resource and associated network path should be closely aligned with application requirements. Operational data from the resource should also be made available to the application in order to inform potential operational action in failure scenarios.
  

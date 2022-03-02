@@ -157,10 +157,6 @@ The considerations and recommendations within this section will therefore focus 
 
 - AKS has certain [scale limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-kubernetes-service-limits), such as the number of nodes and number of node pools per cluster, as well as the number of clusters per subscription.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
 **Azure App Service**
 
 - SNAT port exhaustion is a common failure scenario with Azure App Services, which can be predicted through load testing while monitoring ports using Azure Diagnostics.
@@ -330,9 +326,7 @@ Microsoft Azure provides several serverless compute platforms:
 
 In the context of a reliable application platform, serverless technologies provide a near-zero friction development and operational experience, which can be highly valuable for simple business process scenarios. However, this relative simplicity comes at the cost of flexibility in terms of scalability, reliability, and performance, which is likely unacceptable for most business-critical application scenarios.
 
-The design methodology therefore positions serverless technologies as an alternative platform for simple business process scenarios which don't share the same stringent business requirements as critical system flows.
-
-> The design considerations and recommendations within this section will focus on optimal Azure Function and Azure Logic Apps usage as alternative platforms for non-critical workflow scenarios.
+The design methodology positions serverless technologies as an alternative platform for simple business process scenarios which don't share the same stringent business requirements as critical system flows. The design considerations and recommendations within this section focus on optimal Azure Function and Azure Logic Apps usage as alternative platforms for non-critical workflow scenarios.
 
 ### Design considerations
 
@@ -486,7 +480,3 @@ This section will therefore explore key decision factors when selecting an appro
 Review the considerations for the data platform.
 > [!div class="nextstepaction"]
 > [Data platform](./mission-critical-data-platform.md)
-<<<<<<< HEAD
-
-=======
->>>>>>> 873613c72bd1ff73668a8fd7f24887badd014e48
