@@ -457,7 +457,7 @@ This section explores the optimal use of these capabilities, providing key consi
   - **Azure Container Networking Interface (CNI) networking:** The AKS cluster is integrated within an existing virtual network and its nodes, pods and services received IP addresses from the same virtual network the cluster nodes are attached to. This is relevant for various networking scenarios requiring direct connectivity from and to pods. Different node pools can be deployed into different subnets [in preview](https://github.com/Azure/AKS/issues/1338).
 
   > [!NOTE]
-  > Azure CNI requires more IP address space compared to Kubenet. Proper upfront planning and sizing of the network is required. For more information, refer to the [Azure CNI documentation](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking).
+  > Azure CNI requires more IP address space compared to Kubenet. Proper upfront planning and sizing of the network is required. For more information, refer to the [Azure CNI documentation](/azure/aks/concepts-network#azure-cni-advanced-networking).
 
 - By default, pods are non-isolated and accept traffic from any source and can send traffic to any destination; a pod can communicate with every other pod in a given Kubernetes cluster; Kubernetes doesn't ensure any network level isolation, and doesn't isolate namespaces at the cluster level.
 
@@ -466,14 +466,14 @@ This section explores the optimal use of these capabilities, providing key consi
   - AKS provides two ways to implement Network Policy, and both implementations use Linux IPTables to enforce specified policies.
     - _Azure Network Policies_
     - _Calico Network Policies_
-    - Both implementations use Linux IPTables to enforce specified policies. See [Differences between Azure and Calico policies and their capabilities](https://docs.microsoft.com/en-gb/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more details.
+    - Both implementations use Linux IPTables to enforce specified policies. See [Differences between Azure and Calico policies and their capabilities](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more details.
   - Network policies don't conflict since they're additive.
   - For a network flow between two pods to be allowed, both the egress policy on the source pod and the ingress policy on the destination pod need to allow the traffic.
   - The network policy feature can only be enabled at cluster instantiation time. It is not possible to enable network policy on an existing AKS cluster.
 
 - The delivery of network policies is consistent regardless of whether Azure or Calico is used.
 
-- Calico provides a [richer feature set](https://docs.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities), including support for windows-nodes and supports Azure CNI as well as Kubenet.
+- Calico provides a [richer feature set](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities), including support for windows-nodes and supports Azure CNI as well as Kubenet.
 
 - Calico introduces another party within the support ecosystem; either Calico community or paid support. First-party Azure support is provided for Azure network policies.
 
@@ -491,7 +491,7 @@ This section explores the optimal use of these capabilities, providing key consi
     - AKS supports the use of both Azure CNI and Kubenet. It is selected at deployment time.
     - The Azure CNI network plugin is a more robust and scalable network plugin, and is recommended for most scenarios.
     - Kubenet is a more lightweight network plugin, and is recommended for scenarios with a limited range of available IP addresses.
-    - See [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) for more details.
+    - See [Azure CNI](/azure/aks/concepts-network#azure-cni-advanced-networking) for more details.
 
 - Enable [Network Policy](/azure/aks/use-network-policies) for Azure Kubernetes Service at deployment time.
   
