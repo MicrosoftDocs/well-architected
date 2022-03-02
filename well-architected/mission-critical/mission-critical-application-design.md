@@ -252,7 +252,7 @@ In reality, applications can combine loose and tight-coupling, depending on busi
 
 ### Example - Event-driven approach
 
-The [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online) reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker, while read operations are synchronous with the result directly returned to the caller.
+The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-online) reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker, while read operations are synchronous with the result directly returned to the caller.
 
 ![Mission-Critical event driven architecture](./images/mission-critical-event-driven.png "Mission-Critical event-driven approach")
 

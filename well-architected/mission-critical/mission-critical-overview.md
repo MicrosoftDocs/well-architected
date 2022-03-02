@@ -74,13 +74,13 @@ The guidance provided within this series is based on a solution-orientated appro
 > [!IMPORTANT]
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson).
 
-- [Mission-Critical Foundational Online](https://github.com/azure/alwayson-foundational-online)
+- [Mission-Critical Foundational Online](https://github.com/Azure/Mission-Critical-online)
 
   Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure.
   
   _The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate._
 
-- [Mission-Critical Foundational Connected](https://github.com/azure/alwayson-foundational-connected) 
+- [Mission-Critical Foundational Connected](https://github.com/Azure/Mission-Critical-connected) 
 
   Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints.
   

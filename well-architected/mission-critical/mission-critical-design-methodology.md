@@ -66,8 +66,8 @@ The Mission-Critical open source project strives to illustrate the design recomm
 
 There are two foundational [reference implementations](mission-critical-overview.md#illustrative-examples):
 
-  - [Mission-Critical Foundational Online](https://github.com/azure/alwayson-foundational-online)
-  - [Mission-Critical Foundational Connected](https://github.com/azure/alwayson-foundational-connected) 
+  - [Mission-Critical Foundational Online](https://github.com/Azure/Mission-Critical-online)
+  - [Mission-Critical Foundational Connected](https://github.com/Azure/Mission-Critical-connected) 
 
 
 **Production-grade artifacts**: Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered.

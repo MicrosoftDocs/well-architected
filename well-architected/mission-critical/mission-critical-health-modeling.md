@@ -87,8 +87,8 @@ To build a health model, first define  application health in the context of key 
 ### Example - Layered health model
 
 This is a simplified representation of a layered application health model for illustrative purposes. A comprehensive and contextualized health model is provided in the Mission-Critical reference implementations:
-- [Mission-Critical Foundational Online](https://github.com/azure/alwayson-foundational-online)
-- [Mission-Critical Foundational Connected](https://github.com/azure/alwayson-foundational-connected)
+- [Mission-Critical Foundational Online](https://github.com/Azure/Mission-Critical-online)
+- [Mission-Critical Foundational Connected](https://github.com/Azure/Mission-Critical-connected)
 
 When implementing a health model it's important to define the health of individual components through the aggregation and interpretation of key resource-level metrics. An example of how resource metrics can be used is the image below:
 
@@ -136,7 +136,7 @@ ClusterHealthStatus
 
 These aggregated scores can subsequently be represented as a dependency chart using visualization tools such as Grafana to illustrate the health model. 
 
-This image shows an example layered health model from the [foundational-online](https://github.com/azure/alwayson-foundational-online) reference implementation, and demonstrates how a change in health state for a foundational component can have a cascading impact to user flows and overall application health (the example values correspond to the table in the previous image).
+This image shows an example layered health model from the [foundational-online](https://github.com/Azure/Mission-Critical-online) reference implementation, and demonstrates how a change in health state for a foundational component can have a cascading impact to user flows and overall application health (the example values correspond to the table in the previous image).
 
 ![Mission Critical Example Health Model Visualization](./images/mission-critical-example-fault-states.png "Mission Critical Example Health Model Visualization")
 
