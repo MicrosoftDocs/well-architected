@@ -1,5 +1,5 @@
 ---
-title: Architecture pattern for a mission-critical workload on Azure
+title: Design areas for a mission-critical workload on Azure
 description: The design areas represent the architecturally significant topics that must be discussed and designed for when defining a target architecture
 author: calcof
 ms.author: calcof
@@ -19,12 +19,12 @@ ms.custom:
   - alwayson
 ---
 
-# Architecture pattern for mission-critical workloads
+# Design areas for mission-critical workloads
 
 This section provides design considerations and recommendations across architecturally significant topics that are relevant for a mission-critical workload. The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you are not familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
@@ -50,9 +50,9 @@ A mission-critical workload architecture is defined by the various design decisi
 
 The image below represents a reference architecture recommended for mission-critical workloads on Azure. It leverages a reference set of business requirements to achieve an optimized architecture for different target reliability tiers.
 
-![Mission-critical online reference architecture](./images/alwayson-architecture-foundational-online.png "Mission-critical online reference architecture")
+![Mission-critical online reference architecture](./images/mission-critical-architecture-foundational-online.png "Mission-critical online reference architecture")
 
->The [Mission-Critical Online](https://github.com/azure/alwayson-foundational-online) and [Mission-Critical Connected](https://github.com/azure/alwayson-foundational-connected) provide solution orientated showcases for this design methodology, demonstrating how this architecture pattern can be implemented alongside the operational wrappers required to maximize reliability and operational effectiveness.
+The [Mission-Critical Foundational Online](https://github.com/azure/alwayson-foundational-online) and [Mission-Critical Foundational Connected](https://github.com/azure/alwayson-foundational-connected) provide solution orientated showcases for this design methodology, demonstrating how this architecture pattern can be implemented alongside the operational wrappers required to maximize reliability and operational effectiveness.
 
 Use these reference implementations to construct a sandbox application environment for validating key design decisions.
 
@@ -64,23 +64,24 @@ This mission-critical workload series provides prescriptive architectural guidan
 
 The mission-critical [reference implementations](mission-critical-overview.md#illustrative-examples) can integrate seamlessly within an Azure landing zone, and is deployable within both the *Online* or *Corp. Connected* Landing Zone formats as demonstrated within the image below.
 
-![Mission-critical workload and Landing Zone integration](./images/mission-critical-landing-zones.gif "Mission-critical workload and Landing Zone integration")
+![Mission-critical workload and landing zone integration](./images/mission-critical-landing-zones.gif "Mission-critical workload and landing zone integration")
 
 It is crucial to understand and identify in which connectivity scenario a mission-critical application requires since Azure landing zones support different workload agnostic landing zones archetypes separated into different Management Group scopes.
 
-- In the context of an *Online* Landing Zone archetype, a mission-critical workload operates as a completely independent solution, without any direct corporate network connectivity to the rest of the Azure landing zone architecture. The application will, however, be further safeguarded through the [*policy-driven management*](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) approach which is foundational to Azure landing zones, and will automatically integrate with centralized platform logging through policy.
+> The mission-critical reference implementations are fully aligned with the Azure landing zones architectural approach and are immediately deployable within an *Online* or *Connected* Landing Zone subscription.
 
-  - A *Online* deployment can only really consider a public application deployment since there is no private corporate connectivity provided.
+- In the context of an *Online* landing zone archetype, a mission-critical workload operates as a completely independent solution, without any direct corporate network connectivity to the rest of the Azure landing zone architecture. The application will, however, be further safeguarded through the [*policy-driven management*](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) approach which is foundational to Azure landing zones, and will automatically integrate with centralized platform logging through policy.
+
+  An *Online* deployment can only really consider a public application deployment since there is no private corporate connectivity provided.
 
 - When deployed in a *Corp. Connected* Landing Zone context, the mission-critical workload takes a dependency on the Azure landing zone to provide connectivity resources which allow for integration with other applications and shared services. This necessitates some transformation on-top of the *Online* integration approach, because some foundational resources are expected to exist up-front as part of the shared-service platform. More specifically, the regional deployment stamp should not longer encompass an ephemeral Virtual Network or Azure Private DNS Zone since these will exist within the Azure landing zones *connectivity* subscription. 
 
   A *Corp. Connected* deployment can consider both a public or private application deployment.
-
-> The mission-critical reference implementations are fully aligned with the Azure landing zones architectural approach and are immediately deployable within an *Online* or *Connected* Landing Zone subscription.
 
 ## Next step
 
 Review the best practices for architecting mission-critical application scenarios.
 
 > [!div class="nextstepaction"]
-> [Application Design](./mission-critical-application-design.md)
+> [Application design](./mission-critical-application-design.md)
+

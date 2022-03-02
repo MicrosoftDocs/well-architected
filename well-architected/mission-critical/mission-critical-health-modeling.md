@@ -25,7 +25,7 @@ Most mission-critical applications are significant in terms of both scale and co
 This design area focuses on the process to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
 >
@@ -40,7 +40,7 @@ There are three main levels of operational maturity when striving to maximize re
 
 To build a health model, first define  application health in the context of key business requirements by quantifying ‘healthy’ and ‘unhealthy’ states in a layered and measurable format. Then, for each  application component, refine the definition in the context of a steady running state and aggregated according to the application user flows. Superimpose with key non-functional business requirements for performance and availability. Finally, aggregate the health states for each individual user flow to form an acceptable representation of the overall application health. Once established, these layered health definitions should be used to inform critical monitoring metrics across all system components and validate operational subsystem composition.
 
-[!IMPORTANT]
+> [!IMPORTANT]
 > When defining what 'unhealthy' states, represent for all levels of the application. It's important to distinguish between transient and non-transient failure states to qualify service degradation relative to unavailability.
 
 ### Design considerations
@@ -84,15 +84,15 @@ To build a health model, first define  application health in the context of key 
 - Building and maintaining a health model is an iterative process and engineering investment should be aligned to drive continuous improvements.
   - Define a process to continually evaluate and fine-tune the accuracy of the model, and consider investing in machine learning models to further train the model.
 
-### Example of a layered health model
+### Example - Layered health model
 
 This is a simplified representation of a layered application health model for illustrative purposes. A comprehensive and contextualized health model is provided in the Mission-Critical reference implementations:
-- [Foundational Online](https://github.com/azure/alwayson-foundational-online)
-- [Foundational Connected](https://github.com/azure/alwayson-foundational-connected)
+- [Mission-Critical Foundational Online](https://github.com/azure/alwayson-foundational-online)
+- [Mission-Critical Foundational Connected](https://github.com/azure/alwayson-foundational-connected)
 
 When implementing a health model it's important to define the health of individual components through the aggregation and interpretation of key resource-level metrics. An example of how resource metrics can be used is the image below:
 
-![Mission Critical Example Health Definitions](./images/alwayson-example-health-definitions.png "Mission Critical Example Health Definitions")
+![Mission Critical Example Health Definitions](./images/mission-critical-example-health-definitions.png "Mission Critical Example Health Definitions")
 
 This definition of health can subsequently be represented by a KQL query, as demonstrated by the example AKS query below that aggregates InsightsMetrics (AKS Container insights) and AzureMetrics (Azure diagnostics) and compares (inner join) against modeled health thresholds.
 
@@ -138,7 +138,7 @@ These aggregated scores can subsequently be represented as a dependency chart us
 
 This image shows an example layered health model from the [foundational-online](https://github.com/azure/alwayson-foundational-online) reference implementation, and demonstrates how a change in health state for a foundational component can have a cascading impact to user flows and overall application health (the example values correspond to the table in the previous image).
 
-![Mission Critical Example Health Model Visualization](./images/alwayson-example-fault-states.png "Mission Critical Example Health Model Visualization")
+![Mission Critical Example Health Model Visualization](./images/mission-critical-example-fault-states.png "Mission Critical Example Health Model Visualization")
 
 ## Unified data sink for correlated analysis
 
@@ -146,7 +146,7 @@ Many operational datasets must be gathered from all system components to accurat
 
 A unified data sink is required to ensure all operational data is swiftly stored and made available for correlated analysis to build a 'single pane' representation of application health. Azure provides several different operational technologies under the umbrella of [Azure Monitor](/azure/azure-monitor/overview#overview), and Azure Monitor Log Analytics serves as the core Azure-native data sink to store and analyze operational data.
 
-![Mission Critical Health Data Collection](./images/alwayson-health-data-collection.png "Mission Critical Health Data Collection")
+![Mission Critical Health Data Collection](./images/mission-critical-health-data-collection.png "Mission Critical Health Data Collection")
 
 ### Design considerations
 
@@ -377,7 +377,7 @@ Machine learning models can be applied to correlate and prioritize operational d
 
 More specifically, an AIOps methodology can be applied to critical insights about the behavior of the system, users, and DevOps processes. These insights can include identifying a problem happening now (*detect*), quantifying why the problem is happening (*diagnose*), or signaling what will happen in the future (*predict*). Such insights can be used to drive actions that adjust and optimize the application to mitigate active or potential issues, using key business metrics, system quality metrics, and DevOps productivity metrics, to prioritize according to business impact. Conducted actions can themselves be infused into the system through a feedback loop that further trains the underlying model to drive additional efficiencies.
 
-![Mission-critical AIOps methodologies](./images/mission-critical-aiops-methodology.png "Mission-critical AIOps methodologies")
+![Mission Critical AIOps Methodologies](./images/mission-critical-aiops-methodology.png "Mission Critical AIOps Methodologies")
 
 There are multiple analytical technologies within Azure, such as Azure Synapse and Azure Databricks, which can be used to build and train analytical models for AIOps. This section will therefore focus on how these technologies can be positioned within an application design to accommodate AIOps and drive predictive action, focusing on Azure Synapse that reduces friction by bringing together the best of Azure's data services along with powerful new features.
 
@@ -391,7 +391,7 @@ AIOps is used to drive predictive action, interpreting and correlating complex o
 
 - Synapse Analytics is integrated with Azure ML through Azure Synapse Notebooks, which enables ML models to be trained in an Azure ML Workspace using [Automated ML](/azure/machine-learning/concept-automated-ml).
 
-- Synapse Analytics also enables ML capabilities using [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services) to solve general problems in various domains, such as [anomaly detection](/azure/cognitive-services/anomaly-detector/). Cognitive Services can be used in Azure Synapse, Azure Databricks, and via SDKs and REST APIs in client applications.
+- Synapse Analytics also enables ML capabilities using [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services) to solve general problems in various domains, such as [Anomaly Detection](/azure/cognitive-services/anomaly-detector/). Cognitive Services can be used in Azure Synapse, Azure Databricks, and via SDKs and REST APIs in client applications.
 
 - Azure Synapse natively integrates with [Azure Data Factory](/azure/data-factory/introduction) tools to extract, transform, and load (ETL) or ingest data within orchestration pipelines.
 
@@ -424,13 +424,15 @@ AIOps is used to drive predictive action, interpreting and correlating complex o
 
 - Ensure ML model operationalization supports both batch and real-time scoring.
 
-- As AIOps models are created, implement MLOps and apply DevOps practices to [automate the machine learning lifecycle](/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) for training, operationalization, scoring, and continuous improvement. Create an iterative CI/CD process for AIOps ML models.
+- As AIOps models are created, implement MLOps and apply DevOps practices to [automate the ML lifecycle](/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) for training, operationalization, scoring, and continuous improvement. Create an iterative CI/CD process for AIOps ML models.
 
 - Evaluate [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services) for specific predictive scenarios due to their low administrative and integration overhead.  Consider [Anomaly Detection](/azure/cognitive-services/anomaly-detector/) to quickly flag unexpected variances in observability data streams.
 
 ## Next step
 
-Review the deployment and testing considerations.
+Review the deployment and tesing considerations.
 
 > [!div class="nextstepaction"]
-> [Deployment and Testing](mission-critical-deployment-testing.md)
+> [Deployment and testing](mission-critical-deployment-testing.md)
+
+

@@ -20,13 +20,9 @@ ms.custom:
 There are several cross-cutting concerns that traverse the [key design areas](mission-critical-overview.md#what-are-the-key-design-areas). This article contextualizes these cross-cutting concerns for subsequent consideration within each design area.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you are not familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-<<<<<<< HEAD
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
-=======
-> ![GitHub logo](./../_images/github.svg) [Azure Mission-Critical open source project](http://github.com/azure/alwayson)
->>>>>>> cross cutting tweaks
 >
 > There are [reference implementations](mission-critical-overview.md#illustrative-examples) available as part of an open source project on GitHub. The code assets provided by these implementations illustrate the recommendations highlighted in this article.
 
@@ -55,7 +51,7 @@ A holistic approach to automation of deployment and management activities can ma
 - Automate continuous integration and continuous delivery (CI/CD) pipelines for all application components.
 - Automate application management activities, such as patching and monitoring.
 - Use declarative management semantics, such as Infrastructure as code (IaC), instead of over imperative approaches.
-- Prioritize templating over scripting. Defer to scripting only when using templates is not possible.
+- Prioritize templating over scripting. Defer to scripting only when using templates isn't possible.
 
 ## Azure roadmap alignment
 

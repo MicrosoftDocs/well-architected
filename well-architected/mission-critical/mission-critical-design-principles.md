@@ -80,9 +80,10 @@ These mission-critical design principles resonate and extend the quality pillars
 
 There are obvious cost trade-offs associated with introducing greater reliability, which should be carefully considered in the context of workload requirements.
 
-More specifically, maximizing reliability can impact the overall _financial cost_ of the solution. For example, the duplication of resources and the distribution of resources across regions to achieve high availability has clear cost implications. To avoid excess costs, don't over-engineer or over-provision beyond the relevant business requirements.
+Maximizing reliability can impact the overall financial cost of the solution. For example, the duplication of resources and the distribution of resources across regions to achieve high availability has clear cost implications. To avoid excess costs, don't over-engineer or over-provision beyond the relevant business requirements.
 
-Also, there is an _opportunity cost_ associated with engineering investment in fundamental reliability concepts, such as embracing infrastructure as code, deployment automation, and chaos engineering. This comes at a cost in terms of both time and effort, which could be invested elsewhere to deliver new application functionality and features.
+Also, there is added cost associated with engineering investment in fundamental reliability concepts, such as embracing infrastructure as code, deployment automation, and chaos engineering. This comes at a cost in terms of both time and effort, which could be invested elsewhere to deliver new application functionality and features.
+
 
 ## Cloud native design
 
