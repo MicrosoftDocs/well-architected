@@ -54,6 +54,8 @@ This image shows how the different reliability tiers and underlying business req
 
 ![Mission-critical reliability dial](./images/mission-critical-slo.gif "Mission-critical reliability dial")
 
+Another key aspect to reviewing the overall reliability of the application is Recovery time objective (RTO) and Recovery point objective (RPO) of the application. For instance, if you're striving to achieve an application RTO of less than a minute then strategies that are back-up based and active-passive disaster recovery, are likely insufficient. 
+
 However, this globally distributed approach to achieve high reliability comes at a development cost which may not be justifiable for every workload scenario. It's recommended that design decisions are driven by business requirements.
 
 ## 2&mdash;Refer to the mission-critical implementations
