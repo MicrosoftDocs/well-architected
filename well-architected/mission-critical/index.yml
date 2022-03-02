@@ -62,7 +62,7 @@ landingContent:
     linkLists:
       - linkListType: deploy
         links:
-          - text: Mission-Critical Foundational Online
-            url: https://github.com/Azure/Mission-Critical-online
-          - text: Mission-Critical Foundational Connected
-            url: https://github.com/Azure/Mission-Critical-connected
+          - text: Mission-Critical Online
+            url: https://github.com/azure/mission-critical-online
+          - text: Mission-Critical Connected
+            url: https://github.com/azure/mission-critical-connected

@@ -35,7 +35,7 @@ A _scale-unit_ is a logical unit or function that can be scaled independently. A
 > [!TIP]
 > For more information, see the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) for further details.
 
-For example, the foundational reference implementation considers a user flow for processing game results that use APIs for retrieving and posting game outcomes, and supporting components such as an OAuth endpoint, datastore, and message queues. These stateless API endpoints for retrieving and posting results represent granular functional units that must be able to adapt to changes in demand. However, for these to be truly scalable, the underlying application platform must also be able to scale in-kind. Similarly, to avoid performance bottlenecks in the end-to-end user flow and to achieve sustainable scale, the downstream components and dependencies must also be able to scale to an appropriate degree, either independently, as a separate scale-unit, or together, as part of a single logical unit.
+For example, the [Mission-Critical Online](https://github.com/azure/mission-critical-online) reference implementation considers a user flow for processing game results that use APIs for retrieving and posting game outcomes, and supporting components such as an OAuth endpoint, datastore, and message queues. These stateless API endpoints for retrieving and posting results represent granular functional units that must be able to adapt to changes in demand. However, for these to be truly scalable, the underlying application platform must also be able to scale in-kind. Similarly, to avoid performance bottlenecks in the end-to-end user flow and to achieve sustainable scale, the downstream components and dependencies must also be able to scale to an appropriate degree, either independently, as a separate scale-unit, or together, as part of a single logical unit.
 
 This image shows the multiple scale-unit scopes that are considered by this reference implementation user flow. These scopes range from microservice pods to cluster nodes and regional deployment stamps.
 
@@ -127,8 +127,7 @@ It's important to note that some Azure services are deployable or configurable a
 
 This image shows the high-level active-active design. A user accesses the application through a central global entry point that then redirects requests to a suitable regional deployment stamp.
 
-![Mission-Critical Foundational-Online Architecture](./images/mission-critical-high-level-architecture.png)
-
+![Mission-critical online architecture](./images/mission-critical-high-level-architecture.png)
 
 ### Design considerations
 

@@ -87,12 +87,12 @@ To build a health model, first define  application health in the context of key 
 ### Example - Layered health model
 
 This is a simplified representation of a layered application health model for illustrative purposes. A comprehensive and contextualized health model is provided in the Mission-Critical reference implementations:
-- [Mission-Critical Foundational Online](https://github.com/Azure/Mission-Critical-online)
-- [Mission-Critical Foundational Connected](https://github.com/Azure/Mission-Critical-connected)
+- [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
+- [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected)
 
 When implementing a health model it's important to define the health of individual components through the aggregation and interpretation of key resource-level metrics. An example of how resource metrics can be used is the image below:
 
-![Mission Critical Example Health Definitions](./images/mission-critical-example-health-definitions.png "Mission Critical Example Health Definitions")
+![Mission-critical example health definitions](./images/mission-critical-example-health-definitions.png "Mission-critical example health definitions")
 
 This definition of health can subsequently be represented by a KQL query, as demonstrated by the example AKS query below that aggregates InsightsMetrics (AKS Container insights) and AzureMetrics (Azure diagnostics) and compares (inner join) against modeled health thresholds.
 
