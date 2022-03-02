@@ -40,7 +40,7 @@ There are three main levels of operational maturity when striving to maximize re
 
 To build a health model, first define  application health in the context of key business requirements by quantifying ‘healthy’ and ‘unhealthy’ states in a layered and measurable format. Then, for each  application component, refine the definition in the context of a steady running state and aggregated according to the application user flows. Superimpose with key non-functional business requirements for performance and availability. Finally, aggregate the health states for each individual user flow to form an acceptable representation of the overall application health. Once established, these layered health definitions should be used to inform critical monitoring metrics across all system components and validate operational subsystem composition.
 
-[!IMPORTANT]
+> [!IMPORTANT]
 > When defining what 'unhealthy' states, represent for all levels of the application. It's important to distinguish between transient and non-transient failure states to qualify service degradation relative to unavailability.
 
 ### Design considerations
