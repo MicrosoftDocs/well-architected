@@ -46,7 +46,7 @@ While the primary focus of mission-critical workloads is [Reliability](/azure/ar
 
 - [Performance Efficiency](/azure/architecture/framework/scalability/): availability is more than simple uptime, but rather a consistent level of application service and performance relative to a known healthy state.
 
-However, high reliability has cost tradeoffs, which may not be justifiable for every workload. It's recommended that design decisions are driven by business requirements.
+Achieving high reliability imposes significant cost tradeoffs, which may not be justifiable for every workload scenario. It is therefore recommended that design decisions be driven by business requirements.
 
 ## What are the key design areas?
 
@@ -74,17 +74,17 @@ The guidance provided within this series is based on a solution-orientated appro
 > [!IMPORTANT]
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson).
 
-- [Mission-Critical Foundational Online](https://github.com/Azure/Mission-Critical-online)
+- [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
 
   Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure.
   
   _The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate._
 
-- [Mission-Critical Foundational Connected](https://github.com/Azure/Mission-Critical-connected) 
+- [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) 
 
   Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints.
   
-  _The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads._
+  _The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads.
 
 ## Next step
 

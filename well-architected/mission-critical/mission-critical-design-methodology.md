@@ -54,9 +54,7 @@ This image shows how the different reliability tiers and underlying business req
 
 ![Mission-critical reliability dial](./images/mission-critical-slo.gif "Mission-critical reliability dial")
 
-Another key aspect to reviewing the overall reliability of the application is Recovery time objective (RTO) and Recovery point objective (RPO) of the application. For instance, if you're striving to achieve an application RTO of less than a minute then strategies that are back-up based and active-passive disaster recovery, are likely insufficient. 
-
-However, this globally distributed approach to achieve high reliability comes at a development cost which may not be justifiable for every workload scenario. It's recommended that design decisions are driven by business requirements.
+Recovery Time Objective (RTO) and Recovery Point Objective (RPO) are further critical aspects when determining required reliability. For instance, if you are striving to achieve an application RTO of less than a minute then back-up based recovery strategies or an active-passive deployment strategy are likely to be insufficient. 
 
 ## 2&mdash;Refer to the mission-critical implementations
 
@@ -66,9 +64,8 @@ The Mission-Critical open source project strives to illustrate the design recomm
 
 There are two foundational [reference implementations](mission-critical-overview.md#illustrative-examples):
 
-  - [Mission-Critical Foundational Online](https://github.com/Azure/Mission-Critical-online)
-  - [Mission-Critical Foundational Connected](https://github.com/Azure/Mission-Critical-connected) 
-
+  - [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
+  - [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) 
 
 **Production-grade artifacts**: Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered.
 
