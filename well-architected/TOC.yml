@@ -162,8 +162,10 @@ items:
         items:
           - name: About
             href: cost/index.yml
-          - name: Principles
+          - name: Overview
             href: cost/overview.md
+          - name: Principles
+            href: cost/principles.md
           - name: Design
             items:
               - name: Checklist
@@ -345,34 +347,38 @@ items:
             href: scalability/tradeoffs.md
       - name: Workloads
         items:
-          - name: Mission-Critical
+          - name: Mission-critical
             items:
-              - name: Overview
-                href: mission-critical/alwayson-overview.md
-              - name: Design Methodology
-                href: mission-critical/alwayson-design-methodology.md
-              - name: Design Principles
-                href: mission-critical/alwayson-design-principles.md
-              - name: Design Areas
+              - name: Quick links
+                href: mission-critical/index.yml
+              - name: Get started
+                href: mission-critical/mission-critical-overview.md
+              - name: Design methodology
+                href: mission-critical/mission-critical-design-methodology.md
+              - name: Design principles
+                href: mission-critical/mission-critical-design-principles.md
+              - name: Cross-cutting concerns
+                href: mission-critical/mission-critical-cross-cutting-issues.md
+              - name: Design areas
                 items:
-                - name: Overview
-                  href: mission-critical/alwayson-design-areas.md
-                - name: Application Design
-                  href: mission-critical/alwayson-application-design.md
-                - name: Application Platform
-                  href: mission-critical/alwayson-application-platform.md
-                - name: Data Platform
-                  href: mission-critical/alwayson-data-platform.md
-                - name: Health Modeling
-                  href: mission-critical/alwayson-health-modeling.md
-                - name: Deployment and Testing
-                  href: mission-critical/alwayson-deployment-testing.md
-                - name: Networking and Connectivity
-                  href: mission-critical/alwayson-networking-connectivity.md
+                - name: Architecture pattern
+                  href: mission-critical/mission-critical-architecture-pattern.md
+                - name: Application design
+                  href: mission-critical/mission-critical-application-design.md
+                - name: Application platform
+                  href: mission-critical/mission-critical-application-platform.md
+                - name: Data platform
+                  href: mission-critical/mission-critical-data-platform.md
+                - name: Networking and connectivity
+                  href: mission-critical/mission-critical-networking-connectivity.md                  
+                - name: Health modeling
+                  href: mission-critical/mission-critical-health-modeling.md
+                - name: Deployment and testing
+                  href: mission-critical/mission-critical-deployment-testing.md
                 - name: Security
-                  href: mission-critical/alwayson-security.md
-                - name: Operational Procedures
-                  href: mission-critical/alwayson-operational-procedures.md
+                  href: mission-critical/mission-critical-security.md
+                - name: Operational procedures
+                  href: mission-critical/mission-critical-operational-procedures.md
           - name: Hybrid
             items:
               - name: Overview
@@ -513,3 +519,131 @@ items:
                     href: services/messaging/event-grid/reliability.md
                   - name: Operational excellence
                     href: services/messaging/event-grid/operational-excellence.md
+              - name: Event Hubs
+                items:
+                  - name: Reliability
+                    href: services/messaging/event-hubs/reliability.md
+                  - name: Operational excellence
+                    href: services/messaging/event-hubs/operational-excellence.md
+              - name: Service Bus
+                items:
+                  - name: Reliability
+                    href: services/messaging/service-bus/reliability.md
+                  - name: Operational excellence
+                    href: services/messaging/service-bus/operational-excellence.md
+              - name: Queue Storage
+                items:
+                  - name: Reliability
+                    href: services/messaging/queue-storage/reliability.md
+                  - name: Operational excellence
+                    href: services/messaging/queue-storage/operational-excellence.md
+              - name: IoT Hub
+                items:
+                  - name: Reliability
+                    href: services/messaging/iot-hub/reliability.md
+                  - name: Operational excellence
+                    href: services/messaging/iot-hub/operational-excellence.md
+              - name: IoT Hub Device Provisioning Service
+                items:
+                  - name: Reliability
+                    href: services/messaging/iot-hub-dps/reliability.md
+                  - name: Operational excellence
+                    href: services/messaging/iot-hub-dps/operational-excellence.md
+          - name: Networking
+            items: 
+              - name: Application Delivery (General)
+                items:
+                  - name: Reliability
+                    href: services/networking/application-delivery/reliability.md
+                  - name: Operational excellence
+                    href: services/networking/application-delivery/operational-excellence.md
+              - name: Application Gateway v2
+                items:
+                  - name: Reliability
+                    href: services/networking/application-gateway-v2/reliability.md
+                  - name: Operational excellence
+                    href: services/networking/application-gateway-v2/operational-excellence.md
+              - name: API Management
+                items:
+                  - name: Reliability
+                    href: services/networking/api-management/reliability.md
+                  - name: Cost optimization
+                    href: services/networking/api-management/cost-optimization.md
+                  - name: Operational excellence
+                    href: services/networking/api-management/operational-excellence.md
+              - name: Azure Firewall
+                items:
+                  - name: Reliability
+                    href: services/networking/azure-firewall/reliability.md
+                  - name: Security
+                    href: services/networking/azure-firewall/security.md
+                  - name: Operational excellence
+                    href: services/networking/azure-firewall/operational-excellence.md
+              - name: Azure Front Door
+                items:
+                  - name: Reliability
+                    href: services/networking/azure-front-door/reliability.md
+                  - name: Security
+                    href: services/networking/azure-front-door/security.md
+                  - name: Operational excellence
+                    href: services/networking/azure-front-door/operational-excellence.md
+              - name: Network Virtual Appliances (NVA)
+                items:
+                  - name: Reliability
+                    href: services/networking/network-virtual-appliances/reliability.md
+                  - name: Cost optimization
+                    href: services/networking/network-virtual-appliances/cost-optimization.md
+                  - name: Operational excellence
+                    href: services/networking/network-virtual-appliances/operational-excellence.md
+              - name: Network Connectivity
+                items:
+                  - name: Reliability
+                    href: services/networking/network-connectivity/reliability.md
+                  - name: Cost optimization
+                    href: services/networking/network-connectivity/cost-optimization.md
+                  - name: Operational excellence
+                    href: services/networking/network-connectivity/operational-excellence.md
+              - name: Azure Virtual Network
+                items:
+                  - name: Reliability
+                    href: services/networking/azure-virtual-network/reliability.md
+                  - name: Operational excellence
+                    href: services/networking/azure-virtual-network/operational-excellence.md
+              - name: ExpressRoute
+                items:
+                  - name: Reliability
+                    href: services/networking/expressroute/reliability.md
+                  - name: Operational excellence
+                    href: services/networking/expressroute/operational-excellence.md
+              - name: Azure Load Balancer
+                items:
+                  - name: Reliability
+                    href: services/networking/azure-load-balancer/reliability.md
+                  - name: Operational excellence
+                    href: services/networking/azure-load-balancer/operational-excellence.md
+              - name: Traffic Manager
+                items:
+                  - name: Reliability
+                    href: services/networking/traffic-manager/reliability.md
+                  - name: Operational excellence
+                    href: services/networking/traffic-manager/operational-excellence.md
+              - name: IP addresses
+                items:
+                  - name: Cost optimization
+                    href: services/networking/ip-addresses/cost-optimization.md            
+          - name: Monitoring
+            items:
+              - name: Log Analytics
+                items:
+                  - name: Cost optimization
+                    href: services/monitoring/log-analytics/cost-optimization.md
+              - name: Application Insights
+                items:
+                  - name: Security
+                    href: services/monitoring/application-insights/security.md
+                  - name: Cost optimization
+                    href: services/monitoring/application-insights/cost-optimization.md
+                  - name: Operational excellence
+                    href: services/monitoring/application-insights/operational-excellence.md
+      - name: Implementing Recommendations
+        href: warp/warp-guidance.md

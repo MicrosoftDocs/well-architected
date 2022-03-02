@@ -22,7 +22,7 @@ ms.custom:
 
 # Azure security monitoring tools
 
-The *leverage native control* security principle tells us to use native controls built into cloud services over external controls through third-party solutions. Native reduce the effort required to integrate external security tooling and update those integrations over time.
+The *leverage native control* security principle tells us to use native controls built over third-party solutions. Native reduce the effort required to integrate external security tooling and update those integrations over time.
 
 Azure provides several monitoring tools that observe the operations and detect anomalous behavior. These tools can detect threats at different levels and report issues. Addressing the issues early in the operational lifecycle will strengthen your overall security posture.
 
@@ -36,6 +36,7 @@ Azure provides several monitoring tools that observe the operations and detect a
 |[**Azure Rights Management (RMS)**](/azure/information-protection/what-is-azure-rms)| Protect files and emails across multiple devices.|
 |[**Microsoft Information Protection (MIP)**](/information-protection/develop/overview)| Secure email, documents, and sensitive data that you share outside your company.|
 |[**Azure Governance Visualizer**](https://github.com/microsoft/CloudAdoptionframework/tree/master/govern/AzureGovernanceVisualizer)|Gain granular insight into policies, Azure role-based access control (Azure RBAC), Azure Blueprints, subscriptions, and more.|
+|[**PSRule for Azure**](https://aka.ms/ps-rule-azure)| Scans Azure Infrastructure as Code (IaC) artifacts for issues across Azure Well-Architected pillars.|
 
 ## Microsoft Defender for Cloud
 
@@ -55,7 +56,7 @@ A Distributed Denial of Service (DDoS) attack attempts to exhaust an application
 
 Every property in Azure is protected by Azure's infrastructure DDoS (Basic) Protection at no additional cost. The scale and capacity of the globally deployed Azure network provides defense against common network-layer attacks through always-on traffic monitoring and real-time mitigation. DDoS Protection Basic requires no user configuration or application changes. DDoS Protection Basic helps protect all Azure services, including PaaS services like Azure DNS.
 
-Azure DDoS Protection Standard provides enhanced DDoS mitigation features to defend against DDoS attacks. It is automatically tuned to help protect your specific Azure resources in a virtual network. Protection is simple to enable on any new or existing virtual network, and it requires no application or resource changes. It has several advantages over the basic service, including logging, alerting, telemetry, SLA guarantee and cost protection.
+Azure DDoS Protection Standard provides enhanced DDoS mitigation features to defend against DDoS attacks. It's automatically tuned to help protect your specific Azure resources in a virtual network. Protection is simple to enable on any new or existing virtual network, and it requires no application or resource changes. It has several advantages over the basic service, including logging, alerting, telemetry, SLA guarantee, and cost protection.
 
 Azure DDoS Protection Standard is designed for [services that are deployed in a virtual network](/azure/virtual-network/virtual-network-for-azure-services). For other services, the default DDoS Protection Basic service applies. To learn more about supported architectures, see [DDoS Protection reference architectures](/azure/ddos-protection/ddos-protection-reference-architectures).
 
@@ -63,7 +64,8 @@ Azure DDoS Protection Standard is designed for [services that are deployed in a 
 
 Your business may encounter challenges with protecting documents and emails. For example, file protection, collaboration, and sharing may be issues. You also might be experiencing problems regarding platform support or infrastructure.
 
-[Azure Rights Management (RMS)](/azure/information-protection/what-is-azure-rms) is a cloud-based protection service that uses encryption, identity, and authorization policies to help secure files and emails across multiple devices, including phones, tablets, and PCs.
+[Azure Rights Management (RMS)](/azure/information-protection/what-is-azure-rms) is a cloud-based protection service.
+RMS uses encryption, identity, and authorization policies to help secure files and emails across devices, including phones, tablets, and PCs.
 
 To learn more about how RMS can address these issues, see [Business problems solved by Azure Rights Management](/azure/information-protection/what-is-azure-rms#business-problems-solved-by-azure-rights-management).
 
@@ -71,7 +73,7 @@ To learn more about how RMS can address these issues, see [Business problems sol
 
 The *data classification* process categorizes data by sensitivity and business impact in order to identify risks. When data is classified, you can manage it in ways that protect sensitive or important data from theft or loss.
 
-With proper *file protection*, you can analyze data flows to gain insight into your business, detect risky behaviors and take corrective measures, track access to documents, and more. The protection technology in AIP uses encryption, identity, and authorization policies. Protection stays with the documents and emails, independently of the location, regardless of whether they are inside or outside your organization, networks, file servers, and applications
+With proper *file protection*, you can analyze data flows to gain insight into your business, detect risky behaviors and take corrective measures, track access to documents, and more. The protection technology in AIP uses encryption, identity, and authorization policies. Protection stays with the documents and emails, independently of the location, regardless of whether they're inside or outside your organization, networks, file servers, and applications
 
 [Azure Information Protection (AIP)](/azure/information-protection/what-is-information-protection) is part of Microsoft Information Protection (MIP) solution, and extends the labeling and classification functionality provided by Microsoft 365. For more information, see [this article about classification](/microsoft-365/compliance/data-classification-overview).
 
@@ -80,6 +82,12 @@ With proper *file protection*, you can analyze data flows to gain insight into y
 Azure Governance Visualizer is a PowerShell script that iterates through an Azure tenant's management group hierarchy down to the subscription level. You can run the script either for your Tenant Root Group or any other Management Group. It captures data from the most relevant Azure governance capabilities such as Azure Policy, Azure role-based access control (Azure RBAC), and Azure Blueprints. From the collected data, the visualizer shows your hierarchy map, creates a tenant summary, and builds granular scope insights about your management groups and subscriptions.
 
 The visualizer provides a holistic overview of your technical Azure Governance implementation by connecting the dots.
+
+## PSRule for Azure
+
+PSRule for Azure is a set of tests and documentation to help you configure Azure solutions.
+These tests allow you to check your Azure Template or Bicep Infrastructure as Code (IaC) before deployment to Azure.
+PSRule for Azure includes tests that check how IaC is written and how Azure resources are configured.
 
 ## Next
 

@@ -91,9 +91,10 @@ Consider the following best practices:
 
 - Validate the security of any open-source code added to your application. Free tools to help with this assessment include:
 
-   - OWASP Dependency-Check
-   - NPM audit
-   - WhiteSource Bolt
+  - OWASP Dependency-Check
+  - NPM audit
+  - WhiteSource Bolt
+  - GitHub Dependabot
 
   These tools find outdated components and update them to the latest versions.
 
@@ -111,12 +112,15 @@ Tracking expiry dates of SSL/TLS certificates and renewing them in due time is h
 - [WhiteSource Bolt](https://bolt.whitesourcesoftware.com/)
 - [npm-audit](https://docs.npmjs.com/cli/audit)
 - [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/)
+- [GitHub Dependabot](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates)
 
 ## Referenced Azure services
 
 - [Azure Key Vault](/azure/key-vault/general/overview)
 - [Azure CDN](/azure/cdn/cdn-features)
 - [Azure Policy](/azure/governance/policy/overview)
+- [Azure Front Door](/azure/frontdoor/front-door-overview)
+- [Azure API Management](/azure/api-management)
 
 ## Next steps
 

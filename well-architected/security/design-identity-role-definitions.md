@@ -49,7 +49,7 @@ Designate groups (or individual roles) that will be responsible for key function
 
 Grant roles the appropriate permissions that start with least privilege and add more based on your operational needs. Provide clear guidance to your technical teams that implement permissions. This clarity makes it easier to detect and correct that reduces human errors such as overpermissioning.
 
--  Assign permissions at management group for the segment rather than the individual subscriptions. This will drive consistency and ensure application to future subscriptions. In general, avoid granular and custom permissions.
+- Assign permissions at management group for the segment rather than the individual subscriptions. This will drive consistency and ensure application to future subscriptions. In general, avoid granular and custom permissions.
 
 - Consider the built-in roles in Azure before creating custom roles to grant the appropriate permissions to VMs and other objects.
 
@@ -73,6 +73,7 @@ This segment hosts shared services utilized across the organization. These share
 **Policy management across some or all resources:** To monitor and enforce compliance with external (or internal) regulations, standards, and security policy, assign appropriate permission to those roles. The roles and permissions you choose will depend on the organizational culture and expectations of the policy program. See [Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/govern/security-baseline).
 
 Before defining the policies, consider:
+
 - How is the organization's security audited and reported? Is there mandatory reporting?
 - Are the existing security practices working?
 - Are there any requirements specific to industry, government, or regulatory requirements?
@@ -159,7 +160,7 @@ The organizations' cloud infrastructure should be well documented, with security
 Ensure all Azure environments that connect to your production environment and network apply your organization's policy, and IT governance controls for security.
 
 You can discover existing connected tenants using a
-[tool](/azure/role-based-access-control/elevate-access-global-admin?toc=%252fazure%252factive-directory%252fprivileged-identity-management%252ftoc.json) provided by Microsoft. Guidance on permissions
+[tool](/azure/role-based-access-control/elevate-access-global-admin?toc=%252fazure%252factive-directory%252fprivileged-identity-management%252ftoc.json) provided by Microsoft for guidance on permissions.
 
 ## Next steps
 
