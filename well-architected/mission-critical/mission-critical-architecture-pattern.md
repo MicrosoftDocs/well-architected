@@ -16,7 +16,6 @@ categories:
 products: Azure
 ms.custom:
   - mission-critical
-  - alwayson
 ---
 
 # Design areas for mission-critical workloads
@@ -26,7 +25,7 @@ This section provides design considerations and recommendations across architect
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
+> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical)
 >
 > There are [reference implementations](mission-critical-overview.md#illustrative-examples) available as part of an open source project on GitHub. The code assets provided by these implementations illustrate the recommendations highlighted in this article.
 

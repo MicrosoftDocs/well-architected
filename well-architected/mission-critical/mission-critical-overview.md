@@ -72,7 +72,7 @@ We recommend that readers familiarize themselves with these design areas, review
 The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available as part of an open source project on GitHub. These implementations can be used as a basis for further solution development.
 
 > [!IMPORTANT]
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson).
+> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical).
 
 - [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
 
