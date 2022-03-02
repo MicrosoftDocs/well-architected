@@ -60,7 +60,7 @@ Recovery Time Objective (RTO) and Recovery Point Objective (RPO) are further cri
 
 The Mission-Critical open source project strives to illustrate the design recommendations provided by this methodology, and should be used as a source of reference to inform the art of the possible.
 
-> ![GitHub logo](./../_images/github.svg) [ Mission-Critical open source project](http://github.com/azure/mission-critical)
+> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical)
 
 There are two foundational [reference implementations](mission-critical-overview.md#illustrative-examples):
 
