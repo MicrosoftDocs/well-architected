@@ -108,7 +108,7 @@ All built-in policy definitions related to Azure Networking are listed in [Built
     Follow the Security H2 heading with a sentence about how the section contributes to the framework. 
 -->
 
-Security is one of the most important aspects of any architecture. Application Gateway provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../../../security/security-principles.md).
+Security is one of the most important aspects of any architecture. Application Gateway provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../../security/security-principles.md).
 
 ### Design checklist
 
@@ -318,7 +318,7 @@ All built-in policy definitions related to Azure Networking are listed in [Built
     Follow the Performance efficiency H2 heading with a sentence about how the section contributes to the framework. 
 -->
 
-Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](../../../scalability/principles.md).
+Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](../../scalability/principles.md).
 
 ### Design checklist
 
