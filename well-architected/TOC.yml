@@ -526,11 +526,7 @@ items:
                   - name: Operational excellence
                     href: services/networking/application-delivery/operational-excellence.md
               - name: Application Gateway v2
-                items:
-                  - name: Reliability
-                    href: services/networking/application-gateway-v2/reliability.md
-                  - name: Operational excellence
-                    href: services/networking/application-gateway-v2/operational-excellence.md
+                href: services/networking/azure-application-gateway.md
               - name: API Management
                 items:
                   - name: Reliability
