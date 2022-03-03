@@ -347,6 +347,38 @@ items:
             href: scalability/tradeoffs.md
       - name: Workloads
         items:
+          - name: Mission-critical
+            items:
+              - name: Quick links
+                href: mission-critical/index.yml
+              - name: Get started
+                href: mission-critical/mission-critical-overview.md
+              - name: Design methodology
+                href: mission-critical/mission-critical-design-methodology.md
+              - name: Design principles
+                href: mission-critical/mission-critical-design-principles.md
+              - name: Cross-cutting concerns
+                href: mission-critical/mission-critical-cross-cutting-issues.md
+              - name: Design areas
+                items:
+                - name: Architecture pattern
+                  href: mission-critical/mission-critical-architecture-pattern.md
+                - name: Application design
+                  href: mission-critical/mission-critical-application-design.md
+                - name: Application platform
+                  href: mission-critical/mission-critical-application-platform.md
+                - name: Data platform
+                  href: mission-critical/mission-critical-data-platform.md
+                - name: Networking and connectivity
+                  href: mission-critical/mission-critical-networking-connectivity.md                  
+                - name: Health modeling
+                  href: mission-critical/mission-critical-health-modeling.md
+                - name: Deployment and testing
+                  href: mission-critical/mission-critical-deployment-testing.md
+                - name: Security
+                  href: mission-critical/mission-critical-security.md
+                - name: Operational procedures
+                  href: mission-critical/mission-critical-operational-procedures.md
           - name: Hybrid
             items:
               - name: Overview
