@@ -3,7 +3,7 @@ title: Operational excellence design principles
 description: Understand the design principles for operational excellence within the Azure Well-Architected Framework.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 02/10/2022
+ms.date: 03/03/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -11,7 +11,7 @@ ms.subservice: well-architected
 
 # Operational excellence design principles
 
-The principles of operational excellence are a series of considerations that can help achieve superior operational practices.
+The operational excellence design principles are a series of considerations that can help achieve superior operational practices.
 
 To achieve a higher competency in operations, consider and improve how software is:
 
@@ -20,83 +20,75 @@ To achieve a higher competency in operations, consider and improve how software 
 - Operated
 - Maintained
 
-Equally important, provide a team culture, which includes:
+Equally important, foster a team culture, which...
 
-- Experimentation and growth
-- Solutions for rationalizing the current state of operations
-- Incident response plans
+- values those who find solutions for rationalizing the current state of operations
+- provides accurate and targeted responses to incidents 
+- commits to continuous learning, ongoing experimentation, and growth
 
 To assess your workload using the tenets found in the Azure Well-Architected Framework, reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
 The following design principles provide:
 
-- Context for questions
-- Why a certain aspect is important
-- How an aspect is applicable to Operational excellence
+- Context for the questions in the Well-Architected Review
+- Reasons why a certain aspect is important
+- Explanations of how particular aspects apply to operational excellence
 
-These critical design principles are used as lenses to assess the Operational excellence of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
+These critical design principles are used as lenses through which the operational excellence of an application deployed on Azure is assessed.
 
-## Optimize build and release processes
+## Maximize automation
 
-Embrace software engineering disciplines across your entire environment, which include the following disciplines:
+Adopt and apply modern DevOps practices like continuous integration/continuous delivery (CI/CD), automated testing, infrastructure as code (IaC) and configuration as code to support cloud workloads.
   
-- Provision with Infrastructure as Code
-- Build and release with continuous integration and continuous delivery (CI/CD) pipelines
-- Automated testing
+This approach ensures consistent creation and management of environments throughout the software development lifecycle and encourages teams to practice deployments often. This - in turn - gives them an opportunity to detect issues early.
+
+## Maximize continuous improvement efforts
+
+Embrace and foster continuous improvement culture to evolve business processes, reduce complexity, and eliminate inefficiencies as much as possible.
+
+An organization that models a continuous improvement culture has teams that...
+- periodically evaluate new technology
+- share learning from failure
+- suggest improvements business processes
+- review options to reduce complexity for workloads and processes
   
-This approach ensures the creation and management of environments throughout the software development lifecycle enables:
+## Maximize observability to minimize disruption
 
-- Consistency
-- Repetition
-- Early detection of issues
-  
-## Understand operational health
+Establish observability within your workload and across your cloud infrastructure through robust monitoring and alerting solutions. 
 
-Evaluate operational health through focused and assertive monitoring.
+Enable robust event correlation to allow your teams to take proactive mitigating actions, troubleshoot issues, and efficiently respond to incidents.
 
-Implement systems and processes to monitor the following components:
-  
-- Build and release processes
-- Infrastructure health
-- Application health
-  
-Customer data is critical to understanding the health of a workload and whether the service is meeting the business goals.
+In addition, user data is incredibly valuable when it comes to understanding the user experience and whether your workload meets its business goals. 
 
-## Rehearse recovery and practice failure
+## Minimize the blast radius
 
-Rehearse recovery and practice failure using the following methods:
+Make use of modern architecture patterns and cloud design patterns to create workloads that are designed to anticipate failure, thus minimizing the "blast radius" of an outage or service failure.
 
-- Run disaster recovery (DR) drills on a regular cadence.  
-- Use chaos engineering practices to identify and remediate weak points in application reliability.
-- Rehearse failure to validate the effectiveness of recovery processes and ensure teams are familiar with their responsibilities.
+Modern architecture patterns include:
+ - loosely-coupled architecture
+ - microservices
+ - serverless design
 
-## Embrace continuous operational improvement
+Cloud design patterns include:
+ - circuit breakers
+ - load-leveling
+ - throttling
+ - queuing 
 
-Embrace continuous operational improvement through the following methods:
+In addition, adopting modern deployment practices can help reduce cross-team reliance and help build confidence into automated processes. These practices include:
+ - canary
+ - blue/green deployment
+ - staggered deployment
 
-- Continuously evaluate and refine operational procedures and tasks.
-- Strive to reduce complexity and ambiguity.
-  
-This approach enables an organization to:
+## Minimize time to recovery
 
-- Evolve processes over time.
-- Optimize inefficiencies.
-- Learn from failures.
+Adopt modern engineering practices to swiftly recover in the case of failure. 
 
-## Use loosely coupled architecture
-
-Use loosely coupled architecture to enable teams to independently:
-
-- Test
-- Deploy
-- Update their systems on demand
-  
-Without depending on other teams for:
-  
-- Support
-- Services
-- Resources
-- Approvals
+- Document top system failures
+- Leverage chaos engineering practices to stress test the workload
+- Create clear disaster recovery and remediation plans and rehearse them often 
+- Leverage automation to resolve escalations more easily
+- Document, test, and update your escalation processes frequently
 
 ### Next step
 
