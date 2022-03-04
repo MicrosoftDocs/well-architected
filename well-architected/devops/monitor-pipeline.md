@@ -3,7 +3,7 @@ title: Monitoring workloads
 description: Set up a pipe to collect, store, analyze, and visualize data for monitoring and diagnostics. 
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 03/03/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

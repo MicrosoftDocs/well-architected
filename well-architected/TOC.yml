@@ -269,6 +269,8 @@ items:
                 href: devops/checklist.md
               - name: Monitor cloud applications
                 items:
+                  - name: Monitoring Overview
+                    href: devops/monitoring.md
                   - name: Monitoring stages
                     href: devops/monitor-pipeline.md
                   - name: Data sources

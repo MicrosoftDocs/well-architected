@@ -3,7 +3,7 @@ title: Monitoring for Workloads
 description: Understand how to monitor your workload to make sure your DevOps infrastructure is working as intended.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 03/03/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
