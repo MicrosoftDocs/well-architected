@@ -359,6 +359,20 @@ items:
                 href: hybrid/hybrid-reliability.md
               - name: Security
                 href: hybrid/hybrid-security.md
+          - name: IoT
+            items:
+              - name: Overview
+                href: iot/iot-overview.md
+#              - name: Cost Optimization
+#                href: iot/iot-cost.md
+#              - name: Operational Excellence
+#                href: iot/iot-opex.md
+#              - name: Performance Efficiency
+#                href: iot/iot-performance-efficiency.md
+#              - name: Reliability
+#                href: iot/iot-reliability.md
+#              - name: Security
+#                href: iot/iot-security.md
       - name: Services
         items:
           - name: Compute
