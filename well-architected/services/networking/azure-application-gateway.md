@@ -11,7 +11,7 @@ ms.date: 02/25/2022
 
 # Azure Well-Architected Framework review - Azure Application Gateway v2
 
-This article provides architectural best practices for the Azure Application Gateway v2 family of SKUs. The guidance is based on the five pillars of architecture excellence: 
+This article provides architectural best practices for the Azure Application Gateway v2 family of SKUs. The guidance is based on the five pillars of architecture excellence:
 
 - [Reliability](#reliability)
 - [Security](#security)
@@ -24,7 +24,7 @@ We assume that you have working knowledge of Azure Application Gateway and are w
 ## Prerequisites
 
 - Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
-- Use a reference architecture to review the considerations based on the guidance provided in this article. We recommend that you start with !!!!! xxxxxx !!!!!!.
+- Use a reference architecture to review the considerations based on the guidance provided in this article. We recommend that you start with [Protect APIs with Application Gateway and API Management](/azure/architecture/reference-architectures/apis/protect-apis) and [IaaS: Web application with relational database](/azure/architecture/high-availability/ref-arch-iaas-web-and-db).
 
 <!-- 5. Pillar H2s ----------------------------------------------------
 
@@ -83,23 +83,6 @@ Explore the following table of recommendations to optimize your Application Gate
 |When using Azure Front Door and Application Gateway to protect `HTTP/S` applications, use WAF policies in Front Door and lock down Application Gateway to receive traffic only from Azure Front Door.|Certain scenarios can force you to implement rules specifically on Application Gateway. For example, if ModSec CRS 2.2.9, CRS 3.0 or CRS 3.1 rules are required, these rules can be only implemented on Application Gateway. Conversely, rate-limiting and geo-filtering are available only on Azure Front Door, not on AppGateway.|
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
-
-### Policy definitions
-
-<!-- 
-
-    Required
-
-    A list of policy definitions is always the third section in each pillar.
-
-    Provide a list of policies the customer can use for resource governance. After the list of policies, provide a list of all policy definitions available in Azure.
--->
-
-- \<Policy>
-- \<Policy>
-- \<Policy>
-
-All built-in policy definitions related to Azure Networking are listed in [Built-in policies - Network](/azure/governance/policy/samples/built-in-policies#network).
 
 ## Security
 
@@ -165,9 +148,10 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
     Provide a list of policies the customer can use for resource governance. After the list of policies, provide a list of all policy definitions available in Azure.
 -->
 
-- \<Policy>
-- \<Policy>
-- \<Policy>
+- [Gateway subnets should not be configured with a network security group](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F35f9c03a-cc27-418e-9c0c-539ff999d010). This policy denies if a gateway subnet is configured with a network security group. Assigning a network security group to a gateway subnet will cause the gateway to stop functioning.
+- [Web Application Firewall (WAF) should be enabled for Application Gateway](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66). Deploy Azure Web Application Firewall (WAF) in front of public facing web applications for additional inspection of incoming traffic. Web Application Firewall (WAF) provides centralized protection of your web applications from common exploits and vulnerabilities such as SQL injections, Cross-Site Scripting, local and remote file executions. You can also restrict access to your web applications by countries, IP address ranges, and other http(s) parameters via custom rules.
+- [Web Application Firewall (WAF) should use the specified mode for Application Gateway](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12430be1-6cc8-4527-a9a8-e3d38f250096). Mandates the use of 'Detection' or 'Prevention' mode to be active on all Web Application Firewall policies for Application Gateway.
+- [Azure DDoS Protection Standard should be enabled](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd). DDoS protection standard should be enabled for all virtual networks with a subnet that is part of an application gateway with a public IP.
 
 All built-in policy definitions related to Azure Networking are listed in [Built-in policies - Network](/azure/governance/policy/samples/built-in-policies#network).
 
@@ -221,23 +205,6 @@ Explore the following table of recommendations to optimize your \<product> confi
 For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
-
-### Policy definitions
-
-<!-- 
-
-    Required
-
-    A list of policy definitions is always the third section in each pillar.
-
-    Provide a list of policies the customer can use for resource governance. After the list of policies, provide a list of all policy definitions available in Azure.
--->
-
-- \<Policy>
-- \<Policy>
-- \<Policy>
-
-All built-in policy definitions related to Azure Networking are listed in [Built-in policies - Network](/azure/governance/policy/samples/built-in-policies#network).
 
 ## Operational excellence
 
@@ -294,23 +261,6 @@ For more suggestions, see [Principles of the operational excellence pillar](/azu
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
-### Policy definitions
-
-<!-- 
-
-    Required
-
-    A list of policy definitions is always the third section in each pillar.
-
-    Provide a list of policies the customer can use for resource governance. After the list of policies, provide a list of all policy definitions available in Azure.
--->
-
-- \<Policy>
-- \<Policy>
-- \<Policy>
-
-All built-in policy definitions related to Azure Networking are listed in [Built-in policies - Network](/azure/governance/policy/samples/built-in-policies#network).
-
 ## Performance efficiency
 
 <!-- 5E. ----------------------------------------------------
@@ -358,23 +308,6 @@ Explore the following table of recommendations to optimize your \<product> confi
 | Take advantage features for autoscaling and performance benefits | The v2 SKU offers autoscaling to ensure that your Application Gateway can scale up as traffic increases. When compared to v1 SKU, v2 has capabilities that enhance the performance of the workload. For example, better TLS offload performance, quicker deployment and update times, zone redundancy, and more. For more information about autoscaling features, see [Scaling Application Gateway v2 and WAF v2](/azure/application-gateway/application-gateway-autoscaling-zone-redundant).<br><br>If you are running v1 SKU gateways, consider migrating to the v2 SKU. For more information, see [Migrate Azure Application Gateway and Web Application Firewall from v1 to v2](/azure/application-gateway/migrate-v1-v2). |
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
-
-### Policy definitions
-
-<!-- 
-
-    Required
-
-    A list of policy definitions is always the third section in each pillar.
-
-    Provide a list of policies the customer can use for resource governance. After the list of policies, provide a list of all policy definitions available in Azure.
--->
-
-- \<Policy>
-- \<Policy>
-- \<Policy>
-
-All built-in policy definitions related to Azure Networking are listed in [Built-in policies - Network](/azure/governance/policy/samples/built-in-policies#network).
 
 ## Azure Advisor recommendations
 
