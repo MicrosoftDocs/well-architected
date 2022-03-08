@@ -395,6 +395,8 @@ items:
                 href: hybrid/hybrid-security.md
       - name: Services
         items:
+          - name: Azure Service Fabric
+            href: services/azure-service-fabric.md
           - name: Compute
             items:
               - name: Azure App Service
