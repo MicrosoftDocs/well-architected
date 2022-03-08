@@ -237,10 +237,7 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 ## Performance efficiency
 
-<!-- 5E. ----------------------------------------------------
-
-    Follow the Performance efficiency H2 heading with a sentence about how the section contributes to the framework. 
--->
+To learn how Azure Service Fabric can reduce performance issues for your workload with Service Fabric performance counters, reference [Monitoring and diagnostic best practices for Azure Service Fabric](/azure/service-fabric/service-fabric-best-practices-monitoring).
 
 ### Design checklist
 
@@ -257,7 +254,7 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
     - Provide full coverage of the design principles. (If not all design principles exist, cover no fewer than three design principles.)
 -->
 
-As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
+As you make design choices for Azure Service Fabric, review the [design principles](../scalability/principles.md) for performance efficiency.
 
 > [!div class="checklist"]
 > - \<Design consideration>
@@ -267,27 +264,13 @@ As you make design choices for \<product>, review the \[design principles](\<des
 
 ### Recommendations
 
-<!--
+Explore the following table of recommendations to optimize your Azure Service Fabric configuration for performance efficiency.
 
-    Required    
+|Recommendation|Benefit|
+|--------------|-------|
+|Exclude the Service Fabric processes from Windows Defender to improve performance.|By default, Windows Defender antivirus is installed on Windows Server 2016 and 2019. To reduce any performance impact and resource consumption overhead incurred by Windows Defender, and if your security policies allow you to exclude processes and paths for open-source software, you can exclude the Service Fabric executables from Defender scans.|
 
-    The Recommendations H3 is always the second section in each pillar. The content in this section should be formatted as a table.
-
--->
-
-Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
-
-| Recommendation | Benefit |
-|--------|----|
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-
-For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
-
-Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
+Azure Advisor helps you ensure and improve the scalability of your business-critical applications. Review the [recommendations](#azure-advisor-recommendations).
 
 ### Policy definitions
 
@@ -308,44 +291,36 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 ## Azure Advisor recommendations
 
-<!-- 6. Azure Advisor recommendations -----------------------------------------
+[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. The following recommendations can help you improve the reliability, security, cost optimization, operational excellence, and performance efficiency of your Service Fabric.
 
-    Required    
+### Reliability
 
-    Follow the Azure Advisor recommendations H2 heading with a sentence about how recommendations might help improve the configuration of the resource. 
+- [Configure your Azure Cosmos DB containers with a partition key](/azure/advisor/advisor-high-availability-recommendations#configure-your-azure-cosmos-db-containers-with-a-partition-key)
+- [Ensure reliable outbound connectivity with VNet NAT](/azure/advisor/advisor-high-availability-recommendations#ensure-reliable-outbound-connectivity-with-vnet-nat)
 
--->
+### Security
 
-## Additional resources
+<!---NEED SECURITY RECOMMENDATIONS RELATED TO SERVICE FABRIC--->
 
-<!-- 7. Additional resources ----------------------------------------------------
+### Cost optimization
 
-    Optional
+- [Use Standard Storage to store Managed Disks snapshots](/azure/advisor/advisor-reference-cost-recommendations#use-standard-storage-to-store-managed-disks-snapshots)
+- [Right-size or shutdown underutilized virtual machines](/azure/advisor/advisor-reference-cost-recommendations#right-size-or-shutdown-underutilized-virtual-machines)
 
-    The resources should be separated in sections. The H3 heading should indicate the purpose of the resource. 
+### Operational excellence
 
--->
+- [Increase the number of compute resources you can deploy by 10 vCPU](/azure/advisor/advisor-reference-operational-excellence-recommendations#increase-the-number-of-compute-resources-you-can-deploy-by-10-vcpu)
+- [An Azure environment update has been rolled out that may affect your Checkpoint Firewall](/azure/advisor/advisor-reference-operational-excellence-recommendations#an-azure-environment-update-has-been-rolled-out-that-may-affect-you-checkpoint-firewall)
 
-- \[\<link text>]\(\<link>)
-- \[\<link-text>]\(\<link>)
+### Performance efficiency
+
+- [Scale your cache to a different size or SKU to improve cache and application performance](/azure/advisor/advisor-performance-recommendations#scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance)
+- [Increase batch size when loading to maximize load throughput, data compression, and query performance](/azure/advisor/advisor-performance-recommendations#increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance)
 
 ## Next steps
 
-<!-- 8. Next steps ------------------------------------------------------------
+Use the following recommendations as you provision Azure Service Fabric for your solution:
 
-    Required
-
-    Add a context sentence for the following links: 
-
-    Best practices:
-        - Provide at least one next step and no more than three.
-        - Include some context, so the customer can determine why they would select the link.
-        - Do not use a "More information" or "See also" section.
-        - Do provide a link to relevant quickstarts in the product documentation.
-        - Do provide a link to a Learn module that covers resource provisioning.
-
--->
-
-- \[\<link text>]\(\<link>)
-
-<!-- Remove all the comments in this template before you sign off or merge to the main branch. -->
+- [Quickstart: Create a managed cluster](/azure/service-fabric/quickstart-managed-cluster-template)
+- [Quickstart: Deploy Windows containers to Service Fabric](/azure/service-fabric/service-fabric-quickstart-containers)
+- [Tutorial: Scale out a Service Fabric managed cluster](/azure/service-fabric/tutorial-managed-cluster-scale)
