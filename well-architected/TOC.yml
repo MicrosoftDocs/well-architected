@@ -363,10 +363,10 @@ items:
             items:
               - name: Overview
                 href: iot/iot-overview.md
-#              - name: Cost Optimization
-#                href: iot/iot-cost.md
-#              - name: Operational Excellence
-#                href: iot/iot-opex.md
+              - name: Cost Optimization
+                href: iot/iot-cost-optimization.md
+              - name: Operational Excellence
+                href: iot/iot-operational-excellence.md
 #              - name: Performance Efficiency
 #                href: iot/iot-performance-efficiency.md
 #              - name: Reliability
