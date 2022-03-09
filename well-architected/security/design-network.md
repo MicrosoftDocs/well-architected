@@ -31,7 +31,7 @@ Protect assets by placing controls on network traffic originating in Azure, betw
 > - Design security controls that identify and allow or deny traffic, access requests, and application communication between segments.
 > - Protect all public endpoints with Azure Front Door, Application Gateway, Azure Firewall, Azure DDoS Protection.
 > - Mitigate DDoS attacks with DDoS **Standard** protection for critical workloads.
-> - Keep virtual machines private and secure when connecting to the internet and provide static public IPs for whitelisting by destination firewalls with Azure Virtual Network NAT (NAT gateway).
+> - Keep virtual machines private and secure when connecting to the internet with Azure Virtual Network NAT (NAT gateway).
 > - Control network traffic between subnets (east-west) and application tiers (north-south).
 > - Protect from data exfiltration attacks through a defense-in-depth approach with controls at each layer.
 
