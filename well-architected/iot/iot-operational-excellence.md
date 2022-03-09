@@ -175,7 +175,7 @@ If the answer is no, these systems surface relevant information for operations t
 
 The following simplified logging and monitoring architecture shows examples of typical IoT solution components and how they use some recommended technologies.
 
-:::image type="content" source="media/logging-monitoring.jpg" alt-text="Diagram that shows example logging and monitoring systems." border="false":::
+:::image type="content" source="media/logging-monitoring.jpg" alt-text="Diagram that shows example logging and monitoring systems." border="false" lightbox="media/logging-monitoring.jpg":::
 
 ### Implement
 
