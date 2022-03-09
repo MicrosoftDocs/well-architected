@@ -26,33 +26,11 @@ We assume that you have working knowledge of Azure Application Gateway and are w
 - Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
 - Use a reference architecture to review the considerations based on the guidance provided in this article. We recommend that you start with [Protect APIs with Application Gateway and API Management](/azure/architecture/reference-architectures/apis/protect-apis) and [IaaS: Web application with relational database](/azure/architecture/high-availability/ref-arch-iaas-web-and-db).
 
-<!-- 5. Pillar H2s ----------------------------------------------------
-
-    Required
-
-    The H2 headings in this template should be followed as-is. The order in which they are presented is a best practice. Each heading sets expectations for the content that follows. 
-
-    TO DO: Add your H2 sections.
--->
-
 ## Reliability
 
 In the cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Use the following information to minimize failed instances.
 
 ### Design checklist
-
-<!--
-
-    Required    
-
-    A design checklist is always the first H3 in each pillar section.
-
-    Make sure the considerations you document:
-    - Are presented in a checklist format.
-    - Map to the design principles. Identify the appropriate principle, and then think about your recommendation in relation to it.
-    - Focus on the salient features for that pillar as they relate to the product.
-    - Provide full coverage of the design principles. (If not all design principles exist, cover no fewer than three design principles.)
--->
 
 As you make design choices for Application Gateway, review the [Reliability design principles](../../resiliency/principles.md).
 
@@ -63,14 +41,6 @@ As you make design choices for Application Gateway, review the [Reliability desi
 > - Deploy at least two AppGateway v2 instances to increase availability.
 
 ### Recommendations
-
-<!--
-
-    Required    
-
-    The Recommendations H3 is always the second section in each pillar. The content in this section should be formatted as a table.
-
--->
 
 Explore the following table of recommendations to optimize your Application Gateway configuration for Reliability.
 
@@ -86,27 +56,9 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Security
 
-<!-- 5B. ----------------------------------------------------
-
-    Follow the Security H2 heading with a sentence about how the section contributes to the framework. 
--->
-
 Security is one of the most important aspects of any architecture. Application Gateway provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../../security/security-principles.md).
 
 ### Design checklist
-
-<!--
-
-    Required    
-
-    A design checklist is always the first H3 in each pillar section.
-
-    Make sure the considerations you document:
-    - Are presented in a checklist format.
-    - Map to the design principles. Identify the appropriate principle, and then think about your recommendation in relation to it.
-    - Focus on the salient features for that pillar as they relate to the product.
-    - Provide full coverage of the design principles. (If not all design principles exist, cover no fewer than three design principles.)
--->
 
 > [!div class="checklist"]
 > - When re-encrypting backend traffic, ensure the backend server certificate contains both the root and intermediate Certificate Authorities (CAs). A TLS certificate of the backend server must be issued by a well-known CA. If the certificate was not issued by a trusted CA, the Application Gateway checks if the certificate of the issuing CA was issued by a trusted CA, and so on until either a trusted CA is found. Only then a secure connection is established. Otherwise, Application Gateway marks the backend as unhealthy.
@@ -116,14 +68,6 @@ Security is one of the most important aspects of any architecture. Application G
 > - When WAF is enabled, every request must be buffered by the Application Gateway until it fully arrives and check if the request matches with any rule violation in its core rule set and then forward the packet to the backend instances. For large file uploads (30MB+ in size), this can result in a significant latency. Because Application Gateway capacity requirements are different with WAF, we do not recommend enabling WAF on Application Gateway without proper testing and validation.
 
 ### Recommendations
-
-<!--
-
-    Required    
-
-    The Recommendations H3 is always the second section in each pillar. The content in this section should be formatted as a table.
-
--->
 
 Explore the following table of recommendations to optimize your Application Gateway configuration for Security.
 
@@ -139,15 +83,6 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ### Policy definitions
 
-<!-- 
-
-    Required
-
-    A list of policy definitions is always the third section in each pillar.
-
-    Provide a list of policies the customer can use for resource governance. After the list of policies, provide a list of all policy definitions available in Azure.
--->
-
 - [Gateway subnets should not be configured with a network security group](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F35f9c03a-cc27-418e-9c0c-539ff999d010). This policy denies if a gateway subnet is configured with a network security group. Assigning a network security group to a gateway subnet will cause the gateway to stop functioning.
 - [Web Application Firewall (WAF) should be enabled for Application Gateway](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66). Deploy Azure Web Application Firewall (WAF) in front of public facing web applications for additional inspection of incoming traffic. Web Application Firewall (WAF) provides centralized protection of your web applications from common exploits and vulnerabilities such as SQL injections, Cross-Site Scripting, local and remote file executions. You can also restrict access to your web applications by countries, IP address ranges, and other http(s) parameters via custom rules.
 - [Web Application Firewall (WAF) should use the specified mode for Application Gateway](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12430be1-6cc8-4527-a9a8-e3d38f250096). Mandates the use of 'Detection' or 'Prevention' mode to be active on all Web Application Firewall policies for Application Gateway.
@@ -157,41 +92,14 @@ All built-in policy definitions related to Azure Networking are listed in [Built
 
 ## Cost optimization
 
-<!-- 5C. ----------------------------------------------------
-
-    Follow the Cost optimization H2 heading with a sentence about how the section contributes to the framework. 
--->
-
 Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principles](../../cost/principles.md).
 
 ### Design checklist
 
-<!--
-
-    Required    
-
-    A design checklist is always the first H3 in each pillar section.
-
-    Make sure the considerations you document:
-    - Are presented in a checklist format.
-    - Map to the design principles. Identify the appropriate principle, and then think about your recommendation in relation to it.
-    - Focus on the salient features for that pillar as they relate to the product.
-    - Provide full coverage of the design principles. (If not all design principles exist, cover no fewer than three design principles.)
--->
-
 > [!div class="checklist"]
 > - Familiarize yourself with Application Gateway pricing to help you identify the right deployment configuration for your environment. Ensure that the options are adequately sized to meet the capacity demand and deliver expected performance without wasting resources.<br><br>For information about Application Gateway pricing, see Understanding Pricing for Azure Application Gateway and Web Application Firewall.<br><br>Use these resources to estimate cost based on units of consumption.<br>- [Azure Application Gateway pricing](https://azure.microsoft.com/pricing/details/application-gateway/)<br>- [Pricing calculator](https://azure.microsoft.com/pricing/calculator/)
 
-
 ### Recommendations
-
-<!--
-
-    Required    
-
-    The Recommendations H3 is always the second section in each pillar. The content in this section should be formatted as a table.
-
--->
 
 Explore the following table of recommendations to optimize your Application Gateway configuration for Cost optimization.
 
@@ -208,42 +116,15 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Operational excellence
 
-<!-- 5D. ----------------------------------------------------
-
-    Follow the Operational excellence H2 heading with a sentence about how the section contributes to the framework. 
--->
-
 Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../../devops/principles.md).
 
 ### Design checklist
-
-<!--
-
-    Required    
-
-    A design checklist is always the first H3 in each pillar section.
-
-    Make sure the considerations you document:
-    - Are presented in a checklist format.
-    - Map to the design principles. Identify the appropriate principle, and then think about your recommendation in relation to it.
-    - Focus on the salient features for that pillar as they relate to the product.
-    - Provide full coverage of the design principles. (If not all design principles exist, cover no fewer than three design principles.)
--->
 
 > [!div class="checklist"]
 > - SNAT port limitations<br>SNAT port limitations are important for backend connections on the Application Gateway. There are separate factors that affect how Application Gateway reaches the SNAT port limit. For example, if the backend is a public IP address, it will require its own SNAT port. In order to avoid SNAT port limitations, you can increase the number of instances per Application Gateway, scale out the backends to have more IP addresses, or move your backends into the same virtual network and use private IP addresses for the backends.
 > - Requests per second (RPS)<br>Requests per second (RPS) on the Application Gateway will be affected if the SNAT port limit is reached. For example, if an Application Gateway reaches the SNAT port limit, then it won't be able to open a new connection to the backend, and the request will fail.
 
-
 ### Recommendations
-
-<!--
-
-    Required    
-
-    The Recommendations H3 is always the second section in each pillar. The content in this section should be formatted as a table.
-
--->
 
 Explore the following table of recommendations to optimize your Application Gateway configuration for Operational excellence.
 
@@ -262,27 +143,9 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Performance efficiency
 
-<!-- 5E. ----------------------------------------------------
-
-    Follow the Performance efficiency H2 heading with a sentence about how the section contributes to the framework. 
--->
-
 Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](../../scalability/principles.md).
 
 ### Design checklist
-
-<!--
-
-    Required    
-
-    A design checklist is always the first H3 in each pillar section.
-
-    Make sure the considerations you document:
-    - Are presented in a checklist format.
-    - Map to the design principles. Identify the appropriate principle, and then think about your recommendation in relation to it.
-    - Focus on the salient features for that pillar as they relate to the product.
-    - Provide full coverage of the design principles. (If not all design principles exist, cover no fewer than three design principles.)
--->
 
 > [!div class="checklist"]
 > - Estimate the Application Gateway instance count<br>Application Gateway v2 scales out based on many aspects, such as CPU, memory, network utilization, and more. To determine the approximate instance count, factor in these metrics:<br><br>Current compute units — Indicates CPU utilization. 1 Application Gateway instance is approximately 10 compute units.<br>Throughput — Application Gateway instance can serve 60-75 Mbps of throughput. This data depends on the type of payload.<br><br>Consider this equation when calculating instance counts.<br>![Approximate instance count](../../_images/autoscale-instance.svg)<br><br>After you've estimated the instance count, compare that value to the maximum instance count. This will indicate how close you are to the maximum available capacity.
@@ -291,14 +154,6 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 > - Define Application Gateway subnet size<br>Application Gateway needs a dedicated subnet within a virtual network. The subnet can have multiple instances of the deployed Application Gateway resource. You can also deploy other Application Gateway resources in that subnet, v1 or v2 SKU.<br><br>Here are some considerations for defining the subnet size:<br><br>- Application Gateway uses one private IP address per instance and another private IP address if a private front-end IP is configured.<br>- Azure reserves five IP addresses in each subnet for internal use.<br>- Application Gateway (Standard or WAF SKU) can support up to 32 instances. Taking 32 instance IP addresses + 1 private front-end IP + 5 Azure reserved, a minimum subnet size of /26 is recommended. Because the Standard_v2 or WAF_v2 SKU can support up to 125 instances, using the same calculation, a subnet size of /24 is recommended.<br>- If you want to deploy additional Application Gateway resources in the same subnet, consider the additional IP addresses that will be required for their maximum instance count for both, Standard and Standard v2.
 
 ### Recommendations
-
-<!--
-
-    Required    
-
-    The Recommendations H3 is always the second section in each pillar. The content in this section should be formatted as a table.
-
--->
 
 Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
 
@@ -310,13 +165,6 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Azure Advisor recommendations
 
-<!-- 6. Azure Advisor recommendations -----------------------------------------
-
-    Required    
-
-    Follow the Azure Advisor recommendations H2 heading with a sentence about how recommendations might help improve the configuration of the resource. 
-
--->
 [Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Application Gateway.
 
 ### Reliability
@@ -326,34 +174,15 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Additional resources
 
-<!-- 7. Additional resources ----------------------------------------------------
+### Azure Architecture Center guidance
 
-    Optional
-
-    The resources should be separated in sections. The H3 heading should indicate the purpose of the resource. 
-
--->
-
-- \[\<link text>]\(\<link>)
-- \[\<link-text>]\(\<link>)
+- [Using API gateways in microservices](/azure/architecture/microservices/design/gateway)
+- [Firewall and Application Gateway for virtual networks](/azure/architecture/example-scenario/gateway/firewall-application-gateway)
+- [Protect APIs with Application Gateway and API Management](/azure/architecture/reference-architectures/apis/protect-apis)
+- [IaaS: Web application with relational database](/azure/architecture/high-availability/ref-arch-iaas-web-and-db)
+- [Securely managed web applications](/azure/architecture/example-scenario/apps/fully-managed-secure-apps)
+- [Zero-trust network for web applications with Azure Firewall and Application Gateway](/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall)
 
 ## Next steps
 
-<!-- 8. Next steps ------------------------------------------------------------
-
-    Required
-
-    Add a context sentence for the following links: 
-
-    Best practices:
-        - Provide at least one next step and no more than three.
-        - Include some context, so the customer can determine why they would select the link.
-        - Do not use a "More information" or "See also" section.
-        - Do provide a link to relevant quickstarts in the product documentation.
-        - Do provide a link to a Learn module that covers resource provisioning.
-
--->
-
 - Deploy an Application Gateway to see how it works: [Quickstart: Direct web traffic with Azure Application Gateway - Azure portal](/azure/application-gateway/quick-create-portal)
-
-<!-- Remove all the comments in this template before you sign off or merge to the main branch. -->
