@@ -17,16 +17,14 @@ IoT workloads span from millions of small devices connected to the cloud to indu
 
 A benefit of the cloud is the geographical availability and the capability to scale services to meet the demands. Scale our IoT Services without, or with minimal, application downtime.
 
-To assess your workload using the tenets found in the Azure Well-Architected Framework, reference the [Microsoft Azure Well-Architected Review](https://docs.microsoft.com/assessments/?id=azure-architecture-review&mode=pre-assessment).
-
 ## Prerequisites
 
 To assess your IoT workload using the tenets found in the Microsoft Azure Well-Architected Framework, see the WAF IoT Performance Efficiency Review assessment.
 <!-- TODO: add link to assessment -->
 
-After taking the assessment, this guide will help you address the key areas that surfaced for your solution.
+After you take the assessment, this guide will help you address the key areas that surfaced for your solution.
 
-### Principles
+## Principles
 
 This pillar represents the performance relative to the resources used under stated conditions. This characteristic is composed of the following subcharacteristics:
 
@@ -60,7 +58,7 @@ This section uses the layers described in the [IoT workload overview](iot-overvi
 
 :::image type="content" source="media/architecture-layers.png" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
 
-### Device & gateway layer
+### Device and gateway layer
 
 Devices are computing devices that connect to an IoT Solution and have the ability to transmit or receive data. Gateways are devices that serve as the connection point between an IoT Solution and other devices. Design solution accordingly, factor in the load and the limits/quotas.
 
@@ -70,9 +68,9 @@ Devices are computing devices that connect to an IoT Solution and have the abili
 
 - Upgrading or replacing hardware is costly and takes time, therefore devices that are connected to the IoT Solution should be sized for the required capacity and functionality in advance.
 
-- Use gateways as units of scale. For example, if your solution adds OPC UA servers over time, additional edge gateways can be used to ingest data from these additional servers.
+- Use gateways as units of scale. For example, if your solution adds OPC UA servers over time, other edge gateways can be used to ingest data from these other servers.
 
-- When scaling the Device and gateway layer conduct a scale assessment for all upstream layers including edge gateways, cloud gateways, as well as upstream cloud services.
+- When scaling the Device and gateway layer conduct a scale assessment for all upstream layers including edge gateways, cloud gateways, and upstream cloud services.
 
 - Use multiple cloud gateways as scale units for the IoT Solution, see [Tutorial: Provision devices across load-balanced IoT hubs](/azure/iot-dps/tutorial-provision-multiple-hubs). Use DPS to distribute devices over multiple IoT Hub instances.
 
@@ -84,7 +82,7 @@ Devices are computing devices that connect to an IoT Solution and have the abili
 
 #### Categorize individual workloads
 
-- Consider running workloads on the device/edge to leverage local compute for low latency and not always connected scenarios. Consider running workloads in the cloud to leverage scale.
+- Consider running workloads on the device/edge to use local compute for low latency and not always connected scenarios. Consider running workloads in the cloud to use scale.
 
 - Consider separating workloads by time constraint and required latency and response times, for example response within seconds versus and batch oriented per hour. Depending on system constraints such as network throughput or latency the solution may demand running your workload at the edge.
 
@@ -92,7 +90,7 @@ Devices are computing devices that connect to an IoT Solution and have the abili
 
 - In the cloud, use different consumer groups on Event Hubs to separate out different streams of data, for Alarms can be handled and scaled differently from a Telemetry.
 
-- In the cloud, use IoT Hub routes to separate out different streams of data, with filtering and separate endpoints. Note that IoT Hub message routing will add some latency.
+- In the cloud, use IoT Hub routes to separate out different streams of data, with filtering and separate endpoints. IoT Hub message routing will add some latency.
 
 #### Optimize connectivity
 
@@ -110,7 +108,7 @@ Devices are computing devices that connect to an IoT Solution and have the abili
 
 #### Optimize offline scenario
 
-- Consider using Device and Module twins to asynchronously sync state information between devices and the cloud, even when the device isn't currently connected to the cloud gateway. Note that Device and Module twins contain only the current state at a point in time, not any history or removed information.
+- Consider using Device and Module twins to asynchronously sync state information between devices and the cloud, even when the device isn't currently connected to the cloud gateway. Device and Module twins contain only the current state at a point in time, not any history or removed information.
 
 - Consider that a device has enough information and context to work without the need for a connection to the cloud and store this information locally so that the device can recover from a reboot.
 
@@ -148,13 +146,13 @@ The diagrams below show the relation between the load, the quota and the throttl
 
 :::image type="content" source="media/load-quota-throttle.png" alt-text="Diagrams showing high load constantly below quota compared to lower load with occasional spikes above quota but below throttle limit." border="false":::
 
-### Optimize interactions between device and cloud, components and services
+### Optimize interactions between device and cloud, components, and services
 
-The number of messages sent from device to cloud is an important parameter for IoT solution performance efficiency. Also, Azure IoT Service like IoT Hub and IoT Central have a defined limit of message for a selected Tier and affect both performance and cost of the solution.
+The number of messages sent from device to cloud is an important parameter for IoT solution performance efficiency. Also, Azure IoT services such as IoT Hub and IoT Central have a defined limit of message for a selected tier and affect both performance and cost of the solution.
 
 Consider the following recommendations for sending messages:
 
-- Be aware that IoT Hub and IoT Central calculate daily quota message count [based on a 4-KB](/azure/iot-hub/iot-hub-devguide-quotas-throttling#quotas-and-throttling) max [message size](/azure/iot-hub/iot-hub-devguide-messages-construct#message-size). Sending smaller messages will leave some capacity unused. In general, use messages size close to the boundary of 4 KB.
+- IoT Hub and IoT Central calculate daily quota message count [based on a 4-KB](/azure/iot-hub/iot-hub-devguide-quotas-throttling#quotas-and-throttling) max [message size](/azure/iot-hub/iot-hub-devguide-messages-construct#message-size). Sending smaller messages will leave some capacity unused. In general, use messages size close to the boundary of 4 KB.
 
 - Consider message sizing. Group smaller device-to-cloud messages into larger messages to reduce the total number of messages. Consider the introduced latency when combining messages.
 
@@ -170,7 +168,7 @@ Consider the following recommendations for sending messages:
 
 - For device-to-device or module-to-module communication at the edge, also avoid designing interactions in which many small messages are used.
 
-- Consider using Direct Methods for request/reply interaction with a device which can succeed or fail immediately (after a user-specified timeout). This approach is useful for scenarios where the course of immediate action is different depending on whether the device was able to respond.
+- Consider using Direct Methods for request/reply interaction with a device that can succeed or fail immediately (after a user-specified timeout). This approach is useful for scenarios where the course of immediate action is different depending on whether the device was able to respond.
 
 - Consider using Device Twins for device state information including metadata and configurations. Azure IoT Hub maintains a device twin for each device that you connect to IoT Hub.
 
@@ -200,17 +198,17 @@ One good example is a thermometer sensor sending temperature, humidity, and othe
 
 - Use IoT Edge priority queues to make sure important data is prioritized while sending to IoT Hub. This doesn’t impact the priority on the receiving side of IoT Hub.
 
-- Use IoT Hub message routing to separate routes for different data priorities dependent on the use case. Note that IoT Hub message routing will add some latency.
+- Use IoT Hub message routing to separate routes for different data priorities dependent on the use case. IoT Hub message routing will add some latency.
 
-- Consider saving and sending low priority data at longer intervals, or even using batch/file uploads. Note that malware detection on uploaded files will increase latency.
+- Consider saving and sending low priority data at longer intervals, or even using batch/file uploads. Malware detection on uploaded files will increase latency.
 
-- When using IoT Edge, messages will be buffered when there's no connection, but after the connection is restored, all buffered messages will be sent in order and by priority first followed by new messages.
+- When you use IoT Edge, messages will be buffered when there's no connection, but after the connection is restored, all buffered messages will be sent in order and by priority first followed by new messages.
 
-- Consider separating messages based on timing constraints. For example, send messages to IoT Hub directly when there's a time constraint, and utilize file upload via IoT Hub or batch data transfer (for example, Data Factory) if there's no time constraint. When using IoT Edge, the blob module can be used for the file upload.
+- Consider separating messages based on timing constraints. For example, send messages to IoT Hub directly when there's a time constraint, and utilize file upload via IoT Hub or batch data transfer (for example, Data Factory) if there's no time constraint. When you use IoT Edge, the blob module can be used for the file upload.
 
-## Transport Layer
+## Transport layer
 
-The Transport Layer is the layer handling connections between a device and the IoT solution, transforming IoT messages to network packages and sending them over the physical network.
+The transport layer handles connections between a device and the IoT solution, transforming IoT messages to network packages, and sending them over the physical network.
 
 Common protocols used in IoT solutions are:
 
@@ -222,7 +220,7 @@ Common protocols used in IoT solutions are:
 
 The connection between a device and the cloud needs to be secure, reliable and scalable to handle the targeted number of devices and messages.
 
-- Use an open stateful connection from a device to the cloud gateway (for example using MQTT or AMQP). IoT Hub is optimized for managing millions of open stateful connections (using MQTT, AMQP or WebSocket protocols). By keeping open connections to the devices, the overhead of security handshakes, authentication and authorization is minimized, which will improve performance and reduce the required bandwidth considerably.
+- Use an open stateful connection from a device to the cloud gateway (for example using MQTT or AMQP). IoT Hub is optimized for managing millions of open stateful connections (using MQTT, AMQP or WebSocket protocols). If you keep open connections to the devices, the overhead of security handshakes, authentication and authorization is minimized, which will improve performance and reduce the required bandwidth considerably.
 
 - Consider using a protocol to connect to the cloud gateway (AMQP) that supports multiplexing of multiple channels on a single connection to minimize the number of open connections required by the cloud gateway. By using multiplexing, a transparent gateway can connect multiple leaf devices using their own channel over a single connection.
 
@@ -232,7 +230,7 @@ The connection between a device and the cloud needs to be secure, reliable and s
 
 ### Optimize data communication
 
-The number and size of messages that are sent from device to cloud have an effect on performance as well as cost. Evaluating data communication is key to performance efficiency in your IoT Workload.
+The number and size of messages that are sent from device to cloud have an effect on performance and cost. Evaluating data communication is key to performance efficiency in your IoT Workload.
 
 - Use an efficient data format and encoding used to send data to the cloud, ensure that no extensive device to cloud bandwidth is used.
 
@@ -240,9 +238,9 @@ The number and size of messages that are sent from device to cloud have an effec
 
 - Consider storing high volume data sent from device to cloud locally and uploading hourly/daily.
 
-Group many smaller devices to cloud messages into fewer larger messages to reduce the total number of messages. However, don't only send very large messages but balance between average message size and throughput.
+Group many smaller devices to cloud messages into fewer larger messages to reduce the total number of messages. However, don't only send large messages but balance between average message size and throughput.
 
-## Device Management and modeling layer
+## Device management and modeling layer
 
 Different types of devices, using different protocols, connectivity, data ingestion frequencies and communication patterns can be connected to an IoT Solution and an IoT Solution can connect to many devices and gateways at the same time. The IoT Solution must be capable of managing which devices and gateways are connected and how they're configured.
 
@@ -286,7 +284,7 @@ An IoT solution often requires multiple storage types residing from devices and 
 
 An IoT solution that is available in multiple geographical regions might also include complexity based on data that needs to be available globally and/or locally and in some cases replicated for optimizing latency.
 
-### Time Series Data
+### Time series data
 
 - Use a Time Series Database for storing time series data, timestamp, value(s).
 
@@ -304,11 +302,11 @@ Data generated by devices can be processed before sending it to the IoT Solution
 
 ### Optimize on edge versus cloud processing
 
-- Consider running local workloads on the device/edge leveraging local compute. For example, running a machine learning algorithm to count people in a video stream can run on the edge and an event containing the count is sent to the cloud.
+- Consider running local workloads on the device/edge using local compute. For example, running a machine learning algorithm to count people in a video stream can run on the edge and an event containing the count is sent to the cloud.
 
-- Consider running large workloads, or workloads that have additional or external data or compute dependencies, in the cloud to leverage scale. For example, comparing actual trends between different factories.
+- Consider running large workloads, or workloads that have additional or external data or compute dependencies, in the cloud to use scale. For example, comparing actual trends between different factories.
 
-- Consider running analytics workloads on the edge using the Steam Analytics Edge module. For example, anomaly detection can run on the edge and label the events sent to the cloud with the detected anomaly. When running analytics on the edge, account for additional latency, late arrival, and windowing impact.
+- Consider running analytics workloads on the edge using the Steam Analytics Edge module. For example, anomaly detection can run on the edge and label the events sent to the cloud with the detected anomaly. When running analytics on the edge, account for extra latency, late arrival, and windowing impact.
 
 - Consider running real-time and near real-time workloads on the device or at the edge.
 
@@ -324,11 +322,11 @@ Data generated by devices can be processed before sending it to the IoT Solution
 
 - On the edge use priority queues to separate different streams of data with different priorities and time to live. For example, alarms should always be sent first but have a lower time to live compared to telemetry.
 
-- In the cloud use different consumer groups on Event Hubs to separate out different streams of data, for Alarms can be handled and scaled differently from a Telemetry.
+- In the cloud, use different consumer groups on Event Hubs to separate out different streams of data, for Alarms can be handled and scaled differently from a Telemetry.
 
-- In the cloud use IoT Hub routes to separate out different streams of data, with filtering and separate endpoints. Note that IoT Hub message routing will add some latency.
+- In the cloud use IoT Hub routes to separate out different streams of data, with filtering and separate endpoints. IoT Hub message routing will add some latency.
 
-- Leverage the right messaging construct (Event Hubs, Event Grids or Service Bus) to distribute workloads while protecting against back pressure in the cloud.
+- Use the right messaging construct (Event Hubs, Event Grids or Service Bus) to distribute workloads while protecting against back pressure in the cloud.
 
 - Overly complex IoT Hub routing rules can have an impact on the throughput. This is especially true for routing rules with message body JSON filters where every message needs to be deserialized and scanned.
 
@@ -336,11 +334,11 @@ Data generated by devices can be processed before sending it to the IoT Solution
 
 - Consider using out-of-the-box service integration between IoT Hub and data destinations (like Azure Data Lake Storage and Azure Data Explorer) as these have already been optimized for high performance throughput.
 
-- Consider using the EventHubs SDK to develop custom ingestion from an IoT Hub and the included event processor. The event processor can rebalance devices and hosts.
+- Consider using the Event Hubs SDK to develop custom ingestion from an IoT Hub and the included event processor. The event processor can rebalance devices and hosts.
 
 - Consider separating the storage needed for data ingestion and event processing from the storage needed for reporting and integration.
 
-- Account for the right number of IoT Hub partitions and consumer groups with regard to the number of simultaneous data readers and the required throughput.
+- Account for the right number of IoT Hub partitions and consumer groups regarding the number of simultaneous data readers and the required throughput.
 
 - Consider using the data storage that fits the need based on the required throughput, size, retention period, data volume, CRUD requirements, and regional replication (ADLS, ADX, SQL, Cosmos DB; see also [Select an Azure data store for your application](/azure/architecture/guide/technology-choices/data-store-decision-tree)).
 
