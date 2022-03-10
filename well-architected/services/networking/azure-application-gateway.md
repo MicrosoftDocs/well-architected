@@ -6,7 +6,7 @@ ms.author: victorh
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 03/08/2022
+ms.date: 03/09/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Application Gateway v2
@@ -38,11 +38,11 @@ As you make design choices for Application Gateway, review the [Reliability desi
 > - Deploy the instances in a [zone-aware configuration](/azure/application-gateway/application-gateway-autoscaling-zone-redundant), where available.
 > - Use Application Gateway with Web Application Firewall (WAF) within an application virtual network to protect inbound `HTTP/S` traffic from the Internet.
 > - In new deployments, use Application Gateway v2 unless there is a compelling reason to use v1.
-> - Deploy at least two AppGateway v2 instances to increase availability.
 > - Plan for rule updates
 > - Use health probes to detect backend unavailability
 > - Review the impact of the interval and threshold settings on health probes
 > - Verify downstream dependencies through health endpoints
+
 
 ### Recommendations
 
@@ -179,7 +179,7 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
+Explore the following table of recommendations to optimize your Application Gateway configuration for Performance efficiency.
 
 | Recommendation | Benefit |
 |--------|----|
