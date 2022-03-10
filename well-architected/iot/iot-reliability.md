@@ -48,7 +48,7 @@ The following principles should be followed as you design your IoT solution for 
 - Plan for capacity
 - Data and reliability
 
-:::image type="content" source="media/architecture-layers.png" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
+:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
 
 ## Design devices for resiliency
 
@@ -312,7 +312,7 @@ The SDKs also implement different connectivity features such as customizable kee
 - [Azure IoT Hub SDKs](/azure/iot-hub/iot-hub-devguide-sdks)
 - [Benefits of using the Azure IoT SDKs, and pitfalls to avoid if you don't](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/).
 
-## Next Steps
+## Next steps
 
 <!-- TODO: update this link -->
 IoT Well-Architected Framework for IoT - reliability.

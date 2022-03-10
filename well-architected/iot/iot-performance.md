@@ -56,7 +56,7 @@ An IoT solution can easily start with a few hundred devices or messages and grow
 
 This section uses the layers described in the [IoT workload overview](iot-overview.md#architecture-layers) to focus on specific parts of an IoT solution and describe the guidance.
 
-:::image type="content" source="media/architecture-layers.png" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
+:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
 
 ### Device and gateway layer
 

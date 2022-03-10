@@ -114,7 +114,7 @@ Understand [the difference between Application Platform as a Service (aPaaS) and
 
 [IoT Well-Architected Framework architecture layers](iot-overview.md) describes the elements of an IoT architecture. It enables you to easily review cost options for each layer in a complex IoT architecture. Cost optimization for IoT Well-Architected Framework provides [actionable guides for the IoT architecture layer implementations](#design).
 
-:::image type="content" source="media/architecture-layers.png" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
+:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
 
 ## Monitor and optimize costs
 
@@ -483,7 +483,7 @@ Review and decide the right retention period to avoid unintentional costs. Azure
 
 Each IoT Hub unit has a threshold for the number of messages. Adjusting the number of IoT Hub units dynamically helps to optimize the cost when the message volume fluctuates. You can implement an auto-scale service that automatically monitors and scales your IoT Hub service. IoT Hub provides [a customizable Azure Function sample](/samples/azure-samples/iot-hub-dotnet-autoscale/iot-hub-dotnet-autoscale/) to implement auto-scale capability. You can use your own custom logic to optimize IoT Hub tier and number of units.
 
-## Next Steps
+## Next steps
 
 <!-- TODO: update this link -->
 IoT Well-Architected Framework for IoT - reliability.
