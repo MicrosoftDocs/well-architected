@@ -43,7 +43,7 @@ The key security principles that inform a strong security posture that apply to 
 
 - **Security monitoring and response** to detect and respond to emerging threats. Employ proactive monitoring to rapidly identify unauthorized or compromised devices.
 
-:::image type="content" source="media/architecture-layers.png" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
+:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
 
 ## Design
 
@@ -242,7 +242,7 @@ Microsoft has several solutions available that provide hardware built specifical
 
 - [Azure Percept](https://aka.ms/azurepercept) is a comprehensive, easy-to-use platform with added security for creating edge AI solutions. The end-to-end edge AI platform includes hardware accelerators integrated with Azure AI and IoT services, pre-built AI models, and solution management to help you start your proof of concept in minutes. Azure Percept devices are designed with a hardware root of trust to help protect inference data (in transit and at rest), AI models and privacy-sensitive sensors such as cameras and microphones. It enables device authentication and authorization for Azure Percept Studio services. To learn more, see [Azure Percept security](/azure/azure-percept/overview-percept-security).
 
-## Next Steps
+## Next steps
 
 To assess your workload using the tenets found in the Microsoft Azure Well-Architected Framework, see the Microsoft Azure Well-Architected Review.
 

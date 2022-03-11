@@ -20,7 +20,7 @@ The IoT Well-Architected Framework operational excellence guide focuses on the o
 
 The communication network technology stack of an organization's IoT operation is typically handled by the organization's network operations team partnering with the organization's telecommunication operator. It's recommended that the organization coordinate with their telecommunication operator to set up and operate the wired and wireless communication network components of their IoT solutions and operations.
 
-:::image type="content" source="media/architecture-layers.png" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
+:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
 
 ## Prerequisites
 
@@ -303,7 +303,7 @@ When you implement automation and DevOps in IoT systems, follow the device lifec
 - [Monitor IoT Edge with workbooks](/azure/iot-edge/tutorial-monitor-with-workbooks)
 - [Use IoT Hub metrics](/azure/iot-hub/tutorial-use-metrics-and-diags)
 
-## Next Steps
+## Next steps
 
 <!-- TODO: update this link -->
 IoT Well-Architected Framework for IoT - reliability.
