@@ -93,7 +93,7 @@ The following list describes how the connected operations pattern affects the hi
 
 An IoT architecture consists of a set of foundational layers. Layers are realized by using specific technologies, and the IoT Well-Architected Framework highlights options for designing and realizing each layer. There are also cross-cutting layers that enable the design, building, and running of IoT solutions. The different layers each have specific pillar related requirements and implementations. Each IoT Well-Architected Framework pillar addresses the different layer specifics.
 
-:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
+:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the I o T architecture." border="false":::
 
 **Device and gateway**, **Device management and modeling**, and **Ingestion and communication** are *core layers* for an IoT solution. These layers identify whether the solution is an IoT solution. To realize these layers, Microsoft provides IoT specific services such as Azure IoT Hub, Azure IoT Edge, Device Provisioning Service, and IoT Central. The other layers are *commonly used* and aren't specific to the IoT workload. The IoT Well-architected Framework workload focuses on the *core layers* and identifies the specific impact of the IoT workload on the *common layers*. Other workloads, such as Data & AI and Modern Applications also use the common layers. The top-level Microsoft Azure Well-Architected Framework addresses the generic elements of these common layers.
 

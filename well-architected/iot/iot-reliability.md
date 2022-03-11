@@ -48,7 +48,7 @@ The following principles should be followed as you design your IoT solution for 
 - Plan for capacity
 - Data and reliability
 
-:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
+:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the I o T architecture." border="false":::
 
 ## Design devices for resiliency
 
