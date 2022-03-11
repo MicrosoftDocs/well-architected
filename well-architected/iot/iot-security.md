@@ -43,7 +43,7 @@ The key security principles that inform a strong security posture that apply to 
 
 - **Security monitoring and response** to detect and respond to emerging threats. Employ proactive monitoring to rapidly identify unauthorized or compromised devices.
 
-:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
+:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the I o T architecture." border="false":::
 
 ## Design
 
