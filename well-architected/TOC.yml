@@ -371,8 +371,8 @@ items:
                 href: iot/iot-performance.md
               - name: Reliability
                 href: iot/iot-reliability.md
-#              - name: Security
-#                href: iot/iot-security.md
+              - name: Security
+                href: iot/iot-security.md
       - name: Services
         items:
           - name: Compute
