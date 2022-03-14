@@ -387,3 +387,8 @@ The integration layer is the connection between your IoT solution and the busine
 ### Development and deployment
 
 Plan for and execute performance testing, including stress and load tests to replicate the production environment, such as location, heterogenous devices, and so on.
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Reliability in your IoT workload](iot-reliability.md)

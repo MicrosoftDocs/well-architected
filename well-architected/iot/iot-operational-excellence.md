@@ -10,7 +10,7 @@ ms.subservice: well-architected
 ---
 
 
-# Operational excellence in an IoT workload
+# Operational excellence in your IoT workload
 
 Given the complexity of non-functional or operational needs such as security, reliability, performance, and cost of IoT devices, perhaps the single most important factor to scaling an IoT solution and driving sustainable business value for an organization is the ability of an organization to have excellent IoT device operational capabilities. Operational excellence in an IoT workload is about enabling an organization for full visibility and control over the hardware and software components of an IoT solution, ensuring the best experience for users. Operational excellence includes making the IoT solution design, development, provisioning, monitoring, support, and maintenance practices more agile and valuable to business without increasing operational risk. The principles of operational excellence in an IoT workload are a set of considerations that help achieve superior operational practices. These principles are described in a following section.
 
@@ -298,12 +298,12 @@ When you implement automation and DevOps in IoT systems, follow the device lifec
 | Remove any configuration specific to a device | [Device Twins and device modules](/azure/iot-hub/iot-hub-automatic-device-management) | CI/CD Pipeline to delete changes immediately after a device is unenrolled |
 | Device replacement                            | Follow beginning of life steps                                                        |
 
-### Resources
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Performance efficiency in your IoT workload](iot-performance.md)
+
+## Resources
 
 - [Monitor IoT Edge with workbooks](/azure/iot-edge/tutorial-monitor-with-workbooks)
 - [Use IoT Hub metrics](/azure/iot-hub/tutorial-use-metrics-and-diags)
-
-## Next steps
-
-<!-- TODO: update this link -->
-IoT Well-Architected Framework for IoT - reliability.

@@ -11,7 +11,7 @@ ms.custom:
   - e2e-iot
 ---
 
-# Cost optimization in an IoT workload
+# Cost optimization in your IoT workload
 
 According to the survey of [IoT Signals EDITION 3 report](https://azure.microsoft.com/mediahandler/files/resourcefiles/iot-signals-report/IoT%20Signals_Edition%203_Thought%20Paper_EN.pdf), the top reason of proof of concept (PoC) failure is high cost of scaling. The report also says that the high cost of scaling IoT projects comes from the complexities of integrating across layers, for example devices, edge connectivity, compatibility across applications. 40% of adopters experiencing this issue.
 
@@ -485,19 +485,14 @@ Each IoT Hub unit has a threshold for the number of messages. Adjusting the numb
 
 ## Next steps
 
-<!-- TODO: update this link -->
-IoT Well-Architected Framework for IoT - reliability.
+> [!div class="nextstepaction"]
+> [Operational excellence in your IoT workload](iot-operational-excellence.md)
 
 ## Resources
 
-[Overview of an IoT workload](iot-overview.md): Includes guidance and recommendations that apply to each of the five pillars in IoT workload.
-
-[Cost optimization design principles - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/principles): Understand cost optimization principles. These principles are a series of important considerations that can help achieve business objectives and cost justification.
-
-[Checklist - Design for cost - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/design-checklist): View checklists for the cost model and architecture to use when you design a cost-effective workload in Azure
-
-[Capture cost requirements for an Azure - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/design-capture-requirements): Learn to enumerate cost requirements and considerations, and how to align costs with business goals.
-
-[Checklist - Optimize cost - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/optimize-checklist): Use these checklist considerations to help monitor and optimize workloads by using the right resources and sizes.
-
-[Develop a cost model - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/design-model): Do cost modeling to map logical groups of cloud resources to an organization's hierarchy, and then estimate costs for those groups.
+- [Overview of an IoT workload](iot-overview.md): Includes guidance and recommendations that apply to each of the five pillars in IoT workload.
+- [Cost optimization design principles - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/principles): Understand cost optimization principles. These principles are a series of important considerations that can help achieve business objectives and cost justification.
+- [Checklist - Design for cost - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/design-checklist): View checklists for the cost model and architecture to use when you design a cost-effective workload in Azure
+- [Capture cost requirements for an Azure - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/design-capture-requirements): Learn to enumerate cost requirements and considerations, and how to align costs with business goals.
+- [Checklist - Optimize cost - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/optimize-checklist): Use these checklist considerations to help monitor and optimize workloads by using the right resources and sizes.
+- [Develop a cost model - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/design-model): Do cost modeling to map logical groups of cloud resources to an organization's hierarchy, and then estimate costs for those groups.

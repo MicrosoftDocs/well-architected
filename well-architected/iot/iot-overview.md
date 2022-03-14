@@ -213,7 +213,7 @@ Relevant Microsoft technologies include:
 
 [Azure API management](/azure/api-management/)
 
-### Cross-cutting activities
+## Cross-cutting activities
 
 These activities enable you to design, build, deploy, and monitor IoT solutions. The activities help to ensure your IoT solutions meet the requirements set at design time and to adjust for changes in requirements over time. DevOps enables formerly siloed roles—development, operations, quality engineering, and security to coordinate and collaborate to produce better, more reliable, and agile products. DevOps is well-known in the software development industry but can be applied to any product or process development and operations process.
 
@@ -241,7 +241,6 @@ Relevant Microsoft technologies include:
 
 The Azure Well-Architected Framework is a set of guiding tenets that you can use to improve the quality of an IoT workload. The framework consists of five pillars of architectural excellence. The following pillar sections describe the details related to the IoT workload:
 
-<!-- TODO Add links to these pillars -->
 - **Reliability** ensures your application can meet the commitments you make to your customers. Architecting resiliency into your application framework ensures your workloads are available and can recover from failures at any scale. How you handle heterogeneity, scale, intermittent connectivity, and hybridity have a major impact on your IoT workload reliability experience.
 
 - **Security** is an important aspect of any architecture. It provides confidentiality, integrity, and availability assurances against deliberate attacks and abuse of your valuable data and systems. How you handle heterogeneity and hybridity have a major impact on your IoT workload security experience.
@@ -254,8 +253,8 @@ The Azure Well-Architected Framework is a set of guiding tenets that you can use
 
 ## Next steps
 
-<!-- TODO Add links to the assessment -->
-To assess your IoT workload using the tenets found in the Microsoft Azure Well-Architected Framework, see the Microsoft Azure IoT Well-Architected Assessment.
+> [!div class="nextstepaction"]
+> [Cost optimization in your IoT workload](./iot-cost-optimization.md)
 
 ## Resources
 

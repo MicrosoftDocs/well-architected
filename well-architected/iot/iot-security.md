@@ -9,7 +9,7 @@ ms.service: architecture-center
 ms.subservice: well-architected
 ---
 
-# Security in an IoT workload
+# Security in your IoT workload
 
 The Internet of Things (IoT) provides vast opportunities to gain insights into the complex relationships of people, systems, and data. Those opportunities also come with the challenge of securing diverse and heterogeneous device-based solutions that may have little or no direct interaction.
 
@@ -244,9 +244,8 @@ Microsoft has several solutions available that provide hardware built specifical
 
 ## Next steps
 
-To assess your workload using the tenets found in the Microsoft Azure Well-Architected Framework, see the Microsoft Azure Well-Architected Review.
-
-<!-- TODO - add link to assessment -->
+> [!div class="nextstepaction"]
+> [Overview of an IoT workload](iot-overview.md)
 
 ## Resources
 
