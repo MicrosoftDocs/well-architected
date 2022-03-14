@@ -32,10 +32,11 @@ As described in the Azure WAF – Reliability pillar, desired reliability is sub
 
 ## Prerequisites
 
-To assess your IoT workload using the tenets in the Microsoft Azure Well-Architected Framework, complete the assessment.
+To assess your IoT workload based on the principles described in the Microsoft Azure Well-Architected Framework, complete the assessment:
+
 <!-- TODO: add link to assessment -->
 
-After you complete the assessment, this guide helps you address the key areas that surfaced for your solution.
+After you complete the assessment, this guide helps you address the key reliability recommendations identified for your solution.
 
 ## Principles
 
@@ -48,7 +49,11 @@ The following principles should be followed as you design your IoT solution for 
 - Plan for capacity
 - Data and reliability
 
+An IoT architecture consists of a set of foundational layers. Layers are realized by using specific technologies, and the IoT Well-Architected Framework highlights options for designing and realizing each layer. There are also cross-cutting layers that enable the design, building, and running of IoT solutions:
+
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the I o T architecture." border="false":::
+
+The following sections address the layer specifics for the reliability pillar:
 
 ## Design devices for resiliency
 
@@ -155,7 +160,7 @@ Azure Monitor alerts proactively notify you when it finds specific conditions in
 
 [Roles, responsibilities, and permissions - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/security/design-identity-role-definitions)
 
-**Continuous Monitoring**
+**Continuous monitoring**
 
 Continuous Integration and Continuous Deployment (CI/CD) is a DevOps concept that can help you deliver software faster and more reliably to provide continuous value to your users. Continuous Monitoring (CM) is a new follow-up concept where you can incorporate monitoring across each phase of your DevOps and IT Ops cycles. This ensures the health, performance, and reliability of your apps and infrastructure continuously as it flows through the developer, production, and customers.
 

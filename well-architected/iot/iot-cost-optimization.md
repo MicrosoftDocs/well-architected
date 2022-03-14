@@ -52,10 +52,11 @@ Because IoT projects include cloud technologies, you should review [Microsoft Az
 
 ## Prerequisites
 
-To assess your IoT workload using the tenets in the Microsoft Azure Well-Architected Framework, complete the assessment.
+To assess your IoT workload based on the principles described in the Microsoft Azure Well-Architected Framework, complete the assessment:
+
 <!-- TODO: add link to assessment -->
 
-After you complete the assessment, this guide helps you address the key areas that surfaced for your solution.
+After you complete the assessment, this guide helps you address the key cost optimization recommendations identified for your solution.
 
 ## Principles
 
@@ -70,7 +71,7 @@ Apply the following design principles to build cost effective IoT solutions:
 - **Define implementation plans for each IoT architecture layer** – Identify action items for each layer in the IoT Well-Architected Framework architecture.
 - **Monitor and optimize costs** – Establish ongoing activities for cost optimization after you implement your IoT solution.
 
-## Understand total cost of ownership
+### Understand total cost of ownership
 
 Many IoT solutions fail because of the difficulty of estimating long-term aggregated costs of various cloud services. It's critical to understand how much you're spending to run and operate all services involved. Without this understanding, it's common for budgets to run into the red, leaving you with ballooning costs.
 
@@ -80,13 +81,13 @@ Furthermore, don't overlook the long-term operational costs that increase in par
 
 Your costs will depend greatly on the *chattiness* of your devices and the size of the messages your devices send. Chatty devices send many messages to the cloud every minute, while others are relatively quiet, only sending data every hour or more. Clarity about device chattiness and message size helps reduce the likelihood of over-provisioning, which leads to unused cloud capacity, or under-provisioning, which leads to elastic scale challenges. As you plan your IoT solution, consider carefully the size and frequency of the message payloads to ensure your infrastructure is the correct size for where you are today and ready to scale with you.
 
-## Establish strategies for IoT technology ecosystems
+### Establish strategies for IoT technology ecosystems
 
-### Device management strategy
+#### Device management strategy
 
 Device management requires a strategic approach because various options are available during the *Plan – Provision – Configure – Monitor – Retire* device lifecycle. Understanding [the roles for IoT solution development and operation](/azure/iot-hub/iot-hub-configuration-best-practices) and [IoT device types](/azure/iot-develop/concepts-iot-device-types) provides a foundation for establishing a strategy for device cost management.
 
-### Edge, cloud, or hybrid implementation strategy
+#### Edge, cloud, or hybrid implementation strategy
 
 Evaluate TCO for deploying edge assets. Edge solutions can be realized with different edge architectures: multiple endpoints, IoT devices, directly connected to the cloud, or connected through an edge and/or cloud gateway. Different options for sourcing the edge solution devices can affect total cost and lead time. Ongoing maintenance and support of the device fleet also affects the overall solution cost. Cost optimization is an important step in maximizing the return on investment (ROI) of any IoT solution.
 
@@ -94,11 +95,11 @@ Where data should be stored and processed in a given IoT solution affects many f
 
 The [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) is a useful tool to compare these options.
 
-### Connectivity and IoT protocol management
+#### Connectivity and IoT protocol management
 
 There are many factors to take into account for device to IoT gateway connectivity. For example, device connection, network, and protocol. An understanding of IoT communication protocols, network types, and messaging patterns helps you to design and optimize a cost effective architecture.
 
-### Platform for IoT solutions
+#### Platform for IoT solutions
 
 Understand [the difference between Application Platform as a Service (aPaaS) and Platform as a Service (PaaS)](/azure/iot-fundamentals/iot-solution-apaas-paas) and choose the right platform for your IoT solution. Depending on your business requirements, development, and operation capacities, you can choose an aPaaS and PaaS IoT solution platform:
 
@@ -110,28 +111,30 @@ Understand [the difference between Application Platform as a Service (aPaaS) and
 
 *Deployment stamping* is a common design pattern for designing applications for flexible deployment strategies, predictable scale, and cost. Using this pattern for IoT solutions provides several advantages such as geo-distributing groups of devices, deploying new features to specific stamps, observability of cost-per-device. To learn more, see [Scale IoT solutions with deployment stamps](/azure/architecture/example-scenario/iot/application-stamps).
 
-## Define implementation plans for each IoT architecture layer
+### Define implementation plans for each IoT architecture layer
 
 [IoT Well-Architected Framework architecture layers](iot-overview.md) describes the elements of an IoT architecture. It enables you to easily review cost options for each layer in a complex IoT architecture. Cost optimization for IoT Well-Architected Framework provides [actionable guides for the IoT architecture layer implementations](#design).
 
-:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the I o T architecture." border="false":::
+### Monitor and optimize costs
 
-## Monitor and optimize costs
-
-### Build a cost model and budget
+#### Build a cost model and budget
 
 After you review the IoT technology stacks, estimate the initial cost through a cost model:
 
 - [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) helps estimate the initial and operational costs.
 - [Develop a cost model - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/design-model).
 
-### Continuously monitor and review
+#### Continuously monitor and review
 
 Continuously monitor and review costs to identify gaps between planned and actual costs. A regular cost review meeting is a good way to achieve cost optimization.
 
 ## Design
 
-The following sections provide cost optimization recommendations for the layers in the IoT Well-Architected Framework:
+An IoT architecture consists of a set of foundational layers. Layers are realized by using specific technologies, and the IoT Well-Architected Framework highlights options for designing and realizing each layer. There are also cross-cutting layers that enable the design, building, and running of IoT solutions.
+
+:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the I o T architecture." border="false":::
+
+The following sections address the layer specifics for the cost optimization pillar:
 
 ## Device and gateway layer
 

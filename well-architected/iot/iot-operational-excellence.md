@@ -20,39 +20,35 @@ The IoT Well-Architected Framework operational excellence guide focuses on the o
 
 The communication network technology stack of an organization's IoT operation is typically handled by the organization's network operations team partnering with the organization's telecommunication operator. It's recommended that the organization coordinate with their telecommunication operator to set up and operate the wired and wireless communication network components of their IoT solutions and operations.
 
-:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the I o T architecture." border="false":::
-
 ## Prerequisites
 
-To assess your IoT workload using the tenets found in the Microsoft Azure Well-Architected Framework, complete the Well-Architected Framework IoT operational excellence assessment. <!--TODO: Add link -->
+To assess your IoT workload based on the principles described in the Microsoft Azure Well-Architected Framework, complete the assessment:
 
-After taking the assessment, this guide helps you address the key areas that surfaced for your solution.
+<!-- TODO: add link to assessment -->
+
+After you complete the assessment, this guide helps you address the key operational excellence recommendations identified for your solution.
 
 ## Principles
 
 The following principles apply to the operational excellence pillar in an IoT workload:
 
-### Solution management and provisioning
+**Solution management and provisioning:** Follow the best practices around this principle to ensure that the IoT solution can successfully manage the automated provisioning of devices, can be integrated with other backend systems, and is designed to be used by different types of personas including solution developers, solution administrators, and operators.
 
-Following the best practices around this principle ensures that the IoT solution can successfully manage the automated provisioning of devices, can be integrated with other backend systems, and is designed to be used by different types of personas including solution developers, solution administrators, and operators.
+**Capacity planning and scaling:** Start small and pay only for the amount of cloud services capacity needed at any point along the lifecycle of an IoT solution to benefit your organization. This requires the capability of planning for these capacity changes and scaling efficiently.
 
-### Capacity planning and scaling
+**Configuration management:** Any successful enterprise IoT solution requires a strategy to establish and update a device or fleet of device's configuration. A device's configuration includes device properties, connection settings, relationships, and firmware. IoT operators require simple and reliable tools that enable them to update a device or fleet of device's configuration at any point during the device's lifetime.
 
-Starting small and paying only for the amount of cloud services capacity needed at any point along the lifecycle of an IoT solution in production is a benefit for organizations. This requires the capability of planning for these capacity changes and scaling efficiently.
+**Monitoring and alerting:** Use IoT solution logging, monitoring, and alerting systems to determine whether the solution is functioning as expected and to help troubleshoot what is wrong with the solution.
 
-### Configuration management
+**Automation and DevOps:** An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often constrained on hardware such as memory. Automation and DevOps are essential to how the software is loaded, updated, and secured on IoT devices to ensure they operate effectively. To mitigate the effects of vulnerabilities or malfunctions in IoT devices, follow best practices to ensure the software is always up to date. IoT device software, and sometimes hardware, must be updated frequently. DevOps and configuration management becomes an essential part of device monitoring.
 
-Any successful enterprise IoT solution requires a strategy to handle establishing and updating a device or fleet of device's configuration. A device's configuration includes device properties, connection settings, relationships, and firmware. IoT operators require simple and reliable tools that enable them to update a device or fleet of device's configuration at any point during the device's lifetime.
+An IoT architecture consists of a set of foundational layers. Layers are realized by using specific technologies, and the IoT Well-Architected Framework highlights options for designing and realizing each layer. There are also cross-cutting layers that enable the design, building, and running of IoT solutions:
 
-### Monitoring and alerting
+:::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the I o T architecture." border="false":::
 
-Use IoT solution logging, monitoring, and alerting systems to determine whether the solution is functioning as expected and to help troubleshoot what is wrong with the solution.
+The following sections address the layer specifics for the operational security pillar:
 
-### Automation and DevOps
-
-An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often constrained on hardware such as memory. Automation and DevOps are essential to how the software is loaded, updated, and secured on IoT devices to ensure they operate effectively. To mitigate the effects of vulnerabilities or malfunctions in IoT devices, follow best practices to ensure the software is always up to date. IoT device software, and sometimes hardware, must be updated frequently. DevOps and configuration management becomes an essential part of device monitoring.
-
-## Design for solution management and provisioning
+## Solution management and provisioning
 
 Some key design decisions to consider include:
 
@@ -103,7 +99,7 @@ Solution operators and administrators need an interface to interact with the IoT
 - [Controlling access to Azure IoT Hub by using Azure AD](/azure/iot-hub/iot-hub-dev-guide-azure-ad-rbac)
 - [Azure IoT Reference Architecture](/azure/architecture/reference-architectures/iot)
 
-## Design for capacity planning and scaling
+## Capacity planning and scaling
 
 Azure offers many options to meet capacity requirements as your business grows. Capacity planning and scaling for your IoT solution varies depending on choice to build an IoT Central based solution or an IoT Hub solution.
 
@@ -125,7 +121,7 @@ If your solution is tied to a connected product, the business must communicate a
 - [Azure IoT Hub high availability and disaster recovery](/azure/iot-hub/iot-hub-ha-dr)
 - [Plan for capacity - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/scalability/design-capacity)
 
-## Design for configuration management
+## Configuration management
 
 An IoT solution's scale and specific use of a device's configuration influences the design of a configuration management strategy. It's important to automate this strategy as much as possible and ensure a device or fleet of device's configuration is set and updated efficiently as well.
 
@@ -154,7 +150,7 @@ For updating an existing device or IoT Edge device configuration, such as firmwa
 - [Azure IoT Hub Scheduled Jobs](/azure/iot-hub/iot-hub-devguide-jobs#jobs-to-update-device-twin-properties)
 - [Device Update for IoT Hub](/azure/iot-hub-device-update/understand-device-update)
 
-## Design for monitoring and alerts
+## Monitoring and alerts
 
 Monitoring and logging systems help to answer the following operational questions:
 
@@ -240,7 +236,7 @@ Azure Monitor:
 
 [Monitor, diagnose, and troubleshoot Azure IoT Hub disconnects](/azure/iot-hub/iot-hub-troubleshoot-connectivity)
 
-## Design for automation and DevOps
+## Automation and DevOps
 
 Three key considerations for DevOps in IoT solutions are:
 

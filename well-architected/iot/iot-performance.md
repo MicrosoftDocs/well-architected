@@ -19,10 +19,11 @@ A benefit of the cloud is the geographical availability and the capability to sc
 
 ## Prerequisites
 
-To assess your IoT workload using the tenets found in the Microsoft Azure Well-Architected Framework, see the WAF IoT Performance Efficiency Review assessment.
+To assess your IoT workload based on the principles described in the Microsoft Azure Well-Architected Framework, complete the assessment:
+
 <!-- TODO: add link to assessment -->
 
-After you take the assessment, this guide will help you address the key areas that surfaced for your solution.
+After you complete the assessment, this guide helps you address the key performance efficiency recommendations identified for your solution.
 
 ## Principles
 
@@ -36,33 +37,33 @@ This pillar represents the performance relative to the resources used under stat
 
 Overall performance principles can be found at [Principles of the performance efficiency](/azure/architecture/framework/scalability/principles)
 
-### Understand the challenges of distributed IoT architectures
+An IoT solution has several specific challenges to address. An IoT project contains both IoT devices, edge software and cloud software parts and, when deployed, may contain millions of devices connected from multiple regions of the world and sending millions of messages per minute.
 
-An IoT solution has several specific challenges that will need to be addressed. An IoT project contains both IoT devices, edge software and cloud software parts and, when deployed, may contain millions of devices connected from multiple regions of the world and sending millions of messages per minute.
-
-#### Run performance testing in the scope of development
+### Run performance testing in the scope of development
 
 Be aware of the complexity of having sensors, devices and gateways in geographically different locations with different characteristics, speed and reliability of communication. Plan for this in your testing and make sure to test for failure scenarios like network disconnect etc. In addition, plan for stress/load test of device, edge and cloud components of your full IoT Solution.
 
-#### Continuously monitor the application and the supporting infrastructure
+### Continuously monitor the application and the supporting infrastructure
 
 Monitoring an IoT solution with several types of devices in multiple geographical regions requires a distributed monitoring solution that balances the amount of information monitored and sent to the cloud versus the cost in memory and performance of the monitoring (tune the transmission for diagnostics scenarios). Monitoring must occur at multiple levels / layers, exposing metrics etc. on a gateway etc. for industrial or gateway enabled solutions.
 
-#### Invest in capacity planning
+### Invest in capacity planning
 
 An IoT solution can easily start with a few hundred devices or messages and grow to millions of devices and messages per minute. One of the benefits of the cloud is that it can often be scaled to an increase in load. For IoT devices and gateways, the situation is much more complex as these devices are often designed long before the solution is finalized and the need to update the capacity is costly, as devices may need to be replaced. In industrial IoT or similar industries, the lifespan of a device is measured in decades so it's more important than ever in these scenarios to think ahead.
 
 ## Design
 
-This section uses the layers described in the [IoT workload overview](iot-overview.md#architecture-layers) to focus on specific parts of an IoT solution and describe the guidance.
+An IoT architecture consists of a set of foundational layers. Layers are realized by using specific technologies, and the IoT Well-Architected Framework highlights options for designing and realizing each layer. There are also cross-cutting layers that enable the design, building, and running of IoT solutions:
 
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the I o T architecture." border="false":::
 
-### Device and gateway layer
+The following sections address the layer specifics for the performance efficiency pillar:
+
+## Device and gateway layer
 
 Devices are computing devices that connect to an IoT Solution and have the ability to transmit or receive data. Gateways are devices that serve as the connection point between an IoT Solution and other devices. Design solution accordingly, factor in the load and the limits/quotas.
 
-#### Optimize the hardware specifications of devices and gateways
+### Optimize the hardware specifications of devices and gateways
 
 - Optimize the capabilities of your existing hardware by using more efficient languages and frameworks like C and Rust.
 
@@ -80,7 +81,7 @@ Devices are computing devices that connect to an IoT Solution and have the abili
 
 - Consider using the [Azure IoT Embedded C SDK](/azure/iot-hub/iot-hub-device-embedded-c-sdk) when developing for constrained devices or when most of the security and communication stack is already available on the device. Consider using the [Azure IoT device SDK for C](/azure/iot-hub/iot-hub-device-sdk-c-intro) to include all that is needed to connect to the cloud gateway.
 
-#### Categorize individual workloads
+### Categorize individual workloads
 
 - Consider running workloads on the device/edge to use local compute for low latency and not always connected scenarios. Consider running workloads in the cloud to use scale.
 
@@ -92,7 +93,7 @@ Devices are computing devices that connect to an IoT Solution and have the abili
 
 - In the cloud, use IoT Hub routes to separate out different streams of data, with filtering and separate endpoints. IoT Hub message routing will add some latency.
 
-#### Optimize connectivity
+### Optimize connectivity
 
 - Consider using open stateful connections during the operational time of the devices and gateways to minimize the overhead of setting up the connection
 
@@ -106,7 +107,7 @@ Devices are computing devices that connect to an IoT Solution and have the abili
 
 - Consider devices not to connect all at once, for example after a regional power outage. Use truncated exponential backoff with introduced jitter when retrying.
 
-#### Optimize offline scenario
+### Optimize offline scenario
 
 - Consider using Device and Module twins to asynchronously sync state information between devices and the cloud, even when the device isn't currently connected to the cloud gateway. Device and Module twins contain only the current state at a point in time, not any history or removed information.
 
@@ -122,7 +123,7 @@ Devices are computing devices that connect to an IoT Solution and have the abili
 
 - Consider using a separate disk (or disk controller) to store data, so that the device runtime/application can continue to work if running low on storage.
 
-## Ingestion and Communication layer
+## Ingestion and communication layer
 
 Data ingestion is the process used to send data from the devices into the IoT Solution. Next to data ingestion there can be other patterns of communication between devices and the IoT Solution. These include:
 
@@ -138,7 +139,7 @@ Data ingestion is the process used to send data from the devices into the IoT So
 
 For more information about IoT Hub endpoints, see [IoT Hub Dev Guide Endpoints](/azure/iot-hub/iot-hub-devguide-endpoints#list-of-built-in-iot-hub-endpoints)
 
-### Limits and Throttling
+### Limits and throttling
 
 The cloud IoT gateway has well defined limits per unit dependent on the tier of the IoT Hub. These limits are defined as *Quota* for sustained throughput and sustained send rates for the selected IoT Hub tier. Although these quotas are defined as the sustained throughput and send rate, IoT Hub is capable of handling loads above these quotas for short periods of time, to resiliently handle short bursts or load overshoots. This is where another limit becomes important, which is the *Throttle Limit*, which is an hourly or daily upper limit for the load of the service. The throttle limits protect an IoT Hub from too much load for a longer period of time.
 
