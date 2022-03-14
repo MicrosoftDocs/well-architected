@@ -27,6 +27,13 @@ Securing IoT solutions with a [Zero Trust security model](https://www.microsoft.
 
 Guidance for creating zero trust architecture (ZTA) has also been provided by NIST in its [Zero Trust Architecture (nist.gov)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf) document. This document provides general deployment models and uses cases where zero trust could improve an enterprise's overall information technology security posture.
 
+## Prerequisites
+
+To assess your IoT workload based on the principles described in the Microsoft Azure Well-Architected Framework, complete the assessment:
+
+<!-- TODO: add link to assessment -->
+
+After you complete the assessment, this guide helps you address the key security recommendations identified for your solution.
 ## Principles
 
 When you extend the overall Well-Architected Framework security pillar, there are principles that relate specifically to IoT. The [Zero Trust Cybersecurity for the Internet of Things](https://aka.ms/iot-zt-paper) whitepaper describes how to apply a Zero Trust approach to your IoT solutions based on customer experiences and Microsoft's own environment.
@@ -43,7 +50,11 @@ The key security principles that inform a strong security posture that apply to 
 
 - **Security monitoring and response** to detect and respond to emerging threats. Employ proactive monitoring to rapidly identify unauthorized or compromised devices.
 
+An IoT architecture consists of a set of foundational layers. Layers are realized by using specific technologies, and the IoT Well-Architected Framework highlights options for designing and realizing each layer. There are also cross-cutting layers that enable the design, building, and running of IoT solutions:
+
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the I o T architecture." border="false":::
+
+The following sections address the layer specifics for the security pillar:
 
 ## Design
 
