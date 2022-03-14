@@ -9,7 +9,7 @@ ms.service: architecture-center
 ms.subservice: well-architected
 ---
 
-# Well-Architected Framework for IoT - Reliability
+# Reliability in your IoT workload
 
 Designing for reliability in an IoT solution should take into consideration the [foundational layers in the IoT architecture](iot-overview.md). To achieve overall solution reliability, each layer should have acceptable levels of reliability.
 
@@ -314,5 +314,5 @@ The SDKs also implement different connectivity features such as customizable kee
 
 ## Next steps
 
-<!-- TODO: update this link -->
-IoT Well-Architected Framework for IoT - reliability.
+> [!div class="nextstepaction"]
+> [Security in your IoT workload](iot-security.md)
