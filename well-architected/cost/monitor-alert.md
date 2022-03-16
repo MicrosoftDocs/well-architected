@@ -12,6 +12,7 @@ products:
   - azure-cost-management
 ms.custom:
   - article
+  - internal-intro
 ---
 
 # Set budgets and alerts
