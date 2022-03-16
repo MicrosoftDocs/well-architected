@@ -24,9 +24,9 @@ The mission-critical design methodology is underpinned by five key design princi
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The provided code assets illustrate implementations associated with the design principles highlighted in this article.
 
-![Mission critical design principles](./images/mission-critical-design-principles.png "Mission critical design principles")
+![Mission critical design principles](./images/mission-critical-design-principles.svg "Mission critical design principles")
 
-These mission-critical design principles resonate and extend the quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](/azure/architecture/framework/#reliability), [Performance Efficiency](/azure/architecture/framework/scalability/), [Operational Excellence](/azure/architecture/framework/devops/), [Security](/azure/architecture/framework/security/). 
+These mission-critical design principles resonate and extend the quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](/azure/architecture/framework/#reliability), [Security](/azure/architecture/framework/security/), [Cost Optimization](/azure/architecture/framework/cost/), [Operational Excellence](/azure/architecture/framework/devops/), and [Performance Efficiency](/azure/architecture/framework/scalability/). 
 
 ## Reliability
 
@@ -78,7 +78,7 @@ These mission-critical design principles resonate and extend the quality pillars
 
 ## Cost Optimization
 
-There are obvious cost trade-offs associated with introducing greater reliability, which should be carefully considered in the context of workload requirements.
+There are obvious cost tradeoffs associated with introducing greater reliability, which should be carefully considered in the context of workload requirements.
 
 Maximizing reliability can impact the overall financial cost of the solution. For example, the duplication of resources and the distribution of resources across regions to achieve high availability has clear cost implications. To avoid excess costs, don't over-engineer or over-provision beyond the relevant business requirements.
 
