@@ -9,6 +9,8 @@ ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom:
   - article
+  - internal-intro
+  products:
   - azure
   - azure-cost-management
 ---
