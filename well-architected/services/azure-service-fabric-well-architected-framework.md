@@ -99,6 +99,8 @@ As you make design choices for Azure Service Fabric, review the [design principl
 
 > [!div class="checklist"]
 > - Apply Network Security Groups (NSG) to restrict traffic flow between subnets and node types. Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for managing the cluster.
+> - Placeholder (at least 3 required)
+> - Placeholder (at least 3 required)
 
 ### Recommendations
 
@@ -234,6 +236,8 @@ For more information about how Azure Service Fabric can reduce performance issue
 
 > [!div class="checklist"]
 > - Exclude the Service Fabric processes from Windows Defender to improve performance.
+> - Placeholder (at least 3 required)
+> - Placeholder (at least 3 required)
 
 ### Recommendations
 
