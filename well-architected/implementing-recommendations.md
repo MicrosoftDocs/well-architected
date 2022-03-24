@@ -1,5 +1,5 @@
 ---
-title: Implementing Recommendations
+title: Implementing recommendations
 description: A guide for implementing recommendations for Well-Architected Review and Advisor Recommendations for continuous workload improvement.
 author: JoeyBarnes
 ms.author: robbymillsap
