@@ -11,11 +11,19 @@ ms.date: 3/18/2022
 
 # Azure Well-Architected Framework review - Azure Service Fabric
 
-[Azure Service Fabric](/azure/service-fabric/) is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices and containers.
+[Azure Service Fabric](/azure/service-fabric/) is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices and containers. These resources are deployed onto a network-connected set of virtual or physical machines, which is called a **cluster**.
 
-<!-- Tom comment: I'd like to put in a brief discussion of the difference between SFRP and SFMC here and directly state that SFMC will be primarily discussed with some special consideration callouts for SFRP. However, I'm not too familiar with how to explain the differences between the two. Any input would be greatly appreciated! -->
+There are two clusters models in Azure Service Fabric: **standard clusters** and **managed clusters**.
 
-This article provides architectural best practices for Azure Service Fabric. The guidance is based on the five pillars of architectural excellence:
+**Standard clusters** require you to define a cluster resource alongside a number of supporting resources. These resources must be set up correctly upon deployment and throughout the lifecycle of the cluster. Otherwise, the cluster and your services will not function properly.
+
+**Managed clusters** are an evolution of the standard cluster resource model that simplifies your deployment and management operations. The managed clusters model consists of a single Service Fabric managed cluster resource that encapsulates and abstracts away the underlying resources.
+
+This article primarily discusses the **managed cluster** model for simplicity. However, call-outs are made for any special considerations that apply to the **standard cluster** model.
+
+<!-- Tom comment: new question, is this now too much context or is this good? I like the information Mike's suggestion gave, but guidance does recommend the intro be short, and if we're already assuming someone has selected SFMC, do we need to give even a brief explanation of SFMC? Personally, I like this, but I just suspect we'll get a note in review to shorten this -->
+
+In this article, you learn architectural best practices for Azure Service Fabric. The guidance is based on the five pillars of architectural excellence:
 
 * Reliability
 * Security
@@ -23,28 +31,30 @@ This article provides architectural best practices for Azure Service Fabric. The
 * Operational excellence
 * Performance efficiency
 
-<!-- Tom comment: Guidance suggests to keep this short; however, I'm not sure this intro covers enough of the "why would I want to use Azure Service Fabric?" customer question. Is that the job of a Well-Architected Framework? -->
-
-<!-- Tom comment: Somewhere in the intro, I'd like to do an "In this article, you learn: (bullet point list)," but it's not required -->
-
 ## Prerequisites
 
-Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. Check out the [Azure Well-Architected Framework overview page](../../../index.md) to review the five pillars of architectural excellence.
+* Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. Check out the [Azure Well-Architected Framework overview page](../../../index.md) to review the five pillars of architectural excellence.
 
-<!-- Tom comment: I'd like to put something else here; the virtual machines example points to an introductory "run a Linux VM" article. The only thing in the architecture center for Service Fabric is this multiplayer example: https://review.docs.microsoft.com/en-us/gaming/azure/reference-architectures/multiplayer-synchronous-sf?toc=https%3A%2F%2Freview.docs.microsoft.com%2Fen-us%2Fazure%2Farchitecture%2Ftoc.json&bc=https%3A%2F%2Freview.docs.microsoft.com%2Fen-us%2Fazure%2Farchitecture%2Fbread%2Ftoc.json&branch=main> -->
+* Reviewing the [core concepts of Azure Service Fabric](/azure/service-fabric/service-fabric-content-roadmap) and [microservice architecture](/azure/architecture/reference-architectures/microservices/service-fabric) can help you understand the context of the best practices provided in this article.
 
 ## Reliability
 
 The following sections cover design considerations and configuration recommendations, specific to Azure Service Fabric and reliability.
 
-For more information about how Azure Service Fabric creates a highly available and reliable state, reference the [Reliability subsystem](/azure/service-fabric/service-fabric-architecture#reliability-subsystem) included in the [Service Fabric architecture](/azure/service-fabric/service-fabric-architecture).
+When discussing reliability with Azure Service Fabric, it's important to distinguish between *cluster reliability* and *workload reliability*. Cluster reliability would be the domain of a Service Fabric cluster admin, while workload reliability would be responsibility of a developer. Azure Service Fabric has considerations and recommendations for both of these roles. <!-- Tom comment: should I add a sentence like: "In the design checklist below, call-outs will be made to indicate whether each choice is applicable to an admin, a developer, or both. (or maybe: ...applicable to cluster architecture, workload architecture, or both.)" ? Then, of course, I would follow-up by putting those callouts in the list :) -->
 
-<!-- Tom comment: Is this intro blurb sufficient? -->
+For more information about Azure Service Fabric cluster reliability, check out the [capacity planning documentation](/azure/service-fabric/service-fabric-best-practices-capacity-scaling#reliability-levels). <!-- Tom comment: There are probably lots of good links to hunt for the SF docs here. Is this a good pick? Should I put more? -->
+
+For more information about Azure Service Fabric workload reliability, reference the [Reliability subsystem](/azure/service-fabric/service-fabric-architecture#reliability-subsystem) included in the Service Fabric architecture. <!-- Tom comment: Same as above. There are probably lots of good links to put here. Does this one still work? Should we include anything about Reliable Services: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-introduction ? -->
 
 ### Design checklist
 
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture.
 
+<!-- Tom comment: I'll be reviewing this checklist; definitely could use some input on them, as I did not write them -->
+
+**Have you configured Azure Service Fabric with reliability in mind?**
+***
 > [!div class="checklist"]
 > - When using secrets such as connection strings and passwords in Service Fabric services, either retrieve secrets directly from Key Vault at runtime or use the [Service Fabric Secrets Store](/azure/service-fabric/service-fabric-application-secret-store).
 > - Use durability level Silver (5 VMs) or greater for production scenarios.
@@ -91,11 +101,15 @@ The following sections cover design considerations and configuration recommendat
 
 For more information about how Azure Service Fabric creates and maintains a secure state, reference [Azure Service Fabric security](/azure/service-fabric/service-fabric-best-practices-security).
 
-<!-- Tom comment: Is this intro blurb sufficient? -->
+<!-- Tom comment: Expand this pillar intro with information on cluster and workload sides, like reliability -->
 
 ### Design checklist
 
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/security/security-principles) for adding security to the architecture.
+
+<!-- Tom comment: I'll be reviewing this checklist; definitely could use some input on them, as I did not write them -->
+
+<!-- Tom comment: We need at least two more items for the checklist. -->
 
 > [!div class="checklist"]
 > - Apply Network Security Groups (NSG) to restrict traffic flow between subnets and node types. Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for managing the cluster.
@@ -106,7 +120,9 @@ As you make design choices for Azure Service Fabric, review the [design principl
 
 Consider the following recommendation to optimize your Azure Service Fabric configuration for security:
 
-<!-- Tom comment: reminder to change the singular phrasing of this when the table is expanded -->
+<!-- Tom comment: Technically we don't need to expand this, but I'm open to any recommendations on items to add here :) -->
+
+<!-- Tom comment: reminder to change the singular phrasing of this if the table is expanded -->
 
 |Azure Service Fabric Recommendation|Description|
 |-----------------------------------|-----------|
@@ -131,38 +147,29 @@ All built-in policy definitions related to Azure Service Fabric are listed in [B
 
 The following sections cover design considerations and configuration recommendations, specific to Azure Service Fabric and cost optimization.
 
-For more information about Azure Service Fabric pricing details, reference [Azure Service Fabric pricing](https://azure.microsoft.com/pricing/details/service-fabric).
+For more information about Azure Service Fabric pricing details, reference [Azure Service Fabric pricing](https://azure.microsoft.com/pricing/details/service-fabric). <!-- Is this a good link to point to? I didn't find any docs about pricing at a quick glance. -->
 
-<!-- Tom comment: Is this intro blurb sufficient? 
-
-Is this a good link to point to? I didn't find any docs about pricing at a quick glance.
--->
+<!-- Tom comment: Expand this pillar intro with information on cluster and workload sides, like reliability -->
 
 ### Design checklist
 
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/cost/principles) for optimizing the cost of your architecture.
 
-<!-->
+<!-- Tom comment: Happy to take suggestions here! :) I just put in some initial points based on Mike's input; I'll refine them as we go -->
+
 > [!div class="checklist"]
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
--->
+> - Appropriate node type sizing
+> - Appropriate VM SKU selection
+> - Appropriate managed disk tier and size
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize the cost your Azure Service Fabric configuration.
+Explore the following table of recommendations to optimize your Azure Service Fabric configuration for cost:
 
-<!--
-| Recommendation | Benefit |
-|--------|----|
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
--->
+|Azure Service Fabric Recommendation|Description|
+|-----------------------------------|-----------|
+|Avoid VM SKUs with temp disk offerings.|Service Fabric uses managed disks by default, so avoiding temp disk offerings ensures you don't pay for unneeded resources.|
+|Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
 
 For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
 
@@ -180,11 +187,13 @@ The following sections cover design considerations and configuration recommendat
 
 For more information about how Azure Service Fabric creates scalable and reliable production-ready workloads, reference the [Production readiness checklist](/azure/service-fabric/service-fabric-production-readiness-checklist).
 
-<!-- Tom comment: Is this intro blurb sufficient? -->
+<!-- Tom comment: Expand this pillar intro with information on cluster and workload sides, like reliability -->
 
 ### Design checklist
 
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/devops/principles) for operational excellence.
+
+<!-- Tom comment: I'll be reviewing this checklist; definitely could use some input on them, as I did not write them -->
 
 > [!div class="checklist"]
 > - When using secrets such as connection strings and passwords in Service Fabric services, either retrieve secrets directly from Key Vault at runtime or use the [Service Fabric Secrets Store](/azure/service-fabric/service-fabric-application-secret-store).
@@ -230,9 +239,13 @@ The following section covers configuration recommendations, specific to Azure Se
 
 For more information about how Azure Service Fabric can reduce performance issues for your workload with Service Fabric performance counters, reference [Monitoring and diagnostic best practices for Azure Service Fabric](/azure/service-fabric/service-fabric-best-practices-monitoring).
 
-<!-- Tom comment: Is this intro blurb sufficient? -->
+<!-- Tom comment: Expand this pillar intro with information on cluster and workload sides, like reliability -->
 
 ### Design checklist
+
+<!-- Tom comment: I'll be reviewing this checklist; definitely could use some input on them, as I did not write them -->
+
+<!-- Tom comment: We need at least two more items for the checklist. -->
 
 > [!div class="checklist"]
 > - Exclude the Service Fabric processes from Windows Defender to improve performance.
@@ -242,6 +255,8 @@ For more information about how Azure Service Fabric can reduce performance issue
 ### Recommendations
 
 Consider the following recommendation to optimize your Azure Service Fabric configuration for performance efficiency:
+
+<!-- Tom comment: Technically we don't need to expand this, but I'm open to any recommendations on items to add here :) -->
 
 <!-- Tom comment: reminder to change the singular phrasing of this when the table is expanded -->
 
@@ -261,25 +276,16 @@ Tom comment: As per Chad's analysis, there are no Azure policies that apply to c
 
 ## Azure Advisor recommendations
 
-<!-- 6. Azure Advisor recommendations -----------------------------------------
+[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence when using Azure Service Fabric.
 
-    Required    
+### Security
 
-    Follow the Azure Advisor recommendations H2 heading with a sentence about how recommendations might help improve the configuration of the resource. 
-
--->
-
-<!-- Tom comment: ask Chad where to find the list of Azure Advisor security recommendations for Service Fabric; write blurb about how they relate to the Policy definitions -->
+* Service Fabric clusters should have the ClusterProtectionLevel property set to `EncryptAndSign`.
+* Service Fabric clusters should only use Azure Active Directory for client authentication.
 
 ## Additional resources
 
-<!-- 7. Additional resources ----------------------------------------------------
-
-    Optional
-
-    The resources should be separated in sections. The H3 heading should indicate the purpose of the resource. 
-
--->
+<!-- Tom comment: This is an optional section, but it's probably good we put some links to supporting material here. I'll hunt around, but any suggestions are welcome! :) -->
 
 <!--
 - \[\<link text>]\(\<link>)
@@ -287,6 +293,8 @@ Tom comment: As per Chad's analysis, there are no Azure policies that apply to c
 -->
 
 ## Next steps
+
+<!-- I put links to the managed cluster quickstarts for ARM and portal. I'm currently working on a learn module, so I can probably update this with that link later. Any other suggestions are welcome :) -->
 
 <!-- 8. Next steps ------------------------------------------------------------
 
@@ -303,23 +311,9 @@ Tom comment: As per Chad's analysis, there are no Azure policies that apply to c
 
 -->
 
-<!--
-- \[\<link text>]\(\<link>)
--->
+Use these recommendations as you create your Service Fabric managed cluster using an ARM template or through the Azure portal:
 
-<!-- Tom comment: Just keeping this comment around for my own reference...
-
-    Required    
-
-    A design checklist is always the first H3 in each pillar section.
-
-    Make sure the considerations you document:
-    - Are presented in a checklist format.
-    - Map to the design principles. Identify the appropriate principle, and then think about your recommendation in relation to it.
-    - Focus on the salient features for that pillar as they relate to the product.
-    - Provide full coverage of the design principles. (If not all design principles exist, cover no fewer than three design principles.)
--->
-
-<!-- Tom comment: Clean up four old docs after main one completed -->
+* [Quickstart: Deploy a Service Fabric managed cluster with an Azure Resource Manager template](/azure/service-fabric/quickstart-managed-cluster-template)
+* [Quickstart: Deploy a Service Fabric managed cluster using the Azure portal](/azure/service-fabric/quickstart-managed-cluster-portal)
 
 <!-- Remove all the comments in this template before you sign off or merge to the main branch. -->
