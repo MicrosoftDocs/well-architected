@@ -18,7 +18,7 @@ categories:
   - management-and-governance
 ---
 
-# Implementing Recommendations
+# Implementing recommendations
 
 ## Overview
 
