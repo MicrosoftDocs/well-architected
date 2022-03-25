@@ -204,6 +204,7 @@ Relevant Microsoft technologies include:
 - [Azure Web Apps](/azure/app-service/overview)
 - [Azure Power Apps](/powerapps/powerapps-overview)
 - [Power BI](/power-bi/fundamentals/power-bi-overview)
+- [Dynamics 365 Connected Field Service](/dynamics365/field-service/connected-field-service)
 
 ### Integration layer
 
@@ -211,13 +212,17 @@ This layer enables interaction with systems outside this IoT solution by using m
 
 Relevant Microsoft technologies include:
 
-[Azure API management](/azure/api-management/)
+- [Azure Logic Apps](/azure/logic-apps/logic-apps-overview)
+- [Azure Functions](/azure/azure-functions/functions-overview)
+- [Azure API management](/azure/api-management/)
+- [Azure Event Grid](/azure/event-grid/overview)
+- [Power Automate](/power-automate/getting-started)
 
 ## Cross-cutting activities
 
 These activities enable you to design, build, deploy, and monitor IoT solutions. The activities help to ensure your IoT solutions meet the requirements set at design time and to adjust for changes in requirements over time. DevOps enables formerly siloed roles—development, operations, quality engineering, and security to coordinate and collaborate to produce better, more reliable, and agile products. DevOps is well-known in the software development industry but can be applied to any product or process development and operations process.
 
-:::image type="content" source="media/devops-lifecycle.jpg" alt-text="Diagram that shows how DevOps continuously delivers value." border="false":::
+:::image type="content" source="media/devops-lifecycle.png" alt-text="Diagram that shows how DevOps continuously delivers value." border="false":::
 
 Teams who adopt a DevOps culture along with DevOps practices and tools gain the ability to better respond to customer needs, increase confidence in the applications and products they build, and achieve business goals faster.
 
