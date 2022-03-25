@@ -41,7 +41,9 @@ In this article, you learn architectural best practices for Azure Service Fabric
 
 The following sections cover design considerations and configuration recommendations, specific to Azure Service Fabric and reliability.
 
-When discussing reliability with Azure Service Fabric, it's important to distinguish between *cluster reliability* and *workload reliability*. Cluster reliability is the domain of a Service Fabric cluster admin, while workload reliability is the responsibility of a developer. Azure Service Fabric has considerations and recommendations for both of these roles. <!-- Tom comment: should I add a sentence like: "In the design checklist below, call-outs will be made to indicate whether each choice is applicable to an admin, a developer, or both. (or maybe: ...applicable to cluster architecture, workload architecture, or both.)" ? Then, of course, I would follow-up by putting those callouts in the list :) -->
+When discussing reliability with Azure Service Fabric, it's important to distinguish between *cluster reliability* and *workload reliability*. Cluster reliability is the domain of a Service Fabric cluster admin, while workload reliability is the responsibility of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
+
+In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
 For more information about Azure Service Fabric cluster reliability, check out the [capacity planning documentation](/azure/service-fabric/service-fabric-best-practices-capacity-scaling#reliability-levels). <!-- Tom comment: There are probably lots of good links to hunt for the SF docs here. Is this a good pick? Should I put more? -->
 
@@ -52,6 +54,8 @@ For more information about Azure Service Fabric workload reliability, reference 
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture.
 
 <!-- Tom comment: I'll be reviewing this checklist; definitely could use some input on them, as I did not write them -->
+
+<!-- Tom comment: Add architecture responsibility call-outs -->
 
 **Have you configured Azure Service Fabric with reliability in mind?**
 ***
@@ -75,6 +79,8 @@ As you make design choices for Azure Service Fabric, review the [design principl
 
 Explore the following table of recommendations to optimize your Azure Service Fabric configuration for service reliability:
 
+<!-- Tom comment: Add architecture responsibility call-outs -->
+
 |Azure Service Fabric Recommendation|Benefit|
 |-----------------------------------|-----------|
 |Use durability level Silver (5 VMs) or greater for production scenarios.|This level ensures the Azure infrastructure communicates with the Service Fabric controller on scheduling reboots, and so on.|
@@ -97,7 +103,7 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 
 For more information about Azure Service Fabric cluster security, check out [Service Fabric cluster security scenarios](/azure/service-fabric/service-fabric-cluster-security). <!-- Tom comment: There are probably lots of good links to hunt for the SF docs here. Is this a good pick? Should I put more? -->
 
-For more information about Azure Service Fabric workload security, reference [Service Fabric application and service security](/azure/service-fabric/service-fabric-application-and-service-security). <!-- Tom comment: Same as above. There are probably lots of good links to put here
+For more information about Azure Service Fabric workload security, reference [Service Fabric application and service security](/azure/service-fabric/service-fabric-application-and-service-security). <!-- Tom comment: Same as above. There are probably lots of good links to put here -->
 
 ### Design checklist
 
@@ -111,6 +117,10 @@ As you make design choices for Azure Service Fabric, review the [design principl
 > - **Cluster architecture:** Apply Network Security Groups (NSG) to restrict traffic flow between subnets and node types. Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for managing the cluster.
 > - **Cluster architecture:** Use Common Name (CN) certificates and avoid using self-signed certificates.
 > - **Cluster architecture:** Use primary and secondary certificates to avoid lockouts.
+> - **Cluster architecture:** When using the Service Fabric Secret Store to distribute secrets, use a separate data encipherment certificate to encrypt the values.
+> - **Cluster architecture:** Deploy certificates by adding them to Azure Key Vault and referencing the URI in your deployment.
+> - **Cluster architecture:** Enable Azure Active Directory integration for your cluster to ensure users can access Service Fabric Explorer using their AAD credentials. Don't distribute the cluster certificate among users to access Explorer.
+> - **Cluster and workload architectures:** Create a process for monitoring the expiration date of certificates.
 > - **Cluster and workload architectures:** Maintain separate clusters for development, staging, and production.
 
 ### Recommendations
@@ -180,14 +190,6 @@ Explore the following table of recommendations to optimize your Azure Service Fa
 
 For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
 
-<!-- Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md). 
-
-Tom comment: So if there are no Azure Advisor recommendations, do we simply remove this Azure Advisor callout? -->
-
-<!-- ### Policy definitions
-
-Tom comment: As per Chad's analysis, there are no Azure policies that apply to cost optimization; should this H3 be removed or should this H3 be left in with a callout that there are no policy considerations? -->
-
 ## Operational excellence
 
 The following sections cover design considerations and configuration recommendations, specific to Azure Service Fabric and operational excellence.
@@ -211,15 +213,8 @@ As you make design choices for Azure Service Fabric, review the [design principl
 > - Use durability level Silver (5 VMs) or greater for production scenarios.
 > - For critical workloads, consider using Availability Zones for your Service Fabric clusters.
 > - For production scenarios, use the Standard tier load balancer. The Basic SKU is free, but doesn't have an SLA.
-> - Apply Network Security Groups (NSG) to restrict traffic flow between subnets and node types. Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for managing the cluster.
-> - Review the [Service Fabric production readiness checklist](/azure/service-fabric/service-fabric-production-readiness-checklist).
-> - When using the Service Fabric Secret Store to distribute secrets, use a separate data encipherment certificate to encrypt the values.
-> - Don't use self-signed certificates for production scenarios. Either provision a certificate through your PKI or use a public certificate authority.
-> - Deploy certificates by adding them to Azure Key Vault and referencing the URI in your deployment.
-> - Create a process for monitoring the expiration date of certificates.
-> - Enable Azure Active Directory integration for your cluster to ensure users can access Service Fabric Explorer using their AAD credentials. Don't distribute the cluster certificate among users to access Explorer.
-> - Exclude the Service Fabric processes from Windows Defender to improve performance.
 > - Keep the different node types and gateway services on different subnets.
+> - Review the [Service Fabric production readiness checklist](/azure/service-fabric/service-fabric-production-readiness-checklist).
 
 ### Recommendations
 
@@ -235,14 +230,6 @@ Explore the following table of recommendations to optimize your Azure Service Fa
 |Exclude the Service Fabric processes from Windows Defender to improve performance.|By default, Windows Defender antivirus is installed on Windows Server 2016 and 2019. To reduce any performance impact and resource consumption overhead incurred by Windows Defender, and if your security policies allow you to exclude processes and paths for open-source software, you can [exclude](/azure/service-fabric/).|
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
-
-<!-- Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md). 
-
-Tom comment: So if there are no Azure Advisor recommendations, do we simply remove this Azure Advisor callout? -->
-
-<!-- ### Policy definitions
-
-Tom comment: As per Chad's analysis, there are no Azure policies that apply to cost optimization; should this H3 be removed or should this H3 be left in with a callout that there are no policy considerations? -->
 
 **Have you configured Azure Service Fabric with performance efficiency in mind?**
 ***
@@ -279,14 +266,6 @@ Consider the following recommendation to optimize your Azure Service Fabric conf
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
 
-<!-- Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md). 
-
-Tom comment: So if there are no Azure Advisor recommendations, do we simply remove this Azure Advisor callout? -->
-
-<!-- ### Policy definitions
-
-Tom comment: As per Chad's analysis, there are no Azure policies that apply to cost optimization; should this H3 be removed or should this H3 be left in with a callout that there are no policy considerations? -->
-
 ## Azure Advisor recommendations
 
 [Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence when using Azure Service Fabric.
@@ -298,35 +277,41 @@ Tom comment: As per Chad's analysis, there are no Azure policies that apply to c
 
 ## Additional resources
 
-<!-- Tom comment: This is an optional section, but it's probably good we put some links to supporting material here. I'll hunt around, but any suggestions are welcome! :) -->
+### Reliability
 
-<!--
-- \[\<link text>]\(\<link>)
-- \[\<link-text>]\(\<link>)
--->
+For cluster reliability, review the [best practices for cluster planning](/azure/service-fabric/service-fabric-best-practices-capacity-scaling) and the [supporting how-to guide](/azure/service-fabric/service-fabric-cluster-capacity).
+
+For workload reliability, consider using [Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction) or [Reliable Actors](/azure/service-fabric/service-fabric-reliable-actors-introduction) in your workloads.
+
+### Security
+
+Review the [Azure Service Fabric security best practices](/azure/service-fabric/service-fabric-best-practices-security).
+
+For cluster security, see some of the security-themed how-to guides, such as [Set up Azure Active Directory for client authentication](/azure/service-fabric/service-fabric-cluster-creation-setup-aad) and [Deploy a Service Fabric cluster that uses certificate common name instead of thumbprint](/azure/service-fabric/service-fabric-create-cluster-using-cert-cn).
+
+For workload security, check out the catalog of application security how-to guides, like [Manage encrypted secrets in Service Fabric applications](/azure/service-fabric/service-fabric-application-secret-management).
+
+### Cost Optimization
+
+For cluster cost optimization, go to the Azure pricing calculator and select **Azure Service Fabric** from the available products. You can test different configuration and payment plans in the calculator.
+
+For workload cost optimization, check out the [example cost calculation process for application planning](/azure/service-fabric/service-fabric-capacity-planning#use-a-spreadsheet-for-cost-calculation).
+
+### Operational Excellence
+
+For cluster operational excellence, 
+
+For workload operational excellence,
+
+### Performance Efficiency
+
+For cluster performance efficiency, 
+
+For workload performance efficiency,
 
 ## Next steps
-
-<!-- I put links to the managed cluster quickstarts for ARM and portal. I'm currently working on a learn module, so I can probably update this with that link later. Any other suggestions are welcome :) -->
-
-<!-- 8. Next steps ------------------------------------------------------------
-
-    Required
-
-    Add a context sentence for the following links: 
-
-    Best practices:
-        - Provide at least one next step and no more than three.
-        - Include some context, so the customer can determine why they would select the link.
-        - Do not use a "More information" or "See also" section.
-        - Do provide a link to relevant quickstarts in the product documentation.
-        - Do provide a link to a Learn module that covers resource provisioning.
-
--->
 
 Use these recommendations as you create your Service Fabric managed cluster using an ARM template or through the Azure portal:
 
 * [Quickstart: Deploy a Service Fabric managed cluster with an Azure Resource Manager template](/azure/service-fabric/quickstart-managed-cluster-template)
 * [Quickstart: Deploy a Service Fabric managed cluster using the Azure portal](/azure/service-fabric/quickstart-managed-cluster-portal)
-
-<!-- Remove all the comments in this template before you sign off or merge to the main branch. -->
