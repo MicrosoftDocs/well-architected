@@ -87,54 +87,51 @@ Explore the following table of recommendations to optimize your Azure Service Fa
 
 For more suggestions, see [Principles of the reliability pillar](/azure/architecture/framework/resiliency/principles).
 
-<!-- Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md). 
-
-Tom comment: So if there are no Azure Advisor recommendations, do we simply remove this Azure Advisor callout? -->
-
-<!-- ### Policy definitions
-
-Tom comment: As per Chad's analysis, there are no Azure policies that apply to reliability; should this H3 be removed or should this H3 be left in with a callout that there are no policy considerations? -->
-
 ## Security
 
 The following sections cover design considerations and configuration recommendations, specific to Azure Service Fabric and security.
 
-For more information about how Azure Service Fabric creates and maintains a secure state, reference [Azure Service Fabric security](/azure/service-fabric/service-fabric-best-practices-security).
+When discussing security with Azure Service Fabric, it's important to distinguish between *cluster security* and *workload security*. Cluster reliability is the domain of a Service Fabric cluster admin, while workload reliability is the responsibility of a developer. Azure Service Fabric has considerations and recommendations for both of these roles.
 
-<!-- Tom comment: Expand this pillar intro with information on cluster and workload sides, like reliability -->
+In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
+
+For more information about Azure Service Fabric cluster security, check out [Service Fabric cluster security scenarios](/azure/service-fabric/service-fabric-cluster-security). <!-- Tom comment: There are probably lots of good links to hunt for the SF docs here. Is this a good pick? Should I put more? -->
+
+For more information about Azure Service Fabric workload security, reference [Service Fabric application and service security](/azure/service-fabric/service-fabric-application-and-service-security). <!-- Tom comment: Same as above. There are probably lots of good links to put here
 
 ### Design checklist
 
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/security/security-principles) for adding security to the architecture.
 
-<!-- Tom comment: I'll be reviewing this checklist; definitely could use some input on them, as I did not write them -->
-
-<!-- Tom comment: We need at least two more items for the checklist. -->
+<!-- Tom comment: I'll be reviewing this checklist; definitely could use some input on them. -->
 
 **Have you configured Azure Service Fabric with security in mind?**
 ***
 > [!div class="checklist"]
-> - Apply Network Security Groups (NSG) to restrict traffic flow between subnets and node types. Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for managing the cluster.
-> - Placeholder (at least 3 required)
-> - Placeholder (at least 3 required)
+> - **Cluster architecture:** Apply Network Security Groups (NSG) to restrict traffic flow between subnets and node types. Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for managing the cluster.
+> - **Cluster architecture:** Use Common Name (CN) certificates and avoid using self-signed certificates.
+> - **Cluster architecture:** Use primary and secondary certificates to avoid lockouts.
+> - **Cluster and workload architectures:** Maintain separate clusters for development, staging, and production.
 
 ### Recommendations
 
-Consider the following recommendation to optimize your Azure Service Fabric configuration for security:
-
-<!-- Tom comment: Technically we don't need to expand this, but I'm open to any recommendations on items to add here :) -->
-
-<!-- Tom comment: reminder to change the singular phrasing of this if the table is expanded -->
+Consider the following recommendations to optimize your Azure Service Fabric configuration for security:
 
 |Azure Service Fabric Recommendation|Benefit|
 |-----------------------------------|-----------|
-|Apply Network Security Groups (NSG) to restrict traffic flow between subnets and node types.|For example, you may have an API Management instance (one subnet), a frontend subnet (exposing a website directly), and a backend subnet (accessible only to frontend), each implemented on a different virtual machine scale set.|
+|**Cluster architecture:** Apply Network Security Groups (NSG) to restrict traffic flow between subnets and node types.|For example, you may have an API Management instance (one subnet), a frontend subnet (exposing a website directly), and a backend subnet (accessible only to frontend), each implemented on a different virtual machine scale set.|
+|**Cluster architecture:** Create certificate authority issued Service Fabric certificate.||
+|**Cluster architecture:** Deploy Key Vault certificates to Service Fabric cluster virtual machine scale sets.||
+|**Cluster architecture:** Apply an Access Control List (ACL) to your certificate for your Service Fabric cluster.||
+|**Cluster architecture:** Secure your Service Fabric cluster certificates by Common Name.||
+|**Workload architecture:** Encrypt Service Fabric package secret values.||
+|**Workload architecture:** Include certificate in Service Fabric applications.||
+|**Workload architecture:** Authenticate Service Fabric applications to Azure Resources using Managed Service Identity (MSI).||
+|**Cluster and workload architecture:** Follow [Service Fabric best practices](/azure/service-fabric/service-fabric-best-practices-security#hosting-untrusted-applications-in-a-service-fabric-cluster) when hosting untrusted applications.||
 
 For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
 
-Azure Advisor helps you ensure and improve the security of Azure Service Fabric. Review the recommendations.
-
-<!-- Tom comment: ask Chad where to find the list of Azure Advisor security recommendations for Service Fabric; write blurb about how they relate to the Policy definitions -->
+Azure Advisor helps you ensure and improve the security of Azure Service Fabric. You can review the recommendations in the [Azure Advisor section of this article](#azure-advisor-recommendations).
 
 ### Policy definitions
 
@@ -149,7 +146,13 @@ All built-in policy definitions related to Azure Service Fabric are listed in [B
 
 The following sections cover design considerations and configuration recommendations, specific to Azure Service Fabric and cost optimization.
 
+When discussing cost optimization with Azure Service Fabric, it's important to distinguish between *cost of cluster resources* and *cost of workload resources*. Cluster resources are the domain of a Service Fabric cluster admin, while workload resources are the responsibility of a developer. Azure Service Fabric has considerations and recommendations for both of these roles. <!-- I tried to follow the pattern here for the sake of consistency, but I'm actually not sure this is true for cost optimization. Cost of resources is basically solely a cluster admin's job, right? Knowing workload requirements would be a developer's responsibility, but actually provisioning those resource and handling the costs wouldn't, correct? -->
+
+<!-- Tom comment: should I add a sentence like: "In the design checklist below, call-outs will be made to indicate whether each choice is applicable to an admin, a developer, or both. (or maybe: ...applicable to cluster architecture, workload architecture, or both.)" ? Then, of course, I would follow-up by putting those callouts in the list :) -->
+
 For more information about Azure Service Fabric pricing details, reference [Azure Service Fabric pricing](https://azure.microsoft.com/pricing/details/service-fabric). <!-- Is this a good link to point to? I didn't find any docs about pricing at a quick glance. -->
+
+<!-- Tom comment: I don't think there are separate pricing docs to point to for cluster vs. workload, right? Similar to my comment above, this pillar seems like it's mostly a cluster admin's responsibility. No problem if I'm wrong. Just need the appropriate links! -->
 
 <!-- Tom comment: Expand this pillar intro with information on cluster and workload sides, like reliability -->
 
@@ -188,6 +191,8 @@ Tom comment: As per Chad's analysis, there are no Azure policies that apply to c
 ## Operational excellence
 
 The following sections cover design considerations and configuration recommendations, specific to Azure Service Fabric and operational excellence.
+
+When discussing security with Azure Service Fabric, it's important to distinguish between *cluster operation* and *workload operation*. Cluster operation is the domain of a Service Fabric cluster admin, while workload operation is the responsibility of a developer. Azure Service Fabric has considerations and recommendations for both of these roles. <!-- Tom comment: should I add a sentence like: "In the design checklist below, call-outs will be made to indicate whether each choice is applicable to an admin, a developer, or both. (or maybe: ...applicable to cluster architecture, workload architecture, or both.)" ? Then, of course, I would follow-up by putting those callouts in the list :) -->
 
 For more information about how Azure Service Fabric creates scalable and reliable production-ready workloads, reference the [Production readiness checklist](/azure/service-fabric/service-fabric-production-readiness-checklist).
 
