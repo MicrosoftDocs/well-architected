@@ -40,7 +40,7 @@ The following principles apply to the operational excellence pillar in an IoT wo
 
 **Device management:** Any successful enterprise IoT solution requires a strategy to establish and update a device or fleet of device's configuration. A device's configuration includes device properties, connection settings, relationships, and firmware. IoT operators require simple and reliable tools that enable them to update a device or fleet of device's configuration at any point during the device's lifetime.
 
-**Monitoring and alerting:** Use IoT solution logging, monitoring, and alerting systems to determine whether the solution is functioning as expected and to help troubleshoot what is wrong throughout the lifecycle the solution.
+**Monitoring and alerting:** Use IoT solution logging, monitoring, and alerting systems to determine whether the solution is functioning as expected and to help troubleshoot what is wrong throughout the lifecycle of the solution.
 
 **Automation and DevOps:** An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often constrained in hardware, for example having limited memory or compute capacity. Automation and DevOps are essential to ensure that OS and software for IoT devices and gateways are properly uploaded and deployed to minimize any operational downtime. Automation and DevOps becomes an essential aspect for monitoring and managing the lifecycle of IoT devices.
 
