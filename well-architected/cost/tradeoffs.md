@@ -14,6 +14,7 @@ categories:
   - cost-optimization
 ms.custom:
   - article
+  - internal-intro
 ---
 
 # Tradeoffs for cost
