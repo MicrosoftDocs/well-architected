@@ -295,5 +295,5 @@ Use Azure Monitor as it lets you monitor the state of your IoT Hub environment t
 
 ## Next steps
 
-[!div class="nextstepaction"]
-[Security in your IoT workload](iot-security.md)
+> [!div class="nextstepaction"]
+> [Security in your IoT workload](iot-security.md)
