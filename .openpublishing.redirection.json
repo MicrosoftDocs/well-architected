@@ -1,0 +1,14 @@
+{
+  "redirections": [
+    {
+      "source_path": "well-architected/services/networking/application-gateway-v2/operational-excellence.md",
+      "redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "well-architected/services/networking/application-gateway-v2/reliability.md",
+      "redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
+      "redirect_document_id": false
+    }
+  ]
+}
