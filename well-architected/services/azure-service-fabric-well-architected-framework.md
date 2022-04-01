@@ -56,7 +56,7 @@ As you make design choices for Azure Service Fabric, review the [design principl
 > [!div class="checklist"]
 > - **Cluster architecture:** Use [Standard SKU](/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) for production scenarios. **Standard cluster:** Use [durability level Silver](/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster) (5 VMs) or greater for production scenarios.
 > - **Cluster architecture:** For critical workloads, consider using [Availability Zones](/azure/service-fabric/how-to-managed-cluster-availability-zones) for your Service Fabric clusters.
-> - **Cluster architecture:** For production scenarios, use the Standard tier load balancer. Managed clusters create an Azure public Standard Load Balancer and fully qualified domain name with a static public IP for both the primary and secondary node types. You can also [bring your own load balancer](/azure/service-fabric/how-to-managed-cluster-networking#bring-your-own-azure-load-balancer), which supports the Basic SKU load balancer.
+> - **Cluster architecture:** For production scenarios, use the Standard tier load balancer. Managed clusters create an Azure public Standard Load Balancer and fully qualified domain name with a static public IP for both the primary and secondary node types. You can also [bring your own load balancer](/azure/service-fabric/how-to-managed-cluster-networking#bring-your-own-azure-load-balancer), which supports both Basic and Standard SKU load balancers.
 > - **Cluster architecture:** Create additional, secondary node types for your workloads.
 
 ### Recommendations
