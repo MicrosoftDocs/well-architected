@@ -21,8 +21,6 @@ There are two clusters models in Azure Service Fabric: **standard clusters** and
 
 This article primarily discusses the **managed cluster** model for simplicity. However, call-outs are made for any special considerations that apply to the **standard cluster** model.
 
-<!-- Tom comment: new question, is this now too much context or is this good? I like the information Mike's suggestion gave, but guidance does recommend the intro be short, and if we're already assuming someone has selected SFMC, do we need to give even a brief explanation of SFMC? Personally, I like this, but I just suspect we'll get a note in review to shorten this -->
-
 In this article, you learn architectural best practices for Azure Service Fabric. The guidance is based on the five pillars of architectural excellence:
 
 * Reliability
@@ -89,8 +87,6 @@ For more information about Azure Service Fabric workload security, reference [Se
 ### Design checklist
 
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/security/security-principles) for adding security to the architecture.
-
-<!-- Tom comment: I'll be reviewing this checklist; definitely could use some input on them. -->
 
 **Have you configured Azure Service Fabric with security in mind?**
 ***
@@ -181,10 +177,12 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/devops/principles) for operational excellence.
 
 > [!div class="checklist"]
-> - **Cluster architecture:** Use [Standard SKU](/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) for production scenarios. **Standard cluster:** Use [durability level Silver](/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster) (5 VMs) or greater for production scenarios.
-> - **Cluster architecture:** For critical workloads, consider using [Availability Zones](/azure/service-fabric/how-to-managed-cluster-availability-zones) for your Service Fabric clusters.
-> - **Cluster architecture:** For production scenarios, use the Standard tier load balancer. Managed clusters create an Azure public Standard Load Balancer and fully qualified domain name with a static public IP for both the primary and secondary node types. You can also [bring your own load balancer](/azure/service-fabric/how-to-managed-cluster-networking#bring-your-own-azure-load-balancer), which supports both Basic and Standard SKU load balancers.
-> - **Cluster architecture:** Create additional, secondary node types for your workloads.
+> - **Cluster architecture:** Prepare a [cluster monitoring solution](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).
+> - **Cluster architecture:** Review the [cluster health policies](/azure/service-fabric/service-fabric-health-introduction#health-policies) in the Service Fabric health model.
+> - **Workload architecture:** Prepare an [application monitoring solution](/azure/service-fabric/service-fabric-best-practices-monitoring#application-monitoring).
+> - **Workload architecture:** Review the [application and service type health policies](/azure/service-fabric/service-fabric-health-introduction#health-policies) in the Service Fabric health model.
+> - **Cluster architecture and workload architecture:** Prepare an [infrastructure monitoring solution](/azure/service-fabric/service-fabric-best-practices-monitoring#infrastructure-monitoring).
+> - **Cluster architecture and workload architecture:** Design your cluster with build and release pipelines for continuous integration and deployment.
 
 ### Recommendations
 
@@ -192,8 +190,12 @@ Explore the following table of recommendations to optimize your Azure Service Fa
 
 |Azure Service Fabric Recommendation|Benefit|
 |-----------------------------------|-----------|
+|**Cluster architecture:** Use [Azure Monitor to monitor cluster-level events](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).|Azure Monitor integrates well with the Azure platform, including Service Fabric.|
+|**Workload architecture:** Use [Application Insights to monitor your workloads](/azure/service-fabric/service-fabric-best-practices-monitoring#application-monitoring).|Application Insights integrates with the Azure platform, including Service Fabric.|
 |**Cluster and workload architectures:** Create a process for monitoring the expiration date of client certificates.|For example, Key Vault offers a feature that sends an email when `x%` of the certificate's lifespan has elapsed.|
 |**Cluster and workload architectures:** For pre-production clusters use [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-chaos-experiments) to drill service disruption on a Virtual Machine Scale Set instance failure.|Practicing service disruption scenarios will help you understand what is at-risk in your infrastructure and how to best mitigate the issues if they arise.|
+|**Cluster architecture and workload architecture:** Use [Azure Monitor to monitor cluster and container infrastructure events](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).|Azure Monitor integrates well with the Azure platform, including Service Fabric.|
+|**Cluster architecture and workload architecture:** Use [Azure Pipelines for your continuous integration and deployment solution](/azure/service-fabric/service-fabric-tutorial-deploy-app-with-cicd-vsts).|Azure Pipelines integrates well with the Azure platform, including Service Fabric.|
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
 
@@ -214,6 +216,7 @@ For more information about how Azure Service Fabric can reduce performance issue
 > [!div class="checklist"]
 > - **Cluster architecture:** [Exclude the Service Fabric processes from Windows Defender](/azure/service-fabric/service-fabric-best-practices-security#windows-defender) to improve performance.
 > - **Cluster architecture:** Select appropriate VM SKU.
+> - **Workload architecture:** Decide what [programming model](/azure/service-fabric/service-fabric-choose-framework) you will use for your services.
 > - **Cluster and workload architecture:** Use appropriate managed disk tier and size.
 
 ### Recommendations
@@ -226,6 +229,8 @@ Consider the following recommendations to optimize your Azure Service Fabric con
 |**Cluster architecture:** Consider using [Autoscaling](/azure/service-fabric/how-to-managed-cluster-autoscale) for your cluster.|Autoscaling gives great elasticity and enables addition or reduction of nodes on demand on a secondary node type. This automated and elastic behavior reduces the management overhead and potential business impact by monitoring and optimizing the amount of nodes servicing your workload.|
 |**Cluster architecture:** Consider using [Accelerated Networking](/azure/service-fabric/how-to-managed-cluster-networking#enable-accelerated-networking).|Accelerated networking enables a high-performance path that bypasses the host from the data path, which reduces latency, jitter, and CPU utilization for the most demanding network workloads.|
 |**Cluster architecture:** Considering using [encryption at host](/azure/service-fabric/how-to-managed-cluster-enable-disk-encryption?tabs=azure-powershell#enable-encryption-at-host) instead of Azure Disk Encryption (ADE).|This encryption method improves on ADE by supporting all OS types and images, including custom images, for your VMs by encrypting data in the Azure Storage service.|
+|**Workload architecture:** Review the [Service Fabric programming models](/azure/service-fabric/service-fabric-choose-framework) to decide what model would best suit your services.|Service Fabric supports several programming models. Each come with their own advantages and disadvantages. Knowing about the available programming models can help you make the best choices for designing your services.|
+|**Cluster and workload architecture:** Review the [different ways you can scale your solution in Service Fabric](/azure/service-fabric/service-fabric-concepts-scalability).|You can use scaling to enable maximum resource utilization for your solution.|
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
 
