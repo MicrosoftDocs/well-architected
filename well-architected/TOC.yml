@@ -395,10 +395,10 @@ items:
                 href: hybrid/hybrid-security.md
       - name: Services
         items:
-          - name: Azure Service Fabric
-            href: services/azure-service-fabric-well-architected-framework.md
           - name: Compute
             items:
+              - name: Azure Service Fabric
+                href: services/azure-service-fabric-well-architected-framework.md
               - name: Azure App Service
                 items:
                   - name: Reliability
