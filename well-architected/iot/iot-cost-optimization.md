@@ -79,7 +79,7 @@ When you evaluate infrastructure costs, account for the basics first: storage, c
 
 Furthermore, don't overlook the long-term operational costs that increase in parallel with infrastructure costs. Examples include employing technicians to operate the solution, vendors to manage non-public clouds, and customer support teams.
 
-Your costs will depend greatly on the *chattiness* of your devices and the size of the messages your devices send. Chatty devices send many messages to the cloud every minute, while others are relatively quiet, only sending data every hour or more. Clarity about device chattiness and message size helps reduce the likelihood of over-provisioning, which leads to unused cloud capacity, or under-provisioning, which leads to elastic scale challenges. As you plan your IoT solution, consider carefully the size and frequency of the message payloads to ensure your infrastructure is the correct size for where you're today and ready to scale with you. Be sure to consider the cost of developing new features as compared to using a *Platform as a Service* (PaaS) or *Application Platform as a Service* (aPaaS) based solution.
+Your costs will depend greatly on the *chattiness* of your devices and the size of the messages your devices send. Chatty devices send many messages to the cloud every minute, while others are relatively quiet, only sending data every hour or more. Clarity about device chattiness and message size helps reduce the likelihood of over-provisioning, which leads to unused cloud capacity, or under-provisioning, which leads to elastic scale challenges. As you plan your IoT solution, consider carefully the size and frequency of the message payloads to ensure your infrastructure is the correct size for where you are today and ready to scale with you. Be sure to consider the cost of developing new features as compared to using a *Platform as a Service* (PaaS) or *Application Platform as a Service* (aPaaS) based solution.
 
 ### Establish strategies for IoT technology ecosystems
 
@@ -115,7 +115,7 @@ Understand [the difference between Application Platform as a Service (aPaaS) and
 
 ### Define implementation plans for each IoT architecture layer
 
-[IoT Well-Architected Framework architecture layers](iot-overview.md) describes the elements of an IoT architecture. It enables you to easily review cost options for each layer in a complex IoT architecture. Cost optimization for IoT Well-Architected Framework provides [actionable guides for the IoT architecture layer implementations](#design).
+[Overview of an IoT workload - IoT Well-Architected Framework](iot-overview.md) describes the elements of an IoT architecture. It enables you to easily review cost options for each layer in a complex IoT architecture. Cost optimization for IoT Well-Architected Framework provides [actionable guides for the IoT architecture layer implementations](#design).
 
 ### Monitor and optimize costs
 
@@ -245,7 +245,7 @@ To learn more, see  [Security practices for Azure IoT device manufacturers](/azu
 
 ### Support and maintenance
 
-After you deploy your IoT devices, you need to support and maintain them for the lifetime of the solution. Tasks include hardware repairs, software upgrades, OS maintenance, and security patching. Consider ongoing licensing costs for commercial software and proprietary drivers and protocols. If yo can't do remote maintenance, then you need to budget for onsite repairs and updates. For hardware repairs or replacements, you should keep suitable spares in stock.
+After you deploy your IoT devices, you need to support and maintain them for the lifetime of the solution. Tasks include hardware repairs, software upgrades, OS maintenance, and security patching. Consider ongoing licensing costs for commercial software and proprietary drivers and protocols. If you can't do remote maintenance, then you need to budget for onsite repairs and updates. For hardware repairs or replacements, you should keep suitable spares in stock.
 
 For solutions that use cellular or paid for connectivity media, select as suitable data plan based on the number of devices, the size and frequency of data transmissions, and where the devices are deployed.
 
@@ -298,7 +298,7 @@ Message size:
 
 If payload size is critical to cost management, reducing the fixed length  overhead is important when you have a long device life-cycle or a large deployment. Options to reduce this overhead include:
 
-- Use a shorter device ID, module ID, twin name, and message topic because an MQTT packet contains this information as payload. An MQTT payload looks like: `devices/{device\_id}/modules/{module\_id}/messages/events/`
+- Use a shorter device ID, module ID, twin name, and message topic because an MQTT packet contains this information as payload. An MQTT payload looks like: `devices/{device_id}/modules/{module_id}/messages/events/`
 
 - Abbreviating the fixed length overhead and the message reduces bandwidth costs.
 
@@ -310,7 +310,7 @@ The purpose of the event processing and analytics layer is to enable  data-drive
 
 ### Select data process path based on analytics requirements
 
-Base on your requirements, implement hot, warm, or cold path processing for IoT data analytics. The [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot#insights) helps you understand the difference between those three analytics paths and reviews the available analytics services on each path. The [Microsoft Well-Architected Framework](/azure/architecture/framework/cost/provision-datastores#data-analytics-cost) includes cost considerations for these services. To get started, determine which types of data go through the hot, warm, or cold path:
+Base on your requirements, implement hot, warm, or cold path processing for IoT data analytics. The [Azure IoT reference architecture - Azure Reference Architectures](/azure/architecture/reference-architectures/iot#insights) helps you understand the difference between those three analytics paths and reviews the available analytics services on each path. The [Microsoft Well-Architected Framework](/azure/architecture/framework/cost/provision-datastores#data-analytics-cost) includes cost considerations for these services. To get started, determine which types of data go through the hot, warm, or cold path:
 
 - Hot path: Data is kept in-memory and analyzed in near-real-time, typically using a stream processing engine. The output may trigger an alert or be written to a structured format that can be queried immediately using analytical tools.
 
@@ -347,7 +347,7 @@ Azure SQL Database and TimescaleDB for PostgreSQL are common choices for SQL dat
 
 If the schema of the message isn't fixed and is best represented as an object or document, no-SQL is a better option. Azure Cosmos DB provides multiple APIs such as SQL or MongoDB.
 
-For any database, the choice of partition and index strategies is important for performance optimization and reducing unnecessary costs. To learn more, see:
+For any database, the choice of partition and index strategies are important for performance optimization and reducing unnecessary costs. To learn more, see:
 
 - [Azure Cosmos DB partitioning and scaling](/azure/cosmos-db/partitioning-overview).
 - [Azure Cosmos DB cost optimization](/azure/cosmos-db/plan-manage-costs)
@@ -409,8 +409,6 @@ The tradeoff relates to the business scenario and costs:
 
 - Bundle messages together to decrease TLS overhead.
 
-<!-- -->
-
 Device provisioning and reprovisioning for optimizing network traffic
 
 [Azure IoT Hub Device Provisioning Service (DPS)](/azure/iot-dps/) reduces the cost of device lifecycle management from zero-touch provisioning to retirement.
@@ -419,7 +417,7 @@ Connecting to DPS every time consumes network cost for TLS and authentication. T
 
 ## Interaction and reporting layer
 
-As IoT handles time series data, there are many interactions from a large number of devices. Reporting and visualizing this IoT data means realizes the value of the data. Building intuitive and simplified user experiences and well-designed data interactions are costly.
+As IoT handles time series data, there are many interactions from a large number of devices. Reporting and visualizing this IoT data realizes the value of the data. Building intuitive and simplified user experiences and well-designed data interactions are costly.
 
 ### Utilize data visualization platform for visualizing time series data
 
