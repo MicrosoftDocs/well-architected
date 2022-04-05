@@ -3,7 +3,7 @@ title: Operational excellence in an IoT workload
 description: Includes guidance and recommendations that apply to the Operational Excellence pillar in an IoT workload.
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/09/2022
+ms.date: 04/08/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -26,9 +26,9 @@ An IoT architecture consists of a set of foundational layers. Layers are realize
 
 ## Prerequisites
 
-To assess your IoT workload based on the principles described in the Microsoft Azure Well-Architected Framework, complete the assessment:
+To assess your IoT workload based on the principles described in the Microsoft Azure Well-Architected Framework, complete the IoT workload questionnaires in the Azure Well-Architected Review assessment:
 
-<!-- TODO: add link to assessment -->
+[Azure Well-Architected Review](/assessments/)
 
 After you complete the assessment, this guide helps you address the key operational excellence recommendations identified for your solution.
 
@@ -42,7 +42,7 @@ The following principles apply to the operational excellence pillar in an IoT wo
 
 **Monitoring and alerting:** Use IoT solution logging, monitoring, and alerting systems to determine whether the solution is functioning as expected and to help troubleshoot what is wrong throughout the lifecycle of the solution.
 
-**Automation and DevOps:** An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often constrained in hardware, for example having limited memory or compute capacity. Automation and DevOps are essential to ensure that OS and software for IoT devices and gateways are properly uploaded and deployed to minimize any operational downtime. Automation and DevOps becomes an essential aspect for monitoring and managing the lifecycle of IoT devices.
+**Automation and DevOps:** An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often constrained in hardware, for example having limited memory or compute capacity. Automation and DevOps are essential to ensure that OS and software for IoT devices and gateways are properly uploaded and deployed to minimize any operational downtime. Automation and DevOps become an essential aspect for monitoring and managing the lifecycle of IoT devices.
 
 The following sections address the layer specifics of these principles for the operational security pillar:
 
@@ -255,7 +255,7 @@ In the world of IoT solutions, there are three areas where agility, DevOps and a
 
 - The IoT application software deployed in devices using Azure IoT Edge. Here, once again, you can use a combination of services available in Azure IoT Hub and Azure IoT Edge to use Azure DevOps tools and processes in automating software lifecycle aspects of an IoT solution at the edge.
 
-- Addressing the challenge to operationally manage the IoT devices by providing operators with tools that let them collaborate and get the necessarily visibility, insights, and control to properly maintain and operate a reliable IoT solution.
+- Addressing the challenge to operationally manage the IoT devices by providing operators with tools that let them collaborate and get the necessary visibility, insights, and control to properly maintain and operate a reliable IoT solution.
 
 ### Design
 

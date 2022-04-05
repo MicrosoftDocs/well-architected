@@ -3,7 +3,7 @@ title: Overview of an IoT workload
 description: Includes guidance and recommendations that apply to each of the five pillars in an IoT workload.
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/04/2022
+ms.date: 04/08/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -167,9 +167,9 @@ Relevant Microsoft technologies include:
 
 This layer takes the events from the ingestion and communication layer and then processes and acts on those IoT events:
 
-- *Hot path* event stream processing and analysis takes place in near real-time to identify immediate insights and actions. For example, to generate alerts on temperature rises.
-- *Warm path* event processing and analysis identifies short-term insights and actions. For example, to predict a trend from rising temperatures.
-- *Cold path* event processing and analysis creates intelligent models to use in hot or warm paths.
+- *Hot path* event stream processing and analysis take place in near real-time to identify immediate insights and actions. For example, to generate alerts on temperature rises.
+- *Warm path* event processing and analysis identify short-term insights and actions. For example, to predict a trend from rising temperatures.
+- *Cold path* event processing and analysis create intelligent models to use in hot or warm paths.
 
 Relevant Microsoft technologies include:
 

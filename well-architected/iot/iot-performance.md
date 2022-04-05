@@ -3,7 +3,7 @@ title: Performance efficiency in an IoT workload
 description: Includes guidance and recommendations that apply to the performance efficiency pillar in an IoT workload.
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/09/2022
+ms.date: 04/08/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -19,9 +19,9 @@ A benefit of the cloud is the geographical availability and the capability to sc
 
 ## Prerequisites
 
-To assess your IoT workload based on the principles described in the Microsoft Azure Well-Architected Framework, complete the assessment:
+To assess your IoT workload based on the principles described in the Microsoft Azure Well-Architected Framework, complete the IoT workload questionnaires in the Azure Well-Architected Review assessment:
 
-<!-- TODO: add link to assessment -->
+[Azure Well-Architected Review](/assessments/)
 
 After you complete the assessment, this guide helps you address the key performance efficiency recommendations identified for your solution.
 
