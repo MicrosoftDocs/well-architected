@@ -112,7 +112,7 @@ Consider the following recommendations to optimize your Azure Service Fabric con
 |**Workload architecture:** Encrypt Service Fabric package secret values.|Encryption on your secret values provides an additional level of security.|
 |**Workload architecture:** Include client certificates in Service Fabric applications.|Having your applications use client certificates for authentication provides opportunities for security at both the cluster and workload level.|
 |**Workload architecture:** Authenticate Service Fabric applications to Azure Resources using [Managed Identity](/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets).|Using Managed Identity allow you to securely manage the credentials in your code for authenticating to various services without saving them locally on a developer workstation or in source control.|
-|**Cluster and workload architecture:** Follow [Service Fabric best practices](/azure/service-fabric/service-fabric-best-practices-security#hosting-untrusted-applications-in-a-service-fabric-cluster) when hosting untrusted applications.|Following the best practices provides a security standard to follow.|
+|**Cluster and workload architectures:** Follow [Service Fabric best practices](/azure/service-fabric/service-fabric-best-practices-security#hosting-untrusted-applications-in-a-service-fabric-cluster) when hosting untrusted applications.|Following the best practices provides a security standard to follow.|
 
 For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
 
@@ -148,7 +148,7 @@ As you make design choices for Azure Service Fabric, review the [design principl
 > [!div class="checklist"]
 > - **Cluster architecture:** Select appropriate VM SKU.
 > - **Cluster architecture:** Use appropriate node type and size.
-> - **Cluster and workload architecture:** Use appropriate managed disk tier and size.
+> - **Cluster and workload architectures:** Use appropriate managed disk tier and size.
 
 ### Recommendations
 
@@ -158,7 +158,7 @@ Explore the following table of recommendations to optimize your Azure Service Fa
 |-----------------------------------|-----------|
 |**Cluster architecture:** Avoid VM SKUs with temp disk offerings.|Service Fabric uses managed disks by default, so avoiding temp disk offerings ensures you don't pay for unneeded resources.|
 |**Cluster architecture:** If you need to select a certain VM SKU for capacity reasons and it happens to offer temp disk, consider using [temporary disk support](/azure/service-fabric/how-to-managed-cluster-stateless-node-type#temporary-disk-support) for your stateless workloads.|Make the most of the resources you're paying for. Using a temporary disk instead of a managed disk can reduce costs for stateless workloads.|
-|**Cluster and workload architecture:** Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
+|**Cluster and workload architectures:** Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
 
 For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
 
@@ -181,8 +181,8 @@ As you make design choices for Azure Service Fabric, review the [design principl
 > - **Cluster architecture:** Review the [cluster health policies](/azure/service-fabric/service-fabric-health-introduction#health-policies) in the Service Fabric health model.
 > - **Workload architecture:** Prepare an [application monitoring solution](/azure/service-fabric/service-fabric-best-practices-monitoring#application-monitoring).
 > - **Workload architecture:** Review the [application and service type health policies](/azure/service-fabric/service-fabric-health-introduction#health-policies) in the Service Fabric health model.
-> - **Cluster architecture and workload architecture:** Prepare an [infrastructure monitoring solution](/azure/service-fabric/service-fabric-best-practices-monitoring#infrastructure-monitoring).
-> - **Cluster architecture and workload architecture:** Design your cluster with build and release pipelines for continuous integration and deployment.
+> - **Cluster and workload architectures:** Prepare an [infrastructure monitoring solution](/azure/service-fabric/service-fabric-best-practices-monitoring#infrastructure-monitoring).
+> - **Cluster and workload architectures:** Design your cluster with build and release pipelines for continuous integration and deployment.
 
 ### Recommendations
 
@@ -194,8 +194,8 @@ Explore the following table of recommendations to optimize your Azure Service Fa
 |**Workload architecture:** Use [Application Insights to monitor your workloads](/azure/service-fabric/service-fabric-best-practices-monitoring#application-monitoring).|Application Insights integrates with the Azure platform, including Service Fabric.|
 |**Cluster and workload architectures:** Create a process for monitoring the expiration date of client certificates.|For example, Key Vault offers a feature that sends an email when `x%` of the certificate's lifespan has elapsed.|
 |**Cluster and workload architectures:** For pre-production clusters use [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-chaos-experiments) to drill service disruption on a Virtual Machine Scale Set instance failure.|Practicing service disruption scenarios will help you understand what is at-risk in your infrastructure and how to best mitigate the issues if they arise.|
-|**Cluster architecture and workload architecture:** Use [Azure Monitor to monitor cluster and container infrastructure events](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).|Azure Monitor integrates well with the Azure platform, including Service Fabric.|
-|**Cluster architecture and workload architecture:** Use [Azure Pipelines for your continuous integration and deployment solution](/azure/service-fabric/service-fabric-tutorial-deploy-app-with-cicd-vsts).|Azure Pipelines integrates well with the Azure platform, including Service Fabric.|
+|**Cluster and workload architectures:** Use [Azure Monitor to monitor cluster and container infrastructure events](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).|Azure Monitor integrates well with the Azure platform, including Service Fabric.|
+|**Cluster and workload architectures:** Use [Azure Pipelines for your continuous integration and deployment solution](/azure/service-fabric/service-fabric-tutorial-deploy-app-with-cicd-vsts).|Azure Pipelines integrates well with the Azure platform, including Service Fabric.|
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
 
@@ -217,7 +217,7 @@ For more information about how Azure Service Fabric can reduce performance issue
 > - **Cluster architecture:** [Exclude the Service Fabric processes from Windows Defender](/azure/service-fabric/service-fabric-best-practices-security#windows-defender) to improve performance.
 > - **Cluster architecture:** Select appropriate VM SKU.
 > - **Workload architecture:** Decide what [programming model](/azure/service-fabric/service-fabric-choose-framework) you will use for your services.
-> - **Cluster and workload architecture:** Use appropriate managed disk tier and size.
+> - **Cluster and workload architectures:** Use appropriate managed disk tier and size.
 
 ### Recommendations
 
@@ -230,7 +230,7 @@ Consider the following recommendations to optimize your Azure Service Fabric con
 |**Cluster architecture:** Consider using [Accelerated Networking](/azure/service-fabric/how-to-managed-cluster-networking#enable-accelerated-networking).|Accelerated networking enables a high-performance path that bypasses the host from the data path, which reduces latency, jitter, and CPU utilization for the most demanding network workloads.|
 |**Cluster architecture:** Considering using [encryption at host](/azure/service-fabric/how-to-managed-cluster-enable-disk-encryption?tabs=azure-powershell#enable-encryption-at-host) instead of Azure Disk Encryption (ADE).|This encryption method improves on ADE by supporting all OS types and images, including custom images, for your VMs by encrypting data in the Azure Storage service.|
 |**Workload architecture:** Review the [Service Fabric programming models](/azure/service-fabric/service-fabric-choose-framework) to decide what model would best suit your services.|Service Fabric supports several programming models. Each come with their own advantages and disadvantages. Knowing about the available programming models can help you make the best choices for designing your services.|
-|**Cluster and workload architecture:** Review the [different ways you can scale your solution in Service Fabric](/azure/service-fabric/service-fabric-concepts-scalability).|You can use scaling to enable maximum resource utilization for your solution.|
+|**Cluster and workload architectures:** Review the [different ways you can scale your solution in Service Fabric](/azure/service-fabric/service-fabric-concepts-scalability).|You can use scaling to enable maximum resource utilization for your solution.|
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
 
