@@ -310,7 +310,7 @@ The purpose of the event processing and analytics layer is to enable  data-drive
 
 ### Select data process path based on analytics requirements
 
-Base on your requirements, implement hot, warm, or cold path processing for IoT data analytics. The [Azure IoT reference architecture - Azure Reference Architectures](/azure/architecture/reference-architectures/iot#insights) helps you understand the difference between those three analytics paths and reviews the available analytics services on each path. The [Microsoft Well-Architected Framework](/azure/architecture/framework/cost/provision-datastores#data-analytics-cost) includes cost considerations for these services. To get started, determine which types of data go through the hot, warm, or cold path:
+Base on your requirements, implement hot, warm, or cold path processing for IoT data analytics. The [Azure IoT reference architecture - Azure Reference Architectures](/azure/architecture/reference-architectures/iot) helps you understand the difference between those three analytics paths and reviews the available analytics services on each path. The [Microsoft Well-Architected Framework](/azure/architecture/framework/cost/provision-datastores#data-analytics-cost) includes cost considerations for these services. To get started, determine which types of data go through the hot, warm, or cold path:
 
 - Hot path: Data is kept in-memory and analyzed in near-real-time, typically using a stream processing engine. The output may trigger an alert or be written to a structured format that can be queried immediately using analytical tools.
 
