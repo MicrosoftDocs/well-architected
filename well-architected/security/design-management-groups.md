@@ -21,6 +21,9 @@ ms.custom:
 
 Management groups can manage resources across multiple subscriptions consistently and efficiently. However, due to its flexibility, your design can become complex and compromise security and operations.
 
+> [!NOTE]
+> Management groups could be defined as part of the workload architecture. More commonly, centralized teams use management groups to consistently apply governance and segmentation strategies across multiple workloads. If a centralized team is responsible for design and operations of your management groups, consult the Cloud Adoption Framework's [Azure Landing Zones guidance](/azure/cloud-adoption-framework/ready/landing-zone/). Specifically the [Resource organization design area](/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org) which outlines the best practice recommendations and considerations for segmentation through management groups, subscriptions, and application landing zones.
+
 ## Support your segmentation strategy with management groups
 
 Structure management groups into a simple design that guides the enterprise segmentation model.
