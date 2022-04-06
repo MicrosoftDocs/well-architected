@@ -36,6 +36,13 @@ The collective role of organization(s) is to manage the security standards of th
 
 - **Sustain:** Ensure the security posture doesn't degrade naturally over time by instituting auditing and monitoring compliance with organizational standards.
 
+**Take action**
+
+[Establish security best practices across all workloads](/azure/cloud-adoption-framework/secure)
+
+[Establish governance best practices to detect, enforce, and automate governance decisions](/azure/cloud-adoption-framework/govern)
+
+
 ## Prioritize security best practices investments
 
 Security best practices are ideally applied proactively and completely to all systems as you build your cloud program, but this isn't reality for most enterprise organizations. Business goals, project constraints, and other factors often cause organizations to balance security risk against other risks and apply a subset of best practices at any given point.
@@ -47,6 +54,12 @@ We recommend applying as many of the best practices as early as possible, and th
 - **Easiest to implement mitigations:** Identify quick wins by prioritizing the best practices, which your organization can execute quickly because you already have the required skills, tools, and knowledge to do it (for example, implementing a Web App Firewall (WAF) to protect a legacy application). Be careful not to exclusively use (or overuse) this short-term prioritization method. Doing so can increase your risk by preventing your program from growing and leaving critical risks exposed for extended periods.
 
 Microsoft has provided some prioritized lists of security initiatives to help organizations start with these decisions based on our experience with threats and mitigation initiatives in our own environments and across our customers. See [Module 4a](/office365/securitycompliance/ciso-workshop-module-4a) of the [Microsoft CISO Workshop](/security/ciso-workshop/ciso-workshop).
+
+**Take action**
+
+[Establish security best practices across all workloads](/azure/cloud-adoption-framework/secure)
+
+[Azure Landing Zones establish a cloud platform with security tools and governance for all workloads](/azure/cloud-adoption-framework/ready/landing-zone/)
 
 ## Checklist
 **What considerations for compliance and governance did you make?**
