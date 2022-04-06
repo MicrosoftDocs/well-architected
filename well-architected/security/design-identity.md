@@ -20,7 +20,10 @@ ms.custom:
 
 Most architectures have shared services that are hosted and accessed across networks. Those services share common infrastructure and users need to access resources and data from anywhere. For such architectures, a common way to secure resources is to use network controls. However, that isn't enough.
 
-Provide security assurance through _identity management_: the process of authenticating and authorizing security principals. Use identity management services to authenticate and grant permission to users, partners, customers, applications, services, and other entities. Identity management is typically a centralized function delivered by Central IT or a Cloud Center of Excellence team, as outlined in the article on [Roles and responsibilities](./design-identity-role-definitions.md). Unless the workload team is responsible for a dedicated identity store, the guidance in the [Identity and access management design area of the cloud adoption framework](/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access) should be referenced when implementing identity solutions which support multiple workloads.
+Provide security assurance through _identity management_: the process of authenticating and authorizing security principals. Use identity management services to authenticate and grant permission to users, partners, customers, applications, services, and other entities. 
+
+> [!NOTE]
+> Identity management is typically a centralized function not controlled by the workload team as a part of the workload's architecture. Unless the workload team is responsible for a dedicated identity store, the guidance in the [Identity and access management design area of the cloud adoption framework](/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access) should be referenced when implementing identity solutions which support multiple workloads.
 
 ## Checklist
 
