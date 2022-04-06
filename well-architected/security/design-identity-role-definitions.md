@@ -20,7 +20,7 @@ ms.custom:
 
 In an organization, several teams work together to make sure that the workload and the supporting infrastructure are secure. To avoid confusion that can create security risks, define clear lines of responsibility and separation of duties.
 
-Based on Microsoft's experience with many cloud adoption projects, establishing clearly defined roles and responsibilities for specific functions in Azure will avoid confusion that can lead to human and automation errors creating security risk.
+Based on Microsoft's experience with many cloud adoption projects, establishing clearly defined roles and responsibilities for specific functions in Azure will avoid confusion that can lead to human and automation errors creating security risk. 
 
 ## Clear lines of responsibility
 
@@ -32,6 +32,9 @@ Designate the parties responsible for specific functions in Azure.
 Clearly documenting and sharing the contacts responsible for each of these functions will create consistency and facilitate communication. Based on our experience with many cloud adoption projects, this will avoid confusion that can lead to human and automation errors that create security risk.
 
 Designate groups (or individual roles) that will be responsible for key functions.
+
+> [!NOTE]
+> A centralized teams to may be responsible for establishing these roles across your organization to provide consistent support across all workload teams. If your team is not solely responsible for each of the following roles, consult the guidance on [Aligning responsibilities across teams](/azure/cloud-adoption-framework/organize/raci-alignment) with a focus on understanding how your workload team will interface with a [Cloud Platform Team](/azure/cloud-adoption-framework/organize/cloud-platform), [Central IT](/azure/cloud-adoption-framework/organize/central-it), &/or a [Cloud Center of Excellence](/azure/cloud-adoption-framework/organize/cloud-center-of-excellence).
 
 |Group or individual role| Responsibility|
 |---|---|
@@ -49,6 +52,9 @@ Designate groups (or individual roles) that will be responsible for key function
 
 Grant roles the appropriate permissions that start with least privilege and add more based on your operational needs. Provide clear guidance to your technical teams that implement permissions. This clarity makes it easier to detect and correct that reduces human errors such as overpermissioning.
 
+> [!NOTE]
+> Many organizations manage identity, access, and permissions from a centralized cloud platform team using [CAF Azure Landing Zones](/azure/cloud-adoption-framework/ready/landing-zone/) as a guide for configuration and permissions across multiple workloads. If identity and access are managed outside of the workload team, see the [Identity and Access Management Design Area](/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access) to understand how to apply the proper level of permissions in your application's landing zone.
+
 - Assign permissions at management group for the segment rather than the individual subscriptions. This will drive consistency and ensure application to future subscriptions. In general, avoid granular and custom permissions.
 
 - Consider the built-in roles in Azure before creating custom roles to grant the appropriate permissions to VMs and other objects.
@@ -59,7 +65,10 @@ When assigning permissions for a segment, consider consistency while allowing fl
 
 ### Reference model example
 
-This section uses this [Reference model](design-segmentation.md#reference-model) to demonstrate the considerations for assigning permissions for different segments. Microsoft recommends starting from these models and adapting to your organization.
+This section uses this [Reference model](design-segmentation.md#reference-model) to demonstrate the considerations for assigning permissions for different segments. If your workload architecture requires segmentation and shared services spanning multiple segments for the same workload, Microsoft recommends starting from these models and adapting to your organization.
+
+> [!WARNING]
+> Shared services are seldom deployed or managed as part of a signle workload or by the workload team. When centralized teams provide shared service, the best practice is to begin with [Azure Landing Zones](/azure/cloud-adoption-framework/ready/landing-zone/) in the Cloud Adoption Framework. Azure Landing Zones provide a conceptual architecture, reference implementations, and proven design processes to customize and implement the platform (or shared) services needed to support multiple applications. Those best practices aid in making platform wide decisions regarding [network topology and connectivity](/azure/cloud-adoption-framework/ready/landing-zone/design-area/network-topology-and-connectivity), [segmentation](/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-landing-zone-network-segmentation) and [governance](/azure/cloud-adoption-framework/ready/landing-zone/design-area/governance), which should be used when these decisions impact more than one workload.
 
 #### Core services reference permissions
 
