@@ -269,6 +269,8 @@ items:
                 href: devops/checklist.md
               - name: Monitor cloud applications
                 items:
+                  - name: Monitoring overview
+                    href: devops/monitoring.md
                   - name: Monitoring stages
                     href: devops/monitor-pipeline.md
                   - name: Data sources
@@ -295,8 +297,6 @@ items:
                     href: devops/tracing.md
                   - name: Auditing
                     href: devops/auditing.md
-          - name: Checklist
-            href: /azure/architecture/checklist/dev-ops
           - name: Operational Excellence patterns
             href: devops/devops-patterns.md
       - name: Performance Efficiency
