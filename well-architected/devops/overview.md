@@ -40,7 +40,7 @@ The Microsoft Azure Well-Architected Framework includes the following topics in 
 | [Monitoring][monitoring] | Something that enterprises have been doing for years, enriched with specifics for applications running in the cloud. |
 | [Application performance management][performance] | The monitoring and management of performance, and availability of software applications through DevOps. |
 | [Code deployment][deployment] | How you deploy your application code is one of the key factors that determines your application stability.  |
-| [Infrastructure provisioning][iac] | Frequently known as *Automation* or *Infrastructure as code*, this discipline refers to best practices for deploying the platform where your application will run. |
+| [Infrastructure provisioning][iac] | Frequently known as *Deployment Automation* or *Infrastructure as code*, this discipline refers to best practices for deploying the platform where your application will run. |
 | [Testing][testing] | Testing is fundamental to prepare for the unexpected and to catch mistakes before they impact users. |
 
 Monitoring and diagnostics are crucial. Cloud applications run in a remote data-center where you don't have full control of the infrastructure or, in some cases, the operating system. In a large application, it's not practical to log into virtual machines (VMs) to troubleshoot an issue or sift through log files. With PaaS services, there may not be a dedicated VM to log into. Monitoring and diagnostics give insight into the system, so that you know when and where failures occur. All systems must be observable. Use a common and consistent logging schema that lets you correlate events across systems.
