@@ -3,7 +3,7 @@ title: Overview of the operational excellence pillar
 description: Understand the operational excellence pillar, which covers the operations processes that keep an application running in production.
 ms.author: robbymillsap
 author: david-stanford
-ms.date: 12/07/2021
+ms.date: 04/07/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
