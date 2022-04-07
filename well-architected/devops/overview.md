@@ -37,25 +37,15 @@ The Microsoft Azure Well-Architected Framework includes the following topics in 
 | Operational excellence topics | Description |
 |-------------------|-------------|
 | [Application design][app-design] | Provides guidance on how to design, build, and orchestrate workloads with DevOps principles in mind.  |
-| [Monitoring][monitoring] | Something that enterprises have been doing for years, enriched with specifics for applications running in the cloud. |
+| [Monitoring][monitoring] | Monitoring and diagnostics are essential to any workload. Specifically for cloud applications that run in a remote datacentre often this discipline becomes even more crucial. |
 | [Application performance management][performance] | The monitoring and management of performance, and availability of software applications through DevOps. |
 | [Code deployment][deployment] | How you deploy your application code is one of the key factors that determines your application stability.  |
 | [Infrastructure provisioning][iac] | Frequently known as *Deployment Automation* or *Infrastructure as code*, this discipline refers to best practices for deploying the platform where your application will run. |
 | [Testing][testing] | Testing is fundamental to prepare for the unexpected and to catch mistakes before they impact users. |
 
-Monitoring and diagnostics are crucial. Cloud applications run in a remote data-center where you don't have full control of the infrastructure or, in some cases, the operating system. In a large application, it's not practical to log into virtual machines (VMs) to troubleshoot an issue or sift through log files. With PaaS services, there may not be a dedicated VM to log into. Monitoring and diagnostics give insight into the system, so that you know when and where failures occur. All systems must be observable. Use a common and consistent logging schema that lets you correlate events across systems.
+Enforcing resource-level rules through [Azure Policy](/azure/governance/policy/overview) helps ensure adoption of operational excellence best practices for all the assets, which support your workload. For example, Azure Policy can help ensure all the VMs supporting your workload adhere to a pre-approved list of VM SKUs. 
 
-The monitoring and diagnostics process has several distinct phases:
-
-- *Instrumentation*: Generating the raw data from:
-  - application logs
-  - web server logs
-  - diagnostics built into the Azure platform, and other sources.
-- *Collection and storage*: Consolidating the data into one place.
-- *Analysis and diagnosis*: To troubleshoot issues and see the overall health.
-- *Visualization and alerts*: Using telemetry data to spot trends or alert the operations team.
-
-Enforcing resource-level rules through [Azure Policy](/azure/governance/policy/overview) helps ensure adoption of operational excellence best practices for all the assets, which support your workload. For example, Azure Policy can help ensure all the VMs supporting your workload adhere to a pre-approved list of VM SKUs. Azure Advisor provides [a set of Azure Policy recommendations](/azure/advisor/advisor-operational-excellence-recommendations#use-azure-policy-recommendations) to help you quickly identify opportunities to implement Azure Policy best practices for your workload.
+Azure Advisor provides [a set of Azure Policy recommendations](/azure/advisor/advisor-operational-excellence-recommendations#use-azure-policy-recommendations) to help you quickly identify opportunities to implement Azure Policy best practices for your workload.
 
 Use the [DevOps checklist][devops-checklist] to review your design from a management and DevOps standpoint.
 
