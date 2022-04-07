@@ -241,7 +241,7 @@ items:
             href: devops/principles.md
           - name: Automation
             items:
-              - name: Automation Overview
+              - name: Automation overview
                 href: devops/automation-overview.md
               - name: Repeatable infrastructure
                 href: devops/automation-infrastructure.md
