@@ -3,7 +3,7 @@ title: Automation overview of goals, best practices, and types in Azure
 description: Automation overview
 author: v-aangie
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 4/7/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -60,7 +60,7 @@ As businesses move to the cloud, they need to *repeatedly* deploy their solution
 There are many deployment technologies you can use with Azure. Here are three examples:
 
 - [Azure Resource Manager (ARM) templates](./automation-infrastructure.md#automate-deployments-with-arm-templates)
-- [Azure Bicep](../../azure-resource-manager/bicep/)
+- [Azure Bicep](/azure/azure-resource-manager/bicep/)
 - [Terraform](./automation-infrastructure.md#automate-deployments-with-terraform)
 
 These technologies use a *declarative* approach. This lets you state what you intend to deploy without having to write the sequence of programming commands to create it. You can deploy not only virtual machines, but also the network infrastructure, storage systems, and any other resources you may need.
