@@ -119,11 +119,9 @@ landingContent:
       - linkListType: concept
         links:
           - text: Understand application and platform monitoring
-            url: monitoring.md
+            url: checklist.md
           - text: Analyze alerts
             url: monitor-alerts.md
-          - text: Monitor best practices
-            url: monitoring.md#monitoring-best-practices
       - linkListType: video
         links:
           - text: Continuous Monitoring for Web Perf and Accessibility

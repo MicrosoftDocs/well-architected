@@ -57,7 +57,7 @@ Reference the operational excellence principles to guide you in your overall str
 > [Principles](principles.md)
 
 <!-- devops disciplines -->
-[monitoring]: ./monitoring.md
+[monitoring]: ./checklist.md
 [performance]: ./release-engineering-performance.md
 [deployment]: ./release-engineering-cd.md
 [iac]: ./automation-infrastructure.md
