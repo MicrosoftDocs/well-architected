@@ -15,7 +15,7 @@ ms.custom:
 
 # Automate operational tasks
 
-Operational tasks can include any action or activity you may perform while managing systems, system access, and processes. Some examples include rebooting servers, creating accounts, and shipping logs to a data store. These tasks may occur on a schedule, as a response to an event or monitoring alert, or ad-hock based on external factors. Like many other activities related to managing computer systems, these activities are often performed manually, which takes time, and are error-prone.
+Operational tasks can include any action or activity you may perform while managing systems, system access, and processes. Some examples include rebooting servers, creating accounts, and shipping logs to a data store. These tasks may occur on a schedule, as a response to an event or monitoring alert, or ad-hoc based on external factors. Like many other activities related to managing computer systems, these activities are often performed manually, which takes time, and are error-prone.
 
 Many of these operational tasks can and should be automated. Using scripting technologies and related solutions, you can shift effort from manually performing operational tasks towards building automation for these tasks. In doing so, you achieve so much, including:
 
@@ -28,7 +28,7 @@ When working in Azure, you have many options for automating operational tasks. T
 
 ## Azure Functions
 
-Azure Functions allows you to run code without managing the underlying infrastructure on where the code is run. Functions provide a cost-effective, scalable, and event-driven platform for building applications and running operational tasks. Functions support running code written in C#, Java, JavaScript, Python, and PowerShell.
+Azure Functions allows you to run code without managing the underlying infrastructure on where the code is run. Functions provide a cost-effective, scalable, and event-driven platform for building applications and running operational tasks. Functions support running code written in a range of programming languages including C#, Java, JavaScript, Python, and PowerShell.
 
 When creating a Function, a hosting plan is selected. Hosting plans controls how a function app is scaled, resource availability, and availability of advanced features such as virtual network connectivity and startup time. The hosting plan also influences the cost.
 
@@ -36,7 +36,7 @@ Functions hosting plans:
 
 - **Consumption:** Default hosting plan, pay only for Function execution time, configurable timeout period, automatic scale.
 - **Premium:** Faster start, VNet connectivity, unlimited execution duration, premium instance sizes, more predictable pricing.
-- **App Service Plan:** Functions run on dedicated virtual machines and can use custom images.
+- **Dedicated:** Functions run on dedicated virtual machines and can use custom images.
 
 For full details on consumption plans, see [Azure Functions scale and hosting](/azure/azure-functions/functions-scale).
 
