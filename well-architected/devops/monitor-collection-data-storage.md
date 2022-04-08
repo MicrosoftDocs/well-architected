@@ -46,24 +46,15 @@ The hot, warm, and cold analysis patterns are summarized in [Analysis patterns](
 
 ## Application data
 
-**Is an Application Performance Management (APM) tool used collect application level logs?**
-***
+In case of an application, the collecting service can be an **Application Performance Management (APM) tool** that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you'll have clear visibility of important metrics both in real time and historically. Consider an  appropriate level of logging. Verbose logging  can incur significant costs.
 
-In case of an application, the collecting service can be an Application Performance Management (APM) tool that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you'll have clear visibility of important metrics both in real time and historically. Consider an  appropriate level of logging. Verbose logging  can incur significant costs.
+An example of an APM is [Application Insights](/azure/azure-monitor/app/data-retention-privacy#what-is-application-insights) that aggregates application level logs and events for subsequent analysis. 
 
-An example of APM is [Application Insights](/azure/azure-monitor/app/data-retention-privacy#what-is-application-insights) that aggregates application level logs and events for subsequent analysis. Get more information about [What kinds of data are collected?](/azure/azure-monitor/app/data-retention-privacy#what-kinds-of-data-are-collected).
-
-**Are application logs collected from different application environments?**
-***
-
-Application logs support the end-to-end application lifecycle. Logging is essential in understanding how the application operates in various environments and what events occur and under which conditions.
+**Application logs** support the end-to-end application lifecycle. Logging is essential in understanding how the application operates in various environments and what events occur and under which conditions.
 
 Collecting application logs and events across all major environments is recommended. Separate the data between environments as much as possible. Have filters to ensure non-critical environments do not convolute production log interpretation. Furthermore, corresponding log entries across the application should capture a correlation ID for their respective transactions.
 
-**Are log messages captured in a structured format?**
-***
-
-Application events should be captured as a structured data type with machine-readable data points rather than unstructured string types. Structured format, following well-known schema can help in parsing and analyzing logs. Also, structured data can easily be indexed and searched, and reporting can be greatly simplified.
+**Application events should be captured as a structured data type** with machine-readable data points rather than unstructured string types. A structured format, following well-known schema can help in parsing and analyzing logs. Also, structured data can easily be indexed and searched, and reporting can be greatly simplified.
 
 Also the data should be an agnostic format that's independent of the machine, operating system, or network protocol. For example, emit information in a self-describing format such as JSON, MessagePack, or Protobuf rather than ETL/ETW. Using a standard format enables the system to construct processing pipelines; components that read, transform, and send data in the agreed format can be easily integrated.
 
@@ -71,15 +62,14 @@ Also the data should be an agnostic format that's independent of the machine, op
 
 You will also need to collect platform diagnostics to get a holistic view. For example, Windows event logs, performance counters, diagnostic infrastructure logs, and logs from the management plane. [Azure platform logs](/azure/azure-monitor/essentials/platform-logs-overview) addresses all those needs. Here are some recommendations:
 
-- Collect Azure Activity Logs to get audit information. These logs are useful in detecting configuration changes to Azure resources.
-- Enable resource- or infrastructure- level monitoring throughout the application. This type of logs includes information emitted by  platform services such as Azure VMs, Express Route or SQL Database, and also third-party solutions. Configure application resources to route diagnostic logs and metrics to the chosen log aggregation technology. 
-- Enforce consistency. You can use Azure Policy to ensure the consistent use of diagnostic settings across the application, to enforce the desired configuration for each Azure service.
-- Collect logs and metrics available for critical internal dependencies. This information gives you visibility into the operational state of critical internal dependencies, such as a shared NVA or Express Route connections, and others.
+- Collect **Azure Activity Logs** to get audit information. These logs are useful in detecting configuration changes to Azure resources.
+- Enable **resource- or infrastructure- level monitoring** throughout the application. This type of logs includes information emitted by  platform services such as Azure VMs, Express Route or SQL Database, and also third-party solutions. Configure application resources to route diagnostic logs and metrics to the chosen log aggregation technology. 
+- **Enforce consistency.** You can use Azure Policy to ensure the consistent use of diagnostic settings across the application, to enforce the desired configuration for each Azure service.
+- **Collect logs and metrics available for critical internal dependencies.** This information gives you visibility into the operational state of critical internal dependencies, such as a shared NVA or Express Route connections, and others.
 
-**Which log aggregation technology is used to collect logs and metrics from Azure resources?**
-***
+There are many options for a collection service for aggregating infrastructure and resource logs. Azure Log Analytics or Splunk, are popular choices for collating logs and metrics across all application components for subsequent evaluation. Resources may include Azure IaaS, nd PaaS services, and third-party appliances such as firewalls or anti-malware solutions used in the application. For instance, if Azure Event Hubs is used, the Diagnostic Settings should be configured to push logs and metrics to the data sink. 
 
-There are many options for a collection service for aggregating infrastructure and resource logs. Azure Log Analytics or Splunk, are popular choices for collating logs and metrics across all application components for subsequent evaluation. Resources may include Azure IaaS, nd PaaS services, and third-party appliances such as firewalls or anti-malware solutions used in the application. For instance, if Azure Event Hubs is used, the Diagnostic Settings should be configured to push logs and metrics to the data sink. Understanding usage helps with right-sizing of the workload, but additional cost for logging needs to be accepted and included in the cost model.
+Understanding usage helps with right-sizing of the workload, but additional cost for logging needs to be accepted and included in the cost model.
 
 
 ## Collection strategies
