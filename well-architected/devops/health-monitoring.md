@@ -4,7 +4,7 @@ description: Provides an overview of health modeling and monitoring as it relate
 ms.author: robbymillsap
 author: v-stacywray
 manager: david-stanford
-ms.date: 12/06/2021
+ms.date: 4/8/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -34,23 +34,19 @@ A comprehensive health monitoring system enables you to drill down to view the h
 
 ## Best practices
 
-**Have you considered the following best practices when monitoring the health of your application?**
-
-> [!div class="checklist"]
-> - [Are application events correlated across all application components?](#distributed-tracing)
-> - [Is an Application Performance Management (APM) tool used to collect application level logs?](#application-performance-management-apm-tools)
-> - [What is Application Insights?](#application-performance-management-apm-tools)
-> - [Are application logs collected from different application environments?](#application-logs)
-> - [Are log levels used to capture different types of application events?](#log-levels)
-> - [Are log messages captured in a structured format?](#log-messages)
-> - [Is it possible to evaluate critical application performance targets and NFRs?](#performance-targets-and-non-functional-requirements-nfrs)
-> - [Are there known gaps in application observability that led to missed incidents or false positives?](#gaps-in-application-monitoring)
-> - [Which log aggregation technology is used to collect logs and metrics from Azure resources?](#log-aggregation-technologies)
-> - [Are logs and metrics available for critical internal dependencies?](#logs-for-internal-dependencies)
-> - [Is black-box monitoring used to measure platform services and the resulting customer experience?](#black-box-monitoring)
-> - [Is the application instrumented to measure the customer experience?](#instrumentation)
-> - [Do you have detailed instrumentation in the application code?](#instrumentation)
-> - [Is white-box monitoring used to instrument the application with semantic logs and metrics?](#white-box-monitoring)
+- [Correlate events](#distributed-tracing) across all application components.
+- Use an [Application Performance Management (APM) tool](#application-performance-management-apm-tools) used to collect application level logs.
+- Leverage [Application Insights](#application-performance-management-apm-tools) to gather key metrics.
+- Collect [application logs](#application-logs) from different application environments.
+- Consider using [log levels](#log-levels) used to capture different types of application events.
+- Capture [log messages](#log-messages) in a structured format.
+- Set out [critical application performance targets and non-functional requirements](#performance-targets-and-non-functional-requirements-nfrs) with clarity.
+- Identify [known gaps](#gaps-in-application-monitoring) in application observability that led to missed incidents or false positives in the past.
+- Consider different [log aggregation technologies](#log-aggregation-technologies) to collect logs and metrics from Azure resources.
+- Make logs and metrics available for [critical internal dependencies]#logs-for-internal-dependencies).
+- Implement [black-box monitoring](#black-box-monitoring) to measure platform services and the resulting customer experience.
+- Implement [detailed instrumentation](#instrumentation) in the application code to better understand the customer experience.
+- Leverage [white-box monitoring](#white-box-monitoring) to instrument the application with semantic logs and metrics.
 
 ## Distributed tracing
 
@@ -59,8 +55,6 @@ Trace the execution of user requests to generate raw data to determine which req
 - Succeeded
 - Failed
 - Taken too long
-
-**Are application events correlated across all application components?**
 
 [Distributed tracing](/azure/architecture/microservices/logging-monitoring#distributed-tracing) allows you to build and visualize end-to-end transaction flows for the application. Events coming from different application components or different component tiers of the application should be correlated to build these flows.
 
@@ -72,11 +66,9 @@ Event correlation between application layers allows you to connect tracing data 
 
 To successfully maintain an application, it's important to *turn the lights on* to have clear visibility into important metrics, both in real time and historically.
 
-**Is an Application Performance Management (APM) tool used to collect application level logs?**
+**Application Performance Management (APM) tools**
 
 An APM technology, such as [Application Insights](/azure/azure-monitor/app/app-insights-overview), should be used to manage the performance and availability of the application, aggregating application level logs, and events for later interpretation. With cost in mind, consider the appropriate level of logging required.
-
-**What is Application Insights?**
 
 [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extensible Application Performance Management (APM) service for developers and DevOps professionals to monitor live applications. It automatically detects performance anomalies and includes analytics tools to help users diagnose issues, and to understand what customers do with your application. Application Insights monitors diagnostic trace logs from your application so that you can correlate trace events with requests.
 
@@ -95,14 +87,9 @@ For more information about how Application Insights helps you monitor applicatio
 ### Application logs
 
 *Application logs* support the end-to-end application lifecycle.
-
-**Are application logs collected from different application environments?**
-
 You should collect logs and events across all major application environments. A sufficient degree of separation and filtering should be in place to ensure non-critical environments don't convolute production log interpretation. Corresponding log entries across the application should capture a correlation ID for their respective transactions.
 
 ### Log levels
-
-**Are log levels used to capture different types of application events?**
 
 Use the following log levels to capture different types of application events across environments:
 
@@ -114,8 +101,6 @@ Use the following log levels to capture different types of application events ac
 Pre-configure the preceding log levels and apply these levels within relevant environments. Changing log levels includes simple configuration changes to support operational scenarios where it's necessary to raise the log level within an environment.
 
 ### Log messages
-
-**Are log messages captured in a structured format?**
 
 Capture log messages and application events in a structured format, following well-known schema. The structured data type includes machine-readable data points rather than unstructured string types.
 
@@ -134,12 +119,9 @@ Structured data can help you:
 Analyzing health data involves quickly indicating whether the system is running through metrics. Hot analysis of the immediate data triggers an alert if a critical component is detected as unhealthy.
 
 For example, the component fails to respond to a consecutive series of pings. You can, then, take the appropriate corrective action.
-
 For more information about analyzing data, reference [Analyze monitoring data for cloud applications](monitor-analysis.md).
 
 #### Performance targets and non-functional requirements (NFRs)
-
-**Is it possible to evaluate critical application performance targets and NFRs?**
 
 Application-level metrics should include end-to-end transaction times of key technical functions, such as:
 
@@ -150,8 +132,6 @@ Application-level metrics should include end-to-end transaction times of key tec
 To assess fully the health of key scenarios in the context of targets and NFRs, correlate application log events, such as user login, across critical system flows.
 
 #### Gaps in application monitoring
-
-**Are there known gaps in application observability that led to missed incidents or false positives?**
 
 Known gaps in application observability lead to missed incidents and false positives.
 
@@ -175,21 +155,15 @@ Activity logs provide audit information about when a resource is modified, such 
 
 #### Log aggregation technologies
 
-**Which log aggregation technology is used to collect logs and metrics from Azure resources?**
-
 Log aggregation technologies, such as [Azure Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) or [Splunk](/azure/azure-monitor/partners#splunk), should be used to collate logs and metrics across all application components for later evaluation. Resources may include [Azure IaaS](https://azure.microsoft.com/overview/what-is-azure/iaas/) and [PaaS](https://azure.microsoft.com/free/cloud-services/) services, and third-party appliances such as firewalls or anti-malware solutions used in the application. For instance, if [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) is used, the **Diagnostic Settings** should be configured to push logs and metrics to the data sink. Understanding usage helps with right-sizing of the workload, but extra costs for logging should be accepted and included in the cost model.
 
 All application resources should be configured to route diagnostic logs and metrics to the chosen log aggregation technology. Use [Azure Policy](/azure/governance/policy/overview) to ensure the consistent use of diagnostic settings across the application and to enforce the configuration you want for each Azure service.
 
 #### Logs for internal dependencies
 
-**Are logs and metrics available for critical internal dependencies?**
-
 To build a robust application health model, it's vital to have visibility into the operational state of critical internal dependencies, such as a shared [Network Virtual Appliance (NVA)](/azure/architecture/reference-architectures/dmz/nva-ha?tabs=cli) or [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) connection.
 
 #### Black-box monitoring
-
-**Is black-box monitoring used to measure platform services and the resulting customer experience?**
 
 *Black-box monitoring* tests externally visible application behavior without knowledge of the internals of the system. This type of monitoring is a common approach to measuring customer-centric SLIs, SLOs, and SLAs.
 
@@ -197,19 +171,11 @@ For more information, reference [Azure Monitor](/azure/azure-monitor/app/monitor
 
 ## Instrumentation
 
-**Is the application instrumented to measure the customer experience?**
-
-Effective instrumentation is vital to detect and resolve performance anomalies that can impact customer experience, and application availability.
+Instrumentation of your code allows precise detection of underperforming pieces when you apply load or stress tests. It's critical to have this data available to improve and identify performance opportunities in the application code. Use Application Performance Monitoring (APM) tools, such as [Application Insights](#application-performance-management-apm-tools), to manage the performance and availability of the application, along with aggregating application-level logs, and events for later interpretation.
 
 For more resources about instrumentation, reference [Monitor performance](/azure/azure-monitor/azure-monitor-app-hub).
 
-**Do you have detailed instrumentation in the application code?**
-
-Instrumentation of your code allows precise detection of underperforming pieces when you apply load or stress tests. It's critical to have this data available to improve and identify performance opportunities in the application code. Use Application Performance Monitoring (APM) tools, such as [Application Insights](#application-performance-management-apm-tools), to manage the performance and availability of the application, along with aggregating application-level logs, and events for later interpretation.
-
 ### White-box monitoring
-
-**Is white-box monitoring used to instrument the application with semantic logs and metrics?**
 
 Application-level metrics and logs, such as current memory consumption or request latency, should be collected from the application to inform a health model, detect, and predict issues.
 
