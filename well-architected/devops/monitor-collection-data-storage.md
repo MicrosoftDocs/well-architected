@@ -81,22 +81,22 @@ To optimize the use of bandwidth, prioritize based on the importance of data. Yo
 ### Data collection models
 
 The collection service can collect instrumentation data in  mainly two models:
-- **Pull model**&mdash;Actively retrieves  data from the various logs and other sources for each instance of the application.
-- **Push model**&mdash;Passively waits for the data to be sent from the components that constitute each instance of the application.
+- **Pull model** Actively retrieves  data from the various logs and other sources for each instance of the application.
+- **Push model** Passively waits for the data to be sent from the components that constitute each instance of the application.
 
 ### Monitoring agents
-Monitoring agents work in pull model. Agents run locally in a separate process with each instance of the application and periodically pull data and write this information directly to centralized storage shared by all instances of the application. 
+Monitoring agents work in pull model. Agents run locally in a separate process with each instance of the application and periodically pull data and write this information directly to centralized storage shared by all instances of the application.
 
 ![Illustration of using a monitoring agent to pull information and write to shared storage](../devops/pullmodel.png)
 
-For more information, see [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](/azure/cloud-services/cloud-services-dotnet-diagnostics) provides more details on this process. Some elements, such as IIS logs, crash dumps, and custom error logs, are written to blob storage. Data from the Windows event log, ETW events, and performance counters is recorded in table storage. Figure 3 illustrates this mechanism.
+For more information, see [Azure Diagnostics extension](/azure/azure-monitor/agents/diagnostics-extension-overview).
 
 > [!NOTE]
 > Using a monitoring agent is ideally suited to capturing instrumentation data that's naturally pulled from a data source. It's appropriate for a small-scale application running on a limited number of nodes in a single location. An example is information from SQL Server Dynamic Management Views or the length of an Azure Service Bus queue.
 
 ### Performance considerations
 
-A complex, highly scalable, application might generate huge volumes of data. The can easily overwhelm the I/O bandwidth available with a single, central location. The telemetry solution must not act as bottleneck and must be scalable as the system expands. Ideally, the solution should incorporate a degree of redundancy to reduce the risks of losing important monitoring information (such as auditing or billing data) if part of the system fails.
+A complex, highly scalable, application might generate huge volumes of data. The amount of data can easily overwhelm the I/O bandwidth available with a single, central location. The telemetry solution must not act as bottleneck and must be scalable as the system expands. Ideally, the solution should incorporate a degree of redundancy to reduce the risks of losing important monitoring information (such as auditing or billing data) if part of the system fails.
 
 One approach is through queuing. 
 

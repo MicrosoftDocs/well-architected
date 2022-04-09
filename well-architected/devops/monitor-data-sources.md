@@ -26,13 +26,13 @@ This article highlights some best practices of those sources and provides guidan
 
 Developers add trace messages in the application code to track the flow of control. Here are some best practices:
 
-- **Follow a standard approach**&mdash;For example, recording the entry and exit times can be useful. An entry to a method in the application can emit a trace message that specifies the name of the method, the current time, the value of each parameter, and any other pertinent information.
+- **Follow a standard approach** For example, recording the entry and exit times can be useful. An entry to a method in the application can emit a trace message that specifies the name of the method, the current time, the value of each parameter, and any other pertinent information.
 
-- **Log all exceptions and warnings**&mdash;Retain a full trace of any nested exceptions and warnings. Ideally, you should also capture information that identifies the user who is running the code, together with activity correlation information (to track requests as they pass through the system).
+- **Log all exceptions and warnings** Retain a full trace of any nested exceptions and warnings. Ideally, you should also capture information that identifies the user who is running the code, together with activity correlation information (to track requests as they pass through the system).
 
-- **Log attempts to access all dependent resources**&mdash;An application will communicate with services such as message queues, databases, files, and other dependent services. This information can be used for metering and auditing purposes.
+- **Log attempts to access all dependent resources** An application will communicate with services such as message queues, databases, files, and other dependent services. This information can be used for metering and auditing purposes.
 
-- **Capture information that identifies the user who is running the code**&mdash;This information with activity correlation information is useful in tracking requests as they pass through the system.
+- **Capture information that identifies the user who is running the code** This information with activity correlation information is useful in tracking requests as they pass through the system.
 
 
 ## Application frameworks
@@ -57,17 +57,17 @@ Another important source is the operating system where the application runs. It 
 > As a workload owner, you may not be monitoring infrastructure metrics actively. However, this information can indicate systemic issues. Consider the underlying infrastructure and components on which your system runs. Virtual machines, virtual networks, and storage services can all be sources of important infrastructure-level performance counters and other diagnostic data.
 >
 
-- **Compute monitoring**&mdash;Collect metrics from  compute resources on which the application is running. This might be virtual machines, App Services, or Kubernetes. Knowing the state of your infrastructure will allow to react promptly if there are any issues.
+- **Compute monitoring** Collect metrics from  compute resources on which the application is running. This might be virtual machines, App Services, or Kubernetes. Knowing the state of your infrastructure will allow to react promptly if there are any issues.
 
-- **Data tier monitoring**&mdash;Include metrics the databases, storage accounts, and other data sources that interact with the application. A low performance of the data tier of an application could have serious consequences.
+- **Data tier monitoring** Include metrics the databases, storage accounts, and other data sources that interact with the application. A low performance of the data tier of an application could have serious consequences.
 
-- **Container monitoring**&mdash;If your application run on Azure Kubernetes Service (AKS), you will need to monitor the state of your cluster, nodes, and pods. One option is to the [container insights](/azure/azure-monitor/containers/container-insights-overview) feature in Azure Monitor. This feature delivers quick, visual, and actionable information: from the CPU and memory pressure of your nodes to the logs of individual Kubernetes pods.
+- **Container monitoring** If your application run on Azure Kubernetes Service (AKS), you will need to monitor the state of your cluster, nodes, and pods. One option is to the [container insights](/azure/azure-monitor/containers/container-insights-overview) feature in Azure Monitor. This feature delivers quick, visual, and actionable information: from the CPU and memory pressure of your nodes to the logs of individual Kubernetes pods.
 
   Operators who prefer using the open-source Kubernetes monitoring tool Prometheus can take advantage of its integration with container insights.
 
-  :::image type="icon" source="../_images/github.png" border="false"::: The [Sidecar Pattern](https://github.com/mspnp/samples/blob/master/OperationalExcellence/Patterns/SidecarPattern/Sidecar-pattern.md) adds a separate container with responsibilities that are required by the main container. A common use case is for running logging utilities and monitoring agents.
+  The [Sidecar Pattern](/azure/architecture/patterns/sidecar) adds a separate container with responsibilities that are required by the main container. A common use case is for running logging utilities and monitoring agents.
 
-- **Network monitoring**&mdash;Networking is key to an application running without issues. Consider using [Network Watcher](/azure/network-watcher/network-watcher-monitoring-overview), a collection of network monitoring and troubleshooting tools. Some of these tools are:
+- **Network monitoring** Networking is key to an application running without issues. Consider using [Network Watcher](/azure/network-watcher/network-watcher-monitoring-overview), a collection of network monitoring and troubleshooting tools. Some of these tools are:
 
   - [Traffic Analytics](/azure/network-watcher/traffic-analytics) shows the flows the virtual networks and uses Microsoft Threat Intelligence databases to give you percentage traffic from malicious IP addresses. You can identify identify bottlenecks by seeing the systems in your virtual networks that generate most traffic.
   - [Network Performance Monitor](/azure/azure-monitor/insights/network-performance-monitor) can generate synthetic traffic to measure the performance of network connections over multiple links, giving you a perspective on the evolution of WAN and Internet connections over time, as well as offering valuable monitoring information about Microsoft ExpressRoute circuits.
@@ -77,9 +77,9 @@ Another important source is the operating system where the application runs. It 
 
 As the components of a system are modified and new versions are deployed, it's important to be able to attribute issues, events, and metrics to each version. 
 
-- **Relate information about issues, events, and others to the release pipeline**&mdash;Problems with a specific version of a component can be tracked quickly and rectified.
+- **Relate information about issues, events, and others to the release pipeline** Problems with a specific version of a component can be tracked quickly and rectified.
 
-- **Log security-related information for successful and failing requests**&mdash;Security issues might occur at any point in the system. For example, a user might attempt to sign in with an invalid user ID or password. An authenticated user might try to obtain unauthorized access to a resource. Or a user might provide an invalid or outdated key to access encrypted information. 
+- **Log security-related information for successful and failing requests** Security issues might occur at any point in the system. For example, a user might attempt to sign in with an invalid user ID or password. An authenticated user might try to obtain unauthorized access to a resource. Or a user might provide an invalid or outdated key to access encrypted information. 
 
 ## Sources from application and system monitoring
 
