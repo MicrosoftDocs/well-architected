@@ -6,7 +6,7 @@ ms.author: victorh
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 04/05/2022
+ms.date: 04/11/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall
@@ -28,22 +28,53 @@ We assume that you have working knowledge of Azure Firewall and are well versed 
 
 ## Reliability
 
-In the cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Use the following information to minimize failed instances.
+Azure Firewall ia an intelligent firewall security service that provides threat protection for your cloud workloads running in Azure.
+
+Features include:
+
+- Stateful Firewall as a service
+- Built-in high availability
+- Unrestricted cloud scalability
+- East-west and north-south traffic inspection
+
+To learn how Azure Firewall supports a reliable workload, see the following articles:
+
+- [Introduction to Azure Firewall](/learn/modules/introduction-azure-firewall/)
+- [Quickstart: Deploy Azure Firewall with Availability Zones](/azure/firewall/deploy-template)
 
 ### Design checklist
 
 As you make design choices for Azure Firewall, review the [Reliability design principles](../../resiliency/principles.md).
 
+<!--
+The following are the Reliability design principles:
+ 
+Design for business requirements
+Design for failure
+Observe application health
+Drive automation
+Design for self-healing
+Design for scale-out
+-->
+
 > [!div class="checklist"]
-> - XXXXX
+> - Deploy using a secured virtual hub
+> - Use a global Azure Firewall policy
+> - Determine if you want to use use third-party security as a service (SECaaS) providers.
 
 ### Recommendations
+
+<!--
+In table format, present the top recommendations that demonstrate how to achieve the points described in the design checklist.
+-->
 
 Explore the following table of recommendations to optimize your Azure Firewall configuration for Reliability.
 
 | Recommendation | Benefit |
 |--------|----|
-| XXX| XXX|
+|Use Firewall Manager with Azure Virtual Wide Area Networks (WAN) to deploy and manage Azure Firewalls across Azure Virtual WAN Hubs, or in Hub VNets.|Easily create hub-and-spoke and transitive architectures with native security services for traffic governance and protection.|
+|Create a global Azure Firewall policy to govern the security posture across global network environments. Assign the policy to all Azure Firewalls.|Allow for granular policies to meet requirements of specific regions. Delegate incremental Firewall Policies to local security Teams through role-based access control (RBAC).|
+|Configure supported third-party SaaS security providers within the Firewall Manager, if you want to use these solutions to protect outbound connections.|You can use your familiar, best-in-breed, third-party security as a service (SECaaS) offerings to protect Internet access for your users.|
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
