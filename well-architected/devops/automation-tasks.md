@@ -71,7 +71,7 @@ Azure Automation provides an Azure-hosted platform for hosting and running Power
 - Integrated secrets store.
 - Source Control integration.
 
-As seen in the following image, Azure Automation provides a portal experience for managing Azure Automation Runbooks. Use the included code sample (ARM template) to deploy an Azure automation account, automation runbook, and explore Azure Automation for yourself.
+As seen in the following image, Azure Automation provides a portal experience for managing Azure Automation Runbooks. Use the included code sample (ARM template) to deploy an Azure Automation account, automation runbook, and explore Azure Automation for yourself.
 
 ![Azure Automation PowerShell Runbook as seen in the Azure portal.](../devops/azure-automation-powershell.png)
 
@@ -85,8 +85,8 @@ So far, this document has detailed options for scripting operational tasks; howe
 
 In cloud computing, scale activities are classified into two buckets:
 
-- **Scale-up:** Adding additional resources to an existing system to meet demand.
-- **Scale-out:** Adding additional infrastructure to meet demand.
+- **Scale-up:** Adding extra resources to an existing system to meet demand.
+- **Scale-out:** Adding more infrastructure to meet demand.
 
 Many Azure services can be scaled up by changing the pricing tier of that service. Generally, this operation would need to be performed manually or using detection logic and custom automation.
 
@@ -169,7 +169,7 @@ spec:
 
 #### Cluster autoscaler
 
-Where horizontal pod autoscaling is a response to demand on a specific application of service running in a Kubernetes cluster, cluster autoscaling responds to demand on the entire Kubernetes cluster itself. If a Kubernetes cluster does not have enough compute resources or nodes to facilitate all requested pods' resource requests, some of these pods will enter a non-scheduled or pending state. In response to this situation, additional nodes can be automatically added to the cluster. Conversely, once compute resources have been freed up, the cluster nodes can automatically be removed to match steady-state demand.
+Where horizontal pod autoscaling is a response to demand on a specific application of service running in a Kubernetes cluster, cluster autoscaling responds to demand on the entire Kubernetes cluster itself. If a Kubernetes cluster does not have enough compute resources or nodes to facilitate all requested pods' resource requests, some of these pods will enter a non-scheduled or pending state. In response to this situation, more nodes can be automatically added to the cluster. Conversely, once compute resources have been freed up, the cluster nodes can automatically be removed to match steady-state demand.
 
 Cluster autoscaler can be configured when creating an AKS cluster. The following example demonstrates this operation with the Azure CLI. This operation can also be completed with an Azure Resource Manager template.
 

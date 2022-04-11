@@ -36,7 +36,7 @@ A comprehensive health monitoring system enables you to drill down to view the h
 
 - [Correlate events](#distributed-tracing) across all application components.
 - Use an [Application Performance Management (APM) tool](#application-performance-management-apm-tools) used to collect application level logs.
-- Leverage [Application Insights](#application-performance-management-apm-tools) to gather key metrics.
+- Use [Application Insights](#application-performance-management-apm-tools) to gather key metrics.
 - Collect [application logs](#application-logs) from different application environments.
 - Consider using [log levels](#log-levels) used to capture different types of application events.
 - Capture [log messages](#log-messages) in a structured format.
@@ -46,7 +46,7 @@ A comprehensive health monitoring system enables you to drill down to view the h
 - Make logs and metrics available for [critical internal dependencies]#logs-for-internal-dependencies).
 - Implement [black-box monitoring](#black-box-monitoring) to measure platform services and the resulting customer experience.
 - Implement [detailed instrumentation](#instrumentation) in the application code to better understand the customer experience.
-- Leverage [white-box monitoring](#white-box-monitoring) to instrument the application with semantic logs and metrics.
+- Apply [white-box monitoring](#white-box-monitoring) to instrument the application with semantic logs and metrics.
 
 ## Distributed tracing
 
@@ -118,7 +118,7 @@ Structured data can help you:
 
 Analyzing health data involves quickly indicating whether the system is running through metrics. Hot analysis of the immediate data triggers an alert if a critical component is detected as unhealthy.
 
-For example, the component fails to respond to a consecutive series of pings. You can, then, take the appropriate corrective action.
+For example, the component fails to respond to a consecutive series of pings. You can then take the appropriate corrective action.
 For more information about analyzing data, reference [Analyze monitoring data for cloud applications](monitor-analysis.md).
 
 #### Performance targets and non-functional requirements (NFRs)

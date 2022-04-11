@@ -57,11 +57,11 @@ Another important source is the operating system where the application runs. It 
 > As a workload owner, you may not be monitoring infrastructure metrics actively. However, this information can indicate systemic issues. Consider the underlying infrastructure and components on which your system runs. Virtual machines, virtual networks, and storage services can all be sources of important infrastructure-level performance counters and other diagnostic data.
 >
 
-- **Compute monitoring** Collect metrics from  compute resources on which the application is running. This might be virtual machines, App Services, or Kubernetes. Knowing the state of your infrastructure will allow to react promptly if there are any issues.
+- **Compute monitoring** Collect metrics from  compute resources on which the application is running. This might be virtual machines, App Services, or Kubernetes. Knowing the state of your infrastructure will allow you to react promptly if there are any issues.
 
 - **Data tier monitoring** Include metrics the databases, storage accounts, and other data sources that interact with the application. A low performance of the data tier of an application could have serious consequences.
 
-- **Container monitoring** If your application run on Azure Kubernetes Service (AKS), you will need to monitor the state of your cluster, nodes, and pods. One option is to the [container insights](/azure/azure-monitor/containers/container-insights-overview) feature in Azure Monitor. This feature delivers quick, visual, and actionable information: from the CPU and memory pressure of your nodes to the logs of individual Kubernetes pods.
+- **Container monitoring** If your application run on Azure Kubernetes Service (AKS), you'll need to monitor the state of your cluster, nodes, and pods. One option is to the [container insights](/azure/azure-monitor/containers/container-insights-overview) feature in Azure Monitor. This feature delivers quick, visual, and actionable information: from the CPU and memory pressure of your nodes to the logs of individual Kubernetes pods.
 
   Operators who prefer using the open-source Kubernetes monitoring tool Prometheus can take advantage of its integration with container insights.
 
@@ -69,7 +69,7 @@ Another important source is the operating system where the application runs. It 
 
 - **Network monitoring** Networking is key to an application running without issues. Consider using [Network Watcher](/azure/network-watcher/network-watcher-monitoring-overview), a collection of network monitoring and troubleshooting tools. Some of these tools are:
 
-  - [Traffic Analytics](/azure/network-watcher/traffic-analytics) shows the flows the virtual networks and uses Microsoft Threat Intelligence databases to give you percentage traffic from malicious IP addresses. You can identify identify bottlenecks by seeing the systems in your virtual networks that generate most traffic.
+  - [Traffic Analytics](/azure/network-watcher/traffic-analytics) shows the flows the virtual networks and uses Microsoft Threat Intelligence databases to give you percentage traffic from malicious IP addresses. You can identify bottlenecks by seeing the systems in your virtual networks that generate most traffic.
   - [Network Performance Monitor](/azure/azure-monitor/insights/network-performance-monitor) can generate synthetic traffic to measure the performance of network connections over multiple links, giving you a perspective on the evolution of WAN and Internet connections over time, as well as offering valuable monitoring information about Microsoft ExpressRoute circuits.
   - [VPN diagnostics](/azure/network-watcher/network-watcher-monitor-with-azure-automation) can help troubleshooting site-to-site VPN connections connecting your applications to users on-premises.
 

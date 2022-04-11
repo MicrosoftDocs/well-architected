@@ -37,7 +37,7 @@ The Microsoft Azure Well-Architected Framework includes the following topics in 
 | Operational excellence topics | Description |
 |-------------------|-------------|
 | [Application design][app-design] | Provides guidance on how to design, build, and orchestrate workloads with DevOps principles in mind.  |
-| [Monitoring][monitoring] | Monitoring and diagnostics are essential to any workload. Specifically for cloud applications that run in a remote datacentre often this discipline becomes even more crucial. |
+| [Monitoring][monitoring] | Monitoring and diagnostics are essential to any workload. Specifically for cloud applications that run in a remote datacenter often this discipline becomes even more crucial. |
 | [Application performance management][performance] | The monitoring and management of performance, and availability of software applications through DevOps. |
 | [Code deployment][deployment] | How you deploy your application code is one of the key factors that determines your application stability.  |
 | [Infrastructure provisioning][iac] | Frequently known as *Deployment Automation* or *Infrastructure as code*, this discipline refers to best practices for deploying the platform where your application will run. |

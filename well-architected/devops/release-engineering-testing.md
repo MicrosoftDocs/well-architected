@@ -19,23 +19,23 @@ Another aspect to consider is that testing should occur on all code. (not just a
 
 A range of testing tools are available to automate and streamline different kinds of testing, including [Azure Load Testing][alt], [Azure Pipelines][pipelines] for automated testing and [Azure Test Plans][devopstests] for manual testing.
 
-There are multiple stages at which tests can be performed in the life cycle of code, and each of them has some particularities that is important to understand. In this guide, you can find a summary of the different tests that you should consider while developing and deploying applications.
+There are multiple stages at which tests can be performed in the life cycle of code, and each of them has some particularities that are important to understand. In this guide, you can find a summary of the different tests that you should consider while developing and deploying applications.
 
 ## Automated Testing
 
-Automating tests is the best way to make sure that they are executed consistently. Depending on how frequently tests are performed, they are typically limited in duration and scope, as the different types of automated tests will show:
+Automating tests is the best way to make sure that they're executed consistently. Depending on how frequently tests are performed, they're typically limited in duration and scope, as the different types of automated tests will show:
 
 ### Unit Testing
 
-Unit tests are tests typically run as part of the continuous integration routine. Unit Tests should be extensive (ideally cover 100% of the code) and quick (run in under 30 seconds, although this number is not a guideline not a rule). 
+Unit tests are tests typically run as part of the continuous integration routine. Unit Tests should be extensive (ideally cover 100% of the code) and quick (run in under 30 seconds, although this number is a guideline). 
 
-Unit testing can verify that the syntax and functionality of individual modules of code are working the way they should. (e.g. produce a defined output for a known input) Unit tests can also be used to verify that infrastructure as code assets are valid. 
+Unit testing can verify that the syntax and functionality of individual modules of code are working the way they should. (for example: produce a defined output for a known input) Unit tests can also be used to verify that infrastructure as code assets are valid. 
 
 Unit tests should be applied both to all code assets. (including templates and scripts)
 
 ### Smoke Testing
 
-Smoke tests verify that a workload can be stood up in a test environment and perfomrs as expected. They do not go to the extend of integration tests as they do not verify the interoperability of different components. 
+Smoke tests verify that a workload can be stood up in a test environment and performs as expected. They don't go to the extend of integration tests as they don't verify the interoperability of different components. 
 
 Instead they verify that the deployment methodology for both infrastructure and the application works and that the system responds as intended once the process is complete. 
 
@@ -49,37 +49,37 @@ Long running test processes can be run on a regular interval if needed. This off
 
 ## Manual Testing
 
-Manual testing is much more expensive than automated testing, and as a consequence it is usually run much less frequently. However, manual testing is fundamental for the correct functioning of the DevOps feedback loop, to correct errors before they become too expensive to repair, or cause customer dissatisfaction.
+Manual testing is much more expensive than automated testing, and as a consequence it's usually run much less frequently. However, manual testing is fundamental for the correct functioning of the DevOps feedback loop, to correct errors before they become too expensive to repair, or cause customer dissatisfaction.
 
 ## Acceptance Testing
 
-Depending on the context accpetance testing is sometimes performed manually. In some cases it is partially or fully automated. Its purpose is to determine whether or not the software system has met the requirement specifications. 
+Depending on the context acceptance testing is sometimes performed manually. In some cases it's partially or fully automated. Its purpose is to determine whether or not the software system has met the requirement specifications. 
 
-The main purpose of this test is to evaluate the system's compliance with the business requirements and verify if it is has met the required criteria for delivery to end users.
+The main purpose of this test is to evaluate the system's compliance with the business requirements and verify if it has met the required criteria for delivery to end users.
 
-Tools like [Application Insights User Behavior Analytic][telemetry], can help you work out how people are using your application. This way you can decide whether a new feature has improved your applications without bringing unintended adverse effecdts.
+Tools like [Application Insights User Behavior Analytic][telemetry], can help you work out how people are using your application. This way you can decide whether a new feature has improved your applications without bringing unintended adverse effects.
 
-The next section of this article will cover methods for "Testing in Production" which can be used to verify if features have met business targets with real world user behavior.
+The next section of this article will cover methods for "Testing in Production", which can be used to verify if features have met business targets with real world user behavior.
 
 ## Testing and Experimentation in Production
 
-Depending on your chosen deployment startegy Azure platform features might help you conduct experiments in production. 
+Depending on your chosen deployment strategy Azure platform features might help you conduct experiments in production. 
 
 Azure AppService - for example - comes with the [slot functionality][slots] that allows you to have two different versions of the same application running at the same time. Slots allow for A/B testing by directing part of the user traffic to one version of the application and the rest of the traffic to another.
 
 There are multiple popular approaches to experimentation in production:
 
 - **Blue/Green deployments** When deploying a new application version, you can deploy it in parallel to the existing one. This allows you to start redirecting clients to the new version, and if everything goes well you can then decommission the old version. If there is any problem with the new deployment, you can always redirect the users back to the deployment with the previous version.
-- **Canary releases** You can expose new functionality of your application in a staggered way to select groups of users. If users are satisfied with the new functionality, or if the new feature performs as expected with the control group, you can extend the feature to a larger group of users until it is fully rolled out. 
+- **Canary releases** You can expose new functionality of your application in a staggered way to select groups of users. If users are satisfied with the new functionality, or if the new feature performs as expected with the control group, you can extend the feature to a larger group of users until it's fully rolled out. 
 - **A/B testing**: A/B testing is similar to canary release-testing, but while canary releases focus on mitigate risk, A/B testing focus on evaluating two versions of an application or feature side by side. For example, if you have two versions of the layout of a certain area of your application, you could send half of your users to one, the other half to the other, and use some metrics to see which layout is more successful in the context of your business goals.
 
 ## Stress Testing
 
 As other sections of this framework have explained, designing your application code and infrastructure for scalability is of paramount importance. Stress tests help you verify regularly that both your application and your environment will adapt to changing load conditions.
 
-During these stress tests, it is critical to monitor all the components of the system to identify whether you hit any bottleneck but also to establish a clear baseline to test against. 
+During these stress tests, it's critical to monitor all the components of the system to identify whether you hit any bottleneck but also to establish a clear baseline to test against. 
 
-Every component of the system that isn't able to scale out can turn into a scale limitation, such as active/passive network components or databases. It is hence important to know their limits so that you can mitigate their impact when it comes to application scale. 
+Every component of the system that isn't able to scale out can turn into a scale limitation, such as active/passive network components or databases. It's hence important to know their limits so that you can mitigate their impact when it comes to application scale. 
 
 Another important part of stress tests is to verify that the infrastructure scales back down to its normal condition as expected in order to keep costs under control.
 
@@ -89,7 +89,7 @@ Another important part of stress tests is to verify that the infrastructure scal
 
 Disaster Recovery Drills are important to verify that the existing backup strategy is complimented by a working recovery procedure. These should be conducted regularly.
 
-Tools such as Azure Site Recovery make it possible to start an isolated copy of the primary worload location in a secondary environment, so that it can be verified that the workload has recovered as it should in an emergency.
+Tools such as Azure Site Recovery make it possible to start an isolated copy of the primary workload location in a secondary environment, so that it can be verified that the workload has recovered as it should in an emergency.
 
 In case a problem occurs during the drill, the Disaster Recovery procedure can be optimized, and the infrastructure in the secondary environment can be deleted safetly.
 
@@ -110,7 +110,7 @@ Products like [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) ai
 
 ## Summary
 
-In order to deploy software quickly and reliably, testing is a fundamental component of the development and deployment life cycle. It's important to make sure that the application is going to perform as expected in every situation. We therefor need to not only test application code but all aspects of our workload.
+In order to deploy software quickly and reliably, testing is a fundamental component of the development and deployment life cycle. It's important to make sure that the application is going to perform as expected in every situation. We therefore need to not only test application code but all aspects of our workload.
 
 ## Next steps
 

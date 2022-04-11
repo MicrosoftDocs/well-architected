@@ -46,7 +46,7 @@ The hot, warm, and cold analysis patterns are summarized in [Analysis patterns](
 
 ## Application data
 
-In case of an application, the collecting service can be an **Application Performance Management (APM) tool** that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you'll have clear visibility of important metrics both in real time and historically. Consider an  appropriate level of logging. Verbose logging  can incur significant costs.
+For applications, the collecting service can be an **Application Performance Management (APM) tool** that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you'll have clear visibility of important metrics both in real time and historically. Consider an  appropriate level of logging. Verbose logging  can incur significant costs.
 
 An example of an APM is [Application Insights](/azure/azure-monitor/app/data-retention-privacy#what-is-application-insights) that aggregates application level logs and events for subsequent analysis. 
 
@@ -67,7 +67,7 @@ You will also need to collect platform diagnostics to get a holistic view. For e
 - **Enforce consistency.** You can use Azure Policy to ensure the consistent use of diagnostic settings across the application, to enforce the desired configuration for each Azure service.
 - **Collect logs and metrics available for critical internal dependencies.** This information gives you visibility into the operational state of critical internal dependencies, such as a shared NVA or Express Route connections, and others.
 
-There are many options for a collection service for aggregating infrastructure and resource logs. Azure Log Analytics or Splunk, are popular choices for collating logs and metrics across all application components for subsequent evaluation. Resources may include Azure IaaS, nd PaaS services, and third-party appliances such as firewalls or anti-malware solutions used in the application. For instance, if Azure Event Hubs is used, the Diagnostic Settings should be configured to push logs and metrics to the data sink. 
+There are many options for a collection service for aggregating infrastructure and resource logs. Azure Log Analytics or Splunk, are popular choices for collating logs and metrics across all application components for subsequent evaluation. Resources may include Azure IaaS, PaaS services, and third-party appliances such as firewalls or anti-malware solutions used in the application. For instance, if Azure Event Hubs is used, the Diagnostic Settings should be configured to push logs and metrics to the data sink. 
 
 Understanding usage helps with right-sizing of the workload, but additional cost for logging needs to be accepted and included in the cost model.
 
@@ -113,7 +113,7 @@ The data collected from a single instance of an application gives a localized vi
 ![Example of using a service to consolidate instrumentation data](../devops/consolidation.png)
 
 
-The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, instrumentation data that includes the same correlation information such as an activity ID can be amalgamated. (It's possible that a user starts performing a business operation on one node and then gets transferred to another node in the event of node failure, or depending on how load balancing is configured.) This process can also detect and remove any duplicated data (always a possibility if the telemetry service uses message queues to push instrumentation data out to storage). 
+The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, instrumentation data that includes the same correlation information such as an activity ID can be amalgamated. (It's possible that a user starts performing a business operation on one node and then gets transferred to another node if a node fails, or depending on how load balancing is configured.) This process can also detect and remove any duplicated data (always a possibility if the telemetry service uses message queues to push instrumentation data out to storage). 
 
 
 ## Storage strategies
@@ -135,7 +135,7 @@ The same instrumentation data might be required for more than one purpose. For e
 
 ### Consolidation service
 
-You can implement an additional service that periodically retrieves the data from shared storage, partitions and filters the data according to its purpose, and then writes it to an appropriate set of data stores.
+You can implement another service that periodically retrieves the data from shared storage, partitions and filters the data according to its purpose, and then writes it to an appropriate set of data stores.
 
 ![Partitioning and storage of data](../devops/datastorage.png)
 

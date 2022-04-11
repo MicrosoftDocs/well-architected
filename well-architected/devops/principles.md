@@ -43,7 +43,7 @@ Embrace software engineering disciplines across your entire environment, which i
 - Provision with Infrastructure as Code
 - Build and release with continuous integration and continuous delivery (CI/CD) pipelines
 - Use automated testing methods
-- Avoid configuration drift thorugh configuration as code
+- Avoid configuration drift through configuration as code
   
 This approach ensures the creation and management of environments throughout the software development lifecycle. It enables:
 
@@ -77,12 +77,12 @@ Rehearse recovery and practice failure using the following methods:
 Teams that embrace continuous operational improvement continuously evaluate and refine operational procedures and tasks.
 They strive to reduce complexity and ambiguity whenever possible.
   
-Adopting a continious improvement culture helps organizations:
+Adopting a continuous improvement culture helps organizations:
 
 - Evolve processes over time.
 - Optimize inefficiencies and associated processes.
 - Learn from failures.
-- Continiously evaluate new opportunities.
+- Continuously evaluate new opportunities.
 
 
 ## Use loosely coupled architecture
@@ -90,7 +90,7 @@ Adopting a continious improvement culture helps organizations:
 Use modern architecture patterns such as:
 
 - microservices
-- loosely-coupled 
+- loosely coupled 
 - serverless 
 
 and pair this with cloud design patterns such as:
@@ -105,7 +105,7 @@ and advanced deployment strategies like:
 - Blue-green 
 - Staggered
 
- to enable teams to build and deploy services independently and minimize the impact in case of service failure.
+ to enable teams to build and deploy services independently and minimize the impact if there is a service failure.
   
 This principle also extends to procedural decoupling. Teams will be able to take full advantage of their loosely coupled architecture if they do not have to depend on partner teams to support, approve, or operate their workloads.
 

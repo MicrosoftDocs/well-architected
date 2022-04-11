@@ -33,7 +33,7 @@ For more information on using Azure App Service deployment slots, see [Set up st
 ## Leverage desired state configuration
 
 Kubernetes is among the solutions that enable you to express your deployment instructions as a desired state configuration. 
-In the case of Kubernetes you use a deployment instruction to describe the particular workload running in the cluster. A deployment may declare that a workload consists of 3 replicas of a specific pod that should be running at all times. The deployment object creates a ReplicaSet and the associate Pods. When updating a workload, the deployment itself can be revised, which will generally roll out a new container image to the deployment pods. 
+In the case of Kubernetes you use a deployment instruction to describe the particular workload running in the cluster. A deployment may declare that a workload consists of three replicas of a specific pod that should be running at all times. The deployment object creates a ReplicaSet and the associate Pods. When updating a workload, the deployment itself can be revised, which will generally roll out a new container image to the deployment pods. 
 Assuming multiple replicas of the pods exist, this rollout can happen in a controlled and staged manner and in harmony with your workload's overall deployment strategy.
 
 **Learn more**
@@ -54,7 +54,7 @@ For more information, see [Rollback on an error to successful deployment](/azure
 ## Restore a known good state
 
 Many managed services have a concept of versioning. 
-Azure Logic Apps - for example - create a new version of the application whenver an update is made to it. Azure maintains a history of versions and can revert or promote any previous version. To do so, in the Azure portal, select your Logic App and choose **Versions**. Previous versions can be selected on the versions pane, and the application can be inspected both in the code view and the visual designer view. Select the version you would like to revert to, and click the **Promote** option and then **Save**.
+Azure Logic Apps - for example - create a new version of the application whenever an update is made to it. Azure maintains a history of versions and can revert or promote any previous version. To do so, in the Azure portal, select your Logic App and choose **Versions**. Previous versions can be selected on the versions pane, and the application can be inspected both in the code view and the visual designer view. Select the version you would like to revert to, and click the **Promote** option and then **Save**.
 
 :::image type="content" source="../devops/revert-logic-app.png" alt-text="Image showing Azure logic application version history." lightbox="../devops/revert-logic-app-full.png":::
 

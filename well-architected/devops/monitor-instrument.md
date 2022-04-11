@@ -39,7 +39,7 @@ Metrics will generally be a measure or count of some aspect or resource in the s
 
 You can easily monitor individual system-level performance counters, capture metrics for resources, and obtain application trace information from various log files. Some forms of monitoring require the analysis and diagnostics stage in the monitoring pipeline to correlate the data that's retrieved from several sources. This data may take several forms in the raw data, and the analysis process must be provided with sufficient instrumentation data to map these different forms. For example, at the application framework level, a task may be identified by a thread ID. Within an application, the same work may be associated with the user ID for the user who is completing that task.
 
-Also, it's unlikely to be a 1:1 mapping between threads and user requests, because asynchronous operations may reuse the same threads to do operations for more than one user. To complicate matters further, a single request may be handled by more than one thread as execution flows through the system. If possible, associate each request with a unique activity ID that's propagated through the system as part of the request context. The technique for generating and including activity IDs in trace information depends on the technology that's used to capture the trace data.
+Also, it's unlikely to be a 1:1 mapping between threads and user requests, because asynchronous operations may reuse the same threads to do operations for more than one user. To complicate matters further, a single request may be handled by more than one thread as execution flows through the system. If possible, associate each request with a unique activity Id that's propagated through the system as part of the request context. The technique for generating and including activity IDs in trace information depends on the technology that's used to capture the trace data.
 
 All monitoring data should be timestamped in the same way. For consistency, record all dates and times by using Coordinated Universal Time, which helps you trace sequences of events with ease.
 
@@ -64,7 +64,7 @@ Include the following environmental information, such as:
 
 Enable profiling only when necessary because it can impose a significant overhead on the system. By using instrumentation, profiling records an event, such as a method call, every time it occurs; but, sampling records only selected events. 
 
-The selection can be time-based, such as once every `n` seconds, or frequency-based, such as once every `n` requests. If events occur frequently, profiling by instrumentation may cause too much of a burden and affect overall performance. In this case, the sampling approach may be preferable. 
+The selection can be time-based, such as once every `n` seconds, or frequency-based, such as once every `n` requests. If events occur frequently, profiling by instrumentation may cause too much of a burden and effect overall performance. In this case, the sampling approach may be preferable. 
 
 However, if the frequency of events is low, sampling may miss them. In this case, instrumentation may be the better approach.
 
@@ -145,14 +145,14 @@ The following list summarizes best practices for instrumenting a distributed app
 - Use the same time zone and format for all timestamps.
 - Categorize logs and write messages to the appropriate place.
 - Don't reveal sensitive information about the system or personal information about users.
-  - Scrub this information before it is logged, but ensure that you keep the relevant details. 
+  - Scrub this information before it's logged, but ensure that you keep the relevant details. 
 - Log all critical exceptions, but enable the administrator to turn logging on and off for lower levels of exceptions and warnings.
 - Capture and log all retry logic information. This data can be useful in monitoring the transient health of the system.
 - Trace out process calls, such as requests to external web services or databases.
 - Don't mix log messages with different security requirements in the same log file. 
 - Except for auditing events, make sure that all logging calls are *fire-and-forget* operations that don't block the progress of business operations. 
   - Auditing events are exceptional because they're critical to the business.
-- Make sure that logging is extensible (for example in code throught he use of an interface) and doesn't have any direct dependencies on a concrete target. 
+- Make sure that logging is extensible (for example in code through the use of an interface) and doesn't have any direct dependencies on a concrete target. 
 - Make sure that all logging is fail-safe and never triggers any cascading errors. 
 - Treat instrumentation as an ongoing iterative process and review logs regularly, not just when there's a problem.
 
