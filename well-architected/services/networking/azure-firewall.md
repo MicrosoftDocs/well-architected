@@ -6,7 +6,7 @@ ms.author: victorh
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 04/05/2022
+ms.date: 04/11/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall
@@ -58,8 +58,9 @@ Design for scale-out
 -->
 
 > [!div class="checklist"]
+> - Deploy using a secured virtual hub
 > - Use a global Azure Firewall policy
-> - Configure supported third-party SaaS security providers within the Firewall Manager, if you want to use these solutions to protect outbound connections.
+> - Determine if you want to use use third-party security as a service (SECaaS) providers.
 
 ### Recommendations
 
@@ -71,8 +72,9 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 
 | Recommendation | Benefit |
 |--------|----|
-|Use Firewall Manager with Azure Virtual Wide Area Networks (WAN) to deploy and manage Azure Firewalls across Azure Virtual WAN Hubs, or in Hub VNets.|xxx|
+|Use Firewall Manager with Azure Virtual Wide Area Networks (WAN) to deploy and manage Azure Firewalls across Azure Virtual WAN Hubs, or in Hub VNets.|Easily create hub-and-spoke and transitive architectures with native security services for traffic governance and protection.|
 |Create a global Azure Firewall policy to govern the security posture across global network environments. Assign the policy to all Azure Firewalls.|Allow for granular policies to meet requirements of specific regions. Delegate incremental Firewall Policies to local security Teams through role-based access control (RBAC).|
+|Configure supported third-party SaaS security providers within the Firewall Manager, if you want to use these solutions to protect outbound connections.|You can use your familiar, best-in-breed, third-party security as a service (SECaaS) offerings to protect Internet access for your users.|
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
