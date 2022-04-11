@@ -51,8 +51,6 @@ For more information about Azure Service Fabric workload reliability, reference 
 
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture.
 
-**Have you configured Azure Service Fabric with reliability in mind?**
-***
 > [!div class="checklist"]
 > - **Cluster architecture:** Use [Standard SKU](/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) for production scenarios. **Standard cluster:** Use [durability level Silver](/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster) (5 VMs) or greater for production scenarios.
 > - **Cluster architecture:** For critical workloads, consider using [Availability Zones](/azure/service-fabric/how-to-managed-cluster-availability-zones) for your Service Fabric clusters.
@@ -88,8 +86,6 @@ For more information about Azure Service Fabric workload security, reference [Se
 
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/security/security-principles) for adding security to the architecture.
 
-**Have you configured Azure Service Fabric with security in mind?**
-***
 > [!div class="checklist"]
 > - **Cluster architecture:** Ensure Network Security Groups (NSG) are configured to restrict traffic flow between subnets and node types. Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for application deployment and workloads.
 > - **Cluster architecture:** When using the Service Fabric Secret Store to distribute secrets, use a separate data encipherment certificate to encrypt the values.
@@ -143,8 +139,6 @@ For more information about Azure Service Fabric workload pricing, check out the 
 
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/cost/principles) for optimizing the cost of your architecture.
 
-**Have you configured Azure Service Fabric with cost optimization in mind?**
-***
 > [!div class="checklist"]
 > - **Cluster architecture:** Select appropriate VM SKU.
 > - **Cluster architecture:** Use appropriate node type and size.
@@ -170,8 +164,6 @@ When discussing security with Azure Service Fabric, it's important to distinguis
 
 In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
 
-**Have you configured Azure Service Fabric with operational excellence in mind?**
-***
 ### Design checklist
 
 As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/devops/principles) for operational excellence.
@@ -190,7 +182,6 @@ Explore the following table of recommendations to optimize your Azure Service Fa
 
 |Azure Service Fabric Recommendation|Benefit|
 |-----------------------------------|-----------|
-|**Cluster architecture:** Use [Azure Monitor to monitor cluster-level events](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).|Azure Monitor integrates well with the Azure platform, including Service Fabric.|
 |**Workload architecture:** Use [Application Insights to monitor your workloads](/azure/service-fabric/service-fabric-best-practices-monitoring#application-monitoring).|Application Insights integrates with the Azure platform, including Service Fabric.|
 |**Cluster and workload architectures:** Create a process for monitoring the expiration date of client certificates.|For example, Key Vault offers a feature that sends an email when `x%` of the certificate's lifespan has elapsed.|
 |**Cluster and workload architectures:** For pre-production clusters use [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-chaos-experiments) to drill service disruption on a Virtual Machine Scale Set instance failure.|Practicing service disruption scenarios will help you understand what is at-risk in your infrastructure and how to best mitigate the issues if they arise.|
@@ -209,8 +200,6 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 
 For more information about how Azure Service Fabric can reduce performance issues for your workload with Service Fabric performance counters, reference [Monitoring and diagnostic best practices for Azure Service Fabric](/azure/service-fabric/service-fabric-best-practices-monitoring).
 
-**Have you configured Azure Service Fabric with performance efficiency in mind?**
-***
 ### Design checklist
 
 > [!div class="checklist"]
