@@ -67,13 +67,13 @@ Using source control systems, you can create both branches in an existing repo a
 
 While branches are usually short lived and will eventually be merged back into a repo via a pull request, fork are usually around for longer. While they can also be merged back via a pull request, some forks develop independently from their origin repo.
 
-You can review our documentation on [Forks and Branches](azure/devops/repos/git/forks) to find out more about the differences and similiarties between them.
+You can review our documentation on [Forks and Branches](/azure/devops/repos/git/forks) to find out more about the differences and similiarties between them.
 
 ### Peer Review
 
 As updates are made to software and infrastructure configurations, version control software allows us to propose these changes before merging them into the source. During the proposal, peers can review the changes, recommend updates, and approve the changes. Source control solutions provide an excellent platform for collaboration on changes to the software.
 
-To learn more about using Git, visit the [DevOps Resource Center](devops/develop/git/what-is-git).
+To learn more about using Git, visit the [DevOps Resource Center](/devops/develop/git/what-is-git).
 
 ### GitHub
 
@@ -81,7 +81,7 @@ To learn more about using Git, visit the [DevOps Resource Center](devops/develop
 
 ### Azure Repos
 
-Azure DevOps is a collection of services for building, collaborating on, testing, and delivering software to any environment. Azure DevOps Services include [Azure Repos](azure/devops/repos), which is its source control system. Using Azure Repos includes unlimited free private Git repositories. Standard Git powers Azure Repos, and you can use clients and tools of your choice for working with them.
+Azure DevOps is a collection of services for building, collaborating on, testing, and delivering software to any environment. Azure DevOps Services include [Azure Repos](/azure/devops/repos), which is its source control system. Using Azure Repos includes unlimited free private Git repositories. Standard Git powers Azure Repos, and you can use clients and tools of your choice for working with them.
 
 ## Next steps
 
