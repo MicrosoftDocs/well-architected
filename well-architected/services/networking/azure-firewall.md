@@ -6,7 +6,7 @@ ms.author: victorh
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 04/11/2022
+ms.date: 04/13/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall
@@ -80,22 +80,50 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Security
 
-Security is one of the most important aspects of any architecture. Azure Firewall provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../../security/security-principles.md).
+Security is one of the most important aspects of any architecture. An intelligent firewall security service, [Azure Firewall](/azure/firewall/) provides threat protection for your cloud workloads running in Azure.
 
 ### Design checklist
 
+As you make design choices for Azure Firewall, review the [Security design principles](../../security/security-principles.md).
+
+<!--
+The following are the Security design principles:
+ 
+Plan resources and how to harden them
+Automate and use least privilege
+Classify and encrypt data
+Monitor system security, plan incident response
+Identify and protect endpoints
+Protect against code-level vulnerabilities
+Model and test against potential threats
+-->
+
 > [!div class="checklist"]
-> - XXX
+> - Use a global Azure Firewall policy
+> - Use threat intelligence
+> - Use DNS proxy
+> - Direct network traffic through Azure Firewall
+> - Validate spoke networks
+> - Determine if you want to use use third-party security as a service (SECaaS) providers.
+> - Use just-in-time systems (JIT)
 
 ### Recommendations
+
+<!--
+In table format, present the top recommendations that demonstrate how to achieve the points described in the design checklist.
+-->
 
 Explore the following table of recommendations to optimize your Azure Firewall configuration for Security.
 
 | Recommendation | Benefit |
 |--------|----|
-| XXX |XXX|
-
-For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
+|Create a global Azure Firewall policy to govern the security posture across global network environments. Assign the policy to all Azure Firewalls.|Allow for granular policies to meet requirements of specific regions. Delegate incremental Firewall Policies to local security teams through role-based access control (RBAC).|
+|Enable threat intelligence on Azure Firewall.|You can enable threat intelligence-based filtering for your firewall to alert and deny traffic from or to unknown IP addresses and domains. The IP addresses and domains are sourced from the Microsoft Threat Intelligence Feed. Intelligent Security Graph powers Microsoft threat intelligence and is used by multiple services including Azure Security Center.
+|Enable Domain Name System (DNS) Proxy and point the infrastructure DNS to Azure Firewall.|By default, Azure Firewall uses Azure DNS. Custom DNS allows you to configure Azure Firewall to use Corporate DNS to resolve external and internal names.|
+|Configure the user-defined routes (UDR) to force traffic to Azure Firewall.|Configure UDRs to force traffic to Azure Firewall for `SpoketoSpoke`, `SpoketoInternet`, and `SpoketoHybrid` connectivity.|
+|Validate any overlapping or missing peering in spoke networks.|Check if there's any overlapping or missing peering in spoke networks.|
+|Leverage Security Partner Providers for third-party Security as a Service (SECaaS) Offerings.|Security partner providers help to filter internet traffic through Virtual Private Network (VNET) to internet or Branch to internet.|
+|Use just-in-time systems (JIT) to control access to virtual machines (VMs) from the internet.|You can use Azure Security Center JIT to control access for clients connecting from the internet using Azure Firewall.|
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
