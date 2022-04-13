@@ -58,7 +58,7 @@ For more information, see these articles:
 -   [Real-time scoring of Python scikit-learn and deep learning models on Azure](/azure/architecture/reference-architectures/ai/real-time-scoring-machine-learning-models)
 -   [Machine learning operationalization (MLOps) for Python models using Azure MachineLearning](/azure/architecture/reference-architectures/ai/mlops-python)
 -   [Batch scoring of R machine learning models on Azure](/azure/architecture/reference-architectures/ai/batch-scoring-r-models)
--   [Real-time scoring of R machine learning models on Azure](/azure/architecture/reference-architectures/ai/realtime-scoring-r.)
+-   [Real-time scoring of R machine learning models on Azure](/azure/architecture/reference-architectures/ai/realtime-scoring-r)
 -   [Batch scoring of Spark machine learning models on Azure Databricks](/azure/architecture/reference-architectures/ai/batch-scoring-databricks)
 -   [Enterprise-grade conversational bot](/azure/architecture/reference-architectures/ai/conversational-bot)
 -   [Build a real-time recommendation API on Azure](/azure/architecture/reference-architectures/ai/real-time-recommendation)
