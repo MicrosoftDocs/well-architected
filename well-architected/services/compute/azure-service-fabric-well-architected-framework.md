@@ -31,7 +31,7 @@ In this article, you learn architectural best practices for Azure Service Fabric
 
 ## Prerequisites
 
-* Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. Check out the [Azure Well-Architected Framework overview page](../index.md) to review the five pillars of architectural excellence.
+* Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. Check out the [Azure Well-Architected Framework overview page](../../index.md) to review the five pillars of architectural excellence.
 
 * Reviewing the [core concepts of Azure Service Fabric](/azure/service-fabric/service-fabric-content-roadmap) and [microservice architecture](/azure/architecture/reference-architectures/microservices/service-fabric) can help you understand the context of the best practices provided in this article.
 
