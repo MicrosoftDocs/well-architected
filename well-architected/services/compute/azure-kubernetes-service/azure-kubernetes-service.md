@@ -24,7 +24,7 @@ We assume that you have working knowledge of Azure Kubernetes Service and are we
 
 Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
 
-Use a reference architecture to review the considerations based on the guidance provided in this article. We recommend that you start with the [baseline architecture for an Azure Kubernetes Service (AKS) cluster](/architecture/reference-architectures/containers/aks/secure-baseline-aks) and [Microservices architecture on Azure Kubernetes Service](/architecture/reference-architectures/containers/aks-microservices/aks-microservices).
+Use a reference architecture to review the considerations based on the guidance provided in this article. We recommend that you start with the [baseline architecture for an Azure Kubernetes Service (AKS) cluster](/architecture/reference-architectures/containers/aks/secure-baseline-aks) and [Microservices architecture on Azure Kubernetes Service](/architecture/reference-architectures/containers/aks-microservices/aks-microservices). Also review the [AKS landing zone accelerator](/cloud-adoption-framework/scenarios/aks/enterprise-scale-landing-zone), which provides an architectural approach and reference implementation to prepare landing zone subscriptions for a scalable Azure Kubernetes Service (AKS) cluster.
 
 ## Reliability
 
@@ -42,11 +42,12 @@ In the cloud, we acknowledge that failures happen. Instead of trying to prevent 
 > - Store container images within [Azure Container Registry](/azure/container-registry/container-registry-intro) and enable [geo-replication](/azure/container-registry/container-registry-geo-replication) to manage a single registry across all regions.
 > - Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate data centers.
 > - Use a template-based deployment using Terraform, Ansible, and others only. Make sure that all deployments are repeatable and traceable, and stored in a source code repo. Can be combined with GitOps.
-> - Adopt a [multi-region](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) strategy by deploying AKS clusters deployed across different Azure regions to maximize availability and provide business continuity.
+> - Adopt a [multi-region](/azure/architecture/reference-architectures/containers/aks-multi-region/aks-multi-cluster) strategy by deploying AKS clusters deployed across different Azure regions to maximize availability and provide business continuity.
 
 ### Node pool design checklist
 
 > [!div class="checklist"]
+> - Use [multiple node pools](/azure/aks/use-multiple-node-pools) to support workloads that have different compute or storage demands. 
 > - Keep the System node pool isolated from application workloads.
 > - Use dedicated node pools for infrastructure tools that require high resource utilization, such as Istio, or have a special scale or load behavior.
 > - Separate applications to dedicated node pools based on specific requirements.
@@ -83,15 +84,17 @@ Azure Advisor helps you ensure and improve Azure Kubernetes Service, for this ca
 
 Azure Kubernetes Service offers a wide variety of built-in Azure Policies that apply to both the Azure resource like typical Azure Policies and, using the Azure Policy add-on for Kubernetes, also within the cluster. There are a numerous number of policies, and key policies related to this pillar are summarized here. For a more detailed view, see [built-in policy definitions for Kubernetes](/azure/governance/policy/samples/built-in-policies#kubernetes).
 
-### Cluster & workload architecture
+### Cluster and workload architecture
 
-- Ensure clusters have readiness or liveness probes
+- Ensure clusters have readiness or liveness probes.
 
-  In addition to the built-in Azure Policy definitions, custom policies can be created for both the AKS resource and for the Azure Policy add-on for Kubernetes. This allows you to add additional reliability constraints you'd like to enforce in your cluster and workload architecture.
+In addition to the built-in Azure Policy definitions, custom policies can be created for both the AKS resource and for the Azure Policy add-on for Kubernetes. This allows you to add additional reliability constraints you'd like to enforce in your cluster and workload architecture.
 
 ## Security
 
-Security is one of the most important aspects of any architecture. To explore how AKS can bolster the security of your application workload, we recommend you review the [Security design principles](../../security/security-principles.md).
+Security is one of the most important aspects of any architecture. To explore how AKS can bolster the security of your application workload, we recommend you review the [Security design principles](../../security/security-principles.md). If your Azure Kubernetes Service cluster needs to be designed to run a sensitive workload that meets the regulatory requirements of the Payment Card Industry Data Security Standard (PCI-DSS 3.2.1), review [AKS regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro).
+
+To learn about DoD Impact Level 5 (IL5) support and requirements with AKS, review [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-kubernetes-service).
 
 ### Design checklist
 
@@ -137,16 +140,16 @@ Azure Policy offers a variety of built-in policy definitions that apply to both 
 
 There are a numerous number of policies, and key policies related to this pillar are summarized here. For a more detailed view, see [built-in policy definitions for Kubernetes](/azure/governance/policy/samples/built-in-policies#kubernetes).
 
-#### Cluster Architecture
+#### Cluster architecture
 
-- Microsoft Defender-based policies
-- Authentication mode and configuration policies (Azure AD, RBAC, disable local auth)
+- Microsoft Defender for Cloud-based policies
+- Authentication mode and configuration policies (Azure AD, RBAC, disable local authentication)
 - API Server network access policies, including private cluster
 
-#### Cluster & Workload Architecture
+#### Cluster and workload architecture
 
 - Kubernetes cluster pod security initiatives Linux-based workloads
-- Including pod and container capability policies such as AppArmor, sysctl, security caps, SELinux, seccomp, privileged containers, automount cluster API credentials
+- Include pod and container capability policies such as AppArmor, sysctl, security caps, SELinux, seccomp, privileged containers, automount cluster API credentials
 - Mount, volume drivers, and filesystem policies
 - Pod/Container networking policies, such as host network, port, allowed external Ips, HTTPs, internal load balancers
 
@@ -229,83 +232,67 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 ## Operational excellence
 
-<!-- 5D. ----------------------------------------------------
-
-    Follow the Operational excellence H2 heading with a sentence about how the section contributes to the framework. 
--->
-
-[H2 section introduction here.]
+Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](/azure/architecture/framework/devops/principles).
 
 ### Design checklist
 
-<!--
+> [!div class="checklist"]
+> - Review [AKS best practices](/azure/aks/best-practices) documentation.
+> - Run multiple workloads in a single AKS cluster.
+> - Reboot nodes only when updates and patches require it.
+> - Don't modify resources in the [node resource group (for example MC_)](/azure/aks/faq#why-are-two-resource-groups-created-with-aks). You should *only* make modifications at [cluster creation time](/azure/aks/faq#can-i-provide-my-own-name-for-the-aks-node-resource-group), or with assistance from [Azure Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/supportPlans).
+> - Monitor your clusters using [Azure Monitor and App Insights](/azure/azure-monitor/containers/container-insights-overview) to collect metrics, logs, and diagnostics to monitor the availability and performance of the cluster and workloads running on it. Enable and review [Kubernetes master node logs](/azure/azure-monitor/containers/container-insights-log-query#resource-logs) and additionally, configure [scraping of Prometheus metrics](/azure/azure-monitor/containers/container-insights-prometheus-integration) with Container insights.
+> - Use the [AKS Uptime SLA](/azure/aks/uptime-sla) for production grade clusters.
+> - Store container images within Azure Container Registry and enable [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across leveraged AKS regions.
+> - Use [Availability Zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate data centers.
+> - Use a template-based deployment using Terraform, Ansible, and others only. Make sure that all deployments are repeatable and traceable, and stored in a source code repo. Can be combined with GitOps.
+> - Adopt a [multiregion strategy](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) by deploying AKS clusters deployed across different Azure regions to maximize availability and provide business continuity.
 
-    Required    
-
-    A design checklist is always the first H3 in each pillar section.
-
-    Make sure the considerations you document:
-    - Are presented in a checklist format.
-    - Map to the design principles. Identify the appropriate principle, and then think about your recommendation in relation to it.
-    - Focus on the salient features for that pillar as they relate to the product.
-    - Provide full coverage of the design principles. (If not all design principles exist, cover no fewer than three design principles.)
--->
-
-As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
+### Node pool design checklist
 
 > [!div class="checklist"]
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
+> - Use [multiple node pools](/azure/aks/use-multiple-node-pools) to support workloads that have different compute or storage demands. 
+> - Keep the System node pool isolated from application workloads.
+> - Use dedicated node pools for infrastructure tools that require high resource utilization, such as Istio, or have a special scale, or load behavior.
 
 ### Recommendations
 
-<!--
-
-    Required    
-
-    The Recommendations H3 is always the second section in each pillar. The content in this section should be formatted as a table.
-
--->
-
-Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
+Explore the following table of recommendations to optimize your AKS configuration for operations.
 
 | Recommendation | Benefit |
 |--------|----|
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+|Review AKS best practices documentation.|To build and run applications successfully in AKS, there are key considerations to understand and implement. These areas include multi-tenancy and scheduler features, cluster, and pod security, or business continuity and disaster recovery.|
+|Configure monitoring of cluster with Container insights. | 
+|Configure scraping of Prometheus metrics with Container insights.|Container insights, which is part of Azure Monitor, provides a seamless onboarding experience to collect Prometheus metrics. Reference [Configure scraping of Prometheus metrics](/azure/azure-monitor/containers/container-insights-prometheus-integration) for more information.|
+|Adopt a [multiregion strategy](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) by deploying AKS clusters deployed across different Azure regions to maximize availability and provide business continuity.|Internet facing workloads should leverage [Azure Front Door](/azure/frontdoor/front-door-overview), [Azure Traffic Manager](/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic), or a third-party CDN to route traffic globally across AKS clusters.|
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
 
-Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
+Azure Advisor also makes recommendations on a subset of the items listed in the policy section below, such unsupported AKS versions and unconfigured diagnostic settings. Likewise, it makes workload recommendations around the use of the default namespace.
 
 ### Policy definitions
 
-<!-- 
+Azure Policy offers a variety of built-in policy definitions that apply to both the Azure resource and AKS like standard policy definitions, and using the Azure Policy add-on for Kubernetes, also within the cluster. Many of the Azure resource policies come in both *Audit/Deny*, but also in a *Deploy If Not Exists* variant.
 
-    Required
+There are a numerous number of policies, and key policies related to this pillar are summarized here. For a more detailed view, see [built-in policy definitions for Kubernetes](/azure/governance/policy/samples/built-in-policies#kubernetes).
 
-    A list of policy definitions is always the third section in each pillar.
+#### Cluster architecture
 
-    Provide a list of policies the customer can use for resource governance. After the list of policies, provide a list of all policy definitions available in Azure.
--->
+- Azure Policy add-on for Kubernetes
+- GitOps configuration policies
+- Diagnostics settings policies
+- AKS versions version restrictions
+- Prevent command invoke
 
-- \<Policy>
-- \<Policy>
-- \<Policy>
+#### Cluster and workload architecture
 
-All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
+- Namespace deployment restrictions
+
+In addition to the built-in policies, custom policies can be created for both the AKS resource and for the Azure Policy add-on for Kubernetes. This allows you to add additional security constraints you'd like to enforce in your cluster and workload architecture.
 
 ## Performance efficiency
 
-<!-- 5E. ----------------------------------------------------
-
-    Follow the Performance efficiency H2 heading with a sentence about how the section contributes to the framework. 
--->
+Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](/azure/architecture/framework/scalability/principles).
 
 ### Design checklist
 
