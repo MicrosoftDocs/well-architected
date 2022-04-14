@@ -93,7 +93,7 @@ This section explores the key considerations and recommendations for application
 - Ensure at least one staging environment is fully reflective of production to enable production-like testing and validation.
   - Capacity within this pre-production environment can flex based on the execution of test activities.
   - Use of a constant synthetic user load generation is required to provide a realistic test case for changes on one of the pre-production environments.
-    - The [Mission Critical Online](https://github.com/Azure/Mission-Critical-Online) reference implementation provides an example [user load generator](https://github.com/Azure/Mission-Critical-online/src/testing/userload-generator/README.md).
+    - The [Mission Critical Online](https://github.com/Azure/Mission-Critical-Online) reference implementation provides an example [user load generator](https://github.com/Azure/Mission-Critical-Online/blob/main/src/testing/userload-generator/README.md).
 
 ![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png)
 
@@ -244,7 +244,7 @@ Branching strategies are a fundamental aspect of application source control, and
 
 ### Design recommendations
 
-- Prioritize the use of [GitHub for source control](https://docs.github.com/en/code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/about-managing-vulnerable-dependencies).
+- Prioritize the use of [GitHub for source control](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-supply-chain-security).
 
 > [!IMPORTANT]
 > Create a branching strategy that details _feature_ work and _releases_ as a minimum, using branch policies and permissions to ensure the strategy is appropriately enforced.
