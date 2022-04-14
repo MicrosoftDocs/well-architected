@@ -262,7 +262,8 @@ Explore the following table of recommendations to optimize your AKS configuratio
 | Recommendation | Benefit |
 |--------|----|
 |Review AKS best practices documentation.|To build and run applications successfully in AKS, there are key considerations to understand and implement. These areas include multi-tenancy and scheduler features, cluster, and pod security, or business continuity and disaster recovery.|
-|Configure monitoring of cluster with Container insights. | 
+|Configure monitoring of cluster with Container insights. | Container insights helps monitor the performance of containers by collecting memory and processor metrics from controllers, nodes, and containers that are available in Kubernetes through the Metrics API. Container logs are also collected.|
+|Monitor application performance with Azure Monitor. |Configure [Application Insights](/azure/azure-monitor/app/app-insights-overview) for code-based monitoring of applications running in an AKS cluster.|
 |Configure scraping of Prometheus metrics with Container insights.|Container insights, which is part of Azure Monitor, provides a seamless onboarding experience to collect Prometheus metrics. Reference [Configure scraping of Prometheus metrics](/azure/azure-monitor/containers/container-insights-prometheus-integration) for more information.|
 |Adopt a [multiregion strategy](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) by deploying AKS clusters deployed across different Azure regions to maximize availability and provide business continuity.|Internet facing workloads should leverage [Azure Front Door](/azure/frontdoor/front-door-overview), [Azure Traffic Manager](/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic), or a third-party CDN to route traffic globally across AKS clusters.|
 
@@ -296,38 +297,17 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 
 ### Design checklist
 
-<!--
+As you make design choices for Azure Kubernetes Service, review the [Performance efficiency principles](/azure/architecture/framework/scalability/principles).
 
-    Required    
-
-    A design checklist is always the first H3 in each pillar section.
-
-    Make sure the considerations you document:
-    - Are presented in a checklist format.
-    - Map to the design principles. Identify the appropriate principle, and then think about your recommendation in relation to it.
-    - Focus on the salient features for that pillar as they relate to the product.
-    - Provide full coverage of the design principles. (If not all design principles exist, cover no fewer than three design principles.)
--->
-
-As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
-
-> [!div class="checklist"]
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
+ [!div class="checklist"]
+> - Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.
+> - Consider using [Azure Spot VMs](/azure/aks/spot-node-pool) for workloads that can handle interruptions, early terminations, or evictions.
+> - Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.
+> - Separate workloads into different node pools and consider scaling user node pools to zero.
 
 ### Recommendations
 
-<!--
-
-    Required    
-
-    The Recommendations H3 is always the second section in each pillar. The content in this section should be formatted as a table.
-
--->
-
-Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
+Explore the following table of recommendations to optimize your Azure Kubernetes Service configuration for performance.
 
 | Recommendation | Benefit |
 |--------|----|
