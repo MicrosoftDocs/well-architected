@@ -301,9 +301,10 @@ As you make design choices for Azure Kubernetes Service, review the [Performance
 
  [!div class="checklist"]
 > - Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.
-> - Consider using [Azure Spot VMs](/azure/aks/spot-node-pool) for workloads that can handle interruptions, early terminations, or evictions.
 > - Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.
 > - Separate workloads into different node pools and consider scaling user node pools to zero.
+> - Define your resource profile to match the application performance levels that your application requires.
+> - Use node affinity and pod affinity to specify certain nodes your pods run on.
 
 ### Recommendations
 
@@ -311,73 +312,35 @@ Explore the following table of recommendations to optimize your Azure Kubernetes
 
 | Recommendation | Benefit |
 |--------|----|
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+|Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.|The ability to automatically scale up or down the number of nodes in your AKS cluster lets you run an efficient, cost-effective cluster.|
+|Separate workloads into different node pools and consider [scaling](azure/aks/scale-cluster) user node pools to zero.|Unlike System node pools that always require running nodes, user node pools allow you to scale to `0`.|
+|Use AKS [advanced scheduler features](/azure/aks/operator-best-practices-advanced-scheduler). | Helps control balancing of resources for workloads that require them.|  
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
 
-Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
+Azure Advisor helps you ensure and improve Azure Kubernetes Service, for this category there aren't any related recommendations.
 
 ### Policy definitions
 
-<!-- 
+Azure Policy offers a variety of built-in policy definitions that apply to both the Azure resource and AKS like standard policy definitions, and using the Azure Policy add-on for Kubernetes, also within the cluster. Many of the Azure resource policies come in both *Audit/Deny*, but also in a *Deploy If Not Exists* variant.
 
-    Required
+There are a numerous number of policies, and key policies related to this pillar are summarized here. For a more detailed view, see [built-in policy definitions for Kubernetes](/azure/governance/policy/samples/built-in-policies#kubernetes).
 
-    A list of policy definitions is always the third section in each pillar.
+#### Cluster and workload architecture
 
-    Provide a list of policies the customer can use for resource governance. After the list of policies, provide a list of all policy definitions available in Azure.
--->
+- CPU and memory resource limits
 
-- \<Policy>
-- \<Policy>
-- \<Policy>
-
-All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
-
-## Azure Advisor recommendations
-
-<!-- 6. Azure Advisor recommendations -----------------------------------------
-
-    Required    
-
-    Follow the Azure Advisor recommendations H2 heading with a sentence about how recommendations might help improve the configuration of the resource. 
-
--->
+In addition to the built-in policies, custom policies can be created for both the AKS resource and for the Azure Policy add-on for Kubernetes. This allows you to add additional security constraints you'd like to enforce in your cluster and workload architecture.
 
 ## Additional resources
 
-<!-- 7. Additional resources ----------------------------------------------------
+### Azure Architecture Center guidance
 
-    Optional
-
-    The resources should be separated in sections. The H3 heading should indicate the purpose of the resource. 
-
--->
-
-- \[\<link text>]\(\<link>)
-- \[\<link-text>]\(\<link>)
+- [AKS baseline architecture](/azure/architecture/reference-architectures/containers/aks/secure-baseline-aks)
+- [Advanced AKS microservices architecture](/azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices-advanced)
+- [AKS cluster for a PCI-DSS workload](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro)
+- [AKS baseline for multiregion clusters](/azure/architecture/reference-architectures/containers/aks-multi-region/aks-multi-cluster)
 
 ## Next steps
 
-<!-- 8. Next steps ------------------------------------------------------------
-
-    Required
-
-    Add a context sentence for the following links: 
-
-    Best practices:
-        - Provide at least one next step and no more than three.
-        - Include some context, so the customer can determine why they would select the link.
-        - Do not use a "More information" or "See also" section.
-        - Do provide a link to relevant quickstarts in the product documentation.
-        - Do provide a link to a Learn module that covers resource provisioning.
-
--->
-
-- \[\<link text>]\(\<link>)
-
-<!-- Remove all the comments in this template before you sign off or merge to the main branch. -->
+- Deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI [Quickstart: Deploy an Azure Kubernetes Service (AKS) cluster using the Azure CLI](/azure/aks/kubernetes-walkthrough)
