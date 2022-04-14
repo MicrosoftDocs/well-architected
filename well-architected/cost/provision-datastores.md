@@ -13,6 +13,7 @@ products:
   - azure-cost-management
 ms.custom:
   - article
+  - internal-intro
 ---
 
 # Data store cost estimates

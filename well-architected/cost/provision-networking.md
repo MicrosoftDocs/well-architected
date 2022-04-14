@@ -14,6 +14,7 @@ products:
   - azure-cost-management
 ms.custom:
   - article
+  - internal-intro
 ---
 
 # Networking cost estimates

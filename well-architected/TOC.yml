@@ -393,6 +393,20 @@ items:
                 href: hybrid/hybrid-reliability.md
               - name: Security
                 href: hybrid/hybrid-security.md
+          - name: IoT
+            items:
+              - name: Overview
+                href: iot/iot-overview.md
+              - name: Cost Optimization
+                href: iot/iot-cost-optimization.md
+              - name: Operational Excellence
+                href: iot/iot-operational-excellence.md
+              - name: Performance Efficiency
+                href: iot/iot-performance.md
+              - name: Reliability
+                href: iot/iot-reliability.md
+              - name: Security
+                href: iot/iot-security.md
       - name: Services
         items:
           - name: Compute
@@ -550,11 +564,7 @@ items:
                   - name: Operational excellence
                     href: services/networking/application-delivery/operational-excellence.md
               - name: Application Gateway v2
-                items:
-                  - name: Reliability
-                    href: services/networking/application-gateway-v2/reliability.md
-                  - name: Operational excellence
-                    href: services/networking/application-gateway-v2/operational-excellence.md
+                href: services/networking/azure-application-gateway.md
               - name: API Management
                 items:
                   - name: Reliability
@@ -638,4 +648,4 @@ items:
                   - name: Operational excellence
                     href: services/monitoring/application-insights/operational-excellence.md
       - name: Implementing Recommendations
-        href: warp/warp-guidance.md
+        href: ./implementing-recommendations.md

@@ -13,6 +13,7 @@ products:
   - azure-cost-management
 ms.custom:
   - article
+  - internal-intro
 ---
 
 # Azure messaging cost estimates
