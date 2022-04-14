@@ -6,7 +6,7 @@ ms.author: victorh
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 04/13/2022
+ms.date: 04/14/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall
@@ -89,13 +89,13 @@ As you make design choices for Azure Firewall, review the [Security design princ
 <!--
 The following are the Security design principles:
  
-Plan resources and how to harden them
-Automate and use least privilege
-Classify and encrypt data
-Monitor system security, plan incident response
-Identify and protect endpoints
-Protect against code-level vulnerabilities
-Model and test against potential threats
+- Plan resources and how to harden them
+- Automate and use least privilege
+- Classify and encrypt data
+- Monitor system security, plan incident response
+- Identify and protect endpoints
+- Protect against code-level vulnerabilities
+- Model and test against potential threats
 -->
 
 > [!div class="checklist"]
@@ -156,22 +156,43 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Operational excellence
 
-Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../../devops/principles.md).
+Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly.
 
 ### Design checklist
 
+As you make design choices for Azure Firewall, review the [Operational excellence design principles](../../devops/principles.md).
+
+<!--
+The following are the Operational excellence design principles:
+
+- Optimize build and release processes
+- Understand operational health
+- Rehearse recovery and practice failure
+- Embrace continuous operational improvement
+- Use loosely coupled architecture
+
+-->
+
 > [!div class="checklist"]
-> - XXX
+> - Use logs for monitoring
+> - Use tags when possible allow traffic through the firewall
+> - Use Workbooks
+> - Use Azure Firewall connector in Azure Sentinel
 
 ### Recommendations
+
+<!--
+In table format, present the top recommendations that demonstrate how to achieve the points described in the design checklist.
+-->
 
 Explore the following table of recommendations to optimize your Azure Firewall configuration for Operational excellence.
 
 | Recommendation | Benefit |
 |--------|----|
-| XXX| XXX |
-
-For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
+|Turn on logs for Azure Firewall.|You can monitor Azure Firewall using firewall logs or workbooks. You can also use activity logs to audit operations on Azure Firewall resources.|
+|Use Fully Qualified Domain Name (FQDN) tags on Azure Firewall.|FQDN tags make it easy to allow known Azure service network traffic through your firewall. For example, say you want to allow Windows Update network traffic through your firewall. You create an application rule and use the Windows Update tag. Now network traffic from Windows Update can flow through your firewall.|
+|Use Workbooks in Azure Log Analytics|Helps you visualize firewall logs.|
+|Enable Azure Firewall connector in Azure Sentinel.|You can use Azure Sentinel to create detections and logic apps for Azure Firewall.|
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
