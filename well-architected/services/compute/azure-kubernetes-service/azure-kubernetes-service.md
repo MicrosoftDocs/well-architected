@@ -299,7 +299,7 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 
 As you make design choices for Azure Kubernetes Service, review the [Performance efficiency principles](/azure/architecture/framework/scalability/principles).
 
- [!div class="checklist"]
+[!div class="checklist"]
 > - Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.
 > - Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.
 > - Separate workloads into different node pools and consider scaling user node pools to zero.
