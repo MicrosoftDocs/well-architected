@@ -24,7 +24,7 @@ We assume that you have working knowledge of Azure Firewall and are well versed 
 ## Prerequisites
 
 - Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
-- Use a reference architecture to review the considerations based on the guidance provided in this article. We recommend that you start with [Ref 1](/azure/architecture/reference-architectures) and [Ref 2](/azure/architecture).
+- Use a reference architecture to review the considerations based on the guidance provided in this article. We recommend that you start with [Network-hardened web application with private connectivity to PaaS datastores](/azure/architecture/example-scenario/security/hardened-web-app) and [Implement a secure hybrid network](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?tabs=portal).
 
 ## Reliability
 
@@ -129,7 +129,7 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ### Policy definitions
 
-- XXX
+- [All Internet traffic should be routed via your deployed Azure Firewall](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c). Azure Security Center has identified that some of your subnets aren't protected with a next generation firewall. Protect your subnets from potential threats by restricting access to them with Azure Firewall or a supported next generation firewall.
 
 All built-in policy definitions related to Azure Networking are listed in [Built-in policies - Network](/azure/governance/policy/samples/built-in-policies#network).
 
@@ -224,6 +224,13 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 - XXX
 
 ## Additional resources
+
+- [Azure Firewall documentation](/azure/firewall/)
+- [Azure Firewall architecture overview](/azure/architecture/example-scenario/firewalls/)
+- [Azure security baseline for Azure Firewall](/security/benchmark/azure/baselines/firewall-security-baseline)
+- [Azure Firewall service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-firewall-limits)
+- [Use Azure Firewall to help protect an Azure Kubernetes Service (AKS) cluster](/azure/architecture/example-scenario/aks-firewall/aks-firewall)
+- [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?tabs=cli)
 
 ### Azure Architecture Center guidance
 
