@@ -32,12 +32,20 @@ When developing software for the cloud, or any environment, care needs to be tak
 - How can I best configure my development environment to emulate a production environment?
 - How do I develop code where service dependencies may exist with code already in production?
 
-Based on the chosen deployment method and target application the tools used for what is often referred to the "inner-loop" development process may differ. 
+Based on the chosen deployment method and target application the answers to these questions, and the tools used for what is often referred to the "inner-loop" development process may differ. 
+
+Package management solutions – for example – can help you manage dependencies in your development environment. When using containers, you may want to use a solution like Docker Desktop for your development environment instead. 
+When it comes to effectively emulating a production environment you may choose to set up a range of dummy services locally. 
+
+Some Linux tools are a handy solution to this, and these are now available through the Windows Subsystem for Linux on Windows machines too. 
+
+Finally, tools like Bridge for Kubernetes allow you to debug code in your development environment while being connected to a Kubernetes cluster. This configuration can be helpful when working on containerized microservices. You can work on one service locally while services that you take a dependency on are spun up remotely.
 
 ### Examples of "inner-loop" development tools
 
 A development team might choose some of the pieces of software below when developing a containerized application with a Kubernetes cluster as its deployment target.
 
+- [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/) is a package management solution that lets you host private packages as well as provide upstream connectivity to public package repositories for a variety of package management systems such as [NuGet](https://www.nuget.org/). 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) is an application that provides a Docker environment on your development system. Docker Desktop includes not only the Docker runtime but application development tools and local Kubernetes environment. 
 - The [Windows Subsystem for Linux](/windows/wsl/) provides a Linux environment on your Windows machines, including many command-line tools, utilities, and Linux applications.
 - [Bridge to Kubernetes](/visualstudio/containers/bridge-to-kubernetes) allows you to run and debug code on your development system while connected to a Kubernetes cluster. This configuration can be helpful when working on microservice type architectures. 
