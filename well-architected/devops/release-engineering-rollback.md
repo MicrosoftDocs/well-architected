@@ -15,14 +15,14 @@ products:
 # Release Engineering: Rollback
 
 In some cases, a new software deployment can harm or degrade the functionality of a software system. When building your solutions, it is essential to anticipate deployment issues and to architect solutions that provide mechanisms for fixing problematic deployments. Rolling back a deployment involves reverting the deployment to a known good state. 
-Rollback can be accomplished in many different ways. Several Azure services support native mechanisms for rolling back to a previous state and we recommend leveraging them where available and where it makes sense for your chosen deployment model. 
+Rollback can be accomplished in many different ways. Several Azure services support native mechanisms for rolling back to a previous state. We recommend leveraging them where available and where it makes sense for your chosen deployment model. 
 The following examples will help you design your rollback and/or recovery plan.
 
 ## Make use of Staged Deployments
 
-If you use a staged deployment strategy you deploy several versions of your application and use networking techniques to switch between them. This allows you to quickly revert to a previous version of the application if you detect a problem along the way. 
+If you use a staged deployment strategy, you deploy several versions of your application and use networking techniques to switch between them. This allows you to quickly revert to a previous version of the application if you detect a problem along the way. 
 
-When using Azure App Service you can utilize deployment slots to implement this. Deployment slots are running instances of the application, each with a separate host name. 
+When using Azure App Service, you can utilize deployment slots to implement this. Deployment slots are running instances of the application, each with a separate host name. 
 Slots can be used to stage and test applications before promoting to a production slot. A deployment slot can be created to hold the last known good instance of your application. In the event of an issue or problematic deployment, the production slot can be swapped with the known good slot to bring the application back to a known good state quickly.
 The image below shows how this can be accomplished via an Azure DevOps pipeline.
 
@@ -32,9 +32,9 @@ The image below shows how this can be accomplished via an Azure DevOps pipeline.
 
 For more information on using Azure App Service deployment slots, see [Set up staging environments in Azure App Service](/azure/app-service/deploy-staging-slots)
 
-## Leverage desired state configuration
+## Apply desired state configuration
 
-Depending on the resources in your workload you may be able to use desired state configurations to automate and govern your deployment process. 
+Depending on the resources in your workload, you may be able to use desired state configurations to automate and govern your deployment process. 
 
 Kubernetes is among the solutions that allow you to express your deployment instructions as a desired state configuration. 
 With Kubernetes you can use a deployment instruction to describe the particular workload running in the cluster. A deployment may declare that a workload consists of three replicas of a specific pod that should be running at all times. The deployment object creates a ReplicaSet and the associate Pods. When updating a workload, the deployment itself can be revised, which will generally roll out a new container image to the deployment pods. 

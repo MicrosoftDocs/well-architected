@@ -35,9 +35,9 @@ When developing software for the cloud, or any environment, care needs to be tak
 Based on the chosen deployment method and target application the answers to these questions, and the tools used for what is often referred to the "inner-loop" development process may differ. 
 
 Package management solutions – for example – can help you manage dependencies in your development environment. When using containers, you may want to use a solution like Docker Desktop for your development environment instead. 
-When it comes to effectively emulating a production environment you may choose to set up a range of dummy services locally. 
+When it comes to effectively emulating a production environment, you may choose to set up a range of dummy services locally. 
 
-Some Linux tools are a handy solution to this, and these are now available through the Windows Subsystem for Linux on Windows machines too. 
+Some Linux tools are a handy solution to this, and they are now available on Windows machines too. You can use them by configuring the Windows Subsystem for Linux.
 
 Finally, tools like Bridge for Kubernetes allow you to debug code in your development environment while being connected to a Kubernetes cluster. This configuration can be helpful when working on containerized microservices. You can work on one service locally while services that you take a dependency on are spun up remotely.
 
@@ -45,7 +45,7 @@ Finally, tools like Bridge for Kubernetes allow you to debug code in your develo
 
 A development team might choose some of the pieces of software below when developing a containerized application with a Kubernetes cluster as its deployment target.
 
-- [Azure Artifacts](https://azure.microsoft.com/en-us/services/devops/artifacts/) is a package management solution that lets you host private packages as well as provide upstream connectivity to public package repositories for a variety of package management systems such as [NuGet](https://www.nuget.org/). 
+- [Azure Artifacts](https://azure.microsoft.com/services/devops/artifacts/) is a package management solution that lets you host private packages and provide upstream connectivity to public package repositories for a variety of package management systems such as [NuGet](https://www.nuget.org/). 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) is an application that provides a Docker environment on your development system. Docker Desktop includes not only the Docker runtime but application development tools and local Kubernetes environment. 
 - The [Windows Subsystem for Linux](/windows/wsl/) provides a Linux environment on your Windows machines, including many command-line tools, utilities, and Linux applications.
 - [Bridge to Kubernetes](/visualstudio/containers/bridge-to-kubernetes) allows you to run and debug code on your development system while connected to a Kubernetes cluster. This configuration can be helpful when working on microservice type architectures. 
@@ -73,9 +73,9 @@ The following image demonstrates how Git and GitHub are used to see the proposed
 
 Using source control systems, you can create both branches in an existing repo and your own copies of the software. A copy of an existing repo is called a "fork". 
 
-While branches are usually short lived and will eventually be merged back into a repo via a pull request, fork are usually around for longer. While they can also be merged back via a pull request, some forks develop independently from their origin repo.
+While branches are usually short lived and will eventually be merged back into a repo via a pull request, forks are usually around for longer. While they can also be merged back via a pull request, some forks develop independently from their origin repo.
 
-You can review our documentation on [Forks and Branches](/azure/devops/repos/git/forks) to find out more about the differences and similiarties between them.
+You can review our documentation on [Forks and Branches](/azure/devops/repos/git/forks) to find out more about the differences and similarties between them.
 
 ### Peer Review
 

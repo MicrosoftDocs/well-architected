@@ -108,7 +108,7 @@ landingContent:
           - text: Stage your workloads
             url: release-engineering-cd.md#stage-your-workloads
           - text: Roll back with deployment slots
-            url: release-engineering-rollback.md#slot-deployment
+            url: release-engineering-rollback.md#make-use-of-staged-deployments
       - linkListType: video
         links:
           - text: "Continuous Delivery and Release Management | DevOps for Mobile"
