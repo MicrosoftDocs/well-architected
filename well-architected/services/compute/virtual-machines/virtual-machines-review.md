@@ -1,9 +1,9 @@
 ---
 title: Azure Well-Architected Framework review - Virtual Machines
-description: Design considerations and recommendations about Azure Virtual Machine.
-author: PageWriter-MSFT
-ms.author: prwilk
-ms.date: 12/08/2021
+description: Design considerations and recommendations about Azure virtual machines.
+author: cynthn
+ms.author: cynthn
+ms.date: 04/25/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
