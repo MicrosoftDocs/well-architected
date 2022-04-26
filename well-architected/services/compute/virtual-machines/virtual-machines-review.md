@@ -18,6 +18,11 @@ categories:
 
 [Virtual Machines](/azure/virtual-machines/) is an on-demand, scalable computing resource that gives you the flexibility of virtualization without having to buy and maintain physical hardware to run it. The intent of this article is to provide guidance about this resource based on the pillars of architecture excellence: Reliability, and Cost Optimization. If you are provisioning virtual machines in your design, consider the design principles and recommendations described in this article. 
 
+Policy:https://docs.microsoft.com/en-us/azure/virtual-machines/security-controls-policy
+Built-in policies: https://docs.microsoft.com/en-us/azure/governance/policy/samples/built-in-policies#compute
+Policy reference: https://docs.microsoft.com/en-us/azure/virtual-machines/policy-reference
+
+
 ## Prerequisites
 
 - Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. We recommend that you review your workload using the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
@@ -59,6 +64,77 @@ Azure Advisor helps you ensure and improve the continuity of your business-criti
 
 All built-in policy definitions are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies#compute).
 
+
+## Security
+
+
+[H2 section introduction here.]
+
+
+Overview:
+https://docs.microsoft.com/en-us/azure/security/fundamentals/virtual-machines-overview
+Learn Module:
+https://docs.microsoft.com/en-us/learn/paths/implement-host-security/
+Concepts:
+•	Zero Trust Model
+•	Role-Based Access Control
+•	Managed Identities
+•	Encryption
+•	Network Security
+•	Application Security
+•	Secure Key and Secret Storage
+Security Best Practices for IaaS workloads:
+https://docs.microsoft.com/en-us/azure/security/fundamentals/iaas
+Separate Excel file has Azure Advisor recommendations (two tabs, there are many)
+
+
+### Design checklist
+
+
+As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
+
+> [!div class="checklist"]
+> - \<Design consideration>
+> - \<Design consideration>
+> - \<Design consideration>
+> - \<Design consideration>
+
+### Recommendations
+
+
+Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
+
+Linux secuiryt baseline - https://docs.microsoft.com/en-us/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline
+Windows security baseline - https://docs.microsoft.com/en-us/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline
+
+| Recommendation | Benefit |
+|--------|----|
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+
+For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
+
+Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
+
+### Policy definitions
+
+
+| Message | Description |
+|--|--|
+| Current VM Application Version {name} was deprecated at {date}. | Attempt to deploy a VM Application version that has already been deprecated. |
+| Current VM Application Version {name} supports OS {OS}, while current OSDisk's OS is {OS}. | Attempt to deploy a Windows application to Linux or vice versa. |
+| The maximum number of VM applications (max=5, current={count}) has been exceeded. Use fewer applications and retry the request. | We currently only support five VM applications per VM or VMSS. |
+| More than one VMApplication was specified with the same packageReferenceId. | An application was specified more than once. |
+| Subscription not authorized to access this image. | The subscription does not have access to this application version. |
+| Storage account in the arguments does not exist. | There are no applications for this subscription. |
+| The platform image {image} is not available. Verify that all fields in the storage profile are correct. For more details about storage profile information, please refer to https://aka.ms/storageprofile. | The application does not exist. |
+| The gallery image {image} is not available in {region} region. Please contact image owner to replicate to this region, or change your requested region. | The gallery application version exists, but it was not replicated to this region. |
+
+All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
+
 ## Cost Optimization
 
 To estimate costs related to virtual machines, use these tools.
@@ -89,6 +165,118 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |Review SKUs that could benefit from Reserved Instances for one year, three years, or more.|Purchasing reserved instances is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep RI instances simple and keep management overhead low to prevent increasing cost.|
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the recommentations [here](#azure-advisor-recommendations).
+
+## Operational excellence
+
+
+[H2 section introduction here.]
+
+### Design checklist
+
+
+As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
+
+> [!div class="checklist"]
+> - \<Design consideration>
+> - \<Design consideration>
+> - \<Design consideration>
+> - \<Design consideration>
+
+### Recommendations
+
+
+Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
+
+| Recommendation | Benefit |
+|--------|----|
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+
+For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
+
+Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
+
+### Policy definitions
+
+
+- \<Policy>
+- \<Policy>
+- \<Policy>
+
+All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
+
+
+## Performance efficiency
+
+Performance efficiency is matching the resources that are available to an application with the demand that it's receiving. Performance efficiency includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing your application code for peak performance.
+Overview of the principles of Performance Efficiency:
+https://docs.microsoft.com/en-us/azure/architecture/framework/scalability/overview
+Learn Modules about Performance Efficiency:
+One page:
+https://docs.microsoft.com/en-us/learn/modules/azure-well-architected-introduction/5-performance-efficiency
+Similar to above link but much more exhaustive:
+https://docs.microsoft.com/en-us/learn/modules/azure-well-architected-performance-efficiency/
+
+Concepts:
+•	Scaling up (bigger instances)
+•	Scaling out (more instances)
+•	Autoscaling
+•	Optimizing Network
+•	Optimizing Storage
+•	Utilizing Caching
+•	Identifying Performance Bottlenecks
+
+Performance Efficiency Pattern:
+https://docs.microsoft.com/en-us/azure/architecture/framework/scalability/performance-efficiency-patterns
+Performance Efficiency Checklist:
+https://docs.microsoft.com/en-us/azure/architecture/framework/scalability/performance-efficiency
+Virtual Machine Scale Sets:
+https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/overview
+Azure Advisor:
+https://docs.microsoft.com/en-us/azure/advisor/advisor-performance-recommendations
+Relevant items:
+•	Reduce DNS time-to-live on your Traffic Manager profile to fail over to healthy endpoints faster
+•	Use managed disks to prevent disk I/O throttling
+•	Improve the performance and reliability of virtual machine disks by using Premium Storage
+
+
+
+### Design checklist
+
+
+As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
+
+> [!div class="checklist"]
+> - \<Design consideration>
+> - \<Design consideration>
+> - \<Design consideration>
+> - \<Design consideration>
+
+### Recommendations
+
+
+Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
+
+| Recommendation | Benefit |
+|--------|----|
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+
+For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
+
+Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
+
+### Policy definitions
+
+- Audit VMs that do not use managed disks	- This policy audits VMs that do not use managed disks
+
+All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
 
 ## Azure Advisor recommendations
 
