@@ -18,9 +18,9 @@ categories:
 
 [Virtual Machines](/azure/virtual-machines/) is an on-demand, scalable computing resource that gives you the flexibility of virtualization without having to buy and maintain physical hardware to run it. The intent of this article is to provide guidance about this resource based on the pillars of architecture excellence: Reliability, and Cost Optimization. If you are provisioning virtual machines in your design, consider the design principles and recommendations described in this article. 
 
-Policy:https://docs.microsoft.com/en-us/azure/virtual-machines/security-controls-policy
-Built-in policies: https://docs.microsoft.com/en-us/azure/governance/policy/samples/built-in-policies#compute
-Policy reference: https://docs.microsoft.com/en-us/azure/virtual-machines/policy-reference
+Policy:https://docs.microsoft.com/azure/virtual-machines/security-controls-policy
+Built-in policies: https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#compute
+Policy reference: https://docs.microsoft.com/azure/virtual-machines/policy-reference
 
 
 ## Prerequisites
@@ -72,9 +72,9 @@ All built-in policy definitions are listed in [Built-in policies - Compute](/azu
 
 
 Overview:
-https://docs.microsoft.com/en-us/azure/security/fundamentals/virtual-machines-overview
+https://docs.microsoft.com/azure/security/fundamentals/virtual-machines-overview
 Learn Module:
-https://docs.microsoft.com/en-us/learn/paths/implement-host-security/
+https://docs.microsoft.com/learn/paths/implement-host-security/
 Concepts:
 •	Zero Trust Model
 •	Role-Based Access Control
@@ -84,7 +84,7 @@ Concepts:
 •	Application Security
 •	Secure Key and Secret Storage
 Security Best Practices for IaaS workloads:
-https://docs.microsoft.com/en-us/azure/security/fundamentals/iaas
+https://docs.microsoft.com/azure/security/fundamentals/iaas
 Separate Excel file has Azure Advisor recommendations (two tabs, there are many)
 
 
@@ -104,8 +104,8 @@ As you make design choices for \<product>, review the \[design principles](\<des
 
 Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
 
-Linux secuiryt baseline - https://docs.microsoft.com/en-us/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline
-Windows security baseline - https://docs.microsoft.com/en-us/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline
+Linux secuiryt baseline - https://docs.microsoft.com/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline
+Windows security baseline - https://docs.microsoft.com/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline
 
 | Recommendation | Benefit |
 |--------|----|
@@ -213,12 +213,12 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 Performance efficiency is matching the resources that are available to an application with the demand that it's receiving. Performance efficiency includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing your application code for peak performance.
 Overview of the principles of Performance Efficiency:
-https://docs.microsoft.com/en-us/azure/architecture/framework/scalability/overview
+https://docs.microsoft.com/azure/architecture/framework/scalability/overview
 Learn Modules about Performance Efficiency:
 One page:
-https://docs.microsoft.com/en-us/learn/modules/azure-well-architected-introduction/5-performance-efficiency
+https://docs.microsoft.com/learn/modules/azure-well-architected-introduction/5-performance-efficiency
 Similar to above link but much more exhaustive:
-https://docs.microsoft.com/en-us/learn/modules/azure-well-architected-performance-efficiency/
+https://docs.microsoft.com/learn/modules/azure-well-architected-performance-efficiency/
 
 Concepts:
 •	Scaling up (bigger instances)
@@ -230,13 +230,13 @@ Concepts:
 •	Identifying Performance Bottlenecks
 
 Performance Efficiency Pattern:
-https://docs.microsoft.com/en-us/azure/architecture/framework/scalability/performance-efficiency-patterns
+https://docs.microsoft.com/azure/architecture/framework/scalability/performance-efficiency-patterns
 Performance Efficiency Checklist:
-https://docs.microsoft.com/en-us/azure/architecture/framework/scalability/performance-efficiency
+https://docs.microsoft.com/azure/architecture/framework/scalability/performance-efficiency
 Virtual Machine Scale Sets:
-https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/overview
+https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview
 Azure Advisor:
-https://docs.microsoft.com/en-us/azure/advisor/advisor-performance-recommendations
+https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations
 Relevant items:
 •	Reduce DNS time-to-live on your Traffic Manager profile to fail over to healthy endpoints faster
 •	Use managed disks to prevent disk I/O throttling
