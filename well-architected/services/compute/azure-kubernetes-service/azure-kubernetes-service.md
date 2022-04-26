@@ -30,29 +30,40 @@ Use a reference architecture to review the considerations based on the guidance 
 
 In the cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Use the following information to minimize failed instances.
 
+When discussing reliability with Azure Kubernetes Service, it's important to distinguish between *cluster reliability* and *workload reliability*. Cluster reliability is a shared responsibility between the cluster admin and their resource provider, while workload reliability is the domain of a developer. Azure Kubernetes Service has considerations and recommendations for both of these roles.
+
+In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
+
+For more information about AKS cluster reliability, check out the [capacity planning documentation](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-capacity-scaling#reliability-levels).
+
 ### Design checklist
 
 > [!div class="checklist"]
-> - Run resource-intensive applications, such as ingress controllers, or workloads that require specialized hardware (such as large data processing workloads like machine learning (ML) or artificial intelligence (AI)).
-> - Don't modify resources in the node resource group (for example MC_). You should only make modifications at cluster creation time, or with assistance from Azure Support.
-> - Define Pod resource requests and limits in application deployment manifests.
-> - Control pod scheduling using node selectors and affinity.
-> - Use [Azure network policies](/azure/aks/use-network-policies) or Calico to control traffic between pods, which requires [CNI Network plug-in](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/). Ensure proper selection of network plugin based on network requirements and cluster sizing.
-> - Use the [AKS Uptime SLA](/azure/aks/uptime-sla) with production workloads to ensure availability of control plane components.
-> - Store container images within [Azure Container Registry](/azure/container-registry/container-registry-intro) and enable [geo-replication](/azure/container-registry/container-registry-geo-replication) to manage a single registry across all regions.
-> - Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate data centers.
-> - Use a template-based deployment using Terraform, Ansible, and others only. Make sure that all deployments are repeatable and traceable, and stored in a source code repo. Can be combined with GitOps.
-> - Adopt a [multi-region](/azure/architecture/reference-architectures/containers/aks-multi-region/aks-multi-cluster) strategy by deploying AKS clusters deployed across different Azure regions to maximize availability and provide business continuity.
+> - **Cluster architecture:** Don't modify resources in the node resource group (for example MC_). You should only make modifications at cluster creation time, or with assistance from Azure Support.
+> - **Cluster and workload architectures:** Define Pod resource requests and limits using Azure Policy, in application deployment manifests.
+> - **Workload architecture:** Control pod scheduling using node selectors and affinity and anti-affinity.
+> - **Cluster and workload architecture:** Use the [AKS Uptime SLA](/azure/aks/uptime-sla) with production workloads to ensure availability of control plane components.
+> - **Cluster architecture:** Store container images within [Azure Container Registry](/azure/container-registry/container-registry-intro) and enable [geo-replication](/azure/container-registry/container-registry-geo-replication) to manage a single registry across all regions.
+> - **Cluster architecture:** Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate data centers.
+> - **Cluster architecture:** Adopt a [multi-region](/azure/architecture/reference-architectures/containers/aks-multi-region/aks-multi-cluster) strategy by deploying AKS clusters deployed across different Azure regions to maximize availability and provide business continuity.
+> - **Workload architecture:** Avoid storing workload state in your cluster where practicable as managing the reliability of state stored within the cluster adds significant complexity. Prefer external state stores such as Cosmos DB or SQL Database.
+> - **Cluster architecture:** Plan for IP addressing to ensure your cluster can reliably scale to your future needs, including being able to handle failover traffic from other faulted clusters in a multi-cluster topology.
+> - **Cluster architecture:** Ensure cluster autoscaling is configured to support reliable pod scheduling as workload demand increases.
+> - **Workload architecture:** Ensure horizonal pod autoscaling or KEDA profiles are configured to support reliable workload component scaling as demand increases.
+> - **Workload architecture:** Ensure workloads define liveliness and readiness probes so that pods which are experiencing a fault are able to be identified.
+> - **Cluster and workload architectures:** Use Azure Chaos studio to validate your cluster & workload failure mode analysis, by performing controlled fault injection in pre-production clusters.
+> - **Cluster architecture:** Enable Container insights and configure alerts for reliability-impacting events.
+> - **Cluster architecture:** Define pod disruption budget (PDB) for each workload.
 
 ### Node pool design checklist
 
 > [!div class="checklist"]
-> - Use [multiple node pools](/azure/aks/use-multiple-node-pools) to support workloads that have different compute or storage demands. 
-> - Keep the System node pool isolated from application workloads.
-> - Use dedicated node pools for infrastructure tools that require high resource utilization, such as Istio, or have a special scale or load behavior.
-> - Separate applications to dedicated node pools based on specific requirements.
-> - Use [taints and tolerations](/azure/aks/operator-best-practices-advanced-scheduler#provide-dedicated-nodes-using-taints-and-tolerations) to provide dedicated nodes and limit resource intensive applications.
-> - Consider the use of [Virtual Nodes](/azure/aks/virtual-nodes-cli) [(vKubelet)](https://github.com/virtual-kubelet/virtual-kubelet) with ACI for rapid, massive, and infinite scale.
+> - **Cluster and Workload architecture:** Use [multiple node pools](/azure/aks/use-multiple-node-pools) to segment your workloads that have different resource demands.
+> - **Cluster architecture:** Keep the System node pool isolated from application workloads.
+> - **Cluster architecture:** Use dedicated node pools for infrastructure tools that require high resource utilization, such as Istio, or have a special scale or load behavior.
+> - **Cluster and workload architecture:** Use [taints and tolerations](/azure/aks/operator-best-practices-advanced-scheduler#provide-dedicated-nodes-using-taints-and-tolerations) to provide dedicated nodes and limit resource intensive applications.
+> - **Cluster architecture:** Consider the use of [Virtual Nodes](/azure/aks/virtual-nodes-cli) [(vKubelet)](https://github.com/virtual-kubelet/virtual-kubelet) with ACI for rapid, massive, and infinite scale.
+> - **Cluster architecture:** Ensure your system node pool has at least three nodes.
 
 ### AKS configuration recommendations
 
@@ -84,11 +95,13 @@ Azure Advisor helps you ensure and improve Azure Kubernetes Service, for this ca
 
 Azure Kubernetes Service offers a wide variety of built-in Azure Policies that apply to both the Azure resource like typical Azure Policies and, using the Azure Policy add-on for Kubernetes, also within the cluster. There are a numerous number of policies, and key policies related to this pillar are summarized here. For a more detailed view, see [built-in policy definitions for Kubernetes](/azure/governance/policy/samples/built-in-policies#kubernetes).
 
-### Cluster and workload architecture
+#### Cluster and workload architecture
 
 - Ensure clusters have readiness or liveness probes.
 
 In addition to the built-in Azure Policy definitions, custom policies can be created for both the AKS resource and for the Azure Policy add-on for Kubernetes. This allows you to add additional reliability constraints you'd like to enforce in your cluster and workload architecture.
+
+For more suggestions, see [AKS security concepts](/azure/aks/concepts-security) and evalaute our security hardening recommendations based on the [CIS Kubernetes benchmark](/azure/aks/cis-kubernetes).
 
 ## Security
 
@@ -96,24 +109,31 @@ Security is one of the most important aspects of any architecture. To explore ho
 
 To learn about DoD Impact Level 5 (IL5) support and requirements with AKS, review [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-kubernetes-service).
 
+When discussing security with Azure Kubernetes Service, it's important to distinguish between *cluster security* and *workload security*. Cluster security is a shared responsibility between the cluster admin and their resource provider, while workload security is the domain of a developer. Azure Kubernetes Service has considerations and recommendations for both of these roles.
+
+In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
+
 ### Design checklist
 
 > [!div class="checklist"]
-> - Use [Managed Identities](/azure/aks/use-managed-identity) to avoid managing and rotating service principles.
-> - Use [Azure Active Directory (Azure AD) integration](/azure/aks/managed-aad) to centralize account management, passwords, application access management, and identity protection.
-> - Use Kubernetes role-based access control (RBAC) with Azure AD for [least privilege](/azure/aks/azure-ad-rbac) access and minimize granting administrator privileges to protect configuration, and secrets access.
-> - Limit access to [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file with Azure role-based access control.
-> - Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources). Provide the least number of permissions, and avoid the use of root, or privileged escalation.
-> - Evaluate the use of the built-in [AppArmor security module](/azure/aks/operator-best-practices-cluster-security#app-armor) to limit actions that containers can perform such as read, write, or execute, or system functions such as mounting files systems.
-> - Evaluate the use of the [seccomp (secure computing)](/azure/aks/operator-best-practices-cluster-security#secure-computing). Seccomp works at the process level and allows you to limit the process calls that containers can perform.
-> - Use [Pod Identities](/azure/aks/operator-best-practices-identity#use-pod-identities) and [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with Azure Key Vault to protect secrets, certificates, and connection strings.
-> - Protect the API server with Azure Active Directory RBAC.
+> - **Cluster architecture:** Use [Managed Identities](/azure/aks/use-managed-identity) to avoid managing and rotating service principles.
+> - **Cluster architecture:** Use [Azure Active Directory (Azure AD) integration](/azure/aks/managed-aad) to centralize account management, application access management, and identity protection.
+> - **Cluster architecture:** Use Kubernetes role-based access control (RBAC) with Azure AD for [least privilege](/azure/aks/azure-ad-rbac) access and minimize granting administrator privileges to protect configuration, and secrets access.
+> - **Cluster architecture:** Limit access to [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file with Azure role-based access control.
+> - **Cluster architecture:** Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources). Provide the least number of permissions, and avoid the use of root, or privileged escalation.
+> - **Cluster architecture:** Evaluate the use of the built-in [AppArmor security module](/azure/aks/operator-best-practices-cluster-security#app-armor), and [seccomp (secure computing)](/azure/aks/operator-best-practices-cluster-security#secure-computing) to limit actions that containers can perform.
+> - **Cluster architecture:** Use [Azure network policies](/azure/aks/use-network-policies) or Calico to control traffic between pods, which requires [CNI Network plug-in](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/). Ensure proper selection of network plugin based on network requirements and cluster sizing.
+> - **Cluster architeecture:** Use the open-source [Azure AD Workload Identity](https://github.com/Azure/azure-workload-identity) and [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with Azure Key Vault to protect secrets, certificates, and connection strings.
 > - Use [Microsoft Defender for Containers](/azure/defender-for-cloud/defender-for-containers-introduction) to monitor, and maintain the security of your clusters, containers, and their applications.
-> - Secure clusters and pods with [Azure Policy](/azure/aks/use-azure-policy).
-> - Secure container access to resources.
-> - Use a Web Application Firewall to secure traffic.
-> - Use Kubernetes network policies for controlling traffic flow between pods.
-> - Securely connect to Kubernetes nodes through a bastion host.
+> - **Cluster architecture:** Use a private cluster, without a public DNS record, to ensure your cluster's API Server is undiscoverable and unreachable by clients that do not need access.
+> - **Cluster architecture:** If not using a private cluster, ensure the API server's allow list feature is used to restrict API access.
+> - **Cluster architecture:** Apply Network Security Groups for course-grained network security controls on your node pool subnets.
+> - **Cluster architecture:** Egress traffic through a network security control point such as Azure Firewall and/or an HTTP Proxy.
+> - **Cluster architecture:** Keep current with AKS versions and node image updates to use the latest security patches.
+> - **Workload architecture:** Use a secure software development lifecycle that includes [special provisions for containerized workloads](/azure/container-instances/container-instances-image-security).
+> - **Cluster and workload architecture:** Secure clusters and pods with [Azure Policy](/azure/aks/use-azure-policy) to enforce security controls on clusters and pods.
+> - **Cluster architecture:** Use a Web Application Firewall to help block malicious inbound HTTP traffic.
+> - **Cluster architecture:** Use Kubernetes network policies for controlling traffic flow between pods.
 
 ### Recommendations
 
@@ -165,12 +185,10 @@ Cost optimization is about looking at ways to reduce unnecessary expenses and im
 
 > [!div class="checklist"]
 > - Familiarize yourself with Azure Kubernetes Services pricing
-> - Stop nodes that are not in use by scaling all the User node pools manually or automatically using the [cluster autoscaler](/azure/aks/cluster-autoscaler) feature in an AKS cluster.
-> - Consider using [Azure Spot VMs](/azure/aks/spot-node-pool) for workloads that can handle interruptions, early terminations, or evictions.
-> - Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.
+> - **Cluster architecture:** Consolidate workloads and stop nodes that are not in use by scaling node pools using the [cluster autoscaler](/azure/aks/cluster-autoscaler) feature.
+> - **Workload architecture:** Consider using [Azure Spot VMs](/azure/aks/spot-node-pool) for workloads that can handle interruptions, early terminations, and evictions.
+> - *Workload architecture:** Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics, which supports cluster scale-in operations.
 > - Review performance metrics, starting with CPU, memory, storage, and network, to identify cost optimization opportunities by cluster, nodes, and namespace.
-> - Assign pod requests and limits on AKS cluster.
-> - Define pod distribution budgets (PDB) for workloads.
 > - Separate workloads into different node pools and consider scaling user node pools to zero.
 
 ### Recommendations
@@ -202,15 +220,11 @@ Monitoring and diagnostics are crucial. Not only can you measure performance sta
 
 > [!div class="checklist"]
 > - Review [AKS best practices](/azure/aks/best-practices) documentation.
-> - Run multiple workloads in a single AKS cluster.
 > - Reboot nodes only when updates and patches require it.
 > - Don't modify resources in the [node resource group (for example MC_)](/azure/aks/faq#why-are-two-resource-groups-created-with-aks). You should *only* make modifications at [cluster creation time](/azure/aks/faq#can-i-provide-my-own-name-for-the-aks-node-resource-group), or with assistance from [Azure Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/supportPlans).
 > - Monitor your clusters using [Azure Monitor and App Insights](/azure/azure-monitor/containers/container-insights-overview) to collect metrics, logs, and diagnostics to monitor the availability and performance of the cluster and workloads running on it. Enable and review [Kubernetes master node logs](/azure/azure-monitor/containers/container-insights-log-query#resource-logs) and additionally, configure [scraping of Prometheus metrics](/azure/azure-monitor/containers/container-insights-prometheus-integration) with Container insights.
-> - Use the [AKS Uptime SLA](/azure/aks/uptime-sla) for production grade clusters.
-> - Store container images within Azure Container Registry and enable [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across leveraged AKS regions.
-> - Use [Availability Zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate data centers.
-> - Use a template-based deployment using Terraform, Ansible, and others only. Make sure that all deployments are repeatable and traceable, and stored in a source code repo. Can be combined with GitOps.
-> - Adopt a [multiregion strategy](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) by deploying AKS clusters deployed across different Azure regions to maximize availability and provide business continuity.
+> - **Cluster & Workload architecture:** Remove dependencies on public container registries. Store all container images within [Azure Container Registry](/azure/container-registry/container-registry-intro) and enable [geo-replication](/azure/container-registry/container-registry-geo-replication) to manage a single registry across all regions. Enforce this using Azure Policy.
+> - **Cluster architecture:** Use a template-based deployment using Bicep, Terraform, or others. Make sure that all deployments are repeatable, traceable, and stored in a source code repo. Can be combined with GitOps.
 
 ### Node pool design checklist
 
