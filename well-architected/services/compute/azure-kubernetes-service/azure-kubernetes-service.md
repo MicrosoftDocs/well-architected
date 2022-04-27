@@ -282,7 +282,7 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 
 As you make design choices for Azure Kubernetes Service, review the [Performance efficiency principles](/azure/architecture/framework/scalability/principles).
 
-[!div class="checklist"]
+> [!div class="checklist"]
 > - **Cluster architecture:** Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.
 > - **Cluster architecture:** Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.
 > - **Cluster and workload architectures:** Separate workloads into different node pools and consider scaling user node pools to zero.
