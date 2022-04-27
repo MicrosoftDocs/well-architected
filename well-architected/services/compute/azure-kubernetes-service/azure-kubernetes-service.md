@@ -133,7 +133,6 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 > - **Workload architecture:** Use a secure software development lifecycle that includes [special provisions for containerized workloads](/azure/container-instances/container-instances-image-security).
 > - **Cluster and workload architecture:** Secure clusters and pods with [Azure Policy](/azure/aks/use-azure-policy) to enforce security controls on clusters and pods.
 > - **Cluster architecture:** Use a Web Application Firewall to help block malicious inbound HTTP traffic.
-> - **Cluster architecture:** Use Kubernetes network policies for controlling traffic flow between pods.
 
 ### Recommendations
 
@@ -147,7 +146,6 @@ Explore the following table of recommendations to optimize your AKS configuratio
 |**Cluster architecture:** Secure clusters and pods with Azure Policy.|[Azure Policy](/azure/aks/use-azure-policy) can help to apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. It can also control what functions pods are granted and if anything is running against company policy. This access is defined through built-in policy definitions provided by Azure Policy. By providing more control over the security aspects of your pod's specification, like root privileges, Azure Policy enables stricter security adherence and visibility into what you've deployed in your cluster. If a pod doesn't meet conditions specified in the policy, Azure Policy can disallow the pod to start or flag a violation.|
 |**Cluster architecture:** Secure container access to resources.|Limit access to actions that containers can perform. Provide the least number of permissions, and avoid the use of root or privileged escalation. In the same way that you should grant users or groups the least privileges required, containers should also be limited to only the actions and process that they need. To minimize the risk of attack, don't configure applications and containers that require escalated privileges or root access.|
 |**Cluster architecture:** Use a Web Application Firewall to secure traffic.|To scan incoming traffic for potential attacks, use a web application firewall such as Barracuda WAF for Azure or Azure Application Gateway. An ingress controller that distributes traffic to services and applications is typically a Kubernetes resource in your AKS cluster. In larger environments, you often want to offload some of this traffic routing or TLS termination to a network resource outside of the AKS cluster. You also want to scan incoming traffic for potential attacks.|
-|**Cluster architecture:** Use Kubernetes network policies for controlling traffic flow between pods.|Use network policies to allow or deny traffic to pods. By default, all traffic is allowed between pods within a cluster. For improved security, define rules that limit pod communication. *Note: Network policy should only be used for Linux-based nodes and pods in AKS.*|
 
 For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
 
@@ -211,7 +209,6 @@ Explore the following table of recommendations to optimize your AKS configuratio
 |**Cluster and workload architectures:** Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints. |Automatically scale up or down the number of nodes in your AKS cluster lets you run an efficient, cost-effective cluster.|
 |**Workload architecture:** Consider using [Azure Spot VMs](/azure/aks/spot-node-pool) for workloads that can handle interruptions, early terminations, or evictions.|For example, workloads such as batch processing jobs, development, and testing environments, and large compute workloads may be good candidates for you to schedule on a spot node pool. Using spot VMs for nodes with your AKS cluster allows you to take advantage of unused capacity in Azure at a significant cost savings.|
 |**Cluster architecture:** Enforce [resource quotas](/azure/aks/operator-best-practices-scheduler) at the namespace level.|Resource quotas provide a way to reserve and limit resources across a development team or project. These quotas are defined on a namespace and can be used to set quotas on Compute resources, Storage resources, and Object counts. When you define resource quotas, all pods created in the namespace must provide limits or requests in their pod specifications.|
-|**Workload architecture:** Define pod disruption budgets (PDB) for workloads.|To maintain the availability of applications, define PDBs to make sure that a minimum number of pods are available in the cluster.|
 
 For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
 
@@ -223,7 +220,7 @@ While there are no built-in policies that are related to cost optimization, cust
 
 ## Operational excellence
 
-Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](/azure/architecture/framework/devops/principles).
+Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](/azure/architecture/framework/devops/principles) and the [Day-2 operations guide](/architecture/operator-guides/aks/day-2-operations-guide).
 
 When discussing operational excellence with Azure Kubernetes Service, it's important to distinguish between *cluster operational excellence* and *workload operational excellence*. Cluster security is a shared responsibility between the cluster admin and their resource provider, while workload security is the domain of a developer. Azure Kubernetes Service has considerations and recommendations for both of these roles.
 
