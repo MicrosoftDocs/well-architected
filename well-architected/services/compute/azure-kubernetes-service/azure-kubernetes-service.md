@@ -54,6 +54,7 @@ For more information about AKS cluster reliability, check out the [capacity plan
 > - **Cluster and workload architectures:** Use Azure Chaos studio to validate your cluster & workload failure mode analysis, by performing controlled fault injection in pre-production clusters.
 > - **Cluster architecture:** Enable Container insights and configure alerts for reliability-impacting events.
 > - **Cluster architecture:** Define pod disruption budget (PDB) for each workload.
+> - **Cluster architecture:** Reboot nodes only when updates and patches require it.
 
 ### Node pool design checklist
 
@@ -181,15 +182,22 @@ In addition to the built-in policies, custom policies can be created for both th
 
 Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principles](/azure/architecture/framework/cost/principles).
 
+When discussing cost optimization with Azure Kubernetes Service, it's important to distinguish between *cost of cluster resources* and *cost of workload resources*. Cluster resources is a shared responsibility between the cluster admin and their resource provider, while workload resources are the domain of a developer. Azure Kubernetes Service has considerations and recommendations for both of these roles.
+
+In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
+
+For cluster cost optimization, go to the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) and select **Azure Kubernetes Service** from the available products. You can test different configuration and payment plans in the calculator.
+
 ### Design checklist
 
 > [!div class="checklist"]
-> - Familiarize yourself with Azure Kubernetes Services pricing
+> - **Cluster architecture:** Select appropriate VM SKU.
+> - **Cluster architecture:** Use appropriate node type and size, IP address space, and reserved instances.
+> - **Cluster and workload architectures:** Use appropriate managed disk tier and size.
 > - **Cluster architecture:** Consolidate workloads and stop nodes that are not in use by scaling node pools using the [cluster autoscaler](/azure/aks/cluster-autoscaler) feature.
 > - **Workload architecture:** Consider using [Azure Spot VMs](/azure/aks/spot-node-pool) for workloads that can handle interruptions, early terminations, and evictions.
-> - *Workload architecture:** Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics, which supports cluster scale-in operations.
-> - Review performance metrics, starting with CPU, memory, storage, and network, to identify cost optimization opportunities by cluster, nodes, and namespace.
-> - Separate workloads into different node pools and consider scaling user node pools to zero.
+> - **Workload architecture:** Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics, which supports cluster scale-in operations.
+> - **Cluster architecture:** Review performance metrics, starting with CPU, memory, storage, and network, to identify cost optimization opportunities by cluster, nodes, and namespace.
 
 ### Recommendations
 
@@ -197,12 +205,13 @@ Explore the following table of recommendations to optimize your AKS configuratio
 
 | Recommendation | Benefit |
 |----------------------------------|-----------|
-|Use the [Start and Stop feature](/azure/aks/start-stop-cluster?tabs=azure-cli) in Azure Kubernetes Services (AKS).|The AKS Stop and Start cluster feature allows AKS customers to pause an AKS cluster, saving time and cost. The stop and start feature keeps cluster configurations in place and customers can pick up where they left off without reconfiguring the clusters.|
-|Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints, and |The ability to automatically scale up or down the number of nodes in your AKS cluster lets you run an efficient, cost-effective cluster.|
-|Consider using [Azure Spot VMs](/azure/aks/spot-node-pool) for workloads that can handle interruptions, early terminations, or evictions.|For example, workloads such as batch processing jobs, development, and testing environments, and large compute workloads may be good candidates for you to schedule on a spot node pool. Using spot VMs for nodes with your AKS cluster allows you to take advantage of unused capacity in Azure at a significant cost savings.|
-|Enforce [resource quotas](/azure/aks/operator-best-practices-scheduler) at the namespace level.|Resource quotas provide a way to reserve and limit resources across a development team or project. These quotas are defined on a namespace and can be used to set quotas on Compute resources, Storage resources, and Object counts. When you define resource quotas, all pods created in the namespace must provide limits or requests in their pod specifications.|
-|Assign pod requests and limits on AKS cluster.|In your pod specifications, it's best practice to define requests and limits for CPU and memory consumption. If you don't include these values, the Kubernetes scheduler can't take into account the resources your applications require to aid in scheduling decisions. Set pod requests and limits on all pods in your YAML manifests. If the AKS cluster uses resource quotas, your deployment may be rejected if you don't define these values.|
-|Define pod distribution budgets (PDB) for workloads.|To maintain the availability of applications, define PDBs to make sure that a minimum number of pods are available in the cluster.|
+|**Cluster architecture:** Avoid VM SKUs with temp disk offerings.|AKS uses managed disks by default, so avoiding temp disk offerings ensures you don't pay for unneeded resources.|
+|**Cluster and workload architectures:** Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
+|**Cluster and workload architectures:** Use the [Start and Stop feature](/azure/aks/start-stop-cluster?tabs=azure-cli) in Azure Kubernetes Services (AKS).|The AKS Stop and Start cluster feature allows AKS customers to pause an AKS cluster, saving time and cost. The stop and start feature keeps cluster configurations in place and customers can pick up where they left off without reconfiguring the clusters.|
+|**Cluster and workload architectures:** Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints. |Automatically scale up or down the number of nodes in your AKS cluster lets you run an efficient, cost-effective cluster.|
+|**Workload architecture:** Consider using [Azure Spot VMs](/azure/aks/spot-node-pool) for workloads that can handle interruptions, early terminations, or evictions.|For example, workloads such as batch processing jobs, development, and testing environments, and large compute workloads may be good candidates for you to schedule on a spot node pool. Using spot VMs for nodes with your AKS cluster allows you to take advantage of unused capacity in Azure at a significant cost savings.|
+|**Cluster architecture:** Enforce [resource quotas](/azure/aks/operator-best-practices-scheduler) at the namespace level.|Resource quotas provide a way to reserve and limit resources across a development team or project. These quotas are defined on a namespace and can be used to set quotas on Compute resources, Storage resources, and Object counts. When you define resource quotas, all pods created in the namespace must provide limits or requests in their pod specifications.|
+|**Workload architecture:** Define pod disruption budgets (PDB) for workloads.|To maintain the availability of applications, define PDBs to make sure that a minimum number of pods are available in the cluster.|
 
 For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
 
@@ -216,22 +225,19 @@ While there are no built-in policies that are related to cost optimization, cust
 
 Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](/azure/architecture/framework/devops/principles).
 
+When discussing security with Azure Kubernetes Service, it's important to distinguish between *cluster operational excellence* and *workload operational excellence*. Cluster security is a shared responsibility between the cluster admin and their resource provider, while workload security is the domain of a developer. Azure Kubernetes Service has considerations and recommendations for both of these roles.
+
+In the **design checklist** and **list of recommendations** below, call-outs are made to indicate whether each choice is applicable to cluster architecture, workload architecture, or both.
+
 ### Design checklist
 
 > [!div class="checklist"]
 > - Review [AKS best practices](/azure/aks/best-practices) documentation.
-> - Reboot nodes only when updates and patches require it.
 > - Don't modify resources in the [node resource group (for example MC_)](/azure/aks/faq#why-are-two-resource-groups-created-with-aks). You should *only* make modifications at [cluster creation time](/azure/aks/faq#can-i-provide-my-own-name-for-the-aks-node-resource-group), or with assistance from [Azure Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/supportPlans).
 > - Monitor your clusters using [Azure Monitor and App Insights](/azure/azure-monitor/containers/container-insights-overview) to collect metrics, logs, and diagnostics to monitor the availability and performance of the cluster and workloads running on it. Enable and review [Kubernetes master node logs](/azure/azure-monitor/containers/container-insights-log-query#resource-logs) and additionally, configure [scraping of Prometheus metrics](/azure/azure-monitor/containers/container-insights-prometheus-integration) with Container insights.
 > - **Cluster & Workload architecture:** Remove dependencies on public container registries. Store all container images within [Azure Container Registry](/azure/container-registry/container-registry-intro) and enable [geo-replication](/azure/container-registry/container-registry-geo-replication) to manage a single registry across all regions. Enforce this using Azure Policy.
 > - **Cluster architecture:** Use a template-based deployment using Bicep, Terraform, or others. Make sure that all deployments are repeatable, traceable, and stored in a source code repo. Can be combined with GitOps.
-
-### Node pool design checklist
-
-> [!div class="checklist"]
-> - Use [multiple node pools](/azure/aks/use-multiple-node-pools) to support workloads that have different compute or storage demands. 
-> - Keep the System node pool isolated from application workloads.
-> - Use dedicated node pools for infrastructure tools that require high resource utilization, such as Istio, or have a special scale, or load behavior.
+> - **Cluster architecture:** Enable diagnostics settings to ensure control plane or core API server interactions are logged.
 
 ### Recommendations
 
@@ -282,7 +288,6 @@ As you make design choices for Azure Kubernetes Service, review the [Performance
 > - Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics.
 > - Separate workloads into different node pools and consider scaling user node pools to zero.
 > - Define your resource profile to match the application performance levels that your application requires.
-> - Use node affinity and pod affinity to specify certain nodes your pods run on.
 
 ### Recommendations
 
@@ -291,7 +296,7 @@ Explore the following table of recommendations to optimize your Azure Kubernetes
 | Recommendation | Benefit |
 |--------|----|
 |Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.|The ability to automatically scale up or down the number of nodes in your AKS cluster lets you run an efficient, cost-effective cluster.|
-|Separate workloads into different node pools and consider [scaling](azure/aks/scale-cluster) user node pools to zero.|Unlike System node pools that always require running nodes, user node pools allow you to scale to `0`.|
+|Separate workloads into different node pools and consider [scaling](azure/aks/scale-cluster) user node pools.|Unlike System node pools that always require running nodes, user node pools allow you to scale to `0`.|
 |Use AKS [advanced scheduler features](/azure/aks/operator-best-practices-advanced-scheduler). | Helps control balancing of resources for workloads that require them.|  
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
