@@ -18,7 +18,7 @@ This article provides architectural best practices for Azure Kubernetes Service 
 - Operational excellence
 - Performance efficiency
 
-We assume that you have working knowledge of Azure Kubernetes Service and are well versed with its features. For more information, see [Azure Kubernetes Service](/azure/aks/intro-kubernetes).
+We assume that you understand system design principles, have working knowledge of Azure Kubernetes Service, and are well versed with its features. For more information, see [Azure Kubernetes Service](/azure/aks/intro-kubernetes).
 
 ## Prerequisites
 
