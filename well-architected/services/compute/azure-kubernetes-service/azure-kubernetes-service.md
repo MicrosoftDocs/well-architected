@@ -37,32 +37,10 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 ### Design checklist
 
 > [!div class="checklist"]
-> - **Cluster architecture:** Don't modify resources in the node resource group (for example MC_). You should only make modifications at cluster creation time, or with assistance from Azure Support.
-> - **Cluster and workload architectures:** Define Pod resource requests and limits using Azure Policy, in application deployment manifests.
-> - **Workload architecture:** Control pod scheduling using node selectors and affinity and anti-affinity.
-> - **Cluster and workload architectures:** Use the [AKS Uptime SLA](/azure/aks/uptime-sla) with production workloads to ensure availability of control plane components.
-> - **Cluster architecture:** Store container images within [Azure Container Registry](/azure/container-registry/container-registry-intro) and enable [geo-replication](/azure/container-registry/container-registry-geo-replication) to manage a single registry across all regions.
-> - **Cluster architecture:** Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate data centers.
-> - **Cluster architecture:** Adopt a [multi-region](/azure/architecture/reference-architectures/containers/aks-multi-region/aks-multi-cluster) strategy by deploying AKS clusters deployed across different Azure regions to maximize availability and provide business continuity.
-> - **Workload architecture:** Avoid storing workload state in your cluster where practicable as managing the reliability of state stored within the cluster adds significant complexity. Prefer external state stores such as Cosmos DB or SQL Database.
-> - **Cluster architecture:** Plan for IP addressing to ensure your cluster can reliably scale to your future needs, including being able to handle failover traffic from other faulted clusters in a multi-cluster topology.
-> - **Cluster architecture:** Ensure cluster autoscaling is configured to support reliable pod scheduling as workload demand increases.
-> - **Workload architecture:** Ensure horizonal pod autoscaling or KEDA profiles are configured to support reliable workload component scaling as demand increases.
-> - **Workload architecture:** Ensure workloads define liveliness and readiness probes so that pods which are experiencing a fault are able to be identified.
-> - **Cluster and workload architectures:** Use Azure Chaos studio to validate your cluster & workload failure mode analysis, by performing controlled fault injection in pre-production clusters.
-> - **Cluster architecture:** Enable Container insights and configure alerts for reliability-impacting events.
-> - **Cluster architecture:** Define pod disruption budget (PDB) for each workload.
-> - **Cluster architecture:** Reboot nodes only when updates and patches require it.
-
-### Node pool design checklist
-
-> [!div class="checklist"]
-> - **Cluster and Workload architectures:** Use [multiple node pools](/azure/aks/use-multiple-node-pools) to segment your workloads that have different resource demands.
-> - **Cluster architecture:** Keep the System node pool isolated from application workloads.
-> - **Cluster architecture:** Use dedicated node pools for infrastructure tools that require high resource utilization, such as Istio, or have a special scale or load behavior.
-> - **Cluster and workload architectures:** Use [taints and tolerations](/azure/aks/operator-best-practices-advanced-scheduler#provide-dedicated-nodes-using-taints-and-tolerations) to provide dedicated nodes and limit resource intensive applications.
-> - **Cluster architecture:** Consider the use of [Virtual Nodes](/azure/aks/virtual-nodes-cli) [(vKubelet)](https://github.com/virtual-kubelet/virtual-kubelet) with ACI to rapidly scale application workloads when resource utilization exceeds your specified limits.
-> - **Cluster architecture:** Ensure your system node pool has at least three nodes.
+> - **Cluster architecture:** For critical workloads, use [availability zones](/azure/aks/availability-zones) for your AKS clusters.
+> - **Cluster architecture:** Plan the IP address space to ensure your cluster can reliably scale, handle failover traffic in a multi-cluster topology, and communicate with other Azure services over Private Link.
+> - **Cluster architecture:** Enable [Container insights](/azure/azure-monitor/containers/container-insights-overview) to monitor your cluster and configure alerts for reliability-impacting events.
+> - **Cluster architecture:** Use a smaller VM size for the system node pool to minimize costs and chose the right node sizes, with a minimum of two nodes, for your workload depending on your requirements.
 
 ### AKS configuration recommendations
 
