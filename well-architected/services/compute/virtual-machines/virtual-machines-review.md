@@ -35,29 +35,28 @@ As you make design choices for virtual machines, review the [design principles](
 
 ### Design checklist
 > [!div class="checklist"]
-> - When defining test availability and recovery targets, review [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/). 
-> - Where appropriate, virtual machines should be deployed across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone) to maximize resilience within a specific Azure region.
-> - Provide resiliency to failures by using Managed Disks for all OS and data disks to ensure resiliency across underlying storage stamps within a data center. 
-> - To ensure application scalability while navigating within disk sizing thresholds, it's highly recommended that applications be installed on data disks rather than on the OS disk. 
-> - Monitor and measure health by using Resource Health alerts and enable diagnostic logging for all virtual machines.
+> - Review the [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/).
+> - VMs should be deployed in Flexible scale sets. 
+> - Deployed VMs across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone) .
+> - Install applications on data disks.
+> - Monitor and measure health.
+> - Use maintenance configurations to control restarts.
 
 ### Recommendations
 Explore the following table of recommendations to optimize your Virtual Machine configuration for service reliability:
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-| Flex |  |
-| Zones |   |
-| Maintenance Configurations |   |
-| The following are old and I'm not sure we should use any of this: |  |
-|Use [Scheduled Events](/azure/virtual-machines/windows/scheduled-events) to proactively respond to maintenance events.|Your application will have time to prepare for upcoming maintenance events and limit disruption.|
-|Set virtual machine [Resource Health Alerts](/azure/service-health/resource-health-alert-arm-template-guide) on health events with an appropriate threshold for unavailability.|Key stakeholders are notified when relevant health events occur. The threshold value will minimize signal to noise ratios so that transient faults don't generate an alert. For example, configuring a virtual machine alert with an unavailability threshold of one minute before an alert is triggered.|
-|Enable diagnostic logging for all virtual machines to ensure you route health metrics, boot diagnostics, and infrastructure logs to Log Analytics or an alternative log aggregation technology.|Platform logs provide detailed diagnostic and auditing information for Azure resources, and the Azure platform they depend on. Reference [Overview of Azure platform logs](/azure/azure-monitor/essentials/platform-logs-overview) for more information.|
-|Where appropriate, virtual machines should be deployed across Availability Zones to maximize resilience within a specific Azure region.|Within a region, Availability Zones offer unique physical locations within an Azure region, with one or more datacenters equipped with independent power, cooling, and networking. See [Datacenter Fault Tolerance](/azure/virtual-machines/availability#use-availability-zones-to-protect-from-datacenter-level-failures) and [High availability and disaster recovery for IaaS apps](/azure/architecture/example-scenario/infrastructure/iaas-high-availability-disaster-recovery).|
-|>>That's not what these do together - PPGs are for latency, Zones are for availability.>>Consider using [proximity placement groups (PPGs)](/azure/virtual-machines/proximity-placement-groups) with Availability Zones (AZ) to have redundant in-zone VMs.|All VMs within a single availability zone might share a common power source and network switch, and can all be rebooted, or affected, by an outage or maintenance task at the same time. If you create VMs across different AZs, your VMs are effectively distributed across different FDs and UDs. If you want to achieve redundant in-zone VMs and cross-zone VMs, you should place the in-zone VMs in proximity placement groups within availability sets to ensure they won't all be rebooted at once. Go to [Combine ASs and AZs with PPGs](/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios#combine-availability-sets-and-availability-zones-with-proximity-placement-groups) for detailed instructions.
-|Enable [Azure Backup Soft Delete](/azure/backup/backup-azure-security-feature-cloud) for the Recovery Services vault to protect against accidental or malicious deletion of backup data, ensuring the ability to recover.|Even if a malicious actor deletes a backup (or backup data is accidentally deleted), the backup data is kept for `14` more days, allowing the recovery of that backup item with no data loss. The extra `14` days of retention for backup data in the soft delete state don't incur any cost to you.|
+> [!div class="checklist"]
+| Review [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/). | When defining test availability and recovery targets, make sure you have a good understanding of the SLAs offered for VMs.|
+| Deploy using Flexible scale sets. | Even single instance VMs should be deployed into a Flexible scale-set to future-proof your application for scaling and availability. |
+| Deploy across availability zones | Virtual machines should be deployed across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone). Azure availability zones are physically separate locations within each Azure region that are tolerant to local failures.
+| Install applications on data disks. | Having your data separate from your OS disk makes it faster to replace troubled VMs without affecting your application deployment.| 
+| Monitor and measure health | >> We have a dozen tools - what should we recommend here? |
+| Use maintenance control | Control when VM maintenance occurs using [Maintenance Control](/azure/virtual-machines/maintenance-control).|
 
-Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the recommentations [here](#azure-advisor-recommendations).
+
+Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor](#azure-advisor-recommendations) recommendations.
 
 
 ### Policy definitions
