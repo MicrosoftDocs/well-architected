@@ -35,7 +35,7 @@ Unit tests should be applied both to all code assets. (including templates and s
 
 ### Smoke Testing
 
-Smoke tests verify that a workload can be stood up in a test environment and performs as expected. They don't go to the extend of integration tests as they don't verify the interoperability of different components. 
+Smoke tests verify that a workload can be stood up in a test environment and performs as expected. They don't go to the extent of integration tests as they don't verify the interoperability of different components. 
 
 Instead they verify that the deployment methodology for both infrastructure and the application works and that the system responds as intended once the process is complete. 
 
@@ -91,7 +91,7 @@ Disaster Recovery Drills are important to verify that the existing backup strate
 
 Tools such as Azure Site Recovery make it possible to start an isolated copy of the primary workload location in a secondary environment, so that it can be verified that the workload has recovered as it should in an emergency.
 
-In case a problem occurs during the drill, the Disaster Recovery procedure can be optimized, and the infrastructure in the secondary environment can be deleted safetly.
+In case a problem occurs during the drill, the Disaster Recovery procedure can be optimized, and the infrastructure in the secondary environment can be deleted safely.
 
 ### Exploratory testing
 
