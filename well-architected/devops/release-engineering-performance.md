@@ -52,7 +52,7 @@ Your organization might choose to create several different kinds of builds to op
 
 * **Release build:** In addition to compiling and running tests, this build also compiles the API documentation, compliance reports, code signing, and other steps which are not required every time the code is built. This build provides the golden copy that will be pushed to the release pipeline to finally deploy in the production environment. 
 
-What types of builds your organization needs depends on many factors including your team's and organizational maturitiy, the kind of product you are working on, and your deployment strategy.
+What types of builds your organization needs depends on many factors including your team's and organizational maturity, the kind of product you are working on, and your deployment strategy.
 
 ## Next steps
 
