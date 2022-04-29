@@ -37,7 +37,7 @@ The following is a series of links from the Cloud Adoption Framework to help dep
   - Enterprise-Scale implementation using Azure Policy and ARM Templates
   - CAF Terraform modules and various landing zone options
 
-To get started with Azure Landing Zones to create consistent, repeatable environment configuration see the article series on [Azure Landing Zones](/azure/cloud-adoption-framework/ready/landing-zone/).
+To get started with Azure Landing Zones to create consistent, repeatable environment configuration, see the article series on [Azure Landing Zones](/azure/cloud-adoption-framework/ready/landing-zone/).
 
 If Azure Landing Zones are not a fit for your organization, you should consider the following sections of this article to manual integrate environment configuration into your Azure Pipelines.
 
