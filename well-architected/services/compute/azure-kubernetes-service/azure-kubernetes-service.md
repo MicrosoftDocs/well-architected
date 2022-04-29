@@ -264,7 +264,7 @@ Explore the following table of recommendations to optimize your Azure Kubernetes
 
 | Recommendation | Benefit |
 |--------|----|
-|**Cluster and workload architectures:** Develop a detailed capacity plan and continually review and revise based on observability.| |
+|**Cluster and workload architectures:** Develop a detailed capacity plan and continually review and revise.|After formalizing your capacity plan, it should be frequently updated by continuously observing the resource utilization of the cluster.|
 |**Cluster architecture:** Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.|The ability to automatically scale up or down the number of nodes in your AKS cluster lets you run an efficient, cost-effective cluster.|
 |**Cluster and workload architectures:** Separate workloads into different node pools and consider [scaling](/azure/aks/scale-cluster) user node pools.|Unlike System node pools that always require running nodes, user node pools allow you to scale to zero.|
 |**Workload architecture:** Use AKS [advanced scheduler features](/azure/aks/operator-best-practices-advanced-scheduler). | Helps control balancing of resources for workloads that require them.|  
