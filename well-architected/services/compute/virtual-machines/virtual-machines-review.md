@@ -40,14 +40,13 @@ As you make design choices for virtual machines, review the [design principles](
 > - Deployed VMs across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone) .
 > - Install applications on data disks.
 > - Monitor and measure health.
-> - Use maintenance configurations to control restarts.
+> - Use [maintenance control](/azure/virtual-machines/maintenance-control) to manage system restarts.
 
 ### Recommendations
 Explore the following table of recommendations to optimize your Virtual Machine configuration for service reliability:
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-> [!div class="checklist"]
 | Review [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/). | When defining test availability and recovery targets, make sure you have a good understanding of the SLAs offered for VMs.|
 | Deploy using Flexible scale sets. | Even single instance VMs should be deployed into a Flexible scale-set to future-proof your application for scaling and availability. |
 | Deploy across availability zones | Virtual machines should be deployed across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone). Azure availability zones are physically separate locations within each Azure region that are tolerant to local failures.
@@ -100,10 +99,12 @@ Separate Excel file has Azure Advisor recommendations (two tabs, there are many)
 As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
 
 > [!div class="checklist"]
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
+> - Zero Trust Model
+> - Role-Based Access Control
+> - Managed Identities
+> - Encryption
+> - Secure key and secret storage
+
 
 ### Recommendations
 
@@ -115,11 +116,11 @@ Windows security baseline - /security/benchmark/azure/baselines/virtual-machines
 
 | Recommendation | Benefit |
 |--------|----|
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| Zero trust model | [Zero Trust](/azure/security/fundamentals/zero-trust) is a new security model that assumes breach and verifies each request as though it originated from an uncontrolled network |
+| Role based access control (RBAC) | [RBAC](/azure/role-based-access-control/overview) helps you manage who has access to Azure resources, what they can do with those resources, and what areas they have access to. |
+| Managed identities | What problem this recommendation will mitigate. |
+| Encryption | What problem this recommendation will mitigate. |
+| Secure key and secret storage | What problem this recommendation will mitigate. |
 
 For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
 
@@ -130,14 +131,16 @@ Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [
 
 | Message | Description |
 |--|--|
-| Current VM Application Version {name} was deprecated at {date}. | Attempt to deploy a VM Application version that has already been deprecated. |
-| Current VM Application Version {name} supports OS {OS}, while current OSDisk's OS is {OS}. | Attempt to deploy a Windows application to Linux or vice versa. |
-| The maximum number of VM applications (max=5, current={count}) has been exceeded. Use fewer applications and retry the request. | We currently only support five VM applications per VM or VMSS. |
-| More than one VMApplication was specified with the same packageReferenceId. | An application was specified more than once. |
-| Subscription not authorized to access this image. | The subscription does not have access to this application version. |
-| Storage account in the arguments does not exist. | There are no applications for this subscription. |
-| The platform image {image} is not available. Verify that all fields in the storage profile are correct. For more details about storage profile information, please refer to https://aka.ms/storageprofile. | The application does not exist. |
-| The gallery image {image} is not available in {region} region. Please contact image owner to replicate to this region, or change your requested region. | The gallery application version exists, but it was not replicated to this region. |
+| >> Pretty sure these are all for the Azure Compute Gallery feature - VM applications - which is still in Preview and probably not the best to reference: |
+| >> Current VM Application Version {name} was deprecated at {date}. | Attempt to deploy a VM Application version that has already been deprecated. |
+| >> Current VM Application Version {name} supports OS {OS}, while current OSDisk's OS is {OS}. | Attempt to deploy a Linux application to Windows or vice versa. |
+| >> The maximum number of VM applications (max=5, current={count}) has been exceeded. Use fewer applications and retry the request. | We currently only support five VM applications per VM or VMSS. |
+| >> More than one VMApplication was specified with the same packageReferenceId. | An application was specified more than once. |
+| >> Subscription not authorized to access this image. | The subscription does not have access to this application version. |
+| >> Storage account in the arguments does not exist. | There are no applications for this subscription. |
+| >> The platform image {image} is not available. Verify that all fields in the storage profile are correct. For more details about storage profile information, please refer to https://aka.ms/storageprofile. | The application does not exist. |
+| >>> Are we going to recommend Azure Compute Gallery for image creation and storage? I don't see it anywhere else: |
+| >>> The gallery image {image} is not available in {region} region. Please contact image owner to replicate to this region, or change your requested region. | The gallery application version exists, but it was not replicated to this region. |
 
 All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
 
@@ -157,7 +160,7 @@ To optimize costs, review the [design principles](/azure/architecture/framework/
 > - Consider using Burstable (B) series VM sizes for VMs that are idle most of the time and have high usage for a certain period of time.
 > - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
 > - Review SKUs that could benefit from Reserved Instances for one year, three years, or more.
-> - Hybrid benefit licensing 
+> - Hybrid benefit licensing
 
 ### Recommendations
 
@@ -165,11 +168,12 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-|Use the Start and Stop VMs during off-hours feature of virtual machines to minimize waste.| Configuring start and stop times will shut down instances that aren't in use. The feature is suitable as a low-cost automation option. |
-|Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions.|
-|Consider using Burstable (B) series VM sizes for VMs that are idle most of the time and have high usage for a certain period of time.|The B-series VMs are ideal for workloads that don't need the full performance of the CPU continuously such as web servers, proof of concepts, small databases, and development build environments.|
-|Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.| Replicate, failover, and failback your business-critical virtual machines within the same region with zones. Ideal for those customers that have complicated networking infrastructure and want to avoid the cost, and complexity of recreating infrastructure in a secondary region. For more information about regions, reference [Products available by region](https://azure.microsoft.com/global-infrastructure/services/).|
-|Review SKUs that could benefit from Reserved Instances for one year, three years, or more.|Purchasing reserved instances is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep RI instances simple and keep management overhead low to prevent increasing cost.|
+| Stop VMs during off-hours | Configuring start and stop times will shut down instances that aren't in use. The feature is suitable as a low-cost automation option. |
+| Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions.|
+|Consider using Burstable (B) series VM sizes for VMs that are idle |The B-series VMs are ideal for workloads that don't need the full performance of the CPU continuously such as web servers, proof of concepts, small databases, and development build environments.|
+|Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) | Replicate, failover, and failback your business-critical virtual machines within the same region with zones. Ideal for those customers that have complicated networking infrastructure and want to avoid the cost, and complexity of recreating infrastructure in a secondary region. For more information about regions, reference [Products available by region](https://azure.microsoft.com/global-infrastructure/services/).|
+|Use Reserved Instances |Purchasing reserved instances is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep RI instances simple and keep management overhead low to prevent increasing cost.|
+| Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing....|
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the recommentations [here](#azure-advisor-recommendations).
 
@@ -283,7 +287,7 @@ Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [
 
 ### Policy definitions
 
-- Audit VMs that do not use managed disks	- This policy audits VMs that do not use managed disks
+- Audit VMs that do not use managed disks - This policy audits VMs that do not use managed disks
 
 All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
 
