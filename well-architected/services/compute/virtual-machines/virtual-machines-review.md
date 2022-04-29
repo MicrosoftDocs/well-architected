@@ -148,6 +148,11 @@ To estimate costs related to virtual machines, use these tools.
 
 To optimize costs, review the [design principles](/azure/architecture/framework/cost/principles).
 
+>> Azure advisor recommendations:
+- Use Standard Storage to store Managed Disks snapshots
+- Right-size or shutdown underutilized virtual machines
+- You have disks which have not been attached to a VM for more than 30 days. Please evaluate if you still need the disk.
+
 ### Design considerations
 > [!div class="checklist"]
 > - Shut down VM instances which aren't in use.
@@ -175,7 +180,10 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 ## Operational excellence
 
 
-[H2 section introduction here.]
+>> Azure Advisors:
+- Increase the number of compute resources you can deploy by 10 vCPU
+- Add Azure Monitor to your virtual machine (VM) labeled as production
+- Excessive NTP client traffic caused by frequent DNS lookups and NTP sync for new servers, which happens often on some global NTP servers.
 
 ### Design checklist
 
@@ -251,6 +259,13 @@ Relevant items:
 •	Improve the performance and reliability of virtual machine disks by using Premium Storage
 
 
+>> Azure advisor
+- Improve user experience and connectivity by deploying VMs closer to user’s location.
+- Consider increasing the size of your NVA to address persistent high CPU
+- Convert Managed Disks from Standard HDD to Premium SSD for performance
+- Enable Accelerated Networking to improve network performance and latency
+- Use SSD Disks for your production workloads
+
 
 ### Design checklist
 
@@ -287,6 +302,8 @@ Azure Advisor helps you ensure and improve performance. Review the [recommendati
 All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
 
 ## Azure Advisor recommendations
+
+>> Should this be a separate H2 or can we cover this in the appropriate sections?
 
 [Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Virtual Machines.
 
