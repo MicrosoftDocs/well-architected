@@ -90,7 +90,6 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 > - **Cluster architecture:** Use [Azure AD integration](/azure/aks/managed-aad) to centralize account management, application access management, and identity protection.
 > - **Cluster architecture:** Use Kubernetes role-based access control (RBAC) with Azure AD for [least privilege](/azure/aks/azure-ad-rbac) access and minimize granting administrator privileges to protect configuration, and secrets access.
 
-
 ### Recommendations
 
 Explore the following table of recommendations to optimize your AKS configuration for security.
@@ -152,9 +151,6 @@ For cluster cost optimization, go to the [Azure pricing calculator](https://azur
 > - **Cluster architecture:** Select appropriate VM SKU.
 > - **Cluster architecture:** Use appropriate node type and size, IP address space, and reserved instances.
 > - **Cluster and workload architectures:** Use appropriate managed disk tier and size.
-> - **Cluster architecture:** Consolidate workloads and stop nodes that are not in use by scaling node pools using the [cluster autoscaler](/azure/aks/cluster-autoscaler) feature.
-> - **Workload architecture:** Consider using [Azure Spot VMs](/azure/aks/spot-node-pool) for workloads that can handle interruptions, early terminations, and evictions.
-> - **Workload architecture:** Use the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other select metrics, which supports cluster scale-in operations.
 > - **Cluster architecture:** Review performance metrics, starting with CPU, memory, storage, and network, to identify cost optimization opportunities by cluster, nodes, and namespace.
 
 ### Recommendations
