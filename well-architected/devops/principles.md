@@ -3,7 +3,7 @@ title: Operational excellence design principles
 description: Understand the design principles for operational excellence within the Azure Well-Architected Framework.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 02/10/2022
+ms.date: 04/07/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -42,9 +42,10 @@ Embrace software engineering disciplines across your entire environment, which i
   
 - Provision with Infrastructure as Code
 - Build and release with continuous integration and continuous delivery (CI/CD) pipelines
-- Automated testing
+- Use automated testing methods
+- Avoid configuration drift through configuration as code
   
-This approach ensures the creation and management of environments throughout the software development lifecycle enables:
+This approach ensures the creation and management of environments throughout the software development lifecycle. It enables:
 
 - Consistency
 - Repetition
@@ -52,15 +53,15 @@ This approach ensures the creation and management of environments throughout the
   
 ## Understand operational health
 
-Evaluate operational health through focused and assertive monitoring.
+Implement systems and processes to monitor all aspects of your workload. Including:
 
-Implement systems and processes to monitor the following components:
-  
 - Build and release processes
 - Infrastructure health
 - Application health
-  
-Customer data is critical to understanding the health of a workload and whether the service is meeting the business goals.
+
+Robust monitoring ensures the observability of a workload and allows you to correlate events and take proactive mitigating issues.
+
+In addition, customer data is critical to understanding the health of a workload and whether the service is meeting the business goals.
 
 ## Rehearse recovery and practice failure
 
@@ -69,34 +70,44 @@ Rehearse recovery and practice failure using the following methods:
 - Run disaster recovery (DR) drills on a regular cadence.  
 - Use chaos engineering practices to identify and remediate weak points in application reliability.
 - Rehearse failure to validate the effectiveness of recovery processes and ensure teams are familiar with their responsibilities.
+- Document past failures and automate their remediation where possible.
 
 ## Embrace continuous operational improvement
 
-Embrace continuous operational improvement through the following methods:
-
-- Continuously evaluate and refine operational procedures and tasks.
-- Strive to reduce complexity and ambiguity.
+Teams that embrace continuous operational improvement continuously evaluate and refine operational procedures and tasks.
+They strive to reduce complexity and ambiguity whenever possible.
   
-This approach enables an organization to:
+Adopting a continuous improvement culture helps organizations:
 
 - Evolve processes over time.
-- Optimize inefficiencies.
+- Optimize inefficiencies and associated processes.
 - Learn from failures.
+- Continuously evaluate new opportunities.
+
 
 ## Use loosely coupled architecture
 
-Use loosely coupled architecture to enable teams to independently:
+Use modern architecture patterns such as:
 
-- Test
-- Deploy
-- Update their systems on demand
+- microservices
+- loosely coupled 
+- serverless 
+
+and pair this with cloud design patterns such as:
+
+- Circuit breakers
+- Load-Leveling
+- Throttling
+
+and advanced deployment strategies like:
+
+- Canary
+- Blue-green 
+- Staggered
+
+ to enable teams to build and deploy services independently and minimize the impact if there is a service failure.
   
-Without depending on other teams for:
-  
-- Support
-- Services
-- Resources
-- Approvals
+This principle also extends to procedural decoupling. Teams will be able to take full advantage of their loosely coupled architecture if they do not have to depend on partner teams to support, approve, or operate their workloads.
 
 ### Next step
 

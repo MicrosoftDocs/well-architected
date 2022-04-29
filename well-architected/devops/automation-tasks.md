@@ -15,7 +15,7 @@ ms.custom:
 
 # Automate operational tasks
 
-Operational tasks can include any action or activity you may perform while managing systems, system access, and processes. Some examples include rebooting servers, creating accounts, and shipping logs to a data store. These tasks may occur on a schedule, as a response to an event or monitoring alert, or ad-hock based on external factors. Like many other activities related to managing computer systems, these activities are often performed manually, which takes time, and are error-prone.
+Operational tasks can include any action or activity you may perform while managing systems, system access, and processes. Some examples include rebooting servers, creating accounts, and shipping logs to a data store. These tasks may occur on a schedule, as a response to an event or monitoring alert, or ad-hoc based on external factors. Like many other activities related to managing computer systems, these activities are often performed manually, which takes time, and are error-prone.
 
 Many of these operational tasks can and should be automated. Using scripting technologies and related solutions, you can shift effort from manually performing operational tasks towards building automation for these tasks. In doing so, you achieve so much, including:
 
@@ -28,7 +28,7 @@ When working in Azure, you have many options for automating operational tasks. T
 
 ## Azure Functions
 
-Azure Functions allows you to run code without managing the underlying infrastructure on where the code is run. Functions provide a cost-effective, scalable, and event-driven platform for building applications and running operational tasks. Functions support running code written in C#, Java, JavaScript, Python, and PowerShell.
+Azure Functions allows you to run code without managing the underlying infrastructure on where the code is run. Functions provide a cost-effective, scalable, and event-driven platform for building applications and running operational tasks. Functions support running code written in a range of programming languages including C#, Java, JavaScript, Python, and PowerShell.
 
 When creating a Function, a hosting plan is selected. Hosting plans controls how a function app is scaled, resource availability, and availability of advanced features such as virtual network connectivity and startup time. The hosting plan also influences the cost.
 
@@ -36,7 +36,7 @@ Functions hosting plans:
 
 - **Consumption:** Default hosting plan, pay only for Function execution time, configurable timeout period, automatic scale.
 - **Premium:** Faster start, VNet connectivity, unlimited execution duration, premium instance sizes, more predictable pricing.
-- **App Service Plan:** Functions run on dedicated virtual machines and can use custom images.
+- **Dedicated:** Functions run on dedicated virtual machines and can use custom images.
 
 For full details on consumption plans, see [Azure Functions scale and hosting](/azure/azure-functions/functions-scale).
 
@@ -71,7 +71,7 @@ Azure Automation provides an Azure-hosted platform for hosting and running Power
 - Integrated secrets store.
 - Source Control integration.
 
-As seen in the following image, Azure Automation provides a portal experience for managing Azure Automation Runbooks. Use the included code sample (ARM template) to deploy an Azure automation account, automation runbook, and explore Azure Automation for yourself.
+As seen in the following image, Azure Automation provides a portal experience for managing Azure Automation Runbooks. Use the included code sample (ARM template) to deploy an Azure Automation account, automation runbook, and explore Azure Automation for yourself.
 
 ![Azure Automation PowerShell Runbook as seen in the Azure portal.](../devops/azure-automation-powershell.png)
 
@@ -85,8 +85,8 @@ So far, this document has detailed options for scripting operational tasks; howe
 
 In cloud computing, scale activities are classified into two buckets:
 
-- **Scale-up:** Adding additional resources to an existing system to meet demand.
-- **Scale-out:** Adding additional infrastructure to meet demand.
+- **Scale-up:** Adding extra resources to an existing system to meet demand.
+- **Scale-out:** Adding more infrastructure to meet demand.
 
 Many Azure services can be scaled up by changing the pricing tier of that service. Generally, this operation would need to be performed manually or using detection logic and custom automation.
 
@@ -169,7 +169,7 @@ spec:
 
 #### Cluster autoscaler
 
-Where horizontal pod autoscaling is a response to demand on a specific application of service running in a Kubernetes cluster, cluster autoscaling responds to demand on the entire Kubernetes cluster itself. If a Kubernetes cluster does not have enough compute resources or nodes to facilitate all requested pods' resource requests, some of these pods will enter a non-scheduled or pending state. In response to this situation, additional nodes can be automatically added to the cluster. Conversely, once compute resources have been freed up, the cluster nodes can automatically be removed to match steady-state demand.
+Where horizontal pod autoscaling is a response to demand on a specific application of service running in a Kubernetes cluster, cluster autoscaling responds to demand on the entire Kubernetes cluster itself. If a Kubernetes cluster does not have enough compute resources or nodes to facilitate all requested pods' resource requests, some of these pods will enter a non-scheduled or pending state. In response to this situation, more nodes can be automatically added to the cluster. Conversely, once compute resources have been freed up, the cluster nodes can automatically be removed to match steady-state demand.
 
 Cluster autoscaler can be configured when creating an AKS cluster. The following example demonstrates this operation with the Azure CLI. This operation can also be completed with an Azure Resource Manager template.
 

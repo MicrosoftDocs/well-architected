@@ -46,9 +46,6 @@ In some cases, the raw instrumentation data can be provided. In other situations
 
 ## Resource health alerts
 
-**Have health alerts been created to respond to resource-level events?**
-***
-
 Health alerts should be configured for specific resource groups and resource types, and should be adjusted to maximize signal to noise ratios. For example, only send a notification when a resource becomes unhealthy as per the defined requirements of the application health model or due to an Azure platform-initiated event. 
 
 Consider transient issues when setting an appropriate threshold for resource unavailability, such as configuring an alert for a virtual machine with a threshold of 1 minute for unavailability before an alert is triggered.
@@ -58,9 +55,6 @@ Consider transient issues when setting an appropriate threshold for resource una
 You can also view resource health in Azure Monitor. Alerts can be defined by using many different data streams such as [metric values](/azure/azure-monitor/platform/alerts-metric-overview), [log search queries](/azure/azure-monitor/platform/alerts-unified-log), and [activity log events](/azure/azure-monitor/platform/activity-log-alerts).
 
 ## Service health alerts
-
-**Have alerts been created to get notified about the health of Azure services?**
-***
 
 Get a view into the health of Azure services and regions, communications about outages, planned maintenance activities, and other health advisories.
 
@@ -72,27 +66,19 @@ However, Service Health alerts aren't effective in detecting issues because of t
 
 Alerts proactively notify and in cases even respond to operational states that deviate from the norm. When such an event occurs, an alert is triggered to notify the accountable teams. 
 
-**Are specific owners and processes defined for each alert type?**
-***
+Having **well-defined owners and response playbooks** per alert is vital to optimizing operational effectiveness. Alerts can be set for non-technical notifications. For example, a budget owner should be made aware of capacity issues so that budgets can be adjusted and discussed.
 
-Having well-defined owners and response playbooks per alert is vital to optimizing operational effectiveness. Alerts can be set for non-technical notifications. For example, a budget owner should be made aware of capacity issues so that budgets can be adjusted and discussed.
-
-**Are push notifications enabled to inform responsible parties of alerts in real time?**
-***
-
-Instead of having teams actively monitor the systems and dashboard, send reliable alert notifications to the owners. 
+Instead of having teams actively monitor the systems and dashboard, **send reliable alert notifications** to the owners. 
 
 The operators might receive alert information by using many delivery channels such as email, text message, a pager device, or push notifications to a mobile app. Many alerting systems support subscriber groups, and all operators who are members of the same group can receive the same set of alerts.
 
 In Azure Monitor, alerts use action groups to notify the owners. 
 
-**Are Azure notifications sent to subscriptions owners received and routed to relevant technical stakeholders?**
-***
+### Subscription notification e-mails
 
-Subscription notification emails can contain important service notifications or security alerts. Make sure that subscription notification emails are routed to the relevant technical stakeholders.
+Subscription notification e-mails can contain important service notifications or security alerts. Make sure that subscription notification emails are routed to the relevant technical stakeholders.
 
-**Is alerting integrated with an IT Service Management (ITSM) system?**
-***
+### IT Service Management (ITSM) integration
 
 ITSM systems can help define workflows. You can use those systems to document issues, notify and assign responsible parties, and track issues. For example, operational alerts from the application could be integrated to automatically create new tickets to track resolution.
 
@@ -103,9 +89,6 @@ For information on Azure Monitor and ITSM integration, reference [IT Service Man
 ## Alert prioritization
 
 All alerts being treated the same is going to reduce the efficacy of notifications.  
-
-**Are operational events prioritized based on business impact?**
-***
 
 When defining alerts, analyze the potential business impact and prioritize accordingly. Prioritizing alerts helps operational teams in cases where multiple events require intervention at the same time. For example, alerts concerning critical system flows might require special attention. When creating an alert, ensure you establish and set the correct priority.
 

@@ -241,7 +241,7 @@ items:
             href: devops/principles.md
           - name: Automation
             items:
-              - name: Automation Overview
+              - name: Automation overview
                 href: devops/automation-overview.md
               - name: Repeatable infrastructure
                 href: devops/automation-infrastructure.md
@@ -255,11 +255,11 @@ items:
                 href: devops/release-engineering-app-dev.md
               - name: Continuous integration
                 href: devops/release-engineering-ci.md
-              - name: Release testing
+              - name: Testing
                 href: devops/release-engineering-testing.md
               - name: Performance
                 href: devops/release-engineering-performance.md
-              - name: Release deployment
+              - name: Deployment
                 href: devops/release-engineering-cd.md
               - name: Rollback
                 href: devops/release-engineering-rollback.md
@@ -295,8 +295,6 @@ items:
                     href: devops/tracing.md
                   - name: Auditing
                     href: devops/auditing.md
-          - name: Checklist
-            href: /azure/architecture/checklist/dev-ops
           - name: Operational Excellence patterns
             href: devops/devops-patterns.md
       - name: Performance Efficiency
