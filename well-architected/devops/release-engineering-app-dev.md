@@ -75,7 +75,7 @@ Using source control systems, you can create both branches in an existing repo a
 
 While branches are usually short lived and will eventually be merged back into a repo via a pull request, forks are usually around for longer. While they can also be merged back via a pull request, some forks develop independently from their origin repo.
 
-You can review our documentation on [Forks and Branches](/azure/devops/repos/git/forks) to find out more about the differences and similarties between them.
+You can review our documentation on [Forks and Branches](/azure/devops/repos/git/forks) to find out more about the differences and similarites between them.
 
 ### Peer Review
 
@@ -89,7 +89,7 @@ To learn more about using Git, visit the [DevOps Resource Center](/devops/develo
 
 ### Azure Repos
 
-Azure DevOps is a collection of services for building, collaborating on, testing, and delivering software to any environment. Azure DevOps Services include [Azure Repos](/azure/devops/repos), which is its source control system. Using Azure Repos includes unlimited free private Git repositories. Standard Git powers Azure Repos, and you can use clients and tools of your choice for working with them.
+Azure DevOps is a collection of services for building, collaborating on, testing, and delivering software to any environment. Azure DevOps Services includes [Azure Repos](/azure/devops/repos), which is its source control system. Using Azure Repos includes unlimited free private Git repositories. Standard Git powers Azure Repos, and you can use clients and tools of your choice for working with them.
 
 ## Next steps
 
