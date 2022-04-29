@@ -55,7 +55,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Use maintenance control | Control when VM maintenance occurs using [Maintenance Control](/azure/virtual-machines/maintenance-control).|
 
 
-Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor](#azure-advisor-recommendations) recommendations.
+Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/HighAvailability) recommendations.
 
 
 ### Policy definitions
@@ -69,19 +69,14 @@ All built-in policy definitions are listed in [Built-in policies - Compute](/azu
 
 ## Security
 
+This article provides an overview of the core Azure security features that can be used with virtual machines.
+
 >> This has the existing security recommendations, do we just repeat them here? /azure/security/fundamentals/iaas
 [H2 section introduction here.]
 
 
-Overview:
-/security/fundamentals/virtual-machines-overview
-
-Learn Module:
-
-/learn/paths/implement-host-security/
-
 Concepts:
-•	Zero Trust Model
+•	Authentication and access control
 •	Role-Based Access Control
 •	Managed Identities
 •	Encryption
@@ -99,8 +94,8 @@ Separate Excel file has Azure Advisor recommendations (two tabs, there are many)
 As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
 
 > [!div class="checklist"]
-> - Zero Trust Model
-> - Role-Based Access Control
+> - Authentication and access control
+> - Protect against malware
 > - Managed Identities
 > - Encryption
 > - Secure key and secret storage
@@ -116,15 +111,15 @@ Windows security baseline - /security/benchmark/azure/baselines/virtual-machines
 
 | Recommendation | Benefit |
 |--------|----|
-| Zero trust model | [Zero Trust](/azure/security/fundamentals/zero-trust) is a new security model that assumes breach and verifies each request as though it originated from an uncontrolled network |
-| Role based access control (RBAC) | [RBAC](/azure/role-based-access-control/overview) helps you manage who has access to Azure resources, what they can do with those resources, and what areas they have access to. |
-| Managed identities | What problem this recommendation will mitigate. |
-| Encryption | What problem this recommendation will mitigate. |
-| Secure key and secret storage | What problem this recommendation will mitigate. |
+| Authentication and access control | [Control VM access and secure privileged access](/azure/security/fundamentals/iaas#protect-vms-by-using-authentication-and-access-control). Ensure that only authorized users can set up and access VMs. |
+| Protect against malware | Install [antimalware protection](/azure/security/fundamentals/iaas#protect-against-malware) to help identify and remove viruses. |
+| Manage updates | Use a solution like [Azure Automation](/azure/automation/update-management/overview) to manage operating system updates. |
+| Monitor for security | To monitor the security posture of your Windows and Linux VMs, use [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction). |
+| Use encryption | Use [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) to protect your data. |
 
 For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
 
-Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
+Azure Advisor helps you ensure and improve security. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Security).
 
 ### Policy definitions
 
@@ -159,7 +154,7 @@ To optimize costs, review the [design principles](/azure/architecture/framework/
 > - Use Spot VMs when appropriate.
 > - Consider using Burstable (B) series VM sizes for VMs that are idle most of the time and have high usage for a certain period of time.
 > - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
-> - Review SKUs that could benefit from Reserved Instances for one year, three years, or more.
+> - Prepay for Reserved Instances for one year, three years, or more.
 > - Hybrid benefit licensing
 
 ### Recommendations
@@ -171,11 +166,11 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Stop VMs during off-hours | Configuring start and stop times will shut down instances that aren't in use. The feature is suitable as a low-cost automation option. |
 | Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions.|
 |Consider using Burstable (B) series VM sizes for VMs that are idle |The B-series VMs are ideal for workloads that don't need the full performance of the CPU continuously such as web servers, proof of concepts, small databases, and development build environments.|
-|Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) | Replicate, failover, and failback your business-critical virtual machines within the same region with zones. Ideal for those customers that have complicated networking infrastructure and want to avoid the cost, and complexity of recreating infrastructure in a secondary region. For more information about regions, reference [Products available by region](https://azure.microsoft.com/global-infrastructure/services/).|
-|Use Reserved Instances |Purchasing reserved instances is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep RI instances simple and keep management overhead low to prevent increasing cost.|
-| Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing....|
+|Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) | Replicate, failover, and fail-back your business-critical virtual machines within the same region with zones. Ideal for those customers that have complicated networking infrastructure and want to avoid the cost, and complexity of recreating infrastructure in a secondary region. |
+|Prepay for added cost savings | Purchasing [reserved instances](/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
+| Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
 
-Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the recommentations [here](#azure-advisor-recommendations).
+ Azure Advisor helps you ensure and improve cost optimization. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Cost).
 
 ## Operational excellence
 
@@ -208,7 +203,7 @@ Explore the following table of recommendations to optimize your \<product> confi
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
 
-Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
+Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
 
 ### Policy definitions
 
@@ -283,7 +278,7 @@ Explore the following table of recommendations to optimize your \<product> confi
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
 
-Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
+Azure Advisor helps you ensure and improve performance. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Performance).
 
 ### Policy definitions
 
@@ -354,6 +349,6 @@ Use the recommendations as you provision virtual machines for your solution.
 
 - Learn module: [Introduction to Azure virtual machines](/learn/modules/intro-to-azure-virtual-machines/)
 
-- Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/). 
+- Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/).
 
 - Review the built-in definitions provided by Azure Policy that apply to Virtual Machines. They are listed in the [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies#compute).
