@@ -6,7 +6,7 @@ ms.author: victorh
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 04/14/2022
+ms.date: 04/29/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall
@@ -44,7 +44,7 @@ To learn how Azure Firewall supports a reliable workload, see the following arti
 
 ### Design checklist
 
-As you make design choices for Azure Firewall, review the [Reliability design principles](../../resiliency/principles.md).
+As you make design choices for Azure Firewall, review the [design principles](../../resiliency/principles.md) for Reliability.
 
 <!--
 The following are the Reliability design principles:
@@ -84,7 +84,7 @@ Security is one of the most important aspects of any architecture. An intelligen
 
 ### Design checklist
 
-As you make design choices for Azure Firewall, review the [Security design principles](../../security/security-principles.md).
+As you make design choices for Azure Firewall, review the [design principles](../../security/security-principles.md) for Security.
 
 <!--
 The following are the Security design principles:
@@ -135,20 +135,46 @@ All built-in policy definitions related to Azure Networking are listed in [Built
 
 ## Cost optimization
 
-Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principles](../../cost/principles.md).
+Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies.
 
 ### Design checklist
 
+As you make design choices for Azure Firewall, review the  [design principles](../../cost/principles.md) for Cost optimization.
+
+<!--
+The following are the Cost design principles:
+ 
+- *Choose the correct resources*
+- Set up budgets and maintain cost constraints
+- *Dynamically allocate and de-allocate resources*
+- *Optimize workloads, aim for scalable costs*
+- *Continuously monitor and optimize cost management*
+-->
+
 > [!div class="checklist"]
-> - XXX
+> - Determine which firewall SKUs to deploy
+> - Determine if some resources don't need 100% allocation
+> - Determine where you can optimize firewall use across workloads
+> - Monitor firewall usage to determine cost effectiveness
+> - Review Firewall Manager capabilities to determine potential operational efficiency
+> - Determine the number of Public IP addresses required
 
 ### Recommendations
+
+<!--
+In table format, present the top recommendations that demonstrate how to achieve the points described in the design checklist.
+-->
 
 Explore the following table of recommendations to optimize your Azure Firewall configuration for Cost optimization.
 
 | Recommendation | Benefit |
 |--------|----|
-| XXX | XXX|
+| Deploy the Basic and Premium SKUs where appropriate.| The Standard option is usually enough for east-west traffic, where Premium comes with the necessary additional features for north-south traffic, as well as the forced tunneling feature and many other features. For more information, see [Azure Firewall Premium Preview features](/azure/firewall/premium-features). Deploy mixed scenarios using the Standard and Premium options, according to your needs.|
+|Stop Azure Firewall deployments that do not need to run for 24 hours.|You may have development environments that are used only during business hours. For more details, see [Deallocate and allocate Azure Firewall](/powershell/module/az.network/set-azfirewall?#4--deallocate-and-allocate-the-firewall).|
+|Share the same Azure Firewall across multiple workloads and Azure Virtual Networks. Ensure that there is no unexpected cross-region traffic as part of the hub-spoke topology.|You can use a central Azure Firewall in the hub virtual network, and share the same Firewall across many spoke virtual networks that are connected to the same hub from the same region.|
+|Review underutilized Azure Firewall instances, and identify and delete Azure Firewall deployments not in use. To identify Azure Firewall deployments not in use, start analyzing the Monitoring Metrics and User Defined Routes (UDRs) that are associated with subnets pointing to the Firewall's private IP. Then, combine that with additional validations, such as if the Azure Firewall has any Rules (Classic) for NAT, or Network and Application, or even if the DNS Proxy setting is configured to **Disabled**, as well as with internal documentation about your environment and deployments.| You can detect  deployments that are cost effective over time. <br><br> For more details about monitoring logs and metrics, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port utilization](/azure/firewall/logs-and-metrics#metrics).|
+|Use Azure Firewall Manager and its policies. Review your Firewall Manager policies, associations, and inheritance carefully. Policies are billed based on firewall associations. A policy with zero or one firewall association is free of charge. A policy with multiple firewall associations is billed at a fixed rate.|You can reduce your operational costs, increasing your efficiency, and reduce your management overhead.  For more information, see [Pricing - Firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager).|
+|Validate whether all the associated Public IP addresses are in use. If they are not in use, disassociate and delete them. Use IP Groups to reduce your management overhead. Evaluate SNAT ports utilization before you remove any IP Addresses.| You will only use the number of Public IPs that your firewall actually needs. For more information, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port utilization](/azure/firewall/logs-and-metrics#metrics).
 
 For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
 
