@@ -89,7 +89,7 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 > [!div class="checklist"]
 > - **Cluster architecture:** Use [Managed Identities](/azure/aks/use-managed-identity) to avoid managing and rotating service principles.
 > - **Cluster architecture:** Use Kubernetes role-based access control (RBAC) with Azure AD for [least privilege](/azure/aks/azure-ad-rbac) access and minimize granting administrator privileges to protect configuration, and secrets access.
-> - **Cluster architecture:** Use Azure Sentinel with Microsoft Defender for containers to monitor and maintain the security of your cluster and workloads running on them.
+> - **Cluster architecture:** Use Microsoft Defender for containers with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your cluster and workloads running on them.
 > - **Cluster architecture:** Deploy a private AKS cluster to ensure network traffic between your API server and your node pools remains on your private network.
 > - **Workload architecture:** Use a Web Application Firewall to secure HTTP(S) traffic.
 > - **Workload architecutre:** Ensure your CI/CID pipeline is hardened with container-aware scanning.
