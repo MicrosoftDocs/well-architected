@@ -31,15 +31,15 @@ Policy reference: /azure/virtual-machines/policy-reference
 
 
 ## Reliability
-As you make design choices for virtual machines, review the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture. 
+As you make design choices for virtual machines, review the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture.
 
 ### Design checklist
 > [!div class="checklist"]
 > - Review the [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/).
-> - VMs should be deployed in Flexible scale sets. 
+> - VMs should be deployed in Flexible scale sets.
 > - Deployed VMs across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone) .
-> - Install applications on data disks.
-> - Monitor and measure health.
+> - Install applications on data disks. >> Is there anything else to say about this?
+> - Monitor and measure health. >> what should we recommend here?
 > - Use [maintenance control](/azure/virtual-machines/maintenance-control) to manage system restarts.
 
 ### Recommendations
@@ -60,7 +60,9 @@ Azure Advisor helps you ensure and improve the continuity of your business-criti
 
 ### Policy definitions
 
-- >> We need something that won't flag for AV sets - not sure if this one still does and Azure policy definition is to *audit standalone single instance VMs that aren't protected by an SLA*. It will flag an audit event for all Virtual Machines that aren't deployed within an Availability Set, across Availability Zones, and aren't using Premium Storage for both OS and Data disks. It also encompasses both Virtual Machine and Virtual Machine Scale Set resources. To view all VM instances that belong to this category, run the query described in [Related resources](#additional-resources).
+- >> We need something that won't flag for AV sets 
+
+- Azure policy definition is to *audit standalone single instance VMs that aren't protected by an SLA*. It will flag an audit event for all Virtual Machines that aren't deployed within an Availability Set, across Availability Zones, and aren't using Premium Storage for both OS and Data disks. It also encompasses both Virtual Machine and Virtual Machine Scale Set resources. To view all VM instances that belong to this category, run the query described in [Related resources](#additional-resources).
 - To identify resiliency risks to existing compute resources and support continuous compliance for new resources within a customer tenant, it's recommended you use Azure Policy and Azure Resource Graph to Audit the use of non-resilient deployment configurations.
 - Azure policy definition is to audit Availability Sets containing single instance VMs that aren't protected by an SLA. It will flag an audit event for all Availability Sets that don't contain multiple instances.
 
@@ -72,17 +74,18 @@ All built-in policy definitions are listed in [Built-in policies - Compute](/azu
 This article provides an overview of the core Azure security features that can be used with virtual machines.
 
 >> This has the existing security recommendations, do we just repeat them here? /azure/security/fundamentals/iaas
-[H2 section introduction here.]
 
 
 Concepts:
-•	Authentication and access control
-•	Role-Based Access Control
-•	Managed Identities
-•	Encryption
-•	Network Security
-•	Application Security
-•	Secure Key and Secret Storage
+- Authentication and access control
+- Role-Based Access Control
+- Managed Identities
+- Encryption
+- Network Security
+- Application Security
+- Secure Key and Secret Storage
+
+
 Security Best Practices for IaaS workloads:
 https://docs.microsoft.com/azure/security/fundamentals/iaas
 Separate Excel file has Azure Advisor recommendations (two tabs, there are many)
@@ -91,7 +94,7 @@ Separate Excel file has Azure Advisor recommendations (two tabs, there are many)
 ### Design checklist
 
 
-As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
+As you make design choices for your virtual machine deployment, review the [design principles](/azure/architecture/framework/security/security-principles) for security.
 
 > [!div class="checklist"]
 > - Authentication and access control
@@ -104,10 +107,12 @@ As you make design choices for \<product>, review the \[design principles](\<des
 ### Recommendations
 
 
-Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
 
-Linux secuiryt baseline - /security/benchmark/azure/baselines/virtual-machines-linux-security-baseline
-Windows security baseline - /security/benchmark/azure/baselines/virtual-machines-windows-security-baseline
+Review the security baselines for each type of virtual machine: 
+- [Linux security baseline](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline)
+- [Windows security baseline](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline)
+
+Explore the following table of recommendations to optimize your virtual machine configuration for security.
 
 | Recommendation | Benefit |
 |--------|----|
@@ -126,7 +131,7 @@ Azure Advisor helps you ensure and improve security. Review the [recommendations
 
 | Message | Description |
 |--|--|
-| >> Pretty sure these are all for the Azure Compute Gallery feature - VM applications - which is still in Preview and probably not the best to reference: |
+| >> Pretty sure these are all for the Azure Compute Gallery feature - VM applications - which is still in Preview and probably not the best to reference? |
 | >> Current VM Application Version {name} was deprecated at {date}. | Attempt to deploy a VM Application version that has already been deprecated. |
 | >> Current VM Application Version {name} supports OS {OS}, while current OSDisk's OS is {OS}. | Attempt to deploy a Linux application to Windows or vice versa. |
 | >> The maximum number of VM applications (max=5, current={count}) has been exceeded. Use fewer applications and retry the request. | We currently only support five VM applications per VM or VMSS. |
@@ -137,7 +142,30 @@ Azure Advisor helps you ensure and improve security. Review the [recommendations
 | >>> Are we going to recommend Azure Compute Gallery for image creation and storage? I don't see it anywhere else: |
 | >>> The gallery image {image} is not available in {region} region. Please contact image owner to replicate to this region, or change your requested region. | The gallery application version exists, but it was not replicated to this region. |
 
-All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
+
+| Policy Name | Azure Policy Description |
+|--|--|
+| Audit VMs that do not use managed disks | This policy audits VMs that do   not use managed disks |
+| Configure disk access resources to use private DNS   zones | Use private DNS zones to override the DNS resolution   for a private endpoint. A private DNS zone links to your virtual network to   resolve to a managed disk. Learn more   at: https://aka.ms/disksprivatelinksdoc. |
+| Configure disk access resources with private   endpoints | Private endpoints connect your virtual networks to   Azure services without a public IP address at the source or destination. By   mapping private endpoints to disk access resources, you can reduce data   leakage risks. Learn more about private links at: https://aka.ms/disksprivatelinksdoc. |
+| Configure managed disks to disable public network   access | Disable public network access for your managed disk   resource so that it's not accessible over the public internet. This can   reduce data leakage risks. Learn more   at: https://aka.ms/disksprivatelinksdoc. |
+| Deploy default Microsoft IaaSAntimalware extension   for Windows Server | This policy deploys a Microsoft   IaaSAntimalware extension with a default configuration when a VM is not   configured with the antimalware extension. |
+| Disk access resources should use private link | Azure Private Link lets you connect your virtual   network to Azure services without a public IP address at the source or   destination. The Private Link platform handles the connectivity between the   consumer and services over the Azure backbone network. By mapping private   endpoints to diskAccesses, data leakage risks are reduced. Learn more about   private links at: https://aka.ms/disksprivatelinksdoc. |
+| Managed disks should be double encrypted with both   platform-managed and customer-managed keys | High security sensitive customers who are concerned   of the risk associated with any particular encryption algorithm,   implementation, or key being compromised can opt for additional layer of   encryption using a different encryption algorithm/mode at the infrastructure   layer using platform managed encryption keys. The disk encryption sets are   required to use double encryption. Learn more   at https://aka.ms/disks-doubleEncryption. |
+| Managed disks should disable public network access | Disabling public network access improves security by   ensuring that a managed disk isn't exposed on the public internet. Creating   private endpoints can limit exposure of managed disks. Learn more   at: https://aka.ms/disksprivatelinksdoc. |
+| Managed disks should use a specific set of disk   encryption sets for the customer-managed key encryption | Requiring a specific set of disk encryption sets to   be used with managed disks give you control over the keys used for encryption   at rest. You are able to select the allowed encrypted sets and all others are   rejected when attached to a disk. Learn more at https://aka.ms/disks-cmk. |
+| Microsoft Antimalware for Azure should be configured   to automatically update protection signatures | This policy audits any Windows   virtual machine not configured with automatic update of Microsoft Antimalware   protection signatures. |
+| Microsoft IaaSAntimalware extension should be   deployed on Windows servers | This policy audits any Windows   server VM without Microsoft IaaSAntimalware extension deployed. |
+| Only approved VM extensions should be installed | This policy governs the virtual   machine extensions that are not approved. |
+| OS and data disks should be encrypted with a   customer-managed key | Use customer-managed keys to manage the encryption   at rest of the contents of your managed disks. By default, the data is   encrypted at rest with platform-managed keys, but customer-managed keys are   commonly required to meet regulatory compliance standards. Customer-managed   keys enable the data to be encrypted with an Azure Key Vault key created and   owned by you. You have full control and responsibility for the key lifecycle,   including rotation and management. Learn more   at https://aka.ms/disks-cmk. |
+| Require automatic OS image patching on Virtual   Machine Scale Sets | This policy enforces enabling   automatic OS image patching on Virtual Machine Scale Sets to always keep   Virtual Machines secure by safely applying latest security patches every   month. |
+| Resource logs in Virtual Machine Scale Sets should   be enabled | It is recommended to enable Logs   so that activity trail can be recreated when investigations are required in   the event of an incident or a compromise. |
+| Virtual machines and virtual machine scale sets   should have encryption at host enabled | Use encryption at host to get end-to-end encryption   for your virtual machine and virtual machine scale set data. Encryption at   host enables encryption at rest for your temporary disk and OS/data disk   caches. Temporary and ephemeral OS disks are encrypted with platform-managed   keys when encryption at host is enabled. OS/data disk caches are encrypted at   rest with either customer-managed or platform-managed key, depending on the   encryption type selected on the disk. Learn more at https://aka.ms/vm-hbe. |
+| Virtual machines should be migrated to new Azure   Resource Manager resources | Use new Azure Resource Manager   for your virtual machines to provide security enhancements such as: stronger   access control (RBAC), better auditing, Azure Resource Manager based   deployment and governance, access to managed identities, access to key vault for   secrets, Azure AD-based authentication and support for tags and resource   groups for easier security management |
+
+
+
+All built-in policy definitions related to Azure Virtual Machines are listed in [Secure and use policies on virtual machines in Azure](/azure/virtual-machines/security-policy).
 
 ## Cost Optimization
 
@@ -177,7 +205,21 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 
  Azure Advisor helps you ensure and improve cost optimization. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Cost).
 
+
 ## Operational excellence
+
+>> Here is what the overview for this area has:
+>> Not applicable? Application design	Provides guidance on how to design, build, and orchestrate workloads with DevOps principles in mind.
+Monitoring	Something that enterprises have been doing for years, enriched with specifics for applications running in the cloud.
+>> Not applicable?  Application performance management	The monitoring and management of performance, and availability of software applications through DevOps.
+>> Not applicable? Code deployment	How you deploy your application code is one of the key factors that determines your application stability.
+Infrastructure provisioning	Frequently known as Automation or Infrastructure as code, this discipline refers to best practices for deploying the platform where your application will run.
+Testing	Testing is fundamental to prepare for the unexpected and to catch mistakes before they impact users.
+
+That leaves us with:
+- Monitoring - what is the recommendation here? Just follow the monitoring guidance here: /azure/virtual-machines/monitor-vm
+- Provisioning - what is the recommendation here? Azure Compute Galleries? Marketplace images? Other provisioning tooling? Or, is there something generic?
+- Testing - what do we want to say here? The generic stuff for this area is more about app deployment: https://review.docs.microsoft.com/en-us/azure/architecture/framework/devops/release-engineering-testing 
 
 
 >> Azure Advisors:
@@ -188,7 +230,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 ### Design checklist
 
 
-As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
+As you make design choices for your virtual machine deployment, review the \[design principles](\<design principles link>) for \<pillar>.
 
 > [!div class="checklist"]
 > - \<Design consideration>
@@ -199,7 +241,7 @@ As you make design choices for \<product>, review the \[design principles](\<des
 ### Recommendations
 
 
-Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
+Explore the following table of recommendations to optimize your your virtual machine deployment configuration for \<pillar>.
 
 | Recommendation | Benefit |
 |--------|----|
@@ -234,23 +276,26 @@ One page:
 learn/modules/azure-well-architected-introduction/5-performance-efficiency
 
 Similar to above link but much more exhaustive:
-/learn/modules/azure-well-architected-performance-efficiency/
+
 
 Concepts:
-•	Scaling up (bigger instances)
-•	Scaling out (more instances)
-•	Autoscaling
-•	Optimizing Network
-•	Optimizing Storage
-•	Utilizing Caching
-•	Identifying Performance Bottlenecks
+- Scaling up (bigger instances) >> should this be "right sizing"?
+- Use Flexible scale sets to autoscale
+- Optimizing Network >> Networking is a whole other ball of squishy - what can we link to?
+- Optimizing Storage >> Again, whole other ball of squishy, but we have "Convert Managed Disks from Standard HDD to Premium SSD for performance"
+- Utilizing Caching >> what are the specifics for this?
+- Identifying Performance Bottlenecks >> I think this is app or workload specific - not sure what we would genericall say here for VMs?
 
 Performance Efficiency Pattern:
 /azure/architecture/framework/scalability/performance-efficiency-patterns
+
 Performance Efficiency Checklist:
 /azure/architecture/framework/scalability/performance-efficiency
+
 Virtual Machine Scale Sets:
 /azure/virtual-machine-scale-sets/overview
+
+
 Azure Advisor:
 /azure/advisor/advisor-performance-recommendations
 Relevant items:
@@ -270,7 +315,7 @@ Relevant items:
 ### Design checklist
 
 
-As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
+As you make design choices for your virtual machine deployment, review [Microsoft Azure Well-Architected Framework - Performance efficiency](/learn/modules/azure-well-architected-performance-efficiency/) for performance and efficiency.
 
 > [!div class="checklist"]
 > - \<Design consideration>
@@ -281,7 +326,7 @@ As you make design choices for \<product>, review the \[design principles](\<des
 ### Recommendations
 
 
-Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
+Explore the following table of recommendations to optimize your virtual machine deployment configuration for performance and efficiency.
 
 | Recommendation | Benefit |
 |--------|----|
