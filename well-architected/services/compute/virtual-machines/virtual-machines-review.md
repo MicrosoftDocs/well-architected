@@ -253,7 +253,7 @@ Explore the following table of recommendations to optimize your your virtual mac
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
 
-Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
+Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [recommendations].
 
 ### Policy definitions
 
