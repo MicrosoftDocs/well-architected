@@ -6,7 +6,7 @@ ms.author: victorh
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 04/29/2022
+ms.date: 05/02/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall
@@ -186,7 +186,7 @@ Monitoring and diagnostics are crucial. Not only can you measure performance sta
 
 ### Design checklist
 
-As you make design choices for Azure Firewall, review the [Operational excellence design principles](../../devops/principles).
+As you make design choices for Azure Firewall, review the [Operational excellence design principles](../../devops/principles.md).
 
 <!--
 The following are the Operational excellence design principles:
@@ -259,7 +259,7 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 
 | Recommendation | Benefit |
 |--------|----|
-| If you'll need more than 512k SNAT ports, deploy a NAT Gateway with Azure Firewall. | With a NAT Gateway, you can scale up to +1M ports. For more information, see [Scale SNAT ports with Azure NAT Gateway](azure/firewall/integrate-with-nat-gateway.md)|
+| If you'll need more than 512k SNAT ports, deploy a NAT Gateway with Azure Firewall. | With a NAT Gateway, you can scale up to +1M ports. For more information, see [Scale SNAT ports with Azure NAT Gateway](azure/firewall/integrate-with-nat-gateway)|
 |Create initial traffic that is not part of your load tests 20 minutes prior to the test. Use diagnostics settings to capture scale-up and scale-down events.|Allows the Azure Firewall instance to scale up its instances to the maximum. |
 |Use IP Groups to summarize IP address ranges.|You can use IP Groups to summarize IP ranges so you do not exceed 10k network rules. For each rule, Azure multiplies ports x IP addresses. So if you have one rule with four IP address ranges and five ports, you will actually consume 20 network rules.
 
