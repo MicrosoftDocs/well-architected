@@ -329,7 +329,7 @@ This section will therefore explore key considerations and recommendations surro
 - Define a common engineering criteria to capture secure and reliable configuration definitions for all utilized Azure services, ensuring this criteria is mapped to Azure Policy assignments to enforce compliance.
   - For example, apply an Azure Policy to enforce the use of Availability Zones for all relevant services, ensuring reliable intra-region deployment configurations.
 
-> The Mission Critical reference implementation contain a wide array of security and reliability centric policies to define and enforce a sample common engineering criteria.
+> The Mission Critical reference implementation contain a wide array of [security and reliability centric policies](/azure/architecture/framework/mission-critical/mission-critical-security#policy-driven-governance) to define and enforce a sample common engineering criteria.
 
 - Monitor service configuration drift, relative to the common engineering criteria, using Azure Policy.
 
