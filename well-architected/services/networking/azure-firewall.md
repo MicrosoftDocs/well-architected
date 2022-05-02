@@ -6,7 +6,7 @@ ms.author: victorh
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 04/29/2022
+ms.date: 05/02/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall
@@ -224,20 +224,45 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Performance efficiency
 
-Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](../../scalability/principles.md).
+Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner.
 
 ### Design checklist
 
+As you make design choices for Azure Firewall, review the [Performance efficiency principles](../../scalability/principles.md).
+
+<!--
+The following are the Performance efficiency design principles:
+
+- Understand the challenges of distributed architectures
+- Run performance testing in the scope of development
+- Establish performance baselines
+- *Run load and stress tests*
+- Identify bottlenecks
+- Have a data-driven approach
+- Troubleshoot performance issues
+- Identify improvement opportunities with resolution planning
+- *Invest in capacity planning*
+-->
+
 > [!div class="checklist"]
-> XXX
+> - Determine your SNAT port requirements and if you should deploy a NAT gateway
+> - Plan load tests to test auto scale performance in your environment
+> - Plan network rule requirements and opportunities to summarize IP ranges.
 
 ### Recommendations
+
+<!--
+In table format, present the top recommendations that demonstrate how to achieve the points described in the design checklist.
+-->
 
 Explore the following table of recommendations to optimize your Azure Firewall configuration for Performance efficiency.
 
 | Recommendation | Benefit |
 |--------|----|
-| XXX | XXX|
+| If you'll need more than 512k SNAT ports, deploy a NAT Gateway with Azure Firewall. | With a NAT Gateway, you can scale up to +1M ports. For more information, see [Scale SNAT ports with Azure NAT Gateway](/azure/firewall/integrate-with-nat-gateway)|
+|Create initial traffic that is not part of your load tests 20 minutes prior to the test. Use diagnostics settings to capture scale-up and scale-down events.|Allows the Azure Firewall instance to scale up its instances to the maximum. |
+|Use IP Groups to summarize IP address ranges.|You can use IP Groups to summarize IP ranges so you do not exceed 10k network rules. For each rule, Azure multiplies ports x IP addresses. So if you have one rule with four IP address ranges and five ports, you will actually consume 20 network rules.
+
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
@@ -260,7 +285,7 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ### Azure Architecture Center guidance
 
-- XXX
+- [Azure Firewall architecture overview](/azure/architecture/example-scenario/firewalls)
 
 ## Next steps
 
