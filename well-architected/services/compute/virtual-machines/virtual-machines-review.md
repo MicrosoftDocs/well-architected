@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework review - Virtual Machines
 description: Design considerations and recommendations about Azure virtual machines.
 author: cynthn
 ms.author: cynthn
-ms.date: 04/25/2022
+ms.date: 05/02/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -16,11 +16,11 @@ categories:
 
 # Azure Well-Architected Framework review - Virtual Machines
 
-[Virtual Machines](/azure/virtual-machines/) is an on-demand, scalable computing resource that gives you the flexibility of virtualization without having to buy and maintain physical hardware to run it. The intent of this article is to provide guidance about this resource based on the pillars of architecture excellence: Reliability, and Cost Optimization. If you are provisioning virtual machines in your design, consider the design principles and recommendations described in this article. 
+[Virtual Machines](/azure/virtual-machines/) is an on-demand, scalable computing resource that gives you the flexibility of virtualization without having to buy and maintain physical hardware to run it. The intent of this article is to provide guidance about this resource based on the pillars of architecture excellence: Reliability, and Cost Optimization. If you are provisioning virtual machines in your design, consider the design principles and recommendations described in this article.
 
-Policy: /azure/virtual-machines/security-controls-policy
-Built-in policies: /azure/governance/policy/samples/built-in-policies#compute
-Policy reference: /azure/virtual-machines/policy-reference
+>> Policy: /azure/virtual-machines/security-controls-policy
+>> Built-in policies: /azure/governance/policy/samples/built-in-policies#compute
+>> Policy reference: /azure/virtual-machines/policy-reference
 
 
 ## Prerequisites
@@ -38,7 +38,7 @@ As you make design choices for virtual machines, review the [design principles](
 > - Review the [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/).
 > - VMs should be deployed in Flexible scale sets.
 > - Deployed VMs across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone) .
-> - Install applications on data disks. >> Is there anything else to say about this?
+> - Install applications on data disks.
 > - Monitor and measure health. >> what should we recommend here?
 > - Use [maintenance control](/azure/virtual-machines/maintenance-control) to manage system restarts.
 
@@ -48,9 +48,9 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |Recommendation|Benefit|
 |------------------------------|-----------|
 | Review [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/). | When defining test availability and recovery targets, make sure you have a good understanding of the SLAs offered for VMs.|
-| Deploy using Flexible scale sets. | Even single instance VMs should be deployed into a Flexible scale-set to future-proof your application for scaling and availability. |
+| Deploy using Flexible scale sets. | Even single instance VMs should be deployed into a scale set [using the Flexible orchestration mode](/azure/virtual-machines/flexible-virtual-machine-scale-sets) to future-proof your application for scaling and availability. |
 | Deploy across availability zones | Virtual machines should be deployed across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone). Azure availability zones are physically separate locations within each Azure region that are tolerant to local failures.
-| Install applications on data disks. | Having your data separate from your OS disk makes it faster to replace troubled VMs without affecting your application deployment.| 
+| Install applications on data disks. | Having your data on a [separate disk](/azure/virtual-machines/linux/add-disk) from your OS disk makes it faster to replace troubled VMs without affecting your application data.|
 | Monitor and measure health | >> We have a dozen tools - what should we recommend here? |
 | Use maintenance control | Control when VM maintenance occurs using [Maintenance Control](/azure/virtual-machines/maintenance-control).|
 
@@ -208,6 +208,8 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 
 ## Operational excellence
 
+>> Need an intro here - what do we want to focus on for op exc for VMs?
+
 >> Here is what the overview for this area has:
 >> Not applicable? Application design	Provides guidance on how to design, build, and orchestrate workloads with DevOps principles in mind.
 Monitoring	Something that enterprises have been doing for years, enriched with specifics for applications running in the cloud.
@@ -216,7 +218,7 @@ Monitoring	Something that enterprises have been doing for years, enriched with s
 Infrastructure provisioning	Frequently known as Automation or Infrastructure as code, this discipline refers to best practices for deploying the platform where your application will run.
 Testing	Testing is fundamental to prepare for the unexpected and to catch mistakes before they impact users.
 
-That leaves us with:
+>> That leaves us with:
 - Monitoring - what is the recommendation here? Just follow the monitoring guidance here: /azure/virtual-machines/monitor-vm
 - Provisioning - what is the recommendation here? Azure Compute Galleries? Marketplace images? Other provisioning tooling? Or, is there something generic?
 - Testing - what do we want to say here? The generic stuff for this area is more about app deployment: https://review.docs.microsoft.com/en-us/azure/architecture/framework/devops/release-engineering-testing 
@@ -232,11 +234,16 @@ That leaves us with:
 
 As you make design choices for your virtual machine deployment, review the \[design principles](\<design principles link>) for \<pillar>.
 
+>> These are from the resources above - are these the right options? Once we have them, we can move them to the recommended configuration:
+
 > [!div class="checklist"]
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
+> - Monitoring - what is the recommendation here? Just follow the monitoring guidance here: /azure/virtual-machines/monitor-vm
+> - Provisioning - what is the recommendation here? Azure Compute Galleries? Marketplace images? Other provisioning tooling? Or, is there something generic?
+> - Testing - what do we want to say here? The generic stuff for this area is more about app deployment: https://review.docs.microsoft.com/en-us/azure/architecture/framework/devops/release-engineering-testing 
+> - Increase the number of compute resources you can deploy by 10 vCPU
+> - Add Azure Monitor to your virtual machine (VM) labeled as production
+> - Excessive NTP client traffic caused by frequent DNS lookups and NTP sync for new servers, which happens often on some global NTP servers.
+
 
 ### Recommendations
 
@@ -367,11 +374,13 @@ Here are other resources to help you query for unhealthy instances.
 ### Query to identify unprotected resources 
 Use the following query to *identify standalone single instance VMs that aren't protected by a minimum SLA of at least `99.5%`*. The query will return all VM instances that aren't deployed within an Availability Set, across Availability Zones, and aren't using either Standard SSD or Premium SSD for both OS and Data disks. This query can be altered easily to identify all single instance VMs, including those using Premium Storage, which are protected by a minimum SLA of at least `99.5%`. Remove the trailing `where` condition:
 
+>> don't flag for AV sets - maybe flag for Flex orch
+
 ```sql
 Resources
 | where
     type =~ 'Microsoft.Compute/virtualMachines'
-        and isnull(properties.availabilitySet.id)
+        and isnull(properties.aailabilitySet.id)
     or type =~ 'Microsoft.Compute/virtualMachineScaleSets'
         and sku.capacity <= 1
         or properties.platformFaultDomainCount <= 1
