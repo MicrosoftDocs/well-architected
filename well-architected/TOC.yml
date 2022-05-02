@@ -440,13 +440,7 @@ items:
                   - name: Performance efficiency
                     href: services/compute/service-fabric/performance-efficiency.md
               - name: Virtual Machines
-                items:
-                  - name: Reliability
-                    href: services/compute/virtual-machines/reliability.md
-                  - name: Cost optimization
-                    href: services/compute/virtual-machines/cost-optimization.md
-                  - name: Operational excellence
-                    href: services/compute/virtual-machines/operational-excellence.md
+                href: services/compute/virtual-machines/virtual-machines-review.md
           - name: Data
             items:
               - name: Azure Cache for Redis
