@@ -136,7 +136,7 @@ ClusterHealthStatus
 
 These aggregated scores can subsequently be represented as a dependency chart using visualization tools such as Grafana to illustrate the health model. 
 
-This image shows an example layered health model from the [foundational-online](https://github.com/Azure/Mission-Critical-online) reference implementation, and demonstrates how a change in health state for a foundational component can have a cascading impact to user flows and overall application health (the example values correspond to the table in the previous image).
+This image shows an example layered health model from the Azure Mission-Critical [online reference implementation](https://github.com/Azure/Mission-Critical-online), and demonstrates how a change in health state for a foundational component can have a cascading impact to user flows and overall application health (the example values correspond to the table in the previous image).
 
 ![Mission Critical Example Health Model Visualization](./images/mission-critical-example-fault-states.png "Mission Critical Example Health Model Visualization")
 

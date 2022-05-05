@@ -47,4 +47,4 @@ The following table reflects design consideration recommendations and descriptio
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Service Fabric and reliability](../service-fabric/reliability.md)
+> [Azure Service Fabric and reliability](../azure-service-fabric-well-architected-framework.md#reliability)

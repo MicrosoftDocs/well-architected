@@ -70,7 +70,7 @@ For an explanation of these items, see [Builds](../devops/release-engineering-pe
 
 ### Monitoring performance optimization
 
-As you consider making performance improvements, monitoring should be done to verify that your application is running correctly. Monitoring should include the application, platform, and networking. To learn more, see [Monitoring](../devops/monitoring.md).
+As you consider making performance improvements, monitoring should be done to verify that your application is running correctly. Monitoring should include the application, platform, and networking. To learn more, see [Monitoring](../devops/checklist.md).
 
 For operational considerations, see the [Operational Excellence](../devops/overview.md) pillar.
 
