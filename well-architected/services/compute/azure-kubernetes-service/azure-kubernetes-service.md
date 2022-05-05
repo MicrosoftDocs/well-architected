@@ -165,7 +165,6 @@ Explore the following table of recommendations to optimize your AKS configuratio
 
 | Recommendation | Benefit |
 |----------------------------------|-----------|
-|**Cluster architecture:** Avoid VM SKUs with temporary disk offerings.|AKS uses managed disks by default, so avoiding temp disk offerings ensures you don't pay for unneeded resources.|
 |**Cluster and workload architectures:** Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
 |**Cluster and workload architectures:** Use the [Start and Stop feature](/azure/aks/start-stop-cluster?tabs=azure-cli) in Azure Kubernetes Services (AKS).|The AKS Stop and Start cluster feature allows AKS customers to pause an AKS cluster, saving time and cost. The stop and start feature keeps cluster configurations in place and customers can pick up where they left off without reconfiguring the clusters.|
 |**Cluster architecture:** Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically reduce the number of agent nodes in response to excess resource capacity. |Automatically scale down the number of nodes in your AKS cluster lets you run an efficient cluster when demand is low, scaling back up when demand returns.|
