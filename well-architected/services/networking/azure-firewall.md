@@ -64,10 +64,6 @@ Design for scale-out
 
 ### Recommendations
 
-<!--
-In table format, present the top recommendations that demonstrate how to achieve the points described in the design checklist.
--->
-
 Explore the following table of recommendations to optimize your Azure Firewall configuration for Reliability.
 
 | Recommendation | Benefit |
@@ -109,10 +105,6 @@ The following are the Security design principles:
 
 ### Recommendations
 
-<!--
-In table format, present the top recommendations that demonstrate how to achieve the points described in the design checklist.
--->
-
 Explore the following table of recommendations to optimize your Azure Firewall configuration for Security.
 
 | Recommendation | Benefit |
@@ -129,7 +121,7 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ### Policy definitions
 
-- [All Internet traffic should be routed via your deployed Azure Firewall](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c). Azure Security Center has identified that some of your subnets aren't protected with a next generation firewall. Protect your subnets from potential threats by restricting access to them with Azure Firewall or a supported next generation firewall.
+- [All Internet traffic should be routed via your deployed Azure Firewall](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c). Protect your subnets from potential threats by restricting access to them with Azure Firewall or a supported next generation firewall.
 
 All built-in policy definitions related to Azure Networking are listed in [Built-in policies - Network](/azure/governance/policy/samples/built-in-policies#network).
 
@@ -161,10 +153,6 @@ The following are the Cost design principles:
 
 ### Recommendations
 
-<!--
-In table format, present the top recommendations that demonstrate how to achieve the points described in the design checklist.
--->
-
 Explore the following table of recommendations to optimize your Azure Firewall configuration for Cost optimization.
 
 | Recommendation | Benefit |
@@ -172,7 +160,7 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 | Deploy the Basic and Premium SKUs where appropriate.| The Standard option is usually enough for east-west traffic, where Premium comes with the necessary additional features for north-south traffic, as well as the forced tunneling feature and many other features. For more information, see [Azure Firewall Premium Preview features](/azure/firewall/premium-features). Deploy mixed scenarios using the Standard and Premium options, according to your needs.|
 |Stop Azure Firewall deployments that do not need to run for 24 hours.|You may have development environments that are used only during business hours. For more details, see [Deallocate and allocate Azure Firewall](/powershell/module/az.network/set-azfirewall?#4--deallocate-and-allocate-the-firewall).|
 |Share the same Azure Firewall across multiple workloads and Azure Virtual Networks. Ensure that there is no unexpected cross-region traffic as part of the hub-spoke topology.|You can use a central Azure Firewall in the hub virtual network, and share the same Firewall across many spoke virtual networks that are connected to the same hub from the same region.|
-|Review underutilized Azure Firewall instances, and identify and delete Azure Firewall deployments not in use. To identify Azure Firewall deployments not in use, start analyzing the Monitoring Metrics and User Defined Routes (UDRs) that are associated with subnets pointing to the Firewall's private IP. Then, combine that with additional validations, such as if the Azure Firewall has any Rules (Classic) for NAT, or Network and Application, or even if the DNS Proxy setting is configured to **Disabled**, as well as with internal documentation about your environment and deployments.| You can detect  deployments that are cost effective over time. <br><br> For more details about monitoring logs and metrics, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port utilization](/azure/firewall/logs-and-metrics#metrics).|
+|Review underutilized Azure Firewall instances, and identify and delete Azure Firewall deployments not in use. | To identify Azure Firewall deployments not in use, start analyzing the Monitoring Metrics and User Defined Routes (UDRs) that are associated with subnets pointing to the Firewall's private IP. Then, combine that with additional validations, such as if the Azure Firewall has any Rules (Classic) for NAT, or Network and Application, or even if the DNS Proxy setting is configured to **Disabled**, as well as with internal documentation about your environment and deployments. <br><br> You can detect  deployments that are cost effective over time. <br><br> For more details about monitoring logs and metrics, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port utilization](/azure/firewall/logs-and-metrics#metrics).|
 |Use Azure Firewall Manager and its policies. Review your Firewall Manager policies, associations, and inheritance carefully. Policies are billed based on firewall associations. A policy with zero or one firewall association is free of charge. A policy with multiple firewall associations is billed at a fixed rate.|You can reduce your operational costs, increasing your efficiency, and reduce your management overhead.  For more information, see [Pricing - Firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager).|
 |Validate whether all the associated Public IP addresses are in use. If they are not in use, disassociate and delete them. Use IP Groups to reduce your management overhead. Evaluate SNAT ports utilization before you remove any IP Addresses.| You will only use the number of Public IPs that your firewall actually needs. For more information, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port utilization](/azure/firewall/logs-and-metrics#metrics).
 
@@ -206,10 +194,6 @@ The following are the Operational excellence design principles:
 > - Use Azure Firewall connector in Azure Sentinel
 
 ### Recommendations
-
-<!--
-In table format, present the top recommendations that demonstrate how to achieve the points described in the design checklist.
--->
 
 Explore the following table of recommendations to optimize your Azure Firewall configuration for Operational excellence.
 
@@ -251,10 +235,6 @@ The following are the Performance efficiency design principles:
 
 ### Recommendations
 
-<!--
-In table format, present the top recommendations that demonstrate how to achieve the points described in the design checklist.
--->
-
 Explore the following table of recommendations to optimize your Azure Firewall configuration for Performance efficiency.
 
 | Recommendation | Benefit |
@@ -263,29 +243,32 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 |Create initial traffic that is not part of your load tests 20 minutes prior to the test. Use diagnostics settings to capture scale-up and scale-down events.|Allows the Azure Firewall instance to scale up its instances to the maximum. |
 |Use IP Groups to summarize IP address ranges.|You can use IP Groups to summarize IP ranges so you do not exceed 10k network rules. For each rule, Azure multiplies ports x IP addresses. So if you have one rule with four IP address ranges and five ports, you will actually consume 20 network rules.
 
-
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
 ## Azure Advisor recommendations
 
 [Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Azure Firewall.
 
-### Reliability
-
-- XXX
+- [Create Azure Service Health alerts to be notified when Azure problems affect you](/azure/advisor/advisor-high-availability-recommendations#create-azure-service-health-alerts-to-be-notified-when-azure-problems-affect-you)
+- [Ensure you have access to Azure cloud experts when you need it](/azure/advisor/advisor-operational-excellence-recommendations#ensure-you-have-access-to-azure-cloud-experts-when-you-need-it)
+- [Enable Traffic Analytics to view insights into traffic patterns across Azure resources](/azure/advisor/advisor-reference-operational-excellence-recommendations#enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources)
+- [Update your outbound connectivity protocol to Service Tags for Azure Site Recovery](/azure/advisor/advisor-reference-reliability-recommendations#update-your-outbound-connectivity-protocol-to-service-tags-for-azure-site-recovery)
+- [Follow just enough administration (least privilege principle)](/security/benchmark/azure/baselines/advisor-security-baseline?toc=/azure/advisor/toc.json#pa-7-follow-just-enough-administration-least-privilege-principle)
+- [Protect your network resources with Microsoft Defender for Cloud](/azure/defender-for-cloud/protect-network-resources)
 
 ## Additional resources
 
-- [Azure Firewall documentation](/azure/firewall/)
-- [Azure Firewall architecture overview](/azure/architecture/example-scenario/firewalls/)
-- [Azure security baseline for Azure Firewall](/security/benchmark/azure/baselines/firewall-security-baseline)
+- [Azure Firewall documentation](/azure/firewall)
 - [Azure Firewall service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-firewall-limits)
-- [Use Azure Firewall to help protect an Azure Kubernetes Service (AKS) cluster](/azure/architecture/example-scenario/aks-firewall/aks-firewall)
-- [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?tabs=cli)
+- [Azure security baseline for Azure Firewall](/security/benchmark/azure/baselines/firewall-security-baseline)
 
 ### Azure Architecture Center guidance
 
 - [Azure Firewall architecture overview](/azure/architecture/example-scenario/firewalls)
+- [Use Azure Firewall to help protect an Azure Kubernetes Service (AKS) cluster](/azure/architecture/example-scenario/aks-firewall/aks-firewall)
+- [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?tabs=cli)
+- [Implement a secure hybrid network](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz)
+- [Network-hardened web application with private connectivity to PaaS datastores](/azure/architecture/example-scenario/security/hardened-web-app)
 
 ## Next steps
 
