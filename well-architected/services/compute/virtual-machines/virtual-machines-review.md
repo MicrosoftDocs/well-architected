@@ -193,7 +193,7 @@ Explore the following table of recommendations to optimize your your virtual mac
 | Automate tasks | Building [automation](/azure/architecture/framework/devops/automation-tasks) reduces deviations from your plans and reduces that time it takes to manage your workload.  |
 | Build a robust testing environment | Ideally, an organization will have multiple environments in which to test deployments. These test environments should be similar enough to production that deployment and run time issues are detected before deployment to production. |
 | Right-size your VMs | Choose the right [VM family](/azure/virtual-machines/sizes) for your workload. | 
-| Manage your quota | Plan what level of quota will be required and review that level regularly as the workload evolves and grows and [request changes early](https://docs.microsoft.com/en-us/azure/azure-portal/supportability/per-vm-quota-requests)  |
+| Manage your quota | Plan what level of quota will be required and review that level regularly as the workload evolves and grows and [request changes early](/azure/azure-portal/supportability/per-vm-quota-requests)  |
 
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
