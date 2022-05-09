@@ -302,7 +302,8 @@ Performance Efficiency Checklist:
 Virtual Machine Scale Sets:
 /azure/virtual-machine-scale-sets/overview
 
-
+> [!IMPORTANT]
+> Essential information required for user success
 Azure Advisor:
 /azure/advisor/advisor-performance-recommendations
 Relevant items:
