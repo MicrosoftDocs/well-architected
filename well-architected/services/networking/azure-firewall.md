@@ -6,7 +6,7 @@ ms.author: victorh
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 05/02/2022
+ms.date: 05/09/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall
@@ -27,15 +27,6 @@ We assume that you have working knowledge of Azure Firewall and are well versed 
 - Use a reference architecture to review the considerations based on the guidance provided in this article. We recommend that you start with [Network-hardened web application with private connectivity to PaaS datastores](/azure/architecture/example-scenario/security/hardened-web-app) and [Implement a secure hybrid network](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?tabs=portal).
 
 ## Reliability
-
-Azure Firewall ia an intelligent firewall security service that provides threat protection for your cloud workloads running in Azure.
-
-Features include:
-
-- Stateful Firewall as a service
-- Built-in high availability
-- Unrestricted cloud scalability
-- East-west and north-south traffic inspection
 
 To learn how Azure Firewall supports a reliable workload, see the following articles:
 
@@ -113,7 +104,7 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 |Enable threat intelligence on Azure Firewall.|You can enable threat intelligence-based filtering for your firewall to alert and deny traffic from or to unknown IP addresses and domains. The IP addresses and domains are sourced from the Microsoft Threat Intelligence Feed. Intelligent Security Graph powers Microsoft threat intelligence and is used by multiple services including Azure Security Center.
 |Enable Domain Name System (DNS) Proxy and point the infrastructure DNS to Azure Firewall.|By default, Azure Firewall uses Azure DNS. Custom DNS allows you to configure Azure Firewall to use Corporate DNS to resolve external and internal names.|
 |Configure the user-defined routes (UDR) to force traffic to Azure Firewall.|Configure UDRs to force traffic to Azure Firewall for `SpoketoSpoke`, `SpoketoInternet`, and `SpoketoHybrid` connectivity.|
-|Validate any overlapping or missing peering in spoke networks.|Check if there's any overlapping or missing peering in spoke networks.|
+|Validate if unnecessary peering exist between the VNet where Azure Firewall is deployed and other VNets.|Helps to guarantee that undesired traffic is sent to the Firewall or Hub Network.|
 |Leverage Security Partner Providers for third-party Security as a Service (SECaaS) Offerings.|Security partner providers help to filter internet traffic through Virtual Private Network (VNET) to internet or Branch to internet.|
 |Use just-in-time systems (JIT) to control access to virtual machines (VMs) from the internet.|You can use Azure Security Center JIT to control access for clients connecting from the internet using Azure Firewall.|
 
