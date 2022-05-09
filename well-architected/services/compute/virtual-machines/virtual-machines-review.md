@@ -77,7 +77,6 @@ As you make design choices for virtual machines, review the [security principles
 As you make design choices for your virtual machine deployment, review the [design principles](/azure/architecture/framework/security/security-principles) for security.
 
 > [!div class="checklist"]
-Review the security baselines for each type of virtual machine: 
 > - Review the [Linux security baseline](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline)
 > - Review the [Windows security baseline](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline)
 > - Manage authentication and access control.
@@ -166,6 +165,8 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Policy Name | Azure Policy Description |
 |--|--|
 
+
+All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
 ## Operational excellence
 
 To ensure operational excellence, review the [design principles](/azure/architecture/framework/devops/principles).
@@ -185,8 +186,6 @@ To ensure operational excellence, review the [design principles](/azure/architec
 ### Recommendations
 
 
-Explore the following table of recommendations to optimize your your virtual machine deployment configuration for \<pillar>.
-
 | Recommendation | Benefit |
 |--------|----|
 | Monitor and measure health | In a production environment, it's important to [monitor](/azure/virtual-machines/monitor-vm) the health, and performance of your VMs.  |
@@ -203,9 +202,9 @@ Azure Advisor helps you ensure and improve the continuity of your business-criti
 ### Policy definitions
 
 
-- Consider setting an “Allowed virtual machine SKU” policy
-
-All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
+- Consider setting an `Allowed virtual machine SKU` policy
+- 
+All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
 
 
 ## Performance efficiency
@@ -246,7 +245,7 @@ Azure Advisor helps you ensure and improve performance. Review the [recommendati
 
 - Audit VMs that do not use managed disks - This policy audits VMs that do not use managed disks
 
-All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
+All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
 
 ## Azure Advisor recommendations
 
