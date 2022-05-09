@@ -3,8 +3,8 @@ title: Health monitoring
 description: Provides an overview of health modeling and monitoring as it relates to the Operational Excellence pillar.
 ms.author: robbymillsap
 author: v-stacywray
-manager: david-stanford
-ms.date: 4/8/2022
+manager: robbymillsap
+ms.date: 05/09/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -78,7 +78,7 @@ Application Insights allows you to:
 - Makes application troubleshooting easier.
 - Provides custom business telemetry to indicate whether your application is being used as intended.
 
-For more information about how Application Insights helps you monitor applications, reference [Monitoring for Workloads](/azure/architecture/framework/devops/monitoring).
+For more information about how Application Insights helps you monitor applications, reference [Monitoring workloads](/azure/architecture/framework/devops/monitor-pipeline).
 
 ## Logs and metrics
 
@@ -144,7 +144,7 @@ Known gaps in application observability lead to missed incidents and false posit
 
 [Application Insights](#application-performance-management-apm-tools) or a full-stack monitoring service like [Azure Monitor](/azure/azure-monitor/essentials/monitor-azure-resource) can help you keep tabs on your entire landscape.
 
-For more information, reference [Platform Monitoring](/azure/architecture/framework/devops/monitoring#platform-monitoring).
+For more information, reference [Monitoring workloads](/azure/architecture/framework/devops/monitor-pipeline).
 
 #### Activity logs and diagnostic settings
 
