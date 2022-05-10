@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework review - Virtual Machines
 description: Design considerations and recommendations about Azure virtual machines.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2022
+ms.date: 05/09/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -16,13 +16,15 @@ categories:
 
 # Azure Well-Architected Framework review - Virtual Machines
 
-[Virtual Machines](/azure/virtual-machines/) is an on-demand, scalable computing resource that gives you the flexibility of virtualization without having to buy and maintain physical hardware to run it. The intent of this article is to provide guidance about this resource based on the pillars of architecture excellence: Reliability, and Cost Optimization. If you are provisioning virtual machines in your design, consider the design principles and recommendations described in this article.
+[Virtual Machines](/azure/virtual-machines/) is an on-demand, scalable computing resource that gives you the flexibility of virtualization without having to buy and maintain physical hardware to run it. 
 
->> Policy: /azure/virtual-machines/security-controls-policy
->> Built-in policies: /azure/governance/policy/samples/built-in-policies#compute
->> Policy reference: /azure/virtual-machines/policy-reference
+In this article, you learn architectural best practices for Azure Virtual Machines. The guidance is based on the five pillars of architectural excellence:
 
-
+Reliability
+Security
+Cost optimization
+Operational excellence
+Performance efficiency
 ## Prerequisites
 
 - Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. We recommend that you review your workload using the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
@@ -36,23 +38,21 @@ As you make design choices for virtual machines, review the [design principles](
 ### Design checklist
 > [!div class="checklist"]
 > - Review the [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/).
-> - VMs should be deployed in Flexible scale sets.
+> - VMs should be deployed in a scale set [using the Flexible orchestration mode](/azure/virtual-machines/flexible-virtual-machine-scale-sets).
 > - Deployed VMs across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone) .
-> - Install applications on data disks.
-> - Monitor and measure health. >> what should we recommend here?
-> - Use [maintenance control](/azure/virtual-machines/maintenance-control) to manage system restarts.
+> - Install applications on [data disks](/azure/virtual-machines/linux/add-disk).
+> - Use [maintenance control](/azure/virtual-machines/maintenance-control).
 
 ### Recommendations
 Explore the following table of recommendations to optimize your Virtual Machine configuration for service reliability:
 
 |Recommendation|Benefit|
 |------------------------------|-----------|
-| Review [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/). | When defining test availability and recovery targets, make sure you have a good understanding of the SLAs offered for VMs.|
-| Deploy using Flexible scale sets. | Even single instance VMs should be deployed into a scale set [using the Flexible orchestration mode](/azure/virtual-machines/flexible-virtual-machine-scale-sets) to future-proof your application for scaling and availability. |
-| Deploy across availability zones | Virtual machines should be deployed across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone). Azure availability zones are physically separate locations within each Azure region that are tolerant to local failures.
-| Install applications on data disks. | Having your data on a [separate disk](/azure/virtual-machines/linux/add-disk) from your OS disk makes it faster to replace troubled VMs without affecting your application data.|
-| Monitor and measure health | >> We have a dozen tools - what should we recommend here? |
-| Use maintenance control | Control when VM maintenance occurs using [Maintenance Control](/azure/virtual-machines/maintenance-control).|
+| Review SLAs for virtual machines. | When defining test availability and recovery targets, make sure you have a good understanding of the SLAs offered for VMs.|
+| Deploy using Flexible scale sets. | Even single instance VMs should be deployed into a scale set using the Flexible orchestration mode to future-proof your application for scaling and availability. Flexible orchestration offers high availability guarantees (up to 1000 VMs) by spreading VMs across fault domains in a region or within an Availability Zone.|
+| Deploy across availability zones | Azure availability zones are physically separate locations within each Azure region that are tolerant to local failures.
+| Install applications on data disks. | Having your data on a separate disk from your OS disk makes it easier to recover from failures and to migrate workloads.
+| Use maintenance control | Control when VM maintenance occurs to manage the timing of system restarts.|
 
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/HighAvailability) recommendations.
@@ -60,35 +60,15 @@ Azure Advisor helps you ensure and improve the continuity of your business-criti
 
 ### Policy definitions
 
-- >> We need something that won't flag for AV sets 
-
-- Azure policy definition is to *audit standalone single instance VMs that aren't protected by an SLA*. It will flag an audit event for all Virtual Machines that aren't deployed within an Availability Set, across Availability Zones, and aren't using Premium Storage for both OS and Data disks. It also encompasses both Virtual Machine and Virtual Machine Scale Set resources. To view all VM instances that belong to this category, run the query described in [Related resources](#additional-resources).
 - To identify resiliency risks to existing compute resources and support continuous compliance for new resources within a customer tenant, it's recommended you use Azure Policy and Azure Resource Graph to Audit the use of non-resilient deployment configurations.
-- Azure policy definition is to audit Availability Sets containing single instance VMs that aren't protected by an SLA. It will flag an audit event for all Availability Sets that don't contain multiple instances.
 
 All built-in policy definitions are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies#compute).
-
 
 ## Security
 
 This article provides an overview of the core Azure security features that can be used with virtual machines.
 
->> This has the existing security recommendations, do we just repeat them here? /azure/security/fundamentals/iaas
-
-
-Concepts:
-- Authentication and access control
-- Role-Based Access Control
-- Managed Identities
-- Encryption
-- Network Security
-- Application Security
-- Secure Key and Secret Storage
-
-
-Security Best Practices for IaaS workloads:
-https://docs.microsoft.com/azure/security/fundamentals/iaas
-Separate Excel file has Azure Advisor recommendations (two tabs, there are many)
+As you make design choices for virtual machines, review the [security principles](/azure/architecture/framework/security/security-principles) and [Security best practices](/azure/security/fundamentals/iaas) for adding security to the architecture.
 
 
 ### Design checklist
@@ -97,26 +77,20 @@ Separate Excel file has Azure Advisor recommendations (two tabs, there are many)
 As you make design choices for your virtual machine deployment, review the [design principles](/azure/architecture/framework/security/security-principles) for security.
 
 > [!div class="checklist"]
-> - Authentication and access control
+> - Review the [Linux security baseline](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline)
+> - Review the [Windows security baseline](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline)
+> - Manage authentication and access control.
 > - Protect against malware
-> - Managed Identities
+> - Managed updates
 > - Encryption
-> - Secure key and secret storage
-
 
 ### Recommendations
-
-
-
-Review the security baselines for each type of virtual machine: 
-- [Linux security baseline](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline)
-- [Windows security baseline](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline)
 
 Explore the following table of recommendations to optimize your virtual machine configuration for security.
 
 | Recommendation | Benefit |
 |--------|----|
-| Authentication and access control | [Control VM access and secure privileged access](/azure/security/fundamentals/iaas#protect-vms-by-using-authentication-and-access-control). Ensure that only authorized users can set up and access VMs. |
+| Consider using Azure Bastion | Authentication and access control using Azure Bastion provides secure and seamless RDP/SSH connectivity to your virtual machines directly from the Azure portal over TLS|
 | Protect against malware | Install [antimalware protection](/azure/security/fundamentals/iaas#protect-against-malware) to help identify and remove viruses. |
 | Manage updates | Use a solution like [Azure Automation](/azure/automation/update-management/overview) to manage operating system updates. |
 | Monitor for security | To monitor the security posture of your Windows and Linux VMs, use [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction). |
@@ -129,24 +103,10 @@ Azure Advisor helps you ensure and improve security. Review the [recommendations
 ### Policy definitions
 
 
-| Message | Description |
-|--|--|
-| >> Pretty sure these are all for the Azure Compute Gallery feature - VM applications - which is still in Preview and probably not the best to reference? |
-| >> Current VM Application Version {name} was deprecated at {date}. | Attempt to deploy a VM Application version that has already been deprecated. |
-| >> Current VM Application Version {name} supports OS {OS}, while current OSDisk's OS is {OS}. | Attempt to deploy a Linux application to Windows or vice versa. |
-| >> The maximum number of VM applications (max=5, current={count}) has been exceeded. Use fewer applications and retry the request. | We currently only support five VM applications per VM or VMSS. |
-| >> More than one VMApplication was specified with the same packageReferenceId. | An application was specified more than once. |
-| >> Subscription not authorized to access this image. | The subscription does not have access to this application version. |
-| >> Storage account in the arguments does not exist. | There are no applications for this subscription. |
-| >> The platform image {image} is not available. Verify that all fields in the storage profile are correct. For more details about storage profile information, please refer to https://aka.ms/storageprofile. | The application does not exist. |
-| >>> Are we going to recommend Azure Compute Gallery for image creation and storage? I don't see it anywhere else: |
-| >>> The gallery image {image} is not available in {region} region. Please contact image owner to replicate to this region, or change your requested region. | The gallery application version exists, but it was not replicated to this region. |
-
-
 | Policy Name | Azure Policy Description |
 |--|--|
-| Audit VMs that do not use managed disks | This policy audits VMs that do   not use managed disks |
-| Configure disk access resources to use private DNS   zones | Use private DNS zones to override the DNS resolution   for a private endpoint. A private DNS zone links to your virtual network to   resolve to a managed disk. Learn more   at: https://aka.ms/disksprivatelinksdoc. |
+| Audit VMs that do not use managed disks | This policy audits VMs that do not use managed disks |
+| Configure disk access resources to use private DNS zones | Use private DNS zones to override the DNS resolution   for a private endpoint. A private DNS zone links to your virtual network to   resolve to a managed disk. Learn more at: https://aka.ms/disksprivatelinksdoc. |
 | Configure disk access resources with private   endpoints | Private endpoints connect your virtual networks to   Azure services without a public IP address at the source or destination. By   mapping private endpoints to disk access resources, you can reduce data   leakage risks. Learn more about private links at: https://aka.ms/disksprivatelinksdoc. |
 | Configure managed disks to disable public network   access | Disable public network access for your managed disk   resource so that it's not accessible over the public internet. This can   reduce data leakage risks. Learn more   at: https://aka.ms/disksprivatelinksdoc. |
 | Deploy default Microsoft IaaSAntimalware extension   for Windows Server | This policy deploys a Microsoft   IaaSAntimalware extension with a default configuration when a VM is not   configured with the antimalware extension. |
@@ -169,26 +129,21 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 ## Cost Optimization
 
+To optimize costs, review the [design principles](/azure/architecture/framework/cost/principles).
+
 To estimate costs related to virtual machines, use these tools.
 
 - Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.
 - Use this [pricing calculator](https://azure.microsoft.com/pricing/calculator/#virtual-machines) to configure and estimate the costs of your Azure VMs.
 
-To optimize costs, review the [design principles](/azure/architecture/framework/cost/principles).
-
->> Azure advisor recommendations:
-- Use Standard Storage to store Managed Disks snapshots
-- Right-size or shutdown underutilized virtual machines
-- You have disks which have not been attached to a VM for more than 30 days. Please evaluate if you still need the disk.
-
 ### Design considerations
 > [!div class="checklist"]
 > - Shut down VM instances which aren't in use.
 > - Use Spot VMs when appropriate.
-> - Consider using Burstable (B) series VM sizes for VMs that are idle most of the time and have high usage for a certain period of time.
+> - Right-seze your VMs. 
 > - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
 > - Prepay for Reserved Instances for one year, three years, or more.
-> - Hybrid benefit licensing
+> - Use hybrid benefit licensing
 
 ### Recommendations
 
@@ -198,137 +153,77 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |------------------------------|-----------|
 | Stop VMs during off-hours | Configuring start and stop times will shut down instances that aren't in use. The feature is suitable as a low-cost automation option. |
 | Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions.|
-|Consider using Burstable (B) series VM sizes for VMs that are idle |The B-series VMs are ideal for workloads that don't need the full performance of the CPU continuously such as web servers, proof of concepts, small databases, and development build environments.|
-|Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) | Replicate, failover, and fail-back your business-critical virtual machines within the same region with zones. Ideal for those customers that have complicated networking infrastructure and want to avoid the cost, and complexity of recreating infrastructure in a secondary region. |
+|Right-size your VMs | Consider using Burstable (B) series VM sizes for workloads that don't need the full performance of the CPU continuously such as web servers, proof of concepts, small databases, and development build environments.|
 |Prepay for added cost savings | Purchasing [reserved instances](/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
 | Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
 
  Azure Advisor helps you ensure and improve cost optimization. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Cost).
 
+### Policy definitions
 
+
+| Policy Name | Azure Policy Description |
+|--|--|
+
+
+All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
 ## Operational excellence
 
->> Need an intro here - what do we want to focus on for op exc for VMs?
-
->> Here is what the overview for this area has:
->> Not applicable? Application design	Provides guidance on how to design, build, and orchestrate workloads with DevOps principles in mind.
-Monitoring	Something that enterprises have been doing for years, enriched with specifics for applications running in the cloud.
->> Not applicable?  Application performance management	The monitoring and management of performance, and availability of software applications through DevOps.
->> Not applicable? Code deployment	How you deploy your application code is one of the key factors that determines your application stability.
-Infrastructure provisioning	Frequently known as Automation or Infrastructure as code, this discipline refers to best practices for deploying the platform where your application will run.
-Testing	Testing is fundamental to prepare for the unexpected and to catch mistakes before they impact users.
-
->> That leaves us with:
-- Monitoring - what is the recommendation here? Just follow the monitoring guidance here: /azure/virtual-machines/monitor-vm
-- Provisioning - what is the recommendation here? Azure Compute Galleries? Marketplace images? Other provisioning tooling? Or, is there something generic?
-- Testing - what do we want to say here? The generic stuff for this area is more about app deployment: https://review.docs.microsoft.com/en-us/azure/architecture/framework/devops/release-engineering-testing 
-
-
->> Azure Advisors:
-- Increase the number of compute resources you can deploy by 10 vCPU
-- Add Azure Monitor to your virtual machine (VM) labeled as production
-- Excessive NTP client traffic caused by frequent DNS lookups and NTP sync for new servers, which happens often on some global NTP servers.
+To ensure operational excellence, review the [design principles](/azure/architecture/framework/devops/principles).
 
 ### Design checklist
 
 
-As you make design choices for your virtual machine deployment, review the \[design principles](\<design principles link>) for \<pillar>.
-
->> These are from the resources above - are these the right options? Once we have them, we can move them to the recommended configuration:
-
 > [!div class="checklist"]
-> - Monitoring - what is the recommendation here? Just follow the monitoring guidance here: /azure/virtual-machines/monitor-vm
-> - Provisioning - what is the recommendation here? Azure Compute Galleries? Marketplace images? Other provisioning tooling? Or, is there something generic?
-> - Testing - what do we want to say here? The generic stuff for this area is more about app deployment: https://review.docs.microsoft.com/en-us/azure/architecture/framework/devops/release-engineering-testing 
-> - Increase the number of compute resources you can deploy by 10 vCPU
-> - Add Azure Monitor to your virtual machine (VM) labeled as production
-> - Excessive NTP client traffic caused by frequent DNS lookups and NTP sync for new servers, which happens often on some global NTP servers.
+> - Monitor and measure health.
+> - Automate tasks like provisioning and updating.
+> - Build a robust testing environment.
+> - Right size your VMs.
+> - Manage your quota.
+
 
 
 ### Recommendations
 
 
-Explore the following table of recommendations to optimize your your virtual machine deployment configuration for \<pillar>.
-
 | Recommendation | Benefit |
 |--------|----|
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| Monitor and measure health | In a production environment, it's important to [monitor](/azure/virtual-machines/monitor-vm) the health, and performance of your VMs.  |
+| Automate tasks | Building [automation](/azure/architecture/framework/devops/automation-tasks) reduces deviations from your plans and reduces that time it takes to manage your workload.  |
+| Build a robust testing environment | Ideally, an organization will have multiple environments in which to test deployments. These test environments should be similar enough to production that deployment and run time issues are detected before deployment to production. |
+| Right-size your VMs | Choose the right [VM family](/azure/virtual-machines/sizes) for your workload. | 
+| Manage your quota | Plan what level of quota will be required and review that level regularly as the workload evolves and grows and [request changes early](/azure/azure-portal/supportability/per-vm-quota-requests)  |
+
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
 
-Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [recommendations].
+Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [recommendations](/azure/advisor/advisor-reference-operational-excellence-recommendations).
 
 ### Policy definitions
 
 
-- \<Policy>
-- \<Policy>
-- \<Policy>
-
-All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
+- Consider setting an `Allowed virtual machine SKU` policy
+- 
+All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
 
 
 ## Performance efficiency
 
 Performance efficiency is matching the resources that are available to an application with the demand that it's receiving. Performance efficiency includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing your application code for peak performance.
-Overview of the principles of Performance Efficiency:
-/azure/architecture/framework/scalability/overview
-
-Learn Modules about Performance Efficiency:
-One page:
-learn/modules/azure-well-architected-introduction/5-performance-efficiency
-
-Similar to above link but much more exhaustive:
 
 
-Concepts:
-- Scaling up (bigger instances) >> should this be "right sizing"?
-- Use Flexible scale sets to autoscale
-- Optimizing Network >> Networking is a whole other ball of squishy - what can we link to?
-- Optimizing Storage >> Again, whole other ball of squishy, but we have "Convert Managed Disks from Standard HDD to Premium SSD for performance"
-- Utilizing Caching >> what are the specifics for this?
-- Identifying Performance Bottlenecks >> I think this is app or workload specific - not sure what we would genericall say here for VMs?
-
-Performance Efficiency Pattern:
-/azure/architecture/framework/scalability/performance-efficiency-patterns
-
-Performance Efficiency Checklist:
-/azure/architecture/framework/scalability/performance-efficiency
-
-Virtual Machine Scale Sets:
-/azure/virtual-machine-scale-sets/overview
-
-
-Azure Advisor:
-/azure/advisor/advisor-performance-recommendations
-Relevant items:
-•	Reduce DNS time-to-live on your Traffic Manager profile to fail over to healthy endpoints faster
-•	Use managed disks to prevent disk I/O throttling
-•	Improve the performance and reliability of virtual machine disks by using Premium Storage
-
-
->> Azure advisor
-- Improve user experience and connectivity by deploying VMs closer to user’s location.
-- Consider increasing the size of your NVA to address persistent high CPU
-- Convert Managed Disks from Standard HDD to Premium SSD for performance
-- Enable Accelerated Networking to improve network performance and latency
-- Use SSD Disks for your production workloads
+As you make design choices for your virtual machine deployment, review [Microsoft Azure Well-Architected Framework - Performance efficiency](/learn/modules/azure-well-architected-performance-efficiency/) for performance and efficiency.
 
 
 ### Design checklist
 
 
-As you make design choices for your virtual machine deployment, review [Microsoft Azure Well-Architected Framework - Performance efficiency](/learn/modules/azure-well-architected-performance-efficiency/) for performance and efficiency.
-
 > [!div class="checklist"]
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
+> - Reduce latency by deploying VMs closer together in proximity placement groups
+> - Convert disks from standard HDD to premium SSD
+> - Enable Accelerated Networking to improve network performance and latency
+> - Autoscale your Flexible scale sets.
+
 
 ### Recommendations
 
@@ -337,11 +232,10 @@ Explore the following table of recommendations to optimize your virtual machine 
 
 | Recommendation | Benefit |
 |--------|----|
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| Reduce latency | Consider deploying VMs in [Creating and using proximity placement groups using PowerShell](/azure/virtual-machines/proximity-placement-groups). |
+| Convert disks from standard HDD to premium SSD | Azure [premium SSDs](/azure/virtual-machines/disks-performance-tiers) deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. |
+| Consider accelerated networking | [Accelerated networking](/azure/virtual-network/accelerated-networking-overview) enables single root I/O virtualization (SR-IOV) to a VM, greatly improving its networking performance. |
+| Use autoscaling | Automatically increase or decrease the number of VM instances that run your application with [autoscaling](/azure/virtual-machine-scale-sets/scripts/cli-sample-enable-autoscale). |
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
 
@@ -351,72 +245,26 @@ Azure Advisor helps you ensure and improve performance. Review the [recommendati
 
 - Audit VMs that do not use managed disks - This policy audits VMs that do not use managed disks
 
-All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
+All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
 
 ## Azure Advisor recommendations
 
->> Should this be a separate H2 or can we cover this in the appropriate sections?
 
 [Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Virtual Machines.
 
-### Reliability
-- [Use managed disks to improve data reliability](/azure/advisor/advisor-high-availability-recommendations#use-managed-disks-to-improve-data-reliability)
-- [Protect your virtual machine data from accidental deletion](/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion)
-
-### Cost Optimization
-- [Optimize virtual machine spend by resizing or shutting down underutilized instances](/azure/advisor/advisor-cost-recommendations#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
-- [Buy reserved virtual machine instances to save money over pay-as-you-go costs](/azure/advisor/advisor-cost-recommendations#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)|
-
+- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
+- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
+- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
+- [Operational excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
 
 ## Additional resources
 Here are other resources to help you query for unhealthy instances.
-
-### Query to identify unprotected resources 
-Use the following query to *identify standalone single instance VMs that aren't protected by a minimum SLA of at least `99.5%`*. The query will return all VM instances that aren't deployed within an Availability Set, across Availability Zones, and aren't using either Standard SSD or Premium SSD for both OS and Data disks. This query can be altered easily to identify all single instance VMs, including those using Premium Storage, which are protected by a minimum SLA of at least `99.5%`. Remove the trailing `where` condition:
-
->> don't flag for AV sets - maybe flag for Flex orch
-
-```sql
-Resources
-| where
-    type =~ 'Microsoft.Compute/virtualMachines'
-        and isnull(properties.aailabilitySet.id)
-    or type =~ 'Microsoft.Compute/virtualMachineScaleSets'
-        and sku.capacity <= 1
-        or properties.platformFaultDomainCount <= 1
-| where 
-    tags != '{"Skip":""}'
-| where 
-    isnull(zones)
-| where
-    properties.storageProfile.osDisk.managedDisk.storageAccountType !in ('Premium_LRS'
-    or properties.storageProfile.dataDisks.managedDisk.storageAccountType != 'Premium_LRS'
-        and array_length(properties.storageProfile.dataDisks) != 0
-```
-
->> This is old, we probably shouldn't query for AV Sets? >> The following query expands on the identification of standalone instances by *identifying any Availability Sets containing single instance VMs*, which are exposed to the same risks as standalone single instances outside of an Availability Set:
-
-```sql
-Resources
-| where 
-    type =~ 'Microsoft.Compute/availabilitySets'
-| where 
-    tags != '{"Skip":""}'
-| where 
-    array_length(properties.virtualMachines) <= 1
-| where
-    properties.platformFaultDomainCount <= 1
-```
-
 ### Cost analysis
-Planned versus actual spending can be managed through [Azure Cost Management + Billing](/azure/cost-management-billing/costs/quick-acm-cost-analysis).
-There are several options for grouping resources by billing unit. 
+Planned versus actual spending can be managed through [Azure Cost Management + Billing](/azure/cost-management-billing/costs/quick-acm-cost-analysis). There are several options for grouping resources by billing unit.
 
 
 ## Next steps
 Use the recommendations as you provision virtual machines for your solution.
-- [Quickstart: Create a Linux virtual machine in the Azure portal](/azure/virtual-machines/linux/quick-create-portal)
-- [Quickstart: Create a Windows virtual machine in the Azure portal](/azure/virtual-machines/Windows/quick-create-portal)
 
 - Learn module: [Introduction to Azure virtual machines](/learn/modules/intro-to-azure-virtual-machines/)
 
