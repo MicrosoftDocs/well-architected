@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework review - Virtual Machines
 description: Design considerations and recommendations about Azure virtual machines.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/09/2022
+ms.date: 05/10/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -20,11 +20,11 @@ categories:
 
 In this article, you learn architectural best practices for Azure Virtual Machines. The guidance is based on the five pillars of architectural excellence:
 
-Reliability
-Security
-Cost optimization
-Operational excellence
-Performance efficiency
+- Reliability
+- Security
+- Cost optimization
+- Operational excellence
+- Performance efficiency
 ## Prerequisites
 
 - Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. We recommend that you review your workload using the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
@@ -57,12 +57,6 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/HighAvailability) recommendations.
 
-
-### Policy definitions
-
-- To identify resiliency risks to existing compute resources and support continuous compliance for new resources within a customer tenant, it's recommended you use Azure Policy and Azure Resource Graph to Audit the use of non-resilient deployment configurations.
-
-All built-in policy definitions are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies#compute).
 
 ## Security
 
@@ -103,26 +97,15 @@ Azure Advisor helps you ensure and improve security. Review the [recommendations
 ### Policy definitions
 
 
-| Policy Name | Azure Policy Description |
-|--|--|
-| Audit VMs that do not use managed disks | This policy audits VMs that do not use managed disks |
-| Configure disk access resources to use private DNS zones | Use private DNS zones to override the DNS resolution   for a private endpoint. A private DNS zone links to your virtual network to   resolve to a managed disk. Learn more at: https://aka.ms/disksprivatelinksdoc. |
-| Configure disk access resources with private   endpoints | Private endpoints connect your virtual networks to   Azure services without a public IP address at the source or destination. By   mapping private endpoints to disk access resources, you can reduce data   leakage risks. Learn more about private links at: https://aka.ms/disksprivatelinksdoc. |
-| Configure managed disks to disable public network   access | Disable public network access for your managed disk   resource so that it's not accessible over the public internet. This can   reduce data leakage risks. Learn more   at: https://aka.ms/disksprivatelinksdoc. |
-| Deploy default Microsoft IaaSAntimalware extension   for Windows Server | This policy deploys a Microsoft   IaaSAntimalware extension with a default configuration when a VM is not   configured with the antimalware extension. |
-| Disk access resources should use private link | Azure Private Link lets you connect your virtual   network to Azure services without a public IP address at the source or   destination. The Private Link platform handles the connectivity between the   consumer and services over the Azure backbone network. By mapping private   endpoints to diskAccesses, data leakage risks are reduced. Learn more about   private links at: https://aka.ms/disksprivatelinksdoc. |
-| Managed disks should be double encrypted with both   platform-managed and customer-managed keys | High security sensitive customers who are concerned   of the risk associated with any particular encryption algorithm,   implementation, or key being compromised can opt for additional layer of   encryption using a different encryption algorithm/mode at the infrastructure   layer using platform managed encryption keys. The disk encryption sets are   required to use double encryption. Learn more   at https://aka.ms/disks-doubleEncryption. |
-| Managed disks should disable public network access | Disabling public network access improves security by   ensuring that a managed disk isn't exposed on the public internet. Creating   private endpoints can limit exposure of managed disks. Learn more   at: https://aka.ms/disksprivatelinksdoc. |
-| Managed disks should use a specific set of disk   encryption sets for the customer-managed key encryption | Requiring a specific set of disk encryption sets to   be used with managed disks give you control over the keys used for encryption   at rest. You are able to select the allowed encrypted sets and all others are   rejected when attached to a disk. Learn more at https://aka.ms/disks-cmk. |
-| Microsoft Antimalware for Azure should be configured   to automatically update protection signatures | This policy audits any Windows   virtual machine not configured with automatic update of Microsoft Antimalware   protection signatures. |
-| Microsoft IaaSAntimalware extension should be   deployed on Windows servers | This policy audits any Windows   server VM without Microsoft IaaSAntimalware extension deployed. |
-| Only approved VM extensions should be installed | This policy governs the virtual   machine extensions that are not approved. |
-| OS and data disks should be encrypted with a   customer-managed key | Use customer-managed keys to manage the encryption   at rest of the contents of your managed disks. By default, the data is   encrypted at rest with platform-managed keys, but customer-managed keys are   commonly required to meet regulatory compliance standards. Customer-managed   keys enable the data to be encrypted with an Azure Key Vault key created and   owned by you. You have full control and responsibility for the key lifecycle,   including rotation and management. Learn more   at https://aka.ms/disks-cmk. |
-| Require automatic OS image patching on Virtual   Machine Scale Sets | This policy enforces enabling   automatic OS image patching on Virtual Machine Scale Sets to always keep   Virtual Machines secure by safely applying latest security patches every   month. |
-| Resource logs in Virtual Machine Scale Sets should   be enabled | It is recommended to enable Logs   so that activity trail can be recreated when investigations are required in   the event of an incident or a compromise. |
-| Virtual machines and virtual machine scale sets   should have encryption at host enabled | Use encryption at host to get end-to-end encryption   for your virtual machine and virtual machine scale set data. Encryption at   host enables encryption at rest for your temporary disk and OS/data disk   caches. Temporary and ephemeral OS disks are encrypted with platform-managed   keys when encryption at host is enabled. OS/data disk caches are encrypted at   rest with either customer-managed or platform-managed key, depending on the   encryption type selected on the disk. Learn more at https://aka.ms/vm-hbe. |
-| Virtual machines should be migrated to new Azure   Resource Manager resources | Use new Azure Resource Manager   for your virtual machines to provide security enhancements such as: stronger   access control (RBAC), better auditing, Azure Resource Manager based   deployment and governance, access to managed identities, access to key vault for   secrets, Azure AD-based authentication and support for tags and resource   groups for easier security management |
-
+- `Deploy default Microsoft IaaSAntimalware extension for Windows Server` -	This policy deploys a Microsoft IaaSAntimalware extension with a default configuration when a VM is not configured with the antimalware extension.
+- `Microsoft IaaSAntimalware extension should be deployed on Windows servers` - This policy audits any Windows server VM without Microsoft IaaSAntimalware extension deployed.
+- `Only approved VM extensions should be installed` - This policy governs the virtual machine extensions that are not approved.
+- `Managed disks should be double encrypted with both platform-managed and customer-managed keys` - High security sensitive customers who are concerned of the risk associated with any particular encryption algorithm, implementation, or key being compromised can opt for additional layer of encryption using a different encryption algorithm/mode at the infrastructure layer using platform managed encryption keys. The disk encryption sets are required to use double encryption. Learn more at [https://aka.ms/disks-doubleEncryption](https://aka.ms/disks-doubleEncryption).
+- `Managed disks should use a specific set of disk encryption sets for the customer-managed key encryption` - Requiring a specific set of disk encryption sets to be used with managed disks give you control over the keys used for encryption at rest. You are able to select the allowed encrypted sets and all others are rejected when attached to a disk. Learn more at [https://aka.ms/disks-cmk](https://aka.ms/disks-cmk).
+- `Microsoft Antimalware for Azure should be configured to automatically update protection signatures` - This policy audits any Windows virtual machine not configured with automatic update of Microsoft Antimalware protection signatures.
+- `OS and data disks should be encrypted with a customer-managed key` - Use customer-managed keys to manage the encryption at rest of the contents of your managed disks. By default, the data is encrypted at rest with platform-managed keys, but customer-managed keys are commonly required to meet regulatory compliance standards. Customer-managed keys enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management. Learn more at [https://aka.ms/disks-cmk](https://aka.ms/disks-cmk).
+- `Virtual machines and virtual machine scale sets should have encryption at host enabled` - Use encryption at host to get end-to-end encryption for your virtual machine and virtual machine scale set data. Encryption at host enables encryption at rest for your temporary disk and OS/data disk caches. Temporary and ephemeral OS disks are encrypted with platform-managed keys when encryption at host is enabled. OS/data disk caches are encrypted at rest with either customer-managed or platform-managed key, depending on the encryption type selected on the disk. Learn more at [https://aka.ms/vm-hbe](https://aka.ms/vm-hbe).
+- `Require automatic OS image patching on Virtual Machine Scale Sets` - This policy enforces enabling automatic OS image patching on Virtual Machine Scale Sets to always keep virtual Machines secure by safely applying latest security patches every month.
 
 
 All built-in policy definitions related to Azure Virtual Machines are listed in [Secure and use policies on virtual machines in Azure](/azure/virtual-machines/security-policy).
@@ -139,10 +122,10 @@ To estimate costs related to virtual machines, use these tools.
 ### Design considerations
 > [!div class="checklist"]
 > - Shut down VM instances which aren't in use.
-> - Use Spot VMs when appropriate.
-> - Right-seze your VMs. 
+> - Use [Spot VMs](/azure/virtual-machines/spot-vms) when appropriate.
+> - Choose the right VM size for your workload. 
 > - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
-> - Prepay for Reserved Instances for one year, three years, or more.
+> - Prepay for [reserved instances](/virtual-machines/prepay-reserved-vm-instances) for one year, three years, or more.
 > - Use hybrid benefit licensing
 
 ### Recommendations
@@ -153,7 +136,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |------------------------------|-----------|
 | Stop VMs during off-hours | Configuring start and stop times will shut down instances that aren't in use. The feature is suitable as a low-cost automation option. |
 | Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions.|
-|Right-size your VMs | Consider using Burstable (B) series VM sizes for workloads that don't need the full performance of the CPU continuously such as web servers, proof of concepts, small databases, and development build environments.|
+|Right-size your VMs |  Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.|
 |Prepay for added cost savings | Purchasing [reserved instances](/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
 | Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
 
@@ -162,11 +145,10 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 ### Policy definitions
 
 
-| Policy Name | Azure Policy Description |
-|--|--|
-
-
+- Consider setting an `Allowed virtual machine SKU` policy to limit the sizes that can be used.
+- 
 All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
+
 ## Operational excellence
 
 To ensure operational excellence, review the [design principles](/azure/architecture/framework/devops/principles).
@@ -175,12 +157,11 @@ To ensure operational excellence, review the [design principles](/azure/architec
 
 
 > [!div class="checklist"]
-> - Monitor and measure health.
-> - Automate tasks like provisioning and updating.
+> - [Monitor](/azure/virtual-machines/monitor-vm) and measure health.
+> - [Automate](/azure/architecture/framework/devops/automation-tasks) tasks like provisioning and updating.
 > - Build a robust testing environment.
 > - Right size your VMs.
 > - Manage your quota.
-
 
 
 ### Recommendations
@@ -241,12 +222,6 @@ For more suggestions, see [Principles of the performance efficiency pillar](/azu
 
 Azure Advisor helps you ensure and improve performance. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Performance).
 
-### Policy definitions
-
-- Audit VMs that do not use managed disks - This policy audits VMs that do not use managed disks
-
-All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
-
 ## Azure Advisor recommendations
 
 
@@ -261,7 +236,6 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 Here are other resources to help you query for unhealthy instances.
 ### Cost analysis
 Planned versus actual spending can be managed through [Azure Cost Management + Billing](/azure/cost-management-billing/costs/quick-acm-cost-analysis). There are several options for grouping resources by billing unit.
-
 
 ## Next steps
 Use the recommendations as you provision virtual machines for your solution.
