@@ -1,5 +1,5 @@
 ---
-title: Security for mission-critical workloads on Azure
+title: Security considerations for mission-critical workloads on Azure
 description: This section provides detailed design considerations and recommendations for the security critical design area.
 author: calcof
 ms.author: calcof
@@ -21,7 +21,8 @@ ms.custom:
   - alwayson
 ---
 
-# Security for mission-critical workloads on Azure
+# Security considerations for mission-critical workloads on Azure
+
 Security is a one of the foundational design principles and also a key design area that must be treated as a first-class concern within the mission-critical architectural process. 
 
 Given that the primary focus of a mission-critical design is to maximize reliability so that the application remains performant and available, the security considerations and recommendations applied within this design area will focus on mitigating threats with the capacity to impact availability and hinder overall reliability. For example, successful Denial-Of-Service (DDoS) attacks are known to have a catastrophic impact on availability and performance. How an application mitigates those attack vectors, such as SlowLoris will impact the overall reliability. So, the application must be fully protected against threats intended to directly or indirectly compromise application reliability to be truly mission critical in nature.
