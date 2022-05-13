@@ -1,5 +1,5 @@
 ---
-title: Mission-critical workloads - Deployment and testing
+title: Deployment and testing for mission-critical workloads on Azure
 description: This design area focuses on how to eradicate downtime and maintain application health for deployment operations, by providing key considerations and recommendations that are intended to inform the design of optimal CI/CD pipelines for a mission-critical application.
 author: calcof
 ms.author: calcof
@@ -16,7 +16,7 @@ ms.custom:
   - mission-critical
 ---
 
-# Deployment and testing
+# Deployment and testing for mission-critical workloads on Azure
 
 Application outages are often caused by failed deployments or erroneous releases. This is why the design of Continuous Integration and Continuous Deployment (CI/CD) pipelines for deployment and testing methodologies play a critical role in the overall reliability of a mission-critical application.
 

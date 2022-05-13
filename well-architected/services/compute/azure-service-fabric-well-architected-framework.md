@@ -116,7 +116,7 @@ Azure Advisor helps you ensure and improve the security of Azure Service Fabric.
 
 ### Policy definitions
 
-Azure Policy helps maintain organizational standards and assess compliance across your resources. Keep the following built-in policies in mind as your configure Azure Service Fabric:
+Azure Policy helps maintain organizational standards and assess compliance across your resources. Keep the following built-in policies in mind as you configure Azure Service Fabric:
 
 * Service Fabric clusters should have the ClusterProtectionLevel property set to `EncryptAndSign`. This is the default value for managed clusters and isn't changeable. **Standard cluster:** Ensure you set ClusterProtectionLevel to `EncryptAndSign`.
 * Service Fabric clusters should only use Azure Active Directory for client authentication.

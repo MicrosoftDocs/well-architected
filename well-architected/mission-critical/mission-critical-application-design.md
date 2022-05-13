@@ -13,7 +13,7 @@ ms.custom:
   - mission-critical
 ---
 
-# Application design of mission-critical workloads
+# Application design of mission-critical workloads on Azure
 
 Both functional application requirements and non-functional requirements are critical to inform key design decisions for a mission-critical application design. However, these requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved. 
 
