@@ -428,17 +428,7 @@ items:
                   - name: Performance efficiency
                     href: services/compute/azure-batch/performance-efficiency.md
               - name: Azure Kubernetes Service
-                items:
-                  - name: Reliability
-                    href: services/compute/azure-kubernetes-service/reliability.md
-                  - name: Security
-                    href: services/compute/azure-kubernetes-service/security.md
-                  - name: Cost optimization
-                    href: services/compute/azure-kubernetes-service/cost-optimization.md
-                  - name: Operational excellence
-                    href: services/compute/azure-kubernetes-service/operational-excellence.md
-                  - name: Performance efficiency
-                    href: services/compute/azure-kubernetes-service/performance-efficiency.md
+                href: services/compute/azure-kubernetes-service/azure-kubernetes-service.md
               - name: Functions
                 items:
                   - name: Security
