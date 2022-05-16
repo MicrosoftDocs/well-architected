@@ -9,6 +9,21 @@
       "source_path": "well-architected/services/networking/application-gateway-v2/reliability.md",
       "redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "well-architected/services/networking/azure-firewall/reliability.md",
+      "redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "well-architected/services/networking/azure-firewall/security.md",
+      "redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "well-architected/services/networking/azure-firewall/operational-excellence.md",
+      "redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
+      "redirect_document_id": false
     }
   ]
 }
