@@ -84,7 +84,7 @@ Explore the following table of recommendations to optimize your virtual machine 
 
 | Recommendation | Benefit |
 |--------|----|
-| Consider using Azure Bastion | Authentication and access control using Azure Bastion provides secure and seamless RDP/SSH connectivity to your virtual machines directly from the Azure portal over TLS|
+| Consider using Azure Bastion | Authentication and access control using [Azure Bastion](/azure/bastion/bastion-overview) provides secure and seamless RDP/SSH connectivity to your virtual machines directly from the Azure portal over TLS|
 | Protect against malware | Install [antimalware protection](/azure/security/fundamentals/iaas#protect-against-malware) to help identify and remove viruses. |
 | Manage updates | Use a solution like [Azure Automation](/azure/automation/update-management/overview) to manage operating system updates. |
 | Monitor for security | To monitor the security posture of your Windows and Linux VMs, use [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction). |
@@ -108,7 +108,7 @@ Azure Advisor helps you ensure and improve security. Review the [recommendations
 - `Require automatic OS image patching on Virtual Machine Scale Sets` - This policy enforces enabling automatic OS image patching on Virtual Machine Scale Sets to always keep virtual Machines secure by safely applying latest security patches every month.
 
 
-All built-in policy definitions related to Azure Virtual Machines are listed in [Secure and use policies on virtual machines in Azure](/azure/virtual-machines/security-policy).
+All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](../../../../../azure-docs-pr/articles/virtual-machines/policy-reference.md).
 
 ## Cost Optimization
 
@@ -116,7 +116,7 @@ To optimize costs, review the [design principles](/azure/architecture/framework/
 
 To estimate costs related to virtual machines, use these tools.
 
-- Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.
+- Identify the best VM for your workloads with the virtual machines selector. For more information, see [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)and [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) pricing.
 - Use this [pricing calculator](https://azure.microsoft.com/pricing/calculator/#virtual-machines) to configure and estimate the costs of your Azure VMs.
 
 ### Design considerations
@@ -148,7 +148,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 - Consider setting an `Allowed virtual machine SKU` policy to limit the sizes that can be used.
 
 
-All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
+All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](../../../../../azure-docs-pr/articles/virtual-machines/policy-reference.md).
 
 ## Operational excellence
 
@@ -187,7 +187,7 @@ Azure Advisor helps you ensure and improve the continuity of your business-criti
 - Consider setting an `Allowed virtual machine SKU` policy
 
 
-All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
+All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](../../../../../azure-docs-pr/articles/virtual-machines/policy-reference.md).
 
 
 ## Performance efficiency
@@ -246,4 +246,4 @@ Use the recommendations as you provision virtual machines for your solution.
 
 - Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/).
 
-- Review the built-in definitions provided by Azure Policy that apply to Virtual Machines. They are listed in the [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies#compute).
+- Review the built-in definitions provided by Azure Policy that apply to Virtual Machines. All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](../../../../../azure-docs-pr/articles/virtual-machines/policy-reference.md).
