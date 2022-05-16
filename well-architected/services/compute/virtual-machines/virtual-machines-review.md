@@ -108,7 +108,7 @@ Azure Advisor helps you ensure and improve security. Review the [recommendations
 - `Require automatic OS image patching on Virtual Machine Scale Sets` - This policy enforces enabling automatic OS image patching on Virtual Machine Scale Sets to always keep virtual Machines secure by safely applying latest security patches every month.
 
 
-All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference.).
+All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
 
 ## Cost Optimization
 
@@ -148,7 +148,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 - Consider setting an `Allowed virtual machine SKU` policy to limit the sizes that can be used.
 
 
-All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference.).
+All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
 
 ## Operational excellence
 
@@ -187,7 +187,7 @@ Azure Advisor helps you ensure and improve the continuity of your business-criti
 - Consider setting an `Allowed virtual machine SKU` policy
 
 
-All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference.).
+All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
 
 
 ## Performance efficiency
@@ -246,4 +246,4 @@ Use the recommendations as you provision virtual machines for your solution.
 
 - Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/).
 
-- Review the built-in definitions provided by Azure Policy that apply to Virtual Machines. All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference.).
+- Review the built-in definitions provided by Azure Policy that apply to Virtual Machines. All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
