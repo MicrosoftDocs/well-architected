@@ -13,11 +13,11 @@ ms.date: 05/09/2022
 
 This article provides architectural best practices for Azure Firewall. The guidance is based on the five pillars of architecture excellence:
 
-- [Reliability](#reliability)
-- [Security](#security)
-- [Cost optimization](#cost-optimization)
-- [Operational excellence](#operational-excellence)
-- [Performance efficiency](#performance-efficiency)
+- Reliability
+- Security
+- Cost optimization
+- Operational excellence
+- Performance efficiency
 
 We assume that you have working knowledge of Azure Firewall and are well versed with its features. For more information, see [Azure Firewall Standard features](/azure/firewall/features).
 
@@ -36,17 +36,6 @@ To learn how Azure Firewall supports a reliable workload, see the following arti
 ### Design checklist
 
 As you make design choices for Azure Firewall, review the [design principles](../../resiliency/principles.md) for Reliability.
-
-<!--
-The following are the Reliability design principles:
- 
-Design for business requirements
-Design for failure
-Observe application health
-Drive automation
-Design for self-healing
-Design for scale-out
--->
 
 > [!div class="checklist"]
 > - Deploy using a secured virtual hub
@@ -72,18 +61,6 @@ Security is one of the most important aspects of any architecture. An intelligen
 ### Design checklist
 
 As you make design choices for Azure Firewall, review the [design principles](../../security/security-principles.md) for Security.
-
-<!--
-The following are the Security design principles:
- 
-- Plan resources and how to harden them
-- Automate and use least privilege
-- Classify and encrypt data
-- Monitor system security, plan incident response
-- Identify and protect endpoints
-- Protect against code-level vulnerabilities
-- Model and test against potential threats
--->
 
 > [!div class="checklist"]
 > - Use a global Azure Firewall policy
@@ -124,16 +101,6 @@ Cost optimization is about looking at ways to reduce unnecessary expenses and im
 
 As you make design choices for Azure Firewall, review the  [design principles](../../cost/principles.md) for Cost optimization.
 
-<!--
-The following are the Cost design principles:
- 
-- *Choose the correct resources*
-- Set up budgets and maintain cost constraints
-- *Dynamically allocate and de-allocate resources*
-- *Optimize workloads, aim for scalable costs*
-- *Continuously monitor and optimize cost management*
--->
-
 > [!div class="checklist"]
 > - Determine which firewall SKUs to deploy
 > - Determine if some resources don't need 100% allocation
@@ -167,17 +134,6 @@ Monitoring and diagnostics are crucial. Not only can you measure performance sta
 
 As you make design choices for Azure Firewall, review the [Operational excellence design principles](../../devops/principles.md).
 
-<!--
-The following are the Operational excellence design principles:
-
-- Optimize build and release processes
-- Understand operational health
-- Rehearse recovery and practice failure
-- Embrace continuous operational improvement
-- Use loosely coupled architecture
-
--->
-
 > [!div class="checklist"]
 > - Use logs for monitoring
 > - Use tags when possible allow traffic through the firewall
@@ -204,20 +160,6 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 ### Design checklist
 
 As you make design choices for Azure Firewall, review the [Performance efficiency principles](../../scalability/principles.md).
-
-<!--
-The following are the Performance efficiency design principles:
-
-- Understand the challenges of distributed architectures
-- Run performance testing in the scope of development
-- Establish performance baselines
-- *Run load and stress tests*
-- Identify bottlenecks
-- Have a data-driven approach
-- Troubleshoot performance issues
-- Identify improvement opportunities with resolution planning
-- *Invest in capacity planning*
--->
 
 > [!div class="checklist"]
 > - Determine your SNAT port requirements and if you should deploy a NAT gateway
