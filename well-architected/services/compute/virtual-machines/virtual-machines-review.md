@@ -146,7 +146,8 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 
 
 - Consider setting an `Allowed virtual machine SKU` policy to limit the sizes that can be used.
-- 
+
+
 All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
 
 ## Operational excellence
@@ -184,7 +185,8 @@ Azure Advisor helps you ensure and improve the continuity of your business-criti
 
 
 - Consider setting an `Allowed virtual machine SKU` policy
-- 
+
+
 All built-in policy definitions related to Azure Virtual Machines are listed in [Built-in policies - Compute](/azure/governance/policy/samples/built-in-policies##compute).
 
 
