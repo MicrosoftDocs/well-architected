@@ -20,6 +20,10 @@ This article provides architectural best practice for Azure ExpressRoute. The gu
 
 We assume that you have working knowledge of Azure ExpressRoute and are well verse with all of its features. For more information, see [Azure ExpressRoute](/azure/expressroute/expressroute-introduction).
 
+## Prerequisites
+
+For context, consider reviewing a reference architecture that reflects these considerations in its design. We recommend that you start with Cloud Adoption Framework Ready methodology's guidance [Connect to Azure](/azure/cloud-adoption-framework/ready/azure-best-practices/connectivity-to-azure) and [Architect for hybrid connectivity](/azure/architecture/reference-architectures/hybrid-networking/expressroute) with Azure ExpressRoute. For low-code application architectures, we recommend reviewing [Enabling ExpressRoute for Power Platform](/power-platform/guidance/expressroute/overview) when planning and configuring ExpressRoute for use with Microsoft Power Platform.
+
 ## Reliability
 
 <!-- 5A. ----------------------------------------------------
@@ -398,16 +402,10 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 ## Additional resources
 
-<!-- 7. Additional resources ----------------------------------------------------
+### Cloud Adoption Framework guidance
 
-    Optional
-
-    The resources should be separated in sections. The H3 heading should indicate the purpose of the resource. 
-
--->
-
-- \[\<link text>]\(\<link>)
-- \[\<link-text>]\(\<link>)
+* [Traditional Azure network topology](/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology)
+* [Virtual WAN network topology (Microsoft-managed)](/azure/cloud-adoption-framework/ready/azure-best-practices/traditional-azure-networking-topology)
 
 ## Next steps
 
@@ -425,7 +423,5 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
         - Do provide a link to a Learn module that covers resource provisioning.
 
 -->
-
-- \[\<link text>]\(\<link>)
 
 <!-- Remove all the comments in this template before you sign off or merge to the main branch. -->
