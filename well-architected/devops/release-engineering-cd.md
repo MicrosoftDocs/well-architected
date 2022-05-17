@@ -3,13 +3,13 @@ title: Release Engineering Continuous deployment
 description: Understand automated processes for release deployment that you can run on demand and rerun if something fails.
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 04/08/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 ---
 
-# Deployment considerations for DevOps
+# Release Engineering: Deployment
 
 As you provision and update Azure resources, application code, and configuration settings, a repeatable and predictable process will help you avoid errors and downtime. We recommend automated processes for deployment that you can run on demand and rerun if something fails. After your deployment processes are running smoothly, process documentation can keep them that way.
 
@@ -68,8 +68,9 @@ To capture as much version-specific information as possible, implement a robust 
 
 An application that depends on a single instance of a service creates a single point of failure. To improve resiliency and scalability, provision multiple instances.
 
+Below are a couple of examples of how this can be achieved with Azure resources. We recommend that you review the resiliency guidance for the resources that comprise your workload to achieve high availability across it.
+
 - For [Azure App Service](/azure/app-service/app-service-value-prop-what-is/), select an [App Service plan](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/) that offers multiple instances.
-- For [Azure Cloud Services](/azure/cloud-services/cloud-services-choose-me), configure each of your roles to use [multiple instances](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management).
 - For [Azure Virtual Machines](/azure/virtual-machines/windows/), ensure that your architecture includes more than one VM and that each VM is included in an [availability set](/azure/virtual-machines/windows/manage-availability).
 
 ### Consider deploying across multiple regions

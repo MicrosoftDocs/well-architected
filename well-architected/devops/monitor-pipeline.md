@@ -3,7 +3,7 @@ title: Monitoring workloads
 description: Set up a pipe to collect, store, analyze, and visualize data for monitoring and diagnostics. 
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 04/09/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -28,13 +28,13 @@ This article describes the stages of a common pipeline design.
 
 Monitoring data from many sources:
     
-- **Application code**&mdash;Developers add trace messages in application code to track the flow of control. For example, recording the entry and exit times can be useful. An entry to a method in the application can emit a trace message that specifies the name of the method, the current time, the value of each parameter, and any other pertinent information.
+- **Application code** Developers add trace messages in application code to track the flow of control. For example, recording the entry and exit times can be useful. An entry to a method in the application can emit a trace message that specifies the name of the method, the current time, the value of each parameter, and any other pertinent information.
 
-- **Application frameworks**&mdash;Many applications use libraries and frameworks to perform common tasks such as accessing a data store or communicating over a network. The frameworks emit trace messages and raw diagnostic information, such as transaction rates and data transmission successes and failures can be important information for debugging issues.
+- **Application frameworks** Many applications use libraries and frameworks to perform common tasks such as accessing a data store or communicating over a network. The frameworks emit trace messages and raw diagnostic information, such as transaction rates and data transmission successes and failures can be important information for debugging issues.
 
-- **Dependent services**&mdash;The application will access external services such as a web server or database management system to complete business operations. Even a single business operation can result in multiple point-to-point calls among all services. The services might publish their own trace information, logs, and performance counters. Examples include SQL Server Dynamic Management Views for tracking operations performed against a SQL Server database, and IIS trace logs for recording requests made to a web server.
+- **Dependent services** The application will access external services such as a web server or database management system to complete business operations. Even a single business operation can result in multiple point-to-point calls among all services. The services might publish their own trace information, logs, and performance counters. Examples include SQL Server Dynamic Management Views for tracking operations performed against a SQL Server database, and IIS trace logs for recording requests made to a web server.
 
-- **Release pipeline**&mdash;As the components of a system are modified and new versions are deployed, it's important to be able to attribute issues, events, and metrics to each version. This way problems with a specific version of a component can be tracked quickly and rectified.
+- **Release pipeline** As the components of a system are modified and new versions are deployed, it's important to be able to attribute issues, events, and metrics to each version. This way problems with a specific version of a component can be tracked quickly and rectified.
 
 > [!NOTE]
 > As a workload owner, you may not be monitoring infrastructure metrics actively. However, this information can indicate systemic issues. Consider the underlying infrastructure and components on which your system runs. Virtual machines, virtual networks, and storage services can all be sources of important infrastructure-level performance counters and other diagnostic data.
