@@ -6,7 +6,7 @@ ms.author: victorh
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 05/09/2022
+ms.date: 05/17/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall
@@ -157,7 +157,7 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 |Use Workbooks in Azure Log Analytics|Helps you visualize firewall logs.|
 |Enable Azure Firewall connector in Azure Sentinel.|You can use Azure Sentinel to create detections and logic apps for Azure Firewall.|
 |Migrate Azure Firewall rules to Azure Firewall Manager policies for existing deployments|For existing deployments, migrate Azure Firewall rules to Azure Firewall Manager policies, and use Azure Firewall Manager to centrally manage your firewalls and policies.|
-|Monitoring capacity metrics as indicators of utilization of provisioned Azure Firewall capacity.|Alerts can be set as needed by the customers, to get notifications once a threshold has been reached for any metric.<br>See the details about monitoring logs and metrics at [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and a list of capacity metrics to monitor at [](/azure/architecture/networking/guide/well-architected-framework-azure-firewall#monitoring-capacity-metrics)|
+|Monitoring capacity metrics as indicators of utilization of provisioned Azure Firewall capacity.|Alerts can be set as needed by the customers, to get notifications once a threshold has been reached for any metric.<br>See the details about monitoring logs and metrics at [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics).|
 |Monitor other Azure Firewall logs and metrics for troubleshooting and set alerts.|Azure Firewall exposes a few other logs and metrics for troubleshooting that can be used as indicators of issues. We recommend evaluating alerts, as per the list below.<br><ul><li>Application rule log: Each new connection that matches one of your configured application rules will result in a log for the accepted/denied connection.</li><li>Network rule log:	Each new connection that matches one of your configured network rules will result in a log for the accepted/denied connection.</li><li>DNS Proxy log: This log tracks DNS messages to a DNS server that is configured using a DNS proxy.</li></ul>|
 |Leverage diagnostics logs and policy analytics|Diagnostic logs allow you to view Azure Firewall logs, performance logs, and access logs. You can use these logs in Azure to manage and troubleshoot your Azure Firewall instance.<br><br>Policy analytics for Azure Firewall Manager allows you to start seeing rules and flows that match the rules and hit count for those rules. By watching what rule is in use and the traffic that's being matched, you can have full visibility of the traffic.|
 
