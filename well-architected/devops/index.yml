@@ -107,8 +107,8 @@ landingContent:
             url: release-engineering-cd.md#document-release-process
           - text: Stage your workloads
             url: release-engineering-cd.md#stage-your-workloads
-          - text: Roll back with Azure App Service
-            url: release-engineering-rollback.md#azure-app-service
+          - text: Roll back with deployment slots
+            url: release-engineering-rollback.md#make-use-of-staged-deployments
       - linkListType: video
         links:
           - text: "Continuous Delivery and Release Management | DevOps for Mobile"
@@ -119,11 +119,9 @@ landingContent:
       - linkListType: concept
         links:
           - text: Understand application and platform monitoring
-            url: monitoring.md
+            url: checklist.md
           - text: Analyze alerts
             url: monitor-alerts.md
-          - text: Monitor best practices
-            url: monitoring.md#monitoring-best-practices
       - linkListType: video
         links:
           - text: Continuous Monitoring for Web Perf and Accessibility

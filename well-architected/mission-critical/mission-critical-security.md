@@ -1,5 +1,5 @@
 ---
-title: Security for mission-critical workloads on Azure
+title: Security considerations for mission-critical workloads on Azure
 description: This section provides detailed design considerations and recommendations for the security critical design area.
 author: calcof
 ms.author: calcof
@@ -21,7 +21,8 @@ ms.custom:
   - alwayson
 ---
 
-# Security for mission-critical workloads on Azure
+# Security considerations for mission-critical workloads on Azure
+
 Security is a one of the foundational design principles and also a key design area that must be treated as a first-class concern within the mission-critical architectural process. 
 
 Given that the primary focus of a mission-critical design is to maximize reliability so that the application remains performant and available, the security considerations and recommendations applied within this design area will focus on mitigating threats with the capacity to impact availability and hinder overall reliability. For example, successful Denial-Of-Service (DDoS) attacks are known to have a catastrophic impact on availability and performance. How an application mitigates those attack vectors, such as SlowLoris will impact the overall reliability. So, the application must be fully protected against threats intended to directly or indirectly compromise application reliability to be truly mission critical in nature.
@@ -329,7 +330,7 @@ This section will therefore explore key considerations and recommendations surro
 - Define a common engineering criteria to capture secure and reliable configuration definitions for all utilized Azure services, ensuring this criteria is mapped to Azure Policy assignments to enforce compliance.
   - For example, apply an Azure Policy to enforce the use of Availability Zones for all relevant services, ensuring reliable intra-region deployment configurations.
 
-> The Mission Critical reference implementation contain a wide array of [security and reliability centric policies](https://github.com/Azure/Mission-Critical-online/blob/main/docs/reference-implementation/Policy-Driven-Governance.md) to define and enforce a sample common engineering criteria.
+> The Mission Critical reference implementation contain a wide array of [security and reliability centric policies](/azure/architecture/framework/mission-critical/mission-critical-security#policy-driven-governance) to define and enforce a sample common engineering criteria.
 
 - Monitor service configuration drift, relative to the common engineering criteria, using Azure Policy.
 

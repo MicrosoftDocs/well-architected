@@ -3,7 +3,7 @@ title: Testing your app and Azure environment
 description: Learn about DevOps testing considerations to make when designing your workload. Get information about automated testing and application manual testing in Azure.
 author: erjosito
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 04/08/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -15,75 +15,102 @@ Testing is one of the fundamental components and DevOps and agile development in
 
 A main tenet of a DevOps practice to achieve system reliability is the "Shift Left" principle. If developing and deploying an application is a process depicted as a series of steps going from left to right, testing should not be limited to being performed at the very end of the process (at the right). It should be shifted as much to the beginning (to the left) as possible. Errors are cheaper to repair when caught early. They can be expensive or impossible to fix later in the application life cycle.
 
-Another aspect to consider is that testing should occur on both application code as well as infrastructure code and they should be subject to the same quality controls. As described in [Infrastructure as Code][iac], the environment where applications are running should be version-controlled and deployed through the same mechanisms as application code, and hence can be tested and validated using DevOps testing paradigms too.
+Another aspect to consider is that testing should occur on all code. (not just application code but also infrastructure templates and configuration scripts) As described in [Infrastructure as Code][iac], the environment where applications are running should be version-controlled and deployed through the same mechanisms as application code, and hence can be tested and validated using the same testing paradigms that teams already use for application code.
 
-You can use your favorite testing tool to run your tests, including [Azure Load Testing Preview][alt] for generating high-scale load, [Azure Pipelines][pipelines] for automated testing and [Azure Testing Plans][devopstests] for manual testing.
+A range of testing tools are available to automate and streamline different kinds of testing, including [Azure Load Testing][alt], [Azure Pipelines][pipelines] for automated testing and [Azure Test Plans][devopstests] for manual testing.
 
-There are multiple stages at which tests can be performed in the life cycle of code, and each of them has some particularities that is important to understand. In this guide, you can find a summary of the different tests that you should consider while developing and deploying applications.
+There are multiple stages at which tests can be performed in the life cycle of code, and each of them has some particularities that are important to understand. In this guide, you can find a summary of the different tests that you should consider while developing and deploying applications.
 
 ## Automated Testing
 
-Automating tests is the best way to make sure that they are executed. Depending on how frequently tests are performed, they are typically limited in duration and scope, as the different types of automated tests will show:
+Automating tests is the best way to make sure that they're executed consistently. Depending on how frequently tests are performed, they're typically limited in duration and scope, as the different types of automated tests will show:
 
 ### Unit Testing
 
-Unit tests are tests typically run by each new version of code committed into version control. Unit Tests should be extensive (should cover ideally 100% of the code) and quick (typically under 30 seconds, although this number is not a rule set in stone). Unit testing could verify things like the syntax correctness of application code, Resource Manager templates or Terraform configurations, that the code is following best practices, or that they produce the expected results when provided certain inputs.
+Unit tests are tests typically run as part of the continuous integration routine. Unit Tests should be extensive (ideally cover 100% of the code) and quick (run in under 30 seconds, although this number is a guideline). 
 
-Unit tests should be applied both to application code and infrastructure code.
+Unit testing can verify that the syntax and functionality of individual modules of code are working the way they should. (for example: produce a defined output for a known input) Unit tests can also be used to verify that infrastructure as code assets are valid. 
+
+Unit tests should be applied both to all code assets. (including templates and scripts)
 
 ### Smoke Testing
 
-Smoke tests are more exhaustive than unit tests, but still not as much as integration tests. They normally run in less than 15 minutes. Still not verifying the interoperability of the different components with each other, smoke tests verify that each of them can be correctly built and offers the expected functionality and performance.
+Smoke tests verify that a workload can be stood up in a test environment and performs as expected. They don't go to the extent of integration tests as they don't verify the interoperability of different components. 
 
-Smoke tests usually involve building the application code, and if infrastructure, possibly testing the deployment in a test environment.
+Instead they verify that the deployment methodology for both infrastructure and the application works and that the system responds as intended once the process is complete. 
 
 ### Integration Testing
 
-After making sure that the different application components operate correctly individually, integration testing has as goal determine whether they can interact with each other as they should. Integration tests usually take longer than smoke testing, and as a consequence they are sometimes executed not as frequently. For example, running integration tests every night still offers a good compromise, detecting interoperability issues between application components no later than one day after they were introduced.
+After making sure that the different application components operate correctly individually, integration testing has as goal determine whether they can interact with each other as they should. 
 
-## Application Manual Testing
+Running a large integration test suite can take a considerable amount of time, which is why tests should be shifted left as much as possible, with integration tests being reserved to scenarios that cannot be tested with a smoke or unit test. 
 
-Manual testing is much more expensive than automated testing, and as a consequence it is run much less frequently. However, manual testing is fundamental for the correct functioning of the DevOps feedback loop, to correct errors before they become too expensive to repair, or cause customer dissatisfaction.
+Long running test processes can be run on a regular interval if needed. This offers a good compromise, detecting interoperability issues between application components no later than one day after they were introduced.
 
-### Acceptance Testing
+## Manual Testing
 
-There are many different ways of confirming that the application is doing what it should.
+Manual testing is much more expensive than automated testing, and as a consequence it's usually run much less frequently. However, manual testing is fundamental for the correct functioning of the DevOps feedback loop, to correct errors before they become too expensive to repair, or cause customer dissatisfaction.
 
-* **Blue/Green deployments**: when deploying a new application version, you can deploy it in parallel to the existing one. This way you can start redirecting clients to the new version, and if everything goes well you will decommission the old version. If there is any problem with the new deployment, you can always redirect the users back to the old one.
-* **Canary releases**: you can expose new functionality of your application (ideally using feature flags) to a select group of users. If users are satisfied with the new functionality, you can extend it to the rest of the user community. In this case we are talking about releasing functionality, and not necessarily about deploying a new version of the application.
-* **A/B testing**: A/B testing is similar to canary release-testing, but while canary releases focus on mitigate risk, A/B testing focus on evaluating the effectiveness of two similar ways of achieving different goals. For example, if you have two versions of the layout of a certain area of your application, you could send half of your users to one, the other half to the other, and use some metrics to see which layout works better for the application goals.
+## Acceptance Testing
 
-An important aspect to consider is how to measure the effectiveness of new features in the application. A way to do that is through [Application Insights User Behavior Analytic][telemetry], with which you can determine how people are using your application. This way you can decide whether a new feature has improved your applications without bringing effects such as decreasing usability.
+Depending on the context acceptance testing is sometimes performed manually. In some cases it's partially or fully automated. Its purpose is to determine whether or not the software system has met the requirement specifications. 
 
-Certain services in Azure offer functionality that can help with this kind of tests, such as the [slot functionality][slots] in the Azure App Service, that allows having two different versions of the same application running at the same time, and redirect part of the users to one or the other.
+The main purpose of this test is to evaluate the system's compliance with the business requirements and verify if it has met the required criteria for delivery to end users.
 
-### Stress tests
+Tools like [Application Insights User Behavior Analytic][telemetry], can help you work out how people are using your application. This way you can decide whether a new feature has improved your applications without bringing unintended adverse effects.
 
-As other sections of this framework have explained, designing your application code and infrastructure for scalability is of paramount importance. Testing that you can increase the application load and that both the code and the infrastructure will react to it is critical, so that your environment will adapt to changing load conditions.
+The next section of this article will cover methods for "Testing in Production", which can be used to verify if features have met business targets with real world user behavior.
 
-During these stress tests, it is critical monitoring all the components of the system to identify whether there is any bottleneck. Every component of the system not able to scale out can turn into a scale limitation, such as active/passive network components or databases. It is hence important knowing their limits so that you can mitigate their impact into the application scale. This exercise might drive you to changing some of those components for more scalable counterparts.
+## Testing and Experimentation in Production
 
-It is equally important verifying that after the stress test is concluded, the infrastructure scales back down to its normal condition in order to keep costs under control.
+Depending on your chosen deployment strategy Azure platform features might help you conduct experiments in production. 
 
-### Business Continuity Drills
+Azure AppService - for example - comes with the [slot functionality][slots] that allows you to have two different versions of the same application running at the same time. Slots allow for A/B testing by directing part of the user traffic to one version of the application and the rest of the traffic to another.
 
-Certain infrastructure test scenarios can be considered under the category of acceptance testing, such as Business continuity drills. In particular Disaster Recovery scenarios are difficult to test on-premises, but the public cloud makes this kind of tests easier. Tools such as Azure Site Recovery make it possible to start an isolated copy of the primary location in a secondary environment, so that it can be verified that the applications have come up as they should.
+There are multiple popular approaches to experimentation in production:
 
-In case there is any problem, the Disaster Recovery procedure can be optimized, and the infrastructure in the secondary environment can be deleted.
+- **Blue/Green deployments** When deploying a new application version, you can deploy it in parallel to the existing one. This allows you to start redirecting clients to the new version, and if everything goes well you can then decommission the old version. If there is any problem with the new deployment, you can always redirect the users back to the deployment with the previous version.
+- **Canary releases** You can expose new functionality of your application in a staggered way to select groups of users. If users are satisfied with the new functionality, or if the new feature performs as expected with the control group, you can extend the feature to a larger group of users until it's fully rolled out. 
+- **A/B testing**: A/B testing is similar to canary release-testing, but while canary releases focus on mitigate risk, A/B testing focus on evaluating two versions of an application or feature side by side. For example, if you have two versions of the layout of a certain area of your application, you could send half of your users to one, the other half to the other, and use some metrics to see which layout is more successful in the context of your business goals.
+
+## Stress Testing
+
+As other sections of this framework have explained, designing your application code and infrastructure for scalability is of paramount importance. Stress tests help you verify regularly that both your application and your environment will adapt to changing load conditions.
+
+During these stress tests, it's critical to monitor all the components of the system to identify whether you hit any bottleneck but also to establish a clear baseline to test against. 
+
+Every component of the system that isn't able to scale out can turn into a scale limitation, such as active/passive network components or databases. It's hence important to know their limits so that you can mitigate their impact when it comes to application scale. 
+
+Another important part of stress tests is to verify that the infrastructure scales back down to its normal condition as expected in order to keep costs under control.
+
+## Business Continuity Testing
+
+### Disaster Recovery Drills
+
+Disaster Recovery Drills are important to verify that the existing backup strategy is complimented by a working recovery procedure. These should be conducted regularly.
+
+Tools such as Azure Site Recovery make it possible to start an isolated copy of the primary workload location in a secondary environment, so that it can be verified that the workload has recovered as it should in an emergency.
+
+In case a problem occurs during the drill, the Disaster Recovery procedure can be optimized, and the infrastructure in the secondary environment can be deleted safely.
 
 ### Exploratory testing
 
-Experts explore the application in its entirety trying to find faults or suboptimal implementations of functionality. These experts could be developers, UX specialists, product owners, actual users, and other profiles. Test plans are typically not used, since testing is left to the ability of the individual tester.
+During exploratory testing, experts explore the application in its entirety trying to find faults or suboptimal implementations of functionality. These experts could be developers, UX specialists, product owners, actual users, and other profiles. 
+
+Structured test plans are typically not used, since testing is left to the ability of the individual tester.
 
 ### Fault injection
 
-The same concept can be applied to the infrastructure. If the application should be resilient to infrastructure failures, introducing faults in the underlying infrastructure and observing how the application behaves is fundamental for increasing the trust in your redundancy mechanisms. Shutting down infrastructure components, purposely degrading performance, or introducing faults are ways of verifying that the application is going to react as expected when these situations occur.
+Fault injection tests if the application is resilient to infrastructure failures.
+The technique introduces faults in the underlying infrastructure and observes how the application behaves.
 
-Most companies use a controlled way of injecting faults in the system, although if confident with the application resiliency, automated frameworks could be used. A new science has been developed around fault injection, called Chaos Engineering.
+This kind of testing is fundamental to build trust in your redundancy mechanisms. Shutting down infrastructure components, purposely degrading performance, or introducing faults are ways of verifying that the application is going to react as expected when these situations occur.
+
+Products like [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) aim to simplify the process of fault injection testing. Many larger organizations have built their own chaos engines that leverage automated testing tools to achieve fault injection.
 
 ## Summary
 
-In order to deploy software quickly and reliably, testing is a fundamental component of the development and deployment life cycle. Not only application code should be tested, but infrastructure automation and resiliency should equally be put to the test, to make sure that the application is going to perform as expected in every situation.
+In order to deploy software quickly and reliably, testing is a fundamental component of the development and deployment life cycle. It's important to make sure that the application is going to perform as expected in every situation. We therefore need to not only test application code but all aspects of our workload.
 
 ## Next steps
 

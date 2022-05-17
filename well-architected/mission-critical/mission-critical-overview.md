@@ -14,6 +14,7 @@ products: Azure
 ms.custom:
   - mission-critical
 ---
+
 # Mission-critical workloads
 
 This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. The guidance is based on lessons learned from reviewing numerous customer applications and first-party solutions. This section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
@@ -52,7 +53,7 @@ Achieving high reliability imposes significant cost tradeoffs, which may not be 
 
 Mission-critical guidance within this series is composed of architectural considerations and recommendations orientated around these key design areas.
 
-![Mission-critical design areas](./images/mission-critical-design-areas.png "Mission-critical design areas")
+![Mission-critical design areas](./images/mission-critical-design-areas.svg "Mission-critical design areas")
 
 The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. The focus is ultimately on building a highly reliable application.
 
