@@ -1,59 +1,75 @@
 {
-  "redirections": [
-    {
-      "source_path": "well-architected/services/compute/service-fabric/reliability.md",
-      "redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#reliability",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "well-architected/services/compute/service-fabric/security.md",
-      "redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#security",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "well-architected/services/compute/service-fabric/operational-excellence.md",
-      "redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#operational-excellence",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "well-architected/services/compute/service-fabric/performance-efficiency.md",
-      "redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#performance-efficiency",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "well-architected/services/networking/application-gateway-v2/operational-excellence.md",
-      "redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "well-architected/services/networking/application-gateway-v2/reliability.md",
-      "redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "well-architected/services/compute/azure-kubernetes-service/cost-optimization.md",
-      "redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "well-architected/services/compute/azure-kubernetes-service/operational-excellence.md",
-      "redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "well-architected/services/compute/azure-kubernetes-service/performance-efficiency.md",
-      "redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "well-architected/services/compute/azure-kubernetes-service/reliability.md",
-      "redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "well-architected/services/compute/azure-kubernetes-service/security.md",
-      "redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
-      "redirect_document_id": false
-    }
-  ]
-}
+	"redirections": [
+	  {
+		"source_path": "well-architected/services/compute/service-fabric/reliability.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#reliability",
+		"redirect_document_id": false
+	  },
+	  {
+		"source_path": "well-architected/services/compute/service-fabric/security.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#security",
+		"redirect_document_id": false
+	  },
+	  {
+		"source_path": "well-architected/services/compute/service-fabric/operational-excellence.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#operational-excellence",
+		"redirect_document_id": false
+	  },
+	  {
+		"source_path": "well-architected/services/compute/service-fabric/performance-efficiency.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#performance-efficiency",
+		"redirect_document_id": false
+	  },
+	  {
+		"source_path": "well-architected/services/networking/application-gateway-v2/operational-excellence.md",
+		"redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
+		"redirect_document_id": false
+	  },
+	  {
+		"source_path": "well-architected/services/networking/application-gateway-v2/reliability.md",
+		"redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
+		"redirect_document_id": false
+	  },
+	  {
+  		"source_path": "well-architected/services/networking/azure-firewall/reliability.md",
+		"redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
+		"redirect_document_id": false
+	  },
+	  {
+		"source_path": "well-architected/services/networking/azure-firewall/security.md",
+		"redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
+		"redirect_document_id": false
+	  },
+	  {
+		"source_path": "well-architected/services/networking/azure-firewall/operational-excellence.md",
+		"redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
+		"redirect_document_id": false
+	  },
+		{
+  		"source_path": "well-architected/services/compute/azure-kubernetes-service/cost-optimization.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
+		"redirect_document_id": false
+	  },
+	  {
+		"source_path": "well-architected/services/compute/azure-kubernetes-service/operational-excellence.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
+		"redirect_document_id": false
+	  },
+	  {
+		"source_path": "well-architected/services/compute/azure-kubernetes-service/performance-efficiency.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
+		"redirect_document_id": false
+	  },
+	  {
+		"source_path": "well-architected/services/compute/azure-kubernetes-service/reliability.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
+		"redirect_document_id": false
+	  },
+	  {
+		"source_path": "well-architected/services/compute/azure-kubernetes-service/security.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
+		"redirect_document_id": false
+	  }
+	]
+  }
+  
