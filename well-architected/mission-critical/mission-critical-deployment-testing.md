@@ -37,6 +37,10 @@ This design area focuses on how to eradicate downtime and maintain application h
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for acheiving optimal CI/CD pipelines for a mission-critical application.
 
+## Demo: End-to-end resiliency testing with Azure Load Test and Azure Chaos Studio
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
+
 ## Application environments
 
 Before considering deployment processes and associated tooling, it's important to evaluate the application environments required to appropriately validate and stage deployment operations. These environment types will most likely differ in terms of requisite capabilities and longevity. Some environments might reflect production on a permanent basis, others may be short lived with a reduced level of complexity. These environments should be staged during the engineering and release cycle in order to ensure deployment operations are fully tested before released into the production environment.
