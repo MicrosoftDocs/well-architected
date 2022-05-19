@@ -55,9 +55,9 @@ As you make design choices for \<product>, review the \[design principles](\<des
 
 > [!div class="checklist"]
 > - \<One or more design considerations for "Design for business requirements">
-> - \<Design or more design considerations for "Design for failure">
-> - \<Design or more design considerations for "Observe application health">
-> - \<Design or more design considerations for "Drive automation">
+> - \<One or more design considerations for "Design for failure">
+> - \<One or more design considerations for "Observe application health">
+> - \<One or more design considerations for "Drive automation">
 
 ### Recommendations
 
