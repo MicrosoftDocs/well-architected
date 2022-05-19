@@ -54,10 +54,10 @@ For context, consider reviewing a reference architecture that reflects these con
 As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
 
 > [!div class="checklist"]
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
+> - \<One or more design considerations for "Design for business requirements">
+> - \<One or more design considerations for "Design for failure">
+> - \<One or more design considerations for "Observe application health">
+> - \<One or more design considerations for "Drive automation">
 
 ### Recommendations
 
@@ -127,10 +127,13 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
 
 > [!div class="checklist"]
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
+> - \<One or more design considerations for "Plan resources and how to harden them">
+> - \<One or more design considerations for "Automate and use least privilege">
+> - \<One or more design considerations for "Classify and encrypt data">
+> - \<One or more design considerations for "Monitor system security, plan incident response">
+> - \<One or more design considerations for "Identify and protect endpoints">
+> - \<One or more design considerations for "Protect against code-level vulnerabilities">
+> - \<One or more design considerations for "Model and test against potential threats">
 
 ### Recommendations
 
@@ -200,10 +203,11 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
 
 > [!div class="checklist"]
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
+> - \<One or more design considerations for "Choose the correct resources">
+> - \<One or more design considerations for "Set up budgets and maintain cost constraints">
+> - \<One or more design considerations for "Dynamically allocate and de-allocate resources">
+> - \<One or more design considerations for "Optimize workloads, aim for scalable costs">
+> - \<One or more design considerations for "Continuously monitor and optimize cost management">
 
 ### Recommendations
 
@@ -273,10 +277,11 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
 
 > [!div class="checklist"]
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
+> - \<One or more design considerations for "Optimize build and release processes">
+> - \<One or more design considerations for "Understand operational health">
+> - \<One or more design considerations for "Rehearse recovery and practice failure">
+> - \<One or more design considerations for "Embrace continuous operational improvement">
+> - \<One or more design considerations for "Use loosely coupled architecture">
 
 ### Recommendations
 
@@ -344,10 +349,11 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
 
 > [!div class="checklist"]
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
-> - \<Design consideration>
+> - \<One or more design considerations for "Understand the challenges of distributed architectures">
+> - \<One or more design considerations for "Run performance testing in the scope of development">
+> - \<One or more design considerations for "Continuously monitor the application and the supporting infrastructure">
+> - \<One or more design considerations for "Identify improvement opportunities with resolution planning">
+> - \<One or more design considerations for "Invest in capacity planning">
 
 ### Recommendations
 
