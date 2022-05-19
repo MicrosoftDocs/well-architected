@@ -66,3 +66,11 @@ landingContent:
             url: https://github.com/azure/mission-critical-online
           - text: Mission-Critical Connected
             url: https://github.com/azure/mission-critical-connected
+
+ # Card
+  - title: Video library
+    linkLists:
+      - linkListType: video
+        links:
+          - text: Resiliency with Azure Load Test and Azure Chaos Studio
+            url: mission-critical-deployment-testing.md#demo-end-to-end-resiliency-testing-with-azure-load-test-and-azure-chaos-studio
