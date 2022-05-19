@@ -44,7 +44,7 @@ As you make design choices for Azure Firewall, review the [design principles](..
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Firewall configuration for Reliability.
+Explore the following table of recommendations to optimize your Azure Firewall configuration for reliability.
 
 | Recommendation | Benefit |
 |--------|----|
@@ -76,7 +76,7 @@ As you make design choices for Azure Firewall, review the [design principles](..
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Firewall configuration for Security.
+Explore the following table of recommendations to optimize your Azure Firewall configuration for security.
 
 | Recommendation | Benefit |
 |--------|----|
@@ -117,14 +117,14 @@ As you make design choices for Azure Firewall, review the [design principles](..
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Firewall configuration for Cost optimization.
+Explore the following table of recommendations to optimize your Azure Firewall configuration for cost optimization.
 
 | Recommendation | Benefit |
 |--------|----|
 |Deploy the Standard and Premium SKUs where appropriate.| The Standard option is usually enough for east-west traffic. Premium comes with the necessary extra features for north-south traffic, the forced tunneling feature, and many other features. For more information, see [Azure Firewall Premium Preview features](/azure/firewall/premium-features). Deploy mixed scenarios by using the Standard and Premium options, according to your needs.|
 |Stop Azure Firewall deployments that don't need to run for 24 hours.|You might have development environments that are used only during business hours. For more information, see [Deallocate and allocate Azure Firewall](/powershell/module/az.network/set-azfirewall?#4--deallocate-and-allocate-the-firewall).|
-|Share the same instance of Azure Firewall across multiple workloads and Azure Virtual Network.|You can use a central instance of Azure Firewall in the hub virtual network and share the same firewall across many spoke virtual networks that are connected to the same hub from the same region.<br>Ensure there's no unexpected cross-region traffic as part of the hub-spoke topology.|
-|Review underutilized Azure Firewall instances. Identify and delete Azure Firewall deployments not in use. | To identify Azure Firewall deployments not in use, start by analyzing the monitoring metrics and user-defined routes (UDRs) that are associated with subnets pointing to the firewall's private IP. Combine that information with other validations, such as if Azure Firewall has any Rules (Classic) for NAT, or Network and Application, or even if the DNS Proxy setting is configured to **Disabled**, and with internal documentation about your environment and deployments. <br><br> You can detect deployments that are cost effective over time. <br><br> For more information about monitoring logs and metrics, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port utilization](/azure/firewall/logs-and-metrics#metrics).|
+|Share the same instance of Azure Firewall across multiple workloads and Azure Virtual Network.|You can use a central instance of Azure Firewall in the hub virtual network and share the same firewall across many spoke virtual networks that are connected to the same hub from the same region.<br><br>Ensure there's no unexpected cross-region traffic as part of the hub-spoke topology.|
+|Review underutilized Azure Firewall instances. Identify and delete Azure Firewall deployments not in use. | To identify Azure Firewall deployments not in use, start by analyzing the monitoring metrics and UDRs that are associated with subnets pointing to the firewall's private IP. Combine that information with other validations, such as if your instance of Azure Firewall has any rules (Classic) for NAT, or Network and Application, or even if the DNS Proxy setting is configured to **Disabled**, and with internal documentation about your environment and deployments. <br><br> You can detect deployments that are cost effective over time. <br><br> For more information about monitoring logs and metrics, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port utilization](/azure/firewall/logs-and-metrics#metrics).|
 |Use Azure Firewall Manager and its policies to reduce your operational costs, increase your efficiency, and reduce your management overhead.|Review your Firewall Manager policies, associations, and inheritance carefully. Policies are billed based on firewall associations. A policy with zero or one firewall association is free of charge. A policy with multiple firewall associations is billed at a fixed rate.<br><br>For more information, see [Pricing - Azure Firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager).|
 |Delete unused public IP addresses and use IP Groups to reduce your management overhead.|Validate whether all the associated public IP addresses are in use. If they aren't in use, disassociate and delete them. Use IP Groups to reduce your management overhead. Evaluate SNAT ports utilization before you remove any IP addresses.<br><br>You'll only use the number of public IPs that your firewall actually needs. For more information, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port utilization](/azure/firewall/logs-and-metrics#metrics).
 
@@ -138,7 +138,7 @@ Monitoring and diagnostics are crucial. You can measure performance statistics a
 
 ### Design checklist
 
-As you make design choices for Azure Firewall, review the [Operational excellence design principles](../../devops/principles.md).
+As you make design choices for Azure Firewall, review the [design principles](../../devops/principles.md) for Operational excellence.
 
 > [!div class="checklist"]
 > - Use logs for monitoring.
@@ -148,7 +148,7 @@ As you make design choices for Azure Firewall, review the [Operational excellenc
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Firewall configuration for Operational excellence.
+Explore the following table of recommendations to optimize your Azure Firewall configuration for operational excellence.
 
 | Recommendation | Benefit |
 |--------|----|
@@ -169,7 +169,7 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 
 ### Design checklist
 
-As you make design choices for Azure Firewall, review the [Performance efficiency principles](../../scalability/principles.md).
+As you make design choices for Azure Firewall, review the [design principles](../../scalability/principles.md) for Performance efficiency.
 
 > [!div class="checklist"]
 > - Determine your SNAT port requirements and if you should deploy a NAT gateway.
@@ -178,7 +178,7 @@ As you make design choices for Azure Firewall, review the [Performance efficienc
 
 ### Recommendations
 
-Explore the following table of recommendations to optimize your Azure Firewall configuration for Performance efficiency.
+Explore the following table of recommendations to optimize your Azure Firewall configuration for performance efficiency.
 
 | Recommendation | Benefit |
 |--------|----|
