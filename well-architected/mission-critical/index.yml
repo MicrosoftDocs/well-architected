@@ -72,5 +72,5 @@ landingContent:
     linkLists:
       - linkListType: video
         links:
-          - text: Resiliency with Azure Load Test and Azure Chaos Studio
-            url: mission-critical-deployment-testing.md#demo-end-to-end-resiliency-testing-with-azure-load-test-and-azure-chaos-studio
+          - text: Continuous Validation with Azure Load Test and Azure Chaos Studio
+            url: mission-critical-deployment-testing.md#demo-continuous-validation-with-azure-load-test-and-azure-chaos-studio

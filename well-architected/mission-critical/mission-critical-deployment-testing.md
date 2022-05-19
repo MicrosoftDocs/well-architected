@@ -37,7 +37,7 @@ This design area focuses on how to eradicate downtime and maintain application h
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for acheiving optimal CI/CD pipelines for a mission-critical application.
 
-## Demo: End-to-end resiliency testing with Azure Load Test and Azure Chaos Studio
+## Demo: Continuous validation with Azure Load Test and Azure Chaos Studio
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
 
