@@ -382,7 +382,7 @@ There are three common approaches applied to define at what point secrets must b
 - Apply a fully automated key-rotation process that runs periodically within the solution.
   - Use [key near expire notification](/azure/key-vault/keys/how-to-configure-key-rotation#configure-key-near-expiry-notification) to get alerted on upcoming expiration.
 
-## Testing
+## Continuous validation and testing
 
 As previously stated, testing is a fundamental activity for any mission-critical solution, to fully validate the health of both the application code and infrastructure. More specifically, to satisfy desired standards for reliability, performance, availability, security, quality, and scale, testing must be well defined and applied as a core component of the application design and DevOps methodologies.
 
