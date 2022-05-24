@@ -14,6 +14,7 @@ products: Azure
 ms.custom:
   - mission-critical
 ---
+
 # Mission-critical workloads
 
 This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. The guidance is based on lessons learned from reviewing numerous customer applications and first-party solutions. This section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
@@ -40,7 +41,7 @@ Microsoft Azure makes it easy to deploy and manage cloud solutions. However, bui
 
 While the primary focus of mission-critical workloads is [Reliability](/azure/architecture/framework/#reliability), other pillars of the Well-Architected Framework are equally important when building and operating a mission-critical workload on Azure.  
 
-- [Security](/azure/architecture/framework/security/): how a workload mitigates security threats, such as Dedicated Denial of Service (DDoS) attacks, will have a significant bearing on overall reliability.
+- [Security](/azure/architecture/framework/security/): how a workload mitigates security threats, such as Distributed Denial of Service (DDoS) attacks, will have a significant bearing on overall reliability.
 
 - [Operational Excellence](/azure/architecture/framework/devops/): how a workload is able to effectively respond to operational issues will have a direct impact on application availability. 
 

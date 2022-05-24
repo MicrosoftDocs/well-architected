@@ -241,7 +241,7 @@ items:
             href: devops/principles.md
           - name: Automation
             items:
-              - name: Automation Overview
+              - name: Automation overview
                 href: devops/automation-overview.md
               - name: Repeatable infrastructure
                 href: devops/automation-infrastructure.md
@@ -255,11 +255,11 @@ items:
                 href: devops/release-engineering-app-dev.md
               - name: Continuous integration
                 href: devops/release-engineering-ci.md
-              - name: Release testing
+              - name: Testing
                 href: devops/release-engineering-testing.md
               - name: Performance
                 href: devops/release-engineering-performance.md
-              - name: Release deployment
+              - name: Deployment
                 href: devops/release-engineering-cd.md
               - name: Rollback
                 href: devops/release-engineering-rollback.md
@@ -295,8 +295,6 @@ items:
                     href: devops/tracing.md
                   - name: Auditing
                     href: devops/auditing.md
-          - name: Checklist
-            href: /azure/architecture/checklist/dev-ops
           - name: Operational Excellence patterns
             href: devops/devops-patterns.md
       - name: Performance Efficiency
@@ -393,10 +391,26 @@ items:
                 href: hybrid/hybrid-reliability.md
               - name: Security
                 href: hybrid/hybrid-security.md
+          - name: IoT
+            items:
+              - name: Overview
+                href: iot/iot-overview.md
+              - name: Cost Optimization
+                href: iot/iot-cost-optimization.md
+              - name: Operational Excellence
+                href: iot/iot-operational-excellence.md
+              - name: Performance Efficiency
+                href: iot/iot-performance.md
+              - name: Reliability
+                href: iot/iot-reliability.md
+              - name: Security
+                href: iot/iot-security.md
       - name: Services
         items:
           - name: Compute
             items:
+              - name: Azure Service Fabric
+                href: services/compute/azure-service-fabric-well-architected-framework.md
               - name: Azure App Service
                 items:
                   - name: Reliability
@@ -414,31 +428,11 @@ items:
                   - name: Performance efficiency
                     href: services/compute/azure-batch/performance-efficiency.md
               - name: Azure Kubernetes Service
-                items:
-                  - name: Reliability
-                    href: services/compute/azure-kubernetes-service/reliability.md
-                  - name: Security
-                    href: services/compute/azure-kubernetes-service/security.md
-                  - name: Cost optimization
-                    href: services/compute/azure-kubernetes-service/cost-optimization.md
-                  - name: Operational excellence
-                    href: services/compute/azure-kubernetes-service/operational-excellence.md
-                  - name: Performance efficiency
-                    href: services/compute/azure-kubernetes-service/performance-efficiency.md
+                href: services/compute/azure-kubernetes-service/azure-kubernetes-service.md
               - name: Functions
                 items:
                   - name: Security
                     href: services/compute/functions/security.md
-              - name: Service Fabric
-                items:
-                  - name: Reliability
-                    href: services/compute/service-fabric/reliability.md
-                  - name: Security
-                    href: services/compute/service-fabric/security.md
-                  - name: Operational excellence
-                    href: services/compute/service-fabric/operational-excellence.md
-                  - name: Performance efficiency
-                    href: services/compute/service-fabric/performance-efficiency.md
               - name: Virtual Machines
                 href: services/compute/virtual-machines/virtual-machines-review.md
           - name: Data
@@ -553,6 +547,8 @@ items:
                     href: services/networking/application-delivery/operational-excellence.md
               - name: Application Gateway v2
                 href: services/networking/azure-application-gateway.md
+              - name: Azure Firewall
+                href: services/networking/azure-firewall.md
               - name: API Management
                 items:
                   - name: Reliability
@@ -561,14 +557,6 @@ items:
                     href: services/networking/api-management/cost-optimization.md
                   - name: Operational excellence
                     href: services/networking/api-management/operational-excellence.md
-              - name: Azure Firewall
-                items:
-                  - name: Reliability
-                    href: services/networking/azure-firewall/reliability.md
-                  - name: Security
-                    href: services/networking/azure-firewall/security.md
-                  - name: Operational excellence
-                    href: services/networking/azure-firewall/operational-excellence.md
               - name: Azure Front Door
                 items:
                   - name: Reliability

@@ -46,24 +46,15 @@ The hot, warm, and cold analysis patterns are summarized in [Analysis patterns](
 
 ## Application data
 
-**Is an Application Performance Management (APM) tool used collect application level logs?**
-***
+For applications, the collecting service can be an **Application Performance Management (APM) tool** that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you'll have clear visibility of important metrics both in real time and historically. Consider an  appropriate level of logging. Verbose logging  can incur significant costs.
 
-In case of an application, the collecting service can be an Application Performance Management (APM) tool that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you'll have clear visibility of important metrics both in real time and historically. Consider an  appropriate level of logging. Verbose logging  can incur significant costs.
+An example of an APM is [Application Insights](/azure/azure-monitor/app/data-retention-privacy#what-is-application-insights) that aggregates application level logs and events for subsequent analysis. 
 
-An example of APM is [Application Insights](/azure/azure-monitor/app/data-retention-privacy#what-is-application-insights) that aggregates application level logs and events for subsequent analysis. Get more information about [What kinds of data are collected?](/azure/azure-monitor/app/data-retention-privacy#what-kinds-of-data-are-collected).
-
-**Are application logs collected from different application environments?**
-***
-
-Application logs support the end-to-end application lifecycle. Logging is essential in understanding how the application operates in various environments and what events occur and under which conditions.
+**Application logs** support the end-to-end application lifecycle. Logging is essential in understanding how the application operates in various environments and what events occur and under which conditions.
 
 Collecting application logs and events across all major environments is recommended. Separate the data between environments as much as possible. Have filters to ensure non-critical environments do not convolute production log interpretation. Furthermore, corresponding log entries across the application should capture a correlation ID for their respective transactions.
 
-**Are log messages captured in a structured format?**
-***
-
-Application events should be captured as a structured data type with machine-readable data points rather than unstructured string types. Structured format, following well-known schema can help in parsing and analyzing logs. Also, structured data can easily be indexed and searched, and reporting can be greatly simplified.
+**Application events should be captured as a structured data type** with machine-readable data points rather than unstructured string types. A structured format, following well-known schema can help in parsing and analyzing logs. Also, structured data can easily be indexed and searched, and reporting can be greatly simplified.
 
 Also the data should be an agnostic format that's independent of the machine, operating system, or network protocol. For example, emit information in a self-describing format such as JSON, MessagePack, or Protobuf rather than ETL/ETW. Using a standard format enables the system to construct processing pipelines; components that read, transform, and send data in the agreed format can be easily integrated.
 
@@ -71,15 +62,14 @@ Also the data should be an agnostic format that's independent of the machine, op
 
 You will also need to collect platform diagnostics to get a holistic view. For example, Windows event logs, performance counters, diagnostic infrastructure logs, and logs from the management plane. [Azure platform logs](/azure/azure-monitor/essentials/platform-logs-overview) addresses all those needs. Here are some recommendations:
 
-- Collect Azure Activity Logs to get audit information. These logs are useful in detecting configuration changes to Azure resources.
-- Enable resource- or infrastructure- level monitoring throughout the application. This type of logs includes information emitted by  platform services such as Azure VMs, Express Route or SQL Database, and also third-party solutions. Configure application resources to route diagnostic logs and metrics to the chosen log aggregation technology. 
-- Enforce consistency. You can use Azure Policy to ensure the consistent use of diagnostic settings across the application, to enforce the desired configuration for each Azure service.
-- Collect logs and metrics available for critical internal dependencies. This information gives you visibility into the operational state of critical internal dependencies, such as a shared NVA or Express Route connections, and others.
+- Collect **Azure Activity Logs** to get audit information. These logs are useful in detecting configuration changes to Azure resources.
+- Enable **resource- or infrastructure- level monitoring** throughout the application. This type of logs includes information emitted by  platform services such as Azure VMs, Express Route or SQL Database, and also third-party solutions. Configure application resources to route diagnostic logs and metrics to the chosen log aggregation technology. 
+- **Enforce consistency.** You can use Azure Policy to ensure the consistent use of diagnostic settings across the application, to enforce the desired configuration for each Azure service.
+- **Collect logs and metrics available for critical internal dependencies.** This information gives you visibility into the operational state of critical internal dependencies, such as a shared NVA or Express Route connections, and others.
 
-**Which log aggregation technology is used to collect logs and metrics from Azure resources?**
-***
+There are many options for a collection service for aggregating infrastructure and resource logs. Azure Log Analytics or Splunk, are popular choices for collating logs and metrics across all application components for subsequent evaluation. Resources may include Azure IaaS, PaaS services, and third-party appliances such as firewalls or anti-malware solutions used in the application. For instance, if Azure Event Hubs is used, the Diagnostic Settings should be configured to push logs and metrics to the data sink. 
 
-There are many options for a collection service for aggregating infrastructure and resource logs. Azure Log Analytics or Splunk, are popular choices for collating logs and metrics across all application components for subsequent evaluation. Resources may include Azure IaaS, nd PaaS services, and third-party appliances such as firewalls or anti-malware solutions used in the application. For instance, if Azure Event Hubs is used, the Diagnostic Settings should be configured to push logs and metrics to the data sink. Understanding usage helps with right-sizing of the workload, but additional cost for logging needs to be accepted and included in the cost model.
+Understanding usage helps with right-sizing of the workload, but additional cost for logging needs to be accepted and included in the cost model.
 
 
 ## Collection strategies
@@ -91,22 +81,22 @@ To optimize the use of bandwidth, prioritize based on the importance of data. Yo
 ### Data collection models
 
 The collection service can collect instrumentation data in  mainly two models:
-- **Pull model**&mdash;Actively retrieves  data from the various logs and other sources for each instance of the application.
-- **Push model**&mdash;Passively waits for the data to be sent from the components that constitute each instance of the application.
+- **Pull model** Actively retrieves  data from the various logs and other sources for each instance of the application.
+- **Push model** Passively waits for the data to be sent from the components that constitute each instance of the application.
 
 ### Monitoring agents
-Monitoring agents work in pull model. Agents run locally in a separate process with each instance of the application and periodically pull data and write this information directly to centralized storage shared by all instances of the application. 
+Monitoring agents work in pull model. Agents run locally in a separate process with each instance of the application and periodically pull data and write this information directly to centralized storage shared by all instances of the application.
 
 ![Illustration of using a monitoring agent to pull information and write to shared storage](../devops/pullmodel.png)
 
-For more information, see [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](/azure/cloud-services/cloud-services-dotnet-diagnostics) provides more details on this process. Some elements, such as IIS logs, crash dumps, and custom error logs, are written to blob storage. Data from the Windows event log, ETW events, and performance counters is recorded in table storage. Figure 3 illustrates this mechanism.
+For more information, see [Azure Diagnostics extension](/azure/azure-monitor/agents/diagnostics-extension-overview).
 
 > [!NOTE]
 > Using a monitoring agent is ideally suited to capturing instrumentation data that's naturally pulled from a data source. It's appropriate for a small-scale application running on a limited number of nodes in a single location. An example is information from SQL Server Dynamic Management Views or the length of an Azure Service Bus queue.
 
 ### Performance considerations
 
-A complex, highly scalable, application might generate huge volumes of data. The can easily overwhelm the I/O bandwidth available with a single, central location. The telemetry solution must not act as bottleneck and must be scalable as the system expands. Ideally, the solution should incorporate a degree of redundancy to reduce the risks of losing important monitoring information (such as auditing or billing data) if part of the system fails.
+A complex, highly scalable, application might generate huge volumes of data. The amount of data can easily overwhelm the I/O bandwidth available with a single, central location. The telemetry solution must not act as bottleneck and must be scalable as the system expands. Ideally, the solution should incorporate a degree of redundancy to reduce the risks of losing important monitoring information (such as auditing or billing data) if part of the system fails.
 
 One approach is through queuing. 
 
@@ -123,7 +113,7 @@ The data collected from a single instance of an application gives a localized vi
 ![Example of using a service to consolidate instrumentation data](../devops/consolidation.png)
 
 
-The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, instrumentation data that includes the same correlation information such as an activity ID can be amalgamated. (It's possible that a user starts performing a business operation on one node and then gets transferred to another node in the event of node failure, or depending on how load balancing is configured.) This process can also detect and remove any duplicated data (always a possibility if the telemetry service uses message queues to push instrumentation data out to storage). 
+The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, instrumentation data that includes the same correlation information such as an activity ID can be amalgamated. (It's possible that a user starts performing a business operation on one node and then gets transferred to another node if a node fails, or depending on how load balancing is configured.) This process can also detect and remove any duplicated data (always a possibility if the telemetry service uses message queues to push instrumentation data out to storage). 
 
 
 ## Storage strategies
@@ -145,7 +135,7 @@ The same instrumentation data might be required for more than one purpose. For e
 
 ### Consolidation service
 
-You can implement an additional service that periodically retrieves the data from shared storage, partitions and filters the data according to its purpose, and then writes it to an appropriate set of data stores.
+You can implement another service that periodically retrieves the data from shared storage, partitions and filters the data according to its purpose, and then writes it to an appropriate set of data stores.
 
 ![Partitioning and storage of data](../devops/datastorage.png)
 

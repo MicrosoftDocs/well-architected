@@ -1,5 +1,5 @@
 ---
-title: Mission-critical workloads - Deployment and testing
+title: Deployment and testing for mission-critical workloads on Azure
 description: This design area focuses on how to eradicate downtime and maintain application health for deployment operations, by providing key considerations and recommendations that are intended to inform the design of optimal CI/CD pipelines for a mission-critical application.
 author: calcof
 ms.author: calcof
@@ -16,7 +16,7 @@ ms.custom:
   - mission-critical
 ---
 
-# Deployment and testing
+# Deployment and testing for mission-critical workloads on Azure
 
 Application outages are often caused by failed deployments or erroneous releases. This is why the design of Continuous Integration and Continuous Deployment (CI/CD) pipelines for deployment and testing methodologies play a critical role in the overall reliability of a mission-critical application.
 
@@ -36,6 +36,10 @@ This design area focuses on how to eradicate downtime and maintain application h
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical)
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for acheiving optimal CI/CD pipelines for a mission-critical application.
+
+## Demo: Continuous validation with Azure Load Test and Azure Chaos Studio
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
 
 ## Application environments
 
@@ -93,7 +97,7 @@ This section explores the key considerations and recommendations for application
 - Ensure at least one staging environment is fully reflective of production to enable production-like testing and validation.
   - Capacity within this pre-production environment can flex based on the execution of test activities.
   - Use of a constant synthetic user load generation is required to provide a realistic test case for changes on one of the pre-production environments.
-    - The [Mission Critical Online](https://github.com/Azure/Mission-Critical-Online) reference implementation provides an example [user load generator](https://github.com/Azure/Mission-Critical-online/src/testing/userload-generator/README.md).
+    - The [Mission Critical Online](https://github.com/Azure/Mission-Critical-Online) reference implementation provides an example [user load generator](https://github.com/Azure/Mission-Critical-Online/blob/main/src/testing/userload-generator/README.md).
 
 ![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png)
 
@@ -244,7 +248,7 @@ Branching strategies are a fundamental aspect of application source control, and
 
 ### Design recommendations
 
-- Prioritize the use of [GitHub for source control](https://docs.github.com/en/code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/about-managing-vulnerable-dependencies).
+- Prioritize the use of [GitHub for source control](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-supply-chain-security).
 
 > [!IMPORTANT]
 > Create a branching strategy that details _feature_ work and _releases_ as a minimum, using branch policies and permissions to ensure the strategy is appropriately enforced.

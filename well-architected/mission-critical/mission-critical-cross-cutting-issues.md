@@ -1,5 +1,5 @@
 ---
-title: Cross-cutting concerns of a mission-critical workload
+title: Cross-cutting concerns of a mission-critical workload on Azure
 description: Critical cross-cutting concerns for subsequent consideration within each design area.
 author: calcof
 ms.author: calcof
@@ -15,7 +15,7 @@ ms.custom:
   - mission-critical
 ---
 
-# Cross-cutting concerns of mission-critical workloads
+# Cross-cutting concerns of mission-critical workloads on Azure
 
 There are several cross-cutting concerns that traverse the [key design areas](mission-critical-overview.md#what-are-the-key-design-areas). This article contextualizes these cross-cutting concerns for subsequent consideration within each design area.
 
