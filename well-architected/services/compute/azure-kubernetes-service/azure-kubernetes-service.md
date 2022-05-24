@@ -91,7 +91,7 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 > - **Cluster architecture:** Use Microsoft Defender for containers with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your cluster and workloads running on them.
 > - **Cluster architecture:** Deploy a private AKS cluster to ensure cluster management traffic to your API server remains on your private network. Or use the API server allow list for non-private clusters.
 > - **Workload architecture:** Use a Web Application Firewall to secure HTTP(S) traffic.
-> - **Workload architecutre:** Ensure your CI/CID pipeline is hardened with container-aware scanning.
+> - **Workload architecture:** Ensure your CI/CID pipeline is hardened with container-aware scanning.
 
 ### Recommendations
 
