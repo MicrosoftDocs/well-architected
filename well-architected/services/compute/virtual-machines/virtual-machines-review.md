@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework review - Virtual Machines
 description: Design considerations and recommendations about Azure virtual machines.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/10/2022
+ms.date: 05/24/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -110,7 +110,7 @@ Azure Advisor helps you ensure and improve security. Review the [recommendations
 
 All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
 
-## Cost Optimization
+## Cost optimization
 
 To optimize costs, review the [design principles](/azure/architecture/framework/cost/principles).
 
