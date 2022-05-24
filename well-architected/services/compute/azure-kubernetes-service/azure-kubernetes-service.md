@@ -24,7 +24,7 @@ We assume that you understand system design principles, have working knowledge o
 
 Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend that you review your workload by using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
 
-For context, consider reviewing a reference architecture that reflects these considerations in its design. We recommend that you start with the [baseline architecture for an Azure Kubernetes Service (AKS) cluster](/architecture/reference-architectures/containers/aks/secure-baseline-aks) and [Microservices architecture on Azure Kubernetes Service](/architecture/reference-architectures/containers/aks-microservices/aks-microservices). Also review the [AKS landing zone accelerator](/cloud-adoption-framework/scenarios/aks/enterprise-scale-landing-zone), which provides an architectural approach and reference implementation to prepare landing zone subscriptions for a scalable Azure Kubernetes Service (AKS) cluster.
+For context, consider reviewing a reference architecture that reflects these considerations in its design. We recommend that you start with the [baseline architecture for an Azure Kubernetes Service (AKS) cluster](/architecture/reference-architectures/containers/aks/secure-baseline-aks) and [Microservices architecture on Azure Kubernetes Service](/architecture/reference-architectures/containers/aks-microservices/aks-microservices). Also review the [AKS landing zone accelerator](/azure/cloud-adoption-framework/scenarios/aks/enterprise-scale-landing-zone), which provides an architectural approach and reference implementation to prepare landing zone subscriptions for a scalable Azure Kubernetes Service (AKS) cluster.
 
 ## Reliability
 
@@ -91,7 +91,7 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 > - **Cluster architecture:** Use Microsoft Defender for containers with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your cluster and workloads running on them.
 > - **Cluster architecture:** Deploy a private AKS cluster to ensure cluster management traffic to your API server remains on your private network. Or use the API server allow list for non-private clusters.
 > - **Workload architecture:** Use a Web Application Firewall to secure HTTP(S) traffic.
-> - **Workload architecutre:** Ensure your CI/CID pipeline is hardened with container-aware scanning.
+> - **Workload architecture:** Ensure your CI/CID pipeline is hardened with container-aware scanning.
 
 ### Recommendations
 
