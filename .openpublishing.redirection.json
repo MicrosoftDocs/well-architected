@@ -5,6 +5,21 @@
       "redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
       "redirect_document_id": false
     },
+	{
+		"source_path": "well-architected/services/compute/virtual-machines/cost-optimization.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/virtual-machines/virtual-machines-review",
+		"redirect_document_id": false
+	},
+	{
+		"source_path": "well-architected/services/compute/virtual-machines/operational-excellence.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/virtual-machines/virtual-machines-review",
+		"redirect_document_id": false
+	},
+	{
+		"source_path": "well-architected/services/compute/virtual-machines/reliability.md",
+		"redirect_url": "/azure/architecture/framework/services/compute/virtual-machines/virtual-machines-review",
+		"redirect_document_id": false
+	},
     {
       "source_path": "well-architected/services/networking/application-gateway-v2/reliability.md",
       "redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
