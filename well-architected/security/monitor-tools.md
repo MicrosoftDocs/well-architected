@@ -34,7 +34,7 @@ Azure provides several monitoring tools that observe the operations and detect a
 |[**Microsoft Sentinel**](/azure/sentinel/overview)|Use the native security information event management (SIEM) and security orchestration automated response (SOAR) solution on Azure. Receive intelligent security analytics and threat intelligence across the enterprise.|
 |[**Azure DDoS Protection**](/azure/virtual-network/ddos-protection-overview)| Defend against distributed denial of service (DDoS) attacks.|
 |[**Azure Rights Management (RMS)**](/azure/information-protection/what-is-azure-rms)| Protect files and emails across multiple devices.|
-|[**Microsoft Information Protection (MIP)**](/information-protection/develop/overview)| Secure email, documents, and sensitive data that you share outside your company.|
+|[**Microsoft Purview Information Protection**](/information-protection/develop/overview)| Secure email, documents, and sensitive data that you share outside your company.|
 |[**Azure Governance Visualizer**](https://github.com/microsoft/CloudAdoptionframework/tree/master/govern/AzureGovernanceVisualizer)|Gain granular insight into policies, Azure role-based access control (Azure RBAC), Azure Blueprints, subscriptions, and more.|
 |[**PSRule for Azure**](https://aka.ms/ps-rule-azure)| Scans Azure Infrastructure as Code (IaC) artifacts for issues across Azure Well-Architected pillars.|
 
@@ -69,13 +69,13 @@ RMS uses encryption, identity, and authorization policies to help secure files a
 
 To learn more about how RMS can address these issues, see [Business problems solved by Azure Rights Management](/azure/information-protection/what-is-azure-rms#business-problems-solved-by-azure-rights-management).
 
-## Microsoft Information Protection (MIP)
+## Microsoft Purview Information Protection
 
 The *data classification* process categorizes data by sensitivity and business impact in order to identify risks. When data is classified, you can manage it in ways that protect sensitive or important data from theft or loss.
 
 With proper *file protection*, you can analyze data flows to gain insight into your business, detect risky behaviors and take corrective measures, track access to documents, and more. The protection technology in AIP uses encryption, identity, and authorization policies. Protection stays with the documents and emails, independently of the location, regardless of whether they're inside or outside your organization, networks, file servers, and applications
 
-[Azure Information Protection (AIP)](/azure/information-protection/what-is-information-protection) is part of Microsoft Information Protection (MIP) solution, and extends the labeling and classification functionality provided by Microsoft 365. For more information, see [this article about classification](/microsoft-365/compliance/data-classification-overview).
+[Azure Information Protection (AIP)](/azure/information-protection/what-is-information-protection) is part of Microsoft Purview Information Protection solution, and extends the labeling and classification functionality provided by Microsoft 365. For more information, see [this article about classification](/microsoft-365/compliance/data-classification-overview).
 
 ## Azure Governance Visualizer
 
