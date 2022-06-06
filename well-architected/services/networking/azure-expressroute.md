@@ -169,16 +169,9 @@ For more suggestions, see [Principles of the cost optimization pillar](/azure/ar
 
 ## Operational excellence
 
-<!-- 5D. ----------------------------------------------------
-
-    Follow the Operational excellence H2 heading with a sentence about how the section contributes to the framework. 
--->
-
-[H2 section introduction here.]
+Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../../devops/principles.md).
 
 ### Design checklist
-
-Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../../devops/principles.md).
 
 > [!div class="checklist"]
 > - Configure connection monitoring between your on-premises and Azure network.
