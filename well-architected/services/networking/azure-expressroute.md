@@ -142,77 +142,30 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 ## Cost optimization
 
-<!-- 5C. ----------------------------------------------------
-
-    Follow the Cost optimization H2 heading with a sentence about how the section contributes to the framework. 
--->
-
-[H2 section introduction here.]
+Cost optimization is about looking at ways to reduce unncessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principle](../../cost/principles.md) and [Plan and manage costs for Azure ExpressRoute](/azure/expressroute/plan-manage-cost).
 
 ### Design checklist
 
-<!--
-
-    Required    
-
-    A design checklist is always the first H3 in each pillar section.
-
-    Make sure the considerations you document:
-    - Are presented in a checklist format.
-    - Map to the design principles. Identify the appropriate principle, and then think about your recommendation in relation to it.
-    - Focus on the salient features for that pillar as they relate to the product.
-    - Provide full coverage of the design principles. (If not all design principles exist, cover no fewer than three design principles.)
--->
-
-As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
-
 > [!div class="checklist"]
-> - \<One or more design considerations for "Choose the correct resources">
-> - \<One or more design considerations for "Set up budgets and maintain cost constraints">
-> - \<One or more design considerations for "Dynamically allocate and de-allocate resources">
-> - \<One or more design considerations for "Optimize workloads, aim for scalable costs">
-> - \<One or more design considerations for "Continuously monitor and optimize cost management">
+> - Familiarize yourself with ExpressRoute pricing.
+> - Determine the ExpressRoute circuit SKU and bandwidth required.
+> - Determine the ExpressRoute virtual network gateway size required.
+> - Monitor cost and create budget alerts.
+> - Deprovision ExpressRoute circuits no longer in use.
 
 ### Recommendations
 
-<!--
-
-    Required    
-
-    The Recommendations H3 is always the second section in each pillar. The content in this section should be formatted as a table.
-
--->
-
-Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
+Explore the following table of recommendations to optimize your ExpressRoute configuration for Cost optimization.
 
 | Recommendation | Benefit |
 |--------|----|
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| Familiarize yourself with ExpressRoute pricing | For information about ExpressRoute pricing, see [Understand pricing for Azure ExpressRoute](https://azure.microsoft.com/en-us/pricing/details/expressroute/). You can also leverage the [Pricing calculator](https://azure.microsoft.com/pricing/calculator/).<br><br>Ensure that the options are adequately sized to meet the capacity demand and deliver expected performance without wasting resources.  |
+| Determine SKU and bandwidth required | The way you're charged for your ExpressRoute usage varies between the three different SKU types. With Local SKU, you're automatically charged with an Unlimited data plan. With Standard and Premium SKU, you can select between a Metered or an Unlimited data plan. All ingress data are free of charge except when using the Global Reach add-on. It's important to understand which SKU types and data plan works best for your workload to best optimize cost and budget. For more information resizing ExpressRoute circuit, see [upgrading ExpressRoute circuit bandwidth](/azure/expressroute/about-upgrade-circuit-bandwidth). |
+| Determine the ExpressRoute virtual network gateway size | ExpressRoute virtual network gateways are used to pass traffic into a virtual network over private peering. [Review the performance and scale](/azure/expressroute/expressroute-about-virtual-network-gateways) needs of your preferred Virtual Network Gateway SKU. Select the appropriate gateway SKU on your on-premises to Azure workload.  |
+| Monitor cost and create budget alerts | Monitor the cost of your ExpressRoute circuit and create alerts for spending anomalies and overspending risks. For more information, see [Monitoring ExpressRoute costs](/azure/expressroute/plan-manage-cost#monitor-costs). |
+| Deprovision and delete ExpressRoute circuits no longer in use. | ExpressRoute circuits are charged from the moment they're created. To reduce uneccessary cost, deprovision the circuit with the service provider and delete the ExpressRoute circuit from your subscription. For steps on how to remove an ExpressRoute circuit, see [Deprovisioning an ExpressRoute circuit](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager#delete). |
 
 For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
-
-Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
-
-### Policy definitions
-
-<!-- 
-
-    Required
-
-    A list of policy definitions is always the third section in each pillar.
-
-    Provide a list of policies the customer can use for resource governance. After the list of policies, provide a list of all policy definitions available in Azure.
--->
-
-- \<Policy>
-- \<Policy>
-- \<Policy>
-
-All built-in policy definitions related to Azure Virtual Machines are listed in \[Built-in policies - \<category>]\(/azure/governance/policy/samples/built-in-policies#\<anchorlink>\).
 
 ## Operational excellence
 
@@ -225,51 +178,27 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 ### Design checklist
 
-<!--
-
-    Required    
-
-    A design checklist is always the first H3 in each pillar section.
-
-    Make sure the considerations you document:
-    - Are presented in a checklist format.
-    - Map to the design principles. Identify the appropriate principle, and then think about your recommendation in relation to it.
-    - Focus on the salient features for that pillar as they relate to the product.
-    - Provide full coverage of the design principles. (If not all design principles exist, cover no fewer than three design principles.)
--->
-
-As you make design choices for \<product>, review the \[design principles](\<design principles link>) for \<pillar>.
+Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../../devops/principles.md).
 
 > [!div class="checklist"]
-> - \<One or more design considerations for "Optimize build and release processes">
-> - \<One or more design considerations for "Understand operational health">
-> - \<One or more design considerations for "Rehearse recovery and practice failure">
-> - \<One or more design considerations for "Embrace continuous operational improvement">
-> - \<One or more design considerations for "Use loosely coupled architecture">
+> - Configure connection monitoring between your on-premises and Azure network.
+> - Configure Service Health for receiving notification.
+> - Review metrics and dashboard available through ExpressRoute Insights using Network Insights.
+> - Review ExpressRoute resource metrics
 
 ### Recommendations
 
-<!--
-
-    Required    
-
-    The Recommendations H3 is always the second section in each pillar. The content in this section should be formatted as a table.
-
--->
-
-Explore the following table of recommendations to optimize your \<product> configuration for \<pillar>.
+Explore the following table of recommendations to optimize your ExpressRoute configuration for Operational excellence.
 
 | Recommendation | Benefit |
 |--------|----|
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| Configure connection monitoring | Connection monitoring allows you to monitor connectivity between your on-premises resources and Azure over the ExpressRoute private peering and Microsoft peering connection. Connection monitor can detect networking issues by identifying where along the network path the problem is and help you quickly resolve configuration or hardware failures. For more information, see [Configure connection monitor for ExpressRoute](/azure/expressroute/how-to-configure-connection-monitor). |
+| Configure Service Health | Set up Service Health notifications to alert when planned and upcoming maintenances are happening to all ExpressRoute circuits in your subscription. Service Health also display past maintenances along with RCA if an unplanned maintenance were to occurred. For more information, see [configure alerts for ExpressRoute maintenances](/azure/expressroute/maintenance-alerts). |
+| Review metrics with Network Insights | ExpressRoute Insights with Network Insights allows you to review and analyze ExpressRoute circuits, gateways, connections metrics and health dashboards. ExpressRoute Insights also provides a topology view of your ExpressRoute connections where you can view details of your peering components all in a single place.<br><br>Metrics available:<br>- Availability<br>- Throughput<br>- Gateway metrics<br><br>For more information, see [Network Insights for ExpressRoute](/azure/expressroute/expressroute-network-insights). |
+| Review ExpressRoute resource metrics | ExpressRoute uses Azure Monitor to collect metrics and create alerts base on your configuration. Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. For more information for individual metrics, see [ExpressRoute monitoring, metrics, and alerts](/azure/expressroute/expressroute-monitoring-metrics-alerts). |
 | \<Configuration recommendation> | What problem this recommendation will mitigate. |
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
-
-Azure Advisor helps you ensure and improve \<pillar-specific text>. Review the [recommendations](../../contribute-how-to-write-waf-for-azure-offerings.md).
 
 ### Policy definitions
 
