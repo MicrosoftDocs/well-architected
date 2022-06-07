@@ -52,7 +52,6 @@ Here are some reference architectures related to network security:
 
 - [Hub-spoke network topology in Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
 - [Deploy highly available NVAs](/azure/architecture/reference-architectures/dmz/nva-ha)
-- [Windows N-tier application on Azure with SQL Server](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
 - [Azure Kubernetes Service (AKS) production baseline](/azure/architecture/reference-architectures/containers/aks/secure-baseline-aks)
 
 ## Next steps
