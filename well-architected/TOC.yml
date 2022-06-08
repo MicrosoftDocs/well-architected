@@ -550,7 +550,7 @@ items:
               - name: Azure Firewall
                 href: services/networking/azure-firewall.md
               - name: ExpressRoute
-                href: service/networking/azure-expressroute.md
+                href: services/networking/azure-expressroute.md
               - name: API Management
                 items:
                   - name: Reliability
