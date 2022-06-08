@@ -85,5 +85,15 @@
 			"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
 			"redirect_document_id": false
 		}
+		{
+			"source_path": "well-architected/services/networking/expressroute/reliability.md",
+			"redirect_url": "/azure/architecture/framework/services/networking/azure-expressroute",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/networking/expressroute/operational-excellence.md",
+			"redirect_url": "/azure/architecture/framework/services/networking/azure-expressroute",
+			"redirect_document_id": false
+		}
 	]
 }
