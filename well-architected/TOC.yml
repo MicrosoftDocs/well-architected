@@ -549,6 +549,8 @@ items:
                 href: services/networking/azure-application-gateway.md
               - name: Azure Firewall
                 href: services/networking/azure-firewall.md
+              - name: ExpressRoute
+                href: service/networking/azure-expressroute.md
               - name: API Management
                 items:
                   - name: Reliability
@@ -587,12 +589,6 @@ items:
                     href: services/networking/azure-virtual-network/reliability.md
                   - name: Operational excellence
                     href: services/networking/azure-virtual-network/operational-excellence.md
-              - name: ExpressRoute
-                items:
-                  - name: Reliability
-                    href: services/networking/expressroute/reliability.md
-                  - name: Operational excellence
-                    href: services/networking/expressroute/operational-excellence.md
               - name: Azure Load Balancer
                 items:
                   - name: Reliability
