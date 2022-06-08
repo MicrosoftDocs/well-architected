@@ -65,6 +65,16 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 For more suggestions, see [Principles of the reliability pillar](/azure/architecture/framework/resiliency/principles).
 
+Azure Advisor provides many recommendations for ExpressRoute circuits as they relate to reliability. For example, Azure Advisor can detect:
+
+* ExpressRoute gateways in which only a single ExpressRoute circuit is deployed, instead of multiple. Multiple ExpressRoute circuits are recommended for add resiliency for the peering location.
+* ExpressRoute circuits that aren't being observed by Connection Monitor, as end-to-end monitoring of your ExpressRoute circuit is critical for reliability insights.
+* Network topologies involving multiple peering locations that would benefit from ExpressRoute Global Reach to improve disaster recovery designs for on-premises connectivity to account for unplanned connectivity loss.
+
+### Azure Policy
+
+Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
+
 ## Security
 
 Security is one of the most important aspects of any architecture. ExpressRoute provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../../security/security-principles.md).
@@ -91,6 +101,12 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Encrypt traffic using IPsec | Configure a Site-to-site VPN tunnel over your ExpressRoute circuit to encrypt data transferring between your on-premises network and Azure virtual network. You can configure a tunnel using [private peering](/azure/vpn-gateway/site-to-site-vpn-private-peering?toc=%2Fazure%2Fexpressroute%2Ftoc.json) or using [Microsoft peering](/azure/expressroute/site-to-site-vpn-over-microsoft-peering).  |
 
 For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
+
+There are no Azure Advisor related recommendations for this category.
+
+### Azure Policy
+
+Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
 
 ## Cost optimization
 
@@ -119,6 +135,13 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
 
+Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*. Circuits in this state aren't operational; and removing the unused resource will reduce unnecessary costs.
+
+### Azure Policy
+
+Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
+
+
 ## Operational excellence
 
 Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../../devops/principles.md).
@@ -137,13 +160,19 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 | Recommendation | Benefit |
 |--------|----|
-| Configure connection monitoring | Connection monitoring allows you to monitor connectivity between your on-premises resources and Azure over the ExpressRoute private peering and Microsoft peering connection. Connection monitor can detect networking issues by identifying where along the network path the problem is and help you quickly resolve configuration or hardware failures. For more information, see [Configure connection monitor for ExpressRoute](/azure/expressroute/how-to-configure-connection-monitor). |
-| Configure Service Health | Set up Service Health notifications to alert when planned and upcoming maintenance is happening to all ExpressRoute circuits in your subscription. Service Health also displays past maintenance along with RCA if an unplanned maintenance were to occurred. For more information, see [configure alerts for ExpressRoute maintenance](/azure/expressroute/maintenance-alerts). |
-| Review metrics with Network Insights | ExpressRoute Insights with Network Insights allow you to review and analyze ExpressRoute circuits, gateways, connections metrics and health dashboards. ExpressRoute Insights also provide a topology view of your ExpressRoute connections where you can view details of your peering components all in a single place.<br><br>Metrics available:<br>- Availability<br>- Throughput<br>- Gateway metrics<br><br>For more information, see [Network Insights for ExpressRoute](/azure/expressroute/expressroute-network-insights). |
-| Review ExpressRoute resource metrics | ExpressRoute uses Azure Monitor to collect metrics and create alerts base on your configuration. Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. For more information for individual metrics, see [ExpressRoute monitoring, metrics, and alerts](/azure/expressroute/expressroute-monitoring-metrics-alerts). |
-| \<Configuration recommendation> | What problem this recommendation will mitigate. |
+| Configure connection monitoring | [Connection monitoring](/azure/expressroute/how-to-configure-connection-monitor) allows you to monitor connectivity between your on-premises resources and Azure over the ExpressRoute private peering and Microsoft peering connection. Connection monitor can detect networking issues by identifying where along the network path the problem is and help you quickly resolve configuration or hardware failures. |
+| Configure Service Health | Set up [Service Health notifications](/azure/expressroute/maintenance-alerts) to alert when planned and upcoming maintenance is happening to all ExpressRoute circuits in your subscription. Service Health also displays past maintenance along with RCA if an unplanned maintenance were to occurred. |
+| Review metrics with Network Insights | [ExpressRoute Insights with Network Insights](/azure/expressroute/expressroute-network-insights) allow you to review and analyze ExpressRoute circuits, gateways, connections metrics and health dashboards. ExpressRoute Insights also provide a topology view of your ExpressRoute connections where you can view details of your peering components all in a single place.<br><br>Metrics available:<br>- Availability<br>- Throughput<br>- Gateway metrics |
+| Review ExpressRoute resource metrics | ExpressRoute uses Azure Monitor to collect [metrics and create alerts](/azure/expressroute/expressroute-monitoring-metrics-alerts) base on your configuration. Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. |
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
+
+There are no Azure Advisor related recommendations for this category.
+
+### Azure Policy
+
+Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
+
 
 ## Performance efficiency
 
@@ -165,43 +194,19 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 | Recommendation | Benefit |
 |--------|----|
-| Test ExpressRoute gateway performance to meet work load requirements. | Use Azure Connectivity Toolkit to do performance testing across your ExpressRoute circuit to understand bandwidth capacity and latency of your network connection. For more information, see [Testing network performance with Azure Connectivity Toolkit](/azure/expressroute/expressroute-troubleshooting-network-performance#azurect---the-azure-connectivity-toolkit). |
-| Increase the size of the ExpressRoute gateway. | Upgrade to a higher gateway SKU for improved throughput performance between on-premises and Azure environment. For more information, see [About ExpressRoute virtual network gateways](/azure/expressroute/expressroute-about-virtual-network-gateways). |
-| Upgrade ExpressRoute circuit bandwidth | Upgrade your circuit bandwidth to meet your work load requirements. Circuit bandwidth is shared between all virtual networks connected to the ExpressRoute circuit. Depending on your work load, one or more virtual networks can use up all the bandwidth on the circuit. For guidance, see [About upgrading ExpressRoute circuit bandwidth](/azure/expressroute/about-upgrade-circuit-bandwidth).  |
-| Enable ExpressRoute FastPath for higher throughput | If you're using an Ultra performance or an ErGW3AZ virtual network gateway, you can enable FastPath to improve the data path performance between your on-premises network and Azure virtual network. For more information, see [About ExpressRoute FastPath](/azure/expressroute/about-fastpath). |
-| Monitor ExpressRoute circuit and gateway metrics | Set up alerts base on ExpressRoute metrics to proactively notify you when a certain threshold is met. These metrics are useful to understand anomalies that can happen with your ExpressRoute connection such as outages and maintenance happening to your ExpressRoute circuits. For more information, see [Monitoring ExpressRoute](/azure/expressroute/monitor-expressroute). |
+| Test ExpressRoute gateway performance to meet work load requirements. | Use [Azure Connectivity Toolkit](/azure/expressroute/expressroute-troubleshooting-network-performance#azurect---the-azure-connectivity-toolkit) to test performance across your ExpressRoute circuit to understand bandwidth capacity and latency of your network connection. |
+| Increase the size of the ExpressRoute gateway. | Upgrade to a higher [gateway SKU](/azure/expressroute/expressroute-about-virtual-network-gateways) for improved throughput performance between on-premises and Azure environment. |
+| Upgrade ExpressRoute circuit bandwidth | Upgrade your [circuit bandwidth](/azure/expressroute/about-upgrade-circuit-bandwidth) to meet your work load requirements. Circuit bandwidth is shared between all virtual networks connected to the ExpressRoute circuit. Depending on your work load, one or more virtual networks can use up all the bandwidth on the circuit.  |
+| Enable ExpressRoute FastPath for higher throughput | If you're using an Ultra performance or an ErGW3AZ virtual network gateway, you can enable [FastPath](/azure/expressroute/about-fastpath) to improve the data path performance between your on-premises network and Azure virtual network. |
+| Monitor ExpressRoute circuit and gateway metrics | Set up alerts base on [ExpressRoute metrics](/azure/expressroute/monitor-expressroute) to proactively notify you when a certain threshold is met. These metrics are useful to understand anomalies that can happen with your ExpressRoute connection such as outages and maintenance happening to your ExpressRoute circuits. |
 
 For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
 
-## Azure Policy
+Azure Advisor will offer a recommendation to upgrade your ExpressRoute circuit bandwidth to accommodate usage when your circuit has recently been consuming over 90% of your procured bandwidth. If your traffic exceeds your allocated bandwidth, you’ll experience dropped packets, which can lead to significant performance or reliability impact.
+
+### Azure Policy
 
 Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
-
-## Azure Advisor recommendation
-
-### Reliability
-
-Azure Advisor provides many recommendations for ExpressRoute circuits as they relate to reliability. For example, Azure Advisor can detect:
-
-* ExpressRoute gateways in which only a single ExpressRoute circuit is deployed, instead of multiple. Multiple ExpressRoute circuits are recommended for add resiliency for the peering location.
-* ExpressRoute circuits that aren't being observed by Connection Monitor, as end-to-end monitoring of your ExpressRoute circuit is critical for reliability insights.
-* Network topologies involving multiple peering locations that would benefit from ExpressRoute Global Reach to improve disaster recovery designs for on-premises connectivity to account for unplanned connectivity loss.
-
-### Security
-
-There are no Azure Advisor related recommendations for this category.
-
-### Cost Optimization
-
-Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*. Circuits in this state aren't operational; and removing the unused resource will reduce unnecessary costs.
-
-### Operational Excellence
-
-There are no Azure Advisor related recommendations for this category.
-
-### Performance Efficiency
-
-Azure Advisor will offer a recommendation to upgrade your ExpressRoute circuit bandwidth to accommodate usage when your circuit has recently been consuming over 90% of your procured bandwidth. If your traffic exceeds your allocated bandwidth, you’ll experience dropped packets, which can lead to significant performance or reliability impact.
 
 ## Additional resources
 
