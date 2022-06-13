@@ -459,10 +459,14 @@ items:
                 items:
                   - name: Reliability
                     href: services/data/azure-sql-database/reliability.md
+                  - name: Security
+                    href: services/data/azure-sql-database/security.md
                   - name: Cost optimization
                     href: services/data/azure-sql-database/cost-optimization.md
                   - name: Operational excellence
                     href: services/data/azure-sql-database/operational-excellence.md
+                  - name: Performance efficiency
+                    href: services/data/azure-sql-database/performance-efficiency.md
               - name: Azure SQL Managed Instance
                 items:
                   - name: Reliability

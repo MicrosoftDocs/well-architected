@@ -77,4 +77,4 @@ Explore the following table of recommendations to optimize your Azure SQL Databa
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure SQL Database and cost optimization](./cost-optimization.md)
+> [Azure SQL Database and security](./security.md)

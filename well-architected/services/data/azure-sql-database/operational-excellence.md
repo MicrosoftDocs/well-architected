@@ -77,4 +77,4 @@ Explore the following table of recommendations to optimize your Azure SQL Databa
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure SQL Managed Instance and reliability](../azure-sql-managed-instance/reliability.md)
+> [Azure SQL Database and performance efficiency](./performance-efficiency.md)
