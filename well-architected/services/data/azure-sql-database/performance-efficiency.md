@@ -32,7 +32,7 @@ The following sections include a design checklist and recommended design options
 
 > [!div class="checklist"]
 > - Review resource limits. For specific resource limits per pricing tier (also known as service objective) for single databases, refer to either [DTU-based single database resource limits](/azure/azure-sql/database/resource-limits-dtu-single-databases) or [vCore-based single database resource limits](/azure/azure-sql/database/resource-limits-vcore-single-databases). For elastic pool resource limits, refer to either [DTU-based elastic pool resource limits](/azure/azure-sql/database/resource-limits-dtu-elastic-pools) or [vCore-based elastic pool resource limits](/azure/azure-sql/database/resource-limits-vcore-elastic-pools).
-> - Choose the right deployment model for your workload, vCore or DTU. [Compare the vCore and DTU-based purchasing models](azure/azure-sql/database/purchasing-models).
+> - Choose the right deployment model for your workload, vCore or DTU. [Compare the vCore and DTU-based purchasing models](/azure/azure-sql/database/purchasing-models).
 > - Microsoft recommends the latest vCore database standard-series or premium-series hardware. Older Gen4 hardware has been retired.
 > - When using elastic pools, familiarize yourself with [resource governance](/azure/azure-sql/database/elastic-pool-resource-management).
 > - Review the [default max degree of parallelism (MAXDOP)](/azure/azure-sql/database/configure-max-degree-of-parallelism) and configure as needed based on a migrated or expected workload.

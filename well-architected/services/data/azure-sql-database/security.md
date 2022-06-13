@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database and security
-description: Focuses on the Azure SQL Database service to provide best-practice, configuration recommendations, and design considerations related to Service Performance.
+description: Focuses on the Azure SQL Database service to provide best-practice, configuration recommendations, and design considerations related to security.
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.date: 06/13/2022
@@ -59,7 +59,7 @@ The following sections include a design checklist and recommended design options
 
 Review the [Azure security baseline for Azure SQL Database](/security/benchmark/azure/baselines/sql-database-security-baseline) and [Azure Policy built-in definitions](/azure/azure-sql/database/policy-reference).
 
-All built-in policy definitions related to Azure SQL are listed in [Built-in policies - <category>](/azure/governance/policy/samples/built-in-policies#sql).
+All built-in policy definitions related to Azure SQL are listed in [Built-in policies](/azure/governance/policy/samples/built-in-policies#sql).
 
 
 ## Next steps
