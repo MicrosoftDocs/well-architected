@@ -71,10 +71,6 @@ Azure Advisor provides many recommendations for ExpressRoute circuits as they re
 * ExpressRoute circuits that aren't being observed by Connection Monitor, as end-to-end monitoring of your ExpressRoute circuit is critical for reliability insights.
 * Network topologies involving multiple peering locations that would benefit from ExpressRoute Global Reach to improve disaster recovery designs for on-premises connectivity to account for unplanned connectivity loss.
 
-### Azure Policy
-
-Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
-
 ## Security
 
 Security is one of the most important aspects of any architecture. ExpressRoute provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../../security/security-principles.md).
@@ -101,12 +97,6 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Encrypt traffic using IPsec | Configure a Site-to-site VPN tunnel over your ExpressRoute circuit to encrypt data transferring between your on-premises network and Azure virtual network. You can configure a tunnel using [private peering](/azure/vpn-gateway/site-to-site-vpn-private-peering?toc=%2Fazure%2Fexpressroute%2Ftoc.json) or using [Microsoft peering](/azure/expressroute/site-to-site-vpn-over-microsoft-peering).  |
 
 For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
-
-There are no Azure Advisor related recommendations for this category.
-
-### Azure Policy
-
-Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
 
 ## Cost optimization
 
@@ -137,11 +127,6 @@ For more suggestions, see [Principles of the cost optimization pillar](/azure/ar
 
 Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*. Circuits in this state aren't operational; and removing the unused resource will reduce unnecessary costs.
 
-### Azure Policy
-
-Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
-
-
 ## Operational excellence
 
 Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../../devops/principles.md).
@@ -167,19 +152,11 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
 
-There are no Azure Advisor related recommendations for this category.
-
-### Azure Policy
-
-Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
-
-
 ## Performance efficiency
 
 Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](../../scalability/principles.md).
 
 ### Design checklist
-
 
 > [!div class="checklist"]
 > - Test ExpressRoute gateway performance to meet work load requirements.
@@ -204,7 +181,7 @@ For more suggestions, see [Principles of the performance efficiency pillar](/azu
 
 Azure Advisor will offer a recommendation to upgrade your ExpressRoute circuit bandwidth to accommodate usage when your circuit has recently been consuming over 90% of your procured bandwidth. If your traffic exceeds your allocated bandwidth, you’ll experience dropped packets, which can lead to significant performance or reliability impact.
 
-### Azure Policy
+## Azure Policy
 
 Azure Policy doesn't provide any built-in policies for ExpressRoute, but custom policies can be created to help govern how ExpressRoute circuits should match your desired end state, such as SKU choice, peering type, peering configurations and so on.
 
