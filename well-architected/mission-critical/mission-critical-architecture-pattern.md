@@ -3,7 +3,7 @@ title: Architecture pattern for mission-critical workloads on Azure
 description: The design areas represent the architecturally significant topics that must be discussed and designed for when defining a target architecture
 author: calcof
 ms.author: calcof
-ms.date: 02/02/2022
+ms.date: 06/17/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
