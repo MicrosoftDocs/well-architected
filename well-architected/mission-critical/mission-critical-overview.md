@@ -75,7 +75,8 @@ The guidance provided within this series is based on a solution-orientated appro
 > [!IMPORTANT]
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical).
 
-- [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
+- [Reference architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/)
+- [Implementation: Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
 
   Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure.
   

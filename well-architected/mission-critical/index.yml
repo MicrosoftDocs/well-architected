@@ -56,7 +56,14 @@ landingContent:
           - text: Security
             url: mission-critical-security.md
           - text: Operational procedures
-            url: mission-critical-operational-procedures.md                                                                          
+            url: mission-critical-operational-procedures.md     
+ # Card
+  - title: Reference Solutions
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Internet-facing application
+            url: /azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro   
  # Card
   - title: Reference implementations
     linkLists:
@@ -66,7 +73,6 @@ landingContent:
             url: https://github.com/azure/mission-critical-online
           - text: Mission-Critical Connected
             url: https://github.com/azure/mission-critical-connected
-
  # Card
   - title: Video library
     linkLists:

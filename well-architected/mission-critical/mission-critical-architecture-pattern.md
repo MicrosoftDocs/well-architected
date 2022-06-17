@@ -55,6 +55,9 @@ The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) 
 
 Use these reference implementations to construct a sandbox application environment for validating key design decisions.
 
+> Refer to [Reference architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/) for mission critical guidance on designing a a workload that is accessed over a public endpoint and does not require private network connectivity to other company resources.
+
+
 ## Azure landing zone integration
 
 [Azure landing zones](/azure/cloud-adoption-framework/ready/landing-zone/) provides prescriptive architectural guidance to define a reliable and scalable shared-service platform for enterprise Azure deployments with requisite centralized governance. 
