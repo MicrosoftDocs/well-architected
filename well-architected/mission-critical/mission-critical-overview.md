@@ -3,7 +3,7 @@ title: Mission-critical workloads
 description: Overview of mission-critical workloads on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
-ms.date: 02/28/2022
+ms.date: 06/17/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -60,8 +60,8 @@ The design areas are interrelated and decisions made within one area can impact 
 - **Application design**&mdash;Cloud application design patterns that allow for scaling, and error handling. 
 - **Application platform**&mdash;Hosting environment choices, application dependencies, frameworks, and libraries.
 - **Data platform**&mdash;Choices in data store technologies, informed by evaluating required volume, velocity, variety, and veracity characteristics.
-- **Networking and Connectivity**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
-- **Health Modeling**&mdash;Observability considerations through customer impact analysis correlated monitoring to determine overall application health.
+- **Networking and connectivity**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
+- **Health modeling**&mdash;Observability considerations through customer impact analysis correlated monitoring to determine overall application health.
 - **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation considerations, with incorporated testing scenarios, such as synchronized load testing and failure injection (chaos) testing.
 - **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
 - **Operational procedures**&mdash; Processes related to deployment, key management, patching and updates.
@@ -75,7 +75,9 @@ The guidance provided within this series is based on a solution-orientated appro
 > [!IMPORTANT]
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical).
 
-- [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
+- [Reference architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/)
+
+  [Implementation: Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
 
   Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure.
   

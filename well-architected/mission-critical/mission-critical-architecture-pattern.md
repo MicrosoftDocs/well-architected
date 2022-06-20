@@ -3,7 +3,7 @@ title: Architecture pattern for mission-critical workloads on Azure
 description: The design areas represent the architecturally significant topics that must be discussed and designed for when defining a target architecture
 author: calcof
 ms.author: calcof
-ms.date: 02/02/2022
+ms.date: 06/17/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -54,6 +54,9 @@ The image below represents a reference architecture recommended for mission-crit
 The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) and [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) provide solution orientated showcases for this design methodology, demonstrating how this architecture pattern can be implemented alongside the operational wrappers required to maximize reliability and operational effectiveness.
 
 Use these reference implementations to construct a sandbox application environment for validating key design decisions.
+
+> Refer to [Reference architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/) for mission critical guidance on designing a workload that is accessed over a public endpoint and does not require private network connectivity to other company resources.
+
 
 ## Azure landing zone integration
 
