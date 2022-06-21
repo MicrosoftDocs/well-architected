@@ -34,10 +34,6 @@ The following sections include a design checklist and recommended design options
 
 * Review the [core concepts of Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) and [What's new in Azure SQL Database?](/azure/azure-sql/database/doc-changes-updates-release-notes-whats-new).
 
-* [Try Azure SQL Database free with Azure free account](/azure/azure-sql/database/free-sql-db-free-account-how-to-deploy), then [get started with single databases in Azure SQL Database](/azure/azure-sql/database/quickstart-content-reference-guide).
-
-
-
 ## Azure SQL Database and reliability
 
 [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include:
@@ -99,7 +95,7 @@ Explore the following table of recommendations to optimize your Azure SQL Databa
 |Back up your keys.|If you're not [using encryption keys in Azure Key Vault to protect your data](/azure/azure-sql/database/always-encrypted-azure-key-vault-configure?tabs=azure-powershell), back up your keys.|
 
 
-## Security
+## Azure SQL Database and security
 
 SQL Database provides a range of [built-in security and compliance](/azure/azure-sql/database/security-overview) features to help your application meet various security and compliance requirements.
 
@@ -293,7 +289,4 @@ Watch episodes of [Data Exposed](/shows/data-exposed/) covering Azure SQL topics
 
 ## Next steps
 
-Use these recommendations as you create your Service Fabric managed cluster using an ARM template or through the Azure portal:
-
-* [Quickstart: Deploy a Service Fabric managed cluster with an Azure Resource Manager template](/azure/service-fabric/quickstart-managed-cluster-template)
-* [Quickstart: Deploy a Service Fabric managed cluster using the Azure portal](/azure/service-fabric/quickstart-managed-cluster-portal)
+* [Try Azure SQL Database free with Azure free account](/azure/azure-sql/database/free-sql-db-free-account-how-to-deploy), then [get started with single databases in Azure SQL Database](/azure/azure-sql/database/quickstart-content-reference-guide).
