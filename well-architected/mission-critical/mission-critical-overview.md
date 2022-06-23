@@ -75,7 +75,7 @@ The guidance provided within this series is based on a solution-orientated appro
 > [!IMPORTANT]
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical).
 
-- [Reference architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/)
+- [Reference architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)
 
   [Implementation: Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
 
