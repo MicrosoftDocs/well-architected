@@ -456,13 +456,7 @@ items:
                   - name: Cost optimization
                     href: services/data/azure-db-postgresql/cost-optimization.md
               - name: Azure SQL Database
-                items:
-                  - name: Reliability
-                    href: services/data/azure-sql-database/reliability.md
-                  - name: Cost optimization
-                    href: services/data/azure-sql-database/cost-optimization.md
-                  - name: Operational excellence
-                    href: services/data/azure-sql-database/operational-excellence.md
+                href: services/data/azure-sql-database-well-architected-framework.md
               - name: Azure SQL Managed Instance
                 items:
                   - name: Reliability
