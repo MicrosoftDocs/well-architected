@@ -72,6 +72,7 @@ Azure SQL Database includes the following design considerations:
 ### Checklist
 
 **Have you configured Azure SQL Database with reliability in mind?**
+***
 
 > [!div class="checklist"]
 > - Use Active Geo-Replication to create a readable secondary in a different region.
@@ -156,6 +157,7 @@ The following sections include a configuration checklist and recommended configu
 ### Checklist
 
 **Have you configured Azure SQL Database with cost optimization in mind?**
+***
 
 > [!div class="checklist"]
 > - Optimize queries.
@@ -218,6 +220,7 @@ Azure SQL Database includes the following design considerations:
 ### Checklist
 
 **Have you configured Azure SQL Database with operational excellence in mind?**
+***
 
 > [!div class="checklist"]
 > - Use Active Geo-Replication to create a readable secondary in a different region.
