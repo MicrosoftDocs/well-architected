@@ -16,7 +16,7 @@ categories:
 
 # Azure Well-Architected Framework review - Azure SQL Database
 
-[Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include upgrades, patches, backups,and monitoring.
+[Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a fully managed platform as a service (PaaS) database engine that handles most of the database management functions without user involvement. Management functions include upgrades, patches, backups, and monitoring.
 
 The single database resource type creates a database in Azure SQL Database with its own set of resources and is managed via a [logical server](/azure/azure-sql/database/logical-servers). You can choose between the [DTU-based purchasing model](/azure/azure-sql/database/service-tiers-dtu) or [vCore-based purchasing model](/azure/azure-sql/database/service-tiers-vcore). You can create multiple databases in a single resource pool, with [elastic pools](/azure/azure-sql/database/elastic-pool-overview).
 
