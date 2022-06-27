@@ -56,9 +56,9 @@ items:
             href: resiliency/reliability-patterns.md
       - name: Security
         items:
-          - name: Quick links
-            href: security/index.yml
           - name: About
+            href: security/index.yml
+          - name: Overview
             href: security/overview.md
           - name: Principles
             href: security/security-principles.md
