@@ -405,6 +405,10 @@ items:
                 href: iot/iot-reliability.md
               - name: Security
                 href: iot/iot-security.md
+          - name: Carrier-grade
+            items:
+              - name: Get started
+                href: carrier-grade/carrier-grade-get-started.md
       - name: Services
         items:
           - name: Compute
