@@ -56,9 +56,9 @@ items:
             href: resiliency/reliability-patterns.md
       - name: Security
         items:
-          - name: Quick links
-            href: security/index.yml
           - name: About
+            href: security/index.yml
+          - name: Overview
             href: security/overview.md
           - name: Principles
             href: security/security-principles.md
@@ -543,6 +543,8 @@ items:
                 href: services/networking/azure-application-gateway.md
               - name: Azure Firewall
                 href: services/networking/azure-firewall.md
+              - name: ExpressRoute
+                href: services/networking/azure-expressroute.md
               - name: API Management
                 items:
                   - name: Reliability
@@ -581,12 +583,6 @@ items:
                     href: services/networking/azure-virtual-network/reliability.md
                   - name: Operational excellence
                     href: services/networking/azure-virtual-network/operational-excellence.md
-              - name: ExpressRoute
-                items:
-                  - name: Reliability
-                    href: services/networking/expressroute/reliability.md
-                  - name: Operational excellence
-                    href: services/networking/expressroute/operational-excellence.md
               - name: Azure Load Balancer
                 items:
                   - name: Reliability
