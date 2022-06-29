@@ -409,6 +409,22 @@ items:
             items:
               - name: Get started
                 href: carrier-grade/carrier-grade-get-started.md
+              - name: Design methodology
+                href: carrier-grade/carrier-grade-design-methodology.md
+              - name: Design principles
+                href: carrier-grade/carrier-grade-design-principles.md
+              - name: Design areas
+                items:
+                  - name: Architecture pattern
+                    href: carrier-grade/carrier-grade-architecture-pattern.md
+                  - name: Fault tolerance
+                    href: carrier-grade/carrier-grade-design-area-fault-tolerance.md
+                  - name: Data model
+                    href: carrier-grade/carrier-grade-design-area-data-model.md
+                  - name: Health modeling
+                    href: carrier-grade/carrier-grade-design-area-health-modeling.md
+                  - name: Testing and validation
+                    href: carrier-grade/carrier-grade-design-area-testing.md
       - name: Services
         items:
           - name: Compute
