@@ -61,6 +61,10 @@ This section explores the key considerations and recommendations for application
 
 - Development environments can also encompass the development of Infrastructure-as-Code (IaC) artifacts such as Terraform or Azure Resource Manager (ARM) templates.
 
+#### Demo: Ephemeral dev environments and automated feature validation
+
+[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE50Gm9]
+
 **Staging Environments**
 
 - Staging environments can vary depending on their intended function within the release cycle. They  typically resemble the requirements of the production environment for reliability, capacity, and security.
