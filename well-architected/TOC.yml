@@ -407,6 +407,8 @@ items:
                 href: iot/iot-security.md
           - name: Carrier-grade
             items:
+              - name: Quick links
+                href: carrier-grade/index.yml
               - name: Get started
                 href: carrier-grade/carrier-grade-get-started.md
               - name: Design methodology

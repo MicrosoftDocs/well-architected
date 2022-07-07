@@ -8,7 +8,7 @@ metadata:
   services: na
   author: v-stacywray
   ms.author: prwilk
-  ms.date: 06/29/2022
+  ms.date: 07/05/2022
   ms.topic: landing-page
   ms.service: architecture-center
   ms.subservice: well-architected
@@ -46,4 +46,11 @@ landingContent:
             url: carrier-grade-design-area-health-modeling.md
           - text: Testing and validation
             url: carrier-grade-design-area-testing.md
+   # Card
+  - title: Reference implementation
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text:  Mobile Voice Mail (MVM)
+            url: carrier-grade-get-started.md#reference-implementation-mobile-voice-mail-mvm
 
