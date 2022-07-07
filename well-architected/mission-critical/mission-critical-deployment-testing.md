@@ -63,7 +63,7 @@ This section explores the key considerations and recommendations for application
 
 #### Demo: Ephemeral dev environments and automated feature validation
 
-[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE50Gm9]
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE50Gm9]
 
 **Staging Environments**
 
