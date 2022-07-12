@@ -405,6 +405,24 @@ items:
                 href: iot/iot-reliability.md
               - name: Security
                 href: iot/iot-security.md
+          - name: Sustainability
+            items:
+              - name: Quick links
+                href: sustainability/index.yml
+              - name: Get started
+                href: sustainability/sustainability-get-started.md
+              - name: Design methodology
+                href: sustainability/sustainability-design-methodology.md
+              - name: Design principles
+                href: sustainability/sustainability-design-principles.md
+              - name: Cross-cutting concerns
+                href: sustainability/sustainability-cross-cutting-concerns.md
+              - name: Design areas
+                items:
+                  - name: Architecture pattern
+                    href: sustainability/sustainability-architecture-pattern.md
+                  - name: Design areas
+                    href: sustainability/sustainability-design-areas.md
       - name: Services
         items:
           - name: Compute
