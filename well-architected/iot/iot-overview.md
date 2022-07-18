@@ -1,6 +1,6 @@
 ---
 title: Overview of IoT workloads
-description: Includes guidance and recommendations that apply to each of the five pillars in an IoT workload.
+description: Learn about IoT components, architectural patterns, guiding principles, and architectural layers, and how they relate to well-architected IoT workloads.
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/15/2022
@@ -11,9 +11,9 @@ ms.custom:
   - e2e-iot
 ---
 
-# Overview of IoT workloads
+# Overview of well-architected IoT workloads
 
-Internet of Things (IoT) is a collection of managed and platform services across edge and cloud that connect, monitor, and control physical assets. The IoT workload for the Microsoft Azure Well-Architected Framework helps you meet architectural challenges to design, build, and operate IoT solutions according to your requirements and constraints.
+Internet of Things (IoT) is a collection of managed and platform services across edge and cloud environments that connect, monitor, and control physical assets. The IoT workload for the Microsoft Azure Well-Architected Framework helps you meet architectural challenges to design, build, and operate IoT solutions according to your requirements and constraints.
 
 The IoT Well-Architected Framework addresses the three components of IoT systems:
 
@@ -25,7 +25,7 @@ The IoT Well-Architected Framework uses a set of *guiding principles* based on t
 
 This article describes the IoT guiding principles, architectural patterns, and architecture layers in the IoT Well-Architectured Framework. The remaining articles in this series delve into how to apply the Microsoft Well-Architected Framework pillars of excellence to IoT solutions.
 
-### Microsoft Well-Architected Framework pillars
+### Azure Well-Architected Framework for IoT
 
 The Microsoft Well-Architected Framework consists of five pillars of architectural excellence, which you can use to improve the quality of IoT workloads. The following articles highlight how each pillar relates to IoT workloads and guiding principles:
 
@@ -43,9 +43,7 @@ The Microsoft Well-Architected Framework consists of five pillars of architectur
 
 Most IoT systems use either a *connected products* or *connected operations* architectural pattern. Each pattern has specific requirements and constraints in the IoT Well-Architected Framework.
 
-- *Connected products* architectures focus on the *hot path*. End users manage and interact with products by using real-time applications.
-
-  The connected products pattern is applicable for manufacturers who build smart devices for consumers and businesses in a wide range of locations and settings. Examples include smart coffee machines, smart TVs, and smart production machines. In these IoT solutions, the product builders provide connected services to the product users.
+- *Connected products* architectures focus on the *hot path*. End users manage and interact with products by using real-time applications. The connected products pattern applies to manufacturers of smart devices for consumers and businesses in a wide range of locations and settings. Examples include smart coffee machines, smart TVs, and smart production machines. In these IoT solutions, the product builders provide connected services to the product users.
 
 - *Connected operations​* architectures focus on the *warm or cold path* with edge devices, alerts, and cloud processing. These solutions analyze data from multiple sources, gather operational insights, build machine learning models, and initiate further device and cloud actions.
 
@@ -65,7 +63,7 @@ The high-level guiding principles that facilitate good IoT solution design are:
 - Connectivity
 - Hybridity
 
-The following sections describe the guiding principles, and how they apply to connected products and connected operations architectures.
+The following sections describe the IoT guiding principles, and how they apply to the two IoT architectural patterns.
 
 ### Heterogeneity
 
@@ -101,7 +99,7 @@ In connected products architectures, the wide distribution of devices affects se
 
 ### Connectivity
 
-IoT solutions must be able to handle extended periods of offline, low-bandwidth, or intermittent connectivity. To support connectivity, you should create metrics to track devices that don't communicate regularly.
+IoT solutions must be able to handle extended periods of offline, low-bandwidth, or intermittent connectivity. To support connectivity, you can create metrics to track devices that don't communicate regularly.
 
 Connected products architectures must support unexpected extended periods of offline and low-bandwidth connectivity. Connected products run in uncontrolled consumer environments, so connectivity is unknown and hard to sustain. In connected operations architectures, the deployment model of the OT environment affects connectivity. Typically, the degree of connectivity, including intermittent connectivity, is known and managed in OT scenarios.
 
@@ -253,7 +251,9 @@ Relevant Microsoft technologies include:
 
 ### Cross-cutting activities
 
-Cross-cutting activities like DevOps help you design, build, deploy, and monitor IoT solutions. DevOps is well-known in software development, but can apply to any product or process development and operations. DevOps lets formerly siloed roles, like development, operations, quality engineering, and security, coordinate and collaborate to produce better, more reliable, and agile products. Teams who adopt a DevOps culture, practices, and tools can better respond to customer needs, increase confidence in the applications and products they build, and achieve business goals faster.
+Cross-cutting activities like DevOps help you design, build, deploy, and monitor IoT solutions. DevOps lets formerly siloed roles, like development, operations, quality engineering, and security, coordinate and collaborate to produce better, more reliable, and agile products.
+
+DevOps is well-known in software development, but can apply to any product or process development and operations. Teams who adopt a DevOps culture, practices, and tools can better respond to customer needs, increase confidence in the applications and products they build, and achieve business goals faster.
 
 The following diagram shows the DevOps continuous planning, development, delivery, and operations cycle:
 
@@ -263,7 +263,7 @@ The following diagram shows the DevOps continuous planning, development, deliver
 
 - Management and operations activities identify the current health state of the IoT system across all layers.
 
-Correctly executing DevOps and other cross-cutting activities can determine your success in creating and running a well-architected IoT solution. These activities help you meet the requirements set at design time and adjust for changing requirements over time. It's important to clearly assess your expertise in these activities and take measures to ensure execution at the required quality level.
+Correctly executing DevOps and other cross-cutting activities can determine your success in creating and running a well-architected IoT solution. Cross-cutting activities help you meet the requirements set at design time and adjust for changing requirements over time. It's important to clearly assess your expertise in these activities and take measures to ensure execution at the required quality level.
 
 Relevant Microsoft technologies include:
 
@@ -279,6 +279,18 @@ Relevant Microsoft technologies include:
 
 > [!div class="nextstepaction"]
 > [Cost optimization in your IoT workload](./iot-cost-optimization.md)
+
+> [!div class="nextstepaction"]
+> [Reliability in your IoT workload](./iot-reliability.md)
+
+> [!div class="nextstepaction"]
+> [Security in your IoT workload](./iot-security.md)
+
+> [!div class="nextstepaction"]
+> [Operational excellence in your IoT workload](./iot-operational-excellence.md)
+
+> [!div class="nextstepaction"]
+> [Performance efficiency in your IoT workload](./iot-performance.md)
 
 ## Related resources
 
