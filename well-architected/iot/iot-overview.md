@@ -21,13 +21,13 @@ The IoT Well-Architected Framework addresses the three components of IoT systems
 - *Insights*, information that the things collect that humans or AI analyze and turn into actionable knowledge.
 - *Actions*, the responses of people or systems to insights, which connect to business outcomes, systems, and tools.
 
-The IoT Well-Architected Framework uses a set of *guiding principles* based on the Microsoft Well-Architected Framework to drive planning and decision making. The principles guide a *layered architectural approach* that identifies the logical elements of an IoT solution in either a *connected components* or *connected operations* architectural pattern.
+The IoT Well-Architected Framework uses a set of *guiding principles* based on the Azure Well-Architected Framework to drive planning and decision making. The principles guide a *layered architectural approach* that identifies the logical elements of an IoT solution in either a *connected components* or *connected operations* architectural pattern.
 
-This article describes the IoT guiding principles, architectural patterns, and architecture layers in the IoT Well-Architectured Framework. The remaining articles in this series delve into how to apply the Microsoft Well-Architected Framework pillars of excellence to IoT solutions.
+This article describes the IoT guiding principles, architectural patterns, and architecture layers in the IoT Well-Architectured Framework. The remaining articles in this series delve into how to apply the Azure Well-Architected Framework pillars of excellence to IoT solutions.
 
-### Azure Well-Architected Framework for IoT
+## Azure Well-Architected Framework for IoT workloads
 
-The Microsoft Well-Architected Framework consists of five pillars of architectural excellence, which you can use to improve the quality of IoT workloads. The following articles highlight how each pillar relates to IoT workloads and guiding principles:
+The Azure Well-Architected Framework consists of five pillars of architectural excellence, which you can use to improve the quality of IoT workloads. The following articles highlight how each pillar relates to IoT workloads and guiding principles:
 
 - *Cost optimization* balances business goals with budget justification to create cost-effective workloads while avoiding capital-intensive solutions. [Cost optimization in your IoT workload](iot-cost-optimization.md) looks at ways to reduce expenses and improve operational efficiency across IoT workload layers.
 
@@ -51,7 +51,7 @@ Most IoT systems use either a *connected products* or *connected operations* arc
 
 ## IoT guiding principles
 
-The IoT Well-Architected Framework adds IoT-specific guiding principles to the pillars of the Microsoft Well-Architected Framework. These well-architected pillars and principles help clarify considerations for IoT workloads to meet requirements across architectural layers.
+The IoT Well-Architected Framework adds IoT-specific guiding principles to the Azure Well-Architected Framework pillars. These principles help clarify considerations for IoT workloads to meet requirements across architectural layers.
 
 The high-level guiding principles that facilitate good IoT solution design are:
 
@@ -63,7 +63,7 @@ The high-level guiding principles that facilitate good IoT solution design are:
 - Connectivity
 - Hybridity
 
-The following sections describe the IoT guiding principles, and how they apply to the two IoT architectural patterns.
+The following sections describe the IoT guiding principles, and how they apply to the IoT connected products and connected operations architectural patterns.
 
 ### Heterogeneity
 
@@ -81,9 +81,9 @@ In connected operations architectures, the security requirements for the deploym
 
 ### Scale
 
-IoT solutions must be able to support *hyper-scalability*, with millions of connected devices and events, and must ingest large amounts of data at high frequency. IoT solutions must enable proof of concept and pilot projects that start with a few devices and events, and then scale out to hyper-scale dimensions. Considering the scalability of each architectural layer is essential to IoT solution success.
+IoT solutions must be able to support *hyper-scalability*, with millions of connected devices and events ingesting large amounts of data at high frequency. IoT solutions must enable proof of concept and pilot projects that start with a few devices and events, and then scale out to hyper-scale dimensions. Considering the scalability of each architectural layer is essential to IoT solution success.
 
-In connected products architectures, scalability describes the number of devices. In most cases, each device has a limited set of data and interactions, controlled by the device builder, and scale comes only from the number of devices deployed. In connected operations architectures, scalability depends on the number of messages and events to process. In general, the number of machines and devices is limited, but OT machines and devices send large numbers of messages and events.
+In connected products architectures, scale describes the number of devices. In most cases, each device has a limited set of data and interactions, controlled by the device builder, and scale comes only from the number of devices deployed. In connected operations architectures, scalability depends on the number of messages and events to process. In general, the number of machines and devices is limited, but OT machines and devices send large numbers of messages and events.
 
 ### Flexibility
 
