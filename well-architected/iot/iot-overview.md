@@ -75,7 +75,7 @@ In connected products architectures, heterogeneity describes the varieties of ma
 
 IoT solutions must consider security and privacy measures across all layers. Security measures include device and user identity, authentication and authorization, data protection for data at rest and in transit, and strategies for data attestation.
 
-In connected products architectures, limited control over product use in heterogeneous and widely-distributed environments affects security. According to the Microsoft Threat Modeling Tool [STRIDE](/azure/security/develop/threat-modeling-tool-threats#stride) model, the highest risk to devices is from tampering, and the threat to services is from denial of services from hijacked devices.
+In connected products architectures, limited control over product use in heterogeneous and widely distributed environments affects security. According to the Microsoft Threat Modeling Tool [STRIDE](/azure/security/develop/threat-modeling-tool-threats#stride) model, the highest risk to devices is from tampering, and the threat to services is from denial of services from hijacked devices.
 
 In connected operations architectures, the security requirements for the deployment environment are important. Security focuses on specific OT environment requirements and deployment models, such as [ISA95](https://www.isa.org/standards-and-publications/isa-standards/isa-standards-committees/isa95) and Purdue, and integration with the cloud-based IoT platform. Based on [STRIDE](/azure/security/develop/threat-modeling-tool-threats#stride), the highest security risks for connected operations are spoofing, tampering, information disclosure, and elevation of privilege.
 
@@ -109,7 +109,7 @@ In connected operations architectures, the deployment model of the OT environmen
 
 ### Hybridity
 
-IoT solutions must address hybrid complexity, running on different hardware and platforms across on-premises, edge, and multi-cloud environments. Managing disparate IoT workload architectures, ensuring uncompromised security, and enabling developer agility are critical.
+IoT solutions must address hybrid complexity, running on different hardware and platforms across on-premises, edge, and multi-cloud environments. It's critical to manage disparate IoT workload architectures, ensure uncompromised security, and enable developer agility.
 
 In connected products architectures, the wide distribution of devices defines hybridity. The IoT solution builder controls the hardware and runtime platform, and hybridity focuses on the diversity of the deployment environments.
 
