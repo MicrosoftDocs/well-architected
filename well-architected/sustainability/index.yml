@@ -40,5 +40,16 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Design areas
-            url: sustainability-design-areas.md
+          - text: Compute design consideration of a sustainable workload on Azure
+            url: sustainability-compute-design.md
+          - text: Network design of sustainable workloads on Azure
+            url: sustainability-network-design.md
+          - text: Storage design considerations of a sustainable workload on Azure
+            url: sustainability-storage-design.md
+# Card
+  - title: Reference Solutions
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: A proxy architecture to score sustainability
+            url: /azure/architecture/reference-architectures/ # TODO When the link exist to the reference architecture in AAC, add it here and remove this comment.

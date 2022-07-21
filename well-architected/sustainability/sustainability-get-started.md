@@ -17,16 +17,116 @@ ms.custom:
 
 # Sustainable workloads
 
-[Intro paragraph]
-
 ## What is a sustainable workload?
+
+The term _workload_ refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
+
+With _sustainability_, we refer to the environmental impact of our workloads.
+
+A _sustainable workload_ therefore describes the practice of designing solutions that maximize utilization while minimizing waste, ultimately reducing the footprint on the environment.
 
 ## What are the common challenges?
 
-## Is sustainability only about reliability?
+TBD
+
+- Measuring and tracking carbon impact
+- Designing workloads that are natively environmentally friendly and optimized
+
+## Is sustainability only about performance efficiency?
+
+<!-- TBD: Remove this H2? -->
+
+While performance efficiency is a strong focus for designing sustainable workloads, the other pillars of the Well-Architected Framework are equally important when building long-term sustainable workloads on Azure.
+
+- [Security](/azure/architecture/framework/security/): TODO
+- [Reliability](/azure/architecture/framework/resiliency/): TODO
+- [Cost Optimization](/azure/architecture/framework/scalability/): TODO
+- [Operational Excellence](/azure/architecture/framework/devops/): TODO
 
 ## What are the key design areas?
 
+Sustainable guidance within this series is composed of architectural considerations and recommendations oriented around these key design areas.
+
+> TODO: Insert graphic.
+
+Decisions made in one design area can impact impact or influence decisions across the entire design. The focus is ultimately on building a sustainable solution to minimize the footprint and impact on the environment.
+
+- **Compute**:&mdash;TODO
+- **Network**:&mdash;TODO
+- **Storage**:&mdash;TODO
+<!-- - **App Innovation**:&mdash;TODO
+- **Data &amp; AI**:&mdash;TODO -->
+
 ## Illustrative examples
+
+The guidance provided within this series is based on a solution-oriented approach to illustrate key design considerations and recommendations for sustainability. There are several reference implementations available as part of an open source project on GitHub. These implementations can be used as a basis for further solution development.
+
+> TODO: Insert link to Sustainability repository
+
+- [A proxy architecture to score sustainability](#) (TODO: Link to AAC article)
+
+[Implementation: Sustainability Reference Architecture](#) (TODO: Link to specific implementation on GitHub).
+
+> TODO: Information from the reference architecture doc.
+
+## Measure and track carbon impact
+According to the Green Software Foundation, to which Microsoft’s view is aligned on green software, the measurement for the carbon impact of an application is Software Carbon Intensity (SCI), and is calculated as follows:
+```SCI = ((E*I)+M) per R```
+
+Where:
+*	E	= energy consumed by software (kWh)
+*	I	= carbon emitted per kWh of energy, gCO2/kWh
+*	M	= carbon emitted through the hardware that software is running on
+*	R	= Functional Unit, which is how the application is scaling: per user, per service, etc.
+
+Therefore, you should take into account not just the application infrastructure, but also the user devices and how the application scales, because it might have a larger impact than thought.
+Let’s now review the main principles of green software before modelling our well architected sustainable application.
+
+## Principles of green software
+The principles of green software are the starting point to understand the SCI model and how this will be included in our framework.
+
+### Carbon Efficient
+The application or software must emit the least amount of carbon possible. A carbon efficient cloud application is one that is optimized, and the starting point is the cost – streamlining the application infrastructure and cost will ensure that no unnecessary resources are wasted in the cloud to run the software. But this is, obviously not enough, as you might have cost optimized your application but still waste tons of resources that emit carbon for no reason.
+
+### Electricity
+The goal of this principle is that you build applications that are energy-efficient. This is a common pattern for mobile applications, since they must rely on a battery powered device and are usually optimizing its consumption. It is less common, however, for desktop or web applications, since until now, developers have never been asked to optimize the electricity consumption of their software.
+
+### Carbon Aware Computing
+We need to make the application aware of how much carbon it’s emitting. This way, we can react to specific conditions of energy supply, using demand shifting and demand shaping techniques:
+-	Demand shifting means moving the workloads and resources to regions or datacenters where the energy supply is higher (and incidentally the cost is lower)
+-	Demand shaping means changing the application’s behavior and appearance to match the energy supply in real-time. A good practice is to build a eco-version of the app and keep it as benchmark for demand shaping but also for carbon optimization.
+### Embodied Carbon
+Embodied carbon is the carbon that was emitted to build a device. Therefore, a sustainable application will make sure older devices are supported and will maximize the efficiency of each device.  The goal is to build hardware-efficient applications.
+### Reducing emissions
+In order to reduce carbon emissions, we have three possible solutions:
+*	Carbon neutralization – compensating carbon emissions
+*	Carbon avoidance – not emitting carbon in the first place
+*	Carbon removal – subtract carbon from the atmosphere
+Carbon removal is referred to as “the only way to bring our atmospheric levels back to normal and undo the damage already done.” The goal of green software is to avoid emitting unnecessary emissions in the first place.
+### Measuring
+Measuring carbon emissions of a cloud application is a complex task, as it involves the whole ecosystem of the software: from the cloud infrastructure (where we have the emissions dashboards to help us out), to the network path that is crossed, to the edge technology and user devices. With the SCI, we aren't targeting a discrete measurement of carbon emissions, but a score that will change over time and with our optimization techniques.
+## Shared responsibility model for carbon
+As mentioned earlier, an application’s impact on carbon emission isn't solely limited to the cloud infrastructure but will span several technologies and points of usage. 
+The first step of the cloud efficiency (cost + carbon) paradigm is optimizing the cost of the application. Refer to the cost optimization pillar for additional info.
+
+We're already familiar with all the cost management guidelines.
+Optimizing carbon emissions means to make your applications and architectures carbon aware, score them against a benchmark or proxy to measure any improvement or status change, and take any available actions to reduce emissions according to the situation and workload.
+
+Optimizing your workload for energy means being aware of their energy requirements and have the software perform the same features with less electricity consumption.
+Once you have an optimized and streamlined application, it’s time to work on its carbon and energy impact.
+
+The cloud provider is responsible for all the datacenter portion of the app: Microsoft has a sustainability goal and most of its Azure datacenters are driving towards a zero-emission goal (**more info or link here).
+But putting an application in the cloud doesn't mean that automatically it's sustainable. Let’s pick an example: 
+*	An application that is heavy on carbon is using X resources on Azure
+*	10 highly optimized and efficient applications can run on the same X resources on Azure.
+This means that even if we're using resources that are carbon optimized, we shouldn't waste them and in principle, try to use them in the most efficient possible way. Just as resiliency, sustainability is a shared responsibility goal that needs to combine the efforts of both the Azure cloud provider and the customer or partner that is designing and implementing the application.
+## Cloud efficiency process overview
+### Optimize workload to reduce direct factors
+Reduce the impact of compute by right sizing resources, introduce dynamic autoscaling to allocate and deallocate resources when needed, modernize your application components towards PaaS and serverless technologies. Consider running batch workloads during quiet hours, and upgrade frameworks to improve efficiency.
+### Reduce indirect factors
+Scope 3 emissions account for a large carbon impact through application delivery, reduce network bandwidth through compression, consider using a Content Delivery Network (CDN), and reducing asset sizes.
+### Continuously reevaluate and improve
+Schedule regular reviews of the Emissions Impact Dashboard and your SCI score, set measures and scorecards, document success and forecast future impact
+
 
 ## Next step
