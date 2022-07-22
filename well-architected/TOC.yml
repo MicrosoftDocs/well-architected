@@ -419,10 +419,12 @@ items:
                 href: sustainability/sustainability-cross-cutting-concerns.md
               - name: Design areas
                 items:
-                  - name: Architecture pattern
-                    href: sustainability/sustainability-architecture-pattern.md
-                  - name: Design areas
-                    href: sustainability/sustainability-design-areas.md
+                  - name: Network design
+                    href: sustainability/sustainability-network-design.md
+                  - name: Storage design
+                    href: sustainability/sustainability-storage-design.md
+                  - name: Compute design
+                    href: sustainability/sustainability-compute-design.md
       - name: Services
         items:
           - name: Compute
