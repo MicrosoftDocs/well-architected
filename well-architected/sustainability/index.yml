@@ -40,12 +40,18 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Compute design consideration of a sustainable workload on Azure
-            url: sustainability-compute-design.md
-          - text: Network design of sustainable workloads on Azure
-            url: sustainability-network-design.md
-          - text: Storage design considerations of a sustainable workload on Azure
-            url: sustainability-storage-design.md
+          - text: Carbon Efficiency
+            url: sustainability-carbon-efficiency.md
+          - text: Energy Efficiency
+            url: sustainability-energy-efficiency.md
+          - text: Carbon Awareness
+            url: sustainability-carbon-awareness.md
+          - text: Hardware Efficiency
+            url: sustainability-hardware-efficiency.md
+          - text: Climate Commitments
+            url: sustainability-climate-commitments.md
+          - text: Measuring Sustainability
+            url: sustainability-measuring.md
 # Card
   - title: Reference Solutions
     linkLists:

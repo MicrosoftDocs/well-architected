@@ -74,13 +74,9 @@ Sustainable guidance within this series is composed of architectural considerati
 
 > TODO: If possible, insert graphic.
 
-Decisions made in one design area can impact impact or influence decisions across the entire design. The focus is ultimately on building a sustainable solution to minimize the footprint and impact on the environment.
+Decisions made in one design area can impact or influence decisions across the entire design. The focus is ultimately on building a sustainable solution to minimize the footprint and impact on the environment.
 
-|Design area|Summary|
-|---|---|
-|[Carbon Efficiency](sustainability-carbon-efficiency.md)|TODO.|
-|[Energy Efficiency](sustainability-energy-efficiency.md)|TODO.|
-|[Computing](sustainability-compute-design.md)|TODO.|
+> TBD: Decide whether the design areas are the principles from the green software foundation, or our WAF Pillars.
 
 ## Illustrative examples
 
@@ -96,8 +92,8 @@ The guidance provided within this series is based on a solution-oriented approac
 
 ## Shared responsibility model for carbon
 
-As mentioned earlier, an application’s impact on carbon emission isn't solely limited to the cloud infrastructure but will span several technologies and points of usage. 
-The first step of the cloud efficiency (cost + carbon) paradigm is optimizing the cost of the application. Refer to the cost optimization pillar for additional info.
+As mentioned earlier, an application’s impact on carbon emission isn't solely limited to the cloud infrastructure but will span several technologies and points of usage.
+The first step of the cloud efficiency (cost + carbon) paradigm is optimizing the cost of the application. Refer to the cost optimization pillar for more info.
 
 We're already familiar with all the cost management guidelines.
 Optimizing carbon emissions means to make your applications and architectures carbon aware, score them against a benchmark or proxy to measure any improvement or status change, and take any available actions to reduce emissions according to the situation and workload.

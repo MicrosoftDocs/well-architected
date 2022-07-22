@@ -26,7 +26,7 @@ To achieve an increase in carbon efficiency, consider how your workload directly
 - Using energy and resources more intelligently
 - Supporting older devices
 
-It is important to effectively record, report, and reduce carbon emissions through actionable insights.
+It's important to effectively record, report, and reduce carbon emissions through actionable insights.
 
 - Gain transparency into your current carbon impact
 - Estimate savings
@@ -42,13 +42,13 @@ Each design principle map to one or more of the pillars in the Azure Well-Archit
 
 ### Carbon Efficient
 
-The application or software must emit the least amount of carbon possible. A carbon efficient cloud application is one that is optimized, and the starting point is the cost – streamlining the application infrastructure and cost will ensure that no unnecessary resources are wasted in the cloud to run the software. But this is, obviously not enough, as you might have cost optimized your application but still waste tons of resources that emit carbon for no reason.
+The application or software must emit the least amount of carbon possible. A carbon efficient cloud application is one that is optimized, and the starting point is the cost – streamlining the application infrastructure and cost will ensure that no unnecessary resources are wasted in the cloud to run the software. But this is not enough, as you might have cost optimized your application but still waste tons of resources that emit carbon for no reason.
 
 Review the design area for [carbon efficiency](sustainability-carbon-efficiency.md).
 
 ### Energy efficiency
 
-The goal of this principle is that you build applications that are energy-efficient. This is a common pattern for mobile applications, since they must rely on a battery powered device and are usually optimizing its consumption. It is less common, however, for desktop or web applications, since until now, developers have never been asked to optimize the electricity consumption of their software.
+The goal of this principle is that you build applications that are energy-efficient. This is a common pattern for mobile applications, since they must rely on a battery powered device and are optimizing its consumption. It's less common, however, for desktop or web applications, since until now, developers have never been asked to optimize the electricity consumption of their software.
 
 Review the design area for [energy efficiency](sustainability-energy-efficiency.md).
 
@@ -57,7 +57,7 @@ Review the design area for [energy efficiency](sustainability-energy-efficiency.
 We need to make the application aware of how much carbon it’s emitting. This way, we can react to specific conditions of energy supply, using demand shifting and demand shaping techniques:
 
 - Demand shifting means moving the workloads and resources to regions or datacenters where the energy supply is higher (and incidentally the cost is lower)
-- Demand shaping means changing the application’s behavior and appearance to match the energy supply in real-time. A good practice is to build a eco-version of the app and keep it as benchmark for demand shaping but also for carbon optimization.
+- Demand shaping means changing the application’s behavior and appearance to match the energy supply in real-time. A good practice is to build an eco-version of the app and keep it as benchmark for demand shaping but also for carbon optimization.
 
 Review the design area for [carbon awareness](sustainability-carbon-awareness.md).
 
@@ -67,9 +67,15 @@ Embodied carbon is the carbon that was emitted to build a device. Therefore, a s
 
 Review the design area for [hardware efficiency](sustainability-hardware-efficiency.md).
 
-### Climate Commitments
+### Reducing emissions
 
-.
+In order to reduce carbon emissions, we have three possible solutions:
+
+- Carbon neutralization – compensating carbon emissions
+- Carbon avoidance – not emitting carbon in the first place
+- Carbon removal – subtract carbon from the atmosphere
+
+Carbon removal is referred to as “the only way to bring our atmospheric levels back to normal and undo the damage already done.” The goal of green software is to avoid emitting unnecessary emissions in the first place.
 
 ### Measuring Sustainability
 

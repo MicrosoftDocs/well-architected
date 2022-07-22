@@ -24,17 +24,17 @@ ms.custom:
 |---|---|---|
 |[Update services, OS, software libraries to gain performance efficiencies](/azure/architecture/hybrid/azure-update-mgmt)|Performance Efficiency|TBD|
 |Consider ARM SKUs for VMs/compute|Performance Efficiency|TBD|
-|Profile workloads to make use of parallelization where possible with GPUs vs CPUs for efficiency gains (e.g. inference). Profile workloads to get balance of CPU and memory usage.|Performance Efficiency|TBD|
-|[Optimize for async access patterns. Queue requests that do not require immediate processing - buffer then process in batch. Flatten consumption to avoid spiky requests](/azure/architecture/patterns/async-request-reply)|Performance Efficiency|TBD|
+|Profile workloads to make use of parallelization where possible with GPUs vs CPUs for efficiency gains (for example, inference). Profile workloads to get balance of CPU and memory usage.|Performance Efficiency|TBD|
+|[Optimize for async access patterns. Queue requests that don't require immediate processing - buffer then process in batch. Flatten consumption to avoid spiky requests](/azure/architecture/patterns/async-request-reply)|Performance Efficiency|TBD|
 |[Select regions based on where the consumer resides](/azure/architecture/solution-ideas/articles/move-azure-resources-across-regions)|Performance Efficiency|TBD|
 |[Consider CDN and/or enable local caching](/azure/architecture/best-practices/cdn)|Performance Efficiency|TBD|
 |Enable network compression. Reduce network payload|Performance Efficiency|TBD|
 |[Use storage best suited to data access patterns](/azure/architecture/guide/design-principles/use-best-data-store)|Performance Efficiency|TBD|
 |[Monoliths -> microservices to scale only necessary components (if it fits workload profile)](/azure/architecture/guide/architecture-styles/microservices)|Performance Efficiency|TBD|
-|Optimise code for efficient resource usage, e.g. modularity; DRY; efficient algorithms e.g. O(n) > O(n^2)|Performance Efficiency|TBD|
+|Optimize code for efficient resource usage, for example, modularity; DRY; efficient algorithms for example, O(n) > O(n^2)|Performance Efficiency|TBD|
 |[Reduce chattiness of APIs. Throttle APIs. Reduce payload returned](/azure/architecture/best-practices/message-encode)|Performance Efficiency|TBD|
-|Evaludate server-side vs client-side rendering. That is code rendered once preferable over rendering per request.|Performance Efficiency|TBD|
-|Be aware of UX design for sustainability e.g. use SD rather than HD|Performance Efficiency|TBD|
+|Evaluate server-side vs client-side rendering. That is code rendered once preferable over rendering per request.|Performance Efficiency|TBD|
+|Be aware of UX design for sustainability, e.g.,  use SD rather than HD|Performance Efficiency|TBD|
 |Keep OS, language runtimes and libraries up to date for latest efficiency gains|Operational Excellence|TBD|
 |Review platform updates regularly, and upgrade to newer/more efficient services as they become available|Operational Excellence|TBD|
 |Use DDoS protection to mitigate the compute impact of a successful attack|Security|TBD|
