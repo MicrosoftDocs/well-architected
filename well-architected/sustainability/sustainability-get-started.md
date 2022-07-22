@@ -26,24 +26,37 @@ With _sustainability_, we refer to the environmental impact of our workloads.
 A _sustainable workload_ therefore describes the practice of designing solutions that maximize utilization while minimizing waste, ultimately reducing the footprint on the environment.
 
 ### Measure and track carbon impact
+
 According to the Green Software Foundation, to which Microsoft’s view is aligned on green software, the measurement for the carbon impact of an application is Software Carbon Intensity (SCI), and is calculated as follows:
 ```SCI = ((E*I)+M) per R```
 
 Where:
-*	E	= energy consumed by software (kWh)
-*	I	= carbon emitted per kWh of energy, gCO2/kWh
-*	M	= carbon emitted through the hardware that software is running on
-*	R	= Functional Unit, which is how the application is scaling: per user, per service, etc.
+
+- E	= energy consumed by software (kWh)
+- I	= carbon emitted per kWh of energy, gCO2/kWh
+- M	= carbon emitted through the hardware that software is running on
+- R	= Functional Unit, which is how the application is scaling: per user, per service, etc.
 
 Therefore, you should take into account not just the application infrastructure, but also the user devices and how the application scales, because it might have a larger impact than thought.
 
 Review the main [design principles for sustainable workloads on Azure](sustainability-design-principles.md) to learn how you can build and optimize your solutions in alignment with the Green Software Foundation.
+
 ## What are the common challenges?
 
 > TODO. Common challenges customers experience when designing sustainable workloads.
 
 - Measuring and tracking carbon impact
 - Designing workloads that are natively environmentally friendly and optimized
+
+### Reducing emissions
+
+In order to reduce carbon emissions, we have three possible solutions:
+
+- Carbon neutralization – compensating carbon emissions
+- Carbon avoidance – not emitting carbon in the first place
+- Carbon removal – subtract carbon from the atmosphere
+
+Carbon removal is referred to as “the only way to bring our atmospheric levels back to normal and undo the damage already done.” The goal of green software is to avoid emitting unnecessary emissions in the first place.
 
 ## Is sustainability only about performance and cost?
 
@@ -81,8 +94,8 @@ The guidance provided within this series is based on a solution-oriented approac
 
 > TODO: Information from the reference architecture doc.
 
-
 ## Shared responsibility model for carbon
+
 As mentioned earlier, an application’s impact on carbon emission isn't solely limited to the cloud infrastructure but will span several technologies and points of usage. 
 The first step of the cloud efficiency (cost + carbon) paradigm is optimizing the cost of the application. Refer to the cost optimization pillar for additional info.
 
@@ -93,17 +106,25 @@ Optimizing your workload for energy means being aware of their energy requiremen
 Once you have an optimized and streamlined application, it’s time to work on its carbon and energy impact.
 
 The cloud provider is responsible for all the datacenter portion of the app: Microsoft has a sustainability goal and most of its Azure datacenters are driving towards a zero-emission goal (**more info or link here).
-But putting an application in the cloud doesn't mean that automatically it's sustainable. Let’s pick an example: 
-*	An application that is heavy on carbon is using X resources on Azure
-*	10 highly optimized and efficient applications can run on the same X resources on Azure.
-This means that even if we're using resources that are carbon optimized, we shouldn't waste them and in principle, try to use them in the most efficient possible way. Just as resiliency, sustainability is a shared responsibility goal that needs to combine the efforts of both the Azure cloud provider and the customer or partner that is designing and implementing the application.
-## Cloud efficiency process overview
-### Optimize workload to reduce direct factors
-Reduce the impact of compute by right sizing resources, introduce dynamic autoscaling to allocate and deallocate resources when needed, modernize your application components towards PaaS and serverless technologies. Consider running batch workloads during quiet hours, and upgrade frameworks to improve efficiency.
-### Reduce indirect factors
-Scope 3 emissions account for a large carbon impact through application delivery, reduce network bandwidth through compression, consider using a Content Delivery Network (CDN), and reducing asset sizes.
-### Continuously reevaluate and improve
-Schedule regular reviews of the Emissions Impact Dashboard and your SCI score, set measures and scorecards, document success and forecast future impact
+But putting an application in the cloud doesn't mean that automatically it's sustainable. Let’s pick an example:
 
+- An application that is heavy on carbon is using X resources on Azure
+- 10 highly optimized and efficient applications can run on the same X resources on Azure.
+
+This means that even if we're using resources that are carbon optimized, we shouldn't waste them and in principle, try to use them in the most efficient possible way. Just as resiliency, sustainability is a shared responsibility goal that needs to combine the efforts of both the Azure cloud provider and the customer or partner that is designing and implementing the application.
+
+## Cloud efficiency process overview
+
+### Optimize workload to reduce direct factors
+
+Reduce the impact of compute by right sizing resources, introduce dynamic autoscaling to allocate and deallocate resources when needed, modernize your application components towards PaaS and serverless technologies. Consider running batch workloads during quiet hours, and upgrade frameworks to improve efficiency.
+
+### Reduce indirect factors
+
+Scope 3 emissions account for a large carbon impact through application delivery, reduce network bandwidth through compression, consider using a Content Delivery Network (CDN), and reducing asset sizes.
+
+### Continuously reevaluate and improve
+
+Schedule regular reviews of the Emissions Impact Dashboard and your SCI score, set measures and scorecards, document success and forecast future impact
 
 ## Next step

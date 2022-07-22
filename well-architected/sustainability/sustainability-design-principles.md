@@ -67,15 +67,9 @@ Embodied carbon is the carbon that was emitted to build a device. Therefore, a s
 
 Review the design area for [hardware efficiency](sustainability-hardware-efficiency.md).
 
-### Reducing emissions
+### Climate Commitments
 
-In order to reduce carbon emissions, we have three possible solutions:
-
-- Carbon neutralization – compensating carbon emissions
-- Carbon avoidance – not emitting carbon in the first place
-- Carbon removal – subtract carbon from the atmosphere
-
-Carbon removal is referred to as “the only way to bring our atmospheric levels back to normal and undo the damage already done.” The goal of green software is to avoid emitting unnecessary emissions in the first place.
+.
 
 ### Measuring Sustainability
 
