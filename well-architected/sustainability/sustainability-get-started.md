@@ -65,8 +65,8 @@ Decisions made in one design area can impact impact or influence decisions acros
 
 |Design area|Summary|
 |---|---|
-|[Network design](sustainability-network-design.md)|TODO.|
-|[Storage](sustainability-storage-design.md)|TODO.|
+|[Carbon Efficiency](sustainability-carbon-efficiency.md)|TODO.|
+|[Energy Efficiency](sustainability-energy-efficiency.md)|TODO.|
 |[Computing](sustainability-compute-design.md)|TODO.|
 
 ## Illustrative examples
