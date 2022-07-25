@@ -40,19 +40,19 @@ The principles of green software are the starting point to understand the SCI mo
 
 Each design principle map to one or more of the pillars in the Azure Well-Architected Framework.
 
-### Carbon Efficient
+## Carbon Efficient
 
 The application or software must emit the least amount of carbon possible. A carbon efficient cloud application is one that is optimized, and the starting point is the cost – streamlining the application infrastructure and cost will ensure that no unnecessary resources are wasted in the cloud to run the software. But this is not enough, as you might have cost optimized your application but still waste tons of resources that emit carbon for no reason.
 
 Review the design area for [carbon efficiency](sustainability-carbon-efficiency.md).
 
-### Energy efficiency
+## Energy efficiency
 
 The goal of this principle is that you build applications that are energy-efficient. This is a common pattern for mobile applications, since they must rely on a battery powered device and are optimizing its consumption. It's less common, however, for desktop or web applications, since until now, developers have never been asked to optimize the electricity consumption of their software.
 
 Review the design area for [energy efficiency](sustainability-energy-efficiency.md).
 
-### Carbon Awareness
+## Carbon Awareness
 
 We need to make the application aware of how much carbon it’s emitting. This way, we can react to specific conditions of energy supply, using demand shifting and demand shaping techniques:
 
@@ -61,13 +61,13 @@ We need to make the application aware of how much carbon it’s emitting. This w
 
 Review the design area for [carbon awareness](sustainability-carbon-awareness.md).
 
-### Hardware Efficiency
+## Hardware Efficiency
 
 Embodied carbon is the carbon that was emitted to build a device. Therefore, a sustainable application will make sure older devices are supported and will maximize the efficiency of each device.  The goal is to build hardware-efficient applications.
 
 Review the design area for [hardware efficiency](sustainability-hardware-efficiency.md).
 
-### Reducing emissions
+## Reducing emissions
 
 In order to reduce carbon emissions, we have three possible solutions:
 
@@ -77,7 +77,7 @@ In order to reduce carbon emissions, we have three possible solutions:
 
 Carbon removal is referred to as “the only way to bring our atmospheric levels back to normal and undo the damage already done.” The goal of green software is to avoid emitting unnecessary emissions in the first place.
 
-### Measuring Sustainability
+## Measuring Sustainability
 
 Measuring carbon emissions of a cloud application is a complex task, as it involves the whole ecosystem of the software: from the cloud infrastructure (where we have the emissions dashboards to help us out), to the network path that is crossed, to the edge technology and user devices. With the SCI, we aren't targeting a discrete measurement of carbon emissions, but a score that will change over time and with our optimization techniques.
 
