@@ -1,7 +1,7 @@
 ### YamlMime:Landing
 
 title: Mission-critical workload documentation
-summary: In this series, learn about building highly reliable applications for mission-critical workloads on Microsoft Azure. The articles in this series provide a prescriptive architectural approach to designing, building, and operating highly reliable applications. For given set of business requirements, an application should always be operational and available. While there are many approaches to achieving high reliability, one of the goals is to accelerate adoption toward cloud native solutions to derive maximum value from the Microsoft Cloud.
+summary: In this series, learn about building highly reliable applications for mission-critical workloads on Microsoft Azure. The articles in this series provide a prescriptive architectural approach to designing, building, and operating highly reliable applications. For a given set of business requirements, an application should always be operational and available. While there are many approaches to achieving high reliability, one of the goals is to accelerate adoption toward cloud native solutions to derive maximum value from the Microsoft Cloud.
 metadata: 
   title: Mission-critical workload documentation
   description: Apply the design methodology and approach to building highly reliable applications on Microsoft Azure.
