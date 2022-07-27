@@ -135,7 +135,7 @@ The ability to detect and pinpoint the source of an issue is critical. However, 
 
 ### Ingestion and communication layer
 
-This architecture layer handles service quotas and limits, capacity, throttling, and autoscale.
+This IoT architecture layer covers service quotas and limits, capacity, throttling, and autoscale.
 
 #### Design for redundant capacity
 
@@ -225,7 +225,7 @@ The following actions support observability for IoT solutions:
 
 - Azure Monitor provides custom log parsing to facilitate the decomposition of events and records into individual fields for indexing and search.
 
-- Implement a real-time dashboard and Azure Monitor alerts to monitor Azure backend services. Alerts proactively notify you about specific conditions in your monitoring data, so you can identify and address issues before customers encounter them. You can set alerts on metrics, logs, and the activity log.
+- Implement real-time dashboards and Azure Monitor alerts to monitor Azure backend services. Alerts proactively notify you about specific conditions in your monitoring data, so you can identify and address issues before customers encounter them. You can set alerts on metrics, logs, and the activity log.
 
 [Application Insights](/azure/azure-monitor/app/cloudservices) is a feature of Azure Monitor that provides extensible application performance management and monitoring for live web apps. If an IoT solution requires a custom application in Azure App Service, Azure Kubernetes Service, or Azure Functions, use Application Insights for application monitoring and analysis.
 
@@ -238,12 +238,12 @@ You can use Application Insights to:
 
 #### Continuous monitoring
 
-Continuous integration and continuous deployment (CI/CD) is a DevOps concept that helps you deliver software more quickly and reliably and provide continuous value to your users. *Continuous monitoring (CM)* is a follow-up concept that lets you incorporate monitoring across each phase of your DevOps cycle.
+Continuous integration and continuous deployment (CI/CD) is a DevOps concept that helps you deliver software more quickly and reliably to provide continuous value to your users. *Continuous monitoring (CM)* is a follow-up concept that lets you incorporate monitoring across each phase of your DevOps cycle.
 
 CM continuously ensures the health, performance, and reliability of your apps and infrastructure as they flow through development, production, and release to customers. For more information, see:
 
 - [Seven best practices for continuous monitoring with Azure Monitor](https://azure.microsoft.com/blog/7-best-practices-for-continuous-monitoring-with-azure-monitor)
-- [Continuous integration and continuous deployment to Azure IoT Edge devices](/azure/iot-edge/how-to-continuous-integration-continuous-deployment-classic)
+- [Continuous integration and continuous deployment to Azure IoT Edge devices](/azure/iot-edge/how-to-continuous-integration-continuous-deployment)
 
 #### Monitoring resources
 
