@@ -23,7 +23,7 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: What is mission critical?
+          - text: About mission-critical workloads
             url: mission-critical-overview.md
           - text: Design methodology
             url: mission-critical-design-methodology.md
