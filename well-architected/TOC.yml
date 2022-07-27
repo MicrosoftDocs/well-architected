@@ -419,18 +419,20 @@ items:
                 href: sustainability/sustainability-cross-cutting-concerns.md
               - name: Design areas
                 items:
-                  - name: Carbon Efficiency
-                    href: sustainability/sustainability-carbon-efficiency.md
-                  - name: Energy Efficiency
-                    href: sustainability/sustainability-energy-efficiency.md
-                  - name: Carbon Awareness
-                    href: sustainability/sustainability-carbon-awareness.md
-                  - name: Hardware Efficiency
-                    href: sustainability/sustainability-hardware-efficiency.md
-                  - name: Climate Commitments
-                    href: sustainability/sustainability-climate-commitments.md
-                  - name: Measuring Sustainability
-                    href: sustainability/sustainability-measuring.md
+                - name: Compute design
+                  href: sustainability/sustainability-compute.md
+                - name: Operations
+                  href: sustainability/sustainability-operations.md
+                - name: Deployment &amp; DevOps
+                  href: sustainability/sustainability-deployment-devops.md
+                - name: Networking
+                  href: sustainability/sustainability-networking.md
+                - name: Storage
+                  href: sustainability/sustainability-storage.md
+                - name: Application design
+                  href: sustainability/sustainability-application-design.md
+                - name: Security
+                  href: sustainability/sustainability-security.md
       - name: Services
         items:
           - name: Compute

@@ -40,22 +40,17 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Carbon Efficiency
-            url: sustainability-carbon-efficiency.md
-          - text: Energy Efficiency
-            url: sustainability-energy-efficiency.md
-          - text: Carbon Awareness
-            url: sustainability-carbon-awareness.md
-          - text: Hardware Efficiency
-            url: sustainability-hardware-efficiency.md
-          - text: Climate Commitments
-            url: sustainability-climate-commitments.md
-          - text: Measuring Sustainability
-            url: sustainability-measuring.md
-# Card
-  - title: Reference Solutions
-    linkLists:
-      - linkListType: architecture
-        links:
-          - text: A proxy architecture to score sustainability
-            url: /azure/architecture/reference-architectures/ # TODO When the link exist to the reference architecture in AAC, add it here and remove this comment.
+          - text: Compute design
+            url: sustainability-compute.md
+          - text: Operations
+            url: sustainability-operations.md
+          - text: Deployment &amp; DevOps
+            url: sustainability-deployment-devops.md
+          - text: Networking
+            url: sustainability-networking.md
+          - text: Storage
+            url: sustainability-storage.md
+          - text: Application design
+            url: sustainability-application-design.md
+          - text: Security
+            url: sustainability-security.md
