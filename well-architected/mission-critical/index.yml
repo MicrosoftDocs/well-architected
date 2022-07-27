@@ -61,7 +61,7 @@ landingContent:
     linkLists:
       - linkListType: architecture
         links:
-          - text: Internet-facing application
+          - text: Baseline reference architecture
             url: /azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro   
  # Card
   - title: Reference implementations
