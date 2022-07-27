@@ -29,8 +29,6 @@ landingContent:
             url: sustainability-design-methodology.md
       - linkListType: architecture
         links:
-          - text: Architecture pattern 
-            url: sustainability-architecture-pattern.md
           - text: Design principles
             url: sustainability-design-principles.md             
           - text: Cross-cutting concerns

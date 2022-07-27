@@ -36,7 +36,6 @@ Design areas:
 - [Compute](sustainability-compute.md)
 - [Operations](sustainability-operations.md)
 - [Deployment &amp; DevOps](sustainability-deployment-devops.md)
-- [Platform](sustainability-platform.md)
 - [Networking](sustainability-networking.md)
 - [Storage](sustainability-storage.md)
 - [Application Design](sustainability-application-design.md)
