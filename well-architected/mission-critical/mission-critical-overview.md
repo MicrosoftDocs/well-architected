@@ -3,7 +3,7 @@ title: Mission-critical workloads
 description: Overview of mission-critical workloads on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
-ms.date: 06/17/2022
+ms.date: 07/27/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -26,6 +26,10 @@ The term _workload_ refers to a collection of application resources that support
 The term _mission-critical_ refers to a [criticality classification](/azure/cloud-adoption-framework/manage/considerations/criticality) where a significant financial cost (business-critical) or human cost (safety-critical) is associated with unavailability or underperformance.
 
 A _mission-critical workload_ therefore describes a collection of application resources which must be highly reliable on the platform, and strive to always be operational and available.
+
+## Video: Mission-critical workloads on Azure
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE52ryK]
 
 ## What are the common challenges?
 
