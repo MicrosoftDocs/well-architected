@@ -18,13 +18,6 @@ ms.custom:
 
 [Intro paragraph]
 
-|Design principle|Pillar|Considerations|
-|---|---|---|
-|Make time for your team to learn about advancements in sustainable operations|Operational Excellence|TBD|
-|Consider defining policies for minimum emission standards of any additional/changes that are made to the workload|Operational Excellence|TBD.|
-|Create a sustainability community|Operational Excellence|TBD|
-|Create incentives for improving the environmental sustainability of a workload that aligns with the incentives you would award for a performance or cost improvement|Operational Excellence|TBD|
-
 ## First topic
 
 ### Design considerations

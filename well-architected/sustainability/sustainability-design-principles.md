@@ -71,9 +71,6 @@ The goal of this principle is that you build applications that are energy-effici
 |Be aware of UX design for sustainability, e.g.,  use SD rather than HD|Performance Efficiency|TBD|
 |Keep OS, language runtimes and libraries up to date for latest efficiency gains|Operational Excellence|TBD|
 |Review platform updates regularly, and upgrade to newer/more efficient services as they become available|Operational Excellence|TBD|
-|Use DDoS protection to mitigate the compute impact of a successful attack|Security|TBD|
-|Use AV in passive mode when third party AV apps are used to avoid high CPU usage|Security|TBD|
-|Archive log data to cold storage|Security|TBD|
 |[Restartability - amount of processing to recover from failure](/azure/backup/manage-recovery-points#impact-of-expired-recovery-points-for-items-in-soft-deleted-state)|Reliability|TBD|
 |Circuit breaker patterns - if a service isn't available, don't continue to ping it/retry it|Reliability|TBD|
 |Power off workloads out of hours (such as Dev/Test workloads)|Cost Optimization|TBD|
@@ -90,7 +87,6 @@ We need to make the application aware of how much carbon it’s emitting. This w
 |Unit test during low carbon periods|Performance Efficiency|TBD|
 |[Demand shaping - Run batch workloads during low carbon intensity periods](/azure/architecture/data-guide/big-data/batch-processing)|Performance Efficiency|TBD|
 |Apply cloud native design patterns when writing or updating your workload code|Operational Excellence|Applying cloud-native design patterns your workload code allows your workload to take better advantage of the platform services that have a lower carbon footprint.|
-
 
 ## Hardware Efficiency
 
@@ -109,12 +105,6 @@ Embodied carbon is the carbon that was emitted to build a device. Therefore, a s
 |Move to the cloud! Moving your VMs to the cloud will reduce carbon impact, modernization will further improve|Operational Excellence|TBD|
 |Use automation to automatically shut down infrastructure or resources that aren't needed to minimize environmental impact of idle resources|Operational Excellence|TBD|
 |Classify data and move stale data to cold storage; delete data no longer needed|Operational Excellence|TBD|
-|Right sizing security appliances (Azure Firewall, WAF)|Security|TBD|
-|Use autoscaling for security appliances|Security|TBD|
-|Use cloud native appliances vs NVAs|Security|TBD|
-|Use firewalls in Azure rather than utilizing forced tunneling|Security|TBD|
-|Crypto mining - EDR to identify and shut down|Security|TBD|
-|Spikes in VM compute - analysis of the cause|Security|TBD|
 |Smaller failure units|Reliability|TBD|
 |Is running active/active a sustainability improvement (reduced network resources from CDNs, smaller failure units, less 'wasted' compute in booting/testing resources in passive regions|Reliability|TBD|
 |[Reducing number of recovery points in place](/azure/backup/manage-recovery-points#impact-of-expired-recovery-points-for-items-in-soft-deleted-state)|Reliability|TBD|
@@ -140,8 +130,19 @@ Measuring carbon emissions of a cloud application is a complex task, as it invol
 |Use methods like A/B testing (or equivalent) to assess the impact of live user data on the sustainability of the workload whenever the code or architecture is updated|Operational Excellence|TBD|
 |Identify the metrics and set improvement goals from a sustainability perspective (Compute/Network/Storage)|
 |Have a sustainability review|Operational Excellence|TBD|
-|Tag security resources to record emissions impact of security resources|Security|TBD|
 |Cost optimization can be a proxy for Sustainability|Cost Optimization|TBD|
+
+## Climate Commitments
+
+
+
+|Design principle|Pillar|Considerations|
+|---|---|---|
+|Make time for your team to learn about advancements in sustainable operations|Operational Excellence|TBD|
+|Consider defining policies for minimum emission standards of any additional/changes that are made to the workload|Operational Excellence|TBD.|
+|Create a sustainability community|Operational Excellence|TBD|
+|Create incentives for improving the environmental sustainability of a workload that aligns with the incentives you would award for a performance or cost improvement|Operational Excellence|TBD|
+
 
 ## Next steps
 
