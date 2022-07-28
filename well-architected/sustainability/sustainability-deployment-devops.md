@@ -35,3 +35,8 @@ ms.custom:
 ### Example
 
 ## Next step
+
+Review the considerations for network design.
+
+> [!div class="nextstepaction"]
+> [Operations](sustainability-networking.md)

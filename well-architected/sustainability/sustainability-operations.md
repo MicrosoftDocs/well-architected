@@ -18,20 +18,15 @@ ms.custom:
 
 [Intro paragraph]
 
-## First topic
+## Topic
 
 ### Design considerations
 
 ### Design recommendations
-
-### Example
-
-## Next topic
-
-### Design considerations
-
-### Design recommendations
-
-### Example
 
 ## Next step
+
+Review the considerations for Deployment and DevOps.
+
+> [!div class="nextstepaction"]
+> [Operations](sustainability-deployment-devops.md)

@@ -21,7 +21,6 @@ ms.custom:
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
 
-
 ## Energy efficient storage
 
 ### Design considerations
@@ -31,3 +30,8 @@ ms.custom:
 - Archive log data to cold storage
 
 ## Next step
+
+Review the considerations for application design.
+
+> [!div class="nextstepaction"]
+> [Operations](sustainability-application-design.md)

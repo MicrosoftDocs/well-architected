@@ -42,7 +42,7 @@ landingContent:
             url: sustainability-compute.md
           - text: Operations
             url: sustainability-operations.md
-          - text: Deployment &amp; DevOps
+          - text: Deployment and DevOps
             url: sustainability-deployment-devops.md
           - text: Networking
             url: sustainability-networking.md

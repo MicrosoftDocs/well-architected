@@ -59,15 +59,10 @@ The goal of this principle is that you build applications that are energy-effici
 |[Update services, OS, software libraries to gain performance efficiencies](/azure/architecture/hybrid/azure-update-mgmt)|Performance Efficiency|TBD|
 |Consider ARM SKUs for VMs/compute|Performance Efficiency|TBD|
 |Profile workloads to make use of parallelization where possible with GPUs vs CPUs for efficiency gains (for example, inference). Profile workloads to get balance of CPU and memory usage.|Performance Efficiency|TBD|
-|[Optimize for async access patterns. Queue requests that don't require immediate processing - buffer then process in batch. Flatten consumption to avoid spiky requests](/azure/architecture/patterns/async-request-reply)|Performance Efficiency|TBD|
 |[Select regions based on where the consumer resides](/azure/architecture/solution-ideas/articles/move-azure-resources-across-regions)|Performance Efficiency|TBD|
 |[Consider CDN and/or enable local caching](/azure/architecture/best-practices/cdn)|Performance Efficiency|TBD|
 |Enable network compression. Reduce network payload|Performance Efficiency|TBD|
 |[Use storage best suited to data access patterns](/azure/architecture/guide/design-principles/use-best-data-store)|Performance Efficiency|TBD|
-|[Monoliths -> microservices to scale only necessary components (if it fits workload profile)](/azure/architecture/guide/architecture-styles/microservices)|Performance Efficiency|TBD|
-|Optimize code for efficient resource usage, for example, modularity; DRY; efficient algorithms for example, O(n) > O(n^2)|Performance Efficiency|TBD|
-|[Reduce chattiness of APIs. Throttle APIs. Reduce payload returned](/azure/architecture/best-practices/message-encode)|Performance Efficiency|TBD|
-|Evaluate server-side vs client-side rendering. That is code rendered once preferable over rendering per request.|Performance Efficiency|TBD|
 |Be aware of UX design for sustainability, e.g.,  use SD rather than HD|Performance Efficiency|TBD|
 |Keep OS, language runtimes and libraries up to date for latest efficiency gains|Operational Excellence|TBD|
 |Review platform updates regularly, and upgrade to newer/more efficient services as they become available|Operational Excellence|TBD|
@@ -86,7 +81,6 @@ We need to make the application aware of how much carbon it’s emitting. This w
 |---|---|---|
 |Unit test during low carbon periods|Performance Efficiency|TBD|
 |[Demand shaping - Run batch workloads during low carbon intensity periods](/azure/architecture/data-guide/big-data/batch-processing)|Performance Efficiency|TBD|
-|Apply cloud native design patterns when writing or updating your workload code|Operational Excellence|Applying cloud-native design patterns your workload code allows your workload to take better advantage of the platform services that have a lower carbon footprint.|
 
 ## Hardware Efficiency
 

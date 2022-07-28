@@ -18,22 +18,15 @@ ms.custom:
 
 [Intro paragraph]
 
-[Intro paragraph]
-
-## First topic
+## Topic
 
 ### Design considerations
 
 ### Design recommendations
-
-### Example
-
-## Next topic
-
-### Design considerations
-
-### Design recommendations
-
-### Example
 
 ## Next step
+
+Review the considerations for storage design.
+
+> [!div class="nextstepaction"]
+> [Operations](sustainability-storage.md)

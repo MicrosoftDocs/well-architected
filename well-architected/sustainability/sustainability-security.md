@@ -32,24 +32,30 @@ By making your applications and infrastructure more energy efficient, you can re
 - Use DDoS protection to mitigate the compute impact of a successful attack
 - To avoid high CPU usage, consider using antivirus in passive mode when third-party antivirus apps are used.
 
-## Increasing hardware efficiency
+## Improving hardware efficiency
 
 ### Design Considerations
 
+- Azure Firewall is a cloud-native and intelligent network firewall security service that provides the best of breed threat protection for your cloud workloads running in Azure.
+- Azure Web Application Firewall is a cloud-native service that protects your web apps from common web-hacking techniques, including SQL injection and security vulnerabilities like cross-site scripting.
+- Deploying an Azure Firewall or Azure Web Application Firewall on the wrong tier may result in unnecessary cost and waste of energy.
+- Automatically scaling security appliances in Azure to fit the current workload will help reduce emissions, and ultimately improve hardware efficiency.
+
 ### Design recommendations
 
-- Right sizing security appliances (Azure Firewall, WAF)
+- Right sizing security appliances like Azure Firewall and Web Application Firewall
 - Use autoscaling for security appliances
 - Use cloud native appliances vs NVAs
 - Use firewalls in Azure rather than utilizing forced tunneling
 - Crypto mining - EDR to identify and shut down
 - Spikes in VM compute - analysis of the cause
 
-## Security configurations that contribute to measuring sustainability
+## Measuring sustainability
 
 ### Design considerations
 
 ### Design recommendations
 
 - Tag security resources to record emissions impact of security resources
+
 ## Next step
