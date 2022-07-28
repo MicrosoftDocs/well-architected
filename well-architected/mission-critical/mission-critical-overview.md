@@ -3,7 +3,7 @@ title: Mission-critical workloads
 description: Overview of mission-critical workloads on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
-ms.date: 07/28/2022
+ms.date: 08/01/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -68,22 +68,17 @@ The design areas are interrelated and decisions made within one area can impact 
 |[**Data platform**](mission-critical-data-platform.md)|Choices in data store technologies, informed by evaluating the required&mdash;volume, velocity, variety, veracity. |
 |[**Networking and connectivity**](mission-critical-networking-connectivity.md)|Network topology concepts at an application level, considering requisite connectivity and redundant traffic management. Critical recommendations intended to inform the design of a secure and scalable global network topology.|
 |[**Health modeling and observability**](mission-critical-health-modeling.md)|Processes to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity.|
-|**[Deployment and testing**](mission-critical-deployment-testing.md)| Eradicate downtime and maintain application health for deployment operations, providing key considerations and recommendations intended to inform the design of optimal CI/CD pipelines for a mission-critical application.|
+|[**Deployment and testing**](mission-critical-deployment-testing.md)| Eradicate downtime and maintain application health for deployment operations, providing key considerations and recommendations intended to inform the design of optimal CI/CD pipelines for a mission-critical application.|
 |[**Security**](mission-critical-security.md)|Protect the application against threats intended to directly or indirectly compromise its reliability.|
 |[**Operational procedures**](mission-critical-operational-procedures.md)|Adoption of DevOps and related deployment methods is used to drive effective and consistent operational procedures.|
 
 ## Illustrative examples
 
-The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available as part of an open source project on GitHub. These implementations can be used as a basis for further solution development.
+The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available as part of the [Mission-Critical open source project](http://github.com/azure/mission-critical) on GitHub. These implementations can be used as a basis for further solution development.
 
-> [!IMPORTANT]
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical).
+- [Reference architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)&mdash;Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure. The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate.
 
-- [Reference architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)
-
-  [Implementation: Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
-
-  Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure. The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate.
+  > Refer to the implementation: [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
 
 - [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) 
 
