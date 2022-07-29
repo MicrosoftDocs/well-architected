@@ -60,6 +60,23 @@ Reducing the electricity used by apps and solutions can help in achieving sustai
 - Evaluate server-side vs client-side rendering.
   - That is code rendered once preferable over rendering per request.
 
+TODO:
+
+- [Autoscale components to optimize utilization](/azure/architecture/best-practices/auto-scaling)
+- Update legacy code, identify inefficient legacy code for modernization, make use of serverless, PaaS
+  - Operational Excellence, Hardware Efficiency
+- Circuit breaker patterns - if a service isn't available, don't continue to ping it/retry it
+  - Reliability, Energy efficiency
+- [Demand shaping - Run batch workloads during low carbon intensity periods](/azure/architecture/data-guide/big-data/batch-processing)
+  - Performance Efficiency, Carbon Awareness
+- Ensure software backwards compatibility so it works on legacy hardware
+  - Performance Efficiency, Hardware efficiency
+- Be aware of UX design for sustainability, e.g.,  use SD rather than HD
+  - Performance Efficiency, Energy efficiency
+
+- Smaller failure units
+  - Reliability, hardware efficiency
+
 ## Next step
 
 Review the design considerations for secure and sustainable workloads.

@@ -34,8 +34,8 @@ Decisions made within each design area will echo across other design areas. Revi
 Design areas:
 
 - [Compute](sustainability-compute.md)
-- [Operations](sustainability-operations.md)
-- [Deployment &amp; DevOps](sustainability-deployment-devops.md)
+- [Operations](sustainability-operational-procedures.md)
+- [Deployment and testing](sustainability-deployment-testing.md)
 - [Networking](sustainability-networking.md)
 - [Storage](sustainability-storage.md)
 - [Application Design](sustainability-application-design.md)

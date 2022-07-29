@@ -20,6 +20,11 @@ ms.custom:
 
 ## Topic
 
+|Design principle|Pillar|SGF Pillar|Considerations|
+|---|---|---|---|
+|Enable network compression. Reduce network payload|Performance Efficiency|Energy Efficiency|TBD|
+|[Consider CDN and/or enable local caching](/azure/architecture/best-practices/cdn)|Performance Efficiency|Energy Efficiency|TBD|
+
 ### Design considerations
 
 ### Design recommendations

@@ -18,6 +18,15 @@ ms.custom:
 
 [Intro paragraph]
 
+|Design principle|Pillar|SGF Pillar|Considerations|
+|---|---|---|---|
+|Maximize the workloads on compute|Cost Optimization|Hardware Efficiency|TBD|
+|Reduce compute - resizing, moving to serverless, rightsizing, spot instances|Cost Optimization|Hardware Efficiency|TBD|
+|Consider ARM SKUs for VMs/compute|Performance Efficiency|Energy Efficiency|TBD|
+|Move to serverless|Cost Optimization|Hardware Efficiency|TBD|
+|Use spot VMs|Cost Optimization|Hardware Efficiency|TBD|
+|Use PaaS over IaaS where possible|Cost Optimization|Hardware Efficiency|TBD|
+
 ## Topic
 
 ### Design considerations
@@ -26,7 +35,7 @@ ms.custom:
 
 ## Next step
 
-Review the considerations for operations.
+Review the considerations for operational procedures.
 
 > [!div class="nextstepaction"]
-> [Operations](sustainability-operations.md)
+> [Operations](sustainability-operational-procedures.md)

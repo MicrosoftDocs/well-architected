@@ -415,22 +415,22 @@ items:
                 href: sustainability/sustainability-design-methodology.md
               - name: Design principles
                 href: sustainability/sustainability-design-principles.md
-              - name: Cross-cutting concerns
-                href: sustainability/sustainability-cross-cutting-concerns.md
               - name: Design areas
                 items:
+                - name: Application design
+                  href: sustainability/sustainability-application-design.md
+                - name: Application platform
+                  href: sustainability/sustainability-application-platform.md
+                - name: Deployment and testing
+                  href: sustainability/sustainability-deployment-testing.md
+                - name: Operational procedures
+                  href: sustainability/sustainability-operational-procedures.md
                 - name: Compute design
                   href: sustainability/sustainability-compute.md
-                - name: Operations
-                  href: sustainability/sustainability-operations.md
-                - name: Deployment and DevOps
-                  href: sustainability/sustainability-deployment-devops.md
-                - name: Networking
+                - name: Network and connectivity
                   href: sustainability/sustainability-networking.md
                 - name: Storage
                   href: sustainability/sustainability-storage.md
-                - name: Application design
-                  href: sustainability/sustainability-application-design.md
                 - name: Security
                   href: sustainability/sustainability-security.md
       - name: Services
