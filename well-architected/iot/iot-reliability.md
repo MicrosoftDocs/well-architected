@@ -41,7 +41,7 @@ To assess your IoT workload against the Well-Architected Framework Reliability p
 
 ## Reliability in IoT architecture layers
 
-Reliability in an IoT solution involves the following foundational IoT architecture layers. To achieve overall solution reliability, each layer should have acceptable levels of reliability.
+Reliability in an IoT solution involves the [foundational IoT architecture layers](iot-overview.md#iot-architecture-layers). To achieve overall solution reliability, each layer should have acceptable levels of reliability.
 
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in an IoT architecture." border="false":::
 
@@ -51,7 +51,7 @@ As part of your overall IoT solution, design your devices to satisfy your soluti
 
 - Data collection connects devices to sensors or subscribes them to telemetry from downstream systems, and pushes collected data to the cloud. IoT solution design should ensure reliable device management and reliable communications from the device to the cloud.
 
-- Devices that provide supervisory control not only collect data to send to the cloud, but also take actions based on that data. Devices send data back to the machines or environment to take supervisory actions. The reliability of the application running on a supervisory control device is critical.
+- Devices that provide supervisory control not only collect data to send to the cloud, but also take actions based on that data. Devices send data back to the machines or environment to take supervisory actions. The reliability of supervisory control applications is critical.
 
 #### Device design
 
@@ -78,9 +78,9 @@ The conditions in which a device operates affect its reliability. Define your en
 
 #### Operational profile
 
-The operational behavior of devices affects the performance stress applied to devices, and therefore their reliability. Define operational profiles that estimate behavior over device lifetime, and assess device reliability accordingly. Such profiles include operation modes, such as wireless transmission or low-power modes, and environmental conditions, such as temperature, over the device lifetime.
+Performance stress affects the operational behavior of devices, and therefore their reliability. Define operational profiles that estimate behavior over device lifetime, and assess device reliability accordingly. Such profiles include operation modes, such as wireless transmission or low-power modes, and environmental conditions, such as temperature, over the device lifetime.
 
-In normal operating conditions, the device and software should run safely within the specified performance profiles, and avoid running at the limit of the device capabilities. The devices must be able to service and process all the external sensors and data processing that the solution requires.
+In normal operating conditions, the device and software should run safely within the specified operational profiles. Devices must be able to service and process all the external sensors and data processing that the solution requires. Avoid running at the limit of device capabilities.
 
 #### Regulations and standards
 
@@ -96,7 +96,7 @@ Device connectivity conditions, including upstream to the cloud and downstream t
 
 The connectivity strategy should include robustness, for example fallback capability and disconnection management, and buffering backup to mitigate cloud dependency for critical or safety functions.
 
-Implement the following design, error handling, and monitoring practices related to connectivity:
+The following design, error handling, and monitoring practices relate to connectivity:
 
 #### Design for connectivity
 
@@ -182,7 +182,7 @@ An enterprise IoT solution should provide a strategy for operators to manage the
 
 The device aspect of IoT solutions presents challenges compared to cloud-based solutions. For example, there must be a way to continually update devices to address vulnerabilities and application changes.
 
-Due to the distributed nature of IoT solutions, it's important to adopt safe and secure policies for deploying updates. IoT operators require simple and reliable tools and practices to enable updates.
+Due to the distributed nature of IoT solutions, it's important to adopt safe and secure policies for deploying updates. IoT operators require simple and reliable update tools and practices.
 
 A device update solution must support:
 
@@ -193,13 +193,13 @@ A device update solution must support:
 
 [Device Update for IoT Hub](/azure/iot-hub-device-update) is a service that enables safe, secure, and reliable over-the-air (OTA) IoT device updates. Device Update for IoT Hub can group devices and specify which devices should receive an update. Operators can view the status of update deployments and whether each device successfully applies the required updates.
 
-If an update fails, Device Update helps operators identify the devices that failed to apply the update and see the failure details. The ability to identify which devices failed can eliminate hours of trying to manually pinpoint the failure source.
+If an update fails, Device Update helps operators identify the devices that failed and see the failure details. The ability to identify which devices failed can eliminate hours of trying to manually pinpoint the failure source.
 
 Device Update monitors the status of device deployments and updates, and reports how many devices are compliant with the highest version available compatible update.
 
 ### Observability and monitoring
 
-To manage overall solution reliability, you should monitor every component of your IoT solution and define alert procedures. All Azure IoT services publish metrics that describe service health and availability. To establish end-to-end observability, also consider the metrics that you need on the device side. Use these metrics as part of your overall solution reliability monitoring.
+To manage overall solution reliability and define alert procedures, you should monitor every component of your IoT solution. All Azure IoT services publish metrics that describe service health and availability. To establish end-to-end observability, also consider the metrics that you need on the device side. Use these metrics as part of your overall solution reliability monitoring.
 
 IoT application monitoring and diagnostics are crucial for availability and resiliency. If something fails, you need to know that it failed, when it failed, and why. By monitoring the operation of an IoT application and devices against a healthy state, you can detect and fix reliability issues.
 
@@ -247,12 +247,11 @@ CM continuously ensures the health, performance, and reliability of your apps an
 
 #### Monitoring resources
 
-- [Monitoring Azure IoT Hub](/azure/iot-hub/monitor-iot-hub)
-- [Monitoring Azure IoT Hub data reference](/azure/iot-hub/monitor-iot-hub-reference)
+- [Monitor Azure IoT Hub](/azure/iot-hub/monitor-iot-hub)
+- [Monitor Azure IoT Hub data reference](/azure/iot-hub/monitor-iot-hub-reference)
 - [Trace Azure IoT device-to-cloud messages with distributed tracing](/azure/iot-hub/iot-hub-distributed-tracing)
 - [Check Azure IoT Hub service and resource health](/azure/iot-hub/iot-hub-azure-service-health-integration)
 - [Collect and transport metrics - Azure IoT Edge](/azure/iot-edge/how-to-collect-and-transport-metrics)
-- [Check Azure IoT Hub service and resource health](/azure/iot-hub/iot-hub-azure-service-health-integration)
 
 ### HA/DR for critical components
 
@@ -266,14 +265,14 @@ As you design and build your IoT solution, you must meet the SLA for failure rec
 
 - Devices must also be able to handle cloud outages. Azure region pairing provides an HA/DR strategy for IoT Hub that meets many SLA requirements. If region pairing isn't enough, consider implementing a secondary IoT hub. You can also use DPS to avoid hardcoded IoT Hub configurations on your devices. If your primary IoT hub goes down, DPS can assign your devices to a different hub.
 
-- Consider implementing a heartbeat message pattern for devices you expect to be online most of the time. This pattern uses a custom IoT Hub route that's processed by Azure Stream Analytics, Azure Logic Apps, or Azure Functions to determine if a heartbeat has failed. You can use the heartbeat to define Azure Monitor alerts that take actions as needed.
+- Consider implementing a heartbeat message pattern for devices you expect to be online most of the time. This pattern uses a custom IoT Hub route with Azure Stream Analytics, Azure Logic Apps, or Azure Functions to determine if a heartbeat has failed. You can use the heartbeat to define Azure Monitor alerts that take actions as needed.
 
 #### HA/DR resources
 
 - [Manage connectivity and reliable messaging by using Azure IoT Hub device SDKs](/azure/iot-hub/iot-hub-reliability-features-in-sdks)
 - [IoT Hub high availability and disaster recovery](/azure/iot-hub/iot-hub-ha-dr)
-- [Apply IoT Hub Intra-region HA/DR](/azure/iot-hub/iot-hub-ha-dr#intra-region-ha)
-- [Apply IoT Hub Cross-region HA/DR](/azure/iot-hub/iot-hub-ha-dr#cross-region-dr)
+- [IoT Hub intra-region HA/DR](/azure/iot-hub/iot-hub-ha-dr#intra-region-ha)
+- [IoT Hub cross-region HA/DR](/azure/iot-hub/iot-hub-ha-dr#cross-region-dr)
 - [How to clone an Azure IoT hub to another region](/azure/iot-hub/iot-hub-how-to-clone)
 - [Test apps for availability and resiliency](/azure/architecture/framework/resiliency/testing)
 
