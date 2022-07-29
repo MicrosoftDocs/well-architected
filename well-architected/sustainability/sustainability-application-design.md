@@ -36,12 +36,12 @@ Reducing the electricity used by apps and solutions can help in achieving sustai
 
 - Decouple backend processing from a frontend host.
   - Consider if the frontend can be designed to answer requests while the backend processing can be asynchronous.
-- Monolithic applications usually scales as a unit, leaving little room to scale only the individual components that may need it.
-- Apps that are not optimized can lead to issues with scalability, deployability, code maintenance, and a waste of energy.
+- Monolithic applications usually scale as a unit, leaving little room to scale only the individual components that may need it.
+- Apps that aren't optimized can lead to issues with scalability, deployability, code maintenance, and a waste of energy.
 - Many modern cloud applications are designed to asynchronously transact many messages between services and components.
   - Consider the format used to encode the payload data.
-  - Think about how much information your applications need to communicate, and if there is room to reduce the chattiness of your apps.
-  - Reducing the amount of messages transacted between components (chattiness) can greatly help performance, efficiency, and ultimately increase the energy efficiency.
+  - Think about how much information your applications need to communicate, and if there's room to reduce the chattiness of your apps.
+  - Reducing the number of messages transacted between components (chattiness) can greatly help performance, efficiency, and ultimately increase the energy efficiency.
 - How is your app rendering? By using client-side rendering or server-side?
 
 ### Design recommendations
@@ -71,7 +71,7 @@ TODO:
   - Performance Efficiency, Carbon Awareness
 - Ensure software backwards compatibility so it works on legacy hardware
   - Performance Efficiency, Hardware efficiency
-- Be aware of UX design for sustainability, e.g.,  use SD rather than HD
+- Be aware of UX design for sustainability, for example,  use SD rather than HD
   - Performance Efficiency, Energy efficiency
 
 - Smaller failure units

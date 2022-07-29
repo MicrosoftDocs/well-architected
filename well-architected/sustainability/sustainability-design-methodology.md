@@ -102,7 +102,7 @@ Schedule regular reviews of the Emissions Impact Dashboard and your SCI score, s
 
 ### Defining proxies for your application
 
-The carbon emission azure spend is certainly your starting point, but of course is not enough. Until we have clear carbon values available for each software and infrastructure, we can rely on proxies to create a score model that resembles the SCI.
+The carbon emission Azure spend is certainly your starting point, but of course isn't enough. Until we have clear carbon values available for each software and infrastructure, we can rely on proxies to create a score model that resembles the SCI.
 
 In general, the approach should be one to build a proxy’s equation with a few variables:
 
@@ -115,12 +115,12 @@ In general, the approach should be one to build a proxy’s equation with a few 
 
 Building this equation into a score that can also reflect the number of users, represents the closest approximation to a carbon score, and this will be your benchmark for any further change and improvement towards the greenness of the app.
 
-There is also another aspect that is linked to the application performance metrics. If we link performances to cost and carbon and assume that their relation is a value, then we can assume that:
+There's also another aspect that is linked to the application performance metrics. If we link performances to cost and carbon and assume that their relation is a value, then we can assume that:
 
-- When performances are higher, but costs are the same = we have optimized the app
-- When costs are lower, but performances are the same = we have optimized the app
-- When perf are up and costs are also up = we are also using more carbon emissions
-- When costs are up even at lower or equal performances = we assume we are using more carbon emissions (or the energy cost is higher, which according to principles is also cause for higher carbon emissions
+- When performances are higher, but costs are the same = we've optimized the app
+- When costs are lower, but performances are the same = we've optimized the app
+- When perf are up and costs are also up =, we're also using more carbon emissions
+- When costs are up even at lower or equal performances = we assume we're using more carbon emissions (or the energy cost is higher, which according to principles is also cause for higher carbon emissions
 
 Your carbon score dashboard can therefore make use of the following proxies:
 
@@ -128,7 +128,7 @@ Your carbon score dashboard can therefore make use of the following proxies:
 - Performance
 - Carbon emissions – where available
 - Usage (requests, calls, users) across time
-- Any additional measurement that is relevant to the application
+- Any extra measurement that is relevant to the application
 
 A sample architecture of these proxies can be summarized with the following pic:
 
@@ -138,18 +138,18 @@ A sample architecture of these proxies can be summarized with the following pic:
 
 Once you know what points of carbon failure your app architecture might have, and are able to score its impact with proxies, you should understand what actions a different/higher carbon score might trigger:
 
-- For example, I might have a situation where the energy production is at an all-time high and is therefore very expensive to produce
-- Another example could be that electricity is simply not available – if you think of the war in Ukraine, we had lots of customers migrating quickly to the cloud because their datacenters were shutting down, so one compelling event for carbon saving is no electricity at all! This might apply to on-prem apps and CDNs and edge technologies as well.
+- For example, I might have a situation where the energy production is at an all-time high and is therefore expensive to produce
+- Another example could be that electricity is not available – if you think of the war in Ukraine, we had lots of customers migrating quickly to the cloud because their datacenters were shutting down, so one compelling event for carbon saving is no electricity at all! This might apply to on-prem apps and CDNs and edge technologies as well.
 - Can your app deal with sudden unavailability of the edge infrastructure?
 - How can you ensure a decent quality of customer experience to your users?
 
 Once you are able to build these failure points, the next step is to decide what actions make your application resilient to carbon spikes.
 
-You should be able to build a simpler, smaller, cheaper, greenest version of the full application, that you can revert to in case of any spike in carbon emissions, or simply train your end-user to opt for the eco version by choice, providing a “green button” where people declare they are ok with a leaner interface, less graphics, and limited features in exchange of saving a bunch of carbon emissions.
+You should be able to build a simpler, smaller, cheaper, greenest version of the full application, that you can revert to in case of any spike in carbon emissions, or simply train your end-user to opt for the eco version by choice, providing a “green button” where people declare they're ok with a leaner interface, fewer graphics, and limited features in exchange of saving a bunch of carbon emissions.
 
 If you opt to involve the users, this might involve a cultural change along with the technical one:
 
-- You can specify what the impact of this choice is: “by using the green version you are saving x amount of carbon”, or “bringing our carbon score to Y”
+- You can specify what the impact of this choice is: “by using the green version you're saving x amount of carbon”, or “bringing our carbon score to Y”
 - You can understand the user behavior and modify the eco version to reflect their choices (maybe they use 10%of the features, and they can be enough for the green version)
 - Slowly the full version gets optimized for emission as well and ideally, they should be able to converge in a few months/years.
 
