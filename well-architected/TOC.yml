@@ -56,9 +56,9 @@ items:
             href: resiliency/reliability-patterns.md
       - name: Security
         items:
-          - name: Quick links
-            href: security/index.yml
           - name: About
+            href: security/index.yml
+          - name: Overview
             href: security/overview.md
           - name: Principles
             href: security/security-principles.md
@@ -355,12 +355,12 @@ items:
                 href: mission-critical/mission-critical-design-methodology.md
               - name: Design principles
                 href: mission-critical/mission-critical-design-principles.md
+              - name: Architecture pattern
+                href: mission-critical/mission-critical-architecture-pattern.md                
               - name: Cross-cutting concerns
                 href: mission-critical/mission-critical-cross-cutting-issues.md
               - name: Design areas
                 items:
-                - name: Architecture pattern
-                  href: mission-critical/mission-critical-architecture-pattern.md
                 - name: Application design
                   href: mission-critical/mission-critical-application-design.md
                 - name: Application platform
@@ -395,30 +395,26 @@ items:
             items:
               - name: Overview
                 href: iot/iot-overview.md
+              - name: Reliability
+                href: iot/iot-reliability.md
+              - name: Security
+                href: iot/iot-security.md
               - name: Cost Optimization
                 href: iot/iot-cost-optimization.md
               - name: Operational Excellence
                 href: iot/iot-operational-excellence.md
               - name: Performance Efficiency
                 href: iot/iot-performance.md
-              - name: Reliability
-                href: iot/iot-reliability.md
-              - name: Security
-                href: iot/iot-security.md
           - name: Carrier-grade
             items:
               - name: Quick links
                 href: carrier-grade/index.yml
               - name: Get started
                 href: carrier-grade/carrier-grade-get-started.md
-              - name: Design methodology
-                href: carrier-grade/carrier-grade-design-methodology.md
               - name: Design principles
                 href: carrier-grade/carrier-grade-design-principles.md
               - name: Design areas
                 items:
-                  - name: Architecture pattern
-                    href: carrier-grade/carrier-grade-architecture-pattern.md
                   - name: Fault tolerance
                     href: carrier-grade/carrier-grade-design-area-fault-tolerance.md
                   - name: Data model
@@ -478,13 +474,7 @@ items:
                   - name: Cost optimization
                     href: services/data/azure-db-postgresql/cost-optimization.md
               - name: Azure SQL Database
-                items:
-                  - name: Reliability
-                    href: services/data/azure-sql-database/reliability.md
-                  - name: Cost optimization
-                    href: services/data/azure-sql-database/cost-optimization.md
-                  - name: Operational excellence
-                    href: services/data/azure-sql-database/operational-excellence.md
+                href: services/data/azure-sql-database-well-architected-framework.md
               - name: Azure SQL Managed Instance
                 items:
                   - name: Reliability
@@ -571,6 +561,8 @@ items:
                 href: services/networking/azure-application-gateway.md
               - name: Azure Firewall
                 href: services/networking/azure-firewall.md
+              - name: ExpressRoute
+                href: services/networking/azure-expressroute.md
               - name: API Management
                 items:
                   - name: Reliability
@@ -609,12 +601,6 @@ items:
                     href: services/networking/azure-virtual-network/reliability.md
                   - name: Operational excellence
                     href: services/networking/azure-virtual-network/operational-excellence.md
-              - name: ExpressRoute
-                items:
-                  - name: Reliability
-                    href: services/networking/expressroute/reliability.md
-                  - name: Operational excellence
-                    href: services/networking/expressroute/operational-excellence.md
               - name: Azure Load Balancer
                 items:
                   - name: Reliability
