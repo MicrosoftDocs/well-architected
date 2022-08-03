@@ -18,37 +18,34 @@ ms.custom:
 
 [Intro paragraph]
 
-## Carbon efficiency
-
-|Design principle|Pillar|SGF Pillar|Considerations|
-|---|---|---|---|
-|Allow team members to share their workload and company-specific best practices for sustainable operations|Operational Excellence|Carbon Efficiency|TBD|
-
-## Climate commitments
-
-|Design principle|Pillar|SGF Pillar|Considerations|
-|---|---|---|---|
-|Make time for your team to learn about advancements in sustainable operations|Operational Excellence|Climate Commitments|TBD|
-|Consider defining policies for minimum emission standards of any additional/changes that are made to the workload|Operational Excellence|Climate Commitments|TBD.|
-|Create a sustainability community|Operational Excellence|Climate Commitments|TBD|
-|Create incentives for improving the environmental sustainability of a workload that aligns with the incentives you would award for a performance or cost improvement|Operational Excellence|Climate Commitments|TBD|
-
-## Measuring sustainability
-
-|Design principle|Pillar|SGF Pillar|Considerations|
-|---|---|---|---|
-|Identify metrics that you can track and quantify the achievement of technical/business and sustainability outcomes|Operational Excellence|Measuring Sustainability|TBD|
-|Use the Emissions Impact Dashboard to record current and future impact|Operational Excellence|Measuring Sustainability|TBD|
-|Define emission targets when designing the workload and track progress against them just like with SLO/SLA figures or other performance metrics|Operational Excellence|Measuring Sustainability|TBD|
-|Identify the metrics and set improvement goals from a sustainability perspective (Compute/Network/Storage)|TBD|Measuring Sustainability|TBD|
-|Have a sustainability review|Operational Excellence|Measuring Sustainability|TBD|
-|Cost optimization can be a proxy for Sustainability|Cost Optimization|Measuring Sustainability|TBD|
-
-## Topic
+## Measure and track sustainability
 
 ### Design considerations
 
 ### Design recommendations
+
+|Design principle|Pillar|SGF Pillar|Considerations|
+|---|---|---|---|
+|Consider defining policies for minimum emission standards of any additional/changes that are made to the workload|Operational Excellence|Climate Commitments|TBD.|
+|Identify metrics that you can track and quantify the achievement of technical/business and sustainability outcomes|Operational Excellence|Measuring Sustainability|TBD|
+|Use the Emissions Impact Dashboard to record current and future impact|Operational Excellence|Measuring Sustainability|TBD|
+|Define emission targets when designing the workload and track progress against them just like with SLO/SLA figures or other performance metrics|Operational Excellence|Measuring Sustainability|TBD|
+|Identify the metrics and set improvement goals from a sustainability perspective (Compute/Network/Storage)|TBD|Measuring Sustainability|TBD|
+|Cost optimization can be a proxy for Sustainability|Cost Optimization|Measuring Sustainability|TBD|
+|Have a sustainability review|Operational Excellence|Measuring Sustainability|TBD|
+
+## Community and knowledge sharing
+
+### Design considerations
+
+### Design recommendations
+
+|Design principle|Pillar|SGF Pillar|Considerations|
+|---|---|---|---|
+|Allow team members to share their workload and company-specific best practices for sustainable operations|Operational Excellence|Carbon Efficiency|TBD|
+|Create a sustainability community|Operational Excellence|Climate Commitments|TBD|
+|Create incentives for improving the environmental sustainability of a workload that aligns with the incentives you would award for a performance or cost improvement|Operational Excellence|Climate Commitments|TBD|
+|Make time for your team to learn about advancements in sustainable operations|Operational Excellence|Climate Commitments|TBD|
 
 ## Next step
 

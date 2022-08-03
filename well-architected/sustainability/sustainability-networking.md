@@ -18,16 +18,18 @@ ms.custom:
 
 [Intro paragraph]
 
-## Topic
+## Network efficiency
+
+### Design considerations
+
+### Design recommendations
 
 |Design principle|Pillar|SGF Pillar|Considerations|
 |---|---|---|---|
 |Enable network compression. Reduce network payload|Performance Efficiency|Energy Efficiency|TBD|
 |[Consider CDN and/or enable local caching](/azure/architecture/best-practices/cdn)|Performance Efficiency|Energy Efficiency|TBD|
-
-### Design considerations
-
-### Design recommendations
+|[Select regions based on where the consumer resides](/azure/architecture/solution-ideas/articles/move-azure-resources-across-regions)|Performance Efficiency|Energy Efficiency|TBD|
+|[Use managed video streaming services that use built-in compression](/azure/media-services/latest/encode-concept)|Performance Efficiency|Hardware Efficiency|TBD|
 
 ## Next step
 
