@@ -412,7 +412,7 @@ items:
               - name: Get started
                 href: carrier-grade/carrier-grade-get-started.md
               - name: Design principles
-                href: carrier-grade/carrier-grade-design-principles.md
+                href: carrier-grade/carrier-grade-design-principles.md 
               - name: Design areas
                 items:
                   - name: Fault tolerance

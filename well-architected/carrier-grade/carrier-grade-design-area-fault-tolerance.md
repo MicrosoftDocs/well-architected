@@ -1,5 +1,5 @@
 ---
-title: Carrier-grade design area - Fault tolerance
+title: Fault tolerance for carrier-grade workloads
 description: This article provides an overview of the Fault tolerance design area for carrier-grade workloads.
 author: mikedell73
 ms.author: mikedell
@@ -16,18 +16,20 @@ ms.custom:
   - carrier-grade
 ---
 
-# Design area: Fault tolerance for carrier-grade workloads
+# Fault tolerance for carrier-grade workloads
 
-Telecommunication companies have shown that it's possible to implement applications that meet and exceed carrier-grade availability requirements, while it runs on top of unreliable elements. Companies exceed these requirements through *fault tolerance*, which includes the following aspects:
+Telecommunication companies have shown that it's possible to implement applications that meet and exceed carrier-grade availability requirements, whilst running on top of unreliable elements. Companies exceed these requirements through *fault tolerance*, which includes the following aspects:
 
 - Combination of independent, non-highly available elements.
 - Traffic management failure response mechanisms.
 - Repair and capacity-recovery and failure response mechanisms.
 - Use of highly available cross-element databases.
 
+When designing for carrier grade reliability and resiliency, assume that every component can _and_ will fail. The design will require a layered approach to failure resolution.  Part of validating the design is creating a quantitative probabilistic model of the various failure modes which clearly identifies the key dependencies that the application has, and shows that the application can achieve the necessary availability given those dependencies meet their own Service Level Objectives (SLOs). This model should be retained and continuously validated after development and in production to assure that  the test and live data match what the model predicts.
+
 ## High availability through combination
 
-To reach high availability, take independent elements, which aren't highly available, and combine them so that they remain independent entities. The probability of multiple elements failing together is much lower than the probability of failure of any single element. We define this process as the *Share Nothing* architectural style.
+To reach high availability, take independent elements, which aren't highly available, and combine them so that they remain independent entities. The probability of multiple elements failing together is much lower than the probability of failure of any single element. We define this process as the [Share Nothing]() architectural style.
 
 ## Traffic management failure response
 
@@ -41,7 +43,7 @@ When individual elements fail, or there are connectivity issues, the system's tr
 
 ## Repair and recovery failure response
 
-Traffic management responses can work around failures, but where the failure is long-lived or permanent, the defective element must be repaired or replaced. Two modes of failure response include the following solutions:
+Traffic management responses can work around failures, but where the failure is long-lived or permanent, the defective element must be repaired or replaced. There are two main choices here:
 
 1. **Restoring redundancy**&mdash;Failure of an element reduces overall system capacity. System design should allow for this capacity reduction through provisioning redundant capacity; however, multiple overlapping failures will lead to true outages. There must be an automated process that detects the failure and adds capacity to restore redundancy to its normal levels. The impact can be determined from the failure rate analysis. In many cases, automatically restoring the redundancy level can increase the acceptable downtime of any individual element.
 
@@ -63,7 +65,7 @@ The analysis is typically done using Markov modeling, which considers all possib
 
 The outcome is an estimate of the system availability and informs consideration of the *blast radius*. The blast radius is the set of things that won't work given a particular failure. Good design aims to limit the scope and severity of that set, since failure is going to happen. For example, a failure that blocks creation of new users, but doesn't impact existing ones is less concerning than a failure that stops service for all users.
 
-Failure rate analysis provides an estimate of the overall system-level availability. The analysis identifies the critical dependencies on which that availability relies. Where failure rate analysis falls short, it also provides specific, quantitative insights on where improvements are needed and to what extent.
+Failure rate analysis provides an estimate of the overall system-level availability. The analysis identifies the critical dependencies on which that availability relies. Where failure rate analysis indicates that system availability falls short, it also provides specific, quantitative insights on where improvements are needed and to what extent.
 
 For more details on failure mode analysis in Azure, reference [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
 

@@ -1,5 +1,5 @@
 ---
-title: Carrier-grade design area - Health modeling
+title: Health modeling for carrier-grade workloads
 description: This article provides an overview of the Health modeling design area for carrier-grade workloads.
 author: mikedell73
 ms.author: mikedell
@@ -16,10 +16,13 @@ ms.custom:
   - carrier-grade
 ---
 
-# Design area: Health modeling for carrier-grade workloads
+# Health modeling for carrier-grade workloads
+
+High availability requires careful health monitoring to automatically detect and respond to issues within seconds. This monitoring requires built-in telemetry of key dependencies to reliably detect the failure.  The application itself requires additional telemetry (Service Level Indicators) which accurately report the health of the application in a way that is perceived by users of the application. Evaluation against SLOs may be necessary.
 
 The failure rate analysis and general health modeling of the application should generate clear metrics indicative of the service and health of its constituent elements. These metrics must be included in the design so that the true service availability can be monitored. By including metrics, you can track the most useful leading indicators to trigger the automated failure responses and to generate the necessary alerts for human intervention.
 
+ 
 ## Management and monitoring
 
 Monitoring and management require the following thought processes:
@@ -34,7 +37,7 @@ For example, a solution may rely on Azure DevOps (ADO) to host its Git repositor
 - [Azure Key Vault](/azure/key-vault/)
 - [Azure Kubernetes Service](/azure/aks/)
 
-Correlated failure modes for these key services may be a necessary part of the application-level response to failure. It's vital to create control planes, which aren't impacted by the same application failure.
+Correlated failure modes for these key services may be a necessary part of the application-level response to failure. It's vital to create control planes which aren't impacted by the same application failure.
 
 The management tooling required to issue diagnosis and troubleshooting must be the same as tooling used for normal day-to-day operations tasks. Similar tooling ensures that it's familiar and proven to work. Similar tooling also maximizes the users' familiarity with the user interface and process steps. Requiring operators to switch to a different tool set to resolve a high-pressure outage isn't conducive to identifying and resolving the issue effectively.
 
@@ -50,7 +53,7 @@ For example, logs and metrics are stored in the Availability Zone (AZ) where the
 
 Internal metrics are useful as *unhealth* metrics. These metrics reliably indicate the presence of an issue, but the reverse isn't true. No evidence of poor health isn't evidence of good health, as the customer perceives health.
 
-For example, a DNS issue indicates requests aren't arriving at the database service. The DNS error doesn't affect the database read-success metric because this metric isn't seeing any errors. However, the end user perceives a total outage because they aren't able to access the database. At least, a portion of *health* metrics must be measured externally, so that these metrics include everything the end user will experience.
+For example, a DNS issue indicates requests aren't arriving at the database service. The DNS error doesn't affect the database read-success metric because this metric isn't seeing any errors. However, the end user perceives a total outage because they aren't able to access the database. At least a portion of *health* metrics must be measured externally, so that these metrics include everything the end user will experience.
 
 ## Monitoring and tracing
 

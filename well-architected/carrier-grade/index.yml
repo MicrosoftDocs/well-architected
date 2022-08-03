@@ -25,12 +25,6 @@ landingContent:
         links:
           - text: What is carrier-grade?
             url: carrier-grade-get-started.md
-          - text: Design methodology
-            url: carrier-grade-design-methodology.md
-      - linkListType: architecture
-        links:
-          - text: Architecture pattern 
-            url: carrier-grade-architecture-pattern.md
           - text: Design principles
             url: carrier-grade-design-principles.md
    # Card
@@ -46,11 +40,4 @@ landingContent:
             url: carrier-grade-design-area-health-modeling.md
           - text: Testing and validation
             url: carrier-grade-design-area-testing.md
-   # Card
-  - title: Reference implementation
-    linkLists:
-      - linkListType: deploy
-        links:
-          - text:  Mobile Voice Mail (MVM)
-            url: carrier-grade-get-started.md#reference-implementation-mobile-voice-mail-mvm
 

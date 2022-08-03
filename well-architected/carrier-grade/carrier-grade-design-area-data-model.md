@@ -1,5 +1,5 @@
 ---
-title: Carrier-grade design area - Data model
+title: Data modeling for carrier-grade workloads
 description: This article provides an overview of the Data model design area for carrier-grade workloads.
 author: mikedell73
 ms.author: mikedell
@@ -16,23 +16,24 @@ ms.custom:
   - carrier-grade
 ---
 
-# Design area: Data model for carrier-grade workloads
+# Data modeling for carrier-grade workloads
 
 Enterprise applications deployed in a single region can typically ignore this model of application design and safely delegate responsibility to the database layer to make data reliably available. This behavior isn't the case for carrier-grade applications, which must be deployed across multiple regions. Multi-region deployment forces the application architect to consider the compromises they're willing to accept for their data.
 
 ## CAP theorem
 
-According to the CAP theorem, any database can only guarantee two out of three possible properties, which include:
+Databases can provide three key properties for the data they manage for an application, known as CAP:
+  - Consistency: A data read returns the most recent write.
+  - Availability: Every request receives a valid response.
+  - Partition tolerance: The system continues to operate despite delay or total loss of communication between elements.  
 
-- Consistency
-- Availability
-- Partition tolerance
+The CAP theorem states that a database layer can't provide all three of these properties for the same data at the same time in the presence of network partitions. The architect needs to make explicit design decisions about which of the CAP properties to favor under which conditions, and how to deal with the edge cases.
 
-Multi-region deployment means partition tolerance becomes significant. In most cases, carrier-grade architects prioritize partition tolerance and availability over consistency.
+According to the CAP theorem, any database can only guarantee two out of three possible properties for the same data at the same time in the presence of network partition.  
 
-For each type of data, the architect must consider what tradeoffs they're willing to make, considering the edge cases.
+Multi-region deployment means partition tolerance becomes significant. In most cases, carrier-grade architects prioritize partition tolerance and availability over consistency. For each type of data, the architect must consider what tradeoffs they're willing to make, considering the edge cases.
 
-For example, consider the database of system users. Is it acceptable for the user database to drop to read-only if there's a network partition? This behavior prioritizes consistency and read availability over write availability. This prioritization may not be acceptable if it's unacceptable for a user to access an isolated site after their permissions are revoked elsewhere. The described scenario would require all database access to be blocked if there's a partition, which prioritizes write availability over read availability.
+For example, consider the database of system users. Is it acceptable for the user database to drop to read-only if there's a network partition? This behavior prioritizes consistency and read availability over write availability. This prioritization may not be suitable if it's unacceptable for a user to access an isolated site after their permissions are revoked elsewhere. The described scenario would require all database access to be blocked if there's a partition, which prioritizes write availability over read availability.
 
 > [!NOTE]
 > The compromises made can be different for different databases within the same application, since the databases are likely to have different usage profiles.
