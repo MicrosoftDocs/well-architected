@@ -18,22 +18,6 @@ ms.custom:
 
 [Intro paragraph]
 
-## Carbon-aware application designs
-
-### Design considerations
-
-- Consider designing apps according to recommended design patterns to help reduce the carbon footprint of the workload.
-
-### Design recommendations
-
-- Apply [cloud-native design patterns](/azure/architecture/patterns/) when writing or updating your workload code.
-
-## Design for energy efficiency
-
-Reducing the electricity used by apps and solutions can help in achieving sustainability targets. During the design of new or existing applications, consider how to best optimize the workload to reduce wasted energy.
-
-### Design considerations
-
 - Decouple backend processing from a frontend host.
   - Consider if the frontend can be designed to answer requests while the backend processing can be asynchronous.
 - Monolithic applications usually scale as a unit, leaving little room to scale only the individual components that may need it.
@@ -43,16 +27,11 @@ Reducing the electricity used by apps and solutions can help in achieving sustai
   - Think about how much information your applications need to communicate, and if there's room to reduce the chattiness of your apps.
   - Reducing the number of messages transacted between components (chattiness) can greatly help performance, efficiency, and ultimately increase the energy efficiency.
 - How is your app rendering? By using client-side rendering or server-side?
+- [Autoscale components to optimize utilization](/azure/architecture/best-practices/auto-scaling)
 
-### Design recommendations
+---
 
 - [Optimize for async access patterns](/azure/architecture/patterns/async-request-reply).
-- Move toward a [microservice architecture style](/azure/architecture/guide/architecture-styles/microservices).
-  - Allow scaling of only the necessary components during peak load.
-  - Reduce the overhead for deploying monolithic applications.
-- Optimize the code for efficient resource usage.
-  - Learn about the [DRY principle](/archive/msdn-magazine/2019/june/patterns-and-practices-super-dry-development-for-asp-net-core).
-  - Build efficient algorithms. For example, ```O(n) > O(n^2)```
 - Apply appropriate designs for application messaging.
   - Learn about the [chatty I/O antipattern](/azure/architecture/antipatterns/chatty-io/) to better understand how performance and responsiveness can be impacted by a large number of requests.
   - Improve the reliability and reduce unnecessary load to your systems by implementing [advanced request throttling with API Management](/azure/api-management/api-management-sample-flexible-throttling).
@@ -60,22 +39,51 @@ Reducing the electricity used by apps and solutions can help in achieving sustai
 - Evaluate server-side vs client-side rendering.
   - That is code rendered once preferable over rendering per request.
 
-TODO:
+## Code efficiency
 
-- [Autoscale components to optimize utilization](/azure/architecture/best-practices/auto-scaling)
-- Update legacy code, identify inefficient legacy code for modernization, make use of serverless, PaaS
-  - Operational Excellence, Hardware Efficiency
-- Circuit breaker patterns - if a service isn't available, don't continue to ping it/retry it
-  - Reliability, Energy efficiency
-- [Demand shaping - Run batch workloads during low carbon intensity periods](/azure/architecture/data-guide/big-data/batch-processing)
-  - Performance Efficiency, Carbon Awareness
-- Ensure software backwards compatibility so it works on legacy hardware
-  - Performance Efficiency, Hardware efficiency
-- Be aware of UX design for sustainability, for example,  use SD rather than HD
-  - Performance Efficiency, Energy efficiency
+### Design considerations
 
-- Smaller failure units
-  - Reliability, hardware efficiency
+- Move toward a [microservice architecture style](/azure/architecture/guide/architecture-styles/microservices).
+  - Allow scaling of only the necessary components during peak load.
+  - Reduce the overhead for deploying monolithic applications.
+
+- Consider designing apps according to recommended design patterns to help reduce the carbon footprint of the workload.
+
+- Optimize the code for efficient resource usage.
+  - Learn about the [DRY principle](/archive/msdn-magazine/2019/june/patterns-and-practices-super-dry-development-for-asp-net-core).
+  - Build efficient algorithms. For example, ```O(n) > O(n^2)```
+
+### Design recommendations
+
+|Design principle|Pillar|SGF Pillar|
+|---|---|---|
+|Move monoliths to microservices only to scale only necessary components (if it fits workload profile)|
+|Optimize code for efficient resource usage, e.g. modularity; DRY; efficient algorithms e.g. O(n) > O(n^2)|Performance efficiency|Energy efficiency|
+|Improve API efficiency - Reduce chattiness of APIs, throttle APIs, reduce payload returned|Performance efficiency|Energy efficiency|
+|Ensure software backwards compatibility so it works on legacy hardware|Performance Efficiency|Hardware efficiency|
+|Evaluate server-side vs client-side rendering|Performance efficiency|Energy efficiency|
+|Be aware of UX design for sustainability, for example,  use SD rather than HD|Performance Efficiency|Energy efficiency|
+
+## Application modernization
+
+### Design considerations
+
+### Design recommendations
+
+|Design principle|Pillar|SGF Pillar|
+|---|---|---|
+|Apply [cloud-native design patterns](/azure/architecture/patterns/) when writing or updating your workload code|Operational Excellence|Carbon awareness|
+|Update legacy code, identify inefficient legacy code for modernization, make use of serverless, PaaS|Operational Excellence|Hardware Efficiency|
+
+## Application and system health
+
+### Design considerations
+
+### Design recommendations
+
+|Design principle|Pillar|SGF Pillar|
+|---|---|---|
+|Circuit breaker patterns - if a service isn't available, don't continue to ping it/retry it|Reliability|Energy efficiency|
 
 ## Next step
 

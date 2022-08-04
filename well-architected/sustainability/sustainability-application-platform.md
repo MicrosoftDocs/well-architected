@@ -45,6 +45,16 @@ ms.custom:
 |Review platform updates regularly, and upgrade to newer/more efficient services as they become available|Operational Excellence|Energy Efficiency|TBD|
 |[Update services, OS, software libraries to gain performance efficiencies](/azure/architecture/hybrid/azure-update-mgmt)|Performance Efficiency|Energy Efficiency|TBD|
 
+## Application availability
+
+### Design considerations
+
+### Design recommendations
+
+|Design principle|Pillar|SGF Pillar|
+|---|---|---|
+|Smaller failure units|Reliability|hardware efficiency|
+
 ## Next step
 
 Review the considerations for storage design.

@@ -18,7 +18,7 @@ ms.custom:
 
 [Intro paragraph]
 
-## Network efficiency
+## Optimize network efficiency
 
 ### Design considerations
 

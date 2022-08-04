@@ -48,6 +48,16 @@ Design areas:
 
 ## 4&mdash;Understanding your emissions and responsibilities
 
+### Reducing emissions
+
+In order to reduce carbon emissions, we have three possible solutions:
+
+- Carbon neutralization – compensating carbon emissions
+- Carbon avoidance – not emitting carbon in the first place
+- Carbon removal – subtract carbon from the atmosphere
+
+Carbon removal is referred to as “the only way to bring our atmospheric levels back to normal and undo the damage already done.” The goal of green software is to avoid emitting unnecessary emissions in the first place.
+
 ### Measure and track carbon impact
 
 According to the Green Software Foundation, to which Microsoft's view is aligned on green software, the measurement for the carbon impact of an application is Software Carbon Intensity (SCI), and is calculated as follows:
@@ -139,13 +149,13 @@ A sample architecture of these proxies can be summarized with the following pic:
 Once you know what points of carbon failure your app architecture might have, and are able to score its impact with proxies, you should understand what actions a different/higher carbon score might trigger:
 
 - For example, I might have a situation where the energy production is at an all-time high and is therefore expensive to produce
-- Another example could be that electricity is not available – if you think of the war in Ukraine, we had lots of customers migrating quickly to the cloud because their datacenters were shutting down, so one compelling event for carbon saving is no electricity at all! This might apply to on-prem apps and CDNs and edge technologies as well.
+- Another example could be that electricity isn't available – if you think of the war in Ukraine, we had lots of customers migrating quickly to the cloud because their datacenters were shutting down, so one compelling event for carbon saving is no electricity at all! This might apply to on-premises apps and CDNs and edge technologies as well.
 - Can your app deal with sudden unavailability of the edge infrastructure?
 - How can you ensure a decent quality of customer experience to your users?
 
-Once you are able to build these failure points, the next step is to decide what actions make your application resilient to carbon spikes.
+Once you're able to build these failure points, the next step is to decide what actions make your application resilient to carbon spikes.
 
-You should be able to build a simpler, smaller, cheaper, greenest version of the full application, that you can revert to in case of any spike in carbon emissions, or simply train your end-user to opt for the eco version by choice, providing a “green button” where people declare they're ok with a leaner interface, fewer graphics, and limited features in exchange of saving a bunch of carbon emissions.
+You should be able to build a simpler, smaller, cheaper, greenest version of the full application, that you can revert to if there was any spike in carbon emissions, or train your end-user to opt for the eco version by choice, providing a “green button” where people declare they're ok with a leaner interface, fewer graphics, and limited features in exchange of saving a bunch of carbon emissions.
 
 If you opt to involve the users, this might involve a cultural change along with the technical one:
 

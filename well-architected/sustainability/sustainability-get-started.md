@@ -58,16 +58,4 @@ Decisions made in one design area can impact or influence decisions across the e
 
 We recommend that readers familiarize themselves with these design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions.
 
-## Reducing emissions
-
-In order to reduce carbon emissions, we have three possible solutions:
-
-- Carbon neutralization – compensating carbon emissions
-- Carbon avoidance – not emitting carbon in the first place
-- Carbon removal – subtract carbon from the atmosphere
-
-Carbon removal is referred to as “the only way to bring our atmospheric levels back to normal and undo the damage already done.” The goal of green software is to avoid emitting unnecessary emissions in the first place.
-
-Refer to [design methodology](sustainability-design-methodology.md) for more information about reducing emissions and to better understand carbon impact.
-
 ## Next step

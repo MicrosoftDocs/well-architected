@@ -29,6 +29,7 @@ ms.custom:
 |Deploy low-carbon regions and process when carbon intensity is low|Performance Efficiency|Carbon Efficiency|TBD.|
 |Consider ARM SKUs for VMs/compute|Performance Efficiency|Energy Efficiency|TBD|
 |Optimize for async access patterns|Performance Efficiency|Energy Efficiency|TBD|
+|[Demand shaping - Run batch workloads during low carbon intensity periods](/azure/architecture/data-guide/big-data/batch-processing)|Performance Efficiency|Carbon Awareness|
 
 ## App modernization
 
