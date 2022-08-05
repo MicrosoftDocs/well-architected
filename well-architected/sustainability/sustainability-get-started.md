@@ -37,7 +37,7 @@ Building and designing sustainable workloads on Microsoft Azure can be challengi
 
 While [performance efficiency](/azure/architecture/framework/scalability/) and [cost optimization](/azure/architecture/framework/cost/) are areas of strong focus for designing sustainable workloads, the other pillars of the Well-Architected Framework are equally important when building long-term sustainable workloads on Azure.
 
-- [Security](/azure/architecture/framework/security/): how the security appliances in a workload is optimized and designed to auto-scale will have an impact on the environment.
+- [Security](/azure/architecture/framework/security/): how the security appliances in a workload are optimized and designed to auto-scale will have an impact on the environment.
 - [Reliability](/azure/architecture/framework/resiliency/): designing reliable workloads that meet sustainability guidelines from the Green Software Foundation can greatly reduce the workloads' carbon and electricity footprint.
 - [Operational Excellence](/azure/architecture/framework/devops/): how a workload is able to effectively respond to operational issues can ultimately reduce carbon emissions.
 
@@ -47,15 +47,20 @@ Sustainable guidance within this series is composed of architectural considerati
 
 Decisions made in one design area can impact or influence decisions across the entire design. The focus is ultimately on building a sustainable solution to minimize the footprint and impact on the environment.
 
-- **Compute**&mdash;
-- **Operations**&mdash;
-- **Deployment &amp; DevOps**&mdash;
-- **Infrastructure Platform**&mdash;
-- **Networking**&mdash;
-- **Storage**&mdash;
-- **Application Design**&mdash;
-- **Security**&mdash;
+- **Application design**&mdash;Cloud application patterns that allow for designing sustainable workloads.
+- **Application platform**&mdash;Choices around hosting environment, dependencies, frameworks, and libraries.
+- **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation, and how to deliver more sustainable software testing.
+- **Operational procedures**&mdash;Processes related to sustainable operations.
+- **Compute**&mdash;Right-size workloads and optimize applications to maximize utilization of the deployed resources.
+- **Storage**&mdash;Design choices for making the data storage options more sustainable.
+- **Network and connectivity**&mdash;Networking considerations that can help reduce traffic and amount of data transmitted to and from the application.
+- **Security**&mdash;Relevant recommendations to design more efficient security solutions on Azure.
 
 We recommend that readers familiarize themselves with these design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions.
 
 ## Next step
+
+Review the sustainability design methodology.
+
+> [!div class="nextstepaction"]
+> [Design methodology](sustainability-design-methodology.md)

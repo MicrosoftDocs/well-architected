@@ -23,6 +23,8 @@ Designing sustainable workloads on Azure must encompass security, is a foundatio
 
 ## Cloud native security
 
+Use cloud native security solutions to optimize for sustainability.
+
 ### Design Considerations
 
 - When you use a centralized routing- and firewall design, all network traffic is sent to the hub for inspection, filtering, and onward routing. While this approach centralizes policy enforcement, it can create an overhead on the network of unnecessary traffic from the source resources.
@@ -60,6 +62,8 @@ Designing sustainable workloads on Azure must encompass security, is a foundatio
 
 ## Network architecture
 
+Increase the efficiency and avoid unnecessary traffic by following good practices for you network security architecture.
+
 ### Design considerations
 
 - In many customer environments, especially in hybrid deployments, all end user device network traffic is routed through on-premises systems before being allowed to reach the internet. Usually, this happens due to the requirement to inspect all internet traffic. Often, this requires higher capacity network security appliances within the on-premises environment, or more appliances within the cloud environment.
@@ -70,6 +74,8 @@ Designing sustainable workloads on Azure must encompass security, is a foundatio
   - Where possible, end user devices should be optimized to [split out known traffic directly to cloud services](/microsoft-365/enterprise/microsoft-365-vpn-implement-split-tunnel) while continuing to route and inspect traffic for all other destinations. Bringing these capabilities and policies closer to the end user device prevents unnecessary network traffic and its associated overhead.
 
 ## Mitigation
+
+It's imperative that we secure our workloads and solutions in the cloud. Understanding how we can optimize our mitigation tactics and architectures can have a positive outcome for reducing emissions.
 
 ### Design considerations
 
@@ -88,6 +94,8 @@ Designing sustainable workloads on Azure must encompass security, is a foundatio
 
 ## Reporting
 
+Getting the right information and insights at the right time is important for producing reports around emissions from your security appliances.
+
 ### Design considerations
 
 - It can be a challenge to quickly find and report on all security appliances in your tenant. Identifying the security resources can help when designing a strategy for a more sustainable operating model for your business.
@@ -102,3 +110,8 @@ Designing sustainable workloads on Azure must encompass security, is a foundatio
   - Log data can be [moved out to a cheaper long-term storage option](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/move-your-microsoft-sentinel-logs-to-long-term-storage-with-ease/ba-p/1407153) which respects the retention policies of the customer, but lowers the cost by utilizing separate storage locations.
 
 ## Next step
+
+Review the design principles for sustainability.
+
+> [!div class="nextstepaction"]
+> [Design principles](sustainability-design-principles.md)
