@@ -34,19 +34,19 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Compute design
-            url: sustainability-compute.md
-          - text: Operations
-            url: sustainability-operational-procedures.md
-          - text: Deployment and testing
-            url: sustainability-deployment-testing.md
-          - text: Networking and connectivity
-            url: sustainability-networking.md
-          - text: Storage
-            url: sustainability-storage.md
           - text: Application design
             url: sustainability-application-design.md
           - text: Application platform 
             url: sustainability-application-platform.md
+          - text: Deployment and testing
+            url: sustainability-deployment-testing.md
+          - text: Operational procedures
+            url: sustainability-operational-procedures.md
+          - text: Compute
+            url: sustainability-compute.md
+          - text: Networking and connectivity
+            url: sustainability-networking.md
+          - text: Storage
+            url: sustainability-storage.md
           - text: Security
             url: sustainability-security.md

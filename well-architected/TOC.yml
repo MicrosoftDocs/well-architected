@@ -419,15 +419,15 @@ items:
                 items:
                 - name: Application design
                   href: sustainability/sustainability-application-design.md
-                - name: Application platform
+                - name: Application platform 
                   href: sustainability/sustainability-application-platform.md
                 - name: Deployment and testing
                   href: sustainability/sustainability-deployment-testing.md
                 - name: Operational procedures
                   href: sustainability/sustainability-operational-procedures.md
-                - name: Compute design
+                - name: Compute
                   href: sustainability/sustainability-compute.md
-                - name: Network and connectivity
+                - name: Networking and connectivity
                   href: sustainability/sustainability-networking.md
                 - name: Storage
                   href: sustainability/sustainability-storage.md

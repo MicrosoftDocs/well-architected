@@ -65,7 +65,7 @@ Measuring carbon emissions of a cloud application is a complex task, as it invol
 
 ## Next steps
 
-Review the considerations for compute design.
+Review the considerations for application design.
 
 > [!div class="nextstepaction"]
-> [Compute](sustainability-compute.md)
+> [Application design](sustainability-application-design.md)
