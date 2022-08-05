@@ -57,7 +57,7 @@ ms.custom:
 
 ## Next step
 
-Review the considerations for storage design.
+Review the design considerations for deployment and testing.
 
 > [!div class="nextstepaction"]
-> [Operations](sustainability-storage.md)
+> [Deployment and testing](sustainability-deployment-testing.md)

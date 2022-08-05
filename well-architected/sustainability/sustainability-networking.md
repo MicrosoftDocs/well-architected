@@ -33,7 +33,7 @@ ms.custom:
 
 ## Next step
 
-Review the considerations for storage design.
+Review the design considerations for storage.
 
 > [!div class="nextstepaction"]
-> [Operations](sustainability-storage.md)
+> [Storage](sustainability-storage.md)

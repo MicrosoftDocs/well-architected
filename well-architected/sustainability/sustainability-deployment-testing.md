@@ -44,7 +44,7 @@ ms.custom:
 
 ## Next step
 
-Review the considerations for network design.
+Review the design considerations for operational procedures.
 
 > [!div class="nextstepaction"]
-> [Operations](sustainability-networking.md)
+> [Operational procedures](sustainability-operational-procedures.md)

@@ -49,7 +49,7 @@ ms.custom:
 
 ## Next step
 
-Review the considerations for Deployment and DevOps.
+Review the design considerations for compute.
 
 > [!div class="nextstepaction"]
-> [Operations](sustainability-deployment-testing.md)
+> [Compute](sustainability-compute.md)

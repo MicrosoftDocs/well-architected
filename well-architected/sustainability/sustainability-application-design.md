@@ -87,7 +87,7 @@ ms.custom:
 
 ## Next step
 
-Review the design considerations for secure and sustainable workloads.
+Review the design considerations for application platform.
 
 > [!div class="nextstepaction"]
-> [Operations](sustainability-security.md)
+> [Application platform](sustainability-application-platform.md)

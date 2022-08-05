@@ -56,7 +56,7 @@ ms.custom:
 
 ## Next step
 
-Review the considerations for operational procedures.
+Review the design considerations for networking and connectivity.
 
 > [!div class="nextstepaction"]
-> [Operations](sustainability-operational-procedures.md)
+> [Network and connectivity](sustainability-networking.md)

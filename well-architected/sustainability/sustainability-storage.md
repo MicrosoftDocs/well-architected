@@ -47,7 +47,7 @@ ms.custom:
 
 ## Next step
 
-Review the considerations for application design.
+Review the design considerations for security.
 
 > [!div class="nextstepaction"]
-> [Operations](sustainability-application-design.md)
+> [Security](sustainability-security.md)
