@@ -45,11 +45,17 @@ ms.custom:
 |Review platform updates regularly, and upgrade to newer/more efficient services as they become available|Operational Excellence|Energy Efficiency|TBD|
 |[Update services, OS, software libraries to gain performance efficiencies](/azure/architecture/hybrid/azure-update-mgmt)|Performance Efficiency|Energy Efficiency|TBD|
 
-## Application availability
+## Regional considerations
 
 ### Design considerations
 
+- Running applications on outdated versions of a service, OS or software library may result in unnecessary performance issues, and ultimately energy waste, that could be resolved with a newer version.
+
 ### Design recommendations
+
+- Update services, OS, and software libraries.
+  - New software tends to be more efficient in general. Performance gains often comes with new upgrades and updates.
+  - Consider backwards-compatibility and hardware reusability. If the hardware or the OS is not supported, an upgrade may not be the most efficient solution right now.
 
 |Design principle|Pillar|SGF Pillar|
 |---|---|---|

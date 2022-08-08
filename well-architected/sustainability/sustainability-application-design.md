@@ -20,7 +20,6 @@ ms.custom:
 
 - Decouple backend processing from a frontend host.
   - Consider if the frontend can be designed to answer requests while the backend processing can be asynchronous.
-- Monolithic applications usually scale as a unit, leaving little room to scale only the individual components that may need it.
 - Apps that aren't optimized can lead to issues with scalability, deployability, code maintenance, and a waste of energy.
 - Many modern cloud applications are designed to asynchronously transact many messages between services and components.
   - Consider the format used to encode the payload data.
@@ -39,30 +38,20 @@ ms.custom:
 - Evaluate server-side vs client-side rendering.
   - That is code rendered once preferable over rendering per request.
 
+Consider designing apps according to recommended design patterns to help reduce the carbon footprint of the workload.
+
 ## Code efficiency
 
 ### Design considerations
 
-- Move toward a [microservice architecture style](/azure/architecture/guide/architecture-styles/microservices).
-  - Allow scaling of only the necessary components during peak load.
-  - Reduce the overhead for deploying monolithic applications.
-
-- Consider designing apps according to recommended design patterns to help reduce the carbon footprint of the workload.
-
-- Optimize the code for efficient resource usage.
-  - Learn about the [DRY principle](/archive/msdn-magazine/2019/june/patterns-and-practices-super-dry-development-for-asp-net-core).
-  - Build efficient algorithms. For example, ```O(n) > O(n^2)```
+- Monolithic applications usually scale as a unit, leaving little room to scale only the individual components that may need it.
 
 ### Design recommendations
 
-|Design principle|Pillar|SGF Pillar|
-|---|---|---|
-|Move monoliths to microservices only to scale only necessary components (if it fits workload profile)|
-|Optimize code for efficient resource usage, e.g. modularity; DRY; efficient algorithms e.g. O(n) > O(n^2)|Performance efficiency|Energy efficiency|
-|Improve API efficiency - Reduce chattiness of APIs, throttle APIs, reduce payload returned|Performance efficiency|Energy efficiency|
-|Ensure software backwards compatibility so it works on legacy hardware|Performance Efficiency|Hardware efficiency|
-|Evaluate server-side vs client-side rendering|Performance efficiency|Energy efficiency|
-|Be aware of UX design for sustainability, for example,  use SD rather than HD|Performance Efficiency|Energy efficiency|
+- Move monoliths to a [microservice architecture](/azure/architecture/guide/architecture-styles/microservices).
+  - Allow scaling of only the necessary components during peak load.
+  - Reduce the overhead and resources required for deploying monolithic applications.
+  - Consider this tradeoff: While reducing the compute resources required, you may increase the amount of traffic on the network, and the complexity of the application may increase significantly.
 
 ## Application modernization
 
@@ -70,20 +59,12 @@ ms.custom:
 
 ### Design recommendations
 
-|Design principle|Pillar|SGF Pillar|
-|---|---|---|
-|Apply [cloud-native design patterns](/azure/architecture/patterns/) when writing or updating your workload code|Operational Excellence|Carbon awareness|
-|Update legacy code, identify inefficient legacy code for modernization, make use of serverless, PaaS|Operational Excellence|Hardware Efficiency|
-
 ## Application and system health
 
 ### Design considerations
 
 ### Design recommendations
 
-|Design principle|Pillar|SGF Pillar|
-|---|---|---|
-|Circuit breaker patterns - if a service isn't available, don't continue to ping it/retry it|Reliability|Energy efficiency|
 
 ## Next step
 

@@ -22,14 +22,23 @@ ms.custom:
 
 ### Design considerations
 
+- Seeing oversized compute workloads is not uncommon where much of the capacity is never utilized, which ultimately leads to a waste of energy.
+
+- Some datacenters and regions have a different carbon footprint than others. Understanding which available regions have a lower carbon footprint is important to make an informed decision about how and when our workloads should process data.
+
+- Demands on applications can vary, and it is important to consider ways to stabilize the utilization to prevent over- or underutilization of resources, which can lead to unnecessary energy spill.
+
 ### Design recommendations
 
-|Design principle|Pillar|SGF Pillar|Considerations|
-|---|---|---|---|
-|Deploy low-carbon regions and process when carbon intensity is low|Performance Efficiency|Carbon Efficiency|TBD.|
-|Consider ARM SKUs for VMs/compute|Performance Efficiency|Energy Efficiency|TBD|
-|Optimize for async access patterns|Performance Efficiency|Energy Efficiency|TBD|
-|[Demand shaping - Run batch workloads during low carbon intensity periods](/azure/architecture/data-guide/big-data/batch-processing)|Performance Efficiency|Carbon Awareness|
+- Utilize [auto-scaling](/azure/architecture/best-practices/auto-scaling) and bursting capabilities.
+  - Consider that it may require tuning to prevent unnecessary scaling during short bursts of high demand, as opposed to a static increase in demand.
+  - Consider the application architecture as part of scaling considerations. For example, logical components should scale independently to match the demand of that component, as opposed to scaling the entire application if only a portion of the components need scaling.
+
+- Run [batch workloads](/azure/architecture/data-guide/big-data/batch-processing) during low carbon intensity periods.
+  - Potential tradeoffs may include the effort and time it takes to move to a low-carbon region. Additionally, migrating data between datacenters may not be carbon efficient, and the cost for new regions&mdash;including low-carbon regions&mdash;may be more expensive.
+
+- Optimize for [async access patterns](/azure/architecture/patterns/async-request-reply).
+  - Queue and buffer requests that do not require immediate processing, then process in batch. Designing your applications in this way helps achieve a stable utilization, and helps flatten consumption to avoid spiky requests.
 
 ## App modernization
 
