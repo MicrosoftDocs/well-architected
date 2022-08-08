@@ -59,7 +59,7 @@ Where:
 - `E` = Energy consumed by a software system. Measured in kWh.
 - `I` = Location-based marginal carbon emissions. Carbon emitted per kWh of energy, gCO2/kWh.
 - `M` = Embodied emissions of a software system. Carbon emitted through the hardware on which the software is running.
-- `R` = Functional unit, which is how the application scales; per additional user, per API-call, per service, etc.
+- `R` = Functional unit, which is how the application scales; per extra user, per API-call, per service, etc.
 
 With this knowledge, it's important to consider not only the application infrastructure and hardware, but also the user devices and how the application scales, as it can alter the environmental footprint considerably.
 
@@ -72,6 +72,37 @@ Microsoft offers the [Emissions Impact Dashboard](https://www.microsoft.com/en-u
 We recommend you use this tool to get the insights and transparency you need to understand your carbon footprint, and to measure and track emissions over time.
 
 Download the [Emissions Impact Dashboard Power BI app for Azure](https://appsource.microsoft.com/product/power-bi/coi-sustainability.emissions_impact_dashboard) to get started.
+
+#### Use a proxy solution to measure emissions
+
+By designing a proxy solution architecture based on the SCI model, we can estimate the carbon emissions from our workloads.
+
+Defining the proxies for applications can be done in different ways. For example, using these variables:
+
+- Any know carbon emission of the infrastructure
+- The cost of the infrastructure
+- Edge services and infrastructure carbon emissions
+- The number of users that are concurrently using the application
+- Metrics of the application to inform us about the performance over time
+
+By designing an equation using the above variables, you can create an approximation of the carbon score, helping you understand if you're building solutions that are sustainable.
+
+There's also the aspect of application performance. You can link the performance to cost and carbon, and assume that their relation is a value. With this relation, you can simplify the view like this:
+
+|Application performance|Application cost|Likely outcome|
+|---|---|---|
+|High|Unchanged|Optimized app|
+|High|Lower|Optimized app|
+|Unchanged/Lower|Higher|According to the green principles, a higher energy cost can be a cause for higher carbon emission. Therefore the app can be assumed to produce unnecessary carbon emissions.|
+|High|High|The app may be producing unnecessary carbon|
+
+Therefore, building a carbon score dashboard can make use of the following proxies:
+
+- Cost
+- Performance
+- Carbon emissions of the infrastructure (if known/available)
+- Usage over time (requests, users, API calls, etc.)
+- Any extra measurement that is relevant to the application
 
 ## 4&mdash;The shared responsibility model for sustainability
 
@@ -101,9 +132,8 @@ The shared responsibility model for sustainable apps can be visualized like this
 
 _Let's take an example._
 
-- You deploy an app to an Azure service, but your only utilize 10% of the allocated resources.
+You deploy an app to an Azure service, but your only utilize 10% of the allocated resources. The provisioned resources are underutilized, ultimately leading to unnecessary emissions.
 
-In the above scenario the provisioned resources are underutilized, ultimately leading to unnecessary emissions.
 You should consider scaling to an appropriate tier of the resource (rightsizing), or consider deploying more apps to the same provisioned resources.
 
 Customers are recommended to make applications more efficient to utilize the datacenter capacity in the best way possible. Sustainability is a shared responsibility goal that needs to combine the efforts of both the cloud provider and the customers designing and implementing applications hosted in the global datacenters.
