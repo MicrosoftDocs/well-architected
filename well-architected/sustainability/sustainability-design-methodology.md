@@ -17,7 +17,9 @@ ms.custom:
 
 # Design methodology for sustainable workloads on Azure
 
-[Intro paragraph]
+Building a sustainable application on any cloud platform requires both technical expertise and an understanding of sustainability guidelines in general, and for your specific cloud platform.
+
+This design methodology aims to help establish an understanding about producing more carbon efficient solutions, measuring your carbon impact, and ultimately reduce unnecessary energy and emissions.
 
 ## 1&mdash;Design for business requirements
 

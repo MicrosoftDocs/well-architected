@@ -16,7 +16,7 @@ ms.custom:
 
 # Security considerations for sustainable workloads on Azure
 
-Designing sustainable workloads on Azure must encompass security, is a foundational principle through all phases of a project.
+Designing sustainable workloads on Azure must encompass security, which is a foundational principle through all phases of a project.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
