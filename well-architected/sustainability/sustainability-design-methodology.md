@@ -130,7 +130,7 @@ However, deploying an application in the Microsoft cloud doesn't automatically m
 
 The shared responsibility model for sustainable apps can be visualized like this:
 
-:::image type="content" source="./images/sustainability-shared-responsibility-model.png" alt-text="Diagram showing the shared responsibility model for sustainability." border="false" lightbox="./images/sustainability-shared-responsibility-model.png":::
+:::image type="content" source="./images/sustainability-shared-responsibility-apps.svg" alt-text="Diagram showing the shared responsibility model for sustainability." border="false" lightbox="./images/sustainability-shared-responsibility-apps.svg":::
 
 _Let's take an example._
 
@@ -138,7 +138,7 @@ You deploy an app to an Azure service, but your only utilize 10% of the allocate
 
 You should consider scaling to an appropriate tier of the resource (rightsizing), or consider deploying more apps to the same provisioned resources.
 
-Customers are recommended to make applications more efficient to utilize the datacenter capacity in the best way possible. Sustainability is a shared responsibility goal that needs to combine the efforts of both the cloud provider and the customers designing and implementing applications hosted in the global datacenters.
+Customers are recommended to make applications more efficient to utilize the datacenter capacity in the best way possible. Sustainability is a shared responsibility goal that needs to combine the efforts of both the cloud provider and the customers designing and implementing applications.
 
 ## Next steps
 

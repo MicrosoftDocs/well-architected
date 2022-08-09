@@ -18,34 +18,7 @@ ms.custom:
 
 [Intro paragraph]
 
-## Operate in the cloud
-
-### Design considerations
-
-### Design recommendations
-
-|Design principle|Pillar|SGF Pillar|Considerations|
-|---|---|---|---|
-|Move to the cloud|Operational Excellence|Hardware Efficiency|TBD|
-|Correct sizing of Azure resources|Cost Optimization|Hardware Efficiency|TBD|
-|Delete zombie workloads|Cost Optimization|Hardware Efficiency|TBD|
-|Use automation to automatically shut down infrastructure or resources that aren't needed to minimize environmental impact of idle resources|Operational Excellence|Hardware Efficiency|TBD|
-|Keep TTL low to avoid idle resource|Performance Efficiency|Hardware Efficiency|TBD|
-|[Restartability - amount of processing to recover from failure](/azure/backup/manage-recovery-points#impact-of-expired-recovery-points-for-items-in-soft-deleted-state)|Reliability|Energy Efficiency|TBD|
-
 ## Stay updated
-
-### Design considerations
-
-### Design recommendations
-
-|Design principle|Pillar|SGF Pillar|Considerations|
-|---|---|---|---|
-|Keep OS, language runtimes and libraries up to date for latest efficiency gains|Operational Excellence|Energy Efficiency|TBD|
-|Review platform updates regularly, and upgrade to newer/more efficient services as they become available|Operational Excellence|Energy Efficiency|TBD|
-|[Update services, OS, software libraries to gain performance efficiencies](/azure/architecture/hybrid/azure-update-mgmt)|Performance Efficiency|Energy Efficiency|TBD|
-
-## Regional considerations
 
 ### Design considerations
 
@@ -57,9 +30,27 @@ ms.custom:
   - New software tends to be more efficient in general. Performance gains often comes with new upgrades and updates.
   - Consider backwards-compatibility and hardware reusability. If the hardware or the OS is not supported, an upgrade may not be the most efficient solution right now.
 
-|Design principle|Pillar|SGF Pillar|
-|---|---|---|
-|Smaller failure units|Reliability|hardware efficiency|
+## Regional differences
+
+The Microsoft Azure datacenters are geographically spread out across the planet, and are powered using different energy sources. Making decisions around where to deploy your workloads can significantly impact the emissions your solutions produce.
+
+### Design considerations
+
+- Learn about what Azure regions have a lower carbon footprint than other to better make informed decisions about where and how our workloads process data.
+  - Some regions on the planet are more carbon intense than others, and therefore its important to consider where we deploy our workloads, and combine this with other business requirements.
+
+### Design recommendations
+
+- Deploy to low-carbon regions and process when carbon intensity is low.
+  - Use less carbon because the data centers where you deployed the workload is more likely to be powered by renewable energy and low-carbon energy sources.
+  - Potential tradeoffs:
+    - The effort and time it takes to move to a low-carbon region.
+    - Migrating data between datacenters may not be carbon efficient.
+    - Consider the cost for new regions, including low-carbon regions, which may be more expensive.
+
+- Process when the carbon intensity is low.
+  - Optimizing workloads to run when knowing that the energy mix comes mostly from renewable energy sources.
+  - For example, it may be more beneficial to run certain workloads during the night in some regions.
 
 ## Next step
 

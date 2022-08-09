@@ -16,7 +16,7 @@ ms.custom:
 
 # Networking considerations for sustainable workloads on Azure
 
-[Intro paragraph]
+Most workloads in the cloud rely heavily on networking to operate. Whether it's internal networking, or public facing workloads, the components and services used in provisioned solutions should be designed with sustainability in mind. Learn about considerations and recommendations to enhance and optimize the network efficiency to reduce unnecessary carbon emissions.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)

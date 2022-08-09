@@ -16,7 +16,18 @@ ms.custom:
 
 # Deployment and testing considerations for sustainable workloads on Azure
 
-[Intro paragraph]
+Organizations usually develop and deploy solutions to the cloud. During this process, it's not uncommon to have various types of testing involved to ensure the workloads are of the highest quality. Learn about what considerations and recommendations there are for running workload tests, and how to optimize for a more sustainable testing model.
+
+## Testing efficiency
+
+### Design considerations
+
+- Testing applications with unit testing, load testing, or any other intense testing capability may result in a lot of processing. A well-crafted design for testing the deployed workloads can help reduce the carbon emissions.
+
+### Design recommendations
+
+- Run unit-, load- or any other intense testing during low-carbon periods.
+  - Opt for running testing when the energy mix of the data center is mostly using renewable energy. It may, for example, be more beneficial to run testing during night in some regions.
 
 ## Assess your workloads
 

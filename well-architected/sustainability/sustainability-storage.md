@@ -16,7 +16,7 @@ ms.custom:
 
 # Data and storage design considerations for sustainable workloads on Azure
 
-[Intro paragraph]
+Data storage in Azure is a key component of most provisioned workloads. Learn about how to design for a more sustainable data storage architecture, and what can be optimized in existing deployments.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)

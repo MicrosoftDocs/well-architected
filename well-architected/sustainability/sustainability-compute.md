@@ -16,7 +16,10 @@ ms.custom:
 
 # Considerations for sustainable compute workloads on Azure
 
-[Intro paragraph]
+Processing solutions in Azure of any kind often rely on compute resources. Whether it's a web app, an API, or a set of VMs, the compute considerations should be considered carefully. Learn about ways to optimize compute workloads for sustainability.
+
+> [!IMPORTANT]
+> This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
 
 ## Compute efficiency
 
