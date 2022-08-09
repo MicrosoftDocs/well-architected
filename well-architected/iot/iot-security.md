@@ -126,6 +126,8 @@ To implement effective least-privileged access:
 - Manage user access through an appropriate access control model, such as role-based or attribute-based access control.
 - Layer least-privileged access for IoT devices by using network segmentation.
 
+Network design and configuration provide opportunities to build defense in depth by segmenting IoT devices based on their traffic patterns and risk exposure. This segmentation minimizes the potential impact of compromised devices and the ability of adversaries to pivot to higher-value assets. Network segmentation typically uses next-generation firewalls.
+
 Network micro-segmentation enables isolation of less-capable devices at the network layer, either behind a gateway or on a discrete network segment. Use network segmentation to group IoT devices, and use endpoint protection to mitigate the impact of potential compromise.
 
 Implement a holistic firewall rule strategy that allows devices to access the network when required, and blocks access when not allowed. To support defense in depth, mature organizations can implement micro-segmentation policies at multiple layers of the Purdue model. If necessary, use firewalls on devices to restrict network access.
@@ -142,7 +144,7 @@ According to industry standards, device health evaluation should include:
 - Active threats and threat alerts.
 - Anomalous behavioral alerts, such as network pattern and usage deviation.
 
-#### Use zero-trust criteria to select IoT devices
+#### Use zero-trust criteria to choose IoT devices
 
 To support zero trust, IoT devices should:
 
@@ -180,9 +182,7 @@ Several Azure products and services support security for IoT devices:
 
 This architectural layer includes software components or modules running in the cloud that interface with devices and gateways for data collection and analysis, as well as for command and control. It's critical to ensure that communication from the device to the cloud is secure and encrypted using the latest TLS standards.
 
-Network design and configuration provide opportunities to build defense in depth by segmenting IoT devices based on their traffic patterns and risk exposure. This segmentation minimizes the potential impact of compromised devices and the ability of adversaries to pivot to higher-value assets. Network segmentation typically uses next-generation firewalls.
-
-#### Use zero-trust criteria to select IoT services
+#### Use zero-trust criteria to choose IoT services
 
 Use IoT services that offer the following key zero-trust capabilities:
 
@@ -195,9 +195,9 @@ Use IoT services that offer the following key zero-trust capabilities:
 - Enable security monitoring of both IoT services and connected IoT devices.
 - Monitor and control access to all public endpoints, and implement authentication and authorization for any calls made to these endpoints.
 
-Several Azure services provide these capabilities:
+Several Azure services provide zero-trust capabilities.
 
-- [Windows for IoT](https://www.microsoft.com/WindowsForBusiness/windows-iot) has features that help ensure security across key pillars of the IoT security spectrum:
+- [Windows for IoT](https://www.microsoft.com/WindowsForBusiness/windows-iot) has features that help ensure security across key pillars of the IoT security spectrum. Windows for IoT:
 
   - Protects data at rest, during code execution, and in motion. Features include BitLocker Drive Encryption, Secure Boot, Windows Defender Application Control, Windows Defender Exploit Guard, secure Universal Windows Platform (UWP) applications, Unified Write Filter, a secure communication stack, and security credential management.
 
@@ -205,7 +205,7 @@ Several Azure services provide these capabilities:
 
   - Uses Device Update Center and Windows Server Update Services to apply the latest security patches. You can remediate threats to devices by using Azure IoT Hub device management features, Microsoft Intune or third-party mobile device management solutions, and Microsoft System Center Configuration Manager.
 
-- [Microsoft Defender for IoT](/azure/defender-for-iot) is an agentless, network layer security platform that delivers continuous asset discovery, vulnerability management, and threat detection for IoT and OT devices. Defender for IoT supports proprietary embedded OT devices and legacy Windows systems commonly found in OT environments. Defender for IoT continuously monitors network traffic using IoT-aware behavioral analytics to immediately identify unauthorized or compromised IoT devices. Deploy Microsoft Defender for IoT to:
+- [Microsoft Defender for IoT](/azure/defender-for-iot) is an agentless, network layer security platform that delivers continuous asset discovery, vulnerability management, and threat detection for IoT and OT devices. Defender for IoT supports proprietary embedded OT devices and legacy Windows systems commonly found in OT environments. Defender for IoT continuously monitors network traffic using IoT-aware behavioral analytics to immediately identify unauthorized or compromised IoT devices. Microsoft Defender for IoT can:
 
   - Inventory all IoT devices.
   - Assess all IoT devices for vulnerabilities and provide risk based mitigation recommendations.
@@ -213,7 +213,12 @@ Several Azure services provide these capabilities:
 
 - [Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel), a cloud-based security information and event management (SIEM) and security orchestration, automation, and response (SOAR) platform, tightly integrates with Microsoft Defender for IoT. Microsoft Sentinel provides a cloud-scale view of security across your enterprise by collecting data across all users, devices, applications, and infrastructure, including firewalls, network access control, and network switch devices. Microsoft Sentinel can quickly spot anomalous behaviors that indicate potential compromise of IoT or OT devices. Microsoft Sentinel also supports third-party security operations center (SOC) solutions such as Splunk, IBM QRadar, and ServiceNow.
 
-- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) supports an operational registry for organizational IoT devices and accepts device operational certificates to enable strong identity. Azure IoT Hub supports provisioning of module identities to support IoT Edge workloads, and can disable devices centrally to prevent unauthorized connection. 
+- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub):
+
+  - Provides an operational registry for organizational IoT devices.
+  - Accepts device operational certificates to enable strong identity.
+  - Supports provisioning of module identities that support IoT Edge workloads.
+  - Can disable devices centrally to prevent unauthorized connections.
 
 - [Azure IoT Hub Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps) provides a central device registry for organizational devices to register for onboarding at scale. DPS accepts device certificates to enable onboarding with strong device identity and renewable credentials, registering devices in IoT Hub for their daily operation.
 
@@ -221,13 +226,13 @@ Several Azure services provide these capabilities:
 
 - [Azure IoT Hub support for virtual networks](/azure/iot-hub/virtual-network-support) lets you restrict connectivity to IoT Hub through a virtual network that you operate. This network isolation prevents connectivity exposure to the public internet, and can help prevent exfiltration attacks from sensitive on-premises networks.
 
-The following Microsoft products provide hardware built to fully integrate with Azure services in an overall IoT solution:
+The following Microsoft products provide fully-integrated hardware and Azure services in overall IoT solutions.
 
-- [Azure Sphere](/azure-sphere) is a fully managed integrated hardware, OS, and cloud platform solution for medium and low-power IoT devices that meets all seven properties of highly secured devices. Azure Sphere has several features that can help an organization implement zero trust. Devices use explicit verification and implement certificate-based Device Attestation and Authentication (DAA), which automatically renews trust. Azure Sphere also implements least-privileged access, where applications are denied access by default to all peripheral and connectivity options. For network connectivity, permitted web domains must be included in the software manifest or the application can't connect outside of the device.
+- [Azure Sphere](/azure-sphere) is a fully managed integrated hardware, OS, and cloud platform solution that helps medium and low-power IoT devices attain [the seven properties of highly secured devices](https://www.microsoft.com/research/publication/seven-properties-2nd-edition) to implement zero trust. Devices use explicit verification and implement certificate-based Device Attestation and Authentication (DAA), which automatically renews trust. Azure Sphere uses least-privileged access, where applications are denied access by default to all peripheral and connectivity options. For network connectivity, permitted web domains must be included in the software manifest or the application can't connect outside of the device.
 
-  Azure Sphere is built around assumed breach. Protections are layered with defense in depth throughout the OS design. A secure world partition running in Arm TrustZone on Azure Sphere devices helps segment OS breaches from access to Pluton or hardware resources. You can apply Azure Sphere as a guardian module to secure other devices, including existing legacy systems not designed for trusted connectivity. In this scenario, an Azure Sphere guardian module deploys with an application and interfaces with existing devices through Ethernet, serial, or BLE. The devices don't necessarily have direct internet connectivity.
+  Azure Sphere is built around assumed breach. Defense in depth layers protections throughout the OS design. A secure world partition running in Arm TrustZone on Azure Sphere devices helps segment OS breaches from access to Pluton or hardware resources. Azure Sphere can be a guardian module to secure other devices, including existing legacy systems not designed for trusted connectivity. In this scenario, an Azure Sphere guardian module deploys with an application and interfaces with existing devices through Ethernet, serial, or BLE. The devices don't necessarily have direct internet connectivity.
 
-- [Azure Percept](https://aka.ms/azurepercept) is an end-to-end edge AI platform that can help you start your proof of concept in minutes. Azure Percept includes hardware accelerators integrated with Azure AI and IoT services, pre-built AI models, and solution management. Azure Percept devices have a hardware root of trust to help protect inference data in transit and at rest, AI models, and privacy-sensitive sensors such as cameras and microphones. Azure Percept enables device authentication and authorization for Azure Percept Studio services. For more information, see [Azure Percept security](/azure/azure-percept/overview-percept-security).
+- [Azure Percept](https://aka.ms/azurepercept) is an end-to-end edge AI platform that can help you start a proof of concept in minutes. Azure Percept includes hardware accelerators integrated with Azure AI and IoT services, pre-built AI models, and solution management. Azure Percept devices use a hardware root of trust to help protect inference data, AI models, and privacy-sensitive sensors like cameras and microphones. Azure Percept enables device authentication and authorization for Azure Percept Studio services. For more information, see [Azure Percept security](/azure/azure-percept/overview-percept-security).
 
 ### Ingestion and communication layer
 
