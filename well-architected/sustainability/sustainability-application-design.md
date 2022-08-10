@@ -51,13 +51,13 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
   - Cache data to avoid re-requesting the same type of information unless necessary.
 
 - Ensure backward software compatibility, so it works on legacy hardware.
-  - Support more end-user consumer devices, like older browsers and operating systems. This backward compatibility helps to reuse existing hardware instead of requiring a hardware upgrade for the solution to work.
+  - Support more end-user consumer devices, like older browsers and operating systems. This backward compatibility improves hardware efficiency by reusing existing hardware instead of requiring a hardware upgrade for the solution to work.
 
 - Evaluate server-side vs. client-side rendering.
   - Rendering something once may be more efficient on the server, but rendering something often may be more efficient on the client. Evaluate what and how often your application displays content. Consider where it may be best suited to process the rendering.
 
 - Be aware of UX design for sustainability.
-  - Consider reducing the number of components on a page to ensure there are fewer things to load and render.
+  - Consider reducing the number of components to load and render on pages.
   - If applicable, determine whether the application can render lower resolution images and videos.
 
 - Optimize code for efficient resource usage.
