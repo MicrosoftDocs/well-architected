@@ -25,7 +25,7 @@ Designing and building sustainable workloads requires understanding the platform
 
 ### Design considerations
 
-- Running applications on outdated versions of a service, OS, or software library may result in unnecessary performance issues and, ultimately, resolve energy waste with a newer version.
+- Running applications on outdated versions of a service, OS, or software library may result in unnecessary performance issues and, ultimately, a new version can reduce energy waste.
 
 ### Design recommendations
 
@@ -50,6 +50,7 @@ The Microsoft Azure data centers are geographically spread across the planet and
     - The effort and time it takes to move to a low-carbon region.
     - Migrating data between data centers may not be carbon efficient.
     - Consider the cost for new regions, including low-carbon regions, which may be more expensive.
+    - Network traversal increases if the data center is a greater distance from consumers.
 
 - Process when the carbon intensity is low.
   - Optimizing workloads to run when knowing that the energy mix comes mostly from renewable energy sources.
