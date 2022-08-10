@@ -57,7 +57,7 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
   - Rendering something once may be more efficient on the server, but rendering something often may be more efficient on the client. Evaluate what and how often your application displays content. Consider where it may be best suited to process the rendering.
 
 - Be aware of UX design for sustainability.
-  - Consider reducing the number of components on a page to ensure there are fewer elements to load and render.
+  - Consider reducing the number of components to load and render on pages.
   - If applicable, determine whether the application can render lower resolution images and videos.
 
 - Optimize code for efficient resource usage.
