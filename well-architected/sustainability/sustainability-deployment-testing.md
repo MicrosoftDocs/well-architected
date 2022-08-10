@@ -22,36 +22,31 @@ Organizations usually develop and deploy solutions to the cloud. During this pro
 
 ### Design considerations
 
-- Testing applications with unit testing, load testing, or any other intense testing capability may result in a lot of processing. A well-crafted design for testing the deployed workloads can help reduce the carbon emissions.
+- Testing applications with unit testing, load testing, or any other intense testing capability may result in a lot of processing. A well-crafted design for testing the deployed workloads can help ensure a full utilization of the available resources, reducing the carbon emissions.
 
 ### Design recommendations
 
 - Run unit-, load- or any other intense testing during low-carbon periods.
   - Opt for running testing when the energy mix of the data center is mostly using renewable energy. It may, for example, be more beneficial to run testing during night in some regions.
 
-## Assess your workloads
+- Automate CI-CD to scale worker agents as needed.
+  - Keeps the compute utilization high, based on the current demand, avoiding unnecessary capacity allocation.
+  - Only scale out when it's necessary, and when not testing, scale in.
+  - Consider optimized platform services like a container over testing in a VM, utilizing the platform to reduce maintenance.
+
+## Profiling and measuring
+
+Measuring, profiling and testing workloads is imperative to understanding how to best make use of allocated resources.
 
 ### Design considerations
 
-### Design recommendations
-
-|Design principle|WAF Pillar|GSF Pillar|Considerations|
-|---|---|---|---|
-|Use load testing or chaos engineering to assess how platform outages and/or spikes/dips in load affect the workload's sustainability|Operational Excellence|Measure Sustainability|TBD|
-|Use methods like A/B testing (or equivalent) to assess the impact of live user data on the sustainability of the workload whenever the code or architecture is updated|Operational Excellence|Measure Sustainability|TBD|
-
-## Improve efficiency
-
-### Design considerations
+- Without properly profiling and testing workloads, it's difficult to understand if it's making the best use of the underlying platform and deployed resources.
 
 ### Design recommendations
 
-|Design principle|WAF Pillar|GSF Pillar|Considerations|
-|---|---|---|---|
-|Unit test during low carbon periods|Performance Efficiency|Carbon Awareness|TBD|
-|Profile workloads to make use of parallelization where possible with GPUs vs CPUs for efficiency gains (for example, inference). Profile workloads to get balance of CPU and memory usage.|Performance Efficiency|Energy Efficiency|TBD|
-|Leverage repeatable/automated practices to deploy, operate and maintain your solution to maximize environmental efficiency|Operational Excellence|Carbon Efficiency|TBD|
-|Automate CI/CD to scale worker agents as needed|Performance Efficiency|Hardware Efficiency|TBD|
+- Profile workloads to make use of parallelization where possible.
+  - Test your applications to understand concurrent requests, simultaneous processing, and more.
+  - If you're running Machine Learning (ML) for tests, consider machines with a GPU for better efficiency gains.
 
 ## Next step
 
