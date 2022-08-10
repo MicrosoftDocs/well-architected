@@ -23,6 +23,8 @@ Most workloads in the cloud rely heavily on networking to operate. Whether it's 
 
 ## Network efficiency
 
+Reduce unnecessary network traffic and lower bandwidth requirements where possible, allowing for a more optimized network  efficiency with less carbon emission.
+
 ### Design considerations
 
 - Unnecessary traffic on the network should be avoided, as it's a cause for additional carbon emissions.

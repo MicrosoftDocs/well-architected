@@ -16,25 +16,27 @@ ms.custom:
 
 # Data and storage design considerations for sustainable workloads on Azure
 
-Data storage in Azure is a key component of most provisioned workloads. Learn about how to design for a more sustainable data storage architecture, and what can be optimized in existing deployments.
+Data storage in Azure is a crucial component of most provisioned workloads. Learn how to design for a more sustainable data storage architecture and optimize existing deployments.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
 
 ## Storage efficiency
 
+Build solutions with efficient storage to increase performance, lower the required bandwidth, and minimize unnecessary storage design climate impact.
+
 ### Design considerations
 
-- Storing a lot of uncompressed data can result in unnecessary bandwidth waste, and increases the requirements on storage capacity.
+- Storing a lot of uncompressed data can result in unnecessary bandwidth waste and increase the storage capacity requirements.
 
-- Querying big databases or retrieving a lot of information at the same time can have a performance penalty. Ideally, apps are optimized for query performance.
+- Querying extensive databases or retrieving much information simultaneously can have a performance penalty. Ideally, apps should optimize for query performance.
 
-- The carbon impact of data retrieved from hot storage can be higher than data from cold- or archive storage. Designing  solutions with the correct data access pattern in mind can enhance the application's carbon efficiency.
+- The carbon impact of data retrieved from hot storage can be higher than data from cold- or archive storage. Designing solutions with the correct data access pattern can enhance the application's carbon efficiency.
 
 ### Design recommendations
 
 - Enable storage compression.
-  - A solution to reduce the storage requirements, including both capacity and required bandwidth to write or retrieve data. For example, [compressing files in Azure Front Door](/azure/frontdoor/standard-premium/how-to-compression) and [compressing files in Azure CDN ](/azure/cdn/cdn-improve-performance)
+  - A solution to reduce the storage requirements, including both capacity and required bandwidth to write or retrieve data. For example, [compressing files in Azure Front Door](/azure/frontdoor/standard-premium/how-to-compression) and [compressing files in Azure CDN](/azure/cdn/cdn-improve-performance)
   - Compression is a well-known design technique to improve network performance.
   - Consider the tradeoff of compression: Does the benefit of compression outweigh the increased _carbon_ cost in the resources (CPU, RAM) needed to perform the compression/decompression?
   
@@ -45,11 +47,11 @@ Data storage in Azure is a key component of most provisioned workloads. Learn ab
   - Consider that it may require fine-tuning to achieve optimal results.
 
 - Use [storage best suited for the application's data access patterns](/azure/architecture/guide/design-principles/use-best-data-store).
-  - Make sure your most frequently data is stored in hot storage, making it easy to retrieve and does not require more processing to access.
-  - Data that is infrequently used should be stored in cold storage or offline archive storage, using less energy.
+  - Make sure your most frequent data is stored in hot storage, making it easy to retrieve and does not require more processing to access.
+  - Infrequently used data should be stored in cold or offline archive storage, using less energy.
 
-- Store only what is relevant.
-  - Implement policies to streamline the process of storing and keeping relevant information. [Microsoft Purview](/azure/purview/overview) can help label data and add time-based purging to automatically delete it after a retention period. Additionally, this helps you stay in control of your data and reduces the amount of data to process and transfer.
+- Only store what is relevant.
+  - Implement policies to streamline the process of storing and keeping relevant information. [Microsoft Purview](/azure/purview/overview) can help label data and add time-based purging to delete it after a retention period automatically. Additionally, this lets you stay in control of your data and reduces the amount of data to process and transfer.
 
 ## Next step
 

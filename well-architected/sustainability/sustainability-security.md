@@ -62,7 +62,7 @@ Use cloud native security solutions to optimize for sustainability.
 
 ## Network architecture
 
-Increase the efficiency and avoid unnecessary traffic by following good practices for you network security architecture.
+Increase the efficiency and avoid unnecessary traffic by following good practices for network security architectures.
 
 ### Design considerations
 
