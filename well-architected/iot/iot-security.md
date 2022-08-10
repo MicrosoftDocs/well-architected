@@ -23,7 +23,7 @@ The following key principles specifically extend the Well-Architected Framework 
 
 - *Strong identity* to authenticate devices and users. Have a hardware root of trust for trusted identity, register devices, issue renewable credentials, and use passwordless or multi-factor authentication (MFA).
 - *Least-privileged access control* to limit impact from compromised devices or identities or unapproved workloads.
-- *Device health* to gate device access or flag devices for remediation. Check security configuration, assess vulnerabilities and insecure passwords, monitor for active threats and anomalous behavior, and build ongoing risk profiles.
+- *Device health* to gate device access or flag devices for remediation. Check security configuration, assess vulnerabilities and insecure passwords, monitor for threats and anomalies, and build ongoing risk profiles.
 - Continual *updates* to keep devices healthy. Use a centralized configuration and compliance management solution and a robust update mechanism to ensure devices are up-to-date and healthy.
 - Proactive *monitoring and response* to rapidly identify unauthorized or compromised devices and respond to emerging threats.
 
@@ -31,11 +31,11 @@ The following key principles specifically extend the Well-Architected Framework 
 
 To assess your IoT workload against the Well-Architected Framework Security pillar, complete the security questions for IoT workloads in the [Azure Well-Architected Review assessment](/assessments/?mode=pre-assessment&id=azure-architecture-review). After the assessment identifies key security recommendations for your IoT solution, the following sections can help you implement the recommendations.
 
-## Zero trust security model
+## Zero-trust security model
 
-Instead of assuming everything behind a corporate firewall is safe, a [zero trust security model](https://www.microsoft.com/security/business/zero-trust) fully authenticates, authorizes, and encrypts every access request before granting access. Securing IoT solutions with zero trust starts with implementing basic identity, device, and access security practices. Basic practices include explicitly verifying users, reviewing devices added to the network, and using real-time risk detection to make dynamic access decisions.
+Unauthorized access to IoT systems could lead to mass information disclosure, such as leaked factory production data, or elevation of privilege for cyber-physical systems control, such as stopping a factory production line. A [zero trust security model](https://www.microsoft.com/security/business/zero-trust) helps limit the potential impact of users gaining unauthorized access to cloud or on-premises IoT services and data.
 
-These security basics help limit the potential impact of users gaining unauthorized access to cloud or on-premises IoT services and data. Unauthorized access could otherwise lead to mass information disclosure, such as leaked factory production data, or elevation of privilege for cyber-physical systems control, such as stopping a factory production line.
+Instead of assuming everything behind a corporate firewall is safe, zero trust fully authenticates, authorizes, and encrypts every access request before granting access. Securing IoT solutions with zero trust starts with implementing basic identity, device, and access security practices, such as explicitly verifying users, reviewing devices on the network, and using real-time risk detection to make dynamic access decisions.
 
 The following resources can help you implement a zero-trust IoT solution:
 
@@ -57,7 +57,7 @@ An IoT architecture consists of a set of foundational layers. Layers are realize
 
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
 
-Security functions cut across all layers, and should follow specific principles and recommendations. All layers are subject to various threats that can be classified according to the [STRIDE categories](/archive/blogs/larryosterman/threat-modeling-again-stride): *spoofing*, *tampering*, *repudiation*, *information disclosure*, *denial of service*, and *elevation of privilege*. Always follow the [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl) practices when you design and build IoT architectures.
+Security functions cut across all layers, and should follow specific principles and recommendations. All layers are subject to various threats that can be classified according to the [STRIDE categories](/archive/blogs/larryosterman/threat-modeling-again-stride): *spoofing*, *tampering*, *repudiation*, *information disclosure*, *denial of service*, and *elevation of privilege*. Always follow [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl) practices when you design and build IoT architectures.
 
 ### Device and gateway layer
 
@@ -97,7 +97,7 @@ Some legacy or resource-constrained IoT devices can't use a strong identity, pas
 
 Virtual machines (VMs), containers, or any service that embeds an IoT client can't use a hardware root of trust. Use available capabilities with these components. VMs and containers, which don't have hardware root of trust support, can use passwordless authentication and renewable credentials. A defense-in-depth solution provides redundancies where possible, and fills in gaps where necessary. For example, you could locate VMs and containers in an area with more physical security, such as a data center, compared to an IoT device in the field.
 
-Use a centralized *organizational IoT device registry* to manage your organization's IoT device lifecycle and audit device access. This approach is similar to the way you secure the user identities of an organization's workforce to achieve zero-trust security. Use a cloud-based identity registry to handle the scale, management, and security of an IoT solution.
+Use a centralized *organizational IoT device registry* to manage your organization's IoT device lifecycle and audit device access. This approach is similar to the way you secure the user identities of an organization's workforce to achieve zero-trust security. A cloud-based identity registry can handle the scale, management, and security of an IoT solution.
 
 IoT device registry information onboards devices into an IoT solution by verifying that the device identity and credentials are known and authorized. After a device is onboarded, the device registry contains the core properties of the device, including its operational identity and the renewable credentials used to authenticate for everyday use.
 
@@ -106,41 +106,34 @@ You can use IoT device registry data to:
 - View the inventory of an organization's IoT devices, including health, patch, and security state.
 - Query and group devices for scaled operation, management, workload deployment, and access control.
 
-In cases where devices don't connect to IoT Azure services, use network sensors to detect and inventory unmanaged IoT devices in an organization's network for awareness and monitoring.
+Use network sensors to detect and inventory unmanaged IoT devices that don't connect to Azure IoT services, for awareness and monitoring.
 
 #### Least-privileged access
 
-Least-privileged access control helps limit impact from authenticated identities that might be compromised or running unapproved workloads. For IoT scenarios, grant solution operators, devices, and workloads access to the solution by using:
+Least-privileged access control helps limit impact from authenticated identities that might be compromised or running unapproved workloads. For IoT scenarios, grant operator, device, and workload access by using:
 
 - Device and workload access control, for access only to scoped workloads on the device.
-- Conditional access only from secure locations and systems.
 - Just-in-time access.
 - Strong authentication mechanisms such as MFA and passwordless authentication.
-- Conditional access based on a device's context, such as IP address or GPS location, uniqueness, time of day, or network traffic patterns. Services can also use device context to conditionally deploy workloads.
+- Conditional access based on a device's context, such as IP address or GPS location, system configuration, uniqueness, time of day, or network traffic patterns. Services can also use device context to conditionally deploy workloads.
 
 To implement effective least-privileged access:
 
 - Configure IoT cloud gateway access management to only grant appropriate access permissions for the functionality the backend requires.
-- Limit access points to IoT devices and cloud applications by ensuring the ports are kept to minimum access.
+- Limit access points to IoT devices and cloud applications by ensuring ports have minimum access.
 - Build mechanisms to prevent and detect physical device tampering.
 - Manage user access through an appropriate access control model, such as role-based or attribute-based access control.
 - Layer least-privileged access for IoT devices by using network segmentation.
 
-Network design and configuration provide opportunities to build defense in depth by segmenting IoT devices based on their traffic patterns and risk exposure. This segmentation minimizes the potential impact of compromised devices and the ability of adversaries to pivot to higher-value assets. Network segmentation typically uses next-generation firewalls.
-
-Network micro-segmentation enables isolation of less-capable devices at the network layer, either behind a gateway or on a discrete network segment. Use network segmentation to group IoT devices, and use endpoint protection to mitigate the impact of potential compromise.
-
-Implement a holistic firewall rule strategy that allows devices to access the network when required, and blocks access when not allowed. To support defense in depth, mature organizations can implement micro-segmentation policies at multiple layers of the Purdue model. If necessary, use firewalls on devices to restrict network access.
-
 #### Device health
 
-Under the zero-trust principle, device health is a key factor to determine the risk profile, such as trust level, of a device. Use the risk profile as an access gate to ensure only healthy devices can access IoT applications and services, or to identify devices in questionable health for remediation.
+Under the zero-trust principle, device health is a key factor to determine the risk profile, including trust level, of a device. Use the risk profile as an access gate to ensure only healthy devices can access IoT applications and services, or to identify devices in questionable health for remediation.
 
 According to industry standards, device health evaluation should include:
 
 - Security configuration assessment and attestation that the device is configured securely.
-- Vulnerability assessment, whether the device is running software that is out of date or has known vulnerabilities.
-- Insecure credential assessment, whether the device is using secure credentials, such as certificates, and protocols, such as Transport Layer Security (TLS) 1.2+.
+- Vulnerability assessment to determine whether device software is out of date or has known vulnerabilities.
+- Insecure credential assessment to check device credentials, such as certificates, and protocols, such as Transport Layer Security (TLS) 1.2+.
 - Active threats and threat alerts.
 - Anomalous behavioral alerts, such as network pattern and usage deviation.
 
@@ -152,13 +145,14 @@ To support zero trust, IoT devices should:
 - Use renewable credentials for regular operation and access.
 - Enforce least-privileged access control to local device resources such as cameras, storage, and sensors.
 - Emit proper device health signals to enable enforcement of conditional access.
-- Provide update agents and corresponding software updates for the usable lifetime of the device to ensure security updates can be applied, along with device management capabilities to enable cloud-driven device configuration and automated security response.
+- Provide update agents and corresponding software updates for the usable lifetime of the device to ensure security updates can be applied.
+- Include device management capabilities to enable cloud-driven device configuration and automated security response.
 - Run security agents that integrate with security monitoring, detection, and response systems.
 - Minimize physical attack footprint, for example by eliminating USB ports.
 
-Several Azure products and services support security for IoT devices:
+Several Azure products and services support IoT device security.
 
-- [Azure Sphere guardian modules](/azure-sphere/hardware/guardian-modules) enable critical legacy devices to connect to IoT services with zero-trust capabilities, including strong identity, end-to-end encryption, and regular security updates.
+- [Azure Sphere guardian modules](/azure-sphere/hardware/guardian-modules) connect critical legacy devices to IoT services with zero-trust capabilities, including strong identity, end-to-end encryption, and regular security updates.
 
 - [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge) provides an edge runtime connection to IoT Hub and other Azure services, and supports certificates as strong device identities. IoT Edge supports the PKCS\#11 standard for device manufacturing identities and other secrets stored on a Trusted Platform Module (TPM) or Hardware Security Module (HSM).
 
@@ -166,9 +160,9 @@ Several Azure products and services support security for IoT devices:
 
 - [Azure RTOS](/azure/rtos) provides a real-time operating system as a collection of C-language libraries that you can deploy on a wide range of embedded IoT device platforms.
 
-  Azure RTOS includes a complete TCP/IP stack with TLS 1.2 and 1.3 and basic X.509 capabilities. Azure RTOS and the Azure IoT Embedded SDK also integrate with Azure IoT Hub, Azure Device Provisioning Service (DPS), and Microsoft Defender, and use some of the same security mechanisms as larger IoT devices. Features such as X.509 mutual authentication and support for modern TLS cipher suites such as ECDHE and AES-GCM cover the basics of secure network communication.
+  Azure RTOS includes a complete TCP/IP stack with TLS 1.2 and 1.3 and basic X.509 capabilities. Azure RTOS and the Azure IoT Embedded SDK also integrate with Azure IoT Hub, Azure Device Provisioning Service (DPS), and Microsoft Defender. Features such as X.509 mutual authentication and support for modern TLS cipher suites such as ECDHE and AES-GCM cover the basics of secure network communication.
 
-  Azure RTOS also provides support for:
+  Azure RTOS also supports:
 
   - Zero-trust design on microcontroller platforms that support hardware security features, such as Arm TrustZone, a memory protection and partitioning architecture.
   - Secure element devices, such as the STSAFE-A110 from ST Microelectronics.
@@ -176,63 +170,74 @@ Several Azure products and services support security for IoT devices:
 
 - The [Azure Certified Device program](/azure/certification/overview) enables device partners to easily differentiate and promote devices. The program helps solution builders and customers find IoT devices built with features that enable a zero-trust solution.
 
-- The [Edge Secured-core program (preview)](/azure/certification/program-requirements-edge-secured-core) validates whether devices meet security requirements for device identity, secure boot, operating system hardening, device updates, data protection, and vulnerability disclosures. The Edge Secured-core program requirements are distilled from various industry requirements and security engineering points of view. The Edge Secured-core program enables Azure services such as the Azure Attestation service to make conditional decisions based on device posture, thus enabling the zero-trust model. Highlights include requiring the device to include a hardware root of trust and provide secure boot and firmware protection. These attributes can be measured by the attestation service and used by downstream services to conditionally grant access to sensitive resources.
+- The [Edge Secured-core program (preview)](/azure/certification/program-requirements-edge-secured-core) validates whether devices meet security requirements for device identity, secure boot, operating system hardening, device updates, data protection, and vulnerability disclosures. The Edge Secured-core program requirements are distilled from various industry requirements and security engineering points of view.
+
+  The Edge Secured-core program enables Azure services such as the Azure Attestation service to make conditional decisions based on device posture, thus enabling the zero-trust model. Devices must include a hardware root of trust and provide secure boot and firmware protection. These attributes can be measured by the attestation service and used by downstream services to conditionally grant access to sensitive resources.
 
 ### Device management and modeling layer
 
 This architectural layer includes software components or modules running in the cloud that interface with devices and gateways for data collection and analysis, as well as for command and control. It's critical to ensure that communication from the device to the cloud is secure and encrypted using the latest TLS standards.
 
+#### Network micro-segmentation
+
+Network design and configuration provide opportunities to build defense in depth by segmenting IoT devices based on their traffic patterns and risk exposure. This segmentation minimizes the potential impact of compromised devices and adversaries pivoting to higher-value assets. Network segmentation typically uses next-generation firewalls.
+
+Network micro-segmentation enables isolation of less-capable devices at the network layer, either behind a gateway or on a discrete network segment. Use network segmentation to group IoT devices, and use endpoint protection to mitigate the impact of potential compromise.
+
+Implement a holistic firewall rule strategy that allows devices to access the network when required, and blocks access when not allowed. To support defense in depth, mature organizations can implement micro-segmentation policies at multiple layers of the Purdue model. If necessary, use firewalls on devices to restrict network access.
+
 #### Use zero-trust criteria to choose IoT services
 
 Use IoT services that offer the following key zero-trust capabilities:
 
-- Enable full support for zero-trust user access control, for example strong user identities, MFA, and conditional user access.
-- Include integration with user access control systems for least-privileged access and conditional controls.
-- Provide a central device registry for full device inventory and device management.
-- Support mutual authentication, offering renewable device credentials with strong identity verification.
-- Enforce least-privileged device access control with conditional access to ensure only devices fulfilling criteria, such as only healthy devices or devices from known locations, can connect.
-- Support OTA updates to keep devices healthy.
-- Enable security monitoring of both IoT services and connected IoT devices.
-- Monitor and control access to all public endpoints, and implement authentication and authorization for any calls made to these endpoints.
+- Full support for zero-trust user access control, for example strong user identities, MFA, and conditional user access.
+- Integration with user access control systems for least-privileged access and conditional controls.
+- A central device registry for full device inventory and device management.
+- Mutual authentication, offering renewable device credentials with strong identity verification.
+- Least-privileged device access control with conditional access so only devices fulfilling criteria, such as health or known location, can connect.
+- OTA updates to keep devices healthy.
+- Security monitoring of both IoT services and connected IoT devices.
+- Monitoring and access control for all public endpoints, and authentication and authorization for any calls to these endpoints.
 
-Several Azure services provide zero-trust capabilities.
+Several Azure IoT services provide these zero-trust capabilities.
 
-- [Windows for IoT](https://www.microsoft.com/WindowsForBusiness/windows-iot) has features that help ensure security across key pillars of the IoT security spectrum. Windows for IoT:
+- [Windows for IoT](https://www.microsoft.com/WindowsForBusiness/windows-iot) helps ensure security across key pillars of the IoT security spectrum.
 
-  - Protects data at rest, during code execution, and in motion. Features include BitLocker Drive Encryption, Secure Boot, Windows Defender Application Control, Windows Defender Exploit Guard, secure Universal Windows Platform (UWP) applications, Unified Write Filter, a secure communication stack, and security credential management.
+  - BitLocker Drive Encryption, Secure Boot, Windows Defender Application Control, Windows Defender Exploit Guard, secure Universal Windows Platform (UWP) applications, Unified Write Filter, a secure communication stack, and security credential management protect data at rest, during code execution, and in transit.
 
-  - Monitors and detects with Device Health Attestation (DHA) to let you start with a trusted device and maintain trust over time.
+  - Device Health Attestation (DHA) detects and monitors trusted devices to let you start with a trusted device and maintain trust over time.
 
-  - Uses Device Update Center and Windows Server Update Services to apply the latest security patches. You can remediate threats to devices by using Azure IoT Hub device management features, Microsoft Intune or third-party mobile device management solutions, and Microsoft System Center Configuration Manager.
+  - Device Update Center and Windows Server Update Services apply the latest security patches. You can remediate threats to devices by using Azure IoT Hub device management features, Microsoft Intune or third-party mobile device management solutions, and Microsoft System Center Configuration Manager.
 
-- [Microsoft Defender for IoT](/azure/defender-for-iot) is an agentless, network layer security platform that delivers continuous asset discovery, vulnerability management, and threat detection for IoT and OT devices. Defender for IoT supports proprietary embedded OT devices and legacy Windows systems commonly found in OT environments. Defender for IoT continuously monitors network traffic using IoT-aware behavioral analytics to immediately identify unauthorized or compromised IoT devices. Microsoft Defender for IoT can:
+- [Microsoft Defender for IoT](/azure/defender-for-iot) is an agentless, network layer security platform that delivers continuous asset discovery, vulnerability management, and threat detection for IoT and OT devices. Defender for IoT continuously monitors network traffic using IoT-aware behavioral analytics to identify unauthorized or compromised components.
 
-  - Inventory all IoT devices.
-  - Assess all IoT devices for vulnerabilities and provide risk based mitigation recommendations.
-  - Continuously monitor devices for anomalous or unauthorized behavior.
+  Defender for IoT supports proprietary embedded OT devices and legacy Windows systems commonly found in OT environments. Defender for IoT can inventory all IoT devices, assess for vulnerabilities, provide risk-based mitigation recommendations, and continuously monitor devices for anomalous or unauthorized behavior.
 
-- [Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel), a cloud-based security information and event management (SIEM) and security orchestration, automation, and response (SOAR) platform, tightly integrates with Microsoft Defender for IoT. Microsoft Sentinel provides a cloud-scale view of security across your enterprise by collecting data across all users, devices, applications, and infrastructure, including firewalls, network access control, and network switch devices. Microsoft Sentinel can quickly spot anomalous behaviors that indicate potential compromise of IoT or OT devices. Microsoft Sentinel also supports third-party security operations center (SOC) solutions such as Splunk, IBM QRadar, and ServiceNow.
+- [Microsoft Sentinel](https://azure.microsoft.com/services/azure-sentinel), a cloud-based security information and event management (SIEM) and security orchestration, automation, and response (SOAR) platform, tightly integrates with Microsoft Defender for IoT. Microsoft Sentinel provides a cloud-scale view of security across your enterprise by collecting data across all users, devices, applications, and infrastructure, including firewalls, network access control, and network switch devices.
 
-- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub):
+  Microsoft Sentinel can quickly spot anomalous behaviors that indicate potential compromise of IoT or OT devices. Microsoft Sentinel also supports third-party security operations center (SOC) solutions such as Splunk, IBM QRadar, and ServiceNow.
 
-  - Provides an operational registry for organizational IoT devices.
-  - Accepts device operational certificates to enable strong identity.
-  - Supports provisioning of module identities that support IoT Edge workloads.
-  - Can disable devices centrally to prevent unauthorized connections.
+- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) provides an operational registry for IoT devices. IoT Hub accepts device operational certificates to enable strong identity, and can disable devices centrally to prevent unauthorized connections. IoT Hub supports provisioning of module identities that support IoT Edge workloads.
 
-- [Azure IoT Hub Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps) provides a central device registry for organizational devices to register for onboarding at scale. DPS accepts device certificates to enable onboarding with strong device identity and renewable credentials, registering devices in IoT Hub for their daily operation.
+  - [Azure IoT Hub Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps) provides a central device registry for organizational devices to register for onboarding at scale. DPS accepts device certificates to enable onboarding with strong device identity and renewable credentials, registering devices in IoT Hub for their daily operation.
 
-- [Azure Device Update (ADU) for IoT Hub](/azure/iot-hub-device-update/understand-device-update) lets you deploy OTA updates for your IoT devices. ADU provides a cloud-hosted solution to connect virtually any device, and supports a broad range of IoT operating systems, including Linux and [Azure RTOS](https://azure.microsoft.com/services/rtos).
+  - [Azure Device Update (ADU) for IoT Hub](/azure/iot-hub-device-update/understand-device-update) lets you deploy OTA updates for your IoT devices. ADU provides a cloud-hosted solution to connect virtually any device, and supports a broad range of IoT operating systems, including Linux and [Azure RTOS](https://azure.microsoft.com/services/rtos).
 
-- [Azure IoT Hub support for virtual networks](/azure/iot-hub/virtual-network-support) lets you restrict connectivity to IoT Hub through a virtual network that you operate. This network isolation prevents connectivity exposure to the public internet, and can help prevent exfiltration attacks from sensitive on-premises networks.
+  - [Azure IoT Hub support for virtual networks](/azure/iot-hub/virtual-network-support) lets you restrict connectivity to IoT Hub through a virtual network that you operate. This network isolation prevents connectivity exposure to the public internet, and can help prevent exfiltration attacks from sensitive on-premises networks.
 
-The following Microsoft products provide fully-integrated hardware and Azure services in overall IoT solutions.
+The following Microsoft products fully integrate hardware and Azure services in overall IoT solutions.
 
-- [Azure Sphere](/azure-sphere) is a fully managed integrated hardware, OS, and cloud platform solution that helps medium and low-power IoT devices attain [the seven properties of highly secured devices](https://www.microsoft.com/research/publication/seven-properties-2nd-edition) to implement zero trust. Devices use explicit verification and implement certificate-based Device Attestation and Authentication (DAA), which automatically renews trust. Azure Sphere uses least-privileged access, where applications are denied access by default to all peripheral and connectivity options. For network connectivity, permitted web domains must be included in the software manifest or the application can't connect outside of the device.
+- [Azure Sphere](/azure-sphere) is a fully managed integrated hardware, OS, and cloud platform solution that helps medium and low-power IoT devices attain [the seven properties of highly secured devices](https://www.microsoft.com/research/publication/seven-properties-2nd-edition) to implement zero trust. Devices use explicit verification and implement certificate-based Device Attestation and Authentication (DAA), which automatically renews trust.
 
-  Azure Sphere is built around assumed breach. Defense in depth layers protections throughout the OS design. A secure world partition running in Arm TrustZone on Azure Sphere devices helps segment OS breaches from access to Pluton or hardware resources. Azure Sphere can be a guardian module to secure other devices, including existing legacy systems not designed for trusted connectivity. In this scenario, an Azure Sphere guardian module deploys with an application and interfaces with existing devices through Ethernet, serial, or BLE. The devices don't necessarily have direct internet connectivity.
+  Azure Sphere uses least-privileged access, where applications are denied access by default to all peripheral and connectivity options. For network connectivity, permitted web domains must be included in the software manifest or the application can't connect outside of the device.
 
-- [Azure Percept](https://aka.ms/azurepercept) is an end-to-end edge AI platform that can help you start a proof of concept in minutes. Azure Percept includes hardware accelerators integrated with Azure AI and IoT services, pre-built AI models, and solution management. Azure Percept devices use a hardware root of trust to help protect inference data, AI models, and privacy-sensitive sensors like cameras and microphones. Azure Percept enables device authentication and authorization for Azure Percept Studio services. For more information, see [Azure Percept security](/azure/azure-percept/overview-percept-security).
+  Azure Sphere is built around assumed breach. Defense in depth layers protections throughout the OS design. A secure world partition running in Arm TrustZone on Azure Sphere devices helps segment OS breaches from access to Pluton or hardware resources.
+
+  Azure Sphere can be a guardian module to secure other devices, including existing legacy systems not designed for trusted connectivity. In this scenario, an Azure Sphere guardian module deploys with an application and interfaces with existing devices through Ethernet, serial, or BLE. The devices don't necessarily have direct internet connectivity.
+
+- [Azure Percept](https://aka.ms/azurepercept) is an end-to-end edge AI platform that can help you start a proof of concept in minutes. Azure Percept includes hardware accelerators integrated with Azure AI and IoT services, pre-built AI models, and solution management.
+
+  Azure Percept devices use a hardware root of trust to help protect inference data, AI models, and privacy-sensitive sensors like cameras and microphones. Azure Percept enables device authentication and authorization for Azure Percept Studio services. For more information, see [Azure Percept security](/azure/azure-percept/overview-percept-security).
 
 ### Ingestion and communication layer
 
@@ -244,34 +249,41 @@ Make sure devices are protected physically. Turn off or disable any device featu
 
 An enterprise IoT solution should provide a strategy for operators to manage the system. DevOps methodologies that proactively focus on security include:
 
-- Centralized configuration and compliance management, to apply policies and to securely distribute and update certificates.
+- Centralized configuration and compliance management, to securely apply policies and distribute and update certificates.
 - Deployable updates, to update the full set of software on devices, firmware, drivers, base OS and host applications, and cloud-deployed workloads.
 
 For more information, see [Enable DevSecOps with Azure and GitHub](/devops/devsecops/enable-devsecops-azure-github).
 
 ### Continual updates
 
-To control device access based on health, you must proactively maintain production devices in a working, healthy target state. Update mechanisms should have remote deployment capabilities and should be resilient to changes in environment, operating conditions, and authentication mechanism, such as certificate changes because of expiry or revocation.
+To control device access based on health, you must proactively maintain production devices in a working, healthy target state. Update mechanisms should:
 
-The update mechanism should support update rollout verification, and ideally be integrated with pervasive security monitoring to enable scheduled updates for security. You should be able to defer updates to not interfere with business continuity, but eventually complete them within a well-defined time interval after you detect a vulnerability. Devices that haven't been updated should be flagged as unhealthy.
+- Have remote deployment capabilities.
+- Be resilient to changes in environment, operating conditions, and authentication mechanism, such as certificate changes because of expiry or revocation.
+- Support update rollout verification.
+- Integrate with pervasive security monitoring to enable scheduled updates for security.
+
+You should be able to defer updates that interfere with business continuity, but eventually complete them within a well-defined time interval after you detect a vulnerability. Devices that haven't been updated should be flagged as unhealthy.
 
 ### Security monitoring and response
 
-The IoT solution needs to be able to perform monitoring and remediation at scale for all its connected devices. As a defense-in-depth strategy, monitoring adds an extra layer of protection for managed greenfield devices, and provides a compensating control for legacy, unmanaged brownfield devices that don't support agents and can't be patched or configured remotely.
+An IoT solution needs to be able to perform monitoring and remediation at scale for all its connected devices. As a defense-in-depth strategy, monitoring adds an extra layer of protection for managed greenfield devices, and provides a compensating control for legacy, unmanaged brownfield devices that don't support agents and can't be patched or configured remotely.
 
-You need to decide the levels of logging, types of activities that you need to monitor, and the responses required for alerts. Logs should be stored securely and not contain any security details.
+You need to decide on logging levels, types of activities to monitor, and responses required for alerts. Logs should be stored securely and not contain any security details.
 
-According to the [Cybersecurity and Infrastructure Security Agency (CISA)](https://us-cert.cisa.gov/ncas/alerts/aa20-205a), security monitoring should include:
+According to the [Cybersecurity and Infrastructure Security Agency (CISA)](https://us-cert.cisa.gov/ncas/alerts/aa20-205a), a security monitoring program should monitor and audit unauthorized changes to controllers, unusual behavior from devices, and access and authorization attempts. Security monitoring should include:
 
 - Generating an as-is asset inventory and network map of all IoT and OT devices.
 - Identifying all communication protocols used across IoT and OT networks.
 - Cataloging all external connections to and from networks.
 - Identifying vulnerabilities in IoT and OT devices and using a risk-based approach to mitigate them.
-- Implementing a vigilant monitoring program with anomaly detection to detect malicious cyber tactics such as *living off the land* within IoT systems. The program should monitor and audit unauthorized changes to controllers, unusual behavior from devices, and access and authorization attempts.
+- Implementing a vigilant monitoring program with anomaly detection to detect malicious cyber tactics such as *living off the land* within IoT systems.
 
-Most IoT attacks follow a *kill chain* pattern, where adversaries establish an initial foothold, elevate their privileges, and move laterally across the network. Often, attackers use privileged credentials to bypass barriers such as next-generation firewalls established to enforce network segmentation across subnets. Rapidly detecting and responding to these multistage attacks requires a bird's-eye view across IT, IoT, and OT networks, combined with automation, machine learning, and threat intelligence.
+Most IoT attacks follow a *kill chain* pattern, where adversaries establish an initial foothold, elevate their privileges, and move laterally across the network. Often, attackers use privileged credentials to bypass barriers such as next-generation firewalls established to enforce network segmentation across subnets. Rapidly detecting and responding to these multistage attacks requires a unified view across IT, IoT, and OT networks, combined with automation, machine learning, and threat intelligence.
 
-Collect signals from the entire environment, including all users, devices, applications, and infrastructure, both on-premises and in multiple clouds. Analyze the signals in centralized SIEM and extended detection and response (XDR) platforms, where SOC analysts can hunt for and uncover previously unknown threats. Finally, use SOAR platforms to respond to incidents rapidly and mitigate attacks before they materially impact your organization. You can define playbooks that automatically execute when specific incidents are detected. For example, you can automatically block or quarantine compromised devices so they're unable to infect other systems.
+Collect signals from the entire environment, including all users, devices, applications, and infrastructure, both on-premises and in multiple clouds. Analyze the signals in centralized SIEM and extended detection and response (XDR) platforms, where SOC analysts can hunt for and uncover previously unknown threats.
+
+Finally, use SOAR platforms to respond to incidents rapidly and mitigate attacks before they materially impact your organization. You can define playbooks that automatically execute when specific incidents are detected. For example, you can automatically block or quarantine compromised devices so they're unable to infect other systems.
 
 ## Related resources
 
