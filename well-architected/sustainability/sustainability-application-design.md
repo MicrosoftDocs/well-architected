@@ -48,7 +48,7 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
   - Learn about the [chatty I/O antipattern](/azure/architecture/antipatterns/chatty-io/) to better understand how a large number of requests can impact performance and responsiveness.
   - Improve the reliability and reduce unnecessary load to your systems. Implement [advanced request throttling with API Management](/azure/api-management/api-management-sample-flexible-throttling).
   - Minimize the amount of data the application returns from requests by being selective and encoding the messages. See [message encoding considerations](/azure/architecture/best-practices/message-encode).
-  - Cache responses to avoid re-processing the same type of information from the backend system unless necessary. Add [caching in Azure API Management](/azure/api-management/api-management-howto-cache).
+  - Cache responses to avoid re-processing the same type of information from the backend system unless necessary. See [caching in Azure API Management](/azure/api-management/api-management-howto-cache).
 
 - Ensure backward software compatibility, so it works on legacy hardware.
   - Support more end-user consumer devices, like older browsers and operating systems. This backward compatibility improves hardware efficiency by reusing existing hardware instead of requiring a hardware upgrade for the solution to work.
