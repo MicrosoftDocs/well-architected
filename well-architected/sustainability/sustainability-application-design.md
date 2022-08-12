@@ -32,7 +32,7 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
 - Many modern cloud applications are designed to transact many messages between services and components asynchronously.
   - Consider the format used to encode the payload data.
   - How much information does your application need to communicate, and is there room to reduce the chattiness?
-  - Reducing the number of messages transacted between components (chattiness) can significantly help performance and efficiency and ultimately increase energy efficiency.
+  - Reducing the number of messages (chattiness) and size of messages transacted between components can significantly help performance and efficiency and ultimately increase energy efficiency.
 
 - Consider how applications render information. Does the application need to critically serve everything in the highest quality, resulting in higher bandwidth and processing?
   - Is there room for reducing the quality of components in the UI to serve sustainability goals better?
