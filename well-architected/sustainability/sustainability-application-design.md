@@ -40,7 +40,7 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
 ### Design recommendations
 
 - Move monoliths to a [microservice architecture](/azure/architecture/guide/architecture-styles/microservices).
-  - Allow scaling of only the necessary components during peak load.
+  - Allow scaling of only the necessary components during peak load; ensuring idle components are scaled down or in.
   - Reduce the overhead and resources required for deploying monolithic applications.
   - Consider this tradeoff: While reducing the compute resources required, you may increase the amount of traffic on the network, and the complexity of the application may increase significantly.
 
