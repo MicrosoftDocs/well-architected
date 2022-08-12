@@ -81,16 +81,10 @@ It's imperative that we secure our workloads and solutions in the cloud. Underst
 
 - Distributed Denial of Service (DDoS) attacks aim to disrupt operational systems by overwhelming them, creating a significant impact on the resources in the cloud. Successful attacks flood network and compute resources, leading to an unnecessary spike in usage and cost.
 
-- Many attacks on cloud infrastructure seek to misuse deployed resources for the attacker's direct gain. Two such misuse cases are botnets and crypto mining.
-  - Both of these cases involve taking control of customer-operated compute resources and use them to either create new cryptocurrency coins, or as a network of resources from which to launch a secondary action like a DDoS attack, or mass e-mail spam campaigns.
-
 ### Design recommendations
 
 - DDoS protection seeks to [mitigate attacks at an abstracted layer](/azure/ddos-protection/types-of-attacks), so the attack is mitigated before reaching any customer operated services.
   - Mitigating any malicious usage of compute and network services will ultimately help reduce unnecessary carbon emissions.
-
-- Use [Endpoint Detection and Response (EDR)](/microsoft-365/security/defender-endpoint/overview-endpoint-detection-response) to identify and shut down crypto mining and botnets.
-- The EDR capabilities provide advanced attack detections and are able to take response actions to remediate those threats. The unnecessary resource usage created by these common attacks can quickly be discovered and remediated, often without the intervention of a security analyst.
 
 ## Reporting
 
