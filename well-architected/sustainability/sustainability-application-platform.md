@@ -44,19 +44,19 @@ The Microsoft Azure data centers are geographically spread across the planet and
 
 ### Design recommendations
 
-- Deploy to low-carbon regions and process when carbon intensity is low.
+- Deploy to low-carbon regions.
   - Use less carbon because the data centers where you deploy the workload are more likely to be powered by renewable and low-carbon energy sources.
   - Potential tradeoffs:
     - The effort and time it takes to move to a low-carbon region.
     - Migrating data between data centers may not be carbon efficient.
     - Consider the cost for new regions, including low-carbon regions, which may be more expensive.
 
-- Choose data centers close to the customer.
-  - Network traversal increases if the data center is a greater distance from consumers.
-
 - Process when the carbon intensity is low.
   - Optimizing workloads to run when knowing that the energy mix comes mostly from renewable energy sources.
   - For example, running specific workloads at night may be more beneficial in some regions.
+
+- Choose data centers close to the customer.
+  - Network traversal increases if the data center is a greater distance from consumers.
 
 ## Next step
 
