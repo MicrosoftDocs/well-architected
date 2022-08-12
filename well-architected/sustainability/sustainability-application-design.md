@@ -37,6 +37,10 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
 - Consider how applications render information. Does the application need to critically serve everything in the highest quality, resulting in higher bandwidth and processing?
   - Is there room for reducing the quality of components in the UI to serve sustainability goals better?
 
+- Demands on applications can vary, and it is essential to consider ways to stabilize the utilization to prevent over- or underutilization of resources, which can lead to unnecessary energy spills.
+
+- Consider evaluating and preventing applications from performing operations that are likely to fail. Repeated failures can lead to overhead and unnecessary processing that you can avoid with proper design patterns.
+
 ### Design recommendations
 
 - Move monoliths to a [microservice architecture](/azure/architecture/guide/architecture-styles/microservices).
@@ -65,15 +69,8 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
   - Use optimized and efficient algorithms and design patterns.
   - Consider the [Don't repeat yourself (DRY)](/dotnet/architecture/modern-web-apps-azure/architectural-principles#dont-repeat-yourself-dry) principle.
 
-## Health probes
-
-From a sustainability perspective, a healthy application produces fewer errors and wastes fewer resources, increasing efficiency and lowering the carbon footprint.
-
-### Design considerations
-
-- Consider evaluating and preventing applications from performing operations that are likely to fail. Repeated failures can lead to overhead and unnecessary processing that you can avoid with proper design patterns.
-
-### Design recommendations
+- Optimize for [async access patterns](/azure/architecture/patterns/async-request-reply).
+  - Queue and buffer requests that do not require immediate processing, then process in batch. Designing your applications in this way helps achieve a stable utilization and helps flatten consumption to avoid spiky requests.
 
 - Make use of circuit breaker patterns.
   - A circuit breaker can act as a proxy for operations that might fail and should monitor the number of recent failures that have occurred and use that information to decide whether to proceed.

@@ -29,8 +29,6 @@ Processing solutions in Azure of any kind often rely on compute resources. Wheth
 
 - Some data centers and regions have a different carbon footprint than others. Understanding which available regions have a lower carbon footprint is essential to making an informed decision about how and when our workloads should process data.
 
-- Demands on applications can vary, and it is essential to consider ways to stabilize the utilization to prevent over- or underutilization of resources, which can lead to unnecessary energy spills.
-
 ### Design recommendations
 
 - Utilize [auto-scaling](/azure/architecture/best-practices/auto-scaling) and bursting capabilities.
@@ -39,9 +37,6 @@ Processing solutions in Azure of any kind often rely on compute resources. Wheth
 
 - Run [batch workloads](/azure/architecture/data-guide/big-data/batch-processing) during low carbon intensity periods.
   - Potential tradeoffs may include the effort and time it takes to move to a low-carbon region. Additionally, migrating data between data centers may not be carbon efficient, and the cost for new regions&mdash;including low-carbon regions&mdash;may be more expensive.
-
-- Optimize for [async access patterns](/azure/architecture/patterns/async-request-reply).
-  - Queue and buffer requests that do not require immediate processing, then process in batch. Designing your applications in this way helps achieve a stable utilization and helps flatten consumption to avoid spiky requests.
 
 ## App modernization
 
