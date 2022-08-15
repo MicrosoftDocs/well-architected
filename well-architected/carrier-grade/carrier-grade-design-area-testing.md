@@ -28,6 +28,15 @@ A warning flag should be raised for any application or service for which the red
 
 If redundancy and resiliency measures aren't tested, then the only valid assumption, from a safety-critical point of view, is that these measures aren't going to work when needed. Using common paths for software upgrades, configuration updates, and fault recovery, for example, provide a good mechanism for validating that measures will work.
 
+## Human Error
+
+Experience from Telcos is that as much as 60% of all outages are actually the result of human error.  A well-architected application recognizes this and seeks to compensate.  Here are some suggested approaches, but the list is not exhaustive, and what is applicable to a given workload needs to be considered on a case-by-case basis.  
+
+- Maximizing use of automation avoids human operators having to enter long and complex commands or conduct repetitive operations across multiple elements.  However, care must be taken to consider the blast radius, as there is a risk of automation actually magnifying the effect of a configuration error, allowing it to roll out across a global network in seconds.  Strong checks and balances such as decision gates requiring human approval before proceeding to the next step are advised.
+- Leveraging syntax checkers and simulation tools minimize the chance of errors or unforeseen side effects from changes making their way into widespread production.
+- Use of carefully controlled canary deployments ensure that the effect of changes in full production can be observed and validated at limited scope.
+- Ensuring that the management interfaces and processes needed for fault recovery are the same as those used in day to day operation avoid operators being confronted with unfamiliar screens and barely used MOPs at times of peak stress.
+
 
 ## Clients
 
