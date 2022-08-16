@@ -34,7 +34,7 @@ Organizations usually develop and deploy solutions to the cloud. During this pro
 
 - Automate CI-CD to scale worker agents as needed.
   - Keeps the compute utilization high, based on the current demand, avoiding unnecessary capacity allocation.
-  - Only scale out when necessary, and when not testing, scale in.
+  - Only scale out when necessary, and when not testing, scale in. For example, ensure there is no idle compute in test environments.
   - Consider optimized platform services like a container over testing in a VM, utilizing the platform to reduce maintenance.
 
 ## Profiling and measuring

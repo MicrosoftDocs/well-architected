@@ -58,6 +58,10 @@ The Microsoft Azure data centers are geographically spread across the planet and
 - Choose data centers close to the customer.
   - Network traversal increases if the data center is a greater distance from consumers.
 
+## Scalability and capacity
+
+- An application design relies on the underlying platform. Consider the platform 
+
 ## Next step
 
 Review the design considerations for deployment and testing.

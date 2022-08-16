@@ -63,6 +63,8 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
 - Be aware of UX design for sustainability.
   - Consider reducing the number of components to load and render on pages.
   - If applicable, determine whether the application can render lower resolution images and videos.
+    - Don't render full-size images as thumbnails where the browser is doing the resizing.
+    - Using full-size images as thumbnails or resized images will lead to more data being transferred, unnecessary network traffic, and additional client-side CPU usage due to image resizing and pre-rendering.
 
 - Optimize code for efficient resource usage.
   - Reduce CPU cycles and the number of resources you need for your application.

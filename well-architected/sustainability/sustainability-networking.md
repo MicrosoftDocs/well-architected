@@ -41,7 +41,8 @@ Reduce unnecessary network traffic and lower bandwidth requirements where possib
 - Make use of caching and follow [caching best practices](/azure/architecture/best-practices/caching).
   - Caching is a well-understood design technique to improve performance and efficiency.
   - A caching solution helps reduce network traversal and reduces the server load.
-- Consider that it may require tuning of parameters to maximize the benefit and minimize the carbon drawbacks. For example, setting a Time to Live (TTL).
+  - Consider that it may require tuning of parameters to maximize the benefit and minimize the carbon drawbacks. For example, setting a Time to Live (TTL).
+  - Adding in-memory caching can help use idle compute resources, increasing the compute density of resources that are already allocated.
 
 - Select Azure regions based on where the consumer resides.
   - Deploy or [move Azure resources across regions](/azure/architecture/solution-ideas/articles/move-azure-resources-across-regions) to better serve the applications from where the majority of consumers resides.
