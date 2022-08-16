@@ -46,7 +46,8 @@ Use cloud native security solutions to optimize for sustainability.
 - Use cloud native log collection methods where applicable.
   - Using cloud native [service-to-service connectors](/azure/sentinel/connect-data-sources#service-to-service-integration-for-data-connectors) simplify the integration between the services and the SIEM, and removes the overhead of extra infrastructure.
   - It's possible to ingest log data from existing compute resources using previously deployed agents such as the Azure Monitor Analytics agent. Review how to [migrate to Azure Monitor agent from Log Analytics agent](/azure/azure-monitor/agents/azure-monitor-agent-migration).
-
+  - Consider this tradeoff: Deploying additional monitoring agents will increase the overhead in processing as it needs more compute resources. Carefully design and plan for how much information is needed to cover the security requirements of the solution and find a suitable level of information to store and keep.
+  
 - Avoid transferring large unfiltered data sets from one cloud service provider to another.
   - Cloud native security services can perform localized analysis on relevant security data source. This analysis allows the bulk of log data to remain within the source cloud service provider environment. Cloud native SIEM solutions can be [connected via an API or connector](/azure/sentinel/connect-aws) to these security services to transmit only the relevant security incident or event data. This solution can greatly reduce the amount of data transferred while maintaining a high level of security information to respond to an incident.
   - In time, using the described approach helps reduce data egress and storage costs, which inherently help reduce emissions.
