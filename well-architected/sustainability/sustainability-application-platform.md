@@ -25,13 +25,14 @@ Designing and building sustainable workloads requires understanding the platform
 
 ### Design considerations
 
-- Running applications on outdated versions of a service, OS, or software library may result in unnecessary performance issues and, ultimately, a new version can reduce energy waste.
+- Platform updates enable you to use the latest functionality and features to help increase efficiency. Running on outdated software can result in running a sub-optimal workload with unnecessary performance issues. New software tends to be more efficient in general.
 
 ### Design recommendations
 
-- Update services, OS, and software libraries.
-  - New software tends to be more efficient in general. Performance gains often come with new upgrades and updates.
+- Review platform and service updates regularly.
+  - Upgrade to newer and more efficient services as they become available.
   - Consider backward compatibility and hardware reusability. An upgrade may not be the most efficient solution if the hardware or the OS is not supported.
+  - Make use of [Azure Automation Update Management](/azure/automation/update-management/manage-updates-for-vm) to ensure software updates are deployed to Azure VMs.
 
 ## Regional differences
 

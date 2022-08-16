@@ -33,6 +33,8 @@ Build solutions with efficient storage to increase performance, lower the requir
 
 - The carbon impact of data retrieved from hot storage can be higher than data from cold- or archive storage. Designing solutions with the correct data access pattern can enhance the application's carbon efficiency.
 
+- Backup is a crucial part of reliability. However, storing backups indefinitely can quickly allocate a lot of unnecessary disk space. Consider how you plan backup storage retention.
+
 ### Design recommendations
 
 - Enable storage compression.
@@ -52,6 +54,9 @@ Build solutions with efficient storage to increase performance, lower the requir
 
 - Only store what is relevant.
   - Implement policies to streamline the process of storing and keeping relevant information. [Microsoft Purview](/azure/purview/overview) can help label data and add time-based purging to delete it after a retention period automatically. Additionally, this lets you stay in control of your data and reduces the amount of data to process and transfer.
+  
+- Reduce the number of recovery points in place for VM backups.
+  - For example, if [soft delete](/azure/backup/backup-azure-security-feature-cloud) is enabled, then the expired recovery points are not cleaned up. Read more about the [impact of expired recovery points for items in soft deleted state](/azure/backup/manage-recovery-points#impact-of-expired-recovery-points-for-items-in-soft-deleted-state).
 
 ## Next step
 

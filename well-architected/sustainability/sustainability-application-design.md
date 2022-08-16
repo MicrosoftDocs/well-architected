@@ -41,6 +41,10 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
 
 - Consider evaluating and preventing applications from performing operations that are likely to fail. Repeated failures can lead to overhead and unnecessary processing that you can avoid with proper design patterns.
 
+- Learning about cloud-native design patterns is helpful for building applications, whether they are hosted on Azure or are running elsewhere.
+
+- Applications deployed using inefficient code may result in an inherent impact on sustainability.
+
 ### Design recommendations
 
 - Move monoliths to a [microservice architecture](/azure/architecture/guide/architecture-styles/microservices).
@@ -77,6 +81,15 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
 - Make use of circuit breaker patterns.
   - A circuit breaker can act as a proxy for operations that might fail and should monitor the number of recent failures that have occurred and use that information to decide whether to proceed.
   - Study the [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker), and then consider how you can [implement the Circuit Breaker patterns](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern) to your applications.
+
+- Leverage [cloud-native design patterns](/azure/architecture/patterns/) when writing or updating applications.
+
+- Use [Platform as a Service (PaaS)](/azure/architecture/guide/design-principles/managed-services) to ensure the workload runs on a managed environment that is inherently optimized.
+
+- Update legacy code.
+  - Identify inefficient legacy code that can be suited for modernization.
+  - Review if there are options to move to serverless or any of the optimized PaaS options available.
+  - Consider this tradeoff: Updating old code that might end up being deprecated can consume valuable time, and should be carefully considered.
 
 ## Next step
 

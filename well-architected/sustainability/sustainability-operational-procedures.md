@@ -25,7 +25,14 @@ ms.custom:
 
 ### Design considerations
 
+- An essential aspect of working toward any sustainability goal is tracking and quantifying the progress.
+  - If you can't track and measure the impact, you will never be sure if the efforts are worthwhile.
+
 ### Design recommendations
+
+- Use the Emissions Impact Dashboard to record current and future environmental impact.
+  - Identify and track metrics to quantify the achievement of technical, business, and sustainability outcomes.
+  - Rely tooling to help measure the impact, and record any changes made to your workload.
 
 |Design principle|Pillar|SGF Pillar|Considerations|
 |---|---|---|---|
@@ -41,7 +48,11 @@ ms.custom:
 
 ### Design considerations
 
+- Teams need to be constantly aware of all the new advancements in sustainability, so they leverage these learnings when implementing workloads.
+
 ### Design recommendations
+
+- Make time for your team to learn about advancements in sustainable operations.
 
 |Design principle|Pillar|SGF Pillar|Considerations|
 |---|---|---|---|
