@@ -425,8 +425,6 @@ items:
                   href: sustainability/sustainability-deployment-testing.md
                 - name: Operational procedures
                   href: sustainability/sustainability-operational-procedures.md
-                - name: Compute
-                  href: sustainability/sustainability-compute.md
                 - name: Networking and connectivity
                   href: sustainability/sustainability-networking.md
                 - name: Storage
