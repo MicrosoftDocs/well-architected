@@ -3,7 +3,7 @@ title: Mission-critical workloads
 description: Overview of mission-critical workloads on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
-ms.date: 08/01/2022
+ms.date: 08/15/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -76,9 +76,11 @@ The design areas are interrelated and decisions made within one area can impact 
 
 The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available as part of the [Mission-Critical open source project](http://github.com/azure/mission-critical) on GitHub. These implementations can be used as a basis for further solution development.
 
-- [Reference architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)&mdash;Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure. The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate.
+- [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)&mdash;Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure. The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate.
 
   > Refer to the implementation: [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
+
+- [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)&mdash;Extends the baseline architecture with strict network controls in place to prevent unauthorized public access from the internet to any of the workload resources.
 
 - [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) 
 

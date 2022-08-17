@@ -3,7 +3,7 @@ title: Health modeling and observability of mission-critical workloads on Azure
 description: This design area will focus on the process to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity
 author: calcof
 ms.author: calcof
-ms.date: 02/28/2022
+ms.date: 08/16/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -35,6 +35,10 @@ There are three main levels of operational maturity when striving to maximize re
 1) *Detect* and respond to issues as they happen.
 1) *Diagnose* issues that are occurring or have already occurred.
 1) *Predict* and prevent issues before they take place.
+
+## Video: Define a health model
+
+> [!VIDEO fd8c4e50-9d7f-4df0-97cb-d0474b581398]
 
 ## Layered application health
 

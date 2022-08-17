@@ -3,7 +3,7 @@ title: Design methodology for mission-critical workloads on Azure
 description: Understand the architectural process of building a mature mission-critical application on Microsoft Azure.
 author: calcof
 ms.author: calcof
-ms.date: 02/28/2022
+ms.date: 08/15/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -56,7 +56,18 @@ This image shows how the different reliability tiers and underlying business req
 
 Recovery Time Objective (RTO) and Recovery Point Objective (RPO) are further critical aspects when determining required reliability. For instance, if you are striving to achieve an application RTO of less than a minute then back-up based recovery strategies or an active-passive deployment strategy are likely to be insufficient. 
 
-## 2&mdash;Refer to the mission-critical implementations
+## 2&mdash;Evaluate the design areas using the design principles
+
+At the core of this methodology lies a critical design path comprised of:
+
+- Foundational **[design principles](mission-critical-design-principles.md)**
+- Fundamental **[design area](mission-critical-architecture-pattern.md)** with heavily interrelated and dependent design decisions.
+
+The impact of decisions made within each design area will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of encompassed decisions, which may produce trade-offs within related design areas. 
+
+For example, to define a target architecture it's critical to determine how best to monitor application health across key components. We highly recommend that you review the health modeling design area, using the outlined recommendations to help drive decisions.
+
+## 3&mdash;Refer to the mission-critical implementations
 
 The Mission-Critical open source project strives to illustrate the design recommendations provided by this methodology, and should be used as a source of reference to inform the art of the possible.
 
@@ -73,13 +84,9 @@ There are two foundational [reference implementations](mission-critical-overview
 
 **Azure roadmap alignment** - The mission-critical reference architectures have their own roadmap that is aligned with Azure product roadmaps.
 
-## 3&mdash;Evaluate the design areas using the design principles
-
-At the core of this methodology lies a critical design path comprised of foundational **[design principles](mission-critical-design-principles.md)** and fundamental **[design area](mission-critical-architecture-pattern.md)** with heavily interrelated and dependent design decisions.
-
-The impact of decisions made within each design area will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of encompassed decisions, which may produce trade-offs within related design areas. 
-
-For example, to define a target architecture it's critical to determine how best to monitor application health across key components. We highly recommend that you review the health modeling design area, using the outlined recommendations to help drive decisions.
+The reference architecture for the preceding implementations:
+- [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)
+- [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)
 
 ## 4&mdash;Deploy a sandbox application environment
 
