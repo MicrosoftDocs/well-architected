@@ -42,7 +42,7 @@ The principles of green software are the starting point to understand the [SCI m
 
 ## Carbon efficiency
 
-The application or software must emit the least amount of carbon possible. A carbon efficient cloud application is one that is optimized, and the starting point is the cost – streamlining the application infrastructure and cost will ensure that no unnecessary resources are wasted in the cloud to run the software. But this is not enough, as you might have cost optimized your application but still waste tons of resources that emit carbon for no reason.
+The application or software must emit the least amount of carbon possible. A carbon efficient cloud application is one that is optimized, and the starting point is the cost – streamlining the application infrastructure and cost will ensure that no unnecessary resources are wasted in the cloud to run the software. But this isn't enough, as you might have cost-optimized your application but still waste tons of resources that emit carbon for no reason.
 
 ## Energy efficiency
 

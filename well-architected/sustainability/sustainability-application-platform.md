@@ -16,7 +16,7 @@ ms.custom:
 
 # Application platform considerations for sustainable workloads on Azure
 
-Designing and building sustainable workloads requires understanding the platform where you are deploying the applications. Review the considerations and recommendations in this section to know how to make better informed platform-related decisions around sustainability.
+Designing and building sustainable workloads requires understanding the platform where you're deploying the applications. Review the considerations and recommendations in this section to know how to make better informed platform-related decisions around sustainability.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
@@ -27,13 +27,13 @@ By ensuring that clients and servers are always up to date, you also ensure they
 
 ### Design considerations
 
-- Platform updates enable you to use the latest functionality and features to help increase efficiency. Running on outdated software can result in running a sub-optimal workload with unnecessary performance issues. New software tends to be more efficient in general.
+- Platform updates enable you to use the latest functionality and features to help increase efficiency. Running on outdated software can result in running a suboptimal workload with unnecessary performance issues. New software tends to be more efficient in general.
 
 ### Design recommendations
 
 - Review platform and service updates regularly.
   - Upgrade to newer and more efficient services as they become available.
-  - Consider backward compatibility and hardware reusability. An upgrade may not be the most efficient solution if the hardware or the OS is not supported.
+  - Consider backward compatibility and hardware reusability. An upgrade may not be the most efficient solution if the hardware or the OS isn't supported.
   - Make use of [Azure Automation Update Management](/azure/automation/update-management/manage-updates-for-vm) to ensure software updates are deployed to Azure VMs.
 
 ## Regional differences
@@ -72,7 +72,7 @@ Consider these platform design decisions when choosing how to operate workloads.
 
 ### Design considerations
 
-- Managed services are usually highly optimized and operate on more efficient hardware than other options, contributing to a lower carbon impact.
+- Managed services are highly optimized and operate on more efficient hardware than other options, contributing to a lower carbon impact.
 
 - Consider options for containerizing workloads to reduce unnecessary resource allocation and to utilize the deployed resources better.
 
@@ -83,18 +83,18 @@ Consider these platform design decisions when choosing how to operate workloads.
 - Containerize workloads where applicable.
   - Deploying apps as containers allows for bin packing and getting more out of a VM, ultimately reducing the need for duplication of libraries on the host OS.
   - Removes the overhead of managing an entire VM and allows to get more apps deployed per physical machine. Containerization also optimizes server utilization rates and improves service reliability, lowering operational costs. Fewer servers are needed, and the existing servers can be better utilized.
-  - Consider these tradeoffs: The benefit of containerization will only realize if the utilization is high. Additionally, provisioning an orchestrator such as [Azure Kubernetes Services](/azure/aks/) (AKS) or [Azure Red Had OpenShift](/azure/openshift/) (ARO) for only a small number of containers would likely lead to higher emissions overall.
+  - Consider these tradeoffs: The benefit of containerization will only realize if the utilization is high. Additionally, provisioning an orchestrator such as [Azure Kubernetes Services](/azure/aks/) (AKS) or [Azure Red Had OpenShift](/azure/openshift/) (ARO) for only a few containers would likely lead to higher emissions overall.
 
 - Evaluate moving to PaaS and serverless compute workloads.
   - Build a cloud-native app without managing the infrastructure, using a fully managed platform. The platform handles scaling, availability, and performance, ultimately optimizing the hardware efficiency.
 
 - Use SPOT VMs where possible.
   - By utilizing [SPOT VMs](/azure/virtual-machines/spot-vms), you take advantage of unused capacity in Azure data centers while getting a significant discount on the VM.
-  - Consider the tradeoff: When Azure needs the capacity back, the VMs gets evicted. Learn more about the SPOT VM [eviction policy](/azure/virtual-machines/spot-vms#eviction-policy).
+  - Consider the tradeoff: When Azure needs the capacity back, the VMs get evicted. Learn more about the SPOT VM [eviction policy](/azure/virtual-machines/spot-vms#eviction-policy).
 
 ## Right sizing
 
-Ensuring workloads use all the allocated resources helps deliver a more sustainable workload. Oversized services are a common cause of additional carbon emissions.
+Ensuring workloads use all the allocated resources helps deliver a more sustainable workload. Oversized services are a common cause of more carbon emissions.
 
 ### Design considerations
 

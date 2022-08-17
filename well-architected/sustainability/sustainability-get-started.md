@@ -17,7 +17,7 @@ ms.custom:
 
 # Sustainable workloads
 
-This section of the Microsoft Azure Well-Architected Framework aims to address the challenges of building sustainable workloads on Azure. Review the provided guidance that applies Well-Architected best practices as a technical foundation for building an operating sustainable solutions on Azure.
+This section of the Microsoft Azure Well-Architected Framework aims to address the challenges of building sustainable workloads on Azure. Review the provided guidance that applies Well-Architected best practices as a technical foundation for building and operating sustainable solutions on Azure.
 
 ## What is a sustainable workload?
 
@@ -31,7 +31,7 @@ A _sustainable workload_ therefore describes the practice of designing solutions
 
 Building and designing sustainable workloads on Microsoft Azure can be challenging for these main reasons:
 
-- Understanding if your workloads are in alignment with sustainability targets. It requires assessments of current workloads to determine if they are designed in a sustainable way.
+- Understanding if your workloads are in alignment with sustainability targets. It requires assessments of current workloads to determine if they're designed in a sustainable way.
 - Designing workloads that are natively environmentally friendly and optimized.
 - Measuring and tracking the emissions of your workloads.
 

@@ -23,7 +23,7 @@ When building new or updating existing applications, it's crucial to consider ho
 
 ## Code efficiency
 
-Designing and developing with efficiency in mind cannot only reduce cost and increase performance. It can hold the added benefit of reducing unnecessary emissions into our atmosphere, resulting in improved sustainability.
+Designing and developing with efficiency in mind can't only reduce cost and increase performance. It can hold the added benefit of reducing unnecessary emissions into our atmosphere, resulting in improved sustainability.
 
 ### Design considerations
 
@@ -37,11 +37,11 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
 - Consider how applications render information. Does the application need to critically serve everything in the highest quality, resulting in higher bandwidth and processing?
   - Is there room for reducing the quality of components in the UI to serve sustainability goals better?
 
-- Demands on applications can vary, and it is essential to consider ways to stabilize the utilization to prevent over- or underutilization of resources, which can lead to unnecessary energy spills.
+- Demands on applications can vary, and it's essential to consider ways to stabilize the utilization to prevent over- or underutilization of resources, which can lead to unnecessary energy spills.
 
 - Consider evaluating and preventing applications from performing operations that are likely to fail. Repeated failures can lead to overhead and unnecessary processing that you can avoid with proper design patterns.
 
-- Learning about cloud-native design patterns is helpful for building applications, whether they are hosted on Azure or are running elsewhere.
+- Learning about cloud-native design patterns is helpful for building applications, whether they're hosted on Azure or are running elsewhere.
 
 - Applications deployed using inefficient code may result in an inherent impact on sustainability.
 
@@ -56,7 +56,7 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
   - Learn about the [chatty I/O antipattern](/azure/architecture/antipatterns/chatty-io/) to better understand how a large number of requests can impact performance and responsiveness.
   - Improve the reliability and reduce unnecessary load to your systems. Implement [advanced request throttling with API Management](/azure/api-management/api-management-sample-flexible-throttling).
   - Minimize the amount of data the application returns from requests by being selective and encoding the messages. See [message encoding considerations](/azure/architecture/best-practices/message-encode).
-  - Cache responses to avoid re-processing the same type of information from the backend system unless necessary. See [caching in Azure API Management](/azure/api-management/api-management-howto-cache).
+  - Cache responses to avoid reprocessing the same type of information from the backend system unless necessary. See [caching in Azure API Management](/azure/api-management/api-management-howto-cache).
 
 - Ensure backward software compatibility, so it works on legacy hardware.
   - Support more end-user consumer devices, like older browsers and operating systems. This backward compatibility improves hardware efficiency by reusing existing hardware instead of requiring a hardware upgrade for the solution to work.
@@ -67,11 +67,11 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
     - When the hardware on the server has better processing-energy ratios.
     - Can use centralized caching to reduce multiple unnecessary renders.
     - Reducing the number of browser-to-server round-trips can be particularly important when the client's device has a lossy link.
-    - When the client devices are older and have slower CPUs. Users do not need to upgrade their devices to support a modern browser.
+    - When the client devices are older and have slower CPUs. Users don't need to upgrade their devices to support a modern browser.
   - Consider these benefits of client-side rendering:
     - When the end-user devices are more suitable, pushing the responsibility of rendering to the clients.
     - It's more efficient only to render what's needed and as requested, as opposed to rendering everything at least once.
-    - There is no need for a server, as you can rely on static storage.
+    - There's no need for a server, as you can rely on static storage.
     - Browser caching is used on the clients.
 
 - Be aware of UX design for sustainability.
@@ -86,7 +86,7 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
   - Consider the [Don't repeat yourself (DRY)](/dotnet/architecture/modern-web-apps-azure/architectural-principles#dont-repeat-yourself-dry) principle.
 
 - Optimize for [async access patterns](/azure/architecture/patterns/async-request-reply).
-  - Queue and buffer requests that do not require immediate processing, then process in batch. Designing your applications in this way helps achieve a stable utilization and helps flatten consumption to avoid spiky requests.
+  - Queue and buffer requests that don't require immediate processing, then process in batch. Designing your applications in this way helps achieve a stable utilization and helps flatten consumption to avoid spiky requests.
 
 - Make use of circuit breaker patterns.
   - A circuit breaker can act as a proxy for operations that might fail and should monitor the number of recent failures that have occurred and use that information to decide whether to proceed.
