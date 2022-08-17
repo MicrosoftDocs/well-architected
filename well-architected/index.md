@@ -47,6 +47,8 @@ Reference the following video about how to architect successful workloads on Azu
 
 <!-- markdownlint-disable MD034 -->
 
+<br/>
+
 > [!VIDEO https://docs.microsoft.com/shows/azure-enablement/architect-successful-workloads-on-azure--introduction-ep-1-well-architected-series/player]
 
 <!-- markdownlint-enable MD034 -->
