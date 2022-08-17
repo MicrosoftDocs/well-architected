@@ -83,7 +83,7 @@ Consider these platform design decisions when choosing how to operate workloads.
 - Containerize workloads where applicable.
   - Deploying apps as containers allows for bin packing and getting more out of a VM, ultimately reducing the need for duplication of libraries on the host OS.
   - Removes the overhead of managing an entire VM and allows to get more apps deployed per physical machine. Containerization also optimizes server utilization rates and improves service reliability, lowering operational costs. Fewer servers are needed, and the existing servers can be better utilized.
-  - Consider these tradeoffs: The benefit of containerization will only realize if the utilization is high. Additionally, provisioning an orchestrator such as AKS/ARO for only a small number of containers would likely lead to higher emissions overall.
+  - Consider these tradeoffs: The benefit of containerization will only realize if the utilization is high. Additionally, provisioning an orchestrator such as [Azure Kubernetes Services](/azure/aks/) (AKS) or [Azure Red Had OpenShift](/azure/openshift/) (ARO) for only a small number of containers would likely lead to higher emissions overall.
 
 - Evaluate moving to PaaS and serverless compute workloads.
   - Build a cloud-native app without managing the infrastructure, using a fully managed platform. The platform handles scaling, availability, and performance, ultimately optimizing the hardware efficiency.
