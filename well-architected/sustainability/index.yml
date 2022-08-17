@@ -42,8 +42,6 @@ landingContent:
             url: sustainability-deployment-testing.md
           - text: Operational procedures
             url: sustainability-operational-procedures.md
-          - text: Compute
-            url: sustainability-compute.md
           - text: Networking and connectivity
             url: sustainability-networking.md
           - text: Storage

@@ -61,14 +61,24 @@ Designing and developing with efficiency in mind cannot only reduce cost and inc
 - Ensure backward software compatibility, so it works on legacy hardware.
   - Support more end-user consumer devices, like older browsers and operating systems. This backward compatibility improves hardware efficiency by reusing existing hardware instead of requiring a hardware upgrade for the solution to work.
 
-- Evaluate server-side vs. client-side rendering.
-  - Rendering something once may be more efficient on the server, but rendering something often may be more efficient on the client. Evaluate what and how often your application displays content. Consider where it may be best suited to process the rendering.
+- Evaluate server-side vs. client-side rendering for your applications.
+  - Consider these benefits of server-side rendering:
+    - When the server's power comes from less-polluting alternatives than the client's locale.
+    - When the hardware on the server has better processing-energy ratios.
+    - Can use centralized caching to reduce multiple unnecessary renders.
+    - Reducing the number of browser-to-server round-trips can be particularly important when the client's device has a lossy link.
+    - When the client devices are older and have slower CPUs. Users do not need to upgrade their devices to support a modern browser.
+  - Consider these benefits of client-side rendering:
+    - When the end-user devices are more suitable, pushing the responsibility of rendering to the clients.
+    - It's more efficient only to render what's needed and as requested, as opposed to rendering everything at least once.
+    - There is no need for a server, as you can rely on static storage.
+    - Browser caching is used on the clients.
 
 - Be aware of UX design for sustainability.
   - Consider reducing the number of components to load and render on pages.
   - If applicable, determine whether the application can render lower resolution images and videos.
     - Don't render full-size images as thumbnails where the browser is doing the resizing.
-    - Using full-size images as thumbnails or resized images will lead to more data being transferred, unnecessary network traffic, and additional client-side CPU usage due to image resizing and pre-rendering.
+    - Using full-size images as thumbnails or resized images will transfer more data, unnecessary network traffic, and additional client-side CPU usage due to image resizing and pre-rendering.
 
 - Optimize code for efficient resource usage.
   - Reduce CPU cycles and the number of resources you need for your application.

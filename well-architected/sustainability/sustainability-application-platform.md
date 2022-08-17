@@ -23,6 +23,8 @@ Designing and building sustainable workloads requires understanding the platform
 
 ## Stay updated
 
+By ensuring that clients and servers are always up to date, you also ensure they have the latest patches that include performance and reliability, ultimately leading to a more efficient workload.
+
 ### Design considerations
 
 - Platform updates enable you to use the latest functionality and features to help increase efficiency. Running on outdated software can result in running a sub-optimal workload with unnecessary performance issues. New software tends to be more efficient in general.
@@ -43,6 +45,8 @@ The Microsoft Azure data centers are geographically spread across the planet and
 - Learn about what Azure regions have a lower carbon footprint than others to make better-informed decisions about where and how our workloads process data.
   - Some regions on the planet are more carbon intense than others, so it's important to consider where we deploy our workloads and combine this with other business requirements.
 
+- Some data centers and regions have a different carbon footprint than others. Understanding which available regions have a lower carbon footprint is essential to making an informed decision about how and when our workloads should process data.
+
 ### Design recommendations
 
 - Deploy to low-carbon regions.
@@ -59,9 +63,54 @@ The Microsoft Azure data centers are geographically spread across the planet and
 - Choose data centers close to the customer.
   - Network traversal increases if the data center is a greater distance from consumers.
 
-## Scalability and capacity
+- Run [batch workloads](/azure/architecture/data-guide/big-data/batch-processing) during low carbon intensity periods.
+  - Potential tradeoffs may include the effort and time it takes to move to a low-carbon region. Additionally, migrating data between data centers may not be carbon efficient, and the cost for new regions&mdash;including low-carbon regions&mdash;may be more expensive.
 
-- An application design relies on the underlying platform. Consider the platform 
+## Modernization
+
+Consider these platform design decisions when choosing how to operate workloads. Leveraging managed services and highly optimized platforms in Azure helps build cloud-native applications that inherently contribute to a better sustainability posture.
+
+### Design considerations
+
+- Managed services are usually highly optimized and operate on more efficient hardware than other options, contributing to a lower carbon impact.
+
+- Consider options for containerizing workloads to reduce unnecessary resource allocation and to utilize the deployed resources better.
+
+- Think about the unused capacity in Azure data centers. Utilizing the otherwise wasted capacity&mdash;at significantly reduced prices&mdash;the workload contributes to a more sustainable platform design.
+
+### Design recommendations
+
+- Containerize workloads where applicable.
+  - Deploying apps as containers allows for bin packing and getting more out of a VM, ultimately reducing the need for duplication of libraries on the host OS.
+  - Removes the overhead of managing an entire VM and allows to get more apps deployed per physical machine. Containerization also optimizes server utilization rates and improves service reliability, lowering operational costs. Fewer servers are needed, and the existing servers can be better utilized.
+  - Consider these tradeoffs: The benefit of containerization will only realize if the utilization is high. Additionally, provisioning an orchestrator such as AKS/ARO for only a small number of containers would likely lead to higher emissions overall.
+
+- Evaluate moving to PaaS and serverless compute workloads.
+  - Build a cloud-native app without managing the infrastructure, using a fully managed platform. The platform handles scaling, availability, and performance, ultimately optimizing the hardware efficiency.
+
+- Use SPOT VMs where possible.
+  - By utilizing [SPOT VMs](/azure/virtual-machines/spot-vms), you take advantage of unused capacity in Azure data centers while getting a significant discount on the VM.
+  - Consider the tradeoff: When Azure needs the capacity back, the VMs gets evicted. Learn more about the SPOT VM [eviction policy](/azure/virtual-machines/spot-vms#eviction-policy).
+
+## Right sizing
+
+Ensuring workloads use all the allocated resources helps deliver a more sustainable workload. Oversized services are a common cause of additional carbon emissions.
+
+### Design considerations
+
+- Operating idle workloads will waste energy and contributes to an added carbon emission.
+
+- It's not uncommon with oversized compute workloads where much of the capacity is never utilized, ultimately leading to a waste of energy.
+
+### Design recommendations
+
+- Turn off workloads outside of business hours.
+  - Dev &amp; Testing workloads should turn off when not used. Instead of leaving them running, consider shutting them off outside regular business hours.
+  - Learn more about [starting/stopping VMs during off-hours](/azure/automation/automation-solution-vm-management).
+
+- Utilize [auto-scaling](/azure/architecture/best-practices/auto-scaling) and bursting capabilities.
+  - Consider that it may require tuning to prevent unnecessary scaling during short bursts of high demand, as opposed to a static increase in demand.
+  - Consider the application architecture as part of scaling considerations. For example, logical components should scale independently to match the demand of that component, as opposed to scaling the entire application if only a portion of the components needs scaling.
 
 ## Next step
 

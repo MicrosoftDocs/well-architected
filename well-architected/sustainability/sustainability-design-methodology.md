@@ -39,7 +39,6 @@ Design areas:
 - [Application platform](sustainability-application-platform.md)
 - [Deployment and testing](sustainability-deployment-testing.md)
 - [Operational procedures](sustainability-operational-procedures.md)
-- [Compute](sustainability-compute.md)
 - [Storage](sustainability-storage.md)
 - [Network and connectivity](sustainability-networking.md)
 - [Security](sustainability-application-design.md)

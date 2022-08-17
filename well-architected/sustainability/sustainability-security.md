@@ -74,6 +74,12 @@ Increase the efficiency and avoid unnecessary traffic by following good practice
 - Minimize routing from endpoints to the destination.
   - Where possible, end user devices should be optimized to [split out known traffic directly to cloud services](/microsoft-365/enterprise/microsoft-365-vpn-implement-split-tunnel) while continuing to route and inspect traffic for all other destinations. Bringing these capabilities and policies closer to the end user device prevents unnecessary network traffic and its associated overhead.
 
+- Evaluate whether to use TLS termination.
+  - Terminating and re-establishing TLS is CPU consumption that might be unnecessary in certain architectures.
+  - Consider if you can terminate TLS at your border gateway and continue with non-TLS to your workload load balancer and onwards to your workload.
+  - Review the information on [TLS termination](/azure/application-gateway/ssl-overview#tls-termination) to better understand the performance and utilization impact it offers.
+  - Consider the tradeoff: A balanced level of security can offer a more sustainable and energy efficient workload while a higher level of security may increase the requirements on compute resources.
+
 ## Mitigation
 
 It's imperative that we secure our workloads and solutions in the cloud. Understanding how we can optimize our mitigation tactics and architectures can have a positive outcome for reducing emissions.

@@ -51,7 +51,6 @@ Decisions made in one design area can impact or influence decisions across the e
 - **Application platform**&mdash;Choices around hosting environment, dependencies, frameworks, and libraries.
 - **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation, and how to deliver more sustainable software testing.
 - **Operational procedures**&mdash;Processes related to sustainable operations.
-- **Compute**&mdash;Right-size workloads and optimize applications to maximize utilization of the deployed resources.
 - **Storage**&mdash;Design choices for making the data storage options more sustainable.
 - **Network and connectivity**&mdash;Networking considerations that can help reduce traffic and amount of data transmitted to and from the application.
 - **Security**&mdash;Relevant recommendations to design more efficient security solutions on Azure.
