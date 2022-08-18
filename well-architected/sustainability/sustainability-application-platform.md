@@ -116,4 +116,4 @@ Ensuring workloads use all the allocated resources helps deliver a more sustaina
 Review the design considerations for deployment and testing.
 
 > [!div class="nextstepaction"]
-> [Deployment and testing](sustainability-deployment-testing.md)
+> [Deployment and testing](sustainability-testing.md)
