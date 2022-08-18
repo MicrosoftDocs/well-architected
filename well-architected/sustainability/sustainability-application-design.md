@@ -23,7 +23,7 @@ When building new or updating existing applications, it's crucial to consider ho
 
 ## Code efficiency
 
-Designing and developing with efficiency in mind can't only reduce cost and increase performance. It can hold the added benefit of reducing unnecessary emissions into our atmosphere, resulting in improved sustainability.
+Demands on applications can vary, and it is essential to consider ways to stabilize the utilization to prevent over- or underutilization of resources, which can lead to unnecessary energy spills.
 
 ### Design considerations
 
@@ -47,10 +47,11 @@ Designing and developing with efficiency in mind can't only reduce cost and incr
 
 ### Design recommendations
 
-- Move monoliths to a [microservice architecture](/azure/architecture/guide/architecture-styles/microservices).
-  - Allow scaling of only the necessary components during peak load; ensuring idle components are scaled down or in.
-  - Reduce the overhead and resources required for deploying monolithic applications.
+- Evaluate moving monoliths to a [microservice architecture](/azure/architecture/guide/architecture-styles/microservices).
+  - Allows for scaling of only the necessary components during peak load; ensuring idle components are scaled down or in.
+  - Reduces the overhead and resources required for deploying monolithic applications.
   - Consider this tradeoff: While reducing the compute resources required, you may increase the amount of traffic on the network, and the complexity of the application may increase significantly.
+  - Additionally, read about [containerizing monolithic applications](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/monolithic-applications).
 
 - Improve API efficiency.
   - Learn about the [chatty I/O antipattern](/azure/architecture/antipatterns/chatty-io/) to better understand how a large number of requests can impact performance and responsiveness.
@@ -58,8 +59,9 @@ Designing and developing with efficiency in mind can't only reduce cost and incr
   - Minimize the amount of data the application returns from requests by being selective and encoding the messages. See [message encoding considerations](/azure/architecture/best-practices/message-encode).
   - Cache responses to avoid reprocessing the same type of information from the backend system unless necessary. See [caching in Azure API Management](/azure/api-management/api-management-howto-cache).
 
-- Ensure backward software compatibility, so it works on legacy hardware.
+- Ensure backward software compatibility to ensure it works on legacy hardware.
   - Support more end-user consumer devices, like older browsers and operating systems. This backward compatibility improves hardware efficiency by reusing existing hardware instead of requiring a hardware upgrade for the solution to work.
+  - Consider this tradeoff: If the most recent software updates have significant performance improvements, using older software versions may not be more efficient.
 
 - Evaluate server-side vs. client-side rendering for your applications.
   - Consider these benefits of server-side rendering:
@@ -79,6 +81,8 @@ Designing and developing with efficiency in mind can't only reduce cost and incr
   - If applicable, determine whether the application can render lower resolution images and videos.
     - Don't render full-size images as thumbnails where the browser is doing the resizing.
     - Using full-size images as thumbnails or resized images will transfer more data, unnecessary network traffic, and additional client-side CPU usage due to image resizing and pre-rendering.
+  - Ensuring there are no unused pages will help minimize the UX design.
+  - Consider search and findability. Making it easier for users to find what they are looking for helps lower the amount of data stored and retrieved.
 
 - Optimize code for efficient resource usage.
   - Reduce CPU cycles and the number of resources you need for your application.
@@ -91,6 +95,7 @@ Designing and developing with efficiency in mind can't only reduce cost and incr
 - Make use of circuit breaker patterns.
   - A circuit breaker can act as a proxy for operations that might fail and should monitor the number of recent failures that have occurred and use that information to decide whether to proceed.
   - Study the [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker), and then consider how you can [implement the Circuit Breaker patterns](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern) to your applications.
+  - Consider using [Azure Monitor](/azure/azure-monitor/overview) to monitor failures and set up alerts.
 
 - Leverage [cloud-native design patterns](/azure/architecture/patterns/) when writing or updating applications.
 

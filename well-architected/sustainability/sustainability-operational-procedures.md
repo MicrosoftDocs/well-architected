@@ -19,18 +19,17 @@ ms.custom:
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
 
-## Measure and track sustainability
+## Measure and track carbon impact
 
 ### Design considerations
 
-- An essential aspect of working toward any sustainability goal is tracking and quantifying the progress.
-  - If you can't track and measure the impact, you will never be sure if the efforts are worthwhile.
+- An essential aspect of working toward any sustainability goal is tracking and quantifying the progress. If you can't track and measure the impact, you will never be sure if the efforts are worthwhile.
 
 ### Design recommendations
 
-- Use the Emissions Impact Dashboard to record current and future environmental impact.
+- Use the [Emissions Impact Dashboard](https://www.microsoft.com/sustainability/emissions-impact-dashboard) to record current and future environmental impact.
   - Identify and track metrics to quantify the achievement of technical, business, and sustainability outcomes.
-  - Rely tooling to help measure the impact, and record any changes made to your workload.
+  - Rely on tooling to help measure the impact, and record any changes made to your workload.
 
 |Design principle|Pillar|SGF Pillar|Considerations|
 |---|---|---|---|

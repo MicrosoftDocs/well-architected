@@ -38,8 +38,8 @@ landingContent:
             url: sustainability-application-design.md
           - text: Application platform 
             url: sustainability-application-platform.md
-          - text: Deployment and testing
-            url: sustainability-deployment-testing.md
+          - text: Testing
+            url: sustainability-testing.md
           - text: Operational procedures
             url: sustainability-operational-procedures.md
           - text: Networking and connectivity

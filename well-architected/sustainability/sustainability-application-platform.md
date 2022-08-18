@@ -21,9 +21,9 @@ Designing and building sustainable workloads requires understanding the platform
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
 
-## Stay updated
+## Platform and service updates
 
-By ensuring that clients and servers are always up to date, you also ensure they have the latest patches that include performance and reliability, ultimately leading to a more efficient workload.
+Keep platform and services up to date to leverage the latest performance improvements and optimizations.
 
 ### Design considerations
 
@@ -45,8 +45,6 @@ The Microsoft Azure data centers are geographically spread across the planet and
 - Learn about what Azure regions have a lower carbon footprint than others to make better-informed decisions about where and how our workloads process data.
   - Some regions on the planet are more carbon intense than others, so it's important to consider where we deploy our workloads and combine this with other business requirements.
 
-- Some data centers and regions have a different carbon footprint than others. Understanding which available regions have a lower carbon footprint is essential to making an informed decision about how and when our workloads should process data.
-
 ### Design recommendations
 
 - Deploy to low-carbon regions.
@@ -55,6 +53,7 @@ The Microsoft Azure data centers are geographically spread across the planet and
     - The effort and time it takes to move to a low-carbon region.
     - Migrating data between data centers may not be carbon efficient.
     - Consider the cost for new regions, including low-carbon regions, which may be more expensive.
+    - If the workloads are latency sensitive, moving to a lower carbon region may not be an option.
 
 - Process when the carbon intensity is low.
   - Optimizing workloads to run when knowing that the energy mix comes mostly from renewable energy sources.
@@ -105,7 +104,7 @@ Ensuring workloads use all the allocated resources helps deliver a more sustaina
 ### Design recommendations
 
 - Turn off workloads outside of business hours.
-  - Dev &amp; Testing workloads should turn off when not used. Instead of leaving them running, consider shutting them off outside regular business hours.
+  - Dev &amp; Testing workloads should be turned off when not used. Instead of leaving them running, consider shutting them off outside regular business hours.
   - Learn more about [starting/stopping VMs during off-hours](/azure/automation/automation-solution-vm-management).
 
 - Utilize [auto-scaling](/azure/architecture/best-practices/auto-scaling) and bursting capabilities.

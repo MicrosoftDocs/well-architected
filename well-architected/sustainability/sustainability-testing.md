@@ -1,6 +1,6 @@
 ---
-title: Deployment and testing considerations for sustainable workloads on Azure
-description: This design area explores deployment, testing and DevOps considerations for sustainable workloads on Azure.
+title: Testing considerations for sustainable workloads on Azure
+description: This design area explores testing and DevOps considerations for sustainable workloads on Azure.
 author: Zimmergren
 ms.author: tozimmergren
 ms.topic: conceptual
@@ -14,9 +14,9 @@ ms.custom:
   - sustainability
 ---
 
-# Deployment and testing considerations for sustainable workloads on Azure
+# Testing considerations for sustainable workloads on Azure
 
-Organizations usually develop and deploy solutions to the cloud. During this process, it's not uncommon to have various types of testing involved to ensure the workloads are of the highest quality. Learn about the considerations and recommendations for running workload tests and how to optimize for a more sustainable testing model.
+Organizations developing and deploying solutions to the cloud also need reliable testing. Learn about the considerations and recommendations for running workload tests and how to optimize for a more sustainable testing model.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
@@ -29,13 +29,13 @@ Organizations usually develop and deploy solutions to the cloud. During this pro
 
 ### Design recommendations
 
-- Run unit-, load- or any other intense testing during low-carbon periods.
+- Run unit, load or any other intense testing during low-carbon periods.
   - Opt for running testing when the data center's energy mix primarily uses renewable energy. It may, for example, be more beneficial to run testing during the night in some regions.
 
-- Automate CI-CD to scale worker agents as needed.
+- Automate CI/CD to scale worker agents as needed.
   - Keeps the compute utilization high, based on the current demand, avoiding unnecessary capacity allocation.
-  - Only scale out when necessary, and when not testing, scale in. For example, ensure there's no idle compute in test environments.
-  - Consider optimized platform services like a container over testing in a VM, utilizing the platform to reduce maintenance.
+  - Only scale out when necessary, and when not testing, scale in. Ultimately this ensures there's no idle compute resources in test environments.
+  - Consider optimized platform services like containers over testing in a VM, utilizing the platform to reduce maintenance.
 
 ## Profiling and measuring
 
@@ -43,13 +43,15 @@ Measuring, profiling, and testing workloads are imperative to understanding how 
 
 ### Design considerations
 
-- Without properly profiling and testing workloads, it isn't easy to understand if it's making the best use of the underlying platform and deployed resources.
+- Without properly profiling and testing workloads, it's difficult to know if it's making the best use of the underlying platform and deployed resources.
 
 ### Design recommendations
 
 - Profile workloads to make use of parallelization where possible.
   - Test your applications to understand concurrent requests, simultaneous processing, and more.
   - If you're running Machine Learning (ML) for tests, consider machines with a GPU for better efficiency gains.
+    - Consider this tradeoff: Running GPU-based machines for ML tests may increase the cost.
+  - Identify if the workload is performance intensive and work toward optimization.
 
 ## Next step
 

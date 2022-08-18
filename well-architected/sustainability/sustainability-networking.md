@@ -28,7 +28,7 @@ Reduce unnecessary network traffic and lower bandwidth requirements where possib
 ### Design considerations
 
 - Unnecessary traffic on the network should be avoided, as it's a cause for extra carbon emissions.
-- Avoid large amounts of data to be transferred if there are ways to prevent it.
+- Minimizing the amount of data transferred is crucial.
 - The location of an application's consumers can be disparate, and it can be challenging to serve requests with good performance and energy efficiency if the distance is too great.
 - Applications making use of a media streaming service may have high requirements for bandwidth and compression, and can have a substantial carbon footprint if not designed carefully.
 - Networks sending uncompressed data can have a higher requirement on bandwidth, the allocated resources, and the solution in general. Consider compressing data to optimize the workload and design for a more network efficient solution.
@@ -50,7 +50,7 @@ Reduce unnecessary network traffic and lower bandwidth requirements where possib
 - Use [managed audio and video streaming services](/azure/media-services/latest/encode-concept) that use built-in compression.
   - By making use of a managed service for audio and video, applications can leverage built-in optimizations like encoding, compressions, and more.
 
-- Enable network compression.
+- Enable network file compression.
   - Reduce the network payload by [improving CDN performance](/azure/cdn/cdn-improve-performance).
 
 ## Next step
