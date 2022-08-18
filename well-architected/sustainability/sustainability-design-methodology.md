@@ -19,7 +19,7 @@ ms.custom:
 
 Building a sustainable application on any cloud platform requires technical expertise and an understanding of sustainability guidelines in general and for your specific cloud platform.
 
-This design methodology aims to help establish an understanding about producing more carbon efficient solutions, measuring your carbon impact, and ultimately reducing unnecessary energy and emissions.
+This design methodology aims to help establish an understanding about producing more carbon efficient solutions, measuring your carbon impact, and ultimately reducing unnecessary energy usage and emissions.
 
 ## 1&mdash;Design for business requirements
 
@@ -62,7 +62,7 @@ Where:
 - `M` = Embodied emissions of a software system. Carbon that is emitted through the hardware on which the software is running.
 - `R` = Functional unit, which is how the application scales; per extra user, per API call, per service, etc.
 
-With this knowledge, it's essential to consider not only the application infrastructure and hardware but also the user devices and how the application scales, as it can alter the environmental footprint considerably.
+With this knowledge, it's essential to consider not only the application infrastructure and hardware but also the user devices and application scalability, as it can alter the environmental footprint considerably.
 
 Read the full [SCI specification on GitHub](https://github.com/Green-Software-Foundation/software_carbon_intensity/blob/main/Software_Carbon_Intensity/Software_Carbon_Intensity_Specification.md).
 
@@ -117,7 +117,7 @@ Reducing carbon emissions can happen with three possible solutions:
 - Carbon avoidance; not emitting carbon in the first place
 - Carbon removal; subtract carbon from the atmosphere
 
-The goal of green software is to avoid emitting unnecessary emissions in the first place, hence actively working toward a more sustainable future. Further, _carbon removal_ is the preferred goal for removing emissions from our atmosphere.
+The goal of green software is to avoid unnecessary emissions in the first place, hence actively working toward a more sustainable future. Further, _carbon removal_ is the preferred goal for removing emissions from our atmosphere.
 
 Microsoft is committed to being [carbon negative by 2030](https://blogs.microsoft.com/blog/2020/01/16/microsoft-will-be-carbon-negative-by-2030/), and [by 2050 to have removed all the carbon](https://blogs.microsoft.com/blog/2021/10/27/supporting-our-customers-on-the-path-to-net-zero-the-microsoft-cloud-and-decarbonization/) the company has emitted since it was founded in 1975.
 
