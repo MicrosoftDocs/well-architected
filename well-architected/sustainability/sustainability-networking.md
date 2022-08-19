@@ -25,18 +25,20 @@ Most workloads in the cloud rely heavily on networking to operate. Whether it's 
 
 Reduce unnecessary network traffic and lower bandwidth requirements where possible, allowing for a more optimized network efficiency with less carbon emission.
 
-### Design considerations
+### Make use of a CDN
 
-- Unnecessary traffic on the network should be avoided, as it's a cause for extra carbon emissions.
-- Minimizing the amount of data transferred is crucial.
-- The location of an application's consumers can be disparate, and it can be challenging to serve requests with good performance and energy efficiency if the distance is too great.
-- Applications making use of a media streaming service may have high requirements for bandwidth and compression, and can have a substantial carbon footprint if not designed carefully.
-- Networks sending uncompressed data can have a higher requirement on bandwidth, the allocated resources, and the solution in general. Consider compressing data to optimize the workload and design for a more network efficient solution.
+Unnecessary traffic on the network should be avoided, as it's a cause for extra carbon emissions.
 
-### Design recommendations
+**Recommendation:**
 
 - Make use of a CDN, and [follow best practices](/azure/architecture/best-practices/cdn).
   - A CDN helps minimize latency through storing frequently read static data closer to consumers, and helps reduce the network traversal and server load.
+
+### Follow caching best practices
+
+Minimizing the amount of data transferred is crucial.
+
+**Recommendation:**
 
 - Make use of caching and follow [caching best practices](/azure/architecture/best-practices/caching).
   - Caching is a well-understood design technique to improve performance and efficiency.
@@ -44,11 +46,29 @@ Reduce unnecessary network traffic and lower bandwidth requirements where possib
   - Consider that it may require tuning of parameters to maximize the benefit and minimize the carbon drawbacks. For example, setting a Time to Live (TTL).
   - Adding in-memory caching can help use idle compute resources, increasing the compute density of resources that are already allocated.
 
+### Select Azure regions based on where the customer resides
+
+The location of an application's consumers can be disparate, and it can be challenging to serve requests with good performance and energy efficiency if the distance is too great.
+
+**Recommendation:**
+
 - Select Azure regions based on where the consumer resides.
   - Deploy or [move Azure resources across regions](/azure/architecture/solution-ideas/articles/move-azure-resources-across-regions) to better serve the applications from where most consumers reside.
 
+### Use managed audio and video streaming services with built-in compression
+
+Applications making use of a media streaming service may have high requirements for bandwidth and compression, and can have a substantial carbon footprint if not designed carefully.
+
+**Recommendation:**
+
 - Use [managed audio and video streaming services](/azure/media-services/latest/encode-concept) that use built-in compression.
   - By making use of a managed service for audio and video, applications can leverage built-in optimizations like encoding, compressions, and more.
+
+### Enable network file compression
+
+Networks sending uncompressed data can have a higher requirement on bandwidth, the allocated resources, and the solution in general. Consider compressing data to optimize the workload and design for a more network efficient solution.
+
+**Recommendation:**
 
 - Enable network file compression.
   - Reduce the network payload by [improving CDN performance](/azure/cdn/cdn-improve-performance).
