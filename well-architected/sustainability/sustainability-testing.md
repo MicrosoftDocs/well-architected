@@ -45,6 +45,8 @@ Measuring, profiling, and testing workloads are imperative to understanding how 
 
 - Without properly profiling and testing workloads, it's difficult to know if it's making the best use of the underlying platform and deployed resources.
 
+- Running unit and load tests increases the reliability of a workload. However, the introduction of chaos engineering can greatly help improve the reliability and resilience, and how the application react to failures. In doing so, the workload can be optimized to handle failures more gracefully and with less wasted resources.
+
 ### Design recommendations
 
 - Profile workloads to make use of parallelization where possible.
@@ -52,6 +54,10 @@ Measuring, profiling, and testing workloads are imperative to understanding how 
   - If you're running Machine Learning (ML) for tests, consider machines with a GPU for better efficiency gains.
     - Consider this tradeoff: Running GPU-based machines for ML tests may increase the cost.
   - Identify if the workload is performance intensive and work toward optimization.
+
+- Use load testing or [chaos engineering](/azure/architecture/framework/resiliency/chaos-engineering) to assess how the workload handles platform outages, and traffic spikes or dips.
+  - Increase the service resilience and the ability to react to failures, allowing for a more optimized fault handling.
+  - Consider this tradeoff: Injecting fault during chaos engineering and increasing the load on any system also increases the emissions used for the testing resources. Evaluate how and when you can utilize chaos engineering to increase the workload reliability, while also considering the climate impact of running unnecessary testing sessions.
 
 ## Next step
 
