@@ -25,8 +25,6 @@ Designing sustainable workloads on Azure must encompass security, which is a fou
 
 Use cloud native security solutions to optimize for sustainability.
 
-### Design Considerations
-
 ### Use cloud native network security controls
 
 When you use a centralized routing- and firewall design, all network traffic is sent to the hub for inspection, filtering, and onward routing. While this approach centralizes policy enforcement, it can create an overhead on the network of unnecessary traffic from the source resources.
