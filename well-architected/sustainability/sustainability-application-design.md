@@ -49,8 +49,9 @@ Demands on applications can vary, and it is essential to consider ways to stabil
 
 - Evaluate moving monoliths to a [microservice architecture](/azure/architecture/guide/architecture-styles/microservices).
   - Allows for scaling of only the necessary components during peak load; ensuring idle components are scaled down or in.
-  - Reduces the overhead and resources required for deploying monolithic applications.
+  - May reduce the overhead and resources required for deploying monolithic applications.
   - Consider this tradeoff: While reducing the compute resources required, you may increase the amount of traffic on the network, and the complexity of the application may increase significantly.
+  - Consider this additional tradeoff: Moving to microservices can result in additional deployment overhead with a lot of similarity in deployment pipelines. Carefully consider the required deployment resources for monolithic versus microservice architectures.
   - Additionally, read about [containerizing monolithic applications](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/monolithic-applications).
 
 - Improve API efficiency.

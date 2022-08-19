@@ -21,6 +21,8 @@ This section of the Microsoft Azure Well-Architected Framework aims to address t
 
 We encourage you to also read more about the [Microsoft Cloud for Sustainability](https://www.microsoft.com/en-us/sustainability/cloud) for opportunities to leverage the capabilities of that platform as part of your solution architecture. However, guidance found in this article series is focused on _any_ solutions you are building or operating on Azure.
 
+In [The Carbon Benefits of Cloud Computing: a Study of the Microsoft Cloud](https://www.microsoft.com/download/details.aspx?id=56950), it was found that using the Microsoft Azure cloud platform can be up to 93 percent more energy efficient and up to 98 percent more carbon efficient than on-premises solutions.
+
 ## What is a sustainable workload?
 
 The term _workload_ refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
