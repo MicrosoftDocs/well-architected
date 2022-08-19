@@ -21,19 +21,9 @@ Designing sustainable workloads on Azure must encompass security, which is a fou
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
 
-## Cloud native security
+## Security monitoring
 
-Use cloud native security solutions to optimize for sustainability.
-
-### Use cloud native network security controls
-
-When you use a centralized routing- and firewall design, all network traffic is sent to the hub for inspection, filtering, and onward routing. While this approach centralizes policy enforcement, it can create an overhead on the network of unnecessary traffic from the source resources.
-
-**Recommendation:**
-
-- Use cloud native network security controls to eliminate unnecessary network traffic.
-  - Use [Network security groups](/azure/virtual-network/network-security-groups-overview) and [Application security groups](/azure/virtual-network/application-security-groups) to help filter traffic at the source, and to remove the unnecessary data transmission.
-  - Using these capabilities can help reduce the burden on the cloud infrastructure, with lower bandwidth requirements and less infrastructure to own and manage.
+Use cloud native security monitoring solutions to optimize for sustainability.
 
 ### Use cloud native log collection methods
 
@@ -67,6 +57,38 @@ Consider the complexity and cost of storing all logs from all possible sources. 
   - When designing a log collection strategy for cloud native SIEM solutions, consider the use cases based on the [Microsoft Sentinel analytics rules](/azure/sentinel/detect-threats-built-in) required for your environment and match up the required log sources to support those rules.
   - This option can help remove the unnecessary transmission and storage of log data, reducing the carbon emissions on the  environment.
 
+### Archive log data to long-term storage
+
+Many customers have a requirement to store log data for an extended period due to regulatory compliance reasons. In these cases, storing log data in the primary storage location of the SIEM system is a costly solution.
+
+**Recommendation:**
+
+- Archive log data to long-term storage.
+  - Log data can be [moved out to a cheaper long-term storage option](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/move-your-microsoft-sentinel-logs-to-long-term-storage-with-ease/ba-p/1407153) which respects the retention policies of the customer, but lowers the cost by utilizing separate storage locations.
+
+## Network architecture
+
+Increase the efficiency and avoid unnecessary traffic by following good practices for network security architectures.
+
+### Use cloud native network security controls
+
+When you use a centralized routing- and firewall design, all network traffic is sent to the hub for inspection, filtering, and onward routing. While this approach centralizes policy enforcement, it can create an overhead on the network of unnecessary traffic from the source resources.
+
+**Recommendation:**
+
+- Use cloud native network security controls to eliminate unnecessary network traffic.
+  - Use [Network security groups](/azure/virtual-network/network-security-groups-overview) and [Application security groups](/azure/virtual-network/application-security-groups) to help filter traffic at the source, and to remove the unnecessary data transmission.
+  - Using these capabilities can help reduce the burden on the cloud infrastructure, with lower bandwidth requirements and less infrastructure to own and manage.
+
+### Minimize routing from endpoints to the destination
+
+In many customer environments, especially in hybrid deployments, all end user device network traffic is routed through on-premises systems before being allowed to reach the internet. Usually, this happens due to the requirement to inspect all internet traffic. Often, this requires higher capacity network security appliances within the on-premises environment, or more appliances within the cloud environment.
+
+**Recommendation:**
+
+- Minimize routing from endpoints to the destination.
+  - Where possible, end user devices should be optimized to [split out known traffic directly to cloud services](/microsoft-365/enterprise/microsoft-365-vpn-implement-split-tunnel) while continuing to route and inspect traffic for all other destinations. Bringing these capabilities and policies closer to the end user device prevents unnecessary network traffic and its associated overhead.
+
 ### Use network security tools with auto-scaling capabilities
 
 Based on network traffic, there will be times when demand of the security appliance will be high, and other times where it will be lower. Many network security appliances are deployed to a scale to cope with the highest expected demand, leading to inefficiencies. Additionally, reconfiguration of these tools often requires a reboot leading to unacceptable downtime and management overhead.
@@ -77,19 +99,6 @@ Based on network traffic, there will be times when demand of the security applia
   - Making use of auto-scaling allows the rightsizing of the backend resources to meet demand without manual intervention.
   - This approach will vastly reduce the time to react to network traffic changes, resulting in a reduced waste of unnecessary resources, and increases your sustainability effect.
   - Learn more about relevant services by reading [how to enable a Web Application Firewall (WAF) on an Application Gateway](/azure/web-application-firewall/ag/application-gateway-web-application-firewall-portal), and [deploy and configure Azure Firewall Premium](/azure/firewall/premium-deploy).
-
-## Network architecture
-
-Increase the efficiency and avoid unnecessary traffic by following good practices for network security architectures.
-
-### Minimize routing from endpoints to the destination
-
-In many customer environments, especially in hybrid deployments, all end user device network traffic is routed through on-premises systems before being allowed to reach the internet. Usually, this happens due to the requirement to inspect all internet traffic. Often, this requires higher capacity network security appliances within the on-premises environment, or more appliances within the cloud environment.
-
-**Recommendation:**
-
-- Minimize routing from endpoints to the destination.
-  - Where possible, end user devices should be optimized to [split out known traffic directly to cloud services](/microsoft-365/enterprise/microsoft-365-vpn-implement-split-tunnel) while continuing to route and inspect traffic for all other destinations. Bringing these capabilities and policies closer to the end user device prevents unnecessary network traffic and its associated overhead.
 
 ### Evaluate whether to use TLS termination
 
@@ -102,10 +111,6 @@ Terminating and re-establishing TLS is CPU consumption that might be unnecessary
   - Review the information on [TLS termination](/azure/application-gateway/ssl-overview#tls-termination) to better understand the performance and utilization impact it offers.
   - Consider the tradeoff: A balanced level of security can offer a more sustainable and energy efficient workload while a higher level of security may increase the requirements on compute resources.
 
-## Mitigation
-
-It's imperative that we secure our workloads and solutions in the cloud. Understanding how we can optimize our mitigation tactics and architectures can have a positive outcome for reducing emissions.
-
 ### Use DDoS protection
 
 Distributed Denial of Service (DDoS) attacks aim to disrupt operational systems by overwhelming them, creating a significant impact on the resources in the cloud. Successful attacks flood network and compute resources, leading to an unnecessary spike in usage and cost.
@@ -114,6 +119,10 @@ Distributed Denial of Service (DDoS) attacks aim to disrupt operational systems 
 
 - DDoS protection seeks to [mitigate attacks at an abstracted layer](/azure/ddos-protection/types-of-attacks), so the attack is mitigated before reaching any customer operated services.
   - Mitigating any malicious usage of compute and network services will ultimately help reduce unnecessary carbon emissions.
+
+## Endpoint security
+
+It's imperative that we secure our workloads and solutions in the cloud. Understanding how we can optimize our mitigation tactics all the way down to the client devices can have a positive outcome for reducing emissions.
 
 ### Integrate Microsoft Defender for Endpoint
 
@@ -137,15 +146,6 @@ It can be a challenge to quickly find and report on all security appliances in y
 **Recommendation:**
 
 - Tag security resources to record emissions impact of security resources.
-
-### Archive log data to long-term storage
-
-Many customers have a requirement to store log data for an extended period due to regulatory compliance reasons. In these cases, storing log data in the primary storage location of the SIEM system is a costly solution.
-
-**Recommendation:**
-
-- Archive log data to long-term storage.
-  - Log data can be [moved out to a cheaper long-term storage option](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/move-your-microsoft-sentinel-logs-to-long-term-storage-with-ease/ba-p/1407153) which respects the retention policies of the customer, but lowers the cost by utilizing separate storage locations.
 
 ## Next step
 
