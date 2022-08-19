@@ -19,6 +19,8 @@ ms.custom:
 
 This section of the Microsoft Azure Well-Architected Framework aims to address the challenges of building sustainable workloads on Azure. Review the provided guidance that applies Well-Architected best practices as a technical foundation for building and operating sustainable solutions on Azure.
 
+We encourage you to also read more about the [Microsoft Cloud for Sustainability](https://www.microsoft.com/en-us/sustainability/cloud) for opportunities to leverage the capabilities of that platform as part of your solution architecture. However, guidance found in this article series is focused on _any_ solutions you are building or operating on Azure.
+
 ## What is a sustainable workload?
 
 The term _workload_ refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.

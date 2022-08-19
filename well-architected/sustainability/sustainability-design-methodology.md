@@ -31,7 +31,7 @@ Establish your business requirements and priorities, then review the design meth
 
 Refer to the sustainability [design principles](sustainability-design-principles.md) and the design areas below for your sustainability workloads.
 
-Decisions made within each design area will echo across other design areas. Review the considerations and recommendations in each design area better to understand the consequences and impact and any known trade-offs.
+Decisions made within each design area will echo across other design areas. Review the considerations and recommendations in each design area to understand the consequences and impact and any known trade-offs.
 
 Design areas:
 
@@ -46,6 +46,18 @@ Design areas:
 ## 3&mdash;Understanding your emissions
 
 To lower our emissions, we need to understand how to measure our sustainability efforts.
+
+### Briefly about emission scopes
+
+At Microsoft, we segment our greenhouse gas (GHG) emissions into three categories, consistent with the [Greenhouse Gas Protocol](https://ghgprotocol.org/).
+
+- **Scope 1 emissions**: direct emissions that your activities create.
+- **Scope 2 emissions**: indirect emissions that result from the production of the electricity or heat you use.
+- **Scope 3 emissions**: indirect emissions from all other activities you are engaged in. For a business, these Scope 3 emissions can be extensive. They must be accounted for across its supply chain, materials in its buildings, employee business travel, and the life cycle of its products (including the electricity customers consume when using the products). A company's Scope 3 emissions are often far more significant than its Scope 1 and 2 emissions combined.
+
+As a customer, the context of Scope 3 emissions can be network configuration and delivery, power consumption, and devices outside the data center. If an application uses excess bandwidth or packet size, it will impact from when the traffic leaves the data center, through the various hops on the internet, down to the end-user device. Reducing network bandwidth, therefore, can have a significant impact throughout the delivery chain. The same considerations apply to compute resources, data storage, application platform decisions, application design, and more.
+
+Find more in-depth details and definitions in [Azure's Scope 3 Methodology White Paper](https://download.microsoft.com/download/7/2/8/72830831-5d64-4f5c-9f51-e6e38ab1dd55/Microsoft_Scope_3_Emissions.pdf), published in 2021.
 
 ### Measure and track carbon impact
 
@@ -68,11 +80,17 @@ Read the full [SCI specification on GitHub](https://github.com/Green-Software-Fo
 
 #### Carbon tracking and reporting with the Emissions Impact Dashboard
 
-Microsoft offers the [Emissions Impact Dashboard](https://www.microsoft.com/en-us/sustainability/emissions-impact-dashboard) for Azure and Microsoft 365, which helps you measure your cloud-based emissions and carbon savings potential.
+Microsoft offers the [Emissions Impact Dashboard](https://www.microsoft.com/sustainability/emissions-impact-dashboard) for Azure and Microsoft 365, which helps you measure your cloud-based emissions and carbon savings potential.
 
 We recommend you use this tool to get the insights and transparency you need to understand your carbon footprint and to measure and track emissions over time.
 
 Download the [Emissions Impact Dashboard Power BI app for Azure](https://appsource.microsoft.com/product/power-bi/coi-sustainability.emissions_impact_dashboard) to get started.
+
+#### Leverage the Microsoft Sustainability Manager
+
+Customers using the [Microsoft Cloud for Sustainability](/industry/sustainability/overview) can leverage the [Microsoft Sustainability Manager](/industry/sustainability/sustainability-manager-overview') to get continuous visibility into their emissions activities.
+
+Learn more by reading [what is Microsoft Cloud for Sustainability?](/industry/sustainability/overview)
 
 #### Use a proxy solution to measure emissions
 

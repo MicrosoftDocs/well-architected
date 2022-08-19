@@ -52,7 +52,7 @@ The goal of this principle is that you build applications that are energy-effici
 
 We need to make the application aware of how much carbon it’s emitting. This way, we can react to specific conditions of energy supply, using demand shifting and demand shaping techniques:
 
-- Demand shifting means moving the workloads and resources to regions or datacenters where the energy supply is higher (and incidentally the cost is lower)
+- Demand shifting means moving the workloads and resources to regions or data centers where the energy supply is higher (and incidentally the cost is lower)
 - Demand shaping means changing the application’s behavior and appearance to match the energy supply in real-time. A good practice is to build an eco-version of the app and keep it as benchmark for demand shaping but also for carbon optimization.
 
 ## Hardware efficiency
