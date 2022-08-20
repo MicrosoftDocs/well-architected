@@ -3,7 +3,7 @@ title: Cost optimization in an IoT workload
 description: See guidance and recommendations that apply to the cost optimization pillar in an IoT workload.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/10/2022
+ms.date: 08/17/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -13,40 +13,26 @@ ms.custom:
 
 # Cost optimization in your IoT workload
 
-Cost optimization is the process of closed-loop cost control that needs to be continuously monitored, analyzed, and improved throughout a lifecycle. Understanding the IoT architecture layers helps you design an architecture for your IoT solution that enables you to define a baseline of the costs and to consider multiple architectures for cost comparison.
+Cost effectiveness is one of the key success factors for IoT projects. In a typical IoT solution, devices generate large quantities of telemetry that is then stored in a cloud repository. How you develop devices and applications, handle large volumes of data, and design your architecture affects overall costs.
 
-IoT cost results from a tradeoff between various technology options. Sometimes, it's not a simple comparison because IoT is an end-to-end solution. You should also consider synergy and cost benefits when reconciling multiple services and technologies such as IoT central with Plug and Play, or using device twins to handle events in Azure Digital Twins. In some areas, a one-time cost is more effective than recurring costs. For example, in security where hacking techniques are always changing, it's better to import a reliable commercial operating system and module such as Azure Sphere that, for a one-off payment, provides monthly security patches to devices for a long time.
+Cost optimization is a process of closed-loop cost control that needs to be continuously monitored, analyzed, and improved throughout a lifecycle. Because an IoT solution is a multilayered technology stack, there are many cost-saving factors to consider and many opportunities to optimize costs.
 
-The key criteria for architecture decisions are the requirements for your IoT solution. You can separate the requirements into functional and non-functional requirements. You also need to separate the cost considerations on each type of requirements because functional requirements affect system design and non-functional requirements affect system architecture.
-
-A typical IoT project includes the following processes:
-
-- Design
-- Hardware sourcing
-- Development
-- Integration
-- Onboarding
-- Deployment
-- Operation
-
-You need to develop multiple use cases based on the requirement and compare them before finalizing your architecture choices.
-
-The complexity of these processes leads to many opportunities to cut costs. Cost optimization in the IoT Well-Architected Framework includes guidance to simplify cost drivers from complex IoT architecture and processes and help you make better decisions to achieve cost effectiveness.
-
-This guide considers various combinations of Azure IoT services and related technologies. However, it doesn't consider cost optimization for specific industry and IoT use cases such as connected factory, predictive maintenance, and remote monitoring.
-
-Because IoT projects include cloud technologies, you should review [Microsoft Azure Well-Architected Framework - Cost Optimization](../cost/index.yml) and [Cloud Cost Optimization \| Microsoft Azure](https://azure.microsoft.com/overview/cost-optimization/#ways-to-optimize) for overall guidance about cloud costs.
-
-The [Microsoft Well-Architected Framework cost optimization](../cost/overview.md) documents is a set of generic principles. This workload view focuses on specifics for an IoT solution and considers unique factors that add to the generic guidance.
-
-Cost effectiveness is one of the key success factors in IoT projects. In a typical IoT solution, devices generate large quantities of telemetry that is then stored in a cloud repository. How you develop devices and applications, handle large volumes of data, and design your architecture have an effect on overall costs. Because an IoT solution is a multilayered technology stack, there are many cost saving factors to consider.
+The [Microsoft Well-Architected Framework cost optimization](../cost/index.yml) documents provide generic cost optimization principles. Because IoT projects include cloud technologies, review [Cloud Cost Optimization](https://azure.microsoft.com/overview/cost-optimization/#ways-to-optimize) for overall guidance about cloud costs. This article focuses on specifics for an IoT solution and considers unique factors that add to the generic guidance.
 
 Apply the following design principles to build cost effective IoT solutions:
 
-- **Understand total cost of ownership (TCO)** – Take into account  both direct and indirect costs when you decide on the architecture for your IoT solution.
-- **Establish strategies for IoT technology ecosystems** – Use the best approach for each IoT technology area that has its own ecosystem.
-- **Define implementation plans for each IoT architecture layer** – Identify action items for each layer in the IoT Well-Architected Framework architecture.
-- **Monitor and optimize costs** – Establish ongoing activities for cost optimization after you implement your IoT solution.
+- Understand total cost of ownership (TCO) by taking both direct and indirect costs into account when you plan your solution.
+- Use the best strategies and approaches for IoT technology areas that have their own ecosystems.
+- Define implementation plans for each IoT Well-Architected Framework architecture layer.
+- Establish ongoing activities to monitor and optimize costs after you implement your solution.
+
+Your IoT solution requirements are the key criteria for architecture decisions. You can separate requirements into functional and nonfunctional requirements. You need to separate the cost considerations for each type of requirements, because functional requirements determine system design, while nonfunctional requirements affect system architecture. Develop multiple use cases based on the requirements and compare them before finalizing your architecture choices.
+
+IoT costs are a tradeoff between various technology options. Sometimes it's not a simple comparison, because IoT is an end-to-end solution. You should also consider the cost benefits of synergy when reconciling multiple services and technologies, such as Azure IoT Central with Plug and Play, or device twins for handling events in Azure Digital Twins.
+
+In some areas, a one-time cost can be more effective than recurring costs. For example, in security where hacking techniques are always changing, it can be best to import a reliable commercial operating system and module such as Azure Sphere. For a one-time payment, such services provide monthly device security patches for a long time.
+
+This article presents various combinations of Azure IoT services and related technologies, but doesn't discuss cost optimization for specific industries or IoT use cases such as connected factories, predictive maintenance, or remote monitoring.
 
 ## Assess cost optimization in your IoT workload
 
@@ -54,32 +40,23 @@ To assess your IoT workload against the Well-Architected Framework Cost Optimiza
 
 ## Total cost of ownership (TCO)
 
-Many IoT solutions fail because of the difficulty of estimating long-term aggregated costs of various cloud services. It's critical to understand how much you're spending to run and operate all services involved. Without this understanding, it's common for budgets to run into the red, leaving you with ballooning costs.
+IoT solutions can fail because of incorrect estimation of the long-term aggregated costs of various cloud services. It's critical to understand how much you're spending to run and operate all services involved.
 
-When you evaluate infrastructure costs, account for the basics first: storage, compute, and network. Then, you must account for all services your solution needs to ingest, egress, and prepare data for use in business decisions. Make sure to estimate costs based on the architecture of the solution when it's running at scale in production, not your PoC architecture. Architecture and costs evolve rapidly after the PoC.
+When you evaluate infrastructure costs, account for the basics first: storage, compute, and network. Then, account for all services your solution needs to ingest, egress, and prepare data for use in business decisions. Make sure to estimate solution costs based on running at scale in production, not proof-of-concept (PoC) architecture. Architecture and costs evolve rapidly after the PoC.
 
-Furthermore, don't overlook the long-term operational costs that increase in parallel with infrastructure costs. Examples include employing technicians to operate the solution, vendors to manage non-public clouds, and customer support teams.
+After you review the IoT technology stacks, [develop a cost model](/azure/architecture/framework/cost/design-model) to estimate initial costs. The [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) helps estimate both startup and operational costs.
 
-### Build a cost model and budget
+Factor in the growth in the number of devices deployed and their messaging patterns over time. You might start with a limited number of connected devices that grows each year. Both devices and messages can have linear or non-linear growth, which affects your TCO over time.
 
-After you review the IoT technology stacks, estimate the initial cost through a cost model:
+Don't overlook long-term operational costs that increase in parallel with infrastructure costs. Examples include employing solution operators, vendors, and customer support teams.
 
-- [Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) helps estimate the initial and operational costs.
-- [Develop a cost model - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/cost/design-model).
-
-For your solution, factor in the growth in the number of devices deployed and their messaging patterns over time. Both can have a linear or non-linear growth, which affects your total solution cost over time. You might start with a limited number of connected devices that grows each year.
-
-### Continuously monitor and review
-
-Continuously monitor and review costs to identify gaps between planned and actual costs. A regular cost review meeting is a good way to achieve cost optimization.
+Continuously monitor and review costs to identify gaps between planned and actual costs. A regular cost review meeting helps achieve cost optimization.
 
 ## Architectural layers
 
-[Overview of an IoT workload - IoT Well-Architected Framework](iot-overview.md) describes the elements of an IoT architecture. It enables you to easily review cost options for each layer in a complex IoT architecture. Cost optimization for IoT Well-Architected Framework provides [actionable guides for the IoT architecture layer implementations](#design).
+IoT solution implementations are complex projects that require understanding broad technologies and considering various architectural layers. The [IoT Well-Architected Framework](iot-overview.md#iot-architecture-layers) describes the foundational layers, and options for designing and realizing each layer by using specific technologies. There are also cross-cutting layers that enable designing, building, and running IoT solutions. The layers help you simplify and understand Azure IoT architecture.
 
-IoT solution implementations are complex projects that require understanding of broad technologies and consideration of various layers. The [IoT Well-Architected Framework describes these IoT architecture layers](iot-overview.md). The layers help you simplify and understand Azure IoT architecture. You need to establish a different cost strategy for each layer because each one has a different technology and sometimes a different ecosystem such as devices, telecommunications, or edge. Cost optimization for IoT Well-Architected Framework provides guidance on how to optimize costs across the IoT architecture layers.
-
-An IoT architecture consists of a set of foundational layers. Layers are realized by using specific technologies, and the IoT Well-Architected Framework highlights options for designing and realizing each layer. There are also cross-cutting layers that enable the design, building, and running of IoT solutions.
+You need to establish a different cost strategy for each layer because the layers have different technologies and sometimes different ecosystems, such as devices, telecommunications, or edge. Understanding the IoT architecture layers helps you define a cost baselines and consider multiple architectures for cost comparison.
 
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the I o T architecture." border="false":::
 
