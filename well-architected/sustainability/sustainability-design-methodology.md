@@ -17,140 +17,149 @@ ms.custom:
 
 # Design methodology for sustainable workloads on Azure
 
-[Intro paragraph]
+Building a sustainable application on any cloud platform requires technical expertise and an understanding of sustainability guidelines in general and for your specific cloud platform.
+
+This design methodology aims to help establish an understanding about producing more carbon efficient solutions, measuring your carbon impact, and ultimately reducing unnecessary energy usage and emissions.
 
 ## 1&mdash;Design for business requirements
 
-Business globally have different requirements. Expect that the review considerations and design recommendations provided by this design methodology will yield different design decisions and trade-offs for different scenarios and organizations.
+Businesses globally have different requirements. Expect that the review considerations and design recommendations provided by this design methodology will yield different design decisions and trade-offs for different scenarios and organizations.
 
 Establish your business requirements and priorities, then review the design methodologies in alignment with those requirements.
 
 ## 2&mdash;Evaluate the design areas using the design principles
 
-Refer to the critical [design principles](sustainability-design-principles.md) and the rudimentary design areas below, which are correlative design decisions for your sustainability workloads.
+Refer to the sustainability [design principles](sustainability-design-principles.md) and the design areas below for your sustainability workloads.
 
-Decisions made within each design area will echo across other design areas. Review the considerations and recommendations in each design area to better understand the consequences and impact, and to understand trade-offs within the design areas.
+Decisions made within each design area will echo across other design areas. Review the considerations and recommendations in each design area to understand the consequences and impact and any known trade-offs.
 
 Design areas:
 
-- [Compute](sustainability-compute.md)
-- [Operations](sustainability-operational-procedures.md)
-- [Deployment and testing](sustainability-deployment-testing.md)
-- [Networking](sustainability-networking.md)
+- [Application design](sustainability-application-design.md)
+- [Application platform](sustainability-application-platform.md)
+- [Deployment and testing](sustainability-testing.md)
+- [Operational procedures](sustainability-operational-procedures.md)
 - [Storage](sustainability-storage.md)
-- [Application Design](sustainability-application-design.md)
+- [Network and connectivity](sustainability-networking.md)
 - [Security](sustainability-application-design.md)
 
-## 3&mdash;Refer to the sustainability design principles
+## 3&mdash;Understanding your emissions
 
-> TODO: Add a link back to the design principles page.
-> Add the actual principles/recommendations on that page, too, for now.
+To lower your emissions, you need to understand how to measure your sustainability efforts.
 
-## 4&mdash;Understanding your emissions and responsibilities
+### Briefly about emission scopes
+
+At Microsoft, we segment our greenhouse gas (GHG) emissions into three categories, consistent with the [Greenhouse Gas Protocol](https://ghgprotocol.org/).
+
+- **Scope 1 emissions**: direct emissions that your activities create.
+- **Scope 2 emissions**: indirect emissions that result from the production of the electricity or heat you use.
+- **Scope 3 emissions**: indirect emissions from all other activities you are engaged in. For a business, these Scope 3 emissions can be extensive. They must be accounted for across its supply chain, materials in its buildings, employee business travel, and the life cycle of its products (including the electricity customers consume when using the products). A company's Scope 3 emissions are often far more significant than its Scope 1 and 2 emissions combined.
+
+As a customer, the context of Scope 3 emissions can be network configuration and delivery, power consumption, and devices outside the data center. If an application uses excess bandwidth or packet size, it will impact from when the traffic leaves the data center, through the various hops on the internet, down to the end-user device. Reducing network bandwidth, therefore, can have a significant impact throughout the delivery chain. The same considerations apply to compute resources, data storage, application platform decisions, application design, and more.
+
+Find more in-depth details and definitions in [Azure's Scope 3 Methodology White Paper](https://download.microsoft.com/download/7/2/8/72830831-5d64-4f5c-9f51-e6e38ab1dd55/Microsoft_Scope_3_Emissions.pdf), published in 2021.
 
 ### Measure and track carbon impact
 
-According to the Green Software Foundation, to which Microsoft's view is aligned on green software, the measurement for the carbon impact of an application is Software Carbon Intensity (SCI), and is calculated as follows:
+Microsoft aligns with the [Green Software Foundation](https://greensoftware.foundation), responsible for creating the [Software Carbon Intensity](https://greensoftware.foundation/projects/software-carbon-intensity-sci-specification) (SCI) specification.
+
+To measure the carbon impact of an application, the SCI is calculated like this:
 
 ```SCI = ((E*I)+M) per R```
 
 Where:
 
-- E = energy consumed by software (kWh)
-- I = carbon emitted per kWh of energy, gCO2/kWh
-- M = carbon emitted through the hardware that software is running on
-- R = Functional Unit, which is how the application is scaling: per user, per service, etc.
+- `E` = Energy consumed by a software system. Measured in kWh.
+- `I` = Location-based marginal carbon emissions. Carbon emitted per kWh of energy, gCO2/kWh.
+- `M` = Embodied emissions of a software system. Carbon that is emitted through the hardware on which the software is running.
+- `R` = Functional unit, which is how the application scales; per extra user, per API call, per service, etc.
 
-Therefore, you should take into account not just the application infrastructure, but also the user devices and how the application scales, because it might have a larger impact than thought.
+With this knowledge, it's essential to consider not only the application infrastructure and hardware but also the user devices and application scalability, as it can alter the environmental footprint considerably.
 
-Review the main [design principles for sustainable workloads on Azure](sustainability-design-principles.md) to learn how you can build and optimize your solutions in alignment with the Green Software Foundation.
+Read the full [SCI specification on GitHub](https://github.com/Green-Software-Foundation/software_carbon_intensity/blob/main/Software_Carbon_Intensity/Software_Carbon_Intensity_Specification.md).
 
-### Shared responsibility model for carbon
+#### Carbon tracking and reporting with the Emissions Impact Dashboard
 
-As mentioned earlier, an application’s impact on carbon emission isn't solely limited to the cloud infrastructure but will span several technologies and points of usage.
-The first step of the cloud efficiency (cost + carbon) paradigm is optimizing the cost of the application. Refer to the cost optimization pillar for more info.
+Microsoft offers the [Emissions Impact Dashboard](https://www.microsoft.com/sustainability/emissions-impact-dashboard) for Azure and Microsoft 365, which helps you measure your cloud-based emissions and carbon savings potential.
 
-We're already familiar with all the cost management guidelines.
-Optimizing carbon emissions means to make your applications and architectures carbon aware, score them against a benchmark or proxy to measure any improvement or status change, and take any available actions to reduce emissions according to the situation and workload.
+We recommend you use this tool to get the insights and transparency you need to understand your carbon footprint and to measure and track emissions over time.
 
-Optimizing your workload for energy means being aware of their energy requirements and have the software perform the same features with less electricity consumption.
-Once you have an optimized and streamlined application, it’s time to work on its carbon and energy impact.
+Download the [Emissions Impact Dashboard Power BI app for Azure](https://appsource.microsoft.com/product/power-bi/coi-sustainability.emissions_impact_dashboard) to get started.
 
-The cloud provider is responsible for all the datacenter portion of the app: Microsoft has a sustainability goal and most of its Azure datacenters are driving towards a zero-emission goal (**more info or link here).
-But putting an application in the cloud doesn't mean that automatically it's sustainable. Let’s pick an example:
+#### Leverage the Microsoft Sustainability Manager
 
-- An application that is heavy on carbon is using X resources on Azure
-- 10 highly optimized and efficient applications can run on the same X resources on Azure.
+Customers using the [Microsoft Cloud for Sustainability](/industry/sustainability/overview) can leverage the [Microsoft Sustainability Manager](/industry/sustainability/sustainability-manager-overview') to get continuous visibility into their emissions activities.
 
-This means that even if we're using resources that are carbon optimized, we shouldn't waste them and in principle, try to use them in the most efficient possible way. Just as resiliency, sustainability is a shared responsibility goal that needs to combine the efforts of both the Azure cloud provider and the customer or partner that is designing and implementing the application.
+Learn more by reading [what is Microsoft Cloud for Sustainability?](/industry/sustainability/overview)
 
-## 5&mdash;Workload optimization to reduce environmental impact
+#### Use a proxy solution to measure emissions
 
-### Reduce direct factors
+We can estimate the carbon emissions from our workloads by designing a proxy solution architecture based on the SCI model.
 
-Reduce the impact of compute by right sizing resources, introduce dynamic autoscaling to allocate and deallocate resources when needed, modernize your application components towards PaaS and serverless technologies. Consider running batch workloads during quiet hours, and upgrade frameworks to improve efficiency.
+Defining the proxies for applications can be done in different ways. For example, using these variables:
 
-### Reduce indirect factors
-
-Scope 3 emissions account for a large carbon impact through application delivery, reduce network bandwidth through compression, consider using a Content Delivery Network (CDN), and reducing asset sizes.
-
-### Continuously reevaluate and improve
-
-Schedule regular reviews of the Emissions Impact Dashboard and your SCI score, set measures and scorecards, document success and forecast future impact.
-
-## 6&mdash;Proxy implementations for sustainability
-
-### Defining proxies for your application
-
-The carbon emission Azure spend is certainly your starting point, but of course isn't enough. Until we have clear carbon values available for each software and infrastructure, we can rely on proxies to create a score model that resembles the SCI.
-
-In general, the approach should be one to build a proxy’s equation with a few variables:
-
-- The carbon emission of the infrastructure, if available
+- Any known carbon emission of the infrastructure
 - The cost of the infrastructure
-- The edge services and/or infrastructure’s carbon emissions
-- The number of users that are concurrently hooked into the application
-- Ideally, the time when users connect, as electricity production varies with time
-- Any other peculiar metric of the app that can tell us how its performance is changing across time
+- Edge services and infrastructure carbon emissions
+- The number of users that are concurrently using the application
+- Metrics of the application to inform us about the performance over time
 
-Building this equation into a score that can also reflect the number of users, represents the closest approximation to a carbon score, and this will be your benchmark for any further change and improvement towards the greenness of the app.
+By designing an equation using the above variables, you can estimate the carbon score (an approximation), helping you understand if you're building sustainable solutions.
 
-There's also another aspect that is linked to the application performance metrics. If we link performances to cost and carbon and assume that their relation is a value, then we can assume that:
+There's also the aspect of application performance. You can link performance to cost and carbon and assume this relationship yields a value. With this relation, you can simplify the view like this:
 
-- When performances are higher, but costs are the same = we've optimized the app
-- When costs are lower, but performances are the same = we've optimized the app
-- When perf are up and costs are also up =, we're also using more carbon emissions
-- When costs are up even at lower or equal performances = we assume we're using more carbon emissions (or the energy cost is higher, which according to principles is also cause for higher carbon emissions
+|Application performance|Application cost|Likely outcome|
+|---|---|---|
+|High|Unchanged|Optimized app|
+|High|Lower|Optimized app|
+|Unchanged/Lower|Higher|According to the green principles, a higher energy cost can cause higher carbon emissions. Therefore, you can assume that the app produces unnecessary carbon emissions.|
+|High|High|The app may be producing unnecessary carbon|
 
-Your carbon score dashboard can therefore make use of the following proxies:
+Therefore, building a carbon score dashboard can make use of the following proxies:
 
 - Cost
 - Performance
-- Carbon emissions – where available
-- Usage (requests, calls, users) across time
+- Carbon emissions of the infrastructure (if known/available)
+- Usage over time (requests, users, API calls, etc.)
 - Any extra measurement that is relevant to the application
 
-A sample architecture of these proxies can be summarized with the following pic:
+## 4&mdash;The shared responsibility model for sustainability
 
-> Design for the architecture.
+Reducing emissions is a shared responsibility between the cloud provider and the customer designing and deploying applications on the platform.
 
-### The app eco-mode version
+### Ways to reduce emissions
 
-Once you know what points of carbon failure your app architecture might have, and are able to score its impact with proxies, you should understand what actions a different/higher carbon score might trigger:
+Reducing carbon emissions can happen with three possible solutions:
 
-- For example, I might have a situation where the energy production is at an all-time high and is therefore expensive to produce
-- Another example could be that electricity is not available – if you think of the war in Ukraine, we had lots of customers migrating quickly to the cloud because their datacenters were shutting down, so one compelling event for carbon saving is no electricity at all! This might apply to on-prem apps and CDNs and edge technologies as well.
-- Can your app deal with sudden unavailability of the edge infrastructure?
-- How can you ensure a decent quality of customer experience to your users?
+- Carbon neutralization; compensating carbon emissions
+- Carbon avoidance; not emitting carbon in the first place
+- Carbon removal; subtract carbon from the atmosphere
 
-Once you are able to build these failure points, the next step is to decide what actions make your application resilient to carbon spikes.
+The goal of green software is to avoid unnecessary emissions in the first place, hence actively working toward a more sustainable future. Further, _carbon removal_ is the preferred goal for removing emissions from our atmosphere.
 
-You should be able to build a simpler, smaller, cheaper, greenest version of the full application, that you can revert to in case of any spike in carbon emissions, or simply train your end-user to opt for the eco version by choice, providing a “green button” where people declare they're ok with a leaner interface, fewer graphics, and limited features in exchange of saving a bunch of carbon emissions.
+Microsoft is committed to being [carbon negative by 2030](https://blogs.microsoft.com/blog/2020/01/16/microsoft-will-be-carbon-negative-by-2030/), and [by 2050 to have removed all the carbon](https://blogs.microsoft.com/blog/2021/10/27/supporting-our-customers-on-the-path-to-net-zero-the-microsoft-cloud-and-decarbonization/) the company has emitted since it was founded in 1975.
 
-If you opt to involve the users, this might involve a cultural change along with the technical one:
+### A shared responsibility
 
-- You can specify what the impact of this choice is: “by using the green version you're saving x amount of carbon”, or “bringing our carbon score to Y”
-- You can understand the user behavior and modify the eco version to reflect their choices (maybe they use 10%of the features, and they can be enough for the green version)
-- Slowly the full version gets optimized for emission as well and ideally, they should be able to converge in a few months/years.
+As a cloud provider, Microsoft is responsible for the data centers hosting your applications.
+
+However, deploying an application in the Microsoft cloud doesn't automatically make it sustainable, even if the data centers are optimized for sustainability. Applications that aren't optimized may still emit more carbon than necessary.
+
+The shared responsibility model for sustainable apps can be visualized like this:
+
+:::image type="content" source="./images/sustainability-shared-responsibility-apps.svg" alt-text="Diagram showing the shared responsibility model for sustainability." border="false" lightbox="./images/sustainability-shared-responsibility-apps.svg":::
+
+_Let's take an example._
+
+You deploy an app to an Azure service, but you only utilize 10% of the allocated resources. The provisioned resources are underutilized, ultimately leading to unnecessary emissions.
+
+It would help if you considered scaling to an appropriate tier of the resource (rightsizing) or deploying more apps to the same provisioned resources.
+
+We recommend making applications more efficient to utilize the data center capacity in the best way possible. Sustainability is a shared responsibility goal that must combine the efforts of the cloud provider and the customers in designing and implementing applications.
 
 ## Next steps
+
+Review the design principles for sustainability.
+
+> [!div class="nextstepaction"]
+> [Design principles](sustainability-design-principles.md)
