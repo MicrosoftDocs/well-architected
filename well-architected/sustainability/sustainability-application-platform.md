@@ -99,8 +99,8 @@ Managed services are highly optimized and operate on more efficient hardware tha
 
 **Recommendation:**
 
-- Evaluate moving to PaaS and serverless compute workloads.
-  - Build a cloud-native app without managing the infrastructure, using a fully managed platform. The platform handles scaling, availability, and performance, ultimately optimizing the hardware efficiency.
+- Build a cloud-native app without managing the infrastructure, using a fully managed and inherently optimized platform. The platform handles scaling, availability, and performance, ultimately optimizing the hardware efficiency.
+- Review design principles for [Platform as a Service (PaaS)](/azure/architecture/guide/design-principles/managed-services) workloads.
 
 ### Use SPOT VMs where possible
 
