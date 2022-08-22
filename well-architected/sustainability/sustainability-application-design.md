@@ -91,8 +91,8 @@ Demands on applications can vary, and it's essential to consider ways to stabili
 
 **Recommendation:**
 
-- Optimize for [async access patterns](/azure/architecture/patterns/async-request-reply).
-  - Queue and buffer requests that don't require immediate processing, then process in batch. Designing your applications in this way helps achieve a stable utilization and helps flatten consumption to avoid spiky requests.
+- Queue and buffer requests that don't require immediate processing, then process in batch. Designing your applications in this way helps achieve a stable utilization and helps flatten consumption to avoid spiky requests.
+- Read about optimizing for [async access patterns](/azure/architecture/patterns/async-request-reply).
 
 ### Evaluate server-side vs. client-side rendering
 

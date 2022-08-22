@@ -31,10 +31,9 @@ Platform updates enable you to use the latest functionality and features to help
 
 **Recommendation:**
 
-- Review platform and service updates regularly.
-  - Upgrade to newer and more efficient services as they become available.
-  - Consider backward compatibility and hardware reusability. An upgrade may not be the most efficient solution if the hardware or the OS isn't supported.
-  - Make use of [Azure Automation Update Management](/azure/automation/update-management/manage-updates-for-vm) to ensure software updates are deployed to Azure VMs.
+- Upgrade to newer and more efficient services as they become available.
+- Consider backward compatibility and hardware reusability. An upgrade may not be the most efficient solution if the hardware or the OS isn't supported.
+- Make use of [Azure Automation Update Management](/azure/automation/update-management/manage-updates-for-vm) to ensure software updates are deployed to Azure VMs.
 
 ## Regional differences
 
@@ -46,13 +45,12 @@ Learn about what Azure regions have a lower carbon footprint than others to make
 
 **Recommendation:**
 
-- Deploy to low-carbon regions.
-  - Use less carbon because the data centers where you deploy the workload are more likely to be powered by renewable and low-carbon energy sources.
-  - Potential tradeoffs:
-    - The effort and time it takes to move to a low-carbon region.
-    - Migrating data between data centers may not be carbon efficient.
-    - Consider the cost for new regions, including low-carbon regions, which may be more expensive.
-    - If the workloads are latency sensitive, moving to a lower carbon region may not be an option.
+- Use less carbon because the data centers where you deploy the workload are more likely to be powered by renewable and low-carbon energy sources.
+- Potential tradeoffs:
+  - The effort and time it takes to move to a low-carbon region.
+  - Migrating data between data centers may not be carbon efficient.
+  - Consider the cost for new regions, including low-carbon regions, which may be more expensive.
+  - If the workloads are latency sensitive, moving to a lower carbon region may not be an option.
 
 ### Process when the carbon intensity is low
 
@@ -60,23 +58,23 @@ Some regions on the planet are more carbon intense than others, therefore it's i
 
 **Recommendation:**
 
-- Process when the carbon intensity is low.
-  - Optimizing workloads to run when knowing that the energy mix comes mostly from renewable energy sources.
-  - For example, running specific workloads at night may be more beneficial in some regions.
+- Optimizing workloads to run when knowing that the energy mix comes mostly from renewable energy sources.
+- For example, running specific workloads at night may be more beneficial in some regions.
 
 ### Choose data centers close to the customer
 
 **Recommendation:**
 
-- Choose data centers close to the customer.
-  - Network traversal increases if the data center is a greater distance from consumers.
+- Network traversal increases if the data center is a greater distance from consumers.
 
 ### Run batch workloads during low carbon intensity periods
+
+Proactively designing batch processing of workloads can help with scheduling intensive work during low-carbon periods.
 
 **Recommendation:**
 
 - Run [batch workloads](/azure/architecture/data-guide/big-data/batch-processing) during low carbon intensity periods.
-  - Potential tradeoffs may include the effort and time it takes to move to a low-carbon region. Additionally, migrating data between data centers may not be carbon efficient, and the cost for new regions&mdash;including low-carbon regions&mdash;may be more expensive.
+- Potential tradeoffs may include the effort and time it takes to move to a low-carbon region. Additionally, migrating data between data centers may not be carbon efficient, and the cost for new regions&mdash;including low-carbon regions&mdash;may be more expensive.
 
 ## Modernization
 
@@ -88,10 +86,9 @@ Consider options for containerizing workloads to reduce unnecessary resource all
 
 **Recommendation:**
 
-- Containerize workloads where applicable.
-  - Deploying apps as containers allows for bin packing and getting more out of a VM, ultimately reducing the need for duplication of libraries on the host OS.
-  - Removes the overhead of managing an entire VM and allows to get more apps deployed per physical machine. Containerization also optimizes server utilization rates and improves service reliability, lowering operational costs. Fewer servers are needed, and the existing servers can be better utilized.
-  - Consider these tradeoffs: The benefit of containerization will only realize if the utilization is high. Additionally, provisioning an orchestrator such as [Azure Kubernetes Services](/azure/aks/) (AKS) or [Azure Red Had OpenShift](/azure/openshift/) (ARO) for only a few containers would likely lead to higher emissions overall.
+- Deploying apps as containers allows for bin packing and getting more out of a VM, ultimately reducing the need for duplication of libraries on the host OS.
+- Removes the overhead of managing an entire VM and allows to get more apps deployed per physical machine. Containerization also optimizes server utilization rates and improves service reliability, lowering operational costs. Fewer servers are needed, and the existing servers can be better utilized.
+- Consider these tradeoffs: The benefit of containerization will only realize if the utilization is high. Additionally, provisioning an orchestrator such as [Azure Kubernetes Services](/azure/aks/) (AKS) or [Azure Red Had OpenShift](/azure/openshift/) (ARO) for only a few containers would likely lead to higher emissions overall.
 
 ### Evaluate moving to PaaS and serverless workloads
 
@@ -108,9 +105,8 @@ Think about the unused capacity in Azure data centers. Utilizing the otherwise w
 
 **Recommendation:**
 
-- Use SPOT VMs where possible.
-  - By utilizing [SPOT VMs](/azure/virtual-machines/spot-vms), you take advantage of unused capacity in Azure data centers while getting a significant discount on the VM.
-  - Consider the tradeoff: When Azure needs the capacity back, the VMs get evicted. Learn more about the SPOT VM [eviction policy](/azure/virtual-machines/spot-vms#eviction-policy).
+- By utilizing [SPOT VMs](/azure/virtual-machines/spot-vms), you take advantage of unused capacity in Azure data centers while getting a significant discount on the VM.
+- Consider the tradeoff: When Azure needs the capacity back, the VMs get evicted. Learn more about the SPOT VM [eviction policy](/azure/virtual-machines/spot-vms#eviction-policy).
 
 ## Right sizing
 
@@ -122,8 +118,7 @@ Operating idle workloads will waste energy and contributes to an added carbon em
 
 **Recommendation:**
 
-- Turn off workloads outside of business hours.
-  - Dev &amp; Testing workloads should be turned off when not used. Instead of leaving them running, consider shutting them off outside regular business hours.
+- Dev &amp; Testing workloads should be turned off when not used. Instead of leaving them running, consider shutting them off outside regular business hours.
   - Learn more about [starting/stopping VMs during off-hours](/azure/automation/automation-solution-vm-management).
 
 ### Utilize auto-scaling and bursting capabilities
@@ -132,9 +127,9 @@ It's not uncommon with oversized compute workloads where much of the capacity is
 
 **Recommendation:**
 
-- Utilize [auto-scaling](/azure/architecture/best-practices/auto-scaling) and bursting capabilities.
-  - Consider that it may require tuning to prevent unnecessary scaling during short bursts of high demand, as opposed to a static increase in demand.
-  - Consider the application architecture as part of scaling considerations. For example, logical components should scale independently to match the demand of that component, as opposed to scaling the entire application if only a portion of the components needs scaling.
+- Review [auto-scaling](/azure/architecture/best-practices/auto-scaling) guidance for Azure workloads.
+- Consider that it may require tuning to prevent unnecessary scaling during short bursts of high demand, as opposed to a static increase in demand.
+- Consider the application architecture as part of scaling considerations. For example, logical components should scale independently to match the demand of that component, as opposed to scaling the entire application if only a portion of the components needs scaling.
 
 ## Next step
 

@@ -31,8 +31,8 @@ Unnecessary traffic on the network should be avoided, as it's a cause for extra 
 
 **Recommendation:**
 
-- Make use of a CDN, and [follow best practices](/azure/architecture/best-practices/cdn).
-  - A CDN helps minimize latency through storing frequently read static data closer to consumers, and helps reduce the network traversal and server load.
+- A CDN helps minimize latency through storing frequently read static data closer to consumers, and helps reduce the network traversal and server load.
+- Ensure to [follow best practices](/azure/architecture/best-practices/cdn) for CDN.
 
 ### Follow caching best practices
 
@@ -40,11 +40,11 @@ Minimizing the amount of data transferred is crucial.
 
 **Recommendation:**
 
-- Make use of caching and follow [caching best practices](/azure/architecture/best-practices/caching).
-  - Caching is a well-understood design technique to improve performance and efficiency.
-  - A caching solution helps reduce network traversal and reduces the server load.
-  - Consider that it may require tuning of parameters to maximize the benefit and minimize the carbon drawbacks. For example, setting a Time to Live (TTL).
-  - Adding in-memory caching can help use idle compute resources, increasing the compute density of resources that are already allocated.
+- Caching is a well-understood design technique to improve performance and efficiency.
+- A caching solution helps reduce network traversal and reduces the server load.
+- Consider that it may require tuning of parameters to maximize the benefit and minimize the carbon drawbacks. For example, setting a Time to Live (TTL).
+- Adding in-memory caching can help use idle compute resources, increasing the compute density of resources that are already allocated.
+- Read [caching best practices](/azure/architecture/best-practices/caching).
 
 ### Select Azure regions based on where the customer resides
 
@@ -52,8 +52,7 @@ The location of an application's consumers can be disparate, and it can be chall
 
 **Recommendation:**
 
-- Select Azure regions based on where the consumer resides.
-  - Deploy or [move Azure resources across regions](/azure/architecture/solution-ideas/articles/move-azure-resources-across-regions) to better serve the applications from where most consumers reside.
+- Deploy or [move Azure resources across regions](/azure/architecture/solution-ideas/articles/move-azure-resources-across-regions) to better serve the applications from where most consumers reside.
 
 ### Use managed audio and video streaming services with built-in compression
 
@@ -61,8 +60,8 @@ Applications making use of a media streaming service may have high requirements 
 
 **Recommendation:**
 
-- Use [managed audio and video streaming services](/azure/media-services/latest/encode-concept) that use built-in compression.
-  - By making use of a managed service for audio and video, applications can leverage built-in optimizations like encoding, compressions, and more.
+- By making use of a managed service for audio and video, applications can leverage built-in optimizations like encoding, compressions, and more.
+- Read about [managed audio and video streaming services](/azure/media-services/latest/encode-concept) that leverages built-in compression.
 
 ### Enable network file compression
 
@@ -70,8 +69,7 @@ Networks sending uncompressed data can have a higher requirement on bandwidth, t
 
 **Recommendation:**
 
-- Enable network file compression.
-  - Reduce the network payload by [improving CDN performance](/azure/cdn/cdn-improve-performance).
+- Reduce the network payload by [improving CDN performance](/azure/cdn/cdn-improve-performance).
 
 ## Next step
 

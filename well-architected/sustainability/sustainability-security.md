@@ -25,27 +25,26 @@ Designing sustainable workloads on Azure must encompass security, which is a fou
 
 Use cloud native security monitoring solutions to optimize for sustainability.
 
-### Use cloud native log collection methods
+### Use cloud native log collection methods where applicable
 
 Traditionally, log collection methods for ingestion to a Security Information and Event Management (SIEM) solution required the use of an intermediary resource to collect, parse, filter and transmit logs onward to the central collection system. Using this design can carry an overhead with more infrastructure and associated financial and carbon-related costs.
 
 **Recommendation:**
 
-- Use cloud native log collection methods where applicable.
-  - Using cloud native [service-to-service connectors](/azure/sentinel/connect-data-sources#service-to-service-integration-for-data-connectors) simplify the integration between the services and the SIEM, and removes the overhead of extra infrastructure.
-  - It's possible to ingest log data from existing compute resources using previously deployed agents such as the Azure Monitor Analytics agent. Review how to [migrate to Azure Monitor agent from Log Analytics agent](/azure/azure-monitor/agents/azure-monitor-agent-migration).
-  - Consider this tradeoff: Deploying more monitoring agents will increase the overhead in processing as it needs more compute resources. Carefully design and plan for how much information is needed to cover the security requirements of the solution and find a suitable level of information to store and keep.
-    - A possible solution to reduce unnecessary data collection is to rely on the [Azure Monitor Data Collection Rules (DCR)](/azure/azure-monitor/essentials/data-collection-rule-overview).
+- Using cloud native [service-to-service connectors](/azure/sentinel/connect-data-sources#service-to-service-integration-for-data-connectors) simplify the integration between the services and the SIEM, and removes the overhead of extra infrastructure.
+- It's possible to ingest log data from existing compute resources using previously deployed agents such as the Azure Monitor Analytics agent. Review how to [migrate to Azure Monitor agent from Log Analytics agent](/azure/azure-monitor/agents/azure-monitor-agent-migration).
+- Consider this tradeoff: Deploying more monitoring agents will increase the overhead in processing as it needs more compute resources. Carefully design and plan for how much information is needed to cover the security requirements of the solution and find a suitable level of information to store and keep.
+  - A possible solution to reduce unnecessary data collection is to rely on the [Azure Monitor Data Collection Rules (DCR)](/azure/azure-monitor/essentials/data-collection-rule-overview).
 
-### Avoid transferring large unfiltered data sets cloud-to-cloud
+### Avoid transferring large unfiltered data sets from one cloud service provider to another
 
 Conventional SIEM solutions required all log data to be ingested and stored in a centralized location. In a multicloud environment, this solution can lead to a large amount of data being transferred out fo a cloud service provide and into another, causing increased burden on the network and storage infrastructure.
 
 **Recommendation:**
 
-- Avoid transferring large unfiltered data sets from one cloud service provider to another.
-  - Cloud native security services can perform localized analysis on relevant security data source. This analysis allows the bulk of log data to remain within the source cloud service provider environment. Cloud native SIEM solutions can be [connected via an API or connector](/azure/sentinel/connect-aws) to these security services to transmit only the relevant security incident or event data. This solution can greatly reduce the amount of data transferred while maintaining a high level of security information to respond to an incident.
-  - In time, using the described approach helps reduce data egress and storage costs, which inherently help reduce emissions.
+- Cloud native security services can perform localized analysis on relevant security data source. This analysis allows the bulk of log data to remain within the source cloud service provider environment. Cloud native SIEM solutions can be [connected via an API or connector](/azure/sentinel/connect-aws) to these security services to transmit only the relevant security incident or event data. This solution can greatly reduce the amount of data transferred while maintaining a high level of security information to respond to an incident.
+
+In time, using the described approach helps reduce data egress and storage costs, which inherently help reduce emissions.
 
 ### Filter or exclude log sources before transmission or ingestion into a SIEM
 
@@ -53,9 +52,8 @@ Consider the complexity and cost of storing all logs from all possible sources. 
 
 **Recommendation:**
 
-- Filter or exclude log sources before transmission or ingestion into a SIEM.
-  - When designing a log collection strategy for cloud native SIEM solutions, consider the use cases based on the [Microsoft Sentinel analytics rules](/azure/sentinel/detect-threats-built-in) required for your environment and match up the required log sources to support those rules.
-  - This option can help remove the unnecessary transmission and storage of log data, reducing the carbon emissions on the  environment.
+- When designing a log collection strategy for cloud native SIEM solutions, consider the use cases based on the [Microsoft Sentinel analytics rules](/azure/sentinel/detect-threats-built-in) required for your environment and match up the required log sources to support those rules.
+- This option can help remove the unnecessary transmission and storage of log data, reducing the carbon emissions on the  environment.
 
 ### Archive log data to long-term storage
 
@@ -63,22 +61,19 @@ Many customers have a requirement to store log data for an extended period due t
 
 **Recommendation:**
 
-- Archive log data to long-term storage.
-  - Log data can be [moved out to a cheaper long-term storage option](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/move-your-microsoft-sentinel-logs-to-long-term-storage-with-ease/ba-p/1407153) which respects the retention policies of the customer, but lowers the cost by utilizing separate storage locations.
+- Log data can be [moved out to a cheaper long-term storage option](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/move-your-microsoft-sentinel-logs-to-long-term-storage-with-ease/ba-p/1407153) which respects the retention policies of the customer, but lowers the cost by utilizing separate storage locations.
 
 ## Network architecture
 
 Increase the efficiency and avoid unnecessary traffic by following good practices for network security architectures.
 
-### Use cloud native network security controls
+### Use cloud native network security controls to eliminate unnecessary network traffic
 
 When you use a centralized routing- and firewall design, all network traffic is sent to the hub for inspection, filtering, and onward routing. While this approach centralizes policy enforcement, it can create an overhead on the network of unnecessary traffic from the source resources.
 
 **Recommendation:**
 
-- Use cloud native network security controls to eliminate unnecessary network traffic.
-  - Use [Network security groups](/azure/virtual-network/network-security-groups-overview) and [Application security groups](/azure/virtual-network/application-security-groups) to help filter traffic at the source, and to remove the unnecessary data transmission.
-  - Using these capabilities can help reduce the burden on the cloud infrastructure, with lower bandwidth requirements and less infrastructure to own and manage.
+- Use [Network security groups](/azure/virtual-network/network-security-groups-overview) and [Application security groups](/azure/virtual-network/application-security-groups) to help filter traffic at the source, and to remove the unnecessary data transmission. Using these capabilities can help reduce the burden on the cloud infrastructure, with lower bandwidth requirements and less infrastructure to own and manage.
 
 ### Minimize routing from endpoints to the destination
 
@@ -95,10 +90,9 @@ Based on network traffic, there will be times when demand of the security applia
 
 **Recommendation:**
 
-- Use network security tools with auto-scaling capabilities.
-  - Making use of auto-scaling allows the rightsizing of the backend resources to meet demand without manual intervention.
-  - This approach will vastly reduce the time to react to network traffic changes, resulting in a reduced waste of unnecessary resources, and increases your sustainability effect.
-  - Learn more about relevant services by reading [how to enable a Web Application Firewall (WAF) on an Application Gateway](/azure/web-application-firewall/ag/application-gateway-web-application-firewall-portal), and [deploy and configure Azure Firewall Premium](/azure/firewall/premium-deploy).
+- Making use of auto-scaling allows the rightsizing of the backend resources to meet demand without manual intervention.
+- This approach will vastly reduce the time to react to network traffic changes, resulting in a reduced waste of unnecessary resources, and increases your sustainability effect.
+- Learn more about relevant services by reading [how to enable a Web Application Firewall (WAF) on an Application Gateway](/azure/web-application-firewall/ag/application-gateway-web-application-firewall-portal), and [deploy and configure Azure Firewall Premium](/azure/firewall/premium-deploy).
 
 ### Evaluate whether to use TLS termination
 
@@ -106,10 +100,9 @@ Terminating and re-establishing TLS is CPU consumption that might be unnecessary
 
 **Recommendation:**
 
-- Evaluate whether to use TLS termination.
-  - Consider if you can terminate TLS at your border gateway and continue with non-TLS to your workload load balancer and onwards to your workload.
-  - Review the information on [TLS termination](/azure/application-gateway/ssl-overview#tls-termination) to better understand the performance and utilization impact it offers.
-  - Consider the tradeoff: A balanced level of security can offer a more sustainable and energy efficient workload while a higher level of security may increase the requirements on compute resources.
+- Consider if you can terminate TLS at your border gateway and continue with non-TLS to your workload load balancer and onwards to your workload.
+- Review the information on [TLS termination](/azure/application-gateway/ssl-overview#tls-termination) to better understand the performance and utilization impact it offers.
+- Consider the tradeoff: A balanced level of security can offer a more sustainable and energy efficient workload while a higher level of security may increase the requirements on compute resources.
 
 ### Use DDoS protection
 
