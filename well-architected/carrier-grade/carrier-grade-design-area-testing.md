@@ -28,7 +28,7 @@ A warning flag should be raised for any application or service for which the red
 
 If redundancy and resiliency measures aren't tested, then the only valid assumption, from a safety-critical point of view, is that these measures aren't going to work when needed. Using common paths for software upgrades, configuration updates, and fault recovery, for example, provide a good mechanism for validating that measures will work.
 
-## Human Error
+## Human error
 
 Experience from Telcos is that as much as 60% of all outages are actually the result of human error.  A well-architected application recognizes this and seeks to compensate.  Here are some suggested approaches, but the list is not exhaustive, and what is applicable to a given workload needs to be considered on a case-by-case basis.  
 
