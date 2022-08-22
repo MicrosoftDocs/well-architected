@@ -21,56 +21,76 @@ ms.custom:
 
 ## Measure and track carbon impact
 
-### Design considerations
+### Define emission targets
 
-- An essential aspect of working toward any sustainability goal is tracking and quantifying the progress. If you can't track and measure the impact, you will never be sure if the efforts are worthwhile.
+TBD
 
-- WIP: Define emission targets.
+### Identify the metrics and set improvement goals.
 
-- WIP: Identify the metrics and set improvement goals.
+TBD
 
-- WIP: Conduct a sustainability review
+### Conduct a sustainability review
 
-- WIP: Cost optimization as a proxy
+TBD
 
-### Design recommendations
+### Cost optimization as a proxy
+
+TBD
+
+### Record current and future environmental impact using the Emissions Impact Dashboard
+
+An essential aspect of working toward any sustainability goal is tracking and quantifying the progress. If you can't track and measure the impact, you will never be sure if the efforts are worthwhile.
+
+**Recommendation:**
 
 - Use the [Emissions Impact Dashboard](https://www.microsoft.com/sustainability/emissions-impact-dashboard) to record current and future environmental impact.
   - Identify and track metrics to quantify the achievement of technical, business, and sustainability outcomes.
   - Rely on tooling to help measure the impact, and record any changes made to your workload.
 
-- Define emission targets when designing the workload.
-  - _Track the progress with [Service Level Objectives](/azure/cloud-adoption-framework/manage/monitor/service-level-objectives) (SLO) or [Service Level Agreements](/azure/architecture/framework/resiliency/business-metrics) (SLA), or other performance metrics._ (Measuring sustainability)
+### Define emission targets when designing workloads
 
-- _WIP: Consider defining policies for minimum emission standards of any additions or changes made to workloads (Climate commitments)_
+TBD
 
-- _WIP: Identify the metrics and set improvement goals with a sustainability perspective._ (Measuring sustainability)
+**Recommendation:**
 
-- _WIP: Conduct a sustainability review_ (Measuring sustainability)
+- _Track the progress with [Service Level Objectives](/azure/cloud-adoption-framework/manage/monitor/service-level-objectives) (SLO) or [Service Level Agreements](/azure/architecture/framework/resiliency/business-metrics) (SLA), or other performance metrics._ (Measuring sustainability)
 
-- _WIP: Use cost optimization as a proxy for sustainability._
+### Consider defining policies for minimum emission standards of any additions or changes made to workloads
+
+TBD (Climate commitments)
+
+### Identify the metrics and set improvement goals with a sustainability perspective
+
+TBD (Measuring sustainability)
+
+### Use cost optimization as a proxy for sustainability
+
+Leverage cost insights to better understand and measure usage. Reducing unnecessary spending also lowers the number of excessive emissions from deployed workloads.
+
+**Recommendation:**
+
+- Review the concept of [using a proxy solution to measure emissions](/azure/architecture/framework/sustainability/sustainability-design-methodology#use-a-proxy-solution-to-measure-emissions).
+- Leverage the guidance in the Azure Well-Architected Framework [Cost Optimization pillar](/azure/architecture/framework/cost).
 
 ## Community and knowledge sharing
 
-### Design considerations
+Teams need to be constantly aware of new advancements in sustainability, so they leverage these learnings when implementing workloads.
 
-- Teams need to be constantly aware of all the new advancements in sustainability, so they leverage these learnings when implementing workloads.
+### Make time for your team to learn about advancements in sustainable operations
 
-- _WIP: Allow team members to share..._
+TBD Climate commitments
 
-- _WIP: Create a sustainability community_
+### Allow team members to share their workload and company specific best practices for sustainable operations
 
-- _WIP: Create incentives for improving the environmental sustainability of a workload._
+TBD Carbon efficiency
 
-### Design recommendations
+### Create a sustainability community
 
-- _WIP: Make time for your team to learn about advancements in sustainable operations._ (Climate commitments)
+TBD (Climate commitments)
 
-- _WIP: Allow team members to share their workload and company specific best practices for sustainable operations_ (Carbon efficiency)
+### Create incentives for improving the environmental sustainability of a workload
 
-- _WIP: Create a sustainability community_ (Climate commitments)
-
-- _WIP: Create incentives for improving the environmental sustainability of a workload_ (Climate commitments)
+TBD Climate commitments
 
 ## Next step
 
