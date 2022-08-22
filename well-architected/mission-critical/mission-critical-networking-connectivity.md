@@ -463,7 +463,7 @@ This section explores the optimal use of these capabilities, providing key consi
 
 - Communication between Pods and Namespaces can be isolated using [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/). Network Policy is a Kubernetes specification that defines access policies for communication between Pods. Using Network Policies, an ordered set of rules can be defined to control how traffic is sent/received, and applied to a collection of pods that match one or more label selectors.
 
-  - AKS provides two ways to implement Network Policy _Azure Network Policies_ and _Calico Network Policies_. Both implementations use Linux IPTables to enforce specified policies. See [Differences between Azure and Calico policies and their capabilities](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more details.
+  - AKS provides two ways to implement Network Policy, _Azure Network Policies_ and _Calico Network Policies_. Both use Linux IPTables to enforce the specified policies. See [Differences between Azure and Calico policies and their capabilities](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more details.
   - Network policies don't conflict since they're additive.
   - For a network flow between two pods to be allowed, both the egress policy on the source pod and the ingress policy on the destination pod need to allow the traffic.
   - The network policy feature can only be enabled at cluster instantiation time. It is not possible to enable network policy on an existing AKS cluster.
