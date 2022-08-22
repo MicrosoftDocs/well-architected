@@ -45,7 +45,7 @@ Design areas:
 
 ## 3&mdash;Understanding your emissions
 
-To lower our emissions, we need to understand how to measure our sustainability efforts.
+To lower your emissions, you need to understand how to measure your sustainability efforts.
 
 ### Briefly about emission scopes
 
