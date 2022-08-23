@@ -51,7 +51,7 @@ Traffic management responses can work around failures, but where the failure is 
 
 The following diagram shows how the two modes of failure response cooperate to provide service-level fault tolerance:
 
-![Two modes of failure response](./images/repair-recovery-failure-response.png "Repair and recovery failure response")
+![Diagram showing the two modes of failure response.](./images/repair-recovery-failure-response.png "Repair and recovery failure response")
 
 ## Failure rate analysis
 
