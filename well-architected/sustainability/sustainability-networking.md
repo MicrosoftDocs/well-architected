@@ -16,7 +16,9 @@ ms.custom:
 
 # Networking considerations for sustainable workloads on Azure
 
-Most workloads in the cloud rely heavily on networking to operate. Whether it's internal networking, or public facing workloads, the components and services used in provisioned solutions should be designed with sustainability in mind. Consider that network equipment consumes electricity, including traffic between the data centers and end consumer. Learn about considerations and recommendations to enhance and optimize the network efficiency to reduce unnecessary carbon emissions.
+Most workloads in the cloud rely heavily on networking to operate. Whether internal networking or public-facing workloads, the components and services used in provisioned solutions must consider the impact of carbon emissions. Consider that network equipment consumes electricity, including traffic between the data centers and end consumers. Learn about considerations and recommendations to enhance and optimize network efficiency to reduce unnecessary carbon emissions.
+
+Internet traversal between data centers and end consumers is a significant [Scope 3 emission](/azure/architecture/framework/sustainability/sustainability-design-methodology#briefly-about-emission-scopes). Therefore, recommendations in this section are aligned with the Principles of Green Software [Networking](https://principles.green/principles/networking/) area to improve networking efficiency.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)

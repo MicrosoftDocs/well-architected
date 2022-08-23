@@ -19,7 +19,7 @@ ms.custom:
 
 This section of the Microsoft Azure Well-Architected Framework aims to address the challenges of building sustainable workloads on Azure. Review the provided guidance that applies Well-Architected best practices as a technical foundation for building and operating sustainable solutions on Azure.
 
-We encourage you to also read more about the [Microsoft Cloud for Sustainability](https://www.microsoft.com/en-us/sustainability/cloud) for opportunities to leverage the capabilities of that platform as part of your solution architecture. However, guidance found in this article series is focused on _any_ solutions you are building or operating on Azure.
+We encourage you to also read more about the [Microsoft Cloud for Sustainability](https://www.microsoft.com/sustainability/cloud) for opportunities to leverage the capabilities of that platform as part of your solution architecture. However, guidance found in this article series is focused on _any_ solutions you are building or operating on Azure.
 
 In [The Carbon Benefits of Cloud Computing: a Study of the Microsoft Cloud](https://www.microsoft.com/download/details.aspx?id=56950), it was found that using the Microsoft Azure cloud platform can be up to 93 percent more energy efficient and up to 98 percent more carbon efficient than on-premises solutions.
 
