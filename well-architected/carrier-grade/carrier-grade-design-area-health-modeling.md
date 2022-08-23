@@ -3,7 +3,7 @@ title: Health modeling for carrier-grade workloads
 description: This article provides an overview of the Health modeling design area for carrier-grade workloads.
 author: mikedell73
 ms.author: mikedell
-ms.date: 06/30/2022
+ms.date: 08/23/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

@@ -3,7 +3,7 @@ title: Carrier-grade workloads on Azure
 description: Get started with an overview of carrier-grade workloads.
 author: mikedell73
 ms.author: prwilk
-ms.date: 06/28/2022
+ms.date: 08/23/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
