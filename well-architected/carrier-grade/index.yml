@@ -1,0 +1,43 @@
+### YamlMime:Landing
+
+title: Carrier-grade workload documentation
+summary: In this series, learn about building highly reliable applications for carrier-grade workloads on Microsoft Azure.
+metadata: 
+  title: Mission-critical workload documentation
+  description: Apply the design methodology and approach to building highly reliable applications on Microsoft Azure.
+  services: na
+  author: v-stacywray
+  ms.author: prwilk
+  ms.date: 07/05/2022
+  ms.topic: landing-page
+  ms.service: architecture-center
+  ms.subservice: well-architected
+  ms.collection: na
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+ # Card
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is carrier-grade?
+            url: carrier-grade-get-started.md
+          - text: Design principles
+            url: carrier-grade-design-principles.md
+   # Card
+  - title: Design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Fault tolerance
+            url: carrier-grade-design-area-fault-tolerance.md
+          - text: Data model
+            url: carrier-grade-design-area-data-model.md
+          - text: Health modeling
+            url: carrier-grade-design-area-health-modeling.md
+          - text: Testing and validation
+            url: carrier-grade-design-area-testing.md
+
