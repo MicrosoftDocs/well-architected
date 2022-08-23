@@ -131,6 +131,20 @@ It's not uncommon with oversized compute workloads where much of the capacity is
 - Consider that it may require tuning to prevent unnecessary scaling during short bursts of high demand, as opposed to a static increase in demand.
 - Consider the application architecture as part of scaling considerations. For example, logical components should scale independently to match the demand of that component, as opposed to scaling the entire application if only a portion of the components needs scaling.
 
+### Match the scalability needs
+
+Consider the platform and whether it meets the scalability needs of the solution. For example, having provisioned resources with a dedicated allocation may lead to unused or underutilized compute resources.
+
+Examples:
+
+- Provisioning an Azure App Service Environment (ASE) over an App Service plan may lead to having provisioned compute, whether utilized or not.
+- Choosing the Azure API Management Premium tier instead of the consumption tier leads to unused resources if you aren't utilizing it fully.
+
+**Recommendation:**
+
+- Review the platform design decisions regarding scalability, and ensure the workload utilizes as much of the provisioned resources as possible.
+- Consider this tradeoff: Some services require a higher tier to access certain features and capabilities regardless of the resource utilization.
+
 ## Next step
 
 Review the design considerations for deployment and testing.

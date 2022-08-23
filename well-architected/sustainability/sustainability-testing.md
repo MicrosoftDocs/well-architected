@@ -56,7 +56,7 @@ Without properly profiling and testing workloads, it's difficult to know if it's
   
 ### Assess with chaos engineering
 
-Running unit and load tests increases the reliability of a workload. However, the introduction of chaos engineering can greatly help improve the reliability and resilience, and how the application react to failures. In doing so, the workload can be optimized to handle failures more gracefully and with less wasted resources.
+Running unit and load tests increases the reliability of a workload. However, the introduction of chaos engineering can greatly help improve the reliability and resilience, and how the applications react to failures. In doing so, the workload can be optimized to handle failures more gracefully and with less wasted resources.
 
 **Recommendation:**
 
