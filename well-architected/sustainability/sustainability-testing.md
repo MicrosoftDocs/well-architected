@@ -29,7 +29,7 @@ Testing applications with unit testing, load testing, or any other intense testi
 
 **Recommendation:**
 
-- Opt for running testing when the data center's energy mix primarily uses renewable energy. It may, for example, be more beneficial to run testing during the night in some regions.
+- Where you have the data available to you, plan for running testing when the data center's energy mix primarily uses renewable energy. It may, for example, be more beneficial to run testing during the night in some regions.
 
 ### Automate CI/CD to scale worker agents as needed
 

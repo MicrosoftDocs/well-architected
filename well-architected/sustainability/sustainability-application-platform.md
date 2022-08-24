@@ -46,7 +46,7 @@ Learn about what Azure regions have a lower carbon footprint than others to make
 **Recommendation:**
 
 - Use less carbon because the data centers where you deploy the workload are more likely to be powered by renewable and low-carbon energy sources.
-- Potential tradeoffs:
+- Consider these potential tradeoffs:
   - The effort and time it takes to move to a low-carbon region.
   - Migrating data between data centers may not be carbon efficient.
   - Consider the cost for new regions, including low-carbon regions, which may be more expensive.
@@ -67,13 +67,13 @@ Some regions on the planet are more carbon intense than others, therefore it's i
 
 - Network traversal increases if the data center is a greater distance from consumers.
 
-### Run batch workloads during low carbon intensity periods
+### Run batch workloads during low-carbon intensity periods
 
 Proactively designing batch processing of workloads can help with scheduling intensive work during low-carbon periods.
 
 **Recommendation:**
 
-- Run [batch workloads](/azure/architecture/data-guide/big-data/batch-processing) during low carbon intensity periods.
+- Where you have the data available to you, plan your deployments to maximize compute utilization for running [batch workloads](/azure/architecture/data-guide/big-data/batch-processing) during low-carbon intensity periods.
 - Potential tradeoffs may include the effort and time it takes to move to a low-carbon region. Additionally, migrating data between data centers may not be carbon efficient, and the cost for new regions&mdash;including low-carbon regions&mdash;may be more expensive.
 
 ## Modernization
