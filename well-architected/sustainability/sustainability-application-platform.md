@@ -39,6 +39,8 @@ Platform updates enable you to use the latest functionality and features to help
 
 The Microsoft Azure data centers are geographically spread across the planet and powered using different energy sources. Making decisions around where to deploy your workloads can significantly impact the emissions your solutions produce.
 
+Learn more about [sustainability from the data center to the cloud with Azure](https://www.microsoft.com/sustainability/azure).
+
 ### Deploy to low-carbon regions
 
 Learn about what Azure regions have a lower carbon footprint than others to make better-informed decisions about where and how our workloads process data.
@@ -58,7 +60,7 @@ Some regions on the planet are more carbon intense than others, therefore it's i
 
 **Recommendation:**
 
-- Optimizing workloads to run when knowing that the energy mix comes mostly from renewable energy sources.
+- Where you have the data available, consider optimizing workloads to run when knowing that the energy mix comes mostly from renewable energy sources.
 - For example, running specific workloads at night may be more beneficial in some regions.
 
 ### Choose data centers close to the customer
@@ -128,8 +130,9 @@ It's not uncommon with oversized compute workloads where much of the capacity is
 **Recommendation:**
 
 - Review [auto-scaling](/azure/architecture/best-practices/auto-scaling) guidance for Azure workloads.
+- Review the [B-series burstable virtual machine sizes](/azure/virtual-machines/sizes-b-series-burstable).
 - Consider that it may require tuning to prevent unnecessary scaling during short bursts of high demand, as opposed to a static increase in demand.
-- Consider the application architecture as part of scaling considerations. For example, logical components should scale independently to match the demand of that component, as opposed to scaling the entire application if only a portion of the components needs scaling.
+- Consider the application architecture as part of scaling considerations. For example, [logical components should scale independently](/azure/architecture/framework/sustainability/sustainability-application-design#evaluate-moving-monoliths-to-a-microservice-architecture) to match the demand of that component, as opposed to scaling the entire application if only a portion of the components needs scaling.
 
 ### Match the scalability needs
 
