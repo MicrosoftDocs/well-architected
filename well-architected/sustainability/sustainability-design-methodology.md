@@ -94,7 +94,7 @@ Learn more by reading [what is Microsoft Cloud for Sustainability?](/industry/su
 
 #### Use a proxy solution to measure emissions
 
-We can estimate the carbon emissions from our workloads by designing a proxy solution architecture based on the SCI model.
+One way of estimating the carbon emissions from workloads is to design a proxy solution architecture based on the SCI model [as described above](/azure/architecture/framework/sustainability/sustainability-design-methodology#measure-and-track-carbon-impact).
 
 Defining the proxies for applications can be done in different ways. For example, using these variables:
 

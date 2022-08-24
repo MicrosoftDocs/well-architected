@@ -59,6 +59,8 @@ We need to make the application aware of how much carbon it’s emitting. This w
 
 Embodied carbon is the carbon that was emitted to build a device. Therefore, a sustainable application will make sure older devices are supported and will maximize the efficiency of each device.  The goal is to build hardware-efficient applications.
 
+Consider the tradeoff that older devices can have power inefficiencies, and may not always be suitable.
+
 ## Measuring sustainability
 
 Measuring carbon emissions of a cloud application is a complex task, as it involves the whole ecosystem of the software: from the cloud infrastructure (where we have the emissions dashboards to help us out), to the network path that is crossed, to the edge technology and user devices. With the SCI, we aren't targeting a discrete measurement of carbon emissions, but a score that will change over time and with our optimization techniques.
