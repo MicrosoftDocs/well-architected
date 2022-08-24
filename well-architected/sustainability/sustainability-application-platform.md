@@ -46,7 +46,7 @@ Learn about what Azure regions have a lower carbon footprint than others to make
 **Recommendation:**
 
 - Use less carbon because the data centers where you deploy the workload are more likely to be powered by renewable and low-carbon energy sources.
-- Potential tradeoffs:
+- Consider these potential tradeoffs:
   - The effort and time it takes to move to a low-carbon region.
   - Migrating data between data centers may not be carbon efficient.
   - Consider the cost for new regions, including low-carbon regions, which may be more expensive.
@@ -67,13 +67,13 @@ Some regions on the planet are more carbon intense than others, therefore it's i
 
 - Network traversal increases if the data center is a greater distance from consumers.
 
-### Run batch workloads during low carbon intensity periods
+### Run batch workloads during low-carbon intensity periods
 
 Proactively designing batch processing of workloads can help with scheduling intensive work during low-carbon periods.
 
 **Recommendation:**
 
-- Run [batch workloads](/azure/architecture/data-guide/big-data/batch-processing) during low carbon intensity periods.
+- Where you have the data available to you, plan your deployments to maximize compute utilization for running [batch workloads](/azure/architecture/data-guide/big-data/batch-processing) during low-carbon intensity periods.
 - Potential tradeoffs may include the effort and time it takes to move to a low-carbon region. Additionally, migrating data between data centers may not be carbon efficient, and the cost for new regions&mdash;including low-carbon regions&mdash;may be more expensive.
 
 ## Modernization
@@ -130,6 +130,20 @@ It's not uncommon with oversized compute workloads where much of the capacity is
 - Review [auto-scaling](/azure/architecture/best-practices/auto-scaling) guidance for Azure workloads.
 - Consider that it may require tuning to prevent unnecessary scaling during short bursts of high demand, as opposed to a static increase in demand.
 - Consider the application architecture as part of scaling considerations. For example, logical components should scale independently to match the demand of that component, as opposed to scaling the entire application if only a portion of the components needs scaling.
+
+### Match the scalability needs
+
+Consider the platform and whether it meets the scalability needs of the solution. For example, having provisioned resources with a dedicated allocation may lead to unused or underutilized compute resources.
+
+Examples:
+
+- Provisioning an Azure App Service Environment (ASE) over an App Service plan may lead to having provisioned compute, whether utilized or not.
+- Choosing the Azure API Management Premium tier instead of the consumption tier leads to unused resources if you aren't utilizing it fully.
+
+**Recommendation:**
+
+- Review the platform design decisions regarding scalability, and ensure the workload utilizes as much of the provisioned resources as possible.
+- Consider this tradeoff: Some services require a higher tier to access certain features and capabilities regardless of the resource utilization.
 
 ## Next step
 

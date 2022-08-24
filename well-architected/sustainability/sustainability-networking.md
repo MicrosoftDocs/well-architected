@@ -16,7 +16,9 @@ ms.custom:
 
 # Networking considerations for sustainable workloads on Azure
 
-Most workloads in the cloud rely heavily on networking to operate. Whether it's internal networking, or public facing workloads, the components and services used in provisioned solutions should be designed with sustainability in mind. Consider that network equipment consumes electricity, including traffic between the data centers and end consumer. Learn about considerations and recommendations to enhance and optimize the network efficiency to reduce unnecessary carbon emissions.
+Most workloads in the cloud rely heavily on networking to operate. Whether internal networking or public-facing workloads, the components and services used in provisioned solutions must consider the impact of carbon emissions. Consider that network equipment consumes electricity, including traffic between the data centers and end consumers. Learn about considerations and recommendations to enhance and optimize network efficiency to reduce unnecessary carbon emissions.
+
+Internet traversal between data centers and end consumers is a significant [Scope 3 emission](/azure/architecture/framework/sustainability/sustainability-design-methodology#briefly-about-emission-scopes). Therefore, recommendations in this section are aligned with the Principles of Green Software [Networking](https://principles.green/principles/networking/) area to improve networking efficiency.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
@@ -61,7 +63,7 @@ Applications making use of a media streaming service may have high requirements 
 **Recommendation:**
 
 - By making use of a managed service for audio and video, applications can leverage built-in optimizations like encoding, compressions, and more.
-- Read about [managed audio and video streaming services](/azure/media-services/latest/encode-concept) that leverages built-in compression.
+- Read about [managed audio and video streaming services](/azure/media-services/latest/encode-concept).
 
 ### Enable network file compression
 
@@ -70,6 +72,16 @@ Networks sending uncompressed data can have a higher requirement on bandwidth, t
 **Recommendation:**
 
 - Reduce the network payload by [improving CDN performance](/azure/cdn/cdn-improve-performance).
+
+### Maximize network utilization within the same cloud and region
+
+Operating solutions in multiple regions have a networking impact. Network traversals between components in Azure are optimized to stay within the Azure infrastructure. However, any network traffic destined for the internet or a component in another cloud involves the public internet's router resources, which you have no control over regarding resource impact measurement or utilization.
+
+**Recommendation:**
+
+- Keeping resources in a single cloud gives you maximum control and allows the cloud provider to optimize the network routing.
+- Maximize network utilization within the same cloud and, if possible, within the same region.
+- Since the cost can be a proxy for sustainability, review the [Azure regions](/azure/architecture/framework/cost/design-regions) documentation in the Cost Optimization pillar of the Azure Well-Architected Framework.
 
 ## Next step
 

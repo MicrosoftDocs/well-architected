@@ -29,7 +29,7 @@ Testing applications with unit testing, load testing, or any other intense testi
 
 **Recommendation:**
 
-- Opt for running testing when the data center's energy mix primarily uses renewable energy. It may, for example, be more beneficial to run testing during the night in some regions.
+- Where you have the data available to you, plan for running testing when the data center's energy mix primarily uses renewable energy. It may, for example, be more beneficial to run testing during the night in some regions.
 
 ### Automate CI/CD to scale worker agents as needed
 
@@ -56,12 +56,25 @@ Without properly profiling and testing workloads, it's difficult to know if it's
   
 ### Assess with chaos engineering
 
-Running unit and load tests increases the reliability of a workload. However, the introduction of chaos engineering can greatly help improve the reliability and resilience, and how the application react to failures. In doing so, the workload can be optimized to handle failures more gracefully and with less wasted resources.
+Running unit and load tests increases the reliability of a workload. However, the introduction of chaos engineering can greatly help improve the reliability and resilience, and how the applications react to failures. In doing so, the workload can be optimized to handle failures more gracefully and with less wasted resources.
 
 **Recommendation:**
 
 - Use load testing or [chaos engineering](/azure/architecture/framework/resiliency/chaos-engineering) to assess how the workload handles platform outages, and traffic spikes or dips. This helps with increasing the service resilience and the ability to react to failures, allowing for a more optimized fault handling.
 - _Consider this tradeoff:_ Injecting fault during chaos engineering and increasing the load on any system also increases the emissions used for the testing resources. Evaluate how and when you can utilize chaos engineering to increase the workload reliability, while also considering the climate impact of running unnecessary testing sessions.
+
+### Establish CPU and Memory thresholds in testing
+
+Help build tests for testing sustainability in your application. Consider having a baseline CPU utilization measurement, and detect abnormal changes to the CPU utilization baseline when tests run. With a baseline, suboptimal decisions made in recent code changes can be discovered earlier.
+
+Adding tests and quality gates into the deployment and testing pipeline helps avoid deploying non-sustainable solutions, contributing to lowered emissions.
+
+**Recommendation:**
+
+- Monitor CPU and memory allocations when running integration tests or unit tests.
+- Find abnormally high resource consumption areas in the application code and focus on mitigating those first.
+- Configure alerts or test failures if surpassing the established baseline values, helping avoid deploying non-sustainable workloads.
+- Consider this tradeoff: As applications grow, the baseline may need to shift accordingly to avoid failing the tests when introducing new features.
 
 ## Next step
 
