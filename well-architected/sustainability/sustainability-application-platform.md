@@ -148,6 +148,14 @@ Examples:
 - Review the platform design decisions regarding scalability, and ensure the workload utilizes as much of the provisioned resources as possible.
 - Consider this tradeoff: Some services require a higher tier to access certain features and capabilities regardless of the resource utilization.
 
+### Delete zombie workloads
+
+Consider discovering unutilized workloads and resources and if there are any orphaned resources in your subscriptions.
+
+**Recommendation:**
+
+- Delete any orphaned workloads or resources if they are no longer necessary.
+
 ## Next step
 
 Review the design considerations for deployment and testing.
