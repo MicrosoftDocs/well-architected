@@ -67,22 +67,28 @@ Backup is a crucial part of reliability. However, storing backups indefinitely c
 
 ### Determine the most suitable access tier for blob data
 
+Consider whether to store data in an online tier or an offline tier. Online tiers are optimized for storing data that is accessed or modified frequently. Offline tiers are optimized for storing data that is rarely accessed. 
+
 **Recommendation:**
 
 - Read [Hot, Cool, and Archive access tiers for blob data](/azure/storage/blobs/access-tiers-overview).
   
 ### Reduce the number of recovery points for VM backups
 
+Recovery points are not automatically cleaned up. Therefore, consider where [soft delete](/azure/backup/backup-azure-security-feature-cloud) is enabled for Azure Backup. The expired recovery points aren't cleaned up automatically.
+
 **Recommendation:**
 
-- Reduce the number of recovery points in place for VM backups.
-  - For example, if [soft delete](/azure/backup/backup-azure-security-feature-cloud) is enabled, then the expired recovery points aren't cleaned up. Read more about the [impact of expired recovery points for items in soft deleted state](/azure/backup/manage-recovery-points#impact-of-expired-recovery-points-for-items-in-soft-deleted-state).
+- Read more about the [impact of expired recovery points for items in soft deleted state](/azure/backup/manage-recovery-points#impact-of-expired-recovery-points-for-items-in-soft-deleted-state).
 
 ### Revise backup and retention policies
+
+Consider reviewing backup policies and retention periods for backups to avoid storing unnecessary data.
 
 **Recommendation:**
 
 - Review and revise backup and retention policies to minimize storage overhead.
+- Actively review and delete backups that are no longer needed.
 
 ## Next step
 
