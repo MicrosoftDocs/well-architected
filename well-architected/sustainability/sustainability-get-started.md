@@ -33,19 +33,15 @@ A _sustainable workload_ therefore describes the practice of designing solutions
 
 ### Cloud efficiency overview
 
-An initial step in making workloads more sustainable is to optimize the application's cost.
+Making workloads more cloud efficient requires combining efforts around cost optimization, reducing carbon emissions, and optimizing energy consumption. Optimizing the application's cost is the initial step in making workloads more sustainable.
 
-A conceptual overview of cloud efficiency:
+Here's a conceptual overview of cloud efficiency in this context:
 
 :::image type="content" source="./images/sustainability-shared-responsibility-cloud-efficiency.svg" alt-text="Diagram showing how to achieve cloud efficiency." border="false" lightbox="./images/sustainability-shared-responsibility-cloud-efficiency.svg":::
 
-Making workloads more cloud efficient requires a combination of efforts around cost optimization, reducing carbon emissions, and energy consumption optimizations.
+Scoring and [measuring the cloud efficiency](/azure/architecture/framework/sustainability/sustainability-design-methodology#3understanding-your-emissions) is essential to understand whether changes tracked over time have any impact.
 
-To understand if changes and optimizations have any impact, scoring and [measuring the cloud efficiency](/azure/architecture/framework/sustainability/sustainability-design-methodology#3understanding-your-emissions) is essential when making changes and tracking them over time.
-
-Read more about optimizing for cost with the [Cost Optimization](/azure/architecture/framework/cost/) pillar of the Azure Well-Architected.
-
-Explore the recommendations for sustainable workloads, starting with [Application Design](/azure/architecture/framework/sustainability/sustainability-application-design).
+Learn about building more sustainable and efficient workloads by starting with the design area for sustainable [Application Design](/azure/architecture/framework/sustainability/sustainability-application-design).
 
 ## What are the common challenges?
 
