@@ -31,15 +31,15 @@ With _sustainability_, we refer to the environmental impact of our workloads.
 
 A _sustainable workload_ therefore describes the practice of designing solutions that maximize utilization while minimizing waste, ultimately reducing the footprint on the environment.
 
-## What is cloud efficiency?
+### Cloud efficiency overview
 
-An initial step in making workloads more sustainable is to look at cloud efficiency (cost + carbon) and optimize the application's cost.
+An initial step in making workloads more sustainable is to optimize the application's cost.
 
 A conceptual overview of cloud efficiency:
 
 :::image type="content" source="./images/sustainability-shared-responsibility-cloud-efficiency.svg" alt-text="Diagram showing how to achieve cloud efficiency." border="false" lightbox="./images/sustainability-shared-responsibility-cloud-efficiency.svg":::
 
-Making workloads more cloud efficient combine efforts around cost, carbon emissions, and energy consumption.
+Making workloads more cloud efficient requires a combination of efforts around cost optimization, reducing carbon emissions, and energy consumption optimizations.
 
 To understand if changes and optimizations have any impact, scoring and [measuring the cloud efficiency](/azure/architecture/framework/sustainability/sustainability-design-methodology#3understanding-your-emissions) is essential when making changes and tracking them over time.
 
