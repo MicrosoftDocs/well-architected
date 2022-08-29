@@ -17,7 +17,7 @@ ms.custom:
 
 # Overview of the security pillar
 
-Information Security has always been a complex subject, and it evolves quickly with the creative ideas and implementations of attackers and security researchers. The origin of security vulnerabilities started with identifying and exploiting common programming errors and unexpected edge cases. However over time, the attack surface that an attacker may explore and exploit has expanded well beyond these common errors and edge cases. Attackers now freely exploit vulnerabilities in system configurations, operational practices, and the social habits of the systems' users. As system complexity, connectedness, and the variety of users increase, attackers have more opportunities to identify unprotected edge cases. Attackers can *hack* systems into doing things they weren't designed to do.
+Information security has always been a complex subject, and it evolves quickly with the creative ideas and implementations of attackers and security researchers. The origin of security vulnerabilities started with identifying and exploiting common programming errors and unexpected edge cases. However over time, the attack surface that an attacker may explore and exploit has expanded well beyond these common errors and edge cases. Attackers now freely exploit vulnerabilities in system configurations, operational practices, and the social habits of the systems' users. As system complexity, connectedness, and the variety of users increase, attackers have more opportunities to identify unprotected edge cases. Attackers can *hack* systems into doing things they weren't designed to do.
 
 Security is one of the most important aspects of any architecture. It provides the following assurances against deliberate attacks and abuse of your valuable data and systems:
 
@@ -152,6 +152,17 @@ Use Key Vault to safeguard cryptographic keys and secrets. By using Key Vault, y
 - [Microsoft Defender for Cloud][security-center] provides integrated security monitoring and policy management for your workload.
 - [Azure Security Documentation][security-documentation]
 - [Microsoft Trust Center][trust-center]
+
+The security pillar is part of a comprehensive set of security guidance that also includes:
+
+- [Security in the Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/secure): A high-level overview of a cloud security end state.
+- [Security architecture design](/azure/architecture/guide/security/security-start-here): Implementation-level journey of our security architectures.
+  - [Browse our security architectures](/azure/architecture/browse/?azure_categories=security)
+- [Azure security benchmarks](/security/benchmark/azure/): Prescriptive best practices and controls for Azure security.
+- [Enterprise-scale landing zone](../ready/landing-zone/design-area/governance.md): Azure reference architecture and implementation with integrated security.
+- [End-to-end security in Azure](/azure/security/fundamentals/end-to-end): Documentation that introduces you to the security services in Azure.
+- [Top 10 security best practices for Azure](./security-top-10.md): Top Azure security best practices that Microsoft recommends based on lessons learned across customers and our own environments.
+- [Microsoft Cybersecurity Architectures](/security/cybersecurity-reference-architecture/mcra): The diagrams describe how Microsoft security capabilities integrate with Microsoft platforms and 3rd-party platforms.
 
 ### Next step
 
