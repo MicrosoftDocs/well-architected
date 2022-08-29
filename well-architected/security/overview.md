@@ -158,10 +158,9 @@ The security pillar is part of a comprehensive set of security guidance that als
 - [Security in the Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/secure): A high-level overview of a cloud security end state.
 - [Security architecture design](/azure/architecture/guide/security/security-start-here): Implementation-level journey of our security architectures.
   - [Browse our security architectures](/azure/architecture/browse/?azure_categories=security)
-- [Azure security benchmarks](/security/benchmark/azure/): Prescriptive best practices and controls for Azure security.
-- [Enterprise-scale landing zone](../ready/landing-zone/design-area/governance.md): Azure reference architecture and implementation with integrated security.
+- [Azure security benchmarks](/security/benchmark/azure): Prescriptive best practices and controls for Azure security.
 - [End-to-end security in Azure](/azure/security/fundamentals/end-to-end): Documentation that introduces you to the security services in Azure.
-- [Top 10 security best practices for Azure](./security-top-10.md): Top Azure security best practices that Microsoft recommends based on lessons learned across customers and our own environments.
+- [Top 10 security best practices for Azure](/azure/cloud-adoption-framework/secure/security-top-10): Top Azure security best practices that Microsoft recommends based on lessons learned across customers and our own environments.
 - [Microsoft Cybersecurity Architectures](/security/cybersecurity-reference-architecture/mcra): The diagrams describe how Microsoft security capabilities integrate with Microsoft platforms and 3rd-party platforms.
 
 ### Next step
