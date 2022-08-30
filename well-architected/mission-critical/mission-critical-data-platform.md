@@ -450,9 +450,6 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 ### Design Recommendations
 
-- In line with microservices application design approach, it's strongly recommended to have a separate datastore instance/type per microservice.
-  - Separate analytical workloads from application workloads using different data technologies optimized for distinct performance, reliability, and scalability requirements.
-
 **Azure Cosmos DB**
 
 - Use Azure Cosmos DB as the primary data platform where requirements allow.
