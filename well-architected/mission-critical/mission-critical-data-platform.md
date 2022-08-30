@@ -136,7 +136,7 @@ The 'Four Vs of Big Data' provide a framework to better understand requisite cha
   - *What is the user experience if data was to be served from a replica closest to the user which doesn't reflect the most recent state of a different replica? i.e. can the application support possibly serving out-of-date data?*
 
 - In a multi-region write context, when the same data item is changed in two separate write-replicas before either change can be replicated, a conflict is created which must be resolved.
-  - Standardized conflict resolution policies, such as "Last One Wins", or a custom strategy with custom logic can be applied.
+  - Standardized conflict resolution policies, such as "Last Writer Wins", or a custom strategy with custom logic can be applied.
 
 - The implementation of security requirements may adversely impact throughput or performance.
 
