@@ -246,7 +246,7 @@ This section builds on [global routing recommendations](#design-recommendations)
 
 ## Caching and static content delivery
 
-Special treatment of static content like images, JavaScript, CSS, images and others can have a significant impact on the overall user experience as well as on the overall cost of the solution. Caching static content at the edge can speed up the client load times which results in a better user experience and can also reduce the cost for traffic, read operations and computing power on backend services involved.
+Special treatment of static content like images, JavaScript, CSS and other files can have a significant impact on the overall user experience as well as on the overall cost of the solution. Caching static content at the edge can speed up the client load times which results in a better user experience and can also reduce the cost for traffic, read operations and computing power on backend services involved.
 
 ### Design considerations
 
