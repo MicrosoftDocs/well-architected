@@ -619,7 +619,7 @@ Azure provides many managed relational data platforms, including Azure SQL Datab
 
 - Configure the Zone-Redundant deployment model to spread Business Critical database replicas within the same region across Availability Zones.
 
-- Use [Active Geo-Replication](/azure/azure-sql/database/active-geo-replication-overview) to deploy readable replicas within all deployment regions.
+- Use [Active Geo-Replication](/azure/azure-sql/database/active-geo-replication-overview) to deploy readable replicas within all deployment regions (up to four).
 
 - Use Auto Failover Groups to provide [transparent failover](/azure/azure-sql/database/designing-cloud-solutions-for-disaster-recovery) to a secondary region, with geo-replication applied to provide replication to additional deployment regions for read optimization and database redundancy.
   - For application scenarios limited to only two deployment regions, the use of Auto Failover Groups should be prioritized.
