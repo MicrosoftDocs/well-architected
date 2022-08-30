@@ -257,12 +257,12 @@ Additional data-platform guidance is available within the Azure Application Arch
 - [Non-Relational Data Stores](/azure/architecture/data-guide/big-data/non-relational-data)
 - [Relational OLTP Data Stores](/azure/architecture/data-guide/relational-data/online-transaction-processing)
 
-## Globally distributed multi-write datastore
+## Globally distributed multi-region write datastore
 
-To fully accommodate the globally distributed active-active aspirations of an application design, it's strongly recommended to consider a distributed multi-write data platform, where changes to separate writeable replicas are synchronized and merged between all replicas, with conflict resolution where required.
+To fully accommodate the globally distributed active-active aspirations of an application design, it's strongly recommended to consider a distributed multi-region write data platform, where changes to separate writeable replicas are synchronized and merged between all replicas, with conflict resolution where required.
 
 >[!IMPORTANT]
-> The microservices may not all require a distributed multi-write datastore, so consideration should be given to the architectural context and business requirements of each workload scenario.
+> The microservices may not all require a distributed multi-region write datastore, so consideration should be given to the architectural context and business requirements of each workload scenario.
 
 Azure Cosmos DB provides a globally distributed and highly available NoSQL datastore, offering multi-region writes and tunable consistency out-of-the-box. The design considerations and recommendations within this section will therefore focus on optimal Cosmos DB usage.
 
