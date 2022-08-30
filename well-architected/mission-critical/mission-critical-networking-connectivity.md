@@ -265,7 +265,7 @@ Special treatment of static content like images, JavaScript, CSS, images and oth
 
 ### Design recommendations
 
-- Dynamically generated, static content like re-sized images that never or only rarely change can benefit from caching as well. Caching can be configured based on parameters and duration.
+- Dynamically generated, static content like re-sized images that never or only rarely change can benefit from caching as well. Caching can be configured based on parameters and with varying caching duration.
 - Separate the delivery of static and dynamic content to users and deliver relevant content from a cache to reduce load on backend services optimize performance for end-users.
 - Given the strong recommendation ([Network and connectivity](./mission-critical-networking-connectivity.md) design area) to use Azure Front Door for global routing and Web Application Firewall (WAF) purposes, it's recommended to prioritize the use of Azure Front Door caching capabilities unless gaps exist.
 
