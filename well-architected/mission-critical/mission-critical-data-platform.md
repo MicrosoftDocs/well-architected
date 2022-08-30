@@ -164,6 +164,8 @@ The 'Four Vs of Big Data' provide a framework to better understand requisite cha
   - If there's a risk of limits being reached in exceptional circumstances, ensure operational mitigations are in place to prevent downtime and data loss.
 
 - Monitor data volume and validate it against a capacity model, considering scale limits and expected data growth rates.
+  - Ensure scale operations align with storage, performance, and consistency requirements.
+  - When a new scale-unit's introduced, underlying data may need to be replicated which will take time and likely introduce a performance penalty while replication occurs. So ensure these operations are performed outside of critical business hours if possible.
 
 - Define application data tiers to classify datasets based on usage and criticality to facilitate the removal or offloading of older data.
   - Consider classifying datasets into 'hot', 'warm', and 'cold' ('archive') tiers.
@@ -218,10 +220,6 @@ The 'Four Vs of Big Data' provide a framework to better understand requisite cha
 
 - Validate that required capabilities are available for selected data technologies.
   - Ensure support for required languages and SDK capabilities. Not every capability is available for every language/SDK in the same fashion.
-
-- Validate technology scale-limits and define scale-units to align with expected growth rates.
-  - Ensure scale operations align with storage, performance, and consistency requirements.
-  - When a new scale-unit's introduced, underlying data may need to be replicated which will take time and likely introduce a performance penalty while replication occurs. So ensure these operations are performed outside of critical business hours if possible.
 
 **Veracity**
 
