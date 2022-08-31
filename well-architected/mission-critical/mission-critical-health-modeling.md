@@ -438,7 +438,7 @@ AIOps is used to drive predictive action, interpreting and correlating complex o
 
 ## Next step
 
-Review the deployment and tesing considerations.
+Review the deployment and testing considerations.
 
 > [!div class="nextstepaction"]
 > [Deployment and testing](mission-critical-deployment-testing.md)
