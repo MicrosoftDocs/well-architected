@@ -144,6 +144,10 @@ This image shows an example layered health model from the Azure Mission-Critical
 
 ![Mission Critical Example Health Model Visualization](./images/mission-critical-example-fault-states.png "Mission Critical Example Health Model Visualization")
 
+## Video: Monitoring and health modeling demo 
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE55Nd9]
+
 ## Unified data sink for correlated analysis
 
 Many operational datasets must be gathered from all system components to accurately represent a defined heath model, considering logs and metrics from both application components and underlying Azure resources. This vast amount of data ultimately needs to be stored in a format that allows for near-real time interpretation to facilitate swift operational action. Moreover, correlation across all encompassed data sets is required to ensure effective analysis is unbounded, allowing for the layered representation of health.
@@ -434,7 +438,7 @@ AIOps is used to drive predictive action, interpreting and correlating complex o
 
 ## Next step
 
-Review the deployment and tesing considerations.
+Review the deployment and testing considerations.
 
 > [!div class="nextstepaction"]
 > [Deployment and testing](mission-critical-deployment-testing.md)

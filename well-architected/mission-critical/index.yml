@@ -90,3 +90,5 @@ landingContent:
             url: mission-critical-deployment-testing.md#demo-continuous-validation-with-azure-load-test-and-azure-chaos-studio
           - text: Demo - Ephemeral dev environments and automated feature validation
             url: mission-critical-deployment-testing.md#demo-ephemeral-dev-environments-and-automated-feature-validation
+          - text: Demo - Monitoring and health modeling
+            url: mission-critical-health-modeling.md#video-monitoring-and-health-modeling-demo
