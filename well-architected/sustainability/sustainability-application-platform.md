@@ -23,7 +23,7 @@ Designing and building sustainable workloads requires understanding the platform
 
 ## Platform and service updates
 
-Keep platform and services up to date to leverage the latest performance improvements and optimizations.
+Keep platform and services up to date to leverage the latest performance improvements and energy optimizations.
 
 ### Review platform and service updates regularly
 
@@ -37,7 +37,7 @@ Platform updates enable you to use the latest functionality and features to help
 
 ## Regional differences
 
-The Microsoft Azure data centers are geographically spread across the planet and powered using different energy sources. Making decisions around where to deploy your workloads can significantly impact the emissions your solutions produce.
+The Microsoft Azure data centers are geographically spread across the planet and powered using different energy sources. Making decisions around where to deploy your workloads can significantly impact the emissions your solutions produce. 
 
 Learn more about [sustainability from the data center to the cloud with Azure](https://www.microsoft.com/sustainability/azure).
 
@@ -62,6 +62,7 @@ Some regions on the planet are more carbon intense than others, therefore it's i
 
 - Where you have the data available, consider optimizing workloads to run when knowing that the energy mix comes mostly from renewable energy sources.
 - For example, running specific workloads at night may be more beneficial in some regions.
+- If your application(s) allow it, consider moving workloads dynamically when the energy conditions change (for example, at night on when renewable sources are at peak).
 
 ### Choose data centers close to the customer
 
@@ -122,6 +123,7 @@ Operating idle workloads will waste energy and contributes to an added carbon em
 
 - Dev &amp; Testing workloads should be turned off when not used. Instead of leaving them running, consider shutting them off outside regular business hours.
   - Learn more about [starting/stopping VMs during off-hours](/azure/automation/automation-solution-vm-management).
+  - services should be switched off or their tier downsized, where possible, when unused.
 
 ### Utilize auto-scaling and bursting capabilities
 
@@ -143,10 +145,12 @@ Examples:
 - Provisioning an Azure App Service Environment (ASE) over an App Service plan may lead to having provisioned compute, whether utilized or not.
 - Choosing the Azure API Management Premium tier instead of the consumption tier leads to unused resources if you aren't utilizing it fully.
 
+
 **Recommendation:**
 
 - Review the platform design decisions regarding scalability, and ensure the workload utilizes as much of the provisioned resources as possible.
 - Consider this tradeoff: Some services require a higher tier to access certain features and capabilities regardless of the resource utilization.
+- Consider and prefer services that allow dynamic tier scaling where possible.
 
 ### Delete zombie workloads
 
