@@ -59,7 +59,7 @@ Consider how applications render information. Does the application need to criti
 
 ### Leverage cloud native design patterns
 
-Learning about cloud-native design patterns is helpful for building applications, whether they're hosted on Azure or are running elsewhere.
+Learning about cloud-native design patterns is helpful for building applications, whether they're hosted on Azure or are running elsewhere. Optimizing the performance and cost of your cloud application will also reduce its resource utilization, hence its carbon emissions.
 
 **Recommendation:**
 
@@ -125,6 +125,7 @@ Consider how the UX design of a workload impacts sustainability and determine wh
   - Using full-size images as thumbnails or resized images will transfer more data, unnecessary network traffic, and additional client-side CPU usage due to image resizing and pre-rendering.
 - Ensuring there are no unused pages will help minimize the UX design.
 - Consider search and findability. Making it easier for users to find what they're looking for helps lower the amount of data stored and retrieved.
+- Consider providing a lighter UI, using less resources and with lower impact on sustainability, and provide users with an informed choice for it.
 
 ### Update legacy code
 
