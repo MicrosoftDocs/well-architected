@@ -90,6 +90,14 @@ Consider reviewing backup policies and retention periods for backups to avoid st
 - Review and revise backup and retention policies to minimize storage overhead.
 - Actively review and delete backups that are no longer needed.
 
+### Optimize the collection of logs
+
+Logging tools such as Log Analytics can store lots of unused data.
+
+**Recommendation:**
+- Make sure you are logging and retaining only data that is relevant to your needs.
+- Read more about the [Cost optimization and Log Analytics](/azure/architecture/framework/services/monitoring/log-analytics/cost-optimization).
+
 ## Next step
 
 Review the design considerations for security.
