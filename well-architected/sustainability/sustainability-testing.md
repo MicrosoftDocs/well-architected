@@ -62,6 +62,7 @@ Running unit and load tests increases the reliability of a workload. However, th
 
 - Use load testing or [chaos engineering](/azure/architecture/framework/resiliency/chaos-engineering) to assess how the workload handles platform outages, and traffic spikes or dips. This helps with increasing the service resilience and the ability to react to failures, allowing for a more optimized fault handling.
 - _Consider this tradeoff:_ Injecting fault during chaos engineering and increasing the load on any system also increases the emissions used for the testing resources. Evaluate how and when you can utilize chaos engineering to increase the workload reliability, while also considering the climate impact of running unnecessary testing sessions.
+- An additional angle to this is using chaos engineering to test energy faults or moments with higher carbon emissions: consider setting up tests that will challenge your application to consume the minimum possible energy. Define how the application will react to such conditions with a specific "eco" version that will inform users that they are emitting the minumum possible carbon by sacrificing some features and possibly some performance. This can also be your benchmark application for scoring its sustainability.
 
 ### Establish CPU and Memory thresholds in testing
 
