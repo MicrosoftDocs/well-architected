@@ -17,7 +17,7 @@ ms.custom:
 
 # Design principles of a sustainable workload
 
-The sustainability design methodology provides a framework to record, report and reduce the environmental impact of your workloads.
+The sustainability design methodology provides a framework to record, report and reduce or optimize the environmental impact of your workloads.
 
 To achieve an increase in carbon efficiency, consider how your workload directly, and indirectly, can reduce carbon emissions through:
 
