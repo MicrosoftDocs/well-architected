@@ -107,10 +107,7 @@ As you assess the security posture of the application, start with these question
   - Apply security testing as part of the CD production process for each release.
     - If security testing each release jeopardizes operational agility, ensure a suitable security testing cadence is applied.
   
-- Limit public network access to the absolute minimum required for the application to fulfill its business purpose to reduce the external attack surface.
-  - Use [Azure Private Link](/azure/private-link/private-endpoint-overview#private-link-resource) to establish [private endpoints](/azure/private-link/private-endpoint-overview) for Azure resources that  require secure network integration.
-    - Use a secure network path and [hosted private build agents](/azure/devops/pipelines/agents/agents#install) for CI/CD tooling to deploy and configure Azure resources protected by Azure Private Link.
-      - [Microsoft-hosted agents](/azure/devops/pipelines/agents/agents#microsoft-hosted-agents) won't be able to directly connect to network integrated resources.
+
 
 - Enable [secret scanning](https://github.blog/2020-08-27-secure-at-every-step-putting-devsecops-into-practice-with-code-scanning/) and dependency scanning within the source code repository.
 
@@ -128,7 +125,6 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 
 > [!NOTE]
 > When deploying within an Azure landing zone, be aware that an additional threat mitigation layer through the provisioning of centralized security capabilities is provided by the landing zone implementation.
-
 
 ### Design considerations
 
@@ -201,8 +197,10 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 ### Design Recommendations
 
-- To maximize network security, limit network access to the absolute minimum required for the application to fulfill its purpose.
-  - Use internal network paths, such as Azure Bastion, or automatically managed temporary firewall rules to enable direct data-plane infrastructure access.
+- Limit public network access to the absolute minimum required for the application to fulfill its business purpose to reduce the external attack surface.
+  - Use [Azure Private Link](/azure/private-link/private-endpoint-overview#private-link-resource) to establish [private endpoints](/azure/private-link/private-endpoint-overview) for Azure resources that require secure network integration.
+  - Use [hosted private build agents](/azure/devops/pipelines/agents/agents#install) for CI/CD tooling to deploy and configure Azure resources protected by Azure Private Link.
+    - [Microsoft-hosted agents](/azure/devops/pipelines/agents/agents#microsoft-hosted-agents) won't be able to directly connect to network integrated resources.
 
 - When dealing with private build agents, never open an RDP or SSH port directly to the internet.
   - Use [Azure Bastion](/azure/bastion/bastion-overview) to provide secure access to Azure Virtual Machines and to perform administrative tasks on Azure PaaS over the Internet.
