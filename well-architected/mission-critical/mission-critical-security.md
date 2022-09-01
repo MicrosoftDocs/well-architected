@@ -265,9 +265,6 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
 
 ### Design recommendations
 
-- Use Azure Key Vault to store all application secrets and certificates.
-  - Deploy a separate collocated Azure Key Vault with every regional deployment stamp.
-
 - Use service-managed keys for data protection where possible, removing the need to manage encryption keys and handle operational tasks such as key rotation.
   - Only use customer-managed keys when there's a clear regulatory requirement to do so.
 
