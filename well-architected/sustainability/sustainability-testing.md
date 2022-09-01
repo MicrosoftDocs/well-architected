@@ -56,13 +56,13 @@ Without properly profiling and testing workloads, it's difficult to know if it's
   
 ### Assess with chaos engineering
 
-Running unit and load tests increases the reliability of a workload. However, the introduction of chaos engineering can greatly help improve the reliability and resilience, and how the applications react to failures. In doing so, the workload can be optimized to handle failures more gracefully and with less wasted resources.
+Running unit and load tests increase the reliability of a workload. However, the introduction of chaos engineering can significantly help improve reliability and resilience and how the applications react to failures. In doing so, the workload can be optimized to handle failures gracefully and with less wasted resources.
 
 **Recommendation:**
 
-- Use load testing or [chaos engineering](/azure/architecture/framework/resiliency/chaos-engineering) to assess how the workload handles platform outages, and traffic spikes or dips. This helps with increasing the service resilience and the ability to react to failures, allowing for a more optimized fault handling.
-- _Consider this tradeoff:_ Injecting fault during chaos engineering and increasing the load on any system also increases the emissions used for the testing resources. Evaluate how and when you can utilize chaos engineering to increase the workload reliability, while also considering the climate impact of running unnecessary testing sessions.
-- An additional angle to this is using chaos engineering to test energy faults or moments with higher carbon emissions: consider setting up tests that will challenge your application to consume the minimum possible energy. Define how the application will react to such conditions with a specific "eco" version that will inform users that they are emitting the minumum possible carbon by sacrificing some features and possibly some performance. This can also be your benchmark application for scoring its sustainability.
+- Use load testing or [chaos engineering](/azure/architecture/framework/resiliency/chaos-engineering) to assess how the workload handles platform outages and traffic spikes or dips. This helps increase service resilience and the ability to react to failures, allowing for a more optimized fault handling.
+- _Consider this tradeoff:_ Injecting fault during chaos engineering and increasing the load on any system also increases the emissions used for the testing resources. Evaluate how and when you can utilize chaos engineering to increase the workload reliability while considering the climate impact of running unnecessary testing sessions.
+- Another angle to this is using chaos engineering to test energy faults or moments with higher carbon emissions: consider setting up tests that will challenge your application to consume the minimum possible energy. Define how the application will react to such conditions with a specific "eco" version informing users that they're emitting the minimum possible carbon by sacrificing some features and possibly some performance. This can also be your benchmark application for scoring its sustainability.
 
 ### Establish CPU and Memory thresholds in testing
 

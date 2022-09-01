@@ -19,7 +19,7 @@ ms.custom:
 
 This section of the Microsoft Azure Well-Architected Framework aims to address the challenges of building sustainable workloads on Azure. Review the provided guidance that applies Well-Architected best practices as a technical foundation for building and operating sustainable solutions on Azure.
 
-We encourage you to also read more about the [Microsoft Cloud for Sustainability](https://www.microsoft.com/sustainability/cloud) for opportunities to leverage the capabilities of that platform as part of your solution architecture. However, guidance found in this article series is focused on _any_ solutions you are building or operating on Azure.
+We encourage you to also read more about the [Microsoft Cloud for Sustainability](https://www.microsoft.com/sustainability/cloud) for opportunities to leverage the capabilities of that platform as part of your solution architecture. However, guidance found in this article series is focused on _any_ solutions you're building or operating on Azure.
 
 Additionally, read about [The Carbon Benefits of Cloud Computing: a Study of the Microsoft Cloud](https://www.microsoft.com/download/details.aspx?id=56950) to learn more about how Azure is more energy efficient and carbon efficient than on-premises solutions.
 
@@ -30,6 +30,18 @@ The term _workload_ refers to a collection of application resources that support
 With _sustainability_, we refer to the environmental impact of our workloads.
 
 A _sustainable workload_ therefore describes the practice of designing solutions that maximize utilization while minimizing waste, ultimately reducing the footprint on the environment.
+
+### Cloud efficiency overview
+
+Making workloads more cloud efficient requires combining efforts around cost optimization, reducing carbon emissions, and optimizing energy consumption. Optimizing the application's cost is the initial step in making workloads more sustainable.
+
+Here's a conceptual overview of cloud efficiency in this context:
+
+:::image type="content" source="./images/sustainability-shared-responsibility-cloud-efficiency.svg" alt-text="Diagram showing how to achieve cloud efficiency." border="false" lightbox="./images/sustainability-shared-responsibility-cloud-efficiency.svg":::
+
+Scoring and [measuring the cloud efficiency](/azure/architecture/framework/sustainability/sustainability-design-methodology#3understanding-your-emissions) is essential to understand whether changes tracked over time have any impact.
+
+Learn about building more sustainable and efficient workloads by starting with the design area for sustainable [Application Design](/azure/architecture/framework/sustainability/sustainability-application-design).
 
 ## What are the common challenges?
 

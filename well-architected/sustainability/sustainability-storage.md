@@ -75,7 +75,7 @@ Consider whether to store data in an online tier or an offline tier. Online tier
   
 ### Reduce the number of recovery points for VM backups
 
-Recovery points are not automatically cleaned up. Therefore, consider where [soft delete](/azure/backup/backup-azure-security-feature-cloud) is enabled for Azure Backup. The expired recovery points aren't cleaned up automatically.
+Recovery points aren't automatically cleaned up. Therefore, consider where [soft delete](/azure/backup/backup-azure-security-feature-cloud) is enabled for Azure Backup. The expired recovery points aren't cleaned up automatically.
 
 **Recommendation:**
 
@@ -92,9 +92,10 @@ Consider reviewing backup policies and retention periods for backups to avoid st
 
 ### Optimize the collection of logs
 
-Logging tools such as Log Analytics can store lots of unused data.
+Continuously collecting logs across workloads can quickly aggregate and store lots of unused data.
 
 **Recommendation:**
+
 - Make sure you are logging and retaining only data that is relevant to your needs.
 - Read more about the [Cost optimization and Log Analytics](/azure/architecture/framework/services/monitoring/log-analytics/cost-optimization).
 
