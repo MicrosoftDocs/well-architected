@@ -241,7 +241,7 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
   - Key Vault access policy assignments grant permissions separately to keys, secrets, or certificates.
     - Granular [object-level permissions](/azure/key-vault/general/rbac-guide?tabs=azure-cli#best-practices-for-individual-keys-secrets-and-certificates) to a specific key, secret, or certificate are now possible.
 
-- Role assignments incur a latency, taking up to 10 minutes (600 seconds) for a role to be applied after a role assignment is changed.
+- After a role assignment is changed, there's a latency of up to 10 minutes (600 seconds) for the role to be applied.
   - There's an Azure AD limit of 2,000 Azure role assignments per subscription.
 
 - Azure Key Vault underlying hardware security modules (HSMs) are FIPS 140-2 Level 2 compliant.
