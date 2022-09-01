@@ -272,12 +272,12 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
   - Provision Azure Key Vault with the soft delete and purge policies enabled to allow retention protection for deleted objects.
   - Use HSM backed Azure Key Vault SKU for application production environments.
 
-- Deploy a separate Azure Key Vault instance within each regional deployment stamp, providing fault isolation and performance benefits through localization, as well as navigating the scale limits imposed by a single key vault instance.
+- Deploy a separate Azure Key Vault instance within each regional deployment stamp, providing fault isolation and performance benefits through localization, as well as navigating the scale limits imposed by a single Key Vault instance.
   - Use a dedicated Azure Key Vault instance for application global resources.
 
 - Follow a least privilege model by limiting authorization to permanently delete secrets, keys, and certificates to specialized custom Azure AD roles.
 
-- Ensure secrets, keys, and certificates stored within key vault are backed up, providing an offline copy in the unlikely event key vault becomes unavailable.
+- Ensure encryption keys, and certificates stored within Key Vault are backed up, providing an offline copy in the unlikely event Key Vault becomes unavailable.
 
 - Use Key Vault certificates to [manage certificate procurement and signing](/azure/key-vault/certificates/certificate-scenarios#creating-a-certificate-with-a-ca-partnered-with-key-vault).
 
@@ -287,8 +287,6 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
 
 - Monitor key, certificate, and secret usage.
   - Define [alerts](/azure/key-vault/general/alert) for unexpected usage within Azure Monitor.
-
-- Enable firewall and Private Endpoints on all application Azure Key Vault to control access.
 
 ## Policy-driven governance
 
