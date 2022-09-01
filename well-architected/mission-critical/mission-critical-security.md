@@ -107,8 +107,6 @@ As you assess the security posture of the application, start with these question
   - Apply security testing as part of the CD production process for each release.
     - If security testing each release jeopardizes operational agility, ensure a suitable security testing cadence is applied.
   
-
-
 - Enable [secret scanning](https://github.blog/2020-08-27-secure-at-every-step-putting-devsecops-into-practice-with-code-scanning/) and dependency scanning within the source code repository.
 
 ## Threat modeling
