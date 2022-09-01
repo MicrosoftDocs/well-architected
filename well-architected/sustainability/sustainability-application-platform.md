@@ -56,13 +56,13 @@ Learn about what Azure regions have a lower carbon footprint than others to make
 
 ### Process when the carbon intensity is low
 
-Some regions on the planet are more carbon intense than others, therefore it's important to consider where we deploy our workloads and combine this with other business requirements.
+Some regions on the planet are more carbon intense than others. Therefore it's essential to consider where we deploy our workloads and combine this with other business requirements.
 
 **Recommendation:**
 
-- Where you have the data available, consider optimizing workloads to run when knowing that the energy mix comes mostly from renewable energy sources.
-- For example, running specific workloads at night may be more beneficial in some regions.
-- If your application(s) allow it, consider moving workloads dynamically when the energy conditions change (for example, at night on when renewable sources are at peak).
+- Where you have the data available, consider optimizing workloads when knowing that the energy mix comes mostly from renewable energy sources.
+- If your application(s) allow it, consider moving workloads dynamically when the energy conditions change.
+  - For example, running specific workloads at night may be more beneficial when renewable sources are at their peak.
 
 ### Choose data centers close to the customer
 
@@ -121,9 +121,8 @@ Operating idle workloads will waste energy and contributes to an added carbon em
 
 **Recommendation:**
 
-- Dev &amp; Testing workloads should be turned off when not used. Instead of leaving them running, consider shutting them off outside regular business hours.
+- Dev &amp; Testing workloads should be turned off or downsized when not used. Instead of leaving them running, consider shutting them off outside regular business hours.
   - Learn more about [starting/stopping VMs during off-hours](/azure/automation/automation-solution-vm-management).
-  - services should be switched off or their tier downsized, where possible, when unused.
 
 ### Utilize auto-scaling and bursting capabilities
 
@@ -149,7 +148,7 @@ Examples:
 **Recommendation:**
 
 - Review the platform design decisions regarding scalability, and ensure the workload utilizes as much of the provisioned resources as possible.
-- Consider this tradeoff: Some services require a higher tier to access certain features and capabilities regardless of the resource utilization.
+- Consider this tradeoff: Some services require a higher tier to access certain features and capabilities regardless of resource utilization.
 - Consider and prefer services that allow dynamic tier scaling where possible.
 
 ### Delete zombie workloads
@@ -158,7 +157,7 @@ Consider discovering unutilized workloads and resources and if there are any orp
 
 **Recommendation:**
 
-- Delete any orphaned workloads or resources if they are no longer necessary.
+- Delete any orphaned workloads or resources if they're no longer necessary.
 
 ## Next step
 

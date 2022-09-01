@@ -16,7 +16,7 @@ ms.custom:
 
 # Operational procedure considerations for sustainable workloads on Azure
 
-The discipline of green software and its implementation within the cloud efficiency patterns is quite recent and there are no specific and universal standards that have been agreed upon yet. While our fellows at the green software foundation work on creating and standardizing ways of making green software, it is still important that everyone considers this aspect in their daily work, and that when designing, planning and deploying Azure workloads, we consider the best practices that are already available and prepare our environment to be able to incorporate any new standards when ready. This document will guide you through setting up an environment for measuring and continuously improving the cost+carbon efficiency of your Azure workloads.
+The discipline of green software and its implementation within the cloud efficiency patterns is fairly new and there are no specific and universal standards that have been agreed upon yet. While our fellows at the green software foundation work on creating and standardizing ways of making green software, it's still important that everyone considers this aspect in their daily work, and that when designing, planning and deploying Azure workloads, we consider the best practices that are already available and prepare our environment to be able to incorporate any new standards when ready. This document will guide you through setting up an environment for measuring and continuously improving the cost+carbon efficiency of your Azure workloads.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
@@ -41,7 +41,7 @@ TBD
 
 ### Record current and future environmental impact using the Emissions Impact Dashboard
 
-An essential aspect of working toward any sustainability goal is tracking and quantifying the progress. If you can't track and measure the impact, you will never be sure if the efforts are worthwhile.
+An essential aspect of working toward any sustainability goal is tracking and quantifying the progress. If you can't track and measure the impact, you'll never be sure if the efforts are worthwhile.
 
 **Recommendation:**
 

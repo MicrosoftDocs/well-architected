@@ -1,4 +1,4 @@
----
+sustainability design methodology---
 title: Design principles for sustainability workloads on Azure
 description: Understand the design principles for building a sustainable application on Microsoft Azure.
 author: Zimmergren
@@ -17,9 +17,9 @@ ms.custom:
 
 # Design principles of a sustainable workload
 
-The sustainability design methodology provides a framework to record, report and reduce or optimize the environmental impact of your workloads.
+The sustainability design methodology provides a framework to record, report, and reduce or optimize the environmental impact of your workloads.
 
-To achieve an increase in carbon efficiency, consider how your workload directly, and indirectly, can reduce carbon emissions through:
+To achieve an increase in carbon efficiency, consider how your workload, directly and indirectly, can reduce carbon emissions through:
 
 - Using less physical and virtual resources
 - Using less energy
