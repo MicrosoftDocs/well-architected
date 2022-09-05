@@ -34,7 +34,7 @@ In this section, you'll learn about best practices and guidelines to measure and
 
 An essential aspect of working toward any sustainability goal is tracking and quantifying progress. If you can't track and measure the impact, you'll never be sure if the efforts are worthwhile. The Emissions Impact Dashboard is a Power BI dashboard that will give you a measure of the carbon impact of all your services and resource groups in your Azure subscription(s).
 
-The Emissions Impact Dashboard produce insights in various forms, and allows for a wide range of reporting capabilities:
+The Emissions Impact Dashboards produce insights in various forms, and allows for a wide range of reporting capabilities:
 
 - Series of visual representations in the dashboard itself.
 - Snapshot export to Excel, Power Point and PDF.
@@ -65,9 +65,45 @@ The next step is to define your target emissions, either for a single applicatio
 
 ### Identify the metrics and set improvement goals
 
+Once you've defined your target, you'll need to identify a few metrics that you can measure to prove your changes had a positive effect on efficiency.
+
+The metrics can, as an example, be derived from these categories:
+
+- Application performance metrics.
+- Cost optimization metrics.
+- Carbon emissions metrics (or proxies).
+
+**Recommendation:**
+
+- Discuss with every application owner since the impact of optimizing can vary and might affect many users.
+- Make sure that any plan that impacts performance is agreed upon and communicated clearly to the app users so that they know that a lower performance may be necessary for the greater good of fewer carbon emissions.
+- If you've connected the Microsoft Emissions Impact Dashboard (EID) to your Microsoft Sustainability Manager (MSM) instance, you can use the [Goal Tracking feature in MSM](https://docs.microsoft.com/industry/sustainability/reports-scorecards-goals) to define and track your goals by linking them to live data from EID.
+
 ### Cost optimization as a proxy
 
+Sometimes the ease of deploying cloud resources makes us forget what is useful and what is simply a waste of resources, money, and carbon. The message here is that experiments in the cloud can sometimes be costly in terms of overall cloud efficiency, not purely cost, while bringing no innovation.
+
+Use cloud resources wisely, considering any additional workload's carbon footprint.
+
+When defining your SCI, you can use carbon proxies to compensate for the lack of specific standards and measurements. One of the safest and most potent proxies for carbon emissions is your application(s) cost. Reducing unnecessary spending lowers the number of excessive emissions from deployed workloads as you are using fewer cloud resources.
+
+Linking cost performance metrics to carbon efficiency can be a sound strategy because you will not necessarily need to compromise on your defined workload Key Performance Indicators (KPI) by optimizing cost and reducing carbon emissions. However, you might decide that you are prepared to sacrifice a KPI towards your carbon goal, which can also be part of your strategy.
+
+Recommendation:
+
+- Review the concept of [using a proxy solution to measure emissions](/azure/architecture/framework/sustainability/sustainability-design-methodology#use-a-proxy-solution-to-measure-emissions).
+- Leverage the guidance in the Azure Well-Architected Framework [Cost Optimization pillar](/azure/architecture/framework/cost/).
+
 ### Defining policies
+
+Azure Policy is a powerful tool that can make some decisions for your cloud efficiency easier to implement. Consider defining one of more policies to keep your Azure virtual data center continuously optimized.
+
+Recommendation:
+
+- Incorporate and use the [cost policies](/azure/cloud-adoption-framework/govern/cost-management/policy-statements) available in the Cloud Adoption Framework.
+- Leverage [built-in policies](http://azure/governance/policy/samples/built-in-policies) relevant to cost in Azure Policy, as they are technically closely tied to sustainability.
+- Customize Azure Policy policies according to green software principles. For example, create a new [Azure Policy initiative](http://azure/governance/policy/overview#initiative-definition) for "Sustainability".
+  - Consider this tradeoff: Enforcement of new policies must not impact any unplanned operational performance metric.
 
 ### Use resources "cum grano salis"
 
