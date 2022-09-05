@@ -38,14 +38,14 @@ The Emissions Impact Dashboards produce insights in various forms, and allows fo
 
 - Series of visual representations in the dashboard itself.
 - Snapshot export to Excel, Power Point and PDF.
-- [Continuous export to Microsoft Sustainability Manager](https://docs.microsoft.com/industry/sustainability/import-data-connectors#emissions-impact-dashboard-connector) and Dataverse.
+- [Continuous export to Microsoft Sustainability Manager](/industry/sustainability/import-data-connectors#emissions-impact-dashboard-connector) and Dataverse.
 
 **Recommendation:**
 
 - Use the [Emissions Impact Dashboard](https://appsource.microsoft.com/product/power-bi/coi-sustainability.emissions_impact_dashboard) to record current and future environmental impact.
 - Identify and track metrics to quantify the achievement of technical, business, and sustainability outcomes.
 - Rely on tooling to help measure the impact, and record any changes made to your workload.
-- Learn more about the Sustainability and Dataverse API access in the Microsoft Learn module [Access Microsoft Sustainability Manager data](https://docs.microsoft.com/learn/modules/access-cloud-sustainability/).
+- Learn more about the Sustainability and Dataverse API access in the Microsoft Learn module [Access Microsoft Sustainability Manager data](/learn/modules/access-cloud-sustainability/).
 
 ### Define emissions target
 
@@ -77,7 +77,7 @@ The metrics can, as an example, be derived from these categories:
 
 - Discuss with every application owner since the impact of optimizing can vary and might affect many users.
 - Make sure that any plan that impacts performance is agreed upon and communicated clearly to the app users so that they know that a lower performance may be necessary for the greater good of fewer carbon emissions.
-- If you've connected the Microsoft Emissions Impact Dashboard (EID) to your Microsoft Sustainability Manager (MSM) instance, you can use the [Goal Tracking feature in MSM](https://docs.microsoft.com/industry/sustainability/reports-scorecards-goals) to define and track your goals by linking them to live data from EID.
+- If you've connected the Microsoft Emissions Impact Dashboard (EID) to your Microsoft Sustainability Manager (MSM) instance, you can use the [Goal Tracking feature in MSM](/industry/sustainability/reports-scorecards-goals) to define and track your goals by linking them to live data from EID.
 
 ### Cost optimization as a proxy
 
