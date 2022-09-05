@@ -111,7 +111,7 @@ Teams needs to be constantly aware of new advancements in sustainability, so the
 
 Building a community around cloud efficiency and green software is a good starting point to foster cloud efficiency awareness and culture across your organization.
 
-## Create a sustainability community
+### Create a sustainability community
 
 Creating a sustainability community doesn't have to be a tedious task. Start with a small team that will invest some time in learning the sustainability status and the relevant information on green software. This team can also join the [Green Software Foundation](https://greensoftware.foundation/) and be part of the teams that create rules, standards, and more.
 
