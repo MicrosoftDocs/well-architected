@@ -81,13 +81,13 @@ The metrics can, as an example, be derived from these categories:
 
 ### Cost optimization as a proxy
 
-Sometimes the ease of deploying cloud resources makes us forget what is useful and what is simply a waste of resources, money, and carbon. The message here is that experiments in the cloud can sometimes be costly in terms of overall cloud efficiency, not purely cost, while bringing no innovation.
+Sometimes the ease of deploying cloud resources makes us forget what is useful and what is simply a waste of resources, money, and carbon. The message here's that experiments in the cloud can sometimes be costly in terms of overall cloud efficiency, not purely cost, while bringing no innovation.
 
-Use cloud resources wisely, considering any additional workload's carbon footprint.
+Use cloud resources wisely, considering any extra workload's carbon footprint.
 
-When defining your SCI, you can use carbon proxies to compensate for the lack of specific standards and measurements. One of the safest and most potent proxies for carbon emissions is your application(s) cost. Reducing unnecessary spending lowers the number of excessive emissions from deployed workloads as you are using fewer cloud resources.
+When defining your SCI, you can use carbon proxies to compensate for the lack of specific standards and measurements. One of the safest and most potent proxies for carbon emissions are your application(s) cost. Reducing unnecessary spending lowers the number of excessive emissions from deployed workloads as you're using fewer cloud resources.
 
-Linking cost performance metrics to carbon efficiency can be a sound strategy because you will not necessarily need to compromise on your defined workload Key Performance Indicators (KPI) by optimizing cost and reducing carbon emissions. However, you might decide that you are prepared to sacrifice a KPI towards your carbon goal, which can also be part of your strategy.
+Linking cost performance metrics to carbon efficiency can be a sound strategy because you won't necessarily need to compromise on your defined workload Key Performance Indicators (KPI) by optimizing cost and reducing carbon emissions. However, you might decide that you're prepared to sacrifice a KPI towards your carbon goal, which can also be part of your strategy.
 
 Recommendation:
 
@@ -101,21 +101,61 @@ Azure Policy is a powerful tool that can make some decisions for your cloud effi
 Recommendation:
 
 - Incorporate and use the [cost policies](/azure/cloud-adoption-framework/govern/cost-management/policy-statements) available in the Cloud Adoption Framework.
-- Leverage [built-in policies](http://azure/governance/policy/samples/built-in-policies) relevant to cost in Azure Policy, as they are technically closely tied to sustainability.
+- Leverage [built-in policies](http://azure/governance/policy/samples/built-in-policies) relevant to cost in Azure Policy, as they're technically closely tied to sustainability.
 - Customize Azure Policy policies according to green software principles. For example, create a new [Azure Policy initiative](http://azure/governance/policy/overview#initiative-definition) for "Sustainability".
   - Consider this tradeoff: Enforcement of new policies must not impact any unplanned operational performance metric.
 
-### Use resources "cum grano salis"
-
 ## Community and knowledge sharing
 
-### Create a sustainability community
+Teams needs to be constantly aware of new advancements in sustainability, so they leverage these learnings when implementing workloads.
+
+Building a community around cloud efficiency and green software is a good starting point to foster cloud efficiency awareness and culture across your organization.
+
+## Create a sustainability community
+
+Creating a sustainability community doesn't have to be a tedious task. Start with a small team that will invest some time in learning the sustainability status and the relevant information on green software. This team can also join the [Green Software Foundation](https://greensoftware.foundation/) and be part of the teams that create rules, standards, and more.
+
+The Core cloud Efficiency team will have to be up to date with all the innovative tools and principles that drive your Azure workload's cost and carbon footprint.
+
+**Recommendation:**
+
+- Define policies and targets, and communicate their efforts and goals with the rest of the organization.
+- Learn more by reading [how do I start a sustainability community in my organization?](https://devblogs.microsoft.com/sustainable-software/how-do-i-start-a-sustainability-community/)
 
 ### Plan for learning
 
+Make time for the core team to learn about advancements in sustainable operations. Meanwhile, ensure that your entire organization starts thinking about green software and how to contribute to the sustainability picture with their daily choices.
+
+**Recommendation:**
+
+Review these popular training and learning resources:
+
+- Use the self-paced learning module to [Learn about The Principles of Sustainable Software Engineering](/learn/modules/sustainable-software-engineering-overview/).
+- Use the self-paced learning path to [Get started with Microsoft Cloud for Sustainability](/learn/paths/get-started-sustainability/).
+- Find more resources in the [Microsoft Sustainability Learning Center](https://www.microsoft.com/sustainability/learning-center).
+
 ### Share best practices across teams
 
+Driving adoption of sustainability efforts requires input and work from across the organization.
+
+**Recommendation:**
+
+- Let team members share their workload and company-specific best practices for sustainable operations.
+- Set up a shared repository of best practices and guidance that have been tested in your environment with tangible results.
+- Consider frequent knowledge-sharing sessions or internal webinars for getting everyone up to speed.
+
 ### Plan for incentives
+
+The quickest way of enforcing policies and creating the right culture is by setting incentives for improving the environmental sustainability of a workload by either putting sustainability as a core KPI or adding it to the overall efficiency of the applications.
+
+Many software partners already include green software in their best practices. Therefore, ensure that your efficiency targets are defined and accepted when discussing the workload.
+
+**Recommendations:**
+
+- Promote carbon-aware applications. Reward application owners if the measured carbon footprint meets the KPI.
+- Introduce gamification by creating a friendly culture of sustainability competition—track records to promote green workloads, SCI scoring, and any optimization or improvement on the score.
+- Consider introducing loyalty programs, where participants get incentives when they can prove the cloud efficiency of their applications.
+- Explore the opportunity to introduce badges like "Carbon Aware" and "Carbon Optimized".
 
 ## Next step
 
