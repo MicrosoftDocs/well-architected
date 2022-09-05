@@ -16,83 +16,70 @@ ms.custom:
 
 # Operational procedure considerations for sustainable workloads on Azure
 
-The discipline of green software and its implementation within the cloud efficiency patterns is fairly new and there are no specific and universal standards that have been agreed upon yet. While our fellows at the green software foundation work on creating and standardizing ways of making green software, it's still important that everyone considers this aspect in their daily work, and that when designing, planning and deploying Azure workloads, we consider the best practices that are already available and prepare our environment to be able to incorporate any new standards when ready. This document will guide you through setting up an environment for measuring and continuously improving the cost+carbon efficiency of your Azure workloads.
+The discipline of green software and its implementation within cloud efficiency patterns is relatively recent, and no specific and universal standards have been agreed upon yet.
+
+The [Green Software Foundation](https://greensoftware.foundation) works on creating and standardizing ways of making green software. However, it's vital that everyone considers this aspect in their daily work and that when designing, planning, and deploying Azure workloads, we consider the best practices that are already available and prepare our environment to incorporate new standards when ready.
+
+This document will guide you through setting up an environment for measuring and continuously improving your Azure workloads' cost and carbon efficiency.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected sustainable workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a sustainable workload?](sustainability-get-started.md#what-is-a-sustainable-workload)
 
 ## Measure and track carbon impact
 
-### Define emission targets
+To optimize or improve something, we first must decide what we want to change and how to measure it.
+In this section, you'll learn about best practices and guidelines to measure and track the sustainability impact of your workloads.  
 
-TBD
+### The Emissions Impact Dashboard
 
-### Identify the metrics and set improvement goals.
+An essential aspect of working toward any sustainability goal is tracking and quantifying progress. If you can't track and measure the impact, you'll never be sure if the efforts are worthwhile. The Emissions Impact Dashboard is a Power BI dashboard that will give you a measure of the carbon impact of all your services and resource groups in your Azure subscription(s).
 
-TBD
+The Emissions Impact Dashboard produce insights in various forms, and allows for a wide range of reporting capabilities:
 
-### Conduct a sustainability review
+- Series of visual representations in the dashboard itself.
+- Snapshot export to Excel, Power Point and PDF.
+- [Continuous export to Microsoft Sustainability Manager](https://docs.microsoft.com/industry/sustainability/import-data-connectors#emissions-impact-dashboard-connector) and Dataverse.
 
-TBD
+**Recommendation:**
+
+- Use the [Emissions Impact Dashboard](https://appsource.microsoft.com/product/power-bi/coi-sustainability.emissions_impact_dashboard) to record current and future environmental impact.
+- Identify and track metrics to quantify the achievement of technical, business, and sustainability outcomes.
+- Rely on tooling to help measure the impact, and record any changes made to your workload.
+- Learn more about the Sustainability and Dataverse API access in the Microsoft Learn module [Access Microsoft Sustainability Manager data](https://docs.microsoft.com/learn/modules/access-cloud-sustainability/).
+
+### Define emissions target
+
+We've analyzed in previous paragraphs how the Software Carbon Intensity (SCI) is the score you're looking for to measure the carbon impact of your application(s) by adding the scalability and cost metrics to any carbon emissions measurement.
+
+If you aren't using the Emissions Impact Dashboard, there are still ways of building carbon proxies that allow you to measure your application's impact on emissions.
+
+It can be a challenge to build carbon proxies for existing applications. Therefore, we recommend planning for efficiency targets during the design phase of every workload. When adding new workloads to Azure, you should consider planning for costs and emissions that will add to your existing footprint. The main goal should always be not to emit carbon, so ideally, you should immediately find an optimization pattern to make up for the new emissions.
+
+The next step is to define your target emissions, either for a single application or for your entire set of cloud workloads. The target can also include cost constraints, making it even easier to build upon since shrinking costs will give you some budget to optimize emissions. Once you know your target, the cloud efficiency continuous optimization process can start.
+
+**Recommendations:**
+
+- Calculate your new workload's minimum cost and carbon emissions (where applicable).
+- Track progress with Service Level Objectives (SLO), Service Level Agreements (SLA), or other performance metrics.
+- Provide optimization patterns to accommodate the new application to your overall cloud efficiency score.
+
+### Identify the metrics and set improvement goals
 
 ### Cost optimization as a proxy
 
-TBD
+### Defining policies
 
-### Record current and future environmental impact using the Emissions Impact Dashboard
-
-An essential aspect of working toward any sustainability goal is tracking and quantifying the progress. If you can't track and measure the impact, you'll never be sure if the efforts are worthwhile.
-
-**Recommendation:**
-
-- Use the [Emissions Impact Dashboard](https://www.microsoft.com/sustainability/emissions-impact-dashboard) to record current and future environmental impact.
-  - Identify and track metrics to quantify the achievement of technical, business, and sustainability outcomes.
-  - Rely on tooling to help measure the impact, and record any changes made to your workload.
-
-### Define emission targets when designing workloads
-
-TBD
-
-**Recommendation:**
-
-- _Track the progress with [Service Level Objectives](/azure/cloud-adoption-framework/manage/monitor/service-level-objectives) (SLO) or [Service Level Agreements](/azure/architecture/framework/resiliency/business-metrics) (SLA), or other performance metrics._ (Measuring sustainability)
-
-### Consider defining policies for minimum emission standards of any additions or changes made to workloads
-
-TBD (Climate commitments)
-
-### Identify the metrics and set improvement goals with a sustainability perspective
-
-TBD (Measuring sustainability)
-
-### Use cost optimization as a proxy for sustainability
-
-Leverage cost insights to better understand and measure usage. Reducing unnecessary spending also lowers the number of excessive emissions from deployed workloads.
-
-**Recommendation:**
-
-- Review the concept of [using a proxy solution to measure emissions](/azure/architecture/framework/sustainability/sustainability-design-methodology#use-a-proxy-solution-to-measure-emissions).
-- Leverage the guidance in the Azure Well-Architected Framework [Cost Optimization pillar](/azure/architecture/framework/cost).
+### Use resources "cum grano salis"
 
 ## Community and knowledge sharing
 
-Teams need to be constantly aware of new advancements in sustainability, so they leverage these learnings when implementing workloads.
-
-### Make time for your team to learn about advancements in sustainable operations
-
-TBD Climate commitments
-
-### Allow team members to share their workload and company specific best practices for sustainable operations
-
-TBD Carbon efficiency
-
 ### Create a sustainability community
 
-TBD (Climate commitments)
+### Plan for learning
 
-### Create incentives for improving the environmental sustainability of a workload
+### Share best practices across teams
 
-TBD Climate commitments
+### Plan for incentives
 
 ## Next step
 
