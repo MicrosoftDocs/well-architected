@@ -31,7 +31,7 @@ Storing much uncompressed data can result in unnecessary bandwidth waste and inc
 
 **Recommendation:**
 
-- A solution to reduce the storage requirements, including both capacity and required bandwidth to write or retrieve data. For example, [compressing files in Azure Front Door](/azure/frontdoor/standard-premium/how-to-compression) and [compressing files in Azure CDN](/azure/cdn/cdn-improve-performance)
+- A solution to reduce the storage requirements, including both capacity and required bandwidth to write or retrieve data. For example, [compressing files in Azure Front Door](/azure/frontdoor/standard-premium/how-to-compression) and [compressing files in Azure CDN](/azure/cdn/cdn-improve-performance).
 - Compression is a well-known design technique to improve network performance.
 - Consider the tradeoff of compression: Does the benefit of compression outweigh the increased _carbon_ cost in the resources (CPU, RAM) needed to perform the compression/decompression?
 

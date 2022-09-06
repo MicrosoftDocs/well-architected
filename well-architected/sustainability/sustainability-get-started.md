@@ -65,13 +65,15 @@ Sustainable guidance within this series is composed of architectural considerati
 
 Decisions made in one design area can impact or influence decisions across the entire design. The focus is ultimately on building a sustainable solution to minimize the footprint and impact on the environment.
 
-- **Application design**&mdash;Cloud application patterns that allow for designing sustainable workloads.
-- **Application platform**&mdash;Choices around hosting environment, dependencies, frameworks, and libraries.
-- **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation, and how to deliver more sustainable software testing.
-- **Operational procedures**&mdash;Processes related to sustainable operations.
-- **Storage**&mdash;Design choices for making the data storage options more sustainable.
-- **Network and connectivity**&mdash;Networking considerations that can help reduce traffic and amount of data transmitted to and from the application.
-- **Security**&mdash;Relevant recommendations to design more efficient security solutions on Azure.
+|Design area|Description|
+|---|---|
+|[Application design](sustainability-application-design.md)|Cloud application patterns that allow for designing sustainable workloads.|
+|[Application platform](sustainability-application-platform.md)|Choices around hosting environment, dependencies, frameworks, and libraries.|
+|[Testing](sustainability-testing.md)|Strategies for CI/CD pipelines and automation, and how to deliver more sustainable software testing.|
+|[Operational procedures](sustainability-operational-procedures.md)|Processes related to sustainable operations.|
+|[Storage](sustainability-storage.md)|Design choices for making the data storage options more sustainable.|
+|[Network and connectivity](sustainability-networking.md)|Networking considerations that can help reduce traffic and amount of data transmitted to and from the application.|
+|[Security](sustainability-security.md)|Relevant recommendations to design more efficient security solutions on Azure.|
 
 We recommend that readers familiarize themselves with these design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions.
 
