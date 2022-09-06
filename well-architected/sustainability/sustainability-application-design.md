@@ -126,6 +126,8 @@ Consider how the UX design of a workload impacts sustainability and determine wh
 - Ensuring there are no unused pages will help minimize the UX design.
 - Consider search and findability. Making it easier for users to find what they're looking for helps lower the amount of data stored and retrieved.
 - Consider providing a lighter UI, using fewer resources and with a lower impact on sustainability, and provide users with an informed choice.
+- Save energy by offering your apps and websites in dark mode, with dark backgrounds.
+- Opt for using system fonts when possible to avoid forcing clients to download additional fonts, which causes more network load.
 
 ### Update legacy code
 
