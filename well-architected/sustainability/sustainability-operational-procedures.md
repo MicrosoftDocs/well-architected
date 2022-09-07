@@ -49,7 +49,7 @@ The Emissions Impact Dashboards produce insights in various forms, and allows fo
 
 ### Define emissions target
 
-We've analyzed in previous paragraphs how the Software Carbon Intensity (SCI) is the score you're looking for to measure the carbon impact of your application(s) by adding the scalability and cost metrics to any carbon emissions measurement.
+The [Software Carbon Intensity (SCI)](sustainability-design-methodology.md#measure-and-track-carbon-impact) is the score you're looking for to measure the carbon impact of your application(s) by adding the scalability and cost metrics to any carbon emissions measurement.
 
 If you aren't using the Emissions Impact Dashboard, there are still ways of building carbon proxies that allow you to measure your application's impact on emissions.
 
@@ -91,7 +91,7 @@ Linking cost performance metrics to carbon efficiency can be a sound strategy be
 
 Recommendation:
 
-- Review the concept of [using a proxy solution to measure emissions](/azure/architecture/framework/sustainability/sustainability-design-methodology#use-a-proxy-solution-to-measure-emissions).
+- Review the concept of [using a proxy solution to measure emissions](sustainability-design-methodology.md#use-a-proxy-solution-to-measure-emissions).
 - Leverage the guidance in the Azure Well-Architected Framework [Cost Optimization pillar](/azure/architecture/framework/cost/).
 
 ### Defining policies

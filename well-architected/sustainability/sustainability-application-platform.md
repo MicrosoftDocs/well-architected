@@ -133,7 +133,7 @@ It's not uncommon with oversized compute workloads where much of the capacity is
 - Review [auto-scaling](/azure/architecture/best-practices/auto-scaling) guidance for Azure workloads.
 - Review the [B-series burstable virtual machine sizes](/azure/virtual-machines/sizes-b-series-burstable).
 - Consider that it may require tuning to prevent unnecessary scaling during short bursts of high demand, as opposed to a static increase in demand.
-- Consider the application architecture as part of scaling considerations. For example, [logical components should scale independently](/azure/architecture/framework/sustainability/sustainability-application-design#evaluate-moving-monoliths-to-a-microservice-architecture) to match the demand of that component, as opposed to scaling the entire application if only a portion of the components needs scaling.
+- Consider the application architecture as part of scaling considerations. For example, [logical components should scale independently](sustainability-application-design.md#evaluate-moving-monoliths-to-a-microservice-architecture) to match the demand of that component, as opposed to scaling the entire application if only a portion of the components needs scaling.
 
 ### Match the scalability needs
 
@@ -144,12 +144,20 @@ Examples:
 - Provisioning an Azure App Service Environment (ASE) over an App Service plan may lead to having provisioned compute, whether utilized or not.
 - Choosing the Azure API Management Premium tier instead of the consumption tier leads to unused resources if you aren't utilizing it fully.
 
-
 **Recommendation:**
 
 - Review the platform design decisions regarding scalability, and ensure the workload utilizes as much of the provisioned resources as possible.
 - Consider this tradeoff: Some services require a higher tier to access certain features and capabilities regardless of resource utilization.
 - Consider and prefer services that allow dynamic tier scaling where possible.
+
+### Evaluate Ampere Altra Arm-based processors for Virtual Machines
+
+The Arm-based VMs represent a cost-effective and power-efficient option that does not compromise on the required performance.
+
+**Recommendation:**
+
+- Evaluate if the Ampere Altra Arm-based VMs is a good option for your workloads.
+- Read more about [Azure Virtual Machines with Ampere Altra Arm–based processors](https://azure.microsoft.com/blog/azure-virtual-machines-with-ampere-altra-arm-based-processors-generally-available/) on Azure.
 
 ### Delete zombie workloads
 
