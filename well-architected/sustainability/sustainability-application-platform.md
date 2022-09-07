@@ -157,7 +157,7 @@ The Arm-based VMs represent a cost-effective and power-efficient option that doe
 **Recommendation:**
 
 - Evaluate if the Ampere Altra Arm-based VMs is a good option for your workloads.
-- Read more about [Azure Virtual Machines with Ampere Altra Arm–based processors](https://azure.microsoft.com/en-us/blog/azure-virtual-machines-with-ampere-altra-arm-based-processors-generally-available/) on Azure.
+- Read more about [Azure Virtual Machines with Ampere Altra Arm–based processors](https://azure.microsoft.com/blog/azure-virtual-machines-with-ampere-altra-arm-based-processors-generally-available/) on Azure.
 
 ### Delete zombie workloads
 
