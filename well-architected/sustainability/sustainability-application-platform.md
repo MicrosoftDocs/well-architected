@@ -144,12 +144,20 @@ Examples:
 - Provisioning an Azure App Service Environment (ASE) over an App Service plan may lead to having provisioned compute, whether utilized or not.
 - Choosing the Azure API Management Premium tier instead of the consumption tier leads to unused resources if you aren't utilizing it fully.
 
-
 **Recommendation:**
 
 - Review the platform design decisions regarding scalability, and ensure the workload utilizes as much of the provisioned resources as possible.
 - Consider this tradeoff: Some services require a higher tier to access certain features and capabilities regardless of resource utilization.
 - Consider and prefer services that allow dynamic tier scaling where possible.
+
+### Evaluate Ampere Altra Arm-based processors for Virtual Machines
+
+The Arm-based VMs represent a cost-effective and power-efficient option that does not compromise on the required performance.
+
+**Recommendation:**
+
+- Evaluate if the Ampere Altra Arm-based VMs is a good option for your workloads.
+- Read more about [Azure Virtual Machines with Ampere Altra Arm–based processors](https://azure.microsoft.com/en-us/blog/azure-virtual-machines-with-ampere-altra-arm-based-processors-generally-available/) on Azure.
 
 ### Delete zombie workloads
 
