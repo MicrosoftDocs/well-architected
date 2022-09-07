@@ -39,9 +39,9 @@ Here's a conceptual overview of cloud efficiency in this context:
 
 :::image type="content" source="./images/sustainability-shared-responsibility-cloud-efficiency.svg" alt-text="Diagram showing how to achieve cloud efficiency." border="false" lightbox="./images/sustainability-shared-responsibility-cloud-efficiency.svg":::
 
-Scoring and [measuring the cloud efficiency](/azure/architecture/framework/sustainability/sustainability-design-methodology#3understanding-your-emissions) is essential to understand whether changes tracked over time have any impact.
+Scoring and [measuring the cloud efficiency](sustainability-design-methodology.md#3understanding-your-emissions) is essential to understand whether changes tracked over time have any impact.
 
-Learn about building more sustainable and efficient workloads by starting with the design area for sustainable [Application Design](/azure/architecture/framework/sustainability/sustainability-application-design).
+Learn about building more sustainable and efficient workloads by starting with the design area for sustainable [Application Design](sustainability-application-design.md).
 
 ## What are the common challenges?
 
