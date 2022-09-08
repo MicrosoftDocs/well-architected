@@ -136,7 +136,7 @@ The 'Four Vs of Big Data' provide a framework to better understand requisite cha
   - *What is the user experience if data was to be served from a replica closest to the user which doesn't reflect the most recent state of a different replica? i.e. can the application support possibly serving out-of-date data?*
 
 - In a multi-region write context, when the same data item is changed in two separate write-replicas before either change can be replicated, a conflict is created which must be resolved.
-  - Standardized conflict resolution policies, such as "Last One Wins", or a custom strategy with custom logic can be applied.
+  - Standardized conflict resolution policies, such as "Last Writer Wins", or a custom strategy with custom logic can be applied.
 
 - The implementation of security requirements may adversely impact throughput or performance.
 
@@ -164,6 +164,8 @@ The 'Four Vs of Big Data' provide a framework to better understand requisite cha
   - If there's a risk of limits being reached in exceptional circumstances, ensure operational mitigations are in place to prevent downtime and data loss.
 
 - Monitor data volume and validate it against a capacity model, considering scale limits and expected data growth rates.
+  - Ensure scale operations align with storage, performance, and consistency requirements.
+  - When a new scale-unit's introduced, underlying data may need to be replicated which will take time and likely introduce a performance penalty while replication occurs. So ensure these operations are performed outside of critical business hours if possible.
 
 - Define application data tiers to classify datasets based on usage and criticality to facilitate the removal or offloading of older data.
   - Consider classifying datasets into 'hot', 'warm', and 'cold' ('archive') tiers.
@@ -218,10 +220,6 @@ The 'Four Vs of Big Data' provide a framework to better understand requisite cha
 
 - Validate that required capabilities are available for selected data technologies.
   - Ensure support for required languages and SDK capabilities. Not every capability is available for every language/SDK in the same fashion.
-
-- Validate technology scale-limits and define scale-units to align with expected growth rates.
-  - Ensure scale operations align with storage, performance, and consistency requirements.
-  - When a new scale-unit's introduced, underlying data may need to be replicated which will take time and likely introduce a performance penalty while replication occurs. So ensure these operations are performed outside of critical business hours if possible.
 
 **Veracity**
 
@@ -452,9 +450,6 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 ### Design Recommendations
 
-- In line with microservices application design approach, it's strongly recommended to have a separate datastore instance/type per microservice.
-  - Separate analytical workloads from application workloads using different data technologies optimized for distinct performance, reliability, and scalability requirements.
-
 **Azure Cosmos DB**
 
 - Use Azure Cosmos DB as the primary data platform where requirements allow.
@@ -620,7 +615,7 @@ Azure provides many managed relational data platforms, including Azure SQL Datab
 
 - Configure the Zone-Redundant deployment model to spread Business Critical database replicas within the same region across Availability Zones.
 
-- Use [Active Geo-Replication](/azure/azure-sql/database/active-geo-replication-overview) to deploy readable replicas within all deployment regions.
+- Use [Active Geo-Replication](/azure/azure-sql/database/active-geo-replication-overview) to deploy readable replicas within all deployment regions (up to four).
 
 - Use Auto Failover Groups to provide [transparent failover](/azure/azure-sql/database/designing-cloud-solutions-for-disaster-recovery) to a secondary region, with geo-replication applied to provide replication to additional deployment regions for read optimization and database redundancy.
   - For application scenarios limited to only two deployment regions, the use of Auto Failover Groups should be prioritized.
@@ -628,7 +623,7 @@ Azure provides many managed relational data platforms, including Azure SQL Datab
 - Consider automated operational triggers, based on alerting aligned to the application health model, to conduct failovers to geo-replicated instances if a failure impacting the primary and secondary within the Auto Failover Group.
 
 >[!IMPORTANT]
-> For applications considering more than fourdeployment regions, serious consideration should be given to application scoped sharding or refactoring the application to support multi-region write technologies, such as Azure Cosmos DB. However, if this isn't feasible within the application workload scenario, it's advised to elevate a region within a single geography to a primary status encompassing a geo-replicated instance to more evenly distribute read access.
+> For applications considering more than four deployment regions, serious consideration should be given to application scoped sharding or refactoring the application to support multi-region write technologies, such as Azure Cosmos DB. However, if this isn't feasible within the application workload scenario, it's advised to elevate a region within a single geography to a primary status encompassing a geo-replicated instance to more evenly distributed read access.
 
 - Configure the application to query replica instances for read queries to optimize read performance.
 
