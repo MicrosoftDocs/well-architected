@@ -18,7 +18,7 @@ ms.custom:
 
 # Data platform considerations for mission-critical workloads on Azure
 
-The selection of an effective application data platform is a further crucial decision area, which has far-reaching implications across other design areas. Azure ultimately offers a multitude of relational, non-relational, and analytical data platforms, which differ greatly in capability. It's therefore essential that key non-functional requirements be fully considered alongside other decision factors such as consistency, operability, cost, and complexity. For example, the ability to operate in a multi-reqion write configuration will have a critical bearing on suitability for a globally available platform.
+The selection of an effective application data platform is a further crucial decision area, which has far-reaching implications across other design areas. Azure ultimately offers a multitude of relational, non-relational, and analytical data platforms, which differ greatly in capability. It's therefore essential that key non-functional requirements be fully considered alongside other decision factors such as consistency, operability, cost, and complexity. For example, the ability to operate in a multi-region write configuration will have a critical bearing on suitability for a globally available platform.
 
 This design area expands on [application design](mission-critical-application-design.md), providing key considerations and recommendations to inform the selection of an optimal data platform.
 
