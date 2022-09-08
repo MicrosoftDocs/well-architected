@@ -18,7 +18,7 @@ ms.custom:
 
 # Data platform considerations for mission-critical workloads on Azure
 
-The selection of an effective application data platform is a further crucial decision area, which has far-reaching implications across other design areas. Azure ultimately offers a multitude of relational, non-relational, and analytical data platforms, which differ greatly in capability. It's therefore essential that key non-functional requirements be fully considered alongside other decision factors such as consistency, operability, cost, and complexity. For example, the ability to operate in a multi-write configuration will have a critical bearing on suitability for a globally available platform.
+The selection of an effective application data platform is a further crucial decision area, which has far-reaching implications across other design areas. Azure ultimately offers a multitude of relational, non-relational, and analytical data platforms, which differ greatly in capability. It's therefore essential that key non-functional requirements be fully considered alongside other decision factors such as consistency, operability, cost, and complexity. For example, the ability to operate in a multi-region write configuration will have a critical bearing on suitability for a globally available platform.
 
 This design area expands on [application design](mission-critical-application-design.md), providing key considerations and recommendations to inform the selection of an optimal data platform.
 
@@ -257,12 +257,12 @@ Additional data-platform guidance is available within the Azure Application Arch
 - [Non-Relational Data Stores](/azure/architecture/data-guide/big-data/non-relational-data)
 - [Relational OLTP Data Stores](/azure/architecture/data-guide/relational-data/online-transaction-processing)
 
-## Globally distributed multi-write datastore
+## Globally distributed multi-region write datastore
 
-To fully accommodate the globally distributed active-active aspirations of an application design, it's strongly recommended to consider a distributed multi-write data platform, where changes to separate writeable replicas are synchronized and merged between all replicas, with conflict resolution where required.
+To fully accommodate the globally distributed active-active aspirations of an application design, it's strongly recommended to consider a distributed multi-region write data platform, where changes to separate writeable replicas are synchronized and merged between all replicas, with conflict resolution where required.
 
 >[!IMPORTANT]
-> The microservices may not all require a distributed multi-write datastore, so consideration should be given to the architectural context and business requirements of each workload scenario.
+> The microservices may not all require a distributed multi-region write datastore, so consideration should be given to the architectural context and business requirements of each workload scenario.
 
 Azure Cosmos DB provides a globally distributed and highly available NoSQL datastore, offering multi-region writes and tunable consistency out-of-the-box. The design considerations and recommendations within this section will therefore focus on optimal Cosmos DB usage.
 
@@ -345,7 +345,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 |---|---|---|
 | 1 RU | 2 RU | 4 RU |
 
-> The delta between single-region-write and multi-region-write is actually less than the 1:2 ratio reflected in the table above. More specifically, there's a cross-region data transfer charge associated with write updates in a single-write configuration, which isn't captured within the RU costs as with the multi-write configuration.  
+> The delta between single-region-write and multi-region-write is actually less than the 1:2 ratio reflected in the table above. More specifically, there's a cross-region data transfer charge associated with write updates in a single-write configuration, which isn't captured within the RU costs as with the multi-region write configuration.  
 
 - Consumed storage is billed as a flat rate for the total amount of storage (GB) consumed to host data and indexes for a given hour.
 
@@ -534,7 +534,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 ## Relational data technologies
 
-For scenarios with a highly relational data model or dependencies on existing relational technologies, the use of Azure Cosmos DB in a multi-write configuration might not be directly applicable. In such cases, it's vital that used relational technologies are designed and configured to uphold the multi-region active-active aspirations of an application design.
+For scenarios with a highly relational data model or dependencies on existing relational technologies, the use of Azure Cosmos DB in a multi-region write configuration might not be directly applicable. In such cases, it's vital that used relational technologies are designed and configured to uphold the multi-region active-active aspirations of an application design.
 
 Azure provides many managed relational data platforms, including Azure SQL Database and Azure Database for common OSS relational solutions, including MySQL, PostgreSQL, and MariaDB. The design considerations and recommendations within this section will therefore focus on the optimal usage of Azure SQL Database and Azure Database OSS flavors to maximize reliability and global availability.
 
@@ -604,10 +604,6 @@ Azure provides many managed relational data platforms, including Azure SQL Datab
 
 ### Design Recommendations
 
-- Flexible Server is recommended to use it for business critical workloads due to its Availability Zone support.
-
-- When using Hyperscale (Citus) for business critical workloads, enable High Availability mode to receive the 99.95% SLA guarantee.
-
 - Consider sharding to partition relational databases based on different application and data contexts, helping to navigate platform constraints, maximize scalability and availability, and fault isolation.
   - This recommendation is particularly prevalent when the application design considers three or more Azure regions since relational technology constraints can significantly hinder globally distributed data platforms.
   - Sharding isn't appropriate for all application scenarios, so a contextualized evaluation is required.
@@ -654,6 +650,10 @@ Azure provides many managed relational data platforms, including Azure SQL Datab
 - Consider the use of [point-in-time restore](/azure/azure-sql/database/recovery-using-backups#point-in-time-restore) as an operational playbook to recover from severe configuration errors.
 
 **Azure Database For PostgreSQL**
+
+- Flexible Server is recommended to use it for business critical workloads due to its Availability Zone support.
+
+- When using Hyperscale (Citus) for business critical workloads, enable High Availability mode to receive the 99.95% SLA guarantee.
 
 - Use the [Hyperscale (Citus)](/azure/postgresql/concepts-hyperscale-configuration-options) server configuration to maximize availability across multiple nodes.
 
