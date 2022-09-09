@@ -377,6 +377,24 @@ items:
                   href: mission-critical/mission-critical-security.md
                 - name: Operational procedures
                   href: mission-critical/mission-critical-operational-procedures.md
+          - name: Carrier-grade
+            items:
+              - name: Quick links
+                href: carrier-grade/index.yml
+              - name: Get started
+                href: carrier-grade/carrier-grade-get-started.md
+              - name: Design principles
+                href: carrier-grade/carrier-grade-design-principles.md 
+              - name: Design areas
+                items:
+                  - name: Fault tolerance
+                    href: carrier-grade/carrier-grade-design-area-fault-tolerance.md
+                  - name: Data model
+                    href: carrier-grade/carrier-grade-design-area-data-model.md
+                  - name: Health modeling
+                    href: carrier-grade/carrier-grade-design-area-health-modeling.md
+                  - name: Testing and validation
+                    href: carrier-grade/carrier-grade-design-area-testing.md                  
           - name: Hybrid
             items:
               - name: Overview
