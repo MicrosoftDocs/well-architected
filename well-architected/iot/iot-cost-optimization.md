@@ -13,9 +13,9 @@ ms.custom:
 
 # Cost optimization in your IoT workload
 
-Cost effectiveness is one of the key success factors for IoT projects. In a typical IoT solution, devices generate large quantities of telemetry that is then stored in a cloud repository. How you develop devices and applications, handle large volumes of data, and design your architecture affects overall costs.
+Cost effectiveness is one of the key success factors for IoT projects. In a typical IoT solution, devices generate large quantities of telemetry that is then stored in a cloud repository and processed by cloud technologies. How you develop devices and applications, handle large volumes of data, and design your architecture affects overall costs.
 
-Cost optimization is a process of closed-loop cost control that needs to be continuously monitored, analyzed, and improved throughout a lifecycle. Because an IoT solution is a multilayered technology stack, there are many cost-saving factors to consider and many opportunities to optimize costs.
+Because an IoT solution is a multilayered technology stack, there are many cost-saving factors to consider and many opportunities to optimize costs. Cost optimization is a process of closed-loop cost control that needs to be continuously monitored, analyzed, and improved throughout a solution lifecycle.
 
 The [Microsoft Well-Architected Framework cost optimization](../cost/index.yml) documents provide generic cost optimization principles. Because IoT projects include cloud technologies, review [Cloud Cost Optimization](https://azure.microsoft.com/overview/cost-optimization/#ways-to-optimize) for overall guidance about cloud costs. This article focuses on specifics for an IoT solution and considers unique factors that add to the generic guidance.
 
@@ -26,11 +26,11 @@ Apply the following design principles to build cost effective IoT solutions:
 - Define implementation plans for each IoT Well-Architected Framework architecture layer.
 - Establish ongoing activities to monitor and optimize costs after you implement your solution.
 
-Your IoT solution requirements are the key criteria for architecture decisions. You can separate requirements into functional and nonfunctional requirements. You need to separate the cost considerations for each type of requirements, because functional requirements determine system design, while nonfunctional requirements affect system architecture. Develop multiple use cases based on the requirements and compare them before finalizing your architecture choices.
+Your IoT solution requirements are the key criteria for architecture decisions. You can separate requirements into functional and nonfunctional requirements. Functional requirements determine system design, while nonfunctional requirements affect system architecture. Develop multiple use cases based on requirements and compare them before finalizing your architecture choices.
 
 IoT costs are a tradeoff between various technology options. Sometimes it's not a simple comparison, because IoT is an end-to-end solution. You should also consider the cost benefits of synergy when reconciling multiple services and technologies, such as Azure IoT Central with Plug and Play, or device twins for handling events in Azure Digital Twins.
 
-In some areas, a one-time cost can be more effective than recurring costs. For example, in security where hacking techniques are always changing, it can be best to import a reliable commercial operating system and module such as Azure Sphere. For a one-time payment, such services provide monthly device security patches for a long time.
+In some areas, a one-time cost can be more effective than recurring costs. For example, in security where hacking techniques are always changing, it can be best to import a reliable commercial operating system and module such as Azure Sphere. For a one-time payment, such services provide ongoing monthly device security patches.
 
 This article presents various combinations of Azure IoT services and related technologies, but doesn't discuss cost optimization for specific industries or IoT use cases such as connected factories, predictive maintenance, or remote monitoring.
 
