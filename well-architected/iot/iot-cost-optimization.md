@@ -15,24 +15,20 @@ ms.custom:
 
 Cost effectiveness is one of the key success factors for IoT projects. In a typical IoT solution, devices generate large quantities of telemetry that they send to the cloud for cloud technologies to process and store. How you develop devices and applications, handle large volumes of data, and design your architecture affects overall costs.
 
-Because an IoT solution is a multilayered technology stack, there are many cost-saving factors to consider and many opportunities to optimize costs. Cost optimization is a process of closed-loop cost control that needs to be continuously monitored, analyzed, and improved throughout a solution lifecycle.
+Because an IoT solution is a multilayered technology stack, there are many cost-saving factors to consider, and many opportunities to optimize costs. Cost optimization is a process of closed-loop cost control that needs to be continuously monitored, analyzed, and improved throughout a solution lifecycle.
 
-The [Microsoft Well-Architected Framework cost optimization](../cost/index.yml) documents provide generic cost optimization principles. IoT projects include cloud technologies, so review [Cloud Cost Optimization](https://azure.microsoft.com/overview/cost-optimization/#ways-to-optimize) for overall guidance about cloud costs. This article focuses on IoT-specific factors that add to the generic guidance.
+The [Microsoft Well-Architected Framework cost optimization](../cost/index.yml) documents provide generic cost optimization principles. IoT projects include cloud technologies, so review [Cloud Cost Optimization](https://azure.microsoft.com/overview/cost-optimization/#ways-to-optimize) for overall guidance about cloud costs. This article provides IoT-specific guidelines that expand the generic guidance.
 
-Apply the following design principles to build cost effective IoT solutions:
+Apply the following practices to design, build, and operate cost effective IoT solutions:
 
 - Understand total cost of ownership (TCO) by accounting for both direct and indirect costs when planning.
 - Use best industry-standard strategies and approaches for IoT technology areas that have their own ecosystems.
 - Define implementation plans for each IoT Well-Architected Framework architecture layer.
 - Establish ongoing activities to monitor and optimize costs after you implement your solution.
 
-IoT solution requirements are the key criteria for architecture decisions. You can separate requirements into functional and operational requirements. Separate the cost considerations for each type of requirements, because functional requirements determine system design, while operational requirements affect system architecture. Develop multiple use cases based on requirements and compare them before finalizing your design.
+Solution requirements are the key criteria for IoT architecture decisions. You can separate requirements into functional and operational requirements. Separate the cost considerations for each type of requirement, because functional requirements determine system design, while operational requirements affect system architecture. Develop multiple use cases based on requirements and compare them before finalizing your design.
 
-IoT costs are a tradeoff between various technology options. Sometimes it's not a simple comparison, because IoT is an end-to-end system. Consider the cost benefits of synergy when reconciling multiple services and technologies. For example, Azure IoT Central works with Plug and Play, or you can use device twins to handle events in Azure Digital Twins.
-
-In some areas, a one-time cost can be more effective than recurring costs. For example, in security where hacking techniques are always changing, it can be best to import a reliable commercial operating system and module such as Azure Sphere. For a one-time payment, such services provide ongoing monthly device security patches.
-
-This article presents cost considerations for various combinations of Azure IoT services and technologies. The article doesn't discuss cost optimization for specific industries or use cases like connected factories, predictive maintenance, or remote monitoring.
+This article presents cost considerations for various combinations of Azure IoT services and technologies. For cost optimization for specific industries or use cases like connected factories, predictive maintenance, or remote monitoring, see the relevant documentation.
 
 ## Assess cost optimization in your IoT workload
 
@@ -40,11 +36,17 @@ To assess your IoT workload against the Well-Architected Framework Cost Optimiza
 
 ## Estimate total cost of ownership (TCO)
 
-IoT solutions can fail because of incorrectly estimating long-term aggregated costs. Review the IoT technology stacks, and [develop a cost model](/azure/architecture/framework/cost/design-model) that estimates the costs to implement and operate all services involved. The [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) helps estimate both startup and operational costs.
+IoT costs are a tradeoff between various technology options. Sometimes it's not a simple comparison, because IoT is an end-to-end system. Consider the cost benefits of synergy when reconciling multiple services and technologies. For example, Azure IoT Central works with Plug and Play, or you can use device twins to handle events in Azure Digital Twins.
+
+It's important to correctly estimate long-term aggregated costs. Review the IoT technology stacks, and [develop a cost model](/azure/architecture/framework/cost/design-model) that includes the costs to implement and operate all services involved. The [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) helps estimate both startup and operational costs.
+
+In some areas, a one-time cost can be more effective than recurring costs. For example, in security where hacking techniques are always changing, it can be best to import a reliable commercial operating system and module such as Azure Sphere. For a one-time payment, such services provide ongoing monthly device security patches.
 
 Estimate solution costs based on running at scale in production, not proof-of-concept (PoC) architecture. Architecture and costs evolve rapidly after the PoC. According to the [IoT Signals EDITION 3 report](https://azure.microsoft.com/mediahandler/files/resourcefiles/iot-signals-report/IoT%20Signals_Edition%203_Thought%20Paper_EN.pdf), the top reason for PoC failure is the high cost of scaling. The high cost of scaling IoT projects comes from the complexities of integrating across layers, such as devices, edge connectivity, and compatibility across applications.
 
-- Devices: Starting with a limited number of connected devices, factor in growth in the number of devices deployed and their messaging patterns. Both devices and messages can have linear or non-linear growth over time.
+Your cost model should include the following areas:
+
+- Devices: Starting with a limited number of connected devices, estimate growth in the number of devices deployed and their messaging patterns. Both devices and messages can have linear or non-linear growth over time.
 
 - Infrastructure: To evaluate infrastructure costs, account for the basics first: storage, compute, and network. Then account for all services your solution needs to ingest, egress, and prepare data.
 
@@ -56,19 +58,19 @@ Estimate solution costs based on running at scale in production, not proof-of-co
 
 IoT solutions are complex projects that require understanding broad technologies and architectures. The [IoT Well-Architected Framework](iot-overview.md#iot-architecture-layers) describes foundational IoT architectural layers that can help you simplify and understand Azure IoT architectures.
 
-Understanding the IoT architectural layers helps you define a cost baseline and consider multiple architectures for cost comparison. The layers have different technologies and sometimes different ecosystems, such as devices, telecommunications, or edge, so you need to establish a cost strategy for each layer. There are also cross-cutting layers that support designing, building, and running IoT as well as other workloads.
+Understanding the IoT architectural layers helps you define a cost baseline and consider multiple architectures for cost comparison. The layers have different technologies and sometimes different ecosystems, such as devices, telecommunications, or edge, so you need to establish a cost strategy for each layer. There are also cross-cutting layers that support designing, building, and running IoT and other workloads.
 
-The IoT core layers: device and gateway, device management and modeling, and ingestion and communication, identify IoT-specific solutions. The other layers and cross-cutting activities are also common to, and often shared with, other workloads. However, TCO and cost optimization must take all costs into account, so you must consider the IoT-related costs of common and cross-cutting activities as well as the IoT-specific layers.
+The IoT core layers: device and gateway, device management and modeling, and ingestion and communication, identify IoT-specific solutions. The other layers and cross-cutting activities are also common to, and often shared with, other workloads. However, TCO and cost optimization must take all costs into account, so you need to consider the IoT-related costs of common and cross-cutting activities as well as the IoT-specific layers.
 
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
-
-The following sections address layer specifics for the cost optimization pillar.
 
 ## Device and gateway layer
 
 This layer is responsible for generating, sometimes optimizing, and transferring data to the cloud. Cost is a key consideration for designing this layer. Cost optimization should account for the entire device lifecycle of plan, provision, configure, monitor, and retire.
 
-Edge solutions require IoT devices to be deployed in the field. The deployment might need networking and power supply infrastructure that affects costs. Pre-existing infrastructure can minimize installation costs, but you might need to guarantee that the installation doesn't affect existing systems.
+:::image type="content" source="media/device-provisioning.png" alt-text="Diagram that shows the device lifecycle." border="false":::
+
+Edge solutions require IoT devices to be deployed in the field. The deployment might need networking and power supply infrastructure that affects costs. Pre-existing infrastructure can minimize installation costs, but might require ensuring that the installation doesn't affect existing systems.
 
 Developing or installing IoT devices might require training and employing dedicated internal or external resources. Required skills include hardware design, embedded application development, cloud and local connectivity, security and privacy, and IoT solution architecture. Industry-specific expertise might also be required. Include these costs in overall device costs.
 
@@ -87,17 +89,17 @@ Most of the device development process depends on hardware selection. A make-or-
 
 - Off-the-shelf devices might cost more per unit, but have predictable costs and lead times. Off-the-shelf devices also remove the need for complex supply chain management.
 
-- Custom devices can reduce unit costs, but involve development time, and incur and non-recurring engineering costs such as design, test, certification submissions, and manufacture.
+- Custom devices can reduce unit costs, but involve development time, and incur non-recurring engineering costs such as design, test, certification submissions, and manufacture.
 
 - Pre-certified system components or modules can reduce time to market and create a semi-custom device, but are more expensive than discrete chips. You must properly resource supply-chain and inventory management.
 
-The [Azure Certified Device catalog](https://devicecatalog.azure.com) presents devices that work well with Azure IoT and to help reduce costs and time to market. [IoT Plug and Play devices](https://devicecatalog.azure.com/devices?certificationBadgeTypes=PnP) can reduce both device and cloud development costs.
+The [Azure Certified Device catalog](https://devicecatalog.azure.com) offers devices that work well with Azure IoT and can help reduce costs and time to market. [IoT Plug and Play devices](https://devicecatalog.azure.com/devices?certificationBadgeTypes=PnP) can reduce both device and cloud development costs.
 
 :::image type="content" source="media/plug-and-play.png" alt-text="Graphic that shows savings from Plug and Play approach.":::
 
 ### Lambda architectural pattern
 
-IoT solutions commonly use the hot/warm/cold lambda architectural pattern in the cloud. This pattern also applies to the edge, when you use more performant edge devices or the Azure IoT Edge runtime. Optimizing this pattern on the edge reduces overall solution costs. You can choose the most cost-effective service for cloud data ingestion and processing.
+IoT solutions commonly use the hot/warm/cold lambda architectural pattern in the cloud. This pattern also applies to the edge when you use more performant edge devices or the Azure IoT Edge runtime. Optimizing this pattern on the edge reduces overall solution costs. You can choose the most cost-effective service for cloud data ingestion and processing.
 
 - Hot path processing includes near real-time processing, process alerts, or edge notifications. You can use Azure IoT Hub event streams to process alerts in the cloud.
 
@@ -135,7 +137,7 @@ If LPWAN devices, such as LoRaWAN, NB-IoT, or LTE-M, are already connected to an
 
 [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere) is a secure, end-to-end IoT solution platform with built-in communication and security features for internet-connected devices. Azure Sphere comprises a secured, connected, crossover microcontroller unit (MCU), a custom high-level Linux-based operating system (OS), and a cloud-based security service that provides continuous, renewable security. Azure Sphere reduces the effort to build and maintain a secure environment from device to the cloud.
 
-Azure Sphere provides OS updates and zero-day renewable security for 10 years, and X.509 based PKI, user app updates, error reporting, and device management beyond 10 years without extra subscription cost. Azure Sphere reduces the operational cost of keeping millions of devices up to date with the latest security.
+Azure Sphere provides OS updates and zero-day renewable security for 10 years, and X.509 based PKI, user app updates, error reporting, and device management beyond 10 years without extra cost. Azure Sphere reduces the operational cost of keeping millions of devices up to date with the latest security.
 
 ### Azure Stack
 
@@ -159,13 +161,11 @@ In addition to serving as an edge processing, compute, and 5G communication devi
 
 Azure IoT Edge has built-in capabilities for high message volumes. [Azure IoT Edge managed devices](https://devicecatalog.azure.com/devices?certificationBadgeTypes=IoTEdgeCompatible&deviceClass=Gateway) with gateway capabilities can reduce network costs and minimize the number of messages through local processing and edge scenarios.
 
-Avoid device-to-device or module-to-module edge communications or device-to-cloud interactions that use many small messages. Use message batching to send multiple telemetry messages to the cloud.
+Avoid device-to-device or module-to-module edge communications or device-to-cloud interactions that use many small messages. Use built-in message batching features to send multiple telemetry messages to the cloud. These features can help reduce the costs of using Azure IoT Hub or IoT Central. Reducing both the number of daily messages and the number of device-to-cloud operations per second can allow choosing a lower SKU or scale in IoT Hub. To learn more, see [Stretching the IoT Edge performance limits](https://techcommunity.microsoft.com/t5/internet-of-things-blog/stretching-the-iot-edge-performance-limits/ba-p/2993856).
 
-These built-in message batching features can help reduce the costs of using Azure IoT Hub or IoT Central. Reducing both the number of daily messages and the number of device-to-cloud operations per second can allow choosing a lower SKU or scale in IoT Hub. To learn more, see [Stretching the IoT Edge performance limits](https://techcommunity.microsoft.com/t5/internet-of-things-blog/stretching-the-iot-edge-performance-limits/ba-p/2993856).
+You can deploy Azure services such as [Azure Stream Analytics](/azure/iot-edge/tutorial-deploy-stream-analytics) and [Azure Functions](/azure/iot-edge/tutorial-deploy-function) to IoT Edge to aggregate and filter large volumes of data and send only important data to the cloud, reducing data exchange costs. [Azure Blob Storage on IoT Edge](/azure/iot-edge/how-to-store-data-blob) can reduce the need to transfer large quantities of data over the network. Edge storage is useful for transforming and optimizing large quantities of data before sending it to the cloud.
 
-Azure services such as [Azure Stream Analytics](/azure/iot-edge/tutorial-deploy-stream-analytics) and [Azure Functions](/azure/iot-edge/tutorial-deploy-function) deployed to IoT Edge can aggregate and filter large volumes of data at the edge and send only important data to the cloud IoT gateway, reducing data exchange costs. [Azure Blob Storage on IoT Edge](/azure/iot-edge/how-to-store-data-blob) can reduce the need to transfer large quantities of data over the network. Edge storage is useful for transforming and optimizing large quantities of data before sending it to the cloud.
-
-Free Azure IoT Edge modules for open protocols such as [OPC Publisher](/azure/industrial-iot/overview-what-is-opc-publisher) and [Modbus](/azure/iot-edge/deploy-modbus-gateway) help connect various devices with minimal development. If upload performance is critical, choosing a proven IoT Edge module from a vendor can be more cost effective than building a custom module. You can search for and download the modules from the [Azure Marketplace](https://azuremarketplace.microsoft.com/home).
+Free Azure IoT Edge modules for open protocols such as [OPC Publisher](/azure/industrial-iot/overview-what-is-opc-publisher) and [Modbus](/azure/iot-edge/deploy-modbus-gateway) help connect various devices with minimal development. If upload performance is critical, choosing a proven IoT Edge module from a vendor can be more cost effective than building a custom module. You can search for and download IoT Edge modules from the [Azure Marketplace](https://azuremarketplace.microsoft.com/home).
 
 ## Ingestion and communication layer
 
@@ -173,11 +173,11 @@ A cloud IoT gateway is a bridge between devices and cloud services. As a front-e
 
 There are many factors to take into account for device to IoT gateway communications, such as device connectivity, network, and protocol. An understanding of IoT communication protocols, network types, and messaging patterns helps you design and optimize a cost effective architecture.
 
-For device connectivity, it's important to specify the type of network. If you select a private LAN or WAN solution, such as WiFi or LoraWAN, consider network TCO as part of overall costs. If you use carrier networks such as 4G, 5G, or LPWAN, include recurring connectivity costs.
+For device connectivity, it's important to specify the network type. If you select a private LAN or WAN solution, such as WiFi or LoraWAN, consider network TCO as part of overall costs. If you use carrier networks such as 4G, 5G, or LPWAN, include recurring connectivity costs.
 
 ### PaaS or aPaaS solution platform
 
-Azure IoT offers two types of platform for building IoT solutions. IoT Hub is a platform-as-a-service (PaaS) and IoT Central is an application platform as a service (aPaaS). To reduce costs and effort, you should understand [the difference between PaaS and aPaaS](/azure/iot-fundamentals/iot-solution-apaas-paas). Choose your platform type by considering factors such as business requirements, budget, timelines, and development and operations resources. An aPaaS solution typically has more predictable operational costs.
+Azure IoT offers two types of platform for building IoT solutions: IoT Hub is a platform-as-a-service (PaaS) and IoT Central is an application platform as a service (aPaaS). To reduce costs and effort, you should understand [the difference between PaaS and aPaaS](/azure/iot-fundamentals/iot-solution-apaas-paas). Choose your platform type by considering factors such as business requirements, budget, timelines, and development and operations resources. An aPaaS solution typically has more predictable operational costs.
 
 - [IoT Central](https://azure.microsoft.com/services/iot-central/#overview) is an Azure aPaaS. IoT Central simplifies IoT solution creation, and lets you focus on business and product innovation instead of maintenance, infrastructure, development, and operations.
 
@@ -191,12 +191,12 @@ Most IoT solutions require bi-directional communication between devices and the 
 
 Messaging costs depend greatly on device *chattiness* and message size. Chatty devices send many messages to the cloud every minute, while relatively quiet devices only send data every hour or more. Avoid device-to-cloud interactions that use many small messages. Clarity about device chattiness and message size helps reduce the likelihood of over-provisioning, which leads to unused cloud capacity, or under-provisioning, which leads to scale challenges. Consider the size and frequency of message payloads to ensure your infrastructure is the correct size and ready to scale.
 
-Avoid cloud-to-device interactions that use many small messages. For example, group multiple device or module twin updates into a single update, which have their own throttling. Be aware of the message size used for the daily quota, 4K for non-free IoT Hub tiers. Sending smaller messages leaves some capacity unused, while sending larger messages adds to the available quota.
+Avoid cloud-to-device interactions that use many small messages. For example, group multiple device or module twin updates into a single update, which have their own throttling. Be aware of the message size used for the daily quota, 4K for non-free IoT Hub tiers. Sending smaller messages leaves some capacity unused, while larger messages charge in 4-K chunks.
 
 Use a single direct method to get direct feedback. Use a single device or module twin status update to exchange configuration and status information asynchronously.
 
 > [!TIP]
-> You can monitor chatty interactions by using [Microsoft Defender for IoT on Azure IoT Hub](/azure/defender-for-iot/device-builders/quickstart-onboard-iot-hub) and the [Defender for IoT micro agent](/azure/defender-for-iot/device-builders/tutorial-standalone-agent-binary-installation). You can create [custom alerts](/azure/defender-for-iot/device-builders/concept-customizable-security-alerts) on IoT Hub for any device-to-cloud or cloud-to-device interactions that exceed a certain threshold.
+> You can monitor chatty interactions by using [Microsoft Defender for IoT on Azure IoT Hub](/azure/defender-for-iot/device-builders/quickstart-onboard-iot-hub) and the [Defender for IoT micro agent](/azure/defender-for-iot/device-builders/tutorial-standalone-agent-binary-installation). You can create IoT Hub [custom alerts](/azure/defender-for-iot/device-builders/concept-customizable-security-alerts) for device-to-cloud or cloud-to-device interactions that exceed a certain threshold.
 
 If message size is critical to cost management, reducing overhead is especially important with long device lifecycles or large deployments. Options to reduce this overhead include:
 
@@ -208,7 +208,7 @@ If message size is critical to cost management, reducing overhead is especially 
 
 IoT Hub SKUs each have a set of quotas and throttling limits for operations. Understand IoT Hub limits and quotas to optimize costs for device-to-cloud and cloud-to-device messaging.
 
-For example, the Standard S1 SKU has a daily quota of 400,000 messages. Charges increase in 4 KB chunks based on several factors:
+For example, the Standard S1 SKU has a daily quota of 400,000 messages. Charges increase in 4-KB chunks based on several factors:
 
 - One device-to-cloud (D2C) message can be up to 4 KB.
 - D2C messages that exceed 4 KB are charged in chunks of 4 KB.
@@ -229,11 +229,11 @@ Dynamically adjusting the number of IoT Hub units helps optimize costs when mess
 
 ### Deployment stamps for scaling
 
-*Deployment stamping* is a common design pattern for flexible deployment strategies, predictable scale, and cost. Using this pattern for IoT solutions provides several advantages, such as geo-distributing groups of devices, deploying new features to specific stamps, and observing cost per device. For more information, see [Scale IoT solutions with deployment stamps](/azure/architecture/example-scenario/iot/application-stamps).
+*Deployment stamping* is a common design pattern for flexible deployment strategies, predictable scale, and cost. This pattern provides several advantages for IoT solutions, such as geo-distributing groups of devices, deploying new features to specific stamps, and observing cost per device. For more information, see [Scale IoT solutions with deployment stamps](/azure/architecture/example-scenario/iot/application-stamps).
 
 ## Device management and modeling layer
 
-Managing devices is a task that orchestrates complex processes such as supply chain management, device inventory, deployment, installation, operational readiness, device update, bi-directional communication, and provisioning. Modeling devices reduces management costs and messaging traffic volumes.
+Managing devices is a task that orchestrates complex processes such as supply chain management, device inventory, deployment, installation, operational readiness, device update, bi-directional communication, and provisioning. Device modeling can reduce management costs and messaging traffic volumes.
 
 ### IoT Plug and Play
 
@@ -247,11 +247,7 @@ For TCO reduction, consider extended use cases as part of platform selection. [I
 
 [DPS](/azure/iot-dps/about-iot-dps) enables low or no-touch device provisioning, so you don't have to train and send people on site. Using DPS reduces the cost for truck rolls and time spent on training and configuration. DPS also reduces the risk of errors due to manual provisioning.
 
-DPS supports device lifecycle management with IoT Hub through enrollment allocation policies, zero-touch provisioning, initial configuration setting, reprovisioning, and de-provisioning.
-
-:::image type="content" source="media/device-provisioning.png" alt-text="Diagram that shows the device lifecycle." border="false":::
-
-For more information, see:
+DPS supports device lifecycle management with IoT Hub through enrollment allocation policies, zero-touch provisioning, initial configuration setting, reprovisioning, and de-provisioning. For more information, see:
 
 - [DPS pricing](https://azure.microsoft.com/pricing/details/iot-hub/#pricing)
 - [How to reprovision devices](/azure/iot-dps/how-to-reprovision)
@@ -270,13 +266,13 @@ Compare cost differences between several device topology and entity stores such 
 
 You can deploy edge solutions with different architectures: multiple endpoints, IoT devices, direct-connected to the cloud, or connected through an edge and/or cloud gateway. Different options for sourcing edge devices can affect TCO and time to market. Ongoing maintenance and support of the device fleet also affects the overall solution cost.
 
-Where data is stored and processed in a given IoT solution affects many factors such as latency, security, and cost. Analyze each use case and examine where it makes most sense to use edge processing and data storage and how it affects cost. Storing and processing data at the edge can save storage, transportation, and processing costs. But when you take scale into account, cloud services are often better options because of cost and development overhead.
+Where data is stored and processed in a given IoT solution affects many factors such as latency, security, and cost. Analyze each use case and examine where it makes most sense to use edge processing and data storage, and how it affects costs. Storing and processing data at the edge can save storage, transportation, and processing costs. But when you take scale into account, cloud services are often better options because of cost and development overhead.
 
 The [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) is a useful tool to compare these options.
 
 ## Event processing and analytics layer
 
-The purpose of the event processing and analytics layer is to enable data-driven decisions. Event timing and the purpose of analytics are key factors to consider. The right service choice increases the efficiency of the architecture and reduces the cost of processing data and events.
+The purpose of the event processing and analytics layer is to enable data-driven decisions. Event timing and the purpose of analytics are key factors to consider. The right service choice increases architectural efficiency and reduces the cost of processing data and events.
 
 Based on your requirements, implement hot, warm, or cold path processing for IoT data analytics. The [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot) helps you understand the difference between these analytics paths and reviews the available analytics services on each path. The [Microsoft Well-Architected Framework](/azure/architecture/framework/cost/provision-datastores#data-analytics-cost) includes cost considerations for data analytics services. To get started, determine which types of data go through the hot, warm, or cold path:
 
@@ -360,9 +356,7 @@ Developers can take advantage of the flexibility that Azure provides to optimize
 
 To emphasize agility over control, Azure IoT Central is a good starting point for IoT solutions development. Each tier comes with two free devices, and some messages are included, depending on the SKU. Azure IoT Central bills by device. IoT Central is a cost effective and simple option to calculate TCO for end-to-end IoT solutions.
 
-For compute environments, you can adopt serverless architecture for cloud-native IoT solutions. Some popular Azure services for IoT workloads include Azure Functions and Azure Stream Analytics. The billing mechanism depends on the service. Some services, like Azure Stream Analytics for real-time processing, let developers pause services without incurring extra costs.
-
-Some Azure services are billed by usage. For example, Azure Functions bills based on number of transactions. Developers can take advantage of these cloud-native capabilities to optimize both development and operational cost.
+For compute environments, you can adopt serverless architecture for cloud-native IoT solutions. Some popular Azure services for IoT workloads include Azure Functions and Azure Stream Analytics. The billing mechanism depends on the service. Some services, like Azure Stream Analytics for real-time processing, let developers pause services without incurring extra costs. Other services bill by usage. For example, Azure Functions bills based on number of transactions. Developers can take advantage of these cloud-native capabilities to optimize both development and operational cost.
 
 An integrated development environment (IDE) accelerates development and deployment. Some open-source IDEs like Visual Studio Code provide [Azure IoT extensions](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) that let developers develop and deploy code to Azure IoT services at no cost.
 
@@ -404,13 +398,13 @@ Telemetry logging commonly uses [Log Analytics](/azure/azure-monitor/logs/log-an
 
 Log Analytics provides a workspace environment to query logs interactively. You can export logs periodically to external locations such as Azure Data Explorer, or archive logs in a storage account for a less expensive storage option. For more information, see [Monitor usage and estimated costs in Azure Monitor](/azure/azure-monitor/usage-estimated-costs).
 
-#### Azure Advisor
+### Azure Advisor
 
 [Azure Advisor](/azure/advisor) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Advisor analyzes your resource configuration and usage telemetry, and recommends solutions that can help you improve cost effectiveness, performance, reliability, and security.
 
-Azure Advisor helps you optimize and reduce your overall Azure spending by identifying idle and underutilized resources. You can get cost recommendations from the cost tab on the Advisor dashboard.
+Advisor helps you optimize and reduce your overall Azure spending by identifying idle and underutilized resources. You can get cost recommendations from the cost tab on the Advisor dashboard.
 
-Although Azure Advisor doesn't offer specific recommendations for IoT services, it can provide useful recommendations for Azure infrastructure, storage, and analytics services. For more information, see [Reduce service costs by using Azure Advisor](/azure/advisor/advisor-cost-recommendations).
+Although Advisor doesn't offer specific recommendations for IoT services, it can provide useful recommendations for Azure infrastructure, storage, and analytics services. For more information, see [Reduce service costs by using Azure Advisor](/azure/advisor/advisor-cost-recommendations).
 
 ## Next steps
 
@@ -421,9 +415,9 @@ Although Azure Advisor doesn't offer specific recommendations for IoT services, 
 
 - [Overview of well-architected IoT workloads](iot-overview.md)
 - [Cost optimization design principles](/azure/architecture/framework/cost/principles)
-- [Checklist - Design for cost](/azure/architecture/framework/cost/design-checklist)
 - [Capture cost requirements](/azure/architecture/framework/cost/design-capture-requirements)
-- [Checklist - Optimize cost](/azure/architecture/framework/cost/optimize-checklist)
 - [Develop a cost model](/azure/architecture/framework/cost/design-model)
+- [Checklist - Design for cost](/azure/architecture/framework/cost/design-checklist)
+- [Checklist - Optimize cost](/azure/architecture/framework/cost/optimize-checklist)
 - [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot)
 - [Azure IoT documentation](/azure/iot)
