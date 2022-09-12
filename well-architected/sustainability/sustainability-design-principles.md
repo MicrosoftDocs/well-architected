@@ -44,16 +44,24 @@ The principles of green software are the starting point to understand the [SCI m
 
 The application or software must emit the least amount of carbon possible. A carbon efficient cloud application is one that is optimized, and the starting point is the cost – streamlining the application infrastructure and cost will ensure that no unnecessary resources are wasted in the cloud to run the software. But this isn't enough, as you might have cost-optimized your application but still waste tons of resources that emit carbon for no reason.
 
+- Read more about the [carbon principle](https://principles.green/principles/carbon/) in the Principles of Sustainable Green Software Engineering.
+
 ## Energy efficiency
 
 The goal of this principle is that you build applications that are energy-efficient. This is a common pattern for mobile applications, since they must rely on a battery powered device and are optimizing its consumption. It's less common, however, for desktop or web applications, since until now, developers have never been asked to optimize the electricity consumption of their software.
+
+- Read more about the [electricity principle](https://principles.green/principles/electricity/) in the Principles of Sustainable Green Software Engineering.
 
 ## Carbon awareness
 
 We need to make the application aware of how much carbon it's emitting. This way, we can react to specific conditions of energy supply using demand shifting and demand shaping techniques:
 
-- Demand shifting means moving the workloads and resources to regions or data centers, or a time in the data center where the energy supply is high and the demand is lower and can be met by renewable energy. Delaying running apps to a time when there's less demand should result in lower carbon intensity. 
-- Demand shaping means changing the application's behavior and appearance to match the energy supply in real-time. A good practice is to build an eco-version of the app and keep it as a benchmark for demand shaping and carbon optimization.
+|Technique|Description|
+|---|---|
+Demand shifting|Demand shifting means moving the workloads and resources to regions or data centers, or a time in the data center where the energy supply is high and the demand is lower and can be met by renewable energy. Delaying running apps to a time when there's less demand should result in lower carbon intensity.
+|Demand shaping|Demand shaping means changing the application's behavior and appearance to match the energy supply in real-time. A good practice is to build an eco-version of the app and keep it as a benchmark for demand shaping and carbon optimization.|
+
+- Read more about [demand shaping](https://principles.green/principles/demand-shaping/) in the Principles of Sustainable Green Software Engineering.
 
 ## Hardware efficiency
 
@@ -61,9 +69,13 @@ Embodied carbon is the carbon that was emitted to build a device. Therefore, a s
 
 Consider the tradeoff that older devices can have power inefficiencies, and may not always be suitable.
 
+- Read more about [embodied carbon](https://principles.green/principles/embodied-carbon/) in the Principles of Sustainable Green Software Engineering.
+
 ## Measuring sustainability
 
 Measuring carbon emissions of a cloud application is a complex task, as it involves the whole ecosystem of the software: from the cloud infrastructure (where we have the emissions dashboards to help us out), to the network path that is crossed, to the edge technology and user devices. With the SCI, we aren't targeting a discrete measurement of carbon emissions, but a score that will change over time and with our optimization techniques.
+
+- Read more about [measurement and optimization](https://principles.green/principles/measurement/) in the Principles of Sustainable Green Software Engineering.
 
 ## Next steps
 
