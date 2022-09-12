@@ -53,7 +53,7 @@ At Microsoft, we segment our greenhouse gas (GHG) emissions into three categorie
 
 - **Scope 1 emissions**: direct emissions that your activities create.
 - **Scope 2 emissions**: indirect emissions that result from the production of the electricity or heat you use.
-- **Scope 3 emissions**: indirect emissions from all other activities you are engaged in. For a business, these Scope 3 emissions can be extensive. They must be accounted for across its supply chain, materials in its buildings, employee business travel, and the life cycle of its products (including the electricity customers consume when using the products). A company's Scope 3 emissions are often far more significant than its Scope 1 and 2 emissions combined.
+- **Scope 3 emissions**: indirect emissions from all other activities you're engaged in. For a business, these Scope 3 emissions can be extensive. They must be accounted for across its supply chain, materials in its buildings, employee business travel, and the life cycle of its products (including the electricity customers consume when using the products). A company's Scope 3 emissions are often far more significant than its Scope 1 and 2 emissions combined.
 
 As a customer, the context of Scope 3 emissions can be network configuration and delivery, power consumption, and devices outside the data center. If an application uses excess bandwidth or packet size, it will impact from when the traffic leaves the data center, through the various hops on the internet, down to the end-user device. Reducing network bandwidth, therefore, can have a significant impact throughout the delivery chain. The same considerations apply to compute resources, data storage, application platform decisions, application design, and more.
 
@@ -88,9 +88,7 @@ Download the [Emissions Impact Dashboard Power BI app for Azure](https://appsour
 
 #### Leverage the Microsoft Sustainability Manager
 
-Customers using the [Microsoft Cloud for Sustainability](/industry/sustainability/overview) can leverage the [Microsoft Sustainability Manager](/industry/sustainability/sustainability-manager-overview') to get continuous visibility into their emissions activities.
-
-Learn more by reading [what is Microsoft Cloud for Sustainability?](/industry/sustainability/overview)
+Customers using [Microsoft Cloud for Sustainability](/industry/sustainability/overview) can leverage [Microsoft Sustainability Manager](/industry/sustainability/sustainability-manager-overview'). This extensible solution unifies data intelligence and provides comprehensive, integrated, and automated sustainability management for organizations at any stage of their sustainability journey. It automates manual processes, enabling organizations to record, report, and reduce their emissions more efficiently.
 
 #### Use a proxy solution to measure emissions
 
