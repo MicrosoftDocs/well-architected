@@ -83,7 +83,7 @@ Containerization allows developers to create and deploy applications faster and 
 - Containerize all application components, using container images as the primary model for application deployment packages.
 - Prioritize Linux-based container runtimes when possible.
 - Avoid persisting state/data within a container since containers should be immutable and replaceable with short lifecycles.
-- Ensure that all relevant logs and metrics are gathered on a container, container host and cluster level and sent to a central data store for further processing.
+- Ensure that all relevant logs and metrics are gathered form the container, container host, and underlying cluster. Gathered logs and metrics should be sent to a unified data sink for further processing.
 
 ## Container Orchestration and Kubernetes
 
