@@ -175,7 +175,7 @@ IoT logging and monitoring systems can be more complicated than in standard line
 
 - Physical sensors that interact with an environment.
 - Applications on the edge doing activities like data shaping and protocol translation.
-- Infrastructure components such as on-premise gateways, firewalls, and switches.
+- Infrastructure components such as on-premises gateways, firewalls, and switches.
 - Ingestion and messaging services.
 - Persistence mechanisms.
 - Insight and reporting applications.
@@ -226,7 +226,7 @@ DPS, IoT Hub, and IoT Edge provide continuous metrics and status updates that ar
 
 An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often hardware-constrained, for example have limited memory or compute capacity. Automation and DevOps ensure that IoT device and gateway software is properly uploaded and deployed to minimize operational downtime. Automation and DevOps are an essential aspect of monitoring and managing the lifecycle of IoT devices.
 
-The key benefit of a mature DevOps implementation is agility, the ability to quickly sense and respond to changes in business needs and seamlessly support the full lifecycle of developing, deploying, and operating a solution. Automated testing, integration, and deployment enables DevOps for application software development. Deploy application software changes in an infrastructure-as-code (IaC) environment to automate and manage the ongoing operation of deployed software.
+The key benefit of a mature DevOps implementation is agility, the ability to quickly sense and respond to changes in business needs and seamlessly support the full lifecycle of developing, deploying, and operating a solution. Automated testing, integration, and deployment enable DevOps for application software development. Deploy application software changes in an infrastructure-as-code (IaC) environment to automate and manage the ongoing operation of deployed software.
 
 Agility, DevOps, and automation are important in the development, deployment, and operations of IoT solutions.
 
