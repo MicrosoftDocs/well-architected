@@ -37,15 +37,19 @@ This design area focuses on how to eradicate downtime and maintain application h
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for acheiving optimal CI/CD pipelines for a mission-critical application.
 
-## Demo: Continuous validation with Azure Load Test and Azure Chaos Studio
+## Video: Continuously validate your mission-critical workload
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
+> [!VIDEO fc7842c3-7c7a-44dc-ad87-838aa51d0000]
 
 ## Application environments
 
 Before considering deployment processes and associated tooling, it's important to evaluate the application environments required to appropriately validate and stage deployment operations. These environment types will most likely differ in terms of requisite capabilities and longevity. Some environments might reflect production on a permanent basis, others may be short lived with a reduced level of complexity. These environments should be staged during the engineering and release cycle in order to ensure deployment operations are fully tested before released into the production environment.
 
 This section explores the key considerations and recommendations for application environments in a mission-critical context, covering key design objectives such as developer agility and separation of concerns.
+
+## Demo video: Continuous validation with Azure Load Test and Azure Chaos Studio
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
 
 ### Design Considerations
 
@@ -61,7 +65,7 @@ This section explores the key considerations and recommendations for application
 
 - Development environments can also encompass the development of Infrastructure-as-Code (IaC) artifacts such as Terraform or Azure Resource Manager (ARM) templates.
 
-#### Demo: Ephemeral dev environments and automated feature validation
+#### Demo video: Ephemeral dev environments and automated feature validation
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE50Gm9]
 
