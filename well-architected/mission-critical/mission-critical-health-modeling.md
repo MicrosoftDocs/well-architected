@@ -144,7 +144,7 @@ This image shows an example layered health model from the Azure Mission-Critical
 
 ![Mission Critical Example Health Model Visualization](./images/mission-critical-example-fault-states.png "Mission Critical Example Health Model Visualization")
 
-## Video: Monitoring and health modeling demo 
+## Demo video: Monitoring and health modeling demo 
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE55Nd9]
 
