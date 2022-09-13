@@ -16,15 +16,15 @@ The key factor in IoT operational excellence is an organization's ability to pla
 
 Given the complexity of an IoT solution's security, reliability, performance, and cost requirements, an organization's operational capabilities are an important factor in driving sustainable business value. Operational excellence in an IoT workload requires full visibility and control over all hardware and software components of the solution. Design, development, provisioning, monitoring, support, and maintenance practices must be agile and deliver business value without increasing operational risk.
 
-The cloud and hybrid [shared responsibility model](/azure/security/fundamentals/shared-responsibility) also applies to operational excellence in IoT workloads. IoT workloads comprise three technology stacks: cloud, communication network, and IoT devices. In IoT solutions, device diversity and scale, different types of communication networks, and geographically distributed locations significantly shift the shared responsibility model away from the cloud provider. Cloud services can make it easier for organizations to operate IoT devices and networks themselves or by using third parties, but the organizations themselves own the operational responsibility for these key elements of IoT workloads.
+The cloud and hybrid [shared responsibility model](/azure/security/fundamentals/shared-responsibility) applies to operational excellence in IoT workloads. IoT workloads comprise three technology stacks: cloud, communication network, and IoT devices. In IoT solutions, device diversity and scale, different network types, and geographically distributed locations significantly shift the shared responsibility model away from the cloud provider. Cloud services can make it easier for organizations to operate IoT devices and networks themselves or by using third parties, but the organizations themselves own the operational responsibility for these key elements of IoT workloads.
 
 Operational excellent ensures that your IoT solution can successfully:
 
-- Support different roles including developers, administrators, and operators.
-- Use automation for management and monitoring.
-- Manage all device lifecycle stages for the lifetime of the solution.
-- Scale efficiently to meet changes in demand, such as new device deployments or higher ingestion throughput.
-- Integrate with other backend systems.
+- Support different *user roles* including developers, administrators, and operators.
+- Manage all *device lifecycle* stages for the lifetime of the solution.
+- *Scale* efficiently to meet changes in demand, such as new device deployments or higher ingestion throughput.
+- Use *automation* for management and monitoring.
+- *Integrate* with other back-end systems.
 
 ## Assess operational excellence in your IoT workload
 
@@ -40,17 +40,17 @@ The IoT core layers: device and gateway, device management and modeling, and ing
 
 ## Device and gateway layer
 
-Select IoT hardware that meets the business and technical requirements of the solution. Define appropriate testing procedures to ensure the operational reliability of your IoT devices and gateways.
+This layer represents the physical or virtual device and gateway hardware deployed at the edge or on premises. Organizations must select IoT hardware that meets business and technical requirements, and define appropriate testing procedures to ensure operational reliability.
 
-For a greenfield project that uses new hardware, you have more flexibility in device types, required firmware and connectivity features, and technical specification. You might need to select devices that comply with certain regional certification requirements and regulations such as CE, FCC, UL, PCI, or FDA.
+Greenfield projects that use new hardware usually have more flexibility in device types, firmware and connectivity features, and technical specifications. You might need to select devices that comply with regional certification requirements or regulations such as CE, FCC, UL, PCI, or FDA.
 
-For brownfield projects that already have hardware deployed, there are typically more restrictions on hardware. Depending on your scenario, you might need to look for other types of hardware, such as protocol or identity translation devices, or connectivity gateways such as Bluetooth to MQTT gateway.
+Brownfield projects that already have hardware deployed typically have more hardware restrictions. You might need to look for other types of hardware, such as protocol or identity translation devices, or connectivity gateways such as Bluetooth to MQTT gateway.
 
-The [Azure Device Catalog](https://devicecatalog.azure.com) helps you find and select hardware from certified partners that's been certified by the IoT device certification program and is compatible with Azure IoT services. The Device Catalog has search and filter capabilities you can use to find IoT hardware that meets your solution requirements.
+[Azure Certified Device Program](https://www.microsoft.com/azure/partners/azure-certified-device) certification validates that a device can connect with Azure IoT Hub and securely provision through the IoT Hub Device Provisioning Service (DPS). The [Azure Certified Device Catalog](https://devicecatalog.azure.com) can help you find and select certified partner hardware. The Device Catalog has search and filter capabilities you can use to find hardware that meets your solution requirements.
 
 An important feature to look for in Azure IoT-certified hardware is Azure Plug-and-Play and Digital Twins Definition Language (DTDL) compatibility. These features ensure that devices integrate seamlessly with services such as Azure IoT Central and Azure Digital Twins. For Azure IoT Edge scenarios, it's important to find catalog devices that have the [IoT Edge Managed](/azure/certification/program-requirements-edge-managed) certification. This certification guarantees the device can run the IoT Edge runtime, and enables deployment and management of IoT Edge modules that support edge processing and analytics workloads.
 
-Device components and spares must be available to cover maintenance and support contracts for the lifetime of the solution. Ensure a timely and secure equipment supply at the start of the project, as this requirement can be expensive to introduce later. Use a trusted vendor chain and consider dual or multi supply sources.
+Device components and spares must be available to cover maintenance and support contracts for the lifetime of the solution. Ensure a timely and secure equipment supply at the start of the project, because this requirement can be expensive to introduce later. Use a trusted vendor chain and consider dual or multiple supply sources.
 
 ## Ingestion and communication layer
 
@@ -58,35 +58,29 @@ The organization's network operations team typically partners with the telecommu
 
 ### Capacity scaling
 
-Configure the ingestion and other backend layers of the IoT cloud solution to be able to scale to handle expected and unexpected capacity needs. Azure offers several options to meet capacity requirements as your business grows. Capacity planning and scaling for your IoT solution varies depending on whether you build an IoT Central or Azure IoT Hub-based solution.
+Configure the ingestion and other back-end layers of the IoT cloud solution to be able to scale to handle expected and unexpected capacity needs. Azure offers several options to meet capacity requirements as your business grows. Capacity planning and scaling for your IoT solution varies depending on whether you build an IoT Central or IoT Hub-based solution.
 
 The IoT Central application platform as a service (aPaaS) automatically manages multiple instances of its underlying services to scale your IoT Central applications and make them highly available. However, IoT Central stores only 30 days of data, and because most IoT solutions export data to other services, you should focus on making sure those other services can handle expected and unexpected capacity needs.
 
-With an IoT Hub-based solution, it's your responsibility to scale up to handle growth in the number of messages being ingested and to scale out to handle regional demands. Understanding the number of messages that will be sent to the IoT hub and the sustained throughput is critical to selecting the correct IoT Hub tier to support the predicted demand.
+With an IoT Hub-based solution, it's your responsibility to scale up to handle growth in the number of messages being ingested and to scale out to handle regional demands. Understanding the number of messages that devices will send to IoT Hub and the sustained throughput is critical to selecting the correct IoT Hub tier to support the predicted demand.
 
-If you're approaching the message limit for IoT Hub, your system should automatically scale IoT Hub up to the next unit of capacity. Any backend services in the IoT solution, such as Azure Stream Analytics, Azure Cosmos DB, and Azure Data Explorer must support scalability to ensure there are no bottlenecks anywhere in the solution's data flow.
+If you're approaching the IoT Hub message limit, your system should be able to automatically scale up IoT Hub to the next unit of capacity. Any back-end services in the IoT solution, such as Azure Stream Analytics, Azure Cosmos DB, and Azure Data Explorer must support scalability to ensure there are no bottlenecks anywhere in the solution's data flow.
 
-If your solution is tied to a connected product, you must communicate any fluctuation in expected load. Load can be impacted by marketing initiatives such as sales or promotions, or by seasonal events such as holidays. You should test load variations prior to events, including unexpected events, to ensure that your IoT solution can scale.
+If your solution is tied to a connected product, you must handle fluctuations in expected load. Load can be impacted by marketing initiatives such as sales or promotions, or by seasonal events such as holidays. You should test load variations prior to events, including unexpected events, to ensure that your IoT solution can scale.
 
 You should also plan for edge device capacity needs and requirements. Whether you're managing RTOS-based devices or larger compute devices with IoT Edge, make sure compute and memory sizing are adequate for your specific use cases.
-
-For more information about capacity scaling, see the following articles:
-
-- [Azure IoT Edge requirements](/azure/iot-edge/support)
-- [DPS X.509 attestation](/azure/iot-dps/concepts-x509-attestation)
-- [Azure IoT Edge managed certification requirements](/azure/certification/program-requirements-edge-managed)
-- [Azure IoT Hub scaling](/azure/iot-hub/iot-hub-scaling)
-- [Control access to Azure IoT Hub by using Azure Active Directory](/azure/iot-hub/iot-hub-dev-guide-azure-ad-rbac)
-- [Manage users and roles in IoT Central](/azure/iot-central/core/howto-manage-users-roles)
-- [Plan for capacity - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/scalability/design-capacity)
 
 ## Device management and modeling layer
 
 Implement a centralized device management solution to administer, monitor, and operate the lifecycle of IoT devices, and to manage the overall configuration of the IoT solution. Consider an integrated UI to assist operation teams with device fleet management.
 
-### Design a management interface
+### Device provisioning
 
-Solution operators and administrators need an interface to interact with the IoT solution. IoT Central has a built-in, easy-to-use management interface that lets operators and administrators provision devices, add or remove users, send commands to IoT devices, and manage device updates. If the IoT Central management UI doesn't meet your requirements, or the solution is based on platform-as-a-service (PaaS) services like IoT Hub, you can build a custom management UI by using the REST APIs that IoT Hub and IoT Central expose.
+Define a remote device provisioning strategy to enable zero-touch, just-in-time provisioning of IoT devices in the field without requiring human intervention.
+
+For remote provisioning of IoT devices, [Azure IoT Hub Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps) enables connecting and configuring remote devices to IoT Hub. DPS enables zero-touch provisioning without hard-coding information at the factory, and enables load-balancing of devices across multiple IoT hubs. Although DPS supports symmetric key attestation, in a production environment you should use either the X.509 certificate or TPM attestation mechanisms. If you use X.509 certificates, you should deploy the root certificate or an intermediate certificate signed by the root certificate to DPS, to allow devices in the field to properly authenticate to the service and be assigned to their correct IoT hub.
+
+Part of an IoT solution lifecycle includes reprovisioning devices in the field or moving them between IoT hubs. DPS enables the configuration of [reprovisioning policies](/azure/iot-dps/how-to-reprovision) that determine  expected behavior when an IoT device submits a new provisioning request. Devices should be programmed to send a provisioning request on reboot, and should implement a method to manually trigger provisioning on demand. This mechanism ensures that every time a device starts up, it contacts DPS to get redirected to the appropriate IoT hub.
 
 ### Device configuration and update management
 
@@ -102,15 +96,15 @@ A configuration management strategy should support:
 - Automatic updates for existing or new devices.
 - Updated status reports and alerts.
 
-Azure services that support these configuration management requirements include IoT Hub automatic device management, IoT Edge automatic deployments, IoT Hub scheduled jobs, and Device Update for IoT Hub.
+Azure features that support these configuration management requirements include IoT Hub automatic device management, IoT Edge automatic deployments, IoT Hub scheduled jobs, and Device Update for IoT Hub.
 
-For continuous updates to existing or new device and IoT Edge device configurations, such as properties, application specific settings, or relationships, use either IoT Hub automatic device management or IoT Edge automatic deployments. Both services are an efficient, secure, and reliable way to automate configuration deployments for either a fleet or specific group of devices. Both services continuously monitor all new and existing targeted devices and their configuration based on tags, to ensure these devices always have a specified configuration. The key difference between these services is that automatic device management applies only to non-Azure IoT Edge devices, and IoT Edge automatic deployments applies only to Azure IoT Edge devices.
+- For continuous updates to existing or new device and IoT Edge device configurations, such as properties, application specific settings, or relationships, use either IoT Hub automatic device management or IoT Edge automatic deployments. Both features offer an efficient, secure, and reliable way to automate configuration deployments for a fleet or specific group of devices. The services continuously monitor all new and existing targeted devices and their configuration based on tags, to ensure the devices always have the specified configuration. The key difference between these features is that automatic device management applies only to non-IoT Edge devices, and IoT Edge automatic deployments apply only to IoT Edge devices.
 
-To update an existing device or IoT Edge device configuration based on a one-time or recurring schedule, use Azure IoT Hub scheduled jobs. This service is an efficient, secure, and reliable way to provide a configuration update for either a fleet or specific group of devices at a scheduled time.
+- To update an existing device or IoT Edge device configuration based on a one-time or recurring schedule, use IoT Hub scheduled jobs. This feature is an efficient, secure, and reliable way to provide a configuration update for a fleet or specific group of devices at a scheduled time.
 
-To update existing device or IoT Edge device firmware, application, or package updates over-the-air (OTA), use [Device Update for IoT Hub](/azure/iot-hub-device-update/understand-device-update). This service is a safe, secure, and reliable way to update a fleet or specific group of devices.
+- To update existing device or IoT Edge device firmware, application, or package updates over-the-air (OTA), use [Device Update for IoT Hub](/azure/iot-hub-device-update/understand-device-update). This service is a safe, secure, and reliable way to update a fleet or specific group of devices.
 
-It's a good idea to include a manual update method for IoT devices. Because of root certificate changes to IoT Hub or DPS, or connectivity issues, you might need to update devices using a manual method such as physically connecting to a local computer or using a local connectivity protocol such as Bluetooth.
+It's a good idea to include a manual update method for IoT devices. Because of root certificate changes or connectivity issues, you might need to update devices using a manual method such as physically connecting to a local computer or using a local connectivity protocol such as Bluetooth.
 
 For more information about device management, see:
 
@@ -119,13 +113,9 @@ For more information about device management, see:
 - [Azure IoT Hub scheduled jobs](/azure/iot-hub/iot-hub-devguide-jobs#jobs-to-update-device-twin-properties)
 - [Device Update for IoT Hub](/azure/iot-hub-device-update/understand-device-update)
 
-### Device provisioning
+### Management user interface
 
-Define a remote device provisioning strategy to enable zero-touch, just-in-time provisioning of IoT devices in the field without requiring human intervention.
-
-For remote provisioning of IoT devices, [Azure IoT Hub Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps) enables connecting and configuring remote devices to IoT Hub. DPS enables zero-touch provisioning without hard-coding information at the factory, and enables load-balancing of devices across multiple IoT hubs. Although DPS supports symmetric key attestation, in a production environment you should use either the X.509 certificate or TPM attestation mechanisms. If you use X.509 certificates, you should deploy the root certificate or an intermediate certificate signed by the root certificate to DPS, to allow devices in the field to properly authenticate to the service and be assigned to their correct IoT hub.
-
-Part of an IoT solution lifecycle includes reprovisioning devices in the field or moving them between IoT hubs. DPS enables the configuration of [reprovisioning policies](/azure/iot-dps/how-to-reprovision) that determine the expected behavior when an IoT device submits a new provisioning request. Devices should be programmed to send a provisioning request on reboot, and should implement a method to manually trigger provisioning on demand. This mechanism ensures that every time the device starts up, it contacts DPS to get redirected to the appropriate IoT hub.
+Solution operators and administrators need an interface to interact with the IoT solution. IoT Central has a built-in, easy-to-use management interface that lets operators and administrators provision devices, add or remove users, send commands to IoT devices, and manage device updates. If the IoT Central management UI doesn't meet your requirements, or the solution is based on platform-as-a-service (PaaS) services like IoT Hub, you can build a custom management UI by using the REST APIs that IoT Hub and IoT Central expose.
 
 ## Integration layer
 
@@ -141,7 +131,7 @@ DevOps includes role and user management, metrics collection, monitoring, and au
 
 ### Role and user management
 
-A key decision to make early in the IoT solution design phase is to define the roles that implement and manage the solution, along with the corresponding responsibilities. Determine the roles that are responsible for developing, managing, and operating the IoT solution at scale, and the users to be assigned to those roles.
+A key decision early in a solution design phase is to define the roles that implement and manage the solution. Determine the roles that are responsible for developing, managing, and operating the IoT solution at scale, and the users assigned to those roles.
 
 Ideally, the solution should trust a centralized identity provider, such as [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis), and only let the appropriate users in those roles perform management or operation activities such as creating and provisioning new devices, sending commands to hardware in the field, deploying updates, and modifying user permissions.
 
@@ -214,10 +204,11 @@ If the monitoring data provided by each of the Azure IoT configuration services 
 
 DPS, IoT Hub, and IoT Edge provide continuous metrics and status updates that are key inputs to monitor continuous integration/continuous deployment (CI/CD) status or automation script output. You can collect and analyze these metrics in a Log Analytics workspace and then define alerts.
 
+For more information about monitoring, see:
+
 - [Monitor device connectivity using the Azure CLI IoT extension](/azure/iot-central/core/howto-monitor-devices-azure-cli)
 - [Monitor, diagnose, and troubleshoot Azure IoT Hub device connectivity](/azure/iot-hub/iot-hub-troubleshoot-connectivity)
 - [Monitor Azure IoT Hub](/azure/iot-hub/monitor-iot-hub)
-- [Automatic IoT device and module management using the Azure CLI](/azure/iot-hub/iot-hub-automatic-device-management-cli)
 - [Check Azure IoT Hub service and resource health](/azure/iot-hub/iot-hub-azure-service-health-integration)
 - [Tutorial: Set up and use metrics and logs with an Azure IoT hub](/azure/iot-hub/tutorial-use-metrics-and-diags)
 - [Collect and transport metrics](/azure/iot-edge/how-to-collect-and-transport-metrics)
@@ -228,19 +219,19 @@ An IoT device is fundamentally a small computer with specialized hardware and so
 
 The key benefit of a mature DevOps implementation is agility, the ability to quickly sense and respond to changes in business needs and seamlessly support the full lifecycle of developing, deploying, and operating a solution. Automated testing, integration, and deployment enable DevOps for application software development. Deploy application software changes in an infrastructure-as-code (IaC) environment to automate and manage the ongoing operation of deployed software.
 
-Agility, DevOps, and automation are important in the development, deployment, and operations of IoT solutions.
+To use agility, DevOps, and automation in the development, deployment, and operations of IoT solutions:
 
-- Automate the IoT application software lifecycle, from development through testing to deployment to IT operations.
-- Deploy IoT application software on devices by using IoT Edge. Use Azure DevOps tools and processes in IoT Hub and IoT Edge to automate the software lifecycle of an edge solutions.
-- Operationally manage IoT devices by providing operators with tools that let them collaborate and get visibility, insights, and control to maintain and operate a reliable IoT solution.
+- Automate the IoT application software lifecycle from development through testing to deployment to IT operations.
+- Use DevOps tools and processes in IoT Hub and IoT Edge to automate the software lifecycle of edge solutions. Use IoT Edge to deploy IoT application software on devices.
+- Provide operators with tools that let them collaborate and get visibility, insights, and control to maintain and operate a reliable IoT solution.
 
-Consider the following requirements when you design automation and DevOps for IoT:
+Consider the following points when you design automation and DevOps for IoT:
 
-- Thousands of devices can be connected to a single cloud endpoint such as IoT Hub. Any change in configuration or software must be spread across all the devices.
+- Thousands of devices might be connected to a single cloud endpoint such as IoT Hub. Any change in configuration or software must be spread across all the devices.
 - Device vendors and cross-functional solution developers should work together to develop and deploy IoT solutions. Embrace cross-functional teams to deliver continuously for solutions.
 - Software programs installed on hardware define system functionality. To change system functionality, update software instead of making hardware changes or local interventions.
 - Use CI/CD DevOps principles and processes to boost productivity and create a seamless rapid development cycle.
-- Evolve business and deployment models to create possibilities for different business models and pilot validation, deployment, and enhancements. DevOps provides a way to consistently deliver fresh software updates to meet solution and business requirements.
+- Evolve business and deployment models to create possibilities for different business models and pilot validation, deployment, and enhancements. DevOps provides a way to consistently deliver fresh software updates.
 - Connected IoT Edge devices have a lifecycle that extends beyond deploy, break and fix, and retire. Connectivity creates the opportunity to continuously add incremental innovation across the system lifecycle. DevOps puts organizations in the best position to capitalize on opportunity.
 
 When you implement automation and DevOps in IoT systems, follow device lifecycle and specific automation and DevOps requirements in each phase. The following tables describe platform features that support three phases of the device lifecycle.
@@ -279,3 +270,15 @@ When you implement automation and DevOps in IoT systems, follow device lifecycle
 
 > [!div class="nextstepaction"]
 > [Performance efficiency in your IoT workload](iot-performance.md)
+
+## Related resources
+
+- [Automatic IoT device and module management using the Azure CLI](/azure/iot-hub/iot-hub-automatic-device-management-cli)
+- [Azure IoT Edge requirements](/azure/iot-edge/support)
+- [Azure IoT Edge managed certification requirements](/azure/certification/program-requirements-edge-managed)
+- [DPS X.509 attestation](/azure/iot-dps/concepts-x509-attestation)
+- [Azure IoT Hub scaling](/azure/iot-hub/iot-hub-scaling)
+- [Control access to Azure IoT Hub by using Azure Active Directory](/azure/iot-hub/iot-hub-dev-guide-azure-ad-rbac)
+- [Manage users and roles in IoT Central](/azure/iot-central/core/howto-manage-users-roles)
+- [Plan for capacity - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/scalability/design-capacity)
+
