@@ -82,7 +82,7 @@ The guidance provided within this series is based on a solution-orientated appro
 
 - [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)&mdash;Extends the baseline architecture with strict network controls in place to prevent unauthorized public access from the internet to any of the workload resources.
 
-- [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) 
+  > Refer to the implementation: [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) 
 
   Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints. The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads.
 
