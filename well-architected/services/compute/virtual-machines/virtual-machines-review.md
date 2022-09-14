@@ -195,7 +195,7 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 Performance efficiency is matching the resources that are available to an application with the demand that it's receiving. Performance efficiency includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing your application code for peak performance.
 
 
-As you make design choices for your virtual machine deployment, review [Microsoft Azure Well-Architected Framework - Performance efficiency](/learn/modules/azure-well-architected-performance-efficiency/) for performance and efficiency.
+As you make design choices for your virtual machine deployment, review [Microsoft Azure Well-Architected Framework - Performance efficiency](/training/modules/azure-well-architected-performance-efficiency/) for performance and efficiency.
 
 
 ### Design checklist
@@ -242,7 +242,7 @@ Planned versus actual spending can be managed through [Azure Cost Management + B
 ## Next steps
 Use the recommendations as you provision virtual machines for your solution.
 
-- Learn module: [Introduction to Azure virtual machines](/learn/modules/intro-to-azure-virtual-machines/)
+- Learn module: [Introduction to Azure virtual machines](/training/modules/intro-to-azure-virtual-machines/)
 
 - Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/).
 
