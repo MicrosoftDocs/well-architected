@@ -53,7 +53,7 @@ Cloud providers must be compliant with the same IT regulatory requirements as th
 
 :::image type="content" source="./images/shared-resp-color.png" alt-text="A diagram of shared responsibility and key strategies.":::
 
-**Shared Responsibility and Key Strategies**
+**Shared Responsibility and Key Strategies:**
 
 After reading this document, you'll be equipped with key insights about how to improve the security posture of your architecture.
 
@@ -96,7 +96,7 @@ We cover the following areas in the security pillar of the Microsoft Azure Well-
 
 ## Identity management
 
-Consider using Azure Active Directory (Azure AD) to authenticate and authorize users. Azure AD is a fully managed identity and access management service. You can use it to create domains that exist purely on Azure, or integrate with your on-premises Active Directory identities. 
+Consider using Azure Active Directory (Azure AD) to authenticate and authorize users. Azure AD is a fully managed identity and access management service. You can use it to create domains that exist purely on Azure, or integrate with your on-premises Active Directory identities.
 
 Azure AD also integrates with:
 
@@ -130,7 +130,7 @@ Use [Azure role-based access control (Azure RBAC role)][rbac] to grant users wit
 
 In general, the security best practices for application development still apply in the cloud. Best practices include:
 
-- Use `SSL/TLS` everywhere
+- Encrypt data in-transit with the latest `TLS` versions, as supported by your clients.
 - Protect against `CSRF` and `XSS` attacks
 - Prevent SQL injection attacks
 
