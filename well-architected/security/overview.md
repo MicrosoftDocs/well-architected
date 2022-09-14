@@ -130,7 +130,7 @@ Use [Azure role-based access control (Azure RBAC role)][rbac] to grant users wit
 
 In general, the security best practices for application development still apply in the cloud. Best practices include:
 
-- Negotiate the latest, secure `TLS` versions.
+- Negotiate the latest, secure `TLS` versions
 - Protect against `CSRF` and `XSS` attacks
 - Prevent SQL injection attacks
 
