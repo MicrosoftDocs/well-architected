@@ -59,7 +59,7 @@ Consider the complexity and cost of storing all logs from all possible sources. 
 
 Many customers have a requirement to store log data for an extended period due to regulatory compliance reasons. In these cases, storing log data in the primary storage location of the SIEM system is a costly solution.
 
-_Green Software Foundation pillar alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
 
 **Recommendation:**
 
@@ -90,7 +90,7 @@ In many customer environments, especially in hybrid deployments, all end user de
 
 Based on network traffic, there will be times when demand of the security appliance will be high, and other times where it will be lower. Many network security appliances are deployed to a scale to cope with the highest expected demand, leading to inefficiencies. Additionally, reconfiguration of these tools often requires a reboot leading to unacceptable downtime and management overhead.
 
-_Green Software Foundation pillar alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
 
 **Recommendation:**
 
@@ -112,7 +112,7 @@ Terminating and re-establishing TLS is CPU consumption that might be unnecessary
 
 Distributed Denial of Service (DDoS) attacks aim to disrupt operational systems by overwhelming them, creating a significant impact on the resources in the cloud. Successful attacks flood network and compute resources, leading to an unnecessary spike in usage and cost.
 
-_Green Software Foundation pillar alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
 
 **Recommendation:**
 
@@ -129,7 +129,7 @@ Many attacks on cloud infrastructure seek to misuse deployed resources for the a
 
 Both of these cases involve taking control of customer-operated compute resources and use them to either create new cryptocurrency coins, or as a network of resources from which to launch a secondary action like a DDoS attack, or mass e-mail spam campaigns.
 
-_Green Software Foundation pillar alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
 
 **Recommendations:**
 
@@ -144,7 +144,7 @@ Getting the right information and insights at the right time is important for pr
 
 It can be a challenge to quickly find and report on all security appliances in your tenant. Identifying the security resources can help when designing a strategy for a more sustainable operating model for your business.
 
-_Green Software Foundation pillar alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
+_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
 
 **Recommendation:**
 
