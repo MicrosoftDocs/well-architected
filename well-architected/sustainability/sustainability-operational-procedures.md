@@ -40,6 +40,8 @@ The Emissions Impact Dashboards produce insights in various forms, and allows fo
 - Snapshot export to Excel, Power Point and PDF.
 - [Continuous export to Microsoft Sustainability Manager](/industry/sustainability/import-data-connectors#emissions-impact-dashboard-connector) and Dataverse.
 
+_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
+
 **Recommendation:**
 
 - Use the [Emissions Impact Dashboard](https://appsource.microsoft.com/product/power-bi/coi-sustainability.emissions_impact_dashboard) to record current and future environmental impact.
@@ -57,6 +59,8 @@ It can be a challenge to build carbon proxies for existing applications. Therefo
 
 The next step is to define your target emissions, either for a single application or for your entire set of cloud workloads. The target can also include cost constraints, making it even easier to build upon since shrinking costs will give you some budget to optimize emissions. Once you know your target, the cloud efficiency continuous optimization process can start.
 
+_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
+
 **Recommendations:**
 
 - Calculate your new workload's minimum cost and carbon emissions (where applicable).
@@ -72,6 +76,8 @@ The metrics can, as an example, be derived from these categories:
 - Application performance metrics.
 - Cost optimization metrics.
 - Carbon emissions metrics (or proxies).
+
+_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
 
 **Recommendation:**
 
@@ -89,7 +95,9 @@ When defining your SCI, you can use carbon proxies to compensate for the lack of
 
 Linking cost performance metrics to carbon efficiency can be a sound strategy because you won't necessarily need to compromise on your defined workload Key Performance Indicators (KPI) by optimizing cost and reducing carbon emissions. However, you might decide that you're prepared to sacrifice a KPI towards your carbon goal, which can also be part of your strategy.
 
-Recommendation:
+_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
+
+**Recommendation:**
 
 - Review the concept of [using a proxy solution to measure emissions](sustainability-design-methodology.md#use-a-proxy-solution-to-measure-emissions).
 - Leverage the guidance in the Azure Well-Architected Framework [Cost Optimization pillar](/azure/architecture/framework/cost/).
@@ -98,7 +106,7 @@ Recommendation:
 
 Azure Policy is a powerful tool that can make some decisions for your cloud efficiency easier to implement. Consider defining one of more policies to keep your Azure virtual data center continuously optimized.
 
-Recommendation:
+**Recommendation:**
 
 - Incorporate and use the [cost policies](/azure/cloud-adoption-framework/govern/cost-management/policy-statements) available in the Cloud Adoption Framework.
 - Leverage [built-in policies](http://azure/governance/policy/samples/built-in-policies) relevant to cost in Azure Policy, as they're technically closely tied to sustainability.
@@ -137,6 +145,8 @@ Review these popular training and learning resources:
 ### Share best practices across teams
 
 Driving adoption of sustainability efforts requires input and work from across the organization.
+
+_Green Software Foundation alignment: [Carbon efficiency](sustainability-design-principles.md#carbon-efficiency)_
 
 **Recommendation:**
 
