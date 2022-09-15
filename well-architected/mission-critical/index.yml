@@ -82,7 +82,7 @@ landingContent:
         links:
           - text: What is a mission-critical workload?
             url: mission-critical-overview.md#video-mission-critical-workloads-on-azure
-          - text: Define a health model
+          - text: Define a health model for your mission-critical workload
             url: mission-critical-health-modeling.md#video-define-a-health-model
           - text: Continuously validate your mission-critical workload
             url: mission-critical-deployment-testing.md#video-continuously-validate-your-mission-critical-workload
