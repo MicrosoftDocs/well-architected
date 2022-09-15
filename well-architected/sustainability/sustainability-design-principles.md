@@ -79,11 +79,15 @@ Measuring carbon emissions of a cloud application is a complex task, as it invol
 
 ## Climate commitments
 
-Many corporations and groups have made commitments to the climate. With a primary objective to remove, reduce and prevent carbon emissions, they actively work toward new sustainability goals.
-There are several options for reducing the carbon footprint of any organization or entity. However, and aligned to goal of the Green Software Foundation, our main direction should always be to avoid emitting carbon in the first place. This is what we call Abatement, or Carbon Elimination. 
-Once we have pursued this goal, there will still be a number of emissions that cannot be avoided, and all the remaining carbon reduction methodologies will help us do so, by means of offsetting (either compensating or neutralizing carbon).
-Your company's strategy can be a mix of all the possible methodologies, and depending on the final result, can reach a Net Zero target when carbon emissions are eliminated where possible, and the residual emissions compensated.
-The SCI (https://learn.greensoftware.foundation/practitioner/measurement#the-sci-equation) is specifically designed to aim at eliminating emissions, which should always be the primary goal of a sustainable workload, and the score can only be reduced by means of abatement.
+Many corporations and groups have made commitments to the climate. They actively work toward new sustainability goals with a primary objective to remove, reduce and prevent carbon emissions.
+
+There are several options for reducing the carbon footprint of any organization or entity. However, and aligned with the goal of the Green Software Foundation, our main direction should always be to avoid emitting carbon in the first place. This is what we call Abatement, or Carbon Elimination.
+
+Once we've pursued this goal, there will still be emissions that can't be avoided. All the remaining carbon reduction methodologies will help us do so, offsetting (either compensating or neutralizing carbon).
+
+Your company's strategy can be a mix of all the possible methodologies and, depending on the final result, can reach a Net Zero target when carbon emissions are eliminated where possible and the residual emissions compensated.
+
+The [SCI equation](sustainability-design-methodology.md#measure-and-track-carbon-impact) aims to eliminate emissions, which should always be the primary goal of a sustainable workload, and the score can only be reduced with abatement.
 
 - Read more about the [Climate Commitments](https://learn.greensoftware.foundation/practitioner/climate-commitments) from the Green Software Foundation.
 
