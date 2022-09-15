@@ -83,7 +83,8 @@ landingContent:
           - text: What is a mission-critical workload?
             url: mission-critical-overview.md#video-mission-critical-workloads-on-azure
           - text: Define a health model
-            url: mission-critical-health-modeling.md#video-define-a-health-model
+            url: Use a subscription structure
+          - text: mission-critical-application-design#video-subscription-structure
       - linkListType: video
         links:
           - text: Demo - Continuous validation with Azure Load Test and Azure Chaos Studio
