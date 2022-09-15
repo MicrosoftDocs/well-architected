@@ -36,7 +36,7 @@ There are three main levels of operational maturity when striving to maximize re
 1) *Diagnose* issues that are occurring or have already occurred.
 1) *Predict* and prevent issues before they take place.
 
-## Video: Define a health model
+## Video: Define a health model for your mission-critical workload
 
 > [!VIDEO fd8c4e50-9d7f-4df0-97cb-d0474b581398]
 
@@ -144,7 +144,7 @@ This image shows an example layered health model from the Azure Mission-Critical
 
 ![Mission Critical Example Health Model Visualization](./images/mission-critical-example-fault-states.png "Mission Critical Example Health Model Visualization")
 
-## Video: Monitoring and health modeling demo 
+## Demo video: Monitoring and health modeling demo 
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE55Nd9]
 
