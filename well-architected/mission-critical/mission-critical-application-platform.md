@@ -139,9 +139,7 @@ The considerations and recommendations within this section will therefore focus 
 
 - AKS supports different network plugins. The [Azure CNI plugin](/azure/aks/concepts-network#compare-network-models) is required to enable certain capabilities within AKS, such as Windows-based node pools or Kubernetes Network Policies.
 
-- AKS differentiates between [system node pools](/azure/aks/use-system-pools#system-and-user-node-pools) and user node pools.
-  - AKS prefers scheduling system pods on node pools that are labeled as system.
-  - User node pools allow you to [scale down to 0](/azure/aks/scale-cluster#scale-user-node-pools-to-0).
+- AKS differentiates between [system node pools](/azure/aks/use-system-pools#system-and-user-node-pools) and user node pools to separate system and workload services. User node pools can be [scaled down to 0](/azure/aks/scale-cluster#scale-user-node-pools-to-0) nodes if needed.
 
 - The [AKS Stop/Start cluster feature](/azure/aks/start-stop-cluster) allows an AKS cluster in dev/test scenarios to be paused while  maintaining cluster configuration, saving time and cost compared to re-provisioning.
 
@@ -204,7 +202,6 @@ The considerations and recommendations within this section will therefore focus 
   - Use dedicated node pools for infrastructure components and tools that require high resource utilization, such as Istio, to avoid noisy neighbor scenarios.
     - Alternatively, ensure special scale or load behavior is defined.
   - Separate distinct application workloads to dedicated node pools based on workload requirements, considering requirements for specialized infrastructure resources such as GPU, high memory VMs.
-  - Consider scaling user node pools to 0.
   - Avoid deploying large numbers of node pools to reduce additional management overhead.
   - Use [taints and tolerations](/azure/aks/operator-best-practices-advanced-scheduler#provide-dedicated-nodes-using-taints-and-tolerations) to provide dedicated nodes and limit resource intensive applications.
   - For high scale scenarios, consider the use of [Virtual Nodes](/azure/aks/virtual-nodes-cli) ([vKubelet](https://github.com/virtual-kubelet/virtual-kubelet)) with ACI for extensive and rapid scale.
