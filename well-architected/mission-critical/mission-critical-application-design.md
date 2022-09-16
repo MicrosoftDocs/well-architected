@@ -109,6 +109,11 @@ This image demonstrates how the single subscription reference deployment model c
 
 ![Mission-Critical Subscription Scale Units](./images/mission-critical-subscription-scale.gif "Mission-Critical Subscription Scale Units")
 
+## Video: Subscription structure
+
+> [!VIDEO 013a2a82-dc85-4282-98ed-b1afe50afd41]
+
+
 ## Global distribution
 
 Failure is impossible to avoid in any highly distributed environment. So, always plan for failure.
