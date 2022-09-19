@@ -48,7 +48,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: Security 
-            url: /learn/modules/azure-well-architected-introduction/7-security
+            url: /training/modules/azure-well-architected-introduction/7-security
       - linkListType: video
         links:
           - text: "Cloud Security Posture Management (CSPM) with Microsoft Defender for Cloud"
@@ -88,7 +88,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: Design and implement network security
-            url: /learn/modules/design-implement-network-security-monitoring/
+            url: /training/modules/design-implement-network-security-monitoring/
       - linkListType: whats-new
         links:
           - text: What's new in Azure Network Security?

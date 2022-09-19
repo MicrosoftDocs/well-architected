@@ -30,7 +30,7 @@ We assume that you have working knowledge of Azure Firewall and are well versed 
 
 To learn how Azure Firewall supports a reliable workload, see the following articles:
 
-- [Introduction to Azure Firewall](/learn/modules/introduction-azure-firewall/)
+- [Introduction to Azure Firewall](/training/modules/introduction-azure-firewall/)
 - [Quickstart: Deploy Azure Firewall with availability zones](/azure/firewall/deploy-template)
 
 ### Design checklist

@@ -57,7 +57,7 @@ One of the biggest benefits of IaC is the level of confidence you can have in yo
 
 **Consistency.** Following an IaC process ensures that the whole team follows a standard, well-established process. Historically, some organizations designate a single or small set of individuals responsible for deploying and configuring infrastructure. By following a fully automated process, responsibility for infrastructure deployments moves from individuals into the automation process and tooling. This move broadens the number of team members who can initiate infrastructure deployments while maintaining consistency and quality.
 
-**Automated scanning.** Many types of IaC configurations can be scanned by automated tooling. One such type of tooling is linting to check for errors in the code. Another type will scan the proposed changes to your Azure infrastructure to ensure they follow security and performance best practices. This can be an important part of a [Continuous Security](/learn/modules/explore-devops-continuous-security-operations/2-explore-continuous-security) approach.
+**Automated scanning.** Many types of IaC configurations can be scanned by automated tooling. One such type of tooling is linting to check for errors in the code. Another type will scan the proposed changes to your Azure infrastructure to ensure they follow security and performance best practices. This can be an important part of a [Continuous Security](/training/modules/explore-devops-continuous-security-operations/2-explore-continuous-security) approach.
 
 **Secret management.** Most solutions require secrets to be maintained and managed. These include connection strings, API keys, client secrets, and certificates. Following an IaC approach means that you need to adopt best practices for managing secrets. For example, Azure Key Vault is used to store secrets securely. It integrates with many IaC tools and configurations to ensure that the person conducting the deployment doesn't need access to production secrets. This in turn helps you adhere to the security principle of [least privilege](https://us-cert.cisa.gov/bsi/articles/knowledge/principles/least-privilege).
 
@@ -101,7 +101,7 @@ IaC can also help you better understand the state of your cloud resources.
 You can use many declarative infrastructure deployment technologies with Azure. Deployment technologies fall into two main categories.
 
 * **Imperative IaC** involves writing scripts in a language like Bash, PowerShell, C# script files, or Python. These programmatically execute a series of steps to create or modify your resources. When using imperative deployments, it is up to you to manage things like dependency sequencing, error control, and resource updates.
-* **Declarative IaC** involves writing a definition of how you want your environment to look; the tooling then figures out how to make this happen by inspecting your current state, comparing it to the target state you've requested, and applying the differences. [There's a good discussion of imperative and declarative IaC here.](/learn/modules/azure-well-architected-operational-excellence/4-use-automation-to-reduce-effort-and-error)
+* **Declarative IaC** involves writing a definition of how you want your environment to look; the tooling then figures out how to make this happen by inspecting your current state, comparing it to the target state you've requested, and applying the differences. [There's a good discussion of imperative and declarative IaC here.](/training/modules/azure-well-architected-operational-excellence/4-use-automation-to-reduce-effort-and-error)
 
 There are great Azure tooling options for both models. Here we describe three of the commonly used declarative IaC technologies for Azure - ARM templates, Bicep, and Terraform.
 
@@ -149,7 +149,7 @@ The following example demonstrates a simple ARM template that deploys a single A
 **Learn more**
 
 - [Documentation: What are ARM templates](/azure/azure-resource-manager/templates/overview)
-- [Learn module: Deploy consistent infrastructure with ARM Templates](/learn/modules/create-azure-resource-manager-template-vs-code/)
+- [Learn module: Deploy consistent infrastructure with ARM Templates](/training/modules/create-azure-resource-manager-template-vs-code/)
 - [Code Samples: ARM templates](/samples/mspnp/samples/azure-well-architected-framework-sample-arm-template/)
 
 ## Automate deployments with Bicep
