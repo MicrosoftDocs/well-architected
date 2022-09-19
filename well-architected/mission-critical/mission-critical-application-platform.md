@@ -113,9 +113,8 @@ The considerations and recommendations within this section will therefore focus 
   - Kubernetes as well as managed Kubernetes offerings like AKS are widely available and can address concerns reg. vendor lock-in.
 
 - AKS provides a [control plane](https://kubernetes.io/docs/concepts/overview/components/) that is managed by Microsoft.
-  - Kubernetes servers are managed by Microsoft.
-    - By default the control plane of AKS is provided free of charge, but without any guaranteed SLA.
-    - Customers only manage and pay for the worker nodes which form the cluster.
+  - By default the control plane of AKS is provided free of charge, but without any guaranteed SLA.
+  - Customers only manage and pay for the worker nodes which form the cluster.
 
 - The optional [AKS Uptime SLA](/azure/aks/uptime-sla) provides availability guarantees for the Kubernetes control plane.
   - 99.95% availability of the Kubernetes API server endpoint for AKS Clusters that use Azure Availability Zones.
@@ -131,8 +130,7 @@ The considerations and recommendations within this section will therefore focus 
   - The Kubernetes community releases minor versions roughly every three months.
   - [AKS Kubernetes releases](/azure/aks/supported-kubernetes-versions?tabs=azure-cli#aks-kubernetes-release-calendar) are aligned with the Kubernetes community and supported for 12 month.
 
-- AKS supports [updating node images](/azure/aks/node-image-upgrade) to the newest OS and runtime versions without updating the Kubernetes version of the cluster or node pool.
-  - The AKS engineering team provides new images per week with the latest updates, including Linux or Windows patches.
+- AKS supports [updating node images](/azure/aks/node-image-upgrade) to the newest OS and runtime versions without updating the Kubernetes version of the cluster or node pool. The AKS team provides new images per week with the latest updates, including Linux or Windows patches.
 
 - AKS supports different [auto-upgrade channels](/azure/aks/upgrade-cluster#set-auto-upgrade-channel) to upgrade AKS clusters to newer versions of Kubernetes and/or newer node images automatically once available.
   - [Planned Maintenance](/azure/aks/planned-maintenance) can be used to define maintenance windows for these operations.
@@ -195,7 +193,6 @@ The considerations and recommendations within this section will therefore focus 
 - Deploy [AKS clusters across different Azure regions](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) as a scale-unit to maximize reliability and availability.
 
 - Configure the use of AKS node pools to maximize reliability.
-  - Utilize Virtual Machine Scale Set (virtual machine scale set) with Standard Load Balancer (SLB) configuration format.
   - Use [Availability Zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS control plane and agent nodes across physically separate datacenters.
     - Where co-locality latency requirements exist, either a VMSS-based AKS deployment within a single zone or [proximity placement groups](/azure/aks/reduce-latency-ppg) should be used to minimize inter-node latency.
   - Ensure the System node pool is isolated from application workloads.
@@ -208,8 +205,7 @@ The considerations and recommendations within this section will therefore focus 
   - Using [Azure Spot VMs](/azure/aks/spot-node-pool) isn't recommended for highly available workloads. However, you can consider this option for development and testing environments as a way to optimize cost.
   - Evaluate application affinity and anti-affinity requirements and configure the appropriate colocation of containers on nodes.
 
-- Avoid modifying resources within the [node resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks) ('MC_')
-  - If absolutely necessary, changes should only be done at [cluster creation time](/azure/aks/faq#can-i-provide-my-own-name-for-the-aks-node-resource-group), or with assistance from Azure Support.
+- Resources within the [node resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks) ('MC_') should not modified directly. Only via the AKS API. The name of the node resource group can be chosen at [cluster creation time](/azure/aks/faq#can-i-provide-my-own-name-for-the-aks-node-resource-group) only or with assistance from Azure Support.
 
 - Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.
 
@@ -219,9 +215,8 @@ The considerations and recommendations within this section will therefore focus 
 
 - Utilize the [AKS Uptime SLA](/azure/aks/uptime-sla) for production clusters to maximize Kubernetes API endpoint availability guarantees.
 
-- Ensure proper selection of network plugin based on network requirements and cluster sizing.
-  - Use [Azure Network Policies](/azure/aks/use-network-policies) or Calico to control traffic between pods.
-    - This requires the CNI Network Plug-in.
+- Ensure proper selection of network plugin based on network requirements and cluster sizing. Prioritize the use of Azure CNI.
+- Use [Azure](/azure/aks/use-network-policies) or Calico Network Policies to control traffic within the cluster. (requires Azure CNI)
 
 - Harden the AKS cluster to remove critical security risks associated with Kubernetes deployments.
   - Use [Pod Identities](/azure/aks/operator-best-practices-identity#use-pod-identities) and [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) to protect secrets, certificates, and connection strings.
