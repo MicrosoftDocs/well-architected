@@ -195,7 +195,6 @@ The considerations and recommendations within this section will therefore focus 
 - Deploy [AKS clusters across different Azure regions](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) as a scale-unit to maximize reliability and availability.
 
 - Configure the use of AKS node pools to maximize reliability.
-  - Utilize Virtual Machine Scale Set (virtual machine scale set) with Standard Load Balancer (SLB) configuration format.
   - Use [Availability Zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS control plane and agent nodes across physically separate datacenters.
     - Where co-locality latency requirements exist, either a VMSS-based AKS deployment within a single zone or [proximity placement groups](/azure/aks/reduce-latency-ppg) should be used to minimize inter-node latency.
   - Ensure the System node pool is isolated from application workloads.
@@ -219,9 +218,8 @@ The considerations and recommendations within this section will therefore focus 
 
 - Utilize the [AKS Uptime SLA](/azure/aks/uptime-sla) for production clusters to maximize Kubernetes API endpoint availability guarantees.
 
-- Ensure proper selection of network plugin based on network requirements and cluster sizing.
-  - Use [Azure Network Policies](/azure/aks/use-network-policies) or Calico to control traffic between pods.
-    - This requires the CNI Network Plug-in.
+- Ensure proper selection of network plugin based on network requirements and cluster sizing. Prioritize the use of Azure CNI.
+- Use [Azure](/azure/aks/use-network-policies) or Calico Network Policies to control traffic within the cluster. (requires Azure CNI)
 
 - Harden the AKS cluster to remove critical security risks associated with Kubernetes deployments.
   - Use [Pod Identities](/azure/aks/operator-best-practices-identity#use-pod-identities) and [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) to protect secrets, certificates, and connection strings.
