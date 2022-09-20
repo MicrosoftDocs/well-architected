@@ -430,20 +430,16 @@ This section will therefore explore key decision factors when selecting an appro
 
 - Azure Storage Queues provide a simple messaging solution, which can be communicated with using a REST API.
 
-- Storage Queues support message sizes of up to 64 KB.
-
 - Storage queues don't guarantee message ordering.
 
-- Maximum throughput is limited to up to 20,000 messages per second (assuming 1 KB message size) per storage account.
-  - Target throughput for a single queue (1 KB messages) is limited to 2,000 messages per second.
-    - Throttling will occur if this limit is reached.
-
-- Storage queues support a size of up to 500 TB.
+- Throttling will occur if this maximum throughput limit is reached.
 
 - Through the geo-replication feature of Azure Storage Accounts, Storage Queues can be configured to asynchronously replicate to another region.
 
 - Storage Queues provide the same SLA as their underlying Storage Accounts.
   - 99.99% SLA on read requests for RA-GRS and 99.9% for write requests.
+
+See [Scalability and performance targets for Queue Storage](/azure/storage/queues/scalability-targets) for more details about service limitations.
 
 **Azure Event Grid**
 
@@ -452,9 +448,9 @@ This section will therefore explore key decision factors when selecting an appro
 - Event Grid integrates with many Azure services as event sources.
   - For example, Event Grid can be configured to react to status changes on Azure resources.
 
-- Event Grid supports messages sizes of up to 1 MB.
-
 - Event Grid provides a SLA of 99.99% for message publishing.
+
+See [Azure Event Grid quotas and limits](/azure/event-grid/quotas-limits) for more details.
 
 ### Design recommendations
 
