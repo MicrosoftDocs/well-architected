@@ -42,7 +42,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: Performance efficiency 
-            url: /learn/modules/azure-well-architected-introduction/5-performance-efficiency
+            url: /training/modules/azure-well-architected-introduction/5-performance-efficiency
       - linkListType: video
         links:
           - text: "Azure SQL Capacity Planning: Overview"
