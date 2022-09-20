@@ -86,7 +86,7 @@ landingContent:
             url: mission-critical-health-modeling.md#video-define-a-health-model-for-your-mission-critical-workload
           - text: Continuously validate your workload
             url: mission-critical-deployment-testing.md#video-continuously-validate-your-mission-critical-workload
-          - text: Using multiple subscriptions
+          - text: Use multiple subscriptions
             url: mission-critical-application-design.md#video-subscription-structure            
       - linkListType: video
         links:
