@@ -36,7 +36,7 @@ These critical design principles for sustainability resonate and extend the qual
 
 ## Principles of green software
 
-Microsoft is actively working toward sustainability targets, and empowers every organization to help reduce emissions and improve our environmental health. The Azure Well-Architected Framework workload for sustainability aligns with the [Principles of Green Software Engineering](https://principles.green/) from the [Green Software Foundation](https://greensoftware.foundation/projects/principles-of-green-software-engineering).
+Microsoft is actively working toward sustainability targets, and empowers every organization to help reduce emissions and improve our environmental health. The Azure Well-Architected Framework workload for sustainability aligns with the [Green Software Principles](https://learn.greensoftware.foundation/practitioner/introduction/) from the [Green Software Foundation](https://greensoftware.foundation/projects/principles-of-green-software-engineering).
 
 The principles of green software are the starting point to understand the [SCI model](sustainability-design-methodology.md#measure-and-track-carbon-impact) and how this will be included in our framework.
 
@@ -44,13 +44,13 @@ The principles of green software are the starting point to understand the [SCI m
 
 The application or software must emit the least amount of carbon possible. A carbon efficient cloud application is one that is optimized, and the starting point is the cost – streamlining the application infrastructure and cost will ensure that no unnecessary resources are wasted in the cloud to run the software. But this isn't enough, as you might have cost-optimized your application but still waste tons of resources that emit carbon for no reason.
 
-- Read more about the [carbon principle](https://principles.green/principles/carbon/) in the Principles of Sustainable Green Software Engineering.
+- Read more about the [Carbon Efficiency principle](https://learn.greensoftware.foundation/practitioner/carbon-efficiency) from the Green Software Foundation.
 
 ## Energy efficiency
 
 The goal of this principle is that you build applications that are energy-efficient. This is a common pattern for mobile applications, since they must rely on a battery powered device and are optimizing its consumption. It's less common, however, for desktop or web applications, since until now, developers have never been asked to optimize the electricity consumption of their software.
 
-- Read more about the [electricity principle](https://principles.green/principles/electricity/) in the Principles of Sustainable Green Software Engineering.
+- Read more about the [Energy Efficiency principle](https://learn.greensoftware.foundation/practitioner/energy-efficiency) from the Green Software Foundation
 
 ## Carbon awareness
 
@@ -61,7 +61,7 @@ We need to make the application aware of how much carbon it's emitting. This way
 Demand shifting|Demand shifting means moving the workloads and resources to regions or data centers, or a time in the data center where the energy supply is high and the demand is lower and can be met by renewable energy. Delaying running apps to a time when there's less demand should result in lower carbon intensity.
 |Demand shaping|Demand shaping means changing the application's behavior and appearance to match the energy supply in real-time. A good practice is to build an eco-version of the app and keep it as a benchmark for demand shaping and carbon optimization.|
 
-- Read more about [demand shaping](https://principles.green/principles/demand-shaping/) in the Principles of Sustainable Green Software Engineering.
+- Read more about the [Carbon Awareness principle](https://learn.greensoftware.foundation/practitioner/carbon-awareness) from the Green Software Foundation.
 
 ## Hardware efficiency
 
@@ -69,13 +69,27 @@ Embodied carbon is the carbon that was emitted to build a device. Therefore, a s
 
 Consider the tradeoff that older devices can have power inefficiencies, and may not always be suitable.
 
-- Read more about [embodied carbon](https://principles.green/principles/embodied-carbon/) in the Principles of Sustainable Green Software Engineering.
+- Read more about the [Hardware Efficiency principle](https://learn.greensoftware.foundation/practitioner/hardware-efficiency) from the Green Software Foundation.
 
 ## Measuring sustainability
 
 Measuring carbon emissions of a cloud application is a complex task, as it involves the whole ecosystem of the software: from the cloud infrastructure (where we have the emissions dashboards to help us out), to the network path that is crossed, to the edge technology and user devices. With the SCI, we aren't targeting a discrete measurement of carbon emissions, but a score that will change over time and with our optimization techniques.
 
-- Read more about [measurement and optimization](https://principles.green/principles/measurement/) in the Principles of Sustainable Green Software Engineering.
+- Read more about the [Measurement](https://principles.green/principles/measurement/) from the Green Software Foundation.
+
+## Climate commitments
+
+Many corporations and groups have made commitments to the climate. They actively work toward new sustainability goals with a primary objective to remove, reduce and prevent carbon emissions.
+
+There are several options for reducing the carbon footprint of any organization or entity. However, and aligned with the goal of the Green Software Foundation, our main direction should always be to avoid emitting carbon in the first place. This is what we call Abatement, or Carbon Elimination.
+
+Once we've pursued this goal, there will still be emissions that can't be avoided. All the remaining carbon reduction methodologies will help us do so, offsetting (either compensating or neutralizing carbon).
+
+Your company's strategy can be a mix of all the possible methodologies and, depending on the final result, can reach a Net Zero target when carbon emissions are eliminated where possible and the residual emissions compensated.
+
+The [SCI equation](sustainability-design-methodology.md#measure-and-track-carbon-impact) aims to eliminate emissions, which should always be the primary goal of a sustainable workload, and the score can only be reduced with abatement.
+
+- Read more about the [Climate Commitments](https://learn.greensoftware.foundation/practitioner/climate-commitments) from the Green Software Foundation.
 
 ## Next steps
 

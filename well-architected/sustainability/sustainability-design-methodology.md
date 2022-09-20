@@ -61,7 +61,7 @@ Find more in-depth details and definitions in [Azure's Scope 3 Methodology White
 
 ### Measure and track carbon impact
 
-Microsoft aligns with the [Green Software Foundation](https://greensoftware.foundation), responsible for creating the [Software Carbon Intensity](https://greensoftware.foundation/projects/software-carbon-intensity-sci-specification) (SCI) specification.
+Microsoft aligns with the [Green Software Foundation](https://greensoftware.foundation), responsible for creating the [Software Carbon Intensity](https://learn.greensoftware.foundation/practitioner/measurement#the-sci-equation) (SCI) specification.
 
 To measure the carbon impact of an application, the GSF provided a scoring methodology called SCI, calculated as follows:
 

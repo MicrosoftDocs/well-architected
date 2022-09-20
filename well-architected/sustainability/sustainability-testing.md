@@ -27,11 +27,17 @@ Organizations developing and deploying solutions to the cloud also need reliable
 
 Testing applications with unit testing, load testing, or any other intense testing capability may result in much processing. A well-crafted design for testing the deployed workloads can help ensure full utilization of the available resources, reducing carbon emissions.
 
+_Green Software Foundation alignment: [Carbon awareness](sustainability-design-principles.md#carbon-awareness)_
+
 **Recommendation:**
 
 - Where you have the data available to you, plan for running testing when the data center's energy mix primarily uses renewable energy. It may, for example, be more beneficial to run testing during the night in some regions.
 
 ### Automate CI/CD to scale worker agents as needed
+
+Running underutilized or inactive CI/CD agents results in more emissions.
+
+_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
 
 **Recommendation:**
 
@@ -47,6 +53,8 @@ Measuring, profiling, and testing workloads are imperative to understanding how 
 
 Without properly profiling and testing workloads, it's difficult to know if it's making the best use of the underlying platform and deployed resources.
 
+_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
+
 **Recommendation:**
 
 - Test your applications to understand concurrent requests, simultaneous processing, and more.
@@ -57,6 +65,8 @@ Without properly profiling and testing workloads, it's difficult to know if it's
 ### Assess with chaos engineering
 
 Running unit and load tests increase the reliability of a workload. However, the introduction of chaos engineering can significantly help improve reliability and resilience and how the applications react to failures. In doing so, the workload can be optimized to handle failures gracefully and with less wasted resources.
+
+_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
 
 **Recommendation:**
 
@@ -69,6 +79,8 @@ Running unit and load tests increase the reliability of a workload. However, the
 Help build tests for testing sustainability in your application. Consider having a baseline CPU utilization measurement, and detect abnormal changes to the CPU utilization baseline when tests run. With a baseline, suboptimal decisions made in recent code changes can be discovered earlier.
 
 Adding tests and quality gates into the deployment and testing pipeline helps avoid deploying non-sustainable solutions, contributing to lowered emissions.
+
+_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
 
 **Recommendation:**
 

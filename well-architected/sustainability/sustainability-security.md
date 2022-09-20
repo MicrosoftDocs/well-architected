@@ -29,6 +29,8 @@ Use cloud native security monitoring solutions to optimize for sustainability.
 
 Traditionally, log collection methods for ingestion to a Security Information and Event Management (SIEM) solution required the use of an intermediary resource to collect, parse, filter and transmit logs onward to the central collection system. Using this design can carry an overhead with more infrastructure and associated financial and carbon-related costs.
 
+_Green Software Foundation alignment: [Carbon efficiency](sustainability-design-principles.md#carbon-efficiency)_
+
 **Recommendation:**
 
 - Using cloud native [service-to-service connectors](/azure/sentinel/connect-data-sources#service-to-service-integration-for-data-connectors) simplify the integration between the services and the SIEM, and removes the overhead of extra infrastructure.
@@ -40,6 +42,8 @@ Traditionally, log collection methods for ingestion to a Security Information an
 
 Conventional SIEM solutions required all log data to be ingested and stored in a centralized location. In a multicloud environment, this solution can lead to a large amount of data being transferred out fo a cloud service provide and into another, causing increased burden on the network and storage infrastructure.
 
+_Green Software Foundation alignment: [Carbon efficiency](sustainability-design-principles.md#carbon-efficiency)_
+
 **Recommendation:**
 
 - Cloud native security services can perform localized analysis on relevant security data source. This analysis allows the bulk of log data to remain within the source cloud service provider environment. Cloud native SIEM solutions can be [connected via an API or connector](/azure/sentinel/connect-aws) to these security services to transmit only the relevant security incident or event data. This solution can greatly reduce the amount of data transferred while maintaining a high level of security information to respond to an incident.
@@ -50,6 +54,8 @@ In time, using the described approach helps reduce data egress and storage costs
 
 Consider the complexity and cost of storing all logs from all possible sources. For instance, applications, servers, diagnostics and platform activity.
 
+_Green Software Foundation alignment: [Carbon efficiency](sustainability-design-principles.md#carbon-efficiency)_
+
 **Recommendation:**
 
 - When designing a log collection strategy for cloud native SIEM solutions, consider the use cases based on the [Microsoft Sentinel analytics rules](/azure/sentinel/detect-threats-built-in) required for your environment and match up the required log sources to support those rules.
@@ -58,6 +64,8 @@ Consider the complexity and cost of storing all logs from all possible sources. 
 ### Archive log data to long-term storage
 
 Many customers have a requirement to store log data for an extended period due to regulatory compliance reasons. In these cases, storing log data in the primary storage location of the SIEM system is a costly solution.
+
+_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
 
 **Recommendation:**
 
@@ -71,6 +79,8 @@ Increase the efficiency and avoid unnecessary traffic by following good practice
 
 When you use a centralized routing- and firewall design, all network traffic is sent to the hub for inspection, filtering, and onward routing. While this approach centralizes policy enforcement, it can create an overhead on the network of unnecessary traffic from the source resources.
 
+_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency), [Carbon efficiency](sustainability-design-principles.md#carbon-efficiency)_
+
 **Recommendation:**
 
 - Use [Network security groups](/azure/virtual-network/network-security-groups-overview) and [Application security groups](/azure/virtual-network/application-security-groups) to help filter traffic at the source, and to remove the unnecessary data transmission. Using these capabilities can help reduce the burden on the cloud infrastructure, with lower bandwidth requirements and less infrastructure to own and manage.
@@ -78,6 +88,8 @@ When you use a centralized routing- and firewall design, all network traffic is 
 ### Minimize routing from endpoints to the destination
 
 In many customer environments, especially in hybrid deployments, all end user device network traffic is routed through on-premises systems before being allowed to reach the internet. Usually, this happens due to the requirement to inspect all internet traffic. Often, this requires higher capacity network security appliances within the on-premises environment, or more appliances within the cloud environment.
+
+_Green Software Foundation alignment: [Carbon efficiency](sustainability-design-principles.md#carbon-efficiency)_
 
 **Recommendation:**
 
@@ -87,6 +99,8 @@ In many customer environments, especially in hybrid deployments, all end user de
 ### Use network security tools with auto-scaling capabilities
 
 Based on network traffic, there will be times when demand of the security appliance will be high, and other times where it will be lower. Many network security appliances are deployed to a scale to cope with the highest expected demand, leading to inefficiencies. Additionally, reconfiguration of these tools often requires a reboot leading to unacceptable downtime and management overhead.
+
+_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
 
 **Recommendation:**
 
@@ -98,6 +112,8 @@ Based on network traffic, there will be times when demand of the security applia
 
 Terminating and re-establishing TLS is CPU consumption that might be unnecessary in certain architectures.
 
+_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+
 **Recommendation:**
 
 - Consider if you can terminate TLS at your border gateway and continue with non-TLS to your workload load balancer and onwards to your workload.
@@ -107,6 +123,8 @@ Terminating and re-establishing TLS is CPU consumption that might be unnecessary
 ### Use DDoS protection
 
 Distributed Denial of Service (DDoS) attacks aim to disrupt operational systems by overwhelming them, creating a significant impact on the resources in the cloud. Successful attacks flood network and compute resources, leading to an unnecessary spike in usage and cost.
+
+_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
 
 **Recommendation:**
 
@@ -123,6 +141,8 @@ Many attacks on cloud infrastructure seek to misuse deployed resources for the a
 
 Both of these cases involve taking control of customer-operated compute resources and use them to either create new cryptocurrency coins, or as a network of resources from which to launch a secondary action like a DDoS attack, or mass e-mail spam campaigns.
 
+_Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
+
 **Recommendations:**
 
 - Integrate [Microsoft Defender for Endpoint](/azure/defender-for-cloud/integration-defender-for-endpoint) with Defender for Cloud to identify and shut down crypto mining and botnets.
@@ -135,6 +155,8 @@ Getting the right information and insights at the right time is important for pr
 ### Tag security resources
 
 It can be a challenge to quickly find and report on all security appliances in your tenant. Identifying the security resources can help when designing a strategy for a more sustainable operating model for your business.
+
+_Green Software Foundation alignment: [Measuring sustainability](sustainability-design-principles.md#measuring-sustainability)_
 
 **Recommendation:**
 
