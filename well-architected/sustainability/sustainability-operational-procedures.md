@@ -106,6 +106,8 @@ _Green Software Foundation alignment: [Measuring sustainability](sustainability-
 
 Azure Policy is a powerful tool that can make some decisions for your cloud efficiency easier to implement. Consider defining one of more policies to keep your Azure virtual data center continuously optimized.
 
+_Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)_
+
 **Recommendation:**
 
 - Incorporate and use the [cost policies](/azure/cloud-adoption-framework/govern/cost-management/policy-statements) available in the Cloud Adoption Framework.
@@ -125,6 +127,8 @@ Creating a sustainability community doesn't have to be a tedious task. Start wit
 
 The Core cloud Efficiency team will have to be up to date with all the innovative tools and principles that drive your Azure workload's cost and carbon footprint.
 
+_Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)_
+
 **Recommendation:**
 
 - Define policies and targets, and communicate their efforts and goals with the rest of the organization.
@@ -133,6 +137,8 @@ The Core cloud Efficiency team will have to be up to date with all the innovativ
 ### Plan for learning
 
 Make time for the core team to learn about advancements in sustainable operations. Meanwhile, ensure that your entire organization starts thinking about green software and how to contribute to the sustainability picture with their daily choices.
+
+_Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)_
 
 **Recommendation:**
 
@@ -146,7 +152,7 @@ Review these popular training and learning resources:
 
 Driving adoption of sustainability efforts requires input and work from across the organization.
 
-_Green Software Foundation alignment: [Carbon efficiency](sustainability-design-principles.md#carbon-efficiency)_
+_Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)_
 
 **Recommendation:**
 
@@ -159,6 +165,8 @@ _Green Software Foundation alignment: [Carbon efficiency](sustainability-design-
 The quickest way of enforcing policies and creating the right culture is by setting incentives for improving the environmental sustainability of a workload by either putting sustainability as a core KPI or adding it to the overall efficiency of the applications.
 
 Many software partners already include green software in their best practices. Therefore, ensure that your efficiency targets are defined and accepted when discussing the workload.
+
+_Green Software Foundation alignment: [Climate commitments](sustainability-design-principles.md#climate-commitments)_
 
 **Recommendations:**
 
