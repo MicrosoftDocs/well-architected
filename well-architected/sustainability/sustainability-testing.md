@@ -23,9 +23,9 @@ Organizations developing and deploying solutions to the cloud also need reliable
 
 ## Testing efficiency
 
-### Run unit, load or any other intense testing during low-carbon periods
+### Run integration, performance, load, or any other intense testing during low-carbon periods
 
-Testing applications with unit testing, load testing, or any other intense testing capability may result in much processing. A well-crafted design for testing the deployed workloads can help ensure full utilization of the available resources, reducing carbon emissions.
+Running integration, performance, load, or any other intense testing capability may result in much processing. A well-crafted design for testing the deployed workloads can help ensure full utilization of the available resources, reducing carbon emissions.
 
 _Green Software Foundation alignment: [Carbon awareness](sustainability-design-principles.md#carbon-awareness)_
 
