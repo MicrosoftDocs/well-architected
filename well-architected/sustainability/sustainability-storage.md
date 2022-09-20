@@ -41,6 +41,8 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 Querying extensive databases or retrieving much information simultaneously can have a performance penalty. Ideally, apps should optimize for query performance.
 
+_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+
 **Recommendation:**
 
 - Reduces the latency of data retrieval while also reducing the load on the database.
@@ -75,6 +77,8 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 Consider whether to store data in an online tier or an offline tier. Online tiers are optimized for storing data that is accessed or modified frequently. Offline tiers are optimized for storing data that is rarely accessed.
 
+_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+
 **Recommendation:**
 
 - Read [Hot, Cool, and Archive access tiers for blob data](/azure/storage/blobs/access-tiers-overview).
@@ -103,6 +107,8 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 ### Optimize the collection of logs
 
 Continuously collecting logs across workloads can quickly aggregate and store lots of unused data.
+
+_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
 
 **Recommendation:**
 
