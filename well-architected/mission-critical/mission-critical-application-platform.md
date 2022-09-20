@@ -496,6 +496,15 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 **TODO**
 
+* Avoid the use of IaaS Virtual Machines to the least minimum required. Prioritize the use of PaaS services or Containers when possible.
+* Replace IaaS dependencies with PaaS when possible to reduce operational complexity and cost.
+
+When IaaS VMs are required:
+* Identify and right-size the VM sku sizes used.
+* Make sure that operational processes for deployment, updates, backup and recovery are in place and properly tested.
+* Prioritize the use of managed images and use automated processes and tools like cloud-init to customize.
+* Consider using Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy.
+
 ## Next step
 
 Review the considerations for the data platform.
