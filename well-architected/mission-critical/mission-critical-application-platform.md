@@ -205,7 +205,7 @@ The considerations and recommendations within this section will therefore focus 
   - Using [Azure Spot VMs](/azure/aks/spot-node-pool) isn't recommended for highly available workloads. However, you can consider this option for development and testing environments as a way to optimize cost.
   - Evaluate application affinity and anti-affinity requirements and configure the appropriate colocation of containers on nodes.
 
-- Resources within the [node resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks) ('MC_') should not modified directly. Only via the AKS API. The name of the node resource group can be chosen at [cluster creation time](/azure/aks/faq#can-i-provide-my-own-name-for-the-aks-node-resource-group) only or with assistance from Azure Support.
+- Resources within the [node resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks) ('MC_') should not be modified directly, only via the AKS API. The name of the node resource group can be chosen at [cluster creation time](/azure/aks/faq#can-i-provide-my-own-name-for-the-aks-node-resource-group) only or with assistance from Azure Support.
 
 - Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.
 
