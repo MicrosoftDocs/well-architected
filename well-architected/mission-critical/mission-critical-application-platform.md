@@ -483,6 +483,15 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 **TODO**
 
+* The use of IaaS Virtual Machines massively increases the operational costs, compared to PaaS services, by bringing back the responsibility to manage the virtual machine, the operating oystem, rolling out software packages and updates and a lot more.
+
+* IaaS VMs do, compared to PaaS services, not provide zone-redundancy, geo-distribution and other capabilities out-of-the-box.
+
+* The use of IaaS Virtual Machines can be required in certain scenarios:
+  * The PaaS pendant does not provide the required performance or level of control.
+  * No PaaS pendant is available.
+  * A certain workload requires operating system access, specific drivers or network and system configuration or is not supported to run in containers.
+
 ### Design Recommendations
 
 **TODO**
