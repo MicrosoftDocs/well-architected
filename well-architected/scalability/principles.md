@@ -22,7 +22,7 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 
 *Horizontal scaling allows for elasticity*. Instances are added (scale-out) or removed (scale-in) in response to changes in load. Scaling out can improve resiliency by building redundancy. 
 
-|Approach|You'll be able to...|
+|Strategy|Benefit|
 |---|---|
 |Define a capacity model according to the business requirements |Test the limits for **predicted and random spikes and fluctuations** in load to make sure the application can scale. Factor in the SKU service limits and regional limits so that application scales as expected if there's a regional failure.|
 |Use PaaS offerings| Take advantage of the built-in capabilities that **automatically trigger scaling** operations instead of investing in manual scaling efforts that often require custom implementations and can be error prone.|
@@ -35,7 +35,7 @@ An alternate approach is vertical scaling. However, the application can eventual
 
 *Test early and test often*. 
 
-|Approach|You'll be able to...|
+|Strategy|Benefit|
 |---|---|
 |Run load and stress tests| Measure the application's performance under **predetermined amounts of load** and also the **maximum load** your application and its infrastructure can withstand.
 |Establish performance baselines|Determine the **current efficiency** of the application and its supporting infrastructure. You'll be able to identify bottlenecks early before it worsens with load. Also, this strategy can lead to **strategies for improvements** and determine if the application is meeting the business goals.
