@@ -22,9 +22,9 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 
 *Horizontal scaling allows for elasticity*. Instances are added (scale-out) or removed (scale-in) in response to changes in load. Scaling out can improve resiliency by building redundancy. 
 
-|Strategy|You'll be able to...|
+|Approach|You'll be able to...|
 |---|---|
-|Define a capacity model according to the business requirements |Test the limits for **predicted and random spikes and fluctuations** in load to make sure the application can scale. Factor in the SKU service limits and regional limits so that application scales as expected in case of regional failures.|
+|Define a capacity model according to the business requirements |Test the limits for **predicted and random spikes and fluctuations** in load to make sure the application can scale. Factor in the SKU service limits and regional limits so that application scales as expected if there's a regional failure.|
 |Use PaaS offerings| Take advantage of the built-in capabilities that **automatically trigger scaling** operations instead of investing in manual scaling efforts that often require custom implementations and can be error prone.|
 |Choose the right resources and right-size|Determine if the resources can support the anticipated load. Also, justify the cost implications of the choices.|
 |Apply strategies in your design early| Accelerate adoption without significant changes. For example, **strive for stateless application** and store state externally in a database or distributed cache. **Use caching** where possible, to minimize the processing load.|
@@ -33,19 +33,13 @@ An alternate approach is vertical scaling. However, the application can eventual
 
 ## Shift-left on performance testing
 
-*Test early and test often*. Any development effort must go through continuous performance testing to make sure changes to the codebase doesn't negatively affect performance. Run the test as part of the continuous integration (CI) build pipeline.
+*Test early and test often*. 
 
-|Strategy|You'll be able to...|
+|Approach|You'll be able to...|
 |---|---|
 |Run load and stress tests| Measure the application's performance under **predetermined amounts of load** and also the **maximum load** your application and its infrastructure can withstand.
-|Establish performance baselines|Determine the current efficiency of the application and its supporting infrastructure. Also, this can lead to strategies for improvements and determine if the application is meeting the business goals.
-
-
-- **Identify bottlenecks**&mdash;Bottlenecks is an area within your application that can hinder performance. These spots can be the result of shortages in code or misconfiguration of a service. Typically, a bottleneck worsens as load increases.
-
-- **Troubleshoot performance issues**&mdash;Issues in performance can arise from database queries, connectivity between services, under-provisioned resources, or memory leaks in code. Application telemetry and profiling can be useful tools for troubleshooting your application.
-
-
+|Establish performance baselines|Determine the **current efficiency** of the application and its supporting infrastructure. You'll be able to identify bottlenecks early before it worsens with load. Also, this strategy can lead to **strategies for improvements** and determine if the application is meeting the business goals.
+|Run the test in the continuous integration (CI) build pipeline.|Detect issues early. Any development effort must go through continuous performance testing to make sure changes to the codebase doesn't negatively affect performance. |
 
 ## Continuously monitor for performance in production
 
