@@ -42,13 +42,13 @@ An alternate approach is vertical scaling. However, the application can eventual
 |Run the test in the continuous integration (CI) build pipeline.|Detect issues early. Any development effort must go through continuous performance testing to make sure changes to the codebase doesn't negatively affect performance. |
 
 ## Continuously monitor for performance in production
-*Observe the system holistcally*. Capture the test results not only in dev/test environment but also in prodcution. TBD - why?
+*Observe the system holistically*. Capture the test results not only in dev/test environment but also in production. TBD - why?
 
 |Strategy|Benefit|
 |---|---|
 |Monitor the health of entire solution|Know about the  scalability _and_ resiliency of the infrastructure, application, and dependent services.|
 |Capture data from repeatable processes| Evaluate the metrics over time that would allow for autoscaling with demand. For reliability, look for early warning signs that might require proactive intervention.|
-|Re-evaluate the needs of the workload continously|Identify improvement opportunities with resolution planning. This  effort may require updated configurations and deprecations in favor of more-appropriate solutions.|
+|Reevaluate the needs of the workload continuously|Identify improvement opportunities with resolution planning. This  effort may require updated configurations and deprecations in favor of more-appropriate solutions.|
 
 
 ## Next section
