@@ -18,8 +18,9 @@ ms.custom:
 # Application platform considerations for mission-critical workloads on Azure
 
 Azure provides many [compute services](/azure/architecture/guide/technology-choices/compute-decision-tree) for hosting highly available applications. The services differ in capability and complexity. We recommend that you fully understand the capability matrix with focus on:
+
 - Non-functional requirements surrounding reliability, availability, performance, and security.
-- Decision factors such as scalability, cost, operability, and complexity. 
+- Decision factors such as scalability, cost, operability, and complexity.
 
 The selection of an appropriate application hosting platform is a critical decision that has impact on all other design areas. For example, the scale-limits of a particular service will have a key bearing on suitability and the overall application design in terms of scale-unit definitions. A mission-critical application can use more than one compute service in parallel to support multiple composite workloads and microservices with distinct platform requirements.
 
@@ -97,7 +98,7 @@ There are several Azure application platforms capable of effectively hosting con
 
 There are advantages and disadvantages associated with each of these Azure container platforms which should be analyzed in the context of business requirements to inform an optimal technical choice; each platform serves an optimal choice for certain scenarios. However, given the principles underpinning the  design methodology strive to optimize reliability, scalability, and performance, it's strongly recommended to prioritize the use of Azure Kubernetes Service.
 
-Azure Kubernetes Service (AKS) is Microsoft Azure's native managed Kubernetes service which allows for rapid Kubernetes cluster provisioning without complex cluster administration activities, and enhances standard Kubernetes with a rich feature set that includes advanced networking and identity capabilities. 
+Azure Kubernetes Service (AKS) is Microsoft Azure's native managed Kubernetes service which allows for rapid Kubernetes cluster provisioning without complex cluster administration activities, and enhances standard Kubernetes with a rich feature set that includes advanced networking and identity capabilities.
 
 ### Design considerations
 
@@ -112,30 +113,24 @@ The considerations and recommendations within this section will therefore focus 
   - Kubernetes has a steep learning curve, so if development teams are new, it will require non-trivial engineering investment to set up and maintain a Kubernetes environment in a secure and reliable way.
   - Kubernetes as well as managed Kubernetes offerings like AKS are widely available and can address concerns reg. vendor lock-in.
 
-- AKS provides a [control plane](https://kubernetes.io/docs/concepts/overview/components/) that is managed by Microsoft.
-  - By default the control plane of AKS is provided free of charge, but without any guaranteed SLA.
-  - Customers only manage and pay for the worker nodes which form the cluster.
+- Default 'vanilla' Kubernetes requires significant configuration to ensure a suitable security posture for business-critical application scenarios. AKS addresses various security risks out of the box, such as support for private clusters, auditing and logging into Log Analytics, and hardened node images.
 
-- The optional [AKS Uptime SLA](/azure/aks/uptime-sla) provides availability guarantees for the Kubernetes control plane.
-  - 99.95% availability of the Kubernetes API server endpoint for AKS Clusters that use Azure Availability Zones.
-  - 99.9% availability for AKS Clusters that don't use Azure Availability Zones.
+- AKS provides a [control plane](https://kubernetes.io/docs/concepts/overview/components/) that is managed by Microsoft. By default the control plane of AKS is provided free of charge, but without any guaranteed SLA. Customers only manage and pay for the worker nodes which form the cluster.
+
+- The optional [AKS Uptime SLA](/azure/aks/uptime-sla) provides availability guarantees for the Kubernetes control plane. 99.95% availability of the Kubernetes API server endpoint for AKS Clusters that use Azure Availability Zones and 99.9% availability for AKS Clusters that don't use Azure Availability Zones.
 
 - Some foundational configuration decisions have to be made upfront and can't be changed without re-deploying an AKS cluster.
   - Selection between public and private AKS clusters.
   - Enabling Azure Network Policy.
   - Azure AD integration and the use of Managed Identities for AKS instead of Service Principals.
 
-- AKS supports [three minor versions of Kubernetes](/azure/aks/supported-kubernetes-versions).
-  - When a new minor version is introduced, the oldest supported minor version and patch releases are retired.
-  - The Kubernetes community releases minor versions roughly every three months.
-  - [AKS Kubernetes releases](/azure/aks/supported-kubernetes-versions?tabs=azure-cli#aks-kubernetes-release-calendar) are aligned with the Kubernetes community and supported for 12 month.
+- AKS supports [three minor versions of Kubernetes](/azure/aks/supported-kubernetes-versions) in alignment with the [Kubernetes community](/azure/aks/supported-kubernetes-versions?tabs=azure-cli#aks-kubernetes-release-calendar). When a new minor version is introduced, the oldest supported minor version and patch releases are retired.
 
-- AKS supports [updating node images](/azure/aks/node-image-upgrade) to the newest OS and runtime versions without updating the Kubernetes version of the cluster or node pool. The AKS team provides new images per week with the latest updates, including Linux or Windows patches.
+- AKS supports [updating node images](/azure/aks/node-image-upgrade) to the newest OS and runtime versions without updating the Kubernetes version of the cluster or node pool. The AKS team releases new images on a weekly basis for Windows and Linux nodes.
 
-- AKS supports different [auto-upgrade channels](/azure/aks/upgrade-cluster#set-auto-upgrade-channel) to upgrade AKS clusters to newer versions of Kubernetes and/or newer node images automatically once available.
-  - [Planned Maintenance](/azure/aks/planned-maintenance) can be used to define maintenance windows for these operations.
+- AKS supports different [auto-upgrade channels](/azure/aks/upgrade-cluster#set-auto-upgrade-channel) to automatically upgrade AKS clusters to newer versions of Kubernetes and/or newer node images once available. [Planned Maintenance](/azure/aks/planned-maintenance) can be used to define maintenance windows for these operations.
 
-- AKS supports different network plugins. The [Azure CNI plugin](/azure/aks/concepts-network#compare-network-models) is required to enable certain capabilities within AKS, such as Windows-based node pools or Kubernetes Network Policies.
+- AKS supports different network plugins. The [Azure CNI plugin](/azure/aks/concepts-network#compare-network-models) is required to enable certain capabilities within AKS, such as Windows-based node pools or Kubernetes Network Policies. It also supports [bring-your-own-cni](/azure/aks/use-byo-cni) for specific use cases.
 
 - AKS differentiates between [system node pools](/azure/aks/use-system-pools#system-and-user-node-pools) and user node pools to separate system and workload services. User node pools can be [scaled down to 0](/azure/aks/scale-cluster#scale-user-node-pools-to-0) nodes if needed.
 
@@ -144,10 +139,6 @@ The considerations and recommendations within this section will therefore focus 
 - Azure Monitor for containers (Container Insights) provides a seamless onboarding experience, enables various monitoring capabilities out of the box as well as more advanced scenarios via its built-in [Prometheus scraping](/azure/azure-monitor/insights/container-insights-prometheus-integration) support.
 
 - AKS offers integration with Azure AD to enable the use of Managed Identities for AKS as well as for node pool and individual pods, Role Based Access Control (RBAC) using Azure AD credentials as well as [authentication with Azure Container Registry (ACR)](/azure/aks/cluster-container-registry-integration).
-
-- Default 'vanilla' Kubernetes requires significant configuration to ensure a suitable security posture for business-critical application scenarios.
-  - AKS addresses various security risks out of the box, such as support for private clusters, auditing and logging into Log Analytics, and hardened node images.
-  - Runtime Application Self-protection (RASP) tooling, such as Aquasec, can be deployed to AKS clusters to provide additional security functionality.
 
 - [Azure Policy](/azure/aks/use-pod-security-on-azure-policy) can help to apply at-scale enforcements and safeguards to AKS clusters in a consistent centralized manner.
   - Azure Policy can control what functions pods are granted, and if running contradicts policy. This access is defined through built-in policies provided by the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes).
@@ -224,10 +215,9 @@ The considerations and recommendations within this section will therefore focus 
   - Utilize [Azure Active Directory integration](/azure/aks/managed-aad) to take advantage of centralized account management and passwords, application access management, and identity protection.
   - Use Kubernetes RBAC with Azure Active Directory for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to protect configuration and secrets access.
   - Limit access to the [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file with Azure role-based access control.
-  - Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources).
-    - Provide the least number of permissions, and avoid the use of root / privileged escalation.
-  - Evaluate the use of the built-in [AppArmor security module](/azure/aks/operator-best-practices-cluster-security#app-armor) to limit actions that containers can perform such as read, write, or execute, or system functions such as mounting filesystems.
-  - Evaluate the use of the [seccomp (secure computing)](/azure/aks/operator-best-practices-cluster-security#secure-computing), which works at the process level to limit the process calls that containers can perform.
+  - Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources), provide the least number of permissions and avoid the use of root / privileged escalation.
+
+- Apply configuration guidance provided within the [AKS security baseline](/security/benchmark/azure/baselines/aks-security-baseline).
 
 - Utilize [Azure Monitor and Application Insights](/azure/azure-monitor/insights/container-insights-overview) to centrally collect metrics, logs, and diagnostics from AKS resources for troubleshooting purposes.
   - Enable and review [Kubernetes master node logs](/azure/aks/view-master-logs).
@@ -242,12 +232,7 @@ The considerations and recommendations within this section will therefore focus 
 
 - Ensure AKS subscription [scale limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-kubernetes-service-limits) are appropriately considered when designing the AKS deployment model to ensure requisite scalability.
 
-- Apply configuration guidance provided within the [AKS security baseline](/security/benchmark/azure/baselines/aks-security-baseline).
-
 - Consider and apply the guidance provided within the [AKS checklist](https://www.the-aks-checklist.com/) to ensure alignment with Well-Architected best practice guidance.
-
-- Leverage a declarative deployment approach using either Terraform, ARM or BICEP.
-  - Ensure all deployments are repeatable and traceable within a source-code repository that can be combined with a GitOps based approach.
 
 - Store container images within [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
   - Enable [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all leveraged AKS regions.
@@ -398,23 +383,19 @@ This section will therefore explore key decision factors when selecting an appro
 
 - Azure Event Hubs are designed as a **event streaming** service to scale to multi million messages per second.
 
-- Event Hubs support messages sizes of up to 1 MB.
-
 - Event Hubs supports Availability Zones (AZs) for zonal redundancy within supported regions in all pricing tiers.
 
-- Azure Event Hubs Namespaces support configurable failover replication between regions, however, only configuration metadata is replicated, but **not messages themselves**.
-  - Configuration that is being replicated includes: Event Hubs (inside a Namespace), Consumer Groups, Namespace Authorization Rules, and Event Hubs Authorization Rules.
+- Azure Event Hubs Namespaces support configurable failover replication between regions, however, only configuration metadata is replicated, but **not messages themselves**. Configuration that is being replicated includes: Event Hubs (inside a Namespace), Consumer Groups, Namespace Authorization Rules, and Event Hubs Authorization Rules.
 
 - Azure Event Hubs can be configured to [capture raw data into Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview)
-  - Event Hubs Capture to Azure Storage or Data Lake Storage records the captured data within.Avro file.
 
 - Data can be processed from Event Hubs by a client using the [Event Processor SDK](/azure/event-hubs/event-processor-balance-partition-load), or by [Azure Stream Analytics](/azure/event-hubs/process-data-azure-stream-analytics).
 
-- Event Hubs can be deployed as a dedicated-tier Event Hubs cluster for high throughput and a 99.99% SLA.
-  - Premium tier also offers a 99.99% SLA.
-  - The Basic and Standard tiers for a single tenant provide a 99.95% SLA.
+- Event Hubs can be deployed as a dedicated-tier Event Hubs cluster for high throughput and a 99.99% SLA. The Basic and Standard tiers for a single tenant provide a 99.95% SLA.
 
 - Event Hubs provide an Apache Kafka-compatible [messaging interface](/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview).
+
+See [Azure Event Hubs quotas and limits](/azure/event-hubs/event-hubs-quotas) for more details.
 
 **Azure Service Bus**
 
@@ -436,8 +417,7 @@ This section will therefore explore key decision factors when selecting an appro
 
 - Through the geo-replication feature of Azure Storage Accounts, Storage Queues can be configured to asynchronously replicate to another region.
 
-- Storage Queues provide the same SLA as their underlying Storage Accounts.
-  - 99.99% SLA on read requests for RA-GRS and 99.9% for write requests.
+- Storage Queues provide the same SLA as their underlying Storage Accounts. A 99.99% SLA on read requests for RA-GRS and 99.9% for write requests.
 
 See [Scalability and performance targets for Queue Storage](/azure/storage/queues/scalability-targets) for more details about service limitations.
 
@@ -445,8 +425,7 @@ See [Scalability and performance targets for Queue Storage](/azure/storage/queue
 
 - Azure Event Grid is designed as a **event distribution** service for reactive programming.
 
-- Event Grid integrates with many Azure services as event sources.
-  - For example, Event Grid can be configured to react to status changes on Azure resources.
+- Event Grid integrates with many Azure services as event sources. For example, Event Grid can be configured to react to status changes on Azure resources.
 
 - Event Grid provides a SLA of 99.99% for message publishing.
 
