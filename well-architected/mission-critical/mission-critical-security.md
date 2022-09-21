@@ -339,7 +339,7 @@ This section will therefore explore key considerations and recommendations surro
 - Use Azure Policy to enforce a consistent tagging schema across the application.
   - Identify required Azure tags and use the append policy mode to enforce usage.
 
-> If the application is subscribed to Microsoft Mission-Critical Support, ensure that the applied tagging schema provides meaningful context to enrichen the support experience with deep application understanding.
+> If the application is subscribed to Microsoft Mission-Critical Support, ensure that the applied tagging schema provides meaningful context to enrich the support experience with deep application understanding.
 
 - Export Azure AD activity logs to the global Log Analytics Workspace used by the application.
   - Ensure Azure activity logs are archived within the global Storage Account along with operational data for long-term retention.
@@ -348,11 +348,29 @@ This section will therefore explore key considerations and recommendations surro
 
 - Integrate security information and event management with Microsoft Defender for Cloud (formerly known as Azure Security Center).
 
+## IaaS specific considerations when using Virtual Machines
+
+In scenarios where the use of IaaS Virtual Machines is required, some specifics have to taken into consideration.
+
+### Design considerations
+
+- Images are not updated automatically once deployed.
+- Updates are not installed automatically to running VMs.
+
+### Design recommendations
+
+- Do not allow direct access via the public Internet to Virtual Machines by providing access to SSH, RDP or other protocols. Always use Azure Bastion and jumpboxes with limited access to a small group of users.
+- Restrict direct internet connectivity.
+- Prioritize the use of Public Key authentication, when possible. Store secrets in a secure place like Azure Key Vault.
+- Protect VMs by using authentication and access control.
+- Encrypt virtual hard disk files.
+- Apply the same security practices as described for mission-critical application scenarios.
+
+Follow apply security practices for mission-critical application scenarios as described above, when applicable, as well as the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
+
 ## Next step
 
 Review the best practices for operational procedures for mission-critical application scenarios.
 
 > [!div class="nextstepaction"]
 > [Operational procedures](./mission-critical-operational-procedures.md)
-
-
