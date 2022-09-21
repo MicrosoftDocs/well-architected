@@ -501,6 +501,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 When IaaS VMs are required:
 * Identify and right-size the VM sku sizes used.
+* Avoid any manual operations and implement proper processes to deploy and rollout changes.
 * Make sure that operational processes for deployment, updates, backup and recovery are in place and properly tested.
 * Prioritize the use of managed images and use automated processes and tools like cloud-init to customize.
 * Consider using Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy.
