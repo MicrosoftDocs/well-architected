@@ -497,7 +497,10 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 **TODO**
 
-* Avoid the use of IaaS Virtual Machines to the least minimum required. Prioritize the use of PaaS services or Containers when possible.
+The general recommendations are:
+
+* Reduce the use of IaaS Virtual Machines to the least minimum required. 
+* Prioritize the use of PaaS services or Containers when possible.
 * Replace IaaS dependencies with PaaS when possible to reduce operational complexity and cost.
 
 When IaaS VMs are required:
