@@ -477,40 +477,37 @@ This section will therefore explore key decision factors when selecting an appro
 
 Many mission-critical applications already consider an existing on-premises deployment, which often utilize virtualization technologies and redundant hardware to provide high levels of reliability. Often these scenarios will encompass business constraints which hinder the overall applicability of cloud modernization to fully align with cloud-native mission-critical architecture pattern. More specifically, many applications will adopt a phased cloud adoption approach, with initial cloud deployments considering virtualization and Azure Virtual Machines as the primary application hosting model.
 
-This section will therefore focus on the optimal usage of Azure Virtual Machines and associated services in order to maximise the reliability of the application platform, highlighting key aspects of the mission-critical design methodology which transpose cloud-native and IaaS migration scenarios. 
+This section will therefore focus on the optimal usage of Azure Virtual Machines and associated services in order to maximise the reliability of the application platform, highlighting key aspects of the mission-critical design methodology which transpose cloud-native and IaaS migration scenarios.
 
 ### Design Considerations
 
-**TODO**
+- The use of IaaS Virtual Machines massively increases the operational costs, compared to PaaS services, by bringing back the responsibility to manage the virtual machine, the operating system, rolling out software packages and updates and a lot more.
 
-* The use of IaaS Virtual Machines massively increases the operational costs, compared to PaaS services, by bringing back the responsibility to manage the virtual machine, the operating oystem, rolling out software packages and updates and a lot more.
+- IaaS VMs do, compared to PaaS services, not provide zone-redundancy, geo-distribution and other capabilities out-of-the-box. Same is true for DevOps processes like rolling out software packages, dependencies. The use of PaaS (or containers) should be prioritized when possible.
 
-* IaaS VMs do, compared to PaaS services, not provide zone-redundancy, geo-distribution and other capabilities out-of-the-box. Same is true for DevOps processes like rolling out software packages, dependencies. The use of PaaS (or containers) should be prioritzed when possible.
-
-* The use of IaaS Virtual Machines can be required in certain scenarios:
-  * The available PaaS services do not provide the required performance or level of control.
-  * No PaaS service pendant is available.
-  * A certain workload requires operating system access, specific drivers or network and system configuration or is not supported to run in containers.
-  * Lack of support for 3rd-party workloads.
+- The use of IaaS Virtual Machines can be required in certain scenarios:
+  - The available PaaS services do not provide the required performance or level of control.
+  - No PaaS service pendant is available.
+  - A certain workload requires operating system access, specific drivers or network and system configuration or is not supported to run in containers.
+  - Lack of support for 3rd-party workloads.
 
 ### Design Recommendations
 
-**TODO**
-
 The general recommendations are:
 
-* Reduce the use of IaaS Virtual Machines to the least minimum required. 
-* Prioritize the use of PaaS services or Containers when possible.
-* Replace IaaS dependencies with PaaS when possible to reduce operational complexity and cost.
+- Reduce the use of IaaS Virtual Machines to the least minimum required.
+- Prioritize the use of PaaS services or Containers when possible.
+- Replace IaaS dependencies with PaaS when possible to reduce operational complexity and cost.
 
 When IaaS VMs are required:
-* Identify and right-size the VM sku sizes used.
-* Avoid any manual operations and implement proper processes to deploy and rollout changes.
-* Make sure that operational processes for deployment, updates, backup and recovery are in place and properly tested.
-* Prioritize the use of managed images and use automated processes and tools like cloud-init to customize.
-* Consider using Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy.
-* Prioritize stateless workloads that allow horizontal scale instead of vertical scale.
-* Do not address individual virtual machines directly, use load balancers in front when possible.
+
+- Identify and right-size the VM sku sizes used.
+- Avoid any manual operations and implement proper processes to deploy and rollout changes.
+- Make sure that operational processes for deployment, updates, backup and recovery are in place and properly tested.
+- Prioritize the use of managed images and use automated processes and tools like cloud-init to customize.
+- Consider using Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy.
+- Prioritize stateless workloads that allow horizontal scale instead of vertical scale.
+- Do not address individual virtual machines directly, use load balancers in front when possible.
 
 ## Next step
 
