@@ -42,20 +42,13 @@ An alternate approach is vertical scaling. However, the application can eventual
 |Run the test in the continuous integration (CI) build pipeline.|Detect issues early. Any development effort must go through continuous performance testing to make sure changes to the codebase doesn't negatively affect performance. |
 
 ## Continuously monitor for performance in production
+*Observe the system holistcally*. Capture the test results not only in dev/test environment but also in prodcution. TBD - why?
 
-- **Have a data-driven approach**&mdash;Base your decisions on the data captured from repeatable processes. Archive data to monitor performance changes  _over time_, not just compared to the last measurement taken.
-
-- **Monitor the health of current workloads**&mdash;In monitoring strategy, consider scalability _and_ resiliency of the infrastructure, application, and dependent services. For scalability, look at the metrics that would allow you to provision resources dynamically and scale with demand. For reliability, look for early warning signs that might require proactive intervention.
-
-[**Identify improvement opportunities with resolution planning**](optimize.md)
-
-Understand the scope of your planned resolution and communicate the changes to all necessary stakeholders. Make code enhancements through a new build. Enhancements to infrastructure may involve many teams. This involved effort may require updated configurations and deprecations in favor of more-appropriate solutions.
-
-[**Understand the challenges of distributed architectures**](design-distributed.md)
-
-Most cloud deployments are based on distributed architectures where components are distributed across various services. Troubleshooting monolithic applications often requires only one or two lenses—the application and the database. With distributed architectures, troubleshooting is complex and challenging because of various factors. For example, capturing telemetry throughout the application—across all services—as possible. Also, the team should be skilled with the necessary expertise to troubleshoot all services in your architecture.
-
-
+|Strategy|Benefit|
+|---|---|
+|Monitor the health of entire solution|Know about the  scalability _and_ resiliency of the infrastructure, application, and dependent services.|
+|Capture data from repeatable processes| Evaluate the metrics over time that would allow for autoscaling with demand. For reliability, look for early warning signs that might require proactive intervention.|
+|Re-evaluate the needs of the workload continously|Identify improvement opportunities with resolution planning. This  effort may require updated configurations and deprecations in favor of more-appropriate solutions.|
 
 
 ## Next section
