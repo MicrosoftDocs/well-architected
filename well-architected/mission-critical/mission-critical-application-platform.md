@@ -509,6 +509,8 @@ When IaaS VMs are required:
 * Make sure that operational processes for deployment, updates, backup and recovery are in place and properly tested.
 * Prioritize the use of managed images and use automated processes and tools like cloud-init to customize.
 * Consider using Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy.
+* Prioritize stateless workloads that allow horizontal scale instead of vertical scale.
+* Do not address individual virtual machines directly, use load balancers in front when possible.
 
 ## Next step
 
