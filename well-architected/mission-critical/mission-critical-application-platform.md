@@ -475,7 +475,7 @@ This section will therefore explore key decision factors when selecting an appro
 
 ## Constrained Migrations using IaaS
 
-Many mission-critical applications already consider an existing on-premises deployment, which often utilize virtualization technologies and redundant hardware to provide high levels of reliability. Often these scenarios will encompass business constraints which hinder the overall applicability of cloud modernization to fully align with cloud-native mission-critical architecture pattern. More specifically, many applications will adopt a phased coud adoption approach, with initial cloud deployments considering virtualization and Azure Virtual Machines as the primary application hosting model.
+Many mission-critical applications already consider an existing on-premises deployment, which often utilize virtualization technologies and redundant hardware to provide high levels of reliability. Often these scenarios will encompass business constraints which hinder the overall applicability of cloud modernization to fully align with cloud-native mission-critical architecture pattern. More specifically, many applications will adopt a phased cloud adoption approach, with initial cloud deployments considering virtualization and Azure Virtual Machines as the primary application hosting model.
 
 This section will therefore focus on the optimal usage of Azure Virtual Machines and associated services in order to maximise the reliability of the application platform, highlighting key aspects of the mission-critical design methodology which transpose cloud-native and IaaS migration scenarios. 
 
