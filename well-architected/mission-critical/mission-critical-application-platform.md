@@ -488,9 +488,10 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 * IaaS VMs do, compared to PaaS services, not provide zone-redundancy, geo-distribution and other capabilities out-of-the-box.
 
 * The use of IaaS Virtual Machines can be required in certain scenarios:
-  * The PaaS pendant does not provide the required performance or level of control.
-  * No PaaS pendant is available.
+  * The available PaaS services do not provide the required performance or level of control.
+  * No PaaS service pendant is available.
   * A certain workload requires operating system access, specific drivers or network and system configuration or is not supported to run in containers.
+  * Lack of support for 3rd-party workloads.
 
 ### Design Recommendations
 
