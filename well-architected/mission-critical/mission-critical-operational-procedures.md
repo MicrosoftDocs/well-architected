@@ -169,6 +169,21 @@ This section will therefore highlight key operational aspects associated with ap
   - Ensure a process exists to reconciliate any manual changes back into the source repository, avoiding drift and issue recurrence.
   - Establish an automated housekeeping procedure to [remove old image versions from Azure Container Registry](/azure/container-registry/container-registry-auto-purge).
 
+## Special considerations when using IaaS Virtual Machines
+
+In scenarios where the use of IaaS Virtual Machines is required, some of the procedures and practices described above might differ. The use of Virtual Machines provides more flexibility in regards to configuration options, selection of operating systems, access to drivers and low-level operating system access as well as to the kind of software that can be installed. The price for that are increased operational costs and responsibility for tasks that are usually done by the cloud provider when using PaaS services.
+
+### Design Considerations
+
+- Individual VMs do not provide high availability, zone or geo-redundancy.
+- Individual VMs are not automatically updated once deployed.
+
+### Design Recommendations
+
+- Prioritize the use of VMSS over VMs. To enable capabilities like scale, autoscale and provide zone-redundancy.
+- Prioritize the use of standard images from the Azure Marketplace over custom images that need to maintained.
+- Use [Azure VM Image Builder](/azure/virtual-machines/image-builder-overview) to build and maintain customized images.
+
 ## Next step
 
 Review the cross-cutting concerns for mission-critical application scenarios.
