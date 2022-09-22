@@ -361,7 +361,8 @@ In scenarios where the use of IaaS Virtual Machines is required, some specifics 
 ### Design recommendations
 
 - Do not allow direct access via the public Internet to Virtual Machines by providing access to SSH, RDP or other protocols. Always use Azure Bastion and jumpboxes with limited access to a small group of users.
-- Restrict direct internet connectivity.
+- Restrict direct internet connectivity by using Network Security Groups or (Azure) Firewall to filter and restrict egress traffic.
+- For multi-tier applications consider using different subnets and use Network Security Groups to restrict access in between.
 - Prioritize the use of Public Key authentication, when possible. Store secrets in a secure place like Azure Key Vault.
 - Protect VMs by using authentication and access control.
 - Encrypt virtual hard disk files.

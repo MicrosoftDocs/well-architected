@@ -178,6 +178,7 @@ In scenarios where the use of IaaS Virtual Machines is required, some of the pro
 - Individual VMs do not provide high availability, zone or geo-redundancy.
 - Individual VMs are not automatically updated once deployed.
 - Services running inside a VM need special treatment and additional tooling to be deployed and configured via Infra-as-Code.
+- Azure periodically updates its platform and might require a reboot. These reboots are usually announced in advance. See [Maintenance for virtual machines in Azure](/azure/virtual-machines/maintenance-and-updates) and [Handling planned maintenance notifications](/azure/virtual-machines/maintenance-notifications).
 
 ### Design Recommendations
 
