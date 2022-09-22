@@ -356,6 +356,7 @@ In scenarios where the use of IaaS Virtual Machines is required, some specifics 
 
 - Images are not updated automatically once deployed.
 - Updates are not installed automatically to running VMs.
+- Images and individual VMs are typically not hardened out-of-the-box.
 
 ### Design recommendations
 
