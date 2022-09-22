@@ -187,7 +187,7 @@ While there are no built-in policies that are related to cost optimization, cust
 
 Making workloads more [sustainable and cloud efficient](/azure/architecture/framework/sustainability/sustainability-get-started), requires combining efforts around **cost optimization**, **reducing carbon emissions**, and **optimizing energy consumption**. Optimizing the application's cost is the initial step in making workloads more sustainable.
 
-Learn how to build sustainable and efficient AKS workloads,in [the AKS sustainable software engineering concepts](/azure/aks/concepts-sustainable-software-engineering).
+Learn how to build sustainable and efficient AKS workloads, in [the AKS sustainable software engineering concepts](/azure/aks/concepts-sustainable-software-engineering).
 
 ## Operational excellence
 
