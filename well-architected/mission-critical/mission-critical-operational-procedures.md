@@ -177,6 +177,7 @@ In scenarios where the use of IaaS Virtual Machines is required, some of the pro
 
 - Individual VMs do not provide high availability, zone or geo-redundancy.
 - Individual VMs are not automatically updated once deployed.
+- Services running inside a VM need special treatment and additional tooling to be deployed and configured via Infra-as-Code.
 
 ### Design Recommendations
 
