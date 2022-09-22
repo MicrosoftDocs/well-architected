@@ -42,7 +42,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 Minimizing the amount of data transferred is crucial.
 
-_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
+_Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
 
 **Recommendation:**
 

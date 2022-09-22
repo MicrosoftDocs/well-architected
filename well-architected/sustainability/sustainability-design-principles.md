@@ -75,7 +75,7 @@ Consider the tradeoff that older devices can have power inefficiencies, and may 
 
 Measuring carbon emissions of a cloud application is a complex task, as it involves the whole ecosystem of the software: from the cloud infrastructure (where we have the emissions dashboards to help us out), to the network path that is crossed, to the edge technology and user devices. With the SCI, we aren't targeting a discrete measurement of carbon emissions, but a score that will change over time and with our optimization techniques.
 
-- Read more about the [Measurement](https://principles.green/principles/measurement/) from the Green Software Foundation.
+- Read more about the [Measurement](https://learn.greensoftware.foundation/practitioner/measurement) from the Green Software Foundation.
 
 ## Climate commitments
 
