@@ -377,6 +377,8 @@ items:
                   href: mission-critical/mission-critical-security.md
                 - name: Operational procedures
                   href: mission-critical/mission-critical-operational-procedures.md
+              - name: Assessment tool
+                href: mission-critical/mission-critical-assessment.md
           - name: Carrier-grade
             items:
               - name: Quick links
