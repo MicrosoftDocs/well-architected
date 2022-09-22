@@ -14,7 +14,7 @@ This article provides architectural best practices for Azure Kubernetes Service 
 
 - Reliability
 - Security
-- Cost optimization
+- Cost optimization and Cloud efficiency
 - Operational excellence
 - Performance efficiency
 
@@ -141,7 +141,7 @@ In addition to the built-in policies, custom policies can be created for both th
 
 For more suggestions, see [AKS security concepts](/azure/aks/concepts-security) and evalaute our security hardening recommendations based on the [CIS Kubernetes benchmark](/azure/aks/cis-kubernetes).
 
-## Cost optimization
+## Cost optimization and Cloud efficiency
 
 Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principles](/azure/architecture/framework/cost/principles).
 
@@ -182,6 +182,12 @@ For more suggestions, see [Principles of the cost optimization pillar](/azure/ar
 ### Policy definitions
 
 While there are no built-in policies that are related to cost optimization, custom policies can be created for both the AKS resource and for the Azure Policy add-on for Kubernetes. This allows you to add additional cost optimization constraints you'd like to enforce in your cluster and workload architecture.
+
+### Cloud efficiency
+
+Making workloads more [sustainable and cloud efficient](/azure/architecture/framework/sustainability/sustainability-get-started), requires combining efforts around **cost optimization**, **reducing carbon emissions**, and **optimizing energy consumption**. Optimizing the application's cost is the initial step in making workloads more sustainable.
+
+Learn how to build sustainable and efficient AKS workloads,in [the AKS sustainable software engineering concepts](/azure/aks/concepts-sustainable-software-engineering).
 
 ## Operational excellence
 
