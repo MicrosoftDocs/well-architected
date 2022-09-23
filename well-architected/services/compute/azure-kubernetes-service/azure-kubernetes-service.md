@@ -143,7 +143,7 @@ For more suggestions, see [AKS security concepts](/azure/aks/concepts-security) 
 
 ## Cost optimization
 
-Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principles](/azure/architecture/framework/cost/principles).
+Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principles](/azure/architecture/framework/cost/principles). Tightly associated with (but not limited to) cost optimization is sustainability. Cost optimization goals typically support workload sustainability goals as well.
 
 When discussing cost optimization with Azure Kubernetes Service, it's important to distinguish between *cost of cluster resources* and *cost of workload resources*. Cluster resources is a shared responsibility between the cluster admin and their resource provider, while workload resources are the domain of a developer. Azure Kubernetes Service has considerations and recommendations for both of these roles.
 
@@ -182,6 +182,12 @@ For more suggestions, see [Principles of the cost optimization pillar](/azure/ar
 ### Policy definitions
 
 While there are no built-in policies that are related to cost optimization, custom policies can be created for both the AKS resource and for the Azure Policy add-on for Kubernetes. This allows you to add additional cost optimization constraints you'd like to enforce in your cluster and workload architecture.
+
+### Cloud efficiency
+
+Making workloads more sustainable and cloud efficient, requires combining efforts around **cost optimization**, **reducing carbon emissions**, and **optimizing energy consumption**. Optimizing the application's cost is the initial step in making workloads more sustainable.
+
+Learn how to build sustainable and efficient AKS workloads, in [Sustainable software engineering principles in Azure Kubernetes Service (AKS)](/azure/aks/concepts-sustainable-software-engineering).
 
 ## Operational excellence
 
