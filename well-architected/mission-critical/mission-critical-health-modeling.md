@@ -38,7 +38,7 @@ There are three main levels of operational maturity when striving to maximize re
 
 ## Video: Define a health model for your mission-critical workload
 
-> [!VIDEO https://learn-video.azurefd.net/vod/player?id=fd8c4e50-9d7f-4df0-97cb-d0474b581398&embedUrl=azure/architecture/framework/mission-critical/mission-critical-health-modeling]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=fd8c4e50-9d7f-4df0-97cb-d0474b581398&embedUrl=/azure/architecture/framework/mission-critical/mission-critical-health-modeling]
 
 ## Layered application health
 
