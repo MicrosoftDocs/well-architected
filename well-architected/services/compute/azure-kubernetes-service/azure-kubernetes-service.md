@@ -185,7 +185,7 @@ While there are no built-in policies that are related to cost optimization, cust
 
 ### Cloud efficiency
 
-Making workloads more sustainable and cloud efficient, requires combining efforts around **cost optimization**, **reducing carbon emissions**, and **optimizing energy consumption**. Optimizing the application's cost is the initial step in making workloads more sustainable.
+Making workloads more [sustainable and cloud efficient](../../../sustainability/sustainability-get-started.md), requires combining efforts around **cost optimization**, **reducing carbon emissions**, and **optimizing energy consumption**. Optimizing the application's cost is the initial step in making workloads more sustainable.
 
 Learn how to build sustainable and efficient AKS workloads, in [Sustainable software engineering principles in Azure Kubernetes Service (AKS)](/azure/aks/concepts-sustainable-software-engineering).
 
