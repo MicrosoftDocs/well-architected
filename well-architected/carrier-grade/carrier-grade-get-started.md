@@ -26,7 +26,7 @@ Mission-critical systems primarily focus on maximizing uptime and they exist in 
 This series of articles uses the applies the [design methodology for mission-critical workloads](/azure/architecture/framework/mission-critical/mission-critical-design-methodology) to inform prescriptive guidance for building and operating a highly reliable, resilient, and available telecommunication workload on Azure. 
 
 >[!NOTE]
-> The articles within this series focus on providing additional considerations when designing for 99.999% ('5 9s') levels of reliability for a mission-critical workload within the telecommunications industry.
+> The articles within this series focus on providing additional mission-critical considerations when designing for 99.999% ('5 9s') levels of reliability within the telecommunications industry.
 
 ## What is a carrier-grade workload?
 
