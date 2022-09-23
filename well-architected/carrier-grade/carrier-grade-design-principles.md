@@ -34,6 +34,7 @@ There are obvious [cost tradeoffs](/azure/architecture/framework/mission-critica
 > This article is part of the [Azure Well-Architected carrier-grade workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a carrier-grade workload](carrier-grade-get-started.md#what-is-a-carrier-grade-workload)?
 
 Keep this high-level architecture model in mind when considering these points.
+
 ![Diagram showing the high level architecture model of carrier-grade workloads.](./images/architecture-overview.png "Carrier Grade High-level Architecture")
 
 ## Assume failure
