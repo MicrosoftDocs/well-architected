@@ -17,7 +17,7 @@ ms.custom:
 
 # Overview of the security pillar
 
-Information Security has always been a complex subject, and it evolves quickly with the creative ideas and implementations of attackers and security researchers. The origin of security vulnerabilities started with identifying and exploiting common programming errors and unexpected edge cases. However over time, the attack surface that an attacker may explore and exploit has expanded well beyond these common errors and edge cases. Attackers now freely exploit vulnerabilities in system configurations, operational practices, and the social habits of the systems' users. As system complexity, connectedness, and the variety of users increase, attackers have more opportunities to identify unprotected edge cases. Attackers can *hack* systems into doing things they weren't designed to do.
+Information security has always been a complex subject, and it evolves quickly with the creative ideas and implementations of attackers and security researchers. The origin of security vulnerabilities started with identifying and exploiting common programming errors and unexpected edge cases. However over time, the attack surface that an attacker may explore and exploit has expanded well beyond these common errors and edge cases. Attackers now freely exploit vulnerabilities in system configurations, operational practices, and the social habits of the systems' users. As system complexity, connectedness, and the variety of users increase, attackers have more opportunities to identify unprotected edge cases. Attackers can *hack* systems into doing things they weren't designed to do.
 
 Security is one of the most important aspects of any architecture. It provides the following assurances against deliberate attacks and abuse of your valuable data and systems:
 
@@ -53,7 +53,7 @@ Cloud providers must be compliant with the same IT regulatory requirements as th
 
 :::image type="content" source="./images/shared-resp-color.png" alt-text="A diagram of shared responsibility and key strategies.":::
 
-**Shared Responsibility and Key Strategies**
+**Shared Responsibility and Key Strategies:**
 
 After reading this document, you'll be equipped with key insights about how to improve the security posture of your architecture.
 
@@ -96,7 +96,7 @@ We cover the following areas in the security pillar of the Microsoft Azure Well-
 
 ## Identity management
 
-Consider using Azure Active Directory (Azure AD) to authenticate and authorize users. Azure AD is a fully managed identity and access management service. You can use it to create domains that exist purely on Azure, or integrate with your on-premises Active Directory identities. 
+Consider using Azure Active Directory (Azure AD) to authenticate and authorize users. Azure AD is a fully managed identity and access management service. You can use it to create domains that exist purely on Azure, or integrate with your on-premises Active Directory identities.
 
 Azure AD also integrates with:
 
@@ -130,7 +130,7 @@ Use [Azure role-based access control (Azure RBAC role)][rbac] to grant users wit
 
 In general, the security best practices for application development still apply in the cloud. Best practices include:
 
-- Use `SSL/TLS` everywhere
+- Encrypt data in-transit with the latest supported `TLS` versions
 - Protect against `CSRF` and `XSS` attacks
 - Prevent SQL injection attacks
 
@@ -152,6 +152,16 @@ Use Key Vault to safeguard cryptographic keys and secrets. By using Key Vault, y
 - [Microsoft Defender for Cloud][security-center] provides integrated security monitoring and policy management for your workload.
 - [Azure Security Documentation][security-documentation]
 - [Microsoft Trust Center][trust-center]
+
+The security pillar is part of a comprehensive set of security guidance that also includes:
+
+- [Security in the Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/secure): A high-level overview of a cloud security end state.
+- [Security architecture design](/azure/architecture/guide/security/security-start-here): Implementation-level journey of our security architectures.
+  - [Browse our security architectures](/azure/architecture/browse/?azure_categories=security)
+- [Azure security benchmarks](/security/benchmark/azure): Prescriptive best practices and controls for Azure security.
+- [End-to-end security in Azure](/azure/security/fundamentals/end-to-end): Documentation that introduces you to the security services in Azure.
+- [Top 10 security best practices for Azure](/azure/cloud-adoption-framework/secure/security-top-10): Top Azure security best practices that Microsoft recommends based on lessons learned across customers and our own environments.
+- [Microsoft Cybersecurity Architectures](/security/cybersecurity-reference-architecture/mcra): The diagrams describe how Microsoft security capabilities integrate with Microsoft platforms and 3rd-party platforms.
 
 ### Next step
 

@@ -3,7 +3,7 @@ title: Mission-critical workloads
 description: Overview of mission-critical workloads on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
-ms.date: 06/17/2022
+ms.date: 08/15/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -17,15 +17,19 @@ ms.custom:
 
 # Mission-critical workloads
 
-This section of the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework) strives to address the challenges of building mission-critical workloads on Azure. The guidance is based on lessons learned from reviewing numerous customer applications and first-party solutions. This section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
+This section strives to address the challenges of designing mission-critical workloads on Azure. The guidance is based on lessons learned from reviewing numerous customer applications and first-party solutions. This section provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
 
 ## What is a mission-critical workload?
 
 The term _workload_ refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
 
-The term _mission-critical_ refers to a [criticality classification](/azure/cloud-adoption-framework/manage/considerations/criticality) where a significant financial cost (business-critical) or human cost (safety-critical) is associated with unavailability or underperformance.
+The term _mission-critical_ refers to a criticality scale that covers significant financial cost (business-critical) or human cost (safety-critical) associated with unavailability or underperformance.
 
-A _mission-critical workload_ therefore describes a collection of application resources which must be highly reliable on the platform, and strive to always be operational and available.
+A _mission-critical workload_ therefore describes a collection of application resources, which must be highly reliable on the platform. The workload must always be available, resilient to failures, and operational.
+
+## Video: Mission-critical workloads on Azure
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE52ryK]
 
 ## What are the common challenges?
 
@@ -55,39 +59,32 @@ Mission-critical guidance within this series is composed of architectural consid
 
 ![Mission-critical design areas](./images/mission-critical-design-areas.svg "Mission-critical design areas")
 
-The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. The focus is ultimately on building a highly reliable application.
+The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. We recommend that readers familiarize themselves with these design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions. For example, to define a target architecture it's critical to determine how best to monitor application health across key components. In this instance, the reader should review the **health modeling** design area, using the outlined recommendations to help drive decisions.
 
-- **Application design**&mdash;Cloud application design patterns that allow for scaling, and error handling. 
-- **Application platform**&mdash;Hosting environment choices, application dependencies, frameworks, and libraries.
-- **Data platform**&mdash;Choices in data store technologies, informed by evaluating required volume, velocity, variety, and veracity characteristics.
-- **Networking and connectivity**&mdash;Network topology considerations at an application level, considering requisite connectivity and redundant traffic management.
-- **Health modeling**&mdash;Observability considerations through customer impact analysis correlated monitoring to determine overall application health.
-- **Deployment and testing**&mdash;Strategies for CI/CD pipelines and automation considerations, with incorporated testing scenarios, such as synchronized load testing and failure injection (chaos) testing.
-- **Security**&mdash;Mitigation of attack vectors through Microsoft Zero Trust model.
-- **Operational procedures**&mdash; Processes related to deployment, key management, patching and updates.
-
-We recommend that readers familiarize themselves with these design areas, reviewing provided considerations and recommendations to better understand the consequences of encompassed decisions. For example, to define a target architecture it's critical to determine how best to monitor application health across key components. In this instance, the reader should review the **health modeling** design area, using the outlined recommendations to help drive decisions.
+|Design area|Summary|
+|---|---|
+|[**Application design**](mission-critical-application-design.md)|The use of a scale-unit architecture in the context of building a highly reliable application. Also explores the cloud application design patterns that allow for scaling, and error handling.|
+|[**Application platform**](mission-critical-application-platform.md)| Decision factors and recommendations related to the selection, design, and configuration of an appropriate application hosting platform, application dependencies, frameworks, and libraries.|
+|[**Data platform**](mission-critical-data-platform.md)|Choices in data store technologies, informed by evaluating the required&mdash;volume, velocity, variety, veracity. |
+|[**Networking and connectivity**](mission-critical-networking-connectivity.md)|Network topology concepts at an application level, considering requisite connectivity and redundant traffic management. Critical recommendations intended to inform the design of a secure and scalable global network topology.|
+|[**Health modeling and observability**](mission-critical-health-modeling.md)|Processes to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity.|
+|[**Deployment and testing**](mission-critical-deployment-testing.md)| Eradicate downtime and maintain application health for deployment operations, providing key considerations and recommendations intended to inform the design of optimal CI/CD pipelines for a mission-critical application.|
+|[**Security**](mission-critical-security.md)|Protect the application against threats intended to directly or indirectly compromise its reliability.|
+|[**Operational procedures**](mission-critical-operational-procedures.md)|Adoption of DevOps and related deployment methods is used to drive effective and consistent operational procedures.|
 
 ## Illustrative examples
 
-The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available as part of an open source project on GitHub. These implementations can be used as a basis for further solution development.
+The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available as part of the [Mission-Critical open source project](http://github.com/azure/mission-critical) on GitHub. These implementations can be used as a basis for further solution development.
 
-> [!IMPORTANT]
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical).
+- [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)&mdash;Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure. The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate.
 
-- [Reference architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)
+  > Refer to the implementation: [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
 
-  [Implementation: Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
-
-  Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure.
-  
-  _The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate._
+- [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)&mdash;Extends the baseline architecture with strict network controls in place to prevent unauthorized public access from the internet to any of the workload resources.
 
 - [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) 
 
-  Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints.
-  
-  _The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads._
+  Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints. The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads.
 
 ## Next step
 
