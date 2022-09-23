@@ -42,17 +42,23 @@ The principles of green software are the starting point to understand the [SCI m
 
 ## Carbon efficiency
 
+- Principle: Emit the least amount of carbon possible.
+
 The application or software must emit the least amount of carbon possible. A carbon efficient cloud application is one that is optimized, and the starting point is the cost – streamlining the application infrastructure and cost will ensure that no unnecessary resources are wasted in the cloud to run the software. But this isn't enough, as you might have cost-optimized your application but still waste tons of resources that emit carbon for no reason.
 
 - Read more about the [Carbon Efficiency principle](https://learn.greensoftware.foundation/practitioner/carbon-efficiency) from the Green Software Foundation.
 
 ## Energy efficiency
 
+- Principle: Use the least amount of energy possible.
+
 The goal of this principle is that you build applications that are energy-efficient. This is a common pattern for mobile applications, since they must rely on a battery powered device and are optimizing its consumption. It's less common, however, for desktop or web applications, since until now, developers have never been asked to optimize the electricity consumption of their software.
 
 - Read more about the [Energy Efficiency principle](https://learn.greensoftware.foundation/practitioner/energy-efficiency) from the Green Software Foundation
 
 ## Carbon awareness
+
+- Principle: Do more when the electricity is cleaner and do less when the electricity is dirtier.
 
 We need to make the application aware of how much carbon it's emitting. This way, we can react to specific conditions of energy supply using demand shifting and demand shaping techniques:
 
@@ -65,6 +71,8 @@ Demand shifting|Demand shifting means moving the workloads and resources to regi
 
 ## Hardware efficiency
 
+- Principle: Use the least amount of embodied carbon possible.
+
 Embodied carbon is the carbon that was emitted to build a device. Therefore, a sustainable application will make sure older devices are supported and will maximize the efficiency of each device.  The goal is to build hardware-efficient applications.
 
 Consider the tradeoff that older devices can have power inefficiencies, and may not always be suitable.
@@ -73,11 +81,15 @@ Consider the tradeoff that older devices can have power inefficiencies, and may 
 
 ## Measuring sustainability
 
+- Principle: What you can't measure, you can't improve.
+
 Measuring carbon emissions of a cloud application is a complex task, as it involves the whole ecosystem of the software: from the cloud infrastructure (where we have the emissions dashboards to help us out), to the network path that is crossed, to the edge technology and user devices. With the SCI, we aren't targeting a discrete measurement of carbon emissions, but a score that will change over time and with our optimization techniques.
 
 - Read more about the [Measurement](https://learn.greensoftware.foundation/practitioner/measurement) from the Green Software Foundation.
 
 ## Climate commitments
+
+- Principle: Understand the exact mechanism of reduction.
 
 Many corporations and groups have made commitments to the climate. They actively work toward new sustainability goals with a primary objective to remove, reduce and prevent carbon emissions.
 
