@@ -23,7 +23,7 @@ High availability requires careful health monitoring to automatically detect and
 The failure rate analysis and general health modeling of the application should generate clear metrics indicative of the service and health of its constituent elements. These metrics must be included in the design so that the true service availability can be monitored. By including metrics, you can track the most useful leading indicators to trigger the automated failure responses and to generate the necessary alerts for human intervention.
 
  > [!IMPORTANT]
-> More details on how to build your own health model for mission-critical workloads are available [here](/azure/architecture/framework/mission-critical/mission-critical-health-modeling).
+> More details on how to build a health model for your mission-critical workload are available [here](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#video-define-a-health-model-for-your-mission-critical-workload).
 
 ## Management and monitoring
 
