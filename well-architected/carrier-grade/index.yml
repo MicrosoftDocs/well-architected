@@ -1,7 +1,7 @@
 ### YamlMime:Landing
 
 title: Carrier-grade workload documentation
-summary: In this series, learn about building highly reliable applications for carrier-grade workloads on Microsoft Azure.
+summary: In this series, learn about building highly reliable applications for carrier-grade workloads on Microsoft Azure.  Mission-critical systems primarily focus on maximizing uptime and they exist in many industries. Within the telecommunications industry they are referred to as carrier-grade systems. 
 metadata: 
   title: Mission-critical workload documentation
   description: Apply the design methodology and approach to building highly reliable applications on Microsoft Azure.
