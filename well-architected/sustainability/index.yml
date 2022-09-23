@@ -1,7 +1,7 @@
 ### YamlMime:Landing
 
 title: Sustainability workload documentation
-summary: In partnership with the Green Software Foundation, we've developed this set of recommendations for optimizing Azure workloads. This documentation helps you plan your path forward, improve your sustainability posture, and create new business value while reducing your operational footprint. Additionally, the documentation is part of a broader initiative to help customers and partners navigate the steep learning curve around evolving sustainability requirements and regulations for IT capabilities' development, deployment, and operations.
+summary: In partnership with the Green Software Foundation, we've developed this set of recommendations for optimizing Azure workloads. This documentation helps you plan your path forward, improve your sustainability posture, and create new business value while reducing your operational footprint.
 metadata: 
   title: Sustainability workload documentation
   description: Apply the design methodology and approach to building highly reliable applications on Microsoft Azure.
