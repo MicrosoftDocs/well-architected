@@ -16,14 +16,14 @@ ms.custom:
 
 # Carrier-grade workloads on Azure
 
-Mission-critical systems primarily focus on maximizing uptime and they exist in many industries.  Within the telecommunications industry they are referred to as _carrier-grade systems_.  These systems are developed due to one or more of the following drivers:
+Mission-critical systems primarily focus on maximizing uptime and they exist in many industries.  Within the telecommunications industry, they're are referred to as _carrier-grade systems_.  These systems are developed due to one or more of the following drivers:
 
 - Minimizing loss of life or injury. 
 - Meeting regulatory requirements on reliability to avoid paying fines. 
 - Optimizing service to customers to minimize churn to competitors. 
 - Meeting contractual Service Level Agreements (SLAs) with business or government customers. 
 
-This series of articles uses the applies the [design methodology for mission-critical workloads](/azure/architecture/framework/mission-critical/mission-critical-design-methodology) to inform prescriptive guidance for building and operating a highly reliable, resilient, and available telecommunication workload on Azure. 
+This series of articles applies the [design methodology for mission-critical workloads](/azure/architecture/framework/mission-critical/mission-critical-design-methodology) to inform prescriptive guidance for building and operating a highly reliable, resilient, and available telecommunication workload on Azure. 
 
 >[!NOTE]
 > The articles within this series focus on providing additional mission-critical considerations when designing for 99.999% ('5 9s') levels of reliability within the telecommunications industry.
@@ -56,7 +56,7 @@ However, in public cloud, it's reasonable to create a new deployment in parallel
 
 ### Monolithic solutions
 
-Experience across a range of mission-critical industries shows that it is not realistic to attempt to construct a monolithic solution which will achieve the desired levels of availability.  There are just too many potential sources of failure in a complex system.  Instead, successful solutions are composed of individual  independent and redundant elements.  Each unit has relatively basic availability (typically ~99.9%), but when combined together the total solution achieves the necessary availability goals.  The art of carrier-grade engineering then becomes ensuring that the only dependencies common to the redundant elements are those which are absolutely necessary since they exert the most significant influence on overall availability, often orders of magnitude greater than anything else in the design.
+Experience across a range of mission-critical industries shows that it isn't realistic to attempt to construct a monolithic solution which will achieve the desired levels of availability.  There are just too many potential sources of failure in a complex system.  Instead, successful solutions are composed of individual  independent and redundant elements.  Each unit has relatively basic availability (typically ~99.9%), but when combined together the total solution achieves the necessary availability goals.  The art of carrier-grade engineering then becomes ensuring that the only dependencies common to the redundant elements are those which are absolutely necessary since they exert the most significant influence on overall availability, often orders of magnitude greater than anything else in the design.
 
 ### Only building zonal redundancy
 
