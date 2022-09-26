@@ -4,7 +4,7 @@ description: This design area explores security design considerations for sustai
 author: Zimmergren
 ms.author: tozimmergren
 ms.topic: conceptual
-ms.date: 07/27/2022
+ms.date: 10/12/2022
 ms.service: architecture-center
 ms.subservice: well-architected
 categories: 

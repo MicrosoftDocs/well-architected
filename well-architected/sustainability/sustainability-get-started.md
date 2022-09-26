@@ -3,7 +3,7 @@ title: Sustainability workloads
 description: Overview of sustainability workloads on Azure that are highly reliable.
 author: Zimmergren
 ms.author: tozimmergren
-ms.date: 07/22/2022
+ms.date: 10/12/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -37,7 +37,7 @@ Making workloads more cloud efficient requires combining efforts around cost opt
 
 Here's a conceptual overview of cloud efficiency in this context:
 
-:::image type="content" source="./images/sustainability-shared-responsibility-cloud-efficiency.svg" alt-text="Diagram showing how to achieve cloud efficiency." border="false" lightbox="./images/sustainability-shared-responsibility-cloud-efficiency.svg":::
+:::image type="content" source="./images/sustainability-shared-responsibility-cloud-efficiency.svg" alt-text="Diagram showing how to achieve cloud efficiency." border="false":::
 
 Scoring and [measuring the cloud efficiency](sustainability-design-methodology.md#3understanding-your-emissions) is essential to understand whether changes tracked over time have any impact.
 
