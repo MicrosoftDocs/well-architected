@@ -3,7 +3,7 @@ title: Design methodology for sustainability workloads on Azure
 description: Understand the architectural process of building a sustainable application on Microsoft Azure.
 author: Zimmergren
 ms.author: tozimmergren
-ms.date: 07/27/2022
+ms.date: 10/12/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -21,13 +21,13 @@ Building a sustainable application on any cloud platform requires technical expe
 
 This design methodology aims to help establish an understanding about producing more carbon efficient solutions, measuring your carbon impact, and ultimately reducing unnecessary energy usage and emissions.
 
-## 1&mdash;Design for business requirements
+## 1—Design for business requirements
 
 Businesses globally have different requirements. Expect that the review considerations and design recommendations provided by this design methodology will yield different design decisions and trade-offs for different scenarios and organizations.
 
 Establish your business requirements and priorities, then review the design methodologies in alignment with those requirements.
 
-## 2&mdash;Evaluate the design areas using the design principles
+## 2—Evaluate the design areas using the design principles
 
 Refer to the sustainability [design principles](sustainability-design-principles.md) and the design areas below for your sustainability workloads.
 
@@ -43,7 +43,7 @@ Design areas:
 - [Network and connectivity](sustainability-networking.md)
 - [Security](sustainability-application-design.md)
 
-## 3&mdash;Understanding your emissions
+## 3—Understanding your emissions
 
 To lower your emissions, you need to understand how to measure your sustainability efforts.
 
@@ -88,7 +88,7 @@ Download the [Emissions Impact Dashboard Power BI app for Azure](https://appsour
 
 #### Leverage the Microsoft Sustainability Manager
 
-Customers using [Microsoft Cloud for Sustainability](/industry/sustainability/overview) can leverage [Microsoft Sustainability Manager](/industry/sustainability/sustainability-manager-overview'). This extensible solution unifies data intelligence and provides comprehensive, integrated, and automated sustainability management for organizations at any stage of their sustainability journey. It automates manual processes, enabling organizations to record, report, and reduce their emissions more efficiently.
+Customers using [Microsoft Cloud for Sustainability](/industry/sustainability/overview) can leverage [Microsoft Sustainability Manager](/industry/sustainability/sustainability-manager-overview). This extensible solution unifies data intelligence and provides comprehensive, integrated, and automated sustainability management for organizations at any stage of their sustainability journey. It automates manual processes, enabling organizations to record, report, and reduce their emissions more efficiently.
 
 #### Use a proxy solution to measure emissions
 
@@ -121,7 +121,7 @@ Therefore, building a carbon score dashboard can make use of the following proxi
 - Usage over time (requests, users, API calls, etc.)
 - Any extra measurement that is relevant to the application
 
-## 4&mdash;The shared responsibility model for sustainability
+## 4—The shared responsibility model for sustainability
 
 Reducing emissions is a shared responsibility between the cloud provider and the customer designing and deploying applications on the platform.
 
@@ -145,7 +145,7 @@ However, deploying an application in the Microsoft cloud doesn't automatically m
 
 The shared responsibility model for sustainable apps can be visualized like this:
 
-:::image type="content" source="./images/sustainability-shared-responsibility-apps.svg" alt-text="Diagram showing the shared responsibility model for sustainability." border="false" lightbox="./images/sustainability-shared-responsibility-apps.svg":::
+:::image type="content" source="./images/sustainability-shared-responsibility-apps.svg" alt-text="Diagram showing the shared responsibility model for sustainability." border="false":::
 
 _Let's take an example._
 

@@ -4,7 +4,7 @@ description: This design area explores operational procedures for sustainable wo
 author: Zimmergren
 ms.author: tozimmergren
 ms.topic: conceptual
-ms.date: 07/27/2022
+ms.date: 10/12/2022
 ms.service: architecture-center
 ms.subservice: well-architected
 categories: 
@@ -111,8 +111,8 @@ _Green Software Foundation alignment: [Climate commitments](sustainability-desig
 **Recommendation:**
 
 - Incorporate and use the [cost policies](/azure/cloud-adoption-framework/govern/cost-management/policy-statements) available in the Cloud Adoption Framework.
-- Leverage [built-in policies](http://azure/governance/policy/samples/built-in-policies) relevant to cost in Azure Policy, as they're technically closely tied to sustainability.
-- Customize Azure Policy policies according to green software principles. For example, create a new [Azure Policy initiative](http://azure/governance/policy/overview#initiative-definition) for "Sustainability".
+- Leverage [built-in policies](/azure/governance/policy/samples/built-in-policies) relevant to cost in Azure Policy, as they're technically closely tied to sustainability.
+- Customize Azure Policy policies according to green software principles. For example, create a new [Azure Policy initiative](/azure/governance/policy/overview#initiative-definition) for "Sustainability".
   - Consider this tradeoff: Enforcement of new policies must not impact any unplanned operational performance metric.
 
 ## Community and knowledge sharing

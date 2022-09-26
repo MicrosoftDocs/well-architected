@@ -3,7 +3,7 @@ title: Design principles for sustainability workloads on Azure
 description: Understand the design principles for building a sustainable application on Microsoft Azure.
 author: Zimmergren
 ms.author: tozimmergren
-ms.date: 07/22/2022
+ms.date: 10/12/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -32,11 +32,11 @@ It's important to effectively record, report, and reduce carbon emissions throug
 - Estimate savings
 - Take action to accelerate progress
 
-These critical design principles for sustainability resonate and extend the quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](/azure/architecture/framework/#reliability), [Security](/azure/architecture/framework/security/), [Cost Optimization](/azure/architecture/framework/cost/), [Operational Excellence](/azure/architecture/framework/devops/), and [Performance Efficiency](/azure/architecture/framework/scalability/).
+These critical design principles for sustainability resonate and extend the quality pillars of the Azure Well-Architected Framework—[Reliability](/azure/architecture/framework/#reliability), [Security](/azure/architecture/framework/security/), [Cost Optimization](/azure/architecture/framework/cost/), [Operational Excellence](/azure/architecture/framework/devops/), and [Performance Efficiency](/azure/architecture/framework/scalability/).
 
 ## Principles of green software
 
-Microsoft is actively working toward sustainability targets, and empowers every organization to help reduce emissions and improve our environmental health. The Azure Well-Architected Framework workload for sustainability aligns with the [Green Software Principles](https://learn.greensoftware.foundation/practitioner/introduction/) from the [Green Software Foundation](https://greensoftware.foundation/projects/principles-of-green-software-engineering).
+Microsoft is actively working toward sustainability targets, and empowers every organization to help reduce emissions and improve our environmental health. The Azure Well-Architected Framework workload for sustainability aligns with the [Green Software Principles](https://learn.greensoftware.foundation/practitioner/introduction/) from the [Green Software Foundation](https://greensoftware.foundation).
 
 The principles of green software are the starting point to understand the [SCI model](sustainability-design-methodology.md#measure-and-track-carbon-impact) and how this will be included in our framework.
 

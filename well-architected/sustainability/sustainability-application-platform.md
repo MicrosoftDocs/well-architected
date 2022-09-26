@@ -4,7 +4,7 @@ description: This design area explores application platform and infrastructure c
 author: Zimmergren
 ms.author: tozimmergren
 ms.topic: conceptual
-ms.date: 07/29/2022
+ms.date: 10/12/2022
 ms.service: architecture-center
 ms.subservice: well-architected
 categories: 
@@ -89,7 +89,7 @@ _Green Software Foundation alignment: [Carbon awareness](sustainability-design-p
 **Recommendation:**
 
 - Where you have the data available to you, plan your deployments to maximize compute utilization for running [batch workloads](/azure/architecture/data-guide/big-data/batch-processing) during low-carbon intensity periods.
-- Potential tradeoffs may include the effort and time it takes to move to a low-carbon region. Additionally, migrating data between data centers may not be carbon efficient, and the cost for new regions&mdash;including low-carbon regions&mdash;may be more expensive.
+- Potential tradeoffs may include the effort and time it takes to move to a low-carbon region. Additionally, migrating data between data centers may not be carbon efficient, and the cost for new regions-including low—carbon regions—may be more expensive.
 
 ## Modernization
 
@@ -104,7 +104,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 **Recommendation:**
 
 - Deploying apps as containers allows for bin packing and getting more out of a VM, ultimately reducing the need for duplication of libraries on the host OS.
-- Removes the overhead of managing an entire VM and allows to get more apps deployed per physical machine. Containerization also optimizes server utilization rates and improves service reliability, lowering operational costs. Fewer servers are needed, and the existing servers can be better utilized.
+- Removes the overhead of managing an entire VM, and allows deploying more apps per physical machine. Containerization also optimizes server utilization rates and improves service reliability, lowering operational costs. Fewer servers are needed, and the existing servers can be better utilized.
 - Consider these tradeoffs: The benefit of containerization will only realize if the utilization is high. Additionally, provisioning an orchestrator such as [Azure Kubernetes Services](/azure/aks/) (AKS) or [Azure Red Had OpenShift](/azure/openshift/) (ARO) for only a few containers would likely lead to higher emissions overall.
 
 ### Evaluate moving to PaaS and serverless workloads
@@ -120,7 +120,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 ### Use SPOT VMs where possible
 
-Think about the unused capacity in Azure data centers. Utilizing the otherwise wasted capacity&mdash;at significantly reduced prices&mdash;the workload contributes to a more sustainable platform design.
+Think about the unused capacity in Azure data centers. Utilizing the otherwise wasted capacity—at significantly reduced prices—the workload contributes to a more sustainable platform design.
 
 _Green Software Foundation alignment: [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
 
@@ -176,7 +176,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 ### Evaluate Ampere Altra Arm-based processors for Virtual Machines
 
-The Arm-based VMs represent a cost-effective and power-efficient option that does not compromise on the required performance.
+The Arm-based VMs represent a cost-effective and power-efficient option that doesn't compromise on the required performance.
 
 _Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency)_
 
