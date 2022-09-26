@@ -29,7 +29,7 @@ The questions are designed to benchmark a workload’s maturity and alignment to
 
 We recommend that the team conducting the assessment is well versed in the architecture of the specific workload and has a strong understanding of cloud principles. These roles include, but aren't limited to, cloud architect, security engineer, and product manager. 
 
-Working towards building a mission critical architecture can be a complex process; however, the assessment is organized in a way to methodically check that workloads remain aligned with the best practices for resiliency, reliability, and availability. 
+Working towards building a mission critical architecture can be a complex process; however, the assessment is organized in a way to methodically check that workloads remain aligned with the best practices for resiliency, reliability, and availability.
 
 > [!div class="nextstepaction"]
 > [Mission-critical review tool](TODO-insert-link)
