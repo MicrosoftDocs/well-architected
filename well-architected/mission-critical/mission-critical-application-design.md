@@ -111,7 +111,7 @@ This image demonstrates how the single subscription reference deployment model c
 
 ## Video: Subscription structure
 
-> [!VIDEO 013a2a82-dc85-4282-98ed-b1afe50afd41]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=013a2a82-dc85-4282-98ed-b1afe50afd41&embedUrl=/azure/architecture/framework/mission-critical/mission-critical-application-design]
 
 
 ## Global distribution

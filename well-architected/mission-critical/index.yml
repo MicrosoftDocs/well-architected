@@ -104,3 +104,12 @@ landingContent:
         links:
           - text: Mission-critical assessment tool
             url: mission-critical-assessment.md
+
+ # Card
+  - title: Industry Scenarios
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Carrier-grade
+            url: /azure/architecture/framework/carrier-grade/carrier-grade-get-started
+
