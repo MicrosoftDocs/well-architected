@@ -17,17 +17,19 @@ ms.custom:
 
 # Assessment review for mission-critical workloads
 
-The [Assessment](TODO-insert-link) is a review tool for self-assessing the readiness of your mission-critical workload in production. Working towards building a resilient mission critical architecture can be a complex process. The assessment is organized in a way that you'll be able to methodically check the alignment to the best practices for resiliency, reliability, and availability.
+This Assessment (TODO-insert-link) is intended to support operators in self-assessing their [mission-critical](/azure/architecture/framework/mission-critical/mission-critical-overview) workload’s production readiness. It is an effective tool to design, develop, deploy, and manage mission-critical workloads on Azure. Adoption of this framework addresses foundational considerations focused on the [Well Architected Framework (WAF)](/azure/architecture/framework/mission-critical/mission-critical-overview).
 
-The assessment is composed of questions that use mission-critical [**design principles**](mission-critical-design-principles.md) as a way of checking the foundational design choices of your architecture. It provides further technical analysis into the [eight design areas](mission-critical-overview.md#what-are-the-key-design-areas) of a workload.  
+It is composed of questions that leverage the [mission-critical design principles](/azure/architecture/framework/mission-critical/mission-critical-design-principles?branch=main) as a way of checking the foundational design choices of a workload’s architecture. In addition, the assessment provides greater technical depth of analysis through the incorporation of the [8 Key Design Areas](/azure/architecture/framework/mission-critical/mission-critical-overview). 
 
 ![Screenshot of the mission-critical review tool](TODO-insert-screenshot "Mission-critical assessment review tool")
 
-The assessment questions are designed to benchmark a workload’s maturity and alignment to the recommended  standard of operating a mission-critical workload. The outcome of the assessment is a set of recommendations and documentation that will guide you to deliver your solutions with higher fault tolerance, resilience, and performance certainty.  
+The questions are designed to benchmark a workload’s maturity and alignment to the recommended standard of operating a mission-critical workload. The outcome of the assessment is the delivery of technical recommendations and documentation that provide guidance on how implement a solution with higher fault tolerance, resilience, and performance certainty. 
 
 ![Screenshot of the guidance page in the mission-critical review tool](TODO-insert-screenshot "Mission-critical assessment review tool guidance")
 
-We recommend that the team conducting the assessment is well-versed in the architecture of the workload and has a strong understanding of cloud principles. These roles include, but aren't limited to, cloud architect, security engineer, and product manager. 
+We recommend that the team conducting the assessment is well versed in the architecture of the specific workload and has a strong understanding of cloud principles. These roles include, but are not limited to, cloud architect, security engineer, and product manager. 
+
+Working towards building a mission critical architecture can be a complex process; however, the assessment is organized in a way to methodically check that workloads remain aligned with the best practices for resiliency, reliability, and availability. 
 
 > [!div class="nextstepaction"]
 > [Mission-critical review tool](TODO-insert-link)
