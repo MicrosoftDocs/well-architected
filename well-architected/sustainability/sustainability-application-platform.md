@@ -141,7 +141,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 **Recommendation:**
 
-- Dev &amp; Testing workloads should be turned off or downsized when not used. Instead of leaving them running, consider shutting them off outside regular business hours.
+- Dev and testing workloads should be turned off or downsized when not used. Instead of leaving them running, consider shutting them off outside regular business hours.
   - Learn more about [starting/stopping VMs during off-hours](/azure/automation/automation-solution-vm-management).
 
 ### Utilize auto-scaling and bursting capabilities
