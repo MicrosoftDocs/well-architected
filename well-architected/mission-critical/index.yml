@@ -101,5 +101,5 @@ landingContent:
     linkLists:
       - linkListType: architecture
         links:
-          - text: Carrier-grade
+          - text: Carrier-grade for telecommunications
             url: /azure/architecture/framework/carrier-grade/carrier-grade-get-started
