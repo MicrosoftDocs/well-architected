@@ -368,7 +368,7 @@ In scenarios where the use of IaaS Virtual Machines is required, some specifics 
 - Encrypt virtual hard disk files.
 - Apply the same security practices as described for mission-critical application scenarios.
 
-Follow apply security practices for mission-critical application scenarios as described above, when applicable, as well as the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
+Follow and apply security practices for mission-critical application scenarios as described above, when applicable, as well as the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
 
 ## Next step
 
