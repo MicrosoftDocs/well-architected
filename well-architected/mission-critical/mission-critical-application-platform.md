@@ -453,7 +453,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 - The use of IaaS Virtual Machines massively increases the operational costs, compared to PaaS services, by bringing back the responsibility to manage the virtual machine, the operating system, rolling out software packages and updates and a lot more.
 
-- IaaS VMs, compared to PaaS services, are zonal services and do not provide zone-redundancy, geo-distribution and other capabilities out-of-the-box. Same is true for DevOps processes like rolling out software packages, dependencies. The use of PaaS services (or containers) should be prioritized when possible.
+- IaaS VMs do, compared to PaaS services, not provide zone-redundancy, geo-distribution and other capabilities out-of-the-box. Same is true for DevOps processes like rolling out software packages, dependencies. The use of PaaS services (or containers) should be prioritized when possible.
 
 - Virtual Machines can be deployed into Availability Zones to achieve higher resiliency and reliability, while still remaining individual VMs. This can be used for example for Domain Controllers and other stateful workloads that cannot scale horizontally.
 
@@ -473,13 +473,36 @@ The general recommendations are:
 
 When IaaS VMs are required:
 
-- Identify and right-size the VM sku sizes used.
-- Avoid any manual operations and implement proper processes to deploy and rollout changes.
-- Make sure that operational processes for deployment, updates, backup and recovery are in place and properly tested.
-- Prioritize the use of Microsoft managed images and use automated processes and tools like cloud-init to customize.
-- Consider using Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy.
+-  Identify and right-size the VM sku sizes used. For more detail please refer to this [community blog](https://techcommunity.microsoft.com/t5/microsoft-mechanics-blog/which-virtual-machine-is-best-for-your-workload-in-azure/ba-p/2262293)
+
+- Your application might not run the same load all the time. Load on applciation varies on a number of factor such as active users using application. If the nature of the application load is not static, use [Virtual machine scale set](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/overview) for scaling virtual machine and underlying workload. While using scalset ensure that instance health is monitor and [unhealthy instance is repair automatically](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs)
+
+- Availability sets. To protect against localized hardware failures, such as a disk or network switch failing, deploy two or more VMs in an availability set. An availability set is a logical grouping of VMs that allows Azure to understand how your application is built to provide for redundancy and availability. Each virtual machine in your availability set is assigned an update domain and a fault domain by the underlying Azure platform. Each availability set can be configured with up to three fault domains and twenty update domains. Update domains indicate groups of virtual machines and underlying physical hardware that can be rebooted at the same time. Fault domains define the group of virtual machines that share a common power source and network switch. See [availability set overview ](https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview) and (Availability options for Azure Virtual Machines)[https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability]  for more details.VMs in an availability set are distributed across the fault domains, so if a hardware failure affects one fault domain, network traffic can still be routed to the VMs in the other fault domains.
+
+-Availability zones. Deploy VM in [Availability zones] (https://docs.microsoft.com/en-us/azure/availability-zones/az-overview) where its available. If you are planning to use availability zones in your deployment, first validate that your application architecture and code base can support this configuration. If you are deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production. An application must be able to maintain state and prevent loss of data during an outage within the configured zone. The application must support running in an elastic and distributed infrastructure with no hard-coded infrastructure components specified in the code base.
+
+- To protect application against the regional outage, deploy application virtual machines across multiple regions and use traffic manager to distribute traffic to different region. Please note that traffic manager is not instantanous in active/passive configuration which can result in downtime. [See Traffic manager endpoint and monitoring for failure](https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-monitoring)
+
+- For mission critical application, provision warm standby virtual machine which is usually smaller in size for reduced cost but in case of failover, standby should overtake the task of running workload and scale virtual machines when workload request more resources [see enable disaster recovery for virtual machine in availability zone ](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)
+
+
+- Avoid any manual operations on virtual machines and implement proper processes to deploy and rollout changes. To automate provisioning of Azure resources you can use Terraform, Ansible, Chef, Puppet, PowerShell, CLI , or Azure Resource Manager templates. Use Azure Automation Desired State Configuration (DSC) to configure VMs. For Linux VMs, you can use Cloud-init. You can automate application deployment using Azure DevOps Services or Jenkins. Whether you are using blue green deployment or canary deployment, ensure that strategies are in place to rollback changes to last known good deployment in case newer version is not functioning.
+
+- Make sure that operational processes for deployment of virtual machines, updates, backup and recovery are in place and properly tested. To test for resiliancy inject fault in application and take a note of failure and metigate those failure. Followings are the example of fault injection.
+Shutdown VM instances
+Process crashes
+Expire certificates
+DNS and domain controller failure
+Changes in Access keys
+Disk failure
+RAM & CPU unavailability
+also load test application for peaks load and see how application and virtual machines behave in real world.
+
+- Prioritize the use of managed images and use automated processes and tools like cloud-init to customize.
 - Prioritize stateless workloads that allow horizontal scale instead of vertical scale.
-- Do not access individual virtual machines directly, use load balancers in front when possible.
+- Do not redirect traffic to virtual machines directly, use load balancers in front to blanace traffic load between virtual machines.
+- Monitor virtual machines and detect for failure. The raw data of for monitoring can come from variety of sources. Ensure that monitoring is configured and analyze the cause of problems.
+- Analyze the backup is running healthy and periodic backups are taken. [Backup center](https://docs.microsoft.com/en-us/azure/backup/backup-center-overview)  and [backup reports]  (https://docs.microsoft.com/en-us/azure/backup/backup-center-obtain-insights) can be use for this analysis.
 
 ## Next step
 
