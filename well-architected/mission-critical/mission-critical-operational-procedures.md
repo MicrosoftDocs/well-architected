@@ -184,7 +184,7 @@ In scenarios where the use of IaaS Virtual Machines is required, some of the pro
 
 - Prioritize the use of VMSS over VMs to enable capabilities like scale, autoscale and provide zone-redundancy.
 - Prioritize the use of standard images from the Azure Marketplace over custom images that need to maintained.
-- Use [Azure VM Image Builder](/azure/virtual-machines/image-builder-overview) to build and maintain customized images.
+- Use [Azure VM Image Builder](/azure/virtual-machines/image-builder-overview) to build and maintain customized images if required.
 
 Besides these specifics, apply best practices for operational procedures for mission-critical application scenarios when applicable.
 
