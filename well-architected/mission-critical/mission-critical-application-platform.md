@@ -462,25 +462,31 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 - Virtual Machines can be deployed into Availability Zones to achieve higher levels of reliability.
 
+- [Availability Sets](/azure/virtual-machines/availability-set-overview) can be used to protect against network, disk and power failures by distributing virtual machines across up to fault domains and update domains. 
+-  See [Availability options for Azure Virtual Machines](/azure/virtual-machines/windows/manage-availability) for further details. 
+
+- Virtual Machine Scale Sets (VMSS) provide functionality to automatically scale the number of virtual machines along with capabilities to monitor instance health and automatically repair [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
+
 ### Design Recommendations
 
-The general recommendations are:
+> [!IMPORTANT]
+> - Prioritize the use of PaaS services and Containers where possible to reduce operational complexity and cost.
+>   - Only use IaaS Virtual Machines when required.
 
-- Reduce the use of IaaS Virtual Machines to the least minimum required.
-- Prioritize the use of PaaS services or Containers when possible.
-- Replace IaaS dependencies with PaaS when possible to reduce operational complexity and cost.
+-  Right-size the VM sku sizes. 
+  -  For more detail please refer to this [community blog](https://techcommunity.microsoft.com/t5/microsoft-mechanics-blog/which-virtual-machine-is-best-for-your-workload-in-azure/ba-p/2262293)
 
-When IaaS VMs are required:
+- For applications and workloads with variying load (e.g. number of active users or requests per second) prioritize the use of [Virtual machine scale sets](/azure/virtual-machine-scale-sets/overview).
 
--  Identify and right-size the VM sku sizes used. For more detail please refer to this [community blog](https://techcommunity.microsoft.com/t5/microsoft-mechanics-blog/which-virtual-machine-is-best-for-your-workload-in-azure/ba-p/2262293)
+- Deploy three or more Virtual Machines across [Availability zones] (https://docs.microsoft.com/en-us/azure/availability-zones/az-overview) to achieve data center fault tolerance.
+  - If you are deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production. 
 
-- For applications and workloads with variying load based on factors such as the number of active users, requests per second etc. Prioritize the use of [Virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) if possible. VMSS allow scaling the number of virtual machines and provides functionality to monitor instance health and to repair [unhealthy instances automatically](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs)
+- For workloads which cannot be deployed acorss Availabity Zones, use Availability Sets with three or more VMs.
+  - Availability Sets should only be considered if Availability Zones do not comply with workload requirements, such as for 'chatty' workloads with low latency requirements.
 
-- Use Availability Sets with two or more VMs for workloads that cannot scale horizontally to protect against network, disk and power failures by distributing them across up to fault domains and update domains.  See [availability set overview](/azure/virtual-machines/availability-set-overview) and [Availability options for Azure Virtual Machines](/azure/virtual-machines/windows/manage-availability) for more details. Availability Set should only be considered if Availability zones do not meet low latency requirements.
-
--Availability zones. Deploy VM in [Availability zones] (https://docs.microsoft.com/en-us/azure/availability-zones/az-overview) where its available. If you are planning to use availability zones in your deployment, first validate that your application architecture and code base can support this configuration. If you are deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production. An application must be able to maintain state and prevent loss of data during an outage within the configured zone. The application must support running in an elastic and distributed infrastructure with no hard-coded infrastructure components specified in the code base.
-
-- To protect application against the regional outage, deploy application virtual machines across multiple regions and use traffic manager to distribute traffic to different region. Please note that traffic manager is not instantanous in active/passive configuration which can result in downtime. [See Traffic manager endpoint and monitoring for failure](https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-monitoring)
+- To protect against regional outages, deploy application virtual machines across multiple Azure regions.
+  - For HTTTP/S scenarios, prioritize the use Azure Front Door to distribute traffic across active regions, and for non-HTTP/S scenarios Azure Traffic Manager can be used. 
+    - Please refer to the [networking and connectivity design area](/azure/architecture/framework/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for further details.
 
 - For mission critical application, provision warm standby virtual machine which is usually smaller in size for reduced cost but in case of failover, standby should overtake the task of running workload and scale virtual machines when workload request more resources [see enable disaster recovery for virtual machine in availability zone ](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)
 
