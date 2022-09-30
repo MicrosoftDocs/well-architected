@@ -490,7 +490,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 - For workloads which do not support multi-region active-active deployments, provision warm standby virtual machines for regional failover.
 
 - Prioritize the use of Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy.
-  - This is particularly importnat for workloads with variying load (e.g. number of active users or requests per second).
+  - This is particularly important for workloads with variying load (e.g. number of active users or requests per second).
 
 - Prioritize the use of Microsoft managed images and use automated processes and tools like cloud-init to customize.	
 
