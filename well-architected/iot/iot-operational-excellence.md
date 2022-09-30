@@ -1,9 +1,9 @@
 ---
 title: Operational excellence in an IoT workload
-description: Includes guidance and recommendations that apply to the Operational Excellence pillar in an IoT workload.
+description: See guidance and recommendations that apply to the operational excellence pillar in an IoT workload.
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/13/2022
+ms.date: 09/30/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -14,17 +14,17 @@ ms.subservice: well-architected
 
 The key factor in IoT operational excellence is an organization's ability to plan, provision, configure, monitor, and retire IoT devices. This guide focuses on the operational aspects of IoT devices and services that uniquely address the core requirements of an IoT solution.
 
-Given the complexity of an IoT solution's security, reliability, performance, and cost requirements, an organization's operational capabilities are an important factor in driving sustainable business value. Operational excellence in an IoT workload requires full visibility and control over all hardware and software components of the solution. Design, development, provisioning, monitoring, support, and maintenance practices must be agile and deliver business value without increasing operational risk.
+Given the complexity of IoT solution requirements, an organization's operational capabilities are important for driving sustainable business value. Operational excellence in an IoT workload requires full visibility and control over all hardware and software components of the solution. Design, development, provisioning, monitoring, support, and maintenance practices must be agile and deliver business value without increasing operational risk.
 
-The cloud and hybrid [shared responsibility model](/azure/security/fundamentals/shared-responsibility) applies to operational excellence in IoT workloads. IoT workloads comprise three technology stacks: cloud, communication network, and IoT devices. In IoT solutions, device diversity and scale, different network types, and geographically distributed locations significantly shift the shared responsibility model away from the cloud provider. Cloud services can make it easier for organizations to operate IoT devices and networks themselves or by using third parties, but the organizations themselves own the operational responsibility for these key elements of IoT workloads.
+IoT workloads comprise three technology stacks: cloud, communication network, and IoT devices. In IoT solutions, the device diversity and scale, different network types, and geographically distributed locations significantly shift the cloud and hybrid [shared responsibility model](/azure/security/fundamentals/shared-responsibility) away from the cloud provider. Cloud services make it easier for organizations to operate IoT devices and networks themselves or by using third parties, but the organizations themselves own the operational responsibility for these key elements of IoT workloads.
 
 Operational excellent ensures that your IoT solution can successfully:
 
-- Support different *user roles* including developers, administrators, and operators.
-- Manage all *device lifecycle* stages for the lifetime of the solution.
-- *Scale* efficiently to meet changes in demand, such as new device deployments or higher ingestion throughput.
-- Use *automation* for management and monitoring.
-- *Integrate* with other back-end systems.
+- Support different user roles including developers, administrators, and operators.
+- Manage all device lifecycle stages for the lifetime of the solution.
+- Scale efficiently to meet changes in demand, such as new device deployments or higher ingestion throughput.
+- Use automation for management and monitoring.
+- Integrate with other back-end systems.
 
 ## Assess operational excellence in your IoT workload
 
@@ -32,9 +32,9 @@ To assess your IoT workload against the Well-Architected Framework Operational E
 
 ## Operational excellence in IoT architecture layers
 
-An IoT architecture consists of a set of foundational layers. Layers use specific technologies, and the [IoT Well-Architected Framework](iot-overview.md#iot-architecture-layers) highlights options for designing and implementing each layer. There are also cross-cutting activities that enable the design, building, and running of IoT and other solutions.
+An IoT architecture consists of a set of foundational layers. Layers use specific technologies, and the [IoT Well-Architected Framework](iot-overview.md#iot-architecture-layers) highlights options for designing and implementing each layer. There are also cross-cutting activities that enable designing, building, and running IoT and other solutions.
 
-The IoT core layers: device and gateway, device management and modeling, and ingestion and communication, identify IoT-specific solutions. The other layers and cross-cutting activities are also common to, and often shared with, other workloads. DevOps cross-cutting activities are especially important to support the operational excellence pillar.
+The IoT core layers: Device and gateway, device management and modeling, and ingestion and communication, identify IoT-specific solutions. The other layers and cross-cutting activities are also common to, and often shared with, other workloads. DevOps cross-cutting activities are especially important to support the operational excellence pillar.
 
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
 
@@ -58,27 +58,29 @@ The organization's network operations team typically partners with the telecommu
 
 ### Capacity scaling
 
-Configure the ingestion and other back-end layers of the IoT cloud solution to be able to scale to handle expected and unexpected capacity needs. Azure offers several options to meet capacity requirements as your business grows. Capacity planning and scaling for your IoT solution varies depending on whether you build an IoT Central or IoT Hub-based solution.
+Configure the ingestion and other back-end layers of the IoT cloud solution to be able to scale to handle expected and unexpected capacity needs. If your solution is tied to a connected product, you must handle fluctuations in expected load. Load can be impacted by marketing initiatives such as sales or promotions, or by seasonal events such as holidays. You should test load variations prior to events, including unexpected events, to ensure that your IoT solution can scale.
 
-The IoT Central application platform as a service (aPaaS) automatically manages multiple instances of its underlying services to scale your IoT Central applications and make them highly available. However, IoT Central stores only 30 days of data, and because most IoT solutions export data to other services, you should focus on making sure those other services can handle expected and unexpected capacity needs.
+Azure offers several options to meet capacity requirements as your business grows. Capacity planning and scaling for your IoT solution varies depending on whether you build an [IoT Central](https://azure.microsoft.com/products/iot-central) or [IoT Hub](https://azure.microsoft.com/products/iot-hub)-based solution.
 
-With an IoT Hub-based solution, it's your responsibility to scale up to handle growth in the number of messages being ingested and to scale out to handle regional demands. Understanding the number of messages that devices will send to IoT Hub and the sustained throughput is critical to selecting the correct IoT Hub tier to support the predicted demand.
+- The IoT Central application platform as a service (aPaaS) automatically manages multiple instances of its underlying services to scale your IoT Central applications and make them highly available. However, IoT Central stores only 30 days of data, and because most IoT solutions export data to other services, you should focus on making sure those other services can handle expected and unexpected capacity needs.
 
-If you're approaching the IoT Hub message limit, your system should be able to automatically scale up IoT Hub to the next unit of capacity. Any back-end services in the IoT solution, such as Azure Stream Analytics, Azure Cosmos DB, and Azure Data Explorer must support scalability to ensure there are no bottlenecks anywhere in the solution's data flow.
+- With an IoT Hub-based solution, it's your responsibility to scale up to handle growth in the number of messages being ingested and to scale out to handle regional demands. Understanding the number of messages that devices will send to IoT Hub and the sustained throughput is critical to selecting the correct IoT Hub tier to support the predicted demand.
 
-If your solution is tied to a connected product, you must handle fluctuations in expected load. Load can be impacted by marketing initiatives such as sales or promotions, or by seasonal events such as holidays. You should test load variations prior to events, including unexpected events, to ensure that your IoT solution can scale.
+  If you're approaching the IoT Hub message limit, your system should be able to automatically scale up IoT Hub to the next unit of capacity. Any back-end services in the IoT solution, such as Azure Stream Analytics, Azure Cosmos DB, and Azure Data Explorer must support scalability to ensure there are no bottlenecks anywhere in the solution's data flow.
 
 You should also plan for edge device capacity needs and requirements. Whether you're managing RTOS-based devices or larger compute devices with IoT Edge, make sure compute and memory sizing are adequate for your specific use cases.
 
 ## Device management and modeling layer
 
-Implement a centralized device management solution to administer, monitor, and operate the lifecycle of IoT devices, and to manage the overall configuration of the IoT solution. Consider an integrated UI to assist operation teams with device fleet management.
+Implement a centralized device management solution to administer, monitor, and operate the lifecycle of IoT devices, and to manage the overall configuration of the IoT solution. Consider implementing an integrated UI to assist operation teams with device fleet management.
 
 ### Device provisioning
 
 Define a remote device provisioning strategy to enable zero-touch, just-in-time provisioning of IoT devices in the field without requiring human intervention.
 
-For remote provisioning of IoT devices, [Azure IoT Hub Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps) enables connecting and configuring remote devices to IoT Hub. DPS enables zero-touch provisioning without hard-coding information at the factory, and enables load-balancing of devices across multiple IoT hubs. Although DPS supports symmetric key attestation, in a production environment you should use either the X.509 certificate or TPM attestation mechanisms. If you use X.509 certificates, you should deploy the root certificate or an intermediate certificate signed by the root certificate to DPS, to allow devices in the field to properly authenticate to the service and be assigned to their correct IoT hub.
+For remote provisioning of IoT devices, [Azure IoT Hub Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps) enables connecting and configuring remote devices to IoT Hub. DPS enables zero-touch provisioning without hard-coding information at the factory, and enables load-balancing of devices across multiple IoT hubs.
+
+Although DPS supports symmetric key attestation, in a production environment you should use either the X.509 certificate or TPM attestation mechanisms. If you use X.509 certificates, you should deploy the root certificate or an intermediate certificate signed by the root certificate to DPS, to allow devices in the field to properly authenticate to the service and be assigned to their correct IoT hub.
 
 Part of an IoT solution lifecycle includes reprovisioning devices in the field or moving them between IoT hubs. DPS enables the configuration of [reprovisioning policies](/azure/iot-dps/how-to-reprovision) that determine  expected behavior when an IoT device submits a new provisioning request. Devices should be programmed to send a provisioning request on reboot, and should implement a method to manually trigger provisioning on demand. This mechanism ensures that every time a device starts up, it contacts DPS to get redirected to the appropriate IoT hub.
 
@@ -104,7 +106,7 @@ Azure features that support these configuration management requirements include 
 
 - To update existing device or IoT Edge device firmware, application, or package updates over-the-air (OTA), use [Device Update for IoT Hub](/azure/iot-hub-device-update/understand-device-update). This service is a safe, secure, and reliable way to update a fleet or specific group of devices.
 
-It's a good idea to include a manual update method for IoT devices. Because of root certificate changes or connectivity issues, you might need to update devices using a manual method such as physically connecting to a local computer or using a local connectivity protocol such as Bluetooth.
+It's a good idea to have a manual update method for IoT devices. Because of root certificate changes or connectivity issues, you might need to update devices using a manual method such as physically connecting to a local computer or using a local connectivity protocol such as Bluetooth.
 
 For more information about device management, see:
 
@@ -115,7 +117,7 @@ For more information about device management, see:
 
 ### Management user interface
 
-Solution operators and administrators need an interface to interact with the IoT solution. IoT Central has a built-in, easy-to-use management interface that lets operators and administrators provision devices, add or remove users, send commands to IoT devices, and manage device updates. If the IoT Central management UI doesn't meet your requirements, or the solution is based on platform-as-a-service (PaaS) services like IoT Hub, you can build a custom management UI by using the REST APIs that IoT Hub and IoT Central expose.
+Solution operators and administrators need an interface to interact with the IoT solution. IoT Central has a built-in, easy-to-use management interface that lets operators and administrators provision devices, add or remove users, send commands to IoT devices, and manage device updates. If the IoT Central management UI doesn't meet your requirements, or the solution is based on platform as a service (PaaS) services like IoT Hub, you can build a custom management UI by using the REST APIs that IoT Hub and IoT Central expose.
 
 ## Integration layer
 
@@ -123,7 +125,7 @@ A typical IoT solution is composed of multiple components such as ingestion, rou
 
 Configure and test reliable integration with other Azure and third-party services that support the back-end and front-end services of the IoT application. A successful IoT implementation requires integrating IoT services such as IoT Hub and DPS with other Azure and third-party services.
 
-For example, DPS supports custom allocation policies by using custom code and Azure Functions, so it's important to confirm that the Azure Function allows traffic coming from DPS and IoT Hub. Another example is the integration between IoT Hub and back-end services to enable features such as message routing and file upload. IoT Hub needs to properly authenticate to those Azure services. You should use managed identities to eliminate the need to manage those credentials manually.
+For example, DPS supports custom allocation policies by using custom code and Azure Functions, so it's important to confirm that the Azure Function allows traffic coming from DPS and IoT Hub. Another example is the integration between IoT Hub and backend services to enable features such as message routing and file upload. IoT Hub needs to properly authenticate to those Azure services. You should use managed identities to eliminate the need to manage those credentials manually.
 
 ## DevOps layer
 
@@ -147,7 +149,7 @@ There are two options to send metrics from the Metrics Collector module to the c
 
 - Send the metrics to Log Analytics. The collected metrics are ingested into the specified Log Analytics workspace using a fixed, native table called `InsightsMetrics`.
 
-- Send the metrics to IoT Hub. You can configure the collector module to send the collected metrics as UTF-8 encoded JSON device-to-cloud messages through the *edgeHub* module. This option unlocks monitoring of locked-down IoT Edge devices that are only allowed external access to the IoT Hub endpoint.
+- Send the metrics to IoT Hub. You can configure the collector module to send the collected metrics as UTF-8 encoded JSON device-to-cloud messages through the edge hub module. This option unlocks monitoring of locked-down IoT Edge devices that are only allowed external access to the IoT Hub endpoint.
 
 The `AllowedMetrics` and `BlockedMetrics` configuration options take space- or comma-separated lists of metric selectors. A metric is matched to the list and included or excluded if it matches one or more metrics in either list.
 
@@ -178,7 +180,7 @@ The following simplified logging and monitoring architecture shows examples of t
 If your critical applications and business processes rely on Azure resources, you should monitor those resources for availability and performance. You can use [Azure Monitor](https://azure.microsoft.com/services/monitor) to carry out the following monitoring activities:
 
 - Detect and diagnose issues across applications and dependencies with [Application Insights](/azure/azure-monitor/app/app-insights-overview).
-- Correlate infrastructure issues with [VM insights](/azure/azure-monitor/vm/vminsights-overview) and [Container insights](/azure/azure-monitor/containers/container-insights-overview).
+- Correlate infrastructure issues with [VM Insights](/azure/azure-monitor/vm/vminsights-overview) and [Container Insights](/azure/azure-monitor/containers/container-insights-overview).
 - Drill into your monitoring data with [Log Analytics](/azure/azure-monitor/logs/log-query-overview) for troubleshooting and deep diagnostics.
 - Support operations at scale with [smart alerts](/azure/azure-monitor/alerts/alerts-smartgroups-overview) and [automated actions](/azure/azure-monitor/alerts/alerts-action-rules).
 - Create visualizations with Azure [dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards) and [workbooks](/azure/azure-monitor/visualize/workbooks-overview).
@@ -186,17 +188,17 @@ If your critical applications and business processes rely on Azure resources, yo
 
 #### Monitor IoT Hub
 
-The **Overview** page in the Azure portal for each IoT hub includes charts that provide some usage metrics, such as the number of messages used and the number of devices connected to the hub. The information on the **Overview** page is useful, but represents only a small amount of the monitoring data available for an IoT hub. Some monitoring data is collected automatically and is available for analysis as soon as you create your IoT hub. You can configure other types of data collection. To learn more about the metrics and logs that IoT Hub creates, see [Monitoring Azure IoT Hub data reference](/azure/iot-hub/monitor-iot-hub-reference).
+Azure IoT Hub collects the same types of monitoring data as other Azure resources, as described in [Monitoring data from Azure resources](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data). The **Overview** page in the Azure portal for each IoT hub includes charts that provide some usage metrics, such as the number of messages used and the number of devices connected to the hub. The information on the **Overview** page is useful, but represents only a small amount of the monitoring data available for an IoT hub.
 
-Azure IoT Hub collects the same types of monitoring data as other Azure resources, as described in [Monitoring data from Azure resources](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data).
+Some monitoring data is collected automatically and is available for analysis as soon as you create your IoT hub. You can configure other types of data collection. To learn more about the metrics and logs that IoT Hub creates, see [Monitoring Azure IoT Hub data reference](/azure/iot-hub/monitor-iot-hub-reference).
 
 #### Monitor updates
 
-As with any deployment or update, you should monitor the state of deployments and devices. Device Update for IoT Hub monitors compliance by measuring how many devices have installed the highest version compatible update. A device is compliant if it has installed the highest version available compatible update.
+As with any deployment or update, you should monitor the update state of deployments and devices. DevOps provides a way to consistently deliver fresh software updates. Device Update for IoT Hub monitors compliance by measuring how many devices have installed the highest version compatible update. A device is compliant if it has installed the highest version available compatible update.
 
 #### Monitor configuration
 
-As with any deployment or update, you should monitor and alert on the status of a device configuration deployment or update in place. Each Azure IoT configuration service collects and stores logs and metrics in Azure Monitor. You can use this data to create Azure Monitor alerts to send notifications when a configuration deployment or update is created, completed, or failed.
+As with any deployment or update, you should monitor and alert on the status of a device configuration or update deployment. Each Azure IoT configuration service collects and stores logs and metrics in Azure Monitor. You can use this data to create Azure Monitor alerts to send notifications when a configuration deployment or update is created, completed, or failed.
 
 If the monitoring data provided by each of the Azure IoT configuration services isn't enough, the Azure IoT Hub service APIs offer a more granular view.
 
@@ -215,26 +217,31 @@ For more information about monitoring, see:
 
 ### Automation
 
-An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often hardware-constrained, for example have limited memory or compute capacity. Automation and DevOps ensure that IoT device and gateway software is properly uploaded and deployed to minimize operational downtime. Automation and DevOps are an essential aspect of monitoring and managing the lifecycle of IoT devices.
+An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often hardware-constrained, for example have limited memory or compute capacity. Automation and DevOps ensure that IoT device and gateway software is properly uploaded and deployed to minimize operational downtime. Automation and DevOps are essential to monitoring and managing the full lifecycle of developing, deploying, and operating an IoT solution and devices.
 
-The key benefit of a mature DevOps implementation is agility, the ability to quickly sense and respond to changes in business needs and seamlessly support the full lifecycle of developing, deploying, and operating a solution. Automated testing, integration, and deployment enable DevOps for application software development. Deploy application software changes in an infrastructure-as-code (IaC) environment to automate and manage the ongoing operation of deployed software.
+The key benefit of a mature DevOps implementation is agility, the ability to quickly sense and respond to changes in business needs. To use automation with DevOps for agile software development, deployment, testing, integration, and operations, follow these recommendations:
 
-To use agility, DevOps, and automation in the development, deployment, and operations of IoT solutions:
+- Use CI/CD DevOps principles and processes to boost productivity and create a seamless rapid development cycle.
+
+- Deploy application software changes in an infrastructure-as-code (IaC) environment to automate and manage the ongoing operation of deployed software.
 
 - Automate the IoT application software lifecycle from development through testing to deployment to IT operations.
-- Use DevOps tools and processes in IoT Hub and IoT Edge to automate the software lifecycle of edge solutions. Use IoT Edge to deploy IoT application software on devices.
-- Provide operators with tools that let them collaborate and get visibility, insights, and control to maintain and operate a reliable IoT solution.
 
-Consider the following points when you design automation and DevOps for IoT:
+- Use DevOps tools and processes in IoT Hub and IoT Edge to automate the edge software lifecycle. Use IoT Edge to deploy IoT application software on devices.
 
-- Thousands of devices might be connected to a single cloud endpoint such as IoT Hub. Any change in configuration or software must be spread across all the devices.
-- Device vendors and cross-functional solution developers should work together to develop and deploy IoT solutions. Embrace cross-functional teams to deliver continuously for solutions.
-- Software programs installed on hardware define system functionality. To change system functionality, update software instead of making hardware changes or local interventions.
-- Use CI/CD DevOps principles and processes to boost productivity and create a seamless rapid development cycle.
-- Evolve business and deployment models to create possibilities for different business models and pilot validation, deployment, and enhancements. DevOps provides a way to consistently deliver fresh software updates.
-- Connected IoT Edge devices have a lifecycle that extends beyond deploy, break and fix, and retire. Connectivity creates the opportunity to continuously add incremental innovation across the system lifecycle. DevOps puts organizations in the best position to capitalize on opportunity.
+- Provide operators with tools to gain visibility and insights, collaborate, control, and maintain a reliable IoT solution.
 
-When you implement automation and DevOps in IoT systems, follow device lifecycle and specific automation and DevOps requirements in each phase. The following tables describe platform features that support three phases of the device lifecycle.
+- Embrace cross-functional teams to deliver continuously for solutions. Device vendors and cross-functional solution developers should work together to develop and deploy IoT solutions.
+
+- Evolve business and deployment models to create possibilities for different business models and pilot validation, deployment, and enhancements.
+
+### Automate device lifecycle
+
+Connected IoT Edge devices have a lifecycle that extends beyond deploy, break and fix, and retire. Connected devices put organizations in the best position to capitalize on opportunity and continuously add incremental innovation throughout the system lifecycle.
+
+In IoT solutions, software programs installed on hardware define system functionality. Thousands of devices might be connected to a single cloud endpoint such as IoT Hub. Any change in configuration or software must be spread across all the devices. To change system functionality, update software instead of making hardware changes or local interventions.
+
+When you implement automation and DevOps in IoT systems, follow specific automation and DevOps requirements for each device lifecycle phase. The following tables describe Azure IoT features that support three phases of the device lifecycle.
 
 **Beginning of life**
 
