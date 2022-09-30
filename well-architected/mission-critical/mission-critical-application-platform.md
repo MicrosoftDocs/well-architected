@@ -466,6 +466,8 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 -  See [Availability options for Azure Virtual Machines](/azure/virtual-machines/windows/manage-availability) for further details. 
 
 - Virtual Machine Scale Sets (VMSS) provide functionality to automatically scale the number of virtual machines along with capabilities to monitor instance health and automatically repair [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
+  
+- [Backup center](/azure/backup/backup-center-overview) can be used to manage the periodic backups of virtual machines and [backup reports](/azure/backup/backup-center-obtain-insights) can be used to analyze the operation of backup tasks.
 
 ### Design Recommendations
 
@@ -488,26 +490,31 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
   - For HTTTP/S scenarios, prioritize the use Azure Front Door to distribute traffic across active regions, and for non-HTTP/S scenarios Azure Traffic Manager can be used. 
     - Please refer to the [networking and connectivity design area](/azure/architecture/framework/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for further details.
 
-- For mission critical application, provision warm standby virtual machine which is usually smaller in size for reduced cost but in case of failover, standby should overtake the task of running workload and scale virtual machines when workload request more resources [see enable disaster recovery for virtual machine in availability zone ](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)
-
-
-- Avoid any manual operations on virtual machines and implement proper processes to deploy and rollout changes. To automate provisioning of Azure resources you can use Terraform, Ansible, Chef, Puppet, PowerShell, CLI , or Azure Resource Manager templates. Use Azure Automation Desired State Configuration (DSC) to configure VMs. For Linux VMs, you can use Cloud-init. You can automate application deployment using Azure DevOps Services or Jenkins. Whether you are using blue green deployment or canary deployment, ensure that strategies are in place to rollback changes to last known good deployment in case newer version is not functioning.
-
-- Make sure that operational processes for deployment of virtual machines, updates, backup and recovery are in place and properly tested. To test for resiliancy inject fault in application and take a note of failure and metigate those failure. Followings are the example of fault injection.
-Shutdown VM instances
-Process crashes
-Expire certificates
-DNS and domain controller failure
-Changes in Access keys
-Disk failure
-RAM & CPU unavailability
-also load test application for peaks load and see how application and virtual machines behave in real world.
+- For workloads which do not support multi-region active-active deployments, provision warm standby virtual machines for regional failover.
 
 - Prioritize the use of managed images and use automated processes and tools like cloud-init to customize.
-- Prioritize stateless workloads that allow horizontal scale instead of vertical scale.
-- Do not redirect traffic to virtual machines directly, use load balancers in front to blanace traffic load between virtual machines.
-- Monitor virtual machines and detect for failure. The raw data of for monitoring can come from variety of sources. Ensure that monitoring is configured and analyze the cause of problems.
-- Analyze the backup is running healthy and periodic backups are taken. [Backup center](/azure/backup/backup-center-overview)  and [backup reports](/azure/backup/backup-center-obtain-insights) can be use for this analysis.
+
+- Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. 
+  - Use Azure Automation Desired State Configuration (DSC) to configure Windows VMs.
+  - For Linux VMs, the use of Cloud-init is recomended. 
+  
+- Ensure that strategies are in place to rollback changes to last known healthy state in case a newer version is not functioning correctly.
+
+- Implement chaos experiments to inject application faults into virtual machine components while observing the mitigation of faults. The following are examples of relevatn faults for virtual machines:
+  - Shutdown VM instances
+  - Process crashes
+  - Expire certificates
+  - DNS and domain controller failure
+  - Changes in Access keys
+  - Disk failure
+  - RAM & CPU unavailability
+  
+- Use load balancers in front of virtual machine instances to balanace traffic between virtual machines.
+
+- Monitor virtual machines and ensure diagnstic logs are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
+
+- Take frequent backups for stateful workloads and ensure backup tasks are working effectivly.
+  - Alert on failed backup processes.
 
 ## Next step
 
