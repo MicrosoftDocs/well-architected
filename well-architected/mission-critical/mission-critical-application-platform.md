@@ -465,7 +465,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 - [Availability Sets](/azure/virtual-machines/availability-set-overview) can be used to protect against network, disk and power failures by distributing virtual machines across up to fault domains and update domains. 
 -  See [Availability options for Azure Virtual Machines](/azure/virtual-machines/windows/manage-availability) for further details. 
 
-- Virtual Machine Scale Sets (VMSS) provide functionality to automatically scale the number of virtual machines along with capabilities to monitor instance health and automatically repair [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
+- [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) (VMSS) provide functionality to automatically scale the number of virtual machines along with capabilities to monitor instance health and automatically repair [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
   
 - [Backup center](/azure/backup/backup-center-overview) can be used to manage the periodic backups of virtual machines and [backup reports](/azure/backup/backup-center-obtain-insights) can be used to analyze the operation of backup tasks.
 
@@ -475,24 +475,24 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 > - Prioritize the use of PaaS services and Containers where possible to reduce operational complexity and cost.
 >   - Only use IaaS Virtual Machines when required.
 
--  Right-size the VM sku sizes. 
+-  Right-size VM sku sizes to ensure effective resource utilization. 
   -  For more detail please refer to this [community blog](https://techcommunity.microsoft.com/t5/microsoft-mechanics-blog/which-virtual-machine-is-best-for-your-workload-in-azure/ba-p/2262293)
 
-- For applications and workloads with variying load (e.g. number of active users or requests per second) prioritize the use of [Virtual machine scale sets](/azure/virtual-machine-scale-sets/overview).
-
-- Deploy three or more Virtual Machines across [Availability zones] (https://docs.microsoft.com/en-us/azure/availability-zones/az-overview) to achieve data center fault tolerance.
+- Deploy three or more Virtual Machines across [Availability zones] (https://docs.microsoft.com/en-us/azure/availability-zones/az-overview) to achieve data center level fault tolerance.
   - If you are deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production. 
 
 - For workloads which cannot be deployed acorss Availabity Zones, use Availability Sets with three or more VMs.
   - Availability Sets should only be considered if Availability Zones do not comply with workload requirements, such as for 'chatty' workloads with low latency requirements.
 
 - To protect against regional outages, deploy application virtual machines across multiple Azure regions.
-  - For HTTTP/S scenarios, prioritize the use Azure Front Door to distribute traffic across active regions, and for non-HTTP/S scenarios Azure Traffic Manager can be used. 
-    - Please refer to the [networking and connectivity design area](/azure/architecture/framework/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for further details.
+  - Please refer to the [networking and connectivity design area](/azure/architecture/framework/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for further details about how to optimally route traffic between active deployment region.
 
 - For workloads which do not support multi-region active-active deployments, provision warm standby virtual machines for regional failover.
 
-- Prioritize the use of managed images and use automated processes and tools like cloud-init to customize.
+- Prioritize the use of Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy.
+  - This is particularly importnat for workloads with variying load (e.g. number of active users or requests per second).
+
+- Prioritize the use of Microsoft managed images and use automated processes and tools like cloud-init to customize.	
 
 - Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. 
   - Use Azure Automation Desired State Configuration (DSC) to configure Windows VMs.
@@ -509,7 +509,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
   - Disk failure
   - RAM & CPU unavailability
   
-- Use load balancers in front of virtual machine instances to balanace traffic between virtual machines.
+- Do not access individual virtual machines directly, use load balancers in front when possible.
 
 - Monitor virtual machines and ensure diagnstic logs are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
 
