@@ -473,36 +473,19 @@ The general recommendations are:
 
 When IaaS VMs are required:
 
--  Identify and right-size the VM sku sizes used. For more detail please refer to this [community blog](https://techcommunity.microsoft.com/t5/microsoft-mechanics-blog/which-virtual-machine-is-best-for-your-workload-in-azure/ba-p/2262293)
+- Identify and right-size the VM sku sizes used. For more detail please refer to this [community blog](https://techcommunity.microsoft.com/t5/microsoft-mechanics-blog/which-virtual-machine-is-best-for-your-workload-in-azure/ba-p/2262293)
 
-- For applications and workloads with variying load based on factors such as the number of active users, requests per second etc. Prioritize the use of [Virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) if possible. VMSS allow scaling the number of virtual machines and provides functionality to monitor instance health and to repair [unhealthy instances automatically](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs)
+- For applications and workloads with varying load based on factors such as the number of active users, requests per second etc. Prioritize the use of [Virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) if possible. VMSS allow scaling the number of virtual machines and provides functionality to monitor instance health and to repair [unhealthy instances automatically](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs)
 
-- Use Availability Sets with two or more VMs for workloads that cannot scale horizontally to protect against network, disk and power failures by distributing them across up to fault domains and update domains.  See [availability set overview](/azure/virtual-machines/availability-set-overview) and [Availability options for Azure Virtual Machines](/azure/virtual-machines/windows/manage-availability) for more details. Availability Set should only be considered if Availability zones do not meet low latency requirements.
+- Use [Availability Zones](/azure/availability-zones/az-overview) to distribute VMs across one or more geographically distributed datacenters within a single Azure region for workloads that cannot scale horizontally to protect against network, disk and power failures by distributing them across up to fault domains and update domains.
 
--Availability zones. Deploy VM in [Availability zones] (https://docs.microsoft.com/en-us/azure/availability-zones/az-overview) where its available. If you are planning to use availability zones in your deployment, first validate that your application architecture and code base can support this configuration. If you are deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production. An application must be able to maintain state and prevent loss of data during an outage within the configured zone. The application must support running in an elastic and distributed infrastructure with no hard-coded infrastructure components specified in the code base.
-
-- To protect application against the regional outage, deploy application virtual machines across multiple regions and use traffic manager to distribute traffic to different region. Please note that traffic manager is not instantanous in active/passive configuration which can result in downtime. [See Traffic manager endpoint and monitoring for failure](https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-monitoring)
-
-- For mission critical application, provision warm standby virtual machine which is usually smaller in size for reduced cost but in case of failover, standby should overtake the task of running workload and scale virtual machines when workload request more resources [see enable disaster recovery for virtual machine in availability zone ](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)
-
-
-- Avoid any manual operations on virtual machines and implement proper processes to deploy and rollout changes. To automate provisioning of Azure resources you can use Terraform, Ansible, Chef, Puppet, PowerShell, CLI , or Azure Resource Manager templates. Use Azure Automation Desired State Configuration (DSC) to configure VMs. For Linux VMs, you can use Cloud-init. You can automate application deployment using Azure DevOps Services or Jenkins. Whether you are using blue green deployment or canary deployment, ensure that strategies are in place to rollback changes to last known good deployment in case newer version is not functioning.
-
-- Make sure that operational processes for deployment of virtual machines, updates, backup and recovery are in place and properly tested. To test for resiliancy inject fault in application and take a note of failure and metigate those failure. Followings are the example of fault injection.
-Shutdown VM instances
-Process crashes
-Expire certificates
-DNS and domain controller failure
-Changes in Access keys
-Disk failure
-RAM & CPU unavailability
-also load test application for peaks load and see how application and virtual machines behave in real world.
+- Use [Availability Sets](/azure/virtual-machines/availability-set-overview) with two or more VMs when Availability Zones do not meet low latency requirements for workloads. See [Availability options for Azure Virtual Machines](/azure/virtual-machines/windows/manage-availability) for more details.
 
 - Prioritize the use of managed images and use automated processes and tools like cloud-init to customize.
+
 - Prioritize stateless workloads that allow horizontal scale instead of vertical scale.
-- Do not redirect traffic to virtual machines directly, use load balancers in front to blanace traffic load between virtual machines.
-- Monitor virtual machines and detect for failure. The raw data of for monitoring can come from variety of sources. Ensure that monitoring is configured and analyze the cause of problems.
-- Analyze the backup is running healthy and periodic backups are taken. [Backup center](/azure/backup/backup-center-overview)  and [backup reports](/azure/backup/backup-center-obtain-insights) can be use for this analysis.
+
+- Do not redirect traffic to virtual machines directly, use load balancers in front to balance traffic load between virtual machines.
 
 ## Next step
 

@@ -182,8 +182,18 @@ In scenarios where the use of IaaS Virtual Machines is required, some of the pro
 
 ### Design Recommendations
 
+- Avoid any manual operations on virtual machines and implement proper processes to deploy and rollout changes. To automate provisioning of Azure resources using Infrastructure-as-Code via Bicep, Azure Resource Manager templates, Terraform or others. Use Azure Automation Desired State Configuration (DSC) to configure VMs. For Linux VMs, you can use Cloud-init.
+
+- Make sure that operational processes for deployment of virtual machines, updates, backup and recovery are in place and properly tested. To test for resiliency inject fault in application and take a note of failure and mitigate those failure.
+
+- Monitor virtual machines and detect for failure. The raw data of for monitoring can come from variety of sources. Ensure that monitoring is configured and analyze the cause of problems.
+
+- Analyze that scheduled backups are running healthy and periodic backups are taken. Azure [Backup center](/azure/backup/backup-center-overview) can to gain more insights.
+
 - Prioritize the use of VMSS over VMs to enable capabilities like scale, autoscale and provide zone-redundancy.
+
 - Prioritize the use of standard images from the Azure Marketplace over custom images that need to maintained.
+
 - Use [Azure VM Image Builder](/azure/virtual-machines/image-builder-overview) to build and maintain customized images if required.
 
 Besides these specifics, apply best practices for operational procedures for mission-critical application scenarios when applicable.
