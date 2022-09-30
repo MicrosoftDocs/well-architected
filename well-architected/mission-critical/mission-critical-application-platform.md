@@ -500,7 +500,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
   
 - Ensure that strategies are in place to rollback changes to last known healthy state in case a newer version is not functioning correctly.
 
-- Implement chaos experiments to inject application faults into virtual machine components while observing the mitigation of faults. The following are examples of relevatn faults for virtual machines:
+- Implement chaos experiments to inject application faults into virtual machine components while observing the mitigation of faults. The following are examples of relevant faults for virtual machines:
   - Shutdown VM instances
   - Process crashes
   - Expire certificates
