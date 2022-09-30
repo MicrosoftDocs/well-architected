@@ -177,7 +177,7 @@ IoT logging and monitoring systems can be more complicated than in standard line
 
 The following simplified logging and monitoring architecture shows examples of typical IoT solution components and how they use recommended technologies.
 
-:::image type="content" source="media/logging-monitoring.jpg" alt-text="Diagram that shows example logging and monitoring systems." border="false" lightbox="media/logging-monitoring.jpg":::
+:::image type="content" source="media/logging-monitoring.png" alt-text="Diagram that shows example logging and monitoring systems." border="false" lightbox="media/logging-monitoring.jpg":::
 
 If your critical applications and business processes rely on Azure resources, you should monitor those resources for availability and performance. You can use [Azure Monitor](https://azure.microsoft.com/services/monitor) to carry out the following monitoring activities:
 
