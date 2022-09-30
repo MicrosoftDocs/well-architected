@@ -508,8 +508,12 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
   - Changes in Access keys
   - Disk failure
   - RAM & CPU unavailability
+  - Simulate VM/application upgrade
+  - Resource constrain such as CPU & memory exhaustion.
+  
   
 - Do not access individual virtual machines directly, use load balancers in front when possible.
+- Do not deploy application on the operation system disk, always use data disk.
 
 - Monitor virtual machines and ensure diagnstic logs are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
 
