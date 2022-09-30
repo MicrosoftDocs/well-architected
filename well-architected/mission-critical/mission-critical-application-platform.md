@@ -502,7 +502,7 @@ also load test application for peaks load and see how application and virtual ma
 - Prioritize stateless workloads that allow horizontal scale instead of vertical scale.
 - Do not redirect traffic to virtual machines directly, use load balancers in front to blanace traffic load between virtual machines.
 - Monitor virtual machines and detect for failure. The raw data of for monitoring can come from variety of sources. Ensure that monitoring is configured and analyze the cause of problems.
-- Analyze the backup is running healthy and periodic backups are taken. [Backup center](https://docs.microsoft.com/en-us/azure/backup/backup-center-overview)  and [backup reports]  (https://docs.microsoft.com/en-us/azure/backup/backup-center-obtain-insights) can be use for this analysis.
+- Analyze the backup is running healthy and periodic backups are taken. [Backup center](/azure/backup/backup-center-overview)  and [backup reports](/azure/backup/backup-center-obtain-insights) can be use for this analysis.
 
 ## Next step
 
