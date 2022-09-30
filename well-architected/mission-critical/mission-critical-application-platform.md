@@ -478,7 +478,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 -  Right-size VM sku sizes to ensure effective resource utilization. 
   -  For more detail please refer to this [community blog](https://techcommunity.microsoft.com/t5/microsoft-mechanics-blog/which-virtual-machine-is-best-for-your-workload-in-azure/ba-p/2262293)
 
-- Deploy three or more Virtual Machines across [Availability zones] (https://docs.microsoft.com/en-us/azure/availability-zones/az-overview) to achieve data center level fault tolerance.
+- Deploy three or more Virtual Machines across [Availability zones](https://docs.microsoft.com/en-us/azure/availability-zones/az-overview) to achieve data center level fault tolerance.
   - If you are deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production. 
 
 - For workloads which cannot be deployed acorss Availabity Zones, use Availability Sets with three or more VMs.
