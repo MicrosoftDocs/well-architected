@@ -12,13 +12,13 @@ ms.subservice: well-architected
 
 # Operational excellence in your IoT workload
 
-The key factor in IoT operational excellence is an organization's ability to plan, provision, configure, monitor, and retire IoT devices. This guide focuses on the operational aspects of IoT devices and services that uniquely address the core requirements of an IoT solution.
+Given the complexity of IoT solution requirements, an organization's operational capabilities are important for driving sustainable business value. This guide focuses on the operational aspects of IoT devices and services that uniquely address the core requirements of an IoT solution.
 
-Given the complexity of IoT solution requirements, an organization's operational capabilities are important for driving sustainable business value. Operational excellence in an IoT workload requires full visibility and control over all hardware and software components of the solution. Design, development, provisioning, monitoring, support, and maintenance practices must be agile and deliver business value without increasing operational risk.
+Operational excellence in an IoT workload requires full visibility and control over all hardware and software components of the solution. Design, development, provisioning, monitoring, support, and maintenance practices must be agile and deliver business value without increasing operational risk.
 
-IoT workloads comprise three technology stacks: cloud, communication network, and IoT devices. In IoT solutions, the device diversity and scale, different network types, and geographically distributed locations significantly shift the cloud and hybrid [shared responsibility model](/azure/security/fundamentals/shared-responsibility) away from the cloud provider. Cloud services make it easier for organizations to operate IoT devices and networks themselves or by using third parties, but the organizations themselves own the operational responsibility for these key elements of IoT workloads.
+In IoT solutions, the device diversity and scale, different network types, and geographically distributed locations significantly shift the cloud and hybrid [shared responsibility model](/azure/security/fundamentals/shared-responsibility) away from the cloud provider. Cloud services make it easier for organizations to operate IoT devices and networks themselves or by using third parties, but the organizations themselves own the operational responsibility for these key elements of IoT workloads.
 
-Operational excellent ensures that your IoT solution can successfully:
+Operational excellence ensures that your IoT solution can successfully:
 
 - Support different user roles including developers, administrators, and operators.
 - Manage all device lifecycle stages for the lifetime of the solution.
@@ -40,11 +40,13 @@ The IoT core layers: Device and gateway, device management and modeling, and ing
 
 ## Device and gateway layer
 
-This layer represents the physical or virtual device and gateway hardware deployed at the edge or on premises. Organizations must select IoT hardware that meets business and technical requirements, and define appropriate testing procedures to ensure operational reliability.
+This layer represents the physical or virtual device and gateway hardware deployed at the edge or on premises.
+
+A key factor in IoT operational excellence is an organization's ability to plan, provision, configure, monitor, and retire IoT devices. Organizations must select IoT hardware that meets business and technical requirements, and define appropriate testing procedures to ensure operational reliability.
 
 Greenfield projects that use new hardware usually have more flexibility in device types, firmware and connectivity features, and technical specifications. You might need to select devices that comply with regional certification requirements or regulations such as CE, FCC, UL, PCI, or FDA.
 
-Brownfield projects that already have hardware deployed typically have more hardware restrictions. You might need to look for other types of hardware, such as protocol or identity translation devices, or connectivity gateways such as Bluetooth to MQTT gateway.
+Brownfield projects that already have hardware deployed typically have more hardware restrictions. You might need to look for other types of hardware, such as protocol or identity translation devices, or connectivity gateways such as Bluetooth to MQ Telemetry Transport (MQTT) gateway.
 
 [Azure Certified Device Program](https://www.microsoft.com/azure/partners/azure-certified-device) certification validates that a device can connect with Azure IoT Hub and securely provision through the IoT Hub Device Provisioning Service (DPS). The [Azure Certified Device Catalog](https://devicecatalog.azure.com) can help you find and select certified partner hardware. The Device Catalog has search and filter capabilities you can use to find hardware that meets your solution requirements.
 
@@ -68,7 +70,7 @@ Azure offers several options to meet capacity requirements as your business grow
 
   If you're approaching the IoT Hub message limit, your system should be able to automatically scale up IoT Hub to the next unit of capacity. Any back-end services in the IoT solution, such as Azure Stream Analytics, Azure Cosmos DB, and Azure Data Explorer must support scalability to ensure there are no bottlenecks anywhere in the solution's data flow.
 
-You should also plan for edge device capacity needs and requirements. Whether you're managing RTOS-based devices or larger compute devices with IoT Edge, make sure compute and memory sizing are adequate for your specific use cases.
+You should also plan for edge device capacity needs and requirements. Whether you're managing real-time operating system (RTOS)-based devices or larger compute devices with IoT Edge, make sure compute and memory sizing are adequate for your specific use cases.
 
 ## Device management and modeling layer
 
