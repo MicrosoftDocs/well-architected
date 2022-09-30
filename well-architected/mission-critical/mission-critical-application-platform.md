@@ -451,17 +451,16 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 ### Design Considerations
 
-- The use of IaaS Virtual Machines massively increases the operational costs, compared to PaaS services, by bringing back the responsibility to manage the virtual machine, the operating system, rolling out software packages and updates and a lot more.
-
-- IaaS VMs do, compared to PaaS services, not provide zone-redundancy, geo-distribution and other capabilities out-of-the-box. Same is true for DevOps processes like rolling out software packages, dependencies. The use of PaaS services (or containers) should be prioritized when possible.
-
-- Virtual Machines can be deployed into Availability Zones to achieve higher resiliency and reliability, while still remaining individual VMs. This can be used for example for Domain Controllers and other stateful workloads that cannot scale horizontally.
-
-- The use of IaaS Virtual Machines can be required in certain scenarios:
-  - The available PaaS services do not provide the required performance or level of control.
-  - No PaaS service pendant is available.
-  - A certain workload requires operating system access, specific drivers or network and system configuration or is not supported to run in containers.
+- The use of IaaS Virtual Machines can be required for certain scenarios:
+  - Available PaaS services do not provide the required performance or level of control.
+  - The workload requires operating system access, specific drivers, or network and system configurations.
+  - The workload does not support running in containers.
   - Lack of support for 3rd-party workloads.
+
+- The use of IaaS Virtual Machines significantly increases operational costs compared to PaaS services, through manament responsibility of the virtual machine and the operating system.
+  - Managing virtual machines necesitates the frequent roll-out of software packages and updates.
+
+- Virtual Machines can be deployed into Availability Zones to achieve higher levels of reliability.
 
 ### Design Recommendations
 
