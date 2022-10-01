@@ -59,11 +59,11 @@ An IoT architecture consists of a set of foundational layers. Layers are realize
 
 Security functions cut across all layers, and should follow specific principles and recommendations. All layers are subject to various threats that can be classified according to the [STRIDE categories](/archive/blogs/larryosterman/threat-modeling-again-stride): *spoofing*, *tampering*, *repudiation*, *information disclosure*, *denial of service*, and *elevation of privilege*. Always follow [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl) practices when you design and build IoT architectures.
 
-### Device and gateway layer
+## Device and gateway layer
 
 This architectural layer includes the immediate physical space around the device and gateway that allows physical access or peer-to-peer digital access. Many industrial companies use the [Purdue model](https://en.wikipedia.org/wiki/Purdue_Enterprise_Reference_Architecture) included in the ISA 95 standard to ensure their process control networks (PCNs) both protect their limited network bandwidth and provide real-time deterministic behavior. The Purdue model provides an extra layer of defense-in-depth methodology.
 
-#### Strong device identity
+### Strong device identity
 
 Tightly integrated capabilities of IoT devices and services provide strong device identity. These capabilities include:
 
@@ -108,7 +108,7 @@ You can use IoT device registry data to:
 
 Use network sensors to detect and inventory unmanaged IoT devices that don't connect to Azure IoT services, for awareness and monitoring.
 
-#### Least-privileged access
+### Least-privileged access
 
 Least-privileged access control helps limit impact from authenticated identities that might be compromised or running unapproved workloads. For IoT scenarios, grant operator, device, and workload access by using:
 
@@ -125,7 +125,7 @@ To implement effective least-privileged access:
 - Manage user access through an appropriate access control model, such as role-based or attribute-based access control.
 - Layer least-privileged access for IoT devices by using network segmentation.
 
-#### Device health
+### Device health
 
 Under the zero-trust principle, device health is a key factor to determine the risk profile, including trust level, of a device. Use the risk profile as an access gate to ensure only healthy devices can access IoT applications and services, or to identify devices in questionable health for remediation.
 
@@ -137,7 +137,7 @@ According to industry standards, device health evaluation should include:
 - Active threats and threat alerts.
 - Anomalous behavioral alerts, such as network pattern and usage deviation.
 
-#### Use zero-trust criteria to choose IoT devices
+### Zero-trust criteria for devices
 
 To support zero trust, IoT devices should:
 
@@ -174,11 +174,11 @@ Several Azure products and services support IoT device security.
 
   The Edge Secured-core program enables Azure services such as the Azure Attestation service to make conditional decisions based on device posture, thus enabling the zero-trust model. Devices must include a hardware root of trust and provide secure boot and firmware protection. These attributes can be measured by the attestation service and used by downstream services to conditionally grant access to sensitive resources.
 
-### Device management and modeling layer
+## Device management and modeling layer
 
 This architectural layer includes software components or modules running in the cloud that interface with devices and gateways for data collection and analysis, as well as for command and control. It's critical to ensure that communication from the device to the cloud is secure and encrypted using the latest TLS standards.
 
-#### Network micro-segmentation
+### Network micro-segmentation
 
 Network design and configuration provide opportunities to build defense in depth by segmenting IoT devices based on their traffic patterns and risk exposure. This segmentation minimizes the potential impact of compromised devices and adversaries pivoting to higher-value assets. Network segmentation typically uses next-generation firewalls.
 
@@ -186,7 +186,7 @@ Network micro-segmentation enables isolation of less-capable devices at the netw
 
 Implement a holistic firewall rule strategy that allows devices to access the network when required, and blocks access when not allowed. To support defense in depth, mature organizations can implement micro-segmentation policies at multiple layers of the Purdue model. If necessary, use firewalls on devices to restrict network access.
 
-#### Use zero-trust criteria to choose IoT services
+### Zero-trust criteria for IoT services
 
 Use IoT services that offer the following key zero-trust capabilities:
 
@@ -239,13 +239,13 @@ The following Microsoft products fully integrate hardware and Azure services in 
 
   Azure Percept devices use a hardware root of trust to help protect inference data, AI models, and privacy-sensitive sensors like cameras and microphones. Azure Percept enables device authentication and authorization for Azure Percept Studio services. For more information, see [Azure Percept security](/azure/azure-percept/overview-percept-security).
 
-### Ingestion and communication layer
+## Ingestion and communication layer
 
 Protect data that's ingested into the IoT solution, including data on devices. If data at rest is stored on devices, use standard encryption algorithms to encrypt the data.
 
 Make sure devices are protected physically. Turn off or disable any device features that aren't needed, such as physical USB or UART ports, or WiFi or Bluetooth connectivity. Use physical removal, covering, or blocking when necessary.
 
-## Management and operations
+## DevOps layer
 
 An enterprise IoT solution should provide a strategy for operators to manage the system. DevOps methodologies that proactively focus on security include:
 
