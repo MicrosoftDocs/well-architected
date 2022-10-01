@@ -3,7 +3,7 @@ title: Security in your IoT workload
 description: See guidance and recommendations that apply to the security pillar in a well-architected IoT workload.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/08/2022
+ms.date: 09/30/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -15,11 +15,7 @@ IoT solutions have the challenge of securing diverse and heterogeneous device-ba
 
 [IoT device builders, IoT application developers, and IoT solution operators](/azure/architecture/example-scenario/iot/builders-developers-operators) share responsibility for security during the full IoT solution lifecycle. It's important to design the solution from the start with security in mind. Understand the potential threats, and add [defense in depth](https://csrc.nist.gov/glossary/term/defense_in_depth) as you design and architect the solution.
 
-<<<<<<< HEAD
 Security planning starts with a [threat model](https://www.microsoft.com/securityengineering/sdl/threatmodeling). Understanding how an attacker might be able to compromise a system helps you ensure appropriate mitigations from the start. Threat modeling offers the greatest value when you incorporate it into the design phase. When you're designing, you have the greatest flexibility to make changes to eliminate threats.
-=======
-There are multiple personas such as *IoT device builders*, *IoT application developers*, and *IoT solution operators* involved in an IoT solution. They all are required to ensure security in the full lifecycle of an IoT solution.
->>>>>>> 24ffbd54cccde4bc18b5295e591e29f3fae86fa0
 
 As part of the threat modeling exercise, you can divide a typical IoT architecture into several components or zones: device, device gateway, cloud gateway, and services. Each zone can have its own authentication, authorization, and data requirements. You can use zones to isolate damage and restrict the impact of low-trust zones on higher-trust zones. For more information, see the [Internet of Things (IoT) security architecture](/azure/iot-fundamentals/iot-security-architecture#security-in-iot).
 
