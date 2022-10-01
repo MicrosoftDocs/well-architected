@@ -37,9 +37,9 @@ This design area focuses on how to eradicate downtime and maintain application h
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for acheiving optimal CI/CD pipelines for a mission-critical application.
 
-## Demo: Continuous validation with Azure Load Test and Azure Chaos Studio
+## Video: Continuously validate your mission-critical workload
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
+> [!VIDEO fc7842c3-7c7a-44dc-ad87-838aa51d0000]
 
 ## Application environments
 
@@ -60,10 +60,6 @@ This section explores the key considerations and recommendations for application
 - Development environments must be available when required, but need not exist permanently and typically only exist for short periods of time. Keeping environments short lived saves costs, and prevents configuration drift from the code base. Also, development environments often share the lifecycle of a feature branch.
 
 - Development environments can also encompass the development of Infrastructure-as-Code (IaC) artifacts such as Terraform or Azure Resource Manager (ARM) templates.
-
-#### Demo: Ephemeral dev environments and automated feature validation
-
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE50Gm9]
 
 **Staging Environments**
 
@@ -89,6 +85,7 @@ This section explores the key considerations and recommendations for application
 - Ensure all environments reflect the production environment as much as possible, with simplifications applied for lower environments as necessary.
 
 - Keep production environments separate from lower environments into a dedicated subscription. This helps to ensure resource utilization in lower-environments doesn't impact production quotas, and to provide a clear governance boundary and separation of concerns. Depending on the scale requirements of the application, multiple production subscriptions might be needed to serve as scale-units.
+![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png)
 
 - Separate development environments within a distinct subscription context, with all development environments sharing the same subscription.
   - Ensure that there's an automated process to deploy code from a feature branch to a development environment.
@@ -103,7 +100,10 @@ This section explores the key considerations and recommendations for application
   - Use of a constant synthetic user load generation is required to provide a realistic test case for changes on one of the pre-production environments.
     - The [Mission Critical Online](https://github.com/Azure/Mission-Critical-Online) reference implementation provides an example [user load generator](https://github.com/Azure/Mission-Critical-Online/blob/main/src/testing/userload-generator/README.md).
 
-![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png)
+
+#### Demo video: Ephemeral dev environments and automated feature validation
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE50Gm9]
 
 ## Ephemeral blue/green deployments
 
@@ -494,6 +494,10 @@ The scope of this section focuses on testing conducted within the outer loop for
 
 - Scan and monitor the end to end software supply chain and package dependencies for known CVEs.
   - Use [Dependabot](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates) for GitHub repositories to ensure the repository automatically keeps up-to-date with the latest releases of packages and applications it depends on.
+
+#### Demo video: Continuous validation with Azure Load Test and Azure Chaos Studio
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
 
 ## AI for DevOps
 

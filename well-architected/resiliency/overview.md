@@ -31,7 +31,9 @@ For more information, explore the following video on diving deeper into Azure wo
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/global/video-embed.html?show=azure-enablement&ep=diving-deeper-into-azure-workload-reliability-part-2--reliability-ep-2--well-architected]
+<br/>
+
+> [!VIDEO https://learn.microsoft.com/_themes/docs.theme/master/en-us/_themes/global/video-embed.html?show=azure-enablement&ep=diving-deeper-into-azure-workload-reliability-part-2--reliability-ep-2--well-architected]
 
 <!-- markdownlint-enable MD034 -->
 
