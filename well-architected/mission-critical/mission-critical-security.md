@@ -107,11 +107,6 @@ As you assess the security posture of the application, start with these question
   - Apply security testing as part of the CD production process for each release.
     - If security testing each release jeopardizes operational agility, ensure a suitable security testing cadence is applied.
   
-- Limit public network access to the absolute minimum required for the application to fulfill its business purpose to reduce the external attack surface.
-  - Use [Azure Private Link](/azure/private-link/private-endpoint-overview#private-link-resource) to establish [private endpoints](/azure/private-link/private-endpoint-overview) for Azure resources that  require secure network integration.
-    - Use a secure network path and [hosted private build agents](/azure/devops/pipelines/agents/agents#install) for CI/CD tooling to deploy and configure Azure resources protected by Azure Private Link.
-      - [Microsoft-hosted agents](/azure/devops/pipelines/agents/agents#microsoft-hosted-agents) won't be able to directly connect to network integrated resources.
-
 - Enable [secret scanning](https://github.blog/2020-08-27-secure-at-every-step-putting-devsecops-into-practice-with-code-scanning/) and dependency scanning within the source code repository.
 
 ## Threat modeling
@@ -128,7 +123,6 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 
 > [!NOTE]
 > When deploying within an Azure landing zone, be aware that an additional threat mitigation layer through the provisioning of centralized security capabilities is provided by the landing zone implementation.
-
 
 ### Design considerations
 
@@ -201,8 +195,10 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 ### Design Recommendations
 
-- To maximize network security, limit network access to the absolute minimum required for the application to fulfill its purpose.
-  - Use internal network paths, such as Azure Bastion, or automatically managed temporary firewall rules to enable direct data-plane infrastructure access.
+- Limit public network access to the absolute minimum required for the application to fulfill its business purpose to reduce the external attack surface.
+  - Use [Azure Private Link](/azure/private-link/private-endpoint-overview#private-link-resource) to establish [private endpoints](/azure/private-link/private-endpoint-overview) for Azure resources that require secure network integration.
+  - Use [hosted private build agents](/azure/devops/pipelines/agents/agents#install) for CI/CD tooling to deploy and configure Azure resources protected by Azure Private Link.
+    - [Microsoft-hosted agents](/azure/devops/pipelines/agents/agents#microsoft-hosted-agents) won't be able to directly connect to network integrated resources.
 
 - When dealing with private build agents, never open an RDP or SSH port directly to the internet.
   - Use [Azure Bastion](/azure/bastion/bastion-overview) to provide secure access to Azure Virtual Machines and to perform administrative tasks on Azure PaaS over the Internet.
@@ -245,7 +241,7 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
   - Key Vault access policy assignments grant permissions separately to keys, secrets, or certificates.
     - Granular [object-level permissions](/azure/key-vault/general/rbac-guide?tabs=azure-cli#best-practices-for-individual-keys-secrets-and-certificates) to a specific key, secret, or certificate are now possible.
 
-- Role assignments incur a latency, taking up to 10 minutes (600 seconds) for a role to be applied after a role assignment is changed.
+- After a role assignment is changed, there's a latency of up to 10 minutes (600 seconds) for the role to be applied.
   - There's an Azure AD limit of 2,000 Azure role assignments per subscription.
 
 - Azure Key Vault underlying hardware security modules (HSMs) are FIPS 140-2 Level 2 compliant.
@@ -269,9 +265,6 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
 
 ### Design recommendations
 
-- Use Azure Key Vault to store all application secrets and certificates.
-  - Deploy a separate collocated Azure Key Vault with every regional deployment stamp.
-
 - Use service-managed keys for data protection where possible, removing the need to manage encryption keys and handle operational tasks such as key rotation.
   - Only use customer-managed keys when there's a clear regulatory requirement to do so.
 
@@ -279,12 +272,12 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
   - Provision Azure Key Vault with the soft delete and purge policies enabled to allow retention protection for deleted objects.
   - Use HSM backed Azure Key Vault SKU for application production environments.
 
-- Deploy a separate Azure Key Vault instance within each regional deployment stamp, providing fault isolation and performance benefits through localization, as well as navigating the scale limits imposed by a single key vault instance.
+- Deploy a separate Azure Key Vault instance within each regional deployment stamp, providing fault isolation and performance benefits through localization, as well as navigating the scale limits imposed by a single Key Vault instance.
   - Use a dedicated Azure Key Vault instance for application global resources.
 
 - Follow a least privilege model by limiting authorization to permanently delete secrets, keys, and certificates to specialized custom Azure AD roles.
 
-- Ensure secrets, keys, and certificates stored within key vault are backed up, providing an offline copy in the unlikely event key vault becomes unavailable.
+- Ensure encryption keys, and certificates stored within Key Vault are backed up, providing an offline copy in the unlikely event Key Vault becomes unavailable.
 
 - Use Key Vault certificates to [manage certificate procurement and signing](/azure/key-vault/certificates/certificate-scenarios#creating-a-certificate-with-a-ca-partnered-with-key-vault).
 
@@ -294,8 +287,6 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
 
 - Monitor key, certificate, and secret usage.
   - Define [alerts](/azure/key-vault/general/alert) for unexpected usage within Azure Monitor.
-
-- Enable firewall and Private Endpoints on all application Azure Key Vault to control access.
 
 ## Policy-driven governance
 
@@ -330,7 +321,7 @@ This section will therefore explore key considerations and recommendations surro
 - Define a common engineering criteria to capture secure and reliable configuration definitions for all utilized Azure services, ensuring this criteria is mapped to Azure Policy assignments to enforce compliance.
   - For example, apply an Azure Policy to enforce the use of Availability Zones for all relevant services, ensuring reliable intra-region deployment configurations.
 
-> The Mission Critical reference implementation contain a wide array of [security and reliability centric policies](/azure/architecture/framework/mission-critical/mission-critical-security#policy-driven-governance) to define and enforce a sample common engineering criteria.
+> The Mission Critical reference implementation contain a wide array of security and reliability centric policies to define and enforce a sample common engineering criteria.
 
 - Monitor service configuration drift, relative to the common engineering criteria, using Azure Policy.
 

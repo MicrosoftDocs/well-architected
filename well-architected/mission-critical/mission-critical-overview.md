@@ -3,7 +3,7 @@ title: Mission-critical workloads
 description: Overview of mission-critical workloads on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
-ms.date: 08/01/2022
+ms.date: 08/15/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -76,13 +76,23 @@ The design areas are interrelated and decisions made within one area can impact 
 
 The guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations available as part of the [Mission-Critical open source project](http://github.com/azure/mission-critical) on GitHub. These implementations can be used as a basis for further solution development.
 
-- [Reference architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)&mdash;Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure. The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate.
+- [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)&mdash;Provides a foundation for building a cloud-native, highly scalable, internet-facing application on Microsoft Azure. The workload is accessed over a public endpoint and doesn't require private network connectivity to a surrounding organizational technical estate.
 
   > Refer to the implementation: [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
+
+- [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)&mdash;Extends the baseline architecture with strict network controls in place to prevent unauthorized public access from the internet to any of the workload resources.
 
 - [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) 
 
   Provides a foundation for building a corporate-connected cloud-native application on Microsoft Azure using existing network infrastructure and private endpoints. The workload requires private connectivity to other organizational resources and takes a dependency on pre-provided Virtual Networks for connectivity to other organizational resources. This use case is intended for scenarios that require integration with a broader organizational technical estate for either public-facing or internal-facing workloads.
+  
+## Industry scenarios
+
+The mission-critical guidance within this series forms an industry agnostic design methodology which can be applied across a multitude of different industry contexts. The following list provides specific examples where the mission-critical design methodology has been applied and tailored to a particular industry scenario.  
+
+  - [Carrier-grade](/azure/architecture/framework/carrier-grade/carrier-grade-get-started) within the telecommunications industry
+
+A carrier-grade workload pivots on both business-critical and safety-critical aspects, where there's a fundamental requirement to be operational with only minutes or even seconds of downtime per calendar year. Failure to achieve this uptime requirement can result in extensive loss of life, incur significant fines, or contractual penalties.
 
 ## Next step
 

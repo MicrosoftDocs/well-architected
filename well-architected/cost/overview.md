@@ -30,10 +30,12 @@ We recommend exploring the following videos to dive deeper into Azure cost optim
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/en-us/shows/Azure-Enablement/Diving-deeper-into-Azure-cost-optimization-Part-1-Cost-Optimization-Ep-2-Well-Architected-series/player]
+<br/>
+
+> [!VIDEO https://learn.microsoft.com/shows/Azure-Enablement/Diving-deeper-into-Azure-cost-optimization-Part-1-Cost-Optimization-Ep-2-Well-Architected-series/player]
 <br>
 
-> [!VIDEO https://docs.microsoft.com/en-us/shows/Azure-Enablement/Diving-deeper-into-Azure-cost-optimization-Part-2-Cost-Optimization-Ep-2-Well-Architected-series/player]
+> [!VIDEO https://learn.microsoft.com/shows/Azure-Enablement/Diving-deeper-into-Azure-cost-optimization-Part-2-Cost-Optimization-Ep-2-Well-Architected-series/player]
 
 <!-- markdownlint-enable MD034 -->
 
