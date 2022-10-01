@@ -3,7 +3,7 @@ title: Reliability in your IoT workload
 description: See guidance and recommendations that apply to the reliability pillar in a well-architected IoT workload.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/27/2022
+ms.date: 09/30/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -39,13 +39,13 @@ Reliable IoT architectures include the following elements:
 
 To assess your IoT workload against the Well-Architected Framework Reliability pillar, complete the reliability questions for IoT workloads in the [Azure Well-Architected Review assessment](/assessments/?mode=pre-assessment&id=azure-architecture-review). After the assessment identifies key reliability recommendations for your IoT solution, use the following content to help implement the recommendations.
 
-## Reliability in IoT architecture layers
+## Architectural layers
 
 Reliability in an IoT solution involves the [foundational IoT architecture layers](iot-overview.md#iot-architecture-layers). To achieve overall solution reliability, each layer should have acceptable levels of reliability.
 
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in an IoT architecture." border="false":::
 
-### Device and gateway layer
+## Device and gateway layer
 
 As part of your overall IoT solution, design your devices to satisfy your solution's end-to-end uptime and availability requirements. Devices and gateways come in many forms. IoT devices and gateways can do data collection, supervisory control, and edge analytics.
 
@@ -53,11 +53,11 @@ As part of your overall IoT solution, design your devices to satisfy your soluti
 
 - Devices that provide supervisory control not only collect data to send to the cloud, but also take actions based on that data. Devices send data back to the machines or environment to take supervisory actions. The reliability of supervisory control applications is critical.
 
-#### Device design
+### Device design
 
 Design and select IoT devices to function reliably in the expected operating conditions over their expected lifetimes. A reliable device should perform according to its hardware and software specifications, and any failure should be detected and managed through mitigation, repair, or replacement. Design devices for reliability, but also plan for failures.
 
-#### Device lifecycle
+### Device lifecycle
 
 Limited service lifetimes affect solution reliability. Assess the consequences of device failure on the solution, and define a device lifecycle strategy according to solution requirements.
 
@@ -72,21 +72,21 @@ The acceptable operational downtime determines the speed and extent of device ma
 
 The more modular the design, the easier it is to swap out parts of the system, especially if some parts become obsolete earlier than others. Alternative or multi-sourcing of component and module supply chains are critical for reliable solutions.
 
-#### Environmental requirements
+### Environmental requirements
 
 The conditions in which a device operates affect its reliability. Define your environmental requirements, and use devices with appropriate feature specifications. These specifications include parameters such as operating temperature range, humidity, ingress protection (IP) rating, electromagnetic interference (EMI) immunity, and shock and vibration immunity.
 
-#### Operational profile
+### Operational profile
 
 Performance stress affects the operational behavior of devices, and therefore their reliability. Define operational profiles that estimate behavior over device lifetime, and assess device reliability accordingly. Such profiles include operation modes, such as wireless transmission or low-power modes, and environmental conditions, such as temperature, over the device lifetime.
 
 In normal operating conditions, the device and software should run safely within the specified operational profiles. Devices must be able to service and process all the external sensors and data processing that the solution requires. Avoid running at the limit of device capabilities.
 
-#### Regulations and standards
+### Regulations and standards
 
 Devices for specific industries are subject to applicable regulations and standards. Define regulations and standards, and make sure devices meet compliance and conformity requirements. Regulations include certification and marking, such as FCC or CE. Standards include industry or agency applications, such as ATEX and MIL-SPEC, and safety conformance, for example IEC 61508.
 
-### Device management and modeling layer
+## Device management and modeling layer
 
 Cloud services provide each device with an identity, and manage devices at scale. As described in the [Reliability design principles](/azure/architecture/framework/resiliency/principles), the cloud services in your IoT solution must implement reliability principles to provide high availability for your overall IoT solution.
 
@@ -98,7 +98,7 @@ The connectivity strategy should include robustness, for example fallback capabi
 
 The following design, error handling, and monitoring practices relate to connectivity:
 
-#### Design for connectivity
+### Connectivity design
 
 An IoT solution should enable the flow of information between intermittently connected devices and cloud-based services. Make sure your IoT devices can operate efficiently with intermittent connectivity to the cloud.
 
@@ -109,7 +109,7 @@ Best practices include the following recommendations:
 - Make sure you can store data on devices if your solution can't tolerate data loss.
 - Use data sampling and simulations to measure network capacity and storage requirement baselines.
 
-#### Implement connectivity
+### Connectivity implementation
 
 The Azure IoT device SDKs provide client libraries that you can use on devices or gateways to simplify connectivity with Azure IoT services. You can use the SDKs to instrument IoT device clients that:
 
@@ -117,13 +117,13 @@ The Azure IoT device SDKs provide client libraries that you can use on devices o
 - Provide a consistent client development experience across different platforms.
 - Simplify common connectivity tasks by abstracting details of the underlying protocols and message processing patterns, such as exponential backoff with jitter and retry logic.
 
-#### Monitor connectivity
+### Connectivity monitoring
 
 Connectivity issues for IoT devices can be difficult to troubleshoot because of the many possible points of failure. Application logic, physical networks, protocols, hardware, Azure IoT Hub, and other cloud services can have problems.
 
 The ability to detect and pinpoint the source of an issue is critical. However, an IoT solution at scale could have thousands of devices, so it's not practical to manually check individual devices. Azure Monitor and Azure Event Grid can help you diagnose connectivity issues in IoT Hub.
 
-#### Connectivity resources
+### Connectivity resources
 
 - [Manage connectivity and reliable messaging by using Azure IoT Hub device SDKs](/azure/iot-hub/iot-hub-reliability-features-in-sdks)
 - [Monitor, diagnose, and troubleshoot Azure IoT Hub device connectivity](/azure/iot-hub/iot-hub-troubleshoot-connectivity)
@@ -133,31 +133,31 @@ The ability to detect and pinpoint the source of an issue is critical. However, 
 - [Compensating Transaction pattern - Cloud Design Patterns](/azure/architecture/patterns/compensating-transaction)
 - [Throttling pattern - Cloud Design Patterns](/azure/architecture/patterns/throttling)
 
-### Ingestion and communication layer
+## Ingestion and communication layer
 
 The IoT ingestion and communication layer covers service quotas and limits, capacity, throttling, and autoscale.
 
-#### Design for redundant capacity
+### Redundant capacity design
 
 When planning thresholds and alerts, consider the latency between detection and action taken. Make sure the system and operators have enough time to respond to change requests. Otherwise, for example, you might detect a need to increase the number of units, but the system could fail by losing messages before the increase can take effect.
 
-#### Plan for service quotas
+### Service quota planning
 
 As with all platform services, IoT Hub and the IoT Hub Device Provisioning Service (DPS) enforce quotas and throttles on certain operations, so Azure can deliver predictable service levels and costs for its services. Quotas and throttles are tied to the service tier and number of units you deploy, so you can design your solution with the right number of resources. Review quotas and throttles in advance, and design your IoT Hub and DPS resources accordingly.
 
-#### Establish benchmarks at production scale
+### Production-scale benchmarks
 
 As the number of devices or volume of data increase, the cloud gateway must scale to support uninterrupted data flow. Due to the distributed nature of IoT solutions, the number of devices, and the volume of data, it's important to establish scale benchmarks for the overall solution. These benchmarks help to plan for capacity risks. Use the [Azure IoT Device Telemetry Simulator](/samples/azure-samples/iot-telemetry-simulator/azure-iot-device-telemetry-simulator) to simulate production scale volumes.
 
-#### Autoscale to adjust to quotas dynamically
+### Autoscaling to dynamically adjust to quotas
 
 A benefit of using platform-as-a-service (PaaS) components is the ability to scale up and down with little effort according to your needs. To provide the lowest cost and operational effort, consider implementing an automated system to scale your resources up and down with the varying needs of your solution.
 
-#### Monitor quotas and throttling
+### Quota and throttle management
 
 To ensure solution reliability, continuously monitor resource usage against quotas and throttles to detect usage increases that indicate the need to scale. Depending on your business requirements, you can continuously monitor resource usage and alert the operator when thresholds are met, or implement an automated system to autoscale.
 
-#### Capacity and scaling resources
+### Capacity and scaling resources
 
 - [Understand Azure IoT Hub quotas and throttling](/azure/iot-hub/iot-hub-devguide-quotas-throttling)
 - [Quotas and limits in the Azure IoT Hub Device Provisioning Service](/azure/iot-dps/about-iot-dps#quotas-and-limits)
@@ -170,11 +170,11 @@ To ensure solution reliability, continuously monitor resource usage against quot
 - [IoT Hub quotas and throttling: Operation throttles](/azure/iot-hub/iot-hub-devguide-quotas-throttling#operation-throttles)
 - [IoT Hub quotas and throttling: Other limits](/azure/iot-hub/iot-hub-devguide-quotas-throttling#other-limits)
 
-### Transport layer
+## Transport layer
 
 To connect to the cloud service for data, control, and management, devices need access to a network. Depending on the type of IoT solution, connectivity reliability might be your responsibility or that of the network service provider. Networks might have intermittent connectivity issues, and devices need to manage their behavior accordingly.
 
-## Management and operations
+## DevOps layer
 
 An enterprise IoT solution should provide a strategy for operators to manage the system. To address reliability, IoT management and operations should use DevOps processes to handle updates, observability and monitoring, and HA/DR implementation.
 
@@ -213,7 +213,7 @@ The following actions support observability for IoT solutions:
 - Define roles and responsibilities for monitoring and acting on events and alerts. For more information, see [Roles, responsibilities, and permissions](/azure/architecture/framework/security/design-identity-role-definitions).
 - Implement continuous monitoring.
 
-#### Azure Monitor
+### Azure Monitor
 
 [Azure Monitor](/azure/azure-monitor/essentials/data-platform-metrics) is the recommended monitoring and visualization platform for Azure IoT solutions. You can configure devices, cloud services, and applications, regardless of deployment location, to push log messages directly or through built-in connectors into Azure Monitor.
 
@@ -236,7 +236,7 @@ Application Insights can:
 - Show what users actually do with your apps.
 - Help you continuously improve app performance and usability.
 
-#### Continuous monitoring
+### Continuous monitoring
 
 Continuous integration and continuous deployment (CI/CD) is a DevOps practice that delivers software more quickly and reliably to provide continuous value to users. *Continuous monitoring (CM)* is a similar concept that incorporates monitoring across all phases and components of a DevOps cycle.
 
@@ -245,7 +245,7 @@ CM continuously ensures the health, performance, and reliability of your apps an
 - [Seven best practices for continuous monitoring with Azure Monitor](https://azure.microsoft.com/blog/7-best-practices-for-continuous-monitoring-with-azure-monitor)
 - [Continuous integration and continuous deployment to Azure IoT Edge devices](/azure/iot-edge/how-to-continuous-integration-continuous-deployment)
 
-#### Monitoring resources
+### Monitoring resources
 
 - [Monitor Azure IoT Hub](/azure/iot-hub/monitor-iot-hub)
 - [Monitor Azure IoT Hub data reference](/azure/iot-hub/monitor-iot-hub-reference)
