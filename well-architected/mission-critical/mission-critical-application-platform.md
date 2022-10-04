@@ -490,7 +490,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 - Prioritize the use of Microsoft managed images and use automated processes and tools like cloud-init to customize.
 
-- Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. See [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when using-virtual-machines) in the [Operational procedures](./mission-critical-operational-procedures.md) Design Area for more.
+- Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. See [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-virtual-machines) in the [Operational procedures](./mission-critical-operational-procedures.md) Design Area for more.
   
 - Ensure that strategies are in place to rollback changes to last known healthy state in case a newer version is not functioning correctly.
 
