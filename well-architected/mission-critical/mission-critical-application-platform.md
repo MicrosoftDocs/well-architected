@@ -481,20 +481,20 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 - For workloads which cannot be deployed across Availability Zones, use Availability Sets with three or more VMs.
   - Availability Sets should only be considered if Availability Zones do not comply with workload requirements, such as for 'chatty' workloads with low latency requirements.
 
+- Prioritize the use of Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy. This is particularly important for workloads with varying load (e.g. number of active users or requests per second).
+  
+- Do not access individual virtual machines directly, use load balancers in front when possible.
+
 - To protect against regional outages, deploy application virtual machines across multiple Azure regions.
   - Please refer to the [networking and connectivity design area](/azure/architecture/framework/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for further details about how to optimally route traffic between active deployment region.
 
 - For workloads which do not support multi-region active-active deployments, consider active-passive by using hot/warm standby virtual machines for regional failover.
-
-- Prioritize the use of Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy. This is particularly important for workloads with varying load (e.g. number of active users or requests per second).
 
 - Prioritize the use of Microsoft managed images and use automated processes and tools like cloud-init to customize.
 
 - Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. See [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-virtual-machines) in the [Operational procedures](./mission-critical-operational-procedures.md) design area for more.
 
 - Implement chaos experiments to inject application faults into virtual machine components while observing the mitigation of faults. See [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing) in the [Deployment and testing](./mission-critical-deployment-testing.md) design area for more details.
-  
-- Do not access individual virtual machines directly, use load balancers in front when possible.
 
 - Monitor virtual machines and ensure diagnostic logs are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
 
