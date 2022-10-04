@@ -365,7 +365,6 @@ In scenarios where the use of IaaS Virtual Machines is required, some specifics 
 - For multi-tier applications consider using different subnets and use Network Security Groups to restrict access in between.
 - Prioritize the use of Public Key authentication, when possible. Store secrets in a secure place like Azure Key Vault.
 - Protect VMs by using authentication and access control.
-- Encrypt virtual hard disk files.
 - Apply the same security practices as described for mission-critical application scenarios.
 
 Follow and apply security practices for mission-critical application scenarios as described above, when applicable, as well as the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
