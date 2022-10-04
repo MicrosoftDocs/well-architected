@@ -473,7 +473,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 > [!IMPORTANT]
 > - Prioritize the use of PaaS services and Containers where possible to reduce operational complexity and cost. Only use IaaS Virtual Machines when required.
 
-- [Right-size VM sku sizes](https://techcommunity.microsoft.com/t5/microsoft-mechanics-blog/which-virtual-machine-is-best-for-your-workload-in-azure/ba-p/2262293) to ensure effective resource utilization.
+- [Right-size VM sku sizes](/azure/virtual-machines/sizes) to ensure effective resource utilization.
 
 - Deploy three or more Virtual Machines across [Availability zones](/azure/availability-zones/az-overview) to achieve data center level fault tolerance.
   - If you are deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production.
