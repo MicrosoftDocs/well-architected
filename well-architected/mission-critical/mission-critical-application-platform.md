@@ -445,7 +445,7 @@ See [Azure Event Grid quotas and limits](/azure/event-grid/quotas-limits) for mo
 
 ## Constrained Migrations using IaaS
 
-Many applications with existing on-premises deployments use virtualization technologies and redundant hardware to provide mission-critical levels of reliability. Modernization is often hindered by business constraints which prevent full alignment with the cloud-native baseline (north-star) architecture pattern recomended for mission-critical workloads. So, many applications adopt a phased approach, with initial cloud deployments using virtualization and Azure Virtual Machines as the primary application hosting model.
+Many applications with existing on-premises deployments use virtualization technologies and redundant hardware to provide mission-critical levels of reliability. Modernization is often hindered by business constraints which prevent full alignment with the cloud-native baseline (north-star) architecture pattern recommended for mission-critical workloads. So, many applications adopt a phased approach, with initial cloud deployments using virtualization and Azure Virtual Machines as the primary application hosting model.
 
 This section will therefore focus on the optimal usage of Azure Virtual Machines and associated services in order to maximise the reliability of the application platform, highlighting key aspects of the mission-critical design methodology which transpose cloud-native and IaaS migration scenarios.
 
@@ -457,13 +457,13 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
   - The workload does not support running in containers.
   - Lack of support for 3rd-party workloads.
 
-- The use of IaaS Virtual Machines significantly increases operational costs compared to PaaS services, through manament responsibility of the virtual machine and the operating system.
-  - Managing virtual machines necesitates the frequent roll-out of software packages and updates.
+- The use of IaaS Virtual Machines significantly increases operational costs compared to PaaS services, through management responsibility of the virtual machine and the operating system.
+  - Managing virtual machines necessitates the frequent roll-out of software packages and updates.
 
-- Virtual Machines can be deployed into Availability Zones to achieve higher levels of reliability.
+- Virtual Machines can be deployed into [Availability zones](/azure/availability-zones/az-overview) to achieve higher levels of reliability.
 
-- [Availability Sets](/azure/virtual-machines/availability-set-overview) can be used to protect against network, disk and power failures by distributing virtual machines across up to fault domains and update domains. 
--  See [Availability options for Azure Virtual Machines](/azure/virtual-machines/windows/manage-availability) for further details. 
+- [Availability Sets](/azure/virtual-machines/availability-set-overview) can be used to protect against network, disk and power failures by distributing virtual machines across up to fault domains and update domains.
+- See [Availability options for Azure Virtual Machines](/azure/virtual-machines/windows/manage-availability) for further details.
 
 - [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) (VMSS) provide functionality to automatically scale the number of virtual machines along with capabilities to monitor instance health and automatically repair [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
   
@@ -475,13 +475,13 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 > - Prioritize the use of PaaS services and Containers where possible to reduce operational complexity and cost.
 >   - Only use IaaS Virtual Machines when required.
 
--  Right-size VM sku sizes to ensure effective resource utilization. 
-  -  For more detail please refer to this [community blog](https://techcommunity.microsoft.com/t5/microsoft-mechanics-blog/which-virtual-machine-is-best-for-your-workload-in-azure/ba-p/2262293)
+- Right-size VM sku sizes to ensure effective resource utilization.
+  - For more detail please refer to this [community blog](https://techcommunity.microsoft.com/t5/microsoft-mechanics-blog/which-virtual-machine-is-best-for-your-workload-in-azure/ba-p/2262293)
 
-- Deploy three or more Virtual Machines across [Availability zones](https://docs.microsoft.com/en-us/azure/availability-zones/az-overview) to achieve data center level fault tolerance.
-  - If you are deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production. 
+- Deploy three or more Virtual Machines across [Availability zones](/azure/availability-zones/az-overview) to achieve data center level fault tolerance.
+  - If you are deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production.
 
-- For workloads which cannot be deployed acorss Availabity Zones, use Availability Sets with three or more VMs.
+- For workloads which cannot be deployed across Availability Zones, use Availability Sets with three or more VMs.
   - Availability Sets should only be considered if Availability Zones do not comply with workload requirements, such as for 'chatty' workloads with low latency requirements.
 
 - To protect against regional outages, deploy application virtual machines across multiple Azure regions.
@@ -490,13 +490,13 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 - For workloads which do not support multi-region active-active deployments, provision warm standby virtual machines for regional failover.
 
 - Prioritize the use of Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy.
-  - This is particularly important for workloads with variying load (e.g. number of active users or requests per second).
+  - This is particularly important for workloads with varying load (e.g. number of active users or requests per second).
 
-- Prioritize the use of Microsoft managed images and use automated processes and tools like cloud-init to customize.	
+- Prioritize the use of Microsoft managed images and use automated processes and tools like cloud-init to customize.
 
-- Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. 
+- Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention.
   - Use Azure Automation Desired State Configuration (DSC) to configure Windows VMs.
-  - For Linux VMs, the use of Cloud-init is recomended. 
+  - For Linux VMs, the use of Cloud-init is recommended.
   
 - Ensure that strategies are in place to rollback changes to last known healthy state in case a newer version is not functioning correctly.
 
@@ -511,13 +511,12 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
   - Simulate VM/application upgrade
   - Resource constrain such as CPU & memory exhaustion.
   
-  
 - Do not access individual virtual machines directly, use load balancers in front when possible.
 - Do not deploy application on the operation system disk, always use data disk.
 
-- Monitor virtual machines and ensure diagnstic logs are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
+- Monitor virtual machines and ensure diagnostic logs are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
 
-- Take frequent backups for stateful workloads and ensure backup tasks are working effectivly.
+- Take frequent backups for stateful workloads and ensure backup tasks are working effectively.
   - Alert on failed backup processes.
 
 ## Next step
