@@ -186,6 +186,10 @@ In scenarios where the use of IaaS Virtual Machines is required, some of the pro
 
 - Make sure that operational processes for deployment of virtual machines, updates, backup and recovery are in place and properly tested. To test for resiliency inject fault in application and take a note of failure and mitigate those failure.
 
+- Ensure that strategies are in place to rollback changes to last known healthy state in case a newer version is not functioning correctly.
+
+- Take frequent backups for stateful workloads and ensure backup tasks are working effectively and alert on failed backup processes.
+
 - Monitor virtual machines and detect for failure. The raw data of for monitoring can come from variety of sources. Ensure that monitoring is configured and analyze the cause of problems.
 
 - Analyze that scheduled backups are running healthy and periodic backups are taken. Azure [Backup center](/azure/backup/backup-center-overview) can to gain more insights.

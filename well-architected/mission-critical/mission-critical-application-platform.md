@@ -490,17 +490,13 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 - Prioritize the use of Microsoft managed images and use automated processes and tools like cloud-init to customize.
 
-- Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. See [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-virtual-machines) in the [Operational procedures](./mission-critical-operational-procedures.md) Design Area for more.
-  
-- Ensure that strategies are in place to rollback changes to last known healthy state in case a newer version is not functioning correctly.
+- Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. See [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-virtual-machines) in the [Operational procedures](./mission-critical-operational-procedures.md) design area for more.
 
-- Implement chaos experiments to inject application faults into virtual machine components while observing the mitigation of faults. See [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing) in the [Deployment and testing](./mission-critical-deployment-testing.md) Design Area for more details.
+- Implement chaos experiments to inject application faults into virtual machine components while observing the mitigation of faults. See [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing) in the [Deployment and testing](./mission-critical-deployment-testing.md) design area for more details.
   
 - Do not access individual virtual machines directly, use load balancers in front when possible.
 
 - Monitor virtual machines and ensure diagnostic logs are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
-
-- Take frequent backups for stateful workloads and ensure backup tasks are working effectively and alert on failed backup processes.
 
 Follow and apply security practices for mission-critical application scenarios as described above, when applicable, as well as the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
 
