@@ -497,12 +497,12 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 - Implement chaos experiments to inject application faults into virtual machine components while observing the mitigation of faults. See [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing) in the [Deployment and testing](./mission-critical-deployment-testing.md) Design Area for more details.
   
 - Do not access individual virtual machines directly, use load balancers in front when possible.
-- Do not deploy application on the operation system disk, always use data disk.
 
 - Monitor virtual machines and ensure diagnostic logs are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
 
-- Take frequent backups for stateful workloads and ensure backup tasks are working effectively.
-  - Alert on failed backup processes.
+- Take frequent backups for stateful workloads and ensure backup tasks are working effectively and alert on failed backup processes.
+
+Follow and apply security practices for mission-critical application scenarios as described above, when applicable, as well as the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
 
 ## Next step
 
