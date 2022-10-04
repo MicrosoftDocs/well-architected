@@ -471,8 +471,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 ### Design Recommendations
 
 > [!IMPORTANT]
-> - Prioritize the use of PaaS services and Containers where possible to reduce operational complexity and cost.
->   - Only use IaaS Virtual Machines when required.
+> - Prioritize the use of PaaS services and Containers where possible to reduce operational complexity and cost. Only use IaaS Virtual Machines when required.
 
 - [Right-size VM sku sizes](https://techcommunity.microsoft.com/t5/microsoft-mechanics-blog/which-virtual-machine-is-best-for-your-workload-in-azure/ba-p/2262293) to ensure effective resource utilization.
 
@@ -487,12 +486,11 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 - For workloads which do not support multi-region active-active deployments, consider active-passive by using hot/warm standby virtual machines for regional failover.
 
-- Prioritize the use of Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy.
-  - This is particularly important for workloads with varying load (e.g. number of active users or requests per second).
+- Prioritize the use of Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy. This is particularly important for workloads with varying load (e.g. number of active users or requests per second).
 
 - Prioritize the use of Microsoft managed images and use automated processes and tools like cloud-init to customize.
 
-- Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. See IaaS considerations in [Operational procedures](mission-critical-operational-procedures.md#iaas-specific-considerations-when using-virtual-machines) for more.
+- Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. See IaaS considerations in [Operational procedures](./mission-critical-operational-procedures.md#iaas-specific-considerations-when using-virtual-machines) for more.
   
 - Ensure that strategies are in place to rollback changes to last known healthy state in case a newer version is not functioning correctly.
 
