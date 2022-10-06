@@ -84,7 +84,7 @@ Furthermore, there's a varied set of operational capabilities provided by differ
 
 This section will therefore highlight key operational aspects associated with application design and recommended platform services.
 
-### Design Considerations
+### Design considerations
 
 - Azure services provide a combination of built-in (enabled by default) and configurable platform capabilities, such as zonal redundancy or geo-replication. The service-level configuration of each service within an application must therefore be considered by operational procedures.
   - Many configurable capabilities incur an additional cost, such as the multi-write deployment configuration for Cosmos DB.
@@ -121,7 +121,7 @@ This section will therefore highlight key operational aspects associated with ap
 
 - Azure Policy provides native support for a wide variety of Azure resources.
 
-### Design Recommendations
+### Design recommendations
 
 - Use an active-active deployment model, using a health model and automated scale-operations to ensure no failover intervention is required.
   - If using an active-passive or active-standby model, ensure failover procedures are automated or at least codified within pipelines so that manual steps besides triggering is required during operational crises.
@@ -173,18 +173,18 @@ This section will therefore highlight key operational aspects associated with ap
 
 In scenarios where the use of IaaS Virtual Machines is required, some of the procedures and practices described above might differ. The use of Virtual Machines provides more flexibility in regards to configuration options, selection of operating systems, access to drivers and low-level operating system access as well as to the kind of software that can be installed. The price for that are increased operational costs and responsibility for tasks that are usually done by the cloud provider when using PaaS services.
 
-### Design Considerations
+### Design considerations
 
 - Individual VMs do not provide high availability, zone or geo-redundancy.
 - Individual VMs are not automatically updated once deployed.
 - Services running inside a VM need special treatment and additional tooling to be deployed and configured via Infra-as-Code.
 - Azure periodically updates its platform and might require a reboot. These reboots are usually announced in advance. See [Maintenance for virtual machines in Azure](/azure/virtual-machines/maintenance-and-updates) and [Handling planned maintenance notifications](/azure/virtual-machines/maintenance-notifications).
 
-### Design Recommendations
+### Design recommendations
 
 - Avoid any manual operations on virtual machines and implement proper processes to deploy and rollout changes. To automate provisioning of Azure resources using Infrastructure-as-Code via Bicep, Azure Resource Manager templates, Terraform or others. Use Azure Automation Desired State Configuration (DSC) to configure VMs. For Linux VMs, you can use Cloud-init.
 
-- Make sure that operational processes for deployment of virtual machines, updates, backup and recovery are in place and properly tested. To test for resiliency inject fault in application and take a note of failure and mitigate those failure.
+- Make sure that operational processes for deployment of virtual machines, updates, backup and recovery are in place and properly tested. To test for resiliency inject fault in application and take a note of failure and mitigate those failures.
 
 - Ensure that strategies are in place to rollback changes to last known healthy state in case a newer version is not functioning correctly.
 
@@ -194,9 +194,9 @@ In scenarios where the use of IaaS Virtual Machines is required, some of the pro
 
 - Analyze that scheduled backups are running healthy and periodic backups are taken. Azure [Backup center](/azure/backup/backup-center-overview) can to gain more insights.
 
-- Prioritize the use of VMSS over VMs to enable capabilities like scale, autoscale and provide zone-redundancy.
+- Prioritize the use of Virtual Machine Scale Sets over VMs to enable capabilities like scale, autoscale and provide zone-redundancy.
 
-- Prioritize the use of standard images from the Azure Marketplace over custom images that need to maintained.
+- Prioritize the use of standard images from the Azure Marketplace over custom images that need to be maintained.
 
 - Use [Azure VM Image Builder](/azure/virtual-machines/image-builder-overview) to build and maintain customized images if required.
 

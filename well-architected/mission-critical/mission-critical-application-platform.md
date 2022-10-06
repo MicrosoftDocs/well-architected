@@ -84,7 +84,7 @@ Containerization allows developers to create and deploy applications faster and 
 - Containerize all application components, using container images as the primary model for application deployment packages.
 - Prioritize Linux-based container runtimes when possible.
 - Avoid persisting state/data within a container since containers should be immutable and replaceable with short lifecycles.
-- Ensure that all relevant logs and metrics are gathered form the container, container host, and underlying cluster. Gathered logs and metrics should be sent to a unified data sink for further processing.
+- Ensure that all relevant logs and metrics are gathered from the container, container host, and underlying cluster. Gathered logs and metrics should be sent to a unified data sink for further processing.
 
 ## Container Orchestration and Kubernetes
 
@@ -443,13 +443,13 @@ See [Azure Event Grid quotas and limits](/azure/event-grid/quotas-limits) for mo
 
 - Use Event Grid for scenarios where services need to react to changes in another service/component.
 
-## Constrained Migrations using IaaS
+## Constrained migrations using IaaS
 
 Many applications with existing on-premises deployments use virtualization technologies and redundant hardware to provide mission-critical levels of reliability. Modernization is often hindered by business constraints which prevent full alignment with the cloud-native baseline (north-star) architecture pattern recommended for mission-critical workloads. So, many applications adopt a phased approach, with initial cloud deployments using virtualization and Azure Virtual Machines as the primary application hosting model.
 
 This section will therefore focus on the optimal usage of Azure Virtual Machines and associated services in order to maximize the reliability of the application platform, highlighting key aspects of the mission-critical design methodology which transpose cloud-native and IaaS migration scenarios.
 
-### Design Considerations
+### Design considerations
 
 - The use of IaaS Virtual Machines can be required for certain scenarios:
   - Available PaaS services do not provide the required performance or level of control.
@@ -462,13 +462,13 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 - [Availability Sets](/azure/virtual-machines/availability-set-overview) can be used to protect against network, disk and power failures by distributing virtual machines across up to fault domains and update domains.
 
-- [Availability zones](/azure/availability-zones/az-overview) can be used to to achieve even higher levels of reliability by distributing VMs across physically separated data center within a region.
+- [Availability zones](/azure/availability-zones/az-overview) can be used to achieve even higher levels of reliability by distributing VMs across physically separated data center within a region.
 
-- [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) (VMSS) provide functionality to automatically scale the number of virtual machines along with capabilities to monitor instance health and automatically repair [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
+- [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) provide functionality to automatically scale the number of virtual machines along with capabilities to monitor instance health and automatically repair [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
   
 - [Backup center](/azure/backup/backup-center-overview) can be used to manage the periodic backups of virtual machines and [backup reports](/azure/backup/backup-center-obtain-insights) can be used to analyze the operation of backup tasks.
 
-### Design Recommendations
+### Design recommendations
 
 > [!IMPORTANT]
 > - Prioritize the use of PaaS services and Containers where possible to reduce operational complexity and cost. Only use IaaS Virtual Machines when required.
@@ -481,7 +481,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 - For workloads which cannot be deployed across Availability Zones, use Availability Sets with three or more VMs.
   - Availability Sets should only be considered if Availability Zones do not comply with workload requirements, such as for 'chatty' workloads with low latency requirements.
 
-- Prioritize the use of Virtual Machine Scale Sets (VMSS) for scalability and zone-redundancy. This is particularly important for workloads with varying load (e.g. number of active users or requests per second).
+- Prioritize the use of Virtual Machine Scale Sets for scalability and zone-redundancy. This is particularly important for workloads with varying load (e.g. number of active users or requests per second).
   
 - Do not access individual virtual machines directly, use load balancers in front when possible.
 

@@ -179,7 +179,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
 - When restricting network access to Azure PaaS services using Private Endpoints or Service Endpoints, a secure network channel will be required for deployment pipelines to access both the Azure control plane and data plane of Azure resources in order to deploy and manage the application.
   - [Private self-hosted build agents](/azure/devops/pipelines/agents/agents?tabs=browser#install) deployed onto a private network as the Azure resource can be used as a proxy to execute CI/CD functions over a private connection. A separate virtual network should be used for build agents.
     - Connectivity to the private build agents from CI/CD tooling is required.
-  - An alternative approach is to modify the firewall rules for the resource on-the-fly within the pipeline to allow a connection from an Azure DevOps agent public IP address, with the firewall subsequently removed after the task is completed. 
+  - An alternative approach is to modify the firewall rules for the resource on-the-fly within the pipeline to allow a connection from an Azure DevOps agent public IP address, with the firewall subsequently removed after the task is completed.
     - However, this approach is only applicable for a subset of Azure services. For example, this isn't feasible for private AKS clusters.
   - To perform developer and administrative tasks on the application service jump boxes can be used.
   
@@ -193,7 +193,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 - Packet capture in Azure Network Watcher is limited to a maximum period of five hours.
 
-### Design Recommendations
+### Design recommendations
 
 - Limit public network access to the absolute minimum required for the application to fulfill its business purpose to reduce the external attack surface.
   - Use [Azure Private Link](/azure/private-link/private-endpoint-overview#private-link-resource) to establish [private endpoints](/azure/private-link/private-endpoint-overview) for Azure resources that require secure network integration.
@@ -218,7 +218,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 - Enable NSG flow logs and feed them into Traffic Analytics to gain insights into internal and external traffic flows.
 
-- Use Azure Private Link/Private Endpoints, where available, to secure access to Azure PaaS services within the application design. For information on Azure services that support Private Link, see [Azure Private Link availability](/azure/private-link/availability). 
+- Use Azure Private Link/Private Endpoints, where available, to secure access to Azure PaaS services within the application design. For information on Azure services that support Private Link, see [Azure Private Link availability](/azure/private-link/availability).
 
 - If Private Endpoint isn't available and data exfiltration risks are acceptable, use Virtual Network Service Endpoints to secure access to Azure PaaS services from within a virtual network.
   - Don't enable virtual network service endpoints by default on all subnets as this will introduce significant data exfiltration channels.
@@ -227,7 +227,6 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 > [!NOTE]
 > When deploying within an Azure landing zone, be aware that network connectivity to on-premises data centers is provided by the landing zone implementation. One approach is by using ExpressRoute configured with private peering.
-
 
 ## Data integrity protection
 
@@ -350,7 +349,7 @@ This section will therefore explore key considerations and recommendations surro
 
 ## IaaS specific considerations when using Virtual Machines
 
-In scenarios where the use of IaaS Virtual Machines is required, some specifics have to taken into consideration.
+In scenarios where the use of IaaS Virtual Machines is required, some specifics have to be taken into consideration.
 
 ### Design considerations
 
