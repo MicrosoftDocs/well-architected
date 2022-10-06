@@ -145,7 +145,7 @@ Use Key Vault to safeguard cryptographic keys and secrets. By using Key Vault, y
 - [Azure Storage][storage-encryption]
 - [Azure SQL Database][sql-db-encryption]
 - [Azure Synapse Analytics][data-warehouse-encryption]
-- [Cosmos DB][cosmos-db-encryption]
+- [Azure Cosmos DB][cosmos-db-encryption]
 
 ## Security resources
 
