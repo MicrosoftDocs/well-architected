@@ -231,7 +231,7 @@ In reality, applications can combine loose and tight-coupling, depending on busi
 - Key functionality should be deployed and managed as independent loosely coupled microservices with event-driven interaction through well-defined interfaces (synchronous and asynchronous).
 - The definition of microservice boundaries should consider and align with critical user-flows.
 - Use event-driven asynchronous communication where possible to support sustainable scale and optimal performance.
-- Use patterns like the Outbox and Transactional Session to guarantee consistency so that [every message is processed correctly](/microsoftdocs/architecture-center/blob/main/docs/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform.md#every-message-must-be-processed).
+- Use patterns like the Outbox and Transactional Session to guarantee consistency so that [every message is processed correctly](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#every-message-must-be-processed).
 
 ### Example - Event-driven approach
 
