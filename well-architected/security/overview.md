@@ -98,11 +98,11 @@ We cover the following areas in the security pillar of the Microsoft Azure Well-
 
 Consider using Azure Active Directory (Azure AD) to authenticate and authorize users. Azure AD is a fully managed identity and access management service. You can use it to create domains that exist purely on Azure, or integrate with your on-premises Active Directory identities.
 
-Azure AD also integrates with:
+Azure AD is also used by:
 
-- Office365
-- Dynamics CRM Online
-- Many third-party SaaS applications
+- Office 365
+- Dynamics 365
+- Many third-party applications
 
 For consumer-facing applications, Azure Active Directory B2C lets users authenticate with their existing social accounts, such as:
 
