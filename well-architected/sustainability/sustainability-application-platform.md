@@ -12,6 +12,7 @@ categories:
 products: Azure
 ms.custom:
   - sustainability
+  - ignite-2022
 ---
 
 # Application platform considerations for sustainable workloads on Azure

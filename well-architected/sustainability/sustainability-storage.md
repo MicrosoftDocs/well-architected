@@ -12,6 +12,7 @@ categories:
 products: Azure
 ms.custom:
   - sustainability
+  - ignite-2022
 ---
 
 # Data and storage design considerations for sustainable workloads on Azure

@@ -6,6 +6,8 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
+ms.custom:
+  - ignite-2022
 ---
 
 # Azure Well-Architected Framework review - Azure Kubernetes Service (AKS)

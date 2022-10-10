@@ -13,6 +13,7 @@ categories:
 products: Azure
 ms.custom:
   - sustainability
+  - ignite-2022
 ---
 
 # Design principles of a sustainable workload
