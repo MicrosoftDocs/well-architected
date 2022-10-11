@@ -79,7 +79,7 @@ landingContent:
  # Card
   - title: Training
     linkLists:
-      - linkListType: training
+      - linkListType: learn
         links:
           - text: Challenge - Design a mission-critical web application
             url: /training/modules/azure-mission-critical/
@@ -92,7 +92,7 @@ landingContent:
           - text: What is a mission-critical workload?
             url: mission-critical-overview.md#video-mission-critical-workloads-on-azure
           - text: Global distribution
-            url: mission-critical-application-design.md#video-global-distribution    
+            url: mission-critical-application-design.md#video---global-distribution  
           - text: Define a health model
             url: mission-critical-health-modeling.md#video-define-a-health-model-for-your-mission-critical-workload
           - text: Continuously validate your workload
