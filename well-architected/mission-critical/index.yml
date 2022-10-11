@@ -75,6 +75,15 @@ landingContent:
             url: https://github.com/azure/mission-critical-online
           - text: Mission-Critical Connected
             url: https://github.com/azure/mission-critical-connected
+
+ # Card
+  - title: Training
+    linkLists:
+      - linkListType: training
+        links:
+          - text: Challenge - Design a mission-critical web application
+            url: /training/modules/azure-mission-critical/
+
  # Card
   - title: Video library
     linkLists:
@@ -82,6 +91,8 @@ landingContent:
         links:
           - text: What is a mission-critical workload?
             url: mission-critical-overview.md#video-mission-critical-workloads-on-azure
+          - text: Global distribution
+            url: mission-critical-application-design.md#video-global-distribution    
           - text: Define a health model
             url: mission-critical-health-modeling.md#video-define-a-health-model-for-your-mission-critical-workload
           - text: Continuously validate your workload
