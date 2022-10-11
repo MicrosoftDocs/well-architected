@@ -182,7 +182,7 @@ In scenarios where the use of IaaS Virtual Machines is required, some of the pro
 
 ### Design recommendations
 
-- Avoid any manual operations on virtual machines and implement proper processes to deploy and rollout changes. To automate provisioning of Azure resources using Infrastructure-as-Code via Bicep, Azure Resource Manager templates, Terraform or others. Use Azure Automation Desired State Configuration (DSC) to configure VMs. For Linux VMs, you can use Cloud-init.
+- Avoid any manual operations on virtual machines and implement proper processes to deploy and rollout changes. To automate provisioning of Azure resources using Infrastructure-as-Code via Bicep, Azure Resource Manager templates, Terraform or others. Use [Azure Automation](https://learn.microsoft.com/en-us/azure/automation/extension-based-hybrid-runbook-worker-install?tabs=windows%2Carm-template)  & [Azure Arc](https://learn.microsoft.com/en-us/azure/azure-arc/servers/overview). For Linux VMs, you can use Cloud-init.
 
 - Make sure that operational processes for deployment of virtual machines, updates, backup and recovery are in place and properly tested. To test for resiliency inject fault in application and take a note of failure and mitigate those failures.
 
