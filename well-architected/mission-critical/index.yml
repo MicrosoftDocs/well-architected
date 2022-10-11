@@ -77,7 +77,7 @@ landingContent:
             url: https://github.com/azure/mission-critical-connected
 
  # Card
-  - title: Training
+  - title: Learn
     linkLists:
       - linkListType: learn
         links:
