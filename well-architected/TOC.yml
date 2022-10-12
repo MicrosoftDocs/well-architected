@@ -507,7 +507,7 @@ items:
                     href: services/data/azure-sql-managed-instance/reliability.md
                   - name: Operational excellence
                     href: services/data/azure-sql-managed-instance/operational-excellence.md
-              - name: Cosmos DB
+              - name: Azure Cosmos DB
                 items:
                   - name: Reliability
                     href: services/data/cosmos-db/reliability.md

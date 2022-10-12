@@ -64,4 +64,4 @@ Explore the following table of recommendations to optimize your Azure SQL Manage
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Cosmos DB and reliability](../cosmos-db/reliability.md)
+> [Azure Cosmos DB and reliability](../cosmos-db/reliability.md)
