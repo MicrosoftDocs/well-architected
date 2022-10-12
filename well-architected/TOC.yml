@@ -423,6 +423,32 @@ items:
                 href: iot/iot-operational-excellence.md
               - name: Performance Efficiency
                 href: iot/iot-performance.md
+          - name: Sustainability
+            items:
+              - name: Quick links
+                href: sustainability/index.yml
+              - name: Get started
+                href: sustainability/sustainability-get-started.md
+              - name: Design methodology
+                href: sustainability/sustainability-design-methodology.md
+              - name: Design principles
+                href: sustainability/sustainability-design-principles.md
+              - name: Design areas
+                items:
+                - name: Application design
+                  href: sustainability/sustainability-application-design.md
+                - name: Application platform 
+                  href: sustainability/sustainability-application-platform.md
+                - name: Testing
+                  href: sustainability/sustainability-testing.md
+                - name: Operational procedures
+                  href: sustainability/sustainability-operational-procedures.md
+                - name: Networking and connectivity
+                  href: sustainability/sustainability-networking.md
+                - name: Storage
+                  href: sustainability/sustainability-storage.md
+                - name: Security
+                  href: sustainability/sustainability-security.md
       - name: Services
         items:
           - name: Compute
