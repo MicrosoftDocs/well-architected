@@ -111,7 +111,7 @@ This image demonstrates how the single subscription reference deployment model c
 
 ## Video: Subscription structure
 
-> [!VIDEO 013a2a82-dc85-4282-98ed-b1afe50afd41]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=013a2a82-dc85-4282-98ed-b1afe50afd41&embedUrl=/azure/architecture/framework/mission-critical/mission-critical-application-design]
 
 
 ## Global distribution
@@ -204,6 +204,10 @@ The connectivity method by which users or systems access the application, whethe
 The Mission-Critical reference implementations consist of both global and regional resources, with regional resources deployed across multiple regions to provide geo-availability, in the case of regional outages and to bring services closer to end-users. These regional deployments also serve as scale-unit "stamps" to provide additional capacity and availability when required.
 
 ![Mission-Critical Global Distribution](./images/mission-critical-global-distribution.gif "Mission-Critical Global Distribution")
+
+## Video - Global distribution
+
+> [!VIDEO 7cea20d8-8265-4c5c-aaba-5e174731c2e3]
 
 ## Loosely coupled event-driven architecture
 

@@ -13,6 +13,7 @@ categories:
 products: Azure
 ms.custom:
   - sustainability
+  - ignite-2022
 ---
 
 # Design methodology for sustainable workloads on Azure

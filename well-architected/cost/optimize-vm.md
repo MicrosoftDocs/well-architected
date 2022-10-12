@@ -49,7 +49,7 @@ Some workloads don't have a business requirement to complete a job within a peri
 ***
 Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimental, development, and testing of large-scale solutions.
 
-For more information, see [Use Spot VMs in Azure](/azure/virtual-machines/windows/spot-vms).
+For more information, see [Use Spot VMs in Azure](/azure/virtual-machines/windows/spot-vms) or check out our [Azure Virtual Machine Spot Eviction](/azure/architecture/guide/spot/spot-eviction) guide to learn how to create a reliable interruptible workload in Azure.
 
 ## Reserved VMs
 Virtual machines are eligible for Azure Reservations. You can prepay for VM instances if you can commit to one or three years. Reserved instances are appropriate for workloads that have a long-term usage pattern.
