@@ -28,6 +28,7 @@ The following sections include a design consideration checklist and recommendati
 ***
 
 > [!div class="checklist"]
+>
 > - Evaluate if Azure Functions requires HTTP trigger.
 > - Treat Azure Functions code just like any other code.
 > - Use guidance available on [Securing Azure Functions](/azure/azure-functions/security-concepts).
@@ -39,7 +40,7 @@ The following table reflects design consideration recommendations and descriptio
 
 |Azure Functions Design Recommendations|Description|
 |--------------------------------------|-----------|
-|Evaluate if Azure Functions requires HTTP trigger.|Azure Functions supports multiple specific triggers and bindings. These include blob storage, Cosmos DB, Service Bus, and many more. If HTTP trigger is needed, then consider protecting that HTTP endpoint like any other web application. Common protection measures include keeping HTTP endpoint internal to specific Azure Virtual Networks by using [Private endpoint connections](/azure/azure-functions/functions-networking-options#private-endpoint-connections) or [service endpoints](/azure/azure-functions/functions-networking-options#use-service-endpoints). Consider using guidance available on [Azure Functions networking options](/azure/azure-functions/functions-networking-options) for more information. If Functions HTTP endpoint will be exposed to internet, then it's recommended to secure the endpoint behind a Web Application Firewall (WAF).|
+|Evaluate if Azure Functions requires HTTP trigger.|Azure Functions supports multiple specific triggers and bindings. These include Azure Blob storage, Azure Cosmos DB, Azure Service Bus, and many more. If HTTP trigger is needed, then consider protecting that HTTP endpoint like any other web application. Common protection measures include keeping HTTP endpoint internal to specific Azure virtual networks by using [Private endpoint connections](/azure/azure-functions/functions-networking-options#private-endpoint-connections) or [service endpoints](/azure/azure-functions/functions-networking-options#use-service-endpoints). Consider using guidance available on [Azure Functions networking options](/azure/azure-functions/functions-networking-options) for more information. If Functions HTTP endpoint will be exposed to internet, then it's recommended to secure the endpoint behind a web application firewall (WAF).|
 |Treat Azure Functions code just like any other code.|Subject Azure Functions code to code scanning tools that are integrated with CI/CD pipeline.|
 |Use guidance available on [Securing Azure Functions](/azure/azure-functions/security-concepts).|This guidance addresses key security concerns such as operations, deployment, and network security.|
 |Consider using [Azure Functions Proxy](/azure/azure-functions/functions-proxies) to act as a facade.|Functions Proxy can inspect and modify incoming requests and responses.|

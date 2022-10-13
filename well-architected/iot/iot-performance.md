@@ -15,19 +15,19 @@ IoT systems include device, edge, and cloud components, and range from millions 
 
 Performance efficiency also includes an IoT workload's ability to scale efficiently to meet demands. A benefit of the cloud is geographical availability and the ability to scale services on demand, with little or no application downtime.
 
-Performance efficiency represents performance relative to resource use under stated conditions. Performance efficiency measures how well a product or system, when performing its functions, meets requirements for:
-
-- Time behavior, or response times, processing times, and throughput rates.
-- Resource utilization, or amounts and types of resources used.
-- Capacity, or maximum limits.
-
-For more information about the performance efficiency pillar of the Azure Well-Architected Framework, see [Performance efficiency principles](/azure/architecture/framework/scalability/principles).
-
 ## Assess performance efficiency in your IoT workload
 
 To assess your IoT workload against the Well-Architected Framework Performance Efficiency pillar, complete the performance efficiency questions for IoT workloads in the [Azure Well-Architected Review assessment](/assessments/?mode=pre-assessment&id=azure-architecture-review). After the assessment identifies key performance efficiency recommendations for your IoT solution, use the following content to help implement the recommendations.
 
-## Best practices for IoT performance efficiency
+## Principles
+
+Performance efficiency represents performance relative to resource use under stated conditions. Performance efficiency measures how well a product or system, when performing its functions, meets requirements for:
+
+- **Time behavior**, such as response times, processing times, and throughput rates.
+
+- **Resource utilization**, or amounts and types of resources used.
+
+- **Capacity**, or maximum limits.
 
 The following practices address the specific performance efficiency challenges for IoT solutions:
 
@@ -36,6 +36,8 @@ The following practices address the specific performance efficiency challenges f
 - **Continuously monitor.** To monitor different types of devices in multiple geographical regions, use a distributed monitoring solution. Balance the amount of information monitored and sent to the cloud against memory and performance costs. Tune transmission for diagnostic scenarios, and monitor at multiple levels and layers. Expose gateway metrics for industrial or gateway-enabled solutions.
 
 - **Plan for capacity.** An IoT solution can start with a few hundred devices or messages and grow to millions of devices and messages per minute. You can easily scale cloud services to an increase in load, but the situation can be more complex for IoT devices and gateways. IoT devices can be designed or deployed before the solution is finalized. Industrial IoT or similar industries can measure device lifespan in decades. Updating capacity by replacing devices is costly. In these scenarios, it's especially important to plan ahead.
+
+For more information about the performance efficiency pillar of the Azure Well-Architected Framework, see [Performance efficiency principles](/azure/architecture/framework/scalability/principles).
 
 ## Architectural layers
 
@@ -279,6 +281,10 @@ To optimize performance efficiency for high-volume cloud data:
 - Use the Event Hubs SDK to develop custom ingestion from an IoT hub with the included event processor. The event processor can rebalance devices and hosts.
 
 - Use the right number of IoT Hub partitions and consumer groups for the number of simultaneous data readers and required throughput.
+
+- Separate the storage needed for data ingestion and event processing from the storage needed for reporting and integration.
+
+- Use the data storage that fits the needs based on required throughput, size, retention period, data volume, CRUD requirements, and regional replication. Examples are Azure Data Lake Storage, Azure Data Explorer, Azure SQL, or Azure Cosmos DB. For more information, see [Select an Azure data store for your application](/azure/architecture/guide/technology-choices/data-store-decision-tree).
 
 ## Integration layer
 

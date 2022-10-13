@@ -312,7 +312,7 @@ This section focuses on the use of Azure Dashboards and Grafana to build a robus
 
 - A ‘traffic light’ model should be used to visually represent 'healthy' and 'unhealthy' states, with green used to illustrate when key non-functional requirements are fully satisfied and resources are optimally utilized. Use "Green", "Amber, and "Red" to represent "Healthy", "Degraded", and "Unavailable" states.
 
-- Use Azure Dashboards to create operational lenses for global resources and regional deployment stamps, representing key metrics such as request count for Azure Front Door, server side latency for Cosmos DB, incoming/outgoing messages for Event Hubs, and CPU utilization or deployment statuses for AKS.  Dashboards should be tailored to drive operational effectiveness, infusing learnings from failure scenarios to ensure DevOps teams have direct visibility into key metrics.
+- Use Azure Dashboards to create operational lenses for global resources and regional deployment stamps, representing key metrics such as request count for Azure Front Door, server side latency for Azure Cosmos DB, incoming/outgoing messages for Event Hubs, and CPU utilization or deployment statuses for AKS.  Dashboards should be tailored to drive operational effectiveness, infusing learnings from failure scenarios to ensure DevOps teams have direct visibility into key metrics.
 
 - If Azure Dashboards can't be used to accurately represent the health model and requisite business requirements, then it's strongly recommended to consider Grafana as an alternative visualization solution, providing market-leading capabilities and an extensive open-source plugin ecosystem. Evaluate the managed Grafana preview offering to avoid the operational complexities of managing Grafana infrastructure.
 
@@ -442,5 +442,3 @@ Review the deployment and testing considerations.
 
 > [!div class="nextstepaction"]
 > [Deployment and testing](mission-critical-deployment-testing.md)
-
-

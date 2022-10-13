@@ -42,7 +42,7 @@ Different strategies are used to partition data in various Azure data stores to 
 - [Partitioning Azure blob storage](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-azure-blob-storage)
 - [Partitioning Azure storage queues](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-azure-storage-queues)
 - [Partitioning Azure Service Bus](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-azure-service-bus)
-- [Partitioning Cosmos DB](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-cosmos-db)
+- [Partitioning Azure Cosmos DB](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-cosmos-db)
 - [Partitioning Azure Search](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-azure-search)
 - [Partitioning Azure Cache for Redis](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-azure-cache-for-redis)
 - [Partitioning Azure Service Fabric](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-azure-service-fabric)
