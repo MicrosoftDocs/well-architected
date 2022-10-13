@@ -23,7 +23,7 @@ For example, look at a VM running the SAP on Azure project can show you how init
 
 ![Run cost optimization](../_images/run-cost-optimization.png)
 
-It is easy to handle cost comparison when you are well equipped and for this Microsoft provides the set of specific services and tools that help you to understand and plan costs. These include the TCO Calculator, Azure Pricing Calculator, Azure Cost Management (Cloudyn), Azure Migrate, Cosmos DB Sizing Calculator, and the Azure Site Recovery Deployment Planner.
+It is easy to handle cost comparison when you are well equipped and for this Microsoft provides the set of specific services and tools that help you to understand and plan costs. These include the TCO Calculator, Azure Pricing Calculator, Azure Cost Management (Cloudyn), Azure Migrate, Azure Cosmos DB Sizing Calculator, and the Azure Site Recovery Deployment Planner.
 
 Here are some strategies that you can use to lower cost for virtual machines.
 
