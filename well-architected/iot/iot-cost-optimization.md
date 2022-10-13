@@ -317,38 +317,6 @@ If the data is best represented as an object or document without a fixed schema,
 
 [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) is a modern Azure data warehouse. Synapse Analytics scales by [Data Warehouse Units (DWU)](/azure/synapse-analytics/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu), and you should choose the right capacity to handle your solution requirements. Depending on use case, you can pause compute when no job is running to reduce operational costs.
 
-## Device management and modeling layer
-
-Managing devices is a task that orchestrates complex processes such as supply chain management, device inventory, deployment, installation, operational readiness, device update, bi-directional communication with devices, and provisioning. There are many benefits of using the device management and modeling standards of Azure IoT. The Device Provisioning Service enables low/no touch device provisioning, so you don't have to train and send people on site. Using DPS reduces the cost for truck rolls and the time spent on training and configuration. DPS also reduces the risk of mistakes due to manual provisioning.
-
-### Azure IoT Hub Device Provisioning Service (DPS)
-
-[DPS](/azure/iot-dps/about-iot-dps) is a helper service for IoT Hub that enables low-cost, zero-touch, just-in-time provisioning to the right IoT hub without requiring human intervention to reduce error and cost. DPS enables the provisioning of millions of devices in a secure and scalable manner.
-
-General device management stages are common in most enterprise IoT projects. In Azure IoT, there are five stages within the device lifecycle. DPS helps device lifecycle management with IoT Hub through enrollment allocation policies, zero-touch provisioning, initial configuration setting, reprovisioning, and de-provisioning.
-
-:::image type="content" source="media/device-provisioning.png" alt-text="Diagram that shows the device lifecycle." border="false":::
-
-To learn more, see:
-
-- [DPS pricing](https://azure.microsoft.com/pricing/details/iot-hub/#pricing)
-- [Provisioning guide](/azure/iot-dps/how-to-reprovision#send-a-provisioning-request-from-the-device)
-
-### IoT Plug and Play
-
-Modeling devices reduces management costs and messaging traffic volumes. Use [IoT Plug and Play](/azure/iot-develop/overview-iot-plug-and-play) and [Azure IoT Central](/azure/iot-central/) for easy deployment and management. To learn more, see [Modeling devices with DTDL](/azure/iot-develop/howto-convert-to-pnp#design-a-model).
-
-### Modeling assets and device state in the cloud
-
-Compare cost differences between several device topology and entity stores such as Azure Cosmos DB, Azure Digital Twins, and Azure SQL Database. Each of these services has a different cost structure, but also deliver different capabilities to your IoT solution. Depending on the required usage of the service, choose the most cost-efficient service, in line with the lower development and operations effort from adopting PaaS services.
-
-Azure Digital Twins can implement a graph-based model of the IoT environment, both for asset management, device state, and telemetry data. You can use it as a tool to model entire environments, with real time IoT data streaming, and merging business data from non-IoT sources. You can build custom ontologies, or use standards based ontologies such as RealEstateCore, CIM, or NGSI-LD to simplify data exchange with third parties. Azure Digital Twins has a [pay-per-use pricing model](https://azure.microsoft.com/pricing/details/digital-twins/) without a fixed fee.
-
-[Azure Cosmos DB](/azure/cosmos-db/plan-manage-costs) is a globally distributed, multi-model database. Cost is affected by storage and throughput, with regional or globally distributed and replicated data options.
-
-[Azure SQL Database](/azure/azure-sql/database/cost-management) can be an efficient solution for device and asset modeling. SQL Database has several pricing models to help you optimize costs.
->>>>>>> 0b599b69130cfb66583f015f18c1c9037ea30e7a
-
 ## Transport layer
 
 The transport layer transfers and routes data between other layers. As data travels between layers and services, the choice of protocol affects costs. Use cases such as field gateways, industry open protocol, and IoT network selection also affect costs in the transport layer. 
