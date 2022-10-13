@@ -205,6 +205,10 @@ The Mission-Critical reference implementations consist of both global and region
 
 ![Mission-Critical Global Distribution](./images/mission-critical-global-distribution.gif "Mission-Critical Global Distribution")
 
+## Video - Global distribution
+
+> [!VIDEO 7cea20d8-8265-4c5c-aaba-5e174731c2e3]
+
 ## Loosely coupled event-driven architecture
 
 Loose coupling provides the cornerstone of a microservice architecture by allowing services to be designed in a way that each service has little or no knowledge of surrounding services. The _loose_ aspect allows a service to operate independently. The coupling aspect allows for inter-service communication through well-defined interfaces. In the context of a mission critical application it further facilitates high-availability by preventing downstream failures from cascading to frontends or different deployment stamps.

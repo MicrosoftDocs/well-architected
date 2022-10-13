@@ -53,7 +53,7 @@ If a relational database is considered optimal, Azure offers several PaaS option
 
 Use a NoSQL database when application performance and availability are more important than strong consistency. NoSQL databases are ideal for handling large, unrelated, indeterminate, or rapidly changing data. NoSQL databases have trade-offs. For specifics, see [Some challenges with NoSQL databases](/azure/cosmos-db/relational-nosql#some-challenges-with-nosql-databases).
 
-Azure provides two managed services that optimize for NoSQL solutions: [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) and [Azure Cache for Redis](https://azure.microsoft.com/services/cache). For document and graph databases, Cosmos DB offers extreme scale and performance.
+Azure provides two managed services that optimize for NoSQL solutions: [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) and [Azure Cache for Redis](https://azure.microsoft.com/services/cache). For document and graph databases, Azure Cosmos DB offers extreme scale and performance.
 
 For a detailed description of NoSQL and relational databases, see [Understanding the differences](/azure/cosmos-db/relational-nosql).
 

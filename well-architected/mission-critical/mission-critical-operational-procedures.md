@@ -87,13 +87,13 @@ This section will therefore highlight key operational aspects associated with ap
 ### Design Considerations
 
 - Azure services provide a combination of built-in (enabled by default) and configurable platform capabilities, such as zonal redundancy or geo-replication. The service-level configuration of each service within an application must therefore be considered by operational procedures.
-  - Many configurable capabilities incur an additional cost, such as the multi-write deployment configuration for Cosmos DB.
+  - Many configurable capabilities incur an additional cost, such as the multi-write deployment configuration for Azure Cosmos DB.
 
 - Mission critical design strongly endorses the principle of ephemeral stateless application resources, meaning that updates can typically be performed through a new deployment and standard delivery pipelines.
 
 - Most of the required operations are exposed and accessible via the Azure ARM management APIs or through the Azure portal.
 
-- Some more intensive operations, such as a restore from a periodic backup Cosmos DB or the recovery of a deleted resource, can only be performed by Azure Support Engineers via a Support Case.
+- Some more intensive operations, such as a restore from a periodic backup of an Azure Cosmos DB database or the recovery of a deleted resource, can only be performed by Azure Support engineers via a support case.
 
 - For stateless resources and resources that can be entirely configured from deployment, such as Azure Front Door and associated backends/origins, redeployment will faster generally result in an operational resource than a Support process to attempt recovery of the deleted resource.
 
@@ -131,7 +131,7 @@ This section will therefore highlight key operational aspects associated with ap
   - Leverage scale-units composed of multiple services to provide requisite scalability under relevant circumstances.
 
 - Identify operational procedures and tasks required by global (long-lived) application resources.
-  - For example, if a Cosmos DB resource or encompassed data is incorrectly modified or deleted, the possible ways of recovery should be well understood and a recovery process should exist.
+  - For example, if an Azure Cosmos DB resource or encompassed data is incorrectly modified or deleted, the possible ways of recovery should be well understood and a recovery process should exist.
   - Similarly, establish procedures to manage decommissioned container images in the registry.
 
 - It's strongly recommended to practice recovery operations in advance, on non-production resources and data, as part of standard business continuity preparations.

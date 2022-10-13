@@ -46,7 +46,7 @@ In traditional application development, there has been a focus on increasing the
 
 All of these factors mean that cloud applications must be designed to expect occasional failures and recover from them. Azure has many resiliency features already built into the platform. For example:
 
-- Azure Storage, SQL Database, and Cosmos DB all provide built-in data replication across availability zones and regions.
+- Azure Storage, Azure SQL Database, and Azure Cosmos DB all provide built-in data replication across availability zones and regions.
 - Azure managed disks are automatically placed in different storage scale units to limit the effects of hardware failures.
 - Virtual machines (VMs) in an availability set are spread across several fault domains. A *fault domain* is a group of VMs that share a common power source and network switch. Spreading VMs across fault domains limits the impact of physical hardware failures, network outages, or power interruptions.
 - *Availability Zones* are physically separate locations within each Azure region. Each zone is composed of one or more datacenters equipped with independent power, cooling, and networking infrastructure. With availability zones, you can design and operate applications, and databases that automatically transition between zones without interruption, which ensures resiliency if one zone is affected. For more information, reference [Regions and Availability Zones in Azure](/azure/availability-zones/az-overview).

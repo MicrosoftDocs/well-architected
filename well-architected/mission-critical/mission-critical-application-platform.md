@@ -40,7 +40,7 @@ Selecting the right programming languages and frameworks is a critical design de
 ### Design considerations
 
 - There are sometimes significant differences in the capabilities offered by Azure service SDKs in different languages, and this may influence the selection of an Azure service or programming language.
-  - For instance, if Cosmos DB is a significant dependency, 'Go' may not be an appropriate development language since there's no first-party SDK.
+  - For instance, if Azure Cosmos DB is a significant dependency, 'Go' may not be an appropriate development language since there's no first-party SDK.
 
 - New features are typically added to the .NET and Java libraries first, and there can be a delay in feature availability for other [supported languages](https://azure.github.io/azure-sdk/).
 
