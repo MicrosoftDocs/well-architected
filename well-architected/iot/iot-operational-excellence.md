@@ -20,15 +20,29 @@ In IoT solutions, the device diversity and scale, different network types, and g
 
 Operational excellence ensures that your IoT solution can successfully:
 
-- Support different user roles including developers, administrators, and operators.
-- Manage all device lifecycle stages for the lifetime of the solution.
-- Scale efficiently to meet changes in demand, such as new device deployments or higher ingestion throughput.
+- Support different user roles.
+- Manage all device lifecycle stages.
+- Scale efficiently to meet changes in demand.
 - Use automation for management and monitoring.
 - Integrate with other back-end systems.
 
 ## Assess operational excellence in your IoT workload
 
 To assess your IoT workload against the Well-Architected Framework Operational Excellence pillar, complete the operational excellence questions for IoT workloads in the [Azure Well-Architected Review assessment](/assessments/?mode=pre-assessment&id=azure-architecture-review). After the assessment identifies key operational excellence recommendations for your IoT solution, use the following content to help implement the recommendations.
+
+## Principles
+
+The following principles apply to the operational excellence pillar in an IoT workload:
+
+- **Solution operation and scaling:** Ensure that the IoT solution can successfully manage automated device provisioning, integrate with other backend systems, support different roles such as solution developers, solution administrators, and operators, and adapt and scale efficiently to any changes in demand such as new IoT devices being deployed or higher ingestion throughput.
+
+- **Device management:** Any successful enterprise IoT solution requires a strategy to establish and update a device or fleet of device's configuration. A device's configuration includes device properties, connection settings, relationships, and firmware. IoT operators require simple and reliable tools that enable them to update a device or fleet of device's configuration at any point during the device's lifetime.
+
+- **Monitoring and alerting**: Use IoT solution logging, monitoring, and alerting systems to determine whether the solution is functioning as expected and to help troubleshoot problems throughout the lifecycle of the solution.
+
+- **Automation and DevOps:** An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often constrained in hardware, for example having limited memory or compute capacity. Automation and DevOps are essential to ensure that OS and software for IoT devices and gateways are properly uploaded and deployed to minimize operational downtime. Automation and DevOps are essential for monitoring and managing the lifecycle of IoT devices.
+
+The following sections address the layer specifics of these principles for the operational security pillar.
 
 ## Operational excellence in IoT architecture layers
 
