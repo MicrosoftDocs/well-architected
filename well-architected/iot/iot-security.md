@@ -19,17 +19,23 @@ Security planning starts with a [threat model](https://www.microsoft.com/securit
 
 As part of the threat modeling exercise, you can divide a typical IoT architecture into several components or zones: device, device gateway, cloud gateway, and services. Each zone can have its own authentication, authorization, and data requirements. You can use zones to isolate damage and restrict the impact of low-trust zones on higher-trust zones. For more information, see the [Internet of Things (IoT) security architecture](/azure/iot-fundamentals/iot-security-architecture#security-in-iot).
 
-The following key principles specifically extend the Well-Architected Framework security pillar to IoT solutions:
-
-- *Strong identity* to authenticate devices and users. Have a hardware root of trust for trusted identity, register devices, issue renewable credentials, and use passwordless or multi-factor authentication (MFA).
-- *Least-privileged access control* to limit impact from compromised devices or identities or unapproved workloads.
-- *Device health* to gate device access or flag devices for remediation. Check security configuration, assess vulnerabilities and insecure passwords, monitor for threats and anomalies, and build ongoing risk profiles.
-- Continual *updates* to keep devices healthy. Use a centralized configuration and compliance management solution and a robust update mechanism to ensure devices are up-to-date and healthy.
-- Proactive *monitoring and response* to rapidly identify unauthorized or compromised devices and respond to emerging threats.
-
 ## Assess security in your IoT workload
 
 To assess your IoT workload against the Well-Architected Framework Security pillar, complete the security questions for IoT workloads in the [Azure Well-Architected Review assessment](/assessments/?mode=pre-assessment&id=azure-architecture-review). After the assessment identifies key security recommendations for your IoT solution, the following sections can help you implement the recommendations.
+
+## Principles
+
+The following key principles specifically extend the Well-Architected Framework security pillar to IoT solutions:
+
+- **Strong identity** to authenticate devices and users. Have a hardware root of trust for trusted identity, register devices, issue renewable credentials, and use passwordless or multi-factor authentication (MFA).
+
+- **Least-privileged access control** to limit impact from compromised devices or identities or unapproved workloads.
+
+- **Device health** to gate device access or flag devices for remediation. Check security configuration, assess vulnerabilities and insecure passwords, monitor for threats and anomalies, and build ongoing risk profiles.
+
+- **Continual updates** to keep devices healthy. Use a centralized configuration and compliance management solution and a robust update mechanism to ensure devices are up-to-date and healthy.
+
+- **Proactive monitoring and response** to rapidly identify unauthorized or compromised devices and respond to emerging threats.
 
 ## Zero-trust security model
 
