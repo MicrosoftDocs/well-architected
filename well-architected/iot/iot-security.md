@@ -15,7 +15,7 @@ The Internet of Things (IoT) provides vast opportunities to gain insights into t
 
 The security guidance of Microsoft Azure Well-Architected Framework for IoT provides recommendations to help improve the security of your IoT solution. It will help you identify key considerations for secure solution design and provides guidance on how to implement capabilities that can reduce risk to your IoT solution.
 
-There are multiple personas such as *IoT device builders*, *IoT application developers*, and *IoT solution operators* involved in an IoT solution. They all are required to ensure security in the full lifecycle of an IoT solution. To learn more about the different people and their roles, see [Builders, developers, and operators](/azure/architecture/example-scenario/iot/builders-developers-operators).
+There are multiple personas such as *IoT device builders*, *IoT application developers*, and *IoT solution operators* involved in an IoT solution. They all are required to ensure security in the full lifecycle of an IoT solution.
 
 There are key differences between IoT solutions in traditional IT solutions and operational technology (OT) solutions, such as having devices that are on-premises being used to monitor and control physical devices. These OT devices add different security challenges such as, tampering, packing sniffing, the need for out of band management, and over-the-air (OTA) updates.
 

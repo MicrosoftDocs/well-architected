@@ -23,7 +23,7 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: About mission-critical workloads
+          - text: What is a mission-critical workload?
             url: mission-critical-overview.md
           - text: Design methodology
             url: mission-critical-design-methodology.md
@@ -75,6 +75,15 @@ landingContent:
             url: https://github.com/azure/mission-critical-online
           - text: Mission-Critical Connected
             url: https://github.com/azure/mission-critical-connected
+
+ # Card
+  - title: Learn
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Challenge - Design a mission-critical web application
+            url: /training/modules/azure-mission-critical/
+
  # Card
   - title: Video library
     linkLists:
@@ -82,13 +91,26 @@ landingContent:
         links:
           - text: What is a mission-critical workload?
             url: mission-critical-overview.md#video-mission-critical-workloads-on-azure
+          - text: Global distribution
+            url: mission-critical-application-design.md#video---global-distribution  
           - text: Define a health model
-            url: mission-critical-health-modeling.md#video-define-a-health-model
+            url: mission-critical-health-modeling.md#video-define-a-health-model-for-your-mission-critical-workload
+          - text: Continuously validate your workload
+            url: mission-critical-deployment-testing.md#video-continuously-validate-your-mission-critical-workload
+          - text: Use multiple subscriptions
+            url: mission-critical-application-design.md#video-subscription-structure            
       - linkListType: video
         links:
           - text: Demo - Continuous validation with Azure Load Test and Azure Chaos Studio
-            url: mission-critical-deployment-testing.md#demo-continuous-validation-with-azure-load-test-and-azure-chaos-studio
+            url: mission-critical-deployment-testing.md#demo-video-continuous-validation-with-azure-load-test-and-azure-chaos-studio
           - text: Demo - Ephemeral dev environments and automated feature validation
-            url: mission-critical-deployment-testing.md#demo-ephemeral-dev-environments-and-automated-feature-validation
+            url: mission-critical-deployment-testing.md#demo-video-ephemeral-dev-environments-and-automated-feature-validation
           - text: Demo - Monitoring and health modeling
-            url: mission-critical-health-modeling.md#video-monitoring-and-health-modeling-demo
+            url: mission-critical-health-modeling.md#demo-video-monitoring-and-health-modeling-demo
+ # Card
+  - title: Industry Scenarios
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Carrier-grade for telecommunications
+            url: /azure/architecture/framework/carrier-grade/carrier-grade-get-started

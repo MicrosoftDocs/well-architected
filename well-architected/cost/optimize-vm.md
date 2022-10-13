@@ -23,7 +23,7 @@ For example, look at a VM running the SAP on Azure project can show you how init
 
 ![Run cost optimization](../_images/run-cost-optimization.png)
 
-It is easy to handle cost comparison when you are well equipped and for this Microsoft provides the set of specific services and tools that help you to understand and plan costs. These include the TCO Calculator, Azure Pricing Calculator, Azure Cost Management (Cloudyn), Azure Migrate, Cosmos DB Sizing Calculator, and the Azure Site Recovery Deployment Planner.
+It is easy to handle cost comparison when you are well equipped and for this Microsoft provides the set of specific services and tools that help you to understand and plan costs. These include the TCO Calculator, Azure Pricing Calculator, Azure Cost Management (Cloudyn), Azure Migrate, Azure Cosmos DB Sizing Calculator, and the Azure Site Recovery Deployment Planner.
 
 Here are some strategies that you can use to lower cost for virtual machines.
 
@@ -49,7 +49,7 @@ Some workloads don't have a business requirement to complete a job within a peri
 ***
 Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimental, development, and testing of large-scale solutions.
 
-For more information, see [Use Spot VMs in Azure](/azure/virtual-machines/windows/spot-vms).
+For more information, see [Use Spot VMs in Azure](/azure/virtual-machines/windows/spot-vms) or check out our [Azure Virtual Machine Spot Eviction](/azure/architecture/guide/spot/spot-eviction) guide to learn how to create a reliable interruptible workload in Azure.
 
 ## Reserved VMs
 Virtual machines are eligible for Azure Reservations. You can prepay for VM instances if you can commit to one or three years. Reserved instances are appropriate for workloads that have a long-term usage pattern.
