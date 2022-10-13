@@ -17,6 +17,12 @@ IoT applications are often distributed at massive scale, and might operate over 
 
 Building a reliable IoT solution requires careful consideration of devices, cloud services, and how they interact. The choices you make for device hardware, connectivity and protocols, and cloud services affect your solution's reliability requirements and capabilities.
 
+## Assess reliability in your IoT workload
+
+To assess your IoT workload against the Well-Architected Framework Reliability pillar, complete the reliability questions for IoT workloads in the [Azure Well-Architected Review assessment](/assessments/?mode=pre-assessment&id=azure-architecture-review). After the assessment identifies key reliability recommendations for your IoT solution, use the following content to help implement the recommendations.
+
+## Principles
+
 As described in the Azure Well-Architected Framework [reliability design principles](/azure/architecture/framework/resiliency/principles), the reliability of an application must reflect its business requirements. Make sure you understand the business requirements for your solution.
 
 Well-architected IoT solutions implement the following reliability features:
@@ -34,10 +40,6 @@ Reliable IoT architectures include the following elements:
 - Service levels indicators (SLIs) and service-level objectives (SLOs) based on observability.
 - Integrated auditing, monitoring, and alerting beyond what cloud services provide.
 - Reliable maintenance and support pathways.
-
-## Assess reliability in your IoT workload
-
-To assess your IoT workload against the Well-Architected Framework Reliability pillar, complete the reliability questions for IoT workloads in the [Azure Well-Architected Review assessment](/assessments/?mode=pre-assessment&id=azure-architecture-review). After the assessment identifies key reliability recommendations for your IoT solution, use the following content to help implement the recommendations.
 
 ## Architectural layers
 
