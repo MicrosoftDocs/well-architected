@@ -20,6 +20,9 @@ ms.custom:
 
 Continuous testing and validation can detect and help resolve issues before they become potentially life threatening. Consider well-known testing methodologies such as chaos testing. Testing should be conducted for the lifetime of the application because the deployment environment is complex and multi-layered.
 
+> [!IMPORTANT]
+> More details on how to implement continuous validation for your mission-critical workload is available [here](/azure/architecture/framework/mission-critical/mission-critical-deployment-testing#video-continuously-validate-your-mission-critical-workload).
+
 Also, supportability must be strong throughout the application lifetime. Highly available systems rely on high quality support teams able to rapidly respond to and resolve issues in the field, conduct root cause analysis and look for systematic design flaws.
 
 Proving that an application is well architected requires testing, ideally use a chaos testing framework to avoid testing bias. This methodology simulates failures of all dependent elements. Robust and regular testing should both prove the design and validate the original failure mode analysis.

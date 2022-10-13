@@ -122,7 +122,7 @@ Replicating data across zones or paired regions supports application availabilit
 
 Define and test a data restore process to ensure a consistent application state. Regular testing of the data restore process promotes operational excellence and confidence in the ability to recover data in alignment with defined recovery objectives for the application.
 
-Consider how your application traffic is routed to data sources in the case of region, zone, or network outage. Understanding the method used to route application traffic to data sources in the event of a major failure event is critical to identify whether failover processes will meet recovery objectives. Many Azure data platform services offer native reliability capabilities to handle major failures, such as Cosmos DB Automatic Failover or Azure SQL DB Active Geo-Replication.
+Consider how your application traffic is routed to data sources in the case of region, zone, or network outage. Understanding the method used to route application traffic to data sources in the event of a major failure event is critical to identify whether failover processes will meet recovery objectives. Many Azure data platform services offer native reliability capabilities to handle major failures, such as Azure Cosmos DB Automatic Failover or Azure SQL Database Active Geo-Replication.
 
 > [!NOTE]
 > Some capabilities such as Azure Storage RA-GRS and Azure SQL DB Active Geo-Replication require application-side failover to alternate endpoints in some failure scenarios, so application logic should be developed to handle these scenarios.

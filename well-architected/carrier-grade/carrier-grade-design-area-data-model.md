@@ -40,6 +40,9 @@ For example, consider the database of system users. Is it acceptable for the use
 
 Where consistency is the compromise, the application must cope with data inconsistency artifacts by using conflict-free replicated data types (CRDTs). The use of CRDTs requires discipline in the application design and implementation. Their use means data merges following partition events can be handled automatically by the data layer without human intervention or complex application-level logic.
 
+> [!IMPORTANT]
+> More details on data platform choices for your mission-critical workload is available [here](/azure/architecture/framework/mission-critical/mission-critical-data-platform)
+
 The architect must also understand the tradeoffs in the data model, which were made within the dependent services. Those tradeoffs impact the service delivered to their application because those tradeoffs may not align with the application-level requirements.
 
 ## Next step

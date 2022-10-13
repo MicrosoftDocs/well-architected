@@ -44,7 +44,7 @@ products:
 
 - Choose the correct consumption model for your service (Consumption, Pre-Provisioned)
 
-- Choose the right data store for the job (SQL, Cosmos, Storage, and so on)
+- Choose the right data store for the job (Azure SQL, Azure Cosmos DB, Azure Storage, and so on)
 
 - Don't over engineer services for requirements that are not clearly defined.
 
