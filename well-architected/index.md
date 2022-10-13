@@ -88,6 +88,8 @@ For more information about resiliency, reference the following video that will s
 
 <!-- markdownlint-disable MD034 -->
 
+<br/>
+
 > [!VIDEO https://learn.microsoft.com/shows/azure-enablement/start-improving-the-reliability-of-your-azure-workloads--reliability-ep-1--well-architected-series/player]
 
 <!-- markdownlint-enable MD034 -->
@@ -111,6 +113,8 @@ Think about [security](./security/index.yml) throughout the entire lifecycle of 
 Ask the right questions about secure application development on Azure by referencing the following video:
 
 <!-- markdownlint-disable MD034 -->
+
+<br/>
 
 > [!VIDEO https://learn.microsoft.com/shows/azure-enablement/ask-the-right-questions-about-secure-application-development-on-azure/player]
 
@@ -136,6 +140,8 @@ For more information, reference [Cost optimization](./cost/index.yml) and the fo
 
 <!-- markdownlint-disable MD034 -->
 
+<br/>
+
 > [!VIDEO https://learn.microsoft.com/shows/azure-enablement/start-optimizing-your-azure-costs--cost-optimization-ep-1--well-architected-series/player]
 
 <!-- markdownlint-enable MD034 -->
@@ -158,6 +164,8 @@ For a high-level overview, reference [Overview of the cost optimization pillar](
 For more information, reference the following video about bringing security into your DevOps practice on Azure:
 
 <!-- markdownlint-disable MD034 -->
+
+<br/>
 
 > [!VIDEO https://learn.microsoft.com/shows/azure-enablement/devsecops-bringing-security-into-your-devops-practice-on-azure/player]
 
