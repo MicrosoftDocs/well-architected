@@ -460,13 +460,13 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 - The use of IaaS Virtual Machines significantly increases operational costs compared to PaaS services, through management responsibility of the virtual machine and the operating system.
   - Managing virtual machines necessitates the frequent roll-out of software packages and updates.
 
-- [Availability Sets](/azure/virtual-machines/availability-set-overview) can be used to protect against network, disk and power failures by distributing virtual machines across up to fault domains and update domains.
-
-- [Availability zones](/azure/availability-zones/az-overview) can be used to achieve even higher levels of reliability by distributing VMs across physically separated data center within a region.
-
-- [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) provide functionality to automatically scale the number of virtual machines along with capabilities to monitor instance health and automatically repair [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
+- Azure provides certain capabilities to increase the availability of Virtual Machines, options are:
   
-- [Backup center](/azure/backup/backup-center-overview) can be used to manage the periodic backups of virtual machines and [backup reports](/azure/backup/backup-center-obtain-insights) can be used to analyze the operation of backup tasks.
+  - [Availability Sets](/azure/virtual-machines/availability-set-overview) can be used to protect against network, disk and power failures by distributing virtual machines across up to fault domains and update domains.
+
+  - [Availability zones](/azure/availability-zones/az-overview) can be used to achieve even higher levels of reliability by distributing VMs across physically separated data center within a region.
+
+  - [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) provide functionality to automatically scale the number of virtual machines along with capabilities to monitor instance health and automatically repair [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
 
 ### Design recommendations
 
@@ -478,7 +478,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 - Deploy three or more Virtual Machines across [Availability zones](/azure/availability-zones/az-overview) to achieve data center level fault tolerance.
   - If you are deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production.
 
-- For workloads which cannot be deployed across Availability Zones, use Availability Sets with three or more VMs.
+- For workloads which cannot be deployed across Availability Zones, use [Availability Sets](/azure/virtual-machines/availability-set-overview) with three or more VMs.
   - Availability Sets should only be considered if Availability Zones do not comply with workload requirements, such as for 'chatty' workloads with low latency requirements.
 
 - Prioritize the use of Virtual Machine Scale Sets for scalability and zone-redundancy. This is particularly important for workloads with varying load (e.g. number of active users or requests per second).
@@ -490,7 +490,7 @@ This section will therefore focus on the optimal usage of Azure Virtual Machines
 
 - For workloads which do not support multi-region active-active deployments, consider active-passive by using hot/warm standby virtual machines for regional failover.
 
-- Prioritize the use of Microsoft managed images and use automated processes and tools like cloud-init to customize.
+- Prioritize the use of standard images from the Azure Marketplace over custom images that need to be maintained.
 
 - Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. See [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-virtual-machines) in the [Operational procedures](./mission-critical-operational-procedures.md) design area for more.
 

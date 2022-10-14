@@ -24,7 +24,7 @@ The mission-critical design methodology leans heavily on the principles *automat
 >
 > ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical)
 >
-> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. 
+> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub.
 
 ## DevOps processes
 
@@ -198,7 +198,7 @@ In scenarios where the use of IaaS Virtual Machines is required, some of the pro
 
 - Prioritize the use of standard images from the Azure Marketplace over custom images that need to be maintained.
 
-- Use [Azure VM Image Builder](/azure/virtual-machines/image-builder-overview) to build and maintain customized images if required.
+- Use [Azure VM Image Builder](/azure/virtual-machines/image-builder-overview) or other tools to automate build and maintenance processes for customized images if required.
 
 Besides these specifics, apply best practices for operational procedures for mission-critical application scenarios when applicable.
 

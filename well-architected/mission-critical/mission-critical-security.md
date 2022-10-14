@@ -23,7 +23,7 @@ ms.custom:
 
 # Security considerations for mission-critical workloads on Azure
 
-Security is a one of the foundational design principles and also a key design area that must be treated as a first-class concern within the mission-critical architectural process. 
+Security is a one of the foundational design principles and also a key design area that must be treated as a first-class concern within the mission-critical architectural process.
 
 Given that the primary focus of a mission-critical design is to maximize reliability so that the application remains performant and available, the security considerations and recommendations applied within this design area will focus on mitigating threats with the capacity to impact availability and hinder overall reliability. For example, successful Denial-Of-Service (DDoS) attacks are known to have a catastrophic impact on availability and performance. How an application mitigates those attack vectors, such as SlowLoris will impact the overall reliability. So, the application must be fully protected against threats intended to directly or indirectly compromise application reliability to be truly mission critical in nature.
 
@@ -126,7 +126,7 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 
 ### Design considerations
 
-[STRIDE](https://en.wikipedia.org/wiki/STRIDE_(security)) provides a lightweight risk framework for evaluating security threats across key threat vectors. 
+[STRIDE](https://en.wikipedia.org/wiki/STRIDE_(security)) provides a lightweight risk framework for evaluating security threats across key threat vectors.
 
 - Spoofed Identity: Impersonation of individuals with authority. For example, an attacker impersonating another user by using their -
   - Identity
@@ -161,7 +161,7 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 
 ## Network intrusion protection
 
-Preventing unauthorized access to a mission-critical application and encompassed data is vital to maintain availability and safeguard data integrity. 
+Preventing unauthorized access to a mission-critical application and encompassed data is vital to maintain availability and safeguard data integrity.
 
 ### Design considerations
 
