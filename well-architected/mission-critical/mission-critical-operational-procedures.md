@@ -193,7 +193,7 @@ In scenarios where the use of IaaS Virtual Machines is required, some of the pro
 
 - Monitor virtual machines and detect for failure. The raw data of for monitoring can come from variety of sources. Ensure that monitoring is configured and analyze the cause of problems.
 
-- Analyze that scheduled backups are running healthy and periodic backups are taken. Azure [Backup center](/azure/backup/backup-center-overview) can to gain more insights.
+- Analyze that scheduled backups are running as expected and that periodic backups are taken (if needed). Azure [Backup center](/azure/backup/backup-center-overview) can be used to gain more insights.
 
 - Prioritize the use of Virtual Machine Scale Sets over VMs to enable capabilities like scale, autoscale and provide zone-redundancy.
 
