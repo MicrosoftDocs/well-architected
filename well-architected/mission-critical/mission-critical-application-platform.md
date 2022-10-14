@@ -84,7 +84,7 @@ Containerization allows developers to create and deploy applications faster and 
 - Containerize all application components, using container images as the primary model for application deployment packages.
 - Prioritize Linux-based container runtimes when possible.
 - Avoid persisting state/data within a container since containers should be immutable and replaceable with short lifecycles.
-- Ensure that all relevant logs and metrics are gathered form the container, container host, and underlying cluster. Gathered logs and metrics should be sent to a unified data sink for further processing.
+- Ensure that all relevant logs and metrics are gathered from the container, container host, and underlying cluster. Gathered logs and metrics should be sent to a unified data sink for further processing.
 
 ## Container Orchestration and Kubernetes
 
@@ -442,6 +442,63 @@ See [Azure Event Grid quotas and limits](/azure/event-grid/quotas-limits) for mo
   - Use an AZ-redundant tier for the underlying Storage Account (ZRS or GZRS).
 
 - Use Event Grid for scenarios where services need to react to changes in another service/component.
+
+## Constrained migrations using IaaS
+
+Many applications with existing on-premises deployments use virtualization technologies and redundant hardware to provide mission-critical levels of reliability. Modernization is often hindered by business constraints which prevent full alignment with the cloud-native baseline (north-star) architecture pattern recommended for mission-critical workloads. So, many applications adopt a phased approach, with initial cloud deployments using virtualization and Azure Virtual Machines as the primary application hosting model.
+
+This section will therefore focus on the optimal usage of Azure Virtual Machines and associated services in order to maximize the reliability of the application platform, highlighting key aspects of the mission-critical design methodology which transpose cloud-native and IaaS migration scenarios.
+
+### Design considerations
+
+- The use of IaaS Virtual Machines can be required for certain scenarios:
+  - Available PaaS services do not provide the required performance or level of control.
+  - The workload requires operating system access, specific drivers, or network and system configurations.
+  - The workload does not support running in containers.
+  - Lack of support for 3rd-party workloads.
+
+- The use of IaaS Virtual Machines significantly increases operational costs compared to PaaS services, through management responsibility of the virtual machine and the operating system.
+  - Managing virtual machines necessitates the frequent roll-out of software packages and updates.
+
+- Azure provides certain capabilities to increase the availability of Virtual Machines, options are:
+  
+  - [Availability Sets](/azure/virtual-machines/availability-set-overview) can be used to protect against network, disk and power failures by distributing virtual machines across up to fault domains and update domains.
+
+  - [Availability zones](/azure/availability-zones/az-overview) can be used to achieve even higher levels of reliability by distributing VMs across physically separated data center within a region.
+
+  - [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) provide functionality to automatically scale the number of virtual machines along with capabilities to monitor instance health and automatically repair [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
+
+### Design recommendations
+
+> [!IMPORTANT]
+> - Prioritize the use of PaaS services and Containers where possible to reduce operational complexity and cost. Only use IaaS Virtual Machines when required.
+
+- [Right-size VM sku sizes](/azure/virtual-machines/sizes) to ensure effective resource utilization.
+
+- Deploy three or more Virtual Machines across [Availability zones](/azure/availability-zones/az-overview) to achieve data center level fault tolerance.
+  - If you are deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production.
+
+- For workloads which cannot be deployed across Availability Zones, use [Availability Sets](/azure/virtual-machines/availability-set-overview) with three or more VMs.
+  - Availability Sets should only be considered if Availability Zones do not comply with workload requirements, such as for 'chatty' workloads with low latency requirements.
+
+- Prioritize the use of Virtual Machine Scale Sets for scalability and zone-redundancy. This is particularly important for workloads with varying load (e.g. number of active users or requests per second).
+  
+- Do not access individual virtual machines directly, use load balancers in front when possible.
+
+- To protect against regional outages, deploy application virtual machines across multiple Azure regions.
+  - Please refer to the [networking and connectivity design area](/azure/architecture/framework/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for further details about how to optimally route traffic between active deployment region.
+
+- For workloads which do not support multi-region active-active deployments, consider active-passive by using hot/warm standby virtual machines for regional failover.
+
+- Prioritize the use of standard images from the Azure Marketplace over custom images that need to be maintained.
+
+- Implement automated processes to deploy and rollout changes to virtual machines, avoiding any manual intervention. See [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-virtual-machines) in the [Operational procedures](./mission-critical-operational-procedures.md) design area for more.
+
+- Implement chaos experiments to inject application faults into virtual machine components while observing the mitigation of faults. See [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing) in the [Deployment and testing](./mission-critical-deployment-testing.md) design area for more details.
+
+- Monitor virtual machines and ensure diagnostic logs and metrics are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
+
+Follow and apply security practices for mission-critical application scenarios as described above, when applicable, as well as the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
 
 ## Next step
 
