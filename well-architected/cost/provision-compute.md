@@ -49,6 +49,8 @@ The best choice is driven by the business requirements of your workload. If you 
 
 - **Reserved Virtual Machine Instances** lets you purchase a VM for one or three years in a specified region in advance. It is appropriate for applications with steady-state usage. You may save more money compared to pay-as-you-go pricing.
 
+- **Savings plans** lets you commit to one or three years, across all regions, for a fixed hourly dollar amount across compute services.
+
 - **Spot pricing** lets you purchase unused compute capacity at major discounts. If your workload can tolerate interruptions, and its execution time is flexible, then using spot pricing for VMs can significantly reduce the cost of running your workload in Azure.
 
 - **Dev-Test pricing** offers discounted rates on Azure to support your ongoing development and testing. Dev-Test allows you to quickly create consistent development and test environments through a scalable, on-demand infrastructure. This will allow you to spin up what you need, when you need it, and explore scenarios before going into production. To learn more about Azure Dev-Test reduced rates, see [Azure Dev/Test Pricing](https://azure.microsoft.com/pricing/dev-test/).

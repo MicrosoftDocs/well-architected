@@ -37,38 +37,44 @@ For more information about the services that make up a machine learning workload
 This article provides cost considerations for some technology choices. This is not meant to be an exhaustive list, but a subset of options.
 
 ## Azure Machine Learning
+
 Training models don't incur the machine learning service surcharge. You're charged for these factors.
 
-- The cost is driven by compute choices, such as, the virtual machine sizes and the region in which they are available. If you can commit to one or three years, choosing reserved instances can lower cost. For more information, see [Reserved instances](./optimize-vm.md#reserved-vms).
+- The cost is driven by compute choices, such as, the virtual machine sizes and the region in which they are available. If you can commit to one or three years, choosing reserved instances or savings plans can lower cost. For more information, see [Reserved instances](./optimize-vm.md#reserved-vms) and [savings plans](./optimize-vm.md#savings-plans).
 
-- As part of provisioning Machine Learning resources,  additional resource are deployed such as [Azure Container Registry](https://azure.microsoft.com/services/container-registry/), [Azure Block Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/), and [Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). You're charged for as per the pricing of those individual services.
+- As part of provisioning Machine Learning resources, additional resource are deployed such as [Azure Container Registry](https://azure.microsoft.com/services/container-registry/), [Azure Block Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/), and [Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). You're charged for as per the pricing of those individual services.
 
 - If you deploy models to a Kubernetes Service cluster, Machine Learning adds a [surcharge](https://azure.microsoft.com/pricing/details/machine-learning-service/) on top of the Kubernetes Service compute cost. This cost can be lowered through autoscaling.
 
 For more information, see these articles:
+
 - [Machine Learning pricing calculator](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service)
 - [Azure Machine Learning](https://azure.microsoft.com/pricing/details/machine-learning/)
 
-#### Reference architecture
+### Reference architecture
 
--   [Training of Python scikit-learn and deep learning models on Azure](/azure/architecture/reference-architectures/ai/training-python-models)
--   [Distributed training of deep learning models on Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)
--   [Batch scoring of Python machine learning models on Azure](/azure/architecture/reference-architectures/ai/batch-scoring-python)
--   [Batch scoring of deep learning models on Azure](/azure/architecture/reference-architectures/ai/batch-scoring-deep-learning)
--   [Real-time scoring of Python scikit-learn and deep learning models on Azure](/azure/architecture/reference-architectures/ai/real-time-scoring-machine-learning-models)
--   [Machine learning operationalization (MLOps) for Python models using Azure MachineLearning](/azure/architecture/reference-architectures/ai/mlops-python)
--   [Batch scoring of R machine learning models on Azure](/azure/architecture/reference-architectures/ai/batch-scoring-r-models)
--   [Real-time scoring of R machine learning models on Azure](/azure/architecture/reference-architectures/ai/realtime-scoring-r)
--   [Batch scoring of Spark machine learning models on Azure Databricks](/azure/architecture/reference-architectures/ai/batch-scoring-databricks)
--   [Enterprise-grade conversational bot](/azure/architecture/reference-architectures/ai/conversational-bot)
--   [Build a real-time recommendation API on Azure](/azure/architecture/reference-architectures/ai/real-time-recommendation)
+- [Training of Python scikit-learn and deep learning models on Azure](/azure/architecture/reference-architectures/ai/training-python-models)
+- [Distributed training of deep learning models on Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)
+- [Batch scoring of Python machine learning models on Azure](/azure/architecture/reference-architectures/ai/batch-scoring-python)
+- [Batch scoring of deep learning models on Azure](/azure/architecture/reference-architectures/ai/batch-scoring-deep-learning)
+- [Real-time scoring of Python scikit-learn and deep learning models on Azure](/azure/architecture/reference-architectures/ai/real-time-scoring-machine-learning-models)
+- [Machine learning operationalization (MLOps) for Python models using Azure MachineLearning](/azure/architecture/reference-architectures/ai/mlops-python)
+- [Batch scoring of R machine learning models on Azure](/azure/architecture/reference-architectures/ai/batch-scoring-r-models)
+- [Real-time scoring of R machine learning models on Azure](/azure/architecture/reference-architectures/ai/realtime-scoring-r)
+- [Batch scoring of Spark machine learning models on Azure Databricks](/azure/architecture/reference-architectures/ai/batch-scoring-databricks)
+- [Enterprise-grade conversational bot](/azure/architecture/reference-architectures/ai/conversational-bot)
+- [Build a real-time recommendation API on Azure](/azure/architecture/reference-architectures/ai/real-time-recommendation)
 
 ## Azure Cognitive Services
+
 The billing depends on the type of service. The charges are based on the number of transactions for each type of operation specific to a service. Certain number of transactions are free. If you need additional transactions, choose from the **Standard** instances. For more information, see
+
 - [Cognitive services pricing calculator](https://azure.microsoft.com/pricing/calculator/)
 - [Cognitive services pricing](https://azure.microsoft.com/pricing/details/cognitive-services/)
-#### Reference architecture
-[Build an enterprise-grade conversational bot](/azure/architecture/reference-architectures/ai/conversational-bot)
+
+### Reference architecture
+
+- [Build an enterprise-grade conversational bot](/azure/architecture/reference-architectures/ai/conversational-bot)
 
 ## Azure Bot Service
 
@@ -76,5 +82,6 @@ The Azure Bot Service is a managed service purpose-built for enterprise-grade bo
 
 For a Web App Bot, an [Azure App Service](https://azure.microsoft.com/pricing/details/app-service/) is provisioned to host the bot. Also, an instance of [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) is provisioned. You're charged for as per the pricing of those individual services.
 
-#### Reference architecture
-[Enterprise-grade conversational bot](/azure/architecture/reference-architectures/ai/conversational-bot)
+### Reference architecture
+
+- [Enterprise-grade conversational bot](/azure/architecture/reference-architectures/ai/conversational-bot)
