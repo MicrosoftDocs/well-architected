@@ -35,7 +35,7 @@ Continue to monitor and optimize the workload by using the right resources and s
 - **Use savings plans**. By using savings plans, you get the most flexible savings for dynamic workloads, while accommodating for planned or unplanned changes. Consider that with with savings plan you commit to a fixed hourly dollar amount collectively on compute services, globally.
   - [Savings plans](/azure/cost-management-billing/savings-plan)
 
-- **Use Azure reservations**. You get the greatest cost savings for stable, predictable workloads with no planned changes by using reserved instances. Consider that you are committing to a specific Virtual Machine type in a particular Azure region.
+- **Use Azure reservations**. You get the greatest cost savings for stable, predictable workloads with no planned changes by using reserved instances or capacity. Consider that you are often committing to a specific SKUs, throughput, or utilization targets, often in a particular Azure region.
   - [Azure Reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations)
   
 - **Use discount prices**. These methods of buying Azure resources can lower costs.
