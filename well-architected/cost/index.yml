@@ -123,8 +123,6 @@ landingContent:
         links:
           - text: Autoscale instances
             url: optimize-autoscale.md
-          - text: Reserved instances
-            url: optimize-reserved.md
           - text: Right-size VMs
             url: optimize-vm.md
       - linkListType: video

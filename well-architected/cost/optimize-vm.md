@@ -3,13 +3,15 @@ title: Virtual machine instances
 description: Learn how to adequately size, optimize, and manage VMs to control costs, meet capacity demand, and reduce waste.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/07/2021
+ms.reviewer: tozimmergren
+ms.date: 10/17/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom:
   - article
   - internal-intro
+  - engagement-fy23
 products:
   - azure
   - azure-cost-management
@@ -27,7 +29,8 @@ It is easy to handle cost comparison when you are well equipped and for this Mic
 
 Here are some strategies that you can use to lower cost for virtual machines.
 
-## Resize virtual machines 
+## Resize virtual machines
+
 You can lower cost by managing the size and the number of VMs.
 > ![Task](./images/i-best-practices.png) Determine the load by analyzing the CPU utilization to make sure that the instance is adequately utilized.
 
@@ -38,11 +41,13 @@ You can identify underutilized machines by adjusting the CPU utilization rule on
 Resizing a virtual machine does require the machine to be shut down and restarted. There might be a period of time when it will be unavailable. Make sure you carefully time this action for minimal business impact.
 
 ## Shut down the under utilized instances
+
 Use the **Start/stop VMs during off-hours** feature of virtual machines to minimize waste. There are many configuration options to schedule start the stop times. The feature is suitable as a low-cost automation option. For information, see [Start/stop VMs during off-hours solution in Azure Automation](/azure/automation/automation-solution-vm-management).
 
 [Azure Advisor](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/docs) evaluates virtual machines based on CPU and network utilization over a time period. Then, the recommended actions are shut down or resize instances and cost saving with both actions.
 
 ## Spot VMs
+
 Some workloads don't have a business requirement to complete a job within a period.
 
 **Can the workload be interrupted?**
@@ -52,6 +57,7 @@ Spot VMs are ideal for workloads that can be interrupted, such as highly paralle
 For more information, see [Use Spot VMs in Azure](/azure/virtual-machines/windows/spot-vms) or check out our [Azure Virtual Machine Spot Eviction](/azure/architecture/guide/spot/spot-eviction) guide to learn how to create a reliable interruptible workload in Azure.
 
 ## Reserved VMs
+
 Virtual machines are eligible for Azure Reservations. You can prepay for VM instances if you can commit to one or three years. Reserved instances are appropriate for workloads that have a long-term usage pattern.
 
 The discount only applies to compute and not the other meters used to measure usage for VMs. The discount can be extended to other services that emit VM usage, such as Virtual machine scale sets and Container services, to name a few. For more information, see [Software costs not included with Azure Reserved VM Instances](/azure/cost-management-billing/reservations/reserved-instance-windows-software-costs) and [Services that get VM reservation discounts](/azure/virtual-machines/windows/prepay-reserved-vm-instances#services-that-get-vm-reservation-discounts).
@@ -61,3 +67,10 @@ With reserved instances, you need to determine the VM size to buy. Analyze usage
 Reservations also apply to dedicated hosts. The discount is applied to all running hosts that match the reservation scope and attributes. An important consideration is the SKU for the host. When selecting a SKU, choose the VM series and type eligible to be a dedicated host. For more information, see [Azure Dedicated Hosts pricing](https://aka.ms/ADHPricing).
 
 For information about discounts on virtual machines, see [How the Azure reservation discount is applied to virtual machines](/azure/cost-management-billing/manage/understand-vm-reservation-charges).
+
+## Savings plans
+
+Virtual machines are also eligible for [savings plans](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview). By committing to a one-year or three-year savings plan, you spend a fixed hourly dollar amount collectively on all compute services. Consider that the commitment spans across all participating compute services globally.
+
+Using savings plans can save you up to 66% on cost.
+

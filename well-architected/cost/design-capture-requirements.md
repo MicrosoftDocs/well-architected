@@ -3,13 +3,15 @@ title: Capture cost requirements for an Azure
 description: Learn to enumerate cost requirements and considerations, and how to align costs with business goals.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/20/2021
+ms.date: 10/14/2022
+ms.reviewer: tozimmergren
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom:
   - article
   - internal-intro
+  - engagement-fy23
 products:
   - azure
   - azure-cost-management
@@ -73,11 +75,11 @@ Suppose the downtime costs are relatively low, you can save by using recovery fr
 **Does your service run seasonally or follow long-term patterns?**
 ***
 
-For long running applications, consider using [Azure Reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) if you can commit to one-year or three-year term. VM reservations can reduce cost by 60% or more when compared to pay-as-you-go prices.
+For long-running applications, consider using [Azure Reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) if you can commit to one-year or three-year term. 
 
-Reservation is still an operational expense with all the corresponding benefits. Monitor the cost on workloads that have been running in the cloud for an extended period to forecast the reserved instance sizes that are needed. For information about optimization, see [Reserved instances](./optimize-checklist.md).
+Similarly, [Azure savings plans](/azure/cost-management-billing/savings-plan/) is another option to save money when you have consistent resource usage in your subscriptions and can commit to a fixed hourly spend on compute services for a one-year or three-year period
 
-If your application runs intermittently, consider using Azure Functions in a consumption plan so you only pay for compute resources you use.
+If your application runs intermittently, consider using [Azure Functions](/azure/azure-functions/) in a [Consumption plan](/azure/azure-functions/consumption-plan), so you only pay for compute resources you use.
 
 ## Automation opportunities
 
