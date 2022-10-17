@@ -70,7 +70,7 @@ For information about discounts on virtual machines, see [How the Azure reservat
 
 ## Savings plans
 
-Virtual machines are also eligible for [savings plans](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview). By committing to a one-year or three-year savings plan, you spend a fixed hourly dollar amount collectively on all compute services. Consider that the commitment spans across all participating compute services globally.
+Virtual machines are eligible for [savings plans](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview). By committing to a one-year or three-year savings plan, you spend a fixed hourly dollar amount collectively on all compute services. Consider that the commitment spans across all participating compute services globally.
 
 Using savings plans can save you up to 66% on cost.
 
