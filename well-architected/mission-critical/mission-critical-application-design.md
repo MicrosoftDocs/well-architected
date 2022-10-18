@@ -285,7 +285,7 @@ Here are some other resiliency-related patterns:
 - Define **common engineering criteria** for all application microservice teams to drive consistency and acceleration regarding the use application-level resiliency patterns.
   - Developers should familiarize themselves with [common software engineering patterns](/azure/architecture/patterns/) for resilient applications.
 
-- Implement resiliency patterns using proven standardized packages, such as [Polly for C#](http://www.thepollyproject.org/) or [Sentinel for Java](https://github.com/alibaba/Sentinel).
+- Implement resiliency patterns using proven standardized packages, such as [NServiceBus](https://docs.particular.net/nservicebus/recoverability/) or [Polly](http://www.thepollyproject.org/) for C# or [Sentinel](https://github.com/alibaba/Sentinel) for Java.
 
 - Implement [Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring) by exposing functional checks within application code through health endpoints which external monitoring solutions can poll to retrieve application component health statuses. Responses should be interpreted alongside key operational metrics to inform application health and trigger operational responses, such as raising an alert or performing a compensating roll-back deployment.
 
