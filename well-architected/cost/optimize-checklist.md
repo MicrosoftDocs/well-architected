@@ -23,7 +23,7 @@ Continue to monitor and optimize the workload by using the right resources and s
 - **Review the underutilized resources**. Evaluate CPU utilization and network throughput over time to check if the resources are used adequately. Azure Advisor identifies underutilized virtual machines. You can choose to decommission, resize, or shut down the machine to meet the cost requirements.
 
   - [Resize virtual machines](./optimize-vm.md#resize-virtual-machines)
-  - [Shutdown the under utilized instances](./optimize-vm.md#shut-down-the-under-utilized-instances)
+  - [Shutdown the under utilized instances](./optimize-vm.md#shut-down-underutilized-instances)
 
 - **Continuously take action on the cost reviews**. Treat cost optimization as a process, rather than a point-in-time activity.  Use tooling in Azure that provides recommendations on usage or cost optimization. Review the cost management recommendations and take action. Make sure that all stakeholders are in agreement about the implementation and timing of the change.
 
