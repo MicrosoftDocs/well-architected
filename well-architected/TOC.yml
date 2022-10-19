@@ -223,8 +223,6 @@ items:
                 href: cost/optimize-checklist.md
               - name: Autoscale
                 href: cost/optimize-autoscale.md
-              - name: Reserved instances
-                href: cost/optimize-reserved.md
               - name: VM instances
                 href: cost/optimize-vm.md
               - name: Caching
