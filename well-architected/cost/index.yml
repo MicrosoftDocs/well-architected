@@ -125,6 +125,8 @@ landingContent:
             url: optimize-autoscale.md
           - text: Right-size VMs
             url: optimize-vm.md
+          - text: Cache data
+            url: optimize-cache.md
       - linkListType: video
         links:
           - text: What actions are you taking to optimize cloud costs?

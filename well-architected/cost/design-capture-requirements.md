@@ -79,7 +79,7 @@ For long-running applications, consider using [Azure Reservations](/azure/cost-m
 
 Similarly, [Azure savings plans](/azure/cost-management-billing/savings-plan/) is another option to save money when you have consistent resource usage in your subscriptions and can commit to a fixed hourly spend on compute services for a one-year or three-year period
 
-If your application runs intermittently, consider using [Azure Functions](/azure/azure-functions/) in a [Consumption plan](/azure/azure-functions/consumption-plan), so you only pay for compute resources you use.
+If your application runs intermittently, consider using consumption billing plans where they are offered on services in your architecture.  For example, use [Azure Functions](/azure/azure-functions/) in a [Consumption plan](/azure/azure-functions/consumption-plan), so you only pay for compute resources you use.
 
 ## Automation opportunities
 
