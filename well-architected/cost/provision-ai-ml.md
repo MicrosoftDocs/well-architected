@@ -34,15 +34,15 @@ To lower the cost for experimental or development workloads, choose Spot VMs. Th
 
 For more information about the services that make up a machine learning workload, see [What are the machine learning products at Microsoft?](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning).
 
-This article provides cost considerations for some technology choices. This is not meant to be an exhaustive list, but a subset of options.
+This article provides cost considerations for some technology choices. This isn't meant to be an exhaustive list, but a subset of options.
 
 ## Azure Machine Learning
 
 Training models don't incur the machine learning service surcharge. You're charged for these factors.
 
-- The cost is driven by compute choices, such as, the virtual machine sizes and the region in which they are available. If you can commit to one or three years, choosing reserved instances or savings plans can lower cost. For more information, see [Reserved instances](./optimize-vm.md#reserved-vms) and [savings plans](./optimize-vm.md#savings-plans).
+- The cost is driven by compute choices, such as, the virtual machine sizes and the region in which they're available. If you can commit to one or three years, choosing reserved instances or savings plans can lower cost. For more information, see [Reserved instances](./optimize-vm.md#reserved-vms) and [savings plans](./optimize-vm.md#savings-plans).
 
-- As part of provisioning Machine Learning resources, additional resource are deployed such as [Azure Container Registry](https://azure.microsoft.com/services/container-registry/), [Azure Block Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/), and [Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). You're charged for as per the pricing of those individual services.
+- As part of provisioning Machine Learning resources, additional resources are deployed such as [Azure Container Registry](https://azure.microsoft.com/services/container-registry/), [Azure Block Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/), and [Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). You're charged for as per the pricing of those individual services.
 
 - If you deploy models to a Kubernetes Service cluster, Machine Learning adds a [surcharge](https://azure.microsoft.com/pricing/details/machine-learning-service/) on top of the Kubernetes Service compute cost. This cost can be lowered through autoscaling.
 

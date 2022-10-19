@@ -21,11 +21,11 @@ products:
 
 Virtual machines can be deployed in fix-sized blocks. These VMs must be adequately sized to meet capacity demand and reduce waste.
 
-For example, look at a VM running the SAP on Azure project can show you how initially the VM was sized based on the size of existing hardware server (with cost around &euro;1 K per month), but the real utilization of VM was not more than 25% - but simple choosing the right VM size in the cloud we can achieve 75% saving (resize saving). And by applying the snoozing you can get additional 14% of economy:
+For example, look at a VM running the SAP on Azure project can show you how initially the VM was sized based on the size of existing hardware server (with cost around &euro;1 K per month), but the real utilization of VM wasn't more than 25% - but simple choosing the right VM size in the cloud we can achieve 75% saving (resize saving). And by applying the snoozing you can get additional 14% of economy:
 
 ![Run cost optimization](../_images/run-cost-optimization.png)
 
-It is easy to handle cost comparison when you are well equipped and for this Microsoft provides the set of specific services and tools that help you to understand and plan costs. These include the TCO Calculator, Azure Pricing Calculator, Azure Cost Management (Cloudyn), Azure Migrate, Azure Cosmos DB Sizing Calculator, and the Azure Site Recovery Deployment Planner.
+It's easy to handle cost comparison when you're well equipped and for this Microsoft provides the set of specific services and tools that help you to understand and plan costs. These include the TCO Calculator, Azure Pricing Calculator, Azure Cost Management (Cloudyn), Azure Migrate, Azure Cosmos DB Sizing Calculator, and the Azure Site Recovery Deployment Planner.
 
 Here are some strategies that you can use to lower cost for virtual machines.
 
@@ -40,9 +40,9 @@ You can identify underutilized machines by adjusting the CPU utilization rule on
 
 Resizing a virtual machine does require the machine to be shut down and restarted. There might be a period of time when it will be unavailable. Make sure you carefully time this action for minimal business impact.
 
-## Shut down the under utilized instances
+## Shut down underutilized instances
 
-Use the **Start/stop VMs during off-hours** feature of virtual machines to minimize waste. There are many configuration options to schedule start the stop times. The feature is suitable as a low-cost automation option. For information, see [Start/stop VMs during off-hours solution in Azure Automation](/azure/automation/automation-solution-vm-management).
+Use the **Start/stop VMs during off-hours** feature of virtual machines to minimize waste. There are many configuration options to schedule the start and stop times. The feature is suitable as a low-cost automation option. For information, see [Start/stop VMs during off-hours solution in Azure Automation](/azure/automation/automation-solution-vm-management).
 
 [Azure Advisor](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/docs) evaluates virtual machines based on CPU and network utilization over a time period. Then, the recommended actions are shut down or resize instances and cost saving with both actions.
 
@@ -73,4 +73,3 @@ For information about discounts on virtual machines, see [How the Azure reservat
 Virtual machines are eligible for [savings plans](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview). By committing to a one-year or three-year savings plan, you spend a fixed hourly dollar amount collectively on all compute services. Consider that the commitment spans across all participating compute services globally.
 
 Using savings plans can save you up to 66% on cost.
-

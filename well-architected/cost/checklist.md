@@ -26,7 +26,7 @@ products:
 
 - Use subscription types that offer lower rates for Azure resources, such as Dev/Test subscriptions.
 
-- Plan a tagging strategy early in the planning process. It's important to know that tags are not inherited by resources from their parent resource group. Consider tagging single resources to create custom reporting groups where needed.
+- Plan a tagging strategy early in the planning process. It's important to know that tags aren't inherited by resources from their parent resource group. Consider tagging single resources to create custom reporting groups where needed.
 
 - Identify resources or meters that can't be tagged. Decide on a custom solution to account for these costs.
 
@@ -48,7 +48,7 @@ products:
 
 - Choose the right data store for the job (Azure SQL, Azure Cosmos DB, Azure Storage, and so on)
 
-- Don't over engineer services for requirements that are not clearly defined.
+- Don't over engineer services for requirements that aren't clearly defined.
 
 - Only deploy to multiple regions if your service levels require it for either availability or geo-distribution.
 
@@ -68,9 +68,9 @@ products:
 
 ## Optimization
 
-- Use reserved instances for stable, predictable workloads with no planned changes. Consider that you are committing to a specific Virtual Machine type in a particular Azure region.
+- Use reserved instances for stable, predictable workloads with no planned changes. Consider that you're committing to a specific Virtual Machine type in a particular Azure region.
 
-- Use savings plans when you have dynamic workloads, while accommodating for planned or unplanned changes. Consider that with with savings plan you commit to a fixed hourly dollar amount collectively on compute services, globally.
+- Use savings plans when you have dynamic workloads, while accommodating for planned or unplanned changes. Consider that with savings plan you commit to a fixed hourly dollar amount collectively on compute services, globally.
 
 - Use tooling in Azure that provides recommendations on usage or cost optimization. For example, Azure Advisor or Azure cost analysis.
 
