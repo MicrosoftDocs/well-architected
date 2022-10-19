@@ -100,7 +100,7 @@ Consider using Azure Active Directory (Azure AD) to authenticate and authorize u
 
 Azure AD is also used by:
 
-- Office 365
+- Microsoft 365
 - Dynamics 365
 - Many third-party applications
 
