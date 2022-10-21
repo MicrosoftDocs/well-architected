@@ -144,10 +144,6 @@ As a cloud provider, Microsoft is responsible for the data centers hosting your 
 
 However, deploying an application in the Microsoft cloud doesn't automatically make it sustainable, even if the data centers are optimized for sustainability. Applications that aren't optimized may still emit more carbon than necessary.
 
-The shared responsibility model for sustainable apps can be visualized like this:
-
-:::image type="content" source="./images/sustainability-shared-responsibility-apps.svg" alt-text="Diagram showing the shared responsibility model for sustainability." border="false":::
-
 _Let's take an example._
 
 You deploy an app to an Azure service, but you only utilize 10% of the allocated resources. The provisioned resources are underutilized, ultimately leading to unnecessary emissions.
