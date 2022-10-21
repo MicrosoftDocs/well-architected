@@ -22,7 +22,7 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 
 *Horizontal scaling allows for elasticity*. Instances are added (scale-out) or removed (scale-in) in response to changes in load. Scaling out can improve resiliency by building redundancy. 
 
-|Strategy|Benefit|
+|Approach|Benefit|
 |---|---|
 |Define a capacity model according to the business requirements |Test the limits for **predicted and random spikes and fluctuations** in load to make sure the application can scale. Factor in the SKU service limits and regional limits so that application scales as expected if there's a regional failure.|
 |Use PaaS offerings| Take advantage of the built-in capabilities that **automatically trigger scaling** operations instead of investing in manual scaling efforts that often require custom implementations and can be error prone.|
@@ -33,18 +33,18 @@ An alternate approach is vertical scaling. However, the application can eventual
 
 ## Shift-left on performance testing
 
-*Test early and test often*. 
+*Test early and test often to catch issues early*. 
 
-|Strategy|Benefit|
+|Approach|Benefit|
 |---|---|
 |Run load and stress tests| Measure the application's performance under **predetermined amounts of load** and also the **maximum load** your application and its infrastructure can withstand.
 |Establish performance baselines|Determine the **current efficiency** of the application and its supporting infrastructure. You'll be able to identify bottlenecks early before it worsens with load. Also, this strategy can lead to **strategies for improvements** and determine if the application is meeting the business goals.
 |Run the test in the continuous integration (CI) build pipeline.|Detect issues early. Any development effort must go through continuous performance testing to make sure changes to the codebase doesn't negatively affect performance. |
 
 ## Continuously monitor for performance in production
-*Observe the system holistically*. Capture the test results not only in dev/test environment but also in production. TBD - why?
+*Observe the system holistically to evaluate the overall health of the solution*. Capture the test results not only in dev/test environment but also in production. TBD - why?
 
-|Strategy|Benefit|
+|Approach|Benefit|
 |---|---|
 |Monitor the health of entire solution|Know about the  scalability _and_ resiliency of the infrastructure, application, and dependent services.|
 |Capture data from repeatable processes| Evaluate the metrics over time that would allow for autoscaling with demand. For reliability, look for early warning signs that might require proactive intervention.|
