@@ -54,8 +54,8 @@ _Green Software Foundation alignment: [Energy Efficiency](sustainability-design-
 
 **Recommendation:**
 
-- Store results from steps in a cache and re-use them between different CI/CD runs when possible.
-- If the CI/CD agent is self-hosted, use a cache local to the agent to further reduce data transfers and emissions.
+- Store results from steps in a cache and re-use them between different CI/CD runs when possible: when there are steps that take CPU time to produce an artifact that does not often change between different runs, it is wise to save it for future usage so that CPU time is not wasted on every run producing the same artifact, over and over.
+- If the CI/CD agent is self-hosted, use a cache local to the agent to further reduce data transfers and emissions. This ensures that the cache is not transferred over the network, which can be a significant source of emissions.
 
 ### Split large code repositories
 
