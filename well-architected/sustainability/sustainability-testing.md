@@ -46,22 +46,27 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 - Only scale out when necessary, and when not testing, scale in. Ultimately this ensures there's no idle compute resources in test environments.
 - Consider optimized platform services like containers over testing in a VM, utilizing the platform to reduce maintenance.
 
-## Consider caching when using CI/CD agents
+### Consider caching when using CI/CD agents
 
-Using caching mechanisms during CI/CD can reduce compute time and thus carbon emissions.
+Using caching mechanisms during CI/CD can reduce compute time and, thus, carbon emissions.
 
-*Green Software Foundation alignment*: [Energy Efficiency](https://learn.microsoft.com/en-us/azure/architecture/framework/sustainability/sustainability-design-principles?branch=main#energy-efficiency)
+_Green Software Foundation alignment: [Energy Efficiency](sustainability-design-principles.md#energy-efficiency)_
 
 **Recommendation:**
 
-- Store results from steps in a cache and reuse them when possible between different CI/CD runs.
-- Use a cache that is local to the CI/CD agent (if agent is self-hosted) to further reduce data transfers and emissions.
+- Store results from steps in a cache and re-use them between different CI/CD runs when possible.
+- If the CI/CD agent is self-hosted, use a cache local to the agent to further reduce data transfers and emissions.
 
-## Split large code repositories
+### Split large code repositories
 
-Splitting large repositories into smaller ones can help in CI/CD phase where only the parts of the code that have changed are compiled. This reduces compute time, which ultimately lowers carbon emissions.
+Splitting large repositories can help the CI/CD phases, where only the parts of the code that have changed are compiled. This reduces compute time, which ultimately lowers carbon emissions.
 
-*Green Software Foundation alignment*: [Energy Efficiency](https://learn.microsoft.com/en-us/azure/architecture/framework/sustainability/sustainability-design-principles?branch=main#energy-efficiency)
+_Green Software Foundation alignment: [Energy Efficiency](sustainability-design-principles.md#energy-efficiency)_
+
+**Recommendation:**
+
+- Split large code repositories, separating main code from libraries and dependencies.
+- Publish and re-use artifacts and libraries of code that are common across multiple repositories.
 
 **Recommendation:**
 
