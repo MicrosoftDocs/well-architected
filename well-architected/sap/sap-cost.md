@@ -1,11 +1,11 @@
 ---
 title: SAP workload cost optimization
-description: 
+description: SAP workload best practices for cost optimization 
 author: stephen-sumner
 ms.author: ssumner
-ms.date: 
+ms.date: 11/11/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.custom:
+ms.custom: SAP
 ---
