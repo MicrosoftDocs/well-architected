@@ -1,6 +1,6 @@
 ---
-title: SAP workload 
-description: SAP workload best practices
+title: SAP workload reliability
+description: SAP workload best practices for reliability
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/11/2022
@@ -9,3 +9,8 @@ ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom: SAP
 ---
+
+# SAP workload reliability
+
+
+## Next Step

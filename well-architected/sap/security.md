@@ -1,6 +1,6 @@
 ---
-title: SAP workload cost optimization
-description: SAP workload best practices for cost optimization 
+title: SAP workload security
+description: SAP workload best practices for security
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/11/2022
@@ -9,3 +9,8 @@ ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom: SAP
 ---
+
+# SAP workload security
+
+
+## Next Step

@@ -1,6 +1,6 @@
 ---
-title: SAP workload operational excellence
-description: SAP workload best practices for operational excellence
+title: SAP workload cost optimization
+description: SAP workload best practices for cost optimization 
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/11/2022
@@ -9,3 +9,6 @@ ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom: SAP
 ---
+# SAP workload cost optimization
+
+## Next Step
