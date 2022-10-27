@@ -426,16 +426,17 @@ items:
           - name: SAP
             items:
               - name: Overview
-                href: 
+                href: sap/sap-overview.md
               - name: Reliability
-                href:
+                href: sap/sap-reliability.md
               - name: Security
-                href:
+                href: sap/sap-security.md
               - name: Cost Optimization
-                href:
+                href: sap/sap-cost.md
               - name: Operational Excellence
-                href:
+                href: sap/sap-operational.md
               - name: Performance Efficiency
+                href: sap/sap-performance.md
       - name: Services
         items:
           - name: Compute
