@@ -162,6 +162,8 @@ A blue/green deployment can be implemented at either an application level or at 
 
 ### Example - Zero-downtime deployment
 
+> [!VIDEO 1d3846c0-f301-4a25-a49a-94f5be3f6605]
+
 Achieving zero-downtime deployments is a fundamental goal of a mission-critical application. However, it's a complex issue that requires significant engineering investment and greatly influences the overall design. It's important to invest effort up-front to define and plan deployment processes, to drive key design decisions such as whether to treat resources as ephemeral.
 
 The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) and [Azure Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) reference implementations serve as practical examples for these concepts and recommendations, to establish an optimized zero-downtime deployment approach as represented in the illustration below.
