@@ -20,7 +20,7 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 
 ## Design for horizontal scaling
 
-*Horizontal scaling allows for elasticity*. Instances are added (scale-out) or removed (scale-in) in response to changes in load. Scaling out can improve resiliency by building redundancy. 
+*Horizontal scaling allows for elasticity*. Instances are added (scale-out) or removed (scale-in) in response to changes in load. Scaling out can improve resiliency by building redundancy. Scaling in can help reduce costs by shutting down excess capacity.
 
 |Approach|Benefit|
 |---|---|
@@ -29,7 +29,7 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 |Choose the right resources and right-size|Determine if the resources can support the anticipated load. Also, justify the cost implications of the choices.|
 |Apply strategies in your design early| Accelerate adoption without significant changes. For example, **strive for stateless application** and store state externally in a database or distributed cache. **Use caching** where possible, to minimize the processing load.|
 
-An alternate approach is vertical scaling. However, the application can eventually reach a limit, where you can't scale up anymore. At that point, any further scaling must be horizontal.
+An alternate approach is vertical scaling (scale up). However, you eventually may reach a limit where there is no larger system, and you can't scale up anymore. At that point, any further scaling must be horizontal. So it's good practice to employ a scale-out architecture early on.
 
 ## Shift-left on performance testing
 
@@ -42,7 +42,7 @@ An alternate approach is vertical scaling. However, the application can eventual
 |Run the test in the continuous integration (CI) build pipeline.|Detect issues early. Any development effort must go through continuous performance testing to make sure changes to the codebase doesn't negatively affect performance. |
 
 ## Continuously monitor for performance in production
-*Observe the system holistically to evaluate the overall health of the solution*. Capture the test results not only in dev/test environment but also in production. TBD - why?
+*Observe the system holistically to evaluate the overall health of the solution*. Capture the test results not only in dev/test environment but also in production. Monitoring and logging in production can help identify bottlenecks and opportunities for improvement.
 
 |Approach|Benefit|
 |---|---|
