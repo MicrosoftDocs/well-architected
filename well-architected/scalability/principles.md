@@ -16,7 +16,7 @@ ms.custom:
 ---
 
 # Performance efficiency principles
-Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. You need to adjust to the changes in demand so that you can meet the business requirements. These principles are intended to guide you in your overall strategy for improving performance efficiency.
+Performance efficiency is the ability of your workload to adjust to changes in demands placed on it by users in an efficient manner. These principles are intended to guide you in your overall strategy for improving performance efficiency.
 
 ## Design for horizontal scaling
 
