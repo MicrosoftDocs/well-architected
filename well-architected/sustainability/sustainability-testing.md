@@ -46,6 +46,33 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 - Only scale out when necessary, and when not testing, scale in. Ultimately this ensures there's no idle compute resources in test environments.
 - Consider optimized platform services like containers over testing in a VM, utilizing the platform to reduce maintenance.
 
+### Consider caching when using CI/CD agents
+
+Using caching mechanisms during CI/CD can reduce compute time and, thus, carbon emissions.
+
+_Green Software Foundation alignment: [Energy Efficiency](sustainability-design-principles.md#energy-efficiency)_
+
+**Recommendation:**
+
+- Store results from steps in a cache and re-use them between different CI/CD runs when possible: when there are steps that take CPU time to produce an artifact that does not often change between different runs, it is wise to save it for future usage so that CPU time is not wasted on every run producing the same artifact, over and over.
+- If the CI/CD agent is self-hosted, use a cache local to the agent to further reduce data transfers and emissions. This ensures that the cache is not transferred over the network, which can be a significant source of emissions.
+
+### Split large code repositories
+
+Splitting large repositories can help the CI/CD phases, where only the parts of the code that have changed are compiled. This reduces compute time, which ultimately lowers carbon emissions.
+
+_Green Software Foundation alignment: [Energy Efficiency](sustainability-design-principles.md#energy-efficiency)_
+
+**Recommendation:**
+
+- Split large code repositories, separating main code from libraries and dependencies.
+- Publish and re-use artifacts and libraries of code that are common across multiple repositories.
+
+**Recommendation:**
+
+- Split large repositories of code into smaller ones, separating main code from libraries and dependencies.
+- Publish and re-use artifacts and libraries of code that are common across multiple repositories.
+
 ## Profiling and measuring
 
 Measuring, profiling, and testing workloads are imperative to understanding how to best use allocated resources.
