@@ -26,19 +26,19 @@ ms.custom: SAP
 [SAP architectures](/azure/architecture/example-scenario/apps/sap-dev-test)
 [SAP solution ideas](/azure/architecture/solution-ideas/articles/sap-netweaver-on-sql-server)
 
-## Next Step
+## Next Steps
 
 >[!div class="nextstepaction"]
->[SAP Reliability](./sap-reliability.md)
+>[Reliability](./reliability.md)
 
 >[!div class="nextstepaction"]
->[SAP Security](./sap-security.md)
+>[Security](./security.md)
 
 >[!div class="nextstepaction"]
->[SAP Cost Optimization](./sap-cost.md)
+>[Cost Optimization](./cost-optimization.md)
 
 >[!div class="nextstepaction"]
->[SAP Operational Excellence](./sap-operational.md)
+>[Operational Excellence](./operational-excellence.md)
 
 >[!div class="nextstepaction"]
->[SAP Performance Efficiency](./sap-performance.md)
+>[Performance Efficiency](./performance-efficiency.md)

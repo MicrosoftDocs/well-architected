@@ -29,13 +29,17 @@ For more information, see:
 - [SAP NetWeaver](/azure/architecture/guide/sap/sap-netweaver)
 
 
-## 
+## Create application server resiliency
+
+
+We have sample architectures for several different SAP applications you can use to inform your design. For more information, see:
 
 - [High-availability architecture for SAP application servers](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios#high-availability-architecture-for-sap-application-servers)
 - [NetWeaver high availability](/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
 - [SAP HANA high availability](/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
 
 ## Create SAP central services resiliency
+
 
 For more information, see:
 
@@ -44,9 +48,15 @@ For more information, see:
 
 ## Create database resiliency
 
+
+
+
 For more information, see [General Azure Virtual Machines DBMS deployment for SAP workload](/azure/virtual-machines/workloads/sap/dbms_guide_general) and its listed recommendations per DBMS.
 
 ## Use backups
+
+
+
 
 For more information, see [NetWeaver disaster recovery](/azure/site-recovery/site-recovery-sap)
 
@@ -60,4 +70,19 @@ For more information, see:
 - [SAP HANA backup overview](/azure/backup/sap-hana-database-about)
 
 
-## Next Step
+## Next step
+
+>[!div class="nextstepaction"]
+>[Overview](./overview.md)
+
+>[!div class="nextstepaction"]
+>[Security](./security.md)
+
+>[!div class="nextstepaction"]
+>[Cost Optimization](./cost-optimization.md)
+
+>[!div class="nextstepaction"]
+>[Operational Excellence](./operational-excellence.md)
+
+>[!div class="nextstepaction"]
+>[Performance Efficiency](./performance-efficiency.md)
