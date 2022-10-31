@@ -20,6 +20,12 @@ ms.custom: SAP
 | Performance Efficiency | |
 | Operational Excellence | |
 
+
+[SAP on Azure](/azure/virtual-machines/workloads/sap/get-started)
+[SAP guides](/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
+[SAP architectures](/azure/architecture/example-scenario/apps/sap-dev-test)
+[SAP solution ideas](/azure/architecture/solution-ideas/articles/sap-netweaver-on-sql-server)
+
 ## Next Step
 
 >[!div class="nextstepaction"]
