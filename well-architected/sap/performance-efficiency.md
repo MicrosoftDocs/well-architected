@@ -57,8 +57,6 @@ For more information, see,
 For more information, see:
 
 - [ExpressRoute Global Reach](/azure/expressroute/expressroute-global-reach)
-- [HANA Large Instances](/azure/architecture/solution-ideas/articles/sap-s4-hana-on-hli-with-ha-and-dr)
-
 
 ## Next Step
 

@@ -12,6 +12,7 @@ ms.custom: SAP
 
 # SAP workload security
 
+For more information, see [Azure security documentation](/azure/security/)
 
 ## Leverage identity management
 
@@ -19,8 +20,8 @@ For more information, see [identity management architectures](/azure/architectur
 
 For more information, see:
 
-- [HANA SSO](/azure/active-directory/saas-apps/saphana-tutorial)
-- [NetWeaver SSO](/azure/active-directory/saas-apps/sap-netweaver-tutorial)
+- [SAP HANA SSO](/azure/active-directory/saas-apps/saphana-tutorial)
+- [SAP NetWeaver SSO](/azure/active-directory/saas-apps/sap-netweaver-tutorial)
 - [SAP Fiori SSO](/azure/active-directory/saas-apps/sap-fiori-tutorial)
 - [SAP Cloud Platform SSO](/azure/active-directory/saas-apps/sap-hana-cloud-platform-tutorial)
 - [SuccessFactors SSO](/azure/active-directory/saas-apps/successfactors-tutorial)
@@ -52,9 +53,8 @@ For more information, see [Azure NetApp Files](/azure/azure-netapp-files/azure-n
 - [Azure Synapse Analytics](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-encryption-tde)
 - [Azure Cosmos DB](/azure/cosmos-db/database-security?tabs=sql-api)
 
-For general security information, see:
+For general information, see:
 
-- [Security documentation](/azure/security/)
 - [Key Vault](/azure/key-vault/general/basic-concepts)
 - [Microsoft Defender](/azure/defender-for-cloud/defender-for-cloud-introduction)
 
