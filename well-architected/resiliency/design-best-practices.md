@@ -30,7 +30,7 @@ To ensure connection availability and improve reliability with Azure services:
 - Use a global load balancer used to distribute traffic and/or failover across regions.
 - For cross-premises connectivity (ExpressRoute or VPN) ensure there redundant connections from different locations.
 - Simulate a failure path to ensure connectivity is available over alternative paths.
-- Eliminate all single points of failure from the data path (on-premises and Azure.
+- Eliminate all single points of failure from the data path (on-premises and Azure).
 
 ## Use zone-aware services
 

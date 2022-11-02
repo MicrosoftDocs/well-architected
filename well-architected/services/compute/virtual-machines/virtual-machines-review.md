@@ -135,7 +135,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |Recommendation|Benefit|
 |------------------------------|-----------|
 | Stop VMs during off-hours | Configuring start and stop times will shut down instances that aren't in use. The feature is suitable as a low-cost automation option. |
-| Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions.|
+| Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions. Check out our [Azure Virtual Machine Spot Eviction](/azure/architecture/guide/spot/spot-eviction) guide to learn how to create a reliable interruptible workload in Azure.|
 |Right-size your VMs |  Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.|
 |Prepay for added cost savings | Purchasing [reserved instances](/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
 | Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
@@ -195,7 +195,7 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 Performance efficiency is matching the resources that are available to an application with the demand that it's receiving. Performance efficiency includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing your application code for peak performance.
 
 
-As you make design choices for your virtual machine deployment, review [Microsoft Azure Well-Architected Framework - Performance efficiency](/learn/modules/azure-well-architected-performance-efficiency/) for performance and efficiency.
+As you make design choices for your virtual machine deployment, review [Microsoft Azure Well-Architected Framework - Performance efficiency](/training/modules/azure-well-architected-performance-efficiency/) for performance and efficiency.
 
 
 ### Design checklist
@@ -242,7 +242,7 @@ Planned versus actual spending can be managed through [Azure Cost Management + B
 ## Next steps
 Use the recommendations as you provision virtual machines for your solution.
 
-- Learn module: [Introduction to Azure virtual machines](/learn/modules/intro-to-azure-virtual-machines/)
+- Learn module: [Introduction to Azure virtual machines](/training/modules/intro-to-azure-virtual-machines/)
 
 - Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/).
 

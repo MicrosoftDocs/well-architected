@@ -169,7 +169,7 @@ The 'Four Vs of Big Data' provide a framework to better understand requisite cha
 
 - Define application data tiers to classify datasets based on usage and criticality to facilitate the removal or offloading of older data.
   - Consider classifying datasets into 'hot', 'warm', and 'cold' ('archive') tiers.
-    - For example, the foundational reference implementations use Cosmos DB to store 'hot' data that is actively used by the application, while Azure Storage is used for 'cold' operations data for analytical purposes.
+    - For example, the foundational reference implementations use Azure Cosmos DB to store 'hot' data that is actively used by the application, while Azure Storage is used for 'cold' operations data for analytical purposes.
 
 - Configure housekeeping procedures to optimize data growth and drive data efficiencies, such as query performance, and managing data expansion.
   - Configure Time-To-Live (TTL) expiration for data that is no-longer required and has no long-term analytical value.
@@ -262,7 +262,7 @@ To fully accommodate the globally distributed active-active aspirations of an ap
 >[!IMPORTANT]
 > The microservices may not all require a distributed multi-region write datastore, so consideration should be given to the architectural context and business requirements of each workload scenario.
 
-Azure Cosmos DB provides a globally distributed and highly available NoSQL datastore, offering multi-region writes and tunable consistency out-of-the-box. The design considerations and recommendations within this section will therefore focus on optimal Cosmos DB usage.
+Azure Cosmos DB provides a globally distributed and highly available NoSQL datastore, offering multi-region writes and tunable consistency out-of-the-box. The design considerations and recommendations within this section will therefore focus on optimal Azure Cosmos DB usage.
 
 ### Design considerations
 
@@ -270,74 +270,74 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - Azure Cosmos DB stores data within Containers, which are indexed, row-based transactional stores designed to allow fast transactional reads and writes with response times on the order of milliseconds.
 
-- Cosmos DB supports multiple different APIs with differing feature sets, such as SQL, Cassandra, and Mongo DB.
-  - The first-party SQL API provides the richest feature set and is typically the API where new capabilities will become available first.
+- Azure Cosmos DB supports multiple different APIs with differing feature sets, such as SQL, Cassandra, and MongoDB.
+  - The first-party Azure Cosmos DB for NoSQL provides the richest feature set and is typically the API where new capabilities will become available first.
 
-- Cosmos DB supports [Gateway and Direct connectivity modes](/azure/cosmos-db/sql-sdk-connection-modes), where Direct facilitates connectivity over TCP to backend Cosmos DB replica nodes for improved performance with fewer network hops, while Gateway provides HTTPS connectivity to frontend gateway nodes.
-  - Direct mode is only available when using the SQL API and is currently only supported on .NET and Java SDK platforms.
+- Azure Cosmos DB supports [Gateway and Direct connectivity modes](/azure/cosmos-db/sql-sdk-connection-modes), where Direct facilitates connectivity over TCP to backend Azure Cosmos DB replica nodes for improved performance with fewer network hops, while Gateway provides HTTPS connectivity to frontend gateway nodes.
+  - Direct mode is only available when using the Azure Cosmos DB for NoSQL and is currently only supported on .NET and Java SDK platforms.
 
-- Within Availability Zone enabled regions, Cosmos DB offers [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) support for high availability and resiliency to zonal failures within a region.
+- Within Availability Zone enabled regions, Azure Cosmos DB offers [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) support for high availability and resiliency to zonal failures within a region.
 
-- Cosmos DB maintains four replicas of data within a single region, and when Availability Zone (AZ) redundancy is enabled, Cosmos DB ensures data replicas are placed across multiple AZs to protect against zonal failures.
+- Azure Cosmos DB maintains four replicas of data within a single region, and when Availability Zone (AZ) redundancy is enabled, Azure Cosmos DB ensures data replicas are placed across multiple AZs to protect against zonal failures.
   - The Paxos consensus protocol is applied to achieve quorum across replicas within a region.
 
-- A Cosmos DB account can easily be configured to replicate data across multiple regions to mitigate the risk of a single region becoming unavailable.
+- An Azure Cosmos DB account can easily be configured to replicate data across multiple regions to mitigate the risk of a single region becoming unavailable.
   - Replication can be configured with either single-region writes or multi-region writes.
     - With single region writes, a primary 'hub' region is used to serve all writes and if this 'hub' region becomes unavailable, a failover operation must occur to promote another region as writable.
     - With multi-region writes, applications can write to any configured deployment region, which will replicate changes between all other regions. If a region is unavailable then the remaining regions will be used to serve write traffic.
 
 - In a multi-region write configuration, [update (insert, replace, delete) conflicts](/azure/cosmos-db/conflict-resolution-policies) can occur where writers concurrently update the same item in multiple regions.
 
-- Cosmos DB provides two conflict resolution policies, which can be applied to automatically address conflicts.
+- Azure Cosmos DB provides two conflict resolution policies, which can be applied to automatically address conflicts.
   - Last Write Wins (LWW) applies a time-synchronization clock protocol using a system-defined timestamp `_ts` property as the conflict resolution path. If of a conflict the item with the highest value for the conflict resolution path becomes the winner, and if multiple items have the same numeric value then the system selects a winner so that all regions can converge to the same version of the committed item.
     - With delete conflicts, the deleted version always wins over either insert or replace conflicts regardless of conflict resolution path value.
     - Last Write Wins is the default conflict resolution policy.
-    - When using the SQL API a custom numerical property, such as a custom timestamp definition, can be used for conflict resolution.
+    - When using Azure Cosmos DB for NoSQL, a custom numerical property such as a custom timestamp definition can be used for conflict resolution.
   - Custom resolution policies allow for application-defined semantics to reconcile conflicts using a registered merge stored procedure that is automatically invoked when conflicts are detected.
     - The system provides exactly once guarantee for the execution of a merge procedure as part of the commitment protocol.
-    - A custom conflict resolution policy is only available with the SQL API and can only be set at container creation time.
+    - A custom conflict resolution policy is only available with Azure Cosmos DB for NoSQL and can only be set at container creation time.
 
-- In a multi-region write configuration, there's a dependency on a single Cosmos DB 'hub' region to perform all conflict resolutions, with the Paxos consensus protocol applied to achieve quorum across replicas within the hub region.
+- In a multi-region write configuration, there's a dependency on a single Azure Cosmos DB 'hub' region to perform all conflict resolutions, with the Paxos consensus protocol applied to achieve quorum across replicas within the hub region.
   - The platform provides a message buffer for write conflicts within the hub region to load level and provide redundancy for transient faults.
     - The buffer is capable of storing a few minutes worth of write updates requiring consensus.
 
-> The strategic direction of the Cosmos DB platform is to remove this single region dependency for conflict resolution in a multi-region write configuration, utilizing a 2-phase Paxos approach to attain quorum at a global level and within a region.
+> The strategic direction of the Azure Cosmos DB platform is to remove this single region dependency for conflict resolution in a multi-region write configuration, utilizing a 2-phase Paxos approach to attain quorum at a global level and within a region.
 
-- The primary 'hub' region is determined by the first region Cosmos DB is configured within.
+- The primary 'hub' region is determined by the first region that Azure Cosmos DB is configured within.
   - A priority ordering is configured for additional satellite deployment regions for failover purposes.
 
 - The data model and partitioning across logical and physical partitions plays an important role in achieving optimal performance and availability.
 
-- When deployed with a single write region, Cosmos DB can be configured for [automatic failover](/azure/cosmos-db/autoscale-faq) based on a defined failover priority considering all read region replicas.
+- When deployed with a single write region, Azure Cosmos DB can be configured for [automatic failover](/azure/cosmos-db/autoscale-faq) based on a defined failover priority considering all read region replicas.
 
-- The RTO provided by the Cosmos DB platform is ~10-15 minutes, capturing the elapsed time to perform a regional failover of the Cosmos DB service if a catastrophic disaster impacting the hub region.
+- The RTO provided by the Azure Cosmos DB platform is ~10-15 minutes, capturing the elapsed time to perform a regional failover of the Azure Cosmos DB service if a catastrophic disaster impacting the hub region.
   - This RTO is also relevant in a multi-region write context given the dependency on a single 'hub' region for conflict resolution.
     - If the 'hub' region becomes unavailable, writes made to other regions will fail after the message buffer fills since conflict resolution won't be able to occur until the service fails over and a new hub region is established.
 
-> The strategic direction of the Cosmos DB platform is to reduce the RTO to ~5 minutes by allowing partition level failovers.
+> The strategic direction of the Azure Cosmos DB platform is to reduce the RTO to ~5 minutes by allowing partition level failovers.
 
 - Recovery Point Objectives (RPO) and Recovery Time Objectives (RTO) are configurable via consistency levels, with a trade-off between data durability and throughput.
-  - Cosmos DB provides a minimum RTO of 0 for a relaxed consistency level with multi-region writes or an RPO of 0 for strong consistency with single-write region.
+  - Azure Cosmos DB provides a minimum RTO of 0 for a relaxed consistency level with multi-region writes or an RPO of 0 for strong consistency with single-write region.
 
-- Cosmos DB offers a [99.999% SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) for both read and write availability for Database Accounts configured with multiple Azure regions as writable.
+- Azure Cosmos DB offers a [99.999% SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) for both read and write availability for Database Accounts configured with multiple Azure regions as writable.
   - The SLA is represented by the Monthly Uptime Percentage, which is calculated as 100% - Average Error Rate.
   - The Average Error Rate is defined as the sum of Error Rates for each hour in the billing month divided by the total number of hours in the billing month, where the Error Rate is the total number of Failed Requests divided by Total Requests during a given one-hour interval.
 
-- Cosmos DB offers a 99.99% SLA for throughput, consistency, availability, and latency for Database Accounts scoped to a single Azure region when configured with any of the five Consistency Levels.
+- Azure Cosmos DB offers a 99.99% SLA for throughput, consistency, availability, and latency for Database Accounts scoped to a single Azure region when configured with any of the five Consistency Levels.
   - A 99.99% SLA also applies to Database Accounts spanning multiple Azure regions configured with any of the four relaxed Consistency Levels.
 
-- There are two types of throughput that can be provisioned in Cosmos DB, standard and [autoscale](/azure/cosmos-db/provision-throughput-autoscale), which are measured using Request Units per second (RU/s).
+- There are two types of throughput that can be provisioned in Azure Cosmos DB, standard and [autoscale](/azure/cosmos-db/provision-throughput-autoscale), which are measured using Request Units per second (RU/s).
   - Standard throughput allocates resources required to guarantee a specified RU/s value.
     - Standard is billed hourly for provisioned throughput.
-  - Autoscale defines a maximum throughput value, and Cosmos DB will automatically scale up or down depending on application load, between the maximum throughput value and a minimum of 10% of the maximum throughput value.
+  - Autoscale defines a maximum throughput value, and Azure Cosmos DB will automatically scale up or down depending on application load, between the maximum throughput value and a minimum of 10% of the maximum throughput value.
     - Autoscale is billed hourly for the maximum throughput consumed.
 
 - Static provisioned throughput with a variable workload may result in throttling errors, which will impact perceived application availability.
-  - Autoscale protects against throttling errors by enabling Cosmos DB to scale up as needed, while maintaining cost protection by scaling back down when load decreases.
+  - Autoscale protects against throttling errors by enabling Azure Cosmos DB to scale up as needed, while maintaining cost protection by scaling back down when load decreases.
 
-- When Cosmos DB is replicated across multiple regions, the provisioned Request Units (RUs) are billed per region.
+- When Azure Cosmos DB is replicated across multiple regions, the provisioned Request Units (RUs) are billed per region.
 
-- There's a significant cost delta between a multi-region-write and single-region-write configuration which in many cases may make a multi-master Cosmos DB data platform cost prohibitive.
+- There's a significant cost delta between a multi-region-write and single-region-write configuration which in many cases may make a multi-master Azure Cosmos DB data platform cost prohibitive.
 
 | Single Region Read/Write | Single Region Write - Dual Region Read | Dual Region Read/Write |
 |---|---|---|
@@ -349,45 +349,45 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - `Session` is the default and most widely used [consistency level](/azure/cosmos-db/consistency-levels) since data is received in the same order as writes.
 
-- Cosmos DB supports authentication via either an Azure Active Directory identity or Cosmos DB keys and resource tokens, which provide overlapping capabilities.
+- Azure Cosmos DB supports authentication via either an Azure Active Directory identity or Azure Cosmos DB keys and resource tokens, which provide overlapping capabilities.
 
-![Cosmos DB Access Capabilities](/azure/cosmos-db/media/how-to-restrict-user-data/operations.png "Cosmos DB Access Capabilities")
+![Azure Cosmos DB Access Capabilities](/azure/cosmos-db/media/how-to-restrict-user-data/operations.png "Azure Cosmos DB Access Capabilities")
 
 - It's possible to disable resource management operations using keys or resource tokens to limit keys and resource tokens to data operations only, allowing for fine-grained resource access control using Azure Active Directory Role-Based Access Control (RBAC).
-  - Restricting control plane access via keys or resource tokens will disable control plane operations for clients using Cosmos DB SDKs and should therefore be thoroughly [evaluated and tested](/azure/cosmos-db/role-based-access-control#check-list-before-enabling).
+  - Restricting control plane access via keys or resource tokens will disable control plane operations for clients using Azure Cosmos DB SDKs and should therefore be thoroughly [evaluated and tested](/azure/cosmos-db/role-based-access-control#check-list-before-enabling).
   - The `disableKeyBasedMetadataWriteAccess` setting can be configured via [ARM Template](/azure/cosmos-db/role-based-access-control#set-via-arm-template) IaC definitions, or via a [Built-In Azure Policy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4750c32b-89c0-46af-bfcb-2e4541a818d5).
 
-- Cosmos DB Azure Active Directory RBAC support applies to account and resource control plane management operations.
-  - Application administrators can create role assignments for users, groups, service principals or managed identities to grant or deny access to resources and operations on Cosmos DB resources.
+- Azure Cosmos DB Azure Active Directory RBAC support applies to account and resource control plane management operations.
+  - Application administrators can create role assignments for users, groups, service principals or managed identities to grant or deny access to resources and operations on Azure Cosmos DB resources.
   - There are several [Built-in RBAC Roles](/azure/cosmos-db/role-based-access-control#built-in-roles) available for role assignment, and [custom RBAC roles](/azure/cosmos-db/role-based-access-control#custom-roles) can also be used to form specific [privilege combinations](/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb).
-    - [Cosmos DB Account Reader](/azure/role-based-access-control/built-in-roles#cosmos-db-account-reader-role) enables read-only access to the Cosmos DB resource.
-    - [DocumentDB Account Contributor](/azure/role-based-access-control/built-in-roles#documentdb-account-contributor) enables management of Cosmos DB accounts including keys and role assignments, but doesn't enable data-plane access.
+    - [Cosmos DB Account Reader](/azure/role-based-access-control/built-in-roles#cosmos-db-account-reader-role) enables read-only access to the Azure Cosmos DB resource.
+    - [DocumentDB Account Contributor](/azure/role-based-access-control/built-in-roles#documentdb-account-contributor) enables management of Azure Cosmos DB accounts including keys and role assignments, but doesn't enable data-plane access.
     - [Cosmos DB Operator](/azure/role-based-access-control/built-in-roles#cosmos-db-operator), which is similar to DocumentDB Account Contributor, but doesn't provide the ability to manage keys or role assignments.
 
-- Cosmos DB resources (accounts, databases, and containers) can be protected against incorrect modification or deletion using [Resource Locks](/azure/cosmos-db/resource-locks).
+- Azure Cosmos DB resources (accounts, databases, and containers) can be protected against incorrect modification or deletion using [Resource Locks](/azure/cosmos-db/resource-locks).
   - Resource Locks can be set at the account, database, or container level.
-  - A Resource Lock set at on a resource will be inherited by all child resources. For example, a Resource Lock set on the Cosmos DB account will be inherited by all databases and containers within the account.
+  - A Resource Lock set at on a resource will be inherited by all child resources. For example, a Resource Lock set on the Azure Cosmos DB account will be inherited by all databases and containers within the account.
   - Resource Locks **only** apply to control plane operations and do **not** prevent data plane operations, such as creating, changing, or deleting data.
   - If control plane access isn't restricted with `disableKeyBasedMetadataWriteAccess`, then clients will be able to perform control plane operations using account keys.
 
-- The [Cosmos DB Change Feed](/azure/cosmos-db/change-feed) provides a time-ordered feed of changes to data in a Cosmos DB Container.
-  - The Change Feed only includes insert and update operations to the source Cosmos DB Container; it doesn't include deletes.
+- The [Azure Cosmos DB change feed](/azure/cosmos-db/change-feed) provides a time-ordered feed of changes to data in an Azure Cosmos DB container.
+  - The change feed only includes insert and update operations to the source Azure Cosmos DB container; it doesn't include deletes.
 
-- The Change Feed can be used to maintain a separate data store from the primary Container used by the application, with ongoing updates to the target data store fed by the Change Feed from the source Container.
-  - The Change Feed can be used to populate a secondary store for additional data platform redundancy or for subsequent analytical scenarios.
+- The change feed can be used to maintain a separate data store from the primary Container used by the application, with ongoing updates to the target data store fed by the change feed from the source Container.
+  - The change feed can be used to populate a secondary store for additional data platform redundancy or for subsequent analytical scenarios.
 
-- If delete operations routinely affect the data within the source Container, then the store fed by the Change Feed will be inaccurate and unreflective of deleted data.
-  - A [Soft Delete](/azure/cosmos-db/sql/change-feed-design-patterns#deletes) pattern can be implemented so that data records are included in the Change Feed.
+- If delete operations routinely affect the data within the source Container, then the store fed by the change feed will be inaccurate and unreflective of deleted data.
+  - A [Soft Delete](/azure/cosmos-db/sql/change-feed-design-patterns#deletes) pattern can be implemented so that data records are included in the change feed.
     - Instead of explicitly deleting data records, data records are _updated_ by setting a flag (e.g. `IsDeleted`) to indicate that the item is considered deleted.
-    - Any target data store fed by the Change Feed will need to detect and process items with a deleted flag set to True; instead of storing soft-deleted data records, the _existing_ version of the data record in the target store will need to be deleted.
-  - A short Time-To-Live (TTL) is typically used with the soft-delete pattern so that Cosmos DB automatically deletes expired data, but only after it's reflected within the Change Feed with the deleted flag set to True.
-    - Accomplishes the original delete intent whilst also propagating the delete through the Change Feed.
+    - Any target data store fed by the change feed will need to detect and process items with a deleted flag set to True; instead of storing soft-deleted data records, the *existing* version of the data record in the target store will need to be deleted.
+  - A short Time-To-Live (TTL) is typically used with the soft-delete pattern so that Azure Cosmos DB automatically deletes expired data, but only after it's reflected within the change feed with the deleted flag set to True.
+    - Accomplishes the original delete intent whilst also propagating the delete through the change feed.
 
-- Cosmos DB can be configured as an [analytical store](/azure/cosmos-db/analytical-store-introduction), which applies a column format for optimized analytical queries to address the complexity and latency challenges that occur with the traditional ETL pipelines.
+- Azure Cosmos DB can be configured as an [analytical store](/azure/cosmos-db/analytical-store-introduction), which applies a column format for optimized analytical queries to address the complexity and latency challenges that occur with the traditional ETL pipelines.
 
 - Azure Cosmos DB automatically backs up data at regular intervals without affecting the performance or availability, and without consuming RU/s.
 
-- Cosmos DB can be configured according to two distinct backup modes.
+- Azure Cosmos DB can be configured according to two distinct backup modes.
   - [Periodic](/azure/cosmos-db/configure-periodic-backup-restore) is the default backup mode for all accounts, where backups are taken at a periodic interval and the data is restored by creating a request with the support team.
     - The default periodic backup retention period is 8 hours and the default backup interval is fourhours, which means only the latest two backups are stored by default.
     - The backup interval and retention period are configurable within the account.
@@ -399,9 +399,9 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
       - The redundancy configuration of the underlying backup storage account is configurable to [Zone-Redundant Storage or Locally-Redundant Storage](/azure/cosmos-db/configure-periodic-backup-restore#backup-storage-redundancy).
     - Performing a **restore operation requires a [Support Request](/azure/cosmos-db/configure-periodic-backup-restore#request-restore)** since customers can't directly perform a restore.
       - Before opening a support ticket, the backup retention period should be increased to at least seven days within eight hours of the data loss event.
-    - A restore operation creates a new Cosmos DB account where data is recovered.
-      - An existing Cosmos DB account can't be used for Restore
-      - By default, a new Cosmos DB account named `<Azure_Cosmos_account_original_name>-restored<n>` will be used.
+    - A restore operation creates a new Azure Cosmos DB account where data is recovered.
+      - An existing Azure Cosmos DB account can't be used for Restore
+      - By default, a new Azure Cosmos DB account named `<Azure_Cosmos_account_original_name>-restored<n>` will be used.
         - This name can be adjusted, such as by reusing the existing name if the original account was deleted.
     - If throughput is provisioned at the database level, backup and restore will happen at the database level
       - It's not possible to select a subset of containers to restore.
@@ -409,44 +409,44 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
     - Restore operations can be performed to return to a specific point in time (PITR) with a one-second granularity.
     - The available window for restore operations is up to 30 days.
       - It's also possible to restore to the resource instantiation state.
-    - Continuous backups are taken within every Azure region where the Cosmos DB account exists.
-      - Continuous backups are stored within the same Azure region as each Cosmos DB replica, using Locally-Redundant Storage (LRS) or Zone Redundant Storage (ZRS) within regions that support Availability Zones.
+    - Continuous backups are taken within every Azure region where the Azure Cosmos DB account exists.
+      - Continuous backups are stored within the same Azure region as each Azure Cosmos DB replica, using Locally-Redundant Storage (LRS) or Zone Redundant Storage (ZRS) within regions that support Availability Zones.
     - A self-service restore can be performed using the [Azure portal](/azure/cosmos-db/restore-account-continuous-backup#restore-account-portal) or IaC artifacts such as [ARM templates](/azure/cosmos-db/restore-account-continuous-backup#restore-arm-template).
     - There are several [limitations](/azure/cosmos-db/continuous-backup-restore-introduction#current-limitations) with Continuous Backup.
       - The continuous backup mode isn't currently available in a multi-region-write configuration.
-      - Only SQL API and MongoDB API can be configured for Continuous backup at this time.
-      - If a container has TTL configured, restored data that has exceeded its TTL may be _immediately deleted_
-    - A restore operation creates a new Cosmos DB account for the point-in-time restore.
+      - Only Azure Cosmos DB for NoSQL and Azure Cosmos DB for MongoDB can be configured for Continuous backup at this time.
+      - If a container has TTL configured, restored data that has exceeded its TTL may be *immediately deleted*
+    - A restore operation creates a new Azure Cosmos DB account for the point-in-time restore.
     - There's an [additional storage cost](/azure/cosmos-db/continuous-backup-restore-introduction#continuous-backup-pricing) for Continuous backups and restore operations.
 
-- Existing Cosmos DB accounts can be migrated from Periodic to Continuous, but not from Continuous to Periodic; migration is one-way and not reversible.
+- Existing Azure Cosmos DB accounts can be migrated from Periodic to Continuous, but not from Continuous to Periodic; migration is one-way and not reversible.
 
-- Each Cosmos DB backup is composed of the data itself and configuration details for provisioned throughput, indexing policies, deployment region(s), and container TTL settings.
+- Each Azure Cosmos DB backup is composed of the data itself and configuration details for provisioned throughput, indexing policies, deployment region(s), and container TTL settings.
   - Backups don't contain [firewall settings](/azure/templates/microsoft.documentdb/databaseaccounts?tabs=json#ipaddressorrange-object), [virtual network access control lists](/azure/templates/microsoft.documentdb/databaseaccounts/privateendpointconnections), [private endpoint settings](/azure/templates/microsoft.documentdb/databaseaccounts/privateendpointconnections), [consistency settings](/azure/templates/microsoft.documentdb/databaseaccounts?tabs=json#consistencypolicy-object) (an account is restored with session consistency), [stored procedures](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers/storedprocedures), [triggers](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers/triggers), [UDFs](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers/userdefinedfunctions), or [multi-region settings](/azure/templates/microsoft.documentdb/databaseaccounts?tabs=json#Location).
-    - Customers are responsible for redeploying capabilities and configuration settings. These aren't restored through Cosmos DB backup.
-  - Azure Synapse Link analytical store data is also not included in Cosmos DB backups.
+    - Customers are responsible for redeploying capabilities and configuration settings. These aren't restored via Azure Cosmos DB backup.
+  - Azure Synapse Link analytical store data is also not included in Azure Cosmos DB backups.
 
 - It's possible to implement a custom backup and restore capability for scenarios where Periodic and Continuous approaches aren't a good fit.
   - A custom approach introduces significant costs and additional administrative overhead, which should be understood and carefully assessed.
     - Common restore scenarios should be modeled, such as the corruption or deletion of an account, database, container, on data item.
     - Housekeeping procedures should be implemented to prevent backup sprawl.
-  - Azure Storage or an alternative data technology can be used, such an alternative Cosmos DB container.
-    - Azure Storage and Cosmos DB provide native integrations with Azure services such as Azure Functions and Azure Data Factory.
+  - Azure Storage or an alternative data technology can be used, such an alternative Azure Cosmos DB container.
+    - Azure Storage and Azure Cosmos DB provide native integrations with Azure services such as Azure Functions and Azure Data Factory.
 
-- The Cosmos DB documentation denotes two potential options for implementing custom backups.
-  - [Cosmos DB change feed](/azure/cosmos-db/change-feed) to write data to a separate storage facility.
-    - An [Azure Function](/azure/cosmos-db/change-feed-functions) or equivalent application process uses the [Change Feed Processor](/azure/cosmos-db/change-feed-processor) to bind to the change feed and process items into storage.
-  - Both continuous or periodic (batched) custom backups can be implemented using the Change Feed.
-  - The Cosmos DB change feed doesn't yet reflect deletes, so a soft-delete pattern must be applied using a boolean property and TTL.
+- The Azure Cosmos DB documentation denotes two potential options for implementing custom backups.
+  - [Azure Cosmos DB change feed](/azure/cosmos-db/change-feed) to write data to a separate storage facility.
+    - An [Azure function](/azure/cosmos-db/change-feed-functions) or equivalent application process uses the [change feed processor](/azure/cosmos-db/change-feed-processor) to bind to the change feed and process items into storage.
+  - Both continuous or periodic (batched) custom backups can be implemented using the change feed.
+  - The Azure Cosmos DB change feed doesn't yet reflect deletes, so a soft-delete pattern must be applied using a boolean property and TTL.
     - This pattern won't be required when the change feed provides full-fidelity updates.
-  - [Azure Data Factory Connector for Cosmos DB](/azure/data-factory/connector-azure-cosmos-db) ([SQL API](/azure/data-factory/connector-azure-cosmos-db) or [MongoDB API](/azure/data-factory/connector-azure-cosmos-db-mongodb-api) connectors) to copy data.
+  - [Azure Data Factory Connector for Azure Cosmos DB](/azure/data-factory/connector-azure-cosmos-db) ([Azure Cosmos DB for NoSQL](/azure/data-factory/connector-azure-cosmos-db) or [MongoDB API](/azure/data-factory/connector-azure-cosmos-db-mongodb-api) connectors) to copy data.
     - Azure Data Factory (ADF) supports manual execution and [Schedule](/azure/data-factory/concepts-pipeline-execution-triggers#schedule-trigger), [Tumbling window](/azure/data-factory/concepts-pipeline-execution-triggers#tumbling-window-trigger), and [Event-based](/azure/data-factory/concepts-pipeline-execution-triggers#event-based-trigger) triggers.
       - Provides support for both Storage and Event Grid.
     - ADF is primarily suitable for periodic custom backup implementations due to its batch-oriented orchestration.
       - It's less suitable for continuous backup implementations with frequent events due to the orchestration execution overhead.
     - ADF supports [Azure Private Link](/azure/data-factory/data-factory-private-link) for high network security scenarios
 
-> Azure Cosmos DB is used within the design of many Azure services, so a significant regional outage for Cosmos DB will have a cascading effect across various Azure services within that region. The precise impact to a particular service will heavily depend on how the underlying service design uses Cosmos DB.
+> Azure Cosmos DB is used within the design of many Azure services, so a significant regional outage for Azure Cosmos DB will have a cascading effect across various Azure services within that region. The precise impact to a particular service will heavily depend on how the underlying service design uses Azure Cosmos DB.
 
 ### Design Recommendations
 
@@ -454,25 +454,25 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - Use Azure Cosmos DB as the primary data platform where requirements allow.
 
-- For mission-critical workload scenarios, configure Cosmos DB with a write replica inside each deployment region to reduce latency and provide maximum redundancy.
-  - Configure the application to [prioritize the use of the local Cosmos DB replica](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) for writes and reads to optimize application load, performance, and regional RU/s consumption.
+- For mission-critical workload scenarios, configure Azure Cosmos DB with a write replica inside each deployment region to reduce latency and provide maximum redundancy.
+  - Configure the application to [prioritize the use of the local Azure Cosmos DB replica](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) for writes and reads to optimize application load, performance, and regional RU/s consumption.
   - The multi-region-write configuration comes at a significant cost and should be prioritized only for workload scenarios requiring maximum reliability.
 
 - For less-critical workload scenarios, prioritize the use of single-region-write configuration (when using Availability Zones) with globally distributed read replicas, since this offers a high level of data platform reliability (99.999% SLA for read-, 99.995% SLA for write-operations) at a more compelling price-point.
-  - Configure the application to use the local Cosmos DB read replica to optimize read performance.
+  - Configure the application to use the local Azure Cosmos DB read replica to optimize read performance.
 
 - Select an optimal 'hub' deployment region where conflict resolution will occur in a multi-region-write configuration, and all writes will be performed in a single-region-write configuration.
   - Consider distance relative to other deployment regions and associated latency in selecting a primary region, and requisite capabilities such as Availability Zones support.
 
-- Configure Cosmos DB with [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) in all deployment regions with AZ support, to ensure resiliency to zonal failures within a region.
+- Configure Azure Cosmos DB with [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) in all deployment regions with AZ support, to ensure resiliency to zonal failures within a region.
 
-- Use the Cosmos DB native SQL API since it offers the most comprehensive feature set, particularly where performance tuning is concerned.
+- Use Azure Cosmos DB for NoSQL since it offers the most comprehensive feature set, particularly where performance tuning is concerned.
   - Alternative APIs should primarily be considered for migration or compatibility scenarios.
     - When using alternative APIs, validate that required capabilities are available with the selected language and SDK to ensure optimal configuration and performance.
 
-- Use the Direct connection mode to optimize network performance through direct TCP connectivity to backend Cosmos DB nodes, with a reduced number of network 'hops'.
+- Use the Direct connection mode to optimize network performance through direct TCP connectivity to backend Azure Cosmos DB nodes, with a reduced number of network 'hops'.
 
-> The Cosmos DB SLA is calculated by averaging failed requests, which may not directly align with a 99.999% reliability tier error budget. When designing for 99.999% SLO, it's therefore vital to plan for regional and multi-region Cosmos DB write unavailability, ensuring a fallback storage technology is positioned if a failure, such as a persisted message queue for subsequent replay.
+> The Azure Cosmos DB SLA is calculated by averaging failed requests, which may not directly align with a 99.999% reliability tier error budget. When designing for 99.999% SLO, it's therefore vital to plan for regional and multi-region Azure Cosmos DB write unavailability, ensuring a fallback storage technology is positioned if a failure, such as a persisted message queue for subsequent replay.
 
 - Define a partitioning strategy across both logical and physical partitions to optimize data distribution according to the data model.
   - Minimize cross-partition queries.
@@ -488,44 +488,44 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - [Indexing](/azure/cosmos-db/index-overview) is also crucial for performance, so ensure index exclusions are used to reduce RU/s and storage requirements.
   - Only index those fields that are needed for filtering within queries; design indexes for the most-used predicates.
 
-- Leverage the built-in error handling, retry, and broader reliability capabilities of the [Cosmos DB SDK](/azure/cosmos-db/sql/best-practice-dotnet#checklist).
+- Leverage the built-in error handling, retry, and broader reliability capabilities of the [Azure Cosmos DB SDK](/azure/cosmos-db/sql/best-practice-dotnet#checklist).
   - Implement [retry logic](/azure/architecture/best-practices/retry-service-specific#cosmos-db) within the SDK on clients.
 
 - Use service-managed encryption keys to reduce management complexity.
   - If there's a specific security requirement for customer-managed keys, ensure appropriate key management procedures are applied, such as backup and rotation.
 
-- Disable [Cosmos DB key based metadata write access](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4750c32b-89c0-46af-bfcb-2e4541a818d5) by applying the built-in Azure Policy.
+- Disable [Azure Cosmos DB key-based metadata write access](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4750c32b-89c0-46af-bfcb-2e4541a818d5) by applying the built-in Azure Policy.
 
 - Enable [Azure Monitor](/azure/cosmos-db/monitor-cosmos-db) to gather key metrics and diagnostic logs, such as provisioned throughput (RU/s).
-  - Route Azure Monitor operational data into a Log Analytics workspace dedicated to Cosmos DB and other global resources within the  application design.
+  - Route Azure Monitor operational data into a Log Analytics workspace dedicated to Azure Cosmos DB and other global resources within the  application design.
   - Use Azure Monitor metrics to determine if application traffic patterns are suitable for autoscale.
 
 - Evaluate application traffic patterns to select an optimal option for [provisioned throughput types](/azure/cosmos-db/how-to-choose-offer).
   - Consider auto-scale provisioned throughput to automatically level-out workload demand.
 
-- Evaluate Microsoft [performance tips for Cosmos DB](/azure/cosmos-db/performance-tips) to optimize client-side and server-side configuration for improved latency and throughput.
+- Evaluate Microsoft [performance tips for Azure Cosmos DB](/azure/cosmos-db/performance-tips) to optimize client-side and server-side configuration for improved latency and throughput.
 
 - When using AKS as the compute platform: For query-intensive workloads, select an AKS node SKU that has accelerated networking enabled to reduce latency and CPU jitters.
 
-- For single write region deployments, it's strongly recommended to configure Cosmos DB for [automatic failover](/azure/cosmos-db/high-availability#multi-region-accounts-with-a-single-write-region-write-region-outage).
+- For single write region deployments, it's strongly recommended to configure Azure Cosmos DB for [automatic failover](/azure/cosmos-db/high-availability#multi-region-accounts-with-a-single-write-region-write-region-outage).
 
-- Load-level through the use of asynchronous non-blocking messaging within system flows, which write updates to Cosmos DB.
+- Load-level through the use of asynchronous non-blocking messaging within system flows, which write updates to Azure Cosmos DB.
   - Consider patterns such as [Command and Query Responsibility Segregation](/azure/architecture/patterns/cqrs) and [Event Sourcing](/azure/architecture/patterns/event-sourcing).
 
-- Configure the Cosmos DB account for continuous backups to obtain a fine granularity of recovery points across the last 30 days.
-  - Consider the use of Cosmos DB backups in scenarios where contained data or the Cosmos DB account is deleted or corrupted.
+- Configure the Azure Cosmos DB account for continuous backups to obtain a fine granularity of recovery points across the last 30 days.
+  - Consider the use of Azure Cosmos DB backups in scenarios where contained data or the Azure Cosmos DB account is deleted or corrupted.
   - Avoid the use of a custom backup approach unless absolutely necessary.
 
 - It's strongly recommended to practice recovery procedures on non-production resources and data, as part of standard business continuity operation preparation.
 
-- Define IaC artifacts to re-establish configuration settings and capabilities of a Cosmos DB backup restore.
+- Define IaC artifacts to re-establish configuration settings and capabilities of an Azure Cosmos DB backup restore.
 
-- Evaluate and apply the [Azure Security Baseline](/security/benchmark/azure/baselines/cosmos-db-security-baseline#backup-and-recovery) control guidance for Cosmos DB Backup and Recovery.
+- Evaluate and apply the [Azure Security Baseline](/security/benchmark/azure/baselines/cosmos-db-security-baseline#backup-and-recovery) control guidance for Azure Cosmos DB Backup and Recovery.
   - [BR-1: Ensure regular automated backups](/security/benchmark/azure/baselines/cosmos-db-security-baseline#br-1-ensure-regular-automated-backups)
   - [BR-3: Validate all backups including customer-managed keys](/security/benchmark/azure/baselines/cosmos-db-security-baseline#br-3-validate-all-backups-including-customer-managed-keys)
   - [BR-4, Mitigate risk of lost keys](/security/benchmark/azure/baselines/cosmos-db-security-baseline#br-4-mitigate-risk-of-lost-keys)
 
-- For analytical workloads requiring multi-region availability, use the Cosmos DB Analytical Store, which applies a column format for optimized analytical queries.
+- For analytical workloads requiring multi-region availability, use the Azure Cosmos DB Analytical Store, which applies a column format for optimized analytical queries.
 
 ## Relational data technologies
 
@@ -595,7 +595,7 @@ Azure provides many managed relational data platforms, including Azure SQL Datab
 - There's no additional charge for backup storage for up to 100% of total provisioned server storage.
   - Additional consumption of backup storage is charged according to consumed GB/month.
 
-- Compute costs associated with Azure Database for PostgreSQL can be reduced using a either a [Single Server Reservation Discount](/azure/postgresql/concept-reserved-pricing) or [Hyperscale (Citus) Reservation Discount](/azure/postgresql/concepts-hyperscale-reserved-pricing).
+- Compute costs associated with Azure Database for PostgreSQL can be reduced using either a [Single Server Reservation Discount](/azure/postgresql/concept-reserved-pricing) or [Hyperscale (Citus) Reservation Discount](/azure/postgresql/concepts-hyperscale-reserved-pricing).
 
 ### Design Recommendations
 
@@ -732,35 +732,35 @@ Azure Synapse provides an enterprise analytical platform that brings together re
 
 **Azure Cosmos DB**
 
-- Analytical queries run on Cosmos DB transactional data will typically aggregate across partitions over large volumes of data, consuming significant Request Unit (RU) throughput, which can impact the performance of surrounding transactional workloads.
+- Analytical queries run on Azure Cosmos DB transactional data will typically aggregate across partitions over large volumes of data, consuming significant Request Unit (RU) throughput, which can impact the performance of surrounding transactional workloads.
 
-- The [Cosmos DB Analytical Store](/azure/cosmos-db/analytical-store-introduction) provides a schematized, fully isolated column-oriented data store that enables large-scale analytics on Cosmos DB data from Azure Synapse without impact to Cosmos DB transactional workloads.
-  - When a Cosmos DB Container is enabled as an Analytical Store, a new column store is internally created from the operational data in the Container. This column store is persisted separately from the row-oriented transaction store for the container.
-  - Create, Update and Delete operations on the operational data are automatically synced to the analytical store, so no Change Feed or ETL processing is required.
-  - Data sync from the operational to the analytical store doesn't consume throughput Request Units (RUs) provisioned on the Container or Database. There's no performance impact on transactional workloads. Analytical Store doesn't require allocation of additional RUs on a Cosmos DB Database or Container.
+- The [Azure Cosmos DB Analytical Store](/azure/cosmos-db/analytical-store-introduction) provides a schematized, fully isolated column-oriented data store that enables large-scale analytics on Azure Cosmos DB data from Azure Synapse without impact to Azure Cosmos DB transactional workloads.
+  - When an Azure Cosmos DB Container is enabled as an Analytical Store, a new column store is internally created from the operational data in the Container. This column store is persisted separately from the row-oriented transaction store for the container.
+  - Create, Update and Delete operations on the operational data are automatically synced to the analytical store, so no change feed or ETL processing is required.
+  - Data sync from the operational to the analytical store doesn't consume throughput Request Units (RUs) provisioned on the Container or Database. There's no performance impact on transactional workloads. Analytical Store doesn't require allocation of additional RUs on an Azure Cosmos DB Database or Container.
   - Auto-Sync is the process where operational data changes are automatically synced to the Analytical Store. Auto-Sync latency is usually less than two (2) minutes.
     - Auto-Sync latency can be up to five (5) minutes for a Database with shared throughput and a large number of Containers.
     - As soon as Auto-Sync completes, the latest data can be queried from Azure Synapse.
   - Analytical Store storage uses a consumption-based [pricing model](https://azure.microsoft.com/pricing/details/cosmos-db/) that charges for volume of data and number of read and write operations. Analytical store pricing is separate from transactional store pricing.
 
-- Using Azure Synapse Link, the Cosmos DB Analytical Store can be queried directly from Azure Synapse. This enables no-ETL, Hybrid Transactional-Analytical Processing (HTAP) from Synapse, so that Cosmos DB data can be queried together with other analytical workloads from Synapse in near real-time.
+- Using Azure Synapse Link, the Azure Cosmos DB Analytical Store can be queried directly from Azure Synapse. This enables no-ETL, Hybrid Transactional-Analytical Processing (HTAP) from Synapse, so that Azure Cosmos DB data can be queried together with other analytical workloads from Synapse in near real-time.
 
-- The Cosmos DB Analytical Store isn't partitioned by default.
+- The Azure Cosmos DB Analytical Store isn't partitioned by default.
   - For certain query scenarios, performance will improve by [partitioning Analytical Store](/azure/cosmos-db/configure-custom-partitioning) data using keys that are frequently used in query predicates.
-  - Partitioning is triggered by a job in Azure Synapse that runs a Spark notebook using Synapse Link, which loads the data from the Cosmos DB Analytical Store and writes it into the Synapse partitioned store in the primary storage account of the Synapse workspace.
+  - Partitioning is triggered by a job in Azure Synapse that runs a Spark notebook using Synapse Link, which loads the data from the Azure Cosmos DB Analytical Store and writes it into the Synapse partitioned store in the primary storage account of the Synapse workspace.
 
 - [Azure Synapse Analytics SQL Serverless pools can query the Analytical Store](/azure/synapse-analytics/sql/query-cosmos-db-analytical-store) through automatically updated views or via `SELECT / OPENROWSET` commands.
 
 - [Azure Synapse Analytics Spark pools can query the Analytical Store](/azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3) through automatically updated Spark tables or the `spark.read` command.
 
-- Data can also be [copied from the Cosmos DB Analytical Store into a dedicated Synapse SQL pool using Spark](/azure/synapse-analytics/synapse-link/how-to-copy-to-sql-pool), so that provisioned Azure Synapse SQL pool resources can be used.
+- Data can also be [copied from the Azure Cosmos DB Analytical Store into a dedicated Synapse SQL pool using Spark](/azure/synapse-analytics/synapse-link/how-to-copy-to-sql-pool), so that provisioned Azure Synapse SQL pool resources can be used.
 
-- Cosmos DB Analytical Store data can be queried with [Azure Synapse Spark](/azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3).
-  - Spark notebooks allow for [Spark dataframe](/azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3#load-to-spark-dataframe) combinations to aggregate and transform Cosmos DB analytical data with other data sets, and use other advanced Synapse Spark functionality including writing transformed data to other stores or training AIOps Machine Learning models.
+- Azure Cosmos DB Analytical Store data can be queried with [Azure Synapse Spark](/azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3).
+  - Spark notebooks allow for [Spark dataframe](/azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3#load-to-spark-dataframe) combinations to aggregate and transform Azure Cosmos DB analytical data with other data sets, and use other advanced Synapse Spark functionality including writing transformed data to other stores or training AIOps Machine Learning models.
 
-![Cosmos DB Analytical Column Store](/azure/cosmos-db/media/analytical-store-introduction/transactional-analytical-data-stores.png "Cosmos DB Analytical Column Store")
+![Azure Cosmos DB Analytical Column Store](/azure/cosmos-db/media/analytical-store-introduction/transactional-analytical-data-stores.png "Azure Cosmos DB Analytical Column Store")
 
-- The [Cosmos DB Change Feed](/azure/cosmos-db/change-feed) can also be used to maintain a separate secondary data store for analytical scenarios.
+- The [Azure Cosmos DB change feed](/azure/cosmos-db/change-feed) can also be used to maintain a separate secondary data store for analytical scenarios.
 
 **Azure Synapse**
 
@@ -770,7 +770,7 @@ Azure Synapse provides an enterprise analytical platform that brings together re
   - Data can also be queried in-place in supported external stores, avoiding the overhead of data ingestion and movement. Azure Storage with Data Lake Gen2 is a supported store for Synapse and [Log Analytics exported data can be queried via Synapse Spark](https://techcommunity.microsoft.com/t5/azure-monitor/how-to-analyze-data-exported-from-log-analytics-data-using/ba-p/2547888).
 
 - [Azure Synapse Studio](/azure/synapse-analytics/overview-what-is#unified-experience) unites ingestion and querying tasks.
-  - Source data, including Cosmos DB Analytical Store data and Log Analytics Export data, are queried and processed in order to support business intelligence and other aggregated analytical use cases.
+  - Source data, including Azure Cosmos DB Analytical Store data and Log Analytics Export data, are queried and processed in order to support business intelligence and other aggregated analytical use cases.
 
 ![Azure Synapse Analytics](/azure/synapse-analytics/media/overview-what-is/synapse-architecture.png "Azure Synapse Analytics")
 
@@ -780,13 +780,13 @@ Azure Synapse provides an enterprise analytical platform that brings together re
 
 **Application Analytics**
 
-- Use Azure Synapse Link with Cosmos DB Analytical Store to perform analytics on Cosmos DB operational data by creating an optimized data store, which won't impact transactional performance.
+- Use Azure Synapse Link with Azure Cosmos DB Analytical Store to perform analytics on Azure Cosmos DB operational data by creating an optimized data store, which won't impact transactional performance.
   - Enable [Azure Synapse Link](/azure/cosmos-db/configure-synapse-link#enable-synapse-link) on Azure Cosmos DB accounts.
   - [Create a container enabled for Analytical Store](/azure/cosmos-db/configure-synapse-link#create-analytical-ttl), or [enable an existing Container for Analytical Store](/azure/cosmos-db/configure-synapse-link#update-analytical-ttl).
-  - [Connect the Azure Synapse workspace to the Cosmos DB Analytical Store](/azure/synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db) to enable analytical workloads in Azure Synapse to query Cosmos DB data. Use a connection string with a [read-only Cosmos DB key](/azure/cosmos-db/database-security?tabs=sql-api#primary-keys).
+  - [Connect the Azure Synapse workspace to the Azure Cosmos DB Analytical Store](/azure/synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db) to enable analytical workloads in Azure Synapse to query Azure Cosmos DB data. Use a connection string with a [read-only Azure Cosmos DB key](/azure/cosmos-db/database-security?tabs=sql-api#primary-keys).
 
-- Prioritize Cosmos DB Analytical Store with Azure Synapse Link instead of using the Cosmos DB Change Feed to maintain an analytical data store.
-  - The Cosmos DB Change Feed may be suitable for very simple analytical scenarios.
+- Prioritize Azure Cosmos DB Analytical Store with Azure Synapse Link instead of using the Azure Cosmos DB change feed to maintain an analytical data store.
+  - The Azure Cosmos DB change feed may be suitable for very simple analytical scenarios.
 
 **AIOps and Operational Analytics**
 
@@ -802,10 +802,3 @@ Review the considerations for networking considerations.
 
 > [!div class="nextstepaction"]
 > [Network and connectivity](mission-critical-networking-connectivity.md)
-
-
-
-
-
-
-

@@ -23,7 +23,7 @@ ms.custom:
 
 # Security considerations for mission-critical workloads on Azure
 
-Security is a one of the foundational design principles and also a key design area that must be treated as a first-class concern within the mission-critical architectural process. 
+Security is a one of the foundational design principles and also a key design area that must be treated as a first-class concern within the mission-critical architectural process.
 
 Given that the primary focus of a mission-critical design is to maximize reliability so that the application remains performant and available, the security considerations and recommendations applied within this design area will focus on mitigating threats with the capacity to impact availability and hinder overall reliability. For example, successful Denial-Of-Service (DDoS) attacks are known to have a catastrophic impact on availability and performance. How an application mitigates those attack vectors, such as SlowLoris will impact the overall reliability. So, the application must be fully protected against threats intended to directly or indirectly compromise application reliability to be truly mission critical in nature.
 
@@ -126,7 +126,7 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 
 ### Design considerations
 
-[STRIDE](https://en.wikipedia.org/wiki/STRIDE_(security)) provides a lightweight risk framework for evaluating security threats across key threat vectors. 
+[STRIDE](https://en.wikipedia.org/wiki/STRIDE_(security)) provides a lightweight risk framework for evaluating security threats across key threat vectors.
 
 - Spoofed Identity: Impersonation of individuals with authority. For example, an attacker impersonating another user by using their -
   - Identity
@@ -161,7 +161,7 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 
 ## Network intrusion protection
 
-Preventing unauthorized access to a mission-critical application and encompassed data is vital to maintain availability and safeguard data integrity. 
+Preventing unauthorized access to a mission-critical application and encompassed data is vital to maintain availability and safeguard data integrity.
 
 ### Design considerations
 
@@ -179,7 +179,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
 - When restricting network access to Azure PaaS services using Private Endpoints or Service Endpoints, a secure network channel will be required for deployment pipelines to access both the Azure control plane and data plane of Azure resources in order to deploy and manage the application.
   - [Private self-hosted build agents](/azure/devops/pipelines/agents/agents?tabs=browser#install) deployed onto a private network as the Azure resource can be used as a proxy to execute CI/CD functions over a private connection. A separate virtual network should be used for build agents.
     - Connectivity to the private build agents from CI/CD tooling is required.
-  - An alternative approach is to modify the firewall rules for the resource on-the-fly within the pipeline to allow a connection from an Azure DevOps agent public IP address, with the firewall subsequently removed after the task is completed. 
+  - An alternative approach is to modify the firewall rules for the resource on-the-fly within the pipeline to allow a connection from an Azure DevOps agent public IP address, with the firewall subsequently removed after the task is completed.
     - However, this approach is only applicable for a subset of Azure services. For example, this isn't feasible for private AKS clusters.
   - To perform developer and administrative tasks on the application service jump boxes can be used.
   
@@ -193,7 +193,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 - Packet capture in Azure Network Watcher is limited to a maximum period of five hours.
 
-### Design Recommendations
+### Design recommendations
 
 - Limit public network access to the absolute minimum required for the application to fulfill its business purpose to reduce the external attack surface.
   - Use [Azure Private Link](/azure/private-link/private-endpoint-overview#private-link-resource) to establish [private endpoints](/azure/private-link/private-endpoint-overview) for Azure resources that require secure network integration.
@@ -218,7 +218,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 - Enable NSG flow logs and feed them into Traffic Analytics to gain insights into internal and external traffic flows.
 
-- Use Azure Private Link/Private Endpoints, where available, to secure access to Azure PaaS services within the application design. For information on Azure services that support Private Link, see [Azure Private Link availability](/azure/private-link/availability). 
+- Use Azure Private Link/Private Endpoints, where available, to secure access to Azure PaaS services within the application design. For information on Azure services that support Private Link, see [Azure Private Link availability](/azure/private-link/availability).
 
 - If Private Endpoint isn't available and data exfiltration risks are acceptable, use Virtual Network Service Endpoints to secure access to Azure PaaS services from within a virtual network.
   - Don't enable virtual network service endpoints by default on all subnets as this will introduce significant data exfiltration channels.
@@ -227,7 +227,6 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 > [!NOTE]
 > When deploying within an Azure landing zone, be aware that network connectivity to on-premises data centers is provided by the landing zone implementation. One approach is by using ExpressRoute configured with private peering.
-
 
 ## Data integrity protection
 
@@ -339,7 +338,7 @@ This section will therefore explore key considerations and recommendations surro
 - Use Azure Policy to enforce a consistent tagging schema across the application.
   - Identify required Azure tags and use the append policy mode to enforce usage.
 
-> If the application is subscribed to Microsoft Mission-Critical Support, ensure that the applied tagging schema provides meaningful context to enrichen the support experience with deep application understanding.
+> If the application is subscribed to Microsoft Mission-Critical Support, ensure that the applied tagging schema provides meaningful context to enrich the support experience with deep application understanding.
 
 - Export Azure AD activity logs to the global Log Analytics Workspace used by the application.
   - Ensure Azure activity logs are archived within the global Storage Account along with operational data for long-term retention.
@@ -348,11 +347,30 @@ This section will therefore explore key considerations and recommendations surro
 
 - Integrate security information and event management with Microsoft Defender for Cloud (formerly known as Azure Security Center).
 
+## IaaS specific considerations when using Virtual Machines
+
+In scenarios where the use of IaaS Virtual Machines is required, some specifics have to be taken into consideration.
+
+### Design considerations
+
+- Images are not updated automatically once deployed.
+- Updates are not installed automatically to running VMs.
+- Images and individual VMs are typically not hardened out-of-the-box.
+
+### Design recommendations
+
+- Do not allow direct access via the public Internet to Virtual Machines by providing access to SSH, RDP or other protocols. Always use Azure Bastion and jumpboxes with limited access to a small group of users.
+- Restrict direct internet connectivity by using Network Security Groups, (Azure) Firewall or Application Gateways (Level 7) to filter and restrict egress traffic.
+- For multi-tier applications consider using different subnets and use Network Security Groups to restrict access in between.
+- Prioritize the use of Public Key authentication, when possible. Store secrets in a secure place like Azure Key Vault.
+- Protect VMs by using authentication and access control.
+- Apply the same security practices as described for mission-critical application scenarios.
+
+Follow and apply security practices for mission-critical application scenarios as described above, when applicable, as well as the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
+
 ## Next step
 
 Review the best practices for operational procedures for mission-critical application scenarios.
 
 > [!div class="nextstepaction"]
 > [Operational procedures](./mission-critical-operational-procedures.md)
-
-
