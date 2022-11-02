@@ -61,7 +61,7 @@ Recovery Time Objective (RTO) and Recovery Point Objective (RPO) are further cri
 At the core of this methodology lies a critical design path comprised of:
 
 - Foundational **[design principles](mission-critical-design-principles.md)**
-- Fundamental **[design area](mission-critical-architecture-pattern.md)** with heavily interrelated and dependent design decisions.
+- Fundamental **[design area](mission-critical-overview.md#what-are-the-key-design-areas)** with heavily interrelated and dependent design decisions.
 
 The impact of decisions made within each design area will reverberate across other design areas and design decisions. Review the provided considerations and recommendations to better understand the consequences of encompassed decisions, which may produce trade-offs within related design areas. 
 

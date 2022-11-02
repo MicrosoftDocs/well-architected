@@ -27,7 +27,7 @@ landingContent:
             url: mission-critical-overview.md
           - text: Design methodology
             url: mission-critical-design-methodology.md
-      - linkListType: architecture
+      - linkListType: concept
         links:
           - text: Architecture pattern 
             url: mission-critical-architecture-pattern.md
@@ -107,6 +107,15 @@ landingContent:
             url: mission-critical-deployment-testing.md#demo-video-ephemeral-dev-environments-and-automated-feature-validation
           - text: Demo - Monitoring and health modeling
             url: mission-critical-health-modeling.md#demo-video-monitoring-and-health-modeling-demo
+
+ # Card
+  - title: Assessment
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Mission-critical assessment tool
+            url: mission-critical-assessment.md
+
  # Card
   - title: Industry Scenarios
     linkLists:
@@ -114,3 +123,4 @@ landingContent:
         links:
           - text: Carrier-grade for telecommunications
             url: /azure/architecture/framework/carrier-grade/carrier-grade-get-started
+
