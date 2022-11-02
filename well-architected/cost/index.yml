@@ -46,7 +46,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: Cost optimization 
-            url: /learn/modules/azure-well-architected-introduction/3-cost-optimization
+            url: /training/modules/azure-well-architected-introduction/3-cost-optimization
       - linkListType: video
         links:
           - text: What trade-offs have you made to optimize for cost?
@@ -123,10 +123,10 @@ landingContent:
         links:
           - text: Autoscale instances
             url: optimize-autoscale.md
-          - text: Reserved instances
-            url: optimize-reserved.md
           - text: Right-size VMs
             url: optimize-vm.md
+          - text: Cache data
+            url: optimize-cache.md
       - linkListType: video
         links:
           - text: What actions are you taking to optimize cloud costs?

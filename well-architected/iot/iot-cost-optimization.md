@@ -377,13 +377,13 @@ Modeling devices reduces management costs and messaging traffic volumes. Use [Io
 
 ### Modeling assets and device state in the cloud
 
-Compare cost differences between several device topology and entity stores such as Cosmos DB, Azure Digital Twins, and SQL Databases. Each of these services has a different cost structure, but also deliver different capabilities to your IoT solution. Depending on the required usage of the service, choose the most cost-efficient service, in line with the lower development and operations effort from adopting PaaS services.
+Compare cost differences between several device topology and entity stores such as Azure Cosmos DB, Azure Digital Twins, and Azure SQL Database. Each of these services has a different cost structure, but also deliver different capabilities to your IoT solution. Depending on the required usage of the service, choose the most cost-efficient service, in line with the lower development and operations effort from adopting PaaS services.
 
 Azure Digital Twins can implement a graph-based model of the IoT environment, both for asset management, device state, and telemetry data. You can use it as a tool to model entire environments, with real time IoT data streaming, and merging business data from non-IoT sources. You can build custom ontologies, or use standards based ontologies such as RealEstateCore, CIM, or NGSI-LD to simplify data exchange with third parties. Azure Digital Twins has a [pay-per-use pricing model](https://azure.microsoft.com/pricing/details/digital-twins/) without a fixed fee.
 
-[Cosmos DB](/azure/cosmos-db/plan-manage-costs) is a globally distributed, multi-model database. Cost is affected by storage and throughput, with regional or globally distributed and replicated data options.
+[Azure Cosmos DB](/azure/cosmos-db/plan-manage-costs) is a globally distributed, multi-model database. Cost is affected by storage and throughput, with regional or globally distributed and replicated data options.
 
-[SQL Database](/azure/azure-sql/database/cost-management) can be an efficient solution for device and asset modeling. SQL Database has several pricing models to help you optimize costs.
+[Azure SQL Database](/azure/azure-sql/database/cost-management) can be an efficient solution for device and asset modeling. SQL Database has several pricing models to help you optimize costs.
 
 ## Transport layer
 

@@ -34,12 +34,14 @@ Quantify the cost of running your business in Azure by calculating Total Cost Ow
 It's difficult to attribute costs before migrating to the cloud.
 
 Using on-premises calculation may not accurately reflect the cost of cloud resources. Here are some challenges:
+
 - On-premises TCO may not accurately account for hidden expenses. These expenses include under-utilization of purchased hardware or network maintenance costs including labor and equipment failure.
 - Cloud TCO may not accurately account for a drop in the organization's operational labor hours. Cloud provider's infrastructure, platform management services, and additional operational efficiencies are included in the cloud service pricing. Especially true at a smaller scale, the cloud provider's services don't result in reduction of IT labor head count.
 - ROI may not accurately account for new organizational benefits because of cloud capabilities. It's hard to quantify improved collaboration, reduced time to service customers, and fast scaling with minimal or no downtime.
 - ROI may not accurately account for business process re-engineering needed to fully adopt cloud benefits. In some cases, this re-engineering may not occur at all, leaving an organization in a state where new technology is used inefficiently.
 
 Azure provides these tools to determine cost.
+
 - [Microsoft Azure Total Cost of Ownership (TCO) Calculator](https://azure.microsoft.com/pricing/tco/calculator/) to reflect all costs.
     > For migration projects, the TCO Calculator may assist, as it pre-populates some common cost but allows you to modify the cost assumptions.
 - [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator) to assess cost of the services you plan to use in your solution.
@@ -66,6 +68,7 @@ The B12MS instance with 2 virtual machines is sufficient for this initial estima
 **Estimated Total: $327.17 per month with upfront payment of $11,778.17**.
 
 ### Application gateway
+
 For this scenario, we consider the **Standard_v2 Tier** of Azure Application Gateway because of the autoscaling capabilities and performance benefits. We also choose consumption-based pricing, which is calculated by capacity units (CU). Each capacity unit is calculated based on compute, persistent connections, or throughput. For Standard_v2 SKU - Each compute unit can handle approximately 50 connections per second with RSA 2048-bit key TLS certificate. For this workload, we estimate 10 capacity units.
 
 **Estimated Total: $248.64 per month.**
@@ -83,14 +86,16 @@ We estimate 2-TB outbound traffic. The first 5 GB/month are free in Zone 1 (Zone
 **Estimated Total: $177.74 per month**
 
 ### External data source
-Because the schema-on read nature of the data handled by the workload, we choose Azure Cosmos DB as the external data store. By using the [Cosmos DB capacity calculator](https://cosmos.azure.com/capacitycalculator/), we can calculate the throughput to reserve.
+
+Because the schema-on read nature of the data handled by the workload, we choose Azure Cosmos DB as the external data store. By using the [Azure Cosmos DB capacity calculator](https://cosmos.azure.com/capacitycalculator/), we can calculate the throughput to reserve.
 
 ![Azure Cosmos DB Capacity calculator](../_images/cosmosdb-capacity.png)
 
 #### Cost variables
-- For lower latency, in this scenario we enable geo-replication by using the **Multi-regions writes** feature. By default Cosmos DB uses one region for writes and the rest for reads.
 
-- Default choices in consistency model of **Session** and indexing policy to **Automatic**.  Automatic indexing makes Cosmos DB to index all properties in all items for flexible and efficient queries. Custom indexing policy allows you to include/exclude properties from the index for lower write RU and storage size. So uploading a custom indexing policy can make you reduce costs.
+- For lower latency, in this scenario we enable geo-replication by using the **Multi-regions writes** feature. By default Azure Cosmos DB uses one region for writes and the rest for reads.
+
+- Default choices in consistency model of **Session** and indexing policy to **Automatic**.  Automatic indexing makes Azure Cosmos DB to index all properties in all items for flexible and efficient queries. Custom indexing policy allows you to include/exclude properties from the index for lower write RU and storage size. So uploading a custom indexing policy can make you reduce costs.
 
 - Total data store isn't a significant cost driver, here it's set to 500 GB.
 
@@ -100,7 +105,7 @@ Because the schema-on read nature of the data handled by the workload, we choose
 
 Now, we use those values in the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/).
 
-![Azure Pricing calculator for Cosmos DB](../_images/cosmosdb-price.png)
+![Azure Pricing calculator for Azure Cosmos DB](../_images/cosmosdb-price.png)
 
 The average throughput based on these settings is 20,000 RUs/sec which is the minimum throughput required for a **3-year reserved capacity** plan.
 

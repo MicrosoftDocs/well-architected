@@ -4,13 +4,15 @@ titleSuffix: Azure Design Review Framework
 description: Cost checklist guidance for design concerns
 author: david-stanford
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.reviewer: tozimmergren
+ms.date: 10/14/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom:
   - checklist
   - internal-intro
+  - engagement-fy23
 products:
   - azure
   - azure-cost-management
@@ -24,7 +26,7 @@ products:
 
 - Use subscription types that offer lower rates for Azure resources, such as Dev/Test subscriptions.
 
-- Plan a tagging strategy early in the planning process. It's important to know that tags are not inherited by resources from their parent resource group. Consider tagging single resources to create custom reporting groups where needed.
+- Plan a tagging strategy early in the planning process. It's important to know that tags aren't inherited by resources from their parent resource group. Consider tagging single resources to create custom reporting groups where needed.
 
 - Identify resources or meters that can't be tagged. Decide on a custom solution to account for these costs.
 
@@ -44,9 +46,9 @@ products:
 
 - Choose the correct consumption model for your service (Consumption, Pre-Provisioned)
 
-- Choose the right data store for the job (SQL, Cosmos, Storage, and so on)
+- Choose the right data store for the job (Azure SQL, Azure Cosmos DB, Azure Storage, and so on)
 
-- Don't over engineer services for requirements that are not clearly defined.
+- Don't over engineer services for requirements that aren't clearly defined.
 
 - Only deploy to multiple regions if your service levels require it for either availability or geo-distribution.
 
@@ -66,7 +68,9 @@ products:
 
 ## Optimization
 
-- Use reserved instances for commonly use VM families and regions. Consider purchasing reserved instances for VM families that will likely have an uptime of 24/7.
+- Use reserved instances for stable, predictable workloads with no planned changes. Consider that you're committing to a specific Virtual Machine type in a particular Azure region.
+
+- Use savings plans when you have dynamic workloads, while accommodating for planned or unplanned changes. Consider that with savings plan you commit to a fixed hourly dollar amount collectively on compute services, globally.
 
 - Use tooling in Azure that provides recommendations on usage or cost optimization. For example, Azure Advisor or Azure cost analysis.
 
