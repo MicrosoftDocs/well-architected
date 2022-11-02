@@ -31,7 +31,6 @@ For more information, see:
 - [SAP BW/4HANA](/azure/architecture/reference-architectures/sap/run-sap-bw4hana-with-linux-virtual-machines)
 - [SAP NetWeaver](/azure/architecture/guide/sap/sap-netweaver)
 
-
 ## Create application server resiliency
 
 Application server resiliency is critical to ensure there are multiple application servers to load balance the load in case of single application server failure. Resiliency for the SAP application server layer can be achieved through redundancy. You can configure multiple dialog instances on different instances of Azure virtual machines with a minimum of two application servers.
@@ -59,7 +58,7 @@ For more information, see:
 
 ## Create database resiliency
 
-An SAP application feeds data to multiple enterprise systems, making database resiliency a key workload consideration. We recommend replicating production data across regions for the highest resiliency. Cross-region replication is the preferred disaster recovery solution. For a more affordable option, you should configure zone redundancy at minimum. For more information, see [availability zones for SAP]( https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-ha-availability-zones).
+An SAP application feeds data to multiple enterprise systems, making database resiliency a key workload consideration. We recommend replicating production data across regions for the highest resiliency. Cross-region replication is the preferred disaster recovery solution. For a more affordable option, you should configure zone redundancy at minimum. For more information, see [availability zones for SAP](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones).
 
 On the database layer, you can replicate production data within the region or between primary and disaster recovery region. The replication should be synchronous to provide high availability and synchronous to support disaster recovery. You can use different database methods. The methods you choose depends on the database management system (DBMS) and required business service-level agreement (SLA).
 
