@@ -23,13 +23,19 @@ We recommend that the team doing the assessment is well versed in the architectu
 
 The assessment is a set of questions based on the [mission-critical design methodology](/azure/architecture/framework/mission-critical/mission-critical-design-principles?branch=main) as a way of checking the foundational design choices of a workload’s architecture and the end-to-end operational approach.
 
-![Screenshot of the mission-critical review tool](./images/assessment-review.png "Mission-critical assessment review tool")
+[![Screenshot of the mission-critical review tool.](./images/assessment-review.png)](./images/assessment-review.png)
 
 These questions are designed to help benchmark a workload’s maturity and alignment to the recommended approach for operating a mission-critical workload. The outcome of the assessment is the delivery of technical recommendations and documentation that provide guidance on how to implement a highly reliable solution on Azure. 
 
-![Screenshot of the guidance page in the mission-critical review tool](./images/assessment-recommendations.png "Mission-critical assessment review tool guidance")
+[![Screenshot of the guidance page in the mission-critical review tool.](./images/assessment-recommendations.png)](images/assessment-recommendations.png)
 
 > [!div class="nextstepaction"]
 > [Mission-critical review tool](/assessments/?mode=pre-assessment&id=23513bdb-e8a2-4f0b-8b6b-191ee1f52d34)
 
  
+## Next steps
+
+See these reference architecture that describe design choices for production-ready implementations. 
+
+- [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)
+- [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)
