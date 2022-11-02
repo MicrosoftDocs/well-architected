@@ -18,7 +18,7 @@ Here are a few recommendations to consider for your SAP workload.
 
 ## Conduct a reliability assessment
 
-Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to standardize reliability and improve areas of weakness. For the assessment, see [Azure Well-Architected Review](https://learn.microsoft.com//assessments/?mode=home) and select SAP on Azure when prompted.
+Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to standardize reliability and improve areas of weakness. For the assessment, see [Azure Well-Architected Review](https://learn.microsoft.com/assessments) and select SAP on Azure when prompted.
 
 ## Create architecture resiliency
 
@@ -52,7 +52,7 @@ SAP central services (SCS) or ABAP SAP central services (ASCS) is the basis of S
 
 For more information, see:
 
-- [SAP workload configurations with Azure Availability Zones]( https://learn.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
+- [SAP workload configurations with Azure Availability Zones](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
 - [High-availability architecture for an SAP ASCS/SCS instance on Windows](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios#high-availability-architecture-for-an-sap-ascsscs-instance-on-windows)
 - [High-availability architecture for an SAP ASCS/SCS instance on Linux](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios#high-availability-architecture-for-an-sap-ascsscs-instance-on-linux)
 
