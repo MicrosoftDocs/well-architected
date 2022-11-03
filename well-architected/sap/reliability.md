@@ -68,13 +68,11 @@ Here are our recommendations when you design the database layer:
 
 **(2) Use of synchronous replication for no data loss** - In some scenarios, there’s no tolerance for data loss. The recovery point objective is 0, and you need synchronize data. We recommend that you use synchronous replication on the database layer to create a high-availability configuration within a given region. Synchronous replication creates database transactions to database instances in two separate zones or regions. The latency between the two instances needs to be measured. Higher network latency slows down the scalability of your workload. More physical distance between the instances increases network latency. Synchronous replication across regions will have higher latency than across availability zones. As a result, database replication between different regions is asynchronous and replication between availability zones is synchronous. It’s important to balance resiliency and latency in SAP workload design.
 
-For more information, see [General Azure Virtual Machines DBMS deployment for SAP workload](/azure/virtual-machines/workloads/sap/dbms_guide_general) and its listed recommendations per DBMS.
+For more information, see [General Azure Virtual Machines DBMS deployment for SAP workload](/azure/virtual-machines/workloads/sap/dbms_guide_general).
 
 ## Use backups
 
-The SAP workload should implement a regular backup solution. Backups are the backbone of disaster recovery and help ensure continuity of operations.
-
-For more information, see [NetWeaver disaster recovery](/azure/site-recovery/site-recovery-sap)
+The SAP workload should implement a regular backup solution. Backups are the backbone of disaster recovery and help ensure continuity of operations. For more information, see [NetWeaver disaster recovery](/azure/site-recovery/site-recovery-sap).
 
 **(1) Start with Azure Backup** - Azure Backup is the native backup solution in Azure. We recommend you use Azure Backup as the foundational backup strategy for an SAP workload. It provides multiple capabilities to help streamline your SAP backups:
 
