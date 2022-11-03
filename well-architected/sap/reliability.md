@@ -18,7 +18,7 @@ Here are a few recommendations to consider for your SAP workload.
 
 ## Conduct a reliability assessment
 
-Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to standardize reliability and improve areas of weakness. For the assessment, see [Azure Well-Architected Review](https://learn.microsoft.com/assessments) and select SAP on Azure when prompted.
+Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to standardize reliability and improve areas of weakness. For the assessment, see [Azure Well-Architected Review](/assessments) and select SAP on Azure when prompted.
 
 ## Create architecture resiliency
 

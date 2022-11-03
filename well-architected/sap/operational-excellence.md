@@ -20,7 +20,7 @@ Standard operating procedures (SOPs) are documented processes for managing a wor
 
 ![The relationship between WAF guidance and an SAP workload](./images/azsap-health-check_highres.png)
 
-Microsoft has made this process easy for an SAP workload. We have three SAP assessments that help you at different stages in the cloud. The Well-Architected Review for SAP on Azure assessment compares your operations against industry best practices. For more information, see [WAF Assessments](https://learn.microsoft.com/assessments).
+Microsoft has made this process easy for an SAP workload. We have three SAP assessments that help you at different stages in the cloud. The Well-Architected Review for SAP on Azure assessment compares your operations against industry best practices. For more information, see [WAF Assessments](/assessments).
 
 ## Monitor the workload
 
