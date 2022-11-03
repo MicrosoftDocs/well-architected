@@ -16,7 +16,7 @@ Azure provides all the tools needed to secure your SAP workload. SAP data contai
 
 SAP on Azure is delivered in the infrastructure as a service (IaaS) cloud model. Microsoft builds security protections into the service at the levels of the physical data center, physical network, physical host, and hypervisor. For areas above the hypervisor, such as the guest operating system for SAP, you need to carefully evaluate the services and technologies that you use for proper security control of your architecture. For more information, see [Azure security documentation](/azure/security/).
 
-Security needs prioritization throughout the SAP tech stack. Here are our recommendations for consideration:
+Below are our security recommendations.
 
 ## Enhance identity management
 
@@ -39,10 +39,7 @@ For more information, see:
 
 It’s important to control access to the SAP workload resources that you deploy. Every Azure subscription has a trust relationship with an Azure AD tenant. Use Azure role-based access control (Azure RBAC) to grant users within your organization access the SAP application. Grant access by assigning Azure roles to users or groups at a certain scope. The scope can be a subscription, a resource group, or a single resource. The scope depends on the user and how you’ve grouped your SAP workload resources.
 
-For more information, see:
-
-- [Azure AD trust relationship](/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory)
-- [Azure RBAC](/azure/role-based-access-control/overview)
+For more information, see [Azure AD trust relationship](/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory) and [Azure RBAC](/azure/role-based-access-control/overview).
 
 ## Enforce network and application security
 
@@ -54,10 +51,7 @@ Network and application security controls are baseline security measures for eve
 
 Cloud applications often use managed services that have access keys. Never check access keys into source control. Instead, store application secrets in Azure Key Vault. For more information, see [Azure application security groups](/azure/virtual-network/application-security-groups).
 
-For more information, see:
-
-- [Network security groups](/azure/virtual-network/network-security-groups-overview)
-- [Application security groups](/azure/virtual-network/application-security-groups).
+For more information, see [network security groups](/azure/virtual-network/network-security-groups-overview) and [application security groups](/azure/virtual-network/application-security-groups).
 
 ## Encrypt data
 
