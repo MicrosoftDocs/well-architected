@@ -50,10 +50,7 @@ We recommend using proximity in two scenarios:
 - ***High-latency deployments*** - Use proximity placement groups in Azure regions where latency across zones is higher than recommended for the SAP workload.
 - ***Application Volume Group*** - The Application Volume Group features of Azure NetApp Files uses PPG to deploy ANF volumes close to the VM/compute cluster. We recommend using this feature as designed.
 
-For more information, see:
-
-- [SAP and proximity placement groups](/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)
-- [General overview of proximity placement groups](/azure/virtual-machines/co-location)
+For more information, see [SAP and proximity placement groups](/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) and [general overview of proximity placement groups](/azure/virtual-machines/co-location).
 
 **(2) Use accelerated networking** - Accelerated Network is default for most of the VM deployments and is recommended for every VM hosting an SAP workload. Accelerated Network improves the network performance by bypassing the physical switch. We recommend you enable Accelerated Networking on the Azure VMs running your SAP Application and Database. Accelerated Networking enables single root I/O virtualization (SR-IOV) and provides improved latency, jitter, and CPU utilization. You should test the latency between the SAP application server and database with the SAP ABAP report /SSA/CAT. It's one of the checklists as part of Inventory Checks for SAP Azure workbook. For more information, see, [accelerated networking](/azure/virtual-network/accelerated-networking-overview).
 
