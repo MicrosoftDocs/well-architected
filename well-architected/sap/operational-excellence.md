@@ -46,10 +46,9 @@ You can use infrastructure as code (IaC) to automate SAP workload deployments wi
 | Scaling | Allows you to easily scale up, down, and out. Provides new deployment templates.| Takes more time to scale and customize the environment.|
 | Standardization | Applies your defined standards with each deployment.| Sometimes leads to unwanted variations in design.|
 
-Microsoft has a repository of SAP deployment templates that you should use. These templates support SAP HANA and NetWeaver with any database on any SAP-supported operating systems. For more information, see:
+Microsoft has a repository of SAP deployment templates that you should use. These templates support SAP HANA and NetWeaver with any database on any SAP-supported operating systems.
 
-- [SAP deployment automation framework](/azure/virtual-machines/workloads/sap/automation-deployment-framework)
-- [SAP automate repository](https://github.com/Azure/sap-automation)
+For more information, see [SAP deployment automation framework](/azure/virtual-machines/workloads/sap/automation-deployment-framework) and [SAP automate repository](https://github.com/Azure/sap-automation).
 
 ## Next Step
 
