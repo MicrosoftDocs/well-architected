@@ -3,7 +3,7 @@ title: Testing tools
 description: Review testing tools for performance efficiency. Identify baselines and goals for performance. Cache data, run benchmark tests, and use metrics.
 author: v-aangie
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 11/08/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -26,7 +26,7 @@ Testing can be automated or manual. Automating tests is the best way to make sur
 
 Knowing where you are (baseline) and where you want to be (goal) makes it easier to plan how to get there. Established baselines and goals will help you to stay on track and measure progress. Testing may also uncover a need to perform additional testing on areas that you may not have planned.
 
-Baselines can vary based on connections or platforms used to accessing the application. It may be important to establish baselines that address the different connections, platforms, and elements such as time of day, or weekday versus weekend.
+Baselines can vary based on connections or platforms used for accessing the application. It may be important to establish baselines that address the different connections, platforms, and elements such as time of day, or weekday versus weekend.
 
 There are many types of goals when determining baselines for application performance. Some examples are, the time it takes to render a page, or a desired number of transactions if your site conducts e-commerce. The following list shows some examples of questions that may help you to determine goals.
 
@@ -62,9 +62,13 @@ To learn more about CDNs, see [Best practices for using content delivery network
 
 ## Benchmark testing
 
-Benchmarking is the process of simulating different workloads on your application and measuring application performance for each workload. It is the best way to figure out what resources you will need to host your application. Use performance indicators to assess whether your application is performing as expected or not. Take into consideration [VM sizes](/azure/virtual-machines/premium-storage-performance#high-scale-vm-sizes) and [disk sizes](/azure/virtual-machines/premium-storage-performance#premium-storage-disk-sizes).
+Benchmarking is the process of simulating different workloads on your application and measuring application performance for each workload. It is the best way to figure out what resources you will need to host your application. 
 
-See the [Optimize IOPS, throughput, and latency](/azure/virtual-machines/premium-storage-performance#optimize-iops-throughput-and-latency-at-a-glance) table for guidance.
+Use performance indicators to assess whether your application is performing as expected or not. 
+
+For workloads running on virtual machines, take into consideration [VM sizes](/azure/virtual-machines/premium-storage-performance#high-scale-vm-sizes) and [disk sizes](/azure/virtual-machines/premium-storage-performance#premium-storage-disk-sizes) when benchmarking, as you may hit a particular bottleneck. The [Optimize IOPS, throughput, and latency](/azure/virtual-machines/premium-storage-performance#optimize-iops-throughput-and-latency-at-a-glance) table offers further guidance.
+
+Tools such as [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) can help you simulate load and different usage patterns. This can help you prepare for particular scenarios that are relevant to your organization or industry. (for example how a promotion or flash sale might affect an online store)
 
 ## Metrics
 

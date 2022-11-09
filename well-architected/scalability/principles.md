@@ -3,7 +3,7 @@ title: Principles of the performance efficiency
 description: Describes the performance efficiency guiding principles
 author: a11smiles
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.date: 11/08/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -46,7 +46,7 @@ An alternate approach is vertical scaling (scale up). However, you eventually ma
 
 |Approach|Benefit|
 |---|---|
-|Monitor the health of entire solution|Know about the  scalability _and_ resiliency of the infrastructure, application, and dependent services.|
+|Monitor the health of the entire solution|Know about the  scalability _and_ resiliency of the infrastructure, application, and dependent services. Gather and review key performance counters regularly.|
 |Capture data from repeatable processes| Evaluate the metrics over time that would allow for autoscaling with demand. For reliability, look for early warning signs that might require proactive intervention.|
 |Reevaluate the needs of the workload continuously|Identify improvement opportunities with resolution planning. This  effort may require updated configurations and deprecations in favor of more-appropriate solutions.|
 
