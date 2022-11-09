@@ -1,8 +1,8 @@
 ---
 title: Principles of the performance efficiency
 description: Describes the performance efficiency guiding principles
-author: a11smiles
-ms.author: robbymillsap
+author: PageWriter-MSFT
+ms.author: prwilk
 ms.date: 11/08/2022
 ms.topic: conceptual
 ms.service: architecture-center
@@ -29,7 +29,7 @@ Performance efficiency is the ability of your workload to adjust to changes in d
 |Choose the right resources and right-size|Determine if the resources can support the anticipated load. Also, justify the cost implications of the choices.|
 |Apply strategies in your design early| Accelerate adoption without significant changes. For example, **strive for stateless application** and store state externally in a database or distributed cache. **Use caching** where possible, to minimize the processing load.|
 
-An alternate approach is vertical scaling (scale up). However, you eventually may reach a limit where there is no larger system, and you can't scale up anymore. At that point, any further scaling must be horizontal. So it's good practice to employ a scale-out architecture early on.
+An alternate approach is vertical scaling (scale up). However, you eventually may reach a limit where there isn't a larger system, and you can't scale up anymore. At that point, any further scaling must be horizontal. So it's good practice to employ a scale-out architecture early on.
 
 ## Shift-left on performance testing
 
