@@ -68,7 +68,7 @@ Use performance indicators to assess whether your application is performing as e
 
 For workloads running on virtual machines, take into consideration [VM sizes](/azure/virtual-machines/premium-storage-performance#high-scale-vm-sizes) and [disk sizes](/azure/virtual-machines/premium-storage-performance#premium-storage-disk-sizes) when benchmarking, as you may hit a particular bottleneck. The [Optimize IOPS, throughput, and latency](/azure/virtual-machines/premium-storage-performance#optimize-iops-throughput-and-latency-at-a-glance) table offers further guidance.
 
-Tools such as [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) can help you simulate load and different usage patterns. This can help you prepare for particular scenarios that are relevant to your organization or industry. (for example how a promotion or flash sale might affect an online store)
+Tools such as [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) can help you simulate load and different usage patterns. The simulation can help you prepare for particular scenarios that are relevant to your organization or industry. (for example how a promotion or flash sale might affect an online store)
 
 ## Metrics
 

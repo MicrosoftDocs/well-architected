@@ -61,7 +61,7 @@ Use the following checklist to review your application architecture from a perfo
 
 - **Decide how you'll handle local development and testing when some static content is expected to be served from a content delivery network (CDN)**. For example, you could pre-deploy the content to the CDN as part of your build script. Instead, use compile directives or flags to control how the application loads the resources. For example, in debug mode, the application could load static resources from a local folder. In release mode, the application would use the CDN.
 
-- **Simulate different workloads on your application and measure application performance for each workload**. This technique is the best way to figure out what resources you will need to host your application. Use performance indicators to assess whether your application is performing as expected or not.
+- **Simulate different workloads on your application and measure application performance for each workload**. This technique is the best way to figure out what resources you'll need to host your application. Use performance indicators to assess whether your application is performing as expected or not.
 
 ## Recommendation
 
