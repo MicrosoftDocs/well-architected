@@ -107,12 +107,12 @@ When using client-side encryption, customers encrypt the data and upload the dat
 
 Log monitoring is an essential for detecting security threats at the application level. We recommend the Microsoft Sentinel Solution for SAP. It’s cloud-native security information and event management (SIEM) solution built for your SAP workload running on a VM. For more information, see [Microsoft Sentinel Solution for SAP](/Azure/sentinel/sap/deployment-overview).
 
-## Next Step
-
 For general security information, see:
 
 - [Azure security documentation]( /azure/security/)
 - [Trusted Cloud eBook](https://azure.microsoft.com/explore/trusted-cloud/)
+
+## Next Step
 
 >[!div class="nextstepaction"]
 >[Overview](./overview.md)
