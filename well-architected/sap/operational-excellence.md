@@ -26,7 +26,7 @@ We have three SAP assessments: landing zone accelerator (LZA), deployment, and w
 The AzSAP Well-architected framework assessment compares your SAP operations against industry best practices. It encourages continuous improvement by building on each previous assessment. The initial assessment creates a baseline, and the next iteration of assessment uses the previous assessment. You don’t have to start from scratch each time. Because the assessment builds on itself, you can track improvements overtime. It will maintain the selections from the last assessment to track and review the design principle while creating roadmap. The assessment is designed for an existing SAP workload in Azure and can assess one or more of the WAF pillars. The goal of the assessment is to reduce technical throughout the lifecycle of the SAP workload.
 
 ![Showing how the Well-Architected assessment builds a baseline and each iteration of the assessment builds on the previous one](./images/laz-for-sap-platform-workload.png)
-*Figure 2: How the Well-architected assessment builds on the previous assessment.*
+*Figure 2: How the Well-architected assessment creates milestones and builds on these milestones over time.*
 
 With the results of the assessment, you can create and update SOPs for each SAP workload. The assessment identifies areas of strength and weakness that all you to build a better SOP. An SAP workload SOP should be tailored, documented, and reviewed to drive operational excellence.
 
