@@ -12,18 +12,21 @@ ms.custom: SAP
 
 # SAP workload reliability
 
-A reliable SAP workload is one that is both resilient and available. Resiliency is the ability of the SAP workload to recover from failures and continue to function. The goal of resiliency is to return the SAP application to a fully functioning state after a failure occurs. When you design an SAP workload, it’s important to consider availability and recoverability. Failures are bound to happen whether it's on-premises or cloud. A highly available architecture reduces SAP application downtime during critical maintenance and improves recovery from failures such as VM crashes, backend updates, major downtime, or ransomware incidents. Reliability helps ensure that workloads are available and can recover from failures at any scale.
+A reliable SAP workload is one that is both resilient and available. Resiliency is the ability to recover from failures and continue to function. Failures happen on-premises and in the cloud, so it’s important to design your SAP workload for resiliency and availability. A highly available architecture can reduce SAP application downtime during these events critical maintenance and improves recovery from failures such as VM crashes, backend updates, major downtime, or ransomware incidents.
 
-Here are a few recommendations to consider for your SAP workload.
+Below we’ve outlined key reliability recommendations for consideration.
 
 ## Conduct a reliability assessment
 
-Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to standardize reliability and improve areas of weakness. For the assessment, see [Azure Well-Architected Review](/assessments) and select SAP on Azure when prompted.
+Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to fit it or solidify those configurations. We recommend conducting a reliability assessment on your SAP workload. The assessment asks you question about your workload and provides specific recommendations to focus on. The assessment build on itself, so you can track your progress.
 
-## Create architecture resiliency
+For the assessment, start an [Azure Well-Architected Review](/assessments/) and select “SAP on Azure” when prompted.
 
-Creating a multi-tier architecture to support an SAP workload is essential for reliability. The number of tiers and architecture specifics varies by SAP application.  Make sure to isolate all application components from each other to achieve high availability through redundancy. Where applicable, you should isolate the SAP Web Dispatcher, SAP Central Services, SAP App Server, and SAP database.
-We have sample architectures for several different SAP applications you can use to inform your design.
+## Create architecture reliability
+
+Creating a multi-tier architecture to support an SAP workload is essential for reliability. The number of tiers and architecture specifics varies for each SAP application.  Make sure to isolate application components from each other and created redundancy to achieve high availability.
+
+Where applicable, you should isolate the SAP Web Dispatcher, SAP Central Services, SAP App Server, SAPMNT Share and database. We have sample architectures for several different SAP applications you can use to inform your design.
 
 For more information, see:
 
@@ -31,22 +34,7 @@ For more information, see:
 - [SAP BW/4HANA](/azure/architecture/reference-architectures/sap/run-sap-bw4hana-with-linux-virtual-machines)
 - [SAP NetWeaver](/azure/architecture/guide/sap/sap-netweaver)
 
-## Create application server resiliency
-
-Application server resiliency is critical to ensure there are multiple application servers to load balance the load if there was single application server failure. Resiliency for the SAP application server layer can be achieved through redundancy. You can configure multiple dialog instances on different instances of Azure virtual machines with a minimum of two application servers.
-
-**(1) Use Availability Sets** - We recommend deploying the SAP application servers in the same Availability Set. We don’t recommend scale sets. The Availability Set ensures the application servers are in different fault domains. Different fault domains avoid shared physical layers between the Azure virtual machines and limit the effects of physical hardware failures, network outages, or power interruptions.
-
-**(2) Use multiple smaller servers** - Using multiple smaller servers instead of one larger application server avoids a single point of failure. It’s a best practice is to configure the guest operating system's cluster technologies, such as Windows Failover Cluster or Linux Pacemaker to reduce failover times of the SAP Central Services and database management system (DBMS).
-
-For more information, see:
-
-- [High-availability architecture for SAP application servers](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios#high-availability-architecture-for-sap-application-servers)
-- [NetWeaver high availability](/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
-- [SAP HANA high availability](/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
-- [Overview of Availability Sets](/azure/virtual-machines/availability#availability-sets)
-
-## Create SAP central services resiliency
+## Create SAP central services reliability
 
 SAP central services (SCS) or ABAP SAP central services (ASCS) is the basis of SAP application communication. It consists of the message server and enqueue server. The central services layer is often a single point of failure and must be set up high-available to achieve SAP application resiliency. To add redundancy, create a cluster of SAP central services with compatible shared storage technology supporting the cluster. Depending on the operating system and available shared storage technology in General Availability (GA) or Private/Public Preview, various options are available. Availability zones provide an opportunity to create a highly available ASCS architecture.
 
@@ -56,49 +44,110 @@ For more information, see:
 - [High-availability architecture for an SAP ASCS/SCS instance on Windows](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios#high-availability-architecture-for-an-sap-ascsscs-instance-on-windows)
 - [High-availability architecture for an SAP ASCS/SCS instance on Linux](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios#high-availability-architecture-for-an-sap-ascsscs-instance-on-linux)
 
+## Create SAPMNT share reliability
+
+SAPMNT hosts the physical kernel files for SAP application and can be a single point of failure. Several options are available on Azure to created redundancy and architect a highly available SAPMNT share. We recommend using Azure Premium Files or Azure NetApp Files for Linux and Azure Premium Files. For Windows-based deployments, you should use Azure NetApp Files or Azure Shared Disk.
+
+There are also a few-application specific configurations you should address for SAPMNT reliability. You need shared directories in the environment (`/sapmnt/SID and /usr/sap/trans`) to deploy the SAP NetWeaver application layer.
+
+We recommend creating highly available file systems and ensuring they are resilient. The `/sapmnt/SID` and `/usr/sap/SID/ASCS` directories are important. You should place these file systems on NFS on Azure Files to achieve the maximum reliability. For more general file share information see, [NFS on Azure Files](/azure/storage/files/files-nfs-protocol).
+
+For information on Windows deployments, see:
+
+- [Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a cluster shared disk in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
+- [Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a file share in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
+- [High availability for SAP NetWeaver on Azure VMs on Windows with Azure Files Premium SMB for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-azure-files-smb)
+- [High availability for SAP NetWeaver on Azure VMs on Windows with Azure NetApp Files(SMB) for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
+
+For more information in Red Hat Enterprise Linux (RHEL) deployments, see:
+
+- [High availability for SAP NetWeaver on Azure VMs on Red Hat Enterprise Linux with NFS on Azure Files](/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-nfs-azure-files)
+- [Azure Virtual Machines high availability for SAP NetWeaver on Red Hat Enterprise Linux with Azure NetApp Files for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+
+For more information on SUSE Linux Enterprise Server (SLES) deployments, see:
+
+- [High-availability SAP NetWeaver with simple mount and NFS on SLES for SAP Applications VMs]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-simple-mount)
+- [High availability for SAP NetWeaver on Azure VMs on SUSE Linux Enterprise Server with NFS on Azure Files]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-azure-files)
+
 ## Create database resiliency
 
-An SAP application feeds data to multiple enterprise systems, making database resiliency a key workload consideration. We recommend replicating production data across regions for the highest resiliency. Cross-region replication is the preferred disaster recovery solution. For a more affordable option, you should configure zone redundancy at minimum. For more information, see [availability zones for SAP](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones).
+An SAP application feeds data to multiple enterprise systems, making database resiliency a key workload consideration. We recommend replicating production data for the highest resiliency. Cross-region replication is the preferred disaster recovery solution. For a more affordable option, you should configure zone redundancy at a minimum. The methods you choose depends on the database management system (DBMS) and required business service-level agreement (SLA).
 
-On the database layer, you can replicate production data within the region or between primary and disaster recovery region. The replication should be synchronous to provide high availability and synchronous to support disaster recovery. You can use different database methods. The methods you choose depends on the database management system (DBMS) and required business service-level agreement (SLA).
+Below are additional recommendations for the database layer.
 
-Here are our recommendations when you design the database layer:
+**(1) Define RPO and RTO** - Creating database resiliency requires a plan to recover data loss. A logical error on the SAP database, a large-scale disaster, or a system outage are potential causes of data loss in an SAP workload. Your recovery plan should identify how much data you’re willing to lose and how fast you need to recover. The amount of data loss you’re willing to lose is your recovery point objective (RPO). How fast you need to recover is your recovery time objective (RTO). When you design for recoverability, you need to understand the desired and actual RPO and RTO of your SAP application.
 
-**(1) Define RPO and RTO** - Creating database resiliency requires a plan to recover data loss. There are numerous potential causes of data loss in an SAP workload. These causes include logical error on the SAP database, a large-scale disaster, or a system outage. Your recovery plan should identify how much data you’re willing to lose and how fast you need to recover. The amount of data loss you’re willing to lose is your recovery point objective (RPO). How fast you need to recover is your recovery time objective (RTO). When you design for recoverability, you need to understand the desired and actual RPO and RTO of your SAP application.
-
-**(2) Use of synchronous replication for no data loss** - In some scenarios, there’s no tolerance for data loss. The recovery point objective is 0, and you need synchronize data. We recommend that you use synchronous replication on the database layer to create a high-availability configuration within a given region. Synchronous replication creates database transactions to database instances in two separate zones or regions. The latency between the two instances needs to be measured. Higher network latency slows down the scalability of your workload. More physical distance between the instances increases network latency. Synchronous replication across regions will have higher latency than across availability zones. As a result, database replication between different regions is asynchronous and replication between availability zones is synchronous. It’s important to balance resiliency and latency in SAP workload design.
-
-For more information, see [General Azure Virtual Machines DBMS deployment for SAP workload](/azure/virtual-machines/workloads/sap/dbms_guide_general).
-
-## Use backups
-
-The SAP workload should implement a regular backup solution. Backups are the backbone of disaster recovery and help ensure continuity of operations. For more information, see [NetWeaver disaster recovery](/azure/site-recovery/site-recovery-sap).
-
-**(1) Start with Azure Backup** - Azure Backup is the native backup solution in Azure. We recommend you use Azure Backup as the foundational backup strategy for an SAP workload. It provides multiple capabilities to help streamline your SAP backups:
-
-- ***Native database backup compatibility*** - Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, Oracle databases used by SAP Applications. Azure backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure backup also supports the DB Snapshot backup capability for HANA & SQL Server databases.
-- ***Storage backup*** - The storage backup feature can help optimize the backup strategy by using disk snapshots of Azure Premium storage for selective disks. For more information on application-consistent backups, see [snapshot consistency] [/ azure/backup/backup-azure-vms-introduction#snapshot-consistency].
-- ***Virtual Machine backup*** - Back up and restore of Azure VM data through the Azure portal. Cross-region restoration allows you to restore Azure VMs in a secondary region.
-- ***Long-term retention*** - Azure backup allows you to retain SAP backups years for compliance and audit needs.
-- ***Backup Management*** - Azure Backup enables you to manage backups from the Azure portal with an easy user interface.
+**(2) Use synchronous replication for no data loss** - In some scenarios, there’s no tolerance for data loss. The recovery point objective is 0. To achieve this RPO, you need synchronize data. We recommend that you use synchronous replication on the database layer to create a high-availability configuration within a given region. Synchronous replication commits database transactions to database instances in two separate zones or regions. You need to measure the latency between the two instances to ensure it meets workload needs, and you can do it with the SAP `niping` measuring tool. Higher network latency will slow down the scalability of your workload, and physical distance between the instances adds network latency. As a result, replication across regions will have higher latency than across availability zones. Database replication between different regions is usually asynchronous and replication between availability zones is synchronous. It’s important to balance resiliency and latency in SAP workload design.
 
 For more information, see:
 
-- [Azure Backup service documentation](/azure/backup/)
-- [Backup guide for SAP HANA on Azure VMs](/azure/backup/sap-hana-database-about)
+- [General Azure Virtual Machines DBMS deployment for SAP workload]( /azure/virtual-machines/workloads/sap/dbms_guide_general)
+- [High-availability architecture and scenarios for SAP NetWeaver](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
+- [Network latency between and within zones](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones#network-latency-between-and-within-zones)
+
+## Create application server resiliency
+
+Application server resiliency is critical to ensure there are multiple application servers to load balance traffic to the workload should an application server fail. Resiliency for the SAP application server layer can be achieved through redundancy. You can configure multiple dialog instances on different instances of Azure virtual machines with a minimum of two application servers.
+
+**(1) Use Availability Sets / Availability Zones** - SAP application server can be deployed in an availability set or across availability zones. The decision needs to be based on workload requirements. We recommend you choose one method to improve resiliency, but we don’t recommend scale sets. For more information, see [availability zones for SAP](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones).
+
+**(2) Use multiple application servers** - Using multiple smaller application servers instead of one larger application server is recommended. It avoids a single point of failure. It’s a best practice to configure Logon Group (SMLG) and Batch Server Group (RZ12)for better load balancing between end-user & batch processing.
+
+For more information, see:
+
+- [Azure Virtual Machines high availability for SAP NetWeaver](/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
+- [SAP HANA high availability for Azure virtual machines](/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+- [SAP workload configurations with Azure Availability Zones]( /azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
+
+## Use backups
+
+The SAP workload should implement a regular backup solution. Backups are the backbone of disaster recovery and help ensure continuity of operations. We have a few additional recommendations for backups.
+
+**(1) Start with Azure Backup** - We recommend you use Azure Backup as the foundational backup strategy for an SAP workload. Azure Backup is the native backup solution in Azure, and it provides multiple capabilities to help streamline your SAP backups:
+
+***Native database backup compatibility*** - Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, and Oracle databases used by SAP Applications. Azure backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure backup also supports the database backup capability for HANA & SQL Server databases today.
+
+***Storage backup*** - The storage backup feature can help optimise the backup strategy by using disk snapshots of Azure Premium storage for selective disks. For more information on application-consistent backups, see [snapshot consistency] [/ azure/backup/backup-azure-vms-introduction#snapshot-consistency].
+
+***Virtual Machine backup*** - Backup and restore of Azure VM data through the Azure portal. Cross-region restoration provides the ability to restore Azure VMs that were to a paired secondary region.
+
+***Long-term retention*** - Azure backup allows you to retain SAP backups years for compliance and audit needs.
+
+***Backup Management*** - Azure Backup enables you to manage backups from the Azure portal with an easy user interface.
+
+For more information, see:
+
+- [Azure Backup documentation]( /azure/backup/)
 - [SAP HANA backup overview](/azure/backup/sap-hana-database-about)
+- [Backup guide for SAP HANA on Azure Virtual Machines](/azure/backup/sap-hana-database-about)
+- [Backup guide for SQL Server on Azure Virtual Machines](/azure/backup/tutorial-sql-backup)
 
-**(2) Find marketplace solutions** - Several certified third-party backup solutions exist in the Azure Marketplace. These solutions offer vendor- and SAP-certified backup capabilities. You should consider layering these solutions on top of Azure Backup capabilities for a customized backup strategy that meets your needs.
+**(2) Find marketplace solutions** - Several certified third-party backup solutions exist in the [Azure Marketplace]( https://azuremarketplace.microsoft.com/). These solutions offer vendor backup capabilities and SAP-certified backup capabilities. You should consider layering these solutions on top of Azure Backup to generate custom solutions with foundational support.
 
-Microsoft partners provide solutions that are integrated with Azure Storage for archive, backup, and for business continuity and disaster recovery (BCDR) workloads. The partner solutions take advantage of the scale and cost benefits of Azure Storage. You can use the solutions to help solve backup challenges, create a disaster recovery site, or archive unused content for long-term retention. They can replace tape-based backups and offer an on-demand economic recovery site with all the compliance standards and storage features such as immutable storage and lifecycle management.
+Microsoft partners provide solutions that are integrated with Azure Storage for archive, backup, and for business continuity and disaster recovery (BCDR) workloads. The partner solutions take advantage of the scale and cost benefits of Azure Storage, and you can use the solutions to help solve backup challenges, create a disaster recovery site, or archive unused content for long-term retention. They can replace tape-based backups and offer an on-demand economic recovery site with all the compliance standards and storage features such as [immutable storage]( /azure/storage/blobs/immutable-storage-overview) and [lifecycle management]( /azure/storage/blobs/lifecycle-management-overview).
 
-**(3) Use snapshots** -  Storage solutions such as Azure NetApp Files can back up critical data by using snapshots. When you decide which redundancy option is best for your scenario, consider the trade-offs between lower costs and higher availability. In some scenarios, you might want to replicate your SAP on Azure data to other Azure regions for disaster recovery. However, you can achieve the same capabilities with Azure Storage replication, such as Geo-redundant storage (GRS) or Azure Site Recovery.
+**(3) Use snapshots** - A snapshot backup is a point-in-time, copy of your data. The speed and reliability of snapshot backups can help manage large databases and protect the primary database against corruption or failure. They are critical for disaster recovery. We have a few options to create and store backups for your SAP workload.
+
+Azure Backup can take databases backups for HANA and SQL Server, for example. The Backup vault feature of Azure Shared Disk can serve as your database storage solution. Azure NetApp Files (ANF) can also back up critical data by using snapshots, such as ANF volumes Snapshot. ANF Cross Region Replication uses ANF snapshots to replicate data from one region to another.
+
+The right solution depends on your desired cost and availability levels. In some scenarios, you might want to replicate your SAP on Azure data to other Azure regions for disaster recovery. However, you can achieve the same capabilities with Azure Storage replication, such as Geo-redundant storage (GRS) or Azure Site Recovery.
 
 For more information, see:
 
 - [SAP workload configurations with Azure Availability Zones](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
+- [SAP NetWeaver disaster recovery](/azure/site-recovery/site-recovery-sap)
 - [Azure Site Recovery for SAP workloads](/azure/site-recovery/site-recovery-sap)
-- [Azure storage redundancy](/azure/storage/common/storage-redundancy)
+- [Azure Storage redundancy](/azure/storage/common/storage-redundancy)
+- [Back up SAP HANA databases' instance snapshots in Azure VMs](/azure/backup/sap-hana-database-instances-backup)
+
+**(4) Implement Disaster Recovery** - We recommend you invest in Disaster Recovery (DR) to improve the reliability of the SAP workload. Disaster recovery means to replicate primary data to the secondary location, several tools & methodology can be used to the achieve goal with respect to acceptable recovery point objective (RPO) and recovery time objective (RTO). Disaster Recovery is required when the primary location is not accessible due to technical or natural disaster. Disaster Recovery solutions can be across zones within region or across regions based on your business requirements, but we recommended DR across region for better resiliency.
+
+For more information, see:
+
+- [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)
+- [Cross-region replication of Azure NetApp Files volumes](/azure/azure-netapp-files/cross-region-replication-introduction)
+- [Cross-region snapshot copy for Azure Disk Storage](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli#cross-region-snapshot-copy-preview)
+- [Backup and Disaster Recovery](https://azure.microsoft.com/solutions/backup-and-disaster-recovery/#overview)
 
 ## Next step
 
