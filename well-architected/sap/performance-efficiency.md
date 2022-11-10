@@ -20,11 +20,15 @@ Compute is the core that powers an SAP application. Compute includes the hardwar
 
 **(1) Conduct reference sizing on-premises workload** - Reference sizing refers to checking the system configuration and resource utilization data of an on-premises SAP workload. The data will show the current compute needs of the workload that should be matched in Azure. To find this information, use the SAP OS Collector. SAP OS Collector retrieves system utilization information that can be reported via SAP transaction OS07N as well as the EarlyWatch Alert. Any system performance and statistics gathering tools can collect similar information.
 
-**(2) Use SAP Quick Sizer for a new workload** - SAP Quick Sizer is a free web-based tool developed by SAP that translates business requirements into technical requirements. Use this tool when you build a new SAP workload to find the Azure VM with the correct network and storage throughput. For more information, see [SAP quick sizer]( https://service.sap.com/quicksizer).
+**(2) Use SAP Quick Sizer for a new workload** - SAP Quick Sizer is a free web-based tool developed by SAP that translates business requirements into technical requirements. Use this tool when you build a new SAP workload to find the Azure VM with the correct network and storage throughput.
+
+For more information, see [SAP quick sizer]( https://service.sap.com/quicksizer).
 
 ## Optimize workload storage
 
-It’s important to choose the appropriate storage solutions to support the data needs of the SAP workload. The correct solution can improve the performance of existing capabilities and allow you to add new features. In general, storage needs to meet the IOPS and throughput requirements of the SAP database. For more information, see [storage types for an SAP workload](/azure/virtual-machines/workloads/sap/planning-guide-storage).
+It’s important to choose the appropriate storage solutions to support the data needs of the SAP workload. The correct solution can improve the performance of existing capabilities and allow you to add new features. In general, storage needs to meet the IOPS and throughput requirements of the SAP database.
+
+For more information, see [storage types for an SAP workload](/azure/virtual-machines/workloads/sap/planning-guide-storage).
 
 Below we highlight a few storage recommendations:
 
@@ -32,9 +36,11 @@ Below we highlight a few storage recommendations:
 
 **(2) Configure storage for performance** - We have published a storage configuration guideline for SAP HANA databases. It covers production scenarios and a cost-conscious non-production variant. Following the recommended storage configurations will ensure the storage passes all SAP hardware and cloud measurement tool (HCMT) KPIs.
 
-For more information, see [SAP HANA Azure virtual machine storage configurations](/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+For more information, see [SAP HANA Azure virtual machine storage configurations](/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).
 
-**(3) Enable write accelerator** - Write accelerator is a capability for M-Series VMs on Premium Storage with Azure Managed Disks exclusively.. It’s imperative to enable write accelerator on the disks associated with the /hana/log volume as this facilitates sub millisecond writes latency for 4KB and 16KB blocks sizes. For more information, see [Azure Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator).
+**(3) Enable write accelerator** - Write accelerator is a capability for M-Series VMs on Premium Storage with Azure Managed Disks exclusively.. It’s imperative to enable write accelerator on the disks associated with the /hana/log volume as this facilitates sub millisecond writes latency for 4KB and 16KB blocks sizes.
+
+For more information, see [Azure Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator).
 
 **(4) Choose the right VM** - Choosing the right VM has cost and performance implications. The goal is to pick a storage VM that supports the IOPS and throughput requirements of the SAP workload. There are three critical areas to focus while selecting a VM.
 
@@ -62,9 +68,13 @@ For more information, see:
 - [Overview of proximity placement groups](/azure/virtual-machines/co-location)
 - [SAP and proximity placement groups](/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)
 
-**(2) Use accelerated networking** - AAccelerated Network is default for most of the VM deployments and is recommended for every VM hosting an SAP workload. Accelerated Network improves the network performance by bypassing the physical switch. We recommend you enable Accelerated Networking on the Azure VMs running your SAP Application and Database. Accelerated Networking enables single root I/O virtualization (SR-IOV) and provides improved latency, jitter, and CPU utilization. You should test the latency between the SAP application server and database with the SAP ABAP report /SSA/CAT. It is one of the Inventory Checks for the SAP Azure Workbook. For more information, see [accelerated networking overview](/azure/virtual-network/accelerated-networking-overview).
+**(2) Use accelerated networking** - AAccelerated Network is default for most of the VM deployments and is recommended for every VM hosting an SAP workload. Accelerated Network improves the network performance by bypassing the physical switch. We recommend you enable Accelerated Networking on the Azure VMs running your SAP Application and Database. Accelerated Networking enables single root I/O virtualization (SR-IOV) and provides improved latency, jitter, and CPU utilization. You should test the latency between the SAP application server and database with the SAP ABAP report /SSA/CAT. It is one of the Inventory Checks for the SAP Azure Workbook. 
 
-**(3) Use ExpressRoute GlobalReach** - ExpressRoute is a private and resilient way to connect your on-premises networks to different Azure regions. This feature allows you to link ExpressRoute circuits to make a private network between your on-premises networks. Global Reach should be used for SAP HANA Large Instance deployments to enable direct access from on-premises to your HANA Large Instance units deployed in different regions. ExpressRoute also allows HANA Large Instance units deployed in different regions to communicate with each other. For more information, see [ExpressRoute Global Reach](/azure/expressroute/expressroute-global-reach).
+For more information, see [accelerated networking overview](/azure/virtual-network/accelerated-networking-overview).
+
+**(3) Use ExpressRoute GlobalReach** - ExpressRoute is a private and resilient way to connect your on-premises networks to different Azure regions. This feature allows you to link ExpressRoute circuits to make a private network between your on-premises networks. Global Reach should be used for SAP HANA Large Instance deployments to enable direct access from on-premises to your HANA Large Instance units deployed in different regions. ExpressRoute also allows HANA Large Instance units deployed in different regions to communicate with each other. 
+
+For more information, see [ExpressRoute Global Reach](/azure/expressroute/expressroute-global-reach).
 
 ## Next Step
 

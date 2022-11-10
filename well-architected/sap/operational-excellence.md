@@ -12,7 +12,7 @@ ms.custom: SAP
 
 # SAP workload operational excellence
 
-Operational excellence about creating efficient processes that support an SAP workload. Operations will be the longest phase of the SAP workload lifecycle, and teams must be equipped with operational best practices to manage the day-today changes. A failure in operations will impact the success of an organization. It’s critical to tailor your operations to support an SAP workload in operations. For more information, see [WAF operational excellence](/azure/architecture/framework/devops/).
+Operational excellence about creating efficient processes that support an SAP workload. Operations will be the longest phase of the SAP workload lifecycle, and teams must be equipped with operational best practices to manage the day-today changes. A failure in operations will impact the success of an organization. It’s critical to tailor your operations to support an SAP workload in operations.
 
 ## Use WAF assessments
 
@@ -21,10 +21,12 @@ Standard operating procedures (SOPs) are documented processes for managing a wor
 We have three SAP assessments: landing zone accelerator (LZA), deployment, and well-architected framework assessment. They are designed for different stages in the SAP workload lifecycle. For operational excellence, focus on the Azure SAP (AzSAP) Well-architected framework assessment.
 
 ![The Azure SAP assessments and health checks aligned to the customer journey](./images/azsap-health-check.png)
+*Figure 1: The assessment and health check cycle throughout the customer journey.*
 
 The AzSAP Well-architected framework assessment compares your SAP operations against industry best practices. It encourages continuous improvement by building on each previous assessment. The initial assessment creates a baseline, and the next iteration of assessment uses the previous assessment. You don’t have to start from scratch each time. Because the assessment builds on itself, you can track improvements overtime. It will maintain the selections from the last assessment to track and review the design principle while creating roadmap. The assessment is designed for an existing SAP workload in Azure and can assess one or more of the WAF pillars. The goal of the assessment is to reduce technical throughout the lifecycle of the SAP workload.
 
 ![Showing how the Well-Architected assessment builds a baseline and each iteration of the assessment builds on the previous one](./images/laz-for-sap-platform-workload.png)
+*Figure 2: How the Well-architected assessment builds on the previous assessment.*
 
 With the results of the assessment, you can create and update SOPs for each SAP workload. The assessment identifies areas of strength and weakness that all you to build a better SOP. An SAP workload SOP should be tailored, documented, and reviewed to drive operational excellence.
 
