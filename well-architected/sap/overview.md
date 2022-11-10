@@ -34,7 +34,6 @@ We built this guidance around the Azure Well-Architected Framework and its five 
 | Cost Optimization | An SAP workload has several architecture layers and numerous resources supporting it. You’ll learn how to make sure your SAP application deployment meets performance expectations while reducing the total cost of ownership.|
 | Performance Efficiency | An SAP workload needs to be high performing resources to meet productivity requirements. You’ll learn how to make sure that your SAP workload meets user demands while managing costs.|
 | Operational Excellence | An SAP workload spends most of its lifecycle in operations. You’ll learn how to manage an SAP workload and to keep it running.|
-|
 
 We invite you to explore SAP workload design best practices and return to this content regularly throughout the lifecycle of your SAP workload. The content highlights critical areas of focus but also refers you to other documentation for deeper technical insight.
 
