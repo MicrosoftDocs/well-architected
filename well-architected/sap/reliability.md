@@ -12,21 +12,15 @@ ms.custom: SAP
 
 # SAP workload reliability
 
-A reliable SAP workload is one that is both resilient and available. Resiliency is the ability to recover from failures and continue to function. Failures happen on-premises and in the cloud, so it’s important to design your SAP workload for resiliency and availability. A highly available architecture can reduce SAP application downtime during these events critical maintenance and improves recovery from failures such as VM crashes, backend updates, major downtime, or ransomware incidents.
-
-Below we’ve outlined key reliability recommendations for consideration.
+A reliable SAP workload is one that is both resilient and available. Resiliency is the ability to recover from failures and continue to function. Failures happen on-premises and in the cloud, so it’s important to design your SAP workload for resiliency and availability. A highly available architecture can reduce SAP application downtime during these events critical maintenance and improves recovery from failures such as VM crashes, backend updates, major downtime, or ransomware incidents. Below we’ve outlined key reliability recommendations.
 
 ## Conduct a reliability assessment
 
-Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to fit it or solidify those configurations. We recommend conducting a reliability assessment on your SAP workload. The assessment asks you question about your workload and provides specific recommendations to focus on. The assessment build on itself, so you can track your progress.
-
-For the assessment, start an [Azure Well-Architected Review](/assessments/) and select “SAP on Azure” when prompted.
+Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to fit it or solidify those configurations. We recommend conducting a reliability assessment on your SAP workload. The assessment asks you question about your workload and provides specific recommendations to focus on. The assessment build on itself, so you can track your progress. For the assessment, start an [Azure Well-Architected Review](/assessments/) and select “SAP on Azure” when prompted.
 
 ## Create architecture reliability
 
-Creating a multi-tier architecture to support an SAP workload is essential for reliability. The number of tiers and architecture specifics varies for each SAP application.  Make sure to isolate application components from each other and created redundancy to achieve high availability.
-
-Where applicable, you should isolate the SAP Web Dispatcher, SAP Central Services, SAP App Server, SAPMNT Share and database. We have sample architectures for several different SAP applications you can use to inform your design.
+Creating a multi-tier architecture to support an SAP workload is essential for reliability. The number of tiers and architecture specifics varies for each SAP application.  Make sure to isolate application components from each other and created redundancy to achieve high availability. Where applicable, you should isolate the SAP Web Dispatcher, SAP Central Services, SAP App Server, SAPMNT Share and database. We have sample architectures for several different SAP applications you can use to inform your design.
 
 For more information, see:
 
@@ -54,10 +48,10 @@ We recommend creating highly available file systems and ensuring they are resili
 
 For information on Windows deployments, see:
 
-- [Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a cluster shared disk in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a file share in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
-- [High availability for SAP NetWeaver on Azure VMs on Windows with Azure Files Premium SMB for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-azure-files-smb)
-- [High availability for SAP NetWeaver on Azure VMs on Windows with Azure NetApp Files(SMB) for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
+|OS | Guidance|
+| -- | -- |
+|Windows| <ul><li>[Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a cluster shared disk in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk) <li>[Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a file share in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share) <li>[High availability for SAP NetWeaver on Azure VMs on Windows with Azure Files Premium SMB for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-azure-files-smb) <li>[High availability for SAP NetWeaver on Azure VMs on Windows with Azure NetApp Files(SMB) for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)|
+|
 
 For more information in Red Hat Enterprise Linux (RHEL) deployments, see:
 
