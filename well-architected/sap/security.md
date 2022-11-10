@@ -14,9 +14,7 @@ ms.custom: SAP
 
 Azure provides all the tools needed to secure your SAP workload. SAP data contains sensitive data about your organization's technical & business footprint. Protecting your SAP architecture with secure authentication methods, hardened networking, and encryption is essential.
 
-SAP on Azure is delivered in the infrastructure as a service (IaaS) cloud model. Microsoft builds security protections into the service at the levels of the physical data center, physical network, physical host, and hypervisor. But you are responsible for areas above the hypervisor, such as the guest operating system for SAP. We recommend you regularly evaluate the services and technologies used to ensure your security posture evolves with the threat landscape.
-
-Below are security recommendations for consideration.
+SAP on Azure is delivered in the infrastructure as a service (IaaS) cloud model. Microsoft builds security protections into the service at the levels of the physical data center, physical network, physical host, and hypervisor. But you are responsible for areas above the hypervisor, such as the guest operating system for SAP. We recommend you regularly evaluate the services and technologies used to ensure your security posture evolves with the threat landscape. Below are security recommendations for consideration.
 
 ## Leverage identity management
 
@@ -53,7 +51,6 @@ We've mentioned SSO a few times, and we do recommend configuring SSO for your SA
 |SAP NetWeaver based-web applications such as Fiori, WebGui|Security Assertion Markup Language (SAML)|
 |SAP GUI|Kerberos with windows active directory or AAD-Domain services or 3rd party solution|
 |SAP PaaS and SaaS applications such as SAP Business Technology Platform (BTP), Analytics Cloud, Cloud Identity Services, [SuccessFactors]( /azure/active-directory/app-provisioning/sap-successfactors-integration-reference), [Cloud for Customer]( /azure/active-directory/saas-apps/sap-customer-cloud-tutorial), [Ariba](/azure/active-directory/saas-apps/ariba-tutorial)|SAML / OAuth / JSON Web Tokens (JWT) and pre-configured authentication flows with Azure AD directly or through proxying with SAP Identity Authentication Service|
-|
 
 For more information, see:
 
@@ -98,11 +95,11 @@ We recommend you review and understand server-side encryption (SSE) with custome
 
 For more information, see:
 
-- [Server-side encryption of Azure managed disks]( /azure/virtual-machines/disk-encryption)
-- [Azure Storage Service Encryption for Data at Rest]( /azure/storage/common/storage-service-encryption)
-- [Storage Service Encryption using customer-managed keys in Azure Key Vault]( /azure/storage/common/customer-managed-keys-configure-existing-account)
+- [SSE for managed disks]( /azure/virtual-machines/disk-encryption)
+- [Azure Storage SSE for data at rest]( /azure/storage/common/storage-service-encryption)
+- [SSE using CMK in Azure Key Vault]( /azure/storage/common/customer-managed-keys-configure-existing-account)
 
-When using client-side encryption, customers encrypt the data and upload the data as an encrypted blob. Key management is done by the customer. For more information, see [client-side encryption and Azure Key Vault for Microsoft Azure Storage](/azure/storage/blobs/client-side-encryption).
+When using client-side encryption, customers encrypt the data and upload the data as an encrypted blob. Key management is done by the customer. For more information, see [client-side encryption](/azure/storage/blobs/client-side-encryption).
 
 **(2) Encryption in transit** – It applies to the state of data one move from one location to another location. Data in transit to, from, and between VMs running Windows/Linux can be encrypted in several ways, depending on the nature of the connection. For more information, see [encryption of data in transit]( /azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit).
 

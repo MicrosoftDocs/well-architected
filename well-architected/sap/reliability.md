@@ -51,8 +51,8 @@ The table below provides SAPMNT guidance specific to each operating system.
 |OS | Guidance|
 | -- | -- |
 |Windows| <ul><li>[Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a cluster shared disk in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk) <li>[Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a file share in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share) <li>[High availability for SAP NetWeaver on Azure VMs on Windows with Azure Files Premium SMB for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-azure-files-smb) <li>[High availability for SAP NetWeaver on Azure VMs on Windows with Azure NetApp Files(SMB) for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)|
-|Red Hat Enterprise Linux (RHEL) deployments|<ul><li>[High availability for SAP NetWeaver on Azure VMs on Red Hat Enterprise Linux with NFS on Azure Files](/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-nfs-azure-files) <li>[Azure Virtual Machines high availability for SAP NetWeaver on Red Hat Enterprise Linux with Azure NetApp Files for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-|SUSE Linux Enterprise Server (SLES) deployments|<ul><li>[High-availability SAP NetWeaver with simple mount and NFS on SLES for SAP Applications VMs]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-simple-mount) <li>[High availability for SAP NetWeaver on Azure VMs on SUSE Linux Enterprise Server with NFS on Azure Files]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-azure-files)
+|Red Hat Enterprise Linux (RHEL) |<ul><li>[High availability for SAP NetWeaver on Azure VMs on Red Hat Enterprise Linux with NFS on Azure Files](/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-nfs-azure-files) <li>[Azure Virtual Machines high availability for SAP NetWeaver on Red Hat Enterprise Linux with Azure NetApp Files for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+|SUSE Linux Enterprise Server (SLES) |<ul><li>[High-availability SAP NetWeaver with simple mount and NFS on SLES for SAP Applications VMs]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-simple-mount) <li>[High availability for SAP NetWeaver on Azure VMs on SUSE Linux Enterprise Server with NFS on Azure Files]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-azure-files)
 
 ## Create database resiliency
 
@@ -74,7 +74,7 @@ Application server resiliency is critical to ensure there are multiple applicati
 
 **(1) Use Availability Sets / Availability Zones** - SAP application server can be deployed in an availability set or across availability zones. The decision needs to be based on workload requirements. We recommend you choose one method to improve resiliency, but we don’t recommend scale sets. For more information, see [availability zones for SAP](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones).
 
-**(2) Use multiple application servers** - Using multiple smaller application servers instead of one larger application server is recommended. It avoids a single point of failure. It’s a best practice to configure Logon Group (SMLG) and Batch Server Group (RZ12)for better load balancing between end-user & batch processing.
+**(2) Use multiple application servers** - Using multiple smaller application servers instead of one larger application server is recommended. It avoids a single point of failure. It’s a best practice to configure Logon Group (SMLG) and Batch Server Group (RZ12) for better load balancing between end-user & batch processing.
 
 For more information, see:
 

@@ -12,7 +12,7 @@ ms.custom: SAP
 
 # SAP workload performance efficiency
 
-Performance efficiency accelerates digital transformation with less. It’s about getting the most out of your SAP workload and meeting user demand without over or under provisioning resources. Performance affects productivity for internal applications, and for public facing applications, performance affects brands. Inefficient performance can degrade user experience or inflate costs.  Designing an SAP workload that cannot meet user demand will slow the application. Overcompensating with too much compute power will drive up cost needlessly. Here are recommendations to drive performance efficiency.
+Performance efficiency accelerates digital transformation with less. It’s about getting the most out of your SAP workload and meeting user demand without over or under provisioning resources. Performance affects productivity for internal applications, and for public facing applications, performance affects brands. Inefficient performance can degrade user experience or inflate costs.  Designing an SAP workload that cannot meet user demand will slow the application. Overcompensating with too much compute power will drive up cost needlessly. Below are recommendations to drive SAP workload performance efficiency.
 
 ## Optimize workload compute
 
