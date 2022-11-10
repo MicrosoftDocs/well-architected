@@ -46,28 +46,17 @@ There are also a few-application specific configurations you should address for 
 
 We recommend creating highly available file systems and ensuring they are resilient. The `/sapmnt/SID` and `/usr/sap/SID/ASCS` directories are important. You should place these file systems on NFS on Azure Files to achieve the maximum reliability. For more general file share information see, [NFS on Azure Files](/azure/storage/files/files-nfs-protocol).
 
-For information on Windows deployments, see:
+The table below provides SAPMNT guidance specific to each operating system.
 
 |OS | Guidance|
 | -- | -- |
 |Windows| <ul><li>[Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a cluster shared disk in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk) <li>[Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a file share in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share) <li>[High availability for SAP NetWeaver on Azure VMs on Windows with Azure Files Premium SMB for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-azure-files-smb) <li>[High availability for SAP NetWeaver on Azure VMs on Windows with Azure NetApp Files(SMB) for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)|
-|
-
-For more information in Red Hat Enterprise Linux (RHEL) deployments, see:
-
-- [High availability for SAP NetWeaver on Azure VMs on Red Hat Enterprise Linux with NFS on Azure Files](/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-nfs-azure-files)
-- [Azure Virtual Machines high availability for SAP NetWeaver on Red Hat Enterprise Linux with Azure NetApp Files for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-
-For more information on SUSE Linux Enterprise Server (SLES) deployments, see:
-
-- [High-availability SAP NetWeaver with simple mount and NFS on SLES for SAP Applications VMs]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-simple-mount)
-- [High availability for SAP NetWeaver on Azure VMs on SUSE Linux Enterprise Server with NFS on Azure Files]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-azure-files)
+|Red Hat Enterprise Linux (RHEL) deployments|<ul><li>[High availability for SAP NetWeaver on Azure VMs on Red Hat Enterprise Linux with NFS on Azure Files](/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-nfs-azure-files) <li>[Azure Virtual Machines high availability for SAP NetWeaver on Red Hat Enterprise Linux with Azure NetApp Files for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+|SUSE Linux Enterprise Server (SLES) deployments|<ul><li>[High-availability SAP NetWeaver with simple mount and NFS on SLES for SAP Applications VMs]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-simple-mount) <li>[High availability for SAP NetWeaver on Azure VMs on SUSE Linux Enterprise Server with NFS on Azure Files]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-azure-files)
 
 ## Create database resiliency
 
-An SAP application feeds data to multiple enterprise systems, making database resiliency a key workload consideration. We recommend replicating production data for the highest resiliency. Cross-region replication is the preferred disaster recovery solution. For a more affordable option, you should configure zone redundancy at a minimum. The methods you choose depends on the database management system (DBMS) and required business service-level agreement (SLA).
-
-Below are additional recommendations for the database layer.
+An SAP application feeds data to multiple enterprise systems, making database resiliency a key workload consideration. We recommend replicating production data for the highest resiliency. Cross-region replication is the preferred disaster recovery solution. For a more affordable option, you should configure zone redundancy at a minimum. The methods you choose depends on the database management system (DBMS) and required business service-level agreement (SLA). Below are additional recommendations for the database layer.
 
 **(1) Define RPO and RTO** - Creating database resiliency requires a plan to recover data loss. A logical error on the SAP database, a large-scale disaster, or a system outage are potential causes of data loss in an SAP workload. Your recovery plan should identify how much data you’re willing to lose and how fast you need to recover. The amount of data loss you’re willing to lose is your recovery point objective (RPO). How fast you need to recover is your recovery time objective (RTO). When you design for recoverability, you need to understand the desired and actual RPO and RTO of your SAP application.
 
@@ -99,15 +88,15 @@ The SAP workload should implement a regular backup solution. Backups are the bac
 
 **(1) Start with Azure Backup** - We recommend you use Azure Backup as the foundational backup strategy for an SAP workload. Azure Backup is the native backup solution in Azure, and it provides multiple capabilities to help streamline your SAP backups:
 
-***Native database backup compatibility*** - Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, and Oracle databases used by SAP Applications. Azure backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure backup also supports the database backup capability for HANA & SQL Server databases today.
+*Native database backup compatibility* - Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, and Oracle databases used by SAP Applications. Azure backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure backup also supports the database backup capability for HANA & SQL Server databases today.
 
-***Storage backup*** - The storage backup feature can help optimise the backup strategy by using disk snapshots of Azure Premium storage for selective disks. For more information on application-consistent backups, see [snapshot consistency] [/ azure/backup/backup-azure-vms-introduction#snapshot-consistency].
+*Storage backup* - The storage backup feature can help optimise the backup strategy by using disk snapshots of Azure Premium storage for selective disks. For more information on application-consistent backups, see [snapshot consistency](/azure/backup/backup-azure-vms-introduction#snapshot-consistency).
 
-***Virtual Machine backup*** - Backup and restore of Azure VM data through the Azure portal. Cross-region restoration provides the ability to restore Azure VMs that were to a paired secondary region.
+*Virtual Machine backup* - Backup and restore of Azure VM data through the Azure portal. Cross-region restoration provides the ability to restore Azure VMs that were to a paired secondary region.
 
-***Long-term retention*** - Azure backup allows you to retain SAP backups years for compliance and audit needs.
+*Long-term retention* - Azure backup allows you to retain SAP backups years for compliance and audit needs.
 
-***Backup Management*** - Azure Backup enables you to manage backups from the Azure portal with an easy user interface.
+*Backup Management* - Azure Backup enables you to manage backups from the Azure portal with an easy user interface.
 
 For more information, see:
 
