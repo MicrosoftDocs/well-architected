@@ -20,7 +20,7 @@ Standard operating procedures (SOPs) are documented processes for managing a wor
 
 **(1) Health checks** - We have four Azure SAP (AzSAP) health checks: (1) deployment checklist, (2) inventory checklist, (3) quality checks, and (4) Linux VM OS analyzer. The image below shows how they share a cycle with our Azure SAP assessments. For more information on the health checks, see [SAP quality checks](/azure/center-sap-solutions/get-quality-checks-insights).
 
-:::image type="content" source="./images/azsap-health-check.png" alt-text="The Azure SAP assessments and health checks aligned to the customer journey." lightbox="./images/azsap-health-check.png" border="false":::
+:::image type="content" source="./images/azsap-health-check.png" alt-text="Diagram showing the Azure SAP assessments and health checks aligned to the customer journey." lightbox="./images/azsap-health-check.png" border="false":::
 *Figure 1: The cycle of SAP health checks and assessments throughout th journey.*
 
 **(2) Assessments** - We have three SAP assessments: (1) landing zone accelerator (LZA), (2) Azure SAP (AzSAP) deployment management assessment, and (3) the AzSAP Well-architected framework assessment. These assessments are designed for different stages in the SAP workload lifecycle.
