@@ -423,6 +423,20 @@ items:
                 href: iot/iot-operational-excellence.md
               - name: Performance Efficiency
                 href: iot/iot-performance.md
+          - name: SAP
+            items:
+              - name: Overview
+                href: sap/overview.md
+              - name: Reliability
+                href: sap/reliability.md
+              - name: Security
+                href: sap/security.md
+              - name: Cost Optimization
+                href: sap/cost-optimization.md
+              - name: Operational Excellence
+                href: sap/operational-excellence.md
+              - name: Performance Efficiency
+                href: sap/performance-efficiency.md
           - name: Sustainability
             items:
               - name: Quick links
