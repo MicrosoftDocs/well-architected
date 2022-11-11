@@ -12,7 +12,7 @@ ms.custom: SAP
 
 # SAP workload operational excellence
 
-Operational excellence is about creating efficient processes to support your SAP workload. Operations will be the longest phase of the SAP workload lifecycle, and teams must be equipped with operational best practices to manage the day-today tasks. Failure in operations will affect the the other design areas and the overall success of the SAP workload. It’s critical to tailor your operations to support an SAP workload in operations. Below are recommendations to drive operational excellence.
+Operational excellence is about creating efficient processes to support your SAP workload. Operations will be the longest phase of the SAP workload lifecycle, and teams must be equipped with operational best practices to manage the day-today tasks. Failure in operations will affect the other design areas and the overall success of the SAP workload. It’s critical to tailor your operations to support an SAP workload in operations. Below are recommendations to drive operational excellence.
 
 ## Use health checks and assessments
 
