@@ -21,7 +21,11 @@ SAP applications thrive on infrastructure that is tailored to maximize their cap
 
 The guidance is designed for one SAP workload at a time. Anytime you want to optimize a specific SAP application (S4/HANA, NetWeaver, etc.) for Azure or in Azure, you should use this guidance. Work through the guidance as many times as you need to derive the benefits you expect. In operations, this guidance should be paired with the Well-Architected Review assessments and health checks. We address these tools in our guidance.
 
+## SAP landing zone prerequisite
+
 Before using this content, you should have an SAP platform landing zone in Azure. The platform landing zone provides shared services to one or more of your SAP workloads. If you don’t have a platform landing zone, you should use the SAP cloud adoption framework and deploy the SAP landing zone accelerator to deploy the required foundation for your SAP workload. For more information, see [SAP cloud adoption framework](/azure/cloud-adoption-framework/scenarios/sap/).
+
+## Guidance overview
 
 We built this guidance around the Azure Well-Architected Framework and its five pillars of architectural excellence. The table below lists each pillar and provides a general summary of the articles in this set.
 

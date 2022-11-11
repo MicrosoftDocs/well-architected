@@ -12,7 +12,7 @@ ms.custom: SAP
 
 # SAP workload reliability
 
-A reliable SAP workload is both resilient and available. Resiliency is the ability to recover from failures and continue to function. A highly available architecture can reduce SAP application downtime during these events critical maintenance and improves recovery from failures such as VM crashes, backend updates, major downtime, or ransomware incidents. Failures happen on-premises and in the cloud, so it’s important to design your SAP workload for resiliency and availability. Below we’ve outlined key reliability recommendations.
+A reliable SAP workload is both resilient and available. Resiliency is the ability to recover from failures and continue to function. Availability is uptime. High availability reduces SAP application downtime during critical maintenance and improves recovery from failures such as VM crashes, backend updates, major downtime, or ransomware incidents. Failures happen on-premises and in the cloud, so it’s important to design your SAP workload for resiliency and availability. Below we’ve outlined key reliability recommendations.
 
 ## Conduct a reliability assessment
 
