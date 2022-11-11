@@ -20,7 +20,7 @@ Before you can standardize the reliability of an SAP workload and improve areas 
 
 ## Create architecture reliability
 
-Creating a multi-tier architecture to support an SAP workload is essential for reliability. The number of tiers and architecture has varies for each SAP application.  Make sure to isolate application components from each other and create redundancy to achieve high availability. Where applicable, you should isolate the SAP Web Dispatcher, SAP Central Services, SAP App Server, SAPMNT Share and database. We have sample architectures for several different SAP applications you can use to inform your design. For more information, see:
+Creating a multi-tier architecture to support an SAP workload is essential for reliability. The number of tiers and architecture varies for each SAP application.  Make sure to isolate application components from each other and create redundancy to achieve high availability. Where applicable, you should isolate the SAP Web Dispatcher, SAP Central Services, SAP App Server, SAPMNT Share and database. We have sample architectures for several different SAP applications you can use to inform your design. For more information, see:
 
 - [SAP S/4HANA in Linux](/azure/architecture/guide/sap/sap-s4hana)
 - [SAP BW/4HANA](/azure/architecture/reference-architectures/sap/run-sap-bw4hana-with-linux-virtual-machines)
