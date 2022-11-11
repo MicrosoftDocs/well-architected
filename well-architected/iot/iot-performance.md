@@ -55,7 +55,7 @@ An [IoT device](/azure/iot-fundamentals/iot-introduction#iot-devices) is a compu
 
 Upgrading or replacing hardware is costly and time consuming. Size IoT devices for required capacity and functionality in advance.
 
-To optimize hardware capabilities:
+To optimize for hardware capabilities:
 
 - Run compute and input-output intensive tasks on specific hardware. For example, run machine learning (ML) algorithms on local graphics processing units (GPUs).
 
@@ -65,7 +65,7 @@ To optimize hardware capabilities:
 
 Scaling is important for the device and gateway layer. To scale this layer:
 
-- Use gateways as units of scale. If your solution adds [OPC UA](https://opcfoundation.org/about/opc-technologies/opc-ua) servers over time, use more edge gateways to ingest data from those servers.
+- Use gateways as units of scale. If your solution adds IoT devices or assets (for example [OPC UA](https://opcfoundation.org/about/opc-technologies/opc-ua) servers) over time, use more edge gateways to ingest data from those servers.
 
 - Conduct a scale assessment for all upstream layers, including cloud gateways and cloud services. For more information about using multiple IoT hubs as scale units for an IoT solution, see [Tutorial: Provision devices across load-balanced IoT hubs](/azure/iot-dps/tutorial-provision-multiple-hubs).
 
@@ -73,7 +73,7 @@ Scaling is important for the device and gateway layer. To scale this layer:
 
 Depending on system constraints such as network throughput or latency, consider running some workloads at the edge. Separate workloads by time constraint and required latency and response times. Use local compute for low latency and intermittently connected scenarios. Run large-scale workloads in the cloud.
 
-At the edge, use priority queues to send different data streams in the required order. Messages send in order of priority, but Azure IoT Hub still journals messages based on receipt order.
+At the edge, use priority queues to send different data streams in the required order. With priority queues messages are sent in order of priority, but Azure IoT Hub still journals messages based on receipt order.
 
 ### Optimize device connectivity
 
