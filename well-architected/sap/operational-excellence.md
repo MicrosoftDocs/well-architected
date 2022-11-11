@@ -20,14 +20,14 @@ Standard operating procedures (SOPs) are documented processes for managing a wor
 
 **(1) Health checks** - We have four Azure SAP (AzSAP) health checks: (1) deployment checklist, (2) inventory checklist, (3) quality checks, and (4) Linux VM OS analyzer. The image below shows how they share a cycle with our Azure SAP assessments. For more information on the health checks, see [SAP quality checks](/azure/center-sap-solutions/get-quality-checks-insights).
 
-![The Azure SAP assessments and health checks aligned to the customer journey](./images/azsap-health-check.png)
+:::image type="content" source="./images/azsap-health-check.png" alt-text="The Azure SAP assessments and health checks aligned to the customer journey." lightbox="./images/azsap-health-check.png" border="false":::
 *Figure 1: The cycle of SAP health checks and assessments throughout th journey.*
 
 **(2) Assessments** - We have three SAP assessments: (1) landing zone accelerator (LZA), (2) Azure SAP (AzSAP) deployment management assessment, and (3) the AzSAP Well-architected framework assessment. These assessments are designed for different stages in the SAP workload lifecycle.
 
 The AzSAP Well-architected framework assessment is for operations. It compares your SAP operations against SAP workload best practices. The assessment encourages continuous improvement by building on each previous assessment.
 
-![Showing how the Well-Architected assessment builds a baseline and each iteration of the assessment builds on the previous one](./images/laz-for-sap-platform-workload.png)
+:::image type="content" source="./images/laz-for-sap-platform-workload.png" alt-text="Diagram showing how the Well-Architected assessment builds a baseline and each iteration of the assessment builds on the previous one." lightbox="./images/laz-for-sap-platform-workload.png" border="false":::
 *Figure 2: How the Well-architected assessment creates milestones and builds on these milestones over time.*
 
 The initial assessment creates a baseline, and the next iteration of assessment uses the previous assessment as the starting point. It will maintain the selections from the last assessment to track and review the design principle. Because the assessment builds on itself, you can track improvements overtime. The assessment is designed for an existing SAP workload in Azure and can assess one or more of the WAF pillars.
