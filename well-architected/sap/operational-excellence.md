@@ -12,13 +12,13 @@ ms.custom: SAP
 
 # SAP workload operational excellence
 
-Operational excellence about creating efficient processes that support an SAP workload. Operations will be the longest phase of the SAP workload lifecycle, and teams must be equipped with operational best practices to manage the day-today changes. A failure in operations will impact the success of an organization. It’s critical to tailor your operations to support an SAP workload in operations.
+Operational excellence about creating efficient processes that support an SAP workload. Operations will be the longest phase of the SAP workload lifecycle, and teams must be equipped with operational best practices to manage the day-today changes. A failure in operations will affect the success of an organization. It’s critical to tailor your operations to support an SAP workload in operations.
 
 ## Use WAF assessments
 
 Standard operating procedures (SOPs) are documented processes for managing a workload. Each SAP workload should have SOPs to govern operations and drive consistency. Without these procedures, operations teams can drift from management best practices. We recommend using our SAP assessments to develop SOPs for your SAP workload.
 
-We have three SAP assessments: landing zone accelerator (LZA), deployment, and well-architected framework assessment. They are designed for different stages in the SAP workload lifecycle. For operational excellence, focus on the Azure SAP (AzSAP) Well-architected framework assessment.
+We have three SAP assessments: landing zone accelerator (LZA), deployment, and well-architected framework assessment. They're designed for different stages in the SAP workload lifecycle. For operational excellence, focus on the Azure SAP (AzSAP) Well-architected framework assessment.
 
 ![The Azure SAP assessments and health checks aligned to the customer journey](./images/azsap-health-check.png)
 *Figure 1: The assessment and health check cycle throughout the customer journey.*
@@ -34,14 +34,14 @@ For more information, see [Azure Well-Architected Review](/assessments/).
 
 ## Monitor the workload
 
-Monitoring is the process to collect, analyze, and act on telemetry gathered from an SAP workload. Monitoring provides insights of the health of SAP systems to compare with an expected baseline. Without monitoring, the health, security, and reliability of an SAP workload is unknown. Monitoring and diagnostics give insight into a system so that you know when and where failures occur.
+Monitoring is the process to collect, analyze, and act on data gathered from an SAP workload. Monitoring provides insights of the health of SAP systems to compare with an expected baseline. The health, security, and reliability of an SAP workload is unknown without monitoring. Monitoring and diagnostics give insight into a system so that you know when and where failures occur.
 
 A best practice is to use a common and consistent logging schema that lets you correlate events across systems. The monitoring and diagnostics process has several distinct phases:
 
 - *Instrumentation* - Generating the raw data from application logs, web server logs, the diagnostics built into the Azure platform, and other sources.
 - *Collection and storage* - Consolidating the data into one place.
 - *Analysis and diagnosis* - Troubleshooting issues and seeing the overall health.
-- *Visualization and alerts* - Using telemetry data to spot trends or alert your operations team.
+- *Visualization and alerts* - Using data to spot trends or alert your operations team.
 
 We recommend Azure Monitor for SAP solutions to drive these processes. Azure Monitor for SAP is an Azure-native monitoring product for SAP landscapes that run on Azure. Azure Monitor for SAP solutions uses specific parts of the Azure Monitor infrastructure to provide insights into the monitoring of SAP Netweaver, SAP HANA, SQL Server & Pacemaker High-Availability deployments on Azure.
 
