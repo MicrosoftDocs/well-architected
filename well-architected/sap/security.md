@@ -80,7 +80,7 @@ Azure includes tools to safeguard data according to your organization's security
 
 We recommend you review and understand server-side encryption (SSE) with customer managed keys (CMK). The combination of SSE and CMK allows you to encrypt data at rest in the operating system (OS) and data disks for available SAP OS combinations.  Azure Disk Encryption doesn’t support all SAP operating systems. The CMK should be stored in Key Vault to help ensure the integrity of the operating system. We also recommend encrypting your SAP databases. Azure Key Vault supports database encryption for SQL Server from the database management system (DBMS) and other storage needs. Below is an encryption workflow to help you visualize the encryption process.
 
-![Workflow for server-side encryption with a customer managed key using Azure Active Directory and Azure Key Vault](./images/sse-cmk.png)
+![Diagram that shows the workflow for server-side encryption with a customer managed key using Azure Active Directory and Azure Key Vault](./images/sse-cmk.png)
 
 For more information, see:
 

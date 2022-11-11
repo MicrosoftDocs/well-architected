@@ -16,7 +16,7 @@ SAP is one of the world’s leading producers of software solutions for business
 
 SAP applications thrive on infrastructure that is tailored to maximize their capabilities and with cloud services designed to optimize SAP workload functionality. Microsoft has hosted SAP instances in its data centers for decades and has custom built infrastructure and services to run SAP and its applications as they were designed. We’ve used this SAP experience to create a concise set of best practices for evaluating, designing, and optimizing an SAP workload from premigration to operations. The goal of this guidance is to help you get the most benefits from each SAP workload.
 
-:::image type="content" source="./images/sap-platform-workload.png" alt-text="Using SAP workload guidance throughout the lifecycle of an SAP workload." lightbox="./images/sap-platform-workload.png" border="false":::
+:::image type="content" source="./images/sap-platform-workload.png" alt-text="Diagram that shows how to use this SAP workload guidance throughout the lifecycle of an SAP workload." lightbox="./images/sap-platform-workload.png" border="false":::
 *Figure 1: Using SAP workload guidance throughout the lifecycle of an SAP workload.*
 
 The guidance is designed for one SAP workload at a time. Anytime you want to optimize a specific SAP application (S4/HANA, NetWeaver, etc.) for Azure or in Azure, you should use this guidance. Work through the guidance as many times as you need to derive the benefits you expect. In operations, this guidance should be paired with the Well-Architected Review assessments and health checks. We address these tools in our guidance.
