@@ -32,7 +32,7 @@ The AzSAP Well-architected framework assessment is for operations. It compares y
 
 The initial assessment creates a baseline, and the next iteration of assessment uses the previous assessment as the starting point. It will maintain the selections from the last assessment to track and review the design principle. Because the assessment builds on itself, you can track improvements overtime. The assessment is designed for an existing SAP workload in Azure and can assess one or more of the WAF pillars.
 
-We recommend using this SAP assessment to develop and realign the SOPs for your SAP workload. The assessment identifies areas of strength and weakness that all you to build better SOPs. For more information, see [Azure Well-Architected Review](/assessments/).
+We recommend using this SAP assessment to develop and realign the SOPs for your SAP workload. The assessment identifies areas of strength and weakness that allow you to build better SOPs. For more information, see [Azure Well-Architected Review](/assessments/).
 
 ## Monitor the workload
 
