@@ -23,7 +23,7 @@ The guidance is designed for one SAP workload at a time. Anytime you want to opt
 
 ## SAP landing zone prerequisite
 
-Before using this content, you should have an SAP platform landing zone in Azure. The platform landing zone provides shared services to one or more of your SAP workloads. If you don’t have a platform landing zone, you should use the SAP cloud adoption framework and deploy the SAP landing zone accelerator to deploy the required foundation for your SAP workload. For more information, see [SAP cloud adoption framework](/azure/cloud-adoption-framework/scenarios/sap/).
+Before using this content, you should have an SAP platform landing zone in Azure. The platform landing zone provides shared services to one or more of your SAP workloads. If you don’t have a platform landing zone, you should use the SAP cloud adoption framework and deploy the SAP landing zone accelerator. The landing zone accelerator establishes the required foundation for your SAP workload. For more information, see [SAP cloud adoption framework](/azure/cloud-adoption-framework/scenarios/sap/).
 
 ## Guidance overview
 
