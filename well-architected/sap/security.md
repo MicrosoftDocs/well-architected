@@ -30,12 +30,6 @@ Identity management is a framework to enforce the policies that control access t
 
 **(2) SAP application** – You can access the SAP application with the SAP frontend software (SAP GUI) or a browser with HTTP/S. We recommend configuring single sign-on (SSO) using Azure Active Directory or Active Directory Federation Services (AD FS). SSO allows end users to connect to SAP applications via browser where possible. The table below provides the recommended SSO method for the given SAP solution.
 
-| SAP solution | SSO method |
-| --- | --- |
-|SAP NetWeaver based-web applications such as Fiori, WebGui|Security Assertion Markup Language (SAML)|
-|SAP GUI|Kerberos with windows active directory or AAD-Domain services or third party solution|
-|SAP PaaS and SaaS applications such as SAP Business Technology Platform (BTP), Analytics Cloud, Cloud Identity Services, [SuccessFactors]( /azure/active-directory/app-provisioning/sap-successfactors-integration-reference), [Cloud for Customer]( /azure/active-directory/saas-apps/sap-customer-cloud-tutorial), [Ariba](/azure/active-directory/saas-apps/ariba-tutorial)|SAML / OAuth / JSON Web Tokens (JWT) and pre-configured authentication flows with Azure AD directly or by proxy with the SAP Identity Authentication Service|
-
 For more information, see:
 
 - [SAP HANA SSO](/azure/active-directory/saas-apps/saphana-tutorial)
@@ -51,6 +45,16 @@ For more information, see:
 - [SAP Identity Authentication Service](https://help.sap.com/docs/IDENTITY_AUTHENTICATION)
 
 A common customer scenario is deploying SAP application into Microsoft Teams. This solution requires SSO with Azure AD. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams.
+
+A common customer scenario is deploying an SAP application into Microsoft Teams. This solution requires SSO with Azure AD. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams.
+
+For more information, see [Microsoft AppSource marketplace](https://appsource.microsoft.com/marketplace/apps?page=1&search=sap).
+
+| SAP solution | SSO method |
+| --- | --- |
+|SAP NetWeaver based-web applications such as Fiori, WebGui|Security Assertion Markup Language (SAML)|
+|SAP GUI|Kerberos with windows active directory or AAD-Domain services or third party solution|
+|SAP PaaS and SaaS applications such as SAP Business Technology Platform (BTP), Analytics Cloud, Cloud Identity Services, [SuccessFactors]( /azure/active-directory/app-provisioning/sap-successfactors-integration-reference), [Cloud for Customer]( /azure/active-directory/saas-apps/sap-customer-cloud-tutorial), [Ariba](/azure/active-directory/saas-apps/ariba-tutorial)|SAML / OAuth / JSON Web Tokens (JWT) and pre-configured authentication flows with Azure AD directly or by proxy with the SAP Identity Authentication Service|
 
 ## Use role-based access control (RBAC)
 
