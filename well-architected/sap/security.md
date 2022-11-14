@@ -53,7 +53,7 @@ A common customer scenario is deploying SAP application into Microsoft Teams. Th
 | --- | --- |
 |SAP NetWeaver based-web applications such as Fiori, WebGui|Security Assertion Markup Language (SAML)|
 |SAP GUI|Kerberos with windows active directory or AAD-Domain services or third party solution|
-|SAP PaaS and SaaS applications such as SAP Business Technology Platform (BTP), Analytics Cloud, Cloud Identity Services, [SuccessFactors]( /azure/active-directory/app-provisioning/sap-successfactors-integration-reference), [Cloud for Customer]( /azure/active-directory/saas-apps/sap-customer-cloud-tutorial), [Ariba](/azure/active-directory/saas-apps/ariba-tutorial)|SAML / OAuth / JSON Web Tokens (JWT) and pre-configured authentication flows with Azure AD directly or by proxy with the SAP Identity Authentication Service|
+|SAP PaaS and SaaS applications such as SAP Business Technology Platform (BTP), Analytics Cloud, [Cloud Identity Services](https://help.sap.com/docs/IDENTITY_AUTHENTICATION), [SuccessFactors]( /azure/active-directory/app-provisioning/sap-successfactors-integration-reference), [Cloud for Customer]( /azure/active-directory/saas-apps/sap-customer-cloud-tutorial), [Ariba](/azure/active-directory/saas-apps/ariba-tutorial)|SAML / OAuth / JSON Web Tokens (JWT) and pre-configured authentication flows with Azure AD directly or by proxy with the SAP Identity Authentication Service|
 
 ## Use role-based access control (RBAC)
 
