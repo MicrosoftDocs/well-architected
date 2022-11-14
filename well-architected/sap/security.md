@@ -28,9 +28,7 @@ Identity management is a framework to enforce the policies that control access t
 - [Sign in to a Linux virtual machine in Azure by using Azure AD and OpenSSH]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
 - [Sign in to a Windows virtual machine in Azure by using Azure AD]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows)
 
-**(2) SAP application** – You can access the SAP application with the SAP frontend software (SAP GUI) or a browser with HTTP/S. We recommend configuring single sign-on (SSO) using Azure Active Directory or Active Directory Federation Services (AD FS). SSO allows end users to connect to SAP applications via browser where possible. The table below provides the recommended SSO method for the given SAP solution.
-
-For more information, see:
+**(2) SAP application** – You can access the SAP application with the SAP frontend software (SAP GUI) or a browser with HTTP/S. We recommend configuring single sign-on (SSO) using Azure Active Directory or Active Directory Federation Services (AD FS). SSO allows end users to connect to SAP applications via browser where possible. For more information, see:
 
 - [SAP HANA SSO](/azure/active-directory/saas-apps/saphana-tutorial)
 - [SAP NetWeaver SSO](/azure/active-directory/saas-apps/sap-netweaver-tutorial)
@@ -45,11 +43,11 @@ For more information, see:
 - [SAP Identity Authentication Service](https://help.sap.com/docs/IDENTITY_AUTHENTICATION)
 - [SAP Identity Provisioning Service](https://help.sap.com/docs/IDENTITY_PROVISIONING)
 
-A common customer scenario is deploying SAP application into Microsoft Teams. This solution requires SSO with Azure AD. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams.
+A common customer scenario is deploying SAP application into Microsoft Teams. This solution requires SSO with Azure AD. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams. For more information, see:
 
-A common customer scenario is deploying an SAP application into Microsoft Teams. This solution requires SSO with Azure AD. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams.
+- [Microsoft AppSource marketplace](https://appsource.microsoft.com/marketplace/apps?page=1&search=sap).
 
-For more information, see [Microsoft AppSource marketplace](https://appsource.microsoft.com/marketplace/apps?page=1&search=sap).
+**Summary** - The table below provides a summary of the recommended SSO method for the given SAP solution.
 
 | SAP solution | SSO method |
 | --- | --- |
