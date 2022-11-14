@@ -43,6 +43,7 @@ For more information, see:
 
 - [Using Azure Active Directory to secure access to SAP platforms and applications](/azure/active-directory/fundamentals/scenario-azure-first-sap-identity-integration).
 - [SAP Identity Authentication Service](https://help.sap.com/docs/IDENTITY_AUTHENTICATION)
+- [SAP Identity Provisioning Service](https://help.sap.com/docs/IDENTITY_PROVISIONING)
 
 A common customer scenario is deploying SAP application into Microsoft Teams. This solution requires SSO with Azure AD. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams.
 
