@@ -47,7 +47,7 @@ A common customer scenario is deploying SAP application into Microsoft Teams. Th
 
 - [Microsoft AppSource marketplace](https://appsource.microsoft.com/marketplace/apps?page=1&search=sap).
 
-**Summary** - The table below provides a summary of the recommended SSO method for the given SAP solution.
+The table below provides a summary of the recommended SSO method for the given SAP solution.
 
 | SAP solution | SSO method |
 | --- | --- |
@@ -85,13 +85,14 @@ We recommend you review and understand server-side encryption (SSE) with custome
 
 ![Diagram that shows the workflow for server-side encryption with a customer managed key using Azure Active Directory and Azure Key Vault](./images/sse-cmk.png)
 
+When you use client-side encryption, you encrypt the data and upload the data as an encrypted blob. Key management is done by the customer.
+
 For more information, see:
 
 - [SSE for managed disks]( /azure/virtual-machines/disk-encryption)
 - [Azure Storage SSE for data at rest]( /azure/storage/common/storage-service-encryption)
 - [SSE using CMK in Azure Key Vault]( /azure/storage/common/customer-managed-keys-configure-existing-account)
-
-When you use client-side encryption, you encrypt the data and upload the data as an encrypted blob. Key management is done by the customer. For more information, see [client-side encryption](/azure/storage/blobs/client-side-encryption).
+- [client-side encryption](/azure/storage/blobs/client-side-encryption).
 
 **(2) Encrypt data in transit** – Encryption in transit applies to the state of data moving from one location to another. Data in transit can be encrypted in several ways, depending on the nature of the connection. For more information, see [encryption of data in transit]( /azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit).
 
