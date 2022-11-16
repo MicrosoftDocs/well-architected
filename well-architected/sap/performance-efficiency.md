@@ -16,7 +16,7 @@ Performance efficiency is about accelerating digital transformation with less. T
 
 ## Optimize workload compute
 
-Compute is the core that powers an SAP application. Compute includes the hardware, number of cores, and memory. These features are foundational to organizations. If you don’t optimize your compute configuration, an SAP workload will be unable to meet spikes in user demand or stay withing predefined budgets. It’s important to know the demands on your workload and match those demands with the compute you use for your SAP workload. here are some compute performance considerations.
+Compute is the core that powers an SAP application. Compute includes the hardware, number of cores, and memory. These features are foundational to organizations. If you don’t optimize your compute configuration, an SAP workload will be unable to meet spikes in user demand or stay withing predefined budgets. It’s important to know the demands on your workload and match those demands with the compute you use for your SAP workload. Here are some compute performance considerations.
 
 **(1) Conduct reference sizing for on-premises workload** - Reference sizing is the process of checking the configurations and resource utilization data of an SAP workload on-premises. Reference sizing data shows the current compute needs of the workload, and these needs should be matched in Azure. To find this information, use the SAP OS Collector. SAP OS Collector retrieves system utilization information that can be reported via SAP transaction OS07N and the EarlyWatch Alert. Any system performance and statistics gathering tools can collect similar information.
 
@@ -34,11 +34,11 @@ It’s important to choose the appropriate storage solutions to support the data
 
 **(4) Choose the right VM** - Choosing the right VM has cost and performance implications. The goal is to pick a storage VM that supports the IOPS and throughput requirements of the SAP workload. There are three critical areas to focus while selecting a VM.
 
-***Number of vCPUs***: The number of CPUs has a direct effect on the licenses in the database node. Most of the databases follow a core-based licensing model. Use the amount that meets your needs and adjust licensing agreements as necessary.
+*Number of vCPUs* - The number of CPUs has a direct effect on the licenses in the database node. Most of the databases follow a core-based licensing model. Use the amount that meets your needs and adjust licensing agreements as necessary.
 
-***Memory***: Memory is critical to application performance, and your SAP application can have high memory demands. In general, higher memory provides more memory-reads, less paging, and higher VM cost.
+*Memory* - Memory is critical to application performance, and your SAP application can have high memory demands. In general, higher memory provides more memory-reads, less paging, and higher VM cost.
 
-***Throughput***: Throughput is important for an application hosted on one of the VMs to communicate with outside the VM by using its network interface cards (NICs).
+*Throughput* - Throughput is important for an application hosted on one of the VMs to communicate with outside the VM by using its network interface cards (NICs).
 
 ## Optimize workload networking
 
