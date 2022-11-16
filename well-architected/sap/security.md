@@ -92,7 +92,7 @@ For more information, see:
 - [SSE for managed disks]( /azure/virtual-machines/disk-encryption)
 - [Azure Storage SSE for data at rest]( /azure/storage/common/storage-service-encryption)
 - [SSE using CMK in Azure Key Vault]( /azure/storage/common/customer-managed-keys-configure-existing-account)
-- [client-side encryption](/azure/storage/blobs/client-side-encryption).
+- [Client-side encryption](/azure/storage/blobs/client-side-encryption).
 
 **(2) Encrypt data in transit** – Encryption in transit applies to the state of data moving from one location to another. Data in transit can be encrypted in several ways, depending on the nature of the connection. For more information, see [encryption of data in transit]( /azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit).
 
