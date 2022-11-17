@@ -7,7 +7,7 @@ metadata:
   title: Reliability documentation
   description: Learn how to apply resiliency principles to your architecture to ensure an application returns to a fully functioning state after a failure occurs.
   services: na
-  author: v-stacywray
+  author: martinekuan
   ms.author: martinekuan
   manager: david-stanford
   ms.date: 02/04/2022
