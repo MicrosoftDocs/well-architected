@@ -1,7 +1,7 @@
 ---
 title: Design scalable Azure applications
 description: Review design considerations for scalable applications. Choose the right data storage and VM size, build with microservices, establish connection pooling, and more.
-author: v-aangie
+author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual

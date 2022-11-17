@@ -1,7 +1,7 @@
 ---
 title: Tradeoffs for performance efficiency
 description: Discover the pros and cons of performance optimization. Learn about tradeoffs between performance efficiency, operational excellence, reliability, scalability, and more.
-author: v-aangie
+author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual

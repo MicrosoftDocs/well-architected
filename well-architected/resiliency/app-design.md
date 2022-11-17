@@ -1,7 +1,7 @@
 ---
 title: Design reliable Azure applications
 description: Review the design considerations for making sure that Azure applications are reliable and resilient to failure.
-author: v-aangie
+author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual

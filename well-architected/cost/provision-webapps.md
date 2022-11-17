@@ -1,7 +1,7 @@
 ---
 title: Web application cost estimates
 description: Describes cost strategies for web apps
-author: v-aangie
+author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual

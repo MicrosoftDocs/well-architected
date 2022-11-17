@@ -1,7 +1,7 @@
 ---
 title: Operational excellence in hybrid workload
 description: Includes guidance and recommendations that apply to the Operational Excellence pillar in a hybrid and multi-cloud workload.
-author: v-aangie
+author: martinekuan
 ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual

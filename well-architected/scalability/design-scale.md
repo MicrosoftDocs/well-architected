@@ -1,7 +1,7 @@
 ---
 title: Design for scaling
 description: Examine the scaling options for performance efficiency. Services covered by Azure Autoscale can scale automatically to match demand to accommodate workload.
-author: v-aangie
+author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual

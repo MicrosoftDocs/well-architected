@@ -1,7 +1,7 @@
 ---
 title: Designing reliability in Azure apps
 description: Learn best practices for designing reliability in Azure applications, such as ensuring connectivity, using zone-aware services, designing for scalability, and more.
-author: v-aangie
+author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual

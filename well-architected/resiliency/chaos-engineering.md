@@ -1,7 +1,7 @@
 ---
 title: Chaos engineering
 description: Understand chaos engineering fundamentals for improving the reliability of a service that's built on Azure.
-author: v-aangie
+author: martinekuan
 ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual

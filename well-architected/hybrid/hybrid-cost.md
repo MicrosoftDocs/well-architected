@@ -1,7 +1,7 @@
 ---
 title: Cost optimization in a hybrid workload
 description: Includes guidance and recommendations that apply to the Cost pillar in a hybrid and multi-cloud environment.
-author: v-aangie
+author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
