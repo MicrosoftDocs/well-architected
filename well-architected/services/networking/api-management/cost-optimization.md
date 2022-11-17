@@ -2,7 +2,7 @@
 title: API Management and cost optimization
 description: Focuses on the API Management service used in the Networking solution to provide best-practice and configuration recommendations related to Cost optimization.
 author: v-stacywray
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 01/24/2022
 ms.topic: conceptual
 ms.service: architecture-center

@@ -7,8 +7,13 @@ metadata:
   title: Operational excellence documentation
   description: Learn how to apply operations processes to your architecture to keep an application running in production.
   services: na
+<<<<<<< HEAD
   author: martinekuan
   ms.author: martinekuan
+=======
+  author: v-stacywray
+  ms.author: robbymillsap
+>>>>>>> parent of 4c9cd94 (ms.author: "robbymillsap" to "martinekuan")
   manager: david-stanford
   ms.date: 12/08/2021
   ms.topic: landing-page

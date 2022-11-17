@@ -2,7 +2,7 @@
 title: Tradeoffs for cost
 description: View tradeoffs you may decide to make when optimizing a workload for cost, such as with reliability, performance efficiency, security, or operational excellence.
 author: martinekuan
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center

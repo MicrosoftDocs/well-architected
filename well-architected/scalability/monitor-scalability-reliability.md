@@ -2,7 +2,7 @@
 title: Monitor performance for scalability and reliability
 description: Monitoring strategy should take into consideration scalability and reliability of the infrastructure, application, and dependent services.
 author: PageWriter-MSFT
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

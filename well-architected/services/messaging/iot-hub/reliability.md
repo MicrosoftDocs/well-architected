@@ -2,7 +2,7 @@
 title: IoT and reliability
 description: Focuses on the IoT Hub service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to Reliability.
 author: v-stacywray
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 01/19/2022
 ms.topic: conceptual
 ms.service: architecture-center

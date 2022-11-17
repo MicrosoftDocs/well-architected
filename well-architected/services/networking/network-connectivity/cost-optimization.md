@@ -2,7 +2,7 @@
 title: Cost optimization and Network Connectivity
 description: Focuses on the Network Connectivity service used in the Networking solution to provide best-practice, design considerations, and configuration recommendations related to Cost optimization.
 author: v-stacywray
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 01/27/2022
 ms.topic: conceptual
 ms.service: architecture-center

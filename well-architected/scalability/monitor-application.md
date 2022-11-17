@@ -2,7 +2,7 @@
 title: Application profiling considerations for performance monitoring
 description: Collect instrumentation data from the application and correlated events across the entire stack.
 author: PageWriter-MSFT
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

@@ -2,7 +2,7 @@
 title: Azure Batch and performance efficiency
 description: Focuses on the Azure Batch service used in the Compute solution to provide best-practice, configuration recommendations, and design considerations related to Service Performance.
 author: v-stacywray
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

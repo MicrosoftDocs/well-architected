@@ -2,7 +2,7 @@
 title: Operational excellence and Azure Load Balancer
 description: Focuses on the Azure Load Balancer service used in the Networking solution to provide best-practice and configuration recommendations related to Operational excellence.
 author: v-stacywray
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 01/28/2022
 ms.topic: conceptual
 ms.service: architecture-center

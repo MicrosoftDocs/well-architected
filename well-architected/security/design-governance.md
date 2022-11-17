@@ -2,7 +2,7 @@
 title: Governance, risk, and compliance
 description: Security priorities around governance, risk, and compliance.
 author: PageWriter-MSFT
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center

@@ -2,7 +2,7 @@
 title: Azure landing zone integration
 description: Security controls on a prepared infrastructure into which a workload can get deployed.
 author: PageWriter-MSFT
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 02/28/2022
 ms.topic: conceptual
 ms.service: architecture-center

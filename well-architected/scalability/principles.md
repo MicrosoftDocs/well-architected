@@ -2,7 +2,7 @@
 title: Principles of the performance efficiency
 description: Describes the performance efficiency guiding principles
 author: a11smiles
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

@@ -2,7 +2,7 @@
 title: Plan for capacity
 description: Plan to meet capacity design requirements for performance efficiency. Understand options to reduce cost.
 author: v-aangie
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center

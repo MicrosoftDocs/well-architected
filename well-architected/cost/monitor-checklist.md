@@ -2,7 +2,7 @@
 title: Checklist - Monitor cost
 description: Review a checklist to monitor your Azure workload cost. Checklist items include getting cost data from diverse sources, using resource tag policies, and more.
 author: martinekuan
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center

@@ -2,7 +2,7 @@
 title: Data Management for Reliability
 description: Data Management for Reliability
 author: martinekuan
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

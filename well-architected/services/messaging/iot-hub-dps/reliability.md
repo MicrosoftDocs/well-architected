@@ -2,7 +2,7 @@
 title: IoT Hub Device Provisioning Service and reliability
 description: Focuses on the IoT Hub Device Provisioning Service (DPS) used in the Messaging solution to provide design considerations related to Reliability.
 author: v-stacywray
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 01/19/2022
 ms.topic: conceptual
 ms.service: architecture-center

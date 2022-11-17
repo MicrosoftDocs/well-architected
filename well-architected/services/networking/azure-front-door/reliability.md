@@ -2,7 +2,7 @@
 title: Reliability and Azure Front Door
 description: Focuses on the Azure Front Door service used in the Networking solution to provide best-practice and configuration recommendations related to Reliability.
 author: v-stacywray
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 01/25/2022
 ms.topic: conceptual
 ms.service: architecture-center

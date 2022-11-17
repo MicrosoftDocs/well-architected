@@ -2,7 +2,7 @@
 title: Identity and access management checklist
 description: Use Azure Active Directory (Azure AD) to grant access based on identity authentication and authorization.
 author: PageWriter-MSFT
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center

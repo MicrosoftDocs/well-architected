@@ -2,7 +2,7 @@
 title: Azure Database for PostgreSQL and cost optimization
 description: Focuses on the Azure Database for PostgreSQL service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Cost Optimization.
 author: v-stacywray
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

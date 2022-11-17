@@ -2,7 +2,7 @@
 title: Operational excellence and Application Insights
 description: Focuses on the Application Insights service used in the Monitoring solution to provide best-practice and configuration recommendations related to Operational excellence.
 author: v-stacywray
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 02/01/2022
 ms.topic: conceptual
 ms.service: architecture-center

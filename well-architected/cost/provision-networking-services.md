@@ -2,7 +2,7 @@
 title: Networking resources provisioning
 description: Describes cost strategies for networking design choices
 author: PageWriter-MSFT
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

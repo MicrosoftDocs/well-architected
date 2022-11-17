@@ -2,7 +2,7 @@
 title: Big data cost estimates
 description: Know how to make cost estimates for big data analytics services, including Azure Synapse analytics, Azure Databricks, Azure Stream Analytics, and more.
 author: PageWriter-MSFT
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

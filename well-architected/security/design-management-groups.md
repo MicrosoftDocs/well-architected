@@ -2,7 +2,7 @@
 title: Establish segmentation with management groups
 description: Strategies using management groups to manage resources across multiple subscriptions consistently and efficiently.
 author: PageWriter-MSFT
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center

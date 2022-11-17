@@ -2,7 +2,7 @@
 title: Issue tracking
 description: Provides requirements and use cases for issue tracking as it relates to monitoring, and diagnostics. 
 author: v-stacywray
-ms.author: martinekuan
+ms.author: robbymillsap
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
