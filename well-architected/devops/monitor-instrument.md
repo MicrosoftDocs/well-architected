@@ -2,7 +2,6 @@
 title: Instrument an application
 description: Provides information about instrumenting an application as it relates the health modeling and monitoring component of the Operational Excellence pillar.
 author: martinekuan
-manager: david-stanford
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
