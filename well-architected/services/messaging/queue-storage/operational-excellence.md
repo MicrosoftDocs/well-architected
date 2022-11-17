@@ -2,7 +2,7 @@
 title: Queue Storage and operational excellence
 description: Focuses on the Queue Storage service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to operational excellence.
 author: v-stacywray
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 01/19/2022
 ms.topic: conceptual
 ms.service: architecture-center

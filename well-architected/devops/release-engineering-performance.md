@@ -2,7 +2,7 @@
 title: Performance of deployment infrastructure
 description: Read about performance considerations to make regarding your deployment infrastructure. Get advice about build times and human intervention.
 author: UmarMohamedUsman
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

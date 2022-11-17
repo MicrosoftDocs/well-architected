@@ -2,7 +2,7 @@
 title: Provision cloud resources to optimize cost
 description: Review guidance on how to provision your cloud resources to minimize cost. See links to cost estimating for components such as big data analytics.
 author: martinekuan
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

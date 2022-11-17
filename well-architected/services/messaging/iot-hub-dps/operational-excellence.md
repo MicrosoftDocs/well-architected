@@ -2,7 +2,7 @@
 title: IoT Hub Device Provisioning Service and operational excellence
 description: Focuses on the IoT Hub Device Provisioning Service (DPS) used in the Messaging solution to provide design considerations related to Operational excellence.
 author: v-stacywray
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 01/19/2022
 ms.topic: conceptual
 ms.service: architecture-center
