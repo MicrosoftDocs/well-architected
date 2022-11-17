@@ -1,7 +1,7 @@
 ---
 title: Repeatable Infrastructure
 description: Review the concept of repeatable infrastructure. Use Azure Landing Zones. Deploy infrastructure with code. Automate deployments with ARM templates and Terraform.
-author: david-stanford
+author: martinekuan
 ms.author: robbymillsap
 ms.date: 4/7/2022
 ms.topic: conceptual

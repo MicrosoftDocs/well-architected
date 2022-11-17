@@ -1,7 +1,7 @@
 ---
 title: Data Management for Reliability
 description: Data Management for Reliability
-author: david-stanford
+author: martinekuan
 ms.author: robbymillsap
 ms.date: 12/08/2021
 ms.topic: conceptual
