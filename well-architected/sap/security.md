@@ -81,7 +81,7 @@ Azure includes tools to safeguard data according to your organization's security
 
 **(1) Encrypt data at rest** – Encrypting data at rest is a common security requirement. Azure Storage server-side encryption (SSE) is enabled by default for all managed disks, snapshots, and images. SSE uses service-managed keys by default, and these keys are transparent to the application.
 
-We recommend you review and understand server-side encryption (SSE) with customer managed keys (CMK). The combination of SSE and CMK allows you to encrypt data at rest in the operating system (OS) and data disks for available SAP OS combinations.  Azure Disk Encryption doesn’t support all SAP operating systems. The CMK should be stored in Key Vault to help ensure the integrity of the operating system. We also recommend encrypting your SAP databases. Azure Key Vault supports database encryption for SQL Server from the database management system (DBMS) and other storage needs. Below is an encryption workflow to help you visualize the encryption process.
+We recommend you review and understand server-side encryption (SSE) with customer-managed keys (CMKs). The combination of SSE and CMK allows you to encrypt data at rest in the operating system (OS) and data disks for available SAP OS combinations.  Azure Disk Encryption doesn’t support all SAP operating systems. The CMK should be stored in Key Vault to help ensure the integrity of the operating system. We also recommend encrypting your SAP databases. Azure Key Vault supports database encryption for SQL Server from the database management system (DBMS) and other storage needs. Below is an encryption workflow to help you visualize the encryption process.
 
 ![Diagram that shows the workflow for server-side encryption with a customer managed key using Azure Active Directory and Azure Key Vault](./images/sse-cmk.png)
 
@@ -89,10 +89,10 @@ When you use client-side encryption, you encrypt the data and upload the data as
 
 For more information, see:
 
-- [SSE for managed disks]( /azure/virtual-machines/disk-encryption)
-- [Azure Storage SSE for data at rest]( /azure/storage/common/storage-service-encryption)
-- [SSE using CMK in Azure Key Vault]( /azure/storage/common/customer-managed-keys-configure-existing-account)
-- [Client-side encryption](/azure/storage/blobs/client-side-encryption).
+- [Server-side encryption for managed disks]( /azure/virtual-machines/disk-encryption)
+- [Azure Storage server-side encryption]( /azure/storage/common/storage-service-encryption)
+- [Server-side encryption using customer-managed key in Azure Key Vault]( /azure/storage/common/customer-managed-keys-configure-existing-account)
+- [Client-side encryption](/azure/storage/blobs/client-side-encryption)
 
 **(2) Encrypt data in transit** – Encryption in transit applies to the state of data moving from one location to another. Data in transit can be encrypted in several ways, depending on the nature of the connection. For more information, see [encryption of data in transit]( /azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit).
 
