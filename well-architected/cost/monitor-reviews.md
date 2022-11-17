@@ -2,7 +2,7 @@
 title: Conduct cost reviews
 description: Implement cost monitoring to review cloud spend with the intent of establishing cost controls and preventing any misuse.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

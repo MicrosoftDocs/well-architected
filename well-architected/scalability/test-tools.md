@@ -2,7 +2,7 @@
 title: Testing tools
 description: Review testing tools for performance efficiency. Identify baselines and goals for performance. Cache data, run benchmark tests, and use metrics.
 author: v-aangie
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

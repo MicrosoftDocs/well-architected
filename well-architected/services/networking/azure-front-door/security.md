@@ -2,7 +2,7 @@
 title: Security and Azure Front Door
 description: Focuses on the Azure Front Door service used in the Networking solution to provide best-practice and configuration recommendations related to Security.
 author: v-stacywray
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 01/25/2022
 ms.topic: conceptual
 ms.service: architecture-center

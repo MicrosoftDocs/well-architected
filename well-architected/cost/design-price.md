@@ -2,7 +2,7 @@
 title: Consumption and fixed cost models
 description: Learn how to compare and contrast the consumption-based and fixed-price cost models for Azure services.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center

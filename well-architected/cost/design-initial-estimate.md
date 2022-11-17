@@ -2,7 +2,7 @@
 title: Initial cost estimate
 description: Learn best practices and strategies for modeling workloads and estimating initial costs for cloud migrations.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

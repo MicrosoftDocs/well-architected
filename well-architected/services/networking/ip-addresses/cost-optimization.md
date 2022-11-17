@@ -2,7 +2,7 @@
 title: Cost optimization and IP addresses
 description: Focuses on the IP addresses service used in the Networking solution to provide best-practice and configuration recommendations related to Cost optimization.
 author: v-stacywray
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 01/31/2022
 ms.topic: conceptual
 ms.service: architecture-center

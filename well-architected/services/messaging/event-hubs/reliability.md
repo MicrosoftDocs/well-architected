@@ -2,7 +2,7 @@
 title: Event Hubs and reliability
 description: Focuses on the Event Hubs service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to Reliability.
 author: v-stacywray
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 01/12/2022
 ms.topic: conceptual
 ms.service: architecture-center

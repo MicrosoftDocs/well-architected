@@ -2,7 +2,7 @@
 title: Cost estimates for networking resources
 description: See networking cost considerations and examples for traffic routing, load balancing, peering, and hybrid connectivity.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

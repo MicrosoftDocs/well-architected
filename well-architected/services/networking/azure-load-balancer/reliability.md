@@ -2,7 +2,7 @@
 title: Reliability and Azure Load Balancer
 description: Focuses on the Azure Load Balancer service used in the Networking solution to provide best-practice and configuration recommendations related to Reliability.
 author: v-stacywray
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 01/28/2022
 ms.topic: conceptual
 ms.service: architecture-center

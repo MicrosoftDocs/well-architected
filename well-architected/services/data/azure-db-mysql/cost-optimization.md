@@ -2,7 +2,7 @@
 title: Azure Database for MySQL and cost optimization
 description: Focuses on the Azure Database for MySQL service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Cost Optimization.
 author: v-stacywray
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

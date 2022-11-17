@@ -2,7 +2,7 @@
 title: Visualize data and raise alerts
 description: Provides information about visualizing data and raising alerts as it relates to the health modeling and monitoring component of the Operational Excellence pillar.
 author: v-stacywray
-ms.author: robbymillsap
+ms.author: martinekuan
 manager: david-stanford
 ms.date: 12/08/2021
 ms.topic: conceptual

@@ -2,7 +2,7 @@
 title: Azure Cosmos DB and reliability
 description: Focuses on the Azure Cosmos DB service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Reliability.
 author: v-stacywray
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

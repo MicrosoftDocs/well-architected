@@ -2,7 +2,7 @@
 title: Cost impact of Azure regions
 description: Explore cost strategies for selecting Azure regions. Examine tradeoffs, compliance and regulatory issues, and traffic costs across billing zones and regions.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

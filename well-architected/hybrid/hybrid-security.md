@@ -2,7 +2,7 @@
 title: Security in a hybrid workload
 description: Includes guidance and recommendations that apply to the Security pillar in a hybrid and multi-cloud workload.
 author: v-aangie
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

@@ -3,7 +3,7 @@ title: Operational Excellence patterns
 titleSuffix: Cloud Design Patterns
 description: Use these management and monitoring patterns to support cloud applications, which offer special challenges because the applications run in a remote datacenter.
 author: dragon119
-ms.author: robbymillsap
+ms.author: martinekuan
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
