@@ -1,7 +1,7 @@
 ---
 title: Reliability and Network connectivity
 description: Focuses on the Network connectivity service used in the Networking solution to provide best-practice, design considerations, and configuration recommendations related to Reliability.
-author: v-stacywray
+author: martinekuan
 ms.author: martinek
 ms.date: 01/26/2022
 ms.topic: conceptual

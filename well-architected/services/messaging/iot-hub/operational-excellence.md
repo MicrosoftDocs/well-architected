@@ -1,7 +1,7 @@
 ---
 title: IoT and operational excellence
 description: Focuses on the IoT Hub service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to Operational excellence.
-author: v-stacywray
+author: martinekuan
 ms.author: martinek
 ms.date: 01/19/2022
 ms.topic: conceptual

@@ -1,7 +1,7 @@
 ---
 title: Event Grid and operational excellence
 description: Focuses on the Event Grid service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to Operational excellence.
-author: v-stacywray
+author: martinekuan
 ms.author: martinek
 ms.date: 01/12/2022
 ms.topic: conceptual

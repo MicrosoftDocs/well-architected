@@ -1,7 +1,7 @@
 ---
 title: Monitoring operations of cloud applications
 description: Provides a monitoring checklist to monitor your workload for operational excellence.
-author: v-stacywray
+author: martinekuan
 ms.author: martinek
 manager: david-stanford
 ms.date: 12/08/2021

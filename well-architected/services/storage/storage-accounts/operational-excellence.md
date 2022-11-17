@@ -1,7 +1,7 @@
 ---
 title: Storage Accounts and operational excellence
 description: Focuses on the Storage Accounts service used in the Storage solution to provide best-practice, configuration recommendations, and design considerations related to Operational excellence.
-author: v-stacywray
+author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual

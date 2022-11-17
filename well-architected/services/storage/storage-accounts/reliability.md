@@ -1,7 +1,7 @@
 ---
 title: Storage Accounts and reliability
 description: Focuses on the Storage Accounts service used in the Storage solution to provide best-practice, configuration recommendations, and design considerations related to Reliability.
-author: v-stacywray
+author: martinekuan
 ms.author: martinek
 ms.date: 12/07/2021
 ms.topic: conceptual

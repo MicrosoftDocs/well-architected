@@ -1,7 +1,7 @@
 ---
 title: API Management and operational excellence
 description: Focuses on the API Management service used in the Networking solution to provide best-practice and configuration recommendations related to Operational excellence.
-author: v-stacywray
+author: martinekuan
 ms.author: martinek
 ms.date: 01/25/2022
 ms.topic: conceptual

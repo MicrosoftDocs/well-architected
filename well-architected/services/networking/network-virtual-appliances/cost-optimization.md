@@ -1,7 +1,7 @@
 ---
 title: Cost optimization and Network Virtual Appliances (NVA)
 description: Focuses on the Network Virtual Appliances service used in the Networking solution to provide design considerations related to Cost optimization.
-author: v-stacywray
+author: martinekuan
 ms.author: martinek
 ms.date: 01/26/2022
 ms.topic: conceptual

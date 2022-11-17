@@ -1,7 +1,7 @@
 ---
 title: Operational excellence and Traffic Manager
 description: Focuses on the Traffic Manager service used in the Networking solution to provide best-practice and configuration recommendations related to Operational excellence.
-author: v-stacywray
+author: martinekuan
 ms.author: martinek
 ms.date: 01/28/2022
 ms.topic: conceptual

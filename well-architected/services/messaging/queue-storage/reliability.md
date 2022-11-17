@@ -1,7 +1,7 @@
 ---
 title: Queue Storage and reliability
 description: Focuses on the Queue Storage service used in the Messaging solution to provide best-practice, configuration recommendations, and design considerations related to Reliability.
-author: v-stacywray
+author: martinekuan
 ms.author: martinek
 ms.date: 01/19/2022
 ms.topic: conceptual
