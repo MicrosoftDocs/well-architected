@@ -20,16 +20,132 @@ ms.custom:
 
 # Architecture pattern for mission-critical workloads on Azure
 
-This section provides design considerations and recommendations across architecturally significant topics that are relevant for a mission-critical workload. The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design.
+This article describes a pattern that's commonly recommended for mission-critical architecture. The pattern describes the components and their characteristics. Also included are some examples that implement this pattern. 
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical)
->
-> There are [reference implementations](mission-critical-overview.md#illustrative-examples) available as part of an open source project on GitHub. The code assets provided by these implementations illustrate the recommendations highlighted in this article.
 
-## Reference architecture
+## Mission-critical pattern
+
+[Diagram showing a generic pattern for a mission-critical application.](mission-critical-pattern.png)
+
+### Key charactertistics
+
+
+
+### Global resources 
+
+##### Charactertistics
+
+### Regional resources 
+
+##### Charactertistics
+
+### Regional stamp resources
+
+##### Charactertistics
+
+## Pattern examples
+
+### Example HPC architectures
+
+There are many different ways to design and implement your HPC architecture on Azure.  HPC applications can scale to thousands of compute cores, extend on-premises clusters, or run as a 100% cloud-native solution.
+
+The following scenarios outline a few of the common ways HPC solutions are built.
+
+<ul class="columns is-multiline has-margin-left-none has-margin-bottom-none has-padding-top-medium">
+    <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+        <article class="card has-outline-hover is-relative is-fullheight">
+            <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
+                <a class="is-undecorated is-full-height is-block"
+                 href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro">
+                 <img role="presentation" alt="Diagram shows a baseline mission-critical application." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-online.png">
+                </a>
+             </figure>
+             <div class="card-content has-text-overflow-ellipsis">
+                 <div class="has-padding-bottom-none">
+                     <h3 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline architecture</h3>
+                 </div>
+                    <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                        <p>The workload is accessed over a public endpoint and does not require private network connectivity to other company resources.</p>
+                    </div>
+                </div>
+            </article>
+    </li>
+    <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+        <article class="card has-outline-hover is-relative is-fullheight">
+            <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
+               <a class="is-undecorated is-full-height is-block"
+                 href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture">
+                 <img role="presentation" alt="Diagram shows the baseline architecture extended with network controls." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-network-highres.png">
+                </a>
+                </figure>
+                <div class="card-content has-text-overflow-ellipsis">
+                    <div class="has-padding-bottom-none">
+                        <h4 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline with network controls</h4>
+                    </div>
+                    <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                        <p>The workload has strict network controls in place to prevent unauthorized public access from the internet to any of the workload resources.</p>
+                    </div>
+                </div>
+            </article>
+    </li>
+    <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+        <article class="card has-outline-hover is-relative is-fullheight">
+          <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
+              <a class="is-undecorated is-full-height is-block"
+              href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone">
+                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-landing-zone-high-res.png">
+            </a>
+          </figure>
+          <div class="card-content has-text-overflow-ellipsis">
+             <div class="has-padding-bottom-none">
+                   <h5 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline in Azure landing zones</h5>
+             </div>
+             <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                   <p>The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise.</p>
+             </div>
+          </div>
+       </article>
+    </li>
+    <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+        <article class="card has-outline-hover is-relative is-fullheight">
+          <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
+              <a class="is-undecorated is-full-height is-block"
+              href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone">
+                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-landing-zone-high-res.png">
+            </a>
+          </figure>
+          <div class="card-content has-text-overflow-ellipsis">
+             <div class="has-padding-bottom-none">
+                   <h5 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline in Azure landing zones</h5>
+             </div>
+             <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                   <p>The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise.</p>
+             </div>
+          </div>
+       </article>
+    </li>
+    <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+        <article class="card has-outline-hover is-relative is-fullheight">
+          <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
+              <a class="is-undecorated is-full-height is-block"
+              href="https://review.learn.microsoft.com/en-us/azure/architecture/industries/telecommunications/carrier-grade?branch=pr-en-us-8411">
+                 <img role="presentation" alt="Diagram shows a carrier-grade voicemail solution." src="https://review.learn.microsoft.com/en-us/azure/architecture/industries/telecommunications/images/carrier-grade-architecture.png?branch=pr-en-us-8411">
+            </a>
+          </figure>
+          <div class="card-content has-text-overflow-ellipsis">
+             <div class="has-padding-bottom-none">
+                   <h5 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Carrier-grade voicemail solution</h5>
+             </div>
+             <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                   <p>Within the telecommunications industry, mission-critical applications are referred to as carrier-grade systems. This example shows a voice mail solution.</p>
+             </div>
+          </div>
+       </article>
+    </li>         
+</ul>
 
 A mission-critical workload architecture is defined by the various design decisions required to ensure both functional and non-functional business-requirements are fully satisfied. The target architecture is therefore greatly influenced by the relevant business requirements, and as a result may vary between different application contexts.
 
