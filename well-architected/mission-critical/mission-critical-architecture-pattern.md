@@ -24,7 +24,7 @@ This article presents a common pattern for mission-critical architecture. As you
 
 The pattern has three layers and resources in them have distinct characteristics:
 
-|Characteristics|Considerations|
+|Characteristic|Considerations|
 |---|---|
 |Lifetime|What is the expected lifetime of resource, relative to other resources in the solution? Should the resource outlive or share the lifetime with the entire system or region, or should it be temporary?|
 |State|What impact will the persisted state at this layer have on reliability or manageability? |
@@ -39,14 +39,14 @@ We recommend that you evaluate [**the key design areas**](/azure/architecture/fr
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
 
-## Mission-critical pattern
+## Generic pattern
 
 ![Diagram showing a generic pattern for a mission-critical application.](./images/mission-critical-pattern.png)
 
 ### Global resources 
 Certain resources in this architecture are shared by resources deployed in regions. Common examples are resources that are used to distribute traffic across multiple regions, store permanent state for the whole application, and monitor resources for them.
 
-|Characteristics|Layer Considerations|
+|Characteristic|Considerations|
 |---|---|
 |Lifetime|These resources are expected to be long living. Their lifetime spans the life of the system or longer. Often the resources are managed with in-place data and control plane updates, assuming they support zero-downtime update operations.|
 |State| Because these resources exist for at least the lifetime of the system, this layer is often responsible for storing global, geo-replicated state.|
@@ -59,7 +59,7 @@ Certain resources in this architecture are shared by resources deployed in regio
 
 A system can have resources that are deployed in region but outlive the stamp resources. For example, observability resources that monitor resources at the regional level, including the stamps.
 
-|Characteristics|Consideration|
+|Characteristic|Consideration|
 |---|---|
 |Lifetime|The resources share the lifetime of the region and out live the stamp resources.|
 |State| State stored in a region can't live beyond the lifetime of the region. If state needs to be shared across regions, consider using a global data store.|
@@ -71,7 +71,7 @@ A system can have resources that are deployed in region but outlive the stamp re
 ### Regional stamp resources
 The stamp contains the application and resources that participate in completing business transactions. A stamp typically corresponds to a deployment to an Azure region. Although a region can have more than one stamp.
 
-|Characteristics|Considerations|
+|Characteristic|Considerations|
 |---|---|
 |Lifetime|The resources are expected to have a short life span (ephemeral) with the intent that they can get added and removed dynamically while regional resources outside the stamp continue to persist. The ephemeral nature is needed to provide more resiliency, scale, and proximity to users. |
 |State| Because stamps are ephemeral and can be destroyed at any time, a stamp should be stateless as much as possible.|
@@ -80,7 +80,7 @@ The stamp contains the application and resources that participate in completing 
 |Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to take into account the estimated high-level of demand and any failover as the result of another stamp in the region becoming unavailable.|
 |Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed. 
 
-## Pattern examples
+## Examples
 
 These examples outline a few of the common ways that mission-critical solutions are built.
 
