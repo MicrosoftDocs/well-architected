@@ -20,7 +20,7 @@ ms.custom:
 
 # Architecture pattern for mission-critical workloads on Azure
 
-This article describes a pattern that's commonly recommended for mission-critical architecture. The pattern describes the components and their characteristics. Also included are some examples that implement this pattern. 
+This article presents a common pattern for mission-critical architecture. As you start your design process, start with this pattern and then choose components that are best suited for your business requirements. Some examples  that implement this pattern are also included. 
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
@@ -28,7 +28,7 @@ This article describes a pattern that's commonly recommended for mission-critica
 
 ## Mission-critical pattern
 
-[Diagram showing a generic pattern for a mission-critical application.](./images/mission-critical-pattern.png)
+![Diagram showing a generic pattern for a mission-critical application.](./images/mission-critical-pattern.png)
 
 ### Key charactertistics
 
@@ -48,11 +48,7 @@ This article describes a pattern that's commonly recommended for mission-critica
 
 ## Pattern examples
 
-### Example HPC architectures
-
-There are many different ways to design and implement your HPC architecture on Azure.  HPC applications can scale to thousands of compute cores, extend on-premises clusters, or run as a 100% cloud-native solution.
-
-The following scenarios outline a few of the common ways HPC solutions are built.
+These example outline a few of the common ways that mission-critical solutions are built.
 
 <ul class="columns is-multiline has-margin-left-none has-margin-bottom-none has-padding-top-medium">
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
@@ -64,8 +60,8 @@ The following scenarios outline a few of the common ways HPC solutions are built
                 </a>
              </figure>
              <div class="card-content has-text-overflow-ellipsis">
-                 <div class="has-padding-bottom-none">
-                     <h4 class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline architecture</h4>
+                 <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
+                    <p>Baseline architecture</p>
                  </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
                         <p>The workload is accessed over a public endpoint and does not require private network connectivity to other company resources.</p>
