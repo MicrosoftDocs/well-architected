@@ -20,9 +20,9 @@ ms.custom:
 
 # Architecture pattern for mission-critical workloads on Azure
 
-This article presents a common pattern for mission-critical architecture. As you start the design process, start with this pattern and then choose components that are best suited for your business requirements. 
+This article presents a common pattern for mission-critical architecture. As you start the design process, start with this pattern, and then choose components that are best suited for your business requirements. 
 
-A key desing strategy is to build redundancy in layers. The pattern has three layers and resources in them have distinct characteristics:
+The pattern has three layers and resources in them have distinct characteristics:
 
 |Characteristics|Considerations|
 |---|---|
@@ -44,7 +44,7 @@ We recommend that you evaluate [**the key design areas**](/azure/architecture/fr
 ![Diagram showing a generic pattern for a mission-critical application.](./images/mission-critical-pattern.png)
 
 ### Global resources 
-Certain resources in this architecture are shared by resources deployed in regions. Common examples are resources that are used to distribute traffic across multiple regions, store permanent state for the whole application, and monitoring resources for them.
+Certain resources in this architecture are shared by resources deployed in regions. Common examples are resources that are used to distribute traffic across multiple regions, store permanent state for the whole application, and monitor resources for them.
 
 |Characteristics|Layer Considerations|
 |---|---|
@@ -62,7 +62,7 @@ A system can have resources that are deployed in region but outlive the stamp re
 |Characteristics|Consideration|
 |---|---|
 |Lifetime|The resources share the lifetime of the region and out live the stamp resources.|
-|State| State stored in a region cannot live beyond the lifetime of the region. If state needs to be shared across regions, consider using a global data store.|
+|State| State stored in a region can't live beyond the lifetime of the region. If state needs to be shared across regions, consider using a global data store.|
 |Reach|The resources don't need to be globally distributed. Direct communication with other regions should be avoided at all cost. |
 |Dependencies| The resources can have dependencies on global resources, but not on stamp resources because stamps are meant to be short lived. |
 |Scale limits|Determine the scale limit of regional resources by combining all stamps within the region.|
@@ -76,13 +76,13 @@ The stamp contains the application and resources that participate in completing 
 |Lifetime|The resources are expected to have a short life span (ephemeral) with the intent that they can get added and removed dynamically while regional resources outside the stamp continue to persist. The ephemeral nature is needed to provide more resiliency, scale, and proximity to users. |
 |State| Because stamps are ephemeral and can be destroyed at any time, a stamp should be stateless as much as possible.|
 |Reach|Can communicate with regional and global resources. However, communication with other regions or other stamps should be avoided. In this architecture, there isn't a need for these resources to be globally distributed.|
-|Dependencies| The stamp resources must be independent. That is, they shouldn't rely on other stamps or components in other regions. They are expected to have regional and global dependencies. </br>The main shared component is the database layer and container registry. This component requires synchronization at runtime.|
+|Dependencies| The stamp resources must be independent. That is, they shouldn't rely on other stamps or components in other regions. They're expected to have regional and global dependencies. </br>The main shared component is the database layer and container registry. This component requires synchronization at runtime.|
 |Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to take into account the estimated high-level of demand and any failover as the result of another stamp in the region becoming unavailable.|
 |Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed. 
 
 ## Pattern examples
 
-These example outline a few of the common ways that mission-critical solutions are built.
+These examples outline a few of the common ways that mission-critical solutions are built.
 
 <ul class="columns is-multiline has-margin-left-none has-margin-bottom-none has-padding-top-medium">
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
@@ -98,7 +98,7 @@ These example outline a few of the common ways that mission-critical solutions a
                     <p>Baseline architecture</p>
                  </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                        <p>The workload is accessed over a public endpoint and does not require private network connectivity to other company resources.</p>
+                        <p>The workload is accessed over a public endpoint and doesn't require private network connectivity to other company resources.</p>
                     </div>
                 </div>
             </article>
@@ -169,15 +169,15 @@ The mission-critical [reference implementations](mission-critical-overview.md#il
 
 ![Mission-critical workload and landing zone integration](./images/mission-critical-landing-zones.gif "Mission-critical workload and landing zone integration")
 
-It is crucial to understand and identify in which connectivity scenario a mission-critical application requires since Azure landing zones support different workload agnostic landing zones archetypes separated into different Management Group scopes.
+It's crucial to understand and identify in which connectivity scenario a mission-critical application requires since Azure landing zones support different workload agnostic landing zones archetypes separated into different Management Group scopes.
 
 > The mission-critical reference implementations are fully aligned with the Azure landing zones architectural approach and are immediately deployable within an *Online* or *Connected* Landing Zone subscription.
 
 - In the context of an *Online* landing zone archetype, a mission-critical workload operates as a completely independent solution, without any direct corporate network connectivity to the rest of the Azure landing zone architecture. The application will, however, be further safeguarded through the [*policy-driven management*](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) approach which is foundational to Azure landing zones, and will automatically integrate with centralized platform logging through policy.
 
-  An *Online* deployment can only really consider a public application deployment since there is no private corporate connectivity provided.
+  An *Online* deployment can only really consider a public application deployment since there no private corporate connectivity provided.
 
-- When deployed in a *Corp. Connected* Landing Zone context, the mission-critical workload takes a dependency on the Azure landing zone to provide connectivity resources which allow for integration with other applications and shared services. This necessitates some transformation on-top of the *Online* integration approach, because some foundational resources are expected to exist up-front as part of the shared-service platform. More specifically, the regional deployment stamp should not longer encompass an ephemeral Virtual Network or Azure Private DNS Zone since these will exist within the Azure landing zones *connectivity* subscription. 
+- When deployed in a *Corp. Connected* Landing Zone context, the mission-critical workload takes a dependency on the Azure landing zone to provide connectivity resources which allow for integration with other applications and shared services. This necessitates some transformation on-top of the *Online* integration approach, because some foundational resources are expected to exist up-front as part of the shared-service platform. More specifically, the regional deployment stamp shouldn't longer encompass an ephemeral Virtual Network or Azure Private DNS Zone since these will exist within the Azure landing zones *connectivity* subscription. 
 
   A *Corp. Connected* deployment can consider both a public or private application deployment.
 
