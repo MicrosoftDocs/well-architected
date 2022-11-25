@@ -8,7 +8,7 @@ metadata:
   services: na
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 08/16/2022
+  ms.date: 11/25/2022
   ms.topic: landing-page
   ms.service: architecture-center
   ms.subservice: well-architected
@@ -57,7 +57,7 @@ landingContent:
           - text: Operational procedures
             url: mission-critical-operational-procedures.md     
  # Card
-  - title: Reference solutions
+  - title: Reference examples
     linkLists:
       - linkListType: architecture
         links:
@@ -65,6 +65,9 @@ landingContent:
             url: /azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro   
           - text: Baseline with network controls
             url: /azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture
+          - text: Baseline in Azure landing zones
+            url: /azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone
+
 
  # Card
   - title: Reference implementations
@@ -96,9 +99,13 @@ landingContent:
           - text: Define a health model
             url: mission-critical-health-modeling.md#video-define-a-health-model-for-your-mission-critical-workload
           - text: Continuously validate your workload
-            url: mission-critical-deployment-testing.md#video-continuously-validate-your-mission-critical-workload
+            url: mission-critical-deployment-testing.md#continuously-validation-and-testing
           - text: Use multiple subscriptions
-            url: mission-critical-application-design.md#video-subscription-structure            
+            url: mission-critical-application-design.md#application-environments
+          - text: Development environments
+            url: mission-critical-deployment-testing.md.md#video-subscription-structure
+          - text: Zero downtime deployments
+            url: mission-critical-deployment-testing.md                        
       - linkListType: video
         links:
           - text: Demo - Continuous validation with Azure Load Test and Azure Chaos Studio
@@ -117,7 +124,7 @@ landingContent:
             url: mission-critical-assessment.md
 
  # Card
-  - title: Industry Scenarios
+  - title: Industry solutions
     linkLists:
       - linkListType: architecture
         links:
