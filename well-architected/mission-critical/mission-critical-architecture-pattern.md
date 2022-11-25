@@ -28,7 +28,7 @@ This article describes a pattern that's commonly recommended for mission-critica
 
 ## Mission-critical pattern
 
-[Diagram showing a generic pattern for a mission-critical application.](mission-critical-pattern.png)
+[Diagram showing a generic pattern for a mission-critical application.](./images/mission-critical-pattern.png)
 
 ### Key charactertistics
 
@@ -59,13 +59,13 @@ The following scenarios outline a few of the common ways HPC solutions are built
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                 <a class="is-undecorated is-full-height is-block"
-                 href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro">
-                 <img role="presentation" alt="Diagram shows a baseline mission-critical application." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-online.png">
+                 href="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro">
+                 <img role="presentation" alt="Diagram shows a baseline mission-critical application." src="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-online.png">
                 </a>
              </figure>
              <div class="card-content has-text-overflow-ellipsis">
                  <div class="has-padding-bottom-none">
-                     <h3 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline architecture</h3>
+                     <h4 class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline architecture</h4>
                  </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
                         <p>The workload is accessed over a public endpoint and does not require private network connectivity to other company resources.</p>
@@ -77,13 +77,13 @@ The following scenarios outline a few of the common ways HPC solutions are built
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                <a class="is-undecorated is-full-height is-block"
-                 href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture">
-                 <img role="presentation" alt="Diagram shows the baseline architecture extended with network controls." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-network-highres.png">
+                 href="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture">
+                 <img role="presentation" alt="Diagram shows the baseline architecture extended with network controls." src="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-network-highres.png">
                 </a>
                 </figure>
                 <div class="card-content has-text-overflow-ellipsis">
                     <div class="has-padding-bottom-none">
-                        <h4 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline with network controls</h4>
+                        <h4 class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline with network controls</h4>
                     </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
                         <p>The workload has strict network controls in place to prevent unauthorized public access from the internet to any of the workload resources.</p>
@@ -95,31 +95,13 @@ The following scenarios outline a few of the common ways HPC solutions are built
         <article class="card has-outline-hover is-relative is-fullheight">
           <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
               <a class="is-undecorated is-full-height is-block"
-              href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone">
-                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-landing-zone-high-res.png">
+              href="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone">
+                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-landing-zone-high-res.png">
             </a>
           </figure>
           <div class="card-content has-text-overflow-ellipsis">
              <div class="has-padding-bottom-none">
-                   <h5 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline in Azure landing zones</h5>
-             </div>
-             <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                   <p>The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise.</p>
-             </div>
-          </div>
-       </article>
-    </li>
-    <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
-        <article class="card has-outline-hover is-relative is-fullheight">
-          <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
-              <a class="is-undecorated is-full-height is-block"
-              href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone">
-                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-landing-zone-high-res.png">
-            </a>
-          </figure>
-          <div class="card-content has-text-overflow-ellipsis">
-             <div class="has-padding-bottom-none">
-                   <h5 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline in Azure landing zones</h5>
+                   <h4 class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">Baseline in Azure landing zones</h4>
              </div>
              <div class="is-size-7 has-margin-top-small has-line-height-reset">
                    <p>The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise.</p>
@@ -137,7 +119,7 @@ The following scenarios outline a few of the common ways HPC solutions are built
           </figure>
           <div class="card-content has-text-overflow-ellipsis">
              <div class="has-padding-bottom-none">
-                   <h5 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Carrier-grade voicemail solution</h5>
+                   <h4 class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">Carrier-grade voicemail solution</h4>
              </div>
              <div class="is-size-7 has-margin-top-small has-line-height-reset">
                    <p>Within the telecommunications industry, mission-critical applications are referred to as carrier-grade systems. This example shows a voice mail solution.</p>
