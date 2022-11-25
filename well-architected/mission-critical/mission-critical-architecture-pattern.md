@@ -84,7 +84,7 @@ The stamp contains the application and resources that participate in completing 
 
 The baseline examples serve as the north star architecture for containerized mission-critical applications. While there are many container orchestrators, but Kubernetes is widely adopted across many industries. The baseline uses Azure Kubernetes Service (AKS) as the application platform.
 
-> Refer to [Well-Architected mission-critical workloads:Containerization](/azure/architecture/framework/mission-critical/mission-critical-application-platform#containerization).
+> Refer to [Well-Architected mission-critical workloads: Containerization](/azure/architecture/framework/mission-critical/mission-critical-application-platform#containerization).
 
 <ul class="columns is-multiline has-margin-left-none has-margin-bottom-none has-padding-top-medium">
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
@@ -110,7 +110,7 @@ The baseline examples serve as the north star architecture for containerized mis
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                <a class="is-undecorated is-full-height is-block"
                  href="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture">
-                 <img role="presentation" alt="Diagram shows the baseline architecture extended with network controls." src="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-network-highres.png">
+                 <img role="presentation" alt="Diagram shows the baseline architecture extended with network controls." src="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-network.svg">
                 </a>
                 </figure>
                 <div class="card-content has-text-overflow-ellipsis">
@@ -128,7 +128,7 @@ The baseline examples serve as the north star architecture for containerized mis
           <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
               <a class="is-undecorated is-full-height is-block"
               href="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone">
-                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-landing-zone-high-res.png">
+                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-landing-zone.svg">
             </a>
           </figure>
           <div class="card-content has-text-overflow-ellipsis">
@@ -143,8 +143,9 @@ The baseline examples serve as the north star architecture for containerized mis
     </li>
 
 ## Baseline examples for industry solutions
-
-<div class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+<ul>
+  <li>
+    <div class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
         <article class="card has-outline-hover is-relative is-fullheight">
           <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
               <a class="is-undecorated is-full-height is-block"
@@ -162,7 +163,10 @@ The baseline examples serve as the north star architecture for containerized mis
           </div>
        </article>
     </div>
+  </li>
+</ul>
 
+---
 
 ## Next step
 
