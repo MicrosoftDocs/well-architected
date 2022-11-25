@@ -20,19 +20,9 @@ ms.custom:
 
 # Architecture pattern for mission-critical workloads on Azure
 
-This article presents a common pattern for mission-critical architecture. As you start your design process, start with this pattern and then choose components that are best suited for your business requirements. Some examples  that implement this pattern are also included. 
+This article presents a common pattern for mission-critical architecture. As you start the design process, start with this pattern and then choose components that are best suited for your business requirements. 
 
-> [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
->
-
-## Mission-critical pattern
-
-![Diagram showing a generic pattern for a mission-critical application.](./images/mission-critical-pattern.png)
-
-### Key charactertistics
-
-The resources in each layer have distinct characteristics:
+A key desing strategy is to build redundancy in layers. The pattern has three layers and resources in them have distinct characteristics:
 
 |Characteristics|Considerations|
 |---|---|
@@ -42,6 +32,16 @@ The resources in each layer have distinct characteristics:
 |Dependencies|What's the dependency on other resources, globally or in other regions?|
 |Scale limits|What is the expected throughput for that resource at that layer? How much scale is provided by the resource to fit that demand? |
 |Availability/disaster recovery|What's the impact on availability or disaster at this layer? Would it cause a systemic outage or only localized capacity or availability issue?|
+
+We recommend that you evaluate [**the key design areas**](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas) and develop a matrix of Azure resources and their configuration while keeping in mind the preceding characteristics. 
+
+> [!IMPORTANT]
+> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+>
+
+## Mission-critical pattern
+
+![Diagram showing a generic pattern for a mission-critical application.](./images/mission-critical-pattern.png)
 
 ### Global resources 
 Certain resources in this architecture are shared by resources deployed in regions. Common examples are resources that are used to distribute traffic across multiple regions, store permanent state for the whole application, and monitoring resources for them.
@@ -79,9 +79,6 @@ The stamp contains the application and resources that participate in completing 
 |Dependencies| The stamp resources must be independent. That is, they shouldn't rely on other stamps or components in other regions. They are expected to have regional and global dependencies. </br>The main shared component is the database layer and container registry. This component requires synchronization at runtime.|
 |Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to take into account the estimated high-level of demand and any failover as the result of another stamp in the region becoming unavailable.|
 |Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed. 
-
-## Design areas
-We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
 
 ## Pattern examples
 
