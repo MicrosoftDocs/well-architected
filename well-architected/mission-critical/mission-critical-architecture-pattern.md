@@ -161,7 +161,7 @@ These examples outline a few of the common ways that mission-critical solutions 
 
 ## Next step
 
-Review the best practices for architecting mission-critical application scenarios.
+Review the best practices for designing mission-critical application scenarios.
 
 > [!div class="nextstepaction"]
 > [Application design](./mission-critical-application-design.md)
