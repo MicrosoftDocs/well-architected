@@ -20,7 +20,7 @@ ms.custom:
 
 # Architecture pattern for mission-critical workloads on Azure
 
-This article presents a common pattern for mission-critical architecture. As you start the design process, start with this pattern, and then choose components that are best suited for your business requirements. 
+This article presents a common pattern for mission-critical architecture. As you start the design process, start with this pattern, and then choose components that are best suited for your business requirements. Also included are examples that outline common ways that mission-critical solutions are built.
 
 The pattern has three layers and resources in them have distinct characteristics:
 
@@ -82,7 +82,9 @@ The stamp contains the application and resources that participate in completing 
 
 ## Baseline examples for containerized applications
 
-These examples outline a few of the common ways that mission-critical solutions are built.
+The baseline examples serve as the north star architecture for containerized mission-critical applications. While there are many container orchestrators, but Kubernetes is widely adopted across many industries. The baseline uses Azure Kubernetes Service (AKS) as the application platform.
+
+> Refer to [Well-Architected mission-critical workloads:Containerization](/azure/architecture/framework/mission-critical/mission-critical-application-platform#containerization).
 
 <ul class="columns is-multiline has-margin-left-none has-margin-bottom-none has-padding-top-medium">
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
@@ -140,15 +142,9 @@ These examples outline a few of the common ways that mission-critical solutions 
        </article>
     </li>
 
-## Baseline examples for VM-based applications
-!Coming soon!
-
-## Baseline examples for serverless applications
-!Coming soon!
-
 ## Baseline examples for industry solutions
-<ul>
-    <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+
+<div class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
         <article class="card has-outline-hover is-relative is-fullheight">
           <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
               <a class="is-undecorated is-full-height is-block"
@@ -165,8 +161,8 @@ These examples outline a few of the common ways that mission-critical solutions 
              </div>
           </div>
        </article>
-    </li>         
-</ul>
+    </div>
+
 
 ## Next step
 
