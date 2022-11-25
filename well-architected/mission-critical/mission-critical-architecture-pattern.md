@@ -80,7 +80,7 @@ The stamp contains the application and resources that participate in completing 
 |Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to take into account the estimated high-level of demand and any failover as the result of another stamp in the region becoming unavailable.|
 |Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed. 
 
-## Examples
+## Baseline examples for containerized applications
 
 These examples outline a few of the common ways that mission-critical solutions are built.
 
@@ -139,6 +139,15 @@ These examples outline a few of the common ways that mission-critical solutions 
           </div>
        </article>
     </li>
+
+## Baseline examples for VM-based applications
+!Coming soon!
+
+## Baseline examples for serverless applications
+!Coming soon!
+
+## Baseline examples for industry solutions
+<ul>
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
         <article class="card has-outline-hover is-relative is-fullheight">
           <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
