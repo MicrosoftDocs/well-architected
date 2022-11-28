@@ -46,6 +46,7 @@ The Azure Security Benchmark includes a collection of high-impact security recom
 - [Azure Virtual Network NAT](/azure/virtual-network/nat-gateway/nat-overview)
 - [Azure ExpressRoute](/azure/expressroute/)
 - [Azure Private Link](/azure/private-link/)
+- [Azure DDoS Protection](/azure/ddos-protection/)
 
 ## Reference architecture
 Here are some reference architectures related to network security:
