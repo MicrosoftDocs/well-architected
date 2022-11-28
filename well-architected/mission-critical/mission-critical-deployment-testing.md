@@ -28,6 +28,8 @@ Deployment and testing shouldn't be constrained to the delivery of planned appli
 - **End-to-End automation**. Manual intervention in the technical execution of deployment and testing operations represents a significant reliability risk.
 - **Consistent deployment process**. Same application artifacts and processes are used to deploy the infrastructure  and  application code across different environments.
 
+> [!VIDEO 1d3846c0-f301-4a25-a49a-94f5be3f6605]
+
 This design area focuses on how to eradicate downtime and maintain application health for deployment operations, providing key considerations and recommendations intended to inform the design of optimal CI/CD pipelines for a mission-critical application.
 
 > [!IMPORTANT]
@@ -37,11 +39,13 @@ This design area focuses on how to eradicate downtime and maintain application h
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for acheiving optimal CI/CD pipelines for a mission-critical application.
 
-## Video: Continuously validate your mission-critical workload
+### Video: Continuously validate your mission-critical workload
 
-> [!VIDEO fc7842c3-7c7a-44dc-ad87-838aa51d0000]
+
 
 ## Application environments
+
+> [!VIDEO 7e6e6390-9f32-4c9e-88da-497a604db319]
 
 Before considering deployment processes and associated tooling, it's important to evaluate the application environments required to appropriately validate and stage deployment operations. These environment types will most likely differ in terms of requisite capabilities and longevity. Some environments might reflect production on a permanent basis, others may be short lived with a reduced level of complexity. These environments should be staged during the engineering and release cycle in order to ensure deployment operations are fully tested before released into the production environment.
 
@@ -161,8 +165,6 @@ A blue/green deployment can be implemented at either an application level or at 
 - Allow for a short ramp-up period when transitioning traffic between blue/green environments in order to catch faults which may not come to light immediately.
 
 ### Example - Zero-downtime deployment
-
-> [!VIDEO 1d3846c0-f301-4a25-a49a-94f5be3f6605]
 
 Achieving zero-downtime deployments is a fundamental goal of a mission-critical application. However, it's a complex issue that requires significant engineering investment and greatly influences the overall design. It's important to invest effort up-front to define and plan deployment processes, to drive key design decisions such as whether to treat resources as ephemeral.
 
@@ -400,6 +402,8 @@ Testing is a key concern for both the local developer experience ("[Inner Loop](
 
 The scope of this section focuses on testing conducted within the outer loop for a product release, considering various test scenarios, such as unit, build, static, security, integration, regression, UX, performance, capacity and failure injection (chaos). The order of conducted tests is also a critical consideration due to various dependencies, such as the need to have a running application environment.
 
+> [!VIDEO fc7842c3-7c7a-44dc-ad87-838aa51d0000]
+
 ### Design considerations
 
 - With high degrees of deployment automation, automated testing is essential to validate application or infrastructure changes in a timely and repeatable manor.
@@ -500,6 +504,8 @@ The scope of this section focuses on testing conducted within the outer loop for
 #### Demo video: Continuous validation with Azure Load Test and Azure Chaos Studio
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
+
+
 
 ## AI for DevOps
 
