@@ -145,7 +145,7 @@ A blue/green deployment can be implemented at either an application level or at 
   - Prioritize an infrastructure level approach in order to achieve zero-downtime deployments and provide one consistent deployment strategy for any kind of changes (application-level and/or infrastructure-level). Use a global load balancer to orchestrate the automated transition of user traffic between the blue and green environments.
   - Add a green backend endpoint and using a low traffic volume/weight, such as 10%.
   - After verifying that the low traffic volume on green is being managed as expected with a maintained application health, the traffic can be gradually increased in increments until it reaches 100%.
-  - While increasing traffic, a short ramp-up period should be applied to catch faults which may not come to light immediately.
+  - When increasing traffic, a short ramp-up period should be applied to catch faults which may not come to light immediately.
   - After all traffic has been migrated to the new green environment, remove the blue backend from global load balancer service.
   - Decommission the old and inactive blue environment.
   - Repeat the process for the next deployment with blue and green reversed.
@@ -225,7 +225,7 @@ This section focuses on the optimal use of GitHub Actions and Azure Pipelines an
 
 - A private and dedicated [GitHub AE](https://docs.github.com/en/github-ae@latest/admin/overview/about-github-ae) offering is available in a limited public preview.
 
-- GitHub Actions is still a fairly new service, but is already well suited for build-related tasks (Continuous Integration).
+- GitHub Actions is well-suited for build-related tasks (Continuous Integration).
 
 - GitHub Actions is less mature when it comes to deployment tasks (Continuous Deployment).
   - Templating and reuse of pipeline steps is limited.
@@ -347,7 +347,7 @@ There are three common approaches applied to define at what point secrets must b
 
 **Deployment-Time Retrieval**
 
-- Retrieving secrets at deployment time provides the advantage that the secret management solution only need to be available at deployment time, since there are no direct dependencies after this point. For example, injecting secrets as environment variables into a Kubernetes deployment or into a Kubernetes secret.
+- Retrieving secrets at deployment time provides the advantage that the secret management solution only needs to be available at deployment time, since there are no direct dependencies after this point. For example, injecting secrets as environment variables into a Kubernetes deployment or into a Kubernetes secret.
 
 - Only the deployment service principal needs to be able to access secrets, which simplifies RBAC permissions within the secret management system. It does, however, introduce additional RBAC considerations within DevOps tooling around controlling service principal access and the application in terms of protecting retrieved secrets.
 

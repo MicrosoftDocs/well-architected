@@ -51,7 +51,7 @@ This image shows the baseline architecture with strict controls to stop attack v
 
 ### Baseline architecture in Azure landing zones
 
-The [Baseline architecture in an Azure landing zone](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone) reference architecture aligns with the Corp. archetype.
+The [Baseline architecture in an Azure landing zone](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone) reference architecture aligns with the Corp. archetype.
 
 
 The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) and [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) provide solution orientated showcases for this use case. 
