@@ -39,10 +39,6 @@ This design area focuses on how to eradicate downtime and maintain application h
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for acheiving optimal CI/CD pipelines for a mission-critical application.
 
-### Video: Continuously validate your mission-critical workload
-
-
-
 ## Application environments
 
 > [!VIDEO 7e6e6390-9f32-4c9e-88da-497a604db319]
