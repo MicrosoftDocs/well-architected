@@ -3,22 +3,26 @@ title: Measure usage to get Azure resource cost
 description: Select Azure resources using cost strategies such as usage meters, allocated usage, subscription and offer types, or Azure Marketplace billing structures.
 author: PageWriter-MSFT
 ms.author: robbymillsap
-ms.date: 12/08/2021
+ms.reviewer: tozimmergren
+ms.date: 10/17/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom:
   - article
   - internal-intro
+  - engagement-fy23
 products:
   - azure
   - azure-cost-management
 ---
 
-# Azure resources 
+# Azure resources
+
 Just like on-premises equipment, there are several elements that affect monthly costs when using Azure services.
 
 ## Usage meters for resources
+
 Most services are priced based on units of size, amount of data, or operations. When you provision an Azure resource, Azure creates metered instances for that resource. The _meters_ track the resources' usage and generate a usage record that is used to calculate your bill.
 
 For example, you provision a virtual machine in Azure. Some meters that track its usage include: Compute Hours, IP Address Hours, Data Transfer In, Data Transfer Out, Standard Managed Disk, Standard Managed Disk Operations, Standard IO-Disk, Standard IO-Block Blob Read, Standard IO-Block Blob Write, Standard IO-Block Blob Delete.
@@ -41,6 +45,7 @@ Another way to look at pricing is the allocated usage.
 Suppose, you de-allocate the virtual machine. You'll not be billed for Compute Hours, I/O reads or writes, and other compute meters because the virtual machine is not running and has no given compute resources. However, you'll be charged for storage costs for the disks.
 
 Here are some considerations:
+
 - The meters and pricing vary per product and often have different pricing tiers based on the location, size, or capacity of the resource.
 - Cost for associated with infrastructure is kept low with commodity hardware.
 - Failures cannot be prevented but the effects of failure can be minimized through design choices. The resiliency features are factored in the price of a service and its features.
@@ -48,10 +53,15 @@ Here are some considerations:
 Here are some examples:
 
 ### Azure Disk
-Start with a small size in GB for a managed disk instead of pay-per-GB model. It's cost effective because cost is incurred on the allocated storage. 
+
+Start with a small size in GB for a managed disk instead of pay-per-GB model. It's cost effective because cost is incurred on the allocated storage.
+
 ### ExpressRoute
-Start with a smaller bandwidth circuit and scale up as needed. 
+
+Start with a smaller bandwidth circuit and scale up as needed.
+
 ### Compute infrastructure
+
 Deploy an additional smaller instance of compute alongside a smaller unit in parallel. That approach is more cost effective in comparison to restarting an instance to scale up.
 
 For details about how billing works, see [Azure Cost Management + Billing documentation](/azure/cost-management-billing/).
@@ -65,7 +75,11 @@ Azure usage rates and billing periods can vary depending on the subscription and
 
 For information about the subscription offers, see [Microsoft Azure Offer Details](https://azure.microsoft.com/support/legal/offer-details/).
 
-As you decide the offer type, consider the types that support [Azure Reservations](/azure/cost-management-billing/reservations/). With reservations, you prepay for reserved capacity at a discount. Reservations are suitable for workloads that have a long-term usage pattern. Combining the offer type with reservations can significantly lower the cost. For information about subscription and offer types that are eligible for reservations, see [Discounted subscription and offer types](/azure/cost-management-billing/reservations/prepare-buy-reservation#scope-reservations).
+As you decide on the offer type, consider the types supporting Azure reservations and savings plans.
+
+- With [Azure Reservations](/azure/cost-management-billing/reservations/), you prepay for reserved capacity at a discount. Reservations are suitable for workloads that have a long-term usage pattern. Combining the offer type with reservations can significantly lower the cost. For information about subscription and offer types that are eligible for reservations, see [Discounted subscription and offer types](/azure/cost-management-billing/reservations/prepare-buy-reservation#scope-reservations).
+
+- With [Azure savings plans](/azure/cost-management-billing/savings-plan/), you commit to a fixed hourly spend across all compute services and apply to all participating compute services globally up to the hourly commitment.
 
 ## Billing structure for services in Azure Marketplace
 

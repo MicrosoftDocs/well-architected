@@ -28,7 +28,7 @@ Availability is measured as a percentage of uptime, and defines the proportion o
 |  [Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling)  | Use a queue that acts as a buffer between a task and a service that it invokes, to smooth intermittent heavy loads.  |
 |                 [Throttling](/azure/architecture/patterns/throttling)                 |   Control the consumption of resources by an instance of an application, an individual tenant, or an entire service.    |
 
-To mitigate against availability risks from malicious Distributed Denial of Service (DDoS) attacks, implement the native [Azure DDoS protection standard](/azure/virtual-network/ddos-protection-overview) service or a third party capability.
+To mitigate against availability risks from malicious Distributed Denial of Service (DDoS) attacks, implement the native [Azure DDoS protection](/azure/virtual-network/ddos-protection-overview) service or a third party capability.
 
 ## High availability
 

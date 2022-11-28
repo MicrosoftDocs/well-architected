@@ -56,7 +56,7 @@ WAFs provide a basic level of security for web applications. WAFs are appropriat
 
 WAFs mitigate the risk of an attacker to exploit commonly seen security vulnerabilities for applications. WAFs provide a basic level of security for web applications. This mechanism is an important mitigation because attackers target web applications for an ingress point into an organization (similar to a client endpoint).
 
-External application endpoints should be protected against common attack vectors, from Denial of Service (DoS) attacks like Slowloris to app-level exploits, to prevent potential application downtime due to malicious intent. Azure-native technologies such as Azure Firewall, Application Gateway/Azure Front Door, WAF, and DDoS Protection Standard Plan can be used to achieve requisite protection (Azure DDoS Protection).
+External application endpoints should be protected against common attack vectors, from Denial of Service (DoS) attacks like Slowloris to app-level exploits, to prevent potential application downtime due to malicious intent. Azure-native technologies such as Azure Firewall, Application Gateway/Azure Front Door, WAF, and DDoS Network Protection can be used to achieve requisite protection (Azure DDoS Protection).
 
 Azure Application Gateway has WAF capabilities to inspect web traffic and detect attacks at the HTTP layer. It's a load balancer and HTTP(S) full reverse proxy that can do secure socket layer (SSL) encryption and decryption.
 
@@ -75,7 +75,7 @@ Protect all public endpoints with appropriate solutions such as Azure Front Door
 **Learn more**
 
 - [What is Azure Firewall?](/azure/firewall/overview)
-- [Azure DDoS Protection Standard overview](/azure/ddos-protection/ddos-protection-overview)
+- [Azure DDoS Protection overview](/azure/ddos-protection/ddos-protection-overview)
 - [Azure Front Door documentation](/azure/frontdoor/)
 - [What is Azure Application Gateway?](https://azure.microsoft.com/services/application-gateway/#overview)
 
@@ -120,7 +120,7 @@ Here are some considerations:
 - DDoS protection with caching. Content delivery network (CDN) can add another layer of protection. In a DDoS attack, a CDN intercepts the traffic and stops it from reaching the backend server. Azure CDN is natively protected. Azure also supports popular CDNs that are protected with proprietary DDoS mitigation platform.
 - Advanced DDoS protection. In your security baseline, consider features with monitoring techniques that use machine learning to detect anomalous traffic and proactively protect your application before service degradation occurs.
 
-For information about Azure DDoS Protection services, see [Azure DDoS Protection Standard documentation](/azure/ddos-protection/).
+For information about Azure DDoS Protection services, see [Azure DDoS Protection documentation](/azure/ddos-protection/).
 
 ### Suggested action
 
@@ -155,6 +155,6 @@ Application resources allowing multiple methods to publish app content, such as 
 
 - [Azure Firewall](/azure/firewall/overview)
 - [What is Azure Web Application Firewall on Azure Application Gateway?](/azure/web-application-firewall/ag/ag-overview)
-- [Azure DDoS Protection Standard](/azure/ddos-protection/)
+- [Azure DDoS Protection](/azure/ddos-protection/)
 
 > Go back to the main article: [Network security](design-network.md)

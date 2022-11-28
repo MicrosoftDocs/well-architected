@@ -223,8 +223,6 @@ items:
                 href: cost/optimize-checklist.md
               - name: Autoscale
                 href: cost/optimize-autoscale.md
-              - name: Reserved instances
-                href: cost/optimize-reserved.md
               - name: VM instances
                 href: cost/optimize-vm.md
               - name: Caching
@@ -377,6 +375,8 @@ items:
                   href: mission-critical/mission-critical-security.md
                 - name: Operational procedures
                   href: mission-critical/mission-critical-operational-procedures.md
+              - name: Assessment tool
+                href: mission-critical/mission-critical-assessment.md
           - name: Carrier-grade
             items:
               - name: Quick links
@@ -423,6 +423,20 @@ items:
                 href: iot/iot-operational-excellence.md
               - name: Performance Efficiency
                 href: iot/iot-performance.md
+          - name: SAP
+            items:
+              - name: Overview
+                href: sap/overview.md
+              - name: Reliability
+                href: sap/reliability.md
+              - name: Security
+                href: sap/security.md
+              - name: Cost Optimization
+                href: sap/cost-optimization.md
+              - name: Operational Excellence
+                href: sap/operational-excellence.md
+              - name: Performance Efficiency
+                href: sap/performance-efficiency.md
           - name: Sustainability
             items:
               - name: Quick links

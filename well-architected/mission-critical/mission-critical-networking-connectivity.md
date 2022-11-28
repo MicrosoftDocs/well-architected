@@ -242,7 +242,7 @@ This section builds on [global routing recommendations](#design-recommendations)
   - Provides an SLA of 99.99% when deployed across Availability Zones.
   - Provides critical capabilities such as diagnostics or outbound rules.
 
-- Use Azure DDoS Protection Standard protection plans to help protect public endpoints hosted within each application virtual network.
+- Use Azure DDoS Network Protection to help protect public endpoints hosted within each application virtual network.
 
 ## Caching and static content delivery
 

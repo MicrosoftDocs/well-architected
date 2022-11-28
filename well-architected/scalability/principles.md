@@ -1,9 +1,9 @@
 ---
 title: Principles of the performance efficiency
 description: Describes the performance efficiency guiding principles
-author: a11smiles
-ms.author: robbymillsap
-ms.date: 12/08/2021
+author: PageWriter-MSFT
+ms.author: prwilk
+ms.date: 11/08/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -16,39 +16,40 @@ ms.custom:
 ---
 
 # Performance efficiency principles
-Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. You need to anticipate increases in cloud environments to meet business requirements. These principles are intended to guide you in your overall strategy for improving performance efficiency.
+Performance efficiency is the ability of your workload to adjust to changes in demands placed on it by users in an efficient manner. These principles are intended to guide you in your overall strategy for improving performance efficiency.
 
-[**Understand the challenges of distributed architectures**](design-distributed.md)
+## Design for horizontal scaling
 
-Most cloud deployments are based on distributed architectures where components are distributed across various services. Troubleshooting monolithic applications often requires only one or two lenses—the application and the database. With distributed architectures, troubleshooting is complex and challenging because of various factors. For example, capturing telemetry throughout the application—across all services—as possible. Also, the team should be skilled with the necessary expertise to troubleshoot all services in your architecture.
+*Horizontal scaling allows for elasticity*. Instances are added (scale-out) or removed (scale-in) in response to changes in load. Scaling out can improve resiliency by building redundancy. Scaling in can help reduce costs by shutting down excess capacity.
 
-[**Run performance testing in the scope of development**](performance-test.md)
+|Approach|Benefit|
+|---|---|
+|Define a capacity model according to the business requirements |Test the limits for **predicted and random spikes and fluctuations** in load to make sure the application can scale. Factor in the SKU service limits and regional limits so that application scales as expected if there's a regional failure.|
+|Use PaaS offerings| Take advantage of the built-in capabilities that **automatically trigger scaling** operations instead of investing in manual scaling efforts that often require custom implementations and can be error prone.|
+|Choose the right resources and right-size|Determine if the resources can support the anticipated load. Also, justify the cost implications of the choices.|
+|Apply strategies in your design early| Accelerate adoption without significant changes. For example, **strive for stateless application** and store state externally in a database or distributed cache. **Use caching** where possible, to minimize the processing load.|
 
-Any development effort must go through continuous performance testing. The tests make sure that _any_ change to the codebase doesn't negatively affect the application's performance. Establish a regular cadence for running the tests. Run the test as part of a scheduled event or part of a continuous integration (CI) build pipeline.
+An alternate approach is vertical scaling (scale up). However, you eventually may reach a limit where there isn't a larger system, and you can't scale up anymore. At that point, any further scaling must be horizontal. So it's good practice to employ a scale-out architecture early on.
 
-- **Establish performance baselines**&mdash;Determine the current efficiency of the application and its supporting infrastructure. Measuring performance against baselines can provide strategies for improvements and determine if the application is meeting the business goals.
+## Shift-left on performance testing
 
-- **Run load and stress tests**&mdash;Load testing measures your application's performance under predetermined amounts of load. Stress testing measures the _maximum_ load your application and its infrastructure can support before it buckles.
+*Test early and test often to catch issues early*. 
 
-- **Identify bottlenecks**&mdash;Bottlenecks is an area within your application that can hinder performance. These spots can be the result of shortages in code or misconfiguration of a service. Typically, a bottleneck worsens as load increases.
+|Approach|Benefit|
+|---|---|
+|Run load and stress tests| Measure the application's performance under **predetermined amounts of load** and also the **maximum load** your application and its infrastructure can withstand.
+|Establish performance baselines|Determine the **current efficiency** of the application and its supporting infrastructure. You'll be able to identify bottlenecks early before it worsens with load. Also, this strategy can lead to **strategies for improvements** and determine if the application is meeting the business goals.
+|Run the test in the continuous integration (CI) build pipeline.|Detect issues early. Any development effort must go through continuous performance testing to make sure changes to the codebase doesn't negatively affect performance. |
 
-[**Continuously monitor the application and the supporting infrastructure**](checklist.md)
+## Continuously monitor for performance in production
+*Observe the system holistically to evaluate the overall health of the solution*. Capture the test results not only in dev/test environment but also in production. Monitoring and logging in production can help identify bottlenecks and opportunities for improvement.
 
-- **Have a data-driven approach**&mdash;Base your decisions on the data captured from repeatable processes. Archive data to monitor performance changes  _over time_, not just compared to the last measurement taken.
-- **Monitor the health of current workloads**&mdash;In monitoring strategy, consider scalability _and_ resiliency of the infrastructure, application, and dependent services. For scalability, look at the metrics that would allow you to provision resources dynamically and scale with demand. For reliability, look for early warning signs that might require proactive intervention.
-- **Troubleshoot performance issues**&mdash;Issues in performance can arise from database queries, connectivity between services, under-provisioned resources, or memory leaks in code. Application telemetry and profiling can be useful tools for troubleshooting your application.
+|Approach|Benefit|
+|---|---|
+|Monitor the health of the entire solution|Know about the  scalability _and_ resiliency of the infrastructure, application, and dependent services. Gather and review key performance counters regularly.|
+|Capture data from repeatable processes| Evaluate the metrics over time that would allow for autoscaling with demand. For reliability, look for early warning signs that might require proactive intervention.|
+|Reevaluate the needs of the workload continuously|Identify improvement opportunities with resolution planning. This  effort may require updated configurations and deprecations in favor of more-appropriate solutions.|
 
-[**Identify improvement opportunities with resolution planning**](optimize.md)
-
-Understand the scope of your planned resolution and communicate the changes to all necessary stakeholders. Make code enhancements through a new build. Enhancements to infrastructure may involve many teams. This involved effort may require updated configurations and deprecations in favor of more-appropriate solutions.
-
-[**Invest in capacity planning**](design-capacity.md)
-
-Plan for fluctuation in expected load that can occur because of world events. Test variations of load before the events, including unexpected ones, to ensure that your application can scale. Make sure all regions can adequately scale to support total load, if a region fails. Take into consideration:
-
-- Technology and the SKU service limits.
-- SLAs when determining the services to use in the design. Also, the SLAs of those services.
-- Cost analysis to determine how much improvement will be realized in the application if costs are increased. Evaluate if the cost is worth the investment.
 
 ## Next section
 Use this checklist to review your application architecture from a performance design standpoint.
@@ -58,6 +59,6 @@ Use this checklist to review your application architecture from a performance de
 
 ## Related links
 
-- Performance efficiency impacts the entire architecture spectrum. Bridge gaps in your knowledge of Azure by reviewing the five pillars of the [Microsoft Azure Well-Architected Framework](../index.md).
+- Performance efficiency impacts the entire architecture spectrum and is interrelated with other pillars of the [Microsoft Azure Well-Architected Framework](../index.md).
 
-- To assess your workload using pillars, see the [Microsoft Azure Well-Architected Review](/assessments/?mode=pre-assessment&session=5c2bcc40-1c41-47b1-8729-1fba49dbe408).
+- Assess your workload using the [Microsoft Azure Well-Architected Review tool](/assessments/?mode=pre-assessment&session=5c2bcc40-1c41-47b1-8729-1fba49dbe408).

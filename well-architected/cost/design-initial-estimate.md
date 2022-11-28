@@ -68,6 +68,7 @@ The B12MS instance with 2 virtual machines is sufficient for this initial estima
 **Estimated Total: $327.17 per month with upfront payment of $11,778.17**.
 
 ### Application gateway
+
 For this scenario, we consider the **Standard_v2 Tier** of Azure Application Gateway because of the autoscaling capabilities and performance benefits. We also choose consumption-based pricing, which is calculated by capacity units (CU). Each capacity unit is calculated based on compute, persistent connections, or throughput. For Standard_v2 SKU - Each compute unit can handle approximately 50 connections per second with RSA 2048-bit key TLS certificate. For this workload, we estimate 10 capacity units.
 
 **Estimated Total: $248.64 per month.**
