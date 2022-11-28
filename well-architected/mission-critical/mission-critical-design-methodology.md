@@ -75,6 +75,7 @@ Refer to these reference architectures that describe the design decisions based 
 
 - [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)
 
+> [!TIP]
 > ![GitHub logo](./../_images/github.svg) The architecture is backed by [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) implementation that illustrates the design recommendations.
 
 **Production-grade artifacts** Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered.
@@ -103,10 +104,9 @@ The [baseline architecture](/azure/architecture/reference-architectures/containe
 
 When deployed in a Corp. subscription a mission-critical workload depends on the Azure landing zone to provide connectivity resources. This approach allows integration with other applications and shared services. You'll need to design around  some foundational resources, which will exist up-front as part of the shared-service platform. For example, the regional deployment stamp should no longer encompass an ephemeral Virtual Network or Azure Private DNS Zone because these will exist in the Corp. subscription.
 
-We recommend this reference architecture to get started with this use case:
+To get started with this use case, we recommend the [**baseline architecture in an Azure landing zone**](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone) reference architecture. 
 
-- [Baseline architecture in an Azure landing zone](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone)
-
+> [!TIP]
 > ![GitHub logo](./../_images/github.svg) The preceding architecture is backed by [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) implementation.
 
 
