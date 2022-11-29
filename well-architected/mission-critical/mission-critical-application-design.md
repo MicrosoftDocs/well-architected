@@ -227,7 +227,7 @@ In reality, applications can combine loose and tight-coupling, depending on busi
 - Loosely coupled services aren't constrained to use the same compute platform, programming language, runtime, or operating system.
 - Services can scale independently, optimizing the use of infrastructure and platform resources.
 - Failures can be handled separately and don't affect client transactions.
-- Transactional integrity is harder to maintain because data creation and persistence happens within separate services.
+- Transactional integrity can be harder to maintain because data creation and persistence happens within separate services.
 - End-to-end tracing requires more complex orchestration.
 
 ### Design recommendations
@@ -235,6 +235,7 @@ In reality, applications can combine loose and tight-coupling, depending on busi
 - Key functionality should be deployed and managed as independent loosely coupled microservices with event-driven interaction through well-defined interfaces (synchronous and asynchronous).
 - The definition of microservice boundaries should consider and align with critical user-flows.
 - Use event-driven asynchronous communication where possible to support sustainable scale and optimal performance.
+- Use patterns like the Outbox and Transactional Session to guarantee consistency so that [every message is processed correctly](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#every-message-must-be-processed).
 
 ### Example - Event-driven approach
 
