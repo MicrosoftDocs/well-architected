@@ -1,8 +1,8 @@
 ---
 title: Monitor application health for reliability
 description: Use application health monitoring to improve application reliability in Azure. Work with alerts, subscriptions, service limits, instrumentation, and more.
-author: v-aangie
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
