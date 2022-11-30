@@ -2,7 +2,7 @@
 title: Overview of a hybrid workload
 description: Includes guidance and recommendations that apply to each of the five pillars in a hybrid and multi-cloud workload.
 author: martinekuan
-ms.author: pnp
+ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
