@@ -1,8 +1,8 @@
 ---
 title: Cost optimization and Log Analytics
 description: Focuses on the Log Analytics service used in the Monitoring solution to provide best-practice, design considerations, and configuration recommendations related to Cost optimization.
-author: v-stacywray
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 01/31/2022
 ms.topic: conceptual
 ms.service: architecture-center

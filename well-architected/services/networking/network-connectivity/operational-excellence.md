@@ -1,8 +1,8 @@
 ---
 title: Operational excellence and Network Connectivity
 description: Focuses on the Network Connectivity service used in the Networking solution to provide best-practice, design considerations, and configuration recommendations related to Operational excellence.
-author: v-stacywray
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 01/27/2022
 ms.topic: conceptual
 ms.service: architecture-center

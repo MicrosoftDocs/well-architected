@@ -2,7 +2,7 @@
 title: Use cached data
 description: Optimize by caching data that doesn't change frequently. Caching can result in faster response times.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

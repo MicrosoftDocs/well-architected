@@ -1,8 +1,8 @@
 ---
 title: Testing best practices for app reliability
 description: Use best practices for reliability testing in Azure apps. Implement practices to meet your business requirements, so apps run in a healthy state with little downtime.
-author: v-aangie
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

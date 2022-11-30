@@ -2,7 +2,7 @@
 title: Use Azure PaaS and SaaS services
 description: Review the design choices for managed services in Azure. Find architecture areas where platform as a service (PaaS) is appropriate, such as caching and queues.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
