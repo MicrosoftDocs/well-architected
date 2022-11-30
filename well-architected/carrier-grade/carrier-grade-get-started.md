@@ -16,7 +16,7 @@ ms.custom:
 
 # Carrier-grade workloads on Azure
 
-Mission-critical systems primarily focus on maximizing uptime and they exist in many industries.  Within the telecommunications industry, they're are referred to as _carrier-grade systems_.  These systems are developed due to one or more of the following drivers:
+Mission-critical systems primarily focus on maximizing uptime and they exist in many industries.  Within the telecommunications industry, they're referred to as _carrier-grade systems_.  These systems are developed due to one or more of the following drivers:
 
 - Minimizing loss of life or injury. 
 - Meeting regulatory requirements on reliability to avoid paying fines. 
