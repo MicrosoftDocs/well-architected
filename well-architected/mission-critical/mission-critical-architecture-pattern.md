@@ -39,7 +39,7 @@ We recommend that you evaluate [**the key design areas**](/azure/architecture/fr
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
 
-## Generic pattern
+## Core architecture pattern
 
 ![Diagram showing a generic pattern for a mission-critical application.](./images/mission-critical-pattern.png)
 
@@ -74,7 +74,7 @@ The stamp contains the application and resources that participate in completing 
 |Characteristic|Considerations|
 |---|---|
 |Lifetime|The resources are expected to have a short life span (ephemeral) with the intent that they can get added and removed dynamically while regional resources outside the stamp continue to persist. The ephemeral nature is needed to provide more resiliency, scale, and proximity to users. |
-|State| Because stamps are ephemeral and can be destroyed at any time, a stamp should be stateless as much as possible.|
+|State| Because stamps are ephemeral and will be destroyed with each deployment, a stamp should be stateless as much as possible.|
 |Reach|Can communicate with regional and global resources. However, communication with other regions or other stamps should be avoided. In this architecture, there isn't a need for these resources to be globally distributed.|
 |Dependencies| The stamp resources must be independent. That is, they shouldn't rely on other stamps or components in other regions. They're expected to have regional and global dependencies. </br>The main shared component is the database layer and container registry. This component requires synchronization at runtime.|
 |Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to take into account the estimated high-level of demand and any failover as the result of another stamp in the region becoming unavailable.|
@@ -82,7 +82,7 @@ The stamp contains the application and resources that participate in completing 
 
 ## Baseline examples for containerized applications
 
-The baseline examples serve as the north star architecture for containerized mission-critical applications. While there are many container orchestrators, but Kubernetes is widely adopted across many industries. The baseline uses Azure Kubernetes Service (AKS) as the application platform.
+The baseline examples serve as the north star architecture for containerized mission-critical applications. While there are many possible options for container orchestrators, Kubernetes is widely adopted across many industries. The baseline uses Azure Kubernetes Service (AKS) as the application platform.
 
 > Refer to [Well-Architected mission-critical workloads: Containerization](/azure/architecture/framework/mission-critical/mission-critical-application-platform#containerization).
 
@@ -136,7 +136,7 @@ The baseline examples serve as the north star architecture for containerized mis
               <p>Baseline in Azure landing zones</p>
              </div>
              <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                   <p>The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise.</p>
+                   <p>The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise. It's deployed in an Azure landing zone subscription that inherits the Corp. management group.</p>
              </div>
           </div>
        </article>
