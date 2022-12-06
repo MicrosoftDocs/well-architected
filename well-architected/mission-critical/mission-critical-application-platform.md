@@ -206,6 +206,7 @@ Use Azure Kubernetes Service (AKS) as the primary application hosting platform w
 Security
   - Apply configuration guidance provided within the [AKS security baseline](/security/benchmark/azure/baselines/aks-security-baseline).
   - Harden the AKS cluster to remove critical security risks associated with Kubernetes deployments.
+    - Evaluate [Azure AD workload identity](/azure/aks/workload-identity-overview) to assign managed identities at pod-level.
     - Use [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) to protect secrets, certificates, and connection strings.
     - Use [Managed Identities](/azure/aks/use-managed-identity) to avoid having to manage and rotate service principal credentials.
     - Utilize [Azure Active Directory integration](/azure/aks/managed-aad) to take advantage of centralized account management and passwords, application access management, and identity protection.
