@@ -1,8 +1,8 @@
 ---
 title: Release Engineering Continuous integration
 description: Examine continuous integration (CI) in release engineering. Explore using Azure CI pipelines, including source control integration, test integration, and more.
-author: david-stanford
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 04/08/2022
 ms.topic: conceptual
 ms.service: architecture-center

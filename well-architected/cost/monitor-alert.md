@@ -2,7 +2,7 @@
 title: Set budgets and alerts
 description: Use the Azure Cost Management alert feature to generate alerts when consumption reaches a threshold.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

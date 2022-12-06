@@ -6,7 +6,7 @@ metadata:
   title: Mission-critical workload documentation
   description: Apply the design methodology and approach to building carrier-grade applications on Microsoft Azure for mission-critical telecommunications workloads.
   services: na
-  author: v-stacywray
+  author: martinekuan
   ms.author: prwilk
   ms.date: 08/23/2022
   ms.topic: landing-page

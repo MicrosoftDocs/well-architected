@@ -1,8 +1,8 @@
 ---
 title: Reliability and Traffic Manager
 description: Focuses on the Traffic Manager service used in the Networking solution to provide best-practice and configuration recommendations related to Reliability.
-author: v-stacywray
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 01/28/2022
 ms.topic: conceptual
 ms.service: architecture-center

@@ -24,6 +24,7 @@ This article presents a common pattern for mission-critical architecture. As you
 
 The pattern has three layers and resources in them have distinct characteristics:
 
+
 |Characteristic|Considerations|
 |---|---|
 |Lifetime|What is the expected lifetime of resource, relative to other resources in the solution? Should the resource outlive or share the lifetime with the entire system or region, or should it be temporary?|
@@ -166,7 +167,9 @@ The baseline examples serve as the north star architecture for containerized mis
   </li>
 </ul>
 
----
+
+## Design areas
+We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
 
 ## Next step
 

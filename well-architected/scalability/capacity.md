@@ -1,8 +1,8 @@
 ---
 title: Capacity
 description: Make sure your Azure architecture provides sufficient capacity. Use content delivery networks (CDNs), and choose the right resources and metrics.
-author: david-stanford
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center

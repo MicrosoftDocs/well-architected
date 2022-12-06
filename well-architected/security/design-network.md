@@ -2,7 +2,7 @@
 title: Network security strategies on Azure
 description: Best practices for network security in Azure, including network segmentation, network management, containment strategy, and internet edge strategy.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -30,7 +30,7 @@ Protect assets by placing controls on network traffic originating in Azure, betw
 > - Segment your network footprint and create secure communication paths between segments. Align the network segmentation with overall enterprise segmentation strategy.
 > - Design security controls that identify and allow or deny traffic, access requests, and application communication between segments.
 > - Protect all public endpoints with Azure Front Door, Application Gateway, Azure Firewall, Azure DDoS Protection.
-> - Mitigate DDoS attacks with DDoS **Standard** protection for critical workloads.
+> - Mitigate DDoS attacks with Azure DDoS Protection for critical workloads.
 > - Keep virtual machines private and secure when connecting to the internet with Azure Virtual Network NAT (NAT gateway).
 > - Control network traffic between subnets (east-west) and application tiers (north-south).
 > - Protect from data exfiltration attacks through a defense-in-depth approach with controls at each layer.
@@ -46,6 +46,7 @@ The Azure Security Benchmark includes a collection of high-impact security recom
 - [Azure Virtual Network NAT](/azure/virtual-network/nat-gateway/nat-overview)
 - [Azure ExpressRoute](/azure/expressroute/)
 - [Azure Private Link](/azure/private-link/)
+- [Azure DDoS Protection](/azure/ddos-protection/)
 
 ## Reference architecture
 Here are some reference architectures related to network security:
