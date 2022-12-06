@@ -124,9 +124,9 @@ The considerations and recommendations within this section will therefore focus 
   - Enabling Azure Network Policy.
   - Azure AD integration and the use of Managed Identities for AKS instead of Service Principals.
 
-- AKS supports [three minor versions of Kubernetes](/azure/aks/supported-kubernetes-versions) in alignment with the [Kubernetes community](/azure/aks/supported-kubernetes-versions?tabs=azure-cli#aks-kubernetes-release-calendar). When a new minor version is introduced, the oldest supported minor version and patch releases are retired.
+- AKS supports [Kubernetes versions](/azure/aks/supported-kubernetes-versions) aligned with the release cycle of the [Kubernetes project](/azure/aks/supported-kubernetes-versions?tabs=azure-cli#aks-kubernetes-release-calendar). Clusters and node pools need to be upgraded on a regular basis.
 
-- AKS supports [updating node images](/azure/aks/node-image-upgrade) to the newest OS and runtime versions without updating the Kubernetes version of the cluster or node pool. The AKS team releases new images on a weekly basis for Windows and Linux nodes.
+- AKS supports different [ways to update nodes and/or clusters](/azure/aks/upgrade-cluster) in a manual or automated way. The AKS team releases new images on a weekly basis for Windows and Linux nodes.
 
 - AKS supports different [auto-upgrade channels](/azure/aks/upgrade-cluster#set-auto-upgrade-channel) to automatically upgrade AKS clusters to newer versions of Kubernetes and/or newer node images once available. [Planned Maintenance](/azure/aks/planned-maintenance) can be used to define maintenance windows for these operations.
 
@@ -147,17 +147,11 @@ The considerations and recommendations within this section will therefore focus 
 
 **Azure App Service**
 
-- SNAT port exhaustion is a common failure scenario with Azure App Services, which can be predicted through load testing while monitoring ports using Azure Diagnostics.
-  - SNAT ports are used when making outbound connections to public IP addresses.
+- SNAT port exhaustion is a common failure scenario with Azure App Services, which can be predicted through load testing while monitoring ports using Azure Diagnostics. SNAT ports are used when making outbound connections to public IP addresses.
 
-- TCP port exhaustion is a further common failure scenario which occurs when the sum of outbound connections from a given worker exceeds the capacity. The number of available TCP ports depend on the size of the worker, as captured below in the following table:
+- TCP port exhaustion is a further common failure scenario which occurs when the sum of outbound connections from a given worker exceeds the capacity. The number of available TCP ports depend on the size of the worker.
 
-    | Protocol  |Small (B1, S1, P1, I1)|Medium (B2, S2, P2, I2)|Large (B3, S3, P3, I3)|
-    |---------|---------|---------|---------|
-    |TCP ports|1920|3968|8064|
-
-- Azure App Service has a default limit of 30 instances per App Service Plan.
-  - This default limit can be increased by opening a support ticket, if the App Service routinely uses 15 or more instances.
+- Azure App Service has a default, soft limit of [instances per App Service Plan](/azure/app-service/overview-hosting-plans#should-i-put-an-app-in-a-new-plan-or-an-existing-plan). This limit can be increased by opening a support ticket, if the App Service routinely uses 15 or more instances.
 
 - Per-app scaling can be enabled at the App Service Plan level to allow an application to scale independently from the App Service plan that hosts it. For example, an App Service Plan can be scaled to 10 instances, but an app can be set to use only 5.
   - Apps are allocated to available nodes using a best effort approach for an even distribution. While an even distribution isn't guaranteed, the platform will make sure that two instances of the same app will not be hosted on the same instance.
@@ -166,82 +160,82 @@ The considerations and recommendations within this section will therefore focus 
 
 - App Service plan autoscale will scale-out run if any rule within the profile is met, but will only scale-in if all rules within the profile are met.
 
-- The App Service Premium (v3) Plan has a 20% discount versus comparable Pv2 configurations.
-  - Reserved Instance commitment (1Y, 3Y, Dev/Test) discounts are available for App Services running in the Premium v3 plan.
-
 - Diagnostic logging provides the ability to ingest application and platform level logs into either Log Analytics, Azure Storage, or a third party tool via Event Hubs.
 
 - Application performance monitoring with Application Insights provides deep insights into application performance.
   - For Linux Plans a code-based enablement (SDK) is required.
   - For Windows Plans a 'codeless deployment' approach is possible to quickly get insights without changing any code.
 
+- For cost management, see [plan and manage costs for Azure App Service](/azure/app-service/overview-manage-costs).
+
 ### Design recommendations
 
 **Azure Kubernetes Service**
 
-- Use Azure Kubernetes Service (AKS) as the primary application hosting platform where requirements allow.
+Use Azure Kubernetes Service (AKS) as the primary application hosting platform where requirements allow.
 
-- Deploy [AKS clusters across different Azure regions](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) as a scale-unit to maximize reliability and availability.
+- Availability
 
-- Configure the use of AKS node pools to maximize reliability.
+  - Deploy [AKS clusters across different Azure regions](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) as a scale-unit to maximize reliability and availability.
   - Use [Availability Zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS control plane and agent nodes across physically separate datacenters.
-    - Where co-locality latency requirements exist, either a VMSS-based AKS deployment within a single zone or [proximity placement groups](/azure/aks/reduce-latency-ppg) should be used to minimize inter-node latency.
+  - Where co-locality latency requirements exist, either AKS deployment within a single zone or [proximity placement groups](/azure/aks/reduce-latency-ppg) should be used to minimize inter-node latency.
+  - Use the [AKS Uptime SLA](/azure/aks/uptime-sla) for production clusters to maximize Kubernetes API endpoint availability guarantees.
+  - Ensure AKS subscription [scale limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-kubernetes-service-limits) are appropriately considered when designing the AKS deployment model to ensure requisite scalability.
+
+- Scalability
+  - Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.
+  - Utilize the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other selected metrics.
+  - For high scale and burst scenarios, consider the use of [Virtual Nodes](/azure/aks/virtual-nodes-cli) for extensive and rapid scale.
+  - Define [pod resource requests and limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) in application deployment manifests.
+
+- Isolation
   - Ensure the System node pool is isolated from application workloads.
-  - Use dedicated node pools for infrastructure components and tools that require high resource utilization, such as Istio, to avoid noisy neighbor scenarios.
-    - Alternatively, ensure special scale or load behavior is defined.
+  - Use dedicated node pools for infrastructure components and tools that require high resource utilization, to avoid noisy neighbor scenarios.
   - Separate distinct application workloads to dedicated node pools based on workload requirements, considering requirements for specialized infrastructure resources such as GPU, high memory VMs.
   - Avoid deploying large numbers of node pools to reduce additional management overhead.
   - Use [taints and tolerations](/azure/aks/operator-best-practices-advanced-scheduler#provide-dedicated-nodes-using-taints-and-tolerations) to provide dedicated nodes and limit resource intensive applications.
-  - For high scale scenarios, consider the use of [Virtual Nodes](/azure/aks/virtual-nodes-cli) ([vKubelet](https://github.com/virtual-kubelet/virtual-kubelet)) with ACI for extensive and rapid scale.
-  - Using [Azure Spot VMs](/azure/aks/spot-node-pool) isn't recommended for highly available workloads. However, you can consider this option for development and testing environments as a way to optimize cost.
   - Evaluate application affinity and anti-affinity requirements and configure the appropriate colocation of containers on nodes.
+  
+- Cost Optimization
+  - Consider using [Azure Spot VMs](/azure/aks/spot-node-pool) non-time sensitive batch processing and for development and testing environments as a way to optimize cost.
 
-- Resources within the [node resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks) ('MC_') should not be modified directly, only via the AKS API. The name of the node resource group can be chosen at [cluster creation time](/azure/aks/faq#can-i-provide-my-own-name-for-the-aks-node-resource-group) only or with assistance from Azure Support.
+- Networking
+  - Ensure proper selection of network plugin based on network requirements and cluster sizing. Prioritize the use of Azure CNI.
+  - Use [Azure](/azure/aks/use-network-policies) or Calico Network Policies to control traffic within the cluster. (requires Azure CNI)
 
-- Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.
+Security
+  - Apply configuration guidance provided within the [AKS security baseline](/security/benchmark/azure/baselines/aks-security-baseline).
+  - Harden the AKS cluster to remove critical security risks associated with Kubernetes deployments.
+    - Use [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) to protect secrets, certificates, and connection strings.
+    - Use [Managed Identities](/azure/aks/use-managed-identity) to avoid having to manage and rotate service principal credentials.
+    - Utilize [Azure Active Directory integration](/azure/aks/managed-aad) to take advantage of centralized account management and passwords, application access management, and identity protection.
+    - Use Kubernetes RBAC with Azure Active Directory for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to protect configuration and secrets access.
+    - Limit access to the [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file with Azure role-based access control.
+    - Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources), provide the least number of permissions and avoid the use of root / privileged escalation.
+    - Establish a consistent reliability and security baseline for AKS cluster and [pod](/azure/aks/use-pod-security-on-azure-policy) configurations using [Azure Policy](/azure/governance/policy/overview).
+      - Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, such as root privileges, and disallow pods which don't conform to policy.
+      - Policy assignments should be enforced at a subscription scope or higher to drive consistency across development teams.
 
-- Utilize the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other selected metrics.
-
-- Define [pod resource requests and limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) in application deployment manifests.
-
-- Utilize the [AKS Uptime SLA](/azure/aks/uptime-sla) for production clusters to maximize Kubernetes API endpoint availability guarantees.
-
-- Ensure proper selection of network plugin based on network requirements and cluster sizing. Prioritize the use of Azure CNI.
-- Use [Azure](/azure/aks/use-network-policies) or Calico Network Policies to control traffic within the cluster. (requires Azure CNI)
-
-- Harden the AKS cluster to remove critical security risks associated with Kubernetes deployments.
-  - Use [Pod Identities](/azure/aks/operator-best-practices-identity#use-pod-identities) and [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) to protect secrets, certificates, and connection strings.
-  - Use [Managed Identities](/azure/aks/use-managed-identity) to avoid having to manage and rotate service principal credentials.
-  - Utilize [Azure Active Directory integration](/azure/aks/managed-aad) to take advantage of centralized account management and passwords, application access management, and identity protection.
-  - Use Kubernetes RBAC with Azure Active Directory for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to protect configuration and secrets access.
-  - Limit access to the [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file with Azure role-based access control.
-  - Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources), provide the least number of permissions and avoid the use of root / privileged escalation.
-
-- Apply configuration guidance provided within the [AKS security baseline](/security/benchmark/azure/baselines/aks-security-baseline).
+- Misc
+  - Resources within the [node resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks) ('MC_') should not be modified directly, only via the AKS API.
+  - Subscribe to the public [AKS Roadmap and Release Notes](https://github.com/azure/aks) on GitHub to stay up-to-date on upcoming changes, improvements, and most importantly Kubernetes version releases or the deprecation of old releases.
+  - Consider and apply the guidance provided within the [AKS checklist](https://www.the-aks-checklist.com/) to ensure alignment with Well-Architected best practice guidance.
 
 - Utilize [Azure Monitor and Application Insights](/azure/azure-monitor/insights/container-insights-overview) to centrally collect metrics, logs, and diagnostics from AKS resources for troubleshooting purposes.
   - Enable and review [Kubernetes master node logs](/azure/aks/view-master-logs).
   - Configure the [scraping of Prometheus metrics](/azure/azure-monitor/insights/container-insights-prometheus-integration) with Azure Monitor for containers.
-
-- Subscribe to the public [AKS Roadmap and Release Notes](https://github.com/azure/aks) on GitHub to stay up-to-date on upcoming changes, improvements, and most importantly Kubernetes version releases or the deprecation of old releases.
 
 - Regularly upgrade to a supported version of Kubernetes.
   - Establish a governance process to check and upgrade as needed to not fall out of support.
   - Leverage the AKS Cluster auto-upgrade with Planned Maintenance.
   - Regularly process node image updates to remain current with new AKS images.
 
-- Ensure AKS subscription [scale limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-kubernetes-service-limits) are appropriately considered when designing the AKS deployment model to ensure requisite scalability.
-
-- Consider and apply the guidance provided within the [AKS checklist](https://www.the-aks-checklist.com/) to ensure alignment with Well-Architected best practice guidance.
-
 - Store container images within [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
   - Enable [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all leveraged AKS regions.
   - Enable [Azure Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images.
   - Authenticate using Azure AD to access Azure Container Registry.
 
-  - Establish a consistent reliability and security baseline for AKS cluster and [pod](/azure/aks/use-pod-security-on-azure-policy) configurations using [Azure Policy](/azure/governance/policy/overview).
-    - Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, such as root privileges, and disallow pods which don't conform to policy.
-    - Policy assignments should be enforced at a subscription scope or higher to drive consistency across development teams.
+
 
   > [!NOTE]
   > 
@@ -313,25 +307,23 @@ The design methodology positions serverless technologies as an alternative platf
 - In most cases Azure Functions don't require additional code to call external services or to enable external events trigger function execution since these can be achieved with Azure Function [Bindings](/azure/azure-functions/functions-triggers-bindings).
   - Azure Functions supports multiple triggers, such as the HTTP trigger, and bindings for Azure Services, such as Azure Cosmos DB, Azure Service Bus and Azure Blob Storage.
 
-- There are 3 [hosting plans](/azure/azure-functions/functions-scale) available for Azure Functions:
+- There are three [hosting plans](/azure/azure-functions/functions-scale) available for Azure Functions:
   - *Consumption* is the fully serverless pay-per-use option, with instances dynamically added and removed based on the number of incoming events; underlying compute resources are charged only when running.
-  - *Premium* uses a Premium SKU App Service plan to host functions and allows the configuration of compute instance size. Additionally,  possible to set up a number of pre-warmed instances to eliminate cold starts.
-    - There will always be at least one billed instance in the Premium plan.
+  - *Premium* uses a Premium SKU App Service plan to host functions and allows the configuration of compute instance size.
   - *Dedicated* is the least serverless option as it's tied to a provisioned App Service plan or App Service Environment. Autoscale can be enabled, but scale operations are slower than with the Consumption and Premium plans.
 
 - Fully serverless hosting options, which help optimize costs by de-provisioning allocated resources when workloads are not running, may incur "cold start" delays, especially for applications comprised of many files, such as Node.js or PHP applications.
 
-- [Azure Function Premium](/azure/azure-functions/functions-premium-plan#region-max-scale-out) has a limit of 100 instances in the Windows tier and 20 instances in the Linux tier.
+See [Azure Functions hosting options](/azure/azure-functions/functions-scale) for more details about the service limits.
 
 **Azure Logic Apps**
 
-- There are 3 [deployment modes](/azure/logic-apps/single-tenant-overview-compare) available for Azure Logic Apps:
+- There are three [deployment modes](/azure/logic-apps/single-tenant-overview-compare) available for Azure Logic Apps:
   - *Consumption* is the fully serverless pay-per-use model, with Azure managing the infrastructure which is shared across multiple tenants.
-    - A single logic app can have only one workflow.
-  - *Consumption (ISE)* uses the dedicated Integration Service Environment (ISE) to privately host logic apps.
-    - A single logic app can have only one workflow.
+  - *Consumption (ISE)* uses the dedicated Integration Service Environment (ISE) to privately host logic apps. A single logic app can have only one workflow.
   - *Standard* uses the containerized single-tenant Azure Logic Apps runtime based on Azure Functions.
-    - Each logic app can have multiple stateful and stateless workflows.
+
+- In *Standard* each logic app can have multiple stateful and stateless workflows.For *Consumption* and *Consumption (ISE)* a single logic app can have only one workflow.
 
 - Similar to Azure Functions, there are built-in triggers for event-driven processing, however, instead of deploying application code Logic Apps can be composed using a graphical user interface which supports blocks like conditionals, loops etc.
 
