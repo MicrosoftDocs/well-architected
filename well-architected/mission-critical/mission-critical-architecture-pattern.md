@@ -92,8 +92,8 @@ The baseline examples serve as the north star architecture for containerized mis
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                 <a class="is-undecorated is-full-height is-block"
-                 href="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro">
-                 <img role="presentation" alt="Diagram shows a baseline mission-critical application." src="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-online.png">
+                 href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro">
+                 <img role="presentation" alt="Diagram shows a baseline mission-critical application." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-online.png">
                 </a>
              </figure>
              <div class="card-content has-text-overflow-ellipsis">
@@ -110,8 +110,8 @@ The baseline examples serve as the north star architecture for containerized mis
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                <a class="is-undecorated is-full-height is-block"
-                 href="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture">
-                 <img role="presentation" alt="Diagram shows the baseline architecture extended with network controls." src="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-network.svg">
+                 href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture">
+                 <img role="presentation" alt="Diagram shows the baseline architecture extended with network controls." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-network.svg">
                 </a>
                 </figure>
                 <div class="card-content has-text-overflow-ellipsis">
@@ -128,8 +128,8 @@ The baseline examples serve as the north star architecture for containerized mis
         <article class="card has-outline-hover is-relative is-fullheight">
           <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
               <a class="is-undecorated is-full-height is-block"
-              href="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone">
-                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-landing-zone.svg">
+              href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone">
+                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-landing-zone.svg">
             </a>
           </figure>
           <div class="card-content has-text-overflow-ellipsis">
@@ -150,8 +150,8 @@ The baseline examples serve as the north star architecture for containerized mis
         <article class="card has-outline-hover is-relative is-fullheight">
           <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
               <a class="is-undecorated is-full-height is-block"
-              href="https://review.learn.microsoft.com/en-us/azure/architecture/industries/telecommunications/carrier-grade?branch=pr-en-us-8411">
-                 <img role="presentation" alt="Diagram shows a carrier-grade voicemail solution." src="https://review.learn.microsoft.com/en-us/azure/architecture/industries/telecommunications/images/carrier-grade-architecture.png?branch=pr-en-us-8411">
+              href="/azure/architecture/industries/telecommunications/carrier-grade?branch=pr-en-us-8411">
+                 <img role="presentation" alt="Diagram shows a carrier-grade voicemail solution." src="/azure/architecture/industries/telecommunications/images/carrier-grade-architecture.png?branch=pr-en-us-8411">
             </a>
           </figure>
           <div class="card-content has-text-overflow-ellipsis">
