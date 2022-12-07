@@ -203,7 +203,7 @@ Use Azure Kubernetes Service (AKS) as the primary application hosting platform w
   - Ensure proper selection of network plugin based on network requirements and cluster sizing. Prioritize the use of Azure CNI.
   - Use [Azure](/azure/aks/use-network-policies) or Calico Network Policies to control traffic within the cluster. (requires Azure CNI)
 
-Security
+- Security
   - Apply configuration guidance provided within the [AKS security baseline](/security/benchmark/azure/baselines/aks-security-baseline).
   - Harden the AKS cluster to remove critical security risks associated with Kubernetes deployments.
     - Evaluate [Azure AD workload identity](/azure/aks/workload-identity-overview) to assign managed identities at pod-level.
