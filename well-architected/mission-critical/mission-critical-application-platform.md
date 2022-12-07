@@ -195,9 +195,6 @@ Use Azure Kubernetes Service (AKS) as the primary application hosting platform w
   - Avoid deploying large numbers of node pools to reduce additional management overhead.
   - Use [taints and tolerations](/azure/aks/operator-best-practices-advanced-scheduler#provide-dedicated-nodes-using-taints-and-tolerations) to provide dedicated nodes and limit resource intensive applications.
   - Evaluate application affinity and anti-affinity requirements and configure the appropriate colocation of containers on nodes.
-  
-- Cost Optimization
-  - Consider using [Azure Spot VMs](/azure/aks/spot-node-pool) non-time sensitive batch processing and for development and testing environments as a way to optimize cost.
 
 - Networking
   - Ensure proper selection of network plugin based on network requirements and cluster sizing. Prioritize the use of Azure CNI.
@@ -217,26 +214,23 @@ Use Azure Kubernetes Service (AKS) as the primary application hosting platform w
       - Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, such as root privileges, and disallow pods which don't conform to policy.
       - Policy assignments should be enforced at a subscription scope or higher to drive consistency across development teams.
 
-- Misc
-  - Resources within the [node resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks) ('MC_') should not be modified directly, only via the AKS API.
+- Stay current
   - Subscribe to the public [AKS Roadmap and Release Notes](https://github.com/azure/aks) on GitHub to stay up-to-date on upcoming changes, improvements, and most importantly Kubernetes version releases or the deprecation of old releases.
   - Consider and apply the guidance provided within the [AKS checklist](https://www.the-aks-checklist.com/) to ensure alignment with Well-Architected best practice guidance.
+  - Regularly upgrade to a supported version of Kubernetes.
+    - Establish a governance process to check and upgrade as needed to not fall out of support.
+    - Leverage the AKS Cluster auto-upgrade with Planned Maintenance.
+    - Regularly process node image updates to remain current with new AKS images.
 
-- Utilize [Azure Monitor and Application Insights](/azure/azure-monitor/insights/container-insights-overview) to centrally collect metrics, logs, and diagnostics from AKS resources for troubleshooting purposes.
+- Utilize a solution like [Azure Monitor and Application Insights](/azure/azure-monitor/insights/container-insights-overview) to centrally collect metrics, logs, and diagnostics from AKS resources for troubleshooting purposes.
   - Enable and review [Kubernetes master node logs](/azure/aks/view-master-logs).
   - Configure the [scraping of Prometheus metrics](/azure/azure-monitor/insights/container-insights-prometheus-integration) with Azure Monitor for containers.
 
-- Regularly upgrade to a supported version of Kubernetes.
-  - Establish a governance process to check and upgrade as needed to not fall out of support.
-  - Leverage the AKS Cluster auto-upgrade with Planned Maintenance.
-  - Regularly process node image updates to remain current with new AKS images.
-
-- Store container images within [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
+- Container Images
+  - Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
   - Enable [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all leveraged AKS regions.
   - Enable [Azure Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images.
-  - Authenticate using Azure AD to access Azure Container Registry.
-
-
+  - Use Azure AD to access Azure Container Registry.
 
   > [!NOTE]
   > 
