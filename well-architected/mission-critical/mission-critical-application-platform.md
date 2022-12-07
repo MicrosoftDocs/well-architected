@@ -222,7 +222,8 @@ Use Azure Kubernetes Service (AKS) as the primary application hosting platform w
     - Leverage the AKS Cluster auto-upgrade with Planned Maintenance.
     - Regularly process node image updates to remain current with new AKS images.
 
-- Utilize a solution like [Azure Monitor and Application Insights](/azure/azure-monitor/insights/container-insights-overview) to centrally collect metrics, logs, and diagnostics from AKS resources for troubleshooting purposes.
+- Observability
+  - Utilize a solution like [Azure Monitor and Application Insights](/azure/azure-monitor/insights/container-insights-overview) to centrally collect metrics, logs, and diagnostics from AKS resources for troubleshooting purposes.
   - Enable and review [Kubernetes master node logs](/azure/aks/view-master-logs).
   - Configure the [scraping of Prometheus metrics](/azure/azure-monitor/insights/container-insights-prometheus-integration) with Azure Monitor for containers.
 
