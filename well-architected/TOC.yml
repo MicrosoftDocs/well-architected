@@ -428,11 +428,11 @@ items:
               - name: Quick links
                 href: sap/
               - name: Get started
-                href: sap/
+                href: sap/overview.md
               - name: Design methodology
                 href: sap/
               - name: Design principles
-                href: sap/
+                href: sap/design-principles.md
               - name: Cross-cutting concerns
                 href: sap/
               - name: Design areas
