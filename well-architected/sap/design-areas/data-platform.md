@@ -3,7 +3,7 @@ title: SAP workload data platform
 description: SAP workload data platform
 author: stephen-sumner
 ms.author: ssumner
-ms.date: 11/14/2022
+ms.date: 01/15/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -25,7 +25,9 @@ We recommend optimizing the storage cost for your SAP workload. Storage is an es
 
 **Use lifecycle management policies.** Other than reserved capacity, you need to ensure the data-retention period is right for the SAP workload. An SAP database backup can be large and add to the storage cost if not optimized. We recommend that you create a lifecycle policy that meets the recovery time objective (RTO) and recovery point objective (RPO) of your SAP workload. The policy should move into Premium, Standard, Cold, Archive storage based on its age and business requirements.
 
-## Create database resiliency
+## Reliability
+
+### Create database resiliency
 
 An SAP application feeds data to multiple enterprise systems, making database resiliency a key workload consideration. We recommend replicating production data for the highest resiliency. Cross-region replication is the preferred disaster recovery solution. But for a more affordable option, you should configure zone redundancy at a minimum. The methods you choose depends on the database management system (DBMS) and required business service-level agreement (SLA). Below are recommendations for the database layer.
 
@@ -37,7 +39,7 @@ An SAP application feeds data to multiple enterprise systems, making database re
 - [High-availability architecture and scenarios for SAP NetWeaver](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
 - [Network latency between and within zones](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones#network-latency-between-and-within-zones)
 
-## Create SAPMNT share reliability
+### Create SAPMNT share reliability
 
 SAPMNT hosts the physical kernel files for SAP application and can be a single point of failure. Several options are available on Azure to created redundancy and architect a highly available SAPMNT share. We recommend using Azure Premium Files or Azure NetApp Files for Linux and Azure Premium Files. For Windows-based deployments, you should use Azure NetApp Files or Azure Shared Disk.
 
@@ -51,7 +53,7 @@ The table below provides SAPMNT guidance specific to each operating system.
 |Red Hat Enterprise Linux (RHEL) | [High availability for SAP NetWeaver on Azure VMs on Red Hat Enterprise Linux with NFS on Azure Files](/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-nfs-azure-files) <br><br> [Azure Virtual Machines high availability for SAP NetWeaver on Red Hat Enterprise Linux with Azure NetApp Files for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 |SUSE Linux Enterprise Server (SLES) | [High-availability SAP NetWeaver with simple mount and NFS on SLES for SAP Applications VMs]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-simple-mount) <br><br>[High availability for SAP NetWeaver on Azure VMs on SUSE Linux Enterprise Server with NFS on Azure Files]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-azure-files)
 
-## Use backups
+### Data backups
 
 The SAP workload should implement a regular backup solution. Backups are the backbone of disaster recovery and help ensure continuity of operations. We have a few recommendations for backup reliability.
 
@@ -96,3 +98,21 @@ The right solution depends on your desired cost and availability levels. In some
 - [Cross-region replication of Azure NetApp Files volumes](/azure/azure-netapp-files/cross-region-replication-introduction)
 - [Cross-region snapshot copy for Azure Disk Storage](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli#cross-region-snapshot-copy-preview)
 - [Backup and Disaster Recovery](https://azure.microsoft.com/solutions/backup-and-disaster-recovery/#overview)
+
+## Storage performance
+
+It’s important to choose the appropriate storage solutions to support the data needs of the SAP workload. The correct solution can improve the performance of existing capabilities and allow you to add new features. In general, storage needs to meet the input/output operations per second (IOPS) requirements and throughput needs of the SAP database. For more information, see [storage types for an SAP workload](/azure/virtual-machines/workloads/sap/planning-guide-storage).
+
+**Use storage that supports performance requirement.** Microsoft supports different storage technology to meet your performance requirement. For SAP workload, you can use Azure Managed Disk (for example, Premium SSD, Premium SSD v2, Standard SSD) and Azure NetApp Files.
+
+**Configure storage for performance.** We've published a storage configuration guideline for SAP HANA databases. It covers production scenarios and a cost-conscious non-production variant. Following the recommended storage configurations will ensure the storage passes all SAP hardware and cloud measurement tool (HCMT) KPIs. For more information, see [SAP HANA Azure virtual machine storage configurations](/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).
+
+**Enable write accelerator.** Write accelerator is a capability for M-Series VMs on Premium Storage with Azure Managed Disks exclusively. It’s imperative to enable write accelerator on the disks associated with the /hana/log volume. This configuration facilitates sub millisecond writes latency for 4 KB and 16-KB blocks sizes. For more information, see [Azure Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator).
+
+**Choose the right VM.** Choosing the right VM has cost and performance implications. The goal is to pick a storage VM that supports the IOPS and throughput requirements of the SAP workload. There are three critical areas to focus while selecting a VM.
+
+- ***Number of vCPUs*** - The number of CPUs has a direct effect on the licenses in the database node. Most of the databases follow a core-based licensing model. Use the amount that meets your needs and adjust licensing agreements as necessary.
+
+- ***Memory*** - Memory is critical to application performance, and your SAP application can have high memory demands. In general, higher memory provides more memory-reads, less paging, and higher VM cost.
+
+- ***Throughput*** - Throughput is important for an application hosted on one of the VMs to communicate with outside the VM by using its network interface cards (NICs).

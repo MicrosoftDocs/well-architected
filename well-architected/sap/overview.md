@@ -10,7 +10,7 @@ ms.subservice: well-architected
 ms.custom: SAP
 ---
 
-# SAP workload best practices
+# SAP workload
 
 SAP is one of the world’s leading producers of software solutions for business management and customer operations. SAP provides a suite of powerful applications that you can configure to meet specific environment and organizational needs. These applications facilitate data processing and information flow across organizations and provide critical capabilities that drive key organizational functions.
 
@@ -25,28 +25,35 @@ The guidance is designed for one SAP workload at a time. Anytime you want to opt
 
 Before using this content, you should have an SAP platform landing zone in Azure. The platform landing zone provides shared services to one or more of your SAP workloads. If you don’t have a platform landing zone, you should use the SAP cloud adoption framework and deploy the SAP landing zone accelerator. The landing zone accelerator establishes the required foundation for your SAP workload. For more information, see [SAP cloud adoption framework](/azure/cloud-adoption-framework/scenarios/sap/).
 
+## What is an SAP workload?
+<!-- Distinguishes between a workload as an abstract concept and a <workload name> workload as a class of workloads. Include the key focus of the workload. In most cases this would be one or more quality pillars; Reliability, Security, Cost Optimization, Operational Excellence, and Performance Efficiency. -->
+
+## What are the common challenges?
+<!-- Presents the common challenges associated with this workload. Start by a challenge statement and include the overall impact. -->
+
+## What are the key design areas?
+<!--Presents the key design areas to consider when designing that <workload name> workload and explains what each area does. These design areas are not standard for all workloads. There might be some common areas, such as networking, security, monitoring, to name a few. -->
+
+## Illustrative examples
+<!-- Links to code assets that form a textbook example of the <workload name> workload. -->
+
 ## Next Steps
 
 We invite you to explore SAP workload design best practices and return to this content regularly throughout the lifecycle of your SAP workload. The content highlights critical areas of focus but also refers you to other documentation for deeper technical insight.
 
 For more information, see:
 
-- [Azure Center for SAP Solutions]( /azure/center-sap-solutions/overview)
+- [Azure Center for SAP Solutions](/azure/center-sap-solutions/overview)
 - [SAP workload in Azure](/azure/virtual-machines/workloads/sap/get-started)
 - [SAP workload architectures](/azure/architecture/reference-architectures/sap/sap-overview)
 
+## Next steps
+<!-- Add a context sentence for the following links -->
+> [!div class="nextstepaction"]
+> [Design principles](<workload>-design-principles.md)
 
->[!div class="nextstepaction"]
->[Reliability](./reliability.md)
+<!--
+Remove all the comments in this template before you sign-off or merge to the 
+main branch.
+-->
 
->[!div class="nextstepaction"]
->[Security](./security.md)
-
->[!div class="nextstepaction"]
->[Cost Optimization](./cost-optimization.md)
-
->[!div class="nextstepaction"]
->[Operational Excellence](./operational-excellence.md)
-
->[!div class="nextstepaction"]
->[Performance Efficiency](./performance-efficiency.md)

@@ -28,7 +28,7 @@ Memory-optimized VMs can meet the requirements of most SAP applications. An SAP 
 
 SAP NetWeaver, Business All-in-One, Business Suite Software, and BusinessObjects BI have broader alignment with different VM types. They can run on VMs in the D, G, E, and M-series.
 
-### Optimize compute cost throughout migration
+### Optimize compute cost during migration
 
 Many SAP journeys start on-premises, so it’s important to plan for compute optimization throughout the migration of a workload. Make sure to follow best practices across every SAP migration. You can find process guidance in our [CAF SAP documentation]( /azure/cloud-adoption-framework/scenarios/sap/). With the broader process guidance in place, you’ll still need to customize your compute optimization for each SAP workload. We want you to consider pre-migration and post-migration milestones.
 
@@ -36,7 +36,7 @@ Many SAP journeys start on-premises, so it’s important to plan for compute opt
 
 ***Optimize post-migration***: Post-migration optimization focuses on the end-user experience. This step coincides with the hypercare period, a time of elevated customer service to make sure that the workload is performing. You should monitor the workload as users begin to interact with it. The performance metrics might indicate that you need to downsize the VM or switch to a different VM type.
 
-### Optimize in operations
+### Optimize compute cost in operations
 
 It’s important to optimize VMs in operations for the most cost-savings. By VM operations, we're referring to the daily management of an SAP workload. This phase of a workload brings the ability to predict the compute needs. It’s important to see how user demand affects compute needs over time. The VM choice should change along with the SAP workload’s requirements. Here are cost-saving recommendations for operations.
 
@@ -57,9 +57,9 @@ For more information, see:
 - [SAP HANA install](/azure/virtual-machines/workloads/sap/hana-get-started)
 - [SAP HANA configuration](/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
-## Create application server resiliency
+## Application server reliability
 
-The goal of application server resiliency is to have multiple application servers load balance traffic and failover when needed. Resiliency for the SAP application server layer can be achieved through redundancy. You can configure multiple dialog instances on different instances of Azure virtual machines with a minimum of two application servers. Here are application server resiliency recommendations.
+The goal of application server reliability is to have multiple application servers load balance traffic and failover when needed. Resiliency for the SAP application server layer can be achieved through redundancy. You can configure multiple dialog instances on different instances of Azure virtual machines with a minimum of two application servers. Here are application server resiliency recommendations.
 
 ***Use Availability Sets / Availability Zones***: An SAP application server can be deployed in an availability set or across availability zones. The decision you make needs to be based on workload requirements. We recommend you choose one method to improve resiliency, but we don’t recommend scale sets. For more information, see [availability zones for SAP](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones).
 
@@ -68,3 +68,11 @@ The goal of application server resiliency is to have multiple application server
 - [Azure Virtual Machines high availability for SAP NetWeaver](/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
 - [SAP HANA high availability for Azure virtual machines](/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
 - [SAP workload configurations with Azure Availability Zones]( /azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
+
+## Compute performance efficiency 
+
+Compute is the core that powers an SAP application. Compute includes the hardware, number of cores, and memory. These features are foundational to organizations. If you don’t optimize your compute configuration, an SAP workload will be unable to meet spikes in user demand or stay withing predefined budgets. It’s important to know the demands on your workload and match those demands with the compute you use for your SAP workload. Here are some compute performance considerations.
+
+**Conduct reference sizing for on-premises workload** - Reference sizing is the process of checking the configurations and resource utilization data of an SAP workload on-premises. Reference sizing data shows the current compute needs of the workload, and these needs should be matched in Azure. To find this information, use the SAP OS Collector. SAP OS Collector retrieves system utilization information that can be reported via SAP transaction OS07N and the EarlyWatch Alert. Any system performance and statistics gathering tools can collect similar information.
+
+**Use SAP Quick Sizer for a new workload** - SAP Quick Sizer is a free web-based tool developed by SAP that translates business requirements into technical requirements. Use this tool when you build a new SAP workload to find the Azure VM with the correct network and storage throughput. For more information, see [SAP quick sizer]( https://service.sap.com/quicksizer).
