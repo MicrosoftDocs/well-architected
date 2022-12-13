@@ -1,8 +1,8 @@
 ---
 title: Caching data for performance optimization
 description: Examine caching considerations for performance optimization. Caching is a strategy where you store a copy of the data in front of the main data store.
-author: v-aangie
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

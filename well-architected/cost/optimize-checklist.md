@@ -2,7 +2,7 @@
 title: Checklist - Optimize cost
 description: Use these checklist considerations to help monitor and optimize workloads by using the right resources and sizes.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
