@@ -426,11 +426,9 @@ items:
           - name: SAP
             items:
               - name: Quick links
-                href: sap/
+                href: sap/quick-links.yml
               - name: Get started
-                href: sap/overview.md
-              - name: Design methodology
-                href: sap/
+                href: sap/get-started.md
               - name: Design principles
                 href: sap/design-principles.md
               - name: Cross-cutting concerns
@@ -438,19 +436,17 @@ items:
               - name: Design areas
                 items:
                   - name: Application design
-                    href: sap/
+                    href: sap/design-areas/application-design.md
                   - name: Application platform
-                    href: sap/
+                    href: sap/design-areas/application-platform.md
                   - name: Data platform
-                    href: sap/
+                    href: sap/design-areas/data-platform.md
                   - name: Networking and connectivity
-                    href: sap/
-                  - name: Deployment and testing
-                    href: sap/
+                    href: sap/design-areas/networking-and-connectivity.md
                   - name: Security
-                    href: sap/
+                    href: sap/design-areas/security.md
                   - name: Operational procedures
-                    href: sap/
+                    href: sap/operational-procedures.md
           - name: Sustainability
             items:
               - name: Quick links
