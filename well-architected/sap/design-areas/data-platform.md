@@ -3,7 +3,7 @@ title: SAP workload data platform
 description: SAP workload data platform
 author: stephen-sumner
 ms.author: ssumner
-ms.date: 01/15/2023
+ms.date: 12/15/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -11,9 +11,10 @@ ms.custom: SAP
 ---
 
 # SAP workload data platform
+
 ***Choices in data store technologies, informed by evaluating required volume, velocity, variety, and veracity characteristics.***
 
-## Optimize workload storage costs
+## Storage costs
 
 We recommend optimizing the storage cost for your SAP workload. Storage is an essential component of an SAP workload. Storage contains active data and backup data that is critical to your organization. Storage affects the performance, availability, and recoverability of an SAP workload. It's important to have the right performance at the right cost. Here are recommendations to help you reach this goal.
 
@@ -25,9 +26,9 @@ We recommend optimizing the storage cost for your SAP workload. Storage is an es
 
 **Use lifecycle management policies.** Other than reserved capacity, you need to ensure the data-retention period is right for the SAP workload. An SAP database backup can be large and add to the storage cost if not optimized. We recommend that you create a lifecycle policy that meets the recovery time objective (RTO) and recovery point objective (RPO) of your SAP workload. The policy should move into Premium, Standard, Cold, Archive storage based on its age and business requirements.
 
-## Reliability
+## Storage reliability
 
-### Create database resiliency
+### Database resiliency
 
 An SAP application feeds data to multiple enterprise systems, making database resiliency a key workload consideration. We recommend replicating production data for the highest resiliency. Cross-region replication is the preferred disaster recovery solution. But for a more affordable option, you should configure zone redundancy at a minimum. The methods you choose depends on the database management system (DBMS) and required business service-level agreement (SLA). Below are recommendations for the database layer.
 

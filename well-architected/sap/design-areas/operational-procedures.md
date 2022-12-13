@@ -3,7 +3,7 @@ title: SAP workload operational excellence
 description: SAP workload best practices for operational excellence
 author: stephen-sumner
 ms.author: ssumner
-ms.date: 01/12/2023
+ms.date: 01/15/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -62,4 +62,3 @@ The table below outlines benefits of automated deployments with IaC.
 | Testing | Provides templates that include test instrumentation during deployment and migration.| Allows for limited testing. Requires more work to inject tests in the process. |
 | Scaling | Allows you to easily scale up, down, and out. Provides new deployment templates.| Takes more time to scale and customize the environment.|
 | Standardization | Applies your defined standards with each deployment.| Sometimes leads to unwanted variations in design.|
-

@@ -48,12 +48,9 @@ For more information, see:
 - [SAP workload architectures](/azure/architecture/reference-architectures/sap/sap-overview)
 
 ## Next steps
-<!-- Add a context sentence for the following links -->
-> [!div class="nextstepaction"]
-> [Design principles](<workload>-design-principles.md)
 
-<!--
-Remove all the comments in this template before you sign-off or merge to the 
-main branch.
--->
+> [!div class="nextstepaction"]
+> [Design principles](design-principles.md)
+
+
 

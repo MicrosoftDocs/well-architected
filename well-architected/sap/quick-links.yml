@@ -41,19 +41,19 @@ landingContent:
       - linkListType: concept
         links:
           - text: Application design
-            url: application-design.md
+            url: design-areas/application-design.md
           - text: Application platform
-            url: application-platform.md
+            url: design-areas/application-platform.md
           - text: Data platform
-            url: data-platform.md
+            url: design-areas/data-platform.md
           - text: Networking and connectivity
-            url: networking-connectivity.md          
+            url: design-areas/networking-connectivity.md          
           - text: Deployment and testing
-            url: deployment-testing.md
+            url: design-areas/deployment-testing.md
           - text: Security
-            url: security.md
+            url: design-areas/security.md
           - text: Operational procedures
-            url: operational-procedures.md     
+            url: design-areas/operational-procedures.md     
  # Card
   - title: Reference examples
     linkLists:

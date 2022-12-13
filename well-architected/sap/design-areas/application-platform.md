@@ -3,7 +3,7 @@ title: SAP workload application platform
 description: SAP workload application platform
 author: stephen-sumner
 ms.author: ssumner
-ms.date: 01/12/2023
+ms.date: 12/15/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -11,15 +11,15 @@ ms.custom: SAP
 ---
 
 # SAP workload application platform
+
 ***Hosting environment choices, application dependencies, frameworks, and libraries.***
 
-
-## Optimize workload compute costs
+## Platform compute costs
 
  Compute cost optimization is achieved through planning, monitoring, and resizing VMs throughout the SAP workload lifecycle. VMs provide the compute power for the SAP application and have a direct effect on cost and performance. We recommend monitoring the compute costs of an SAP workload to ensure the dollars spent are helping you meet organizational goals. Here are cost-optimization recommendations for SAP workload compute.
 
-
 ### Choose the right VM type
+
 Azure has SAP-certified VMs for your workload. The wrong VM type will require larger sizes to get the performance need, increasing cost without benefit. A smaller VM of the correct type can give you equal or better performance than a large instance of the wrong type. Azure offers a list of SAP-certified configurations to help you understand what VMs work well with your business needs.
 
 For more information, see [SAP certified infrastructure](https://azure.microsoft.com/solutions/sap/azure-solutions/#certified-infrastructure).
@@ -69,7 +69,7 @@ The goal of application server reliability is to have multiple application serve
 - [SAP HANA high availability for Azure virtual machines](/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
 - [SAP workload configurations with Azure Availability Zones]( /azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
 
-## Compute performance efficiency 
+## Compute performance efficiency
 
 Compute is the core that powers an SAP application. Compute includes the hardware, number of cores, and memory. These features are foundational to organizations. If you don’t optimize your compute configuration, an SAP workload will be unable to meet spikes in user demand or stay withing predefined budgets. It’s important to know the demands on your workload and match those demands with the compute you use for your SAP workload. Here are some compute performance considerations.
 
