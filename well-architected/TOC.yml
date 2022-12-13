@@ -431,8 +431,6 @@ items:
                 href: sap/get-started.md
               - name: Design principles
                 href: sap/design-principles.md
-              - name: Cross-cutting concerns
-                href: sap/
               - name: Design areas
                 items:
                   - name: Application design
