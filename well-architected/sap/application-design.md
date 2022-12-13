@@ -11,7 +11,7 @@ ms.custom: SAP
 ---
 
 # SAP workload application design
-
+***Cloud application design patterns that allow for scaling, and error handling.***
 
 ## Create architecture reliability
 
