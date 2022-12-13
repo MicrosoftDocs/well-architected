@@ -25,20 +25,6 @@ The guidance is designed for one SAP workload at a time. Anytime you want to opt
 
 Before using this content, you should have an SAP platform landing zone in Azure. The platform landing zone provides shared services to one or more of your SAP workloads. If you don’t have a platform landing zone, you should use the SAP cloud adoption framework and deploy the SAP landing zone accelerator. The landing zone accelerator establishes the required foundation for your SAP workload. For more information, see [SAP cloud adoption framework](/azure/cloud-adoption-framework/scenarios/sap/).
 
-## What is an SAP workload?
-<!-- Distinguishes between a workload as an abstract concept and a <workload name> workload as a class of workloads. Include the key focus of the workload. In most cases this would be one or more quality pillars; Reliability, Security, Cost Optimization, Operational Excellence, and Performance Efficiency. -->
-
-## What are the common challenges?
-<!-- Presents the common challenges associated with this workload. Start by a challenge statement and include the overall impact. -->
-
-## What are the key design areas?
-<!--Presents the key design areas to consider when designing that <workload name> workload and explains what each area does. These design areas are not standard for all workloads. There might be some common areas, such as networking, security, monitoring, to name a few. -->
-
-## Illustrative examples
-<!-- Links to code assets that form a textbook example of the <workload name> workload. -->
-
-## Next Steps
-
 We invite you to explore SAP workload design best practices and return to this content regularly throughout the lifecycle of your SAP workload. The content highlights critical areas of focus but also refers you to other documentation for deeper technical insight.
 
 For more information, see:
@@ -51,6 +37,3 @@ For more information, see:
 
 > [!div class="nextstepaction"]
 > [Design principles](design-principles.md)
-
-
-

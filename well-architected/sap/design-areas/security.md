@@ -76,19 +76,13 @@ Network and application security controls are baseline security measures for eve
 
 For SAP-native setups, you should use SAP Cloud Connector and SAP Private Link for Azure as part of the hub-spoke setup. These technologies support the SAP extension and innovation architecture for the SAP Business Technology Platform (BTP). Azure native integrations fully integrated with Azure virtual networks and APIs and don’t require these components.
 
-**Virtual network security.** Network security groups (NSGs) allow you to filter network traffic to and from your SAP workload. You can define NSG rules to allow or deny access to your SAP application. You can allow access to the SAP application ports from on-premises IP addresses ranges and denying public internet access.
-
-For more information, see [network security groups](/azure/virtual-network/network-security-groups-overview)
+**Virtual network security.** Network security groups (NSGs) allow you to filter network traffic to and from your SAP workload. You can define NSG rules to allow or deny access to your SAP application. You can allow access to the SAP application ports from on-premises IP addresses ranges and denying public internet access. For more information, see [network security groups](/azure/virtual-network/network-security-groups-overview)
 
 **Application security.** In general, the security best practices for application development also apply in the cloud. These include things like protecting against cross-site request forgery, thwarting cross-site scripting (XSS) attacks, and preventing SQL injection attacks.
 
-Application security groups (ASGs) make it easier to configure the network security of a workload. The ASG can be used in security rules instead of explicit IPs for VMs. The VMs are then assigned to ASG. This configuration supports the reuse of the same policy over different application landscapes, because of this abstraction layer. Cloud applications often use managed services that have access keys. Never check access keys into source control. Instead, store application secrets in Azure Key Vault.
+Application security groups (ASGs) make it easier to configure the network security of a workload. The ASG can be used in security rules instead of explicit IPs for VMs. The VMs are then assigned to ASG. This configuration supports the reuse of the same policy over different application landscapes, because of this abstraction layer. Cloud applications often use managed services that have access keys. Never check access keys into source control. Instead, store application secrets in Azure Key Vault. For more information, see [application security groups](/azure/virtual-network/application-security-groups).
 
-For more information, see [application security groups](/azure/virtual-network/application-security-groups).
-
-**Internet facing SAP workload.** An internet facing workload must be protected using services like Azure Firewall, Web Application Firewall, Application Gateway to create separation between endpoints.
-
-For more information, see [inbound and outbound internet connections for SAP on Azure]( /azure/architecture/guide/sap/sap-internet-inbound-outbound).
+**Internet facing SAP workload.** An internet facing workload must be protected using services like Azure Firewall, Web Application Firewall, Application Gateway to create separation between endpoints. For more information, see [inbound and outbound internet connections for SAP on Azure]( /azure/architecture/guide/sap/sap-internet-inbound-outbound).
 
 ## Encrypt data
 
@@ -100,9 +94,7 @@ We recommend you review and understand service/server-side encryption (SSE) with
 
 ![Diagram that shows the workflow for service-side encryption with a customer managed key using Azure Active Directory and Azure Key Vault](./images/sse-cmk.png)
 
-When you use client-side encryption, you encrypt the data and upload the data as an encrypted blob. Key management is done by the customer.
-
-For more information, see:
+When you use client-side encryption, you encrypt the data and upload the data as an encrypted blob. Key management is done by the customer. For more information, see:
 
 - [Server-side encryption for managed disks]( /azure/virtual-machines/disk-encryption)
 - [Azure Storage service-side encryption](/azure/storage/common/storage-service-encryption)
@@ -121,3 +113,20 @@ For general security information, see:
 
 - [Azure security documentation]( /azure/security/)
 - [Trusted Cloud eBook](https://azure.microsoft.com/explore/trusted-cloud/)
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Application design](design-areas/application-design.md)
+
+> [!div class="nextstepaction"]
+> [Application platform](design-areas/application-platform.md)
+
+> [!div class="nextstepaction"]
+> [Data platform](design-areas/data-platform.md)
+
+> [!div class="nextstepaction"]
+> [Networking and connectivity](design-areas/networking-and-connectivity.md)
+
+> [!div class="nextstepaction"]
+> [Operational procedures](design-areas/operational-procedures.md)

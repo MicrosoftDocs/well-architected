@@ -26,7 +26,7 @@ We built this guidance around the Azure Well-Architected Framework and its five 
 
 A reliable SAP workload is both resilient and available. Resiliency is the ability to recover from failures and continue to function. Availability is uptime. High availability reduces SAP application downtime during critical maintenance and improves recovery from failures such as VM crashes, backend updates, major downtime, or ransomware incidents. Failures happen on-premises and in the cloud, so it’s important to design your SAP workload for resiliency and availability.
 
-**Conduct a reliability assessment.**Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to fix issues or solidify those configurations. We recommend conducting a reliability assessment on your SAP workload. The assessment asks you questions about your workload and provides specific recommendations to focus on. The assessment builds on itself, so you can track your progress without restarting every time. For the assessment, start an [Azure Well-Architected Review](/assessments/) and select “SAP on Azure” when prompted.
+**Conduct a reliability assessment.** Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to fix issues or solidify those configurations. We recommend conducting a reliability assessment on your SAP workload. The assessment asks you questions about your workload and provides specific recommendations to focus on. The assessment builds on itself, so you can track your progress without restarting every time. For the assessment, start an [Azure Well-Architected Review](/assessments/) and select “SAP on Azure” when prompted.
 
 ## Cost optimization
 
@@ -44,6 +44,22 @@ Performance efficiency is about accelerating digital transformation with less. T
 
 Operational excellence is about creating efficient processes to support your SAP workload. Operations will be the longest phase of the SAP workload lifecycle, and teams must be equipped with operational best practices to manage the day-today tasks. Failure in operations will affect the other design areas and the overall success of the SAP workload. It’s critical to tailor your operations to support an SAP workload in operations.
 
-## SAP workload operational excellence
+## Next steps
 
-Operational excellence is about creating efficient processes to support your SAP workload. Operations will be the longest phase of the SAP workload lifecycle, and teams must be equipped with operational best practices to manage the daily tasks. Failure in operations will affect the other design areas and the overall success of the SAP workload. It’s critical to tailor your operations to support an SAP workload in operations.
+> [!div class="nextstepaction"]
+> [Application design](design-areas/application-design.md)
+
+> [!div class="nextstepaction"]
+> [Application platform](design-areas/application-platform.md)
+
+> [!div class="nextstepaction"]
+> [Data platform](design-areas/data-platform.md)
+
+> [!div class="nextstepaction"]
+> [Networking and connectivity](design-areas/networking-and-connectivity.md)
+
+> [!div class="nextstepaction"]
+> [Operational procedures](design-areas/operational-procedures.md)
+
+> [!div class="nextstepaction"]
+> [Operational procedures](design-areas/security.md)
