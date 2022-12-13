@@ -1,8 +1,8 @@
 ---
 title: Azure Databricks and security
 description: Focuses on the Azure Databricks service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Security.
-author: v-stacywray
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 08/08/2022
 ms.topic: conceptual
 ms.service: architecture-center

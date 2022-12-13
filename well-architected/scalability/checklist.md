@@ -1,8 +1,8 @@
 ---
 title: Monitor the performance of a cloud application
 description: Review a checklist about using monitoring for performance efficiency. Consider scalability, app and infrastructure performance, and resiliency.
-author: v-aangie
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
