@@ -33,17 +33,17 @@ landingContent:
       - linkListType: concept
         links:
           - text: Application design
-            url: /design-areas/networking-and-connectivity.md
+            url: ./design-areas/networking-and-connectivity.md
           - text: Application platform
-            url: /design-areas/application-platform.md
+            url: ./design-areas/application-platform.md
           - text: Data platform
-            url: /design-areas/data-platform.md
+            url: ./design-areas/data-platform.md
           - text: Networking and connectivity
-            url: /design-areas/networking-and-connectivity.md         
+            url: ./design-areas/networking-and-connectivity.md         
           - text: Security
-            url: /design-areas/security.md
+            url: ./design-areas/security.md
           - text: Operational procedures
-            url: /design-areas/operational-procedures.md     
+            url: ./design-areas/operational-procedures.md     
  # Card
   - title: Reference examples
     linkLists:
