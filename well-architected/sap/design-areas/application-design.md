@@ -12,11 +12,9 @@ ms.custom: SAP
 
 # SAP workload application design
 
-(**NEED AN INTRO**)
+SAP applications should adhere to the design principles. The guidance here focuses on cost optimization and reliability.
 
-***Cloud application design patterns that allow for scaling, and error handling.***
-
-## SAP application cost
+## SAP application cost optimization
 
 Optimizing your SAP application can lower the total cost of ownership without reducing capabilities. The goal is to generate the maximum return on investment (ROI). Here are ways to optimize an SAP application.
 

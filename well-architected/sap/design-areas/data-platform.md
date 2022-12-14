@@ -12,9 +12,8 @@ ms.custom: SAP
 
 # SAP workload data platform
 
-(**NEED AN INTRO**)
-
-## Storage costs
+The data platform refers to the data store technologies that support an SAP workload. SAP workloads place high demands on the data platform. We outline best practices for optimizing cost while maintaining performance.
+## Storage cost optimization
 
 We recommend optimizing the storage cost for your SAP workload. Storage is an essential component of an SAP workload. Storage contains active data and backup data that is critical to your organization. Storage affects the performance, availability, and recoverability of an SAP workload. It's important to have the right performance at the right cost. Here are recommendations to help you reach this goal.
 

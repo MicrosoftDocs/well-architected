@@ -28,13 +28,13 @@ A reliable SAP workload is both resilient and available. Resiliency is the abili
 
 **Conduct a reliability assessment.** Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to fix issues or solidify those configurations. We recommend conducting a reliability assessment on your SAP workload. The assessment asks you questions about your workload and provides specific recommendations to focus on. The assessment builds on itself, so you can track your progress without restarting every time. For the assessment, start an [Azure Well-Architected Review](/assessments/) and select “SAP on Azure” when prompted.
 
-## Cost optimization
-
-Microsoft makes significant investments in the fast evolution of its hardware to provide more value for less. The frequent increase in Azure hardware capability provides regular opportunity for an SAP workload to optimize costs, eliminate waste, and improve technology. To align Azure and your SAP workload, we recommend creating a plan for each SAP workload. The plan should contain the objectives and motivations for the workload. Organizational objectives and investment priorities should drive cost optimization initiatives.
-
 ## Security
 
 SAP on Azure is delivered in the infrastructure as a service (IaaS) cloud model. Microsoft builds security protections into the service at the levels of the physical data center, physical network, physical host, and hypervisor. But you're responsible for areas above the hypervisor, such as the guest operating system for SAP. We recommend you regularly evaluate the services and technologies used to ensure your security posture evolves with the threat landscape.
+
+## Cost optimization
+
+Microsoft makes significant investments in the fast evolution of its hardware to provide more value for less. The frequent increase in Azure hardware capability provides regular opportunity for an SAP workload to optimize costs, eliminate waste, and improve technology. To align Azure and your SAP workload, we recommend creating a plan for each SAP workload. The plan should contain the objectives and motivations for the workload. Organizational objectives and investment priorities should drive cost optimization initiatives.
 
 ## Performance efficiency
 
