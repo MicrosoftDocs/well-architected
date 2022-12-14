@@ -32,9 +32,7 @@ landingContent:
           - text: Architecture pattern 
             url: architecture-pattern.md
           - text: Design principles
-            url: design-principles.md             
-          - text: Cross-cutting concerns
-            url: cross-cutting-issues.md           
+            url: design-principles.md                       
   # Card
   - title: Design areas
     linkLists:
@@ -48,8 +46,6 @@ landingContent:
             url: design-areas/data-platform.md
           - text: Networking and connectivity
             url: design-areas/networking-connectivity.md          
-          - text: Deployment and testing
-            url: design-areas/deployment-testing.md
           - text: Security
             url: design-areas/security.md
           - text: Operational procedures
@@ -59,8 +55,10 @@ landingContent:
     linkLists:
       - linkListType: architecture
         links:
-          - text: Baseline reference architecture
-            url: /azure/architecture/reference-architectures/sap/run-sap-bw4hana-with-linux-virtual-machines   
+          - text: SAP on Azure landing zone accelerator
+            url: /azure/cloud-adoption-framework/scenarios/sap/enterprise-scale-landing-zone   
+          - text: Start small and expand with SAP HANA
+            url: /azure/architecture/reference-architectures/sap/run-sap-hana-for-linux-virtual-machines?bc=%2Fazure%2Fcloud-adoption-framework%2F_bread%2Ftoc.json&toc=%2Fazure%2Fcloud-adoption-framework%2Fscenarios%2Fsap%2Ftoc.json 
 
 
  # Card
@@ -68,10 +66,9 @@ landingContent:
     linkLists:
       - linkListType: deploy
         links:
-          - text: Mission-Critical Online
-            url: https://github.com/azure/mission-critical-online
-          - text: Mission-Critical Connected
-            url: https://github.com/azure/mission-critical-connected
+          - text: SAP on Azure Deployment Automation Framework
+            url: /azure/virtual-machines/workloads/sap/automation-deployment-framework
+
 
  # Card
   - title: Learn
