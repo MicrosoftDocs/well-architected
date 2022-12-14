@@ -10,6 +10,8 @@ ms.subservice: well-architected
 ms.custom: SAP
 ---
 
+# Networking and connectivity for an SAP workload
+
 ## Networking performance
 
 An SAP workload needs to communicate with other workloads. Common communication paths are to local storage, external storage, NICs, VMs in the network, VMs in other networks, and third-party applications. Optimize workload networking to improve these communication channels to meet workload and application demand. If SAP network performance isn't considered, it will cause application performance issues.

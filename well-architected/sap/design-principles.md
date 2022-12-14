@@ -3,14 +3,14 @@ title: SAP workload design principles
 description: SAP workload design principles
 author: stephen-sumner
 ms.author: ssumner
-ms.date: 01/15/2023
+ms.date: 12/19/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom: SAP
 ---
 
-## Design principles of an SAP workload
+# Design principles of an SAP workload
 
 We built this guidance around the Azure Well-Architected Framework and its five pillars of architectural excellence. The table below lists each pillar and provides a general summary of the articles in this set.
 
@@ -30,7 +30,7 @@ A reliable SAP workload is both resilient and available. Resiliency is the abili
 
 ## Cost optimization
 
-Microsoft makes significant investments in the fast evolution of its hardware to provide more value for less.  The frequent increase in Azure hardware capability provides regular opportunity for an SAP workload to optimize costs, eliminate waste, and improve technology. To align Azure and your SAP workload, we recommend creating a plan for each SAP workload. The plan should contain the objectives and motivations for the workload. Organizational objectives and investment priorities should drive cost optimization initiatives.
+Microsoft makes significant investments in the fast evolution of its hardware to provide more value for less. The frequent increase in Azure hardware capability provides regular opportunity for an SAP workload to optimize costs, eliminate waste, and improve technology. To align Azure and your SAP workload, we recommend creating a plan for each SAP workload. The plan should contain the objectives and motivations for the workload. Organizational objectives and investment priorities should drive cost optimization initiatives.
 
 ## Security
 
@@ -45,6 +45,8 @@ Performance efficiency is about accelerating digital transformation with less. T
 Operational excellence is about creating efficient processes to support your SAP workload. Operations will be the longest phase of the SAP workload lifecycle, and teams must be equipped with operational best practices to manage the day-today tasks. Failure in operations will affect the other design areas and the overall success of the SAP workload. It’s critical to tailor your operations to support an SAP workload in operations.
 
 ## Next steps
+
+We've woven these design principles throughout our guidance in specific design areas. The design areas provide targeted guidance. We want you to find what you need fast so you can be more productive with less time. Use the headings as a compass to find appropriate direction in each design area.
 
 > [!div class="nextstepaction"]
 > [Application design](design-areas/application-design.md)

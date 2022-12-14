@@ -444,7 +444,7 @@ items:
                   - name: Security
                     href: sap/design-areas/security.md
                   - name: Operational procedures
-                    href: design-areas/operational-procedures.md
+                    href: sap/design-areas/operational-procedures.md
           - name: Sustainability
             items:
               - name: Quick links

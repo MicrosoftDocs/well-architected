@@ -39,5 +39,7 @@ For more information, see:
 
 ## Next steps
 
+Our guidance adheres to five pillars of the Well-Architected Framework. It's important to understand what those pillars mean for an SAP workload and how they interact at a high level.
+
 > [!div class="nextstepaction"]
 > [Design principles](design-principles.md)

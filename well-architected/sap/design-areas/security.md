@@ -82,7 +82,7 @@ For SAP-native setups, you should use SAP Cloud Connector and SAP Private Link f
 
 Application security groups (ASGs) make it easier to configure the network security of a workload. The ASG can be used in security rules instead of explicit IPs for VMs. The VMs are then assigned to ASG. This configuration supports the reuse of the same policy over different application landscapes, because of this abstraction layer. Cloud applications often use managed services that have access keys. Never check access keys into source control. Instead, store application secrets in Azure Key Vault. For more information, see [application security groups](/azure/virtual-network/application-security-groups).
 
-**Internet facing SAP workload.** An internet facing workload must be protected using services like Azure Firewall, Web Application Firewall, Application Gateway to create separation between endpoints. For more information, see [inbound and outbound internet connections for SAP on Azure]( /azure/architecture/guide/sap/sap-internet-inbound-outbound).
+**Internet facing SAP workload.** An internet facing workload must be protected using services like Azure Firewall, Web Application Firewall, Application Gateway to create separation between endpoints. For more information, see [inbound and outbound internet connections for SAP on Azure](/azure/architecture/guide/sap/sap-internet-inbound-outbound).
 
 ## Encrypt data
 
@@ -92,7 +92,7 @@ Azure includes tools to safeguard data according to your organization's security
 
 We recommend you review and understand service/server-side encryption (SSE) with customer-managed keys (CMKs). The combination of server-side encryption and a customer-managed key allows you to encrypt data at rest in the operating system (OS) and data disks for available SAP OS combinations.  Azure Disk Encryption doesn’t support all SAP operating systems. The customer-managed key should be stored in Key Vault to help ensure the integrity of the operating system. We also recommend encrypting your SAP databases. Azure Key Vault supports database encryption for SQL Server from the database management system (DBMS) and other storage needs. Below is an encryption workflow to help you visualize the encryption process.
 
-![Diagram that shows the workflow for service-side encryption with a customer managed key using Azure Active Directory and Azure Key Vault](./images/sse-cmk.png)
+![Diagram that shows the workflow for service-side encryption with a customer managed key using Azure Active Directory and Azure Key Vault](../images/sse-cmk.png)
 
 When you use client-side encryption, you encrypt the data and upload the data as an encrypted blob. Key management is done by the customer. For more information, see:
 
