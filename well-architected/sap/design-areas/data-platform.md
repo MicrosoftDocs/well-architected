@@ -117,3 +117,20 @@ It’s important to choose the appropriate storage solutions to support the data
 - ***Memory*** - Memory is critical to application performance, and your SAP application can have high memory demands. In general, higher memory provides more memory-reads, less paging, and higher VM cost.
 
 - ***Throughput*** - Throughput is important for an application hosted on one of the VMs to communicate with outside the VM by using its network interface cards (NICs).
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Application design](design-areas/application-design.md)
+
+> [!div class="nextstepaction"]
+> [Application platform](design-areas/application-platform.md)
+
+> [!div class="nextstepaction"]
+> [Networking and connectivity](design-areas/networking-and-connectivity.md)
+
+> [!div class="nextstepaction"]
+> [Operational procedures](design-areas/operational-procedures.md)
+
+> [!div class="nextstepaction"]
+> [Security](design-areas/security.md)

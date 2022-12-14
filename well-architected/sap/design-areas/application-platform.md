@@ -76,3 +76,20 @@ Compute is the core that powers an SAP application. Compute includes the hardwar
 **Conduct reference sizing for on-premises workload** - Reference sizing is the process of checking the configurations and resource utilization data of an SAP workload on-premises. Reference sizing data shows the current compute needs of the workload, and these needs should be matched in Azure. To find this information, use the SAP OS Collector. SAP OS Collector retrieves system utilization information that can be reported via SAP transaction OS07N and the EarlyWatch Alert. Any system performance and statistics gathering tools can collect similar information.
 
 **Use SAP Quick Sizer for a new workload** - SAP Quick Sizer is a free web-based tool developed by SAP that translates business requirements into technical requirements. Use this tool when you build a new SAP workload to find the Azure VM with the correct network and storage throughput. For more information, see [SAP quick sizer]( https://service.sap.com/quicksizer).
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Application design](design-areas/application-design.md)
+
+> [!div class="nextstepaction"]
+> [Data platform](design-areas/data-platform.md)
+
+> [!div class="nextstepaction"]
+> [Networking and connectivity](design-areas/networking-and-connectivity.md)
+
+> [!div class="nextstepaction"]
+> [Operational procedures](design-areas/operational-procedures.md)
+
+> [!div class="nextstepaction"]
+> [Security](design-areas/security.md)

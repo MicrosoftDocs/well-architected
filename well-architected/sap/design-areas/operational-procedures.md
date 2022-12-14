@@ -62,3 +62,20 @@ The table below outlines benefits of automated deployments with IaC.
 | Testing | Provides templates that include test instrumentation during deployment and migration.| Allows for limited testing. Requires more work to inject tests in the process. |
 | Scaling | Allows you to easily scale up, down, and out. Provides new deployment templates.| Takes more time to scale and customize the environment.|
 | Standardization | Applies your defined standards with each deployment.| Sometimes leads to unwanted variations in design.|
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Application design](design-areas/application-design.md)
+
+> [!div class="nextstepaction"]
+> [Application platform](design-areas/application-platform.md)
+
+> [!div class="nextstepaction"]
+> [Data platform](design-areas/data-platform.md)
+
+> [!div class="nextstepaction"]
+> [Networking and connectivity](design-areas/networking-and-connectivity.md)
+
+> [!div class="nextstepaction"]
+> [Security](design-areas/security.md)
