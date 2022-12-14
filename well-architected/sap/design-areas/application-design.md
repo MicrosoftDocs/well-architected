@@ -12,6 +12,8 @@ ms.custom: SAP
 
 # SAP workload application design
 
+(**NEED AN INTRO**)
+
 ***Cloud application design patterns that allow for scaling, and error handling.***
 
 ## SAP application cost
