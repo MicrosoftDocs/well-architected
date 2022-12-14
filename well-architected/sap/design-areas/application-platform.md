@@ -12,10 +12,9 @@ ms.custom: SAP
 
 # SAP workload application platform
 
-(**NEED AN INTRO**)
-***Hosting environment choices, application dependencies, frameworks, and libraries.***
+The application platform refers to the hosting environment, application dependencies, frameworks, and libraries. For an SAP workload, the Azure platform provides opportunities to optimize cost and performance, allowing you to do more with less.
 
-## Platform compute costs
+## Compute cost optimization
 
  Compute cost optimization is achieved through planning, monitoring, and resizing VMs throughout the SAP workload lifecycle. VMs provide the compute power for the SAP application and have a direct effect on cost and performance. We recommend monitoring the compute costs of an SAP workload to ensure the dollars spent are helping you meet organizational goals. Here are cost-optimization recommendations for SAP workload compute.
 
@@ -37,7 +36,7 @@ Many SAP journeys start on-premises, so it’s important to plan for compute opt
 
 ***Optimize post-migration***: Post-migration optimization focuses on the end-user experience. This step coincides with the hypercare period, a time of elevated customer service to make sure that the workload is performing. You should monitor the workload as users begin to interact with it. The performance metrics might indicate that you need to downsize the VM or switch to a different VM type.
 
-### Optimize compute cost in operations
+### Application platform operational excellence
 
 It’s important to optimize VMs in operations for the most cost-savings. By VM operations, we're referring to the daily management of an SAP workload. This phase of a workload brings the ability to predict the compute needs. It’s important to see how user demand affects compute needs over time. The VM choice should change along with the SAP workload’s requirements. Here are cost-saving recommendations for operations.
 
