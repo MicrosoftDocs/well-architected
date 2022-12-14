@@ -25,14 +25,12 @@ landingContent:
         links:
           - text: SAP workload
             url: get-started.md
-          - text: Design methodology
-            url: design-methodology.md
           - text: Design principles
             url: design-principles.md                       
   # Card
   - title: Design areas
     linkLists:
-      - linkListType: concept
+      - linkListType:
         links:
           - text: Application design
             url: design-areas/application-design.md
