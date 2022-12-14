@@ -12,6 +12,7 @@ ms.custom: SAP
 
 # SAP workload application platform
 
+(**NEED AN INTRO**)
 ***Hosting environment choices, application dependencies, frameworks, and libraries.***
 
 ## Platform compute costs

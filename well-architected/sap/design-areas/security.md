@@ -49,9 +49,9 @@ For more information, see:
 
 A common customer scenario is deploying SAP application into Microsoft Teams. This solution requires SSO with Azure AD. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams.
 
-For more information, see [Microsoft AppSource marketplace](https://appsource.microsoft.com/marketplace/apps?page=1&search=sap).
+For more information, see [the Microsoft commercial marketplace](https://appsource.microsoft.com/marketplace/apps?page=1&search=sap).
 
-The table below provides a summary of the recommended SSO method for the given SAP solution.
+The following table provides a summary of the recommended SSO method for the given SAP solution.
 
 | SAP solution | SSO method |
 | --- | --- |
@@ -90,7 +90,7 @@ Azure includes tools to safeguard data according to your organization's security
 
 **Encrypt data at rest.** Encrypting data at rest is a common security requirement. Azure Storage service-side encryption is enabled by default for all managed disks, snapshots, and images. Service-side encryption uses service-managed keys by default, and these keys are transparent to the application.
 
-We recommend you review and understand service/server-side encryption (SSE) with customer-managed keys (CMKs). The combination of server-side encryption and a customer-managed key allows you to encrypt data at rest in the operating system (OS) and data disks for available SAP OS combinations.  Azure Disk Encryption doesn’t support all SAP operating systems. The customer-managed key should be stored in Key Vault to help ensure the integrity of the operating system. We also recommend encrypting your SAP databases. Azure Key Vault supports database encryption for SQL Server from the database management system (DBMS) and other storage needs. Below is an encryption workflow to help you visualize the encryption process.
+We recommend you review and understand service/server-side encryption (SSE) with customer-managed keys (CMKs). The combination of server-side encryption and a customer-managed key allows you to encrypt data at rest in the operating system (OS) and data disks for available SAP OS combinations.  Azure Disk Encryption doesn’t support all SAP operating systems. The customer-managed key should be stored in Key Vault to help ensure the integrity of the operating system. We also recommend encrypting your SAP databases. Azure Key Vault supports database encryption for SQL Server from the database management system (DBMS) and other storage needs. The following image shows the encryption process.
 
 ![Diagram that shows the workflow for service-side encryption with a customer managed key using Azure Active Directory and Azure Key Vault](../images/sse-cmk.png)
 
