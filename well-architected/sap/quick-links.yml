@@ -30,7 +30,7 @@ landingContent:
   # Card
   - title: Design areas
     linkLists:
-      - linkListType:
+      - linkListType: Concept
         links:
           - text: Application design
             url: design-areas/application-design.md
