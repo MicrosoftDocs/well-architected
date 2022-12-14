@@ -24,26 +24,26 @@ landingContent:
       - linkListType: overview
         links:
           - text: SAP workload
-            url: get-started.md
+            url: ./get-started.md
           - text: Design principles
-            url: design-principles.md                       
+            url: ./design-principles.md                       
   # Card
   - title: Design areas
     linkLists:
-      - linkListType: Concept
+      - linkListType: concept
         links:
           - text: Application design
-            url: design-areas/application-design.md
+            url: /design-areas/networking-and-connectivity.md
           - text: Application platform
-            url: design-areas/application-platform.md
+            url: /design-areas/application-platform.md
           - text: Data platform
-            url: design-areas/data-platform.md
+            url: /design-areas/data-platform.md
           - text: Networking and connectivity
-            url: design-areas/networking-connectivity.md          
+            url: /design-areas/networking-and-connectivity.md         
           - text: Security
-            url: design-areas/security.md
+            url: /design-areas/security.md
           - text: Operational procedures
-            url: design-areas/operational-procedures.md     
+            url: /design-areas/operational-procedures.md     
  # Card
   - title: Reference examples
     linkLists:

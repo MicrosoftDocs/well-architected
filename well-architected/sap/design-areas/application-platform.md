@@ -80,16 +80,16 @@ Compute is the core that powers an SAP application. Compute includes the hardwar
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Application design](design-areas/application-design.md)
+> [Application design](./application-design.md)
 
 > [!div class="nextstepaction"]
-> [Data platform](design-areas/data-platform.md)
+> [Data platform](./data-platform.md)
 
 > [!div class="nextstepaction"]
-> [Networking and connectivity](design-areas/networking-and-connectivity.md)
+> [Networking and connectivity](./networking-and-connectivity.md)
 
 > [!div class="nextstepaction"]
-> [Operational procedures](design-areas/operational-procedures.md)
+> [Operational procedures](./operational-procedures.md)
 
 > [!div class="nextstepaction"]
-> [Security](design-areas/security.md)
+> [Security](./security.md)

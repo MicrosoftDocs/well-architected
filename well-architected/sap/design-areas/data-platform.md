@@ -121,16 +121,16 @@ It’s important to choose the appropriate storage solutions to support the data
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Application design](design-areas/application-design.md)
+> [Application design](./application-design.md)
 
 > [!div class="nextstepaction"]
-> [Application platform](design-areas/application-platform.md)
+> [Application platform](./application-platform.md)
 
 > [!div class="nextstepaction"]
-> [Networking and connectivity](design-areas/networking-and-connectivity.md)
+> [Networking and connectivity](./networking-and-connectivity.md)
 
 > [!div class="nextstepaction"]
-> [Operational procedures](design-areas/operational-procedures.md)
+> [Operational procedures](./operational-procedures.md)
 
 > [!div class="nextstepaction"]
-> [Security](design-areas/security.md)
+> [Security](./security.md)
