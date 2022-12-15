@@ -36,7 +36,7 @@ The IoT workload design methodology is underpinned by [five pillars of architect
 |**Design devices for resiliency**|Design your devices to satisfy the uptime and availability requirements of your end-to-end solution. Ensure that your IoT device can operate efficiently with intermittent connectivity to the cloud.|
 |[**Design for business requirements**](../resiliency/principles.md#design-for-business-requirements)|Cost implications are inevitable when introducing architectural modifications to meet service-level agreements (SLAs). For example, to have greater reliability and high availability you can implement cross-region redundancies and an automated system to autoscale. This trade-off should be carefully considered.|
 |**Safe, simple update procedures**|An enterprise IoT solution should provide a strategy for how operators manage devices. IoT operators require simple and reliable update tools and practices.|
-|[**Observe application health**](../resiliency/principles.md#observe-application-health)|Define service-level indicators (SLIs) and service-level objectives (SLOs) based on observability. Adding processes for auditing, monitoring, and alerting beyond what cloud services provide.|
+|[**Observe application health**](../resiliency/principles.md#observe-application-health)|Define service-level indicators (SLIs) and service-level objectives (SLOs) based on observability. Add processes for auditing, monitoring, and alerting beyond what cloud services provide.|
 |**High availability and disaster recovery (HA/DR) for critical components.**|Resilient hardware and software components that build in redundancy, including cross-region redundancies.|
 |**Plan for capacity**|Plan for service quotas and throttles, latency between the detection-action, and establish benchmarks at production scale to support uninterrupted data flow.|
 
@@ -71,7 +71,7 @@ Device failure impact assessment includes:
 
 The acceptable operational downtime determines the speed and extent of device maintenance. The availability or longevity of the device and part supply is an important consideration for device lifecycle.
 
-The more modular the design, the easier it is to swap out parts of the system, especially if some parts become obsolete earlier than others. Alternative or multi-sourcing of component and module supply chains are critical for reliable solutions.
+The more modular the design, the easier it's to swap out parts of the system, especially if some parts become obsolete earlier than others. Alternative or multi-sourcing of component and module supply chains are critical for reliable solutions.
 
 ### Environmental requirements
 
