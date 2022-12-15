@@ -127,7 +127,7 @@ In connected operations architectures, the deployment model of the OT environmen
 
 ### Hybridity
 
-IoT solutions must address hybrid complexity, running on different hardware and platforms across on-premises, edge, and multi-cloud environments. It's critical to manage disparate IoT workload architectures, ensure uncompromised security, and enable developer agility.
+IoT solutions must address hybrid complexity, running on different hardware and platforms across on-premises, edge, and multicloud environments. It's critical to manage disparate IoT workload architectures, ensure uncompromised security, and enable developer agility.
 
 In connected products architectures, the wide distribution of devices defines hybridity. The IoT solution builder controls the hardware and runtime platform, and hybridity focuses on the diversity of the deployment environments.
 
