@@ -151,9 +151,6 @@ The baseline examples serve as the north star architecture for containerized mis
 
 ## Next step
 
-
-Review the best practices for designing mission-critical application scenarios.
-
 > [!div class="nextstepaction"]
 > [Application design](./mission-critical-application-design.md)
 
