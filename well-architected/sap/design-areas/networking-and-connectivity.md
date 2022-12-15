@@ -30,6 +30,8 @@ We recommend using proximity placement groups in two scenarios. (1) Use proximit
 
 **Use accelerated networking** - Accelerated Network is default for most of the VM deployments and is recommended for every VM hosting an SAP workload. Accelerated Network improves the network performance by bypassing the physical switch. We recommend you enable Accelerated Networking on the Azure VMs running your SAP Application and Database. Accelerated networking provides improved latency, jitter, and CPU utilization. You should test the latency between the SAP application server and database with the SAP ABAP report /SSA/CAT. It's an Inventory Check for the SAP Azure Workbook. For more information, see [accelerated networking overview](/azure/virtual-network/accelerated-networking-overview).
 
+## On-premises connectivity
+
 **Use ExpressRoute GlobalReach** - ExpressRoute is a private and resilient way to connect your on-premises networks to different Azure regions. This feature allows you to link ExpressRoute circuits to make a private network between your on-premises networks. Global Reach should be used for SAP HANA Large Instance deployments to enable direct access from on-premises to your HANA Large Instance units deployed in different regions. For more information, see [ExpressRoute Global Reach](/azure/expressroute/expressroute-global-reach).
 
 ## Next steps
