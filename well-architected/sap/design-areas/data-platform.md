@@ -119,13 +119,13 @@ It’s important to choose the appropriate storage solutions to support the data
 
 **Enable write accelerator.** Write accelerator is a capability for M-Series VMs on Premium Storage with Azure Managed Disks exclusively. It’s imperative to enable write accelerator on the disks associated with the /hana/log volume. This configuration facilitates sub millisecond writes latency for 4 KB and 16-KB blocks sizes. For more information, see [Azure Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator).
 
-**Choose the right VM.** Choosing the right VM has cost and performance implications. The goal is to pick a storage VM that supports the IOPS and throughput requirements of the SAP workload. There are three critical areas to focus while selecting a VM:
+**Choose the right VM.** Choosing the right VM has cost and performance implications. The goal is to pick a storage VM that supports the IOPS and throughput requirements of the SAP workload. There are three critical areas to focus while selecting a VM
 
-- ***Number of vCPUs*** - The number of CPUs has a direct effect on the licenses in the database node. Most of the databases follow a core-based licensing model. Use the amount that meets your needs and adjust licensing agreements as necessary.
-
-- ***Memory*** - Memory is critical to application performance, and your SAP application can have high memory demands. In general, higher memory provides more memory-reads, less paging, and higher VM cost.
-
-- ***Throughput*** - Throughput is important for an application hosted on one of the VMs to communicate with outside the VM by using its network interface cards (NICs).
+| Compute features | Description |
+|---| --- |
+|Number of vCPUs|The number of CPUs has a direct effect on the licenses in the database node. Most of the databases follow a core-based licensing model. Use the amount that meets your needs and adjust licensing agreements as necessary.|
+|Memory|Memory is critical to application performance, and your SAP application can have high memory demands. In general, higher memory provides more memory-reads, less paging, and higher VM cost.|
+|Throughput|Throughput is important for an application hosted on one of the VMs to communicate with outside the VM by using its network interface cards (NICs).|
 
 ## Next steps
 
