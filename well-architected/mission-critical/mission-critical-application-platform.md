@@ -90,7 +90,7 @@ A container has application code with related configuration files, libraries, an
 
 > [!IMPORTANT]
 > Containers should be considered as the primary model for mission-critical application packages. It improves infrastructure utilization because multiple containers can be hosted on the same virtualized infrastructure. Also, because all software is included in the container, the application can be moved across different operating systems regardless of runtimes or library versions. A benefit is simplified management operations compared to traditional virtualized hosting.
-> Mission-critical applications need to scale fast to avoid performance bottlenecks. Because containers container images are pre-built, startup can be minimized to only on bootstrapping the application.
+> Mission-critical applications need to scale fast to avoid performance bottlenecks. Because container images are pre-built, startup can be minimized to only on bootstrapping the application, allowing rapid scalability.
 
 ### Design considerations
   
@@ -102,13 +102,15 @@ A container has application code with related configuration files, libraries, an
 
 ### Design recommendations
 
-- Prioritize Linux-based container runtimes when possible. The images are more lightweight, new features for linux nodes/containers are released frequently.
+- Containerize all application components, using container images as the primary model for application deployment packages.
+
+- Prioritize Linux-based container runtimes when possible. The images are more lightweight, and new features for linux nodes/containers are released frequently.
 
 - Make containers immutable and replaceable with short lifecycles.
 
 - Ensure that all relevant logs and metrics are gathered from the container, container host, and underlying cluster. Send the gathered logs and metrics to a unified data sink for further processing and analysis.
 
-- Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) with  [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Azure Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Azure Active Directory.
+- Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) with [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Azure Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Azure Active Directory.
 
 ## Container orchestration
 
