@@ -14,21 +14,25 @@ ms.custom: SAP
 
 Azure provides all the tools needed to secure your SAP workload. SAP applications can contain sensitive data about your organization. You must protect your SAP architecture with secure authentication methods, hardened networking, and encryption.
 
-## Use identity management
+## Configure identity management
 
 Identity management is a framework to enforce the policies that control access to critical resources. Identity management controls access your SAP workload within or outside its virtual network. There are three identity management use cases to consider for your SAP workload, and the identity management solution differs for each.
 
-**Operating system.** Organizations can improve the security of Windows and Linux virtual machines in Azure by integrating with Azure Active Directory (Azure AD). Azure AD is a fully managed identity and access management service. Azure AD can authenticate and authorize end user’s access to the SAP operating system. You can use Azure AD to create domains that exist on Azure, or use it integrate with your on-premises Active Directory identities. Azure AD also integrates with Microsoft 365, Dynamics CRM Online, and many Software-as-a-Service (SaaS) applications from partners. We  recommend using System for Cross-Domain Identity Management (SCIM) for identity propagation. This pattern enables optimal user life cycle.
+### Use Azure Active Directory
+
+Organizations can improve the security of Windows and Linux virtual machines in Azure by integrating with Azure Active Directory (Azure AD). Azure AD is a fully managed identity and access management service. Azure AD can authenticate and authorize end user’s access to the SAP operating system. You can use Azure AD to create domains that exist on Azure, or use it integrate with your on-premises Active Directory identities. Azure AD also integrates with Microsoft 365, Dynamics CRM Online, and many Software-as-a-Service (SaaS) applications from partners. We recommend using System for Cross-Domain Identity Management (SCIM) for identity propagation. This pattern enables optimal user life cycle.
 
 For more information, see:
 
-- [SCIM synchronization with Azure Active Directory]( /azure/active-directory/fundamentals/sync-scim)
-- [Configure SAP Cloud Platform Identity Authentication for automatic user provisioning]( /azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial)
-- [Azure Active Directory Single sign-on (SSO) integration with SAP NetWeaver]( /azure/active-directory/saas-apps/sap-netweaver-tutorial)
+- [SCIM synchronization with Azure Active Directory](/azure/active-directory/fundamentals/sync-scim)
+- [Configure SAP Cloud Platform Identity Authentication for automatic user provisioning](/azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial)
+- [Azure Active Directory Single sign-on (SSO) integration with SAP NetWeaver](/azure/active-directory/saas-apps/sap-netweaver-tutorial)
 - [Sign in to a Linux virtual machine in Azure by using Azure AD and OpenSSH]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
 - [Sign in to a Windows virtual machine in Azure by using Azure AD]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows)
 
-**SAP application.** You can access the SAP application with the SAP frontend software (SAP GUI) or a browser with HTTP/S. We recommend configuring single sign-on (SSO) using Azure Active Directory or Active Directory Federation Services (AD FS). SSO allows end users to connect to SAP applications via browser where possible.
+### Configure single sign-on
+
+You can access the SAP application with the SAP frontend software (SAP GUI) or a browser with HTTP/S. We recommend configuring single sign-on (SSO) using Azure Active Directory or Active Directory Federation Services (AD FS). SSO allows end users to connect to SAP applications via browser where possible.
 
 For more information, see:
 
@@ -39,7 +43,9 @@ For more information, see:
 - [SuccessFactors SSO](/azure/active-directory/saas-apps/successfactors-tutorial)
 - [Azure Active Directory overview](/azure/active-directory/)
 
-**SAP PaaS and SaaS application.** We recommend consulting the SAP Identity Authentication Service for SAP Analytics Cloud, SuccessFactors, and SAP Business Technology Platform. You can also integrate services from the SAP Business Technology Platform with Microsoft Graph using Azure AD and the SAP Identity Authentication Service.
+### Use application-specific guidance
+
+We recommend consulting the SAP Identity Authentication Service for SAP Analytics Cloud, SuccessFactors, and SAP Business Technology Platform. You can also integrate services from the SAP Business Technology Platform with Microsoft Graph using Azure AD and the SAP Identity Authentication Service.
 
 For more information, see:
 
@@ -72,23 +78,23 @@ For more information, see:
 
 Network and application security controls are baseline security measures for every SAP workload. Their importance bears repeating to enforce the idea that the SAP network and application requires rigorous security review and baseline controls.  
 
-**Azure Network Design.** It’s critical to differentiate between shared services and SAP application services. A hub-spoke architecture is a good approach to security. You should keep workload specific resources in its own virtual network separate from the shared services in hub such as management services and DNS.  
+**Use hub-spoke architecture.** <br> It’s critical to differentiate between shared services and SAP application services. A hub-spoke architecture is a good approach to security. You should keep workload specific resources in its own virtual network separate from the shared services in hub such as management services and DNS.  
 
 For SAP-native setups, you should use SAP Cloud Connector and SAP Private Link for Azure as part of the hub-spoke setup. These technologies support the SAP extension and innovation architecture for the SAP Business Technology Platform (BTP). Azure native integrations fully integrated with Azure virtual networks and APIs and don’t require these components.
 
-**Virtual network security.** Network security groups (NSGs) allow you to filter network traffic to and from your SAP workload. You can define NSG rules to allow or deny access to your SAP application. You can allow access to the SAP application ports from on-premises IP addresses ranges and denying public internet access. For more information, see [network security groups](/azure/virtual-network/network-security-groups-overview)
+**Use network security groups.** <br>Network security groups (NSGs) allow you to filter network traffic to and from your SAP workload. You can define NSG rules to allow or deny access to your SAP application. You can allow access to the SAP application ports from on-premises IP addresses ranges and denying public internet access. For more information, see [network security groups](/azure/virtual-network/network-security-groups-overview)
 
-**Application security.** In general, the security best practices for application development also apply in the cloud. These include things like protecting against cross-site request forgery, thwarting cross-site scripting (XSS) attacks, and preventing SQL injection attacks.
+**Use application security groups** <br>In general, the security best practices for application development also apply in the cloud. These include things like protecting against cross-site request forgery, thwarting cross-site scripting (XSS) attacks, and preventing SQL injection attacks.
 
 Application security groups (ASGs) make it easier to configure the network security of a workload. The ASG can be used in security rules instead of explicit IPs for VMs. The VMs are then assigned to ASG. This configuration supports the reuse of the same policy over different application landscapes, because of this abstraction layer. Cloud applications often use managed services that have access keys. Never check access keys into source control. Instead, store application secrets in Azure Key Vault. For more information, see [application security groups](/azure/virtual-network/application-security-groups).
 
-**Internet facing SAP workload.** An internet facing workload must be protected using services like Azure Firewall, Web Application Firewall, Application Gateway to create separation between endpoints. For more information, see [inbound and outbound internet connections for SAP on Azure](/azure/architecture/guide/sap/sap-internet-inbound-outbound).
+**Filter web traffic.** <br>An internet facing workload must be protected using services like Azure Firewall, Web Application Firewall, Application Gateway to create separation between endpoints. For more information, see [inbound and outbound internet connections for SAP on Azure](/azure/architecture/guide/sap/sap-internet-inbound-outbound).
 
 ## Encrypt data
 
 Azure includes tools to safeguard data according to your organization's security and compliance needs. It's essential that you encrypt SAP workload data at rest and in transit.
 
-**Encrypt data at rest.** Encrypting data at rest is a common security requirement. Azure Storage service-side encryption is enabled by default for all managed disks, snapshots, and images. Service-side encryption uses service-managed keys by default, and these keys are transparent to the application.
+**Encrypt data at rest.** <br>Encrypting data at rest is a common security requirement. Azure Storage service-side encryption is enabled by default for all managed disks, snapshots, and images. Service-side encryption uses service-managed keys by default, and these keys are transparent to the application.
 
 We recommend you review and understand service/server-side encryption (SSE) with customer-managed keys (CMKs). The combination of server-side encryption and a customer-managed key allows you to encrypt data at rest in the operating system (OS) and data disks for available SAP OS combinations.  Azure Disk Encryption doesn’t support all SAP operating systems. The customer-managed key should be stored in Key Vault to help ensure the integrity of the operating system. We also recommend encrypting your SAP databases. Azure Key Vault supports database encryption for SQL Server from the database management system (DBMS) and other storage needs. The following image shows the encryption process.
 
@@ -101,7 +107,7 @@ When you use client-side encryption, you encrypt the data and upload the data as
 - [Service-side encryption using customer-managed key in Azure Key Vault](/azure/storage/common/customer-managed-keys-configure-existing-account)
 - [Client-side encryption](/azure/storage/blobs/client-side-encryption)
 
-**Encrypt data in transit.** Encryption in transit applies to the state of data moving from one location to another. Data in transit can be encrypted in several ways, depending on the nature of the connection.
+**Encrypt data in transit.** <br>Encryption in transit applies to the state of data moving from one location to another. Data in transit can be encrypted in several ways, depending on the nature of the connection.
 
 For more information, see [encryption of data in transit]( /azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit).
 
