@@ -120,7 +120,9 @@ There are advantages and disadvantages associated with each of these Azure conta
 - [Compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree)
 - [Container option comparisons](/azure/container-apps/compare-options#container-option-comparisons).
 
-[Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) should always be the primary consideration for mission-critical applications. An alternative is [Azure App Service](https://azure.microsoft.com/services/app-service/containers/). The following sections explore those two options.
+> [!IMPORTANT]
+> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) should be considered as the primary application hosting platform where requirements allow. [Azure App Service](https://azure.microsoft.com/services/app-service/containers/) is a feasible alternative to AKS, providing a low-friction container platform without the complexity of Kubernetes.
+>    The following sections explore these two options.
 
 ### Azure Kubernetes Service
 
