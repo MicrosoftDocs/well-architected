@@ -1,75 +1,89 @@
 ---
 title: Overview of IoT workloads
-description: Learn how IoT components, architectural patterns, guiding principles, and architectural layers relate to well-architected IoT workloads.
-author: dominicbetts
-ms.author: dobett
-ms.date: 07/20/2022
+description: Learn how IoT components, architecture patterns, design areas, and architecture layers relate to well-architected IoT workloads.
+author: asergaz
+ms.author: sergaz
+ms.date: 12/14/2022
 ms.topic: overview
 ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom:
   - e2e-iot
+  - engagement-fy23
+products:
+  - azure-iot
+categories:
+  - iot
 ---
 
-# Overview of well-architected IoT workloads
+# Overview of IoT workloads
 
-Internet of Things (IoT) is a collection of managed and platform services across edge and cloud environments that connect, monitor, and control physical assets. The IoT workload for the Microsoft Azure Well-Architected Framework helps you meet architectural challenges to design, build, and operate IoT solutions according to your requirements and constraints.
+This section of the Microsoft Azure Well-Architected Framework aims to address the challenges of building IoT workloads on Azure. This article describes the IoT design areas, architecture patterns, and architecture layers in the IoT workload.
 
-The IoT Well-Architected Framework addresses the three components of IoT systems:
+The IoT workload design methodology is underpinned by five pillars of architectural excellence which serve as a compass for subsequent design decisions across the design areas described in this article. The remaining articles in this series delve into how to evaluate the design areas using IoT-specific design principles in the reliability, security, cost optimization, operational excellence and performance efficiency pillars.
+
+> [!TIP]
+> To assess your IoT workload through the lenses of reliability, security, cost optimization, operational excellence and performance efficiency, see the [Azure Well-Architected Review](/assessments/azure-architecture-review/).
+
+## What is an IoT workload?
+
+The term _workload_ refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
+
+Internet of Things (IoT) is a collection of managed and platform services across edge and cloud environments that connect, monitor, and control physical assets.
+
+An _IoT workload_ therefore describes the practice of designing, building, and operating IoT solutions to help meet architectural challenges according to your requirements and constraints.
+
+The IoT workload addresses the three components of IoT systems:
 
 - *Things*, or the physical objects, industrial equipment, devices, and sensors that connect to the cloud persistently or intermittently.
 - *Insights*, information that the things collect that humans or AI analyze and turn into actionable knowledge.
 - *Actions*, the responses of people or systems to insights, which connect to business outcomes, systems, and tools.
 
-The IoT Well-Architected Framework uses a set of *IoT guiding principles* based on the Azure Well-Architected Framework to drive planning and decision making. The principles guide a *layered architecture* approach that identifies the logical elements of an IoT solution in either a *connected components* or *connected operations* architectural pattern.
+## IoT architecture patterns
 
-This article describes the IoT guiding principles, architectural patterns, and architecture layers in the IoT Well-Architectured Framework. The remaining articles in this series delve into how to apply the Azure Well-Architected Framework pillars of excellence to IoT solutions.
-
-## Azure Well-Architected Framework for IoT workloads
-
-The Azure Well-Architected Framework consists of five pillars of architectural excellence, which you can use to improve the quality of IoT workloads. The following articles highlight how each pillar relates to IoT workloads and guiding principles:
-
-- *Reliability* ensures that applications meet availability commitments. Resiliency ensures that workloads are available and can recover from failures at any scale. [Reliability in your IoT workload](iot-reliability.md) discusses how the IoT principles of heterogeneity, scale, connectivity, and hybridity affect IoT reliability.
-
-- *Security* provides confidentiality, integrity, and availability assurances against deliberate attacks and abuse of data and systems. [Security in your IoT workload](iot-security.md) describes how heterogeneity and hybridity affect IoT security.
-
-- *Cost optimization* balances business goals with budget justification to create cost-effective workloads while avoiding capital-intensive solutions. [Cost optimization in your IoT workload](iot-cost-optimization.md) looks at ways to reduce expenses and improve operational efficiency across IoT workload layers.
-
-- *Operational excellence* covers the processes that build and run applications in production. [Operational excellence in your IoT workload](iot-operational-excellence.md) discusses how heterogeneity, scale, connectivity, and hybridity affect IoT operations.
-
-- *Performance efficiency* is a workload's ability to scale efficiently to meet demands. [Performance efficiency in your IoT workload](iot-performance.md) describes how heterogeneity, scale, connectivity, and hybridity affect IoT performance.
-
-## IoT architectural patterns
-
-Most IoT systems use either a *connected products* or *connected operations* architectural pattern. Each pattern has specific requirements and constraints in the IoT Well-Architected Framework.
+Most IoT systems use either a *connected products* or *connected operations* architecture pattern. Each pattern has specific requirements and constraints in the IoT design areas.
 
 - *Connected products* architectures focus on the *hot path*. End users manage and interact with products by using real-time applications. This pattern applies to manufacturers of smart devices for consumers and businesses in a wide range of locations and settings. Examples include smart coffee machines, smart TVs, and smart production machines. In these IoT solutions, the product builders provide connected services to the product users.
 
-- *Connected operations​* architectures focus on the *warm or cold path* with edge devices, alerts, and cloud processing. These solutions analyze data from multiple sources, gather operational insights, build machine learning models, and initiate further device and cloud actions.
+- *Connected operations​* architectures focus on the *warm or cold path* with edge devices, alerts, and cloud processing. These solutions analyze data from multiple sources, gather operational insights, build machine learning models, and initiate further device and cloud actions. The connected operations pattern applies to enterprises and smart service providers that connect pre-existing machines and devices. Examples include smart factories and smart buildings. In these IoT solutions, service builders deliver smart services that provide insights and support the effectiveness and efficiency of connected environments.
 
-  The connected operations pattern applies to enterprises and smart service providers that connect pre-existing machines and devices. Examples include smart factories and smart buildings. In these IoT solutions, service builders deliver smart services that provide insights and support the effectiveness and efficiency of connected environments.
+## Well-Architected Framework pillars in your IoT workload
 
-## IoT guiding principles
+The Azure Well-Architected Framework consists of five pillars of architectural excellence, which you can use to improve the quality of IoT workloads. The following articles highlight how IoT-specific design principles influence decisions across IoT design areas:
 
-The IoT Well-Architected Framework adds IoT-specific guiding principles to the Azure Well-Architected Framework pillars. These principles help clarify considerations to ensure your IoT workloads meet requirements across architectural layers.
+- *Reliability* ensures that applications meet availability commitments. Resiliency ensures that workloads are available and can recover from failures at any scale. [Reliability in your IoT workload](iot-reliability.md) discusses how the IoT design areas of heterogeneity, scalability, connectivity, and hybridity affect IoT reliability.
 
-The high-level guiding principles that facilitate good IoT solution design are:
+- *Security* provides confidentiality, integrity, and availability assurances against deliberate attacks and abuse of data and systems. [Security in your IoT workload](iot-security.md) describes how heterogeneity and hybridity affect IoT security.
+
+- *Cost optimization* balances business goals with budget justification to create cost-effective workloads while avoiding capital-intensive solutions. [Cost optimization in your IoT workload](iot-cost-optimization.md) looks at ways to reduce expenses and improve operational efficiency across IoT design areas.
+
+- *Operational excellence* covers the processes that build and run applications in production. [Operational excellence in your IoT workload](iot-operational-excellence.md) discusses how heterogeneity, scalability, connectivity, and hybridity affect IoT operations.
+
+- *Performance efficiency* is a workload's ability to scale efficiently to meet demands. [Performance efficiency in your IoT workload](iot-performance.md) describes how heterogeneity, scalability, connectivity, and hybridity affect IoT performance.
+
+## IoT design areas
+
+The key IoT design areas that facilitate a good IoT solution design are:
 
 - Heterogeneity
 - Security
-- Scale
+- Scalability
 - Flexibility
 - Serviceability
 - Connectivity
 - Hybridity
 
-The following sections describe the IoT guiding principles, and how they apply to the IoT connected products and connected operations architectural patterns.
+The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. To evaluate the design areas, use the IoT-specific design principles in the five pillars of architectural excellence. These principles help clarify considerations to ensure your IoT workloads meet requirements across architecture layers.
+
+The following sections describe the IoT design areas, and how they apply to the IoT *connected products* and *connected operations* architecture patterns.
 
 ### Heterogeneity
 
-IoT solutions must accommodate various devices, hardware, software, scenarios, environments, processing patterns, and standards. It's important to identify the necessary level of heterogeneity for each architectural layer at design time.
+IoT solutions must accommodate various devices, hardware, software, scenarios, environments, processing patterns, and standards. It's important to identify the necessary level of heterogeneity for each architecture layer at design time.
 
-In connected products architectures, heterogeneity describes the varieties of machines and devices that need to be supported. Heterogeneity also describes the variety of environments where you can deploy smart product, such as networks and types of users. In connected operations architectures, heterogeneity focuses on support for different operational technology (OT) protocols and connectivity.
+In connected products architectures, heterogeneity describes the varieties of machines and devices that need to be supported. Heterogeneity also describes the variety of environments where you can deploy smart product, such as networks and types of users.
+
+In connected operations architectures, heterogeneity focuses on support for different operational technology (OT) protocols and connectivity.
 
 ### Security
 
@@ -81,7 +95,7 @@ In connected operations architectures, the security requirements for the deploym
 
 ### Scalability
 
-IoT solutions must be able to support *hyper-scalability*, with millions of connected devices and events ingesting large amounts of data at high frequency. IoT solutions must enable proof of concept and pilot projects that start with a few devices and events, and then scale out to hyper-scale dimensions. Considering the scalability of each architectural layer is essential to IoT solution success.
+IoT solutions must be able to support *hyper-scalability*, with millions of connected devices and events ingesting large amounts of data at high frequency. IoT solutions must enable proof of concept and pilot projects that start with a few devices and events, and then scale out to hyper-scale dimensions. Considering the scalability of each architecture layer is essential to IoT solution success.
 
 In connected products architectures, scale describes the number of devices. In most cases, each device has a limited set of data and interactions, controlled by the device builder, and scalability comes only from the number of devices deployed.
 
@@ -89,15 +103,19 @@ In connected operations architectures, scalability depends on the number of mess
 
 ### Flexibility
 
-IoT solutions build on the principle of *composability*, which enables combining various first-party or third-party components as building blocks. A well-architected IoT solution has extension points that enable integration with existing devices, systems, and applications. A high-scale, event-driven architecture with brokered communication is part of the backbone, with loosely coupled composition of services and processing modules.
+IoT solutions build on the principle of *composability*, which enables combining various first-party or third-party components as building blocks. A Well-Architected IoT solution has extension points that enable integration with existing devices, systems, and applications. A high-scale, event-driven architecture with brokered communication is part of the backbone, with loosely coupled composition of services and processing modules.
 
-In connected products architectures, changing end-user requirements define flexibility. Solutions should allow you to easily change device behavior and end-user services in the cloud, and provide new services. In connected operations architectures, the support for different types of devices defines flexibility. Solutions should be able to easily connect legacy and proprietary protocols.
+In connected products architectures, changing end-user requirements define flexibility. Solutions should allow you to easily change device behavior and end-user services in the cloud, and provide new services.
+
+In connected operations architectures, the support for different types of devices defines flexibility. Solutions should be able to easily connect legacy and proprietary protocols.
 
 ### Serviceability
 
-IoT solutions must consider ease of maintaining and repairing components, devices, and other system elements. Early detection of potential problems is critical. Ideally, a well-architected IoT solution should correct problems automatically before serious trouble occurs. Maintenance and repair operations should cause as little downtime or disruption as possible.
+IoT solutions must consider ease of maintaining and repairing components, devices, and other system elements. Early detection of potential problems is critical. Ideally, a Well-Architected IoT solution should correct problems automatically before serious trouble occurs. Maintenance and repair operations should cause as little downtime or disruption as possible.
 
-In connected products architectures, the wide distribution of devices affects serviceability. The ability to monitor, manage, and update devices within end user context and control, without direct access to that environment, is limited. In connected operations architectures, serviceability depends on the given context, controls, and procedures of the OT environment, which may include systems and protocols already available or in use.
+In connected products architectures, the wide distribution of devices affects serviceability. The ability to monitor, manage, and update devices within end user context and control, without direct access to that environment, is limited.
+
+In connected operations architectures, serviceability depends on the given context, controls, and procedures of the OT environment, which may include systems and protocols already available or in use.
 
 ### Connectivity
 
@@ -117,13 +135,13 @@ In connected operations architectures, hybridity describes the data distribution
 
 ## IoT architecture layers
 
-An IoT architecture consists of a set of foundational layers. Specific technologies support the different layers, and the IoT Well-Architected Framework highlights options for designing and creating each layer.
+An IoT architecture consists of a set of foundational layers. Specific technologies support the different layers, and the IoT workload highlights options for designing and creating each layer.
 
 - *Core layers* identify IoT-specific solutions.
 - *Common layers* aren't specific to IoT workloads.
 - *Cross-cutting layers* support all layers in designing, building, and running solutions.
 
-The IoT Well-Architected Framework addresses different layer-specific requirements and implementations. The framework focuses on the *core layers*, and identifies the specific impact of the IoT workload on the *common layers*.
+The IoT workload addresses different layer-specific requirements and implementations. The framework focuses on the *core layers*, and identifies the specific impact of the IoT workload on the *common layers*.
 
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
 
@@ -137,7 +155,7 @@ The IoT core layers and services identify whether a solution is an IoT solution.
 - Device management and modeling
 - Ingestion and communication
 
-The IoT Well-Architected Framework focuses primarily on these layers. To realize these layers, Microsoft provides IoT-specific services such as Azure IoT Hub, Azure IoT Edge, IoT Hub Device Provisioning Service (DPS), and IoT Central.
+The IoT workload focuses primarily on these layers. To realize these layers, Microsoft provides IoT-specific services such as Azure IoT Hub, Azure IoT Edge, IoT Hub Device Provisioning Service (DPS), and Azure IoT Central.
 
 #### Device and gateway layer
 
@@ -184,11 +202,11 @@ Relevant Microsoft technologies include:
 - [IoT Central device templates](/azure/iot-central/core/concepts-device-templates)
 - [IoT Hub DPS](/azure/iot-dps/about-iot-dps)
 - [Azure Digital Twins](/azure/digital-twins)
-- [Azure IoT Plug and Play](/azure/iot-develop/overview-iot-plug-and-play)
+- [IoT Plug and Play](/azure/iot-develop/overview-iot-plug-and-play)
 
 ### Common layers and services
 
-Workloads other than IoT, such as Data & AI and modern applications, also use the common layers. The top-level Microsoft Azure Well-Architected Framework addresses the generic elements of these common layers, and other workload frameworks address other requirements. The following sections touch on the IoT-related impact on requirements, and include links to other guidance.
+Workloads other than IoT, such as Data & AI and modern applications, also use the common layers. The top-level Azure Well-Architected Framework addresses the generic elements of these common layers, and other workload frameworks address other requirements. The following sections touch on the IoT-related impact on requirements, and include links to other guidance.
 
 #### Transport layer
 
@@ -197,8 +215,8 @@ This layer represents the way devices, gateways, and services connect and commun
 Relevant Microsoft technologies include:
 
 - OT and IoT protocols, such as MQTT(S), AMQP(S), HTTPS, OPC-UA, and Modbus
-- [Azure IoT Hub routing](/azure/iot-hub/iot-hub-devguide-messages-d2c)
-- [Azure IoT Edge routing](/azure/iot-edge/module-composition#declare-routes)
+- [IoT Hub routing](/azure/iot-hub/iot-hub-devguide-messages-d2c)
+- [IoT Edge routes](/azure/iot-edge/module-composition#declare-routes)
 
 #### Event processing and analytics layer
 
@@ -269,7 +287,7 @@ The following diagram shows the DevOps continuous planning, development, deliver
 
 - Management and operations activities identify the current health state of the IoT system across all layers.
 
-Correctly executing DevOps and other cross-cutting activities can determine your success in creating and running a well-architected IoT solution. Cross-cutting activities help you meet the requirements set at design time and adjust for changing requirements over time. It's important to clearly assess your expertise in these activities and take measures to ensure execution at the required quality level.
+Correctly executing DevOps and other cross-cutting activities can determine your success in creating and running a Well-Architected IoT solution. Cross-cutting activities help you meet the requirements set at design time and adjust for changing requirements over time. It's important to clearly assess your expertise in these activities and take measures to ensure execution at the required quality level.
 
 Relevant Microsoft technologies include:
 
