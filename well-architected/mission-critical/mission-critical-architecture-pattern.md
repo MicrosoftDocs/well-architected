@@ -42,7 +42,7 @@ We recommend that you evaluate [**the key design areas**](/azure/architecture/fr
 ![Diagram showing a generic pattern for a mission-critical application.](./images/mission-critical-pattern.png)
 
 ### Global resources 
-Certain resources in this architecture are shared by resources deployed in regions. Common examples are resources that are used to distribute traffic across multiple regions, store permanent state for the whole application, and monitor resources for them.
+Certain resources in this architecture are globally shared by resources deployed within each region. Common examples are resources that are used to distribute traffic across multiple regions, store permanent state for the whole application, and monitor resources for them.
 
 |Characteristic|Considerations|
 |---|---|
@@ -78,9 +78,9 @@ The stamp contains the application and resources that participate in completing 
 |Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to estimate the high-level of demand caused by a failover to another stamp.|
 |Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed. 
 
-## Baseline examples for containerized applications
+## Baseline architectures for mission-critical applications
 
-The baseline examples serve as the north star architecture for containerized mission-critical applications. While there are many possible options for container orchestrators, Kubernetes is widely adopted across many industries. The baseline uses Azure Kubernetes Service (AKS) as the application platform.
+These baseline examples serve as the recomended north star architecture for mission-critical applications. The baseline applies a strong recomendation to containerize the application, using a container orchestrator for the application platform. While there are many possible options for container orchestrators, the baseline uses Azure Kubernetes Service (AKS) as the application platform since Kubernetes is widely adopted across many industries.
 
 > Refer to [Well-Architected mission-critical workloads: Containerization](/azure/architecture/framework/mission-critical/mission-critical-application-platform#containerization).
 
@@ -95,7 +95,7 @@ The baseline examples serve as the north star architecture for containerized mis
              </figure>
              <div class="card-content has-text-overflow-ellipsis">
                  <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
-                    <p>Baseline architecture</p>
+                    ###Baseline architecture###
                  </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
                         <p>If you're just starting your mission-critical journey, use this architecture as your reference. The workload is accessed over a public endpoint and doesn't require private network connectivity to other company resources.</p>
@@ -113,7 +113,7 @@ The baseline examples serve as the north star architecture for containerized mis
                 </figure>
                 <div class="card-content has-text-overflow-ellipsis">
                     <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
-                      <p>Baseline with network controls</p>
+                      ###Baseline with network controls###
                     </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
                         <p>This architecture builds on the baseline architecture. The design is extended to provide strict network controls to prevent unauthorized public access from the internet to any of the workload resources.</p>
@@ -131,7 +131,7 @@ The baseline examples serve as the north star architecture for containerized mis
           </figure>
           <div class="card-content has-text-overflow-ellipsis">
              <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
-              <p>Baseline in Azure landing zones</p>
+              ###Baseline in Azure landing zones###
              </div>
              <div class="is-size-7 has-margin-top-small has-line-height-reset">
                    <p>This architecture is appropriate if you're deploying the workload in an enterprise setup. The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise. It's deployed in an Azure landing zone subscription that inherits the Corp. management group.</p>
@@ -141,13 +141,10 @@ The baseline examples serve as the north star architecture for containerized mis
     </li>
 </ul>
 
-
 ## Design areas
 We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
 
-
 ## Next step
-
 
 Review the best practices for designing mission-critical application scenarios.
 
