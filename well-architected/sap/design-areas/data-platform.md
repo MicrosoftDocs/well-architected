@@ -14,25 +14,27 @@ ms.custom: SAP
 
 The data platform refers to the data store technologies that support an SAP workload. SAP workloads place high demands on the data platform. We outline best practices for optimizing cost while maintaining performance.
 
-## Optimize storage costs
+## Optimize data costs
 
 We recommend optimizing the storage cost for your SAP workload. Storage is an essential component of an SAP workload. Storage contains active data and backup data that is critical to your organization. Storage affects the performance, availability, and recoverability of an SAP workload. It's important to have the right performance at the right cost. Here are recommendations to help you reach this goal.
 
-**Use reserved capacity storage type** – There are several storage options available to choose from based on the workload requirement. Managed disks, blog storage, and backup storage can support an SAP workload in various combinations. Each of these options comes with storage reservation options that lower overall costs for persistent data. For more information, see:
+**Use reserved capacity storage type.** There are several storage options available to choose from based on the workload requirement. Managed disks, blog storage, and backup storage can support an SAP workload in various combinations. Each of these options comes with storage reservation options that lower overall costs for persistent data. For more information, see:
 
 - [Azure disk reserved capacity](/azure/virtual-machines/disks-reserved-capacity)
 - [Blob storage reserved capacity](/azure/storage/blobs/storage-blob-reserved-capacity?toc=%2Fazure%2Fcost-management-billing%2Freservations%2Ftoc.json)
 - [Azure Backup Storage reserved capacity](/azure/backup/backup-azure-reserved-pricing-optimize-cost)
 
-**Use lifecycle management policies**  – Other than reserved capacity, you need to ensure the data-retention period is right for the SAP workload. An SAP database backup can be large and add to the storage cost if not optimized. We recommend that you create a lifecycle policy that meets the recovery time objective (RTO) and recovery point objective (RPO) of your SAP workload. The policy should move into Premium, Standard, Cold, Archive storage based on its age and business requirements.
+**Use lifecycle management policies.** Other than reserved capacity, you need to ensure the data-retention period is right for the SAP workload. An SAP database backup can be large and add to the storage cost if not optimized. We recommend that you create a lifecycle policy that meets the recovery time objective (RTO) and recovery point objective (RPO) of your SAP workload. The policy should move into Premium, Standard, Cold, Archive storage based on its age and business requirements.
 
-## Improve storage reliability
-(**NEED AN INTRO**)
-### Database reliability
+## Improve data reliability
+
+Data reliability is essential for ensuring continuity of operations. We provide reliability recommendations for configuring database reliability, creating SAPMNT share reliability, using backups, and implementing a disaster recovery solution.
+
+### Configure database reliability
 
 An SAP application feeds data to multiple enterprise systems, making database resiliency a key workload consideration. We recommend replicating production data for the highest resiliency. Cross-region replication is the preferred disaster recovery solution. But for a more affordable option, you should configure zone redundancy at a minimum. The methods you choose depends on the database management system (DBMS) and required business service-level agreement (SLA). Below are recommendations for the database layer.
 
-**Define RPO and RTO** Creating database resiliency requires a plan to recover data loss. A logical error on the SAP database, a large-scale disaster, or a system outage can cause data loss in an SAP workload. Your recovery plan should identify how much data you’re willing to lose and how fast you need to recover. The amount of data loss you’re willing to lose is your recovery point objective (RPO). How fast you need to recover is your recovery time objective (RTO). When you design for recoverability, you need to understand the desired and actual RPO and RTO of your SAP application.
+**Define RPO and RTO.** Creating database resiliency requires a plan to recover data loss. A logical error on the SAP database, a large-scale disaster, or a system outage can cause data loss in an SAP workload. Your recovery plan should identify how much data you’re willing to lose and how fast you need to recover. The amount of data loss you’re willing to lose is your recovery point objective (RPO). How fast you need to recover is your recovery time objective (RTO). When you design for recoverability, you need to understand the desired and actual RPO and RTO of your SAP application.
 
 **Use synchronous replication for no data loss.**  In some scenarios, there’s no tolerance for data loss. The recovery point objective is 0. To achieve this RPO, you need use synchronous replication on the database layer. Synchronous replication commits database transactions to database instances in two separate zones or regions. You should measure the latency between the two instances to ensure it meets workload needs, and you can do it with the SAP `niping` measuring tool. Higher network latency will slow down the scalability of your workload, and physical distance between the instances adds network latency. As a result, replication across regions will have higher latency than across availability zones because there's more distance between the instances. Database replication between different regions should be asynchronous and replication between availability zones should be synchronous. It’s important to balance resiliency and latency in SAP workload design. For more information, see:
 
@@ -46,15 +48,14 @@ SAPMNT hosts the physical kernel files for SAP application and can be a single p
 
 There are also a few application specific configurations you should address for SAPMNT reliability. You need shared directories in the environment (`/sapmnt/SID and /usr/sap/trans`) to deploy the SAP NetWeaver application layer. We recommend creating highly available file systems and ensuring they're resilient. The `/sapmnt/SID` and `/usr/sap/SID/ASCS` directories are important. You should place these file systems on NFS on Azure Files to achieve the maximum reliability. For more general file share information see, [NFS on Azure Files](/azure/storage/files/files-nfs-protocol).
 
-The table below provides SAPMNT guidance specific to each operating system.
-
-|OS | Guidance|
+*Table 1: SAPMNT guidance for each operating system.*
+|OS | SAPMNT Guidance|
 | --- | --- |
 |Windows| [Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a cluster shared disk in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk) <br><br>[Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a file share in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share) <br><br>[High availability for SAP NetWeaver on Azure VMs on Windows with Azure Files Premium SMB for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-azure-files-smb) <br><br>[High availability for SAP NetWeaver on Azure VMs on Windows with Azure NetApp Files(SMB) for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)|
 |Red Hat Enterprise Linux (RHEL) | [High availability for SAP NetWeaver on Azure VMs on Red Hat Enterprise Linux with NFS on Azure Files](/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-nfs-azure-files) <br><br> [Azure Virtual Machines high availability for SAP NetWeaver on Red Hat Enterprise Linux with Azure NetApp Files for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 |SUSE Linux Enterprise Server (SLES) | [High-availability SAP NetWeaver with simple mount and NFS on SLES for SAP Applications VMs]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-simple-mount) <br><br>[High availability for SAP NetWeaver on Azure VMs on SUSE Linux Enterprise Server with NFS on Azure Files]( /azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs-azure-files)
 
-### Data backups
+### Use data backups
 
 The SAP workload should implement a regular backup solution. Backups are the backbone of disaster recovery and help ensure continuity of operations. We have a few recommendations for backup reliability.
 
@@ -79,7 +80,7 @@ For more information, see:
 - [Backup guide for SAP HANA on Azure Virtual Machines](/azure/backup/sap-hana-database-about)
 - [Backup guide for SQL Server on Azure Virtual Machines](/azure/backup/tutorial-sql-backup)
 
-#### Find marketplace solutions
+#### Find marketplace backup solutions
 
 Several certified third-party backup solutions exist in the [Azure Marketplace]( https://azuremarketplace.microsoft.com/). These solutions offer vendor backup capabilities and SAP-certified backup capabilities. You should consider layering these solutions on top of Azure Backup to generate custom solutions with foundational support.
 
@@ -99,9 +100,9 @@ The right solution depends on your desired cost and availability levels. In some
 - [Azure Storage redundancy](/azure/storage/common/storage-redundancy)
 - [Back up SAP HANA databases' instance snapshots in Azure VMs](/azure/backup/sap-hana-database-instances-backup)
 
-#### Implement Disaster Recovery
+### Implement disaster recovery plan
 
-We recommend you invest in Disaster Recovery (DR) to improve the reliability of the SAP workload. Disaster recovery is achieved by replicating primary data to a secondary location. Several tools & methodology can be used to the achieve goal. Disaster Recovery is required when the primary location isn't accessible due to technical or natural disaster. Disaster Recovery solutions can be across zones within region or across regions based on your business requirements, but we recommended DR across region for better resiliency. For more information, see:
+We recommend you invest in disaster recovery (DR) to improve the reliability of the SAP workload. Disaster recovery is achieved by replicating primary data to a secondary location. Several tools & methodology can be used to the achieve goal. Disaster Recovery is required when the primary location isn't accessible due to technical or natural disaster. Disaster Recovery solutions can be across zones within region or across regions based on your business requirements, but we recommended DR across region for better resiliency. For more information, see:
 
 - [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)
 - [Cross-region replication of Azure NetApp Files volumes](/azure/azure-netapp-files/cross-region-replication-introduction)
