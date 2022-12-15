@@ -146,11 +146,5 @@ The baseline examples serve as the north star architecture for containerized mis
        </article>
     </li>
 
----
 
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Application design](./mission-critical-application-design.md)
 
