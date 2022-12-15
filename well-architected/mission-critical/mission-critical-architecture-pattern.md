@@ -95,7 +95,7 @@ These baseline examples serve as the recomended north star architecture for miss
              </figure>
              <div class="card-content has-text-overflow-ellipsis">
                  <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
-                    ###Baseline architecture###
+                    ### Baseline architecture
                  </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
                         <p>If you're just starting your mission-critical journey, use this architecture as your reference. The workload is accessed over a public endpoint and doesn't require private network connectivity to other company resources.</p>
@@ -113,7 +113,7 @@ These baseline examples serve as the recomended north star architecture for miss
                 </figure>
                 <div class="card-content has-text-overflow-ellipsis">
                     <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
-                      ###Baseline with network controls###
+                      ### Baseline with network controls
                     </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
                         <p>This architecture builds on the baseline architecture. The design is extended to provide strict network controls to prevent unauthorized public access from the internet to any of the workload resources.</p>
@@ -131,7 +131,7 @@ These baseline examples serve as the recomended north star architecture for miss
           </figure>
           <div class="card-content has-text-overflow-ellipsis">
              <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
-              ###Baseline in Azure landing zones###
+              ### Baseline in Azure landing zones
              </div>
              <div class="is-size-7 has-margin-top-small has-line-height-reset">
                    <p>This architecture is appropriate if you're deploying the workload in an enterprise setup. The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise. It's deployed in an Azure landing zone subscription that inherits the Corp. management group.</p>
