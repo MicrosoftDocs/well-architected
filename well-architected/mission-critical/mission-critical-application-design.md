@@ -90,7 +90,7 @@ For design recommendations and configuration choices at the platform level, see 
 
 ##### Example - Global distribution approach
 
-This example shows both global and regional resources, with regional resources deployed across multiple regions to provide geo-availability, in case of regional outages and to bring services closer to end-users. These regional deployments also serve as scale-units stamps to provide extra capacity and availability when required.
+This example shows both global and regional resources, with regional resources deployed across multiple regions to provide geo-availability and to bring services closer to end-users. These regional deployments also serve as scale-units stamps to provide extra capacity and availability when required.
 
 ![Mission-Critical Global Distribution](./images/mission-critical-global-distribution.gif "Mission-Critical Global Distribution")
 
@@ -158,7 +158,7 @@ Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tra
 |[Saga](/azure/architecture/reference-architectures/saga/saga)| Manage data consistency across microservices with independent datastores by ensuring services update each other through defined event or message channels. Each service performs local transactions to update its own state and publishes an event to trigger the next local transaction in the saga. If a service update fails, the saga executes compensating transactions to counteract preceding service update steps. Individual service update steps can themselves implement resiliency patterns, such as retry.|
 |[Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring)|Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals.|
 |[Retry](/azure/architecture/patterns/retry)|Handles transient failures elegantly and transparently.|
-|[Throttling](/azure/architecture/patterns/throttling)| Controls the consumption of resources used by application components, protecting them from becoming over encumbered. When a resource reaches a load threshold, it should defer lower-priority operations and degrading non-essential functionality so that essential functionality can continue until sufficient resources are available to return to normal operation.|
+|[Throttling](/azure/architecture/patterns/throttling)| Controls the consumption of resources used by application components, protecting them from becoming over encumbered. When a resource reaches a load threshold, it should defer lower-priority operations, and degrading non-essential functionality so that essential functionality can continue until sufficient resources are available to return to normal operation.|
 - Use vendor provided SDKs, such as the Azure SDKs, to connect to dependent services. Also use built-in  resiliency capabilities instead of implementing custom functionality.
  - Ensure a suitable back-off strategy is applied when retrying failed dependency calls to avoid a self-inflicted DDoS scenario.
 - Define **common engineering criteria** for all application microservice teams to drive consistency and acceleration regarding the use application-level resiliency patterns.
@@ -175,7 +175,7 @@ Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tra
 
 ## Programming language selection
 
-Selecting the right programming languages and frameworks is a critical design decision. While this decision is driven by the skill set or standardized technologies within an organization, it's essential to evaluate the performance, resilience aspects, and overall capability of different languages and frameworks.
+Selecting the right programming languages and frameworks is a critical design decision. This decision is often mainly driven by the skill set or standardized technologies within an organization. However, it's essential to evaluate the performance, resilience aspects, and overall capability of different languages and frameworks.
 
 ### Design considerations
 
