@@ -18,7 +18,7 @@ The data platform refers to the data store technologies that support an SAP work
 
 We recommend optimizing the storage cost for your SAP workload. Storage is an essential component of an SAP workload. Storage contains active data and backup data that is critical to your organization. Storage affects the performance, availability, and recoverability of an SAP workload. It's important to have the right performance at the right cost. Here are recommendations to help you reach this goal.
 
-**Use reserved capacity storage type.** There are several storage options available to choose from based on the workload requirement. Managed disks, blog storage, and backup storage can support an SAP workload in various combinations. Each of these options comes with storage reservation options that lower overall costs for persistent data. 
+**Use reserved capacity storage type.** There are several storage options available to choose from based on the workload requirement. Managed disks, blog storage, and backup storage can support an SAP workload in various combinations. Each of these options comes with storage reservation options that lower overall costs for persistent data.
 
 For more information, see:
 
@@ -50,11 +50,11 @@ For more information, see:
 
 SAPMNT hosts the physical kernel files for SAP application and can be a single point of failure. Several options are available on Azure to created redundancy and architect a highly available SAPMNT share. We recommend using Azure Premium Files or Azure NetApp Files for Linux and Azure Premium Files. For Windows-based deployments, you should use Azure NetApp Files or Azure Shared Disk.
 
-There are also a few application specific configurations you should address for SAPMNT reliability. You need shared directories in the environment (`/sapmnt/SID and /usr/sap/trans`) to deploy the SAP NetWeaver application layer. We recommend creating highly available file systems and ensuring they're resilient. The `/sapmnt/SID` and `/usr/sap/SID/ASCS` directories are important. You should place these file systems on NFS on Azure Files to achieve the maximum reliability. 
+There are also a few application specific configurations you should address for SAPMNT reliability. You need shared directories in the environment (`/sapmnt/SID and /usr/sap/trans`) to deploy the SAP NetWeaver application layer. We recommend creating highly available file systems and ensuring they're resilient. The `/sapmnt/SID` and `/usr/sap/SID/ASCS` directories are important. You should place these file systems on NFS on Azure Files to achieve the maximum reliability.
 
 For more information see, [NFS on Azure Files](/azure/storage/files/files-nfs-protocol).
 
-*Table 1: SAPMNT guidance for each operating system.*
+*Table 1 - SAPMNT guidance for each operating system.*
 
 |OS | SAPMNT Guidance|
 | --- | --- |
@@ -70,15 +70,15 @@ The SAP workload should implement a regular backup solution. Backups are the bac
 
 We recommend you use Azure Backup as the foundational backup strategy for an SAP workload. Azure Backup is the native backup solution in Azure, and it provides multiple capabilities to help streamline your SAP backups. With Azure Backup, we want to point out a few features.
 
-**Native database backup compatibility.** Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, and Oracle databases used by SAP Applications. Azure backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure backup also supports the database backup capability for HANA & SQL Server databases today.
+*Table 2 - Azure Backup features*
 
-**Storage backup.** The storage backup feature can help optimize the backup strategy by using disk snapshots of Azure Premium storage for selective disks. For more information on application-consistent backups, see [snapshot consistency](/azure/backup/backup-azure-vms-introduction#snapshot-consistency).
-
-**Virtual machine backup.** Back up and restore Azure VM data through the Azure portal. Cross-region restoration lets you restore Azure VMs that were to a paired secondary region.
-
-**Long-term retention.** Azure Backup allows you to retain SAP backups years for compliance and audit needs.
-
-**Backup Management.** Azure Backup enables you to manage backups from the Azure portal with an easy user interface.
+| Feature | Description |
+| --- | --- |
+| Native database backup compatibility | Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, and Oracle databases used by SAP Applications. Azure backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure backup also supports the database backup capability for HANA & SQL Server databases today. |
+| Storage backup | The storage backup feature can help optimize the backup strategy by using disk snapshots of Azure Premium storage for selective disks. For more information on application-consistent backups, see [snapshot consistency](/azure/backup/backup-azure-vms-introduction#snapshot-consistency). |
+| Virtual machine backup | Back up and restore Azure VM data through the Azure portal. Cross-region restoration lets you restore Azure VMs that were to a paired secondary region. |
+| Long-term retention | Azure Backup allows you to retain SAP backups years for compliance and audit needs. |
+| Backup management | Azure Backup enables you to manage backups from the Azure portal with an easy user interface. |
 
 For more information, see:
 
@@ -99,7 +99,7 @@ A snapshot is a point-in-time, copy of your data. The speed and reliability of s
 
 Azure Backup can take database backups for HANA and SQL Server, for example. The Backup vault feature of Azure Shared Disk can serve as your database storage solution. Azure NetApp Files (ANF) can also back up critical data by using snapshots, such as ANF volumes Snapshot. ANF Cross Region Replication uses ANF snapshots to replicate data from one region to another.
 
-The right solution depends on your desired cost and availability levels. In some scenarios, you might want to replicate your SAP on Azure data to other Azure regions for disaster recovery. However, you can achieve the same capabilities with Azure Storage replication, such as Geo-redundant storage (GRS) or Azure Site Recovery. 
+The right solution depends on your desired cost and availability levels. In some scenarios, you might want to replicate your SAP on Azure data to other Azure regions for disaster recovery. However, you can achieve the same capabilities with Azure Storage replication, such as Geo-redundant storage (GRS) or Azure Site Recovery.
 
 For more information, see:
 
@@ -122,7 +122,7 @@ For more information, see:
 
 ## Improve storage performance
 
-It’s important to choose the appropriate storage solutions to support the data needs of the SAP workload. The correct solution can improve the performance of existing capabilities and allow you to add new features. In general, storage needs to meet the input/output operations per second (IOPS) requirements and throughput needs of the SAP database. 
+It’s important to choose the appropriate storage solutions to support the data needs of the SAP workload. The correct solution can improve the performance of existing capabilities and allow you to add new features. In general, storage needs to meet the input/output operations per second (IOPS) requirements and throughput needs of the SAP database.
 
 For more information, see [storage types for an SAP workload](/azure/virtual-machines/workloads/sap/planning-guide-storage).
 
@@ -133,6 +133,8 @@ For more information, see [storage types for an SAP workload](/azure/virtual-mac
 **Enable write accelerator.** Write accelerator is a capability for M-Series VMs on Premium Storage with Azure Managed Disks exclusively. It’s imperative to enable write accelerator on the disks associated with the /hana/log volume. This configuration facilitates sub millisecond writes latency for 4 KB and 16-KB blocks sizes. For more information, see [Azure Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator).
 
 **Choose the right VM.** Choosing the right VM has cost and performance implications. The goal is to pick a storage VM that supports the IOPS and throughput requirements of the SAP workload. There are three critical areas to focus while selecting a VM
+
+*Table 3 - Compute features that affect performance*
 
 | Compute features | Description |
 |---| --- |

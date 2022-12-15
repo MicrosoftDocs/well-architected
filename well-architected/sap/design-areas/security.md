@@ -53,11 +53,9 @@ For more information, see:
 - [SAP Identity Authentication Service](https://help.sap.com/docs/IDENTITY_AUTHENTICATION)
 - [SAP Identity Provisioning Service](https://help.sap.com/docs/IDENTITY_PROVISIONING)
 
-A common customer scenario is deploying SAP application into Microsoft Teams. This solution requires SSO with Azure AD. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams.
+A common customer scenario is deploying SAP application into Microsoft Teams. This solution requires SSO with Azure AD. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams. For more information, see [the Microsoft commercial marketplace](https://appsource.microsoft.com/marketplace/apps?page=1&search=sap).
 
-For more information, see [the Microsoft commercial marketplace](https://appsource.microsoft.com/marketplace/apps?page=1&search=sap).
-
-The following table provides a summary of the recommended SSO method for the given SAP solution.
+*Table 1 - Summary of the recommended SSO methods*
 
 | SAP solution | SSO method |
 | --- | --- |
@@ -107,9 +105,7 @@ When you use client-side encryption, you encrypt the data and upload the data as
 - [Service-side encryption using customer-managed key in Azure Key Vault](/azure/storage/common/customer-managed-keys-configure-existing-account)
 - [Client-side encryption](/azure/storage/blobs/client-side-encryption)
 
-**Encrypt data in transit.** Encryption in transit applies to the state of data moving from one location to another. Data in transit can be encrypted in several ways, depending on the nature of the connection.
-
-For more information, see [encryption of data in transit]( /azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit).
+**Encrypt data in transit.** Encryption in transit applies to the state of data moving from one location to another. Data in transit can be encrypted in several ways, depending on the nature of the connection. For more information, see [encryption of data in transit]( /azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit).
 
 ## Collect and analyze SAP application logs
 
