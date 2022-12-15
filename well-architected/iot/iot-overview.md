@@ -20,7 +20,7 @@ categories:
 
 This section of the Microsoft Azure Well-Architected Framework aims to address the challenges of building IoT workloads on Azure. This article describes the IoT design areas, architecture patterns, and architecture layers in the IoT workload.
 
-The IoT workload design methodology is underpinned by five pillars of architectural excellence which serve as a compass for subsequent design decisions across the design areas described in this article. The remaining articles in this series delve into how to evaluate the design areas using IoT-specific design principles in the reliability, security, cost optimization, operational excellence and performance efficiency pillars.
+The IoT workload design methodology is underpinned by [five pillars of architectural excellence](../index.md) which serve as a compass for subsequent design decisions across the design areas described in this article. The remaining articles in this series delve into how to evaluate the design areas using IoT-specific design principles in the reliability, security, cost optimization, operational excellence and performance efficiency pillars.
 
 > [!TIP]
 > To assess your IoT workload through the lenses of reliability, security, cost optimization, operational excellence and performance efficiency, see the [Azure Well-Architected Review](/assessments/azure-architecture-review/).
@@ -73,7 +73,7 @@ The key IoT design areas that facilitate a good IoT solution design are:
 - Connectivity
 - Hybridity
 
-The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. To evaluate the design areas, use the IoT-specific design principles in the five pillars of architectural excellence. These principles help clarify considerations to ensure your IoT workloads meet requirements across architecture layers.
+The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. To evaluate the design areas, use the IoT-specific design principles in the five pillars of architectural excellence. These principles help clarify considerations to ensure your IoT workload meets requirements across architecture layers.
 
 The following sections describe the IoT design areas, and how they apply to the IoT *connected products* and *connected operations* architecture patterns.
 

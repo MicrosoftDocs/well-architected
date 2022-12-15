@@ -1,17 +1,23 @@
 ---
 title: Reliability in your IoT workload
 description: See guidance and recommendations that apply to the reliability pillar in a well-architected IoT workload.
-author: dominicbetts
-ms.author: dobett
-ms.date: 09/30/2022
-ms.topic: conceptual
+author: asergaz
+ms.author: sergaz
+ms.date: 12/14/2022
+ms.topic: overview
 ms.service: architecture-center
 ms.subservice: well-architected
+ms.custom:
+  - engagement-fy23
+products:
+  - azure-iot
+categories:
+  - iot
 ---
 
 # Reliability in your IoT workload
 
-IoT workloads, like all workloads, have the potential to malfunction. The key reliability considerations for [well-architected IoT workloads](iot-overview.md) are how quickly you can detect changes and how quickly you can resume operations.
+IoT workloads, like all workloads, have the potential to malfunction. The key reliability considerations for Well-Architected IoT solutions are how quickly you can detect changes and how quickly you can resume operations.
 
 IoT applications are often distributed at massive scale, and might operate over unreliable networks without persistent access or visibility into end-to-end data flows. Because of these factors, you should design your IoT architecture with availability and resiliency in mind.
 
@@ -19,24 +25,24 @@ Building a reliable IoT solution requires careful consideration of devices, clou
 
 ## Assess reliability in your IoT workload
 
-To assess your IoT workload against the Well-Architected Framework Reliability pillar, complete the reliability questions for IoT workloads in the [Azure Well-Architected Review assessment](/assessments/?mode=pre-assessment&id=azure-architecture-review). After the assessment identifies key reliability recommendations for your IoT solution, use the following content to help implement the recommendations.
+To assess your IoT workload through the lenses of the Well-Architected Framework Reliability pillar, complete the reliability questions for IoT workloads in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). After the assessment identifies key reliability recommendations for your IoT solution, use the following content to help implement the recommendations.
 
-## Principles
+## Design principles
 
-These IoT design principles resonate and extend the quality pillar of the Azure Well-Architected Framework - [Reliability](/azure/architecture/framework/#reliability).
+The IoT workload design methodology is underpinned by [five pillars of architectural excellence](../index.md) which serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles resonate and extend the quality pillar of the Azure Well-Architected Framework - [Reliability](../resiliency/overview.md).
 
 |Design principle|Considerations|
 |---|---|
 |**Design devices for resiliency**|Design your devices to satisfy the uptime and availability requirements of your end-to-end solution. Ensure that your IoT device can operate efficiently with intermittent connectivity to the cloud.|
-|[**Design for business requirements**](/azure/architecture/framework/resiliency/principles#design-for-business-requirements)|Reliability is a subjective concept. For an application to be appropriately reliable, it must reflect the business requirements surrounding it. Cost implications are inevitable when introducing architectural modifications to meet service-level agreements (SLAs). This trade-off should be carefully considered.|
+|[**Design for business requirements**](../resiliency/principles.md#design-for-business-requirements)|Cost implications are inevitable when introducing architectural modifications to meet service-level agreements (SLAs). For example, to have greater reliability and high availability you can implement cross-region redundancies and an automated system to autoscale. This trade-off should be carefully considered.|
 |**Safe, simple update procedures**|An enterprise IoT solution should provide a strategy for how operators manage devices. IoT operators require simple and reliable update tools and practices.|
-|[**Observe application health**](/azure/architecture/framework/resiliency/principles#observe-application-health)|Define service-level indicators (SLIs) and service-level objectives (SLOs) based on observability. Adding processes for auditing, monitoring, and alerting beyond what cloud services provide.|
+|[**Observe application health**](../resiliency/principles.md#observe-application-health)|Define service-level indicators (SLIs) and service-level objectives (SLOs) based on observability. Adding processes for auditing, monitoring, and alerting beyond what cloud services provide.|
 |**High availability and disaster recovery (HA/DR) for critical components.**|Resilient hardware and software components that build in redundancy, including cross-region redundancies.|
-|**Plan for capacity**|Plan for service quotas and throttles, latency between the detection-action and establish benchmarks at production scale to support uninterrupted data flow.|
+|**Plan for capacity**|Plan for service quotas and throttles, latency between the detection-action, and establish benchmarks at production scale to support uninterrupted data flow.|
 
-## Architectural layers
+## IoT architecture layers
 
-Reliability in an IoT solution involves the [foundational IoT architecture layers](iot-overview.md#iot-architecture-layers). To achieve overall solution reliability, each layer should have acceptable levels of reliability.
+Reliability design principles help clarify considerations to ensure your IoT workload meets requirements across the [foundational IoT architecture layers](iot-overview.md#iot-architecture-layers). To achieve overall solution reliability, each layer should have acceptable levels of reliability.
 
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in an IoT architecture." border="false":::
 
@@ -89,7 +95,7 @@ Device connectivity conditions, including upstream to the cloud and downstream t
 
 The connectivity strategy should include robustness, for example fallback capability and disconnection management, and buffering backup to mitigate cloud dependency for critical or safety functions.
 
-The following design, error handling, and monitoring practices relate to connectivity:
+The following design, error handling, and monitoring practices relate to connectivity.
 
 ### Connectivity design
 
@@ -121,7 +127,7 @@ The ability to detect and pinpoint the source of an issue is critical. However, 
 - [Manage connectivity and reliable messaging by using Azure IoT Hub device SDKs](/azure/iot-hub/iot-hub-reliability-features-in-sdks)
 - [Monitor, diagnose, and troubleshoot Azure IoT Hub device connectivity](/azure/iot-hub/iot-hub-troubleshoot-connectivity)
 - [Transient fault handling](/azure/architecture/best-practices/transient-faults)
-- [Error handling for resilient applications in Azure](/azure/architecture/framework/resiliency/app-design-error-handling)
+- [Error handling for resilient applications in Azure](../resiliency/app-design-error-handling.md)
 - [Circuit Breaker pattern - Cloud Design Patterns](/azure/architecture/patterns/circuit-breaker)
 - [Compensating Transaction pattern - Cloud Design Patterns](/azure/architecture/patterns/compensating-transaction)
 - [Throttling pattern - Cloud Design Patterns](/azure/architecture/patterns/throttling)
@@ -203,7 +209,7 @@ The following actions support observability for IoT solutions:
 - Establish a mechanism to collect and analyze performance metrics and alerts.
 - Configure devices, cloud services, and applications to collect and connect with Azure Monitor.
 - Use real-time dashboards and alerts to monitor Azure backend services.
-- Define roles and responsibilities for monitoring and acting on events and alerts. For more information, see [Roles, responsibilities, and permissions](/azure/architecture/framework/security/design-identity-role-definitions).
+- Define roles and responsibilities for monitoring and acting on events and alerts. For more information, see [Roles, responsibilities, and permissions](../security/design-identity-role-definitions.md).
 - Implement continuous monitoring.
 
 ### Azure Monitor
@@ -252,7 +258,7 @@ As you design and build your IoT solution, you must meet the SLA for failure rec
 
 - Azure IoT services have defined uptime and availability targets. Review the SLAs for Azure IoT services that are part of your solution to see if they meet your uptime goals. For example, Azure IoT Hub has an SLA of 99.9%, which means you should plan for 1 minute and 36 seconds of potential downtime per day. The Azure IoT Hub SDK provides built-in, configurable logic to handle retries and backoff.
 
-- Consider breaking your uptime goals into two categories: Device management and data ingestion operations. For example, it might be critical for a device to successfully send data to an IoT hub, even if device management services are unavailable. For more information, see the [Azure IoT Hub SDK reliability features](/azure/iot-hub/iot-hub-reliability-features-in-sdks).
+- Consider breaking your uptime goals into two categories: device management and data ingestion operations. For example, it might be critical for a device to successfully send data to an IoT hub, even if device management services are unavailable. For more information, see the [Azure IoT Hub SDK reliability features](/azure/iot-hub/iot-hub-reliability-features-in-sdks).
 
 - Consider using redundant hardware for sensors, power, and storage. Redundant hardware enables devices to function if a critical component isn't available. Hardware can also help with connectivity issues. For example, you can use a store and forward approach for data when connectivity isn't available. Azure IoT Edge has this feature built in.
 
