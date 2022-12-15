@@ -43,7 +43,7 @@ This image shows the high-level design. A user accesses the application through 
 
 ### Design considerations
 
-Mission-critical design methodology requires multi-region deployment. This model ensures regional fault tolerance, so that application availability remains even when an entire region goes down. When designing a multi-region application, consider different deployment strategies, such as active-active and active-passive, alongside application requirements, because there are significant trade-offs between each approach. For mission-critical workloads, active-active model is highly recommended.
+The mission-critical design methodology necessitates a multi-region deployment. This model ensures regional fault tolerance, so that application availability remains even when an entire region goes down. When designing a multi-region application, consider different deployment strategies, such as active-active and active-passive, alongside application requirements, because there are significant trade-offs between each approach. For mission-critical workloads, active-active model is highly recommended.
 
 Not every workload supports or requires multiple regions running simultaneously. Precise application requirements should be weighed against these trade-offs to inform an optimal design decision. For certain application scenarios with lower reliability targets, active-passive or sharding, can be suitable alternatives.
 
