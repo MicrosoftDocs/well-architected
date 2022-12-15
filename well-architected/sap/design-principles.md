@@ -3,7 +3,7 @@ title: SAP workload design principles
 description: SAP workload design principles
 author: stephen-sumner
 ms.author: ssumner
-ms.date: 12/19/2023
+ms.date: 12/19/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
