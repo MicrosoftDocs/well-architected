@@ -2,8 +2,8 @@
 title: Architecture pattern for mission-critical workloads on Azure
 description: The design areas represent the architecturally significant topics that must be discussed and designed for when defining a target architecture
 author: calcof
-ms.author: calcof
-ms.date: 08/15/2022
+ms.author: prwilk
+ms.date: 12/15/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -93,7 +93,7 @@ The baseline examples serve as the north star architecture for containerized mis
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                 <a class="is-undecorated is-full-height is-block"
                  href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro">
-                 <img role="presentation" alt="Diagram shows a baseline mission-critical application." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-online.png">
+                 <img role="presentation" alt="Diagram shows a baseline mission-critical application." src="./images/mission-critical-architecture-online.png">
                 </a>
              </figure>
              <div class="card-content has-text-overflow-ellipsis">
@@ -101,7 +101,7 @@ The baseline examples serve as the north star architecture for containerized mis
                     <p>Baseline architecture</p>
                  </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                        <p>The workload is accessed over a public endpoint and doesn't require private network connectivity to other company resources.</p>
+                        <p>If you are just starting your mission-critical journey, use this architecture as your reference. The workload is accessed over a public endpoint and doesn't require private network connectivity to other company resources.</p>
                     </div>
                 </div>
             </article>
@@ -111,7 +111,7 @@ The baseline examples serve as the north star architecture for containerized mis
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                <a class="is-undecorated is-full-height is-block"
                  href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture">
-                 <img role="presentation" alt="Diagram shows the baseline architecture extended with network controls." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-network.svg">
+                 <img role="presentation" alt="Diagram shows the baseline architecture extended with network controls." src="./images/mission-critical-architecture-network.svg">
                 </a>
                 </figure>
                 <div class="card-content has-text-overflow-ellipsis">
@@ -119,7 +119,7 @@ The baseline examples serve as the north star architecture for containerized mis
                       <p>Baseline with network controls</p>
                     </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                        <p>The workload has strict network controls in place to prevent unauthorized public access from the internet to any of the workload resources.</p>
+                        <p>This architecture builds on the baseline architecture. The design is extended to provide strict network controls to prevent unauthorized public access from the internet to any of the workload resources.</p>
                     </div>
                 </div>
             </article>
@@ -129,7 +129,7 @@ The baseline examples serve as the north star architecture for containerized mis
           <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
               <a class="is-undecorated is-full-height is-block"
               href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone">
-                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="/azure/architecture/reference-architectures/containers/aks-mission-critical/images/mission-critical-architecture-landing-zone.svg">
+                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="./images/mission-critical-architecture-landing-zone.svg">
             </a>
           </figure>
           <div class="card-content has-text-overflow-ellipsis">
@@ -137,36 +137,11 @@ The baseline examples serve as the north star architecture for containerized mis
               <p>Baseline in Azure landing zones</p>
              </div>
              <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                   <p>The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise. It's deployed in an Azure landing zone subscription that inherits the Corp. management group.</p>
+                   <p>This architecture is apppropriate if you're deploying the workload in an enterprise setup. The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise. It's deployed in an Azure landing zone subscription that inherits the Corp. management group.</p>
              </div>
           </div>
        </article>
     </li>
-
-## Baseline examples for industry solutions
-<ul>
-  <li>
-    <div class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
-        <article class="card has-outline-hover is-relative is-fullheight">
-          <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
-              <a class="is-undecorated is-full-height is-block"
-              href="/azure/architecture/industries/telecommunications/carrier-grade?branch=pr-en-us-8411">
-                 <img role="presentation" alt="Diagram shows a carrier-grade voicemail solution." src="/azure/architecture/industries/telecommunications/images/carrier-grade-architecture.png?branch=pr-en-us-8411">
-            </a>
-          </figure>
-          <div class="card-content has-text-overflow-ellipsis">
-             <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
-              <p>Carrier-grade voicemail solution</p>
-             </div>
-             <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                   <p>Within the telecommunications industry, mission-critical applications are referred to as carrier-grade systems. This example shows a voice mail solution.</p>
-             </div>
-          </div>
-       </article>
-    </div>
-  </li>
-</ul>
-
 
 ## Design areas
 We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
