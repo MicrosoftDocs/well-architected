@@ -81,6 +81,9 @@ The stamp contains the application and resources that participate in completing 
 |Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to estimate the high-level of demand caused by a failover to another stamp.|
 |Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed. 
 
+## Design areas
+We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
+
 ## Baseline examples for containerized applications
 
 The baseline examples serve as the north star architecture for containerized mission-critical applications. While there are many possible options for container orchestrators, Kubernetes is widely adopted across many industries. The baseline uses Azure Kubernetes Service (AKS) as the application platform.
@@ -143,8 +146,7 @@ The baseline examples serve as the north star architecture for containerized mis
        </article>
     </li>
 
-## Design areas
-We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
+
 
 
 ## Next step
