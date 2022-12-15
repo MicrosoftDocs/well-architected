@@ -46,7 +46,7 @@ We recommend using proximity placement groups in two scenarios. (1) Use proximit
 > [Data platform](./data-platform.md)
 
 > [!div class="nextstepaction"]
-> [Operational procedures](./operational-procedures.md)
+> [Security](./security.md)
 
 > [!div class="nextstepaction"]
-> [Security](./security.md)
+> [Operational procedures](./operational-procedures.md)

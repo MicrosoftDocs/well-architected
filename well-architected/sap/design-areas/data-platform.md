@@ -100,7 +100,7 @@ The right solution depends on your desired cost and availability levels. In some
 - [Azure Storage redundancy](/azure/storage/common/storage-redundancy)
 - [Back up SAP HANA databases' instance snapshots in Azure VMs](/azure/backup/sap-hana-database-instances-backup)
 
-### Implement disaster recovery plan
+### Implement a disaster recovery plan
 
 We recommend you invest in disaster recovery (DR) to improve the reliability of the SAP workload. Disaster recovery is achieved by replicating primary data to a secondary location. Several tools & methodology can be used to the achieve goal. Disaster Recovery is required when the primary location isn't accessible due to technical or natural disaster. Disaster Recovery solutions can be across zones within region or across regions based on your business requirements, but we recommended DR across region for better resiliency. For more information, see:
 
@@ -139,7 +139,7 @@ It’s important to choose the appropriate storage solutions to support the data
 > [Networking and connectivity](./networking-and-connectivity.md)
 
 > [!div class="nextstepaction"]
-> [Operational procedures](./operational-procedures.md)
+> [Security](./security.md)
 
 > [!div class="nextstepaction"]
-> [Security](./security.md)
+> [Operational procedures](./operational-procedures.md)

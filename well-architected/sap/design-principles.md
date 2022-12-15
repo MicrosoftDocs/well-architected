@@ -28,7 +28,7 @@ A reliable SAP workload is both resilient and available. Resiliency is the abili
 
 **Conduct a reliability assessment.** Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to fix issues or solidify those configurations. We recommend conducting a reliability assessment on your SAP workload. The assessment asks you questions about your workload and provides specific recommendations to focus on. The assessment builds on itself, so you can track your progress without restarting every time.
 
-For the assessment, start an [Azure Well-Architected Review](/assessments/azure-architecture-review/) and select “SAP on Azure” when prompted.
+For the assessment, start an [Azure Well-Architected Review](/assessments/azure-architecture-review/). Select "Start Assessment" and “SAP on Azure” when prompted.
 
 ## Security
 

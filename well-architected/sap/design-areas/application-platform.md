@@ -36,7 +36,7 @@ Many SAP journeys start on-premises, so it’s important to plan for compute opt
 
 **Optimize post-migration.** Post-migration optimization focuses on the end-user experience. This step coincides with the hypercare period, a time of elevated customer service to make sure that the workload is performing. You should monitor the workload as users begin to interact with it. The performance metrics might indicate that you need to downsize the VM or switch to a different VM type.
 
-### Improve application platform operational excellence
+## Improve application platform operational excellence
 
 It’s important to optimize VMs in operations for the most cost-savings. By VM operations, we're referring to the daily management of an SAP workload. This phase of a workload brings the ability to predict the compute needs. It’s important to see how user demand affects compute needs over time. The VM choice should change along with the SAP workload’s requirements. Here are cost-saving recommendations for operations.
 
@@ -69,7 +69,7 @@ The goal of application server reliability is to have multiple application serve
 - [SAP HANA high availability for Azure virtual machines](/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
 - [SAP workload configurations with Azure Availability Zones]( /azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
 
-## Compute performance efficiency
+## Improve compute performance efficiency
 
 Compute is the core that powers an SAP application. Compute includes the hardware, number of cores, and memory. These features are foundational to organizations. If you don’t optimize your compute configuration, an SAP workload will be unable to meet spikes in user demand or stay withing predefined budgets. It’s important to know the demands on your workload and match those demands with the compute you use for your SAP workload. Here are some compute performance considerations.
 
@@ -89,7 +89,7 @@ Compute is the core that powers an SAP application. Compute includes the hardwar
 > [Networking and connectivity](./networking-and-connectivity.md)
 
 > [!div class="nextstepaction"]
-> [Operational procedures](./operational-procedures.md)
+> [Security](./security.md)
 
 > [!div class="nextstepaction"]
-> [Security](./security.md)
+> [Operational procedures](./operational-procedures.md)

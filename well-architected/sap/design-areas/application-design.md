@@ -18,9 +18,9 @@ SAP applications should adhere to the design principles. The guidance here focus
 
 Optimizing your SAP application can lower the total cost of ownership without reducing capabilities. The goal is to generate the maximum return on investment (ROI). Here are ways to optimize an SAP application.
 
-**Identify application responsibility** –  Optimizing an SAP Application should be the responsibility of the customer business application team. Having someone or a group responsible for costs will help drive decisions that optimize costs over the lifecycle of the SAP workload.
+**Identify application responsibility.**  Optimizing an SAP Application should be the responsibility of the customer business application team. Having someone or a group responsible for costs will help drive decisions that optimize costs over the lifecycle of the SAP workload.
 
-**Rationalize and rearchitect.**  You should consider rationalizing or rearchitecting the SAP application, especially during migrations. S4 HANA often replaces older SAP applications that can be added as a legacy system. The SAP WAF assessment can help validate rearchitecting efforts and should be conducted on a periodic basis. For more information, see [Azure Well-Architected Review](/assessments/).
+**Rationalize and rearchitect.** You should consider rationalizing or rearchitecting the SAP application, especially during migrations. S4 HANA often replaces older SAP applications that can be added as a legacy system. The SAP WAF assessment can help validate rearchitecting efforts and should be conducted on a periodic basis. For more information, see [Azure Well-Architected Review](/assessments/).
 
 **Minimize investment in legacy systems.**  You should host a legacy SAP application on minimum-supported architecture to help reduce cost. A legacy application is slower and less performant. Any legacy systems that remain after rationalizing and rearchitecting should receive the minimum spend possible and be retired when appropriate. For more information, see [Azure Cost Management](/azure/cost-management-billing/costs/cost-mgt-best-practices).
 
@@ -50,7 +50,7 @@ Optimizing your SAP application can lower the total cost of ownership without re
 > [Networking and connectivity](./networking-and-connectivity.md)
 
 > [!div class="nextstepaction"]
-> [Operational procedures](./operational-procedures.md)
+> [Security](./security.md)
 
 > [!div class="nextstepaction"]
-> [Security](./security.md)
+> [Operational procedures](./operational-procedures.md)
