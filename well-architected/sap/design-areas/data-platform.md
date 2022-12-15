@@ -49,6 +49,7 @@ SAPMNT hosts the physical kernel files for SAP application and can be a single p
 There are also a few application specific configurations you should address for SAPMNT reliability. You need shared directories in the environment (`/sapmnt/SID and /usr/sap/trans`) to deploy the SAP NetWeaver application layer. We recommend creating highly available file systems and ensuring they're resilient. The `/sapmnt/SID` and `/usr/sap/SID/ASCS` directories are important. You should place these file systems on NFS on Azure Files to achieve the maximum reliability. For more general file share information see, [NFS on Azure Files](/azure/storage/files/files-nfs-protocol).
 
 *Table 1: SAPMNT guidance for each operating system.*
+
 |OS | SAPMNT Guidance|
 | --- | --- |
 |Windows| [Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a cluster shared disk in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk) <br><br>[Cluster an SAP ASCS/SCS instance on a Windows failover cluster by using a file share in Azure]( /azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share) <br><br>[High availability for SAP NetWeaver on Azure VMs on Windows with Azure Files Premium SMB for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-azure-files-smb) <br><br>[High availability for SAP NetWeaver on Azure VMs on Windows with Azure NetApp Files(SMB) for SAP applications]( /azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)|
