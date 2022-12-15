@@ -146,7 +146,9 @@ The baseline examples serve as the north star architecture for containerized mis
 ## Design areas
 We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
 
+
 ## Next step
+
 
 Review the best practices for designing mission-critical application scenarios.
 
