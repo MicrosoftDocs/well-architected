@@ -20,7 +20,7 @@ ms.custom:
 
 # Architecture pattern for mission-critical workloads on Azure
 
-This article presents a common pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. This article also outlines a recomended 'north star' technology approach to building mission-critical solutions on Azure, along with other examples which apply common technology components.
+This article presents a common pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. The article recomends a _north star_ design approach and includes other examples with common technology components.
 
 We recommend that you evaluate [**the key design areas**](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas) and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics. 
 
@@ -80,7 +80,7 @@ The stamp contains the application and resources that participate in completing 
 
 ## Baseline architectures for mission-critical applications
 
-These baseline examples serve as the recomended north star architecture for mission-critical applications. The baseline applies a strong recomendation to containerize the application, using a container orchestrator for the application platform. While there are many possible options for container orchestrators, the baseline uses Azure Kubernetes Service (AKS) as the application platform since Kubernetes is widely adopted across many industries.
+These baseline examples serve as the recomended north star architecture for mission-critical applications. The baseline strongly recomends containerization and using a container orchestrator for the application platform. The baseline uses Azure Kubernetes Service (AKS) because Kubernetes is widely adopted across many industries.
 
 > Refer to [Well-Architected mission-critical workloads: Containerization](/azure/architecture/framework/mission-critical/mission-critical-application-platform#containerization).
 
