@@ -54,7 +54,7 @@ Certain resources in this architecture are shared by resources deployed in regio
 |Reach|The resources should be globally distributed. It’s recommended that these resources communicate with regional or other resources with low latency and the desired consistency.|
 |Dependencies|The resources should avoid dependencies on regional resources because their unavailability can be a cause of global failure. For example, certificates or secrets kept in a single vault could have global impact if there's a regional failure where the vault is located.|
 |Scale limits|Often these resources are singleton instances in the system, and as such they should be able to scale such that they can handle throughput of the system as a whole.|
-|Availability/disaster recovery|Because regional and stamp resources can consume global resources or are fronted by them, it's critical that global resources are configured with high availability and disaster recovery for the health of the whole system.|
+|Availability/disaster recovery|Regional and stamp resources can use global resources. That' why it's critical that global resources are configured with high availability and disaster recovery for the health of the whole system.|
 
 ### Regional resources 
 
@@ -78,7 +78,7 @@ The stamp contains the application and resources that participate in completing 
 |State| Because stamps are ephemeral and will be destroyed with each deployment, a stamp should be stateless as much as possible.|
 |Reach|Can communicate with regional and global resources. However, communication with other regions or other stamps should be avoided. In this architecture, there isn't a need for these resources to be globally distributed.|
 |Dependencies| The stamp resources must be independent. That is, they shouldn't rely on other stamps or components in other regions. They're expected to have regional and global dependencies. </br>The main shared component is the database layer and container registry. This component requires synchronization at runtime.|
-|Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to take into account the estimated high-level of demand and any failover as the result of another stamp in the region becoming unavailable.|
+|Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to estimate the high-level of demand caused by a failover to another stamp.|
 |Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed. 
 
 ## Baseline examples for containerized applications
@@ -101,7 +101,7 @@ The baseline examples serve as the north star architecture for containerized mis
                     <p>Baseline architecture</p>
                  </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                        <p>If you are just starting your mission-critical journey, use this architecture as your reference. The workload is accessed over a public endpoint and doesn't require private network connectivity to other company resources.</p>
+                        <p>If you're just starting your mission-critical journey, use this architecture as your reference. The workload is accessed over a public endpoint and doesn't require private network connectivity to other company resources.</p>
                     </div>
                 </div>
             </article>
@@ -137,7 +137,7 @@ The baseline examples serve as the north star architecture for containerized mis
               <p>Baseline in Azure landing zones</p>
              </div>
              <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                   <p>This architecture is apppropriate if you're deploying the workload in an enterprise setup. The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise. It's deployed in an Azure landing zone subscription that inherits the Corp. management group.</p>
+                   <p>This architecture is appropriate if you're deploying the workload in an enterprise setup. The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise. It's deployed in an Azure landing zone subscription that inherits the Corp. management group.</p>
              </div>
           </div>
        </article>
