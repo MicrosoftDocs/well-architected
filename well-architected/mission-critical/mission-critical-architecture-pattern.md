@@ -20,10 +20,9 @@ ms.custom:
 
 # Architecture pattern for mission-critical workloads on Azure
 
-This article presents a common pattern for mission-critical architecture. As you start the design process, start with this pattern, and then choose components that are best suited for your business requirements. Also included are examples that outline common ways that mission-critical solutions are built.
+This article presents a common pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. This article also outlines a recomended 'north star' technology approach to building mission-critical solutions on Azure, along with other examples which apply common technology components.
 
-The pattern has three layers and resources in them have distinct characteristics:
-
+We recommend that you evaluate [**the key design areas**](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas) and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics. 
 
 |Characteristic|Considerations|
 |---|---|
@@ -33,8 +32,6 @@ The pattern has three layers and resources in them have distinct characteristics
 |Dependencies|What's the dependency on other resources, globally or in other regions?|
 |Scale limits|What is the expected throughput for that resource at that layer? How much scale is provided by the resource to fit that demand? |
 |Availability/disaster recovery|What's the impact on availability or disaster at this layer? Would it cause a systemic outage or only localized capacity or availability issue?|
-
-We recommend that you evaluate [**the key design areas**](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas) and develop a matrix of Azure resources and their configuration while keeping in mind the preceding characteristics. 
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
