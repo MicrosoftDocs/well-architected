@@ -30,9 +30,9 @@ Suppose your mission-critical application is an online catalog. It has a user fl
 
 ### Example scale units
 
-This image shows the possibles scopes for scale units. The scopes range from microservice pods to cluster nodes, and regional deployment stamps.
+This image shows the possible scopes for scale units. The scopes range from microservice pods to cluster nodes, and regional deployment stamps.
 
-:::image type="content" source="./images/mission-critical-scale-units.png" alt-text="Diagram showing multiple scale-unit scopes illustrated in the reference implementation." lightbox="./images/mission-critical-scale-units.png ":::
+:::image type="content" source="./images/mission-critical-scale-units.png" alt-text="Diagram showing multiple scopes illustrated in the reference implementation." lightbox="./images/mission-critical-scale-units.png ":::
 
 ### Design considerations
 
@@ -90,7 +90,7 @@ For design recommendations and configuration choices at the platform level, see 
 
 ##### Example - Global distribution approach
 
-This example shows both global and regional resources, with regional resources deployed across multiple regions to provide geo-availability, in the case of regional outages and to bring services closer to end-users. These regional deployments also serve as scale-units stamps to provide additional capacity and availability when required.
+This example shows both global and regional resources, with regional resources deployed across multiple regions to provide geo-availability, in case of regional outages and to bring services closer to end-users. These regional deployments also serve as scale-units stamps to provide extra capacity and availability when required.
 
 ![Mission-Critical Global Distribution](./images/mission-critical-global-distribution.gif "Mission-Critical Global Distribution")
 
@@ -101,7 +101,7 @@ The _loose_ aspect allows an application component to operate independently whil
 
 For loose coupling, incorporating [event-driven design](/azure/architecture/guide/architecture-styles/event-driven) is highly recommended. Asynchronous message processing through an intermediary can build redundancy. 
 
-:::image type="content" source="./images/mission-critical-asynchronous-communication.png " alt-text="Diagram showing asynchronous event-driven communication." lightbox="./images/mission-critical- asynchronous-communication.png ":::
+:::image type="content" source="./images/mission-critical-asynchronous-communication.png " alt-text="Diagram showing asynchronous event-driven communication." lightbox="./images/mission-critical-asynchronous-communication.png ":::
 
 In some scenarios, applications can combine loose and tight-coupling, depending on business objectives.
 
@@ -152,13 +152,13 @@ Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tra
 
 |Pattern|Summary|
 |---|---|
-|[Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling)| Introduces a buffer between consumers and requested resources to ensure consistent load levels. As consumer requests are queued, a worker process dequeues the requests and processes them against the requested resource at a pace set by the worker and the requested resource's ability to process the requests. If consumers expect replies to their requests, a separate response mechanism will also need to be implemented.|
+|[Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling)| Introduces a buffer between consumers and requested resources to ensure consistent load levels. As consumer requests are queued, a worker process handles them against the requested resource at a pace set by the worker, and the requested resource's ability to process the requests. If consumers expect replies to their requests, a separate response mechanism will also need to be implemented.|
 |[Circuit Breaker](/azure/architecture/patterns/circuit-breaker)| Provides stability by either waiting for recovery, or quickly rejecting requests rather than blocking while waiting for an unavailable remote service or resource. Also, handles faults that might take a variable amount of time to recover from when connecting to a remote service or resource.|
 |[Bulkhead](/azure/architecture/patterns/bulkhead)|Strives to partition service instances into groups based on load and availability requirements, isolating failures to sustain service functionality.|
 |[Saga](/azure/architecture/reference-architectures/saga/saga)| Manage data consistency across microservices with independent datastores by ensuring services update each other through defined event or message channels. Each service performs local transactions to update its own state and publishes an event to trigger the next local transaction in the saga. If a service update fails, the saga executes compensating transactions to counteract preceding service update steps. Individual service update steps can themselves implement resiliency patterns, such as retry.|
 |[Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring)|Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals.|
 |[Retry](/azure/architecture/patterns/retry)|Handles transient failures elegantly and transparently.|
-|[Throttling](/azure/architecture/patterns/throttling)| Controls the consumption of resources used by application components, protecting them from becoming over encumbered. When a resource reaches a load threshold, it should safeguard its availability by deferring lower-priority operations and degrading non-essential functionality so that essential functionality can continue until sufficient resources are available to return to normal operation.|
+|[Throttling](/azure/architecture/patterns/throttling)| Controls the consumption of resources used by application components, protecting them from becoming over encumbered. When a resource reaches a load threshold, it should defer lower-priority operations and degrading non-essential functionality so that essential functionality can continue until sufficient resources are available to return to normal operation.|
 - Use vendor provided SDKs, such as the Azure SDKs, to connect to dependent services. Also use built-in  resiliency capabilities instead of implementing custom functionality.
  - Ensure a suitable back-off strategy is applied when retrying failed dependency calls to avoid a self-inflicted DDoS scenario.
 - Define **common engineering criteria** for all application microservice teams to drive consistency and acceleration regarding the use application-level resiliency patterns.

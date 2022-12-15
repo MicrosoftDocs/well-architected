@@ -95,13 +95,13 @@ landingContent:
           - text: What is a mission-critical workload?
             url: mission-critical-overview.md#video-mission-critical-workloads-on-azure
           - text: Global distribution
-            url: mission-critical-application-design#global-distribution  
+            url: mission-critical-application-design.md#global-distribution  
           - text: Define a health model
             url: mission-critical-health-modeling.md#video-define-a-health-model-for-your-mission-critical-workload
           - text: Continuously validate your workload
             url: mission-critical-deployment-testing.md#continuous-validation-and-testing
           - text: Use multiple subscriptions
-            url: mission-critical-application-design.md#video-subscription-structure                   
+            url: mission-critical-deployment-testing.md#video-subscription-structure                   
           - text: Development environments
             url: mission-critical-deployment-testing.md#application-environments
           - text: Zero downtime deployments

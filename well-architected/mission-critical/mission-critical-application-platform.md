@@ -43,7 +43,7 @@ This image shows the high-level design. A user accesses the application through 
 
 ### Design considerations
 
-Fundamental design principle of mission-critical workloads require multi-region deployment. This model ensures regional fault tolerance, so that application availability remains even when an entire region goes down. When designing a multi-region application, consider different deployment strategies, such as active-active and active-passive, alongside application requirements, because there are significant trade-offs between each approach. For mission-critical workloads, active-active model is highly recommended.
+Mission-critical design methodology requires multi-region deployment. This model ensures regional fault tolerance, so that application availability remains even when an entire region goes down. When designing a multi-region application, consider different deployment strategies, such as active-active and active-passive, alongside application requirements, because there are significant trade-offs between each approach. For mission-critical workloads, active-active model is highly recommended.
 
 Not every workload supports or requires multiple regions running simultaneously. Precise application requirements should be weighed against these trade-offs to inform an optimal design decision. For certain application scenarios with lower reliability targets, active-passive or sharding, can be suitable alternatives.
 
@@ -59,7 +59,7 @@ Not every workload supports or requires multiple regions running simultaneously.
 
 - **Safe deployment**. The [Azure Safe Deploy Practice (SDP)](https://azure.microsoft.com/blog/advancing-safe-deployment-practices) ensures all code and configuration changes (planned maintenance) to the Azure platform undergo a phased roll-out, with health analyzed in case any degradation is detected during the release. After the Canary and Pilot phases have successfully completed, platform updates are serialized across regional pairs, ensuring that only one region in each pair is updated at a time.
 
-- **Platform capacity**. Like any cloud provider, Azure has a finite amount of resources. Unavailability can be a result of capacity limitations in regions. In the event of a regional outage, there'll be a significant increase in demand for resources as the workload seeks to recover within the paired region. This outage might create a capacity challenge where supply temporarily does not satisfy demand.
+- **Platform capacity**. Like any cloud provider, Azure has a finite amount of resources. Unavailability can be a result of capacity limitations in regions. If there's a regional outage, there will be an increase in demand for resources as the workload seeks to recover within the paired region. This outage might create a capacity challenge where supply temporarily does not satisfy demand.
 
 ### Design recommendations
 
@@ -76,7 +76,7 @@ Not every workload supports or requires multiple regions running simultaneously.
 
 - Define and validate the recovery point objectives (RPO) and recovery time objectives (RTO).
 
-- Within a single geography, prioritize the use of regional pairs to benefit from SDP serialized rollouts for planned maintenance, and regional prioritization in the event of unplanned maintenance.
+- Within a single geography, prioritize the use of regional pairs to benefit from SDP serialized rollouts for planned maintenance, and regional prioritization for unplanned maintenance.
 
 - Geographically co-locate Azure resources with users to minimize network latency and maximize end-to-end performance.
 
@@ -141,9 +141,9 @@ AKS manages the native Kubernetes control plane. If the control plane is unavail
 
 ##### Scalability
 
-Consider the AKS [scale limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-kubernetes-service-limits), such as the number of nodes and number of node pools per cluster, and the number of clusters per subscription.
+Consider AKS [scale limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-kubernetes-service-limits), such as the number of node, node pools per cluster, clusters per subscription.
 
-- If scale limits are reached, take advantage of the [scale-unit strategy](mission-critical-application-design.md#scale-unit-architecture) and deploy additional units with clusters.
+- If scale limits are reached, take advantage of the [scale-unit strategy](mission-critical-application-design.md#scale-unit-architecture) and deploy more units with clusters.
 
 - Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.
 
@@ -164,7 +164,7 @@ Maintain boundaries between the infrastructure used by the workload and system t
 
 ##### Security
 
-Default 'vanilla' Kubernetes requires significant configuration to ensure a suitable security posture for mission-critical scenarios. AKS addresses various security risks out of the box, such as support for private clusters, auditing and logging into Log Analytics, hardened node images, and the use of managed identities.
+Default 'vanilla' Kubernetes requires significant configuration to ensure a suitable security posture for mission-critical scenarios. AKS addresses various security risks out of the box. The features include for private clusters, auditing and logging into Log Analytics, hardened node images, and the use of managed identities.
 
 - Apply configuration guidance provided within the [AKS security baseline](/security/benchmark/azure/baselines/aks-security-baseline).
 
@@ -208,7 +208,7 @@ Apply policies to enforce centralized safeguards to AKS clusters in a consistent
 
 - Establish a consistent reliability and security baseline for AKS cluster and [pod](/azure/aks/use-pod-security-on-azure-policy) configurations using [Azure Policy](/azure/governance/policy/overview).
       
-- Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, such as root privileges, and disallow pods which don't conform to policy.
+- Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, such as root privileges, and disallow pods that don't conform to policy.
 
 > [!NOTE]
 > 
@@ -239,7 +239,7 @@ Plan for future scalability requirements and application growth so that recommen
 
 - Azure App Service has a default, soft limit of [instances per App Service Plan](/azure/app-service/overview-hosting-plans#should-i-put-an-app-in-a-new-plan-or-an-existing-plan). 
 
-- Apply autoscale rules. App Service plan will scale out if any rule within the profile is met but will only scale in if all rules within the profile are met. Use a scale out and scale in rule combination to ensure auto-scale can take action to both scale out and scale in. Understand the behavior of multiple scaling rules in a single profile.
+- Apply autoscale rules. App Service plan will scale out if any rule within the profile is met but will only scale in if all rules within the profile are met. Use a scale-out and scale-in rule combination to ensure auto-scale can take action to both scale out and scale in. Understand the behavior of multiple scaling rules in a single profile.
 
 - Per-app scaling can be enabled at the App Service Plan level to allow an application to scale independently from the App Service plan that hosts it. Apps are allocated to available nodes using a best effort approach for an even distribution. While an even distribution isn't guaranteed, the platform will make sure that two instances of the same app won't be hosted on the same instance.
 
@@ -280,7 +280,7 @@ Mission-critical workloads will have critical and non-critical system flows. Whi
 
 #### Design considerations and recommendations
 
-Choose a hosting plan that is applicable to reliability tier selected for the application. Premium SKU App Service plan is recommended because it allows configuration of the compute instance size. **Dedicated** is the least serverless option with the option to autoscale, though these scale operations are slower when compared to other plans. Prioritize the use of the Azure Functions Premium hosting plan to maximize reliability and performance. See [Azure Functions hosting options](/azure/azure-functions/functions-scale) for more details about the service limits.
+Choose a [Azure Functions hosting option](/azure/azure-functions/functions-scale) that is applicable to reliability tier selected for the application. Premium SKU App Service plan is recommended because it allows configuration of the compute instance size. **Dedicated** is the least serverless option with the option to autoscale, though these scale operations are slower when compared to other plans. Prioritize the use of the Azure Functions Premium hosting plan to maximize reliability and performance. 
 
 There are some security considerations. When using the HTTP trigger to expose an external endpoint, protect the HTTP endpoint from common external attack vectors using a Web Application Firewall (WAF).
 
@@ -290,7 +290,7 @@ Azure Functions code must be subject it code scanning tools that must be integra
 
 ### Azure Logic Apps
 
-Similar to Azure Functions, there are built-in triggers for event-driven processing, however, instead of deploying application code Logic Apps can be composed using a graphical user interface which supports blocks like conditionals, loops, and other constructs.
+Similar to Azure Functions, there are built-in triggers for event-driven processing, however, instead of deploying application code Logic Apps can be composed using a graphical user interface, which supports blocks like conditionals, loops, and other constructs.
 
 There are multiple [deployment modes](/azure/logic-apps/single-tenant-overview-compare) available. *Standard* is recommended to ensure a single tenant deployment and mitigate noisy neighbor scenarios. It uses the containerized single-tenant Azure Logic Apps runtime based on Azure Functions. In this mode, the logic app can have multiple stateful and stateless workflows. Be aware of the upper configuration limits.
 
@@ -310,7 +310,7 @@ This section focuses on best usage of Azure Virtual Machines and associated serv
 - The use of IaaS Virtual Machines significantly increases operational costs compared to PaaS services, through management responsibility of the virtual machine and the operating system. Managing virtual machines necessitates the frequent roll-out of software packages and updates.
 
 - Azure provides certain capabilities to increase the availability of Virtual Machines, options are:
-  - [Availability Sets](/azure/virtual-machines/availability-set-overview) can be used to protect against network, disk and power failures by distributing virtual machines across up to fault domains and update domains.
+  - [Availability Sets](/azure/virtual-machines/availability-set-overview) can be used to protect against network, disk, and power failures by distributing virtual machines across up to fault domains and update domains.
   - [Availability zones](/azure/availability-zones/az-overview) can be used to achieve even higher levels of reliability by distributing VMs across physically separated data center within a region.
   - [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) provide functionality to automatically scale the number of virtual machines along with capabilities to monitor instance health and automatically repair [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
 
@@ -324,7 +324,7 @@ This section focuses on best usage of Azure Virtual Machines and associated serv
 - Deploy three or more Virtual Machines across [Availability zones](/azure/availability-zones/az-overview) to achieve data center level fault tolerance.
   - If you're deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying into production.
 
-- For workloads that cannot be deployed across Availability Zones, use [Availability Sets](/azure/virtual-machines/availability-set-overview) with three or more VMs.
+- For workloads that can't be deployed across Availability Zones, use [Availability Sets](/azure/virtual-machines/availability-set-overview) with three or more VMs.
   - Availability Sets should only be considered if Availability Zones don't comply with workload requirements, such as for 'chatty' workloads with low latency requirements.
 
 - Prioritize the use of Virtual Machine Scale Sets for scalability and zone-redundancy. This point is particularly important for workloads with varying load. For instance, number of active users or requests per second.
@@ -340,7 +340,7 @@ This section focuses on best usage of Azure Virtual Machines and associated serv
 
 - Implement automated processes to deploy and roll out changes to virtual machines, avoiding any manual intervention. See [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-virtual-machines) in the [Operational procedures](./mission-critical-operational-procedures.md) design area for more.
 
-- Implement chaos experiments to inject application faults into virtual machine components while observing the mitigation of faults. See [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing) in the [Deployment and testing](./mission-critical-deployment-testing.md) design area for more details.
+- Implement chaos experiments to inject application faults into virtual machine components while observing the mitigation of faults. For more information, see [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing).
 
 - Monitor virtual machines and ensure diagnostic logs and metrics are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
 
