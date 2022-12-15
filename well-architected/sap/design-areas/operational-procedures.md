@@ -34,9 +34,7 @@ We recommend using this SAP assessment to develop and realign the SOPs for your 
 
 ## Monitor the workload
 
-Monitoring is the process of collecting, analyzing, and acting on data gathered from an SAP workload. Monitoring provides insights of the health of the workload to compare with an expected baseline. It allows you to know when, where, and why failures occur.
-
-A monitoring best practice is to use a common and consistent logging schema that lets you correlate events across systems. The monitoring and diagnostics process has several distinct phases.
+Monitoring is the process of collecting, analyzing, and acting on data gathered from an SAP workload. Monitoring provides insights of the health of the workload to compare with an expected baseline. It allows you to know when, where, and why failures occur. A monitoring best practice is to use a common and consistent logging schema that lets you correlate events across systems. The monitoring and diagnostics process has several distinct phases.
 
 *Table 1 - Phases of monitoring and diagnostic process*
 
