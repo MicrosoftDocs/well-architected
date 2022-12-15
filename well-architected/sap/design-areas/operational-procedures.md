@@ -36,24 +36,30 @@ We recommend using this SAP assessment to develop and realign the SOPs for your 
 
 Monitoring is the process of collecting, analyzing, and acting on data gathered from an SAP workload. Monitoring provides insights of the health of the workload to compare with an expected baseline. It allows you to know when, where, and why failures occur.
 
-A monitoring best practice is to use a common and consistent logging schema that lets you correlate events across systems. The monitoring and diagnostics process has several distinct phases:
+A monitoring best practice is to use a common and consistent logging schema that lets you correlate events across systems. The monitoring and diagnostics process has several distinct phases.
 
-- ***Instrumentation*** - Generating the raw data from application logs, web server logs, the diagnostics built into the Azure platform, and other sources.
-- ***Collection and storage*** - Consolidating the data into one place.
-- ***Analysis and diagnosis*** - Troubleshooting issues and seeing the overall health.
-- ***Visualization and alerts*** - Using data to spot trends or alert your operations team.
+*Table 1 - Phases of monitoring and diagnostic process*
+
+| Phases | Process description|
+| --- | --- |
+| Instrumentation | Generating the raw data from application logs, web server logs, the diagnostics built into the Azure platform, and other sources. |
+| Collection and storage | Consolidating the data into one place. |
+| Analysis and diagnosis | Troubleshooting issues and seeing the overall health. |
+| Visualization and alerts | Using data to spot trends or alert your operations team.|
 
 We recommend using Azure Monitor for SAP solutions to drive these processes. Azure Monitor for SAP is an Azure-native monitoring product for SAP landscapes that run on Azure. Azure Monitor for SAP solutions uses specific parts of the Azure Monitor infrastructure to provide insights into the monitoring of SAP Netweaver, SAP HANA, SQL Server & Pacemaker High-Availability deployments on Azure. For more information, see [Azure Monitor for SAP Solutions](/azure/virtual-machines/workloads/sap/monitor-sap-on-azure).
 
 ## Automate workload infrastructure
 
-You should use infrastructure as code (IaC) to automate SAP workload deployments with minimal human intervention and build a scalable and consistent SAP workload on Azure. The manual process of creating the required SAP workload resources is slow and allows for errors. Microsoft has a repository of SAP deployment templates that you should use. It’s called the SAP on Azure Deployment Automate Framework. The templates support SAP HANA and NetWeaver with any database on any SAP-supported operating systems. For more information, see:
+You should use infrastructure as code (IaC) to automate SAP workload deployments with minimal human intervention and build a scalable and consistent SAP workload on Azure. The manual process of creating the required SAP workload resources is slow and allows for errors. Microsoft has a repository of SAP deployment templates that you should use. It’s called the SAP on Azure Deployment Automate Framework. The templates support SAP HANA and NetWeaver with any database on any SAP-supported operating systems.
+
+For more information, see:
 
 - [SAP deployment automation framework](/azure/virtual-machines/workloads/sap/automation-deployment-framework)
 - [SAP automate repository](https://github.com/Azure/sap-automation)
 - [Azure Monitor for SAP solutions](/azure/virtual-machines/workloads/sap/monitor-sap-on-azure)
 
-The table below outlines benefits of automated deployments with IaC.
+*Table 2 - Benefits of automated deployments with IaC*
 
 | Benefit domain | Automate deployment benefits | Manual deployment disadvantages |
 | --- | --- | --- |

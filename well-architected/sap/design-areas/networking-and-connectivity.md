@@ -23,7 +23,9 @@ An SAP workload needs to communicate with other workloads. Common communication 
 The capabilities are ideal, but there are drawbacks to be aware of.
 Proximity placement groups often limit your VM choices and make resizing VMs more difficult. Proximity placement groups bind VMs to a specific network spine. This binding limits the possible combinations of different VM types. The host hardware that is needed to run a certain VM type might not be present in the data center or under the network spine to which the proximity placement group was assigned. The availability of VM types can be severely restricted.
 
-We recommend using proximity placement groups in two scenarios. (1) Use proximity placement groups in Azure regions where latency across zones is higher than recommended for the SAP workload. (2) Use proximity placement groups for application volume group. The Application Volume Group feature of Azure NetApp Files (ANF) uses PPG to deploy ANF volumes close to the VM/compute cluster. We recommend using this feature as designed. For more information, see:
+We recommend using proximity placement groups in two scenarios. (1) Use proximity placement groups in Azure regions where latency across zones is higher than recommended for the SAP workload. (2) Use proximity placement groups for application volume group. The Application Volume Group feature of Azure NetApp Files (ANF) uses PPG to deploy ANF volumes close to the VM/compute cluster. We recommend using this feature as designed.
+
+For more information, see:
 
 - [Overview of proximity placement groups](/azure/virtual-machines/co-location)
 - [SAP and proximity placement groups](/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)
