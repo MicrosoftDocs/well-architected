@@ -34,7 +34,7 @@ For more information, see:
 - [SAP BW/4HANA](/azure/architecture/reference-architectures/sap/run-sap-bw4hana-with-linux-virtual-machines)
 - [SAP NetWeaver](/azure/architecture/guide/sap/sap-netweaver)
 
-**Configure SAP central services reliability.**  SAP central services (SCS) or ABAP SAP central services (ASCS) is the basis of SAP application communication. It consists of the message server and enqueue server. The central services layer is often a single point of failure and must be set up for high availability to achieve SAP application resiliency. To add redundancy, create a cluster of SAP central services with compatible shared storage technology supporting the cluster. Depending on the operating system and available shared storage technology in general availability or private/public preview, various options are available. Availability zones provide an opportunity to create a highly available ASCS architecture. 
+**Configure SAP central services reliability.**  SAP central services (SCS) or ABAP SAP central services (ASCS) is the basis of SAP application communication. It consists of the message server and enqueue server. The central services layer is often a single point of failure and must be set up for high availability to achieve SAP application resiliency. To add redundancy, create a cluster of SAP central services with compatible shared storage technology supporting the cluster. Depending on the operating system and available shared storage technology in general availability or private/public preview, various options are available. Availability zones provide an opportunity to create a highly available ASCS architecture.
 
 For more information, see:
 

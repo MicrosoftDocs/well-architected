@@ -63,7 +63,7 @@ The goal of application server reliability is to have multiple application serve
 
 **Use Availability Sets / Availability Zones.** An SAP application server can be deployed in an availability set or across availability zones. The decision you make needs to be based on workload requirements. We recommend you choose one method to improve resiliency, but we don’t recommend scale sets. For more information, see [availability zones for SAP](/azure/virtual-machines/workloads/sap/sap-ha-availability-zones).
 
-**Use multiple application servers.** Using multiple smaller application servers instead of one larger application server is recommended. This setup avoids a single point of failure. It’s a best practice to configure SAP Logon Group (SMLG) and Batch Server Group (RZ12) for better load balancing between end-user & batch processing. 
+**Use multiple application servers.** Using multiple smaller application servers instead of one larger application server is recommended. This setup avoids a single point of failure. It’s a best practice to configure SAP Logon Group (SMLG) and Batch Server Group (RZ12) for better load balancing between end-user & batch processing.
 
 For more information, see:
 
