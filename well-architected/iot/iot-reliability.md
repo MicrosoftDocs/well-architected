@@ -273,21 +273,12 @@ As you design and build your IoT solution, you must meet the SLA for failure rec
 - [IoT Hub intra-region HA/DR](/azure/iot-hub/iot-hub-ha-dr#intra-region-ha)
 - [IoT Hub cross-region HA/DR](/azure/iot-hub/iot-hub-ha-dr#cross-region-dr)
 - [How to clone an Azure IoT hub to another region](/azure/iot-hub/iot-hub-how-to-clone)
-- [Test apps for availability and resiliency](/azure/architecture/framework/resiliency/testing)
+- [Testing applications for availability and resiliency](../resiliency/testing.md)
 
 ## Next steps
 
 > [!div class="nextstepaction"]
 > [Security in your IoT workload](iot-security.md)
-
-> [!div class="nextstepaction"]
-> [Cost optimization in your IoT workload](iot-cost-optimization.md)
-
-> [!div class="nextstepaction"]
-> [Operational excellence in your IoT workload](iot-operational-excellence.md)
-
-> [!div class="nextstepaction"]
-> [Performance efficiency in your IoT workload](iot-performance.md)
 
 ## Related resources
 
