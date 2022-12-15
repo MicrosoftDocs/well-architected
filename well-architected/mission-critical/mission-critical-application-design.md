@@ -14,14 +14,15 @@ ms.custom:
 ---
 
 # Application design of mission-critical workloads on Azure
-Both functional application requirements and non-functional requirements are critical when designing your application. This design area describes architecture patterns and scaling strategies that will make your application resilient to failures. 
+
+Both functional application requirements and non-functional requirements are critical when designing your application. This design area describes architecture patterns and scaling strategies that will make your application resilient to failures.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 
 ## Scale-unit architecture
 
-All functional aspects of the solution must be capable of scaling to meet changes in demand. 
+All functional aspects of the solution must be capable of scaling to meet changes in demand.
 Using a scale-unit architecture  is recommended to optimize end-to-end scalability through compartmentalization and also to standardize the process of adding and removing capacity. A _scale-unit_ is a logical unit or function that can be scaled independently. A unit can be code components, application hosting platforms, the [deployment stamps](/azure/architecture/patterns/deployment-stamp) that cover the related components, and even subscriptions to support multi-tenant requirements.
 
 This approach is recommended because it addresses the scale limits of individual resources and the entire application. It helps with complex deployment and update scenarios because a scale-unit can be deployed as one unit. Also, you can test and validate specific versions of components in a unit before directing user traffic to it.
@@ -47,7 +48,8 @@ This image shows the possible scopes for scale units. The scopes range from micr
 - **Non-functional requirements**. Technical and business scenarios have distinct considerations for resilience, availability, latency, capacity, and observability. Analyze these requirements in the context of key end-to-end user-flows. You’ll have relative flexibility in the design, tailoring decisions, and technology choices at a user-flow level.
 
 ### Design recommendations
-- Define the scope of a scale-unit and the limits beyond within which the unit will scale. 
+
+- Define the scope of a scale-unit and the limits beyond within which the unit will scale.
 
 - Ensure all application components can scale independently or as part of a scale-unit that has other related components.
 
@@ -59,11 +61,10 @@ This image shows the possible scopes for scale units. The scopes range from micr
 
 - Model the required capacity around identified traffic patterns to make sure sufficient capacity is provisioned at peak times to prevent service degradation. Alternatively, optimize capacity during off-peak hours.
 
-- Measure the time taken to do scale out and scale in operations to ensure that the natural variations in traffic don't create an unacceptable level of service degradation. Track the scale operation durations as an operational metric. 
+- Measure the time taken to do scale out and scale in operations to ensure that the natural variations in traffic don't create an unacceptable level of service degradation. Track the scale operation durations as an operational metric.
 
 > [!NOTE]
 > When deploying within an Azure landing zone, ensure the landing zone subscription is dedicated to the application, in order to provide a clear management boundary and to avoid potential the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
-
 
 ## Global distribution
 
@@ -72,9 +73,10 @@ Failure is impossible to avoid in any highly distributed environment. Here are s
 > [!VIDEO 7cea20d8-8265-4c5c-aaba-5e174731c2e3]  
 
 ### Design considerations
-- **Redundancy**. The application must be deployed to multiple regions. Even within a region, using [Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) is highly recommended to allow for fault tolerance at the datacenter level. Availability Zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are 'chatty' across zones, this latency can introduce a performance penalty and incur bandwidth charges for inter-zone data transfer. 
 
-- **Active-active model**. An active-active deploymentThis strategy represents the gold standard because it maximizes availability and allows for higher composite Service Level Agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering trade-offs from increased cost and engineering effort. 
+- **Redundancy**. The application must be deployed to multiple regions. Even within a region, using [Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) is highly recommended to allow for fault tolerance at the datacenter level. Availability Zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are 'chatty' across zones, this latency can introduce a performance penalty and incur bandwidth charges for inter-zone data transfer.
+
+- **Active-active model**. An active-active deploymentThis strategy represents the gold standard because it maximizes availability and allows for higher composite Service Level Agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering trade-offs from increased cost and engineering effort.
 
   An active-active deployment across other cloud providers might be a potential solution to mitigate dependency on global resources within a single cloud provider. However, a multicloud active-active deployment strategy introduces a significant amount of complexity around CI/CD. Also, given the differences in resource specifications and capabilities between cloud providers, you'll need specialized deployment stamps for each cloud.
 
@@ -86,7 +88,7 @@ Failure is impossible to avoid in any highly distributed environment. Here are s
 
 - **Tradeoff with cost**. Different Azure regions have slightly different cost profiles for some services. There may be further cost implications depending on the precise deployment regions chosen.
 
-For design recommendations and configuration choices at the platform level, see [Application platform: Global distribution](mission-critical-application-platform.md#global-distribution-of-platform-resources). 
+For design recommendations and configuration choices at the platform level, see [Application platform: Global distribution](mission-critical-application-platform.md#global-distribution-of-platform-resources).
 
 ##### Example - Global distribution approach
 
@@ -94,12 +96,11 @@ This example shows both global and regional resources, with regional resources d
 
 ![Mission-Critical Global Distribution](./images/mission-critical-global-distribution.gif "Mission-Critical Global Distribution")
 
-
 ## Loosely coupled event-driven architecture
 
 The _loose_ aspect allows an application component to operate independently while _coupling_ allows for inter-service communication through well-defined interfaces. Using [microservices as your architecture style](/azure/architecture/guide/architecture-styles/microservices) resonates with mission-critical requirements. It facilitates high availability by preventing cascading failures.
 
-For loose coupling, incorporating [event-driven design](/azure/architecture/guide/architecture-styles/event-driven) is highly recommended. Asynchronous message processing through an intermediary can build redundancy. 
+For loose coupling, incorporating [event-driven design](/azure/architecture/guide/architecture-styles/event-driven) is highly recommended. Asynchronous message processing through an intermediary can build redundancy.
 
 :::image type="content" source="./images/mission-critical-asynchronous-communication.png " alt-text="Diagram showing asynchronous event-driven communication." lightbox="./images/mission-critical-asynchronous-communication.png ":::
 
@@ -118,6 +119,7 @@ In some scenarios, applications can combine loose and tight-coupling, depending 
 - **Correlated tracing**. End-to-end tracing may require complex orchestration.
 
 ### Design recommendations
+
 - Align microservice boundaries with critical user-flows.
 
 - Use event-driven asynchronous communication where possible to support sustainable scale and optimal performance.
@@ -132,7 +134,7 @@ The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-online) 
 
 ## Resiliency patterns and error handling in application code
 
-A mission-critical application must be designed to be resilient to address as many failure scenarios as possible in order to maximize service availability and reliability. It should have self-healing capabilities by using appropriate design patterns. Such as [retries with back-off](/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly) and [circuit breaker](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern). 
+A mission-critical application must be designed to be resilient to address as many failure scenarios as possible in order to maximize service availability and reliability. It should have self-healing capabilities by using appropriate design patterns. Such as [retries with back-off](/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly) and [circuit breaker](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern).
 
 For non-transient failures that can't be fully mitigated within application logic, it becomes the role of the health model and operational wrappers to take corrective action. So, application code must incorporate proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis when required. [Distributed tracing](/dotnet/core/diagnostics/distributed-tracing-concepts) must be implemented to provide the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
 
@@ -181,7 +183,7 @@ Selecting the right programming languages and frameworks is a critical design de
 
 - **Development kit capability**. There are differences in the capabilities offered by Azure service SDKs in different languages, which may influence the selection of an Azure service or programming language.  For instance, if Azure Cosmos DB is feasible option, 'Go' may not be an appropriate development language because there's no first-party SDK.
 
-- **Feature updates**. Consider how often the SDK is updated with new features for the selected language. Commonly used SDKs, such as .NET and Java libraries, are updated often while for older SDKsfor others there can be a delay in feature availability.
+- **Feature updates**. Consider how often the SDK is updated with new features for the selected language. Commonly used SDKs, such as .NET and Java libraries, are updated often while other SDKs or SDKs for other languages might receive updates less frequently.
 
 - **Multiple programming languages or frameworks**. Multiple options can be used to support various composite workloads. However, significant sprawl should be avoided because it introduces management complexity and operational challenges.
 
@@ -195,11 +197,9 @@ Selecting the right programming languages and frameworks is a critical design de
 
 - Prioritize the .NET SDK to optimize reliability and performance because .NET Azure SDKs typically provide more capabilities and are updated often.
 
-
 ## Next step
 
 Review the considerations for the application platform.
 
 > [!div class="nextstepaction"]
 > [Application platform](./mission-critical-application-platform.md)
-
