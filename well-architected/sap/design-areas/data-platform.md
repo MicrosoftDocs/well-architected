@@ -26,15 +26,15 @@ We recommend optimizing the storage cost for your SAP workload. Storage is an es
 
 **Use lifecycle management policies**  – Other than reserved capacity, you need to ensure the data-retention period is right for the SAP workload. An SAP database backup can be large and add to the storage cost if not optimized. We recommend that you create a lifecycle policy that meets the recovery time objective (RTO) and recovery point objective (RPO) of your SAP workload. The policy should move into Premium, Standard, Cold, Archive storage based on its age and business requirements.
 
-## Improve data reliability
+## Improve storage reliability
 (**NEED AN INTRO**)
-### Database resiliency
+### Database reliability
 
 An SAP application feeds data to multiple enterprise systems, making database resiliency a key workload consideration. We recommend replicating production data for the highest resiliency. Cross-region replication is the preferred disaster recovery solution. But for a more affordable option, you should configure zone redundancy at a minimum. The methods you choose depends on the database management system (DBMS) and required business service-level agreement (SLA). Below are recommendations for the database layer.
 
-**Define RPO and RTO**  – Creating database resiliency requires a plan to recover data loss. A logical error on the SAP database, a large-scale disaster, or a system outage can cause data loss in an SAP workload. Your recovery plan should identify how much data you’re willing to lose and how fast you need to recover. The amount of data loss you’re willing to lose is your recovery point objective (RPO). How fast you need to recover is your recovery time objective (RTO). When you design for recoverability, you need to understand the desired and actual RPO and RTO of your SAP application.
+**Define RPO and RTO** Creating database resiliency requires a plan to recover data loss. A logical error on the SAP database, a large-scale disaster, or a system outage can cause data loss in an SAP workload. Your recovery plan should identify how much data you’re willing to lose and how fast you need to recover. The amount of data loss you’re willing to lose is your recovery point objective (RPO). How fast you need to recover is your recovery time objective (RTO). When you design for recoverability, you need to understand the desired and actual RPO and RTO of your SAP application.
 
-**Use synchronous replication for no data loss**  – In some scenarios, there’s no tolerance for data loss. The recovery point objective is 0. To achieve this RPO, you need use synchronous replication on the database layer. Synchronous replication commits database transactions to database instances in two separate zones or regions. You should measure the latency between the two instances to ensure it meets workload needs, and you can do it with the SAP `niping` measuring tool. Higher network latency will slow down the scalability of your workload, and physical distance between the instances adds network latency. As a result, replication across regions will have higher latency than across availability zones because there's more distance between the instances. Database replication between different regions should be asynchronous and replication between availability zones should be synchronous. It’s important to balance resiliency and latency in SAP workload design. For more information, see:
+**Use synchronous replication for no data loss.**  In some scenarios, there’s no tolerance for data loss. The recovery point objective is 0. To achieve this RPO, you need use synchronous replication on the database layer. Synchronous replication commits database transactions to database instances in two separate zones or regions. You should measure the latency between the two instances to ensure it meets workload needs, and you can do it with the SAP `niping` measuring tool. Higher network latency will slow down the scalability of your workload, and physical distance between the instances adds network latency. As a result, replication across regions will have higher latency than across availability zones because there's more distance between the instances. Database replication between different regions should be asynchronous and replication between availability zones should be synchronous. It’s important to balance resiliency and latency in SAP workload design. For more information, see:
 
 - [General Azure Virtual Machines DBMS deployment for SAP workload]( /azure/virtual-machines/workloads/sap/dbms_guide_general)
 - [High-availability architecture and scenarios for SAP NetWeaver](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
@@ -58,17 +58,19 @@ The table below provides SAPMNT guidance specific to each operating system.
 
 The SAP workload should implement a regular backup solution. Backups are the backbone of disaster recovery and help ensure continuity of operations. We have a few recommendations for backup reliability.
 
-**Start with Azure Backup**: We recommend you use Azure Backup as the foundational backup strategy for an SAP workload. Azure Backup is the native backup solution in Azure, and it provides multiple capabilities to help streamline your SAP backups. With Azure Backup, we want to point out a few features.
+#### Start with Azure Backup
 
-- ***Native database backup compatibility***: Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, and Oracle databases used by SAP Applications. Azure backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure backup also supports the database backup capability for HANA & SQL Server databases today.
+We recommend you use Azure Backup as the foundational backup strategy for an SAP workload. Azure Backup is the native backup solution in Azure, and it provides multiple capabilities to help streamline your SAP backups. With Azure Backup, we want to point out a few features.
 
-- ***Storage backup***: The storage backup feature can help optimize the backup strategy by using disk snapshots of Azure Premium storage for selective disks. For more information on application-consistent backups, see [snapshot consistency](/azure/backup/backup-azure-vms-introduction#snapshot-consistency).
+**Native database backup compatibility.** Azure Backup provides native backups through the Backint connector for SAP HANA, SQL Server, and Oracle databases used by SAP Applications. Azure backup for SAP offers an API called Backint. Backint allows backup solutions to create backups directly on the database layer. Azure backup also supports the database backup capability for HANA & SQL Server databases today.
 
-- ***Virtual machine backup***: Back up and restore Azure VM data through the Azure portal. Cross-region restoration lets you restore Azure VMs that were to a paired secondary region.
+**Storage backup.** The storage backup feature can help optimize the backup strategy by using disk snapshots of Azure Premium storage for selective disks. For more information on application-consistent backups, see [snapshot consistency](/azure/backup/backup-azure-vms-introduction#snapshot-consistency).
 
-- ***Long-term retention***: Azure Backup allows you to retain SAP backups years for compliance and audit needs.
+**Virtual machine backup.** Back up and restore Azure VM data through the Azure portal. Cross-region restoration lets you restore Azure VMs that were to a paired secondary region.
 
-- ***Backup Management***: Azure Backup enables you to manage backups from the Azure portal with an easy user interface.
+**Long-term retention.** Azure Backup allows you to retain SAP backups years for compliance and audit needs.
+
+**Backup Management.** Azure Backup enables you to manage backups from the Azure portal with an easy user interface.
 
 For more information, see:
 
@@ -77,11 +79,15 @@ For more information, see:
 - [Backup guide for SAP HANA on Azure Virtual Machines](/azure/backup/sap-hana-database-about)
 - [Backup guide for SQL Server on Azure Virtual Machines](/azure/backup/tutorial-sql-backup)
 
-**Find marketplace solutions** - Several certified third-party backup solutions exist in the [Azure Marketplace]( https://azuremarketplace.microsoft.com/). These solutions offer vendor backup capabilities and SAP-certified backup capabilities. You should consider layering these solutions on top of Azure Backup to generate custom solutions with foundational support.
+#### Find marketplace solutions
+
+Several certified third-party backup solutions exist in the [Azure Marketplace]( https://azuremarketplace.microsoft.com/). These solutions offer vendor backup capabilities and SAP-certified backup capabilities. You should consider layering these solutions on top of Azure Backup to generate custom solutions with foundational support.
 
 Microsoft partners provide solutions that are integrated with Azure Storage for archive, backup, and for business continuity and disaster recovery (BCDR) workloads. The partner solutions take advantage of the scale and cost benefits of Azure Storage. You can use the solutions to help solve backup challenges, create a disaster recovery site, or archive unused content for long-term retention. They can replace tape-based backups and offer an on-demand economic recovery site with all the compliance standards and storage features such as [immutable storage]( /azure/storage/blobs/immutable-storage-overview) and [lifecycle management]( /azure/storage/blobs/lifecycle-management-overview).
 
-**Use snapshots** - A snapshot is a point-in-time, copy of your data. The speed and reliability of snapshots can help manage large databases and protect the primary database against corruption or failure. These features make snapshots critical for disaster recovery. We have a few options to create and store backups for your SAP workload.
+#### Use snapshots
+
+A snapshot is a point-in-time, copy of your data. The speed and reliability of snapshots can help manage large databases and protect the primary database against corruption or failure. These features make snapshots critical for disaster recovery. We have a few options to create and store backups for your SAP workload.
 
 Azure Backup can take database backups for HANA and SQL Server, for example. The Backup vault feature of Azure Shared Disk can serve as your database storage solution. Azure NetApp Files (ANF) can also back up critical data by using snapshots, such as ANF volumes Snapshot. ANF Cross Region Replication uses ANF snapshots to replicate data from one region to another.
 
@@ -93,14 +99,16 @@ The right solution depends on your desired cost and availability levels. In some
 - [Azure Storage redundancy](/azure/storage/common/storage-redundancy)
 - [Back up SAP HANA databases' instance snapshots in Azure VMs](/azure/backup/sap-hana-database-instances-backup)
 
-**Implement Disaster Recovery** - We recommend you invest in Disaster Recovery (DR) to improve the reliability of the SAP workload. Disaster recovery is achieved by replicating primary data to a secondary location. Several tools & methodology can be used to the achieve goal. Disaster Recovery is required when the primary location isn't accessible due to technical or natural disaster. Disaster Recovery solutions can be across zones within region or across regions based on your business requirements, but we recommended DR across region for better resiliency. For more information, see:
+#### Implement Disaster Recovery
+
+We recommend you invest in Disaster Recovery (DR) to improve the reliability of the SAP workload. Disaster recovery is achieved by replicating primary data to a secondary location. Several tools & methodology can be used to the achieve goal. Disaster Recovery is required when the primary location isn't accessible due to technical or natural disaster. Disaster Recovery solutions can be across zones within region or across regions based on your business requirements, but we recommended DR across region for better resiliency. For more information, see:
 
 - [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)
 - [Cross-region replication of Azure NetApp Files volumes](/azure/azure-netapp-files/cross-region-replication-introduction)
 - [Cross-region snapshot copy for Azure Disk Storage](/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli#cross-region-snapshot-copy-preview)
 - [Backup and Disaster Recovery](https://azure.microsoft.com/solutions/backup-and-disaster-recovery/#overview)
 
-## Storage performance
+## Improve storage performance
 
 It’s important to choose the appropriate storage solutions to support the data needs of the SAP workload. The correct solution can improve the performance of existing capabilities and allow you to add new features. In general, storage needs to meet the input/output operations per second (IOPS) requirements and throughput needs of the SAP database. For more information, see [storage types for an SAP workload](/azure/virtual-machines/workloads/sap/planning-guide-storage).
 
@@ -110,7 +118,7 @@ It’s important to choose the appropriate storage solutions to support the data
 
 **Enable write accelerator.** Write accelerator is a capability for M-Series VMs on Premium Storage with Azure Managed Disks exclusively. It’s imperative to enable write accelerator on the disks associated with the /hana/log volume. This configuration facilitates sub millisecond writes latency for 4 KB and 16-KB blocks sizes. For more information, see [Azure Write Accelerator](/azure/virtual-machines/how-to-enable-write-accelerator).
 
-**Choose the right VM.** Choosing the right VM has cost and performance implications. The goal is to pick a storage VM that supports the IOPS and throughput requirements of the SAP workload. There are three critical areas to focus while selecting a VM.
+**Choose the right VM.** Choosing the right VM has cost and performance implications. The goal is to pick a storage VM that supports the IOPS and throughput requirements of the SAP workload. There are three critical areas to focus while selecting a VM:
 
 - ***Number of vCPUs*** - The number of CPUs has a direct effect on the licenses in the database node. Most of the databases follow a core-based licensing model. Use the amount that meets your needs and adjust licensing agreements as necessary.
 
