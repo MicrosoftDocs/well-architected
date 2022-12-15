@@ -53,7 +53,7 @@ The following resources can help you implement a zero-trust IoT solution:
 
 ## Security in IoT architectural patterns
 
-Most IoT systems use either a [connected products or connected operations architectural pattern](iot-overview.md#iot-architectural-patterns). There are key security differences between these patterns. Connected operations or *operational technology (OT)* solutions often have on-premises devices that monitor and control other physical devices. These OT devices add security challenges such as tampering, packet sniffing, and the need for out-of-band management and over-the-air (OTA) updates.
+Most IoT systems use either a [connected products or connected operations architectural pattern](iot-overview.md#iot-architecture-patterns). There are key security differences between these patterns. Connected operations or *operational technology (OT)* solutions often have on-premises devices that monitor and control other physical devices. These OT devices add security challenges such as tampering, packet sniffing, and the need for out-of-band management and over-the-air (OTA) updates.
 
 Factories and OT environments can be easy targets for malware and security breaches, because equipment can be old, physically vulnerable, and isolated from server-level security. For an end-to-end perspective, review the [Azure Well-Architected Framework security pillar](/azure/architecture/framework/security/overview).
 
