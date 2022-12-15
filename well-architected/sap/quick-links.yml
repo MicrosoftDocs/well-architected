@@ -33,7 +33,7 @@ landingContent:
       - linkListType: concept
         links:
           - text: Application design
-            url: ./design-areas/networking-and-connectivity.md
+            url: ./design-areas/application-design.md
           - text: Application platform
             url: ./design-areas/application-platform.md
           - text: Data platform
