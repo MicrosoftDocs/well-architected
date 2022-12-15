@@ -23,23 +23,16 @@ To assess your IoT workload against the Well-Architected Framework Reliability p
 
 ## Principles
 
-As described in the Azure Well-Architected Framework [reliability design principles](/azure/architecture/framework/resiliency/principles), the reliability of an application must reflect its business requirements. Make sure you understand the business requirements for your solution.
+These IoT design principles resonate and extend the quality pillar of the Azure Well-Architected Framework - [Reliability](/azure/architecture/framework/#reliability).
 
-Well-architected IoT solutions implement the following reliability features:
-
-- Resilient device design.
-- Safe, simple update procedures.
-- Observability across the solution.
-- High availability and disaster recovery (HA/DR) for critical components.
-- Capacity planning.
-
-Reliable IoT architectures include the following elements:
-
-- Resilient workload-specific architectures that build in redundancy, including cross-region redundancies.
-- Architectural modifications to meet service-level agreements (SLAs).
-- Service levels indicators (SLIs) and service-level objectives (SLOs) based on observability.
-- Integrated auditing, monitoring, and alerting beyond what cloud services provide.
-- Reliable maintenance and support pathways.
+|Design principle|Considerations|
+|---|---|
+|**Design devices for resiliency**|Design your devices to satisfy the uptime and availability requirements of your end-to-end solution. Ensure that your IoT device can operate efficiently with intermittent connectivity to the cloud.|
+|[**Design for business requirements**](/azure/architecture/framework/resiliency/principles#design-for-business-requirements)|Reliability is a subjective concept. For an application to be appropriately reliable, it must reflect the business requirements surrounding it. Cost implications are inevitable when introducing architectural modifications to meet service-level agreements (SLAs). This trade-off should be carefully considered.|
+|**Safe, simple update procedures**|An enterprise IoT solution should provide a strategy for how operators manage devices. IoT operators require simple and reliable update tools and practices.|
+|[**Observe application health**](/azure/architecture/framework/resiliency/principles#observe-application-health)|Define service-level indicators (SLIs) and service-level objectives (SLOs) based on observability. Adding processes for auditing, monitoring, and alerting beyond what cloud services provide.|
+|**High availability and disaster recovery (HA/DR) for critical components.**|Resilient hardware and software components that build in redundancy, including cross-region redundancies.|
+|**Plan for capacity**|Plan for service quotas and throttles, latency between the detection-action and establish benchmarks at production scale to support uninterrupted data flow.|
 
 ## Architectural layers
 
@@ -90,9 +83,7 @@ Devices for specific industries are subject to applicable regulations and standa
 
 ## Device management and modeling layer
 
-Cloud services provide each device with an identity, and manage devices at scale. As described in the [Reliability design principles](/azure/architecture/framework/resiliency/principles), the cloud services in your IoT solution must implement reliability principles to provide high availability for your overall IoT solution.
-
-The cloud is often the final data ingress point for all messages flowing from the devices. In IoT solutions, the cloud services must provide reliability for the IoT devices to integrate and transmit data.
+Cloud services provide each device with an identity, and manage devices at scale. The cloud is often the final data ingress point for all messages flowing from the devices. In IoT solutions, the cloud services must provide reliability for the IoT devices to integrate and transmit data.
 
 Device connectivity conditions, including upstream to the cloud and downstream to local networks, should be part of IoT solution reliability design. Assess the potential effect of connectivity interruption or interference, and define a connectivity strategy accordingly.
 
