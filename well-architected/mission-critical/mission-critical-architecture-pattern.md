@@ -98,6 +98,7 @@ These baseline examples serve as the recommended north star architecture for mis
              <div class="card-content has-text-overflow-ellipsis">
                  <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
                     Baseline architecture
+                    <hr>
                  </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
                         <p>If you're just starting your mission-critical journey, use this architecture as a reference. The workload is accessed over a public endpoint and doesn't require private network connectivity to other company resources.</p>
@@ -116,6 +117,7 @@ These baseline examples serve as the recommended north star architecture for mis
                 <div class="card-content has-text-overflow-ellipsis">
                     <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
                       Baseline with network controls
+                      <hr>                      
                     </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
                         <p>This architecture builds on the baseline architecture. The design is extended to provide strict network controls to prevent unauthorized public access from the internet to the workload resources.</p>
@@ -133,7 +135,8 @@ These baseline examples serve as the recommended north star architecture for mis
           </figure>
           <div class="card-content has-text-overflow-ellipsis">
              <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
-              Baseline in Azure landing zones
+                Baseline in Azure landing zones
+              <hr>
              </div>
              <div class="is-size-7 has-margin-top-small has-line-height-reset">
                    <p>This architecture is appropriate if you're deploying the workload in an enterprise setup where integration within a broader organization is required. The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads within the enterprise. It's deployed in an Azure landing zone subscription that inherits from the Corp. management group.</p>
