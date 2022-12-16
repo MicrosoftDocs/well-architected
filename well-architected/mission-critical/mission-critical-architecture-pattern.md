@@ -63,7 +63,7 @@ The stamp contains the application and resources that participate in completing 
 |Lifetime|The resources are expected to have a short life span (ephemeral) with the intent that they can get added and removed dynamically while regional resources outside the stamp continue to persist. The ephemeral nature is needed to provide more resiliency, scale, and proximity to users. |
 |State| Because stamps are ephemeral and will be destroyed with each deployment, a stamp should be stateless as much as possible.|
 |Reach|Can communicate with regional and global resources. However, communication with other regions or other stamps should be avoided.|
-|Dependencies| The stamp resources must be independent. That is, they shouldn't rely on other stamps or components in other regions. They're expected to have regional and global dependencies.|
+|Dependencies| The stamp resources must be independent. They shouldn't rely on other stamps or components in other regions. They're expected to have regional and global dependencies.|
 |Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to estimate the high-level of demand caused by a failover to another stamp.|
 |Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed.
 
