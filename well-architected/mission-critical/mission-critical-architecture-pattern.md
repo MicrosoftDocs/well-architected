@@ -20,9 +20,9 @@ ms.custom:
 
 # Architecture pattern for mission-critical workloads on Azure
 
-This article presents a common pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. The article recomends a _north star_ design approach and includes other examples with common technology components.
+This article presents a common pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. The article recommends a _north star_ design approach and includes other examples with common technology components.
 
-We recommend that you evaluate [**the key design areas**](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas) and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics. 
+We recommend that you evaluate [**the key design areas**](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas) and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics.
 
 |Characteristic|Considerations|
 |---|---|
@@ -41,7 +41,8 @@ We recommend that you evaluate [**the key design areas**](/azure/architecture/fr
 
 ![Diagram showing a generic pattern for a mission-critical application.](./images/mission-critical-pattern.png)
 
-### Global resources 
+### Global resources
+
 Certain resources in this architecture are globally shared by resources deployed within each region. Common examples are resources that are used to distribute traffic across multiple regions, store permanent state for the whole application, and monitor resources for them.
 
 |Characteristic|Considerations|
@@ -53,7 +54,7 @@ Certain resources in this architecture are globally shared by resources deployed
 |Scale limits|Often these resources are singleton instances in the system, and as such they should be able to scale such that they can handle throughput of the system as a whole.|
 |Availability/disaster recovery|Regional and stamp resources can use global resources. That' why it's critical that global resources are configured with high availability and disaster recovery for the health of the whole system.|
 
-### Regional resources 
+### Regional resources
 
 A system can have resources that are deployed in region but outlive the stamp resources. For example, observability resources that monitor resources at the regional level, including the stamps.
 
@@ -65,8 +66,8 @@ A system can have resources that are deployed in region but outlive the stamp re
 |Dependencies| The resources can have dependencies on global resources, but not on stamp resources because stamps are meant to be short lived. |
 |Scale limits|Determine the scale limit of regional resources by combining all stamps within the region.|
 
-
 ### Regional stamp resources
+
 The stamp contains the application and resources that participate in completing business transactions. A stamp typically corresponds to a deployment to an Azure region. Although a region can have more than one stamp.
 
 |Characteristic|Considerations|
@@ -76,11 +77,11 @@ The stamp contains the application and resources that participate in completing 
 |Reach|Can communicate with regional and global resources. However, communication with other regions or other stamps should be avoided. In this architecture, there isn't a need for these resources to be globally distributed.|
 |Dependencies| The stamp resources must be independent. That is, they shouldn't rely on other stamps or components in other regions. They're expected to have regional and global dependencies. </br>The main shared component is the database layer and container registry. This component requires synchronization at runtime.|
 |Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to estimate the high-level of demand caused by a failover to another stamp.|
-|Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed. 
+|Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed.
 
 ## Baseline architectures for mission-critical applications
 
-These baseline examples serve as the recomended north star architecture for mission-critical applications. The baseline strongly recomends containerization and using a container orchestrator for the application platform. The baseline uses Azure Kubernetes Service (AKS) because Kubernetes is widely adopted across many industries.
+These baseline examples serve as the recommended north star architecture for mission-critical applications. The baseline strongly recommends containerization and using a container orchestrator for the application platform. The baseline uses Azure Kubernetes Service (AKS) because Kubernetes is widely adopted across many industries.
 
 > Refer to [Well-Architected mission-critical workloads: Containerization](/azure/architecture/framework/mission-critical/mission-critical-application-platform#containerization).
 
@@ -142,6 +143,7 @@ These baseline examples serve as the recomended north star architecture for miss
 </ul>
 
 ## Design areas
+
 We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
 
 ## Next step
@@ -150,4 +152,3 @@ Review the best practices for designing mission-critical application scenarios.
 
 > [!div class="nextstepaction"]
 > [Application design](./mission-critical-application-design.md)
-
