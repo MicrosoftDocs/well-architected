@@ -136,7 +136,7 @@ These baseline examples serve as the recommended north star architecture for mis
               Baseline in Azure landing zones
              </div>
              <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                   <p>This architecture is appropriate if you're deploying the workload in an enterprise setup. The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of the enterprise. It's deployed in an Azure landing zone subscription that inherits the Corp. management group.</p>
+                   <p>This architecture is appropriate if you're deploying the workload in an enterprise setup where integration within a broader organization is required. The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads within the enterprise. It's deployed in an Azure landing zone subscription that inherits from the Corp. management group.</p>
              </div>
           </div>
        </article>
