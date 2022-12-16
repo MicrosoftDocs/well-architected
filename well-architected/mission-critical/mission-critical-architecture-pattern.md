@@ -52,7 +52,7 @@ Certain resources are globally shared by resources deployed within each region. 
 |Reach|The resources should be globally distributed and replicated to the regions that host those resources. It’s recommended that these resources communicate with regional or other resources with low latency and the desired consistency.|
 |Dependencies|The resources should avoid dependencies on regional resources because their unavailability can be a cause for global failure. For example, certificates or secrets kept in a single vault could have global impact if there's a regional failure where the vault is located.|
 |Scale limits|Often these resources are singleton instances in the system, and they should be able to scale such that they can handle throughput of the system as a whole.|
-|Availability/disaster recovery|Regional and stamp resources can use global resources. That's why it's critical that global resources are configured with high availability and disaster recovery for the health of the whole system.|
+|Availability/disaster recovery|Regional and stamp resources can use global resources. It's critical that global resources are configured with high availability and disaster recovery for the health of the whole system.|
 
 ### Regional stamp resources
 
