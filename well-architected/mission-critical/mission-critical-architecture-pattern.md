@@ -24,6 +24,8 @@ This article presents a common pattern for mission-critical architectures on Azu
 
 We recommend that you evaluate [**the key design areas**](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas) and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics.
 
+We recommend that you evaluate [**the key design areas**](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas), define the critical user and system flows that use the  underlying components, and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics.
+
 |Characteristic|Considerations|
 |---|---|
 |Lifetime|What is the expected lifetime of resource, relative to other resources in the solution? Should the resource outlive or share the lifetime with the entire system or region, or should it be temporary?|
@@ -49,22 +51,10 @@ Certain resources in this architecture are globally shared by resources deployed
 |---|---|
 |Lifetime|These resources are expected to be long living. Their lifetime spans the life of the system or longer. Often the resources are managed with in-place data and control plane updates, assuming they support zero-downtime update operations.|
 |State| Because these resources exist for at least the lifetime of the system, this layer is often responsible for storing global, geo-replicated state.|
-|Reach|The resources should be globally distributed. It’s recommended that these resources communicate with regional or other resources with low latency and the desired consistency.|
+|Reach|The resources should be globally distributed and replicated to the regions that host those resources. It’s recommended that these resources communicate with regional or other resources with low latency and the desired consistency.|
 |Dependencies|The resources should avoid dependencies on regional resources because their unavailability can be a cause of global failure. For example, certificates or secrets kept in a single vault could have global impact if there's a regional failure where the vault is located.|
 |Scale limits|Often these resources are singleton instances in the system, and as such they should be able to scale such that they can handle throughput of the system as a whole.|
 |Availability/disaster recovery|Regional and stamp resources can use global resources. That' why it's critical that global resources are configured with high availability and disaster recovery for the health of the whole system.|
-
-### Regional resources
-
-A system can have resources that are deployed in region but outlive the stamp resources. For example, observability resources that monitor resources at the regional level, including the stamps.
-
-|Characteristic|Consideration|
-|---|---|
-|Lifetime|The resources share the lifetime of the region and out live the stamp resources.|
-|State| State stored in a region can't live beyond the lifetime of the region. If state needs to be shared across regions, consider using a global data store.|
-|Reach|The resources don't need to be globally distributed. Direct communication with other regions should be avoided at all cost. |
-|Dependencies| The resources can have dependencies on global resources, but not on stamp resources because stamps are meant to be short lived. |
-|Scale limits|Determine the scale limit of regional resources by combining all stamps within the region.|
 
 ### Regional stamp resources
 
@@ -78,6 +68,19 @@ The stamp contains the application and resources that participate in completing 
 |Dependencies| The stamp resources must be independent. That is, they shouldn't rely on other stamps or components in other regions. They're expected to have regional and global dependencies. </br>The main shared component is the database layer and container registry. This component requires synchronization at runtime.|
 |Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to estimate the high-level of demand caused by a failover to another stamp.|
 |Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed.
+
+### Regional resources
+
+A system can have resources that are deployed in region but outlive the stamp resources. For example, observability resources that monitor resources at the regional level, including the stamps.
+
+|Characteristic|Consideration|
+|---|---|
+|Lifetime|The resources share the lifetime of the region and out live the stamp resources.|
+|State| State stored in a region can't live beyond the lifetime of the region. If state needs to be shared across regions, consider using a global data store.|
+|Reach|The resources don't need to be globally distributed. Direct communication with other regions should be avoided at all cost. |
+|Dependencies| The resources can have dependencies on global resources, but not on stamp resources because stamps are meant to be short lived. |
+|Scale limits|Determine the scale limit of regional resources by combining all stamps within the region.|
+
 
 ## Baseline architectures for mission-critical applications
 
