@@ -29,9 +29,9 @@ We recommend that you evaluate [**the key design areas**](/azure/architecture/fr
 |Lifetime|What's the expected lifetime of the resource, relative to other resources in the solution? Should the resource outlive or share the lifetime with the entire system or region, or should it be temporary?|
 |State|What impact will the persisted state at this layer have on reliability or manageability? |
 |Reach|Is the resource required to be globally distributed? Can the resource communicate with other resources, located globally or within that region?|
-|Dependencies|What's the dependency on other resources?|
-|Scale limits|What's the expected throughput for that resource at that layer? How much scale is provided by the resource to fit that demand? |
-|Availability/disaster recovery|What's the impact on availability or disaster at this layer? Would it cause a systemic outage or only a localized capacity or availability issue?|
+|Dependencies|What are the dependencies on other resources?|
+|Scale limits|What is the expected throughput for that resource? How much scale is provided by the resource to fit that demand? |
+|Availability/disaster recovery|What is the impact on availability from a disaster at this layer? Would it cause a systemic outage or only a localized capacity or availability issue?|
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
@@ -82,7 +82,7 @@ A system can have resources that are deployed in region but outlive the stamp re
 
 ## Baseline architectures for mission-critical applications
 
-These baseline examples serve as the recommended north star architecture for mission-critical applications. The baseline strongly recommends containerization and using a container orchestrator for the application platform. The baseline uses Azure Kubernetes Service (AKS) because Kubernetes is widely adopted across many industries.
+These baseline examples serve as the recommended north star architecture for mission-critical applications. The baseline strongly recommends containerization and using a container orchestrator for the application platform. The baseline uses Azure Kubernetes Service (AKS).
 
 > Refer to [Well-Architected mission-critical workloads: Containerization](/azure/architecture/framework/mission-critical/mission-critical-application-platform#containerization).
 
