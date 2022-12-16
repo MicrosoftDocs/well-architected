@@ -20,18 +20,18 @@ ms.custom:
 
 # Architecture pattern for mission-critical workloads on Azure
 
-This article presents a common pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. The article recommends a _north star_ design approach and includes other examples with common technology components.
+This article presents a key pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. The article recommends a _north star_ design approach and includes other examples with common technology components.
 
 We recommend that you evaluate [**the key design areas**](/azure/architecture/framework/mission-critical/mission-critical-overview#what-are-the-key-design-areas), define the critical user and system flows that use the  underlying components, and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics.
 
 |Characteristic|Considerations|
 |---|---|
-|Lifetime|What is the expected lifetime of resource, relative to other resources in the solution? Should the resource outlive or share the lifetime with the entire system or region, or should it be temporary?|
+|Lifetime|What's the expected lifetime of the resource, relative to other resources in the solution? Should the resource outlive or share the lifetime with the entire system or region, or should it be temporary?|
 |State|What impact will the persisted state at this layer have on reliability or manageability? |
 |Reach|Is the resource required to be globally distributed? Can the resource communicate with other resources, located globally or within that region?|
 |Dependencies|What's the dependency on other resources?|
-|Scale limits|What is the expected throughput for that resource at that layer? How much scale is provided by the resource to fit that demand? |
-|Availability/disaster recovery|What's the impact on availability or disaster at this layer? Would it cause a systemic outage or only localized capacity or availability issue?|
+|Scale limits|What's the expected throughput for that resource at that layer? How much scale is provided by the resource to fit that demand? |
+|Availability/disaster recovery|What's the impact on availability or disaster at this layer? Would it cause a systemic outage or only a localized capacity or availability issue?|
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
@@ -43,16 +43,16 @@ We recommend that you evaluate [**the key design areas**](/azure/architecture/fr
 
 ### Global resources
 
-Certain resources in this architecture are globally shared by resources deployed within each region. Common examples are resources that are used to distribute traffic across multiple regions, store permanent state for the whole application, and monitor resources for them.
+Certain resources are globally shared by resources deployed within each region. Common examples are resources that are used to distribute traffic across multiple regions, store permanent state for the whole application, and monitor resources for them.
 
 |Characteristic|Considerations|
 |---|---|
 |Lifetime|These resources are expected to be long living (non-ephemeral). Their lifetime spans the life of the system or longer. Often the resources are managed with in-place data and control plane updates, assuming they support zero-downtime update operations.|
 |State| Because these resources exist for at least the lifetime of the system, this layer is often responsible for storing global, geo-replicated state.|
 |Reach|The resources should be globally distributed and replicated to the regions that host those resources. It’s recommended that these resources communicate with regional or other resources with low latency and the desired consistency.|
-|Dependencies|The resources should avoid dependencies on regional resources because their unavailability can be a cause of global failure. For example, certificates or secrets kept in a single vault could have global impact if there's a regional failure where the vault is located.|
-|Scale limits|Often these resources are singleton instances in the system, and as such they should be able to scale such that they can handle throughput of the system as a whole.|
-|Availability/disaster recovery|Regional and stamp resources can use global resources. That' why it's critical that global resources are configured with high availability and disaster recovery for the health of the whole system.|
+|Dependencies|The resources should avoid dependencies on regional resources because their unavailability can be a cause for global failure. For example, certificates or secrets kept in a single vault could have global impact if there's a regional failure where the vault is located.|
+|Scale limits|Often these resources are singleton instances in the system, and they should be able to scale such that they can handle throughput of the system as a whole.|
+|Availability/disaster recovery|Regional and stamp resources can use global resources. That's why it's critical that global resources are configured with high availability and disaster recovery for the health of the whole system.|
 
 ### Regional stamp resources
 
@@ -100,7 +100,7 @@ These baseline examples serve as the recommended north star architecture for mis
                     Baseline architecture
                  </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                        <p>If you're just starting your mission-critical journey, use this architecture as your reference. The workload is accessed over a public endpoint and doesn't require private network connectivity to other company resources.</p>
+                        <p>If you're just starting your mission-critical journey, use this architecture as a reference. The workload is accessed over a public endpoint and doesn't require private network connectivity to other company resources.</p>
                     </div>
                 </div>
             </article>
@@ -118,7 +118,7 @@ These baseline examples serve as the recommended north star architecture for mis
                       Baseline with network controls
                     </div>
                     <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                        <p>This architecture builds on the baseline architecture. The design is extended to provide strict network controls to prevent unauthorized public access from the internet to any of the workload resources.</p>
+                        <p>This architecture builds on the baseline architecture. The design is extended to provide strict network controls to prevent unauthorized public access from the internet to the workload resources.</p>
                     </div>
                 </div>
             </article>
@@ -136,7 +136,7 @@ These baseline examples serve as the recommended north star architecture for mis
               Baseline in Azure landing zones
              </div>
              <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                   <p>This architecture is appropriate if you're deploying the workload in an enterprise setup. The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of an enterprise. It's deployed in an Azure landing zone subscription that inherits the Corp. management group.</p>
+                   <p>This architecture is appropriate if you're deploying the workload in an enterprise setup. The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads of the enterprise. It's deployed in an Azure landing zone subscription that inherits the Corp. management group.</p>
              </div>
           </div>
        </article>
