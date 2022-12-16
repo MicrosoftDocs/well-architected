@@ -80,7 +80,7 @@ A system can have resources that are deployed in region but outlive the stamp re
 |Scale limits|Determine the scale limit of regional resources by combining all stamps within the region.|
 
 
-## Baseline architectures for mission-critical applications
+## Baseline architectures for mission-critical workloads
 
 These baseline examples serve as the recommended north star architecture for mission-critical applications. The baseline strongly recommends containerization and using a container orchestrator for the application platform. The baseline uses Azure Kubernetes Service (AKS).
 
