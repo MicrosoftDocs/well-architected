@@ -28,8 +28,8 @@ We recommend that you evaluate [**the key design areas**](/azure/architecture/fr
 |---|---|
 |Lifetime|What is the expected lifetime of resource, relative to other resources in the solution? Should the resource outlive or share the lifetime with the entire system or region, or should it be temporary?|
 |State|What impact will the persisted state at this layer have on reliability or manageability? |
-|Reach|Is the resource required to be globally distributed? Can the resource communicate with other resources, globally or in regions?|
-|Dependencies|What's the dependency on other resources, globally or in other regions?|
+|Reach|Is the resource required to be globally distributed? Can the resource communicate with other resources, located globally or within that region?|
+|Dependencies|What's the dependency on other resources?|
 |Scale limits|What is the expected throughput for that resource at that layer? How much scale is provided by the resource to fit that demand? |
 |Availability/disaster recovery|What's the impact on availability or disaster at this layer? Would it cause a systemic outage or only localized capacity or availability issue?|
 
@@ -47,7 +47,7 @@ Certain resources in this architecture are globally shared by resources deployed
 
 |Characteristic|Considerations|
 |---|---|
-|Lifetime|These resources are expected to be long living. Their lifetime spans the life of the system or longer. Often the resources are managed with in-place data and control plane updates, assuming they support zero-downtime update operations.|
+|Lifetime|These resources are expected to be long living (non-ephemeral). Their lifetime spans the life of the system or longer. Often the resources are managed with in-place data and control plane updates, assuming they support zero-downtime update operations.|
 |State| Because these resources exist for at least the lifetime of the system, this layer is often responsible for storing global, geo-replicated state.|
 |Reach|The resources should be globally distributed and replicated to the regions that host those resources. It’s recommended that these resources communicate with regional or other resources with low latency and the desired consistency.|
 |Dependencies|The resources should avoid dependencies on regional resources because their unavailability can be a cause of global failure. For example, certificates or secrets kept in a single vault could have global impact if there's a regional failure where the vault is located.|
@@ -62,8 +62,8 @@ The stamp contains the application and resources that participate in completing 
 |---|---|
 |Lifetime|The resources are expected to have a short life span (ephemeral) with the intent that they can get added and removed dynamically while regional resources outside the stamp continue to persist. The ephemeral nature is needed to provide more resiliency, scale, and proximity to users. |
 |State| Because stamps are ephemeral and will be destroyed with each deployment, a stamp should be stateless as much as possible.|
-|Reach|Can communicate with regional and global resources. However, communication with other regions or other stamps should be avoided. In this architecture, there isn't a need for these resources to be globally distributed.|
-|Dependencies| The stamp resources must be independent. That is, they shouldn't rely on other stamps or components in other regions. They're expected to have regional and global dependencies. </br>The main shared component is the database layer and container registry. This component requires synchronization at runtime.|
+|Reach|Can communicate with regional and global resources. However, communication with other regions or other stamps should be avoided.|
+|Dependencies| The stamp resources must be independent. That is, they shouldn't rely on other stamps or components in other regions. They're expected to have regional and global dependencies.|
 |Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to estimate the high-level of demand caused by a failover to another stamp.|
 |Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed.
 
