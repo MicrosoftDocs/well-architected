@@ -47,6 +47,8 @@ Most IoT systems use either a *connected products* or *connected operations* arc
 
 - *Connected operations​* architectures focus on the *warm or cold path* with edge devices, alerts, and cloud processing. These solutions analyze data from multiple sources, gather operational insights, build machine learning models, and initiate further device and cloud actions. The connected operations pattern applies to enterprises and smart service providers that connect pre-existing machines and devices. Examples include smart factories and smart buildings. In these IoT solutions, service builders deliver smart services that provide insights and support the effectiveness and efficiency of connected environments.
 
+We encourage you to also read more about the [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot) and about [Industry specific Azure IoT reference architectures](/azure/architecture/reference-architectures/iot/industry-iot-hub-page) to understand the base solution architecture for IoT workloads.
+
 ## Well-Architected Framework pillars in your IoT workload
 
 The Azure Well-Architected Framework consists of five pillars of architectural excellence, which you can use to improve the quality of IoT workloads. The following articles highlight how IoT-specific design principles influence decisions across IoT design areas:
