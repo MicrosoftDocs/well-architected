@@ -233,7 +233,7 @@ Several Azure IoT services provide these zero-trust capabilities.
 
 The following Microsoft products fully integrate hardware and Azure services in overall IoT solutions.
 
-- [Azure Sphere](/azure-sphere) is a fully managed integrated hardware, OS, and cloud platform solution that helps medium and low-power IoT devices attain [the seven properties of highly secured devices](azure-sphere/product-overview/what-is-azure-sphere#azure-sphere-and-the-seven-properties-of-highly-secured-devices) to implement zero trust. Devices use explicit verification and implement certificate-based Device Attestation and Authentication (DAA), which automatically renews trust.
+- [Azure Sphere](/azure-sphere) is a fully managed integrated hardware, OS, and cloud platform solution that helps medium and low-power IoT devices attain [the seven properties of highly secured devices](/azure-sphere/product-overview/what-is-azure-sphere#azure-sphere-and-the-seven-properties-of-highly-secured-devices) to implement zero trust. Devices use explicit verification and implement certificate-based Device Attestation and Authentication (DAA), which automatically renews trust.
 
   Azure Sphere uses least-privileged access, where applications are denied access by default to all peripheral and connectivity options. For network connectivity, permitted web domains must be included in the software manifest or the application can't connect outside of the device.
 
