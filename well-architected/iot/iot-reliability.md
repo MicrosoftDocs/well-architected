@@ -4,7 +4,7 @@ description: See guidance and recommendations that apply to the reliability pill
 author: asergaz
 ms.author: sergaz
 ms.date: 12/14/2022
-ms.topic: overview
+ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom:
@@ -284,4 +284,3 @@ As you design and build your IoT solution, you must meet the SLA for failure rec
 
 - [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot)
 - [Azure IoT documentation](/azure/iot)
-
