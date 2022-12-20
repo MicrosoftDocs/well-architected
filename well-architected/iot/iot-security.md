@@ -25,7 +25,7 @@ The following security guidance for IoT Workloads identifies key considerations 
 
 ## Assess security in your IoT workload
 
-To assess your IoT workload through the lenses of the Well-Architected Framework Security pillar, complete the reliability questions for IoT workloads in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). After the assessment identifies key security recommendations for your IoT solution, use the following content to help implement the recommendations.
+To assess your IoT workload through the lenses of the Well-Architected Framework Security pillar, complete the security questions for IoT workloads in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). After the assessment identifies key security recommendations for your IoT solution, use the following content to help implement the recommendations.
 
 ## Design Principles
 
