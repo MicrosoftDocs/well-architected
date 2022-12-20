@@ -20,7 +20,7 @@ categories:
 
 This section of the Microsoft Azure Well-Architected Framework aims to address the challenges of building IoT workloads on Azure. This article describes the IoT design areas, architecture patterns, and architecture layers in the IoT workload.
 
-We encourage you to also to read more about the [IoT Reference Architecture](/azure/architecture/reference-architectures/iot) and about [industry specific IoT Architectures](/azure/architecture/reference-architectures/iot/industry-iot-hub-page) to understand the base solution architecture for IoT workloads. The guidance in this section will leverage the described architectures together with the [five pillars of architectural excellence](../index.md) to provides actionable and authoritative guidance for building and operating IoT workloads on Azure.
+The IoT workload design methodology is underpinned by [five pillars of architectural excellence](../index.md) which serve as a compass for subsequent design decisions across the design areas described in this article. The remaining articles in this series delve into how to evaluate the design areas using IoT-specific design principles in the reliability, security, cost optimization, operational excellence and performance efficiency pillars.
 
 > [!TIP]
 > To assess your IoT workload through the lenses of reliability, security, cost optimization, operational excellence and performance efficiency, see the [Azure Well-Architected Review](/assessments/azure-architecture-review/).
@@ -46,6 +46,8 @@ Most IoT systems use either a *connected products* or *connected operations* arc
 - *Connected products* architectures focus on the *hot path*. End users manage and interact with products by using real-time applications. This pattern applies to manufacturers of smart devices for consumers and businesses in a wide range of locations and settings. Examples include smart coffee machines, smart TVs, and smart production machines. In these IoT solutions, the product builders provide connected services to the product users.
 
 - *Connected operations​* architectures focus on the *warm or cold path* with edge devices, alerts, and cloud processing. These solutions analyze data from multiple sources, gather operational insights, build machine learning models, and initiate further device and cloud actions. The connected operations pattern applies to enterprises and smart service providers that connect pre-existing machines and devices. Examples include smart factories and smart buildings. In these IoT solutions, service builders deliver smart services that provide insights and support the effectiveness and efficiency of connected environments.
+
+We encourage you to also read more about the [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot) and about [Industry specific Azure IoT reference architectures](/azure/architecture/reference-architectures/iot/industry-iot-hub-page) to understand the base solution architecture for IoT workloads.
 
 ## Well-Architected Framework pillars in your IoT workload
 
