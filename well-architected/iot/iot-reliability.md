@@ -150,7 +150,7 @@ As the number of devices or volume of data increase, the cloud gateway must scal
 
 ### Autoscaling to dynamically adjust to quotas
 
-A benefit of using platform-as-a-service (PaaS) components is the ability to scale up and down with little effort according to your needs. To provide the lowest cost and operational effort, consider implementing an automated system to scale your resources up and down with the varying needs of your solution.
+A benefit of using platform as a service (PaaS) components is the ability to scale up and down with little effort according to your needs. To provide the lowest cost and operational effort, consider implementing an automated system to scale your resources up and down with the varying needs of your solution.
 
 ### Quota and throttle management
 
@@ -282,5 +282,6 @@ As you design and build your IoT solution, you must meet the SLA for failure rec
 
 ## Related resources
 
+- [Reliability design principles](../resiliency/principles.md)
 - [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot)
-- [Azure IoT documentation](/azure/iot)
+- [Azure IoT documentation](/azure/iot-fundamentals)
