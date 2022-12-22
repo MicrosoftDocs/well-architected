@@ -36,7 +36,7 @@ The IoT workload design methodology is underpinned by [five pillars of architect
 |Design principle|Considerations|
 |---|---|
 |[**Set up budgets and maintain cost constraints**](../cost/principles.md#set-up-budgets-and-maintain-cost-constraints)|[Understand total cost of ownership (TCO)](#total-cost-of-ownership-tco) by accounting for both direct and indirect costs when planning.|
-|**Use industry-standard strategies and approaches**|For [IoT specific industries](/azure/architecture/reference-architectures/iot/industry-iot-hub-page) that have their own ecosystems, for example manufacturing, energy and environment, or automotive and transportation, use industry-standard strategies and approaches.|
+|**Use industry-standard strategies and approaches**|For [IoT specific industries](/azure/architecture/reference-architectures/iot/industry-iot-hub-page) with their own ecosystems, for example manufacturing, energy and environment, or automotive and transportation, use industry-standard strategies and approaches.|
 |[**Choose the correct resources**](../cost/principles.md#choose-the-correct-resources)|Define implementation plans for each [IoT architecture layer](#iot-architecture-layers).|
 |[**Continuously monitor and optimize cost management**](../cost/principles.md#continuously-monitor-and-optimize-cost-management)|Monitor and optimize costs with ongoing cost optimization activities after you implement your solution.|
 
@@ -97,7 +97,7 @@ Most of the device development process depends on hardware selection. A make-or-
 
 - Custom devices can reduce unit costs, but involve development time, and incur non-recurring engineering costs such as design, test, certification submissions, and manufacture.
 
-- Pre-certified system components or modules can reduce time to market and create a semi-custom device, but are more expensive than discrete chips. You must properly resource supply-chain and inventory management.
+- Pre-certified system components or modules can reduce time to market and create a semi-custom device, but are more expensive than discrete chips. You need to properly resource supply-chain and inventory management.
 
 The [Azure Certified Device catalog](https://devicecatalog.azure.com) offers devices that work well with Azure IoT and can help reduce costs and time to market. [IoT Plug and Play devices](https://devicecatalog.azure.com/devices?certificationBadgeTypes=PnP) can reduce both device and cloud development costs.
 
