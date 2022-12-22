@@ -1,18 +1,23 @@
 ---
 title: Operational excellence in an IoT workload
-description: See guidance and recommendations that apply to the operational excellence pillar in an IoT workload.
-author: dominicbetts
-ms.author: dobett
-ms.date: 09/30/2022
+description: See guidance and recommendations that apply to the operational excellence pillar in well-architected IoT workload.
+author: asergaz
+ms.author: sergaz
+ms.date: 12/14/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
+ms.custom:
+  - engagement-fy23
+products:
+  - azure-iot
+categories:
+  - iot
 ---
-
 
 # Operational excellence in your IoT workload
 
-Given the complexity of IoT solution requirements, an organization's operational capabilities are important for driving sustainable business value. This guide focuses on the operational aspects of IoT devices and services that uniquely address the core requirements of an IoT solution.
+Given the complexity of IoT solutions requirements, organization's operational capabilities are important for driving sustainable business value. This guide focuses on the operational aspects of IoT devices and services that uniquely address the core requirements of an IoT solution.
 
 Operational excellence in an IoT workload requires full visibility and control over all hardware and software components of the solution. Design, development, provisioning, monitoring, support, and maintenance practices must be agile and deliver business value without increasing operational risk.
 
@@ -22,31 +27,28 @@ Operational excellence ensures that your IoT solution can successfully:
 
 - Support different user roles.
 - Manage all device lifecycle stages.
-- Scale efficiently to meet changes in demand.
+- Scale efficiently to meet changes on demand.
 - Use automation for management and monitoring.
 - Integrate with other back-end systems.
 
 ## Assess operational excellence in your IoT workload
 
-To assess your IoT workload against the Well-Architected Framework Operational Excellence pillar, complete the operational excellence questions for IoT workloads in the [Azure Well-Architected Review assessment](/assessments/?mode=pre-assessment&id=azure-architecture-review). After the assessment identifies key operational excellence recommendations for your IoT solution, use the following content to help implement the recommendations.
+To assess your IoT workload through the lenses of the Well-Architected Framework Operational Excellence pillar, complete the operational excellence  questions for IoT workloads in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). After the assessment identifies key operational excellence recommendations for your IoT solution, use the following content to help implement the recommendations.
 
-## Principles
+## Design Principles
 
-The following principles apply to the operational excellence pillar in an IoT workload:
+The IoT workload design methodology is underpinned by [five pillars of architectural excellence](../index.md) which serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles resonate and extend the quality pillar of the Azure Well-Architected Framework - [Operational Excellence](../devops/overview.md).
 
-- **Solution operation and scaling:** Ensure that the IoT solution can successfully manage automated device provisioning, integrate with other backend systems, support different roles such as solution developers, solution administrators, and operators, and adapt and scale efficiently to any changes in demand such as new IoT devices being deployed or higher ingestion throughput.
+|Design principle|Considerations|
+|---|---|
+|**Embrace continuous operational and scaling**|Ensure that the IoT solution can successfully manage automated device provisioning, integrate with other backend systems, support different roles such as solution developers, solution administrators, and operators, and adapt and scale efficiently to any changes on demand such as new IoT devices being deployed or higher ingestion throughput.|
+|[**Optimize build and release processes**](../devops/principles.md#optimize-build-and-release-processes)|Any successful enterprise IoT solution requires a strategy to establish and update a device or fleet of device's configuration. A device's configuration includes device properties, connection settings, relationships, and firmware. IoT operators require simple and reliable tools that enable them to update a device or fleet of device's configuration at any point during the device's lifetime.|
+|[**Understand operational health**](../devops/principles.md#understand-operational-health)|Use IoT solution logging, monitoring, and alerting systems to determine whether the solution is functioning as expected and to help troubleshoot problems throughout the lifecycle of the solution.|
+|**Use Automation and DevOps**|An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often constrained in hardware, for example having limited memory or compute capacity. Automation and DevOps are essential to ensure that OS and software for IoT devices and gateways are properly uploaded and deployed to minimize operational downtime. Automation and DevOps are essential for monitoring and managing the lifecycle of IoT devices.|
 
-- **Device management:** Any successful enterprise IoT solution requires a strategy to establish and update a device or fleet of device's configuration. A device's configuration includes device properties, connection settings, relationships, and firmware. IoT operators require simple and reliable tools that enable them to update a device or fleet of device's configuration at any point during the device's lifetime.
+## IoT architecture layers
 
-- **Monitoring and alerting**: Use IoT solution logging, monitoring, and alerting systems to determine whether the solution is functioning as expected and to help troubleshoot problems throughout the lifecycle of the solution.
-
-- **Automation and DevOps:** An IoT device is fundamentally a small computer with specialized hardware and software. IoT devices are often constrained in hardware, for example having limited memory or compute capacity. Automation and DevOps are essential to ensure that OS and software for IoT devices and gateways are properly uploaded and deployed to minimize operational downtime. Automation and DevOps are essential for monitoring and managing the lifecycle of IoT devices.
-
-The following sections address the layer specifics of these principles for the operational security pillar.
-
-## Operational excellence in IoT architecture layers
-
-An IoT architecture consists of a set of foundational layers. Layers use specific technologies, and the [IoT Well-Architected Framework](iot-overview.md#iot-architecture-layers) highlights options for designing and implementing each layer. There are also cross-cutting activities that enable designing, building, and running IoT and other solutions.
+Operational Excellence design principles help clarify considerations to ensure your IoT workload meets requirements across the [foundational IoT architecture layers](iot-overview.md#iot-architecture-layers).
 
 The IoT core layers: Device and gateway, device management and modeling, and ingestion and communication, identify IoT-specific solutions. The other layers and cross-cutting activities are also common to, and often shared with, other workloads. DevOps cross-cutting activities are especially important to support the operational excellence pillar.
 
@@ -104,7 +106,7 @@ Part of an IoT solution lifecycle includes reprovisioning devices in the field o
 
 Establish a strategy to update device or device fleet configuration. A device's configuration includes device properties, firmware, connection settings, and relationships. IoT operators need simple and reliable tools that let them update a device or device fleet's configuration at any point during the device's lifetime.
 
-An IoT solution's scale and specific use of a device's configuration influences the design of a configuration management strategy. It's important to automate this strategy as much as possible, and to ensure that the configuration can be set and updated efficiently.
+An IoT solution's scale and specific use of a device's configuration, influences the design of a configuration management strategy. It's important to automate this strategy as much as possible, and to ensure that the configuration can be set and updated efficiently.
 
 A configuration management strategy should support:
 
@@ -157,7 +159,7 @@ IoT Central has built-in roles you can assign to existing users in Azure AD, eli
 
 ### IoT Edge Metrics Collector
 
-Azure IoT provides the [IoT Edge Metrics Collector](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.metrics-collector?tab=overview) ready-to-use IoT Edge module in the IoT Edge Module Marketplace. Add this module to an IoT Edge deployment to collect metrics and send them to Azure Monitor. The open-source module code is a multi-architecture Docker container image that supports Linux x64, ARM32, and ARM64 version 1809.
+Azure IoT Edge provides the [IoT Edge Metrics Collector](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.metrics-collector?tab=overview) ready-to-use IoT Edge module in the IoT Edge Module Marketplace. Add this module to an IoT Edge deployment to collect metrics and send them to Azure Monitor. The open-source module code is a multi-architecture Docker container image that supports Linux x64, ARM32, and ARM64 version 1809.
 
 The Metrics Collector module can collect logs from all the modules that can emit metrics by using the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/). While [built-in metrics](/azure/iot-edge/how-to-access-built-in-metrics) enable broad workload visibility by default, you can also use custom modules to emit scenario-specific metrics that enhance the monitoring solution.
 
@@ -261,33 +263,33 @@ When you implement automation and DevOps in IoT systems, follow specific automat
 
 **Beginning of life**
 
-| Expectations                            | Platform feature available with code snippets                                                                                         |
-|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| Non-DPS device registration             | [Bulk device updates](/azure/iot-hub/iot-hub-bulk-identity-mgmt)                                                                      |
-| Device provisioning                     | [DPS configuration required to provide zero touch device provisioning](/azure/iot-dps/concepts-roles-operations) |
-| Device certificate and token management | [Control access to IoT Hub using Shared Access Signatures (SAS)](/azure/iot-hub/iot-hub-dev-guide-sas)  |
-| Device certificate lifecycle management | [CA certificate lifecycle management with DPS and DigiCert](/azure/key-vault/certificates/how-to-integrate-certificate-authority)     |
-| Device initial configurations           | [Device twins and device modules](/azure/iot-hub/iot-hub-automatic-device-management)                                                 |
+| Expectations| Platform feature available with code snippets|
+|---|---|
+| Non-DPS device registration| [Bulk device updates](/azure/iot-hub/iot-hub-bulk-identity-mgmt)|
+| Device provisioning| [DPS configuration required to provide zero touch device provisioning](/azure/iot-dps/concepts-roles-operations)|
+| Device certificate and token management| [Control access to IoT Hub using Shared Access Signatures (SAS)](/azure/iot-hub/iot-hub-dev-guide-sas)|
+| Device certificate lifecycle management| [CA certificate lifecycle management with DPS and DigiCert](/azure/key-vault/certificates/how-to-integrate-certificate-authority)|
+| Device initial configurations| [Device twins and device modules](/azure/iot-hub/iot-hub-automatic-device-management)|
 
 **Midlife**
 
-| Expectations                            | Platform feature available with code snippets                                                                                                                                                       |
-|-----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Continuous device configuration management at scale | [Device twins and device modules](/azure/iot-hub/iot-hub-automatic-device-management)|
-| CI/CD pipeline for IoT Edge modules                 | [Continuous integration and continuous deployment (CI/CD) to Azure IoT Edge devices](/azure/iot-edge/how-to-continuous-integration-continuous-deployment-classic)|
-| Device reprovisioning                               | [DPS device reprovisioning](/azure/iot-dps/how-to-reprovision)|
-| SAS key generation for changes or expiration   | [Control access to IoT Hub using Shared Access Signatures (SAS)](/azure/iot-hub/iot-hub-dev-guide-sas)|
-| Log and device diagnostics                          | Pre-configured [Azure workbooks](/azure/azure-monitor/visualize/workbooks-overview) for IoT Hub |
-| Azure IoT Edge monitoring diagnostics               | [Collect and transport IoT Edge device logs and metrics](/azure/iot-edge/how-to-collect-and-transport-metrics)|
-| OTA device updates                                  | [Device Update for IoT Hub](/azure/iot-hub-device-update)|
+| Expectations| Platform feature available with code snippets|
+|---|---|
+| Continuous device configuration management at scale| [Device twins and device modules](/azure/iot-hub/iot-hub-automatic-device-management)|
+| CI/CD pipeline for IoT Edge modules| [Continuous integration and continuous deployment (CI/CD) to Azure IoT Edge devices](/azure/iot-edge/how-to-continuous-integration-continuous-deployment-classic)|
+| Device reprovisioning| [DPS device reprovisioning](/azure/iot-dps/how-to-reprovision)|
+| SAS key generation for changes or expiration| [Control access to IoT Hub using Shared Access Signatures (SAS)](/azure/iot-hub/iot-hub-dev-guide-sas)|
+| Log and device diagnostics| Pre-configured [Azure workbooks](/azure/azure-monitor/visualize/workbooks-overview) for IoT Hub|
+| Azure IoT Edge monitoring diagnostics| [Collect and transport IoT Edge device logs and metrics](/azure/iot-edge/how-to-collect-and-transport-metrics)|
+| OTA device updates| [Device Update for IoT Hub](/azure/iot-hub-device-update)|
 
 **End of life**
 
-| Expectations                                  | Platform feature available with code snippets                                         |
-|-----------------------------------------------|---------------------------------------------------------------------------------------|
-| Unenroll devices                              | [Disenroll a device from DPS](/azure/iot-dps/how-to-revoke-device-access-portal)             |
-| Remove device-specific configuration          | [Device twins and device modules](/azure/iot-hub/iot-hub-automatic-device-management) |
-| Device replacement                            | Same as beginning of life                                                        |
+| Expectations| Platform feature available with code snippets|
+|---|---|
+| Unenroll devices| [Disenroll a device from DPS](/azure/iot-dps/how-to-revoke-device-access-portal)|
+| Remove device-specific configuration| [Device twins and device modules](/azure/iot-hub/iot-hub-automatic-device-management)|
+| Device replacement| Same as beginning of life|
 
 ## Next steps
 
