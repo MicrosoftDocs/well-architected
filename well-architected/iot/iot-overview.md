@@ -321,4 +321,4 @@ Relevant Microsoft technologies include:
 ## Related resources
 
 - [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot)
-- [Azure IoT documentation](/azure/iot)
+- [Azure IoT documentation](/azure/iot-fundamentals)

@@ -61,7 +61,9 @@ Factories and OT environments can be easy targets for malware and security breac
 
 ## IoT architecture layers
 
-Security design principles help clarify considerations to ensure your IoT workload meets requirements across the [foundational IoT architecture layers](iot-overview.md#iot-architecture-layers). All layers are subject to various threats that can be classified according to the [STRIDE categories](/azure/security/develop/threat-modeling-tool-threats#stride-model): *spoofing*, *tampering*, *repudiation*, *information disclosure*, *denial of service*, and *elevation of privilege*. Always follow [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl) practices when you design and build IoT architectures.
+Security design principles help clarify considerations to ensure your IoT workload meets requirements across the [foundational IoT architecture layers](iot-overview.md#iot-architecture-layers). 
+
+All layers are subject to various threats that can be classified according to the [STRIDE categories](/azure/security/develop/threat-modeling-tool-threats#stride-model): *spoofing*, *tampering*, *repudiation*, *information disclosure*, *denial of service*, and *elevation of privilege*. Always follow [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl) practices when you design and build IoT architectures.
 
 :::image type="content" source="media/architecture-layers.svg" alt-text="Diagram that shows the layers and cross-cutting activities in the IoT architecture." border="false":::
 
@@ -304,3 +306,6 @@ Finally, use SOAR platforms to respond to incidents rapidly and mitigate attacks
 - [Zero Trust Cybersecurity for the Internet of Things](https://azure.microsoft.com/resources/zero-trust-cybersecurity-for-the-internet-of-things)
 - [Internet of Things (IoT) security architecture](/azure/iot-fundamentals/iot-security-architecture)
 - [Industry IoT Consortium Security Maturity Model](https://www.iiconsortium.org/smm.htm)
+- [Security design principles](../security/security-principles.md)
+- [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot)
+- [Azure IoT documentation](/azure/iot-fundamentals)
