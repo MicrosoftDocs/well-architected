@@ -1,5 +1,5 @@
 ---
-title: Operational excellence in an IoT workload
+title: Operational excellence in your IoT workload
 description: See guidance and recommendations that apply to the operational excellence pillar in well-architected IoT workload.
 author: asergaz
 ms.author: sergaz
