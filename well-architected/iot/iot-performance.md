@@ -1,5 +1,5 @@
 ---
-title: Performance efficiency in an IoT workload
+title: Performance efficiency in your IoT workload
 description: See guidance and recommendations that apply to the performance efficiency pillar in an IoT workload.
 author: dominicbetts
 ms.author: dobett
