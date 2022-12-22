@@ -27,7 +27,7 @@ Building a reliable IoT solution requires careful consideration of devices, clou
 
 To assess your IoT workload through the lenses of the Well-Architected Framework Reliability pillar, complete the reliability questions for IoT workloads in the [Azure Well-Architected Review](/assessments/azure-architecture-review/). After the assessment identifies key reliability recommendations for your IoT solution, use the following content to help implement the recommendations.
 
-## Design principles
+## Design Principles
 
 The IoT workload design methodology is underpinned by [five pillars of architectural excellence](../index.md) which serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles resonate and extend the quality pillar of the Azure Well-Architected Framework - [Reliability](../resiliency/overview.md).
 
