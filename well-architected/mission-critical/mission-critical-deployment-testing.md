@@ -43,7 +43,7 @@ This design area provides recommendations on how to optimize deployment and test
 
 Achieving zero-downtime deployments is a fundamental goal of a mission-critical application. It’s critical to be available 24x7 even when new releases are rolled out during business hours. Invest your efforts up-front to define and plan deployment processes, to drive key design decisions such as whether to treat resources as ephemeral.
 
-To acheive zero-downtime deployment, deploy new infrastructure next to the existing infrastructure, test it thoroughly, transition end user traffic, and only then decommission the existing (now old) infrastructure. Other practices like the [scale-unit architecture](mission-critical-application-design.md#scale-unit-architecture) are key for the implementation.
+To achieve zero-downtime deployment, deploy new infrastructure next to the existing infrastructure, test it thoroughly, transition end user traffic, and only then decommission the existing (now old) infrastructure. Other practices like the [scale-unit architecture](mission-critical-application-design.md#scale-unit-architecture) are key for the implementation.
 
 The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) and [Azure Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) reference implementations illustrate this deployment approach as shown in this image.
 
@@ -311,7 +311,7 @@ There are many valid approaches for branching, the chosen strategy should ensure
 - Document a hotfix process and use it only when needed. Create hotfixes in a _fix/*_ branch for subsequent merging into the release branch and deployment to production.
 
 ## AI for DevOps
-AIOps methodologies can be applied within CI/CD pipelines to supplement traditional testing approaches, providing capabilities to detect potential regressions or degradations, and allowing deployments to be pre-emptively stopped to prevent potential negative impact.
+AIOps methodologies can be applied within CI/CD pipelines to supplement traditional testing approaches, providing capabilities to detect potential regressions or degradations, and allowing deployments to be preemptively stopped to prevent potential negative impact.
 
 ### Design considerations
 
