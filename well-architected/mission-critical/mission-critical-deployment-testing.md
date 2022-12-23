@@ -30,14 +30,14 @@ The strategy should aspire for:
 
 - **Highly available operations**. Deployment and testing processes and tools must be highly available to support overall application reliability.
 
-- **Consistent deployment process**. Same application artifacts and processes should be used to deploy the infrastructure and application code across different environments. End-to-end automation is mandatory. Manual interventions must be avoided because they can introduce  reliability risks.
+- **Consistent deployment process**. Same application artifacts and processes should be used to deploy the infrastructure and application code across different environments. End-to-end automation is mandatory. Manual interventions must be avoided because they can introduce reliability risks.
 
 This design area provides recommendations on how to optimize deployment and testing processes with the goal of minimizing downtime and maintaining application health and availability.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 
-##  Zero-downtime deployment
+## Zero-downtime deployment
 
 > [!VIDEO 1d3846c0-f301-4a25-a49a-94f5be3f6605]
 
@@ -57,7 +57,7 @@ You’ll need various types of environments to validate and stage deployment ope
 
 ![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png)
 
-There are some common considerations. 
+There are some common considerations.
 
 - Different environments shouldn’t share components between environments. Possible exceptions are downstream security appliances like firewalls, or source locations for synthetic test data.
 
@@ -70,13 +70,14 @@ Ephemeral dev environments and automated feature validation
 
 #### Design Considerations
 
-- **Capabilities**. Lower requirements for reliability, capacity, and security are acceptable for these environments. 
+- **Capabilities**. Lower requirements for reliability, capacity, and security are acceptable for these environments.
 
 - **Lifecycle**. These environments should be created when required and only exist for short periods. Shorter lifecycle will prevent configuration drift from the code base and lower costs. Also, development environments often share the lifecycle of a feature branch.
 
 - **Density**. Teams will need multiple environments to support parallel feature development. They can coexist within a single subscription.
 
 #### Design recommendations
+
 - Keep the environment in a dedicated subscription with context set for development purposes.
 
 - Use an automated process to deploy code from a feature branch to a development environment.
@@ -91,10 +92,10 @@ These environments are used for testing and validation with many test cycles to 
 
 - **Lifecycle**. These environments are short-lived and should be destroyed after test validations are complete.
 
-- **Density**. You can run many independent environments in one subscription. Having multiple environments, each in their dedicated subscription should be considered. 
+- **Density**. You can run many independent environments in one subscription. Having multiple environments, each in their dedicated subscription should be considered.
 
 > [!NOTE]
-> Mission-critical applications should be subject to rigorous testing. 
+> Mission-critical applications should be subject to rigorous testing.
 > 
 > Different test functions can be performed within the same environment, and in some cases this will be required. For example, for chaos testing to provide meaningful results, the application must first be placed under load to be able to understand how the application responds to injected faults. Chaos testing and load testing are therefore typically performed in parallel.
 
@@ -112,15 +113,15 @@ These environments are used for testing and validation with many test cycles to 
 
 #### Design Considerations
 
-- **Capabilities**.  Highest level of reliability, capacity, and security functionality is needed for the application.
+- **Capabilities**. Highest level of reliability, capacity, and security functionality is needed for the application.
 
-- **Lifecycle**.  While the lifecycle of the workload and the infrastructure remains the same needs, all data including monitoring and logging need special management. For example for backup and recovery.
+- **Lifecycle**. While the lifecycle of the workload and the infrastructure remains the same needs, all data including monitoring and logging need special management. For example for backup and recovery.
 
-- **Density**.  Some applications may consider multiple different production environments to cater to different clients, users, or business functionality.
+- **Density**. Some applications may consider multiple different production environments to cater to different clients, users, or business functionality.
 
 #### Design recommendations
 
-Have a clear governance boundary for production and lower environments. Place each environment type in their dedicated subscription to achieve that goal. This segmentation will make sure resource utilization in lower environments won’t impact production quotas. Dedicated subscriptions will also set access boundaries. 
+Have a clear governance boundary for production and lower environments. Place each environment type in their dedicated subscription to achieve that goal. This segmentation will make sure resource utilization in lower environments won’t impact production quotas. Dedicated subscriptions will also set access boundaries.
 
 ## Ephemeral blue/green deployments
 
@@ -131,11 +132,11 @@ Azure Mission-Critical emphasizes a **blue/green deployment approach where infra
 
 ### Design Considerations
 
-- **Technology capabilities**. Take advantage of the built-in deployment features in Azure services. For example, Azure App Service provides secondary deployment slots that can be swapped after the deployment. For Azure Kubernetes Service (AKS), you can use separate pod deployment on each node and update service definition. 
+- **Technology capabilities**. Take advantage of the built-in deployment features in Azure services. For example, Azure App Service provides secondary deployment slots that can be swapped after the deployment. For Azure Kubernetes Service (AKS), you can use separate pod deployment on each node and update service definition.
 
-- **Deployment duration**. The entire deployment might take longer to complete because the stamp contains the infrastructure and application than just the changed component. This, however, is acceptable because the risk of all components not working as expected is greater than the time taken to roll out the changes. 
+- **Deployment duration**. The entire deployment might take longer to complete because the stamp contains the infrastructure and application than just the changed component. This, however, is acceptable because the risk of all components not working as expected is greater than the time taken to roll out the changes.
 
-- **Cost impact**.  There's an additional cost because of the two side-by-side deployments, which must coexist until the deployment is fully complete.
+- **Cost impact**. There's an additional cost because of the two side-by-side deployments, which must coexist until the deployment is fully complete.
 
 - **Traffic transition**. After the new deployment is validated, traffic must be transitioned from blue to green environments. This requires orchestration of user traffic between the environments. This transition should be fully automated.
 
@@ -147,7 +148,7 @@ Azure Mission-Critical emphasizes a **blue/green deployment approach where infra
 
 - Use a global load balancer, such as Azure Front Door, to orchestrate the automated transition of user traffic between the blue and green environments.
 
-- For transitioning traffic, add a green backend endpoint using a low traffic volume/weight, such as 10%. After verifying that the low traffic volume on green is working with the expected application health, gradually increase  traffic. While doing so, apply a short ramp-up period to catch faults that may not become known immediately.
+- For transitioning traffic, add a green backend endpoint using a low traffic volume/weight, such as 10%. After verifying that the low traffic volume on green is working with the expected application health, gradually increase traffic. While doing so, apply a short ramp-up period to catch faults that may not become known immediately.
 
   After 100% of traffic has transitioned, remove the blue backend from existing connections. For instance, remove the backend from global load balancer service, drain queues, and detach other associations. You’ll optimize the cost of maintaining secondary production infrastructure while making sure new environments are free of configuration drift.
 
@@ -158,11 +159,10 @@ Depending on the scale requirements of the application, multiple production subs
 
 > [!VIDEO https://learn-video.azurefd.net/vod/player?id=013a2a82-dc85-4282-98ed-b1afe50afd41&embedUrl=/azure/architecture/framework/mission-critical/mission-critical-application-design]
 
-
 ### Design considerations
 
 - **Scalability**. For high-scale application scenarios with significant volumes of traffic, design the solution to scale across multiple Azure subscriptions so that scale limits of a single subscription don't constrain scalability.
-  
+
   > [!IMPORTANT]
   > The use of multiple subscriptions needs additional CI/CD complexity, which must be appropriately managed. Therefore, it's only recommended in extreme scale scenarios, where the limits of a single subscription are likely to become a limitation.
 
@@ -184,17 +184,16 @@ This image demonstrates how the single subscription reference deployment model c
 
 ## Continuous validation and testing
 
-Testing is a fundamental activity to fully validate the health of both the application code and infrastructure. More specifically, to meet the desired standards for reliability, performance, availability, security, quality, and scale. Testing must be well defined and applied as part of application design and DevOps strategy. 
+Testing is a fundamental activity to fully validate the health of both the application code and infrastructure. More specifically, to meet the desired standards for reliability, performance, availability, security, quality, and scale. Testing must be well defined and applied as part of application design and DevOps strategy.
 Testing is a key concern for both the local developer experience ("[Inner Loop](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)") and the complete DevOps lifecycle ("[Outer Loop](/dotnet/architecture/containerized-lifecycle/docker-devops-workflow/docker-application-outer-loop-devops-workflow)"), which captures when code starts its journey from release pipeline processes toward production environment.
-
 
 > [!VIDEO fc7842c3-7c7a-44dc-ad87-838aa51d0000]
 
-This section focuses on testing the outer loop for a product release using different types of tests. 
+This section focuses on testing the outer loop for a product release using different types of tests.
 
 |Test|Description|
 |---|---|
-|**Unit testing**|Confirms that the application business logic works as expected and validates the overall effect of the code changes.| 
+|**Unit testing**|Confirms that the application business logic works as expected and validates the overall effect of the code changes.|
 |**Smoke testing**|Identifies whether infrastructure and application components are available and function as expected. Typically, only a single virtual user session is tested. The outcome should be that the system responds with expected values and behavior. </br> Common smoke testing scenarios include reaching the HTTPS endpoint of a web application, querying a database, and simulating a user flow in the application.|
 |**UI testing**|Validates that application user interfaces are deployed and user interface interactions function as expected.</br> UI automation tools can and should be used to drive automation. During a UI test, a script should mimic a realistic user scenario and follow a series of steps to execute actions and achieve an intended outcome.|
 |**Load testing**|Validates scalability and application operation by increasing load rapidly and/or gradually until a predetermined threshold reached. Load tests are typically designed around a particular user flow to verify that application requirements are satisfied under a defined load.|
@@ -209,7 +208,7 @@ This section focuses on testing the outer loop for a product release using diffe
 
 - **Test order**. The order of conducted tests is a critical consideration because of various dependencies, such as the need to have a running application environment. Test duration also impacts order. Tests with shorter execution times should run earlier in the cycle where possible to increase testing efficiency.
 
-- **Scalability limits**. Azure services have different soft and hard limits. Consider load testing to know whether a system faces a risk of exceeding them during the expected production load. Load testing can be useful in setting appropriate thresholds for autoscaling. For services that don’t support autoscaling, load testing can help fine tune the automated operational procedures. 
+- **Scalability limits**. Azure services have different soft and hard limits. Consider load testing to know whether a system faces a risk of exceeding them during the expected production load. Load testing can be useful in setting appropriate thresholds for autoscaling. For services that don’t support autoscaling, load testing can help fine tune the automated operational procedures.
 
   Inability of system components, such as active/passive network components or databases, to appropriately scale can be restrictive. Stress testing can help identify limitations.
 
@@ -221,7 +220,7 @@ This section focuses on testing the outer loop for a product release using diffe
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
 
-- Ensure consistency by automating all testing efforts on both infrastructure and application components. Integrate the tests in Continuous Integration and Continuous Deployment (CI/CD) pipelines to orchestrate and execute tests where applicable. For options, [DevOps tooling choices](#devops-tooling-choices). 
+- Ensure consistency by automating all testing efforts on both infrastructure and application components. Integrate the tests in Continuous Integration and Continuous Deployment (CI/CD) pipelines to orchestrate and execute tests where applicable. For options, [DevOps tooling choices](#devops-tooling-choices).
 
 - Treat all test artifacts as code. They should be maintained and version controlled along with other application code artifacts.
 
@@ -229,7 +228,7 @@ This section focuses on testing the outer loop for a product release using diffe
 
 - Execute smoke tests as part of every deployment. Also run extensive load tests along with stress and chaos testing to validate application performance and operability is maintained.
   - Use load profiles that are reflective of real peak usage patterns.
-  - Run chaos experiments and failure injection tests at the same time as load tests. 
+  - Run chaos experiments and failure injection tests at the same time as load tests.
   > [!TIP]
   > [Azure Chaos Studio](https://azure.microsoft.com/services/chaos-studio/) is a native chaos experimentation suite of tools. The tools make it easy to conduct chaos experiments and inject faults within Azure services and application components.
   >
@@ -247,36 +246,38 @@ A mission-critical IaC repository has two distinct definitions that are mapped t
 
 ### Design Considerations
 
-- **Repeatable infrastructure**.  Mission-critical workloads must be deployed in a way that generates the same environment every time. IaC should be the primary model.
+- **Repeatable infrastructure**. Mission-critical workloads must be deployed in a way that generates the same environment every time. IaC should be the primary model.
 
-- **Automation**.  All deployments must be fully automated. Human processes are error prone.
+- **Automation**. All deployments must be fully automated. Human processes are error prone.
 
 ### Design Recommendations
+
 - Apply the concept of IaC and ensure all Azure resources are defined in declarative templates and maintained in a source control repository. From there, templates are deployed and resources are provisioned automatically using CI/CD pipelines. Use of imperative scripts isn't recommended.
 
 - Prohibit manual operations against all environments. The only exception should be fully independent developer environments.
 
 ## DevOps tooling choices
-The appropriate and effective use of deployment tooling is critical to ensure overall reliability because DevOps processes impact the overall function and application design. For example, failover and scale operations may depend on automation provided by DevOps tooling. Engineering teams must understand the impact of unavailability of a deployment service with respect to the overall workload. 
-Deployment tooling must be reliable and highly available. 
+
+The appropriate and effective use of deployment tooling is critical to ensure overall reliability because DevOps processes impact the overall function and application design. For example, failover and scale operations may depend on automation provided by DevOps tooling. Engineering teams must understand the impact of unavailability of a deployment service with respect to the overall workload.
+Deployment tooling must be reliable and highly available.
 
 Microsoft provides two Azure-native toolsets through GitHub Actions and Azure Pipelines that can effectively deploy and manage a mission-critical application.
 
 ### Design considerations
 
-- **Technology capabilities**. The capabilities of GitHub  and Azure DevOps (ADO) services are overlapping. To get the best of both, they can be used simultaneously. A common approach is to store code repositories in GitHub.com or [GitHub AE](https://docs.github.com/en/github-ae@latest/admin/overview/about-github-ae) while using the Azure Pipelines for deployment.
+- **Technology capabilities**. The capabilities of GitHub and Azure DevOps (ADO) services are overlapping. To get the best of both, they can be used simultaneously. A common approach is to store code repositories in GitHub.com or [GitHub AE](https://docs.github.com/en/github-ae@latest/admin/overview/about-github-ae) while using the Azure Pipelines for deployment.
 
-  Be aware of complexity that’s added when using multiple technologies. A rich feature set should always be evaluated against overall reliability. 
+  Be aware of complexity that’s added when using multiple technologies. A rich feature set should always be evaluated against overall reliability.
 
-- **Regional availability**. For maximum reliability, the dependency on a single Azure region represents an operational risk. 
+- **Regional availability**. For maximum reliability, the dependency on a single Azure region represents an operational risk.
 
-  For example, traffic is spread over two regions: Region 1 and Region 2. Region 2 hosts the DevOps tooling instance. Suppose Region 2 experiences an outage and the instance isn’t available. Region 1 automatically handles all traffic and needs to deploy extra scale units to provide a good failover experience. But, it won’t be able to because of DevOps dependency in Region 2. 
+  For example, traffic is spread over two regions: Region 1 and Region 2. Region 2 hosts the DevOps tooling instance. Suppose Region 2 experiences an outage and the instance isn’t available. Region 1 automatically handles all traffic and needs to deploy extra scale units to provide a good failover experience. But, it won’t be able to because of DevOps dependency in Region 2.
 
-- **Data replication**. Data including metadata, pipelines, and source code should be replicated across regions. 
+- **Data replication**. Data including metadata, pipelines, and source code should be replicated across regions.
 
 ### Design recommendations
 
-- Both technologies are hosted in a single Azure region, which might make your disaster recovery strategy restrictive.  
+- Both technologies are hosted in a single Azure region, which might make your disaster recovery strategy restrictive.
 
   GitHub Actions is well-suited for build tasks (Continuous Integration) but maybe lacking features for complex deployment tasks (Continuous Deployment). Given the rich feature set of ADO, it’s recommended for mission-critical deployments. However, the choice should be made after assessing the tradeoffs.
 
@@ -300,7 +301,7 @@ There are many valid approaches for branching, the chosen strategy should ensure
   > [!IMPORTANT]
   > Create a branching strategy that details _feature_ work and _releases_ as a minimum, using branch policies and permissions to ensure the strategy is appropriately enforced.
 
-- Trigger an automated testing process to validate code changes contributions before any change is accepted. Team members must also review changes. 
+- Trigger an automated testing process to validate code changes contributions before any change is accepted. Team members must also review changes.
 
 - Treat the _main_ branch as a continuously forward moving and stable branch, primarily used for integration testing.
   - Ensure changes are only made to _main_ via PRs, using a branch policy to prohibit direct commits.
@@ -311,6 +312,7 @@ There are many valid approaches for branching, the chosen strategy should ensure
 - Document a hotfix process and use it only when needed. Create hotfixes in a _fix/*_ branch for subsequent merging into the release branch and deployment to production.
 
 ## AI for DevOps
+
 AIOps methodologies can be applied within CI/CD pipelines to supplement traditional testing approaches, providing capabilities to detect potential regressions or degradations, and allowing deployments to be preemptively stopped to prevent potential negative impact.
 
 ### Design considerations
@@ -338,7 +340,3 @@ Review the security considerations.
 
 > [!div class="nextstepaction"]
 > [Security](./mission-critical-Security.md)
-
-
-
-
