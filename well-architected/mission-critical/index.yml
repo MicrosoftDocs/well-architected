@@ -111,7 +111,7 @@ landingContent:
       - linkListType: video
         links:
           - text: Demo - Continuous validation with Azure Load Test and Azure Chaos Studio
-            url: mission-critical-deployment-testing.md#demo-video-continuous-validation-with-azure-load-test-and-azure-chaos-studio
+            url: mission-critical-deployment-testing.md#design-considerations-5
           - text: Demo - Ephemeral dev environments and automated feature validation
             url: mission-critical-deployment-testing.md#application-environments
           - text: Demo - Monitoring and health modeling
