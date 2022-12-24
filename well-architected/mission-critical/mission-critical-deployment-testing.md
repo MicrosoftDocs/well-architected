@@ -26,7 +26,7 @@ The strategy should aspire for:
 
 - **Rigorous pre-release testing**. Updates shouldn't introduce defects, vulnerabilities, or other factors that might jeopardize application health.
 
-- **Transparent deployments**. Updates should be rolled out at any time without impacting users. Users should be able to continue their interaction with the application interaction without any interruption.
+- **Transparent deployments**. Rolling out updates should be possible at any time without impacting users. Users should be able to continue their interaction with the application interaction without any interruption.
 
 - **Highly available operations**. Deployment and testing processes and tools must be highly available to support overall application reliability.
 
@@ -59,7 +59,7 @@ You’ll need various types of environments to validate and stage deployment ope
 
 There are some common considerations.
 
-- Different environments shouldn’t share components between environments. Possible exceptions are downstream security appliances like firewalls, or source locations for synthetic test data.
+- Components shouldn’t be shared across environments. Possible exceptions are downstream security appliances like firewalls, or source locations for synthetic test data.
 
 - All types of environments should use Infrastructure-as-Code (IaC) artifacts such as Terraform or Azure Resource Manager (ARM) templates.
 
