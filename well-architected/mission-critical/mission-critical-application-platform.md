@@ -22,7 +22,9 @@ Azure provides many compute services for hosting highly available applications. 
 - Non-functional requirements for reliability, availability, performance, and security.
 - Decision factors such as scalability, cost, operability, and complexity.
 
-The choice of application hosting platform is a critical decision that impacts all other design areas. For example, legacy or proprietary development software might not run in PaaS or containerized. This requirement will impact the choice of compute platform. So, a mission-critical application can use more than one compute service to support multiple composite workloads and microservices, each with distinct requirements.
+The choice of application hosting platform is a critical decision that impacts all other design areas. For example, legacy or proprietary development software might not run in PaaS or containerized. This requirement will impact the choice of compute platform. 
+
+A mission-critical application can use more than one compute service to support multiple composite workloads and microservices, each with distinct requirements.
 
 This design area provides recommendations related to the compute selection, design, and configuration options. We recommend that you familiarize yourself with the [Compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
@@ -47,7 +49,7 @@ The mission-critical design methodology necessitates a multi-region deployment. 
 
 Not every workload supports or requires multiple regions running simultaneously. Precise application requirements should be weighed against these trade-offs to inform an optimal design decision. For certain application scenarios with lower reliability targets, active-passive or sharding, can be suitable alternatives.
 
-[Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) allows highly available regional deployments across different data centers within a region. Nearly all Azure services are available in either a zonal configuration where service is pinned to a specific zone. The services are also zone-redundant where the platform automatically ensures the service spans across zones and can withstand a zone outage. These configurations allow for fault-tolerance up to a datacenter level.
+[Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) allows highly available regional deployments across different data centers within a region. Nearly all Azure services are available in either a zonal configuration where service is pinned to a specific zone or zone-redundant where the platform automatically ensures the service spans across zones and can withstand a zone outage. These configurations allow for fault-tolerance up to a datacenter level.
 
 ### Design considerations
 
@@ -86,7 +88,7 @@ Not every workload supports or requires multiple regions running simultaneously.
 
 ## Containerization
 
-A container has application code with related configuration files, libraries, and dependencies required for it to run. Containerization provides an abstraction layer for application code and its dependencies and achieves separation from the underlying hosting platform. This single software package is highly portable and capable of running consistently across different infrastructure platforms or cloud providers. Developers don’t need to rewrite code, deploy applications faster, and more reliably. Typical use cases are 'lift and shift' scenarios depending on the chosen application frameworks and external dependencies.
+A container has application code with related configuration files, libraries, and dependencies required for it to run. Containerization provides an abstraction layer for application code and its dependencies and achieves separation from the underlying hosting platform. This single software package is highly portable and capable of running consistently across different infrastructure platforms or cloud providers. Developers don’t need to rewrite code, deploy applications faster, and more reliably. 
 
 > [!IMPORTANT]
 > Containers should be considered as the primary model for mission-critical application packages. It improves infrastructure utilization because multiple containers can be hosted on the same virtualized infrastructure. Also, because all software is included in the container, the application can be moved across different operating systems regardless of runtimes or library versions. A benefit is simplified management operations compared to traditional virtualized hosting.
@@ -112,7 +114,7 @@ A container has application code with related configuration files, libraries, an
 
 - Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) with [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Azure Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Azure Active Directory.
 
-## Container orchestration
+## Container hosting and orchestration
 
 There are several Azure application platforms capable of effectively hosting containers.
 There are advantages and disadvantages associated with each of these Azure container platforms. Each option can be the optimal choice for certain scenarios. Compare the options in the context of business requirements. However, always optimize reliability, scalability, and performance. For information, see these articles:
