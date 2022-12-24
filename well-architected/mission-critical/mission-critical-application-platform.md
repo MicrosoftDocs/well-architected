@@ -123,7 +123,7 @@ There are advantages and disadvantages associated with each of these Azure conta
 - [Container option comparisons](/azure/container-apps/compare-options#container-option-comparisons).
 
 > [!IMPORTANT]
-> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) should be considered as the primary application hosting platform where requirements allow. [Azure App Service](https://azure.microsoft.com/services/app-service/containers/) is a feasible alternative to AKS, providing a low-friction container platform without the complexity of Kubernetes.
+> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) should be considered as the first choice for an orchestrator where requirements allow. Another option is [Azure Container Apps](/azure/container-apps/overview). While [Azure App Service](https://azure.microsoft.com/services/app-service/containers/) isn't an orchestrator, it's still is a feasible alternative to AKS as a low-friction container platform.
 >    The following sections explore these two options.
 
 ### Azure Kubernetes Service
@@ -322,7 +322,7 @@ The following sections provide design considerations and recommendations for Azu
 
 ### Azure Functions
 
-Mission-critical workloads will have critical and non-critical system flows. While non-critical components can be hosted as separate containers in AKS, applying full set of considerations can bring more complexity than needed. Azure Functions is a viable choice for flows that don't have the same stringent business requirements as critical system flows. they're well-suited for event-driven flows with short-lived processes because functions perform distinct operations that run as fast as possible.
+Mission-critical workloads will have critical and non-critical system flows. Azure Functions is a viable choice for flows that don't have the same stringent business requirements as critical system flows. They're well-suited for event-driven flows with short-lived processes because functions perform distinct operations that run as fast as possible.
 
 #### Design considerations and recommendations
 
