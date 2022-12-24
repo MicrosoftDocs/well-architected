@@ -256,6 +256,52 @@ Appropriate health checks must be used to assess all critical downstream depende
 
 To work around the default limit of instances per App Service Plan, deploy Azure App Service Plans in multiple scale-units in a single region.  Also deploy App Service Plans in an [Availability Zone configuration](https://azure.github.io/AppService/2021/08/25/App-service-support-for-availability-zones.html) to ensure worker nodes are distributed across zones within a region. Consider opening a support ticket to increase the maximum number of workers to twice the instance count required to serve normal peak load.
 
+## Container registry
+
+Container registries host images deployed to container runtime environments, such as AKS. 
+Mission-critical workloads need careful configuration of container registries. An outage shouldn’t cause delays in pulling images especially during scaling operations. This set of considerations and recommendations focus on native Azure Container Registry service and explore the trade-offs associated with centralized and federated deployment models.
+
+### Design considerations
+
+- **Format**. Consider a container registry that relies on the Docker-provided format and standards for both push and pull operations because they are compatible and mostly interchangeable.
+
+- **Deployment model**. You can deploy the container registry as a centralized service that’s consumed by multiple applications within an organization. Or you can deploy as a dedicated component for a specific application workload.
+
+**Public registries**. Container images are stored on Docker Hub or other public registries that exist outside of Azure and a given virtual network. This isn't necessarily a problem but can lead to various potential issues related to service unavailability, throttling, and data exfiltration. Some application scenarios require public container images be replicated within a private container registry to limit egress traffic, increase availability, or avoid potential throttling.
+
+### Design recommendations
+
+- Use container registry instances that are dedicated to the application workload. Avoid taking a dependency on a centralized service unless organizational availability and reliability requirements are fully aligned with the application.
+
+  In the recommended [core architecture pattern](mission-critical-architecture-pattern.md), container registries are global resources that are long living). Consider a single global container registry per environment, such as the use of a global production registry.
+
+- Ensure that the SLA for public registry is aligned with the reliability and security targets. Take special note of throttling limits for use case that depend on Docker Hub. 
+
+- Prioritize [Azure Container Registry (ACR)](https://azure.microsoft.com/services/container-registry/) to host container images. This native service provides a range of features including geo-replication, Azure AD authentication, automated container building, and patching using ACR tasks.
+
+### Azure Container Registry (ACR) design considerations and recommendations
+
+
+##### Reliability
+
+Configure geo-replication to all deployment regions to remove regional dependencies and optimize latency. ACR supports high availability through [**Geo-replication**](/azure/container-registry/container-registry-geo-replication#considerations-for-high-availability) to multiple configured regions, providing resiliency against regional outage. If a region becomes unavailable, the other regions will continue to serve image requests, and when the region returns to health the ACR will recover and replicate changes to it. This capability also provides registry colocation within each configured region, reducing network latency and cross-region data transfer costs. 
+
+Within Azure regions that provide Availability Zone support, the [**Premium ACR tier supports Zone Redundancy**](/azure/container-registry/zone-redundancy) to protect against zonal failure. The Premium tier also supports [Private Endpoints](/azure/container-registry/container-registry-private-link) to prevent unauthorized access to the registry, which may lead to reliability issues. 
+
+Host images close to the consuming compute resources, within the same Azure regions.
+
+##### Image locking
+Image can get deleted, for instance through manual error. ACR supports [locking an image version or a repository](/azure/container-registry/container-registry-image-lock) to prevent changes or deletes. Changes to a previously deployed image, *version* being changed in-place, can introduce the risk that same-version deployments may have different results (before and after such a change).
+
+If you want to protect the ACR instance from getting deleted, use [Azure Resource Locks](/azure/azure-resource-manager/management/lock-resources).
+
+##### Tagged images
+[Tagged ACR images are mutable by default](/azure/container-registry/container-registry-image-lock#scenarios), meaning that the same tag can be used on multiple images pushed to the registry. In production scenarios, this may lead to unpredictable behavior that could impact application uptime.
+
+##### Identity and access management
+
+ Use Azure AD integrated authentication to push and pull images instead of relying on access keys. For optimal security, fully disable the use of the admin access key.
+
 ## Serverless compute
 
 Serverless computing provides resources on-demand and eliminates the need to manage infrastructure. The cloud provider automatically provisions, scales, and manages resources required to run deployed application code. Microsoft Azure provides several serverless compute platforms:
