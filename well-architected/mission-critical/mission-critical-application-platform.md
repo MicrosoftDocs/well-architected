@@ -123,8 +123,7 @@ There are advantages and disadvantages associated with each of these Azure conta
 - [Container option comparisons](/azure/container-apps/compare-options#container-option-comparisons).
 
 > [!IMPORTANT]
-> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) should be considered as the first choice for an orchestrator where requirements allow. Another option is [Azure Container Apps](/azure/container-apps/overview). While [Azure App Service](https://azure.microsoft.com/services/app-service/containers/) isn't an orchestrator, it's still is a feasible alternative to AKS as a low-friction container platform.
->    The following sections explore these two options.
+> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) should be considered as the first choice for an orchestrator where requirements allow. Another option is [Azure Container Apps](/azure/container-apps/overview). While [Azure App Service](https://azure.microsoft.com/services/app-service/containers/) isn't an orchestrator, it's still a feasible alternative to AKS as a low-friction container platform.
 
 ### Azure Kubernetes Service
 
