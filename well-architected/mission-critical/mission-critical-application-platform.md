@@ -269,13 +269,13 @@ Mission-critical workloads need careful configuration of container registries. A
 
 - **Deployment model**. You can deploy the container registry as a centralized service that’s consumed by multiple applications within an organization. Or you can deploy as a dedicated component for a specific application workload.
 
-**Public registries**. Container images are stored on Docker Hub or other public registries that exist outside of Azure and a given virtual network. This isn't necessarily a problem but can lead to various potential issues related to service unavailability, throttling, and data exfiltration. Some application scenarios require public container images be replicated within a private container registry to limit egress traffic, increase availability, or avoid potential throttling.
+- **Public registries**. Container images are stored on Docker Hub or other public registries that exist outside of Azure and a given virtual network. This isn't necessarily a problem but can lead to various potential issues related to service unavailability, throttling, and data exfiltration. Some application scenarios require public container images be replicated within a private container registry to limit egress traffic, increase availability, or avoid potential throttling.
 
 ### Design recommendations
 
 - Use container registry instances that are dedicated to the application workload. Avoid taking a dependency on a centralized service unless organizational availability and reliability requirements are fully aligned with the application.
 
-  In the recommended [core architecture pattern](mission-critical-architecture-pattern.md), container registries are global resources that are long living). Consider a single global container registry per environment, such as the use of a global production registry.
+  In the recommended [core architecture pattern](mission-critical-architecture-pattern.md), container registries are global resources that are long living. Consider a single global container registry per environment, such as the use of a global production registry.
 
 - Ensure that the SLA for public registry is aligned with the reliability and security targets. Take special note of throttling limits for use case that depend on Docker Hub. 
 
