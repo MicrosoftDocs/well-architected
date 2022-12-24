@@ -27,7 +27,7 @@ Using a scale-unit architecture  is recommended to optimize end-to-end scalabili
 
 This approach is recommended because it addresses the scale limits of individual resources and the entire application. It helps with complex deployment and update scenarios because a scale-unit can be deployed as one unit. Also, you can test and validate specific versions of components in a unit before directing user traffic to it.
 
-Suppose your mission-critical application is an online catalog. It has a user flow for processing product comments and ratings. The flow uses APIs for retrieving and posting comments and ratings, and supporting components such as an OAuth endpoint, datastore, and message queues. The stateless API endpoints represent granular functional units that must adapt to changes on demand. Also, the underlying application platform must also be able to scale accordingly. To avoid performance bottlenecks, the downstream components and dependencies must also scale to an appropriate degree. They can either scale independently, as a separate scale-unit, or together, as part of a single logical unit.
+Suppose your mission-critical application is an online product catalog. It has a user flow for processing product comments and ratings. The flow uses APIs for retrieving and posting comments and ratings, and supporting components such as an OAuth endpoint, datastore, and message queues. The stateless API endpoints represent granular functional units that must adapt to changes on demand. Also, the underlying application platform must also be able to scale accordingly. To avoid performance bottlenecks, the downstream components and dependencies must also scale to an appropriate degree. They can either scale independently, as a separate scale-unit, or together, as part of a single logical unit.
 
 ### Example scale units
 
@@ -74,19 +74,18 @@ Failure is impossible to avoid in any highly distributed environment. Here are s
 
 ### Design considerations
 
-- **Redundancy**. The application must be deployed to multiple regions. Even within a region, using [Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) is highly recommended to allow for fault tolerance at the datacenter level. Availability Zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are 'chatty' across zones, this latency can introduce a performance penalty and incur bandwidth charges for inter-zone data transfer.
+- **Redundancy**. The application must be deployed to multiple regions. Additionally, within a region, using [Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) is highly recommended to allow for fault tolerance at the datacenter level. Availability Zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are 'chatty' across zones, this latency can introduce a performance penalty and incur bandwidth charges for inter-zone data transfer.
 
-- **Active-active model**. An active-active deploymentThis strategy represents the gold standard because it maximizes availability and allows for higher composite Service Level Agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering trade-offs from increased cost and engineering effort.
+- **Active-active model**. An active-active deployment strategy represents the gold standard because it maximizes availability and allows for higher composite Service Level Agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering trade-offs from increased cost and engineering effort.
 
   An active-active deployment across other cloud providers might be a potential solution to mitigate dependency on global resources within a single cloud provider. However, a multicloud active-active deployment strategy introduces a significant amount of complexity around CI/CD. Also, given the differences in resource specifications and capabilities between cloud providers, you'll need specialized deployment stamps for each cloud.
 
-- **Geographical distribution**. The workload might have cCompliance requirements around geographical data residency, data protection, and data retention. Consider the **Are there specific regions where data must reside or where resources have need to be deployed.?**
+- **Geographical distribution**. The workload might have compliance requirements around geographical data residency, data protection, and data retention. **Are there specific regions where data must reside or where resources have need to be deployed?**
 
 - **Request origin.** The geographic proximity and density of users or dependent systems should inform design decisions around the global distribution.
 
 - **Connectivity**. How the workload is accessed by users or external systems will influence your design. Consider whether the application is available over the public internet or private networks using either VPN or ExpressRoute circuits.
 
-- **Tradeoff with cost**. Different Azure regions have slightly different cost profiles for some services. There may be further cost implications depending on the precise deployment regions chosen.
 
 For design recommendations and configuration choices at the platform level, see [Application platform: Global distribution](mission-critical-application-platform.md#global-distribution-of-platform-resources).
 
@@ -100,7 +99,7 @@ This example shows both global and regional resources, with regional resources d
 
 The _loose_ aspect allows an application component to operate independently while _coupling_ allows for inter-service communication through well-defined interfaces. Using [microservices as your architecture style](/azure/architecture/guide/architecture-styles/microservices) resonates with mission-critical requirements. It facilitates high availability by preventing cascading failures.
 
-For loose coupling, incorporating [event-driven design](/azure/architecture/guide/architecture-styles/event-driven) is highly recommended. Asynchronous message processing through an intermediary can build redundancy.
+For loose coupling, incorporating [event-driven design](/azure/architecture/guide/architecture-styles/event-driven) is highly recommended. Asynchronous message processing through an intermediary can build resiliency.
 
 :::image type="content" source="./images/mission-critical-asynchronous-communication.png " alt-text="Diagram showing asynchronous event-driven communication." lightbox="./images/mission-critical-asynchronous-communication.png ":::
 
@@ -116,7 +115,7 @@ In some scenarios, applications can combine loose and tight-coupling, depending 
 
 - **Transactional integrity**. Consider the impact of data creation and persistence that happens in separate services.
 
-- **Correlated tracing**. End-to-end tracing may require complex orchestration.
+- **Distributed tracing**. End-to-end tracing may require complex orchestration.
 
 ### Design recommendations
 
@@ -142,7 +141,6 @@ Tools like [Azure Application Insights](/azure/azure-monitor/app/distributed-tra
 
 ### Design considerations
 
-- **Vendor-provided SDKs.** Azure service SDKs should be used to take advantage of built-in resiliency capabilities like retry mechanisms.
 
 - **Proper configurations**. It's not uncommon for transient issues to cause cascading failures.  For example, retry without appropriate back-off will exacerbate the issue when a service is being throttled. Retry delays can be linearly spaced or increased exponentially to backoff through growing delays.
 
