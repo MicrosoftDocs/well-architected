@@ -326,7 +326,7 @@ Mission-critical workloads will have critical and non-critical system flows. Azu
 
 #### Design considerations and recommendations
 
-Choose an [Azure Functions hosting option](/azure/azure-functions/functions-scale) that's applicable to reliability tier selected for the application. Premium SKU App Service plan is recommended because it allows configuration of the compute instance size. **Dedicated** is the least serverless option with the option to autoscale, though these scale operations are slower when compared to other plans. Prioritize the use of the Azure Functions Premium hosting plan to maximize reliability and performance.
+Choose an [Azure Functions hosting option](/azure/azure-functions/functions-scale) that's applicable to reliability tier selected for the application. Functions Premium SKU plan is recommended because it allows configuration of the compute instance size. **Dedicated** is the least serverless option with the option to autoscale, though these scale operations are slower when compared to other plans. Prioritize the use of the Azure Functions Premium hosting plan to maximize reliability and performance.
 
 There are some security considerations. When using the HTTP trigger to expose an external endpoint, protect the HTTP endpoint from common external attack vectors using a Web Application Firewall (WAF).
 
@@ -347,7 +347,7 @@ Many applications with existing on-premises deployments use virtualization techn
 - Available PaaS services don't provide the required performance or level of control.
 - The workload requires operating system access, specific drivers, or network and system configurations.
 - The workload does not support running in containers.
-- Lack of support for third-party workloads.
+- Lack of  vendor support for third-party workloads.
 
 This section focuses on best usage of Azure Virtual Machines and associated services in order to maximize the reliability of the application platform. It highlights key aspects of the mission-critical design methodology, which transpose cloud-native and IaaS migration scenarios.
 
