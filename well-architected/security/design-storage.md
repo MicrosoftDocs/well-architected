@@ -49,7 +49,7 @@ Here are some reference architectures related to secure storage:
 We recommend that you review the practices and tools implemented as part of the development cycle.
 
 > [!div class="nextstepaction"]
-> [Data protection](./design-storage.md)
+> [Design Storage Encryption](./design-storage-encryption.md)
 
 ## Related links
 
