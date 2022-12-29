@@ -39,9 +39,9 @@ All Oracle Workloads need to be architected to handle failures with correlated o
 
 While the primary focus in on Reliability and creating highly available applications and databases other pillars of the Well-Architected Framework are equally important during the architecture design and migration phase.
 
-- **Security**: how user access applications and the overall workload mitigates security threats, such as Distributed Denial of Service (DDoS) attacks, will have a significant bearing on overall reliability.
-- **Operational Excellence**: potentially reached throughput or Memory on the database respond to operational issues will have a direct impact on application availability. Latencies should be eliminated as much as possible.
-- **Performance Efficiency**: availability is more than simple uptime, but rather a consistent level of application service and performance relative to a known healthy state.
+- **Security**: How user access applications and the overall workload mitigates security threats, such as Distributed Denial of Service (DDoS) attacks, will have a significant bearing on overall reliability.
+- **Operational Excellence**: Potentially reached throughput or Memory on the database respond to operational issues will have a direct impact on application availability. Latencies should be eliminated as much as possible.
+- **Performance Efficiency**: Availability is more than simple uptime, but rather a consistent level of application service and performance relative to a known healthy state.
 
 Achieving high reliability imposes significant cost tradeoffs, which may not be justifiable for every workload scenario. It's therefore recommended that design decisions be driven by business requirements.
 
