@@ -19,7 +19,7 @@ When discussing reliability with Oracle in Azure, it’s important to take into 
 
 Availability is crucial to Oracle Workloads. To discover the reliability status of your workload, you should answer some questions that help to identify areas of weaknesses. This is crucial for the architecture design and configurations.
 
-The assessment provides specific recommendations to focus on. You can start the [assessment](https://learn.microsoft.com/assessments/) when prompted.
+The assessment provides specific recommendations to focus on. You can start the [WAF assessment](/assessments/azure-architecture-review) when prompted.
 
 ## Create architecture reliability
 
