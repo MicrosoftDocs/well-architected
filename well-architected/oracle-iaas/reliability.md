@@ -21,7 +21,6 @@ Availability is crucial to Oracle Workloads. To discover the reliability status 
 
 The assessment provides specific recommendations to focus on. You can start the [assessment](https://learn.microsoft.com/assessments) when prompted.
 
-
 ## Create architecture reliability
 
 Knowing the Architecture of your Oracle on-premises application is crucial. In some cases specific versions of applications have a slight difference in the application tiers, which are crucial for your migration phase. Next to it you should establish a map pointing out any dependency. A dependency will most definitely occur between the application and database tier. The same applies to back up and your disaster recovery strategy.
@@ -32,10 +31,10 @@ Make sure to match up to the on-premises application architecture to reach high 
 
 Business-critical Oracle Applications require failure prevention and therefore holistic architecture. One of these business-critical applications can be Oracle E-Business Suite.
 
-As a given Tier 1 example for Oracle E-Business Suite in a multiple availability zone deployment and second region deployment for disaster recovery.
+As a given Tier 1 example for Oracle E-Business Suite in a multiple availability zone deployment and second region deployments for disaster recovery.
 
 - First establish a multiple availability zone deployment with separated VNet with subnets. The Application tier uses Azure Site Recovery with a passive secondary virtual machine in availability zone three from the availability zone 1 primary.
--  Use two Oracle Observers as a primary in availability zone one and a secondary in availability zone two. The observers monitor and direct the whole traffic to the primary database. Whereas the primary database is deployed in availability zone one. Oracle Data Guard performs the redo sync to availability zone two and can be configured for maximum availability. Data Guard can be established as synchronous or asynchronous. Within one region a synchronous configuration can be used for reaching a lower latency as in async mode.  
+- Use two Oracle Observers as a primary in availability zone one and a secondary in availability zone two. The observers monitor and direct the whole traffic to the primary database. Whereas the primary database is deployed in availability zone one. Oracle Data Guard performs the redo sync to availability zone two and can be configured for maximum availability. Data Guard can be established as synchronous or asynchronous. Within one region a synchronous configuration can be used for reaching a lower latency as in async mode.  
 
 A second Data Guard standby configuration in the secondary region is established for disaster recovery purposes and is configured for maximum protection. Thereby backups of the database are performed by Azure Backup Volume Snapshot on Premium Files to the secondary region.
 
@@ -43,16 +42,15 @@ If a primary goes down, Observer(s) will reroute the traffic to the secondary DB
 
 :::image type="content" source="./images/oracle-architecture-01.jpg" alt-text="Diagram of a Tier 1 (Business Critical) for Oracle E-business Suite in a Multiple Availability Zone deployment and Second Region deployment for Disaster Recovery." lightbox="./images/oracle-architecture-01.jpg" border="false":::
 
+### Create a failover for business critical Oracle applications in a two availability zone deployment with manual failover
 
-### Create a fail over for business critical Oracle applications in a two availability zone deployment with manual failover
-
-The web server tier, application tier and database tier resides in its own virtual network subnet.
+The web server tier, application tier and database tier reside in its own virtual network subnet.
 
 [Azure Site Recovery](/azure/site-recovery/site-recovery-overview) or the manual clone utility can be established to duplicate the passive secondary in AZ2. The primary will be set up in AZ1 whereas the database uses Data Guard to replicate it to an active Standby in AZ2.
 
-A Failover would require manual intervention from the customer to failover in case of a failure of AZ1. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
+A Failover would require manual intervention from the customer to fail over in case of a failure of AZ1. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
 
-:::image type="content" source="./images/oracle-architecture-02.jpg" alt-text="Diagram of a Tier 2 (Production) Two-Availability Zone Deployment, Manual Failover ." lightbox="../../_images/oracle-architecture-02.jpg":::
+:::image type="content" source="./images/oracle-architecture-02.jpg" alt-text="Diagram of a Tier 2 (Production) Two-Availability Zone Deployment, Manual Failover. " lightbox="../../_images/oracle-architecture-02.jpg":::
 
 ## Checklist for Reliability
 
@@ -75,7 +73,7 @@ Based on the AWR and statspack data you should also choose a Premium SSD for OS 
 
 The appropriate storage for throughput (MBPs) for Oracle workload should be chosen.
 
-Another solution when your workload requires a very high throughput is [Azure NetApp Files (ANF)](/azure/azure-netapp-files/azure-netapp-files-introduction). ANF is a third-Party Storage Solution (Silk, Flashgrid Storage).
+Another solution when your workload requires a high throughput is [Azure NetApp Files (ANF)](/azure/azure-netapp-files/azure-netapp-files-introduction). ANF is a third-Party Storage Solution (Silk, Flashgrid Storage).
 
 For any multi-tier systems using E and D series VMs, consider using [Proximity Placement Groups](/azure/virtual-machines/co-location) for more consistent performance between VMs.
 
@@ -93,9 +91,9 @@ The application health should be monitored, not just Oracle, but application and
 
 | Recommendation | Benefit |
 | --- | --- |
-| Use Host-level ReadOnly Caching for Oracle datafiles | P30-P50, (up to 4095G) can offer almost double MBPs on reads for datafiles. Bursting isn’t consistent or guaranteed, but caching offers better performance and at no additional cost. |
-| Use Host-Level ReadWrite caching on OS Disk | Oracle VM’s can benefit with ReadWrite caching for the OS disk only. |
-| Separate Redo Logs for Log Latency | Log File Sync and Log File parallel write waits in Oracle can benefit by separating log files to small ultra disk allocation. If sync waits are shown, and requirement to have two members of redo log groups, separate members to TWO ultra disks with high enough IO set to handle log latency. Don’t configure any host-level caching if only redo logs on premium disk. |
+| Use Host-level ReadOnly Caching for Oracle datafiles | P30-P50, (up to 4095G) can offer almost double MBPs on reads for datafiles. Bursting isn’t consistent or guaranteed, but caching offers better performance and at no extra cost. |
+| Use Host-Level ReadWrite caching on OS Disk | Oracle VMs can benefit with ReadWrite caching for the OS disk only. |
+| Separate Redo Logs for Log Latency | Log File Sync and Log File parallel write waits in Oracle can benefit by separating log files too small ultra disk allocation. If sync waits are shown, and requirement to have two members of redo log groups, separate members to TWO ultra disks with high enough IO set to handle log latency. Don’t configure any host-level caching if only redo logs on premium disk. |
 
 For more suggestions, see [Principles of the reliability pillar.](/azure/architecture/framework/resiliency/principles)
 
