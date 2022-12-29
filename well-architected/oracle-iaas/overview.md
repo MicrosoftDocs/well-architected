@@ -19,7 +19,7 @@ This article also provides guidance for Oracle Workloads on Azure that applies W
 
 ## About Oracle workloads
 
-The term workload refers to a collection of database and application resources that support a common business goal or the execution of a common business process. These workloads could be Customer Relationship Management applications, Human Resources, customized application that mostly relies on Weblogic and others. Weblogic, Siebel, Peoplesoft, Hyperion, JD Edwars and E-Business Suite are Oracle on-premises applications.  
+The term workload refers to a collection of database and application resources that support a common business goal or the execution of a common business process. These workloads could be Customer Relationship Management applications, Human Resources, customized application that mostly relies on Weblogic and others. Weblogic, Siebel, Peoplesoft, Hyperion, JD Edwards and E-Business Suite are Oracle on-premises applications.  
 
 Oracle Applications on Azure and its approach are described in Section Application Design.
 
