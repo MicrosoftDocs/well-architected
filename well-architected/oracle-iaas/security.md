@@ -39,7 +39,7 @@ The table below provides a summary of the recommended SSO method for the given O
 
 Microsoft also offers customers coming from on-premises application to use an application proxy. The application proxy allows SAML authentication and can be used for all Oracle applications providing you the opportunity to establish a Single-Sign-On for external users. For more information, see:
 - [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy) documentation.
-- [Tutorial](azure/active-directory/saas-apps/ssogen-tutorial) on setting up Azure AD SSO Gateway for Oracle E-Business Suite - EBS, PeopleSoft, and JDE.
+- [Tutorial](/azure/active-directory/saas-apps/ssogen-tutorial) on setting up Azure AD SSO Gateway for Oracle E-Business Suite - EBS, PeopleSoft, and JDE.
 
 ## Use role-based access control (RBAC)
 
