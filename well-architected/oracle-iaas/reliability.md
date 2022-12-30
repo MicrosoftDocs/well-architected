@@ -27,6 +27,10 @@ Knowing the Architecture of your Oracle on-premises application is crucial. In s
 
 Make sure to match up to the on-premises application architecture to reach high availability. It's most important for Siebel.
 
+## Make use of Azure Advisor
+
+There are no specific built-in recommendations in Azure Advisor for Oracle on IaaS solutions in Azure. However, Azure Advisor has broad pillar coverage across the common resources used in these architectures, including [compute](/azure/advisor/advisor-reference-operational-excellence-recommendations#compute) (including [Azure VMWare](/azure/advisor/advisor-reference-operational-excellence-recommendations#azure-vmware)), [storage](/azure/advisor/advisor-reference-performance-recommendations#storage), and [networking](/azure/advisor/advisor-reference-reliability-recommendations#networking). Reviewing recommendations from Azure Advisor for these underlying resources can detect configurations & topologies that can lead to reliability impact, optimize cost from under-utilization of resources, and reveal opportunities improve user experience through surfacing throttling issues or proximity placement suggestions. See the related Azure Well-Architected service guide for each service in your architecture for a list of key Azure Advisor alerts for that service.
+
 ### Create a Fail-Over in a multiple availability zone deployment and second region deployments for disaster recovery
 
 Business-critical Oracle Applications require failure prevention and therefore holistic architecture. One of these business-critical applications can be Oracle E-Business Suite.
