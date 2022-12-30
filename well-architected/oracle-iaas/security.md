@@ -63,6 +63,12 @@ In case a user accesses the application from the internet, consider an Applicati
 
 Another possibility to configure a mature security posture are Application Security Groups (ASG). An ASG is an easier possibility to establish network security of the dedicated workload. For more information, see [Azure application security groups.](/azure/virtual-network/application-security-groups)
 
+## Make use of Azure Policy
+
+There are no specific built-in Azure Policy definitions for Oracle on IaaS in Azure. Azure Policy has broad coverage over the core resources that make up any Oracle solution on Azure. Primary resources are [virtual machines](/azure/virtual-machines/overview), [storage](/azure/storage/common/storage-account-overview), and [networking](/azure/networking/fundamentals/networking-overview). Always enforce architectural choices with Azure Policy to prevent accidental drift from desired state. There are policies for these resources that span all five pillars of the Well-Architected Framework. If built-in policies for your architecture’s components or configurations do not exist, you can create custom policies to cover any gaps.
+
+Examples of key policies that are built-in would be Audit virtual machines without disaster recovery, virtual machines should use Secure Boot, and any policies that limit SKU choices to ensure you’re meeting reliability, cost optimization, and performance efficiency targets. See the related Azure Well-Architected service guide for each service for a list of recommended Azure Policies for that service.
+
 ## Recommendations
 Explore the following table of recommendations to optimize your Oracle on Azure IaaS environment for security:
 
