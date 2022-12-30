@@ -31,11 +31,11 @@ The table below provides a summary of the recommended SSO method for the given O
 
 | Oracle solution | SSO method |
 | --- | --- |
-|Siebel|Security Assertion Markup Language (SAML). From version **IP18.1** and onwards: **OAuth** |
-|Peoplesoft |From Version **8.53** and later: **Kerberos**. From Version **8.53** and later: **SAML**, **OAuth2.0**. For more information, see [Datawiza.](/azure/active-directory/manage-apps/datawiza-azure-ad-sso-oracle-peoplesoft)  |
-|Hyperion |**SAML 2.0**|
-|E-business suite (EBS) |**SAML**|
-|JD Edwards (JDE) |**SAML**. For more information, see [Datawiza JDE.](/azure/active-directory/manage-apps/datawiza-azure-ad-sso-oracle-jde)|
+|Siebel|Security Assertion Markup Language (SAML). <br>From version IP18.1 and onwards:<br>OAuth |
+|Peoplesoft |From Version 8.53 and later: <br>- Kerberos <br>From Version 8.53 and later:<br>- SAML<br>- OAuth2.0 <br> For more information, see [Datawiza Azure AD](/azure/active-directory/manage-apps/datawiza-azure-ad-sso-oracle-peoplesoft)  |
+|Hyperion |SAML 2.0|
+|E-business suite (EBS) |SAML|
+|JD Edwards (JDE) |SAML.<br>For more information, see [Datawiza JDE.](/azure/active-directory/manage-apps/datawiza-azure-ad-sso-oracle-jde)|
 
 Microsoft also offers customers coming from on-premises application to use an application proxy. The application proxy allows SAML authentication and can be used for all Oracle applications providing you the opportunity to establish a Single-Sign-On for external users. For more information, see:
 - [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy) documentation.
