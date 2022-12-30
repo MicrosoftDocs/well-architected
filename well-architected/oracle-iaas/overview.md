@@ -49,7 +49,7 @@ Achieving high reliability imposes significant cost tradeoffs, which may not be 
 
 Oracle on Azure guidance within this series is composed of architectural considerations and recommendations orientated around these [key design areas](/azure/architecture/framework/mission-critical/mission-critical-overview).
 
-:::image type="content" source="./images/mission-critical-design-areas.svg" alt-text="Diagram that shows how to use this Oracle workload guidance throughout the lifecycle of an Oracle workload." lightbox="./images/mission-critical-design-areas.svg" border="false":::
+:::image type="content" source="./images/mission-critical-design-areas.svg" alt-text="Diagram that shows mission critical design areas." lightbox="./images/mission-critical-design-areas.svg" border="false":::
 
 | Design area | Summary |
 | --- | --- |
@@ -80,7 +80,7 @@ Some large enterprises require the same architecture across regions without inst
 
 This image demonstrates how the single subscription reference deployment model can be expanded across multiple subscriptions, in an extreme scale scenario, to navigate subscription scale-limits.
 
-:::image type="content" source="./images/mission-critical-subscription-scale.gif" alt-text="Diagram that shows how to use this Oracle workload guidance throughout the lifecycle of an Oracle workload." lightbox="./images/mission-critical-subscription-scale.gif" border="false":::
+:::image type="content" source="./images/mission-critical-subscription-scale.gif" alt-text="Diagram that shows how subscription scale approach." lightbox="./images/mission-critical-subscription-scale.gif" border="false":::
 
 ### Siebel on Azure
 Siebel is an on-premises CRM application. Companies use it differently. Siebel is the most complex application in Oracle’s portfolio because of an architecture change from version 16 to 17.  
