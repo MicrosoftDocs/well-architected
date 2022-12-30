@@ -31,13 +31,14 @@ Set up a storage architecture that meets your requirements and allocating cost s
 
 The following provides some guidance to set up a well-architected storage solution:
 
-**(1) Use reserved capacity storage type** - There are several types of storage to choose from based on the requirements. Managed Disks, Blob Storage, and Azure Backup Storage will support you in various combinations. As every application has a file storage in the application tier, a cost optimization can be reached by having a Blob Storage in Place.  
+**(1) Use reserved capacity storage type** - There are several types of storage to choose from based on the requirements. Managed Disks, Blob Storage, and Azure Backup Storage will support you in various combinations. As every application has a file storage in the application tier, a cost optimization can be reached by having a Blob Storage in Place. Network attached storage offers an opportunity for workloads with high throughputs. In this case it's Azure NetApp Files. Note that ANF is a third-Party Storage Solution (Silk, Flashgrid Storage).
 
-Each of these storage options comes with storage reservation options that lower overall costs on the persistent data layer. For more information, please visit:
+The above storage options come with storage reservation options that lower overall costs on the persistent data layer. For more information, please visit:
 
 - [Azure disk reserved capacity](/azure/virtual-machines/disks-reserved-capacity)
-- [Blob storage reserved capacity](/azure/storage/blobs/storage-blob-reserved-capacity?toc=%2Fazure%2Fcost-management-billing%2Freservations%2Ftoc.json)
+- [Azure NetApp Files](/azure/azure-netapp-files/azure-netapp-files-introduction)
 - [Azure Backup Storage reserved capacity](/azure/backup/backup-azure-reserved-pricing-optimize-cost)
+- [About Azure VM Backup](/azure/backup/backup-azure-vms-introduction)
 
 **(2) Use lifecycle management policies** - Next to reserved capacity you should define a data retention period. An Oracle database backup can be large and add cost to the storage costs if it isn't optimized. We recommend creating a lifecycle policy that meets the recovery time objective (RTO) and the recovery point objective (RPO) of your Oracle Workload.
 
