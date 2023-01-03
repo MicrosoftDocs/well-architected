@@ -11,15 +11,15 @@ ms.subservice: well-architected
 
 # Oracle workload best practices
 
-This article strives to address Oracle workloads comprising not only Oracle Databases, but also Oracle applications such as Siebel, Peoplesoft, JD Edwards, Hyperion, E-Business Suite or customized Weblogic applications.
+The section strives to address Oracle workloads comprising not only Oracle Databases, but also applications such as Siebel, Peoplesoft, JD Edwards, E-Business Suite or customized Weblogic applications.
 
-Customers around the globe are looking for hosting Oracle Workloads on Azure. For that reason, Microsoft provides solutions for each workload and coherent requirements. The most requirements customers asked for are around network, reducing latencies, and uto-scaling solutions.
+Customers around the globe are looking for hosting Oracle Workloads on Azure. For that reason, Microsoft provides solutions for each workload and coherent requirements. The most requirements customers asked for are around network and reducing latencies. Next to these auto-scaling solutions are asked for enormously.  
 
-This article also provides guidance for Oracle Workloads on Azure that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable and scalable solution on Azure.
+The section about Oracle Workloads on Azure provides guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
 
 ## About Oracle workloads
 
-The term workload refers to a collection of database and application resources that support a common business goal or the execution of a common business process. These workloads could be Customer Relationship Management applications, Human Resources, customized application that mostly relies on Weblogic and others. Weblogic, Siebel, Peoplesoft, Hyperion, JD Edwards and E-Business Suite are Oracle on-premises applications.  
+The term workload refers to a collection of database and application resources that support a common business goal or the execution of a common business process. These workloads could be Customer Relationship Management applications, Human Resources, customized application that mostly relies on Weblogic and others. Weblogic, Siebel, Peoplesoft, JD Edwards and E-Business Suite are Oracle on-premise applications.  
 
 Oracle Applications on Azure and its approach are described in Section Application Design.
 
@@ -39,8 +39,8 @@ All Oracle Workloads need to be architected to handle failures with correlated o
 
 While the primary focus in on Reliability and creating highly available applications and databases other pillars of the Well-Architected Framework are equally important during the architecture design and migration phase.
 
-- **Security**: How user access applications and the overall workload mitigates security threats, such as Distributed Denial of Service (DDoS) attacks, will have a significant bearing on overall reliability.
-- **Operational Excellence**: Potentially reached throughput or Memory on the database respond to operational issues will have a direct impact on application availability. Latencies should be eliminated as much as possible.
+- **Security**: The way user access applications and the holistic development of a workload architecture to mitigate security threats, such as Distributed Denial of Service (DDoS) attacks, will have a significant bearing on overall reliability.
+- **Operational Excellence**: Potentially reached throughput or Memory on the database respond to operational issues will have a direct impact on application availability. Latencies should be eliminated to a minimum.
 - **Performance Efficiency**: Availability is more than simple uptime, but rather a consistent level of application service and performance relative to a known healthy state.
 
 Achieving high reliability imposes significant cost tradeoffs, which may not be justifiable for every workload scenario. It's therefore recommended that design decisions be driven by business requirements.
