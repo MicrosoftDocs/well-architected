@@ -98,9 +98,9 @@ The following design example provides a first idea of a generic Siebel Architect
 
 Refer to the Siebel design considerations:
 
-**(1) Network & Security** - You should consider establishing an Azure AD for Single-Sign-On (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. Internal users should be routed through [ExpressRoute](/azure/expressroute/). If you desire a Web Application Firewall on [Azure Front Door](/azure/frontdoor/web-application-firewall) can be configured as well.
+**(1) Network & Security** - You should consider establishing an Azure AD for Single-Sign-On (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. Internal users should be routed through [ExpressRoute](/azure/expressroute/). If you desire a Firewall in front, [Azure Firewall](/azure/firewall/overview) can be configured as well.
 
-In cases where external users need to access your application the [Application Gateway](/azure/application-gateway/overview) provides a Web Application Firewall, but also a Layer 7 Load Balancing. Note that Application Gateways can only be used for http/s protocols. The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [Role-Based-Access-Control (RBAC).](/azure/role-based-access-control/overview)
+In cases where external users need to access your application, the [Application Gateway](/azure/application-gateway/overview) provides a Web Application Firewall, but also a Layer 7 Load Balancing. Note that Application Gateways can only be used for http/s protocols. The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [Role-Based-Access-Control (RBAC).](/azure/role-based-access-control/overview)
 
 Because an SSH port is required for Siebel, a Bastion host as a jump box can also provide another security for an in-depth mature security posture.
 
@@ -112,7 +112,7 @@ When you set up a holistic architecture and technical approach for migration you
 
 Virtual Machine Scale Sets can provide another value for Siebel. The Siebel Workflow Servers contain much information and for some customers it scales high and no need to redo architecture. Virtual Machine Scale Sets lets you create and manage a group of load-balanced VMs and provides high availability.
 
-**(4) Database Tier** - The database tier has one primary and replicated to a secondary using Data Guard. If you stay within one region the synchronous configuration should be used. If you install your application across regions, you should configure Data Guard in Asynchronous mode.
+**(4) Database Tier** - The database tier has one primary and replicated to a secondary using Data Guard. If you stay within one datacenter, the synchronous configuration should be used. If you install your application across datacenters, you should configure Data Guard in Asynchronous mode.
 
 **(5) Backup** - [Backups](/azure/backup/backup-azure-vms-introduction) are sent from the application tier and the database tier. It's just one of many reasons why those two tiers shouldn't be separated into two different vendors. Thereby Backups of the database are performed by [Azure Backup Volume Snapshot](https://techcommunity.microsoft.com/t5/data-architecture-blog/azure-backup-volume-snapshots-for-oracle-is-now-ga/ba-p/2820032) on Premium Files to the secondary region.
 
@@ -127,7 +127,7 @@ We assume that external users don't cross the corporate network in the diagram b
 
 Refer to the Oracle EBS design considerations:
 
-**(1) Network & Security** - You should consider establishing an Azure AD for Single-Sign-On (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. Internal users should be routed through [ExpressRoute](/azure/expressroute/). If you desire a Web Application Firewall on [Azure Front Door](/azure/frontdoor/web-application-firewall) can be configured as well.
+**(1) Network & Security** - You should consider establishing an Azure AD for Single-Sign-On (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. Internal users should be routed through [ExpressRoute](/azure/expressroute/). If you desire a Firewall in front, [Azure Firewall](/azure/firewall/overview) can be configured as well.
 
 In cases where external users need to access your application the [Application Gateway](/azure/application-gateway/overview) provides a Web Application Firewall, but also a Layer 7 Load Balancing. Note that Application Gateways can only be used for http/s protocols. The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [Role-Based-Access-Control (RBAC).](/azure/role-based-access-control/overview)
 
@@ -135,13 +135,13 @@ Because an SSH port is required for Siebel, a Bastion host as a jump box can als
 
 **(2) Application Tier** - The application tier consists of more than two application servers. Usually, the rules for the application server are saved on application web servers. Evaluate the access you need to establish. If users only access the web tier but aren't allowed to access the application server, consider allocating the tiers into application web tier and application tier.
 
-However, because of the dependencies of each tier to the database it isn't recommended to separate the application and database tier to different vendors.
+However, if the application tier and the database tier will be cut into two different cloud vendors, it can cause high latencies. We recommend you to do a proper technical assessment and decide if high latencies will impact your daily business.  
 
-Some customers ask for auto-scaling methods. Auto-Scaling can be achieved through [Virtual Machine Scale Sets (Virtual Machine Scale Sets)](/azure/virtual-machine-scale-sets/overview) for EBS. Some of the servers that you have in use operate more tasks and create a higher throughput than others. This should be evaluated during the Design Phase. Virtual Machine Scale Sets don't require a rearchitecture and let you create and manage a group of load-balanced VMs that provides high availability.
+As soon as you approach the technical assessment, you should consider modernizing it. Some customers ask for auto-scaling methods. Auto-Scaling can be achieved through [Virtual Machine Scale Sets (Virtual Machine Scale Sets)](/azure/virtual-machine-scale-sets/overview) for EBS. Some of the servers that you have in use operate more tasks and create a higher throughput than others. This should be evaluated during the Design Phase. Virtual Machine Scale Sets don't require a rearchitecture and let you create and manage a group of load-balanced VMs that provides high availability.
 
-**(3) Database Tier** - The database tier has one primary and replicated to a secondary using Data Guard. If you stay within one region, the synchronous configuration should be used. If you install your application across regions, you should configure Data Guard in Asynchronous mode.
+**(3) Database Tier** - The database tier has one primary and replicated to a secondary using Data Guard. If you stay within one datacenter, the synchronous configuration should be used. If you install your application across datacenters, you should configure Data Guard in Asynchronous mode.
 
-**(4) Backup** - [Backups](/azure/backup/backup-azure-vms-introduction) are sent from the application tier and the database tier. It's just one of many reasons why those two tiers shouldn't be separated into two different vendors. Thereby Backups of the database are performed by [Azure Backup Volume Snapshot](https://techcommunity.microsoft.com/t5/data-architecture-blog/azure-backup-volume-snapshots-for-oracle-is-now-ga/ba-p/2820032) on Premium Files to the secondary region.
+**(4) Backup** - [Backups](/azure/backup/backup-azure-vms-introduction) are sent from the application tier and the database tier. Thereby Backups of the database are performed by [Azure Backup Volume Snapshot](https://techcommunity.microsoft.com/t5/data-architecture-blog/azure-backup-volume-snapshots-for-oracle-is-now-ga/ba-p/2820032) on Premium Files to the secondary region.
 
 **(5) Disaster Recovery** - There are different solutions you can choose from. It very much depends on your requirements. The architecture above is built to be highly available. For replicating the application tier you can use [Azure Site Recovery](/azure/site-recovery/site-recovery-overview). Another solution you can choose is [Redundancy options for managed disks.](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks) Both solutions replicate your data. Redundancy options for managed disks are a solution that can simplify the architecture but also comes with a few limitations.
 
@@ -155,7 +155,7 @@ The following architecture is built to being highly available. We assumed that e
 
 Refer to the JD Edwards design considerations:
 
-**(1) Network & Security** - You should consider establishing an Azure AD for Single-Sign-On (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. JDE does only offer an ssh port. In that case, we recommend you to set a Web Application Firewall on [Azure Front Door](/azure/web-application-firewall/afds/afds-overview) to properly protect your application installation for external user. WAF enabled web applications inspect every incoming request delivered by Front Door at the network edge. IT prevents malicious attacks close to the attack sources before they enter your virtual network. 
+**(1) Network & Security** - You should consider establishing an Azure AD for Single-Sign-On (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. JDE does only offer an ssh port. In that case we recommend you to set a Firewall in front by using [Azure Firewall](/azure/firewall/overview) to properly protect your application installation for external user.
 
 Internal users can access your application through ExpressRoute. If desired, a Web Application Firewall on Azure Front Door can be configured as well.  
 
@@ -163,7 +163,7 @@ The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtu
 
 Because an SSH port is required for JDE, a Bastion host as a jump box is recommended and can provide another security for an in-depth mature security posture.
 
-**(2) Application Web Tier** - The application web tier consists of more than two application servers. Usually, the rules for the application server are saved on application web servers. Within the presentation tier, each instance is associated with storage. The middle tier has a direct connection to the database where requests are directed. Therefore, the application tier and the database tier shouldn't be separated to different vendors.
+**(2) Application Web Tier** - The application web tier consists of more than two application servers. Usually, the rules for the application server are saved on application web servers. Within the presentation tier, each instance is associated with storage. The middle tier has a direct connection to the database where requests are directed. Therefore we recommend to do a proper technical assessment.
 
 As an often requested auto-scaling method you can explore Virtual Machine Scale Sets for JDE.
 
@@ -198,16 +198,45 @@ Because an SSH port is required for Peoplesoft, a Bastion host as a jump box can
 
 **(2) Application Web Tier** - Requests entering the web tier are processed and sent to the application tier, database tier or Backup. The Elastic Search includes the indexes for the Peoplesoft application.
 
-**(3) Application Tier** - The application tier contains several tasks and servers. It runs the business logic and processes but also maintains the connection to the database. Therefore, the application and the database tier shouldn't be separated into two different vendors. The Process Scheduler is only required for Windows operating systems. For that reason, the architecture should be evaluated carefully.
+**(3) Application Tier** - The application tier contains several tasks and servers. It runs the business logic and processes but also maintains the connection to the database. As soon as this dependency is cut, it causes latencies. Therefore, the application and the database tier shouldn't be separated into two different vendors. The Process Scheduler is only required for Windows operating systems. For that reason, the architecture should be evaluated carefully.
 
 Microsoft offers a couple of features for establishing a modern architecture. Auto-Scaling is interesting for companies that have events where they need to scale on high demands.
 
-**(4) Database Tier** - The Database tier has one primary and replicated to a secondary using Data Guard. If you stay within one region, the synchronous configuration should be used. If you install your application across regions, you should configure Data Guard in Asynchronous mode.
+**(4) Database Tier** - The Database tier has one primary and replicated to a secondary using Data Guard. If you stay within one datacenter, the synchronous configuration should be used. If you install your application across datacenters, you should configure Data Guard in Asynchronous mode.
 
-**(5) Backup** - [Backups](/azure/backup/backup-azure-vms-introduction) are sent from the application tier and the database tier. It's just one of many reasons why those two tiers shouldn't be separated into two different vendors. Thereby Backups of the database are performed by [Azure Backup Volume Snapshot](https://techcommunity.microsoft.com/t5/data-architecture-blog/azure-backup-volume-snapshots-for-oracle-is-now-ga/ba-p/2820032) on Premium Files to the secondary region.
+**(5) Backup** - [Backups](/azure/backup/backup-azure-vms-introduction) are sent from the application tier and the database tier. Thereby Backups of the database are performed by [Azure Backup Volume Snapshot](https://techcommunity.microsoft.com/t5/data-architecture-blog/azure-backup-volume-snapshots-for-oracle-is-now-ga/ba-p/2820032) on Premium Files to the secondary region.
 
 **(6) Disaster Recovery** - There are different solutions you can choose from. It very much depends on your requirements. The earlier mentioned architecture is built to be highly available. For replicating the application tier you can use [Azure Site Recovery](/azure/site-recovery/site-recovery-overview). Another solution you can choose is [Redundancy options for managed disks.](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks) Both solutions replicate your data. Redundancy options for managed disks are a solution that can simplify the architecture but also comes with a few limitations.
 
+### Choose the right VM for your Workload
+
+Every database and server is used to different capacities. Therefore, it is important to extract AWR reports on peak-load.
+
+On the application tier, prepare numbers and statistics from the Web tier and the application tier. Statistics should include:
+
+- Name of the Server
+- Number of CPUs
+- Average utilization of CPU  
+- Memory Size
+- Average utilization  
+- App/ DB Storage Size
+- App and DB version
+- Operating system
+- Total IOPS
+- Total Throughput
+- Backup strategy
+
+The [E](/azure/virtual-machines/edv5-edsv5-series) and [M](/azure/virtual-machines/mv2-series)-series Virtual Machines are the right to choose from. Each Virtual Machine comes with a different size and can be perfectly matched to your needs. Microsoft also offers [constrained VMs](/azure/virtual-machines/constrained-vcpu). These Virtual Machine are designed for customers not in need of many CPU but memory.
+
+Recommendations for Oracle on Azure:
+
+| Recommendation | Benefit |
+| --- | --- |
+| Define functional and non-functional requirements  | Includes the access of individuals, your backup strategy, RPO&RTO, availability, storage strategy to cost optimization, data retention, and security requirements  |
+| Right-Size your environment | Provide AWRs for your databases on peak-load and an overview about the statistics of the application server |
+| Provide the version of your application | Different versions of Oracle Application have different limitations. You can help us to assess the right migration approach by just providing your application version |
+| Security | Assess the version of your application for SSO methods. Some versions come with certain limitations |
+| Availability | Microsoft offer a few availability methods of which you can make use of: Proximity Placement Groups, HA Storage types |
 
 ## Illustrative Examples
 
