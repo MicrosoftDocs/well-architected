@@ -15,7 +15,7 @@ categories:
   - iot
 ---
 
-# Security in your IoT workload 
+# Security in your IoT workload
 
 IoT solutions have the challenge of securing diverse and heterogeneous device-based workloads with little or no direct interaction. IoT device builders, IoT application developers, and IoT solution operators share responsibility for security during the full IoT solution lifecycle. It's important to design the solution from the start with security in mind. Understand the potential threats, and add [defense in depth](https://csrc.nist.gov/glossary/term/defense_in_depth) as you design and architect the solution.
 
@@ -33,7 +33,7 @@ The IoT workload design methodology is underpinned by [five pillars of architect
 
 |Design principle|Considerations|
 |---|---|
-|[**Identify and protect endpoints**](../security/security-principles.md#identify-and-protect-endpoints)|Use a **strong identity** to authenticate devices and users. Have a hardware root of trust for trusted identity, register devices, issue renewable credentials, and use passwordless or multi-factor authentication (MFA).
+|**Identify and protect endpoints**|Use a **strong identity** to authenticate devices and users. Have a hardware root of trust for trusted identity, register devices, issue renewable credentials, and use passwordless or multi-factor authentication (MFA).
 |[**Automate and use least privilege**](../security/security-principles.md#automate-and-use-least-privilege)|**Least-privileged access control** to limit impact from compromised devices or identities or unapproved workloads.
 |**Device health**|Evaluate device health to gate device access or flag devices for remediation. Check security configuration, assess vulnerabilities and insecure passwords, monitor for threats and anomalies, and build ongoing risk profiles.
 |**Device update**|Continuous updates to keep devices healthy. Use a centralized configuration and compliance management solution and a robust update mechanism to ensure devices are up-to-date and healthy.
@@ -182,6 +182,14 @@ Several Azure products and services support IoT device security.
 
   The Edge Secured-core program enables Azure services such as the Azure Attestation service to make conditional decisions based on device posture, thus enabling the zero-trust model. Devices must include a hardware root of trust and provide secure boot and firmware protection. These attributes can be measured by the attestation service and used by downstream services to conditionally grant access to sensitive resources.
 
+## Ingestion and communication layer
+
+Data that's ingested into the IoT solution should be protected with the guidance in the [Azure Well-Architected Framework security pillar](../security/overview.md). Additionally, for IoT solutions it's critical to ensure that communication from the device to the cloud is secure and encrypted using the latest TLS standards.
+
+Protect data on devices. If data at rest is stored on devices, use standard encryption algorithms to encrypt the data.
+
+Make sure devices are protected physically. Turn off or disable any device features that aren't needed, such as physical USB or UART ports, or WiFi or Bluetooth connectivity. Use physical removal, covering, or blocking when necessary.
+
 ## Device management and modeling layer
 
 This architecture layer includes software components or modules running in the cloud that interface with devices and gateways for data collection and analysis, as well as for command and control.
@@ -246,14 +254,6 @@ The following Microsoft products fully integrate hardware and Azure services in 
 - [Azure Percept](https://aka.ms/azurepercept) is an end-to-end edge AI platform that can help you start a proof of concept in minutes. Azure Percept includes hardware accelerators integrated with Azure AI and IoT services, pre-built AI models, and solution management.
 
   Azure Percept devices use a hardware root of trust to help protect inference data, AI models, and privacy-sensitive sensors like cameras and microphones. Azure Percept enables device authentication and authorization for Azure Percept Studio services. For more information, see [Azure Percept security](/azure/azure-percept/overview-percept-security).
-
-## Ingestion and communication layer
-
-Data that's ingested into the IoT solution should be protected with the guidance in the [Azure Well-Architected Framework security pillar](../security/overview.md). Additionally, for IoT solutions it's critical to ensure that communication from the device to the cloud is secure and encrypted using the latest TLS standards.
-
-Protect data on devices. If data at rest is stored on devices, use standard encryption algorithms to encrypt the data.
-
-Make sure devices are protected physically. Turn off or disable any device features that aren't needed, such as physical USB or UART ports, or WiFi or Bluetooth connectivity. Use physical removal, covering, or blocking when necessary.
 
 ## DevOps layer
 
