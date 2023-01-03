@@ -106,7 +106,9 @@ Because an SSH port is required for Siebel, a Bastion host as a jump box can als
 
 **(2) Application Web Tier** - The web tier load balances the requests and send the requests accordingly to the application tier, database tier and/or backup.
 
-**(3) Application Tier** - The application tier contains several tasks and server. Microsoft offers a couple of features for a modern architecture. Auto-Scaling is interesting for companies that have events where they need to scale on high demands.
+**(3) Application Tier** - The application tier contains several tasks and servers. The web tier directs the requests into the application tier, shared storage system, and the database. The application tier has strong dependencies between the application server and the shared file system. The shared file System has a direct connection to the database. Cutting the dependencies causes latencies. A proper technical architecture assessment should take place before considering cutting these dependencies to different cloud vendors.
+
+When you set up a holistic architecture and technical approach for migration you have the ability to establish it more modern. Microsoft offers various options. Auto-Scaling is interesting for companies that have events where they need to scale on high demands.
 
 Virtual Machine Scale Sets can provide another value for Siebel. The Siebel Workflow Servers contain much information and for some customers it scales high and no need to redo architecture. Virtual Machine Scale Sets lets you create and manage a group of load-balanced VMs and provides high availability.
 
