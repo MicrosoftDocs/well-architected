@@ -63,7 +63,7 @@ We've woven these design principles throughout our guidance in specific design a
 > [Networking and connectivity](design-areas/networking-and-connectivity.md)
 
 > [!div class="nextstepaction"]
-> [Operational procedures](design-areas/operational-procedures.md)
+> [Security](design-areas/security.md)
 
 > [!div class="nextstepaction"]
-> [Operational procedures](design-areas/security.md)
+> [Operational procedures](design-areas/operational-procedures.md)
