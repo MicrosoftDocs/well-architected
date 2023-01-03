@@ -72,7 +72,7 @@ Moreover companies don't just want to lift and shift, but modernize the architec
 The design areas below explores both the subscription scale-unit approach and important application design patterns for building highly reliable Siebel, E-business Suite, and JD Edwards applications on Azure.
 
 > [!IMPORTANT]
-> All Oracle applications possess strong dependencies between the application tier and the database tier. Therefore we highly recommend to not separate the tiers across different vendors.
+> All Oracle applications are legacy systems and possess strong dependencies between the application tier and the database tier. Separating two tiers across different cloud vendors introduces latencies. Therefore you should do a proper technical assessment and decide if you are fine with it.
 
 ### Subscription Scale-Unit approach
 
