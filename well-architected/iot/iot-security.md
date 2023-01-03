@@ -116,7 +116,7 @@ You can use IoT device registry data to:
 
 Use network sensors to detect and inventory unmanaged IoT devices that don't connect to Azure IoT services, for awareness and monitoring.
 
-### Least-privileged access
+### Least-privileged access 
 
 Least-privileged access control helps limit impact from authenticated identities that might be compromised or running unapproved workloads. For IoT scenarios, grant operator, device, and workload access by using:
 
@@ -182,7 +182,7 @@ Several Azure products and services support IoT device security.
 
   The Edge Secured-core program enables Azure services such as the Azure Attestation service to make conditional decisions based on device posture, thus enabling the zero-trust model. Devices must include a hardware root of trust and provide secure boot and firmware protection. These attributes can be measured by the attestation service and used by downstream services to conditionally grant access to sensitive resources.
 
-## Ingestion and communication layer
+## Ingestion and communication layer 
 
 Data that's ingested into the IoT solution should be protected with the guidance in the [Azure Well-Architected Framework security pillar](../security/overview.md). Additionally, for IoT solutions it's critical to ensure that communication from the device to the cloud is secure and encrypted using the latest TLS standards.
 
@@ -194,7 +194,7 @@ Make sure devices are protected physically. Turn off or disable any device featu
 
 This architecture layer includes software components or modules running in the cloud that interface with devices and gateways for data collection and analysis, as well as for command and control.
 
-### Network micro-segmentation
+### Network micro-segmentation 
 
 Network design and configuration provide opportunities to build defense in depth by segmenting IoT devices based on their traffic patterns and risk exposure. This segmentation minimizes the potential impact of compromised devices and adversaries pivoting to higher-value assets. Network segmentation typically uses next-generation firewalls.
 
