@@ -10,7 +10,7 @@ ms.subservice: well-architected
 ---
 # Oracle workload performance efficiency
 
-Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the Performance efficiency principles.
+Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles.](../../well-architected/scalability/principles.md)
 
 Oracle on Azure IaaS has components that are distributed across various Azure services. These components are the capacity planning targets for your application servers and database sizing choices. This includes load balancing configurations for even traffic distribution and Oracle-native solutions, like Oracle Data Guard for fast-start failover database setups.
 
