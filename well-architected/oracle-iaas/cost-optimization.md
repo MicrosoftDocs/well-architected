@@ -31,7 +31,7 @@ Set up a storage architecture that meets your requirements and allocating cost s
 
 The following provides some guidance to set up a well-architected storage solution:
 
-**(1) Use reserved capacity storage type** - There are several types of storage to choose from based on the requirements. Managed Disks, Blob Storage, and Azure Backup Storage will support you in various combinations. As every application has a file storage in the application tier, a cost optimization can be reached by having a Blob Storage in Place. Network attached storage offers an opportunity for workloads with high throughputs. In this case it's Azure NetApp Files. Note that ANF is a third-Party Storage Solution (Silk, Flashgrid Storage).
+**(1) Use reserved capacity storage type** - There are several types of storage to choose from based on the requirements. Managed Disks, Blob Storage, and Azure Backup Storage will support you in various combinations. As every application has a file storage in the application tier, a cost optimization can be reached by having a File Storage in Place. Network attached storage offers an opportunity for workloads with high throughputs. In this case it's Azure NetApp Files (ANF). Note that ANF is a third-Party Storage Solution (Silk, Flashgrid Storage).
 
 The above storage options come with storage reservation options that lower overall costs on the persistent data layer. For more information, please visit:
 
