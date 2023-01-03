@@ -29,7 +29,7 @@ Identity management is a framework that controls access to critical resources. E
 
 The table below provides a summary of the recommended SSO method for the given Oracle solution.
 
-| Oracle solution | SSO method |
+| Oracle solution | SSO methods |
 | --- | --- |
 |Siebel|Security Assertion Markup Language (SAML). <br>From version IP18.1 and onwards:<br>OAuth |
 |Peoplesoft |From Version 8.53 and later: <br>- Kerberos <br>From Version 8.53 and later:<br>- SAML<br>- OAuth2.0 <br> For more information, see [Datawiza Azure AD](/azure/active-directory/manage-apps/datawiza-azure-ad-sso-oracle-peoplesoft)  |
@@ -60,6 +60,8 @@ For Oracle-native setups, you should use Oracle Cloud Connector and Oracle Priva
 Next to this it's also recommended to secure these accesses through a Web application Firewall. In case everyone logs in from the corporate network, this is only based on your security requirements and optional.  
 
 In case a user accesses the application from the internet, consider an Application Gateway. Azure Application Gateway provides two built-in functionalities. At first it operates as a Web Application Firewall, but also has a built-in Layer7 Load Balancer. It is only supported for access at Port 443 (http/s). For more information, see [Azure Application Gateway](/azure/application-gateway/overview)
+
+Another option to secure your network is the [Azure Firewall](/azure/firewall/overview). This component defends the web services against common exploits and vulnerabilities. It keeps the Oracle Application highly available and helps you meet compliance requirements.
 
 Another possibility to configure a mature security posture are Application Security Groups (ASG). An ASG is an easier possibility to establish network security of the dedicated workload. For more information, see [Azure application security groups.](/azure/virtual-network/application-security-groups)
 
