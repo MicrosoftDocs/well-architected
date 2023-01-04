@@ -156,7 +156,8 @@ To support zero trust, IoT devices should:
 - Provide update agents and corresponding software updates for the usable lifetime of the device to ensure security updates can be applied.
 - Include device management capabilities to enable cloud-driven device configuration and automated security response.
 - Run security agents that integrate with security monitoring, detection, and response systems.
-- Minimize physical attack footprint, for example by eliminating USB ports.
+- Minimize physical attack footprint, for example by turning off or disabling any device features that aren't needed, such as physical USB or UART ports, or WiFi or Bluetooth connectivity. Use physical removal, covering, or blocking when necessary.
+- Protect data on devices. If data at rest is stored on devices, use standard encryption algorithms to encrypt the data.
 
 Several Azure products and services support IoT device security.
 
@@ -185,10 +186,6 @@ Several Azure products and services support IoT device security.
 ## Ingestion and communication layer 
 
 Data that's ingested into the IoT solution should be protected with the guidance in the [Azure Well-Architected Framework security pillar](../security/overview.md). Additionally, for IoT solutions it's critical to ensure that communication from the device to the cloud is secure and encrypted using the latest TLS standards.
-
-Protect data on devices. If data at rest is stored on devices, use standard encryption algorithms to encrypt the data.
-
-Make sure devices are protected physically. Turn off or disable any device features that aren't needed, such as physical USB or UART ports, or WiFi or Bluetooth connectivity. Use physical removal, covering, or blocking when necessary.
 
 ## Device management and modeling layer
 
