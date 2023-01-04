@@ -33,7 +33,7 @@ The IoT workload design methodology is underpinned by [five pillars of architect
 
 |Design principle|Considerations|
 |---|---|
-|**Strong identity**|Use a **strong identity** to authenticate devices and users. Have a hardware root of trust for trusted identity, register devices, issue renewable credentials, and use passwordless or multi-factor authentication (MFA), review general [Azure identity and access management considerations](https://learn.microsoft.com/en-us/azure/architecture/framework/security/design-identity?source=recommendations).
+|**Strong identity**|Use a **strong identity** to authenticate devices and users. Have a hardware root of trust for trusted identity, register devices, issue renewable credentials, and use passwordless or multi-factor authentication (MFA). Review general [Azure identity and access management considerations](https://learn.microsoft.com/en-us/azure/architecture/framework/security/design-identity?source=recommendations).
 |[**Automate and use least privilege**](../security/security-principles.md#automate-and-use-least-privilege)|**Least-privileged access control** to limit impact from compromised devices or identities or unapproved workloads.
 |**Device health**|Evaluate device health to gate device access or flag devices for remediation. Check security configuration, assess vulnerabilities and insecure passwords, monitor for threats and anomalies, and build ongoing risk profiles.
 |**Device update**|Continuous updates to keep devices healthy. Use a centralized configuration and compliance management solution and a robust update mechanism to ensure devices are up-to-date and healthy.
