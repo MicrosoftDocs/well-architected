@@ -34,10 +34,10 @@ The IoT workload design methodology is underpinned by [five pillars of architect
 |Design principle|Considerations|
 |---|---|
 |**Strong identity**|Use a strong identity to authenticate devices and users. Have a hardware root of trust for trusted identity, register devices, issue renewable credentials, and use passwordless or multi-factor authentication (MFA). Review general [Azure identity and access management considerations](../security/design-identity.md).
-|[**Automate and use least privilege**](../security/security-principles.md#automate-and-use-least-privilege)|**Least-privileged access control** to limit impact from compromised devices or identities or unapproved workloads.
+|[**Least privilege**](../security/security-principles.md#automate-and-use-least-privilege)|Automate and use **least-privileged access control** to limit impact from compromised devices or identities or unapproved workloads.
 |**Device health**|Evaluate device health to gate device access or flag devices for remediation. Check security configuration, assess vulnerabilities and insecure passwords, monitor for threats and anomalies, and build ongoing risk profiles.
 |**Device update**|Continuous updates to keep devices healthy. Use a centralized configuration and compliance management solution and a robust update mechanism to ensure devices are up-to-date and healthy.
-|[**Monitor system security, plan incident response**](../security/security-principles.md#monitor-system-security-plan-incident-response)|**Proactive monitoring and response** to rapidly identify unauthorized or compromised devices and respond to emerging threats.
+|[**Monitor system security, plan incident response**](../security/security-principles.md#monitor-system-security-plan-incident-response)|Proactively monitor for unauthorized or compromised devices and respond to emerging threats.
 
 ## Zero-trust security model
 
@@ -69,7 +69,7 @@ All layers are subject to various threats that can be classified according to th
 
 ## Device and gateway layer
 
-This architecture layer includes the immediate physical space around the device and gateway that allows physical access or peer-to-peer digital access. Many industrial companies use the [Purdue model](https://en.wikipedia.org/wiki/Purdue_Enterprise_Reference_Architecture) included in the ISA 95 standard to ensure their process control networks (PCNs) both protect their limited network bandwidth and provide real-time deterministic behavior. The Purdue model provides an extra layer of defense-in-depth methodology.
+This architecture layer includes the immediate physical space around the device and gateway that allows physical access or peer-to-peer digital access. Many industrial companies use the [Purdue model](https://en.wikipedia.org/wiki/Purdue_Enterprise_Reference_Architecture) included in the ISA 95 standard to ensure their process control networks both protect their limited network bandwidth and provide real-time deterministic behavior. The Purdue model provides an extra layer of defense-in-depth methodology.
 
 ### Strong device identity
 
@@ -167,7 +167,7 @@ To support zero trust, IoT devices should:
 - Minimize physical attack footprint, for example by turning off or disabling any device features that aren't needed, such as physical USB or UART ports, or WiFi or Bluetooth connectivity. Use physical removal, covering, or blocking when necessary.
 - Protect data on devices. If data at rest is stored on devices, use standard encryption algorithms to encrypt the data.
 
-Several Azure products and services support IoT device security.
+Several Azure products and services support IoT device security:
 
 - [Azure Sphere guardian modules](/azure-sphere/hardware/guardian-modules) connect critical legacy devices to IoT services with zero-trust capabilities, including strong identity, end-to-end encryption, and regular security updates.
 

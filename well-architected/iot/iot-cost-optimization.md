@@ -91,7 +91,7 @@ For more information about Azure IoT devices, see:
 
 ### Hardware selection
 
-Most of the device development process depends on hardware selection. A make-or-buy decision for devices takes into account qualitative factors like WiFi certification and quantitative factors like bill of materials (BOM) cost and time to market. Choosing between off-the-shelf hardware or a custom design affects IoT device cost and time to market.
+Most of the device development process depends on hardware selection. A make-or-buy decision for devices takes into account qualitative factors like WiFi certification and quantitative factors like bill of materials cost and time to market. Choosing between off-the-shelf hardware or a custom design affects IoT device cost and time to market.
 
 - Off-the-shelf devices might cost more per unit, but have predictable costs and lead times. Off-the-shelf devices also remove the need for complex supply chain management.
 
