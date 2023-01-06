@@ -73,7 +73,7 @@ When designing a carrier-grade workload, consider the following areas:
 |Design area|Description|
 |---|---|
 |[**Fault tolerance**](carrier-grade-design-area-fault-tolerance.md)|Application design must allow for unavoidable failures so that the application as a whole can continue to operate at some level. The design must minimize points of failure and take a federated approach.|
-|[**Data model**](carrier-grade-design-area-data-model.md)|The design must address the consistency, availability, and partition tolerance needs of the database.Carrier Grade availability requires that the application is deployed across multiple regions. This deployment requires careful thought about how the application's data will be managed across those regions.|  
+|[**Data model**](carrier-grade-design-area-data-model.md)|The design must address the consistency, availability, and partition tolerance needs of the database. Carrier Grade availability requires that the application is deployed across multiple regions. This deployment requires careful thought about how the application's data will be managed across those regions.|  
 |[**Health modeling**](carrier-grade-design-area-health-modeling.md)|An effective health model provides observability of all components, platform and application, so that issues can be quickly detected and response is ready either through self-healing or other remediations.|
 |[**Testing and validation**](carrier-grade-design-area-testing.md)|The design and implementation of the application must be thoroughly tested. In addition, the integration and deployment of the application as a whole solution must be tested.|
 
