@@ -118,7 +118,7 @@ In connected operations architectures, the support for different types of device
 
 ### Serviceability
 
-IoT solutions must consider ease of maintaining and repairing components, devices, and other system elements. Early detection of potential problems is critical. Ideally, a Well-Architected IoT solution should correct problems automatically before serious trouble occurs. Maintenance and repair operations should cause as little downtime or disruption as possible.
+IoT solutions must consider ease of maintaining and repairing components, devices, and other system elements. Early detection of potential problems is critical. Ideally, a well-architected IoT solution should correct problems automatically before serious trouble occurs. Maintenance and repair operations should cause as little downtime or disruption as possible.
 
 In connected products architectures, the wide distribution of devices affects serviceability. The ability to monitor, manage, and update devices within end user context and control, without direct access to that environment, is limited.
 
@@ -294,7 +294,7 @@ The following diagram shows the DevOps continuous planning, development, deliver
 
 - Management and operations activities identify the current health state of the IoT system across all layers.
 
-Correctly executing DevOps and other cross-cutting activities can determine your success in creating and running a Well-Architected IoT solution. Cross-cutting activities help you meet the requirements set at design time and adjust for changing requirements over time. It's important to clearly assess your expertise in these activities and take measures to ensure execution at the required quality level.
+Correctly executing DevOps and other cross-cutting activities can determine your success in creating and running a well-architected IoT solution. Cross-cutting activities help you meet the requirements set at design time and adjust for changing requirements over time. It's important to clearly assess your expertise in these activities and take measures to ensure execution at the required quality level.
 
 Relevant Microsoft technologies include:
 

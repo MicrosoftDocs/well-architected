@@ -31,7 +31,7 @@ To assess your IoT workload through the lenses of the Well-Architected Framework
 
 ## Design Principles
 
-The IoT workload design methodology is underpinned by [five pillars of architectural excellence](../index.md) which serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles resonate and extend the quality pillar of the Azure Well-Architected Framework - [Cost Optimization](../cost/overview.md).
+[Five pillars of architectural excellence](../index.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Cost Optimization](../cost/overview.md).
 
 |Design principle|Considerations|
 |---|---|
@@ -84,7 +84,7 @@ Device costs include organizing logistics, such as storage, inventory management
 
 For devices connected to the cloud, optimize data transmissions to maintain cost boundaries. Strategies include minimizing payload sizes, batching messages, and transmitting during off-peak periods. These optimizations also incur costs to implement.
 
-For more information about Azure IoT devices, see:
+To learn more about Azure IoT devices, see:
  
 - [Overview of Azure IoT device types](/azure/iot-develop/concepts-iot-device-types)
 - [Best practices for device configuration within an IoT solution](/azure/iot-hub/iot-hub-configuration-best-practices)
@@ -99,7 +99,7 @@ Most of the device development process depends on hardware selection. A make-or-
 
 - Pre-certified system components or modules can reduce time to market and create a semi-custom device, but are more expensive than discrete chips. You need to properly resource supply-chain and inventory management.
 
-The [Azure Certified Device catalog](https://devicecatalog.azure.com) offers devices that work well with Azure IoT and can help reduce costs and time to market. [IoT Plug and Play devices](https://devicecatalog.azure.com/devices?certificationBadgeTypes=PnP) can reduce both device and cloud development costs.
+The [Azure Certified Device catalog](https://devicecatalog.azure.com) offers devices that work well with Azure IoT and can help reduce costs and time to market. You will focus on designing and architecting the IoT solution with the flexibility to select the hardware from an extensive list of certified devices. [IoT Plug and Play devices](https://devicecatalog.azure.com/devices?certificationBadgeTypes=PnP) can reduce both device and cloud development costs. When you select an Azure Certified Device you can skip device customizations and integration straight to onboarding into your IoT Solution.
 
 :::image type="content" source="media/plug-and-play.png" alt-text="Graphic that shows savings from Plug and Play approach.":::
 
@@ -181,13 +181,15 @@ There are many factors to take into account for device to IoT gateway communicat
 
 For device connectivity, it's important to specify the network type. If you select a private LAN or WAN solution, such as WiFi or LoraWAN, consider network TCO as part of overall costs. If you use carrier networks such as 4G, 5G, or LPWAN, include recurring connectivity costs.
 
-### PaaS or aPaaS solution platform
+### IoT solution platform
 
-Azure IoT offers two types of platform for building IoT solutions: IoT Hub is a platform as a service (PaaS) and IoT Central is an application platform as a service (aPaaS). Choose your platform type by considering factors such as business requirements, budget, timelines, and development and operations resources. An aPaaS solution typically has more predictable operational costs.
+To build an IoT solution for your business, you typically evaluate your solution by using the managed app platform approach and build your enterprise solution by using the platform services.
 
-- [IoT Central](https://azure.microsoft.com/services/iot-central/#overview) is an Azure aPaaS. IoT Central simplifies IoT solution creation, and lets you focus on business and product innovation instead of maintenance, infrastructure, development, and operations.
+Choose your platform type by considering factors such as business requirements, budget, timelines, and development and operations resources.
 
-- [IoT Hub](https://azure.microsoft.com/services/iot-hub/) is an Azure PaaS that acts as a central message hub for bi-directional communications between IoT apps and the devices they manage. You can tune services to control overall costs.
+Platform services let you fine-tune services and control overall costs. It provides all the building blocks for customized and flexible IoT applications. You have more options to choose and code when you connect devices, and ingest, store, and analyze your data. Azure IoT platform services include the products [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) and [Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/).
+
+A managed app platform gives you a simple, predictable pricing structure. It lets you quickly evaluate your IoT solution by reducing the number of decisions needed to achieve results. The managed app platform takes care of most infrastructure elements in your solution, so you can focus on adding industry knowledge, and evaluating the solution. [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) is a managed app platform.
 
 ### IoT Hub tiers
 

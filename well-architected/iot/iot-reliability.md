@@ -17,7 +17,7 @@ categories:
 
 # Reliability in your IoT workload
 
-IoT workloads, like all workloads, have the potential to malfunction. The key reliability considerations for Well-Architected IoT solutions are how quickly you can detect changes and how quickly you can resume operations.
+IoT workloads, like all workloads, have the potential to malfunction. The key reliability considerations for well-architected IoT solutions are how quickly you can detect changes and how quickly you can resume operations.
 
 IoT applications are often distributed at massive scale, and might operate over unreliable networks without persistent access or visibility into end-to-end data flows. Because of these factors, you should design your IoT architecture with availability and resiliency in mind.
 
@@ -29,7 +29,7 @@ To assess your IoT workload through the lenses of the Well-Architected Framework
 
 ## Design Principles
 
-The IoT workload design methodology is underpinned by [five pillars of architectural excellence](../index.md) which serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Reliability](../resiliency/overview.md).
+[Five pillars of architectural excellence](../index.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Reliability](../resiliency/overview.md).
 
 |Design principle|Considerations|
 |---|---|

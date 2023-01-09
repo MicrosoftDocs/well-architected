@@ -35,7 +35,7 @@ To assess your IoT workload through the lenses of the Well-Architected Framework
 
 ## Design principles
 
-The IoT workload design methodology is underpinned by [five pillars of architectural excellence](../index.md) which serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles resonate and extend the quality pillar of the Azure Well-Architected Framework - [Performance Efficiency](../scalability/overview.md).
+[Five pillars of architectural excellence](../index.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Performance Efficiency](../scalability/overview.md).
 
 |Design principle|Considerations|
 |---|---|
@@ -69,7 +69,7 @@ Scaling is important for the device and gateway layer. To scale this layer:
 
 - Use gateways as units of scale. If your solution adds IoT devices or assets (for example [OPC UA](https://opcfoundation.org/about/opc-technologies/opc-ua) servers) over time, use more edge gateways to ingest data from those servers.
 
-- Conduct a scale assessment for all upstream layers, including cloud gateways and cloud services. For more information about using multiple IoT hubs as scale units for an IoT solution, see [How to provision devices across IoT hubs](/azure/iot-dps/how-to-use-allocation-policies).
+- Conduct a scale assessment for all upstream layers, including cloud gateways and cloud services. To learn more about using multiple IoT hubs as scale units for an IoT solution, see [How to provision devices across IoT hubs](/azure/iot-dps/how-to-use-allocation-policies).
 
 ### Run workloads at the edge
 
