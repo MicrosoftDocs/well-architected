@@ -105,16 +105,4 @@ For more suggestions, see [Principles of the reliability pillar.](/azure/archite
 ## Next step
 
 >[!div class="nextstepaction"]
->[Overview](./overview.md)
-
->[!div class="nextstepaction"]
 >[Security](./security.md)
-
->[!div class="nextstepaction"]
->[Cost Optimization](./cost-optimization.md)
-
->[!div class="nextstepaction"]
->[Operational Excellence](./operational-excellence.md)
-
->[!div class="nextstepaction"]
->[Performance Efficiency](./performance-efficiency.md)
