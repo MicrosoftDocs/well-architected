@@ -13,7 +13,7 @@ ms.subservice: well-architected
 
 In the cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Use the following information to minimize down time and ensure that recommended practices for high availability are built into Azure and Oracle.
 
-When discussing reliability with Oracle in Azure, it’s important to take into consideration not just the database, the connected tiers on separate VMs, virtual network subnets and disaster recovery if there's failures. Oracle on Azure IaaS can achieve these design considerations and have recommendations for each item in the checklist.
+When discussing reliability with Oracle in Azure, it’s important to take into consideration not just the database, the connected tiers on separate VMs, virtual network subnets and disaster recovery if there's failures. Oracle on Azure IaaS can achieve these design considerations and have recommendations for each item.
 
 ## Conduct a reliability assessment
 
@@ -23,13 +23,13 @@ The assessment provides specific recommendations to focus on. You can start the 
 
 ## Create architecture reliability
 
-Knowing the Architecture of your Oracle on-premises application is crucial. In some cases specific versions of applications have a slight difference in the application tiers, which are crucial for your migration phase. Next to it you should establish a map pointing out any dependency. A dependency will most definitely occur between the application and database tier. The same applies to back up and your disaster recovery strategy.
+Knowing the Architecture of your Oracle on-premises application is crucial. In some cases, specific versions of applications have a slight difference in the application tiers which are crucial for your migration phase. Next to it you should establish an API map pointing out any dependency. A dependency will most definitely occur between the application and database tier. The same applies to back up and your disaster recovery strategy.
 
 Make sure to match up to the on-premises application architecture to reach high availability. It's most important for Siebel.
 
 ## Make use of Azure Advisor
 
-There are no specific built-in recommendations in Azure Advisor for Oracle on IaaS solutions in Azure. However, Azure Advisor has broad pillar coverage across the common resources used in these architectures, including [compute](/azure/advisor/advisor-reference-operational-excellence-recommendations#compute) (including [Azure VMWare](/azure/advisor/advisor-reference-operational-excellence-recommendations#azure-vmware)), [storage](/azure/advisor/advisor-reference-performance-recommendations#storage), and [networking](/azure/advisor/advisor-reference-reliability-recommendations#networking). Reviewing recommendations from Azure Advisor for these underlying resources can detect configurations & topologies that can lead to reliability impact, optimize cost from under-utilization of resources, and reveal opportunities improve user experience through surfacing throttling issues or proximity placement suggestions. See the related Azure Well-Architected service guide for each service in your architecture for a list of key Azure Advisor alerts for that service.
+There are no specific built-in recommendations in Azure Advisor for Oracle on IaaS solutions in Azure. However, Azure Advisor has broad pillar coverage across the common resources used in these architectures, including [compute](/azure/advisor/advisor-reference-operational-excellence-recommendations#compute) (including [Azure VMware](/azure/advisor/advisor-reference-operational-excellence-recommendations#azure-vmware)), [storage](/azure/advisor/advisor-reference-performance-recommendations#storage), and [networking](/azure/advisor/advisor-reference-reliability-recommendations#networking). Reviewing recommendations from Azure Advisor for these underlying resources can detect configurations & topologies that can lead to reliability impact, optimize cost from under-utilization of resources, and reveal opportunities improve user experience through surfacing throttling issues or proximity placement suggestions. See the related Azure Well-Architected service guide for each service in your architecture for a list of key Azure Advisor alerts for that service.
 
 ### Create a Fail-Over in a multiple availability zone deployment and second region deployments for disaster recovery
 
@@ -50,9 +50,9 @@ If a primary goes down, Observer(s) will reroute the traffic to the secondary DB
 
 The web server tier, application tier and database tier reside in its own virtual network subnet.
 
-[Azure Site Recovery](/azure/site-recovery/site-recovery-overview) or the manual clone utility can be established to duplicate the passive secondary in AZ2. The primary will be set up in AZ1 whereas the database uses Data Guard to replicate it to an active Standby in AZ2.
+[Azure Site Recovery](/azure/site-recovery/site-recovery-overview) or the manual clone utility can be established to duplicate the passive secondary in AZ2. The primary will be set up in availability zone one whereas the database uses Data Guard to replicate it to an active Standby in AZ2.
 
-A Failover would require manual intervention from the customer to fail over in case of a failure of AZ1. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
+A failover would require manual intervention from the customer to fail over if there is a failure of availability zone one. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
 
 :::image type="content" source="./images/oracle-architecture-02.jpg" alt-text="Diagram of a Tier 2 (Production) Two-Availability Zone Deployment, Manual Failover. " lightbox="./images/oracle-architecture-02.jpg":::
 
