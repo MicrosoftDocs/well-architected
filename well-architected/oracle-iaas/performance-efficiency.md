@@ -59,18 +59,5 @@ Explore the following table of recommendations to optimize your Oracle database 
 | Move the right database files to higher IO storage | Use the AWR/Statspack report on IO Summary by file type to ensure that what you offer more IO to, is what will benefit from faster storage. |
 
 ## Next Step
-
 >[!div class="nextstepaction"]
->[Overview](./overview.md)
-
->[!div class="nextstepaction"]
->[Reliability](./reliability.md)
-
->[!div class="nextstepaction"]
->[Security](./security.md)
-
->[!div class="nextstepaction"]
->[Cost Optimization](./cost-optimization.md)
-
->[!div class="nextstepaction"]
->[Operational Excellence](./operational-excellence.md)
+>[Oracle Reference Architecture](/azure/virtual-machines/workloads/oracle/oracle-reference-architecture)
