@@ -17,7 +17,7 @@ categories:
 
 # Reliability in your IoT workload
 
-IoT workloads, like all workloads, have the potential to malfunction. The key reliability considerations for Well-Architected IoT solutions are how quickly you can detect changes and how quickly you can resume operations.
+IoT workloads, like all workloads, have the potential to malfunction. The key reliability considerations for well-architected IoT solutions are how quickly you can detect changes and how quickly you can resume operations.
 
 IoT applications are often distributed at massive scale, and might operate over unreliable networks without persistent access or visibility into end-to-end data flows. Because of these factors, you should design your IoT architecture with availability and resiliency in mind.
 
@@ -29,7 +29,7 @@ To assess your IoT workload through the lenses of the Well-Architected Framework
 
 ## Design Principles
 
-The IoT workload design methodology is underpinned by [five pillars of architectural excellence](../index.md) which serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles resonate and extend the quality pillar of the Azure Well-Architected Framework - [Reliability](../resiliency/overview.md).
+[Five pillars of architectural excellence](../index.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Reliability](../resiliency/overview.md).
 
 |Design principle|Considerations|
 |---|---|
@@ -64,14 +64,14 @@ Limited service lifetimes affect solution reliability. Assess the consequences o
 
 Device failure impact assessment includes:
 
-- Severity, such as single points of failures (SPOFs).
-- Probability, such as mean time between failures (MTBF).
-- Detectability, such as failure mode and effects analysis (FMEA).
+- Severity, such as single points of failures.
+- Probability, such as mean time between failures.
+- Detectability, such as failure mode and effects analysis.
 - Acceptable downtime period.
 
 The acceptable operational downtime determines the speed and extent of device maintenance. The availability or longevity of the device and part supply is an important consideration for device lifecycle.
 
-The more modular the design, the easier it's to swap out parts of the system, especially if some parts become obsolete earlier than others. Alternative or multi-sourcing of component and module supply chains are critical for reliable solutions.
+The more modular the design, the easier it is to swap out parts of the system, especially if some parts become obsolete earlier than others. Alternative or multi-sourcing of component and module supply chains are critical for reliable solutions.
 
 ### Environmental requirements
 

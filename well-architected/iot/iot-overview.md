@@ -20,14 +20,14 @@ categories:
 
 This section of the Microsoft Azure Well-Architected Framework aims to address the challenges of building IoT workloads on Azure. This article describes the IoT design areas, architecture patterns, and architecture layers in the IoT workload.
 
-The IoT workload design methodology is underpinned by [five pillars of architectural excellence](../index.md) which serve as a compass for subsequent design decisions across the design areas described in this article. The remaining articles in this series delve into how to evaluate the design areas using IoT-specific design principles in the reliability, security, cost optimization, operational excellence and performance efficiency pillars.
+[Five pillars of architectural excellence](../index.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the design areas described in this article. The remaining articles in this series delve into how to evaluate the design areas using IoT-specific design principles in the reliability, security, cost optimization, operational excellence, and performance efficiency pillars.
 
 > [!TIP]
-> To assess your IoT workload through the lenses of reliability, security, cost optimization, operational excellence and performance efficiency, see the [Azure Well-Architected Review](/assessments/azure-architecture-review/).
+> To assess your IoT workload through the lenses of reliability, security, cost optimization, operational excellence, and performance efficiency, see the [Azure Well-Architected Review](/assessments/azure-architecture-review/).
 
 ## What is an IoT workload?
 
-The term _workload_ refers to a collection of application resources that support a common business goal or the execution of a common business process, with multiple services, such as APIs and data stores, working together to deliver specific end-to-end functionality.
+The term _workload_ refers to the collection of application resources that support a common business goal or the execution of a common business process. These goals or processes use multiple services, such as APIs and data stores. The services work together to deliver specific end-to-end functionality.
 
 Internet of Things (IoT) is a collection of managed and platform services across edge and cloud environments that connect, monitor, and control physical assets.
 
@@ -47,7 +47,7 @@ Most IoT systems use either a *connected products* or *connected operations* arc
 
 - *Connected operations​* architectures focus on the *warm or cold path* with edge devices, alerts, and cloud processing. These solutions analyze data from multiple sources, gather operational insights, build machine learning models, and initiate further device and cloud actions. The connected operations pattern applies to enterprises and smart service providers that connect pre-existing machines and devices. Examples include smart factories and smart buildings. In these IoT solutions, service builders deliver smart services that provide insights and support the effectiveness and efficiency of connected environments.
 
-We encourage you to also read more about the [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot) and about [Industry specific Azure IoT reference architectures](/azure/architecture/reference-architectures/iot/industry-iot-hub-page) to understand the base solution architecture for IoT workloads.
+To learn more about the base solution architecture for IoT workloads, see [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot) and [Industry specific Azure IoT reference architectures](/azure/architecture/reference-architectures/iot/industry-iot-hub-page).
 
 ## Well-Architected Framework pillars in your IoT workload
 
@@ -75,7 +75,7 @@ The key IoT design areas that facilitate a good IoT solution design are:
 - Connectivity
 - Hybridity
 
-The design areas are interrelated and decisions made within one area can impact or influence decisions across the entire design. To evaluate the design areas, use the IoT-specific design principles in the five pillars of architectural excellence. These principles help clarify considerations to ensure your IoT workload meets requirements across architecture layers.
+The design areas are interrelated and decisions made within one area can affect decisions across the entire design. To evaluate the design areas, use the IoT-specific design principles in the five pillars of architectural excellence. These principles help clarify considerations to ensure your IoT workload meets requirements across architecture layers.
 
 The following sections describe the IoT design areas, and how they apply to the IoT *connected products* and *connected operations* architecture patterns.
 
@@ -89,7 +89,12 @@ In connected operations architectures, heterogeneity focuses on support for diff
 
 ### Security
 
-IoT solutions must consider security and privacy measures across all layers. Security measures include device and user identity, authentication and authorization, data protection for data at rest and in transit, and strategies for data attestation.
+IoT solutions must consider security and privacy measures across all layers. Security measures include:
+
+- Device and user identity.
+- Authentication and authorization.
+- Data protection for data at rest and in transit.
+- Strategies for data attestation.
 
 In connected products architectures, limited control over product use in heterogeneous and widely distributed environments affects security. According to the Microsoft Threat Modeling Tool [STRIDE](/azure/security/develop/threat-modeling-tool-threats#stride) model, the highest risk to devices is from tampering, and the threat to services is from denial of services from hijacked devices.
 
@@ -105,7 +110,7 @@ In connected operations architectures, scalability depends on the number of mess
 
 ### Flexibility
 
-IoT solutions build on the principle of *composability*, which enables combining various first-party or third-party components as building blocks. A Well-Architected IoT solution has extension points that enable integration with existing devices, systems, and applications. A high-scale, event-driven architecture with brokered communication is part of the backbone, with loosely coupled composition of services and processing modules.
+IoT solutions build on the principle of *composability*, which enables combining various first-party or third-party components as building blocks. A well-architected IoT solution has extension points that enable integration with existing devices, systems, and applications. A high-scale, event-driven architecture with brokered communication is part of the backbone, with loosely coupled composition of services and processing modules.
 
 In connected products architectures, changing end-user requirements define flexibility. Solutions should allow you to easily change device behavior and end-user services in the cloud, and provide new services.
 
@@ -113,7 +118,7 @@ In connected operations architectures, the support for different types of device
 
 ### Serviceability
 
-IoT solutions must consider ease of maintaining and repairing components, devices, and other system elements. Early detection of potential problems is critical. Ideally, a Well-Architected IoT solution should correct problems automatically before serious trouble occurs. Maintenance and repair operations should cause as little downtime or disruption as possible.
+IoT solutions must consider ease of maintaining and repairing components, devices, and other system elements. Early detection of potential problems is critical. Ideally, a well-architected IoT solution should correct problems automatically before serious trouble occurs. Maintenance and repair operations should cause as little downtime or disruption as possible.
 
 In connected products architectures, the wide distribution of devices affects serviceability. The ability to monitor, manage, and update devices within end user context and control, without direct access to that environment, is limited.
 
@@ -161,7 +166,7 @@ The IoT workload focuses primarily on these layers. To realize these layers, Mic
 
 #### Device and gateway layer
 
-This layer represents the physical or virtual device and gateway hardware deployed at the edge or on premises. Elements in this layer include the operating systems that manage the processes on the devices and gateways, and the device and gateway firmware, which is the software and instructions programmed onto devices and gateways. This layer is responsible for:
+This layer represents the physical or virtual device and gateway hardware deployed at the edge or on premises. Elements in this layer include the operating systems and the device or gateway firmware. Operating systems manage the processes on the devices and gateways. Firmware is the software and instructions programmed onto devices and gateways. This layer is responsible for:
 
 - Sensing and acting on other peripheral devices and sensors.
 - Processing and transferring IoT data.
@@ -208,7 +213,7 @@ Relevant Microsoft technologies include:
 
 ### Common layers and services
 
-Workloads other than IoT, such as Data & AI and modern applications, also use the common layers. The top-level Azure Well-Architected Framework addresses the generic elements of these common layers, and other workload frameworks address other requirements. The following sections touch on the IoT-related impact on requirements, and include links to other guidance.
+Workloads other than IoT, such as Data & AI and modern applications, also use the common layers. The top-level Azure Well-Architected Framework addresses the generic elements of these common layers, and other workload frameworks address other requirements. The following sections touch on the IoT-related influence on requirements, and include links to other guidance.
 
 #### Transport layer
 
@@ -289,7 +294,7 @@ The following diagram shows the DevOps continuous planning, development, deliver
 
 - Management and operations activities identify the current health state of the IoT system across all layers.
 
-Correctly executing DevOps and other cross-cutting activities can determine your success in creating and running a Well-Architected IoT solution. Cross-cutting activities help you meet the requirements set at design time and adjust for changing requirements over time. It's important to clearly assess your expertise in these activities and take measures to ensure execution at the required quality level.
+Correctly executing DevOps and other cross-cutting activities can determine your success in creating and running a well-architected IoT solution. Cross-cutting activities help you meet the requirements set at design time and adjust for changing requirements over time. It's important to clearly assess your expertise in these activities and take measures to ensure execution at the required quality level.
 
 Relevant Microsoft technologies include:
 
