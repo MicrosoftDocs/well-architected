@@ -256,15 +256,3 @@ For more information, see:
 
 >[!div class="nextstepaction"]
 >[Reliability](./reliability.md)
-
->[!div class="nextstepaction"]
->[Security](./security.md)
-
->[!div class="nextstepaction"]
->[Cost Optimization](./cost-optimization.md)
-
->[!div class="nextstepaction"]
->[Operational Excellence](./operational-excellence.md)
-
->[!div class="nextstepaction"]
->[Performance Efficiency](./performance-efficiency.md)
