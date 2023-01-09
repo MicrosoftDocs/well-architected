@@ -44,7 +44,7 @@ A second Data Guard standby configuration in the secondary region is established
 
 If a primary goes down, Observer(s) will reroute the traffic to the secondary DB2 as it comes out of standby, becomes primary and takes over all functionality for environment and sequence to fail over to secondary region standby if regional outage in first region.
 
-:::image type="content" source="./images/oracle-architecture-01.jpg" alt-text="Diagram of a Tier 1 (Business Critical) for Oracle E-business Suite in a Multiple Availability Zone deployment and Second Region deployment for Disaster Recovery." lightbox="./images/oracle-architecture-01.jpg" border="false":::
+:::image type="content" source="./images/oracle-architecture-01.png" alt-text="Diagram of a Tier 1 (Business Critical) for Oracle E-business Suite in a Multiple Availability Zone deployment and Second Region deployment for Disaster Recovery." lightbox="./images/oracle-architecture-01.png" border="false":::
 
 ### Create a failover for business critical Oracle applications in a two availability zone deployment with manual failover
 
@@ -54,7 +54,7 @@ The web server tier, application tier and database tier reside in its own virtua
 
 A failover would require manual intervention from the customer to fail over if there is a failure of availability zone one. Backups use Active Data Guard standby in AZ2 and backup to Azure Premium files in AZ2 to remove any additional IO pressure to the primary database.
 
-:::image type="content" source="./images/oracle-architecture-02.jpg" alt-text="Diagram of a Tier 2 (Production) Two-Availability Zone Deployment, Manual Failover. " lightbox="./images/oracle-architecture-02.jpg":::
+:::image type="content" source="./images/oracle-architecture-02.png" alt-text="Diagram of a Tier 2 (Production) Two-Availability Zone Deployment, Manual Failover. " lightbox="./images/oracle-architecture-02.png":::
 
 ## Checklist for Reliability
 
