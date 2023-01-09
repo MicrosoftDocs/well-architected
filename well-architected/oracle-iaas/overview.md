@@ -54,7 +54,7 @@ Oracle on Azure guidance within this series is composed of architectural conside
 | Design area | Summary |
 | --- | --- |
 | Application design |The use of a scale-unit architecture in the context of lift and shift highly reliable Oracle Applications. Also explores the cloud application design patterns that allow for scaling, and error handling. Next to this explore application dependencies. |
-| Data Platform | Oracle on Azure offer different Virtual Machine sizes. The choice is based on the statistics of an AWR report delivered by the customer. AWR should always be handed in on peak-load.|
+| Data Platform | Oracle on Azure offer different Virtual Machine sizes. The choice is based on the statistics of your AWR report. AWR should always be handed in on peak-load.|
 | Security | Protect the application and the database against threats intended to compromise its reliability directly or indirectly.|
 | Networking & Connectivity | Network topology concepts at an application level. Includes required ports, latency. Critical recommendations intended to inform the design of a secure and scalable global network topology.|
 | Operational Procedures | Adoption of Infrastructure as Code and related deployment methods is used to drive effective and consistent operational procedures.|
