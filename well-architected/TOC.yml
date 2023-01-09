@@ -425,18 +425,26 @@ items:
                 href: iot/iot-performance.md
           - name: SAP
             items:
-              - name: Overview
-                href: sap/overview.md
-              - name: Reliability
-                href: sap/reliability.md
-              - name: Security
-                href: sap/security.md
-              - name: Cost Optimization
-                href: sap/cost-optimization.md
-              - name: Operational Excellence
-                href: sap/operational-excellence.md
-              - name: Performance Efficiency
-                href: sap/performance-efficiency.md
+              - name: Quick links
+                href: sap/quick-links.yml
+              - name: Get started
+                href: sap/get-started.md
+              - name: Design principles
+                href: sap/design-principles.md
+              - name: Design areas
+                items:
+                  - name: Application design
+                    href: sap/design-areas/application-design.md
+                  - name: Application platform
+                    href: sap/design-areas/application-platform.md
+                  - name: Data platform
+                    href: sap/design-areas/data-platform.md
+                  - name: Networking and connectivity
+                    href: sap/design-areas/networking-and-connectivity.md
+                  - name: Security
+                    href: sap/design-areas/security.md
+                  - name: Operational procedures
+                    href: sap/design-areas/operational-procedures.md
           - name: Sustainability
             items:
               - name: Quick links
