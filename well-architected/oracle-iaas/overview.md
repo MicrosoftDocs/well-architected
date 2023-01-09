@@ -83,7 +83,7 @@ This image demonstrates how the single subscription reference deployment model c
 :::image type="content" source="./images/mission-critical-subscription-scale.gif" alt-text="Diagram that shows how subscription scale approach." lightbox="./images/mission-critical-subscription-scale.gif" border="false":::
 
 ### Siebel on Azure
-Siebel is an on-premises CRM application. Companies use it differently. Siebel is the most complex application in Oracle’s portfolio because of an architecture change from version 16 to 17.  
+Siebel is an on-premises CRM application that is used in many ways by companies. Siebel is one of the most complex applications in Oracle’s portfolio.
 
 If you want to migrate your Siebel application, this must be done in the Siebel Tool subnet. Make sure that the database version matches up with the application version. Otherwise, this could be a first reason a migration fails.  
 
