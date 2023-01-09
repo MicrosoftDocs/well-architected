@@ -163,7 +163,7 @@ The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtu
 
 Because an SSH port is required for JDE, a Bastion host as a jump box is recommended and can provide another security for an in-depth mature security posture.
 
-**(2) Application Web Tier** - The application web tier consists of more than two application servers. Usually, the rules for the application server are saved on application web servers. Within the presentation tier, each instance is associated with storage. The middle tier has a direct connection to the database where requests are directed. Therefore we recommend to do a proper technical assessment.
+**(2) Application Web Tier** - The application web tier consists of more than two application servers. Usually, the rules for the application server are saved on application web servers. Within the presentation tier, each instance is associated with storage. Cutting the dependencies can cause high latencies. Therefore we recommend to do a proper technical assessment.
 
 As an often requested auto-scaling method you can explore Virtual Machine Scale Sets for JDE.
 
