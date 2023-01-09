@@ -65,7 +65,7 @@ We invite you to explore Oracle workload design best practices and return to thi
 
 ## Application Design
 
-Oracle Applications are complex. Especially the understanding of supported and unsupported functionalities from version to version make a lift and shift painful. And if an understanding of each Application version is missing most migration fails.  
+Oracle Applications are complex. Especially the understanding of supported and unsupported functionalities from version to version make a lift and shift from version to version introduces difficulties in the migration approach. And if an understanding of each application version is missing most migration fails.
 
 Moreover companies don't just want to lift and shift, but modernize the architecture and bind to functional and non-functional requirements. However, these requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved.
 
