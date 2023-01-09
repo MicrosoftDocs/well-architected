@@ -21,7 +21,7 @@ The section about Oracle workloads on Azure provides guidance that applies the A
 
 The term workload refers to a collection of database and application resources that support a common business goal or the execution of a common business process. These workloads could be Customer Relationship Management applications, Human Resources, customized application that mostly relies on Weblogic and others. Weblogic, Siebel, Peoplesoft, JD Edwards and E-Business Suite are Oracle on-premise applications.  
 
-Oracle Applications on Azure and its approach are described in Section Application Design.
+Oracle applications on Azure and its approach are described in section Application Design.
 
 An Oracle Workload therefore describes a collection of application resources and databases, which must be highly available on the platform. The workload must always be resilient to failures.
 
