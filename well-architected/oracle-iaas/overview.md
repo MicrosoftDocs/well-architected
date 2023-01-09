@@ -169,7 +169,7 @@ As an often requested auto-scaling method you can explore Virtual Machine Scale 
 
 Some of the servers that you have in use operate more tasks and create a higher throughput than others. This throughput should be evaluated during the Design Phase. Virtual Machine Scale Sets don't require a rearchitecture and let you create and manage a group of load-balanced VMs which also high availability.
 
-**(3) Database Tier** - The database tier has one primary and replicated to a secondary using Data Guard. If you stay within one region, the synchronous configuration should be used. If you install your application across regions, you should configure Data Guard in Asynchronous mode. Data from the database tier are sent directly to an Azure Storage. The Storage is dependent on your current architecture setup.
+**(3) Database Tier** - The database tier has one primary and replicated to a secondary using Data Guard. If you stay within one datacenter, the synchronous configuration should be used. If you install your application across datacenters, you should configure Data Guard in Asynchronous mode. Data from the database tier are sent directly to an Azure Storage. The Storage is dependent on your current architecture setup.
 
 **(4) Backup** - [Backups](/azure/backup/backup-azure-vms-introduction) are sent from the application tier and the database tier. It's just one of many reasons why those two tiers shouldn't be separated into two different vendors. Thereby Backups of the database are performed by [Azure Backup Volume Snapshot](https://techcommunity.microsoft.com/t5/data-architecture-blog/azure-backup-volume-snapshots-for-oracle-is-now-ga/ba-p/2820032) on Premium Files to the secondary region.
 
