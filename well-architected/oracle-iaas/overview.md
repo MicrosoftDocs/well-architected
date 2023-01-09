@@ -55,11 +55,11 @@ Oracle on Azure guidance within this series is composed of architectural conside
 | --- | --- |
 | Application design |The use of a scale-unit architecture in the context of lift and shift highly reliable Oracle Applications. Also explores the cloud application design patterns that allow for scaling, and error handling. Next to this explore application dependencies. |
 | Data Platform | Oracle on Azure offer different Virtual Machine sizes. The choice is based on the statistics of your AWR report. AWR should always be handed in on peak-load.|
-| Security | Protect the application and the database against threats intended to compromise its reliability directly or indirectly.|
-| Networking & Connectivity | Network topology concepts at an application level. Includes required ports, latency. Critical recommendations intended to inform the design of a secure and scalable global network topology.|
-| Operational Procedures | Adoption of Infrastructure as Code and related deployment methods is used to drive effective and consistent operational procedures.|
-| Health Modeling | Processes to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity.|
-| Deployment & Testing | Eradicate downtime and maintain application health for deployment operations, providing key considerations and recommendations intended to inform the design of optimal upgrades of application and database.|
+| Security | Oracle Applications have attached ports. It also depends on the operating system the application architecture has. Depending on the protocol, you can use different options to secure your access. Application Proxy, Azure Firewall, Application Gateway. Next to this you should take a look on the SSO method the version of the application has. It's important that we architecture your application according to best practices.|
+| Networking & Connectivity | This section refers a bit to security as well. ExpressRoute helps you to set up a private connection to properly secure you and your environment. Load Balancer should be configured to IP addresses (if necessary). Make sure that the network architecture doesn't create unnecessary latency.|
+| Operational Procedures | Ansible or other Infrastructure-as-Code possibilities can help you to automate processes for Oracle workloads.|
+| Health Modeling | Your Oracle workload environment should be properly maintained. Therefore checking the health status of the virtual machines and the ExpressRoute Connection should be used. On Oracle databases, you can use the Oracle Cloud Control.|
+| Deployment & Testing | Before you upgrade applications, you should test it in your test environment. The same should be done on the Database side. Even when you use Infrastructure-as-Code you should test any deployment before putting in production.|
 
 We invite you to explore Oracle workload design best practices and return to this content regularly throughout the lifecycle of your Oracle workload. The content highlights critical areas of focus but also refers you to other documentation for deeper technical insight.
 
