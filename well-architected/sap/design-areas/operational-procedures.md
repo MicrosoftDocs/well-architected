@@ -1,5 +1,5 @@
 ---
-title: SAP workload operational excellence
+title: SAP workload operational procedures
 description: SAP workload best practices for operational excellence
 author: stephen-sumner
 ms.author: ssumner
@@ -10,7 +10,7 @@ ms.subservice: well-architected
 ms.custom: SAP
 ---
 
-# SAP workload operational excellence
+# SAP workload operational procedures
 
 Standard operating procedures (SOPs) are documented processes for managing a workload. Each SAP workload should have SOPs to govern operations. Without SOPs, teams drift from management best practices, so we recommend a continuous cycle of assessment and health checks for your SAP workload.
 
