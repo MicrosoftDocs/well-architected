@@ -87,7 +87,7 @@ Siebel is an on-premises CRM application that is used in many ways by companies.
 
 If you want to migrate your Siebel application, this must be done in the Siebel Tool subnet. Make sure that the database version matches up with the application version. Otherwise, this could be a first reason a migration fails.  
 
-As soon as you reach version 17, you need to configure certain servers and utilities on the application and database tier. As soon as the application tier is set up, all servers must be configured on the database as well. If all the tasks above haven't been conducted, either the migration will fail and/ or the performance affected heavily.  
+In version 17 or newer, you need to configure certain servers and utilities on the application and database tier. As soon as the application tier is set up, all servers must be configured on the database as well. If all the tasks above haven't been conducted, either the migration will fail and/or the performance affected heavily.
 
 The following design example provides a first idea of a generic Siebel Architecture on Azure for IP 16 and earlier:  
 
