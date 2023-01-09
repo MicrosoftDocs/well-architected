@@ -69,7 +69,7 @@ Oracle Applications are complex. Especially the understanding of supported and u
 
 Moreover companies don't just want to lift and shift, but modernize the architecture and bind to functional and non-functional requirements. However, these requirements should be examined alongside key cloud application design patterns to ensure aspirations are fully achieved.
 
-The design areas below explores both the subscription scale-unit approach and important application design patterns for building highly reliable Siebel, E-business Suite, and JD Edwards applications on Azure.
+The design areas below explores both the subscription scale-unit approach and important application design patterns for building highly reliable Siebel, E-business Suite, JD Edwards, and Peoplesoft applications on Azure.
 
 > [!IMPORTANT]
 > All Oracle applications are legacy systems and possess strong dependencies between the application tier and the database tier. Separating two tiers across different cloud vendors introduces latencies. Therefore you should do a proper technical assessment and decide if you are fine with it.
