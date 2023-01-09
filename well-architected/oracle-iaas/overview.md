@@ -11,11 +11,11 @@ ms.subservice: well-architected
 
 # Oracle workload best practices
 
-The section strives to address Oracle workloads comprising not only Oracle Databases, but also applications such as Siebel, Peoplesoft, JD Edwards, E-Business Suite or customized Weblogic applications.
+Oracle workloads comprise not only Oracle Databases, but also applications such as Siebel, Peoplesoft, JD Edwards, E-Business Suite or customized Weblogic applications.
 
-Customers around the globe are looking for hosting Oracle Workloads on Azure. For that reason, Microsoft provides solutions for each workload and coherent requirements. The most requirements customers asked for are around network and reducing latencies. Next to these auto-scaling solutions are asked for enormously.  
+Customers around the globe are looking to host Oracle Workloads on Azure. For that reason, Microsoft provides solutions for each workload. This includes guidance around network and reducing latencies, and also auto-scaling the solutions.  
 
-The section about Oracle Workloads on Azure provides guidance that applies Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
+The section about Oracle workloads on Azure provides guidance that applies the Azure Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
 
 ## About Oracle workloads
 
