@@ -131,7 +131,7 @@ Refer to the Oracle EBS design considerations:
 
 In cases where external users need to access your application the [Application Gateway](/azure/application-gateway/overview) provides a Web Application Firewall, but also a Layer 7 Load Balancing. Note that Application Gateways can only be used for http/s protocols. The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [Role-Based-Access-Control (RBAC).](/azure/role-based-access-control/overview)
 
-Because an SSH port is required for Siebel, a Bastion host as a jump box can also provide another security for an in-depth mature security posture.
+Because an SSH port is required for EBS, a Bastion host as a jump box can also provide another security for an in-depth mature security posture.
 
 **(2) Application Tier** - The application tier consists of more than two application servers. Usually, the rules for the application server are saved on application web servers. Evaluate the access you need to establish. If users only access the web tier but aren't allowed to access the application server, consider allocating the tiers into application web tier and application tier.
 
