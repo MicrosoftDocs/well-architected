@@ -84,16 +84,4 @@ Explore the following table of recommendations to optimize your Oracle on Azure 
 ## Next Step
 
 >[!div class="nextstepaction"]
->[Overview](./overview.md)
-
->[!div class="nextstepaction"]
->[Reliability](./reliability.md)
-
->[!div class="nextstepaction"]
 >[Cost Optimization](./cost-optimization.md)
-
->[!div class="nextstepaction"]
->[Operational Excellence](./operational-excellence.md)
-
->[!div class="nextstepaction"]
->[Performance Efficiency](./performance-efficiency.md)
