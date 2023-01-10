@@ -13,31 +13,31 @@ ms.subservice: well-architected
 
 Oracle workloads comprise not only Oracle Databases, but also applications such as Siebel, Peoplesoft, JD Edwards, E-Business Suite or customized Weblogic applications.
 
-Customers around the globe are looking to host Oracle Workloads on Azure. For that reason, Microsoft provides solutions for each workload. This includes guidance around network and reducing latencies, and also auto-scaling the solutions.  
+Customers around the globe are looking to host Oracle workloads on Azure. For that reason, Microsoft provides solutions for each workload. This includes guidance around network and reducing latencies, and also auto-scaling the solutions.
 
 The section about Oracle workloads on Azure provides guidance that applies the Azure Well-Architected best practices as the technical foundation for building and operating a highly reliable solution on Azure at-scale.
 
 ## About Oracle workloads
 
-The term workload refers to a collection of database and application resources that support a common business goal or the execution of a common business process. These workloads could be Customer Relationship Management applications, Human Resources, customized application that mostly relies on Weblogic and others. Weblogic, Siebel, Peoplesoft, JD Edwards and E-Business Suite are Oracle on-premise applications.  
+The term workload refers to a collection of database and application resources that support a common business goal or the execution of a common business process. These workloads could be Customer relationship management applications, Human Resources, customized application that mostly relies on Weblogic and others. Weblogic, Siebel, Peoplesoft, JD Edwards and E-Business Suite are Oracle on-premise applications.
 
-Oracle applications on Azure and its approach are described in section Application Design.
+Oracle applications on Azure and its approach are described in [Application Design](#application-design).
 
 An Oracle Workload therefore describes a collection of application resources and databases, which must be highly available on the platform. The workload must always be resilient to failures.
 
 ## What are the common challenges
 
-Microsoft Azure makes it easy to deploy and manage cloud solutions. However, building and migrating Oracle Workloads that are highly available and reliable on the platform remains a challenge for these main reasons:
+Microsoft Azure makes it easy to deploy and manage cloud solutions. However, building and migrating Oracle workloads that are highly available and reliable on the platform remains a challenge for these main reasons:
 
 - **Oracle applications architectures are complex**. The complexity relies on the dependencies between the application and database tier, Version upgrades and patches. Siebel has an architecture change between the version IP16 and IP17. The architecture change results in adjustments on the application and database tier to configure application servers on the database layer.
 - **Designing a reliable application at scale requires knowledge about the application versions and architectures as well as dependencies on each layer**. By providing in-depth knowledge, we can help you to select the right technologies and guide you through the configuration setup.
-- **Oracle database architectures differ from customer to customer**. Oracle RAC, Exadata features like SmartScan put complexity into the setup. Automatic Workload Repositories provide a great insight into the actual usage of Exadata Features or RAC Setup’s. Microsoft Azure provides solutions for every challenge so that we can address most of your needs.  
+- **Oracle database architectures differ from customer to customer**. Oracle RAC, Exadata features like SmartScan put complexity into the setup. Automatic Workload Repositories provide a great insight into the actual usage of Exadata Features or RAC Setup’s. Microsoft Azure provides solutions for every challenge so that we can address most of your needs.
 
-All Oracle Workloads need to be architected to handle failures with correlated or cascading impact. Reliability Engineering is an important task within the entire architecture design.
+All Oracle workloads need to be architected to handle failures with correlated or cascading impact. Reliability Engineering is an important task within the entire architecture design.
 
 ## Assess the holistic architecture
 
-Oracle Workloads most often require high availability. High Availability is part of [Reliability](../resiliency/design-checklist.md) under Well-Architected Framework. High Availability has impact on the other pillars as well. If the architecture isn't assessed holistically, you might create unnecessary latencies. For that reason you should follow the recommendations of all pillars of the Well-Architected Framework.
+Oracle workloads most often require high availability. High Availability is part of [Reliability](../resiliency/design-checklist.md) under Well-Architected Framework. High Availability has impact on the other pillars as well. If the architecture isn't assessed holistically, you might create unnecessary latencies. For that reason you should follow the recommendations of all pillars of the Well-Architected Framework.
 
 - **Security**: The way user access applications and the holistic development of a workload architecture to mitigate security threats, such as Distributed Denial of Service (DDoS) attacks, will have a significant bearing on overall reliability.
 - **Operational Excellence**: Potentially reached throughput or Memory on the database respond to operational issues will have a direct impact on application availability. Latencies should be eliminated to a minimum.
@@ -54,7 +54,7 @@ Oracle on Azure guidance within this series is composed of architectural conside
 | Design area | Summary |
 | --- | --- |
 | Application design |The use of a scale-unit architecture in the context of lift and shift highly reliable Oracle Applications. Also explores the Oracle application design patterns that allow for scaling, and error handling. Explore Oracle application dependencies between the web tier and application tier by understanding the shared connection between storage folders and databases. |
-| Data Platform | Oracle on Azure offer different Virtual Machine sizes. The choice is based on the statistics of your [Automatic Workload Repository (AWR) report](https://github.com/Azure/Oracle-Workloads-for-Azure/tree/main/az-oracle-sizing) for analyzing the current database usage. The AWR should always be handed in on peak-load.|
+| Data Platform | Oracle on Azure offer different Virtual Machine sizes. The choice is based on the statistics of your [Automatic Workload Repository (AWR) report](https://github.com/Azure/Oracle-workloads-for-Azure/tree/main/az-oracle-sizing) for analyzing the current database usage. The AWR should always be handed in on peak-load.|
 | Security | Oracle Applications have attached ports. It also depends on the operating system the application architecture has. Depending on the protocol, you can use different options to secure your access. Application Proxy, Azure Firewall, Application Gateway. Next to this you should take a look on the SSO method the version of the application has. It's important that we architecture your application according to best practices.|
 | Networking & Connectivity | This section refers a bit to security as well. ExpressRoute helps you to set up a private connection to properly secure you and your environment. Microsoft Load Balancer should be configured to IP addresses (if necessary). Make sure that the network architecture doesn't create unnecessary latency.|
 | Operational Procedures | Ansible or other Infrastructure-as-Code possibilities can help you to automate processes for Oracle workloads.|
@@ -210,16 +210,16 @@ Every database and server is used to different capacities. Therefore, it is impo
 
 On the application tier, prepare numbers and statistics from the Web tier and the application tier. Statistics should include:
 
-- Name of the Server
+- Name of the server
 - Number of CPUs
 - Average utilization of CPU  
-- Memory Size
+- Memory size
 - Average utilization  
-- App/ DB Storage Size
+- App/ DB storage size
 - App and DB version
 - Operating system
 - Total IOPS
-- Total Throughput
+- Total throughput
 - Backup strategy
 
 The [E](/azure/virtual-machines/edv5-edsv5-series) and [M](/azure/virtual-machines/mv2-series)-series Virtual Machines are the right to choose from. Each Virtual Machine comes with a different size and can be perfectly matched to your needs. Microsoft also offers [constrained VMs](/azure/virtual-machines/constrained-vcpu). These Virtual Machine are designed for customers not in need of many CPU but memory.
