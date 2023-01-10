@@ -74,14 +74,6 @@ The design areas below explores both the subscription scale-unit approach and im
 > [!IMPORTANT]
 > All Oracle applications are legacy systems and possess strong dependencies between the application tier and the database tier. Separating two tiers across different cloud vendors introduces latencies. Therefore you should do a proper technical assessment and decide if you are fine with it.
 
-### Subscription Scale-Unit approach
-
-Some large enterprises require the same architecture across regions without installing and migrating everything from scratch. Customers also have commercial requirements by having everything in just one subscription.
-
-This image demonstrates how the single subscription reference deployment model can be expanded across multiple subscriptions, in an extreme scale scenario, to navigate subscription scale-limits.
-
-:::image type="content" source="./images/mission-critical-subscription-scale.gif" alt-text="Diagram that shows how subscription scale approach." lightbox="./images/mission-critical-subscription-scale.gif" border="false":::
-
 ## Oracle application designs
 
 Oracle workloads such as Siebel, E-Business Suite, JD Edwards, and Peoplesoft have specific application design patterns for Azure. Below are example Azure architecture diagrams and more product detail of each Oracle workload designed for setting up internal and external user access. Note the application design considerations and the Azure services used for each design.
