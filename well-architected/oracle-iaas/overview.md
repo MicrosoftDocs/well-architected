@@ -35,9 +35,9 @@ Microsoft Azure makes it easy to deploy and manage cloud solutions. However, bui
 
 All Oracle Workloads need to be architected to handle failures with correlated or cascading impact. Reliability Engineering is an important task within the entire architecture design.
 
-## Are Oracle Workloads Only About Reliability?
+## Assess the holistic architecture
 
-While the primary focus in on Reliability and creating highly available applications and databases other pillars of the Well-Architected Framework are equally important during the architecture design and migration phase.
+Oracle Workloads most often require high availability. High Availability is part of [Reliability](../resiliency/design-checklist.md) under Well-Architected Framework. High Availability has impact on the other pillars as well. If the architecture isn't assessed holistically, you might create unnecessary latencies. For that reason you should follow the recommendations of all pillars of the Well-Architected Framework.
 
 - **Security**: The way user access applications and the holistic development of a workload architecture to mitigate security threats, such as Distributed Denial of Service (DDoS) attacks, will have a significant bearing on overall reliability.
 - **Operational Excellence**: Potentially reached throughput or Memory on the database respond to operational issues will have a direct impact on application availability. Latencies should be eliminated to a minimum.
