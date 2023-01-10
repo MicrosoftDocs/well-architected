@@ -49,8 +49,6 @@ Achieving high reliability imposes significant cost tradeoffs, which may not be 
 
 Oracle on Azure guidance within this series is composed of architectural considerations and recommendations orientated around these [key design areas](/azure/architecture/framework/mission-critical/mission-critical-overview).
 
-:::image type="content" source="./images/mission-critical-design-areas.svg" alt-text="Diagram that shows mission critical design areas." lightbox="./images/mission-critical-design-areas.svg" border="false":::
-
 | Design area | Summary |
 | --- | --- |
 | Application design |The use of a scale-unit architecture in the context of lift and shift highly reliable Oracle Applications. Also explores the Oracle application design patterns that allow for scaling, and error handling. Explore Oracle application dependencies between the web tier and application tier by understanding the shared connection between storage folders and databases. |
