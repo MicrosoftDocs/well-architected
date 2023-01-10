@@ -379,7 +379,7 @@ This section will therefore explore key decision factors when selecting an appro
 
 - Data can be processed from Event Hubs by a client using the [Event Processor SDK](/azure/event-hubs/event-processor-balance-partition-load), or by [Azure Stream Analytics](/azure/event-hubs/process-data-azure-stream-analytics).
 
-- Event Hubs can be deployed in Basic, Standard or Dedicated tiers which provide different performance characteristics and SLA. See [SLA for Event Hubs](/support/legal/sla/event-hubs/v1_2/) and [Azure Event Hubs quotas and limits](/azure/event-hubs/event-hubs-quotas) for more.
+- Event Hubs can be deployed in Basic, Standard or Dedicated tiers which provide different performance characteristics and SLA. See [SLA for Event Hubs](/support/sla/event-hubs/) and [Azure Event Hubs quotas and limits](/azure/event-hubs/event-hubs-quotas) for more.
 
 - Event Hubs provide an Apache Kafka-compatible [messaging interface](/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview).
 
