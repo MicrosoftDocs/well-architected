@@ -82,6 +82,10 @@ This image demonstrates how the single subscription reference deployment model c
 
 :::image type="content" source="./images/mission-critical-subscription-scale.gif" alt-text="Diagram that shows how subscription scale approach." lightbox="./images/mission-critical-subscription-scale.gif" border="false":::
 
+## Oracle application designs
+
+Oracle workloads such as Siebel, E-Business Suite, JD Edwards, and Peoplesoft have specific application design patterns for Azure. Below are example Azure architecture diagrams and more product detail of each Oracle workload designed for setting up internal and external user access. Note the application design considerations and the Azure services used for each design.
+
 ### Siebel on Azure
 Siebel is an on-premises CRM application that is used in many ways by companies. Siebel is one of the most complex applications in Oracle’s portfolio.
 
