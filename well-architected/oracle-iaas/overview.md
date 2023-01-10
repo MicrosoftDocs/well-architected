@@ -47,7 +47,7 @@ Achieving high reliability imposes significant cost tradeoffs, which may not be 
 
 ## What are the key design areas?
 
-Oracle on Azure guidance within this series is composed of architectural considerations and recommendations orientated around these [key design areas](/azure/architecture/framework/mission-critical/mission-critical-overview).
+Oracle on Azure guidance within this series is composed of architectural considerations and recommendations orientated around the below key design areas.
 
 | Design area | Summary |
 | --- | --- |
