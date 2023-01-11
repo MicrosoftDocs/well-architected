@@ -11,7 +11,7 @@ ms.subservice: well-architected
 
 # Oracle workload best practices
 
-Oracle workloads comprise not only Oracle Databases, but also applications such as Siebel, Peoplesoft, JD Edwards, E-Business Suite or customized Weblogic applications.
+Oracle workloads comprise not only Oracle Databases, but also applications such as Siebel, Peoplesoft, JD Edwards, E-Business Suite or customized WebLogic Server applications.
 
 Customers around the globe are looking to host Oracle workloads on Azure. For that reason, Microsoft provides solutions for each workload. This includes guidance around network and reducing latencies, and also auto-scaling the solutions.
 
@@ -19,7 +19,7 @@ The section about Oracle workloads on Azure provides guidance that applies the A
 
 ## About Oracle workloads
 
-The term workload refers to a collection of database and application resources that support a common business goal or the execution of a common business process. These workloads could be Customer relationship management applications, Human Resources, customized application that mostly relies on Weblogic and others. Weblogic, Siebel, Peoplesoft, JD Edwards and E-Business Suite are Oracle on-premise applications.
+The term workload refers to a collection of database and application resources that support a common business goal or the execution of a common business process. These workloads could be Customer relationship management applications, Human Resources, customized application that mostly relies on WebLogic Server and others. WebLogic Server, Siebel, Peoplesoft, JD Edwards and E-Business Suite are Oracle on-premise applications.
 
 Oracle applications on Azure and its approach are described in [Application Design](#application-design).
 
@@ -231,6 +231,8 @@ Recommendations for Oracle on Azure:
 | Provide the version of your application | Different versions of Oracle Application have different limitations. You can help us to assess the right migration approach by just providing your application version |
 | Security | Assess the version of your application for SSO methods. Some versions come with certain limitations |
 | Availability | Microsoft offer a few availability methods of which you can make use of: Proximity Placement Groups, HA Storage types |
+
+Oracle and Microsoft have partnered to create a number of ready-to-deploy solutions for Oracle WebLogic Server on Azure IaaS. To get started, see [What are solutions for running Oracle WebLogic Server on Azure Virtual Machines?](/azure/virtual-machines/workloads/oracle/oracle-weblogic).
 
 ## Illustrative Examples
 
