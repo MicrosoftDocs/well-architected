@@ -22,6 +22,8 @@ items:
                 href: resiliency/app-design.md
               - name: Resiliency & dependencies
                 href: resiliency/design-resiliency.md
+              - name: Business metrics
+                href: resiliency/business-metrics.md
               - name: Best practices
                 href: resiliency/design-best-practices.md
           - name: Testing
