@@ -1,9 +1,9 @@
 ---
 title: Application design of mission-critical workloads on Azure
-description: This design area explores requisite application design patterns for building a highly reliable application on Azure.
+description: This design area describes architecture patterns and scaling strategies that can help make your application resilient to failures.
 author: calcof
 ms.author: prwilk
-ms.date: 12/15/2022
+ms.date: 01/23/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -15,66 +15,68 @@ ms.custom:
 
 # Application design of mission-critical workloads on Azure
 
-Both functional application requirements and non-functional requirements are critical when designing your application. This design area describes architecture patterns and scaling strategies that will make your application resilient to failures.
+When you design an application, both functional and non-functional application requirements are critical. This design area describes architecture patterns and scaling strategies that can help make your application resilient to failures.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected Framework mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend that you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
 
 ## Scale-unit architecture
 
-All functional aspects of the solution must be capable of scaling to meet changes in demand.
-Using a scale-unit architecture  is recommended to optimize end-to-end scalability through compartmentalization and also to standardize the process of adding and removing capacity. A _scale-unit_ is a logical unit or function that can be scaled independently. A unit can be code components, application hosting platforms, the [deployment stamps](/azure/architecture/patterns/deployment-stamp) that cover the related components, and even subscriptions to support multi-tenant requirements.
+All functional aspects of a solution must be capable of scaling to meet changes in demand.
+We recommend that you use a scale-unit architecture to optimize end-to-end scalability through compartmentalization, and also to standardize the process of adding and removing capacity. A _scale-unit_ is a logical unit or function that can be scaled independently. A unit can be code components, application hosting platforms, the [deployment stamps](/azure/architecture/patterns/deployment-stamp) that cover the related components, and even subscriptions to support multi-tenant requirements.
 
-This approach is recommended because it addresses the scale limits of individual resources and the entire application. It helps with complex deployment and update scenarios because a scale-unit can be deployed as one unit. Also, you can test and validate specific versions of components in a unit before directing user traffic to it.
+We recommend this approach because it addresses the scale limits of individual resources and the entire application. It helps with complex deployment and update scenarios because a scale unit can be deployed as one unit. Also, you can test and validate specific versions of components in a unit before directing user traffic to it.
 
-Suppose your mission-critical application is an online product catalog. It has a user flow for processing product comments and ratings. The flow uses APIs for retrieving and posting comments and ratings, and supporting components such as an OAuth endpoint, datastore, and message queues. The stateless API endpoints represent granular functional units that must adapt to changes on demand. Also, the underlying application platform must also be able to scale accordingly. To avoid performance bottlenecks, the downstream components and dependencies must also scale to an appropriate degree. They can either scale independently, as a separate scale-unit, or together, as part of a single logical unit.
+Suppose your mission-critical application is an online product catalog. It has a user flow for processing product comments and ratings. The flow uses APIs to retrieve and post comments and ratings, and supporting components like an OAuth endpoint, datastore, and message queues. The stateless API endpoints represent granular functional units that must adapt to changes on demand. The underlying application platform must also be able to scale accordingly. To avoid performance bottlenecks, the downstream components and dependencies must also scale to an appropriate degree. They can either scale independently, as a separate scale unit, or together, as part of a single logical unit.
 
 ### Example scale units
 
-This image shows the possible scopes for scale units. The scopes range from microservice pods to cluster nodes, and regional deployment stamps.
+The following image shows the possible scopes for scale units. The scopes range from microservice pods to cluster nodes and regional deployment stamps.
 
-:::image type="content" source="./images/mission-critical-scale-units.png" alt-text="Diagram showing multiple scopes illustrated in the reference implementation." lightbox="./images/mission-critical-scale-units.png ":::
+:::image type="content" source="./images/mission-critical-scale-units.png" alt-text="Diagram that shows multiple scopes for scale units." lightbox="./images/mission-critical-scale-units.png ":::
 
 ### Design considerations
 
-- **Scope**. The scope of a scale unit, relationship between scale-units, and their components. They should be defined according to a capacity model, taking into consideration non-functional requirements for performance.
+- **Scope**. The scope of a scale unit, the relationship between scale units, and their components should be defined according to a capacity model. Take into consideration non-functional requirements for performance.
 
-- **Scale limits**. [Azure subscription scale limits and quotas](/azure/azure-resource-manager/management/azure-subscription-service-limits) might have a bearing on application design, technology choices, and the definition of scale-units. Scale units can help to overcome scale limits of a service. For example, if an AKS cluster in one unit can have only 1000 nodes, two units can increase that limit to 2000 nodes.
+- **Scale limits**. [Azure subscription scale limits and quotas](/azure/azure-resource-manager/management/azure-subscription-service-limits) might have a bearing on application design, technology choices, and the definition of scale units. Scale units can help you bypass the scale limits of a service. For example, if an AKS cluster in one unit can have only 1,000 nodes, you can use two units to increase that limit to 2,000 nodes.
 
-- **Expected load**. Number of requests for each user flow, the expected peak request rate (requests per second), and daily/weekly/seasonal traffic patterns are critical to inform core scale requirements. Also factor in the expected growth patterns for both traffic and data volume.
+- **Expected load**. Use the number of requests for each user flow, the expected peak request rate (requests per second), and daily/weekly/seasonal traffic patterns to inform core scale requirements. Also factor in the expected growth patterns for both traffic and data volume.
 
-- **Acceptable degraded performance**. Is a degraded service with high response times acceptable under load? The required performance of the solution under load is a critical decision factor when modeling required capacity.
+- **Acceptable degraded performance**. Determine whether a degraded service with high response times is acceptable under load. When you're modeling required capacity, the required performance of the solution under load is a critical factor.
 
-- **Non-functional requirements**. Technical and business scenarios have distinct considerations for resilience, availability, latency, capacity, and observability. Analyze these requirements in the context of key end-to-end user-flows. You’ll have relative flexibility in the design, tailoring decisions, and technology choices at a user-flow level.
+- **Non-functional requirements**. Technical and business scenarios have distinct considerations for resilience, availability, latency, capacity, and observability. Analyze these requirements in the context of key end-to-end user flows. You'll have relative flexibility in the design, decision making, and technology choices at a user-flow level.
 
 ### Design recommendations
 
-- Define the scope of a scale-unit and the limits beyond within which the unit will scale.
+- Define the scope of a scale unit and the limits that will trigger the unit to scale.
 
-- Ensure all application components can scale independently or as part of a scale-unit that has other related components.
+- Ensure that all application components can scale independently or as part of a scale unit that includes other related components.
 
-- Define the relationship between scale-units, according to a capacity model and non-functional requirements.
+- Define the relationship between scale units, based on a capacity model and non-functional requirements.
 
-- Define a regional deployment stamp to unify the provisioning, management, and operation of regional application resources, into a heterogenous but inter-dependent scale-unit. As the load increases, extra stamps  can be deployed within the same or different Azure regions, in order to horizontally scale the solution.
+- Define a regional deployment stamp to unify the provisioning, management, and operation of regional application resources into a heterogenous but interdependent scale unit. As load increases, extra stamps can be deployed, within the same Azure region or different ones, to horizontally scale the solution.
 
-- Use Azure subscription as the scale unit so that scale limits within a single subscription don't constrain the scalability. This approach is applicable for high-scale application scenarios with significant traffic volume.
+- Use an Azure subscription as the scale unit so that scale limits within a single subscription don't constrain scalability. This approach applies to high-scale application scenarios that have significant traffic volume.
 
-- Model the required capacity around identified traffic patterns to make sure sufficient capacity is provisioned at peak times to prevent service degradation. Alternatively, optimize capacity during off-peak hours.
+- Model required capacity around identified traffic patterns to make sure sufficient capacity is provisioned at peak times to prevent service degradation. Alternatively, optimize capacity during off-peak hours.
 
-- Measure the time taken to do scale out and scale in operations to ensure that the natural variations in traffic don't create an unacceptable level of service degradation. Track the scale operation durations as an operational metric.
+- Measure the time required to do scale-out and scale-in operations to ensure that the natural variations in traffic don't create an unacceptable level of service degradation. Track the scale operation durations as an operational metric.
 
 > [!NOTE]
-> When deploying within an Azure landing zone, ensure the landing zone subscription is dedicated to the application, in order to provide a clear management boundary and to avoid potential the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
+> When you deploy within an Azure landing zone, ensure that the landing zone subscription is dedicated to the application to provide a clear management boundary and to avoid the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
 
 ## Global distribution
 
-Failure is impossible to avoid in any highly distributed environment. Here are some strategies to mitigate many fault scenarios. The application must be able to withstand regional and zonal failures. It must be deployed in an active-active model so that the load is distributed among all regions.
+It's impossible to avoid failure in any highly distributed environment. This section provides strategies to mitigate many fault scenarios. The application must be able to withstand regional and zonal failures. It must be deployed in an active/active model so that the load is distributed among all regions.
 
+Watch this video to get an overview of how to plan for failures in mission-critical applications and maximize resiliency:
+<br><br>
 > [!VIDEO 7cea20d8-8265-4c5c-aaba-5e174731c2e3]  
 
 ### Design considerations
 
-- **Redundancy**. The application must be deployed to multiple regions. Additionally, within a region, using [Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) is highly recommended to allow for fault tolerance at the datacenter level. Availability Zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are 'chatty' across zones, this latency can introduce a performance penalty and incur bandwidth charges for inter-zone data transfer.
+- **Redundancy**. Your application must be deployed to multiple regions. Additionally, within a region, we strongly recommend that you use [availability zones](/azure/availability-zones/az-overview#availability-zones) to allow for fault tolerance at the datacenter level. Availability zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are "chatty" across zones, this latency can introduce a performance penalty and incur bandwidth charges for interzone data transfer.
 
 - **Active-active model**. An active-active deployment strategy represents the gold standard because it maximizes availability and allows for higher composite Service Level Agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering trade-offs from increased cost and engineering effort.
 
