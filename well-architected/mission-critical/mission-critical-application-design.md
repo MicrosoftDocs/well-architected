@@ -192,7 +192,7 @@ It's important to select the right programming languages and frameworks. These d
 
 ### Design recommendations
 
-- Evaluate all relevant Azure SDKs for the needed capabilities and the selected programming languages. Ensure alignment with non-functional requirements.
+- Evaluate all relevant Azure SDKs for the capabilities you need and your chosen programming languages. Verify alignment with non-functional requirements.
 
 - Optimize the selection of programming languages and frameworks at the microservice level. Use multiple technologies as appropriate.
 
