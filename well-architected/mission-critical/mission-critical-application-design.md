@@ -23,11 +23,11 @@ When you design an application, both functional and non-functional application r
 ## Scale-unit architecture
 
 All functional aspects of a solution must be capable of scaling to meet changes in demand.
-We recommend that you use a scale-unit architecture to optimize end-to-end scalability through compartmentalization, and also to standardize the process of adding and removing capacity. A _scale unit_ is a logical unit or function that can be scaled independently. A unit can be code components, application hosting platforms, the [deployment stamps](/azure/architecture/patterns/deployment-stamp) that cover the related components, and even subscriptions to support multi-tenant requirements.
+We recommend that you use a scale-unit architecture to optimize end-to-end scalability through compartmentalization, and also to standardize the process of adding and removing capacity. A _scale unit_ is a logical unit or function that can be scaled independently. A unit can be made up of code components, application hosting platforms, the [deployment stamps](/azure/architecture/patterns/deployment-stamp) that cover the related components, and even subscriptions to support multi-tenant requirements.
 
 We recommend this approach because it addresses the scale limits of individual resources and the entire application. It helps with complex deployment and update scenarios because a scale unit can be deployed as one unit. Also, you can test and validate specific versions of components in a unit before directing user traffic to it.
 
-Suppose your mission-critical application is an online product catalog. It has a user flow for processing product comments and ratings. The flow uses APIs to retrieve and post comments and ratings, and supporting components like an OAuth endpoint, datastore, and message queues. The stateless API endpoints represent granular functional units that must adapt to changes on demand. The underlying application platform must also be able to scale accordingly. To avoid performance bottlenecks, the downstream components and dependencies must also scale to an appropriate degree. They can either scale independently, as a separate scale unit, or together, as part of a single logical unit.
+Suppose your mission-critical application is an online product catalog. It has a user flow for processing product comments and ratings. The flow uses APIs to retrieve and post comments and ratings, and supporting components like an OAuth endpoint, datastore, and message queues. The stateless API endpoints represent granular functional units that must adapt to changes on demand. The underlying application platform must also be able to scale accordingly. To avoid performance bottlenecks, the downstream components and dependencies must also scale to an appropriate degree. They can either scale independently, as separate scale units, or together, as part of a single logical unit.
 
 ### Example scale units
 
@@ -64,7 +64,7 @@ The following image shows the possible scopes for scale units. The scopes range 
 - Measure the time required to do scale-out and scale-in operations to ensure that the natural variations in traffic don't create an unacceptable level of service degradation. Track the scale operation durations as an operational metric.
 
 > [!NOTE]
-> When you deploy within an Azure landing zone, ensure that the landing zone subscription is dedicated to the application to provide a clear management boundary and to avoid the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
+> When you deploy in an Azure landing zone, ensure that the landing zone subscription is dedicated to the application to provide a clear management boundary and to avoid the [Noisy Neighbor antipattern](/azure/architecture/antipatterns/noisy-neighbor).
 
 ## Global distribution
 
@@ -78,9 +78,9 @@ Watch this video to get an overview of how to plan for failures in mission-criti
 
 - **Redundancy**. Your application must be deployed to multiple regions. Additionally, within a region, we strongly recommend that you use [availability zones](/azure/availability-zones/az-overview#availability-zones) to allow for fault tolerance at the datacenter level. Availability zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are "chatty" across zones, this latency can introduce a performance penalty and incur bandwidth charges for interzone data transfer.
 
-- **Active/active model**. An active/active deployment strategy is recommended because it maximizes availability and provides a higher composite service-level agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering trade-offs from increased cost and engineering effort.
+- **Active/active model**. An active/active deployment strategy is recommended because it maximizes availability and provides a higher composite service-level agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering the trade-offs of increased cost and engineering effort.
 
-  An active/active deployment across other cloud providers is a way to potentially mitigate dependency on global resources within a single cloud provider. However, a multicloud active/active deployment strategy introduces a significant amount of complexity around CI/CD. Also, given the differences in resource specifications and capabilities among cloud providers, you'd need specialized deployment stamps for each cloud.
+  An active/active deployment across multiple cloud providers is a way to potentially mitigate dependency on global resources within a single cloud provider. However, a multicloud active/active deployment strategy introduces a significant amount of complexity around CI/CD. Also, given the differences in resource specifications and capabilities among cloud providers, you'd need specialized deployment stamps for each cloud.
 
 - **Geographical distribution**. The workload might have compliance requirements for geographical data residency, data protection, and data retention. Consider whether there are specific regions where data must reside or where resources need to be deployed. 
 
@@ -110,17 +110,17 @@ In some scenarios, applications can combine loose and tight coupling, depending 
 
 - **Runtime dependencies**. Loosely coupled services shouldn't be constrained to use the same compute platform, programming language, runtime, or operating system.
 
-- **Scaling**. Services should be able to scale independently by optimizing the use of infrastructure and platform resources.  
+- **Scaling**. Services should be able to scale independently. Optimize the use of infrastructure and platform resources.  
 
 - **Fault tolerance**. Failures should be handled separately and shouldn’t affect client transactions.
 
-- **Transactional integrity**. You should consider the effect of data creation and persistence that happens in separate services.
+- **Transactional integrity**. Consider the effect of data creation and persistence that happens in separate services.
 
 - **Distributed tracing**. End-to-end tracing might require complex orchestration.
 
 ### Design recommendations
 
-- Align microservice boundaries with critical user-flows.
+- Align microservice boundaries with critical user flows.
 
 - Use event-driven asynchronous communication where possible to support sustainable scale and optimal performance.
 
@@ -128,13 +128,13 @@ In some scenarios, applications can combine loose and tight coupling, depending 
 
 #### Example: Event-driven approach
 
-The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-online) reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker. Read operations are synchronous. The result is directly returned to the caller.
+The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-online) reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker. Read operations are synchronous, with the result directly returned to the caller.
 
 :::image type="content" source="./images/mission-critical-event-driven.png " alt-text="Diagram that shows event-driven communication." lightbox="./images/mission-critical-event-driven.png":::
 
 ## Resiliency patterns and error handling in application code
 
-A mission-critical application must be designed to be resilient to address as many failure scenarios as possible. This resiliency maximizes service availability and reliability. The application should have self-healing capabilities, which you can implement by using design patterns like [Retries with Backoff](/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly) and [Circuit Breaker](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern).
+A mission-critical application must be designed to be resilient so that it addresses as many failure scenarios as possible. This resiliency maximizes service availability and reliability. The application should have self-healing capabilities, which you can implement by using design patterns like [Retries with Backoff](/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly) and [Circuit Breaker](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern).
 
 For non-transient failures that you can't fully mitigate in application logic, the health model and operational wrappers need to take corrective action. Application code must incorporate proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis as required. You need to implement [distributed tracing](/dotnet/core/diagnostics/distributed-tracing-concepts) to provide the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
 
@@ -145,7 +145,7 @@ Tools like [Application Insights](/azure/azure-monitor/app/distributed-tracing) 
 
 - **Proper configurations**. It's not uncommon for transient problems to cause cascading failures. For example, retry without appropriate back-off exacerbates the problem when a service is being throttled. You can space retry delays linearly or increase them exponentially to back off through growing delays.
 
-- **Health endpoints**. You can expose functional checks within application code through health endpoints that external solutions can poll to retrieve application component health status.
+- **Health endpoints**. You can expose functional checks within application code by using health endpoints that external solutions can poll to retrieve application component health status.
 
 ### Design recommendations
 
@@ -154,12 +154,12 @@ Here are some [common software engineering patterns](/azure/architecture/pattern
 |Pattern|Summary|
 |---|---|
 |[Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling)| Introduces a buffer between consumers and requested resources to ensure consistent load levels. As consumer requests are queued, a worker process handles them against the requested resource at a pace that's set by the worker and by the requested resource's ability to process the requests. If consumers expect replies to their requests, you need to implement a separate response mechanism. Apply a prioritized order so that the most important activities are performed first.|
-|[Circuit Breaker](/azure/architecture/patterns/circuit-breaker)| Provides stability by either waiting for recovery or quickly rejecting requests rather than blocking while waiting for an unavailable remote service or resource. This pattern also handles faults that might take a variable amount of time to recover from when connecting to a remote service or resource.|
+|[Circuit Breaker](/azure/architecture/patterns/circuit-breaker)| Provides stability by either waiting for recovery or quickly rejecting requests rather than blocking while waiting for an unavailable remote service or resource. This pattern also handles faults that might take a variable amount of time to recover from when a connection is made to a remote service or resource.|
 |[Bulkhead](/azure/architecture/patterns/bulkhead)|Attempts to partition service instances into groups based on load and availability requirements, isolating failures to sustain service functionality.|
 |[Saga](/azure/architecture/reference-architectures/saga/saga)| Manages data consistency across microservices that have independent datastores by ensuring that services update each other through defined event or message channels. Each service performs local transactions to update its own state and publishes an event to trigger the next local transaction in the saga. If a service update fails, the saga runs compensating transactions to counteract preceding service update steps. Individual service update steps can themselves implement resiliency patterns, such as retry.|
-|[Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring)|Implements functional checks in an application that external tools can access through exposed endpoints at regular intervals. You can interpret responses from the endpoint by using key operational metrics to inform application health and trigger operational responses, like raising an alert or performing a compensating rollback deployment.|
+|[Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring)|Implements functional checks in an application that external tools can access through exposed endpoints at regular intervals. You can interpret responses from the endpoints by using key operational metrics to inform application health and trigger operational responses, like raising an alert or performing a compensating rollback deployment.|
 |[Retry](/azure/architecture/patterns/retry)|Handles transient failures elegantly and transparently.</br> - Cancel if the fault is unlikely to be transient and is unlikely to succeed if the operation is attempted again. </br> - Retry if the fault is unusual or rare and the operation is likely to succeed if attempted again immediately. </br>- Retry after a delay if the fault is caused by a condition that might need a short time to recover, like network connectivity or high-load failures. Apply a suitable back-off strategy as retry delays increase.|
-|[Throttling](/azure/architecture/patterns/throttling)| Controls the consumption of resources used by application components, protecting them from becoming overencumbered. When a resource reaches a load threshold, it defers lower-priority operations and degrading non-essential functionality so that essential functionality can continue until sufficient resources are available to return to normal operation.|
+|[Throttling](/azure/architecture/patterns/throttling)| Controls the consumption of resources used by application components, protecting them from becoming over-encumbered. When a resource reaches a load threshold, it defers lower-priority operations and degrading non-essential functionality so that essential functionality can continue until sufficient resources are available to return to normal operation.|
 
 Here are some additional recommendations: 
 
@@ -174,7 +174,7 @@ Here are some additional recommendations:
 - Use correlation IDs for all trace events and log messages to link them to a given request. Return correlation IDs to the caller for all calls, not just failed requests.
 - Use structured logging for all log messages. Select a unified operational data sink for application traces, metrics, and logs to enable operators to easily debug problems. For more information, see [Collect, aggregate, and store monitoring data for cloud applications]( /azure/architecture/framework/devops/monitor-collection-data-storage).
 
-- Ensure that operational data is used with business requirements to inform an [application health model](./mission-critical-health-modeling.md).
+- Ensure that operational data is used together with business requirements to inform an [application health model](./mission-critical-health-modeling.md).
 
 ## Programming language selection
 
