@@ -18,7 +18,7 @@ ms.custom:
 When you design an application, both functional and non-functional application requirements are critical. This design area describes architecture patterns and scaling strategies that can help make your application resilient to failures.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected Framework mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend that you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
+> This article is part of the [Azure Well-Architected Framework mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend that you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
 
 ## Scale-unit architecture
 
@@ -143,58 +143,60 @@ Tools like [Application Insights](/azure/azure-monitor/app/distributed-tracing) 
 ### Design considerations
 
 
-- **Proper configurations**. It's not uncommon for transient problems to cause cascading failures. For example, retry without appropriate backoff exacerbates the problem when a service is being throttled. You can space retry delays linearly or increase them exponentially to back off through growing delays.
+- **Proper configurations**. It's not uncommon for transient problems to cause cascading failures. For example, retry without appropriate back-off exacerbates the problem when a service is being throttled. You can space retry delays linearly or increase them exponentially to back off through growing delays.
 
 - **Health endpoints**. You can expose functional checks within application code through health endpoints that external solutions can poll to retrieve application component health status.
 
 ### Design recommendations
 
-Here are some [common software engineering patterns](/azure/architecture/patterns/) for resilient applications:
+Here are some [common software engineering patterns](/azure/architecture/patterns) for resilient applications:
 
 |Pattern|Summary|
 |---|---|
 |[Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling)| Introduces a buffer between consumers and requested resources to ensure consistent load levels. As consumer requests are queued, a worker process handles them against the requested resource at a pace that's set by the worker and by the requested resource's ability to process the requests. If consumers expect replies to their requests, you need to implement a separate response mechanism. Apply a prioritized order so that the most important activities are performed first.|
 |[Circuit Breaker](/azure/architecture/patterns/circuit-breaker)| Provides stability by either waiting for recovery or quickly rejecting requests rather than blocking while waiting for an unavailable remote service or resource. This pattern also handles faults that might take a variable amount of time to recover from when connecting to a remote service or resource.|
 |[Bulkhead](/azure/architecture/patterns/bulkhead)|Attempts to partition service instances into groups based on load and availability requirements, isolating failures to sustain service functionality.|
-|[Saga](/azure/architecture/reference-architectures/saga/saga)| Manage data consistency across microservices with independent datastores by ensuring services update each other through defined event or message channels. Each service performs local transactions to update its own state and publishes an event to trigger the next local transaction in the saga. If a service update fails, the saga executes compensating transactions to counteract preceding service update steps. Individual service update steps can themselves implement resiliency patterns, such as retry.|
-|[Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring)|Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. Interpret responses from the endpoint with key operational metrics to inform application health and trigger operational responses, such as raising an alert or performing a compensating roll-back deployment.|
-|[Retry](/azure/architecture/patterns/retry)|Handles transient failures elegantly and transparently.</br> - Cancel if the fault is unlikely to be transient and is unlikely to succeed if the operation is reattempted. </br> - Retry if the fault is unusual or rare and the operation is likely to succeed if attempted again immediately. </br>- Retry after a delay if the fault is caused by a condition that may need a short time to recover, such as network connectivity or high load failures. Apply a suitable 'backoff' strategy with growing retry delays.|
-|[Throttling](/azure/architecture/patterns/throttling)| Controls the consumption of resources used by application components, protecting them from becoming over encumbered. When a resource reaches a load threshold, it should defer lower-priority operations, and degrading non-essential functionality so that essential functionality can continue until sufficient resources are available to return to normal operation.|
+|[Saga](/azure/architecture/reference-architectures/saga/saga)| Manages data consistency across microservices that have independent datastores by ensuring that services update each other through defined event or message channels. Each service performs local transactions to update its own state and publishes an event to trigger the next local transaction in the saga. If a service update fails, the saga runs compensating transactions to counteract preceding service update steps. Individual service update steps can themselves implement resiliency patterns, such as retry.|
+|[Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring)|Implements functional checks in an application that external tools can access through exposed endpoints at regular intervals. You can interpret responses from the endpoint by using key operational metrics to inform application health and trigger operational responses, like raising an alert or performing a compensating rollback deployment.|
+|[Retry](/azure/architecture/patterns/retry)|Handles transient failures elegantly and transparently.</br> - Cancel if the fault is unlikely to be transient and is unlikely to succeed if the operation is attempted again. </br> - Retry if the fault is unusual or rare and the operation is likely to succeed if attempted again immediately. </br>- Retry after a delay if the fault is caused by a condition that might need a short time to recover, like network connectivity or high-load failures. Apply a suitable back-off strategy as retry delays increase.|
+|[Throttling](/azure/architecture/patterns/throttling)| Controls the consumption of resources used by application components, protecting them from becoming overencumbered. When a resource reaches a load threshold, it defers lower-priority operations and degrading non-essential functionality so that essential functionality can continue until sufficient resources are available to return to normal operation.|
 
-- Use vendor provided SDKs, such as the Azure SDKs, to connect to dependent services. Also use built-in  resiliency capabilities instead of implementing custom functionality.
+Here are some additional recommendations: 
 
- - Ensure a suitable back-off strategy is applied when retrying failed dependency calls to avoid a self-inflicted DDoS scenario.
+- Use vendor-provided SDKs, like the Azure SDKs, to connect to dependent services. Use built-in resiliency capabilities instead of implementing custom functionality.
 
-- Define **common engineering criteria** for all application microservice teams to drive consistency and acceleration regarding the use application-level resiliency patterns.
+ - Apply a suitable back-off strategy when retrying failed dependency calls to avoid a self-inflicted DDoS scenario.
 
-- Implement resiliency patterns using proven standardized packages, such as [ [Polly](http://www.thepollyproject.org/) for C# or [Sentinel](https://github.com/alibaba/Sentinel) for Java.
+- Define common engineering criteria for all application microservice teams to drive consistency and speed in the use of application-level resiliency patterns.
 
-- Use correlation IDs for all trace events and log messages to tie them to a given request. Return correlation IDs to the caller for all calls not just failed requests.
-- Use structured logging for all log messages. Select a unified operational data sink for application traces, metrics, and logs to enable operators to seamlessly debug issues. For more information, see [Collect, aggregate, and store monitoring data for cloud applications]( /azure/architecture/framework/devops/monitor-collection-data-storage).
+- Implement resiliency patterns by using proven standardized packages, like [Polly](http://www.thepollyproject.org) for C# or [Sentinel](https://github.com/alibaba/Sentinel) for Java.
 
-- Ensure operational data is used with business requirements to inform an [application health model](./mission-critical-health-modeling.md).
+- Use correlation IDs for all trace events and log messages to link them to a given request. Return correlation IDs to the caller for all calls, not just failed requests.
+- Use structured logging for all log messages. Select a unified operational data sink for application traces, metrics, and logs to enable operators to easily debug problems. For more information, see [Collect, aggregate, and store monitoring data for cloud applications]( /azure/architecture/framework/devops/monitor-collection-data-storage).
+
+- Ensure that operational data is used with business requirements to inform an [application health model](./mission-critical-health-modeling.md).
 
 ## Programming language selection
 
-Selecting the right programming languages and frameworks is a critical design decision. This decision is often driven by the skill set or standardized technologies within an organization. However, it's essential to evaluate the performance, resilience aspects, and overall capability of different languages and frameworks.
+It's important to select the right programming languages and frameworks. These decisions are often driven by the skill sets or standardized technologies in the organization. However, it's essential to evaluate the performance, resilience, and overall capabilities of various languages and frameworks.
 
 ### Design considerations
 
-- **Development kit capability**. There are differences in the capabilities offered by Azure service SDKs in different languages, which may influence the selection of an Azure service or programming language.  For instance, if Azure Cosmos DB is feasible option, 'Go' may not be an appropriate development language because there's no first-party SDK.
+- **Development kit capabilities**. There are differences in the capabilities that are offered by Azure service SDKs in various languages. These differences might influence your choice of an Azure service or programming language. For example, if Azure Cosmos DB is a feasible option, Go might not be an appropriate development language because there's no first-party SDK.
 
-- **Feature updates**. Consider how often the SDK is updated with new features for the selected language. Commonly used SDKs, such as .NET and Java libraries, are updated often while other SDKs or SDKs for other languages might receive updates less frequently.
+- **Feature updates**. Consider how often the SDK is updated with new features for the selected language. Commonly used SDKs, like .NET and Java libraries, are updated frequently. Other SDKs or SDKs for other languages might be updated less frequently.
 
-- **Multiple programming languages or frameworks**. Multiple options can be used to support various composite workloads. However, significant sprawl should be avoided because it introduces management complexity and operational challenges.
+- **Multiple programming languages or frameworks**. You can use multiple technologies to support various composite workloads. However, you should avoid sprawl because it introduces management complexity and operational challenges.
 
-- **Compute option**. Legacy or proprietary software might not run in PaaS services and/or can't be included in containers.  
+- **Compute option**. Legacy or proprietary software might not run in PaaS services. Also, you might not be able to include legacy or proprietary software in containers.  
 
 ### Design recommendations
 
-- Evaluate all relevant Azure SDKs for the needed capabilities, the selected programming languages, and ensure alignment with non-functional requirements.
+- Evaluate all relevant Azure SDKs for the needed capabilities and the selected programming languages. Ensure alignment with non-functional requirements.
 
-- Optimize the selection of programming languages and frameworks at the microservice level; embrace multiple technologies where appropriate.
+- Optimize the selection of programming languages and frameworks at the microservice level. Use multiple technologies as appropriate.
 
-- Prioritize the .NET SDK to optimize reliability and performance because .NET Azure SDKs typically provide more capabilities and are updated often.
+- Prioritize the .NET SDK to optimize reliability and performance. .NET Azure SDKs typically provide more capabilities and are updated frequently.
 
 ## Next step
 
