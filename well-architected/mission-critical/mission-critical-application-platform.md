@@ -1,9 +1,9 @@
 ---
 title: Application platform considerations for mission-critical workloads on Azure
-description: This design area explores requisite decision factors and provides recommendations related to the selection, design, and configuration of an appropriate application hosting platform for a mission critical application on Azure
+description: This design area describes decision factors and provides recommendations related to the selection, design, and configuration of an appropriate application hosting platform for a mission-critical application on Azure.
 author: calcof
 ms.author: prwilk
-ms.date: 12/15/2022
+ms.date: 01/23/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -17,55 +17,55 @@ ms.custom:
 
 # Application platform considerations for mission-critical workloads on Azure
 
-Azure provides many compute services for hosting highly available applications. The services differ in capability and complexity. We recommend that you make choices based on:
+Azure provides many compute services for hosting highly available applications. The services differ in capability and complexity. We recommend that you choose services based on:
 
 - Non-functional requirements for reliability, availability, performance, and security.
-- Decision factors such as scalability, cost, operability, and complexity.
+- Decision factors like scalability, cost, operability, and complexity.
 
-The choice of application hosting platform is a critical decision that impacts all other design areas. For example, legacy or proprietary development software might not run in PaaS or containerized. This requirement will impact the choice of compute platform. 
+The choice of an application hosting platform is a critical decision that affects all other design areas. For example, legacy or proprietary development software might not run in PaaS services or containerized applications. This limitation would influence your choice of compute platform. 
 
 A mission-critical application can use more than one compute service to support multiple composite workloads and microservices, each with distinct requirements.
 
-This design area provides recommendations related to the compute selection, design, and configuration options. We recommend that you familiarize yourself with the [Compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree).
+This design area provides recommendations related to compute selection, design, and configuration options. We also recommend that you familiarize yourself with the [Compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected Framework mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend that you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
 
 ## Global distribution of platform resources
 
-A typical pattern for a mission critical workload will include global resources and regional resources.
+A typical pattern for a mission-critical workload includes global resources and regional resources.
 
-Azure services, which aren't constrained to a particular Azure region, are deployed or configured as global resources. Some use cases include distributing traffic across multiple regions, storing permanent state for the whole application, and caching global static data. When accommodating both [scale-unit architecture](mission-critical-application-design.md#scale-unit-architecture) with [global distribution](mission-critical-application-design.md#global-distribution), consider how resources are optimally distributed or replicated across Azure regions.
+Azure services, which aren't constrained to a particular Azure region, are deployed or configured as global resources. Some use cases include distributing traffic across multiple regions, storing permanent state for a whole application, and caching global static data. If you need to accommodate both a [scale-unit architecture](mission-critical-application-design.md#scale-unit-architecture) and [global distribution](mission-critical-application-design.md#global-distribution), consider how resources are optimally distributed or replicated across Azure regions.
 
-Other resources are deployed regionally. These resources that are deployed as part of deployment stamp typically corresponds to a scale unit. However, a region can have more than one stamp, a stamp can have more than one unit. The reliability of regional resources is crucial as they're responsible for running the main workload.
+Other resources are deployed regionally. These resources, which are deployed as part of a deployment stamp, typically correspond to a scale unit. However, a region can have more than one stamp, and a stamp can have more than one unit. The reliability of regional resources is crucial because they're responsible for running the main workload.
 
-This image shows the high-level design. A user accesses the application through a central global entry point that then redirects requests to a suitable regional deployment stamp.
+The following image shows the high-level design. A user accesses the application via a central global entry point that then redirects requests to a suitable regional deployment stamp:
 
-![Mission-critical online architecture](./images/mission-critical-high-level-architecture.png)
-
-### Design considerations
-
-The mission-critical design methodology necessitates a multi-region deployment. This model ensures regional fault tolerance, so that application availability remains even when an entire region goes down. When designing a multi-region application, consider different deployment strategies, such as active-active and active-passive, alongside application requirements, because there are significant trade-offs between each approach. For mission-critical workloads, active-active model is highly recommended.
-
-Not every workload supports or requires multiple regions running simultaneously. Precise application requirements should be weighed against these trade-offs to inform an optimal design decision. For certain application scenarios with lower reliability targets, active-passive or sharding, can be suitable alternatives.
-
-[Availability Zones](/azure/availability-zones/az-overview#availability-zones) (AZ) allows highly available regional deployments across different data centers within a region. Nearly all Azure services are available in either a zonal configuration where service is pinned to a specific zone or zone-redundant where the platform automatically ensures the service spans across zones and can withstand a zone outage. These configurations allow for fault-tolerance up to a datacenter level.
+![Diagram that shows a mission-critical architecture.](./images/mission-critical-high-level-architecture.png)
 
 ### Design considerations
 
-- **Regional and zonal capabilities**. Not all services or capabilities are available in every Azure region. There might be service availability implications depending on the selected deployment regions. Also,  [Availability Zones](/azure/availability-zones/az-region) aren't available in every region.
+The mission-critical design methodology necessitates a multi-region deployment. This model ensures regional fault tolerance, so that the application remains available even when an entire region goes down. When you design a multi-region application, consider different deployment strategies, like active/active and active/passive, together with application requirements, because there are significant trade-offs for each approach. For mission-critical workloads, we strongly recommend the active/active model.
 
-- **Regional pairs**. Azure regions are grouped into [regional pairs](/azure/best-practices-availability-paired-regions) consisting of two regions within the same geography. Some Azure services use paired regions to ensure business continuity and to protect against data loss. For example, Azure Geo-redundant Storage (GRS) replicates data to a secondary paired region automatically, ensuring that data is durable if the primary region isn't recoverable. If an outage affects multiple Azure regions, at least one region in each pair will be prioritized for recovery.
+Not every workload supports or requires multiple regions running simultaneously. You should weigh specific application requirements against trade-offs to determine an optimal design decision. For certain application scenarios that have lower reliability targets, active/passive or sharding can be suitable alternatives.
 
-- **Data consistency**. For consistency challenges, consider using globally distributed data store, stamped regional architecture, a partially active-active deployment. In a partial deployment, some components are active across all regions while others are located centrally within the primary region.
+[Availability zones](/azure/availability-zones/az-overview#availability-zones) can provide highly available regional deployments across different datacenters within a region. Nearly all Azure services are available in either a zonal configuration, where the service is delegated to a specific zone, or a zone-redundant configuration, where the platform automatically ensures that the service spans across zones and can withstand a zone outage. These configurations provide fault tolerance up to the datacenter level.
 
-- **Safe deployment**. The [Azure Safe Deploy Practice (SDP)](https://azure.microsoft.com/blog/advancing-safe-deployment-practices) ensures all code and configuration changes (planned maintenance) to the Azure platform undergo a phased roll-out, with health analyzed in case any degradation is detected during the release. After the Canary and Pilot phases have successfully completed, platform updates are serialized across regional pairs, ensuring that only one region in each pair is updated at a time.
+### Design considerations
 
-- **Platform capacity**. Like any cloud provider, Azure has a finite amount of resources. Unavailability can be a result of capacity limitations in regions. If there's a regional outage, there will be an increase in demand for resources as the workload seeks to recover within the paired region. This outage might create a capacity challenge where supply temporarily does not satisfy demand.
+- **Regional and zonal capabilities**. Not all services and capabilities are available in every Azure region. This consideration could affect the regions you choose. Also,  [availability zones](/azure/availability-zones/az-region) aren't available in every region.
+
+- **Regional pairs**. Azure regions are grouped into [regional pairs](/azure/best-practices-availability-paired-regions) that consist of two regions in a single geography. Some Azure services use paired regions to ensure business continuity and to provide a level of protection against data loss. For example, Azure geo-redundant storage (GRS) replicates data to a secondary paired region automatically, ensuring that data is durable if the primary region isn't recoverable. If an outage affects multiple Azure regions, at least one region in each pair is prioritized for recovery.
+
+- **Data consistency**. For consistency challenges, consider using a globally distributed data store, a stamped regional architecture, and a partially active/active deployment. In a partial deployment, some components are active across all regions while others are located centrally within the primary region.
+
+- **Safe deployment**. The [Azure safe deployment practice (SDP) framework](https://azure.microsoft.com/blog/advancing-safe-deployment-practices) ensures that all code and configuration changes (planned maintenance) to the Azure platform undergo a phased rollout. Health is analyzed for degradation during the release. After canary and pilot phases complete successfully, platform updates are serialized across regional pairs, so only one region in each pair is updated at a given time.
+
+- **Platform capacity**. Like any cloud provider, Azure has finite resources. Unavailability can be the result of capacity limitations in regions. If there's a regional outage, there's an increase in demand for resources as the workload attempts to recover within the paired region. The outage might create a capacity problem, where supply temporarily doesn't meet demand.
 
 ### Design recommendations
 
-- Deploy the solution within a minimum of two Azure regions to protect against regional outages. Select deployment regions that have the required capabilities and characteristics needed by the workload. The capabilities should achieve performance and availability targets, while fulfilling data residency and retention requirements.
+- Deploy your solution within a minimum of two Azure regions to protect against regional outages. Select deployment regions that have the capabilities and characteristics needed by the workload. The capabilities should achieve performance and availability targets, while fulfilling data residency and retention requirements.
 
   For example, some data compliance requirements might constrain the number of available regions and potentially force design compromises. In such cases, extra investment in operational wrappers is highly recommended to predict, detect, and respond to failures. Suppose you're constrained to a geography with two regions, in which only one region supports Availability Zones (3 + 1 datacenter model). Create a secondary deployment pattern using fault domain isolation to allow for both regions to be deployed in an active configuration, ensuring the primary region houses multiple deployment stamps.
 
