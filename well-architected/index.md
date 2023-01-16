@@ -202,7 +202,7 @@ For a high-level synopsis, reference [Overview of the performance efficiency pil
 
 ## Next steps
 
-Learn more about:
+Learn more about test sync:
 
 - [Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment)
 - [Well-Architected Series](https://channel9.msdn.com/Tags/well-architected-series)
