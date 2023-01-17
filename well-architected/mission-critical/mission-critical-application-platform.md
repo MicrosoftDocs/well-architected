@@ -117,117 +117,118 @@ A container includes application code and the related configuration files, libra
 
 ## Container hosting and orchestration
 
-There are several Azure application platforms capable of effectively hosting containers.
-There are advantages and disadvantages associated with each of these Azure container platforms. Each option can be the optimal choice for certain scenarios. Compare the options in the context of business requirements. However, always optimize reliability, scalability, and performance. For information, see these articles:
+Several Azure application platforms can effectively host containers.
+There are advantages and disadvantages associated with each of these platforms. Compare the options in the context of your business requirements. However, always optimize reliability, scalability, and performance. For more information, see these articles:
 
 - [Compute decision tree](/azure/architecture/guide/technology-choices/compute-decision-tree)
-- [Container option comparisons](/azure/container-apps/compare-options#container-option-comparisons).
+- [Container option comparisons](/azure/container-apps/compare-options#container-option-comparisons)
 
 > [!IMPORTANT]
-> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) should be considered as the first choice for an orchestrator where requirements allow. Another option is [Azure Container Apps](/azure/container-apps/overview). While [Azure App Service](https://azure.microsoft.com/services/app-service/containers/) isn't an orchestrator, it's still a feasible alternative to AKS as a low-friction container platform.
+> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service) should your first choice of orchestrator when it meets your requirements. [Azure Container Apps](/azure/container-apps/overview) is another option. Although [Azure App Service](https://azure.microsoft.com/services/app-service/containers) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
 
 ### Azure Kubernetes Service
 
-As a managed Kubernetes service, Azure Kubernetes Service (AKS) allows for quick cluster provisioning without complex cluster administration activities and offers a rich feature set that includes advanced networking and identity capabilities. For the complete set of recommendations, see [Azure Well-Architected Framework review - Azure Kubernetes Service (AKS)]( /azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service).
+AKS, a managed Kubernetes service, enables quick cluster provisioning without requiring complex cluster administration activities and offers a feature set that includes advanced networking and identity capabilities. For a complete set of recommendations, see [Azure Well-Architected Framework review - AKS]( /azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service).
 
 > [!IMPORTANT]
-> Some foundational configuration decisions can't be changed without re-deploying an AKS cluster. For example, selection between public and private AKS clusters, enabling Azure Network Policy, Azure AD integration and the use of Managed Identities for AKS instead of Service Principals.
+> There are some foundational configuration decisions that you can't change without re-deploying the AKS cluster. Examples include the choice between public and private AKS clusters, enabling Azure Network Policy, Azure AD integration, and the use of managed identities for AKS instead of service principals.
 
 #### Design considerations and recommendations
 
 ##### Reliability
 
-AKS manages the native Kubernetes control plane. If the control plane is unavailable, the workload will experience downtime. Take advantage of the reliability features offered by AKS.
+AKS manages the native Kubernetes control plane. If the control plane isn't available, the workload experiences downtime. Take advantage of the reliability features offered by AKS:
 
-- Deploy [AKS clusters across different Azure regions](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) as a scale-unit to maximize reliability and availability. Use [Availability Zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS control plane and agent nodes across physically separate datacenters. However, if there’s colocation latency, you can do AKS deployment within a single zone or use [proximity placement groups](/azure/aks/reduce-latency-ppg) to minimize inter-node latency.
+- Deploy [AKS clusters across different Azure regions](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) as a scale unit to maximize reliability and availability. Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS control plane and agent nodes across physically separate datacenters. However, if colocation latency is a problem, you can do AKS deployment within a single zone or use [proximity placement groups](/azure/aks/reduce-latency-ppg) to minimize internode latency.
 
 - Use the [AKS Uptime SLA](/azure/aks/uptime-sla) for production clusters to maximize Kubernetes API endpoint availability guarantees.
 
 ##### Scalability
 
-Consider AKS [scale limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-kubernetes-service-limits), such as the number of node, node pools per cluster, clusters per subscription.
+Take into account AKS [scale limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-kubernetes-service-limits), like the number of nodes, node pools per cluster, and clusters per subscription.
 
-- If scale limits are reached, take advantage of the [scale-unit strategy](mission-critical-application-design.md#scale-unit-architecture) and deploy more units with clusters.
+- If scale limits are a constraint, take advantage of the [scale-unit strategy](mission-critical-application-design.md#scale-unit-architecture), and deploy more units with clusters.
 
 - Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.
 
-- Utilize the [Horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment depending on CPU utilization or other selected metrics.
+- Use the [horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment based on CPU utilization or other metrics.
 
-- For high scale and burst scenarios, consider the use of [Virtual Nodes](/azure/aks/virtual-nodes-cli) for extensive and rapid scale.
+- For high scale and burst scenarios, consider using [virtual nodes](/azure/aks/virtual-nodes-cli) for extensive and rapid scale.
 
-- Define [pod resource requests and limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) in application deployment manifests. Without this configuration, you might experience performance issues.
+- Define [pod resource requests and limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) in application deployment manifests. If you don't, you might experience performance problems.
 
 ##### Isolation
 
-Maintain boundaries between the infrastructure used by the workload and system tools. Sharing infrastructure might lead to high resource utilization and noisy neighbor situations.
+Maintain boundaries between the infrastructure used by the workload and system tools. Sharing infrastructure might lead to high-resource utilization and noisy neighbor scenarios.
 
-- Use separate node pools for system and workload services. Dedicated node pools for workload components should be based on requirements for specialized infrastructure resources such as GPU, high memory VMs. In general, avoid deploying large numbers of node pools to reduce unnecessary management overhead.
+- Use separate node pools for system and workload services. Dedicated node pools for workload components should be based on requirements for specialized infrastructure resources like high-memory GPU VMs. In general, avoid deploying large numbers of node pools to reduce unnecessary management overhead.
 
-- Use [taints and tolerations](/azure/aks/operator-best-practices-advanced-scheduler#provide-dedicated-nodes-using-taints-and-tolerations) to provide dedicated nodes and limit resource intensive applications.
+- Use [taints and tolerations](/azure/aks/operator-best-practices-advanced-scheduler#provide-dedicated-nodes-using-taints-and-tolerations) to provide dedicated nodes and limit resource-intensive applications.
 - Evaluate application affinity and anti-affinity requirements and configure the appropriate colocation of containers on nodes.
 
 ##### Security
 
-Default 'vanilla' Kubernetes requires significant configuration to ensure a suitable security posture for mission-critical scenarios. AKS addresses various security risks out of the box. The features include for private clusters, auditing and logging into Log Analytics, hardened node images, and the use of managed identities.
+Default vanilla Kubernetes requires significant configuration to ensure a suitable security posture for mission-critical scenarios. AKS addresses various security risks out of the box. The features include private clusters, auditing and logging into Log Analytics, hardened node images, and managed identities.
 
-- Apply configuration guidance provided within the [AKS security baseline](/security/benchmark/azure/baselines/aks-security-baseline).
+- Apply configuration guidance provided in the [AKS security baseline](/security/benchmark/azure/baselines/aks-security-baseline).
 
 - Use the AKS features to handle cluster identity and access management to reduce operational overhead and apply consistent access management.
 
-- Use managed identities instead of service principals to avoid management and rotation credentials. You can add [managed identities](/azure/aks/use-managed-identity) at the cluster level. At the pod level, you can use managed identities through [Azure AD workload identity](/azure/aks/workload-identity-overview).
+- Use managed identities instead of service principals to avoid management and rotation of credentials. You can add [managed identities](/azure/aks/use-managed-identity) at the cluster level. At the pod level, you can use managed identities via [Azure AD workload identity](/azure/aks/workload-identity-overview).
 
-- Utilize [Azure Active Directory integration](/azure/aks/managed-aad) for centralized account management and passwords, application access management, and identity protection. Use Kubernetes RBAC with Azure Active Directory for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to protect configuration and secrets access. Also, limit access to the [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file with Azure role-based access control. Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources), provide the least number of permissions and avoid the use of root / privileged escalation.
+- Use [Azure AD integration](/azure/aks/managed-aad) for centralized account management and passwords, application access management, and enhanced identity protection. Use Kubernetes RBAC with Azure AD for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to help protect configuration and secrets access. Also, limit access to the [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file by using Azure role-based access control. Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources), provide the least number of permissions, and avoid the use of root privilege escalation.
 
 ##### Upgrades
 
-Clusters and nodes need to be upgraded regularly. AKS supports [Kubernetes versions](/azure/aks/supported-kubernetes-versions) aligned with the release cycle of native Kubernetes.
+Clusters and nodes need to be upgraded regularly. AKS supports [Kubernetes versions](/azure/aks/supported-kubernetes-versions) in alignment with the release cycle of native Kubernetes.
 
-- Subscribe to the public [AKS Roadmap and Release Notes](https://github.com/azure/aks) on GitHub to stay up-to-date on upcoming changes, improvements, and most importantly Kubernetes version releases or the deprecation of old releases.
+- Subscribe to the public [AKS Roadmap](http://aka.ms/aks/roadmap) and [Release Notes](https://aka.ms/aks/releasenotes) on GitHub to stay up-to-date on upcoming changes, improvements, and, most importantly, Kubernetes version releases or deprecations.
 
-- Consider and apply the guidance provided within the [AKS checklist](https://www.the-aks-checklist.com/) to ensure alignment with Well-Architected best practice guidance.
+- Apply the guidance provided in the [AKS checklist](https://www.the-aks-checklist.com) to ensure alignment with best practices.
 
-- AKS supports different [ways to update nodes and/or clusters](/azure/aks/upgrade-cluster) in a manual or automated way. [Planned Maintenance](/azure/aks/planned-maintenance) can be used to define maintenance windows for these operations. New images are released weekly. AKS also supports [auto-upgrade channels](/azure/aks/upgrade-cluster#set-auto-upgrade-channel) to automatically upgrade AKS clusters to newer versions of Kubernetes and/or newer node images once available.
+- Be aware of the various methods supported by AKS for [updating nodes and/or clusters](/azure/aks/upgrade-cluster). These methods can be manual or automated. You can use [Planned Maintenance](/azure/aks/planned-maintenance) to define maintenance windows for these operations. New images are released weekly. AKS also supports [auto-upgrade channels](/azure/aks/upgrade-cluster#set-auto-upgrade-channel) for automatically upgrading AKS clusters to newer versions of Kubernetes and/or newer node images when they're available.
 
 ##### Networking
 
-Evaluate the network plugins that best fit your use case. Do you need granular control of traffic between pods? Azure supports kubenet, [Azure CNI](/azure/aks/concepts-network#compare-network-models), and also [bring-your-own-cni](/azure/aks/use-byo-cni) for specific use cases.
+Evaluate the network plugins that best fit your use case. Do you need granular control of traffic between pods? Azure supports kubenet, [Azure CNI](/azure/aks/concepts-network#compare-network-models), and [bring-your-own-cni](/azure/aks/use-byo-cni) for specific use cases.
 
-Prioritize the use of Azure CNI after assessing network requirements and the size of the cluster. Azure CNI enables the use of [Azure](/azure/aks/use-network-policies) or Calico Network Policies for controlling traffic within the cluster.
+Prioritize the use of Azure CNI after assessing network requirements and the size of the cluster. Azure CNI enables the use of [Azure](/azure/aks/use-network-policies) or Calico network policies for controlling traffic within the cluster.
 
 ##### Monitoring
-Your observability options should be able to capture logs and metrics from running pods. Also gather information from Kubernetes Metrics API to monitor the health of running resources and workloads. 
 
-- Use [Azure Monitor and Application Insights](/azure/azure-monitor/insights/container-insights-overview) to centrally collect metrics, logs, and diagnostics from AKS resources for troubleshooting purposes.
+Your monitoring tools should be able to capture logs and metrics from running pods. You should also gather information from the Kubernetes Metrics API to monitor the health of running resources and workloads. 
 
-- Enable and review [Kubernetes master node logs](/azure/aks/view-master-logs).
+- Use [Azure Monitor and Application Insights](/azure/azure-monitor/insights/container-insights-overview) to collect metrics, logs, and diagnostics from AKS resources for troubleshooting.
 
-- Configure the [scraping of Prometheus metrics](/azure/azure-monitor/insights/container-insights-prometheus-integration) with Azure Monitor for containers. Azure Monitor for containers (Container Insights) provides a seamless onboarding experience, enables various monitoring capabilities out of the box and more advanced scenarios via its built-in [Prometheus scraping](/azure/azure-monitor/insights/container-insights-prometheus-integration) support.
+- Enable and review [Kubernetes resource logs](/azure/aks/view-master-logs).
+
+- Configure [Prometheus metrics](/azure/azure-monitor/insights/container-insights-prometheus-integration) in Azure Monitor. Container insights in Monitor provides onboarding, enables monitoring capabilities out of the box, and enables more advanced capabilities via built-in Prometheus support.
 
 ##### Governance
 
-Apply policies to enforce centralized safeguards to AKS clusters in a consistent manner. Policy assignments should be applied at a subscription scope or higher to drive consistency across development teams.
+Use policies to apply centralized safeguards to AKS clusters in a consistent way. Apply policy assignments at a subscription scope or higher to drive consistency across development teams.
 
-- Control what functions pods are granted by using Azure Policy, and if running contradicts policy. This access is defined through built-in policies provided by the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes).
+- Control which functions are granted to pods, and if running contradicts policy, by using Azure Policy. This access is defined through built-in policies provided by the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes).
 
-- Establish a consistent reliability and security baseline for AKS cluster and [pod](/azure/aks/use-pod-security-on-azure-policy) configurations using [Azure Policy](/azure/governance/policy/overview).
+- Establish a consistent reliability and security baseline for AKS cluster and [pod](/azure/aks/use-pod-security-on-azure-policy) configurations by using [Azure Policy](/azure/governance/policy/overview).
  
-- Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, such as root privileges, and disallow pods that don't conform to policy.
+- Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, like root privileges, and to disallow pods that don't conform to policy.
 
 > [!NOTE]
 > 
-> When deploying into an Azure landing zone, be aware that the required Azure Policy to ensure consistent reliability and security should be provided by the landing zone implementation.
-
+> When you deploy into an Azure landing zone, the Azure policies to help you ensure consistent reliability and security should be provided by the landing zone implementation.
+>
 > The mission-critical [reference implementations](mission-critical-overview.md#illustrative-examples) provide a suite of baseline policies to drive recommended reliability and security configurations.
 
-### Azure App Service
+### App Service
 
-For web and API based workload scenarios, [Azure App Service](https://azure.microsoft.com/services/app-service/containers/) can be a feasible alternative to AKS, providing a low-friction container platform without the complexity of Kubernetes. For complete set of recommendations, see [Reliability considerations for App Services](/azure/architecture/framework/services/compute/azure-app-service/reliability) and [Operational Excellence for App Services](/azure/architecture/framework/services/compute/azure-app-service/operational-excellence).
+For web and API-based workload scenarios, [App Service](https://azure.microsoft.com/services/app-service/containers/) might be a feasible alternative to AKS. It provides a low-friction container platform without the complexity of Kubernetes. For complete set of recommendations, see [Reliability considerations for App Service](/azure/architecture/framework/services/compute/azure-app-service/reliability) and [Operational Excellence for App Service](/azure/architecture/framework/services/compute/azure-app-service/operational-excellence).
 
 #### Design considerations and recommendations
 
 ##### Reliability
 
-Evaluate the use of TCP and SNAT ports. TCP connections are used for all outbound connections; but, SNAT ports are used when making outbound connections to public IP addresses. SNAT port exhaustion is a common failure scenario that can be predicted by load testing while monitoring ports using Azure Diagnostics. Predictively detect SNAT port exhaustion through load testing. Monitoring ports using Azure Monitor. If SNAT errors occur, it's necessary to either scale across more/larger workers, or implement coding practices to help preserve and reuse SNAT ports, such as connection pooling or the lazy loading of resources.
+Evaluate the use of TCP and SNAT ports. TCP connections are used for all outbound connections, but SNAT ports are used for outbound connections to public IP addresses. SNAT port exhaustion is a common failure scenario. You should predictively detect this problem by load testing when you use Azure Diagnostics to monitor ports. If SNAT errors occur, you need to either scale across more or larger workers or implement coding practices to help preserve and reuse SNAT ports. Examples of coding practices that you can use include connection pooling and the lazy loading of resources.
 
 TCP port exhaustion another failure scenario that occurs when the sum of outbound connections from a given worker exceeds the capacity. The number of available TCP ports depend on the size of the worker. Recommendations are provided in [TCP and SNAT ports](/azure/architecture/framework/services/compute/azure-app-service/reliability#tcp-and-snat-ports).
 
