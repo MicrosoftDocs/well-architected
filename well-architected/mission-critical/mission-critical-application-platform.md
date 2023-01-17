@@ -65,54 +65,55 @@ Not every workload supports or requires multiple regions running simultaneously.
 
 ### Design recommendations
 
-- Deploy your solution within a minimum of two Azure regions to protect against regional outages. Select deployment regions that have the capabilities and characteristics needed by the workload. The capabilities should achieve performance and availability targets, while fulfilling data residency and retention requirements.
+- Deploy your solution in at least two Azure regions to help protect against regional outages. Deploy it in regions that have the capabilities and characteristics that the workload requires. The capabilities should meet performance and availability targets while fulfilling data residency and retention requirements.
 
-  For example, some data compliance requirements might constrain the number of available regions and potentially force design compromises. In such cases, extra investment in operational wrappers is highly recommended to predict, detect, and respond to failures. Suppose you're constrained to a geography with two regions, in which only one region supports Availability Zones (3 + 1 datacenter model). Create a secondary deployment pattern using fault domain isolation to allow for both regions to be deployed in an active configuration, ensuring the primary region houses multiple deployment stamps.
+  For example, some data compliance requirements might constrain the number of available regions and potentially force design compromises. In such cases, we strongly recommend that you add extra investment in operational wrappers to predict, detect, and respond to failures. Suppose you're constrained to a geography with two regions, and only one of those regions supports availability zones (3 + 1 datacenter model). Create a secondary deployment pattern using fault domain isolation to allow both regions to be deployed in an active configuration, and ensure that the primary region houses multiple deployment stamps.
 
-  If suitable Azure regions don't all offer requisite capabilities, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability. If only a single Azure region is suitable, multiple deployment stamps ('regional scale-units') should be deployed within the selected region to mitigate some risk, using Availability Zones to provide datacenter-level fault tolerance. However, such a significant compromise in geographical distribution will drastically constrain the attainable composite SLA and overall reliability.
+  If suitable Azure regions don't all offer capabilities that you need, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability. If only a single Azure region is suitable, deploy multiple deployment stamps (regional scale units) in the selected region to mitigate some risk, and use availability zones to provide datacenter-level fault tolerance. However, such a significant compromise in geographical distribution dramatically constrains the attainable composite SLA and overall reliability.
 
   > [!IMPORTANT]
-  > For scenarios targeting a >= 99.99% SLO, a minimum of three deployment regions is recommended to maximize the composite SLA and overall reliability. Calculate the [composite SLA](/azure/architecture/framework/resiliency/business-metrics#composite-slas) for all user flows. Ensure the composite SLA is in-line with business targets.
+  > For scenarios that target an SLO that's greater than or equal to 99.99%, we recommend a minimum of three deployment regions to maximize the composite SLA and overall reliability. Calculate the [composite SLA](/azure/architecture/framework/resiliency/business-metrics#composite-slas) for all user flows. Ensure that the composite SLA is aligned with business targets.
 
-- For high-scale application scenarios with significant volumes of traffic, design the solution to scale across multiple regions to navigate potential capacity constraints within a single region. Additional regional deployment stamps will achieve a greater composite SLA. The use of global resources will constrain the increase in composite SLA from adding further regions.
+- For high-scale application scenarios that have significant volumes of traffic, design the solution to scale across multiple regions to navigate potential capacity constraints within a single region. Additional regional deployment stamps will achieve a higher composite SLA. Using global resources constrains the increase in composite SLA that you achieve by adding more regions.
 
-- Define and validate the recovery point objectives (RPO) and recovery time objectives (RTO).
+- Define and validate your recovery point objectives (RPO) and recovery time objectives (RTO).
 
-- Within a single geography, prioritize the use of regional pairs to benefit from SDP serialized rollouts for planned maintenance, and regional prioritization for unplanned maintenance.
+- Within a single geography, prioritize the use of regional pairs to benefit from SDP serialized rollouts for planned maintenance and regional prioritization for unplanned maintenance.
 
 - Geographically co-locate Azure resources with users to minimize network latency and maximize end-to-end performance.
 
-  - Technical solutions such as a Content Delivery Network (CDN) or edge caching can also be used to drive optimal network latency for distributed user bases. For more information, see [Global traffic routing](./mission-critical-networking-connectivity.md#global-traffic-routing), [Application delivery services](./mission-critical-networking-connectivity.md#application-delivery-services), and [Caching and static content delivery](./mission-critical-networking-connectivity.md#caching-and-static-content-delivery).
+  - You can also use solutions like a Content Delivery Network (CDN) or edge caching to drive optimal network latency for distributed user bases. For more information, see [Global traffic routing](./mission-critical-networking-connectivity.md#global-traffic-routing), [Application delivery services](./mission-critical-networking-connectivity.md#application-delivery-services), and [Caching and static content delivery](./mission-critical-networking-connectivity.md#caching-and-static-content-delivery).
 
-- Align current service availability with product roadmaps when selecting deployment regions; not all services may be available in every region on day 1.
+- Align current service availability with product roadmaps when you choose deployment regions. Some services might be immediately available in every region.
 
 ## Containerization
 
-A container has application code with related configuration files, libraries, and dependencies required for it to run. Containerization provides an abstraction layer for application code and its dependencies and achieves separation from the underlying hosting platform. This single software package is highly portable and capable of running consistently across different infrastructure platforms or cloud providers. Developers don’t need to rewrite code, deploy applications faster, and more reliably. 
+A container includes application code and the related configuration files, libraries, and dependencies that it needs to run. Containerization provides an abstraction layer for application code and its dependencies and achieves separation from the underlying hosting platform. The single software package is highly portable and can run consistently across various infrastructure platforms and cloud providers. Developers don't need to rewrite code and can deploy applications faster and more reliably. 
 
 > [!IMPORTANT]
-> Containers should be considered as the primary model for mission-critical application packages. It improves infrastructure utilization because multiple containers can be hosted on the same virtualized infrastructure. Also, because all software is included in the container, the application can be moved across different operating systems regardless of runtimes or library versions. A benefit is simplified management operations compared to traditional virtualized hosting.
-> Mission-critical applications need to scale fast to avoid performance bottlenecks. Because container images are pre-built, startup can be minimized to only on bootstrapping the application, allowing rapid scalability.
+> We recommend that you use containers for mission-critical application packages. They improve infrastructure utilization because you can host multiple containers on the same virtualized infrastructure. Also, because all software is included in the container, you can move the application across various operating systems, regardless of runtimes or library versions. Management is also easier with containers than it is with traditional virtualized hosting.
+>
+> Mission-critical applications need to scale fast to avoid performance bottlenecks. Because container images are pre-built, you can limit startup to occur only during bootstrapping of the application, which provides rapid scalability.
 
 ### Design considerations
   
-- **Monitoring**. Monitoring services can find it harder to access applications in containers. Third-party software is typically required to collect and store container state indicators, such as CPU usage or RAM usage.
+- **Monitoring**. It can be difficult for monitoring services to access applications that are in containers. You typically need third-party software to collect and store container state indicators like CPU or RAM usage.
 
-- **Security**. The hosting platform OS kernel is shared across multiple containers, creating a single point of attack. However, the risk of host VM access is limited since containers are isolated from the underlying operating system.
+- **Security**. The hosting platform OS kernel is shared across multiple containers, creating a single point of attack. However, the risk of host VM access is limited because containers are isolated from the underlying operating system.
 
-- **State**. While it's possible to store data within a running container's filesystem, the data won't persist when the container is recreated. Instead, persist data by mounting external storage or using an external database.
+- **State**. Although it's possible to store data in a running container's file system, the data won't persist when the container is re-created. Instead, persist data by mounting external storage or using an external database.
 
 ### Design recommendations
 
 - Containerize all application components, using container images as the primary model for application deployment packages.
 
-- Prioritize Linux-based container runtimes when possible. The images are more lightweight, and new features for linux nodes/containers are released frequently.
+- Prioritize Linux-based container runtimes when possible. The images are more lightweight, and new features for Linux nodes/containers are released frequently.
 
-- Make containers immutable and replaceable with short lifecycles.
+- Make containers immutable and replaceable, with short lifecycles.
 
-- Ensure that all relevant logs and metrics are gathered from the container, container host, and underlying cluster. Send the gathered logs and metrics to a unified data sink for further processing and analysis.
+- Be sure to gather all relevant logs and metrics from the container, container host, and underlying cluster. Send the gathered logs and metrics to a unified data sink for further processing and analysis.
 
-- Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) with [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Azure Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Azure Active Directory.
+- Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry) with [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Microsoft Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Azure Active Directory (Azure AD).
 
 ## Container hosting and orchestration
 
