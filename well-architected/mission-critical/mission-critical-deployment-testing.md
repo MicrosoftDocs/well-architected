@@ -1,9 +1,9 @@
 ---
 title: Deployment and testing for mission-critical workloads on Azure
-description: This design area focuses on how to eradicate downtime and maintain application health for deployment operations, by providing key considerations and recommendations that are intended to inform the design of optimal CI/CD pipelines for a mission-critical application.
+description: This design area focuses on how to minimize downtime and maintain application health for deployment operations. It provides considerations and recommendations that can inform the design of optimal CI/CD pipelines for a mission-critical application.
 author: calcof
 ms.author: prwilk
-ms.date: 01/01/2023
+ms.date: 01/23/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -20,44 +20,52 @@ ms.custom:
 
 Failed deployments and erroneous releases are common causes for application outages. How you approach deployment and testing plays a critical role in the overall reliability of a mission-critical application.
 
-Deployment and testing should form the basis for _all_ application and infrastructure operations to ensure consistent outcomes for mission-critical workloads. Be prepared to deploy weekly, daily, or more often. Design your Continuous Integration and Continuous Deployment (CI/CD) pipelines to support those goals.
+Deployment and testing should form the basis for all application and infrastructure operations to ensure consistent outcomes for mission-critical workloads. Be prepared to deploy weekly, daily, or more often. Design your continuous integration and continuous deployment (CI/CD) pipelines to support those goals.
 
-The strategy should aspire for:
+The strategy should implement:
 
 - **Rigorous pre-release testing**. Updates shouldn't introduce defects, vulnerabilities, or other factors that might jeopardize application health.
 
-- **Transparent deployments**. Rolling out updates should be possible at any time without impacting users. Users should be able to continue their interaction with the application interaction without any interruption.
+- **Transparent deployments**. It should be possible to roll out updates at any time without affecting users. Users should be able to continue their interactions with the application without interruption.
 
 - **Highly available operations**. Deployment and testing processes and tools must be highly available to support overall application reliability.
 
-- **Consistent deployment process**. Same application artifacts and processes should be used to deploy the infrastructure and application code across different environments. End-to-end automation is mandatory. Manual interventions must be avoided because they can introduce reliability risks.
+- **Consistent deployment processes**. The same application artifacts and processes should be used to deploy the infrastructure and application code across different environments. End-to-end automation is mandatory. Manual interventions must be avoided because they can introduce reliability risks.
 
 This design area provides recommendations on how to optimize deployment and testing processes with the goal of minimizing downtime and maintaining application health and availability.
 
 > [!IMPORTANT]
-> This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
+> This article is part of the [Azure Well-Architected Framework mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend that you start with [What is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload).
 
 ## Zero-downtime deployment
 
+View the following video for an overview of zero-downtime deployment.
+
+<br>
+
 > [!VIDEO 1d3846c0-f301-4a25-a49a-94f5be3f6605]
 
-Achieving zero-downtime deployments is a fundamental goal of a mission-critical application. It’s critical to be available 24x7 even when new releases are rolled out during business hours. Invest your efforts up-front to define and plan deployment processes, to drive key design decisions such as whether to treat resources as ephemeral.
+Achieving zero-downtime deployments is a fundamental goal for mission-critical applications. Your application needs to be all day, every day, even when new releases are rolled out during business hours. Invest your efforts up front to define and plan deployment processes in order to drive key design decisions like whether to treat resources as ephemeral.
 
-To achieve zero-downtime deployment, deploy new infrastructure next to the existing infrastructure, test it thoroughly, transition end user traffic, and only then decommission the existing (now old) infrastructure. Other practices like the [scale-unit architecture](mission-critical-application-design.md#scale-unit-architecture) are key for the implementation.
+To achieve zero-downtime deployment, deploy new infrastructure next to the existing infrastructure, test it thoroughly, transition end user traffic, and only then decommission the previous infrastructure. Other practices, like the [scale-unit architecture](mission-critical-application-design.md#scale-unit-architecture), are also key.
 
-The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) and [Azure Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) reference implementations illustrate this deployment approach as shown in this image.
+The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) and [Azure Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) reference implementations illustrate this deployment approach, as shown in this diagram:
 
-![Zero-Downtime DevOps Pipeline Reference](./images/mission-critical-zero-downtime-pipeline.png "Zero-Downtime DevOps Pipeline Reference")
+:::image type="content" source="./images/mission-critical-zero-downtime-pipeline.png" alt-text="Diagram that shows the zero-downtime DevOps pipeline reference." lightbox="./images/mission-critical-zero-downtime-pipeline.png" border="false":::
 
 ## Application environments
 
+View the following video for an overview of recommendations for application environments.
+
+<br>
+
 > [!VIDEO 7e6e6390-9f32-4c9e-88da-497a604db319]
 
-You’ll need various types of environments to validate and stage deployment operations. The types will differ in capabilities and lifecycle. Some environments might reflect production and are long lived while others may be short lived with lower capabilities than production. Setting up these environments early in the development cycle will ensure agility, separation of production and preproduction assets, and thorough testing of operations before releasing to the production environment. All environments should reflect the production environment as much as possible, with simplifications applied for lower environments as necessary.
+You need various types of environments to validate and stage deployment operations. The types have different capabilities and lifecycles. Some environments might reflect the production environment and be long lived, and others might be short lived and have fewer capabilities than production. Setting up these environments early in the development cycle helps to ensure agility, separation of production and preproduction assets, and thorough testing of operations before releasing to the production environment. All environments should reflect the production environment as much as possible, although you can apply simplifications to lower environments as needed. This diagram shows a mission-critical architecture:  
 
-![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png)
+:::image type="content" source="./images/mission-critical-subscription-organization.png" alt-text="Diagram that shows a mission-critical Azure architecture." lightbox="./images/mission-critical-subscription-organization.png" border="false":::
 
-There are some common considerations.
+There are some common considerations:
 
 - Components shouldn’t be shared across environments. Possible exceptions are downstream security appliances like firewalls, or source locations for synthetic test data.
 
