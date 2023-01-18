@@ -80,7 +80,7 @@ Not every workload supports or requires multiple regions running simultaneously.
 
 - Within a single geography, prioritize the use of regional pairs to benefit from SDP serialized rollouts for planned maintenance and regional prioritization for unplanned maintenance.
 
-- Geographically co-locate Azure resources with users to minimize network latency and maximize end-to-end performance.
+- Geographically colocate Azure resources with users to minimize network latency and maximize end-to-end performance.
 
   - You can also use solutions like a Content Delivery Network (CDN) or edge caching to drive optimal network latency for distributed user bases. For more information, see [Global traffic routing](./mission-critical-networking-connectivity.md#global-traffic-routing), [Application delivery services](./mission-critical-networking-connectivity.md#application-delivery-services), and [Caching and static content delivery](./mission-critical-networking-connectivity.md#caching-and-static-content-delivery).
 
@@ -124,7 +124,7 @@ There are advantages and disadvantages associated with each of these platforms. 
 - [Container option comparisons](/azure/container-apps/compare-options#container-option-comparisons)
 
 > [!IMPORTANT]
-> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service) should your first choice of orchestrator when it meets your requirements. [Azure Container Apps](/azure/container-apps/overview) is another option. Although [Azure App Service](https://azure.microsoft.com/services/app-service/containers) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
+> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service) should be your first choice of orchestrator when it meets your requirements. [Azure Container Apps](/azure/container-apps/overview) is another option. Although [Azure App Service](https://azure.microsoft.com/services/app-service/containers) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
 
 ### Azure Kubernetes Service
 
@@ -161,7 +161,7 @@ Take into account AKS [scale limits](/azure/azure-resource-manager/management/az
 
 Maintain boundaries between the infrastructure used by the workload and system tools. Sharing infrastructure might lead to high-resource utilization and noisy neighbor scenarios.
 
-- Use separate node pools for system and workload services. Dedicated node pools for workload components should be based on requirements for specialized infrastructure resources like high-memory GPU VMs. In general, avoid deploying large numbers of node pools to reduce unnecessary management overhead.
+- Use separate node pools for system and workload services. Dedicated node pools for workload components should be based on requirements for specialized infrastructure resources like high-memory GPU VMs. In general, to reduce unnecessary management overhead, avoid deploying large numbers of node pools.
 
 - Use [taints and tolerations](/azure/aks/operator-best-practices-advanced-scheduler#provide-dedicated-nodes-using-taints-and-tolerations) to provide dedicated nodes and limit resource-intensive applications.
 - Evaluate application affinity and anti-affinity requirements and configure the appropriate colocation of containers on nodes.
@@ -190,7 +190,7 @@ Clusters and nodes need to be upgraded regularly. AKS supports [Kubernetes versi
 
 ##### Networking
 
-Evaluate the network plugins that best fit your use case. Do you need granular control of traffic between pods? Azure supports kubenet, [Azure CNI](/azure/aks/concepts-network#compare-network-models), and [bring-your-own-cni](/azure/aks/use-byo-cni) for specific use cases.
+Evaluate the network plugins that best fit your use case. Do you need granular control of traffic between pods? Azure supports kubenet, [Azure CNI](/azure/aks/concepts-network#compare-network-models), and [bring your own CNI](/azure/aks/use-byo-cni) for specific use cases.
 
 Prioritize the use of Azure CNI after assessing network requirements and the size of the cluster. Azure CNI enables the use of [Azure](/azure/aks/use-network-policies) or Calico network policies for controlling traffic within the cluster.
 
@@ -230,7 +230,7 @@ For web and API-based workload scenarios, [App Service](https://azure.microsoft.
 
 Evaluate the use of TCP and SNAT ports. TCP connections are used for all outbound connections, but SNAT ports are used for outbound connections to public IP addresses. SNAT port exhaustion is a common failure scenario. You should predictively detect this problem by load testing when you use Azure Diagnostics to monitor ports. If SNAT errors occur, you need to either scale across more or larger workers or implement coding practices to help preserve and reuse SNAT ports. Examples of coding practices that you can use include connection pooling and the lazy loading of resources.
 
-TCP port exhaustion is another failure scenario. It occurs when the sum of outbound connections from a given worker exceeds capacity. The number of available TCP ports depend on the size of the worker. For recommendations, see [TCP and SNAT ports](/azure/architecture/framework/services/compute/azure-app-service/reliability#tcp-and-snat-ports).
+TCP port exhaustion is another failure scenario. It occurs when the sum of outbound connections from a given worker exceeds capacity. The number of available TCP ports depends on the size of the worker. For recommendations, see [TCP and SNAT ports](/azure/architecture/framework/services/compute/azure-app-service/reliability#tcp-and-snat-ports).
 
 ##### Scalability
 
@@ -286,7 +286,7 @@ You need to configure your container registries for mission-critical workloads c
 
 #### Reliability
 
-Configure geo-replication to all deployment regions to remove regional dependencies and optimize latency. Container Registry supports high availability through [geo-replication](/azure/container-registry/container-registry-geo-replication#considerations-for-high-availability) to multiple configured regions, providing resiliency against regional outages. If a region becomes unavailable, the other regions continue to serve image requests. When the region is back online, Container Registry recovers it and replicate changes to it. This capability also provides registry colocation within each configured region, reducing network latency and cross-region data transfer costs. 
+Configure geo-replication to all deployment regions to remove regional dependencies and optimize latency. Container Registry supports high availability through [geo-replication](/azure/container-registry/container-registry-geo-replication#considerations-for-high-availability) to multiple configured regions, providing resiliency against regional outages. If a region becomes unavailable, the other regions continue to serve image requests. When the region is back online, Container Registry recovers it and replicates changes to it. This capability also provides registry colocation within each configured region, reducing network latency and cross-region data transfer costs. 
 
 In Azure regions that provide availability zone support, the [Premium Container Registry tier supports zone redundancy](/azure/container-registry/zone-redundancy) to protect against zonal failure. The Premium tier also supports [private endpoints](/azure/container-registry/container-registry-private-link) to help prevent unauthorized access to the registry, which can lead to reliability issues. 
 
@@ -309,11 +309,11 @@ If you want to protect the Container Registry instance from deletion, use [resou
 
 Serverless computing provides resources on demand and eliminates the need to manage infrastructure. The cloud provider automatically provisions, scales, and manages the resources required to run deployed application code. Azure provides several serverless compute platforms:
 
-- [Azure Functions](/azure/azure-functions/functions-overview). Application logic is implemented as distinct blocks of code or _functions_, which run in response to events, like an HTTP request or queue message. Each function scales as necessary to meet demand.
+- [Azure Functions](/azure/azure-functions/functions-overview). Application logic is implemented as distinct blocks of code, or _functions_, which run in response to events, like an HTTP request or queue message. Each function scales as necessary to meet demand.
 
-- [Azure Logic Apps](/azure/logic-apps/logic-apps-overview). Best suited for creating and running automated workflows that integrate various apps, data sources, services, and systems. As with Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that  supports code blocks like conditionals and loops.
+- [Azure Logic Apps](/azure/logic-apps/logic-apps-overview). Best suited for creating and running automated workflows that integrate various apps, data sources, services, and systems. Like Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that  supports code blocks like conditionals and loops.
 
-- [Azure API Management](https://azure.microsoft.com/services/api-management). Publish, transform, maintain, and monitor enhanced security APIs by using the Consumption tier.
+- [Azure API Management](https://azure.microsoft.com/services/api-management). Publish, transform, maintain, and monitor enhanced-security APIs by using the Consumption tier.
 
 - [Power Apps and Power Automate](/powerapps/powerapps-overview). Provides a low-code or no-code development experience, with simple workflow logic and integrations that are configurable through connections in a user interface.
 
@@ -337,20 +337,20 @@ You need to use code scanning tools on Azure Functions code and integrate those 
 
 ### Logic Apps
 
-As with Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that supports blocks like conditionals, loops, and other constructs.
+Like Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that supports blocks like conditionals, loops, and other constructs.
 
-Multiple [deployment modes](/azure/logic-apps/single-tenant-overview-compare) deployment modes are available. We recommend the Standard mode to ensure a single-tenant deployment and mitigate noisy neighbor scenarios. This mode uses the containerized single-tenant Logic Apps runtime, which is based on Azure Functions. In this mode, the logic app can have multiple stateful and stateless workflows. You should be aware of the configuration limits.
+Multiple [deployment modes](/azure/logic-apps/single-tenant-overview-compare) are available. We recommend the Standard mode to ensure a single-tenant deployment and mitigate noisy neighbor scenarios. This mode uses the containerized single-tenant Logic Apps runtime, which is based on Azure Functions. In this mode, the logic app can have multiple stateful and stateless workflows. You should be aware of the configuration limits.
 
 ## Constrained migrations via IaaS
 
-Many applications that have existing on-premises deployments use virtualization technologies and redundant hardware to provide mission-critical levels of reliability. Modernization is often hindered by business constraints that prevent full alignment with the cloud-native baseline (North Star) architecture pattern that's recommended for mission-critical workloads. So many applications adopt a phased approach, with initial cloud deployments using virtualization and Azure Virtual Machines as the primary application hosting model. The use of IaaS virtual machines might be required in certain scenarios:
+Many applications that have existing on-premises deployments use virtualization technologies and redundant hardware to provide mission-critical levels of reliability. Modernization is often hindered by business constraints that prevent full alignment with the cloud-native baseline (North Star) architecture pattern that's recommended for mission-critical workloads. Thats' why many applications adopt a phased approach, with initial cloud deployments using virtualization and Azure Virtual Machines as the primary application hosting model. The use of IaaS virtual machines might be required in certain scenarios:
 
 - Available PaaS services don't provide the required performance or level of control.
 - The workload requires operating system access, specific drivers, or network and system configurations.
 - The workload doesn't support running in containers.
 - There's no vendor support for third-party workloads.
 
-This section focuses on best ways to use Azure Virtual Machines and associated services to maximize the reliability of the application platform. It highlights key aspects of the mission-critical design methodology that transpose cloud-native and IaaS migration scenarios.
+This section focuses on the best ways to use Azure Virtual Machines and associated services to maximize the reliability of the application platform. It highlights key aspects of the mission-critical design methodology that transpose cloud-native and IaaS migration scenarios.
 
 ### Design considerations
 
