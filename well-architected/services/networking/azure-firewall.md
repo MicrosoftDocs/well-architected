@@ -8,7 +8,7 @@ ms.custom: engagement-fy23
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 09/30/2022
+ms.date: 01/18/2023
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall
@@ -75,6 +75,7 @@ As you make design choices for Azure Firewall, review the [design principles](..
 > - Validate spoke networks.
 > - Determine if you want to use third-party SECaaS providers.
 > - Use just-in-time (JIT) systems.
+> - Protect your hub virtual network with a DDoS protection plan.
 
 ### Recommendations
 
@@ -92,6 +93,7 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 |Configure Azure Firewall in the forced tunneling mode to route all internet-bound traffic to a designated next hop instead of going directly to the internet.|Azure Firewall must have direct internet connectivity. If your **AzureFirewallSubnet** learns a default route to your on-premises network via the Border Gateway Protocol, you must configure Azure Firewall in the forced tunneling mode. Using the forced tunneling feature, you'll need another /26 address space for the Azure Firewall Management subnet. You're required to name it **AzureFirewallManagementSubnet**.<br><br>If this is an existing Azure Firewall instance that can't be reconfigured in the forced tunneling mode, create a UDR with a 0.0.0.0/0 route. Set the **NextHopType** value as **Internet**. Associate it with **AzureFirewallSubnet** to maintain internet connectivity.|
 |Set the public IP address to **None** to deploy a fully private data plane when you configure Azure Firewall in the forced tunneling mode.|When you deploy a new Azure Firewall instance, if you enable the forced tunneling mode, you can set the public IP address to **None** to deploy a fully private data plane. However, the management plane still requires a public IP for management purposes only. The internal traffic from virtual and on-premises networks won't use that public IP. For more about forced tunneling, see [Azure Firewall forced tunneling](/azure/firewall/forced-tunneling).|
 |Use fully qualified domain name (FQDN) filtering in network rules.|You can use FQDNs based on DNS resolution in Azure Firewall and firewall policies. This capability allows you to filter outbound traffic with any TCP/UDP protocol (including NTP, SSH, RDP, and more). You must enable the DNS Proxy option to use FQDNs in your network rules. To learn how it works, see [Azure Firewall FQDN filtering in network rules](/azure/firewall/fqdn-filtering-network-rules#how-it-works).|
+|Use Azure Firewall Manager to create and associate a DDoS protection plan with your hub virtual network.|A DDoS protection plan provides enhanced mitigation features to defend your firewall from DDoS attacks. Azure Firewall Manager is an integrated tool to create your firewall infrastructure and DDoS protection plans. For more information, see [Configure an Azure DDoS Protection Plan using Azure Firewall Manager](/azure/firewall-manager/configure-ddos).
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
