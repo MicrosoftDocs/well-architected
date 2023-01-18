@@ -230,76 +230,75 @@ For web and API-based workload scenarios, [App Service](https://azure.microsoft.
 
 Evaluate the use of TCP and SNAT ports. TCP connections are used for all outbound connections, but SNAT ports are used for outbound connections to public IP addresses. SNAT port exhaustion is a common failure scenario. You should predictively detect this problem by load testing when you use Azure Diagnostics to monitor ports. If SNAT errors occur, you need to either scale across more or larger workers or implement coding practices to help preserve and reuse SNAT ports. Examples of coding practices that you can use include connection pooling and the lazy loading of resources.
 
-TCP port exhaustion another failure scenario that occurs when the sum of outbound connections from a given worker exceeds the capacity. The number of available TCP ports depend on the size of the worker. Recommendations are provided in [TCP and SNAT ports](/azure/architecture/framework/services/compute/azure-app-service/reliability#tcp-and-snat-ports).
+TCP port exhaustion is another failure scenario. It occurs when the sum of outbound connections from a given worker exceeds capacity. The number of available TCP ports depend on the size of the worker. For recommendations, see [TCP and SNAT ports](/azure/architecture/framework/services/compute/azure-app-service/reliability#tcp-and-snat-ports).
 
 ##### Scalability
 
-Plan for future scalability requirements and application growth so that recommendations can be applied from the start, avoiding future technical migration debt as the solution grows.
+Plan for future scalability requirements and application growth so that you can apply appropriate recommendations from the start. By doing so, you can avoid technical migration debt as the solution grows.
 
-- Enable Autoscale to ensure adequate resources are available to service requests. Evaluate per-app scaling for high density hosting on Azure App Service.
+- Enable autoscale to ensure that adequate resources are available to service requests. Evaluate per-app scaling for high-density hosting on App Service.
 
-- Azure App Service has a default, soft limit of [instances per App Service Plan](/azure/app-service/overview-hosting-plans#should-i-put-an-app-in-a-new-plan-or-an-existing-plan).
+- Be aware that App Service has a default, soft limit of [instances per App Service plan](/azure/app-service/overview-hosting-plans#should-i-put-an-app-in-a-new-plan-or-an-existing-plan).
 
-- Apply autoscale rules. App Service plan will scale out if any rule within the profile is met but will only scale in if all rules within the profile are met. Use a scale-out and scale-in rule combination to ensure auto-scale can take action to both scale out and scale in. Understand the behavior of multiple scaling rules in a single profile.
+- Apply autoscale rules. An App Service plan scales out if any rule within the profile is met but only scales in if all rules within the profile are met. Use a scale-out and scale-in rule combination to ensure that autoscale can take action to both scale out and scale in. Understand the behavior of multiple scaling rules in a single profile.
 
-- Per-app scaling can be enabled at the App Service Plan level to allow an application to scale independently from the App Service plan that hosts it. Apps are allocated to available nodes using a best effort approach for an even distribution. While an even distribution isn't guaranteed, the platform will make sure that two instances of the same app won't be hosted on the same instance.
+- Be aware that you can enable per-app scaling at the level of the App Service plan to allow an application to scale independently from the App Service plan that hosts it. Apps are allocated to available nodes via a best-effort approach for an even distribution. Although an even distribution isn't guaranteed, the platform ensures that two instances of the same app aren't hosted on the same instance.
 
 ##### Monitoring
 
-Monitor application behavior and get access to relevant logs and metrics is crucial to making sure the application is working as expected.
+Monitor application behavior and get access to relevant logs and metrics to ensure that your application works as expected.
 
-- Diagnostic logging provides the ability to ingest application and platform level logs into either Log Analytics, Azure Storage, or a third-party tool via Event Hubs.
+- You can use diagnostic logging to ingest application-level and platform-level logs into Log Analytics, Azure Storage, or a third-party tool via Azure Event Hubs.
 
 - Application performance monitoring with Application Insights provides deep insights into application performance.
-Mission-critical applications must have the ability to self-heal if there are failures. Enable [AutoHeal](https://azure.github.io/AppService/2021/04/21/Announcing-Autoheal-for-Azure-App-Service-Linux.html) to automatically recycle unhealthy workers.
-
-Appropriate health checks must be used to assess all critical downstream dependencies to ensure overall health. Enabling [Health Check](https://aka.ms/appservicehealthcheck) to identify non-responsive workers is highly recommended.
+- Mission-critical applications must have the ability to self-heal if there are failures. Enable [Auto Heal](https://azure.github.io/AppService/2021/04/21/Announcing-Autoheal-for-Azure-App-Service-Linux.html) to automatically recycle unhealthy workers.
+- You need to use appropriate health checks to assess all critical downstream dependencies, which helps to ensure overall health. We strongly recommend that you enable [Health Check](https://aka.ms/appservicehealthcheck) to identify non-responsive workers.
 
 ##### Deployment
 
-To work around the default limit of instances per App Service Plan, deploy Azure App Service Plans in multiple scale-units in a single region.  Also deploy App Service Plans in an [Availability Zone configuration](https://azure.github.io/AppService/2021/08/25/App-service-support-for-availability-zones.html) to ensure worker nodes are distributed across zones within a region. Consider opening a support ticket to increase the maximum number of workers to twice the instance count required to serve normal peak load.
+To work around the default limit of instances per App Service plan, deploy App Service plans in multiple scale units in a single region. Deploy App Service plans in an [availability zone configuration](https://azure.github.io/AppService/2021/08/25/App-service-support-for-availability-zones.html) to ensure that worker nodes are distributed across zones within a region. Consider opening a support ticket to increase the maximum number of workers to twice the instance count that you need to serve normal peak load.
 
 ## Container registry
 
-Container registries host images deployed to container runtime environments, such as AKS. 
-Mission-critical workloads need careful configuration of container registries. An outage shouldn’t cause delays in pulling images especially during scaling operations. This set of considerations and recommendations focus on native Azure Container Registry service and explore the trade-offs associated with centralized and federated deployment models.
+Container registries host images that are deployed to container runtime environments like AKS. 
+You need to configure your container registries for mission-critical workloads carefully. An outage shouldn't cause delays in pulling images, especially during scaling operations. The following considerations and recommendations focus on Azure Container Registry and explore the trade-offs that are associated with centralized and federated deployment models.
 
 ### Design considerations
 
-- **Format**. Consider a container registry that relies on the Docker-provided format and standards for both push and pull operations because they are compatible and mostly interchangeable.
+- **Format**. Consider a using container registry that relies on the Docker-provided format and standards for both push and pull operations. These solutions are compatible and mostly interchangeable.
 
-- **Deployment model**. You can deploy the container registry as a centralized service that’s consumed by multiple applications within an organization. Or you can deploy as a dedicated component for a specific application workload.
+- **Deployment model**. You can deploy the container registry as a centralized service that's consumed by multiple applications within your organization. Or you can deploy it as a dedicated component for a specific application workload.
 
-- **Public registries**. Container images are stored on Docker Hub or other public registries that exist outside of Azure and a given virtual network. This isn't necessarily a problem but can lead to various potential issues related to service unavailability, throttling, and data exfiltration. Some application scenarios require public container images be replicated within a private container registry to limit egress traffic, increase availability, or avoid potential throttling.
+- **Public registries**. Container images are stored in Docker Hub or other public registries that exist outside of Azure and a given virtual network. This isn't necessarily a problem, but it can lead to various issues that are related to service availability, throttling, and data exfiltration. For some application scenarios, you need to replicate public container images in a private container registry to limit egress traffic, increase availability, or avoid potential throttling.
 
 ### Design recommendations
 
-- Use container registry instances that are dedicated to the application workload. Avoid taking a dependency on a centralized service unless organizational availability and reliability requirements are fully aligned with the application.
+- Use container registry instances that are dedicated to the application workload. Avoid creating a dependency on a centralized service unless organizational availability and reliability requirements are fully aligned with the application.
 
-  In the recommended [core architecture pattern](mission-critical-architecture-pattern.md), container registries are global resources that are long living. Consider a single global container registry per environment, such as the use of a global production registry.
+  In the recommended [core architecture pattern](mission-critical-architecture-pattern.md), container registries are global resources that are long living. Consider using a single global container registry per environment. For example, use a global production registry.
 
-- Ensure that the SLA for public registry is aligned with the reliability and security targets. Take special note of throttling limits for use case that depend on Docker Hub. 
+- Ensure that the SLA for public registry is aligned with your reliability and security targets. Take special note of throttling limits for use cases that depend on Docker Hub. 
 
-- Prioritize [Azure Container Registry (ACR)](https://azure.microsoft.com/services/container-registry/) to host container images. This native service provides a range of features including geo-replication, Azure AD authentication, automated container building, and patching using ACR tasks.
+- Prioritize [Azure Container Registry](https://azure.microsoft.com/services/container-registry) to host container images. This native service provides a range of features including geo-replication, Azure AD authentication, automated container building, and patching using Container Registry tasks.
 
-### Azure Container Registry (ACR) design considerations and recommendations
+### Container Registry design considerations and recommendations
 
 
 ##### Reliability
 
-Configure geo-replication to all deployment regions to remove regional dependencies and optimize latency. ACR supports high availability through [**Geo-replication**](/azure/container-registry/container-registry-geo-replication#considerations-for-high-availability) to multiple configured regions, providing resiliency against regional outage. If a region becomes unavailable, the other regions will continue to serve image requests, and when the region returns to health the ACR will recover and replicate changes to it. This capability also provides registry colocation within each configured region, reducing network latency and cross-region data transfer costs. 
+Configure geo-replication to all deployment regions to remove regional dependencies and optimize latency. Container Registry supports high availability through [**Geo-replication**](/azure/container-registry/container-registry-geo-replication#considerations-for-high-availability) to multiple configured regions, providing resiliency against regional outage. If a region becomes unavailable, the other regions will continue to serve image requests, and when the region returns to health the Container Registry will recover and replicate changes to it. This capability also provides registry colocation within each configured region, reducing network latency and cross-region data transfer costs. 
 
-Within Azure regions that provide Availability Zone support, the [**Premium ACR tier supports Zone Redundancy**](/azure/container-registry/zone-redundancy) to protect against zonal failure. The Premium tier also supports [Private Endpoints](/azure/container-registry/container-registry-private-link) to prevent unauthorized access to the registry, which may lead to reliability issues. 
+Within Azure regions that provide Availability Zone support, the [**Premium Container Registry tier supports Zone Redundancy**](/azure/container-registry/zone-redundancy) to protect against zonal failure. The Premium tier also supports [Private Endpoints](/azure/container-registry/container-registry-private-link) to prevent unauthorized access to the registry, which may lead to reliability issues. 
 
 Host images close to the consuming compute resources, within the same Azure regions.
 
 ##### Image locking
-Image can get deleted, for instance through manual error. ACR supports [locking an image version or a repository](/azure/container-registry/container-registry-image-lock) to prevent changes or deletes. Changes to a previously deployed image, *version* being changed in-place, can introduce the risk that same-version deployments may have different results (before and after such a change).
+Image can get deleted, for instance through manual error. Container Registry supports [locking an image version or a repository](/azure/container-registry/container-registry-image-lock) to prevent changes or deletes. Changes to a previously deployed image, *version* being changed in-place, can introduce the risk that same-version deployments may have different results (before and after such a change).
 
-If you want to protect the ACR instance from getting deleted, use [Azure Resource Locks](/azure/azure-resource-manager/management/lock-resources).
+If you want to protect the Container Registry instance from getting deleted, use [Azure Resource Locks](/azure/azure-resource-manager/management/lock-resources).
 
 ##### Tagged images
-[Tagged ACR images are mutable by default](/azure/container-registry/container-registry-image-lock#scenarios), meaning that the same tag can be used on multiple images pushed to the registry. In production scenarios, this may lead to unpredictable behavior that could impact application uptime.
+[Tagged Container Registry images are mutable by default](/azure/container-registry/container-registry-image-lock#scenarios), meaning that the same tag can be used on multiple images pushed to the registry. In production scenarios, this may lead to unpredictable behavior that could impact application uptime.
 
 ##### Identity and access management
 
