@@ -1,8 +1,8 @@
 ---
 title: Data store cost estimates
 description: Get detailed information about making cost estimates for your Azure data stores. Learn cost strategies for database design.
-author: v-aangie
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -99,7 +99,7 @@ Azure storage has several options to make sure data is copied and available when
 
 For more information, see [automated backups](/azure/sql-database/sql-database-automated-backups?tabs=single-database).
 
-[Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) offers five consistency levels: *strong*, *bounded staleness*, *session*, *consistent prefix*, and *eventual* consistency. Each level provides availability and performance tradeoffs and is backed by comprehensive SLAs. The consistency level itself does not affect cost.
+[Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) offers five consistency levels: *strong*, *bounded staleness*, *session*, *consistent prefix*, and *eventual* consistency. Each level provides availability and performance tradeoffs and is backed by comprehensive SLAs. The consistency level itself does not affect cost.
 
 **How can I minimize compute cost?**
 ***
@@ -119,11 +119,11 @@ For most databases, there is no charge for the price of backup storage that is e
 
 Azure Cosmos DB is recommended for key/value stores and document databases. Azure Cache for Redis is also recommended for key/value stores.
 
-For [Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/), here are some considerations that will affect cost:
+For [Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/), here are some considerations that will affect cost:
 
 - Can storage and item size be adjusted?
 - Can index policies be reduced or customized to bring down the extra cost for writes and eliminate the requirement for additional throughput capacity?
-- If data is no longer needed, can it be deleted from the Azure Cosmos account? As an alternative, you can migrate the old data to another data store such as Azure blob storage or Azure data warehouse.
+- If data is no longer needed, can it be deleted from the Azure Cosmos DB account? As an alternative, you can migrate the old data to another data store such as Azure blob storage or Azure data warehouse.
 
 For [Azure Cache for Redis](https://azure.microsoft.com/pricing/details/cache/), there is no upfront cost, no termination fees, you pay only for what you use, and billing is per-hour.
 
@@ -131,7 +131,7 @@ For [Azure Cache for Redis](https://azure.microsoft.com/pricing/details/cache/),
 
 Cost considerations for graphic database stores include storage required by data and indexes used across all the regions. For example, graphs need to scale beyond the capacity of a single server, and make it easy to lookup the index when processing a query.
 
-The Azure service that supports this is Gremlin API in Azure Cosmos DB. Cost is limited to the Azure [Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) usage. You pay for the operations you perform against the database and for the storage consumed by your data. Charges are determined by the number of provisioned containers, the number of hours the containers were online, and the provisioned throughput for each container.
+The Azure service that supports this is Azure Cosmos DB for Apache Gremlin. Cost is limited to the Azure [Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) usage. You pay for the operations you perform against the database and for the storage consumed by your data. Charges are determined by the number of provisioned containers, the number of hours the containers were online, and the provisioned throughput for each container.
 
 If the on-premises data is already on an SQL server on Azure Virtual Machines (IaaS), the license with Software Assurance can be used to bring down the cost if the workload is eligible for [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -147,9 +147,9 @@ When using Azure Synapse, you will only pay for the capabilities you opt in to u
 
 The main cost consideration for a column family database is that it needs to be massively scalable.
 
-The Azure services that support column family databases are Azure Cosmos DB Cassandra API and HBase in HDInsight.
+The Azure services that support column family databases are Azure Cosmos DB for Apache Cassandra and HBase in HDInsight.
 
-For Azure Cosmos DB Cassandra API, you pay the cost of [Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/), which includes database operations and consumed storage. Cassandra API is open-source.
+For Azure Cosmos DB for Apache Cassandra, you pay the cost of [Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/), which includes database operations and consumed storage. Azure Cosmos DB for Apache Cassandra is open-source.
 
 For HBase in HDInsight, you pay the cost of [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/), which includes instance size and number. HBase is open-source.
 

@@ -37,8 +37,8 @@ Service limits may have a significant bearing on a large mission-critical worklo
 
 ### Recommendations
 
+- Employ a [scale unit approach](mission-critical-application-design.md#scale-unit-architecture) for resource composition, deployment, and management.
 - Use subscriptions as scale units, scaling out resources and subscriptions as required.
-- Employ a scale unit approach for resource composition, deployment, and management.
 - Ensure scale limits are considered as part of capacity planning.
 - If available, use data about existing application environments to explore which limits might be encountered.
 

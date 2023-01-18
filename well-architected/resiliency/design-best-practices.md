@@ -1,8 +1,8 @@
 ---
 title: Designing reliability in Azure apps
 description: Learn best practices for designing reliability in Azure applications, such as ensuring connectivity, using zone-aware services, designing for scalability, and more.
-author: v-aangie
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -28,9 +28,9 @@ Designing application platform and data platform resiliency and availability are
 To ensure connection availability and improve reliability with Azure services:
 
 - Use a global load balancer used to distribute traffic and/or failover across regions.
-- For cross-premises connectivity (ExpressRoute or VPN) ensure there redundant connections from different locations.
+- For cross-premises connectivity (ExpressRoute or VPN) ensure there are redundant connections from different locations.
 - Simulate a failure path to ensure connectivity is available over alternative paths.
-- Eliminate all single points of failure from the data path (on-premises and Azure.
+- Eliminate all single points of failure from the data path (on-premises and Azure).
 
 ## Use zone-aware services
 

@@ -1,8 +1,8 @@
 ---
 title: Operational excellence design principles
 description: Understand the design principles for operational excellence within the Azure Well-Architected Framework.
-author: david-stanford
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 04/07/2022
 ms.topic: conceptual
 ms.service: architecture-center
@@ -62,6 +62,9 @@ Implement systems and processes to monitor all aspects of your workload. Includi
 Robust monitoring ensures the observability of a workload and allows you to correlate events and take proactive mitigating issues.
 
 In addition, customer data is critical to understanding the health of a workload and whether the service is meeting the business goals.
+
+> [!IMPORTANT]
+> The Health Modeling section of the [Azure Mission-Critical](/azure/architecture/framework/mission-critical/mission-critical-health-modeling) framework contains further in-depth guidance and examples on how to build a health model for a given workload.
 
 ## Rehearse recovery and practice failure
 

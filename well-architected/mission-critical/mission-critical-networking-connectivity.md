@@ -33,7 +33,7 @@ The use of multiple active regional deployment stamps requires a global routing 
 
 [Azure Front Door](https://azure.microsoft.com/services/frontdoor/), [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), and [Azure Standard Load Balancer](/azure/load-balancer/cross-region-overview) provide the needed routing capabilities to manage global traffic across a multi-region application.
 
-Alternatively, third-party globally routing technologies can be considered. These options can almost seamlessly be swapped in to replace or extend the use of Azure-native global routing services. Popular choices include routing technologies by CDN providers. 
+Alternatively, third-party globally routing technologies can be considered. These options can almost seamlessly be swapped in to replace or extend the use of Azure-native global routing services. Popular choices include routing technologies by CDN providers.
 
 This section explores the key differences Azure routing services to define how each can be used to optimize different scenarios.
 
@@ -154,7 +154,7 @@ It's recommended to consider a third-party global routing service in place of tw
 
 - Configure the application platform ingress points to [validate incoming requests through header based filtering](/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-) using the *X-Azure-FDID* to ensure all traffic is flowing through the configured Front Door instance. Consider also configuring IP ACLing using Front Door Service Tags to validate traffic originates from the Azure Front Door backend IP address space and Azure infrastructure services. This will ensure traffic flows through Azure Front Door at a service level, but header based filtering will still be required to ensure the use of a configured Front Door instance.
 
-- Define a custom TCP health endpoint to validate critical downstream dependencies within a regional deployment stamp, including data platform replicas, such as Cosmos DB in the example provided by the foundational reference implementation. If one or more dependencies becomes unhealthy, the health probe should reflect this in the response returned so that the entire regional stamp can be taken out of circulation.
+- Define a custom TCP health endpoint to validate critical downstream dependencies within a regional deployment stamp, including data platform replicas, such as Azure Cosmos DB in the example provided by the foundational reference implementation. If one or more dependencies becomes unhealthy, the health probe should reflect this in the response returned so that the entire regional stamp can be taken out of circulation.
 
 - Ensure health probe responses are logged and ingest all operational data exposed by Azure Front Door into the global Log Analytics workspace to facilitate a unified data sink and single operational view across the entire application.
 
@@ -242,7 +242,32 @@ This section builds on [global routing recommendations](#design-recommendations)
   - Provides an SLA of 99.99% when deployed across Availability Zones.
   - Provides critical capabilities such as diagnostics or outbound rules.
 
-- Use Azure DDoS Protection Standard protection plans to help protect public endpoints hosted within each application virtual network.
+- Use Azure DDoS Network Protection to help protect public endpoints hosted within each application virtual network.
+
+## Caching and static content delivery
+
+Special treatment of static content like images, JavaScript, CSS and other files can have a significant impact on the overall user experience as well as on the overall cost of the solution. Caching static content at the edge can speed up the client load times which results in a better user experience and can also reduce the cost for traffic, read operations and computing power on backend services involved.
+
+### Design considerations
+
+- Not all content that a solution makes available over the Internet is generated dynamically. Applications serve both static assets (images, JavaScript, CSS, localization files, etc.) and dynamic content.
+- Workloads with frequently accessed static content benefit greatly from caching since it reduces the load on backend services and reduces content access latency for end users.
+- Caching can be implemented natively within Azure using either Azure Front Door or Azure Content Delivery Network (CDN).
+  - [Azure Front Door](/azure/frontdoor/front-door-caching) provides Azure-native edge caching capabilities and routing features to divide static and dynamic content.
+    - By creating the appropriate routing rules in Azure Front Door, `/static/*` traffic can be transparently redirected to static content.
+  - More complex caching scenarios can be implemented using the [Azure CDN](https://azure.microsoft.com/services/cdn) service to establish a full-fledged content delivery network for significant static content volumes.
+    - The Azure CDN service will likely be more cost effective, but does not provide the same advanced routing and Web Application Firewall (WAF) capabilities which are recommended for other areas of an application design. It does, however, offer further flexibility to integrate with similar services from third-party solutions, such as Akamai and Verizon.
+  - When comparing the Azure Front Door and Azure CDN services, the following decision factors should be explored:
+    - Can required caching rules be accomplished using the rules engine.
+    - Size of the stored content and the associated cost.
+    - Price per month for the execution of the rules engine (charged per request on Azure Front Door).
+    - Outbound traffic requirements (price differs by destination).
+
+### Design recommendations
+
+- Generated, static content like sized copies of image files that never or only rarely change can benefit from caching as well. Caching can be configured based on URL parameters and with varying caching duration.
+- Separate the delivery of static and dynamic content to users and deliver relevant content from a cache to reduce load on backend services optimize performance for end-users.
+- Given the strong recommendation ([Network and connectivity](./mission-critical-networking-connectivity.md) design area) to use Azure Front Door for global routing and Web Application Firewall (WAF) purposes, it's recommended to prioritize the use of Azure Front Door caching capabilities unless gaps exist.
 
 ## Virtual network integration
 
@@ -389,8 +414,9 @@ This section explores how internet egress can be achieved while ensuring securit
 > [!NOTE]
 > When deploying within an Azure landing zone, consider using the foundational platform Azure Firewall resource (or equivalent NVA).
 > If a dependency is taken on a central platform resource for internet egress, then the reliability level of that resource and associated network path should be closely aligned with application requirements. Operational data from the resource should also be made available to the application in order to inform potential operational action in failure scenarios.
- 
+
 If there are high-scale requirements associated with outbound traffic, consideration should be given to a dedicated Azure Firewall resource for a mission-critical application, to mitigate risks associated with using a centrally shared resource, such as noisy neighbor scenarios.
+
 - When deployed within a Virtual WAN environment, consideration should be given to Firewall Manager to provide centralized management of dedicated application Azure Firewall instances to ensure organizational security postures are observed through global firewall policies.
 - Ensure incremental firewall policies are delegated to application security teams via role-based access control to allow for application policy autonomy.
 
@@ -446,15 +472,15 @@ While the application design strongly advocates independent regional deployment 
 
 Micro-segmentation is a network security design pattern used to isolate and secure individual application workloads, with policies applied to limit network traffic between workloads based on a Zero Trust model. It's typically applied to reduce network attack surface, improve breach containment, and strengthen security through policy-driven application-level network controls.
 
-A mission-critical application can enforce application-level network security using Network Security Groups (NSG) at either a subnet or network interface level, service Access Control Lists (ACL), and network policies when using Azure Kubernetes Service (AKS). 
+A mission-critical application can enforce application-level network security using Network Security Groups (NSG) at either a subnet or network interface level, service Access Control Lists (ACL), and network policies when using Azure Kubernetes Service (AKS).
 
 This section explores the optimal use of these capabilities, providing key considerations and recommendations to achieve application-level micro-segmentation.
 
 ### Design Considerations
 
-- AKS can be deployed in two different [networking models](/azure/aks/concepts-network#azure-cni-advanced-networking).
+- AKS can be deployed in two different [networking models](/azure/aks/concepts-network#azure-cni-advanced-networking):
   - **Kubenet networking:** AKS nodes are integrated within an existing virtual network, but pods exist within a virtual overlay network on each node. Traffic between pods on different nodes is routed through kube-proxy.
-  - **Azure Container Networking Interface (CNI) networking:** The AKS cluster is integrated within an existing virtual network and its nodes, pods and services received IP addresses from the same virtual network the cluster nodes are attached to. This is relevant for various networking scenarios requiring direct connectivity from and to pods. Different node pools can be deployed into different subnets [in preview](https://github.com/Azure/AKS/issues/1338).
+  - **Azure Container Networking Interface (CNI) networking:** The AKS cluster is integrated within an existing virtual network and its nodes, pods and services received IP addresses from the same virtual network the cluster nodes are attached to. This is relevant for various networking scenarios requiring direct connectivity from and to pods. Different node pools can be deployed [into different subnets](/azure/aks/use-multiple-node-pools#add-a-node-pool-with-a-unique-subnet).
 
   > [!NOTE]
   > Azure CNI requires more IP address space compared to Kubenet. Proper upfront planning and sizing of the network is required. For more information, refer to the [Azure CNI documentation](/azure/aks/concepts-network#azure-cni-advanced-networking).
@@ -463,23 +489,16 @@ This section explores the optimal use of these capabilities, providing key consi
 
 - Communication between Pods and Namespaces can be isolated using [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/). Network Policy is a Kubernetes specification that defines access policies for communication between Pods. Using Network Policies, an ordered set of rules can be defined to control how traffic is sent/received, and applied to a collection of pods that match one or more label selectors.
 
-  - AKS provides two ways to implement Network Policy, and both implementations use Linux IPTables to enforce specified policies.
-    - _Azure Network Policies_
-    - _Calico Network Policies_
-    - Both implementations use Linux IPTables to enforce specified policies. See [Differences between Azure and Calico policies and their capabilities](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more details.
+  - AKS supports two plugins that implement Network Policy, _Azure_ and _Calico_. Both plugins use Linux IPTables to enforce the specified policies. See [Differences between Azure and Calico policies and their capabilities](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities) for more details.
   - Network policies don't conflict since they're additive.
   - For a network flow between two pods to be allowed, both the egress policy on the source pod and the ingress policy on the destination pod need to allow the traffic.
   - The network policy feature can only be enabled at cluster instantiation time. It is not possible to enable network policy on an existing AKS cluster.
-
-- The delivery of network policies is consistent regardless of whether Azure or Calico is used.
-
-- Calico provides a [richer feature set](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities), including support for windows-nodes and supports Azure CNI as well as Kubenet.
-
-- Calico introduces another party within the support ecosystem; either Calico community or paid support. First-party Azure support is provided for Azure network policies.
+  - The delivery of network policies is consistent regardless of whether Azure or Calico is used.
+  - Calico provides a [richer feature set](/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities), including support for windows-nodes and supports Azure CNI as well as Kubenet.
 
 - AKS supports the creation of different node pools to separate different workloads using nodes with different hardware and software characteristics, such as nodes with and without GPU capabilities.
   - Using node pools doesn't provide any network-level isolation.
-  - All node pools must reside within the same virtual network and separating node pools in different subnets is [currently in preview](https://github.com/Azure/AKS/issues/1338). NSGs can be applied at the subnet-level to implement micro-segmentation between node pools.
+  - Node pools can use [different subnets within the same virtual network](/azure/aks/use-multiple-node-pools#add-a-node-pool-with-a-unique-subnet). NSGs can be applied at the subnet-level to implement micro-segmentation between node pools.
 
 ### Design recommendations
 
@@ -492,12 +511,10 @@ This section explores the optimal use of these capabilities, providing key consi
     - The Azure CNI network plugin is a more robust and scalable network plugin, and is recommended for most scenarios.
     - Kubenet is a more lightweight network plugin, and is recommended for scenarios with a limited range of available IP addresses.
     - See [Azure CNI](/azure/aks/concepts-network#azure-cni-advanced-networking) for more details.
-
-- Enable [Network Policy](/azure/aks/use-network-policies) for Azure Kubernetes Service at deployment time.
   
-  The Network Policy feature in Kubernetes should be used to define rules for ingress and egress traffic between pods in a cluster. Define granular Network Policies to restrict and limit cross-pod communication.
-
-- Prioritize the use of _Calico Network Policies_ because it provides a richer feature set with broader community adoption and support.
+- The Network Policy feature in Kubernetes should be used to define rules for ingress and egress traffic between pods in a cluster. Define granular Network Policies to restrict and limit cross-pod communication.
+  - Enable [Network Policy](/azure/aks/use-network-policies) for Azure Kubernetes Service at deployment time. 
+  - Prioritize the use of _Calico_ because it provides a richer feature set with broader community adoption and support.
 
 ## Next step
 

@@ -7,8 +7,8 @@ metadata:
   title: Operational excellence documentation
   description: Learn how to apply operations processes to your architecture to keep an application running in production.
   services: na
-  author: v-stacywray
-  ms.author: robbymillsap
+  author: martinekuan
+  ms.author: martinek
   manager: david-stanford
   ms.date: 12/08/2021
   ms.topic: landing-page
@@ -40,7 +40,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: Operational Excellence 
-            url: /learn/modules/azure-well-architected-introduction/4-operational-excellence
+            url: /training/modules/azure-well-architected-introduction/4-operational-excellence
       - linkListType: video
         links:
           - text: Getting Started with DevOps
@@ -71,7 +71,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: Choose the best Azure service to automate your business processes
-            url: /learn/modules/choose-azure-service-to-integrate-and-automate-business-processes/
+            url: /training/modules/choose-azure-service-to-integrate-and-automate-business-processes/
       - linkListType: video
         links:
           - text: Azure DevOps with ARM templates

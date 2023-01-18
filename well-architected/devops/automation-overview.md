@@ -1,8 +1,8 @@
 ---
 title: Automation overview of goals, best practices, and types in Azure
 description: Automation overview
-author: v-aangie
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 4/7/2022
 ms.topic: conceptual
 ms.service: architecture-center
@@ -41,7 +41,7 @@ For more information, see [Toil automation](https://www.coursera.org/lecture/dev
 - **Ensure consistency:** The more manual processes are involved, the more prone to human error. This can lead to mistakes, oversights, reduction of data quality, and reliability problems.
 - **Centralize mistakes:** Choose a platform to allow you to fix bugs in one place in order to fix them everywhere. This reduces the chance of error and the possibility of the bug being re-introduced.
 - **Identify issues quickly:** Complex issue may not always be able to be identified in a timely manner. However, with good automation, detection of these issues should occur quickly.
-- **Maximize employee productivity:** Automation leads to more innovative solutions, and in general provides more value to the business. This in turn raises morale and job satisfaction.Once a process is automated, training and maintenance can be greatly reduced or eliminated. This frees engineers to spend less time on manual processes and more time on automating business solutions.
+- **Maximize employee productivity:** Automation leads to more innovative solutions, and in general provides more value to the business. This in turn raises morale and job satisfaction. Once a process is automated, training and maintenance can be greatly reduced or eliminated. This frees engineers to spend less time on manual processes and more time on automating business solutions.
 
 ## Types of automation
 

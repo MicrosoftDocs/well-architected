@@ -1,8 +1,8 @@
 ---
 title: Reliability and Traffic Manager
 description: Focuses on the Traffic Manager service used in the Networking solution to provide best-practice and configuration recommendations related to Reliability.
-author: v-stacywray
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 01/28/2022
 ms.topic: conceptual
 ms.service: architecture-center
@@ -30,7 +30,7 @@ For more information, reference [What is Traffic Manager?](/azure/traffic-manage
 
 To learn how Traffic Manager supports a reliable workload, reference the following articles:
 
-- [Enhance your service availability and data locality by using Azure Traffic Manager](/learn/modules/distribute-load-with-traffic-manager/)
+- [Enhance your service availability and data locality by using Azure Traffic Manager](/training/modules/distribute-load-with-traffic-manager/)
 - [Using load-balancing services in Azure](/azure/traffic-manager/traffic-manager-load-balancing-azure)
 - [Disaster recovery using Azure DNS and Traffic Manager](/azure/networking/disaster-recovery-dns-traffic-manager)
 

@@ -2,8 +2,8 @@
 title: Microsoft Azure Well-Architected Framework
 titleSuffix: Azure Architecture Center
 description: Learn about the five pillars of the Azure Well-Architected Framework and how they can produce a high quality, stable, and efficient cloud architecture.
-author: david-stanford
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -47,7 +47,9 @@ Reference the following video about how to architect successful workloads on Azu
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/shows/azure-enablement/architect-successful-workloads-on-azure--introduction-ep-1-well-architected-series/player]
+<br/>
+
+> [!VIDEO https://learn.microsoft.com/shows/azure-enablement/architect-successful-workloads-on-azure--introduction-ep-1-well-architected-series/player]
 
 <!-- markdownlint-enable MD034 -->
 
@@ -86,7 +88,9 @@ For more information about resiliency, reference the following video that will s
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/shows/azure-enablement/start-improving-the-reliability-of-your-azure-workloads--reliability-ep-1--well-architected-series/player]
+<br/>
+
+> [!VIDEO https://learn.microsoft.com/shows/azure-enablement/start-improving-the-reliability-of-your-azure-workloads--reliability-ep-1--well-architected-series/player]
 
 <!-- markdownlint-enable MD034 -->
 
@@ -110,7 +114,9 @@ Ask the right questions about secure application development on Azure by referen
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/shows/azure-enablement/ask-the-right-questions-about-secure-application-development-on-azure/player]
+<br/>
+
+> [!VIDEO https://learn.microsoft.com/shows/azure-enablement/ask-the-right-questions-about-secure-application-development-on-azure/player]
 
 <!-- markdownlint-enable MD034 -->
 
@@ -134,7 +140,9 @@ For more information, reference [Cost optimization](./cost/index.yml) and the fo
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/shows/azure-enablement/start-optimizing-your-azure-costs--cost-optimization-ep-1--well-architected-series/player]
+<br/>
+
+> [!VIDEO https://learn.microsoft.com/shows/azure-enablement/start-optimizing-your-azure-costs--cost-optimization-ep-1--well-architected-series/player]
 
 <!-- markdownlint-enable MD034 -->
 
@@ -157,7 +165,9 @@ For more information, reference the following video about bringing security into
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/shows/azure-enablement/devsecops-bringing-security-into-your-devops-practice-on-azure/player]
+<br/>
+
+> [!VIDEO https://learn.microsoft.com/shows/azure-enablement/devsecops-bringing-security-into-your-devops-practice-on-azure/player]
 
 <!-- markdownlint-enable MD034 -->
 
@@ -196,7 +206,7 @@ Learn more about:
 
 - [Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment)
 - [Well-Architected Series](https://channel9.msdn.com/Tags/well-architected-series)
-- [Introduction to the Microsoft Azure Well-Architected Framework](/learn/modules/azure-well-architected-introduction/)
+- [Introduction to the Microsoft Azure Well-Architected Framework](/training/modules/azure-well-architected-introduction/)
 - [Microsoft Defender for Cloud](/azure/security-center/)
 - [Cloud Adoption Framework](/azure/cloud-adoption-framework/)
 

@@ -1,8 +1,8 @@
 ---
 title: Target and non-functional requirements
 description: Meet reliability targets for availability, recovery, and non-functional requirements, which involve application and data platforms, networking, and connectivity.
-author: v-aangie
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -122,7 +122,7 @@ Replicating data across zones or paired regions supports application availabilit
 
 Define and test a data restore process to ensure a consistent application state. Regular testing of the data restore process promotes operational excellence and confidence in the ability to recover data in alignment with defined recovery objectives for the application.
 
-Consider how your application traffic is routed to data sources in the case of region, zone, or network outage. Understanding the method used to route application traffic to data sources in the event of a major failure event is critical to identify whether failover processes will meet recovery objectives. Many Azure data platform services offer native reliability capabilities to handle major failures, such as Cosmos DB Automatic Failover or Azure SQL DB Active Geo-Replication.
+Consider how your application traffic is routed to data sources in the case of region, zone, or network outage. Understanding the method used to route application traffic to data sources in the event of a major failure event is critical to identify whether failover processes will meet recovery objectives. Many Azure data platform services offer native reliability capabilities to handle major failures, such as Azure Cosmos DB Automatic Failover or Azure SQL Database Active Geo-Replication.
 
 > [!NOTE]
 > Some capabilities such as Azure Storage RA-GRS and Azure SQL DB Active Geo-Replication require application-side failover to alternate endpoints in some failure scenarios, so application logic should be developed to handle these scenarios.
@@ -135,7 +135,7 @@ Consider these guidelines to ensure connection availability and improve reliabil
 
 - **Use a global load balancer used to distribute traffic and/or failover across regions.** Azure Front Door, Azure Traffic Manager, or third-party CDN services can be used to direct inbound requests to external-facing application endpoints deployed across multiple regions. It is important to note that Traffic Manager is a DNS-based load balancer, so failover must wait for DNS propagation to occur. A sufficiently low TTL (Time To Live) value should be used for DNS records, though not all ISPs may honor this. For application scenarios requiring transparent failover, Azure Front Door should be used. To learn more, see [Disaster Recovery using Azure Traffic Manager](/azure/networking/disaster-recovery-dns-traffic-manager) and [Azure Front Door routing architecture](/azure/frontdoor/front-door-routing-architecture).
 
-- **For cross-premises connectivity (ExpressRoute or VPN) ensure there redundant connections from different locations.** At least two redundant connections should be established across two or more Azure regions and peering locations to ensure there are no single points of failure. An active/active load-shared configuration provides path diversity and promotes availability of network connection paths. To learn more, see [Cross-network connectivity](/azure/expressroute/cross-network-connectivity).
+- **For cross-premises connectivity (ExpressRoute or VPN) ensure there are redundant connections from different locations.** At least two redundant connections should be established across two or more Azure regions and peering locations to ensure there are no single points of failure. An active/active load-shared configuration provides path diversity and promotes availability of network connection paths. To learn more, see [Cross-network connectivity](/azure/expressroute/cross-network-connectivity).
 
 - **Simulate a failure path to ensure connectivity is available over alternative paths.** The failure of a connection path onto other connection paths should be tested to validate connectivity and operational effectiveness. Using Site-to-Site VPN connectivity as a backup path for ExpressRoute provides an additional layer of network resiliency for cross-premises connectivity. To learn more, see [Using site-to-site VPN as a backup for ExpressRoute private peering](/azure/expressroute/use-s2s-vpn-as-backup-for-expressroute-privatepeering).
 

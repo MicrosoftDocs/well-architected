@@ -1,9 +1,8 @@
 ---
 title: Overview of the reliability pillar
 description: High-level summary of the reliability pillar associated with the Azure Well-Architected Framework.
-author: v-stacywray
-ms.author: robbymillsap
-manager: david-stanford
+author: martinekuan
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -31,7 +30,9 @@ For more information, explore the following video on diving deeper into Azure wo
 
 <!-- markdownlint-disable MD034 -->
 
-> [!VIDEO https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/global/video-embed.html?show=azure-enablement&ep=diving-deeper-into-azure-workload-reliability-part-2--reliability-ep-2--well-architected]
+<br/>
+
+> [!VIDEO https://learn.microsoft.com/_themes/docs.theme/master/en-us/_themes/global/video-embed.html?show=azure-enablement&ep=diving-deeper-into-azure-workload-reliability-part-2--reliability-ep-2--well-architected]
 
 <!-- markdownlint-enable MD034 -->
 
@@ -44,7 +45,7 @@ In traditional application development, there has been a focus on increasing the
 
 All of these factors mean that cloud applications must be designed to expect occasional failures and recover from them. Azure has many resiliency features already built into the platform. For example:
 
-- Azure Storage, SQL Database, and Cosmos DB all provide built-in data replication across availability zones and regions.
+- Azure Storage, Azure SQL Database, and Azure Cosmos DB all provide built-in data replication across availability zones and regions.
 - Azure managed disks are automatically placed in different storage scale units to limit the effects of hardware failures.
 - Virtual machines (VMs) in an availability set are spread across several fault domains. A *fault domain* is a group of VMs that share a common power source and network switch. Spreading VMs across fault domains limits the impact of physical hardware failures, network outages, or power interruptions.
 - *Availability Zones* are physically separate locations within each Azure region. Each zone is composed of one or more datacenters equipped with independent power, cooling, and networking infrastructure. With availability zones, you can design and operate applications, and databases that automatically transition between zones without interruption, which ensures resiliency if one zone is affected. For more information, reference [Regions and Availability Zones in Azure](/azure/availability-zones/az-overview).

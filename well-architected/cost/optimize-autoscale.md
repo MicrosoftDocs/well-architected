@@ -2,7 +2,7 @@
 title: Autoscale instances
 description: Discover autoscaling strategies to lower the cost in virtual machine instances or stateless applications in Azure.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -31,4 +31,4 @@ For auto scaling, consider the choice of instance size. The size can significant
 ## Stateless applications
 Many Azure services can be used to improve the application's ability to scale dynamically. Even where they may not have been originally designed to do so.
 
-For example, many ASP.NET stateful web applications can be made stateless. Then they can be auto scaled, which results in cost benefit. You store state using [Azure Redis Cache](/azure/azure-cache-for-redis/cache-aspnet-session-state-provider), or Cosmos DB as a back-end session state store through a [Session State Provider](https://github.com/aspnet/AspNetSessionState).
+For example, many ASP.NET stateful web applications can be made stateless. Then they can be autoscaled, which results in cost benefit. You store state using [Azure Redis Cache](/azure/azure-cache-for-redis/cache-aspnet-session-state-provider), or Azure Cosmos DB as a back-end session state store through a [Session State Provider](https://github.com/aspnet/AspNetSessionState).

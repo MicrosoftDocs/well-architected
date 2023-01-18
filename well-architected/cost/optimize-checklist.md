@@ -2,7 +2,7 @@
 title: Checklist - Optimize cost
 description: Use these checklist considerations to help monitor and optimize workloads by using the right resources and sizes.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -23,7 +23,7 @@ Continue to monitor and optimize the workload by using the right resources and s
 - **Review the underutilized resources**. Evaluate CPU utilization and network throughput over time to check if the resources are used adequately. Azure Advisor identifies underutilized virtual machines. You can choose to decommission, resize, or shut down the machine to meet the cost requirements.
 
   - [Resize virtual machines](./optimize-vm.md#resize-virtual-machines)
-  - [Shutdown the under utilized instances](./optimize-vm.md#shut-down-the-under-utilized-instances)
+  - [Shutdown the under utilized instances](./optimize-vm.md#shut-down-underutilized-instances)
 
 - **Continuously take action on the cost reviews**. Treat cost optimization as a process, rather than a point-in-time activity.  Use tooling in Azure that provides recommendations on usage or cost optimization. Review the cost management recommendations and take action. Make sure that all stakeholders are in agreement about the implementation and timing of the change.
 
@@ -32,10 +32,12 @@ Continue to monitor and optimize the workload by using the right resources and s
   - Recommendations in [Azure Advisor](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview)
   - Recommendations using [Reservation REST APIs](/rest/api/consumption/reservationrecommendations/list)
 
-- **Use reserved instances on long running workloads**. Reserve a prepaid capacity for a period, generally one or three years. With reserved instances, there's a significant discount when compared with pay-as-you-go pricing.
+- **Use savings plans**. By using savings plans, you get the most flexible savings for dynamic workloads, while accommodating for planned or unplanned changes. Consider that with savings plan you commit to a fixed hourly dollar amount collectively on compute services, globally.
+  - [Savings plans](/azure/cost-management-billing/savings-plan)
 
-  - [Reserved instances](./optimize-reserved.md)
-
+- **Use Azure reservations**. You get the greatest cost savings for stable, predictable workloads with no planned changes by using reserved instances or capacity. Consider that you are often committing to a specific SKUs, throughput, or utilization targets, often in a particular Azure region.
+  - [Azure Reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+  
 - **Use discount prices**. These methods of buying Azure resources can lower costs.
 
   - [Azure Hybrid Use Benefit](https://azure.microsoft.com/pricing/hybrid-benefit)
@@ -48,7 +50,6 @@ Continue to monitor and optimize the workload by using the right resources and s
   - [Cloud Service Provider (Partner Program)](https://partner.microsoft.com/membership/cloud-solution-provider)
 
 - **Have a scale-in and scale-out policy**. In a cost-optimized architecture, costs scale linearly with demand. Increasing customer base shouldn't require more investment in infrastructure. Conversely, if demand drops, scale-down of unused resources. Autoscale Azure resources when possible.
-
   - [Autoscale instances](./optimize-autoscale.md)
 
 - **Reevaluate design choices**. Analyze the cost reports and forecast the capacity needs. You might need to change some design choices.

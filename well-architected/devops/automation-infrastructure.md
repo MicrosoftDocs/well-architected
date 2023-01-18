@@ -1,8 +1,8 @@
 ---
 title: Repeatable Infrastructure
 description: Review the concept of repeatable infrastructure. Use Azure Landing Zones. Deploy infrastructure with code. Automate deployments with ARM templates and Terraform.
-author: david-stanford
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 4/7/2022
 ms.topic: conceptual
 ms.service: architecture-center
@@ -23,23 +23,19 @@ However, cloud computing alone does not remove the effort and risk in provisioni
 
 ## Azure Landing Zones (Repeatable environment configuration)
 
-Organizations that centrally manage, govern, or support multiple workloads in the cloud will require repeatable **and consistent** environments. Azure Landing Zones provide central operations teams with a repeatable approach to environmental configuration. To deliver consistent environments, all Azure Landing Zones provide a set of common design areas, reference architecture, reference implementation, and a process to modify that deployment to fit the organization design requirements.
+Organizations that manage, govern, or support multiple workloads in the cloud will require repeatable **and consistent** environments. [Azure Landing Zones](/azure/cloud-adoption-framework/ready/landing-zone/) provide central operations teams (also known as platform teams) with a repeatable approach to environmental configuration. To deliver consistent environments, all Azure Landing Zones provide a set of common design areas, reference architecture, reference implementation, and a process to modify that deployment to fit the organization design requirements. 
 
-> [!WARNING]
-> Some organizations are following a growing industry trend towards decentralized operations (or workload operations). When operations is decentralized, the organization chooses to accept duplication of resources and potential inconsistencies in environmental configuration, in favor of reduced dependencies and full control of the environment through Azure Pipelines. Organizations who are following a decentralized operating model are less likely to leverage Azure Landing Zones to create repeatable environment configurations, but will still find value in the subsequent sections of this article.
+This is primarily enabled by following the [Azure Landing Zone design principles](/azure/cloud-adoption-framework/ready/landing-zone/design-principles) of policy-driven governance alongside subscription democratization.
 
 The following is a series of links from the Cloud Adoption Framework to help deploy Azure Landing Zones:
 
-- All Azure Landing Zones adhere to a [common set of design areas](/azure/cloud-adoption-framework/ready/landing-zone/design-areas) to guide configuration of required environment considerations including: Identity, Network topology and connectivity, Resource organization, Governance disciplines, Operations baseline, and Business continuity and disaster recovery (BCDR)
-- All Azure Landing Zones can be deployed through the Azure portal, but are designed to leverage infrastructure as code to create, [test](/azure/cloud-adoption-framework/ready/considerations/test-driven-development), and [refactor](/azure/cloud-adoption-framework/ready/landing-zone/refactor) repeatable deployments of the environmental configuration.
-- The Cloud Adoption Framework provides a number of [Azure Landing Zone implementation options](/azure/cloud-adoption-framework/ready/landing-zone/implementation-options), including:
-  - Start small & expand implementation using Azure Blueprints and ARM Templates
-  - Enterprise-Scale implementation using Azure Policy and ARM Templates
-  - CAF Terraform modules and various landing zone options
+- Azure Landing Zones adhere to a [common set of design areas](/azure/cloud-adoption-framework/ready/landing-zone/design-areas) to guide configuration of required environment considerations including: Identity, Network topology and connectivity, Resource organization, Governance disciplines, Operations baseline, and Business continuity and disaster recovery (BCDR)
+- Azure Landing Zones can be deployed through via:
+    - [Azure Landing Zones Accelerator (Portal)](/azure/cloud-adoption-framework/ready/landing-zone/#azure-landing-zone-accelerator)
+    - [Azure Landing Zones Bicep Modules](/azure/architecture/landing-zones/bicep/landing-zone-bicep)
+    - [Azure Landing Zones Terraform Modules](/azure/architecture/landing-zones/terraform/landing-zone-terraform)
 
 To get started with Azure Landing Zones to create consistent, repeatable environment configuration, see the article series on [Azure Landing Zones](/azure/cloud-adoption-framework/ready/landing-zone/).
-
-If Azure Landing Zones are not a fit for your organization, you should consider the following sections of this article to manual integrate environment configuration into your Azure Pipelines.
 
 ## Deploy infrastructure with code
 
@@ -57,7 +53,7 @@ One of the biggest benefits of IaC is the level of confidence you can have in yo
 
 **Consistency.** Following an IaC process ensures that the whole team follows a standard, well-established process. Historically, some organizations designate a single or small set of individuals responsible for deploying and configuring infrastructure. By following a fully automated process, responsibility for infrastructure deployments moves from individuals into the automation process and tooling. This move broadens the number of team members who can initiate infrastructure deployments while maintaining consistency and quality.
 
-**Automated scanning.** Many types of IaC configurations can be scanned by automated tooling. One such type of tooling is linting to check for errors in the code. Another type will scan the proposed changes to your Azure infrastructure to ensure they follow security and performance best practices. This can be an important part of a [Continuous Security](/learn/modules/explore-devops-continuous-security-operations/2-explore-continuous-security) approach.
+**Automated scanning.** Many types of IaC configurations can be scanned by automated tooling. One such type of tooling is linting to check for errors in the code. Another type will scan the proposed changes to your Azure infrastructure to ensure they follow security and performance best practices. This can be an important part of a [Continuous Security](/training/modules/explore-devops-continuous-security-operations/2-explore-continuous-security) approach.
 
 **Secret management.** Most solutions require secrets to be maintained and managed. These include connection strings, API keys, client secrets, and certificates. Following an IaC approach means that you need to adopt best practices for managing secrets. For example, Azure Key Vault is used to store secrets securely. It integrates with many IaC tools and configurations to ensure that the person conducting the deployment doesn't need access to production secrets. This in turn helps you adhere to the security principle of [least privilege](https://us-cert.cisa.gov/bsi/articles/knowledge/principles/least-privilege).
 
@@ -82,7 +78,7 @@ Many organizations maintain multiple environments, for example, test, staging, a
 
 **Disaster recovery.** In some situations, where recovery time may not be time-sensitive, IaC configurations can be used as part of a disaster recovery plan. For example, if infrastructure needs to be recreated in a second region, your IaC configurations can be used to do so. You need to consider deployment time and restoring the state of your infrastructure as well as the infrastructure itself.
 
-When you plan for disaster and recovery, ensure that your disaster recovery plans are fully tested and that they meet your [Recovery Time Objective](/azure/architecture/resiliency/business-metrics#recovery-metrics).
+When you plan for disaster and recovery, ensure that your disaster recovery plans are fully tested and that they meet your [Recovery Time Objective](/azure/architecture/framework/resiliency/business-metrics).
 
 ### Better understand your cloud resources
 
@@ -101,7 +97,7 @@ IaC can also help you better understand the state of your cloud resources.
 You can use many declarative infrastructure deployment technologies with Azure. Deployment technologies fall into two main categories.
 
 * **Imperative IaC** involves writing scripts in a language like Bash, PowerShell, C# script files, or Python. These programmatically execute a series of steps to create or modify your resources. When using imperative deployments, it is up to you to manage things like dependency sequencing, error control, and resource updates.
-* **Declarative IaC** involves writing a definition of how you want your environment to look; the tooling then figures out how to make this happen by inspecting your current state, comparing it to the target state you've requested, and applying the differences. [There's a good discussion of imperative and declarative IaC here.](/learn/modules/azure-well-architected-operational-excellence/4-use-automation-to-reduce-effort-and-error)
+* **Declarative IaC** involves writing a definition of how you want your environment to look; the tooling then figures out how to make this happen by inspecting your current state, comparing it to the target state you've requested, and applying the differences. [There's a good discussion of imperative and declarative IaC here.](/training/modules/azure-well-architected-operational-excellence/4-use-automation-to-reduce-effort-and-error)
 
 There are great Azure tooling options for both models. Here we describe three of the commonly used declarative IaC technologies for Azure - ARM templates, Bicep, and Terraform.
 
@@ -149,7 +145,7 @@ The following example demonstrates a simple ARM template that deploys a single A
 **Learn more**
 
 - [Documentation: What are ARM templates](/azure/azure-resource-manager/templates/overview)
-- [Learn module: Deploy consistent infrastructure with ARM Templates](/learn/modules/create-azure-resource-manager-template-vs-code/)
+- [Learn module: Deploy consistent infrastructure with ARM Templates](/training/modules/create-azure-resource-manager-template-vs-code/)
 - [Code Samples: ARM templates](/samples/mspnp/samples/azure-well-architected-framework-sample-arm-template/)
 
 ## Automate deployments with Bicep

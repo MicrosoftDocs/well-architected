@@ -1,8 +1,8 @@
 ---
 title: Compute
 description: Get cost estimates for compute hosting models such as IaaS, PaaS, or FaaS. Predict cost estimates using the Pricing Calculator in Azure.
-author: v-aangie
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -33,21 +33,23 @@ If your application can be broken down into short pieces of code, a FaaS hosting
 
 If you want to deploy a larger or more complex application, PaaS may be the better choice. With PaaS, your application is always running, as opposed to FaaS, where your code is executed only when needed. Since more resources are used with PaaS, the price increases.
 
-If you are migrating your infrastructure from on-premises to Azure, IaaS will greatly reduce and optimize infrastructure costs and salaries for IT staff who are no longer needed to manage the infrastructure. Since IaaS uses more resources than PaaS and FaaS, your cost could be highest.
+If you're migrating your infrastructure from on-premises to Azure, IaaS will greatly reduce and optimize infrastructure costs and salaries for IT staff who are no longer needed to manage the infrastructure. Since IaaS uses more resources than PaaS and FaaS, your cost could be highest.
 
 **What are the main cost drivers for Azure services?**
 ***
 
-You will be charged differently for each service depending on your region, licensing plan (such as, [Azure Hybrid Benefit for Windows Server](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)), number and type of instances you need, operating system, lifespan, and other parameters required by the service. Assess the need for each compute service by using the flowchart in [Choose a candidate service](/azure/architecture/guide/technology-choices/compute-decision-tree#understand-the-basic-features). Consider the tradeoffs that will impact your cost by creating different estimates using the Pricing Calculator. If your application consists of multiple workloads, we recommend that you evaluate each workload separately. Reference [Consider limits and costs](/azure/architecture/guide/technology-choices/compute-decision-tree#consider-limits-and-cost) to perform a more detailed evaluation on service limits, cost, SLAs, and regional availability.
+You'll be charged differently for each service depending on your region, licensing plan (such as, [Azure Hybrid Benefit for Windows Server](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)), number and type of instances you need, operating system, lifespan, and other parameters required by the service. Assess the need for each compute service by using the flowchart in [Choose a candidate service](/azure/architecture/guide/technology-choices/compute-decision-tree#understand-the-basic-features). Consider the tradeoffs that will impact your cost by creating different estimates using the Pricing Calculator. If your application consists of multiple workloads, we recommend that you evaluate each workload separately. Reference [Consider limits and costs](/azure/architecture/guide/technology-choices/compute-decision-tree#consider-limits-and-cost) to perform a more detailed evaluation on service limits, cost, SLAs, and regional availability.
 
 **Are there payment options for Virtual Machines (VMs) to help meet my budget?**
 ***
 
-The best choice is driven by the business requirements of your workload. If you have higher SLA requirements, it will increase overall costs. You will likely need more VMs to ensure uptime and connectivity. Other factors that will impact cost are region, operating system, and the number of instances you choose. Your cost also depends on the workload life span. See [Virtual machines](./optimize-vm.md) and [Use Spot VMs in Azure](/azure/virtual-machines/windows/spot-vms) for more details.
+The best choice is driven by the business requirements of your workload. If you have higher SLA requirements, it will increase overall costs. You'll likely need more VMs to ensure uptime and connectivity. Other factors that will impact cost are region, operating system, and the number of instances you choose. Your cost also depends on the workload life span. See [Virtual machines](./optimize-vm.md) and [Use Spot VMs in Azure](/azure/virtual-machines/windows/spot-vms) for more details.
 
-- **Pay as you go** lets you pay for compute capacity by the second, with no long-term commitment or upfront payments. This option allows you to increase or decrease compute capacity on demand. It is appropriate for applications with short-term, spiky, or unpredictable workloads that cannot be interrupted. You can also start or stop usage at any time, resulting in paying only for what you use.
+- **Pay as you go** lets you pay for compute capacity by the second, with no long-term commitment or upfront payments. This option allows you to increase or decrease compute capacity on demand. It's appropriate for applications with short-term, spiky, or unpredictable workloads that can't be interrupted. You can also start or stop usage at any time, resulting in paying only for what you use.
 
-- **Reserved Virtual Machine Instances** lets you purchase a VM for one or three years in a specified region in advance. It is appropriate for applications with steady-state usage. You may save more money compared to pay-as-you-go pricing.
+- **Reserved Virtual Machine Instances** lets you purchase a VM for one or three years in a specified region in advance. It's appropriate for applications with steady-state usage. You may save more money compared to pay-as-you-go pricing.
+
+- **Savings plans** lets you commit to one or three years, across all regions, for a fixed hourly dollar amount across compute services.
 
 - **Spot pricing** lets you purchase unused compute capacity at major discounts. If your workload can tolerate interruptions, and its execution time is flexible, then using spot pricing for VMs can significantly reduce the cost of running your workload in Azure.
 
@@ -58,16 +60,16 @@ For details on available sizes and options for the Azure VMs you can use to run 
 **Do I pay extra to run large-scale parallel and high-performance computing (HPC) batch jobs?**
 ***
 
-Use [Azure Batch](/azure/batch/batch-technical-overview) to run large-scale parallel and HPC batch jobs in Azure. You can save on VM cost because multiple apps can run on one VM. Configure your workload with either the Low-priority tier (the cheapest option) or the Standard tier (provides better CPU performance). There is no cost for the Azure Batch service. Charges accrue for the underlying resources that run your batch workloads.
+Use [Azure Batch](/azure/batch/batch-technical-overview) to run large-scale parallel and HPC batch jobs in Azure. You can save on VM cost because multiple apps can run on one VM. Configure your workload with either the Low-priority tier (the cheapest option) or the Standard tier (provides better CPU performance). There's no cost for the Azure Batch service. Charges accrue for the underlying resources that run your batch workloads.
 
 ## Use PaaS as an alternative to buying VMs
 
-When you use the IaaS model, you do have final control over the VMs. It may appear to be a cheaper option at first, but when you add operational and maintenance costs, the cost increases. When you use the PaaS model, these extra costs are included in the pricing. In some cases, this means that PaaS services can be a cheaper than managing VMs on your own. For help finding areas in the architecture where it may be natural to incorporate PaaS options, see [Managed services](./design-paas.md).
+When you use the IaaS model, you do have final control over the VMs. It may appear to be a cheaper option at first, but when you add operational and maintenance costs, the cost increases. When you use the PaaS model, these extra costs are included in the pricing. In some cases, this means that PaaS services can be a cheaper than managing VMs on your own. For help with finding areas in the architecture where it may be natural to incorporate PaaS options, see [Managed services](./design-paas.md).
 
 **How can I cut costs with hosting my web apps in PaaS?**
 ***
 
-If you host you web apps in PaaS, you'll need to choose an App Service plan to run your apps. The plan will define the set of compute resources on which your app will run. If you have more than one app, they will run using the same resources. This is where you will see the most significant cost savings, as you don't incur cost for VMs.
+If you host your web apps in PaaS, you'll need to choose an App Service plan to run your apps. The plan will define the set of compute resources on which your app will run. If you have more than one app, they'll run using the same resources. This is where you'll see the most significant cost savings, as you don't incur cost for VMs.
 
 If your apps are event-driven with a short-lived process using a microservices architecture style, we recommend using Azure Functions. Your cost is determined by execution time and memory for a single function execution. For pricing details, see [Azure Functions pricing](https://azure.microsoft.com/pricing/details/functions/).
 
@@ -81,14 +83,14 @@ If your dev-test is built on Azure managed services such as Azure DevOps, Azure 
 **How can I get the best cost savings for a containerized workload that requires full orchestration?**
 ***
 
-Your business requirements may necessitate that you store container images so that you have fast, scalable retrieval, and network-close deployment of container workloads. Although there are choices as to how you will run them, we recommend that you use AKS to set up instances with a minimum of three (3) nodes. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. There is no charge for AKS Cluster Management. Any additional costs are minimal. The containers themselves have no impact on cost. You pay only for per-second billing and custom machine sizes.
+Your business requirements may necessitate that you store container images so that you've fast, scalable retrieval, and network-close deployment of container workloads. Although there are choices as to how you'll run them, we recommend that you use AKS to set up instances with a minimum of three (3) nodes. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. There's no charge for AKS Cluster Management. Any additional costs are minimal. The containers themselves have no impact on cost. You pay only for per-second billing and custom machine sizes.
 
 **Can I save money if my containerized workload does not need full orchestration?**
 ***
 
-Your business requirements may not necessitate full orchestration. If this is the case and you are using App Service containers, we recommend that you use one of the App Service plans. Choose the appropriate plan based on your environment and workload.
+Your business requirements may not necessitate full orchestration. If so and you're using App Service containers, we recommend that you use one of the App Service plans. Choose the appropriate plan based on your environment and workload.
 
-There is no charge to use SNI-based SSL. Standard and Premium service plans include the right to use one IP SSL at no additional charge. Free and shared service plans do not support SSL. You can purchase the right to use additional SSL connections for a fee. In all cases the SSL certificate itself must be purchased separately. To learn more about each plan, see [App services plans](https://azure.microsoft.com/pricing/details/app-service/windows/).
+There's no charge to use SNI-based SSL. Standard and Premium service plans include the right to use one IP SSL at no additional charge. Free and shared service plans don't support SSL. You can purchase the right to use additional SSL connections for a fee. In all cases, the SSL certificate itself must be purchased separately. To learn more about each plan, see [App services plans](https://azure.microsoft.com/pricing/details/app-service/windows/).
 
 **Where's the savings if my workload is event driven with a short-lived process?**
 ***

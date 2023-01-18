@@ -1,8 +1,8 @@
 ---
-title: Cosmos DB and operational excellence
-description: Focuses on the Cosmos DB service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Operational Excellence.
-author: v-stacywray
-ms.author: robbymillsap
+title: Azure Cosmos DB and operational excellence
+description: Focuses on the Azure Cosmos DB service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Operational Excellence.
+author: martinekuan
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -14,9 +14,9 @@ categories:
   - management-and-governance
 ---
 
-# Cosmos DB and operational excellence
+# Azure Cosmos DB and operational excellence
 
-[Cosmos DB](https://azure.microsoft.com/services/cosmos-db/#overview) is a fully managed NoSQL database for modern app development.
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/#overview) is a fully managed NoSQL database for modern app development.
 
 Key features include:
 
@@ -25,31 +25,32 @@ Key features include:
 - [Mission-critical ready](/azure/cosmos-db/introduction#mission-critical-ready)
 - [Fully managed and cost effective](/azure/cosmos-db/introduction#fully-managed-and-cost-effective)
 
-To understand how Cosmos DB promotes operational excellence for your application workload, reference the following articles:
+To understand how Azure Cosmos DB promotes operational excellence for your application workload, reference the following articles:
 
 - [Monitor Azure Cosmos DB](/azure/cosmos-db/monitor-cosmos-db)
 - [Monitor and debug with insights in Azure Cosmos DB](/azure/cosmos-db/use-metrics)
 - [Visualize Azure Cosmos DB data by using the Power BI connector](/azure/cosmos-db/sql/powerbi-visualize)
 
-The following sections include design considerations, a configuration checklist, recommended configuration options, and source artifacts specific to Cosmos DB, and operational excellence.
+The following sections include design considerations, a configuration checklist, recommended configuration options, and source artifacts specific to Azure Cosmos DB, and operational excellence.
 
 ## Design considerations
 
-Cosmos DB includes the following design considerations:
+Azure Cosmos DB includes the following design considerations:
 
 - SLA for read availability for Database Accounts spanning two or more Azure regions.
 - SLAs for throughput, consistency, availability, and latency.
 - SLA for both read and write availability with the configuration of multiple Azure regions as writable endpoints.
 
-For more granular information specific to this product, reference [Cosmos DB Service Level Agreements](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/).
+For more granular information specific to this product, reference [Azure Cosmos DB Service Level Agreements](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/).
 
 ## Checklist
 
-**Have you configured Cosmos DB with operational excellence in mind?**
+**Have you configured Azure Cosmos DB with operational excellence in mind?**
 
 > [!div class="checklist"]
+>
 > - Monitor for normal and abnormal activity.
-> - If multi-master option is enabled on Cosmos DB, it's important to understand [Conflict Types and Resolution Policies](/azure/cosmos-db/conflict-resolution-policies).
+> - If the multi-master option is enabled on Azure Cosmos DB, it's important to understand [Conflict Types and Resolution Policies](/azure/cosmos-db/conflict-resolution-policies).
 > - Start with, Session, the default consistency level.
 > - Use [Azure Monitor](/azure/cosmos-db/monitor-cosmos-db) to see the provisioned autoscale max `RU/s` (Autoscale Max Throughput) and the `RU/s` the system is currently scaled to (Provisioned Throughput).
 > - Understand your traffic pattern to pick the right option for [provisioned throughput types](/azure/cosmos-db/how-to-choose-offer).
@@ -58,12 +59,12 @@ For more granular information specific to this product, reference [Cosmos DB Ser
 > - *Existing applications*: Find the normalized request unit consumption metric of your database or container.
 > - *Existing applications*: The closer the number is to `100%`, the more you're fully using your provisioned `RU/s`.
 > - Set provisioned `RU/s` to `T` for all hours in a month.
-> - Enable [automatic failover](/azure/cosmos-db/high-availability#multi-region-accounts-with-a-single-write-region-write-region-outage) when you configure Cosmos accounts used for production workloads.
+> - Enable [automatic failover](/azure/cosmos-db/high-availability#multi-region-accounts-with-a-single-write-region-write-region-outage) when you configure Azure Cosmos DB accounts used for production workloads.
 > - Implement [retry logic](/azure/architecture/best-practices/retry-service-specific#cosmos-db) in your client.
 > - For query-intensive workloads, use Windows `64-bit` instead of Linux or Windows `32-bit` host processing.
 > - To reduce latency and CPU jitter, enable accelerated networking on client virtual machines in both Windows and Linux.
 > - Increase the number of threads and tasks.
-> - To avoid network latency, collocate client in the same region as Cosmos DB.
+> - To avoid network latency, colocate  the client in the same region as the Azure Cosmos DB instance.
 > - Call [OpenAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.openasync?view=azure-dotnet&preserve-view=true) to avoid startup latency on first request.
 > - Scale out client applications across multiple servers if client consumes more than `50,000` `RU/s`.
 > - [Select a partition key](/azure/cosmos-db/partitioning-overview#choose-partitionkey).
@@ -75,7 +76,7 @@ For more granular information specific to this product, reference [Cosmos DB Ser
 
 ## Configuration recommendations
 
-Explore the following table of recommendations to optimize operational excellence for your Cosmos DB configuration:
+Explore the following table of recommendations to optimize operational excellence for your Azure Cosmos DB configuration:
 
 |Recommendation|Description|
 |--------------|-----------|
@@ -104,7 +105,7 @@ resources
  and properties.enableMultipleWriteLocations == "true"
 ```
 
-To view consistency levels for your Cosmos DB accounts, use the following query:
+To view consistency levels for your Azure Cosmos DB accounts, use the following query:
 
 ```sql
 Resources
@@ -124,7 +125,7 @@ Resources
 ## Learn more
 
 - [Autoscale FAQ](/azure/cosmos-db/autoscale-faq)
-- [Performance Tips for Cosmos DB](/azure/cosmos-db/sql/performance-tips)
+- [Performance tips for Azure Cosmos DB](/azure/cosmos-db/sql/performance-tips)
 
 ## Next step
 

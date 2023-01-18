@@ -3,7 +3,7 @@ title: Health modeling and observability of mission-critical workloads on Azure
 description: This design area will focus on the process to define a robust health model, mapping quantified application health states through observability and operational constructs to achieve operational maturity
 author: calcof
 ms.author: calcof
-ms.date: 02/28/2022
+ms.date: 08/16/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -35,6 +35,10 @@ There are three main levels of operational maturity when striving to maximize re
 1) *Detect* and respond to issues as they happen.
 1) *Diagnose* issues that are occurring or have already occurred.
 1) *Predict* and prevent issues before they take place.
+
+## Video: Define a health model for your mission-critical workload
+
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=fd8c4e50-9d7f-4df0-97cb-d0474b581398&embedUrl=/azure/architecture/framework/mission-critical/mission-critical-health-modeling]
 
 ## Layered application health
 
@@ -139,6 +143,10 @@ These aggregated scores can subsequently be represented as a dependency chart us
 This image shows an example layered health model from the Azure Mission-Critical [online reference implementation](https://github.com/Azure/Mission-Critical-online), and demonstrates how a change in health state for a foundational component can have a cascading impact to user flows and overall application health (the example values correspond to the table in the previous image).
 
 ![Mission Critical Example Health Model Visualization](./images/mission-critical-example-fault-states.png "Mission Critical Example Health Model Visualization")
+
+## Demo video: Monitoring and health modeling demo 
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE55Nd9]
 
 ## Unified data sink for correlated analysis
 
@@ -304,7 +312,7 @@ This section focuses on the use of Azure Dashboards and Grafana to build a robus
 
 - A ‘traffic light’ model should be used to visually represent 'healthy' and 'unhealthy' states, with green used to illustrate when key non-functional requirements are fully satisfied and resources are optimally utilized. Use "Green", "Amber, and "Red" to represent "Healthy", "Degraded", and "Unavailable" states.
 
-- Use Azure Dashboards to create operational lenses for global resources and regional deployment stamps, representing key metrics such as request count for Azure Front Door, server side latency for Cosmos DB, incoming/outgoing messages for Event Hubs, and CPU utilization or deployment statuses for AKS.  Dashboards should be tailored to drive operational effectiveness, infusing learnings from failure scenarios to ensure DevOps teams have direct visibility into key metrics.
+- Use Azure Dashboards to create operational lenses for global resources and regional deployment stamps, representing key metrics such as request count for Azure Front Door, server side latency for Azure Cosmos DB, incoming/outgoing messages for Event Hubs, and CPU utilization or deployment statuses for AKS.  Dashboards should be tailored to drive operational effectiveness, infusing learnings from failure scenarios to ensure DevOps teams have direct visibility into key metrics.
 
 - If Azure Dashboards can't be used to accurately represent the health model and requisite business requirements, then it's strongly recommended to consider Grafana as an alternative visualization solution, providing market-leading capabilities and an extensive open-source plugin ecosystem. Evaluate the managed Grafana preview offering to avoid the operational complexities of managing Grafana infrastructure.
 
@@ -337,7 +345,7 @@ While the visual representations of application health provide invaluable operat
 
 ### Design considerations
 
-- Alert rules are defined to fire when a conditional criteria is satisfied for incoming signals, which can include various [data sources](/azure/azure-monitor/agents/data-sources), such as metrics, log search queries, or availability tests.
+- Alert rules are defined to fire when a conditional criteria is satisfied for incoming signals, which can include various [data sources](/azure/azure-monitor/data-sources), such as metrics, log search queries, or availability tests.
 
 - Alerts can be defined within Log Analytics or Azure Monitor on the specific resource.
 
@@ -430,9 +438,7 @@ AIOps is used to drive predictive action, interpreting and correlating complex o
 
 ## Next step
 
-Review the deployment and tesing considerations.
+Review the deployment and testing considerations.
 
 > [!div class="nextstepaction"]
 > [Deployment and testing](mission-critical-deployment-testing.md)
-
-

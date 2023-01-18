@@ -7,8 +7,8 @@ metadata:
   title: Security documentation
   description: Learn how to apply security principles to your architecture to protect against attacks on your data and systems.
   services: na
-  author: v-stacywray
-  ms.author: v-stacywray
+  author: martinekuan
+  ms.author: martinek
   manager: david-stanford
   ms.date: 08/18/2021
   ms.topic: landing-page
@@ -48,7 +48,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: Security 
-            url: /learn/modules/azure-well-architected-introduction/7-security
+            url: /training/modules/azure-well-architected-introduction/7-security
       - linkListType: video
         links:
           - text: "Cloud Security Posture Management (CSPM) with Microsoft Defender for Cloud"
@@ -74,11 +74,11 @@ landingContent:
           - text: Support segmentation with management groups
             url: design-management-groups.md#support-your-segmentation-strategy-with-management-groups
           - text: Identity management and access control best practices
-            url: /azure/security/fundamentals/identity-management-best-practices?bc=%2fazure%2farchitecture%2fbread%2ftoc.json&toc=%2fazure%2farchitecture%2ftoc.json
+            url: /azure/security/fundamentals/identity-management-best-practices?bc=/azure/architecture/bread/toc.json&toc=/azure/architecture/toc.json
           - text: Network best practices
-            url: /azure/security/fundamentals/network-best-practices?bc=%2fazure%2farchitecture%2fbread%2ftoc.json&toc=%2fazure%2farchitecture%2ftoc.json
+            url: /azure/security/fundamentals/network-best-practices?bc=/azure/architecture/bread/toc.json&toc=/azure/architecture/toc.json
           - text: Encryption best practices
-            url: /azure/security/fundamentals/encryption-overview?bc=%2fazure%2farchitecture%2fbread%2ftoc.json&toc=%2fazure%2farchitecture%2ftoc.json
+            url: /azure/security/fundamentals/encryption-overview?bc=/azure/architecture/bread/toc.json&toc=/azure/architecture/toc.json
           - text: Analyze application threats
             url: design-threat-model.md
           - text: Gather compliance requirements
@@ -88,7 +88,7 @@ landingContent:
       - linkListType: learn
         links:
           - text: Design and implement network security
-            url: /learn/modules/design-implement-network-security-monitoring/
+            url: /training/modules/design-implement-network-security-monitoring/
       - linkListType: whats-new
         links:
           - text: What's new in Azure Network Security?

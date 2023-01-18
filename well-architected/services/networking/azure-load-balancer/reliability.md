@@ -1,8 +1,8 @@
 ---
 title: Reliability and Azure Load Balancer
 description: Focuses on the Azure Load Balancer service used in the Networking solution to provide best-practice and configuration recommendations related to Reliability.
-author: v-stacywray
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 01/28/2022
 ms.topic: conceptual
 ms.service: architecture-center
@@ -31,7 +31,7 @@ For more information, reference [Why use Azure Load Balancer?](/azure/load-balan
 
 To understand how Azure Load Balancer supports a reliable workload, reference the following topics:
 
-- [Improve application scalability and resiliency by using Azure Load Balancer](/learn/modules/improve-app-scalability-resiliency-with-load-balancer/)
+- [Improve application scalability and resiliency by using Azure Load Balancer](/training/modules/improve-app-scalability-resiliency-with-load-balancer/)
 - [Load Balancer and Availability Zones](/azure/load-balancer/load-balancer-standard-availability-zones)
 - [High availability ports overview](/azure/load-balancer/load-balancer-ha-ports-overview)
 

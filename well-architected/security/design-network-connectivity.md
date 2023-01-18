@@ -2,7 +2,7 @@
 title: Services for securing network connectivity
 description: Learn about best practices for securing access to the internet, Azure platform as a service (PaaS) services, and on-premises networks.
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -100,7 +100,7 @@ Use NSG or consider using Azure Firewall to protect and control traffic within t
 
 - [Azure firewall documentation](/azure/firewall/)
 - [Design virtual network subnet security](/azure/architecture/framework/security/design-network-segmentation#design-virtual-network-subnet-security)
-- [Design an IP addressing schema for your Azure deployment](/learn/modules/design-ip-addressing-for-azure/)
+- [Design an IP addressing schema for your Azure deployment](/training/modules/design-ip-addressing-for-azure/)
 - [Network security groups](/azure/virtual-network/network-security-groups-overview)
 
 ## Internet edge traffic

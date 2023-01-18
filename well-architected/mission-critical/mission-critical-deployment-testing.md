@@ -28,6 +28,8 @@ Deployment and testing shouldn't be constrained to the delivery of planned appli
 - **End-to-End automation**. Manual intervention in the technical execution of deployment and testing operations represents a significant reliability risk.
 - **Consistent deployment process**. Same application artifacts and processes are used to deploy the infrastructure  and  application code across different environments.
 
+> [!VIDEO 1d3846c0-f301-4a25-a49a-94f5be3f6605]
+
 This design area focuses on how to eradicate downtime and maintain application health for deployment operations, providing key considerations and recommendations intended to inform the design of optimal CI/CD pipelines for a mission-critical application.
 
 > [!IMPORTANT]
@@ -38,6 +40,8 @@ This design area focuses on how to eradicate downtime and maintain application h
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for acheiving optimal CI/CD pipelines for a mission-critical application.
 
 ## Application environments
+
+> [!VIDEO 7e6e6390-9f32-4c9e-88da-497a604db319]
 
 Before considering deployment processes and associated tooling, it's important to evaluate the application environments required to appropriately validate and stage deployment operations. These environment types will most likely differ in terms of requisite capabilities and longevity. Some environments might reflect production on a permanent basis, others may be short lived with a reduced level of complexity. These environments should be staged during the engineering and release cycle in order to ensure deployment operations are fully tested before released into the production environment.
 
@@ -81,6 +85,7 @@ This section explores the key considerations and recommendations for application
 - Ensure all environments reflect the production environment as much as possible, with simplifications applied for lower environments as necessary.
 
 - Keep production environments separate from lower environments into a dedicated subscription. This helps to ensure resource utilization in lower-environments doesn't impact production quotas, and to provide a clear governance boundary and separation of concerns. Depending on the scale requirements of the application, multiple production subscriptions might be needed to serve as scale-units.
+![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png)
 
 - Separate development environments within a distinct subscription context, with all development environments sharing the same subscription.
   - Ensure that there's an automated process to deploy code from a feature branch to a development environment.
@@ -95,7 +100,10 @@ This section explores the key considerations and recommendations for application
   - Use of a constant synthetic user load generation is required to provide a realistic test case for changes on one of the pre-production environments.
     - The [Mission Critical Online](https://github.com/Azure/Mission-Critical-Online) reference implementation provides an example [user load generator](https://github.com/Azure/Mission-Critical-Online/blob/main/src/testing/userload-generator/README.md).
 
-![Mission Critical Azure Subscription Organization](./images/mission-critical-subscription-organization.png)
+
+#### Demo video: Ephemeral dev environments and automated feature validation
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE50Gm9]
 
 ## Ephemeral blue/green deployments
 
@@ -137,7 +145,7 @@ A blue/green deployment can be implemented at either an application level or at 
   - Prioritize an infrastructure level approach in order to achieve zero-downtime deployments and provide one consistent deployment strategy for any kind of changes (application-level and/or infrastructure-level). Use a global load balancer to orchestrate the automated transition of user traffic between the blue and green environments.
   - Add a green backend endpoint and using a low traffic volume/weight, such as 10%.
   - After verifying that the low traffic volume on green is being managed as expected with a maintained application health, the traffic can be gradually increased in increments until it reaches 100%.
-  - While increasing traffic, a short ramp-up period should be applied to catch faults which may not come to light immediately.
+  - When increasing traffic, a short ramp-up period should be applied to catch faults which may not come to light immediately.
   - After all traffic has been migrated to the new green environment, remove the blue backend from global load balancer service.
   - Decommission the old and inactive blue environment.
   - Repeat the process for the next deployment with blue and green reversed.
@@ -217,7 +225,7 @@ This section focuses on the optimal use of GitHub Actions and Azure Pipelines an
 
 - A private and dedicated [GitHub AE](https://docs.github.com/en/github-ae@latest/admin/overview/about-github-ae) offering is available in a limited public preview.
 
-- GitHub Actions is still a fairly new service, but is already well suited for build-related tasks (Continuous Integration).
+- GitHub Actions is well-suited for build-related tasks (Continuous Integration).
 
 - GitHub Actions is less mature when it comes to deployment tasks (Continuous Deployment).
   - Templating and reuse of pipeline steps is limited.
@@ -339,7 +347,7 @@ There are three common approaches applied to define at what point secrets must b
 
 **Deployment-Time Retrieval**
 
-- Retrieving secrets at deployment time provides the advantage that the secret management solution only need to be available at deployment time, since there are no direct dependencies after this point. For example, injecting secrets as environment variables into a Kubernetes deployment or into a Kubernetes secret.
+- Retrieving secrets at deployment time provides the advantage that the secret management solution only needs to be available at deployment time, since there are no direct dependencies after this point. For example, injecting secrets as environment variables into a Kubernetes deployment or into a Kubernetes secret.
 
 - Only the deployment service principal needs to be able to access secrets, which simplifies RBAC permissions within the secret management system. It does, however, introduce additional RBAC considerations within DevOps tooling around controlling service principal access and the application in terms of protecting retrieved secrets.
 
@@ -382,13 +390,15 @@ There are three common approaches applied to define at what point secrets must b
 - Apply a fully automated key-rotation process that runs periodically within the solution.
   - Use [key near expire notification](/azure/key-vault/keys/how-to-configure-key-rotation#configure-key-near-expiry-notification) to get alerted on upcoming expiration.
 
-## Testing
+## Continuous validation and testing
 
 As previously stated, testing is a fundamental activity for any mission-critical solution, to fully validate the health of both the application code and infrastructure. More specifically, to satisfy desired standards for reliability, performance, availability, security, quality, and scale, testing must be well defined and applied as a core component of the application design and DevOps methodologies.
 
 Testing is a key concern for both the local developer experience ("[Inner Loop](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)") and the complete DevOps lifecycle ("[Outer Loop](/dotnet/architecture/containerized-lifecycle/docker-devops-workflow/docker-application-outer-loop-devops-workflow)"), which captures when developed code begins release pipeline processes on its journey to a production environment.
 
 The scope of this section focuses on testing conducted within the outer loop for a product release, considering various test scenarios, such as unit, build, static, security, integration, regression, UX, performance, capacity and failure injection (chaos). The order of conducted tests is also a critical consideration due to various dependencies, such as the need to have a running application environment.
+
+> [!VIDEO fc7842c3-7c7a-44dc-ad87-838aa51d0000]
 
 ### Design considerations
 
@@ -486,6 +496,12 @@ The scope of this section focuses on testing conducted within the outer loop for
 
 - Scan and monitor the end to end software supply chain and package dependencies for known CVEs.
   - Use [Dependabot](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates) for GitHub repositories to ensure the repository automatically keeps up-to-date with the latest releases of packages and applications it depends on.
+
+#### Demo video: Continuous validation with Azure Load Test and Azure Chaos Studio
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
+
+
 
 ## AI for DevOps
 

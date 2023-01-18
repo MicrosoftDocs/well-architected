@@ -1,75 +1,149 @@
 {
 	"redirections": [
-	  {
-		"source_path": "well-architected/services/compute/service-fabric/reliability.md",
-		"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#reliability",
-		"redirect_document_id": false
-	  },
-	  {
-		"source_path": "well-architected/services/compute/service-fabric/security.md",
-		"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#security",
-		"redirect_document_id": false
-	  },
-	  {
-		"source_path": "well-architected/services/compute/service-fabric/operational-excellence.md",
-		"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#operational-excellence",
-		"redirect_document_id": false
-	  },
-	  {
-		"source_path": "well-architected/services/compute/service-fabric/performance-efficiency.md",
-		"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#performance-efficiency",
-		"redirect_document_id": false
-	  },
-	  {
-		"source_path": "well-architected/services/networking/application-gateway-v2/operational-excellence.md",
-		"redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
-		"redirect_document_id": false
-	  },
-	  {
-		"source_path": "well-architected/services/networking/application-gateway-v2/reliability.md",
-		"redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
-		"redirect_document_id": false
-	  },
-	  {
-  		"source_path": "well-architected/services/networking/azure-firewall/reliability.md",
-		"redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
-		"redirect_document_id": false
-	  },
-	  {
-		"source_path": "well-architected/services/networking/azure-firewall/security.md",
-		"redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
-		"redirect_document_id": false
-	  },
-	  {
-		"source_path": "well-architected/services/networking/azure-firewall/operational-excellence.md",
-		"redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
-		"redirect_document_id": false
-	  },
 		{
-  		"source_path": "well-architected/services/compute/azure-kubernetes-service/cost-optimization.md",
-		"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
-		"redirect_document_id": false
-	  },
-	  {
-		"source_path": "well-architected/services/compute/azure-kubernetes-service/operational-excellence.md",
-		"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
-		"redirect_document_id": false
-	  },
-	  {
-		"source_path": "well-architected/services/compute/azure-kubernetes-service/performance-efficiency.md",
-		"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
-		"redirect_document_id": false
-	  },
-	  {
-		"source_path": "well-architected/services/compute/azure-kubernetes-service/reliability.md",
-		"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
-		"redirect_document_id": false
-	  },
-	  {
-		"source_path": "well-architected/services/compute/azure-kubernetes-service/security.md",
-		"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
-		"redirect_document_id": false
-	  }
+			"source_path": "well-architected/services/compute/virtual-machines/cost-optimization.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/virtual-machines/virtual-machines-review",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/compute/virtual-machines/operational-excellence.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/virtual-machines/virtual-machines-review",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/compute/virtual-machines/reliability.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/virtual-machines/virtual-machines-review",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/compute/service-fabric/reliability.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#reliability",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/compute/service-fabric/security.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#security",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/compute/service-fabric/operational-excellence.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#operational-excellence",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/compute/service-fabric/performance-efficiency.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/azure-service-fabric-well-architected-framework#performance-efficiency",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/networking/application-gateway-v2/operational-excellence.md",
+			"redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/networking/application-gateway-v2/reliability.md",
+			"redirect_url": "/azure/architecture/framework/services/networking/azure-application-gateway",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-firewall/reliability.md",
+			"redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-firewall/security.md",
+			"redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-firewall/operational-excellence.md",
+			"redirect_url": "/azure/architecture/framework/services/networking/azure-firewall",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-kubernetes-service/cost-optimization.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-kubernetes-service/operational-excellence.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-kubernetes-service/performance-efficiency.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-kubernetes-service/reliability.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-kubernetes-service/security.md",
+			"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/networking/expressroute/reliability.md",
+			"redirect_url": "/azure/architecture/framework/services/networking/azure-expressroute",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/networking/expressroute/operational-excellence.md",
+			"redirect_url": "/azure/architecture/framework/services/networking/azure-expressroute",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/data/azure-sql-database/cost-optimization.md",
+			"redirect_url": "/azure/architecture/framework/services/data/azure-sql-database-well-architected-framework",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/data/azure-sql-database/operational-excellence.md",
+			"redirect_url": "/azure/architecture/framework/services/data/azure-sql-database-well-architected-framework",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/data/azure-sql-database/reliability.md",
+			"redirect_url": "/azure/architecture/framework/services/data/azure-sql-database-well-architected-framework",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/cost/optimize-reserved.md",
+			"redirect_url": "/azure/cost-management-billing/reservations/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/cost-optimization.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/operational-excellence.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/overview.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/performance-efficiency.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/reliability.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/security.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
+		}
 	]
-  }
-  
+}

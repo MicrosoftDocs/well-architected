@@ -1,9 +1,9 @@
 ---
 title: Automatic retry of failed backup jobs
 description: Provides guidance and code examples for how to retry backups for all failed jobs in Azure.
-author: v-stacywray
-ms.author: robbymillsap
-ms.date: 12/15/2021
+author: martinekuan
+ms.author: martinek
+ms.date: 08/22/2022
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -28,7 +28,7 @@ Retrieve relevant backup data through Azure Resource Graph (ARG) and combine the
 
 ## Prerequisites
 
-You'll need an [Azure Automation](/azure/automation/automation-security-overview) account. You can use an existing account or [create a new account](/azure/automation/quickstarts/create-account-portal#create-automation-account) with one user-assigned managed identity, at minimum.
+You'll need an [Azure Automation](/azure/automation/automation-security-overview) account. You can use an existing account or [create a new account](/azure/automation/automation-create-standalone-account?tabs=azureportal) with one user-assigned managed identity, at minimum.
 
 ## Assign permissions to managed identities
 
