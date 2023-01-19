@@ -319,7 +319,7 @@ There are many valid approaches to branching. You should choose a strategy that 
 
 - **Minimize access**. Developers should do their work in _feature/*_ and _fix/*_ branches. These branches become entry points for changes. Role-based restrictions should be applied to branches as part of the branching strategy. For example, only allow administrators to create release branches or enforce naming conventions for branches.
 
-- **Accelerated process for emergencies**. The branching strategy should allow hotfixes to be merged into _main_ as soon as practical. That way, future releases contain the fix and reoccurrence of the problem is avoided. Use this process only for minor changes that address urgent problems, and use it with restraint.
+- **Accelerated process for emergencies**. The branching strategy should allow hotfixes to be merged into _main_ as soon as practical. That way, future releases contain the fix, and reccurrence of the problem is avoided. Use this process only for minor changes that address urgent problems, and use it with restraint.
 
 ### Design recommendations
 
@@ -333,7 +333,7 @@ There are many valid approaches to branching. You should choose a strategy that 
   - Ensure that changes are made to _main_ only via PRs. Use a branch policy to prohibit direct commits.
   - Every time a PR is merged into _main_, it should automatically kick off a deployment against an integration environment.
   - The _main_ branch should be considered stable. It should be safe to create a release from *main* at any given time.
-- Use dedicated _release/*_ branches that are created from the _main_ branch and used to deploy to production environments. - _release/*_ branches should remain in the repository and can be used to patch a release.
+- Use dedicated _release/*_ branches that are created from the _main_ branch and used to deploy to production environments. _release/*_ branches should remain in the repository and can be used to patch a release.
 
 - Document a hotfix process and use it only when needed. Create hotfixes in a _fix/*_ branch for subsequent merging into the release branch and deployment to production.
 
