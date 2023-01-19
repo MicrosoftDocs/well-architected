@@ -8,7 +8,7 @@ ms.custom: engagement-fy23
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
-ms.date: 01/18/2023
+ms.date: 09/30/2022
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall
