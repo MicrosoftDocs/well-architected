@@ -160,7 +160,7 @@ The IoT core layers and services identify whether a solution is an IoT solution.
 The IoT workload focuses primarily on these layers. To realize these layers, Microsoft provides IoT technologies and services such as [Azure IoT Hub](/azure/iot-hub/iot-concepts-and-iot-hub), [Azure IoT device SDKs](/azure/iot-hub/iot-hub-devguide-sdks), [Azure IoT Edge](/azure/iot-edge/about-iot-edge), [IoT Hub Device Provisioning Service](/azure/iot-dps/about-iot-dps), [Azure Digital Twins](/azure/digital-twins/overview), and [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere).
 
 > [!TIP]
-> [Azure IoT Central](/azure/iot-central/core/overview-iot-central) is a managed application platform, to quickly evaluate your IoT scenario and assess the opportunities it can create for your business. Once you've used IoT Central to evaluate your IoT scenario, you can then build your enterprise ready solutions by using the power of Azure IoT platform.
+> [Azure IoT Central](/azure/iot-central/core/overview-iot-central) is a managed application platform that you can use to quickly evaluate your IoT scenario and assess the opportunities for your business. After you've used IoT Central to evaluate your IoT scenario, you can then build your enterprise ready solution by using the power of Azure IoT platform.
 
 #### Device and gateway layer
 
