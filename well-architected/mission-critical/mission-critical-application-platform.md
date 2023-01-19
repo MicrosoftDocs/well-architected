@@ -84,7 +84,7 @@ Not every workload supports or requires multiple regions running simultaneously.
 
   - You can also use solutions like a Content Delivery Network (CDN) or edge caching to drive optimal network latency for distributed user bases. For more information, see [Global traffic routing](./mission-critical-networking-connectivity.md#global-traffic-routing), [Application delivery services](./mission-critical-networking-connectivity.md#application-delivery-services), and [Caching and static content delivery](./mission-critical-networking-connectivity.md#caching-and-static-content-delivery).
 
-- Align current service availability with product roadmaps when you choose deployment regions. Some services might be immediately available in every region.
+- Align current service availability with product roadmaps when you choose deployment regions. Some services might not be immediately available in every region.
 
 ## Containerization
 
@@ -113,7 +113,7 @@ A container includes application code and the related configuration files, libra
 
 - Be sure to gather all relevant logs and metrics from the container, container host, and underlying cluster. Send the gathered logs and metrics to a unified data sink for further processing and analysis.
 
-- Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry) with [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Microsoft Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Azure Active Directory (Azure AD).
+- Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry). Use [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Microsoft Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Azure Active Directory (Azure AD).
 
 ## Container hosting and orchestration
 
@@ -168,11 +168,11 @@ Maintain boundaries between the infrastructure used by the workload and system t
 
 ##### Security
 
-Default vanilla Kubernetes requires significant configuration to ensure a suitable security posture for mission-critical scenarios. AKS addresses various security risks out of the box. The features include private clusters, auditing and logging into Log Analytics, hardened node images, and managed identities.
+Default vanilla Kubernetes requires significant configuration to ensure a suitable security posture for mission-critical scenarios. AKS addresses various security risks out of the box. Features include private clusters, auditing and logging into Log Analytics, hardened node images, and managed identities.
 
 - Apply configuration guidance provided in the [AKS security baseline](/security/benchmark/azure/baselines/aks-security-baseline).
 
-- Use the AKS features to handle cluster identity and access management to reduce operational overhead and apply consistent access management.
+- Use AKS features for handling cluster identity and access management to reduce operational overhead and apply consistent access management.
 
 - Use managed identities instead of service principals to avoid management and rotation of credentials. You can add [managed identities](/azure/aks/use-managed-identity) at the cluster level. At the pod level, you can use managed identities via [Azure AD workload identity](/azure/aks/workload-identity-overview).
 
@@ -190,7 +190,7 @@ Clusters and nodes need to be upgraded regularly. AKS supports [Kubernetes versi
 
 ##### Networking
 
-Evaluate the network plugins that best fit your use case. Do you need granular control of traffic between pods? Azure supports kubenet, [Azure CNI](/azure/aks/concepts-network#compare-network-models), and [bring your own CNI](/azure/aks/use-byo-cni) for specific use cases.
+Evaluate the network plugins that best fit your use case. Determine whether you need granular control of traffic between pods. Azure supports kubenet, [Azure CNI](/azure/aks/concepts-network#compare-network-models), and [bring your own CNI](/azure/aks/use-byo-cni) for specific use cases.
 
 Prioritize the use of Azure CNI after assessing network requirements and the size of the cluster. Azure CNI enables the use of [Azure](/azure/aks/use-network-policies) or Calico network policies for controlling traffic within the cluster.
 
@@ -222,7 +222,7 @@ Use policies to apply centralized safeguards to AKS clusters in a consistent way
 
 ### App Service
 
-For web and API-based workload scenarios, [App Service](https://azure.microsoft.com/services/app-service/containers) might be a feasible alternative to AKS. It provides a low-friction container platform without the complexity of Kubernetes. For complete set of recommendations, see [Reliability considerations for App Service](/azure/architecture/framework/services/compute/azure-app-service/reliability) and [Operational Excellence for App Service](/azure/architecture/framework/services/compute/azure-app-service/operational-excellence).
+For web and API-based workload scenarios, [App Service](https://azure.microsoft.com/services/app-service/containers) might be a feasible alternative to AKS. It provides a low-friction container platform without the complexity of Kubernetes. For a complete set of recommendations, see [Reliability considerations for App Service](/azure/architecture/framework/services/compute/azure-app-service/reliability) and [Operational excellence for App Service](/azure/architecture/framework/services/compute/azure-app-service/operational-excellence).
 
 #### Design considerations and recommendations
 
@@ -329,9 +329,9 @@ Mission-critical workloads have critical and non-critical system flows. Azure Fu
 
 Choose an [Azure Functions hosting option](/azure/azure-functions/functions-scale) that's applicable to the application's reliability tier. We recommend the Premium plan because it allows you to configure compute instance size. The Dedicated plan is the least serverless option. It provides autoscale, but these scale operations are slower than those of the other plans. We recommend that you use the Premium plan to maximize reliability and performance.
 
-There are some security considerations. When you use an HTTP trigger to expose an external endpoint, provide a level of protection for the HTTP endpoint from common external attack vectors by using a web application firewall (WAF).
+There are some security considerations. When you use an HTTP trigger to expose an external endpoint, use a web application firewall (WAF) to provide a level of protection for the HTTP endpoint from common external attack vectors.
 
-We recommend private endpoints for restricting access to private virtual networks. They can also mitigate data exfiltration risks, like malicious admin scenarios.
+We recommend the use of private endpoints for restricting access to private virtual networks. They can also mitigate data exfiltration risks, like malicious admin scenarios.
 
 You need to use code scanning tools on Azure Functions code and integrate those tools with CI/CD pipelines.
 
@@ -356,7 +356,7 @@ This section focuses on the best ways to use Azure Virtual Machines and associat
 
 - The operational costs of using IaaS virtual machines are significantly higher than the costs of using PaaS services because of the management requirements of the virtual machines and the operating systems. Managing virtual machines necessitates the frequent rollout of software packages and updates.
 
-- Azure provides certain capabilities to increase the availability of virtual machines:
+- Azure provides capabilities to increase the availability of virtual machines:
   - [Availability sets](/azure/virtual-machines/availability-set-overview) can help protect against network, disk, and power failures by distributing virtual machines across fault domains and update domains.
   - [Availability zones](/azure/availability-zones/az-overview) can help you achieve even higher levels of reliability by distributing VMs across physically separated datacenters within a region.
   - [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview) provide functionality for automatically scaling the number of virtual machines in a group. They also provide capabilities for monitoring instance health and automatically repairing [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
@@ -372,7 +372,7 @@ This section focuses on the best ways to use Azure Virtual Machines and associat
   - If you're deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying it into production.
 
 - For workloads that can't be deployed across availability zones, use [availability sets](/azure/virtual-machines/availability-set-overview) that contain three or more VMs.
-  - You should consider availability sets only if availability zones don't meet workload requirements, such as for chatty workloads with low latency requirements.
+  - Consider availability sets only if availability zones don't meet workload requirements, such as for chatty workloads with low latency requirements.
 
 - Prioritize the use of Virtual Machine Scale Sets for scalability and zone redundancy. This point is particularly important for workloads that have varying loads. For example, if the number of active users or requests per second is a varying load.
   
@@ -383,11 +383,11 @@ This section focuses on the best ways to use Azure Virtual Machines and associat
 
 - For workloads that don't support multi-region active/active deployments, consider implementing active/passive deployments by using hot/warm standby virtual machines for regional failover.
 
-- Use standard images from the Azure Marketplace rather than custom images that need to be maintained.
+- Use standard images from Azure Marketplace rather than custom images that need to be maintained.
 
 - Implement automated processes to deploy and roll out changes to virtual machines, avoiding any manual intervention. For more information, see [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-virtual-machines) in the [Operational procedures](./mission-critical-operational-procedures.md) design area.
 
-- Implement chaos experiments to inject application faults into virtual machine components while observing the mitigation of faults. For more information, see [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing).
+- Implement chaos experiments to inject application faults into virtual machine components, and observe the mitigation of faults. For more information, see [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing).
 
 - Monitor virtual machines and ensure that diagnostic logs and metrics are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
 
