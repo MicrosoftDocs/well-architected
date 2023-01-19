@@ -57,7 +57,7 @@ The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) 
 
 View the following video for an overview of recommendations for application environments.
 
-<br>
+<br><br>
 
 > [!VIDEO 7e6e6390-9f32-4c9e-88da-497a604db319]
 
@@ -67,22 +67,24 @@ You need various types of environments to validate and stage deployment operatio
 
 There are some common considerations:
 
-- Components shouldn’t be shared across environments. Possible exceptions are downstream security appliances like firewalls, or source locations for synthetic test data.
+- Components shouldn't be shared across environments. Possible exceptions are downstream security appliances like firewalls and source locations for synthetic test data.
 
-- All types of environments should use Infrastructure-as-Code (IaC) artifacts such as Terraform or Azure Resource Manager (ARM) templates.
+- All environments should use infrastructure as code (IaC) artifacts like Terraform or Azure Resource Manager (ARM) templates.
 
 ### Development environments
 
-Ephemeral dev environments and automated feature validation
+View the following video for information about ephemeral development environments and automated feature validation. 
+
+<br><br>
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE50Gm9]
 
-#### Design Considerations
+#### Design considerations
 
-- **Capabilities**. Lower requirements for reliability, capacity, and security are acceptable for these environments.
+- **Capabilities**. Lower requirements for reliability, capacity, and security are acceptable for development environments.
 
-- **Lifecycle**. These environments should be created when required and only exist for short periods. Shorter lifecycle will prevent configuration drift from the code base and lower costs. Also, development environments often share the lifecycle of a feature branch.
+- **Lifecycle**. Development environments should be created as required and exist for a short time. Shorter lifecycles help prevent configuration drift from the code base and reduces costs. Also, development environments often share the lifecycle of a feature branch.
 
-- **Density**. Teams will need multiple environments to support parallel feature development. They can coexist within a single subscription.
+- **Density**. Teams need multiple environments to support parallel feature development. They can coexist within a single subscription.
 
 #### Design recommendations
 
@@ -92,122 +94,128 @@ Ephemeral dev environments and automated feature validation
 
 ### Test or staging environments
 
-These environments are used for testing and validation with many test cycles to ensure bug-free deployment to production. Tests appropriate for a mission-critical workload are described in the [Continuous validation and testing](#continuous-validation-and-testing) section.
+These environments are used for testing and validation. Many test cycles are performed to ensure bug-free deployment to production. Appropriate tests for a mission-critical workload are described in the [Continuous validation and testing](#continuous-validation-and-testing) section.
 
-#### Design Considerations
+#### Design considerations
 
-- **Capabilities**. This environment should reflect the production environment for reliability, capacity, and security. In absence of a production load, use synthetic user load to provide realistic metrics and valuable health modeling input.
+- **Capabilities**. These environments should reflect the production environment for reliability, capacity, and security. In the absence of a production load, use a synthetic user load to provide realistic metrics and valuable health modeling input.
 
-- **Lifecycle**. These environments are short-lived and should be destroyed after test validations are complete.
+- **Lifecycle**. These environments are short lived. They should be destroyed after test validations are complete.
 
-- **Density**. You can run many independent environments in one subscription. Having multiple environments, each in their dedicated subscription should be considered.
+- **Density**. You can run many independent environments in one subscription. You should also consider using multiple environments, each in a dedicated subscription.
 
 > [!NOTE]
-> Mission-critical applications should be subject to rigorous testing.
+> Mission-critical applications should be subjected to rigorous testing.
 > 
-> Different test functions can be performed within the same environment, and in some cases this will be required. For example, for chaos testing to provide meaningful results, the application must first be placed under load to be able to understand how the application responds to injected faults. Chaos testing and load testing are therefore typically performed in parallel.
+> You can perform different test functions in a single environment, and in some cases you'll need to. For example, for chaos testing to provide meaningful results, you must first place the application under load so you can understand how the application responds to injected faults. That's why chaos testing and load testing are typically performed in parallel.
 
 #### Design recommendations
 
-- Ensure at least one staging environment fully reflects production to enable production-like testing and validation. Capacity within this environment can flex based on the execution of test activities.
+- Ensure that at that least one staging environment fully reflects production to enable production-like testing and validation. Capacity within this environment can flex based on the execution of test activities.
 
 - Generate synthetic user load to provide a realistic test case for changes on one of the environments.
   > [!NOTE]
   > The [Mission Critical Online](https://github.com/Azure/Mission-Critical-Online) reference implementation provides an example [user load generator](https://github.com/Azure/Mission-Critical-Online/blob/main/src/testing/userload-generator/README.md).
 
-- Define the number of staging environments and their purpose within the development and release cycle.
+- Define the number of staging environments and their purposes within the development and release cycle.
 
 ### Production environments
 
-#### Design Considerations
+#### Design considerations
 
-- **Capabilities**. Highest level of reliability, capacity, and security functionality is needed for the application.
+- **Capabilities**. The highest levels of reliability, capacity, and security functionality for the application are required.
 
-- **Lifecycle**. While the lifecycle of the workload and the infrastructure remains the same needs, all data including monitoring and logging need special management. For example for backup and recovery.
+- **Lifecycle**. While the lifecycle of the workload and the infrastructure remains the same, all data, including monitoring and logging, need special management. For example, management is required for backup and recovery.
 
-- **Density**. Some applications may consider multiple different production environments to cater to different clients, users, or business functionality.
+- **Density**. For some applications, you might want to consider using different production environments to cater to different clients, users, or business functionalities.
 
 #### Design recommendations
 
-Have a clear governance boundary for production and lower environments. Place each environment type in their dedicated subscription to achieve that goal. This segmentation will make sure resource utilization in lower environments won’t impact production quotas. Dedicated subscriptions will also set access boundaries.
+Have a clear governance boundary for production and lower environments. Place each environment type in a dedicated subscription to achieve that goal. This segmentation ensures that resource utilization in lower environments doesn't affect production quotas. Dedicated subscriptions also set access boundaries.
 
 ## Ephemeral blue/green deployments
 
-A blue/green deployment model requires a minimum of two identical deployments. Blue is the active deployment that serves user traffic in production. Green is the new deployment that’s prepared and tested to receive traffic.
-After the green deployment is completed and tested, traffic is gradually directed from blue to green. If the load transfer is successful, the green deployment becomes the new active deployment. The old blue deployment can then be decommissioned through a phased process. However, if there are issues in the new deployment, it can be aborted, and traffic can either remain in the old blue deployment or be redirected to it.
+A blue/green deployment model requires at least two identical deployments. The blue deployment is the active one that serves user traffic in production. The green deployment is the new one that's prepared and tested to receive traffic.
+After the green deployment is completed and tested, traffic is gradually directed from blue to green. If the load transfer is successful, the green deployment becomes the new active deployment. The old blue deployment can then be decommissioned via a phased process. However, if there are problems in the new deployment, it can be aborted, and traffic can either remain in the old blue deployment or be redirected to it.
 
-Azure Mission-Critical emphasizes a **blue/green deployment approach where infrastructure _and applications_ are deployed together** as part of a deployment stamp. This means, rolling out a change to the infrastructure or application will always result in green deployment that contains both layers. The benefit is the ability to fully test and validate the impact of the change against the infrastructure and application end-to-end before user traffic is redirected to it. This approach increases confidence in releasing changes and enables zero-downtime upgrades because compatibilities with downstream dependencies such as Azure platform, resource providers or Infrastructure-as-Code modules can be validated.
+Azure Mission-Critical recommends a blue/green deployment approach where infrastructure _and applications_ are deployed together as part of a deployment stamp. So rolling out a change to the infrastructure or application always results in a green deployment that contains both layers. This approach provides the ability to fully test and validate the affect of the change against the infrastructure and application end-to-end before you redirect user traffic to it. The approach increases confidence in releasing changes and enables zero-downtime upgrades because compatibilities with downstream dependencies like the Azure platform, resource providers, and IaC modules can be validated.
 
-### Design Considerations
+### Design considerations
 
-- **Technology capabilities**. Take advantage of the built-in deployment features in Azure services. For example, Azure App Service provides secondary deployment slots that can be swapped after the deployment. For Azure Kubernetes Service (AKS), you can use separate pod deployment on each node and update service definition.
+- **Technology capabilities**. Take advantage of the built-in deployment features in Azure services. For example, Azure App Service provides secondary deployment slots that can be swapped after a deployment. With Azure Kubernetes Service (AKS), you can use a separate pod deployment on each node and update the service definition.
 
-- **Deployment duration**. The entire deployment might take longer to complete because the stamp contains the infrastructure and application than just the changed component. This, however, is acceptable because the risk of all components not working as expected is greater than the time taken to roll out the changes.
+- **Deployment duration**. The deployment might take longer to complete because the stamp contains the infrastructure and application rather than just the changed component. This, however, is acceptable because the risk of all components not working as expected overrides the time concerns.
 
-- **Cost impact**. There's an additional cost because of the two side-by-side deployments, which must coexist until the deployment is fully complete.
+- **Cost impact**. There's an additional cost because of the two side-by-side deployments, which must coexist until the deployment is complete.
 
-- **Traffic transition**. After the new deployment is validated, traffic must be transitioned from blue to green environments. This requires orchestration of user traffic between the environments. This transition should be fully automated.
+- **Traffic transition**. After the new deployment is validated, traffic must be transitioned from the blue environment to the green one. This transition requires orchestration of user traffic between the environments. The transition should be fully automated.
 
-- **Lifecycle**. Mission-critical deployment stamps should be considered as ephemeral to ensure a fresh start each time, before provisioning resources.
+- **Lifecycle**. Mission-critical deployment stamps should be considered ephemeral. Using short-lived stamps creates a fresh start each time, before resources are provisioned.
 
 ### Design recommendations
 
-- Adopt a blue/green deployment approach to release all production changes. Deploy all infrastructure and application, for any type of change, each time to achieve a consistent state and zero downtime. While environments can be reused, it isn’t recommended for mission-critical workloads. Treat each regional deployment stamp as ephemeral with a lifecycle tied to that of a single release.
+- Adopt a blue/green deployment approach to release all production changes. Deploy all infrastructure and the application each time, for any type of change, to achieve a consistent state and zero downtime. Although you can reuse environments, we don't recommend it for mission-critical workloads. Treat each regional deployment stamp as ephemeral with a lifecycle that's tied to that of a single release.
 
-- Use a global load balancer, such as Azure Front Door, to orchestrate the automated transition of user traffic between the blue and green environments.
+- Use a global load balancer, like Azure Front Door, to orchestrate the automated transition of user traffic between the blue and green environments.
 
-- For transitioning traffic, add a green backend endpoint using a low traffic volume/weight, such as 10%. After verifying that the low traffic volume on green is working with the expected application health, gradually increase traffic. While doing so, apply a short ramp-up period to catch faults that may not become known immediately.
+- To transition traffic, add a green back-end endpoint that uses a low traffic to volume weight, like 10 percent. After you verify that the low traffic volume on the green deployment works and provides the expected application health, gradually increase traffic. While doing so, apply a short ramp-up period to catch faults that might not immediately be apparent.
 
-  After 100% of traffic has transitioned, remove the blue backend from existing connections. For instance, remove the backend from global load balancer service, drain queues, and detach other associations. You’ll optimize the cost of maintaining secondary production infrastructure while making sure new environments are free of configuration drift.
+  After all traffic is transitioned, remove the blue back end from existing connections. For instance, remove the back end from the global load balancer service, drain queues, and detach other associations. Doing so helps to optimize the cost of maintaining secondary production infrastructure and ensure that new environments are free of configuration drift.
 
-  At this point, decommission the old and now inactive blue environment. Repeat the process for the next deployment with blue and green reversed.
+  At this point, decommission the old and now inactive blue environment. For the next deployment, repeat the process with blue and green reversed.
 
 ## Subscription-scoped deployment
-Depending on the scale requirements of the application, multiple production subscriptions might be needed to serve as scale units.
+
+Depending on the scale requirements of your application, you might need multiple production subscriptions to serve as scale units.
+
+View the following video to get an overview of recommendations for scoping subscriptions for a mission-critical application. 
 
 > [!VIDEO https://learn-video.azurefd.net/vod/player?id=013a2a82-dc85-4282-98ed-b1afe50afd41&embedUrl=/azure/architecture/framework/mission-critical/mission-critical-application-design]
 
 ### Design considerations
 
-- **Scalability**. For high-scale application scenarios with significant volumes of traffic, design the solution to scale across multiple Azure subscriptions so that scale limits of a single subscription don't constrain scalability.
+- **Scalability**. For high-scale application scenarios with significant volumes of traffic, design the solution to scale across multiple Azure subscriptions so that the scale limits of a single subscription don't constrain scalability.
 
   > [!IMPORTANT]
-  > The use of multiple subscriptions needs additional CI/CD complexity, which must be appropriately managed. Therefore, it's only recommended in extreme scale scenarios, where the limits of a single subscription are likely to become a limitation.
+  > The use of multiple subscriptions necessitates additional CI/CD complexity, which must be appropriately managed. Therefore, we recommend multiple subscriptions only in extreme scale scenarios, where the limits of a single subscription are likely to become a limitation.
 
-- **Environment boundaries**. Deploy production, development, or test environments, into separate subscriptions. This practice ensures that lower environments don't contribute towards scale limits. Also, it reduces the risk of lower environment updates polluting production, by providing a clear management and identity boundary.
+- **Environment boundaries**. Deploy production, development, and test environments into separate subscriptions. This practice ensures that lower environments don't contribute toward scale limits. It also reduces the risk of lower-environment updates polluting production by providing a clear management and identity boundary.
 
-- **Governance**. Where multiple production subscriptions are needed, consider using a dedicated application management group to simplify policy assignment through a policy aggregation boundary.
+- **Governance**. When you need multiple production subscriptions, consider using a dedicated application management group to simplify policy assignment via a policy aggregation boundary.
 
 ### Design recommendations
 
-- Deploy each regional deployment stamp within a dedicated subscription to ensure the subscription limits only apply within the context of a single deployment stamp and not across the application as a whole. Where appropriate, multiple deployment stamps can be considered within a single region, but you should deploy them across independent subscriptions.
+- Deploy each regional deployment stamp in a dedicated subscription to ensure that the subscription limits apply only within the context of a single deployment stamp and not across the application as a whole. Where appropriate, you might consider using multiple deployment stamps within a single region, but you should deploy them across independent subscriptions.
 
-- Separate the global shared resources within a dedicated subscription to allow for consistent regional subscription deployment. Avoid using a specialized deployment for the primary region.
+- Place global shared resources in a dedicated subscription to enable consistent regional subscription deployment. Avoid using a specialized deployment for the primary region.
 
-### Example - Subscription scale-unit approach
+### Example: Subscription scale-unit approach
 
-This image demonstrates how the single subscription reference deployment model can be expanded across multiple subscriptions, in an extreme scale scenario, to navigate subscription scale-limits.
+The following animation demonstrates how the single-subscription reference deployment model can be expanded across multiple subscriptions, in an extreme scale scenario, to account for subscription scale limits.
 
-![Mission-Critical Subscription Scale Units](./images/mission-critical-subscription-scale.gif "Mission-Critical Subscription Scale Units")
+:::image type="content" source="./images/mission-critical-subscription-scale.gif" alt-text="Animation that demonstrates mission-critical subscription scale units." lightbox="./images/mission-critical-subscription-scale.gif" border="false":::
 
 ## Continuous validation and testing
 
-Testing is a fundamental activity to fully validate the health of both the application code and infrastructure. More specifically, to meet the desired standards for reliability, performance, availability, security, quality, and scale. Testing must be well defined and applied as part of application design and DevOps strategy.
-Testing is a key concern for both the local developer experience ("[Inner Loop](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)") and the complete DevOps lifecycle ("[Outer Loop](/dotnet/architecture/containerized-lifecycle/docker-devops-workflow/docker-application-outer-loop-devops-workflow)"), which captures when code starts its journey from release pipeline processes toward production environment.
+Testing is a critical activity that allows you to fully validate the health of your application code and infrastructure. More specifically, testing allows you to meet your standards for reliability, performance, availability, security, quality, and scale. Testing must be well defined and applied as part of your application design and DevOps strategy.
+Testing is a key concern during the local developer process (the [inner loop](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)) and as a part of the complete DevOps lifecycle (the [outer loop](/dotnet/architecture/containerized-lifecycle/docker-devops-workflow/docker-application-outer-loop-devops-workflow)), which is when code starts on the path from release pipeline processes toward the production environment.
 
+View the following video to get an overview of continuous validation and testing. 
+
+<br><br>
 > [!VIDEO fc7842c3-7c7a-44dc-ad87-838aa51d0000]
 
-This section focuses on testing the outer loop for a product release using different types of tests.
+This section focuses on outer loop testing. It describes various types of tests.
 
 |Test|Description|
 |---|---|
-|**Unit testing**|Confirms that the application business logic works as expected and validates the overall effect of the code changes.|
+|**Unit testing**|Confirms that application business logic works as expected. Validates the overall effect of code changes.|
 |**Smoke testing**|Identifies whether infrastructure and application components are available and function as expected. Typically, only a single virtual user session is tested. The outcome should be that the system responds with expected values and behavior. </br> Common smoke testing scenarios include reaching the HTTPS endpoint of a web application, querying a database, and simulating a user flow in the application.|
-|**UI testing**|Validates that application user interfaces are deployed and user interface interactions function as expected.</br> UI automation tools can and should be used to drive automation. During a UI test, a script should mimic a realistic user scenario and follow a series of steps to execute actions and achieve an intended outcome.|
-|**Load testing**|Validates scalability and application operation by increasing load rapidly and/or gradually until a predetermined threshold reached. Load tests are typically designed around a particular user flow to verify that application requirements are satisfied under a defined load.|
-|**Stress testing**|Applies activities that overload existing resources to understand where solution limits exist, and to ensure the system’s ability to recover gracefully. The main goal is to identify potential performance bottlenecks and scale limits.</br> Conversely, scale down the computing resources of the system and monitor how it behaves under load and whether it's able to recover.|
-|**Performance testing**|Combines aspects of *load* and *stress testing* to validate performance under load and establish benchmark behaviors for application operation.|
-|**Chaos testing**|Injects artificial failures to the system to validate how the system reacts and the effectiveness of resiliency measures, operational procedures, and mitigations.</br> Shutting down infrastructure components, purposely degrading performance, or introducing application faults are examples of test scenarios, which can be used to verify that the application is going to react as expected in situations when they occur for real.
+|**UI testing**|Validates that application user interfaces are deployed and that user interface interactions function as expected.</br> You should use UI automation tools to drive automation. During a UI test, a script should mimic a realistic user scenario and complete a series of steps to execute actions and achieve an intended outcome.|
+|**Load testing**|Validates scalability and application operation by increasing load rapidly and/or gradually until a predetermined threshold is reached. Load tests are typically designed around a particular user flow to verify that application requirements are satisfied under a defined load.|
+|**Stress testing**|Applies activities that overload existing resources to determine solution limits and verify the system's ability to recover gracefully. The main goal is to identify potential performance bottlenecks and scale limits.</br> Conversely, scale down the computing resources of the system and monitor how it behaves under load and determine whether it can recover.|
+|**Performance testing**|Combines aspects of load and stress testing to validate performance under load and establish benchmark behaviors for application operation.|
+|**Chaos testing**|Injects artificial failures to the system to evaluate how the system reacts and to validate the effectiveness of resiliency measures, operational procedures, and mitigations.</br> Shutting down infrastructure components, purposely degrading performance, and introducing application faults are examples of test scenarios, which can be used to verify that the application is going to react as expected in situations when they occur for real.
 |**Penetration testing**|Ensures that an application and its environment satisfy an expected security posture. The goal is to identify security vulnerabilities.</br> Security testing can include end-to-end software supply chain and package dependencies, with scanning and monitoring for known Common Vulnerabilities and Exposures (CVE).|
 
 ### Design considerations
