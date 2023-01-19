@@ -88,7 +88,7 @@ Not every workload supports or requires running multiple regions simultaneously.
 
 ## Containerization
 
-A container includes application code and the related configuration files, libraries, and dependencies that it needs to run. Containerization provides an abstraction layer for application code and its dependencies and achieves separation from the underlying hosting platform. The single software package is highly portable and can run consistently across various infrastructure platforms and cloud providers. Developers don't need to rewrite code and can deploy applications faster and more reliably. 
+A container includes application code and the related configuration files, libraries, and dependencies that the application needs to run. Containerization provides an abstraction layer for application code and its dependencies and creates separation from the underlying hosting platform. The single software package is highly portable and can run consistently across various infrastructure platforms and cloud providers. Developers don't need to rewrite code and can deploy applications faster and more reliably. 
 
 > [!IMPORTANT]
 > We recommend that you use containers for mission-critical application packages. They improve infrastructure utilization because you can host multiple containers on the same virtualized infrastructure. Also, because all software is included in the container, you can move the application across various operating systems, regardless of runtimes or library versions. Management is also easier with containers than it is with traditional virtualized hosting.
@@ -105,7 +105,7 @@ A container includes application code and the related configuration files, libra
 
 ### Design recommendations
 
-- Containerize all application components, using container images as the primary model for application deployment packages.
+- Containerize all application components. Use container images as the primary model for application deployment packages.
 
 - Prioritize Linux-based container runtimes when possible. The images are more lightweight, and new features for Linux nodes/containers are released frequently.
 
@@ -182,7 +182,7 @@ Default vanilla Kubernetes requires significant configuration to ensure a suitab
 
 Clusters and nodes need to be upgraded regularly. AKS supports [Kubernetes versions](/azure/aks/supported-kubernetes-versions) in alignment with the release cycle of native Kubernetes.
 
-- Subscribe to the public [AKS Roadmap](https://aka.ms/aks/roadmap) and [Release Notes](https://aka.ms/aks/releasenotes) on GitHub to stay up-to-date on upcoming changes, improvements, and, most importantly, Kubernetes version releases or deprecations.
+- Subscribe to the public [AKS Roadmap](https://aka.ms/aks/roadmap) and [Release Notes](https://aka.ms/aks/releasenotes) on GitHub to stay up-to-date on upcoming changes, improvements, and, most importantly, Kubernetes version releases and deprecations.
 
 - Apply the guidance provided in the [AKS checklist](https://www.the-aks-checklist.com) to ensure alignment with best practices.
 
@@ -208,7 +208,7 @@ Your monitoring tools should be able to capture logs and metrics from running po
 
 Use policies to apply centralized safeguards to AKS clusters in a consistent way. Apply policy assignments at a subscription scope or higher to drive consistency across development teams.
 
-- Control which functions are granted to pods, and if running contradicts policy, by using Azure Policy. This access is defined through built-in policies provided by the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes).
+- Control which functions are granted to pods, and whether running contradicts policy, by using Azure Policy. This access is defined through built-in policies provided by the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes).
 
 - Establish a consistent reliability and security baseline for AKS cluster and [pod](/azure/aks/use-pod-security-on-azure-policy) configurations by using [Azure Policy](/azure/governance/policy/overview).
  
@@ -228,7 +228,7 @@ For web and API-based workload scenarios, [App Service](https://azure.microsoft.
 
 ##### Reliability
 
-Evaluate the use of TCP and SNAT ports. TCP connections are used for all outbound connections, but SNAT ports are used for outbound connections to public IP addresses. SNAT port exhaustion is a common failure scenario. You should predictively detect this problem by load testing when you use Azure Diagnostics to monitor ports. If SNAT errors occur, you need to either scale across more or larger workers or implement coding practices to help preserve and reuse SNAT ports. Examples of coding practices that you can use include connection pooling and the lazy loading of resources.
+Evaluate the use of TCP and SNAT ports. TCP connections are used for all outbound connections. SNAT ports are used for outbound connections to public IP addresses. SNAT port exhaustion is a common failure scenario. You should predictively detect this problem by load testing while using Azure Diagnostics to monitor ports. If SNAT errors occur, you need to either scale across more or larger workers or implement coding practices to help preserve and reuse SNAT ports. Examples of coding practices that you can use include connection pooling and the lazy loading of resources.
 
 TCP port exhaustion is another failure scenario. It occurs when the sum of outbound connections from a given worker exceeds capacity. The number of available TCP ports depends on the size of the worker. For recommendations, see [TCP and SNAT ports](/azure/architecture/framework/services/compute/azure-app-service/reliability#tcp-and-snat-ports).
 
@@ -265,7 +265,7 @@ You need to configure your container registries for mission-critical workloads c
 
 ### Design considerations
 
-- **Format**. Consider a using container registry that relies on the Docker-provided format and standards for both push and pull operations. These solutions are compatible and mostly interchangeable.
+- **Format**. Consider using a container registry that relies on the Docker-provided format and standards for both push and pull operations. These solutions are compatible and mostly interchangeable.
 
 - **Deployment model**. You can deploy the container registry as a centralized service that's consumed by multiple applications within your organization. Or you can deploy it as a dedicated component for a specific application workload.
 
@@ -286,9 +286,9 @@ You need to configure your container registries for mission-critical workloads c
 
 #### Reliability
 
-Configure geo-replication to all deployment regions to remove regional dependencies and optimize latency. Container Registry supports high availability through [geo-replication](/azure/container-registry/container-registry-geo-replication#considerations-for-high-availability) to multiple configured regions, providing resiliency against regional outages. If a region becomes unavailable, the other regions continue to serve image requests. When the region is back online, Container Registry recovers it and replicates changes to it. This capability also provides registry colocation within each configured region, reducing network latency and cross-region data transfer costs. 
+Configure geo-replication to all deployment regions to remove regional dependencies and optimize latency. Container Registry supports high availability through [geo-replication](/azure/container-registry/container-registry-geo-replication#considerations-for-high-availability) to multiple configured regions, providing resiliency against regional outages. If a region becomes unavailable, the other regions continue to serve image requests. When the region is back online, Container Registry recovers and replicates changes to it. This capability also provides registry colocation within each configured region, reducing network latency and cross-region data transfer costs. 
 
-In Azure regions that provide availability zone support, the [Premium Container Registry tier supports zone redundancy](/azure/container-registry/zone-redundancy) to protect against zonal failure. The Premium tier also supports [private endpoints](/azure/container-registry/container-registry-private-link) to help prevent unauthorized access to the registry, which can lead to reliability issues. 
+In Azure regions that provide availability zone support, the [Premium Container Registry tier supports zone redundancy](/azure/container-registry/zone-redundancy) to provide protection against zonal failure. The Premium tier also supports [private endpoints](/azure/container-registry/container-registry-private-link) to help prevent unauthorized access to the registry, which can lead to reliability issues. 
 
 Host images close to the consuming compute resources, within the same Azure regions.
 
@@ -309,13 +309,13 @@ If you want to protect the Container Registry instance from deletion, use [resou
 
 Serverless computing provides resources on demand and eliminates the need to manage infrastructure. The cloud provider automatically provisions, scales, and manages the resources required to run deployed application code. Azure provides several serverless compute platforms:
 
-- [Azure Functions](/azure/azure-functions/functions-overview). Application logic is implemented as distinct blocks of code, or _functions_, which run in response to events, like an HTTP request or queue message. Each function scales as necessary to meet demand.
+- [Azure Functions](/azure/azure-functions/functions-overview). When you use Azure Functions, application logic is implemented as distinct blocks of code, or _functions_, that run in response to events, like an HTTP request or queue message. Each function scales as necessary to meet demand.
 
-- [Azure Logic Apps](/azure/logic-apps/logic-apps-overview). Best suited for creating and running automated workflows that integrate various apps, data sources, services, and systems. Like Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that  supports code blocks like conditionals and loops.
+- [Azure Logic Apps](/azure/logic-apps/logic-apps-overview). Logic Apps is best suited for creating and running automated workflows that integrate various apps, data sources, services, and systems. Like Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that  supports code blocks like conditionals and loops.
 
-- [Azure API Management](https://azure.microsoft.com/services/api-management). Publish, transform, maintain, and monitor enhanced-security APIs by using the Consumption tier.
+- [Azure API Management](https://azure.microsoft.com/services/api-management). You can use API Management to publish, transform, maintain, and monitor enhanced-security APIs by using the Consumption tier.
 
-- [Power Apps and Power Automate](/powerapps/powerapps-overview). Provides a low-code or no-code development experience, with simple workflow logic and integrations that are configurable through connections in a user interface.
+- [Power Apps and Power Automate](/powerapps/powerapps-overview). These tools provide a low-code or no-code development experience, with simple workflow logic and integrations that are configurable through connections in a user interface.
 
 For mission-critical applications, serverless technologies provide simplified development and operations, which can be valuable for simple business use cases. However, this simplicity comes at the cost of flexibility in terms of scalability, reliability, and performance, and that's not viable for most mission-critical application scenarios.
 
@@ -327,7 +327,7 @@ Mission-critical workloads have critical and non-critical system flows. Azure Fu
 
 #### Design considerations and recommendations
 
-Choose an [Azure Functions hosting option](/azure/azure-functions/functions-scale) that's applicable to the application's reliability tier. We recommend the Premium plan because it allows you to configure compute instance size. The Dedicated plan is the least serverless option. It provides autoscale, but these scale operations are slower than those of the other plans. We recommend that you use the Premium plan to maximize reliability and performance.
+Choose an [Azure Functions hosting option](/azure/azure-functions/functions-scale) that's appropriate for the application's reliability tier. We recommend the Premium plan because it allows you to configure compute instance size. The Dedicated plan is the least serverless option. It provides autoscale, but these scale operations are slower than those of the other plans. We recommend that you use the Premium plan to maximize reliability and performance.
 
 There are some security considerations. When you use an HTTP trigger to expose an external endpoint, use a web application firewall (WAF) to provide a level of protection for the HTTP endpoint from common external attack vectors.
 
@@ -369,7 +369,7 @@ This section focuses on the best ways to use Azure Virtual Machines and associat
 - [Right-size VM SKU sizes](/azure/virtual-machines/sizes) to ensure effective resource utilization.
 
 - Deploy three or more virtual machines across [availability zones](/azure/availability-zones/az-overview) to achieve datacenter-level fault tolerance.
-  - If you're deploying commercial off-the-shelf software, consult with the software vendor and test adequately before deploying it into production.
+  - If you're deploying commercial off-the-shelf software, consult the software vendor and test adequately before deploying the software into production.
 
 - For workloads that can't be deployed across availability zones, use [availability sets](/azure/virtual-machines/availability-set-overview) that contain three or more VMs.
   - Consider availability sets only if availability zones don't meet workload requirements, such as for chatty workloads with low latency requirements.
