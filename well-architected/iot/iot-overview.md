@@ -157,7 +157,10 @@ The IoT core layers and services identify whether a solution is an IoT solution.
 - Device management and modeling
 - Ingestion and communication
 
-The IoT workload focuses primarily on these layers. To realize these layers, Microsoft provides IoT-specific services such as Azure IoT Hub, Azure IoT Edge, IoT Hub Device Provisioning Service (DPS), and Azure IoT Central.
+The IoT workload focuses primarily on these layers. To realize these layers, Microsoft provides IoT technologies and services such as [Azure IoT Hub](/azure/iot-hub/iot-concepts-and-iot-hub), [Azure IoT device SDKs](/azure/iot-hub/iot-hub-devguide-sdks), [Azure IoT Edge](/azure/iot-edge/about-iot-edge), [IoT Hub Device Provisioning Service](/azure/iot-dps/about-iot-dps), [Azure Digital Twins](/azure/digital-twins/overview), and [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere).
+
+> [!TIP]
+> [Azure IoT Central](/azure/iot-central/core/overview-iot-central) is a managed application platform, to quickly evaluate your IoT scenario and assess the opportunities it can create for your business. Once you've used IoT Central to evaluate your IoT scenario, you can then build your enterprise ready solutions by using the power of Azure IoT platform.
 
 #### Device and gateway layer
 
@@ -174,10 +177,10 @@ Common use cases include reading sensor values from a device, processing and tra
 Relevant Microsoft technologies include:
 
 - [Azure IoT Edge](/azure/iot-edge/about-iot-edge)
-- [Azure IoT device SDKs](/azure/iot-develop/about-iot-sdks)
+- [Azure IoT device SDKs](/azure/iot-hub/iot-hub-devguide-sdks)
 - [Azure RTOS](/azure/rtos/overview-rtos)
 - [Microsoft Defender for IoT](/azure/defender-for-iot)
-- [Azure Sphere](/azure-sphere)
+- [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere)
 - [Windows for IoT](/windows/iot)
 
 #### Ingestion and communication layer
@@ -202,8 +205,8 @@ Relevant Microsoft technologies include:
 
 - [IoT Hub device twins](/azure/iot-hub/iot-hub-devguide-device-twins)
 - [IoT Central device templates](/azure/iot-central/core/concepts-device-templates)
-- [IoT Hub DPS](/azure/iot-dps/about-iot-dps)
-- [Azure Digital Twins](/azure/digital-twins)
+- [IoT Hub Device Provisioning Service](/azure/iot-dps/about-iot-dps)
+- [Azure Digital Twins](/azure/digital-twins/overview)
 - [IoT Plug and Play](/azure/iot-develop/overview-iot-plug-and-play)
 
 ### Common layers and services
