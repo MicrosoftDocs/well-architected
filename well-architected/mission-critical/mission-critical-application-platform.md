@@ -47,7 +47,7 @@ The following image shows the high-level design. A user accesses the application
 
 The mission-critical design methodology necessitates a multi-region deployment. This model ensures regional fault tolerance, so that the application remains available even when an entire region goes down. When you design a multi-region application, consider different deployment strategies, like active/active and active/passive, together with application requirements, because there are significant trade-offs for each approach. For mission-critical workloads, we strongly recommend the active/active model.
 
-Not every workload supports or requires multiple regions running simultaneously. You should weigh specific application requirements against trade-offs to determine an optimal design decision. For certain application scenarios that have lower reliability targets, active/passive or sharding can be suitable alternatives.
+Not every workload supports or requires running multiple regions simultaneously. You should weigh specific application requirements against trade-offs to determine an optimal design decision. For certain application scenarios that have lower reliability targets, active/passive or sharding can be suitable alternatives.
 
 [Availability zones](/azure/availability-zones/az-overview#availability-zones) can provide highly available regional deployments across different datacenters within a region. Nearly all Azure services are available in either a zonal configuration, where the service is delegated to a specific zone, or a zone-redundant configuration, where the platform automatically ensures that the service spans across zones and can withstand a zone outage. These configurations provide fault tolerance up to the datacenter level.
 
