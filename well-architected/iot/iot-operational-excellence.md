@@ -66,7 +66,7 @@ Brownfield projects that already have hardware deployed typically have more hard
 
 [Azure Certified Device Program](https://www.microsoft.com/azure/partners/azure-certified-device) certification validates that a device can connect with Azure IoT Hub and securely provision through the IoT Hub Device Provisioning Service (DPS). The [Azure Certified Device Catalog](https://devicecatalog.azure.com) can help you find and select certified partner hardware. The Device Catalog has search and filter capabilities you can use to find hardware that meets your solution requirements.
 
-An important feature to look for in Azure IoT-certified hardware is Azure Plug-and-Play and Digital Twins Definition Language (DTDL) compatibility. These features ensure that devices integrate seamlessly with services such as Azure IoT Central and Azure Digital Twins. For Azure IoT Edge scenarios, it's important to find catalog devices that have the [IoT Edge Managed](/azure/certification/program-requirements-edge-managed) certification. This certification guarantees the device can run the IoT Edge runtime, and enables deployment and management of IoT Edge modules that support edge processing and analytics workloads.
+An important feature to look for in Azure IoT-certified hardware is Azure Plug-and-Play and Digital Twins Definition Language (DTDL) compatibility. These features ensure that devices integrate seamlessly with services such as Azure Digital Twins. For Azure IoT Edge scenarios, it's important to find catalog devices that have the [IoT Edge Managed](/azure/certification/program-requirements-edge-managed) certification. This certification guarantees the device can run the IoT Edge runtime, and enables deployment and management of IoT Edge modules that support edge processing and analytics workloads.
 
 Device components and spares must be available to cover maintenance and support contracts for the lifetime of the solution. Ensure a timely and secure equipment supply at the start of the project, because this requirement can be expensive to introduce later. Use a trusted vendor chain and consider dual or multiple supply sources.
 
@@ -80,7 +80,7 @@ Configure the ingestion and other back-end layers of the IoT cloud solution to b
 
 Azure offers several options to meet capacity requirements as your business grows. Capacity planning and scaling for your IoT solution varies depending on whether you build an [IoT Central](https://azure.microsoft.com/products/iot-central) or [IoT Hub](https://azure.microsoft.com/products/iot-hub)-based solution.
 
-- The IoT Central application platform as a service (aPaaS) automatically manages multiple instances of its underlying services to scale your IoT Central applications and make them highly available. However, IoT Central stores only 30 days of data, and because most IoT solutions export data to other services, you should focus on making sure those other services can handle expected and unexpected capacity needs.
+- IoT Central is a managed application platform that you can use to quickly evaluate your IoT scenario and assess the opportunities for your business. It automatically manages multiple instances of its underlying services to scale your IoT Central applications and make them highly available. However, IoT Central stores only 30 days of data, and because most IoT solutions export data to other services, you should focus on making sure those other services can handle expected and unexpected capacity needs.
 
 - With an IoT Hub-based solution, it's your responsibility to scale up to handle growth in the number of messages being ingested and to scale out to handle regional demands. Understanding the number of messages that devices will send to IoT Hub and the sustained throughput is critical to selecting the correct IoT Hub tier to support the predicted demand.
 
@@ -135,7 +135,11 @@ For more information about device management, see:
 
 ### Management user interface
 
-Solution operators and administrators need an interface to interact with the IoT solution. IoT Central has a built-in, easy-to-use management interface that lets operators and administrators provision devices, add or remove users, send commands to IoT devices, and manage device updates. If the IoT Central management UI doesn't meet your requirements, or the solution is based on platform as a service (PaaS) services like IoT Hub, you can build a custom management UI by using the REST APIs that IoT Hub and IoT Central expose.
+Solution operators and administrators need an interface to interact with the IoT solution, for example provision devices, add or remove users, send commands to IoT devices, or manage device updates.
+
+IoT Central has a built-in, easy-to-use management interface that lets operators and administrators focus on adding industry knowledge, and evaluating the solution.
+
+When you build your enterprise solution by using the platform services, such as IoT Hub and Azure Digital Twins you can build a custom management UI by using the REST APIs exposed in [IoT Hub REST APIs](/rest/api/iothub/) and [Azure Digital Twins REST APIs](/rest/api/azure-digitaltwins/).
 
 ## Integration layer
 
@@ -155,7 +159,7 @@ A key decision early in a solution design phase is to define the roles that impl
 
 Ideally, the solution should trust a centralized identity provider, such as [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis), and only let the appropriate users in those roles perform management or operation activities such as creating and provisioning new devices, sending commands to hardware in the field, deploying updates, and modifying user permissions.
 
-IoT Central has built-in roles you can assign to existing users in Azure AD, eliminating the need to develop a customized identity service. In an IoT Hub-based solution, you can use Azure AD to authenticate requests to IoT Hub service APIs, such as creating device identities or invoking direct methods. You can develop a custom management UI for solution operators and administrators that authenticates users against Azure AD and executes API requests to the IoT solution back end on behalf of those users.
+To help you focus on evaluating the solution IoT Central has built-in roles you can assign to existing users in Azure AD, eliminating the need to develop a customized identity service. In an IoT Hub-based solution, you can use Azure AD to authenticate requests to IoT Hub service APIs, such as creating device identities or invoking direct methods. You can develop a custom management UI for solution operators and administrators that authenticates users against Azure AD and executes API requests to the IoT solution back end on behalf of those users.
 
 ### IoT Edge Metrics Collector
 
