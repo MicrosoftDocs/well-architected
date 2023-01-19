@@ -18,7 +18,7 @@ ms.custom:
 
 # Deployment and testing for mission-critical workloads on Azure
 
-Failed deployments and erroneous releases are common causes for application outages. How you approach deployment and testing plays a critical role in the overall reliability of a mission-critical application.
+Failed deployments and erroneous releases are common causes for application outages. Your approach to deployment and testing plays a critical role in the overall reliability of a mission-critical application.
 
 Deployment and testing should form the basis for all application and infrastructure operations to ensure consistent outcomes for mission-critical workloads. Be prepared to deploy weekly, daily, or more often. Design your continuous integration and continuous deployment (CI/CD) pipelines to support those goals.
 
