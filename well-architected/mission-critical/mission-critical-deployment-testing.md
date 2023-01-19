@@ -244,7 +244,7 @@ View the following video to see how resiliency testing can be integrated with Az
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
 
-- Ensure consistency by automating all testing on infrastructure and application components. Integrate the tests in CI/CD pipelines to orchestrate and run them where applicable. For information about technology options, see [DevOps tools](#devops-tooling-choices).
+- Ensure consistency by automating all testing on infrastructure and application components. Integrate the tests in CI/CD pipelines to orchestrate and run them where applicable. For information about technology options, see [DevOps tools](#devops-tools).
 
 - Treat all test artifacts as code. They should be maintained and version controlled along with other application code artifacts.
 
