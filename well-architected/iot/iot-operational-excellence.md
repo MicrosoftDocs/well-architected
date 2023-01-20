@@ -308,7 +308,6 @@ When you implement automation and DevOps in IoT systems, follow specific automat
 - [DPS X.509 attestation](/azure/iot-dps/concepts-x509-attestation)
 - [Azure IoT Hub scaling](/azure/iot-hub/iot-hub-scaling)
 - [Control access to Azure IoT Hub by using Azure Active Directory](/azure/iot-hub/iot-hub-dev-guide-azure-ad-rbac)
-- [Manage users and roles in IoT Central](/azure/iot-central/core/howto-manage-users-roles)
 - [Plan for capacity - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/scalability/design-capacity)
 - [Operational excellence design principles](../devops/principles.md)
 - [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot)
