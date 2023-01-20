@@ -54,7 +54,7 @@ Explore the following table of recommendations to optimize your Oracle on Azure 
 | Before scaling up hardware, ensure you understand what is causing performance bottlenecks and if it’s at the database or hardware level | Optimizing workloads can save a considerable amount over time and potentially also CPUs that you actually don't need. Make sure to regularly take a look on the AWR reports. When there are performance issues, it can also be caused on a storage level. Make sure to understand issues first before scaling up. |
 | Familiarize yourself with the Oracle licensing FAQ | Be aware of what products are supported in Azure and how licensing works in Azure as a supported cloud for Oracle. |
 
-## Next Step
+## Next Steps
 
 >[!div class="nextstepaction"]
 >[Operational Excellence](./operational-excellence.md)

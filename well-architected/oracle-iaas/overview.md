@@ -202,7 +202,7 @@ Microsoft offers a couple of features for establishing a modern architecture. Au
 
 **(6) Disaster Recovery** - There are different solutions you can choose from. It very much depends on your requirements. The earlier mentioned architecture is built to be highly available. For replicating the application tier you can use [Azure Site Recovery](/azure/site-recovery/site-recovery-overview). Another solution you can choose is [Redundancy options for managed disks.](/azure/virtual-machines/disks-redundancy#zone-redundant-storage-for-managed-disks) Both solutions replicate your data. Redundancy options for managed disks are a solution that can simplify the architecture but also comes with a few limitations.
 
-### Choose the right VM for your Workload
+### Choose the right VM for your workloads
 
 Every database and server is used to different capacities. Therefore, it is important to extract AWR reports on peak-load.
 
@@ -236,7 +236,7 @@ Oracle and Microsoft have partnered to create a number of ready-to-deploy soluti
 
 ## Illustrative Examples
 
-The Oracle workload guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations and scripts available.
+The Oracle workloads guidance provided within this series is based on a solution-orientated approach to illustrate key design considerations and recommendations. There are several reference implementations and scripts available.
 
 For more information, see the [Oracle reference architecture](/azure/virtual-machines/workloads/oracle/oracle-reference-architecture).
 
