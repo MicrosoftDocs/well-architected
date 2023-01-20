@@ -81,7 +81,7 @@ Explore the following table of recommendations to optimize your Oracle on Azure 
 | Consider using the DBSAT to evaluate security state of database | Oracle provides a stand-alone command line tool called the [Oracle Database Security Assessment Tool (DBSAT)](https://docs.oracle.com/en/database/oracle/security-assessment-tool/index.html) to assess and check regulatory compliance, including relevant configuration and configuration information. |
 | Virtual Machine Security in Azure | Follow the recommended practices for [Virtual Machine Security in Azure](/azure/security/fundamentals/virtual-machines-overview), including the use of compute, data security, ports and network. |
 
-## Next Step
+## Next Steps
 
 >[!div class="nextstepaction"]
 >[Cost Optimization](./cost-optimization.md)
