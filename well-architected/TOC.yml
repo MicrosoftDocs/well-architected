@@ -425,6 +425,20 @@ items:
                 href: iot/iot-operational-excellence.md
               - name: Performance Efficiency
                 href: iot/iot-performance.md
+          - name: Oracle
+            items:
+              - name: Overview
+                href: oracle-iaas/overview.md
+              - name: Reliability
+                href: oracle-iaas/reliability.md
+              - name: Security
+                href: oracle-iaas/security.md
+              - name: Cost Optimization
+                href: oracle-iaas/cost-optimization.md
+              - name: Operational Excellence
+                href: oracle-iaas/operational-excellence.md
+              - name: Performance Efficiency
+                href: oracle-iaas/performance-efficiency.md
           - name: SAP
             items:
               - name: Quick links
