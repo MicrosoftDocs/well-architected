@@ -26,7 +26,7 @@ By having the correct solution, you gain the ability to improve the performance 
 
 Oracle applications usually have a high number of interfaces to other systems. Common communication paths are local storage, external storage, VMs in the network, and third-party applications. Optimizing the workload network with Proximity Placement Groups can bring higher performance.
 
-### Understand Proximity Placement Groups
+### Understanding Proximity Placement Groups
 
 A proximity placement group is a logical grouping. It makes sure that Azure compute resources are physically located close to each other. Proximity placement groups are useful for workloads where low latency is a requirement, which is typical for Oracle Workloads.
 
@@ -58,6 +58,6 @@ Explore the following table of recommendations to optimize your Oracle database 
 | Increase the size of the ExpressRoute gateway. | Upgrade to a [higher gateway SKU](/azure/expressroute/expressroute-about-virtual-network-gateways) for improved throughput performance between on-premises and Azure environment. |
 | Move the right database files to higher IO storage | Use the AWR/Statspack report on IO Summary by file type to ensure that what you offer more IO to, is what will benefit from faster storage. |
 
-## Next Step
+## Next Steps
 >[!div class="nextstepaction"]
 >[Oracle Reference Architecture](/azure/virtual-machines/workloads/oracle/oracle-reference-architecture)
