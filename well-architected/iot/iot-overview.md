@@ -209,7 +209,6 @@ This layer maintains the list of devices and gateway identities, their state, an
 Relevant Microsoft technologies include:
 
 - [IoT Hub device twins](/azure/iot-hub/iot-hub-devguide-device-twins)
-- [IoT Central device templates](/azure/iot-central/core/concepts-device-templates)
 - [IoT Hub Device Provisioning Service](/azure/iot-dps/about-iot-dps)
 - [Azure Digital Twins](/azure/digital-twins/overview)
 - [IoT Plug and Play](/azure/iot-develop/overview-iot-plug-and-play)
