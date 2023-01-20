@@ -31,7 +31,7 @@ Make sure to match up to the on-premises application architecture to reach high 
 
 There are no specific built-in recommendations in Azure Advisor for Oracle on IaaS solutions in Azure. However, Azure Advisor has broad pillar coverage across the common resources used in these architectures, including [compute](/azure/advisor/advisor-reference-operational-excellence-recommendations#compute) (including [Azure VMware](/azure/advisor/advisor-reference-operational-excellence-recommendations#azure-vmware)), [storage](/azure/advisor/advisor-reference-performance-recommendations#storage), and [networking](/azure/advisor/advisor-reference-reliability-recommendations#networking). Reviewing recommendations from Azure Advisor for these underlying resources can detect configurations & topologies that can lead to reliability impact, optimize cost from under-utilization of resources, and reveal opportunities improve user experience through surfacing throttling issues or proximity placement suggestions. See the related Azure Well-Architected service guide for each service in your architecture for a list of key Azure Advisor alerts for that service.
 
-### Create a Fail-Over in a multiple availability zone deployment and second region deployments for disaster recovery
+### Create a fail-over in a multiple availability zone and second region deployments for disaster recovery
 
 Business-critical Oracle Applications require failure prevention and therefore holistic architecture. One of these business-critical applications can be Oracle E-Business Suite.
 
@@ -58,7 +58,7 @@ A failover would require manual intervention from the customer to fail over if t
 
 ## Checklist for Reliability
 
-The reliability Checklist includes the Recovery Point Objective (RPO), Recovery Time Objective (RTO) and any business SLAs for the environment. The checklist should include all of the components for the environment, not just the database and may have different tiers of HA for different resources depending on their requirement for the business and system.
+The reliability checklist includes the Recovery Point Objective (RPO), Recovery Time Objective (RTO) and any business SLAs for the environment. The checklist should include all of the components for the environment, not just the database and may have different tiers of HA for different resources depending on their requirement for the business and system.
 
 Choices for Oracle on Azure should include and be reviewed in the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture.
 
@@ -91,7 +91,7 @@ The application health should be monitored, not just Oracle, but application and
 - Oracle Enterprise Manager can be deployed on a separate VM to monitor, maintain, and manage Oracle environments.
 - Oracle Enterprise Manager text logs can be loaded to [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) and used with [Azure Monitor](/azure/azure-monitor/overview) for a single pane of glass monitoring.
 
-### Recommendations for your Oracle Workload on Azure
+### Recommendations for your Oracle workloads on Azure
 
 | Recommendation | Benefit |
 | --- | --- |
