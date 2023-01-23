@@ -49,7 +49,7 @@ Application logs are an important source of diagnostics data. To gain insight wh
 
 All application resources should be configured to route diagnostic logs and metrics to the chosen log aggregation technology. [Azure Policy](https://azure.microsoft.com/services/azure-policy/) should also be used as a device to ensure the consistent use of diagnostic settings across the application, to enforce the desired configuration for each Azure service.
 
-Application level events should be automatically correlated with resource level metrics to quantify the current application state. The overall health state can be impacted by both application level issues as well as resource level failures. [Telemetry correlation](/azure/azure-monitor/app/correlation) should be used to ensure transactions can be mapped through the end-to-end application and critical system flows, as this is vital to root cause analysis (RCA) for failures. Platform level metrics and logs such as CPU percentage, network in/out, and disk operations/sec should be collected from the application to inform a health model and detect/predict issues. This can also help to distinguish between transient and non-transient faults.
+[Telemetry correlation](/azure/azure-monitor/app/correlation) should be used to ensure transactions can be mapped through the end-to-end application and critical system flows, as this is vital to root cause analysis (RCA) for failures. Platform level metrics and logs such as CPU percentage, network in/out, and disk operations/sec should be collected from the application to inform a health model and detect/predict issues. This can also help to distinguish between transient and non-transient faults.
 
 ### White-box and black-box monitoring
 
