@@ -20,6 +20,8 @@ ms.custom:
 
 Enterprise applications deployed in a single region can typically ignore this model of application design and safely delegate responsibility to the database layer to make data reliably available. This behavior isn't the case for carrier-grade applications, which must be deployed across multiple regions. Multi-region deployment forces the application architect to consider the compromises they're willing to accept for their data.
 
+test
+
 ## CAP theorem
 
 Databases can provide three key properties for the data they manage for an application, known as CAP:
