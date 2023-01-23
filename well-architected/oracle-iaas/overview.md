@@ -244,9 +244,9 @@ We invite you to explore Oracle workload design best practices and return to thi
 
 For more information, see:
 
-- [Azure Center for Oracle Solutions]( /azure/center-Oracle-solutions/overview)
-- [Oracle workload in Azure](/azure/virtual-machines/workloads/Oracle/get-started)
-- [Oracle workload architectures](/azure/architecture/reference-architectures/Oracle/Oracle-overview)
+- [Azure Center for Oracle Solutions](/azure/virtual-machines/workloads/oracle/oracle-overview)
+- [Oracle workload in Azure](/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)
+- [Oracle workload architectures](/azure/virtual-machines/workloads/oracle/oracle-oci-applications)
 
 ## Next Steps
 
