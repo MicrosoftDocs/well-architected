@@ -1,6 +1,6 @@
 ---
 title: Operational procedures for mission-critical workloads on Azure
-description: This design area explores reliable and effective operations through DevOps processes, with automated deployment pipelines that are used to execute versioned application and infrastructure code artifacts within a source repository.
+description: This design area explores reliable and effective operations through DevOps processes, with automated deployment pipelines that are used to run versioned application and infrastructure code artifacts within a source repository.
 author: calcof
 ms.author: calcof
 ms.date: 01/24/2023
