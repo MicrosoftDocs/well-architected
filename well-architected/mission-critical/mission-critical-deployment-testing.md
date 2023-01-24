@@ -45,7 +45,7 @@ View the following video for an overview of zero-downtime deployment.
 
 > [!VIDEO 1d3846c0-f301-4a25-a49a-94f5be3f6605]
 
-Achieving zero-downtime deployments is a fundamental goal for mission-critical applications. Your application needs to be all day, every day, even when new releases are rolled out during business hours. Invest your efforts up front to define and plan deployment processes in order to drive key design decisions like whether to treat resources as ephemeral.
+Achieving zero-downtime deployments is a fundamental goal for mission-critical applications. Your application needs to be available all day, every day, even when new releases are rolled out during business hours. Invest your efforts up front to define and plan deployment processes in order to drive key design decisions like whether to treat resources as ephemeral.
 
 To achieve zero-downtime deployment, deploy new infrastructure next to the existing infrastructure, test it thoroughly, transition end user traffic, and only then decommission the previous infrastructure. Other practices, like the [scale-unit architecture](mission-critical-application-design.md#scale-unit-architecture), are also key.
 
@@ -61,7 +61,7 @@ View the following video for an overview of recommendations for application envi
 
 > [!VIDEO 7e6e6390-9f32-4c9e-88da-497a604db319]
 
-You need various types of environments to validate and stage deployment operations. The types have different capabilities and lifecycles. Some environments might reflect the production environment and be long lived, and others might be short lived and have fewer capabilities than production. Setting up these environments early in the development cycle helps to ensure agility, separation of production and preproduction assets, and thorough testing of operations before releasing to the production environment. All environments should reflect the production environment as much as possible, although you can apply simplifications to lower environments as needed. This diagram shows a mission-critical architecture:  
+You need various types of environments to validate and stage deployment operations. The types have different capabilities and lifecycles. Some environments might reflect the production environment and be long lived, and others might be short lived and have fewer capabilities than production. Setting up these environments early in the development cycle helps to ensure agility, separation of production and preproduction assets, and thorough testing of operations before release to the production environment. All environments should reflect the production environment as much as possible, although you can apply simplifications to lower environments as needed. This diagram shows a mission-critical architecture:  
 
 :::image type="content" source="./images/mission-critical-subscription-organization.png" alt-text="Diagram that shows a mission-critical Azure architecture." lightbox="./images/mission-critical-subscription-organization.png" border="false":::
 
@@ -83,7 +83,7 @@ View the following video for information about ephemeral development environment
 
 - **Capabilities**. Lower requirements for reliability, capacity, and security are acceptable for development environments.
 
-- **Lifecycle**. Development environments should be created as required and exist for a short time. Shorter lifecycles help prevent configuration drift from the code base and reduces costs. Also, development environments often share the lifecycle of a feature branch.
+- **Lifecycle**. Development environments should be created as required and exist for a short time. Shorter lifecycles help prevent configuration drift from the code base and reduce costs. Also, development environments often share the lifecycle of a feature branch.
 
 - **Density**. Teams need multiple environments to support parallel feature development. They can coexist within a single subscription.
 
@@ -116,7 +116,7 @@ These environments are used for testing and validation. Many test cycles are per
 
 - Generate synthetic user load to provide a realistic test case for changes on one of the environments.
   > [!NOTE]
-  > The [Mission Critical Online](https://github.com/Azure/Mission-Critical-Online) reference implementation provides an example [user load generator](https://github.com/Azure/Mission-Critical-Online/blob/main/src/testing/userload-generator/README.md).
+  > The [Mission Critical Online](https://github.com/Azure/Mission-Critical-Online) reference implementation provides an example of a [user load generator](https://github.com/Azure/Mission-Critical-Online/blob/main/src/testing/userload-generator/README.md).
 
 - Define the number of staging environments and their purposes within the development and release cycle.
 
@@ -238,9 +238,9 @@ This section focuses on outer loop testing. It describes various types of tests.
 
  ### Design recommendations
 
-<br>
-
 View the following video to see how resiliency testing can be integrated with Azure DevOps CI/CD pipelines. 
+
+<br>
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Y50k]
 
@@ -319,7 +319,7 @@ There are many valid approaches to branching. You should choose a strategy that 
 
 - **Minimize access**. Developers should do their work in _feature/*_ and _fix/*_ branches. These branches become entry points for changes. Role-based restrictions should be applied to branches as part of the branching strategy. For example, only allow administrators to create release branches or enforce naming conventions for branches.
 
-- **Accelerated process for emergencies**. The branching strategy should allow hotfixes to be merged into _main_ as soon as practical. That way, future releases contain the fix and reoccurrence of the problem is avoided. Use this process only for minor changes that address urgent problems, and use it with restraint.
+- **Accelerated process for emergencies**. The branching strategy should allow hotfixes to be merged into _main_ as soon as practical. That way, future releases contain the fix, and reccurrence of the problem is avoided. Use this process only for minor changes that address urgent problems, and use it with restraint.
 
 ### Design recommendations
 
@@ -333,7 +333,7 @@ There are many valid approaches to branching. You should choose a strategy that 
   - Ensure that changes are made to _main_ only via PRs. Use a branch policy to prohibit direct commits.
   - Every time a PR is merged into _main_, it should automatically kick off a deployment against an integration environment.
   - The _main_ branch should be considered stable. It should be safe to create a release from *main* at any given time.
-- Use dedicated _release/*_ branches that are created from the _main_ branch and used to deploy to production environments. - _release/*_ branches should remain in the repository and can be used to patch a release.
+- Use dedicated _release/*_ branches that are created from the _main_ branch and used to deploy to production environments. _release/*_ branches should remain in the repository and can be used to patch a release.
 
 - Document a hotfix process and use it only when needed. Create hotfixes in a _fix/*_ branch for subsequent merging into the release branch and deployment to production.
 
