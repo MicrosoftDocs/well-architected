@@ -3,7 +3,7 @@ title: Operational excellence in your IoT workload
 description: See guidance and recommendations that apply to the operational excellence pillar in well-architected IoT workload.
 author: asergaz
 ms.author: sergaz
-ms.date: 12/14/2022
+ms.date: 01/27/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -80,7 +80,7 @@ Configure the ingestion and other back-end layers of the IoT cloud solution to b
 
 Azure offers several options to meet capacity requirements as your business grows. Capacity planning and scaling for your IoT solution varies depending on whether you build an [IoT Central](https://azure.microsoft.com/products/iot-central) or [IoT Hub](https://azure.microsoft.com/products/iot-hub)-based solution.
 
-- IoT Central is a managed application platform that you can use to quickly evaluate your IoT scenario and assess the opportunities for your business. It automatically manages multiple instances of its underlying services to scale your IoT Central applications and make them highly available. However, IoT Central stores only 30 days of data, and because most IoT solutions export data to other services, you should focus on making sure those other services can handle expected and unexpected capacity needs.
+- IoT Central is a managed application platform that you can use to quickly evaluate your IoT scenario and assess the opportunities for your business. IoT Central takes care of most infrastructure elements however, it stores only 30 days of data, and because most IoT solutions export data to other services, you should focus on making sure those other services can handle expected and unexpected capacity needs during the evaluation of your solution.
 
 - With an IoT Hub-based solution, it's your responsibility to scale up to handle growth in the number of messages being ingested and to scale out to handle regional demands. Understanding the number of messages that devices will send to IoT Hub and the sustained throughput is critical to selecting the correct IoT Hub tier to support the predicted demand.
 
@@ -159,7 +159,7 @@ A key decision early in a solution design phase is to define the roles that impl
 
 Ideally, the solution should trust a centralized identity provider, such as [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis), and only let the appropriate users in those roles perform management or operation activities such as creating and provisioning new devices, sending commands to hardware in the field, deploying updates, and modifying user permissions.
 
-To help you focus on evaluating the solution IoT Central has built-in roles you can assign to existing users in Azure AD, eliminating the need to develop a customized identity service. In an IoT Hub-based solution, you can use Azure AD to authenticate requests to IoT Hub service APIs, such as creating device identities or invoking direct methods. You can develop a custom management UI for solution operators and administrators that authenticates users against Azure AD and executes API requests to the IoT solution back end on behalf of those users.
+In an IoT Hub-based solution, you can use Azure AD to authenticate requests to IoT Hub service APIs, such as creating device identities or invoking direct methods. You can develop a custom management UI for solution operators and administrators that authenticates users against Azure AD and executes API requests to the IoT solution back end on behalf of those users.
 
 ### IoT Edge Metrics Collector
 

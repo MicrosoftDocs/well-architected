@@ -3,7 +3,7 @@ title: Reliability in your IoT workload
 description: See guidance and recommendations that apply to the reliability pillar in a well-architected IoT workload.
 author: asergaz
 ms.author: sergaz
-ms.date: 12/14/2022
+ms.date: 01/27/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

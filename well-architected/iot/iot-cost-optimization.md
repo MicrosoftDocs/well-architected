@@ -3,8 +3,8 @@ title: Cost optimization in your IoT workload
 description: See guidance and recommendations that apply to the cost optimization pillar in a well-architected IoT workload.
 author: asergaz
 ms.author: sergaz
-ms.date: 12/14/2022
-ms.topic: overview
+ms.date: 01/27/2023
+ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 ms.custom:
@@ -189,9 +189,7 @@ To build an IoT solution for your business, you typically evaluate your solution
 
 - Platform services let you fine-tune services and control overall costs. It provides all the building blocks for customized and flexible IoT applications. You have more options to choose and code when you connect devices, and ingest, store, and analyze your data. Azure IoT platform services include the products [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) and [Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/).
 
-- A managed app platform gives you a simple, predictable pricing structure. [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) is a managed app platform that lets you quickly evaluate your IoT solution by reducing the number of decisions needed to achieve results. IoT Central takes care of most infrastructure elements in your solution, so you can focus on adding industry knowledge, and evaluating the solution.
-
-Choose your platform type by considering factors such as business requirements, budget, timelines, and development and operations resources.
+- [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) is a managed app platform that lets you quickly evaluate your IoT solution by reducing the number of decisions needed to achieve results. IoT Central takes care of most infrastructure elements in your solution, so you can focus on adding industry knowledge, and evaluating the solution.
 
 ### IoT Hub tiers
 
