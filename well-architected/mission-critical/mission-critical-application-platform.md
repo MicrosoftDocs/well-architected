@@ -385,7 +385,7 @@ This section focuses on the best ways to use Azure Virtual Machines and associat
 
 - Use standard images from Azure Marketplace rather than custom images that need to be maintained.
 
-- Implement automated processes to deploy and roll out changes to virtual machines, avoiding any manual intervention. For more information, see [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-virtual-machines) in the [Operational procedures](./mission-critical-operational-procedures.md) design area.
+- Implement automated processes to deploy and roll out changes to virtual machines, avoiding any manual intervention. For more information, see [IaaS considerations](./mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-vms) in the [Operational procedures](./mission-critical-operational-procedures.md) design area.
 
 - Implement chaos experiments to inject application faults into virtual machine components, and observe the mitigation of faults. For more information, see [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing).
 
