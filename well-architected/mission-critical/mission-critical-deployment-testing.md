@@ -79,7 +79,7 @@ View the following video for information about ephemeral development environment
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE50Gm9]
 
-#### Design considerations
+##### Design considerations
 
 - **Capabilities**. Lower requirements for reliability, capacity, and security are acceptable for development environments.
 
@@ -87,7 +87,7 @@ View the following video for information about ephemeral development environment
 
 - **Density**. Teams need multiple environments to support parallel feature development. They can coexist within a single subscription.
 
-#### Design recommendations
+##### Design recommendations
 
 - Keep the environment in a dedicated subscription with context set for development purposes.
 
@@ -97,7 +97,7 @@ View the following video for information about ephemeral development environment
 
 These environments are used for testing and validation. Many test cycles are performed to ensure bug-free deployment to production. Appropriate tests for a mission-critical workload are described in the [Continuous validation and testing](#continuous-validation-and-testing) section.
 
-#### Design considerations
+##### Design considerations
 
 - **Capabilities**. These environments should reflect the production environment for reliability, capacity, and security. In the absence of a production load, use a synthetic user load to provide realistic metrics and valuable health modeling input.
 
@@ -110,7 +110,7 @@ These environments are used for testing and validation. Many test cycles are per
 > 
 > You can perform different test functions in a single environment, and in some cases you'll need to. For example, for chaos testing to provide meaningful results, you must first place the application under load so you can understand how the application responds to injected faults. That's why chaos testing and load testing are typically performed in parallel.
 
-#### Design recommendations
+##### Design recommendations
 
 - Ensure that at that least one staging environment fully reflects production to enable production-like testing and validation. Capacity within this environment can flex based on the execution of test activities.
 
@@ -122,7 +122,7 @@ These environments are used for testing and validation. Many test cycles are per
 
 ### Production environments
 
-#### Design considerations
+##### Design considerations
 
 - **Capabilities**. The highest levels of reliability, capacity, and security functionality for the application are required.
 
@@ -130,7 +130,7 @@ These environments are used for testing and validation. Many test cycles are per
 
 - **Density**. For some applications, you might want to consider using different production environments to cater to different clients, users, or business functionalities.
 
-#### Design recommendations
+##### Design recommendations
 
 Have a clear governance boundary for production and lower environments. Place each environment type in a dedicated subscription to achieve that goal. This segmentation ensures that resource utilization in lower environments doesn't affect production quotas. Dedicated subscriptions also set access boundaries.
 

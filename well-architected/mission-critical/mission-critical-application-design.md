@@ -90,7 +90,7 @@ Watch this video to get an overview of how to plan for failures in mission-criti
 
 For design recommendations and configuration choices at the platform level, see [Application platform: Global distribution](mission-critical-application-platform.md#global-distribution-of-platform-resources).
 
-#### Example: Global distribution approach
+##### Example: Global distribution approach
 
 This example shows both global and regional resources. Regional resources are deployed across multiple regions to provide geo-availability and to bring services closer to end users. These regional deployments also serve as scale-unit stamps to provide extra capacity and availability as needed.
 
@@ -126,7 +126,7 @@ In some scenarios, applications can combine loose and tight coupling, depending 
 
 - Use patterns like Outbox and Transactional Session to guarantee consistency so that [every message is processed correctly](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#every-message-must-be-processed).
 
-#### Example: Event-driven approach
+##### Example: Event-driven approach
 
 The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-online) reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker. Read operations are synchronous, with the result directly returned to the caller.
 
