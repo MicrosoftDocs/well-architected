@@ -1,6 +1,6 @@
 ---
 title: Operational procedures for mission-critical workloads on Azure
-description: This design area explores reliable and effective operations through DevOps processes, with automated deployment pipelines that are used to run versioned application and infrastructure code artifacts within a source repository.
+description: Learn about implementing reliable and effective operations by using DevOps processes. Use automated deployment pipelines to run versioned application and infrastructure code artifacts within a source repository.
 author: calcof
 ms.author: calcof
 ms.date: 01/24/2023
@@ -15,7 +15,7 @@ ms.custom:
 
 # Operational procedures for mission-critical workloads on Azure
 
-Reliable and effective operations must be based on the principles of *automation wherever possible* and *configuration as code*. This approach requires a substantial engineering investment in DevOps processes with automated pipelines used to deploy application and infrastructure code artifacts. There are significant benefits enabling consistent and accurate operational outcomes within minimal manual operational procedures.
+Reliable and effective operations must be based on the principles of *automation wherever possible* and *configuration as code*. This approach requires a substantial engineering investment in DevOps processes. Automated pipelines are used to deploy application and infrastructure code artifacts. There are significant benefits enabling consistent and accurate operational outcomes within minimal manual operational procedures.
 
 This design area explores how to drive effective and consistent operational procedures.
 
