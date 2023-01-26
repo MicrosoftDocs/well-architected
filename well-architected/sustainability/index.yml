@@ -8,7 +8,7 @@ metadata:
   services: na
   author: Zimmergren
   ms.author: tozimmergren
-  ms.date: 10/12/2022
+  ms.date: 01/26/2023
   ms.topic: landing-page
   ms.service: architecture-center
   ms.subservice: well-architected
@@ -49,3 +49,25 @@ landingContent:
             url: sustainability-storage.md
           - text: Security
             url: sustainability-security.md
+  # Card
+  - title: Reference examples
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Example scenario - Measure Azure app sustainability by using the SCI score
+            url: /azure/architecture/example-scenario/apps/measure-azure-app-sustainability-sci-score  
+  # Card
+  - title: Resources
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Learn - The Principles of Sustainable Software Engineering
+            url: /training/modules/sustainable-software-engineering-overview/
+ # Card
+  - title: Assessment
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Sustainability assessment tool
+            url: /assessments/a24b1079-29a4-4d22-b678-376e84884f76/
+        
