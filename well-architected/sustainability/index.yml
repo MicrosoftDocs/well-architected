@@ -57,11 +57,11 @@ landingContent:
           - text: Example scenario - Measure Azure app sustainability by using the SCI score
             url: /azure/architecture/example-scenario/apps/measure-azure-app-sustainability-sci-score  
   # Card
-  - title: Resources
+  - title: Learn
     linkLists:
       - linkListType: learn
         links:
-          - text: Learn - The Principles of Sustainable Software Engineering
+          - text: The Principles of Sustainable Software Engineering
             url: /training/modules/sustainable-software-engineering-overview/
  # Card
   - title: Assessment
