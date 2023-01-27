@@ -1,8 +1,8 @@
 ---
 title: Tracing and debugging
 description: Provides requirements and use cases for tracing operations and debugging software releases as it relates to monitoring, and diagnostics. 
-author: v-stacywray
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

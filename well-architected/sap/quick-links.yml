@@ -1,0 +1,82 @@
+### YamlMime:Landing
+
+title: SAP workload documentation
+summary: Learn how to build an SAP workload on Azure
+metadata: 
+  title: SAP workload documentation
+  description: Learn how to build an SAP workload on Azure
+  services: SAP
+  author: stephen-sumner
+  ms.author: ssumner
+  ms.date: 12/31/2022
+  ms.topic: landing-page
+  ms.service: architecture-center
+  ms.subservice: well-architected
+  ms.collection: na
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+ # Card
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: SAP workload
+            url: ./get-started.md
+          - text: Design principles
+            url: ./design-principles.md                       
+  # Card
+  - title: Design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Application design
+            url: ./design-areas/application-design.md
+          - text: Application platform
+            url: ./design-areas/application-platform.md
+          - text: Data platform
+            url: ./design-areas/data-platform.md
+          - text: Networking and connectivity
+            url: ./design-areas/networking-and-connectivity.md         
+          - text: Security
+            url: ./design-areas/security.md
+          - text: Operational procedures
+            url: ./design-areas/operational-procedures.md     
+ # Card
+  - title: Reference examples
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: SAP on Azure landing zone accelerator
+            url: /azure/cloud-adoption-framework/scenarios/sap/enterprise-scale-landing-zone   
+          - text: Start small and expand with SAP HANA
+            url: /azure/architecture/reference-architectures/sap/run-sap-hana-for-linux-virtual-machines?bc=%2Fazure%2Fcloud-adoption-framework%2F_bread%2Ftoc.json&toc=%2Fazure%2Fcloud-adoption-framework%2Fscenarios%2Fsap%2Ftoc.json 
+
+
+ # Card
+  - title: Reference implementations
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: SAP on Azure Deployment Automation Framework
+            url: /azure/virtual-machines/workloads/sap/automation-deployment-framework
+
+
+ # Card
+  - title: Learn
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: How to use SAP on Azure Solutions
+            url: /training/topics/sap-on-azure
+
+ # Card
+  - title: Assessment
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Azure Well-Architected Review (SAP on Azure)
+            url: /assessments/?mode=home
+

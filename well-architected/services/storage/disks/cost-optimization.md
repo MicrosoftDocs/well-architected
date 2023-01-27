@@ -1,8 +1,8 @@
 ---
 title: Disks and cost optimization
 description: Focuses on the Disks service used in the Storage solution to provide best-practice, configuration recommendations, and design considerations related to Cost optimization.
-author: v-stacywray
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

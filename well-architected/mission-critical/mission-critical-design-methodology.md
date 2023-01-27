@@ -54,7 +54,7 @@ This image shows how the different reliability tiers and underlying business req
 
 ![Mission-critical reliability dial](./images/mission-critical-slo.gif "Mission-critical reliability dial")
 
-Recovery Time Objective (RTO) and Recovery Point Objective (RPO) are further critical aspects when determining required reliability. For instance, if you are striving to achieve an application RTO of less than a minute then back-up based recovery strategies or an active-passive deployment strategy are likely to be insufficient. 
+Recovery Time Objective (RTO) and Recovery Point Objective (RPO) are further critical aspects when determining required reliability. For instance, if you're striving to achieve an application RTO of less than a minute then back-up based recovery strategies or an active-passive deployment strategy are likely to be insufficient. 
 
 ## 2&mdash;Evaluate the design areas using the design principles
 
@@ -67,34 +67,56 @@ The impact of decisions made within each design area will reverberate across oth
 
 For example, to define a target architecture it's critical to determine how best to monitor application health across key components. We highly recommend that you review the health modeling design area, using the outlined recommendations to help drive decisions.
 
-## 3&mdash;Refer to the mission-critical implementations
+## 3&mdash;Deploy your first mission-critical application
 
-The Mission-Critical open source project strives to illustrate the design recommendations provided by this methodology, and should be used as a source of reference to inform the art of the possible.
+Refer to these reference architectures that describe the design decisions based on this methodology.
 
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical)
-
-There are two foundational [reference implementations](mission-critical-overview.md#illustrative-examples):
-
-  - [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online)
-  - [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) 
-
-**Production-grade artifacts**: Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered.
-
-**Rooted in customer truth** - All technical decisions are guided by the real-wold experiences of Azure customers and lessons learned from those engagements.
-
-**Azure roadmap alignment** - The mission-critical reference architectures have their own roadmap that is aligned with Azure product roadmaps.
-
-The reference architecture for the preceding implementations:
 - [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)
+
 - [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)
 
-## 4&mdash;Deploy a sandbox application environment
+> [!TIP]
+> ![GitHub logo](./../_images/github.svg) The architecture is backed by [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) implementation that illustrates the design recommendations.
 
-In parallel to design activities, it's highly recommended that a sandbox application environment be established using the Mission-Critical reference implementations.
+**Production-grade artifacts** Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered.
 
-This provides hands-on opportunities to validate design decisions by replicating the target architecture, allowing for design uncertainty to be swiftly assessed. If applied correctly with representative requirement coverage, most problematic issues likely to hinder progress can be uncovered and subsequently addressed.
+**Rooted in real-wold experiences** All technical decisions are guided by experiences of Azure customers and lessons learned from deploying those solutions.
 
-## Target architecture evolution
+**Azure roadmap alignment** The mission-critical reference architectures have their own roadmap that is aligned with Azure product roadmaps.
+
+## 4&mdash;Integrate your workload in Azure landing zones
+
+[Azure landing zone subscriptions](/azure/cloud-adoption-framework/ready/landing-zone/) provide shared infrastructure for enterprise deployments that need centralized governance. 
+
+> [!VIDEO 9e05a6bd-7d10-4a83-9436-370a75dc1919]
+
+It's crucial to evaluate which connectivity use case is required by your mission-critical application. Azure landing zones support two main archetypes separated into different Management Group scopes: **Online** or **Corp.** as shown in this image.
+
+[ ![Diagram of Online and Corp. management groups and integration with a mission-critical workload.](./images/mission-critical-landing-zones.gif) ](./images/mission-critical-landing-zones.gif)
+
+### Online subscription
+
+A mission-critical workload operates as an independent solution, without any direct corporate network connectivity to the rest of the Azure landing zone architecture. The application will be further safeguarded through the [policy-driven governance](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) and will automatically integrate with centralized platform logging through policy.
+
+The [baseline architecture](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro) and [Mission-Critical Online](https://github.com/Azure/Mission-Critical-Online) implementation align with the Online approach. 
+
+### Corp. subscription
+
+When deployed in a Corp. subscription a mission-critical workload depends on the Azure landing zone to provide connectivity resources. This approach allows integration with other applications and shared services. You'll need to design around  some foundational resources, which will exist up-front as part of the shared-service platform. For example, the regional deployment stamp should no longer encompass an ephemeral Virtual Network or Azure Private DNS Zone because these will exist in the Corp. subscription.
+
+To get started with this use case, we recommend the [**baseline architecture in an Azure landing zone**](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone) reference architecture. 
+
+> [!TIP]
+> ![GitHub logo](./../_images/github.svg) The preceding architecture is backed by [Mission-Critical Connected](https://github.com/Azure/Mission-Critical-Connected) implementation.
+
+
+## 5&mdash;Deploy a sandbox application environment
+
+In parallel to design activities, it's highly recommended that a sandbox application environment is established using the Mission-Critical reference implementations.
+
+This provides hands-on opportunities to validate design decisions by replicating the target architecture, allowing for design uncertainty to be quickly assessed. If applied correctly with representative requirement coverage, most problematic issues likely to hinder progress can be uncovered and subsequently addressed.
+
+## 6&mdash;Continuously evolve with Azure roadmaps
 
 Application architectures established using this design methodology must continue to [evolve in alignment with Azure platform roadmaps](/azure/architecture/guide/design-principles/design-for-evolution) to support optimized sustainability.
 

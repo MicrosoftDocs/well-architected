@@ -345,7 +345,7 @@ While the visual representations of application health provide invaluable operat
 
 ### Design considerations
 
-- Alert rules are defined to fire when a conditional criteria is satisfied for incoming signals, which can include various [data sources](/azure/azure-monitor/agents/data-sources), such as metrics, log search queries, or availability tests.
+- Alert rules are defined to fire when a conditional criteria is satisfied for incoming signals, which can include various [data sources](/azure/azure-monitor/data-sources), such as metrics, log search queries, or availability tests.
 
 - Alerts can be defined within Log Analytics or Azure Monitor on the specific resource.
 

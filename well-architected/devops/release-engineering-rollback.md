@@ -1,8 +1,8 @@
 ---
 title: Release Engineering Rollback
 description: Review deployment rollback options in Azure release engineering, such as with Azure App Service, Azure Kubernetes Service (AKS), or Azure Resource Manager.
-author: david-stanford
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 04/09/2022
 ms.topic: conceptual
 ms.service: architecture-center
