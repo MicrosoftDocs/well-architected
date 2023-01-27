@@ -114,6 +114,36 @@
 			"source_path": "well-architected/cost/optimize-reserved.md",
 			"redirect_url": "/azure/cost-management-billing/reservations/",
 			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/cost-optimization.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/operational-excellence.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/overview.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/performance-efficiency.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/reliability.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/security.md",
+			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_document_id": false
 		}
 	]
 }
