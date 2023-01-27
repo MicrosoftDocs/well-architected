@@ -141,7 +141,7 @@ Another important limit is the hourly or daily service load or *throttle* limit.
 
 The following diagrams show the relationship between load, quota, and throttle limits. The left diagram shows that IoT Hub can handle sustained or constant high load up to the level of the quota for the IoT Hub tier. The right diagram shows that IoT Hub can handle load that is changing over time, as long as it doesn't hit the throttle limit and on average isn't above the quota for the IoT Hub tier.
 
-:::image type="content" source="media/load-quota-throttle.png" alt-text="Left diagram showing high load (in blue) constantly below the green dashed line (quota). Compared to the right diagram that shows lower load with occasional spikes above the green dashed line (quota) but below the red dashed line (throttle limit)." border="false":::
+:::image type="content" source="media/load-quota-throttle.png" alt-text="Left diagram showing high load constantly below the quota. Compared to the right diagram that shows lower load with occasional spikes." border="false":::
 
 ### Optimize message processing
 
