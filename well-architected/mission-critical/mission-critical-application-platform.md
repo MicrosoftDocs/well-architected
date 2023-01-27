@@ -126,14 +126,12 @@ There are advantages and disadvantages associated with each of these platforms. 
 > [!IMPORTANT]
 > [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service) should be your first choice of orchestrator when it meets your requirements. [Azure Container Apps](/azure/container-apps/overview) is another option. Although [Azure App Service](https://azure.microsoft.com/services/app-service/containers) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
 
-### Azure Kubernetes Service
+##### Design considerations and recommendations for Azure Kubernetes Service
 
 AKS, a managed Kubernetes service, enables quick cluster provisioning without requiring complex cluster administration activities and offers a feature set that includes advanced networking and identity capabilities. For a complete set of recommendations, see [Azure Well-Architected Framework review - AKS](/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service).
 
 > [!IMPORTANT]
 > There are some foundational configuration decisions that you can't change without re-deploying the AKS cluster. Examples include the choice between public and private AKS clusters, enabling Azure Network Policy, Azure AD integration, and the use of managed identities for AKS instead of service principals.
-
-##### Design considerations and recommendations
 
 ###### Reliability
 
@@ -220,11 +218,9 @@ Use policies to apply centralized safeguards to AKS clusters in a consistent way
 >
 > The mission-critical [reference implementations](mission-critical-overview.md#illustrative-examples) provide a suite of baseline policies to drive recommended reliability and security configurations.
 
-### App Service
+##### Design considerations and recommendations for Azure App Service
 
 For web and API-based workload scenarios, [App Service](https://azure.microsoft.com/services/app-service/containers) might be a feasible alternative to AKS. It provides a low-friction container platform without the complexity of Kubernetes. For a complete set of recommendations, see [Reliability considerations for App Service](/azure/architecture/framework/services/compute/azure-app-service/reliability) and [Operational excellence for App Service](/azure/architecture/framework/services/compute/azure-app-service/operational-excellence).
-
-##### Design considerations and recommendations
 
 ###### Reliability
 
@@ -279,12 +275,13 @@ You need to configure your container registries for mission-critical workloads c
 
 - Ensure that the SLA for public registry is aligned with your reliability and security targets. Take special note of throttling limits for use cases that depend on Docker Hub. 
 
-- Prioritize [Azure Container Registry](https://azure.microsoft.com/services/container-registry) for hosting container images. This native service provides a range of features, including geo-replication, Azure AD authentication, automated container building, and patching via Container Registry tasks.
+- Prioritize [Azure Container Registry](https://azure.microsoft.com/services/container-registry) for hosting container images. 
 
-#### Container Registry design considerations and recommendations
+##### Design considerations and recommendations for Azure Container Registry
 
+This native service provides a range of features, including geo-replication, Azure AD authentication, automated container building, and patching via Container Registry tasks.
 
-##### Reliability
+###### Reliability
 
 Configure geo-replication to all deployment regions to remove regional dependencies and optimize latency. Container Registry supports high availability through [geo-replication](/azure/container-registry/container-registry-geo-replication#considerations-for-high-availability) to multiple configured regions, providing resiliency against regional outages. If a region becomes unavailable, the other regions continue to serve image requests. When the region is back online, Container Registry recovers and replicates changes to it. This capability also provides registry colocation within each configured region, reducing network latency and cross-region data transfer costs. 
 
@@ -292,16 +289,16 @@ In Azure regions that provide availability zone support, the [Premium Container 
 
 Host images close to the consuming compute resources, within the same Azure regions.
 
-##### Image locking
+###### Image locking
 
 Images can get deleted, as a result of, for example, manual error. Container Registry supports [locking an image version or a repository](/azure/container-registry/container-registry-image-lock) to prevent changes or deletions. When a previously deployed image *version* is changed in place, same-version deployments might provide different results before and after the change.
 
 If you want to protect the Container Registry instance from deletion, use [resource locks](/azure/azure-resource-manager/management/lock-resources).
 
-##### Tagged images
+###### Tagged images
 [Tagged Container Registry images are mutable by default](/azure/container-registry/container-registry-image-lock#scenarios), which means that the same tag can be used on multiple images pushed to the registry. In production scenarios, this can lead to unpredictable behavior that could affect application uptime.
 
-##### Identity and access management
+###### Identity and access management
 
  Use Azure AD integrated authentication to push and pull images instead of relying on access keys. For enhanced security, fully disable the use of the admin access key.
 
@@ -321,11 +318,9 @@ For mission-critical applications, serverless technologies provide simplified de
 
 The following sections provide design considerations and recommendations for using Azure Functions and Logic Apps as alternative platforms for non-critical workflow scenarios.
 
-### Azure Functions
+##### Design considerations and recommendations for Azure Functions
 
 Mission-critical workloads have critical and non-critical system flows. Azure Functions is a viable choice for flows that don't have the same stringent business requirements as critical system flows. It's well suited for event-driven flows that have short-lived processes because functions perform distinct operations that run as fast as possible.
-
-##### Design considerations and recommendations
 
 Choose an [Azure Functions hosting option](/azure/azure-functions/functions-scale) that's appropriate for the application's reliability tier. We recommend the Premium plan because it allows you to configure compute instance size. The Dedicated plan is the least serverless option. It provides autoscale, but these scale operations are slower than those of the other plans. We recommend that you use the Premium plan to maximize reliability and performance.
 
@@ -335,7 +330,7 @@ We recommend the use of private endpoints for restricting access to private virt
 
 You need to use code scanning tools on Azure Functions code and integrate those tools with CI/CD pipelines.
 
-### Logic Apps
+##### Design considerations and recommendations for Azure Logic Apps
 
 Like Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that supports blocks like conditionals, loops, and other constructs.
 

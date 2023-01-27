@@ -2,8 +2,8 @@
 title: Operational procedures for mission-critical workloads on Azure
 description: Learn about implementing reliable and effective operations by using DevOps processes. Use automated deployment pipelines to run versioned application and infrastructure code artifacts within a source repository.
 author: calcof
-ms.author: calcof
-ms.date: 01/24/2023
+ms.author: prwilk
+ms.date: 01/26/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

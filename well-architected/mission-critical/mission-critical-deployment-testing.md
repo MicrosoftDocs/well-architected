@@ -3,7 +3,7 @@ title: Deployment and testing for mission-critical workloads on Azure
 description: This design area focuses on how to minimize downtime and maintain application health for deployment operations. It provides considerations and recommendations that can inform the design of optimal CI/CD pipelines for a mission-critical application.
 author: calcof
 ms.author: prwilk
-ms.date: 01/23/2023
+ms.date: 01/26/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

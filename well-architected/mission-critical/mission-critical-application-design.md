@@ -3,7 +3,7 @@ title: Application design of mission-critical workloads on Azure
 description: This design area describes architecture patterns and scaling strategies that can help make your application resilient to failures.
 author: calcof
 ms.author: prwilk
-ms.date: 01/23/2023
+ms.date: 01/26/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -89,12 +89,6 @@ Watch this video to get an overview of how to plan for failures in mission-criti
 - **Connectivity**. How the workload is accessed by users or external systems will influence your design. Consider whether the application is available over the public internet or private networks that use either VPN or Azure ExpressRoute circuits.
 
 For design recommendations and configuration choices at the platform level, see [Application platform: Global distribution](mission-critical-application-platform.md#global-distribution-of-platform-resources).
-
-##### Example: Global distribution approach
-
-This example shows both global and regional resources. Regional resources are deployed across multiple regions to provide geo-availability and to bring services closer to end users. These regional deployments also serve as scale-unit stamps to provide extra capacity and availability as needed.
-
-![Animation that shows a mission-critical global distribution.](./images/mission-critical-global-distribution.gif)
 
 ## Loosely coupled event-driven architecture
 
