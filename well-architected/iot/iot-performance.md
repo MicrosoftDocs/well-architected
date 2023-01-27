@@ -3,7 +3,7 @@ title: Performance efficiency in your IoT workload
 description: See guidance and recommendations that apply to the performance efficiency pillar in a well-architected IoT workload.
 author: asergaz
 ms.author: sergaz
-ms.date: 12/14/2022
+ms.date: 01/27/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -17,7 +17,7 @@ categories:
 
 # Performance efficiency in your IoT workload
 
-IoT solutions include device, edge and cloud components, and range from millions of small devices connected to the cloud to industrial solutions where a few powerful servers are gateways for cloud connectivity. The number of devices, their physical and geographical placement, and the number of messages they send or receive are some of the factors that define the performance efficiency of an IoT workload.
+IoT solutions include device, edge and cloud components, and range from millions of small devices connected to the cloud to industrial solutions where a few powerful servers are gateways for cloud connectivity. The number of devices, their physical and geographical placement, and the number of messages they send or receive are some of the factors that can define the performance efficiency of an IoT workload.
 
 Performance efficiency also includes an IoT workload's ability to scale efficiently to meet demands. A benefit of the cloud is geographical availability and the ability to scale services on demand, with little or no application downtime.
 
@@ -141,7 +141,7 @@ Another important limit is the hourly or daily service load or *throttle* limit.
 
 The following diagrams show the relationship between load, quota, and throttle limits. The left diagram shows that IoT Hub can handle sustained or constant high load up to the level of the quota for the IoT Hub tier. The right diagram shows that IoT Hub can handle load that is changing over time, as long as it doesn't hit the throttle limit and on average isn't above the quota for the IoT Hub tier.
 
-:::image type="content" source="media/load-quota-throttle.png" alt-text="Diagrams showing high load constantly below quota compared to lower load with occasional spikes above quota but below throttle limit." border="false":::
+:::image type="content" source="media/load-quota-throttle.png" alt-text="Left diagram showing high load constantly below the quota. Compared to the right diagram that shows lower load with occasional spikes." border="false":::
 
 ### Optimize message processing
 
@@ -155,7 +155,7 @@ To optimize cloud data processing performance:
 
 - [Select the right IoT Hub tier](/azure/iot-hub/iot-hub-scaling), Basic or Standard, based on solution requirements. Be aware of features that the Basic tier doesn't support.
 
-- Select the right IoT Hub tier size, 1, 2, or 3, and the number of instances based on data throughput, quotas, and operation throttles. For IoT Central, select the right tier, Standard 0, Standard 1, or Standard 2, based on the number of messages sent from devices to the cloud.
+- Select the right IoT Hub tier size, 1, 2, or 3, and the number of instances based on data throughput, quotas, and operation throttles. For IoT Central, select the right tier: Standard 0, Standard 1 or Standard 2, based on the number of messages sent from devices to the cloud.
 
 - Consider using Azure Event Grid for publish-subscribe event routing. For more information, see [React to IoT Hub events by using Event Grid to trigger actions](/azure/iot-hub/iot-hub-event-grid) and [Compare message routing and Event Grid for IoT Hub](/azure/iot-hub/iot-hub-event-grid-routing-comparison).
 
@@ -208,7 +208,7 @@ Use DPS to set up a connection to an IoT hub during provisioning, when the IoT H
 
 An IoT solution is horizontally scalable if it has multiple gateways or edge devices per site or location and downstream devices that can connect to any of these gateways or edge devices.
 
-- Use multiple gateways and edge devices in *translation* mode when the number of downstream devices, their messages, and message sizes will change over time, and their protocol or message must be translated. Gateways and edge devices in translation mode can translate protocols or messages to and from downstream devices, however a mapping is needed to find the gateway a downstream device is connected to. Account for added message translation and buffering overhead at the gateway or edge device when you use translation mode.
+- Use multiple gateways and edge devices in *translation* mode when the number of downstream devices, their messages and message sizes will change over time, and their protocol or message must be translated. Gateways and edge devices in translation mode can translate protocols or messages to and from downstream devices, however a mapping is needed to find the gateway a downstream device is connected to. Account for added message translation and buffering overhead at the gateway or edge device when you use translation mode.
 
 - Use multiple gateways and edge devices in *transparent* mode to connect downstream Message Queue Telemetry Transport (MQTT) or AMQP devices when their number can change over time per site or location. Gateways and edge devices in transparent mode can connect MQTT/AMQP devices for bi-directional communication. Account for added message buffering, storage, and configuration overhead at the gateway or edge device when you use transparent mode.
 
@@ -256,13 +256,13 @@ You can process data that devices generate before sending it to or within the Io
 
 ### Optimize edge versus cloud processing
 
-Run real-time and near real-time workloads, or small, optimized, low-latency processing with time constraints, on devices or at the edge by using local compute. Run larger workloads, or those that have added or external data or compute dependencies, in the cloud.
+Run real-time and near real-time workloads, or small, optimized, low-latency processing with time constraints, on devices or at the edge by using local compute. Run larger workloads, or other workloads that have added or external data, or compute dependencies, in the cloud.
 
 For example, run a machine learning algorithm at the edge to count people in a video stream, and send an event containing the count to the cloud. Use the cloud to compare trends between different factories.
 
 Run analytics workloads at the edge by using the Stream Analytics Edge module. For example, you can run anomaly detection at the edge and label the events sent to the cloud with the detected anomaly. When you run analytics at the edge, account for extra latency, late arrival, and windowing impact.
 
-Be aware of the overhead of an edge workload with many connected downstream devices. The edge node must forward or process all messages and handle caching all the data if there is intermittent cloud connectivity. Validate the performance impact on your solution by testing with the planned maximum of downstream devices and messages per edge node. Be aware of the performance impact that message translation or enrichment can have on edge, IoT Hub, or cloud event processing.
+Be aware of the overhead of an edge workload with many connected downstream devices. The edge node must forward or process all messages and handle caching all the data if there's intermittent cloud connectivity. Validate the performance impact on your solution by testing with the planned maximum of downstream devices and messages per edge node. Be aware of the performance impact that message translation or enrichment can have on edge, IoT Hub, or cloud event processing.
 
 ### Categorize individual workloads
 
