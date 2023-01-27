@@ -71,7 +71,7 @@ Device failure impact assessment includes:
 
 The acceptable operational downtime determines the speed and extent of device maintenance. The availability or longevity of the device and part supply is an important consideration for device lifecycle.
 
-The more modular the design, the easier it is to swap out parts of the system, especially if some parts become obsolete earlier than others. Alternative or multi-sourcing of component and module supply chains are critical for reliable solutions.
+The more modular the design, the easier it's to swap out parts of the system, especially if some parts become obsolete earlier than others. Alternative or multi-sourcing of component and module supply chains are critical for reliable solutions.
 
 ### Environmental requirements
 

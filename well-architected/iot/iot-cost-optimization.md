@@ -99,7 +99,7 @@ Most of the device development process depends on hardware selection. A make-or-
 
 - Pre-certified system components or modules can reduce time to market and create a semi-custom device, but are more expensive than discrete chips. You need to properly resource supply-chain and inventory management.
 
-The [Azure Certified Device catalog](https://devicecatalog.azure.com) offers devices that work well with Azure IoT and can help reduce costs and time to market. You will focus on designing and architecting the IoT solution with the flexibility to select the hardware from an extensive list of certified devices. [IoT Plug and Play devices](https://devicecatalog.azure.com/devices?certificationBadgeTypes=PnP) can reduce both device and cloud development costs. When you select an Azure Certified Device you can skip device customizations and integration straight to onboarding into your IoT Solution.
+The [Azure Certified Device catalog](https://devicecatalog.azure.com) offers devices that work well with Azure IoT and can help reduce costs and time to market. You'll focus on designing and architecting the IoT solution with the flexibility to select the hardware from an extensive list of certified devices. [IoT Plug and Play devices](https://devicecatalog.azure.com/devices?certificationBadgeTypes=PnP) can reduce both device and cloud development costs. When you select an Azure Certified Device, you can skip device customizations and integration straight to onboarding into your IoT Solution.
 
 :::image type="content" source="media/plug-and-play.png" alt-text="Graphic that shows savings from Plug and Play approach.":::
 
@@ -137,15 +137,15 @@ Azure RTOS is certified for safety and security, helping to reduce the time and 
 
 ### LPWAN devices
 
-If LPWAN devices, such as LoRaWAN, NB-IoT, or LTE-M, are already connected to another IoT cloud, the [Azure IoT Central Device Bridge](/azure/iot-central/core/howto-build-iotc-device-bridge) can help bridge to Azure IoT Central without incurring costs to change existing devices, letting you focus on adding industry knowledge, and evaluating the solution.
+If LPWAN devices, such as LoRaWAN, NB-IoT, or LTE-M, are already connected to another IoT cloud, the [Azure IoT Central Device Bridge](/azure/iot-central/core/howto-build-iotc-device-bridge) can help bridge to Azure IoT Central. Azure IoT Central Device Bridge lets you focus on adding industry knowledge, and evaluating the solution without incurring costs to change existing devices.
 
-When building your enterprise ready solution you will need to consider the costs to integrate LPWAN devices with Azure IoT Hub.
+When building your enterprise ready solution, you'll need to consider the costs to integrate LPWAN devices with Azure IoT Hub.
 
 ### Azure Sphere
 
 [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere) is a secure, end-to-end IoT solution platform with built-in communication and security features for internet-connected devices. Azure Sphere comprises a secured, connected, crossover microcontroller unit (MCU), a custom high-level Linux-based operating system (OS), and a cloud-based security service that provides continuous, renewable security. Azure Sphere reduces the effort to build and maintain a secure environment from device to the cloud.
 
-Azure Sphere provides OS updates and zero-day renewable security for 10 years, and X.509 based PKI, user app updates, error reporting, and device management beyond 10 years without extra cost. Azure Sphere reduces the operational cost of keeping millions of devices up to date with the latest security.
+Azure Sphere provides OS updates and zero-day renewable security for 10 years on top of X.509 based PKI, user app updates, error reporting, and device management beyond 10 years without extra cost. Azure Sphere reduces the operational cost of keeping millions of devices up to date with the latest security.
 
 ### Azure Stack
 
@@ -171,7 +171,7 @@ Azure IoT Edge has built-in capabilities for high message volumes. [Azure IoT Ed
 
 Avoid device-to-device or module-to-module edge communications or device-to-cloud interactions that use many small messages. Use built-in message batching features to send multiple telemetry messages to the cloud. These features can help reduce the costs of using IoT Hub. Reducing both the number of daily messages and the number of device-to-cloud operations per second can allow choosing a lower tier in IoT Hub. To learn more, see [Stretching the IoT Edge performance limits](https://techcommunity.microsoft.com/t5/internet-of-things-blog/stretching-the-iot-edge-performance-limits/ba-p/2993856).
 
-You can deploy Azure services such as [Azure Stream Analytics](/azure/iot-edge/tutorial-deploy-stream-analytics) and [Azure Functions](/azure/iot-edge/tutorial-deploy-function) to IoT Edge to aggregate and filter large volumes of data and send only important data to the cloud, reducing data exchange costs. [Azure Blob Storage on IoT Edge](/azure/iot-edge/how-to-store-data-blob) can reduce the need to transfer large quantities of data over the network. Edge storage is useful for transforming and optimizing large quantities of data before sending it to the cloud.
+To reduce data exchange costs, you can deploy Azure services such as [Azure Stream Analytics](/azure/iot-edge/tutorial-deploy-stream-analytics) and [Azure Functions](/azure/iot-edge/tutorial-deploy-function) to IoT Edge. Azure Stream Analytics and Azure Functions can aggregate and filter large volumes of data at the edge and send only important data to the cloud. [Azure Blob Storage on IoT Edge](/azure/iot-edge/how-to-store-data-blob) can reduce the need to transfer large quantities of data over the network. Edge storage is useful for transforming and optimizing large quantities of data before sending it to the cloud.
 
 Free Azure IoT Edge modules for open protocols such as [OPC Publisher](/azure/industrial-iot/overview-what-is-opc-publisher) and [Modbus](/azure/iot-edge/deploy-modbus-gateway) help connect various devices with minimal development. If upload performance is critical, choosing a proven IoT Edge module from a vendor can be more cost effective than building a custom module. You can search for and download IoT Edge modules from the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules).
 
@@ -284,7 +284,7 @@ The [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) 
 
 The purpose of the event processing and analytics layer is to enable data-driven decisions. Event timing and the purpose of analytics are key factors to consider. The right service choice increases architectural efficiency and reduces the cost of processing data and events.
 
-Based on your requirements, implement hot, warm, or cold path processing for IoT data analytics. The [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot) helps you understand the difference between these analytics paths and reviews the available analytics services on each path. The Cost Optimization pillar in the Azure Well-Architected Framework includes the [provision data stores topic](/azure/architecture/framework/cost/provision-datastores#data-analytics-cost), for cost considerations to different data analytics services, considering data storage, multiple servers to maximize scalability, and the ability to access large data as external tables.
+Based on your requirements, implement hot, warm, or cold path processing for IoT data analytics. The [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot) helps you understand the difference between these analytics paths and reviews the available analytics services on each path. The Cost Optimization pillar in the Azure Well-Architected Framework includes the [cost considerations for data analytics stores](/azure/architecture/framework/cost/provision-datastores#data-analytics-cost), considering data storage, multiple servers to maximize scalability, and the ability to access large data as external tables.
 
 To get started, determine which types of data go through the hot, warm, or cold path:
 
@@ -304,7 +304,7 @@ The choice of a repository for telemetry depends on the use case for your IoT da
 
 Storage and databases aren't mutually exclusive. Both services can work together, especially with well-defined hot, warm, and cold analytics paths. Azure Data Explorer and databases are commonly used for hot and warm path scenarios.
 
-For Azure Storage, it's also important to consider data lifecycle factors like access frequency, retention requirements, and backup. Azure Storage helps you define the data lifecycle and automate the process of moving data from the hot tier to other tiers, which reduces long-term storage costs. For more information, see [Configure a lifecycle management policy](/azure/storage/blobs/lifecycle-management-policy-configure).
+For Azure Storage, it's also important to consider data lifecycle factors like access frequency, retention requirements, and backups. Azure Storage helps you define the data lifecycle and automate the process of moving data from the hot tier to other tiers, which reduces long-term storage costs. For more information, see [Configure a lifecycle management policy](/azure/storage/blobs/lifecycle-management-policy-configure).
 
 ### Database solutions
 
