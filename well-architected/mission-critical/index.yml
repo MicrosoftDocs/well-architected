@@ -105,7 +105,9 @@ landingContent:
           - text: Development environments
             url: mission-critical-deployment-testing.md#application-environments
           - text: Zero downtime deployments
-            url: mission-critical-deployment-testing.md                        
+            url: mission-critical-deployment-testing.md
+          - text: Integration with Azure landing zones
+            url: mission-critical-design-methodology.md#4integrate-your-workload-in-azure-landing-zones                         
       - linkListType: video
         links:
           - text: Demo - Continuous validation with Azure Load Test and Azure Chaos Studio

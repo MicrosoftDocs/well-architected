@@ -1,8 +1,8 @@
 ---
 title: Compute
 description: Get cost estimates for compute hosting models such as IaaS, PaaS, or FaaS. Predict cost estimates using the Pricing Calculator in Azure.
-author: v-aangie
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center

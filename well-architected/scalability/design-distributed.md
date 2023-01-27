@@ -2,7 +2,7 @@
 title: Challenges of monitoring distributed architectures
 description: Team expertise, scaling issues, antipatterns, and resiliency tracking issues when monitoring for performance efficiency
 author: PageWriter-MSFT
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center

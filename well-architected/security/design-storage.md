@@ -1,8 +1,8 @@
 ---
 title: Data protection in Azure
 description: Explore data protection considerations in Azure. Classify, protect, and monitor sensitive data assets using access control, encryption, and logging.
-author: v-aangie
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 12/07/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -49,7 +49,7 @@ Here are some reference architectures related to secure storage:
 We recommend that you review the practices and tools implemented as part of the development cycle.
 
 > [!div class="nextstepaction"]
-> [Data protection](./design-storage.md)
+> [Design Storage Encryption](./design-storage-encryption.md)
 
 ## Related links
 

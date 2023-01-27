@@ -1,8 +1,8 @@
 ---
 title: Configure infrastructure
 description: Get information about configuring Azure infrastructure programmatically using bootstrap automation or configuration management tools.
-author: david-stanford
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 4/8/2022
 ms.topic: conceptual
 ms.service: architecture-center

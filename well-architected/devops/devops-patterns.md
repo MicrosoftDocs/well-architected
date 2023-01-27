@@ -3,7 +3,7 @@ title: Operational Excellence patterns
 titleSuffix: Cloud Design Patterns
 description: Use these management and monitoring patterns to support cloud applications, which offer special challenges because the applications run in a remote datacenter.
 author: dragon119
-ms.author: robbymillsap
+ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
 ms.service: architecture-center
@@ -28,4 +28,4 @@ Cloud applications run in a remote datacenter where you do not have full control
 |              [Gateway Routing](/azure/architecture/patterns/gateway-routing)              |                                   Route requests to multiple services using a single endpoint.                                    |
 |   [Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring)   |   Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals.    |
 |                      [Sidecar](/azure/architecture/patterns/sidecar)                      |         Deploy components of an application into a separate process or container to provide isolation and encapsulation.          |
-|                    [Strangler](/azure/architecture/patterns/strangler-fig)                    | Incrementally migrate a legacy system by gradually replacing specific pieces of functionality with new applications and services. |
+|                    [Strangler Fig](/azure/architecture/patterns/strangler-fig)                    | Incrementally migrate a legacy system by gradually replacing specific pieces of functionality with new applications and services. |

@@ -1,8 +1,8 @@
 ---
 title: Cost optimization design principles
 description: Understand cost optimization principles. These principles are a series of important considerations that can help achieve business objectives and cost justification.
-author: david-stanford
-ms.author: robbymillsap
+author: martinekuan
+ms.author: martinek
 ms.date: 02/10/2022
 ms.topic: conceptual
 ms.service: architecture-center
