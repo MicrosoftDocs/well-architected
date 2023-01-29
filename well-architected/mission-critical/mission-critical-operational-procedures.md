@@ -99,7 +99,7 @@ The [application design](mission-critical-application-design.md) and [platform](
 
 - Avoid the use of resource locks on ephemeral regional resources. Instead, rely on the appropriate use of RBAC and CI/CD pipelines to control operational updates. You can apply resource locks to prevent the deletion of long-lived global resources.
 
-## Update management of resources
+## Update management
 
 Mission-critical design strongly endorses the principle of ephemeral stateless application resources. If you apply this principle, you can typically perform an update by using a new deployment and standard delivery pipelines.
 
@@ -145,10 +145,9 @@ There are three common approaches to secret management. Each approach reads secr
 
   To implement secret updates or rotation, you need to perform a full redeployment.
 
-- **Application-startup retrieval**. In this approach, secrets are retrieved and injected at application startup. The benefit is that you can easily update or rotate secrets. A restart of the application is required to fetch the latest value. 
+- **Application-startup retrieval**. In this approach, secrets are retrieved and injected at application startup. The benefit is that you can easily update or rotate secrets. You don't need to store secrets on the application platform. A restart of the application is required to fetch the latest value. 
   
-  Secrets are stored in memory, and you don't need to store them on the application platform. Common storage choices include [Azure Key Vault Provider for Secrets Store CSI Driver](https://azure.github.io/secrets-store-csi-driver-provider-azure) and [akv2k8s](https://akv2k8s.io).
- 	A native Azure solution, [Key Vault referenced app settings](/azure/app-service/app-service-key-vault-references), is also available.
+   Common storage choices include [Azure Key Vault Provider for Secrets Store CSI Driver](https://azure.github.io/secrets-store-csi-driver-provider-azure) and [akv2k8s](https://akv2k8s.io). A native Azure solution, [Key Vault referenced app settings](/azure/app-service/app-service-key-vault-references), is also available.
 
   A disadvantage of this approach is that it creates a runtime dependency on the secret management solution. If the secret management solution experiences an outage, application components already running *might* be able to continue serving requests. Any restart or scale-out operation would likely result in failure.
 
@@ -172,7 +171,7 @@ There are three common approaches to secret management. Each approach reads secr
 
 - Apply a fully automated key-rotation process that runs periodically within the solution.
 
- - Use [key near expiry notification](/azure/key-vault/keys/how-to-configure-key-rotation#configure-key-near-expiry-notification) to get alerts about upcoming expirations.
+ - Use the [key near expiry notification in Azure Key Vault](/azure/key-vault/keys/how-to-configure-key-rotation#configure-key-near-expiry-notification) to get alerts about upcoming expirations.
 
 ## IaaS-specific considerations when using VMs
 
@@ -181,7 +180,7 @@ If you need to use IaaS VMs, some of the procedures and practices described earl
 ### Design considerations
 
 - Individual VMs don't provide high availability, zone redundancy, or geo-redundancy.
-- Individual VMs aren't automatically updated after you deploy them.
+- Individual VMs aren't automatically updated after you deploy them. For example, a deployed SQL Server 2019 on Windows Server 2019, won't automatically get updated to a newer release. 
 - Services running in a VM need special treatment and additional tooling if you want to deploy and configure them via infrastructure as code.
 - Azure periodically updates its platform. These updates might require VM reboots. Updates that require a reboot are usually announced in advance. See [Maintenance for virtual machines in Azure](/azure/virtual-machines/maintenance-and-updates) and [Handling planned maintenance notifications](/azure/virtual-machines/maintenance-notifications).
 
