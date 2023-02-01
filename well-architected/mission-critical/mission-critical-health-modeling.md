@@ -27,9 +27,6 @@ This design area focuses on the process to define a robust health model, mapping
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical)
->
-> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for observing application health.
 
 There are three main levels of operational maturity when striving to maximize reliability.
 1) *Detect* and respond to issues as they happen.
