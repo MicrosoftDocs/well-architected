@@ -165,8 +165,6 @@ There are three common approaches to secret management. Each approach reads secr
 
 - To avoid the need to manage service principal credentials or API keys, use managed identities instead of service principals to access Key Vault whenever possible.
 
-- Retrieve secrets at application startup, not at deployment time or runtime.
-
 - Implement coding patterns to ensure that secrets are re-retrieved when an authorization failure occurs at runtime.
 
 - Apply a fully automated key-rotation process that runs periodically within the solution.
