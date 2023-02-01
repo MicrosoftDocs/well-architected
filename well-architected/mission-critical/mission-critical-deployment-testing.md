@@ -192,11 +192,6 @@ View the following video to get an overview of recommendations for scoping subsc
 
 - Place global shared resources in a dedicated subscription to enable consistent regional subscription deployment. Avoid using a specialized deployment for the primary region.
 
-### Example: Subscription scale-unit approach
-
-The following animation demonstrates how the single-subscription reference deployment model can be expanded across multiple subscriptions, in an extreme scale scenario, to account for subscription scale limits.
-
-:::image type="content" source="./images/mission-critical-subscription-scale.gif" alt-text="Animation that demonstrates mission-critical subscription scale units." lightbox="./images/mission-critical-subscription-scale.gif" border="false":::
 
 ## Continuous validation and testing
 
@@ -319,7 +314,7 @@ There are many valid approaches to branching. You should choose a strategy that 
 
 - **Minimize access**. Developers should do their work in _feature/*_ and _fix/*_ branches. These branches become entry points for changes. Role-based restrictions should be applied to branches as part of the branching strategy. For example, only allow administrators to create release branches or enforce naming conventions for branches.
 
-- **Accelerated process for emergencies**. The branching strategy should allow hotfixes to be merged into _main_ as soon as practical. That way, future releases contain the fix, and reccurrence of the problem is avoided. Use this process only for minor changes that address urgent problems, and use it with restraint.
+- **Accelerated process for emergencies**. The branching strategy should allow hotfixes to be merged into _main_ as soon as practical. That way, future releases contain the fix, and recurrence of the problem is avoided. Use this process only for minor changes that address urgent problems, and use it with restraint.
 
 ### Design recommendations
 

@@ -43,9 +43,7 @@ The following image shows the high-level design. A user accesses the application
 
 ![Diagram that shows a mission-critical architecture.](./images/mission-critical-high-level-architecture.png)
 
-### Design considerations
-
-The mission-critical design methodology necessitates a multi-region deployment. This model ensures regional fault tolerance, so that the application remains available even when an entire region goes down. When you design a multi-region application, consider different deployment strategies, like active/active and active/passive, together with application requirements, because there are significant trade-offs for each approach. For mission-critical workloads, we strongly recommend the active/active model.
+The mission-critical design methodology requires a multi-region deployment. This model ensures regional fault tolerance, so that the application remains available even when an entire region goes down. When you design a multi-region application, consider different deployment strategies, like active/active and active/passive, together with application requirements, because there are significant trade-offs for each approach. For mission-critical workloads, we strongly recommend the active/active model.
 
 Not every workload supports or requires running multiple regions simultaneously. You should weigh specific application requirements against trade-offs to determine an optimal design decision. For certain application scenarios that have lower reliability targets, active/passive or sharding can be suitable alternatives.
 
@@ -126,7 +124,7 @@ There are advantages and disadvantages associated with each of these platforms. 
 > [!IMPORTANT]
 > [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service) should be your first choice of orchestrator when it meets your requirements. [Azure Container Apps](/azure/container-apps/overview) is another option. Although [Azure App Service](https://azure.microsoft.com/services/app-service/containers) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
 
-##### Design considerations and recommendations for Azure Kubernetes Service
+#### Design considerations and recommendations for Azure Kubernetes Service
 
 AKS, a managed Kubernetes service, enables quick cluster provisioning without requiring complex cluster administration activities and offers a feature set that includes advanced networking and identity capabilities. For a complete set of recommendations, see [Azure Well-Architected Framework review - AKS](/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service).
 
@@ -218,7 +216,7 @@ Use policies to apply centralized safeguards to AKS clusters in a consistent way
 >
 > The mission-critical [reference implementations](mission-critical-overview.md#illustrative-examples) provide a suite of baseline policies to drive recommended reliability and security configurations.
 
-##### Design considerations and recommendations for Azure App Service
+#### Design considerations and recommendations for Azure App Service
 
 For web and API-based workload scenarios, [App Service](https://azure.microsoft.com/services/app-service/containers) might be a feasible alternative to AKS. It provides a low-friction container platform without the complexity of Kubernetes. For a complete set of recommendations, see [Reliability considerations for App Service](/azure/architecture/framework/services/compute/azure-app-service/reliability) and [Operational excellence for App Service](/azure/architecture/framework/services/compute/azure-app-service/operational-excellence).
 
@@ -277,7 +275,7 @@ You need to configure your container registries for mission-critical workloads c
 
 - Prioritize [Azure Container Registry](https://azure.microsoft.com/services/container-registry) for hosting container images. 
 
-##### Design considerations and recommendations for Azure Container Registry
+#### Design considerations and recommendations for Azure Container Registry
 
 This native service provides a range of features, including geo-replication, Azure AD authentication, automated container building, and patching via Container Registry tasks.
 
@@ -318,7 +316,7 @@ For mission-critical applications, serverless technologies provide simplified de
 
 The following sections provide design considerations and recommendations for using Azure Functions and Logic Apps as alternative platforms for non-critical workflow scenarios.
 
-##### Design considerations and recommendations for Azure Functions
+#### Design considerations and recommendations for Azure Functions
 
 Mission-critical workloads have critical and non-critical system flows. Azure Functions is a viable choice for flows that don't have the same stringent business requirements as critical system flows. It's well suited for event-driven flows that have short-lived processes because functions perform distinct operations that run as fast as possible.
 
@@ -330,7 +328,7 @@ We recommend the use of private endpoints for restricting access to private virt
 
 You need to use code scanning tools on Azure Functions code and integrate those tools with CI/CD pipelines.
 
-##### Design considerations and recommendations for Azure Logic Apps
+#### Design considerations and recommendations for Azure Logic Apps
 
 Like Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that supports blocks like conditionals, loops, and other constructs.
 
