@@ -70,7 +70,7 @@ Security is one of the most important aspects of any architecture. Application G
 > - When re-encrypting backend traffic, ensure the backend server certificate contains both the root and intermediate Certificate Authorities (CAs)
 > - Use an appropriate DNS server for backend pool resources
 > - Comply with all NSG restrictions for Application Gateway
-> - Refrain from using UDRs on the Application gateway Subnet(Appgatewaysubnet).
+> - Refrain from using UDRs on the Application Gateway subnet
 > - Be aware of Application Gateway capacity changes when enabling WAF
 
 ### Recommendations
