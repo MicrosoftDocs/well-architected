@@ -37,7 +37,7 @@ As you make design choices for Application Gateway, review the [Reliability desi
 > [!div class="checklist"]
 > - Deploy the instances in a [zone-aware configuration](/azure/application-gateway/application-gateway-autoscaling-zone-redundant), where available.
 > - Use Application Gateway with Web Application Firewall (WAF) within an application virtual network to protect inbound `HTTP/S` traffic from the Internet.
-> - In new deployments, use Application Gateway v2 unless there is a compelling reason to use v1.
+> - In new deployments, use Application Gateway v2 unless there is a compelling reason to use Application Gateway v1.
 > - Plan for rule updates
 > - Use health probes to detect backend unavailability
 > - Review the impact of the interval and threshold settings on health probes
