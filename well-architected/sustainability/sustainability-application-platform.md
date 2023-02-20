@@ -42,7 +42,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 The Microsoft Azure data centers are geographically spread across the planet and powered using different energy sources. Making decisions around where to deploy your workloads can significantly impact the emissions your solutions produce.
 
-Learn more about [sustainability from the data center to the cloud with Azure](https://www.microsoft.com/sustainability/azure). Further, see the [Microsoft data center sustainability fact sheets](https://infrastructuremap.microsoft.com/fact-sheets) to read more about sustainability efforts in specific Azure regions.
+Learn more about [sustainability from the data center to the cloud with Azure](https://www.microsoft.com/sustainability/azure). See region-specific sustainability information in the [Microsoft data center sustainability fact sheets](https://infrastructuremap.microsoft.com/fact-sheets).
 
 ### Deploy to low-carbon regions
 
