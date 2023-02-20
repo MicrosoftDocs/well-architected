@@ -42,7 +42,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 The Microsoft Azure data centers are geographically spread across the planet and powered using different energy sources. Making decisions around where to deploy your workloads can significantly impact the emissions your solutions produce.
 
-Learn more about [sustainability from the data center to the cloud with Azure](https://www.microsoft.com/sustainability/azure).
+Learn more about [sustainability from the data center to the cloud with Azure](https://www.microsoft.com/sustainability/azure). Further, see the [Microsoft data center sustainability fact sheets](https://infrastructuremap.microsoft.com/fact-sheets) to read more about sustainability efforts in specific Azure regions.
 
 ### Deploy to low-carbon regions
 
@@ -136,7 +136,7 @@ Ensuring workloads use all the allocated resources helps deliver a more sustaina
 
 ### Turn off workloads outside of business hours
 
-Operating idle workloads will waste energy and contributes to an added carbon emission.
+Operating idle workloads waste energy and contributes to an added carbon emission.
 
 _Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
 
