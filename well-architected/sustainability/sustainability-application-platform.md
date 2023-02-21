@@ -136,7 +136,7 @@ Ensuring workloads use all the allocated resources helps deliver a more sustaina
 
 ### Turn off workloads outside of business hours
 
-Operating idle workloads waste energy and contributes to an added carbon emission.
+Operating idle workloads wastes energy and contributes to added carbon emissions.
 
 _Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
 
