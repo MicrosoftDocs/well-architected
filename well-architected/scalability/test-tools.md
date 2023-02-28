@@ -1,6 +1,6 @@
 ---
-title: Testing tools
-description: Review testing tools for performance efficiency. Identify baselines and goals for performance. Cache data, run benchmark tests, and use metrics.
+title: Testing strategies
+description: Review testing strategies for performance efficiency. Identify baselines and goals for performance. Cache data, run benchmark tests, and use metrics.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/08/2022
@@ -16,7 +16,7 @@ ms.custom:
   - article
 ---
 
-# Testing tools
+# Testing strategies
 
 There are multiple stages in the development and deployment life cycle in which tests can be performed. Application code, infrastructure automation, and fault tolerance should all be tested. Testing in various stages can ensure that the application will perform as expected in every situation. You'll want to test early enough in the application life cycle to catch and fix errors. Errors are cheaper to repair when caught early and can be expensive or impossible to fix later.
 
