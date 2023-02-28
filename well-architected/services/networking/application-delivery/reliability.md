@@ -37,7 +37,7 @@ The following sections are specific to general Application Delivery and reliabil
 
 Application Delivery in Azure includes the following design considerations:
 
-- Azure Load Balancer (internal and public) provides high availability for application delivery at a regional level. (*Standard tier only*)
+- Azure Load Balancer (internal and public) provides high availability for application delivery at either a regional or global level. (*Standard tier only*)
 - Azure Traffic manager allows the delivery of applications through DNS redirection, including traffic using protocols other than `HTTP/S`.
 - Azure Front Door allows the secure delivery of highly available `HTTP/S` applications across Azure regions.
 - Azure Application Gateway allows the secure delivery of `HTTP/S` applications at a regional level.
