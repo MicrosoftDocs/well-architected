@@ -23,7 +23,7 @@ You can scale your applications and create highly available services with Azure 
 Key benefits include:
 
 - Load balance internal and external traffic to Azure virtual machines.
-- Increase availability by distributing resources within and across zones.
+- Increase availability by distributing resources within/across Azure regions and zones.
 - Configure outbound connectivity for Azure virtual machines.
 - Use health probes to monitor load-balanced resources.
 
@@ -48,7 +48,7 @@ Consider the following recommendation for operational excellence when configurin
 
 |Recommendation|Description|
 |--------------|-----------|
-|For production workloads, use the Standard Stock Keeping Units (SKU).|Basic load balancers don't have a Service Level Agreement (SLA). The Standard SKU [supports Availability Zones](/azure/load-balancer/load-balancer-standard-availability-zones).|
+|For production workloads, use the Standard Stock Keeping Units (SKU).|Basic load balancers don't have a Service Level Agreement (SLA). The Standard SKU [supports Availability Zones](/azure/load-balancer/load-balancer-standard-availability-zones) and [multi-region load balancing](/azure/load-balancer/cross-region-overview).|
 
 ## Next step
 

@@ -57,7 +57,7 @@ To share nothing is often impossible. To start from the position that nothing _s
 
 **Example**
 
-Given a single system that has six hours of downtime per year (around `3.5*9s`), a solution that combines four systems where the periods of downtime are uncorrelated will experience less than `30s` of downtime per year. As soon as those four systems rely on a common service, such as global DNS, their downtime is no longer uncorrelated. The resulting downtime will be higher.
+Given a single system that has six hours of downtime per year (around 3.5*9s), a solution that combines four systems where the periods of downtime are uncorrelated will experience less than 30s of downtime per year. As soon as those four systems rely on a common service, such as global DNS, their downtime is no longer uncorrelated. The resulting downtime will be higher.
 
 ## Next step
 

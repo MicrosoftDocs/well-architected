@@ -39,7 +39,7 @@ As you make design choices for virtual machines, review the [design principles](
 > [!div class="checklist"]
 > - Review the [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/).
 > - VMs should be deployed in a scale set [using the Flexible orchestration mode](/azure/virtual-machines/flexible-virtual-machine-scale-sets).
-> - Deployed VMs across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone) .
+> - Deployed VMs across [Availability Zones](/azure/virtual-machines/windows/quick-create-portal) .
 > - Install applications on [data disks](/azure/virtual-machines/linux/add-disk).
 > - Use [maintenance control](/azure/virtual-machines/maintenance-control).
 
@@ -138,6 +138,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions. Check out our [Azure Virtual Machine Spot Eviction](/azure/architecture/guide/spot/spot-eviction) guide to learn how to create a reliable interruptible workload in Azure.|
 |Right-size your VMs |  Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.|
 |Prepay for added cost savings | Purchasing [reserved instances](/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost. With an [Azure savings plan for compute](/pricing/offers/savings-plan-compute/#benefits-and-features), you save money across select compute services globally. Commit to spend a fixed hourly amount for 1 or 3 years and unlock lower prices until you reach your hourly commitment.|
+
 | Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
 
  Azure Advisor helps you ensure and improve cost optimization. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Cost).
