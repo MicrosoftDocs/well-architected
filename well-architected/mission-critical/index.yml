@@ -86,7 +86,7 @@ landingContent:
         links:
           - text: Challenge - Design a mission-critical web application
             url: /training/modules/azure-mission-critical/
-          - text: Challenge - Design a health model for your mission-critical workload
+          - text: Design a health model for your mission-critical workload
             url: /training/modules/design-health-model-mission-critical-workload/
           - text: Continuously validate and test mission-critical workload
             url: /training/modules/continuous-validate-test-mission-critical-workloads/
