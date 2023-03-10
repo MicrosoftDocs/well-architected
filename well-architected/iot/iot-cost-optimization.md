@@ -253,7 +253,7 @@ For more information, see [How to convert an existing device to be an IoT Plug a
 
 ### IoT Hub DPS
 
-[IoT Hub DPS](/azure/about-iot-dps) is a helper service for IoT Hub that enables low-cost, zero-touch, just-in-time provisioning to the correct IoT hub without requiring human intervention. DPS enables secure and scalable provisioning of millions of devices to reduce error and cost.
+[IoT Hub DPS](/azure/iot-dps/about-iot-dps) is a helper service for IoT Hub that enables low-cost, zero-touch, just-in-time provisioning to the correct IoT hub without requiring human intervention. DPS enables secure and scalable provisioning of millions of devices to reduce error and cost.
 
 DPS enables low or no-touch device provisioning, so you don't have to train and send people on site. Using DPS reduces the cost for truck rolls and time spent on training and configuration. DPS also reduces the risk of errors due to manual provisioning.
 
