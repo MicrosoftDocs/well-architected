@@ -42,7 +42,6 @@ We recommend using proximity placement groups in two scenarios:
 For more information, see:
 
 - [Overview of proximity placement groups](/azure/virtual-machines/co-location)
-- [Oracle and proximity placement groups](/azure/virtual-machines/workloads/Oracle/Oracle-proximity-placement-scenarios)
 
 ## Recommendations
 
