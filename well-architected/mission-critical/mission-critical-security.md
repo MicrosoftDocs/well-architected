@@ -3,7 +3,7 @@ title: Security considerations for mission-critical workloads on Azure
 description: This section provides detailed design considerations and recommendations for the security critical design area.
 author: calcof
 ms.author: calcof
-ms.date: 02/02/2022
+ms.date: 03/15/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

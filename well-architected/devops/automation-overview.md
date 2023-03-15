@@ -3,7 +3,7 @@ title: Automation overview of goals, best practices, and types in Azure
 description: Automation overview
 author: martinekuan
 ms.author: martinek
-ms.date: 4/7/2022
+ms.date: 03/14/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected

@@ -3,7 +3,7 @@ title: Design methodology for mission-critical workloads on Azure
 description: Understand the architectural process of building a mature mission-critical application on Microsoft Azure.
 author: calcof
 ms.author: calcof
-ms.date: 08/15/2022
+ms.date: 03/15/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
