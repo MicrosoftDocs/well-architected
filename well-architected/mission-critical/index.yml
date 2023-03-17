@@ -84,8 +84,12 @@ landingContent:
     linkLists:
       - linkListType: learn
         links:
-          - text: Challenge - Design a mission-critical web application
+          - text: Challenge Project - Design a mission-critical web application
             url: /training/modules/azure-mission-critical/
+          - text: Design a health model for your mission-critical workload
+            url: /training/modules/design-health-model-mission-critical-workload/
+          - text: Continuously validate and test mission-critical workloads
+            url: /training/modules/continuous-validate-test-mission-critical-workloads/
 
  # Card
   - title: Video library
@@ -133,3 +137,19 @@ landingContent:
           - text: Carrier-grade for telecommunications
             url: /azure/architecture/framework/carrier-grade/carrier-grade-get-started
 
+
+  # Card
+  - title: Architect perspectives
+    linkLists:
+      - linkListType: video
+        links:
+          - text: Azure Friday - Health modeling for mission-critical workloads on Azure
+            url: https://www.youtube.com/watch?v=9B4oC2J3nXw
+          - text: Azure Friday - Continuously validate and test your mission-critical Azure workloads
+            url: https://www.youtube.com/watch?v=NaQXjM0MLAc
+          - text: Azure Friday - Deploy your mission-critical workload in an Azure landing zone
+            url: https://www.youtube.com/watch?v=tHMHh5VU-kQ
+          - text: Azure Enablement Show - Designing a mission-critical workload on Azure
+            url: https://www.youtube.com/watch?app=desktop&v=hgejBsROi4Y
+          - text: Azure Enablement Show - Integrating a mission-critical workload with Azure landing zones
+            url: https://www.youtube.com/watch?v=WQVif9W3SQw
