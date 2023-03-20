@@ -38,7 +38,7 @@ Use *Azure Arc enabled infrastructure* to extend Azure management to any infrast
 
 ## Run Azure services anywhere
 
-Azure Arc allows you to run Azure Services anywhere. This allows you to build consistent hybrid and multicloud application archtiectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers.
+Azure Arc allows you to run Azure Services anywhere. This allows you to build consistent hybrid and multicloud application architectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers.
 
 ### Run Azure data services anywhere
 
