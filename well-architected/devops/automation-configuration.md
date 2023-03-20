@@ -65,7 +65,7 @@ Create a resource group for the virtual machine.
 az group create --name myResourceGroupAutomate --location eastus
 ```
 
-Create the virtual machine, specifying the *--custom-data* property with the cloud-inti configuration name.
+Create the virtual machine, specifying the *--custom-data* property with the cloud-init configuration name.
 
 ```azurecli
 az vm create \
