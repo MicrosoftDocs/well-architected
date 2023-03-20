@@ -38,7 +38,7 @@ A _carrier-grade workload_ pivots on both business-critical and safety-critical,
 
 The *operational* aspect of the workload includes how reliability is measured and the targets that it must meet or exceed. Highly reliable systems typically target 99.999% uptime (commonly referred to as '5 9s') or 0.001% downtime in a year (approximately 5 minutes). Some systems target 99.9999% uptime, or 30 seconds downtime per year, or even higher levels of reliability. This covers all forms and causes of outage – scheduled maintenance, infrastructure failure, human error, software issues and even natural disaster. 
 
-Although the platform used has evolved from dedicated, proprietary hardware through commercial, off-the-sheld hardware to OpenStack or VMware clouds, Telecommunication companies consistently deliver services achieving ≤ 5 minutes of downtime per year, and in many cases, achieve ≤ 30 seconds of downtime due to unscheduled outages.
+Although the platform used has evolved from dedicated, proprietary hardware through commercial, off-the-shelf hardware to OpenStack or VMware clouds, Telecommunication companies consistently deliver services achieving ≤ 5 minutes of downtime per year, and in many cases, achieve ≤ 30 seconds of downtime due to unscheduled outages.
 
 ## What are the common challenges?
 
