@@ -40,7 +40,11 @@ Here are some recommendations for creating a unified strategy:
 - Centralize the organizational responsibility for management and security of core networking functions such as cross-premises links, virtual networking, subnetting, and IP address schemes as well as network security elements such as virtual network appliances, encryption of cloud virtual network activity and cross-premises traffic, network-based access controls, and other traditional network security components.
 
 ## Reference model
-Start with this reference model and adapt it to your organization's needs. This model shows how functions, resources, and teams can be segmented.
+If your workload requires multiple segments with shared services across each segmetn, start with this reference model and adapt it to your organization's needs. This model shows how functions and resources can be segmented to support an application with multiple segments.
+
+> [!WARNING]
+> Segmentation and multiple teams suggests that your segmentation solution will expand beyond the scope of the Well Architected Framework, impacting multiple workloads consistently. When centralized teams are responsible for broad architecture decisions, like segmentation, the best practice is to begin with [Azure Landing Zones](/azure/cloud-adoption-framework/ready/landing-zone/) in the Cloud Adoption Framework. Azure Landing Zones provide a conceptual architecture, reference implementations, and proven design processes to customize and implement the platform (or shared) services needed to support multiple applications. Those best practices aid in making platform wide decisions regarding [network topology and connectivity](/azure/cloud-adoption-framework/ready/landing-zone/design-area/network-topology-and-connectivity), [segmentation](/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-landing-zone-network-segmentation) and [governance](/azure/cloud-adoption-framework/ready/landing-zone/design-area/governance), which should be used when these decisions impact more than one workload.
+
 
 ![Enterprise tenant](images/enterprise-tenant.png)
 
