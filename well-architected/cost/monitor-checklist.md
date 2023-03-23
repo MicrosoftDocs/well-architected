@@ -10,6 +10,7 @@ ms.subservice: well-architected
 products:
   - azure
   - azure-cost-management
+  - azure-monitor
 ms.custom:
   - article
   - internal-intro

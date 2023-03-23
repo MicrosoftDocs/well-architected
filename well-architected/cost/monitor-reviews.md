@@ -13,6 +13,7 @@ ms.custom:
 products:
   - azure
   - azure-cost-management
+  - azure-monitor
 ---
 
 # Conduct cost reviews
