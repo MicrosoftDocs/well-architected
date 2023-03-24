@@ -9,6 +9,7 @@ ms.service: architecture-center
 ms.subservice: well-architected
 products:
   - application-insights
+  - azure-monitor
 categories:
   - monitoring
   - management-and-governance
