@@ -9,6 +9,7 @@ ms.service: architecture-center
 ms.subservice: well-architected
 products:
   - log-analytics
+  - azure-monitor
 categories:
   - monitoring
   - management-and-governance

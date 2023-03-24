@@ -11,6 +11,7 @@ products:
   - azure-security-center
   - azure-sentinel
   - m365-security-center
+  - azure-monitor
 categories:
   - management-and-governance
 subject:

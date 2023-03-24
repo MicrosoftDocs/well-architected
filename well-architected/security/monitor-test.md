@@ -9,6 +9,7 @@ ms.service: architecture-center
 ms.subservice: well-architected
 products:
   - azure
+  - azure-monitor
 categories:
   - security
 subject:

@@ -12,6 +12,7 @@ categories:
 products:
   - azure
   - devops
+  - azure-monitor
 ---
 
 # Alerting
