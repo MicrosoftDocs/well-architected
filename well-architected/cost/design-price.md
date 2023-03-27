@@ -3,7 +3,7 @@ title: Consumption and fixed cost models
 description: Learn how to compare and contrast the consumption-based and fixed-price cost models for Azure services.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 12/07/2021
+ms.date: 03/27/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -19,15 +19,15 @@ products:
 
 The common pricing options for Azure services are:
 
-- Consumption-based price - You are charged for only what you use. This model is also known as the Pay-As-You-Go rate.
-- Fixed price - You provision resources and are charged for those instances whether or not they are used.
+- Consumption-based price - You're charged for only what you use. This model is also known as the pay-as-you-go rate.
+- Fixed price - You provision resources and are charged for those instances whether you use them or not.
 
-A common way to estimate cost is by considering workloads on a peak throughput. Under consistently high utilization, consumption-based pricing can be less efficient for estimating baseline costs when compared to the equivalent provisioned pricing. PaaS and serverless technologies can help you understand the economy cutoff point for consumption-based pricing.
+A common way to estimate cost is by considering workloads on a peak throughput. With consistently high utilization, consumption-based pricing can be less efficient for estimating baseline costs when compared to the equivalent provisioned pricing. PaaS and serverless technologies can help you understand the economy cutoff point for consumption-based pricing.
 
-Observe the difference between cost models based on fixed, static provisioning of services, more variable costs based on autoscaling of serverless technologies.
+See the difference between cost models based on fixed, static services provisioning, and more variable costs based on autoscaling serverless technologies.
 
-![Choice of abstraction](../_images/choice-of-abstraction.png)
+![Diagram that shows the abstraction choices and their impacts on system costs.](../_images/choice-of-abstraction.png)
 
-Start with a fixed minimum level of performance and then use architectural patterns (such as [Queue Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling)) and autoscaling of services. With this approach the peaks can be smoothed out into a more consistent flow of compute and data. This approach should temporarily extend your burst performance when the service is under sustained load. If cost is an important factor but you need to maintain service availability under burst workload use the [Throttling pattern](/azure/architecture/patterns/throttling) to maintain quality of service under load.
+Start with a fixed minimum-level of performance and then use architectural patterns, such as [queue based load leveling](/azure/architecture/patterns/queue-based-load-leveling) and autoscaling services. With this approach, the peaks are smoothed out into a more consistent flow of compute and data. This approach should temporarily extend your burst performance when the service is under sustained load. If cost is an important factor but you need to maintain service availability under burst workloads, use the [throttling pattern](/azure/architecture/patterns/throttling) to maintain service quality under load.
 
-Compare and contrast the options and understand how to provision workloads that can potentially switch between the two models. The model will be a tradeoff between scalability and predictability. Ideally in the architecture, blend the two aspects. 
+Compare and contrast the options and understand how to provision workloads that can potentially switch between the two models. The model is a tradeoff between scalability and predictability. Ideally in the architecture, you blend the two aspects.
