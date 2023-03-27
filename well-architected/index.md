@@ -72,11 +72,11 @@ To assess your workload using the tenets found in the Microsoft Azure Well-Archi
 
 :::image type="content" source="./_images/war-graphic-revised.png" alt-text="Screenshot of the Microsoft Azure Well-Architected Review." lightbox="./_images/war-graphic-revised.png":::
 
-We also recommend you use Azure Advisor and Advisor Score to identify and prioritize opportunities to improve the posture of your workloads. Both services are free to all Azure users and align to the five pillars of the Well-Architected Framework:
+We also recommend that you use *Azure Advisor* and *Advisor Score* to identify and prioritize opportunities to improve the posture of your workloads. Both services are free to all Azure users and align to the five pillars of the Well-Architected Framework:
 
 - *Azure Advisor* is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. It analyzes your resource configuration and usage telemetry. It recommends solutions that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Azure resources. Learn more about [Azure Advisor](/azure/advisor/).
 
-- *Advisor Score* is a core feature of Azure Advisor that aggregates Advisor recommendations into a simple, actionable score. This score enables you to tell at a glance if you're taking the necessary steps to build reliable, secure, and cost-efficient solutions. It helps to prioritize the actions that yield the biggest improvement to the posture of your workloads. The Advisor score consists of an overall score, which can be further broken down into five category scores corresponding to each of the Well-Architected pillars. Learn more about [Advisor Score](/azure/advisor/azure-advisor-score).
+- *Advisor Score* is a core feature of Azure Advisor that aggregates Advisor recommendations into a simple, actionable score. This score enables you to tell at a glance if you're taking the necessary steps to build reliable, secure, and cost-efficient solutions. It helps to prioritize the actions that yield the biggest improvement to the posture of your workloads. The Advisor Score consists of an overall score, which can be further broken down into five category scores corresponding to each of the Well-Architected pillars. Learn more about [Advisor Score](/azure/advisor/azure-advisor-score).
 
 ## Reliability
 
@@ -151,7 +151,7 @@ For a high-level overview, see [Overview of the cost optimization pillar](./cost
 
 ## Operational excellence
 
-[Operational excellence](./devops/index.yml) covers the operations and processes that keep an application running in production. Deployments must be reliable and predictable. Automate deployments to reduce the chance of human error. Fast and routine deployment processes don't slow down the release of new features or bug fixes. Equally important, you must quickly roll back or roll forward if an update has problems.
+[Operational excellence](./devops/index.yml) covers the operations and processes that keep an application running in production. Deployments must be reliable and predictable. Automate deployments to reduce the chance of human error. Fast and routine deployment processes don't slow down the release of new features or bug fixes. Equally important, you must be able to quickly roll back or roll forward if an update has problems.
 
 For more information, watch the following video about bringing security into your DevOps practice on Azure:
 
