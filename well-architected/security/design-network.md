@@ -20,10 +20,10 @@ ms.custom:
 
 # Network security
 
-Protect assets by placing controls on network traffic originating in Azure, between on-premises and Azure hosted resources, and traffic to and from Azure. If security measures aren't in place attackers can gain access, for instance, by scanning across public IP ranges. Proper network security controls can provide defense-in-depth elements that help detect, contain, and stop attackers who gain entry into your cloud deployments.
+Protect assets by placing controls on network traffic originating in Azure, between on-premises and Azure hosted resources, and traffic to and from Azure. If security measures aren't in place, attackers can gain access, for instance, by scanning across public IP ranges. Proper network security controls can provide defense-in-depth elements that help detect, contain, and stop attackers who gain entry into your cloud deployments.
 
 > [!NOTE]
-> Network security, segmentation, and connectivity could be defined as part of the workload architecture. More commonly, networking is often addressed at an organizational level by Central IT, Cloud Center of Excellence, or a cloud platform team. For any networking configuration defined outside of the scope of your workload architecture, consult the Cloud Adoption Framework's [Azure Landing Zones guidance](/azure/cloud-adoption-framework/ready/landing-zone/). Specifically the [Network connectivity and topology design area](/azure/cloud-adoption-framework/ready/landing-zone/design-area/network-topology-and-connectivity) outlines the best practice recommendations and considerations for centralized networking and network security.
+> Network security, segmentation, and connectivity could be defined as part of the workload architecture. More commonly, networking is often addressed at an organizational level by Central IT, Cloud Center of Excellence, or a cloud platform team. For any networking configuration defined outside of the scope of your workload architecture, consult the Cloud Adoption Framework's [Azure Landing Zones guidance](/azure/cloud-adoption-framework/ready/landing-zone/). [Network connectivity and topology design area](/azure/cloud-adoption-framework/ready/landing-zone/design-area/network-topology-and-connectivity) outlines the best practice recommendations and considerations for centralized networking and network security.
 
 ## Checklist
 **How have you secured the network of your workload?**
@@ -32,7 +32,7 @@ Protect assets by placing controls on network traffic originating in Azure, betw
 > [!div class="checklist"]
 > - Segment your network footprint and create secure communication paths between segments. Align the network segmentation with overall enterprise segmentation strategy.
 > - Design security controls that identify and allow or deny traffic, access requests, and application communication between segments.
-> - Protect all public endpoints with Azure Front Door, Application Gateway, Azure Firewall, Azure DDoS Protection.
+> - Protect all public endpoints with Azure Front Door, Application Gateway, Azure Firewall, and Azure DDoS Protection.
 > - Mitigate DDoS attacks with Azure DDoS Protection for critical workloads.
 > - Keep virtual machines private and secure when connecting to the internet with Azure Virtual Network NAT (NAT gateway).
 > - Control network traffic between subnets (east-west) and application tiers (north-south).
