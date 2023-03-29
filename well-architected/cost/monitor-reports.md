@@ -3,7 +3,7 @@ title: Generate cost reports
 description: Learn about and explore ways to gather cost data for reporting purposes by using Azure cost tools, consumption APIs, and custom scripts. You can then analyze and visualize the data as well.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 03/28/2023
+ms.date: 03/29/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -34,7 +34,7 @@ Azure provides the following cost tools that help track cloud spending and offer
 
 You can view costs at different scopes, such as for a resource group or specific resource tags. Cost analysis provides built-in charts and custom views. You can also download the cost data in CSV format to analyze with other tools.
 
-For more information, see: [Quickstart: Explore and analyze costs with cost analysis](/azure/cost-management/quick-acm-cost-analysis).
+For more information, see [Quickstart: Explore and analyze costs with cost analysis](/azure/cost-management/quick-acm-cost-analysis).
 
 > [!NOTE]
 > There are many ways of purchasing Azure services. Not all services are supported by Azure cost management. For example, you obtain detailed billing information for services purchased through a Cloud Solution Provider (CSP) directly from the CSP. For more information about the supported cost data, see [Understand cost management data](/azure/cost-management/quick-acm-cost-analysis).
