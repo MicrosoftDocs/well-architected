@@ -22,7 +22,7 @@ ms.custom:
 Management groups can manage resources across multiple subscriptions consistently and efficiently. However, due to its flexibility, your design can become complex and compromise security and operations.
 
 > [!NOTE]
-> Management groups could be defined as part of the workload architecture. More commonly, centralized teams use management groups to consistently apply governance and segmentation strategies across multiple workloads. If a centralized team is responsible for design and operations of your management groups, consult the Cloud Adoption Framework's [Azure Landing Zones guidance](/azure/cloud-adoption-framework/ready/landing-zone/). The [Resource organization design area](/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org) outlines the best practice recommendations and considerations for segmentation through management groups, subscriptions, and application landing zones.
+> Management groups could be defined as part of the workload architecture. More commonly, centralized teams use management groups to consistently apply governance and segmentation strategies across multiple workloads. If a centralized team is responsible for design and operations of your management groups, reference Cloud Adoption Framework's [Azure landing zones](/azure/cloud-adoption-framework/ready/landing-zone/). The [Resource organization](/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org) design area outlines the best practice recommendations and considerations for segmentation through management groups, subscriptions, and application landing zones.
 
 ## Support your segmentation strategy with management groups
 
@@ -32,7 +32,7 @@ Management groups offer the ability to consistently and efficiently manage resou
 
 Microsoft recommends aligning the top level of management groups (MGs) into a simple enterprise segmentation strategy and limiting the levels to no more than two.
 
-In the [example reference](/azure/architecture/framework/security/design-segmentation#reference-model), there are enterprise-wide resources used by all segments, a set of core services that share services, and more segments for each workload.
+In the example [Reference model](/azure/architecture/framework/security/design-segmentation#reference-model), there are enterprise-wide resources used by all segments, a set of core services that share services, and more segments for each workload.
 
 - Root management group for enterprise-wide resources.
 
@@ -41,7 +41,7 @@ In the [example reference](/azure/architecture/framework/security/design-segment
   > [!CAUTION]
   > Be careful when using the root management group because the policies can affect all resources on Azure and potentially cause downtime or other negative impacts. For considerations, see [Use root management group with caution](#use-root-management-group-with-caution) later in this article.
   >
-  > For complete guidance about using management groups for an enterprise, see [CAF: Management group and subscription organization](/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization).
+  > For complete guidance about using management groups for an enterprise, see [Management groups](/azure/cloud-adoption-framework/ready/landing-zone/design-area/resource-org-management-groups).
 
 - Management group for each workload segment.
 
@@ -80,4 +80,4 @@ The root management group enables you to ensure consistency across the enterpris
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Administrative accounts](design-admins.md)
+> [Administrative account security](design-admins.md)

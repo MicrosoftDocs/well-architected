@@ -49,17 +49,17 @@ Security best practices are ideally applied proactively and completely to all sy
 
 We recommend applying as many of the best practices as early as possible, and then working to retrofit any gaps over time as you mature your security program. Your security program should include review, prioritization, and proactive application of best practices to cloud resources. We recommend evaluating the following considerations when  prioritizing which to follow first:
 
-- **High business impact and highly exposed systems:** These include systems with direct intrinsic value and the systems that provide attackers a path to them. For more information, see [Identify and classify business critical applications](./design-apps-services.md).
+- **High business impact and highly exposed systems:** These include systems with direct intrinsic value and the systems that provide attackers a path to them. For more information, see [Identify and classify business critical applications](./design-apps-services.md#identify-and-classify-business-critical-applications).
 
-- **Easiest to implement mitigations:** Identify quick wins by prioritizing the best practices, which your organization can execute quickly because you already have the required skills, tools, and knowledge to do it. For example, implementing a Web App Firewall (WAF) to protect a legacy application. Be careful not to exclusively use (or overuse) this short-term prioritization method. Doing so can increase your risk by preventing your program from growing and leaving critical risks exposed for extended periods.
+- **Easiest to implement mitigations:** Identify quick wins by prioritizing the best practices, which your organization can execute quickly because you already have the required skills, tools, and knowledge to do it. For example, implementing a web app firewall (WAF) to protect a legacy application. Be careful not to exclusively use (or overuse) this short-term prioritization method. Doing so can increase your risk by preventing your program from growing and leaving critical risks exposed for extended periods.
 
 Use the provided lists of prioritized security initiatives to help organizations start with these decisions. The provided lists are based on Microsoft's experience with threats and mitigation initiatives in internal environments and across Microsoft's customers. See [Module 4a](/office365/securitycompliance/ciso-workshop-module-4a) of the [Microsoft CISO Workshop](/security/ciso-workshop/ciso-workshop).
 
 **Take action**
 
-[Establish security best practices across all workloads](/azure/cloud-adoption-framework/secure)
+[Security in the Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/secure)
 
-[Azure Landing Zones establish a cloud platform with security tools and governance for all workloads](/azure/cloud-adoption-framework/ready/landing-zone/)
+[What is an Azure landing zone?](/azure/cloud-adoption-framework/ready/landing-zone/)
 
 ## Checklist
 **What considerations for compliance and governance did you make?**
@@ -92,7 +92,7 @@ The Azure Security Benchmark includes a collection of high-impact security recom
 
 > ![Security Benchmark](../_images/benchmark-security.svg) The questions in this section are aligned to these controls:
 >
-> - [Governance and Strategy](/azure/security/benchmarks/security-controls-v2-governance-strategy)
+> - [Governance and strategy](/azure/security/benchmarks/security-controls-v2-governance-strategy)
 > - [Posture and vulnerability management](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 ## Reference architecture
