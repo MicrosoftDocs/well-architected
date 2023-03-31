@@ -3,7 +3,7 @@ title: Generate cost reports
 description: Learn about and explore ways to gather cost data for reporting purposes by using Azure cost tools, consumption APIs, and custom scripts. You can then analyze and visualize the data as well.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 03/29/2023
+ms.date: 03/30/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -27,6 +27,7 @@ Azure provides the following cost tools that help track cloud spending and offer
 - [Azure Advisor](/azure/advisor/advisor-cost-recommendations)
 - [Advisor Score](/azure/advisor/azure-advisor-score)
 - [Azure Cost Management](/azure/cost-management-billing/costs/)
+- [Azure Cost Management Power BI app](/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app)
 
 ### Cost analysis
 
@@ -82,3 +83,9 @@ Power BI Desktop has a connector that lets you connect billing data from Azure C
 For more information, see [Create visuals and reports with the Azure Cost Management connector in Power BI Desktop](/power-bi/desktop-connect-azure-cost-management).
 
 You can also use the [Cost Management App](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp). The app uses the Azure Cost Management Template app for Power BI. You can import and analyze usage data and incurred cost within Power BI.
+
+## Azure Cost Management Power BI app
+
+Use the Azure Cost Management Power BI app to analyze and manage your costs in Power BI. You can use the app to monitor costs and usage trends, produce reports, and identify cost optimization options to reduce expenditures.
+
+The Cost Management Power BI app currently supports customers with an Enterprise Agreement. For more information, see [Azure Cost Management Power BI app](/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app).
