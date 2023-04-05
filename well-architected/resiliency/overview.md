@@ -17,14 +17,14 @@ categories:
 
 # Overview of the reliability pillar
 
-Reliability ensures your application can meet the commitments you make to your customers. Architecting resiliency into your application framework ensures your workloads are available and can recover from failures at any scale.
+Reliability ensures your application can meet the commitments you make to your customers. When you architect resiliency into your application framework, you ensure your workloads are available and can recover from failures at any scale.
 
-Building for reliability includes:
+You can build for reliability by:
 
 - Ensuring a highly available architecture
 - Recovering from failures such as data loss, major downtime, or ransomware incidents
 
-To assess the reliability of your workload using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/), reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+To assess workload reliability by using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/), reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
 For more information, explore the following video on diving deeper into Azure workload reliability:
 
@@ -36,7 +36,7 @@ For more information, explore the following video on diving deeper into Azure wo
 
 <!-- markdownlint-enable MD034 -->
 
-In traditional application development, there has been a focus on increasing the mean time between failures (MTBF). Effort was spent trying to prevent the system from failing. In cloud computing, a different mindset is required, because of several factors:
+Traditional application development has focused on increasing the mean time between failures (MTBF). Effort was spent trying to prevent the system from failing. Cloud computing, though, requires a different mindset for several reasons:
 
 - Distributed systems are complex, and a failure at one point can potentially cascade throughout the system.
 - Costs for cloud environments are kept low through commodity hardware, so occasional hardware failures must be expected.
