@@ -18,7 +18,7 @@ Building a reliable application in the cloud is different from traditional appli
 
 In the cloud, we acknowledge that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component.
 
-To assess your workload using the tenets found in the Azure Well-Architected Framework, reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+To assess workload reliability by using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/), reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
 The following design principles provide:
 
@@ -26,7 +26,7 @@ The following design principles provide:
 - Why a certain aspect is important
 - How an aspect is applicable to Reliability
 
-These critical design principles are used as lenses to assess the Reliability of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
+You can use these critical design principles as lenses to assess the reliability of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
 
 ## Design for business requirements
 
@@ -40,7 +40,7 @@ Cost implications are inevitable when introducing greater reliability and high a
 
 Failure is impossible to avoid in a highly distributed and multi-tenant environment like Azure.
 
-By anticipating failures, from individual components to entire Azure regions, you can develop a solution in a resilient way to increase reliability.
+By anticipating failures from individual components to entire Azure regions, you can develop a solution in a resilient way to increase reliability.
 
 ## Observe application health
 
@@ -52,9 +52,9 @@ Monitoring allows you to take swift and remedial action.
 
 ## Drive automation
 
-One of the leading causes of application downtime is human error due to the deployment of insufficiently tested software or through misconfiguration.
+One of the leading causes of application downtime is human error due to insufficiently tested software or through misconfiguration.
 
-To minimize the possibility and consequence of human errors, it's vital to strive for automation in all aspects of a cloud solution.
+To minimize the possibility and consequence of human error, it's vital to strive for automation in all aspects of a cloud solution.
 
 Automation improves:
 
