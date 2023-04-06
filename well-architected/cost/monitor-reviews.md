@@ -18,7 +18,7 @@ products:
 
 # Conduct cost reviews
 
-Cost monitoring tracks and reviews cloud costs to help establish budge controls and prevent misuse. It's important to adopt proactive and reactive review approaches for monitoring cost. Stakeholders should conduct cost reviews on a regular basis and include reactive cost reviews. For example, when a budget limit causes an alert.
+Cost monitoring tracks and reviews cloud costs to help establish budget controls and prevent misuse. It's important to adopt proactive and reactive review approaches for monitoring cost. Stakeholders should conduct cost reviews regularly and include reactive cost reviews. For example, when a budget limit causes an alert.
 
 ## Who should be included in a cost review?
 
@@ -29,7 +29,7 @@ Cost monitoring is a complex process that involves planning, cost estimation, bu
   - **Application owners and System administrator**. Monitor and back-up cloud systems.
   - **Business unit representatives** Need awareness of the decisions.
 
-YOu can identify owners of systems or applications is through resource tags.
+You can identify owners of systems or applications is through resource tags.
 
 ## Plan and schedule cost reviews
 
@@ -39,4 +39,4 @@ It's the recommendation to schedule and include cost reviews as part of the regu
 - Schedule a review after the billing period. This review shows the actual cost with activity for that month. Use [Balance APIs](/azure/cost-management-billing/manage/consumption-api-overview#balances-api) to generate monthly reports. The APIs can query data  that gets information on balances, new purchases, Azure Marketplace service charges, adjustments, and overage charges.
 - Schedule a review when you receive a [budget alert](/azure/cost-management/cost-mgt-alerts-monitor-usage-spending) or Azure Advisor recommendation.
 
-Web Direct (pay-as-you-go) and Cloud Solution Provider (CSP) billing occurs monthly. While Enterprise Agreement (EA) billing occurs annually, costs should still be reviewed monthly.
+Web Direct (pay-as-you-go) and Cloud Solution Provider (CSP) billing occurs monthly. While Enterprise Agreement (EA) billing occurs annually; however, a cost review should occur regardless of the billing cycle.
