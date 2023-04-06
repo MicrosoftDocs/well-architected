@@ -29,14 +29,14 @@ Cost monitoring is a complex process that involves planning, cost estimation, bu
   - **Application owners and System administrator**. Monitor and back-up cloud systems.
   - **Business unit representatives** Need awareness of the decisions.
 
-You can identify owners of systems or applications is through resource tags.
+You can identify owners of systems or applications through resource tags.
 
 ## Plan and schedule cost reviews
 
-It's the recommendation to schedule and include cost reviews as part of the regular business reviews.
+We recommend scheduling cost reviews as part of the regular business reviews.
 
-- Schedule a review during the billing period. This review creates awareness of the estimated pending billing. You can use [Azure Advisor](/azure/advisor/advisor-cost-recommendations), [Advisor Score](/azure/advisor/azure-advisor-score/), and [Azure Cost Management – Cost analysis](/azure/cost-management-billing/costs/) to help with the reports.
-- Schedule a review after the billing period. This review shows the actual cost with activity for that month. Use [Balance APIs](/azure/cost-management-billing/manage/consumption-api-overview#balances-api) to generate monthly reports. The APIs can query data  that gets information on balances, new purchases, Azure Marketplace service charges, adjustments, and overage charges.
+- Schedule a review during the billing period. This review creates awareness of the estimated pending billing. You can use [Azure Advisor](/azure/advisor/advisor-cost-recommendations), [Advisor Score](/azure/advisor/azure-advisor-score/), and [Azure Cost Management – cost analysis](/azure/cost-management-billing/costs/) to help with the reports.
+- Schedule a review after the billing period. This review shows the actual cost with activity for that month. Use [Balance APIs](/azure/cost-management-billing/manage/consumption-api-overview#balances-api) to generate monthly reports. The APIs can query data that gets information on balances, new purchases, Azure Marketplace service charges, adjustments, and overage charges.
 - Schedule a review when you receive a [budget alert](/azure/cost-management/cost-mgt-alerts-monitor-usage-spending) or Azure Advisor recommendation.
 
-Web Direct (pay-as-you-go) and Cloud Solution Provider (CSP) billing occurs monthly. While Enterprise Agreement (EA) billing occurs annually; however, a cost review should occur regardless of the billing cycle.
+Web Direct (pay-as-you-go) and Cloud Solution Provider (CSP) billing occurs monthly, while Enterprise Agreement (EA) billing occurs annually. But ensure you do a cost review regardless of the billing cycle.
