@@ -1,9 +1,9 @@
 ---
 title: Develop a cost model
-description: Learn how to do cost modeling to map logical groups of cloud resources to an organization&apos;s hierarchy, and then estimate costs for those groups.
+description: Learn how to do cost modeling to map logical groups of cloud resources to an organization's hierarchy, and then estimate costs for those groups.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 04/05/2023
+ms.date: 04/07/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -123,7 +123,7 @@ Break down high-level goals into functional requirements. For each of those requ
 
 ### Use T-shirt sizes for choosing SKUs
 
-When choosing options for services, start with an abstract representation of size. For example, if you choose a T-shirt size approach, small, medium, large sizes, can represent an on-demand virtual machine instead of picking specific virtual machines or managed disks SKU sizes.
+When choosing options for services, start with an abstract representation of size. For example, if you choose a T-shirt size approach, small, medium, and large sizes can represent an on-demand virtual machine. You pick a T-shirt size instead of picking specific virtual machines or managed disks SKU sizes.
 
 Abstract sizes give you an idea of the expected performance and cost requirements. It sets the tone for various consumption units that measure compute resources for performance. Also, it helps in understanding the on-demand consumption model of the services.
 
