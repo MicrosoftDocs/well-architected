@@ -21,10 +21,10 @@ The cost of an Azure service can vary between locations based on demand and loca
 
 |Terminology|Description|
 |---|---|
-|Azure region|A set of datacenters deployed within a latency-defined perimeter and connected through a dedicated regional low-latency network. |
-|Availability zone |A unique physical location within a region with independent power, network, and cooling to be tolerant to datacenter failures through redundancy and logical isolation of services.|
+|Azure region|A set of data centers deployed within a latency-defined perimeter and connected through a dedicated regional low-latency network. |
+|Availability zone |A unique physical location within a region with independent power, network, and cooling to be tolerant to data center failures through redundancy and logical isolation of services.|
 |Billing zone|A geographic collection of regions that is used for billing.|
-|Location|A region or a zone within a region. Azure has datacenters all over the world and each datacenter resides in a location. |
+|Location|A region or a zone within a region. Azure has data centers all over the world and each data center resides in a location. |
 |Landing zone|The ultimate location of your cloud solution or the landing zone. The landing zone typically consists of logical containers like a subscription and resource group, in which your cloud infrastructure components exist. |
 
 See the [Azure global infrastructure](https://azure.microsoft.com/global-infrastructure) for a complete list of Azure geographies, regions, and locations.
@@ -43,7 +43,7 @@ Azure also offers differentiated cloud regions for specific security and complia
  
 If your solution needs to follow certain government regulations, the cost is higher. Otherwise you can meet less rigid compliance, through [Azure Policy](/azure/governance/policy/overview), which is free.
 
-Certain Azure regions are built specifically for high compliance and security needs. For example, with [Azure Government (USA)](/azure/azure-government/) you're given an isolated instance of Azure. [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/) has datacenters that meet privacy certifications. These specialized regions have higher cost.
+Certain Azure regions are built specifically for high compliance and security needs. For example, with [Azure Government (USA)](/azure/azure-government/) you're given an isolated instance of Azure. [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/) has data centers that meet privacy certifications. These specialized regions have higher cost.
 
 Regulatory requirements can dictate restrictions on data residency. These requirements can change your data replication options for resiliency and redundancy.
 
@@ -52,7 +52,7 @@ Cross-regional traffic and cross-zonal traffic incur more costs.
 
 **Is the application critical enough to have the footprint of the resources cross zones and,or cross regions?**
 
-Bandwidth refers to data moving in and out of Azure datacenters. Inbound data transfers, or data transfers going into Azure datacenters, are free for most services. For outbound data transfers, the billing zone determines the data transfer pricing. For more information, see [Bandwidth Pricing Details](https://azure.microsoft.com/pricing/details/bandwidth/?cdn=disable).
+Bandwidth refers to data moving in and out of Azure data centers. Inbound data transfers, or data transfers going into Azure data centers, are free for most services. For outbound data transfers, the billing zone determines the data transfer pricing. For more information, see [Bandwidth Pricing Details](https://azure.microsoft.com/pricing/details/bandwidth/?cdn=disable).
 
 Suppose you want to build a cost-effective solution by provisioning resources in locations that offer the lowest prices. The dependent resources and their users are located in different parts of the world. In this case, data transfers between locations add cost if there are meters tracking the volume of data moving across locations. The cost of transferring the data could offset any savings from choosing the cheapest location.
 - The extra cross-regional and cross-zone costs don't apply to global services, such as Azure Active Directory.
