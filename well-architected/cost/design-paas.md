@@ -17,9 +17,9 @@ products:
 
 # Managed services
 
-Look for areas in the architecture where it can be natural to incorporate platform-as-a-service (PaaS) options. These include caching, queues, and data storage. PaaS reduces time and cost of managing servers, storage, networking, and other application infrastructure.
+Look for areas in the architecture where it makes sense to incorporate platform-as-a-service (PaaS) options. These include caching, queues, and data storage. PaaS reduces time and cost of managing servers, storage, networking, and other application infrastructure.
 
-With PaaS, the infrastructure cost is included in the pricing model of the service. For example, you can allocate a lower SKU virtual machine as a jump box. There are more costs for storage and managing a separate server. You also need to configure a public IP on the virtual machine, which we don't recommend. A managed service, such as Azure Bastion, takes into consideration all those costs and offers better security.
+With PaaS, the infrastructure costs are included in the pricing model of the service. For example, you can allocate a lower SKU virtual machine as a jump box. There are more costs for storage and managing a separate server. You also need to configure a public IP on the virtual machine, which we don't recommend. A managed service, such as Azure Bastion, takes into consideration all those costs and offers better security.
 
 Azure provides a wide range of PaaS resources. Here are some examples of when you might consider PaaS options:
 
