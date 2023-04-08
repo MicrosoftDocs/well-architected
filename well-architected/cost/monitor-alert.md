@@ -20,14 +20,14 @@ ms.custom:
 
 Azure Cost Management has an alert feature. Alerts are generated when consumption reaches a threshold.
 
-Consider the metrics for each resource in the workload. For each metric, build alerts on baseline thresholds. This way, you can alert the admins when the workload is using the services at capacity. The admins can then tune the resources to target SKUs based on current load.
+Consider the metrics for each resource in the workload. For each metric, build alerts on baseline thresholds. This way, admins are notified when the workload is using the services at capacity. The admins can then tune the resources to target SKUs based on current load.
 
 You can also set alerts on allowed budgets at the resource group or management groups scopes. By setting alerts on metrics and budgets, you can balance both cloud services performance and budget requirements.
 
 Over time, you can optimize the workload to autoheal itself when it triggers alerts. For more information about using alerts, see [Use cost alerts to monitor usage and spending](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending).
 
 ## Respond to alerts
-When you receive an alert, check the current consumption data because alerts don't trigger in real time. There may be a delay between the alert and the current actual cost. Look for significant difference between cost values when the alert occurred and the current cost. Next, conduct a cost review to discuss the cost trend, possible causes, and any required action. For information about stakeholders in a cost review, see Cost reviews.
+When you receive an alert, check the current consumption data because alerts don't trigger in real time. There might be a delay between the alert and the current actual cost. Look for significant difference between cost values when the alert occurred and the current cost. Next, conduct a cost review to discuss the cost trend, possible causes, and any required action.
 
 Determine short and long-term actions that justify business value. Can a temporary increase in the alert threshold be a feasible fix? Do you need to increase the longer-term budget? Approval of any budget increase is mandatory.
 
