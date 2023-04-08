@@ -29,15 +29,15 @@ The cost of an Azure service can vary between locations based on demand and loca
 
 See the [Azure global infrastructure](https://azure.microsoft.com/global-infrastructure) for a complete list of Azure geographies, regions, and locations.
 
-To see availability of a product by region, see [Products available by region](https://azure.microsoft.com/global-infrastructure/services/).
+To see product availability by region, see [Products available by region](https://azure.microsoft.com/global-infrastructure/services/).
 
 ## Tradeoff
 
 - Locating resources in a cheaper region shouldn't negate the cost of network ingress and egress or by degraded application performance because of increased latency.
-- Hosting an application in a single region can cost less than an application hosted across regions because of replication costs or the need for extra nodes.
+- Hosting an application in a single region can cost less than an application that's hosted across regions because of replication costs or the need for extra nodes.
 
 ## Compliance and regulatory
-Azure also offers differentiated cloud regions for specific security and compliance requirements.
+Azure offers differentiated cloud regions for specific security and compliance requirements.
 
 **Does your solution need specific levels of security and compliance?**
  
