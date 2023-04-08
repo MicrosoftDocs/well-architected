@@ -1,0 +1,8 @@
+{
+  "BaseConfiguration": "docutune-default.json",
+  "RepoFolder": "well-architected-pr",
+  "DocSets": {
+    "well-architected": "/azure/architecture/well-architected"
+  },
+  "MetadataMultilineValues": true
+}
