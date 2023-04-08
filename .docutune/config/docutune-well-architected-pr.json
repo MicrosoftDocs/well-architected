@@ -1,0 +1,7 @@
+{
+  "BaseConfiguration": "docutune-default.json",
+  "DocSets": {
+    "well-architected": "/azure/architecture/well-architected"
+  },
+  "MetadataMultilineValues": true
+}
