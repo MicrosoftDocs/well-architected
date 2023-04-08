@@ -20,7 +20,7 @@ ms.custom:
 
 Azure Cost Management has an alert feature. Alerts are generated when consumption reaches a threshold.
 
-Consider the metrics for each resource in the workload. For each metric, build alerts on baseline thresholds. This way, you can alert the admins when the workload is using the services at capacity. The admins can then tune the resources to target SKUs based on current load.
+Consider the metrics for each resource in the workload. For each metric, build alerts on baseline thresholds. Admins can be notified when the workload is using the services at capacity. The admins can then tune the resources to target SKUs based on current load.
 
 You can also set alerts on allowed budgets at the resource group or management groups scopes. By setting alerts on metrics and budgets, you can balance both cloud services performance and budget requirements.
 
