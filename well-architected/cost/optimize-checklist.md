@@ -1,9 +1,9 @@
 ---
 title: Checklist - Optimize cost
-description: Learn how to work with the checklist considerations to help monitor and optimize workloads by using the right resources and sizes.
+description: Learn how to follow checklist considerations to monitor and optimize workloads by using the right resources and sizes.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 04/06/2023
+ms.date: 04/10/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -32,7 +32,7 @@ Continue to monitor and optimize the workload by using the right resources and s
   - Recommendations in [Azure Advisor](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview)
   - Recommendations using [Reservation REST APIs](/rest/api/consumption/reservationrecommendations/list)
 
-- **Use savings plans**. By using savings plans, you get the most flexible savings for dynamic workloads, while accommodating planned or unplanned changes. With savings plan, you commit to a fixed, hourly, dollar amount, collectively, on compute services, globally.
+- **Use savings plans**. By using savings plans, you get the most flexible savings for dynamic workloads, while accommodating planned or unplanned changes. With savings plans, you commit to a fixed, hourly, dollar amount, collectively, on compute services, globally.
   - [Savings plans](/azure/cost-management-billing/savings-plan)
 
 - **Use Azure reservations**. You get the greatest cost savings for stable, predictable workloads with no planned changes by using reserved instances or capacity. Consider that you're often committing to specific SKUs, throughput, or utilization targets, often in a particular Azure region.
@@ -54,7 +54,7 @@ Continue to monitor and optimize the workload by using the right resources and s
 
 - **Reevaluate design choices**. Analyze the cost reports and forecast the capacity needs. You might need to change some design choices.
 
-  - **Choose the right storage tier**. Consider using hot, cool, and archive tiers for storage account data. Storage accounts can provide automated tiering and lifecycle management. For more information, see [Review your storage options](/azure/cloud-adoption-framework/ready/considerations/storage-options)
+  - **Choose the right storage tier**. Consider using hot, cool, and archive tiers for storage account data. Storage accounts can provide automated tiering and lifecycle management. For more information, see [Review your storage options](/azure/cloud-adoption-framework/ready/considerations/storage-options).
 
   - **Choose the right data store**. Instead of using one data store service, use a mix of data store depending on the type of data you need to store for each workload. For more information, see [Choose the right data store](/azure/architecture//guide/technology-choices/data-store-overview).
 
