@@ -132,7 +132,7 @@ A mission-critical application must be designed to be resilient so that it addre
 
 For non-transient failures that you can't fully mitigate in application logic, the health model and operational wrappers need to take corrective action. Application code must incorporate proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis as required. You need to implement [distributed tracing](/dotnet/core/diagnostics/distributed-tracing-concepts) to provide the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
 
-Tools like [Application Insights](/azure/azure-monitor/app/distributed-tracing) can help you query, correlate, and visualize application traces.
+Tools like [Application Insights](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) can help you query, correlate, and visualize application traces.
 
 ### Design considerations
 
