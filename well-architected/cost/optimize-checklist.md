@@ -3,7 +3,7 @@ title: Checklist - Optimize cost
 description: Learn how to follow checklist considerations to monitor and optimize workloads by using the right resources and sizes.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 04/10/2023
+ms.date: 04/11/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -24,6 +24,8 @@ Continue to monitor and optimize the workload by using the right resources and s
 
   - [Resize virtual machines](./optimize-vm.md#resize-virtual-machines)
   - [Shutdown the underutilized instances](./optimize-vm.md#shut-down-underutilized-instances)
+
+**Auto start and stop VMs tool to non-production VMs**. The start and stop VMs v2 feature starts or stops Azure Virtual Machines instances across multiple subscriptions. It starts or stops virtual machines on user-defined schedules. For more informations, see [Start and stop VMs](/azure/azure-functions/start-stop-vms/overview).
 
 - **Continuously take action on the cost reviews**. Treat cost optimization as a process, rather than a point-in-time activity. Use tooling in Azure that provides recommendations on usage or cost optimization. Review the cost management recommendations and take action. Make sure that all stakeholders are in agreement about the implementation and timing of the change.
 
@@ -49,8 +51,10 @@ Continue to monitor and optimize the workload by using the right resources and s
   - [Enterprise Dev Test Subscription](https://azure.microsoft.com/offers/ms-azr-0148p/)
   - [Microsoft Cloud Solution Provider program](https://partner.microsoft.com/membership/cloud-solution-provider)
 
-- **Have a scale-in and scale-out policy**. In a cost-optimized architecture, costs scale linearly with demand. Increasing customer base shouldn't require more investment in infrastructure. Conversely, if demand drops, scale-down of unused resources. Autoscale Azure resources when possible.
+- **Have a scale-in and scale-out policy**. In a cost-optimized architecture, costs scale linearly with demand. Increasing customer base shouldn't require more investment in infrastructure. Conversely, if demand drops, scale-down unused resources. And autoscale Azure resources when possible.
   - [Autoscale instances](./optimize-autoscale.md)
+  - [Azure SQL Database elastic pools](/azure/azure-sql/database/elastic-pool-overview) are a simple, cost-effective solution for managing and scaling multiple databases that have varying and unpredictable usage demands
+  - [SQL Serverless](/azure/azure-sql/database/serverless-tier-overview) is a compute tier for single databases in Azure SQL Database that automatically scales compute based on workload demand and bills for the amount of compute that you use per second.
 
 - **Reevaluate design choices**. Analyze the cost reports and forecast the capacity needs. You might need to change some design choices.
 
