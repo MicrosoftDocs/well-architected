@@ -21,7 +21,7 @@ categories:
 
 Business goals and the return on investment (ROI) drive a cost-effective workload while you keep to a given budget. The principles of cost optimization are important considerations that help you achieve both business objectives and cost justification.
 
-To assess your workload using the tenets found in the Azure Well-Architected Framework, reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+To assess your workload using the tenets you find in the Azure Well-Architected Framework, reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
 The following design principles provide:
 
