@@ -33,6 +33,11 @@ Determine short and long-term actions that justify business value. Can a tempora
 
 If unnecessary or expensive resources trigger the alert, implement other Azure Policy controls. You can also add budget automation to trigger resource scaling or shutdowns.
 
+Once you've created your alerts, your can also proactively review your Azure Costs and the forecast for upcoming weeks and months. For more information about Azure Cost Analysis and how to create custom views for your application, see [Start using Cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis).
+
 ## Revise budgets
 
 After you identify and analyze your spending patterns, you can set budget limits for applications or business units. You want to [assign access](/azure/cost-management/assign-access-acm-data) to view or manage each budget to the appropriate groups. Setting several alert thresholds for each budget can help track your burn down rate.
+
+Azure Cost Management also has a tool that helps to identify cost anomalies and unexpected charges to your environment. To learn how to identify anomalies and unexpected changes in cost, see [Identify anomalies and unexpected changes in cost](/azure/cost-management-billing/understand/analyze-unexpected-charges)
+
