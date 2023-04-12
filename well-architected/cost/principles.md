@@ -3,7 +3,7 @@ title: Cost optimization design principles
 description: Learn about the cost optimization principles for your workload that can help you achieve business objectives and justify costs.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/11/2023
+ms.date: 04/12/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -21,21 +21,21 @@ categories:
 
 Business goals and the return on investment (ROI) drive a cost-effective workload while you keep to a given budget. The principles of cost optimization are important considerations that help you achieve both business objectives and cost justification.
 
-To assess your workload using the tenets you find in the Azure Well-Architected Framework, reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+To assess your workload using the tenets you find in the Azure Well-Architected Framework, see the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
 The following design principles provide:
 
 - Context for questions
 - Why a certain aspect is important
-- How an aspect is applicable to cost optimization
+- How an aspect applies to cost optimization
 
 Use these critical design principles as lenses to assess the cost optimization of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
 
 ## Choose the correct resources
 
-Choose the right resources that are aligned with business goals and can handle the performance of the workload.
+Choose resources that align with business goals and can handle your workload performance.
 
-When onboarding new workloads, explore the possibility of modernization and cloud native offerings where possible. It's typically more cost effective to use platform as a service (PaaS) or software as a service (SaaS), as opposed to infrastructure as a service (IaaS).
+When onboarding new workloads, explore the possibility of modernization and cloud native offerings where possible. It's typically more cost-effective to use platform as a service (PaaS) or software as a service (SaaS), as opposed to infrastructure as a service (IaaS).
 
 An inappropriate or misconfigured service can affect cost. For example, building a multi-region service when the service levels don't require high-availability or geo-redundancy increases cost without any reasonable business justification.
 
@@ -62,8 +62,8 @@ To match performance needs, dynamically allocate and deallocate resources.
 Identify idle or underutilized resources through Azure Advisor or other tools, and:
 
 - Reconfigure
-- Consolidate
-- (or) Shut down
+- Consolidate (or)
+- Shut down
 
 ## Optimize workloads, aim for scalable costs
 
