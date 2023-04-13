@@ -24,7 +24,7 @@ Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculato
 
 ## App Service plans
 
-The App Service plans include the set of compute resources needed for the web app to run. Except for Free tier, an App Service plan carries a charge on the compute resources it uses. For a description of App Service plans, see Azure [App Service plan overview](/azure/app-service/overview-hosting-plans).
+App Service plans include the set of compute resources needed for the web app to run. Except for the Free tier, an App Service plan carries a charge on the compute resources it uses. For a description of App Service plans, see [Azure App Service plan overview](/azure/app-service/overview-hosting-plans).
 
 You can potentially save money by choosing one or more App Service plans. To help find the solution that meets your business requirements, see [Should I put an app in a new plan or an existing plan?](/azure/app-service/overview-hosting-plans#should-i-put-an-app-in-a-new-plan-or-an-existing-plan)
 
@@ -44,13 +44,13 @@ For more information, see SSL Connections in [App Service pricing](https://azure
 
 If you want to publish APIs hosted on Azure, on-premises, and in other clouds more securely, reliably, and at scale, use Azure API Management. The pricing tier you choose depends on the features needed based on your business requirements. For example, depending on your requirements for scalability, the number of units required to scale out range from 1 to 10. As the number of units increases, the cost of the pricing tier increases.
 
-Self-hosted gateways are available in the Developer and Premium pricing tiers. There's an extra cost for this service using the Premium tier. There's no cost for self-hosted gateways if you use the Developer tier.
+Self-hosted gateways are available in the Developer and Premium pricing tiers. There's an extra cost for this service if you use the Premium tier. There's no cost for self-hosted gateways if you use the Developer tier.
 
 For pricing details, see [API Management pricing](https://azure.microsoft.com/pricing/details/api-management/).
 
 ## Content Delivery Network cost
 
-If you want to offer users optimal online content delivery, use Azure Content Delivery Network (CDN) in your workload. The data size being used has the most significant effect on cost, choose based on your business requirements. Purchasing data in increments of TB is significantly higher than purchasing data in increments of GB.
+If you want to offer users optimal online content delivery, use Azure Content Delivery Network (CDN) in your workload. The data size that you use has the most significant effect on cost. Choose based on your business requirements. Purchasing data in increments of TB is significantly higher than purchasing data in increments of GB.
 
 The provider you choose also can affect cost. Choose Microsoft as the provider to get the lowest cost.
 
