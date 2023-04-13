@@ -22,9 +22,9 @@ Most cloud workloads adopt the *polyglot* persistence approach. Instead of using
 
 Each Azure data store has a different billing model. To establish a total cost estimate:
 
-- [Identify the business transactions and their requirements](#guidelines-identify-the-business-transactions-and-their-requirements)
-- [Break each transaction into operations](#guidelines-break-each-transaction-into-operations)
-- [Identify a data store appropriate for the type of data](#guidelines-identify-a-data-store-appropriate-for-the-type-of-data)
+- [Identify the business transactions and their requirements](#identify-the-business-transactions-and-their-requirements)
+- [Break each transaction into operations](#break-each-transaction-into-operations)
+- [Identify a data store appropriate for the type of data](#identify-a-data-store-appropriate-for-the-type-of-data)
 
 Perform these steps for each workload separately.
 
