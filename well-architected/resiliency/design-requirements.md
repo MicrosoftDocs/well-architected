@@ -1,5 +1,5 @@
 ---
-title: Targets and non-functional requirements
+title: Target functional and non-functional requirements
 description: Meet reliability targets for availability, recovery, and non-functional requirements, which involve application and data platforms, networking, and connectivity.
 author: martinekuan
 ms.author: martinek
@@ -9,9 +9,9 @@ ms.service: architecture-center
 ms.subservice: well-architected
 ---
 
-# Targets and non-functional requirements
+# Target functional and non-functional requirements
 
-Targets, such as *availability targets* and *recovery targets*, allow you to measure the uptime and downtime of your workloads. Having clearly defined targets is crucial in order to have a goal to work and measure against. In addition to these targets, there are many other non-functional requirements you should consider to improve reliability requirements and meet business expectations.
+Target functional and non-functional requirements such as *availability targets* and *recovery targets* allow you to measure the uptime and downtime of your workloads. Having clearly defined targets is crucial in order to have a goal to work and measure against. In addition to these targets, there are many other requirements you should consider to improve reliability requirements and meet business expectations.
 
 Building resiliency (recovering from failures) and availability (running in a healthy state without significant downtime) into your apps begins with gathering requirements. For example, how much downtime is acceptable? How much does potential downtime cost your business? What are your customer's availability requirements? How much do you invest in making your application highly available? What is the risk versus the cost?
 
