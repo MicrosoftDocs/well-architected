@@ -37,7 +37,7 @@ Learn about data stores in [Understand data store models](/azure/architecture/gu
 The following list of questions address the requirements that can have the greatest effect your cost estimate. For example, your monthly bill might be within your budget now, but if you scale up or add storage space later, your cost might increase well over your budget.
 
 - Does your data need to be migrated to on-premises, external data centers, or other cloud-hosting environments?
-- What type of data are you intending to store?
+- What type of data do you intend to store?
 - How large are the entities you need to store?
 - What is the overall amount of storage capacity you need?
 - What kind of schemas apply to your data, for example, fixed schema, schema-on-write, or schema-on-read?
@@ -48,7 +48,7 @@ The following list of questions address the requirements that can have the great
 - How many instances need to run to support your uptime and throughput requirements? Consider operations costs in this calculation.
 - Can you partition your data to store it more cost effectively? For example, can you move large objects out of an expensive relational database into an object store?
 
-There are other requirements that might not have as great of an effect on your cost. For example, the US East region is only slightly lower than Canada Central. See [Criteria for choosing a data store](/azure/architecture/guide/technology-choices/data-store-considerations) for other business requirements.
+There are other requirements that might not have as great of an effect on your cost. For example, the US East region is only slightly lower in cost than Canada Central. See [Criteria for choosing a data store](/azure/architecture/guide/technology-choices/data-store-considerations) for other business requirements.
 
 Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to determine different cost scenarios.
 
@@ -86,7 +86,7 @@ When you need strong consistency guarantees, we recommend relational database ma
 
 #### How can I save money if my data is on-premises and already on SQL server?
 
-If the on-premises data is already on a SQL server, it might be a natural choice. The on-premises license with Software Assurance can be used to bring down the cost if the workload is eligible for [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). This option applies for Azure SQL Database (PaaS) and SQL Server on Azure Virtual Machines (IaaS).
+The on-premises license with Software Assurance can be used to bring down the cost if the workload is eligible for [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). This option applies for Azure SQL Database (PaaS) and SQL Server on Azure Virtual Machines (IaaS).
 
 For open-source databases such as MySQL, MariaDB, or PostGreSQL, Azure provides managed services that are easy to provision.
 
@@ -101,11 +101,11 @@ Azure storage has several options to make sure data is copied and available when
 
 For more information, see [Automated backups in Azure SQL Database](/azure/sql-database/sql-database-automated-backups?tabs=single-database).
 
-[Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) offers five consistency levels: *strong*, *bounded staleness*, *session*, *consistent prefix*, and *eventual* consistency. Each level provides availability and performance tradeoffs. Comprehensive SLAs back each level. The consistency level itself doesn't affect cost.
+[Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) offers five consistency levels: *strong*, *bounded staleness*, *session*, *consistent prefix*, and *eventual*. Each level provides availability and performance tradeoffs. Comprehensive SLAs back each level. The consistency level itself doesn't affect cost.
 
 #### How can I minimize compute cost?
 
-Higher throughput and IOPS require higher compute, memory, I/O and storage limits. These limits are expressed in a vCore model. With higher vCore number, you buy more resources, so the cost is higher. Azure SQL Database has more vCores and allows you to scale in smaller increments. Azure Database for MySQL, PostgreSQL, and MariaDB have fewer vCores and scaling up to a higher vCore can cost more. MySQL provides in-memory tables in the *Memory Optimized* tier, which can also increase the cost.
+Higher throughput and IOPS require higher compute, memory, I/O, and storage limits. These limits are expressed in a vCore model. With higher vCore number, you buy more resources, so the cost is higher. Azure SQL Database has more vCores and allows you to scale in smaller increments. Azure Database for MySQL, PostgreSQL, and MariaDB have fewer vCores and scaling up to a higher vCore can cost more. MySQL provides in-memory tables in the *Memory Optimized* tier, which can also increase the cost.
 
 All options offer a consumption and provisioned pricing models. With preprovisioned instances, you save more if you can commit to one or three years.
 
@@ -131,7 +131,7 @@ For [Azure Cache for Redis](https://azure.microsoft.com/pricing/details/cache/),
 
 Cost considerations for graphic database stores include storage required by data and indexes used across all the regions. For example, graphs need to scale beyond the capacity of a single server, and make it easy to look up the index when processing a query.
 
-The Azure service that supports this functionality is Azure Cosmos DB for Apache Gremlin. Cost is limited to the [Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) usage. You pay for the operations you perform on the database and for the storage consumed by your data. Charges are determined by the number of provisioned containers, the number of hours the containers were online, and the provisioned throughput for each container.
+The Azure service that supports this functionality is Azure Cosmos DB for Apache Gremlin. Cost is limited to the [Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) usage. You pay for the operations that you perform on the database and for the storage consumed by your data. Charges are determined by the number of provisioned containers, the number of hours the containers were online, and the provisioned throughput for each container.
 
 If the on-premises data is already on an SQL server on Azure Virtual Machines (IaaS), the license with Software Assurance can be used to bring down the cost if the workload is eligible for [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
