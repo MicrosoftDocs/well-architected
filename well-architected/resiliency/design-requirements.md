@@ -1,5 +1,5 @@
 ---
-title: Target and non-functional requirements
+title: Targets and non-functional requirements
 description: Meet reliability targets for availability, recovery, and non-functional requirements, which involve application and data platforms, networking, and connectivity.
 author: martinekuan
 ms.author: martinek
@@ -9,9 +9,9 @@ ms.service: architecture-center
 ms.subservice: well-architected
 ---
 
-# Target and non-functional requirements
+# Targets and non-functional requirements
 
-Target and non-functional requirements such as *availability targets* and *recovery targets* allow you to measure the uptime and downtime of your workloads. Having clearly defined targets is crucial in order to have a goal to work and measure against. In addition to these targets, there are many other requirements you should consider to improve reliability requirements and meet business expectations.
+Targets, such as *availability targets* and *recovery targets*, allow you to measure the uptime and downtime of your workloads. Having clearly defined targets is crucial in order to have a goal to work and measure against. In addition to these targets, there are many other non-functional requirements you should consider to improve reliability requirements and meet business expectations.
 
 Building resiliency (recovering from failures) and availability (running in a healthy state without significant downtime) into your apps begins with gathering requirements. For example, how much downtime is acceptable? How much does potential downtime cost your business? What are your customer's availability requirements? How much do you invest in making your application highly available? What is the risk versus the cost?
 
@@ -63,7 +63,7 @@ Are there any penalties, such as financial charges, associated with failing to m
 
 Recovery targets identify how long the workload can be unavailable and how much data is acceptable to lose during a disaster. Define target reports for the application and key scenarios. Target reports needed are Recovery Time Objective (RTO) &mdash; the maximum acceptable time an application is unavailable after an incident, and Recovery Point Objective (RPO) &mdash; the maximum duration of data loss that is acceptable during a disaster.
 
-Recovery targets are nonfunctional requirements of a system and should be dictated by business requirements. Recovery targets should be defined in accordance to the required RTO and RPO targets for the workloads.
+Recovery targets are non-functional requirements of a system and should be dictated by business requirements. Recovery targets should be defined in accordance to the required RTO and RPO targets for the workloads.
 
 ## Meet application platform requirements
 
