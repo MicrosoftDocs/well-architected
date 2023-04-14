@@ -1,6 +1,6 @@
 ---
 title: Web application cost estimates
-description: Learn about the costs determine the total cost of a web app in the Azure Web Apps feature of Azure Web Service and how to use the Azure pricing calculator. 
+description: Learn about the costs that determine the total cost of a web app in the Azure Web Apps feature of Azure Web Service and how to use the Azure pricing calculator. 
 author: martinekuan
 ms.author: martinek
 ms.date: 04/13/2023
@@ -24,7 +24,7 @@ Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculato
 
 ## App Service plans
 
-App Service plans include the set of compute resources needed for the web app to run. Except for the Free tier, an App Service plan carries a charge on the compute resources it uses. For a description of App Service plans, see [Azure App Service plan overview](/azure/app-service/overview-hosting-plans).
+App Service plans include the set of compute resources needed for the web app to run. Except for with the Free tier, an App Service plan carries a charge on the compute resources it uses. For a description of App Service plans, see [Azure App Service plan overview](/azure/app-service/overview-hosting-plans).
 
 You can potentially save money by choosing one or more App Service plans. To help find the solution that meets your business requirements, see [Should I put an app in a new plan or an existing plan?](/azure/app-service/overview-hosting-plans#should-i-put-an-app-in-a-new-plan-or-an-existing-plan)
 
@@ -38,7 +38,7 @@ App Service plans are billed on a per second basis. If your solution includes se
 
 Azure App Service supports two types of TLS/SSL connections: Server Name Indication (SNI) TLS/SSL Connections and IP Address TLS/SSL Connections. SNI-based TLS/SSL works on modern browsers while IP-based TLS/SSL works on all browsers. If your business requirements allow, use SNI-based TLS/SSL instead of IP-based TLS/SSL. There's no charge for SNI-based TLS/SSL. IP-based TLS/SSL incurs a cost per connection.
 
-For more information, see SSL Connections in [App Service pricing](https://azure.microsoft.com/pricing/details/app-service/windows/) for details.
+For more information, see SSL Connections in [App Service pricing](https://azure.microsoft.com/pricing/details/app-service/windows/).
 
 ## API Management cost
 
