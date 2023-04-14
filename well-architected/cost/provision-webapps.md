@@ -34,9 +34,9 @@ You don't get charged for using the App Service features that are available to y
 
 ## App Service cost
 
-App Service plans are billed on a per second basis. If your solution includes several App Service apps, consider deploying them to separate App Service plans. This approach enables you to scale them independently because they run on separate instances. This approach saves unnecessary cost.
+App Service plans are billed on a per second basis. If your solution includes several App Service apps, consider deploying them to separate App Service plans. This approach enables you to scale apps independently because they run on separate instances. This approach saves unnecessary cost.
 
-Azure App Service supports two types of TLS/SSL connections: Server Name Indication (SNI) TLS/SSL Connections and IP Address TLS/SSL Connections. SNI-based TLS/SSL works on modern browsers while IP-based TLS/SSL works on all browsers. If your business requirements allow, use SNI-based TLS/SSL instead of IP-based TLS/SSL. There's no charge for SNI-based. IP-based TLS/SSL incurs a cost per connection.
+Azure App Service supports two types of TLS/SSL connections: Server Name Indication (SNI) TLS/SSL Connections and IP Address TLS/SSL Connections. SNI-based TLS/SSL works on modern browsers while IP-based TLS/SSL works on all browsers. If your business requirements allow, use SNI-based TLS/SSL instead of IP-based TLS/SSL. There's no charge for SNI-based TLS/SSL. IP-based TLS/SSL incurs a cost per connection.
 
 For more information, see SSL Connections in [App Service pricing](https://azure.microsoft.com/pricing/details/app-service/windows/) for details.
 
