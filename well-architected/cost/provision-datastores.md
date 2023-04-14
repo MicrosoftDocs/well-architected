@@ -18,7 +18,7 @@ ms.custom:
 
 # Data store cost estimates
 
-Most cloud workloads adopt the *polyglot* persistence approach. Instead of using one data store service, they use a mix of technologies. You can achieve optimal cost benefit from using this approach.
+Most cloud workloads adopt the *polyglot* persistence approach. Cloud workloads use a mix of technologies instead of one data store service. You can achieve optimal cost benefit from using this approach.
 
 Each Azure data store has a different billing model. To establish a total cost estimate:
 
@@ -34,14 +34,14 @@ Learn about data stores in [Understand data store models](/azure/architecture/gu
 
 ## Identify the business transactions and their requirements
 
-The following list of questions address the requirements that can have the greatest effect your cost estimate. For example, your monthly bill might be within your budget now, but if you scale up or add storage space later, your cost might increase well over your budget.
+The following list of questions address the requirements that can have the greatest effect on your cost estimate. For example, your monthly bill might be within your budget now, but if you scale up or add storage space later, your cost might increase well over your budget.
 
 - Does your data need to be migrated to on-premises, external data centers, or other cloud-hosting environments?
 - What type of data do you intend to store?
 - How large are the entities you need to store?
 - What is the overall amount of storage capacity you need?
 - What kind of schemas apply to your data, for example, fixed schema, schema-on-write, or schema-on-read?
-- What are your data performance requirements, for example, acceptable response times for querying and aggregation of data once ingested?
+- What are your data performance requirements? For example, what are acceptable response times for querying and aggregation of data once ingested?
 - What level of fault-tolerance do you need to provide for data consumers?
 - What kind of data replication capabilities do you require?
 - Do the limits of a particular data store support your requirements for scale, number of connections, and throughput?
@@ -78,7 +78,7 @@ For more information, see [Understand data store models](/azure/architecture/gui
 ## Identify a data store appropriate for the type of data
 
 > [!NOTE]
-> An inappropriate data store or one that is mis-configured can have a huge cost impact on your design.
+> An inappropriate data store or one that's mis-configured can have a huge cost impact on your design.
 
 ### Relational database management systems cost
 
@@ -113,7 +113,7 @@ All options offer a consumption and provisioned pricing models. With preprovisio
 
 With Azure SQL Database, the initial 32 GB of storage is included in the price. For the other listed options, you need to buy storage separately and might increase the cost depending on your storage needs.
 
-For most databases, there's no charge for the price of backup storage that is equal in size to primary storage. If you need more backup storage, you incur more cost.
+For most databases, there's no charge for the price of backup storage that's equal in size to primary storage. If you need more backup storage, you incur more cost.
 
 ### Key/value and document databases cost
 
@@ -150,7 +150,7 @@ Azure has many services that support data analytics stores:
 
 As an example of use, historical data is typically stored in data stores such as blob storage or Azure Data Lake Storage Gen2. Azure Synapse, Databricks, or HDInsight access these stores as external tables.
 
-When using Azure Synapse, you only pay for the capabilities that you opt in to use. During public preview, there's no cost for provisioning an Azure Synapse workspace. Enabling a managed virtual network and Customer Managed Keys might incur a workspace fee after public preview. Pricing of workspaces with other capabilities will be announced at a future date.
+When you use Azure Synapse, you only pay for the capabilities that you opt in to use. During public preview, there's no cost for provisioning an Azure Synapse workspace. Enabling a managed virtual network and Customer Managed Keys might incur a workspace fee after public preview. Pricing of workspaces with other capabilities will be announced at a future date.
 
 ### Column family database cost
 
