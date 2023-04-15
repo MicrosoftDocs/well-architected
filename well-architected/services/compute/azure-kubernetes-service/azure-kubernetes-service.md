@@ -182,7 +182,7 @@ Explore the following table of recommendations to optimize your AKS configuratio
 |**Cluster and workload architectures:** Adopt a cloud financial discipline and cultural practice to drive ownership of cloud usage. | The foundation of enabling cost optimization is the spread of a cost saving cluster. A [financial operations approach (FinOps)](https://www.finops.org/introduction/what-is-finops/) is often used to help organizations reduce cloud costs. It is a practice involving collaboration between finance, operations, and engineering teams to drive alignment on cost saving goals and bring transparency to cloud costs.|
 |**Cluster architecture:** Sign up for [Azure Reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md). | If you properly planned for capacity, your workload is predictable and exists for an extended period of time, sign up for [Azure Reserved Instances]() to further reduce your resource costs.|
 
-For more general suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
+For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
 
 ### Policy definitions
 
