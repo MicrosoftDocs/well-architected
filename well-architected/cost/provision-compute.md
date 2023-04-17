@@ -103,6 +103,8 @@ Use the Pricing Calculator to create your total cost estimate. After you run you
 
 ![Azure Pricing Calculator - Collapsed view](../_images/pricing-calc-collapsed.png)
 
+:::image type="content" source="../_images/pricing-calc-collapsed.png" alt-text="Screenshot shows the Azure pricing calculator in collasped view with illustration values only." lightbox="../_images/pricing-calc-collapsed.png":::
+
 > [!TIP]
 > You can start building your cost estimate at any time and re-visit it later. The changes are saved until you modify or delete your estimate.
 
