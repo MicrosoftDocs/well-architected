@@ -107,7 +107,7 @@ For more information, see [Automated backups in Azure SQL Database](/azure/sql-d
 
 Higher throughput and IOPS require higher compute, memory, I/O, and storage limits. These limits are expressed in a vCore model. With higher vCore number, you buy more resources, so the cost is higher. Azure SQL Database has more vCores and allows you to scale in smaller increments. Azure Database for MySQL, PostgreSQL, and MariaDB have fewer vCores and scaling up to a higher vCore can cost more. MySQL provides in-memory tables in the *Memory Optimized* tier, which can also increase the cost.
 
-All options offer a consumption and provisioned pricing models. With preprovisioned instances, you save more if you can commit to one or three years.
+All options offer a consumption and provisioned pricing models. With preprovisioned instances, you save more if you can commit to one or three years. To learn more, see [Azure Reserved Capacity for Databases](https://azure.microsoft.com/en-us/pricing/reserved-capacity/).
 
 #### How is primary and backup storage cost calculated?
 
