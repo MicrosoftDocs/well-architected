@@ -347,6 +347,26 @@ items:
             href: scalability/tradeoffs.md
       - name: Workloads
         items:
+          - name: Azure VMWare 
+            items:
+              - name: Quick links
+                href: azure-vmware/index.yml
+              - name: Get started
+                href: azure-vmware/avs-overview.md
+              - name: Design principles
+                href: azure-vmware/avs-design-principles.md
+              - name: Azure landing zone integration
+                href: azure-vmware/avs-landing-zone-integration.md                      
+              - name: Design areas
+                items:
+                - name: VMWare resources
+                  href: azure-vmware/avs-vmware-resources.md
+                - name: Networking
+                  href: azure-vmware/avs-networking.md
+                - name: Security
+                  href: azure-vmware/avs-security.md
+              - name: Assessment
+                href: azure-vmware/avs-assessment.md                                                                                
           - name: Mission-critical
             items:
               - name: Quick links

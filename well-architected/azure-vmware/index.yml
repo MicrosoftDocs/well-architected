@@ -1,0 +1,74 @@
+### YamlMime:Landing
+
+title: Azure VMWare (AVS) workload documentation
+summary: Relocate legacy application virtual machines to the Azure VMware Solution as a staging area for the first phase of migration and modernization strategy.
+metadata: 
+  title: Azure VMWare (AVS) workload
+  description: Apply the design principles to the technical areas to build a strong foundation for your workload.
+  services: na
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  ms.date: 01/26/2023
+  ms.topic: landing-page
+  ms.service: architecture-center
+  ms.subservice: well-architected
+  ms.collection: na
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is an Azure VMware workload?
+            url: avs-overview.md
+      - linkListType: concept
+        links:
+          - text: Design principles
+            url: avs-design-principles.md
+          - text: Integration with Azure landing zones
+            url: avs-landing-zone-integration.md                                 
+  # Card
+  - title: Design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: VMware integration
+            url: mission-critical-application-design.md
+          - text: Networking
+            url: avs-networking.md
+          - text: Security
+            url: avs-security.md  
+ # Card
+  - title: Reference examples
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Baseline AVS reference architecture
+            url: /azure/cloud-adoption-framework/scenarios/azure-vmware/example-architectures   
+          - text: AVS landing zone accelerator
+            url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone
+
+ # Card
+  - title: Reference implementations
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: AVS solutions
+            url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone#automated-azure-vmware-solution-implementation-options
+
+ # Card
+  - title: Learn
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Introduction to Azure VMware Solution
+            url: /training/modules/intro-azure-vmware-solution/
+          - text: Migrate VMware resources on-premises to Azure VMware Solution
+            url: /training/modules/migrate-vmware-workloads-on-premises-azure-vmware-solution/
+          - text: Run VMware resources on Azure VMware Solution
+            url: /training/paths/run-vmware-workloads-azure-vmware-solution/
+          - text: Run VMware resources on Azure VMware Solution
+            url: /training/paths/run-vmware-workloads-azure-vmware-solution/            
