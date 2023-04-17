@@ -3,7 +3,7 @@ title: Initial cost estimate
 description: Learn best practices and strategies for modeling workloads and estimating initial costs for cloud migrations.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 04/12/2023
+ms.date: 04/17/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -36,30 +36,30 @@ It's difficult to know costs before migrating to the cloud.
 Using on-premises calculation might not accurately reflect the cost of cloud resources. Here are some challenges:
 
 - On-premises TCO might not accurately account for hidden expenses. These expenses include under-utilization of purchased hardware or network maintenance costs like labor and equipment failure.
-- Cloud TCO might not accurately account for a drop in the organization's operational labor hours. Cloud provider's infrastructure, platform management services, and other operational efficiencies are included in the cloud service pricing. Especially true at a smaller scale, the cloud provider's services don't result in reduction of IT labor head count.
+- Cloud TCO might not accurately account for a drop in the organization's operational labor hours. Cloud provider's infrastructure, platform management services, and other operational efficiencies are included in the cloud service pricing. Especially at a smaller scale, the cloud provider's services don't result in reduction of IT head count.
 - ROI might not accurately account for new organizational benefits because of cloud capabilities. It's hard to quantify improved collaboration, reduced time to service customers, and fast scaling with minimal or no downtime.
 - ROI might not accurately account for the business process re-engineering required to fully adopt cloud benefits. In some cases, this re-engineering might not occur at all, leaving an organization in a state where they use new technology inefficiently.
 
 Azure provides the following tools to determine cost.
 
-- [Microsoft Azure Total Cost of Ownership (TCO) Calculator](https://azure.microsoft.com/pricing/tco/calculator/) to reflect all costs.
-    > For migration projects, the TCO Calculator might help, as it pre-populates some common costs but it lets you modify the cost assumptions.
-- [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator) to assess cost of the services you plan to use in your solution.
-- [Azure Migrate](/azure/migrate/migrate-services-overview) to evaluate your organization's current workloads in on-premises datacenters. It suggests an Azure replacement solution, such virtual machine sizes based on your workload. It also provides a cost estimate.
+- [Microsoft Azure Total Cost of Ownership Calculator](https://azure.microsoft.com/pricing/tco/calculator/) to reflect all costs.
+    > For migration projects, the TCO Calculator might help, because it populates some common costs but it lets you modify the cost assumptions.
+- [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator) to assess costs of the services you plan to use in your solution.
+- [Azure Migrate](/azure/migrate/migrate-services-overview) to evaluate your organization's current workloads in on-premises datacenters. Azure Migrate suggests an Azure replacement solution with virtual machine sizes based on your workload. It also provides a cost estimate.
 
 ## Example estimate for a microservices workload
 
-Let's consider this [scenario](/azure/architecture/microservices/design/index#scenario) as an example. We use the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the initial cost before the workload deploys. The cost calculates per month or for 730 hours.
+Consider this [scenario](/azure/architecture/microservices/design/index#scenario) as an example. Use the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the initial cost before the workload deploys. The cost calculates per month or for 730 hours.
 
-In this example, we've chosen the microservices pattern. As the container orchestrator, one of the options could be [Azure Kubernetes Service](/azure/aks/) (AKS) that manages a cluster of pods. We choose NGINX ingress controller because it's well-known controller for such workloads.
+In this example, we've chosen the microservices pattern. As the container orchestrator, one of the options could be [Azure Kubernetes Service](/azure/aks/) (AKS) that manages a cluster of pods. Choose NGINX ingress controller because it's a well-known controller for such workloads.
 
-> The example uses current prices and is subject to change. The calculation shown here is for information purposes only.
+> The example uses current prices and is subject to change. The calculation shown here is for illustration purposes only.
 
 ### Compute
 
 For AKS, there's no charge for cluster management.
 
-For AKS agent nodes, there are many instance sizes and SKUs options. Our example workload is expected to follow a long running pattern and we can commit to three years. So, an instance that is eligible for [reserved instances](/azure/cost-management-billing/manage/understand-vm-reservation-charges#services-that-get-vm-reservation-discounts) would be a good choice. We can lower the cost by choosing the **3-year reserved plan**.
+For AKS agent nodes, there are many instance sizes and SKUs options. The example workload is expected to follow a long running pattern and you can commit to three years. An instance that's eligible for [reserved instances](/azure/cost-management-billing/manage/understand-vm-reservation-charges#services-that-get-vm-reservation-discounts) would be a good choice. Lower the cost by choosing the **3-year reserved plan**.
 
 The workload needs two virtual machines. One is for the backend services and the other is for the utility services.
 
@@ -69,41 +69,41 @@ The B12MS instance with two virtual machines is sufficient for this initial esti
 
 ### Application gateway
 
-For this scenario, we consider the **Standard_v2 Tier** of Azure Application Gateway because of the autoscaling capabilities and performance benefits. We also choose consumption-based pricing, which calculates by capacity units (CU). Each capacity unit calculates based on compute, persistent connections, or throughput. For Standard_v2 SKU, each compute unit can handle approximately 50 connections per second with RSA 2048-bit key TLS certificate. For this workload, we estimate 10 capacity units.
+For this scenario, consider the **Standard_v2 Tier** of Azure Application Gateway because of the autoscaling capabilities and performance benefits. Also, choose consumption-based pricing, which calculates by capacity units (CU). Each capacity unit calculates based on compute, persistent connections, or throughput. For Standard_v2 SKU, each compute unit can handle approximately 50 connections per second with RSA 2048-bit key TLS certificate. For this workload, estimate 10 capacity units.
 
 **Estimated Total: $248.64 per month.**
 
 ### Load balancer
 
-NGINX ingress controller deploys a load balancer that routes internet traffic to the ingress. Approximately 15 load balancer rules are needed. NAT rules are free. The main cost driver is the amount of data processed inbound and outbound independent of rules. We estimate traffic of 1 TB (inbound and outbound).
+NGINX ingress controller deploys a load balancer that routes internet traffic to the ingress. Approximately 15 load balancer rules are needed. NAT rules are free. The main cost driver is the amount of data processed inbound and outbound independent of rules. The estimated traffic is 1 TB (inbound and outbound).
 
 **Estimated Total: $96.37 per month.**
 
 ### Bandwidth
 
-We estimate 2-TB outbound traffic. The first 5 GB/month are free in Zone 1 (Zone 1 includes North America, Europe, and Australia). Between 5 GB - 10 TB /month is charged $0.087 per GB.
+The estimated outbound traffic is 2 TB. The first 5 GB/month are free in Zone 1, which includes North America, Europe, and Australia. Between 5 GB and 10 TB /month is charged $0.087 per GB.
 
 **Estimated Total: $177.74 per month**
 
 ### External data source
 
-Because the schema-on read nature of the data handled by the workload, we choose Azure Cosmos DB as the external data store. By using the [Azure Cosmos DB capacity calculator](https://cosmos.azure.com/capacitycalculator/), we can calculate the throughput to reserve.
+Because the schema-on read nature of the data handled by the workload, choose Azure Cosmos DB as the external data store. By using the [Azure Cosmos DB capacity calculator](https://cosmos.azure.com/capacitycalculator/), you can calculate the throughput to reserve.
 
 ![Azure Cosmos DB capacity calculator](../_images/cosmosdb-capacity.png)
 
 #### Cost variables
 
-- For lower latency, in this scenario, we enable geo-replication by using the **Multi-regions writes** feature. By default, Azure Cosmos DB uses one region for writes and the rest for reads.
+- For lower latency, in this scenario, enable geo-replication by using the **Multi-regions writes** feature. By default, Azure Cosmos DB uses one region for writes and the rest for reads.
 
-- Default choices in consistency model of **Session** and indexing policy to **Automatic**.  Automatic indexing makes Azure Cosmos DB indexes all properties in all items for flexible and efficient queries. Custom indexing policy lets you include and exclude properties from the index for lower write request units (RUs) and storage size. So uploading a custom indexing policy can help you reduce costs.
+- Default choices in consistency model of **Session** and indexing policy to **Automatic**. Automatic indexing makes Azure Cosmos DB indexes all properties in all items for flexible and efficient queries. Custom indexing policy lets you include and exclude properties from the index for lower write request units (RUs) and storage size. Uploading a custom indexing policy can help you reduce costs.
 
-- Total data store isn't a significant cost driver, here it's set to 500 GB.
+- Total data store isn't a significant cost driver. Here it's set to 500 GB.
 
 - The throughput is variable indicating peaks. The percentage of time at peak is set to 10%.
 
 - The item size is an average of 90k. Using the capacity calculator, you can upload sample json files. The sample json files include your document's data structure, the average document's size, and the number of reads and writes per second. These variables have the largest effect on cost because you use them to calculate the throughput. The throughput values appear in the image.
 
-Now, we use those values in the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/).
+Now, use those values in the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/).
 
 ![Azure Pricing calculator for Azure Cosmos DB](../_images/cosmosdb-price.png)
 
@@ -117,7 +117,7 @@ You save $700.00 by choosing the three-year reserved capacity over the pay-as-yo
 
 ### CI/CD pipelines
 
-With Azure DevOps, **Basic plan** is included for Visual Studio Enterprise, Professional, Test Professional, and MSDN Platforms subscribers. And there's no charge for adding or editing work items and bugs and viewing dashboards, backlogs, and Kanban boards for stakeholders.
+With Azure DevOps, _Basic plan_ is included for Visual Studio Enterprise, Professional, Test Professional, and MSDN Platforms subscribers. And there's no charge for adding or editing work items and bugs and viewing dashboards, backlogs, and Kanban boards for stakeholders.
 
 The Basic plan license for five users is free.
 
@@ -129,6 +129,6 @@ For Microsoft Hosted Pipelines, the **Free** tier includes one parallel CI/CD jo
 
 Azure Artifacts is a service you can use to create package feeds to publish and consume Maven, npm, NuGet, Python, and universal packages. Azure Artifacts bills on a consumption basis, and is free up to 2 GB of storage. For this scenario, we estimate 56 GB in artifacts ($56.00)
 
-Azure DevOps offers a cloud-based solution for load testing your apps. Load tests are measured and billed in virtual user minutes (VUMs). For this scenario, we estimate a 200,000 VUMs ($72.00).
+Azure DevOps offers a cloud-based solution for load testing your apps. Load tests are measured and billed in virtual user minutes (VUMs). For this scenario, estimate a 200,000 VUMs ($72.00).
 
 **Estimated Total: $168.00 per month**
