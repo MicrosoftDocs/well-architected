@@ -132,9 +132,9 @@ All inbound traffic is free. All outbound traffic is charged as per the bandwidt
 For more information, see:
 
 - [Hybrid connectivity](./provision-networking.md#hybrid-connectivity)
-- [VPN Gateway pricing](https://azure.microsoft.com/pricing/details/vpn-gateway/).
+- [VPN Gateway pricing](https://azure.microsoft.com/pricing/details/vpn-gateway/)
 - [Traffic across billing zones and regions](./design-regions.md#traffic-across-billing-zones-and-regions)
-- [Bandwidth pricing](https://azure.microsoft.com/pricing/details/bandwidth/).
+- [Bandwidth pricing](https://azure.microsoft.com/pricing/details/bandwidth/)
 
 ### VPN Gateway reference architecture
 
@@ -159,9 +159,11 @@ Traffic Manager uses DNS to direct clients to specific service.
 
 DNS queries that reach Traffic Manager are charged in million query units.
 
-Not all DNS queries reach Traffic Manager. Recursive DNS servers run by enterprises and ISPs first attempt to resolve the query by using cached DNS responses. Those servers query Traffic Manager at a regular interval to get updated DNS entries. That interval value or time to live (TTL) is configurable in seconds. TTL can affect cost. A longer TTL value increases the amount of caching and reduces DNS query charges. Conversely, shorter a TTL value results in more queries.
+Not all DNS queries reach Traffic Manager. Recursive DNS servers run by enterprises and ISPs first attempt to resolve the query by using cached DNS responses. Those servers query Traffic Manager at a regular interval to get updated DNS entries. That interval value or time to live (TTL) is configurable in seconds.
 
-However, there's a tradeoff. Increased caching also affects how often the endpoint status is refreshed. For example, the user failover times, for an endpoint failure, becomes longer.
+TTL can affect cost. A longer TTL value increases the amount of caching and reduces DNS query charges. Conversely, shorter a TTL value results in more queries.
+
+Increased caching also affects how often the endpoint status is refreshed. For example, the user failover times, for an endpoint failure, becomes longer.
 
 ### Health monitoring charges
 
@@ -184,8 +186,8 @@ Azure Virtual Network is free. You can create up to 50 virtual networks across a
 - Inbound and outbound data transfers are charged per the billing zone. Traffic that moves across regions and billing zones is more expensive. For more information, see:
 
   - [Traffic across zones](./design-regions.md#traffic-across-billing-zones-and-regions)
-  - [Bandwidth pricing](https://azure.microsoft.com/pricing/details/bandwidth/).
+  - [Bandwidth pricing](https://azure.microsoft.com/pricing/details/bandwidth/)
 
 - Virtual Network Peering has an extra cost. Peering within the same region is cheaper than peering between regions or Global regions. Inbound and outbound traffic is charged at both ends of the peered networks. For more information, see [Peering](./provision-networking.md#peering).
 
-- Managed services (PaaS) don't always need a virtual network. The cost of networking is included in the service cost.
+- Managed services don't always need a virtual network. The cost of networking is included in the service cost.
