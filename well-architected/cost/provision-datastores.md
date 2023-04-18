@@ -80,7 +80,7 @@ For more information, see [Understand data store models](/azure/architecture/gui
 > [!NOTE]
 > An inappropriate data store or one that's mis-configured can have a huge cost impact on your design.
 
-### Relational database management systems cost
+## Relational database management systems cost
 
 When you need strong consistency guarantees, we recommend relational database management systems (RDBMS). An RDBMS typically supports a schema-on-write model, where the data structure is defined ahead of time, and all read or write operations must use the schema.
 
@@ -90,7 +90,7 @@ The on-premises license with Software Assurance can be used to bring down the co
 
 For open-source databases such as MySQL, MariaDB, or PostGreSQL, Azure provides managed services that are easy to provision.
 
-#### What are some design considerations that affect cost?
+### What are some design considerations that affect cost?
 
 - If the SLAs don't allow for downtime, can a read-only replica in a different region enable business continuity?
 - If the database in the other region must be read/write, how is the data replicated?
@@ -103,19 +103,19 @@ For more information, see [Automated backups in Azure SQL Database](/azure/sql-d
 
 [Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) offers five consistency levels: *strong*, *bounded staleness*, *session*, *consistent prefix*, and *eventual*. Each level provides availability and performance tradeoffs. Comprehensive SLAs back each level. The consistency level itself doesn't affect cost.
 
-#### How can I minimize compute cost?
+### How can I minimize compute cost?
 
 Higher throughput and IOPS require higher compute, memory, I/O, and storage limits. These limits are expressed in a vCore model. With higher vCore number, you buy more resources, so the cost is higher. Azure SQL Database has more vCores and allows you to scale in smaller increments. Azure Database for MySQL, PostgreSQL, and MariaDB have fewer vCores and scaling up to a higher vCore can cost more. MySQL provides in-memory tables in the *Memory Optimized* tier, which can also increase the cost.
 
 All options offer a consumption and provisioned pricing models. With preprovisioned instances, you save more if you can commit to one or three years. To learn more, see [Azure Reserved Capacity for Databases](https://azure.microsoft.com/pricing/reserved-capacity/).
 
-#### How is primary and backup storage cost calculated?
+### How is primary and backup storage cost calculated?
 
 With Azure SQL Database, the initial 32 GB of storage is included in the price. For the other listed options, you need to buy storage separately and might increase the cost depending on your storage needs.
 
 For most databases, there's no charge for the price of backup storage that's equal in size to primary storage. If you need more backup storage, you incur more cost.
 
-### Key/value and document databases cost
+## Key/value and document databases cost
 
 We recommend Azure Cosmos DB for key/value stores and document databases. Azure Cache for Redis is also recommended for key/value stores.
 
@@ -127,7 +127,7 @@ For [Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/), h
 
 For [Azure Cache for Redis](https://azure.microsoft.com/pricing/details/cache/), there's no upfront cost, no termination fees, you pay only for what you use, and billing is per-hour.
 
-### Graphic databases cost
+## Graphic databases cost
 
 Cost considerations for graphic database stores include storage required by data and indexes used across all the regions. For example, graphs need to scale beyond the capacity of a single server, and make it easy to look up the index when processing a query.
 
@@ -135,7 +135,7 @@ The Azure service that supports this functionality is Azure Cosmos DB for Apache
 
 If the on-premises data is already on an SQL server on Azure Virtual Machines (IaaS), the license with Software Assurance can be used to bring down the cost if the workload is eligible for [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
-### Data analytics cost
+## Data analytics cost
 
 Cost considerations for data analytics stores include data storage, multiple servers to maximize scalability, and the ability to access large data as external tables.
 
@@ -152,7 +152,7 @@ As an example of use, historical data is typically stored in data stores such as
 
 When you use Azure Synapse, you only pay for the capabilities that you opt in to use. During public preview, there's no cost for provisioning an Azure Synapse workspace. Enabling a managed virtual network and Customer Managed Keys might incur a workspace fee after public preview. Pricing of workspaces with other capabilities will be announced at a future date.
 
-### Column family database cost
+## Column family database cost
 
 The main cost consideration for a column family database is that it needs to be massively scalable.
 
@@ -162,19 +162,19 @@ For Azure Cosmos DB for Apache Cassandra, you pay the cost of [Azure Cosmos DB](
 
 For HBase in HDInsight, you pay the cost of [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/), which includes instance size and number. HBase is open-source.
 
-### Search engine database cost
+## Search engine database cost
 
 Cost incurs for a search engine database when applications need to search for information held in external data stores. It also needs to index massive volumes of data and provide near real-time access to these indexes.
 
 [Azure Cognitive Search](https://azure.microsoft.com/pricing/details/cognitive-services/) is a search service that uses AI capabilities to identify and explore relevant content at scale.
 
-### Time series database cost
+## Time series database cost
 
 The main cost considerations for a time series database is the need to collect large amounts of data in real time from a large number of sources. Although the records written to a time series database are generally small, there are often a large number of records, and total data size can grow rapidly, which drives up cost.
 
 [Azure Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/) might be the best option to minimize cost.
 
-### Object storage cost
+## Object storage cost
 
 Cost considerations include storing large binary objects such as:
 
@@ -186,7 +186,7 @@ Cost considerations include storing large binary objects such as:
 
 Azure services that support object storage are [Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/) and [Azure Data Lake Storage Gen2](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
-### Shared files cost
+## Shared files cost
 
 The main cost consideration is having the ability to access files across a network. For example, given appropriate security and concurrent access control mechanisms, sharing data in this way can enable distributed services to provide highly scalable data access for performing basic, low-level operations such as simple read and write requests.
 
