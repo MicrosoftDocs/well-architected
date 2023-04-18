@@ -36,10 +36,10 @@ Caching is a cost-effective way to store data, provide reliability, and reduce n
 
 Incorrect use of caching can result in severe business outcomes and higher costs.
 
-- When you add cache, it leads to multiple data sources in your architecture. There are added costs to keeping them coordinated. You might need to fill the cache before putting it in production. If you fill the cache on the application's first access, it can introduce latency. If you seed the cache, it can affect the application's start time. If you don't refresh the cache, your customers can get stale data.
+- If you choose to add a cache, your architecture will have multiple data stores. There are added costs to keeping them coordinated. You might need to fill the cache before putting it in production. If you fill the cache on the application's first access, it can introduce latency. If you seed the cache, it can affect the application's start time. If you don't refresh the cache, your customers can get stale data.
 
     Invalidate the cache at the right time when there's latest information in the source system. Use strategies to age out the cache when appropriate.
 
 - Add instrumentation to make sure the caching layer is working optimally. Instrumentation adds complexity and implementation cost.
 
-Caching services such as Azure Cache for Redis offer tiers by cost. Pricing depends on the cache size and network performance. A smaller cache increases latency. Before you choose a tier, estimate a baseline. Try load testing the number of users and cache size.
+Caching services such as Azure Cache for Redis offer tiers by cost. Pricing per tier is based  on the cache size and network performance. A smaller cache increases latency. Before you choose a tier, estimate a baseline. Try load testing the number of users and cache size.
