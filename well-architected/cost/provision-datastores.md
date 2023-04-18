@@ -84,7 +84,7 @@ For more information, see [Understand data store models](/azure/architecture/gui
 
 When you need strong consistency guarantees, we recommend relational database management systems (RDBMS). An RDBMS typically supports a schema-on-write model, where the data structure is defined ahead of time, and all read or write operations must use the schema.
 
-#### How can I save money if my data is on-premises and already on SQL server?
+### How can I save money if my data is on-premises and already on SQL server?
 
 The on-premises license with Software Assurance can be used to bring down the cost if the workload is eligible for [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). This option applies for Azure SQL Database (PaaS) and SQL Server on Azure Virtual Machines (IaaS).
 
