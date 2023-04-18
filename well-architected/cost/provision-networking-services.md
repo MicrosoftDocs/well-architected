@@ -23,7 +23,7 @@ For design considerations, see [Networking cost estimates](provision-networking.
 
 ## Azure Front Door
 
-Outbound data transfers, inbound data transfers, and routing rules all affect Azure Front Door billing. Pricing information doesn't include the cost of accessing data from the backend services and transferring to Azure Front Door. Those costs are billed based on data transfer charges, described in [Bandwidth pricing](https://azure.microsoft.com/pricing/details/bandwidth/).
+Outbound data transfers, inbound data transfers, and routing rules all affect Azure Front Door billing. Pricing information doesn't include the cost of accessing data from the backend services and transferring it to Azure Front Door. Those costs are billed based on data transfer charges described in [Bandwidth pricing](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 Another consideration is Web Application Firewall (WAF) settings. Adding policies drives up the cost.
 
@@ -70,7 +70,7 @@ There are two main pricing models:
 
   All inbound and outbound data transfer is included in the flat rate. There are two pricing tiers: *Standard* and *Premium*, which is priced higher.
 
-Calculate your usage and choose a billing plan. The *Unlimited Data plan* is recommended if you exceed about 68% of utilization.
+Calculate your usage and choose a billing plan. If you exceed about 68% of utilization, we recommend the *Unlimited Data plan*.
 
 For more information, see [Azure ExpressRoute pricing](https://azure.microsoft.com/pricing/details/expressroute).
 
@@ -113,7 +113,7 @@ For more information, see [Azure Load Balancer pricing](https://azure.microsoft.
 
 When provisioning a VPN Gateway resource, choose between two gateway types:
 
-- VPN gateway sends encrypted traffic across the public internet. Site-to-Site, Point-to-Site, and VNet-to-VNet connections all use a VPN gateway.
+- VPN Gateway sends encrypted traffic across the public internet. Site-to-site, point-to-site, and virtual network-to-virtual network connections all use a VPN gateway.
 - ExpressRoute gateway sends network traffic on a private connection. Azure ExpressRoute uses this configuration.
 
 For VPN gateway, select *Route-based* or *Policy-based* depending on your VPN device and the kind of VPN connection you want to create. A route-based gateway allows point-to-site, inter-virtual network, or multiple site-to-site connections. Policy-based only allows one site-to-site tunnel. Point-to-site isn't supported. So, route-based VPN is more expensive.
@@ -123,7 +123,7 @@ You need to choose the SKU for Route-based VPN:
 - For developer/test workloads, use *Basic*.
 - For production workloads, an appropriate *Generation1* or *Generation2* SKU.
 
-Each SKU has a range and pricing depends on the type of VPN gateway because each type offers different levels of bandwidth, site-to-site, and point-to-site tunnel options. Some of those types also offer availability zones, which are more expensive. If you need higher bandwidth, consider Azure ExpressRoute.
+Each SKU has a range and pricing depends on the type of VPN gateway. Each type offers different levels of bandwidth, site-to-site, and point-to-site tunnel options. Some of those types also offer availability zones, which are more expensive. If you need higher bandwidth, consider Azure ExpressRoute.
 
 VPN Gateway can be the cost driver in a workload because charges are based on the amount of time that the gateway is provisioned and available.
 
@@ -155,7 +155,7 @@ Traffic Manager isn't charged for bandwidth consumption. Billing is based on the
 
 ### DNS query charges
 
-Traffic Manager uses DNS to direct clients to specific service.
+Traffic Manager uses DNS to direct clients to specific services.
 
 DNS queries that reach Traffic Manager are charged in million query units.
 
