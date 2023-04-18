@@ -42,7 +42,7 @@ Automation of deployment and maintenance tasks reduces security and compliance r
 
 Utilize the Azure Blueprint service to rapidly and consistently deploy application environments that are compliant with your organization's policies and external regulations. [Azure Blueprint Service](/azure/governance/blueprints/) automates deployment of environments including Azure roles, policies, resources, such as virtual machines, networking, storage, and more. Azure Blueprints builds on Microsoft's significant investment into the Azure Resource Manager to standardize resource deployment in Azure and enable resource deployment and governance based on a desired-state approach. You can use built in configurations in Azure Blueprint, make your own, or just use Resource Manager scripts for smaller scope.
 
-Several [Security and Compliance Blueprints](https://servicetrust.microsoft.com/ViewPage/SCCIntroPage) [samples](/azure/governance/blueprints/samples/) are available to use as a starting template.
+Several Security and Compliance Blueprints [samples](/azure/governance/blueprints/samples/) are available to use as a starting template.
 
 ## Enforce policy compliance
 
