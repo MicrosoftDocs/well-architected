@@ -3,10 +3,10 @@ title: Big data cost estimates
 description: Learn how to make cost estimates for big data analytics services, including Azure Synapse analytics, Azure Databricks, and Azure Stream Analytics.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 04/18/2023
+ms.date: 04/19/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-optimization
 products:
   - azure-synapse-analytics
   - azure-databricks
@@ -24,7 +24,7 @@ Most big data workloads are designed to do:
 - Batch processing of big data sources at rest.
 - Stream processing of data in motion.
 
-Those workloads have different needs. Batch processing is done with long-running batch jobs. For stream processing, the data ingestion component should be able to capture, store, and in some cases buffer real-time messages. Both workloads also have the requirement to store a large volume of data then filter, aggregate, and prepare that data for analysis.
+Those workloads have different needs. Batch processing is done with long-running batch jobs. For stream processing, the data ingestion component should be able to capture, store, and in some cases buffer real-time messages. Both workloads have the requirement to store a large volume of data then filter, aggregate, and prepare that data for analysis.
 
 For information about choosing technologies for each workload, see:
 
@@ -40,7 +40,7 @@ This article provides cost considerations for some of those choices. This articl
 
 ## Azure Synapse Analytics
 
-The analytics resources are measured in *Data Warehouse Units (DWUs)*, which tracks CPU, memory, and IO. DWU also indicates the required level of performance. If you need higher performance, add more DWU blocks.
+The analytics resources are measured in Data Warehouse Units (DWUs), which tracks CPU, memory, and IO. DWU also indicates the required level of performance. If you need higher performance, add more DWU blocks.
 
 You can provision the resources in one of two service levels.
 
