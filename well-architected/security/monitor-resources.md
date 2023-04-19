@@ -30,7 +30,7 @@ Microsoft Defender for Cloud has many plans that monitor the security posture of
 > - Observe container hygiene through container aware tools and regular scanning.
 > - Review all network flow logs through network watcher. See diagnostic logs in Microsoft Defender for Cloud.
 > - Integrate all logs in a central SIEM solution to analyze and detect suspicious behavior.
-> - Monitor identity-related risk events in Azure AD reporting amd Azure Active Directory Identity Protection.
+> - Monitor identity-related risk events in Azure AD reporting and Azure Active Directory Identity Protection.
 
 ## General best practices
 
