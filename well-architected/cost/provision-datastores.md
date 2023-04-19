@@ -3,10 +3,10 @@ title: Data store cost estimates
 description: Get detailed information about making cost estimates for your Azure data stores. Learn cost strategies for database design.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/14/2023
+ms.date: 04/19/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-optimization
 products:
   - azure-sql-database
   - azure
