@@ -3,10 +3,10 @@ title: Initial cost estimate
 description: Learn best practices and strategies for modeling workloads and estimating initial costs for cloud migrations.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 04/18/2023
+ms.date: 04/19/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-optimization
 products:
   - azure-kubernetes-service
   - azure
@@ -49,7 +49,7 @@ Azure provides the following tools to determine cost.
 
 ## Example estimate for a microservices workload
 
-Consider this [scenario](/azure/architecture/microservices/design/index#scenario) as an example. Use the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the initial cost before the workload deploys. The cost calculates per month or for 730 hours.
+Consider this [scenario](/azure/architecture/microservices/design/index#scenario) as an example. Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) to estimate the initial cost before the workload deploys. The cost calculates per month or for 730 hours.
 
 In this example, we've chosen the microservices pattern. As the container orchestrator, one of the options could be [Azure Kubernetes Service](/azure/aks/) (AKS) that manages a cluster of pods. Choose NGINX ingress controller because it's a well-known controller for such workloads.
 
@@ -103,9 +103,9 @@ Because the schema-on read nature of the data handled by the workload, choose Az
 
 - The item size is an average of 90k. Using the capacity calculator, you can upload sample json files. The sample json files include your document's data structure, the average document's size, and the number of reads and writes per second. These variables have the largest effect on cost because you use them to calculate the throughput. The throughput values appear in the image.
 
-Now, use those values in the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/).
+Now, use those values in the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/).
 
-![Azure Pricing calculator for Azure Cosmos DB](../_images/cosmosdb-price.png)
+![Azure pricing calculator for Azure Cosmos DB](../_images/cosmosdb-price.png)
 
 The average throughput based on these settings is 20,000 RUs per second, which is the minimum throughput required for a **3-year reserved capacity** plan.
 
