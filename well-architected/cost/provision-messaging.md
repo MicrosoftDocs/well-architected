@@ -3,7 +3,7 @@ title: Azure Messaging cost estimates
 description: Learn about the cost strategies for messaging services, including Service Bus cost, Event Grid cost, and Event Hubs.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/17/2023
+ms.date: 04/19/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -18,11 +18,11 @@ ms.custom:
 
 # Azure messaging cost estimates
 
-The messaging services in this article have no up-front cost or termination fees, and you pay only for what you use. In some cases, it's advantageous to combine two messaging services to increase the efficiency of your messaging system. For examples, see [Crossover scenarios](/azure/architecture/guide/technology-choices/messaging#crossover-scenarios).
+The messaging services in this article have no up-front cost or termination fees. You pay only for what you use. In some cases, combining two messaging services to increase the efficiency of your messaging system is advantageous. For examples, see [Crossover scenarios](/azure/architecture/guide/technology-choices/messaging#crossover-scenarios).
 
-Cost is based on the number of operations or throughput units used depending on the message service. If you use the wrong messaging service, there can be higher costs. Before choosing a service, first, determine the intent and requirements of the messages. Then consider the tradeoffs between cost, operations units, and throughput units. For tradeoff examples, see [Technology choices for a message broker](/azure/architecture/guide/technology-choices/messaging#technology-choices-for-a-message-broker).
+Cost is based on the number of operations or throughput units used, depending on the message service. If you use the wrong messaging service, you may incur higher costs. Before choosing a service, first, determine the intent and requirements of the messages. Then consider the tradeoffs between cost, operations units, and throughput units. For tradeoff examples, see [Technology choices for a message broker](/azure/architecture/guide/technology-choices/messaging#technology-choices-for-a-message-broker).
 
-Use the [Azure Pricing calculator](https://azure.microsoft.com/pricing/calculator/) for help with creating various cost scenarios.
+Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) for help with creating various cost scenarios.
 
 ## Service Bus cost
 
@@ -32,7 +32,7 @@ For pricing details, see [Service Bus pricing](https://azure.microsoft.com/prici
 
 ## Event Grid cost
 
-You manage routing of all events from any source to any destination to simplify event-based app development by using Event Grid. [Event Grid](/azure/architecture/reference-architectures/serverless/cloud-automation#event-grid) can route a massive number of events per second per region. Cost is based on the number of operations performed. Examples of some operations are event ingress, subscription delivery attempts, management calls, and filtering by subject suffix.
+You manage the routing of all events from any source to any destination to simplify event-based app development by using Event Grid. [Event Grid](/azure/architecture/reference-architectures/serverless/cloud-automation#event-grid) can route a massive number of events per second per region. Cost is based on the number of operations performed. Examples of some operations are event ingress, subscription delivery attempts, management calls, and filtering by subject suffix.
 
 For pricing details, see [Event Grid pricing](https://azure.microsoft.com/pricing/details/event-grid/).
 
