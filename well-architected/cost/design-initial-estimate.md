@@ -3,7 +3,7 @@ title: Initial cost estimate
 description: Learn best practices and strategies for modeling workloads and estimating initial costs for cloud migrations.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 04/17/2023
+ms.date: 04/18/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -53,7 +53,7 @@ Consider this [scenario](/azure/architecture/microservices/design/index#scenario
 
 In this example, we've chosen the microservices pattern. As the container orchestrator, one of the options could be [Azure Kubernetes Service](/azure/aks/) (AKS) that manages a cluster of pods. Choose NGINX ingress controller because it's a well-known controller for such workloads.
 
-> The example uses current prices and is subject to change. The calculation shown here is for illustration purposes only.
+> The example uses current prices and is subject to change. The example shows prices and calculations for illustrative purposes only.
 
 ### Compute
 
