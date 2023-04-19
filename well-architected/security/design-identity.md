@@ -22,6 +22,9 @@ Most architectures have shared services that are hosted and accessed across netw
 
 Provide security assurance through _identity management_: the process of authenticating and authorizing security principals. Use identity management services to authenticate and grant permission to users, partners, customers, applications, services, and other entities.
 
+> [!NOTE]
+> Identity management is typically a centralized function not controlled by the workload team as a part of the workload's architecture. Unless the workload team is responsible for a dedicated identity store, the guidance in the [Azure identity and access management design area](/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access) of the Cloud Adoption Framework should be referenced when implementing identity solutions which support multiple workloads.
+
 ## Checklist
 
 **How are you managing the identity for your workload?**
@@ -31,7 +34,7 @@ Provide security assurance through _identity management_: the process of authent
 > - Define clear lines of responsibility and separation of duties for each function. Restrict access based on a need-to-know basis and least privilege security principles.
 > - Assign permissions to users, groups, and applications at a certain scope through Azure RBAC. Use built-in roles when possible.
 > - Prevent deletion or modification of a resource, resource group, or subscription through management locks.
-> - Use Managed Identities to access resources in Azure.
+> - Use managed identities to access resources in Azure.
 > - Support a single enterprise directory. Keep the cloud and on-premises directories synchronized, except for critical-impact accounts.
 > - Set up Azure AD Conditional Access. Enforce and measure key security attributes when authenticating all users, especially for critical-impact accounts.
 > - Have a separate identity source for non-employees.
@@ -65,10 +68,10 @@ Here are some reference architectures related to identity and access management:
 Monitor the communication between segments. Use data to identify anomalies, set alerts, or block traffic to mitigate the risk of attackers crossing segmentation boundaries.
 
 > [!div class="nextstepaction"]
-> [Network-related risks](./design-network.md)
+> [Network security](./design-network.md)
 
 ## Related links
 
 [Five steps to securing your identity infrastructure](/azure/security/fundamentals/steps-secure-identity)
 
-> Go back to the main article: [Security](overview.md)
+> Go back to the main article: [Overview of the security pillar](overview.md)
