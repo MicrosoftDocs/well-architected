@@ -1,5 +1,5 @@
 ---
-title: Azure VMWare (AVS) assessment
+title: Azure VMware Solution (AVS) assessment
 description: TBD.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,4 +9,4 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Azure VMWare (AVS) assessment
+# Azure VMware Solution (AVS) assessment

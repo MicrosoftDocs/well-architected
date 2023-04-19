@@ -1,5 +1,5 @@
 ---
-title: Integrate an VMWare workload with Azure landing zones
+title: Integrate an Azure VMware Solution workload with Azure landing zones
 description: TBD.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,4 +9,4 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Integrate an VMWare workload with Azure landing zones
+# Integrate an Azure VMware Solution workload with Azure landing zones

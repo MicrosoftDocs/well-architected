@@ -347,7 +347,7 @@ items:
             href: scalability/tradeoffs.md
       - name: Workloads
         items:
-          - name: Azure VMWare 
+          - name: Azure VMware 
             items:
               - name: Quick links
                 href: azure-vmware/index.yml
@@ -359,7 +359,7 @@ items:
                 href: azure-vmware/avs-landing-zone-integration.md                      
               - name: Design areas
                 items:
-                - name: VMWare resources
+                - name: VMware resources
                   href: azure-vmware/avs-vmware-resources.md
                 - name: Networking
                   href: azure-vmware/avs-networking.md

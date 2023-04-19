@@ -1,5 +1,5 @@
 ---
-title: Azure VMWare (AVS) design principles
+title: Azure VMware Solution (AVS) design principles
 description: TBD.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,4 +9,4 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Azure VMWare (AVS) design principles
+# Azure VMware Solution (AVS) design principles

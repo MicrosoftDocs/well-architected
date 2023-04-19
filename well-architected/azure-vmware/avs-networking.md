@@ -1,5 +1,5 @@
 ---
-title: Azure VMWare (AVS) networking considerations
+title: Azure VMware Solution(AVS) networking considerations
 description: TBD.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,4 +9,4 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Azure VMWare (AVS) networking considerations
+# Azure VMware Solution (AVS) networking considerations
