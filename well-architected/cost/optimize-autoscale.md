@@ -5,8 +5,8 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 04/18/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-optimization
 ms.custom:
   - article
   - internal-intro
