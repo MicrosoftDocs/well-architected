@@ -5,8 +5,8 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 04/19/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-optimization
 products:
   - azure-application-gateway
   - azure-load-balancer
