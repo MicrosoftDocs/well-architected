@@ -63,9 +63,8 @@ Use the provided lists of prioritized security initiatives to help organizations
 
 ## Checklist
 **What considerations for compliance and governance did you make?**
-***
-> [!div class="checklist"]
 
+> [!div class="checklist"]
 > - Create a landing zone for the workload. The infrastructure must have appropriate controls and be repeatable with every deployment.
 > - Enforce creation and deletion of services and their configuration through Azure Policy.
 > - Ensure consistency across the enterprise by applying policies, permissions, and tags across all subscriptions through careful implementation of root management group.
