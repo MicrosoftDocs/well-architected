@@ -1,12 +1,12 @@
 ---
 title: Checklist - Monitor cost
-description: Learn the tasks you need to monitor your Azure workload cost. Checklist items include getting cost data from diverse sources, using resource tag policies, and more.
+description: Learn the tasks you need to complete to monitor your Azure workload cost. Checklist items include getting cost data from diverse sources, using resource tag policies, and more.
 author: martinekuan
 ms.author: martinek
 ms.date: 04/06/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-optimization
 products:
   - azure
   - azure-cost-management
@@ -48,8 +48,8 @@ Use this checklist to monitor the cost of the workload.
   - Budget for the usage meters on resources.
   - Performance bottle necks.
   - CPU utilization and network throughput.
-  - Storage footprint for blobs, backups, archiving.
+  - Storage footprint for blobs, backups, and archiving.
 
-- **Use Visualization tools to analyze cost information.**
+- **Use Visualization tools to analyze cost information**.
   - [Create visuals and reports with the Azure Cost Management connector in Power BI Desktop](/power-bi/desktop-connect-azure-cost-management)
   - [Cost Management App](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
