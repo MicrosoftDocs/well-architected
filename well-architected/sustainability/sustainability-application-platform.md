@@ -119,7 +119,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 - Build a cloud-native app without managing the infrastructure, using a fully managed and inherently optimized platform. The platform handles scaling, availability, and performance, ultimately optimizing the hardware efficiency.
 - Review design principles for [Platform as a Service (PaaS)](/azure/architecture/guide/design-principles/managed-services) workloads.
 
-### Use SPOT VMs where possible
+### Use Spot VMs where possible
 
 Think about the unused capacity in Azure data centers. Utilizing the otherwise wasted capacity—at significantly reduced prices—the workload contributes to a more sustainable platform design.
 
@@ -127,8 +127,8 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 **Recommendation:**
 
-- By utilizing [SPOT VMs](/azure/virtual-machines/spot-vms), you take advantage of unused capacity in Azure data centers while getting a significant discount on the VM.
-- Consider the tradeoff: When Azure needs the capacity back, the VMs get evicted. Learn more about the SPOT VM [eviction policy](/azure/virtual-machines/spot-vms#eviction-policy).
+- By utilizing [Spot VMs](/azure/virtual-machines/spot-vms), you take advantage of unused capacity in Azure data centers while getting a significant discount on the VM.
+- Consider the tradeoff: When Azure needs the capacity back, the VMs get evicted. Learn more about the Spot VM [eviction policy](/azure/virtual-machines/spot-vms#eviction-policy).
 
 ## Right sizing
 
