@@ -1,6 +1,6 @@
 ---
 title: Design reliable Azure applications
-description: Design Azure applications that are reliable, scalable, and resilient to failure by using availability zones and managed services.
+description: Review design considerations for making sure that Azure applications are reliable, scalable, and resilient to failure.
 author: martinekuan
 ms.author: martinek
 ms.date: 04/21/2023
@@ -49,7 +49,7 @@ To reduce costs, consider splitting application components and data into groups.
 
 - Must protect
 - Nice to protect
-- Ephemeral, can be rebuilt or lost, instead of protected by the same policy
+- Ephemeral, can be rebuilt or lost instead of protected by the same policy
 
 ## Considerations to improve reliability
 
