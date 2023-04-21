@@ -203,6 +203,21 @@ resource "azurerm_storage_account" "example" {
 
 Take note, the Terraform provider for Azure is an abstraction on top of Azure APIs. This abstraction is beneficial because the API complexities are obfuscated. This abstraction comes at a cost; the Terraform provider for Azure doesn't always provide parity with the Azure APIs' capabilities. To learn more about using Terraform on Azure, see [Using Terraform on Azure](/azure/developer/terraform/overview)
 
+## Automate infrastructure deployment with Azure Deployment Environments
+
+ Azure Deployment Environments enables you to automate your development infrastructure deployment. A deployment environment is a collection of Azure resources deployed in predefined subscriptions.
+
+Azure Deployment Environments helps your dev infra admin automate the process of applying policies and settings on various types of environments, controlling the resource configuration that developers can create, and centrally tracking environments across projects by:
+
+- Provide a project-based, curated set of reusable IaC templates.
+- Define specific Azure deployment configurations per project and per environment type.
+- Provide a self-service experience without giving control over subscriptions.
+- Track costs and ensure compliance with enterprise governance policies.
+
+**Learn more**
+
+- [Azure Deployment Environments](/azure/deployment-environments/)
+
 ## Manual deployment
 
 Manual deployment steps introduce significant risks where human error is concerned and also increases overall deployment times. However, in some cases, manual steps may be required. For these cases, ensure that any manual steps are documented, including roles and responsibilities.

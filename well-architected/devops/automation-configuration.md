@@ -125,6 +125,17 @@ The following example shows an ARM template snippet with the deployment script r
 
 - [Documentation: Use deployment scripts in templates](/azure/azure-resource-manager/templates/deployment-script-template)
 
+### Azure Deployment Environments
+
+Azure Deployment Environments enables development teams deploy app infrastructure with project-based templates. A deployment environment is a collection of Azure resources deployed in predefined subscriptions. Azure governance is applied to those subscriptions based on the type of environment, such as sandbox, testing, staging, or production.
+
+Using Azure Deployment Environments, you can deploy a preconfigured environment defined by an IaC template. You can create platform as a service (PaaS) or infrastructure as a service (IaaS) environments based on the content of the template.
+
+**Learn more**
+
+- [Azure Deployment Environments](/azure/deployment-environments/)
+- [Create and access an environment by using the Azure CLI](/azure/deployment-environments/how-to-create-access-environments?branch=main)
+
 ## Configuration Management
 
 Configuration management tools can be used to configure and manage the ongoing configuration and state of Azure virtual machines. Three popular options are Azure Automation State Configuration, Chef, and Puppet.

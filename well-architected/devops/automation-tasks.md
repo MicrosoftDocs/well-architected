@@ -60,6 +60,38 @@ Both PowerShell and Python are common languages for automating everyday operatio
 - [Documentation: Azure Functions PowerShell developer guide](/azure/azure-functions/functions-reference-powershell)
 - [Documentation: Azure Functions Python developer guide](/azure/azure-functions/functions-reference-python)
 
+## Azure Deployment Environments
+
+With Azure Deployment Environments development teams can spin up consistent app infrastructure by using project-based templates. This on-demand access to secure environments accelerates the stages of the software development lifecycle in a compliant and cost-efficient way. With Azure Deployment Environments, your development infrastructure (dev infra) admin can enforce enterprise security policies and provide a curated set of predefined infrastructure as code (IaC) templates.
+
+A deployment environment is a preconfigured collection of Azure resources deployed in predefined subscriptions. Azure governance is applied to those subscriptions based on the type of environment, such as sandbox, testing, staging, or production.
+
+DevOps teams and developers use Azure Deployment Environments to enable common scenarios, including:
+
+- Create on-demand Azure environments by using reusable IaC templates.
+- Create sandbox environments to test your code.
+- Preconfigure various types of environments that integrate with a continuous integration and continuous delivery (CI/CD) pipeline.
+- Create preconfigured environments for training and demos.
+
+Azure Deployment Environments are created from a GitHub or Azure DevOps repository called a catalog. Each environment is stored in the catalog as a catalog item. The catalog item consists of an IaC template and a manifest.yaml file. The template defines the resources deployed in the environment, and the manifest provides metadata about the template.  
+
+The following example shows resources in an environment, including Application Insights, a Storage Account, an App Service plan, a custom app called FunctionApp, and a Smart detector alert rule.
+
+:::image type="content" source="deployment-environment-resources-in-portal.png" alt-text="Screenshot showing resources in an environment, including Application Insights, a Storage Account, an App Service plan, a custom app called FunctionApp, and a Smart detector alert rule.":::
+
+The creation of deployment environments can be scripted, and the environments can be managed programmatically. For example, you can use the Azure CLI to create a deployment environment. The following example shows how to create a deployment environment from a catalog item in a GitHub repository.
+
+```azurecli
+az devcenter dev environment create --dev-center-name <devcenter-name>
+    --project-name <project-name> --environment-name <name> --environment-type <environment-type-name>
+    --catalog-item-name <catalog-item-name> --catalog-name <catalog-name>
+```
+
+**Learn more**
+
+- [Azure Deployment Environments](/azure/deployment-environments/)
+- [Create and access an environment by using the Azure CLI](/azure/deployment-environments/how-to-create-access-environments?branch=main)
+
 ## Azure Automation
 
 PowerShell and Python are popular programming languages for automating operational tasks. Using these languages, performing operations like restarting services, moving logs between data stores, and scaling infrastructure to meet demand can be expressed in code and executed on demand. Alone, these languages do not offer a platform for centralized management, version control, or execution history. The languages also lack a native mechanism for responding to events like monitoring driven alerts. To provide these capabilities, an automation platform is needed.

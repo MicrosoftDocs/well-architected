@@ -199,6 +199,8 @@ Learn more about:
 - [Introduction to the Microsoft Azure Well-Architected Framework](/training/modules/azure-well-architected-introduction/)
 - [Microsoft Defender for Cloud](/azure/security-center/)
 - [Cloud Adoption Framework](/azure/cloud-adoption-framework/)
+- [Azure Deployment Environments](/azure/deployment-environments/)
+- [Microsoft Dev Box](/azure/dev-box/)
 
 <!-- links -->
 
