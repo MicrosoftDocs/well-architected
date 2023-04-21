@@ -34,7 +34,7 @@ Reliable applications should maintain a pre-defined percentage of uptime (*avail
 - [Azure Front Door](/azure/frontdoor/front-door-overview)
 - [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview)
 - [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)
-- [Azure Virtual Network NAT](/azure/virtual-network/nat-gateway/nat-overview)
+- [Azure NAT Gateway](/azure/virtual-network/nat-gateway/nat-overview)
 - [Service Fabric](/azure/service-fabric/service-fabric-overview)
 - [Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)
 - [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)
