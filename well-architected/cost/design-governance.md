@@ -21,15 +21,15 @@ Governance helps with cost management. This work benefits your ongoing cost revi
 
 ## Understand how centralized governance functions can support your team
 
-Centralized governance can relieve some of the burden related to on-going cost monitoring and optimization. But it's an augmentation to the workload team's responsibilities, not a replacement. To understand how centralized cloud governance teams operate, see the Cloud Adoption Framework's [Govern methodology](/azure/cloud-adoption-framework/govern/methodology).
+Centralized governance can relieve some of the burden related to on-going cost monitoring and optimization. But it's an augmentation to the workload team's responsibilities, not a replacement. To understand how centralized cloud governance teams operate, see [Govern methodology for the cloud](/azure/cloud-adoption-framework/govern/methodology).
 
-- For more detailed information on cost optimization, see the section on [Cost Management discipline](/azure/cloud-adoption-framework/govern/cost-management/).
-- For an example of the types of guardrails provided by a governance team, see [Improving the cost management discipline](/azure/cloud-adoption-framework/govern/cost-management/discipline-improvement). This article includes examples of suggested tags and policies for improving cost governance.
+- For more detailed information on cost optimization, see [Cost Management discipline](/azure/cloud-adoption-framework/govern/cost-management/).
+- For an example of the types of guardrails provided by a governance team, see [Cost management discipline improvement](/azure/cloud-adoption-framework/govern/cost-management/discipline-improvement). This article includes examples of suggested tags and policies for improving cost governance.
 - If centralized governance teams don't support your team, see [Cloud governance function](/azure/cloud-adoption-framework/organize/cloud-governance). This article helps you understand the activities your team might consider including in each sprint.
 
 ## Follow organizational policies that define cost boundaries
 
-Use policies to ensure compliance with identified cost boundaries. Policies eliminate the need for manual resource approval and they speed up the total provisioning time.
+Use policies to ensure compliance with identified cost boundaries. Policies eliminate the need for manual resource approval and they speed up provisioning.
 
 Azure Policy can set rules on management groups, subscriptions, and resources groups. The policies control clouds service resource SKU size, replication features, and supported locations. Use policies to prevent provisioning expensive resources. Identify the built-in Azure policies that can help lower costs. For even more control, create custom policies.
 
@@ -41,7 +41,7 @@ Set limits or quotas to prevent unexpected costs. For more information, see [Azu
 
 ## Enforce resource tagging
 
-Use tags on resources and resource groups to track incurred costs. Identify the service meters that you can't tag or view in the cost analysis tool in Azure portal.
+Use tags on resources and resource groups to track incurred costs. Identify the service meters that you can't tag or view in the cost analysis tool in the Azure portal.
 
 The advantages of tagging include:
 
