@@ -5,8 +5,8 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/24/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-reliability
 ms.custom:
   - How are you managing errors & failures?
   - article
