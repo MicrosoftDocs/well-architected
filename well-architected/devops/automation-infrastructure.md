@@ -205,14 +205,22 @@ Take note, the Terraform provider for Azure is an abstraction on top of Azure AP
 
 ## Automate infrastructure deployment with Azure Deployment Environments
 
- Azure Deployment Environments enables you to automate your development infrastructure deployment. A deployment environment is a collection of Azure resources deployed in predefined subscriptions.
+Organizations that support multiple environments and multiple development teams require repeatable, consistent, and secure environments. Development infrastructure administration (dev infra admin) teams must be able to provide developers with environments that include the resources and configuration needed for different environment types, like Development, Test, and Production.
 
-Azure Deployment Environments helps your dev infra admin automate the process of applying policies and settings on various types of environments, controlling the resource configuration that developers can create, and centrally tracking environments across projects by:
+Developers should be able to create a new instance of an environment appropriate for their project quickly and easily, rather than having to wait for the assistance of the dev infra team.
 
-- Provide a project-based, curated set of reusable IaC templates.
-- Define specific Azure deployment configurations per project and per environment type.
-- Provide a self-service experience without giving control over subscriptions.
-- Track costs and ensure compliance with enterprise governance policies.
+By using project level templates, organizations can create predefined environment templates that define the resources and configuration required for each project. Controlling access to each project enables the organization to set an identity security perimeter, so only approved admins can manage the project, and only approved developers can use it.
+
+Creating environments by using templates helps organizations to avoid the pitfalls of manually creating each environment. Creating environments manually is time-consuming, often results in inconsistencies, and presents difficulties in ensuring compliance.
+
+Azure Deployment Environments enables development teams deploy application infrastructure with project-based templates. Dev infra admins can deploy a preconfigured environment defined by an IaC template. platform as a service (PaaS) or infrastructure as a service (IaaS) environments based on the content of the template.
+
+Azure Deployment Environments helps dev infra admins automate development infrastructure deployment. It automates the process of applying policies, permissions, and settings on environments, controlling the resource configuration that developers can create, and centrally tracking environments across projects by:
+
+- Providing a project-based, curated set of reusable IaC templates.
+- Defining specific Azure deployment configurations per project and per environment type.
+- Providing self-service experience without giving control over subscriptions.
+- Tracking costs and ensuring compliance with enterprise governance policies.
 
 **Learn more**
 
