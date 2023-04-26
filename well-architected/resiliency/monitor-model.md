@@ -25,7 +25,9 @@ The health model shouldn't treat all failures the same. The health model should 
 
 ## Healthy and unhealthy states
 
-A health model defines what *healthy* and *unhealthy* states represent for the application. A holistic application health model should be used to quantify what healthy and unhealthy states represent across all application components. We highly recommend that a *traffic light* model is used to indicate a green or healthy state when key nonfunctional requirements and targets are fully satisfied. Indicate a healthy state when resources are optimally utilized. For example, 95 percent of requests are processed in `<= 500 ms` with AKS node utilization at `x%`. Once established, this health model should inform critical monitoring metrics across system components and operational subsystem composition.
+A health model defines what *healthy* and *unhealthy* states represent for the application. A holistic application health model should be used to quantify what healthy and unhealthy states represent across all application components.
+
+We highly recommend that a *traffic light* model is used to indicate a green or healthy state when key nonfunctional requirements and targets are fully satisfied. Indicate a healthy state when resources are optimally utilized. For example, 95 percent of requests are processed in `<= 500 ms` with AKS node utilization at `x%`. Once established, this health model should inform critical monitoring metrics across system components and operational subsystem composition.
 
 ## Quantify application states
 
@@ -37,7 +39,7 @@ Application logs are an important source of diagnostics data. To gain insight wh
 
 - Use semantic, or *structured*, logging.
 
-  With structured logs, it's easier to automate the consumption and analysis of the log data, which is especially important at cloud scale. Generally, we recommend storing Azure resources metrics and diagnostics data in an Azure Monitor Logs workspace rather than in a storage account. This way, you can use [Kusto queries](/azure/data-explorer/kusto/concepts/#kusto-queries) to obtain the data you want quickly and in a structured format. You can also use Azure Monitor APIs.
+  With structured logs, it's easier to automate the consumption and analysis of the log data, which is especially important at cloud scale. We recommend storing Azure resources metrics and diagnostics data in an Azure Monitor Logs workspace rather than in a storage account. This way, you can use [Kusto queries](/azure/data-explorer/kusto/concepts/#kusto-queries) to obtain the data you want quickly and in a structured format. You can also use Azure Monitor APIs.
 
 - Log data in the production environment.
 
@@ -63,7 +65,7 @@ All application resources should be configured to route diagnostic logs and metr
 
 Use white-box monitoring to instrument the application with semantic logs and metrics. Application level metrics and logs, such as current memory consumption or request latency, should be collected from the application to inform a health model and to detect and predict issues.
 
-Use black-box monitoring to measure platform services and the resulting customer experience. Black box monitoring tests externally visible application behavior without knowledge of the internals of the system. This approach is common for measuring customer-centric service-level indicators (SLIs), service-level objectives (SLOs), and service-level agreements (SLAs).
+Use black-box monitoring to measure platform services and the resulting customer experience. Black-box monitoring tests externally visible application behavior without knowledge of the internals of the system. This approach is common for measuring customer-centric service-level indicators (SLIs), service-level objectives (SLOs), and service-level agreements (SLAs).
 
 ### Use critical system flows in the health model
 
@@ -73,7 +75,7 @@ The health model should be able to surface the respective health of critical sys
 
 The health and performance of an application can degrade over time. That degradation might not be noticeable until the application fails.
 
-Implement probes or check functions, and run them regularly from outside the application. These checks can be as simple as measuring response time for the application as a whole, for individual parts of the application, for specific services that the application uses, or for separate components.
+Implement probes or check functions. Run them regularly from outside the application. These checks can be as simple as measuring response time for the application as a whole, for individual parts of the application, for specific services that the application uses, or for separate components.
 
 Check functions can run processes to ensure that they produce valid results, measure latency and check availability, and extract information from the system.
 

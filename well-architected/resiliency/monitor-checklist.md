@@ -12,7 +12,7 @@ products: azure-monitor
 
 # Monitoring for reliability
 
-Monitoring and diagnostics are crucial for resiliency. If something fails, you need to know *that* it failed, *when* it failed—and *why*.
+Monitoring and diagnostics are crucial for reliability. If something fails, you need to know *that* it failed, *when* it failed, and *why*.
 
 ## Checklist
 

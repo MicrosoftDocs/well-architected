@@ -48,7 +48,9 @@ For more information, see [Azure Service Health](/azure/service-health/service-h
 
 Use Azure Resource Health to respond to *resource level* events. Azure Resource Health provides information about the health of individual resources such as a specific virtual machine. It's useful to diagnose unavailable resources.
 
-Azure Resource Health alerts should be configured for specific resource groups and resource types. These alerts should be adjusted to maximize signal to noise ratios. For example, only distribute a notification when a resource becomes unhealthy according to the application health model or due to an Azure platform initiated event. It's important to consider transient issues when setting an appropriate threshold for resource unavailability. For example, configure an alert for a virtual machine with a threshold of one minute for unavailability before an alert is triggered.
+Azure Resource Health alerts should be configured for specific resource groups and resource types. These alerts should be adjusted to maximize signal to noise ratios. For example, only distribute a notification when a resource becomes unhealthy according to the application health model or due to an Azure platform initiated event.
+
+It's important to consider transient issues when setting an appropriate threshold for resource unavailability. For example, configure an alert for a virtual machine with a threshold of one minute for unavailability before an alert is triggered.
 
 For more information, see [Azure Resource Health](/azure/service-health/resource-health-overview).
 
@@ -57,7 +59,7 @@ For more information, see [Azure Resource Health](/azure/service-health/resource
 You can also get a full-stack view of application state by using [Azure dashboards](/azure/azure-portal/azure-portal-dashboards) to create a combined view of monitoring graphs from the following sources:
 
 - Application Insights
-- Log Analytics
+- Azure Monitor Logs
 - Azure Monitor metrics
 - Service Health
 
@@ -66,11 +68,11 @@ You can also get a full-stack view of application state by using [Azure dashboar
 :::image type="icon" source="../_images/github.png" border="false"::: Here are some samples about creating and querying alerts:
 
 - [HealthAlerts](https://github.com/mspnp/samples/tree/master/Reliability/HealthAlerts). A sample about creating resource-level health activity log alerts. The sample uses Azure Resource Manager to create alerts.
-- [GraphAlertsPsSample](https://github.com/mspnp/samples/tree/master/Reliability/GraphAlertsPsSample). A set of PowerShell commands that queries for alerts generated against your subscription.
+- [GraphAlertsPsSample](https://github.com/mspnp/samples/tree/master/Reliability/GraphAlertsPsSample). Azure PowerShell and Azure commands that query for alerts generated against your subscription.
 
 ## Azure subscription and service limits
 
-Azure subscriptions have limits on certain resource types, such as number of resource groups, cores, and storage accounts. To ensure your application doesn't run up against Azure subscription limits, create alerts that poll for services nearing their limits and quotas.
+Azure subscriptions have limits on certain resource types, such as number of resource groups, cores, and storage accounts. To ensure that your application doesn't run up against Azure subscription limits, create alerts that poll for services nearing their limits and quotas.
 
 Address the following subscription limits with alerts.
 
@@ -107,9 +109,9 @@ If your Azure SQL Database tier isn't adequate to handle your application's Data
 
 ## Instrumentation
 
-Use instrumentation to measure the customer experience. Effective instrumentation is vital for detecting and resolving performance anomalies that can affect customer experience and application availability. To build a robust application health model, it's vital that you achieve visibility into the operational state of critical internal dependencies, such as a shared NVA or Express Route connection.
+Use instrumentation to measure the customer experience. Effective instrumentation is vital for detecting and resolving performance anomalies that can affect customer experience and application availability. To build a robust application health model, it's vital that you achieve visibility into the operational state of critical internal dependencies, such as a shared Network Virtual Appliance (NVA) or Azure ExpressRoute connection.
 
-Automated failover and failback systems depend on the correct functioning of monitoring and instrumentation. Dashboards that visualize system health and operator alerts also depend on having accurate monitoring and instrumentation. These elements might fail, miss critical information, or report inaccurate data. If so, an operator might not realize that the system is unhealthy or failing. Make sure you include monitoring systems in your test plan.
+Automated failover and failback systems depend on the correct functioning of monitoring and instrumentation. Dashboards that visualize system health and operator alerts also depend on having accurate monitoring and instrumentation. These elements might fail, miss critical information, or report inaccurate data. If so, an operator might not realize that the system is unhealthy or failing. Make sure that you include monitoring systems in your test plan.
 
 Use applications to track calls to dependent services. Dependency tracking and measuring the duration or status of dependency calls is also vital to measuring overall application health. It should be used to inform a health model for the application.
 
@@ -133,7 +135,7 @@ Track the progress of long-running processes to minimize the likelihood that the
 
 ## Analysis and diagnosis
 
-Analyze data combined in the data stores to troubleshoot issues and gain an overall view of application health. Generally, you can search for and analyze the data in [Application Insights](/azure/azure-monitor/app/app-insights-overview) and [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) using Kusto queries. View preconfigured graphs using management solutions. Use [Azure Advisor](/azure/advisor/advisor-overview) to view recommendations with a focus on resiliency and performance.
+Analyze data combined in the data stores to troubleshoot issues and gain an overall view of application health. Generally, you can search for and analyze the data in [Application Insights](/azure/azure-monitor/app/app-insights-overview) and [Azure Monitor Logs](/azure/azure-monitor/logs/log-analytics-overview) using Kusto queries. View preconfigured graphs using management solutions. Use [Azure Advisor](/azure/advisor/advisor-overview) to view recommendations with a focus on resiliency and performance.
 
 ## Related links
 
@@ -141,9 +143,9 @@ Analyze data combined in the data stores to troubleshoot issues and gain an over
 - For information on virtual machine sizes, see [Sizes for virtual machines in Azure](/azure/virtual-machines/sizes).
 - For information on scale sets, see [Virtual Machine Scale Sets overview](/azure/virtual-machine-scale-sets/overview).
 
-Go back to the main article: [Monitoring for reliability](monitor-checklist.md)
-
 ## Next steps
 
 > [!div class="nextstepaction"]
 > [Health modeling for reliability](./monitor-model.md)
+
+Go back to the main article: [Monitoring for reliability](monitor-checklist.md)
