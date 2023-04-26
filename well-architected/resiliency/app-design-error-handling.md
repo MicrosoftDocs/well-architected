@@ -1,9 +1,9 @@
 ---
 title: Error handling for resilient apps
-description: Review best practices for handling errors in resilient Azure applications. Understand transient fault handling, request timeouts, and cascading failures.
+description: Learn about best practices for handling errors in resilient Azure applications. Understand transient fault handling, request timeouts, and cascading failures.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/24/2023
+ms.date: 04/26/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-reliability
@@ -14,9 +14,9 @@ ms.custom:
 
 # Error handling for resilient applications in Azure
 
-Many things in a distributed system, such as underlying cloud infrastructure and third-party runtime dependencies, are outside your span of control and your means to test. You can be sure something will fail eventually, so you need to be prepared.
+In a distributed system, ensuring that your application can recover from errors is critical. You can test your applications to prevent errors and failure, but you need to prepare for a wide range of issues. Testing doesn't always catch everything, so you should understand how to handle errors and prevent potential failure.
 
-Ensuring that your application can recover from errors is critical. You can test your applications to prevent errors and failure, but you need to be prepared for when applications encounter issues or fail. Testing doesn't always catch everything, so you need to understand how to handle errors and prevent potential failure.
+Many things in a distributed system, such as underlying cloud infrastructure and third-party runtime dependencies, are outside your span of control and your means to test. You can be sure something will fail eventually, so you need to be prepared.
 
 ## Key points
 
