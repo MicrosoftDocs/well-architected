@@ -33,11 +33,12 @@ You need an [Azure Automation](/azure/automation/automation-security-overview) a
 ## Add modules
 
 After you create the automation account, install the following modules by navigating to the individual module gallery:
-    - [Az.Accounts](/powershell/module/az.accounts/?view=azps-6.6.0add&preserve-view=true)
-    - [Az.RecoveryServices](/powershell/module/az.recoveryservices/?view=azps-6.6.0add&preserve-view=true)
-    - [Az.Resources](/powershell/module/az.resources/)
-    - [Az.ManagedServiceIdentity](/powershell/module/az.managedserviceidentity)
-    - [Az.Graph](/cli/azure/graph?view=azure-cli-latestadd&preserve-view=true)
+
+- [Az.Accounts](/powershell/module/az.accounts/?view=azps-6.6.0add&preserve-view=true)
+- [Az.RecoveryServices](/powershell/module/az.recoveryservices/?view=azps-6.6.0add&preserve-view=true)
+- [Az.Resources](/powershell/module/az.resources/)
+- [Az.ManagedServiceIdentity](/powershell/module/az.managedserviceidentity)
+- [Az.Graph](/cli/azure/graph?view=azure-cli-latestadd&preserve-view=true)
 
 ## Assign permissions to managed identities
 
@@ -192,7 +193,7 @@ PS C:\> $EndTime = $StartTime.AddYears(1)
 PS C:\> New-AzAutomationSchedule -AutomationAccountName "MyAutomationAccount" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DayInterval 1 -ResourceGroupName "ResourceGroup01"
 ```
 
-The first command creates a date object using the `Get-Date` cmdlet and then stores the object in the `$StartDate` variable. Specify a time that's, at least, five minutes in the future.
+The first command creates a date object using the `Get-Date` cmdlet and then stores the object in the `$StartDate` variable. The specified time must be, at least, five minutes in the future.
 
 The second command creates a date object using the `Get-Date` cmdlet and then stores the object in the `$EndDate` variable. The command specifies a future time.
 
