@@ -18,8 +18,6 @@ Building a reliable application in the cloud differs from traditional applicatio
 
 ## Key points
 
-To build reliable cloud applications, keep the following precautions in mind:
-
 - Use availability zones, where applicable, to improve reliability and optimize costs.
 - Design applications to operate when impacted by failures.
 - Use the native resiliency capabilities of platform as a service (PaaS) to support overall application reliability.
@@ -55,7 +53,7 @@ To reduce costs, consider splitting application components and data into groups.
 
 ### Is the application designed to use managed services?
 
-Azure-managed services provide native resiliency capabilities to support overall application reliability. PaaS offerings should be used to leverage these capabilities. PaaS options are easier to configure and administer. You don't need to provision VMs, set up VNets, manage patches and updates, or any of the other overhead associated with running software on a VM. To learn more, see [Use managed services](/azure/architecture/guide/design-principles/managed-services).
+Azure-managed services provide native resiliency capabilities to support overall application reliability. PaaS offerings should be used to leverage these capabilities. PaaS options are easier to configure and administer. You don't need to provision VMs, set up VNets, manage patches and updates, or do all of the other overhead associated with running software on a VM. To learn more, see [Use managed services](/azure/architecture/guide/design-principles/managed-services).
 
 ### Has the application been designed to scale out?
 
