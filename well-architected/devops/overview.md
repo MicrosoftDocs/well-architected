@@ -38,10 +38,10 @@ The Microsoft Azure Well-Architected Framework includes the following articles i
 
 | Operational excellence articles | Description |
 |-------------------|-------------|
-| [Release Engineering: Application Development][app-design] | This article provides guidance on how to design, build, and orchestrate workloads with operational excellence principles in mind. |
-| [Monitoring operations of cloud applications][monitoring] | Monitoring and diagnostics are essential to any workload and are crucial for cloud applications that run in a remote datacenter.  |
+| [Release engineering: application development][app-design] | This article provides guidance on how to design, build, and orchestrate workloads with operational excellence principles in mind. |
+| [Monitoring operations of cloud applications][monitoring] | Monitoring and diagnostics are essential to any workload and are crucial for cloud applications that run in a remote datacenter. |
 | [Performance considerations for your deployment infrastructure][performance] | This describes the monitoring and management of performance and availability of software applications through operational excellence. |
-| [Release Engineering: Deployment][deployment] | How you deploy your application code is one of the key factors that determines your application stability. |
+| [Release engineering: deployment][deployment] | How you deploy your application code is one of the key factors that determines your application stability. |
 | [Repeatable Infrastructure][iac] | Infrastructure provisioning is frequently known as *Deployment Automation* or *Infrastructure as code*. This discipline refers to best practices for deploying the platform where your application runs. |
 | [Testing your application and Azure environment][testing] | Testing is fundamental for preparing for the unexpected and catching mistakes before they affect users. |
 
