@@ -3,7 +3,7 @@ title: Target functional and nonfunctional requirements
 description: Learn about reliability targets for availability, recovery, and nonfunctionality, which involve application and data platforms, networking, and connectivity.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/24/2023
+ms.date: 04/26/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-reliability
@@ -13,7 +13,7 @@ ms.subservice: waf-pillar-reliability
 
 Target functional and nonfunctional requirements include *availability targets* and *recovery targets*. These requirements allow you to measure the uptime and downtime of your workloads. Having clearly defined targets is crucial to have a goal to work and measure against. There are many other requirements that you should consider that improve reliability requirements and meet business expectations.
 
-*Resiliency* means to recover from failures. *Availability* means to run in a healthy state without significant downtime. Building resiliency and availability into your apps begins with gathering requirements. For example, how much downtime is acceptable and how much does potential downtime cost your business?
+*Resiliency* means the ability to recover from failures. *Availability* means to run in a healthy state without significant downtime. Building resiliency and availability into your apps begins with gathering requirements. For example, how much downtime is acceptable and how much does potential downtime cost your business?
 
 ## Key points
 
