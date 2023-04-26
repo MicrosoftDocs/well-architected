@@ -20,7 +20,7 @@ categories:
 
 *Disaster recovery* is the process of restoring application functionality after a catastrophic loss.
 
-In cloud environments, we acknowledge up front that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Testing is one way to minimize these effects. Automate testing your applications where possible, but you need to be prepared for when they fail. When a failure happens, having backup and recovery strategies becomes important.
+In cloud environments, we acknowledge up front that failures happen. Instead of trying to prevent failures altogether, the goal is to minimize the effects of a single failing component. Testing is one way to minimize these effects. You should automate testing of your applications where possible, but you also need to be prepared for when they fail. When a failure happens, having backup and recovery strategies becomes important.
 
 Your tolerance for reduced functionality during a disaster is a business decision that varies from one application to the next. It might be acceptable for some applications to be temporarily unavailable, or partially available with reduced functionality or delayed processing. For other applications, any reduced functionality is unacceptable.
 
@@ -34,7 +34,7 @@ Your tolerance for reduced functionality during a disaster is a business decisio
 
 ## Disaster recovery plan
 
-Start by creating a recovery plan. The plan is considered complete after it's been fully tested. Include the people, processes, and applications needed to restore functionality within the service-level agreement (SLA) you've defined for your customers.
+Start by creating a recovery plan. The plan is considered complete after it's been fully tested. Include the people, processes, and applications needed to restore functionality within the service-level agreement (SLA) that you've defined for your customers.
 
 Consider the following suggestions when you create and test your disaster recovery plan:
 
@@ -51,13 +51,13 @@ Consider the following suggestions when you create and test your disaster recove
 
 If you use [Azure Site Recovery](/azure/site-recovery/site-recovery-overview) to replicate virtual machines (VMs), create a fully automated recovery plan to failover the entire application.
 
-## Test operational readiness
+## Operational readiness testing
 
 Perform an operational readiness test for failover to the secondary region and for failback to the primary region. Many Azure services support manual failover or test failover for disaster recovery drills. You can simulate an outage by shutting down or removing Azure services.
 
 Automated operational responses should be tested frequently as part of the normal application lifecycle to ensure operational effectiveness.
 
-## Test failover and failback
+## Failover and failback testing
 
 Test failover and failback to verify that your application's dependent services come back up in a synchronized manner during disaster recovery. Changes to systems and operations might affect failover and failback functions, but the impact might not be detected until the main system fails or becomes overloaded. Test failover capabilities *before* they're required to compensate for a live problem. Also, be sure dependent services failover and failback in the correct order.
 
@@ -78,7 +78,7 @@ In a reduced functionality scenario:
 - If your application can't access its data because of an Azure network outage, you can run locally with reduced application functionality by using cached data.
 - You can store data in an alternate location until connectivity is restored.
 
-## Automate recovery
+## Recovery automation
 
 The steps required to recover or failover the application to a secondary Azure region in failure situations should be codified, preferably in an automated manner, to ensure capabilities exist to respond effectively to an outage in a way that limits impact. Similar codified steps should also exist to capture the process required to failback the application to the primary region once a failover triggering issue has been addressed.
 
