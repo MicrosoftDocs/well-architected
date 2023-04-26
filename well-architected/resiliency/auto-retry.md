@@ -18,11 +18,11 @@ categories:
 
 # Automatic retry of failed backup jobs
 
-Azure Backup comprehensively protects your data assets in Azure through a simple, secure, and cost-effective solution that requires zero infrastructure. Azure's built-in data protection offers a solution for a wide range of workloads, and helps protect your mission-critical workloads running in the cloud. Azure ensures your backups are always available and managed at scale across your entire backup estate.
+Azure Backup is a simple, secure, and cost-effective solution that comprehensively protects your data assets in Azure and requires zero infrastructure. Azure's built-in data protection covers a wide range of workloads, and helps protect your mission-critical workloads running in the cloud. Azure ensures that your backups are always available and managed at scale across your entire backup estate.
 
 As a backup user or administrator, you can monitor all backup solutions and configure alerts to notify you about important events.
 
-Many failures or outages are transient. You can solve them just by retrying the backup, or the restore job. However, waiting for an engineer to retry the job manually or assign the relevant permission wastes valuable time. Automation is the smarter way to retry failed jobs, and ensures that you continue to meet your target Recovery Point Objectives (RPOs) with one successful backup a day.
+Many failures or outages are transient. You can solve them just by retrying the backup, or the restore job. However, waiting for an engineer to retry the job manually or assign the relevant permission wastes valuable time. Automation is the smarter way to retry failed jobs, and ensures that you continue to meet your target Recovery Point Objectives (RPOs) with one successful backup per day.
 
 Retrieve relevant backup data through [Azure Resource Graph (ARG)](/azure/governance/resource-graph/overview) and combine the data with corrective PowerShell and CLI steps. This article explains how you can retry backups for all failed jobs using ARG and PowerShell.
 
@@ -59,7 +59,7 @@ To assign permissions to managed identities, complete the following steps:
    # Select-AzSubscription -SubscriptionId <SUBSCRIPTIONID> 
    ```
 
-1. Provide an appropriate value for the following variables and then run the script:
+1. Provide an appropriate value for the following variables, and then run the script:
 
    ```azurepowershell
    $resourceGroup = "resourceGroupName" 
@@ -105,7 +105,7 @@ To assign permissions to managed identities, complete the following steps:
 
 ## Create a PowerShell runbook
 
-To create a runbook that managed identities can run, complete the following steps:
+To create a runbook that can be run by managed identities, complete the following steps:
 
 1. Sign in to the [Azure portal](https://ms.portal.azure.com) and navigate to your Automation account.
 1. Under **Process Automation** in the side panel, select **Runbooks**.
@@ -215,7 +215,7 @@ To link a schedule to a runbook by using PowerShell:
 - Use the [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-6.6.0add&preserve-view=true) cmdlet to link a schedule.
 - You can specify parameter values for the runbook with the [Parameters parameter](/azure/automation/shared-resources/schedules#link-a-schedule-to-a-runbook-with-powershell).
 
-For more information about how to specify parameter values, see [Start a Runbook in Azure Automation](/azure/automation/start-runbooks).
+For more information about how to specify parameter values, see [Start a runbook in Azure Automation](/azure/automation/start-runbooks).
 
 The following code example shows how to link a schedule to a runbook by using an Azure Resource Manager cmdlet with parameters:
 
