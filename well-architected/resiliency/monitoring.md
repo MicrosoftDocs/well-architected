@@ -32,7 +32,7 @@ Monitoring and diagnostics are crucial for availability and resiliency. If somet
 
 Alerts are notifications of system health issues that are found during monitoring. Alerts only deliver value if they're actionable and effectively prioritized by on-call engineers through defined operational procedures. Present data in a dashboard or email alert format that makes it easy for an operator to notice problems or trends quickly.
 
-### Service level alerts
+### Service-level alerts
 
 Use Azure Service Health to respond to *service level* events. Azure Service Health provides a view into the health of Azure services and regions. It issues communications that affect the following services:
 
@@ -44,7 +44,7 @@ Azure Service Health alerts should be configured to operationalize Service Healt
 
 For more information, see [Azure Service Health](/azure/service-health/service-health-overview).
 
-### Resource level alerts
+### Resource-level alerts
 
 Use Azure Resource Health to respond to *resource level* events. Azure Resource Health provides information about the health of individual resources such as a specific virtual machine. It's useful to diagnose unavailable resources.
 

@@ -84,7 +84,7 @@ Check functions can run processes to ensure that they produce valid results, mea
 ## Related links
 
 - For information on monitoring metrics, see [Azure Monitor Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
-- For information on using Application Insights, see [Application Insights](/azure/azure-monitor/app/app-insights-overview)
+- For information on using Application Insights, see [Application Insights](/azure/azure-monitor/app/app-insights-overview).
 
 ## Next steps
 

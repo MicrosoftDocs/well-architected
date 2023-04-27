@@ -1,5 +1,5 @@
 ---
-title: Best practices for reliability in apps
+title: Best practices for monitoring reliability in Azure applications
 description: Review best practices for reliability monitoring in Azure applications within the Azure Well-Architected Framework.
 author: martinekuan
 ms.author: martinek
@@ -10,7 +10,7 @@ ms.subservice: waf-pillar-reliability
 products: azure-monitor
 ---
 
-# Monitoring best practices for reliability in Azure applications
+# Best practices for monitoring reliability in Azure applications
 
 This article describes Azure best practices to enhance monitoring Azure applications for reliability. These best practices are derived from our experience with Azure reliability and the experiences of customers like yourself.
 
