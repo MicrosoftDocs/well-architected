@@ -3,10 +3,10 @@ title: Release engineering app development
 description: Learn how to build systems so that your teams can turn ideas into production-delivered software with minimal friction.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/27/2023
+ms.date: 04/28/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-excellence
 products:
   - azure-kubernetes-service
 ---
