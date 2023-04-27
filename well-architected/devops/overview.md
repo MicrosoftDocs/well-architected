@@ -49,7 +49,7 @@ Enforcing resource-level rules through [Azure Policy](/azure/governance/policy/o
 
 Azure Advisor provides a set of [Azure Policy recommendations](/azure/advisor/advisor-operational-excellence-recommendations#use-azure-policy-recommendations) to help you quickly identify opportunities to implement Azure Policy best practices for your workload.
 
-Use the [operational excellence checklist][operational-excellence-checklist] to review your design from a management and operational excellence standpoint.
+Use the [DevOps checklist][devops-checklist] as a starting point to assess your DevOps culture and process.
 
 ## Next steps
 
@@ -67,4 +67,4 @@ Reference the operational excellence principles to guide you in your overall str
 [app-design]: /azure/architecture/framework/devops/release-engineering-app-dev
 
 <!-- checklist -->
-[operational-excellence-checklist]: /azure/architecture/checklist/dev-ops
+[devops-checklist]: /azure/architecture/checklist/dev-ops
