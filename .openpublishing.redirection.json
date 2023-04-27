@@ -144,6 +144,11 @@
 			"source_path": "well-architected/sap/security.md",
 			"redirect_url": "/azure/architecture/framework/sap/get-started",
 			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/scalability/design-checklist.md",
+			"redirect_url": "/azure/architecture/scalability/performance-efficiency",
+			"redirect_document_id": false
 		}
 	]
 }
