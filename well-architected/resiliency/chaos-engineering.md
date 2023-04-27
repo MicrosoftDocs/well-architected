@@ -1,5 +1,5 @@
 ---
-title: Chaos engineering
+title: Use chaos engineering to test Azure applications
 description: Learn about the fundamentals of chaos engineering to improve the reliability of services built on Azure.
 author: martinekuan
 ms.author: martinek
@@ -12,9 +12,9 @@ ms.custom:
   - article
 ---
 
-# Chaos engineering
+# Use chaos engineering to test Azure applications
 
-Chaos engineering is a methodology that helps developers attain consistent reliability by hardening services against production failures. Another way to think about chaos engineering is that it's about embracing the inherent chaos in complex systems and, through experimentation, growing confidence in your solution's ability to handle it.
+*Chaos engineering* is a methodology that helps developers attain consistent reliability by hardening services against production failures. Another way to think about chaos engineering is that it's about embracing the inherent chaos in complex systems and, through experimentation, growing confidence in your solution's ability to handle it.
 
 A common way to introduce chaos is to deliberately inject faults that cause system components to fail. The goal is to observe, monitor, respond to, and improve your system's reliability under adverse circumstances. For example, taking dependencies offline (stopping API apps, shutting down VMs, etc.), restricting access (enabling firewall rules, changing connection strings, etc.), or forcing failover (database level, Front Door, etc.), is a good way to validate that the application is able to handle faults gracefully.
 
@@ -122,7 +122,7 @@ The following questions and answers discuss considerations about chaos engineeri
 
     Simulate production failures. Treat injected faults in the same way that you treat production-level faults. Enforcing a tighter limit on the blast radius lets you to simulate a production environment. Each fault-injection effort must be accompanied by tooling that's designed to inject the types of faults that are relevant to your team's scenarios. Here are two basic ways:
 
-    - Inject faults in a non-production environment, such as [Canary](../devops/release-engineering-testing.md#acceptance-testing) or [Test In Production](https://www.youtube.com/watch?v=MP8fXgxq6xo) (TIP).
+    - Inject faults in a non-production environment, such as [Canary](../devops/release-engineering-testing.md#acceptance-testing) or [Testing In Production](/shows/azure-friday/testing-in-production-with-azure-app-service) (TIP).
     - Partition the production service or environment.
 
     If the state seems severe, halt all faults and roll back the state to its last-known good configuration.
