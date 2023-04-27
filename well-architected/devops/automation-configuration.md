@@ -3,7 +3,7 @@ title: Configure infrastructure
 description: Learn about configuring Azure infrastructure programmatically using bootstrap automation or configuration management tools.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/26/2023
+ms.date: 04/27/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-excellence
@@ -48,36 +48,36 @@ Use the included code sample to deploy a virtual machine and configure a web ser
 
 ### cloud-init
 
-cloud-init is a known industry tool for configuring Linux virtual machines on first boot. Much like the Azure custom script extension, cloud-init lets you install packages and run commands on Linux virtual machines. cloud-init can be used for things like software installation, system configurations, and content staging. Azure includes many cloud-init enable Marketplace virtual machine images across many of the most well-known Linux distributions. For a full list, see [cloud-init support for virtual machines in Azure](/azure/virtual-machines/linux/using-cloud-init).
+cloud-init is a known industry tool for configuring Linux virtual machines on first boot. Much like the Azure custom script extension, cloud-init lets you install packages and run commands on Linux virtual machines. cloud-init can be used for things like software installation, system configurations, and content staging. Azure includes many cloud-init enabled Marketplace virtual machine images across many of the most well-known Linux distributions. For a full list, see [cloud-init support for virtual machines in Azure](/azure/virtual-machines/linux/using-cloud-init).
 
-To use cloud-init, create a text file named *cloud-init.txt* and enter your cloud-init configuration. In this example, the Nginx package is added to the cloud-init configuration.
+1. To use cloud-init, create a text file named *cloud-init.txt* and enter your cloud-init configuration. In this example, the Nginx package is added to the cloud-init configuration.
 
-```yaml
-#cloud-config
-package_upgrade: true
-packages:
-  - nginx
-```
+   ```yaml
+   #cloud-config
+   package_upgrade: true
+   packages:
+     - nginx
+   ```
 
-Create a resource group for the virtual machine.
+1. Create a resource group for the virtual machine.
 
-```azurecli
-az group create --name myResourceGroupAutomate --location eastus
-```
+   ```azurecli
+   az group create --name myResourceGroupAutomate --location eastus
+   ```
 
-Create the virtual machine, specifying the *--custom-data* property with the cloud-init configuration name.
+1. Create the virtual machine, specifying the *--custom-data* property with the cloud-init configuration name.
 
-```azurecli
-az vm create \
-    --resource-group myResourceGroupAutomate \
-    --name myAutomatedVM \
-    --image UbuntuLTS \
-    --admin-username azureuser \
-    --generate-ssh-keys \
-    --custom-data cloud-init.txt
-```
+   ```azurecli
+   az vm create \
+       --resource-group myResourceGroupAutomate \
+       --name myAutomatedVM \
+       --image UbuntuLTS \
+       --admin-username azureuser \
+       --generate-ssh-keys \
+       --custom-data cloud-init.txt
+   ```
 
- On boot, cloud-init uses the systems native package management tool to install Nginx.
+On boot, cloud-init uses the system's native package management tool to install Nginx.
 
 **Learn more**
 
