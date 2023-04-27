@@ -18,7 +18,7 @@ categories:
 
 # Overview of the operational excellence pillar
 
-The operational excellence pillar covers the processes that keep an application running in production. Deployments must be reliable and predictable. Automated deployments reduce the chance of human error. Fast and routine deployment processes don't slow down the release of new features or bug fixes. It's equally important to be able to quickly roll backward or forward if an update has problems is equally important.
+The operational excellence pillar covers the processes that keep an application running in production. Deployments must be reliable and predictable. Automated deployments reduce the chance of human error. Fast and routine deployment processes don't slow down the release of new features or bug fixes. It's equally important to be able to quickly roll backward or forward if an update has problems.
 
 To assess your workload by using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/), see the [Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
