@@ -17,7 +17,7 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 
 ## Application design
 
-- **Design for scaling**. Scaling allows applications to react to variable load by increasing and decreasing the number of roles, queues, and other services they use. The application must be designed with scalability in mind.
+- **Design for scaling**. Scaling allows applications to react to variable load by increasing and decreasing the number of roles, queues, and other services they use. The application must be designed with scaling in mind.
 
   The application and the services it uses must be stateless, to allow requests to be routed to any instance and prevent the addition or removal of instances from adversely affecting users. You should also implement configuration, autodetection, or load balancing, so that as services are added or removed, the application can do the necessary routing.
 
