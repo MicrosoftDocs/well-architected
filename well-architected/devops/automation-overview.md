@@ -1,9 +1,9 @@
 ---
 title: Automation overview of goals, best practices, and types in Azure
-description: Automation overview
+description: Learn how automation improves businesses operations, automates manual processes, and lets engineers focus on tasks that add business value.
 author: martinekuan
 ms.author: martinek
-ms.date: 03/14/2023
+ms.date: 04/27/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -24,13 +24,13 @@ To learn more, see [Deployment considerations for automation](./release-engineer
 
 ## Goals of automation
 
-When automating technical processes, a common approach for some organizations is to automate what they can and leave the more difficult processes for humans to perform manually.
+When you automate technical processes, a common approach for some organizations is to automate what they can and leave the more difficult processes for humans to perform manually.
 
-A goal of automation is to make tools that do what humans can do, only better. For example, a human can perform any given task once. But when the task requires repetitive runs, especially over long time periods, an automated system is better equipped to do this with more predictable results that are error-free. Increasing speed is another goal in automation. When you practice these automation goals, you can build systems that are faster, repetitive, and can run on a daily basis.
+A goal of automation is to make tools that do what humans can do, only better. For example, a human can perform any given task once. But when the task requires repetitive runs, especially over long time periods, an automated system is better equipped to do that work with more predictable, error-free results. Increasing speed is another goal in automation. When you practice these automation goals, you can build systems that are faster, repetitive, and can run on a daily basis.
 
 ## Automate toil to improve efficiency
 
-Most automation involves a percentage of *toil*. Toil is the operational work that is related to a process that is manual, repetitive, can be automated, and has minimal value. It is counterproductive to automation but in many organizations, a small amount of toil is unavoidable. It becomes an issue when too much toil slows progress. A project's production velocity will decrease if engineers are continuously interrupted by manual tasks attributed to toil, either planned or unplanned. Too much toil can impact job satisfaction. Engineers become dissatisfied when they find themselves spending too much time on operational toil rather than on other projects.
+Most automation involves a percentage of *toil*. Toil is the operational work that is related to a process that is manual, repetitive, can be automated, and has minimal value. It's counterproductive to automation but in many organizations, a small amount of toil is unavoidable. It becomes an issue when too much toil slows progress. A project's production velocity decreases if engineers are continuously interrupted by manual tasks attributed to toil, either planned or unplanned. Too much toil can impact job satisfaction. Engineers become dissatisfied when they find themselves spending too much time on operational toil rather than on other projects.
 
 Automation should be developed, and increased, so engineers can eliminate future toil. By reducing toil, engineers can concentrate on innovating business solutions.
 
@@ -38,10 +38,10 @@ For more information, see [Toil automation](https://www.coursera.org/lecture/dev
 
 ## Automation best practices
 
-- **Ensure consistency:** The more manual processes are involved, the more prone to human error. This can lead to mistakes, oversights, reduction of data quality, and reliability problems.
-- **Centralize mistakes:** Choose a platform to allow you to fix bugs in one place in order to fix them everywhere. This reduces the chance of error and the possibility of the bug being re-introduced.
+- **Ensure consistency:** The more manual processes are involved, the more prone to human error. Manual processes can lead to mistakes, oversights, reduction of data quality, and reliability problems.
+- **Centralize mistakes:** Choose a platform that lets you fix bugs in one place in order to fix them everywhere. This best practice reduces the chance of error and the possibility of the bug being reintroduced.
 - **Identify issues quickly:** Complex issue may not always be able to be identified in a timely manner. However, with good automation, detection of these issues should occur quickly.
-- **Maximize employee productivity:** Automation leads to more innovative solutions, and in general provides more value to the business. This in turn raises morale and job satisfaction. Once a process is automated, training and maintenance can be greatly reduced or eliminated. This frees engineers to spend less time on manual processes and more time on automating business solutions.
+- **Maximize employee productivity:** Automation leads to more innovative solutions, and in general provides more value to the business. This improvement in turn raises morale and job satisfaction. Once a process is automated, training and maintenance can be greatly reduced or eliminated. This shift frees engineers to spend less time on manual processes and more time on automating business solutions.
 
 ## Types of automation
 
@@ -75,7 +75,7 @@ Configuration tools can also be used to [configure and manage](./automation-conf
 
 ### Operational tasks
 
-As the demand for speed in performing operational tasks increases over time, you are expected to deliver things faster and faster. Manually performing operational tasks will fail to scale as demand increases.
+As the demand for speed in performing operational tasks increases over time, you're expected to deliver things faster and faster. Manually performing operational tasks will fail to scale as demand increases.
 This is where automation can help. To meet on-demand delivery using an automation platform, you need to develop automation components (such as runbooks and configurations), create integrations to systems that are already in place efficiently, and operate and troubleshoot.
 
 Advantages of automating operational tasks include:
