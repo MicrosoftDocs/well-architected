@@ -13,7 +13,7 @@ ms.subservice: waf-pillar-reliability
 
 This article lists Azure best practices to enhance the testing of Azure applications for reliability. These best practices are derived from our experience with Azure reliability and the experiences of customers like yourself.
 
-During the architectural phase, focus on implementing practices that meet your business requirements, and ensure that applications run in a healthy state without significant downtime.
+While you design the architecture, focus on implementing practices that meet your business requirements, and ensure that applications run in a healthy state without significant downtime.
 
 ## Test regularly
 
@@ -61,6 +61,6 @@ By implementing the Command and Query Responsibility Segregation (CQRS) pattern 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Monitoring](./monitor-checklist.md)
+> [Monitoring for reliability](./monitor-checklist.md)
 
 Go back to the main article: [Checklist for reliability testing](test-checklist.md)
