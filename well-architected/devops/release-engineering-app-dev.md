@@ -39,6 +39,8 @@ When it comes to effectively emulating a production environment, you may choose 
 
 Some Linux tools are a handy solution to this, and they are now available on Windows machines too. You can use them by configuring the Windows Subsystem for Linux.
 
+Other tools enable you to provide developers with a pre-configured environment that they can spin up whenever they need it, providing a consistent environment. [Azure Deployment Environments](/azure/deployment-environments/) helps you to emulate environments, such as sandbox, testing, staging, or production.
+
 Finally, tools like Bridge for Kubernetes allow you to debug code in your development environment while being connected to a Kubernetes cluster. This configuration can be helpful when working on containerized microservices. You can work on one service locally while services that you take a dependency on are spun up remotely.
 
 ### Examples of "inner-loop" development tools
@@ -50,6 +52,8 @@ A development team might choose some of the pieces of software below when develo
 - The [Windows Subsystem for Linux](/windows/wsl/) provides a Linux environment on your Windows machines, including many command-line tools, utilities, and Linux applications.
 - [Bridge to Kubernetes](/visualstudio/containers/bridge-to-kubernetes) allows you to run and debug code on your development system while connected to a Kubernetes cluster. This configuration can be helpful when working on microservice type architectures. 
 - [Podman](https://developers.redhat.com/articles/podman-next-generation-linux-container-tools) is an open-source tool for working with containers.
+- [Microsoft Dev Box](/azure/dev-box/) provides a safe development environment for developers to create code, supported through virtual networks and RBAC permissions that control who can access the organizations network and who can use the dev box.
+- [Azure Deployment Environments](/azure/deployment-environments/)  empowers development teams to quickly and easily spin up app infrastructure with project-based templates that establish consistency and best practices while maximizing security. 
 
 ## Source control
 
