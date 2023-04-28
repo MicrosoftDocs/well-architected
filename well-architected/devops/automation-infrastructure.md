@@ -205,13 +205,13 @@ Take note, the Terraform provider for Azure is an abstraction on top of Azure AP
 
 ## Automate infrastructure deployment with Azure Deployment Environments
 
-Organizations that support multiple development teams working in multiple environments require repeatable, consistent, and secure environments. Development infrastructure administration (dev infra admin) teams must be able to provide developers with environments that include the preconfigured resources needed for different environment types, like development, test, and production.
+For organizations that support multiple development teams working in multiple environments, it is essential to have repeatable, consistent, and secure environments. Development infrastructure administrators (dev infra admins) are responsible for managing and controlling access to the resources that developers need. Developers typically work on multiple projects, and might need several different development environments. Developers are usually organized in development teams, led by a development team lead.
 
-Ideally, developers should be able to create a new instance of an environment appropriate for their project quickly and easily, rather than having to wait for the assistance of the dev infra team.
+Dev infra admin teams must be able to provide developers with environments that include the preconfigured resources needed for different environment types, like development, test, and production. Ideally, developers should be able to create a new instance of an environment appropriate for their project quickly and easily, rather than having to wait for the dev infra team.
 
 By using project level templates, organizations can create environment templates that define the resources and configuration required for each project. Controlling access to each project enables the organization to set an identity security perimeter, so only approved admins can manage the project, and only approved developers can use it.
 
-Creating environments by using templates helps organizations to avoid the pitfalls of manually creating each environment. Creating environments manually is time-consuming, often results in inconsistencies, and presents difficulties in ensuring compliance.
+Creating environments by using templates helps organizations to avoid the pitfalls of manually creating each environment. Creating environments manually is time-consuming, often results in inconsistencies, and presents difficulties in ensuring compliance. When evaluating the use of templates, organizations should consider the overhead of creating new templates, maintaining existing templates, and retiring unused templates.
 
 Azure Deployment Environments enables development teams deploy application infrastructure with project-based templates. Dev infra admins can deploy a preconfigured resources defined by an IaC template. Environments can be platform as a service (PaaS) or infrastructure as a service (IaaS) environments based on the content of the template.
 
