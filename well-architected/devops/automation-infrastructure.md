@@ -213,7 +213,7 @@ By using project level templates, organizations can create environment templates
 
 Creating environments by using templates helps organizations to avoid the pitfalls of manually creating each environment. Creating environments manually is time-consuming, often results in inconsistencies, and presents difficulties in ensuring compliance. When evaluating the use of templates, organizations should consider the overhead of creating new templates, maintaining existing templates, and retiring unused templates.
 
-Azure Deployment Environments enables development teams deploy application infrastructure with project-based templates. Dev infra admins can deploy a preconfigured resources defined by an IaC template. Environments can be platform as a service (PaaS) or infrastructure as a service (IaaS) environments based on the content of the template.
+Azure Deployment Environments enables development teams deploy application infrastructure with project-based templates. Dev infra admins can deploy preconfigured resources defined by an IaC template. Environments can be platform as a service (PaaS) or infrastructure as a service (IaaS) environments based on the content of the template.
 
 Dev infra admins can automate development infrastructure deployment by using Azure Deployment Environments. It automates the process of applying policies, permissions, and settings on environments, controlling the resource configuration that developers can create, and centrally tracking environments across projects by:
 
