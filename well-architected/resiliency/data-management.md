@@ -60,7 +60,7 @@ Azure SQL Database provides two types of recovery: geo-restore and active geo-re
 
 [Geo-restore](/azure/sql-database/sql-database-recovery-using-backups/#geo-restore) provides the default recovery option when the database is unavailable because of an incident in the region where your database is hosted. It's also available with Basic, Standard, and Premium databases.
 
-Similar to point-in-time restore, geo-restore relies on database backups in geo-redundant Azure storage. It restores from the geo-replicated backup copy, and therefore is resilient to the storage outages in the primary region. For more information, see [Azure SQL Database disaster recovery guidance](/azure/sql-database/sql-database-disaster-recovery).
+Similar to point-in-time restore, geo-restore relies on database backups in geo-redundant Azure storage. It restores from the geo-replicated backup copy, and therefore is resilient to the storage outages in the primary region. For more information, see [Azure SQL Database disaster recovery guidance](/azure/azure-sql/database/disaster-recovery-guidance).
 
 #### Active geo-replication
 
