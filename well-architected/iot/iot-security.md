@@ -3,7 +3,7 @@ title: Security in your IoT workload
 description: See guidance and recommendations that apply to the security pillar in a well-architected IoT workload.
 author: asergaz
 ms.author: sergaz
-ms.date: 01/27/2023
+ms.date: 04/27/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
