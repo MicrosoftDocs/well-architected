@@ -58,11 +58,15 @@ Azure SQL Database provides two types of recovery: geo-restore and active geo-re
 
 #### Geo-restore
 
-[Geo-restore](/azure/sql-database/sql-database-recovery-using-backups/#geo-restore) provides the default recovery option when the database is unavailable because of an incident in the region where your database is hosted. It's also available with Basic, Standard, and Premium databases.  Similar to point-in-time restore, geo-restore relies on database backups in geo-redundant Azure storage. It restores from the geo-replicated backup copy, and therefore is resilient to the storage outages in the primary region. For more information, see [Azure SQL Database disaster recovery guidance](/azure/sql-database/sql-database-disaster-recovery).
+[Geo-restore](/azure/sql-database/sql-database-recovery-using-backups/#geo-restore) provides the default recovery option when the database is unavailable because of an incident in the region where your database is hosted. It's also available with Basic, Standard, and Premium databases.
+
+Similar to point-in-time restore, geo-restore relies on database backups in geo-redundant Azure storage. It restores from the geo-replicated backup copy, and therefore is resilient to the storage outages in the primary region. For more information, see [Azure SQL Database disaster recovery guidance](/azure/sql-database/sql-database-disaster-recovery).
 
 #### Active geo-replication
 
-[Active geo-replication](/azure/sql-database/sql-database-geo-replication-overview) is available for all database tiers. It's designed for applications that have more aggressive recovery requirements than geo-restore can offer. Using active geo-replication, you can create up to four readable secondaries on servers in different regions. You can initiate failover to any of the secondaries. Active geo-replication can be used to support the application upgrade or relocation scenarios and load balancing for read-only workloads. For more information, see [Configure active geo-replication and failover](/azure/sql-database/sql-database-geo-replication-portal).
+[Active geo-replication](/azure/sql-database/sql-database-geo-replication-overview) is available for all database tiers. It's designed for applications that have more aggressive recovery requirements than geo-restore can offer. Using active geo-replication, you can create up to four readable secondaries on servers in different regions. You can initiate failover to any of the secondaries.
+
+Active geo-replication can be used to support the application upgrade or relocation scenarios and load balancing for read-only workloads. For more information, see [Configure active geo-replication and failover](/azure/sql-database/sql-database-geo-replication-portal).
 
 For information on how to design and implement applications and applications upgrade without downtime, see [Designing globally available services using Azure SQL Database](/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery) and [Managing rolling upgrades of cloud applications by using SQL Database active geo-replication](/azure/sql-database/sql-database-manage-application-rolling-upgrade).
 
@@ -74,7 +78,7 @@ Various options are available for recovery and high availability for SQL Server 
 
 You can use SQL Always On availability groups for high availability by creating a single availability group that includes the SQL Server instances in both regions.
 
-As an example, the [Multi-region N-tier application](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server) reference architecture shows a set of practices for running an N-tier application in multiple Azure regions to achieve availability and a robust disaster recovery infrastructure. It uses a SQL Server Always On availability group and Azure Traffic Manager.
+As an example, the [Multi-region N-tier application](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server) reference architecture shows practices for running an N-tier application in multiple Azure regions to achieve availability and a robust disaster recovery infrastructure. It uses a SQL Server Always On availability group and Azure Traffic Manager.
 
 ## Storage resiliency
 
@@ -82,11 +86,11 @@ Azure Storage provides data resiliency through automated replicas. However, this
 
 - *Block blobs*. Create a point-in-time snapshot of each block blob. For more information, see [Create a snapshot of a blob](/rest/api/storageservices/creating-a-snapshot-of-a-blob).
 
-  For each snapshot, you're only charged for the storage required to store the differences within the blob since the last snapshot state. The snapshots are dependent on the existence of the original blob that they're based on. A copy operation to another blob or even another storage account is advisable. This approach ensures that backup data is properly protected against accidental deletion.
+  For each snapshot, you're only charged for the storage required to store the differences within the blob since the last snapshot state. The snapshots are dependent on the existence of the original blob that they're based on. We recommend a copy operation to another blob or even another storage account. This approach ensures that backup data is properly protected against accidental deletion.
 
   You can use [AzCopy](/azure/storage/common/storage-use-azcopy) or [Azure PowerShell](/azure/storage/common/storage-powershell-guide-full) to copy the blobs to another storage account.
 
-- *Files*. Use [share snapshots](/azure/storage/files/storage-snapshots-files), or use AzCopy or PowerShell to copy your files to another storage account.
+- *Files*. Use [share snapshots](/azure/storage/files/storage-snapshots-files), or use AzCopy or PowerShell, to copy your files to another storage account.
 
 - *Tables*. Use AzCopy to export the table data into another storage account in another region.
 
