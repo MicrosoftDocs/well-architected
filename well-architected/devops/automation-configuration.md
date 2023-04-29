@@ -3,7 +3,7 @@ title: Configure infrastructure
 description: Learn about configuring Azure infrastructure programmatically using bootstrap automation or configuration management tools.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/27/2023
+ms.date: 04/28/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-excellence
@@ -13,7 +13,7 @@ ms.custom:
 
 # Configure infrastructure
 
-When you work with Azure, many services can be created and configured programmatically using automation or infrastructure as code tooling. These tools access Azure through the exposed REST APIs or what we refer to as the [Azure control plane](/azure/azure-resource-manager/management/control-plane-and-data-plane#control-plane). For example, an Azure Network Security Group can be deployed, and security group rules created using an Azure Resource Manager template. The Network Security Group and its configuration are exposed through the Azure control plane and natively accessible.
+When you work with Azure, many services can be created and configured programmatically by using automation or infrastructure as code tooling. These tools access Azure through the exposed REST APIs or what we refer to as the [Azure control plane](/azure/azure-resource-manager/management/control-plane-and-data-plane#control-plane). For example, an Azure Network Security Group can be deployed, and security group rules created using an Azure Resource Manager template. The Network Security Group and its configuration are exposed through the Azure control plane and natively accessible.
 
 Other configurations, such as installing software on a virtual machine (VM), adding data to a database, or starting pods in an Azure Kubernetes Service cluster can't be accessed through the Azure control plane. These actions require a different set of configuration tools. These configurations are on the [Azure data plane](/azure/azure-resource-manager/management/control-plane-and-data-plane#data-plane) side, or not exposed through Azure REST APIs. The data plane enables tools to use agents, networking, or other access methods to provide resource-specific configuration options.
 
@@ -25,9 +25,9 @@ When deploying to Azure, you might need to run post-deployment VM configuration 
 
 ### Azure VM extensions
 
-Azure VM extensions are small packages that run post-deployment configuration and automation on Azure VMs. Several extensions are available for many different configuration tasks, such as running scripts, configuring antimalware solutions, and configuring logging solutions. These extensions can be installed and run on VMs using an ARM template, the Azure CLI, Azure PowerShell module, or the Azure portal. Each Azure VM has a VM Agent installed, and this agent manages the lifecycle of the extension.
+Azure VM extensions are small packages that run post-deployment configuration and automation on Azure VMs. Several extensions are available for many different configuration tasks, such as running scripts, configuring antimalware solutions, and configuring logging solutions. These extensions can be installed and run on VMs by using an ARM template, the Azure CLI, Azure PowerShell module, or the Azure portal. Each Azure VM has a VM Agent installed, and this agent manages the lifecycle of the extension.
 
-A typical VM extension use case is to use a custom script extension to install software, run commands, and perform configurations on a virtual machine or Azure Virtual Machine Scale Sets. The custom script extension uses the Azure VM Agent to download and run a script. The custom script extensions can be configured to run as part of infrastructure as code deployments such that the VM is created, and then the script extension is run on the VM. Extensions can also be run outside of an Azure deployment using the Azure CLI, PowerShell module, or the Azure portal.
+A typical VM extension use case is to use a custom script extension to install software, run commands, and perform configurations on a virtual machine or Azure Virtual Machine Scale Sets. The custom script extension uses the Azure VM Agent to download and run a script. The custom script extensions can be configured to run as part of infrastructure as code deployments such that the VM is created, and then the script extension is run on the VM. Extensions can also be run outside of an Azure deployment by using the Azure CLI, PowerShell module, or the Azure portal.
 
 In the following example, the Azure CLI is used to deploy a custom script extension to an existing virtual machine, which installs a Nginx webserver.
 
@@ -41,10 +41,10 @@ az vm extension set \
 
 **Learn more**
 
-Use the included code sample to deploy a virtual machine and configure a web server on that machine with the custom script extension.
+Use the included code sample to deploy a virtual machine and configure a web server on that machine with the custom script extension. For more information, see: 
 
-- [Documentation: Azure VM extensions](/azure/virtual-machines/extensions/overview)
-- [Code Samples: Configure a VM with script extension during Azure deployment](/samples/mspnp/samples/azure-well-architected-framework-sample-custom-script-extension/)
+- [Azure virtual machine extensions and features](/azure/virtual-machines/extensions/overview)
+- [Azure Well Architected Framework sample (custom script extension)](/samples/mspnp/samples/azure-well-architected-framework-sample-custom-script-extension/)
 
 ### cloud-init
 
@@ -59,13 +59,13 @@ cloud-init is a known industry tool for configuring Linux virtual machines on fi
      - nginx
    ```
 
-1. Create a resource group for the virtual machine.
+1. Create a resource group for the VM.
 
    ```azurecli
    az group create --name myResourceGroupAutomate --location eastus
    ```
 
-1. Create the virtual machine, specifying the *--custom-data* property with the cloud-init configuration name.
+1. Create the VM, specifying the *--custom-data* property with the cloud-init configuration name.
 
    ```azurecli
    az vm create \
@@ -81,13 +81,13 @@ On boot, cloud-init uses the system's native package management tool to install 
 
 **Learn more**
 
-- [Documentation: cloud-init support for virtual machines in Azure](/azure/virtual-machines/linux/using-cloud-init#canonical)
+- [cloud-init support for virtual machines in Azure](/azure/virtual-machines/linux/using-cloud-init#canonical)
 
 ### Azure deployment script resource
 
-When you perform Azure deployments, you might need to run arbitrary code for bootstrapping things like managing user accounts, Kubernetes pods, or querying data from a non-Azure system. Because none of these operations are accessible through the Azure control plane, some other mechanism is required for performing this automation. To run arbitrary code with an Azure deployment, check out the `Microsoft.Resources/deploymentScripts` Azure resource.
+When you perform Azure deployments, you might need to run arbitrary code for bootstrapping things like managing user accounts, Kubernetes pods, or querying data from a non-Azure system. Because none of these operations are accessible through the Azure control plane, some other mechanism is required for performing this automation. To run arbitrary code with an Azure deployment, see the `Microsoft.Resources/deploymentScripts` Azure resource.
 
-The deployment script resource behaves similar to any other Azure resource:
+The deployment script resource behaves like any other Azure resource in the following ways:
 
 - Can be used in an ARM template.
 - Contains ARM template dependencies on other resources.
@@ -131,7 +131,7 @@ Configuration management tools can be used to configure and manage the ongoing c
 
 ### Azure Automation State Configuration
 
-Azure Automation State Configuration is a configuration management solution built on top of PowerShell Desired State Configuration (DSC). State configuration works with Azure virtual machines, on-premises machines, and machines in a cloud other than Azure. Using state configuration, you can import PowerShell DSC resources and assign them to many virtual machines from a central location. Once each endpoint has evaluated and applied the desired state, state compliance is reported to Azure and can be seen on a built-in dashboard.
+Azure Automation State Configuration is a configuration management solution built on top of PowerShell Desired State Configuration (DSC). State configuration works with Azure virtual machines, on-premises machines, and machines in a cloud other than Azure. When you use state configuration, you can import PowerShell DSC resources and assign them to many virtual machines from a central location. Once each endpoint has evaluated and applied the desired state, state compliance is reported to Azure and can be seen on a built-in dashboard.
 
 The following example uses PowerShell DSC to ensure the NGINX has been installed on Linux systems.
 
@@ -157,8 +157,8 @@ Once the module imports into Azure Automation State Configuration and is assigne
 
 Use the included code sample to deploy Azure Automation State Configuration and several Azure virtual machines. The virtual machines are also onboarded to state configuration, and a configuration applied.
 
-- [Documentation: Get started with Azure Automation State Configuration](/azure/automation/automation-dsc-overview)
-- [Example scenario: Azure Automation State Configuration](/azure/architecture/example-scenario/state-configuration/state-configuration)
+- [Get started with Azure Automation State Configuration](/azure/automation/automation-dsc-overview)
+- [Azure Automation State Configuration example scenario](/azure/architecture/example-scenario/state-configuration/state-configuration)
 
 ### Chef
 
