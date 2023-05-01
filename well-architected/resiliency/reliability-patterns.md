@@ -6,8 +6,8 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/02/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-reliability
 ms.custom:
   - design-pattern
 keywords:
@@ -28,7 +28,7 @@ Availability is measured as a percentage of uptime, and defines the proportion o
 | [Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling) | Use a queue that acts as a buffer between a task and a service that it invokes to smooth intermittent heavy loads. |
 | [Throttling](/azure/architecture/patterns/throttling) | Control the consumption of resources by an instance of an application, an individual tenant, or an entire service. |
 
-To mitigate against availability risks from malicious Distributed Denial of Service (DDoS) attacks, implement the native [Azure DDoS protection](/azure/virtual-network/ddos-protection-overview) service or a third party capability.
+To mitigate against availability risks from malicious distributed denial of service (DDoS) attacks, implement the native [Azure DDoS protection](/azure/virtual-network/ddos-protection-overview) service or a third-party capability.
 
 ## High availability
 

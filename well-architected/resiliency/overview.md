@@ -5,8 +5,8 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/02/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-reliability
 ms.custom:
   - overview
 products:
@@ -65,7 +65,7 @@ The reliability pillar covers the following topics and best practices to help yo
 | [Reliability design principles](principles.md) | These critical principles are used as lenses to assess the reliability of an application deployed on Azure. |
 | [Design for reliability](design-checklist.md) | Consider how systems use availability zones, perform scalability, respond to failure, and other strategies that optimize reliability in application design. |
 | [Resiliency checklist for specific Azure services](/azure/architecture/checklist/resiliency-per-service) | Every technology has its own particular failure modes, which you must consider when designing and implementing your application. Use this checklist to review the resiliency considerations for specific Azure services. |
-| [Target and nonfunctional requirements](design-requirements.md) | Target and nonfunctional requirements, such as availability targets and recovery targets, allow you to measure the uptime and downtime of your workloads. Having clearly defined targets is crucial to have a goal to work and measure against. |
+| [Target functional and nonfunctional requirements](design-requirements.md) | Target functional and nonfunctional requirements, such as availability targets and recovery targets, allow you to measure the uptime and downtime of your workloads. Having clearly defined targets is crucial to have a goal to work and measure against. |
 | [Resiliency and dependencies](design-resiliency.md) | Building failure recovery into the system should be part of the architecture and design phases from the beginning to avoid the risk of failure. Dependencies are required for the application to fully operate. |
 | [High availability using availability zones](/azure/architecture/high-availability/building-solutions-for-high-availability) | Availability zones can be used to spread a solution across multiple zones within a region, allowing for an application to continue functioning when one zone fails. |
 | [Available services](/azure/availability-zones/region-types-service-categories-azure) | Availability of services across Azure regions depends on a region's type. Azure's general policy on deploying services into any given region is primarily driven by region type, service categories, and customer demand. |
