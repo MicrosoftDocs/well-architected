@@ -3,7 +3,7 @@ title: Overview of IoT workloads
 description: Learn how IoT components, architecture patterns, design areas, and architecture layers relate to well-architected IoT workloads.
 author: asergaz
 ms.author: sergaz
-ms.date: 01/27/2023
+ms.date: 04/27/2023
 ms.topic: overview
 ms.service: architecture-center
 ms.subservice: well-architected
