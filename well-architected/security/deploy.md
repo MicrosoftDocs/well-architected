@@ -81,3 +81,4 @@ We recommend monitoring activities that maintain the security posture. These act
 - [Agile Principles in Practice](/devops/plan/how-microsoft-plans-devops)
 - [Platform automation and DevOps](/azure/cloud-adoption-framework/ready/enterprise-scale/platform-automation-and-devops)
 - [PsRules for Azure](https://aka.ms/ps-rule-azure)
+- [Azure Deployment Environments](/azure/deployment-environments/)

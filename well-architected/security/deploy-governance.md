@@ -87,6 +87,7 @@ Having multiple branches is recommended where each branch has a purpose and acce
 - [About branches and branch policies](/azure/devops/repos/git/branch-policies-overview?view=azure-devops&preserve-view=true)
 - [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance?view=azure-devops&preserve-view=true)
 - [Release deployment control using gates](/azure/devops/pipelines/release/approvals/gates?view=azure-devops&preserve-view=true)
+- [Azure Deployment Environments](/azure/deployment-environments/)
 
 ## Next
 
