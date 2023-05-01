@@ -1,12 +1,12 @@
 ---
 title: Release Engineering Continuous integration
-description: Examine continuous integration (CI) in release engineering. Explore using Azure CI pipelines, including source control integration, test integration, and more.
+description: Learn how to use continuous integration (CI) in release engineering by using Azure CI pipelines, source control integration, test integration, and more.
 author: martinekuan
 ms.author: martinek
-ms.date: 03/14/2023
+ms.date: 05/01/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-excellence
 products:
   - azure-devops
 ---
@@ -38,12 +38,10 @@ A continuous integration pipeline involves a piece of software, in many cases, c
 
 Many solutions provide continuous integration pipeline capabilities.
 
-**Learn more**
-
 To learn how to create a continuous integration pipeline with either GitHub or Azure DevOps, see these articles:
 
-- [Azure DevOps: Create your first pipeline](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops)
-- [GitHub Actions: Setting up continuous integration using workflow templates](https://docs.github.com/en/free-pro-team@latest/actions/guides/setting-up-continuous-integration-using-workflow-templates)
+- [Create your first pipeline](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops)
+- [Using starter workflows](https://docs.github.com/en/free-pro-team@latest/actions/guides/setting-up-continuous-integration-using-workflow-templates)
 
 ### Source Control Integration
 
