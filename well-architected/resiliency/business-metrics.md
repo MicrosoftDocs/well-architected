@@ -42,7 +42,7 @@ Here are some other considerations when defining an SLA:
 
 ### Identify dependencies
 
-Perform dependency-mapping exercises to identify internal and external dependencies. Examples include dependencies relating to security or identity, such as Active Directory or third-party services. Third-party services might include a payment provider or e-mail messaging service.
+Perform dependency-mapping exercises to identify internal and external dependencies. Examples include dependencies relating to security or identity, such as Active Directory or third-party services. Third-party services might include a payment provider or email messaging service.
 
 Pay particular attention to external dependencies that might be a single point of failure or cause bottlenecks. If a workload requires `99.99%` uptime but depends on a service with a `99.9%` SLA, that service can't be a single point of failure in the system. One remedy is to have a fallback path in case the service fails. Alternatively, take other measures to recover from a failure in that service.
 
@@ -127,4 +127,4 @@ The expected chance that the application fails in all regions at the same time i
 - The combined SLA for two regions = `(1 − (1 − 0.9995) ^ 2) = 99.999975%`
 - The combined SLA for four regions =  `(1 − (1 − 0.9995) ^ 4)  = 99.999999%`
 
-The [SLA for Traffic Manager](https://azure.microsoft.com/support/legal/sla/traffic-manager/v1_0/) is also a factor. Failing over isn't instantaneous in active-passive configurations, which can result in downtime during a failover. See [Traffic Manager endpoint monitoring](/azure/traffic-manager/traffic-manager-monitoring).
+The [SLA for Traffic Manager](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services) is also a factor. Failing over isn't instantaneous in active-passive configurations, which can result in downtime during a failover. See [Traffic Manager endpoint monitoring](/azure/traffic-manager/traffic-manager-monitoring).
