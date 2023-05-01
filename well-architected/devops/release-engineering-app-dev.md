@@ -3,7 +3,7 @@ title: Release engineering app development
 description: Learn how to build systems so that your teams can turn ideas into production-delivered software with minimal friction.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/28/2023
+ms.date: 05/01/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-excellence
@@ -17,7 +17,7 @@ One of the primary goals of adopting modern release management strategies is to 
 
 However, release engineering doesn't start with fancy deployment software, multiple deployment environments, or Kubernetes clusters. Before examining how we can quickly and reliably release software, we need to first look at how software is developed.
 
-Not only has the introduction of cloud computing significantly affected how software is delivered and run, it has also had a huge downstream effect on how software is developed. For example, the introduction of container technology has changed how we can host, scale, and deprecate software. That said, containers have also impacted dependency management, host environment, and tooling as we develop software.
+Not only has the introduction of cloud computing affected how software is delivered and run, it has also had a huge downstream effect on how software is developed. For example, the introduction of container technology has changed how we can host, scale, and deprecate software. That said, containers have also impacted dependency management, host environment, and tooling as we develop software.
 
 This article details many practices to consider when building strategies for developing for the cloud, including:
 
@@ -26,7 +26,7 @@ This article details many practices to consider when building strategies for dev
 
 ## Development environments
 
-When you develop software for the cloud or any other environment, care needs to be taken to ensure that the development environment is set up for success. When setting up a development environment, you might consider the following:
+When you develop software for the cloud or any other environment, care needs to be taken to ensure that the development environment is set up for success. When setting up a development environment, you might consider the following questions:
 
 - How do I ensure that all dependencies are in place?
 - How can I best configure my development environment to emulate a production environment?
@@ -39,7 +39,9 @@ When it comes to effectively emulating a production environment, you might choos
 
 Some Linux tools are a handy solution, and they're available on Windows machines too. You can use them by configuring the Windows Subsystem for Linux.
 
-Finally, tools like Bridge for Kubernetes allow you to debug code in your development environment while being connected to a Kubernetes cluster. This configuration is helpful when working on containerized microservices. You can work on one service locally while services that you take a dependency on are spun up remotely.
+Other tools enable you to provide developers with a preconfigured environment that they can spin up whenever they need it, providing a consistent environment. [Azure Deployment Environments](/azure/deployment-environments/) helps you to emulate environments, such as sandbox, testing, staging, or production.
+
+Finally, tools like Bridge for Kubernetes allow you to debug code in your development environment while being connected to a Kubernetes cluster. This configuration can be helpful when working on containerized microservices. You can work on one service locally while services that you take a dependency on are spun up remotely.
 
 ### Examples of "inner-loop" development tools
 
@@ -50,6 +52,8 @@ A development team might choose some of the following pieces of software when de
 - [Windows Subsystem for Linux](/windows/wsl/) provides a Linux environment on your Windows machines, including many command-line tools, utilities, and Linux applications.
 - [Bridge to Kubernetes](/visualstudio/containers/bridge-to-kubernetes) allows you to run and debug code on your development system while connected to a Kubernetes cluster. This configuration is helpful when working on microservice type architectures.
 - [Podman](https://developers.redhat.com/articles/podman-next-generation-linux-container-tools) is an open-source tool for working with containers.
+- [Microsoft Dev Box](/azure/dev-box/) provides a safe development environment for developers to create code, supported through virtual networks and RBAC permissions that control who can access the organizations network and who can use the dev box.
+- [Azure Deployment Environments](/azure/deployment-environments/)  empowers development teams to quickly and easily spin up app infrastructure with project-based templates that establish consistency and best practices while maximizing security. 
 
 ## Source control
 
@@ -73,7 +77,7 @@ The following image demonstrates how Git and GitHub are used to see the proposed
 
 When you use source control systems, you can create branches in an existing repo and your own copies of the software. A copy of an existing repo is called a "fork".
 
-While branches are usually short lived and will eventually be merged back into a repo via a pull request, forks are usually around for longer. While they can also be merged back via a pull request, some forks develop independently from their origin repo.
+While branches are usually short lived and will eventually be merged back into a repo via a pull request, forks usually remain for longer. While they can also be merged back via a pull request, some forks develop independently from their origin repo.
 
 You can review our documentation on [Forks](/azure/devops/repos/git/forks) and [Branches](/azure/devops/repos/git/branch-policies-overview) to find out more about the differences and similarities between them.
 
