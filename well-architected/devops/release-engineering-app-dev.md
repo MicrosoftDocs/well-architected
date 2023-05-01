@@ -11,7 +11,7 @@ products:
   - azure-kubernetes-service
 ---
 
-# Release engineering: Application Development
+# Release engineering: Application development
 
 One of the primary goals of adopting modern release management strategies is to build systems that let your teams turn ideas into production-delivered software with as little friction as possible. Throughout this section of the Well-Architected Framework, methods and tools for quickly and reliably delivering software are examined. You'll learn about continuous deployment, integration strategies, deployment environments, and more. Samples are provided to help you quickly get hands-on with this technology.
 
@@ -53,7 +53,7 @@ A development team might choose some of the following pieces of software when de
 - [Bridge to Kubernetes](/visualstudio/containers/bridge-to-kubernetes) lets you run and debug code on your development system while connected to a Kubernetes cluster. This configuration is helpful when working on microservice type architectures.
 - [Podman](https://developers.redhat.com/articles/podman-next-generation-linux-container-tools) is an open-source tool for working with containers.
 - [Microsoft Dev Box](/azure/dev-box/) provides a safe development environment for developers to create code, supported through virtual networks and RBAC permissions that control who can access the organizations network and who can use the dev box.
-- [Azure deployment environments](/azure/deployment-environments/)  empowers development teams to quickly and easily spin up app infrastructure with project-based templates that establish consistency and best practices while maximizing security.
+- [Azure deployment environments](/azure/deployment-environments/) empowers development teams to quickly and easily spin up app infrastructure with project-based templates that establish consistency and best practices while maximizing security.
 
 ## Source control
 
