@@ -4,7 +4,7 @@ titleSuffix: Cloud Design Patterns
 description: Learn about availability, high availability, and resiliency as factors that are related to reliability patterns.
 author: martinekuan
 ms.author: martinek
-ms.date: 4/28/2023
+ms.date: 05/02/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -32,7 +32,7 @@ To mitigate against availability risks from malicious Distributed Denial of Serv
 
 ## High availability
 
-Azure infrastructure is composed of geographies, regions, and availability zones. These divisions limit the radius of a failure and therefore limit potential effect on customer applications and data. The Azure availability zones construct was developed to provide a software and networking solution to protect against datacenter failures and to provide increased high availability to our customers. With high availability architecture, there's a balance between high resilience, low latency, and cost.
+Azure infrastructure is composed of geographies, regions, and availability zones. These divisions limit the radius of a failure and therefore limit potential effect on customer applications and data. The Azure availability zones construct was developed to provide a software and networking solution to protect against datacenter failures and to provide increased high availability. With high availability architecture, there's a balance between high resilience, low latency, and cost.
 
 | Pattern | Summary |
 |:--------|:--------|

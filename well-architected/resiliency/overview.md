@@ -3,7 +3,7 @@ title: Overview of the reliability pillar
 description: Learn about the reliability pillar of the Azure Well-Architected Framework with this high-level summary.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/28/2023
+ms.date: 05/02/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
