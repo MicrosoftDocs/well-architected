@@ -5,8 +5,8 @@ ms.author: martinek
 author: martinekuan
 ms.date: 05/02/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-reliability
 ms.custom:
   - Which business metrics have you defined for your application?
   - article
@@ -22,7 +22,7 @@ You can use business metrics to design resilient applications in Azure. You need
 
 ## Workload availability targets
 
-Are availability targets such as service-level agreements (SLAs), service-level indicators (SLIs), and service-level objectives (SLOs) defined for the application or key scenarios?
+Are availability targets, such as service-level agreements (SLAs), service-level indicators (SLIs), and service-level objectives (SLOs), defined for the application or key scenarios?
 
 Understanding customer availability expectations is vital to reviewing overall operations for the application. For instance, if a customer wants an application SLO of `99.999%`, the level of inherent operational activity required by the application is going to be far greater than if an SLO of `99.9%` is the goal.
 
@@ -30,7 +30,7 @@ Define your own target SLAs for each workload in your solution so you can determ
 
 ### Consider cost and complexity
 
-Everything else being equal, higher availability is better. But as you strive for more nines, the cost and complexity grow. An uptime of `99.99%` translates to about five minutes of total downtime per month. Is it worth the extra complexity and cost to reach five nines? The answer depends on the business requirements.
+Everything else being equal, higher availability is better. But as you strive for more nines, the cost and complexity grow. An uptime of `99.99%` translates to about five minutes of total downtime per month. Is it worth the extra complexity and cost to reach five nines? The answer depends on your business requirements.
 
 Here are some other considerations when defining an SLA:
 
@@ -38,7 +38,7 @@ Here are some other considerations when defining an SLA:
 - Beyond four nines, it's challenging to detect outages quickly enough to meet the SLA.
 - Think about the time window that your SLA is measured against. The smaller the window, the tighter the tolerances. It doesn't make sense to define your SLA in terms of hourly or daily uptime.
 - Consider the *mean time to recover* (MTTR) and *mean time between failures* (MTBF) measurements. The higher your SLA, the less frequently the service can go down and the quicker the service must recover.
-- Get agreement from your customers for the availability targets of each piece of your application, and document it. Otherwise, your design may not meet the customers' expectations.
+- Get agreement from your customers for the availability targets of each piece of your application, and document it. Otherwise, your design might not meet your customers' expectations.
 
 ### Identify dependencies
 
@@ -68,7 +68,7 @@ Some less critical components or paths through the application might have lower 
 
 ## Recovery metrics
 
-Derive these values by conducting a risk assessment, and make sure you understand the cost and risk of downtime and data loss. These nonfunctional requirements of a system should be dictated by business requirements.
+Derive these values by conducting a risk assessment, and make sure that you understand the cost and risk of downtime and data loss. These nonfunctional requirements of a system should be dictated by business requirements.
 
 - *Recovery time objective* (RTO) is the maximum acceptable time an application is unavailable after an incident.
 - *Recovery point objective* (RPO) is the maximum duration of data loss that's acceptable during a disaster.
@@ -92,7 +92,7 @@ The Azure SLA also includes procedures for obtaining a service credit if the SLA
 
 ### Composite SLAs
 
-*Composite SLAs* involve multiple services supporting an application, each with differing levels of availability. For example, consider an App Service web app that writes to Azure SQL Database. Currently, these Azure services have the following SLAs:
+*Composite SLAs* involve multiple services supporting an application, with differing levels of availability. For example, consider an App Service web app that writes to Azure SQL Database. Currently, these Azure services have the following SLAs:
 
 - App Service web apps = `99.95%`
 - SQL Database = `99.99%`
@@ -101,7 +101,7 @@ What is the maximum downtime you would expect for this application? If either se
 
 You can improve the composite SLA by creating independent fallback paths. For example, if SQL Database is unavailable, put transactions into a queue to be processed later:
 
-:::image type="content" source="../_images/composite-sla.png" alt-text="Diagram shows a composite SLA for a web app, which is composed of SLAs for SQL Database and the queue.":::
+:::image type="content" source="../_images/composite-sla.png" alt-text="Diagram shows a composite SLA for a web app, which is composed of SLAs for SQL Database and the queue." border="false":::
 
 With this design, the application is still available even if it can't connect to the database. However, it fails if the database and the queue both fail at the same time. The expected percentage of time for a simultaneous failure is `0.0001 × 0.001`, so the composite SLA for this combined path is:
 
