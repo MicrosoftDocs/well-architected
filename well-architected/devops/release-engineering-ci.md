@@ -13,13 +13,13 @@ products:
 
 # Release engineering: continuous integration
 
-As code is developed, updated, or even removed, having a friction-free and safe method to integrate these changes into the main code branch is paramount to enabling developers to provide value fast. As a developer, you can make small code changes, push these changes to a code repository, and get almost instantaneous feedback on the quality, test coverage, and introduced bugs. This process allows you to work faster and with more confidence and less risk. Continuous integration (CI) is a practice where source control systems and software deployment pipelines are integrated to provide automated build, test, and feedback mechanisms for software development teams.
+As code is developed, updated, or even removed, having a friction-free and safe method to integrate these changes into the main code branch is paramount to enabling developers to provide value fast. As a developer, you can make small code changes, push these changes to a code repository, and get almost instantaneous feedback on the quality, test coverage, and introduced bugs. This process lets you work faster and with more confidence and less risk. Continuous integration (CI) is a practice where source control systems and software deployment pipelines are integrated to provide automated build, test, and feedback mechanisms for software development teams.
 
 Continuous integration is about ensuring that software is ready for deployment but doesn't include the deployment itself. This article covers the basics of continuous integration and offers links and examples for more in-depth content.
 
 ## Continuous integration
 
-Continuous integration is a software development practice under which developers integrate software updates into a source control system on a regular cadence. The continuous integration process starts when an engineer creates a pull request signaling to the CI system that code changes are ready to be integrated. Ideally, integration validates the code against several baselines and tests and provides quick feedback to the requesting engineer on the status of these tests. Assuming baseline checks and testing have gone well, the integration process produces and stages assets such as compiled code and container images that will deploy the updated software.
+Continuous integration is a software development practice with which developers integrate software updates into a source control system on a regular cadence. The continuous integration process starts when an engineer creates a pull request signaling to the CI system that code changes are ready to be integrated. Ideally, integration validates the code against several baselines and tests and provides quick feedback to the requesting engineer on the status of these tests. Assuming baseline checks and testing have gone well, the integration process produces and stages assets such as compiled code and container images that will deploy the updated software.
 
 As a software engineer, continuous integration can help you deliver quality software more quickly by performing the following actions:
 
@@ -34,12 +34,12 @@ To achieve continuous integration, use software solutions to manage, integrate, 
 
 ## Continuous integration pipelines
 
-A continuous integration pipeline involves a piece of software, in many cases one that's cloud-hosted, that provides:
+A continuous integration pipeline involves a piece of software, in many cases cloud-hosted, that provides:
 
-- A platform for running automated tests.
-- Compliance scans.
-- Reporting.
-- All other components that make up the continuous integration process.
+- A platform for running automated tests
+- Compliance scans
+- Reporting
+- All other components that make up the continuous integration process
 
 In most cases, the pipeline software is attached to source control such that when pull requests are created or software is merged into a specific branch, the continuous integration pipeline is run. Source control integration also provides the opportunity for providing CI feedback directly on pull requests.
 
