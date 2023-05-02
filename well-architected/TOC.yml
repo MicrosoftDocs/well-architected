@@ -339,6 +339,8 @@ items:
                 href: scalability/monitor-infrastructure.md
               - name: Performance data
                 href: scalability/monitor-analyze.md
+              - name: Scalability and reliability
+                href: scalability/monitor-scalability-reliability.md
           - name: Performance Efficiency patterns
             href: scalability/performance-efficiency-patterns.md
           - name: Checklist
