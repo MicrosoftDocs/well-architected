@@ -55,7 +55,7 @@ Carry out load tests and stress tests to determine the necessary infrastructure 
 
 Another critical component of planning for scale is to make sure the region that host your application supports the necessary capacity to accommodate the load increase. If you use a multiregion architecture, make sure the secondary regions can also support the increase. A region might offer a product, but might not have the necessary SKUs to support the predicted load increase, so you need to verify capacity. To verify your regions and available SKUs, first select the product and regions in [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region). Then, use the Azure portal to check the SKUs that are available.
 
-![Screenshot of the Azure.com Products available by region page.](../_images/design-scale-1a.png)
+[ ![Screenshot of the Azure.com Products available by region page.](../_images/design-scale-1a.png)](../_images/design-scale-1a.png#lightbox)
 
 ### Determine scale units
 
