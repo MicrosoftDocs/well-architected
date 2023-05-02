@@ -3,17 +3,17 @@ title: Automation overview of goals, best practices, and types in Azure
 description: Learn how automation improves businesses operations, automates manual processes, and lets engineers focus on tasks that add business value.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/27/2023
+ms.date: 05/01/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-pillar-excellence
 ms.custom:
   - article
 ---
 
 # Automation overview: Goals, best practices, and types
 
-Automation has revolutionized how businesses operate and this trend continues to evolve. Businesses have moved to automating manual processes so that engineers can focus attention on tasks that add business value. Automating business solutions let you:
+Automation has revolutionized how businesses operate and this trend continues to evolve. Businesses have moved to automating manual processes so that engineers can focus attention on tasks that add business value. Automating business solutions lets you:
 
 - Activate resources on demand.
 - Deploy solutions rapidly.
@@ -55,7 +55,7 @@ These categories share the same goals and best practices mentioned previously. T
 
 ### Infrastructure deployment
 
-As businesses move to the cloud, they need to *repeatedly* deploy their solutions and know that their infrastructure is in a *reliable* state. To meet these challenges, you can automate deployments using a practice referred to as [infrastructure as code](./automation-infrastructure.md). In code, you define the infrastructure that needs to be deployed.
+As businesses move to the cloud, they need to *repeatedly* deploy their solutions and know that their infrastructure is in a *reliable* state. To meet these challenges, you can automate deployments by using a practice referred to as [infrastructure as code](./automation-infrastructure.md). In code, you define the infrastructure that needs to be deployed.
 
 There are many deployment technologies you can use with Azure. Here are three examples:
 
@@ -63,7 +63,7 @@ There are many deployment technologies you can use with Azure. Here are three ex
 - [Azure Bicep](/azure/azure-resource-manager/bicep/)
 - [Terraform](./automation-infrastructure.md#automate-deployments-with-terraform)
 
-These technologies use a *declarative* approach. This lets you state what you intend to deploy without having to write the sequence of programming commands to create it. You can deploy not only virtual machines, but also the network infrastructure, storage systems, and any other resources you might need.
+These technologies use a *declarative* approach. This approach lets you state what you intend to deploy without having to write the sequence of programming commands to create it. You can deploy not only virtual machines, but also the network infrastructure, storage systems, and any other resources you might need.
 
 ### Infrastructure configuration
 
@@ -86,8 +86,8 @@ Advantages of automating operational tasks include:
 
 Two popular options for automating operational tasks are:
 
-- [**Azure functions**](./automation-tasks.md#azure-functions) - Runs code without managing the underlying infrastructure on where the code is run.
-- [**Azure automation**](./automation-tasks.md#azure-automation)- Uses a programming language to automate operational tasks in code and executed on demand.
+- [Azure functions](./automation-tasks.md#azure-functions) - Runs code without managing the underlying infrastructure on where the code is run.
+- [Azure automation](./automation-tasks.md#azure-automation) - Uses a programming language to automate operational tasks in code and executed on demand.
 
 For more information, see [Automation](./automation-tasks.md).
 
