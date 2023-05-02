@@ -20,6 +20,7 @@ Application design is critical to ensuring performance efficiency as load increa
 - [Design applications for scale](design-scale.md)
 - [Design applications for capacity](design-capacity.md)
 
+<a name="choose-the-right-data-storage"></a>
 ## Choose the right storage
 
 The overall design of the storage tier can greatly affect an application's performance and scalability. The Azure Storage platform is designed to be massively scalable to meet the data storage and performance needs of modern applications.

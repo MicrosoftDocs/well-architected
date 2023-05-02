@@ -63,6 +63,7 @@ For each resource, know the upper scaling limits, and use [sharding](/azure/azur
 
 Use built-in scaling features or tools to understand which resources need to scale concurrently with other resources. Then use well-defined sets of resources to determine the scale units for the system. For example, adding *X* number of front-end VMs might require *Y* number of extra queues and *Z* number of storage accounts to handle the extra workload. So a scale unit could consist of *X* VM instances, *Y* queues, and *Z* storage accounts.
 
+<a name="use-autoscaling-to-manage-load-increases-and-decreases"></a>
 ## Use autoscaling to manage load
 
 Autoscaling lets you automatically run the right amount of resources to handle your app load. Autoscaling adds resources, or scales out, to handle increases in load such as seasonal workloads. Autoscaling also removes idle resources, or scales in, to save money during decreases in load, such as nights and weekends for some corporate apps. Autoscaling automatically scales between the minimum and maximum number of instances to run, and automatically adds or removes VMs based on a set of rules.
