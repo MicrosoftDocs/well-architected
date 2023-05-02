@@ -139,7 +139,7 @@ landingContent:
           - text: Correlate and evaluate data
             url: monitor-analyze.md#data-interpretation
           - text: Consider cost implications
-            url: monitor-analyze.md#cost-considerations
+            url: monitor-analyze.md#cost-optimization
       - linkListType: video
         links:
           - text: Azure Application Insights Profiler
