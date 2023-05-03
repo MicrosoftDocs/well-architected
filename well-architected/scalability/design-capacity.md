@@ -1,6 +1,6 @@
 ---
 title: Design applications for capacity
-description: Plan to meet capacity design requirements for performance efficiency. Understand options to reduce cost.
+description: Design applications to meet capacity requirements for performance efficiency by choosing the right resources, scaling out, and using metrics and autoscaling.
 author: martinekuan
 ms.author: martinek
 ms.date: 05/02/2023
@@ -15,15 +15,15 @@ ms.custom:
 ---
 # Design applications for capacity
 
-This article describes ways you can design applications for capacity to optimize performance efficiency. Azure offers many options to meet capacity requirements as your business grows, which can also minimize costs.
+This article describes ways you can design applications for capacity to optimize performance efficiency. Azure offers many options to meet capacity requirements while minimizing costs as your business grows.
 
 ## Scale out rather than scaling up
 
-When using cloud technologies, it's often easier, cheaper, and more effective to *scale out*, or add resources, than to *scale up*, or increase the capacity of a resource. If you plan to scale up by increasing the capacity allocated to your hosts, you reach a limit where it becomes cost-prohibitive to scale any further. Scaling up also often requires downtime for servers to reboot. Instead, plan to scale your application tier by adding extra infrastructure to meet demand. Be sure to remove the resources when they're no longer needed.
+With cloud technologies, it's often easier, cheaper, and more effective to *scale out*, or add resources, than to *scale up*, or increase the capacity of a resource. If you plan to scale up by increasing the capacity allocated to your hosts, you reach a limit where it becomes cost-prohibitive to scale any further. Scaling up also often requires downtime for servers to reboot. Instead, plan to scale your application tier by adding extra infrastructure to meet demand. Be sure to remove the resources when they're no longer needed.
 
 ## Prepare infrastructure for large-scale events
 
-Large-scale application design takes careful planning and possibly complex implementation. Work with your business and marketing teams to prepare for large-scale events like large sporting events, Black Friday, or marketing campaigns. You can anticipate sudden spikes in traffic due to these events to prepare infrastructure ahead of time.
+Large-scale application design takes careful planning and possibly complex implementation. Work with your business and marketing teams to prepare for large-scale events like sports matches, sales, or marketing campaigns. You can anticipate sudden spikes in traffic caused by these events to prepare infrastructure ahead of time.
 
 A fundamental Azure design principle is to scale out by adding machines or service instances based on increased demand. Scaling out can be better than purchasing more hardware that might not be in your budget. Depending on your payment plan, you don't have to pay for idle virtual machines (VMs), or need to reserve capacity in advance. A pay-as-you-go plan can be ideal for applications that need to meet planned spikes in traffic.
 
@@ -54,7 +54,7 @@ For a list of built-in metrics, see [Azure Monitor autoscaling common metrics](/
 
 ## Scale preemptively and schedule autoscaling
 
-Preemptive scaling based on historical data can help ensure your application performs consistently, even though your metrics haven't yet indicated the need to scale. Schedule-based rules allow you to scale when you see time patterns in your load, and want to scale before a possible load increase or decrease occurs. For example, you can set a trigger attribute to scale out to 10 instances on weekdays, and scale in to four instances on weekends.
+Preemptive scaling based on historical data can help ensure your application performs consistently, even though your metrics haven't yet indicated the need to scale. Schedule-based rules allow you to scale when you see time patterns in your load, and you want to scale before a possible load increase or decrease occurs. For example, you can set a trigger attribute to scale out to 10 instances on weekdays, and scale in to four instances on weekends.
 
 If you can predict the load on the application, consider using scheduled autoscaling, which adds and removes instances to meet anticipated peaks in demand. For more information, see [Use Azure Monitor autoscale](/azure/architecture/best-practices/auto-scaling#use-azure-monitor-autoscale).
 

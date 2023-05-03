@@ -19,7 +19,7 @@ categories:
 
 *Scalability*, an important aspect of performance efficiency, is the ability of a system to resize to handle changing load. This article describes the types of scaling, how to plan for growth, and how to use platform autoscaling features to manage load.
 
-To achieve scalability, consider how your application scales, and implement platform as a service (PaaS) offerings that have built-in scaling operations. Azure services that *autoscale* can scale automatically to match demand to workload. For example, these services scale out to ensure capacity during workload peaks and return to normal automatically when the peak drops. For more information about autoscaling, see [Use autoscaling to manage load](#use-autoscaling-to-manage-load).
+To achieve scalability, consider how your application scales, and implement platform as a service (PaaS) offerings that have built-in scaling operations. Azure services that *autoscale* can scale automatically to match demand to workload. For example, these services automatically scale out to ensure capacity during workload peaks, and return to normal automatically when the load drops. For more information about autoscaling, see [Use autoscaling to manage load](#use-autoscaling-to-manage-load).
 
 ## Understand horizontal and vertical scaling
 
@@ -45,21 +45,21 @@ Always conduct performance and load testing to find potential bottlenecks. Resol
 
 Use the [Performance efficiency checklist](performance-efficiency.md) to review your design from a scalability standpoint. For more information about how to determine the upper and maximum limits of an application's capacity, see [Performance testing](performance-test.md).
 
-In the cloud, the ability to take advantage of scalability depends on your infrastructure and services. Platforms like Kubernetes were built with scaling in mind. VMs might not scale as easily, although scale operations are possible. With VMs, you might want to plan ahead to avoid scaling infrastructure in the future. Another option is to select a different platform such as Azure Virtual Machine Scale Sets.
+In the cloud, the ability to take advantage of scalability depends on your infrastructure and services. Platforms like Kubernetes were built with scaling in mind. VMs might not scale as easily, although scale operations are possible. With VMs, you might want to plan ahead to avoid scaling infrastructure in the future. Another option is to select a different platform such as virtual machine scale sets.
 
 Planning for growth starts with understanding your current workloads, which can help you anticipate scaling needs based on predictive usage scenarios. An example of a predictive usage scenario is an e-commerce site that recognizes that its infrastructure should scale appropriately for an expected high volume of holiday traffic.
 
-With scalable platforms, you can predict the current average and peak times for your workload and manage this prediction with payment plans. You pay either per minute or per hour depending on the service.
+Carry out load tests and stress tests to determine the necessary infrastructure to support predicted spikes in workloads. A good plan includes incorporating a buffer to accommodate random spikes. With scalable platforms, you can predict the current average and peak times for your workload and manage this prediction with payment plans. You pay either per minute or per hour, depending on the service.
 
-Carry out load tests and stress tests to determine the necessary infrastructure to support predicted spikes in workloads. A good plan includes incorporating a buffer to accommodate random spikes.
+Another critical component of planning for scale is to make sure the region that host your application supports the necessary capacity to accommodate the load increase. If you use a multiregion architecture, make sure the secondary regions can also support the increase.
 
-Another critical component of planning for scale is to make sure the region that host your application supports the necessary capacity to accommodate the load increase. If you use a multiregion architecture, make sure the secondary regions can also support the increase. A region might offer a product, but might not have the necessary SKUs to support the predicted load increase, so you need to verify capacity. To verify your regions and available SKUs, first select the product and regions in [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region). Then, use the Azure portal to check the SKUs that are available.
+A region might offer a product, but might not have the necessary SKUs to support the predicted load increase, so you need to verify capacity. To verify your regions and available SKUs, first select the product and regions in [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region). Then, use the Azure portal to check the SKUs that are available.
 
 [ ![Screenshot of the Azure.com Products available by region page.](../_images/design-scale-1a.png)](../_images/design-scale-1a.png#lightbox)
 
 ### Determine scale units
 
-For each resource, know the upper scaling limits, and use [sharding](/azure/azure-sql/database/elastic-scale-introduction#sharding) or decomposition if you need to go beyond those limits. Design the application so that it's easily scaled by adding one or more scale units, such as by using the [deployment stamps pattern](/azure/architecture/patterns/deployment-stamp).
+For each resource, know the upper scaling limits, and use [sharding](/azure/azure-sql/database/elastic-scale-introduction#sharding) or decomposition if you need to go beyond those limits. Design the application so that it's easily scaled by adding one or more scale units, such as by using the [deployment stamps](/azure/architecture/patterns/deployment-stamp) pattern.
 
 Use built-in scaling features or tools to understand which resources need to scale concurrently with other resources. Then use well-defined sets of resources to determine the scale units for the system. For example, adding *X* number of front-end VMs might require *Y* number of extra queues and *Z* number of storage accounts to handle the extra workload. So a scale unit could consist of *X* VM instances, *Y* queues, and *Z* storage accounts.
 
@@ -70,7 +70,7 @@ Autoscaling lets you automatically run the right amount of resources to handle y
 
 ![Diagram that illustrates autoscaling.](../_images/design-autoscale.png)
 
-### Evaluate scaling delay
+### Understand autoscaling delays
 
 Horizontal scaling changes the number of identical instances, and vertical scaling switches to more or less powerful instances. Scaling operations can be fast, but they take time to complete. It's important to understand how the delay affects the application under load, and whether degraded performance is acceptable.
 
@@ -99,9 +99,7 @@ For example, you might have an application that processes images, videos, or mus
 
 Autoscaling works by collecting resource metrics like CPU and memory usage, and application metrics like requests queued and requests per second. Rules can then be created to add and remove instances depending on how the rule evaluates.
 
-An [Azure App Service](/azure/app-service/overview-hosting-plans#how-does-my-app-run-and-scale) plan allows autoscale rules to be set for scale out/scale in and scale up/scale down. The [App Service autoscaling sample](https://github.com/mspnp/samples/tree/master/PerformanceEfficiency/AppServiceAutoscalingSample) shows how to create an Azure App Service plan, which includes an Azure App Service.
-
-Scaling also applies to [Azure Automation](/azure/automation/automation-intro).
+An [Azure App Service](/azure/app-service/overview-hosting-plans#how-does-my-app-run-and-scale) plan allows autoscale rules to be set for scale out/scale in and scale up/scale down. The [App Service autoscaling sample](https://github.com/mspnp/samples/tree/master/PerformanceEfficiency/AppServiceAutoscalingSample) shows how to create an Azure App Service plan, which includes an Azure App Service. Scaling also applies to [Azure Automation](/azure/automation/automation-intro).
 
 [Azure Kubernetes Service](/azure/aks/intro-kubernetes) (AKS) offers two levels of autoscale:
 
@@ -115,12 +113,12 @@ The following Azure services also offer autoscaling capability:
 - [Azure Functions](/azure/azure-functions/functions-overview), [Azure Logic Apps](/azure/logic-apps/logic-apps-overview), and [Azure App Services](/azure/app-service/overview) provide serverless pay-per-use consumption modeling that inherently provides autoscaling capabilities.
 - [Azure SQL Database](/archive/blogs/sqlserverstorageengine/azure-sql-database-scalability) is a PaaS platform that changes performance characteristics of a database on the fly and assigns more resources when needed or releases them when not needed. SQL Database allows [scaling up/down](/archive/blogs/sqlserverstorageengine/azure-sql-database-scalability#scaling-updown), [read scale-out](/archive/blogs/sqlserverstorageengine/azure-sql-database-scalability#read-scale-out), and [global scale-out/sharding](/archive/blogs/sqlserverstorageengine/azure-sql-database-scalability#global-scale-outsharding) capabilities.
 
-Each service documents its autoscale capabilities. Review [Autoscale overview](/azure/azure-monitor/platform/autoscale-overview) for a general discussion about Azure platform autoscaling.
+Each service documents its autoscale capabilities. For a general discussion about Azure platform autoscaling, see [Overview of autoscale in Azure](/azure/azure-monitor/platform/autoscale-overview).
 
 > [!NOTE]
-> If your application doesn't have built-in autoscale ability, or isn't configured to scale out automatically as load increases, its services might fail if they become saturated with user requests. For possible solutions, see [Azure Automation](/azure/virtual-desktop/set-up-scaling-script).
+> If your application doesn't have built-in autoscale ability, or isn't configured to scale out automatically as load increases, its services might fail if they become saturated with user requests. For possible solutions, see [Set up a scaling tool by using Azure Automation and Azure Logic Apps for Azure Virtual Desktop](/azure/virtual-desktop/set-up-scaling-script).
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Plan for capacity](design-capacity.md)
+> [Design for capacity](design-capacity.md)

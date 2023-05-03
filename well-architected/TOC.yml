@@ -299,7 +299,7 @@ items:
                     href: devops/auditing.md
           - name: Operational Excellence patterns
             href: devops/devops-patterns.md
-      - name: Performance Efficiency
+      - name: Performance efficiency
         items:
           - name: About
             href: scalability/index.yml
@@ -309,18 +309,18 @@ items:
             href: scalability/principles.md
           - name: Design
             items:
-              - name: Checklist
-                href: scalability/design-checklist.md
               - name: Distributed architecture challenges
                 href: scalability/design-distributed.md
-              - name: Application design
+              - name: Application performance
                 href: scalability/design-apps.md
               - name: Application efficiency
                 href: scalability/design-efficiency.md
-              - name: Scalability
+              - name: Application scalability
                 href: scalability/design-scale.md
-              - name: Capacity planning
+              - name: Application capacity
                 href: scalability/design-capacity.md
+              - name: Capacity best practices
+                href: scalability/capacity.md
           - name: Test
             items:
               - name: Checklist
@@ -339,7 +339,7 @@ items:
                 href: scalability/monitor-infrastructure.md
               - name: Performance data
                 href: scalability/monitor-analyze.md
-          - name: Performance Efficiency patterns
+          - name: Performance efficiency patterns
             href: scalability/performance-efficiency-patterns.md
           - name: Checklist
             href: scalability/performance-efficiency.md
