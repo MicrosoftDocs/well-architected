@@ -299,7 +299,7 @@ items:
                     href: devops/auditing.md
           - name: Operational Excellence patterns
             href: devops/devops-patterns.md
-      - name: Performance efficiency
+      - name: Performance Efficiency
         items:
           - name: About
             href: scalability/index.yml
