@@ -3,7 +3,7 @@ title: Automation overview of goals, best practices, and types in Azure
 description: Learn how automation improves businesses operations, automates manual processes, and lets engineers focus on tasks that add business value.
 author: martinekuan
 ms.author: martinek
-ms.date: 05/01/2023
+ms.date: 05/03/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-excellence
@@ -51,7 +51,7 @@ Three types of automation are described in this article:
 - Infrastructure configuration
 - Operational tasks
 
-These categories share the same goals and best practices mentioned previously. They differ in areas where Azure provides solutions that help achieve optimal automation. Other types of automation, such as continuous deployment and continuous delivery, are described further in the operational excellence pillar.
+These categories share the same goals and best practices mentioned previously. They differ in areas where Azure provides solutions that help achieve optimal automation. Other types of automation, such as continuous deployment and continuous delivery, are described further in the Operational Excellence pillar.
 
 ### Infrastructure deployment
 
@@ -86,12 +86,12 @@ Advantages of automating operational tasks include:
 
 Two popular options for automating operational tasks are:
 
-- [Azure functions](./automation-tasks.md#azure-functions) - Runs code without managing the underlying infrastructure on where the code is run.
-- [Azure automation](./automation-tasks.md#azure-automation) - Uses a programming language to automate operational tasks in code and executed on demand.
+- [Azure Functions](./automation-tasks.md#azure-functions) - Run code without managing the underlying infrastructure on where the code is run.
+- [Azure Automation](./automation-tasks.md#azure-automation) - Uses programming and scripting language to automate operational tasks in code and run on demand.
 
 For more information, see [Automation](./automation-tasks.md).
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Automate Repeatable Infrastructure](./automation-infrastructure.md)
+> [Automate repeatable infrastructure](./automation-infrastructure.md)
