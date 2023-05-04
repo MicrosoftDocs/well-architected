@@ -16,7 +16,7 @@ products:
 
 In some cases, a new software deployment can harm or degrade the functionality of a software system. When building your solutions, it's essential to anticipate deployment issues and to architect solutions that provide mechanisms for fixing problematic deployments. Rolling back a deployment involves reverting the deployment to a known good state.
 
-Rollback can be accomplished in many different ways. Several Azure services support native mechanisms for rolling back to a previous state. We recommend using them where available and where it makes sense for your chosen deployment model.
+Rollback can be accomplished in many different ways. Several Azure services support native mechanisms for rolling back to a previous state. We recommend you use them where available and where it makes sense for your chosen deployment model.
 
 The following examples help you design your rollback and recovery plan.
 
@@ -34,7 +34,7 @@ The following image shows how to do it by way of an Azure DevOps pipeline.
 
 **Learn more**
 
-For more information on using Azure App Service deployment slots, see [Set up staging environments in Azure App Service](/azure/app-service/deploy-staging-slots).
+For more information on Azure App Service deployment slots, see [Set up staging environments in Azure App Service](/azure/app-service/deploy-staging-slots).
 
 ## Apply desired state configuration
 
@@ -51,9 +51,9 @@ For more information, see [Kubernetes deployments](https://kubernetes.io/docs/co
 
 A deployment record is created when deploying Azure infrastructure and solutions with Azure Resource Manager (ARM) templates or other infrastructure as code solutions.
 
-When you create a new deployment, you can provide a previously known good deployment so that if the current deployment fails, the previous good deployment is redeployed. There are several considerations and caveats when using this functionality. For more information, see [Rollback on an error to successful deployment](/azure/azure-resource-manager/templates/rollback-on-error).
+When you create a new deployment, you can provide a previously known good deployment so that if the current deployment fails, the previous good deployment is redeployed. There are several considerations and caveats when you use this functionality. For more information, see [Rollback on an error to successful deployment](/azure/azure-resource-manager/templates/rollback-on-error).
 
-:::image type="content" source="../devops/arm-deployments.png" alt-text="Image showing Azure Resource Manager Deployments in the Azure portal." lightbox="../devops/arm-deployments-full.png":::
+:::image type="content" source="../devops/arm-deployments.png" alt-text="Screenshot that shows Azure Resource Manager Deployments in the Azure portal." lightbox="../devops/arm-deployments-full.png":::
 
 **Learn more**
 
