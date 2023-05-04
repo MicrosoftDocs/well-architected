@@ -52,8 +52,6 @@ landingContent:
     linkLists:
       - linkListType: get-started
         links:
-          - text: Monitor distributed architectures
-            url: design-distributed.md
           - text: Design applications for performance
             url: design-apps.md
           - text: Design applications for efficiency
