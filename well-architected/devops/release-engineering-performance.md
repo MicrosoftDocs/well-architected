@@ -3,7 +3,7 @@ title: Performance of deployment infrastructure
 description: Learn about performance considerations to make regarding your deployment infrastructure. Get advice about build times and human intervention.
 author: UmarMohamedUsman
 ms.author: martinek
-ms.date: 05/03/2023
+ms.date: 05/04/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-excellence
@@ -16,9 +16,9 @@ ms.custom:
 
 # Performance considerations for your deployment infrastructure
 
-Build status shows if your product is in a deployable state, so builds are the heartbeat of your continuous delivery system. It's important to have a build process running the first day of your product development. Since builds provide such crucial information about the status of your product, you should always strive for fast builds.
+Build status shows if your product is in a deployable state, so builds are the heartbeat of your continuous delivery system. It's important to have a build process up and running the first day of your product development. Since builds provide such crucial information about the status of your product, you should always strive for fast builds.
 
-It's difficult to fix a build problem if it takes longer to build. When a delay happens and becomes normalized, teams tend to become less motivated to fix the problem.
+It's difficult to fix a build problem if it takes longer to build. When delays happen and becomes normalized, teams tend to become less motivated to fix the problem.
 
 ## Build times
 
@@ -26,7 +26,7 @@ Here are few ways you can achieve faster builds:
 
 * **Choosing agents that meet your performance requirements:** Speeding up your builds starts with selecting the right build machines. Fast machines can make the difference between hours and minutes. If your pipelines are in Azure Pipelines, then you've got a convenient option to run your jobs by using a Microsoft-hosted agent. With Microsoft-hosted agents, maintenance and upgrades are taken care of for you. For more information, see [Microsoft-hosted agents](/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true).
 
-* **Build server location:** When you're building your code, data is sent across the wire. Inputs to the builds are fetched from a source control repository and the artifact repository. At the end, the output from the build process needs to be copied, not only the compiled artifacts, but also test reports, code coverage results, and debug symbols. It's important that these copy actions are fast. If you use your own build server, ensure that the build server is located near the sources and a target location. Fast up- and downloads can reduce the overall build time significantly.
+* **Build server location:** When you're building your code, data is sent across the wire. Inputs to the builds are fetched from a source control repository and the artifact repository. At the end, the output from the build process needs to be copied, including not only the compiled artifacts, but also the test reports, the code coverage results, and the debug symbols. It's important that these copy actions are fast. If you use your own build server, ensure that the build server is located near the sources and a target location. Fast uploads and downloads can reduce the overall build time.
 
 * **Scaling out build servers:** A single build server might be sufficient for a small product. As the size and the scope of the product and the number of teams working on the product increases, a single server might not be enough. Scale your infrastructure horizontally over multiple machines when you reach the limit. For more information, see [Create and manage agent pools](/azure/devops/pipelines/agents/pools-queues?tabs=yaml&view=azure-devops&preserve-view=true).
 
@@ -48,7 +48,7 @@ Your organization might choose to create several different kinds of builds to op
 
 * **CI builds:** The purpose of this build is to ensure code compiles and unit tests are run. This build gets triggered at each commit. It serves as the heartbeat of the project and provides quality feedback to the team immediately. For more information, see [Specify events that trigger pipelines](/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops&preserve-view=true).
 
-* **Nightly build:** The purpose of a nightly build isn't only to compile the code, but also to ensure any larger test suites that are inefficient to run for each build are run on a regular cadence. Usually, these cadences are integration, UI, or smoke tests. For more information, see [Configure schedules for pipelines](/azure/devops/pipelines/process/scheduled-triggers).
+* **Nightly build:** The purpose of a nightly build isn't only to compile the code, but also to ensure any larger test suites that are inefficient run for each build on a regular cadence. Usually, these cadences are integration, UI, or smoke tests. For more information, see [Configure schedules for pipelines](/azure/devops/pipelines/process/scheduled-triggers).
 
 * **Release build:** In addition to compiling and running tests, this build also compiles the API documentation, compliance reports, code signing, and other steps that aren't required every time the code is built. This build provides the golden copy that's pushed to the release pipeline to finally deploy in the production environment.
 
