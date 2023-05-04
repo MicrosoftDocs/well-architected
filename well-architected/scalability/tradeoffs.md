@@ -41,7 +41,7 @@ Cost can increase as a result of increasing performance. When you optimize for p
 
 - Every render cycle of a payload consumes both compute and memory. You can use caching to reduce load on servers, and save with precanned storage and bandwidth costs. The savings can be dramatic, especially for static content services.
 
-  While caching can reduce cost, there are some performance tradeoffs. For example, Azure Traffic Manager pricing is based on the number of Domain Name Service (DNS) queries that reach the service. You can reduce that number through caching, and configure how often the cache is refreshed. But relying on a cache that isn't frequently updated causes longer user failover times if an endpoint is unavailable.
+  While caching can reduce cost, there are some performance tradeoffs. For example, [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview) pricing is based on the number of Domain Name Service (DNS) queries that reach the service. You can reduce that number through caching, and configure how often the cache is refreshed. But relying on a cache that isn't frequently updated causes longer user failover times if an endpoint is unavailable.
 
 - Using dedicated resources to batch process long running jobs increases the cost. You can lower costs by provisioning [Azure Spot Virtual Machines](https://azure.microsoft.com/products/virtual-machines/spot), but be prepared for the job to be interrupted every time Azure evicts the virtual machine (VM).
 
@@ -54,13 +54,15 @@ As you determine how to design your workload to meet the demands placed on it by
 - Ensure that deployments remain reliable and predictable.
 - Automate deployments to reduce the chance of human error.
 - Make the deployment process fast and routine, so it doesn't slow down the release of new features or bug fixes.
-- Be able to quickly rollback or roll forward if an update has problems.
+- Be able to quickly roll back or roll forward if an update has problems.
 
 For other operational considerations, see the [Operational excellence](../devops/overview.md) pillar.
 
 ### Automate performance testing
 
-[Automated performance testing](/azure/architecture/checklist/dev-ops#testing) is an operational process that can help to identify performance issues early. A serious performance issue can impact a deployment as severely as a bug in the code. Automated functional tests can prevent application bugs, but they might not detect performance problems. Define acceptable performance goals for metrics such as latency, load times, and resource usage. Include automated performance tests in your release pipeline to make sure the application meets those goals.
+[Automated performance testing](/azure/architecture/checklist/dev-ops#testing) is an operational process that can help to identify performance issues early. A serious performance issue can impact a deployment as severely as a bug in the code. Automated functional tests can prevent application bugs, but they might not detect performance problems.
+
+Define acceptable performance goals for metrics such as latency, load times, and resource usage. Include automated performance tests in your release pipeline to make sure the application meets those goals.
 
 ### Do fast builds
 
@@ -89,7 +91,7 @@ For reliability, consider the following guidelines:
 
 - Use the [circuit breaker](/azure/architecture/patterns/circuit-breaker) pattern to provide stability and minimize performance impact while the system recovers from a failure.
 
-- Segregate read and write interfaces by using the [Command query responsibility segregation (CQRS) pattern](/azure/architecture/patterns/cqrs) to achieve the scale and performance needed for your solution.
+- Segregate read and write interfaces by using the [command query responsibility segregation (CQRS) pattern](/azure/architecture/patterns/cqrs) to achieve the scale and performance needed for your solution.
 
 - Try to achieve higher availability by adopting an *eventual consistency* model. For more information about selecting the correct data store, see [Use the best data store for your data](/azure/architecture/guide/design-principles/use-the-best-data-store).
 
@@ -113,7 +115,7 @@ Consider how the following security measures impact performance:
 
 - To optimize performance and maximize availability, application code should first try to [get OAuth access tokens silently from a cache](/azure/active-directory/develop/msal-net-acquire-token-silently) before attempting to acquire a token from the identity provider. OAuth is a technological standard that allows you to securely share information between services without exposing your password.
 
-- Make sure to integrate critical security alerts and logs into security information and event management (SIEM) systems without introducing a high volume of low-value data, which can increase costs and false positives and decrease performance. For more information, see [Security logs and alerts using Azure services](../security/monitor-logs-alerts.md).
+- Make sure to integrate critical security alerts and logs into security information and event management (SIEM) systems without introducing a high volume of low-value data. Low-value data can increase SIEM costs and false positives and decrease performance. For more information, see [Security logs and alerts using Azure services](../security/monitor-logs-alerts.md).
 
 - Use [Azure Active Directory Connect (Azure AD Connect)](/azure/active-directory/hybrid/connect/whatis-azure-ad-connect) to synchronize your on-premises directory with your cloud directory. Various factors affect the performance of Azure AD Connect. Ensure Azure AD Connect has enough capacity to keep underperforming systems from impeding security and productivity.
 
