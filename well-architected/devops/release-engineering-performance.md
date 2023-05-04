@@ -32,15 +32,15 @@ Here are few ways you can achieve faster builds:
 
 * **Optimizing the build:**
 
-  * Add parallel build execution to speed up the build process. For more information, see [Configure and pay for parallel jobs](/azure/devops/pipelines/licensing/concurrent-jobs?view=azure-devops&preserve-view=true).
+  * Add parallel build runs to speed up the build process. For more information, see [Configure and pay for parallel jobs](/azure/devops/pipelines/licensing/concurrent-jobs?view=azure-devops&preserve-view=true).
 
-  * Enable parallel execution of test suites, which often saves a large amount of time, especially when executing integration and UI tests. For more information, see [Run tests in parallel for any test runner](/azure/devops/pipelines/test/parallel-testing-any-test-runner?view=azure-devops&preserve-view=true).
+  * Enable parallel runs of test suites, which often saves a large amount of time, especially when running integration and UI tests. For more information, see [Run tests in parallel for any test runner](/azure/devops/pipelines/test/parallel-testing-any-test-runner?view=azure-devops&preserve-view=true).
 
   * Use the notion of a multiplier, where you can scale out your builds over multiple build agents. For more information, see [Specify jobs in your pipeline](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true).
 
   * Consider moving integration, UI, and smoke tests to a release pipeline. Moving to a release pipeline improves the build speed and the speed of the build feedback loop.
 
-  * Publish the build artifacts to a package management solution, such as NuGet or Maven. Publishing to a package management solution allows you to reuse your build artifact more easily.
+  * Publish the build artifacts to a package management solution, such as NuGet or Maven. Publishing to a package management solution lets you to reuse your build artifact more easily.
 
 ## Human intervention
 

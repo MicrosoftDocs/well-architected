@@ -15,7 +15,7 @@ Testing is one of the fundamental components and DevOps in agile development in 
 
 A main tenet of system reliability is the "Shift Left" principle. If developing and deploying an application is a process depicted as a series of steps going from left to right, testing shouldn't be limited to the very end of the process. It should be shifted as much to the beginning, meaning to the left, as possible. Errors are cheaper to repair when caught early. They can be expensive or impossible to fix later in the application life cycle.
 
-Testing should occur on all code, including application code, infrastructure templates, and configuration scripts. As described in [Repeatable Infrastructure][iac], the environment where applications are running should be version-controlled and deployed through the same mechanisms as application code. The environment can then be tested and validated by using the same testing paradigms that teams already use for application code.
+Testing should occur on all code, including application code, infrastructure templates, and configuration scripts. As described in [Repeatable infrastructure][iac], the environment where applications are running should be version-controlled and deployed through the same mechanisms as application code. The environment can then be tested and validated by using the same testing paradigms that teams already use for application code.
 
 A range of testing tools are available to automate and streamline different kinds of testing. These tools include [Azure Load Testing][alt], [Azure Pipelines][pipelines] for automated testing and [Azure Test Plans][devopstests] for manual testing.
 
@@ -23,7 +23,7 @@ There are multiple stages at which tests can be performed in the life cycle of c
 
 ## Automated testing
 
-Automating tests is the best way to make sure that they're executed consistently. Depending on how frequently tests are performed, they're typically limited in duration and scope, as the following different types of automated tests show.
+Automating tests is the best way to make sure that they're used consistently. Depending on how frequently tests are performed, they're typically limited in duration and scope, as the following different types of automated tests show.
 
 ### Unit testing
 
