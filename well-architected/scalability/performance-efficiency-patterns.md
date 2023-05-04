@@ -1,5 +1,5 @@
 ---
-title: Performance efficiency design patterns
+title: Performance efficiency patterns
 description: Use these performance efficiency design patterns to address variable workloads and peaks in activity for cloud applications.
 author: dragon119
 ms.author: martinek
@@ -13,7 +13,7 @@ keywords:
   - design pattern
 ---
 
-# Performance Efficiency design patterns
+# Performance Efficiency patterns
 
 Performance efficiency is the ability of your workload to meet the demands placed on it by users in an efficient manner. You need to anticipate increases in load to meet business requirements. To achieve performance efficiency, it's important to consider how your application scales and to implement platform as a service (PaaS) offerings that have built-in scaling operations.
 
