@@ -3,7 +3,7 @@ title: Application profiling considerations for performance monitoring
 description: Collect instrumentation data from the application and correlated events across the entire stack.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 12/08/2021
+ms.date: 05/04/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-efficiency

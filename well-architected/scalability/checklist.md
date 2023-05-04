@@ -3,7 +3,7 @@ title: Monitor the performance of a cloud application
 description: Review a checklist about using monitoring for performance efficiency. Consider scalability, app and infrastructure performance, and resiliency.
 author: martinekuan
 ms.author: martinek
-ms.date: 12/08/2021
+ms.date: 05/04/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-efficiency

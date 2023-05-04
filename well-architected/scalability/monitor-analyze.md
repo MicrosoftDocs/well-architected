@@ -3,7 +3,7 @@ title: Performance data integration
 description: Analyze performance data holistically to detect fault types, bottlenecks regressions, and health states.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 12/08/2021
+ms.date: 05/04/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-efficiency
