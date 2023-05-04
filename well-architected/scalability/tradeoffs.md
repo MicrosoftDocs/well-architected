@@ -73,11 +73,11 @@ The following practices promote faster builds:
 - Scale out build servers.
 - Optimize the build.
 
-For more information, see [Builds](../devops/release-engineering-performance.md#build-times).
+For more information, see [Performance considerations for your deployment infrastructure](../devops/release-engineering-performance.md#build-times).
 
 ### Monitor performance
 
-As you consider performance improvements, monitoring should be done to verify that your application is running correctly. Monitoring should include the application, platform, and networking. For more information, see [Monitoring](../devops/checklist.md).
+As you consider performance improvements, monitoring should be done to verify that your application is running correctly. Monitoring should include the application, platform, and networking. For more information, see [Monitor operations of cloud applications](../devops/checklist.md).
 
 ## Performance efficiency vs. reliability
 
@@ -91,7 +91,7 @@ For reliability, consider the following guidelines:
 
 - Segregate read and write interfaces by using the [Command query responsibility segregation (CQRS) pattern](/azure/architecture/patterns/cqrs) to achieve the scale and performance needed for your solution.
 
-- Try to achieve higher availability by adopting an *eventual consistency* model. For more information about selecting the correct data store, see [Use the best data store for the job](/azure/architecture/guide/design-principles/use-the-best-data-store).
+- Try to achieve higher availability by adopting an *eventual consistency* model. For more information about selecting the correct data store, see [Use the best data store for your data](/azure/architecture/guide/design-principles/use-the-best-data-store).
 
 - If your application requires more storage accounts than are currently available in your subscription, create a new subscription with more storage accounts. For more information, see [Scalability and performance targets](/azure/storage/common/scalability-targets-standard-account).
 
@@ -113,9 +113,11 @@ Consider how the following security measures impact performance:
 
 - To optimize performance and maximize availability, application code should first try to get OAuth access tokens silently from a cache before attempting to acquire a token from the identity provider. OAuth is a technological standard that allows you to securely share information between services without exposing your password.
 
-- Make sure to integrate critical security alerts and logs into security information and event management (SIEM) systems without introducing a high volume of low-value data. Introducing low-value data can increase SIEM costs and false positives, and decrease performance. For more information, see [Prioritize alert and log integration](../security/monitor-logs-alerts.md).
+- Make sure to integrate critical security alerts and logs into security information and event management (SIEM) systems without introducing a high volume of low-value data. Introducing low-value data can increase SIEM costs and false positives, and decrease performance. For more information, see [Security logs and alerts using Azure services](../security/monitor-logs-alerts.md).
 
-- Use Azure AD Connect to synchronize your on-premises directory with your cloud directory. Various factors affect the performance of Azure AD Connect. Ensure Azure AD Connect has enough capacity to keep underperforming systems from impeding security and productivity. Large or complex organizations that provision more than 100,000 objects should follow the [recommendations](/azure/active-directory/hybrid/whatis-hybrid-identity) to optimize their Azure AD Connect implementation.
+- Use Azure AD Connect to synchronize your on-premises directory with your cloud directory. Various factors affect the performance of Azure AD Connect. Ensure Azure AD Connect has enough capacity to keep underperforming systems from impeding security and productivity.
+
+  Large or complex organizations that provision more than 100,000 objects should follow the recommendations to optimize their Azure AD Connect implementation. For more information, see [What is hybrid identity with Azure Active Directory?](/azure/active-directory/hybrid/whatis-hybrid-identity)
 
 - To gain access to real-time performance information at the packet level, use [packet capture](/azure/network-watcher/network-watcher-alert-triggered-packet-capture) to set alerts.
 
