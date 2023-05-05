@@ -3,7 +3,7 @@ title: Release Engineering Continuous deployment
 description: Learn about the automated processes for release deployment that you can run on demand and rerun if something fails.
 author: martinekuan
 ms.author: martinek
-ms.date: 05/03/2023
+ms.date: 05/04/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-excellence
@@ -21,15 +21,13 @@ To activate resources on demand, deploy solutions rapidly, minimize human error,
 
 The most reliable deployment processes are automated and idempotent, as in, repeatable to produce the same results.
 
-- To automate provisioning of Azure resources, you can use [Terraform](/azure/virtual-machines/windows/infrastructure-automation#terraform),
-    [Ansible](/azure/virtual-machines/windows/infrastructure-automation#ansible), [Chef](/azure/virtual-machines/windows/infrastructure-automation#chef), [Puppet](/azure/virtual-machines/windows/infrastructure-automation#puppet),
-    [Azure PowerShell](/powershell/azure/overview), [Azure CLI](/cli/azure), [Azure Resource Manager templates](/azure/azure-resource-manager/template-deployment-overview), or [Azure Deployment Environments](/azure/deployment-environments/).
+- To automate your infrastructure, you can use [Azure Bicep](/azure/azure-resource-manager/bicep/learn-bicep).
 - To configure virtual machines (VMs), you can use [cloud-init](/azure/virtual-machines/windows/infrastructure-automation#cloud-init) (for Linux VMs) or [Azure Automation State Configuration](/azure/automation/automation-dsc-overview) (DSC).
-- To automate application deployment, you can use [Azure DevOps Services](/azure/virtual-machines/windows/infrastructure-automation#azure-devops-services), [Jenkins](/azure/virtual-machines/windows/infrastructure-automation#jenkins), or other CI/CD solutions.
+- To automate application deployment, you can use [Azure DevOps Services](/azure/virtual-machines/windows/infrastructure-automation#azure-devops-services), [GitHub](/azure/app-service/deploy-github-actions?tabs=applevel), [Jenkins](/azure/virtual-machines/windows/infrastructure-automation#jenkins), or other CI/CD solutions.
 
 As a best practice, create a repository of categorized automation scripts for quick access, documented with explanations of parameters and examples of script use. Keep this documentation in sync with your Azure deployments, and designate a primary person to manage the repository.
 
-Automation scripts can also activate resources on demand for disaster recovery.
+Automation scripts can also activate resources on demand for disaster recovery. But scripts can sometimes be a place where you accidentally expose secrets. To protect against exposing secrets in your scripts, use secret variables and Azure Key vault. For more information, see [Set secret variables](/azure/devops/pipelines/process/set-secret-variables) and [Azure Key Vault](/azure/key-vault/general/overview).
 
 ### Automate and test deployment and maintenance tasks
 
@@ -79,7 +77,7 @@ We recommend deploying all but the least critical applications and application s
 
 ### Redeploy to a secondary region
 
-If you run applications and databases in a single, primary region with no replication, your recovery strategy might be to redeploy to another region. This solution is affordable but most appropriate for noncritical applications that can tolerate longer recovery times. If you choose this strategy, automate the redeployment process as much as possible and include redeployment scenarios in your disaster response testing.
+If you run applications and databases in a single, primary region with no replication, your recovery strategy might be to redeploy to another region. This solution is affordable but most appropriate for noncritical applications that can tolerate longer recovery times. If you choose this strategy, automate the redeployment process as much as possible. Also, include redeployment and data synchronization scenarios in your disaster response and testing scenarios.
 
 To automate your redeployment process, consider using [Azure Site Recovery](/azure/site-recovery/).
 
