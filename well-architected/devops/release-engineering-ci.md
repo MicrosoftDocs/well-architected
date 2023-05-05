@@ -100,7 +100,7 @@ Failed tests should temporarily block a deployment and lead to a deeper analysis
 
 Many developers show that their code quality is high by displaying a status badge in their repo. The following image shows an Azure Pipelines badge as displayed on the Readme file for an open-source project on GitHub:
 
-![Image of an Azure Pipelines badge on a Readme file on GitHub.](../devops/github-status-badge.png)
+![Screenshot of an Azure Pipelines badge on a Readme file on GitHub.](../devops/github-status-badge.png)
 
 **Learn more**
 
