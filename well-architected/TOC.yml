@@ -341,7 +341,7 @@ items:
                 href: scalability/monitor-analyze.md
           - name: Optimize
             items:
-              - name: Sustain Efficiency
+              - name: Sustain efficiency
                 href: scalability/optimize-sustain.md
               - name: Partition data
                 href: scalability/optimize-partition.md

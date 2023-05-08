@@ -3,7 +3,7 @@ title: Partition data to optimize performance
 description: Learn how to partition data for performance optimization. Know what's acceptable, and learn about types of partitioning and how to use data partitioning strategies.
 author: martinekuan
 ms.author: martinek
-ms.date: 12/08/2021
+ms.date: 4/28/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -32,7 +32,7 @@ To learn more about the main types of partitioning, see [Horizontal, vertical, a
 Partitioning adds complexity to the design and development of your system. Consider partitioning as a fundamental part of system design even if the system initially contains only a single partition. If you address partitioning as an afterthought, it's more challenging because you already have a live system to maintain:
 
 - Data access logic needs to be modified.
-- Large quantities of existing data might need to be migrated, to distribute it across partitions.
+- Large quantities of existing data might need to be migrated to distribute it across partitions.
 - Users expect to be able to continue using the system during the migration.
 
 Different strategies are used to partition data in various Azure data stores to help improve performance. To learn more, see the following data storage links details.

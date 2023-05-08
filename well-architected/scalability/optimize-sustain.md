@@ -19,11 +19,11 @@ Performance is an indication of the responsiveness of a system to execute any ac
 
 [Autoscaling](./design-scale.md#use-autoscaling-to-manage-load-increases-and-decreases) is the process of dynamically allocating resources to match performance requirements. As the volume of work grows, an application may need more resources to maintain the desired performance levels and satisfy service-level agreements (SLAs). As demand slackens, and the extra resources are no longer needed, they can be deallocated to minimize costs.
 
-To prevent a system from attempting to scale out excessively, consider limiting the maximum number of instances that can be automatically added. Doing so helps you avoid the costs associated with running potentially many thousands of instances. Most autoscaling mechanisms allow you to specify the minimum and maximum number of instances for a rule. Also consider gracefully degrading the functionality that the system provides if the maximum number of instances have been deployed, and the system is still overloaded.
+To prevent a system from attempting to scale out excessively, consider limiting the maximum number of instances that can be automatically added. Doing so helps you avoid the costs associated with running potentially many thousands of instances. Most autoscaling mechanisms allow you to specify the minimum and maximum number of instances for a rule. Also consider gracefully degrading the functionality that the system provides if the maximum number of instances have been deployed and the system is still overloaded.
 
 But autoscaling might not always be the most appropriate mechanism to handle a sudden burst in workload. It takes time to provision and start new instances of a service or add resources to a system, and the peak demand may have passed by the time these extra resources have been made available. In this scenario, it may be better to throttle the service. For more information, see [Throttling pattern](/azure/architecture/patterns/throttling).
 
-If you do need the capacity to process all requests when the volume fluctuates rapidly, you can use an aggressive autoscaling strategy. Aggressive autoscaling does increase costs, but extra the extra instances you need more quickly. You can also use a scheduled policy that starts a sufficient number of instances to meet the maximum load before that load is expected.
+If you do need the capacity to process all requests when the volume fluctuates rapidly, you can use an aggressive autoscaling strategy. Aggressive autoscaling does increase costs, but it adds the extra instances you need more quickly. You can also use a scheduled policy that starts a sufficient number of instances to meet the maximum load before that load is expected.
 
 ## Separate out critical workload
 
@@ -35,9 +35,11 @@ To learn more, see [Data partitioning](/azure/architecture/best-practices/data-p
 
 ## Right-size your resources
 
-Changes to the resources that support a workload may affect the architecture of the workload. When this situation happens, other considerations are required to minimize the effect on end users and business functions. One of these considerations is right-sizing, which is about controlling cost by continuously monitoring and adjusting size of your instances to meet needs. Cost shouldn't necessarily be the main decision-making factor. Choosing the least expensive option could expose the workload to performance and availability risks. When you consider costing and sizing resources hosted in Azure, right-sizing virtual machines (VMs) is a best practice.
+Changes to the resources that support a workload may affect the architecture of the workload. When this situation happens, other considerations are required to minimize the effect on end users and business functions. One of these considerations is right-sizing, which is about controlling cost by continuously monitoring and adjusting size of your instances to meet needs. Cost shouldn't necessarily be the main decision-making factor. Choosing the least expensive option could expose the workload to performance and availability risks.
 
-To learn more about best practices with VMs, see [Best practice: Right-size VMs](/azure/cloud-adoption-framework/govern/cost-management/best-practices#best-practice-right-size-vms).
+For example, when you consider costing and sizing resources hosted in Azure, right-sizing virtual machines (VMs) is a best practice.Choosing the right storage type for data can save your organization several thousands of dollars every month. Microsoft offers many options, and each VM type has specific features and different combinations of CPU, memory, and disks.
+
+To learn more about right sizing best practices with VMs, see [Best practice: Right-size VMs](/azure/cloud-adoption-framework/govern/cost-management/best-practices#best-practice-right-size-vms).
 
 ### For accountability purposes
 
