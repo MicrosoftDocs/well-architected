@@ -37,7 +37,7 @@ To learn more, see [Data partitioning](/azure/architecture/best-practices/data-p
 
 Changes to the resources that support a workload may affect the architecture of the workload. When this situation happens, other considerations are required to minimize the effect on end users and business functions. One of these considerations is right-sizing, which is about controlling cost by continuously monitoring and adjusting size of your instances to meet needs. Cost shouldn't necessarily be the main decision-making factor. Choosing the least expensive option could expose the workload to performance and availability risks.
 
-For example, when you consider costing and sizing resources hosted in Azure, right-sizing virtual machines (VMs) is a best practice.Choosing the right storage type for data can save your organization several thousands of dollars every month. Microsoft offers many options, and each VM type has specific features and different combinations of CPU, memory, and disks.
+For example, when you consider pricing and sizing resources hosted in Azure, right-sizing virtual machines (VMs) is best practice. Choosing the right storage type for data can save your organization several thousands of dollars every month. Microsoft offers many options, and each VM type has specific features and different combinations of CPU, memory, and disks.
 
 To learn more about right sizing best practices with VMs, see [Best practice: Right-size VMs](/azure/cloud-adoption-framework/govern/cost-management/best-practices#best-practice-right-size-vms).
 
