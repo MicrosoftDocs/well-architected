@@ -342,11 +342,11 @@ items:
           - name: Optimize
             items:
               - name: Sustain Efficiency
-                href: scalability/optimize-sustain
+                href: scalability/optimize-sustain.md
               - name: Partition data
-                href: scalability/optimize-partition
+                href: scalability/optimize-partition.md
               - name: Cache data
-                href: scalability/optimize-cache
+                href: scalability/optimize-cache.md
           - name: Performance Efficiency patterns
             href: scalability/performance-efficiency-patterns.md
           - name: Checklist
