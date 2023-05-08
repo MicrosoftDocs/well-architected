@@ -11,7 +11,7 @@ categories:
   - management-and-governance
 ---
 
-# Partitioning data for performance optimization
+# Partition data to optimize performance
 
 Data partitioning can optimize performance, improve scalability, and reduce contention by lowering the taxation of database operations. It can also provide a mechanism for dividing data by usage pattern. For example, you can archive older data in cheaper data storage. Data partitioning involves conversations and planning between developers and database administrators.
 

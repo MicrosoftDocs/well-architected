@@ -339,6 +339,14 @@ items:
                 href: scalability/monitor-infrastructure.md
               - name: Performance data
                 href: scalability/monitor-analyze.md
+          - name: Optimize
+            items:
+              - name: Sustain Efficiency
+                href: scalability/optimize-sustain
+              - name: Partition data
+                href: scalability/optimize-partition
+              - name: Cache data
+                href: scalability/optimize-cache
           - name: Performance Efficiency patterns
             href: scalability/performance-efficiency-patterns.md
           - name: Checklist

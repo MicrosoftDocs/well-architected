@@ -1,5 +1,5 @@
 ---
-title: Caching data for performance optimization
+title: Cache data for performance optimization
 description: Learn to examine caching considerations for performance optimization. Caching is a strategy where you store a copy of the data in front of the main data store.
 author: martinekuan
 ms.author: martinek
@@ -13,7 +13,7 @@ categories:
   - management-and-governance
 ---
 
-# Caching data for performance optimization
+# Cache data for performance optimization
 
 Caching is a strategy where you store a copy of the data in front of the main data store. Advantages of caching include faster response times and the ability to serve data quickly, which can improve user experience. The cache store is typically located closer to the consuming client than the main store.
 
@@ -39,15 +39,6 @@ Azure Cache for Redis also improves application performance by supporting common
 ## Azure Content Delivery Network (CDN)
 
 A content delivery network (CDN) is a distributed network of servers that can efficiently deliver web content to users. A CDN stores cached content on edge servers in point-of-presence (POP) locations that are close to end users, to minimize latency. To learn more about CDN, see [What is a content delivery network on Azure?](/azure/cdn/cdn-overview)
-
-Azure CDN offers the following key features:
-
-- [**Dynamic site acceleration (DSA)**](/azure/cdn/cdn-dynamic-site-acceleration) - Provide users with a fast, reliable, and personalized web experience, independent of their browser, location, device, or network.
-- [**CDN caching rules**](/azure/cdn/cdn-caching-rules) - Control Azure CDN caching behavior.
-- [**HTTPS custom domain support**](/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate) - Deliver your sensitive data securely when it's sent across the internet and protect your web applications from attacks.
-- [**Azure diagnostics logs**](/azure/cdn/cdn-azure-diagnostic-logs) - Export basic usage metrics from your CDN endpoint to different kinds sources so that you can consume them in a customized way.
-- [**File compression**](/azure/cdn/cdn-improve-performance) - Improve file transfer speed and increase page-load performance by reducing a file's size before it's sent from the server.
-- [**Geo-filtering**](/azure/cdn/cdn-restrict-access-by-country-region) - Restrict access to your content by country/region by creating rules on specific paths on your CDN endpoint.
 
 ## Next
 > [!div class="nextstepaction"]
