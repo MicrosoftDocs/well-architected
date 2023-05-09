@@ -1,9 +1,9 @@
 ---
 title: Release Engineering Rollback
-description: Learn about the deployment rollback options in Azure release engineering by using Azure App Service, Azure Kubernetes Service (AKS), or Azure Resource Manager.
+description: Learn about deployment rollback options in Azure release engineering by using examples from Azure App Service, Azure Kubernetes Service (AKS), and Azure Resource Manager.
 author: martinekuan
 ms.author: martinek
-ms.date: 05/03/2023
+ms.date: 05/08/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-excellence
@@ -70,3 +70,11 @@ Azure Logic Apps, for example, create a new version of the application whenever 
 **Learn more**
 
 For more information, see [Manage logic apps in the Azure portal](/azure/logic-apps/manage-logic-apps-with-azure-portal).
+
+## Restore a database
+
+You can do a point in time restore on any primary database on the same server. You restore to an earlier point in time within the database's retention period.
+
+**Learn more**
+
+For more information, see [Point in time restore](/azure/azure-sql/database/recovery-using-backups#point-in-time-restore)
