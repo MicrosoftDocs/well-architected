@@ -3,7 +3,7 @@ title: Testing your app and Azure environment
 description: Learn about DevOps testing considerations to make when designing your workload. Get information about automated testing and application manual testing in Azure.
 author: erjosito
 ms.author: martinek
-ms.date: 05/04/2023
+ms.date: 05/09/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-excellence
@@ -11,7 +11,7 @@ ms.subservice: waf-pillar-excellence
 
 # Testing your application and Azure environment
 
-Testing is one of the fundamental components and DevOps in agile development in general. If automation gives DevOps the required speed and agility to deploy software quickly, only through extensive testing those deployments achieves the required reliability that customers demand.
+Testing is one of the fundamental components in DevOps and agile development. If automation gives DevOps the required speed and agility to deploy software quickly, the only the extensive testing of those deployments achieves the required reliability that customers demand.
 
 A main tenet of system reliability is the "Shift Left" principle. If developing and deploying an application is a process depicted as a series of steps going from left to right, testing shouldn't be limited to the very end of the process. It should be shifted as much to the beginning, meaning to the left, as possible. Errors are cheaper to repair when caught early. They can be expensive or impossible to fix later in the application life cycle.
 
@@ -43,7 +43,7 @@ Instead, they verify that the deployment methodology for both the infrastructure
 
 After making sure that the different application components operate individually, integration testing determines whether they can interact with each other as they should.
 
-Running a large integration test suite can take a considerable amount of time, which is why tests should be performed as early as possible. Integration tests should be reserved to scenarios that can't be tested with a smoke or unit test.
+Running a large integration test suite can take a considerable amount of time, which is why tests should be performed as early as possible in the software development lifecycle. Integration tests should be reserved to scenarios that can't be tested with a smoke or unit test.
 
 Long running test processes can be run on a regular interval if needed. A regular interval offers a good compromise, detecting interoperability issues between application components no later than one day after they were introduced.
 

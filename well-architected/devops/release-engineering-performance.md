@@ -3,7 +3,7 @@ title: Performance of deployment infrastructure
 description: Learn about performance considerations to make regarding your deployment infrastructure. Get advice about build times and human intervention.
 author: UmarMohamedUsman
 ms.author: martinek
-ms.date: 05/04/2023
+ms.date: 05/09/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-excellence
@@ -18,7 +18,7 @@ ms.custom:
 
 Build status shows if your product is in a deployable state, so builds are the heartbeat of your continuous delivery system. It's important to have a build process up and running the first day of your product development. Since builds provide such crucial information about the status of your product, you should always strive for fast builds.
 
-It's difficult to fix a build problem if it takes longer to build. When delays happen and becomes normalized, teams tend to become less motivated to fix the problem.
+It's difficult to fix a build problem if it takes longer to build. When delays happen and become normalized, teams tend to become less motivated to fix the problem.
 
 ## Build times
 
@@ -32,9 +32,9 @@ Here are few ways you can achieve faster builds:
 
 * **Optimizing the build:**
 
-  * Add parallel build runs to speed up the build process. For more information, see [Configure and pay for parallel jobs](/azure/devops/pipelines/licensing/concurrent-jobs?view=azure-devops&preserve-view=true).
+  * Add parallel build jobs to speed up the build process. For more information, see [Configure and pay for parallel jobs](/azure/devops/pipelines/licensing/concurrent-jobs?view=azure-devops&preserve-view=true).
 
-  * Enable parallel runs of test suites, which often saves a large amount of time, especially when running integration and UI tests. For more information, see [Run tests in parallel for any test runner](/azure/devops/pipelines/test/parallel-testing-any-test-runner?view=azure-devops&preserve-view=true).
+  * Enable parallel test suite runs, which often save a large amount of time, especially when running integration and UI tests. For more information, see [Run tests in parallel for any test runner](/azure/devops/pipelines/test/parallel-testing-any-test-runner?view=azure-devops&preserve-view=true).
 
   * Use the notion of a multiplier, where you can scale out your builds over multiple build agents. For more information, see [Specify jobs in your pipeline](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true).
 
