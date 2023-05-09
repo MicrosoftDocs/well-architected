@@ -11,7 +11,7 @@ ms.subservice: waf-pillar-excellence
 
 # Testing your application and Azure environment
 
-Testing is a fundamental component in DevOps and agile development. If automation gives DevOps the required speed and agility to deploy software quickly, then only the extensive testing of those deployments achieves the required reliability that customers demand.
+Testing is a fundamental component in DevOps and agile development in general. If automation gives DevOps the required speed and agility to deploy software quickly, then only the extensive testing of those deployments achieves the required reliability that customers demand.
 
 A main tenet of system reliability is the "Shift Left" principle. If developing and deploying an application is a process depicted as a series of steps going from left to right, testing shouldn't be limited to the very end of the process. It should be shifted as much to the beginning, meaning to the left, as possible. Errors are cheaper to repair when caught early. They can be expensive or impossible to fix later in the application life cycle.
 
