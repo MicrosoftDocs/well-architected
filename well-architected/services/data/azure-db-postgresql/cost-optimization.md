@@ -47,7 +47,7 @@ Azure Database for PostgreSQL recommendation | Description
 | Understand high availability cost | High availability avoids database downtime by maintaining standby replicas of every node in a server group. If a node goes down, incoming connections are automatically switched from the failed node to its standby. Enabling high-availability doubles your cost. |
 | Optimize compute cost | Manually change compute and storage tiers to meet application needs. Use the Start/Stop feature to stop running the server when unneeded. Commit to a one to three year compute reservation to receive significant discounts on compute costs.|
 | Optimize storage cost | There's no extra charge for backup storage up to 100% of your total provisioned server storage. Geo-redundant storage (GRS) costs twice local redundant storage. GRS requires twice the amount of storage capacity because it creates a replica. Scaling up storage is possible, but scaling down isn't supported.
-| Optimize network | Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. You need to configure virtual network peering before they can access the flexible server. Virtual network peering has inbound and outbound data transfer costs.
+| Optimize network cost | Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. You need to configure virtual network peering before they can access the flexible server. Virtual network peering has inbound and outbound data transfer costs.
 
 ## Next step
 
