@@ -14,7 +14,7 @@ categories:
   - management-and-governance
 ---
 
-# Azure Well-Architected Framework review for Azure Database for PostgreSQL - Flexible Server
+# Azure Well-Architected Framework review for Azure Database for PostgreSQL
 
 [Azure Database for PostgreSQL](/azure/postgresql/overview) is a relational database service in Azure based on the PostgreSQL open source relational database. Azure Database for PostgreSQL has two deployment modes: Single Server and Flexible Server
 
@@ -22,7 +22,7 @@ categories:
 
 **Flexible Server** is fully managed database service that provides more control over database management than the Single Server deployment option. You should use the Flexible Server deployment option when you need greater database control, cost optimization features, zone redundancy, and customizable maintenance windows.
 
-This guide provides implementation guidance and recommendations for Azure Database for PostgreSQL - Flexible Server.
+This guide provides implementation guidance and recommendations for Azure Database for PostgreSQL.
 
 ## Cost optimization
 
