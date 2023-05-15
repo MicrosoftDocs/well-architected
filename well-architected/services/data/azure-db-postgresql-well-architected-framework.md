@@ -42,12 +42,12 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 Azure Database for PostgreSQL recommendation | Description
 | --- | --- |
-| Use Azure Advisor | Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing. |
+| Use Azure Advisor | Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
 | Select the right pricing tier | Pick the pricing tier and compute SKUs that support the specific needs of your workload. |
 | Understand high availability cost | High availability avoids database downtime by maintaining standby replicas of every node in a server group. If a node goes down, incoming connections are automatically switched from the failed node to its standby. Enabling high-availability doubles your cost. |
-| Optimize compute cost | Manually change compute and storage tiers to meet application needs. Use the Start/Stop feature to stop running the server when unneeded. Commit to a one to three year compute reservation to receive significant discounts on compute costs.|
-| Optimize storage cost | There's no extra charge for backup storage up to 100% of your total provisioned server storage. Geo-redundant storage (GRS) costs twice local redundant storage. GRS requires twice the amount of storage capacity because it creates a replica. Scaling up storage is possible, but scaling down isn't supported.
-| Optimize network cost | Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. You need to configure virtual network peering before they can access the flexible server. Virtual network peering has inbound and outbound data transfer costs.
+| Optimize compute cost | You should manually change compute and storage tiers to meet application needs over time. Flexible server has a Start/Stop feature that you can use to stop the server from running when you don't need it to. We also recommend you use a one or three year compute reservation to receive significant discounts on compute costs.|
+| Optimize storage cost | There's no extra charge for backup storage up to 100% of your total provisioned server storage. Geo-redundant storage (GRS) requires twice the amount of storage capacity because it creates a replica. GRS costs twice as much as redundant storage. You should evaluate your current and future storage needs before scaling up your storage. After you scale up your storage, you can't scale down.
+| Optimize network cost | Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. To grant them access, you need to configure virtual network peering. Virtual network peering has inbound and outbound data transfer costs.
 
 ## Next step
 
