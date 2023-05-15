@@ -40,7 +40,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 ### Recommendations
 
-Azure Database for PostgreSQL recommendation | Benefit
+Azure Database for PostgreSQL recommendation | Description
 | --- | --- |
 | Use Azure Advisor | Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing. |
 | Select the right pricing tier | Pick the pricing tier and compute SKUs that support the specific needs of your workload. |
