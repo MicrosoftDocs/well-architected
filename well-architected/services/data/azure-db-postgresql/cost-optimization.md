@@ -31,7 +31,6 @@ This guide provides implementation guidance and recommendations for Azure Databa
 You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
 
 > [!div class="checklist"]
-
 > - Use Azure Advisor
 > - Select the right pricing tier
 > - Understand high availability cost
