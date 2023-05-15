@@ -52,4 +52,4 @@ Azure Database for PostgreSQL recommendation | Description
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure SQL Database and reliability](../azure-sql-database/reliability.md)
+> [Azure SQL Database](./azure-sql-database-well-architected-framework.md)
