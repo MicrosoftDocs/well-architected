@@ -144,6 +144,11 @@
 			"source_path": "well-architected/sap/security.md",
 			"redirect_url": "/azure/architecture/framework/sap/get-started",
 			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/services/data/azure-db-postgresql/cost-optimization.md",
+			"redirect_url": "well-architected/services/data/azure-db-postgresql/flexible-server",
+			"redirect_document_id": false
 		}
 	]
 }
