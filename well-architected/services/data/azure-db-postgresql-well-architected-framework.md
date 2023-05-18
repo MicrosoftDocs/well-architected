@@ -31,7 +31,7 @@ This guide provides implementation guidance and recommendations for Azure Databa
 You should review the [design principles](/azure/architecture/framework/cost/principles) to optimize the cost of your architecture.
 
 > [!div class="checklist"]
-> - Right-size
+> - Pick the right tier and SKU
 > - Understand high availability mode
 > - Scale compute and storage tiers
 > - Consider reserved instances
@@ -44,7 +44,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 Azure Database for PostgreSQL recommendation | Description
 | --- | --- |
-| Right-size | Pick the pricing tier and compute SKUs that support the specific needs of your workload. Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
+| Pick the right tier and SKU | Pick the pricing tier and compute SKUs that support the specific needs of your workload. Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
 | Understand high availability mode | High availability makes a standby server always available within the same zone or region. Enabling high-availability doubles your cost. |
 | Scale compute and storage tiers | You should manually change compute and storage tiers to meet application needs over time.
 | Use Start/Stop feature | Flexible server has a Start/Stop feature that you can use to stop the server from running when you don't need it to.
