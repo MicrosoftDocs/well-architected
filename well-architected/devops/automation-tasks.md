@@ -60,6 +60,20 @@ Both PowerShell and Python are common languages for automating everyday operatio
 - [Documentation: Azure Functions PowerShell developer guide](/azure/azure-functions/functions-reference-powershell)
 - [Documentation: Azure Functions Python developer guide](/azure/azure-functions/functions-reference-python)
 
+## Azure Deployment Environments
+
+Azure Deployment Environments enables development teams to quickly spin up consistent app infrastructure by using project-based templates, minimizing setup time while maximizing security, compliance, and cost efficiency. A deployment environment is a collection of Azure resources deployed in predefined subscriptions. Development infrastructure (dev infra) admins can enforce enterprise security policies and provide a curated set of predefined infrastructure as code (IaC) templates.
+
+Dev infra admins define deployment environments as catalog items hosted in a GitHub or Azure DevOps repository called a catalog. A catalog item consists of an IaC template and a manifest.yaml file.
+
+The creation of deployment environments can be scripted, and the environments can be managed programmatically.
+
+**Learn more**
+
+- [Azure Deployment Environments](/azure/deployment-environments/)
+- [Scenarios for using Azure Deployment Environments Preview](/azure/deployment-environments/concept-environments-scenarios)
+- [Create and access an environment by using the Azure CLI](/azure/deployment-environments/how-to-create-access-environments)
+
 ## Azure Automation
 
 PowerShell and Python are popular programming languages for automating operational tasks. Using these languages, performing operations like restarting services, moving logs between data stores, and scaling infrastructure to meet demand can be expressed in code and executed on demand. Alone, these languages do not offer a platform for centralized management, version control, or execution history. The languages also lack a native mechanism for responding to events like monitoring driven alerts. To provide these capabilities, an automation platform is needed.
