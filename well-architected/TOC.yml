@@ -339,6 +339,9 @@ items:
                 href: scalability/monitor-infrastructure.md
               - name: Performance data
                 href: scalability/monitor-analyze.md
+              - name: Scalability and reliability
+                href: scalability/monitor-scalability-reliability.md
+          - name: Performance efficiency patterns
           - name: Optimize
             items:
               - name: Sustain efficiency
