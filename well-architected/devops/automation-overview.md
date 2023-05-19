@@ -1,9 +1,9 @@
 ---
 title: Automation overview of goals, best practices, and types in Azure
-description: Learn how automation improves businesses operations, automates manual processes, and lets engineers focus on tasks that add business value.
+description: Learn how automation improves workload operations, removes risks associated with manual processes, and lets engineers focus on tasks that add business value.
 author: martinekuan
 ms.author: martinek
-ms.date: 05/03/2023
+ms.date: 05/19/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-pillar-excellence
@@ -69,7 +69,7 @@ These technologies use a *declarative* approach. This approach lets you state wh
 
 If you don't manage configuration carefully, your business could encounter disruptions such as systems outages and security issues. Optimal configuration enables you to quickly detect and correct configurations that could interrupt or slow performance.
 
-When creating new resources on Azure, you might take advantage of configuration as code to [bootstrap](./automation-configuration.md#bootstrap-automation) the deployment.
+When creating new resources on Azure, you can take advantage of configuration as code to [bootstrap](./automation-configuration.md#bootstrap-automation) the deployment.
 
 Configuration tools can also be used to [configure and manage](./automation-configuration.md#configuration-management) the ongoing state of deployed resources.
 
