@@ -86,7 +86,7 @@ Consider the following recommendation to optimize reliability when configuring A
 
 - To identify premium Service Bus Instances that aren't using private endpoints, use the following query:
 
-  ```sql
+  ```Kusto
   Resources
   | where
     type == 'microsoft.servicebus/namespaces'
@@ -97,7 +97,7 @@ Consider the following recommendation to optimize reliability when configuring A
 
 - To identify Service Bus Instances that are not on the premium tier, use the following query:
 
-  ```sql
+  ```Kusto
   Resources
   | where
     type == 'microsoft.servicebus/namespaces'
