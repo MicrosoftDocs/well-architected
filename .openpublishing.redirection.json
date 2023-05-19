@@ -147,7 +147,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/design-checklist.md",
-			"redirect_url": "/azure/architecture/scalability/performance-efficiency",
+			"redirect_url": "/azure/well-architected/scalability/performance-efficiency",
 		},
 		{
 			"source_path": "well-architected/scalability/monitor.md",
