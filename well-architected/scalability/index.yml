@@ -1,16 +1,16 @@
 ### YamlMime:Landing
 
 title: Performance efficiency documentation
-summary: Apply performance principles to your architecture to meet users' demands efficiently.
+summary: Apply the principles of scalability and testing to your architecture to meet users' demands efficiently.
 
 metadata: 
   title: Performance efficiency documentation
-  description: Learn how to apply performance principles to your architecture to meet users' demands efficiently.
+  description: Apply the principles of scalability and testing to your architecture to meet users' demands efficiently.
   services: na
   author: martinekuan
   ms.author: martinek
   manager: david-stanford
-  ms.date: 05/03/2023
+  ms.date: 05/18/2023
   ms.topic: landing-page
   ms.service: waf
   ms.subservice: waf-pillar-efficiency
