@@ -13,7 +13,7 @@ ms.subservice: waf-pillar-excellence
 
 Testing is a fundamental component in DevOps and agile development in general. If automation gives DevOps the required speed and agility to deploy software quickly, then only the extensive testing of those deployments achieves the required reliability that customers demand.
 
-A main tenet of system reliability is the "Shift Left" principle. If developing and deploying an application is a process depicted as a series of steps going from left to right, testing shouldn't be limited to the very end of the process. It should be shifted as much to the beginning, meaning to the left, as possible. Errors are cheaper to repair when caught early. They can be expensive or impossible to fix later in the application life cycle.
+A main tenet of system reliability is the "shift-left" principle. If developing and deploying an application is a process depicted as a series of steps going from left to right, testing shouldn't be limited to the very end of the process. It should be shifted as much to the beginning, meaning to the left, as possible. Errors are cheaper to repair when caught early. They can be expensive or impossible to fix later in the application life cycle.
 
 Testing should occur on all code, including application code, infrastructure templates, and configuration scripts. As described in [Repeatable infrastructure][iac], the environment where applications are running should be version-controlled and deployed through the same mechanisms as application code. The environment can then be tested and validated by using the same testing paradigms that teams already use for application code.
 
@@ -43,7 +43,7 @@ Instead, they verify that the deployment methodology for both the infrastructure
 
 After making sure that the different application components operate individually, integration testing determines whether they can interact with each other as they should.
 
-Running a large integration test suite can take a considerable amount of time, which is why tests should be performed as early as possible in the software development lifecycle. Integration tests should be reserved to scenarios that can't be tested with a smoke or unit test.
+Running a large integration test suite can take a considerable amount of time, which is why tests should be performed as early as possible (the shift-left principle) in the software development lifecycle. Integration tests should be reserved to scenarios that can't be tested with a smoke or unit test.
 
 Long running test processes can be run on a regular interval if needed. A regular interval offers a good compromise, detecting interoperability issues between application components no later than one day after they were introduced.
 

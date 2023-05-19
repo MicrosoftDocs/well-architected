@@ -1,6 +1,6 @@
 ---
 title: Performance of deployment infrastructure
-description: Learn about performance considerations to make regarding your deployment infrastructure. Get advice about build times and human intervention.
+description: Learn about boosting the performance of your deployment infrastructure. Review the considerations about build times and human intervention.
 author: UmarMohamedUsman
 ms.author: martinek
 ms.date: 05/09/2023
@@ -32,7 +32,7 @@ Here are few ways you can achieve faster builds:
 
 * **Optimizing the build:**
 
-  * Add parallel build jobs to speed up the build process. For more information, see [Configure and pay for parallel jobs](/azure/devops/pipelines/licensing/concurrent-jobs?view=azure-devops&preserve-view=true).
+  * Add parallel jobs to speed up the build process. For more information, see [Configure and pay for parallel jobs](/azure/devops/pipelines/licensing/concurrent-jobs?view=azure-devops&preserve-view=true).
 
   * Enable parallel test suite runs, which often save a large amount of time, especially when running integration and UI tests. For more information, see [Run tests in parallel for any test runner](/azure/devops/pipelines/test/parallel-testing-any-test-runner?view=azure-devops&preserve-view=true).
 
