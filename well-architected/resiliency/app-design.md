@@ -41,7 +41,7 @@ The possibility of failure is unavoidable in public cloud environments. As a res
 
 Define an availability strategy to capture how the application remains available during a failure state. The strategy should apply across all application components and the application deployment stamp as a whole, such as via multi-geo scale-unit deployment approach. There are cost implications as well. More resources need to be provisioned in advance to provide high availability. *Active-active* setup, while more expensive than single deployment, can balance cost by lowering load on one stamp and reducing the total amount of resources needed.
 
-In addition to an availability strategy, define a business-continuity disaster-recovery (BCDR) strategy for the application and/or its key scenarios. A BCDR strategy should capture how the application responds to a disaster situation, such as a regional outage or the loss of a critical platform service, using either a redeployment, warm-spare *active-passive*, or hot-spare *active-active* approach.
+In addition to an availability strategy, define a Business Continuity Disaster Recovery (BCDR) strategy for the application and/or its key scenarios. A BCDR strategy should capture how the application responds to a disaster situation, such as a regional outage or the loss of a critical platform service, using either a redeployment, warm-spare *active-passive*, or hot-spare *active-active* approach.
 
 To reduce costs, consider splitting application components and data into groups. For example:
 
