@@ -11,7 +11,9 @@ ms.subservice: waf-workload-avs
 
 # Application platform considerations for Azure VMware Solution (AVS)
 
-//TODO: Add an introduction
+
+//TODO: Add an introduction later
+
 
 ## Align to business metrics
 
