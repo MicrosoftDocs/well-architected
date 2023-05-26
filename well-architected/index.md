@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Well-Architected Framework
-titleSuffix: Azure Architecture Center
+titleSuffix: Azure Well-Architected Framework
 description: Learn about the five pillars of the Azure Well-Architected Framework and how they can produce a high quality, stable, and efficient cloud architecture.
 author: martinekuan
 ms.author: martinek
@@ -199,6 +199,8 @@ Learn more about:
 - [Introduction to the Microsoft Azure Well-Architected Framework](/training/modules/azure-well-architected-introduction/)
 - [Microsoft Defender for Cloud](/azure/security-center/)
 - [Cloud Adoption Framework](/azure/cloud-adoption-framework/)
+- [Azure Deployment Environments](/azure/deployment-environments/)
+- [Microsoft Dev Box](/azure/dev-box/)
 
 <!-- links -->
 

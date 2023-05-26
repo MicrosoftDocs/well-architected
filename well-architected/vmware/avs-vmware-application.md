@@ -12,6 +12,7 @@ ms.subservice: waf-workload-avs
 # Application platform considerations for Azure VMware Solution (AVS)
 
 
+
 //TODO: Add an introduction later
 
 
@@ -21,7 +22,9 @@ Azure provides Service Level Agreements (SLAs) for all its services. The composi
 
 **Impact**: _Reliability_
 
+
 ##### Recommendations
+
 
 - Define Service Level Agreements (SLAs) for the application and its key use cases.
 - Determine how much downtime is acceptable. Quantify that value as the 
@@ -84,10 +87,12 @@ The environment should be able to expand and contract based on load. Handle thos
 
 **Impact**: _Performance Efficiency, Operational Excellence_
 
+
 ##### Recommendations
 
 - Define high and low threshold values by running performance tests. Observe Azure metrics for the percentage usage of cluster CPU, memory, and storage resources. 
 - Set alerts on the threshold values and trigger your the auto-scale node event within in Azure VMware Solution private cloud. 
+
 
 > [!NOTE]
 > ![GitHub logo](../_images/github.svg)For an example implementation, see [Auto-Scale function](/azure-vmware-solution/tree/main/avs-autoscale).
