@@ -11,6 +11,8 @@ products:
   - azure-resource-manager
 ms.custom:
   - article
+  - devx-track-bicep
+  - devx-track-terraform
 ---
 
 # Repeatable infrastructure
