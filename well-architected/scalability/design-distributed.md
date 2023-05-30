@@ -23,7 +23,7 @@ Most cloud deployments are based on distributed architectures where components a
 ## Key points
 
 > [!div class="checklist"]
-
+>
 > - The team might not have the expertise across all the services used in an architecture.
 > - Uncovering and resolving bottlenecks by monitoring all of your services and their infrastructure is complex.
 > - Antipatterns in design and code causes issues if the application is under pressure.
