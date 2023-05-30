@@ -120,7 +120,7 @@ The following questions and answers discuss considerations about chaos engineeri
 
 - **Have you injected faults in a way that accurately reflects production failures?**
 
-    Simulate production failures. Treat injected faults in the same way that you treat production-level faults. Enforcing a tighter limit on the blast radius lets you to simulate a production environment. Each fault-injection effort must be accompanied by tooling that's designed to inject the types of faults that are relevant to your team's scenarios. Here are two basic ways:
+    Simulate production failures. Treat injected faults in the same way that you treat production-level faults. Enforcing a tighter limit on the blast radius lets you simulate a production environment. Each fault-injection effort must be accompanied by tooling that's designed to inject the types of faults that are relevant to your team's scenarios. Here are two basic ways:
 
     - Inject faults in a non-production environment, such as [Canary](../devops/release-engineering-testing.md#acceptance-testing) or [Testing In Production](/shows/azure-friday/testing-in-production-with-azure-app-service) (TIP).
     - Partition the production service or environment.
