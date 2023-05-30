@@ -329,6 +329,8 @@ items:
                 href: scalability/test-checklist.md
               - name: Performance testing
                 href: scalability/performance-test.md
+              - name: Load testing
+                href: scalability/load-testing.md
               - name: Testing strategies
                 href: scalability/test-tools.md
           - name: Monitoring

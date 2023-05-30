@@ -92,7 +92,7 @@ landingContent:
           - text: Stress testing
             url: performance-test.md#stress-testing
           - text: Multiregion testing
-            url: performance-test.md#multiregion-testing
+            url: performance-test.md#multi-region-testing
           - text: Testing tools
             url: test-tools.md
       - linkListType: concept
