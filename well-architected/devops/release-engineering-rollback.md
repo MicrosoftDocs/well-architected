@@ -10,6 +10,8 @@ ms.subservice: waf-pillar-excellence
 products:
   - azure-app-service
   - azure-kubernetes-service
+ms.custom:
+  - devx-track-arm-template
 ---
 
 # Release engineering: Rollback
