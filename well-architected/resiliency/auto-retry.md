@@ -10,6 +10,7 @@ ms.subservice: waf-pillar-reliability
 ms.custom:
   - Automatic retry of failed backup jobs
   - article
+  - devx-track-azurepowershell
 products:
   - azure
 categories:
