@@ -345,7 +345,6 @@ items:
                 href: scalability/monitor-analyze.md
               - name: Scalability and reliability
                 href: scalability/monitor-scalability-reliability.md
-          - name: Performance efficiency patterns
           - name: Optimize
             items:
               - name: Sustain efficiency
@@ -354,7 +353,7 @@ items:
                 href: scalability/optimize-partition.md
               - name: Cache data
                 href: scalability/optimize-cache.md
-          - name: Performance Efficiency patterns
+          - name: Performance efficiency patterns
             href: scalability/performance-efficiency-patterns.md
           - name: Checklist
             href: scalability/performance-efficiency.md
