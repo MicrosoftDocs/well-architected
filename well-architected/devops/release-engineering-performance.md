@@ -40,7 +40,7 @@ Here are few ways you can achieve faster builds:
 
   * Consider moving integration, UI, and smoke tests to a release pipeline. Moving to a release pipeline improves the build speed and the speed of the build feedback loop.
 
-  * Publish the build artifacts to a package management solution, such as NuGet or Maven. Publishing to a package management solution lets you to reuse your build artifact more easily.
+  * Publish the build artifacts to a package management solution, such as NuGet or Maven. Publishing to a package management solution lets you reuse your build artifact more easily.
 
 ## Human intervention
 
