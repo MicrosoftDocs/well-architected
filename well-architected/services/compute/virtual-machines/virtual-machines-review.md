@@ -5,8 +5,6 @@ author: cynthn
 ms.author: cynthn
 ms.date: 04/27/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
   - azure-virtual-machines
 categories:

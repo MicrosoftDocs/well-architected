@@ -6,8 +6,6 @@ ms.author: martinek
 ms.date: 10/14/2022
 ms.reviewer: tozimmergren
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - article
   - internal-intro

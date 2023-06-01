@@ -5,8 +5,6 @@ author: UmarMohamedUsman
 ms.author: martinek
 ms.date: 05/09/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-excellence
 products:
   - azure-pipelines
 ms.custom:

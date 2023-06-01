@@ -5,8 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 08/15/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories:
   - management-and-governance
   - web

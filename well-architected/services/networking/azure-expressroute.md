@@ -4,8 +4,6 @@ description: Provides architectural best practices for using Azure ExpressRoute.
 author: duongau
 ms.author: duau
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.date: 06/07/2022
 ---
 

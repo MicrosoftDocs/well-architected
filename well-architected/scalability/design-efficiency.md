@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/01/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-efficiency
 ms.custom:
   - How are you designing your applications for efficiency?
   - article

@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/26/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-reliability
 ms.custom:
   - How are you handling DR (Backup & Restore) for this workload?
   - article

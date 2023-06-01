@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/05/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-efficiency
 ms.custom:
   - How are you handling user load?
   - article

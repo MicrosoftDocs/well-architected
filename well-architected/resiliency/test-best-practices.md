@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/27/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-reliability
 ---
 
 # Best practices for testing reliability in Azure applications

@@ -5,8 +5,6 @@ ms.author: martinek
 author: martinekuan
 ms.date: 04/26/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-excellence
 ms.custom:
   - fasttrack-edit
   - overview

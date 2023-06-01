@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - e2e-hybrid
 ---

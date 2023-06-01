@@ -5,8 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 04/11/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
   - azure-advisor
   - azure

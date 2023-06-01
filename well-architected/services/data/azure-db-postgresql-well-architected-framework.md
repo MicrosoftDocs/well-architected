@@ -5,8 +5,6 @@ author: stephen-sumner
 ms.author: ssumner
 ms.date: 05/15/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
   - azure-database-postgresql
 categories:

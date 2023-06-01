@@ -6,8 +6,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 03/27/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
   - azure
 categories:

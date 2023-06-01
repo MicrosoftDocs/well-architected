@@ -5,8 +5,6 @@ ms.author: martinek
 author: robbyatmicrosoft
 ms.date: 05/09/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-efficiency
 products:
   - azure
 categories:

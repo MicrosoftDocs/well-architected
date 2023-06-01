@@ -10,9 +10,10 @@ metadata:
   ms.author: prwilk
   ms.date: 01/26/2023
   ms.topic: landing-page
-  ms.service: architecture-center
-  ms.subservice: well-architected
   ms.collection: na
+  ms.service: waf
+  ms.subservice: waf-workload-mission-critical
+
 
 landingContent:
 # Cards and links should be based on top customer tasks or top subjects

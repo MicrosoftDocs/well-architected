@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/12/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - overview
   - internal-intro

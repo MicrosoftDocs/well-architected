@@ -5,8 +5,6 @@ author: calcof
 ms.author: prwilk
 ms.date: 01/26/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories: devops
 products: azure
 ms.custom:

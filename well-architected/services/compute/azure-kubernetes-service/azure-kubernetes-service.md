@@ -4,8 +4,6 @@ description: Provides a template for a Well-Architected Framework (WAF) article 
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - ignite-2022
 ---

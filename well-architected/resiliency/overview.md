@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/02/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-reliability
 ms.custom:
   - overview
 products:
