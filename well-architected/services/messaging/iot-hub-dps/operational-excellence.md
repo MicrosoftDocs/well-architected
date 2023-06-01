@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 products:
-  - iot-hub-device-provisioning-service
+  - azure-iot-dps
 categories:
   - messaging
   - management-and-governance

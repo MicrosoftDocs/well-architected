@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 products:
-  - storage-disks
+  - azure-disk-storage
 categories:
   - storage
   - management-and-governance

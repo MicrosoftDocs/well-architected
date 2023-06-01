@@ -8,8 +8,7 @@ ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 products:
-  - log-analytics
-  - azure-monitor
+  - azure-log-analytics
 categories:
   - monitoring
   - management-and-governance

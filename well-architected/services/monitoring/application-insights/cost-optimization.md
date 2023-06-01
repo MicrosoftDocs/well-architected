@@ -8,8 +8,7 @@ ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 products:
-  - application-insights
-  - azure-monitor
+  - azure-application-insights
 categories:
   - monitoring
   - management-and-governance

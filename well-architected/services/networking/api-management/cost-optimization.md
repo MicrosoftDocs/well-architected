@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 products:
-  - api-management
+  - azure-api-management
 categories:
   - networking
   - management-and-governance

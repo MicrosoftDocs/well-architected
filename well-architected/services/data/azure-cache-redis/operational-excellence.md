@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 products:
-  - azure-cache-for-redis
+  - azure-cache-redis
 categories:
   - data
   - management-and-governance

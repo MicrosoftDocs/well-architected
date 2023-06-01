@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 products:
-  - virtual-machines
+  - azure-virtual-machines
 categories:
   - compute
   - management-and-governance

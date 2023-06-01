@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 products:
-  - storage-accounts
+  - azure-storage-accounts
 categories:
   - storage
   - management-and-governance

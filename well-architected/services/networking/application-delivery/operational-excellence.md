@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 products:
-  - application-delivery
+  - azure-virtual-network
 categories:
   - networking
   - management-and-governance

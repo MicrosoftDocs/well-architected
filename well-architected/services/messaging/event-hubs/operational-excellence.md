@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
 products:
-  - event-hubs
+  - azure-event-hubs
 categories:
   - messaging
   - management-and-governance
