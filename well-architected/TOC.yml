@@ -361,29 +361,29 @@ items:
           - name: Azure VMware 
             items:
               - name: Quick links
-                href: VMware/index.yml
+                href: azure-vmware/index.yml
               - name: Get started
-                href: VMware/avs-overview.md
+                href: azure-vmware/avs-overview.md
               - name: Design principles
-                href: VMware/avs-design-principles.md
-              - name: Azure landing zone integration
-                href: VMware/avs-landing-zone-integration.md                      
+                href: azure-vmware/avs-design-principles.md
               - name: Design areas
                 items:
-                - name: AVS infrastructure
-                  href: VMware/avs-infrastructure.md
-                - name: AVS applications
-                  href: VMware/avs-vmware-application.md
+                - name: Infrastructure
+                  href: azure-vmware/avs-infrastructure.md
+                - name: Applications
+                  href: azure-vmware/avs-vmware-application.md
                 - name: Networking
-                  href: VMware/avs-networking.md
+                  href: azure-vmware/avs-networking.md
                 - name: Monitoring
-                  href: VMware/avs-monitoring.md                  
+                  href: azure-vmware/avs-monitoring.md                  
                 - name: Security
-                  href: VMware/avs-security.md
+                  href: azure-vmware/avs-security.md
                 - name: Operations
-                  href: VMware/avs-operations.md                  
+                  href: azure-vmware/avs-operations.md 
+              - name: Azure landing zone integration
+                href: azure-vmware/avs-landing-zone-integration.md                      
               - name: Assessment
-                href: VMware/avs-assessment.md                                                                                
+                href: azure-vmware/avs-assessment.md                                                                                
           - name: Mission-critical
             items:
               - name: Quick links

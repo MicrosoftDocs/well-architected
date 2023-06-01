@@ -1,6 +1,6 @@
 ---
-title: Application platform considerations for Azure VMware Solution (AVS)
-description: TBD.
+title: Application considerations for Azure VMware Solution (AVS)
+description: TBD11.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 01/26/2023
@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Application platform considerations for Azure VMware Solution (AVS)
+# Application considerations for Azure VMware Solution (AVS)
 
 
 
@@ -42,9 +42,9 @@ Common approaches for migrating or modernizing to the cloud are: Rehost, Refacto
 
 - **Use assessments** to get a complete picture of the impact to the application, infrastructure, and the adjustments needed in your business strategy. This exercise will help you  understand the workload, its dependencies, and system requirements. You will be better prepared for your migration wave planning.
 
-    - > [Strategic Migration Assessment and Readiness Tool (SMART)](/azure/cloud-adoption-framework/plan/smart-assessment)
-    - > [Azure VMware Solution migration assessment](/migrate/concepts-azure-vmware-solution-assessment-calculation)
-    - > [Application assessment](/azure/architecture/serverless-quest/application-assessment) 
+    - [Strategic Migration Assessment and Readiness Tool (SMART)](/azure/cloud-adoption-framework/plan/smart-assessment)
+    - [Tutorial: Assess VMware VMs for migration to Azure VMs](/azure/migrate/concepts-azure-vmware-solution-assessment-calculation)
+    - [Application assessment](/azure/architecture/serverless-quest/application-assessment) 
 
 - **Is Azure VMware Solution the right choice?** 
 
@@ -64,24 +64,25 @@ The Microsoft cloud security benchmark provides recommendations on how you can s
 
 **Impact**: _Security_
 
-##### Design recommendations
+##### Recommendations
 
 Apply the recommendations given in the **security baseline** to protect your workload. 
 
-> [Azure security baseline for Azure VMware Solution](https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/azure-vmware-solution-security-baseline)
+> [Azure security baseline for Azure VMware Solution](/security/benchmark/azure/baselines/azure-vmware-solution-security-baseline)
 
 
 ## Identify dependencies
 
 Not all components of the solution are equally critical. Some components can take down the system while others might lead to degraded experience.
 
-**Impact**: _Reliability, Operational Excellence_
+**Impact**: _Reliability, Operational Excellence, Performance Efficiency_
 
-##### Recommendations
+##### Recommendation
 
-**Create a  dependency map** that identifies the critical dependencies. Maintain and check the accuracy of the map at a regular cadence. 
+- **Create a  dependency map** that identifies the critical dependencies. Maintain and check the accuracy of the map at a regular cadence. 
 
-## Automate the environment for scalability
+
+## Scale the workload to handle load
 
 The environment should be able to expand and contract based on load. Handle those operations through automation. User input should be kept to a minimum to avoid typical errors caused by human in loop.
 
@@ -90,9 +91,19 @@ The environment should be able to expand and contract based on load. Handle thos
 
 ##### Recommendations
 
+- When sizing for an application, ensure that the virtual machine is sized to handle the largest workload in an Azure VMware Solution or physical hardware environment. You might be able to handle the load with vertical scaling. Migration is a good opportunity to review Azure capabilities such as scale sets and automated vertical scaling of virtual machine size.
 - Define high and low threshold values by running performance tests. Observe Azure metrics for the percentage usage of cluster CPU, memory, and storage resources. 
 - Set alerts on the threshold values and trigger your the auto-scale node event within in Azure VMware Solution private cloud. 
 
-
 > [!NOTE]
-> ![GitHub logo](../_images/github.svg)For an example implementation, see [Auto-Scale function](/azure-vmware-solution/tree/main/avs-autoscale).
+> ![GitHub logo](../_images/github.svg)For an example implementation, see [Auto-Scale function](https://github.com/Azure/azure-vmware-solution/tree/main/avs-autoscale).
+
+## Set affinity and anti-affinity policies
+
+An affinity rule specifies that the members of a selected virtual machine DRS group can or must run on the members of a specific host DRS group. An anti-affinity rule specifies that the members of a selected virtual machine DRS group cannot run on the members of a specific host DRS group.
+
+**Impact**: _Performance Efficiency_
+
+##### Recommendation
+
+An important capability with the Vmware solution.  Because auto-failover isn't available in Azure VMware Solution, having a good understanding of affinity policies is key to application availability.

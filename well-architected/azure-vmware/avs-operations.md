@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution (AVS) operational procedures
-description: TBD.
+description: TBD8.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 01/26/2023
