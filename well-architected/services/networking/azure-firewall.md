@@ -7,6 +7,7 @@ ms.reviewer: tozimmergren
 ms.custom: engagement-fy23
 ms.topic: conceptual
 ms.date: 09/30/2022
+products: azure-firewall
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall

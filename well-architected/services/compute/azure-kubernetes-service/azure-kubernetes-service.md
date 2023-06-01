@@ -6,6 +6,7 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.custom:
   - ignite-2022
+products: azure-kubernetes-service
 ---
 
 # Azure Well-Architected Framework review - Azure Kubernetes Service (AKS)
