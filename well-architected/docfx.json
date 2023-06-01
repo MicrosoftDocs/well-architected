@@ -56,12 +56,29 @@
       "brand": "azure",
       "uhfHeaderId": "azure",
       "titleSuffix": "Microsoft Azure Well-Architected Framework",
-      "searchScope": [ "Azure", "Microsoft Azure Well-Architected Framework" ]     
+      "ms.service": "waf",
+      "searchScope": [ "Azure", "Microsoft Azure Well-Architected Framework" ],    
+      "ms.service": "waf"
     },
     "open_to_public_contributors": {
       "**/*.yml": false
     },
-    "fileMetadata": {},
+    "fileMetadata": {
+        "ms.subservice": {
+            "well-architected/resiliency/**/*.md": "waf-pillar-reliability",
+            "well-architected/security/**/*.md": "waf-pillar-security",
+            "well-architected/cost/**/*.md": "waf-pillar-optimization",
+            "well-architected/scalability/**/*.md": "waf-pillar-efficiency",
+            "well-architected/devops/**/*.md": "waf-pillar-excellence",
+            "well-architected/mission-critical/**/*.md": "waf-workload-mission-critical",
+            "well-architected/carrier-grade/**/*.md": "waf-workload-carrier-grade",
+            "well-architected/hybrid/**/*.md": "waf-workload-hybrid",
+            "well-architected/iot/**/*.md": "waf-workload-iot",
+            "well-architected/sap/**/*.md": "waf-workload-sap",
+            "well-architected/sustainability/**/*.md": "waf-workload-sustainability",
+            "well-architected/services/**/*.md": "waf-service-guide"
+         }
+    },
     "template": [
       "docs.html"
     ],
