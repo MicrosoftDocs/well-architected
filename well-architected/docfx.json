@@ -65,18 +65,18 @@
     },
     "fileMetadata": {
       "ms.subservice": {
-        "well-architected/resiliency/**/*.md": "waf-pillar-reliability",
-        "well-architected/security/**/*.md": "waf-pillar-security",
-        "well-architected/cost/**/*.md": "waf-pillar-optimization",
-        "well-architected/scalability/**/*.md": "waf-pillar-efficiency",
-        "well-architected/devops/**/*.md": "waf-pillar-excellence",
-        "well-architected/mission-critical/**/*.md": "waf-workload-mission-critical",
-        "well-architected/carrier-grade/**/*.md": "waf-workload-carrier-grade",
-        "well-architected/hybrid/**/*.md": "waf-workload-hybrid",
-        "well-architected/iot/**/*.md": "waf-workload-iot",
-        "well-architected/sap/**/*.md": "waf-workload-sap",
-        "well-architected/sustainability/**/*.md": "waf-workload-sustainability",
-        "well-architected/services/**/*.md": "waf-service-guide"
+        "resiliency/**/*.md": "waf-pillar-reliability",
+        "security/**/*.md": "waf-pillar-security",
+        "cost/**/*.md": "waf-pillar-optimization",
+        "scalability/**/*.md": "waf-pillar-efficiency",
+        "devops/**/*.md": "waf-pillar-excellence",
+        "mission-critical/**/*.md": "waf-workload-mission-critical",
+        "carrier-grade/**/*.md": "waf-workload-carrier-grade",
+        "hybrid/**/*.md": "waf-workload-hybrid",
+        "iot/**/*.md": "waf-workload-iot",
+        "sap/**/*.md": "waf-workload-sap",
+        "sustainability/**/*.md": "waf-workload-sustainability",
+        "services/**/*.md": "waf-service-guide"
       }
     },
     "template": [
