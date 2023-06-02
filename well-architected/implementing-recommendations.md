@@ -9,8 +9,6 @@ ms.custom:
   - guide
 keywords:
   - "Implementing Recommendations"
-products:
-  - azure-devops
 categories:
   - devops
   - management-and-governance
