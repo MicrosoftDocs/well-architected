@@ -16,7 +16,7 @@ metadata:
   ms.custom:
   - article
   - internal-intro
-    ms.service: waf
+  ms.service: waf
   ms.subservice: waf-pillar-optimization
 
 landingContent:
