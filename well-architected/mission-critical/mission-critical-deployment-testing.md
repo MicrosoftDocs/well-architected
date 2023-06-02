@@ -9,7 +9,6 @@ categories:
   - devops
   - containers
   - management-and-governance
-products: Azure
 ms.custom:
   - mission-critical
 ---

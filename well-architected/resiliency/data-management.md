@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/28/2023
 ms.topic: conceptual
-products:
-  - azure-sql-database
 ms.custom:
   - How are you managing your data?
   - article

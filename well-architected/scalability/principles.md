@@ -7,8 +7,6 @@ ms.date: 11/08/2022
 ms.topic: conceptual
 categories:
   - management-and-governance
-products:
-  - azure-monitor
 ms.custom:
   - overview
 ---

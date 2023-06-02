@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 4/28/2023
 ms.topic: conceptual
-products:
-  - azure-cache-redis
 categories:
   - management-and-governance
 ---

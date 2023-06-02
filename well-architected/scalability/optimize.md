@@ -5,8 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 4/28/2023
 ms.topic: conceptual
-products:
-  - azure-monitor
 categories:
   - management-and-governance
 ms.custom:

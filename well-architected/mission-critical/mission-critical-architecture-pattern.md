@@ -11,7 +11,6 @@ categories:
   - devops
   - security
   - networking
-products: Azure
 ms.custom:
   - mission-critical
 ---

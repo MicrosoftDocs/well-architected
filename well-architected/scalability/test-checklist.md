@@ -8,9 +8,6 @@ ms.date: 05/05/2023
 ms.topic: conceptual
 categories:
   - management-and-governance
-products:
-  - azure
-  - devops
 ms.custom:
   - testing checklist
 ---

@@ -5,8 +5,6 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 05/05/2023
 ms.topic: conceptual
-products:
-  - devops
 categories:
   - management-and-governance
 ms.custom:

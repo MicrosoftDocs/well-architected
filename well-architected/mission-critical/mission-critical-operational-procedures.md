@@ -6,7 +6,6 @@ ms.author: prwilk
 ms.date: 01/26/2023
 ms.topic: conceptual
 categories: devops
-products: azure
 ms.custom:
   - mission-critical
 ---

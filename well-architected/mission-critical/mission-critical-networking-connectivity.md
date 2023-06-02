@@ -6,7 +6,6 @@ ms.author: calcof
 ms.date: 02/28/2022
 ms.topic: conceptual
 categories: networking
-products: azure
 ms.custom:
   - mission-critical
 

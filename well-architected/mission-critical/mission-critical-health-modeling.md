@@ -9,7 +9,6 @@ categories:
   - storage
   - web
   - devops
-products: azure
 ms.custom:
   - mission-critical
 ---

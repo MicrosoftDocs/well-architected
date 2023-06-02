@@ -6,10 +6,6 @@ ms.author: calcof
 ms.date: 02/02/2022
 ms.topic: conceptual
 categories: databases
-products: 
-  - azure
-  - azure-cosmos-db
-  - azure-active-directory
 ms.custom:
   - mission-critical
 ---

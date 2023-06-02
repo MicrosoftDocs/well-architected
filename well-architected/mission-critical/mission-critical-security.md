@@ -10,10 +10,6 @@ categories:
   - web
   - networking
   - identity
-products: 
-  - azure
-  - azure-bastion
-  - azure-active-directory
 ms.custom:
   - mission-critical
   - alwayson

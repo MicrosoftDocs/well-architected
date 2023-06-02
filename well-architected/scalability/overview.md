@@ -5,8 +5,6 @@ ms.author: martinek
 author: robbyatmicrosoft
 ms.date: 05/09/2023
 ms.topic: conceptual
-products:
-  - azure
 categories:
   - management-and-governance
 ms.custom:

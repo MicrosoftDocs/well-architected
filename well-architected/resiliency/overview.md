@@ -7,8 +7,6 @@ ms.date: 05/02/2023
 ms.topic: conceptual
 ms.custom:
   - overview
-products:
-  - azure
 categories:
   - management-and-governance
 ---

@@ -8,8 +8,6 @@ ms.topic: conceptual
 ms.custom:
   - Which business metrics have you defined for your application?
   - article
-products:
-  - azure
 categories:
   - management-and-governance
 ---

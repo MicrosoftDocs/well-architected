@@ -8,7 +8,6 @@ ms.topic: conceptual
 categories:
   - containers
   - web
-products: Azure
 ms.custom:
   - mission-critical
 ---

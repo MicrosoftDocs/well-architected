@@ -5,7 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/27/2023
 ms.topic: conceptual
-products: azure-monitor
 ---
 
 # Best practices for monitoring reliability in Azure applications
