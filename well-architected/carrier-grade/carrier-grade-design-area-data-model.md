@@ -6,10 +6,6 @@ ms.author: mikedell
 ms.date: 08/23/2022
 ms.topic: conceptual
 ms.industry: telecommunications
-products: 
-- azure-app-service
-- azure-traffic-manager
-- cosmos-db
 ms.custom:
   - carrier-grade
 ---

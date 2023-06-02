@@ -5,10 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/18/2023
 ms.topic: conceptual
-products:
-  - azure-functions
-  - azure
-  - azure-cost-management
 ms.custom:
   - article
   - internal-intro

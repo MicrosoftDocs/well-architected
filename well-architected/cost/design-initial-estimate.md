@@ -5,10 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 04/19/2023
 ms.topic: conceptual
-products:
-  - azure-kubernetes-service
-  - azure
-  - azure-cost-management
 ms.custom:
   - article
   - internal-intro

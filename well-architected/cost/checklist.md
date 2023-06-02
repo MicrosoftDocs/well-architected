@@ -11,9 +11,6 @@ ms.custom:
   - checklist
   - internal-intro
   - engagement-fy23
-products:
-  - azure
-  - azure-cost-management
 ---
 
 # Cost checklist

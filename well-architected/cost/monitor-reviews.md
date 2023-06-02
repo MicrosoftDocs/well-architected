@@ -8,10 +8,6 @@ ms.topic: conceptual
 ms.custom:
   - article
   - internal-intro
-products:
-  - azure
-  - azure-cost-management
-  - azure-monitor
 ---
 
 # Conduct cost reviews

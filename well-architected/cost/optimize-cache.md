@@ -8,9 +8,6 @@ ms.topic: conceptual
 ms.custom:
   - article
   - internal-intro
-products:
-  - azure
-  - azure-cost-management
 ---
 
 # Caching data

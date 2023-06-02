@@ -10,9 +10,6 @@ ms.custom:
   - article
   - internal-intro
   - engagement-fy23
-products:
-  - azure
-  - azure-cost-management
 ---
 
 # Virtual machines

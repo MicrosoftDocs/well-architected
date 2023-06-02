@@ -8,9 +8,6 @@ ms.topic: conceptual
 ms.custom:
   - overview
   - internal-intro
-products:
-  - azure
-  - azure-cost-management
 categories:
   - management-and-governance
 ---

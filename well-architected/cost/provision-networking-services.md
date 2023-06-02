@@ -5,11 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 04/19/2023
 ms.topic: conceptual
-products:
-  - azure-application-gateway
-  - azure-load-balancer
-  - azure
-  - azure-cost-management
 ms.custom:
   - article
   - internal-intro

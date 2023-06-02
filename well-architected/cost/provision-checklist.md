@@ -8,9 +8,6 @@ ms.topic: conceptual
 ms.custom:
   - article
   - internal-intro
-products:
-  - azure
-  - azure-cost-management
 ---
 
 # Provisioning cloud resources to optimize cost

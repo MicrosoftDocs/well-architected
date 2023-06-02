@@ -5,11 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 04/19/2023
 ms.topic: conceptual
-products:
-  - azure-synapse-analytics
-  - azure-databricks
-  - azure
-  - azure-cost-management
 ms.custom:
   - article
   - internal-intro
