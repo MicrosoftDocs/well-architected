@@ -5,8 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
-products:
-  - azure-devops
 categories:
   - security
 subject:

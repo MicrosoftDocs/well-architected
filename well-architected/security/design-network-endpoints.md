@@ -7,10 +7,6 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 azureCategories:
   - networking
-products:
-  - azure-firewall
-  - azure-application-gateway
-  - azure-ddos-protection
 ms.custom:
   - article
 categories:

@@ -5,8 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-products:
-  - azure-security-center
 categories:
   - management-and-governance
 subject:

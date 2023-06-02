@@ -5,9 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 12/06/2021
 ms.topic: conceptual
-products:
-  - azure
-  - azure-monitor
 categories:
   - security
 subject:

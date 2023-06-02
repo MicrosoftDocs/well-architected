@@ -7,8 +7,6 @@ ms.date: 12/07/2021
 ms.topic: conceptual
 azureCategories:
   - networking
-products:
-  - azure-virtual-network
 ms.custom:
   - article
 ---

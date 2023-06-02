@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 02/08/2022
 ms.topic: conceptual
-products:
-  - azure
 categories:
   - security
 ms.custom:

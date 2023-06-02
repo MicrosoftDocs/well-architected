@@ -5,8 +5,6 @@ author: dsk-2015
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-products:
-  - azure-active-directory
 ms.custom:
   - article
 ---

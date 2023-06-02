@@ -9,9 +9,6 @@ azureCategories:
   - hybrid
   - networking
   - security
-products:
-  - azure-firewall
-  - azure-virtual-network
 ms.custom:
   - article
 ---

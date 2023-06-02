@@ -8,7 +8,6 @@ ms.topic: conceptual
 categories:
   - management-and-governance
   - web
-products: Azure
 ms.custom:
   - sustainability
   - ignite-2022

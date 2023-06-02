@@ -5,9 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
-products:
-  - azure-security-center
-  - azure-active-directory
 categories:
   - security
 subject:

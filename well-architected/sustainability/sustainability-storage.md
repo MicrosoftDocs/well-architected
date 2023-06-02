@@ -7,7 +7,6 @@ ms.topic: conceptual
 ms.date: 10/12/2022
 categories: 
   - storage
-products: Azure
 ms.custom:
   - sustainability
   - ignite-2022

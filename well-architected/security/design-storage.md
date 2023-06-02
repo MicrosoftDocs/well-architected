@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 12/07/2021
 ms.topic: conceptual
-products:
-  - azure-storage
 categories:
   - management-and-governance
   - security

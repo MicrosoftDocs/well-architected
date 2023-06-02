@@ -5,9 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 02/28/2022
 ms.topic: conceptual
-products:
-  - azure-blueprints
-  - azure-policy
 categories:
   - management-and-governance
 ms.custom:
