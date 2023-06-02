@@ -6,9 +6,6 @@ author: martinekuan
 manager: robbymillsap
 ms.date: 05/09/2022
 ms.topic: conceptual
-products:
-  - azure-monitor
-  - azure-application-insights
 categories:
   - management-and-governance
 ms.custom:

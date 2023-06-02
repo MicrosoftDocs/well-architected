@@ -8,8 +8,6 @@ ms.topic: conceptual
 ms.custom:
   - fasttrack-edit
   - overview
-products:
-  - azure
 categories:
   - management-and-governance
 ---

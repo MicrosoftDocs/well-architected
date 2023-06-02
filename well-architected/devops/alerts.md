@@ -7,10 +7,6 @@ ms.date: 12/08/2021
 ms.topic: conceptual
 categories:
   - management-and-governance
-products:
-  - azure
-  - devops
-  - azure-monitor
 ---
 
 # Alerting

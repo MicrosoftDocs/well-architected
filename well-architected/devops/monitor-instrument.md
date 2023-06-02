@@ -5,9 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-products:
-  - azure-monitor
-  - azure-application-insights
 categories:
   - management-and-governance    
 ms.custom:

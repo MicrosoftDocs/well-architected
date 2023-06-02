@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/01/2023
 ms.topic: conceptual
-products:
-  - azure-kubernetes-service
 ---
 
 # Release engineering: Application development

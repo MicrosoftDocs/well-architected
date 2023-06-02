@@ -7,9 +7,6 @@ ms.date: 03/14/2023
 ms.topic: conceptual
 categories:
   - management-and-governance
-products:
-  - azure
-  - devops
 ---
 
 # Alerting for operations

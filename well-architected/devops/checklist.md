@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 03/14/2023
 ms.topic: conceptual
-products:
-  - azure-monitor
 ms.custom:
   - fasttrack-edit
   - article

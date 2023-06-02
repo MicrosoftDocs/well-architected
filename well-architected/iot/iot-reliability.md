@@ -7,8 +7,6 @@ ms.date: 04/27/2023
 ms.topic: conceptual
 ms.custom:
   - engagement-fy23
-products:
-  - azure-iot
 categories:
   - iot
 ---

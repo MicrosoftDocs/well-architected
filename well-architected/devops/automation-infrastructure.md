@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/28/2023
 ms.topic: conceptual
-products:
-  - azure-resource-manager
 ms.custom:
   - article
   - devx-track-bicep

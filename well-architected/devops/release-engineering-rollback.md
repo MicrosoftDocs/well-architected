@@ -5,9 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/08/2023
 ms.topic: conceptual
-products:
-  - azure-app-service
-  - azure-kubernetes-service
 ms.custom:
   - devx-track-arm-template
 ---

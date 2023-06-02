@@ -5,8 +5,6 @@ author: UmarMohamedUsman
 ms.author: martinek
 ms.date: 05/09/2023
 ms.topic: conceptual
-products:
-  - azure-pipelines
 ms.custom:
   - fasttrack-edit
   - article

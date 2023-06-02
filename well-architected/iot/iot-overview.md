@@ -8,8 +8,6 @@ ms.topic: overview
 ms.custom:
   - e2e-iot
   - engagement-fy23
-products:
-  - azure-iot
 categories:
   - iot
 ---
