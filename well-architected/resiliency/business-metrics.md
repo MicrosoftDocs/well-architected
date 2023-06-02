@@ -92,7 +92,7 @@ The Azure SLA also includes procedures for obtaining a service credit if the SLA
 
 ### Composite SLAs
 
-*Composite SLAs* involve multiple services supporting an application, with differing levels of availability. For example, consider an App Service web app that writes to Azure SQL Database. Currently, these Azure services have the following SLAs:
+*Composite SLAs* involve multiple services supporting an application, with differing levels of availability. The Composite SLA calculations *DO NOT* change the financially backed SLAs for each component but rather show an expected level of availability based on a number of factors. For example, consider an App Service web app that writes to Azure SQL Database. Currently, these Azure services have the following SLAs:
 
 - App Service web apps = `99.95%`
 - SQL Database = `99.99%`
@@ -112,6 +112,24 @@ The total composite SLA is:
 - Web app *and* (database *or* queue) = `99.95% × 99.99999% = ~99.95%`
 
 There are tradeoffs to this approach. The application logic is more complex, you're paying for the queue, and you need to consider data consistency issues.
+
+### SLAs for zonal deployments
+
+When deploying resources into availablity zones (AZ) in a single region, you can take advantage of the composite SLA logic to show that multiple independant instances of deployed resources can provide higher levels of resource availability. If there are multiple instances of a resource behind some sort of load balancing solution, then we can understand availability based on just one instance being available. Consider a set of Virtual Machines spread across three availabiltiy zones behind a Zone-redundant Standard Load Balancer. Currently, these Azure services have the following SLAs:
+
+- Azure Zone-redundant Standard Load Balancer = `99.99%`
+- Virtual Machine with Availability Zones = `99.99`
+
+:::image type="content" source="../_images/lbazvm.png" alt-text="Diagram shows a composite SLA for a set of VMs across three availability zones behind a load balancer." border="false":::
+
+With availability zones in this design, the application will be available as long as one of the zonally deployed VMs is available. So we have the possibility of two instances failing and still not being down. The expected percentage of time for simultaneous failure for the VMs is `0.0001 x 0.0001 x 0.0001` so the composite SLA for the VMs is:
+
+- At least one VM online = `1.0 - (0.0001 x 0.0001 x 0.0001) = 99.9999999999%`
+- Zone-Redunant Load balancer available in each zone = `1.0 - (0.0001 x 0.0001 x 0.0001) = 99.9999999999%`
+
+The total composite for this solution is:
+
+- Load balancer *and* one VM instance = `99.9999999999% x 99.9999999999% = 99.9999999998%`
 
 ### SLAs for multiregion deployments
 
