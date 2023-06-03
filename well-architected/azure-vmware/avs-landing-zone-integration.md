@@ -52,4 +52,4 @@ The design areas of the platform and application landing zones are tightly coupl
 
 ## Next Steps
 
-[Well-architected VMware resources](avs-vmware-resources.md)
+[Well-architected VMware resources](avs-vmware-application.md)

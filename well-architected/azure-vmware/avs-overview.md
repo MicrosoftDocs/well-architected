@@ -39,7 +39,7 @@ The design areas focus on the technical decision points for infrastructure compo
 |[Monitoring](./avs-monitoring.md)|TBD|
 |[Operations](./avs-operations.md)|TBD|
 
-In an enterprise set up, your workload will share platform resources managed by central teams. The design areas can provide points of integration with those shared resources. That integration is described in [Integrate an VMware workload with Azure landing zones](avs-landing-zone-integration).
+In an enterprise set up, your workload will share platform resources managed by central teams. The design areas can provide points of integration with those shared resources. That integration is described in [Integrate an VMware workload with Azure landing zones](avs-landing-zone-integration.md).
 
 ## Example workloads
 
