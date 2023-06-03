@@ -5,12 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/19/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-optimization
-products:
-  - azure-sql-database
-  - azure
-  - azure-cost-management
 ms.custom:
   - article
   - internal-intro

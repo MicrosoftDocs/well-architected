@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 4/26/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-reliability
 ---
 
 # Resiliency and dependencies

@@ -4,9 +4,8 @@ description: Provides architectural best practices for the Azure Application Gat
 author: greg-lindsay
 ms.author: greglin
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.date: 01/27/2023
+products: azure-application-gateway
 ---
 
 # Azure Well-Architected Framework review - Azure Application Gateway v2

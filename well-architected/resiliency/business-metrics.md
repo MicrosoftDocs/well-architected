@@ -5,13 +5,9 @@ ms.author: martinek
 author: martinekuan
 ms.date: 05/02/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-reliability
 ms.custom:
   - Which business metrics have you defined for your application?
   - article
-products:
-  - azure
 categories:
   - management-and-governance
 ---

@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/21/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-reliability
 ms.custom:
   - How have you ensured that your application is resilient to failures?
   - article

@@ -5,13 +5,8 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 03/14/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories:
   - management-and-governance
-products:
-  - azure
-  - devops
 ---
 
 # Alerting for operations

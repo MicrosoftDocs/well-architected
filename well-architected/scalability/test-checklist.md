@@ -6,13 +6,8 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 05/05/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-efficiency
 categories:
   - management-and-governance
-products:
-  - azure
-  - devops
 ms.custom:
   - testing checklist
 ---

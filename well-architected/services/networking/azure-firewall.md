@@ -6,9 +6,8 @@ ms.author: victorh
 ms.reviewer: tozimmergren
 ms.custom: engagement-fy23
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.date: 09/30/2022
+products: azure-firewall
 ---
 
 # Azure Well-Architected Framework review - Azure Firewall

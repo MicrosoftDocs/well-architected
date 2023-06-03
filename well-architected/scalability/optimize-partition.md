@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 4/28/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories:
   - management-and-governance
 ---

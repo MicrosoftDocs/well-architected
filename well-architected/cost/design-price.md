@@ -5,14 +5,9 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 03/28/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - article
   - internal-intro
-products:
-  - azure
-  - azure-cost-management
 ---
 
 # Consumption and fixed cost models

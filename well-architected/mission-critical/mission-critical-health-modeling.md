@@ -5,13 +5,10 @@ author: calcof
 ms.author: calcof
 ms.date: 08/16/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories: 
   - storage
   - web
   - devops
-products: azure
 ms.custom:
   - mission-critical
 ---

@@ -5,14 +5,8 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 azureCategories:
   - networking
-products:
-  - azure-firewall
-  - azure-application-gateway
-  - azure-ddos-protection
 ms.custom:
   - article
 categories:

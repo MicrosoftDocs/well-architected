@@ -5,14 +5,9 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/17/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - article
   - internal-intro
-products:
-  - azure
-  - azure-cost-management
 ---
 
 # Provisioning cloud resources to optimize cost

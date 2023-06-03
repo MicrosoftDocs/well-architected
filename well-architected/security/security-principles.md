@@ -5,8 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 02/10/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - article
 ---

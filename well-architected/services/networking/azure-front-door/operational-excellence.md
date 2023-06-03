@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 01/25/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
   - azure-front-door
 categories:

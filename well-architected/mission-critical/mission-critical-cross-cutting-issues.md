@@ -5,12 +5,9 @@ author: calcof
 ms.author: calcof
 ms.date: 02/28/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories:
   - management-and-governance
   - web
-products: Azure
 ms.custom:
   - mission-critical
 ---

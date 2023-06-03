@@ -5,13 +5,9 @@ author: asergaz
 ms.author: sergaz
 ms.date: 04/27/2023
 ms.topic: overview
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - e2e-iot
   - engagement-fy23
-products:
-  - azure-iot
 categories:
   - iot
 ---
