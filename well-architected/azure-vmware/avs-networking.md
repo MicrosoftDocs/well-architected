@@ -6,7 +6,7 @@ ms.author: prwilk
 ms.date: 01/26/2023
 ms.topic: conceptual
 ms.service: waf
-ms.subservice: waf-workload-avs
+ms.subservice: waf-workload-vmware
 ---
 
 # Azure VMware (AVS) networking considerations

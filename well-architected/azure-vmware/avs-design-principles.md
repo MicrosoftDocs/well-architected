@@ -6,7 +6,7 @@ ms.author: maksh
 ms.date: 05/15/2023
 ms.topic: conceptual
 ms.service: waf
-ms.subservice: waf-workload-avs
+ms.subservice: waf-workload-vmware
 ---
 
 # Azure VMware (AVS) design principles
