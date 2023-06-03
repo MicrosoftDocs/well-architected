@@ -15,13 +15,8 @@
       "template_folder": "_themes"
     }
   ],
-  "notification_subscribers": [
-    "cloud-arch-content@microsoft.com"
-  ],
-  "sync_notification_subscribers": [
-    "robbymillsap@microsoft.com",
-    " dastanfo@microsoft.com"
-  ],
+  "notification_subscribers": [],
+  "sync_notification_subscribers": [],
   "branches_to_filter": [],
   "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/well-architected",
   "git_repository_branch_open_to_public_contributors": "main",
@@ -51,7 +46,9 @@
       "template_folder": "_themes.pdf"
     }
   },
-  "docs_build_engine": {},
+  "docs_build_engine": {
+      "name": "docfx_v3"
+  },
   "skip_source_output_uploading": false,
   "contribution_branch_mappings": {},
   "need_generate_pdf_url_template": true
