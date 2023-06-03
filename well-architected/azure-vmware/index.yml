@@ -71,13 +71,11 @@ landingContent:
       - linkListType: learn
         links:
           - text: Introduction to Azure VMware Solution
-            url: /training/modules/intro-vmware-solution/
+            url: /training/modules/intro-azure-vmware-solution/
           - text: Migrate VMware resources on-premises to Azure VMware Solution
-            url: /training/modules/migrate-vmware-workloads-on-premises-VMware-solution/
+            url: /training/modules/migrate-vmware-workloads-on-premises-azure-vmware-solution/
           - text: Run VMware resources on Azure VMware Solution
-            url: /training/paths/run-vmware-workloads-VMware-solution/
-          - text: Run VMware resources on Azure VMware Solution
-            url: /training/paths/run-vmware-workloads-VMware-solution/            
+            url: /training/paths/run-vmware-workloads-azure-vmware-solution/       
 
  # Card
   - title: Assessment
