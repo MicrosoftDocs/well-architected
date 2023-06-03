@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution (AVS) workloads
-description: TBD.
+description: TBD13.
 author: Mahesh-MSFT
 ms.author: maksh
 ms.date: 04/20/2023
@@ -15,7 +15,7 @@ Each organization manages their workloads and operates their cloud environment u
 
 The most important difference between the models is the level of ownership. In the decentralized model, the workload owners have autonomy without any central IT oversight for governance. For example, they manage their own networing, monitoring, and identity requirements. At the other end of the spectrum is the central model, where the workload owners adhere to the governance needs set by central IT teams.
 
-The models are discussed in detail as part of [Cloud Adoption Framework: Cloud Operating Model](https://learn.microsoft.com/azure/cloud-adoption-framework/operating-model/compare) guidance.
+The models are discussed in detail as part of [Cloud Adoption Framework: Cloud Operating Model](/azure/cloud-adoption-framework/operating-model/compare) guidance.
 
 As a workload owner, it's important to understand the operating model that your organization has chosen. That choice influences the technical decisions that you're accountable for and the technical requirements that you drive to the central teams. 
 

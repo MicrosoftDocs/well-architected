@@ -97,7 +97,7 @@ Click the following links for guidance in provisioning:
 - [Azure Arc Jumpstart for templates](https://github.com/microsoft/azure_arc) (in GitHub)
 - [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci)
    - Azure Stack HCI can reduce costs by saving in server, storage, and network infrastructure.
-- [Azure VMware Solution pricing - Run your VMware workloads natively on Azure](https://azure.microsoft.com/pricing/details/VMware)
+- [Azure VMware Solution pricing - Run your VMware workloads natively on Azure](https://azure.microsoft.com/pricing/details/vmware)
    - Run your VMware workloads natively on Azure.
 - [Azure Stack Hub pricing](https://azure.microsoft.com/pricing/details/azure-stack/hub)
 

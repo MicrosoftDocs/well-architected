@@ -53,9 +53,9 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Baseline AVS reference architecture
-            url: /azure/cloud-adoption-framework/scenarios/VMware/example-architectures   
+            url: /azure/cloud-adoption-framework/scenarios/azure-vmware/example-architectures   
           - text: AVS landing zone accelerator
-            url: /azure/cloud-adoption-framework/scenarios/VMware/enterprise-scale-landing-zone
+            url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone
 
  # Card
   - title: Reference implementations
@@ -63,7 +63,7 @@ landingContent:
       - linkListType: deploy
         links:
           - text: AVS solutions
-            url: /azure/cloud-adoption-framework/scenarios/VMware/enterprise-scale-landing-zone#automated-VMware-solution-implementation-options
+            url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone#automated-VMware-solution-implementation-options
 
  # Card
   - title: Learn
@@ -71,13 +71,13 @@ landingContent:
       - linkListType: learn
         links:
           - text: Introduction to Azure VMware Solution
-            url: /training/modules/intro-VMware-solution/
+            url: /training/modules/intro-vmware-solution/
           - text: Migrate VMware resources on-premises to Azure VMware Solution
-            url: /training/modules/migrate-VMware-workloads-on-premises-VMware-solution/
+            url: /training/modules/migrate-vmware-workloads-on-premises-VMware-solution/
           - text: Run VMware resources on Azure VMware Solution
-            url: /training/paths/run-VMware-workloads-VMware-solution/
+            url: /training/paths/run-vmware-workloads-VMware-solution/
           - text: Run VMware resources on Azure VMware Solution
-            url: /training/paths/run-VMware-workloads-VMware-solution/            
+            url: /training/paths/run-vmware-workloads-VMware-solution/            
 
  # Card
   - title: Assessment
