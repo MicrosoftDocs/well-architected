@@ -35,13 +35,8 @@ How have you designed your applications with reliability in mind?
 - [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview)
 - [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)
 - [Azure NAT Gateway](/azure/virtual-network/nat-gateway/nat-overview)
-<<<<<<< HEAD
-- [Service Fabric](/azure/service-fabric/service-fabric-overview)
-- [Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)
-=======
 - [Azure Service Fabric](/azure/service-fabric/service-fabric-overview)
 - [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)
->>>>>>> main
 - [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)
 
 ## Reference architecture
