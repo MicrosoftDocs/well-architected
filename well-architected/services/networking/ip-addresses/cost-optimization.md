@@ -5,10 +5,8 @@ author: martinekuan
 ms.author: martinek
 ms.date: 01/31/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
-  - ip-addresses
+  - azure-virtual-network
 categories:
   - networking
   - management-and-governance

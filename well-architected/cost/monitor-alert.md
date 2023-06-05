@@ -5,12 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 04/05/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure
-  - azure-cost-management
-  - azure-monitor
 ms.custom:
   - article
   - internal-intro

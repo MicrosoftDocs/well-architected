@@ -5,10 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/01/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-excellence
-products:
-  - azure-devops
 ---
 
 # Release engineering: Continuous integration

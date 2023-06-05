@@ -5,14 +5,9 @@ ms.author: martinek
 author: martinekuan
 ms.date: 03/29/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - overview
   - internal-intro
-products:
-  - azure
-  - azure-cost-management
 categories:
   - management-and-governance
 ---

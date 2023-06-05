@@ -5,10 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure-active-directory
 ms.custom:
   - article
 ---
@@ -60,7 +56,7 @@ Microsoft Security Development Lifecycle uses STRIDE and provides a tool to assi
 > ![Best practice](./images/i-best-practices.png) Integrate threat modeling through automation using secure operations. Here are some resources:
 >
 > - Toolkit for [Secure DevOps on Azure](https://azsk.azurewebsites.net/).
-> - [Guidance on DevOps pipeline security](https://www.owasp.org/index.php/OWASP_AppSec_Pipeline#tab=Main) by OWASP.
+> - [Guidance on DevOps pipeline security](https://owasp.org/www-pdf-archive/OWASP_Tampa_-_02_19_2016_-_AppSec_Pipeline.pdf) by OWASP.
 
 ## 3- Mitigate the identified threats
 The threat modeling tool produces a report of all the threats identified. After a potential threat is identified, determine how it can be detected and the response to that attack. Define a process and timeline which minimizes exposure to any identified vulnerabilities in the workload, so that those vulnerabilities cannot be left unaddressed.

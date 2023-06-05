@@ -5,14 +5,10 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/25/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-reliability
 ms.custom:
   - Automatic retry of failed backup jobs
   - article
   - devx-track-azurepowershell
-products:
-  - azure
 categories:
   - management-and-governance
 ---

@@ -5,12 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure-security-center
-  - azure-sentinel
-  - azure-monitor
 categories:
   - security
 subject:

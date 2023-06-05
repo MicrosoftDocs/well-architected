@@ -5,11 +5,8 @@ author: Zimmergren
 ms.author: tozimmergren
 ms.topic: conceptual
 ms.date: 10/12/2022
-ms.service: architecture-center
-ms.subservice: well-architected
 categories: 
   - networking
-products: Azure
 ms.custom:
   - sustainability
   - ignite-2022

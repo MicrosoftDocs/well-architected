@@ -5,10 +5,8 @@ author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
-  - azure-cache-for-redis
+  - azure-cache-redis
 categories:
   - data
   - management-and-governance

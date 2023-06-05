@@ -4,9 +4,8 @@ description: Design considerations and recommendations about Azure Service Fabri
 author: tomvcassidy
 ms.author: tomcassidy
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.date: 3/18/2022
+products: azure-service-fabric
 ---
 
 # Azure Well-Architected Framework review - Azure Service Fabric

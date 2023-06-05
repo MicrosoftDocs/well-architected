@@ -5,10 +5,8 @@ author: martinekuan
 ms.author: martinek
 ms.date: 01/24/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
-  - service-bus
+  - azure-service-bus
 categories:
   - messaging
   - management-and-governance

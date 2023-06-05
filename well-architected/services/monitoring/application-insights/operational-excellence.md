@@ -5,11 +5,8 @@ author: martinekuan
 ms.author: martinek
 ms.date: 02/01/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
-  - application-insights
-  - azure-monitor
+  - azure-application-insights
 categories:
   - monitoring
   - management-and-governance

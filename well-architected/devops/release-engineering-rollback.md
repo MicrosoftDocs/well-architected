@@ -5,11 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/08/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-excellence
-products:
-  - azure-app-service
-  - azure-kubernetes-service
 ms.custom:
   - devx-track-arm-template
 ---

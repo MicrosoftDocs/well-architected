@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/19/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-excellence
 ms.custom:
   - article
 ---

@@ -5,14 +5,10 @@ author: JoeyBarnes
 ms.author: martinek
 ms.date: 03/24/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - guide
 keywords:
   - "Implementing Recommendations"
-products:
-  - azure-devops
 categories:
   - devops
   - management-and-governance

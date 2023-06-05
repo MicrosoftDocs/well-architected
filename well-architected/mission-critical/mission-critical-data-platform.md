@@ -5,13 +5,7 @@ author: calcof
 ms.author: calcof
 ms.date: 02/02/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories: databases
-products: 
-  - azure
-  - azure-cosmos-db
-  - azure-active-directory
 ms.custom:
   - mission-critical
 ---
