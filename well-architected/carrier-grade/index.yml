@@ -41,3 +41,9 @@ landingContent:
           - text: Testing and validation
             url: carrier-grade-design-area-testing.md
 
+  - title: Reference architecture
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Carrier-grade voicemail solution
+            url: /azure/architecture/industries/telecommunications/carrier-grade
