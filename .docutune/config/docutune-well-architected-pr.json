@@ -3,5 +3,8 @@
   "DocSets": {
     "well-architected": "/azure/architecture/well-architected"
   },
-  "MetadataMultilineValues": true
+  "MarkdownListIndicator": "-",
+  "MetadataMultilineValues": true,
+  "MetadataRemoveEmptyAttributes": true,
+  "TermFiles": [ "Bundle-Standard.txt", "Bundle-Cloud.txt" ]
 }
