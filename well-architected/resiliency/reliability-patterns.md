@@ -14,6 +14,8 @@ keywords:
 
 # Reliability patterns
 
+The document offers an insightful and comprehensive resource for understanding the principles and techniques behind building highly reliable and resilient systems in the cloud. Covering a wide range of topics such as fault tolerance, redundancy, monitoring, and recovery, this guide equips architects and developers with essential knowledge to design robust solutions that can withstand failures and deliver continuous availability.
+
 ## Availability
 
 Availability is measured as a percentage of uptime, and defines the proportion of time that a system is functional and working. Availability is affected by system errors, infrastructure problems, malicious attacks, and system load. Cloud applications typically provide users with a service-level agreement (SLA), which means that applications must be designed and implemented to maximize availability.
