@@ -21,3 +21,12 @@ Access to NSX-T is enabled using a 3rd party identity provider	Allows administra
 
 Have you added an external identity provider for Azure VMware Solution vCenter and NSX-T?	CloudAdmin is the default superuser available through the portal.  An external identity provider should be configured to provide both admin and specific privilege accounts.
 	20		NSX-T Data Center LDAP integration for role-based access control (RBAC)
+
+## Security
+
+### Guest VM security monitoring
+
+* Use [Azure Policy for Azure Arc-enabled Servers](/azure/azure-arc/servers/policy-reference) to audit and enforce security controls on Azure VMware Solution guest VMs. Some of the key policies are as provided below.
+  * [Install the Azure Security agent on Windows Arc machines in order to monitor them for security configurations and vulnerabilities](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0367cfc4-90b3-46ba-a8a6-ddd5d3514878)
+  * [Configure Arc machines to automatically create an association with the default data collection rule for Microsoft Defender for Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F30f52897-df47-4ca0-81a8-a3be3e8dd226)
+  * [System updates should be installed on your machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff85bf3e0-d513-442e-89c3-1784ad63382b)

@@ -13,7 +13,6 @@ ms.subservice: waf-workload-avs
 
 ## Desired state configuration
 
-
  You understand how the choices and desired configuration of the platform are managed	You are using DSC to manage confguration drift from both Azure and AVS workloads
 	You are using Azure Arc for DSC
 	You are using a 3rd party tool for DSC
@@ -25,3 +24,12 @@ ms.subservice: waf-workload-avs
 (Revisit back up choices from application platform)
 
 You are storing your backups in a different region	To protect against the unlikely event of a prolonged regional outage, you can protect your workloads by replicating them to an alternative Azure region.
+
+## Patching and updates
+
+* Link [Azure Automation with Azure Log analytics](/azure/automation/change-tracking/overview?tabs=python-2). This will allow operation teams to configure [inventory management](/azure/automation/change-tracking/manage-inventory-vms), [change tracking](/azure/automation/change-tracking/manage-change-tracking) and [update management](/azure/automation/update-management/overview) with Azure VMware Solution guest VMs.
+
+  
+  
+  
+  

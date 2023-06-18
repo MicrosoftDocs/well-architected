@@ -129,3 +129,21 @@ You are using an Azure validated backup application	Using a validated disaster r
 
 Your failover architecture is  local to a region 	Understand your options if your  applications are architected for logal, regional or inter-regional availability.
 Your failover architecture is inter-regional	Understand your options if your  applications are architected for local, regional or inter-regional availability.
+
+
+### Establish Baseline performance
+
+* Use tools to benchmark existing environment before starting migration to Azure VMware Solution SDDC. [VMware vRealize Operations](/azure/azure-vmware/vrealize-operations-for-azure-vmware-solution), [Perfmon](/message-analyzer/perfmon-viewer), [iostat](https://linux.die.net/man/1/iostat) are some of the common utilities that can be used for establishing baseline performance.
+* Use [performance-based assessment](/azure/migrate/best-practices-assessment#sizing-criteria) when estimating Azure VMware Solution SDDC capacity.
+
+
+### Debugging and troubleshooting tools
+
+* Familiarize with following debugging and troubleshooting tools. These tools are indispensible for identifying potential performance bottleneck(s) quickly.
+  * [Azure Network Watcher](/azure/network-watcher/network-watcher-monitoring-overview)
+  * [KQL](/azure/data-explorer/kusto/query/tutorials/learn-common-operators?pivots=azuremonitor)
+  * [PSPing](/sysinternals/downloads/psping)
+
+### Defining and tracking metrics
+
+* Use [Auto-scale for Azure VMware Solution](https://github.com/Azure/azure-vmware-solution/tree/main/avs-autoscale) to define performance metrics to be used for scale-in or scale-out operations in Azure VMware Solution cluster nodes.
