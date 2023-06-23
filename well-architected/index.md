@@ -29,7 +29,7 @@ The Azure Well-Architected Framework is a set of guiding tenets that you can use
 - [Operational excellence](#operational-excellence)
 - [Performance efficiency](#performance-efficiency)
 
-Incorporating these pillars helps produce a high quality, stable, and efficient cloud architecture:
+Incorporating these pillars helps produce a high-quality, stable, and efficient cloud architecture:
 
 | Pillar | Description |
 |--------|-------------|
@@ -68,15 +68,15 @@ To assess your workload using the tenets found in the Microsoft Azure Well-Archi
 
 :::image type="content" source="./_images/well-architected-review.png" alt-text="Screenshot of the Microsoft Azure Well-Architected Review." lightbox="./_images/well-architected-review.png":::
 
-We also recommend that you use *Azure Advisor* and *Advisor Score* to identify and prioritize opportunities to improve the posture of your workloads. Both services are free to all Azure users and align to the five pillars of the Well-Architected Framework:
+We also recommend using *Azure Advisor* and *Advisor Score* to identify and prioritize opportunities to improve your workload. Both services are free to all Azure users and align with the five pillars of the Well-Architected Framework:
 
-- *Azure Advisor* is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. It analyzes your resource configuration and usage telemetry. It recommends solutions that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Azure resources. Learn more about [Azure Advisor](/azure/advisor/).
+- *Azure Advisor* is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. It analyzes your resource configuration and usage telemetry. It recommends solutions that can help you improve the reliability, security, cost-effectiveness, performance, and operational excellence of your Azure resources. Learn more about [Azure Advisor](/azure/advisor/).
 
-- *Advisor Score* is a core feature of Azure Advisor that aggregates Advisor recommendations into a simple, actionable score. This score enables you to tell at a glance if you're taking the necessary steps to build reliable, secure, and cost-efficient solutions. It helps to prioritize the actions that yield the biggest improvement to the posture of your workloads. The Advisor Score consists of an overall score, which can be further broken down into five category scores corresponding to each of the Well-Architected pillars. Learn more about [Advisor Score](/azure/advisor/azure-advisor-score).
+- *Advisor Score* is a core feature of Azure Advisor that aggregates Advisor recommendations into a simple, actionable score. This score lets you tell at a glance if you're taking the necessary steps to build reliable, secure, and cost-efficient solutions. It helps to prioritize the actions that yield the most significant improvement to the posture of your workload. The Advisor Score consists of an overall score, which can be broken down into five categories corresponding to each Well-Architected pillar. You can learn more about [Advisor Score](/azure/advisor/azure-advisor-score).
 
 ## Reliability
 
-A reliable workload is both *resilient* and *available*. [Resiliency](./resiliency/index.yml) is the ability of the system to recover from failures and continue to function. The goal of resiliency is to return the application to a fully functioning state after a failure occurs. Availability is whether your users can access your workload when they need to.
+A reliable workload is both *resilient* and *available*. [Resiliency](./resiliency/index.yml) is the ability of the system to recover from failures and continue to function. The goal of resiliency is to return the application to a fully functioning state after failure. Availability is whether your users can access your workload when they need to.
 
 For more information about resiliency, watch the following video that shows you how to start improving the reliability of your Azure workloads:
 
@@ -100,7 +100,7 @@ For an overview of reliability principles, see [Reliability design principles](.
 
 ## Security
 
-Think about [security](./security/index.yml) throughout the entire lifecycle of an application, from design and implementation to deployment and operations. The Azure platform provides protections against various threats, such as network intrusion and DDoS attacks. You still need to build security into your application and into your DevOps processes.
+Think about [security](./security/index.yml) throughout the entire lifecycle of an application, from design and implementation to deployment and operations. The Azure platform provides protection against various threats, such as network intrusion and DDoS attacks. You still need to build security into your application and into your DevOps processes.
 
 Learn to ask the right questions about secure application development on Azure by watching the following video:
 
@@ -159,16 +159,16 @@ For more information, watch the following video about bringing security into you
 
 ### Operational excellence guidance
 
-The following resources provide guidance on designing and implementing DevOps practices for your Azure workload:
+The following resources guide on designing and implementing DevOps practices for your Azure workload:
 
 - [Operational excellence patterns](./devops/devops-patterns.md)
 - Best practices: [Monitoring and diagnostics guidance][monitoring]
 
-For a high-level summary, see [Overview of the operational excellence pillar](./devops/overview.md).
+For a high-level summary, you can view [Overview of the operational excellence pillar](./devops/overview.md).
 
 ## Performance efficiency
 
-[Performance efficiency](./scalability/index.yml) is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. The main ways to achieve performance efficiency include using scaling appropriately and implementing PaaS offerings that have scaling built in.
+[Performance efficiency](./scalability/index.yml) is the ability of your workload to scale to meet the demands placed on it by users efficiently. The main ways to achieve performance efficiency include scaling appropriately and implementing PaaS offerings with built-in scaling.
 
 For more information, watch [Performance Efficiency: Fast & Furious: Optimizing for Quick and Reliable VM Deployments](/events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency).
 
