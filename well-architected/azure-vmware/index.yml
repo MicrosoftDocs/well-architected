@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 
-title: Azure VMware (AVS) workload documentation
+title: Azure VMware Solution workload documentation
 summary: Relocate legacy application virtual machines to the Azure VMware Solution as a staging area for the first phase of migration and modernization strategy.
 metadata: 
-  title: Azure VMware (AVS) workload
+  title: Azure VMware Solution workloads
   description: Apply the design principles to the technical areas to build a strong foundation for your workload.
   services: na
   author: PageWriter-MSFT
@@ -22,7 +22,7 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: What is an Azure VMware workload?
+          - text: What is an Azure VMware Solution workload?
             url: avs-overview.md
       - linkListType: concept
         links:
@@ -52,7 +52,7 @@ landingContent:
     linkLists:
       - linkListType: architecture
         links:
-          - text: Baseline AVS reference architecture
+          - text: Baseline Azure VMware Solution reference architecture
             url: /azure/cloud-adoption-framework/scenarios/azure-vmware/example-architectures   
           - text: AVS landing zone accelerator
             url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone
@@ -62,7 +62,7 @@ landingContent:
     linkLists:
       - linkListType: deploy
         links:
-          - text: AVS solutions
+          - text: Azure VMware Solution implementation options
             url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone#automated-VMware-solution-implementation-options
 
  # Card
@@ -82,5 +82,5 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Azure VMware Solution (AVS) assessment tool
+          - text: Azure VMware Solution assessment tool
             url: avs-assessment.md            
