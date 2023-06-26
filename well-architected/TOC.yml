@@ -361,7 +361,7 @@ items:
             href: scalability/tradeoffs.md
       - name: Workloads
         items:
-          - name: Azure VMware 
+          - name: Azure VMware Solution
             items:
               - name: Quick links
                 href: azure-vmware/index.yml
