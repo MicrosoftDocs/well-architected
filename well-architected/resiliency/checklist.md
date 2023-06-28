@@ -35,7 +35,7 @@ Reliable applications should maintain a pre-defined percentage of uptime (*avail
 |Guide|Description|
 |---|---|
 |[Business metrics](/azure/well-architected/resiliency/business-metrics)|TBD|
-|[Failure mode analysis](e/well-architected/resiliency/design-resiliency)|TBD|
+|[Failure mode analysis](/azure/well-architected/resiliency/design-resiliency)|TBD|
 
 ## Infrastructure perspective
 
@@ -55,7 +55,7 @@ Reliable applications should maintain a pre-defined percentage of uptime (*avail
 |Guide|Description|
 |---|---|
 |[Availability zones](/azure/well-architected/resiliency/app-design)|TBD|
-|[Failure mode analysis](e/well-architected/resiliency/design-resiliency)|TBD|
+|[Failure mode analysis](/azure/well-architected/resiliency/design-resiliency)|TBD|
 ## Application perspective
 
 > [!div class="checklist"]
@@ -71,5 +71,4 @@ Reliable applications should maintain a pre-defined percentage of uptime (*avail
 
 ### Best practices guides 
 
-|||
-|---|---|
+Table.
