@@ -1,3 +1,52 @@
-- name: Docs
-  tocHref: /
-  topicHref: /
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Well-Architected Framework
+    tocHref: /azure/well-architected/
+    topicHref: /azure/well-architected/index    
+    items:
+    - name: Pillars
+      tocHref: /azure/well-architected/pillars/
+      topicHref: /azure/well-architected/pillars 
+      items:  
+      - name: Reliability
+        tocHref: /azure/well-architected/resiliency/
+        topicHref: /azure/well-architected/resiliency/overview
+      - name: Security
+        tocHref: /azure/well-architected/security/
+        topicHref: /azure/well-architected/security/overview
+      - name: Cost Optimization
+        tocHref: /azure/well-architected/cost/
+        topicHref: /azure/well-architected/cost/overview
+      - name: Operational Excellence
+        tocHref: /azure/well-architected/devops/
+        topicHref: /azure/well-architected/devops/overview
+      - name: Performance Efficiency
+        tocHref: /azure/well-architected/scalability/
+        topicHref: /azure/well-architected/scalability/overview
+    - name: Workloads
+      tocHref: /azure/well-architected/workloads/
+      topicHref: /azure/well-architected/workloads
+      items:        
+      - name: Mission-critical
+        tocHref: /azure/well-architected/mission-critical/
+        topicHref: /azure/well-architected/mission-critical/index
+      - name: Carrier-grade
+        tocHref: /azure/well-architected/carrier-grade/
+        topicHref: /azure/well-architected/carrier-grade/index
+      - name: Hybrid
+        tocHref: /azure/well-architected/hybrid/
+        topicHref: /azure/well-architected/hybrid/hybrid-overview
+      - name: IoT
+        tocHref: /azure/well-architected/iot/
+        topicHref: /azure/well-architected/iot/iot-overview
+      - name: Oracle on IaaS
+        tocHref: /azure/well-architected/oracle/
+        topicHref: /azure/well-architected/oracle-iaas/overview
+      - name: SAP
+        tocHref: /azure/well-architected/sap/
+        topicHref: /azure/well-architected/sap/quick-links
+      - name: Sustainability
+        tocHref: /azure/well-architected/sustainability/
+        topicHref: /azure/well-architected/sustainability/index                                                                       

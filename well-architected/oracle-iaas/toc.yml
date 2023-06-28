@@ -1,0 +1,13 @@
+- name: Oracle
+  href: overview.md        
+  items:
+    - name: Reliability
+      href: reliability.md
+    - name: Security
+      href: security.md
+    - name: Cost Optimization
+      href: cost-optimization.md
+    - name: Operational Excellence
+      href: operational-excellence.md
+    - name: Performance Efficiency
+      href: performance-efficiency.md
