@@ -8,7 +8,7 @@
     items:
     - name: Pillars
       tocHref: /azure/well-architected/pillars/
-      topicHref: /azure/well-architected/pillars.md 
+      topicHref: /azure/well-architected
       items:  
       - name: Reliability
         tocHref: /azure/well-architected/resiliency/
@@ -27,7 +27,7 @@
         topicHref: /azure/well-architected/scalability/overview
     - name: Workloads
       tocHref: /azure/well-architected/workloads/
-      topicHref: /azure/well-architected/workloads.md
+      topicHref: /azure/well-architected
       items:        
       - name: Mission-critical
         tocHref: /azure/well-architected/mission-critical/
