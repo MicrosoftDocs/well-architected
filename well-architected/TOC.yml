@@ -18,7 +18,7 @@
         - name: Checklist
           href: resiliency/checklist.md
         - name: Tradeoffs
-          href: coming-soon.md
+          href: resiliency/tradeoffs.md
         - name: Best practices guides   
           items:
             - name: Guide 1
