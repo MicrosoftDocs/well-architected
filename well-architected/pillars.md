@@ -1,15 +1,10 @@
 ---
 title: Microsoft Azure Well-Architected Framework
-titleSuffix: Azure Well-Architected Framework
 description: Learn about the five pillars of the Azure Well-Architected Framework and how they can produce a high quality, stable, and efficient cloud architecture.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 03/27/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: 
-products:
-  - azure
 ---
 
 # Microsoft Well-Architected Framework Pillars

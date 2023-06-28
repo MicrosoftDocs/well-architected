@@ -2,7 +2,7 @@
 title: Oracle workload reliability
 description: Oracle workload best practices for reliability
 author: ckittel
-ms.author: kegorman
+ms.author: chkittel
 ms.date: 12/29/2022
 ms.topic: conceptual
 ---
