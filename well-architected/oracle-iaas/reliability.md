@@ -58,7 +58,7 @@ A failover would require manual intervention from the customer to fail over if t
 
 The reliability checklist includes the Recovery Point Objective (RPO), Recovery Time Objective (RTO) and any business SLAs for the environment. The checklist should include all of the components for the environment, not just the database and may have different tiers of HA for different resources depending on their requirement for the business and system.
 
-Choices for Oracle on Azure should include and be reviewed in the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture.
+Choices for Oracle on Azure should include and be reviewed in the [design principles](/azure/well-architected/resiliency/principles) for adding reliability to the architecture.
 
 To assess the Utilization, extract the AWR or statspack workload data to right-size the database in Azure (lift and shift the workload, not the on-premises hardware.).
 
@@ -97,7 +97,7 @@ The application health should be monitored, not just Oracle, but application and
 | Use Host-Level ReadWrite caching on OS Disk | Oracle VMs can benefit with ReadWrite caching for the OS disk only. |
 | Separate Redo Logs for Log Latency | Log File Sync and Log File parallel write waits in Oracle can benefit by separating log files too small ultra disk allocation. If sync waits are shown, and requirement to have two members of redo log groups, separate members to TWO ultra disks with high enough IO set to handle log latency. Don’t configure any host-level caching if only redo logs on premium disk. |
 
-For more suggestions, see [Principles of the reliability pillar.](/azure/architecture/framework/resiliency/principles)
+For more suggestions, see [Principles of the reliability pillar.](/azure/well-architected/resiliency/principles)
 
 
 ## Next step

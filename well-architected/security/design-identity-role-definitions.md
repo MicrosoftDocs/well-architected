@@ -89,13 +89,13 @@ After the policies are set, continuously improve those standards incrementally. 
 
 **Central IT operations across all resources:** Grant permissions to the central IT department (often the infrastructure team) to create, modify, and delete resources like virtual machines and storage. **Contributor** or **owner** roles are appropriate for this function.
 
-**Central networking group across network resources:** To ensure consistency and avoid technical conflicts, assign network resource responsibilities to a single central networking organization. These resources should include virtual networks, subnets, Network Security Groups (NSG), and the virtual machines hosting virtual network appliances. Assign network resource responsibilities to a single central networking organization. The **network contributor** role is appropriate for this group. For more information, see [Centralize network management and security](/azure/architecture/framework/security/design-network-segmentation#centralize-network-management-and-security).
+**Central networking group across network resources:** To ensure consistency and avoid technical conflicts, assign network resource responsibilities to a single central networking organization. These resources should include virtual networks, subnets, Network Security Groups (NSG), and the virtual machines hosting virtual network appliances. Assign network resource responsibilities to a single central networking organization. The **network contributor** role is appropriate for this group. For more information, see [Centralize network management and security](/azure/well-architected/security/design-network-segmentation#centralize-network-management-and-security).
 
 **Resource role permissions:** For most core services, administrative privileges required to manage them are granted through the application (Active Directory, DNS/DHCP, System Management Tools), so no other Azure resource permissions are required. If your organizational model requires these teams to manage their own VMs, storage, or other Azure resources, you can assign these permissions to those roles.
 
 Workload segments with autonomous DevOps teams manage the resources associated with each application. The actual roles and permissions depend on the application size and complexity, the application team's size and complexity, and the organization and application team's culture.
 
-**Service admin (break glass account):** Use the **service administrator** role only for emergencies and initial setup. Don't use this role for daily tasks. For more information, see [Emergency access ('break glass' accounts)](/azure/architecture/framework/security/design-admins#emergency-access-or-break-glass-accounts).
+**Service admin (break glass account):** Use the **service administrator** role only for emergencies and initial setup. Don't use this role for daily tasks. For more information, see [Emergency access ('break glass' accounts)](/azure/well-architected/security/design-admins#emergency-access-or-break-glass-accounts).
 
 #### Segment reference permissions
 
@@ -116,11 +116,11 @@ This segment permission design provides consistency while allowing enough flexib
 
 - Segments with autonomous DevOps teams don't need to grant permissions across all resources because the resource role grants permissions to application teams. For emergencies, use the service admin account (break-glass account).
 
-**Central networking group across network resources:** To ensure consistency and avoid technical conflicts, assign network resource responsibilities to a single central networking organization. These resources should include virtual networks, subnets, Network Security Groups (NSG), and the virtual machines hosting virtual network appliances. See [Centralize Network Management And Security](/azure/architecture/framework/security/design-network-segmentation#centralize-network-management-and-security).
+**Central networking group across network resources:** To ensure consistency and avoid technical conflicts, assign network resource responsibilities to a single central networking organization. These resources should include virtual networks, subnets, Network Security Groups (NSG), and the virtual machines hosting virtual network appliances. See [Centralize Network Management And Security](/azure/well-architected/security/design-network-segmentation#centralize-network-management-and-security).
 
 **Resource role permissions:** Segments with autonomous DevOps teams manage the resources associated with each application. The actual roles and permissions depend on the application size and complexity, the application team's size and complexity, and the organization and application team's culture.
 
-**Service admin (break glass account):** Use the service admin role only for emergencies (and initial setup if necessary). Don't use this role for daily tasks. For more information, see [Emergency access or 'Break Glass' accounts)](/azure/architecture/framework/security/design-admins#emergency-access-or-break-glass-accounts).
+**Service admin (break glass account):** Use the service admin role only for emergencies (and initial setup if necessary). Don't use this role for daily tasks. For more information, see [Emergency access or 'Break Glass' accounts)](/azure/well-architected/security/design-admins#emergency-access-or-break-glass-accounts).
 
 ## Security team visibility
 
@@ -139,7 +139,7 @@ For enterprise security groups with broad responsibility for security of Azure, 
 - *Segment management group(s)* – for teams with limited scope of responsibility (typically required because of organizational boundaries or regulatory requirements)
 
 > [!IMPORTANT]
-> Because security will have broad access to the environment (and visibility into potentially exploitable vulnerabilities), treat security teams as critical impact accounts and apply the same protections as administrators. The [Administrative account security](/azure/architecture/framework/security/design-admins) section details these controls for Azure.
+> Because security will have broad access to the environment (and visibility into potentially exploitable vulnerabilities), treat security teams as critical impact accounts and apply the same protections as administrators. The [Administrative account security](/azure/well-architected/security/design-admins) section details these controls for Azure.
 
 **Suggested actions**
 

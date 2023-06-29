@@ -62,7 +62,7 @@ Robust monitoring ensures the observability of a workload and allows you to corr
 In addition, customer data is critical to understanding the health of a workload and whether the service is meeting the business goals.
 
 > [!IMPORTANT]
-> The Health Modeling section of the [Azure Mission-Critical](/azure/architecture/framework/mission-critical/mission-critical-health-modeling) framework contains further in-depth guidance and examples on how to build a health model for a given workload.
+> The Health Modeling section of the [Azure Mission-Critical](/azure/well-architected/mission-critical/mission-critical-health-modeling) framework contains further in-depth guidance and examples on how to build a health model for a given workload.
 
 ## Rehearse recovery and practice failure
 

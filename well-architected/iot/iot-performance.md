@@ -319,7 +319,7 @@ Set Azure Service Health service alerts to trigger notifications when IoT Hub st
 
 ## Related resources
 
-- [Performance efficiency principles](/azure/architecture/framework/scalability/principles)
+- [Performance efficiency principles](/azure/well-architected/scalability/principles)
 - [Reference: IoT Hub endpoints](/azure/iot-hub/iot-hub-devguide-endpoints#list-of-built-in-iot-hub-endpoints)
 - [IoT Hub message size](/azure/iot-hub/iot-hub-devguide-messages-construct#message-size)
 - [Select an Azure data store for your application](/azure/architecture/guide/technology-choices/data-store-decision-tree)

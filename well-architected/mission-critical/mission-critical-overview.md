@@ -40,13 +40,13 @@ Microsoft Azure makes it easy to deploy and manage cloud solutions. However, bui
 
 ## Is mission-critical only about reliability?
 
-While the primary focus of mission-critical workloads is [Reliability](/azure/architecture/framework/#reliability), other pillars of the Well-Architected Framework are equally important when building and operating a mission-critical workload on Azure.  
+While the primary focus of mission-critical workloads is [Reliability](/azure/well-architected/#reliability), other pillars of the Well-Architected Framework are equally important when building and operating a mission-critical workload on Azure.  
 
-- [Security](/azure/architecture/framework/security/): how a workload mitigates security threats, such as Distributed Denial of Service (DDoS) attacks, will have a significant bearing on overall reliability.
+- [Security](/azure/well-architected/security/): how a workload mitigates security threats, such as Distributed Denial of Service (DDoS) attacks, will have a significant bearing on overall reliability.
 
-- [Operational Excellence](/azure/architecture/framework/devops/): how a workload is able to effectively respond to operational issues will have a direct impact on application availability. 
+- [Operational Excellence](/azure/well-architected/devops/): how a workload is able to effectively respond to operational issues will have a direct impact on application availability. 
 
-- [Performance Efficiency](/azure/architecture/framework/scalability/): availability is more than simple uptime, but rather a consistent level of application service and performance relative to a known healthy state.
+- [Performance Efficiency](/azure/well-architected/scalability/): availability is more than simple uptime, but rather a consistent level of application service and performance relative to a known healthy state.
 
 Achieving high reliability imposes significant cost tradeoffs, which may not be justifiable for every workload scenario. It is therefore recommended that design decisions be driven by business requirements.
 
@@ -87,7 +87,7 @@ The guidance provided within this series is based on a solution-orientated appro
 
 The mission-critical guidance within this series forms an industry agnostic design methodology which can be applied across a multitude of different industry contexts. The following list provides specific examples where the mission-critical design methodology has been applied and tailored to a particular industry scenario.  
 
-  - [Carrier-grade](/azure/architecture/framework/carrier-grade/carrier-grade-get-started) within the telecommunications industry
+  - [Carrier-grade](/azure/well-architected/carrier-grade/carrier-grade-get-started) within the telecommunications industry
 
 A carrier-grade workload pivots on both business-critical and safety-critical aspects, where there's a fundamental requirement to be operational with only minutes or even seconds of downtime per calendar year. Failure to achieve this uptime requirement can result in extensive loss of life, incur significant fines, or contractual penalties.
 

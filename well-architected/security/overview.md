@@ -31,7 +31,7 @@ Understanding an IT solution as it interacts with its surrounding environment ho
 
 Another key factor in success: Adopt a mindset of assuming failure of security controls. Assuming failure allows you to design compensating controls that limit risk and damage if a primary control fails.
 
-Assuming failures can be referred to as *assume breach* or *assume compromise*. Assume breach is closely related to the *Zero Trust* approach of continuously validating security assurances. The Zero Trust approach is described in the [Security Design Principles](/azure/architecture/framework/security/security-principles) section in more detail.
+Assuming failures can be referred to as *assume breach* or *assume compromise*. Assume breach is closely related to the *Zero Trust* approach of continuously validating security assurances. The Zero Trust approach is described in the [Security Design Principles](/azure/well-architected/security/security-principles) section in more detail.
 
 Cloud architectures can help simplify the complex task of securing an enterprise estate through specialization and shared responsibilities:
 
@@ -66,7 +66,7 @@ Increasing security risks result in three key strategies:
 
 - **Establish a modern perimeter:** For the elements that your organization controls to ensure you have a consistent set of controls (a perimeter) between those assets and the threats to them. Perimeters should be designed based on intercepting authentication requests for the resources (identity controls) versus intercepting network traffic on enterprise networks. This traditional approach isn't feasible for enterprise assets outside the network.
 
-More on perimeters and how they relate to Zero Trust and Enterprise Segmentation are in the [Governance, Risk, and Compliance](/azure/architecture/framework/security/design-segmentation) and [Network Security & Containment](/azure/architecture/framework/security/design-network-segmentation) sections.
+More on perimeters and how they relate to Zero Trust and Enterprise Segmentation are in the [Governance, Risk, and Compliance](/azure/well-architected/security/design-segmentation) and [Network Security & Containment](/azure/well-architected/security/design-network-segmentation) sections.
 
 - **Modernize infrastructure security:** For operating systems and middleware elements that legacy applications require, take advantage of cloud technology to reduce security risk to the organization. For example, knowing whether all servers in a physical datacenter are updated with security patches has always been challenging because of discoverability. Software-defined datacenters allow easy and rapid discovery of all resources. This rapid discovery enables technology like Microsoft Defender for Cloud to measure quickly and accurately the patch state of all servers and remediate them.
 
@@ -173,7 +173,7 @@ The security pillar is part of a comprehensive set of security guidance that als
 [design]: ./security-principles.md
 [regulatory]: ./design-regulatory-compliance.md
 [org-risk]: ./resilience.md
-[admin]: /azure/architecture/framework/security/design-admins
+[admin]: /azure/well-architected/security/design-admins
 [info]: ./storage-data-encryption.md
 [sec-ops]: ./security-operations.md
 

@@ -46,15 +46,15 @@
       - name: Cost Optimization
         items: 
         - name: Quick links
-          href: cost/index.yml
+          href: cost-optimization/index.yml
         - name: Overview
-          href: cost/overview.md
+          href: cost-optimization/overview.md
         - name: Design principles
-          href: cost/principles.md
+          href: cost-optimization/principles.md
         - name: Checklist
-          href: cost/checklist.md
+          href: cost-optimization/checklist.md
         - name: Tradeoffs
-          href: cost/tradeoffs.md
+          href: cost-optimization/tradeoffs.md
         - name: Best practices guides   
           items:
             - name: Guide 1
@@ -352,7 +352,7 @@
               - name: Data management
                 href: resiliency/data-management.md
               - name: Application resiliency
-                href: /azure/architecture/reliability/architect?toc=/azure/architecture/framework/toc.json&bc=/azure/architecture/framework/breadcrumb/toc.json
+                href: /azure/architecture/reliability/architect?toc=/azure/well-architected/toc.json&bc=/azure/well-architected/breadcrumb/toc.json
               - name: Business metrics
                 href: resiliency/business-metrics.md
               - name: Best practices
@@ -496,74 +496,74 @@
       - name: Cost Optimization
         items:
           - name: About
-            href: cost/index.yml
+            href: cost-optimization/index.yml
           - name: Overview
-            href: cost/overview.md
+            href: cost-optimization/overview.md
           - name: Principles
-            href: cost/principles.md
+            href: cost-optimization/principles.md
           - name: Design
             items:
               - name: Checklist
-                href: cost/design-checklist.md
+                href: cost-optimization/design-checklist.md
               - name: Cost model
-                href: cost/design-model.md
+                href: cost-optimization/design-model.md
               - name: Capture requirements
-                href: cost/design-capture-requirements.md
+                href: cost-optimization/design-capture-requirements.md
               - name: Azure regions
-                href: cost/design-regions.md
+                href: cost-optimization/design-regions.md
               - name: Azure resources
-                href: cost/design-resources.md
+                href: cost-optimization/design-resources.md
               - name: Governance
-                href: cost/design-governance.md
+                href: cost-optimization/design-governance.md
               - name: Initial estimate
-                href: cost/design-initial-estimate.md
+                href: cost-optimization/design-initial-estimate.md
               - name: Managed services
-                href: cost/design-paas.md
+                href: cost-optimization/design-paas.md
               - name: Performance and price options
-                href: cost/design-price.md
+                href: cost-optimization/design-price.md
           - name: Provision
             items:
               - name: Checklist
-                href: cost/provision-checklist.md
+                href: cost-optimization/provision-checklist.md
               - name: AI + Machine Learning
-                href: cost/provision-ai-ml.md
+                href: cost-optimization/provision-ai-ml.md
               - name: Big data
-                href: cost/provision-analytics.md
+                href: cost-optimization/provision-analytics.md
               - name: Compute
-                href: cost/provision-compute.md
+                href: cost-optimization/provision-compute.md
               - name: Data stores
-                href: cost/provision-datastores.md
+                href: cost-optimization/provision-datastores.md
               - name: Messaging
-                href: cost/provision-messaging.md
+                href: cost-optimization/provision-messaging.md
               - name: Networking
-                href: cost/provision-networking.md
+                href: cost-optimization/provision-networking.md
                 items:
                   - name: Cost for networking services
-                    href: cost/provision-networking-services.md
+                    href: cost-optimization/provision-networking-services.md
               - name: Web apps
-                href: cost/provision-webapps.md
+                href: cost-optimization/provision-webapps.md
           - name: Monitor
             items:
               - name: Checklist
-                href: cost/monitor-checklist.md
+                href: cost-optimization/monitor-checklist.md
               - name: Budgets and alerts
-                href: cost/monitor-alert.md
+                href: cost-optimization/monitor-alert.md
               - name: Reports
-                href: cost/monitor-reports.md
+                href: cost-optimization/monitor-reports.md
               - name: Reviews
-                href: cost/monitor-reviews.md
+                href: cost-optimization/monitor-reviews.md
           - name: Optimize
             items:
               - name: Checklist
-                href: cost/optimize-checklist.md
+                href: cost-optimization/optimize-checklist.md
               - name: Autoscale
-                href: cost/optimize-autoscale.md
+                href: cost-optimization/optimize-autoscale.md
               - name: VM instances
-                href: cost/optimize-vm.md
+                href: cost-optimization/optimize-vm.md
               - name: Caching
-                href: cost/optimize-cache.md
+                href: cost-optimization/optimize-cache.md
           - name: Tradeoffs
-            href: cost/tradeoffs.md
+            href: cost-optimization/tradeoffs.md
       - name: Operational Excellence
         items:
           - name: About

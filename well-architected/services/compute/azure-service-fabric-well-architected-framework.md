@@ -48,7 +48,7 @@ For more information about Azure Service Fabric workload reliability, reference 
 
 ### Design checklist
 
-As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture.
+As you make design choices for Azure Service Fabric, review the [design principles](/azure/well-architected/resiliency/principles) for adding reliability to the architecture.
 
 > [!div class="checklist"]
 > - **Cluster architecture:** Use [Standard SKU](/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) for production scenarios. **Standard cluster:** Use [durability level Silver](/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster) (5 VMs) or greater for production scenarios.
@@ -67,7 +67,7 @@ Explore the following table of recommendations to optimize your Azure Service Fa
 |**Cluster architecture:** Consider using Azure API Management to expose and offload cross-cutting functionality for APIs hosted on the cluster.|API Management can [integrate](/azure/service-fabric/service-fabric-api-management-overview) with Service Fabric directly.|
 |**Workload architecture:** For stateful workload scenarios, consider using [Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction).|The Reliable Services model allows your services to stay up even in unreliable environments where your machines fail or hit network issues, or in cases where the services themselves encounter errors and crash or fail. For stateful services, your state is preserved even in the presence of network or other failures.|
 
-For more suggestions, see [Principles of the reliability pillar](/azure/architecture/framework/resiliency/principles).
+For more suggestions, see [Principles of the reliability pillar](/azure/well-architected/resiliency/principles).
 
 ## Security
 
@@ -83,7 +83,7 @@ For more information about Azure Service Fabric workload security, reference [Se
 
 ### Design checklist
 
-As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/security/security-principles) for adding security to the architecture.
+As you make design choices for Azure Service Fabric, review the [design principles](/azure/well-architected/security/security-principles) for adding security to the architecture.
 
 > [!div class="checklist"]
 > - **Cluster architecture:** Ensure Network Security Groups (NSG) are configured to restrict traffic flow between subnets and node types. Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for application deployment and workloads.
@@ -109,7 +109,7 @@ Consider the following recommendations to optimize your Azure Service Fabric con
 |**Workload architecture:** Authenticate Service Fabric applications to Azure Resources using [Managed Identity](/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets).|Using Managed Identity allow you to securely manage the credentials in your code for authenticating to various services without saving them locally on a developer workstation or in source control.|
 |**Cluster and workload architectures:** Follow [Service Fabric best practices](/azure/service-fabric/service-fabric-best-practices-security#hosting-untrusted-applications-in-a-service-fabric-cluster) when hosting untrusted applications.|Following the best practices provides a security standard to follow.|
 
-For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
+For more suggestions, see [Principles of the security pillar](/azure/well-architected/security/security-principles).
 
 Azure Advisor helps you ensure and improve the security of Azure Service Fabric. You can review the recommendations in the [Azure Advisor section of this article](#azure-advisor-recommendations).
 
@@ -136,7 +136,7 @@ For more information about Azure Service Fabric workload pricing, check out the 
 
 ### Design checklist
 
-As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/cost/principles) for optimizing the cost of your architecture.
+As you make design choices for Azure Service Fabric, review the [design principles](/azure/well-architected/cost-optimization/principles) for optimizing the cost of your architecture.
 
 > [!div class="checklist"]
 > - **Cluster architecture:** Select appropriate VM SKU.
@@ -153,7 +153,7 @@ Explore the following table of recommendations to optimize your Azure Service Fa
 |**Cluster architecture:** If you need to select a certain VM SKU for capacity reasons and it happens to offer temp disk, consider using [temporary disk support](/azure/service-fabric/how-to-managed-cluster-stateless-node-type#temporary-disk-support) for your stateless workloads.|Make the most of the resources you're paying for. Using a temporary disk instead of a managed disk can reduce costs for stateless workloads.|
 |**Cluster and workload architectures:** Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
 
-For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
+For more suggestions, see [Principles of the cost optimization pillar](/azure/well-architected/cost-optimization/overview).
 
 ## Operational excellence
 
@@ -165,7 +165,7 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 
 ### Design checklist
 
-As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/devops/principles) for operational excellence.
+As you make design choices for Azure Service Fabric, review the [design principles](/azure/well-architected/devops/principles) for operational excellence.
 
 > [!div class="checklist"]
 > - **Cluster architecture:** Prepare a [cluster monitoring solution](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).
@@ -187,7 +187,7 @@ Explore the following table of recommendations to optimize your Azure Service Fa
 |**Cluster and workload architectures:** Use [Azure Monitor to monitor cluster and container infrastructure events](/azure/service-fabric/service-fabric-best-practices-monitoring#cluster-monitoring).|Azure Monitor integrates well with the Azure platform, including Service Fabric.|
 |**Cluster and workload architectures:** Use [Azure Pipelines for your continuous integration and deployment solution](/azure/service-fabric/service-fabric-tutorial-deploy-app-with-cicd-vsts).|Azure Pipelines integrates well with the Azure platform, including Service Fabric.|
 
-For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
+For more suggestions, see [Principles of the operational excellence pillar](/azure/well-architected/devops/principles).
 
 ## Performance efficiency
 
@@ -223,7 +223,7 @@ Consider the following recommendations to optimize your Azure Service Fabric con
 |**Workload architecture:** Leverage [background processing](/azure/architecture/guide/architecture-styles/web-queue-worker) for your workloads where appropriate.|Using background processing allows you to get the most out of Service Fabric's features.|
 |**Cluster and workload architectures:** Review the [different ways you can scale your solution in Service Fabric](/azure/service-fabric/service-fabric-concepts-scalability).|You can use scaling to enable maximum resource utilization for your solution.|
 
-For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
+For more suggestions, see [Principles of the performance efficiency pillar](/azure/well-architected/scalability/principles).
 
 ## Azure Advisor recommendations
 

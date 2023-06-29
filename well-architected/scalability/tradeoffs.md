@@ -39,7 +39,7 @@ Cost can increase as a result of increasing performance. When you optimize for p
 
 - Using dedicated resources to batch process long running jobs increases the cost. You can lower costs by provisioning [Azure Spot Virtual Machines](https://azure.microsoft.com/products/virtual-machines/spot), but be prepared for the job to be interrupted every time Azure evicts the virtual machine (VM).
 
-For other cost considerations, see the [Cost optimization](../cost/index.yml) pillar.
+For other cost considerations, see the [Cost optimization](../cost-optimization/index.yml) pillar.
 
 ## Performance efficiency vs. operational excellence
 

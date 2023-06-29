@@ -8,7 +8,7 @@ ms.topic: conceptual
 ---
 # Oracle workload cost optimization
 
-Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principle.](../../well-architected/cost/checklist.md)
+Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principle.](../../well-architected/cost-optimization/checklist.md)
 
 ## Optimize workload compute costs
 

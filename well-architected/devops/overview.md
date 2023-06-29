@@ -16,7 +16,7 @@ categories:
 
 The operational excellence pillar covers the processes that keep an application running in production. Deployments must be reliable and predictable. Automated deployments reduce the chance of human error. Fast and routine deployment processes don't slow down the release of new features or bug fixes. It's equally important to be able to quickly roll backward or forward if an update has problems.
 
-To assess your workload by using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/), see the [Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+To assess your workload by using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/well-architected/), see the [Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
 We recommend the following video to help you achieve operational excellence with the Azure Well-Architected Framework:
 
@@ -60,7 +60,7 @@ Reference the operational excellence principles to guide you in your overall str
 [deployment]: ./release-engineering-cd.md
 [iac]: ./automation-infrastructure.md
 [testing]: ./release-engineering-testing.md
-[app-design]: /azure/architecture/framework/devops/release-engineering-app-dev
+[app-design]: /azure/well-architected/devops/release-engineering-app-dev
 
 <!-- checklist -->
 [devops-checklist]: /azure/architecture/checklist/dev-ops
