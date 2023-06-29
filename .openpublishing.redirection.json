@@ -313,6 +313,6 @@
 			"source_path": "well-architected/cost/index.yml",
 			"redirect_url": "/azure/well-architected/cost-optimization/",
 			"redirect_document_id": true
-
+		}
 	]
 }
