@@ -91,7 +91,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 - Keeping resources in a single cloud gives you maximum control and allows the cloud provider to optimize the network routing.
 - Maximize network utilization within the same cloud and, if possible, within the same region.
-- Since the cost can be a proxy for sustainability, review the [Azure regions](/azure/well-architected/cost-optimization/design-regions) documentation in the Cost Optimization pillar of the Azure Well-Architected Framework.
+- Since the cost can be a proxy for sustainability, review the [Azure regions](../cost-optimization/design-regions.md) documentation in the Cost Optimization pillar of the Azure Well-Architected Framework.
 
 ## Next step
 

@@ -146,7 +146,7 @@ For more suggestions, see [AKS security concepts](/azure/aks/concepts-security) 
 
 Cost optimization is about understanding your different configuration options and recommended best practices to reduce unnecessary expenses and improve operational efficiencies. Before you follow the guidance in this article, we recommend you review the following resources:
 
-* [Cost optimization design principles](/azure/well-architected/cost-optimization/principles).
+* [Cost optimization design principles](../../cost-optimization/principles.md).
 * [How pricing and cost management work in Azure Kubernetes Service (AKS) compared to Amazon Elastic Kubernetes Service (Amazon EKS)](/azure/architecture/aws-professional/eks-to-aks/cost-management).
 * If you are running AKS on-premises or at the edge, [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) can also be used to further reduce costs when running containerized applications in those scenarios.
 
@@ -183,7 +183,7 @@ Explore the following table of recommendations to optimize your AKS configuratio
 |**Cluster architecture:** Sign up for [Azure Reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) or [Azure Savings Plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview). | If you properly planned for capacity, your workload is predictable and exists for an extended period of time, sign up for an [Azure Reservation](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview#determine-your-savings-plan-commitment) to further reduce your resource costs.|
 |**Cluster architecture:** Configure monitoring of cluster with [Container insights](/azure/azure-monitor/containers/container-insights-overview). | Container insights help provides actionable insights into your clusters idle and unallocated resources. Container insights also supports collecting Prometheus metrics and integrates with Azure Managed Grafana to get a holistic view of your application and infrastructure.|
 
-For more suggestions, see [Principles of the cost optimization pillar](/azure/well-architected/cost-optimization/overview).
+For more suggestions, see [Principles of the cost optimization pillar](../../cost-optimization/overview.md).
 
 ### Policy definitions
 

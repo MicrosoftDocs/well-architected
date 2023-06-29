@@ -699,6 +699,11 @@
 			"source_path": "well-architected/resiliency/tradeoffs.md",
 			"redirect_url": "/azure/well-architected/reliability/tradeoffs",
 			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/index.md",
+			"redirect_url": "/azure/well-architected/pillars.md",
+			"redirect_document_id": false
 		}
 	]
 }

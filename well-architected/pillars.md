@@ -15,11 +15,11 @@ Use this matrix to familiarize yourself with the key concepts:
 
 | Pillar | Workload concern | Apply the principles | Strike a balance
 |--------|-------------|-------------------|-----------
-| [**Reliability**][resiliency-pillar] | Resiliency, availability, recovery| [Principles for building redundancy and self healing](/azure/well-architected/resiliency/principles) | [Coming soon!](/azure/well-architected/resiliency/business-metrics)
-| [**Security**][security-pillar] | Data protection, threat detection, mitigation |[Principles for attaining Zero-Trust](/azure/well-architected/security/security-principles)|[Tradeoffs](/azure/well-architected/security/security-tradeoffs)
-| [**Cost optimization**][cost-pillar] | Cost modeling, budgets, reduce waste|[Principles for right-sizing and evaluating under utilization](/azure/well-architected/cost-optimization/overview)|[Tradeoffs](/azure/well-architected/cost-optimization/tradeoffs)|
-| [**Operational excellence**][devops-pillar] | Holistic observability, DevOps practices |[Principles for automated operations, monitoring, and continuous improvements](/azure/well-architected/devops/principles)|[Coming soon!]()|
-| [**Performance efficiency**][scalability-pillar] | Scalability, load testing|[Principles for scale-out](/azure/well-architected/scalability/principles)|[Tradeoffs](/azure/well-architected/scalability/tradeoffs)|
+| [**Reliability**][resiliency-pillar] | Resiliency, availability, recovery| [Principles for building redundancy and self healing](reliability/principles.md) | [Business metrics](reliability/business-metrics.md)
+| [**Security**][security-pillar] | Data protection, threat detection, mitigation |[Principles for attaining Zero-Trust](security/security-principles.md)|[Tradeoffs](security/security-tradeoffs.md)
+| [**Cost optimization**][cost-pillar] | Cost modeling, budgets, reduce waste|[Principles for right-sizing and evaluating under utilization](cost-optimization/overview.md)|[Tradeoffs](cost-optimization/tradeoffs.md)|
+| [**Operational excellence**][devops-pillar] | Holistic observability, DevOps practices |[Principles for automated operations, monitoring, and continuous improvements](operational-excellence/principles.md)|Coming soon!|
+| [**Performance efficiency**][scalability-pillar] | Scalability, load testing|[Principles for scale-out](/azure/well-architected/scalability/principles)|[Tradeoffs](performance-efficiency/tradeoffs.md)|
 
 > [!IMPORTANT]
 >

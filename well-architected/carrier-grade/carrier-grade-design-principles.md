@@ -14,11 +14,11 @@ ms.custom:
 
 Carrier grade workload must be designed as per the guiding principles of the Well-Architected Framework quality pillars:
 
-- [Reliability](/azure/well-architected/#reliability)
-- [Performance Efficiency](/azure/well-architected/scalability/)
-- [Operational Excellence](/azure/well-architected/devops/)
-- [Security](/azure/well-architected/security/)
-- [Cost Optimization](/azure/well-architected/cost-optimization/)
+- [Reliability](../reliability/)
+- [Performance Efficiency](../scalability/)
+- [Operational Excellence](../operational-excellence/)
+- [Security](../security/)
+- [Cost Optimization](../cost-optimization/)
 
 This article describes the carrier-grade design principles that resonate and extend the [mission-critical design principles](/azure/well-architected/mission-critical/mission-critical-design-principles). These collective principles serve as a road map for subsequent design decisions across the critical design areas. We highly recommend that you get to know these principles to better understand their effects and the trade-offs associated with non-adherence.
 
