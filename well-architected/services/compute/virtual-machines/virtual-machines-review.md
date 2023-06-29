@@ -1,9 +1,9 @@
 ---
 title: Azure Well-Architected Framework review - Virtual Machines
 description: Design considerations and recommendations about Azure virtual machines.
-author: cynthn
-ms.author: cynthn
-ms.date: 05/24/2022
+author: ericd-mst-github
+ms.author: erd
+ms.date: 06/29/20223
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -25,6 +25,8 @@ In this article, you learn architectural best practices for Azure Virtual Machin
 - Cost optimization
 - Operational excellence
 - Performance efficiency
+
+
 ## Prerequisites
 
 - Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. We recommend that you review your workload using the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
@@ -123,7 +125,9 @@ To estimate costs related to virtual machines, use these tools.
 > [!div class="checklist"]
 > - Shut down VM instances which aren't in use.
 > - Use [Spot VMs](/azure/virtual-machines/spot-vms) when appropriate.
-> - Choose the right VM size for your workload. 
+> - Choose the right VM size for your workload.
+> - Utilize premium storage with free bursting, combined with an understanding of workload patterns, for effective SKU selection and cost optimization.
+> - Use managed disks for desired performance without the need for over-provisioning, accounting for fluctuating workload patterns, and minimizing unused provisioned capacity.
 > - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
 > - Prepay for [reserved instances](/virtual-machines/prepay-reserved-vm-instances) for one year, three years, or more.
 > - Use hybrid benefit licensing
@@ -137,6 +141,8 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Stop VMs during off-hours | Configuring start and stop times will shut down instances that aren't in use. The feature is suitable as a low-cost automation option. |
 | Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions. Check out our [Azure Virtual Machine Spot Eviction](/azure/architecture/guide/spot/spot-eviction) guide to learn how to create a reliable interruptible workload in Azure.|
 |Right-size your VMs |  Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.|
+|Utilize premium storage effectively | Premium storage features free bursting which, combined with understanding workload patterns, offers an effective SKU selection and cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. |
+| Optimize with managed disks | Managed disks offer cost optimization by providing desired performance without the need for over-provisioning, accounting for fluctuating workload patterns, and minimizing unused provisioned capacity.|
 |Prepay for added cost savings | Purchasing [reserved instances](/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
 | Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
 
@@ -163,6 +169,7 @@ To ensure operational excellence, review the [design principles](/azure/architec
 > - Build a robust testing environment.
 > - Right size your VMs.
 > - Manage your quota.
+> - Use managed disks and understand workload patterns.
 
 
 ### Recommendations
@@ -175,6 +182,7 @@ To ensure operational excellence, review the [design principles](/azure/architec
 | Build a robust testing environment | Ideally, an organization will have multiple environments in which to test deployments. These test environments should be similar enough to production that deployment and run time issues are detected before deployment to production. |
 | Right-size your VMs | Choose the right [VM family](/azure/virtual-machines/sizes) for your workload. | 
 | Manage your quota | Plan what level of quota will be required and review that level regularly as the workload evolves and grows and [request changes early](/azure/azure-portal/supportability/per-vm-quota-requests)  |
+| Use managed disks and understand workload patterns | By using managed disks and understanding workload patterns, you can streamline the operations processes and improve the ability to keep the system running efficiently in production. This enhances operational excellence by including best practices and strategies for smoother operations. |
 
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
@@ -204,6 +212,9 @@ As you make design choices for your virtual machine deployment, review [Microsof
 > [!div class="checklist"]
 > - Reduce latency by deploying VMs closer together in proximity placement groups
 > - Convert disks from standard HDD to premium SSD
+> - Utilize premium storage with free bursting in combination with workload patterns understanding.
+> - Use managed disks to obtain desired performance without over-provisioning.
+> - Consider locally attached NVMe or similar devices for high-performance use cases.
 > - Enable Accelerated Networking to improve network performance and latency
 > - Autoscale your Flexible scale sets.
 
@@ -217,6 +228,9 @@ Explore the following table of recommendations to optimize your virtual machine 
 |--------|----|
 | Reduce latency | Consider deploying VMs in [Creating and using proximity placement groups using PowerShell](/azure/virtual-machines/proximity-placement-groups). |
 | Convert disks from standard HDD to premium SSD | Azure [premium SSDs](/azure/virtual-machines/disks-performance-tiers) deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. |
+| Utilize premium storage effectively | Premium storage features free bursting which, combined with understanding workload patterns, offers an effective SKU selection and cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning. |
+| Optimize with managed disks | Managed disks offer performance optimization by providing desired performance without the need for over-provisioning, accounting for fluctuating workload patterns. |
+| Use locally attached NVMe devices | When available on VM SKUs, locally attached NVMe or similar devices can offer high performance, especially for use cases requiring high IOPS and low latency. |
 | Consider accelerated networking | [Accelerated networking](/azure/virtual-network/accelerated-networking-overview) enables single root I/O virtualization (SR-IOV) to a VM, greatly improving its networking performance. |
 | Use autoscaling | Automatically increase or decrease the number of VM instances that run your application with [autoscaling](/azure/virtual-machine-scale-sets/scripts/cli-sample-enable-autoscale). |
 
