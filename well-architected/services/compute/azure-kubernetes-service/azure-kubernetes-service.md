@@ -146,7 +146,7 @@ For more suggestions, see [AKS security concepts](/azure/aks/concepts-security) 
 
 Cost optimization is about understanding your different configuration options and recommended best practices to reduce unnecessary expenses and improve operational efficiencies. Before you follow the guidance in this article, we recommend you review the following resources:
 
-* [Cost optimization design principles](../../cost-optimization/principles.md).
+* [Cost optimization design principles](../../../cost-optimization/principles.md).
 * [How pricing and cost management work in Azure Kubernetes Service (AKS) compared to Amazon Elastic Kubernetes Service (Amazon EKS)](/azure/architecture/aws-professional/eks-to-aks/cost-management).
 * If you are running AKS on-premises or at the edge, [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) can also be used to further reduce costs when running containerized applications in those scenarios.
 

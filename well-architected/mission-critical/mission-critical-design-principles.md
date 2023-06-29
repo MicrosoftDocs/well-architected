@@ -20,7 +20,7 @@ The mission-critical design methodology is underpinned by five key design princi
 
 ![Mission critical design principles](./images/mission-critical-design-principles.svg "Mission critical design principles")
 
-These mission-critical design principles resonate and extend the quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](../reliability/), [Security](../security/), [Cost Optimization](../cost-optimization/), [Operational Excellence](../operational-excellence/), and [Performance Efficiency](../performance-efficiency/). 
+These mission-critical design principles resonate and extend the quality pillars of the Azure Well-Architected Framework&mdash;[Reliability](../reliability/index.yml), [Security](../security/index.yml), [Cost Optimization](../cost-optimization/index.yml), [Operational Excellence](../operational-excellence/index.yml), and [Performance Efficiency](../performance-efficiency/index.yml). 
 
 ## Reliability
 
