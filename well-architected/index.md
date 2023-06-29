@@ -125,7 +125,7 @@ For more information, see [Overview of the security pillar](./security/overview.
 
 When you design a cloud solution, focus on generating incremental value early. Apply the principles of *Build-Measure-Learn* to accelerate your time to market while avoiding capital-intensive solutions. See [What is the build-measure-learn feedback loop](/azure/cloud-adoption-framework/innovate/considerations/adoption#what-is-the-build-measure-learn-feedback-loop).
 
-For more information, see [Cost optimization](./cost/index.yml) and watch the following video on how to start optimizing your Azure costs:
+For more information, see [Cost optimization](./cost-optimization/index.yml) and watch the following video on how to start optimizing your Azure costs:
 
 <!-- markdownlint-disable MD034 -->
 
@@ -137,12 +137,12 @@ For more information, see [Cost optimization](./cost/index.yml) and watch the fo
 
 The following resources offer cost optimization guidance as you develop the Well-Architected Framework for your workload:
 
-- Review [cost principles](./cost/overview.md)
-- [Develop a cost model](./cost/design-model.md)
-- Create [budgets and alerts](./cost/monitor-alert.md)
-- Review the [cost optimization checklist](./cost/optimize-checklist.md)
+- Review [cost principles](./cost-optimization/overview.md)
+- [Develop a cost model](./cost-optimization/design-model.md)
+- Create [budgets and alerts](./cost-optimization/monitor-alert.md)
+- Review the [cost optimization checklist](./cost-optimization/optimize-checklist.md)
 
-For a high-level overview, see [Overview of the cost optimization pillar](./cost/overview.md).
+For a high-level overview, see [Overview of the cost optimization pillar](./cost-optimization/overview.md).
 
 ## Operational excellence
 
@@ -212,7 +212,7 @@ Learn more about:
 [transient-fault-handling]: /azure/architecture/best-practices/transient-faults
 
 <!-- pillars -->
-[cost-pillar]: ./cost/index.yml
+[cost-pillar]: ./cost-optimization/index.yml
 [security-pillar]: ./security/index.yml
 [resiliency-pillar]: ./resiliency/index.yml
 [scalability-pillar]: ./scalability/index.yml

@@ -107,13 +107,13 @@ sections:
         summary: Adopt an optimization mindset by at organizational, architectural, and tactical levels to keep your spending within budget. 
         links:
           - componentType: link
-            url: ./cost/principles.md
+            url: ./cost-optimization/principles.md
             text: Design principles
           - componentType: link
-            url: ./cost/tradeoffs.md
+            url: ./cost-optimization/tradeoffs.md
             text: Tradeoffs             
           - componentType: link
-            url: ./cost/index.yml
+            url: ./cost-optimization/index.yml
             text: Quick links
       - componentType: card
         title: Operational Excellence

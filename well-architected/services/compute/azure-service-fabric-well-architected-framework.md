@@ -136,7 +136,7 @@ For more information about Azure Service Fabric workload pricing, check out the 
 
 ### Design checklist
 
-As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/cost/principles) for optimizing the cost of your architecture.
+As you make design choices for Azure Service Fabric, review the [design principles](/azure/architecture/framework/cost-optimization/principles) for optimizing the cost of your architecture.
 
 > [!div class="checklist"]
 > - **Cluster architecture:** Select appropriate VM SKU.
@@ -153,7 +153,7 @@ Explore the following table of recommendations to optimize your Azure Service Fa
 |**Cluster architecture:** If you need to select a certain VM SKU for capacity reasons and it happens to offer temp disk, consider using [temporary disk support](/azure/service-fabric/how-to-managed-cluster-stateless-node-type#temporary-disk-support) for your stateless workloads.|Make the most of the resources you're paying for. Using a temporary disk instead of a managed disk can reduce costs for stateless workloads.|
 |**Cluster and workload architectures:** Align SKU selection and managed disk size with workload requirements.|Matching your selection to your workload demands ensures you don't pay for unneeded resources.|
 
-For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost/overview).
+For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost-optimization/overview).
 
 ## Operational excellence
 

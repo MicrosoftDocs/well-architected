@@ -17,8 +17,8 @@
         tocHref: /azure/well-architected/security/
         topicHref: /azure/well-architected/security/overview
       - name: Cost Optimization
-        tocHref: /azure/well-architected/cost/
-        topicHref: /azure/well-architected/cost/overview
+        tocHref: /azure/well-architected/cost-optimization/
+        topicHref: /azure/well-architected/cost-optimization/overview
       - name: Operational Excellence
         tocHref: /azure/well-architected/devops/
         topicHref: /azure/well-architected/devops/overview

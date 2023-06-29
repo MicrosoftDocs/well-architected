@@ -51,7 +51,7 @@ Building and designing sustainable workloads on Microsoft Azure can be challengi
 
 ## Is sustainability only about performance and cost?
 
-While [performance efficiency](/azure/architecture/framework/scalability/) and [cost optimization](/azure/architecture/framework/cost/) are areas of strong focus for designing sustainable workloads, the other pillars of the Well-Architected Framework are equally important when building long-term sustainable workloads on Azure.
+While [performance efficiency](/azure/architecture/framework/scalability/) and [cost optimization](/azure/architecture/framework/cost-optimization/) are areas of strong focus for designing sustainable workloads, the other pillars of the Well-Architected Framework are equally important when building long-term sustainable workloads on Azure.
 
 - [Security](/azure/architecture/framework/security/): how the security appliances in a workload are optimized and designed to auto-scale will have an impact on the environment.
 - [Reliability](/azure/architecture/framework/resiliency/): designing reliable workloads that meet sustainability guidelines from the Green Software Foundation can greatly reduce the workloads' carbon and electricity footprint.

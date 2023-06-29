@@ -18,7 +18,7 @@ Carrier grade workload must be designed as per the guiding principles of the Wel
 - [Performance Efficiency](/azure/architecture/framework/scalability/)
 - [Operational Excellence](/azure/architecture/framework/devops/)
 - [Security](/azure/architecture/framework/security/)
-- [Cost Optimization](/azure/architecture/framework/cost/)
+- [Cost Optimization](/azure/architecture/framework/cost-optimization/)
 
 This article describes the carrier-grade design principles that resonate and extend the [mission-critical design principles](/azure/architecture/framework/mission-critical/mission-critical-design-principles). These collective principles serve as a road map for subsequent design decisions across the critical design areas. We highly recommend that you get to know these principles to better understand their effects and the trade-offs associated with non-adherence.
 

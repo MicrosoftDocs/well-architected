@@ -17,7 +17,7 @@ A key benefit of hybrid cloud environments is the ability to scale dynamically a
 
 Azure Arc helps minimize or even eliminate the need for on-premises management and monitoring systems, which reduces operational complexity and cost, especially in large, diverse, and distributed environments. This helps offset additional costs associated with Azure Arc-related services. For example, advanced data security for Azure Arc enabled SQL Server instance requires Microsoft Defender for Cloud functionality of Microsoft Defender for Cloud, which has [pricing implications](https://azure.microsoft.com/pricing/details/security-center/).
 
-Other considerations are described in the [Principles of cost optimization](../cost/design-model.md) section in the Microsoft Azure Well-Architected Framework.
+Other considerations are described in the [Principles of cost optimization](../cost-optimization/design-model.md) section in the Microsoft Azure Well-Architected Framework.
 
 ## Workload definitions
 
@@ -77,7 +77,7 @@ Lastly, you can slowly begin migrating out of your datacenter and use Azure Arc 
 
 ### Capacity planning
 
-Check out our checklist under the [Cost Optimization pillar](../cost/design-checklist.md) in the Well-Framework to learn more about capacity planning, and build a checklist to design cost-effective workloads.
+Check out our checklist under the [Cost Optimization pillar](../cost-optimization/design-checklist.md) in the Well-Framework to learn more about capacity planning, and build a checklist to design cost-effective workloads.
 
 - Define SLAs
 - Determine regulatory needs

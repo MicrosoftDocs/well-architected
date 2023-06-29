@@ -110,7 +110,7 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 ## Cost optimization
 
-To optimize costs, review the [design principles](/azure/architecture/framework/cost/principles).
+To optimize costs, review the [design principles](/azure/architecture/framework/cost-optimization/principles).
 
 To estimate costs related to virtual machines, use these tools.
 
