@@ -458,6 +458,126 @@
 			"source_path": "well-architected/scalability/checklist.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/monitor-performance",
 			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/capacity.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/capacity",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/design-apps.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-apps",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/design-capacity.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-capacity",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/design-distributed.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-distributed",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/design-efficiency.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-efficiency",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/design-scale.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-scale",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/index.yml
+			"redirect_url": "/azure/well-architected/performance-efficiency/index.yml
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/load-testing.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/load-testing",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/monitor-analyze.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/monitor-analyze",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/monitor-application.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/monitor-application",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/monitor-infrastructure.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/monitor-infrastructure",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/monitor-scalability-reliability.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/monitor-scalability-reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/optimize-cache.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-cache",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/optimize-partition.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-partition",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/optimize-sustain.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-sustain",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/optimize.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/overview.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/overview",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/scalability-patterns.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-efficiency-patterns",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/scalability.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-efficiency",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/performance-test.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-test",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/principles.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/principles",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/test-checklist.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/test-checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/test-tools.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/test-tools",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/tradeoffs.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/tradeoffs",
+			"redirect_document_id": true
 		}
 	]
 }
