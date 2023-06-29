@@ -1040,3 +1040,16 @@
                     href: services/monitoring/application-insights/operational-excellence.md
       - name: Implementing Recommendations
         href: ./implementing-recommendations.md
+    - name: Orphans
+      items:
+      - name: Security resilience
+        href: security\resilience.md
+      - name: Security operations
+        href: security\security-operations.md
+      - name: Security storage data encryption
+        href: security\storage-data-encryption.md
+      - name: Security architecture type
+        href: security\architecture-type.md
+      - name: DevOps alerts
+        href: devops\alerts.md
+        
