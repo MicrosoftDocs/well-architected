@@ -5,12 +5,8 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/08/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories:
   - management-and-governance
-products:
-  - azure-monitor
 ms.custom:
   - overview
 ---

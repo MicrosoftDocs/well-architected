@@ -3,12 +3,8 @@ title: Automated Tasks
 description: Automate operational tasks, which can include any action or activity you may perform while managing systems, system access, and processes in Azure.
 author: martinekuan
 ms.author: martinek
-ms.date: 12/08/2021
+ms.date: 03/14/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure-functions
 ms.custom:
   - article
 ---
@@ -59,6 +55,20 @@ Both PowerShell and Python are common languages for automating everyday operatio
 
 - [Documentation: Azure Functions PowerShell developer guide](/azure/azure-functions/functions-reference-powershell)
 - [Documentation: Azure Functions Python developer guide](/azure/azure-functions/functions-reference-python)
+
+## Azure Deployment Environments
+
+Azure Deployment Environments enables development teams to quickly spin up consistent app infrastructure by using project-based templates, minimizing setup time while maximizing security, compliance, and cost efficiency. A deployment environment is a collection of Azure resources deployed in predefined subscriptions. Development infrastructure (dev infra) admins can enforce enterprise security policies and provide a curated set of predefined infrastructure as code (IaC) templates.
+
+Dev infra admins define deployment environments as catalog items hosted in a GitHub or Azure DevOps repository called a catalog. A catalog item consists of an IaC template and a manifest.yaml file.
+
+The creation of deployment environments can be scripted, and the environments can be managed programmatically.
+
+**Learn more**
+
+- [Azure Deployment Environments](/azure/deployment-environments/)
+- [Scenarios for using Azure Deployment Environments Preview](/azure/deployment-environments/concept-environments-scenarios)
+- [Create and access an environment by using the Azure CLI](/azure/deployment-environments/how-to-create-access-environments)
 
 ## Azure Automation
 

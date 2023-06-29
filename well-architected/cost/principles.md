@@ -1,50 +1,45 @@
 ---
 title: Cost optimization design principles
-description: Understand cost optimization principles. These principles are a series of important considerations that can help achieve business objectives and cost justification.
+description: Learn about the cost optimization principles for your workload that can help you achieve business objectives and justify costs.
 author: martinekuan
 ms.author: martinek
-ms.date: 02/10/2022
+ms.date: 04/12/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - overview
   - internal-intro
-products:
-  - azure
-  - azure-cost-management
 categories:
   - management-and-governance
 ---
 
 # Cost optimization design principles
 
-A cost-effective workload is driven by business goals and the return on investment (ROI) while staying within a given budget. The principles of cost optimization are a series of important considerations that can help achieve both business objectives and cost justification.
+Business goals and the return on investment (ROI) drive a cost-effective workload while you keep to a given budget. The principles of cost optimization are important considerations that help you achieve both business objectives and cost justification.
 
-To assess your workload using the tenets found in the Azure Well-Architected Framework, reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+To assess your workload using the tenets you find in the Azure Well-Architected Framework, see the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
 The following design principles provide:
 
 - Context for questions
 - Why a certain aspect is important
-- How an aspect is applicable to Cost optimization
+- How an aspect applies to cost optimization
 
-These critical design principles are used as lenses to assess the Cost optimization of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
+Use these critical design principles as lenses to assess the cost optimization of an application deployed on Azure. These lenses provide a framework for the application assessment questions.
 
 ## Choose the correct resources
 
-Choose the right resources that are aligned with business goals and can handle the performance of the workload.
+Choose resources that align with business goals and can handle your workload performance.
 
-When onboarding new workloads, explore the possibility of modernization and cloud native offerings where possible. It's typically more cost effective to use  Platform as a Service (PaaS) or Software as a Service (SaaS), as opposed to Infrastructure as a Service (IaaS).
+When onboarding new workloads, explore the possibility of modernization and cloud native offerings where possible. It's typically more cost-effective to use platform as a service (PaaS) or software as a service (SaaS), as opposed to infrastructure as a service (IaaS).
 
-An inappropriate or misconfigured service can affect cost. For example, building a multi-region service when the service levels don't require high-availability or geo-redundancy will increase cost without any reasonable business justification.
+An inappropriate or misconfigured service can affect cost. For example, building a multi-region service when the service levels don't require high-availability or geo-redundancy increases cost without any reasonable business justification.
 
 ## Set up budgets and maintain cost constraints
 
-Every design choice has cost implications. Consider the budget constraints set by the company, before choosing:
+Every design choice has cost implications. Consider the budget constraints set by the company before choosing:
 
 - An architectural pattern
-- Azure service
+- The Azure service
 - A price model for the service
 
 As part of design, identify acceptable boundaries on:
@@ -55,15 +50,15 @@ As part of design, identify acceptable boundaries on:
 
 After estimating the initial cost, set budgets and alerts at different scopes to measure the cost. One cost driver can be unrestricted resources. These resources typically need to scale and consume more cost to meet demand.
 
-## Dynamically allocate and de-allocate resources
+## Dynamically allocate and deallocate resources
 
-To match performance needs, dynamically allocate and de-allocate resources.
+To match performance needs, dynamically allocate and deallocate resources.
 
 Identify idle or underutilized resources through Azure Advisor or other tools, and:
 
 - Reconfigure
-- Consolidate
-- (or) Shut down
+- Consolidate (or)
+- Shut down
 
 ## Optimize workloads, aim for scalable costs
 
@@ -71,9 +66,9 @@ A key benefit of the cloud is the ability to scale dynamically. The workload cos
 
 Recommendations:
 
-- Consider the usage metrics and performance to determine the number of instances.
+- Consider usage metrics and performance to determine the number of instances.
 - Choose smaller instances for a highly variable workload.
-- Scale out, rather than up, to get the required level of performance. This choice will enable you to make your cost calculations and estimates granular.
+- Scale out, rather than up, to get the required level of performance. This choice enables you to make your cost calculations and estimates granular.
 
 The cost management process should be:
 

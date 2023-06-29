@@ -5,13 +5,10 @@ author: calcof
 ms.author: calcof
 ms.date: 08/16/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories: 
   - storage
   - web
   - devops
-products: azure
 ms.custom:
   - mission-critical
 ---
@@ -27,9 +24,6 @@ This design area focuses on the process to define a robust health model, mapping
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical)
->
-> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate considerations and recommendations for observing application health.
 
 There are three main levels of operational maturity when striving to maximize reliability.
 1) *Detect* and respond to issues as they happen.
@@ -345,7 +339,7 @@ While the visual representations of application health provide invaluable operat
 
 ### Design considerations
 
-- Alert rules are defined to fire when a conditional criteria is satisfied for incoming signals, which can include various [data sources](/azure/azure-monitor/agents/data-sources), such as metrics, log search queries, or availability tests.
+- Alert rules are defined to fire when a conditional criteria is satisfied for incoming signals, which can include various [data sources](/azure/azure-monitor/data-sources), such as metrics, log search queries, or availability tests.
 
 - Alerts can be defined within Log Analytics or Azure Monitor on the specific resource.
 

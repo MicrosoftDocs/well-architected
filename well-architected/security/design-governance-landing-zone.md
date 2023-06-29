@@ -5,11 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 02/28/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure-blueprints
-  - azure-policy
 categories:
   - management-and-governance
 ms.custom:
@@ -42,7 +37,7 @@ Automation of deployment and maintenance tasks reduces security and compliance r
 
 Utilize the Azure Blueprint service to rapidly and consistently deploy application environments that are compliant with your organization's policies and external regulations. [Azure Blueprint Service](/azure/governance/blueprints/) automates deployment of environments including Azure roles, policies, resources, such as virtual machines, networking, storage, and more. Azure Blueprints builds on Microsoft's significant investment into the Azure Resource Manager to standardize resource deployment in Azure and enable resource deployment and governance based on a desired-state approach. You can use built in configurations in Azure Blueprint, make your own, or just use Resource Manager scripts for smaller scope.
 
-Several [Security and Compliance Blueprints](https://servicetrust.microsoft.com/ViewPage/SCCIntroPage) [samples](/azure/governance/blueprints/samples/) are available to use as a starting template.
+Several Security and Compliance Blueprints [samples](/azure/governance/blueprints/samples/) are available to use as a starting template.
 
 ## Enforce policy compliance
 
@@ -61,8 +56,7 @@ Key Azure services that can help in creating a landing zone:
 - [Azure Resource Manager template specs](/azure/azure-resource-manager/templates/template-specs)  stores an Azure Resource Manager template (ARM template) in Azure for later deployment.
 - [Azure Policy](/azure/governance/policy/overview) enforces organizational standards and to assess compliance at-scale.
 - [Azure AD](https://azure.microsoft.com/services/active-directory/) and [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) work in conjunction to provide identity and access controls.
-- [Microsoft Defender for Cloud](/azure/security-center/security-center-intro)
-- [Microsoft Defender for Cloud](/azure/security-center/azure-defender)
+- [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction)
 
 ## Architecture
 

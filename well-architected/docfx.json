@@ -49,19 +49,36 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "breadcrumb_path": "/azure/architecture/framework/breadcrumb/toc.json",
+      "breadcrumb_path": "/azure/well-architected/breadcrumb/toc.json",
       "extendBreadcrumb": true,
       "feedback_system": "GitHub",
       "feedback_github_repo": "MicrosoftDocs/well-architected",
       "brand": "azure",
       "uhfHeaderId": "azure",
       "titleSuffix": "Microsoft Azure Well-Architected Framework",
-      "searchScope": [ "Azure", "Microsoft Azure Well-Architected Framework" ]     
+      "ms.service": "waf",
+      "searchScope": [ "Azure", "Microsoft Azure Well-Architected Framework" ],    
+      "ms.service": "waf"
     },
     "open_to_public_contributors": {
       "**/*.yml": false
     },
-    "fileMetadata": {},
+    "fileMetadata": {
+      "ms.subservice": {
+        "resiliency/**/*.md": "waf-pillar-reliability",
+        "security/**/*.md": "waf-pillar-security",
+        "cost/**/*.md": "waf-pillar-optimization",
+        "scalability/**/*.md": "waf-pillar-efficiency",
+        "devops/**/*.md": "waf-pillar-excellence",
+        "mission-critical/**/*.md": "waf-workload-mission-critical",
+        "carrier-grade/**/*.md": "waf-workload-carrier-grade",
+        "hybrid/**/*.md": "waf-workload-hybrid",
+        "iot/**/*.md": "waf-workload-iot",
+        "sap/**/*.md": "waf-workload-sap",
+        "sustainability/**/*.md": "waf-workload-sustainability",
+        "services/**/*.md": "waf-service-guide"
+      }
+    },
     "template": [
       "docs.html"
     ],

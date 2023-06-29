@@ -1,37 +1,35 @@
 ---
 title: Conduct cost reviews
-description: Implement cost monitoring to review cloud spend with the intent of establishing cost controls and preventing any misuse.
+description: Learn about cost monitoring and cost review to apply proactive and reactive approaches to help create cost controls.
 author: PageWriter-MSFT
 ms.author: martinek
-ms.date: 12/08/2021
+ms.date: 04/18/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - article
   - internal-intro
-products:
-  - azure
-  - azure-cost-management
 ---
 
 # Conduct cost reviews
-The goal of cost monitoring is to review cloud spend with the intent of establishing cost controls and preventing any misuse. The organization should adopt both proactive and reactive review approaches for monitoring cost. Effective cost reviews must be conducted by accountable stakeholders at a regular cadence. The reviews must be complemented with reactive cost reviews, for example when a budget limit causes an alert.
 
-**Who should be included in a cost review?**  
-***
+Cost monitoring tracks and reviews cloud costs to help establish budget controls and prevent misuse. It's important to adopt proactive and reactive review approaches for monitoring cost. Stakeholders should conduct cost reviews regularly and include reactive cost reviews. For example, when a budget limit causes an alert.
 
-The financial stakeholders must understand cloud billing to derive business benefits using financial metrics to make effective decisions.
+## Who should be included in a cost review?
 
-Also include members of the technical team. Application owners, systems administrators who monitor and back-up cloud systems, and business unit representatives must be aware of the decisions. They can provide insights because they understand cloud cost metering and cloud architecture. One way of identifying owners of systems or applications is through resource tags.
+Cost monitoring is a complex process that involves planning, cost estimation, budgeting, and cost control, which can include several different teams.
 
-**What should be the cadence of cost reviews?**
-***
+- **Cloud Architect/Administrator​**. Monitor and back-up cloud systems.
+- **Product Owner**. Needs awareness of the decisions.
+- **Finance Owner and Financial Operations Practitioner**. Need to understand cloud billing to derive business benefits using financial metrics to make effective decisions.
 
-Cost reviews can be conducted as part of the regular business reviews. It's recommended that such reviews are scheduled,
+You can identify owners of systems or applications through resource tags.
 
-- During the billing period. This review is to create an awareness of the estimated pending billing. These reports can be based on [Azure Advisor](/azure/advisor/advisor-cost-recommendations), [Advisor Score](/azure/advisor/azure-advisor-score/), and [Azure Cost Management – Cost analysis](/azure/cost-management-billing/costs/).
-- After the billing period. This review shows the actual cost with activity for that month. Use [Balance APIs](/azure/cost-management-billing/manage/consumption-api-overview#balances-api) to generate monthly reports. The APIs can query data  that gets information on balances, new purchases, Azure Marketplace service charges, adjustments, and overage charges.
-- Because of a [budget alert](/azure/cost-management/cost-mgt-alerts-monitor-usage-spending) or Azure Advisor recommendations.
+## Plan and schedule cost reviews
 
-Web Direct (pay-as-you-go) and Cloud Solution Provider (CSP) billing occurs monthly. While Enterprise Agreement (EA) billing occurs annually, costs should still be reviewed monthly.
+We recommend scheduling cost reviews as part of the regular business reviews.
+
+- Schedule a review during the billing period. This review creates awareness of the estimated pending billing. You can use [Azure Advisor](/azure/advisor/advisor-cost-recommendations), [Advisor Score](/azure/advisor/azure-advisor-score/), and [Azure Cost Management – cost analysis](/azure/cost-management-billing/costs/) to help with the reports.
+- Schedule a review after the billing period. This review shows the actual cost with activity for that month. Use [TimeframeType](/rest/api/cost-management/query/usage?tabs=HTTP#timeframetype) to generate monthly reports. The APIs can query data that gets information on balances, new purchases, Azure Marketplace service charges, adjustments, and overage charges. For more information, see [Cost Management automation overview](../devops/automation-overview.md).
+- Schedule a review when you receive a [budget alert](/azure/cost-management/cost-mgt-alerts-monitor-usage-spending) or Azure Advisor recommendation.
+
+Web Direct (pay-as-you-go) and Cloud Solution Provider (CSP) billing occurs monthly, while Enterprise Agreement (EA) billing occurs annually. But ensure you do a cost review regardless of the billing cycle.

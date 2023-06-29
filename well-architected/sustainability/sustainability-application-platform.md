@@ -5,11 +5,8 @@ author: Zimmergren
 ms.author: tozimmergren
 ms.topic: conceptual
 ms.date: 10/12/2022
-ms.service: architecture-center
-ms.subservice: well-architected
 categories: 
   - networking
-products: Azure
 ms.custom:
   - sustainability
   - ignite-2022
@@ -42,7 +39,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 
 The Microsoft Azure data centers are geographically spread across the planet and powered using different energy sources. Making decisions around where to deploy your workloads can significantly impact the emissions your solutions produce.
 
-Learn more about [sustainability from the data center to the cloud with Azure](https://www.microsoft.com/sustainability/azure).
+Learn more about [sustainability from the data center to the cloud with Azure](https://www.microsoft.com/sustainability/azure). See region-specific sustainability information in the [Microsoft data center sustainability fact sheets](https://infrastructuremap.microsoft.com/fact-sheets).
 
 ### Deploy to low-carbon regions
 
@@ -119,7 +116,7 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 - Build a cloud-native app without managing the infrastructure, using a fully managed and inherently optimized platform. The platform handles scaling, availability, and performance, ultimately optimizing the hardware efficiency.
 - Review design principles for [Platform as a Service (PaaS)](/azure/architecture/guide/design-principles/managed-services) workloads.
 
-### Use SPOT VMs where possible
+### Use Spot VMs where possible
 
 Think about the unused capacity in Azure data centers. Utilizing the otherwise wasted capacity—at significantly reduced prices—the workload contributes to a more sustainable platform design.
 
@@ -127,8 +124,8 @@ _Green Software Foundation alignment: [Hardware efficiency](sustainability-desig
 
 **Recommendation:**
 
-- By utilizing [SPOT VMs](/azure/virtual-machines/spot-vms), you take advantage of unused capacity in Azure data centers while getting a significant discount on the VM.
-- Consider the tradeoff: When Azure needs the capacity back, the VMs get evicted. Learn more about the SPOT VM [eviction policy](/azure/virtual-machines/spot-vms#eviction-policy).
+- By utilizing [Spot VMs](/azure/virtual-machines/spot-vms), you take advantage of unused capacity in Azure data centers while getting a significant discount on the VM.
+- Consider the tradeoff: When Azure needs the capacity back, the VMs get evicted. Learn more about the Spot VM [eviction policy](/azure/virtual-machines/spot-vms#eviction-policy).
 
 ## Right sizing
 
@@ -136,7 +133,7 @@ Ensuring workloads use all the allocated resources helps deliver a more sustaina
 
 ### Turn off workloads outside of business hours
 
-Operating idle workloads will waste energy and contributes to an added carbon emission.
+Operating idle workloads wastes energy and contributes to added carbon emissions.
 
 _Green Software Foundation alignment: [Energy efficiency](sustainability-design-principles.md#energy-efficiency), [Hardware efficiency](sustainability-design-principles.md#hardware-efficiency)_
 

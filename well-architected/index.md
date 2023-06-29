@@ -1,15 +1,11 @@
 ---
 title: Microsoft Azure Well-Architected Framework
-titleSuffix: Azure Architecture Center
+titleSuffix: Azure Well-Architected Framework
 description: Learn about the five pillars of the Azure Well-Architected Framework and how they can produce a high quality, stable, and efficient cloud architecture.
 author: martinekuan
 ms.author: martinek
-ms.date: 12/07/2021
+ms.date: 03/27/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure
 categories:
   - management-and-governance
 ms.custom:
@@ -25,13 +21,13 @@ keywords:
 
 # Microsoft Azure Well-Architected Framework
 
-The Azure Well-Architected Framework is a set of guiding tenets that can be used to improve the quality of a workload. The framework consists of five pillars of architectural excellence:
+The Azure Well-Architected Framework is a set of guiding tenets that you can use to improve the quality of a workload. The framework consists of five pillars of architectural excellence:
 
 - [Reliability](#reliability)
 - [Security](#security)
-- [Cost Optimization](#cost-optimization)
-- [Operational Excellence](#operational-excellence)
-- [Performance Efficiency](#performance-efficiency)
+- [Cost optimization](#cost-optimization)
+- [Operational excellence](#operational-excellence)
+- [Performance efficiency](#performance-efficiency)
 
 Incorporating these pillars helps produce a high quality, stable, and efficient cloud architecture:
 
@@ -39,15 +35,13 @@ Incorporating these pillars helps produce a high quality, stable, and efficient 
 |--------|-------------|
 | [Reliability][resiliency-pillar] | The ability of a system to recover from failures and continue to function. |
 | [Security][security-pillar] | Protecting applications and data from threats. |
-| [Cost Optimization][cost-pillar] | Managing costs to maximize the value delivered. |
-| [Operational Excellence][devops-pillar] | Operations processes that keep a system running in production. |
-| [Performance Efficiency][scalability-pillar] | The ability of a system to adapt to changes in load. |
+| [Cost optimization][cost-pillar] | Managing costs to maximize the value delivered. |
+| [Operational excellence][devops-pillar] | Operations processes that keep a system running in production. |
+| [Performance efficiency][scalability-pillar] | The ability of a system to adapt to changes in load. |
 
-Reference the following video about how to architect successful workloads on Azure with the Well-Architected Framework:
+To learn about how to architect successful workloads on Azure by using the Well-Architected Framework, watch this video:
 
 <!-- markdownlint-disable MD034 -->
-
-<br/>
 
 > [!VIDEO https://learn.microsoft.com/shows/azure-enablement/architect-successful-workloads-on-azure--introduction-ep-1-well-architected-series/player]
 
@@ -55,40 +49,38 @@ Reference the following video about how to architect successful workloads on Azu
 
 ## Overview
 
-The following diagram gives a high-level overview of the Azure Well-Architected Framework:
+The following diagram is a high-level overview of the Azure Well-Architected Framework:
 
 :::image type="content" source="./_images/waf-diagram-revised.png" alt-text="Diagram of the Well-Architected Framework and supporting elements.":::
 
-In the center, is the Well-Architected Framework, which includes the five pillars of architectural excellence. Surrounding the Well-Architected Framework are six supporting elements:
+In the center is the *Well-Architected Framework*, which includes the five pillars of architectural excellence. Surrounding the Well-Architected Framework are six supporting elements:
 
-- [Azure Well-Architected Review](/assessments/?mode=pre-assessment)
+- [Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment)
 - [Azure Advisor](/azure/advisor/)
 - [Documentation](/azure/architecture/framework/)
 - [Partners](https://azure.microsoft.com/partners/), [Support](https://azure.microsoft.com/support/options/#support-plans), and Services Offers
-- [Reference Architectures](/azure/architecture/guide/)
-- [Design Principles](/azure/architecture/guide/design-principles/)
+- [Reference architectures](/azure/architecture/guide/)
+- [Design principles](/azure/architecture/guide/design-principles/)
 
 ### Assess your workload
 
 To assess your workload using the tenets found in the Microsoft Azure Well-Architected Framework, see the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
-:::image type="content" source="./_images/war-graphic-revised.png" alt-text="Screenshot of the Microsoft Azure Well-Architected Review.":::
+:::image type="content" source="./_images/well-architected-review.png" alt-text="Screenshot of the Microsoft Azure Well-Architected Review." lightbox="./_images/well-architected-review.png":::
 
-We also recommend you use Azure Advisor and Advisor Score to identify and prioritize opportunities to improve the posture of your workloads. Both services are free to all Azure users and align to the five pillars of the Well-Architected Framework:
+We also recommend that you use *Azure Advisor* and *Advisor Score* to identify and prioritize opportunities to improve the posture of your workloads. Both services are free to all Azure users and align to the five pillars of the Well-Architected Framework:
 
-- **[Azure Advisor](/azure/advisor/)** is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. It analyzes your resource configuration and usage telemetry. It recommends solutions that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Azure resources. Learn more about [Azure Advisor](/azure/advisor/).
+- *Azure Advisor* is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. It analyzes your resource configuration and usage telemetry. It recommends solutions that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Azure resources. Learn more about [Azure Advisor](/azure/advisor/).
 
-- **[Advisor Score](/azure/advisor/azure-advisor-score)** is a core feature of Azure Advisor that aggregates Advisor recommendations into a simple, actionable score. This score enables you to tell at a glance if you're taking the necessary steps to build reliable, secure, and cost-efficient solutions, and to prioritize the actions that will yield the biggest improvement to the posture of your workloads. The Advisor score consists of an overall score, which can be further broken down into five category scores corresponding to each of the Well-Architected pillars. Learn more about [Advisor Score](/azure/advisor/azure-advisor-score).
+- *Advisor Score* is a core feature of Azure Advisor that aggregates Advisor recommendations into a simple, actionable score. This score enables you to tell at a glance if you're taking the necessary steps to build reliable, secure, and cost-efficient solutions. It helps to prioritize the actions that yield the biggest improvement to the posture of your workloads. The Advisor Score consists of an overall score, which can be further broken down into five category scores corresponding to each of the Well-Architected pillars. Learn more about [Advisor Score](/azure/advisor/azure-advisor-score).
 
 ## Reliability
 
-A reliable workload is one that is both resilient and available. [Resiliency](./resiliency/index.yml) is the ability of the system to recover from failures and continue to function. The goal of resiliency is to return the application to a fully functioning state after a failure occurs. Availability is whether your users can access your workload when they need to.
+A reliable workload is both *resilient* and *available*. [Resiliency](./resiliency/index.yml) is the ability of the system to recover from failures and continue to function. The goal of resiliency is to return the application to a fully functioning state after a failure occurs. Availability is whether your users can access your workload when they need to.
 
-For more information about resiliency, reference the following video that will show you how to start improving the reliability of your Azure workloads:
+For more information about resiliency, watch the following video that shows you how to start improving the reliability of your Azure workloads:
 
 <!-- markdownlint-disable MD034 -->
-
-<br/>
 
 > [!VIDEO https://learn.microsoft.com/shows/azure-enablement/start-improving-the-reliability-of-your-azure-workloads--reliability-ep-1--well-architected-series/player]
 
@@ -96,25 +88,23 @@ For more information about resiliency, reference the following video that will s
 
 ### Reliability guidance
 
-The following topics offer guidance on designing and improving reliable Azure applications:
+The following resources offer guidance on designing and improving reliable Azure applications:
 
-- [Designing reliable Azure applications][resiliency]
+- [Reliability design principles][resiliency]
 - [Design patterns for resiliency](./resiliency/reliability-patterns.md)
 - Best practices:
   - [Transient fault handling][transient-fault-handling]
   - [Retry guidance for specific services][retry-service-specific]
 
-For an overview of reliability principles, reference [Principles of the reliability pillar](./resiliency/principles.md).
+For an overview of reliability principles, see [Reliability design principles](./resiliency/principles.md).
 
 ## Security
 
-Think about [security](./security/index.yml) throughout the entire lifecycle of an application, from design and implementation to deployment and operations. The Azure platform provides protections against various threats, such as network intrusion and DDoS attacks. But you still need to build security into your application and into your DevOps processes.
+Think about [security](./security/index.yml) throughout the entire lifecycle of an application, from design and implementation to deployment and operations. The Azure platform provides protections against various threats, such as network intrusion and DDoS attacks. You still need to build security into your application and into your DevOps processes.
 
-Ask the right questions about secure application development on Azure by referencing the following video:
+Learn to ask the right questions about secure application development on Azure by watching the following video:
 
 <!-- markdownlint-disable MD034 -->
-
-<br/>
 
 > [!VIDEO https://learn.microsoft.com/shows/azure-enablement/ask-the-right-questions-about-secure-application-development-on-azure/player]
 
@@ -130,17 +120,15 @@ Consider the following broad security areas:
 - [Data sovereignty and encryption](./security/overview.md#data-sovereignty-and-encryption)
 - [Security resources](./security/overview.md#security-resources)
 
-For more information, reference [Overview of the security pillar](./security/overview.md).
+For more information, see [Overview of the security pillar](./security/overview.md).
 
 ## Cost optimization
 
-When you're designing a cloud solution, focus on generating incremental value early. Apply the principles of **[Build-Measure-Learn](/azure/cloud-adoption-framework/innovate/considerations/adoption#what-is-the-build-measure-learn-feedback-loop)**, to accelerate your time to market while avoiding capital-intensive solutions.
+When you design a cloud solution, focus on generating incremental value early. Apply the principles of *Build-Measure-Learn* to accelerate your time to market while avoiding capital-intensive solutions. See [What is the build-measure-learn feedback loop](/azure/cloud-adoption-framework/innovate/considerations/adoption#what-is-the-build-measure-learn-feedback-loop).
 
-For more information, reference [Cost optimization](./cost/index.yml) and the following video on how to start optimizing your Azure costs:
+For more information, see [Cost optimization](./cost/index.yml) and watch the following video on how to start optimizing your Azure costs:
 
 <!-- markdownlint-disable MD034 -->
-
-<br/>
 
 > [!VIDEO https://learn.microsoft.com/shows/azure-enablement/start-optimizing-your-azure-costs--cost-optimization-ep-1--well-architected-series/player]
 
@@ -148,24 +136,22 @@ For more information, reference [Cost optimization](./cost/index.yml) and the fo
 
 ### Cost guidance
 
-The following topics offer cost optimization guidance as you develop the Well-Architected Framework for your workload:
+The following resources offer cost optimization guidance as you develop the Well-Architected Framework for your workload:
 
 - Review [cost principles](./cost/overview.md)
 - [Develop a cost model](./cost/design-model.md)
 - Create [budgets and alerts](./cost/monitor-alert.md)
 - Review the [cost optimization checklist](./cost/optimize-checklist.md)
 
-For a high-level overview, reference [Overview of the cost optimization pillar](./cost/overview.md).
+For a high-level overview, see [Overview of the cost optimization pillar](./cost/overview.md).
 
 ## Operational excellence
 
-[Operational excellence](./devops/index.yml) covers the operations and processes that keep an application running in production. Deployments must be reliable and predictable. Automate deployments to reduce the chance of human error. Fast and routine deployment processes won't slow down the release of new features or bug fixes. Equally important, you must quickly roll back or roll forward if an update has problems.
+[Operational excellence](./devops/index.yml) covers the operations and processes that keep an application running in production. Deployments must be reliable and predictable. Automate deployments to reduce the chance of human error. Fast and routine deployment processes don't slow down the release of new features or bug fixes. Equally important, you must be able to quickly roll back or roll forward if an update has problems.
 
-For more information, reference the following video about bringing security into your DevOps practice on Azure:
+For more information, watch the following video about bringing security into your DevOps practice on Azure:
 
 <!-- markdownlint-disable MD034 -->
-
-<br/>
 
 > [!VIDEO https://learn.microsoft.com/shows/azure-enablement/devsecops-bringing-security-into-your-devops-practice-on-azure/player]
 
@@ -173,12 +159,12 @@ For more information, reference the following video about bringing security into
 
 ### Operational excellence guidance
 
-The following topics provide guidance on designing and implementing DevOps practices for your Azure workload:
+The following resources provide guidance on designing and implementing DevOps practices for your Azure workload:
 
-- [Design patterns for operational excellence](./devops/devops-patterns.md)
-- Best practices: [Monitoring and diagnostics][monitoring]
+- [Operational excellence patterns](./devops/devops-patterns.md)
+- Best practices: [Monitoring and diagnostics guidance][monitoring]
 
-For a high-level summary, reference [Overview of the operational excellence pillar](./devops/overview.md).
+For a high-level summary, see [Overview of the operational excellence pillar](./devops/overview.md).
 
 ## Performance efficiency
 
@@ -188,9 +174,9 @@ For more information, watch [Performance Efficiency: Fast & Furious: Optimizing 
 
 ### Performance efficiency guidance
 
-The following topics offer guidance on how to design and improve the performance efficiency posture of your Azure workload:
+The following resources offer guidance on how to design and improve the performance efficiency posture of your Azure workload:
 
-- [Design patterns for performance efficiency](./scalability/performance-efficiency-patterns.md)
+- [Performance efficiency patterns](./scalability/performance-efficiency-patterns.md)
 - Best practices:
   - [Autoscaling][autoscale]
   - [Background jobs][background-jobs]
@@ -198,7 +184,7 @@ The following topics offer guidance on how to design and improve the performance
   - [CDN][cdn]
   - [Data partitioning][data-partitioning]
 
-For a high-level synopsis, reference [Overview of the performance efficiency pillar](./scalability/overview.md).
+For a high-level overview, see [Overview of the performance efficiency pillar](./scalability/overview.md).
 
 ## Next steps
 
@@ -209,6 +195,8 @@ Learn more about:
 - [Introduction to the Microsoft Azure Well-Architected Framework](/training/modules/azure-well-architected-introduction/)
 - [Microsoft Defender for Cloud](/azure/security-center/)
 - [Cloud Adoption Framework](/azure/cloud-adoption-framework/)
+- [Azure Deployment Environments](/azure/deployment-environments/)
+- [Microsoft Dev Box](/azure/dev-box/)
 
 <!-- links -->
 

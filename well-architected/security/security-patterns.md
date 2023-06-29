@@ -6,8 +6,6 @@ author: dragon119
 ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - design-pattern
 keywords:

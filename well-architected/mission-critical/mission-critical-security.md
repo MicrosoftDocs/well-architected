@@ -3,19 +3,13 @@ title: Security considerations for mission-critical workloads on Azure
 description: This section provides detailed design considerations and recommendations for the security critical design area.
 author: calcof
 ms.author: calcof
-ms.date: 02/02/2022
+ms.date: 03/15/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories: 
   - security
   - web
   - networking
   - identity
-products: 
-  - azure
-  - azure-bastion
-  - azure-active-directory
 ms.custom:
   - mission-critical
   - alwayson
@@ -32,7 +26,7 @@ It's also important to note that there are often significant trade-offs associat
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/alwayson)
+> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](https://github.com/azure/alwayson)
 >
 > The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets adopt a Zero Trust model to structure and guide the security design and implementation approach.
 

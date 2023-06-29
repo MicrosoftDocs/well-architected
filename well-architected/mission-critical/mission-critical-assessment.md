@@ -3,14 +3,11 @@ title: Well-Architected assessment for mission-critical workloads on Azure
 description: Check the readiness of your mission-critical workload by using an assessment review tool. 
 author: calcof
 ms.author: prwilk
-ms.date: 11/12/2022
+ms.date: 03/15/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories: 
   - management-and-governance
   - web
-products: Azure
 ms.custom:
   - mission-critical
 ---

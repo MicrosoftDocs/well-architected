@@ -5,10 +5,8 @@ author: martinekuan
 ms.author: martinek
 ms.date: 01/19/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
-  - iot-hub
+  - azure-iot-hub
 categories:
   - messaging
   - management-and-governance

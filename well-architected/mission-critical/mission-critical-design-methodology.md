@@ -3,14 +3,11 @@ title: Design methodology for mission-critical workloads on Azure
 description: Understand the architectural process of building a mature mission-critical application on Microsoft Azure.
 author: calcof
 ms.author: calcof
-ms.date: 08/15/2022
+ms.date: 03/15/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories:
   - management-and-governance
   - web
-products: Azure
 ms.custom:
   - mission-critical
 ---
@@ -80,7 +77,7 @@ Refer to these reference architectures that describe the design decisions based 
 
 **Production-grade artifacts** Every technical artifact is ready for use in production environments with all end-to-end operational aspects considered.
 
-**Rooted in real-wold experiences** All technical decisions are guided by experiences of Azure customers and lessons learned from deploying those solutions.
+**Rooted in real-world experiences** All technical decisions are guided by experiences of Azure customers and lessons learned from deploying those solutions.
 
 **Azure roadmap alignment** The mission-critical reference architectures have their own roadmap that is aligned with Azure product roadmaps.
 

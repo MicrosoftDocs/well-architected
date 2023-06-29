@@ -3,22 +3,20 @@ title: Monitoring for reliability
 description: Review considerations for reliability in application monitoring. See a list of Azure services that you can use for monitoring.
 author: martinekuan
 ms.author: martinek
-ms.date: 12/08/2021
+ms.date: 04/27/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ---
 
 # Monitoring for reliability
 
-Monitoring and diagnostics are crucial for resiliency. If something fails, you need to know *that* it failed, *when* it failed &mdash; and *why*.
+Monitoring and diagnostics are crucial for reliability. If something fails, you need to know *that* it failed, *when* it failed, and *why*.
 
 ## Checklist
 
-**How do you monitor and measure application health?**
-***
+How do you monitor and measure application health?
 
 > [!div class="checklist"]
+>
 > - The application is instrumented with semantic logs and metrics.
 > - Application logs are correlated across components.
 > - All components are monitored and correlated with application telemetry.
@@ -42,12 +40,12 @@ Monitoring and diagnostics are crucial for resiliency. If something fails, you n
 - [Hybrid availability and performance monitoring](/azure/architecture/hybrid/hybrid-perf-monitoring)
 - [Unified logging for microservices applications](/azure/architecture/example-scenario/logging/unified-logging)
 
-## Next step
-
-> [!div class="nextstepaction"]
-> [Application health](./monitoring.md)
-
 ## Related links
 
 - [Azure Monitor](https://azure.microsoft.com/services/monitor/)
-- [Continuous monitoring](/azure/azure-monitor/continuous-monitoring)
+- [Cloud monitoring guide](/azure/azure-monitor/continuous-monitoring)
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Monitoring application health for reliability](./monitoring.md)

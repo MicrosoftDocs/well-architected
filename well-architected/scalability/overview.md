@@ -1,14 +1,10 @@
 ---
 title: Performance efficiency pillar overview
-description: Explore an overview of the performance efficiency pillar in the Azure Well-Architected Framework. Learn about the importance of scalability.
+description: Learn about the performance efficiency pillar in the Azure Well-Architected Framework and the importance of scalability.
 ms.author: martinek
 author: robbyatmicrosoft
-ms.date: 04/14/2022
+ms.date: 05/09/2023
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure
 categories:
   - management-and-governance
 ms.custom:
@@ -17,22 +13,22 @@ ms.custom:
 
 # Overview of the performance efficiency pillar
 
-Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. Before the cloud became popular, when it came to planning how a system would handle increases in load, many organizations intentionally provisioned oversized workloads to meet business requirements. This decision made sense in on-premises environments because it ensured *capacity* during peak usage. [Capacity](/azure/api-management/api-management-capacity#what-is-capacity) reflects resource availability (CPU and memory). Capacity was a major consideration for processes that would be in place for many years.
+Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. Before cloud computing became popular, when it came to planning how a system would handle increases in load, many organizations intentionally provisioned oversized workloads to meet business requirements. This decision made sense for on-premises environments because it ensured *capacity* during peak usage. [Capacity](/azure/api-management/api-management-capacity#what-is-capacity) reflects resource availability (CPU and memory). Capacity was a major consideration for processes that would be in place for many years.
 
-Just as you need to anticipate increases in load in on-premises environments, you need to expect increases in cloud environments to meet business requirements. One difference is that you may no longer need to make long-term predictions for expected changes to ensure you'll have enough capacity in the future. Another difference is in the approach used to manage performance.
+Just as you need to anticipate increases in load for on-premises environments, you need to expect increases in cloud environments to meet business requirements. One difference is that you might no longer need to make long-term predictions for expected changes to ensure you'll have enough capacity in the future. Another difference is in the approach used to manage performance.
 
-To assess your workload using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/), reference the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+To assess your workload using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/), see the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
-To boost performance efficiency, we recommend watching [Performance Efficiency: Fast & Furious: Optimizing for Quick and Reliable VM Deployments](/events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency).
+To boost performance efficiency, you should watch [Performance Efficiency: Fast & Furious: Optimizing for Quick and Reliable VM Deployments](/events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency).
 
-## Topics
+## Articles
 
-The performance efficiency pillar covers the following topics to help you effectively scale your workload:
+The performance efficiency pillar covers the following articles to help you effectively scale your workload:
 
-|Performance efficiency topic|Description|
+|Performance efficiency article|Description|
 |----------------------------|-----------|
 |[Performance efficiency checklist](performance-efficiency.md)|Review your application architecture to ensure your workload scales to meet the demands placed on it by users in an efficient manner.|
-|[Performance principles](principles.md)|Principles to guide you in your overall strategy for improving performance efficiency.|
+|[Performance principles](principles.md)|Learn about the principles that can guide you in your overall strategy for improving performance efficiency.|
 |[Design for performance](design-checklist.md)| Review your application architecture from a performance design standpoint.|
 |[Consider scalability](design-scale.md)|Plan for growth by understanding your current workloads.|
 |[Plan for capacity](design-capacity.md)|Plan to scale your application tier by adding extra infrastructure to meet demand.|

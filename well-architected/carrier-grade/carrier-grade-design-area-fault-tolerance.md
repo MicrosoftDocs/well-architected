@@ -5,13 +5,7 @@ author: mikedell73
 ms.author: mikedell
 ms.date: 08/23/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.industry: telecommunications
-products: 
-- azure-app-service
-- azure-traffic-manager
-- cosmos-db
 ms.custom:
   - carrier-grade
 ---
@@ -25,7 +19,7 @@ Telecommunication companies have shown that it's possible to implement applicati
 - Repair and capacity-recovery and failure response mechanisms.
 - Use of highly available cross-element databases.
 
-When designing for carrier grade reliability and resiliency, assume that every component can _and_ will fail. The design will require a layered approach to failure resolution.  Part of validating the design is creating a quantitative probabilistic model of the various failure modes which clearly identifies the key dependencies that the application has, and shows that the application can achieve the necessary availability given those dependencies meet their own Service Level Objectives (SLOs). This model should be retained and continuously validated after development and in production to assure that  the test and live data match what the model predicts.
+When designing for carrier grade reliability and resiliency, assume that every component can and _will_ fail. The design will require a layered approach to failure resolution.  Part of validating the design is creating a quantitative probabilistic model of the various failure modes which clearly identifies the key dependencies that the application has, and shows that the application can achieve the necessary availability given those dependencies meet their own Service Level Objectives (SLOs). This model should be retained and continuously validated after development and in production to assure that  the test and live data match what the model predicts.
 
 ## High availability through combination
 

@@ -5,12 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 12/06/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure-security-center
-  - azure-sentinel
-  - azure-monitor
 categories:
   - security
 subject:
@@ -61,7 +55,7 @@ For more information about monitoring tools, see [Security monitoring tools in A
 
 ## Assign incident notification contact
 
-Security alerts need to reach the right people in your organization. Establish a  designated point of contact to receive Azure incident notifications from Microsoft, and, or Azure  Defender for Cloud. In most cases, such notifications indicate that your resource is compromised or attacking another customer. This enables your security operations team to rapidly respond to potential security risks and remediate them.
+Security alerts need to reach the right people in your organization. Establish a  designated point of contact to receive Azure incident notifications from Microsoft Defender for Cloud. In most cases, such notifications indicate that your resource is compromised or attacking another customer. This enables your security operations team to rapidly respond to potential security risks and remediate them.
 
 This enables your security operations team to rapidly respond to potential security risks and remediate them.
 
