@@ -55,11 +55,11 @@ In a distributed application, an operation will lead to multiple transactions. E
 
 Here's an Application Map of an application that has several microservices. With this visual representation, you can see that Workflow service is getting errors from the Delivery service.  
  
-![Application Map for microservices](../devops/1-application-map.png) 
+![Application Map for microservices](../operational-excellence/1-application-map.png) 
 
 When you look at the end-to-end transaction, you can see that an exception is thrown due to memory limits in Azure Cache for Redis.
 
-![End to end transaction](../devops/1-transaction.png) 
+![End to end transaction](../operational-excellence/1-transaction.png) 
 
 When correlating data make sure that the raw instrumentation data includes sufficient context and activity ID information to support the required aggregations for correlating events. Additionally, this data might be held in different formats, and it might be necessary to parse this information to convert it into a standardized format for analysis.
 

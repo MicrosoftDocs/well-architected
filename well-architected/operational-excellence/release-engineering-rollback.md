@@ -27,7 +27,7 @@ Slots can be used to stage and test applications before promoting to a productio
 
 The following image shows how to do it by way of an Azure DevOps pipeline.
 
-![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](../devops/app-service-slots.png)
+![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](../operational-excellence/app-service-slots.png)
 
 **Learn more**
 
@@ -50,7 +50,7 @@ A deployment record is created when deploying Azure infrastructure and solutions
 
 When you create a new deployment, you can provide a previously known good deployment so that if the current deployment fails, the previous good deployment is redeployed. There are several considerations and caveats when you use this functionality. For more information, see [Rollback on an error to successful deployment](/azure/azure-resource-manager/templates/rollback-on-error).
 
-:::image type="content" source="../devops/arm-deployments.png" alt-text="Screenshot that shows Azure Resource Manager Deployments in the Azure portal." lightbox="../devops/arm-deployments-full.png":::
+:::image type="content" source="../operational-excellence/arm-deployments.png" alt-text="Screenshot that shows Azure Resource Manager Deployments in the Azure portal." lightbox="../operational-excellence/arm-deployments-full.png":::
 
 **Learn more**
 
@@ -62,7 +62,7 @@ Many managed services have a concept of versioning with a built-in restore funct
 
 Azure Logic Apps, for example, create a new version of the application whenever an update is made to it. Azure maintains a history of versions and can revert or promote any previous version. To do so, in the Azure portal, select your logic app and choose **Versions**. Previous versions can be selected on the versions pane, and the application can be inspected both in the code view and the visual designer view. Select the version you want to revert to, select the **Promote** option, and then **Save**.
 
-:::image type="content" source="../devops/revert-logic-app.png" alt-text="Screenshot showing Azure logic application version history." lightbox="../devops/revert-logic-app-full.png":::
+:::image type="content" source="../operational-excellence/revert-logic-app.png" alt-text="Screenshot showing Azure logic application version history." lightbox="../operational-excellence/revert-logic-app-full.png":::
 
 **Learn more**
 
