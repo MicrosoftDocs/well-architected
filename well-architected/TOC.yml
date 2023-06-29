@@ -88,15 +88,13 @@
         - name: Design principles
           href: scalability/principles.md
         - name: Checklist
-          href: scalability/checklist.md
+          href: performance-efficiency/checklist.md
         - name: Tradeoffs
           href: scalability/tradeoffs.md
         - name: Best practices guides   
           items:
-            - name: Guide 1
-              href: coming-soon.md
-            - name: Guide 2
-              href: coming-soon.md               
+            - name: Establish performance targets
+              href: performance-efficiency/performance-targets.md
       - name: Cross-cutting guides
         items:
         - name: Implementing recommendations
