@@ -5,10 +5,7 @@ author: calcof
 ms.author: calcof
 ms.date: 02/28/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories: web
-products: azure
 ms.custom:
   - mission-critical
 ---
@@ -20,9 +17,6 @@ The mission-critical design methodology is underpinned by five key design princi
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical)
->
-> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The provided code assets illustrate implementations associated with the design principles highlighted in this article.
 
 ![Mission critical design principles](./images/mission-critical-design-principles.svg "Mission critical design principles")
 

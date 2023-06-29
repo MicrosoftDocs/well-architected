@@ -5,10 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure
 categories:
   - management-and-governance
 ---
@@ -55,7 +51,7 @@ So it's recommended that you correlate different types of monitoring data at eac
 
 In a distributed application, an operation will lead to multiple transactions. Each transaction generates events in different services and those events must be correlated and visualized. This way you can spot performance bottlenecks or failure hotspots across services. [Application Map](/azure/azure-monitor/app/app-map?tabs=net) is a popular choice for visualizing flows. 
 
-[Telemetry correlation](/azure/azure-monitor/app/correlation) ensures that the transactions can be mapped through the end-to-end application and critical system flows. Platform-level metrics and logs such as CPU percentage, network in/out, and disk operations/sec should be collected from the application to inform a health model and detect/predict issues. This can also help to distinguish between transient and non-transient faults.
+[Telemetry correlation](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) ensures that the transactions can be mapped through the end-to-end application and critical system flows. Platform-level metrics and logs such as CPU percentage, network in/out, and disk operations/sec should be collected from the application to inform a health model and detect/predict issues. This can also help to distinguish between transient and non-transient faults.
 
 Here's an Application Map of an application that has several microservices. With this visual representation, you can see that Workflow service is getting errors from the Delivery service.  
  

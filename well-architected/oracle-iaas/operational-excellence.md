@@ -5,8 +5,6 @@ author: ckittel
 ms.author: kegorman
 ms.date: 12/29/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ---
 # Oracle workload operational excellence
 
@@ -28,7 +26,7 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 
 | Recommendation | Benefit |
 | --- | --- |
-| Use Perf Insights | Use [Perf Insights](/azure/virtual-machines/how-to-use-perfinsights) to monitor the overall cloud landscape.|
+| Use Perf Insights | Use [Perf Insights](/troubleshoot/azure/virtual-machines/how-to-use-perfinsights) to monitor the overall cloud landscape.|
 | Configure ExpressRoute connection monitoring between your on-premises and Azure network. | In case of failures or performance issues, it provides a first view into the network. |
 | Consider Oracle Cloud Control for Oracle |Oracle is a non-native product and Oracle provides an infrastructure monitoring, management and automation tool that can be deployed on a VM with little to no cost to the customer, as it’s most likely already used on-premises. Deploy to the cloud to eliminate egress to an on-premises version and evolve to automate with: <br>- Monitoring templates <br>- Metric Extensions (self-service metrics) <br> - Corrective Actions <br> - OS and database patch automation <br/><br/> Oracle Cloud Control will “simulate” a PaaS like solution for IaaS when using it to manage, monitor and automate Oracle.|
 

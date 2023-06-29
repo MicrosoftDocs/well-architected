@@ -1,20 +1,21 @@
 ### YamlMime:Landing
 
 title: Performance efficiency documentation
-summary: Apply scalability principles to your architecture to meet users' demands efficiently.
+summary: Apply the principles of scalability and testing to your architecture to meet users' demands efficiently.
 
 metadata: 
   title: Performance efficiency documentation
-  description: Learn how to apply scalability principles to your architecture to meet users' demands efficiently.
+  description: Apply the principles of scalability and testing to your architecture to meet users' demands efficiently.
   services: na
   author: martinekuan
   ms.author: martinek
   manager: david-stanford
-  ms.date: 08/17/2021
+  ms.date: 05/18/2023
   ms.topic: landing-page
-  ms.service: architecture-center
-  ms.subservice: well-architected
   ms.collection: na
+  ms.service: waf
+  ms.subservice: waf-pillar-efficiency
+
 
 landingContent:
 # Cards and links should be based on top customer tasks or top subjects
@@ -29,8 +30,8 @@ landingContent:
             url: overview.md
           - text: Principles
             url: principles.md
-          - text: Design checklist
-            url: design-checklist.md
+          - text: Performance efficiency checklist
+            url: performance-efficiency.md
           - text: Test checklist
             url: test-checklist.md
           - text: Optimize checklist
@@ -52,15 +53,13 @@ landingContent:
     linkLists:
       - linkListType: get-started
         links:
-          - text: Monitoring distributed architectures
-            url: design-distributed.md
-          - text: Design scalable Azure applications
+          - text: Design applications for performance
             url: design-apps.md
-          - text: Design Azure applications for efficiency
+          - text: Design applications for efficiency
             url: design-efficiency.md
-          - text: Design for scaling
+          - text: Design applications for scalability
             url: design-scale.md
-          - text: Plan for capacity
+          - text: Design applications for capacity
             url: design-capacity.md
       - linkListType: concept
         links:
@@ -76,7 +75,7 @@ landingContent:
             url: design-capacity.md#scale-out-rather-than-scaling-up
       - linkListType: learn
         links:
-          - text: Advancing resilience through chaos engineering and fault injection
+          - text: Advance resilience through chaos engineering and fault injection
             url: https://azure.microsoft.com/en-us/blog/advancing-resilience-through-chaos-engineering-and-fault-injection/
       - linkListType: video
         links:
@@ -94,7 +93,7 @@ landingContent:
           - text: Stress testing
             url: performance-test.md#stress-testing
           - text: Multiregion testing
-            url: performance-test.md#multiregion-testing
+            url: performance-test.md#multi-region-testing
           - text: Testing tools
             url: test-tools.md
       - linkListType: concept
@@ -109,7 +108,7 @@ landingContent:
             url: test-tools.md#content-delivery-network
       - linkListType: learn
         links:
-          - text: Identify performance bottlenecks with Azure Load Testing Preview
+          - text: Identify performance bottlenecks with Azure Load Testing
             url: /azure/load-testing/tutorial-identify-bottlenecks-azure-portal
           - text: Identify performance regressions through automated load testing
             url: /azure/load-testing/tutorial-cicd-azure-pipelines
@@ -122,6 +121,8 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
+          - text: Monitor distributed architectures
+            url: design-distributed.md
           - text: Consider application profiling
             url: monitor-application.md
           - text: Analyze infrastructure metrics and logs
@@ -139,7 +140,7 @@ landingContent:
           - text: Correlate and evaluate data
             url: monitor-analyze.md#data-interpretation
           - text: Consider cost implications
-            url: monitor-analyze.md#cost-considerations
+            url: monitor-analyze.md#cost-optimization
       - linkListType: video
         links:
           - text: Azure Application Insights Profiler
@@ -149,7 +150,7 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: Caching data for performance optimization
+          - text: Cache data for performance optimization
             url: optimize-cache.md
           - text: Partition data for performance optimization
             url: optimize-partition.md
@@ -163,7 +164,7 @@ landingContent:
             url: optimize-partition.md#determine-acceptable-performance-optimization
           - text: Optimize autoscaling
             url: optimize-sustain.md#optimize-autoscaling
-          - text: Partition critical workload
+          - text: Partition critical workloads
             url: optimize-sustain.md#separate-out-critical-workload
       - linkListType: video
         links:
@@ -178,15 +179,15 @@ landingContent:
             url: /azure/azure-monitor/app/app-insights-overview
           - text: Azure Autoscale
             url: /azure/azure-monitor/autoscale/autoscale-overview
-          - text: Azure Blob storage
+          - text: Azure Blob Storage
             url: /azure/storage/blobs/storage-blobs-introduction
           - text: "Azure Content Delivery Network (CDN)"
             url: /azure/cdn/cdn-overview
-          - text: Azure Cosmos DB 
+          - text: Azure Cosmos DB
             url: https://azure.microsoft.com/en-us/services/cosmos-db/
-          - text: Azure Front Door 
+          - text: Azure Front Door
             url: /azure/frontdoor/front-door-caching#file-compression
-          - text: Azure Load Testing Preview
+          - text: Azure Load Testing
             url: /azure/load-testing/overview-what-is-azure-load-testing
           - text: Azure Monitor
             url: /azure/azure-monitor/overview
@@ -203,7 +204,7 @@ landingContent:
             url: /rest/api/cdn/
           - text: Azure Monitor REST API
             url: /rest/api/monitor/
-          - text: Azure Redis Cache
+          - text: Azure Cache for Redis API
             url: /rest/api/redis/
           - text: Azure Storage REST API
             url: /rest/api/storageservices/

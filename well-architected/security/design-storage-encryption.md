@@ -5,11 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure-storage
-  - azure-active-directory
 ms.custom:
   - article
 categories:

@@ -5,10 +5,8 @@ author: ericd-mst-github
 ms.author: erd
 ms.date: 06/29/20223
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
-  - virtual-machines
+  - azure-virtual-machines
 categories:
   - compute
   - management-and-governance
@@ -41,7 +39,7 @@ As you make design choices for virtual machines, review the [design principles](
 > [!div class="checklist"]
 > - Review the [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/).
 > - VMs should be deployed in a scale set [using the Flexible orchestration mode](/azure/virtual-machines/flexible-virtual-machine-scale-sets).
-> - Deployed VMs across [Availability Zones](/azure-docs-pr/articles/virtual-machines/create-portal-availability-zone) .
+> - Deployed VMs across [Availability Zones](/azure/virtual-machines/windows/quick-create-portal) .
 > - Install applications on [data disks](/azure/virtual-machines/linux/add-disk).
 > - Use [maintenance control](/azure/virtual-machines/maintenance-control).
 
@@ -129,7 +127,7 @@ To estimate costs related to virtual machines, use these tools.
 > - Utilize premium storage with free bursting, combined with an understanding of workload patterns, for effective SKU selection and cost optimization.
 > - Use managed disks for desired performance without the need for over-provisioning, accounting for fluctuating workload patterns, and minimizing unused provisioned capacity.
 > - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
-> - Prepay for [reserved instances](/virtual-machines/prepay-reserved-vm-instances) for one year, three years, or more.
+> - Prepay for [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) or an [Azure savings plan for compute](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#benefits-and-features) for significant savings.
 > - Use hybrid benefit licensing
 
 ### Recommendations
@@ -226,7 +224,7 @@ Explore the following table of recommendations to optimize your virtual machine 
 
 | Recommendation | Benefit |
 |--------|----|
-| Reduce latency | Consider deploying VMs in [Creating and using proximity placement groups using PowerShell](/azure/virtual-machines/proximity-placement-groups). |
+| Reduce latency | Consider deploying VMs in [Creating and using proximity placement groups using PowerShell](/azure/virtual-machines/co-location). |
 | Convert disks from standard HDD to premium SSD | Azure [premium SSDs](/azure/virtual-machines/disks-performance-tiers) deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. |
 | Utilize premium storage effectively | Premium storage features free bursting which, combined with understanding workload patterns, offers an effective SKU selection and cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning. |
 | Optimize with managed disks | Managed disks offer performance optimization by providing desired performance without the need for over-provisioning, accounting for fluctuating workload patterns. |

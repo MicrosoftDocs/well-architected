@@ -5,10 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 12/20/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure-devops
 categories:
   - security
 subject:
@@ -81,3 +77,4 @@ We recommend monitoring activities that maintain the security posture. These act
 - [Agile Principles in Practice](/devops/plan/how-microsoft-plans-devops)
 - [Platform automation and DevOps](/azure/cloud-adoption-framework/ready/enterprise-scale/platform-automation-and-devops)
 - [PsRules for Azure](https://aka.ms/ps-rule-azure)
+- [Azure Deployment Environments](/azure/deployment-environments/)

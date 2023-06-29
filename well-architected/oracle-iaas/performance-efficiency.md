@@ -5,8 +5,6 @@ author: ckittel
 ms.author: kegorman
 ms.date: 12/29/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ---
 # Oracle workload performance efficiency
 
@@ -42,7 +40,6 @@ We recommend using proximity placement groups in two scenarios:
 For more information, see:
 
 - [Overview of proximity placement groups](/azure/virtual-machines/co-location)
-- [Oracle and proximity placement groups](/azure/virtual-machines/workloads/Oracle/Oracle-proximity-placement-scenarios)
 
 ## Recommendations
 

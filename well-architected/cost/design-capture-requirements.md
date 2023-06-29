@@ -6,15 +6,10 @@ ms.author: martinek
 ms.date: 10/14/2022
 ms.reviewer: tozimmergren
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.custom:
   - article
   - internal-intro
   - engagement-fy23
-products:
-  - azure
-  - azure-cost-management
 ---
 
 # Capture cost requirements
@@ -93,7 +88,7 @@ You may not have a business goal to leave the service running all the time. Doin
 ## Budget for staff education
 Keep the technical staff up to date in cloud management skills so that the invested services are optimally used.
 
-- Consider using resources such as [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/partners/) and [Microsoft Learn training](/training/) to onboard the staff. Those resources provide engineering investments at no cost to customers.
+- Consider using resources such as [FastTrack for Azure](https://www.microsoft.com/azure/partners/fasttrack-for-azure) and [Microsoft Learn training](/training/) to onboard the staff. Those resources provide engineering investments at no cost to customers.
 - Identify training requirements and costs for cloud migration projects, application development, and architecture refinement.
 - Invest in key areas, such as identity management, security configuration, systems monitoring, and automation.
 - Give the staff access to training and relevant announcements. This way, they can be aware of new cloud capabilities and updates.

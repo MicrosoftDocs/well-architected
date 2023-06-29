@@ -5,13 +5,7 @@ author: calcof
 ms.author: calcof
 ms.date: 02/02/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 categories: databases
-products: 
-  - azure
-  - azure-cosmos-db
-  - azure-active-directory
 ms.custom:
   - mission-critical
 ---
@@ -25,9 +19,7 @@ This design area expands on [application design](mission-critical-application-de
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](http://github.com/azure/mission-critical)
->
-> The [reference implementations](mission-critical-overview.md#illustrative-examples) are part of an open source project available on GitHub. The code assets illustrate the considerations and implementations for a selected data platform.
+
 
 ## The Four Vs of Big Data
 

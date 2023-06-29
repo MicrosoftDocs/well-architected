@@ -5,11 +5,7 @@ author: mikedell73
 ms.author: prwilk
 ms.date: 08/23/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.industry: telecommunication
-products: 
-- azure
 ms.custom:
   - carrier-grade
 ---
@@ -38,7 +34,7 @@ A _carrier-grade workload_ pivots on both business-critical and safety-critical,
 
 The *operational* aspect of the workload includes how reliability is measured and the targets that it must meet or exceed. Highly reliable systems typically target 99.999% uptime (commonly referred to as '5 9s') or 0.001% downtime in a year (approximately 5 minutes). Some systems target 99.9999% uptime, or 30 seconds downtime per year, or even higher levels of reliability. This covers all forms and causes of outage – scheduled maintenance, infrastructure failure, human error, software issues and even natural disaster. 
 
-Although the platform used has evolved from dedicated, proprietary hardware through commercial, off-the-sheld hardware to OpenStack or VMware clouds, Telecommunication companies consistently deliver services achieving `≤ 5` minutes of downtime per year, and in many cases, achieve `≤ 30` seconds of downtime due to unscheduled outages.
+Although the platform used has evolved from dedicated, proprietary hardware through commercial, off-the-shelf hardware to OpenStack or VMware clouds, Telecommunication companies consistently deliver services achieving ≤ 5 minutes of downtime per year, and in many cases, achieve ≤ 30 seconds of downtime due to unscheduled outages.
 
 ## What are the common challenges?
 
@@ -62,7 +58,7 @@ Experience across a range of mission-critical industries shows that it isn't rea
 
 Using [Microsoft Azure Availability Zones](/azure/architecture/high-availability/building-solutions-for-high-availability) is the basic choice for reducing the risk of outage due to hardware failure or localized environmental issues. However, it isn't enough to achieve carrier-grade availability, mainly for these reasons: 
 
-- Availability Zones (AZs) are designed so that the network latency between any two zones in a single region is `≤ 2 ms`. AZs can't be widely and geographically dispersed. So, the AZs share a correlated risk of failure due to natural disasters, such as flooding or massive power outages, which could disable multiple AZs within a region.
+- Availability Zones (AZs) are designed so that the network latency between any two zones in a single region is ≤ 2 ms. AZs can't be widely and geographically dispersed. So, the AZs share a correlated risk of failure due to natural disasters, such as flooding or massive power outages, which could disable multiple AZs within a region.
 
 - Many Azure services are explicitly designed to be zone-redundant so that the applications using them don't need explicit logic to benefit from the availability gain. This redundancy function within the service requires collaboration between the elements in each zone. There's often an unavoidable risk of software failure in one zone that causes correlated failures in other zones. For example, any issue with a secret or certificate used with the zone redundant service could impact all AZs simultaneously.
 
@@ -73,7 +69,7 @@ When designing a carrier-grade workload, consider the following areas:
 |Design area|Description|
 |---|---|
 |[**Fault tolerance**](carrier-grade-design-area-fault-tolerance.md)|Application design must allow for unavoidable failures so that the application as a whole can continue to operate at some level. The design must minimize points of failure and take a federated approach.|
-|[**Data model**](carrier-grade-design-area-data-model.md)|The design must address the consistency, availability, and partition tolerance needs of the database.Carrier Grade availability requires that the application is deployed across multiple regions. This deployment requires careful thought about how the application's data will be managed across those regions.|  
+|[**Data model**](carrier-grade-design-area-data-model.md)|The design must address the consistency, availability, and partition tolerance needs of the database. Carrier Grade availability requires that the application is deployed across multiple regions. This deployment requires careful thought about how the application's data will be managed across those regions.|  
 |[**Health modeling**](carrier-grade-design-area-health-modeling.md)|An effective health model provides observability of all components, platform and application, so that issues can be quickly detected and response is ready either through self-healing or other remediations.|
 |[**Testing and validation**](carrier-grade-design-area-testing.md)|The design and implementation of the application must be thoroughly tested. In addition, the integration and deployment of the application as a whole solution must be tested.|
 

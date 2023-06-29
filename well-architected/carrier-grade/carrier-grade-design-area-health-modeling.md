@@ -5,13 +5,7 @@ author: mikedell73
 ms.author: mikedell
 ms.date: 08/23/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 ms.industry: telecommunications
-products: 
-- azure-app-service
-- azure-traffic-manager
-- cosmos-db
 ms.custom:
   - carrier-grade
 ---
@@ -59,9 +53,9 @@ For example, a DNS issue indicates requests aren't arriving at the database serv
 
 ## Monitoring and tracing
 
-The support team's ability to detect, diagnose, and resolve issues is an important part of delivering a highly available application. To ensure success, the monitoring and tracing element must deliver high levels of visibility, so that one in `1,000` events can be found and resolved.
+The support team's ability to detect, diagnose, and resolve issues is an important part of delivering a highly available application. To ensure success, the monitoring and tracing element must deliver high levels of visibility, so that the one in a thousand type events can be found and resolved.
 
-A tracing solution that only logs `0.1%` of requests has a `1,000,000` chance of recording such events, which means the diagnosis and resolution are highly unlikely. Yet, failure to resolve such issues will have a meaningful impact on availability.
+A tracing solution that only logs 0.1% of requests only has a one in one million chance of recording such events, which means that diagnosis and resolution are highly unlikely. Yet, failure to resolve such issues will have a meaningful impact on availability.
 
 ## Next step
 
