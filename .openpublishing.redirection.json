@@ -490,8 +490,8 @@
 			"redirect_document_id": true
 		},
 		{
-			"source_path": "well-architected/scalability/index.yml
-			"redirect_url": "/azure/well-architected/performance-efficiency/index.yml
+			"source_path": "well-architected/scalability/index.yml",
+			"redirect_url": "/azure/well-architected/performance-efficiency/index",
 			"redirect_document_id": true
 		},
 		{
