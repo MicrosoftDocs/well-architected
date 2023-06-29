@@ -473,7 +473,7 @@
 		{
 			"source_path": "well-architected/scalability/design-checklist.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/design-efficiency",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/scalability/design-distributed.md",
@@ -578,6 +578,126 @@
 		{
 			"source_path": "well-architected/scalability/tradeoffs.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/tradeoffs",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/app-design-error-handling.md",
+			"redirect_url": "/azure/well-architected/reliability/app-design-error-handling",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/app-design.md",
+			"redirect_url": "/azure/well-architected/reliability/app-design",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/auto-retry.md",
+			"redirect_url": "/azure/well-architected/reliability/auto-retry",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/backup-and-recovery.md",
+			"redirect_url": "/azure/well-architected/reliability/backup-and-recovery",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/business-metrics.md",
+			"redirect_url": "/azure/well-architected/reliability/business-metrics",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/chaos-engineering.md",
+			"redirect_url": "/azure/well-architected/reliability/chaos-engineering",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/checklist.md",
+			"redirect_url": "/azure/well-architected/reliability/checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/data-management.md",
+			"redirect_url": "/azure/well-architected/reliability/data-management",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/design-best-practices.md",
+			"redirect_url": "/azure/well-architected/reliability/design-best-practices",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/design-checklist.md",
+			"redirect_url": "/azure/well-architected/reliability/design-checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/design-requirements.md",
+			"redirect_url": "/azure/well-architected/reliability/design-requirements",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/design-resiliency.md",
+			"redirect_url": "/azure/well-architected/reliability/design-resiliency",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/index.yml",
+			"redirect_url": "/azure/well-architected/reliability/index",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/monitor-best-practices.md",
+			"redirect_url": "/azure/well-architected/reliability/monitor-best-practices",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/monitor-checklist.md",
+			"redirect_url": "/azure/well-architected/reliability/monitor-checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/monitor-model.md",
+			"redirect_url": "/azure/well-architected/reliability/monitor-model",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/monitoring.md",
+			"redirect_url": "/azure/well-architected/reliability/monitoring",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/overview.md",
+			"redirect_url": "/azure/well-architected/reliability/overview",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/principles.md",
+			"redirect_url": "/azure/well-architected/reliability/principles",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/reliability-patterns.md",
+			"redirect_url": "/azure/well-architected/reliability/reliability-patterns",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/test-best-practices.md",
+			"redirect_url": "/azure/well-architected/reliability/test-best-practices",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/test-checklist.md",
+			"redirect_url": "/azure/well-architected/reliability/test-checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/testing.md",
+			"redirect_url": "/azure/well-architected/reliability/testing",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/tradeoffs.md",
+			"redirect_url": "/azure/well-architected/reliability/tradeoffs",
 			"redirect_document_id": true
 		}
 	]
