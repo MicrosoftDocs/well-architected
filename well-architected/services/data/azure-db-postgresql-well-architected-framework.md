@@ -55,4 +55,4 @@ Azure Database for PostgreSQL recommendation | Description
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure SQL Database](../azure-sql-database-well-architected-framework.md)
+> [Azure SQL Database](azure-sql-database-well-architected-framework.md)
