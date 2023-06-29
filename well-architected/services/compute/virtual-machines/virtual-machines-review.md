@@ -3,7 +3,7 @@ title: Azure Well-Architected Framework review - Virtual Machines
 description: Design considerations and recommendations about Azure virtual machines.
 author: ericd-mst-github
 ms.author: erd
-ms.date: 06/29/20223
+ms.date: 06/29/2023
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
@@ -129,7 +129,7 @@ To estimate costs related to virtual machines, use these tools.
 > - Utilize premium storage with free bursting, combined with an understanding of workload patterns, for effective SKU selection and cost optimization.
 > - Use managed disks for desired performance without the need for over-provisioning, accounting for fluctuating workload patterns, and minimizing unused provisioned capacity.
 > - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
-> - Prepay for [reserved instances](/virtual-machines/prepay-reserved-vm-instances) for one year, three years, or more.
+> - Prepay for [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) for one year, three years, or more.
 > - Use hybrid benefit licensing
 
 ### Recommendations
@@ -143,7 +143,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |Right-size your VMs |  Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.|
 |Utilize premium storage effectively | Premium storage features free bursting which, combined with understanding workload patterns, offers an effective SKU selection and cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. |
 | Optimize with managed disks | Managed disks offer cost optimization by providing desired performance without the need for over-provisioning, accounting for fluctuating workload patterns, and minimizing unused provisioned capacity.|
-|Prepay for added cost savings | Purchasing [reserved instances](/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
+|Prepay for added cost savings | Purchasing [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
 | Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
 
  Azure Advisor helps you ensure and improve cost optimization. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Cost).
