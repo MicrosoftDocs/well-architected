@@ -309,6 +309,10 @@
 			"redirect_url": "/azure/well-architected/cost-optimization/tradeoffs",
 			"redirect_document_id": true
 		},
+		{
+			"source_path": "well-architected/cost/index.yml",
+			"redirect_url": "/azure/well-architected/cost-optimization/",
+			"redirect_document_id": true
 
 	]
 }
