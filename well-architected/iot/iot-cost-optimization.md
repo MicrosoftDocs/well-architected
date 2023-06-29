@@ -40,7 +40,7 @@ To assess your IoT workload through the lenses of the Well-Architected Framework
 
 IoT costs are a tradeoff between various technology options. Sometimes it's not a simple comparison, because IoT is an end-to-end system. Consider the cost benefits of synergy when reconciling multiple services and technologies. For example, you can use Azure IoT Hub device twins to handle events in Azure Digital Twins. Device Twins in IoT Hub are available only in the [standard tier of IoT Hub](/azure/iot-hub/iot-hub-scaling#basic-and-standard-tiers).
 
-It's important to correctly estimate long-term aggregated costs. Review the IoT technology stacks, and [develop a cost model](/azure/well-architected/cost-optimization/design-model) that includes the costs to implement and operate all services involved. The [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) helps estimate both startup and operational costs.
+It's important to correctly estimate long-term aggregated costs. Review the IoT technology stacks, and [develop a cost model](../cost-optimization/design-model.md) that includes the costs to implement and operate all services involved. The [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) helps estimate both startup and operational costs.
 
 In some areas, a one-time cost can be more effective than recurring costs. For example, in security where hacking techniques are always changing, it can be best to import a reliable commercial operating system and module such as Azure Sphere. For a one-time payment, such services provide ongoing monthly device security patches.
 
@@ -280,7 +280,7 @@ The [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) 
 
 The purpose of the event processing and analytics layer is to enable data-driven decisions. Event timing and the purpose of analytics are key factors to consider. The right service choice increases architectural efficiency and reduces the cost of processing data and events.
 
-Based on your requirements, implement hot, warm, or cold path processing for IoT data analytics. The [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot) helps you understand the difference between these analytics paths and reviews the available analytics services on each path. The Cost Optimization pillar in the Azure Well-Architected Framework includes the [cost considerations for data analytics stores](/azure/well-architected/cost-optimization/provision-datastores#data-analytics-cost), considering data storage, multiple servers to maximize scalability, and the ability to access large data as external tables.
+Based on your requirements, implement hot, warm, or cold path processing for IoT data analytics. The [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot) helps you understand the difference between these analytics paths and reviews the available analytics services on each path. The Cost Optimization pillar in the Azure Well-Architected Framework includes the [cost considerations for data analytics stores](../cost-optimization/provision-datastores.md#data-analytics-cost), considering data storage, multiple servers to maximize scalability, and the ability to access large data as external tables.
 
 To get started, determine which types of data go through the hot, warm, or cold path:
 

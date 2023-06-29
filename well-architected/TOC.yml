@@ -95,12 +95,6 @@
           items:
             - name: Establish performance targets
               href: performance-efficiency/performance-targets.md
-      - name: Cross-cutting guides
-        items:
-        - name: Implementing recommendations
-          href: ./implementing-recommendations.md        
-        - name: DevSecOps - application
-          href: coming-soon.md
     - name: Workloads
       items:
       - name: Overview
@@ -327,6 +321,12 @@
                   href: services/monitoring/application-insights/cost-optimization.md
                 - name: Operational excellence
                   href: services/monitoring/application-insights/operational-excellence.md
+    - name: Cross-cutting guides
+      items:
+      - name: Implementing recommendations
+        href: ./implementing-recommendations.md        
+      - name: DevSecOps - application
+        href: coming-soon.md
     - name: Old TOC
       items:
       - name: Overview
@@ -1052,4 +1052,6 @@
         href: security\architecture-type.md
       - name: DevOps alerts
         href: devops\alerts.md
+      - name: Old index.md
+        href: old-index.md
         

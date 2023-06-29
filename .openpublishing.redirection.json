@@ -447,7 +447,7 @@
 		},
 		{
 			"source_path": "well-architected/devops/index.yml",
-			"redirect_url": "/azure/well-architected/operational-excellence/index.yml",
+			"redirect_url": "/azure/well-architected/operational-excellence/",
 			"redirect_document_id": false
 		},
 		{
@@ -492,7 +492,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/index.yml",
-			"redirect_url": "/azure/well-architected/performance-efficiency/index",
+			"redirect_url": "/azure/well-architected/performance-efficiency/",
 			"redirect_document_id": true
 		},
 		{
@@ -642,7 +642,7 @@
 		},
 		{
 			"source_path": "well-architected/resiliency/index.yml",
-			"redirect_url": "/azure/well-architected/reliability/index",
+			"redirect_url": "/azure/well-architected/reliability/",
 			"redirect_document_id": true
 		},
 		{
@@ -699,6 +699,11 @@
 			"source_path": "well-architected/resiliency/tradeoffs.md",
 			"redirect_url": "/azure/well-architected/reliability/tradeoffs",
 			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/index.md",
+			"redirect_url": "/azure/well-architected/pillars.md",
+			"redirect_document_id": false
 		}
 	]
 }
