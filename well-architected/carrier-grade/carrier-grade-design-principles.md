@@ -15,7 +15,7 @@ ms.custom:
 Carrier grade workload must be designed as per the guiding principles of the Well-Architected Framework quality pillars:
 
 - [Reliability](../reliability/index.yml)
-- [Performance Efficiency](../scalability/)
+- [Performance Efficiency](../performance-efficiency/index.yml)
 - [Operational Excellence](../operational-excellence/index.yml)
 - [Security](../security/index.yml)
 - [Cost Optimization](../cost-optimization/index.yml)
