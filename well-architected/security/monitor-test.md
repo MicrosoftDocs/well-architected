@@ -49,7 +49,7 @@ Azure uses shared infrastructure to host your assets and assets belonging to oth
 ### Learn more
 
 - [Azure Penetration Testing](/azure/security/fundamentals/pen-testing)
-- [Penetration Testing](/azure/architecture/framework/security/monitor-test#penetration-testing-pentesting)
+- [Penetration Testing](/azure/well-architected/security/monitor-test#penetration-testing-pentesting)
 
 ## Simulate attacks
 The way users interact with a system is critical in planning your defense. The risks are even higher for critical impact accounts because they have elevated permissions and can cause more damage.

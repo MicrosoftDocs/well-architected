@@ -136,7 +136,7 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Carrier-grade for telecommunications
-            url: /azure/architecture/framework/carrier-grade/carrier-grade-get-started
+            url: /azure/well-architected/carrier-grade/carrier-grade-get-started
 
 
   # Card

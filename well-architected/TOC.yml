@@ -352,7 +352,7 @@
               - name: Data management
                 href: resiliency/data-management.md
               - name: Application resiliency
-                href: /azure/architecture/reliability/architect?toc=/azure/architecture/framework/toc.json&bc=/azure/architecture/framework/breadcrumb/toc.json
+                href: /azure/architecture/reliability/architect?toc=/azure/well-architected/toc.json&bc=/azure/well-architected/breadcrumb/toc.json
               - name: Business metrics
                 href: resiliency/business-metrics.md
               - name: Best practices

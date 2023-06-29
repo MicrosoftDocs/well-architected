@@ -34,7 +34,7 @@ In the **design checklist** and **list of recommendations** below, information i
 
 ### Design checklist
 
-As you make design choices for Azure ExpressRoute, review the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture.
+As you make design choices for Azure ExpressRoute, review the [design principles](/azure/well-architected/resiliency/principles) for adding reliability to the architecture.
 
 > [!div class="checklist"]
 > - Select between ExpressRoute circuit or ExpressRoute Direct for business requirements.
@@ -62,7 +62,7 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Monitor circuits and gateway health | Set up monitoring and alerts for ExpressRoute circuits and Virtual Network Gateway health based on various metrics available. |
 | Enable service health | ExpressRoute uses service health to notify about planned and unplanned maintenance. Configuring service health will notify you about changes made to your ExpressRoute circuits. |
 
-For more suggestions, see [Principles of the reliability pillar](/azure/architecture/framework/resiliency/principles).
+For more suggestions, see [Principles of the reliability pillar](/azure/well-architected/resiliency/principles).
 
 Azure Advisor provides many recommendations for ExpressRoute circuits as they relate to reliability. For example, Azure Advisor can detect:
 
@@ -95,7 +95,7 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Configure MACSec for ExpressRoute Direct resources | Media Access Control security is a point-to-point security at the data link layer. ExpressRoute Direct supports configuring MACSec to prevent security threats to protocols such as ARP, DHCP, LACP not normally secured on the Ethernet link. For more information on how to configure MACSec, see [MACSec for ExpressRoute Direct ports](/azure/expressroute/expressroute-about-encryption).   |
 | Encrypt traffic using IPsec | Configure a Site-to-site VPN tunnel over your ExpressRoute circuit to encrypt data transferring between your on-premises network and Azure virtual network. You can configure a tunnel using [private peering](/azure/vpn-gateway/site-to-site-vpn-private-peering?toc=%2Fazure%2Fexpressroute%2Ftoc.json) or using [Microsoft peering](/azure/expressroute/site-to-site-vpn-over-microsoft-peering).  |
 
-For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
+For more suggestions, see [Principles of the security pillar](/azure/well-architected/security/security-principles).
 
 ## Cost optimization
 
@@ -122,7 +122,7 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Monitor cost and create budget alerts | Monitor the cost of your ExpressRoute circuit and create alerts for spending anomalies and overspending risks. For more information, see [Monitoring ExpressRoute costs](/azure/expressroute/plan-manage-cost#monitor-costs). |
 | Deprovision and delete ExpressRoute circuits no longer in use. | ExpressRoute circuits are charged from the moment they're created. To reduce unnecessary cost, deprovision the circuit with the service provider and delete the ExpressRoute circuit from your subscription. For steps on how to remove an ExpressRoute circuit, see [Deprovisioning an ExpressRoute circuit](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager#delete). |
 
-For more suggestions, see [Principles of the cost optimization pillar](/azure/architecture/framework/cost-optimization/overview).
+For more suggestions, see [Principles of the cost optimization pillar](/azure/well-architected/cost-optimization/overview).
 
 Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*. Circuits in this state aren't operational; and removing the unused resource will reduce unnecessary costs.
 
@@ -149,7 +149,7 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Review metrics with Network Insights | [ExpressRoute Insights with Network Insights](/azure/expressroute/expressroute-network-insights) allow you to review and analyze ExpressRoute circuits, gateways, connections metrics and health dashboards. ExpressRoute Insights also provide a topology view of your ExpressRoute connections where you can view details of your peering components all in a single place.<br><br>Metrics available:<br>- Availability<br>- Throughput<br>- Gateway metrics |
 | Review ExpressRoute resource metrics | ExpressRoute uses Azure Monitor to collect [metrics and create alerts](/azure/expressroute/expressroute-monitoring-metrics-alerts) base on your configuration. Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. |
 
-For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
+For more suggestions, see [Principles of the operational excellence pillar](/azure/well-architected/devops/principles).
 
 ## Performance efficiency
 
@@ -176,7 +176,7 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Enable ExpressRoute FastPath for higher throughput | If you're using an Ultra performance or an ErGW3AZ virtual network gateway, you can enable [FastPath](/azure/expressroute/about-fastpath) to improve the data path performance between your on-premises network and Azure virtual network. |
 | Monitor ExpressRoute circuit and gateway metrics | Set up alerts base on [ExpressRoute metrics](/azure/expressroute/monitor-expressroute) to proactively notify you when a certain threshold is met. These metrics are useful to understand anomalies that can happen with your ExpressRoute connection such as outages and maintenance happening to your ExpressRoute circuits. |
 
-For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
+For more suggestions, see [Principles of the performance efficiency pillar](/azure/well-architected/scalability/principles).
 
 Azure Advisor will offer a recommendation to upgrade your ExpressRoute circuit bandwidth to accommodate usage when your circuit has recently been consuming over 90% of your procured bandwidth. If your traffic exceeds your allocated bandwidth, you’ll experience dropped packets, which can lead to significant performance or reliability impact.
 

@@ -56,7 +56,7 @@ In the center is the *Well-Architected Framework*, which includes the five pilla
 
 - [Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment)
 - [Azure Advisor](/azure/advisor/)
-- [Documentation](/azure/architecture/framework/)
+- [Documentation](/azure/well-architected/)
 - [Partners](https://azure.microsoft.com/partners/), [Support](https://azure.microsoft.com/support/options/#support-plans), and Services Offers
 - [Reference architectures](/azure/architecture/guide/)
 - [Design principles](/azure/architecture/guide/design-principles/)

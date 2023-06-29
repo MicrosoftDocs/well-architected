@@ -54,7 +54,7 @@ sections:
     alignment: center
     blocks:
       - componentType: video
-        src: https://learn-video.azurefd.net/vod/player?id=fd8c4e50-9d7f-4df0-97cb-d0474b581398&embedUrl=/azure/architecture/framework/mission-critical/mission-critical-health-modeling   
+        src: https://learn-video.azurefd.net/vod/player?id=fd8c4e50-9d7f-4df0-97cb-d0474b581398&embedUrl=/azure/well-architected/mission-critical/mission-critical-health-modeling   
         id: lofi-hip-hop-beats
         label: Health modeling for highly reliable workloads    
       - title: Featured update - Health modeling for highly reliable workloads 
@@ -62,7 +62,7 @@ sections:
         componentType: text
         links:
           - componentType: link
-            url: /azure/architecture/framework/mission-critical/mission-critical-health-modeling
+            url: /azure/well-architected/mission-critical/mission-critical-health-modeling
             text: What is health modeling?
         list:
           componentType: list

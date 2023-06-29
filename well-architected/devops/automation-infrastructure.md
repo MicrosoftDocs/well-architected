@@ -77,7 +77,7 @@ Many organizations maintain multiple environments, for example, test, staging, a
 
 **Disaster recovery.** In some situations, where recovery time might not be time-sensitive, IaC configurations can be used as part of a disaster recovery plan. For example, if infrastructure needs to be recreated in a second region, your IaC configurations can be used to do so. You need to consider deployment time and restoring the state of your infrastructure and the infrastructure itself.
 
-When you plan for disaster and recovery, ensure that your disaster recovery plans are fully tested and that they meet your [Business metrics](/azure/architecture/framework/resiliency/business-metrics).
+When you plan for disaster and recovery, ensure that your disaster recovery plans are fully tested and that they meet your [Business metrics](/azure/well-architected/resiliency/business-metrics).
 
 ### Better understand your cloud resources
 

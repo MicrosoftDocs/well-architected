@@ -131,7 +131,7 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 |Use Azure Firewall Manager and its policies to reduce operational costs, increase efficiency, and reduce management overhead.|Review your Firewall Manager policies, associations, and inheritance carefully. Policies are billed based on firewall associations. A policy with zero or one firewall association is free of charge. A policy with multiple firewall associations is billed at a fixed rate.<br><br>For more information, see [Pricing - Azure Firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager).|
 |Delete unused public IP addresses and use IP Groups to reduce your management overhead.|Validate whether all the associated public IP addresses are in use. If they aren't in use, disassociate and delete them. Use IP Groups to reduce your management overhead. Evaluate SNAT port utilization before removing any IP addresses.<br><br>You'll only use the number of public IPs your firewall needs. For more information, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port utilization](/azure/firewall/logs-and-metrics#metrics).
 
-For more suggestions, see [Principles of the Cost optimization pillar](/azure/architecture/framework/cost-optimization/overview).
+For more suggestions, see [Principles of the Cost optimization pillar](/azure/well-architected/cost-optimization/overview).
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 

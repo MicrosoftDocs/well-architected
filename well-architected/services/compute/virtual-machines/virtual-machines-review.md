@@ -31,7 +31,7 @@ In this article, you learn architectural best practices for Azure Virtual Machin
 
 
 ## Reliability
-As you make design choices for virtual machines, review the [design principles](/azure/architecture/framework/resiliency/principles) for adding reliability to the architecture.
+As you make design choices for virtual machines, review the [design principles](/azure/well-architected/resiliency/principles) for adding reliability to the architecture.
 
 ### Design checklist
 > [!div class="checklist"]
@@ -60,13 +60,13 @@ Azure Advisor helps you ensure and improve the continuity of your business-criti
 
 This article provides an overview of the core Azure security features that can be used with virtual machines.
 
-As you make design choices for virtual machines, review the [security principles](/azure/architecture/framework/security/security-principles) and [Security best practices](/azure/security/fundamentals/iaas) for adding security to the architecture.
+As you make design choices for virtual machines, review the [security principles](/azure/well-architected/security/security-principles) and [Security best practices](/azure/security/fundamentals/iaas) for adding security to the architecture.
 
 
 ### Design checklist
 
 
-As you make design choices for your virtual machine deployment, review the [design principles](/azure/architecture/framework/security/security-principles) for security.
+As you make design choices for your virtual machine deployment, review the [design principles](/azure/well-architected/security/security-principles) for security.
 
 > [!div class="checklist"]
 > - Review the [Linux security baseline](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline)
@@ -88,7 +88,7 @@ Explore the following table of recommendations to optimize your virtual machine 
 | Monitor for security | To monitor the security posture of your Windows and Linux VMs, use [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction). |
 | Use encryption | Use [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) to protect your data. |
 
-For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
+For more suggestions, see [Principles of the security pillar](/azure/well-architected/security/security-principles).
 
 Azure Advisor helps you ensure and improve security. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Security).
 
@@ -110,7 +110,7 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 ## Cost optimization
 
-To optimize costs, review the [design principles](/azure/architecture/framework/cost-optimization/principles).
+To optimize costs, review the [design principles](/azure/well-architected/cost-optimization/principles).
 
 To estimate costs related to virtual machines, use these tools.
 
@@ -151,14 +151,14 @@ All built-in policy definitions related to Azure Virtual Machines are listed in 
 
 ## Operational excellence
 
-To ensure operational excellence, review the [design principles](/azure/architecture/framework/devops/principles).
+To ensure operational excellence, review the [design principles](/azure/well-architected/devops/principles).
 
 ### Design checklist
 
 
 > [!div class="checklist"]
 > - [Monitor](/azure/virtual-machines/monitor-vm) and measure health.
-> - [Automate](/azure/architecture/framework/devops/automation-tasks) tasks like provisioning and updating.
+> - [Automate](/azure/well-architected/devops/automation-tasks) tasks like provisioning and updating.
 > - Build a robust testing environment.
 > - Right size your VMs.
 > - Manage your quota.
@@ -170,13 +170,13 @@ To ensure operational excellence, review the [design principles](/azure/architec
 | Recommendation | Benefit |
 |--------|----|
 | Monitor and measure health | In a production environment, it's important to [monitor](/azure/virtual-machines/monitor-vm) the health, and performance of your VMs.  |
-| Automate tasks | Building [automation](/azure/architecture/framework/devops/automation-tasks) reduces deviations from your plans and reduces that time it takes to manage your workload.  |
+| Automate tasks | Building [automation](/azure/well-architected/devops/automation-tasks) reduces deviations from your plans and reduces that time it takes to manage your workload.  |
 | Build a robust testing environment | Ideally, an organization will have multiple environments in which to test deployments. These test environments should be similar enough to production that deployment and run time issues are detected before deployment to production. |
 | Right-size your VMs | Choose the right [VM family](/azure/virtual-machines/sizes) for your workload. | 
 | Manage your quota | Plan what level of quota will be required and review that level regularly as the workload evolves and grows and [request changes early](/azure/azure-portal/supportability/per-vm-quota-requests)  |
 
 
-For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
+For more suggestions, see [Principles of the operational excellence pillar](/azure/well-architected/devops/principles).
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [recommendations](/azure/advisor/advisor-reference-operational-excellence-recommendations).
 
@@ -219,7 +219,7 @@ Explore the following table of recommendations to optimize your virtual machine 
 | Consider accelerated networking | [Accelerated networking](/azure/virtual-network/accelerated-networking-overview) enables single root I/O virtualization (SR-IOV) to a VM, greatly improving its networking performance. |
 | Use autoscaling | Automatically increase or decrease the number of VM instances that run your application with [autoscaling](/azure/virtual-machine-scale-sets/scripts/cli-sample-enable-autoscale). |
 
-For more suggestions, see [Principles of the performance efficiency pillar](/azure/architecture/framework/scalability/principles).
+For more suggestions, see [Principles of the performance efficiency pillar](/azure/well-architected/scalability/principles).
 
 Azure Advisor helps you ensure and improve performance. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Performance).
 

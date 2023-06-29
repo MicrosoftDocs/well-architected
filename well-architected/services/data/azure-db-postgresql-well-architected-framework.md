@@ -26,7 +26,7 @@ This guide provides implementation guidance and recommendations for Azure Databa
 
 ### Design checklist
 
-You should review the [design principles](/azure/architecture/framework/cost-optimization/principles) to optimize the cost of your architecture.
+You should review the [design principles](/azure/well-architected/cost-optimization/principles) to optimize the cost of your architecture.
 
 > [!div class="checklist"]
 > - Pick the right tier and SKU

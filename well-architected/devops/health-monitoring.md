@@ -73,7 +73,7 @@ Application Insights allows you to:
 - Makes application troubleshooting easier.
 - Provides custom business telemetry to indicate whether your application is being used as intended.
 
-For more information about how Application Insights helps you monitor applications, reference [Monitoring workloads](/azure/architecture/framework/devops/monitor-pipeline).
+For more information about how Application Insights helps you monitor applications, reference [Monitoring workloads](/azure/well-architected/devops/monitor-pipeline).
 
 ## Logs and metrics
 
@@ -139,7 +139,7 @@ Known gaps in application observability lead to missed incidents and false posit
 
 [Application Insights](#application-performance-management-apm-tools) or a full-stack monitoring service like [Azure Monitor](/azure/azure-monitor/essentials/monitor-azure-resource) can help you keep tabs on your entire landscape.
 
-For more information, reference [Monitoring workloads](/azure/architecture/framework/devops/monitor-pipeline).
+For more information, reference [Monitoring workloads](/azure/well-architected/devops/monitor-pipeline).
 
 #### Activity logs and diagnostic settings
 

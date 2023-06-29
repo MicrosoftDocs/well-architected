@@ -14,15 +14,15 @@ ms.custom:
 
 Carrier grade workload must be designed as per the guiding principles of the Well-Architected Framework quality pillars:
 
-- [Reliability](/azure/architecture/framework/#reliability)
-- [Performance Efficiency](/azure/architecture/framework/scalability/)
-- [Operational Excellence](/azure/architecture/framework/devops/)
-- [Security](/azure/architecture/framework/security/)
-- [Cost Optimization](/azure/architecture/framework/cost-optimization/)
+- [Reliability](/azure/well-architected/#reliability)
+- [Performance Efficiency](/azure/well-architected/scalability/)
+- [Operational Excellence](/azure/well-architected/devops/)
+- [Security](/azure/well-architected/security/)
+- [Cost Optimization](/azure/well-architected/cost-optimization/)
 
-This article describes the carrier-grade design principles that resonate and extend the [mission-critical design principles](/azure/architecture/framework/mission-critical/mission-critical-design-principles). These collective principles serve as a road map for subsequent design decisions across the critical design areas. We highly recommend that you get to know these principles to better understand their effects and the trade-offs associated with non-adherence.
+This article describes the carrier-grade design principles that resonate and extend the [mission-critical design principles](/azure/well-architected/mission-critical/mission-critical-design-principles). These collective principles serve as a road map for subsequent design decisions across the critical design areas. We highly recommend that you get to know these principles to better understand their effects and the trade-offs associated with non-adherence.
 
-There are obvious [cost tradeoffs](/azure/architecture/framework/mission-critical/mission-critical-design-principles#cost-optimization) associated with introducing greater reliability, which should be carefully considered in the context of workload requirements.
+There are obvious [cost tradeoffs](/azure/well-architected/mission-critical/mission-critical-design-principles#cost-optimization) associated with introducing greater reliability, which should be carefully considered in the context of workload requirements.
 
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected carrier-grade workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [What is a carrier-grade workload](carrier-grade-get-started.md#what-is-a-carrier-grade-workload)?

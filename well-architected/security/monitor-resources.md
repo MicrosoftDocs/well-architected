@@ -206,7 +206,7 @@ The organizations' cloud infrastructure should be well documented, with security
 Ensure all Azure environments that connect to your production environment and network apply your organization's policy, and IT governance controls for security.
 
 You can discover existing connected tenants using a
-[tool](/azure/role-based-access-control/elevate-access-global-admin?toc=%252fazure%252factive-directory%252fprivileged-identity-management%252ftoc.json) provided by Microsoft. Guidance on permissions you may assign to security is in the [Assign privileges for managing the environment](/azure/architecture/framework/security/design-identity-role-definitions#clear-lines-of-responsibility) section.
+[tool](/azure/role-based-access-control/elevate-access-global-admin?toc=%252fazure%252factive-directory%252fprivileged-identity-management%252ftoc.json) provided by Microsoft. Guidance on permissions you may assign to security is in the [Assign privileges for managing the environment](/azure/well-architected/security/design-identity-role-definitions#clear-lines-of-responsibility) section.
 
 ## CI/CD pipelines
 
