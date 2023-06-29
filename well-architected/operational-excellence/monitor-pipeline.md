@@ -18,7 +18,7 @@ Monitoring a workload and the infrastructure in which it runs, should not be pro
 
 This article describes the stages of a common pipeline design.
 
-![Stages in the monitoring and diagnostics pipeline](../devops/pipeline.png)
+![Stages in the monitoring and diagnostics pipeline](../operational-excellence/pipeline.png)
 
 ## 1. Data sources and instrumentation
 

@@ -58,7 +58,7 @@ The integration of your continuous integration pipeline with your source control
 
 The following image shows the integration between GitHub and an Azure DevOps pipeline. In this example, a pull request has been created, which in turn has triggered an Azure DevOps pipeline. The pipeline status can be seen directly in the pull request.
 
-![Screenshot of an Azure DevOps status badge in a GitHub repository.](../devops/ado-github-status.png)
+![Screenshot of an Azure DevOps status badge in a GitHub repository.](../operational-excellence/ado-github-status.png)
 
 #### Test integration
 
@@ -86,7 +86,7 @@ The following code snippet shows a test step from an Azure DevOps pipeline. Ther
 
 The following image shows the test results as seen in the Azure DevOps portal:
 
-![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](../devops/ado-tests.png)
+![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](../operational-excellence/ado-tests.png)
 
 #### Failed tests
 
@@ -96,7 +96,7 @@ Failed tests should temporarily block a deployment and lead to a deeper analysis
 
 Many developers show that their code quality is high by displaying a status badge in their repo. The following image shows an Azure Pipelines badge as displayed on the Readme file for an open-source project on GitHub:
 
-![Screenshot of an Azure Pipelines badge on a Readme file on GitHub.](../devops/github-status-badge.png)
+![Screenshot of an Azure Pipelines badge on a Readme file on GitHub.](../operational-excellence/github-status-badge.png)
 
 **Learn more**
 
