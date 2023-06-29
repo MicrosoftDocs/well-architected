@@ -63,4 +63,4 @@ To learn more about chaos testing, see [Advancing resilience through chaos engin
 - [Performance antipatterns for cloud applications](/azure/architecture/antipatterns/)
 - [Monitor performance for scalability and reliability](monitor-scalability-reliability.md)
 
-> [Back to the main article](design-checklist.md)
+> [Back to the main article](design-efficiency.md)

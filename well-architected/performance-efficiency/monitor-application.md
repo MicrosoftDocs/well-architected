@@ -86,4 +86,4 @@ If you're using Application Insights to collect instrumentation data, there are 
 - [Application Insights](/azure/azure-monitor/app/app-insights-overview)
 - [Azure Monitor](/azure/azure-monitor/overview)
 
-> [Back to the main article](checklist.md)
+> [Back to the main article](monitor-performance.md)

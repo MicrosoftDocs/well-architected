@@ -29,10 +29,10 @@ The performance efficiency pillar covers the following articles to help you effe
 |----------------------------|-----------|
 |[Performance efficiency checklist](performance-efficiency.md)|Review your application architecture to ensure your workload scales to meet the demands placed on it by users in an efficient manner.|
 |[Performance principles](principles.md)|Learn about the principles that can guide you in your overall strategy for improving performance efficiency.|
-|[Design for performance](design-checklist.md)| Review your application architecture from a performance design standpoint.|
+|[Design for performance](design-efficiency.md)| Review your application architecture from a performance design standpoint.|
 |[Consider scalability](design-scale.md)|Plan for growth by understanding your current workloads.|
 |[Plan for capacity](design-capacity.md)|Plan to scale your application tier by adding extra infrastructure to meet demand.|
-|[Performance monitoring checklist](checklist.md)|Monitor services and check the health state of current workloads to maintain overall workload performance.|
+|[Performance monitoring checklist](monitor-performance.md)|Monitor services and check the health state of current workloads to maintain overall workload performance.|
 |[Performance patterns](performance-efficiency-patterns.md)|Implement design patterns to build more performant workloads.|
 |[Tradeoffs](tradeoffs.md)|Consider tradeoffs between performance optimization and other aspects of the design, such as reliability, security, cost efficiency, and operability.|
 
