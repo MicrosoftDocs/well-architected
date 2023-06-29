@@ -91,4 +91,4 @@ You can also use the [pricing calculator](https://azure.microsoft.com/pricing/ca
 - [Network performance monitor](/azure/azure-monitor/insights/network-performance-monitor)
 - [Azure Network Watcher](/azure/network-watcher/network-watcher-monitoring-overview)
 
-> [Back to the main article](checklist.md)
+> [Back to the main article](monitor-performance.md)

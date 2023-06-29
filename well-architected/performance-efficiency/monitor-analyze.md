@@ -79,4 +79,4 @@ If you're using Application Insights to collect instrumentation data, there are 
 - [Manage usage and costs with Azure Monitor Logs](/azure/azure-monitor//logs/manage-cost-storage)
 - [Manage usage and costs for Application Insights](/azure/azure-monitor//app/pricing)
 
-> [Back to the main article](checklist.md)
+> [Back to the main article](monitor-performance.md)

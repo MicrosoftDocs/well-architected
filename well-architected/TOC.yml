@@ -683,11 +683,11 @@
               - name: Cache data
                 href: scalability/optimize-cache.md
           - name: Performance efficiency patterns
-            href: scalability/performance-efficiency-patterns.md
+            href: performance-efficiency/performance-efficiency-patterns.md
           - name: Checklist
-            href: scalability/performance-efficiency.md
+            href: performance-efficiency/performance-efficiency.md
           - name: Tradeoffs
-            href: scalability/tradeoffs.md
+            href: performance-efficiency/tradeoffs.md
       - name: Workloads
         items:
           - name: Mission-critical

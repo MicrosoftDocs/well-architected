@@ -51,7 +51,7 @@ An alternate approach is vertical scaling (scale up). However, you eventually ma
 Use this checklist to review your application architecture from a performance design standpoint.
 
 > [!div class="nextstepaction"]
-> [Design checklist](design-checklist.md)
+> [Design checklist](design-efficiency.md)
 
 ## Related links
 

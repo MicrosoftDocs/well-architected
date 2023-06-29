@@ -475,6 +475,11 @@
 			"redirect_document_id": true
 		},
 		{
+			"source_path": "well-architected/scalability/design-checklist.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-efficiency",
+			"redirect_document_id": true
+		},
+		{
 			"source_path": "well-architected/scalability/design-distributed.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/design-distributed",
 			"redirect_document_id": true
@@ -545,12 +550,12 @@
 			"redirect_document_id": true
 		},
 		{
-			"source_path": "well-architected/scalability/scalability-patterns.md",
+			"source_path": "well-architected/scalability/performance-efficiency-patterns.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/performance-efficiency-patterns",
 			"redirect_document_id": true
 		},
 		{
-			"source_path": "well-architected/scalability/scalability.md",
+			"source_path": "well-architected/scalability/performance-efficiency.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/performance-efficiency",
 			"redirect_document_id": true
 		},
