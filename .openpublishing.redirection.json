@@ -455,8 +455,8 @@
 			"redirect_document_id": false
 		},
 		{
-			"source_path:" "well-architected/scalability/checklist.md",
-			"redirect_url:" "/azure/well-architected/performance-efficiency/monitor-performance",
+			"source_path": "well-architected/scalability/checklist.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/monitor-performance",
 			"redirect_document_id": true
 		}
 	]
