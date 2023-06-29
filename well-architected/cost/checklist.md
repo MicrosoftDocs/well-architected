@@ -1,6 +1,5 @@
 ---
 title: Cost checklist
-titleSuffix: Azure Design Review Framework
 description: Cost checklist guidance for design concerns
 author: martinekuan
 ms.author: martinek

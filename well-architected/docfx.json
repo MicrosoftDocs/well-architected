@@ -58,8 +58,7 @@
       "titleSuffix": "Microsoft Azure Well-Architected Framework",
       "ms.service": "waf",
       "searchScope": [ "Azure", "Microsoft Azure Well-Architected Framework" ],    
-      "ms.service": "waf"
-    },
+     },
     "open_to_public_contributors": {
       "**/*.yml": false
     },

@@ -1,0 +1,189 @@
+### YamlMime:Marketing
+title: Azure Well-Architected Framework
+sections:
+  # Intro
+  - componentType: text
+    title: Azure Well-Architected Framework
+    summary: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
+  # Navigation Section
+  - componentType: navigation
+    size: large # optionally make section larger
+    # backgroundColor: medium
+    alignment: center # 'left' is default
+    blocks:
+      - componentType: icon-link
+        icon: book-open
+        url: whats-new.md
+        text: What's new      
+      - componentType: icon-link
+        icon: book-open
+        url: pillars.md
+        text: Pillars
+      - componentType: icon-link
+        icon: book-open
+        url: workloads.md
+        text: Workloads
+      - componentType: icon-link
+        icon: book-solid
+        url: https://bing.com
+        text: Azure offerings
+      - componentType: icon-link
+        icon: topic-learn
+        url: /training/modules/azure-well-architected-introduction/
+        text: Training    
+      - componentType: icon-link
+        icon: developer-tools
+        url: /assessments/?id=azure-architecture-review&mode=pre-assessment
+        text: Assessment tool      
+      - componentType: icon-link
+        icon: topic-architecture
+        url: /azure/architecture/browse/
+        text: Azure Architecture Center
+  # Standard hero
+  - componentType: hero
+    supertitle: Azure Well-Architected Framework
+    title: Design workloads that achieve business value over time.
+    size: small
+    summary: As solution architects, you want to build reliable, secure, and performant workloads that maximize the value of investment in Azure infrastructure. Start with the Pillars, and align your design choices with the principles. Then, build a strong foundation for your workload based on technical design areas. Finally, use review tools to assess your readiness in deploying to production.
+    image:
+      componentType: image
+      src: ./_images/waf-diagram-revised.png   
+
+  # bifold with image and text blocks
+  - componentType: bifold
+    alignment: center
+    blocks:
+      - componentType: video
+        src: https://learn-video.azurefd.net/vod/player?id=fd8c4e50-9d7f-4df0-97cb-d0474b581398&embedUrl=/azure/architecture/framework/mission-critical/mission-critical-health-modeling   
+        id: lofi-hip-hop-beats
+        label: Health modeling for highly reliable workloads    
+      - title: Featured update - Health modeling for highly reliable workloads 
+        summary: Health modeling is an exercise to maximize observability by using raw monitoring logs and metrics with key business requirements to quantify application health. Quick evaluation of health states will lead to quick troubleshooting and expedited remediations.
+        componentType: text
+        links:
+          - componentType: link
+            url: /azure/architecture/framework/mission-critical/mission-critical-health-modeling
+            text: What is health modeling?
+        list:
+          componentType: list
+          style: checklist
+          children:
+            - Identify various user and system flows of your workload
+            - Quantify ‘healthy’, 'degraded', and ‘unhealthy’ states
+            - Visualize the health states to quickly identify issues
+            - Set alerts to send notifications about incidents immediately
+ 
+
+# cards section (4)
+  - componentType: cards
+    title: Pillars
+    backgroundColor: "alternating-grey"
+    blocks:
+      - componentType: card
+        title: Reliability
+        summary: Ensures that the workload meets the uptime and recovery targets by building redundancy and resiliency at scale. 
+        links:
+          - componentType: link
+            url: ./resiliency/principles.md
+            text: Design principles           
+          - componentType: link
+            url: ./resiliency/index.yml
+            text: Quick links
+      - componentType: card
+        title: Security
+        summary: Protect the workload from attacks by maintaining confidentiality and data integrity. 
+        links:
+          - componentType: link
+            url: ./security/security-principles.md
+            text: Design principles
+          - componentType: link
+            url: ./security/security-tradeoffs.md
+            text: Tradeoffs             
+          - componentType: link
+            url: ./security/index.yml
+            text: Quick links
+      - componentType: card
+        title: Cost Optimization
+        summary: Adopt an optimization mindset by at organizational, architectural, and tactical levels to keep your spending within budget. 
+        links:
+          - componentType: link
+            url: ./cost/principles.md
+            text: Design principles
+          - componentType: link
+            url: ./cost/tradeoffs.md
+            text: Tradeoffs             
+          - componentType: link
+            url: ./cost/index.yml
+            text: Quick links
+      - componentType: card
+        title: Operational Excellence
+        summary: Reduce issues in production by building holistic observability and automated systems. 
+        links:
+          - componentType: link
+            url: ./devops/principles.md
+            text: Design principles
+          - componentType: link
+            url: ./devops/index.yml
+            text: Quick links
+      - componentType: card
+        title: Performance Efficiency
+        summary: Adjust to changes in demands placed on the workload by through horizontal scaling and testing changes before deploying to production. 
+        links:
+          - componentType: link
+            url: ./scalability/principles.md
+            text: Design principles
+          - componentType: link
+            url: ./scalability/tradeoffs.md
+            text: Tradeoffs              
+          - componentType: link
+            url: ./scalability/index.yml
+            text: Quick links             
+
+     
+  # Summary cards grid
+  - componentType: grid
+    backgroundColor: "alternating-grey"
+    title: Workloads
+    blocks:
+      - componentType: summary-card
+        title: Oracle on IaaS
+        summary: Host Oracle workloads on Azure, which includes not only Oracle Databases, but also applications such as Siebel, Peoplesoft, JD Edwards. 
+        url: ./oracle-iaas/overview.md
+      - componentType: summary-card
+        title: SAP
+        summary: Evaluate, design, and optimize an SAP workload from premigration to operations. 
+        url: ./sap/quick-links.yml    
+      - componentType: summary-card
+        title: Mission-critical
+        summary: Design and operationalize workloads that are expected to be always available and resilient to failures.
+        url: ./mission-critical/index.yml
+      - componentType: summary-card
+        title: Hybrid
+        summary: Build applications running across on-premises, multicloud, and the edge, ensuring uncompromised security and developer agility.
+        url: ./hybrid/hybrid-overview.md
+      - componentType: summary-card
+        title: Sustainability
+        summary: Plan your path forward, improve your sustainability posture, and create new business value while reducing your operational footprint.
+        url: ./sustainability/index.yml
+      - componentType: summary-card
+        title: IoT
+        summary: Resolve architectural challenges for designing, building, and operating IoT solutions according to your requirements and constraints.
+        url: ./iot/iot-overview.md
+    addendum:
+      text: See example workloads that apply Well-Architected tenets in the 
+      link:
+        text: Azure Architecture Center
+        url: /azure/architecture/browse/
+  # social section
+  - componentType: social
+    title: Follow us on the web
+    links:
+      - componentType: social-link
+        url: /azure/architecture/browse/
+        destination: website    
+      - componentType: social-link
+        url: https://techcommunity.microsoft.com/t5/azure-architecture-blog/bg-p/AzureArchitectureBlog/label-name/Well%20Architected
+        destination: blog
+      - componentType: social-link
+        url: https://www.youtube.com/watch?v=xDhaHSK7mgM
+        destination: youtube
