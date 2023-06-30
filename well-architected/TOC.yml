@@ -10,21 +10,19 @@
       - name: Reliability
         items: 
         - name: Quick links
-          href: resiliency/index.yml
+          href: reliability/index.yml
         - name: Overview
-          href: resiliency/overview.md
+          href: reliability/overview.md
         - name: Design principles
-          href: resiliency/principles.md
+          href: reliability/principles.md
         - name: Checklist
-          href: resiliency/checklist.md
+          href: reliability/checklist.md
         - name: Tradeoffs
-          href: resiliency/tradeoffs.md
+          href: reliability/tradeoffs.md
         - name: Best practices guides   
           items:
-            - name: Guide 1
-              href: coming-soon.md
-            - name: Guide 2
-              href: coming-soon.md                        
+            - name: Reliability guide
+              href: reliability/reliability-guide.md
       - name: Security
         items: 
         - name: Quick links
@@ -39,10 +37,8 @@
           href: security/security-tradeoffs.md
         - name: Best practices guides   
           items:
-            - name: Guide 1
-              href: coming-soon.md
-            - name: Guide 2
-              href: coming-soon.md                        
+            - name: Security guide
+              href: security/security-guide.md
       - name: Cost Optimization
         items: 
         - name: Quick links
@@ -57,40 +53,36 @@
           href: cost-optimization/tradeoffs.md
         - name: Best practices guides   
           items:
-            - name: Guide 1
-              href: coming-soon.md
-            - name: Guide 2
-              href: coming-soon.md                 
+            - name: Cost optimization guide
+              href: cost-optimization/cost-optimization-guide.md
       - name: Operational Excellence
         items: 
         - name: Quick links
-          href: devops/index.yml
+          href: operational-excellence/index.yml
         - name: Overview
-          href: devops/overview.md
+          href: operational-excellence/overview.md
         - name: Design principles
-          href: devops/principles.md
+          href: operational-excellence/principles.md
         - name: Checklist
-          href: devops/checklist.md
+          href: operational-excellence/checklist.md
         - name: Tradeoffs
           href: coming-soon.md
         - name: Best practices guides   
           items:
-            - name: Guide 1
-              href: coming-soon.md
-            - name: Guide 2
-              href: coming-soon.md                 
+            - name: Operational excellence guide
+              href: operational-excellence/operational-excellence-guide.md
       - name: Performance Efficiency
         items: 
         - name: Quick links
-          href: scalability/index.yml
+          href: performance-efficiency/index.yml
         - name: Overview
-          href: scalability/overview.md
+          href: performance-efficiency/overview.md
         - name: Design principles
-          href: scalability/principles.md
+          href: performance-efficiency/principles.md
         - name: Checklist
           href: performance-efficiency/checklist.md
         - name: Tradeoffs
-          href: scalability/tradeoffs.md
+          href: performance-efficiency/tradeoffs.md
         - name: Best practices guides   
           items:
             - name: Establish performance targets

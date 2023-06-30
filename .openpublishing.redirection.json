@@ -307,7 +307,7 @@
 		},
 		{
 			"source_path": "well-architected/cost/index.yml",
-			"redirect_url": "/azure/well-architected/cost-optimization/",
+			"redirect_url": "/azure/well-architected/cost-optimization/index",
 			"redirect_document_id": true
 		},
 		{
@@ -447,7 +447,7 @@
 		},
 		{
 			"source_path": "well-architected/devops/index.yml",
-			"redirect_url": "/azure/well-architected/operational-excellence/",
+			"redirect_url": "/azure/well-architected/operational-excellence/index",
 			"redirect_document_id": false
 		},
 		{
@@ -492,7 +492,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/index.yml",
-			"redirect_url": "/azure/well-architected/performance-efficiency/",
+			"redirect_url": "/azure/well-architected/performance-efficiency/index",
 			"redirect_document_id": true
 		},
 		{
@@ -642,7 +642,7 @@
 		},
 		{
 			"source_path": "well-architected/resiliency/index.yml",
-			"redirect_url": "/azure/well-architected/reliability/",
+			"redirect_url": "/azure/well-architected/reliability/index",
 			"redirect_document_id": true
 		},
 		{

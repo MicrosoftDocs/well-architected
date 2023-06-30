@@ -11,8 +11,8 @@
       topicHref: /azure/well-architected
       items:  
       - name: Reliability
-        tocHref: /azure/well-architected/resiliency/
-        topicHref: /azure/well-architected/resiliency/overview
+        tocHref: /azure/well-architected/reliability/
+        topicHref: /azure/well-architected/reliability/overview
       - name: Security
         tocHref: /azure/well-architected/security/
         topicHref: /azure/well-architected/security/overview
@@ -20,11 +20,11 @@
         tocHref: /azure/well-architected/cost-optimization/
         topicHref: /azure/well-architected/cost-optimization/overview
       - name: Operational Excellence
-        tocHref: /azure/well-architected/devops/
-        topicHref: /azure/well-architected/devops/overview
+        tocHref: /azure/well-architected/operational-excellence/
+        topicHref: /azure/well-architected/operational-excellence/overview
       - name: Performance Efficiency
-        tocHref: /azure/well-architected/scalability/
-        topicHref: /azure/well-architected/scalability/overview
+        tocHref: /azure/well-architected/performance-efficiency/
+        topicHref: /azure/well-architected/performance-efficiency/overview
     - name: Workloads
       tocHref: /azure/well-architected/workloads/
       topicHref: /azure/well-architected
@@ -49,4 +49,4 @@
         topicHref: /azure/well-architected/sap/quick-links
       - name: Sustainability
         tocHref: /azure/well-architected/sustainability/
-        topicHref: /azure/well-architected/sustainability/index                                                                       
+        topicHref: /azure/well-architected/sustainability/index
