@@ -238,9 +238,9 @@
             - name: Operational excellence
               href: service-guides/messaging/iot-hub-dps/operational-excellence.md
         - name: IP addresses
-              href: service-guides/ip-addresses-cost-optimization.md
+          href: service-guides/ip-addresses-cost-optimization.md
         - name: Log Analytics
-              href: service-guides/log-analytics-cost-optimization.md
+          href: service-guides/log-analytics-cost-optimization.md
         - name: Network connectivity
           items:
             - name: Reliability
