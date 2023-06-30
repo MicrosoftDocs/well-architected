@@ -59,4 +59,4 @@ Consider the following recommendation table to optimize your Azure Stack Hub con
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Storage Accounts and reliability](storage-accounts/reliability.md)
+> [Storage Accounts and reliability](../storage-accounts/reliability.md)
