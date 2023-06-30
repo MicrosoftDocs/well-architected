@@ -50,4 +50,4 @@ Consider the following recommendation for cost optimization when configuring IP 
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Cost optimization and Log Analytics](../../monitoring/log-analytics/cost-optimization.md)
+> [Cost optimization and Log Analytics](log-analytics-cost-optimization.md)

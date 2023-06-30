@@ -36,7 +36,7 @@ To learn how Azure Firewall supports a reliable workload, see the following arti
 
 ### Design checklist
 
-As you make design choices for Azure Firewall, review the [design principles](../../resiliency/principles.md) for reliability.
+As you make design choices for Azure Firewall, review the [design principles](../resiliency/principles.md) for reliability.
 
 > [!div class="checklist"]
 > - Deploy by using a secured virtual hub.
@@ -64,7 +64,7 @@ Security is one of the most important aspects of any architecture. [Azure Firewa
 
 ### Design checklist
 
-As you make design choices for Azure Firewall, review the [design principles](../../security/security-principles.md) for security.
+As you make design choices for Azure Firewall, review the [design principles](../security/security-principles.md) for security.
 
 > [!div class="checklist"]
 > - Use a global Azure Firewall policy.
@@ -108,7 +108,7 @@ Cost optimization is about looking at ways to reduce unnecessary expenses and im
 
 ### Design checklist
 
-As you make design choices for Azure Firewall, review the [design principles](../../cost-optimization/principles.md) for cost optimization.
+As you make design choices for Azure Firewall, review the [design principles](../cost-optimization/principles.md) for cost optimization.
 
 > [!div class="checklist"]
 > - Determine which firewall SKUs to deploy.
@@ -131,7 +131,7 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 |Use Azure Firewall Manager and its policies to reduce operational costs, increase efficiency, and reduce management overhead.|Review your Firewall Manager policies, associations, and inheritance carefully. Policies are billed based on firewall associations. A policy with zero or one firewall association is free of charge. A policy with multiple firewall associations is billed at a fixed rate.<br><br>For more information, see [Pricing - Azure Firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager).|
 |Delete unused public IP addresses and use IP Groups to reduce your management overhead.|Validate whether all the associated public IP addresses are in use. If they aren't in use, disassociate and delete them. Use IP Groups to reduce your management overhead. Evaluate SNAT port utilization before removing any IP addresses.<br><br>You'll only use the number of public IPs your firewall needs. For more information, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port utilization](/azure/firewall/logs-and-metrics#metrics).
 
-For more suggestions, see [Principles of the Cost optimization pillar](../../cost-optimization/overview.md).
+For more suggestions, see [Principles of the Cost optimization pillar](../cost-optimization/overview.md).
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
@@ -141,7 +141,7 @@ Monitoring and diagnostics are crucial. You can measure performance statistics a
 
 ### Design checklist
 
-As you make design choices for Azure Firewall, review the [design principles](../../devops/principles.md) for operational excellence.
+As you make design choices for Azure Firewall, review the [design principles](../devops/principles.md) for operational excellence.
 
 > [!div class="checklist"]
 > - Use logs for monitoring.
@@ -172,7 +172,7 @@ Performance efficiency is the ability of your workload to scale to efficiently m
 
 ### Design checklist
 
-As you make design choices for Azure Firewall, review the [design principles](../../scalability/principles.md) for performance efficiency.
+As you make design choices for Azure Firewall, review the [design principles](../scalability/principles.md) for performance efficiency.
 
 > [!div class="checklist"]
 > - Determine your SNAT port requirements and if you should deploy a NAT gateway.

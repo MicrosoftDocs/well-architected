@@ -92,4 +92,4 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Azure Databricks and security](../azure-databricks/security.md)
+> [Azure Databricks and security](azure-databricks-security.md)

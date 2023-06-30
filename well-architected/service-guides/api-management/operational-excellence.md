@@ -65,4 +65,4 @@ Consider the following recommendations for operational excellence when configuri
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Reliability and Azure Firewall](../azure-firewall/reliability.md)
+> [Reliability and Azure Firewall](../azure-firewall.md)

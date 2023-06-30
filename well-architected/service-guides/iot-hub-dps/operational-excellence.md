@@ -27,4 +27,4 @@ For more information about the Service Level Agreement for Azure IoT Hub DPS, re
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Application Delivery (General) and reliability](../../networking/application-delivery/reliability.md)
+> [Application Delivery (General) and reliability](../application-delivery/reliability.md)

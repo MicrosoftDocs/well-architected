@@ -841,9 +841,7 @@
                   - name: Security
                     href: service-guides/azure-databricks-security.md
               - name: Azure Database for MySQL
-                items:
-                  - name: Cost optimization
-                    href: service-guides/azure-db-mysql/cost-optimization.md
+                href: service-guides/azure-db-mysql-cost-optimization.md
               - name: Azure Database for PostgreSQL
                 href: service-guides/azure-db-postgresql-well-architected-framework.md
               - name: Azure SQL Database
@@ -865,9 +863,9 @@
               - name: Azure Stack Hub
                 items:
                   - name: Reliability
-                    href: service-guides/hybrid/azure-stack-hub/reliability.md
+                    href: service-guides/azure-stack-hub/reliability.md
                   - name: Operational excellence
-                    href: service-guides/hybrid/azure-stack-hub/operational-excellence.md
+                    href: service-guides/azure-stack-hub/operational-excellence.md
           - name: Storage
             items:
               - name: Storage Accounts

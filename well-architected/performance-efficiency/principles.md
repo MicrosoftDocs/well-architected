@@ -55,6 +55,6 @@ Use this checklist to review your application architecture from a performance de
 
 ## Related links
 
-- Performance efficiency impacts the entire architecture spectrum and is interrelated with other pillars of the [Microsoft Azure Well-Architected Framework](../index.md).
+- Performance efficiency impacts the entire architecture spectrum and is interrelated with other pillars of the [Microsoft Azure Well-Architected Framework](../pillars.md).
 
 - Assess your workload using the [Microsoft Azure Well-Architected Review tool](/assessments/?mode=pre-assessment&session=5c2bcc40-1c41-47b1-8729-1fba49dbe408).

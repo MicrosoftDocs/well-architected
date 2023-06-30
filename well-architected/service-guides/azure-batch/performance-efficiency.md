@@ -43,4 +43,4 @@ Consider the following recommendation to optimize your workload design and Azure
 ## Next step
 
 > [!div class="nextstepaction"]
-> [AKS and reliability](../azure-kubernetes-service/reliability.md)
+> [AKS and reliability](azure-kubernetes-service.md)

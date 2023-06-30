@@ -28,7 +28,7 @@ The following sections include a design checklist and recommended design options
 
 ## Prerequisites
 
-* Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. Check out the [Azure Well-Architected Framework overview page](../../index.md) to review the five pillars of architectural excellence.
+* Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. Check out the [Azure Well-Architected Framework overview page](../pillars.md) to review the five pillars of architectural excellence.
 
 * Review the [core concepts of Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) and [What's new in Azure SQL Database?](/azure/azure-sql/database/doc-changes-updates-release-notes-whats-new).
 

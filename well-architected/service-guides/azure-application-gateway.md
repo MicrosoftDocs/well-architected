@@ -31,7 +31,7 @@ In the cloud, we acknowledge that failures happen. Instead of trying to prevent 
 
 ### Design checklist
 
-As you make design choices for Application Gateway, review the [Reliability design principles](../../resiliency/principles.md).
+As you make design choices for Application Gateway, review the [Reliability design principles](../resiliency/principles.md).
 
 > [!div class="checklist"]
 > - Deploy the instances in a [zone-aware configuration](/azure/application-gateway/application-gateway-autoscaling-zone-redundant), where available.
@@ -58,7 +58,7 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Security
 
-Security is one of the most important aspects of any architecture. Application Gateway provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../../security/security-principles.md).
+Security is one of the most important aspects of any architecture. Application Gateway provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../security/security-principles.md).
 
 ### Design checklist
 
@@ -101,7 +101,7 @@ All built-in policy definitions related to Azure Networking are listed in [Built
 
 ## Cost optimization
 
-Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principles](../../cost-optimization/principles.md).
+Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principles](../cost-optimization/principles.md).
 
 ### Design checklist
 
@@ -122,15 +122,15 @@ Explore the following table of recommendations to optimize your Application Gate
 | Review underutilized resources | Identify and delete Application Gateway instances with empty backend pools to avoid unnecessary costs. |
 | Stop Application Gateway instances when not in use | You aren't billed when Application Gateway is in the stopped state. Continuously running Application Gateway instances can incur extraneous costs. Evaluate usage patterns and stop instances when you don't need them. For example, usage after business hours in Dev/Test environments is expected to be low.<br><br>See these articles for information about how to stop and start instances.<br>- [Stop-AzApplicationGateway](/powershell/module/az.network/stop-azapplicationgateway?view=azps-6.0.0&viewFallbackFrom=azps-5.2.0&preserve-view=true)<br>- [Start-AzApplicationGateway](/powershell/module/az.network/start-azapplicationgateway?view=azps-5.2.0&preserve-view=true) |
 | Have a scale-in and scale-out policy | A scale-out policy ensures that there will be enough instances to handle incoming traffic and spikes. Also, have a scale-in policy that makes sure the number of instances are reduced when demand drops. Consider the choice of instance size. The size can significantly impact the cost. Some considerations are described in the Estimate the Application Gateway instance count.<br><br>For more information, see [What is Azure Application Gateway v2?](/azure/application-gateway/overview-v2#pricing.) |
-| Review consumption metrics across different parameters | You're billed based on metered instances of Application Gateway based on the metrics tracked by Azure. Evaluate the various metrics and capacity units and determine the cost drivers. For more information, see [Azure Cost Management and Billing](https://azure.microsoft.com/services/cost-management/#overview).<br><br> The following metrics are key for Application Gateway. This information can be used to validate that the provisioned instance count matches the amount of incoming traffic.<br><br>- Estimated Billed Capacity Units<br>- Fixed Billable Capacity Units<br>- Current Capacity Units<br><br>For more information, see [Application Gateway metrics](/azure/application-gateway/application-gateway-metrics#application-gateway-metrics).<br><br>Make sure you account for bandwidth costs. For details, see [Traffic across billing zones and regions](../../cost-optimization/design-regions.md#traffic-across-billing-zones-and-regions).|
+| Review consumption metrics across different parameters | You're billed based on metered instances of Application Gateway based on the metrics tracked by Azure. Evaluate the various metrics and capacity units and determine the cost drivers. For more information, see [Azure Cost Management and Billing](https://azure.microsoft.com/services/cost-management/#overview).<br><br> The following metrics are key for Application Gateway. This information can be used to validate that the provisioned instance count matches the amount of incoming traffic.<br><br>- Estimated Billed Capacity Units<br>- Fixed Billable Capacity Units<br>- Current Capacity Units<br><br>For more information, see [Application Gateway metrics](/azure/application-gateway/application-gateway-metrics#application-gateway-metrics).<br><br>Make sure you account for bandwidth costs. For details, see [Traffic across billing zones and regions](../cost-optimization/design-regions.md#traffic-across-billing-zones-and-regions).|
 
-For more suggestions, see [Principles of the cost optimization pillar](../../cost-optimization/overview.md).
+For more suggestions, see [Principles of the cost optimization pillar](../cost-optimization/overview.md).
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
 ## Operational excellence
 
-Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../../devops/principles.md).
+Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../devops/principles.md).
 
 ### Design checklist
 
@@ -163,7 +163,7 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Performance efficiency
 
-Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](../../scalability/principles.md).
+Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](../scalability/principles.md).
 
 ### Design checklist
 
@@ -180,7 +180,7 @@ Explore the following table of recommendations to optimize your Application Gate
 
 | Recommendation | Benefit |
 |--------|----|
-| Estimate the Application Gateway instance count | Application Gateway v2 scales out based on many aspects, such as CPU, network throughput, current connections, and more. To determine the approximate instance count, factor in these metrics:<br><br>Current compute units — Indicates CPU utilization. 1 Application Gateway instance is approximately 10 compute units.<br>Throughput — Application Gateway instance can serve ~500 Mbps of throughput. This data depends on the type of payload.<br><br>Consider this equation when calculating instance counts.<br>![Approximate instance count](../../_images/autoscale-instance.svg)<br><br>After you've estimated the instance count, compare that value to the maximum instance count. This will indicate how close you are to the maximum available capacity.
+| Estimate the Application Gateway instance count | Application Gateway v2 scales out based on many aspects, such as CPU, network throughput, current connections, and more. To determine the approximate instance count, factor in these metrics:<br><br>Current compute units — Indicates CPU utilization. 1 Application Gateway instance is approximately 10 compute units.<br>Throughput — Application Gateway instance can serve ~500 Mbps of throughput. This data depends on the type of payload.<br><br>Consider this equation when calculating instance counts.<br>![Approximate instance count](../_images/autoscale-instance.svg)<br><br>After you've estimated the instance count, compare that value to the maximum instance count. This will indicate how close you are to the maximum available capacity.
 | Define the minimum instance count | For Application Gateway v2 SKU, autoscaling takes some time (approximately six to seven minutes) before the additional set of instances is ready to serve traffic. During that time, if there are short spikes in traffic, expect transient latency or loss of traffic.<br><br>We recommend that you set your minimum instance count to an optimal level. After you estimate the average instance count and determine your Application Gateway autoscaling trends, define the minimum instance count based on your application patterns. For information, see [Application Gateway high traffic support](/azure/application-gateway/high-traffic-support).<br><br>Check the Current Compute Units for the past one month. This metric represents the gateway's CPU utilization. To define the minimum instance count, divide the peak usage by 10. For example, if your average Current Compute Units in the past month is 50, set the minimum instance count to five. |
 | Define the maximum instance count | We recommend 125 as the maximum autoscale instance count. Make sure the subnet that has the Application Gateway has sufficient available IP addresses to support the scale-up set of instances.<br><br>Setting the maximum instance count to 125 has no cost implications because you're billed only for the consumed capacity. |
 | Define Application Gateway subnet size | Application Gateway needs a dedicated subnet within a virtual network. The subnet can have multiple instances of the deployed Application Gateway resource. You can also deploy other Application Gateway resources in that subnet, v1 or v2 SKU.<br><br>Here are some considerations for defining the subnet size:<br><br>- Application Gateway uses one private IP address per instance and another private IP address if a private front-end IP is configured.<br>- Azure reserves five IP addresses in each subnet for internal use.<br>- Application Gateway (Standard or WAF SKU) can support up to 32 instances. Taking 32 instance IP addresses + 1 private front-end IP + 5 Azure reserved, a minimum subnet size of /26 is recommended. Because the Standard_v2 or WAF_v2 SKU can support up to 125 instances, using the same calculation, a subnet size of /24 is recommended.<br>- If you want to deploy additional Application Gateway resources in the same subnet, consider the additional IP addresses that will be required for their maximum instance count for both, Standard and Standard v2. |

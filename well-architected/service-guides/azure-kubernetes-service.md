@@ -76,7 +76,7 @@ In addition to the built-in Azure Policy definitions, custom policies can be cre
 
 ## Security
 
-Security is one of the most important aspects of any architecture. To explore how AKS can bolster the security of your application workload, we recommend you review the [Security design principles](../../../security/security-principles.md). If your Azure Kubernetes Service cluster needs to be designed to run a sensitive workload that meets the regulatory requirements of the Payment Card Industry Data Security Standard (PCI-DSS 3.2.1), review [AKS regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro).
+Security is one of the most important aspects of any architecture. To explore how AKS can bolster the security of your application workload, we recommend you review the [Security design principles](../security/security-principles.md). If your Azure Kubernetes Service cluster needs to be designed to run a sensitive workload that meets the regulatory requirements of the Payment Card Industry Data Security Standard (PCI-DSS 3.2.1), review [AKS regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro).
 
 To learn about DoD Impact Level 5 (IL5) support and requirements with AKS, review [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-kubernetes-service).
 
@@ -146,7 +146,7 @@ For more suggestions, see [AKS security concepts](/azure/aks/concepts-security) 
 
 Cost optimization is about understanding your different configuration options and recommended best practices to reduce unnecessary expenses and improve operational efficiencies. Before you follow the guidance in this article, we recommend you review the following resources:
 
-* [Cost optimization design principles](../../../cost-optimization/principles.md).
+* [Cost optimization design principles](../cost-optimization/principles.md).
 * [How pricing and cost management work in Azure Kubernetes Service (AKS) compared to Amazon Elastic Kubernetes Service (Amazon EKS)](/azure/architecture/aws-professional/eks-to-aks/cost-management).
 * If you are running AKS on-premises or at the edge, [Azure Hybrid Benefit](/windows-server/get-started/azure-hybrid-benefit) can also be used to further reduce costs when running containerized applications in those scenarios.
 
@@ -183,7 +183,7 @@ Explore the following table of recommendations to optimize your AKS configuratio
 |**Cluster architecture:** Sign up for [Azure Reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) or [Azure Savings Plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview). | If you properly planned for capacity, your workload is predictable and exists for an extended period of time, sign up for an [Azure Reservation](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview#determine-your-savings-plan-commitment) to further reduce your resource costs.|
 |**Cluster architecture:** Configure monitoring of cluster with [Container insights](/azure/azure-monitor/containers/container-insights-overview). | Container insights help provides actionable insights into your clusters idle and unallocated resources. Container insights also supports collecting Prometheus metrics and integrates with Azure Managed Grafana to get a holistic view of your application and infrastructure.|
 
-For more suggestions, see [Principles of the cost optimization pillar](../../../cost-optimization/overview.md).
+For more suggestions, see [Principles of the cost optimization pillar](../cost-optimization/overview.md).
 
 ### Policy definitions
 
@@ -191,7 +191,7 @@ While there are no built-in policies that are related to cost optimization, cust
 
 ### Cloud efficiency
 
-Making workloads more [sustainable and cloud efficient](../../../sustainability/sustainability-get-started.md), requires combining efforts around **cost optimization**, **reducing carbon emissions**, and **optimizing energy consumption**. Optimizing the application's cost is the initial step in making workloads more sustainable.
+Making workloads more [sustainable and cloud efficient](../sustainability/sustainability-get-started.md), requires combining efforts around **cost optimization**, **reducing carbon emissions**, and **optimizing energy consumption**. Optimizing the application's cost is the initial step in making workloads more sustainable.
 
 Learn how to build sustainable and efficient AKS workloads, in [Sustainable software engineering principles in Azure Kubernetes Service (AKS)](/azure/aks/concepts-sustainable-software-engineering).
 

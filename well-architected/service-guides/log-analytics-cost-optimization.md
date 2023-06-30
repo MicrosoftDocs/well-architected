@@ -60,4 +60,4 @@ Consider the following recommendation for cost optimization when configuring Log
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Security and Application Insights](../../monitoring/application-insights/security.md)
+> [Security and Application Insights](application-insights/security.md)

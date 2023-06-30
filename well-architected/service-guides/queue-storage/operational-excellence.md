@@ -38,7 +38,7 @@ Azure Queue Storage follows the SLA statements of the general [Storage Account s
 **Have you configured Azure Queue Storage with operational excellence in mind?**
 
 > [!div class="checklist"]
-> - Since Storage Queues are a part of the [Azure Storage service](/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json), refer to the [Storage Accounts configuration checklist and recommendations for operational excellence](../../storage/storage-accounts/operational-excellence.md).
+> - Since Storage Queues are a part of the [Azure Storage service](/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json), refer to the [Storage Accounts configuration checklist and recommendations for operational excellence](../storage-accounts/operational-excellence.md).
 > - Ensure that for all clients accessing the storage account, implement a proper [retry policy](/azure/architecture/best-practices/retry-service-specific#azure-storage).
 > - Refer to the Storage guidance for specifics on [data recovery for storage accounts](/azure/storage/common/storage-disaster-recovery-guidance?toc=/azure/storage/blobs/toc.json).
 

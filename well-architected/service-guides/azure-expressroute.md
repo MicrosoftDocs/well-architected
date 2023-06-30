@@ -72,7 +72,7 @@ Azure Advisor provides many recommendations for ExpressRoute circuits as they re
 
 ## Security
 
-Security is one of the most important aspects of any architecture. ExpressRoute provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../../security/security-principles.md).
+Security is one of the most important aspects of any architecture. ExpressRoute provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../security/security-principles.md).
 
 ### Design checklist
 
@@ -99,7 +99,7 @@ For more suggestions, see [Principles of the security pillar](/azure/well-archit
 
 ## Cost optimization
 
-Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principle](../../cost-optimization/principles.md) and [Plan and manage costs for Azure ExpressRoute](/azure/expressroute/plan-manage-cost).
+Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies. We recommend you review the [Cost optimization design principle](../cost-optimization/principles.md) and [Plan and manage costs for Azure ExpressRoute](/azure/expressroute/plan-manage-cost).
 
 ### Design checklist
 
@@ -122,13 +122,13 @@ Explore the following table of recommendations to optimize your ExpressRoute con
 | Monitor cost and create budget alerts | Monitor the cost of your ExpressRoute circuit and create alerts for spending anomalies and overspending risks. For more information, see [Monitoring ExpressRoute costs](/azure/expressroute/plan-manage-cost#monitor-costs). |
 | Deprovision and delete ExpressRoute circuits no longer in use. | ExpressRoute circuits are charged from the moment they're created. To reduce unnecessary cost, deprovision the circuit with the service provider and delete the ExpressRoute circuit from your subscription. For steps on how to remove an ExpressRoute circuit, see [Deprovisioning an ExpressRoute circuit](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager#delete). |
 
-For more suggestions, see [Principles of the cost optimization pillar](../../cost-optimization/overview.md).
+For more suggestions, see [Principles of the cost optimization pillar](../cost-optimization/overview.md).
 
 Azure Advisor can detect ExpressRoute circuits that have been deployed for a significant time but have a provider status of *Not Provisioned*. Circuits in this state aren't operational; and removing the unused resource will reduce unnecessary costs.
 
 ## Operational excellence
 
-Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../../devops/principles.md).
+Monitoring and diagnostics are crucial. Not only can you measure performance statistics but also use metrics troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../devops/principles.md).
 
 ### Design checklist
 
@@ -153,7 +153,7 @@ For more suggestions, see [Principles of the operational excellence pillar](/azu
 
 ## Performance efficiency
 
-Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](../../scalability/principles.md).
+Performance efficiency is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. We recommend you review the [Performance efficiency principles](../scalability/principles.md).
 
 ### Design checklist
 
