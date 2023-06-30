@@ -176,7 +176,7 @@
         - name: Azure Database for MySQL
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
-          href: service-guides/azure-db-postgresql-cost-optimization.md
+          href: service-guides/azure-db-postgresql-well-architected-framework.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
@@ -198,9 +198,9 @@
         - name: Azure Stack Hub
           items:
             - name: Reliability
-              href: service-guides/hybrid/azure-stack-hub/reliability.md
+              href: service-guides/azure-stack-hub/reliability.md
             - name: Operational excellence
-              href: service-guides/hybrid/azure-stack-hub/operational-excellence.md
+              href: service-guides/azure-stack-hub/operational-excellence.md
         - name: Azure Virtual Network
           items:
             - name: Reliability
@@ -212,15 +212,15 @@
         - name: Event Grid
           items:
             - name: Reliability
-              href: service-guides/messaging/event-grid/reliability.md
+              href: service-guides/event-grid/reliability.md
             - name: Operational excellence
-              href: service-guides/messaging/event-grid/operational-excellence.md
+              href: service-guides/event-grid/operational-excellence.md
         - name: Event Hubs
           items:
             - name: Reliability
-              href: service-guides/messaging/event-hubs/reliability.md
+              href: service-guides/event-hubs/reliability.md
             - name: Operational excellence
-              href: service-guides/messaging/event-hubs/operational-excellence.md
+              href: service-guides/event-hubs/operational-excellence.md
         - name: ExpressRoute
           href: service-guides/azure-expressroute.md
         - name: Functions
@@ -228,15 +228,15 @@
         - name: IoT Hub
           items:
             - name: Reliability
-              href: service-guides/messaging/iot-hub/reliability.md
+              href: service-guides/iot-hub/reliability.md
             - name: Operational excellence
-              href: service-guides/messaging/iot-hub/operational-excellence.md
+              href: service-guides/iot-hub/operational-excellence.md
         - name: IoT Hub Device Provisioning Service
           items:
             - name: Reliability
-              href: service-guides/messaging/iot-hub-dps/reliability.md
+              href: service-guides/iot-hub-dps/reliability.md
             - name: Operational excellence
-              href: service-guides/messaging/iot-hub-dps/operational-excellence.md
+              href: service-guides/iot-hub-dps/operational-excellence.md
         - name: IP addresses
           href: service-guides/ip-addresses-cost-optimization.md
         - name: Log Analytics
@@ -260,25 +260,25 @@
         - name: Queue Storage
           items:
             - name: Reliability
-              href: service-guides/messaging/queue-storage/reliability.md
+              href: service-guides/queue-storage/reliability.md
             - name: Operational excellence
-              href: service-guides/messaging/queue-storage/operational-excellence.md
+              href: service-guides/queue-storage/operational-excellence.md
         - name: Service Bus
           items:
             - name: Reliability
-              href: service-guides/messaging/service-bus/reliability.md
+              href: service-guides/service-bus/reliability.md
             - name: Operational excellence
-              href: service-guides/messaging/service-bus/operational-excellence.md
+              href: service-guides/service-bus/operational-excellence.md
         - name: Storage Accounts
           items:
             - name: Reliability
-              href: service-guides/storage/storage-accounts/reliability.md
+              href: service-guides/storage-accounts/reliability.md
             - name: Security
-              href: service-guides/storage/storage-accounts/security.md
+              href: service-guides/storage-accounts/security.md
             - name: Cost optimization
-              href: service-guides/storage/storage-accounts/cost-optimization.md
+              href: service-guides/storage-accounts/cost-optimization.md
             - name: Operational excellence
-              href: service-guides/storage/storage-accounts/operational-excellence.md
+              href: service-guides/storage-accounts/operational-excellence.md
         - name: Traffic Manager
           items:
             - name: Reliability
@@ -821,13 +821,13 @@
                   - name: Performance efficiency
                     href: service-guides/azure-batch/performance-efficiency.md
               - name: Azure Kubernetes Service
-                href: service-guides/azure-kubernetes-service/azure-kubernetes-service.md
+                href: service-guides/azure-kubernetes-service.md
               - name: Functions
                 items:
                   - name: Security
-                    href: service-guides/functions/security.md
+                    href: service-guides/azure-functions-security.md
               - name: Virtual Machines
-                href: service-guides/virtual-machines/virtual-machines-review.md
+                href: service-guides/virtual-machines-review.md
           - name: Data
             items:
               - name: Azure Cache for Redis
@@ -839,7 +839,7 @@
               - name: Azure Databricks
                 items:
                   - name: Security
-                    href: service-guides/azure-databricks/security.md
+                    href: service-guides/azure-databricks-security.md
               - name: Azure Database for MySQL
                 items:
                   - name: Cost optimization
@@ -873,55 +873,55 @@
               - name: Storage Accounts
                 items:
                   - name: Reliability
-                    href: service-guides/storage/storage-accounts/reliability.md
+                    href: service-guides/storage-accounts/reliability.md
                   - name: Security
-                    href: service-guides/storage/storage-accounts/security.md
+                    href: service-guides/storage-accounts/security.md
                   - name: Cost optimization
-                    href: service-guides/storage/storage-accounts/cost-optimization.md
+                    href: service-guides/storage-accounts/cost-optimization.md
                   - name: Operational excellence
-                    href: service-guides/storage/storage-accounts/operational-excellence.md
+                    href: service-guides/storage-accounts/operational-excellence.md
               - name: Disks
                 items:
                   - name: Cost optimization
-                    href: service-guides/storage/disks/cost-optimization.md
+                    href: service-guides/azure-disks-cost-optimization.md
           - name: Messaging
             items:
               - name: Event Grid
                 items:
                   - name: Reliability
-                    href: service-guides/messaging/event-grid/reliability.md
+                    href: service-guides/event-grid/reliability.md
                   - name: Operational excellence
-                    href: service-guides/messaging/event-grid/operational-excellence.md
+                    href: service-guides/event-grid/operational-excellence.md
               - name: Event Hubs
                 items:
                   - name: Reliability
-                    href: service-guides/messaging/event-hubs/reliability.md
+                    href: service-guides/event-hubs/reliability.md
                   - name: Operational excellence
-                    href: service-guides/messaging/event-hubs/operational-excellence.md
+                    href: service-guides/event-hubs/operational-excellence.md
               - name: Service Bus
                 items:
                   - name: Reliability
-                    href: service-guides/messaging/service-bus/reliability.md
+                    href: service-guides/service-bus/reliability.md
                   - name: Operational excellence
-                    href: service-guides/messaging/service-bus/operational-excellence.md
+                    href: service-guides/service-bus/operational-excellence.md
               - name: Queue Storage
                 items:
                   - name: Reliability
-                    href: service-guides/messaging/queue-storage/reliability.md
+                    href: service-guides/queue-storage/reliability.md
                   - name: Operational excellence
-                    href: service-guides/messaging/queue-storage/operational-excellence.md
+                    href: service-guides/queue-storage/operational-excellence.md
               - name: IoT Hub
                 items:
                   - name: Reliability
-                    href: service-guides/messaging/iot-hub/reliability.md
+                    href: service-guides/iot-hub/reliability.md
                   - name: Operational excellence
-                    href: service-guides/messaging/iot-hub/operational-excellence.md
+                    href: service-guides/iot-hub/operational-excellence.md
               - name: IoT Hub Device Provisioning Service
                 items:
                   - name: Reliability
-                    href: service-guides/messaging/iot-hub-dps/reliability.md
+                    href: service-guides/iot-hub-dps/reliability.md
                   - name: Operational excellence
-                    href: service-guides/messaging/iot-hub-dps/operational-excellence.md
+                    href: service-guides/iot-hub-dps/operational-excellence.md
           - name: Networking
             items: 
               - name: Application Delivery (General)
@@ -989,13 +989,13 @@
               - name: IP addresses
                 items:
                   - name: Cost optimization
-                    href: service-guides/ip-addresses/cost-optimization.md            
+                    href: service-guides/ip-addresses-cost-optimization.md            
           - name: Monitoring
             items:
               - name: Log Analytics
                 items:
                   - name: Cost optimization
-                    href: service-guides/log-analytics/cost-optimization.md
+                    href: service-guides/log-analytics-cost-optimization.md
               - name: Application Insights
                 items:
                   - name: Security
