@@ -23,8 +23,6 @@
           items:
             - name: Reliability guide
               href: reliability/reliability-guide.md
-            - name: Guide 2
-              href: coming-soon.md                        
       - name: Security
         items: 
         - name: Quick links
@@ -41,8 +39,6 @@
           items:
             - name: Security guide
               href: security/security-guide.md
-            - name: Guide 2
-              href: coming-soon.md                        
       - name: Cost Optimization
         items: 
         - name: Quick links
@@ -59,8 +55,6 @@
           items:
             - name: Cost optimization guide
               href: cost-optimization/cost-optimization-guide.md
-            - name: Guide 2
-              href: coming-soon.md                 
       - name: Operational Excellence
         items: 
         - name: Quick links
@@ -77,8 +71,6 @@
           items:
             - name: Operational excellence guide
               href: operational-excellence/operational-excellence-guide.md
-            - name: Guide 2
-              href: coming-soon.md                 
       - name: Performance Efficiency
         items: 
         - name: Quick links
