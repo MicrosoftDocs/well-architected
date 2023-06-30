@@ -322,7 +322,7 @@
     - name: Old TOC
       items:
       - name: Overview
-        href: ./index.md
+        href: old-index.md
       - name: Reliability
         items:
           - name: About
@@ -1044,6 +1044,3 @@
         href: security\architecture-type.md
       - name: DevOps alerts
         href: devops\alerts.md
-      - name: Old index.md
-        href: old-index.md
-        
