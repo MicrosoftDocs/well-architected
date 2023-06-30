@@ -322,7 +322,7 @@
     - name: Old TOC
       items:
       - name: Overview
-        href: ./index.md
+        href: old-index.md
       - name: Reliability
         items:
           - name: About
