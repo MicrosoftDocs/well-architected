@@ -15,7 +15,7 @@ ms.custom:
 
 Is the application tested for performance, scalability, and resiliency?
 
-Performance testing helps to maintain systems properly and fix defects before problems reach system users. It's part of the Performance Efficiency pillar in the [Microsoft Azure Well-Architected Framework](../index.md).
+Performance testing helps to maintain systems properly and fix defects before problems reach system users. It's part of the Performance Efficiency pillar in the [Microsoft Azure Well-Architected Framework](../pillars.md).
 
 **Performance testing** is the superset of both load testing and stress testing. The primary goal of performance testing is to validate benchmark behavior for the application.
 

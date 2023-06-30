@@ -1,5 +1,5 @@
 - name: Microsoft Azure Well-Architected Framework
-  href: index.yml
+  href: ./index.yml
   items:
     - name: What's new
       href: whats-new.md
@@ -105,214 +105,188 @@
         href: sap/quick-links.yml        
       - name: Sustainability
         href: sustainability/index.yml        
-    - name: Services
+    - name: Service guides
       items:
-        - name: Compute
+        - name: Overview
+          href: service-guides/overview.md
+        - name: API Management
           items:
-            - name: Azure Service Fabric
-              href: services/compute/azure-service-fabric-well-architected-framework.md
-            - name: Azure App Service
-              items:
-                - name: Reliability
-                  href: services/compute/azure-app-service/reliability.md
-                - name: Cost optimization
-                  href: services/compute/azure-app-service/cost-optimization.md
-                - name: Operational excellence
-                  href: services/compute/azure-app-service/operational-excellence.md
-            - name: Azure Batch
-              items:
-                - name: Reliability
-                  href: services/compute/azure-batch/reliability.md
-                - name: Operational excellence
-                  href: services/compute/azure-batch/operational-excellence.md
-                - name: Performance efficiency
-                  href: services/compute/azure-batch/performance-efficiency.md
-            - name: Azure Kubernetes Service
-              href: services/compute/azure-kubernetes-service/azure-kubernetes-service.md
-            - name: Functions
-              items:
-                - name: Security
-                  href: services/compute/functions/security.md
-            - name: Virtual Machines
-              href: services/compute/virtual-machines/virtual-machines-review.md
-        - name: Data
+            - name: Reliability
+              href: service-guides/api-management/reliability.md
+            - name: Cost optimization
+              href: service-guides/api-management/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/api-management/operational-excellence.md
+        - name: Application delivery
           items:
-            - name: Azure Cache for Redis
-              items:
-                - name: Reliability
-                  href: services/data/azure-cache-redis/reliability.md
-                - name: Operational excellence
-                  href: services/data/azure-cache-redis/operational-excellence.md
-            - name: Azure Databricks
-              items:
-                - name: Security
-                  href: services/data/azure-databricks/security.md
-            - name: Azure Database for MySQL
-              items:
-                - name: Cost optimization
-                  href: services/data/azure-db-mysql/cost-optimization.md
-            - name: Azure Database for PostgreSQL
-              items:
-                - name: Cost optimization
-                  href: services/data/azure-db-postgresql/cost-optimization.md
-            - name: Azure SQL Database
-              href: services/data/azure-sql-database-well-architected-framework.md
-            - name: Azure SQL Managed Instance
-              items:
-                - name: Reliability
-                  href: services/data/azure-sql-managed-instance/reliability.md
-                - name: Operational excellence
-                  href: services/data/azure-sql-managed-instance/operational-excellence.md
-            - name: Azure Cosmos DB
-              items:
-                - name: Reliability
-                  href: services/data/cosmos-db/reliability.md
-                - name: Operational excellence
-                  href: services/data/cosmos-db/operational-excellence.md
-        - name: Hybrid
+            - name: Reliability
+              href: service-guides/application-delivery/reliability.md
+            - name: Operational excellence
+              href: service-guides/application-delivery/operational-excellence.md
+        - name: Application Gateway
+          href: service-guides/azure-application-gateway.md
+        - name: Application Insights
           items:
-            - name: Azure Stack Hub
-              items:
-                - name: Reliability
-                  href: services/hybrid/azure-stack-hub/reliability.md
-                - name: Operational excellence
-                  href: services/hybrid/azure-stack-hub/operational-excellence.md
-        - name: Storage
+            - name: Security
+              href: service-guides/application-insights/security.md
+            - name: Cost optimization
+              href: service-guides/application-insights/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/application-insights/operational-excellence.md
+        - name: Azure Firewall
+          href: service-guides/azure-firewall.md
+        - name: Azure Front Door
           items:
-            - name: Storage Accounts
-              items:
-                - name: Reliability
-                  href: services/storage/storage-accounts/reliability.md
-                - name: Security
-                  href: services/storage/storage-accounts/security.md
-                - name: Cost optimization
-                  href: services/storage/storage-accounts/cost-optimization.md
-                - name: Operational excellence
-                  href: services/storage/storage-accounts/operational-excellence.md
-            - name: Disks
-              items:
-                - name: Cost optimization
-                  href: services/storage/disks/cost-optimization.md
-        - name: Messaging
+            - name: Reliability
+              href: service-guides/azure-front-door/reliability.md
+            - name: Security
+              href: service-guides/azure-front-door/security.md
+            - name: Operational excellence
+              href: service-guides/azure-front-door/operational-excellence.md
+        - name: Azure App Service
           items:
-            - name: Event Grid
-              items:
-                - name: Reliability
-                  href: services/messaging/event-grid/reliability.md
-                - name: Operational excellence
-                  href: services/messaging/event-grid/operational-excellence.md
-            - name: Event Hubs
-              items:
-                - name: Reliability
-                  href: services/messaging/event-hubs/reliability.md
-                - name: Operational excellence
-                  href: services/messaging/event-hubs/operational-excellence.md
-            - name: Service Bus
-              items:
-                - name: Reliability
-                  href: services/messaging/service-bus/reliability.md
-                - name: Operational excellence
-                  href: services/messaging/service-bus/operational-excellence.md
-            - name: Queue Storage
-              items:
-                - name: Reliability
-                  href: services/messaging/queue-storage/reliability.md
-                - name: Operational excellence
-                  href: services/messaging/queue-storage/operational-excellence.md
-            - name: IoT Hub
-              items:
-                - name: Reliability
-                  href: services/messaging/iot-hub/reliability.md
-                - name: Operational excellence
-                  href: services/messaging/iot-hub/operational-excellence.md
-            - name: IoT Hub Device Provisioning Service
-              items:
-                - name: Reliability
-                  href: services/messaging/iot-hub-dps/reliability.md
-                - name: Operational excellence
-                  href: services/messaging/iot-hub-dps/operational-excellence.md
-        - name: Networking
-          items: 
-            - name: Application Delivery (General)
-              items:
-                - name: Reliability
-                  href: services/networking/application-delivery/reliability.md
-                - name: Operational excellence
-                  href: services/networking/application-delivery/operational-excellence.md
-            - name: Application Gateway v2
-              href: services/networking/azure-application-gateway.md
-            - name: Azure Firewall
-              href: services/networking/azure-firewall.md
-            - name: ExpressRoute
-              href: services/networking/azure-expressroute.md
-            - name: API Management
-              items:
-                - name: Reliability
-                  href: services/networking/api-management/reliability.md
-                - name: Cost optimization
-                  href: services/networking/api-management/cost-optimization.md
-                - name: Operational excellence
-                  href: services/networking/api-management/operational-excellence.md
-            - name: Azure Front Door
-              items:
-                - name: Reliability
-                  href: services/networking/azure-front-door/reliability.md
-                - name: Security
-                  href: services/networking/azure-front-door/security.md
-                - name: Operational excellence
-                  href: services/networking/azure-front-door/operational-excellence.md
-            - name: Network Virtual Appliances (NVA)
-              items:
-                - name: Reliability
-                  href: services/networking/network-virtual-appliances/reliability.md
-                - name: Cost optimization
-                  href: services/networking/network-virtual-appliances/cost-optimization.md
-                - name: Operational excellence
-                  href: services/networking/network-virtual-appliances/operational-excellence.md
-            - name: Network Connectivity
-              items:
-                - name: Reliability
-                  href: services/networking/network-connectivity/reliability.md
-                - name: Cost optimization
-                  href: services/networking/network-connectivity/cost-optimization.md
-                - name: Operational excellence
-                  href: services/networking/network-connectivity/operational-excellence.md
-            - name: Azure Virtual Network
-              items:
-                - name: Reliability
-                  href: services/networking/azure-virtual-network/reliability.md
-                - name: Operational excellence
-                  href: services/networking/azure-virtual-network/operational-excellence.md
-            - name: Azure Load Balancer
-              items:
-                - name: Reliability
-                  href: services/networking/azure-load-balancer/reliability.md
-                - name: Operational excellence
-                  href: services/networking/azure-load-balancer/operational-excellence.md
-            - name: Traffic Manager
-              items:
-                - name: Reliability
-                  href: services/networking/traffic-manager/reliability.md
-                - name: Operational excellence
-                  href: services/networking/traffic-manager/operational-excellence.md
-            - name: IP addresses
-              items:
-                - name: Cost optimization
-                  href: services/networking/ip-addresses/cost-optimization.md            
-        - name: Monitoring
+            - name: Reliability
+              href: service-guides/azure-app-service/reliability.md
+            - name: Cost optimization
+              href: service-guides/azure-app-service/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/azure-app-service/operational-excellence.md
+        - name: Azure Batch
           items:
-            - name: Log Analytics
-              items:
-                - name: Cost optimization
-                  href: services/monitoring/log-analytics/cost-optimization.md
-            - name: Application Insights
-              items:
-                - name: Security
-                  href: services/monitoring/application-insights/security.md
-                - name: Cost optimization
-                  href: services/monitoring/application-insights/cost-optimization.md
-                - name: Operational excellence
-                  href: services/monitoring/application-insights/operational-excellence.md
+            - name: Reliability
+              href: service-guides/azure-batch/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-batch/operational-excellence.md
+            - name: Performance efficiency
+              href: service-guides/azure-batch/performance-efficiency.md
+        - name: Azure Cache for Redis
+          items:
+            - name: Reliability
+              href: service-guides/azure-cache-redis/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-cache-redis/operational-excellence.md
+        - name: Azure Cosmos DB
+          items:
+            - name: Reliability
+              href: service-guides/cosmos-db/reliability.md
+            - name: Operational excellence
+              href: service-guides/cosmos-db/operational-excellence.md
+        - name: Azure Databricks
+          href: service-guides/azure-databricks-security.md
+        - name: Azure Database for MySQL
+          href: service-guides/azure-db-mysql-cost-optimization.md
+        - name: Azure Database for PostgreSQL
+          href: service-guides/azure-db-postgresql-well-architected-framework.md
+        - name: Azure Kubernetes Service
+          href: service-guides/azure-kubernetes-service.md
+        - name: Azure Load Balancer
+          items:
+            - name: Reliability
+              href: service-guides/azure-load-balancer/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-load-balancer/operational-excellence.md
+        - name: Azure Service Fabric
+          href: service-guides/azure-service-fabric-well-architected-framework.md
+        - name: Azure SQL Database
+          href: service-guides/azure-sql-database-well-architected-framework.md
+        - name: Azure SQL Managed Instance
+          items:
+            - name: Reliability
+              href: service-guides/azure-sql-managed-instance/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-sql-managed-instance/operational-excellence.md
+        - name: Azure Stack Hub
+          items:
+            - name: Reliability
+              href: service-guides/azure-stack-hub/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-stack-hub/operational-excellence.md
+        - name: Azure Virtual Network
+          items:
+            - name: Reliability
+              href: service-guides/azure-virtual-network/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-virtual-network/operational-excellence.md
+        - name: Disks
+          href: service-guides/azure-disks-cost-optimization.md
+        - name: Event Grid
+          items:
+            - name: Reliability
+              href: service-guides/event-grid/reliability.md
+            - name: Operational excellence
+              href: service-guides/event-grid/operational-excellence.md
+        - name: Event Hubs
+          items:
+            - name: Reliability
+              href: service-guides/event-hubs/reliability.md
+            - name: Operational excellence
+              href: service-guides/event-hubs/operational-excellence.md
+        - name: ExpressRoute
+          href: service-guides/azure-expressroute.md
+        - name: Functions
+          href: service-guides/azure-functions-security.md
+        - name: IoT Hub
+          items:
+            - name: Reliability
+              href: service-guides/iot-hub/reliability.md
+            - name: Operational excellence
+              href: service-guides/iot-hub/operational-excellence.md
+        - name: IoT Hub Device Provisioning Service
+          items:
+            - name: Reliability
+              href: service-guides/iot-hub-dps/reliability.md
+            - name: Operational excellence
+              href: service-guides/iot-hub-dps/operational-excellence.md
+        - name: IP addresses
+          href: service-guides/ip-addresses-cost-optimization.md
+        - name: Log Analytics
+          href: service-guides/log-analytics-cost-optimization.md
+        - name: Network connectivity
+          items:
+            - name: Reliability
+              href: service-guides/network-connectivity/reliability.md
+            - name: Cost optimization
+              href: service-guides/network-connectivity/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/network-connectivity/operational-excellence.md
+        - name: Network Virtual Appliances (NVA)
+          items:
+            - name: Reliability
+              href: service-guides/network-virtual-appliances/reliability.md
+            - name: Cost optimization
+              href: service-guides/network-virtual-appliances/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/network-virtual-appliances/operational-excellence.md
+        - name: Queue Storage
+          items:
+            - name: Reliability
+              href: service-guides/queue-storage/reliability.md
+            - name: Operational excellence
+              href: service-guides/queue-storage/operational-excellence.md
+        - name: Service Bus
+          items:
+            - name: Reliability
+              href: service-guides/service-bus/reliability.md
+            - name: Operational excellence
+              href: service-guides/service-bus/operational-excellence.md
+        - name: Storage Accounts
+          items:
+            - name: Reliability
+              href: service-guides/storage-accounts/reliability.md
+            - name: Security
+              href: service-guides/storage-accounts/security.md
+            - name: Cost optimization
+              href: service-guides/storage-accounts/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/storage-accounts/operational-excellence.md
+        - name: Traffic Manager
+          items:
+            - name: Reliability
+              href: service-guides/traffic-manager/reliability.md
+            - name: Operational excellence
+              href: service-guides/traffic-manager/operational-excellence.md
+        - name: Virtual Machines
+          href: service-guides/virtual-machines-review.md
     - name: Cross-cutting guides
       items:
       - name: Implementing recommendations
@@ -829,207 +803,205 @@
           - name: Compute
             items:
               - name: Azure Service Fabric
-                href: services/compute/azure-service-fabric-well-architected-framework.md
+                href: service-guides/azure-service-fabric-well-architected-framework.md
               - name: Azure App Service
                 items:
                   - name: Reliability
-                    href: services/compute/azure-app-service/reliability.md
+                    href: service-guides/azure-app-service/reliability.md
                   - name: Cost optimization
-                    href: services/compute/azure-app-service/cost-optimization.md
+                    href: service-guides/azure-app-service/cost-optimization.md
                   - name: Operational excellence
-                    href: services/compute/azure-app-service/operational-excellence.md
+                    href: service-guides/azure-app-service/operational-excellence.md
               - name: Azure Batch
                 items:
                   - name: Reliability
-                    href: services/compute/azure-batch/reliability.md
+                    href: service-guides/azure-batch/reliability.md
                   - name: Operational excellence
-                    href: services/compute/azure-batch/operational-excellence.md
+                    href: service-guides/azure-batch/operational-excellence.md
                   - name: Performance efficiency
-                    href: services/compute/azure-batch/performance-efficiency.md
+                    href: service-guides/azure-batch/performance-efficiency.md
               - name: Azure Kubernetes Service
-                href: services/compute/azure-kubernetes-service/azure-kubernetes-service.md
+                href: service-guides/azure-kubernetes-service.md
               - name: Functions
                 items:
                   - name: Security
-                    href: services/compute/functions/security.md
+                    href: service-guides/azure-functions-security.md
               - name: Virtual Machines
-                href: services/compute/virtual-machines/virtual-machines-review.md
+                href: service-guides/virtual-machines-review.md
           - name: Data
             items:
               - name: Azure Cache for Redis
                 items:
                   - name: Reliability
-                    href: services/data/azure-cache-redis/reliability.md
+                    href: service-guides/azure-cache-redis/reliability.md
                   - name: Operational excellence
-                    href: services/data/azure-cache-redis/operational-excellence.md
+                    href: service-guides/azure-cache-redis/operational-excellence.md
               - name: Azure Databricks
                 items:
                   - name: Security
-                    href: services/data/azure-databricks/security.md
+                    href: service-guides/azure-databricks-security.md
               - name: Azure Database for MySQL
-                items:
-                  - name: Cost optimization
-                    href: services/data/azure-db-mysql/cost-optimization.md
+                href: service-guides/azure-db-mysql-cost-optimization.md
               - name: Azure Database for PostgreSQL
-                href: services/data/azure-db-postgresql-well-architected-framework.md
+                href: service-guides/azure-db-postgresql-well-architected-framework.md
               - name: Azure SQL Database
-                href: services/data/azure-sql-database-well-architected-framework.md
+                href: service-guides/azure-sql-database-well-architected-framework.md
               - name: Azure SQL Managed Instance
                 items:
                   - name: Reliability
-                    href: services/data/azure-sql-managed-instance/reliability.md
+                    href: service-guides/azure-sql-managed-instance/reliability.md
                   - name: Operational excellence
-                    href: services/data/azure-sql-managed-instance/operational-excellence.md
+                    href: service-guides/azure-sql-managed-instance/operational-excellence.md
               - name: Azure Cosmos DB
                 items:
                   - name: Reliability
-                    href: services/data/cosmos-db/reliability.md
+                    href: service-guides/cosmos-db/reliability.md
                   - name: Operational excellence
-                    href: services/data/cosmos-db/operational-excellence.md
+                    href: service-guides/cosmos-db/operational-excellence.md
           - name: Hybrid
             items:
               - name: Azure Stack Hub
                 items:
                   - name: Reliability
-                    href: services/hybrid/azure-stack-hub/reliability.md
+                    href: service-guides/azure-stack-hub/reliability.md
                   - name: Operational excellence
-                    href: services/hybrid/azure-stack-hub/operational-excellence.md
+                    href: service-guides/azure-stack-hub/operational-excellence.md
           - name: Storage
             items:
               - name: Storage Accounts
                 items:
                   - name: Reliability
-                    href: services/storage/storage-accounts/reliability.md
+                    href: service-guides/storage-accounts/reliability.md
                   - name: Security
-                    href: services/storage/storage-accounts/security.md
+                    href: service-guides/storage-accounts/security.md
                   - name: Cost optimization
-                    href: services/storage/storage-accounts/cost-optimization.md
+                    href: service-guides/storage-accounts/cost-optimization.md
                   - name: Operational excellence
-                    href: services/storage/storage-accounts/operational-excellence.md
+                    href: service-guides/storage-accounts/operational-excellence.md
               - name: Disks
                 items:
                   - name: Cost optimization
-                    href: services/storage/disks/cost-optimization.md
+                    href: service-guides/azure-disks-cost-optimization.md
           - name: Messaging
             items:
               - name: Event Grid
                 items:
                   - name: Reliability
-                    href: services/messaging/event-grid/reliability.md
+                    href: service-guides/event-grid/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/event-grid/operational-excellence.md
+                    href: service-guides/event-grid/operational-excellence.md
               - name: Event Hubs
                 items:
                   - name: Reliability
-                    href: services/messaging/event-hubs/reliability.md
+                    href: service-guides/event-hubs/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/event-hubs/operational-excellence.md
+                    href: service-guides/event-hubs/operational-excellence.md
               - name: Service Bus
                 items:
                   - name: Reliability
-                    href: services/messaging/service-bus/reliability.md
+                    href: service-guides/service-bus/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/service-bus/operational-excellence.md
+                    href: service-guides/service-bus/operational-excellence.md
               - name: Queue Storage
                 items:
                   - name: Reliability
-                    href: services/messaging/queue-storage/reliability.md
+                    href: service-guides/queue-storage/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/queue-storage/operational-excellence.md
+                    href: service-guides/queue-storage/operational-excellence.md
               - name: IoT Hub
                 items:
                   - name: Reliability
-                    href: services/messaging/iot-hub/reliability.md
+                    href: service-guides/iot-hub/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/iot-hub/operational-excellence.md
+                    href: service-guides/iot-hub/operational-excellence.md
               - name: IoT Hub Device Provisioning Service
                 items:
                   - name: Reliability
-                    href: services/messaging/iot-hub-dps/reliability.md
+                    href: service-guides/iot-hub-dps/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/iot-hub-dps/operational-excellence.md
+                    href: service-guides/iot-hub-dps/operational-excellence.md
           - name: Networking
             items: 
               - name: Application Delivery (General)
                 items:
                   - name: Reliability
-                    href: services/networking/application-delivery/reliability.md
+                    href: service-guides/application-delivery/reliability.md
                   - name: Operational excellence
-                    href: services/networking/application-delivery/operational-excellence.md
+                    href: service-guides/application-delivery/operational-excellence.md
               - name: Application Gateway v2
-                href: services/networking/azure-application-gateway.md
+                href: service-guides/azure-application-gateway.md
               - name: Azure Firewall
-                href: services/networking/azure-firewall.md
+                href: service-guides/azure-firewall.md
               - name: ExpressRoute
-                href: services/networking/azure-expressroute.md
+                href: service-guides/azure-expressroute.md
               - name: API Management
                 items:
                   - name: Reliability
-                    href: services/networking/api-management/reliability.md
+                    href: service-guides/api-management/reliability.md
                   - name: Cost optimization
-                    href: services/networking/api-management/cost-optimization.md
+                    href: service-guides/api-management/cost-optimization.md
                   - name: Operational excellence
-                    href: services/networking/api-management/operational-excellence.md
+                    href: service-guides/api-management/operational-excellence.md
               - name: Azure Front Door
                 items:
                   - name: Reliability
-                    href: services/networking/azure-front-door/reliability.md
+                    href: service-guides/azure-front-door/reliability.md
                   - name: Security
-                    href: services/networking/azure-front-door/security.md
+                    href: service-guides/azure-front-door/security.md
                   - name: Operational excellence
-                    href: services/networking/azure-front-door/operational-excellence.md
+                    href: service-guides/azure-front-door/operational-excellence.md
               - name: Network Virtual Appliances (NVA)
                 items:
                   - name: Reliability
-                    href: services/networking/network-virtual-appliances/reliability.md
+                    href: service-guides/network-virtual-appliances/reliability.md
                   - name: Cost optimization
-                    href: services/networking/network-virtual-appliances/cost-optimization.md
+                    href: service-guides/network-virtual-appliances/cost-optimization.md
                   - name: Operational excellence
-                    href: services/networking/network-virtual-appliances/operational-excellence.md
+                    href: service-guides/network-virtual-appliances/operational-excellence.md
               - name: Network Connectivity
                 items:
                   - name: Reliability
-                    href: services/networking/network-connectivity/reliability.md
+                    href: service-guides/network-connectivity/reliability.md
                   - name: Cost optimization
-                    href: services/networking/network-connectivity/cost-optimization.md
+                    href: service-guides/network-connectivity/cost-optimization.md
                   - name: Operational excellence
-                    href: services/networking/network-connectivity/operational-excellence.md
+                    href: service-guides/network-connectivity/operational-excellence.md
               - name: Azure Virtual Network
                 items:
                   - name: Reliability
-                    href: services/networking/azure-virtual-network/reliability.md
+                    href: service-guides/azure-virtual-network/reliability.md
                   - name: Operational excellence
-                    href: services/networking/azure-virtual-network/operational-excellence.md
+                    href: service-guides/azure-virtual-network/operational-excellence.md
               - name: Azure Load Balancer
                 items:
                   - name: Reliability
-                    href: services/networking/azure-load-balancer/reliability.md
+                    href: service-guides/azure-load-balancer/reliability.md
                   - name: Operational excellence
-                    href: services/networking/azure-load-balancer/operational-excellence.md
+                    href: service-guides/azure-load-balancer/operational-excellence.md
               - name: Traffic Manager
                 items:
                   - name: Reliability
-                    href: services/networking/traffic-manager/reliability.md
+                    href: service-guides/traffic-manager/reliability.md
                   - name: Operational excellence
-                    href: services/networking/traffic-manager/operational-excellence.md
+                    href: service-guides/traffic-manager/operational-excellence.md
               - name: IP addresses
                 items:
                   - name: Cost optimization
-                    href: services/networking/ip-addresses/cost-optimization.md            
+                    href: service-guides/ip-addresses-cost-optimization.md            
           - name: Monitoring
             items:
               - name: Log Analytics
                 items:
                   - name: Cost optimization
-                    href: services/monitoring/log-analytics/cost-optimization.md
+                    href: service-guides/log-analytics-cost-optimization.md
               - name: Application Insights
                 items:
                   - name: Security
-                    href: services/monitoring/application-insights/security.md
+                    href: service-guides/application-insights/security.md
                   - name: Cost optimization
-                    href: services/monitoring/application-insights/cost-optimization.md
+                    href: service-guides/application-insights/cost-optimization.md
                   - name: Operational excellence
-                    href: services/monitoring/application-insights/operational-excellence.md
+                    href: service-guides/application-insights/operational-excellence.md
       - name: Implementing Recommendations
         href: ./implementing-recommendations.md
     - name: Orphans
@@ -1044,6 +1016,3 @@
         href: security\architecture-type.md
       - name: DevOps alerts
         href: devops\alerts.md
-      - name: Old index.md
-        href: old-index.md
-        

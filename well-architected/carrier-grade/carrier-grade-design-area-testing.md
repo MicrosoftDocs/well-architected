@@ -44,5 +44,5 @@ Common client libraries are also part of the end-to-end system and need equivale
 Revisit the five pillars of architectural excellence to form a solid foundation for your carrier-grade workloads.
 
 > [!div class="nextstepaction"]
-> [ Azure Well-Architected Framework](../index.md)
+> [ Azure Well-Architected Framework](../pillars.md)
 

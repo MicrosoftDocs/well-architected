@@ -11,7 +11,7 @@ ms.custom:
 
 # Performance efficiency checklist
 
-[Performance efficiency](index.yml), one of the pillars of the [Microsoft Azure Well-Architected Framework](../index.md), is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. Use this checklist to review your application architecture from a performance efficiency standpoint.
+[Performance efficiency](index.yml), one of the pillars of the [Microsoft Azure Well-Architected Framework](../pillars.md), is the ability of your workload to scale to meet the demands placed on it by users in an efficient manner. Use this checklist to review your application architecture from a performance efficiency standpoint.
 
 ## Application design
 

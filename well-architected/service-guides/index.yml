@@ -1,0 +1,76 @@
+### YamlMime:Landing
+
+title: Service guides documentation
+summary: Landing page for service guides.
+
+metadata: 
+  title: Service guides documentation
+  description: Documentation for services for Well-Architected Framework.
+  services: na
+  author: martinekuan
+  ms.author: martinek
+  manager: david-stanford
+  ms.date: 06/30/2023
+  ms.topic: landing-page
+  ms.collection: na
+  ms.service: waf
+  ms.subservice: waf-service-guide
+
+
+landingContent:
+
+# Cards and links should be based on top customer tasks or top subjects
+
+# Start card title with a verb
+
+ # Card
+  - title: Key points
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Overview
+            url: overview.md
+      - linkListType: learn
+        links:
+          - text: Training link 
+            url: /training/modules/azure-well-architected-introduction/
+      - linkListType: video
+        links:
+          - text: Video link
+            url: overview.md
+
+  # Card
+  - title: Design for services
+    linkLists:
+      - linkListType: get-started
+        links:
+          - text: Get started
+            url: overview.md
+      - linkListType: concept
+        links:
+          - text: Concepts
+            url: overview.md
+      - linkListType: learn
+        links:
+          - text: Design and implement network security
+            url: /training/modules/azure-well-architected-introduction/
+      - linkListType: whats-new
+        links:
+          - text: What's new
+            url: overview.md
+
+ # Card
+  - title: Deploy services
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Deploy services
+            url: overview.md
+
+ # Card
+  - title: Services reference
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: Services reference
+            url: overview.md
