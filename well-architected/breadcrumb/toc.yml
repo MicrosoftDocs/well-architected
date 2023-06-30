@@ -1,10 +1,10 @@
 - name: Azure
   tocHref: /azure/
-  topicHref: /azure/index
+  topicHref: /azure/
   items:
   - name: Well-Architected Framework
     tocHref: /azure/well-architected/
-    topicHref: /azure/well-architected/index    
+    topicHref: /azure/well-architected/
     items:
     - name: Reliability
       tocHref: /azure/well-architected/reliability/
@@ -27,10 +27,10 @@
       items:        
       - name: Mission-critical
         tocHref: /azure/well-architected/mission-critical/
-        topicHref: /azure/well-architected/mission-critical/index
+        topicHref: /azure/well-architected/mission-critical/
       - name: Carrier-grade
         tocHref: /azure/well-architected/carrier-grade/
-        topicHref: /azure/well-architected/carrier-grade/index
+        topicHref: /azure/well-architected/carrier-grade/
       - name: Hybrid
         tocHref: /azure/well-architected/hybrid/
         topicHref: /azure/well-architected/hybrid/hybrid-overview
@@ -45,4 +45,4 @@
         topicHref: /azure/well-architected/sap/quick-links
       - name: Sustainability
         tocHref: /azure/well-architected/sustainability/
-        topicHref: /azure/well-architected/sustainability/index
+        topicHref: /azure/well-architected/sustainability/
