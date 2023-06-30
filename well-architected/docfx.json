@@ -64,11 +64,11 @@
     },
     "fileMetadata": {
       "ms.subservice": {
-        "resiliency/**/*.md": "waf-pillar-reliability",
+        "reliability/**/*.md": "waf-pillar-reliability",
         "security/**/*.md": "waf-pillar-security",
-        "cost/**/*.md": "waf-pillar-optimization",
-        "scalability/**/*.md": "waf-pillar-efficiency",
-        "devops/**/*.md": "waf-pillar-excellence",
+        "cost-optimization/**/*.md": "waf-pillar-optimization",
+        "performance-efficiency/**/*.md": "waf-pillar-efficiency",
+        "operational-excellence/**/*.md": "waf-pillar-excellence",
         "mission-critical/**/*.md": "waf-workload-mission-critical",
         "carrier-grade/**/*.md": "waf-workload-carrier-grade",
         "hybrid/**/*.md": "waf-workload-hybrid",
