@@ -52,5 +52,5 @@
         topicHref: /azure/well-architected/sustainability/index
     - name: Service guides
       tocHref: /azure/well-architected/service-guides/
-      topicHref: /azure/well-architected
+      topicHref: /azure/well-architected/service-guides/index
 
