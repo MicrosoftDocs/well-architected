@@ -1034,11 +1034,6 @@
 			"source_path": "well-architected/services/storage/storage-accounts/security.md",
 			"redirect_url": "/azure/well-architected/service-guides/storage-accounts/security",
 			"redirect_document_id": true
-		},
-		{
-			"source_path": "well-architected/index.md",
-			"redirect_url": "/azure/well-architected/pillars",
-			"redirect_document_id": false
 		}
 	]
 }
