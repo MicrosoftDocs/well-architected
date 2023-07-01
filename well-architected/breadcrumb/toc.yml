@@ -8,7 +8,7 @@
     items:
     - name: Pillars
       tocHref: /azure/well-architected/pillars/
-      topicHref: /azure/well-architected
+      topicHref: /azure/well-architected/pillar
       items:  
       - name: Reliability
         tocHref: /azure/well-architected/reliability/
