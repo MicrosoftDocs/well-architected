@@ -25,7 +25,7 @@ sections:
         text: Workloads
       - componentType: icon-link
         icon: book-solid
-        url: https://bing.com
+        url: service-guides/overview.md
         text: Azure offerings
       - componentType: icon-link
         icon: topic-learn
