@@ -1,21 +1,17 @@
 ### YamlMime:Landing
 
 title: Cost optimization documentation
-summary: Apply the cost principles in your architecture to accelerate your time to market while avoiding capital-intensive solutions. Consider opportunity costs. Use the cost calculators to estimate the initial and operational costs. Finally, establish policies, budgets, and controls that set cost limits for your solution.
+summary: The cost optimization pillar provides principles for balancing business goals with budget justification. The principles help you create a cost-effective workload while avoiding capital-intensive solutions. Cost optimization is about looking at ways to reduce unnecessary expenses and improve operational efficiencies.
 
 metadata: 
   title: Cost optimization documentation
-  description: Learn how to apply the cost principles in your architecture to accelerate your time to market while avoiding capital-intensive solutions.
-  services: na
+  description: Learn how to use optimization strategies for your architecture, and invest over time rather than delivering a large investment-first version. Consider opportunity costs in your architecture, and the balance between first mover advantage versus fast follow.
   author: PageWriter-MSFT
   ms.author: prwilk
-  manager: scottboc
-  ms.date: 08/07/2020
+  manager: martinek
+  ms.date: 08/01/2023
   ms.topic: landing-page
   ms.collection: na
-  ms.custom:
-  - article
-  - internal-intro
   ms.service: waf
   ms.subservice: waf-pillar-optimization
 
@@ -28,39 +24,20 @@ landingContent:
     linkLists:
       - linkListType: quickstart
         links:
-          - text: Principles
-            url: overview.md
-          - text: Design checklist
-            url: design-checklist.md
-          - text: Provision checklist
-            url: provision-checklist.md
-          - text: Monitor checklist
-            url: monitor-checklist.md
-          - text: Optimize checklist
-            url: optimize-checklist.md
+          - text: Design Principles
+            url: principles.md
+          - text: Checklist
+            url: checklist.md
           - text: Tradeoffs
             url: tradeoffs.md
       - linkListType: learn
         links:
           - text: Cost optimization 
             url: /training/modules/azure-well-architected-introduction/3-cost-optimization
-      - linkListType: video
-        links:
-          - text: What trade-offs have you made to optimize for cost?
-            url: https://www.microsoft.com/videoplayer/embed/RE4zw3n
+
   # Card
-  - title: Design within the cost limits
+  - title: Develop cost-management discipline
     linkLists:
-      - linkListType: get-started
-        links:
-          - text: Organization structure
-            url: design-model.md#organization-structure
-          - text: Capture clear requirements
-            url: design-capture-requirements.md
-          - text: Consider the cost constraints
-            url: design-model.md#cost-constraints
-          - text: Consider tradeoffs
-            url: tradeoffs.md
       - linkListType: concept
         links:
           - text: Develop a cost model
@@ -75,12 +52,9 @@ landingContent:
             url: design-paas.md
           - text: Estimate an initial cost 
             url: design-initial-estimate.md
-      - linkListType: video
-        links:
-          - text: How is your organization modeling cloud costs?
-            url: https://www.microsoft.com/videoplayer/embed/RE4zlDU      
+
  # Card
-  - title: Provision the right resources
+  - title: Design with a cost-efficiency mindset
     linkLists:
       - linkListType: overview
         links:
@@ -94,12 +68,11 @@ landingContent:
             url: provision-networking.md
       - linkListType: video
         links:
-          - text: How do you ensure that cloud resources are appropriately provisioned?
-            url: https://www.microsoft.com/videoplayer/embed/RE4zw3m
+
           - text: How do you manage the storage footprint of your digital assets?
             url: https://www.microsoft.com/videoplayer/embed/RE4zdQC                                         
  # Card
-  - title: Monitor your cloud spend
+  - title: Use what you pay for
     linkLists:
       - linkListType: concept
         links:
@@ -109,12 +82,9 @@ landingContent:
             url: monitor-reports.md
           - text: Conduct cost reviews
             url: monitor-reviews.md
-      - linkListType: video
-        links:
-          - text: How are you monitoring your costs?
-            url: https://www.microsoft.com/videoplayer/embed/RE4zgrp
+
  # Card
-  - title: Optimize based on audits
+  - title: Pay less for what you use
     linkLists:
       - linkListType: concept
         links:
@@ -124,12 +94,9 @@ landingContent:
             url: optimize-vm.md
           - text: Cache data
             url: optimize-cache.md
-      - linkListType: video
-        links:
-          - text: What actions are you taking to optimize cloud costs?
-            url: https://www.microsoft.com/videoplayer/embed/RE4yYLM          
+    
  # Card
-  - title: Cost tools and services
+  - title: Monitor and optimize over time
     linkLists:
       - linkListType: concept
         links:
@@ -148,17 +115,17 @@ landingContent:
           - text: Visualize cost reports
             url: /power-bi/desktop-connect-azure-cost-management                
  # Card
-  - title: Consumption APIs
+  - title: Video library
     linkLists:
-      - linkListType: reference
+      - linkListType: video
         links:
-          - text: Billing account API
-            url: /rest/api/billing/2019-10-01-preview/billingaccounts
-          - text: Billing Periods API
-            url: /rest/api/billing/enterprise/billing-enterprise-api-billing-periods
-          - text: Usage Detail API
-            url: /rest/api/billing/enterprise/billing-enterprise-api-usage-detail
-          - text: Marketplace Store Charge API  
-            url: /rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge
-          - text: Price Sheet API  
-            url: /rest/api/billing/enterprise/billing-enterprise-api-pricesheet
+          - text: How is your organization modeling cloud costs?
+            url: https://www.microsoft.com/videoplayer/embed/RE4zlDU      
+          - text: What trade-offs have you made to optimize for cost?
+            url: https://www.microsoft.com/videoplayer/embed/RE4zw3n
+          - text: How do you ensure that cloud resources are appropriately provisioned?
+            url: https://www.microsoft.com/videoplayer/embed/RE4zw3m 
+          - text: How are you monitoring your costs?
+            url: https://www.microsoft.com/videoplayer/embed/RE4zgrp 
+          - text: What actions are you taking to optimize cloud costs?
+            url: https://www.microsoft.com/videoplayer/embed/RE4yYLM                                        

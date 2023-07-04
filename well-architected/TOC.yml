@@ -43,8 +43,6 @@
         items: 
         - name: Quick links
           href: cost-optimization/index.yml
-        - name: Overview
-          href: cost-optimization/overview.md
         - name: Design principles
           href: cost-optimization/principles.md
         - name: Checklist
@@ -1018,3 +1016,5 @@
         href: security\architecture-type.md
       - name: DevOps alerts
         href: devops\alerts.md
+      - name: Overview
+        href: cost-optimization/overview.md        
