@@ -4,7 +4,7 @@ description: Focuses on the Disks service used in the Storage solution to provid
 author: martinekuan
 ms.author: martinek
 ms.reviewer: erd
-ms.date: 07/05/20213
+ms.date: 07/05/2023
 ms.topic: conceptual
 products:
   - azure-disk-storage
