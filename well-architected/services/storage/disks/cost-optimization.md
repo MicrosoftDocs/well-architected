@@ -3,7 +3,8 @@ title: Disks and cost optimization
 description: Focuses on the Disks service used in the Storage solution to provide best-practice, configuration recommendations, and design considerations related to Cost optimization.
 author: martinekuan
 ms.author: martinek
-ms.date: 12/08/2021
+ms.reviewer: erd
+ms.date: 07/05/20213
 ms.topic: conceptual
 products:
   - azure-disk-storage
@@ -39,6 +40,7 @@ Azure Disks include the following design considerations:
 
 - Use a shared disk for workload, such as SQL server failover cluster instance (FCI), file server for general use (IW workload), and SAP ASCS/SCS.
 - Consider selective disk backup and restore for Azure VMs.
+- Premium storage also features free bursting, combined with an understanding of workload patterns, offers an effective SKU selection and cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity.
 
 |Considerations|Description|
 |--------------|-----------|
@@ -62,6 +64,8 @@ Consider the following recommendations to optimize costs when configuring your A
 |Configure data and log files on different disks for database workloads.|You can optimize IaaS DB workload performance by configuring system, data, and log files to be on different disk SKUs (leveraging Premium Disks for data and Ultra Disks for logs satisfies most production scenarios). Ultra Disk cost and performance can be optimized by taking advantage of configuring capacity, IOPS, and throughput independently. Also, you can dynamically configure these attributes. Example workloads include:<br> - SQL on IaaS <br> - Cassandra DB <br> - Maria DB <br> - MySql and <br> - Mongo DB on IaaS|
 |Use bursting for P20 and lower disks for workloads, such as batch jobs, workloads, which handle traffic spikes, and to improve OS boot time.|Azure Disks offer various SKUs and sizes to satisfy different workload requirements. Some of the more recent features could help further optimize cost performance of existing disk use cases. You can use disk bursting for Premium (disks P20 and lower). Example scenarios that could benefit from this feature include: <br> - Improving OS boot time <br> - Handling batch jobs <br> - Handling traffic spikes|
 |Consider using Premium disks (P30 and greater).|Premium Disks (P30 and greater) can be reserved (one or three years) at a discounted price.|
+|Utilize Managed Disks for cost optimization.|Managed disks also offer cost optimization by providing desired performance without the need for over-provisioning, accounting for fluctuating workload patterns, and minimizing unused provisioned capacity.|
+|Consider locally attached NVMe or similar devices for OS disks.|The VHD can be locally attached NVMe or similar devices available on many VM SKUs. OS disks provide top-tier performance at no extra cost, but come with the significant drawbacks of being non-persistent, having limited capacity, and being restricted to OS and temp disk use only.|
 
 ## Next step
 
