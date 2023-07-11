@@ -293,6 +293,8 @@
         href: ./implementing-recommendations.md        
       - name: DevSecOps - application
         href: coming-soon.md
+      - name: Regions and availability zones
+        href: regions-availability-zones.md
     - name: Old TOC
       items:
       - name: Overview
