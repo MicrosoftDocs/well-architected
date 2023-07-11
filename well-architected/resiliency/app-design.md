@@ -29,9 +29,11 @@ Design your application architecture to use [availability zones](/azure/reliabil
 > [!NOTE]
 > Availability zones might introduce performance and cost considerations for applications that are extremely "chatty" across zones given the implied physical separation between each zone and inter-zone bandwidth charges. For this reason, availability zones can be considered to achieve a higher SLA for lower cost.
 
-Consider if component proximity is required for application performance reasons. If all or part of the application is highly sensitive to latency, components might need to be co-located which can limit the applicability of multi-region and multi-zone strategies.
+Many Azure services provide a *zone-redundant* configuration. Zone redundancy distributes multiple replicas of the service across availability zones. Although the details vary by service, in general, Azure synchronously replicates data changes between the replicas, and if a data center or zone outage occurs, Azure automatically 
 
-If your requirements demand even greater failure isolation than availability zones alone can offer, consider deploying to multiple regions. Multiple regions should be used for failover purposes in a disaster state. Other cost needs should be considered. Examples of cost needs are data and networking, and services such as [Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
+Consider if component proximity is required for application performance reasons. If the application is highly sensitive to latency, components might need to be co-located. Some Azure services enable *zonal* deployments, in which a resource is deployed to a specific zone. Multiple components can be deployed to the same zone to reduce the communication latency.
+
+If you have business requirements that require mitigating the risk of an outage of an entire region, consider deploying to multiple regions. Multiple regions can be used for failover purposes in a disaster state. A multi-region solution is often more complicated to deploy and operate. Other cost needs should be considered, including the extra data and networking charges, and for services such as [Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
 
 ## Respond to failure
 
