@@ -42,6 +42,8 @@ While every organization would ideally like to mitigate every possible risk, it'
 
 It's important that you understand your resiliency requirements for your workload, including the RTO and RPO. If you don't have clear requirements, you can't make an informed decision about which approach to follow.
 
+Link to WAF guidance about these requirements
+
 ### User location
 
 If your users are geographically dispersed, it might make sense to deploy your workload across multiple regions. If your users are in one area, a single-region deployment can simplify your operational requirements and reduce your costs.
