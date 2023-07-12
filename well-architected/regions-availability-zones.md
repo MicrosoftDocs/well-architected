@@ -27,8 +27,8 @@ The following table lists some common risks that should be considered in a cloud
 
 | Risk | Example | Frequency |
 |-|-|-|
-| Node/host/instance/rack outage | Issue with hard disk or networking equipment; host reboot | Fairly common. Any resiliency strategy should account for these risks. |
-| Data center outage | Power, cooling, or network failure in a data center; natural disaster in one part of a metro area | Infrequent |
+| Hardware outage | <ul><li>Issue with hard disk or networking equipment</li><li>Host reboots</li></ul> | Fairly common. Any resiliency strategy should account for these risks. |
+| Data center outage | <ul><li>Power, cooling, or network failure across an entire data center</li><li>Natural disaster in one part of a metro area</li></ul> | Infrequent |
 | Region outage | Major natural disaster that affects a wide geographical area | Very infrequent |
 
 <!-- TODO should we also include service outages? e.g. global service outage for something like Azure Front Door or Entra ID. Need to look to mission-critical guidance for this level of risk mitigation -->
@@ -56,24 +56,28 @@ It's a good practice to avoid unnecessary complexity in your solution architectu
 
 ## Tradeoffs to consider
 
-Deciding on the best architecture for your requirements means that you need to consider tradeoffs and make informed decisions
-The major tradeoffs involved in this decision are:
-- Reliability: Different degree of reliaiblity based on risks that are being mitigated.
-- Performance: Only really a concern for highly latency-sensitive workloads. Most workloads don't fit into this category.
-- Operational complexity: Management and failover
-- Cost: Some architectural approaches require deploying more resources, which incurs a resource cost. Others involve sending data across availability zones or regions, which incurs bandwidth costs.
+Deciding on the best deployment architecture for your requirements means that you need to consider tradeoffs. Four of the pillars of the well-architected framework are 
+
+- **Reliability:** Your choice of deployment architecture mitigates different types of risks. In general, the more geographically distributed a workload is, the more resilient it can be.
+- **Cost Optimization:** Some architectural approaches require deploying more resources, which incurs a resource cost. Others involve sending data across geographically separated availability zones or regions, which incurs bandwidth costs.
+- **Performance Efficiency:** Some workloads are highly latency-sensitive,  Only really a concern for highly latency-sensitive workloads. Most workloads don't fit into this category.
+- **Operational Efficiency:** Management and failover
 
 --
 
 ## Options and tradeoffs
 
-Single region, not zone redundant:
-- RE: lower
-- PE: high
-- OC: easy
-- CE: cheapest
+### Single region, no zone redundancy
 
-Single region, zone redundant:
+| Architectural Concern | Impact |
+|-|-|
+| Reliability | **Low reliability.** Doesn't mitigate many risks |
+| Cost Optimization | **Lowest cost.** Likely to only have a single instance of each resource, and no inter-zone or inter-region bandwidth costs. |
+| Performance Efficiency | **Depends on the workload.** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
+| Operational Efficiency | **Easy to operate.** Likely to only have a single instance of each resource that needs to be managed. |
+
+### Single region, zone redundant services
+
 - RE: high
 - PE: usually fine, but latency-sensitive workloads might have isses
 - OC: easy
@@ -103,7 +107,22 @@ Single region, zone redundant, with backup across regions:
 
 --
 
+## Example workloads
+
+<!-- Considering adding a set of examples, with basic requirements, and an approach they can consider -->
+
+- Line of business app for an enterprise - cost is a big factor; resiliency is important. Zone redundant.
+- Legacy application that's extremely chatty - performance matters a lot; resiliency is important. Multi-zone using metro DR approach.
+- Public sector application - data residency. Zone redundant.
+- Bank - resiliency and very low risk tolerance. Zone redundant and multi-region.
+- eCommerce app - geographically distributed user base. Multi-region.
+- SaaS - geographically distributed user base. Multi-region.
+
+<!-- TODO
+
 When would zone redundancy not be advisable?
  - Mission-critical solutions with low risk tolerance.
  - Perf: low latency requirements. Consider zonal deployment.
  - When you deploy across multiple regions for other reasons (e.g. you're deploying to multiple regions to support a globally distributed user base)
+
+-->
