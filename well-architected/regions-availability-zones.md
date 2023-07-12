@@ -54,18 +54,22 @@ If you operate under a constrained budget, it's important to consider the costs 
 
 It's a good practice to avoid unnecessary complexity in your solution architecture. The more complexity you introduce, the harder it is to reason about your architecture. Complex architectures are harder to operate, harder to secure, and are often less performant.
 
-## Tradeoffs to consider
+## Key tradeoffs
 
 Deciding on the best deployment architecture for your requirements means that you need to consider tradeoffs. Four of the pillars of the well-architected framework are 
 
 - **Reliability:** Your choice of deployment architecture mitigates different types of risks. In general, the more geographically distributed a workload is, the more resilient it can be.
 - **Cost Optimization:** Some architectural approaches require deploying more resources, which incurs a resource cost. Others involve sending data across geographically separated availability zones or regions, which incurs bandwidth costs.
-- **Performance Efficiency:** Some workloads are highly latency-sensitive,  Only really a concern for highly latency-sensitive workloads. Most workloads don't fit into this category.
+- **Performance Efficiency:** Some workloads are highly latency-sensitive, TODO  Only really a concern for highly latency-sensitive workloads. Most workloads don't fit into this category.
 - **Operational Efficiency:** Management and failover
 
---
+<!-- TODO explain more - maybe give some examples:
+- If you deploy across regions, you need to replicate data between them. Synchronous replication means you take a perf hit on every transaction, but then everything is consistent. Async replication means there's a chance data loss occurs if an outage happens before data is replicated.
+- For many services, Azure runs multiple instances or stores multiple copies of the data. Zone redundancy means that these are distributed across availability zones (i.e. DCs) that are in the same metro area but separated. So you don't necessarily provision more resources, you're just spreading them across physical locations. This helps with resiliency. Does often have a cost impact but not as high as multi-region. Might increase latency of communication between components, but this doesn't matter for most workloads.
 
-## Options and tradeoffs
+ -->
+
+## Approaches
 
 ### Single region, no zone redundancy
 
