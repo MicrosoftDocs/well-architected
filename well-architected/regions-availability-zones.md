@@ -18,6 +18,10 @@ When you architect a solution for Azure, you need to decide which region to use,
 > [!TIP]
 > For many production customer workloads, a [single-region, zone-redundant deployment](#single-region-zone-redundant-services) provides the best balance of tradeoffs. You can consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
 
+## Regions and availability zones
+
+TODO brief refresh of what they are, and link to more detailed docs
+
 ## Key requirements
 
 To make an informed decision about which approach works for your solution, you need to understand your requirements. These requirements should be driven by discussions between solution designers and business stakeholders.
@@ -61,7 +65,13 @@ It's a good practice to avoid unnecessary complexity in your solution architectu
 
 ## Key tradeoffs
 
-Deciding on the best deployment architecture for your requirements means that you need to consider tradeoffs. Four of the pillars of the well-architected framework are 
+Deciding on the best deployment architecture for your requirements means that you need to consider tradeoffs.
+
+For example, consider how data replication works. Suppose you're considering deploying a workload 
+
+- **Replication:** If you deploy across regions, you need to replicate data between them. Synchronous replication means you take a perf hit on every transaction, but then everything is consistent. Async replication means there's a chance data loss occurs if an outage happens before data is replicated.
+
+
 
 - **Reliability:** Your choice of deployment architecture mitigates different types of risks. In general, the more geographically distributed a workload is, the more resilient it can be.
 - **Cost Optimization:** Some architectural approaches require deploying more resources, which incurs a resource cost. Others involve sending data across geographically separated availability zones or regions, which incurs bandwidth costs.
@@ -72,7 +82,6 @@ Deciding on the best deployment architecture for your requirements means that yo
 
 To integrate somewhere:
 
-- **Replication:** If you deploy across regions, you need to replicate data between them. Synchronous replication means you take a perf hit on every transaction, but then everything is consistent. Async replication means there's a chance data loss occurs if an outage happens before data is replicated.
 - **How zone redundancy works:** For many services, Azure runs multiple instances or stores multiple copies of the data. Zone redundancy means that these are distributed across availability zones (i.e. DCs) that are in the same metro area but separated. So you don't necessarily provision more resources, you're just spreading them across physical locations. This helps with resiliency. The data transfer to keep instances in sync can have a cost impact but not as high as multi-region. Might increase latency of communication between components, but this doesn't matter for most workloads.
 
 ## Approaches
@@ -96,6 +105,8 @@ Description
 
 Diagram
 
+Examples of services that handle this easily - AppGW, VNets, Azure Firewall, App Service, Cosmos DB, Service Bus
+
 | Architectural Concern | Impact |
 |-|-|
 | Reliability | **High reliability.** Services are resilient to an outage of a data center or availability zone. For most services, data is replicated across zones automatically and with no delay. |
@@ -108,6 +119,8 @@ Diagram
 Description
 
 Diagram
+
+Examples of services that can be deployed zonally - VMs, load balancers
 
 | Architectural Concern | Impact |
 |-|-|
