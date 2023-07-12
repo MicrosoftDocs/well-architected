@@ -26,7 +26,7 @@ As you prioritize business requirements, costs can be adjusted. Expect a series 
 
 ## Develop cost-management discipline
 
-|![Goal](../_images/benchmark-security.svg) _Develop a team culture that has the expertise to understand the financial aspects of budget, expenditure, reporting, tracking costs, and billing models_.|
+|![Goal](../_images/goal.svg) _Develop a team culture that has the expertise to understand the financial aspects of budget, expenditure, reporting, tracking costs, and billing models_.|
 |---|
 
 Cost optimization is carried out at various levels of the organization. It’s important to understand how your workload is aligned with organizational goals and FinOps practices. A view into the business units, resource organization, and centralized audit policies will allow adoption of standardized financial system
@@ -44,7 +44,7 @@ Cost optimization is carried out at various levels of the organization. It’s i
 
 ## Design with a cost-efficiency mindset
 
-|![Goal](../_images/benchmark-security.svg)_Only spend on what you need in order to achieve the highest ROI_.|
+|![Goal](../_images/goal.svg)_Only spend on what you need in order to achieve the highest ROI_.|
 |---|
 
 Every architectural decision has direct and indirect financial implications. Understand the cost associated with; build versus buy options, choice of technology, billing and licensing, training, operations, and so on. 
@@ -61,7 +61,7 @@ Given a set of requirements, optimize and make tradeoff decisions in relation to
 
 ## Use what you pay for
 
-|![Goal](../_images/benchmark-security.svg) _Maximize the use of resources and operations that you’ve already invested in, to meet the negotiated functional and non-functional requirements of the solution_.| 
+|![Goal](../_images/goal.svg) _Maximize the use of resources and operations that you’ve already invested in, to meet the negotiated functional and non-functional requirements of the solution_.| 
 |---|
 
 Services have various levels of capabilities offered at pricing tiers. Situations where the purchased set of features remain underutilized should be avoided. Find ways to maximize your investment in that tier. Likewise, continuously evaluate pricing models that better align to your usage after learning in production. 
@@ -80,7 +80,7 @@ Services have various levels of capabilities offered at pricing tiers. Situation
 
 ## Pay less for what you use
 
-|![Goal](../_images/benchmark-security.svg) _Lower costs to a practical level, without redesigning, renegotiating, or sacrificing functional and non-functional requirements_.| 
+|![Goal](../_images/goal.svg) _Lower costs to a practical level, without redesigning, renegotiating, or sacrificing functional and non-functional requirements_.| 
 |---|
 
 There are ways to optimize the utility and costs of your existing resources and operations. Without this effort, you’re unnecessarily paying more without any additional ROI. 
@@ -96,7 +96,7 @@ There are ways to optimize the utility and costs of your existing resources and 
 
 ## Monitor and optimize over time
 
-|![Goal](../_images/benchmark-security.svg) _Continuously “right-size” investment as the workload evolves with the ecosystem_.| 
+|![Goal](../_images/goal.svg) _Continuously “right-size” investment as the workload evolves with the ecosystem_.| 
 |---|
 
 What was important yesterday might not be important today. As you learn from production, expect changes in architecture, business requirements, processes, and even team structure. Your SDLC practices may need to evolve. External factors might also change, such as the cloud platform, its resources, and agreements. 
