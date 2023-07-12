@@ -15,6 +15,9 @@ categories:
 
 When you architect a solution for Azure, you need to decide which region to use, whether you deploy across multiple availabilty zones in a region, and whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, performance, and operational efficiency. This guide provides TODO.
 
+> [!TIP]
+> For most production customer workloads, a [single-region, zone-redundant deployment](#single-region-zone-redundant-services) provides the best balance of tradeoffs. You can consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
+
 ## Key requirements
 
 To make an informed decision about which approach works for your solution, you need to understand your requirements. These requirements should be driven by discussions between solution designers and business stakeholders.
