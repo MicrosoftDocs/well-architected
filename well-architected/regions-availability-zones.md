@@ -81,8 +81,8 @@ Deciding on the best deployment architecture for your requirements means that yo
 |-|-|
 | Reliability | **Low reliability.** Services are subject to outages if a data center fails. Application can be built to be resilient to other types of failures. |
 | Cost Optimization | **Lowest cost.** Likely to only have a single instance of each resource, and no inter-zone or inter-region bandwidth costs. |
-| Performance Efficiency | **Depends on the workload.** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
-| Operational Efficiency | **Easy to operate.** Likely to only have a single instance of each resource that needs to be managed. |
+| Performance Efficiency | <ul><li>**For most workloads:** TODO.</li><li>**For highly latency-sensitive workloads:**Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance.</li></ul>|
+| Operational Efficiency | **Easy to operate.** You only have a single instance of each resource that needs to be managed. |
 
 ### Single region, zone redundant services
 
@@ -92,15 +92,10 @@ Deciding on the best deployment architecture for your requirements means that yo
 
 | Architectural Concern | Impact |
 |-|-|
-| Reliability | **High reliability.** Risks  |
-| Cost Optimization | TODO |
-| Performance Efficiency | TODO |
-| Operational Efficiency | TODO |
-
-- RE: high
-- PE: usually fine, but latency-sensitive workloads might have isses
-- OC: easy
-- CE: usually has some cost
+| Reliability | **High reliability.** Services are resilient to an outage of a data center or availability zone. For most services, data is replicated automatically and with no delay. |
+| Cost Optimization | **Moderate cost.** Depending on the services you use, you might see some costs for higher service tiers to enable zone redundancy, or some inter-zone networking costs. |
+| Performance Efficiency | <ul><li>**For most workloads:** TODO.</li><li>**For highly latency-sensitive workloads:** Some components might be sensitive to latency due to inter-zone data replication.</li></ul> |
+| Operational Efficiency | **Easy to operate.** You only have a single instance of each resource that needs to be managed. During an outage, failover happens automatically. |
 
 ### Single region, zonal across multiple zones
 
@@ -110,16 +105,10 @@ Deciding on the best deployment architecture for your requirements means that yo
 
 | Architectural Concern | Impact |
 |-|-|
-| Reliability | TODO |
-| Cost Optimization | TODO |
-| Performance Efficiency | TODO |
-| Operational Efficiency | TODO |
-
-Note only makes sense for very specific use cases
- - RE: high (if configured correctly)
- - PE: co-located resources mean latency can be very low
- - OC: high, need to plan failover
- - CE: higher cost
+| Reliability | **High reliability.** |
+| Cost Optimization | **High cost.** |
+| Performance Efficiency | **For most workloads:** TODO.<br /><br />**For highly latency-sensitive workloads:** Latency can be very low when components are located in the same availability zone. |
+| Operational Efficiency | **High operational cost.** |
 
 This is also called metro DR
 
