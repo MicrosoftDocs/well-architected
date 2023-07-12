@@ -6,7 +6,3 @@ ms.author: prwilk
 ms.date: 03/27/2023
 ms.topic: conceptual
 ---
-
-# Reliability tradeoffs
-
-Patience is a virtue!
