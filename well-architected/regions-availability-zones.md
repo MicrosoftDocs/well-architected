@@ -31,7 +31,7 @@ The following table lists some common risks that should be considered in a cloud
 | Data center outage | <ul><li>Power, cooling, or network failure across an entire data center</li><li>Natural disaster in one part of a metro area</li></ul> | Infrequent |
 | Region outage | Major natural disaster that affects a wide geographical area | Very infrequent |
 
-<!-- TODO should we also include service outages? e.g. global service outage for something like Azure Front Door or Entra ID. Need to look to mission-critical guidance for this level of risk mitigation -->
+*should we also include service outages? e.g. global service outage for something like Azure Front Door or Entra ID. Need to look to mission-critical guidance for this level of risk mitigation*
 
 While every organization would ideally like to mitigate every possible risk, it's not practical or cost effective to do so. It's important to have an open discussion with business stakeholders so that you can make an informed decision about the risks you should mitigate.
 
@@ -63,32 +63,33 @@ Deciding on the best deployment architecture for your requirements means that yo
 - **Performance Efficiency:** Some workloads are highly latency-sensitive, TODO  Only really a concern for highly latency-sensitive workloads. Most workloads don't fit into this category.
 - **Operational Efficiency:** Management and failover
 
-<!-- TODO explain more - maybe give some examples:
-- If you deploy across regions, you need to replicate data between them. Synchronous replication means you take a perf hit on every transaction, but then everything is consistent. Async replication means there's a chance data loss occurs if an outage happens before data is replicated.
-- For many services, Azure runs multiple instances or stores multiple copies of the data. Zone redundancy means that these are distributed across availability zones (i.e. DCs) that are in the same metro area but separated. So you don't necessarily provision more resources, you're just spreading them across physical locations. This helps with resiliency. Does often have a cost impact but not as high as multi-region. Might increase latency of communication between components, but this doesn't matter for most workloads.
 
- -->
+
+To integrate somewhere:
+
+- **Replication:** If you deploy across regions, you need to replicate data between them. Synchronous replication means you take a perf hit on every transaction, but then everything is consistent. Async replication means there's a chance data loss occurs if an outage happens before data is replicated.
+- **How zone redundancy works:** For many services, Azure runs multiple instances or stores multiple copies of the data. Zone redundancy means that these are distributed across availability zones (i.e. DCs) that are in the same metro area but separated. So you don't necessarily provision more resources, you're just spreading them across physical locations. This helps with resiliency. The data transfer to keep instances in sync can have a cost impact but not as high as multi-region. Might increase latency of communication between components, but this doesn't matter for most workloads.
 
 ## Approaches
 
 ### Single region, no zone redundancy
 
-<!-- TODO description -->
+Description
 
-<!-- TODO diagram -->
+Diagram
 
 | Architectural Concern | Impact |
 |-|-|
 | Reliability | **Low reliability.** Services are subject to outages if a data center fails. Application can be built to be resilient to other types of failures. |
 | Cost Optimization | **Lowest cost.** Likely to only have a single instance of each resource, and no inter-zone or inter-region bandwidth costs. |
-| Performance Efficiency | <ul><li>**For most workloads:** TODO.</li><li>**For highly latency-sensitive workloads:**Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance.</li></ul>|
+| Performance Efficiency | <ul><li>**For most workloads:** TODO.</li><li>**For highly latency-sensitive workloads:** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance.</li></ul>|
 | Operational Efficiency | **Low operational burden.** You only have a single instance of each resource that needs to be managed. |
 
 ### Single region, zone redundant services
 
-<!-- TODO description -->
+Description
 
-<!-- TODO diagram -->
+Diagram
 
 | Architectural Concern | Impact |
 |-|-|
@@ -99,9 +100,9 @@ Deciding on the best deployment architecture for your requirements means that yo
 
 ### Single region, zonal across multiple zones
 
-<!-- TODO description -->
+Description
 
-<!-- TODO diagram -->
+Diagram
 
 | Architectural Concern | Impact |
 |-|-|
@@ -114,9 +115,9 @@ This is also called metro DR
 
 ### Single region, zone redundant services, with backup across regions
 
-<!-- TODO description -->
+Description
 
-<!-- TODO diagram -->
+Diagram
 
 | Architectural Concern | Impact |
 |-|-|
@@ -127,9 +128,9 @@ This is also called metro DR
 
 ### Multi-region
 
-<!-- TODO description -->
+Description
 
-<!-- TODO diagram -->
+Diagram
 
 | Architectural Concern | Impact |
 |-|-|
