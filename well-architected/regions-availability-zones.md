@@ -15,9 +15,9 @@ categories:
 
 When you architect a solution for Azure, you need to decide which region to use, whether you deploy across multiple availabilty zones in a region, and whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, performance, and operational efficiency. This guide provides TODO.
 
-## Key decision points
+## Key requirements
 
-To make an informed decision about which approach works for your solution, consider the following factors:
+To make an informed decision about which approach works for your solution, you need to understand your requirements. These requirements should be driven by discussions between solution designers and business stakeholders.
 
 ### Risk tolerance
 
@@ -69,21 +69,48 @@ Deciding on the best deployment architecture for your requirements means that yo
 
 ### Single region, no zone redundancy
 
+<!-- TODO description -->
+
+<!-- TODO diagram -->
+
 | Architectural Concern | Impact |
 |-|-|
-| Reliability | **Low reliability.** Doesn't mitigate many risks |
+| Reliability | **Low reliability.** Services are subject to outages if a data center fails. Application can be built to be resilient to other types of failures. |
 | Cost Optimization | **Lowest cost.** Likely to only have a single instance of each resource, and no inter-zone or inter-region bandwidth costs. |
 | Performance Efficiency | **Depends on the workload.** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
 | Operational Efficiency | **Easy to operate.** Likely to only have a single instance of each resource that needs to be managed. |
 
 ### Single region, zone redundant services
 
+<!-- TODO description -->
+
+<!-- TODO diagram -->
+
+| Architectural Concern | Impact |
+|-|-|
+| Reliability | **High reliability.** Risks  |
+| Cost Optimization | TODO |
+| Performance Efficiency | TODO |
+| Operational Efficiency | TODO |
+
 - RE: high
 - PE: usually fine, but latency-sensitive workloads might have isses
 - OC: easy
 - CE: usually has some cost
 
-Single region, zonal across multiple zones:
+### Single region, zonal across multiple zones
+
+<!-- TODO description -->
+
+<!-- TODO diagram -->
+
+| Architectural Concern | Impact |
+|-|-|
+| Reliability | TODO |
+| Cost Optimization | TODO |
+| Performance Efficiency | TODO |
+| Operational Efficiency | TODO |
+
 Note only makes sense for very specific use cases
  - RE: high (if configured correctly)
  - PE: co-located resources mean latency can be very low
@@ -92,25 +119,47 @@ Note only makes sense for very specific use cases
 
 This is also called metro DR
 
-Single region, zone redundant, with backup across regions:
+### Single region, zone redundant services, with backup across regions
+
+<!-- TODO description -->
+
+<!-- TODO diagram -->
+
+| Architectural Concern | Impact |
+|-|-|
+| Reliability | TODO |
+| Cost Optimization | TODO |
+| Performance Efficiency | TODO |
+| Operational Efficiency | TODO |
+
  - RE: very high
  - PE: usually fine, but latency-sensitive workloads might have isses
  - OC: zone outages easy; region outages require manual redeployment
  - CE: minimal cost compared to ZR
 
+### Multi-region
 
- Multi region
+<!-- TODO description -->
+
+<!-- TODO diagram -->
+
+| Architectural Concern | Impact |
+|-|-|
+| Reliability | TODO |
+| Cost Optimization | TODO |
+| Performance Efficiency | TODO |
+| Operational Efficiency | TODO |
+
  - RE: very high (if configured correctly)
  - PE: depends on workload. Can support high-perf workloads though
  - OC: difficult
  - CE: high
 
---
-
 ## Example workloads
 
 <!-- Considering adding a set of examples, with basic requirements, and an approach they can consider -->
 
+- Intranet for a small business - cost is the primary factor, and business impact of downtime is very low. Single-region deployment, no use of zones.
 - Line of business app for an enterprise - cost is a big factor; resiliency is important. Zone redundant.
 - Legacy application that's extremely chatty - performance matters a lot; resiliency is important. Multi-zone using metro DR approach.
 - Public sector application - data residency. Zone redundant.
