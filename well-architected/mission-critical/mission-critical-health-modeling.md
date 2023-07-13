@@ -165,7 +165,7 @@ A unified data sink is required to ensure all operational data is swiftly stored
 >[!TIP]
 > Azure provides various [Built-In Policies](/azure/azure-monitor/policy-reference) that can be applied to ensure deployed resources are configured to send logs and metrics to an Azure Monitor instance.
 
-- It's not uncommon for regulatory controls to require operational data remains within originating geographies or countries.  Regulatory requirements may stipulate the retention of critical data types for an extended period of time. For example, in regulated banking, audit data must be retained for at least seven years.
+- It's not uncommon for regulatory controls to require operational data remains within originating geographies or countries/regions.  Regulatory requirements may stipulate the retention of critical data types for an extended period of time. For example, in regulated banking, audit data must be retained for at least seven years.
 
 - Different operational data types may require different retention periods. For example, security logs may need to be retained for a long period, while performance data is unlikely to require long-term retention outside the context of AIOps.
 
