@@ -2,7 +2,11 @@
   href: ./index.yml
   items:
     - name: What's new
-      href: whats-new.md
+      items:
+      - name: Azure Well-Architected Framework
+        href: whats-new.md
+      - name: How to use this documentation
+        href: how-to-use-documentation.md
     - name: Pillars
       items: 
       - name: Overview
