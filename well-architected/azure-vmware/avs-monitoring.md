@@ -1,76 +1,170 @@
 ---
-title: Monitoring considerations for Azure VMware Solution (AVS)
-description: Best practices for monitoring VMWare workloads at the infrastructure and application levels.
+title: Monitoring considerations for Azure VMware Solution
+description: Best practices for monitoring Azure VMware Solution workloads at the infrastructure and application levels.
 author: Mahesh-MSFT
 ms.author: maksh
-ms.date: 06/05/2023
+ms.date: 7/14/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Monitoring considerations for Azure VMware Solution (AVS)
+# Monitoring considerations for Azure VMware Solution workloads 
 
-**Impact**: _Operational Excellence_
+This design area focuses on observability best practices for an Azure VMware Solution workload. The guidance is intended for the operations team. A combination of tools provided by Microsoft, VMware, and third parties can be used to monitor the infrastructure and the application. This article lists those options. 
 
-This design area focuses on observability best practices for a VMware workload. The guidance is intended for the operations team. To monitor the infrastructure and the application, a combination of tools provided by Microsoft, VMware, and third-parties can be used. This article lists those options. 
+Each option offers monitoring solutions with varying degrees of licensing costs, integration options, monitoring scope, and support. Carefully review the terms and conditions before using the tools. 
 
-Each option offers monitoring solutions with varying degree of licensing costs, integration options, monitoring scope and support. Carefully, review terms and conditions before using the tools.
+## Collect infrastructure data 
+#### Impact: _Operational excellence_
 
+Monitoring the workload involves collecting data from various VMware solution components and Azure VMware Solution infrastructure. Azure VMware Solution is integrated with VMware Software-Defined Data Center (SDDC) that runs several VMware solution native components. VMware Aria is a suite of tools for managing various aspects of the infrastructure, such as VMware Aria Operations.  
 
+VMware vSphere Health Status for Azure VMware Solution helps ensure proactive issue detection and remediation are continually performed in the Azure VMware Solution environment, such as finding misconfiguration in the vSphere infrastructure or detecting performance bottlenecks. The solution also provides insight into resource utilization and overall environmental health performance.
 
-## Collect infrastructure data
+VMware Aria Operations for Networks enables organizations to achieve comprehensive network visibility, streamline troubleshooting processes, and optimize network performance. 
 
-To monitor the workload, you'll need to collect data from various VMware components and Azure VMware Solution (AVS) infrastructure. 
+### Recommendations 
 
-- Azure VMware Solution (AVS) is integrated with VMware Software-Defined Data Center (SDDC) that runs several VMware native components. Configure [vSphere Health Status](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-F957C1BB-A032-4648-9310-68A94733ABC8.html) to get a high-level overview of **Azure VMware Solution SDDC's health status**. Use [vRealize Network Insight](https://docs.vmware.com/en/VMware-vRealize-Network-Insight/6.2/com.vmware.vrni.using.doc/GUID-3A09A9F1-23FE-44C5-A1F0-DB1932BB8E45.html) to get enhanced visibility and analytics of Azure VMware Solution SDDC's network infrastructure.
+- Configure  [vSphere Health Status](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-F957C1BB-A032-4648-9310-68A94733ABC8.html)  to get a high-level overview of Azure VMware Solution SDDC's health status.
+- Use  [VMware Aria Operations for Networks](https://www.vmware.com/products/aria-operations-for-networks.html) for enhanced visibility and analytics of Azure VMware Solution private cloud network infrastructure.
 
-  A popular tool for monitoring infrastructure and application is [vRealize Operations for Azure VMware Solution](/azure/azure-vmware/vrealize-operations-for-azure-vmware-solution). 
+#### Assessment questions
 
-- You'll need logs collected by **VMware Syslog** to get health data from the VMware system components, such as ESXi, vSAN, NSX-T, vCenter, and others. These logs are available through Azure VMware Solution (AVS) infrastructure. Configure [Azure Log Analytics](/azure/azure-vmware/configure-vmware-syslogs) to collect those logs for querying, analyzing and reporting purposes.
+- What tools are used to monitor your Azure VMware Solution private cloud and clusters? 
 
-     There might be tradeoffs on cost. Configure [cost control](/azure/well-architected/services/monitoring/log-analytics/cost-optimization#configuration-recommendations) for storing and managing costs associated with Azure Monitor.
+### Log Management and Archival Strategies
 
-- To enable **guest management and monitoring** on AVS guest VMs, you'll need to install additional agents to collect data. Use [Azure Arc for Azure VMware Solution (Preview)](/azure/azure-vmware/deploy-arc-for-azure-vmware-solution). For example, [Azure Log Analytics agent/extension](/azure/azure-vmware/integrate-azure-native-services) sends guest VM level logs to Azure Log Analytics. 
+You'll need logs collected by VMware Syslog to get health data from the VMware solution components, such as ESXi, vSAN, NSX-T Data Center, vCenter Server, and others. These logs are available through Azure VMware Solution infrastructure. Azure Log Analytics agent/extension sends guest VM-level logs to Azure Log Analytics. Within Azure VMware Solution, you can send the Azure VMware Solution logs to the Azure Native storage blob. Sending logs to a storage blob is possible by setting up forwarders from a centralized Syslog server or as a destination from Azure Monitor. It's also possible to use an Azure Native tool such as Azure Logic Apps or Azure Functions to create listeners for incoming logs from Azure VMware Solution and send them to the storage blobs as the destination. 
 
-- Use native monitoring tools and processes for **database activities**. For example, if SQL server is used, [SQL Server assessment](/azure/azure-sql/virtual-machines/windows/sql-assessment-for-sql-vm) is recommended to support database monitoring on Azure VMware Solution SDDC.
+Archival of logs is a strategy for keeping your storage costs down. Azure Storage Blobs and Azure Log Analytics can send logs for long-term archival. While storage blobs are cheaper, Log Analytics has more advanced integrations for alerting, visualization, querying, and machine learning-based insights. Consider your budget, functional, and long-term use cases to decide on each solution. 
 
-There are third-party solutions available. Use [Partner solutions for application performance monitoring](/azure/azure-vmware/ecosystem-app-monitoring-solutions#third-party-solutions). Such solutions enable operation teams to continue using tool of their choice.
+### Recommendations
+
+- Collect **VMware Syslogs** to get health data from the VMware solution components, such as ESXi, vSAN, NSX-T Data Center, and vCenter Server.
+- Configure tools such as [Azure Log Analytics](https://review.learn.microsoft.com/en-us/azure/azure-vmware/configure-vmware-syslogs) to collect those logs for querying, analyzing, and reporting capabilities.
+- Configure retention durations for sending logs to log term storage to reduce query time and save on storage costs. 
   
+#### Assessment questions
+
+Is there a defined approach for managing the lifecycle of logs, including specific retention durations?
+
+### Monitoring the Guest Operating System
+
+Within the Guest Operating System are metrics around disk usage, application performance, system resource utilization, and user activity. Consider using Azure Arc for Azure VMware Solution (Preview). For more information, visit [Deploy ARC for Azure VMware Solution](https://review.learn.microsoft.com/en-us/azure/azure-vmware/deploy-arc-for-azure-vmware-solution)
+
+#### Recommendations
+
+- Enable guest management and install Azure extensions once the private cloud with Azure Arc.
+- Install additional agents to collect data to enable guest management and monitoring on Azure VMware Solution guest VMs.  
+
+#### Assessment questions
+
+ - Are there tools for alerting and remediating stale patches, OS versions, and software configurations? 
+
 ## Security monitoring
+#### Impact: _Security, Operational excellence_
 
-- Use [security monitoring solutions from Partners](/azure/azure-vmware/ecosystem-security-solutions). These tools are pre-validated to be used for Azure VMware Solution SDDC.
+Security monitoring is critical to detect and respond to anomalous activities. Workloads running in Azure VMware Solution private cloud need comprehensive security monitoring spanning networks, Azure resources, and the Azure VMware Solution private cloud itself. You can centralize security events by deploying Microsoft Sentinel workspace. With this integration, the operation team can view, analyze, and detect security incidents in the context of a broader organizational threat landscape.  
 
-- Enable [Azure Defender for Cloud](/azure/defender-for-cloud/get-started) on the Azure subscription used for deploying Azure VMware Solution SDDC. Ensure that the [defender plan](https://azure.microsoft.com/pricing/details/defender-for-cloud/) has "Cloud Workload Protection (CWP)" ON for Servers. Operations team will be able to cover Azure VMware Solution guest VMs with threat protection.
-  
-- For network security, capture and monitor [Network Firewall](https://techcommunity.microsoft.com/t5/azure-migration-and/firewall-integration-in-azure-vmware-solution/ba-p/2254961) logs deployed either in Azure VMware Solution SDDC or Azure. Run guest VMs behind this firewall.
+### Recommendations 
 
-    Use [Azure Firewall Workbook](/azure/firewall/firewall-workbook) or similar tools to monitor common metrics and logs related to firewall device.
+- Enable [Azure Defender for Cloud](https://review.learn.microsoft.com/en-us/azure/defender-for-cloud/get-started) on the Azure subscription for deploying Azure VMware Solution SDDC, ensuring the defender plan has "Cloud Workload Protection (CWP)" ON for Servers. 
 
-- Audit [activities by privileged users](/azure/active-directory/privileged-identity-management/groups-audit) on Azure VMware Solution SDDC.
+- Audit activities by privileged users on Azure VMware Solution SDDC. For more information, see: https://review.learn.microsoft.com/en-us/azure/active-directory/privileged-identity-management/groups-audit 
+- Integrate Sentinel with Defender for Cloud  and Enable its data collector for security events and connect it with Microsoft Defender for Cloud. 
+- Use security monitoring solutions from pre-validated partners in Azure VMware Solution. 
 
-- You can centralize security events by deploying [Microsoft Sentinel workspace](/azure/azure-vmware/azure-security-integration#deploy-a-microsoft-sentinel-workspace). Enable it's data collector for security events and connect it with Microsoft Defender for Cloud. With this integration, the operation team can view, analyze, and detect security incidents in the context of broader organizational threat landscape. For more information, see these articles:
+### Assessment questions
 
-    - [Enable data collector](/azure/azure-vmware/azure-security-integration#enable-data-collector-for-security-events)
-    - [Integrate Sentinel with Defender for Cloud](/azure/azure-vmware/azure-security-integration#connect-microsoft-sentinel-with-microsoft-defender-for-cloud)
- 
-### Alerts and notifications
+- How are you monitoring security-related events in Azure VMware Solution? 
 
-You also need to configure alerts so that notifications are sent to the accountable teams when certain conditions are met.
+### Network Analysis
 
-- [vSphere events and alarms subsystem](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-9272E3B2-6A7F-427B-994C-B15FF8CADC25.html) is recommended for monitoring vSphere and setting up triggers.
+Network monitoring inspects all the traffic coming into and going out of Azure VMware Solution private cloud. Network security with Azure VMware Solution operates at both the network and host layers. 
 
-- Configure [Azure Alerts in Azure VMware Solution](/azure/azure-vmware/configure-alerts-for-azure-vmware-solution#supported-metrics-and-activities). Such alerts enable operation teams to respond to expected and unexpected events in real-time.
+### Recommendations
 
-- Understand [Azure VMware Solution Service Level Agreement (SLA) commitments](https://azure.microsoft.com/support/legal/sla/azure-vmware/v1_1/). Ensure that alerts are configured so that [vSAN storage slack space](/azure/azure-vmware/concepts-storage) is maintained at the levels mandated by SLA agreement.
+- Capture and monitor [Network Firewall](https://techcommunity.microsoft.com/t5/azure-migration-and/firewall-integration-in-azure-vmware-solution/ba-p/2254961) logs deployed in Azure VMware Solution private cloud or Azure where the application extends to Azure native devices such as Azure Firewall or Azure App Gateway.
+- Use [Azure Firewall Workbook](https://review.learn.microsoft.com/en-us/azure/firewall/firewall-workbook) or similar tools to monitor common metrics and logs related to firewall devices.
+- Correlate logs from multiple security vectors such as identity, networking, and infrastructure.
 
-- Configure [Resource Health alerts](/azure/service-health/resource-health-alert-monitor-guide). Operations teams can use these alerts to get real-time health status of Azure VMware Solution SDDC.
+#### Assessment questions
 
-## Visualization
+- How are you monitoring identity and networking events?
 
-It's highly recommended that you visually represent the monitoring reports in dashboards to drive effective operations. This will help the operations team to quickly do root-cause analysis and troubleshooting. 
+## Alerts and notifications 
+#### Impact: _Operational Excellence_, _Cost optimization_ 
 
-- Configure [Monitoring dashboard](https://github.com/Azure/Enterprise-Scale-for-AVS/tree/main/BrownField/Monitoring/AVS-Dashboard). Operation teams can use such dashboard for a simplified view of all key resources that make up Azure VMware Solution in a single pane.
+Configure alerts to notify the accountable teams when certain conditions are met. 
 
-- Create [Azure Workbook](/azure/azure-monitor/visualize/workbooks-overview) as a central repository for commonly executed queries, metrics and interactive reports.
+### Recommendations 
 
+- Use [vSphere events and alarms subsystem](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-9272E3B2-6A7F-427B-994C-B15FF8CADC25.html) for monitoring vSphere and setting up triggers. 
+
+- Configure [Azure Alerts in Azure VMware Solution](https://review.learn.microsoft.com/en-us/azure/azure-vmware/configure-alerts-for-azure-vmware-solution#supported-metrics-and-activities) to respond to events in real-time. 
+
+- Ensure that alerts are configured so that [vSAN storage slack space](https://review.learn.microsoft.com/en-us/azure/azure-vmware/concepts-storage) is maintained at the levels mandated by the SLA agreement. 
+
+- Configure Resource Health alerts to get the real-time health status of Azure VMware Solution private cloud. 
+
+#### Assessment questions
+
+- How are platform and workload data obtained and mapped to thresholds to create alerts? 
+
+## Cost Management 
+#### Impact: _Cost Optimization, Operational Excellence_
+
+Cost monitoring refers to the ability to keep track of costs associated with Azure VMware Solution private cloud.
+
+### Recommendations
+
+- Use the vSphere events and alarms subsystem to monitor vSphere and set up triggers.
+- Configure Azure Alerts in Azure VMware Solution. Such alerts enable operation teams to respond to expected and unexpected events in real time.
+
+#### Assessment questions
+
+- Are there Azure budgets and alerts on costs? 
+
+### Troubleshooting and Debugging
+
+Efficient debugging and troubleshooting of the application necessitate logs, metrics, and associated information, such as event activities, to identify, analyze, and establish connections between events.
+
+### Recommendations
+
+- Configure Azure VMware Solution syslog forwarding to Log Analytics. Configure it with all relevant logs, metrics, and diagnostic information.
+- Configure Azure Arc-enabled Server agent on guest VMs running inside Azure VMware Solution private cloud.
+
+#### Assessment questions
+
+- Have common queries for troubleshooting and debugging been identified and defined?
+
+## Visualization 
+#### Impact: _Operational excellence_ 
+
+Visually representing the monitoring reports in dashboards helps drive effective operations to do root-cause analysis and troubleshooting quickly. Operations teams can use such a dashboard for a simplified view of all key resources that make up Azure VMware Solution in a single pane. 
+
+### Recommendations
+
+- Configure the Monitoring dashboard. 
+- Create Azure Workbook as a central repository for commonly executed queries, metrics, and interactive reports. 
+
+#### Assessment questions
+
+-Have you created a single dashboard for all monitoring in a single pane? 
+
+### Application Performance Monitoring and Alerting 
+
+Workloads running in Azure VMware Solution private cloud need effective performance monitoring and alerting to respond to any change in their performance baseline. 
+For example, collecting logs to collect metrics, trace requests, and capture logs for both the application and infrastructure layer. This mechanism for workloads running in Azure VMware Solution private cloud aids in creating proactive performance monitoring and alerting to respond to any change in their performance baseline. 
+
+### Recommendation
+
+- Discuss and establish baselines based on performance data
+- Use application performance monitoring (APM) tools to gain performance insights and the application code level.
+- Use a combination of monitoring techniques such as synthetic transactions, heartbeat monitoring, and endpoint monitoring
+- Integrate alerts with collaboration messaging tools such as Microsoft Teams
+
+#### Assessment questions 
+
+- What tools are in place for monitoring the health of the application?
