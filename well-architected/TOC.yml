@@ -26,7 +26,7 @@
         - name: Best practices guides   
           items:
             - name: Reliability guide
-              href: reliability/reliability-guide.md
+              href: coming-soon.md
       - name: Security
         items: 
         - name: Quick links
@@ -34,7 +34,7 @@
         - name: Overview
           href: security/overview.md
         - name: Design principles
-          href: security/security-principles.md
+          href: security/principles.md
         - name: Checklist
           href: security/checklist.md
         - name: Tradeoffs
@@ -42,7 +42,7 @@
         - name: Best practices guides   
           items:
             - name: Security guide
-              href: security/security-guide.md
+              href: coming-soon.md
       - name: Cost Optimization
         items: 
         - name: Quick links
@@ -56,7 +56,7 @@
         - name: Best practices guides   
           items:
             - name: Cost optimization guide
-              href: cost-optimization/cost-optimization-guide.md
+              href: coming-soon.md
       - name: Operational Excellence
         items: 
         - name: Quick links
@@ -68,11 +68,11 @@
         - name: Checklist
           href: operational-excellence/checklist.md
         - name: Tradeoffs
-          href: coming-soon.md
+          href: operational-excellence/tradeoffs.md
         - name: Best practices guides   
           items:
             - name: Operational excellence guide
-              href: operational-excellence/operational-excellence-guide.md
+              href: coming-soon.md
       - name: Performance Efficiency
         items: 
         - name: Quick links
@@ -293,8 +293,10 @@
           href: service-guides/virtual-machines-review.md
     - name: Cross-cutting guides
       items:
+      - name: Health model
+        href: ./cross-cutting-guides/health-model.md        
       - name: Implementing recommendations
-        href: ./implementing-recommendations.md        
+        href: ./cross-cutting-guides/implementing-recommendations.md        
       - name: DevSecOps - application
         href: coming-soon.md
     - name: Old TOC
@@ -308,7 +310,7 @@
           - name: Overview
             href: resiliency/overview.md
           - name: Principles
-            href: resiliency/principles.md
+            href: resiliency/old-principles.md
           - name: Design
             items:
               - name: Checklist
@@ -364,7 +366,7 @@
           - name: Overview
             href: security/overview.md
           - name: Principles
-            href: security/security-principles.md
+            href: security/old-principles.md
           - name: Design
             items:
               - name: Governance
@@ -460,7 +462,7 @@
               - name: Security operations
                 href: security/monitor-security-operations.md
           - name: Tradeoffs
-            href: security/security-tradeoffs.md
+            href: security/old-tradeoffs.md
           - name: Security patterns
             href: security/security-patterns.md
       - name: Cost Optimization
@@ -470,11 +472,11 @@
           - name: Overview
             href: cost-optimization/overview.md
           - name: Principles
-            href: cost-optimization/principles.md
+            href: cost-optimization/old-principles.md
           - name: Design
             items:
               - name: Checklist
-                href: cost-optimization/design-checklist.md
+                href: cost-optimization/old-checklist.md
               - name: Cost model
                 href: cost-optimization/design-model.md
               - name: Capture requirements
@@ -533,7 +535,7 @@
               - name: Caching
                 href: cost-optimization/optimize-cache.md
           - name: Tradeoffs
-            href: cost-optimization/tradeoffs.md
+            href: cost-optimization/old-tradeoffs.md
       - name: Operational Excellence
         items:
           - name: About
@@ -541,7 +543,7 @@
           - name: Overview
             href: devops/overview.md
           - name: Principles
-            href: devops/principles.md
+            href: devops/old-principles.md
           - name: Automation
             items:
               - name: Automation overview
@@ -569,7 +571,7 @@
           - name: Monitor
             items:
               - name: Checklist
-                href: devops/checklist.md
+                href: devops/old-checklist.md
               - name: Monitor cloud applications
                 items:
                   - name: Monitoring stages
@@ -607,7 +609,7 @@
           - name: Overview
             href: scalability/overview.md
           - name: Principles
-            href: scalability/principles.md
+            href: scalability/old-principles.md
           - name: Design
             items:
               - name: Distributed architecture challenges
@@ -635,7 +637,7 @@
           - name: Monitoring
             items:
               - name: Checklist
-                href: scalability/checklist.md
+                href: scalability/old-checklist.md
               - name: Application profiling
                 href: scalability/monitor-application.md
               - name: Analyze infrastructure
@@ -653,11 +655,11 @@
               - name: Cache data
                 href: scalability/optimize-cache.md
           - name: Performance efficiency patterns
-            href: performance-efficiency/performance-efficiency-patterns.md
+            href: scalability/performance-efficiency-patterns.md
           - name: Checklist
-            href: performance-efficiency/performance-efficiency.md
+            href: scalability/performance-efficiency.md
           - name: Tradeoffs
-            href: performance-efficiency/tradeoffs.md
+            href: scalability/old-tradeoffs.md
       - name: Workloads
         items:
           - name: Mission-critical
