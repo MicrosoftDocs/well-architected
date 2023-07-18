@@ -71,9 +71,9 @@ The modernization approach or updating current apps and data to a cloud-first mo
 ## Establish a security baseline 
 **Impact**: _Security_
 
-Secure workloads and validate compliance and regulatory requirements by using Microsoft Defender for Cloud and it's [cloud security policies]((https://learn.microsoft.com/azure/governance/policy/concepts/azure-security-benchmark-baseline)).  This tool provides recommendations on how you can secure your cloud solutions on Azure and compliance with those portions of regulatrory frameworks covered by the application platform. The secuirty baseline applies guidance from the Microsoft cloud security benchmarks and steps required for remediation.	Note that to enable Defender for Cloud, either ARC for VMware or ARC for servers is required.
+Secure workloads and validate compliance and regulatory requirements by using Microsoft Defender for Cloud and it's [cloud security policies]((https://learn.microsoft.com/azure/governance/policy/concepts/azure-security-benchmark-baseline)).  This tool provides recommendations on how you can secure your cloud solutions on Azure and compliance with those portions of regulatrory frameworks covered by the application platform. The secuirty baseline applies guidance from the Microsoft cloud security benchmarks and steps required for remediation.	Note that to enable Defender for Cloud, either Arc for VMware or Arc for servers is required.
 
-[Configure Identity and Roles for AVS](https://learn.microsoft.com/en-us/azure/azure-vmware/concepts-identity), the external identity provider (using LDAPS) to enable administrative users to log into the vCenter, NSX-T and HCX appliances using their active directory credentials.  Then use [VMware priviliges in AVS](https://learn.microsoft.com/en-us/azure/azure-vmware/concepts-identity#view-the-vcenter-server-privileges) roles to assign roles to the users.  
+[Configure Identity and Roles for Azure VMware Solution](https://learn.microsoft.com/en-us/azure/azure-vmware/concepts-identity), the external identity provider (using LDAPS) to enable administrative users to log into the vCenter, NSX-T and HCX appliances using their active directory credentials.  Then use [VMware priviliges in Azure VMware Solution](https://learn.microsoft.com/en-us/azure/azure-vmware/concepts-identity#view-the-vcenter-server-privileges) roles to assign roles to the users.  
 
 Use [Azure Arc for VMware (where available)](https://learn.microsoft.com/en-us/azure/azure-arc/vmware-vsphere/overview) to deploy the AMA agent to virtual machines, otherwise use [Azure Arc for Servers (GA)](https://learn.microsoft.com/en-us/azure/azure-arc/servers/overview). The Microsoft cloud security benchmark provides recommendations on how you can secure your cloud solutions on Azure. This security baseline applies guidance from the Microsoft [cloud security benchmark](https://learn.microsoft.com/azure/governance/policy/concepts/azure-security-benchmark-baseline) version 1.0 through Azure Policy.  
 
@@ -151,20 +151,20 @@ Use an Azure validated disaster recovery application to ensure you get support f
 
 ##### Recommendation
 
-For backup use  [Microsoft Backup](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-whats-new-mabs) (MABS) is available today, and Microsoft cloud native backup is expected by the end of CY23Q3.  There are also a number of 3rd party backup services,[AVS Backup Partners](https://learn.microsoft.com/en-us/azure/azure-vmware/ecosystem-back-up-vms), available.	
+For backup use  [Microsoft Backup](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-whats-new-mabs) (MABS) is available today, and Microsoft cloud native backup is expected by the end of CY23Q3.  There are also a number of 3rd party backup services,[Azure VMware Solution Backup Partners](https://learn.microsoft.com/en-us/azure/azure-vmware/ecosystem-back-up-vms), available.	
 
 For disaster recovrey use [Azure Site Recovery](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-overview), [vMWare Site Recovery Manager (SRM)](https://learn.microsoft.com/en-us/azure/azure-vmware/disaster-recovery-using-vmware-site-recovery-manager), J[etstream](https://learn.microsoft.com/en-us/azure/azure-vmware/deploy-disaster-recovery-using-jetstream), [Zerto](https://learn.microsoft.com/en-us/azure/azure-vmware/deploy-zerto-disaster-recovery) or a third party applications that have partnered with Microsoft. 
 
 ## Management
 **Impact**: _Operational Excellence_
 
-Arc-enabled Azure VMware Solution allows managing VMs, guest OS extensions, and guest management. [ARC with AVS](https://learn.microsoft.com/en-us/azure/azure-vmware/deploy-arc-for-azure-vmware-solution?tabs=windows) (preview) extends Azure governance and management capabilities to VMware vSphere infrastructure. With Azure Arc-enabled VMware vSphere, there is a consistent management experience across Azure and VMware vSphere infrastructure. Performance metrics and logs are sent to log analytics for analysis.	Operations are related to Create, Read, Update, and Delete (CRUD) virtual machines (VMs) in an Arc-enabled Azure VMware Solution private cloud are captured. Users can also enable guest management and install Azure extensions once the private cloud is Arc-enabled.	
+Arc-enabled Azure VMware Solution allows managing VMs, guest OS extensions, and guest management. [Arc with Azure VMware Solution](https://learn.microsoft.com/en-us/azure/azure-vmware/deploy-arc-for-azure-vmware-solution?tabs=windows) (preview) extends Azure governance and management capabilities to VMware vSphere infrastructure. With Azure Arc-enabled VMware vSphere, there is a consistent management experience across Azure and VMware vSphere infrastructure. Performance metrics and logs are sent to log analytics for analysis.	Operations are related to Create, Read, Update, and Delete (CRUD) virtual machines (VMs) in an Arc-enabled Azure VMware Solution private cloud are captured. Users can also enable guest management and install Azure extensions once the private cloud is Arc-enabled.	
 
 Azure Arc for VMware enables the ability to perform various VMware virtual machine (VM) lifecycle operations directly from Azure, such as create, start/stop, resize, and delete. Azure Arc is also a key component for deploying the Defender extention onto Azure VMware Solution workload servers.
 
 ##### Assessment questions
 
-- You are using  Azure Arc to capture logs and metrics from Azure VMware Solution workloads?
+- You are using Azure Arc to capture logs and metrics from Azure VMware Solution workloads?
 - You are using Azure Insights for monitoring the health of Azure native services?
 
 ##### Recommendations
