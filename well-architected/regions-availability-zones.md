@@ -20,7 +20,11 @@ When you architect a solution for Azure, you need to decide which region to use,
 
 ## Regions and availability zones
 
-TODO brief refresh of what they are, and link to more detailed docs
+Azure's global footprint includes over 60 announced regions. A *region* is a geographic perimeter that contains a set of data centers. Many Azure regions provide *avalability zones*, which are separated sets of data centers. Within a region, each availability zone is close enough together to have very low latency connectivity, while being far enough apart to ensure that they have independent power, cooling, and networking infrastructure. Availability zones are designed so that if one zone is affected, regional services, capacity, and high availability are supported by the remaining zones.
+
+![Diagram showing data centers, availability zones and regions](/azure/reliability/media/availability-zones.png)
+
+For more information, see [What are Azure regions and availability zones?](/azure/reliability/availability-zones-overview)
 
 ## Key requirements
 
@@ -175,5 +179,10 @@ When would zone redundancy not be advisable?
  - Mission-critical solutions with low risk tolerance.
  - Perf: low latency requirements. Consider zonal deployment.
  - When you deploy across multiple regions for other reasons (e.g. you're deploying to multiple regions to support a globally distributed user base)
+
+Links to add:
+
+https://learn.microsoft.com/en-au/azure/reliability/availability-zones-service-support
+https://learn.microsoft.com/en-au/azure/reliability/availability-service-by-category
 
 -->
