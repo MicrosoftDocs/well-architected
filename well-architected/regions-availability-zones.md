@@ -106,7 +106,7 @@ The single-region deployment model has the following effects on your architectur
 | Architectural Concern | Impact |
 |-|-|
 | Reliability | **Low reliability.** Services are subject to outages if a data center fails. Application can be built to be resilient to other types of failures. |
-| Cost Optimization | **Lowest cost.** Likely to only have a single instance of each resource, and no inter-zone or inter-region bandwidth costs. |
+| Cost Optimization | **Lowest cost.** You only need to have a single instance of each resource, and you don't incur any inter-zone or inter-region bandwidth costs. |
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
 | Operational Excellence | **High operational efficiency.** You only have a single instance of each resource that needs to be managed. |
 
@@ -131,7 +131,7 @@ A zone-redundant deployment model has the following effects on your architectura
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Some components might be sensitive to latency due to inter-zone traffic. |
 | Operational Excellence | **High operation efficiency.** You typically need to only manage a single instance of each resource. For most services, during an availability zone outage, failover is Microsoft's responsibility and happens automatically. |
 
-This approach is possible with many Azure services, including virtual machine scale sets, App Service, Azure Functions, Azure SQL, Service Bus, and many others. For a complete list of services that support zone redundancy, see [Availability zone service and regional support](/azure/reliability/availability-zones-service-support).
+This approach is possible with many Azure services, including virtual machine scale sets, App Service, Azure Functions, AKS, Azure Storage, Azure SQL, Service Bus, and many others. For a complete list of services that support zone redundancy, see [Availability zone service and regional support](/azure/reliability/availability-zones-service-support).
 
 ### Multi-zone deployment with zonal resources
 
