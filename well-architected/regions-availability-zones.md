@@ -20,7 +20,9 @@ When you architect a solution for Azure, you need to decide which region to use,
 
 ## Regions and availability zones
 
-Azure's global footprint includes over 60 announced regions. A *region* is a geographic perimeter that contains a set of data centers. Many Azure regions provide *avalability zones*, which are separated sets of data centers. Within a region, each availability zone is close enough together to have very low latency connectivity, while being far enough apart to ensure that they have independent power, cooling, and networking infrastructure. Availability zones are designed so that if one zone is affected, regional services, capacity, and high availability are supported by the remaining zones.
+Azure's global footprint includes over 60 announced regions. A *region* is a geographic perimeter that contains a set of data centers.
+
+Many Azure regions provide *availability zones*, which are separated groups of data centers. Within a region, each availability zone is close enough together to have very low latency connections to other availability zones, while being far enough apart to ensure that they have independent power, cooling, and networking infrastructure. Availability zones are designed so that if one zone is affected, regional services, capacity, and high availability are supported by the remaining zones.
 
 ![Diagram showing data centers, availability zones and regions](/azure/reliability/media/availability-zones.png)
 
@@ -34,23 +36,40 @@ Most solutions can be designed in many different ways. Each approach has advanta
 - The deployment approaches and how they work.
 - The tradeoffs involved in each approach.
 
-To understand why you need to make tradeoffs, consider how data replication works. Suppose you're thinking about deploying a new solution with an application that writes data to some sort of storage. If you want to achieve high resiliency, you might choose to write the data to multiple places. In Azure, [you have several options for redundancy](/azure/storage/common/storage-redundancy). Select each tab to learn about the option and the tradeoffs involved.
+To understand why you need to make tradeoffs, consider how data replication works. Suppose you're thinking about deploying a new solution with an application that writes data to some sort of storage. If you want to achieve high resiliency, you might choose to write the data to multiple places. Select each tab to learn about some of the options, and the tradeoffs involved.
 
-<!-- TODO maybe tabs for this? -->
+> [!NOTE]
+> The examples below aren't specific to any storage service in Azure. They're intended as simple examples to illustrate the basic concepts.
 
-#### [Locally redundant storage](#tab/lrs)
+#### [Single-zone](#tab/single-zone)
 
-LRS writes multiple copies of your data within a single data center. However, if that data center has an outage, your data might be unavailable or lost.
+If you use a service that isn't zone-aware, then your data is likely to be stored within a single data center. However, if that data center has an outage, your data might be unavailable or lost.
 
-#### [Zonally redundant storage](#tab/zrs)
+#### [Multi-zone](#tab/multi-zone)
 
-Zonally redundant storage means that the copies of the data are distributed across multiple availability zones by using *synchronous replication*. When the data changes, the write operation happens synchronously to multiple copies of the data simultaneously. This approach increases your solution's resiliency to issues like data center outages. But because data is replicated synchronously, your application has to wait for the data to be written across multiple separate places that might be in different parts of a metropolitan area. For highly latency-sensitive workloads, this might affect the application's performance.
+When you use a zone-redundant storage service, copies of your application's data are distributed across multiple availability zones by using *synchronous replication*. When the data changes, the write operation happens synchronously to multiple copies of the data simultaneously.
 
-#### [Geo-redundant storage](#tab/grs)
+This approach increases your solution's resiliency to issues like data center outages.
 
-Geo-redundant storage means that multiple copies of the data are stored in two separate Azure regions. Because regions are geographically separated, data replication between the regions happens asynchronously. It's possible, although very unlikely, that a region might experience an outage before the replication has completed. If this sort of outage happens, you might experience a small amount of data loss.
+Because data is replicated synchronously, your application has to wait for the data to be written across multiple separate places that might be in different parts of a metropolitan area. For most applications, the latency involved in inter-zone communication is negligible. However, for some highly latency-sensitive workloads, synchronous replication might affect the application's performance.
 
-<!-- TODO note this requires a paired region -->
+#### [Multi-region synchronous](#tab/multi-region-synchronous)
+
+When you use a geo-redundant storage service, multiple copies of the data are stored in separate Azure regions.
+
+Your data can remain available even if an entire Azure region is offline.
+
+A synchronous multi-region solution means that your application has to wait for write operations to be completed in each Azure region before the transaction is completed. The latency involved in waiting for write operations depends on the distance between the regions. See [Azure network round-trip latency statistics](/azure/networking/azure-network-latency) for the expected network latency when connecting between two regions.
+
+For many workloads, inter-region latency can make synchronous replication too slow.
+
+#### [Multi-region asynchronous](#tab/multi-region-asynchronous)
+
+When you use a geo-redundant storage service, multiple copies of the data are stored in separate Azure regions.
+
+Your data can remain available even if an entire Azure region is offline.
+
+Asynchronous replication across regions means that your application doesn't wait for all regions to acknowledge a change. Once the change is commited in one region, the application considers the transaction to be completed. At some point later, the change is replicated between the two regions. This approach means that inter-region connection latency doesn't affect the application performance. However, because of the delay in replication, a region wide outage might result in some data loss. This data loss is because a region might have an outage after a write was completed but before the change could be replicated.
 
 ---
 
@@ -74,7 +93,7 @@ To make an informed decision about which approach works for your solution, you n
 
 ### Risk tolerance
 
-Different organizations have different risk appetites, and risk tolerance is often different for each workload. Some workloads are so important that it's worth even mitigating risks that are unlikely to occur, like major natural disasters occurring across a wide geographic area. Other workloads are less critical.
+Different organizations have different risk appetites. Even within an organization, risk tolerance is often different for each workload. Most workloads don't need extreme high availability. But some workloads are so important that it's worth even mitigating risks that are unlikely to occur, like major natural disasters occurring across a wide geographic area.
 
 The following table lists some common risks that should be considered in a cloud environment:
 
