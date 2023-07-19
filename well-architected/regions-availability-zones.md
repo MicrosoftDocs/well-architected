@@ -26,58 +26,13 @@ Azure's global footprint includes over 60 announced regions. A *region* is a geo
 
 For more information, see [What are Azure regions and availability zones?](/azure/reliability/availability-zones-overview)
 
-
-
-## Key requirements
-
-As a solution architect, you need to plan how to make effective use of regions and availability zones to meet your business needs.
-
-To make an informed decision about which approach works for your solution, you need to understand your requirements. These requirements should be driven by discussions between solution designers and business stakeholders.
-
-### Risk tolerance
-
-Different organizations have different risk appetites, and risk tolerance is often different for each workload. Some workloads are so important that it's worth even mitigating risks that are unlikely to occur, like major natural disasters occurring across a wide geographic area. Other workloads are less critical.
-
-The following table lists some common risks that should be considered in a cloud environment:
-
-| Risk | Example | Frequency |
-|-|-|-|
-| Hardware outage | <ul><li>Issue with hard disk or networking equipment</li><li>Host reboots</li></ul> | Common. Any resiliency strategy should account for these risks. |
-| Data center outage | <ul><li>Power, cooling, or network failure across an entire data center</li><li>Natural disaster in one part of a metro area</li></ul> | Infrequent |
-| Region outage | <ul><li>Major natural disaster that affects a wide geographical area</li></ul> | Very infrequent |
-
-*should we also include service outages? e.g. global service outage for something like Azure Front Door or Entra ID. Need to look to mission-critical guidance for this level of risk mitigation* <!-- TODO -->
-
-While every organization would ideally like to mitigate every possible risk, it's not practical or cost effective to do so. It's important to have an open discussion with business stakeholders so that you can make an informed decision about the risks you should mitigate.
-
-> [!TIP]
-> Generally, only customers with mission-critical workloads choose to mitigate risks with low likelihood. For example, banks, governments, and healthcare workloads typically have a high degree of importance and need to remain operational in all situations. For other workloads, the organization's risk tolerance usually is higher.
-
-### Resiliency requirements
-
-It's important that you understand your resiliency requirements for your workload, including the RTO and RPO. If you don't have clear requirements, you can't make an informed decision about which approach to follow.
-
-Link to WAF guidance about these requirements
-
-### User location
-
-If your users are geographically dispersed, it might make sense to deploy your workload across multiple regions. If your users are in one area, a single-region deployment can simplify your operational requirements and reduce your costs.
-
-### Budget
-
-If you operate under a constrained budget, it's important to consider the costs involved in redundant workload components. These costs can include additional resource charges, networking costs, and operational costs to manage more resources and a more complex environment. 
-
-### Complexity
-
-It's a good practice to avoid unnecessary complexity in your solution architecture. The more complexity you introduce, the harder it is to reason about your architecture. Complex architectures are harder to operate, harder to secure, and are often less performant.
-
 ## Understand tradeoffs
 
 Most solutions can be designed in many different ways. Each approach has advantages and disadvantages. You can only make an informed decision about which deployment approach best fits your needs if you understand all of the following elements:
 
+- Your business and workload requirements.
 - The deployment approaches and how they work.
 - The tradeoffs involved in each approach.
-- Your business and workload requirements.
 
 --
 
@@ -102,7 +57,49 @@ To integrate somewhere:
 
 - **How zone redundancy works:** For many services, Azure runs multiple instances or stores multiple copies of the data. Zone redundancy means that these are distributed across availability zones (i.e. DCs) that are in the same metro area but separated. So you don't necessarily provision more resources, you're just spreading them across physical locations. This helps with resiliency. The data transfer to keep instances in sync can have a cost impact but not as high as multi-region. Might increase latency of communication between components, but this doesn't matter for most workloads.
 
-## Approaches
+
+## Key business and workload requirements
+
+To make an informed decision about which approach works for your solution, you need to understand your requirements. These requirements should be driven by discussions between solution designers and business stakeholders.
+
+### Risk tolerance
+
+Different organizations have different risk appetites, and risk tolerance is often different for each workload. Some workloads are so important that it's worth even mitigating risks that are unlikely to occur, like major natural disasters occurring across a wide geographic area. Other workloads are less critical.
+
+The following table lists some common risks that should be considered in a cloud environment:
+
+| Risk | Example | Frequency |
+|-|-|-|
+| Hardware outage | <ul><li>Issue with hard disk or networking equipment</li><li>Host reboots</li></ul> | Common. Any resiliency strategy should account for these risks. |
+| Data center outage | <ul><li>Power, cooling, or network failure across an entire data center</li><li>Natural disaster in one part of a metro area</li></ul> | Infrequent |
+| Region outage | <ul><li>Major natural disaster that affects a wide geographical area</li></ul> | Very infrequent |
+
+*should we also include service outages? e.g. global service outage for something like Azure Front Door or Entra ID. Need to look to mission-critical guidance for this level of risk mitigation* <!-- TODO -->
+
+Every organization would ideally like to mitigate every possible risk, but it's not practical or cost effective to do so. It's important to have an open discussion with business stakeholders so that you can make an informed decision about the risks you should mitigate.
+
+> [!TIP]
+> Generally, only customers with mission-critical workloads choose to mitigate risks with low likelihood. For example, banks, governments, and healthcare workloads often need to remain operational in all situations. For other workloads, the organization's risk tolerance usually is higher.
+
+### Resiliency requirements
+
+It's important that you understand your resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you to decide which alternatives to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow.
+
+TODO Link to WAF guidance about these requirements
+
+### User location
+
+If your users are geographically dispersed, it might make sense to deploy your workload across multiple regions. If your users are in one area, a single-region deployment can simplify your operational requirements and reduce your costs.
+
+### Budget
+
+If you operate under a constrained budget, it's important to consider the costs involved in redundant workload components. These costs can include additional resource charges, networking costs, and operational costs to manage more resources and a more complex environment. 
+
+### Complexity
+
+It's a good practice to avoid unnecessary complexity in your solution architecture. The more complexity you introduce, the harder it is to reason about your architecture. Complex architectures are harder to operate, harder to secure, and are often less performant.
+
+## Common deployment approaches
 
 ### Single region, no zone redundancy
 
