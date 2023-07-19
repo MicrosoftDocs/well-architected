@@ -71,19 +71,27 @@ It's a good practice to avoid unnecessary complexity in your solution architectu
 
 ## Understand tradeoffs
 
-Most solutions can be designed in many different ways. Each approach has advantages and disadvantages. To select the best deployment architecture for your requirements, you need to consider the tradeoffs.
+Most solutions can be designed in many different ways. Each approach has advantages and disadvantages. You can only make an informed decision about which deployment approach best fits your needs if you understand all of the following elements:
 
-When you consider regions and availability zones, *data replication* is a common 
+- The deployment approaches and how they work.
+- The tradeoffs involved in each approach.
+- Your business and workload requirmeents.
+
+--
 
 For example, consider how data replication works. Suppose you're considering deploying a workload 
 
 - **Replication:** If you deploy across regions, you need to replicate data between them. Synchronous replication means you take a perf hit on every transaction, but then everything is consistent. Async replication means there's a chance data loss occurs if an outage happens before data is replicated.
 
+--
 
+### Architectural tradeoffs
 
-- **Reliability:** Your choice of deployment architecture mitigates different types of risks. In general, the more geographically distributed a workload is, the more resilient it can be.
-- **Cost Optimization:** Some architectural approaches require deploying more resources, which incurs a resource cost. Others involve sending data across geographically separated availability zones or regions, which incurs bandwidth costs.
-- **Performance Efficiency:** Some workloads are highly latency-sensitive, TODO  Only really a concern for highly latency-sensitive workloads. Most workloads don't fit into this category.
+Your choice of how you use regions and availability zones affects several pillars of the Well-Architected Framework:
+
+- **Reliability:** Your choice of deployment approach can help you to mitigate different types of risks. In general, the more geographically distributed a workload is, the more resilient it can be.
+- **Cost Optimization:** Some architectural approaches require deploying more resources, which often incurs a resource cost. Other approaches involve sending data across geographically separated availability zones or regions, which incurs bandwidth costs.
+- **Performance Efficiency:** Occasionally, workloads can be highly sensitive to network latency. In these workloads, it's important to physically locate the components close together to minimize the latency when they communicate, which typically means deploying into a single availability zone. However, most workloads aren't highly latency sensitive, so this concern doesn't apply.
 - **Operational Efficiency:** Management and failover
 
 
