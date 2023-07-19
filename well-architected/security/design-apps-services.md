@@ -18,7 +18,7 @@ Applications and the data associated with them act as the primary store of busin
 
 ## Identify and classify business critical applications
 
-Enterprise organizations typically have a large application portfolio, but not all applications have equal importance. Applications can be classified based on a criticality scale. For example, business-critical applications are designed to prevent financial losses, safety-critical are focused on costs associated with loss of human life. [**Mission-critical applications**](/azure/well-architected/mission-critical/mission-critical-overview) cover both aspects that can be impacted by unavailability or underperformance. 
+Enterprise organizations typically have a large application portfolio, but not all applications have equal importance. Applications can be classified based on a criticality scale. For example, business-critical applications are designed to prevent financial losses, safety-critical are focused on costs associated with loss of human life. [**Mission-critical applications**](/azure/architecture/framework/mission-critical/mission-critical-overview) cover both aspects that can be impacted by unavailability or underperformance. 
 
 Criticality should be identified and classified, to direct investment of monitoring, time, and resources appropriately. You should also identify applications or systems with significant access — those which might grant control over other critical systems or data.
 

@@ -1,5 +1,6 @@
 ---
 title: Security patterns
+titleSuffix: Cloud Design Patterns
 description: Use these security patterns to help design and deploy applications in a way that protects them from attacks, restricts access, and protects sensitive data.
 author: dragon119
 ms.author: martinek

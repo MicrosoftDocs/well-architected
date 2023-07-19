@@ -18,7 +18,7 @@ The cost optimization pillar provides principles for balancing business goals wi
 
 Use the pay-as-you-go strategy for your architecture, and invest in [scaling out](optimize-autoscale.md), rather than delivering a large investment-first version. Consider opportunity costs in your architecture, and the balance between *first mover* advantage versus *fast follow*. Use the [cost calculators](https://azure.microsoft.com/pricing/calculator/) to estimate the initial cost and operation costs. Finally, establish [policies](principles.md), [budgets, and controls](monitor-alert.md) that set cost limits for your solution.
 
-To assess your workload using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/well-architected/), see the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+To assess your workload using the tenets found in the [Microsoft Azure Well-Architected Framework](/azure/architecture/framework/), see the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment).
 
 We recommend exploring the following videos to dive deeper into Azure cost optimization:
 
