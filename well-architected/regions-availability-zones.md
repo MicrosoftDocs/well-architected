@@ -28,6 +28,8 @@ For more information, see [What are Azure regions and availability zones?](/azur
 
 ## Key requirements
 
+As a solution architect, you need to plan how to make effective use of regions and availability zones to meet your business needs.
+
 To make an informed decision about which approach works for your solution, you need to understand your requirements. These requirements should be driven by discussions between solution designers and business stakeholders.
 
 ### Risk tolerance
@@ -67,9 +69,11 @@ If you operate under a constrained budget, it's important to consider the costs 
 
 It's a good practice to avoid unnecessary complexity in your solution architecture. The more complexity you introduce, the harder it is to reason about your architecture. Complex architectures are harder to operate, harder to secure, and are often less performant.
 
-## Key tradeoffs
+## Understand tradeoffs
 
-Deciding on the best deployment architecture for your requirements means that you need to consider tradeoffs.
+Most solutions can be designed in many different ways. Each approach has advantages and disadvantages. To select the best deployment architecture for your requirements, you need to consider the tradeoffs.
+
+When you consider regions and availability zones, *data replication* is a common 
 
 For example, consider how data replication works. Suppose you're considering deploying a workload 
 
