@@ -97,7 +97,7 @@ There are multiple ways that you can deploy this solution, which each provide a 
 
 ### Single-zone deployment
 
-If you don't use multiple availability zones or regions, then your data is likely to be stored within a single data center. However, if that data center has an outage, your data might be unavailable or lost.
+If you don't use multiple availability zones or regions, then your data is likely to be stored within a single data center. In the unlikely event of a data center outage, your solution might be unavailable and your data could be lost.
 
 <!-- TODO diagram -->
 
@@ -141,6 +141,8 @@ A zonal approach reduces the latency in communicating between your components. H
 
 <!-- TODO diagram -->
 
+A zonal deployment model has the following effects on your architectural concerns:
+
 | Architectural Concern | Impact |
 |-|-|
 | Reliability | *When deployed in a single availability zone:* **Low reliability.** A zonal deployment itself doesn't provide any resiliency to an outage in a data center or availability zone. You must deploy redundant resources across multiple availabilty zones to achieve high resiliency. <br /><br /> *When deployed in multiple availability zones:* **High reliability.** Services can be made resilient to an outage of a data center or availability zone. |
@@ -150,20 +152,35 @@ A zonal approach reduces the latency in communicating between your components. H
 
 This approach is typically used when you deploy virtual machine-based workloads. For a complete list of services that support zonal deployments, see [Availability zone service and regional support](/azure/reliability/availability-zones-service-support).
 
-### Multi-region deployment with asynchronous replication
+### Multi-region deployment with asynchronous data replication
 
 TODO
+
+<!-- TODO diagram -->
+
+A multi-region deployment model with asynchronous data replication has the following effects on your architectural concerns:
 
 | Architectural Concern | Impact |
 |-|-|
 | Reliability | **High reliability.** Solution is resilient to an outage of a data center, availability zone, or an entire region. Data is replicated but might not be synchronous, so some data loss is possible in a failover scenario.  |
 | Cost Optimization | **High cost.** Separate resources must be deployed in each region, and each resource incurs cost to deploy and maintain. Data replication across regions might also incur significant cost. |
-| Performance Efficiency | **High performance.** TODO |
+| Performance Efficiency | **High performance.** Appliction requests don't require cross-region traffic, so traffic is typically low latency. |
 | Operational Excellence | **Low operational efficiency.** Resources across two regions must be operated and maintained. Customer is responsible for failover between regions during a regional outage. |
 
-### Multi-region deployment with synchronous replication
+### Multi-region deployment with synchronous data replication
 
 TODO
+
+<!-- TODO diagram -->
+
+A multi-region deployment model with asynchronous data replication has the following effects on your architectural concerns:
+
+| Architectural Concern | Impact |
+|-|-|
+| Reliability | **Very high reliability.** Solution is resilient to an outage of a data center, availability zone, or an entire region. Data is always in sync across regions, so even if a complete region loss occurs, your data is available and complete in another region. |
+| Cost Optimization | **High cost.** Separate resources must be deployed in each region, and each resource incurs cost to deploy and maintain. Data replication across regions might also incur significant cost. |
+| Performance Efficiency | **Low performance.** Appliction requests require cross-region traffic. Depending on the distance between the regions, synchronous replication might add significant latency to the request. |
+| Operational Excellence | **Low operational efficiency.** Resources across two regions must be operated and maintained. Customer is responsible for failover between regions during a regional outage. |
 
 ### Hybrid approaches
 
