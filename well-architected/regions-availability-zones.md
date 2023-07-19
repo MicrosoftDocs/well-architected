@@ -43,7 +43,7 @@ To understand why you need to make tradeoffs, consider how data replication work
 
 #### [Single-zone](#tab/single-zone)
 
-If you use a service that isn't zone-aware, then your data is likely to be stored within a single data center. However, if that data center has an outage, your data might be unavailable or lost.
+If you don't use multiple availability zones or regions, then your data is likely to be stored within a single data center. However, if that data center has an outage, your data might be unavailable or lost.
 
 #### [Multi-zone](#tab/multi-zone)
 
