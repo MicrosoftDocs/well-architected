@@ -534,7 +534,7 @@ items:
                   - name: Security
                     href: services/compute/functions/security.md
               - name: Virtual Machines
-                href: services/compute/virtual-machines/virtual-machines-review.md
+                href: /azure/virtual-machines/reliability-virtual-machines.md?toc=/azure/well-architected/toc.json&bc=/azure/well-architected/breadcrumb/toc.json
           - name: Data
             items:
               - name: Azure Cache for Redis
