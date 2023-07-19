@@ -34,24 +34,20 @@ Most solutions can be designed in many different ways. Each approach has advanta
 - The deployment approaches and how they work.
 - The tradeoffs involved in each approach.
 
---
+To understand why you need to make tradeoffs, consider how data replication works. Suppose you're thinking about deploying a new solution with an application that writes data to some sort of storage. If you want to achieve high resiliency, you might choose to write the data to multiple places. In Azure, [you have several options for redundancy](/azure/storage/common/storage-redundancy):
 
-For example, consider how data replication works. Suppose you're considering deploying a workload 
+- Locally redundant storage, which writes multiple copies of your data within a single data center. However, if that data center has an outage, your data might be unavailable or lost.
+- Zonally redundant storage, which means that the copies of the data are distributed across multiple availability zones by using *synchronous replication*. When the data changes, the write operation happens synchronously to multiple copies of the data simultaneously. This approach increases your solution's resiliency to issues like data center outages. But because data is replicated synchronously, your application has to wait for the data to be written across multiple separate places that might be in different parts of a metropolitan area. For highly latency-sensitive workloads, this might affect the application's performance.
+- Geo-redundant storage, which means that multiple copies of the data are stored in two separate Azure regions. Because regions are geographically separated, data replication between the regions happens asynchronously. It's possible, although very unlikely, that a region might experience an outage before the replication has completed. If this sort of outage happens, you might experience a small amount of data loss.
 
-- **Replication:** If you deploy across regions, you need to replicate data between them. Synchronous replication means you take a perf hit on every transaction, but then everything is consistent. Async replication means there's a chance data loss occurs if an outage happens before data is replicated.
-
---
-
-### Architectural tradeoffs
-
-Your choice of how you use regions and availability zones affects several pillars of the Well-Architected Framework:
+So in this simple example, you need to decide how you'll trade off between reliability and performance. These are only two of the tradeoffs you need to consider. Your choice of how you use regions and availability zones affects several pillars of the Well-Architected Framework:
 
 - **Reliability:** Your choice of deployment approach can help you to mitigate different types of risks. In general, the more geographically distributed a workload is, the more resilient it can be.
-- **Cost Optimization:** Some architectural approaches require deploying more resources, which often incurs a resource cost. Other approaches involve sending data across geographically separated availability zones or regions, which incurs bandwidth costs. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have a more complex architecture.
+- **Cost Optimization:** Some architectural approaches require deploying more resources, which often incurs a resource cost. Other approaches involve sending data across geographically separated availability zones or regions, which might incur network traffic charges. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have a more complex architecture.
 - **Performance Efficiency:** Occasionally, workloads can be highly sensitive to network latency. In these workloads, it's important to physically locate the components close together to minimize the latency when they communicate, which typically means deploying into a single availability zone. However, most workloads aren't highly latency sensitive, so this concern doesn't apply.
 - **Operational Efficiency:** A complex architecture takes more effort to deploy and manage. Additionally, for a highly available solution you might need to plan how you'll fail over to a secondary set of resources. Failover and failback can be complex, especially when manual steps are required.
 
-
+<!-- TODO -->
 
 To integrate somewhere:
 
