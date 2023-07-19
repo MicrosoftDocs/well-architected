@@ -34,13 +34,27 @@ Most solutions can be designed in many different ways. Each approach has advanta
 - The deployment approaches and how they work.
 - The tradeoffs involved in each approach.
 
-To understand why you need to make tradeoffs, consider how data replication works. Suppose you're thinking about deploying a new solution with an application that writes data to some sort of storage. If you want to achieve high resiliency, you might choose to write the data to multiple places. In Azure, [you have several options for redundancy](/azure/storage/common/storage-redundancy):
+To understand why you need to make tradeoffs, consider how data replication works. Suppose you're thinking about deploying a new solution with an application that writes data to some sort of storage. If you want to achieve high resiliency, you might choose to write the data to multiple places. In Azure, [you have several options for redundancy](/azure/storage/common/storage-redundancy). Select each tab to learn about the option and the tradeoffs involved.
 
-- Locally redundant storage, which writes multiple copies of your data within a single data center. However, if that data center has an outage, your data might be unavailable or lost.
-- Zonally redundant storage, which means that the copies of the data are distributed across multiple availability zones by using *synchronous replication*. When the data changes, the write operation happens synchronously to multiple copies of the data simultaneously. This approach increases your solution's resiliency to issues like data center outages. But because data is replicated synchronously, your application has to wait for the data to be written across multiple separate places that might be in different parts of a metropolitan area. For highly latency-sensitive workloads, this might affect the application's performance.
-- Geo-redundant storage, which means that multiple copies of the data are stored in two separate Azure regions. Because regions are geographically separated, data replication between the regions happens asynchronously. It's possible, although very unlikely, that a region might experience an outage before the replication has completed. If this sort of outage happens, you might experience a small amount of data loss.
+<!-- TODO maybe tabs for this? -->
 
-So in this simple example, you need to decide how you'll trade off between reliability and performance. These are only two of the tradeoffs you need to consider. Your choice of how you use regions and availability zones affects several pillars of the Well-Architected Framework:
+#### [Locally redundant storage](#tab/lrs)
+
+LRS writes multiple copies of your data within a single data center. However, if that data center has an outage, your data might be unavailable or lost.
+
+#### [Zonally redundant storage](#tab/zrs)
+
+Zonally redundant storage means that the copies of the data are distributed across multiple availability zones by using *synchronous replication*. When the data changes, the write operation happens synchronously to multiple copies of the data simultaneously. This approach increases your solution's resiliency to issues like data center outages. But because data is replicated synchronously, your application has to wait for the data to be written across multiple separate places that might be in different parts of a metropolitan area. For highly latency-sensitive workloads, this might affect the application's performance.
+
+#### [Geo-redundant storage](#tab/grs)
+
+Geo-redundant storage means that multiple copies of the data are stored in two separate Azure regions. Because regions are geographically separated, data replication between the regions happens asynchronously. It's possible, although very unlikely, that a region might experience an outage before the replication has completed. If this sort of outage happens, you might experience a small amount of data loss.
+
+<!-- TODO note this requires a paired region -->
+
+---
+
+In the preceding example, you need to decide how you'll trade off between reliability and performance, and select the appropriate option for your needs. However, reliability and performance are only two of the tradeoffs you need to consider. Your choice of how you use regions and availability zones affects many of the pillars of the Well-Architected Framework:
 
 - **Reliability:** Your choice of deployment approach can help you to mitigate different types of risks. In general, the more geographically distributed a workload is, the more resilient it can be.
 - **Cost Optimization:** Some architectural approaches require deploying more resources, which often incurs a resource cost. Other approaches involve sending data across geographically separated availability zones or regions, which might incur network traffic charges. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have a more complex architecture.
