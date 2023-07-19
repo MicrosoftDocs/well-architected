@@ -26,6 +26,8 @@ Azure's global footprint includes over 60 announced regions. A *region* is a geo
 
 For more information, see [What are Azure regions and availability zones?](/azure/reliability/availability-zones-overview)
 
+
+
 ## Key requirements
 
 As a solution architect, you need to plan how to make effective use of regions and availability zones to meet your business needs.
@@ -40,11 +42,11 @@ The following table lists some common risks that should be considered in a cloud
 
 | Risk | Example | Frequency |
 |-|-|-|
-| Hardware outage | <ul><li>Issue with hard disk or networking equipment</li><li>Host reboots</li></ul> | Fairly common. Any resiliency strategy should account for these risks. |
+| Hardware outage | <ul><li>Issue with hard disk or networking equipment</li><li>Host reboots</li></ul> | Common. Any resiliency strategy should account for these risks. |
 | Data center outage | <ul><li>Power, cooling, or network failure across an entire data center</li><li>Natural disaster in one part of a metro area</li></ul> | Infrequent |
-| Region outage | Major natural disaster that affects a wide geographical area | Very infrequent |
+| Region outage | <ul><li>Major natural disaster that affects a wide geographical area</li></ul> | Very infrequent |
 
-*should we also include service outages? e.g. global service outage for something like Azure Front Door or Entra ID. Need to look to mission-critical guidance for this level of risk mitigation*
+*should we also include service outages? e.g. global service outage for something like Azure Front Door or Entra ID. Need to look to mission-critical guidance for this level of risk mitigation* <!-- TODO -->
 
 While every organization would ideally like to mitigate every possible risk, it's not practical or cost effective to do so. It's important to have an open discussion with business stakeholders so that you can make an informed decision about the risks you should mitigate.
 
@@ -75,7 +77,7 @@ Most solutions can be designed in many different ways. Each approach has advanta
 
 - The deployment approaches and how they work.
 - The tradeoffs involved in each approach.
-- Your business and workload requirmeents.
+- Your business and workload requirements.
 
 --
 
@@ -90,9 +92,9 @@ For example, consider how data replication works. Suppose you're considering dep
 Your choice of how you use regions and availability zones affects several pillars of the Well-Architected Framework:
 
 - **Reliability:** Your choice of deployment approach can help you to mitigate different types of risks. In general, the more geographically distributed a workload is, the more resilient it can be.
-- **Cost Optimization:** Some architectural approaches require deploying more resources, which often incurs a resource cost. Other approaches involve sending data across geographically separated availability zones or regions, which incurs bandwidth costs.
+- **Cost Optimization:** Some architectural approaches require deploying more resources, which often incurs a resource cost. Other approaches involve sending data across geographically separated availability zones or regions, which incurs bandwidth costs. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have a more complex architecture.
 - **Performance Efficiency:** Occasionally, workloads can be highly sensitive to network latency. In these workloads, it's important to physically locate the components close together to minimize the latency when they communicate, which typically means deploying into a single availability zone. However, most workloads aren't highly latency sensitive, so this concern doesn't apply.
-- **Operational Efficiency:** Management and failover
+- **Operational Efficiency:** A complex architecture takes more effort to deploy and manage. Additionally, for a highly available solution you might need to plan how you'll fail over to a secondary set of resources. Failover and failback can be complex, especially when manual steps are required.
 
 
 
@@ -104,7 +106,7 @@ To integrate somewhere:
 
 ### Single region, no zone redundancy
 
-Description
+The simplest deployment approach is to deploy a solution into a single region, and not to enable any availability zone-related features, such as zone redundancy or zonal deployments. While this approach is the simplest to deploy and manage, it also 
 
 Diagram
 
@@ -112,7 +114,7 @@ Diagram
 |-|-|
 | Reliability | **Low reliability.** Services are subject to outages if a data center fails. Application can be built to be resilient to other types of failures. |
 | Cost Optimization | **Lowest cost.** Likely to only have a single instance of each resource, and no inter-zone or inter-region bandwidth costs. |
-| Performance Efficiency | <ul><li>**For most workloads:** TODO.</li><li>**For highly latency-sensitive workloads:** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance.</li></ul>|
+| Performance Efficiency | **For most workloads:** TODO.<br /><br />**For highly latency-sensitive workloads:** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
 | Operational Efficiency | **Low operational burden.** You only have a single instance of each resource that needs to be managed. |
 
 ### Single region, zone redundant services
@@ -127,7 +129,7 @@ Examples of services that handle this easily - AppGW, VNets, Azure Firewall, App
 |-|-|
 | Reliability | **High reliability.** Services are resilient to an outage of a data center or availability zone. For most services, data is replicated across zones automatically and with no delay. |
 | Cost Optimization | **Moderate cost.** Depending on the services you use, you might see some costs for higher service tiers to enable zone redundancy, or some inter-zone networking costs. |
-| Performance Efficiency | <ul><li>**For most workloads:** TODO.</li><li>**For highly latency-sensitive workloads:** Some components might be sensitive to latency due to inter-zone data replication.</li></ul> |
+| Performance Efficiency | **For most workloads:** TODO.<br /><br />**For highly latency-sensitive workloads:** Some components might be sensitive to latency due to inter-zone data replication. |
 | Operational Efficiency | **Low operation burden.** You only have a single instance of each resource that needs to be managed. During an availability zone outage, failover is Microsoft's responsibility and happens automatically. |
 
 ### Single region, zonal across multiple zones
