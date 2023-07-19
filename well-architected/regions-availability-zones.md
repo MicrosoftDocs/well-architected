@@ -13,7 +13,7 @@ categories:
 
 # Architect for regions and availability zones
 
-When you architect a solution for Azure, you need to decide which region to use, whether you deploy across multiple availability zones in a region, and whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, performance, and operational excellence. This guide provides information about the approaches you can consider, the tradeoffs involved in each approach, and the impact of each approach on the core pillars of the Well-Architected Framework.
+When you architect a solution for Azure, you need to decide whether you deploy across multiple availability zones in a region, or whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the approaches you can consider, the tradeoffs involved in each approach, and the impact of each approach on the core pillars of the Well-Architected Framework.
 
 > [!TIP]
 > For many production customer workloads, a single-region, multi-zone deployment provides the best balance of tradeoffs. You can consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
@@ -33,7 +33,7 @@ For more information, see [What are Azure regions and availability zones?](/azur
 Most solutions can be designed in many different ways. Each approach has advantages and disadvantages. You can only make an informed decision about which deployment approach best fits your needs if you understand all of the following elements:
 
 - Your business and workload requirements.
-- The deployment approaches and how they work.
+- The deployment approaches that are available, and how they work.
 - The tradeoffs involved in each approach.
 
 Your choice of how you use regions and availability zones affects several of the pillars of the Well-Architected Framework:
