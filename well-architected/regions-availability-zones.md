@@ -68,7 +68,7 @@ Different organizations have different risk appetites, and risk tolerance is oft
 
 The following table lists some common risks that should be considered in a cloud environment:
 
-| Risk | Example | Frequency |
+| Risk | Example | Likelihood |
 |-|-|-|
 | Hardware outage | <ul><li>Issue with hard disk or networking equipment</li><li>Host reboots</li></ul> | Common. Any resiliency strategy should account for these risks. |
 | Data center outage | <ul><li>Power, cooling, or network failure across an entire data center</li><li>Natural disaster in one part of a metro area</li></ul> | Infrequent |
@@ -118,6 +118,8 @@ Diagram
 
 Description
 
+To understand which services support zone redundant deployments, see [Availability zone service and regional support](/azure/reliability/availability-zones-service-support).
+
 Diagram
 
 Examples of services that handle this easily - AppGW, VNets, Azure Firewall, App Service, Cosmos DB, Service Bus
@@ -132,6 +134,8 @@ Examples of services that handle this easily - AppGW, VNets, Azure Firewall, App
 ### Single region, zonal across multiple zones
 
 Description
+
+To understand which services support zonal deployments, see [Availability zone service and regional support](/azure/reliability/availability-zones-service-support).
 
 Diagram
 
@@ -174,26 +178,9 @@ Diagram
 
 ## Example workloads
 
-<!-- Considering adding a set of examples, with basic requirements, and an approach they can consider -->
-
 - Intranet for a small business - cost is the primary factor, and business impact of downtime is very low. Single-region deployment, no use of zones.
 - Line of business app for an enterprise - cost is a big factor; resiliency is important. Zone redundant.
 - Legacy application that's extremely chatty - performance matters a lot; resiliency is important. Multi-zone using metro DR approach.
 - Public sector application - data residency. Zone redundant.
-- Bank - resiliency and very low risk tolerance. Zone redundant and multi-region.
-- eCommerce app - geographically distributed user base. Multi-region.
+- Bank/healthcare - resiliency and very low risk tolerance. Zone redundant and multi-region.
 - SaaS - geographically distributed user base. Multi-region.
-
-<!-- TODO
-
-When would zone redundancy not be advisable?
- - Mission-critical solutions with low risk tolerance.
- - Perf: low latency requirements. Consider zonal deployment.
- - When you deploy across multiple regions for other reasons (e.g. you're deploying to multiple regions to support a globally distributed user base)
-
-Links to add:
-
-https://learn.microsoft.com/en-au/azure/reliability/availability-zones-service-support
-https://learn.microsoft.com/en-au/azure/reliability/availability-service-by-category
-
--->
