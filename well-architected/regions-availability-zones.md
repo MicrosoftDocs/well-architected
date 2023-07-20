@@ -3,7 +3,7 @@ title: Architect for regions and availability zones
 description: A guide for understanding when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
-ms.date: 07/12/2023
+ms.date: 07/20/2023
 ms.topic: conceptual
 ms.custom:
   - guide
@@ -16,7 +16,7 @@ categories:
 When you architect a solution for Azure, you need to decide whether you deploy across multiple availability zones in a region, or whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the approaches you can consider, the tradeoffs involved in each approach, and the impact of each approach on the core pillars of the Well-Architected Framework.
 
 > [!TIP]
-> For many production customer workloads, a single-region, multi-zone deployment with asynchronous data backup to another region provides the best balance of tradeoffs. You can consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
+> For many production customer workloads, a [zone-redundant deployment with asynchronous data backup to another region](#zone-redundant-deployment-with-backup-across-regions) provides the best balance of tradeoffs. You can consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
 
 ## Regions and availability zones
 
