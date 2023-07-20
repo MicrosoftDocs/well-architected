@@ -22,7 +22,7 @@ When you architect a solution for Azure, you need to decide whether you deploy a
 
 Azure's global footprint includes over 60 announced regions. A *region* is a geographic perimeter that contains a set of data centers.
 
-Many Azure regions provide *availability zones*, which are separated groups of data centers. Within a region, each availability zone is close enough together to have very low latency connections to other availability zones, but they're far enough apart to ensure that they have independent power, cooling, and networking infrastructure. Availability zones are designed so that if one zone has an outage, then regional services, capacity, and high availability are supported by the remaining zones.
+Many Azure regions provide *availability zones*, which are separated groups of data centers. Within a region, each availability zone is close enough together to have very low-latency connections to other availability zones, but they're far enough apart to ensure that they have independent power, cooling, and networking infrastructure. Availability zones are designed so that if one zone has an outage, then regional services, capacity, and high availability are supported by the remaining zones.
 
 ![Diagram showing data centers, availability zones and regions](/azure/reliability/media/availability-zones.png)
 
