@@ -109,7 +109,8 @@ There are multiple ways that you can deploy this solution, which each provide a 
 | Cost Optimization | Low | Depends on Approach | Moderate | High |
 | Performance Efficiency | Acceptable or Low | High | Acceptable or Low | Depends on Approach |
 | Operational Excellence | High | Low | High | Low |
-| Regional Applicability | All regions | Regions with availability zones | Regions with availability zones | Depends on region |
+| Compliance with Data Residency | High | High | High | [Depends on region](/azure/reliability/cross-region-replication-azure) |
+| Regional Applicability | All regions | Regions with availability zones | Regions with availability zones | [Depends on region](/azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair) |
 
 ### Non-zonal deployments
 
