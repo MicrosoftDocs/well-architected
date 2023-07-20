@@ -132,7 +132,7 @@ This approach also uses multiple availability zones within a metropolitan area. 
 
 A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't provide any redundancy or resiliency. To create a resilient solution, you need to deploy multiple instances of your components into multiple availability zones. You're responsible for replicating data between the availability zones, and you're responsible for distributing the requests to the correct resources. In the event of an outage of an availability zone, you need to handle the failover procedures. When you deploy zonally across multiple availability zones, this approach is sometimes called [*Metro DR*][metro-dr].
 
-:::image type="content" border="false" source="./_images/regions-availability-zones/zonal.png" alt-text="Diagram showing the application deployed into multiple availability zones.":::
+:::image type="content" border="false" source="./_images/regions-availability-zones/zonal.png" alt-text="Diagram showing the application deployed into multiple availability zones by using a zonal deployment approach.":::
 
 A zonal deployment model has the following effects on your architectural concerns:
 
@@ -151,7 +151,7 @@ In this approach, your compute tier is deployed across multiple availability zon
 
 Your storage tier is also deployed across multiple availability zones. Copies of your application's data are distributed across multiple availability zones by using *synchronous replication*. When the application makes a change to the data, the storage service writes the change to multiple availability zones before it considers the transaction to be completed. That way, each availability zone always has an up-to-date copy of the data. If an availabilty zone has an outage, another availability zone can be used to access the same data.
 
-<!-- TODO diagram -->
+:::image type="content" border="false" source="./_images/regions-availability-zones/zone-redundant.png" alt-text="Diagram showing the application deployed into multiple availability zones by using a zone-redundant deployment approach.":::
 
 A zone-redundant approach increases your solution's resiliency to issues like data center outages. But because data is replicated synchronously, your application has to wait for the data to be written across multiple separate places that might be in different parts of a metropolitan area. For most applications, the latency involved in inter-zone communication is negligible. However, for some highly latency-sensitive workloads, synchronous replication might affect the application's performance.
 
