@@ -167,7 +167,7 @@ To ensure operational excellence, review the [design principles](/azure/architec
 > - Build a robust testing environment.
 > - Right size your VMs.
 > - Manage your quota.
-> - Use managed disks and understand workload patterns.
+> - Understand workload patterns before selecting a disk type.
 
 
 ### Recommendations
