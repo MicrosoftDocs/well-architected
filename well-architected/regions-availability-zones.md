@@ -229,14 +229,53 @@ A multi-region deployment model with synchronous data replication has the follow
 
 ## Example workloads
 
-<!-- TODO fill this out -->
+This section includes describes some common workloads, and the key requirements that each workload typically needs to consider. Based on the requirements and the approaches described in this article, we provide a suggested approach for the workload.
 
-- Intranet for a small business - cost is the primary factor, and business impact of downtime is very low. Single-region deployment, no use of zones.
-- Line of business app for an enterprise - cost is a big factor; resiliency is important. Zone redundant.
-- Legacy application that's extremely chatty - performance matters a lot; resiliency is important. Multi-zone using metro DR approach.
-- Public sector application - data residency. Zone redundant.
-- Bank/healthcare - resiliency and very low risk tolerance. Zone redundant and multi-region.
-- SaaS - geographically distributed user base. Multi-region.
+### Line of business application for an enterprise
+
+Contoso is a large manufacturing company. They are implementing a line of business application to manage aspects of their financial processes.
+
+The information that the system manages is difficult to replace, so it's important that data is persisted reliably. Their architects have explained that their recovery point objective (RPO) is zero. Contoso's employees will use this system throughout their workday, so performance is critical to ensure that their team members aren't kept waiting. Cost is also a concern, because the finance team has to pay for this solution themselves.
+
+**Suggested approach:** [Zone-redundant deployment](#zone-redundant-deployment-approach), or [Zone-redundant deployment with backup across regions](#zone-redundant-deployment-with-backup-across-regions)
+
+### Internal application
+
+Fourth Coffee is a small business. They're developing a new internal application for their employees to use to submit timesheets.
+
+For this workload, cost efficiency is a primary concern. They've evaluated the business impact of downtime and have decided the application doesn't need to prioritize resiliency or performance. Fourth Coffee accept the risk that an outage in an Azure availability zone or region might mean that their application is temporarily unavailable.
+
+**Suggested approach:** [Non-zonal deployment](#non-zonal-deployments)
+
+### Legacy application migration
+
+Fabrikam is migrating a legacy application from an on-premises data center into Azure. The application wasn't designed for a cloud environment, and communication between the application tier and the database is very [chatty](/azure/architecture/antipatterns/chatty-io/).
+
+Fabrikam emphasize the importance of performance for this application. Resiliency is also important, though, and they need the application to continue to work even if an Azure data center has an outage.
+
+**Suggested approach:** [Zonal deployment (metro DR)](#zonal-deployment-approach)
+
+### Public sector application
+
+Lamna Healthcare Company is implementing a new electronic health record system in Azure.
+
+Because of the nature of the data that this solution stores, data residency is critically important. Lamna Healthcare Company operates under a strict regulatory framework that mandates that data must remain in a specific location.
+
+**Suggested approach:** [Zone-redundant deployment](#zone-redundant-deployment-approach), or [Zone-redundant deployment with backup across regions](#zone-redundant-deployment-with-backup-across-regions)
+
+### Banking system
+
+Woodgrove Bank runs their core banking operations from a large solution deployed to Azure.
+
+This is a mission-critical system. Any outages can cause major financial impact for customers. As a result, Woodgrove Bank has very low risk tolerance. They need the highest level of reliability possible, and they need to mitigate the risk of any failures that are possible to mitigate.
+
+**Suggested approach:** [Multi-region deployment](#multi-region-deployments).
+
+### Software as a service (SaaS)
+
+Proseware, Inc. builds software used by companies across the world. Their user base is widely geographically distributed.
+
+**Suggested approach:** [Multi-region deployment](#multi-region-deployments).
 
 
 <!-- Links -->
