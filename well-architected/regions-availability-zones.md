@@ -99,7 +99,7 @@ Suppose you're thinking about deploying a new solution, which includes an applic
 > [!NOTE]
 > This example isn't specific to any particular Azure services. Instead, it's intended as a simple example to illustrate the fundamental concepts.
 
-There are multiple ways that you can deploy this solution, which each provide a different set of benefits and costs. At a high level, you can consider a *non-zonal*, *multi-zone*, or *multi-region* deployment. Here's a summary of the options and how they affect your architectural considerations:
+There are multiple ways that you can deploy this solution, which each provide a different set of benefits and costs. At a high level, you can consider a *non-zonal*, *zonal (pinned)*, *zone-redundant (spread)*, or *multi-region* deployment. The following table summarizes the approaches you can use and how they affect your architecture:
 
 | Architectural Concern | Non-Zonal | Zonal (Pinned) | Zone-Redundant (Spread) | Multi-Region |
 |-|-|-|-|
@@ -130,7 +130,23 @@ The single-region deployment model has the following effects on your architectur
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
 | Operational Excellence | **High operational efficiency.** You only have a single instance of each resource that needs to be managed. |
 
-<!-- TODO add cross-region backup -->
+#### Non-zonal deployment with backup across regions
+
+You can extend a non-zonal deployment by performing regular backups of your data to a secondary region. This approach adds an extra layer of protection to mitigate against an outage in your primary region.
+
+:::image type="content" border="false" source="./_images/regions-availability-zones/non-zonal-backup-across-regions.png" alt-text="Diagram showing the solution deployed into a single data center, with backups going to another region.":::
+
+When you implement this approach, important to consider your recovery time objective (RTO) and recovery point objective (RPO) carefully:
+
+- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider deploying your infrastructure as code so that you can quickly redeploy into another region during a major disaster.
+- **Recovery point:** Your backup frequency determines the amount of data loss you might experience (your recovery point). You can typically control the frequency of backups so that you can meet your RPO.
+
+| Architectural Concern | Impact |
+|-|-|
+| Reliability | **Moderate reliability.**  Services are subject to outages if a data center fails. You can restore from a backup into another region if required. |
+| Cost Optimization | **Low cost.** Typically, adding a backup to another region only adds a small amount of extra cost compared to deploying a non-zonal resource. |
+| Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
+| Operational Excellence | *During any outage within a region:* **Low operational efficiency** Failover is the customer's responsibility and might require manual operations and redeployment. |
 
 ### Zonal deployment approach
 
@@ -153,9 +169,9 @@ This approach is typically used when you deploy virtual machine-based workloads.
 
 ### Zone-redundant deployment approach
 
-In this approach, your compute tier is deployed across multiple availability zones. When requests arrive, a load balancer (which itself spans availability zones) sends them to instances in any availability zone. If an availability zone has an outage, the load balancer moves the traffic to instances in the healthy availability zones.
+In this approach, your compute tier is spread across multiple availability zones. When requests arrive, a load balancer built into the service (which itself spans availability zones) sends them to instances in any availability zone. If an availability zone has an outage, the load balancer moves the traffic to instances in the healthy availability zones.
 
-Your storage tier is also deployed across multiple availability zones. Copies of your application's data are distributed across multiple availability zones by using *synchronous replication*. When the application makes a change to the data, the storage service writes the change to multiple availability zones before it considers the transaction to be completed. That way, each availability zone always has an up-to-date copy of the data. If an availabilty zone has an outage, another availability zone can be used to access the same data.
+Your storage tier is also spread across multiple availability zones. Copies of your application's data are distributed across multiple availability zones by using *synchronous replication*. When the application makes a change to the data, the storage service writes the change to multiple availability zones before it considers the transaction to be completed. That way, each availability zone always has an up-to-date copy of the data. If an availabilty zone has an outage, another availability zone can be used to access the same data.
 
 :::image type="content" border="false" source="./_images/regions-availability-zones/zone-redundant.png" alt-text="Diagram showing the solution deployed into multiple availability zones by using a zone-redundant deployment approach.":::
 
