@@ -125,7 +125,7 @@ To estimate costs related to virtual machines, use these tools.
 > - Use [Spot VMs](/azure/virtual-machines/spot-vms) when appropriate.
 > - Choose the right VM size for your workload.
 > - Use a Premium SSD v2 disk and, based on your workload patterns, programmatically adjust its performance to account for either higher or lower demand.
-> - Use managed disks for desired performance without the need for over-provisioning, accounting for fluctuating workload patterns, and minimizing unused provisioned capacity.
+> - For other disk types, size your disks to achieve your desired performance without the need for over-provisioning. Account for fluctuating workload patterns, and minimizing unused provisioned capacity.
 > - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
 > - Prepay for [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) or an [Azure savings plan for compute](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#benefits-and-features) for significant savings.
 > - Use hybrid benefit licensing
