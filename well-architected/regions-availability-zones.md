@@ -16,7 +16,7 @@ categories:
 When you architect a solution for Azure, you need to decide whether you deploy across multiple availability zones in a region, or whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the approaches you can consider, the tradeoffs involved in each approach, and the impact of each approach on the core pillars of the Well-Architected Framework.
 
 > [!TIP]
-> For many production customer workloads, a [zone-redundant deployment](#zone-redundant-deployment-approach) provides the best balance of tradeoffs. This approach can be extended with [asynchronous data backup to another region](#zone-redundant-deployment-with-backup-across-regions).
+> For many production customer workloads, a [zone-redundant (spread) deployment](#zone-redundant-spread-deployment-approach) provides the best balance of tradeoffs. This approach can be extended with [asynchronous data backup to another region](#zone-redundant-spread-deployment-with-backup-across-regions).
 >
 > Consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
 
@@ -148,7 +148,7 @@ When you implement this approach, important to consider your recovery time objec
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
 | Operational Excellence | *During any outage within a region:* **Low operational efficiency** Failover is the customer's responsibility and might require manual operations and redeployment. |
 
-### Zonal deployment approach
+### Zonal (pinned) deployment approach
 
 This approach also uses multiple availability zones within a metropolitan area. You specify that a resource should be deployed to a specific availability zone. This is called a *zonal* deployment, or sometimes *zone-pinned* deployment.
 
@@ -167,7 +167,7 @@ A zonal deployment model has the following effects on your architectural concern
 
 This approach is typically used when you deploy virtual machine-based workloads. For a complete list of services that support zonal deployments, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
 
-### Zone-redundant deployment approach
+### Zone-redundant (spread) deployment approach
 
 In this approach, your compute tier is spread across multiple availability zones. When requests arrive, a load balancer built into the service (which itself spans availability zones) sends them to instances in any availability zone. If an availability zone has an outage, the load balancer moves the traffic to instances in the healthy availability zones.
 
@@ -188,7 +188,7 @@ A zone-redundant deployment model has the following effects on your architectura
 
 This approach is possible with many Azure services, including virtual machine scale sets, App Service, Azure Functions, AKS, Azure Storage, Azure SQL, Service Bus, and many others. For a complete list of services that support zone redundancy, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
 
-#### Zone-redundant deployment with backup across regions
+#### Zone-redundant (spread) deployment with backup across regions
 
 You can extend a zone-redundant deployment by performing regular backups of your data to a secondary region. This approach gives you the benefits of a zone-redundant approach, with an added layer of protection to mitigate the extremely unlikely event of a full region outage.
 
@@ -259,7 +259,7 @@ Contoso is a large manufacturing company. They are implementing a line of busine
 
 The information that the system manages is difficult to replace, so it's important that data is persisted reliably. Their architects have explained that their recovery point objective (RPO) is zero. Contoso's employees will use this system throughout their workday, so performance is critical to ensure that their team members aren't kept waiting. Cost is also a concern, because the finance team has to pay for this solution themselves.
 
-**Suggested approach:** [Zone-redundant deployment](#zone-redundant-deployment-approach), or [Zone-redundant deployment with backup across regions](#zone-redundant-deployment-with-backup-across-regions)
+**Suggested approach:** [Zone-redundant deployment](#zone-redundant-spread-deployment-approach), or [Zone-redundant deployment with backup across regions](#zone-redundant-spread-deployment-with-backup-across-regions)
 
 ### Internal application
 
@@ -275,7 +275,7 @@ Fabrikam is migrating a legacy application from an on-premises data center into 
 
 Fabrikam emphasize the importance of performance for this application. Resiliency is also important, though, and they need the application to continue to work even if an Azure data center has an outage.
 
-**Suggested approach:** [Zonal deployment (metro DR)](#zonal-deployment-approach)
+**Suggested approach:** [Zonal (pinned) deployment (metro DR)](#zonal-pinned-deployment-approach)
 
 ### Public sector application
 
@@ -283,7 +283,7 @@ Lamna Healthcare Company is implementing a new electronic health record system i
 
 Because of the nature of the data that this solution stores, data residency is critically important. Lamna Healthcare Company operates under a strict regulatory framework that mandates that data must remain in a specific location.
 
-**Suggested approach:** [Zone-redundant deployment](#zone-redundant-deployment-approach), or [Zone-redundant deployment with backup across regions](#zone-redundant-deployment-with-backup-across-regions)
+**Suggested approach:** [Zone-redundant (spread) deployment](#zone-redundant-spread-deployment-approach), or [Zone-redundant (spread) deployment with backup across regions](#zone-redundant-spread-deployment-with-backup-across-regions)
 
 ### Banking system
 
