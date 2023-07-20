@@ -92,7 +92,7 @@ It's a good practice to avoid unnecessary complexity in your solution architectu
 
 Suppose you're thinking about deploying a new solution, which includes an application that writes data to some sort of storage.
 
-<!-- TODO diagram -->
+:::image type="content" source="./_images/regions-availability-zones/application.png" alt-text="Diagram showing a user connecting to an application, which connects to storage.":::
 
 > [!NOTE]
 > This example isn't specific to any particular Azure services. Instead, it's intended as a simple example to illustrate the fundamental concepts.
@@ -113,7 +113,7 @@ There are multiple ways that you can deploy this solution, which each provide a 
 
 If you don't use multiple availability zones or regions, then your data is likely to be stored within a single data center. In the unlikely event of a data center outage, your solution might be unavailable and your data could be lost.
 
-<!-- TODO diagram -->
+:::image type="content" source="./_images/regions-availability-zones/non-zonal.png" alt-text="Diagram showing the application deployed into a single data center, within a single availability zone.":::
 
 The single-region deployment model has the following effects on your architectural concerns:
 
