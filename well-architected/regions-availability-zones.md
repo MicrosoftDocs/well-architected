@@ -101,10 +101,10 @@ There are multiple ways that you can deploy this solution, which each provide a 
 
 | Architectural Concern | Non-Zonal Approach | Zonal Approach | Zone-Redundant Approach | Multi-Region Approach |
 |-|-|-|-|
-| Reliability | Low | Depends on Approach | TODO | High or Very High |
-| Cost Optimization | Low | Depends on Approach | TODO | High |
-| Performance Efficiency | Acceptable or Low | Depends on Approach | TODO | Depends on Approach |
-| Operational Excellence | High | Depends on Approach | TODO | High |
+| Reliability | Low | Depends on Approach | High | High or Very High |
+| Cost Optimization | Low | Depends on Approach | Moderate | High |
+| Performance Efficiency | Acceptable or Low | High | Acceptable or Low | Depends on Approach |
+| Operational Excellence | High | Low | High | Low |
 
 ### Non-zonal deployments
 
