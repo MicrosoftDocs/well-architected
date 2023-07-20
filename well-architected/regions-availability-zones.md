@@ -105,10 +105,11 @@ There are multiple ways that you can deploy this solution, which each provide a 
 
 | Architectural Concern | Non-Zonal | Zonal (Pinned) | Zone-Redundant (Spread) | Multi-Region |
 |-|-|-|-|
-| Reliability | Low | Depends on Approach | High | High or Very High |
+| Reliability | Low | Depends on Approach | High or Very High | High or Very High |
 | Cost Optimization | Low | Depends on Approach | Moderate | High |
 | Performance Efficiency | Acceptable or Low | High | Acceptable or Low | Depends on Approach |
 | Operational Excellence | High | Low | High | Low |
+| Region Applicability | Every region | Regions with availability zones | Regions with availability zones | Regions with a pair |
 
 ### Non-zonal deployments
 
