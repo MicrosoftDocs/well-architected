@@ -138,7 +138,7 @@ You can extend a non-zonal deployment by performing regular backups of your data
 
 When you implement this approach, important to consider your recovery time objective (RTO) and recovery point objective (RPO) carefully:
 
-- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider deploying your infrastructure as code so that you can quickly redeploy into another region during a major disaster.
+- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider deploying your infrastructure as code so that you can quickly redeploy into another region during a major disaster. Ensure that your deployment tools and processes are just as resilient as your applications, so that you can use them to redeploy your solution even when you have an outage.
 - **Recovery point:** Your backup frequency determines the amount of data loss you might experience (your recovery point). You can typically control the frequency of backups so that you can meet your RPO.
 
 | Architectural Concern | Impact |
@@ -152,7 +152,9 @@ When you implement this approach, important to consider your recovery time objec
 
 This approach also uses multiple availability zones within a metropolitan area. You specify that a resource should be deployed to a specific availability zone. This is called a *zonal* deployment, or sometimes *zone-pinned* deployment.
 
-A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't provide any redundancy or resiliency. To create a resilient solution, you need to deploy multiple instances of your components into multiple availability zones. You're responsible for replicating data between the availability zones, and you're responsible for distributing the requests to the correct resources. In the event of an outage of an availability zone, you need to handle the failover procedures. When you deploy zonally across multiple availability zones, this approach is sometimes called [*Metro DR*][metro-dr].
+A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't increase the resiliency of your solution. To increase your resiliency, you need to deploy multiple instances of your components into multiple availability zones. You're responsible for replicating data between the availability zones, and you're responsible for distributing the requests to the correct resources. In the event of an outage of an availability zone, you need to handle the failover procedures.
+
+When you deploy zonally across multiple availability zones, this approach is sometimes called [*Metro DR*][metro-dr].
 
 :::image type="content" border="false" source="./_images/regions-availability-zones/zonal.png" alt-text="Diagram showing the solution deployed into multiple availability zones by using a zonal deployment approach.":::
 
@@ -196,7 +198,7 @@ You can extend a zone-redundant deployment by performing regular backups of your
 
 When you implement this approach, important to consider your recovery time objective (RTO) and recovery point objective (RPO) carefully:
 
-- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider deploying your infrastructure as code so that you can quickly redeploy into another region during a major disaster.
+- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider deploying your infrastructure as code so that you can quickly redeploy into another region during a major disaster. Ensure that your deployment tools and processes are just as resilient as your applications, so that you can use them to redeploy your solution even when you have an outage.
 - **Recovery point:** Your backup frequency determines the amount of data loss you might experience (your recovery point). You can typically control the frequency of backups so that you can meet your RPO.
 
 > [!TIP]
@@ -215,7 +217,7 @@ You can use multiple Azure regions together to distribute your solution across a
 
 Multi-region architectures are complex, and there are many different ways you can design a multi-region solution. For some workloads, it makes sense to have multiple regions actively processing requests simultaneously. For other workloads, it's better to designate one *primary region*, and use one or more *secondary regions* for failover purposes. This section focuses on the second scenario, where one region is active and another is passive.
 
-Communicating across regions is much slower than communicating within a region. In general, the longer the distance between two regions, the higher the network latency is. Cross-region network latency can significantly affect how your solution is architected, because you need to carefully consider whether how latency affects data replication and other transactions. For many solutions, a cross-region architecture requires *asynchronous* replication in order to minimize the effect of cross-region traffic on your applications.
+Communicating across regions is much slower than communicating within a region. In general, the longer the distance between two regions, the higher the network latency is. See [Azure network round-trip latency statistics][round-trip-latency] for the expected network latency when connecting between two regions. Cross-region network latency can significantly affect how your solution is architected, because you need to carefully consider whether how latency affects data replication and other transactions. For many solutions, a cross-region architecture requires *asynchronous* replication in order to minimize the effect of cross-region traffic on your applications.
 
 #### Asynchronous data replication
 
@@ -234,9 +236,7 @@ A multi-region deployment model with asynchronous data replication has the follo
 
 #### Synchronous data replication
 
-A synchronous multi-region solution means that your application has to wait for write operations to be completed in each Azure region before the transaction is completed. The latency involved in waiting for write operations depends on the distance between the regions. See [Azure network round-trip latency statistics](/azure/networking/azure-network-latency) for the expected network latency when connecting between two regions.
-
-For many workloads, inter-region latency can make synchronous replication too slow to be useful.
+A synchronous multi-region solution means that your application has to wait for write operations to be completed in each Azure region before the transaction is completed. The latency involved in waiting for write operations depends on the distance between the regions. For many workloads, inter-region latency can make synchronous replication too slow to be useful.
 
 :::image type="content" border="false" source="./_images/regions-availability-zones/multi-region-synchronous.png" alt-text="Diagram showing the solution deployed into multiple regions, with data replication happening synchronously.":::
 
@@ -299,6 +299,13 @@ Proseware, Inc. builds software used by companies across the world. Their user b
 
 **Suggested approach:** [Multi-region deployment](#multi-region-deployments).
 
+## Next steps
+
+Review some of the reference architectures and example scenarios for multi-zone and multi-region solutions:
+- [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant)
+- [Highly available multi-region web application](/azure/architecture/web-apps/app-service/architectures/multi-region)
+- [Multi-region N-tier application](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+- [Multi-tier web application built for HA/DR](/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)
 
 <!-- Links -->
 
@@ -308,3 +315,4 @@ Proseware, Inc. builds software used by companies across the world. Their user b
 [azure-region-pairs]: </azure/reliability/cross-region-replication-azure>
 [regions-with-availability-zones-and-no-region-pair]: </azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair>
 [metro-dr]: </azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery>
+[round-trip-latency]: </azure/networking/azure-network-latency>
