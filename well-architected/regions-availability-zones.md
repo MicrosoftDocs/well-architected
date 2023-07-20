@@ -94,7 +94,7 @@ It's a good practice to avoid unnecessary complexity in your solution architectu
 
 Suppose you're thinking about deploying a new solution, which includes an application that writes data to some sort of storage.
 
-:::image type="content" source="./_images/regions-availability-zones/application.png" alt-text="Diagram showing a user connecting to an application, which connects to storage.":::
+:::image type="content" border="false" source="./_images/regions-availability-zones/application.png" alt-text="Diagram showing a user connecting to an application, which connects to storage.":::
 
 > [!NOTE]
 > This example isn't specific to any particular Azure services. Instead, it's intended as a simple example to illustrate the fundamental concepts.
@@ -115,7 +115,7 @@ There are multiple ways that you can deploy this solution, which each provide a 
 
 If you don't use multiple availability zones or regions, then your data is likely to be stored within a single data center. In the unlikely event of a data center outage, your solution might be unavailable and your data could be lost.
 
-:::image type="content" source="./_images/regions-availability-zones/non-zonal.png" alt-text="Diagram showing the application deployed into a single data center, within a single availability zone.":::
+:::image type="content" border="false" source="./_images/regions-availability-zones/non-zonal.png" alt-text="Diagram showing the application deployed into a single data center, within a single availability zone.":::
 
 The single-region deployment model has the following effects on your architectural concerns:
 
@@ -125,6 +125,25 @@ The single-region deployment model has the following effects on your architectur
 | Cost Optimization | **Lowest cost.** You only need to have a single instance of each resource, and you don't incur any inter-zone or inter-region bandwidth costs. |
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
 | Operational Excellence | **High operational efficiency.** You only have a single instance of each resource that needs to be managed. |
+
+### Zonal deployment approach
+
+This approach also uses multiple availability zones within a metropolitan area. You specify that a resource should be deployed to a specific availability zone. This is called a *zonal* deployment, or sometimes *zone-pinned* deployment.
+
+A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't provide any redundancy or resiliency. To create a resilient solution, you need to deploy multiple instances of your components into multiple availability zones. You're responsible for replicating data between the availability zones, and you're responsible for distributing the requests to the correct resources. In the event of an outage of an availability zone, you need to handle the failover procedures. When you deploy zonally across multiple availability zones, this approach is sometimes called *Metro DR*.
+
+:::image type="content" border="false" source="./_images/regions-availability-zones/zonal.png" alt-text="Diagram showing the application deployed into multiple availability zones.":::
+
+A zonal deployment model has the following effects on your architectural concerns:
+
+| Architectural Concern | Impact |
+|-|-|
+| Reliability | *When deployed in a single availability zone:* **Low reliability.** A zonal deployment itself doesn't provide any resiliency to an outage in a data center or availability zone. You must deploy redundant resources across multiple availabilty zones to achieve high resiliency. <br /><br /> *When deployed in multiple availability zones:* **High reliability.** Services can be made resilient to an outage of a data center or availability zone. |
+| Cost Optimization | *When deployed in a single availability zone:* **Low cost.** A single-zone deployment only requires a single instance of each resource. <br /><br /> *When deployed in multiple availability zones:* **High cost.** You deploy multiple instances of the resources, each of which are billed separately. You also need to pay for inter-zone traffic for data replication. |
+| Performance Efficiency | **High performance.** Latency can be very low when the components that serve a request are located in the same availability zone. |
+| Operational Excellence | **Low operational efficiency.** You have multiple instances of your service to configure and manage. Data must be replicated between availability zones. During an availability zone outage, failover is your responsibility. |
+
+This approach is typically used when you deploy virtual machine-based workloads. For a complete list of services that support zonal deployments, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
 
 ### Zone-redundant deployment approach
 
@@ -167,25 +186,6 @@ When you implement this approach, important to consider your recovery time objec
 | Cost Optimization | **Moderate cost.** Typically, adding a backup to another region only adds a small amount of extra cost compared to implementing zone redundancy. |
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Some components might be sensitive to latency due to inter-zone traffic. |
 | Operational Excellence | *During an availability zone outage:* **High operational efficiency.** Failover is Microsoft's responsibility and happens automatically. <br /><br /> *During a regional outage:* **Low operational efficiency** Failover is the customer's responsibility and might require manual operations and redeployment. |
-
-### Zonal deployment approach
-
-This approach also uses multiple availability zones within a metropolitan area. However, instead of spreading instances or data across availability zones, you specify that an instance should be deployed to a specific availability zone. This is called a *zonal* deployment, or sometimes *zone-pinned* deployment.
-
-A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't provide any redundancy or resiliency. To create a resilient solution, you need to deploy multiple instances of your components into multiple availability zones. You're responsible for replicating data between the availability zones. In the event of an outage of an availability zone, you need to handle the failover procedures. When you deploy zonally across multiple availability zones, this approach is sometimes called *Metro DR*.
-
-<!-- TODO diagram -->
-
-A zonal deployment model has the following effects on your architectural concerns:
-
-| Architectural Concern | Impact |
-|-|-|
-| Reliability | *When deployed in a single availability zone:* **Low reliability.** A zonal deployment itself doesn't provide any resiliency to an outage in a data center or availability zone. You must deploy redundant resources across multiple availabilty zones to achieve high resiliency. <br /><br /> *When deployed in multiple availability zones:* **High reliability.** Services can be made resilient to an outage of a data center or availability zone. |
-| Cost Optimization | *When deployed in a single availability zone:* **Low cost.** A single-zone deployment only requires a single instance of each resource. <br /><br /> *When deployed in multiple availability zones:* **High cost.** You deploy multiple instances of the resources, each of which are billed separately. You also need to pay for inter-zone traffic for data replication. |
-| Performance Efficiency | **High performance.** Latency can be very low when the components that serve a request are located in the same availability zone. |
-| Operational Excellence | **Low operational efficiency.** You have multiple instances of your service to configure and manage. Data must be replicated between availability zones. During an availability zone outage, failover is your responsibility. |
-
-This approach is typically used when you deploy virtual machine-based workloads. For a complete list of services that support zonal deployments, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
 
 ### Multi-region deployments
 
