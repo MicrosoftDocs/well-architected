@@ -26,11 +26,15 @@ Many Azure regions provide *availability zones*, which are separated groups of d
 
 ![Diagram showing data centers, availability zones and regions](/azure/reliability/media/availability-zones.png)
 
+For more information, see [What are Azure regions and availability zones?](/azure/reliability/availability-zones-overview)
+
+If you deploy into an [Azure region that contains availability zones](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support), then you can use multiple availability zones together to keep separate copies of your application and data within separate physical data centers in a wide metropolitan area.
+
+Specific Azure resources support one or both of these approaches. For more information about how Azure services work with availability zones, see [Azure services with availability zone support](/azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support).
+
 There are two ways to use availability zones within a solution:
 - **Zonal** resources are confined to a specific availability zone.
 - **Zone-redundant** resources are ... TODO
-
-For more information, see [What are Azure regions and availability zones?](/azure/reliability/availability-zones-overview)
 
 ## How to select a deployment approach
 
@@ -121,13 +125,7 @@ The single-region deployment model has the following effects on your architectur
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
 | Operational Excellence | **High operational efficiency.** You only have a single instance of each resource that needs to be managed. |
 
-### Multi-zone deployments
-
-If you deploy into an [Azure region that contains availability zones](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support), then you can use multiple availability zones together to keep separate copies of your application and data within separate physical data centers in a wide metropolitan area.
-
-Specific Azure resources support one or both of these approaches. For more information about how Azure services work with availability zones, see [Azure services with availability zone support](/azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support).
-
-#### Zone redundant deployment approach
+### Zone-redundant deployment approach
 
 In this approach, your compute tier is deployed across multiple availability zones. When requests arrive, a load balancer (which itself spans availability zones) sends them to instances in any availability zone. If an availability zone has an outage, the load balancer moves the traffic to instances in the healthy availability zones.
 
@@ -148,7 +146,7 @@ A zone-redundant deployment model has the following effects on your architectura
 
 This approach is possible with many Azure services, including virtual machine scale sets, App Service, Azure Functions, AKS, Azure Storage, Azure SQL, Service Bus, and many others. For a complete list of services that support zone redundancy, see [Availability zone service and regional support](/azure/reliability/availability-zones-service-support).
 
-#### Zonal deployment approach
+### Zonal deployment approach
 
 This approach also uses multiple availability zones within a metropolitan area. However, instead of spreading instances or data across availability zones, you specify that an instance should be deployed to a specific availability zone. This is called a *zonal* deployment, or sometimes *zone-pinned* deployment.
 
