@@ -130,7 +130,7 @@ The single-region deployment model has the following effects on your architectur
 
 This approach also uses multiple availability zones within a metropolitan area. You specify that a resource should be deployed to a specific availability zone. This is called a *zonal* deployment, or sometimes *zone-pinned* deployment.
 
-A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't provide any redundancy or resiliency. To create a resilient solution, you need to deploy multiple instances of your components into multiple availability zones. You're responsible for replicating data between the availability zones, and you're responsible for distributing the requests to the correct resources. In the event of an outage of an availability zone, you need to handle the failover procedures. When you deploy zonally across multiple availability zones, this approach is sometimes called *Metro DR*.
+A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't provide any redundancy or resiliency. To create a resilient solution, you need to deploy multiple instances of your components into multiple availability zones. You're responsible for replicating data between the availability zones, and you're responsible for distributing the requests to the correct resources. In the event of an outage of an availability zone, you need to handle the failover procedures. When you deploy zonally across multiple availability zones, this approach is sometimes called [*Metro DR*][metro-dr].
 
 :::image type="content" border="false" source="./_images/regions-availability-zones/zonal.png" alt-text="Diagram showing the application deployed into multiple availability zones.":::
 
@@ -244,3 +244,4 @@ A multi-region deployment model with synchronous data replication has the follow
 [azure-services-with-availability-zone-support]: </azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support>
 [azure-region-pairs]: </azure/reliability/cross-region-replication-azure>
 [regions-with-availability-zones-and-no-region-pair]: </azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair>
+[metro-dr]: </azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery>
