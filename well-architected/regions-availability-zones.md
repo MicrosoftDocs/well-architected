@@ -103,7 +103,7 @@ Suppose you're thinking about deploying a new solution, which includes an applic
 
 There are multiple ways that you can deploy this solution, which each provide a different set of benefits and costs. At a high level, you can consider a *non-zonal*, *multi-zone*, or *multi-region* deployment. Here's a summary of the options and how they affect your architectural considerations:
 
-| Architectural Concern | Non-Zonal Approach | Zonal Approach | Zone-Redundant Approach | Multi-Region Approach |
+| Architectural Concern | Non-Zonal | Zonal (Pinned) | Zone-Redundant (Spread) | Multi-Region |
 |-|-|-|-|
 | Reliability | Low | Depends on Approach | High | High or Very High |
 | Cost Optimization | Low | Depends on Approach | Moderate | High |
