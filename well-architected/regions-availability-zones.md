@@ -113,9 +113,13 @@ There are multiple ways that you can deploy this solution, which each provide a 
 
 ### Non-zonal deployments
 
-If you don't use multiple availability zones or regions, then your data is likely to be stored within a single data center. In the unlikely event of a data center outage, your solution might be unavailable and your data could be lost.
+If you don't use multiple availability zones or regions, then Azure doesn't make any guarantees about whether your resources are deployed into a single data centre or split across multiple data centers in the region.
 
 :::image type="content" border="false" source="./_images/regions-availability-zones/non-zonal.png" alt-text="Diagram showing the solution deployed into a single data center, within a single availability zone.":::
+
+From a reliability perspective, if any part of the region experiences an outage then there's a chance that your workload might be impacted. If this happens, your solution might be unavailable, or your data could be lost.
+
+For highly latency-sensitive workloads, this approach might also result in lower performance. Your workload components might not be colocated in the same data center, and so you might observe some latency for intra-region traffic.
 
 The single-region deployment model has the following effects on your architectural concerns:
 
@@ -125,6 +129,8 @@ The single-region deployment model has the following effects on your architectur
 | Cost Optimization | **Lowest cost.** You only need to have a single instance of each resource, and you don't incur any inter-zone or inter-region bandwidth costs. |
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
 | Operational Excellence | **High operational efficiency.** You only have a single instance of each resource that needs to be managed. |
+
+<!-- TODO add cross-region backup -->
 
 ### Zonal deployment approach
 
