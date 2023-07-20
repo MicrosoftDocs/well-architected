@@ -199,7 +199,7 @@ Communicating across regions is much slower than communicating within a region. 
 
 Asynchronous replication across regions means that your application doesn't wait for all regions to acknowledge a change. Once the change is commited in one region, the application considers the transaction to be completed. At some point later, the change is replicated between the two regions. This approach means that inter-region connection latency doesn't affect the application performance. However, because of the delay in replication, a region wide outage might result in some data loss. This data loss is because a region might have an outage after a write was completed but before the change could be replicated.
 
-<!-- TODO diagram -->
+:::image type="content" border="false" source="./_images/regions-availability-zones/multi-region-asynchronous.png" alt-text="TODO":::
 
 A multi-region deployment model with asynchronous data replication has the following effects on your architectural concerns:
 
@@ -216,7 +216,7 @@ A synchronous multi-region solution means that your application has to wait for 
 
 For many workloads, inter-region latency can make synchronous replication too slow to be useful.
 
-<!-- TODO diagram -->
+:::image type="content" border="false" source="./_images/regions-availability-zones/multi-region-synchronous.png" alt-text="TODO":::
 
 A multi-region deployment model with synchronous data replication has the following effects on your architectural concerns:
 
