@@ -26,6 +26,10 @@ Many Azure regions provide *availability zones*, which are separated groups of d
 
 ![Diagram showing data centers, availability zones and regions](/azure/reliability/media/availability-zones.png)
 
+There are two ways to use availability zones within a solution:
+- **Zonal** resources are confined to a specific availability zone.
+- **Zone-redundant** resources are ... TODO
+
 For more information, see [What are Azure regions and availability zones?](/azure/reliability/availability-zones-overview)
 
 ## How to select a deployment approach
@@ -95,12 +99,12 @@ Suppose you're thinking about deploying a new solution, which includes an applic
 
 There are multiple ways that you can deploy this solution, which each provide a different set of benefits and costs. At a high level, you can consider a *non-zonal*, *multi-zone*, or *multi-region* deployment. Here's a summary of the options and how they affect your architectural considerations:
 
-| Architectural Concern | Non-Zonal Approach | Multi-Zone Approach | Multi-Region Approach |
+| Architectural Concern | Non-Zonal Approach | Zonal Approach | Zone-Redundant Approach | Multi-Region Approach |
 |-|-|-|-|
-| Reliability | Low | Depends on Approach | High or Very High |
-| Cost Optimization | Low | Depends on Approach | High |
-| Performance Efficiency | Acceptable or Low | Depends on Approach | Depends on Approach |
-| Operational Excellence | High | Depends on Approach | High |
+| Reliability | Low | Depends on Approach | TODO | High or Very High |
+| Cost Optimization | Low | Depends on Approach | TODO | High |
+| Performance Efficiency | Acceptable or Low | Depends on Approach | TODO | Depends on Approach |
+| Operational Excellence | High | Depends on Approach | TODO | High |
 
 ### Non-zonal deployments
 
@@ -121,7 +125,7 @@ The single-region deployment model has the following effects on your architectur
 
 If you deploy into an [Azure region that contains availability zones](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support), then you can use multiple availability zones together to keep separate copies of your application and data within separate physical data centers in a wide metropolitan area.
 
-There are two ways to use availability zones within a solution: zone-redundant and zonal deployments. Specific Azure resources support one or both of these approaches. For more information about how Azure services work with availability zones, see [Azure services with availability zone support](/azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support).
+Specific Azure resources support one or both of these approaches. For more information about how Azure services work with availability zones, see [Azure services with availability zone support](/azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support).
 
 #### Zone redundant deployment approach
 
