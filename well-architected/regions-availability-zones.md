@@ -74,9 +74,7 @@ Every organization would ideally like to mitigate every possible risk, but it's 
 
 ### Resiliency requirements
 
-It's important that you understand your resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you to decide which alternatives to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow.
-
-<!-- TODO Link to WAF guidance about these requirements -->
+It's important that you understand your resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you to decide which alternatives to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Target functional and nonfunctional requirements](resiliency/design-requirements.md).
 
 ### User location
 
@@ -109,6 +107,7 @@ There are multiple ways that you can deploy this solution, which each provide a 
 | Operational Excellence | Low Operational Requirements | High Operational Requirements | Low Operational Requirements | High Operational Requirements |
 | Compliance with Data Residency | High | High | High | [Depends on region][azure-region-pairs] |
 | Regional Applicability | All regions | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Depends on region][regions-with-availability-zones-and-no-region-pair] |
+<!-- TODO can we put coloured dots or similar here? -->
 
 ### Non-zonal deployments
 
@@ -148,13 +147,23 @@ This approach is possible with many Azure services, including virtual machine sc
 
 #### Zone-redundant deployment with backup across regions
 
-<!-- TODO backup across regions -->
+You can extend a zone-redundant deployment by performing regular backups of your data to a secondary region. This approach gives you the benefits of a zone-redundant approach, with an added layer of protection to mitigate the extremely unlikely event of a full region outage.
+
+<!-- TODO diagram -->
+
+When you implement this approach, important to consider your recovery time objective (RTO) and recovery point objective (RPO) carefully:
+
+- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider deploying your infrastructure as code so that you can quickly redeploy into another region during a major disaster.
+- **Recovery point:** Your backup frequency determines the amount of data loss you might experience (your recovery point). You can typically control the frequency of backups so that you can meet your RPO.
+
+> [!TIP]
+> This approach is a good balance of all of the architectural concerns. If you aren't sure which approach to select, start with this type of deployment.
 
 | Architectural Concern | Impact |
 |-|-|
 | Reliability | **Very high reliability.** Services are resilient to an outage of a data center or availability zone. For most services, data is replicated across zones automatically and with no delay. Data is backed up asynchronously to a geographically separated region to mitigate the minimal risk of a full region outage. |
-| Cost Optimization | **Moderate cost.** TODO minimal extra cost on top of ZR |
-| Performance Efficiency | TODO |
+| Cost Optimization | **Moderate cost.** Typically, adding a backup to another region only adds a small amount of extra cost compared to implementing zone redundancy. |
+| Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Some components might be sensitive to latency due to inter-zone traffic. |
 | Operational Excellence | **Moderate operational burden.** During an availability zone outage, failover is Microsoft's responsibility and happens automatically. During a regional outage, failover is the customer's responsibility and might require manual operations and redeployment. |
 
 ### Zonal deployment approach
@@ -170,7 +179,7 @@ A zonal deployment model has the following effects on your architectural concern
 | Architectural Concern | Impact |
 |-|-|
 | Reliability | *When deployed in a single availability zone:* **Low reliability.** A zonal deployment itself doesn't provide any resiliency to an outage in a data center or availability zone. You must deploy redundant resources across multiple availabilty zones to achieve high resiliency. <br /><br /> *When deployed in multiple availability zones:* **High reliability.** Services can be made resilient to an outage of a data center or availability zone. |
-| Cost Optimization | *When deployed in a single availability zone:* **Low cost.** TODO. <br /><br /> *When deployed in multiple availability zones:* **High cost.** You deploy multiple instances of the resources, each of which are billed separately. You also need to pay for inter-zone traffic for data replication. |
+| Cost Optimization | *When deployed in a single availability zone:* **Low cost.** A single-zone deployment only requires a single instance of each resource. <br /><br /> *When deployed in multiple availability zones:* **High cost.** You deploy multiple instances of the resources, each of which are billed separately. You also need to pay for inter-zone traffic for data replication. |
 | Performance Efficiency | **High performance.** Latency can be very low when the components that serve a request are located in the same availability zone. |
 | Operational Excellence | **Low operational efficiency.** You have multiple instances of your service to configure and manage. Data must be replicated between availability zones. During an availability zone outage, failover is your responsibility. |
 
@@ -215,6 +224,8 @@ A multi-region deployment model with synchronous data replication has the follow
 | Operational Excellence | **Low operational efficiency.** Resources across two regions must be operated and maintained. Customer is responsible for failover between regions during a regional outage. |
 
 ## Example workloads
+
+<!-- TODO fill this out -->
 
 - Intranet for a small business - cost is the primary factor, and business impact of downtime is very low. Single-region deployment, no use of zones.
 - Line of business app for an enterprise - cost is a big factor; resiliency is important. Zone redundant.
