@@ -16,7 +16,7 @@ categories:
 When you architect a solution for Azure, you need to decide whether you deploy across multiple availability zones in a region, or whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the approaches you can consider, the tradeoffs involved in each approach, and the impact of each approach on the core pillars of the Well-Architected Framework.
 
 > [!TIP]
-> For many production customer workloads, a single-region, multi-zone deployment provides the best balance of tradeoffs. You can consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
+> For many production customer workloads, a single-region, multi-zone deployment with asynchronous data backup to another region provides the best balance of tradeoffs. You can consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
 
 ## Regions and availability zones
 
@@ -26,15 +26,15 @@ Many Azure regions provide *availability zones*, which are separated groups of d
 
 ![Diagram showing data centers, availability zones and regions](/azure/reliability/media/availability-zones.png)
 
-For more information, see [What are Azure regions and availability zones?](/azure/reliability/availability-zones-overview)
+For more information, see [What are Azure regions and availability zones?][availability-zones-overview]
 
-If you deploy into an [Azure region that contains availability zones](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support), then you can use multiple availability zones together to keep separate copies of your application and data within separate physical data centers in a wide metropolitan area.
-
-Specific Azure resources support one or both of these approaches. For more information about how Azure services work with availability zones, see [Azure services with availability zone support](/azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support).
+If you deploy into an [Azure region that contains availability zones][azure-regions-with-availability-zone-support], then you can use multiple availability zones together to keep separate copies of your application and data within separate physical data centers in a wide metropolitan area.
 
 There are two ways to use availability zones within a solution:
-- **Zonal** resources are confined to a specific availability zone.
-- **Zone-redundant** resources are ... TODO
+- **Zonal** resources are pinned to a specific availability zone. You can combine multiple zonal deployments in different zones to achieve high reliability requirements. You're responsible for managing data replication and distributing requests across zones. If an outage occurs in a single availability zone, you're responsible for failover to another availability zone.
+- **Zone-redundant** resources are spread across multiple availability zones. Microsoft manages spreading requests across zones, and the replication of data across zones, for you. If an outage occurs in a single availability zone, Microsoft manages failover automatically.
+
+Different Azure services support one or both of these approaches. In general, PaaS services support zone-redundant deployments, and IaaS services support zonal deployments. For more information about how Azure services work with availability zones, see [Azure services with availability zone support][azure-services-with-availability-zone-support].
 
 ## How to select a deployment approach
 
@@ -59,15 +59,13 @@ To make an informed decision about which approach works for your solution, you n
 
 Different organizations have different risk appetites. Even within an organization, risk tolerance is often different for each workload. Most workloads don't need extreme high availability. But some workloads are so important that it's worth even mitigating risks that are unlikely to occur, like major natural disasters occurring across a wide geographic area.
 
-The following table lists some common risks that should be considered in a cloud environment:
+The following table lists a few of the common risks that should be considered in a cloud environment:
 
 | Risk | Example | Likelihood |
 |-|-|-|
 | Hardware outage | <ul><li>Issue with hard disk or networking equipment</li><li>Host reboots</li></ul> | Common. Any resiliency strategy should account for these risks. |
 | Data center outage | <ul><li>Power, cooling, or network failure across an entire data center</li><li>Natural disaster in one part of a metro area</li></ul> | Infrequent |
 | Region outage | <ul><li>Major natural disaster that affects a wide geographical area</li></ul> | Very infrequent |
-
-*should we also include service outages? e.g. global service outage for something like Azure Front Door or Entra ID. Need to look to mission-critical guidance for this level of risk mitigation* <!-- TODO -->
 
 Every organization would ideally like to mitigate every possible risk, but it's not practical or cost effective to do so. It's important to have an open discussion with business stakeholders so that you can make an informed decision about the risks you should mitigate.
 
@@ -78,7 +76,7 @@ Every organization would ideally like to mitigate every possible risk, but it's 
 
 It's important that you understand your resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you to decide which alternatives to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow.
 
-TODO Link to WAF guidance about these requirements
+<!-- TODO Link to WAF guidance about these requirements -->
 
 ### User location
 
@@ -105,12 +103,12 @@ There are multiple ways that you can deploy this solution, which each provide a 
 
 | Architectural Concern | Non-Zonal | Zonal (Pinned) | Zone-Redundant (Spread) | Multi-Region |
 |-|-|-|-|
-| Reliability | Low | Depends on Approach | High or Very High | High or Very High |
-| Cost Optimization | Low | Depends on Approach | Moderate | High |
-| Performance Efficiency | Acceptable or Low | High | Acceptable or Low | Depends on Approach |
-| Operational Excellence | High | Low | High | Low |
-| Compliance with Data Residency | High | High | High | [Depends on region](/azure/reliability/cross-region-replication-azure) |
-| Regional Applicability | All regions | Regions with availability zones | Regions with availability zones | [Depends on region](/azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair) |
+| Reliability | Low Reliability | Depends on Approach | High or Very High Reliability | High or Very High Reliability |
+| Cost Optimization | Low Cost | Depends on Approach | Moderate Cost | High Cost |
+| Performance Efficiency | Acceptable or Low Performance | High Performance | Acceptable or Low Performance | Depends on Approach |
+| Operational Excellence | Low Operational Requirements | High Operational Requirements | Low Operational Requirements | High Operational Requirements |
+| Compliance with Data Residency | High | High | High | [Depends on region][azure-region-pairs] |
+| Regional Applicability | All regions | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Depends on region][regions-with-availability-zones-and-no-region-pair] |
 
 ### Non-zonal deployments
 
@@ -146,7 +144,18 @@ A zone-redundant deployment model has the following effects on your architectura
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Some components might be sensitive to latency due to inter-zone traffic. |
 | Operational Excellence | **High operation efficiency.** You typically need to only manage a single instance of each resource. For most services, during an availability zone outage, failover is Microsoft's responsibility and happens automatically. |
 
-This approach is possible with many Azure services, including virtual machine scale sets, App Service, Azure Functions, AKS, Azure Storage, Azure SQL, Service Bus, and many others. For a complete list of services that support zone redundancy, see [Availability zone service and regional support](/azure/reliability/availability-zones-service-support).
+This approach is possible with many Azure services, including virtual machine scale sets, App Service, Azure Functions, AKS, Azure Storage, Azure SQL, Service Bus, and many others. For a complete list of services that support zone redundancy, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
+
+#### Zone-redundant deployment with backup across regions
+
+<!-- TODO backup across regions -->
+
+| Architectural Concern | Impact |
+|-|-|
+| Reliability | **Very high reliability.** Services are resilient to an outage of a data center or availability zone. For most services, data is replicated across zones automatically and with no delay. Data is backed up asynchronously to a geographically separated region to mitigate the minimal risk of a full region outage. |
+| Cost Optimization | **Moderate cost.** TODO minimal extra cost on top of ZR |
+| Performance Efficiency | TODO |
+| Operational Excellence | **Moderate operational burden.** During an availability zone outage, failover is Microsoft's responsibility and happens automatically. During a regional outage, failover is the customer's responsibility and might require manual operations and redeployment. |
 
 ### Zonal deployment approach
 
@@ -165,7 +174,7 @@ A zonal deployment model has the following effects on your architectural concern
 | Performance Efficiency | **High performance.** Latency can be very low when the components that serve a request are located in the same availability zone. |
 | Operational Excellence | **Low operational efficiency.** You have multiple instances of your service to configure and manage. Data must be replicated between availability zones. During an availability zone outage, failover is your responsibility. |
 
-This approach is typically used when you deploy virtual machine-based workloads. For a complete list of services that support zonal deployments, see [Availability zone service and regional support](/azure/reliability/availability-zones-service-support).
+This approach is typically used when you deploy virtual machine-based workloads. For a complete list of services that support zonal deployments, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
 
 ### Multi-region deployments
 
@@ -175,7 +184,7 @@ Communicating across regions is much slower than communicating within a region. 
 
 #### Asynchronous data replication
 
-TODO
+Asynchronous replication across regions means that your application doesn't wait for all regions to acknowledge a change. Once the change is commited in one region, the application considers the transaction to be completed. At some point later, the change is replicated between the two regions. This approach means that inter-region connection latency doesn't affect the application performance. However, because of the delay in replication, a region wide outage might result in some data loss. This data loss is because a region might have an outage after a write was completed but before the change could be replicated.
 
 <!-- TODO diagram -->
 
@@ -190,7 +199,9 @@ A multi-region deployment model with asynchronous data replication has the follo
 
 #### Synchronous data replication
 
-TODO
+A synchronous multi-region solution means that your application has to wait for write operations to be completed in each Azure region before the transaction is completed. The latency involved in waiting for write operations depends on the distance between the regions. See [Azure network round-trip latency statistics](/azure/networking/azure-network-latency) for the expected network latency when connecting between two regions.
+
+For many workloads, inter-region latency can make synchronous replication too slow to be useful.
 
 <!-- TODO diagram -->
 
@@ -203,57 +214,6 @@ A multi-region deployment model with synchronous data replication has the follow
 | Performance Efficiency | **Low performance.** Appliction requests require cross-region traffic. Depending on the distance between the regions, synchronous replication might add significant latency to the request. |
 | Operational Excellence | **Low operational efficiency.** Resources across two regions must be operated and maintained. Customer is responsible for failover between regions during a regional outage. |
 
-### Hybrid approaches
-
-#### Zone-redundant and cross-region
-
-TODO
-
-#### Zone-redundant with backup across regions
-
-TODO
-
-| Architectural Concern | Impact |
-|-|-|
-| Reliability | **Very high reliability.** Services are resilient to an outage of a data center or availability zone. For most services, data is replicated across zones automatically and with no delay. Data is backed up asynchronously to a geographically separated region to mitigate the minimal risk of a full region outage. |
-| Cost Optimization | **Moderate cost.** TODO minimal extra cost on top of ZR |
-| Performance Efficiency | TODO |
-| Operational Excellence | **Moderate operational burden.** During an availability zone outage, failover is Microsoft's responsibility and happens automatically. During a regional outage, failover is the customer's responsibility and might require manual operations and redeployment. |
-
-<!-- 
-#### [Multi-region synchronous](#tab/multi-region-synchronous)
-
-When you use a geo-redundant storage service, multiple copies of the data are stored in separate Azure regions.
-
-Your data can remain available even if an entire Azure region is offline.
-
-A synchronous multi-region solution means that your application has to wait for write operations to be completed in each Azure region before the transaction is completed. The latency involved in waiting for write operations depends on the distance between the regions. See [Azure network round-trip latency statistics](/azure/networking/azure-network-latency) for the expected network latency when connecting between two regions.
-
-For many workloads, inter-region latency can make synchronous replication too slow.
-
-#### [Multi-region asynchronous](#tab/multi-region-asynchronous)
-
-When you use a geo-redundant storage service, multiple copies of the data are stored in separate Azure regions.
-
-Your data can remain available even if an entire Azure region is offline.
-
-Asynchronous replication across regions means that your application doesn't wait for all regions to acknowledge a change. Once the change is commited in one region, the application considers the transaction to be completed. At some point later, the change is replicated between the two regions. This approach means that inter-region connection latency doesn't affect the application performance. However, because of the delay in replication, a region wide outage might result in some data loss. This data loss is because a region might have an outage after a write was completed but before the change could be replicated.
-
----
-
-In the preceding example, you need to decide how you'll trade off between reliability and performance, and select the appropriate option for your needs. However, reliability and performance are only two of the tradeoffs you need to consider.
-
-
-
-To integrate somewhere:
-
-- **How zone redundancy works:** For many services, Azure runs multiple instances or stores multiple copies of the data. Zone redundancy means that these are distributed across availability zones (i.e. DCs) that are in the same metro area but separated. So you don't necessarily provision more resources, you're just spreading them across physical locations. This helps with resiliency. The data transfer to keep instances in sync can have a cost impact but not as high as multi-region. Might increase latency of communication between components, but this doesn't matter for most workloads.
-
-
-This is also called metro DR
-
--->
-
 ## Example workloads
 
 - Intranet for a small business - cost is the primary factor, and business impact of downtime is very low. Single-region deployment, no use of zones.
@@ -262,3 +222,12 @@ This is also called metro DR
 - Public sector application - data residency. Zone redundant.
 - Bank/healthcare - resiliency and very low risk tolerance. Zone redundant and multi-region.
 - SaaS - geographically distributed user base. Multi-region.
+
+
+<!-- Links -->
+
+[availability-zones-overview]: </azure/reliability/availability-zones-overview>
+[azure-regions-with-availability-zone-support]: </azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support>
+[azure-services-with-availability-zone-support]: </azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support>
+[azure-region-pairs]: </azure/reliability/cross-region-replication-azure>
+[regions-with-availability-zones-and-no-region-pair]: </azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair>
