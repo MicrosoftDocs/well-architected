@@ -277,7 +277,7 @@ Fabrikam emphasize the importance of performance for this application. Resilienc
 
 **Suggested approach:** [Zonal (pinned) deployment (metro DR)](#zonal-pinned-deployment-approach)
 
-### Public sector application
+### Healthcare application
 
 Lamna Healthcare Company is implementing a new electronic health record system in Azure.
 
