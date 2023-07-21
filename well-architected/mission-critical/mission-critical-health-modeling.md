@@ -288,9 +288,9 @@ This section focuses on the use of Azure Dashboards and Grafana to build a robus
 - When visualizing the health model using Log Analytics queries, note that there are [Log Analytics limits on concurrent and queued queries, as well as the overall query rate](/azure/azure-monitor/service-limits#user-query-throttling), with subsequent queries queued and throttled.
 
 - Queries to retrieve operational data used to calculate and represent health scores can be written and executed in either Azure Monitor Log Analytics or Azure Data Explorer.
-  - Sample queries are available [here](/azure/azure-monitor/logs/examples).
+  - Sample queries are available [here](https://github.com/Azure/Mission-Critical-Online/tree/main/src/infra/monitoring/queries).
 
-- Log Analytics imposes several [query limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#action-groups), which must be designed for when designing operational dashboards.
+- Log Analytics imposes several [query limits](/azure/azure-monitor/service-limits#user-query-throttling), which must be designed for when designing operational dashboards.
 
 - The visualization of raw resource metrics, such as CPU utilization or network throughput, requires manual evaluation by operations teams to determine health status impacts, and this can be challenging during an active incident.
 
