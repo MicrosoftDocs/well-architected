@@ -13,7 +13,7 @@ categories:
 
 # Design your solution to use availability zones and regions
 
-When you architect a solution for Azure, you need to decide whether you deploy across multiple availability zones in a region, or whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the approaches you can consider, the tradeoffs involved in each approach, and the impact of each approach on the core pillars of the Well-Architected Framework.
+When you design a solution for Azure, you need to decide whether you deploy across multiple availability zones in a region, or whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the approaches you can consider, the tradeoffs involved in each approach, and the impact of each approach on the core pillars of the Well-Architected Framework.
 
 > [!TIP]
 > For many production customer workloads, a [zone-redundant (spread) deployment](#zone-redundant-spread-deployment-approach) provides the best balance of tradeoffs. This approach can be extended with [asynchronous data backup to another region](#zone-redundant-spread-deployment-with-backup-across-regions).
@@ -217,7 +217,7 @@ You can use multiple Azure regions together to distribute your solution across a
 
 Multi-region architectures are complex, and there are many different ways you can design a multi-region solution. For some workloads, it makes sense to have multiple regions actively processing requests simultaneously. For other workloads, it's better to designate one *primary region*, and use one or more *secondary regions* for failover purposes. This section focuses on the second scenario, where one region is active and another is passive.
 
-Communicating across regions is much slower than communicating within a region. In general, the longer the distance between two regions, the higher the network latency is. See [Azure network round-trip latency statistics][round-trip-latency] for the expected network latency when connecting between two regions. Cross-region network latency can significantly affect how your solution is architected, because you need to carefully consider whether how latency affects data replication and other transactions. For many solutions, a cross-region architecture requires *asynchronous* replication in order to minimize the effect of cross-region traffic on your applications.
+Communicating across regions is much slower than communicating within a region. In general, the longer the distance between two regions, the higher the network latency is. See [Azure network round-trip latency statistics][round-trip-latency] for the expected network latency when connecting between two regions. Cross-region network latency can significantly affect how your solution is designed, because you need to carefully consider whether how latency affects data replication and other transactions. For many solutions, a cross-region architecture requires *asynchronous* replication in order to minimize the effect of cross-region traffic on your applications.
 
 #### Asynchronous data replication
 
