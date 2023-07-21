@@ -1,5 +1,5 @@
 ---
-title: Architect for regions and availability zones
+title: Design your solution to use availability zones and regions
 description: A guide for understanding when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
@@ -11,7 +11,7 @@ categories:
   - management-and-governance
 ---
 
-# Architect for regions and availability zones
+# Design your solution to use availability zones and regions
 
 When you architect a solution for Azure, you need to decide whether you deploy across multiple availability zones in a region, or whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the approaches you can consider, the tradeoffs involved in each approach, and the impact of each approach on the core pillars of the Well-Architected Framework.
 
