@@ -21,6 +21,8 @@ Continue to monitor and optimize the workload by using the right resources and s
 
 **Auto start and stop VMs tool to non-production VMs**. The start and stop VMs v2 feature starts or stops Azure Virtual Machines instances across multiple subscriptions. It starts or stops virtual machines on user-defined schedules. For more information, see [Start and stop VMs](/azure/azure-functions/start-stop-vms/overview).
 
+- **Use Log Analytics to run log queries on data collected by Azure Monitor**. You'll be able to analyze utilization of resources. For more infomation, see [Cost optimization and Log Analytics](/azure/well-architected/services/monitoring/log-analytics/cost-optimization)
+
 - **Continuously take action on the cost reviews**. Treat cost optimization as a process, rather than a point-in-time activity. Use tooling in Azure that provides recommendations on usage or cost optimization. Review the cost management recommendations and take action. Make sure that all stakeholders are in agreement about the implementation and timing of the change.
 
   - **Recommendations for cost management** in the [Azure portal](https://ms.portal.azure.com/#view/Microsoft_Azure_CostManagement/Menu/~/overview/openedBy/AzurePortal)
