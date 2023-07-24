@@ -271,6 +271,12 @@ A multi-region deployment model with synchronous data replication has the follow
 
 TODO talk about region pairs, and how some regions don't have pairs.
 
+## Effects on service level agreements (SLAs)
+
+Azure provides service level agreements (SLAs) for each service. An SLA indicates the level of uptime you should expect from the service, and the conditions you need to meet to achieve that expected SLA.
+
+Your architectural decisions affect your SLA. In general, the more redundancy you build into your solution, the higher your SLA is likely to be. Many Azure services provide higher SLAs when you deploy services in a zone-redundant or multi-region configuration. Review the SLAs for each of the Azure services you use to ensure that you understand how to maximize the resiliency and SLA of the service.
+
 ## Example workloads
 
 This section includes describes some common workloads, and the key requirements that each workload typically needs to consider. Based on the requirements and the approaches described in this article, we provide a suggested approach for the workload.
