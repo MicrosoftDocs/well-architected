@@ -109,7 +109,6 @@ There are multiple ways that you can deploy this solution, which each provide a 
 | Operational Excellence | Low Operational Requirements | High Operational Requirements | Low Operational Requirements | High Operational Requirements |
 | Compliance with Data Residency | High | High | High | [Depends on region][azure-region-pairs] |
 | Regional Applicability | All regions | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Depends on region][regions-with-availability-zones-and-no-region-pair] |
-<!-- TODO can we put coloured dots or similar here? -->
 
 ### Non-zonal deployments
 
@@ -248,7 +247,7 @@ A multi-region deployment model with asynchronous data replication has the follo
 | Performance Efficiency | **High performance.** Appliction requests don't require cross-region traffic, so traffic is typically low latency. |
 | Operational Excellence | **Low operational efficiency.** Resources across two regions must be operated and maintained. Customer is responsible for failover between regions during a regional outage. |
 | Compliance with Data Residency | **Depends on region selection.** This approach requires you to select multiple regions for your workload to run in. It's important that you select regions that are compatible with your data residency requirements. |
-| Regional Applicability | [Some Azure regions][azure-region-pairs] are paired. Select Azure services use paired regions to replicate data automatically. If you run your workload in a [region without a pair][regions-with-availability-zones-and-no-region-pair], you might need to use a different approach to replicate your data. |
+| Regional Applicability | [Some Azure regions][azure-region-pairs] are paired. Select Azure services use paired regions to replicate data automatically. If you run your workload in a [region without a pair][regions-with-availability-zones-and-no-region-pair], you might need to use a [different approach to replicate your data](#region-architectures). |
 
 ##### Synchronous data replication
 
@@ -265,11 +264,13 @@ A multi-region deployment model with synchronous data replication has the follow
 | Performance Efficiency | **Low performance.** Appliction requests require cross-region traffic. Depending on the distance between the regions, synchronous replication might add significant latency to the request. |
 | Operational Excellence | **Low operational efficiency.** Resources across two regions must be operated and maintained. Customer is responsible for failover between regions during a regional outage. |
 | Compliance with Data Residency | **Depends on region selection.** This approach requires you to select multiple regions for your workload to run in. It's important that you select regions that are compatible with your data residency requirements. |
-| Regional Applicability | [Some Azure regions][azure-region-pairs] are paired. Select Azure services use paired regions to replicate data automatically. If you run your workload in a [region without a pair][regions-with-availability-zones-and-no-region-pair], you might need to use a different approach to replicate your data. |
+| Regional Applicability | [Some Azure regions][azure-region-pairs] are paired. Select Azure services use paired regions to replicate data automatically. If you run your workload in a [region without a pair][regions-with-availability-zones-and-no-region-pair], you might need to use a [different approach to replicate your data](#region-architectures). |
 
-#### Region pairs
+#### Region architectures
 
-TODO talk about region pairs, and how some regions don't have pairs.
+Azure regions have a variety of configurations (also called *region architectures*). Many regions support [availability zones][azure-regions-with-availability-zone-support]. Many regions have a [*paired region*][azure-region-pairs]. Some newer regions have [multiple availability zones and don't have a paired region][regions-with-availability-zones-and-no-region-pair].
+
+You can build a multi-region solution even when your region doesn't have a pair. However, the approaches you use to achieve a multi-region architecture might be different. For example, in Azure Storage, you can use geo-redundant storage (GRS) with paired regions. If your chosen region doesn't have a pair, consider using features like Azure Storage [object replication](/azure/storage/blobs/object-replication-overview), or design your application to write to multiple regions.
 
 ## Effects on service level agreements (SLAs)
 
