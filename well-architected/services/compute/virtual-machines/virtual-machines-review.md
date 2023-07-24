@@ -52,6 +52,10 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Install applications on data disks. | Having your data on a separate disk from your OS disk makes it easier to recover from failures and to migrate workloads.
 | Use maintenance control | Control when VM maintenance occurs to manage the timing of system restarts.|
 
+>[!TIP]
+>For more details on Reliability guidance for VMs, see [Reliability in Azure Virtual Machines - Azure Virtual Machines](/azure/reliability/reliability-virtual-machines.md).
+
+ 
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/HighAvailability) recommendations.
 
