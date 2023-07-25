@@ -10,29 +10,20 @@ ms.custom:
 ---
 # Recommendations for defining performance targets: PE 01
 
-This guide describes the best practices for establishing and exposing performance targets*.* Performance targets provide specific performance goals for critical workload flows. These specific targets serve as a common reference point for the teams responsible for the application. It creates a numerical foundation for making performance improvements. Without performance targets, teams have unclear expectations. Unclear expectations result in team inefficiency due to a lack of focus. It also causes a lack of accountability for performance issues.
+This guide describes the best practices for establishing and exposing performance targets. Performance targets provide specific performance goals for critical workload flows. These specific targets serve as a common reference point for the teams responsible for the application. It creates a numerical foundation for making performance improvements. Without performance targets, teams have unclear expectations. Unclear expectations result in team inefficiency due to a lack of focus. It also causes a lack of accountability for performance issues.
 
 ## Definitions
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------
-  Term                  Definition
-  --------------------- ------------------------------------------------------------------------------------------------------------------------------
-  Metrics               Metrics are numerical values that Azure collects at regular intervals and describe aspects of a system at a particular time.
-
-  Performance targets   Metrics that define performance objectives expressed as a single numerical value or a numerical range.
-
-  Flow                  A sequence of operations in a workload that performs a specific function.
-
-  User flow             The sequence a user follows to accomplish a task.
-
-  Workflow              The sequence of steps a workload executes to accomplish a task.
-
-  Data flow             The movement of data within a workload.
-
-  Dependency            A component that your workload relies on.
-
-  Health model          Flow metrics that define healthy and unhealthy performance
-  ----------------------------------------------------------------------------------------------------------------------------------------------------
+|  Term|                  Definition|
+|-|-|
+  |Metrics|               Metrics are numerical values that Azure collects at regular intervals and describe aspects of a system at a particular time.
+  |Performance targets|   Metrics that define performance objectives expressed as a single numerical value or a numerical range.|
+  |Flow|                  A sequence of operations in a workload that performs a specific function.|
+  |User flow             |The sequence a user follows to accomplish a task.|
+|Workflow          |    The sequence of steps a workload executes to accomplish a task.|
+  |Data flow|             The movement of data within a workload.|
+|Dependency            |A component that your workload relies on.|
+  |Health model         | Flow metrics that define healthy and unhealthy performance|
 
 ## Your responsibility
 
