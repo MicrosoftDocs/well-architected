@@ -1,3 +1,12 @@
+---
+title: Recommendations for capacity planning
+description: Learn best practices for capacity planning.  
+author: stephen-sumner
+ms.author: ssumner
+ms.date: 11/15/2023
+ms.topic: conceptual
+---
+
 # Recommendations for capacity planning: PE 02
 
 This guide describes the best practices for capacity planning. You should perform formal capacity planning at key points in the lifecycle of the workload. Capacity planning enables you to anticipate short and long-term demand and manage workload performance effectively. By analyzing historical usage patterns and growth trends, you can identify potential bottlenecks, scalability challenges, or performance constraints.
