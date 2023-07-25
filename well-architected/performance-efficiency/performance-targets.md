@@ -47,9 +47,9 @@ This guide describes the best practices for establishing and exposing performanc
 
 ## Azure facilitation
 
--   [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/overview) is a full-stack monitoring service that provides a complete set of features to monitor your Azure resources and generate performance targets. Azure Monitor collects platform metrics and provides turn-key dashboards. It allows you to configure alerts based on metrics. It also stores and correlates metrics to ensure a single source of truth.
+-   [Azure Monitor](/azure/azure-monitor/overview) is a full-stack monitoring service that provides a complete set of features to monitor your Azure resources and generate performance targets. Azure Monitor collects platform metrics and provides turn-key dashboards. It allows you to configure alerts based on metrics. It also stores and correlates metrics to ensure a single source of truth.
 
--   Azure Advisor provides [performance recommendations](https://learn.microsoft.com/en-us/azure/advisor/advisor-performance-recommendations) that could inform your performance targets.
+-   Azure Advisor provides [performance recommendations](/azure/advisor/advisor-performance-recommendations) that could inform your performance targets.
 
 ## Tradeoffs
 
