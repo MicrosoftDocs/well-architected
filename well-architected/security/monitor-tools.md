@@ -29,7 +29,7 @@ Azure provides several monitoring tools that observe the operations and detect a
 |[**Azure DDoS Protection**](/azure/virtual-network/ddos-protection-overview)| Defend against distributed denial of service (DDoS) attacks.|
 |[**Azure Rights Management (RMS)**](/azure/information-protection/what-is-azure-rms)| Protect files and emails across multiple devices.|
 |[**Microsoft Purview Information Protection**](/information-protection/develop/overview)| Secure email, documents, and sensitive data that you share outside your company.|
-|[**Azure Governance Visualizer**](https://github.com/microsoft/CloudAdoptionframework/tree/master/govern/AzureGovernanceVisualizer)|Gain granular insight into policies, Azure role-based access control (Azure RBAC), Azure Blueprints, subscriptions, and more.|
+|[**Azure Governance Visualizer**](https://aka.ms/alz/azgovviz)|Gain granular insight into policies, Azure role-based access control (Azure RBAC), Azure Blueprints, subscriptions, and more.|
 |[**PSRule for Azure**](https://aka.ms/ps-rule-azure)| Scans Azure Infrastructure as Code (IaC) artifacts for issues across Azure Well-Architected pillars.|
 
 ## Microsoft Defender for Cloud
