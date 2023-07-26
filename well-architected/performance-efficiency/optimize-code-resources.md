@@ -13,20 +13,15 @@ This guide describes the best practices for optimizing code and resource use. Op
 
 ## Definitions
 
-|Terms|                           |Definition|
-  ----------------------------------- -------------------------------------------------------------------------------------
-  Heap                                An area in memory where runtime memory allocations take place.
+|Terms|                           Definition|
+ |-|-|
+ | Heap|                                An area in memory where runtime memory allocations take place.|
+|  Memory leak|                         When a workload fails to release allocated memory after it's not needed.|
+|  CPU architecture                    |The components and principles that affect the way the computer works.|
+|  Data compression                    |Reducing the size of files by minimizing redundant data.|
+|  O(N)|                                Big O notation for execution time that increases as the size of the input increases|
+|  O(1)|                                Big O notation for execution time that is constant regardless of the input size.|
 
-  Memory leak                         When a workload fails to release allocated memory after it's not needed.
-
-  CPU architecture                    The components and principles that affect the way the computer works.
-
-  Data compression                    Reducing the size of files by minimizing redundant data.
-
-  O(N)                                Big O notation for execution time that increases as the size of the input increases
-
-  O(1)                                Big O notation for execution time that is constant regardless of the input size.
-  -------------------------------------------------------------------------------------------------------------------------
 
 ## Your responsibility
 
@@ -48,7 +43,7 @@ This guide describes the best practices for optimizing code and resource use. Op
 
 -   **Use object pooling**. Object pooling reuses large objects instead of allocating and deallocating them.
 
-For more information, see [Avoid memory allocations](https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/performance/) [and Large object heap (LOH)](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap).
+For more information, see [Avoid memory allocations](/dotnet/csharp/advanced-topics/performance/) [and Large object heap (LOH)](/dotnet/standard/garbage-collection/large-object-heap).
 
 **Utilize processor capabilities.** Code should take advantage of the CPU architecture and threading models. 
 
@@ -62,11 +57,11 @@ For more information, see [Avoid memory allocations](https://learn.microsoft.com
 
 **Use** **asynchronous programming.** Asynchronous programming is an approach that enables a workload to execute multiple operations without waiting for another operations to complete. Traditional synchronous programming executes tasks sequential and can cause performance bottlenecks. The workload cannot process other requests until the previous one finishes. Asynchronous programming is a critical pattern for enabling performance efficiency. It's and is available in most modern programming languages and platforms.
 
-There are many ways to inject asynchronous programming. For HTTP traffic, consider using the [asynchronous request-reply pattern](https://learn.microsoft.com/en-us/azure/architecture/patterns/async-request-reply). For .NET/C# programming, see [Asynchronous programming with async and await](https://learn.microsoft.com/en-us/dotnet/csharp/async), [Task-based asynchronous pattern](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap), and [Event-based asynchronous pattern](https://learn.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-eap).
+There are many ways to inject asynchronous programming. For HTTP traffic, consider using the [asynchronous request-reply pattern](/azure/architecture/patterns/async-request-reply). For .NET/C# programming, see [Asynchronous programming with async and await](/dotnet/csharp/async), [Task-based asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap), and [Event-based asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-eap).
 
-**Implement** **a queue.** Queues enable asynchronous processing. A queue is a storage buffer located between a requesting component (producer) and the processing component (consumer) of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The requesting component places tasks in the queue, the queue stores them until the processing component has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. To learn more about queue-based load leveling, see [Queue-based load leveling pattern](https://learn.microsoft.com/en-us/azure/architecture/patterns/queue-based-load-leveling). Also see [Storage queues and Service Bus queues compared and contrasted](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+**Implement** **a queue.** Queues enable asynchronous processing. A queue is a storage buffer located between a requesting component (producer) and the processing component (consumer) of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The requesting component places tasks in the queue, the queue stores them until the processing component has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. To learn more about queue-based load leveling, see [Queue-based load leveling pattern](/azure/architecture/patterns/queue-based-load-leveling). Also see [Storage queues and Service Bus queues compared and contrasted](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
-**Optimize** **background jobs.** Many types of applications require background tasks that run independently of the user interface. The application can start the job and continue to process interactive requests from users. Examples include batch jobs, intensive processing tasks, and long-running processes such as workflows. Background tasks shouldn't block the application or cause inconsistencies due to delayed operation when the system is under load. You can improve performance by scaling the compute instances that host the background tasks. For more information, see [Background jobs](https://learn.microsoft.com/en-us/azure/architecture/best-practices/background-jobs) and [Background jobs scaling and performance considerations](https://learn.microsoft.com/en-us/azure/architecture/best-practices/background-jobs#scaling-and-performance-considerations).
+**Optimize** **background jobs.** Many types of applications require background tasks that run independently of the user interface. The application can start the job and continue to process interactive requests from users. Examples include batch jobs, intensive processing tasks, and long-running processes such as workflows. Background tasks shouldn't block the application or cause inconsistencies due to delayed operation when the system is under load. You can improve performance by scaling the compute instances that host the background tasks. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs) and [Background jobs scaling and performance considerations](/azure/architecture/best-practices/background-jobs#scaling-and-performance-considerations).
 
 **Optimize performance the right way.** Performance efficiency must be quantitative. You should never assume an application change improves performance. You should measure the performance effects of all application updates. Don't mask performance issues with brute force. Brute force means adding more compute resources to compensate for code performance through additional capacity instead of addressing the source. You need to fix performance issues through optimization. 
 
@@ -76,15 +71,15 @@ There are many ways to inject asynchronous programming. For HTTP traffic, consid
 
 **Optimize database queries.** Queries can return large amounts of data. You should ensure database queries only retrieve the information needed.
 
-**Use faster protocols.** You should upgrade to modern protocols. For example, HTTP/2 sends multiple requests over a single connection. [gRPC](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/grpc) is a high-performance framework that provides low latency and high throughput.
+**Use faster protocols.** You should upgrade to modern protocols. For example, HTTP/2 sends multiple requests over a single connection. [gRPC](/dotnet/architecture/cloud-native/grpc) is a high-performance framework that provides low latency and high throughput.
 
-**Consider data compression.** Compressing and bundling [HTTP content](https://learn.microsoft.com/en-us/iis/configuration/system.webserver/httpcompression/) and [file data](https://learn.microsoft.com/en-us/windows/win32/fileio/file-compression-and-decompression) allows faster transmission between clients and servers. Compression shrinks the data returned from a page or API back to the browser or client app. It optimizes network traffic that can potentially accelerate application communication. However, it's only a potential gain. Compressions adds additional server side and client side processing. The application must compress, send, and decompress data. Multi-cast communication (multiple recipients) can create even more decompression overhead. You need to test and measure the performance variations before and after implementing data compression to determine if it's a good fit for your workload. For more information, see [Response compression in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/performance/response-compression?preserve-view=true&view=aspnetcore-3.1).
+**Consider data compression.** Compressing and bundling [HTTP content](/iis/configuration/system.webserver/httpcompression/) and [file data](/windows/win32/fileio/file-compression-and-decompression) allows faster transmission between clients and servers. Compression shrinks the data returned from a page or API back to the browser or client app. It optimizes network traffic that can potentially accelerate application communication. However, it's only a potential gain. Compressions adds additional server side and client side processing. The application must compress, send, and decompress data. Multi-cast communication (multiple recipients) can create even more decompression overhead. You need to test and measure the performance variations before and after implementing data compression to determine if it's a good fit for your workload. For more information, see [Response compression in ASP.NET Core](/aspnet/core/performance/response-compression?preserve-view=true&view=aspnetcore-3.1).
 
 ### Infrastructure
 
 ### 
 
-**Add resource usage** **limits wherever possible.** You can put utilization limits on some workload components. For example, you can define [pod CPU and memory limits](https://learn.microsoft.com/en-us/azure/aks/developer-best-practices-resource-management) in AKS to remove unstable pods. You can define memory limits in [Java virtual machines](https://learn.microsoft.com/en-us/azure/spring-apps/concepts-for-java-memory-management) to optimize performance.
+**Add resource usage** **limits wherever possible.** You can put utilization limits on some workload components. For example, you can define [pod CPU and memory limits](/azure/aks/developer-best-practices-resource-management) in AKS to remove unstable pods. You can define memory limits in [Java virtual machines](/azure/spring-apps/concepts-for-java-memory-management) to optimize performance.
 
 **Eliminate unnecessary infrastructure.** Simplifying your workload reduces the potential for issues related to interactions, dependencies, and compatibility. By removing these elements, you optimize resource utilization of memory, processing power, and storage for essential resources.
 
@@ -92,15 +87,15 @@ There are many ways to inject asynchronous programming. For HTTP traffic, consid
 
 ## Azure facilitation
 
--   Azure Application Insights has a [smart detection feature](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/proactive-potential-memory-leak) that automatically analyzes the memory consumption of each process in your application. It can warn you about potential memory leaks.
+-   Azure Application Insights has a [smart detection feature](/azure/azure-monitor/alerts/proactive-potential-memory-leak) that automatically analyzes the memory consumption of each process in your application. It can warn you about potential memory leaks.
 
--   You can define [pod CPU and memory limits](https://learn.microsoft.com/en-us/azure/aks/developer-best-practices-resource-management) in AKS to remove unstable pods.
+-   You can define [pod CPU and memory limits](/azure/aks/developer-best-practices-resource-management) in AKS to remove unstable pods.
 
--   You can define memory limits in [Java virtual machines](https://learn.microsoft.com/en-us/azure/spring-apps/concepts-for-java-memory-management) to optimize performance.
+-   You can define memory limits in [Java virtual machines](/azure/spring-apps/concepts-for-java-memory-management) to optimize performance.
 
 -   Highly scalable queuing services are natively supported in Azure. These services include Azure Queue Storage, a simple queuing service based on Azure Storage, and Azure Service Bus, a message broker service that supports transactions and reduced latency. Many third-party queues are available in the [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace).
 
--   [Logic Apps](https://learn.microsoft.com/en-us/azure/logic-apps/logic-apps-overview) is a serverless pay-per-use consumption service that enables a set of ready-to-use out-of-the-box connectors and a long-running workflow engine to quickly meet cloud-native integration needs. Logic Apps is flexible enough to support scenarios like running tasks or jobs, advanced scheduling, and triggering.
+-   [Logic Apps](/azure/logic-apps/logic-apps-overview) is a serverless pay-per-use consumption service that enables a set of ready-to-use out-of-the-box connectors and a long-running workflow engine to quickly meet cloud-native integration needs. Logic Apps is flexible enough to support scenarios like running tasks or jobs, advanced scheduling, and triggering.
 
 ## Tradeoff
 
@@ -108,6 +103,5 @@ There are many ways to inject asynchronous programming. For HTTP traffic, consid
 
 -   Optimizing workload infrastructure might require rearchitecting your workload.
 
--   Connection pooling could create [pool fragmentation](https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation) and degrade performance.
+-   Connection pooling could create [pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation) and degrade performance.
 
-## 
