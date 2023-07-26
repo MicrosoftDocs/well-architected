@@ -27,6 +27,8 @@
           items:
             - name: Reliability guide
               href: coming-soon.md
+            - name: Regions and availability zones
+              href: regions-availability-zones.md
       - name: Security
         items: 
         - name: Quick links
@@ -299,8 +301,6 @@
         href: ./cross-cutting-guides/implementing-recommendations.md        
       - name: DevSecOps - application
         href: coming-soon.md
-      - name: Regions and availability zones
-        href: regions-availability-zones.md
     - name: Old TOC
       items:
       - name: Overview
