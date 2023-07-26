@@ -33,13 +33,13 @@ Your choice of how you use regions and availability zones affects several of the
 
 Azure's global footprint includes over 60 announced regions. A *region* is a geographic perimeter that contains a set of data centers.
 
+Azure regions have a variety of configurations (also called *region architectures*).
+
 Many Azure regions provide *availability zones*, which are separated groups of data centers. Within a region, each availability zone is close enough together to have very low-latency connections to other availability zones, but they're far enough apart to ensure that they have independent power, cooling, and networking infrastructure. Availability zones are designed so that if one zone has an outage, then regional services, capacity, and high availability are supported by the remaining zones.
 
 The following diagram shows several Azure regions. Regions 1 and 2 support availability zones.
 
 :::image type="content" border="false" source="../_images/regions-availability-zones/regions-availability-zones.png" alt-text="Diagram showing data centers, availability zones and regions":::
-
-For more information, see [What are Azure regions and availability zones?][availability-zones-overview]
 
 If you deploy into an [Azure region that contains availability zones][azure-regions-with-availability-zone-support], then you can use multiple availability zones together to keep separate copies of your application and data within separate physical data centers in a wide metropolitan area.
 
@@ -48,6 +48,10 @@ There are two ways to use availability zones within a solution:
 - **Zone-redundant** resources are spread across multiple availability zones. Microsoft manages spreading requests across zones, and the replication of data across zones, for you. If an outage occurs in a single availability zone, Microsoft manages failover automatically.
 
 Different Azure services support one or both of these approaches. In general, PaaS services support zone-redundant deployments, and IaaS services support zonal deployments. For more information about how Azure services work with availability zones, see [Azure services with availability zone support][azure-services-with-availability-zone-support].
+
+Many regions also have a [*paired region*][azure-region-pairs]. Paired regions support certain types of multi-region deployment approaches. Some newer regions have [multiple availability zones and don't have a paired region][regions-with-availability-zones-and-no-region-pair]. You can still deploy multi-region solutions into these regions, but the approaches you use might be different.
+
+For more information about how Azure uses regions and availability zones, see [What are Azure regions and availability zones?][availability-zones-overview]
 
 ### Identify key business and workload requirements
 
@@ -276,9 +280,13 @@ A multi-region deployment model with synchronous data replication has the follow
 
 ### Region architectures
 
-Azure regions have a variety of configurations (also called *region architectures*). Many regions support [availability zones][azure-regions-with-availability-zone-support]. Many regions have a [*paired region*][azure-region-pairs]. Some newer regions have [multiple availability zones and don't have a paired region][regions-with-availability-zones-and-no-region-pair].
+When you design a multi-region solution, consider whether the Azure regions you plan to use are paired or not.
 
-You can build a multi-region solution even when your region doesn't have a pair. However, the approaches you use to achieve a multi-region architecture might be different. For example, in Azure Storage, you can use geo-redundant storage (GRS) with paired regions. If your chosen region doesn't have a pair, consider using features like Azure Storage [object replication](/azure/storage/blobs/object-replication-overview), or design your application to write to multiple regions.
+You can build a multi-region solution even when the regions aren't paired. However, the approaches you use to achieve a multi-region architecture might be different. For example, in Azure Storage, you can use geo-redundant storage (GRS) with paired regions. If GRS isn't available, consider using features like Azure Storage [object replication](/azure/storage/blobs/object-replication-overview), or design your application to write to multiple regions.
+
+### Combine multi-zone and multi-region approaches
+
+You can also combine multi-zone and multi-region approaches. For example, you might deploy zone-redundant components into each region and also configure replication between the regions. This type of approach can be very complex to configure and it can be costly, but for some solutions provides a very high degree of reliability.
 
 ## Example use cases
 
