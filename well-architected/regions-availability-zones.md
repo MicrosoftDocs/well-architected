@@ -288,7 +288,7 @@ Contoso is a large manufacturing company. They are implementing a line of busine
 
 **Business requirements:** The information that the system manages is difficult to replace, so it's important that data is persisted reliably. Their architects have explained that their recovery point objective (RPO) is zero. Contoso's employees will use this system throughout their workday, so performance is critical to ensure that their team members aren't kept waiting. Cost is also a concern, because the finance team has to pay for this solution themselves.
 
-**Suggested approach:** [Zone-redundant deployment](#zone-redundant-spread-deployment-approach), or [Zone-redundant deployment with backup across regions](#zone-redundant-spread-deployment-with-backup-across-regions)
+**Suggested approach:** [Zone-redundant deployment](#deployment-approach-3-zone-redundant-spread-deployments), or [Zone-redundant deployment with backup across regions](#zone-redundant-spread-deployments-with-backup-across-regions)
 
 ### Internal application
 
@@ -296,7 +296,7 @@ Fourth Coffee is a small business. They're developing a new internal application
 
 **Business requirements:** For this workload, cost efficiency is a primary concern. They've evaluated the business impact of downtime and have decided the application doesn't need to prioritize resiliency or performance. Fourth Coffee accept the risk that an outage in an Azure availability zone or region might mean that their application is temporarily unavailable.
 
-**Suggested approach:** [Non-zonal deployment](#non-zonal-deployments)
+**Suggested approach:** [Non-zonal deployment](#deployment-approach-1-non-zonal-deployments)
 
 ### Legacy application migration
 
@@ -304,7 +304,7 @@ Fabrikam is migrating a legacy application from an on-premises data center into 
 
 **Business requirements:** Fabrikam emphasize the importance of performance for this application. Resiliency is also important, though, and they need the application to continue to work even if an Azure data center has an outage.
 
-**Suggested approach:** [Zonal (pinned) deployment (metro DR)](#zonal-pinned-deployment-approach)
+**Suggested approach:** [Zonal (pinned) deployment (metro DR)](#deployment-approach-2-zonal-pinned-deployments)
 
 ### Healthcare application
 
@@ -312,7 +312,7 @@ Lamna Healthcare Company is implementing a new electronic health record system i
 
 **Business requirements:** Because of the nature of the data that this solution stores, data residency is critically important. Lamna Healthcare Company operates under a strict regulatory framework that mandates that data must remain in a specific location.
 
-**Suggested approach:** [Zone-redundant (spread) deployment](#zone-redundant-spread-deployment-approach), or [Zone-redundant (spread) deployment with backup across regions](#zone-redundant-spread-deployment-with-backup-across-regions)
+**Suggested approach:** [Zone-redundant (spread) deployment](#deployment-approach-3-zone-redundant-spread-deployments), or [Zone-redundant (spread) deployment with backup across regions](#zone-redundant-spread-deployments-with-backup-across-regions)
 
 ### Banking system
 
@@ -320,13 +320,13 @@ Woodgrove Bank runs their core banking operations from a large solution deployed
 
 **Business requirements:** This is a mission-critical system. Any outages can cause major financial impact for customers. As a result, Woodgrove Bank has very low risk tolerance. They need the highest level of reliability possible, and they need to mitigate the risk of any failures that are possible to mitigate.
 
-**Suggested approach:** [Multi-region deployment](#multi-region-deployments).
+**Suggested approach:** [Multi-region deployment](#deployment-approach-4-multi-region-deployments).
 
 ### Software as a service (SaaS)
 
 Proseware, Inc. builds software used by companies across the world. Their user base is widely geographically distributed.
 
-**Suggested approach:** [Multi-region deployment](#multi-region-deployments).
+**Suggested approach:** [Multi-region deployment](#deployment-approach-4-multi-region-deployments).
 
 ## Next steps
 
