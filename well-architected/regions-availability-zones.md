@@ -3,7 +3,7 @@ title: Design your solution to use availability zones and regions
 description: A guide for understanding when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
-ms.date: 07/20/2023
+ms.date: 07/27/2023
 ms.topic: conceptual
 ms.custom:
   - guide
@@ -35,7 +35,9 @@ Azure's global footprint includes over 60 announced regions. A *region* is a geo
 
 Many Azure regions provide *availability zones*, which are separated groups of data centers. Within a region, each availability zone is close enough together to have very low-latency connections to other availability zones, but they're far enough apart to ensure that they have independent power, cooling, and networking infrastructure. Availability zones are designed so that if one zone has an outage, then regional services, capacity, and high availability are supported by the remaining zones.
 
-![Diagram showing data centers, availability zones and regions](/azure/reliability/media/availability-zones.png)
+The following diagram shows several Azure regions. Regions 1 and 2 support availability zones.
+
+:::image type="content" border="false" source="./_images/regions-availability-zones/regions-availability-zones.png" alt-text="Diagram showing data centers, availability zones and regions":::
 
 For more information, see [What are Azure regions and availability zones?][availability-zones-overview]
 
