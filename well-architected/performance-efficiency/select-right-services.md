@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 This guide describes the best practices for selecting the right resources. Resources include infrastructure, Azure services, and SKUs. These three resources are foundational decisions for deploying a workload in Azure. They determine the physical hardware and specifications a workload runs on and where. Failure to select infrastructure, services, and SKUs carefully could cause performance issues and require major rearchitecting efforts in the future.
 
-## Definitions
+## Definitions 
 
 |  Term|                                 Definition|
 |-|-|
