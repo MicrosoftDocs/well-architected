@@ -77,7 +77,7 @@ This guide describes the recommendations for scaling and partitioning. Scaling a
 
     -   [Partitioning Azure Service Fabric](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-azure-service-fabric)
 
-    -   [Partitioning Azure Event Hubs](/architecture/best-practices/data-partitioning-strategies#partitioning-azure-event-hubs)
+    -   [Partitioning Azure Event Hubs](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-azure-event-hubs)
 
 ### Infrastructure and platform
 
@@ -107,7 +107,7 @@ This guide describes the recommendations for scaling and partitioning. Scaling a
 
 **Review your load balancing algorithm.** A load balancing algorithm can cause unintentional and artificial client pinning to a backend instance. Potential causes include enable session affinity or tuple-based hashes without enough request variation.
 
-**Eliminate data locking.** Data locking ensures high consistency but has performance disadvantages. It can cause lock escalations and negatively impact concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency?view=sql-server-ver16). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs. For Azure SQL, you can enable [optimized locking](/sql/relational-databases/performance/optimized-locking) to improve performance on databases that require strong consistency.
+**Eliminate data locking.** Data locking ensures high consistency but has performance disadvantages. It can cause lock escalations and negatively impact concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs. For Azure SQL, you can enable [optimized locking](/sql/relational-databases/performance/optimized-locking) to improve performance on databases that require strong consistency.
 
 **Eliminate server-side session state.** You should design applications to be stateless where possible. For stateful applications, you should use a performant session state store external to your server. It allows you to store session state without state affinity. Externalizing state allows state stores to be sized and scaled independently from any compute.
 
@@ -133,7 +133,7 @@ This guide describes the recommendations for scaling and partitioning. Scaling a
 
 -   Several Azure compute services have an [integrated load balancer](/azure/architecture/guide/technology-choices/compute-decision-tree#scalability) that distributes load with minimal to no configuration required.
 
--   [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview?view=azuresql) is a database engine that can process relational data and nonrelational data. It has an optimized locking feature that improves performance if you need strong consistency.
+-   [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview) is a database engine that can process relational data and nonrelational data. It has an optimized locking feature that improves performance if you need strong consistency.
 
 -   [Azure Cosmos DB](/azure/cosmos-db/introduction) is a database that offers APIs for NoSQL, MongoDB, PostgreSQL, Cassandra, Gremlin, and Table. It has five different consistency levels to choose from.
 
