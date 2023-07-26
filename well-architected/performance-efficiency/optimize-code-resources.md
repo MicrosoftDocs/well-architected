@@ -22,7 +22,6 @@ This guide describes the best practices for optimizing code and resource use. Op
 |  O(N)|                                Big O notation for execution time that increases as the size of the input increases|
 |  O(1)|                                Big O notation for execution time that is constant regardless of the input size.|
 
-
 ## Your responsibility
 
 ### Application
@@ -43,7 +42,7 @@ This guide describes the best practices for optimizing code and resource use. Op
 
 -   **Use object pooling**. Object pooling reuses large objects instead of allocating and deallocating them.
 
-For more information, see [Avoid memory allocations](/dotnet/csharp/advanced-topics/performance/) [and Large object heap (LOH)](/dotnet/standard/garbage-collection/large-object-heap).
+For more information, see [Avoid memory allocations](/dotnet/csharp/advanced-topics/performance/) and [Large object heap (LOH)](/dotnet/standard/garbage-collection/large-object-heap).
 
 **Utilize processor capabilities.** Code should take advantage of the CPU architecture and threading models. 
 
