@@ -16,7 +16,7 @@ categories:
 When you design a solution for Azure, you need to decide whether you deploy across multiple availability zones in a region, or whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the approaches you can consider, the tradeoffs involved in each approach, and the impact of each approach on the core pillars of the Well-Architected Framework.
 
 > [!TIP]
-> For many production customer workloads, a [zone-redundant (spread) deployment](#zone-redundant-spread-deployment-approach) provides the best balance of tradeoffs. This approach can be extended with [asynchronous data backup to another region](#zone-redundant-spread-deployment-with-backup-across-regions).
+> For many production workloads, a [zone-redundant (spread) deployment](#deployment-approach-3-zone-redundant-spread-deployments) provides the best balance of tradeoffs. This approach can be extended with [asynchronous data backup to another region](#zone-redundant-spread-deployments-with-backup-across-regions).
 >
 > Consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
 
@@ -69,7 +69,7 @@ The following table lists a few of the common risks that should be considered in
 | Data center outage | <ul><li>Power, cooling, or network failure across an entire data center</li><li>Natural disaster in one part of a metro area</li></ul> | Infrequent |
 | Region outage | <ul><li>Major natural disaster that affects a wide geographical area</li></ul> | Very infrequent |
 
-Every organization would ideally like to mitigate every possible risk, but it's not practical or cost effective to do so. It's important to have an open discussion with business stakeholders so that you can make an informed decision about the risks you should mitigate.
+It would be ideal to mitigate every possible risk for every workload, but it's not practical or cost effective to do so. It's important to have an open discussion with business stakeholders so that you can make an informed decision about the risks you should mitigate.
 
 > [!TIP]
 > Generally, only customers with mission-critical workloads choose to mitigate risks with low likelihood. For example, banks, governments, and healthcare workloads often need to remain operational in all situations. For other workloads, the organization's risk tolerance usually is higher.
@@ -101,7 +101,7 @@ Suppose you're thinking about deploying a new solution, which includes an applic
 
 There are multiple ways that you can deploy this solution, which each provide a different set of benefits and costs. At a high level, you can consider a *non-zonal*, *zonal (pinned)*, *zone-redundant (spread)*, or *multi-region* deployment. The following table summarizes the approaches you can use and how they affect your architecture:
 
-| Architectural Concern | Non-Zonal | Zonal (Pinned) | Zone-Redundant (Spread) | Multi-Region |
+| Architectural Concern | [Non-Zonal](#deployment-approach-1-non-zonal-deployments) | [Zonal (Pinned)](#deployment-approach-2-zonal-pinned-deployments) | [Zone-Redundant (Spread)](#deployment-approach-3-zone-redundant-spread-deployments) | [Multi-Region](#deployment-approach-4-multi-region-deployments) |
 |-|-|-|-|
 | Reliability | Low Reliability | Depends on Approach | High or Very High Reliability | High or Very High Reliability |
 | Cost Optimization | Low Cost | Depends on Approach | Moderate Cost | High Cost |
@@ -110,7 +110,7 @@ There are multiple ways that you can deploy this solution, which each provide a 
 | Compliance with Data Residency | High | High | High | [Depends on region][azure-region-pairs] |
 | Regional Applicability | All regions | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Depends on region][regions-with-availability-zones-and-no-region-pair] |
 
-### Non-zonal deployments
+## Deployment approach 1: Non-zonal deployments
 
 If you don't use multiple availability zones or regions, then Azure doesn't make any guarantees about whether your resources are deployed into a single data centre or split across multiple data centers in the region.
 
@@ -131,7 +131,7 @@ The single-region deployment model has the following effects on your architectur
 | Compliance with Data Residency | **High.** When you deploy a solution that uses this approach, data is stored in the Azure region you select. |
 | Regional Applicability | **High.** This approach can be used in any Azure region. |
 
-#### Non-zonal deployment with backup across regions
+### Non-zonal deployments with backup across regions
 
 You can extend a non-zonal deployment by performing regular backups of your data to a secondary region. This approach adds an extra layer of protection to mitigate against an outage in your primary region.
 
@@ -151,7 +151,7 @@ When you implement this approach, important to consider your recovery time objec
 | Compliance with Data Residency | **Depends on region selection.** Data is primarily stored in the Azure region you specify. However, you need to select another region to store your backups, so it's important that you select a region that's compatible with your data residency requirements. |
 | Regional Applicability | **High.** This approach can be used in any Azure region. |
 
-### Zonal (pinned) deployment approach
+## Deployment approach 2: Zonal (pinned) deployments
 
 This approach also uses multiple availability zones within a metropolitan area. You specify that a resource should be deployed to a specific availability zone. This is called a *zonal* deployment, or sometimes *zone-pinned* deployment.
 
@@ -174,7 +174,7 @@ A zonal deployment model has the following effects on your architectural concern
 
 This approach is typically used when you deploy virtual machine-based workloads. For a complete list of services that support zonal deployments, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
 
-### Zone-redundant (spread) deployment approach
+## Deployment approach 3: Zone-redundant (spread) deployments
 
 In this approach, your compute tier is spread across multiple availability zones. When requests arrive, a load balancer built into the service (which itself spans availability zones) sends them to instances in any availability zone. If an availability zone has an outage, the load balancer moves the traffic to instances in the healthy availability zones.
 
@@ -197,7 +197,7 @@ A zone-redundant deployment model has the following effects on your architectura
 
 This approach is possible with many Azure services, including virtual machine scale sets, App Service, Azure Functions, AKS, Azure Storage, Azure SQL, Service Bus, and many others. For a complete list of services that support zone redundancy, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
 
-#### Zone-redundant (spread) deployment with backup across regions
+### Zone-redundant (spread) deployments with backup across regions
 
 You can extend a zone-redundant deployment by performing regular backups of your data to a secondary region. This approach gives you the benefits of a zone-redundant approach, with an added layer of protection to mitigate the extremely unlikely event of a full region outage.
 
@@ -220,15 +220,15 @@ When you implement this approach, important to consider your recovery time objec
 | Compliance with Data Residency | **Depends on region selection.** Data is primarily stored in the Azure region you specify. However, you need to select another region to store your backups, so it's important that you select a region that's compatible with your data residency requirements. |
 | Regional Applicability | **Regions with availability zones.** This approach is available in any region that supports [availability zones][azure-regions-with-availability-zone-support]. |
 
-### Multi-region deployments
+## Deployment approach 4: Multi-region deployments
 
 You can use multiple Azure regions together to distribute your solution across a wide geographical area. You can use a multi-region approach to improve your solution's reliability or to support geographically distributed users. However, if data residency is an important concern for your solution, consider whether a multi-region approach will meet your requirements.
 
-#### Active and passive regions
+### Active and passive regions
 
 Multi-region architectures are complex, and there are many different ways you can design a multi-region solution. For some workloads, it makes sense to have multiple regions actively processing requests simultaneously. For other workloads, it's better to designate one *primary region*, and use one or more *secondary regions* for failover purposes. This section focuses on the second scenario, where one region is active and another is passive.
 
-#### Data replication
+### Data replication
 
 Communicating across regions is much slower than communicating within a region. In general, the longer the distance between two regions, the higher the network latency is. See [Azure network round-trip latency statistics][round-trip-latency] for the expected network latency when connecting between two regions. Cross-region network latency can significantly affect how your solution is designed, because you need to carefully consider whether how latency affects data replication and other transactions. For many solutions, a cross-region architecture requires *asynchronous* replication in order to minimize the effect of cross-region traffic on your applications.
 
@@ -266,7 +266,7 @@ A multi-region deployment model with synchronous data replication has the follow
 | Compliance with Data Residency | **Depends on region selection.** This approach requires you to select multiple regions for your workload to run in. It's important that you select regions that are compatible with your data residency requirements. |
 | Regional Applicability | [Some Azure regions][azure-region-pairs] are paired. Select Azure services use paired regions to replicate data automatically. If you run your workload in a [region without a pair][regions-with-availability-zones-and-no-region-pair], you might need to use a [different approach to replicate your data](#region-architectures). |
 
-#### Region architectures
+### Region architectures
 
 Azure regions have a variety of configurations (also called *region architectures*). Many regions support [availability zones][azure-regions-with-availability-zone-support]. Many regions have a [*paired region*][azure-region-pairs]. Some newer regions have [multiple availability zones and don't have a paired region][regions-with-availability-zones-and-no-region-pair].
 
@@ -278,15 +278,15 @@ Azure provides service level agreements (SLAs) for each service. An SLA indicate
 
 Your architectural decisions affect your SLA. In general, the more redundancy you build into your solution, the higher your SLA is likely to be. Many Azure services provide higher SLAs when you deploy services in a zone-redundant or multi-region configuration. Review the SLAs for each of the Azure services you use to ensure that you understand how to maximize the resiliency and SLA of the service.
 
-## Example workloads
+## Example use cases
 
-This section includes describes some common workloads, and the key requirements that each workload typically needs to consider. Based on the requirements and the approaches described in this article, we provide a suggested approach for the workload.
+This section includes describes some common use cases, and the key requirements that each workload typically needs to consider. Based on the requirements and the approaches described in this article, we provide a suggested approach for the workload.
 
 ### Line of business application for an enterprise
 
 Contoso is a large manufacturing company. They are implementing a line of business application to manage aspects of their financial processes.
 
-The information that the system manages is difficult to replace, so it's important that data is persisted reliably. Their architects have explained that their recovery point objective (RPO) is zero. Contoso's employees will use this system throughout their workday, so performance is critical to ensure that their team members aren't kept waiting. Cost is also a concern, because the finance team has to pay for this solution themselves.
+**Business requirements:** The information that the system manages is difficult to replace, so it's important that data is persisted reliably. Their architects have explained that their recovery point objective (RPO) is zero. Contoso's employees will use this system throughout their workday, so performance is critical to ensure that their team members aren't kept waiting. Cost is also a concern, because the finance team has to pay for this solution themselves.
 
 **Suggested approach:** [Zone-redundant deployment](#zone-redundant-spread-deployment-approach), or [Zone-redundant deployment with backup across regions](#zone-redundant-spread-deployment-with-backup-across-regions)
 
@@ -294,7 +294,7 @@ The information that the system manages is difficult to replace, so it's importa
 
 Fourth Coffee is a small business. They're developing a new internal application for their employees to use to submit timesheets.
 
-For this workload, cost efficiency is a primary concern. They've evaluated the business impact of downtime and have decided the application doesn't need to prioritize resiliency or performance. Fourth Coffee accept the risk that an outage in an Azure availability zone or region might mean that their application is temporarily unavailable.
+**Business requirements:** For this workload, cost efficiency is a primary concern. They've evaluated the business impact of downtime and have decided the application doesn't need to prioritize resiliency or performance. Fourth Coffee accept the risk that an outage in an Azure availability zone or region might mean that their application is temporarily unavailable.
 
 **Suggested approach:** [Non-zonal deployment](#non-zonal-deployments)
 
@@ -302,7 +302,7 @@ For this workload, cost efficiency is a primary concern. They've evaluated the b
 
 Fabrikam is migrating a legacy application from an on-premises data center into Azure. The application wasn't designed for a cloud environment, and communication between the application tier and the database is very [chatty](/azure/architecture/antipatterns/chatty-io/).
 
-Fabrikam emphasize the importance of performance for this application. Resiliency is also important, though, and they need the application to continue to work even if an Azure data center has an outage.
+**Business requirements:** Fabrikam emphasize the importance of performance for this application. Resiliency is also important, though, and they need the application to continue to work even if an Azure data center has an outage.
 
 **Suggested approach:** [Zonal (pinned) deployment (metro DR)](#zonal-pinned-deployment-approach)
 
@@ -310,7 +310,7 @@ Fabrikam emphasize the importance of performance for this application. Resilienc
 
 Lamna Healthcare Company is implementing a new electronic health record system in Azure.
 
-Because of the nature of the data that this solution stores, data residency is critically important. Lamna Healthcare Company operates under a strict regulatory framework that mandates that data must remain in a specific location.
+**Business requirements:** Because of the nature of the data that this solution stores, data residency is critically important. Lamna Healthcare Company operates under a strict regulatory framework that mandates that data must remain in a specific location.
 
 **Suggested approach:** [Zone-redundant (spread) deployment](#zone-redundant-spread-deployment-approach), or [Zone-redundant (spread) deployment with backup across regions](#zone-redundant-spread-deployment-with-backup-across-regions)
 
@@ -318,7 +318,7 @@ Because of the nature of the data that this solution stores, data residency is c
 
 Woodgrove Bank runs their core banking operations from a large solution deployed to Azure.
 
-This is a mission-critical system. Any outages can cause major financial impact for customers. As a result, Woodgrove Bank has very low risk tolerance. They need the highest level of reliability possible, and they need to mitigate the risk of any failures that are possible to mitigate.
+**Business requirements:** This is a mission-critical system. Any outages can cause major financial impact for customers. As a result, Woodgrove Bank has very low risk tolerance. They need the highest level of reliability possible, and they need to mitigate the risk of any failures that are possible to mitigate.
 
 **Suggested approach:** [Multi-region deployment](#multi-region-deployments).
 
