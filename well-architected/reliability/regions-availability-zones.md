@@ -72,7 +72,7 @@ It would be ideal to mitigate every possible risk for every workload, but it's n
 
 ##### Resiliency requirements
 
-It's important that you understand your resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you to decide which alternatives to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Target functional and nonfunctional requirements](resiliency/design-requirements.md).
+It's important that you understand your resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you to decide which alternatives to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Target functional and nonfunctional requirements](design-requirements.md).
 
 ##### Service level agreements
 
@@ -105,7 +105,7 @@ Suppose you're thinking about deploying a new solution, which includes an applic
 > [!NOTE]
 > This example isn't specific to any particular Azure services. Instead, it's intended as a simple example to illustrate the fundamental concepts.
 
-There are multiple ways that you can deploy this solution, which each provide a different set of benefits and costs. At a high level, you can consider a *non-zonal*, *zonal (pinned)*, *zone-redundant (spread)*, or *multi-region* deployment. The following table summarizes the approaches you can use and how they affect your architecture:
+There are multiple ways that you can deploy this solution, which each provide a different set of benefits and costs. At a high level, you can consider a *non-zonal*, *zonal (pinned)*, *zone-redundant (spread)*, or *multi-region* deployment. The following table summarizes some of the approaches you can use and how they affect your architecture:
 
 | Architectural Concern | [Non-Zonal](#deployment-approach-1-non-zonal-deployments) | [Zonal (Pinned)](#deployment-approach-2-zonal-pinned-deployments) | [Zone-Redundant (Spread)](#deployment-approach-3-zone-redundant-spread-deployments) | [Multi-Region](#deployment-approach-4-multi-region-deployments) |
 |-|-|-|-|
@@ -115,6 +115,8 @@ There are multiple ways that you can deploy this solution, which each provide a 
 | Operational Excellence | Low Operational Requirements | High Operational Requirements | Low Operational Requirements | High Operational Requirements |
 | Compliance with Data Residency | High | High | High | [Depends on region][azure-region-pairs] |
 | Regional Applicability | All regions | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Depends on region][regions-with-availability-zones-and-no-region-pair] |
+
+The list of approaches provided in this article isn't exhaustive. You might choose to combine multiple approaches together, or use different approaches with different parts of your solution.
 
 ## Deployment approach 1: Non-zonal deployments
 
@@ -345,4 +347,4 @@ Review some of the reference architectures and example scenarios for multi-zone 
 [regions-with-availability-zones-and-no-region-pair]: </azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair>
 [metro-dr]: </azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery>
 [round-trip-latency]: </azure/networking/azure-network-latency>
-[composite-slas]: <resiliency/business-metrics.md#composite-slas>
+[composite-slas]: <business-metrics.md#composite-slas>
