@@ -107,7 +107,7 @@ Metrics and logs are essential for monitoring your workload and resolving perfor
 
 -   Azure Monitor collects platform metrics on [Azure SQL databases](/azure/azure-sql/database/monitoring-sql-database-azure-monitor#collection-and-routing) and [Cosmos DB databases](/azure/cosmos-db/use-metrics).
 
--   Azure SQL databases support includes [query performance insights](/azure/azure-sql/database/query-performance-insight-use?view=azuresql), [automatic query tuning](/azure/azure-sql/database/automatic-tuning-enable?view=azuresql), [database advisor performance recommendations](/azure/azure-sql/database/database-advisor-implement-performance-recommendations?view=azuresql).
+-   Azure SQL databases support includes [query performance insights](/azure/azure-sql/database/query-performance-insight-use), [automatic query tuning](/azure/azure-sql/database/automatic-tuning-enable), [database advisor performance recommendations](/azure/azure-sql/database/database-advisor-implement-performance-recommendations).
 
 -   Cosmos DB allows you to [monitor and tune queries](/azure/cosmos-db/nosql/query-metrics-performance).
 
