@@ -111,7 +111,7 @@ There are multiple ways that you can deploy this solution, which each provide a 
 |-|-|-|-|
 | Reliability | Low Reliability | Depends on Approach | High or Very High Reliability | High or Very High Reliability |
 | Cost Optimization | Low Cost | Depends on Approach | Moderate Cost | High Cost |
-| Performance Efficiency | Acceptable or Low Performance | High Performance | Acceptable or Low Performance | Depends on Approach |
+| Performance Efficiency | Acceptable Performance (for most workloads) | High Performance | Acceptable Performance (for most workloads) | Depends on Approach |
 | Operational Excellence | Low Operational Requirements | High Operational Requirements | Low Operational Requirements | High Operational Requirements |
 | Compliance with Data Residency | High | High | High | [Depends on region][azure-region-pairs] |
 | Regional Applicability | All regions | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Regions with availability zones][azure-regions-with-availability-zone-support] | [Depends on region][regions-with-availability-zones-and-no-region-pair] |
@@ -155,7 +155,7 @@ When you implement this approach, important to consider your recovery time objec
 | Reliability | **Moderate reliability.**  Services are subject to outages if a data center fails. You can restore from a backup into another region if required. |
 | Cost Optimization | **Low cost.** Typically, adding a backup to another region only adds a small amount of extra cost compared to deploying a non-zonal resource. |
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Components aren't guaranteed to be located in the same availablity zone, so highly latency-sensitive components might see lower performance. |
-| Operational Excellence | *During any outage within a region:* **Low operational efficiency** Failover is the customer's responsibility and might require manual operations and redeployment. |
+| Operational Excellence | *During any outage within a region:* **Low operational efficiency.** Failover is the customer's responsibility and might require manual operations and redeployment. |
 | Compliance with Data Residency | **Depends on region selection.** Data is primarily stored in the Azure region you specify. However, you need to select another region to store your backups, so it's important that you select a region that's compatible with your data residency requirements. |
 | Regional Applicability | **High.** This approach can be used in any Azure region. |
 
