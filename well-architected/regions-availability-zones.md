@@ -13,14 +13,23 @@ categories:
 
 # Design your solution to use availability zones and regions
 
-When you design a solution for Azure, you need to decide whether you deploy across multiple availability zones in a region, or whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the approaches you can consider, the tradeoffs involved in each approach, and the impact of each approach on the core pillars of the Well-Architected Framework.
+When you design a solution for Azure, you need to decide whether you deploy across multiple availability zones in a region, or whether you deploy into multiple regions. These decisions affect your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the key business requirements that influence your decision, the approaches you can consider, the tradeoffs involved in each approach, and the impact of each approach on the core pillars of the Well-Architected Framework.
+
+Your choice of how you use regions and availability zones affects several of the pillars of the Well-Architected Framework:
+
+- **Reliability:** Your choice of deployment approach can help you to mitigate different types of risks. In general, by spreading your workload across a more geographically distributed area, you can achieve higher resiliency.
+- **Cost Optimization:** Some architectural approaches require deploying more resources, which often incurs a resource cost. Other approaches involve sending data across geographically separated availability zones or regions, which might incur network traffic charges. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have a more complex architecture.
+- **Performance Efficiency:** Occasionally, workloads can be highly sensitive to network latency. In these workloads, it's important to physically locate the components close together to minimize the latency when they communicate, which typically means deploying into a single availability zone. However, most workloads aren't highly latency sensitive, so this concern doesn't apply.
+- **Operational Excellence:** A complex architecture takes more effort to deploy and manage. Additionally, for a highly available solution you might need to plan how you'll fail over to a secondary set of resources. Failover and failback can be complex, especially when manual steps are required.
 
 > [!TIP]
 > For many production workloads, a [zone-redundant (spread) deployment](#deployment-approach-3-zone-redundant-spread-deployments) provides the best balance of tradeoffs. This approach can be extended with [asynchronous data backup to another region](#zone-redundant-spread-deployments-with-backup-across-regions).
 >
 > Consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
 
-## Regions and availability zones
+## Your responsibility
+
+### Understand Azure regions and availability zones
 
 Azure's global footprint includes over 60 announced regions. A *region* is a geographic perimeter that contains a set of data centers.
 
@@ -38,26 +47,11 @@ There are two ways to use availability zones within a solution:
 
 Different Azure services support one or both of these approaches. In general, PaaS services support zone-redundant deployments, and IaaS services support zonal deployments. For more information about how Azure services work with availability zones, see [Azure services with availability zone support][azure-services-with-availability-zone-support].
 
-## How to select a deployment approach
-
-Most solutions can be designed in many different ways. Each approach has advantages and disadvantages. You can only make an informed decision about which deployment approach best fits your needs if you understand all of the following elements:
-
-- Your business and workload requirements.
-- The deployment approaches that are available, and how they work.
-- The tradeoffs involved in each approach.
-
-Your choice of how you use regions and availability zones affects several of the pillars of the Well-Architected Framework:
-
-- **Reliability:** Your choice of deployment approach can help you to mitigate different types of risks. In general, by spreading your workload across a more geographically distributed area, you can achieve higher resiliency.
-- **Cost Optimization:** Some architectural approaches require deploying more resources, which often incurs a resource cost. Other approaches involve sending data across geographically separated availability zones or regions, which might incur network traffic charges. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have a more complex architecture.
-- **Performance Efficiency:** Occasionally, workloads can be highly sensitive to network latency. In these workloads, it's important to physically locate the components close together to minimize the latency when they communicate, which typically means deploying into a single availability zone. However, most workloads aren't highly latency sensitive, so this concern doesn't apply.
-- **Operational Excellence:** A complex architecture takes more effort to deploy and manage. Additionally, for a highly available solution you might need to plan how you'll fail over to a secondary set of resources. Failover and failback can be complex, especially when manual steps are required.
-
-## Key business and workload requirements
+### Identify key business and workload requirements
 
 To make an informed decision about which approach works for your solution, you need to understand your requirements. These requirements should be driven by discussions between solution designers and business stakeholders.
 
-### Risk tolerance
+##### Risk tolerance
 
 Different organizations have different risk appetites. Even within an organization, risk tolerance is often different for each workload. Most workloads don't need extreme high availability. But some workloads are so important that it's worth even mitigating risks that are unlikely to occur, like major natural disasters occurring across a wide geographic area.
 
@@ -74,23 +68,33 @@ It would be ideal to mitigate every possible risk for every workload, but it's n
 > [!TIP]
 > Generally, only customers with mission-critical workloads choose to mitigate risks with low likelihood. For example, banks, governments, and healthcare workloads often need to remain operational in all situations. For other workloads, the organization's risk tolerance usually is higher.
 
-### Resiliency requirements
+##### Resiliency requirements
 
 It's important that you understand your resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you to decide which alternatives to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Target functional and nonfunctional requirements](resiliency/design-requirements.md).
 
-### User location
+##### Service level agreements
+
+You should understand your solution's expected uptime service level agreement (SLA). For example, you might have a business requirement for your solution to meet 99.9% uptime.
+
+Azure provides service level agreements (SLAs) for each service. An SLA indicates the level of uptime you should expect from the service, and the conditions you need to meet to achieve that expected SLA.
+
+Your architectural decisions affect your solution's [composite SLA][composite-slas]. In general, the more redundancy you build into your solution, the higher your SLA is likely to be. Many Azure services provide higher SLAs when you deploy services in a zone-redundant or multi-region configuration. Review the SLAs for each of the Azure services you use to ensure that you understand how to maximize the resiliency and SLA of the service.
+
+##### User location
 
 If your users are geographically dispersed, it might make sense to deploy your workload across multiple regions. If your users are in one area, a single-region deployment can simplify your operational requirements and reduce your costs.
 
-### Budget
+##### Budget
 
 If you operate under a constrained budget, it's important to consider the costs involved in redundant workload components. These costs can include additional resource charges, networking costs, and operational costs to manage more resources and a more complex environment. 
 
-### Complexity
+##### Complexity
 
 It's a good practice to avoid unnecessary complexity in your solution architecture. The more complexity you introduce, the harder it is to reason about your architecture. Complex architectures are harder to operate, harder to secure, and are often less performant.
 
-## Deployment approaches
+## How Azure facilitates your decisions
+
+By providing regions and availability zones, Azure enables you to select a deployment approach that fits your needs.
 
 Suppose you're thinking about deploying a new solution, which includes an application that writes data to some sort of storage.
 
@@ -272,12 +276,6 @@ Azure regions have a variety of configurations (also called *region architecture
 
 You can build a multi-region solution even when your region doesn't have a pair. However, the approaches you use to achieve a multi-region architecture might be different. For example, in Azure Storage, you can use geo-redundant storage (GRS) with paired regions. If your chosen region doesn't have a pair, consider using features like Azure Storage [object replication](/azure/storage/blobs/object-replication-overview), or design your application to write to multiple regions.
 
-## Effects on service level agreements (SLAs)
-
-Azure provides service level agreements (SLAs) for each service. An SLA indicates the level of uptime you should expect from the service, and the conditions you need to meet to achieve that expected SLA.
-
-Your architectural decisions affect your SLA. In general, the more redundancy you build into your solution, the higher your SLA is likely to be. Many Azure services provide higher SLAs when you deploy services in a zone-redundant or multi-region configuration. Review the SLAs for each of the Azure services you use to ensure that you understand how to maximize the resiliency and SLA of the service.
-
 ## Example use cases
 
 This section includes describes some common use cases, and the key requirements that each workload typically needs to consider. Based on the requirements and the approaches described in this article, we provide a suggested approach for the workload.
@@ -328,7 +326,7 @@ Proseware, Inc. builds software used by companies across the world. Their user b
 
 **Suggested approach:** [Multi-region deployment](#deployment-approach-4-multi-region-deployments).
 
-## Next steps
+## Related links
 
 Review some of the reference architectures and example scenarios for multi-zone and multi-region solutions:
 - [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant)
@@ -345,3 +343,4 @@ Review some of the reference architectures and example scenarios for multi-zone 
 [regions-with-availability-zones-and-no-region-pair]: </azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair>
 [metro-dr]: </azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery>
 [round-trip-latency]: </azure/networking/azure-network-latency>
+[composite-slas]: <resiliency/business-metrics.md#composite-slas>
