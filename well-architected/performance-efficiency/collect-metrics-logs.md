@@ -12,6 +12,7 @@ ms.topic: conceptual
 Metrics and logs are essential for monitoring your workload and resolving performance issues fast. Without the right metrics and logs, you lose visibility into the use and performance of a workload. A loss of visibility makes troubleshooting, remediation, and tuning more difficult.
 
 ## Definitions
+
 |  Term|                                            Definition|
 |-|-|
   |Platform metrics                |                Metrics are numerical values that record workload behavior at a particular time.|
@@ -104,7 +105,7 @@ Metrics and logs are essential for monitoring your workload and resolving perfor
 
 -   Azure services may also implement custom monitoring solutions that capture performance data. For example, Network Watcher has a traffic analytics feature, and Azure Virtual Machines offers boot diagnostics. You need to understand the available tooling for each Azure service.
 
--   Azure Monitor collects platform metrics on [Azure SQL databases](/azure/azure-sql/database/monitoring-sql-database-azure-monitor?view=azuresql#collection-and-routing) and [Cosmos DB databases](/azure/cosmos-db/use-metrics).
+-   Azure Monitor collects platform metrics on [Azure SQL databases](/azure/azure-sql/database/monitoring-sql-database-azure-monitor#collection-and-routing) and [Cosmos DB databases](/azure/cosmos-db/use-metrics).
 
 -   Azure SQL databases support includes [query performance insights](/azure/azure-sql/database/query-performance-insight-use?view=azuresql), [automatic query tuning](/azure/azure-sql/database/automatic-tuning-enable?view=azuresql), [database advisor performance recommendations](/azure/azure-sql/database/database-advisor-implement-performance-recommendations?view=azuresql).
 
