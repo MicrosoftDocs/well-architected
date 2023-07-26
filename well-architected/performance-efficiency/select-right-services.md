@@ -35,7 +35,7 @@ This guide describes the best practices for selecting the right resources. Resou
 
 **Consider service limits when selecting services.** Azure services and SKUs have capacity limits. When workload resources or data hits hard service limits, it requires rearchitecting or migrating your workload to a different solution. To avoid hitting those limits, you should pick resources that allow you to grow.
 
-**Consider service limits when architecting workloads.** Some Azure resources have rate limits and enforce request throttling**.** These restrictions can limit your performance throughput. Sometimes you can pick an alternative service to mitigate the restrictions. Other times, you need to architect around these limitations. For example, Key Vault has [transaction rate limits](/azure/key-vault/general/service-limits) that restrict the number of concurrent calls it can receive. It returns an HTTP status code 429 when you [exceed its threshold](/azure/key-vault/general/overview-throttling). Based on the service limits, you shouldn't put Key Vault in the HTTP request flow.
+**Consider service limits when architecting workloads.** Some Azure resources have rate limits and enforce request throttling. These restrictions can limit your performance throughput. Sometimes you can pick an alternative service to mitigate the restrictions. Other times, you need to architect around these limitations. For example, Key Vault has [transaction rate limits](/azure/key-vault/general/service-limits) that restrict the number of concurrent calls it can receive. It returns an HTTP status code 429 when you [exceed its threshold](/azure/key-vault/general/overview-throttling). Based on the service limits, you shouldn't put Key Vault in the HTTP request flow.
 
 **Know organizational restrictions.** Your organization might have a limited list of services they allow you to deploy. You need to be aware of these restrictions before you design a solution.
 
@@ -47,7 +47,7 @@ This guide describes the best practices for selecting the right resources. Resou
 
 ### Infrastructure selection
 
-**Consider available services.** Different regions in Azure have different features available. These features include the number of availability zones, Azure services, SKUs, and customer base. You need to ensure a region meets workload performance needs across these features. You can relocate resources in Azure. Over time, you might want to move your workload or a portion of it to maximize performance. For more information, see [Choose the Right Azure Region](/explore/global-infrastructure/geographies/#overview) and Azure Products by Region.
+**Consider available services.** Different regions in Azure have different features available. These features include the number of availability zones, Azure services, SKUs, and customer base. You need to ensure a region meets workload performance needs across these features. You can relocate resources in Azure. Over time, you might want to move your workload or a portion of it to maximize performance. For more information, see [Choose the Right Azure Region](https://azure.microsoft.com/explore/global-infrastructure/geographies/#overview) and Azure Products by Region.
 
 **Consider latency.** Communicating across regions adds latency to a workload. You should place workload components that communicate frequently in the same region. This can also be a factor across availability zones in latency-sensitive workloads.
 
