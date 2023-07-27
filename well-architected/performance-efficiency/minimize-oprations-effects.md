@@ -49,8 +49,6 @@ This guide describes the best practices for minimizing the effects of operations
 
 ### Application
 
-### 
-
 **Optimize monitoring and debugging.** Excessive or poorly implemented logging, telemetry, instrumentation, and distributed tracing capture and collection can affect performance. Likewise, convenience features such as remote debugging can also impact performance. You need to measure and know their performance effects on the environment. You don\'t want these processes to degrade performance. You should configure or disable any processes whose performance affects outweigh their benefits.
 
 ## Azure facilitation
@@ -65,7 +63,7 @@ This guide describes the best practices for minimizing the effects of operations
 
 -   Azure Front Door and Traffic Manager allow you to a implement [blue-green deployment strategy](/azure/architecture/guide/aks/blue-green-deployment-for-aks).
 
--   [Azure SQL Database](/azure/azure-sql/database/automated-backups-overview?view=azuresql) automatically takes full backups, differential backups, and transaction log backups.
+-   [Azure SQL Database](/azure/azure-sql/database/automated-backups-overview) automatically takes full backups, differential backups, and transaction log backups.
 
 -   [Azure Cosmos DB](/azure/cosmos-db/online-backup-and-restore) automatically takes backups of your data at regular intervals. The automatic backups are taken without affecting the performance or availability of the database operations. Cosmos DB stores the backups in a separate storage service. 
 
