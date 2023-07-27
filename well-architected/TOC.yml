@@ -85,7 +85,7 @@
           href: performance-efficiency/checklist.md
         - name: Best practices guides   
           items:
-            - name: Establish erformance targets (PE 01)
+            - name: Establish performance targets (PE 01)
               href: performance-efficiency/performance-targets.md
             - name: Conduct capacity planning (PE 02)
               href: performance-efficiency/capacity-planning.md
