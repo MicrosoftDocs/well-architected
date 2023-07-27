@@ -92,7 +92,7 @@ Explore the following table of recommendations to optimize your virtual machine 
 
 For more suggestions, see [Principles of the security pillar](/azure/architecture/framework/security/security-principles).
 
-Azure Advisor helps you ensure and improve security. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Security).
+Azure Advisor helps you ensure and improve security. Review the [security recommendations](/azure/advisor/advisor-security-recommendations).
 
 ### Policy definitions
 
@@ -144,7 +144,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 |Prepay for added cost savings | Purchasing [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
 | Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
 
- Azure Advisor helps you ensure and improve cost optimization. Review the [recommendations](https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/Cost).
+ Azure Advisor helps you ensure and improve cost optimization. Review the [cost recommendations](/azure/advisor/advisor-cost-recommendations).
 
 ### Policy definitions
 
