@@ -15,13 +15,12 @@ Every system has a limit on how much it can be scaled without redesigning, intro
 
 ||  Code|        Recommendation|
 |-|-|-|
-|:black_square_button|PE: 01| **Define performance targets.** Performance targets are numerical values that derive from your requirements. Performance targets should exist for all workload flows.|
-|:black_square_button|PE: 02|      **Conduct formal capacity planning.** Capacity planning should occur before predicted changes in usage patterns such as seasonal variations, product updates, marketing campaigns, special events, and regulatory changes.|
-|:black_square_button|  PE: 03|      **Select the right infrastructure, resources, and SKUs.** The selections must support your ability to reach the workload's performance targets. The selections should also weigh the benefits of using platform features or building a custom implementation.|
-|:black_square_button|  PE: 04 |     **Collect performance metrics and logs.** Data collection should be on workload components and flows. It should be automatic, continuous, and meaningful. The data should support the workload health model.|
-|:black_square_button|  PE: 05  |    **Implement reliable scaling and partitioning**. Scaling and partitioning should be reliable and controlled. The scale unit design of the workload should be the basis of the scaling and partitioning strategy.
-
-  |:black_square_button|PE: 06     | **Test the** **workload.** Testing should be regular and performed in an environment that matches the production environment. Results should be compared against performance targets and the performance benchmark.|
+|:black_square_button:|PE: 01| **Define performance targets.** Performance targets are numerical values that derive from your requirements. Performance targets should exist for all workload flows.|
+|:black_square_button:|PE: 02|      **Conduct formal capacity planning.** Capacity planning should occur before predicted changes in usage patterns such as seasonal variations, product updates, marketing campaigns, special events, and regulatory changes.|
+|:black_square_button:|  PE: 03|      **Select the right infrastructure, resources, and SKUs.** The selections must support your ability to reach the workload's performance targets. The selections should also weigh the benefits of using platform features or building a custom implementation.|
+|:black_square_button:|  PE: 04 |     **Collect performance metrics and logs.** Data collection should be on workload components and flows. It should be automatic, continuous, and meaningful. The data should support the workload health model.|
+|:black_square_button:|  PE: 05  |    **Implement reliable scaling and partitioning**. Scaling and partitioning should be reliable and controlled. The scale unit design of the workload should be the basis of the scaling and partitioning strategy.|
+  |:black_square_button:|PE: 06     | **Test the** **workload.** Testing should be regular and performed in an environment that matches the production environment. Results should be compared against performance targets and the performance benchmark.|
 
   PE: 07      **Optimize code and resource use.** Code should be performant, and it should offload responsibilities to the platform. Code and infrastructure should only be used for their core purpose and only when necessary.
 
