@@ -37,7 +37,7 @@ Technical debt, unclear code, overly complex implementations can make performanc
 
 **Optimize database queries.** Poorly written SQL statements can degrade database performance. Inefficient JOIN conditions can cause unneeded data processing. Complex subqueries, nested queries, and excessive functions can cause slow execution. Queries that retrieve too much data should be rewritten. You should identify your most common or critical database queries and optimize them. The optimization helps ensure faster query execution.
 
-**Maintain indexes.** Database indexes help accelerate data retrieval operations. For relational databases, you need to monitor index fragmentation. You should rebuild or reorganize indexes on a regular basis. For non-relational databases, you need to pick the correct indexing policy for your workload. For more information, see [Maintaining indexes to improve performance](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes?view=sql-server-ver16).
+**Maintain indexes.** Database indexes help accelerate data retrieval operations. For relational databases, you need to monitor index fragmentation. You should rebuild or reorganize indexes on a regular basis. For non-relational databases, you need to pick the correct indexing policy for your workload. For more information, see [Maintaining indexes to improve performance](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
 **Maximize platform features and tooling.** Many platform features and tooling can surface performance recommendations based on the actual usage. Understanding the full capabilities of your hosting platform or insights tooling is critical. You can't maximize their benefits until you know how to use them. You should enable and use any automation feature they provide while customizing them to fit your needs as they evolve. Regular updates are essential to getting the best recommendations and insights from third-party tools. You should capture and evaluate performance signals from your platform and tools.
 
@@ -51,9 +51,9 @@ Technical debt, unclear code, overly complex implementations can make performanc
 
 -   Azure Advisor provides automatic [performance recommendations](/azure/advisor/advisor-performance-recommendations) based on workload telemetry. You should review and address these recommendations regularly.
 
--   Azure SQL Database has an [automatic tuning](/azure/azure-sql/database/automatic-tuning-overview?view=azuresql-mi) feature that continuously monitors and improves queries. You should use this features to improve SQL queries automatically.
+-   Azure SQL Database has an [automatic tuning](/azure/azure-sql/database/automatic-tuning-overview) feature that continuously monitors and improves queries. You should use this features to improve SQL queries automatically.
 
--   The SQL family of products has a number of [built-in features](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes?view=sql-server-ver16) that allow you to monitor and remediate SQL database performance. You should use these features to maintain database performance.
+-   The SQL family of products has a number of [built-in features](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes) that allow you to monitor and remediate SQL database performance. You should use these features to maintain database performance.
 
 -   Azure Cosmos DB has features that allows you to [customize your indexing policies](/azure/cosmos-db/index-policy). You should customize the policies to meet the performance needs of your workload.
 
