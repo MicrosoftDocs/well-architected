@@ -63,6 +63,6 @@ Use this checklist to review your application architecture from a performance de
 
 *Appendix*
 
-![](./media/image1.png)
+![Diagram that shows categories in the performance efficiency pillar.](./media/performance-efficiency-categories.png) 
 
-![A picture containing text, screenshot, font, design Description automatically generated](./media/image3.png) 
+![Diagram that describes how to overcome quality inhibitors.](./media/overcome-quality-inhibitors-performance.png) 
