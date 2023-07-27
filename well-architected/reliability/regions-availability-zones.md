@@ -31,23 +31,23 @@ Your choice of how you use regions and availability zones affects several of the
 
 | Term | Definition |
 |-|-|
-| Region | TODO |
-| Data center | TODO |
-| Availability zone | TODO |
-| Paired regions | TODO |
-| Region architecture | TODO |
-| Non-zonal | TODO |
-| Zonal (pinned) | TODO |
-| Zone redundancy (spread) | TODO |
-| Multi-region | TODO |
-| Asynchronous replication | TODO |
-| Synchronous replication | TODO |
+| Region | A geographic perimeter that contains a set of data centers. |
+| Data center | A facility that contains servers, networking equipment, and other hardware to support Azure resources and workloads. |
+| Availability zone | Separated groups of data centers within a region. Availability zones are independent from each other. Many regions support availability zones. |
+| Paired regions | Some Azure regions paired with other regions to enable specific types of multi-region solutions. Newer Azure regions aren't paired. |
+| Region architecture | The specific configuration of the Azure region, including the number of availability zones (if any) and whether the region is paired with another region. |
+| Non-zonal | A deployment model where a resource is deployed without reference to an availability zone. In a region that supports availability zones, the resource might be deployed anywhere within the region. |
+| Zonal (pinned) | A deployment model where a resource is deployed into a specific availability zone. |
+| Zone redundancy (spread) | A deployment model where a resource is deployed across multiple availability zones, and Microsoft manages data synchronization, traffic distribution, and failover in the event of a zone outage. |
+| Multi-region | A deployment model where resources are deployed into multiple Azure regions. |
+| Asynchronous replication | A data replication approach where data is written to one place. At a later time, the changes are replicated to another place. |
+| Synchronous replication | A data replication approach where data is written to multiple places, which must each acknowledge completion of the write operation before the overall write is considered to be completed. |
 
 ## Your responsibility
 
 ### Understand Azure regions and availability zones
 
-Azure's global footprint includes over 60 announced regions. A *region* is a geographic perimeter that contains a set of data centers.
+Azure's has a large global footprint. An Azure *region* is a geographic perimeter that contains a set of data centers.
 
 Azure regions have a variety of configurations (also called *region architectures*).
 
