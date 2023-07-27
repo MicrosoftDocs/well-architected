@@ -27,6 +27,22 @@ Your choice of how you use regions and availability zones affects several of the
 >
 > Consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
 
+## Definitions
+
+| Term | Definition |
+|-|-|
+| Region | TODO |
+| Data center | TODO |
+| Availability zone | TODO |
+| Paired regions | TODO |
+| Region architecture | TODO |
+| Non-zonal | TODO |
+| Zonal (pinned) | TODO |
+| Zone redundancy (spread) | TODO |
+| Multi-region | TODO |
+| Asynchronous replication | TODO |
+| Synchronous replication | TODO |
+
 ## Your responsibility
 
 ### Understand Azure regions and availability zones
