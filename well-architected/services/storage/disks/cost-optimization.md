@@ -65,7 +65,7 @@ Consider the following recommendations to optimize costs when configuring your A
 |Use bursting for P20 and lower disks for workloads, such as batch jobs, workloads, which handle traffic spikes, and to improve OS boot time.|Azure Disks offer various SKUs and sizes to satisfy different workload requirements. Some of the more recent features could help further optimize cost performance of existing disk use cases. You can use disk bursting for Premium (disks P20 and lower). Example scenarios that could benefit from this feature include: <br> - Improving OS boot time <br> - Handling batch jobs <br> - Handling traffic spikes|
 |Consider using Premium disks (P30 and greater).|Premium Disks (P30 and greater) can be reserved (one or three years) at a discounted price.|
 |Optimize with managed disks.| Determine your performance needs in combination with your storage capacity needs, accounting for fluctuating workload patterns. Knowing your needs allows you to determine what disk type and disk size you need. Some higher performance disk types offer extra cost optimization features and strategies.|
-|Consider locally attached NVMe or similar devices for OS disks.|The VHD can be locally attached NVMe or similar devices available on many VM SKUs. OS disks provide top-tier performance at no extra cost, but come with the significant drawbacks of being non-persistent, having limited capacity, and being restricted to OS and temp disk use only.|
+|Consider Ephemeral OS disks.| Ephemeral OS disks provide top-tier performance at no extra cost, but are non-persistent, have limited capacity, and are restricted to OS and temp disk use only.|
 
 ## Next step
 
