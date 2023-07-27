@@ -71,12 +71,12 @@ As you make design choices for virtual machines, review the [security principles
 As you make design choices for your virtual machine deployment, review the [design principles](/azure/architecture/framework/security/security-principles) for security.
 
 > [!div class="checklist"]
-> - Review the [Linux security baseline](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline)
-> - Review the [Windows security baseline](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline)
+> - Review the [Linux security baseline](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline).
+> - Review the [Windows security baseline](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline).
 > - Manage authentication and access control.
-> - Protect against malware
-> - Managed updates
-> - Encryption
+> - Protect against malicious actor scenarios.
+> - Plan and implement managed updates.
+> - Classify and configure encryption.
 
 ### Recommendations
 
@@ -128,7 +128,7 @@ To estimate costs related to virtual machines, use these tools.
 > - For other disk types, size your disks to achieve your desired performance without the need for over-provisioning. Account for fluctuating workload patterns, and minimizing unused provisioned capacity.
 > - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
 > - Prepay for [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) or an [Azure savings plan for compute](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#benefits-and-features) for significant savings.
-> - Use hybrid benefit licensing
+> - Use hybrid benefit licensing.
 
 ### Recommendations
 
