@@ -92,7 +92,7 @@ When implementing a health model it's important to define the health of individu
 
 ![Mission-critical example health definitions](./images/mission-critical-example-health-definitions.png "Mission-critical example health definitions")
 
-This definition of health can subsequently be represented by a KQL query, as demonstrated by the example AKS query below that aggregates InsightsMetrics (AKS Container insights) and AzureMetrics (Azure diagnostics) and compares (inner join) against modeled health thresholds.
+This definition of health can subsequently be represented by a KQL query, as demonstrated by the example query below that aggregates InsightsMetrics (Container insights) and AzureMetrics (diagnostics setting for AKS cluster) and compares (inner join) against modeled health thresholds.
 
 ``` kql
 // ClusterHealthStatus
@@ -146,7 +146,7 @@ This image shows an example layered health model from the Azure Mission-Critical
 
 Many operational datasets must be gathered from all system components to accurately represent a defined heath model, considering logs and metrics from both application components and underlying Azure resources. This vast amount of data ultimately needs to be stored in a format that allows for near-real time interpretation to facilitate swift operational action. Moreover, correlation across all encompassed data sets is required to ensure effective analysis is unbounded, allowing for the layered representation of health.
 
-A unified data sink is required to ensure all operational data is swiftly stored and made available for correlated analysis to build a 'single pane' representation of application health. Azure provides several different operational technologies under the umbrella of [Azure Monitor](/azure/azure-monitor/overview#overview), and Azure Monitor Log Analytics serves as the core Azure-native data sink to store and analyze operational data.
+A unified data sink is required to ensure all operational data is swiftly stored and made available for correlated analysis to build a 'single pane' representation of application health. Azure provides several different operational technologies under the umbrella of [Azure Monitor](/azure/azure-monitor/overview#overview), and the Log Analytics workspace serves as the core Azure-native data sink to store and analyze operational data.
 
 ![Mission Critical Health Data Collection](./images/mission-critical-health-data-collection.png "Mission Critical Health Data Collection")
 
@@ -154,38 +154,40 @@ A unified data sink is required to ensure all operational data is swiftly stored
 
 **Azure Monitor**
 
-- Azure Monitor is enabled by default for all Azure subscriptions, but Azure Monitor for Logs (Log Analytics) and Azure Application Insights resources must be deployed and configured to incorporate data collection and querying capabilities.
+- Azure Monitor is enabled by default for all Azure subscriptions, but Azure Monitor Logs (Log Analytics workspace) and Application Insights resources must be deployed and configured to incorporate data collection and querying capabilities.
 
 - Azure Monitor supports three types of observability data: logs, metrics, and distributed traces.
-  - Logs are stored in Azure Monitor Logs  workspaces based on [Azure Data Explorer](/azure/data-explorer/). Log queries are stored in query packs that can be shared across subscriptions, and are used to drive observability components such as dashboards, workbooks, or other reporting and visualization tools.
-  - Metrics are stored in an internal time-series diagnostic service database. For most Azure resources, the retention period is [retained](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics) for 93 days. Metric collection is configured through resource Diagnostic settings.
+  - Logs are stored in Log Analytics workspaces, which is based on [Azure Data Explorer](/azure/data-explorer/). Log queries are stored in query packs that can be shared across subscriptions, and are used to drive observability components such as dashboards, workbooks, or other reporting and visualization tools.
+  - Metrics are stored in an internal time-series database. For most Azure resources, metrics are automatically collected and [retained](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics) for 93 days. Metric data can also be sent to the Analytics workspace using a [diagnostic setting](/azure/azure-monitor/essentials/diagnostic-settings) for the resource.
 
 - All Azure resources expose logs and metrics, but resources must be appropriately configured to route diagnostic data to your desired data sink.
 
 >[!TIP]
-> Azure provides various [Built-In Policies](/azure/azure-monitor/policy-reference) that can be applied to ensure deployed resources are configured to send logs and metrics to an Azure Monitor instance.
+> Azure provides various [Built-In Policies](/azure/azure-monitor/policy-reference) that can be applied to ensure deployed resources are configured to send logs and metrics to a Log Analytics workspace.
 
 - It's not uncommon for regulatory controls to require operational data remains within originating geographies or countries/regions.  Regulatory requirements may stipulate the retention of critical data types for an extended period of time. For example, in regulated banking, audit data must be retained for at least seven years.
 
 - Different operational data types may require different retention periods. For example, security logs may need to be retained for a long period, while performance data is unlikely to require long-term retention outside the context of AIOps.
 
-- Data can be [exported](/azure/azure-monitor/logs/logs-data-export?tabs=portal) from Log Analytics Workspaces for long term retention and/or auditing purposes.
+- Data can be [archived](/azure/azure-monitor/logs/data-retention-archive) or [exported](/azure/azure-monitor/logs/logs-data-export) from Log Analytics workspaces for long term retention and/or auditing purposes.
 
-- [Azure Monitor Logs Dedicated Clusters](/azure/azure-monitor/logs/logs-dedicated-clusters) provides a deployment option that enables Availability Zones for protection from zonal failures in supported Azure regions. Dedicated Clusters require a minimum daily data ingest commitment.
+- [Dedicated Clusters](/azure/azure-monitor/logs/logs-dedicated-clusters) provide a deployment option that enables Availability Zones for protection from zonal failures in supported Azure regions. Dedicated Clusters require a minimum daily data ingest commitment.
 
-- Azure Monitor for Logs resources, including underlying log and metrics storage, are deployed into a specified Azure region.
+- Log Analytics workspaces are deployed into a specified Azure region.
 
-- To protect against loss of data from unavailability of an Azure Monitor for Logs workspace, resources can be configured with multiple Diagnostics configurations. Each Diagnostic configuration can target metrics and logs at a separate Azure Monitor for Log workspace.
-  - Each additional Azure Monitor for Logs workspace will incur extra costs.
-  - The redundant Azure Monitor for Logs workspaces can be deployed into the same Azure region, or into separate Azure regions for additional regional redundancy.
-  - Sending logs and metrics from an Azure resource to an Azure Monitor for Logs workspace in a different region will incur inter-region data egress costs.
+- To protect against loss of data from unavailability of a Log Analytics workspace, resources can be configured with multiple diagnostic settings. Each diagnostic setting can send metrics and logs at a separate Log Analytics workspace.
+  - Data sent to each additional Log Analytics workspace will incur extra costs.
+  - The redundant Log Analytics workspace can be deployed into the same Azure region, or into separate Azure regions for additional regional redundancy.
+  - Sending logs and metrics from an Azure resource to an Log Analytics workspace in a different region will incur inter-region data egress costs.
   - Some Azure resources require an Azure Monitor for Logs workspace within the same region as the resource itself.
+  - See [Best practices for Azure Monitor Logs](/azure/azure-monitor/best-practices-logs#reliability) for further availability options for the Log Analytics workspace.
 
-- Azure Monitor Logs workspace data [can be exported to Azure Storage or Azure Event Hubs on a continuous, scheduled, or one-time basis](/azure/azure-monitor/logs/logs-data-export).
+- Log Analytics workspace data [can be exported to Azure Storage or Azure Event Hubs on a continuous, scheduled, or one-time basis](/azure/azure-monitor/logs/logs-data-export).
   - Data export allows for long-term data archiving and protects against possible operational data loss due to unavailability.
   - Available export destinations are Azure Storage or Azure Event Hubs. Azure Storage can be configured for different [redundancy levels](/azure/storage/common/storage-redundancy) including zonal or regional. Data export to Azure Storage stores the data within .json files.
-  - Data export destinations must be within the same Azure region as the Azure Monitor Logs workspace. An event hub data export destination to be within the same region as the Azure Monitor Logs workspace. Azure Event Hubs geo-disaster recovery isn't applicable for this scenario.
-  - There are several [data export limitations](/azure/azure-monitor/logs/logs-data-export?tabs=portal#limitations). Only specific Azure Monitor Logs [tables are supported](/azure/azure-monitor/logs/logs-data-export#supported-tables) for data export.
+  - Data export destinations must be within the same Azure region as the Log Analytics workspace. An event hub data export destination to be within the same region as the Azure Monitor Logs workspace. Azure Event Hubs geo-disaster recovery isn't applicable for this scenario.
+  - There are several [data export limitations](/azure/azure-monitor/logs/logs-data-export#limitations). Only specific [tables in the workspace are supported](/azure/azure-monitor/logs/logs-data-export#supported-tables) for data export.
+  - [Archiving](/azure/azure-monitor/logs/data-retention-archive) can be used to store data in a Log Analytics workspace for long-term retention at a reduced cost without exporting it.
 
 - Azure Monitor Logs has [user query throttling limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#user-query-throttling), which may appear as reduced availability to clients, such as observability dashboards.
   - Five concurrent queries per user: if five queries are already running, additional queries are placed in a per-user concurrency queue until a running query ends.
@@ -193,59 +195,59 @@ A unified data sink is required to ensure all operational data is swiftly stored
   - Concurrency queue depth limit: the concurrency queue is limited to 200 queries, and additional queries will be rejected with a 429 error code.
   - Query rate limit: there's a per-user limit of 200 queries per 30 seconds across all workspaces.
 
-- [Query Packs](/azure/azure-monitor/logs/query-packs) are Azure Resource Manager resources, which can be used to protect and recover Azure Monitor Logs queries if Azure Monitor Logs workspace is unavailable.
-  - Query Packs contain queries as JSON and can be stored external to Azure similar to other infrastructure-as-code assets.
+- [Query packs](/azure/azure-monitor/logs/query-packs) are Azure Resource Manager resources, which can be used to protect and recover logs queries if the Log Analytics workspace is unavailable.
+  - Query packs contain queries as JSON and can be stored external to Azure similar to other infrastructure-as-code assets.
     - Deployable through the Microsoft.Insights REST API.
-    - If an Azure Monitor for Logs workspace must be re-created the Query Pack can be redeployed from an externally stored definition.
+    - If a Log ANalytics workspace must be re-created the query pack can be redeployed from an externally stored definition.
 
-- Application Insights can be deployed in a workspace-based deployment model, underpinned by a Log Analytics Workspace where all the data is stored.
+- Application Insights can be deployed in a workspace-based deployment model, underpinned by a Log Analytics workspace where all the data is stored.
 
-- Sampling can be enabled within Application Insights to reduce the amount of telemetry sent and optimize data ingest costs.
+- [Sampling](/azure/azure-monitor/app/sampling) can be enabled within Application Insights to reduce the amount of telemetry sent and optimize data ingest costs.
 
-- Log Analytics and Application Insights [charge based on the volume of data ingested and the duration that data is retained for](https://azure.microsoft.com/pricing/details/monitor/).
-  - Data ingested into a Log Analytics Workspace can be retained at no additional charge up to first 31 days (90 days if Sentinel is enabled)
-  - Data ingested into a Workspace-based Application Insights is retained for the first 90 days at no extra charge.
+- All data collected by Azure Monitor,including Application Insights, [is charged based on the volume of data ingested and the duration that data is retained](https://azure.microsoft.com/pricing/details/monitor/).
+  - Data ingested into a Log Analytics workspace can be retained at no additional charge up to first 31 days (90 days if Sentinel is enabled)
+  - Data ingested into a workspace-based Application Insights is retained for the first 90 days at no extra charge.
 
-- The Log Analytics Commitment Tier pricing model provides a predictable approach to data ingest charges.
+- The [Log Analytics commitment tier pricing model](/azure/azure-monitor/logs/cost-logs#commitment-tiers) provides a reduced cost and a predictable approach to data ingest charges.
   - Any usage above the reservation level is billed at the same price as the current tier.
 
-- Azure Monitor Log Analytics, Application Insights, and Azure Data Explorer use the Kusto Query Language (KQL).
+- Log Analytics, Application Insights, and Azure Data Explorer use the Kusto Query Language (KQL).
 
-- Log Analytics queries are saved as *functions* within Log Analytics (`savedSearches`).
+- Log Analytics queries are saved as *functions* within the Log Analytics workspace (`savedSearches`).
 
 ### Design recommendations
 
-- Use Azure Monitor for Logs (Log Analytics) as a unified data sink to provide a 'single pane' across all operational data sets.
-  - Decentralize Log Analytics Workspaces across all used deployment regions. Each Azure region with an application deployment should consider a Log Analytics Workspace to gather all operational data originating from that region. All global resources should use a separate dedicated Log Analytics Workspace, which should be deployed within a primary deployment region.
-    - Sending all operational data to a single Log Analytics Workspace would create a single point of failure.
+- Use Log Analytics workspace as a unified data sink to provide a 'single pane' across all operational data sets.
+  - Decentralize Log Analytics workspaces across all used deployment regions. Each Azure region with an application deployment should consider a Log Analytics workspace to gather all operational data originating from that region. All global resources should use a separate dedicated Log Analytics workspace, which should be deployed within a primary deployment region.
+    - Sending all operational data to a single Log Analytics workspace would create a single point of failure.
     - Requirements for data residency might prohibit data leaving the originating region, and federated workspaces solves for this requirement by default.
     - There's a substantial egress cost associated with transferring logs and metrics across regions.
-  - All deployment stamps within the same region can use the same regional Log Analytics Workspace.
+  - All deployment stamps within the same region can use the same regional Log Analytics workspace.
 
-- Consider configuring resources with multiple diagnostic configurations pointing to different Azure Monitor for Logs workspaces to protect against Azure Monitor unavailability for applications with fewer regional deployment stamps.
+- Consider configuring resources with multiple diagnostic settings pointing to different Log Analytics workspaces to protect against Azure Monitor unavailability for applications with fewer regional deployment stamps.
 
 - Use Application Insights as a consistent Application Performance Monitoring (APM) tool across all application components to collect application logs, metrics, and traces.
-  - Deploy Application Insights in a workspace-based configuration to ensure each regional Log Analytics Workspaces contains logs and metrics from both application components and underlying Azure resources.
+  - Deploy Application Insights in a workspace-based configuration to ensure each regional Log Analytics workspace contains logs and metrics from both application components and underlying Azure resources.
 
-- Use [Cross-Workspace queries](/azure/azure-monitor/logs/cross-workspace-query) to maintain a unified 'single pane' across the different workspaces.
+- Use [cross-Workspace queries](/azure/azure-monitor/logs/cross-workspace-query) to maintain a unified 'single pane' across the different workspaces.
 
-- Use [Query Packs](/azure/azure-monitor/logs/query-packs) to protect Azure Monitor Logs queries in the event of workspace unavailability.
+- Use [query packs](/azure/azure-monitor/logs/query-packs) to protect log queries in the event of workspace unavailability.
   - Store query packs within the application git repository as infrastructure-as-code assets.
 
-- All Log Analytics Workspaces should be treated as long-running resources with a different life-cycle to application resources within a regional deployment stamp.
+- All Log Analytics workspaces should be treated as long-running resources with a different life-cycle to application resources within a regional deployment stamp.
 
-- Export critical operational data from Log Analytics for long-term retention and analytics to facilitate AIOps and advanced analytics to refine the underlying health model and inform predictive action.
+- Export critical operational data from Log Analytics workspace for long-term retention and analytics to facilitate AIOps and advanced analytics to refine the underlying health model and inform predictive action.
 
 - Carefully evaluate which data store should be used for long-term retention; not all data has to be stored in a hot and queryable data store.
   - It's strongly recommended to use Azure Storage in a GRS configuration for long-term operational data storage.
-    - Use the Log Analytics Export capability to export all available data sources to Azure Storage.
+    - Use the Log Analytics workspace export capability to export all available data sources to Azure Storage.
 
 - Select appropriate retention periods for operational data types within log analytics, configuring longer retention periods within the workspace where 'hot' observability requirements exist.
 
-- Use Azure Policy to ensure all regional resources route operational data to the correct Log Analytics Workspace.
+- Use Azure Policy to ensure all regional resources route operational data to the correct Log Analytics workspace.
 
 >[!NOTE]
-> When deploying into an Azure landing zone,  if there's a requirement for centralized storage of operational data, you can [fork](/azure/azure-monitor/logs/logs-data-export?tabs=portal) data at instantiation so it's ingested into both centralized tooling and Log Analytics Workspaces dedicated to the application. Alternatively, expose access to application Log Analytics workspaces so that central teams can query application data. It's ultimately critical that operational data originating from the solution is available within Log Analytics Workspaces dedicated to the application.
+> When deploying into an Azure landing zone,  if there's a requirement for centralized storage of operational data, you can [fork](/azure/azure-monitor/logs/logs-data-export?tabs=portal) data at instantiation so it's ingested into both centralized tooling and Log Analytics workspaces dedicated to the application. Alternatively, expose access to application Log Analytics workspaces so that central teams can query application data. It's ultimately critical that operational data originating from the solution is available within Log Analytics workspaces dedicated to the application.
 >
 > If SIEM integration is required, do not send raw log entries, but instead send critical alerts.
 
@@ -268,12 +270,12 @@ A unified data sink is required to ensure all operational data is swiftly stored
 
 - Log successful health check requests, unless increased data volumes can't be tolerated in the context of application performance, since they provide additional insights for analytical modeling.
 
-- Do not configure production Log Analytics Workspaces to apply a daily cap, which limits the daily ingestion of operational data, since this can lead to the loss of critical operational data.
-  - In lower environments, such as Development and Test, it can be considered as an optional cost saving mechanism.
+- Do not configure production Log Analytics workspaces to apply a [daily cap](/azure/azure-monitor/logs/daily-cap), which limits the daily ingestion of operational data, since this can lead to the loss of critical operational data.
+  - In lower environments, such as Development and Test, a daily cap can be considered as an optional cost saving mechanism.
 
-- Provided operational data ingest volumes meet the minimum tier threshold, configure Log Analytics Workspaces to use Commitment Tier based pricing to drive cost efficiencies relative to the 'pay-as-you-go' pricing model.
+- Provided operational data ingest volumes meet the minimum tier threshold, configure Log Analytics workspaces to use commitment tier based pricing to drive cost efficiencies relative to the 'pay-as-you-go' pricing model.
 
-- It's strongly recommended to store Log Analytics queries using source control and use CI/CD automation to deploy them to relevant Log Analytics instances.
+- It's strongly recommended to store Log Analytics queries using source control and use CI/CD automation to deploy them to relevant Log Analytics workspace instances.
 
 ## Visualization
 
@@ -285,9 +287,9 @@ This section focuses on the use of Azure Dashboards and Grafana to build a robus
 
 ### Design considerations
 
-- When visualizing the health model using Log Analytics queries, note that there are [Log Analytics limits on concurrent and queued queries, as well as the overall query rate](/azure/azure-monitor/service-limits#user-query-throttling), with subsequent queries queued and throttled.
+- When visualizing the health model using log queries, note that there are [Log Analytics limits on concurrent and queued queries, as well as the overall query rate](/azure/azure-monitor/service-limits#user-query-throttling), with subsequent queries queued and throttled.
 
-- Queries to retrieve operational data used to calculate and represent health scores can be written and executed in either Azure Monitor Log Analytics or Azure Data Explorer.
+- Queries to retrieve operational data used to calculate and represent health scores can be written and executed in either Log Analytics or Azure Data Explorer.
   - Sample queries are available [here](https://github.com/Azure/Mission-Critical-Online/tree/main/src/infra/monitoring/queries).
 
 - Log Analytics imposes several [query limits](/azure/azure-monitor/service-limits#user-query-throttling), which must be designed for when designing operational dashboards.
@@ -302,7 +304,7 @@ This section focuses on the use of Azure Dashboards and Grafana to build a robus
 - Collect and present queried outputs from all regional Log Analytics Workspaces and the global Log Analytics Workspace to build a unified view of application health.
 
 >[!NOTE]
-> If deploying into an Azure landing zone, consider querying the [central platform Log Analytics Workspace](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring#plan-platform-management-and-monitoring) if key dependencies on platform resources exist, such as ExpressRoute for on-premises communication.
+> If deploying into an Azure landing zone, consider querying the [central platform Log Analytics workspace](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring#plan-platform-management-and-monitoring) if key dependencies on platform resources exist, such as ExpressRoute for on-premises communication.
 
 - A ‘traffic light’ model should be used to visually represent 'healthy' and 'unhealthy' states, with green used to illustrate when key non-functional requirements are fully satisfied and resources are optimally utilized. Use "Green", "Amber, and "Red" to represent "Healthy", "Degraded", and "Unavailable" states.
 
@@ -326,7 +328,7 @@ This section focuses on the use of Azure Dashboards and Grafana to build a robus
 - Mitigate Log Analytics query limits by aggregating queries into a single or small number of queries, such as by using the KQL 'union' operator, and set an appropriate refresh rate on the dashboard.
   - An appropriate maximum refresh rate will depend on the number and complexity of dashboard queries; analysis of implemented queries is required.
   
-- If the concurrent query limit of log analytics is being reached, consider optimizing the retrieval pattern by (temporarily) storing the data required for the dashboard in a high performance datastore such as Azure SQL.
+- If the concurrent query limit of Log Analytics is being reached, consider optimizing the retrieval pattern by (temporarily) storing the data required for the dashboard in a high performance datastore such as Azure SQL.
 
 ## Automated incident response
 
@@ -339,7 +341,7 @@ While the visual representations of application health provide invaluable operat
 
 ### Design considerations
 
-- Alert rules are defined to fire when a conditional criteria is satisfied for incoming signals, which can include various [data sources](/azure/azure-monitor/data-sources), such as metrics, log search queries, or availability tests.
+- Alert rules are defined to fire when a conditional criteria is satisfied for incoming signals, which can include various [data sources](/azure/azure-monitor/data-sources), such as metrics, log queries, or availability tests.
 
 - Alerts can be defined within Log Analytics or Azure Monitor on the specific resource.
 
