@@ -211,7 +211,7 @@ As you make design choices for your virtual machine deployment, review [Microsof
 > - Reduce latency by deploying VMs closer together in proximity placement groups
 > - Convert disks from standard HDD to premium SSD
 > - Utilize Premium SSD v2 effectively.
-> - Use managed disks to obtain desired performance without over-provisioning.
+> - Optimize with managed disks.
 > - Consider locally attached NVMe or similar devices for high-performance use cases.
 > - Enable Accelerated Networking to improve network performance and latency
 > - Autoscale your Flexible scale sets.
