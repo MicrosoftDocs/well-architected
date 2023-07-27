@@ -55,7 +55,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Use maintenance control | Control when VM maintenance occurs to manage the timing of system restarts.|
 
 
-Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor](https://portal.azure.com/#view/Microsoft_Azure_Expert/AdvisorMenuBlade/~/HighAvailability) recommendations.
+Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor](/azure/advisor/advisor-overview#what-is-advisor) recommendations.
 
 
 ## Security
