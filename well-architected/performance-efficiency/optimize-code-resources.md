@@ -76,8 +76,6 @@ There are many ways to inject asynchronous programming. For HTTP traffic, consid
 
 ### Infrastructure
 
-### 
-
 **Add resource usage** **limits wherever possible.** You can put utilization limits on some workload components. For example, you can define [pod CPU and memory limits](/azure/aks/developer-best-practices-resource-management) in AKS to remove unstable pods. You can define memory limits in [Java virtual machines](/azure/spring-apps/concepts-for-java-memory-management) to optimize performance.
 
 **Eliminate unnecessary infrastructure.** Simplifying your workload reduces the potential for issues related to interactions, dependencies, and compatibility. By removing these elements, you optimize resource utilization of memory, processing power, and storage for essential resources.
