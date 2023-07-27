@@ -180,7 +180,7 @@ To ensure operational excellence, review the [design principles](/azure/architec
 | Build a robust testing environment | Ideally, an organization will have multiple environments in which to test deployments. These test environments should be similar enough to production that deployment and run time issues are detected before deployment to production. |
 | Right-size your VMs | Choose the right [VM family](/azure/virtual-machines/sizes) for your workload. | 
 | Manage your quota | Plan what level of quota will be required and review that level regularly as the workload evolves and grows and [request changes early](/azure/azure-portal/supportability/per-vm-quota-requests)  |
-| Use managed disks and understand workload patterns | By using managed disks and understanding workload patterns, you can streamline the operations processes and improve the ability to keep the system running efficiently in production. This enhances operational excellence by including best practices and strategies for smoother operations. |
+|  Optimize with managed disks | Determine your performance needs in combination with your storage capacity needs, accounting for fluctuating workload patterns. Knowing your needs allows you to determine what disk type and disk size you need. Some higher performance disk types offer extra cost optimization features and strategies. |
 
 
 For more suggestions, see [Principles of the operational excellence pillar](/azure/architecture/framework/devops/principles).
