@@ -95,7 +95,7 @@
               href: performance-efficiency/collect-metrics-logs.md
             - name: Scale and partition (PE 05)
               href: performance-efficiency/scale-partition.md
-            - name: Test
+            - name: Test (PE 06)
               href: performance-efficiency/test.md
             - name: Optimize code and resource use (PE 07)
               href: performance-efficiency/optimize-code-resources.md
