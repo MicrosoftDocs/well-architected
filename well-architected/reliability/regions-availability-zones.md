@@ -33,7 +33,7 @@ Your choice of how you use regions and availability zones affects several of the
 |-|-|
 | Region | A geographic perimeter that contains a set of data centers. |
 | Data center | A facility that contains servers, networking equipment, and other hardware to support Azure resources and workloads. |
-| Availability zone | Separated groups of data centers within a region. Availability zones are independent from each other. Many regions support availability zones. |
+| Availability zone | A separated group of data centers within a region. Each availability zone is independent from the others. Many regions support availability zones. |
 | Paired regions | Some Azure regions paired with other regions to enable specific types of multi-region solutions. Newer Azure regions aren't paired. |
 | Region architecture | The specific configuration of the Azure region, including the number of availability zones (if any) and whether the region is paired with another region. |
 | Non-zonal | A deployment model where a resource is deployed without reference to an availability zone. In a region that supports availability zones, the resource might be deployed anywhere within the region. |
