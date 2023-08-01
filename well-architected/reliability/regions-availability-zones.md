@@ -183,11 +183,15 @@ When you implement this approach, important to consider your recovery time objec
 
 This approach also uses multiple availability zones within a metropolitan area. You specify that a resource should be deployed to a specific availability zone. This is called a *zonal* deployment, or sometimes *zone-pinned* deployment.
 
-A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't increase the resiliency of your solution. To increase your resiliency, you need to deploy multiple instances of your components into multiple availability zones. You're responsible for replicating data between the availability zones, and you're responsible for distributing the requests to the correct resources. In the event of an outage of an availability zone, you need to handle the failover procedures.
+:::image type="content" border="false" source="../_images/regions-availability-zones/zonal-single-zone.png" alt-text="Diagram showing the solution deployed into a specific availability zone by using a zonal deployment approach.":::
+
+A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't increase the resiliency of your solution.
+
+To increase your resiliency, you need to deploy multiple instances of your components into multiple availability zones. You're responsible for replicating data between the availability zones, and you're responsible for distributing the requests to the correct resources. In the event of an outage of an availability zone, you need to handle the failover procedures.
 
 When you deploy zonally across multiple availability zones, this approach is sometimes called [*Metro DR*][metro-dr].
 
-:::image type="content" border="false" source="../_images/regions-availability-zones/zonal.png" alt-text="Diagram showing the solution deployed into multiple availability zones by using a zonal deployment approach.":::
+:::image type="content" border="false" source="../_images/regions-availability-zones/zonal-multiple-zone.png" alt-text="Diagram showing the solution deployed into multiple availability zones by using a zonal (pinned) deployment approach.":::
 
 A zonal deployment model has the following effects on your architectural concerns:
 
