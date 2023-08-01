@@ -158,7 +158,7 @@ A unified data sink is required to ensure all operational data is swiftly stored
 
 - Azure Monitor supports three types of observability data: logs, metrics, and distributed traces.
   - Logs are stored in Log Analytics workspaces, which is based on [Azure Data Explorer](/azure/data-explorer/). Log queries are stored in query packs that can be shared across subscriptions, and are used to drive observability components such as dashboards, workbooks, or other reporting and visualization tools.
-  - Metrics are stored in an internal time-series database. For most Azure resources, metrics are automatically collected and [retained](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics) for 93 days. Metric data can also be sent to the Analytics workspace using a [diagnostic setting](/azure/azure-monitor/essentials/diagnostic-settings) for the resource.
+  - Metrics are stored in an internal time-series database. For most Azure resources, metrics are automatically collected and [retained](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics) for 93 days. Metric data can also be sent to the Log Analytics workspace using a [diagnostic setting](/azure/azure-monitor/essentials/diagnostic-settings) for the resource.
 
 - All Azure resources expose logs and metrics, but resources must be appropriately configured to route diagnostic data to your desired data sink.
 
@@ -175,17 +175,17 @@ A unified data sink is required to ensure all operational data is swiftly stored
 
 - Log Analytics workspaces are deployed into a specified Azure region.
 
-- To protect against loss of data from unavailability of a Log Analytics workspace, resources can be configured with multiple diagnostic settings. Each diagnostic setting can send metrics and logs at a separate Log Analytics workspace.
+- To protect against loss of data from unavailability of a Log Analytics workspace, resources can be configured with multiple diagnostic settings. Each diagnostic setting can send metrics and logs to a separate Log Analytics workspace.
   - Data sent to each additional Log Analytics workspace will incur extra costs.
   - The redundant Log Analytics workspace can be deployed into the same Azure region, or into separate Azure regions for additional regional redundancy.
-  - Sending logs and metrics from an Azure resource to an Log Analytics workspace in a different region will incur inter-region data egress costs.
-  - Some Azure resources require an Azure Monitor for Logs workspace within the same region as the resource itself.
+  - Sending logs and metrics from an Azure resource to a Log Analytics workspace in a different region will incur inter-region data egress costs.
+  - Some Azure resources require a Log Analytics workspace within the same region as the resource itself.
   - See [Best practices for Azure Monitor Logs](/azure/azure-monitor/best-practices-logs#reliability) for further availability options for the Log Analytics workspace.
 
 - Log Analytics workspace data [can be exported to Azure Storage or Azure Event Hubs on a continuous, scheduled, or one-time basis](/azure/azure-monitor/logs/logs-data-export).
   - Data export allows for long-term data archiving and protects against possible operational data loss due to unavailability.
   - Available export destinations are Azure Storage or Azure Event Hubs. Azure Storage can be configured for different [redundancy levels](/azure/storage/common/storage-redundancy) including zonal or regional. Data export to Azure Storage stores the data within .json files.
-  - Data export destinations must be within the same Azure region as the Log Analytics workspace. An event hub data export destination to be within the same region as the Azure Monitor Logs workspace. Azure Event Hubs geo-disaster recovery isn't applicable for this scenario.
+  - Data export destinations must be within the same Azure region as the Log Analytics workspace. An event hub data export destination to be within the same region as the Log Analytics workspace. Azure Event Hubs geo-disaster recovery isn't applicable for this scenario.
   - There are several [data export limitations](/azure/azure-monitor/logs/logs-data-export#limitations). Only specific [tables in the workspace are supported](/azure/azure-monitor/logs/logs-data-export#supported-tables) for data export.
   - [Archiving](/azure/azure-monitor/logs/data-retention-archive) can be used to store data in a Log Analytics workspace for long-term retention at a reduced cost without exporting it.
 
@@ -195,7 +195,7 @@ A unified data sink is required to ensure all operational data is swiftly stored
   - Concurrency queue depth limit: the concurrency queue is limited to 200 queries, and additional queries will be rejected with a 429 error code.
   - Query rate limit: there's a per-user limit of 200 queries per 30 seconds across all workspaces.
 
-- [Query packs](/azure/azure-monitor/logs/query-packs) are Azure Resource Manager resources, which can be used to protect and recover logs queries if the Log Analytics workspace is unavailable.
+- [Query packs](/azure/azure-monitor/logs/query-packs) are Azure Resource Manager resources, which can be used to protect and recover log queries if the Log Analytics workspace is unavailable.
   - Query packs contain queries as JSON and can be stored external to Azure similar to other infrastructure-as-code assets.
     - Deployable through the Microsoft.Insights REST API.
     - If a Log ANalytics workspace must be re-created the query pack can be redeployed from an externally stored definition.
@@ -204,7 +204,7 @@ A unified data sink is required to ensure all operational data is swiftly stored
 
 - [Sampling](/azure/azure-monitor/app/sampling) can be enabled within Application Insights to reduce the amount of telemetry sent and optimize data ingest costs.
 
-- All data collected by Azure Monitor,including Application Insights, [is charged based on the volume of data ingested and the duration that data is retained](https://azure.microsoft.com/pricing/details/monitor/).
+- All data collected by Azure Monitor, including Application Insights, [is charged based on the volume of data ingested and the duration that data is retained](https://azure.microsoft.com/pricing/details/monitor/).
   - Data ingested into a Log Analytics workspace can be retained at no additional charge up to first 31 days (90 days if Sentinel is enabled)
   - Data ingested into a workspace-based Application Insights is retained for the first 90 days at no extra charge.
 
