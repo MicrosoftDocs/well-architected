@@ -362,6 +362,8 @@ Woodgrove Bank runs their core banking operations from a large solution deployed
 
 Proseware, Inc. builds software used by companies across the world. Their user base is widely geographically distributed.
 
+**Business requirements:** Proseware needs to enable their customers to choose a deployment regions close to them. Enabling customer region choice is important for both latency and for end customers’ data sovereignty requirements.
+
 **Suggested approach:** [Multi-region deployment](#deployment-approach-4-multi-region-deployments).
 
 ## Related links
