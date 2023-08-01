@@ -185,13 +185,19 @@ This approach also uses multiple availability zones within a metropolitan area. 
 
 :::image type="content" border="false" source="../_images/regions-availability-zones/zonal-single-zone.png" alt-text="Diagram showing the solution deployed into a specific availability zone by using a zonal deployment approach.":::
 
-A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't increase the resiliency of your solution.
-
-To increase your resiliency, you need to deploy multiple instances of your components into multiple availability zones. You're responsible for replicating data between the availability zones, and you're responsible for distributing the requests to the correct resources. In the event of an outage of an availability zone, you need to handle the failover procedures.
-
-When you deploy zonally across multiple availability zones, this approach is sometimes called [*Metro DR*][metro-dr].
+A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't increase the resiliency of your solution. To increase your resiliency, you need to deploy multiple instances of your components into multiple availability zones.
 
 :::image type="content" border="false" source="../_images/regions-availability-zones/zonal-multiple-zone.png" alt-text="Diagram showing the solution deployed into multiple availability zones by using a zonal (pinned) deployment approach.":::
+
+When you use a zonal deployment model, you take on many responsibilities:
+
+- You need to deploy resources to each availability zone, and manage those resources individually.
+- You need to decide how to replicate data between the availability zones, and then configure and manage the replication.
+- You're responsible for distributing the requests to the correct resources, such as by using a load balancer. You need to decide whether to use an active/passive or an active/active request distribution model.
+- In the event of an outage of an availability zone, you need to handle the failover to send traffic to resources in another availability zone.
+
+> [!NOTE]
+> An active/passive deployment across multiple availability zones is sometimes called [*Metro DR*][metro-dr].
 
 A zonal deployment model has the following effects on your architectural concerns:
 
