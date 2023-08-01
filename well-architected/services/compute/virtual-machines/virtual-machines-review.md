@@ -53,7 +53,7 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Use maintenance control | Control when VM maintenance occurs to manage the timing of system restarts.|
 
 >[!TIP]
->For more details on Reliability guidance for VMs, see [Reliability in Azure Virtual Machines - Azure Virtual Machines](/azure/reliability/reliability-virtual-machines.md).
+>For more details on Reliability guidance for VMs, see [Reliability in Azure Virtual Machines - Azure Virtual Machines](/azure/reliability/reliability-virtual-machines).
 
  
 
