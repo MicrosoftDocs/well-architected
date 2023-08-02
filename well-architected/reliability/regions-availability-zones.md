@@ -94,7 +94,7 @@ It would be ideal to mitigate every possible risk for every workload, but it's n
 
 ##### Resiliency requirements
 
-It's important that you understand your resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you to decide which alternatives to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Target functional and nonfunctional requirements](design-requirements.md).
+It's important that you understand your resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you to decide which alternatives to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Target functional and nonfunctional requirements](design-requirements.md). <!-- Update this to RE:01 when staged -->
 
 ##### Service level agreements
 
