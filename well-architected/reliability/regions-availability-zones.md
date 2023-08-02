@@ -370,7 +370,7 @@ Woodgrove Bank runs their core banking operations from a large solution deployed
 
 **Business requirements:** This is a mission-critical system. Any outages can cause major financial impact for customers. As a result, Woodgrove Bank has very low risk tolerance. They need the highest level of reliability possible, and they need to mitigate the risk of any failures that are possible to mitigate.
 
-**Suggested approach:** [Multi-region deployment](#deployment-approach-4-multi-region-deployments).
+**Suggested approach:** [Multi-region deployment](#deployment-approach-4-multi-region-deployments). It's important that they select regions that fit their data residency requirements.
 
 ### Software as a service (SaaS)
 
