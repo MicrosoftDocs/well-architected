@@ -39,9 +39,10 @@ As you make design choices for virtual machines, review the [design principles](
 > [!div class="checklist"]
 > - Review the [SLAs for virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/).
 > - VMs should be deployed in a scale set [using the Flexible orchestration mode](/azure/virtual-machines/flexible-virtual-machine-scale-sets).
-> - Deployed VMs across [Availability Zones](/azure/virtual-machines/windows/quick-create-portal) .
-> - Install applications on [data disks](/azure/virtual-machines/linux/add-disk).
-> - Use [maintenance control](/azure/virtual-machines/maintenance-control).
+> - Deployed VMs across [Availability Zones](/azure/virtual-machines/windows/quick-create-portal).
+> - Package and publish application artifacts with [VM Applications](/azure/virtual-machines/vm-applications) and [Azure Compute Gallery](/azure/virtual-machines/azure-compute-gallery).
+> - Install applications on [Ephemeral OS disks](/azure/virtual-machines/ephemeral-os-disks).
+> - Use [Maintenance Configurations](/azure/virtual-machines/maintenance-configurations) to control and manage updates for VMs.
 
 ### Recommendations
 Explore the following table of recommendations to optimize your Virtual Machine configuration for service reliability:
@@ -51,8 +52,8 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Review SLAs for virtual machines. | When defining test availability and recovery targets, make sure you have a good understanding of the SLAs offered for VMs.|
 | Deploy using Flexible scale sets. | Even single instance VMs should be deployed into a scale set using the Flexible orchestration mode to future-proof your application for scaling and availability. Flexible orchestration offers high availability guarantees (up to 1000 VMs) by spreading VMs across fault domains in a region or within an Availability Zone.|
 | Deploy across availability zones | Azure availability zones are physically separate locations within each Azure region that are tolerant to local failures.
-| Install applications on data disks. | Having your data on a separate disk from your OS disk makes it easier to recover from failures and to migrate workloads.
-| Use maintenance control | Control when VM maintenance occurs to manage the timing of system restarts.|
+| Install applications on Ephemeral OS disks. | Separating data from the OS disk makes it easier to recover from failures, migrate workloads, and can improve performance.
+| Use Maintenance Configuration | Control and manage updates for both Windows and Linux VMs through a centralized view for OS patching. |
 
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor](/azure/advisor/advisor-overview#what-is-advisor) recommendations.
@@ -86,7 +87,7 @@ Explore the following table of recommendations to optimize your virtual machine 
 |--------|----|
 | Consider using Azure Bastion | Authentication and access control using [Azure Bastion](/azure/bastion/bastion-overview) provides secure and seamless RDP/SSH connectivity to your virtual machines directly from the Azure portal over TLS|
 | Protect against malware | Install [antimalware protection](/azure/security/fundamentals/iaas#protect-against-malware) to help identify and remove viruses. |
-| Manage updates | Use a solution like [Azure Automation](/azure/automation/update-management/overview) to manage operating system updates. |
+| Manage updates | Use a solution like [Azure Automation](/azure/automation/update-management/overview) to manage operating system updates and maintain security compliance with critical updates. |
 | Monitor for security | To monitor the security posture of your Windows and Linux VMs, use [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction). |
 | Use encryption | Use [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) to protect your data. |
 
@@ -107,7 +108,6 @@ Azure Advisor helps you ensure and improve security. Review the [security recomm
 - `Virtual machines and virtual machine scale sets should have encryption at host enabled` - Use encryption at host to get end-to-end encryption for your virtual machine and virtual machine scale set data. Encryption at host enables encryption at rest for your temporary disk and OS/data disk caches. Temporary and ephemeral OS disks are encrypted with platform-managed keys when encryption at host is enabled. OS/data disk caches are encrypted at rest with either customer-managed or platform-managed key, depending on the encryption type selected on the disk. Learn more at [https://aka.ms/vm-hbe](https://aka.ms/vm-hbe).
 - `Require automatic OS image patching on Virtual Machine Scale Sets` - This policy enforces enabling automatic OS image patching on Virtual Machine Scale Sets to always keep virtual Machines secure by safely applying latest security patches every month.
 
-
 All built-in policy definitions related to Azure Virtual Machines are listed in [Azure Policy built-in definitions for Azure Virtual Machines](/azure/virtual-machines/policy-reference).
 
 ## Cost optimization
@@ -124,11 +124,13 @@ To estimate costs related to virtual machines, use these tools.
 > - Shut down VM instances which aren't in use.
 > - Use [Spot VMs](/azure/virtual-machines/spot-vms) when appropriate.
 > - Choose the right VM size for your workload.
+> - Use Azure Bastion to secure operational access to the workload VMs.
 > - Use a Premium SSD v2 disk and, based on your workload patterns, programmatically adjust its performance to account for either higher or lower demand.
 > - For other disk types, size your disks to achieve your desired performance without the need for over-provisioning. Account for fluctuating workload patterns, and minimizing unused provisioned capacity.
 > - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
 > - Prepay for [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) or an [Azure savings plan for compute](https://azure.microsoft.com/pricing/offers/savings-plan-compute/#benefits-and-features) for significant savings.
 > - Use hybrid benefit licensing.
+> - Deploy [Azure Monitor Agent (AMA)](/azure/azure-monitor/agents/agents-overview) to collect monitoring data from the guest operating system.
 
 ### Recommendations
 
@@ -139,10 +141,12 @@ Explore the following table of recommendations to optimize your Virtual Machine 
 | Stop VMs during off-hours | Configuring start and stop times will shut down instances that aren't in use. The feature is suitable as a low-cost automation option. |
 | Use Spot VMs when appropriate.|Spot VMs are ideal for workloads that can be interrupted, such as highly parallel batch processing jobs. These VMs take advantage of the surplus capacity in Azure at a lower cost. They're also well suited for experimenting, developing, and testing large-scale solutions. Check out our [Azure Virtual Machine Spot Eviction](/azure/architecture/guide/spot/spot-eviction) guide to learn how to create a reliable interruptible workload in Azure.|
 |Right-size your VMs |  Identify the best VM for your workloads with the virtual machines selector. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing.|
+|Configure Azure Bastion for operational access | [Azure Bastion](/azure/bastion/bastion-overview#pricing) is charged on a fix per-hour basis, and charges for outbound data transfers. |
 |Utilize Premium SSD v2 effectively | Premium SSD v2 allows you to granularly adjust your performance independent of the disk's size. Combining this adjustment ability with an understanding workload patterns, offers an effective cost optimization strategy for IaaS infrastructure, enabling high performance without excessive over-provisioning and minimizing the cost of unused capacity. |
 | Optimize with managed disks | Determine your performance needs in combination with your storage capacity needs, accounting for fluctuating workload patterns. Knowing your needs allows you to determine what disk type and disk size you need. Some higher performance disk types offer extra cost optimization features and strategies. |
 |Prepay for added cost savings | Purchasing [reserved instances](/azure/virtual-machines/prepay-reserved-vm-instances) is a way to reduce Azure costs for workloads with stable usage. Make sure you manage usage. If usage is too low, then you're paying for resources that aren't used. Keep reserved instances simple and keep management overhead low to prevent increasing cost.|
 | Use existing licensing through the hybrid benefit licensing program | Hybrid benefit licensing is available for both [Linux](/azure/virtual-machines/linux/azure-hybrid-benefit-linux) and [Windows](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)|
+| Deploy AMA | AMA supports Data Collection Rules (DCR) which allow filtering rules and data transformation to reduce overall data volume being uploaded, which lowers ingestion and storage costs.|
 
  Azure Advisor helps you ensure and improve cost optimization. Review the [cost recommendations](/azure/advisor/advisor-cost-recommendations).
 
@@ -163,6 +167,8 @@ To ensure operational excellence, review the [design principles](/azure/architec
 
 > [!div class="checklist"]
 > - [Monitor](/azure/virtual-machines/monitor-vm) and measure health.
+> - Setup Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) for detecting configuration changes in your environment.
+    > - Use the [Application Insights](/azure/azure-monitor/app/app-insights-overview) extension to proactively understand how an application is performing and reactively review application execution data to determine the cause of an incident.
 > - [Automate](/azure/architecture/framework/devops/automation-tasks) tasks like provisioning and updating.
 > - Build a robust testing environment.
 > - Right size your VMs.
@@ -176,6 +182,7 @@ To ensure operational excellence, review the [design principles](/azure/architec
 | Recommendation | Benefit |
 |--------|----|
 | Monitor and measure health | In a production environment, it's important to [monitor](/azure/virtual-machines/monitor-vm) the health, and performance of your VMs.  |
+| Setup Azure Monitor alert rules | Determine important conditions in your monitoring data to identify and address issues found in your system before customers are impacted. |
 | Automate tasks | Building [automation](/azure/architecture/framework/devops/automation-tasks) reduces deviations from your plans and reduces that time it takes to manage your workload.  |
 | Build a robust testing environment | Ideally, an organization will have multiple environments in which to test deployments. These test environments should be similar enough to production that deployment and run time issues are detected before deployment to production. |
 | Right-size your VMs | Choose the right [VM family](/azure/virtual-machines/sizes) for your workload. | 
