@@ -82,7 +82,7 @@ Use paired regions that exist within the same geography and provide native repli
 
 ### Availability zones and availability sets
 
-Platform services that can use availability zones are deployed in either a zonal configuration in a particular zone, or in a zone-redundant configuration across multiple zones. For more information, see [Building solutions for high availability using availability zones](/azure/architecture/high-availability/building-solutions-for-high-availability).
+Platform services that can use availability zones are deployed in either a zonal (pinned) configuration in a particular zone, or in a zone-redundant configuration across multiple zones. For more information, see [Building solutions for high availability using availability zones](/azure/architecture/high-availability/building-solutions-for-high-availability).
 
 An availability set is a logical construct to inform Azure to distribute contained virtual machine instances across multiple fault and update domains within an Azure region. Availability zones elevate the fault level for virtual machines to a physical datacenter by allowing replica instances to be deployed across multiple datacenters within an Azure region.
 
@@ -121,7 +121,7 @@ Determining which of these guarantees are most important in the context of appli
 
 ### Replication and redundancy
 
-Replicating data across zones or paired regions supports application availability objectives to limit the effect of failure scenarios. The ability to restore data from a backup is essential when recovering from data corruption situations and failure scenarios. To ensure sufficient redundancy and availability for zonal and regional failure scenarios, backups should be stored across zones or regions.
+Replicating data across zones or paired regions supports application availability objectives to limit the effect of failure scenarios. The ability to restore data from a backup is essential when recovering from data corruption situations and failure scenarios. To ensure sufficient redundancy and availability for availability zone and regional failure scenarios, backups should be stored across zones or regions.
 
 Define and test a data restore process to ensure a consistent application state. Regular testing of the data restore process promotes operational excellence and confidence in the ability to recover data in alignment with defined recovery objectives for the application.
 
