@@ -99,9 +99,9 @@ To ensure application platform reliability, it's vital that the application is h
 > [!NOTE]
 > Higher SLAs provided for virtual machines and associated related platform services require at least two replica nodes deployed to either an availability set or across two or more availability zones. For more information, see [SLA for Virtual Machines](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
 
-#### How is the client traffic routed to the application for region, zone, or network outage?
+#### How is the client traffic routed to the application for region, availability zone, or network outage?
 
-If there's a major outage, client traffic should be routable to application deployments that remain available across other regions or zones. This situation is ultimately where cross-premises connectivity and global load balancing should be used, depending on whether the application is internal or external facing. Services such as Azure Front Door, Azure Traffic Manager, or third-party content delivery networks can route traffic across regions based on application health discovered by using health probes. For more information, see [Traffic Manager endpoint monitoring](/azure/traffic-manager/traffic-manager-monitoring).
+If there's a major outage, client traffic should be routable to application deployments that remain available across other regions or availability zones. This situation is ultimately where cross-premises connectivity and global load balancing should be used, depending on whether the application is internal or external facing. Services such as Azure Front Door, Azure Traffic Manager, or third-party content delivery networks can route traffic across regions based on application health discovered by using health probes. For more information, see [Traffic Manager endpoint monitoring](/azure/traffic-manager/traffic-manager-monitoring).
 
 ## Meet data platform requirements
 
@@ -121,11 +121,11 @@ Determining which of these guarantees are most important in the context of appli
 
 ### Replication and redundancy
 
-Replicating data across zones or paired regions supports application availability objectives to limit the effect of failure scenarios. The ability to restore data from a backup is essential when recovering from data corruption situations and failure scenarios. To ensure sufficient redundancy and availability for availability zone and regional failure scenarios, backups should be stored across zones or regions.
+Replicating data across availability zones or regions supports application availability objectives to limit the effect of failure scenarios. The ability to restore data from a backup is essential when recovering from data corruption situations and failure scenarios. To ensure sufficient redundancy and availability during availability zone and regional failure scenarios, backups should be stored across availability zones or regions.
 
 Define and test a data restore process to ensure a consistent application state. Regular testing of the data restore process promotes operational excellence and confidence in the ability to recover data in alignment with defined recovery objectives for the application.
 
-Consider how your application traffic is routed to data sources when there's a region, zone, or network outage. Understanding the method used to route application traffic to data sources if there's a major failure event is critical to identify whether failover processes meet recovery objectives. Many Azure data platform services offer native reliability capabilities to handle major failures, such as Azure Cosmos DB Automatic Failover and Azure SQL Database active geo-replication.
+Consider how your application traffic is routed to data sources when there's a region, availability zone, or network outage. Understanding the method used to route application traffic to data sources if there's a major failure event is critical to identify whether failover processes meet recovery objectives. Many Azure data platform services offer native reliability capabilities to handle major failures, such as Azure Cosmos DB Automatic Failover and Azure SQL Database active geo-replication.
 
 > [!NOTE]
 > Some capabilities, such as Azure Storage read-access geo-redundant storage and Azure SQL DB active geo-replication, require application-side failover to alternate endpoints in some failure scenarios. Application logic should be developed to handle these scenarios.
