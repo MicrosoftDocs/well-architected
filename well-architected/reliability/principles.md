@@ -1,13 +1,10 @@
 ---
 title: Reliability design principles
 description: Understand the design principles of the reliability pillar.
-author: martinekuan
-ms.author: martinek
+author: PageWriter-MSFT
+ms.author: prwilk
 ms.date: 11/15/2023
 ms.topic: conceptual
-ms.custom:
-  - fasttrack-edit
-  - overview
 ---
 
 # Reliability design principles 
