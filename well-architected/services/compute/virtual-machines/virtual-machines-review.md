@@ -215,8 +215,8 @@ As you make design choices for your virtual machine deployment, review [Microsof
 
 
 > [!div class="checklist"]
-> - Reduce latency by deploying VMs closer together in proximity placement groups
-> - Convert disks from standard HDD to premium SSD
+> - Reduce latency by deploying VMs closer together in proximity placement groups.
+> - Convert disks from standard HDD to premium SSD.
 > - Utilize Premium SSD v2 effectively.
 > - Optimize with managed disks.
 > - Consider locally attached NVMe or similar devices for high-performance use cases.
@@ -261,7 +261,7 @@ Planned versus actual spending can be managed through [Azure Cost Management + B
 ## Next steps
 Use the recommendations as you provision virtual machines for your solution.
 
-- Learn module: [Introduction to Azure virtual machines](/training/modules/intro-to-azure-virtual-machines/)
+- Review the Learn module: [Introduction to Azure virtual machines](/training/modules/intro-to-azure-virtual-machines/).
 
 - Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/).
 
