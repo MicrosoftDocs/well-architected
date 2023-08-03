@@ -76,7 +76,7 @@ For more information, see [Service Bus Premium and Standard messaging tiers](/az
 
 Many Azure regions provide *availability zones*, which are separated groups of data centers. Within a region, each availability zone is close enough together to have very low-latency connections to other availability zones, but they're far enough apart to ensure that they have independent power, cooling, and networking infrastructure. Availability zones are designed so that if one zone has an outage, then regional services, capacity, and high availability are supported by the remaining zones.
 
-If you deploy into an [Azure region that contains availability zones](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support), then you can use multiple availability zones together. By using multiple avalability zones, you can keep separate copies of your application and data within separate physical data centers in a wide metropolitan area.
+If you deploy into an [Azure region that contains availability zones](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support), then you can use multiple availability zones together. By using multiple availability zones, you can keep separate copies of your application and data within separate physical data centers in a wide metropolitan area.
 
 There are two ways to use availability zones within a solution:
 
