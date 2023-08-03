@@ -219,8 +219,8 @@ As you make design choices for your virtual machine deployment, review [Microsof
 
 
 > [!div class="checklist"]
-> - Reduce latency by deploying VMs closer together in proximity placement groups
-> - Convert disks from standard HDD to premium SSD
+> - Reduce latency by deploying VMs closer together in proximity placement groups.
+> - Convert disks from standard HDD to premium SSD.
 > - Utilize Premium SSD v2 effectively.
 > - Optimize with managed disks.
 > - Consider locally attached NVMe or similar devices for high-performance use cases.
@@ -262,10 +262,13 @@ Here are other resources to help you query for unhealthy instances.
 ### Cost analysis
 Planned versus actual spending can be managed through [Azure Cost Management + Billing](/azure/cost-management-billing/costs/quick-acm-cost-analysis). There are several options for grouping resources by billing unit.
 
+### Log Analytics
+Collect logs and metrics from the Azure resources and Application Insights with [Azure Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) to gain insights into the performance and health of your VMs. You can also use Log Analytics to query and analyze the data collected by Azure Monitor Logs.
+
 ## Next steps
 Use the recommendations as you provision virtual machines for your solution.
 
-- Learn module: [Introduction to Azure virtual machines](/training/modules/intro-to-azure-virtual-machines/)
+- Review the Learn module: [Introduction to Azure virtual machines](/training/modules/intro-to-azure-virtual-machines/).
 
 - Review the Virtual Machine recommendations provided by [Azure Advisor](/azure/advisor/).
 
