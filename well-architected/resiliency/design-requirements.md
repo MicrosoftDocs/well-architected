@@ -3,13 +3,13 @@ title: Target functional and nonfunctional requirements
 description: Learn about reliability targets for availability, recovery, and nonfunctionality, which involve application and data platforms, networking, and connectivity.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/26/2023
+ms.date: 08/03/2023
 ms.topic: conceptual
 ---
 
 # Target functional and nonfunctional requirements
 
-Target functional and nonfunctional requirements include *availability targets* and *recovery targets*. These requirements allow you to measure the uptime and downtime of your workloads. Having clearly defined targets is crucial to have a goal to work and measure against. There are many other requirements that you should consider that improve reliability requirements and meet business expectations.
+Target functional and nonfunctional requirements include *availability targets* and *recovery targets*. These requirements allow you to measure the uptime and downtime of your workloads. Having clearly defined targets is crucial so that you have a goal to work and measure against. There are many other requirements that you should consider that improve reliability requirements and meet business expectations.
 
 *Resiliency* means the ability to recover from failures. *Availability* means to run in a healthy state without significant downtime. Building resiliency and availability into your apps begins with gathering requirements. For example, how much downtime is acceptable and how much does potential downtime cost your business?
 
@@ -72,21 +72,32 @@ We recommend that you review the SLA for services used. For example, the Service
 
 For more information, see [Service Bus Premium and Standard messaging tiers](/azure/service-bus-messaging/service-bus-premium-messaging).
 
-### Multiple and paired regions
+### Use availability zones
 
-An application platform should be deployed across multiple regions if the requirements dictate. Covering the requirements using zones is cheaper and less complex. Regional isolation should be an extra measure if the SLAs given by the single region cross-zone setup are insufficient or if required by a geographical spread of users.
+Many Azure regions provide *availability zones*, which are separated groups of data centers. Within a region, each availability zone is close enough together to have very low-latency connections to other availability zones, but they're far enough apart to ensure that they have independent power, cooling, and networking infrastructure. Availability zones are designed so that if one zone has an outage, then regional services, capacity, and high availability are supported by the remaining zones.
+
+If you deploy into an [Azure region that contains availability zones](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support), then you can use multiple availability zones together. By using multiple avalability zones, you can keep separate copies of your application and data within separate physical data centers in a wide metropolitan area.
+
+There are two ways to use availability zones within a solution:
+
+- **Zonal resources** are pinned to a specific availability zone. You can combine multiple zonal deployments across different zones to achieve high reliability requirements. You're responsible for managing data replication and distributing requests across zones. If an outage occurs in a single availability zone, you're responsible for failover to another availability zone.
+- **Zone-redundant resources** are spread across multiple availability zones. Microsoft manages spreading requests across zones, and the replication of data across zones, for you. If an outage occurs in a single availability zone, Microsoft manages failover automatically.
+
+Different Azure services support one or both of these approaches. In general, PaaS services typically support zone-redundant deployments, and IaaS services typically support zonal deployments. For more information about how Azure services work with availability zones, see [Azure services with availability zone support](/azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support).
+
+There are performance and cost considerations where applications are extremely *chatty* across zones given the physical separation and inter-zone bandwidth charges.
+
+For more information about designing for availability zones and other ways to achieve resiliency in Azure, see [Building solutions for high availability using availability zones](/azure/architecture/high-availability/building-solutions-for-high-availability) and [Business continuity with data resiliency](https://azurecomcdn.azureedge.net/cvt-27012b3bd03d67c9fa81a9e2f53f7d081c94f3a68c13cdeb7958edf43b7771e8/mediahandler/files/resourcefiles/azure-resiliency-infographic/Azure_resiliency_infographic.pdf).
+
+### Use multiple Azure regions
+
+If you have a mission-critical solution, you might consider deploying it across multiple Azure regions. However, if you don't explicitly need a multi-region design, then it's cheaper and less complex to use availability zones instead. For most workloads, availability zones provide the best balance of tradeoffs between resiliency, performance, cost, and complexity. Multi-region deployment is an extra measure that you can consider if the SLAs given by a single-region multi-zone configuration are insufficient, or if your users are geographically spread out and it makes sense to have instances of your workload near your user bases.
 
 The ability to respond to disaster scenarios for overall compute platform availability and application reliability depends on the use of multiple regions or other deployment locations.
 
-Use paired regions that exist within the same geography and provide native replication features for recovery purposes, such as geo-redundant storage (GRS) asynchronous replication. If you plan maintenance, updates to a region are performed sequentially only. For more information, see [Cross-region replication in Azure](/azure/best-practices-availability-paired-regions).
+Many regions also have a [*paired region*](/azure/reliability/cross-region-replication-azure). Paired regions support certain types of multi-region deployment approaches, such as native replication features like geo-redundant storage (GRS) asynchronous replication. Some newer regions have [multiple availability zones and don't have a paired region](/azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair). You can still deploy multi-region solutions into these regions, but the approaches you use might be different.
 
-### Availability zones and availability sets
-
-Platform services that can use availability zones are deployed in either a zonal (pinned) configuration in a particular zone, or in a zone-redundant configuration across multiple zones. For more information, see [Building solutions for high availability using availability zones](/azure/architecture/high-availability/building-solutions-for-high-availability).
-
-An availability set is a logical construct to inform Azure to distribute contained virtual machine instances across multiple fault and update domains within an Azure region. Availability zones elevate the fault level for virtual machines to a physical datacenter by allowing replica instances to be deployed across multiple datacenters within an Azure region.
-
-Availability zones provide greater reliability than availability sets. There are performance and cost considerations where applications are extremely *chatty* across zones given the implied physical separation and inter-zone bandwidth charges. Azure Virtual Machines and Azure platform as a service (PaaS) services, such as Service Fabric and Azure Kubernetes Service (AKS), which use virtual machines underneath, can use either availability zones or an availability set to provide application reliability within a region. For more information, see [Business continuity with data resiliency](https://azurecomcdn.azureedge.net/cvt-27012b3bd03d67c9fa81a9e2f53f7d081c94f3a68c13cdeb7958edf43b7771e8/mediahandler/files/resourcefiles/azure-resiliency-infographic/Azure_resiliency_infographic.pdf).
+If you plan maintenance, updates to a region are performed sequentially. For more information, see [Cross-region replication in Azure](/azure/best-practices-availability-paired-regions).
 
 ### Considerations for availability
 
