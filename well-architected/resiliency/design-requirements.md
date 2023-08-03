@@ -91,9 +91,14 @@ For more information about designing for availability zones and other ways to ac
 
 ### Use multiple Azure regions
 
-If you have a mission-critical solution, you might consider deploying it across multiple Azure regions. However, if you don't explicitly need a multi-region design, then it's cheaper and less complex to use availability zones instead. For most workloads, availability zones provide the best balance of tradeoffs between resiliency, performance, cost, and complexity. Multi-region deployment is an extra measure that you can consider if the SLAs given by a single-region multi-zone configuration are insufficient, or if your users are geographically spread out and it makes sense to have instances of your workload near your user bases.
+The ability to respond to disaster scenarios for overall compute platform availability and application reliability depends on the use of multiple availability zones or regions. If you have a mission-critical solution, you might consider deploying it across multiple Azure regions. However, if you don't explicitly need a multi-region design, then it's cheaper and less complex to use availability zones instead.
 
-The ability to respond to disaster scenarios for overall compute platform availability and application reliability depends on the use of multiple regions or other deployment locations.
+> [!TIP]
+> For most workloads, an architecture based around availability zones provide the best balance of tradeoffs between resiliency, performance, cost, and complexity.
+>
+> Consider a multi-region deployments if one of these situations applies to your workload:
+> - The SLAs given by a single-region multi-zone configuration are insufficient.
+> - Your users are geographically spread out and it makes sense to have instances of your workload near your user bases. For example, you might follow the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) or the [Geode pattern](/architecture/patterns/geodes).
 
 Many regions also have a [*paired region*](/azure/reliability/cross-region-replication-azure). Paired regions support certain types of multi-region deployment approaches, such as native replication features like geo-redundant storage (GRS) asynchronous replication. Some newer regions have [multiple availability zones and don't have a paired region](/azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair). You can still deploy multi-region solutions into these regions, but the approaches you use might be different.
 
