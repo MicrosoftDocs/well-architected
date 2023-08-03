@@ -98,7 +98,7 @@ The ability to respond to disaster scenarios for overall compute platform availa
 >
 > Consider a multi-region deployments if one of these situations applies to your workload:
 > - The SLAs given by a single-region multi-zone configuration are insufficient.
-> - Your users are geographically spread out and it makes sense to have instances of your workload near your user bases. For example, you might follow the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) or the [Geode pattern](/architecture/patterns/geodes).
+> - Your users are geographically spread out and it makes sense to have instances of your workload near your user bases. For example, you might follow the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) or the [Geode pattern](/azure/architecture/patterns/geodes).
 
 Many regions also have a [*paired region*](/azure/reliability/cross-region-replication-azure). Paired regions support certain types of multi-region deployment approaches, such as native replication features like geo-redundant storage (GRS) asynchronous replication. Some newer regions have [multiple availability zones and don't have a paired region](/azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair). You can still deploy multi-region solutions into these regions, but the approaches you use might be different.
 
