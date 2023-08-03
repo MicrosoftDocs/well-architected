@@ -3,7 +3,7 @@ title: Data management for reliability
 description: Learn about database resiliency and advantages of distributing data geographically for reliability, including storage resiliency samples.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/28/2023
+ms.date: 08/03/2023
 ms.topic: conceptual
 ms.custom:
   - How are you managing your data?
@@ -47,6 +47,9 @@ When you use Azure Database for MySQL or Azure Database for PostgreSQL, the data
 ## Distribute data geographically
 
 Azure services support geographically distributed data, such as Azure SQL Database and SQL Server on virtual machines.
+
+> [!NOTE]
+> For many situations, you should consider using [availability zones](/azure/reliability/availability-zones-overview) to replicate your data between multiple physical locations. Many of Azure's storage and data services support *zone redundant deployments*. In a zone-redundant deployment, Microsoft manages synchronous data replication across availability zones, automatically distributes traffic between the availability zones, and handles failover if an availability zone has an outage.
 
 ### SQL Database
 
