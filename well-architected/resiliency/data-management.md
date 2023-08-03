@@ -49,7 +49,7 @@ When you use Azure Database for MySQL or Azure Database for PostgreSQL, the data
 Azure services support geographically distributed data, such as Azure SQL Database and SQL Server on virtual machines.
 
 > [!NOTE]
-> For many situations, you should consider using [availability zones](/azure/reliability/availability-zones-overview) to replicate your data between multiple physical locations. Many of Azure's storage and data services support *zone redundant deployments*. In a zone-redundant deployment, Microsoft manages synchronous data replication across availability zones, automatically distributes traffic between the availability zones, and handles failover if an availability zone has an outage.
+> For many situations, you should consider using [availability zones](/azure/reliability/availability-zones-overview) to replicate your data between multiple physical locations. Many of Azure's storage and data services support *zone-redundant deployments*. In a zone-redundant deployment, Microsoft manages synchronous data replication across availability zones, automatically distributes traffic between the availability zones, and handles failover if an availability zone has an outage.
 
 ### SQL Database
 
