@@ -27,21 +27,13 @@ This guide describes the best practices for capacity planning. You should perfor
 For new workloads, capacity planning should take place before design. For existing workloads, capacity planning should take place before predicted changes in usage patterns. Changes in usage patterns can change resource needs and alter workload performance. Usage patterns can grow or shrink. They can be organic (more or less users) or inorganic (event or security incident). You need to conduct capacity planning before usage changes, including the following examples:
 
 -   Design (prediction)
-
 -   Regular spikes (8am sign-on rush)
-
 -   Launch (prediction validation)
-
 -   Business model change
-
 -   Acquisition or merger
-
 -   Marketing push
-
 -   Seasonal change
-
 -   Feature launch
-
 -   Periodically
 
 **Identify reachable limits.** Capacity planning should find hard limits in the workload and evaluate if those are in reach. These limits usually apply to infrastructure (compute, memory, storage, network), application (concurrent database connections, response times, availability), service (requests per second), and scaling. When capacity planning identifies reachable limits, you need to modify the workload before the limit becomes a performance issue. Performance baseline, continuous monitoring, and testing are essential to validating the limits and the fix.
@@ -50,7 +42,7 @@ For new workloads, capacity planning should take place before design. For existi
 
 **Understand resource limitations.** Resources in your workload have performance limitations. Performance limitations apply to services and SKUs within each service. You need to understand the limitations of the resources in your workload and should factor those limitations into your design decisions. For example, you should know if resources limitations require changing SKUs or changing resources altogether.
 
-**Conduct trend** **analysis.** Trend analysis uses historical data to identify trends. These trends can be increases or decreases in usage over time (organic). For example, if workload demand has increased by 10% over the past year, then you might forecast a continuation of this trend or a slowdown depending on the suspected causes for growth. Statistical analysis can help identify trends in historical data and help correlate causes and outcomes. For example, linear regression is a common and accessible statistical method that uses historical to make prediction of future trends. All data has outliers and data anomalies that are hard to explain. In linear regression models, the adjusted R square value helps interpret variance and provides a numerical evaluation of predication reliability. You can do this type of analysis easily in Excel.
+**Conduct trend analysis.** Trend analysis uses historical data to identify trends. These trends can be increases or decreases in usage over time (organic). For example, if workload demand has increased by 10% over the past year, then you might forecast a continuation of this trend or a slowdown depending on the suspected causes for growth. Statistical analysis can help identify trends in historical data and help correlate causes and outcomes. For example, linear regression is a common and accessible statistical method that uses historical to make prediction of future trends. All data has outliers and data anomalies that are hard to explain. In linear regression models, the adjusted R square value helps interpret variance and provides a numerical evaluation of predication reliability. You can do this type of analysis easily in Excel.
 
 Trend analysis can also identify the effects of one-time events that cause rapid shifts in traffic up or down (inorganic). For example, data could show a pattern of 5% growth in usage after feature releases. If you have four major releases a year, you should plan for 5% growth each time. You should use data and stakeholder input to inform how you predict the trend will continue (1 year, 3 years).
 

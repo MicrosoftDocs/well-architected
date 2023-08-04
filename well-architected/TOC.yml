@@ -83,12 +83,33 @@
           href: performance-efficiency/principles.md
         - name: Checklist
           href: performance-efficiency/checklist.md
-        - name: Tradeoffs
-          href: performance-efficiency/tradeoffs.md
         - name: Best practices guides   
           items:
-            - name: Establish performance targets
+            - name: Establish performance targets (PE 01)
               href: performance-efficiency/performance-targets.md
+            - name: Conduct capacity planning (PE 02)
+              href: performance-efficiency/capacity-planning.md
+            - name: Select the right resources (PE 03)
+              href: performance-efficiency/select-right-services.md
+            - name: Collect metrics and logs (PE 04)
+              href: performance-efficiency/collect-metrics-logs.md
+            - name: Scale and partition (PE 05)
+              href: performance-efficiency/scale-partition.md
+            - name: Test (PE 06)
+              href: performance-efficiency/test.md
+            - name: Optimize code and resource use (PE 07)
+              href: performance-efficiency/optimize-code-resources.md
+            - name: Optimize data performance (PE 08)
+              href: performance-efficiency/optimize-data-performance.md
+            - name: Prioritize critical flows and users (PE 09)
+              href: performance-efficiency/prioritize-flows-users.md
+            - name: Minimize operations effects (PE 10)
+              href: performance-efficiency/minimize-operations-effects.md
+            - name: Respond to live-site issues (PE 11)
+              href: performance-efficiency/respond-live-performance-issues.md
+            - name: Continous performance optimization (PE 12)
+              href: performance-efficiency/continuous-performance-optimization.md
+            
     - name: Workloads
       items:
       - name: Overview
