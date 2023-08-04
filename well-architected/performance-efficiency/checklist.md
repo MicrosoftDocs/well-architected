@@ -13,39 +13,21 @@ This checklist presents a set of recommendations for your system to scale its ab
 
 Every system has a limit on how much it can be scaled without redesigning, introducing a workaround, or having human involvement. If you haven't checked the boxes and considered the tradeoffs, the design could be at risk. Careful consideration of all the points covered in the checklist will give you confidence in success.
 
-|  Code|        Recommendation|
-|-|-|
+||  Code|        Recommendation|
+|-|-|-|
 | :::image type="icon" source="media/checkbox.png":::|PE: 01| **Define performance targets.** Performance targets are numerical values that derive from your requirements. Performance targets should exist for all workload flows.|
-|PE: 02|      **Conduct formal capacity planning.** Capacity planning should occur before predicted changes in usage patterns such as seasonal variations, product updates, marketing campaigns, special events, and regulatory changes.|
-|  PE: 03|      **Select the right infrastructure, resources, and SKUs.** The selections must support your ability to reach the workload's performance targets. The selections should also weigh the benefits of using platform features or building a custom implementation.|
-|  PE: 04 |     **Collect performance metrics and logs.** Data collection should be on workload components and flows. It should be automatic, continuous, and meaningful. The data should support the workload health model.|
-|  PE: 05  |    **Implement reliable scaling and partitioning**. Scaling and partitioning should be reliable and controlled. The scale unit design of the workload should be the basis of the scaling and partitioning strategy.|
-  |PE: 06     | **Test the** **workload.** Testing should be regular and performed in an environment that matches the production environment. Results should be compared against performance targets and the performance benchmark.|
-|PE: 07|      **Optimize code and resource use.** Code should be performant, and it should offload responsibilities to the platform. Code and infrastructure should only be used for their core purpose and only when necessary.|
-|  PE: 08|      **Optimize data usage.** All data stores, partitions, and indexes should be optimized for their intended and actual use in the workload.|
-|  PE: 09|      **Prioritize the performance of critical flows and critical users.** The allocation of workload resources and performance optimization efforts should prioritize the critical flows and users.|
-|  PE: 10|      **Minimize the effects of operations tasks.** The performance effects of the software development lifecycle and other routine operations should be known and minimized, such as virus scans, secret rotation, backups, and reindexing databases|
-|  PE: 11|      **Respond to live-site performance issues.** Addressing performance issues should be planned with clear lines of communication and responsibilities. Learnings should identify preventive measures to incorporate in the workload and ways to return to normal operations faster in similar incidents.|
-|  PE: 12|      **Continuously optimize performance.** The focus should be on components whose performance deteriorates over time, such as databases and networking features.|
+| :::image type="icon" source="media/checkbox.png":::|PE: 02|      **Conduct formal capacity planning.** Capacity planning should occur before predicted changes in usage patterns such as seasonal variations, product updates, marketing campaigns, special events, and regulatory changes.|
+| :::image type="icon" source="media/checkbox.png":::|  PE: 03|      **Select the right infrastructure, resources, and SKUs.** The selections must support your ability to reach the workload's performance targets. The selections should also weigh the benefits of using platform features or building a custom implementation.|
+| :::image type="icon" source="media/checkbox.png":::|  PE: 04 |     **Collect performance metrics and logs.** Data collection should be on workload components and flows. It should be automatic, continuous, and meaningful. The data should support the workload health model.|
+| :::image type="icon" source="media/checkbox.png":::|  PE: 05  |    **Implement reliable scaling and partitioning**. Scaling and partitioning should be reliable and controlled. The scale unit design of the workload should be the basis of the scaling and partitioning strategy.|
+| :::image type="icon" source="media/checkbox.png":::  |PE: 06     | **Test the** **workload.** Testing should be regular and performed in an environment that matches the production environment. Results should be compared against performance targets and the performance benchmark.|
+| :::image type="icon" source="media/checkbox.png":::|PE: 07|      **Optimize code and resource use.** Code should be performant, and it should offload responsibilities to the platform. Code and infrastructure should only be used for their core purpose and only when necessary.|
+| :::image type="icon" source="media/checkbox.png":::|  PE: 08|      **Optimize data usage.** All data stores, partitions, and indexes should be optimized for their intended and actual use in the workload.|
+| :::image type="icon" source="media/checkbox.png":::|  PE: 09|      **Prioritize the performance of critical flows and critical users.** The allocation of workload resources and performance optimization efforts should prioritize the critical flows and users.|
+| :::image type="icon" source="media/checkbox.png":::|  PE: 10|      **Minimize the effects of operations tasks.** The performance effects of the software development lifecycle and other routine operations should be known and minimized, such as virus scans, secret rotation, backups, and reindexing databases|
+| :::image type="icon" source="media/checkbox.png":::|  PE: 11|      **Respond to live-site performance issues.** Addressing performance issues should be planned with clear lines of communication and responsibilities. Learnings should identify preventive measures to incorporate in the workload and ways to return to normal operations faster in similar incidents.|
+| :::image type="icon" source="media/checkbox.png":::|  PE: 12|      **Continuously optimize performance.** The focus should be on components whose performance deteriorates over time, such as databases and networking features.|
 
-## Tradeoffs
+## Next steps 
 
-*\[This section covers the tradeoffs mentioned in the checklist items. The tradeoffs are tied back to the pillar. Combined tradeoff messaging can be considered.\]*
-
--   *\[Tradeoff 1\] \[Workaround, if applicable\]*
-
--   *Sustainability? Should this surface above in a checklist as part of the defined system's constraints?*
-
--   *Cost is mostly trade-off while adding additional capacity*
-
--   *Critical vs non-critical business flows in the architecture which needs to prioritized in case of performance constraints*
-
-The list
-
-- Visualize.
-
-## Appendix
-
-![Diagram that shows categories in the performance efficiency pillar.](./media/performance-efficiency-categories.png) 
-
-![Diagram that describes how to overcome quality inhibitors.](./media/overcome-quality-inhibitors-performance.png) 
+- [Tradeoffs for performance efficiency](tradeoffs.md)
