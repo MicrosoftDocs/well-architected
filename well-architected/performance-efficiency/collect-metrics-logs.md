@@ -27,7 +27,7 @@ Metrics and logs are essential for monitoring your workload and resolving perfor
   |Metrics sink                                   | A storage destination for your metrics that correlates time series data.|
 |Rx/Tx errors                                    |The number of receive and transmit errors on a network interface.|
 
-## Your responsibility
+## Key design strategy
 
 **Capture enough data**. Performance optimization requires enough data to measure the current performance of a workload or flow against its performance targets. You need to capture enough data to measure the performance of the code and infrastructure against performance targets set in PE:01. This data capture needs be built into your code and platform and collected continuously and automatically. You need to enable or build application and platform monitoring features.
 
