@@ -23,30 +23,30 @@ landingContent:
       - linkListType: overview
         links:
           - text: What is an Azure VMware Solution workload?
-            url: avs-overview.md
+            url: vmware-overview.md
       - linkListType: concept
         links:
           - text: Design principles
-            url: avs-design-principles.md
+            url: vmware-design-principles.md
           - text: Integration with Azure landing zones
-            url: avs-landing-zone-integration.md                                 
+            url: vmware-landing-zone-integration.md
   # Card
   - title: Design areas
     linkLists:
       - linkListType: concept
         links:
-          - text: Azure infrastructure
-            url: avs-infrastructure.md
-          - text: AVS applications
-            url: avs-vmware-application.md
+          - text: Infrastructure
+            url: vmware-infrastructure.md
+          - text: Applications
+            url: vmware-application-platform.md
           - text: Networking
-            url: avs-networking.md
+            url: vmware-networking.md
           - text: Monitoring
-            url: avs-monitoring.md            
+            url: vmware-monitoring.md
           - text: Security
-            url: avs-security.md
+            url: vmware-security.md
           - text: Operations
-            url: avs-operations.md                
+            url: vmware-operations.md
  # Card
   - title: Reference examples
     linkLists:
@@ -54,7 +54,7 @@ landingContent:
         links:
           - text: Baseline Azure VMware Solution reference architecture
             url: /azure/cloud-adoption-framework/scenarios/azure-vmware/example-architectures   
-          - text: AVS landing zone accelerator
+          - text: Azure VMware Solution landing zone accelerator
             url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone
 
  # Card
@@ -83,4 +83,4 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Azure VMware Solution assessment tool
-            url: avs-assessment.md            
+            url: vmware-assessment.md
