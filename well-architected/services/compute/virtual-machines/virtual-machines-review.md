@@ -29,7 +29,7 @@ In this article, you learn architectural best practices for Azure Virtual Machin
 
 - Understanding the Well-Architected Framework pillars can help produce a high quality, stable, and efficient cloud architecture. We recommend that you review your workload using the [Microsoft Azure Well-Architected Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
 
-- Use a reference architecture to review the considerations based on the guidance provided in this article. We recommend, you start with [Run a Linux VM on Azure](/azure/architecture/reference-architectures/n-tier/linux-vm).
+- Use a reference architecture to review the considerations based on the guidance provided in this article. For more information, see [Linux VM](/azure/architecture/reference-architectures/n-tier/linux-vm#architecture) and [ Windows VM](/azure/architecture/reference-architectures/n-tier/windows-vm#architecture) for reference VM architecture on Azure.
 
 
 ## Reliability
@@ -74,10 +74,10 @@ As you make design choices for your virtual machine deployment, review the [desi
 > [!div class="checklist"]
 > - Review the [Linux security baseline](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline).
 > - Review the [Windows security baseline](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline).
-> - Manage authentication and access control.
-> - Protect against malicious actor scenarios.
-> - Plan and implement managed updates.
-> - Classify and configure encryption.
+> - Manage authentication and access control by ensuring strong passwords, multi-factor authentication, and role-based access control are in place for your VMs.
+> - Protect against malicious actor scenarios: Implement security best practices such as firewalls, anti-virus software, and intrusion detection systems to protect against malware attacks, phishing attempts, and DoS attacks
+> - Plan and implement managed updates: Test updates in a non-production environment before deploying them to production, and consider using Azure Update Management to automate the update process.
+> - Classify and configure encryption based on data sensitivity and include using Azure Disk Encryption and SSL/TLS encryption.
 
 ### Recommendations
 
@@ -123,8 +123,8 @@ To estimate costs related to virtual machines, use these tools.
 > [!div class="checklist"]
 > - Shut down VM instances which aren't in use.
 > - Use [Spot VMs](/azure/virtual-machines/spot-vms) when appropriate.
-> - Choose the right VM size for your workload.
-> - Use Azure Bastion to secure operational access to the workload VMs.
+> - Choose the right [VM size](/azure/virtual-machines/sizes) for your workload.
+> - Use [Azure Bastion](/azure/bastion/bastion-overview) to secure operational access to the workload VMs.
 > - Use a Premium SSD v2 disk and, based on your workload patterns, programmatically adjust its performance to account for either higher or lower demand.
 > - For other disk types, size your disks to achieve your desired performance without the need for over-provisioning. Account for fluctuating workload patterns, and minimizing unused provisioned capacity.
 > - Use [Zone to Zone disaster recovery](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery) for virtual machines.
@@ -168,12 +168,11 @@ To ensure operational excellence, review the [design principles](/azure/architec
 > [!div class="checklist"]
 > - [Monitor](/azure/virtual-machines/monitor-vm) and measure health.
 > - Setup Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) for detecting configuration changes in your environment.
-    > - Use the [Application Insights](/azure/azure-monitor/app/app-insights-overview) extension to proactively understand how an application is performing and reactively review application execution data to determine the cause of an incident.
 > - [Automate](/azure/architecture/framework/devops/automation-tasks) tasks like provisioning and updating.
-> - Build a robust testing environment.
-> - Right size your VMs.
-> - Manage your quota.
-> - Optimize with managed disks.
+> - Build a robust testing environment by having a separate testing environment that closely mirrors your production environment and test updates and changes before deploying to production.
+> - Right size your VMs by choosing the appropriate VM size based on your workload requirements and monitor resource utilization to ensure optimal performance and cost.
+> - Manage your quota with monitoring resource usage and adjust your quota as needed to ensure that you have enough resources to meet your needs
+> - Optimize with managed disks for better scalability, availability, performance, and consider using [Azure Disk Encryption](/azure/virtual-machines/disk-encryption-overview) to encrypt your managed disks.
 
 
 ### Recommendations
@@ -216,12 +215,12 @@ As you make design choices for your virtual machine deployment, review [Microsof
 
 > [!div class="checklist"]
 > - Reduce latency by deploying VMs closer together in proximity placement groups.
-> - Convert disks from standard HDD to premium SSD.
-> - Utilize Premium SSD v2 effectively.
-> - Optimize with managed disks.
-> - Consider locally attached NVMe or similar devices for high-performance use cases.
-> - Enable Accelerated Networking to improve network performance and latency
-> - Autoscale your Flexible scale sets.
+> - Convert disks from standard HDD to premium SSD to improve the performance of your virtual machines, especially for I/O-intensive workloads.
+> - Utilize Premium SSD v2 effectively as it is a newer version of premium SSD that offers even better performance and scalability.
+> - Optimize with managed disks to improve scalability, availability, and performance, and simplify disk management tasks such as backup and restore.
+> - Consider locally attached NVMe or similar devices for high-performance use cases such as big data analytics, machine learning, and high-performance computing.
+> - Enable Accelerated Networking to improve network performance and latency.
+> - Autoscale your Flexible scale sets to automatically increase or decrease the number of VM instances that run your application based on demand or a set schedule.
 
 
 ### Recommendations
@@ -257,9 +256,10 @@ Azure Advisor helps you ensure and improve performance. Review the [recommendati
 Here are other resources to help you query for unhealthy instances.
 ### Cost analysis
 Planned versus actual spending can be managed through [Azure Cost Management + Billing](/azure/cost-management-billing/costs/quick-acm-cost-analysis). There are several options for grouping resources by billing unit.
-
 ### Log Analytics
 Collect logs and metrics from the Azure resources and Application Insights with [Azure Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) to gain insights into the performance and health of your VMs. You can also use Log Analytics to query and analyze the data collected by Azure Monitor Logs.
+### Application Insights
+Use the [Application Insights](/azure/azure-monitor/app/app-insights-overview) extension alongside Azure Monitor to proactively understand how an application is performing and reactively review application execution data to determine the cause of an incident.
 
 ## Next steps
 Use the recommendations as you provision virtual machines for your solution.
