@@ -85,29 +85,29 @@
           href: performance-efficiency/checklist.md
         - name: Best practices guides   
           items:
-            - name: Establish performance targets (PE 01)
+            - name: Establish performance targets
               href: performance-efficiency/performance-targets.md
-            - name: Conduct capacity planning (PE 02)
+            - name: Conduct capacity planning
               href: performance-efficiency/capacity-planning.md
-            - name: Select the right resources (PE 03)
+            - name: Select the right resources 
               href: performance-efficiency/select-right-services.md
-            - name: Collect metrics and logs (PE 04)
+            - name: Collect metrics and logs 
               href: performance-efficiency/collect-metrics-logs.md
-            - name: Scale and partition (PE 05)
+            - name: Scale and partition 
               href: performance-efficiency/scale-partition.md
-            - name: Test (PE 06)
+            - name: Test 
               href: performance-efficiency/test.md
-            - name: Optimize code and resource use (PE 07)
+            - name: Optimize code and resource use 
               href: performance-efficiency/optimize-code-resources.md
-            - name: Optimize data performance (PE 08)
+            - name: Optimize data performance 
               href: performance-efficiency/optimize-data-performance.md
-            - name: Prioritize critical flows and users (PE 09)
+            - name: Prioritize critical flows and users 
               href: performance-efficiency/prioritize-flows-users.md
-            - name: Minimize operations effects (PE 10)
+            - name: Minimize operations effects 
               href: performance-efficiency/minimize-operations-effects.md
-            - name: Respond to live-site issues (PE 11)
+            - name: Respond to live-site issues 
               href: performance-efficiency/respond-live-performance-issues.md
-            - name: Continous performance optimization (PE 12)
+            - name: Continous performance optimization
               href: performance-efficiency/continuous-performance-optimization.md
             
     - name: Workloads
