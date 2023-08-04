@@ -61,8 +61,3 @@ Use this checklist to review your application architecture from a performance de
 
 [**Design checklist**](/azure/well-architected/scalability/design-checklist)
 
-*Appendix*
-
-![Diagram that shows categories in the performance efficiency pillar.](./media/performance-efficiency-categories.png) 
-
-![Diagram that describes how to overcome quality inhibitors.](./media/overcome-quality-inhibitors-performance.png) 

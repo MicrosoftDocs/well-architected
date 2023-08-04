@@ -20,7 +20,7 @@ This guide describes the best practices for responding to live-site performance 
   |Self-healing    |                    The automatic detection and resolution of issues within the workload itself without human intervention.|
   |Self-prevention|                     Implementations within a workload to prevent potential issues and failures.|
 
-## Your responsibility
+## Key design strategy
 
 **Prepare for issues.** The ideal response to live-site performance issues is precise and fast. Precision and speed in performance remediation require preparation. The following examples outline a few critical areas of preparation:
 

@@ -29,7 +29,7 @@ This guide describes the best practices for optimizing data performance. Data pe
 |  Online transaction processing (OLTP)|   A technology that records business interactions as they occur in the day-to-day operation of the organization, and supports querying of this data to make inferences|
 |  Read replica|                           A copy of the primary database that allows you to offload read traffic from a write database.|
 
-## Your responsibility
+## Key design strategy
 
 **Understand actual data usage patterns.** The intended usage patterns and the actual usage pattern might vary. Data stores that are built around actual usage usually outperform a data design that is general purpose. You should build data stores around actual usage patterns.
 

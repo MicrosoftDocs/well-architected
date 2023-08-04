@@ -18,7 +18,7 @@ This guide describes the best practices for testing. Performance testing helps y
  | Stress test                 |        A performance test that overloads a system until it breaks.|
   |Synthetic test             |         A performance test that simulates user requests in an application.|
 
-## Your responsibility
+## Key design strategy
 
 ### Performance baselines
 

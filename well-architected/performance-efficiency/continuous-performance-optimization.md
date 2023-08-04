@@ -17,7 +17,7 @@ This guide describes the best practices for continuous performance optimization.
 |-|-|  
 |Technical debt                      |The implied cost of implementing easier design decisions that require future rework.|
 
-## Your responsibility
+## Key design strategy
 
 **Understand performance efficiency.** Performance efficiency is when workload capacity aligns to actual usage. A workload that overperforms is as problematic as one that underperforms. The tradeoffs differ. Over performance affects cost optimization. Under performance affects users. The key to performance efficiency is monitoring, adjusting, and testing. You need to regularly review performance metrics and adjust as necessary to ensure the workload is efficient. Testing all changes pre and post implementation is required to reach performance targets.
 

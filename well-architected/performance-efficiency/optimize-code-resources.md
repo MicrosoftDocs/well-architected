@@ -22,7 +22,7 @@ This guide describes the best practices for optimizing code and resource use. Op
 |  O(N)|                                Big O notation for execution time that increases as the size of the input increases|
 |  O(1)|                                Big O notation for execution time that is constant regardless of the input size.|
 
-## Your responsibility
+## Key design strategy
 
 ### Application
 

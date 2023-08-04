@@ -26,7 +26,7 @@ This guide describes the best practices for establishing and exposing performanc
 |Dependency            |A component that your workload relies on.|
   |Health model         | Flow metrics that define healthy and unhealthy performance|
 
-## Your responsibility
+## Key design strategy
 
 ### Performance targets
 

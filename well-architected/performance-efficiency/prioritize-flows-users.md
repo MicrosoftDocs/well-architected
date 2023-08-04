@@ -18,7 +18,7 @@ This guide describes the best practices for prioritizing the performance of crit
 |  Rate limiting |                      Limiting how many requests can access a resource.|
 | Priority queue processing           |Processing high priority requests before lower priority requests.|
 
-## Your responsibility
+## Key design strategy
 
 **Identify critical flows and critical users.** Critical flows are key processes or transactions within a workload that are crucial for business. Critical users are more important to business than other users. Critical flows and users typically have higher performance targets and service level agreements than non-critical counterparts. Where resources are limited, non-critical flows should yield resources usage to critical flows.
 

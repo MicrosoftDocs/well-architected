@@ -27,7 +27,7 @@ This guide describes the best practices for selecting the right resources. Resou
 |  Storage services                     |Azure services for object, block, and file storage.|
 |Database services|                    Azure services for relational and non-relational databases for your application.|
  
-## Your responsibility
+## Key design strategy
 
 **Consider performance targets.** Select services that allow you to meet performance targets. They should allow you to scale and partition per your design. You also need to select services that emit performance telemetry you can measure. You should be able to collect performance data on all components supporting critical flows.
 

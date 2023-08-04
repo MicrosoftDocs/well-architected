@@ -23,7 +23,7 @@ This guide describes the best practices for minimizing the effects of operations
   |In-place upgrades                 |  Upgrading a component or software without replacing it or migrating to a new environment.|
   |Database schema                    | The general structure of a relational database and its relationships to other data.|
 
-## Your responsibility
+## Key design strategy
 
 ### Operations
 

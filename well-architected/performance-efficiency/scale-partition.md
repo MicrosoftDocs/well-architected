@@ -31,7 +31,7 @@ This guide describes the recommendations for scaling and partitioning. Scaling a
 | Consistency (relational database)|    The idea that a transaction should bring a database from one state to another.|
 |  Consistency level|                    A configuration that describes how and when data is replicated.|
 
-## Your responsibility
+## Key design strategy
 
 **Test scaling behavior.** Scaling might not work how you intend. You should test scaling to understand scaling delays, costs, and issues. You can test on a proof-of-concept. The final scaling strategy for a workload should use this data.
 
