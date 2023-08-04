@@ -20,7 +20,7 @@ This guide describes the best practices for capacity planning. You should perfor
 | Functional requirements|             The features and capabilities a workload must have to fulfill its intended purpose.|
 |  Technical requirements|              The code and infrastructure needed to meet the functional requirements.|
 
-## Your responsibility
+## Key design strategy
 
 **Plan predictively.** Capacity planning is a predictive exercise. The goal is to help ensure a workload performance efficiently when demand grows and when it shrinks. Capacity planning should accommodate short-term and long-term changes due to known events. Periodic capacity planning helps realign predictions to new data.
 
