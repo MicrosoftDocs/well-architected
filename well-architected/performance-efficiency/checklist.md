@@ -15,7 +15,7 @@ Every system has a limit on how much it can be scaled without redesigning, intro
 
 |  Code|        Recommendation|
 |-|-|
-|:black_square_button: |PE: 01| **Define performance targets.** Performance targets are numerical values that derive from your requirements. Performance targets should exist for all workload flows.|
+| :::image type="icon" source="media/checkbox.png":::|PE: 01| **Define performance targets.** Performance targets are numerical values that derive from your requirements. Performance targets should exist for all workload flows.|
 |PE: 02|      **Conduct formal capacity planning.** Capacity planning should occur before predicted changes in usage patterns such as seasonal variations, product updates, marketing campaigns, special events, and regulatory changes.|
 |  PE: 03|      **Select the right infrastructure, resources, and SKUs.** The selections must support your ability to reach the workload's performance targets. The selections should also weigh the benefits of using platform features or building a custom implementation.|
 |  PE: 04 |     **Collect performance metrics and logs.** Data collection should be on workload components and flows. It should be automatic, continuous, and meaningful. The data should support the workload health model.|
