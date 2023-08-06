@@ -38,7 +38,7 @@ However you design your solution, the **Security** pillar continues to apply. Us
 | Availability zone | [A separated group of data centers within a region.][availability-zones-overview] Each availability zone is independent from the others, with its own power, cooling, and networking infrastructure. [Many regions support availability zones.][azure-regions-with-availability-zone-support] |
 | Paired regions | [Some Azure regions][azure-region-pairs] are connected to another defined region to enable specific types of multi-region solutions. [Newer Azure regions aren't paired.][regions-with-availability-zones-and-no-region-pair] |
 | Region architecture | The specific configuration of the Azure region, including the number of availability zones, and whether the region is paired with another region. |
-| Non-zonal | A deployment model where a resource is deployed without reference to an availability zone. In a region that supports availability zones, the resource might be deployed anywhere within the region. |
+| Non-zonal | A deployment model where a resource is deployed into a single region without reference to an availability zone. In a region that supports availability zones, the resource might be deployed anywhere within the region. |
 | Zonal (pinned) | A deployment model where a resource is deployed into a specific availability zone. |
 | Zone redundancy (spread) | A deployment model where a resource is deployed across multiple availability zones, and Microsoft manages data synchronization, traffic distribution, and failover in the event of a zone outage. |
 | Multi-region | A deployment model where resources are deployed into multiple Azure regions. |
@@ -79,13 +79,13 @@ To make an informed decision about how to use availability zones and regions in 
 
 Different organizations have different risk appetites. Even within an organization, risk tolerance is often different for each workload. Most workloads don't need extreme high availability. However, some workloads are so important that it's worth even mitigating risks that are unlikely to occur, like major natural disasters that affect a wide geographic area.
 
-The following table lists a few of the common risks that should be considered in a cloud environment:
+The following table lists fa few of the common risks that should be considered in a cloud environment:
 
 | Risk | Example | Likelihood |
 |-|-|-|
-| Hardware outage | <ul><li>Issue with hard disk or networking equipment</li><li>Host reboots</li></ul> | High. Any resiliency strategy should account for these risks. |
-| Data center outage | <ul><li>Power, cooling, or network failure across an entire data center</li><li>Natural disaster in one part of a metro area</li></ul> | Medium |
-| Region outage | <ul><li>Major natural disaster that affects a wide geographical area</li></ul> | Low |
+| Hardware outage | <ul><li>Issue with hard disk or networking equipment.</li><li>Host reboots.</li></ul> | High. Any resiliency strategy should account for these risks. |
+| Data center outage | <ul><li>Power, cooling, or network failure across an entire data center.</li><li>Natural disaster in one part of a metro area</li></ul> | Medium |
+| Region outage | <ul><li>Major natural disaster that affects a wide geographical area.</li><li>Network or service problem that makes one or more Azure services unavailable in an entire region.</li></ul> | Low |
 
 It would be ideal to mitigate every possible risk for every workload, but it's not practical or cost effective to do so. It's important to have an open discussion with business stakeholders so that you can make an informed decision about the risks you should mitigate.
 
@@ -214,7 +214,7 @@ When you use a zonal deployment model, you take on many responsibilities:
 - In the event of an outage of an availability zone, you need to handle the failover to send traffic to resources in another availability zone.
 
 > [!NOTE]
-> An active/passive deployment across multiple availability zones is sometimes called [*Metro DR*][metro-dr].
+> An active/passive deployment across multiple availability zones is sometimes called *in-region DR* or [*Metro DR*][metro-dr].
 
 A zonal deployment model has the following effects on your architectural concerns:
 
@@ -366,7 +366,7 @@ Fabrikam is migrating a legacy application from an on-premises data center into 
 
 **Business requirements:** Fabrikam emphasize the importance of performance for this application. Resiliency is also important, though, and they need the application to continue to work even if an Azure data center has an outage.
 
-**Suggested approach:** [Zonal (pinned) deployment, with passive deployments across multiple avalability zones (metro DR)](#deployment-approach-2-zonal-pinned-deployments).
+**Suggested approach:** [Zonal (pinned) deployment, with passive deployments across multiple avalability zones (in-region DR)](#deployment-approach-2-zonal-pinned-deployments).
 
 ##### Healthcare application
 
