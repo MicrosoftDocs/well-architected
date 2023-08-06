@@ -25,7 +25,7 @@ Your choice of how you use regions and availability zones affects several of the
 However you design your solution, the **Security** pillar continues to apply. Usually, decisions about whether and how you use availability zones and regions doesn't change your security posture. Azure applies the same security rigor to every region and availability zone.
 
 > [!TIP]
-> For many production workloads, a [zone-redundant (spread) deployment](#deployment-approach-3-zone-redundant-spread-deployments) provides the best balance of tradeoffs. This approach can be extended with [asynchronous data backup to another region](#zone-redundant-spread-deployments-with-backup-across-regions).
+> For many production workloads, a [zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments) provides the best balance of tradeoffs. This approach can be extended with [asynchronous data backup to another region](#zone-redundant-deployments-with-backup-across-regions).
 >
 > Consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
 
@@ -40,7 +40,7 @@ However you design your solution, the **Security** pillar continues to apply. Us
 | Region architecture | The specific configuration of the Azure region, including the number of availability zones, and whether the region is paired with another region. |
 | Locally redundant deployment | A deployment model where a resource is deployed into a single region without reference to an availability zone. In a region that supports availability zones, the resource might be deployed anywhere within the region. |
 | Zonal (pinned) deployment | A deployment model where a resource is deployed into a specific availability zone. |
-| Zone redundant (spread) deployment | A deployment model where a resource is deployed across multiple availability zones, and Microsoft manages data synchronization, traffic distribution, and failover in the event of a zone outage. |
+| Zone redundant deployment | A deployment model where a resource is deployed across multiple availability zones, and Microsoft manages data synchronization, traffic distribution, and failover in the event of a zone outage. |
 | Multi-region | A deployment model where resources are deployed into multiple Azure regions. |
 | Asynchronous replication | A data replication approach where data is written and committed to one place. At a later time, the changes are replicated to another place. |
 | Synchronous replication | A data replication approach where data is written and committed to multiple places, which must each acknowledge completion of the write operation before the overall write is considered to be completed. |
@@ -137,9 +137,9 @@ Suppose you're thinking about deploying a new solution, which includes an applic
 > [!NOTE]
 > This example isn't specific to any particular Azure services. Instead, it's intended as a simple example to illustrate the fundamental concepts.
 
-There are multiple ways that you can deploy this solution, which each provide a different set of benefits and costs. At a high level, you can consider a *locally redundant*, *zonal (pinned)*, *zone-redundant (spread)*, or *multi-region* deployment. The following table summarizes some of the approaches you can use and how they affect your architecture:
+There are multiple ways that you can deploy this solution, which each provide a different set of benefits and costs. At a high level, you can consider a *locally redundant*, *zonal (pinned)*, *zone-redundant*, or *multi-region* deployment. The following table summarizes some of the approaches you can use and how they affect your architecture:
 
-| Architectural Pillar | [Locally Redundant](#deployment-approach-1-locally-redundant-deployments) | [Zonal (Pinned)](#deployment-approach-2-zonal-pinned-deployments) | [Zone-Redundant (Spread)](#deployment-approach-3-zone-redundant-spread-deployments) | [Multi-Region](#deployment-approach-4-multi-region-deployments) |
+| Architectural Pillar | [Locally Redundant](#deployment-approach-1-locally-redundant-deployments) | [Zonal (Pinned)](#deployment-approach-2-zonal-pinned-deployments) | [Zone-Redundant](#deployment-approach-3-zone-redundant-deployments) | [Multi-Region](#deployment-approach-4-multi-region-deployments) |
 |-|-|-|-|
 | Reliability | Low Reliability | Depends on Approach | High or Very High Reliability | High or Very High Reliability |
 | Cost Optimization | Low Cost | Depends on Approach | Moderate Cost | High Cost |
@@ -230,7 +230,7 @@ A zonal deployment model has the following effects on your architectural concern
 
 This approach is typically used when you deploy virtual machine-based workloads. For a complete list of services that support zonal deployments, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
 
-## Deployment approach 3: Zone-redundant (spread) deployments
+## Deployment approach 3: Zone-redundant deployments
 
 In this approach, your application tier is spread across multiple availability zones. When requests arrive, a load balancer built into the service (which itself spans availability zones) spreads the requests across the instances in each availability zone. If an availability zone has an outage, the load balancer moves the traffic to instances in the healthy availability zones.
 
@@ -254,7 +254,7 @@ A zone-redundant deployment model has the following effects on your architectura
 
 This approach is possible with many Azure services, including virtual machine scale sets, App Service, Azure Functions, AKS, Azure Storage, Azure SQL, Service Bus, and many others. For a complete list of services that support zone redundancy, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
 
-### Zone-redundant (spread) deployments with backup across regions
+### Zone-redundant deployments with backup across regions
 
 You can extend a zone-redundant deployment by performing regular backups of your data to a secondary region. This approach gives you the benefits of a zone-redundant approach, with an added layer of protection to mitigate the extremely unlikely event of a full region outage.
 
@@ -350,7 +350,7 @@ Contoso is a large manufacturing company. They are implementing a line of busine
 
 **Business requirements:** The information that the system manages is difficult to replace, so it's important that data is persisted reliably. Their architects have explained that their recovery point objective (RPO) is zero. Similarly, the solution's recovery time objective (RTO) is zero, which means they need to quickly regain access if a disaster happens. Contoso's employees will use this system throughout their workday, so high performance is important so that their team members aren't kept waiting. Cost is also a concern, because the finance team has to pay for this solution themselves.
 
-**Suggested approach:** [Zone-redundant deployment](#deployment-approach-3-zone-redundant-spread-deployments), or [Zone-redundant deployment with backup across regions](#zone-redundant-spread-deployments-with-backup-across-regions).
+**Suggested approach:** [Zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments), or [Zone-redundant deployment with backup across regions](#zone-redundant-deployments-with-backup-across-regions).
 
 ##### Internal application
 
@@ -374,7 +374,7 @@ Lamna Healthcare Company is implementing a new electronic health record system i
 
 **Business requirements:** Because of the nature of the data that this solution stores, data residency is critically important. Lamna Healthcare Company operates under a strict regulatory framework that mandates that data must remain in a specific location.
 
-**Suggested approach:** Lamna might consider a [Zone-redundant (spread) deployment](#deployment-approach-3-zone-redundant-spread-deployments), or [Zone-redundant (spread) deployment with backup across regions](#zone-redundant-spread-deployments-with-backup-across-regions). They could also consider a [Multi-region deployment](#deployment-approach-4-multi-region-deployments) if there are multiple regions that fit their data residency requirements.
+**Suggested approach:** Lamna might consider a [Zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments), or [Zone-redundant deployment with backup across regions](#zone-redundant-deployments-with-backup-across-regions). They could also consider a [Multi-region deployment](#deployment-approach-4-multi-region-deployments) if there are multiple regions that fit their data residency requirements.
 
 ##### Banking system
 
