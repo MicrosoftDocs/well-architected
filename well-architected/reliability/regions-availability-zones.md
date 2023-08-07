@@ -25,7 +25,7 @@ Your choice of how you use regions and availability zones affects several of the
 However you design your solution, the **Security** pillar continues to apply. Usually, decisions about whether and how you use availability zones and regions doesn't change your security posture. Azure applies the same security rigor to every region and availability zone.
 
 > [!TIP]
-> For many production workloads, a [zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments) provides the best balance of tradeoffs. This approach can be extended with [asynchronous data backup to another region](#zone-redundant-deployments-with-backup-across-regions).
+> For many production workloads, a [zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments) provides the best balance of tradeoffs. This approach can be extended with [asynchronous data backup to another region](#zone-redundant-deployments-with-backup-across-regions). If you aren't sure which approach to select, start with this type of deployment.
 >
 > Consider other workload approaches when you need the specific benefits that those approaches bring, but it's important to be aware of the tradeoffs involved.
 
@@ -106,7 +106,7 @@ Your architectural decisions affect your solution's [composite SLA][composite-sl
 
 ##### Data residency
 
-Some organizations place restrictions on the physical locations into which their data can be stored and processed. Sometimes these requirements are based on legal or regulatory standards, while in other situations organizations might decide to adopt a data residency policy themselves to avoid customer concerns. Strict data residency requirements might mean you need to use a single-region deployment, or use a selected subset of Azure regions.
+Some organizations place restrictions on the physical locations into which their data can be stored and processed. Sometimes these requirements are based on legal or regulatory standards, while in other situations organizations might decide to adopt a data residency policy themselves to avoid customer concerns. Strict data residency requirements might mean you need to use a single-region deployment, or use a selected subset of Azure regions and services. <!-- TODO regions by service -->
 
 > [!NOTE]
 > Avoid making unfounded assumptions about your data residency requirements. If you have to comply with specific regulatory standards, verify what those standards actually specify.
@@ -348,7 +348,7 @@ This section describes describes some common use cases, and the key requirements
 
 Contoso is a large manufacturing company. They are implementing a line of business application to manage aspects of their financial processes.
 
-**Business requirements:** The information that the system manages is difficult to replace, so it's important that data is persisted reliably. Their architects have explained that their recovery point objective (RPO) is zero. Similarly, the solution's recovery time objective (RTO) is zero, which means they need to quickly regain access if a disaster happens. Contoso's employees will use this system throughout their workday, so high performance is important so that their team members aren't kept waiting. Cost is also a concern, because the finance team has to pay for this solution themselves.
+**Business requirements:** The information that the system manages is difficult to replace, so it's important that data is persisted reliably. Their architects have explained that they need as little downtime and as little data loss as possible. Contoso's employees will use this system throughout their workday, so high performance is important so that their team members aren't kept waiting. Cost is also a concern, because the finance team has to pay for this solution themselves.
 
 **Suggested approach:** [Zone-redundant deployment](#deployment-approach-3-zone-redundant-deployments), or [Zone-redundant deployment with backup across regions](#zone-redundant-deployments-with-backup-across-regions).
 
