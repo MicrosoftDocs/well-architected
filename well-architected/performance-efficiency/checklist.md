@@ -31,4 +31,4 @@ Every system has a limit on how much it can be scaled without redesigning, intro
 ## Next steps 
 
 > [!div class="nextstepaction"]
-> [Tradeoffs for performance efficiency]tradeoffs.md)
+> [Tradeoffs for performance efficiency](tradeoffs.md)
