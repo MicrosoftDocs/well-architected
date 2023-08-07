@@ -198,13 +198,13 @@ A unified data sink is required to ensure all operational data is swiftly stored
 - [Query packs](/azure/azure-monitor/logs/query-packs) are Azure Resource Manager resources, which can be used to protect and recover log queries if the Log Analytics workspace is unavailable.
   - Query packs contain queries as JSON and can be stored external to Azure similar to other infrastructure-as-code assets.
     - Deployable through the Microsoft.Insights REST API.
-    - If a Log ANalytics workspace must be re-created the query pack can be redeployed from an externally stored definition.
+    - If a Log Analytics workspace must be re-created the query pack can be redeployed from an externally stored definition.
 
 - Application Insights can be deployed in a workspace-based deployment model, underpinned by a Log Analytics workspace where all the data is stored.
 
 - [Sampling](/azure/azure-monitor/app/sampling) can be enabled within Application Insights to reduce the amount of telemetry sent and optimize data ingest costs.
 
-- All data collected by Azure Monitor, including Application Insights, [is charged based on the volume of data ingested and the duration that data is retained](https://azure.microsoft.com/pricing/details/monitor/).
+- All data collected by Azure Monitor, including Application Insights, is [charged](https://azure.microsoft.com/pricing/details/monitor/) based on the volume of data ingested and the duration that data is retained.
   - Data ingested into a Log Analytics workspace can be retained at no additional charge up to first 31 days (90 days if Sentinel is enabled)
   - Data ingested into a workspace-based Application Insights is retained for the first 90 days at no extra charge.
 
