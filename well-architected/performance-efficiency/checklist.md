@@ -1,13 +1,13 @@
 ---
-title: Checklist for performance efficiency
-description: Use a checklist to help ensure success with performance efficiency.  
+title: Design review checklist for Performance Efficiency
+description: Use this checklist to assess and verify the completeness of your design for performance efficiency.  
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Checklist for Performance Efficiency
+# Design review checklist for Performance Efficiency
 
 This checklist presents a set of recommendations for your system to scale its ability to grow to meet workload usage demand. The goal of **performance** is that every valid interaction to a healthy system continues to be efficient even as demand increases. This must be designed and implemented with focus on **efficiency and effectiveness** in cost, complexity, supporting new requirements, technical debt, reporting, and toil factored in.
 
