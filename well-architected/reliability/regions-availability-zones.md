@@ -71,6 +71,14 @@ Many regions also have a [*paired region*][azure-region-pairs]. Paired regions s
 
 For more information about how Azure uses regions and availability zones, see [What are Azure regions and availability zones?][availability-zones-overview]
 
+### Understand shared responsibilities
+
+The [shared responsibility principle](/azure/security/fundamentals/shared-responsibility) describes how responsibilities are divided between the cloud provider (Microsoft) and you. Depending on the type of services you use, you might take more or less responsibility for operating the service.
+
+Microsoft provides availability zones and regions to give you flexibility in how you design your solution to meet your requirements. When you use managed services, Microsoft takes on more of the management responsibilities for your resources, which might even include data replication, failover, failback, and other concerns related to operating a distributed system.
+
+Regardless of the approach you follow, it's important that your own code follows recommended practices for handling transient failures. These practices are even more important in a multi-zone or multi-region solution, because failover between zones or regions usually requires that your application retry connections to services. <!-- Link to RE:06 -->
+
 ### Identify key business and workload requirements
 
 To make an informed decision about how to use availability zones and regions in your solution, you need to understand your requirements. These requirements should be driven by discussions between solution designers and business stakeholders.
