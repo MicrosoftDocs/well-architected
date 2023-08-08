@@ -5,10 +5,6 @@ author: PageWriter-MSFT
 ms.author: martinek
 ms.date: 04/09/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
-products:
-  - azure
 categories:
   - management-and-governance
   - security

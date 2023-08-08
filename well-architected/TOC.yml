@@ -164,6 +164,8 @@ items:
                 href: security/monitor-security-operations.md
           - name: Tradeoffs
             href: security/security-tradeoffs.md
+          - name: Security patterns
+            href: security/security-patterns.md
       - name: Cost Optimization
         items:
           - name: About

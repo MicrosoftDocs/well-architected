@@ -5,10 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/03/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-efficiency
-products:
-  - azure-blob-storage
 ms.custom:
   - How are you ensuring you have sufficient capacity?
   - article

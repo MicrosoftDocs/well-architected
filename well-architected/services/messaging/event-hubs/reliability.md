@@ -5,10 +5,8 @@ author: martinekuan
 ms.author: martinek
 ms.date: 01/12/2022
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
-  - event-hubs
+  - azure-event-hubs
 categories:
   - messaging
   - management-and-governance

@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 products:
   - azure-app-service
 categories:
@@ -29,7 +27,7 @@ The following sections include design considerations, a configuration checklist,
 
 ## Design considerations
 
-Microsoft guarantees that Azure App Service will be available `99.95%` of the time. However, no SLA is provided using either the Free or Shared tiers.
+Microsoft guarantees that Azure App Service will be available `99.95%` of the time. The SLA is supported when running on either a single instance or on multiple instances. However, no SLA is provided using either the Free or Shared tiers.
 
 For more information, reference the [SLA for App Service](https://azure.microsoft.com/support/legal/sla/app-service/v1_4/).
 

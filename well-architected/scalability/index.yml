@@ -12,9 +12,10 @@ metadata:
   manager: david-stanford
   ms.date: 05/18/2023
   ms.topic: landing-page
+  ms.collection: na
   ms.service: waf
   ms.subservice: waf-pillar-efficiency
-  ms.collection: na
+
 
 landingContent:
 # Cards and links should be based on top customer tasks or top subjects

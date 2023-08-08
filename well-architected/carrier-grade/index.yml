@@ -10,9 +10,9 @@ metadata:
   ms.author: prwilk
   ms.date: 08/23/2022
   ms.topic: landing-page
-  ms.service: architecture-center
-  ms.subservice: well-architected
   ms.collection: na
+  ms.service: waf
+  ms.subservice: waf-workload-carrier-grade
 
 landingContent:
 # Cards and links should be based on top customer tasks or top subjects
@@ -40,4 +40,10 @@ landingContent:
             url: carrier-grade-design-area-health-modeling.md
           - text: Testing and validation
             url: carrier-grade-design-area-testing.md
-
+   # Card
+  - title: Reference architecture
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Carrier-grade voicemail solution
+            url: /azure/architecture/industries/telecommunications/carrier-grade

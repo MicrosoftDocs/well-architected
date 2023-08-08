@@ -5,8 +5,6 @@ author: erjosito
 ms.author: martinek
 ms.date: 05/09/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-excellence
 ---
 
 # Testing your application and Azure environment

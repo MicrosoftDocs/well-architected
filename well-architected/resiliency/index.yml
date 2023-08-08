@@ -12,13 +12,12 @@ metadata:
   manager: david-stanford
   ms.date: 02/04/2022
   ms.topic: landing-page
-  ms.service: architecture-center
-  ms.subservice: well-architected
   ms.collection: na
-  products:
-    - azure
   categories:
     - management-and-governance
+  ms.service: waf
+  ms.subservice: waf-pillar-reliability
+    
 
 landingContent:
 # Cards and links should be based on top customer tasks or top subjects
@@ -160,6 +159,8 @@ landingContent:
             url: /azure/advisor/azure-advisor-score
           - text: Azure Kubernetes Service (AKS)
             url: /azure/aks/availability-zones
+          - text: Azure Virtual Machines 
+            url: /azure/virtual-machines/reliability-virtual-machines
           - text: Azure SQL Database
             url: /azure/azure-sql/database/high-availability-sla
           - text: Azure API Management

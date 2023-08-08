@@ -1,7 +1,13 @@
 {
   "BaseConfiguration": "docutune-default.json",
-  "DocSets": {
-    "well-architected": "/azure/architecture/well-architected"
-  },
-  "MetadataMultilineValues": true
+  "DocSets": [
+    {
+      "DocsetName": "well-architected",
+      "BasePath": "/azure/well-architected"
+    }
+  ],
+  "MarkdownListIndicator": "-",
+  "MetadataMultilineValues": true,
+  "MetadataRemoveEmptyAttributes": true,
+  "TermFiles": [ "Bundle-Standard.txt", "Bundle-Cloud.txt" ]
 }

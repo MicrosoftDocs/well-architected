@@ -5,12 +5,8 @@ author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-efficiency
 ms.custom:
   - references_regions
-products:
-  - azure
 categories:
   - management-and-governance
 ---
@@ -112,6 +108,7 @@ The following Azure services also offer autoscaling capability:
 - [Azure Application Gateway](/azure/application-gateway/overview) and [Azure API Management](/azure/api-management/api-management-key-concepts) are PaaS offerings for ingress services that enable autoscale.
 - [Azure Functions](/azure/azure-functions/functions-overview), [Azure Logic Apps](/azure/logic-apps/logic-apps-overview), and [Azure App Services](/azure/app-service/overview) provide serverless pay-per-use consumption modeling that inherently provides autoscaling capabilities.
 - [Azure SQL Database](/archive/blogs/sqlserverstorageengine/azure-sql-database-scalability) is a PaaS platform that changes performance characteristics of a database on the fly and assigns more resources when needed or releases them when not needed. SQL Database allows [scaling up/down](/archive/blogs/sqlserverstorageengine/azure-sql-database-scalability#scaling-updown), [read scale-out](/archive/blogs/sqlserverstorageengine/azure-sql-database-scalability#read-scale-out), and [global scale-out/sharding](/archive/blogs/sqlserverstorageengine/azure-sql-database-scalability#global-scale-outsharding) capabilities.
+- [Azure Container Apps](/azure/container-apps/overview) can dynamically scale based on the following characteristics: HTTP traffic, event-driven processing, CPU or memory load, and any KEDA-supported scaler
 
 Each service documents its autoscale capabilities. For a general discussion about Azure platform autoscaling, see [Overview of autoscale in Azure](/azure/azure-monitor/platform/autoscale-overview).
 

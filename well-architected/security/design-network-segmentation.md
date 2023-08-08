@@ -5,16 +5,10 @@ author: tremansdoerfer
 ms.author: martinek
 ms.date: 12/07/2021
 ms.topic: conceptual
-ms.service: architecture-center
-ms.subservice: well-architected
 azureCategories:
   - hybrid
   - networking
   - security
-products:
-  - azure-firewall
-  - azure-virtual-network
-  - azure-express-route
 ms.custom:
   - article
 categories:

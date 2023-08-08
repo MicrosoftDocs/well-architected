@@ -6,8 +6,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/02/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-reliability
 ms.custom:
   - design-pattern
 keywords:
@@ -15,6 +13,8 @@ keywords:
 ---
 
 # Reliability patterns
+
+The document offers an insightful and comprehensive resource for understanding the principles and techniques behind building highly reliable and resilient systems in the cloud. Covering a wide range of topics such as fault tolerance, redundancy, monitoring, and recovery, this guide equips architects and developers with essential knowledge to design robust solutions that can withstand failures and deliver continuous availability.
 
 ## Availability
 
@@ -26,6 +26,7 @@ Availability is measured as a percentage of uptime, and defines the proportion o
 | [Geode](/azure/architecture/patterns/geodes) | Deploy backend services into a set of geographical nodes, each of which can service any client request in any region. |
 | [Health Endpoint Monitoring](/azure/architecture/patterns/health-endpoint-monitoring) | Implement functional checks in an application that external tools can access through exposed endpoints at regular intervals. |
 | [Queue-Based Load Leveling](/azure/architecture/patterns/queue-based-load-leveling) | Use a queue that acts as a buffer between a task and a service that it invokes to smooth intermittent heavy loads. |
+| [Rate Limit Pattern](/azure/architecture/patterns/rate-limiting-pattern) | Limiting pattern to help you avoid or minimize throttling errors related to these throttling limits and to help you more accurately predict throughput. |
 | [Throttling](/azure/architecture/patterns/throttling) | Control the consumption of resources by an instance of an application, an individual tenant, or an entire service. |
 
 To mitigate against availability risks from malicious distributed denial of service (DDoS) attacks, implement the native [Azure DDoS protection](/azure/virtual-network/ddos-protection-overview) service or a third-party capability.

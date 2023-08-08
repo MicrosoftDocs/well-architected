@@ -5,12 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 05/04/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-efficiency
-products:
-  - azure-cost-management
-  - azure-security-center
-  - azure-monitor
 categories:
   - management-and-governance
 subject:

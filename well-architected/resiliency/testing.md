@@ -5,8 +5,6 @@ author: martinekuan
 ms.author: martinek
 ms.date: 04/27/2023
 ms.topic: conceptual
-ms.service: waf
-ms.subservice: waf-pillar-reliability
 ms.custom:
   - How do you test your applications to ensure they're fault tolerant?
   - article
