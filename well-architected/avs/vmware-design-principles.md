@@ -15,28 +15,27 @@ Guidance about well-architected Azure VMware Solution workloads is built on the 
 
 | Well-Architected Framework pillar | Summary |
 | --- | --- |
-| Reliability | An Azure VMware Solution workload requires platform resiliency and high availability to protect critical business data. You can use the Well-Architected Framework to assess hybrid workloads that run in Azure VMware Solution and have an application footprint extending to Azure native services. |
+| Reliability | An Azure VMware Solution workload requires platform resiliency and high availability to protect critical business data. You can use the Well-Architected Framework to assess hybrid workloads that run in Azure VMware Solution and have an application footprint that extends to Azure native services. |
 | Security | This pillar is concerned with implementing measures that help protect your workload from threats. Examples include adding multiple security layers to your applications, including identity and access management (IAM), input validation, data sovereignty, and encryption for distributed denial-of-service (DDoS) mitigation. Other measures include blocking bad actors, preventing data exfiltration, and providing protection from operating system vulnerabilities. |
 | Cost optimization | A well-architected application deployment meets performance expectations while reducing the total cost of ownership. |
 | Performance efficiency | When your application demonstrates performance efficiency, it can optimize disk operations and has sufficient resources to scale with demand. It also minimizes network latency to make communication between the components of a distributed workload efficient. This pillar also includes load balancing, geographic placement, and caching mechanisms. |
-| Operational excellence | This pillar focuses on smooth operations and maximizing the value you derive from VMware deployments. These goals are achievable combine automation, monitoring, implementing security measures, disaster recovery planning, performance optimization, and effective documentation. |
+| Operational excellence | This pillar focuses on smooth operations and maximizing the value you derive from VMware deployments. These goals are achievable by combining automation, monitoring, security measures, disaster recovery planning, performance optimization, and effective documentation. |
 
 ## Reliability
 
-Because failures can occur on-premises and in the cloud, it's important to design the Azure VMware Solution workload focusing on resilience and availability.
+Because failures can occur on-premises and in the cloud, it's important to focus on resilience and availability when you design an Azure VMware Solution workload.
+
 - _Resiliency_ refers to recovering from failures and maintaining functionality.
   
 - _Availability_ ensures uninterrupted uptime. High availability minimizes application downtime during critical maintenance activities. It also enhances recovery from incidents like virtual machine (VM) crashes, backend updates, extended downtimes, and ransomware attacks.
 
 Achieving reliability requires a comprehensive approach that spans architecture, operational procedures, automation, monitoring, regular testing, and validation.
 
-- **Define SLAs** to ensure the reliability of the workload
-- Scale workloads **vertically** by selecting a VM SKU that will meet the workloads resources such as CPU and Memory. Scale **horizontally** by adding additional instances of the VM
-- **Design for High Availability** redundancy and failover mechanisms to ensure continuous operations. **Distribute traffic** by considering strategies such as load balancing to distribute traffic across multiple backend sources. 
-- **Implement Fault-Tolerant** storage to ensure data integrity and availability using technologies such as RAID or Distributed Storage systems. 
-- **Understand Backup and Restore capabilities** for data recovery in case of accidental deletion, corruption, or other data loss scenarios. Documenting application dependencies and backup/restore procedures also help streamline recovery processes.
-
-
+- **Define service-level agreements (SLAs)** to help ensure the reliability of your workload.
+- Scale workloads **vertically** by selecting a VM SKU that's appropriate for your workload's resources such as CPU and memory. Scale **horizontally** by adding VM instances.
+- **Design for high availability** by implementing redundancy and failover mechanisms to help ensure continuous operations. **Distribute traffic** by considering strategies such as load balancing to distribute traffic across multiple back-end sources.
+- **Implement fault-tolerant** storage to help ensure data integrity and availability by using technologies such as redundant array of independent disks (RAID) configurations or distributed storage systems.
+- **Understand backup and restore capabilities** for data recovery in case of accidental deletion, corruption, or other data loss scenarios. Documenting application dependencies and backup and restore procedures also helps to streamline recovery processes.
 
 ## Security
 
@@ -45,11 +44,11 @@ In a shared-responsibility model:
 - Organizations are primarily responsible for managing and operating workloads.
 - Microsoft manages the physical and virtual infrastructure of Azure VMware Solution.
 
-It's strongly recommended that you regularly assess the services and technologies to ensure that your security posture adapts to the evolving threat landscape. Establishing a clear understanding of the shared responsibility model when you collaborate with vendors to implement suitable security measures is also essential.
+We strongly recommend that you regularly assess the services and technologies to ensure that your security posture adapts to the evolving threat landscape. Establishing a clear understanding of the shared responsibility model when you collaborate with vendors to implement suitable security measures is also essential.
 
 You can employ several methods to secure your Azure VMware Solution environment:
 
-- Implement network isolation using segments, virtual LANs, and network security groups for Azure native services.
+- Implement network isolation by using segments, virtual LANs, and network security groups for Azure native services.
 - Manage patches effectively.
 - Conduct environmental audits regularly.
 - Monitor security with a security information and event management (SIEM) solution like Microsoft Sentinel.
