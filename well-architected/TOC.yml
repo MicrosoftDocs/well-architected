@@ -366,29 +366,29 @@ items:
           - name: Azure VMware Solution
             items:
               - name: Quick links
-                href: avs/index.yml
+                href: azure-vmware/index.yml
               - name: Get started
-                href: avs/vmware-overview.md
+                href: azure-vmware/overview.md
               - name: Design principles
-                href: avs/vmware-design-principles.md
+                href: azure-vmware/design-principles.md
               - name: Design areas
                 items:
                 - name: Infrastructure
-                  href: avs/vmware-infrastructure.md
+                  href: azure-vmware/infrastructure.md
                 - name: Applications
-                  href: avs/vmware-application-platform.md
+                  href: azure-vmware/application-platform.md
                 - name: Networking
-                  href: avs/vmware-networking.md
+                  href: azure-vmware/networking.md
                 - name: Monitoring
-                  href: avs/vmware-monitoring.md
+                  href: azure-vmware/monitoring.md
                 - name: Security
-                  href: avs/vmware-security.md
+                  href: azure-vmware/security.md
                 - name: Operations
-                  href: avs/vmware-operations.md
+                  href: azure-vmware/operations.md
               - name: Azure landing zone integration
-                href: avs/vmware-landing-zone-integration.md
+                href: azure-vmware/landing-zone-integration.md
               - name: Assessment
-                href: avs/vmware-assessment.md
+                href: azure-vmware/assessment.md
           - name: Mission-critical
             items:
               - name: Quick links

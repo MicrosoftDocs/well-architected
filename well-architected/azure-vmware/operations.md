@@ -1,5 +1,5 @@
 ---
-title: Operations considerations for Azure VMware Solution
+title: Operations considerations for Azure VMware Solution workloads
 description: Examine Azure VMware Solution operational procedures. See how to use tools and practices like tagging and incident management to efficiently operate workloads.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Operations considerations for Azure VMware Solution
+# Operations considerations for Azure VMware Solution workloads
 
 This article discusses the operations design area for Azure VMware Solution. The aim of this article is to build an operating model for Azure VMware Solution and the applications within the WMware software-defined datacenter (SDDC). Standard operating procedures (SOPs) are documented processes for managing a workload. Each Azure VMware Solution workload should have SOPs to govern operations. To stay aligned with business objectives and to help prevent drift from best practices, use SOPs in a continuous cycle of assessment and health checks that you run on your Azure VMware Solution workload.
 
@@ -185,9 +185,9 @@ It's more challenging for attackers to access or misuse encrypted data if they d
 Now that you've looked at operational management procedures, see how to integrate an Azure VMware Solution workload with Azure landing zones.
 
 > [!div class="nextstepaction"]
-> [Landing zone integration](./vmware-landing-zone-integration.md)
+> [Landing zone integration](./landing-zone-integration.md)
 
 Use the assessment tool to evaluate your design choices.
 
 > [!div class="nextstepaction"]
-> [Assessment](./vmware-assessment.md)
+> [Assessment](./assessment.md)

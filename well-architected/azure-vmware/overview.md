@@ -1,5 +1,5 @@
 ---
-title: VMware workloads on Azure
+title: Azure VMware Solution workloads
 description: See general guidance and resources for using Azure VMware Solution to run an on-premises VMware technology stack on Azure.
 author: sblair01
 ms.author: prwilk
@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# VMware workloads on Azure
+# Azure VMware Solution workloads
 
 This guidance is intended for **workload owners**, **technical stakeholders**, and **business stakeholders**. Specifically, this guidance is appropriate for people who play an integral role in harnessing, developing, and upholding applications throughout the Azure VMware Solution software-defined datacenter (SDDC) lifecycle. This documentation provides prescriptive guidance and best practices for key design areas that have a technical foundation in Azure Well-Architected Framework pillars. The recommendations center on Azure VMware Solution, a managed service for migrating on-premises VMware workloads to Azure.
 
@@ -27,7 +27,7 @@ When you use this unique hybrid environment, you can retain certain workloads on
 - Azure native integrations
 - Disaster recovery locations
 
-Azure VMware Solution offers a consistent VMware infrastructure within Azure. When you employ this service, your team can use familiar VMware processes, skills, and tools like vSphere, HCX, and NSX-T. You can also streamline the management of your cloud-based workloads.
+Azure VMware Solution offers a consistent VMware infrastructure within Azure. When you employ this service, your team can use familiar VMware processes, skills, and tools like VMware vSphere, VMware HCX, and VMware NSX-T Data Center. You can also streamline the management of your cloud-based workloads.
 
 ## The Well-Architected Framework approach
 
@@ -71,12 +71,12 @@ Azure VMware Solution uses VMware and Microsoft propriety services. The followin
 
 |Design area|Summary|
 |---|---|
-|[Application platform](./vmware-application-platform.md)| Optimize the performance, security, and manageability of application platforms that run on Azure VMware Solution. Efficiently manage VM sizing, application deployment, orchestration, connectivity, and access controls.|
-|[Infrastructure](./vmware-infrastructure.md)|Manage the underlying infrastructure of a workload. Examples include right-sizing VMs, designing for fault tolerance, defining traffic flow, and applying security best practices such as encryption and access controls.|
-|[Monitoring](./vmware-monitoring.md)|Gain insights into application behavior by monitoring resource utilization, health, availability, and capacity expansion. Use visualization tools to track trends and anomalies.|
-|[Networking](./vmware-networking.md)|Enable seamless connectivity and communication between resources. Efficiently allocate IP addresses to avoid conflicts. Isolate workloads for enhanced security and performance. Design for redundancy and high availability.|
-|[Operations](./vmware-operations.md)|Ensure that day-to-day management and maintenance of your Azure VMware Solution environment remains secure, efficient, and reliable over time.|
-|[Security](./vmware-security.md)|Implement security measures that help protect your workload from threats.|
+|[Application platform](./application-platform.md)| Optimize the performance, security, and manageability of application platforms that run on Azure VMware Solution. Efficiently manage VM sizing, application deployment, orchestration, connectivity, and access controls.|
+|[Infrastructure](./infrastructure.md)|Manage the underlying infrastructure of a workload. Examples include right-sizing VMs, designing for fault tolerance, defining traffic flow, and applying security best practices such as encryption and access controls.|
+|[Monitoring](./monitoring.md)|Gain insights into application behavior by monitoring resource utilization, health, availability, and capacity expansion. Use visualization tools to track trends and anomalies.|
+|[Networking](./networking.md)|Enable seamless connectivity and communication between resources. Efficiently allocate IP addresses to avoid conflicts. Isolate workloads for enhanced security and performance. Design for redundancy and high availability.|
+|[Operations](./operations.md)|Ensure that day-to-day management and maintenance of your Azure VMware Solution environment remains secure, efficient, and reliable over time.|
+|[Security](./security.md)|Implement security measures that help protect your workload from threats.|
 
 ## Example workloads
 
@@ -89,7 +89,7 @@ For more information, see the following reference architectures:
 
 ## Azure landing zones
 
-In an enterprise setup, your workload shares platform resources that central teams manage. The design areas can provide points of integration with those shared resources. For a description of that integration, see [Integrate an Azure VMware Solution workload with Azure landing zones](vmware-landing-zone-integration.md).
+In an enterprise setup, your workload shares platform resources that central teams manage. The design areas can provide points of integration with those shared resources. For a description of that integration, see [Integrate an Azure VMware Solution workload with Azure landing zones](landing-zone-integration.md).
 
 Examples that demonstrate architectural best practices back up this guidance. Use the following implementations as a starting point for your workload:
 
@@ -103,11 +103,11 @@ An open-source collection of Azure Resource Manager and Bicep templates is avail
 Use the assessment tool to evaluate your design choices.
 
 > [!div class="nextstepaction"]
-> [Assessment](./vmware-assessment.md)
+> [Assessment](./assessment.md)
 
 ## Next steps
 
 Start by reviewing design principles.
 
 > [!div class="nextstepaction"]
-> [Design principles](./vmware-design-principles.md)
+> [Design principles](./design-principles.md)

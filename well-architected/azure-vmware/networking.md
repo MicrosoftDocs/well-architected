@@ -1,5 +1,5 @@
 ---
-title: Networking considerations for Azure VMware Solution
+title: Networking considerations for Azure VMware Solution workloads
 description: Understand Azure VMware Solution networking concepts. See techniques for improving the security, operations, and scalability of networks.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Networking considerations for Azure VMware Solution
+# Networking considerations for Azure VMware Solution workloads
 
 This article discusses the networking design area of an Azure VMware Solution workload. Well-architected networks are critical for enabling connectivity, optimizing response times, distributing traffic, and helping to ensure continuous availability of workloads in Azure VMware Solution.
 
@@ -68,7 +68,7 @@ The network is a critical perimeter in the Azure VMware Solution environment. Ne
 
 - Use network security groups to restrict traffic to VMs and other application components. Also use these groups to restrict traffic in virtual networks, in subnets, and from Azure VMware Solution.  
 - Create segments and virtual LANs for your Azure VMware Solution workloads.
-- Create firewall rules within NSX-T.
+- Create firewall rules within VMware NSX-T Data Center.
 
 ## Design IP addressing schemes for growth
 
@@ -90,9 +90,9 @@ Besides a /22 RFC-1918 address range, workload segments have separate, nonconfli
 Now that you've examined networking in Azure VMware Solution, investigate best practices for monitoring your infrastructure and application.
 
 > [!div class="nextstepaction"]
-> [Monitoring](./vmware-monitoring.md)
+> [Monitoring](./monitoring.md)
 
 Use the assessment tool to evaluate your design choices.
 
 > [!div class="nextstepaction"]
-> [Assessment](./vmware-assessment.md)
+> [Assessment](./assessment.md)

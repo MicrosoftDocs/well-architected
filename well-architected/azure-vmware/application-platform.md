@@ -1,5 +1,5 @@
 ---
-title: Application considerations for Azure VMware Solution
+title: Application considerations for Azure VMware Solution workloads
 description: Understand Azure VMware Solution application platforms. See how to design for scalability, resiliency, efficient resource distribution, and enhanced security.
 author: sblair01
 ms.author: prwilk
@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Application considerations for Azure VMware Solution
+# Application considerations for Azure VMware Solution workloads
 
 This article discusses the application platform design area of an Azure VMware Solution workload. This area covers the specific tasks and responsibilities that are associated with deploying, configuring, and maintaining applications that you host in an Azure VMware Solution environment. An application owner is responsible for the applications in an Azure VMware Solution environment. This individual or team manages aspects that are related to the deployment, configuration, monitoring, and maintenance of the applications.
 
@@ -73,7 +73,7 @@ Application teams must comprehensively evaluate VM placement and engage in metic
 
 ##### Recommendations
 
-- Carefully plan how you use VM-host affinity policies. Consider alternative solutions when possible, such as load balancing, resource pools in vSphere, distributed databases, containerization, and availability zones.
+- Carefully plan how you use VM-host affinity policies. Consider alternative solutions when possible, such as load balancing, resource pools in VMware vSphere, distributed databases, containerization, and availability zones.
 - Regularly monitor resource utilization and performance to identify any imbalances or issues.
 - Opt for a VM placement strategy that's balanced and flexible. This approach helps you maximize resource utilization while maintaining high availability and ensuring compliance with licensing requirements.
 - Test and validate your VM-host affinity configurations to ensure that they align with your application's specific requirements and that they don't negatively impact overall performance and resilience.
@@ -168,9 +168,9 @@ Example policies can involve the following factors:
 Now that you've examined the application platform, see how to establish connectivity, create perimeters for your workload, and evenly distribute traffic to your application workloads.
 
 > [!div class="nextstepaction"]
-> [Networking](./vmware-networking.md)
+> [Networking](./networking.md)
 
 Use the assessment tool to evaluate your design choices.
 
 > [!div class="nextstepaction"]
-> [Assessment](./vmware-assessment.md)
+> [Assessment](./assessment.md)

@@ -1,5 +1,5 @@
 ---
-title: Security considerations for Azure VMware Solution
+title: Security considerations for Azure VMware Solution workloads
 description: Examine Azure VMware Solution security considerations. See how to encrypt data, use network segmentation, detect threats, and implement other security measures.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Security considerations for Azure VMware Solution
+# Security considerations for Azure VMware Solution workloads
 
 This article discusses the security design area of an Azure VMware Solution workload. The discussion covers various measures for helping to secure and protect Azure VMware Solution workloads. These measures help protect infrastructure, data, and applications. This approach to security is a holistic one that aligns with an organization's core priorities.
 
@@ -78,7 +78,7 @@ The tier-1 routers are positioned in front of the segments. These routers provid
 ##### Recommendations
 
 - Use network segments to logically separate and monitor components.
-- Use micro-segmentation capabilities that are native to NSX-T to restrict network communication between application components.
+- Use micro-segmentation capabilities that are native to VMware NSX-T Data Center to restrict network communication between application components.
 - Use a centralized routing appliance to secure and optimize routing between segments.
 - Use staggered tier-1 routers when network segmentation is driven by organizational security or networking policies, compliance requirements, business units, departments, or environments.
 
@@ -90,7 +90,7 @@ An IDPS can help you detect and prevent network-based attacks and malicious acti
 
 ##### Recommendations
 
-- Use the NSX-T distributed firewall for help with detecting malicious patterns and malware in East-West traffic between your Azure VMware Solution components.
+- Use the VMware NSX-T Data Center distributed firewall for help with detecting malicious patterns and malware in East-West traffic between your Azure VMware Solution components.
 
 ## Use role-based access control (RBAC) and multifactor authentication
 
@@ -106,8 +106,8 @@ You can enforce multifactor authentication for user authentication to provide an
 - Reduce the number of Azure AD accounts that can:
   - Access the Azure portal and APIs.
   - Navigate to the Azure VMware Solution SDDC.
-  - Read vCenter and NSX-T admin accounts.
-- Rotate local `cloudadmin` account credentials for vCenter and NSX-T to prevent the misuse and abuse of these administrative accounts. Use these accounts only in *break glass* scenarios. Create vCenter server groups and users, and assign them identities from external identity sources. Use these groups and users for specific vCenter server and NSX-T data center operations.
+  - Read VMware vCenter Server and VMware NSX-T Data Center admin accounts.
+- Rotate local `cloudadmin` account credentials for VMware vCenter Server and VMware NSX-T Data Center to prevent the misuse and abuse of these administrative accounts. Use these accounts only in *break glass* scenarios. Create server groups and users for VMware vCenter Server, and assign them identities from external identity sources. Use these groups and users for specific VMware vCenter Server and VMware NSX-T Data Center operations.
 - Use a centralized identity source for configuring authentication and authorization services for guest VMs and applications.
 
 ## Monitor security and detect threats
@@ -147,9 +147,9 @@ The Microsoft cloud security benchmark provides recommendations about how you ca
 Now that you've looked at best practices for securing Azure VMware Solution, investigate operational management procedures for achieving business excellence.
 
 > [!div class="nextstepaction"]
-> [Operations](./vmware-operations.md)
+> [Operations](./operations.md)
 
 Use the assessment tool to evaluate your design choices.
 
 > [!div class="nextstepaction"]
-> [Assessment](./vmware-assessment.md)
+> [Assessment](./assessment.md)

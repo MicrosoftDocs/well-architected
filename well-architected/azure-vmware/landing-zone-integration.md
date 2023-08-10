@@ -1,5 +1,5 @@
 ---
-title: Azure VMware Solution workloads
+title: Integrate an Azure VMware Solution workload with Azure landing zones
 description: Examine Azure landing zones and cloud operating models. See the responsibilities of platform teams and workload teams in Azure VMware Solution design areas.
 author: Mahesh-MSFT
 ms.author: prwilk
@@ -99,11 +99,11 @@ The application and platform teams both have responsibilities in key and passwor
 
 | Platform team responsibilities | Workload team responsibilities |
 | --- | --- |
-| - **Infrastructure key management**. Manage encryption key and infrastructure-level data such as encrypted disks and VM templates.<br>- **Infrastructure credentials**. Manage Azure VMware Solution administrative credentials for components like vCenter and ESXi hosts.<br>- **Platform access control**. Define user roles and permissions in the Azure VMware Solution environment. <br>- **Key Vault:** Create the Key Vault instance, configure policies to protect the vault, manage infrastructure and platform secrets, and manage encryption and decryption operations. | - Manage application-specific credentials and keys such as ones that are used for accessing APIs, databases, and secrets.<br>- Implement regular password rotation and credential expiry policies to prevent unauthorized access.<br>- Ensure that application credentials are stored securely and aren't hard-coded in application code or configuration files.<br>- Define access policies for key vaults that are specific to the application or services that require access to those secrets. |
+| - **Infrastructure key management**. Manage encryption key and infrastructure-level data such as encrypted disks and VM templates.<br>- **Infrastructure credentials**. Manage Azure VMware Solution administrative credentials for components like VMware vCenter Server and VMware ESXi hosts.<br>- **Platform access control**. Define user roles and permissions in the Azure VMware Solution environment. <br>- **Key Vault:** Create the Key Vault instance, configure policies to protect the vault, manage infrastructure and platform secrets, and manage encryption and decryption operations. | - Manage application-specific credentials and keys such as ones that are used for accessing APIs, databases, and secrets.<br>- Implement regular password rotation and credential expiry policies to prevent unauthorized access.<br>- Ensure that application credentials are stored securely and aren't hard-coded in application code or configuration files.<br>- Define access policies for key vaults that are specific to the application or services that require access to those secrets. |
 
 ## Next steps
 
 Use the assessment tool to evaluate your design choices.
 
 > [!div class="nextstepaction"]
-> [Assessment](./vmware-assessment.md)
+> [Assessment](./assessment.md)

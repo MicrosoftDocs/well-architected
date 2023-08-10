@@ -107,4 +107,4 @@ The design principles that are incorporated into Azure VMware Solution guidance 
 Start by reviewing the design considerations for Azure infrastructure that are needed to support a workload.
 
 > [!div class="nextstepaction"]
-> [Infrastructure](vmware-infrastructure.md)
+> [Infrastructure](infrastructure.md)

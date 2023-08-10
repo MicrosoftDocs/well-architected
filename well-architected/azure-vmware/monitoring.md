@@ -1,5 +1,5 @@
 ---
-title: Monitoring considerations for Azure VMware Solution
+title: Monitoring considerations for Azure VMware Solution workloads
 description: See best practices for monitoring Azure VMware Solution workloads at the infrastructure and application levels.
 author: Mahesh-MSFT
 ms.author: maksh
@@ -9,7 +9,7 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Monitoring considerations for Azure VMware Solution
+# Monitoring considerations for Azure VMware Solution workloads
 
 This article discusses the monitoring design area of an Azure VMware Solution workload. This area focuses on observability best practices. The guidance is intended for an operations team. Microsoft, VMware, and third parties provide various tools that you can use to monitor your infrastructure and application. This article lists those options.
 
@@ -21,26 +21,26 @@ Each option offers monitoring solutions with varying degrees of licensing costs,
 
 Monitoring your workload involves collecting data from Azure VMware Solution infrastructure and various VMware solution components. Azure VMware Solution is integrated with the VMware software-defined datacenter (SDDC), which runs several VMware solution native components such as VMware Aria. You can use this suite of tools, including VMware Aria Operations, to manage various aspects of your infrastructure.  
 
-Another tool at your disposal is VMware vSphere Health Status for Azure VMware Solution. This tool helps ensure that proactive issue detection and remediation are continually performed in your Azure VMware Solution environment. In particular, this tool finds misconfigurations in the vSphere infrastructure and detects performance bottlenecks. It also provides insight into resource utilization and overall environmental health performance.
+Another tool at your disposal is VMware vSphere Health Status for Azure VMware Solution. This tool helps ensure that proactive issue detection and remediation are continually performed in your Azure VMware Solution environment. In particular, this tool finds misconfigurations in the VMware vSphere infrastructure and detects performance bottlenecks. It also provides insight into resource utilization and overall environmental health performance.
 
 VMware Aria Operations for Networks helps you achieve comprehensive network visibility, streamline troubleshooting processes, and optimize network performance.
 
 ##### Recommendations
 
-- Configure [vSphere Health Status](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-F957C1BB-A032-4648-9310-68A94733ABC8.html) to get a high-level view of the state of the Azure VMware Solution SDDC health.
+- Configure [VMware vSphere Health Status](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-F957C1BB-A032-4648-9310-68A94733ABC8.html) to get a high-level view of the state of the Azure VMware Solution SDDC health.
 - Use [VMware Aria Operations for Networks](https://www.vmware.com/products/aria-operations-for-networks.html) for enhanced visibility and analytics of Azure VMware Solution private cloud network infrastructure.
 
 ## Manage logs and archives
 
 *Impact: Operational excellence*
 
-To get health data from VMware solution components, you need access to logs that the VMware syslog service collects. Examples of solution components include Elastic Sky X integrated (ESXi), the VMware virtual storage area network (vSAN), NSX-T Data Center, and vCenter Server. Logs from these components are available through Azure VMware Solution infrastructure. A Log Analytics agent or extension sends guest logs at the virtual machine (VM) level to Log Analytics. Within Azure VMware Solution, you can send the Azure VMware Solution logs to an Azure native storage blob. To send logs to a storage blob, you can set up forwarders from a centralized syslog server, or you can configure the blob as a destination in Azure Monitor. It's also possible to use an Azure native tool such as Azure Logic Apps or Azure Functions to forward logs. You can use these tools to create listeners for incoming logs from Azure VMware Solution and to send the logs to a storage blob.
+To get health data from VMware solution components, you need access to logs that the VMware syslog service collects. Examples of solution components include VMware ESXi, VMware vSAN, VMware NSX-T Data Center, and VMware vCenter Server. Logs from these components are available through Azure VMware Solution infrastructure. A Log Analytics agent or extension sends guest logs at the virtual machine (VM) level to Log Analytics. Within Azure VMware Solution, you can send the Azure VMware Solution logs to an Azure native storage blob. To send logs to a storage blob, you can set up forwarders from a centralized syslog server, or you can configure the blob as a destination in Azure Monitor. It's also possible to use an Azure native tool such as Azure Logic Apps or Azure Functions to forward logs. You can use these tools to create listeners for incoming logs from Azure VMware Solution and to send the logs to a storage blob.
 
 Archiving logs is a strategy for keeping your storage costs down. Azure Storage blobs and Log Analytics can transfer logs for long-term archival. Using a storage blob is the less expensive option. But Log Analytics has advanced integrations for alerting, visualization, querying, and gaining machine learning–based insights. Consider your budget, functional use cases, and long-term use cases when you choose a solution.
 
 ##### Recommendations
 
-- Collect logs from the VMware syslog service to get health data from VMware solution components such as ESXi, the vSAN, NSX-T Data Center, and vCenter Server.
+- Collect logs from the VMware syslog service to get health data from VMware solution components such as VMware ESXi, VMware vSAN, VMware NSX-T Data Center, and VMware vCenter Server.
 - Configure tools such as [Log Analytics](/azure/azure-vmware/configure-vmware-syslogs) to collect various logs for querying, analyzing, and reporting capabilities.
 - Configure retention durations for sending logs to long-term storage to reduce query time and save on storage costs.
   
@@ -98,9 +98,9 @@ To make alerts effective, configure them to notify accountable teams when certai
 
 - Discuss and establish baselines that are based on performance data.
 - Define relevant alert criteria such as thresholds, severity levels, or specific conditions.
-- Use the [vSphere events and alarms subsystem](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-9272E3B2-6A7F-427B-994C-B15FF8CADC25.html) to monitor vSphere and set up triggers.
+- Use the [VMware vSphere events and alarms subsystem](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-9272E3B2-6A7F-427B-994C-B15FF8CADC25.html) to monitor VMware vSphere and set up triggers.
 - Configure [Azure alerts in Azure VMware Solution](/azure/azure-vmware/configure-alerts-for-azure-vmware-solution#supported-metrics-and-activities) to respond to events in real time.
-- Ensure that alerts are configured so that [vSAN storage slack space](/azure/azure-vmware/concepts-storage) is maintained at the levels that your service-level agreement (SLA) mandates.
+- Ensure that alerts are configured so that [VMware vSAN storage slack space](/azure/azure-vmware/concepts-storage) is maintained at the levels that your service-level agreement (SLA) mandates.
 - Configure resource health alerts to get the real-time health status of the Azure VMware Solution private cloud.
 - Use application performance monitoring (APM) tools to gain performance insights at the application code level.
 - Use a combination of monitoring techniques such as synthetic transactions, heartbeat monitoring, and endpoint monitoring.
@@ -117,7 +117,7 @@ Cost monitoring refers to the ability to keep track of costs that are associated
 
 ##### Recommendations
 
-- Use the vSphere events and alarms subsystem to monitor vSphere and set up triggers.
+- Use the VMware vSphere events and alarms subsystem to monitor VMware vSphere and set up triggers.
 - Configure Azure alerts in Azure VMware Solution. These alerts help your operation team respond to expected and unexpected events in real time.
 
 ## Use troubleshooting and debugging tools
@@ -157,9 +157,9 @@ Besides offering insight, dashboards can also promote transparency and encourage
 Now that you've looked at observability best practices in Azure VMware Solution, explore mechanisms, tools, and perimeters that you can use to further secure workloads in the SDDC.
 
 > [!div class="nextstepaction"]
-> [Security](./vmware-security.md)
+> [Security](./security.md)
 
 Use the assessment tool to evaluate your design choices.
 
 > [!div class="nextstepaction"]
-> [Assessment](./vmware-assessment.md)
+> [Assessment](./assessment.md)

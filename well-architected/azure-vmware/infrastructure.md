@@ -1,5 +1,5 @@
 ---
-title: Infrastructure considerations for Azure VMware Solution
+title: Infrastructure considerations for Azure VMware Solution workloads
 description: Understand Azure VMware Solution infrastructure concepts. See how to design for resilience, security, scalability, automation, and disaster recovery.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -9,14 +9,16 @@ ms.service: waf
 ms.subservice: waf-workload-avs
 ---
 
-# Infrastructure and provisioning considerations for Azure VMware Solution
+# Infrastructure and provisioning considerations for Azure VMware Solution workloads
 
 This article discusses the infrastructure design area of an Azure VMware Solution offering, which refers to the foundational layer. This layer supports the compute, storage, and networking capabilities that you need to run VMware vSphere workloads efficiently and reliably. This article also explains how to use the VMware software-defined datacenter (SDDC) stack for resilience, security, scalability, automation, and disaster recovery. The SDDC stack includes:
 
-- VMware Elastic Sky X integrated (ESXi).
-- vCenter Server.
-- NSX-T Data Center.
-- A virtual storage area network (vSAN).
+- VMware ESXi.
+- VMware vCenter Server.
+- VMware NSX-T Data Center.
+- VMware vSAN.
+- VMware HCX (optional).
+- VMware SRM (optional).
 
 ## Calculate business targets
 
@@ -78,7 +80,7 @@ Before you deploy an application in Azure VMware Solution, it's crucial to ensur
 
 *Impact: Performance efficiency, Security*
 
-To ensure that users are near your solution, carefully consider which regions to select. Having users physically close to your peering location minimizes latency and helps you meet requirements. For example, if you use HCX, there's a requirement that the roundtrip latency must be less than 150 ms.
+To ensure that users are near your solution, carefully consider which regions to select. Having users physically close to your peering location minimizes latency and helps you meet requirements. For example, if you use VMware HCX, there's a requirement that the roundtrip latency must be less than 150 ms.
 
 It's also important to consider regulatory requirements during region selection. Regulatory requirements and data residency restrictions can vary among regions. When you use Azure geo-replicated storage, you can take advantage of paired regions. Under this concept, each Azure region is paired with another region within the same geography. Data that's replicated resides within the same geography as its pair for tax and law enforcement jurisdiction purposes.
 
@@ -92,11 +94,11 @@ It's also important to consider regulatory requirements during region selection.
 
 *Impact: Reliability, Performance efficiency*
 
-When you size for an application, size the VM to handle the workload at peak performance. During an outage, the application should also be able to operate with reduced functionality or degraded performance. To prepare for a failure event, design for resilience. Design your system to respond to outages and deliver reliability even when regional, zonal, service, or component failures impact critical application functionality. Vertical scaling is the ability of a VM to add resources to individual hosts. Vertical scaling requires picking the right SKU, powering the host down, and adding resources from an ESXi host that has those resources available.
+When you size for an application, size the VM to handle the workload at peak performance. During an outage, the application should also be able to operate with reduced functionality or degraded performance. To prepare for a failure event, design for resilience. Design your system to respond to outages and deliver reliability even when regional, zonal, service, or component failures impact critical application functionality. Vertical scaling is the ability of a VM to add resources to individual hosts. Vertical scaling requires picking the right SKU, powering the host down, and adding resources from a VMware ESXi host that has those resources available.
 
-The downtime that's associated with vertical scaling can disrupt your business, so consider horizontal scaling in your workload design. Horizontal scaling is the ability to dynamically span your workload across multiple VMs. Horizontal scaling typically involves using vSphere features like resource allocation settings, VM templates, cloning, or dynamic resource allocation techniques. For example, if you want to distribute traffic across three separate VMs, place those VMs on three separate hosts for high availability.
+The downtime that's associated with vertical scaling can disrupt your business, so consider horizontal scaling in your workload design. Horizontal scaling is the ability to dynamically span your workload across multiple VMs. Horizontal scaling typically involves using VMware vSphere features like resource allocation settings, VM templates, cloning, or dynamic resource allocation techniques. For example, if you want to distribute traffic across three separate VMs, place those VMs on three separate hosts for high availability.
 
-Clustering is concerned with creating logical groupings of hosts to provide advanced management and availability features. After you provision your hosts, you can create and configure vSphere clusters within the Azure VMware Solution environment to manage VMs and provide compute capabilities.
+Clustering is concerned with creating logical groupings of hosts to provide advanced management and availability features. After you provision your hosts, you can create and configure VMware vSphere clusters within the Azure VMware Solution environment to manage VMs and provide compute capabilities.
 
 ##### Recommendations
 
@@ -128,13 +130,13 @@ If one host experiences an issue or failure, anti-affinity rules enforce distrib
 - Use VM-to-VM affinity when VMs that support your application need fault tolerance, or when you want to optimize host performance through resource distribution.
 - For VMs that are deployed with high availability or clustering within Azure VMware Solution, create anti-affinity rules to keep those VMs apart and on separate hosts.
 
-## Deploy a VMware vSAN
+## Deploy VMware vSAN
 
 *Impact: Reliability, Performance efficiency*
 
 To design a well-architected Azure VMware Solution with storage, you need to plan for adequate data protection and redundancy.
 
-An Azure VMware Solution vSAN uses local storage resources from the VMware ESXi hosts within an Azure VMware Solution cluster to create a distributed, shared-storage infrastructure. The vSAN provisioning must adequately meet current and future storage needs. You can use storage area network (SAN) storage policies to define the characteristics and behaviors of the storage that your VMs use. You can use policies to configure data protection, performance, and space efficiency settings according to the specific requirements of your workloads. The default storage policy in Azure VMware Solution is redundant. As a result, if your machines require copying data to extra vSAN nodes, create another policy to ensure that the data meets your enhanced redundancy requirements.
+An Azure VMware Solution virtual storage area network (vSAN) uses local storage resources from the VMware ESXi hosts within an Azure VMware Solution cluster to create a distributed, shared-storage infrastructure. The vSAN provisioning must adequately meet current and future storage needs. You can use storage area network (SAN) storage policies to define the characteristics and behaviors of the storage that your VMs use. You can use policies to configure data protection, performance, and space efficiency settings according to the specific requirements of your workloads. The default storage policy in Azure VMware Solution is redundant. As a result, if your machines require copying data to extra vSAN nodes, create another policy to ensure that the data meets your enhanced redundancy requirements.
 
 ##### Recommendations
 
@@ -175,7 +177,7 @@ Establishing a performance baseline provides insight into the capabilities of Az
 
 Having a systematic approach to identifying, troubleshooting, and fixing problems in the SDDC leads to faster resolution times. Operations teams must be able to define the problem or symptom that the workload is experiencing and the scope of the issue. They also need to be able to collect information, including error messages, logs, and any specific conditions or actions that trigger the issue.
 
-For detailed coverage of infrastructure monitoring, see [Monitoring considerations for Azure VMware Solution workloads](./vmware-monitoring.md).
+For detailed coverage of infrastructure monitoring, see [Monitoring considerations for Azure VMware Solution workloads](./monitoring.md).
   
 ##### Recommendations
 
@@ -189,9 +191,9 @@ For detailed coverage of infrastructure monitoring, see [Monitoring consideratio
 Now that you've examined the underlying Azure VMware Solution platform, investigate the application platform, which includes databases, VMs, operating systems, and configurations.
 
 > [!div class="nextstepaction"]
-> [Application platform](./vmware-application-platform.md)
+> [Application platform](./application-platform.md)
 
 Use the assessment tool to evaluate your design choices.
 
 > [!div class="nextstepaction"]
-> [Assessment](./vmware-assessment.md)
+> [Assessment](./assessment.md)
