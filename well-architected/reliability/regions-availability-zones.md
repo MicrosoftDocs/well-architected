@@ -3,7 +3,7 @@ title: Design your solution to use availability zones and regions
 description: A guide for understanding when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
-ms.date: 08/07/2023
+ms.date: 08/10/2023
 ms.topic: conceptual
 ms.custom:
   - guide
@@ -53,7 +53,7 @@ Azure's has a large global footprint. An Azure *region* is a geographic perimete
 
 Azure regions have a variety of configurations, which are also called *region architectures*.
 
-Many Azure regions provide *availability zones*, which are separated groups of data centers. Within a region, each availability zone is close enough together to have very low-latency connections to other availability zones, but they're far enough apart to ensure that they have independent power, cooling, and networking infrastructure. Availability zones are designed so that if one zone has an outage, then regional services, capacity, and high availability are supported by the remaining zones.
+Many Azure regions provide *availability zones*, which are separated groups of data centers. Within a region, each availability zone is close enough together to have very low-latency connections to other availability zones, but they're far enough apart to be unlikely to be affected by local outages or weather. Availability zones have independent power, cooling, and networking infrastructure, and they're designed so that if one zone has an outage, then regional services, capacity, and high availability are supported by the remaining zones.
 
 The following diagram shows several example Azure regions. Regions 1 and 2 support availability zones.
 
@@ -185,7 +185,7 @@ The single-region deployment model has the following effects on your architectur
 
 ### Locally redundant deployments with backup across regions
 
-You can extend a locally redundant deployment by performing regular backups of your data to a secondary region. This approach adds an extra layer of protection to mitigate against an outage in your primary region.
+You can extend a locally redundant deployment by performing regular backups of your infrastructure and data to a secondary region. This approach adds an extra layer of protection to mitigate against an outage in your primary region.
 
 :::image type="content" border="false" source="../_images/regions-availability-zones/locally-redundant-backup-across-regions.png" alt-text="Diagram showing the solution deployed into a single data center, with backups going to another region.":::
 
@@ -266,7 +266,7 @@ This approach is possible with many Azure services, including virtual machine sc
 
 ### Zone-redundant deployments with backup across regions
 
-You can extend a zone-redundant deployment by performing regular backups of your data to a secondary region. This approach gives you the benefits of a zone-redundant approach, with an added layer of protection to mitigate the extremely unlikely event of a full region outage.
+You can extend a zone-redundant deployment by performing regular backups of your infrastructure and data to a secondary region. This approach gives you the benefits of a zone-redundant approach, with an added layer of protection to mitigate the extremely unlikely event of a full region outage.
 
 :::image type="content" border="false" source="../_images/regions-availability-zones/zone-redundant-backup-across-regions.png" alt-text="Diagram showing the solution deployed into multiple availability zones by using a zone-redundant deployment approach, with backups going to another region.":::
 
