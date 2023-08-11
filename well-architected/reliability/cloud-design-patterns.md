@@ -54,6 +54,6 @@ The following table summarizes cloud design patterns that support the goals of r
 See what cloud design patterns support the other pillars of architecture.
 
 - [Cloud design patterns that support security](../security/cloud-design-patterns.md)
-- [Cloud design patterns that support cost optimization](cloud-design-patterns.md)
-- [Cloud design patterns that support operational excellence](cloud-design-patterns.md)
-- [Cloud design patterns that support performance efficiency](cloud-design-patterns.md)
+- [Cloud design patterns that support cost optimization](../cost-optimization/cloud-design-patterns.md)
+- [Cloud design patterns that support operational excellence](../operational-excellence/cloud-design-patterns.md)
+- [Cloud design patterns that support performance efficiency](../performance-efficiency/cloud-design-patterns.md)
