@@ -18,7 +18,7 @@ You should receive a response within 24 hours. If for some reason you do not, fo
 
 Include the requested information listed below (as much as you can provide) to help us better understand the nature and scope of the possible issue:
 
-  - Type of issue (such as buffer overflow, SQL injection, cross-site scripting, and so on.)
+  - Type of issue (such as buffer overflow, SQL injection, cross-site scripting, and so on)
   - Full paths of source files related to the manifestation of the issue
   - The location of the affected source code (tag/branch/commit or direct URL)
   - Any special configuration required to reproduce the issue
