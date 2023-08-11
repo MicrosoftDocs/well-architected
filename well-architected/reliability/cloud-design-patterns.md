@@ -1,6 +1,6 @@
 ---
 title: Cloud design patterns that support reliability
-description: Learn about industry patterns that can help you address common challenges in cloud workloads and achieve operational excellence.  
+description: Learn about industry patterns that support reliability and can help you address common challenges in cloud workloads.  
 author: ckittel
 ms.author: chkittel
 ms.date: 11/15/2023
