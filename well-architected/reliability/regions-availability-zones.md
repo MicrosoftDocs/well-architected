@@ -40,7 +40,7 @@ However you design your solution, the **Security** pillar continues to apply. Us
 | Region architecture | The specific configuration of the Azure region, including the number of availability zones, and whether the region is paired with another region. |
 | Locally redundant deployment | A deployment model where a resource is deployed into a single region without reference to an availability zone. In a region that supports availability zones, the resource might be deployed in any of the region's availability zones. |
 | Zonal (pinned) deployment | A deployment model where a resource is deployed into a specific availability zone. |
-| Zone redundant deployment | A deployment model where a resource is deployed across multiple availability zones, and Microsoft manages data synchronization, traffic distribution, and failover if a zone has an outage. |
+| Zone-redundant deployment | A deployment model where a resource is deployed across multiple availability zones, and Microsoft manages data synchronization, traffic distribution, and failover if a zone has an outage. |
 | Multi-region | A deployment model where resources are deployed into multiple Azure regions. |
 | Asynchronous replication | A data replication approach where data is written and committed to one place. At a later time, the changes are replicated to another place. |
 | Synchronous replication | A data replication approach where data is written and committed to multiple places, which must each acknowledge completion of the write operation before the overall write is considered to be completed. |
@@ -282,7 +282,7 @@ When you implement this approach, it's important to consider your recovery time 
 > [!TIP]
 > This approach often gives a good balance of all of the architectural concerns. If you aren't sure which approach to select, start with this type of deployment.
 
-Adding cross-region backups to a zone redundant deployment model has the following effects on your architectural concerns:
+Adding cross-region backups to a zone-redundant deployment model has the following effects on your architectural concerns:
 
 | Architectural Pillar | Impact |
 |-|-|
