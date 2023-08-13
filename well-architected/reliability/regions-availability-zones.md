@@ -193,7 +193,7 @@ You can extend a locally redundant deployment by performing regular backups of y
 
 When you implement this approach, consider your recovery time objective (RTO) and recovery point objective (RPO) carefully:
 
-- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider building your solution using infrastructure as code so that you can quickly redeploy into another region during a major disaster. Ensure that your deployment tools and processes are just as resilient as your applications, so that you can use them to redeploy your solution even if you have an outage.
+- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider building your solution using infrastructure as code so that you can quickly redeploy into another region during a major disaster. Ensure that your deployment tools and processes are just as resilient as your applications, so that you can use them to redeploy your solution even if you have an outage. Plan for, and rehearse, the steps required to restore your solution back to a working state.
 - **Recovery point:** Your backup frequency determines the amount of data loss you might experience (your recovery point). You can typically control the frequency of backups so that you can meet your RPO.
 
 Adding cross-region backups to a single-region deployment model has the following effects on your architectural concerns:
@@ -276,7 +276,7 @@ You can extend a zone-redundant deployment by performing regular backups of your
 
 When you implement this approach, it's important to consider your recovery time objective (RTO) and recovery point objective (RPO) carefully:
 
-- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider building your solution using infrastructure as code so that you can quickly redeploy into another region during a major disaster. Ensure that your deployment tools and processes are just as resilient as your applications, so that you can use them to redeploy your solution even if you have an outage.
+- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider building your solution using infrastructure as code so that you can quickly redeploy into another region during a major disaster. Ensure that your deployment tools and processes are just as resilient as your applications, so that you can use them to redeploy your solution even if you have an outage. Plan for, and rehearse, the steps required to restore your solution back to a working state.
 - **Recovery point:** Your backup frequency determines the amount of data loss you might experience (your recovery point). You can typically control the frequency of backups so that you can meet your RPO.
 
 > [!TIP]
