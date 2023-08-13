@@ -18,9 +18,9 @@ When you design a solution for Azure, you need to decide whether you deploy acro
 Your choice of how you use regions and availability zones affects several of the pillars of the Well-Architected Framework:
 
 - **Reliability:** Your choice of deployment approach can help you to mitigate different types of risks. In general, by spreading your workload across a more geographically distributed area, you can achieve higher resiliency.
-- **Cost Optimization:** Some architectural approaches require deploying more resource, which can increase your resource costs. Other approaches involve sending data across geographically separated availability zones or regions, which might incur network traffic charges. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have a more complex architecture.
-- **Performance Efficiency:** Occasionally, workloads can be highly sensitive to network latency. In these workloads, it's important to physically locate the components close together to minimize the latency when they communicate, which typically means to deploy into a single availability zone. However, most workloads aren't highly latency sensitive, so this concern doesn't apply.
-- **Operational Excellence:** A complex architecture takes more effort to deploy, configure, and manage. Additionally, for a highly available solution you might need to plan how you'll fail over to a secondary set of resources. Failover, failback, and transparently redirecting your traffic can be complex, especially when manual steps are required.
+- **Cost Optimization:** Some architectural approaches require deploying more resources, which can increase your resource costs. Other approaches involve sending data across geographically separated availability zones or regions, which might incur network traffic charges. It's also important to consider the ongoing cost of managing your resources, which is usually higher when you have a more complex architecture.
+- **Performance Efficiency:** Most workloads aren't highly sensitive to network latency, but occasionally, they can be. In these workloads, it's important to physically locate the components close together to minimize the latency when they communicate, which typically means deploying them into a single availability zone. 
+- **Operational Excellence:** A complex architecture takes more effort to deploy, configure, and manage. Additionally, for a highly available solution, you might need to plan how you'll fail over to a secondary set of resources. Failover, failback, and transparently redirecting your traffic can be complex, especially when manual steps are required.
 
 However you design your solution, the **Security** pillar continues to apply. Usually, decisions about whether and how you use availability zones and regions doesn't change your security posture. Azure applies the same security rigor to every region and availability zone.
 
@@ -38,7 +38,7 @@ However you design your solution, the **Security** pillar continues to apply. Us
 | Availability zone | [A separated group of data centers within a region.][availability-zones-overview] Each availability zone is independent from the others, with its own power, cooling, and networking infrastructure. [Many regions support availability zones.][azure-regions-with-availability-zone-support] |
 | Paired regions | [Some Azure regions][azure-region-pairs] are connected to another defined region to enable specific types of multi-region solutions. [Newer Azure regions aren't paired.][regions-with-availability-zones-and-no-region-pair] |
 | Region architecture | The specific configuration of the Azure region, including the number of availability zones, and whether the region is paired with another region. |
-| Locally redundant deployment | A deployment model where a resource is deployed into a single region without reference to an availability zone. In a region that supports availability zones, the resource might be deployed anywhere within the region. |
+| Locally redundant deployment | A deployment model where a resource is deployed into a single region without reference to an availability zone. In a region that supports availability zones, the resource might be deployed in any of the region's availability zones. |
 | Zonal (pinned) deployment | A deployment model where a resource is deployed into a specific availability zone. |
 | Zone redundant deployment | A deployment model where a resource is deployed across multiple availability zones, and Microsoft manages data synchronization, traffic distribution, and failover if a zone has an outage. |
 | Multi-region | A deployment model where resources are deployed into multiple Azure regions. |
@@ -193,7 +193,7 @@ You can extend a locally redundant deployment by performing regular backups of y
 
 When you implement this approach, consider your recovery time objective (RTO) and recovery point objective (RPO) carefully:
 
-- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider deploying your infrastructure as code so that you can quickly redeploy into another region during a major disaster. Ensure that your deployment tools and processes are just as resilient as your applications, so that you can use them to redeploy your solution even if you have an outage.
+- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider building your solution using infrastructure as code so that you can quickly redeploy into another region during a major disaster. Ensure that your deployment tools and processes are just as resilient as your applications, so that you can use them to redeploy your solution even if you have an outage.
 - **Recovery point:** Your backup frequency determines the amount of data loss you might experience (your recovery point). You can typically control the frequency of backups so that you can meet your RPO.
 
 Adding cross-region backups to a single-region deployment model has the following effects on your architectural concerns:
@@ -276,7 +276,7 @@ You can extend a zone-redundant deployment by performing regular backups of your
 
 When you implement this approach, it's important to consider your recovery time objective (RTO) and recovery point objective (RPO) carefully:
 
-- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider deploying your infrastructure as code so that you can quickly redeploy into another region during a major disaster. Ensure that your deployment tools and processes are just as resilient as your applications. That way, you can use them to redeploy your solution even if you have an outage.
+- **Recovery time:** If a regional outage does occur, you might need to rebuild your solution in another Azure region, which impacts your recovery time. Consider building your solution using infrastructure as code so that you can quickly redeploy into another region during a major disaster. Ensure that your deployment tools and processes are just as resilient as your applications, so that you can use them to redeploy your solution even if you have an outage.
 - **Recovery point:** Your backup frequency determines the amount of data loss you might experience (your recovery point). You can typically control the frequency of backups so that you can meet your RPO.
 
 > [!TIP]
