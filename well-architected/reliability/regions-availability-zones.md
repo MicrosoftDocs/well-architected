@@ -38,7 +38,7 @@ However you design your solution, the **Security** pillar continues to apply. Us
 | Availability zone | [A separated group of data centers within a region.][availability-zones-overview] Each availability zone is independent from the others, with its own power, cooling, and networking infrastructure. [Many regions support availability zones.][azure-regions-with-availability-zone-support] |
 | Paired regions | [Some Azure regions][azure-region-pairs] are connected to another defined region to enable specific types of multi-region solutions. [Newer Azure regions aren't paired.][regions-with-availability-zones-and-no-region-pair] |
 | Region architecture | The specific configuration of the Azure region, including the number of availability zones, and whether the region is paired with another region. |
-| Locally redundant deployment | A deployment model where a resource is deployed into a single region without reference to an availability zone. In a region that supports availability zones, the resource might be deployed anywhere within the region. |
+| Locally redundant deployment | A deployment model where a resource is deployed into a single region without reference to an availability zone. In a region that supports availability zones, the resource might be deployed in any of the region's availability zones. |
 | Zonal (pinned) deployment | A deployment model where a resource is deployed into a specific availability zone. |
 | Zone redundant deployment | A deployment model where a resource is deployed across multiple availability zones, and Microsoft manages data synchronization, traffic distribution, and failover if a zone has an outage. |
 | Multi-region | A deployment model where resources are deployed into multiple Azure regions. |
