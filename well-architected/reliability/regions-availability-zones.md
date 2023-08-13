@@ -44,6 +44,8 @@ However you design your solution, the **Security** pillar continues to apply. Us
 | Multi-region | A deployment model where resources are deployed into multiple Azure regions. |
 | Asynchronous replication | A data replication approach where data is written and committed to one place. At a later time, the changes are replicated to another place. |
 | Synchronous replication | A data replication approach where data is written and committed to multiple places, which must each acknowledge completion of the write operation before the overall write is considered to be completed. |
+| Active/active | When multiple instances of a solution actively process requests at the same time. |
+| Active/passive | When one instance of a solution is designated as the *primary* and processes traffic, and one or more *secondary* instances are deployed to serve traffic if the primary is unavailable. |
 
 ## Your responsibility
 
@@ -163,7 +165,7 @@ The rest of this article describes each of the approaches listed in the table ab
 
 ## Deployment approach 1: Locally redundant deployments
 
-If you don't specify multiple availability zones or regions when you deploy your resources, then Azure doesn't make any guarantees about whether the resources are deployed into a single data center or split across multiple data centers in the region.
+If you don't specify multiple availability zones or regions when you deploy your resources, then Azure doesn't make any guarantees about whether the resources are deployed into a single data center or split across multiple data centers in the region. In some situations, Azure might also move your resource between availability zones.
 
 :::image type="content" border="false" source="../_images/regions-availability-zones/locally-redundant.png" alt-text="Diagram showing the solution deployed into a single data center, within a single availability zone.":::
 
@@ -198,7 +200,7 @@ Adding cross-region backups to a single-region deployment model has the followin
 
 | Architectural Pillar | Impact |
 |-|-|
-| Reliability | **Moderate reliability.**  Services are subject to outages if a data center fails. Data is backed up asynchronously to a geographically separated region to mitigate the minimal risk of a full region outage. You can restore from a backup into another region if required, but recovery processes can be complex and it can take time to manually restore into the other region. |
+| Reliability | **Moderate reliability.**  Services are subject to outages if a data center fails. Data is backed up asynchronously to a geographically separated region, which reduces the effect of a full region outage by minimizing data loss. In a full region outage, you can manually restore operations into another region. However, recovery processes can be complex and it can take time to manually restore into the other region. |
 | Cost Optimization | **Low cost.** Typically, adding a backup to another region only adds a small amount of extra cost compared to deploying a locally redundant resource. |
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Components aren't guaranteed to be located in the same availability zone, so highly latency-sensitive components might see lower performance. |
 | Operational Excellence | *During any outage within a region:* **Low operational efficiency.** Failover is your responsibility and might require manual operations and redeployments. |
@@ -216,11 +218,13 @@ A zonal approach reduces the latency in communicating between your components. H
 
 :::image type="content" border="false" source="../_images/regions-availability-zones/zonal-multiple-zone.png" alt-text="Diagram showing the solution deployed into multiple availability zones by using a zonal (pinned) deployment approach.":::
 
+In the example above, a load balancer is deployed across multiple availability zones. It's important that you consider how you route traffic between instances in different availability zones, because a zone outage might also affect the networking resources deployed into that zone.
+
 When you use a zonal deployment model, you take on many responsibilities:
 
 - You need to deploy resources to each availability zone, and configure and manage those resources individually.
 - You need to decide how and when to replicate data between the availability zones, and then configure and manage the replication.
-- You're responsible for distributing the requests to the correct resources, such as by using a load balancer. You need to decide whether to use an active/passive or an active/active request distribution model.
+- You're responsible for distributing the requests to the correct resources, such as by using a load balancer. You need to ensure the load balancer meets your resiliency requirements. You also need to decide whether to use an active/passive or an active/active request distribution model.
 - If an availability zone has an outage, you need to handle the failover to send traffic to resources in another availability zone.
 
 > [!NOTE]
@@ -282,7 +286,7 @@ Adding cross-region backups to a zone redundant deployment model has the followi
 
 | Architectural Pillar | Impact |
 |-|-|
-| Reliability | **Very high reliability.** Services are resilient to an outage of a data center or availability zone. For most services, data is replicated across zones automatically and with no delay. Data is backed up asynchronously to a geographically separated region to mitigate the minimal risk of a full region outage. |
+| Reliability | **Very high reliability.** Services are resilient to an outage of a data center or availability zone. For most services, data is replicated across zones automatically and with no delay. Data is backed up asynchronously to a geographically separated region, which reduces the effect of a full region outage by minimizing data loss. In a full region outage, you can manually restore operations into another region. However, recovery processes can be complex and it can take time to manually restore into the other region. |
 | Cost Optimization | **Moderate cost.** Typically, adding a backup to another region only adds a small amount of extra cost compared to implementing zone redundancy. |
 | Performance Efficiency | *For most workloads:* **Acceptable performance.** This approach is likely to provide satisfactory performance.<br /><br />*For highly latency-sensitive workloads:* **Low performance.** Some components might be sensitive to latency due to inter-zone traffic or data replication time. |
 | Operational Excellence | *During an availability zone outage:* **High operational efficiency.** Failover is Microsoft's responsibility and happens automatically. <br /><br /> *During a regional outage:* **Low operational efficiency.** Failover is your responsibility and might require manual operations and redeployments. |
