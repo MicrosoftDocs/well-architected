@@ -118,7 +118,7 @@ Your architectural decisions affect your solution's [composite SLA][composite-sl
 
 ##### Data residency
 
-Some organizations place restrictions on the physical locations into which their data can be stored and processed. Sometimes these requirements are based on legal or regulatory standards, while in other situations organizations might decide to adopt a data residency policy themselves to avoid customer concerns. Strict data residency requirements might mean you need to use a single-region deployment, or use a selected subset of Azure regions and services. <!-- TODO regions by service -->
+Some organizations place restrictions on the physical locations into which their data can be stored and processed. Sometimes these requirements are based on legal or regulatory standards, while in other situations organizations might decide to adopt a data residency policy themselves to avoid customer concerns. Strict data residency requirements might mean you need to use a single-region deployment, or use a selected subset of Azure regions and services.
 
 > [!NOTE]
 > Avoid making unfounded assumptions about your data residency requirements. If you have to comply with specific regulatory standards, verify what those standards actually specify.
@@ -218,7 +218,7 @@ A zonal approach reduces the latency in communicating between your components. H
 
 :::image type="content" border="false" source="../_images/regions-availability-zones/zonal-multiple-zones.png" alt-text="Diagram showing the solution deployed into multiple availability zones by using a zonal (pinned) deployment approach.":::
 
-In the example above, a load balancer is deployed across multiple availability zones. It's important that you consider how you route traffic between instances in different availability zones, because a zone outage might also affect the networking resources deployed into that zone.
+In the example above, a load balancer is deployed across multiple availability zones. It's important that you consider how you route traffic between instances in different availability zones, because a zone outage might also affect the networking resources deployed into that zone. You might also consider using a global load balancer, like [Azure Front Door][front-door-global-traffic-acceleration] or [Azure Traffic Manager][traffic-manager], which isn't deployed into a region at all.
 
 When you use a zonal deployment model, you take on many responsibilities:
 
@@ -425,3 +425,4 @@ Review some of the reference architectures and example scenarios for multi-zone 
 [round-trip-latency]: </azure/networking/azure-network-latency>
 [composite-slas]: <business-metrics.md#composite-slas>
 [front-door-global-traffic-acceleration]: </azure/frontdoor/front-door-overview>
+[traffic-manager]: </azure/traffic-manager/traffic-manager-overview>
