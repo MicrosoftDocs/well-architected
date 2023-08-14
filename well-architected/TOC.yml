@@ -23,8 +23,10 @@
           href: reliability/checklist.md
         - name: Tradeoffs
           href: reliability/tradeoffs.md
-        - name: Best practices guides   
+        - name: Recommendations   
           items:
+            - name: Design patterns
+              href: reliability/design-patterns.md
             - name: Reliability guide
               href: coming-soon.md
       - name: Security
