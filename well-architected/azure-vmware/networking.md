@@ -55,7 +55,7 @@ Front-facing workloads in Azure VMware Solution are mapped to a public IP addres
 
 ##### Recommendations
 
-- For internet-facing applications, use a firewall such as Azure Firewall to inspect Azure VMware Solution traffic to the internet and Azure.
+- For internet-facing applications, use a firewall such as Azure Firewall or a certified third-party NVA to inspect Azure VMware Solution traffic to the internet and Azure.
 - Make sure that your firewall has rules and access control lists to restrict and filter inbound traffic.
 
 ## Secure traffic between internal workloads
@@ -66,8 +66,7 @@ The network is a critical perimeter in the Azure VMware Solution environment. Ne
 
 ##### Recommendations
 
-- Use network security groups to restrict traffic to VMs and other application components. Also use these groups to restrict traffic in virtual networks, in subnets, and from Azure VMware Solution.  
-- Create segments and virtual LANs for your Azure VMware Solution workloads.
+- Create network segments for your Azure VMware Solution workloads.
 - Create firewall rules within VMware NSX-T Data Center.
 
 ## Design IP addressing schemes for growth

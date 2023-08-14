@@ -24,7 +24,7 @@ It's important to detect noncompliant servers. You can use Azure Arc for this pu
 ##### Recommendations
 
 - Configure Azure VMware Solution guest virtual machines (VMs) as Azure Arc–enabled servers. For methods that you can use to connect machines, see [Azure connected machine agent deployment options](/azure/azure-arc/servers/deployment-options).
-- Deploy Azure Arc for Azure VMware Solution (preview).
+- Deploy a certified third-party solution or Azure Arc for Azure VMware Solution (preview).
 - Use Azure Policy for Azure Arc–enabled servers to audit and enforce security controls on Azure VMware Solution guest VMs.
 
 ## Protect the guest operating system
@@ -43,10 +43,10 @@ Microsoft Defender for Cloud offers unique tools that provide advanced threat pr
 
 ##### Recommendations
 
-- Install an Azure security agent on Azure Arc Windows machines to monitor them for security configurations and vulnerabilities.
+- Install an Azure security agent on Azure VMware Solution guest VMs through Azure Arc for servers to monitor them for security configurations and vulnerabilities.
 - Configure Azure Arc machines to automatically create an association with the default data collection rule for Defender for Cloud.
-- On the subscription that you use to deploy and run the Azure VMware Solution software-defined datacenter (SDDC), use a Defender for Cloud plan that includes protection for servers.
-- If you have guest VMs with extended security benefits in the Azure VMware Solution SDDC, deploy security updates regularly. Use the Volume Activation Management Tool to deploy these updates.
+- On the subscription that you use to deploy and run the Azure VMware Solution private cloud, use a Defender for Cloud plan that includes protection for servers.
+- If you have guest VMs with extended security benefits in the Azure VMware Solution private cloud, deploy security updates regularly. Use the Volume Activation Management Tool to deploy these updates.
 
 ## Encrypt data
 
@@ -56,9 +56,9 @@ Data encryption is an important aspect of protecting your Azure VMware Solution 
 
 ##### Recommendations
 
-- Encrypt virtual storage area network (vSAN) storage with customer-managed keys to encrypt data at rest.
+- Encrypt VMware vSAN datastores with customer-managed keys to encrypt data at rest.
 - Use native encryption tools such as BitLocker to encrypt guest VMs.
-- Use native database encryption options for databases that run on the Azure VMware Solution SDDC guest VMs. For instance, you can use transparent data encryption (TDE) for SQL Server.
+- Use native database encryption options for databases that run on Azure VMware Solution private cloud guest VMs. For instance, you can use transparent data encryption (TDE) for SQL Server.
 - Monitor database activities for suspicious activity. You can use native database monitoring tools like SQL Server Activity Monitor for this purpose.
 
 ## Implement network security
@@ -71,7 +71,7 @@ Segments are then created to provide advanced security capabilities and routing.
 
 :::image type="content" source="./images/azure-vmware-solution-segmentation.png" alt-text="Architecture diagram that shows the various tiers and segments of an Azure VMware Solution environment." border="false":::
 
-The tier-1 routers are positioned in front of the segments. These routers provide routing capabilities within the SDDC. You can deploy multiple tier-1 routers to segregate different sets of segments or to achieve a specific routing. For example, say you'd like to restrict East-West traffic that flows to and from your production, development, and testing workloads. You can use distributed level-1 tiers to segment and filter that traffic based on specific rules and policies.
+The tier-1 routers are positioned in front of the segments. These routers provide routing capabilities within the software-defined datacenter (SDDC). You can deploy multiple tier-1 routers to segregate different sets of segments or to achieve a specific routing. For example, say you'd like to restrict East-West traffic that flows to and from your production, development, and testing workloads. You can use distributed level-1 tiers to segment and filter that traffic based on specific rules and policies.
 
 :::image type="content" source="./images/azure-vmware-solution-distributed-tiers.png" alt-text="Architecture diagram that shows multiple distributed level-one tiers in an Azure VMware Solution environment." border="false":::
 
@@ -91,6 +91,7 @@ An IDPS can help you detect and prevent network-based attacks and malicious acti
 ##### Recommendations
 
 - Use the VMware NSX-T Data Center distributed firewall for help with detecting malicious patterns and malware in East-West traffic between your Azure VMware Solution components.
+- Use an Azure service such as Azure Firewall or a certified third-party NVA that runs in Azure or in Azure VMware Solution.
 
 ## Use role-based access control (RBAC) and multifactor authentication
 
@@ -105,7 +106,7 @@ You can enforce multifactor authentication for user authentication to provide an
 - Use Azure AD privileged identity management to allow time-bound access to the Azure portal and control pane operations. Use privileged identity management audit history to track operations that highly privileged accounts perform.  
 - Reduce the number of Azure AD accounts that can:
   - Access the Azure portal and APIs.
-  - Navigate to the Azure VMware Solution SDDC.
+  - Navigate to the Azure VMware Solution private cloud.
   - Read VMware vCenter Server and VMware NSX-T Data Center admin accounts.
 - Rotate local `cloudadmin` account credentials for VMware vCenter Server and VMware NSX-T Data Center to prevent the misuse and abuse of these administrative accounts. Use these accounts only in *break glass* scenarios. Create server groups and users for VMware vCenter Server, and assign them identities from external identity sources. Use these groups and users for specific VMware vCenter Server and VMware NSX-T Data Center operations.
 - Use a centralized identity source for configuring authentication and authorization services for guest VMs and applications.
@@ -128,7 +129,7 @@ You can use a security information and event management (SIEM) tool or Microsoft
   - Workflow automation for security alerts
   - Workflow automation for security recommendations
   - Workflow automation for regulatory compliance changes
-- Deploy Microsoft Sentinel and set the destination to a Log Analytics workspace to collect logs from Azure VMware Solution SDDC guest VMs.
+- Deploy Microsoft Sentinel and set the destination to a Log Analytics workspace to collect logs from Azure VMware Solution private cloud guest VMs.
 - Use a data connector to connect Microsoft Sentinel and Defender for Cloud.
 - Automate threat responses by using Microsoft Sentinel playbooks and Azure Automation rules.
 

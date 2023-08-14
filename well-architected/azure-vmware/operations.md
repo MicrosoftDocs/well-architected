@@ -59,7 +59,7 @@ You can reduce manual effort, minimize errors, and improve resource usage by aut
 
 - Use IaC to deploy and provision infrastructure in a way that's repeatable, auditable, and consistent.
 - Automate expansion and contraction by using IaC.
-- Use version control systems such as Azure DevOps or Git to track changes, collaborate, and roll back code to previous versions as needed.
+- Use version control systems to track changes, collaborate, and roll back code to previous versions as needed.
 - Take advantage of the blue-green concept by creating a staging environment that mirrors production and test environments before you go live.
 - Maintain the last good state of your application by using snapshots, cloning your disks, and having version-controlled code.
 
@@ -99,7 +99,7 @@ These tagging considerations are general. It's important that your tagging strat
 ##### Recommendations
 
 - Apply tags for resource management by using an organizational taxonomy to identify workloads and infrastructure. The taxonomy should include the host, business, owner, and environment.
-- Use IaC to maintain and apply tags programmatically during provisioning.
+- Use appropriate tooling to maintain and apply tags programmatically during provisioning.
 - Use tags that align with your organization's compliance and governance initiatives, such as SLAs, chargeback policies, and lifecycle management practices.
 - Have processes in place to identify and remedy resources that don't adhere to tagging requirements.
 

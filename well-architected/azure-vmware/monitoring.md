@@ -27,8 +27,13 @@ VMware Aria Operations for Networks helps you achieve comprehensive network visi
 
 ##### Recommendations
 
-- Configure [VMware vSphere Health Status](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-F957C1BB-A032-4648-9310-68A94733ABC8.html) to get a high-level view of the state of the Azure VMware Solution SDDC health.
-- Use [VMware Aria Operations for Networks](https://www.vmware.com/products/aria-operations-for-networks.html) for enhanced visibility and analytics of Azure VMware Solution private cloud network infrastructure.
+- Configure [VMware vSphere Health Status](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-F957C1BB-A032-4648-9310-68A94733ABC8.html) to get a high-level view of the Azure VMware Solution private cloud health status.
+- Use third-party tools like [VMware Aria Suite](https://www.vmware.com/products/aria-operations-for-networks.html) for enhanced visibility and analytics of Azure VMware Solution private cloud network infrastructure.
+- Use Azure native monitoring tools such as:
+  - Azure Monitor.
+  - VMware Aria Operations for operational monitoring.
+  - Azure Policy and its associated dashboard for compliance monitoring.
+  - Microsoft Defender for Cloud and Microsoft Sentinel for security monitoring.
 
 ## Manage logs and archives
 
@@ -41,7 +46,7 @@ Archiving logs is a strategy for keeping your storage costs down. Azure Storage 
 ##### Recommendations
 
 - Collect logs from the VMware syslog service to get health data from VMware solution components such as VMware ESXi, VMware vSAN, VMware NSX-T Data Center, and VMware vCenter Server.
-- Configure tools such as [Log Analytics](/azure/azure-vmware/configure-vmware-syslogs) to collect various logs for querying, analyzing, and reporting capabilities.
+- Configure tools such as VMware Aria Operations for Logging to collect various logs for querying, analyzing, and reporting capabilities.
 - Configure retention durations for sending logs to long-term storage to reduce query time and save on storage costs.
   
 ## Monitor the guest operating system
@@ -52,7 +57,7 @@ Within the guest operating system, metrics are available for disk usage, applica
 
 ##### Recommendations
 
-- Enable guest management and install Azure extensions after your private cloud is enabled by Azure Arc.
+- Enable guest management and install Azure extensions after your private cloud is enabled by Azure Arc for servers or Azure Arc for Azure VMware Solution (preview).
 - Install extra agents to collect data to enable guest management and monitoring on Azure VMware Solution guest VMs.  
 
 ## Implement security monitoring
@@ -63,8 +68,8 @@ Security monitoring is critical for detecting and responding to anomalous activi
 
 ##### Recommendations
 
-- Enable [Microsoft Defender for Cloud](/azure/defender-for-cloud/connect-azure-subscription) on the Azure subscription that you use to deploy the Azure VMware Solution SDDC. Ensure that in the Defender for Cloud plan, the **Cloud Workload Protection (CWP)** setting has a value of **ON** for servers.
-- Audit actions that privileged users take on the Azure VMware Solution SDDC. For more information, see [Audit activity history for group assignments in privileged identity management](/azure/active-directory/privileged-identity-management/groups-audit).
+- Enable [Defender for Cloud](/azure/defender-for-cloud/connect-azure-subscription) on the Azure subscription that you use to deploy the Azure VMware Solution private cloud. Ensure that in the Defender for Cloud plan, the **Cloud Workload Protection (CWP)** setting has a value of **ON** for servers.
+- Audit actions that privileged users take on the Azure VMware Solution private cloud. For more information, see [Audit activity history for group assignments in privileged identity management](/azure/active-directory/privileged-identity-management/groups-audit).
 - Integrate Microsoft Sentinel with Defender for Cloud. Enable its data collector for security events and connect it with Defender for Cloud.
 - Use security monitoring solutions from validated partners in Azure VMware Solution.
 
@@ -100,7 +105,7 @@ To make alerts effective, configure them to notify accountable teams when certai
 - Define relevant alert criteria such as thresholds, severity levels, or specific conditions.
 - Use the [VMware vSphere events and alarms subsystem](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.monitoring.doc/GUID-9272E3B2-6A7F-427B-994C-B15FF8CADC25.html) to monitor VMware vSphere and set up triggers.
 - Configure [Azure alerts in Azure VMware Solution](/azure/azure-vmware/configure-alerts-for-azure-vmware-solution#supported-metrics-and-activities) to respond to events in real time.
-- Ensure that alerts are configured so that [VMware vSAN storage slack space](/azure/azure-vmware/concepts-storage) is maintained at the levels that your service-level agreement (SLA) mandates.
+- Ensure that alerts are configured so that [VMware vSAN datastore slack space](/azure/azure-vmware/concepts-storage) is maintained at the levels that your service-level agreement (SLA) mandates.
 - Configure resource health alerts to get the real-time health status of the Azure VMware Solution private cloud.
 - Use application performance monitoring (APM) tools to gain performance insights at the application code level.
 - Use a combination of monitoring techniques such as synthetic transactions, heartbeat monitoring, and endpoint monitoring.
@@ -118,7 +123,7 @@ Cost monitoring refers to the ability to keep track of costs that are associated
 ##### Recommendations
 
 - Use the VMware vSphere events and alarms subsystem to monitor VMware vSphere and set up triggers.
-- Configure Azure alerts in Azure VMware Solution. These alerts help your operation team respond to expected and unexpected events in real time.
+- Configure Azure alerts that are based on Log Analytics queries for Azure VMware Solution. These alerts help your operation team respond to expected and unexpected events in real time.
 
 ## Use troubleshooting and debugging tools
 

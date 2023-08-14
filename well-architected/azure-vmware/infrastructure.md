@@ -72,7 +72,7 @@ Before you deploy an application in Azure VMware Solution, it's crucial to ensur
 
 ##### Recommendations
 
-- Before you migrate to Azure, use Azure Migrate to get insights into resource usage and recommendations for SKU size.
+- Before you migrate to Azure, use Azure Migrate to get insights into resource usage and recommendations for sizing.
 - Analyze resource utilization patterns over a specific time frame to help establish baseline usage, identify peak periods, and predict resource spikes.
 - Create a dependency map that outlines the components on your critical path. Actively maintain the map, and regularly check it for changes in the solution.
 
@@ -102,9 +102,9 @@ Clustering is concerned with creating logical groupings of hosts to provide adva
 
 ##### Recommendations
 
-- Use the [autoscale feature for Azure VMware Solution](https://github.com/Azure/azure-vmware-solution/tree/main/avs-autoscale) to define performance metrics to use for scale-in or scale-out operations in Azure VMware Solution cluster nodes.
+- Use the [custom GitHub autoscale add-on for Azure VMware Solution](https://github.com/Azure/azure-vmware-solution/tree/main/avs-autoscale) to define performance metrics to use for scale-in or scale-out operations in Azure VMware Solution cluster nodes.
 
-- Use affinity rules to help ensure resource availability. Configuring affinity rules gives administrators control over VM placement. The VMs can then be distributed according to specific requirements, performance considerations, availability needs, or licensing constraints.
+- Use placement policy affinity rules to help ensure resource availability. Configuring affinity rules gives administrators control over VM placement. The VMs can then be distributed according to specific requirements, performance considerations, availability needs, or licensing constraints.
 
 ## Implement high availability
 
@@ -126,9 +126,9 @@ If one host experiences an issue or failure, anti-affinity rules enforce distrib
 
 ##### Recommendations
 
-- When a low-latency communication path is required between VMs, use affinity rules to keep the VMs on the same host.
-- Use VM-to-VM affinity when VMs that support your application need fault tolerance, or when you want to optimize host performance through resource distribution.
-- For VMs that are deployed with high availability or clustering within Azure VMware Solution, create anti-affinity rules to keep those VMs apart and on separate hosts.
+- When a low-latency communication path is required between VMs, use placement policy affinity rules to keep the VMs on the same host.
+- Use placement policy VM-VM affinity when VMs that support your application need fault tolerance, or when you want to optimize host performance through resource distribution.
+- For VMs that are deployed with high availability or clustering within Azure VMware Solution, create placement policy VM-VM anti-affinity rules to keep those VMs apart and on separate hosts.
 
 ## Deploy VMware vSAN
 
@@ -140,7 +140,7 @@ An Azure VMware Solution virtual storage area network (vSAN) uses local storage 
 
 ##### Recommendations
 
-- Determine your failure to thrive (FTT) level, or your failure tolerance, based on your desired resiliency.
+- Determine your failures to tolerate (FTT) level, or your failure tolerance, based on your desired resiliency.
 - Choose a redundant array of independent disks (RAID) configuration that helps ensure data availability and protection against host and disk failures.
 
 ## Use Azure NetApp Files
@@ -153,7 +153,7 @@ Ensure that Azure services such as Azure NetApp Files that interact with Azure V
 
 ##### Recommendations
 
-- Consider using Azure NetApp Files as an extra datastore for Azure VMware Solution.
+- Consider using Azure NetApp Files or a third-party solution as an extra datastore for Azure VMware Solution.
 - Take an application assessment to help determine your optimal combination of Azure VMware Solution nodes and external storage solutions like Azure NetApp Files.
 
 ##### Recommendations
@@ -168,8 +168,8 @@ Establishing a performance baseline provides insight into the capabilities of Az
 
 ##### Recommendations
 
-- Use tools to benchmark your existing environment before you migrate to the Azure VMware Solution SDDC. Some common utilities that you can use to establish baseline performance include [VMware vRealize Operations](/azure/azure-vmware/vrealize-operations-for-azure-vmware-solution), [Perfmon](/message-analyzer/perfmon-viewer), and [iostat](https://linux.die.net/man/1/iostat).
-- Use a [performance-based assessment](/azure/migrate/best-practices-assessment#sizing-criteria) when you estimate Azure VMware Solution SDDC capacity.
+- Use tools to benchmark your existing environment before you migrate to the Azure VMware Solution private cloud. Some common utilities that you can use to establish baseline performance include [VMware vRealize Operations](/azure/azure-vmware/vrealize-operations-for-azure-vmware-solution), [Perfmon](/message-analyzer/perfmon-viewer), and [iostat](https://linux.die.net/man/1/iostat).
+- Use a [performance-based assessment](/azure/migrate/best-practices-assessment#sizing-criteria) when you estimate Azure VMware Solution private cloud capacity.
 
 ## Use debugging and troubleshooting tools
 

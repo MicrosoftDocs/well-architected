@@ -48,8 +48,8 @@ For example, in the front-end web tier that serves user requests, you can apply 
 ##### Recommendations
 
 - Create maps that show VM interdependencies, communication, and usage patterns to ensure that proximity is a requirement.
-- Determine whether VM-VM affinity helps meet performance metrics or service-level agreements (SLAs).
-- Design for high availability by implementing VM anti-affinity policies to protect against host failures and distribute your application across multiple hosts.
+- Determine whether placement policy VM-VM affinity helps meet performance metrics or service-level agreements (SLAs).
+- Design for high availability by implementing placement VM-VM anti-affinity policies to protect against host failures and distribute your application across multiple hosts.
 - To avoid overprovisioning, distribute your workload across small VMs rather than a few large VMs.
 - Regularly monitor, review, and fine-tune affinity policies to identify potential resource contention. Adapt these policies over time as needed.
 
@@ -73,10 +73,10 @@ Application teams must comprehensively evaluate VM placement and engage in metic
 
 ##### Recommendations
 
-- Carefully plan how you use VM-host affinity policies. Consider alternative solutions when possible, such as load balancing, resource pools in VMware vSphere, distributed databases, containerization, and availability zones.
+- Carefully plan how you use placement policy VM-host affinity policies. Consider alternative solutions when possible, such as load balancing, resource pools in VMware vSphere, distributed databases, containerization, and availability zones.
 - Regularly monitor resource utilization and performance to identify any imbalances or issues.
 - Opt for a VM placement strategy that's balanced and flexible. This approach helps you maximize resource utilization while maintaining high availability and ensuring compliance with licensing requirements.
-- Test and validate your VM-host affinity configurations to ensure that they align with your application's specific requirements and that they don't negatively impact overall performance and resilience.
+- Test and validate your placement policy VM-host affinity configurations to ensure that they align with your application's specific requirements and that they don't negatively impact overall performance and resilience.
 
 ### Distribute traffic by using an application or network load balancer
 
