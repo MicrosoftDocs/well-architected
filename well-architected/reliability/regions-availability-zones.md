@@ -3,7 +3,7 @@ title: Design your solution to use availability zones and regions
 description: A guide for understanding when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
-ms.date: 08/10/2023
+ms.date: 08/15/2023
 ms.topic: conceptual
 ms.custom:
   - guide
@@ -216,7 +216,7 @@ In a *zonal* deployment, you specify that your resources should be deployed to a
 
 A zonal approach reduces the latency in communicating between your components. However, by itself, it doesn't increase the resiliency of your solution. To increase your resiliency, you need to deploy multiple instances of your components into multiple availability zones, and decide how to route traffic between each instance. The example figure below shows an *active/passive* traffic routing approach:
 
-:::image type="content" border="false" source="../_images/regions-availability-zones/zonal-multiple-zone.png" alt-text="Diagram showing the solution deployed into multiple availability zones by using a zonal (pinned) deployment approach.":::
+:::image type="content" border="false" source="../_images/regions-availability-zones/zonal-multiple-zones.png" alt-text="Diagram showing the solution deployed into multiple availability zones by using a zonal (pinned) deployment approach.":::
 
 In the example above, a load balancer is deployed across multiple availability zones. It's important that you consider how you route traffic between instances in different availability zones, because a zone outage might also affect the networking resources deployed into that zone.
 
