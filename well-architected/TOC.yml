@@ -76,9 +76,9 @@
         - name: Tradeoffs
           href: operational-excellence/tradeoffs.md
         - name: Recommendations
-            - name: Design patterns
-              href: operational-excellence/design-patterns.md   
           items:
+            - name: Design patterns
+              href: operational-excellence/design-patterns.md 
             - name: Operational excellence guide
               href: coming-soon.md
       - name: Performance Efficiency
