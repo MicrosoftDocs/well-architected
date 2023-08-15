@@ -1,6 +1,6 @@
 ---
 title: Cost optimization in a hybrid workload
-description: Includes guidance and recommendations that apply to the Cost pillar in a hybrid and multi-cloud environment.
+description: Includes guidance and recommendations that apply to the Cost pillar in a hybrid and multicloud environment.
 author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
@@ -23,7 +23,7 @@ Other considerations are described in the [Principles of cost optimization](../c
 
 Define the following for your workloads:
 
-- **Monitor cloud spend with hybrid workloads**. Track cost trends and forecast future spend with dashboards in Azure for your on-prem data estates with Azure Arc.
+- **Monitor cloud spend with hybrid workloads**. Track cost trends and forecast future spend with dashboards in Azure for your on-premises data estates with Azure Arc.
 - **Keep within cost constraints**.
    - Create, apply, and enforce standardized and custom tags and policies.
    - Enforce run-time conformance and audit resources with Azure Policy.
@@ -59,7 +59,7 @@ For budget concerns, you get a considerable amount of functionality at no cost t
 
 - [Manage configurations for Azure Arc enabled servers](/azure/architecture/hybrid/azure-arc-hybrid-config)
 - [Azure Arc hybrid management and deployment for Kubernetes clusters](/azure/architecture/hybrid/arc-hybrid-kubernetes)
-- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](/azure/architecture/hybrid/azure-arc-sql-server)
+- [Optimize administration of SQL Server instances in on-premises and multicloud environments by leveraging Azure Arc](/azure/architecture/hybrid/azure-arc-sql-server)
 - [Disaster Recovery for Azure Stack Hub virtual machines](/azure/architecture/hybrid/azure-stack-vm-dr)
 - [Build high availability into your BCDR strategy](/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
 - [Use Azure Stack HCI switchless interconnect and lightweight quorum for Remote Office/Branch Office](/azure/architecture/hybrid/azure-stack-robo)
@@ -69,7 +69,7 @@ For budget concerns, you get a considerable amount of functionality at no cost t
 
 Azure Stack HCI can help in cost-savings by using your existing Hyper-V and Windows Server skills to consolidate aging servers and storage. Azure Stack HCI pricing follows the monthly subscription billing model, with a flat rate per physical processor core in an Azure Stack HCI cluster.
 
-Use Azure Stack HCI to modernize on-prem workloads with hyperconverged infra. Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used is automatically uploaded and assessed for billing purposes. Cost doesn't vary with consumption beyond the physical processor cores. This means that more VMs don't cost more, and customers who are able to run denser virtual environments are rewarded.
+Use Azure Stack HCI to modernize on-premises workloads with hyperconverged infra. Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used is automatically uploaded and assessed for billing purposes. Cost doesn't vary with consumption beyond the physical processor cores. This means that more VMs don't cost more, and customers who are able to run denser virtual environments are rewarded.
 
 If you are currently using VMware, you can take advantage of cost savings only available with Azure VMware Solution. Easily move VMware workloads to Azure and increase your productivity with elasticity, scale, and fast provisioning cycles. This will help enhance your workloads with the full range of Azure compute, monitor, backup, database, IoT, and AI services.
 
