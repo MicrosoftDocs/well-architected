@@ -1,0 +1,86 @@
+### YamlMime:Landing
+
+title: Azure VMware Solution workload documentation
+summary: Relocate legacy application virtual machines to Azure VMware Solution as a staging area for the first phase of your migration and modernization strategy.
+metadata: 
+  title: Azure VMware Solution workloads
+  description: See design principles that you can apply to your Azure VMware Solution workload to give it a strong foundation.
+  services: na
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  ms.date: 08/10/2023
+  ms.topic: landing-page
+  ms.service: architecture-center
+  ms.subservice: well-architected
+  ms.collection: na
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is an Azure VMware Solution workload?
+            url: overview.md
+      - linkListType: concept
+        links:
+          - text: Design principles
+            url: design-principles.md
+          - text: Integration with Azure landing zones
+            url: landing-zone-integration.md
+  # Card
+  - title: Design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Infrastructure
+            url: infrastructure.md
+          - text: Applications
+            url: application-platform.md
+          - text: Networking
+            url: networking.md
+          - text: Monitoring
+            url: monitoring.md
+          - text: Security
+            url: security.md
+          - text: Operations
+            url: operations.md
+ # Card
+  - title: Reference examples
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Baseline Azure VMware Solution reference architecture
+            url: /azure/cloud-adoption-framework/scenarios/azure-vmware/example-architectures   
+          - text: Azure VMware Solution landing zone accelerator
+            url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone
+
+ # Card
+  - title: Reference implementations
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Azure VMware Solution implementation options
+            url: /azure/cloud-adoption-framework/scenarios/azure-vmware/enterprise-scale-landing-zone#automated-VMware-solution-implementation-options
+
+ # Card
+  - title: Learn
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Introduction to Azure VMware Solution
+            url: /training/modules/intro-azure-vmware-solution/
+          - text: Migrate VMware resources on-premises to Azure VMware Solution
+            url: /training/modules/migrate-vmware-workloads-on-premises-azure-vmware-solution/
+          - text: Run VMware resources on Azure VMware Solution
+            url: /training/paths/run-vmware-workloads-azure-vmware-solution/       
+
+ # Card
+  - title: Assessment
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Azure VMware Solution assessment tool
+            url: assessment.md

@@ -363,6 +363,32 @@ items:
             href: scalability/tradeoffs.md
       - name: Workloads
         items:
+          - name: Azure VMware Solution
+            items:
+              - name: Quick links
+                href: azure-vmware/index.yml
+              - name: Get started
+                href: azure-vmware/overview.md
+              - name: Design principles
+                href: azure-vmware/design-principles.md
+              - name: Design areas
+                items:
+                - name: Infrastructure
+                  href: azure-vmware/infrastructure.md
+                - name: Applications
+                  href: azure-vmware/application-platform.md
+                - name: Networking
+                  href: azure-vmware/networking.md
+                - name: Monitoring
+                  href: azure-vmware/monitoring.md
+                - name: Security
+                  href: azure-vmware/security.md
+                - name: Operations
+                  href: azure-vmware/operations.md
+              - name: Azure landing zone integration
+                href: azure-vmware/landing-zone-integration.md
+              - name: Assessment
+                href: azure-vmware/assessment.md
           - name: Mission-critical
             items:
               - name: Quick links
