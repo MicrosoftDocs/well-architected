@@ -30,7 +30,7 @@ To familiarize yourself with the concept of Azure landing zones, see [What is an
 > [!IMPORTANT]
 > Azure VMware Solution has specific considerations and requirements, especially ones that are related to integration with Azure services. The Azure VMware Solution landing zone accelerator and the Azure Well-Architected Framework guidance for Azure VMware Solution aim to highlight these necessary customizations. These resources also incorporate cloud-adoption framework perspectives for a holistic approach to cloud readiness.
 
-:::image type="content" source="./images/azure-vmware-solution-landing-zone-architecture.png" alt-text="Architecture diagram that shows the landing zone integration of an Azure VMware Solution workload." border="false":::
+:::image type="content" source="./images/azure-vmware-solution-landing-zone-architecture.png" alt-text="Architecture diagram that shows the landing zone integration of an Azure VMware Solution workload." border="false" lightbox="./images/azure-vmware-solution-landing-zone-architecture.png":::
 
 ### Platform landing zones
 

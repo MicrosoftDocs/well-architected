@@ -117,7 +117,6 @@ You can enforce multifactor authentication for user authentication to provide an
 
 Security monitoring and threat detection involve detecting and responding to changes in the security posture of Azure VMware Solution private cloud workloads. It's important to follow industry best practices and comply with regulatory requirements, including:
 
-- The General Data Protection Regulation (GDPR).
 - The Health Insurance Portability and Accountability Act (HIPAA).
 - Payment Card Industry Data Security Standards (PCI DSS).
 
