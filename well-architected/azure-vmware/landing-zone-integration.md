@@ -66,7 +66,7 @@ The workload team and the platform team have distinct responsibilities. But both
 The design areas of the platform and application landing zones are tightly coupled.
 
 - For a description of changes in platform resources that are needed for a workload, see [Azure landing zone review for Microsoft Azure VMware Solution](/azure/cloud-adoption-framework/scenarios/azure-vmware/ready).
-- For a description of the technical specification of a workload, see [What are the key design areas?](../azure-vmware/avs-overview.md#what-are-the-key-design-areas).
+- For a description of the technical specification of a workload, see [What are the key design areas?](../azure-vmware/overview.md#what-are-the-key-design-areas).
 
 #### Design area - Infrastructure
 
