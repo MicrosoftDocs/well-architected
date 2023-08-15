@@ -61,56 +61,6 @@
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "well-architected/azure-vmware/avs-infrastructure.md",
-			"redirect_url": "/azure/architecture/framework/azure-vmware/infrastructure",
-			"redirect_document_id": false
-		},
-		{
-			"source_path": "well-architected/azure-vmware/avs-vmware-application.md",
-			"redirect_url": "/azure/architecture/framework/azure-vmware/application-platform",
-			"redirect_document_id": false
-		},
-		{
-			"source_path": "well-architected/azure-vmware/avs-monitoring.md",
-			"redirect_url": "/azure/architecture/framework/azure-vmware/monitoring",
-			"redirect_document_id": false
-		},
-		{
-			"source_path": "well-architected/azure-vmware/avs-networking.md",
-			"redirect_url": "/azure/architecture/framework/azure-vmware/networking",
-			"redirect_document_id": false
-		},
-		{
-			"source_path": "well-architected/azure-vmware/avs-operations.md",
-			"redirect_url": "/azure/architecture/framework/azure-vmware/operations",
-			"redirect_document_id": false
-		},
-		{
-			"source_path": "well-architected/azure-vmware/avs-security.md",
-			"redirect_url": "/azure/architecture/framework/azure-vmware/security",
-			"redirect_document_id": false
-		},
-		{
-			"source_path": "well-architected/azure-vmware/avs-assessment.md",
-			"redirect_url": "/azure/architecture/framework/azure-vmware/assessment",
-			"redirect_document_id": false
-		},
-		{
-			"source_path": "well-architected/azure-vmware/avs-landing-zone-integration.md",
-			"redirect_url": "/azure/architecture/framework/azure-vmware/landing-zone-integration",
-			"redirect_document_id": false
-		},
-		{
-			"source_path": "well-architected/azure-vmware/avs-overview.md",
-			"redirect_url": "/azure/architecture/framework/azure-vmware/overview",
-			"redirect_document_id": false
-		},
-		{
-			"source_path": "well-architected/azure-vmware/avs-design-principles.md",
-			"redirect_url": "/azure/architecture/framework/azure-vmware/design-principles",
-			"redirect_document_id": false
-		},
-		{
 			"source_path": "well-architected/services/compute/azure-kubernetes-service/cost-optimization.md",
 			"redirect_url": "/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service",
 			"redirect_document_id": false
