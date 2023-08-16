@@ -3,7 +3,7 @@ title: Infrastructure considerations for Azure VMware Solution workloads
 description: Understand Azure VMware Solution infrastructure concepts. See how to design for resilience, security, scalability, automation, and disaster recovery.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 08/10/2023
+ms.date: 08/16/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-avs
@@ -11,14 +11,14 @@ ms.subservice: waf-workload-avs
 
 # Infrastructure and provisioning considerations for Azure VMware Solution workloads
 
-This article discusses the infrastructure design area of an Azure VMware Solution offering, which refers to the foundational layer. This layer supports the compute, storage, and networking capabilities that you need to run VMware vSphere workloads efficiently and reliably. This article also explains how to use the VMware software-defined datacenter (SDDC) stack for resilience, security, scalability, automation, and disaster recovery. The SDDC stack includes:
+This article discusses the infrastructure design area of an Azure VMware Solution offering, which refers to the foundational layer. This layer supports the compute, storage, and networking capabilities that you need to run VMware vSphere workloads efficiently and reliably. This article also explains how to use the VMware software-defined data center (SDDC) stack for resilience, security, scalability, automation, and disaster recovery. The VMware SDDC stack includes:
 
-- VMware ESXi.
-- VMware vCenter Server.
-- VMware NSX-T Data Center.
-- VMware vSAN.
-- VMware HCX (optional).
-- VMware SRM (optional).
+- VMware ESXi
+- VMware vCenter Server
+- VMware NSX-T Data Center
+- VMware vSAN
+- VMware HCX (optional)
+- VMware SRM (optional)
 
 ## Calculate business targets
 
@@ -72,7 +72,7 @@ Before you deploy an application in Azure VMware Solution, it's crucial to ensur
 
 ##### Recommendations
 
-- Before you migrate to Azure, use Azure Migrate to get insights into resource usage and recommendations for sizing.
+- Before you migrate to Azure, use [Azure Migrate](https://learn.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) to get insights into resource usage and recommendations for sizing.
 - Analyze resource utilization patterns over a specific time frame to help establish baseline usage, identify peak periods, and predict resource spikes.
 - Create a dependency map that outlines the components on your critical path. Actively maintain the map, and regularly check it for changes in the solution.
 
