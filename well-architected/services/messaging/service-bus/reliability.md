@@ -65,7 +65,7 @@ When deploying Service Bus with Geo-disaster recovery and in availability zones,
 **Have you configured Azure Service Bus with reliability in mind?**
 
 > [!div class="checklist"]
-> - Evaluate Premier-tier benefits of Azure Service Bus.
+> - Evaluate Premium tier benefits of Azure Service Bus.
 > - Ensure that [Service Bus Messaging Exceptions](/azure/service-bus-messaging/service-bus-messaging-exceptions) are handled properly.
 > - Connect to Service Bus with the Advanced Messaging Queue Protocol (AMQP) and use Service Endpoints or Private Endpoints when possible.
 > - Review the [Best Practices for performance improvements using Service Bus Messaging](/azure/service-bus-messaging/service-bus-performance-improvements?tabs=net-standard-sdk-2).
@@ -85,7 +85,7 @@ Consider the following recommendations to optimize reliability when configuring 
 
 |Recommendation|Description|
 |--------------|-----------|
-|Evaluate Premier-tier benefits of Azure Service Bus.|Consider migrating to the Premium tier of Service Bus to take advantage of platform-supported outage and disaster protection.|
+|Evaluate Premium tier benefits of Azure Service Bus.|Consider migrating to the Premium tier of Service Bus to take advantage of platform-supported outage and disaster protection.|
 |Connect to Service Bus with the AMQP protocol and use Service Endpoints or Private Endpoints when possible.|This recommendation keeps traffic on the Azure Backbone. *Note: The default connection protocol for `Microsoft.Azure.ServiceBus` and `Windows.Azure.ServiceBus` namespaces is `AMQP`.*|
 |Implement geo-replication on the sender and receiver side to protect against outages and disasters.|Standard tier supports only the implementation of sender and receiver-side geo-redundancy. An outage or disaster in an Azure Region could cause downtime for your solution.|
 |Configure Geo-Disaster.|- [Active/Active](/azure/service-bus-messaging/service-bus-outages-disasters#active-replication) <br>- [Active/Passive](/azure/service-bus-messaging/service-bus-outages-disasters#passive-replication) <br>- [Paired Namespace (Active/Passive)](/azure/service-bus-messaging/service-bus-geo-dr) <br>- *Note: The secondary region should preferably be an [Azure paired region](/azure/availability-zones/cross-region-replication-azure)*.|
