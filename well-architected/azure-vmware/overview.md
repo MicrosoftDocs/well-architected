@@ -3,7 +3,7 @@ title: Azure VMware Solution workloads
 description: See general guidance and resources for using Azure VMware Solution to run an on-premises VMware technology stack on Azure.
 author: sblair01
 ms.author: prwilk
-ms.date: 08/10/2023
+ms.date: 08/15/2023
 ms.topic: conceptual
 ms.service: waf
 ms.subservice: waf-workload-avs
@@ -11,23 +11,23 @@ ms.subservice: waf-workload-avs
 
 # Azure VMware Solution workloads
 
-This guidance is intended for **workload owners**, **technical stakeholders**, and **business stakeholders**. Specifically, this guidance is appropriate for people who play an integral role in harnessing, developing, and upholding applications throughout the Azure VMware Solution software-defined datacenter (SDDC) lifecycle. This documentation provides prescriptive guidance and best practices for key design areas that have a technical foundation in Azure Well-Architected Framework pillars. The recommendations center on Azure VMware Solution, a managed service for migrating on-premises VMware workloads to Azure.
+This guidance is intended for **workload owners**, **technical stakeholders**, and **business stakeholders**. Specifically, this guidance is appropriate for people who play an integral role in harnessing, developing, and upholding applications throughout the Azure VMware Solution private cloud lifecycle. This documentation provides prescriptive guidance and best practices for key design areas that have a technical foundation in Azure Well-Architected Framework pillars. The recommendations center on Azure VMware Solution, a managed service for migrating on-premises VMware vSphere workloads to Azure.
 
 You can use this workload documentation as your go-to resource for optimizing the lifecycle of particular applications in Azure VMware Solution.
 
 ## What is an Azure VMware Solution workload?
 
-VMware is a leading provider of virtualization and cloud computing software and services. VMware collaborates with Microsoft Azure to offer Azure VMware Solution. This solution seamlessly integrates the VMware hypervisor with Azure dedicated BareMetal infrastructure. When you use this integration, you can take advantage of Azure native resources like virtual machines (VMs), storage disks, and network components. Azure VMware Solution also provides a way for workloads to migrate to Azure with minimal environmental modifications.
+VMware is a leading provider of virtualization and cloud computing software and services. VMware collaborates with Microsoft Azure to offer Azure VMware Solution. This solution seamlessly integrates the VMware vSphere hypervisor with Azure dedicated BareMetal infrastructure. When you use this integration, you can take advantage of Azure native resources like virtual machines (VMs), storage disks, and network components. Azure VMware Solution also provides a way for workloads to migrate to Azure with minimal environmental modifications.
 
 :::image type="content" source="./images/azure-vmware-solution-workload.png" alt-text="Architecture diagram that shows how Azure VMware Solution connects an on-premises system with VMware components and Azure services." border="false":::
 
-When you use this unique hybrid environment, you can retain certain workloads on-premises. But you also have the flexibility of extending to the cloud, where you can benefit from the following advantages:
+When you use this unique hybrid environment, you can retain certain VMware vSphere workloads on-premises. But you also have the flexibility of extending to the cloud, where you can benefit from the following advantages:
 
-- Infrastructure that's suited for bursting scenarios
+- Infrastructure that's suited for cloud bursting scenarios
 - Azure native integrations
 - Disaster recovery locations
 
-Azure VMware Solution offers a consistent VMware infrastructure within Azure. When you employ this service, your team can use familiar VMware processes, skills, and tools like VMware vSphere, VMware HCX, and VMware NSX-T Data Center. You can also streamline the management of your cloud-based workloads.
+Azure VMware Solution offers a consistent VMware solution infrastructure within Azure. When you employ this service, your team can use familiar VMware solution processes, skills, and tools like VMware vSphere, VMware HCX, and VMware NSX-T Data Center. You can also streamline the management of your cloud-based workloads.
 
 ## The Well-Architected Framework approach
 
@@ -80,7 +80,7 @@ Azure VMware Solution uses VMware and Microsoft propriety services. The followin
 
 ## Example workloads
 
-Many organizations run business applications, enterprise software, and legacy applications in on-premises VMware environments. When you use Azure VMware Solution to bring these applications to the cloud, you benefit from Azure global infrastructure and service offerings. Examples of cloud applications include traditional three-tier web-based applications and virtual desktops.
+Many organizations run business applications, enterprise software, and legacy applications in on-premises VMware vSphere environments. When you use Azure VMware Solution to bring these applications to the cloud, you benefit from Azure global infrastructure and service offerings. Examples of cloud applications include traditional three-tier web-based applications and virtual desktops.
 
 For more information, see the following reference architectures:
 
