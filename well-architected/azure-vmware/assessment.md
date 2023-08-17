@@ -24,7 +24,7 @@ These questions are designed to help benchmark your workload's maturity and alig
 :::image type="content" source="./images/assessment-recommendations.png" alt-text="Screenshot of the guidance page of the Azure VMware Solution assessment. Recommended actions are visible.":::
 
 > [!div class="nextstepaction"]
-> [Azure VMware Solution review tool](/assessments/2d85e883-bdc4-4854-aaf0-df72c4bcee15)
+> [Azure VMware Solution Assessment Tool](/assessments/2d85e883-bdc4-4854-aaf0-df72c4bcee15)
 
 ## Next steps
 
