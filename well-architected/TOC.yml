@@ -88,7 +88,7 @@
             - name: Establish performance targets
               href: performance-efficiency/performance-targets.md
             - name: Conduct capacity planning
-              href: performance-efficiency/capacity-planning.md
+              href: performance-efficiency/plan-capacity.md
             - name: Select the right resources 
               href: performance-efficiency/select-right-services.md
             - name: Collect metrics and logs 
@@ -108,7 +108,7 @@
             - name: Respond to live-site issues 
               href: performance-efficiency/respond-live-performance-issues.md
             - name: Continous performance optimization
-              href: performance-efficiency/continuous-performance-optimization.md
+              href: performance-efficiency/continuous-performance-optimize.md
             
     - name: Workloads
       items:
