@@ -14,7 +14,8 @@
     "draft": false,
     "requestReview": true,
     "signOff": false,
-    "properties": {}
+    "properties": {},
+    "sleepInterval": 15
   },
   "types": [
     {
