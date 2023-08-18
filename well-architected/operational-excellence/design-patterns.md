@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 When you design workload architectures, you should use industry patterns that address common challenges. Patterns can help you make intentional tradeoffs within workloads and optimize for your desired outcome. These patterns are backed by real-world experience, are designed for cloud scale and operating models, and are inherently vendor agnostic. Using well-known patterns as a way to standardize your workload design is itself a component of operational excellence.
 
-Many design patterns directly support one or more architecture pillars. Design patterns that support the operational excellence pillar use topologies that provide a solid foundation for safe deployment practices and facilitate architecture evolution over time, migration scenarios, and observability.
+Many design patterns directly support one or more architecture pillars. Design patterns that support the Operational Excellence pillar use topologies that provide a solid foundation for safe deployment practices and facilitate architecture evolution over time, migration scenarios, and observability.
 
 ## Design patterns for operational excellence
 
