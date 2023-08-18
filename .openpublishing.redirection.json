@@ -1,6 +1,26 @@
 {
 	"redirections": [
 		{
+			"source_path": "well-architected/devops/devops-patterns.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/design-patterns",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/reliability-patterns.md",
+			"redirect_url": "/azure/well-architected/reliability/design-patterns",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/security/security-patterns.md",
+			"redirect_url": "/azure/well-architected/security/design-patterns",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/performance-efficiency-patterns.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-patterns",
+			"redirect_document_id": true
+		},
+		{
 			"source_path": "well-architected/services/compute/virtual-machines/cost-optimization.md",
 			"redirect_url": "/azure/architecture/framework/services/compute/virtual-machines/virtual-machines-review",
 			"redirect_document_id": false
@@ -346,11 +366,6 @@
 			"redirect_document_id": true
 		},
 		{
-			"source_path": "well-architected/devops/devops-patterns.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/devops-patterns",
-			"redirect_document_id": true
-		},
-		{
 			"source_path": "well-architected/devops/health-monitoring.md",
 			"redirect_url": "/azure/well-architected/operational-excellence/health-monitoring",
 			"redirect_document_id": true
@@ -546,11 +561,6 @@
 			"redirect_document_id": true
 		},
 		{
-			"source_path": "well-architected/scalability/performance-efficiency-patterns.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/performance-efficiency-patterns",
-			"redirect_document_id": true
-		},
-		{
 			"source_path": "well-architected/scalability/performance-efficiency.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/performance-efficiency",
 			"redirect_document_id": true
@@ -673,11 +683,6 @@
 		{
 			"source_path": "well-architected/resiliency/principles.md",
 			"redirect_url": "/azure/well-architected/reliability/principles",
-			"redirect_document_id": true
-		},
-		{
-			"source_path": "well-architected/resiliency/reliability-patterns.md",
-			"redirect_url": "/azure/well-architected/reliability/reliability-patterns",
 			"redirect_document_id": true
 		},
 		{
