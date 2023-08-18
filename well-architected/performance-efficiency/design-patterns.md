@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 When you design workload architectures, you should use industry patterns that address common challenges. Patterns can help you make intentional tradeoffs within workloads and optimize for your desired outcome. These patterns are backed by real-world experience, are designed for cloud scale and operating models, and are inherently vendor agnostic. Using well-known patterns as a way to standardize your workload design is a component of operational excellence.
 
-Many design patterns directly support one or more architecture pillars. Design patterns that support the performance efficiency pillar address scalability, performance tuning, task prioritization, and the removal of bottlenecks.
+Many design patterns directly support one or more architecture pillars. Design patterns that support the Performance Efficiency pillar address scalability, performance tuning, task prioritization, and the removal of bottlenecks.
 
 ## Design patterns for performance efficiency
 
