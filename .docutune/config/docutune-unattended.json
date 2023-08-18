@@ -10,7 +10,7 @@
     "maxBatches": 100,
     "body": "",
     "newBranchNamePrefix": "",
-    "headRemote": "upstream",
+    "headRemote": "origin",
     "draft": false,
     "requestReview": true,
     "signOff": false,
