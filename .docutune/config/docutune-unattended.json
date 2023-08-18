@@ -1,0 +1,33 @@
+{
+  "baseConfiguration": "docutune-unattended-default.json",
+  "onboarding": {
+    "maxInFlightPullRequests": 20,
+    "maxInFlightFiles": 200
+  },
+  "pullRequest": {
+    "title": "[BULK] DocuTune - Scheduled execution to fix known issues",
+    "batchSize": 0,
+    "maxBatches": 100,
+    "body": "",
+    "newBranchNamePrefix": "",
+    "targetRepo": "upstream",
+    "draft": false,
+    "requestReview": true,
+    "signOff": false,
+    "properties": {}
+  },
+  "types": [
+    {
+      "name": "Default",
+      "command": "Fix",
+      "configType": "full",
+      "stopAt": 25
+    },
+    {
+      "name": "FlagBrokenLinks",
+      "base": "Default",
+      "configType": "links-only",
+      "stopAt": 10
+    }
+  ]
+}
