@@ -3,7 +3,7 @@ title: Design your solution to use availability zones and regions
 description: A guide for understanding when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
-ms.date: 08/15/2023
+ms.date: 08/21/2023
 ms.topic: conceptual
 ms.custom:
   - guide
