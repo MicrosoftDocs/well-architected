@@ -1,0 +1,88 @@
+### YamlMime:Landing
+
+title: Azure Virtual Desktop workload documentation
+summary: Run Windows desktops and applications on Azure from any device and location.
+metadata: 
+  title: Azure Virtual Desktop workloads
+  description: See design principles that you can apply to your Azure Virtual Desktop workload to give it a strong foundation.
+  services: na
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  ms.date: 09/15/2023
+  ms.topic: landing-page
+  ms.service: architecture-center
+  ms.subservice: well-architected
+  ms.collection: na
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is an Azure Virtual Desktop workload?
+            url: overview.md
+      - linkListType: concept
+        links:
+          - text: Design principles
+            url: design-principles.md
+          - text: Integration with Azure landing zones
+            url: landing-zone-integration.md
+  # Card
+  - title: Design areas
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Application delivery
+            url: application-delivery.md
+          - text: Networking
+            url: networking.md
+          - text: Monitoring
+            url: monitoring.md
+          - text: Security
+            url: security.md
+          - text: Operations
+            url: operations.md
+          - text: Scalability
+            url: scalability.md
+          - text: Storage
+            url: storage.md
+ # Card
+  - title: Reference examples
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Migrate end-user desktops to Azure Virtual Desktop
+            url: /azure/cloud-adoption-framework/scenarios/wvd/  
+          - text: Azure Virtual Desktop for the enterprise
+            url: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
+
+ # Card
+  - title: Reference implementations
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Enterprise-scale support for Microsoft Azure Virtual Desktop
+            url: /azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone
+
+ # Card
+  - title: Learn
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Deliver remote desktops and apps with Azure Virtual Desktop
+            url: /training/paths/m365-wvd/
+          - text: Plan an Azure Virtual Desktop implementation
+            url: /training/paths/plan-azure-virtual-desktop-implementation/
+          - text: Implement an Azure Virtual Desktop infrastructure
+            url: /training/paths/implement-azure-virtual-infrastructure/
+
+ # Card
+  - title: Assessment
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Azure Virtual Desktop assessment tool
+            url: assessment.md

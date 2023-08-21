@@ -363,6 +363,34 @@ items:
             href: scalability/tradeoffs.md
       - name: Workloads
         items:
+          - name: Azure Virtual Desktop
+            items:
+              - name: Quick links
+                href: azure-virtual-desktop/index.yml
+              - name: Get started
+                href: azure-virtual-desktop/overview.md
+              - name: Design principles
+                href: azure-virtual-desktop/design-principles.md
+              - name: Design areas
+                items:
+                - name: Application delivery
+                  href: azure-virtual-desktop/application-delivery.md
+                - name: Networking
+                  href: azure-virtual-desktop/networking.md
+                - name: Monitoring
+                  href: azure-virtual-desktop/monitoring.md
+                - name: Security
+                  href: azure-virtual-desktop/security.md
+                - name: Operations
+                  href: azure-virtual-desktop/operations.md
+                - name: Scalability
+                  href: azure-virtual-desktop/scalability.md
+                - name: Storage
+                  href: azure-virtual-desktop/storage.md
+              - name: Azure landing zone integration
+                href: azure-virtual-desktop/landing-zone-integration.md
+              - name: Assessment
+                href: azure-virtual-desktop/assessment.md
           - name: Azure VMware Solution
             items:
               - name: Quick links
