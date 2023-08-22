@@ -45,8 +45,8 @@ landingContent:
             url: security.md
           - text: Operations
             url: operations.md
-          - text: Scalability
-            url: scalability.md
+          - text: Business continuity
+            url: business-continuity.md
           - text: Storage
             url: storage.md
  # Card

@@ -383,8 +383,8 @@ items:
                   href: azure-virtual-desktop/security.md
                 - name: Operations
                   href: azure-virtual-desktop/operations.md
-                - name: Scalability
-                  href: azure-virtual-desktop/scalability.md
+                - name: Business continuity
+                  href: azure-virtual-desktop/business-continuity.md
                 - name: Storage
                   href: azure-virtual-desktop/storage.md
               - name: Azure landing zone integration
