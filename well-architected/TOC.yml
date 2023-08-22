@@ -105,6 +105,8 @@
       items:
       - name: Overview
         href: workloads.md
+      - name: Azure VMware Solution
+        href: azure-vmware/index.yml
       - name: Carrier-grade
         href: carrier-grade/index.yml    
       - name: Hybrid
