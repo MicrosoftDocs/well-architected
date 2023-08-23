@@ -36,7 +36,7 @@ To understand how Azure Front Door creates a more reliable workload, reference t
 **Have you configured Azure Front Door with reliability in mind?**
 
 > [!div class="checklist"]
-> - Use WAF policies in Front Door. Lock down Application Gateway to receive traffic only from Azure Front Door when using Azure Front Door and Application Gateway to protect `HTTP/S` applications.
+> - Use WAF policies in Front Door. Lockdown Application Gateway to receive traffic only from Azure Front Door when using Azure Front Door and Application Gateway to protect `HTTP/S` applications.
 > - Use Azure Front Door Web Application Firewall (WAF) policies to provide global protection across Azure regions for inbound `HTTP/S` connections to a *Landing Zone*.
 > - Create a rule to block access to the health endpoint from the internet.
 > - Ensure that the connection to the back-end is re-encrypted.
@@ -48,9 +48,9 @@ Consider the following recommendation to optimize reliability when configuring A
 
 |Recommendation|Description|
 |--------------|-----------|
-|Use WAF policies in Front Door. Lock down Application Gateway to receive traffic only from Azure Front Door when using Azure Front Door and Application Gateway to protect `HTTP/S` applications.|Certain scenarios can force a customer to implement rules specifically on AppGateway: For example, if ModSec Core Rule Set (CRS) `2.2.9`, CRS `3.0`, or CRS `3.1` rules are required, rules can be only implemented on AppGatway. Rate-limiting and geo-filtering are available only on Azure Front Door, not on AppGateway. Instructions on how to lock down traffic can be found at [Frequently asked questions for Azure Front Door](/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)|
+|Use WAF policies in Front Door. Lock down Application Gateway to receive traffic only from Azure Front Door when using Azure Front Door and Application Gateway to protect `HTTP/S` applications.|Certain scenarios can force a customer to implement rules specifically on AppGateway: For example, if ModSec Core Rule Set (CRS) `2.2.9`, CRS `3.0`, or CRS `3.1` rules are required, rules can be only implemented on AppGatway. Rate-limiting and geo-filtering are available only on Azure Front Door, not on AppGateway. Instructions to lock down traffic on Azure Front Door can be found at [Frequently asked questions for Azure Front Door](/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)|
 |Ensure that the connection to the back-end is re-encrypted.|Front Door doesn't support SSL passthrough. Front Door must hold the certificate to terminate the encrypted inbound connection.|
-|Evaluate the four traffic routing configurations in Azure Front Door.|The Front Door service supports various traffic-routing methods to determine how to route your `HTTP/HTTPS` traffic to the various service endpoints.|
+|Evaluate the four traffic routing methods in Azure Front Door.|The Front Door service supports various traffic-routing methods to determine how to route your `HTTP/HTTPS` traffic to the various service endpoints. For more information on traffic routing methods, please check [Front Door routing methods](/azure/frontdoor/front-door-routing-methods)|
 
 ## Next step
 
