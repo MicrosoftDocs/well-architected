@@ -62,6 +62,7 @@ As with any cloud service, failures can occur both on the service and the worklo
 
 - [Policy: Require at least two regions](https://github.com/Azure/Community-Policy/blob/main/policyDefinitions/Cosmos%20DB/audit-geo-replication-for-azure-cosmos-db/azurepolicy.json)
 - [Policy: Enable service-managed failover](https://github.com/Azure/Community-Policy/blob/main/policyDefinitions/Cosmos%20DB/audit-automatic-failover-for-azure-cosmos-db/azurepolicy.json)
+- [Policy: Require specific deployment regions](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_Locations_Deny.json)
 
 ## Security
 
@@ -93,14 +94,44 @@ Security is a critical part of any architecture that can be easily overlooked fo
 
 ### Azure Policy definitions
 
-- [Enable Microsoft Defender](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/MDC_Microsoft_Defender_Azure_Cosmos_DB_Audit.json)
-- [Require a virtual network service endpoint](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json)
-- [Disable local authentication](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_DisableLocalAuth_AuditDeny.json)
-- [Require firewall rules](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_NetworkRulesExist_Audit.json)
+- [Policy: Enable Microsoft Defender](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/MDC_Microsoft_Defender_Azure_Cosmos_DB_Audit.json)
+- [Policy: Require a virtual network service endpoint](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_CosmosDB_Audit.json)
+- [Policy: Disable local authentication](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_DisableLocalAuth_AuditDeny.json)
+- [Policy: Require firewall rules](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_NetworkRulesExist_Audit.json)
 
 ## Cost optimization
 
+Your workload's characteristics and the implementation of your solution can influence the final cost of running in Azure. Consider main drivers like your partitioning strategy, consistency level, replication, and write type when designing your workload. When sizing your workload, consider the read/write nature of your data, the size of average items, normalization, and TTL. This section includes considerations and recommendations to streamline costs for your workload.
 
+> [!div class="checklist"]
+>
+> - Design an indexing policy that's considers the operations and queries you commonly make in your workload.
+> - Determine a partition key or set of partition keys that has a value that doesn't change with high cardinality. Use the [existing guidance and best practices](/azure/cosmos-db/partitioning-overview#choose-partitionkey) to help select an appropriate partition key.
+> - Select a throughput allocation schema that's appropriate for your workload. Review the benefits of standard and autoscale throughput distributed at the database or container level. Also, consider serverless when appropriate. [Review your workload's traffic patterns](/azure/cosmos-db/how-to-choose-offer#understand-your-traffic-patterns) in the context of selecting a throughput allocation scheme.
+> - Consider consistency levels as they relate to your workload. Also, consider if client sessions should alter the default consistency level.
+> - Calculate the expected overall data storage for your workload. The size of items, indexes, and metadata all influence your data storage cost. Calcuate the impact of replication on storage costs.
+> - Create a strategy to automatically remove older items that are no longer used or necessary. If required, export these items to a lower-cost storage solution before they are removed.
+> - Evaluate your most common queries that minimize cross-partition lookups. Use this information to inform the process of selecting a partition key or customizing an indexing policy.
+>
+
+### Recommendations
+
+| Recommendation | Benefit |
+| --- | --- |
+| Monitor RU/s utilization and patterns. | Use metrics to monitor RU consumption from the very beginning of your solution. Use queries and other data research techniques to find antipatterns in your application code. |
+| Customize your indexing policy to map to your workload. | The default indexing policy indexes all paths in an item, and this policy can have significant impacts to RU consumption and costs. Use an indexing policy designed based on only the paths that you need to index for your common queries. For write-heavy workloads, disable automatic indexing of columns not used in queries. |
+| Select partition key\[s\] that are ideal for your workload. | The partition key\[s\] should distribute throughput consumption and data storage evenly across logical partitions. The selection should also minimize the number of unbounded cross-partition queries. Avoid hot partitions that receive a disproportionate amount of traffic, as unbalance partitions can increase throughput costs and transient errors. Use the most common search queries to determine potential partition key\[s\] that likely executes only single-partition or bounded cross-partition queries. |
+| Use serverless or provisioned throughput, manual provisioning or autoscale, at the database or container level when appropriate for your workload. | [Compare the provisioned throughput types](/azure/cosmos-db/how-to-choose-offer) and select the appropriate option for your workload. Generally, smaller and dev/test workloads may benefit from serverless throughput or manual shared throughput at the database level. Larger, mission-critical workloads may benefit from autoscale throughput assigned at the database or container level. |
+| Configure the [default consistency level](/azure/cosmos-db/consistency-levels#configure-the-default-consistency-level) for your application. When appropriate, [override the default consistency level](/azure/cosmos-db/nosql/how-to-manage-consistency#override-the-default-consistency-level) in client sessions. | You may not always need to change the standard default consistency level or override it in client sessions. Consider the higher costs associated with reads at stronger consistency levels. |
+| For dev/test workloads, use the Azure Cosmos DB emulator. | The [Azure Cosmos DB emulator](/azure/cosmos-db/local-emulator) is an option for dev/test and continuous integration that can save on the costs of these common workloads for your development team. The emulator is also available as a [Docker container image](/azure/cosmos-db/docker-emulator-linux). |
+| Use transactional batch operations | Use batch operations in client-side SDKS for inserting, updating, or deleting multiple documents in a single transaction request. This step can reduce the number of individual requests and can eventually lead to better throughput efficiency. |
+| Use projection to reduce throughput costs of large query result sets. | Author queries to only project the minimal number of fields required from a result set. If calculations on fields are necessary, evaluate the throughput cost of performing those calculations server-side versus client-side. |
+| Avoid using unbounded cross-partition queries. | Evaluate and author queries to ensure they search within a single logical partition whenever possible. Use query filters to control which logical partitions the query targets. If a query must search across logical partitions, bound the query to only search a subset of logical partitions instead of a full scan. |
+| Implement time-to-live (TTL) to remove unused items. | Use TTL to automatically delete data that's no longer needed. Manage storage costs by removing expired or obsolete data. If necessary, export the expired data to a lower-cost storage solution. |
+
+### Azure Policy definitions
+
+- [Policy: Restrict the maximum allowed throughput](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_MaxThroughput_Deny.json)
 
 ## Next steps
 
