@@ -15,8 +15,6 @@
         items: 
         - name: Quick links
           href: reliability/index.yml
-        - name: Overview
-          href: reliability/overview.md
         - name: Design principles
           href: reliability/principles.md
         - name: Checklist
@@ -35,8 +33,6 @@
         items: 
         - name: Quick links
           href: security/index.yml
-        - name: Overview
-          href: security/overview.md
         - name: Design principles
           href: security/principles.md
         - name: Checklist
@@ -69,8 +65,6 @@
         items: 
         - name: Quick links
           href: operational-excellence/index.yml
-        - name: Overview
-          href: operational-excellence/overview.md
         - name: Design principles
           href: operational-excellence/principles.md
         - name: Checklist
@@ -87,8 +81,6 @@
         items: 
         - name: Quick links
           href: performance-efficiency/index.yml
-        - name: Overview
-          href: performance-efficiency/overview.md
         - name: Design principles
           href: performance-efficiency/principles.md
         - name: Checklist
