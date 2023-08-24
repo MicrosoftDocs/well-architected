@@ -167,6 +167,38 @@ Workloads must be monitored after they're deployed to make sure they perform as 
 
 - [Policy: Email notification for high severity alerts](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Email_notification.json)
 
+## Performance efficiency
+
+> [!div class="checklist"]
+>
+> - Define a performance baseline for your application. Measure how many concurrent users and transactions you may need to handle. Consider workload characteristics such as your average user flow, common operations, and spikes in usage.
+> - Research your most common and most complex queries. Identify queries that use multiple lookups, joins, or aggregates. Consider these queries in any design considerations for the partition key or indexing policy.
+> - For the most common queries, determine the number of results you expect per page. This number will help formalize a buffered item count for prefetched results.
+> - Research your target users. Determine which Azure regions are closest to them.
+> - Identify queries that use one or more ordering fields. Also, identify operations that impact multiple fields. Include these fields explicitly in the indexing policy design.
+> - Design items so their corresponding JSON documents are as small as possible. Considering splitting data cross multiple items if necessary.
+> - Identify queries on child arrays and determine if they are candidates for [more efficient subqueries](/azure/cosmos-db/nosql/query/subquery).
+> - Determine if your workload requires an analytical store. Consider analytical stores and services like [Azure Synapse Link](/azure/cosmos-db/synapse-link) for extremely complex queries.
+>
+
+| Recommendation | Benefit |
+| --- | --- |
+| Configure your throughput based on your performance baseline. | Use tools like the [capacity calculator](https://cosmos.azure.com/capacitycalculator/) to determine the amount of throughput required for your performance baseline. Use features like [autoscale](/azure/cosmos-db/nosql/how-to-provision-autoscale-throughput) to scale your actual throughput to more closely match your actual workload. Monitor your actual throughput consumption afterwards and make adjustments. |
+| Use optimization techniques on the client and server sides when appropriate. | Take advantage of the built-in [integrated cache](/azure/cosmos-db/integrated-cache). Configure the SDK to manage how many items are prefetched (buffered) and returned for each page. |
+| Deploy Azure Cosmos DB for NoSQL to regions closest to your end users. | Reduce latency by deploying Azure Cosmos DB for NoSQL to the regions closest to your end users as much as possible. Take advantage of read replication to provide performant read performance regardless of how you configure write (single or multiple regions). Configure the ([.NET](/azure/cosmos-db/nosql/best-practice-dotnet)/[Java](/azure/cosmos-db/nosql/best-practice-java)) SDK to prefer regions closer to your end user. |
+| Configure the SDK for [Direct mode](/azure/cosmos-db/nosql/sdk-connection-modes). | Direct mode is the preferred option for best performance. This mode allows your client to open TCP connections directly to partitions in the service and send requests directly with no intermediary gateway. This mode offers better performance because there are fewer network hops. |
+| Disable indexing for bulk operations. | If there are many insert/replace/upsert operations, disable indexing to improve the speed of the operation while using the [bulk support](/azure/cosmos-db/nosql/tutorial-dotnet-bulk-import) of the corresponding SDK. Indexing can be immediately reenabled later. |
+| Create composite indexes for fields that are used in complex operations. | Composite indexes can increase the efficiency of operations on multiple fields by orders of magnitude. In many cases, use [composite indexes](/azure/cosmos-db/index-overview#composite-indexes) for `ORDER BY` statements with multiple fields. |
+| Optimize host client machines for the SDKs. | For most common case, use at least 4-cores and 8-GB memory on 64-bite host machines using the SDKs ([.NET](/azure/cosmos-db/nosql/best-practice-dotnet#checklist)/[Java](/azure/cosmos-db/nosql/best-practice-java)). Also, enable [accelerated networking](/azure/virtual-network/create-vm-accelerated-networking-powershell) on host machines. |
+| Use the singleton pattern for the `CosmosClient` class in most SDKs. | Use the client class in most SDKs as a singleton. The client class manages its own lifecycle and is designed to not be disposed. Constantly creating and disposing of instances can result in reduced performance. |
+| Keep item sizes less than **2 MB** in size. | Larger items consumer more throughput for common read and write operations. Queries on larger items that project all fields can also have a significant throughput cost. |
+| Use subqueries strategically to optimize queries that join large data sets. | Queries that join child arrays can increase in complexity if multiple arrays are involved and not filtered. For example, a query that joins more than two arrays of at least **10** items each can expand to **1,000+** tuples. [Optimize self-join expressions](/azure/cosmos-db/nosql/query/subquery#optimize-self-join-expressions) by using subqueries to filter the arrays before the [`JOIN`](/azure/cosmos-db/nosql/query/join) expression. |
+| Use analytical workloads for the most complex queries. | If you run frequent aggregations or join queries over large containers, consider enabling the analytical store and doing queries in Azure Synapse Analytics. |
+
+### Azure Policy definitions
+
+- [Policy: Enable auditing of Azure Synapse Analytics](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceSqlAuditing_Audit.json)
+
 ## Extra resources
 
 Consider more resources related to Azure Cosmos DB for NoSQL.
