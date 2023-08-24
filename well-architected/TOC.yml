@@ -93,6 +93,29 @@
               href: performance-efficiency/design-patterns.md
             - name: Establish performance targets
               href: performance-efficiency/performance-targets.md
+            - name: Conduct capacity planning
+              href: performance-efficiency/plan-capacity.md
+            - name: Select the right resources 
+              href: performance-efficiency/select-right-services.md
+            - name: Collect metrics and logs 
+              href: performance-efficiency/collect-metrics-logs.md
+            - name: Scale and partition 
+              href: performance-efficiency/scale-partition.md
+            - name: Test 
+              href: performance-efficiency/test.md
+            - name: Optimize code and resource use 
+              href: performance-efficiency/optimize-code-resources.md
+            - name: Optimize data performance 
+              href: performance-efficiency/optimize-data-performance.md
+            - name: Prioritize critical flows and users 
+              href: performance-efficiency/prioritize-flows-users.md
+            - name: Minimize operations effects 
+              href: performance-efficiency/minimize-operations-effects.md
+            - name: Respond to live-site issues 
+              href: performance-efficiency/respond-live-performance-issues.md
+            - name: Continous performance optimization
+              href: performance-efficiency/continuous-performance-optimize.md
+            
     - name: Workloads
       items:
       - name: Overview
