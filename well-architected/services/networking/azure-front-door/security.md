@@ -45,7 +45,7 @@ Consider the following recommendation to optimize security when configuring Azur
 
 |Recommendation|Description|
 |--------------|-----------|
-|Consider using geo-filtering in Azure Front Door.|The Front Door service responds to user requests regardless of the location of the user making the request.|
+|Consider using geo-filtering in Azure Front Door.|The Front Door service responds to user requests regardless of the location of the user making the request. If you have a specific need to receive traffic from specific countries, you can use geo-filtering on Web Application Firewall for Azure Front Door. For more information on geo-filtering [Web Application Firewall on Front Door geo-filtering] (azure/web-application-firewall/afds/waf-front-door-geo-filtering) |
 
 ## Next step
 
