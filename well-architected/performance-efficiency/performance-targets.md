@@ -87,8 +87,6 @@ By incorporating a user-centric perspective into the performance optimization st
 
 The continual dialogue of user feedback helps organizations understand the specific expectations of users, allowing them to tailor performance targets and optimize the workload accordingly. This ongoing conversation ensures that the workload constantly evolves to meet user needs and delivers an enhanced user experience.
 
-Incorporating a user-centric perspective into performance targets enriches the performance optimization process by weaving user satisfaction into the core objectives of the workload. By considering the needs and preferences of users, organizations can design workloads that not only meet technical requirements but also provide a high level of user satisfaction.
-
 ## Azure facilitation
 
 - **Setting performance targets:** Azure Advisor provides [performance recommendations](/azure/advisor/advisor-performance-recommendations) that could inform your performance targets.
