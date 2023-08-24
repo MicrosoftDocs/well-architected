@@ -133,6 +133,40 @@ Your workload's characteristics and the implementation of your solution can infl
 
 - [Policy: Restrict the maximum allowed throughput](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_MaxThroughput_Deny.json)
 
+## Operational excellence
+
+Workloads must be monitored after they're deployed to make sure they perform as intended. Further, monitoring of workloads can help unlock new efficiencies not immediately obvious during the planning phase. In catastrophic scenarios, diagnostic data is the key to uncovering why a high severity incident may have occurred. This section includes considerations and recommendations to monitor events and characteristics of your workloads.
+
+### Design checklist
+
+> [!div class="checklist"]
+>
+> - Draft a log and metrics monitoring strategy to differentiate between different workloads, flag exceptional scenarios, track patterns in exceptions/errors, and track host machine performance.
+> - Design large workloads to use bulk operations whenever possible.
+> - Define multiple alerts to monitor throttling, analyze throughput allocation, track data scale, and identify fragmentation.
+> - Design a monitoring strategy for availability of your solution across regions.
+> - Create and enforce best practices for automating the deployment of your Azure Cosmos DB for NoSQL account and resources.
+> - Plan expected metric thresholds based on partition and index design. Ensure that there's a plan to monitor those metrics to determine how close they are to the planned thresholds.
+>
+
+### Recommendations
+
+| Recommendation | Benefit |
+| --- | --- |
+| Ensure application developers are using the latest version of the developer SDK. | Each Azure Cosmos DB for NoSQL SDK has a minimum recommended version. For more information, see [.NET SDK](/azure/cosmos-db/nosql/sdk-dotnet-v3#recommended-version) and [Java SDK](/azure/cosmos-db/nosql/sdk-java-v4#recommended-version). |
+| Create identifiers in the client application to differentiate workloads. | Consider flags, such as the user-agent suffix, to identify what workload each log entry or metric should be associated with. |
+| Capture supplemental diagnostics using the developer SDK. | Use the diagnostics injection techniques for each SDK to add supplemental information about the workload alongside default metrics and logs. For more information, see [.NET SDK](/azure/cosmos-db/nosql/best-practice-dotnet#capture-diagnostics) and [Java SDK](/azure/cosmos-db/nosql/troubleshoot-java-sdk-v4#enable-client-sice-logging). |
+| Create alerts associated with host machine resources. | Connectivity and availability issues may occur due to client-side host machine issues. Monitor resources such as CPU, memory, and storage on host machines with client applications using the Azure Cosmos DB for NoSQL SDKs. |
+| Use the bulk features of client SDKs for large operations. | Scenarios that require a high degree of throughput benefit from using the bulk feature of the SDK. The [bulk feature](/azure/cosmos-db/nosql/tutorial-dotnet-bulk-import) automatically manages and batches operations to maximize throughput. |
+| Create alerts for throughput throttling. | Use alerts to track throughput throttling beyond expected thresholds. Over time, review and adjust alerts as you learn more about your workload in relation to Azure Cosmos DB. The [Normalized RU Consumption metric](/azure/cosmos-db/monitor-normalized-request-units) is a metric that measures the percentage utilization of provisioned throughput on a database or container. If this metric is consistently at 100%, requests likely return a transient error. |
+| Track query performance using metrics. | Use metrics to track the performance of your top queries over time. Evaluate if there are efficiencies to be found by updating th indexing policy or changing queries. If query performance is poor, use the metrics to troubleshoot said query and recreate edge case scenarios. |
+| Use templates to automatically deploy account resources. | Consider [Azure Resource Manager](/azure/cosmos-db/nosql/quickstart-template-json), [Bicep](/azure/cosmos-db/nosql/quickstart-template-bicep), or [Terraform](/azure/cosmos-db/nosql/quickstart-terraform) templates to automate the deployment of your account and subsequent resources. Ensure that your team is using the same templates to deploy to other nonproduction environments. |
+| Track key metrics to identify common problems in your workload. | Use specific metrics to find common problems in your workload including, but not limited to; RU utilization, RU utilization by partition, throttling, and request volumes by type. For more information, see [monitor data reference](/azure/cosmos-db/monitor-reference). |
+
+### Azure Policy definitions
+
+- [Policy: Email notification for high severity alerts](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Email_notification.json)
+
 ## Next steps
 
 > [!div class="nextstepaction"]
