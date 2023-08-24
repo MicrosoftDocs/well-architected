@@ -46,9 +46,11 @@ Percentiles are statistical measures that indicate the value below which a certa
 
 ### Establish performance targets for critical flows
 
-Performance targets for critical workload flows involves identifying specific metrics that are crucial for measuring the performance of those specific flows. These metrics can include factors such as response times, throughput rates, resource utilization, and other relevant measurements. Defining performance targets for critical flows helps you focus on the most important aspects of your workload.
+Establishing performance targets for critical flows helps you focus on the most important aspects of your workload. Setting performance targets for critical workload flows involves identifying specific metrics that are crucial for measuring the performance of those specific flows. These metrics can include factors such as response times, throughput rates, resource utilization, and other relevant measurements.
 
 **Identify critical workload flows.** Determine the specific flows within your workload that are critical for the successful operation of your business. These can be user interactions, transactional processes, or any other operations that are vital for achieving your business objectives. When you have the critical flows, you should decompose each critical flow. Break down (decompose) the critical flow into its architectural components and create relevant targets for each component. Example targets include API access time, database latency, and network latency.
+
+Factor in the user and billing models in your workload. Workloads can have different access tiers. Higher-paying customers should receive the best performance. For example, multi-tenant solutions require performance targets to be available at the tenant level. Paid versus free access tiers may have distinct performance expectations and should have distinct performance targets.
 
 **Identify dependencies.** A critical flow can have upstream and downstream dependencies within the workload. You need to identify all upstream and downstream dependencies. Then you need to understand the guarantees the upstream dependencies provide for this flow. You also need to understand the guarantees this flow provides to downstream dependencies. For example, a critical flow might need to have a 500ms response time, and the user flow has an external API call that takes 200ms. The performance target for the user flow should exclude the API call (200ms) and should target 300ms. You should separate all upstream dependencies without performance guarantees from the performance targets for the critical flow. Sometimes dependencies are not under your control. You need to invest time to understand the performance profile of that dependencies. You also need to understand the guarantees that dependency has on your critical flow. You must factor these guarantees into your performance targets.
 
@@ -56,19 +58,17 @@ Performance targets for critical workload flows involves identifying specific me
 
 **Set targets.** Set specific performance goals or targets for each identified metric. These targets should be aligned with your business objectives and reflect the desired level of performance for the critical flows. Consider factors such as acceptable response times, maximum error rates, or desired transaction throughput. For example, you might set a performance target for an ecommerce checkout flow at 3 seconds and throughput at 100 checkouts per minute. You should focus on the important flows to improve efficiency and reduce noise. The goal for a flow should determine the performance targets.
 
-### Monitoring 
+### Monitoring
 
 **Align with health model and alerting strategy.** You should include performance in your workload's health model and alerting strategy. You need to use the same performance targets as part of the health model for each flow, subprocess, and flow components. You should also use the performance targets to build incremental thresholds in your alerting.
 
 **Expose all defined targets.** All responsible teams should be able to review and create actionable tasks from the performance targets. You should use information radiators, such as dashboards and reports, to make the performance targets accessible. Workloads that have a performance-based SLA or SLO should make the SLA or SLO known to the end user.
 
-**Factor in user/billing models.** Workloads can have different access tiers. Higher-paying customers should receive the best performance. For example, multi-tenant solutions require performance targets to be available at the tenant level. Paid versus free access tiers may have distinct performance expectations and should have distinct performance targets.
-
 ## Azure facilitation
 
--   [Azure Monitor](/azure/azure-monitor/overview) is a full-stack monitoring service that provides a complete set of features to monitor your Azure resources and generate performance targets. Azure Monitor collects platform metrics and provides turn-key dashboards. It allows you to configure alerts based on metrics. It also stores and correlates metrics to ensure a single source of truth.
+- [Azure Monitor](/azure/azure-monitor/overview) is a full-stack monitoring service that provides a complete set of features to monitor your Azure resources and measure performance targets. Azure Monitor collects platform metrics and provides turn-key dashboards. It allows you to configure alerts based on metrics. It also stores and correlates metrics to ensure a single source of truth.
 
--   Azure Advisor provides [performance recommendations](/azure/advisor/advisor-performance-recommendations) that could inform your performance targets.
+- Azure Advisor provides [performance recommendations](/azure/advisor/advisor-performance-recommendations) that could inform your performance targets.
 
 ## Tradeoffs
 
