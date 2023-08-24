@@ -3,7 +3,7 @@ title: Design your solution to use availability zones and regions
 description: A guide for understanding when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
-ms.date: 08/21/2023
+ms.date: 08/23/2023
 ms.topic: conceptual
 ms.custom:
   - guide
@@ -47,11 +47,9 @@ However you design your solution, the **Security** pillar continues to apply. Us
 | Active/active | When multiple instances of a solution actively process requests at the same time. |
 | Active/passive | When one instance of a solution is designated as the *primary* and processes traffic, and one or more *secondary* instances are deployed to serve traffic if the primary is unavailable. |
 
-## Your responsibility
+## Key design stategies
 
-### Understand Azure regions and availability zones
-
-Azure's has a large global footprint. An Azure *region* is a geographic perimeter that contains a set of data centers.
+Azure's has a large global footprint. An Azure *region* is a geographic perimeter that contains a set of data centers. You need to have a good understanding of Azure regions and availability zones.
 
 Azure regions have a variety of configurations, which are also called *region architectures*.
 
@@ -138,7 +136,7 @@ If you operate under a constrained budget, it's important to consider the costs 
 
 It's a good practice to avoid unnecessary complexity in your solution architecture. The more complexity you introduce, the harder it becomes to reason about your architecture. Complex architectures are harder to operate, harder to secure, and are often less performant.
 
-## How Azure facilitates your decisions
+## Azure facilitation
 
 By providing regions and availability zones, Azure enables you to select a deployment approach that fits your needs. There are many different approaches that you can choose from, each of which provides benefits and has costs.
 
