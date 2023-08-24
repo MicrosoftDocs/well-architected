@@ -15,32 +15,34 @@
         items: 
         - name: Quick links
           href: reliability/index.yml
-        - name: Overview
-          href: reliability/overview.md
         - name: Design principles
           href: reliability/principles.md
         - name: Checklist
           href: reliability/checklist.md
         - name: Tradeoffs
           href: reliability/tradeoffs.md
-        - name: Best practices guides   
+        - name: Recommendations   
           items:
+            - name: Reliability patterns
+              href: reliability/design-patterns.md
             - name: Reliability guide
               href: coming-soon.md
+            - name: Regions and availability zones
+              href: reliability/regions-availability-zones.md
       - name: Security
         items: 
         - name: Quick links
           href: security/index.yml
-        - name: Overview
-          href: security/overview.md
         - name: Design principles
           href: security/principles.md
         - name: Checklist
           href: security/checklist.md
         - name: Tradeoffs
           href: security/security-tradeoffs.md
-        - name: Best practices guides   
+        - name: Recommendations    
           items:
+            - name: Security patterns
+              href: security/design-patterns.md
             - name: Security guide
               href: coming-soon.md
       - name: Cost Optimization
@@ -53,38 +55,42 @@
           href: cost-optimization/checklist.md
         - name: Tradeoffs
           href: cost-optimization/tradeoffs.md
-        - name: Best practices guides   
+        - name: Recommendations   
           items:
+            - name: Cost optimization patterns
+              href: cost-optimization/design-patterns.md
             - name: Cost optimization guide
               href: coming-soon.md
       - name: Operational Excellence
         items: 
         - name: Quick links
           href: operational-excellence/index.yml
-        - name: Overview
-          href: operational-excellence/overview.md
         - name: Design principles
           href: operational-excellence/principles.md
         - name: Checklist
           href: operational-excellence/checklist.md
         - name: Tradeoffs
           href: operational-excellence/tradeoffs.md
-        - name: Best practices guides   
+        - name: Recommendations
           items:
+            - name: Operational excellence patterns
+              href: operational-excellence/design-patterns.md 
             - name: Operational excellence guide
               href: coming-soon.md
       - name: Performance Efficiency
         items: 
         - name: Quick links
           href: performance-efficiency/index.yml
-        - name: Overview
-          href: performance-efficiency/overview.md
         - name: Design principles
           href: performance-efficiency/principles.md
         - name: Checklist
           href: performance-efficiency/checklist.md
-        - name: Best practices guides   
+        - name: Tradeoffs
+          href: performance-efficiency/tradeoffs.md
+        - name: Recommendations   
           items:
+            - name: Performance efficiency patterns
+              href: performance-efficiency/design-patterns.md
             - name: Establish performance targets
               href: performance-efficiency/performance-targets.md
             - name: Conduct capacity planning
@@ -114,6 +120,8 @@
       items:
       - name: Overview
         href: workloads.md
+      - name: Azure VMware Solution
+        href: azure-vmware/index.yml
       - name: Carrier-grade
         href: carrier-grade/index.yml    
       - name: Hybrid

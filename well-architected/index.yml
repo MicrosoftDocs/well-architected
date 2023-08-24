@@ -169,6 +169,10 @@ sections:
         title: IoT
         summary: Resolve architectural challenges for designing, building, and operating IoT solutions according to your requirements and constraints.
         url: ./iot/iot-overview.md
+      - componentType: summary-card
+        title: Azure VMware Solution
+        summary: Relocate legacy application virtual machines to Azure VMware Solution as a staging area for the first phase of your migration and modernization strategy.
+        url: ./azure-vmware/index.yml
     addendum:
       text: See example workloads that apply Well-Architected tenets in the 
       link:
