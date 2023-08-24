@@ -36,7 +36,7 @@ To understand how Azure Front Door creates a more reliable workload, reference t
 **Have you configured Azure Front Door with reliability in mind?**
 
 > [!div class="checklist"]
-> - Use WAF policies in Front Door. Lockdown Application Gateway to receive traffic only from Azure Front Door when using Azure Front Door and Application Gateway to protect `HTTP/S` applications.
+> - Use WAF policies in Front Door. Lock down Application Gateway to receive traffic only from Azure Front Door when using Azure Front Door and Application Gateway to protect `HTTP/S` applications.
 > - Use Azure Front Door Web Application Firewall (WAF) policies to provide global protection across Azure regions for inbound `HTTP/S` connections to a *Landing Zone*.
 > - Create a rule to block access to the health endpoint from the internet.
 > - Ensure that the connection to the back-end is re-encrypted.
