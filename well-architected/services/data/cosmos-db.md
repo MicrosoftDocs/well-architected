@@ -167,6 +167,22 @@ Workloads must be monitored after they're deployed to make sure they perform as 
 
 - [Policy: Email notification for high severity alerts](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Email_notification.json)
 
+## Extra resources
+
+Consider more resources related to Azure Cosmos DB for NoSQL.
+
+### Azure Architecture Center guidance
+
+- [Multitenancy and Azure Cosmos DB](/azure/architecture/guide/multitenant/service/cosmos-db)
+- [Visual search in retail with Azure Cosmos DB](/azure/architecture/industries/retail/visual-search-use-case-overview)
+- [Gaming using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/gaming-using-cosmos-db)
+- [Serverless apps using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/serverless-apps-using-cosmos-db)
+- [Personalization using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/personalization-using-cosmos-db)
+
+### Cloud Adoption Framework guidance
+
+- [Batch Data application with Azure Cosmos DB](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/data-landing-zone-data-products#batch-data-application)
+
 ## Next steps
 
 > [!div class="nextstepaction"]
