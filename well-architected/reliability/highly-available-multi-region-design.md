@@ -1,5 +1,5 @@
 ---
-title:  
+title: Best practices for highly available multi-region design 
 description:  
 author:  
 ms.author:  
