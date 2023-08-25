@@ -21,7 +21,7 @@ Skipping FMA altogether or performing an incomplete analysis puts your workload 
 | Mitigation | The activities that you have identified to address issues either proactively or reactively |
 | Detection | Your infrastructure, data, and app monitoring and alerting processes and procedures |
 
-# Key design strategy
+# Key design strategies
 
 ## Prerequisites
 
