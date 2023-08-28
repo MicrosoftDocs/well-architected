@@ -1,3 +1,4 @@
+
 # Recommendations for handling transient faults
 
 ## Applies to RE:06
