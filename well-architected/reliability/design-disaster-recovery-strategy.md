@@ -13,7 +13,7 @@ ms.topic: conceptual
 
 This guide describes the best practices for designing a reliable disaster recovery strategy for a workload. In order to meet internal SLOs set or even an SLA that you have guaranteed for your customers, you must have a robust and reliable disaster recovery strategy. Failures and other major issues are expected and the preparation you take to deal with these incidents will determine the amount of trust your customers have in your business to reliably deliver for them. A disaster recovery strategy is the backbone of preparation for major incidents.
 
-## Definitions
+**Definitions**
 
 
 |Term  |Definition  |
@@ -77,7 +77,7 @@ The cornerstone of a reliable DR strategy for a workload is the DR plan. Your pl
 
 -   Depending on the redundancy design (link to re04-active-passive) for your workload, you may have significant post-failover work to do before making the workload available to your customers again. Be sure to capture all of the post-failover work in your recovery procedures. Post-failover work could include things like DNS updates, database connection string updates and traffic routing changes.
 
-    > ![NOTE]
+    > [!NOTE]
     > Your redundancy design may allow you to automatically recover from major incidents fully or partially, so be sure that your plan has processes and procedures documented specifically around these scenarios. For example, if you have a fully active/active design that spans availability zones (link to re04 az guide) or regions (link to re04-active-passive) you may be able to transparently failover automatically after a availability zone or regional outage and minimize the steps in your DR plan that need to be performed. Similarly, if you have designed your workload using [deployment stamps](https://learn.microsoft.com/azure/architecture/patterns/deployment-stamp), you may only suffer a partial outage if the stamps are deployed zonally. In this case, your DR plan should cover how to recover stamps in unaffected zones or regions.
 
 -   If you need to redeploy your app in the failover environment, use tooling to automate the deployment process as much as possible. Ensure that your DevOps pipelines have been pre-deployed and configured in the failover environments, so that you are able to immediately begin your app deployments. Automated end-to-end deployments, with manual approval gates where necessary, should be used to ensure a consistent and efficient deployment process. The time it takes for a full deployment needs to align with your recovery targets.
@@ -86,14 +86,14 @@ The cornerstone of a reliable DR strategy for a workload is the DR plan. Your pl
 
 -   Try to automate as much of the procedure as you can. In your scripts, use declarative programming as it allows idempotence. When using declarative programming isn't possible, be mindful about developing and executing your custom code., Make use of retry and circuit breaker logic to ensure that you don't waste time waiting on scripts that are stuck on a broken task. You will only run these scripts in emergency situations, so make sure that incorrectly developed scripts will not cause additional damage or slow down your recovery process.
 
-    > ![NOTE]
+    > [!NOTE]
     > Automation comes with risks that you should be mindful of. Trained operators need to monitor the automated processes carefully and be ready to intervene if any process encounters issues, Also, to minimize the risk of automation reacting to false positives, be thorough in your DR drills, testing all phases of the plan: simulate detection to generate alerting and then move through the entire recovery procedure. Remember that your DR drills should validate or inform the updating of your recovery target metrics, so if you find that your automation is susceptible to false positives, you may need to increase your failover thresholds.
 
 -   It is best to separate the failback plan from the DR plan to avoid any potential confusion with the DR procedures. The failback plan should follow all of the same development and maintenance best practices as the DR plan and should be structured in the same way. Ensure that any manual steps that were necessary for failover are mirrored in the failback plan. Failback may happen very quickly following failover or it may take days or weeks, so it should be considered a separate process from failover.
 
     -   The necessity to failback is situational. If you are routing traffic between regions for performance reasons, failing back the load originally in the failed-over region is important, but in other cases, you may have designed your workload to be able to fully function regardless of which production environment it is located in at any given time.
 
-> Equally as important as a well-developed DR plan is a well-developed DR testing practice. Many industries have compliance frameworks that specifically require a certain number of DR drills to be performed regularly; but no matter what industry you operate in, having regular DR drills is paramount to your success. The following recommendations apply to running successful DR drills:
+Equally as important as a well-developed DR plan is a well-developed DR testing practice. Many industries have compliance frameworks that specifically require a certain number of DR drills to be performed regularly; but no matter what industry you operate in, having regular DR drills is paramount to your success. The following recommendations apply to running successful DR drills:
 
 -   Perform at least one production DR drill per year. Tabletop (dry runs) or non-production drills are helpful to ensure that the involved parties are familiar with their roles and responsibilities and to ensure that operators are building familiarity ("muscle memory") by going through recovery processes, but only production drills truly test the validity of the DR plan and the RTO and RPO metrics.
 
