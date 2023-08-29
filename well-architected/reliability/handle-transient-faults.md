@@ -57,15 +57,15 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Keep in mind that determining the appropriate intervals between retries is the most difficult part of designing a successful strategy. Typical strategies use the following types of retry interval:
 
--   **Exponential back-off**. The application waits a short time before the first retry and then exponentially increases the time between each subsequent retry. For example, it might retry the operation after 3 seconds, 12 seconds, 30 seconds, and so on.
+    -   **Exponential back-off**. The application waits a short time before the first retry and then exponentially increases the time between each subsequent retry. For example, it might retry the operation after 3 seconds, 12 seconds, 30 seconds, and so on.
 
--   **Incremental intervals**. The application waits a short time before the first retry, and then incrementally increases the time between each subsequent retry. For example, it might retry the operation after 3 seconds, 7 seconds, 13 seconds, and so on.
+    -   **Incremental intervals**. The application waits a short time before the first retry, and then incrementally increases the time between each subsequent retry. For example, it might retry the operation after 3 seconds, 7 seconds, 13 seconds, and so on.
 
--   **Regular intervals**. The application waits for the same period of time between each attempt. For example, it might retry the operation every 3 seconds.
+    -   **Regular intervals**. The application waits for the same period of time between each attempt. For example, it might retry the operation every 3 seconds.
 
--   **Immediate retry**. Sometimes a transient fault is brief, possibly caused by an event like a network packet collision or a spike in a hardware component. In this case, retrying the operation immediately is appropriate because it might succeed if the fault is cleared in the time that it takes the application to assemble and send the next request. However, there should never be more than one immediate retry attempt. You should switch to alternative strategies, like exponential back-off or fallback actions, if the immediate retry fails.
+    -   **Immediate retry**. Sometimes a transient fault is brief, possibly caused by an event like a network packet collision or a spike in a hardware component. In this case, retrying the operation immediately is appropriate because it might succeed if the fault is cleared in the time that it takes the application to assemble and send the next request. However, there should never be more than one immediate retry attempt. You should switch to alternative strategies, like exponential back-off or fallback actions, if the immediate retry fails.
 
--   **Randomization**. Any of the retry strategies listed previously can include a randomization to prevent multiple instances of the client sending subsequent retry attempts at the same time. For example, one instance might retry the operation after 3 seconds, 11 seconds, 28 seconds, and so on, while another instance might retry the operation after 4 seconds, 12 seconds, 26 seconds, and so on. Randomization is a useful technique that can be combined with other strategies.
+    -   **Randomization**. Any of the retry strategies listed previously can include a randomization to prevent multiple instances of the client sending subsequent retry attempts at the same time. For example, one instance might retry the operation after 3 seconds, 11 seconds, 28 seconds, and so on, while another instance might retry the operation after 4 seconds, 12 seconds, 26 seconds, and so on. Randomization is a useful technique that can be combined with other strategies.
 
 -   As a general guideline, use an exponential back-off strategy for background operations, and use immediate or regular interval retry strategies for interactive operations. In both cases, you should choose the delay and the retry count so that the maximum latency for all retry attempts is within the required end-to-end latency requirement.
 
@@ -93,15 +93,15 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Fully test your retry strategy under as wide a set of circumstances as possible, especially when both the application and the target resources or services that it uses are under extreme load. To check behavior during testing, you can:
 
--   Inject transient and nontransient faults into the service. For example, send invalid requests or add code that detects test requests and responds with different types of errors. For examples that use TestApi, see [Fault Injection Testing with TestApi](/archive/msdn-magazine/2010/august/msdn-magazine-test-run-fault-injection-testing-with-testapi) and [Introduction to TestApi -- Part 5: Managed Code Fault Injection APIs](/archive/blogs/ivo_manolov/introduction-to-testapi-part-5-managed-code-fault-injection-apis).
+    -   Inject transient and nontransient faults into the service. For example, send invalid requests or add code that detects test requests and responds with different types of errors. For examples that use TestApi, see [Fault Injection Testing with TestApi](/archive/msdn-magazine/2010/august/msdn-magazine-test-run-fault-injection-testing-with-testapi) and [Introduction to TestApi -- Part 5: Managed Code Fault Injection APIs](/archive/blogs/ivo_manolov/introduction-to-testapi-part-5-managed-code-fault-injection-apis).
 
--   Create a mockup of the resource or service that returns a range of errors that the real service might return. Cover all the types of errors that your retry strategy is designed to detect.
+    -   Create a mockup of the resource or service that returns a range of errors that the real service might return. Cover all the types of errors that your retry strategy is designed to detect.
 
--   For custom services that you create and deploy, force transient errors to occur by temporarily disabling or overloading the service. (Don\'t attempt to overload any shared resources or shared services in Azure.)
+    -   For custom services that you create and deploy, force transient errors to occur by temporarily disabling or overloading the service. (Don\'t attempt to overload any shared resources or shared services in Azure.)
 
--   For HTTP-based APIs, consider using the FiddlerCore library in your automated tests to change the outcome of HTTP requests, either by adding extra roundtrip times or by changing the response (like the HTTP status code, headers, body, or other factors). Doing so enables deterministic testing of a subset of the failure conditions, for transient faults and other types of failures. For more information, see [FiddlerCore](https://www.telerik.com/fiddler/fiddlercore). For examples of how to use the library, particularly the **HttpMangler** class, examine the [source code for the Azure Storage SDK](https://github.com/Azure/azure-storage-net/tree/master/Test).
+    -   For HTTP-based APIs, consider using the FiddlerCore library in your automated tests to change the outcome of HTTP requests, either by adding extra roundtrip times or by changing the response (like the HTTP status code, headers, body, or other factors). Doing so enables deterministic testing of a subset of the failure conditions, for transient faults and other types of failures. For more information, see [FiddlerCore](https://www.telerik.com/fiddler/fiddlercore). For examples of how to use the library, particularly the **HttpMangler** class, examine the [source code for the Azure Storage SDK](https://github.com/Azure/azure-storage-net/tree/master/Test).
 
--   Perform high load factor and concurrent tests to ensure that the retry mechanism and strategy works correctly under these conditions. These tests will also help ensure that the retry doesn't have an adverse effect on the operation of the client or cause cross-contamination between requests.
+    -   Perform high load factor and concurrent tests to ensure that the retry mechanism and strategy works correctly under these conditions. These tests will also help ensure that the retry doesn't have an adverse effect on the operation of the client or cause cross-contamination between requests.
 
 #### Manage retry policy configurations
 
@@ -129,13 +129,13 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Consider how you\'ll handle operations that continue to fail at every attempt. Situations like this are inevitable.
 
--   Although a retry strategy defines the maximum number of times that an operation should be retried, it doesn't prevent the application from repeating the operation again with the same number of retries. For example, if an order processing service fails with a fatal error that puts it out of action permanently, the retry strategy might detect a connection timeout and consider it to be a transient fault. The code retries the operation a specified number of times and then gives up. However, when another customer places an order, the operation is attempted again, even though it will fail every time.
+    -   Although a retry strategy defines the maximum number of times that an operation should be retried, it doesn't prevent the application from repeating the operation again with the same number of retries. For example, if an order processing service fails with a fatal error that puts it out of action permanently, the retry strategy might detect a connection timeout and consider it to be a transient fault. The code retries the operation a specified number of times and then gives up. However, when another customer places an order, the operation is attempted again, even though it will fail every time.
 
--   To prevent continual retries for operations that continually fail, you should consider implementing the [Circuit Breaker pattern](../patterns/circuit-breaker.yml). When you use this pattern, if the number of failures within a specified time window exceeds a threshold, requests return to the caller immediately as errors, and there\'s no attempt to access the failed resource or service.
+    -   To prevent continual retries for operations that continually fail, you should consider implementing the [Circuit Breaker pattern](../patterns/circuit-breaker.yml). When you use this pattern, if the number of failures within a specified time window exceeds a threshold, requests return to the caller immediately as errors, and there\'s no attempt to access the failed resource or service.
 
--   The application can periodically test the service, on an intermittent basis and with long intervals between requests, to detect when it becomes available. An appropriate interval depends on factors like the criticality of the operation and the nature of the service. It might be anything between a few minutes and several hours. When the test succeeds, the application can resume normal operations and pass requests to the newly recovered service.
+    -   The application can periodically test the service, on an intermittent basis and with long intervals between requests, to detect when it becomes available. An appropriate interval depends on factors like the criticality of the operation and the nature of the service. It might be anything between a few minutes and several hours. When the test succeeds, the application can resume normal operations and pass requests to the newly recovered service.
 
--   In the meantime, you might be able to fall back to another instance of the service (maybe in a different datacenter or application), use a similar service that offers compatible (maybe simpler) functionality, or perform some alternative operations based on the hope that the service will be available soon. For example, it might be appropriate to store requests for the service in a queue or data store and retry them later. Or you might be able to redirect the user to an alternative instance of the application, degrade the performance of the application but still offer acceptable functionality, or just return a message to the user to indicate that the application isn't currently available.
+    -   In the meantime, you might be able to fall back to another instance of the service (maybe in a different datacenter or application), use a similar service that offers compatible (maybe simpler) functionality, or perform some alternative operations based on the hope that the service will be available soon. For example, it might be appropriate to store requests for the service in a queue or data store and retry them later. Or you might be able to redirect the user to an alternative instance of the application, degrade the performance of the application but still offer acceptable functionality, or just return a message to the user to indicate that the application isn't currently available.
 
 #### Other considerations
 
@@ -182,7 +182,7 @@ Refer to the retry design pattern [section](https://learn.microsoft.com/en-us/az
 
 ## Example
 
-Refer to the [[reliable web app pattern for .NET](https://learn.microsoft.com/en-us/azure/architecture/web-apps/guides/reliable-web-app/dotnet/apply-pattern) for an example of using many of the patterns discussed in this article and a [[reference implementation]{.underline}](https://github.com/Azure/reliable-web-app-pattern-dotnet) hosted in GitHub.
+Refer to the [reliable web app pattern for .NET](https://learn.microsoft.com/en-us/azure/architecture/web-apps/guides/reliable-web-app/dotnet/apply-pattern) for an example of using many of the patterns discussed in this article and a [reference implementation](https://github.com/Azure/reliable-web-app-pattern-dotnet) hosted in GitHub.
 
 ## Related links
 
