@@ -128,7 +128,7 @@ The Azure platform can help you optimize your resilience through adding redundan
 
 Refer to the [reference architecture](https://learn.microsoft.com/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant) for an example of a multi-region redundant deployment.
 
-![Diagram that shows the architecture of the reference implementation.](../_images/redundancy/reliable-web-app-dotnet.png)
+:::image type="content" source="../_images/redundancy/reliable-web-app-dotnet.png" alt-text="Diagram that shows the architecture of the reference implementation." border="false" lightbox="../_images/redundancy/reliable-web-app-dotnet.png":::
 
 ## Related links
 
