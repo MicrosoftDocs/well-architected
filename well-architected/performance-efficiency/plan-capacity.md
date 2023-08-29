@@ -20,11 +20,11 @@ This guide describes the best practices for capacity planning. You should perfor
 | Functional requirements|             The features and capabilities a workload must have to fulfill its intended purpose.|
 |  Technical requirements|              The code and infrastructure needed to meet the functional requirements.|
 
-## Key design strategy
+## Key strategies
 
 Capacity planning is a predictive exercise. It's about making informed decisions based on load predictions and workload behavior. The objective is to ensure efficient workload performance, not just when demand grows or shrinks, but by recognizing the nuances of continuous load versus peak load events.
 
-### Understand the workload
+### Gather workload data
 
 Before you can predict the capacity requirements of a workload, you need to understand the workload. To do this, you need to gather information about the workload and its characteristics. The information gathering includes understanding the purpose, requirements, and behavior of the workload. You should do this for an existing workload with historical data or a new workload in the design phase.
 
@@ -44,7 +44,7 @@ Before you can predict the capacity requirements of a workload, you need to unde
 
 ### Forecast future demand
 
-Forecasting future demand involves analyzing historical data and using various techniques to predict future patterns. Using this historical data, you can apply statistical analysis, trend analysis, or predictive modeling techniques to forecast future demand. These methods take into account the historical patterns and project them into the future, providing estimates of the expected workload demand.
+Forecasting future demand uses data to help get a sense of the future needs. For workloads with or without historical data, you can apply statistical analysis, trend analysis, or predictive modeling techniques to the data you have to forecast future demand. These methods take into account historical or anticipated patterns and project them into the future, providing estimates of the expected workload demand.
 
 **Account for different scenarios.** When you do capacity planning, you need to plan for different scenarios that might occur. This planning should include both predictable growth patterns and unexpected surges in demand. Usage patterns can grow or shrink. They can be organic (more or less users) or inorganic (event or security incident). You need to conduct capacity planning before usage changes, including the following examples:
 
@@ -66,27 +66,36 @@ Forecasting future demand involves analyzing historical data and using various t
 
 ### Determine resource requirements
 
-Based on the forecasted demand, calculate the resources needed to meet that demand. This includes considering factors such as server capacity, network bandwidth, storage capacity, and human resources.
+Determining resource requirements for capacity planning involves assessing the resources needed to meet forecasted demand. You need to estimate the expected demand for your services or products based on historical data, market trends, and business projections. This could be in terms of the number of transactions, concurrent users, or any other relevant metric.
+
+**Calculate resource needs.** Based on the forecasted demand, calculate the resources needed to meet that demand. This includes considering factors such as server capacity, network bandwidth, storage capacity, and personnel.
+
+- *Server capacity:* Determine the required server capacity based on the estimated number of concurrent users or transactions. Consider factors like CPU, memory, and disk space requirements to ensure that your servers can handle the expected workload.
+- *Network bandwidth:* Evaluate the network bandwidth needed to support the anticipated level of traffic. This includes both inbound and outbound data transfer rates to ensure smooth and efficient communication between servers and clients.
+- *Storage capacity:* Estimate the amount of data that will be generated or processed during the forecasted demand. Consider factors like database size, file storage requirements, and any other data storage needs specific to your application.
+- *Personnel:* Assess the number of human resources required to manage and maintain the infrastructure, handle customer support, perform system maintenance, and ensure smooth operations. Take into account factors like workload distribution, skill sets, and expertise required.
 
 **Identify reachable limits.** Capacity planning should find hard limits in the workload and evaluate if those are in reach. These limits usually apply to infrastructure (compute, memory, storage, network), application (concurrent database connections, response times, availability), service (requests per second), and scaling. When capacity planning identifies reachable limits, you need to modify the workload before the limit becomes a performance issue. Performance baseline, continuous monitoring, and testing are essential to validating the limits and the fix.
 
-**Understand functional requirements.** Workload requirements include functional and technical requirements. You should meet with stakeholders to ensure you understand the functional requirements of the workload. The technical requirements should support the functional requirements. You need to understand the workload architecture so you can identify the correct components to modify.
+**Define technical requirements.** Workload requirements include functional and technical requirements. You should meet with stakeholders to ensure you understand the functional requirements of the workload and define technical requirements to meet the functional requirements. For example, a great user experience requires a response time of 100ms. You should agree on a maximum median response time that aligns with your performance targets. You generate the technical requirements to support the functional requirements. You need to understand the workload architecture so you can identify the correct components to modify.
 
 **Understand resource limitations.** Resources in your workload have performance limitations. Performance limitations apply to services and SKUs within each service. You need to understand the limitations of the resources in your workload and should factor those limitations into your design decisions. For example, you should know if resources limitations require changing SKUs or changing resources altogether.
-
-### Optimize resource allocation
-
-Evaluate different scenarios and strategies to optimize resource allocation. This may involve adjusting resource capacity, implementing load balancing techniques, or leveraging cloud services for scalability.
-
-- *Adjust resource capacity*: Evaluate the current resource capacity and adjust it based on the workload demands. This can involve scaling up or down the available resources to match the workload requirements. For example, if the workload experiences higher demand during certain periods, consider increasing the resource capacity during those times.
-- *Implement load balancing techniques*: Distribute the workload across multiple resources or instances to ensure efficient utilization of resources. Load balancing can help prevent overloading specific resources and optimize performance by evenly distributing the workload.
-- *Leverage cloud services for scalability*: Take advantage of cloud services that offer elasticity and scalability, allowing resources to automatically adjust based on demand. Cloud services like auto-scaling can dynamically allocate resources based on workload needs, ensuring optimal resource utilization and minimizing costs.
 
 **Test conclusions.** Capacity planning is an iterative process. You should test the conclusions of your capacity planning and adjust the estimates accordingly.
 
 ## Azure facilitation
 
-Azure Monitor provides tools to establish performance targets, conduct trend analysis, and perform capacity planning.
+**Gathering data and forecasting:** [Azure Monitor](/azure/azure-monitor/overview) enables you to collect and analyze telemetry data from your applications and infrastructure. It supports monitoring of various Azure resources, including virtual machines, containers, storage accounts, and more. By configuring data collection and defining metrics and logs to monitor, you can gather valuable workload data for analysis. For [networking monitoring](/azure/networking/fundamentals/networking-overview#monitor), combine Azure Monitor with Azure Network Watcher, Network Insights, and ExpressRoute Monitor.
+
+Azure Monitor allows you to analyze historical data and apply forecasting techniques to predict future workload trends and capacity requirements. You can generate forecasts that can assist in capacity planning. These forecasts help estimate server capacity, network bandwidth, storage capacity, and other resource needs based on predicted demand patterns.
+
+**Scaling:** Azure offers scalability options like autoscaling, which can automatically adjust resources based on workload demand. You can scale vertically by increasing the capacity of a resource, such as using a larger virtual machine size, or horizontally by adding new instances of a resource. Azure services with autoscaling capabilities can automatically scale out to ensure capacity during workload peaks and return to normal when the load decreases.
+
+**Define technical requirements:** Azure tools and services can assist in defining technical requirements by offering a wide range of services and configurations. You can align your workload requirements with the available Azure resources, ensuring that you select the appropriate components and settings to meet your functional needs.
+
+**Understand resource limitations:** Azure provides documentation and resources to help you understand the performance limitations of different Azure services and SKUs. By considering these limitations, you can make informed design decisions and optimize your workload architecture for performance and cost-effectiveness
+
+**Testing conclusions.** Azure provides tools like Azure Load Testing, which can simulate load and different usage patterns to help you gather relevant data about your workload.
 
 ## Tradeoff
 
