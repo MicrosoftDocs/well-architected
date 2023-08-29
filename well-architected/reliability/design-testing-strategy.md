@@ -43,7 +43,7 @@ Reliability testing focuses on the resiliency and availability of your workload,
 
     -   Document and share recovery time metrics with your disaster recovery stakeholders to ensure that expectations for recovery are set appropriately.
 
--   Use industry standard deployment testing [procedures](https://learn.microsoft.com/en-us/azure/well-architected/mission-critical/mission-critical-deployment-testing) to ensure that you have an automated, predictable, and efficient deployment process.
+-   Use industry standard deployment testing [procedures](https://learn.microsoft.com/azure/well-architected/mission-critical/mission-critical-deployment-testing) to ensure that you have an automated, predictable, and efficient deployment process.
 
 -   Test the workload's ability to withstand transient failures -- refer to the transient fault handling guide (link to re06-transient-fault-handling) in this series for guidance.
 
@@ -141,4 +141,4 @@ To guard against causing unintended outages in production, ensure that you have 
 
 ## Related links
 
-[Test apps for availability and resiliency - Microsoft Azure Well-Architected Framework \| Microsoft Learn](https://learn.microsoft.com/en-us/azure/well-architected/resiliency/testing)
+[Test apps for availability and resiliency](https://learn.microsoft.com/azure/well-architected/resiliency/testing)
