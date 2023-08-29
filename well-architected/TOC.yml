@@ -25,6 +25,8 @@
           items:
             - name: Reliability patterns
               href: reliability/design-patterns.md
+            - name: Failure mode analysis
+              href: reliability/failure-mode-analysis.md
             - name: Reliability guide
               href: coming-soon.md
             - name: Regions and availability zones
