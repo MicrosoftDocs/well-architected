@@ -54,7 +54,7 @@ What is the maximum downtime you would expect for this application? If either se
 
 You can improve the composite SLA by creating independent fallback paths. For example, if SQL Database is unavailable, put transactions into a queue to be processed later:
 
-:::image type="content" source="../_images/business-metrics/independent-fall-back-paths.png" alt-text="Diagram that shows fallback paths. The web app box shows arrows branching to SQL Database or to queue." border="false" lightbox="../_images/business-metrics/independent-fall-back-paths.png":::
+:::image type="content" source="../_images/business-metrics/independent-fallback-paths.png" alt-text="Diagram that shows fallback paths. The web app box shows arrows branching to SQL Database or to queue." border="false" lightbox="../_images/business-metrics/independent-fallback-paths.png":::
 
 With this design, the application is still available even if it can\'t connect to the database. However, it fails if the database and the queue both fail at the same time. The expected percentage of time for a simultaneous failure is 0.0001 × 0.001, so the composite SLA for this combined path is:
 
@@ -123,7 +123,7 @@ Using the data you have gathered while building your reliability targets, you ca
 -   A red or unhealthy state indicates that degradation has persisted for a longer period than deemed allowable by your reliability targets or the flow has become unavailable.
 
 > [!NOTE]
-> The health model shouldn\'t treat all failures the same. The health model should distinguish between* *transient and non-transient* *faults. It should clearly distinguish between expected-transient but recoverable failures and a true disaster state.
+> The health model shouldn't treat all failures the same. The health model should distinguish between *transient* and *non-transient* faults. It should clearly distinguish between expected-transient but recoverable failures and a true disaster state.
 
 The method by which this model functions is through a monitoring and alerting strategy developed and operated in the principles of continuous improvement. As your workloads evolve, your health models will need to evolve with them.
 
