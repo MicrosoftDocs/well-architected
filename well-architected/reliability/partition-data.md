@@ -32,7 +32,7 @@ However, the partitioning strategy must be chosen carefully to maximize the bene
 
 -   **Provide operational flexibility**. Partitioning offers many opportunities for fine-tuning operations, maximizing administrative efficiency, and minimizing cost. For example, you can define different strategies for management, monitoring, backup and restore, and other administrative tasks based on the importance of the data in each partition.
 
--   **Match the data store to the pattern of use**. Partitioning allows each partition to be deployed on a different type of data store, based on cost and the built-in features that data store offers. For example, large binary data can be stored in blob storage, while more structured data can be held in a document database. See [Choose the right data store](../guide/technology-choices/data-store-overview.md).
+-   **Match the data store to the pattern of use**. Partitioning allows each partition to be deployed on a different type of data store, based on cost and the built-in features that data store offers. For example, large binary data can be stored in blob storage, while more structured data can be held in a document database. See [Choose the right data store](https://learn.microsoft.com/azure/architecture/guide/technology-choices/data-store-overview).
 
 -   **Improve availability**. Separating data across multiple servers avoids a single point of failure. If one instance fails, only the data in that partition is unavailable. Operations on other partitions can continue. For managed PaaS data stores, this consideration is less relevant, because these services are designed with built-in redundancy.
 
@@ -66,13 +66,14 @@ Choose a sharding key that minimizes any future requirements to split large shar
 
 If shards are replicated, it might be possible to keep some of the replicas online while others are split, merged, or reconfigured. However, the system might need to limit the operations that can be performed during the reconfiguration. For example, the data in the replicas might be marked as read-only to prevent data inconsistences.
 
-For more information about horizontal partitioning, see [sharding pattern](../patterns/sharding.yml).
+For more information about horizontal partitioning, see [sharding pattern](https://learn.microsoft.com/azure/architecture/patterns/sharding).
 
 ### Vertical partitioning
 
 The most common use for vertical partitioning is to reduce the I/O and performance costs associated with fetching items that are frequently accessed. Figure 2 shows an example of vertical partitioning. In this example, different properties of an item are stored in different partitions. One partition holds data that is accessed more frequently, including product name, description, and price. Another partition holds inventory data: the stock count and last-ordered date.
 
 :::image type="content" source="../_images/partition-data/partition-by-pattern.png" alt-text="Diagram that shows how to vertically partition data by its pattern of use." border="false" lightbox="../_images/partition-data/partition-by-pattern.png":::
+
 *Figure 2 - Vertically partitioning data by its pattern of use.*
 
 In this example, the application regularly queries the product name, description, and price when displaying the product details to customers. Stock count and last- ordered date are held in a separate partition because these two items are commonly used together.
@@ -91,7 +92,7 @@ Vertical partitioning operates at the entity level within a data store, partiall
 
 When it\'s possible to identify a bounded context for each distinct business area in an application, functional partitioning is a way to improve isolation and data access performance. Another common use for functional partitioning is to separate read-write data from read-only data. Figure 3 shows an overview of functional partitioning where inventory data is separated from customer data.
 
-:::image type="content" source="../_images/partition-data/partition-by-context-or-subdomain.png" alt-text="Diagram that shows how to functionally partition data bounded by context or subdomain." border="false" lightbox="../_images/partition-data/partition-by-context-or-subdomain.png":::
+:::image type="content" source="../_images/partition-data/partition-context-or-subdomain.png" alt-text="Diagram that shows how to functionally partition data bounded by context or subdomain." border="false" lightbox="../_images/partition-data/partition-context-or-subdomain.png":::
 
 *Figure 3 - Functionally partitioning data by bounded context or subdomain.*
 
@@ -105,7 +106,7 @@ Follow these steps when designing partitions for scalability:
 
 1.  Analyze the application to understand the data access patterns, such as the size of the result set returned by each query, the frequency of access, the inherent latency, and the server-side compute processing requirements. In many cases, a few major entities will demand most of the processing resources.
 
-2.  Use this analysis to determine the current and future scalability targets, such as data size and workload. Then distribute the data across the partitions to meet the scalability target. For horizontal partitioning, choosing the right shard key is important to make sure distribution is even. For more information, see the [sharding pattern](/azure/architecture/patterns/sharding.yml).
+2.  Use this analysis to determine the current and future scalability targets, such as data size and workload. Then distribute the data across the partitions to meet the scalability target. For horizontal partitioning, choosing the right shard key is important to make sure distribution is even. For more information, see the [sharding pattern](https://learn.microsoft.com/azure/architecture/patterns/sharding).
 
 3.  Make sure each partition has enough resources to handle the scalability requirements, in terms of data size and throughput. Depending on the data store, there might be a limit on the amount of storage space, processing power, or network bandwidth per partition. If the requirements are likely to exceed these limits, you might need to refine your partitioning strategy or split data out further, possibly combining two or more strategies.
 
@@ -251,31 +252,31 @@ Online migration is more complex to perform but less disruptive. The process is 
 
 A single SQL database has a limit to the volume of data that it can contain. Throughput is constrained by architectural factors and the number of concurrent connections that it supports.
 
-[Elastic pools]([/azure/sql-database/sql-database-elastic-pool]) support horizontal scaling for a SQL database. Using elastic pools, you can partition your data into shards that are spread across multiple SQL databases. You can also add or remove shards as the volume of data that you need to handle grows and shrinks. Elastic pools can also help reduce contention by distributing the load across databases.
+[Elastic pools](/azure/sql-database/sql-database-elastic-pool) support horizontal scaling for a SQL database. Using elastic pools, you can partition your data into shards that are spread across multiple SQL databases. You can also add or remove shards as the volume of data that you need to handle grows and shrinks. Elastic pools can also help reduce contention by distributing the load across databases.
 
 Each shard is implemented as a SQL database. A shard can hold more than one dataset (called a *shardlet*). Each database maintains metadata that describes the shardlets that it contains. A shardlet can be a single data item, or a group of items that share the same shardlet key. For example, in a multitenant application, the shardlet key can be the tenant ID, and all data for a tenant can be held in the same shardlet.
 
-Client applications are responsible for associating a dataset with a shardlet key. A separate SQL database acts as a global shard map manager. This database has a list of all the shards and shardlets in the system. The application connects to the shard map manager database to obtain a copy of the shard map. It caches the shard map locally, and uses the map to route data requests to the appropriate shard. This functionality is hidden behind a series of APIs that are contained in the [Elastic Database client library]([/azure/sql-database/sql-database-elastic-database-client-library]), which is available for Java and .NET.
+Client applications are responsible for associating a dataset with a shardlet key. A separate SQL database acts as a global shard map manager. This database has a list of all the shards and shardlets in the system. The application connects to the shard map manager database to obtain a copy of the shard map. It caches the shard map locally, and uses the map to route data requests to the appropriate shard. This functionality is hidden behind a series of APIs that are contained in the [Elastic Database client library](/azure/sql-database/sql-database-elastic-database-client-library), which is available for Java and .NET.
 
-For more information about elastic pools, see [Scaling out with Azure SQL Database]([/azure/sql-database/sql-database-elastic-scale-introduction]).
+For more information about elastic pools, see [Scaling out with Azure SQL Database](/azure/sql-database/sql-database-elastic-scale-introduction).
 
 To reduce latency and improve availability, you can replicate the global shard map manager database. With the Premium pricing tiers, you can configure active geo-replication to continuously copy data to databases in different regions.
 
-Alternatively, use [Azure SQL Data Sync]([/azure/sql-database/sql-database-sync-data]) or [Azure Data Factory]([/azure/data-factory]) to replicate the shard map manager database across regions. This form of replication runs periodically and is more suitable if the shard map changes infrequently, and does not require Premium tier.
+Alternatively, use [Azure SQL Data Sync](/azure/sql-database/sql-database-sync-data) or [Azure Data Factory](/azure/data-factory) to replicate the shard map manager database across regions. This form of replication runs periodically and is more suitable if the shard map changes infrequently, and does not require Premium tier.
 
 Elastic Database provides two schemes for mapping data to shardlets and storing them in shards:
 
 -   A **list shard map** associates a single key to a shardlet. For example, in a multitenant system, the data for each tenant can be associated with a unique key and stored in its own shardlet. To guarantee isolation, each shardlet can be held within its own shard.
 
-:::image type="content" source="../_images/partition-data/point-shardlet.svg" alt-text="Diagram that shows shardlets held in their own shard." border="false" lightbox="../_images/partition-data/point-shardlet.svg":::
+   :::image type="content" source="../_images/partition-data/point-shardlet.svg" alt-text="Diagram that shows shardlets held in their own shard." border="false" lightbox="../_images/partition-data/point-shardlet.svg":::
 
-*Download a [Visio file]([https://arch-center.azureedge.net/data-partitioning-strategies.vsdx]) of this diagram.*
+   *Download a [Visio file](https://arch-center.azureedge.net/data-partitioning-strategies.vsdx) of this diagram.*
 
 -   A **range shard map** associates a set of contiguous key values to a shardlet. For example, you can group the data for a set of tenants (each with their own key) within the same shardlet. This scheme is less expensive than the first, because tenants share data storage, but has less isolation.
 
-:::image type="content" source="../_images/partition-data/range-shardlet.svg" alt-text="Diagram that shows sets of tenants within the same shardlets." border="false" lightbox="../_images/partition-data/range-shardlet.svg":::
+   :::image type="content" source="../_images/partition-data/range-shardlet.svg" alt-text="Diagram that shows sets of tenants within the same shardlets." border="false" lightbox="../_images/partition-data/range-shardlet.svg":::
 
-*Download a [Visio file](https://arch-center.azureedge.net/data-partitioning-strategies.vsdx) of this diagram*
+   *Download a [Visio file](https://arch-center.azureedge.net/data-partitioning-strategies.vsdx) of this diagram*
 
 A single shard can contain the data for several shardlets. For example, you can use list shardlets to store data for different non-contiguous tenants in the same shard. You can also mix range shardlets and list shardlets in the same shard, although they will be addressed through different maps. The following diagram shows this approach:
 
@@ -285,13 +286,13 @@ A single shard can contain the data for several shardlets. For example, you can 
 
 Elastic pools make it possible to add and remove shards as the volume of data shrinks and grows. Client applications can create and delete shards dynamically, and transparently update the shard map manager. However, removing a shard is a destructive operation that also requires deleting all the data in that shard.
 
-If an application needs to split a shard into two separate shards or combine shards, use the [split-merge tool]([/azure/sql-database/sql-database-elastic-scale-overview-split-and-merge]). This tool runs as an Azure web service, and migrates data safely between shards.
+If an application needs to split a shard into two separate shards or combine shards, use the [split-merge tool](/azure/sql-database/sql-database-elastic-scale-overview-split-and-merge). This tool runs as an Azure web service, and migrates data safely between shards.
 
 The partitioning scheme can significantly affect the performance of your system. It can also affect the rate at which shards have to be added or removed, or that data must be repartitioned across shards. Consider the following points:
 
 -   Group data that is used together in the same shard, and avoid operations that access data from multiple shards. A shard is a SQL database in its own right, and cross-database joins must be performed on the client side.
 
-    Although SQL Database does not support cross-database joins, you can use the Elastic Database tools to perform [multi-shard queries]([/azure/sql-database/sql-database-elastic-scale-multishard-querying]). A multi-shard query sends individual queries to each database and merges the results.
+    Although SQL Database does not support cross-database joins, you can use the Elastic Database tools to perform [multi-shard queries](/azure/sql-database/sql-database-elastic-scale-multishard-querying). A multi-shard query sends individual queries to each database and merges the results.
 
 -   Don\'t design a system that has dependencies between shards. Referential integrity constraints, triggers, and stored procedures in one database cannot reference objects in another.
 
@@ -313,7 +314,7 @@ Each blob (either block or page) is held in a container in an Azure storage acco
 
 The partition key for a blob is account name + container name + blob name. The partition key is used to partition data into ranges and these ranges are load-balanced across the system. Blobs can be distributed across many servers in order to scale out access to them, but a single blob can only be served by a single server.
 
-If your naming scheme uses timestamps or numerical identifiers, it can lead to excessive traffic going to one partition, limiting the system from effectively load balancing. For instance, if you have daily operations that use a blob object with a timestamp such as *yyyy-mm-dd*, all the traffic for that operation would go to a single partition server. Instead, consider prefixing the name with a three-digit hash. For more information, see [Partition naming convention]([/azure/storage/common/storage-performance-checklist#partitioning]).
+If your naming scheme uses timestamps or numerical identifiers, it can lead to excessive traffic going to one partition, limiting the system from effectively load balancing. For instance, if you have daily operations that use a blob object with a timestamp such as *yyyy-mm-dd*, all the traffic for that operation would go to a single partition server. Instead, consider prefixing the name with a three-digit hash. For more information, see [Partition naming convention](/azure/storage/common/storage-performance-checklist#partitioning).
 
 The actions of writing a single block or page are atomic, but operations that span blocks, pages, or blobs are not. If you need to ensure consistency when performing write operations across blocks, pages, and blobs, take out a write lock by using a blob lease.
 
@@ -331,12 +332,12 @@ As discussed throughout this document data partitioning also introduces some cha
 
 - [Azure storage scalability and performance targets](/azure/storage/storage-scalability-targets)
 
-Refer to the [Review your data options](https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-options) guide to learn more about all of the database services in Azure and how they compare to
+Refer to the [Review your data options](https://learn.microsoft.com/azure/architecture/guide/technology-choices/data-options) guide to learn more about all of the database services in Azure and how they compare to
 
 The following design patterns might be relevant to your scenario:
 
-- The [sharding pattern](../patterns/sharding.yml) describes some common strategies for sharding data.
+- The [sharding pattern](https://learn.microsoft.com/azure/architecture/patterns/sharding.yml) describes some common strategies for sharding data.
 
-- The [index table pattern](../patterns/index-table.yml) shows how to create secondary indexes over data. An application can quickly retrieve data with this approach, by using queries that do not reference the primary key of a collection.
+- The [index table pattern](https://learn.microsoft.com/azure/architecture/patterns/index-table.yml) shows how to create secondary indexes over data. An application can quickly retrieve data with this approach, by using queries that do not reference the primary key of a collection.
 
-- The [materialized view pattern](../patterns/materialized-view.yml) describes how to generate prepopulated views that summarize data to support fast query operations. This approach can be useful in a partitioned data store if the partitions that contain the data being summarized are distributed across multiple sites.
+- The [materialized view pattern](https://learn.microsoft.com/azure/architecture/patterns/materialized-view.yml) describes how to generate prepopulated views that summarize data to support fast query operations. This approach can be useful in a partitioned data store if the partitions that contain the data being summarized are distributed across multiple sites.
