@@ -44,7 +44,9 @@ Availability metrics correlate to service-level objectives (SLOs) which are used
 
 After you have gathered the SLAs for the individual workload components, you can calculate a composite SLA, which should match the workload target SLO. There are several factors involved in calculating a composite SLA, depending on your architecture design.
 
-Composite SLAs involve multiple services supporting an application, with differing levels of availability. For example, consider an App Service web app that writes to Azure SQL Database. Currently, these Azure services have the following SLAs:
+**The SLA values provided in the examples below are hypothetical and are used for demonstration purposes only. They should not be assumed to be current values supported by Microsoft**
+
+Composite SLAs involve multiple services supporting an application, with differing levels of availability. For example, consider an App Service web app that writes to Azure SQL Database. Hypothetically, these SLAs could be:
 
 -   App Service web apps = 99.95%
 
@@ -72,7 +74,7 @@ For multi-region deployments, the composite SLA is calculated as follows:
 
 -   R is the number of regions where the application is deployed.
 
-The expected chance that the application fails in all regions at the same time is ((1 − N) \^ R). For example, if the single-region SLA is 99.95%:
+The expected chance that the application fails in all regions at the same time is ((1 − N) \^ R). For example, if the hypothetical single-region SLA is 99.95%:
 
 -   The combined SLA for two regions = (1 − (1 − 0.9995) \^ 2) = 99.999975%
 
