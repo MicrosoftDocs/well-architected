@@ -336,8 +336,8 @@ Refer to the [Review your data options](https://learn.microsoft.com/azure/archit
 
 The following design patterns might be relevant to your scenario:
 
-- The [sharding pattern](https://learn.microsoft.com/azure/architecture/patterns/sharding.yml) describes some common strategies for sharding data.
+- The [sharding pattern](https://learn.microsoft.com/azure/architecture/patterns/sharding) describes some common strategies for sharding data.
 
-- The [index table pattern](https://learn.microsoft.com/azure/architecture/patterns/index-table.yml) shows how to create secondary indexes over data. An application can quickly retrieve data with this approach, by using queries that do not reference the primary key of a collection.
+- The [index table pattern](https://learn.microsoft.com/azure/architecture/patterns/index-table) shows how to create secondary indexes over data. An application can quickly retrieve data with this approach, by using queries that do not reference the primary key of a collection.
 
-- The [materialized view pattern](https://learn.microsoft.com/azure/architecture/patterns/materialized-view.yml) describes how to generate prepopulated views that summarize data to support fast query operations. This approach can be useful in a partitioned data store if the partitions that contain the data being summarized are distributed across multiple sites.
+- The [materialized view pattern](https://learn.microsoft.com/azure/architecture/patterns/materialized-view) describes how to generate prepopulated views that summarize data to support fast query operations. This approach can be useful in a partitioned data store if the partitions that contain the data being summarized are distributed across multiple sites.
