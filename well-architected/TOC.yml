@@ -27,8 +27,8 @@
               href: reliability/design-patterns.md
             - name: Failure mode analysis
               href: reliability/failure-mode-analysis.md
-            - name: Reliability guide
-              href: coming-soon.md
+            - name: Handling transient faults 
+              href: reliability/handle-transient-faults.md  
             - name: Regions and availability zones
               href: reliability/regions-availability-zones.md
       - name: Security
