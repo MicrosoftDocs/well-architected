@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to RE:05** 
 
-This guide describes recommendations for designing a 
+This guide describes recommendations for designing a data partitioning strategy to help you improve the reliability of your data estate, no matter which types of databases and data storage technologies you deploy. 
 
 ## Key design strategies
 
@@ -332,7 +332,7 @@ As discussed throughout this document data partitioning also introduces some cha
 
 - [Azure storage scalability and performance targets](/azure/storage/storage-scalability-targets)
 
-Refer to the [Review your data options](https://learn.microsoft.com/azure/architecture/guide/technology-choices/data-options) guide to learn more about all of the database services in Azure and how they compare to
+Refer to the [Review your data options](https://learn.microsoft.com/azure/architecture/guide/technology-choices/data-options) guide to learn more about all of the database services in Azure and how they compare to one another.
 
 The following design patterns might be relevant to your scenario:
 
