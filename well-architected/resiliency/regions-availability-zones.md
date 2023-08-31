@@ -81,7 +81,7 @@ The [shared responsibility principle](/azure/security/fundamentals/shared-respon
 
 Microsoft provides availability zones and regions to give you flexibility in how you design your solution to meet your requirements. When you use managed services, Microsoft takes on more of the management responsibilities for your resources, which might even include data replication, failover, failback, and other tasks related to operating a distributed system.
 
-Regardless of the approach you use, your own code needs to follow [recommended practices for handling transient failures](handle-transient-faults.md). <!-- Link to RE:06 --> These practices are even more important in a multi-zone or multi-region solution, because failover between zones or regions usually requires that your application retry connections to services.
+Regardless of the approach you use, your own code needs to follow [recommended practices for handling transient failures](/azure/architecture/best-practices/transient-faults). These practices are even more important in a multi-zone or multi-region solution, because failover between zones or regions usually requires that your application retry connections to services.
 
 ### Identify key business and workload requirements
 
@@ -106,7 +106,7 @@ It would be ideal to mitigate every possible risk for every workload, but it's n
 
 ##### Resiliency requirements
 
-It's important to understand the resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you decide which approaches to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Target functional and nonfunctional requirements](identify-flows.md). <!-- Update this to RE:01 when staged. need to verify link -->
+It's important to understand the resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you decide which approaches to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Use business metrics to design resilient Azure applications](business-metrics.md).
 
 ##### Service-level agreements
 
