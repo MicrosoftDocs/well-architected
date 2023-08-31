@@ -29,24 +29,19 @@ The content herein is designed to support their continuous efforts in optimizing
 
 Let’s say you’re building a web application that will be hosted on Azure. You want to make sure that the application is reliable, secure, cost-effective, and efficient. Here’s an example of how you might use the Well-Architected Framework to achieve these goals:
 
-- Reliability: To make sure that your application is resilient and available, you might use Azure Availability Zones so that your application is highly available and can recover from failures.
-
-- Security: You want to protect your application and data from threats. To achieve this, you can use Azure Security Center to monitor your application for security threats and vulnerabilities.
-
-- Cost optimization: You want to manage costs to maximize the value delivered. Azure Cost Management and Billing helps you monitor your costs and optimize your spending.
-
-- Operational excellence: You want to ensure that your operations processes keep your system running in production. To achieve this, you might use Azure Monitor to monitor your application for performance issues and errors.
-- Performance efficiency: You want to ensure that your application can adapt to changes in load. To achieve this, you might use Azure Autoscale to automatically scale your application based on demand.
-
-					- and/or - 
+- **Reliability:** To make sure that your application is resilient and available, you might use [Azure Availability Zones](/azure/reliability/availability-zones-overview) so that your application is highly available and can recover from failures.
+- **Security:** You want to protect your application and data from threats. To achieve this, you can use [Azure Security Center](/azure/security/) to monitor your application for security threats and vulnerabilities.
+- **Cost optimization:** You want to manage costs to maximize the value delivered. [Azure Cost Management and Billing](/azure/cost-management-billing/costs/) helps you monitor your costs and optimize your spending.
+- **Operational excellence:** You want to ensure that your operations processes keep your system running in production. To achieve this, you might use [Azure Monitor](/azure/azure-monitor/) to monitor your application for performance issues and errors.
+- **Performance efficiency:** You want to ensure that your application can adapt to changes in load. To achieve this, you might use [Azure Autoscale](/azure/azure-monitor/autoscale/autoscale-overview) to automatically scale your application based on demand.
 
 ### Best practices
 
 Here are some best practices when using the Well-Architected Framework:
 
-- Understand the five pillars of architectural excellence. The Well-Architected Framework consists of five pillars: reliability, security, cost optimization, operational excellence, and performance efficiency. It’s important to understand the pillars and how they relate to your workload.
-- Assess your workload. The Assessment review tool is free and can help you assess your workload using the tenets found in the Well-Architected Framework.
-- Use Azure Advisor and Advisor Score to identify and prioritize opportunities to improve the posture of your workloads. Both services are free to all Azure users and align to the five pillars of the Well-Architected Framework.
+- Understand the [five pillars of architectural excellence](pillars.md). The Well-Architected Framework consists of five pillars: reliability, security, cost optimization, operational excellence, and performance efficiency. It’s important to understand the pillars and how they relate to your workload.
+- Assess your workload. The [Assessment review tool](pillars.md#assessment-review-tool) is free and can help you assess your workload using the tenets found in the Well-Architected Framework.
+- Use [Azure Advisor and Advisor Score](/azure/advisor/azure-advisor-score#introduction-to-advisor-score) to identify and prioritize opportunities to improve the posture of your workloads. Both services are free to all Azure users and align to the five pillars of the Well-Architected Framework.
 - Incorporate the pillars into your cloud architecture. By incorporating the five pillars into your cloud architecture, you can produce a high quality, stable, and efficient cloud architecture.
 - Continuously improve your architecture. The Well-Architected Framework is not a one-time exercise but rather an ongoing process of continuous improvement.
 
@@ -77,7 +72,7 @@ Here are just a few of the benefits you can experience after implementing the We
 
 Here are some resources that can help you get started with using the Well-Architected Framework documentation:
 
-- Microsoft Azure Well-Architected Framework
-- Introducing the Microsoft Azure Well-Architected Framework
-- Training for the Well-Architected Framework
-- Azure Well-Architected | Microsoft Azure
+- [Microsoft Azure Well-Architected Framework](/azure/well-architected/)
+- [Introducing the Microsoft Azure Well-Architected Framework](https://azure.microsoft.com/en-us/blog/introducing-the-microsoft-azure-wellarchitected-framework/)
+- [Training for the Well-Architected Framework](/training/modules/azure-well-architected-introduction/)
+- [Azure Well-Architected | Microsoft Azure](https://azure.microsoft.com/en-us/solutions/cloud-enablement/well-architected/)
