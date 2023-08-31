@@ -31,7 +31,7 @@ Background jobs typically include one or more of the following types of jobs:
 
 -   Long-running workflows, such as order fulfillment, or provisioning services and systems.
 
--   Sensitive-data processing where the task is handed off to a more secure location for processing. For example, you might not want to process sensitive data within a web app. Instead, you might use a pattern such as the [Gatekeeper pattern](../patterns/gatekeeper.yml) to transfer the data to an isolated background process that has access to protected storage.
+-   Sensitive-data processing where the task is handed off to a more secure location for processing. For example, you might not want to process sensitive data within a web app. Instead, you might use a pattern such as the [Gatekeeper pattern](/azure/architecture/patterns/gatekeeper) to transfer the data to an isolated background process that has access to protected storage.
 
 ## Triggers
 
@@ -103,7 +103,7 @@ If you decide to include background tasks within an existing compute instance, y
 
 -   **Cost**: Adding compute instances to execute background tasks increases hosting costs. You should carefully consider the trade-off between additional capacity and these extra costs.
 
--   For more information, see the [Leader Election pattern](../patterns/leader-election.yml) and the [Competing Consumers pattern](../patterns/competing-consumers.yml).
+-   For more information, see the [Leader Election pattern](/azure/architecture/patterns/leader-election) and the [Competing Consumers pattern](/azure/architecture/patterns/competing-consumers).
 
 ## Conflicts
 
@@ -119,19 +119,19 @@ The background tasks might be complex and might require multiple individual task
 
 Coordinating multiple tasks and steps can be challenging, but there are three common patterns that you can use to guide your implementation of a solution:
 
--   Decomposing a task into multiple reusable steps. An application might be required to perform a variety of tasks of varying complexity on the information that it processes. A straightforward but inflexible approach to implementing this application might be to perform this processing as a monolithic module. However, this approach is likely to reduce the opportunities for refactoring the code, optimizing it, or reusing it if parts of the same processing are required elsewhere within the application. For more information, see the [Pipes and Filters pattern](../patterns/pipes-and-filters.yml).
+-   Decomposing a task into multiple reusable steps. An application might be required to perform a variety of tasks of varying complexity on the information that it processes. A straightforward but inflexible approach to implementing this application might be to perform this processing as a monolithic module. However, this approach is likely to reduce the opportunities for refactoring the code, optimizing it, or reusing it if parts of the same processing are required elsewhere within the application. For more information, see the [Pipes and Filters pattern](/azure/architecture/patterns/pipes-and-filters).
 
--   **Managing execution of the steps for a task**. An application might perform tasks that comprise a number of steps (some of which might invoke remote services or access remote resources). The individual steps might be independent of each other, but they are orchestrated by the application logic that implements the task. For more information, see [Scheduler Agent Supervisor pattern](../patterns/scheduler-agent-supervisor.yml).
+-   **Managing execution of the steps for a task**. An application might perform tasks that comprise a number of steps (some of which might invoke remote services or access remote resources). The individual steps might be independent of each other, but they are orchestrated by the application logic that implements the task. For more information, see [Scheduler Agent Supervisor pattern](/azure/architecture/patterns/scheduler-agent-supervisor).
 
--   **Managing recovery for task steps that fail**. An application might need to undo the work that is performed by a series of steps (which together define an eventually consistent operation) if one or more of the steps fail. For more information, see the [Compensating Transaction pattern](../patterns/compensating-transaction.yml).
+-   **Managing recovery for task steps that fail**. An application might need to undo the work that is performed by a series of steps (which together define an eventually consistent operation) if one or more of the steps fail. For more information, see the [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction.
 
 ## Resiliency considerations
 
 Background tasks must be resilient in order to provide reliable services to the application. When you are planning and designing background tasks, consider the following points:
 
--   Background tasks must be able to gracefully handle restarts without corrupting data or introducing inconsistency into the application. For long-running or multistep tasks, consider using *check pointing* by saving the state of jobs in persistent storage, or as messages in a queue if this is appropriate. For example, you can persist state information in a message in a queue and incrementally update this state information with the task progress so that the task can be processed from the last known good checkpoint--instead of restarting from the beginning. When using Azure Service Bus queues, you can use message sessions to enable the same scenario. Sessions allow you to save and retrieve the application processing state by using the [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate?view=azureservicebus-4.0.0&preserve-view=true) and [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate?view=azureservicebus-4.0.0&preserve-view=true) methods. For more information about designing reliable multistep processes and workflows, see the [Scheduler Agent Supervisor pattern](../patterns/scheduler-agent-supervisor.yml).
+-   Background tasks must be able to gracefully handle restarts without corrupting data or introducing inconsistency into the application. For long-running or multistep tasks, consider using *check pointing* by saving the state of jobs in persistent storage, or as messages in a queue if this is appropriate. For example, you can persist state information in a message in a queue and incrementally update this state information with the task progress so that the task can be processed from the last known good checkpoint--instead of restarting from the beginning. When using Azure Service Bus queues, you can use message sessions to enable the same scenario. Sessions allow you to save and retrieve the application processing state by using the [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate?view=azureservicebus-4.0.0&preserve-view=true) and [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate?view=azureservicebus-4.0.0&preserve-view=true) methods. For more information about designing reliable multistep processes and workflows, see the [Scheduler Agent Supervisor pattern](/azure/architecture/patterns/scheduler-agent-supervisor).
 
--   When you use queues to communicate with background tasks, the queues can act as a buffer to store requests that are sent to the tasks while the application is under higher than usual load. This allows the tasks to catch up with the UI during less busy periods. It also means that restarts will not block the UI. For more information, see the [Queue-Based Load Leveling pattern](../patterns/queue-based-load-leveling.yml). If some tasks are more important than others, consider implementing the [Priority Queue pattern](../patterns/priority-queue.yml) to ensure that these tasks run before less important ones.
+-   When you use queues to communicate with background tasks, the queues can act as a buffer to store requests that are sent to the tasks while the application is under higher than usual load. This allows the tasks to catch up with the UI during less busy periods. It also means that restarts will not block the UI. For more information, see the [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling). If some tasks are more important than others, consider implementing the [Priority Queue pattern](/azure/architecture/patterns/priority-queue) to ensure that these tasks run before less important ones.
 
 -   Background tasks that are initiated by messages or process messages must be designed to handle inconsistencies, such as messages arriving out of order, messages that repeatedly cause an error (often referred to as *poison messages*), and messages that are delivered more than once. Consider the following:
 
@@ -215,7 +215,7 @@ Azure WebJobs have the following characteristics:
 
     -   { \"is_singleton\": true }
 
-#### Considerations
+##### Considerations
 
 -   By default, WebJobs scale with the web app. However, you can configure jobs to run on single instance by setting the **is_singleton** configuration property to **true**. Single instance WebJobs are useful for tasks that you do not want to scale or run as simultaneous multiple instances, such as reindexing, data analysis, and similar tasks.
 
@@ -265,7 +265,7 @@ Consider the following points when you are deciding whether to deploy background
 
 -   There is no facility to monitor the tasks in the Azure portal and no automated restart capability for failed tasks--although you can monitor the basic status of the virtual machine and manage it by using the [Azure Resource Manager Cmdlets](/powershell/module/?view=azps-1.0.0&preserve-view=true). However, there are no facilities to control processes and threads in compute nodes. Typically, using a virtual machine will require additional effort to implement a mechanism that collects data from instrumentation in the task, and from the operating system in the virtual machine. One solution that might be appropriate is to use the [System Center Management Pack for Azure](https://www.microsoft.com/download/details.aspx?id=50013).
 
--   You might consider creating monitoring probes that are exposed through HTTP endpoints. The code for these probes could perform health checks, collect operational information and statistics--or collate error information and return it to a management application. For more information, see the [Health Endpoint Monitoring pattern](../patterns/health-endpoint-monitoring.yml).
+-   You might consider creating monitoring probes that are exposed through HTTP endpoints. The code for these probes could perform health checks, collect operational information and statistics--or collate error information and return it to a management application. For more information, see the [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring).
 
 For more information, see:
 
@@ -279,7 +279,7 @@ Consider [Azure Batch](/azure/batch) if you need to run large, parallel high-per
 
 The Batch service provisions the VMs, assign tasks to the VMs, runs the tasks, and monitors the progress. Batch can automatically scale out the VMs in response to the workload. Batch also provides job scheduling. Azure Batch supports both Linux and Windows VMs.
 
-##### **Considerations**
+##### Considerations
 
 Batch works well with intrinsically parallel workloads. It can also perform parallel calculations with a reduce step at the end, or run [Message Passing Interface (MPI) applications](/azure/batch/batch-mpi) for parallel tasks that require message passing between nodes.
 
@@ -291,7 +291,7 @@ For more information, see:
 
 -   [Develop large-scale parallel compute solutions with Batch](/azure/batch/batch-api-basics)
 
--   [Batch and HPC solutions for large-scale computing workloads](../topics/high-performance-computing.md)
+-   [Batch and HPC solutions for large-scale computing workloads](/azure/architecture/topics/high-performance-computing)
 
 #### Azure Kubernetes Service
 
@@ -307,7 +307,7 @@ Containers can be useful for running background jobs. Some of the benefits inclu
 
 -   Azure Container Registry allows you to register your containers inside Azure boundaries. This comes with security, privacy, and proximity benefits.
 
-##### **Considerations**
+##### Considerations
 
 Requires an understanding of how to use a container orchestrator. Depending on the skill set of your DevOps team, this may or may not be an issue.
 
