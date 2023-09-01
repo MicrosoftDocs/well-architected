@@ -32,7 +32,7 @@ However, the partitioning strategy must be chosen carefully to maximize the bene
 
 -   **Provide operational flexibility**. Partitioning offers many opportunities for fine-tuning operations, maximizing administrative efficiency, and minimizing cost. For example, you can define different strategies for management, monitoring, backup and restore, and other administrative tasks based on the importance of the data in each partition.
 
--   **Match the data store to the pattern of use**. Partitioning allows each partition to be deployed on a different type of data store, based on cost and the built-in features that data store offers. For example, large binary data can be stored in blob storage, while more structured data can be held in a document database. See [Choose the right data store](https://learn.microsoft.com/azure/architecture/guide/technology-choices/data-store-overview).
+-   **Match the data store to the pattern of use**. Partitioning allows each partition to be deployed on a different type of data store, based on cost and the built-in features that data store offers. For example, large binary data can be stored in blob storage, while more structured data can be held in a document database. See [Choose the right data store](/azure/architecture/guide/technology-choices/data-store-overview).
 
 -   **Improve availability**. Separating data across multiple servers avoids a single point of failure. If one instance fails, only the data in that partition is unavailable. Operations on other partitions can continue. For managed PaaS data stores, this consideration is less relevant, because these services are designed with built-in redundancy.
 
@@ -52,7 +52,7 @@ These strategies can be combined, and we recommend that you consider them all wh
 
 Figure 1 shows horizontal partitioning or sharding. In this example, product inventory data is divided into shards based on the product key. Each shard holds the data for a contiguous range of shard keys (A-G and H-Z), organized alphabetically. Sharding spreads the load over more computers, which reduces contention and improves performance.
 
-:::image type="content" source="../_images/partition-data/partition-data-key.png" alt-text="Diagram that shows how to horizontally partition data based on a partition key." border="false" lightbox="../_images/partition-data/partition-data-key.png":::
+:::image type="content" source="media/partition-data/partition-data-key.png" alt-text="Diagram that shows how to horizontally partition data based on a partition key." border="false" lightbox="media/partition-data/partition-data-key.png":::
 
 *Figure 1 - Horizontally partitioning (sharding) data based on a partition key.*
 
@@ -66,13 +66,13 @@ Choose a sharding key that minimizes any future requirements to split large shar
 
 If shards are replicated, it might be possible to keep some of the replicas online while others are split, merged, or reconfigured. However, the system might need to limit the operations that can be performed during the reconfiguration. For example, the data in the replicas might be marked as read-only to prevent data inconsistences.
 
-For more information about horizontal partitioning, see [sharding pattern](https://learn.microsoft.com/azure/architecture/patterns/sharding).
+For more information about horizontal partitioning, see [sharding pattern](/azure/architecture/patterns/sharding).
 
 ### Vertical partitioning
 
 The most common use for vertical partitioning is to reduce the I/O and performance costs associated with fetching items that are frequently accessed. Figure 2 shows an example of vertical partitioning. In this example, different properties of an item are stored in different partitions. One partition holds data that is accessed more frequently, including product name, description, and price. Another partition holds inventory data: the stock count and last-ordered date.
 
-:::image type="content" source="../_images/partition-data/partition-by-pattern.png" alt-text="Diagram that shows how to vertically partition data by its pattern of use." border="false" lightbox="../_images/partition-data/partition-by-pattern.png":::
+:::image type="content" source="media/partition-data/partition-by-pattern.png" alt-text="Diagram that shows how to vertically partition data by its pattern of use." border="false" lightbox="media/partition-data/partition-by-pattern.png":::
 
 *Figure 2 - Vertically partitioning data by its pattern of use.*
 
@@ -92,7 +92,7 @@ Vertical partitioning operates at the entity level within a data store, partiall
 
 When it\'s possible to identify a bounded context for each distinct business area in an application, functional partitioning is a way to improve isolation and data access performance. Another common use for functional partitioning is to separate read-write data from read-only data. Figure 3 shows an overview of functional partitioning where inventory data is separated from customer data.
 
-:::image type="content" source="../_images/partition-data/partition-context-or-subdomain.png" alt-text="Diagram that shows how to functionally partition data bounded by context or subdomain." border="false" lightbox="../_images/partition-data/partition-context-or-subdomain.png":::
+:::image type="content" source="media/partition-data/partition-context-or-subdomain.png" alt-text="Diagram that shows how to functionally partition data bounded by context or subdomain." border="false" lightbox="media/partition-data/partition-context-or-subdomain.png":::
 
 *Figure 3 - Functionally partitioning data by bounded context or subdomain.*
 
@@ -106,7 +106,7 @@ Follow these steps when designing partitions for scalability:
 
 1.  Analyze the application to understand the data access patterns, such as the size of the result set returned by each query, the frequency of access, the inherent latency, and the server-side compute processing requirements. In many cases, a few major entities will demand most of the processing resources.
 
-2.  Use this analysis to determine the current and future scalability targets, such as data size and workload. Then distribute the data across the partitions to meet the scalability target. For horizontal partitioning, choosing the right shard key is important to make sure distribution is even. For more information, see the [sharding pattern](https://learn.microsoft.com/azure/architecture/patterns/sharding).
+2.  Use this analysis to determine the current and future scalability targets, such as data size and workload. Then distribute the data across the partitions to meet the scalability target. For horizontal partitioning, choosing the right shard key is important to make sure distribution is even. For more information, see the [sharding pattern](/azure/architecture/patterns/sharding).
 
 3.  Make sure each partition has enough resources to handle the scalability requirements, in terms of data size and throughput. Depending on the data store, there might be a limit on the amount of storage space, processing power, or network bandwidth per partition. If the requirements are likely to exceed these limits, you might need to refine your partitioning strategy or split data out further, possibly combining two or more strategies.
 
@@ -268,19 +268,19 @@ Elastic Database provides two schemes for mapping data to shardlets and storing 
 
 -   A **list shard map** associates a single key to a shardlet. For example, in a multitenant system, the data for each tenant can be associated with a unique key and stored in its own shardlet. To guarantee isolation, each shardlet can be held within its own shard.
 
-   :::image type="content" source="../_images/partition-data/point-shardlet.svg" alt-text="Diagram that shows shardlets held in their own shard." border="false" lightbox="../_images/partition-data/point-shardlet.svg":::
+   :::image type="content" source="media/partition-data/point-shardlet.svg" alt-text="Diagram that shows shardlets held in their own shard." border="false" lightbox="media/partition-data/point-shardlet.svg":::
 
    *Download a [Visio file](https://arch-center.azureedge.net/data-partitioning-strategies.vsdx) of this diagram.*
 
 -   A **range shard map** associates a set of contiguous key values to a shardlet. For example, you can group the data for a set of tenants (each with their own key) within the same shardlet. This scheme is less expensive than the first, because tenants share data storage, but has less isolation.
 
-   :::image type="content" source="../_images/partition-data/range-shardlet.svg" alt-text="Diagram that shows sets of tenants within the same shardlets." border="false" lightbox="../_images/partition-data/range-shardlet.svg":::
+   :::image type="content" source="media/partition-data/range-shardlet.svg" alt-text="Diagram that shows sets of tenants within the same shardlets." border="false" lightbox="media/partition-data/range-shardlet.svg":::
 
    *Download a [Visio file](https://arch-center.azureedge.net/data-partitioning-strategies.vsdx) of this diagram*
 
 A single shard can contain the data for several shardlets. For example, you can use list shardlets to store data for different non-contiguous tenants in the same shard. You can also mix range shardlets and list shardlets in the same shard, although they will be addressed through different maps. The following diagram shows this approach:
 
-:::image type="content" source="../_images/partition-data/multiple-shard-maps.svg" alt-text="Diagram that shows shardlets within the same shard that are addressed through different maps." border="false" lightbox="../_images/partition-data/multiple-shard-maps.svg":::
+:::image type="content" source="media/partition-data/multiple-shard-maps.svg" alt-text="Diagram that shows shardlets within the same shard that are addressed through different maps." border="false" lightbox="media/partition-data/multiple-shard-maps.svg":::
 
 *Download a [Visio file](https://arch-center.azureedge.net/data-partitioning-strategies.vsdx) of this diagram.*
 
@@ -332,12 +332,12 @@ As discussed throughout this document data partitioning also introduces some cha
 
 - [Azure storage scalability and performance targets](/azure/storage/storage-scalability-targets)
 
-Refer to the [Review your data options](https://learn.microsoft.com/azure/architecture/guide/technology-choices/data-options) guide to learn more about all of the database services in Azure and how they compare to one another.
+Refer to the [Review your data options](/azure/architecture/guide/technology-choices/data-options) guide to learn more about all of the database services in Azure and how they compare to one another.
 
 The following design patterns might be relevant to your scenario:
 
-- The [sharding pattern](https://learn.microsoft.com/azure/architecture/patterns/sharding) describes some common strategies for sharding data.
+- The [sharding pattern](/azure/architecture/patterns/sharding) describes some common strategies for sharding data.
 
-- The [index table pattern](https://learn.microsoft.com/azure/architecture/patterns/index-table) shows how to create secondary indexes over data. An application can quickly retrieve data with this approach, by using queries that do not reference the primary key of a collection.
+- The [index table pattern](/azure/architecture/patterns/index-table) shows how to create secondary indexes over data. An application can quickly retrieve data with this approach, by using queries that do not reference the primary key of a collection.
 
-- The [materialized view pattern](https://learn.microsoft.com/azure/architecture/patterns/materialized-view) describes how to generate prepopulated views that summarize data to support fast query operations. This approach can be useful in a partitioned data store if the partitions that contain the data being summarized are distributed across multiple sites.
+- The [materialized view pattern](/azure/architecture/patterns/materialized-view) describes how to generate prepopulated views that summarize data to support fast query operations. This approach can be useful in a partitioned data store if the partitions that contain the data being summarized are distributed across multiple sites.

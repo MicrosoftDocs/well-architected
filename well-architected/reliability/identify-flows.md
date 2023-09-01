@@ -64,7 +64,7 @@ To provide a more complete scenario and further illustrate the points discussed 
 
 In this scenario, we will use the Reliable Web Pattern [reference architecture](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation) as the basis for our example flows.
 
-:::image type="content" source="../_images/identify-flows/relecloud-flow.png" alt-text="Diagram that shows an example flow based on Relecloud." border="false" lightbox="../_images/identify-flows/relecloud-flow.png":::
+:::image type="content" source="media/identify-flows/relecloud-flow.png" alt-text="Diagram that shows an example flow based on Relecloud." border="false" lightbox="media/identify-flows/relecloud-flow.png":::
 
 ### Workload
 

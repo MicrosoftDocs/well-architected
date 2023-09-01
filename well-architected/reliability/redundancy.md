@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to RE: 04**
 
-This guide describes the best practices for optimizing your workload's resiliency by adding redundancy throughout the critical flows at different workload layers. Based on the quantified reliability targets that you have defined, you can apply the proper levels of redundancy to your compute, data, networking and other infrastructure tiers to meet those requirements. Applying this redundancy gives you a strong foundation to build upon in your efforts to make your workloads reliable. Building your workload without infrastructure redundancy puts the workload at a high risk of extended downtime due to all of the types of failures discussed in the \[failure mode analysis guide\](link to RE:02).
+This guide describes the best practices for optimizing your workload's resiliency by adding redundancy throughout the critical flows at different workload layers. Based on the quantified reliability targets that you have defined, you can apply the proper levels of redundancy to your compute, data, networking and other infrastructure tiers to meet those requirements. Applying this redundancy gives you a strong foundation to build upon in your efforts to make your workloads reliable. Building your workload without infrastructure redundancy puts the workload at a high risk of extended downtime due to all of the types of failures discussed in the [failure mode analysis guide](link to RE:02).
 
 **Definitions**
 
@@ -38,17 +38,17 @@ When designing a redundant architecture, there are two approaches to consider, d
 
 ## Deployment stamps and units of scale
 
-Whether you deploy in an active/active or active/passive model, follow the [deployment stamps design pattern](https://learn.microsoft.com/azure/architecture/patterns/deployment-stamp) to ensure that your workload is deployed in a repeatable, scalable way. Deployment stamps are the groupings of resources required to serve your workload to a given subset of your customers (this can be a regional subset or a subset with all of the same data privacy requirements for example). Each stamp can be thought of as a "unit of scale" that can be duplicated to scale your workload horizontally or to perform blue-green deployments. By designing your workload in this manner, your active/active and active/passive implementation will be optimized for resiliency and management burden.
+Whether you deploy in an active/active or active/passive model, follow the [deployment stamps design pattern](/azure/architecture/patterns/deployment-stamp) to ensure that your workload is deployed in a repeatable, scalable way. Deployment stamps are the groupings of resources required to serve your workload to a given subset of your customers (this can be a regional subset or a subset with all of the same data privacy requirements for example). Each stamp can be thought of as a "unit of scale" that can be duplicated to scale your workload horizontally or to perform blue-green deployments. By designing your workload in this manner, your active/active and active/passive implementation will be optimized for resiliency and management burden.
 
 ## Availability zones within Azure regions
 
-Whether you deploy an active/active or an active/passive design, take advantage of [availability zones](https://review.learn.microsoft.com/azure/reliability/availability-zones-overview) within the active regions to fully optimize your resiliency. Many Azure regions provide multiple availability zones, which are separated groups of data centers within a region. Depending on the Azure service, you can take advantage of availability zones by deploying elements of your workload redundantly across zones, or pinning elements to specific zones. For detailed guidance on designing your solution to use availability zones, refer to the Well-Architected Framework [guide.](https://review.learn.microsoft.com/azure/well-architected/regions-availability-zones?branch=pr-en-us-771)
+Whether you deploy an active/active or an active/passive design, take advantage of [availability zones](regions-availability-zones.md) within the active regions to fully optimize your resiliency. Many Azure regions provide multiple availability zones, which are separated groups of data centers within a region. Depending on the Azure service, you can take advantage of availability zones by deploying elements of your workload redundantly across zones, or pinning elements to specific zones. For detailed guidance on designing your solution to use availability zones, refer to the Well-Architected Framework [guide](regions-availability-zones.md).
 
 ## Infrastructure layer specific guidance
 
 ### Compute resources
 
--   Choose the [right compute service](https://learn.microsoft.com/azure/architecture/guide/technology-choices/compute-decision-tree) for your workload. Depending on the type of workload you are designing, there may be multiple options available to you. Choosing the right service requires researching the services available and understanding which types of workloads work best on a given compute service. For example, SAP workloads are typically best suited for IaaS compute services, whereas for a containerized application, you will need to determine the specific functionality you need to have control over to determine whether to use a Kubernetes service or a PaaS service that is more fully managed by your cloud platform.
+-   Choose the [right compute service](/azure/architecture/guide/technology-choices/compute-decision-tree) for your workload. Depending on the type of workload you are designing, there may be multiple options available to you. Choosing the right service requires researching the services available and understanding which types of workloads work best on a given compute service. For example, SAP workloads are typically best suited for IaaS compute services, whereas for a containerized application, you will need to determine the specific functionality you need to have control over to determine whether to use a Kubernetes service or a PaaS service that is more fully managed by your cloud platform.
 
 -   If your requirements allow for it, use PaaS compute options. PaaS services are fully managed by Azure, reducing your management burden and a documented degree of redundancy is built in.
 
@@ -64,7 +64,7 @@ Whether you deploy an active/active or an active/passive design, take advantage 
 
 ### Data resources
 
--   Determine whether synchronous or asynchronous data replication will be necessary for your workload's functionality. Refer to the well architected framework [guide](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones) to help you make this determination.
+-   Determine whether synchronous or asynchronous data replication will be necessary for your workload's functionality. Refer to the well architected framework [guide](regions-availability-zones.md) to help you make this determination.
 
 -   Consider the growth rate of your data. Plan for data growth, data retention, and archiving is essential in capacity planning to ensure your reliability requirements continue to be met as the amount of data in your solution increases.  
 
@@ -74,13 +74,13 @@ Whether you deploy an active/active or an active/passive design, take advantage 
 
 -   Automate failover after a database instance failure. Automated failover is configurable in multiple Azure PaaS data services. This is not required for data stores that support multi-region writes, like Cosmos DB. Refer to the disaster recovery guide (link to RE:08) for detailed replication and failover guidance.
 
--   [Use the best data store for your data.](https://learn.microsoft.com/azure/architecture/guide/design-principles/use-best-data-store) Embrace polyglot persistence, or solutions that use a mix of data store technologies. Data includes more than just persisted application data. It also includes application logs, events, messages, and caches.
+-   [Use the best data store for your data.](/azure/architecture/guide/design-principles/use-best-data-store) Embrace polyglot persistence, or solutions that use a mix of data store technologies. Data includes more than just persisted application data. It also includes application logs, events, messages, and caches.
 
--   Consider data consistency requirements, and [embrace eventual consistency](https://learn.microsoft.com/azure/architecture/guide/design-principles/minimize-coordination#recommendations) when requirements allow it. When data is distributed, it takes coordination to enforce strong consistency guarantees and coordination can reduce your throughput as well as make your systems tightly coupled, which can make them more brittle. For example, suppose an operation updates two databases. Instead of putting it into a single transaction scope, it\'s better if the system can accommodate eventual consistency. 
+-   Consider data consistency requirements, and [embrace eventual consistency](/azure/architecture/guide/design-principles/minimize-coordination#recommendations) when requirements allow it. When data is distributed, it takes coordination to enforce strong consistency guarantees and coordination can reduce your throughput as well as make your systems tightly coupled, which can make them more brittle. For example, suppose an operation updates two databases. Instead of putting it into a single transaction scope, it\'s better if the system can accommodate eventual consistency. 
 
--   Partition data for availability. [Database partitioning](https://learn.microsoft.com/azure/architecture/best-practices/data-partitioning) is often used to improve scalability, but it can also improve availability. If one shard goes down, the other shards can still be reached. A failure in one shard will only disrupt a subset of the total transactions.
+-   Partition data for availability. [Database partitioning](/azure/architecture/best-practices/data-partitioning) is often used to improve scalability, but it can also improve availability. If one shard goes down, the other shards can still be reached. A failure in one shard will only disrupt a subset of the total transactions.
 
--   If sharding is not an option, you can use the [CQRS](https://learn.microsoft.com/azure/architecture/patterns/cqrs) pattern to separate your read-write and read-only data models and then add additional redundant read-only database instances to provide additional resilience.  
+-   If sharding is not an option, you can use the [CQRS](/azure/architecture/patterns/cqrs) pattern to separate your read-write and read-only data models and then add additional redundant read-only database instances to provide additional resilience.  
 
 -   Understand the built-in replication / redundancy capabilities of the stateful platform services you use. Refer to the Related links section below for specific redundancy capabilities for stateful data services.
 
@@ -88,7 +88,7 @@ Whether you deploy an active/active or an active/passive design, take advantage 
 
 -   Decide on a reliable and scalable network topology. Using a hub and spoke or a Virtual WAN model can help you organize your cloud infrastructure in logical patterns that will make your redundancy design easier to build and scale.
 
--   Select the [right network service](https://learn.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) to balance and redirect requests within and/or across regions. Use global or zone redundant load balancing services whenever possible to meet your reliability targets.
+-   Select the [right network service](/azure/architecture/guide/technology-choices/load-balancing-overview) to balance and redirect requests within and/or across regions. Use global or zone redundant load balancing services whenever possible to meet your reliability targets.
 
 -   Ensure that you have allocated sufficient IP address space in your VNets and subnets to account for planned usage including scale-out requirements.
 
@@ -104,19 +104,19 @@ The Azure platform can help you optimize your resilience through adding redundan
 
 - Providing built-in redundancy with many PaaS and SaaS services, some of which are configurable.
 
-- Allowing you to design and implement intra-region redundancy through [availability zones](https://learn.microsoft.com/azure/reliability/availability-zones-overview) and inter-region redundancy 
-- Offering replica-aware load balancing services like [Application Gateway](https://learn.microsoft.com/azure/application-gateway/), [Azure Front Door](https://learn.microsoft.com/azure/frontdoor/) and [Azure Load Balancer](https://learn.microsoft.com/azure/load-balancer/)
-- Offering easily implemented geo-replication solutions like [active geo-replication](https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview?view=azuresql) for Azure SQL Database and Cosmos DB's [global distribution](https://learn.microsoft.com/azure/cosmos-db/distribute-data-globally) and transparent replication. Cosmos DB offers [two options](https://learn.microsoft.com/azure/cosmos-db/conflict-resolution-policies) for handling conflicting writes. Choose the best option for your workload.
+- Allowing you to design and implement intra-region redundancy through [availability zones](/azure/reliability/availability-zones-overview) and inter-region redundancy 
+- Offering replica-aware load balancing services like [Application Gateway](/azure/application-gateway/), [Azure Front Door](/azure/frontdoor/) and [Azure Load Balancer](/azure/load-balancer/)
+- Offering easily implemented geo-replication solutions like [active geo-replication](/azure/azure-sql/database/active-geo-replication-overview?view=azuresql) for Azure SQL Database and Cosmos DB's [global distribution](/azure/cosmos-db/distribute-data-globally) and transparent replication. Cosmos DB offers [two options](/azure/cosmos-db/conflict-resolution-policies) for handling conflicting writes. Choose the best option for your workload.
 - Offering point in time restore capabilities for many PaaS data services.
-- Port exhaustion can be mitigated using [Azure NAT Gateway](https://learn.microsoft.com/azure/nat-gateway/nat-overview) or [Azure Firewall](https://learn.microsoft.com/azure/firewall/overview) 
+- Port exhaustion can be mitigated using [Azure NAT Gateway](/azure/nat-gateway/nat-overview) or [Azure Firewall](/azure/firewall/overview) 
 
 ### DNS-specific Azure facilitation
 
-- For internal name resolution scenarios, use Azure Private DNS Zone which has zone and geo redundancy built in. See [Azure Private DNS zone resiliency](https://learn.microsoft.com/azure/dns/private-dns-resiliency)
+- For internal name resolution scenarios, use Azure Private DNS Zone which has zone and geo redundancy built in. See [Azure Private DNS zone resiliency](/azure/dns/private-dns-resiliency)
 - For external name resolution scenarios, use Azure Public DNS Zone which has zone and geo redundancy built in.
 - Azure public/private DNS is a global service which is resilient to regional outages because zone data is globally available
-- For hybrid name resolution scenarios between on-premises and cloud, use Azure DNS Private Resolver. It supports zone redundancy as long as it is located in a region that supports availability zones. In case of a zone wide outage, no action is required during zone recovery and the service will self-heal and rebalance to take advantage of the healthy zone automatically. See [Resiliency in Azure DNS Private Resolver](https://learn.microsoft.com/azure/dns/private-resolver-reliability)
-- To eliminate a single point of failure and achieve a more resilient hybrid name resolution across regions, deploy two or more Azure DNS Private Resolvers across different regions. DNS failover, in a conditional forwarding scenario, is then achieved by assigning a resolver as your primary DNS server and the resolver in a different region as a secondary DNS server. See [Tutorial - Set up DNS failover using private resolvers](https://learn.microsoft.com/azure/dns/tutorial-dns-private-resolver-failover)
+- For hybrid name resolution scenarios between on-premises and cloud, use Azure DNS Private Resolver. It supports zone redundancy as long as it is located in a region that supports availability zones. In case of a zone wide outage, no action is required during zone recovery and the service will self-heal and rebalance to take advantage of the healthy zone automatically. See [Resiliency in Azure DNS Private Resolver](/azure/dns/private-resolver-reliability)
+- To eliminate a single point of failure and achieve a more resilient hybrid name resolution across regions, deploy two or more Azure DNS Private Resolvers across different regions. DNS failover, in a conditional forwarding scenario, is then achieved by assigning a resolver as your primary DNS server and the resolver in a different region as a secondary DNS server. See [Tutorial - Set up DNS failover using private resolvers](/azure/dns/tutorial-dns-private-resolver-failover)
 
 ## Tradeoff
 
@@ -126,17 +126,17 @@ The Azure platform can help you optimize your resilience through adding redundan
 
 ## Example
 
-Refer to the [reference architecture](https://learn.microsoft.com/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant) for an example of a multi-region redundant deployment.
+Refer to the [reference architecture](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant) for an example of a multi-region redundant deployment.
 
-:::image type="content" source="../_images/redundancy/reliable-web-app-dotnet.png" alt-text="Diagram that shows the architecture of the reference implementation." border="false" lightbox="../_images/redundancy/reliable-web-app-dotnet.png":::
+:::image type="content" source="media/redundancy/reliable-web-app-dotnet.png" alt-text="Diagram that shows the architecture of the reference implementation." border="false" lightbox="media/redundancy/reliable-web-app-dotnet.png":::
 
 ## Related links
 
 To learn more about stateful data service redundancy, see these links:
 
--   [Azure Data Lake Gen2 data redundancy options](https://learn.microsoft.com/azure/storage/common/storage-redundancy)
+-   [Azure Data Lake Gen2 data redundancy options](/azure/storage/common/storage-redundancy)
 
--   [Azure Cosmos DB high availability guidance](https://learn.microsoft.com/azure/storage/common/storage-redundancy)
+-   [Azure Cosmos DB high availability guidance](/azure/storage/common/storage-redundancy)
 
--   [Azure SQL Database active geo-replication](https://learn.microsoft.com/azure/azure-sql/database/active-geo-replication-overview?view=azuresql)
-- [Azure SQL Managed Instance replication](https://learn.microsoft.com/azure/azure-sql/managed-instance/replication-between-two-instances-configure-tutorial?view=azuresql)
+-   [Azure SQL Database active geo-replication](/azure/azure-sql/database/active-geo-replication-overview?view=azuresql)
+- [Azure SQL Managed Instance replication](/azure/azure-sql/managed-instance/replication-between-two-instances-configure-tutorial?view=azuresql)

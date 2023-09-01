@@ -56,7 +56,7 @@ What is the maximum downtime you would expect for this application? If either se
 
 You can improve the composite SLA by creating independent fallback paths. For example, if SQL Database is unavailable, put transactions into a queue to be processed later:
 
-:::image type="content" source="../_images/business-metrics/independent-fallback-paths.png" alt-text="Diagram that shows fallback paths. The web app box shows arrows branching to SQL Database or to queue." border="false" lightbox="../_images/business-metrics/independent-fallback-paths.png":::
+:::image type="content" source="media/metrics/independent-fallback-paths.png" alt-text="Diagram that shows fallback paths. The web app box shows arrows branching to SQL Database or to queue." border="false" lightbox="media/metrics/independent-fallback-paths.png":::
 
 With this design, the application is still available even if it can\'t connect to the database. However, it fails if the database and the queue both fail at the same time. The expected percentage of time for a simultaneous failure is 0.0001 × 0.001, so the composite SLA for this combined path is:
 
@@ -105,7 +105,7 @@ In order to avoid collecting metrics that aren't useful, be economical about the
 
 ## Recovery metrics
 
-Recovery targets correspond to recovery time objectives (RTOs), recovery point objectives (RPOs), mean-time to recovery (MMTR) and mean-time between failure (MTBF) metrics. Defining targets for these measurements is less tightly bound to Microsoft SLAs than availability targets as Microsoft only publishes RTO and RPO guarantees for certain products like [Azure SQL Database](https://learn.microsoft.com/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview?view=azuresql#recover-a-database-to-the-existing-server).
+Recovery targets correspond to recovery time objectives (RTOs), recovery point objectives (RPOs), mean-time to recovery (MMTR) and mean-time between failure (MTBF) metrics. Defining targets for these measurements is less tightly bound to Microsoft SLAs than availability targets as Microsoft only publishes RTO and RPO guarantees for certain products like [Azure SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview?view=azuresql#recover-a-database-to-the-existing-server).
 
 Defining realistic recovery targets relies on work that you have done in your failure mode analysis (link to RE:02) and your business continuity and disaster recovery (link to RE:09 here) planning and testing. Before this work has been completed, you can discuss aspirational targets with stakeholders and ensure that your architecture design will support the recovery targets to the best of your understanding. Be clear with stakeholders that any flows or entire workloads that have not been thoroughly tested for recovery metrics should not have guaranteed SLAs associated with them. It is also important to ensure that stakeholders understand that all of the recovery targets can change over time as updates to workloads happen: the workload may become more complex as more customers are added, or you may adopt new technologies to improve the user experience, and these changes can increase or decrease your recovery metrics.
 
@@ -129,11 +129,11 @@ Using the data you have gathered while building your reliability targets, you ca
 
 The method by which this model functions is through a monitoring and alerting strategy developed and operated in the principles of continuous improvement. As your workloads evolve, your health models will need to evolve with them.
 
-Refer to the [health modeling guidance](https://learn.microsoft.com/azure/well-architected/mission-critical/mission-critical-health-modeling) found in the mission-critical workload design areas to find detailed design considerations and recommendations for building a layered application health model. Refer to the health monitoring (link to RE: 10) guide in this series for detailed guidance on monitoring and alerting configurations.
+Refer to the [health modeling guidance](/azure/well-architected/mission-critical/mission-critical-health-modeling) found in the mission-critical workload design areas to find detailed design considerations and recommendations for building a layered application health model. Refer to the health monitoring (link to RE: 10) guide in this series for detailed guidance on monitoring and alerting configurations.
 
 ## Visualization
 
-To keep your operations teams and workload stakeholders apprised of the real-time status and overall trends of the workload health model, consider creating [dashboards](https://learn.microsoft.com/azure/azure-monitor/visualize/tutorial-logs-dashboards) in your monitoring solution. Ensure that the visualization solution is another topic that you discuss with the stakeholders to ensure that you are delivering the information that they deem important and in a way that is easily consumable for them. Instead, or in addition to, of dashboards, they may prefer that reports are generated on a regular reoccurring basis (like weekly, monthly or quarterly, for example).
+To keep your operations teams and workload stakeholders apprised of the real-time status and overall trends of the workload health model, consider creating [dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards) in your monitoring solution. Ensure that the visualization solution is another topic that you discuss with the stakeholders to ensure that you are delivering the information that they deem important and in a way that is easily consumable for them. Instead, or in addition to, of dashboards, they may prefer that reports are generated on a regular reoccurring basis (like weekly, monthly or quarterly, for example).
 
 ## Azure facilitation
 
@@ -147,6 +147,6 @@ Be aware that there might be a conceptual gap between the technical limitations 
 
 ## Related links
 
-- Cloud Adoption Framework guidance for SLOs and SLIs: [Cloud monitoring service level objectives - Cloud Adoption Framework](https://learn.microsoft.com/azure/cloud-adoption-framework/manage/monitor/service-level-objectives#how-do-you-define-slis)
+- Cloud Adoption Framework guidance for SLOs and SLIs: [Cloud monitoring service level objectives - Cloud Adoption Framework](/azure/cloud-adoption-framework/manage/monitor/service-level-objectives#how-do-you-define-slis)
 
-- Well-Architected Framework mission-critical guidance for health modeling: [Health modeling and observability of mission-critical workloads on Azure - Microsoft Azure Well-Architected Framework](https://learn.microsoft.com/azure/well-architected/mission-critical/mission-critical-health-modeling)
+- Well-Architected Framework mission-critical guidance for health modeling: [Health modeling and observability of mission-critical workloads on Azure - Microsoft Azure Well-Architected Framework](/azure/well-architected/mission-critical/mission-critical-health-modeling)
