@@ -47,8 +47,6 @@
           items:
             - name: Security patterns
               href: security/design-patterns.md
-            - name: Security guide
-              href: coming-soon.md
       - name: Cost Optimization
         items: 
         - name: Quick links
@@ -65,8 +63,6 @@
               href: cost-optimization/design-patterns.md
             - name: Cost modeling
               href: cost-optimization/cost-modeling.md
-            - name: Cost optimization guide
-              href: coming-soon.md
       - name: Operational Excellence
         items: 
         - name: Quick links
@@ -81,8 +77,6 @@
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
-            - name: Operational excellence guide
-              href: coming-soon.md
       - name: Performance Efficiency
         items: 
         - name: Quick links
@@ -332,8 +326,6 @@
         href: ./cross-cutting-guides/health-model.md        
       - name: Implementing recommendations
         href: ./cross-cutting-guides/implementing-recommendations.md        
-      - name: DevSecOps - application
-        href: coming-soon.md
     - name: Old TOC
       items:
       - name: Overview
