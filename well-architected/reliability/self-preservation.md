@@ -106,7 +106,7 @@ At the infrastructure level, your critical flows should be supported by a redund
 > [!NOTE]
 > Ensure that you include testing of the patterns that you implement as part of your standard testing procedures.
 
-#### Automated self-helaing actions
+#### Automated self-healing actions
 
 Another approach to self-healing is the use of automated actions that are triggered by your monitoring solution when pre-determined health status changes are detected. For example, if your monitoring detects that a web app is not responding to requests, you can build automation through a Powershell script to restart the app service. Depending on your team's skill set and preferred development technologies, you can use a webhook or function can allow you to build more complex automation actions.  See the [Event based cloud automation](/azure/architecture/reference-architectures/serverless/cloud-automation) reference architecture for an example of using a function to respond to database throttling. Using automated actions can help you recover quickly and minimize the necessity of human intervention.
 
