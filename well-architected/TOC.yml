@@ -61,8 +61,8 @@
           items:
             - name: Cost optimization patterns
               href: cost-optimization/design-patterns.md
-            - name: Cost modeling
-              href: cost-optimization/cost-modeling.md
+            - name: Create a cost model
+              href: cost-optimization/cost-model.md
       - name: Operational Excellence
         items: 
         - name: Quick links
