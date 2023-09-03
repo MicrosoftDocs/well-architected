@@ -129,8 +129,7 @@ Some organizations place restrictions on the physical locations into which their
 
 If your users are geographically dispersed, it might make sense to deploy your workload across multiple regions. If your users are in one area, a single-region deployment can simplify your operational requirements and reduce your costs.
 
-> [!TIP]
-> Even if your users are in different geographical areas, you might not need a multi-region deployment. Consider whether you can achieve your requirements within a single region by using global traffic acceleration, like the accelaration provided by [Azure Front Door][front-door-global-traffic-acceleration].
+Even if your users are in different geographical areas, you might not need a multi-region deployment. Consider whether you can achieve your requirements within a single region by using global traffic acceleration, like the accelaration provided by [Azure Front Door][front-door-global-traffic-acceleration].
 
 ##### Budget
 
@@ -144,12 +143,14 @@ It's a good practice to avoid unnecessary complexity in your solution architectu
 
 By providing regions and availability zones, Azure enables you to select a deployment approach that fits your needs. There are many approaches that you can choose from, each of which provides benefits and incurs costs.
 
-Suppose you're thinking about deploying a new solution that includes an application that writes data to some sort of storage:
+> [!NOTE]
+> It's important to understand the specific details of the Azure services that you use. For example, some Azure services require that you configure their availability zone configuration when you first deploy the resource, while others support changing the deployment approach later. Similarly, some service features might not be available with every deployment approach.
+
+To illustrate the deployment approaches that you can use, consider an example scenario. Suppose you're thinking about deploying a new solution that includes an application that writes data to some sort of storage:
 
 :::image type="content" border="false" source="../_images/regions-availability-zones/application.png" alt-text="Diagram that shows a user connecting to an application that connects to storage.":::
 
-> [!NOTE]
-> This example isn't specific to any particular Azure services. It's intended to provide a simple example for illustrating fundamental concepts.
+This example isn't specific to any particular Azure services. It's intended to provide a simple example for illustrating fundamental concepts.
 
 There are multiple ways to deploy this solution. Each approach provides a different set of benefits and incurs different costs. At a high level, you can consider a *locally redundant*, *zonal (pinned)*, *zone-redundant*, or *multi-region* deployment. This table summarizes some of the approaches you can use and how they affect your architecture:
 
@@ -229,8 +230,7 @@ When you use a zonal deployment model, you take on many responsibilities:
 - You're responsible for distributing the requests to the correct resources, by using, for example, a load balancer. You need to ensure that the load balancer meets your resiliency requirements. You also need to decide whether to use an active-passive or an active-active request distribution model.
 - If an availability zone experiences an outage, you need to handle the failover to send traffic to resources in another availability zone.
 
-> [!NOTE]
-> An active-passive deployment across multiple availability zones is sometimes called *in-region DR* or [*Metro DR*][metro-dr].
+An active-passive deployment across multiple availability zones is sometimes called *in-region DR* or [*Metro DR*][metro-dr].
 
 A zonal deployment model has the following effects on your architecture:
 
@@ -245,6 +245,11 @@ A zonal deployment model has the following effects on your architecture:
 | Regional availability | **Regions with availability zones.** This approach is available in any region that supports [availability zones][azure-regions-with-availability-zone-support]. |
 
 This approach is typically used for workloads that are based on virtual machines. For a complete list of services that support zonal deployments, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
+
+When you plan a zonal deployment, verify that the Azure services you use are supported in the availability zones you plan to use. For example, to list which virtual machine SKUs are available in each availability zone, see [Check VM SKU availability](/azure/virtual-machines/linux/create-cli-availability-zone#check-vm-sku-availability).
+
+> [!TIP]
+> When you deploy a resource into a specific availability zone, you select the zone number. The sequence of zone numbers is different for each Azure subscription. If you deploy resources across multiple Azure subscriptions, verify the zone numbers that you should use in each subscription. For more information, see [What are Azure regions and availability zones?][availability-zones-overview].
 
 ## Deployment approach 3: Zone-redundant deployments
 
@@ -415,6 +420,11 @@ Following are some reference architectures and example scenarios for multi-zone 
 - [Highly available multi-region web application](/azure/architecture/web-apps/app-service/architectures/multi-region)
 - [Multi-region N-tier application](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
 - [Multi-tier web application built for HA/DR](/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)
+
+Many Azure services support provide guidance about how to use multiple availability zones, including the following examples:
+- [Azure Site Recovery: Enable Azure VM disaster recovery between availability zones](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)
+- [Azure NetApp Files: Understand cross-zone replication of Azure NetApp Files](/azure/azure-netapp-files/cross-zone-replication-introduction)
+- [Azure Storage redundancy](/azure/storage/common/storage-redundancy)
 
 <!-- Links -->
 
