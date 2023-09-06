@@ -11,19 +11,19 @@ ms.subservice: waf-workload-avs
 
 # Azure VMware Solution workloads
 
-This guidance is intended for **workload owners**, **technical stakeholders**, and **business stakeholders**. Specifically, this guidance is appropriate for people who play an integral role in harnessing, developing, and upholding applications throughout the Azure VMware Solution private cloud lifecycle. This documentation provides prescriptive guidance and best practices for key design areas that have a technical foundation in Azure Well-Architected Framework pillars. The recommendations center on Azure VMware Solution, a managed service for migrating on-premises VMware vSphere workloads to Azure.
+This guidance is intended for **workload owners**, **technical stakeholders**, and **business stakeholders**. Specifically, this guidance is appropriate for people who are integral in harnessing, developing, and upholding applications throughout the Azure VMware Solution private cloud lifecycle. This documentation provides prescriptive guidance and best practices for key design areas with a technical foundation in Azure Well-Architected Framework pillars. The recommendations center on Azure VMware Solution, a managed service for migrating on-premises VMware vSphere workloads to Azure.
 
 You can use this workload documentation as your go-to resource for optimizing the lifecycle of particular applications in Azure VMware Solution.
 
 ## What is an Azure VMware Solution workload?
 
-VMware is a leading provider of virtualization and cloud computing software and services. VMware collaborates with Microsoft Azure to offer Azure VMware Solution. This solution seamlessly integrates the VMware vSphere hypervisor with Azure dedicated BareMetal infrastructure. When you use this integration, you can take advantage of Azure native resources like virtual machines (VMs), storage disks, and network components. Azure VMware Solution also provides a way for workloads to migrate to Azure with minimal environmental modifications.
+VMware is a leading provider of virtualization and cloud computing software and services. VMware collaborates with Microsoft Azure to offer Azure VMware Solution. This solution seamlessly integrates the VMware vSphere hypervisor with Azure dedicated BareMetal infrastructure. When you use this integration, you can take advantage of Azure native resources like virtual machines (VMs), storage disks, and network components. Azure VMware Solution allows workloads to migrate to Azure with minimal environmental modifications.
 
-:::image type="content" source="./images/azure-vmware-solution-workload.png" alt-text="Architecture diagram that shows how Azure VMware Solution connects an on-premises system with VMware components and Azure services." border="false":::
+:::image type="content" source="./images/running-vmware-natively-on-azure.png" alt-text="Architecture diagram that shows how Azure VMware Solution connects an on-premises system with VMware components and Azure services." border="false":::
 
 When you use this unique hybrid environment, you can retain certain VMware vSphere workloads on-premises. But you also have the flexibility of extending to the cloud, where you can benefit from the following advantages:
 
-- Infrastructure that's suited for cloud bursting scenarios
+- Infrastructure that's suited for cloud-bursting scenarios
 - Azure native integrations
 - Disaster recovery locations
 
@@ -31,20 +31,20 @@ Azure VMware Solution offers a consistent VMware solution infrastructure within 
 
 ## The Well-Architected Framework approach
 
-A well-architected workload is structured to meet specific performance, reliability, security, and cost optimization objectives. By following architectural principles and guidelines that are specific to Azure VMware Solution, you can enhance end-user experiences and deliver consistency and reliability. This guidance is tailored to address one Azure VMware Solution workload at a time. This approach optimizes specific applications in Azure VMware Solution, such as three-tier apps or virtual desktops.
+A well-architected workload is structured to meet specific performance, reliability, security, and cost optimization objectives. By following architectural principles and guidelines specific to Azure VMware Solution, you can enhance end-user experiences and deliver consistency and reliability. This guidance addresses one Azure VMware Solution workload at a time. This approach optimizes specific applications in Azure VMware Solution, such as three-tier apps or virtual desktops.
 
 :::image type="content" source="./images/well-architected-azure-vmware-solution-workload.png" alt-text="Architecture diagram that shows how Azure VMware Solution uses tiers and stretched networks." border="false":::
 
 The Well-Architected Framework pillars also aim to involve modularity, separation of roles, and a way to improve operational productivity. This approach results in application workloads that avoid unnecessary complexities and unforeseen costs.
 
-Consider making your Azure VMware Solution application well architected for the following reasons:
+Consider making your Azure VMware Solution application well-architected for the following reasons:
 
-- **Reliability and availability**. Your application is more resilient to failure when you take advantage of fault tolerance mechanisms and redundancy measures.
-- **Cost optimization**. Efficiently using Azure resources such as VMs helps you to effectively manage expenses without compromising performance.
-- **Streamlined operations and simplified management**. You perform operations such as updates, troubleshooting, and monitoring more efficiently when you use streamlined processes.
-- **Future-proofing and integration with Azure services**. When your application is well architected, it's well equipped to adapt to future changes and take advantage of new offerings in Azure and Azure VMware Solution.
+- **Reliability and availability**. When you take advantage of fault tolerance mechanisms and redundancy measures, your application is more resilient to failure.
+- **Cost optimization**. Using Azure resources such as VMs helps you effectively manage expenses without compromising performance.
+- **Streamlined operations and simplified management**. You perform updates, troubleshooting, and monitoring operations more efficiently using streamlined processes.
+- **Future-proofing and integration with Azure services**. When your application is well architected, it can adapt to future changes and take advantage of new Azure and Azure VMware Solution offerings.
 
-If you don't apply these principles to your Azure VMware Solution application, you might encounter a range of operational, performance, and security challenges. These challenges can significantly impede your application's success and limit your organization's ability to take full advantage of Azure VMware Solution benefits.
+If you don't apply these principles to your Azure VMware Solution application, you might encounter various operational, performance, and security challenges. These challenges can significantly impede your application's success and limit your organization's ability to take full advantage of Azure VMware Solution benefits.
 
 Azure VMware Solution operates as a hybrid solution. As a result, an inadequately designed application can lead to intricate management challenges and complications in integrating with other Azure services. Poorly architected applications can suffer from many disadvantages:
 
@@ -53,7 +53,7 @@ Azure VMware Solution operates as a hybrid solution. As a result, an inadequatel
 - Heightened security vulnerabilities
 - Escalated costs from inefficient resource utilization
 
-These shortcomings can prevent your business from fully harnessing the opportunities that Azure VMware Solution and Azure offer. They can also hinder support for critical initiatives.
+These shortcomings can prevent your business from fully harnessing the opportunities Azure VMware Solution and Azure offer. They can also hinder support for critical initiatives.
 
 ### Choose a migration approach
 
@@ -63,8 +63,10 @@ The [modernization approach](https://azure.microsoft.com/resources/cloud-computi
 
 You can run multiple workloads in Azure VMware Solution. But it's important to assess whether there are Azure native offerings that are a better fit or more cost-effective than instantiating another Azure VMware Solution node.
 
-For help with determining potential placement for migrated servers, see the [application assessment](/azure/azure-netapp-files/faq-integration) results.
-
+For help with determining potential placement for migrated servers, take the [Azure migrate assessment for AVS](https://portal.azure.com/#view/Microsoft_Azure_Migrate/AmhResourceMenuBlade/~/serverGoal) tool. 
+> [!NOTE]
+> Azure VMware Solution (AVS) assessment can only be created for virtual machines in the VMware vSphere environment. More information on the Azure Migrate assessment for AVS is detailed [here](/azure/migrate/how-to-create-azure-vmware-solution-assessment)
+> 
 ## What are the key design areas?
 
 Azure VMware Solution uses VMware and Microsoft propriety services. The following design areas focus on the technical decision points for infrastructure components that are part of a workload and their interactivity with the shared services.
@@ -80,7 +82,7 @@ Azure VMware Solution uses VMware and Microsoft propriety services. The followin
 
 ## Example workloads
 
-Many organizations run business applications, enterprise software, and legacy applications in on-premises VMware vSphere environments. When you use Azure VMware Solution to bring these applications to the cloud, you benefit from Azure global infrastructure and service offerings. Examples of cloud applications include traditional three-tier web-based applications and virtual desktops.
+Many organizations run business applications, enterprise software, and legacy applications in on-premises VMware vSphere environments. When you use Azure VMware Solution to bring these applications to the cloud, you benefit from Azure's global infrastructure and service offerings. Examples of cloud applications include traditional three-tier web-based applications and virtual desktops.
 
 For more information, see the following reference architectures:
 
