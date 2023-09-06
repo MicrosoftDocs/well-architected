@@ -25,7 +25,7 @@ As you prioritize business requirements to align with technology needs, you can 
 
 ## Develop cost-management discipline
 
-|![Goal icon](../_images/goal.svg) Develop a team culture that has the expertise to understand the financial aspects of budget, expenditure, reporting, and cost tracking.| 
+|![Goal icon](../_images/goal.svg) Build a team culture that has awareness of budget, expenses, reporting, and cost tracking.| 
 |--| 
 
 Cost optimization is conducted at various levels of the organization. It's important to understand how your workload is aligned with organizational goals and FinOps practices. A view into the business units, resource organization, and centralized audit policies allows you to adopt a standardized financial system.
@@ -42,7 +42,7 @@ Cost optimization is conducted at various levels of the organization. It's impor
 
 ## Design with a cost-efficiency mindset
 
-|![Goal icon](../_images/goal.svg) Spend only on what you need to achieve the highest ROI.| 
+|![Goal icon](../_images/goal.svg) Spend only on what you need to achieve the highest return on your investments.| 
 |--| 
 
 Every architectural decision has direct and indirect financial implications. Understand the costs associated with build versus buy options, technology choices, the billing model and licensing, training, operations, and so on.
@@ -59,10 +59,10 @@ Given a set of requirements, optimize and make tradeoff decisions, in relation t
 
 ## Design for usage optimization
 
-|![Goal icon](../_images/goal.svg) Maximize the use of resources and operations that you've already invested in. Apply them to the negotiated functional and non-functional requirements of the solution.| 
+|![Goal icon](../_images/goal.svg) Maximize the use of resources and operations. Apply them to the negotiated functional and non-functional requirements of the solution.| 
 |--| 
 
-Services provide various levels of capabilities that are offered in pricing tiers. After you purchase a set of features, avoid underutilizing them. Find ways to maximize your investment in the tier. Likewise, continuously evaluate billing models to find those that better align to your usage, based on current production workloads.
+Services and offerings provide various capabilities and pricing tiers. After you purchase a set of features, avoid underutilizing them. Find ways to maximize your investment in the tier. Likewise, continuously evaluate billing models to find those that better align to your usage, based on current production workloads.
 
 | Approach   | Benefit     |
 |-|-|
