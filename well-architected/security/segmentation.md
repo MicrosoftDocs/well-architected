@@ -56,11 +56,9 @@ It is important to note the distinction between perimeters and isolation. Perime
 
 Isolation, however, does not mean creating silos in the organization. Instead, a unified segmentation strategy aims to bring alignment between the technical teams and set clear lines of responsibilities. This clarity reduces the risk of human errors and automation failures that can lead to security vulnerabilities, operational downtime, or both. Suppose a security breach is detected in a component of a complex enterprise system. It\'s important that everybody understands who is responsible for that resource, and that the correct person is included in the triage team. By creating and documenting a good segmentation strategy, the organization can quickly identify how to respond to different kinds of incidents and the stakeholders to be included.
 
-|![Tradeoff icon](../_images/trade-off.svg) Segmentation introduces complexity because there is overhead in management. There is also a tradeoff in cost. For example, segmenting deployment environments that run side by side will cause more resources to be provisioned.|
-|--| 
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Segmentation introduces complexity because there is overhead in management. There is also a tradeoff in cost. For example, segmenting deployment environments that run side by side will cause more resources to be provisioned.
 
-|![Risk icon](../_images/risk.svg) Micro-segmentation beyond a reasonable limit loses the benefit of isolation. When you create too many segments, it becomes difficult to identify points of communication or to allow all of the valid communication paths within the segment.|
-|--| 
+> ![Risk icon](../_images/risk.svg) **Risk**: Micro-segmentation beyond a reasonable limit loses the benefit of isolation. When you create too many segments, it becomes difficult to identify points of communication or to allow all of the valid communication paths within the segment.
 
 ### Identity as the perimeter 
 
@@ -114,11 +112,13 @@ Think like an attacker to achieve a foothold at various points within the worklo
 
 For common patterns related to networking segmentation, see [this section](#networking-segmentation-patterns).
 
-|![Tradeoff icon](../_images/trade-off.svg) Network security controls are expensive as often they are included as part of the premium SKUs. There's cost of operations. Configuring rules on firewalls often results in overwhelming complexity requiring broad exceptions.  <br> Private connectivity will change architecture design, often adding more components. For example, adding jump boxes for private access to compute nodes. <br> Because network perimeter is based on control points (or hops) on the network, each hop can be a potential point of failure. These points can have an impact on the reliability of the system.|
-|--|
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**:  Network security controls are expensive as often they are included as part of the premium SKUs. There's cost of operations. Configuring rules on firewalls often results in overwhelming complexity requiring broad exceptions.  
+> 
+> Private connectivity will change architecture design, often adding more components. For example, adding jump boxes for private access to compute nodes. 
+> 
+> Because network perimeter is based on control points (or hops) on the network, each hop can be a potential point of failure. These points can have an impact on the reliability of the system.
 
-|![Risk icon](../_images/risk.svg) Network controls are rule based and there's a significant chance of misconfiguration, which is a reliability concern. |
-|--|
+> ![Risk icon](../_images/risk.svg) **Risk**: Network controls are rule based and there's a significant chance of misconfiguration, which is a reliability concern.
 
 For information about network controls, see [Networking and connectivity](networking.md).
 
@@ -130,8 +130,7 @@ Clearly documenting and sharing the roles and functions creates consistency and 
 
 When assigning permissions for a segment, consider consistency while allowing flexibility to accommodate several organizational models. These models can range from a single centralized IT group to mostly independent IT and DevOps teams.
 
-|![Risk icon](../_images/risk.svg) Membership of groups can change over time as employees join or leave teams or change roles. Management of roles across segments can be a management overhead.|
-|--|
+> ![Risk icon](../_images/risk.svg) **Risk**: Membership of groups can change over time as employees join or leave teams or change roles. Management of roles across segments can be a management overhead.
 
 For an example of how roles and responsibilities are segmented in a workload team, [Roles and responsibilities](#roles-and-responsibilities).
 
@@ -145,8 +144,7 @@ When organizing your compute, you can allocate one service per server. This leve
 
 Azure also provides built-in isolation in some of the services. For example, separation of compute from storage. For other examples, see [Isolation in the Azure Public Cloud](/azure/security/fundamentals/isolation-choices).
 
-|![Tradeoff icon](../_images/trade-off.svg) There is an increase in total cost of ownership (TCO). For data stores, there might be added complexity and coordination during disaster recovery.|
-|--|
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**:  There is an increase in total cost of ownership (TCO). For data stores, there might be added complexity and coordination during disaster recovery.
 
 ## Azure facilitation
 
