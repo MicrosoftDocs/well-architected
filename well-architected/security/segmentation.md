@@ -86,7 +86,7 @@ Workload segments will be accessed by various identities whether that's people, 
 
 > ![Risk icon](../_images/risk.svg) **Risk**: Identity settings can be complex. Misconfigurations can impact reliability of the workload. Suppose there's a misconfigured role assignment that's denied access to database. The requests will start failing, eventually causing reliability issues that cannot otherwise be detected until runtime.
 
-For information about identity controls, see [Identity and access management](identity-access-management.md).
+For information about identity controls, see [Identity and access management](identity-access.md).
 
 In contrast to network access controls, identity validates access control at access time. Conducting regular access reviews is highly recommended. Especially require an approval workflow to obtain privileges for critical impact accounts.
 
@@ -110,7 +110,7 @@ Think like an attacker to achieve a foothold at various points within the worklo
 
 -   Creating boundaries based on the intent. For example, segment workload functional network from operational networks.
 
-For common patterns related to networking segmentation, see [this section](#networking-segmentation-patterns).
+For common patterns related to networking segmentation, see the [Networking segmentation patterns section](#networking-segmentation-patterns) in this article.
 
 > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**:  Network security controls are expensive as often they are included as part of the premium SKUs. There's cost of operations. Configuring rules on firewalls often results in overwhelming complexity requiring broad exceptions.  
 > 
