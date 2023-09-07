@@ -49,6 +49,8 @@
               href: security/design-patterns.md
             - name: Encryption
               href: security/encryption.md
+            - name: Networking
+              href: security/networking.md
             - name: Segmentation
               href: security/segmentation.md
       - name: Cost Optimization
