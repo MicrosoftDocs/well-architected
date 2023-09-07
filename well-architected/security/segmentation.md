@@ -1,6 +1,6 @@
 ---
 title: Recommendations for building a segmentation strategy
-description: 
+description: Learn about the recommendations for building a unified segmentation strategy with the goal of using isolation boundaries in workload design, its presence in the organization, and workload team structure.
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
@@ -59,7 +59,7 @@ Isolation, however, does not mean creating silos in the organization. Instead, a
 |![Tradeoff icon](../_images/trade-off.svg) Segmentation introduces complexity because there is overhead in management. There is also a tradeoff in cost. For example, segmenting deployment environments that run side by side will cause more resources to be provisioned.|
 |--| 
 
-|[Risk icon](../_images/risk.svg) Micro-segmentation beyond a reasonable limit loses the benefit of isolation. When you create too many segments, it becomes difficult to identify points of communication or to allow all of the valid communication paths within the segment.|
+|![Risk icon](../_images/risk.svg) Micro-segmentation beyond a reasonable limit loses the benefit of isolation. When you create too many segments, it becomes difficult to identify points of communication or to allow all of the valid communication paths within the segment.|
 |--| 
 
 ### Identity as the perimeter 
@@ -87,7 +87,7 @@ Workload segments will be accessed by various identities whether that's people, 
 
 
 
-|[Risk icon](../_images/risk.svg) Identity settings can be complex. Misconfigurations can impact reliability of the workload. Suppose there's a misconfigured role assignment that's denied access to database. The requests will start failing, eventually causing reliability issues that cannot otherwise be detected until runtime.|
+|![Risk icon](../_images/risk.svg) Identity settings can be complex. Misconfigurations can impact reliability of the workload. Suppose there's a misconfigured role assignment that's denied access to database. The requests will start failing, eventually causing reliability issues that cannot otherwise be detected until runtime.|
 |--| 
 
 For information about identity controls, see [Identity and access management](identity-access-management.md).
@@ -116,17 +116,15 @@ Think like an attacker to achieve a foothold at various points within the worklo
 
 For common patterns related to networking segmentation, see [this section](#networking-segmentation-patterns).
 
-|![Tradeoff icon](../_images/trade-off.svg) Network security controls are expensive as often they are included as part of the premium SKUs. There's cost of operations. Configuring rules on firewalls often results in overwhelming complexity requiring broad exceptions.  <br>
-Private connectivity will change architecture design, often adding more components. For example, adding jump boxes for private access to compute nodes. <br>
-Because network perimeter is based on control points (or hops) on the network, each hop can be a potential point of failure. These points can have an impact on the reliability of the system.|
+|![Tradeoff icon](../_images/trade-off.svg) Network security controls are expensive as often they are included as part of the premium SKUs. There's cost of operations. Configuring rules on firewalls often results in overwhelming complexity requiring broad exceptions.  <br> Private connectivity will change architecture design, often adding more components. For example, adding jump boxes for private access to compute nodes. <br> Because network perimeter is based on control points (or hops) on the network, each hop can be a potential point of failure. These points can have an impact on the reliability of the system.|
 |--|
 
-|[Risk icon](../_images/risk.svg) Network controls are rule based and there's a significant chance of misconfiguration, which is a reliability concern. |
+|![Risk icon](../_images/risk.svg) Network controls are rule based and there's a significant chance of misconfiguration, which is a reliability concern. |
 |--|
 
 For information about network controls, see [Networking and connectivity](networking.md).
 
-### Roles and responsibility
+### Roles and responsibilities
 
 Defining clear lines of responsibility within a workload team and central teams is also a form of segmentation. This delineation avoids confusion that can create security risks.
 
@@ -134,7 +132,7 @@ Clearly documenting and sharing the roles and functions creates consistency and 
 
 When assigning permissions for a segment, consider consistency while allowing flexibility to accommodate several organizational models. These models can range from a single centralized IT group to mostly independent IT and DevOps teams.
 
-|[Risk icon](../_images/risk.svg) Membership of groups can change over time as employees join or leave teams or change roles. Management of roles across segments can be a management overhead.|
+|![Risk icon](../_images/risk.svg) Membership of groups can change over time as employees join or leave teams or change roles. Management of roles across segments can be a management overhead.|
 |--|
 
 For an example of how roles and responsibilities are segmented in a workload team, [Roles and responsibilities](#roles-and-responsibilities).
