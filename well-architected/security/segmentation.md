@@ -182,7 +182,7 @@ Here are some common patterns for segmenting a workload in Azure. Choose a patte
 
 #### Pattern 1: Job title-based grouping
 
-[]{#_Networking_segmentation_patterns .anchor}One way to organize security groups is by job title. This approach involves creating security groups for your workload team based on their roles, not considering the work that needs to be accomplished. Grant those security groups RBAC permissions (standing or JIT as needed) according to their responsibilities in the workload. Assign human and service principles to security groups based on their as-needed access.
+One way to organize security groups is by job title. This approach involves creating security groups for your workload team based on their roles, not considering the work that needs to be accomplished. Grant those security groups RBAC permissions (standing or JIT as needed) according to their responsibilities in the workload. Assign human and service principles to security groups based on their as-needed access.
 
 Examples of job titles include Software Engineer, DBA, SRE, QA, and Security Analyst.
 
@@ -210,29 +210,22 @@ Pattern 2 is recommended to make the access patterns the focus, not the org char
 
 In this pattern, workload is placed in a single VNet using subnets to mark off boundaries. Segmentation is achieved by using two subnets, one for database and another for the web workloads. You must configure NSGs that allow Subnet1 to only communicate with Subnet2 and Subnet2 can only communicate with the internet. You can only have Layer 3 level control.
 
-![Single Virtual Network](./media/image2.png){width="4.247786526684164in" height="2.7692300962379703in"}
+:::image type="content" source="images/segmentation/segmentation-workload-soft-boundaries.png" alt-text="Diagram that shows a single virtual network." border="false" lightbox="images/segmentation/segmentation-workload-soft-boundaries.png":::
 
 #### Pattern 2: Segmentation within a workload
 
-![Multiple Virtual Networks](./media/image3.png){width="4.094885170603675in" height="2.8296708223972002in"}
+:::image type="content" source="images/segmentation/segmentation-workload.png" alt-text="Diagram that shows a multiple virtual networks." border="false" lightbox="images/segmentation/segmentation-workload.png":::
 
 This is an example of platform-level segmentation. Workload components are spread across multiple VNets without peering between them. All communication is routed through an intermediary that serves as a public access point. All networks are owned by the workload team.
 
 Pattern 2 provides containment but has added complexity of VNet management and sizing. Communication between the two VNets is over the public internet and that can be considered as a risk. There's also latency with public connections. The two networks can be peered. However, peering breaks segmentation by connecting the two networks creating a larger segment. Peering should be done when no other public endpoint are needed.
 
-+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| Considerations                                                        | Pattern 1                                                                                                                     | Pattern 2                                                                                                                      |
-+=======================================================================+===============================================================================================================================+================================================================================================================================+
-| **Connectivity/routing: how each segment communicates to each other** | System routing provides default connectivity to workload components. No external component can communicate with the workload. | Within the VNet, same as a pattern 1.                                                                                          |
-|                                                                       |                                                                                                                               |                                                                                                                                |
-|                                                                       |                                                                                                                               | Between VNet, the traffic goes over the public internet. There's no direct connectivity between the networks.                  |
-+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| **Network level traffic filtering**                                   | Traffic between the segments is allowed by default. Use NSG, ASG to filter traffic.                                           | Within the VNets, same as a pattern 1.                                                                                         |
-|                                                                       |                                                                                                                               |                                                                                                                                |
-|                                                                       |                                                                                                                               | Between the networks you can filter traffic through a firewall that can filter both ingress and egress traffic.                |
-+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| **Unintended open public endpoints**                                  | NICs don't get public IPs. VNet also isn't exposed to internet API management.                                                | Same as a pattern 1. Intended open public endpoint on one virtual network. That could be misconfigured to accept more traffic. |
-+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+
+|Considerations  |Pattern 1    |Pattern 2  |
+|---------|---------|---------|
+|**Connectivity/routing: how each segment communicates to each other**     |  System routing provides default connectivity to workload components. No external component can communicate with the workload.       | Within the VNet, same as a pattern 1. <br> Between VNet, the traffic goes over the public internet. There's no direct connectivity between the networks.       |
+|**Network level traffic filtering**     |  Traffic between the segments is allowed by default. Use NSG, ASG to filter traffic.                                           | Within the VNets, same as a pattern 1. <br> Between the networks you can filter traffic through a firewall that can filter both ingress and egress traffic.   |
+|**Unintended open public endpoints**     |   NICs don't get public IPs. VNet also isn't exposed to internet API management.      |  Same as a pattern 1. Intended open public endpoint on one virtual network. That could be misconfigured to accept more traffic.       |
 
 ### Resource organization
 
@@ -240,7 +233,7 @@ Pattern 2 provides containment but has added complexity of VNet management and s
 
 Consider an Azure estate that contains multiple workloads, as well as shared services components like hub virtual networks, firewalls, identity services, and security services like Microsoft Sentinel:
 
-![A screenshot of a computer Description automatically generated](./media/image4.png){width="6.5in" height="2.2430555555555554in"}
+:::image type="content" source="images/segmentation/organize-resources-ownership.png" alt-text="Diagram of an Azure estate that contains multiple workloads." border="false" lightbox="images/segmentation/organize-resources-ownership.png":::
 
 Components throughout the estate should be grouped based on their functional areas, workloads, and ownership. For example, shared networking resources should be grouped together into a single subscription and managed by a networking team. Components that are dedicated to individual workloads should be in their own segment and might be further divided based on application tiers or other organizational principles.
 
@@ -258,3 +251,5 @@ Regularly review the role assignments for each segment and remove access that's 
 
 > [!NOTE] 
 > Some highly privileged roles, like the Owner role in Azure RBAC, give users the ability to grant other users access to a resource. Limit how many users or groups are assigned the Owner role, and regularly review audit logs to ensure they are only performing valid operations.
+
+## Related links
