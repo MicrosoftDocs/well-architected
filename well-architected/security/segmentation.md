@@ -82,13 +82,9 @@ Workload segments will be accessed by various identities whether that's people, 
     
     By applying the least privilege, you limit the impact if the identity is ever compromised. If access is limited by time, the attack surface will be reduced further. This is especially applicable to critical impact accounts, such as Administrators, who should only have limited time access. Or, a software component whose identity is compromised.
     
-|![Tradeoff icon](../_images/trade-off.svg) The performance of the workload can be impacted. Verifying each request explicitly requires extra compute cycles and extra network IO. <br> There is also a management overhead with role-based access. Keeping track of identities and their access scopes can become complex in role assignments. The workaround is to assign roles to security groups instead of individual identity.|
-|--| 
+![Tradeoff icon](../_images/trade-off.svg) The performance of the workload can be impacted. Verifying each request explicitly requires extra compute cycles and extra network IO. <br> There is also a management overhead with role-based access. Keeping track of identities and their access scopes can become complex in role assignments. The workaround is to assign roles to security groups instead of individual identity.
 
-
-
-|![Risk icon](../_images/risk.svg) Identity settings can be complex. Misconfigurations can impact reliability of the workload. Suppose there's a misconfigured role assignment that's denied access to database. The requests will start failing, eventually causing reliability issues that cannot otherwise be detected until runtime.|
-|--| 
+![Risk icon](../_images/risk.svg) Identity settings can be complex. Misconfigurations can impact reliability of the workload. Suppose there's a misconfigured role assignment that's denied access to database. The requests will start failing, eventually causing reliability issues that cannot otherwise be detected until runtime.
 
 For information about identity controls, see [Identity and access management](identity-access-management.md).
 
@@ -251,3 +247,10 @@ Regularly review the role assignments for each segment and remove access that's 
 > Some highly privileged roles, like the Owner role in Azure RBAC, give users the ability to grant other users access to a resource. Limit how many users or groups are assigned the Owner role, and regularly review audit logs to ensure they are only performing valid operations.
 
 ## Related links
+
+- [Isolation in the Azure Public Cloud](/azure/security/fundamentals/isolation-choices)
+- [Recommendations for Azure RBAC](/azure/role-based-access-control/best-practices)
+- [VNets overview](/azure/virtual-network/virtual-networks-overview)
+- [ASGs](/azure/virtual-network/application-security-groups)
+- [Azure Firewall](/azure/firewall/)
+- [Azure Firewall Manager overview](/azure/firewall-manager/overview)
