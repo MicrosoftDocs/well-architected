@@ -7,7 +7,9 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for encryption: SE:05
+# Recommendations for encryption
+
+**Applies to: SE 05**
 
 This guide describes recommendations for protecting your data through the means of encryption. Encryption is the process of making data unreadable by using cryptography algorithms and subsequently locked with a key. In the encrypted state, data can't be deciphered. It can only be decrypted by using a key that's paired with the encryption key.
 
@@ -170,7 +172,7 @@ For more information, see [Grant permission to applications to access an Azure k
 
 Storage also provides client-side encryption through libraries for both Blob Storage and Queue storage.
 
-For details, see [Azure Storage encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). 
+For details, see [Azure Storage encryption](/azure/storage/common/storage-service-encryption). 
 
 **Azure Virtual Machines** use disk files as virtual storage volumes. You can encrypt the virtual disk files. If an attempt is made to mount disk files, the contents of the files cannot be accessed because of the encryption.
 
@@ -178,7 +180,7 @@ Managed disks can be exported from the portal by default. Server-Side Encryption
 
 Azure offers several encryption options for managed disks. For more information, see [Overview of managed disk encryption options - Azure Virtual Machines](/azure/virtual-machines/disk-encryption-overview).
 
-**Azure SQL Database** uses [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15) (TDE) for encrypting a database file at the page level.
+**Azure SQL Database** uses [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) for encrypting a database file at the page level.
 
 ### Data in transit protection
 
@@ -207,6 +209,6 @@ This abstracted example shows different solutions for encryption that can be use
 - [Grant permission to applications to access an Azure key vault using Azure RBAC](/azure/key-vault/general/rbac-guide?tabs=azure-cli)
 - [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)
 - [Overview of managed disk encryption options - Azure Virtual Machines](/azure/virtual-machines/disk-encryption-overview)
-- [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15)
+- [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption)
 - [Azure Key Vault overview](https://azure.microsoft.com/services/key-vault/#product-overview)
 - [Trust Platform Module overview](/windows/security/information-protection/tpm/trusted-platform-module-overview)
