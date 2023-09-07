@@ -1,5 +1,5 @@
 ---
-title: Recommendations for collecting performance metrics and logs
+title: Recommendations for collecting performance data
 description: Learn best practices for collecting performance metrics and logs.  
 author: stephen-sumner
 ms.author: ssumner
@@ -7,9 +7,11 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for collecting performance metrics and logs: PE 04
+# Recommendations for collecting performance data: PE 04
 
-Metrics and logs are essential for monitoring your workload and resolving performance issues fast. Without the right metrics and logs, you lose visibility into the use and performance of a workload. A loss of visibility makes troubleshooting, remediation, and tuning more difficult.
+Collecting performance data refers to the process of gathering metrics and logs that provide information about the performance of a workload. This data includes numerical values, known as metrics, that describe the state of the system at a particular point in time, as well as logs that contain different types of data organized into records. Collecting performance data allows you to monitor and analyze the performance of the workload. You can use this information to identify performance bottlenecks, troubleshoot issues, optimize resource allocation, and make data-driven decisions to improve the overall performance efficiency.  
+
+Without data-driven insights, you may be unaware of underlying performance issues or opportunities for optimization. This can result in slower response times, decreased throughput, increased resource usage, and ultimately, a suboptimal user experience. Additionally, the lack of performance data makes it difficult to diagnose and troubleshoot issues in a timely manner, leading to prolonged downtime and reduced productivity.
 
 **Definitions**
 
@@ -33,7 +35,7 @@ Performance optimization requires data to measure the current performance of a w
 
 **Centralize the data.** Centralizing performance metrics and logs refers to the process of collecting and storing performance metrics and logs from various sources into a central location. Create a central metrics sink and a central log sink. This centralization allows for easy access, analysis, and monitoring of performance metrics and logs across different systems and components. By centralizing metrics and logs, you gain visibility into the performance of your workload. Choose a suitable platform or tool that can aggregate and store workload performance metrics and logs.
 
-![Tradeoff](../_images/trade-off.svg) Understand the cost of collecting metrics and logs. In general, the more metrics and logs you collect, the more it costs.
+:::image type="icon" source="../_images/trade-off.svg"::: Understand the cost of collecting metrics and logs. In general, the more metrics and logs you collect, the more it costs.
 
 **Segment data.** Performance data serves a purpose. The purpose is to monitor the performance of each environment. Within each environment, you might have distinct types of data, such as workload performance and business metrics. You should have a separate metrics and log sink for each distinct purpose.
 
