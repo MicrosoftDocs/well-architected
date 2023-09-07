@@ -57,7 +57,7 @@ While there are many ways to classify traffic flows, here are the commonly used 
 
 -   **Public**. The workload is public facing if its application and other components are reachable from the public internet. The application is exposed with one or more public IP addresses and public DNS.
 
--   **Private**. The workload is private if it can only be accessed through a private network such as VPN. It's exposed by one or more private IPs and potentially private DNS**.**
+-   **Private**. The workload is private if it can only be accessed through a private network such as VPN. It's exposed by one or more private IPs and potentially private DNS.
 
     In a private network, there's no line of sight from public internet to the workload. Technology choices for the gateway can be a load balancer or firewall. Those options can provide security assurances.
 
@@ -138,7 +138,7 @@ For more information, see [Segmentation strategies](segmentation.md).
 
 You want to inspect inbound and outbound traffic from the subnet. Again, use the three main strategies. Is the flow expected, allowed, and safe. To verify that set of information and subsequently set firewall rules, you need to know information about the protocol, source, and destination. On Azure, firewall rules are set on Network Security Groups. For more information, see the [Network security groups section](#network-security-groups) in this article.
 
-For an example of a subnet design, see [Azure Virtual Network subnets](add link).
+For an example of a subnet design, see [Azure Virtual Network subnets](<!-- add link -->).
 
 ### Use controls at the component level
 
