@@ -47,6 +47,8 @@
           items:
             - name: Security patterns
               href: security/design-patterns.md
+            - name: Segmentation
+              href: security/segmentation.md
       - name: Cost Optimization
         items: 
         - name: Quick links
