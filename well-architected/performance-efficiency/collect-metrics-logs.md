@@ -35,7 +35,7 @@ Performance optimization requires data to measure the current performance of a w
 
 **Centralize the data.** Centralizing performance metrics and logs refers to the process of collecting and storing performance metrics and logs from various sources into a central location. Create a central metrics sink and a central log sink. This centralization allows for easy access, analysis, and monitoring of performance metrics and logs across different systems and components. By centralizing metrics and logs, you gain visibility into the performance of your workload. Choose a suitable platform or tool that can aggregate and store workload performance metrics and logs.
 
-:::image type="icon" source="../_images/trade-off.svg"::: Understand the cost of collecting metrics and logs. In general, the more metrics and logs you collect, the more it costs.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Understand the cost of collecting metrics and logs. In general, the more metrics and logs you collect, the more it costs.
 
 **Segment data.** Performance data serves a purpose. The purpose is to monitor the performance of each environment. Within each environment, you might have distinct types of data, such as workload performance and business metrics. You should have a separate metrics and log sink for each distinct purpose.
 
