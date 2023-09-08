@@ -25,7 +25,7 @@ As you prioritize business requirements to align with technology needs, you can 
 
 ## Develop cost-management discipline
 
-|![Goal icon](../_images/goal.svg) Develop a team culture that has the expertise to understand the financial aspects of budget, expenditure, reporting, and cost tracking.| 
+|![Goal icon](../_images/goal.svg) Build a team culture that has awareness of budget, expenses, reporting, and cost tracking.| 
 |--| 
 
 Cost optimization is conducted at various levels of the organization. It's important to understand how your workload is aligned with organizational goals and FinOps practices. A view into the business units, resource organization, and centralized audit policies allows you to adopt a standardized financial system.
@@ -42,7 +42,7 @@ Cost optimization is conducted at various levels of the organization. It's impor
 
 ## Design with a cost-efficiency mindset
 
-|![Goal icon](../_images/goal.svg) Spend only on what you need to achieve the highest ROI.| 
+|![Goal icon](../_images/goal.svg) Spend only on what you need to achieve the highest return on your investments.| 
 |--| 
 
 Every architectural decision has direct and indirect financial implications. Understand the costs associated with build versus buy options, technology choices, the billing model and licensing, training, operations, and so on.
@@ -57,12 +57,12 @@ Given a set of requirements, optimize and make tradeoff decisions, in relation t
 | Design your architecture to support cost guardrails.  |  Enforcement via governance policies or built-in application design patterns can prevent incidental or unapproved charges.|
 | For workloads that are backed by service-level agreements (SLAs), weigh the pros and cons of reserving budget for penalties versus using it for implementation. You can avoid penalties if your implementation is sound.   | Ensuring that your design fulfills its intended function and meets commitments is a proactive approach that reduces eventual risks of liability.  <br><br> Negotiating realistic cost commitments or working with your product owner to create a dedicated violation budget makes these goals more achievable.   |
 
-## Use what you pay for
+## Design for usage optimization
 
-|![Goal icon](../_images/goal.svg) Maximize the use of resources and operations that you've already invested in. Apply them to the negotiated functional and non-functional requirements of the solution.| 
+|![Goal icon](../_images/goal.svg) Maximize the use of resources and operations. Apply them to the negotiated functional and non-functional requirements of the solution.| 
 |--| 
 
-Services provide various levels of capabilities that are offered in pricing tiers. After you purchase a set of features, avoid underutilizing them. Find ways to maximize your investment in the tier. Likewise, continuously evaluate billing models to find those that better align to your usage, based on current production workloads.
+Services and offerings provide various capabilities and pricing tiers. After you purchase a set of features, avoid underutilizing them. Find ways to maximize your investment in the tier. Likewise, continuously evaluate billing models to find those that better align to your usage, based on current production workloads.
 
 | Approach   | Benefit     |
 |-|-|
@@ -74,9 +74,9 @@ Services provide various levels of capabilities that are offered in pricing tier
 | Find additional **uses for resources that you committed to** in discounted longer-term plans.| Consider **pre-purchased resources, existing licenses, and other commitment-based discounted resources that are unused**. You can save money by using these resources. You can use these resources for tests, additional environments, or even addressing functional and non-functional requirements.  <br><br> Likewise, finding opportunities to utilize committed plans for resources that your workload is using will enable your workload to optimize those resource costs via the pre-commitment.   |
 | Take advantage of your **investment in your support plan**. | Using your support plan to **handle production problems or for proactive reviews** will help you get your money's worth. Fully engage with your Microsoft support model.
 
-## Pay less for what you use
+## Design for rate optimization
 
-|![Goal icon](../_images/goal.svg) Reduce costs to a practical level, but do so without redesigning, renegotiating, or sacrificing functional or non-functional requirements.| 
+|![Goal icon](../_images/goal.svg) Increase efficiency without redesigning, renegotiating, or sacrificing functional or non-functional requirements.| 
 |--| 
 
 Take advantage of opportunities to optimize the utility and costs of your existing resources and operations. If you don't, you unnecessarily spend money without any added ROI.
