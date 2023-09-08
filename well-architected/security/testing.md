@@ -168,7 +168,7 @@ If conducted as routine tests, war game exercises can help provide ongoing visib
 
 A popular choice to simulate realistic attack scenarios is [Office 365 Attack Simulator](/office365/securitycompliance/attack-simulator).
 
-For more information, see [Insights and reports Attack simulation training](/microsoft-365/security/office-365-security/attack-simulation-training-insights?view=o365-worldwide).
+For more information, see [Insights and reports Attack simulation training](/microsoft-365/security/office-365-security/attack-simulation-training-insights).
 
 For information about red team and blue team setup, see [Microsoft Cloud Red Teaming](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf).
 
