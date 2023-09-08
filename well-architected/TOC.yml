@@ -47,6 +47,8 @@
           items:
             - name: Security patterns
               href: security/design-patterns.md
+            - name: Application secrets
+              href: security/application-secrets.md
             - name: Encryption
               href: security/encryption.md
             - name: Identity and access
