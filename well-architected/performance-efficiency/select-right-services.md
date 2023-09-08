@@ -42,6 +42,8 @@ Understanding workload requirements means to evaluate the specific needs and cha
 
 **Meet team skills.** Workloads require personnel to build and maintain them. Different services require different personnel skills to use properly. Pick services your team knows how to use, or commit to training them before selecting it. Ensure the members of a team have the expertise and knowledge to effectively use the selected services to optimize its performance.
 
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Specialized services offer specific functionalities but might limit customization. More flexible resources require more management and configuration. Managed services offer ease of management, but you might have less control over underlying infrastructure compared to self-managed resources.
+
 ### Understand the services
 
 Understanding services before choosing them involves considering various factors and gaining a comprehensive understanding of the services. Research and assess the various services and tools offered by the cloud provider. Find the ones that best align with your workload requirements. Consider factors like managed services, serverless options, and specialized services for different workload types.
@@ -123,7 +125,7 @@ Choose storage services that align with your data access patterns, durability re
 
 **Understand requirements:** Azure Monitor helps you collect and analyze data from your workload. It provides insights into the performance and health of your workloads, allowing you to identify and troubleshoot issues.
 
-**Understand services:** Azure had detailed documentation on all it [services and products](/azure/) to determine if they meet your performance requirements.
+**Understand services:** Azure had detailed documentation on all it [services and products](/azure/) to determine if they meet your performance requirements. Azure offers multiple services to accomplish the same outcome. It gives you the flexibility to align service choices to your performance needs, team's skill set, and cost requirement.
 
 **Choose the right services:** Azure has a range of services to accommodate any workload. Azure provides [service selection guidance](/azure/architecture/guide/technology-choices/technology-choices-overview) for each service type. The guidance helps streamline your selection based on your requirements:
 
