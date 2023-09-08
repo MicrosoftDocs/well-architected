@@ -55,6 +55,8 @@
               href: security/networking.md
             - name: Segmentation
               href: security/segmentation.md
+            - name: Testing
+              href: security/testing.md
       - name: Cost Optimization
         items: 
         - name: Quick links
