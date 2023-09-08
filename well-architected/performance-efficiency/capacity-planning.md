@@ -12,7 +12,6 @@ ms.topic: conceptual
 This guide describes the best practices for capacity planning. You should perform formal capacity planning at key points in the lifecycle of the workload. Capacity planning enables you to anticipate short and long-term demand and manage workload performance effectively. By analyzing historical usage patterns and growth trends, you can identify potential bottlenecks, scalability challenges, or performance constraints.
 
 **Definitions**
-
 |  Term|                                Definition|
 |-|-|
  |  Capacity planning |                  The process of predicting the resources a workload needs to meet its performance targets.|
@@ -26,14 +25,17 @@ Capacity planning is a predictive exercise. It's about making informed decisions
 
 ### Gather workload data
 
-Before you can predict the capacity requirements of a workload, you need to understand the workload. You need to gather information about the workload and its characteristics. The information gathering includes understanding the purpose, requirements, and behavior of the workload. You should gather workload data for an existing workload with historical data or a new workload in the design phase.
+Before you can predict the capacity requirements of a workload, you need to understand your business goals and the workload. The information gathering includes understanding the purpose, requirements, and behavior of the workload. You should gather workload data for an existing workload with historical data or a new workload in the design phase.
+
+**Consider business goals.** Consider your business goals and translate them into technical requirements. For example, if your goal is to provide an API that can handle file uploads from 1 million users, with an average file size of 1MB and a storage time of 1 second or less, you would need disks with a write speed of 277.7 MB/sec and a CPU/NIC/Memory configuration to support 277 concurrent writes .
 
 **Understand an existing workload.** Gather the historical data related to the workload and include metrics like resource utilization, performance data, workload patterns, and any other relevant data points.
 
 - *Understand the data:* Review the available historical data and understand its structure, format, and relevance to capacity planning. The review could include resource utilization metrics, workload patterns, performance metrics, and any other relevant data points.
 - *Clean and preprocess the data:* Prepare the data for analysis by removing any inconsistencies, errors, or outliers. Preparing the data might involve data cleaning techniques like data imputation, handling missing values, or normalization.
-*Identify key metrics:* Identify the metrics that are relevant for capacity planning. Metrics could include CPU utilization, memory usage, network throughput, and response times.
-*Visualize the data:* Create visualizations, such as charts or plots, to gain better insights into the historical data. Visualizations can help identify patterns, trends, and anomalies in the data, providing a clearer understanding of the workload behavior.
+- *Identify key metrics:* Identify the metrics that are relevant for capacity planning. Metrics could include CPU utilization, memory usage, network throughput, and response times.
+- *Identify bottlenecks:* Measure throughput and response times to identify the specific components of your system that may become bottlenecks as the workload grows. Monitoring requests per second and database CPU usage can be good indicators of capacity .
+- *Visualize the data:* Create visualizations, such as charts or plots, to gain better insights into the historical data. Visualizations can help identify patterns, trends, and anomalies in the data, providing a clearer understanding of the workload behavior.
 
 **Understand a new workload.** When it comes to new a workload without historical data, predicting the future needs of a workload can be more challenging. In such cases, you should consider alternative approaches such as:
 
@@ -66,7 +68,7 @@ Forecasting future demand uses data to help get a sense of the future needs. For
 
 ### Determine resource requirements
 
-Determining resource requirements for capacity planning involves assessing the resources needed to meet forecasted demand. You need to estimate the expected demand for your services or products based on historical data, market trends, and business projections. Consider the number of transactions, concurrent users, or any other relevant metric.
+Determining resource requirements for capacity planning involves assessing the resources needed to meet forecasted demand. A workload can have many different components, so there's is no one metric to observe. Capacity must be measured on a component level to be meaningful. You need to estimate the expected demand for your components based on historical data, market trends, and business projections. Consider the number of transactions, concurrent users, or any other relevant metric.
 
 **Calculate resource needs.** Based on the forecasted demand, calculate the resources needed to meet that demand. Consider factors such as server capacity, network bandwidth, storage capacity, and personnel.
 

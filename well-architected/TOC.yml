@@ -106,8 +106,8 @@
             - name: Establish performance targets
               href: performance-efficiency/performance-targets.md
             - name: Conduct capacity planning
-              href: performance-efficiency/plan-capacity.md
-            - name: Select the right resources 
+              href: performance-efficiency/capacity-planning.md
+            - name: Select the right services 
               href: performance-efficiency/select-right-services.md
             - name: Collect metrics and logs 
               href: performance-efficiency/collect-metrics-logs.md
