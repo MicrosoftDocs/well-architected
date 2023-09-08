@@ -35,9 +35,9 @@ Let’s say you’re building a web application that will be hosted on Azure. Yo
 - **Operational excellence:** You want to ensure that your operations processes keep your system running in production. To achieve this, you might use [Azure Monitor](/azure/azure-monitor/) to monitor your application for performance issues and errors.
 - **Performance efficiency:** You want to ensure that your application can adapt to changes in load. To achieve this, you might use [Azure Autoscale](/azure/azure-monitor/autoscale/autoscale-overview) to automatically scale your application based on demand.
 
-### Best practices
+### Recommendations
 
-Here are some best practices when using the Well-Architected Framework:
+Here are some recommendations when using the Well-Architected Framework:
 
 - Understand the [five pillars of architectural excellence](pillars.md). The Well-Architected Framework consists of five pillars: reliability, security, cost optimization, operational excellence, and performance efficiency. It’s important to understand the pillars and how they relate to your workload.
 - Assess your workload. The [Assessment review tool](pillars.md#assessment-review-tool) is free and can help you assess your workload using the tenets found in the Well-Architected Framework.
@@ -73,6 +73,6 @@ Here are just a few of the benefits you can experience after implementing the We
 Here are some resources that can help you get started with using the Well-Architected Framework documentation:
 
 - [Microsoft Azure Well-Architected Framework](/azure/well-architected/)
-- [Introducing the Microsoft Azure Well-Architected Framework](https://azure.microsoft.com/en-us/blog/introducing-the-microsoft-azure-wellarchitected-framework/)
+- [Introducing the Microsoft Azure Well-Architected Framework](https://azure.microsoft.com/blog/introducing-the-microsoft-azure-wellarchitected-framework/)
 - [Training for the Well-Architected Framework](/training/modules/azure-well-architected-introduction/)
-- [Azure Well-Architected | Microsoft Azure](https://azure.microsoft.com/en-us/solutions/cloud-enablement/well-architected/)
+- [Azure Well-Architected | Microsoft Azure](https://azure.microsoft.com/solutions/cloud-enablement/well-architected/)
