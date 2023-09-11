@@ -12,8 +12,9 @@ ms.topic: conceptual
 This guide describes the recommendations for scaling and partitioning a workload. Scaling and partitioning are important strategies for achieving performance efficiency in workloads. Scaling refers to the ability to increase or decrease the resources allocated to a workload based on demand. Partitioning involves dividing the workload into smaller, manageable units to distribute the data and processing across multiple resources. A workload that doesn't scale or partition experiences poor performance in high demand periods and underutilizes capacity in low demand periods.
 
 **Definitions**
-|  Terms| Definition|
-|-|-|
+
+|Terms| Definition|
+|---|---|
 |Scalability| The ability of a workload to change capacity limits dynamically.|
 | Autoscale|A feature of some services to automate changes in capacity limits based on configurations.|
 | SKUs|Specification tiers for services.|
