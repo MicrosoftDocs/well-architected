@@ -217,9 +217,10 @@ Recommended technology choices:
     
     -   Avoid FQDN Service Tags where practical. However, when you do use them, use the "regional" variant. It allows communication with all endpoints of that service.
     
-    -   Use IP Groups to define sources that *must* share the same rules over the life of that IP Group. In this way, IP Groups should reflect your segmentation strategy.
-    
-    -   Only override the **Infrastructure FQDN** *allow* rule if absolute egress control is required in your workload; doing so will have a realibility tradeoff as Azure platform requirements change on services.
+    -	Use IP Groups to define sources that must share the same rules over the life of that IP Group. In this way, IP Groups should reflect your segmentation strategy.
+      
+    -	Only override the Infrastructure FQDN **allow** rule if absolute egress control is required in your workload; doing so will have a reliability tradeoff as Azure platform requirements change on services.
+
     
     > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Azure Firewall can impact your performance. There might be significant latency from rule order, quantity, TLS inspection, and others.
     >
