@@ -33,7 +33,9 @@ This guide describes the recommendations for scaling and partitioning a workload
 
 ## Key strategies
 
-### Scale
+Both scaling and partitioning contribute to performance efficiency by ensuring that resources are utilized effectively and the system can handle varying workloads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands
+
+### Scale workload
 
 Scaling a workload refers to the process of adjusting the resources allocated to a workload. The adjustments include increasing or decreasing the number of servers, instances, or resources, to meet the changing demands of the workload. Scaling allows the workload to handle increased traffic or workload demands without experiencing performance degradation or downtime.
 
@@ -70,7 +72,7 @@ Decoupling components allows you to scale each component independently based on 
 - *Asynchronous communication:* Use asynchronous communication patterns such as message queues or event-driven architectures to decouple components further. These patterns allow components to process tasks independently and at their own pace, improving overall scalability.
 - *Microservices:* Consider implementing microservices, which are small, independent services that focus on specific business functionalities. Each microservice can be developed, deployed, and scaled independently, providing greater flexibility and scalability.
 
-### Design for application scalability
+#### Design for application scalability
 
 As you scale a workload, you must design the application to distribute load. Just because you can add more replicas at the infrastructure level doesn't mean your application can use the replicas. Where possible, avoid solutions that require client affinity, data locking, or state affinity for a single instance. You want to route a client or process to a resource that has available capacity.
 
@@ -150,7 +152,7 @@ Conduct load and stress tests to evaluate the performance of the workload under 
 
 :::image type="icon" source="../_images/trade-off.svg":::*Tradeoff:* Evaluate the cost implications of vertical and horizontal scaling. Vertical scaling may involve higher costs due to the need for larger and more powerful resources. Horizontal scaling can offer cost savings by utilizing smaller instances that can be added or removed based on demand. Consider the budget constraints and cost-efficiency goals of the workload.
 
-### Partition
+### Partition workload
 
 Partitioning refers to the process of dividing a large dataset or workload into smaller, more manageable parts called partitions. Each partition contains a subset of the data or workload and is typically stored or processed separately. Partitioning enables parallel processing and reduces contention. Dividing the workload into smaller units allows the application to process each unit independently. The result is better utilization of resources and faster processing times. Partitioning also helps distribute the data across multiple storage devices, reducing the load on individual devices and improving overall performance.
 
@@ -170,9 +172,7 @@ Partitioning refers to the process of dividing a large dataset or workload into 
 
 :::image type="icon" source="../_images/trade-off.svg":::*Tradeoff:* It's important to note that partitioning adds complexity to the design and development of a system. It requires conversations and planning between developers and database administrators.
 
-**Test partitioning.**
-
-Testing and optimizing the partitioning scheme involves verifying the effectiveness and efficiency of the partitioning strategy and making adjustments to improve performance. Execute test scenarios to evaluate the performance of the partitioning scheme. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
+**Test partitioning.** Testing and optimizing the partitioning scheme involves verifying the effectiveness and efficiency of the partitioning strategy and making adjustments to improve performance. Execute test scenarios to evaluate the performance of the partitioning scheme. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
 
 :::image type="icon" source="../_images/risk.svg"::: *Risk:* Partitioning introduces some potential problems that need to be considered and addressed:
 
