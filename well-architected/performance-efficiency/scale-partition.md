@@ -15,8 +15,8 @@ This guide describes the recommendations for scaling and partitioning. Scaling a
 |  Terms| Definition|
 |-|-|
 |Scalability| The ability of a workload to change capacity limits dynamically.|
-| Autoscale|A feature of some Azure services to automate changes in capacity limits based on configurations.|
-| SKUs|Specification tiers for Azure services.|
+| Autoscale|A feature of some services to automate changes in capacity limits based on configurations.|
+| SKUs|Specification tiers for services.|
 | Capacity|The upper limit of a given service or service feature.|
 | Partitioning|Dividing a workload or data to manage it more efficiently.|
 | Vertical scaling|Increasing the capacity of a resource to handle more demand.|
