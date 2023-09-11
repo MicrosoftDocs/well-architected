@@ -166,7 +166,7 @@ There are multiple ways to deploy this solution. Each approach provides a differ
 
 The rest of this article describes each of the approaches listed in the preceding table. The list of approaches isn't exhaustive. You might decide to combine multiple approaches or use different approaches in different parts of your solution.
 
-## Deployment approach 1: Locally redundant deployments
+### Deployment approach 1: Locally redundant deployments
 
 If you don't specify multiple availability zones or regions when you deploy your resources, Azure doesn't make any guarantees about whether the resources are deployed into a single datacenter or split across multiple datacenters in the region. In some situations, Azure might also move your resource between availability zones.
 
@@ -188,7 +188,7 @@ The single-region deployment model has the following effects on your architectur
 | Compliance with data residency | **High.** When you deploy a solution that uses this approach, data is stored in the Azure region that you select. |
 | Regional availability | **High.** This approach can be used in any Azure region. |
 
-### Locally redundant deployments with backup across regions
+#### Locally redundant deployments with backup across regions
 
 You can extend a locally redundant deployment by performing regular backups of your infrastructure and data to a secondary region. This approach adds an extra layer of protection to mitigate against an outage in your primary region. Here's what it looks like: 
 
@@ -211,7 +211,7 @@ Adding cross-region backups to a single-region deployment model has these effect
 | Compliance with data residency | **Depends on region selection.** Data is primarily stored in the Azure region that you specify. However, you need to select another region to store your backups, so it's important that you select a region that's compatible with your data residency requirements. |
 | Regional availability | **High.** You can use this approach in any Azure region. |
 
-## Deployment approach 2: Zonal (pinned) deployments
+### Deployment approach 2: Zonal (pinned) deployments
 
 In a *zonal* deployment, you specify that your resources should be deployed to a specific availability zone. This approach is sometimes called a *zone-pinned* deployment.
 
@@ -251,7 +251,7 @@ When you plan a zonal deployment, verify that the Azure services you use are sup
 > [!TIP]
 > When you deploy a resource into a specific availability zone, you select the zone number. The sequence of zone numbers is different for each Azure subscription. If you deploy resources across multiple Azure subscriptions, verify the zone numbers that you should use in each subscription. For more information, see [What are Azure regions and availability zones?][availability-zones-overview].
 
-## Deployment approach 3: Zone-redundant deployments
+### Deployment approach 3: Zone-redundant deployments
 
 When you use this approach, your application tier is spread across multiple availability zones. When requests arrive, a load balancer that's built into the service (which itself spans availability zones) disperses the requests across the instances in each availability zone. If an availability zone experiences an outage, the load balancer directs traffic to instances in the healthy availability zones.
 
@@ -275,7 +275,7 @@ A zone-redundant deployment model has the following effects on your architecture
 
 This approach is possible with many Azure services, including Azure Virtual Machine Scale Sets, Azure App Service, Azure Functions, Azure Kubernetes Service, Azure Storage, Azure SQL, Azure Service Bus, and many others. For a complete list of services that support zone redundancy, see [Availability zone service and regional support][azure-services-with-availability-zone-support].
 
-### Zone-redundant deployments with backup across regions
+#### Zone-redundant deployments with backup across regions
 
 You can extend a zone-redundant deployment by performing regular backups of your infrastructure and data to a secondary region. This approach gives you the benefits of a zone-redundant approach and adds a layer of protection to mitigate the extremely unlikely event of a full region outage.
 
@@ -301,15 +301,15 @@ Adding cross-region backups to a zone-redundant deployment model has the followi
 | Compliance with data residency | **Depends on region selection.** Data is stored primarily in the Azure region that you specify, but you need to select another region to store your backups. Select a region that's compatible with your data residency requirements. |
 | Regional availability | **Regions with availability zones.** This approach is available in any region that supports [availability zones][azure-regions-with-availability-zone-support]. |
 
-## Deployment approach 4: Multi-region deployments
+### Deployment approach 4: Multi-region deployments
 
 You can use multiple Azure regions together to distribute your solution across a wide geographical area. You can use this multi-region approach to improve your solution's reliability or to support geographically distributed users. If data residency is an important concern for your solution, carefully consider which regions you use to ensure that your data is stored only in locations that meet your requirements.
 
-### Active and passive regions
+#### Active and passive regions
 
 Multi-region architectures are complex, and there are many ways to design a multi-region solution. For some workloads, it makes sense to have multiple regions actively processing requests simultaneously (active-active deployments). For other workloads, it's better to designate one *primary region* and use one or more *secondary regions* for failover (active-passive deployments). This section focuses on the second scenario, in which one region is active and another is passive. For information about active-active multi-region solutions, see [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) and [Geode pattern](/azure/architecture/patterns/geodes).
 
-### Data replication
+#### Data replication
 
 Communicating across regions is much slower than communicating within a region. In general, a larger geographic distance between two regions incurs more network latency. See [Azure network round-trip latency statistics][round-trip-latency] for the expected network latency when you connect between two regions.
 
@@ -351,17 +351,17 @@ A multi-region deployment model that uses synchronous data replication has these
 | Compliance with data residency | **Depends on region selection.** This approach requires you to select multiple regions for your workload to run in. Select regions that are compatible with your data residency requirements. |
 | Regional availability | [Many Azure regions][azure-region-pairs] are paired. Some Azure services use paired regions to replicate data automatically. If you run your workload in a [region that doesn't have a pair][regions-with-availability-zones-and-no-region-pair], you might need to use a [different approach to replicate your data](#region-architectures). |
 
-### Region architectures
+#### Region architectures
 
 When you design a multi-region solution, consider whether the Azure regions you plan to use are paired.
 
 You can create a multi-region solution even when the regions aren't paired. However, the approaches that you use to implement a multi-region architecture might be different. For example, in Azure Storage, you can use geo-redundant storage (GRS) with paired regions. If GRS isn't available, consider using features like Azure Storage [object replication](/azure/storage/blobs/object-replication-overview), or design your application to write to multiple regions.
 
-### Combine multi-zone and multi-region approaches
+#### Combine multi-zone and multi-region approaches
 
 You can also combine multi-zone and multi-region approaches. For example, you might deploy zone-redundant components into each region and also configure replication between the regions. Configuring this type of approach can be complicated, and this approach can be expensive, but for some solutions it provides a very high degree of reliability.
 
-## Example use cases
+## Examples
 
 This section describes some common use cases and the key requirements that you typically need to consider for each workload. For each workload, a suggested deployment approach is provided, based on the requirements and approaches described in this article.
 
