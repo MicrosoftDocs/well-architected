@@ -15,21 +15,20 @@ This guide describes the recommendations for scaling and partitioning a workload
 
 |Terms| Definition|
 |---|---|
-|Scalability| The ability of a workload to change capacity limits dynamically.|
-| Autoscale|A feature of some services to automate changes in capacity limits based on configurations.|
-| SKUs|Specification tiers for services.|
-| Capacity|The upper limit of a given service or service feature.|
-| Partitioning|Dividing a workload or data to manage it more efficiently.|
-| Vertical scaling|Increasing the capacity of a resource to handle more demand.|
-| Horizontal scaling|Adding instances of the resource with the same capacity to handle more demand.|
-| Scale unit|Resources that need to scale proportionately together.|
-| Client affinity|When requests from a single client are intentionally routed to a single server instance. It's also known as session affinity and instance pinning.|
-| Data locking|A way to prevent simultaneous updates to the same piece of data.|
-| State affinity|When a single server stores client session data.|
-| Optimistic concurrency|An approach for updating databases that uses snapshots to make updates instead of database locks.|
-| Consistency (distributed database)|The uniformity of data in a distributed database.|
-| Consistency (relational database)|The idea that a transaction should bring a database from one state to another.|
-| Consistency level| A configuration that describes how and when data is replicated.|
+| Scalability | The ability of a workload to dynamically change its capacity limits to accommodate varying levels of demand.|
+| Autoscale | A feature that automatically adjusts the capacity limits of a service based on predefined configurations, allowing it to scale up or down as needed.|
+| Capacity | The upper limit or maximum capacity of a given service or service feature.|
+| Partitioning | The process of dividing a workload or data into smaller parts to manage it more efficiently.|
+| Vertical scaling| Increasing the capacity of a resource by upgrading to a higher tier or size to handle increased demand.|
+| Horizontal scaling| Adding more instances of a resource with the same capacity to handle increased demand.|
+| Scale unit| A group of resources that need to scale proportionately together to maintain balanced performance. |
+| Client affinity (session affinity) | The intentional routing of requests from a single client to a single server instance, ensuring consistent session management.|
+| Data locking| A mechanism used to prevent simultaneous updates to the same piece of data, ensuring data integrity.|
+| State affinity | The storage of client session data on a single server, ensuring that subsequent requests from the same client are handled by the same server. |
+| Optimistic concurrency| An approach for updating databases that uses snapshots to make updates instead of traditional locking mechanisms, improving performance and scalability. |
+| Consistency (distributed database)| The uniformity of data across multiple nodes in a distributed database, ensuring that all replicas have the same data at a given point in time. |
+| Consistency (relational database)| The property of a transaction bringing a database from one valid state to another, maintaining data integrity. |
+| Consistency level| A configuration that defines how and when data is replicated in a distributed database system, determining the trade-off between consistency and performance. |
 
 ## Key strategies
 
