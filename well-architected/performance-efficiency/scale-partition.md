@@ -37,7 +37,7 @@ This guide describes the recommendations for scaling and partitioning a workload
 
 Scaling a workload refers to the process of adjusting the resources allocated to a workload. The adjustments include increasing or decreasing the number of servers, instances, or resources, to meet the changing demands of the workload. Scaling allows the workload to handle increased traffic or workload demands without experiencing performance degradation or downtime.
 
-#### Pick a scaling strategy
+#### Understand scaling
 
 Picking the right scaling strategy refers to selecting the appropriate approach, either vertical or horizontal scaling. You base the choice on the specific characteristics and requirements of a workload.
 
@@ -45,7 +45,7 @@ Picking the right scaling strategy refers to selecting the appropriate approach,
 
 **Understand horizontal scaling (scaling out).** Horizontal scaling involves adding more instances or resources to distribute the workload across multiple servers. It's suitable when the workload can be divided into smaller parts that can run independently. Horizontal scaling offers benefits such as improved resiliency, increased capacity, and the ability to handle increased traffic or workload demands. It's effective for cloud-native applications designed to run on multiple nodes.
 
-**Understand workload.** It's important to note that the suitability of vertical or horizontal scaling depends on the specific characteristics and requirements of the workload. Regular performance monitoring and testing can help optimize the scaling strategy over time.
+**Understand the workload.** It's important to note that the suitability of vertical or horizontal scaling depends on the specific characteristics and requirements of the workload. Regular performance monitoring and testing can help optimize the scaling strategy over time.
 
 - *Requirements:* Understand the specific requirements of the workload. Consider factors such as resource demands, scalability needs, and the limitations of the workload.
 - *Scale units.* A scale unit typically consists of multiple resources that support a flow or entire workload. You should document a scale unit design for components expected to be scaled together. For example, 100 virtual machines might require two queues and three storage accounts to handle the extra workload. The scale unit would be 100 virtual machines, two queues, and three storage accounts. You should independently scale all the components that experience capacity-use fluctuation
@@ -61,7 +61,7 @@ Designing for infrastructure scalability refers to the process of creating an ar
 - *Data processing:* Singleton patterns often appear in data processing scenarios where the processing doesn't fan out. To avoid singletons in data processing, it's recommended to break long-running tasks into smaller tasks that can scale better. By decomposing the processing into smaller chunks, you can distribute the workload across multiple resources and take advantage of parallelism.
 - *Design patterns:* Design patterns such as [*Fan-out/fan-in*](/azure/azure-functions/durable/durable-functions-overview#fan-in-out) or [*Pipes and filters*](/azure/architecture/patterns/pipes-and-filters) can help avoid singletons in workflows. These patterns enable the distribution of processing tasks across multiple resources and promote scalability and flexibility.
 
-- **Decouple components.** Decoupling application components is an important aspect of designing for scalability. It involves breaking down the application into smaller, independent components that can operate and scale independently. This decoupling allows each component to be scaled individually based on its specific workload and requirements.
+**Decouple components.** Decoupling application components is an important aspect of designing for scalability. It involves breaking down the application into smaller, independent components that can operate and scale independently. This decoupling allows each component to be scaled individually based on its specific workload and requirements.
 
 Decoupling components allows you to scale each component independently based on its specific needs. For example, if one component requires more resources due to increased demand, you can scale that component without affecting the others. The flexibility ensures efficient resource allocation and prevents bottlenecks. By decoupling components, you can isolate failures and minimize the effect on the overall application. If one component fails, the other components can continue to function independently. Decoupled components are easier to maintain and update. Since they're independent, changes or updates to one component can be made without affecting the others. To decouple application components for scalability, you can follow these guidelines:
 
@@ -107,7 +107,7 @@ As you scale a workload, you must design the application to distribute load. Jus
 1. *Instrumentation:* Start by instrumenting your applications and services to generate trace data. Use libraries or frameworks that support distributed tracing, such as OpenTelemetry.
 1. *Trace propagation:* Ensure that trace information is propagated across service boundaries. You should typically pass a unique trace ID and other contextual information with each request.
 1. *Trace collection:* Set up a centralized trace collection system. This system collects and stores the trace data generated by your applications and services.
-1. Visualization and analysis: Use the trace data collected to visualize the end-to-end flow of requests and analyze the performance characteristics of your distributed system. Visualizations can help you identify bottlenecks, latency issues, and areas for optimization.
+1. *Visualization and analysis:* Use the trace data collected to visualize the end-to-end flow of requests and analyze the performance characteristics of your distributed system. Visualizations can help you identify bottlenecks, latency issues, and areas for optimization.
 
 #### Implement scaling
 
@@ -133,7 +133,7 @@ To avoid flapping, it's important to choose an adequate margin between the scale
 
 **Use deployment stamps.** There are techniques that make it easier to scale a workload. You can use the [deployment stamps](/azure/architecture/patterns/deployment-stamp) pattern, so that it's easily scaled by adding one or more scale units.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk:** While scaling helps optimize costs by adjusting capacity to meet demand, it can also increase cost during long periods of increased demand.
+:::image type="icon" source="../_images/risk.svg"::: *Risk:* While scaling helps optimize costs by adjusting capacity to meet demand, it can also increase cost during long periods of increased demand.
 
 #### Test scaling
 
@@ -148,7 +148,7 @@ Conduct load and stress tests to evaluate the performance of the workload under 
 1. *Find dependency issues.* Scaling or partitioning in one area of a workload might cause performance issues on a dependency. The stateful parts of a system, such as databases, are the most common cause of dependency performance issues. Databases require careful design to scale horizontally. You need to consider measures, such as [optimistic concurrency](/dotnet/framework/data/adonet/sql/linq/optimistic-concurrency-overview) or data partitioning, to enable more throughput to the database.
 1. *Repeat and validate:* Repeat the scalability tests after implementing optimizations to validate the improvements and ensure the system can handle the expected workloads efficiently.
 
-:::image type="icon" source="../_images/trade-off.svg":::**Tradeoff:** Evaluate the cost implications of vertical and horizontal scaling. Vertical scaling may involve higher costs due to the need for larger and more powerful resources. Horizontal scaling can offer cost savings by utilizing smaller instances that can be added or removed based on demand. Consider the budget constraints and cost-efficiency goals of the workload.
+:::image type="icon" source="../_images/trade-off.svg":::*Tradeoff:* Evaluate the cost implications of vertical and horizontal scaling. Vertical scaling may involve higher costs due to the need for larger and more powerful resources. Horizontal scaling can offer cost savings by utilizing smaller instances that can be added or removed based on demand. Consider the budget constraints and cost-efficiency goals of the workload.
 
 ### Partition
 
@@ -168,13 +168,13 @@ Partitioning refers to the process of dividing a large dataset or workload into 
 - *Vertical partitioning:* Vertical partitioning involves dividing the dataset based on specific attributes or columns. Use vertical partitioning when different parts of the dataset have distinct access patterns or usage frequencies. It's useful when certain attributes or columns are frequently accessed, while others are accessed less frequently. Vertical partitioning allows for efficient access to the required data by minimizing the amount of unnecessary data retrieval.
 - *Functional partitioning:* Functional partitioning involves dividing the data based on specific functions or operations. Use functional partitioning when different parts of the dataset are associated with different functions or bounded contexts in the system. It's beneficial when different functions require different subsets of the data and can be processed independently. Functional partitioning can optimize performance by allowing each partition to focus on the specific operations it's designed for.
 
-:::image type="icon" source="../_images/trade-off.svg":::**Tradeoff:** It's important to note that partitioning adds complexity to the design and development of a system. It requires conversations and planning between developers and database administrators.
+:::image type="icon" source="../_images/trade-off.svg":::*Tradeoff:* It's important to note that partitioning adds complexity to the design and development of a system. It requires conversations and planning between developers and database administrators.
 
 **Test partitioning.**
 
 Testing and optimizing the partitioning scheme involves verifying the effectiveness and efficiency of the partitioning strategy and making adjustments to improve performance. Execute test scenarios to evaluate the performance of the partitioning scheme. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk:** Partitioning introduces some potential problems that need to be considered and addressed:
+:::image type="icon" source="../_images/risk.svg"::: *Risk:* Partitioning introduces some potential problems that need to be considered and addressed:
 
 - *Data skew:* Partitioning can lead to data skew, where certain partitions receive a disproportionate amount of data or workload compared to others. Data skew can result in performance imbalances and increased contention on specific partitions.
 - *Query performance:* Poorly designed partitioning schemes can negatively affect query performance. If queries need to access data across multiple partitions, it may require extra coordination and communication between partitions, leading to increased latency.
