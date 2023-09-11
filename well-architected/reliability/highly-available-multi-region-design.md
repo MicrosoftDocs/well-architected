@@ -27,7 +27,7 @@ The following sections describe the design options of the two patterns.
 
 ### Active-active
 
--   **Active-active at capacity:** Mirrored deployment stamps in two or more Azure regions, each configured to handle production workloads for the region or regions they serve and scalable to handle loads from other regions in case of a regional outage.
+-   **Active-active at capacity**: Mirrored deployment stamps in two or more Azure regions, each configured to handle production workloads for the region or regions they serve and scalable to handle loads from other regions in case of a regional outage.
 
     -   Networking: Use [latency](/azure/frontdoor/routing-methods#latency) or [weighted](/azure/frontdoor/routing-methods#weighted) global routing to spread traffic among regions.
 
@@ -37,7 +37,7 @@ The following sections describe the design options of the two patterns.
 
     -   Disadvantage of this design: Possible degradation of the user experience when scaling up to meet the demands of a full load if another region experiences an outage.
 
--   **Active-active overprovisioned:** Mirrored deployment stamps in two or more Azure regions, each overprovisioned to handle production workloads for the region or regions they serve and to handle loads from other regions in case of a regional outage.
+-   **Active-active overprovisioned**: Mirrored deployment stamps in two or more Azure regions, each overprovisioned to handle production workloads for the region or regions they serve and to handle loads from other regions in case of a regional outage.
 
     -   Networking: Use [latency](/azure/frontdoor/routing-methods#latency) or [weighted](/azure/frontdoor/routing-methods#weighted) global routing to spread traffic among regions.
 
@@ -53,7 +53,7 @@ The following sections describe the design options of the two patterns.
 
 ### Active-passive
 
--   **Warm spare:** One primary region and one or more secondary regions. The secondary region is deployed with the minimum possible compute and data sizing and runs without load. This region is known as a *warm spare* region. Upon failover, the compute and data resources are scaled to handle the load from the primary region.
+-   **Warm spare**: One primary region and one or more secondary regions. The secondary region is deployed with the minimum possible compute and data sizing and runs without load. This region is known as a *warm spare* region. Upon failover, the compute and data resources are scaled to handle the load from the primary region.
 
     -   Networking: Use [priority](/azure/frontdoor/routing-methods#priority) global routing.
 
@@ -63,7 +63,7 @@ The following sections describe the design options of the two patterns.
 
     -   Disadvantage of this design: Highest operating cost among the active-passive designs.
 
--   **Cold spare:** One primary region and one or more secondary regions. The secondary region is scaled to handle full load, but all compute resources are stopped. This region is known as a *cold spare* region. You need to start the resources before failover.
+-   **Cold spare**: One primary region and one or more secondary regions. The secondary region is scaled to handle full load, but all compute resources are stopped. This region is known as a *cold spare* region. You need to start the resources before failover.
 
     -   Networking: Use [priority](/azure/frontdoor/routing-methods#priority) global routing.
 
@@ -73,7 +73,7 @@ The following sections describe the design options of the two patterns.
 
     -   Disadvantage of this design: Longer recovery time than the warm spare design.
 
--   **Redeploy on disaster:** One primary region and one or more secondary regions. Only the necessary networking is deployed in the secondary region. Operators must run provisioning scripts in the secondary region to fail over the workloads. This design is known as *redeploy on disaster*.
+-   **Redeploy on disaster**: One primary region and one or more secondary regions. Only the necessary networking is deployed in the secondary region. Operators must run provisioning scripts in the secondary region to fail over the workloads. This design is known as *redeploy on disaster*.
 
     -   Networking: Use [priority](/azure/frontdoor/routing-methods#priority) global routing.
 

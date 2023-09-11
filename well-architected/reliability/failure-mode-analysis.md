@@ -20,7 +20,7 @@ A key tenet of FMA is that failures happen no matter how many layers of resilien
 
 If you skip FMA altogether or perform an incomplete analysis, your workload is at risk of unpredicted behavior and potential outages caused by suboptimal design.
 
-## Definitions
+**Definitions**
 
 | Term | Definition|
 |------|-----------|
@@ -124,7 +124,7 @@ As with all resiliency and reliability decisions, the amount of resiliency you b
 
 The following table shows an FMA example for an e-commerce website that's hosted on Azure App Service instances with Azure SQL databases and is fronted by Azure Front Door.
 
-**User flow:** User sign in, product search, and shopping cart interaction
+**User flow**: User sign in, product search, and shopping cart interaction
 
 | Component | Risk | Likelihood | Effect/Mitigation/Note | Outage |
 |-----------|------|------------|------------------------|--------|
