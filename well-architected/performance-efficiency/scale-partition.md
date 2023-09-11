@@ -186,7 +186,7 @@ Testing and optimizing the partitioning scheme involves verifying the effectiven
 
 Azure Monitor allows you to monitor various metrics and conditions in your applications and infrastructure, and trigger automated scaling actions based on predefined rules. For example, in Azure Kubernetes Service (AKS), you can use Azure Monitor to enable horizontal pod autoscaling (HPA) and cluster autoscaling. By using Azure Monitor's monitoring and alerting capabilities, you can effectively facilitate scaling in Azure and ensure that your applications and infrastructure can dynamically adjust to meet demand.
 
-**Custom autoscaling:** For resources that don't have autoscale customers can implement their own Monitor Alerts either query based, or metric based, which can perform actions using Azure Automation.  
+**Building custom autoscaling:** For resources that don't have autoscale, can utilize Alerts in Azure Monitor. You can configure these alerts to be query-based or metric-based and can perform actions using Azure Automation. Azure Automation provides a platform for hosting and running PowerShell and Python code across Azure, non-Azure cloud, and on-premises environments. It offers features such as executing runbooks on demand or on a schedule, execution history and logging, integrated secrets store, and source control integration.
 
 **Eliminating data locking:** In Azure SQL Database, you can enable [optimized locking](/sql/relational-databases/performance/optimized-locking) to improve performance on databases that require strong consistency.
 
