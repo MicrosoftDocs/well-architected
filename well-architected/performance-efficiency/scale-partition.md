@@ -182,10 +182,7 @@ Testing and optimizing the partitioning scheme involves verifying the effectiven
 
 ## Azure facilitation
 
-**Implementing scaling:** Azure has the infrastructure capacity to support vertical and horizontal scaling.
-
-- *Vertical scaling:* Azure services have different performance tiers known as SKUs. SKUs allow you to scale vertically.
-- *Horizontal scaling:* Many of Azure\'s resources support autoscaling or other in-place scale options. Some support advanced metrics or custom input to support fine-tuning scaling behavior. Most scaling implementations in Azure can set limits and support the necessary observability to be alerted to change.
+**Implementing scaling:** Azure has the infrastructure capacity to support vertical and horizontal scaling. Azure services have different performance tiers known as SKUs. SKUs allow you to scale vertically. Many of Azure\'s resources support autoscaling or other in-place scale options. Some support advanced metrics or custom input to support fine-tuning scaling behavior. Most scaling implementations in Azure can set limits and support the necessary observability to be alerted to change.
 
 Azure Monitor allows you to monitor various metrics and conditions in your applications and infrastructure, and trigger automated scaling actions based on predefined rules. For example, in Azure Kubernetes Service (AKS), you can use Azure Monitor to enable horizontal pod autoscaling (HPA) and cluster autoscaling. By using Azure Monitor's monitoring and alerting capabilities, you can effectively facilitate scaling in Azure and ensure that your applications and infrastructure can dynamically adjust to meet demand.
 
