@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for scaling and partitioning: PE 05
 
-This guide describes the recommendations for scaling and partitioning. Scaling and partitioning are important strategies for achieving performance efficiency in workloads. Scaling refers to the ability to increase or decrease the resources allocated to a workload based on demand. Partitioning involves dividing the workload into smaller, manageable units to distribute the data and processing across multiple resources. A workload that doesn't scale or partition experiences poor performance in high demand periods and underutilizes capacity in low demand periods.
+This guide describes the recommendations for scaling and partitioning a workload. Scaling and partitioning are important strategies for achieving performance efficiency in workloads. Scaling refers to the ability to increase or decrease the resources allocated to a workload based on demand. Partitioning involves dividing the workload into smaller, manageable units to distribute the data and processing across multiple resources. A workload that doesn't scale or partition experiences poor performance in high demand periods and underutilizes capacity in low demand periods.
 
 **Definitions**
 |  Terms| Definition|
