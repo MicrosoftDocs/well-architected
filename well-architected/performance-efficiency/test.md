@@ -53,12 +53,14 @@ Performance baselines are measurements. They provide a numeric foundation for un
 
 One way to replicate production is to use production data in testing.  The testing data should resemble the shape, quantity, and rate of change of production data. As part of the software development lifecycle, you should copy production data to a test environment (mirroring). You should periodically synchronize the data to ensure the data is similar to production in terms of diversity, breadth, and quantity. Production data can contain sensitive information. You must scrub or mask all sensitive data as part of your copy process.
 
+**Use performance tooling.** Performance-centric tooling is critical for measuring and interpreting performance data. Independent software vendors make performance tooling. There's also open-source and built-in tools to use in many cases. These tools often help monitor performance of everything from the operating system up through code. Some tools are designed for active use during development. Other tools are designed to gather telemetry from production environments. These tools help generate insights into workload performance. You should have relevant tooling available, and you should learn how to effectively use them. You should use available tooling over custom solutions.
+
+An application performance monitoring tool provides deep insights into applications and is an essential testing tool. It helps you trace individual transactions and map their path through different workload services. After testing, you should use the APM tool to analyze and compare testing data against the performance baseline.
+
 **Create stable tests.** Performance tests need to be consistent. It's unhelpful to compare tests that use different test protocols and methods. Use the same starting and injected data in addition to consistent methods and measurements.
 
 - *Test per flow.* Conducting tests on each workload flow makes it easier to find performance issues.
 - *Test scaling:* Scaling can affect the performance of an application. You should load test a workload at various levels of [scaling](/azure/azure-monitor/platform/autoscale-best-practices).
-
-**Use an application performance monitoring tool.** An APM tool provides deep insights into applications and is an essential testing tool. It helps you trace individual transactions and map their path through different workload services. After testing, you should use the APM tool to analyze and compare testing data against the performance baseline.
 
 ### Analyze test results
 
@@ -66,9 +68,9 @@ Every test should result in a numeric measurement. You need to compare test resu
 
 **Associate test results with workload components.** Associating test results with the individual components involved in the test flows helps identify what components are potentially involved in any performance issues identified. It's helpful to design tests that target individual components. When you get undesirable test results, you should be able to break the performance data into layers. For example, you might have tests that target a web application firewall, request routing, web servers, and calls to a database. You need to define workload or flow components and collect performance data on each of them.
 
-**Create a remediation plan.** The only way to know how a workload will run in production is to deploy it to production. This uncertainty creates some risk. To minimize the risk of production issues, you should create a remediation plan. The remediation plan should identify how you will respond to performance issues in production. To create your remediation plan, you should use the results of pre-production testing. These tests might help draft a remediation plan around known issues.
+**Create a remediation plan.** The only way to know how a workload will run in production is to deploy it to production. This uncertainty creates some risk. To minimize the risk of production issues, you should create a remediation plan. The remediation plan should identify how you will respond to performance issues in production. To create your remediation plan, you should use the results of pre-production testing. These tests might help draft a remediation plan around known issues.
 
-### Maintain workload
+### Test continuously
 
 A workload should provide a consistent and acceptable level of performance relative to the baseline. You should tune the workload over time to produce consistent performance that's within the acceptable limits of performance.
 
@@ -78,19 +80,17 @@ A workload should provide a consistent and acceptable level of performance relat
 
 **Automate alerting.** Automated alerting allows you to respond to performance issues faster. You should use the performance baseline as the basis for alerting. It should alert you of any performance fluctuations below the degradation limit.
 
-**Use performance-centric tooling**. Performance-centric tooling is critical for measuring and interpreting performance data. Independent software vendors make performance tooling. There's also open-source and built-in tools to use in many cases. These tools often help monitor performance of everything from the operating system up through code. Some tools are designed for active use during development. Other tools are designed to gather telemetry from production environments. These tools help generate insights into workload performance. You should have relevant tooling available, and you should learn how to effectively use them. You should use available tooling over custom solutions.
-
 **Test code and infrastructure changes** Code instrumentation allows you to find and fix performance issues faster. It adds necessary visibility into your application, including hot paths, significant memory allocations, and late-generation garbage collection. As part of the software development lifecycle, you should test all proposed code and infrastructure changes. You should block any change that degrades the workload below the degradation limit.
 
 ## Azure facilitation
 
--   [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a load testing service that generates high-scale load on any application.
+- [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a load testing service that generates high-scale load on any application.
 
--   [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) lets you inject real-world faults into your application to run controlled fault injection experiments. The experiments help you measure, understand, and improve your cloud application and service resilience. 
+- [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) lets you inject real-world faults into your application to run controlled fault injection experiments. The experiments help you measure, understand, and improve your cloud application and service resilience. 
 
--   [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to telemetry from your cloud and on-premises environments.
+- [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to telemetry from your cloud and on-premises environments.
 
--   [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor and provides application performance monitoring (APM) features. It allows you to monitor applications from development, through test, and into production.
+- [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor and provides application performance monitoring (APM) features. It allows you to monitor applications from development, through test, and into production.
 
 ## Tradeoff
 
