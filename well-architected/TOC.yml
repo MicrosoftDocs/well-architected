@@ -30,7 +30,9 @@
             - name: Failure mode analysis
               href: reliability/failure-mode-analysis.md
             - name: High-availability multi-region design
-              href: reliability/highly-available-multi-region-design.md   
+              href: reliability/highly-available-multi-region-design.md  
+            - name: Monitoring and alerting
+              href: reliability/monitoring-alerting-strategy.md 
             - name: Regions and availability zones
               href: reliability/regions-availability-zones.md
             - name: Transient faults handling 
