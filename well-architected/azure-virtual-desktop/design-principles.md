@@ -17,9 +17,12 @@ Guidance about Azure Virtual Desktop workloads is built on the Azure Well-Archit
 | --- | --- |
 | Reliability | A virtual desktop environment demands a high level of service reliability to help ensure a consistent and uninterrupted user experience. It's essential to establish a robust infrastructure that enables reliable access and optimal performance of the virtual desktop environment. Evaluate virtual desktop deployments, particularly those that integrate with Azure native services. This approach helps ensure a seamless and dependable user experience. |
 | Security | This aspect focuses on the implementation of strategies for safeguarding your workload against potential threats. These strategies incorporate a range of security layers into your applications. These measures encompass critical elements such as robust identity and access management (IAM) and strict data sovereignty adherence. Another critical element is comprehensive encryption to counter distributed denial-of-service (DDoS) attacks. Other crucial components that help ensure the security of the environment include proactive steps. Examples include thwarting malicious entities, preempting data exfiltration, and furnishing defense against operating system vulnerabilities. |
-| Cost optimization | When you optimize your virtual desktop environment for cost, you meet performance expectations and reduce the total cost of ownership. Optimizing costs for Virtual Desktop involves several steps. Examples include choosing the right size virtual machines (VMs), using reserved instances or savings plans, setting up scaling plans, and using Microsoft Cost Management to monitor and optimize spending. |
-| Performance efficiency | Performance efficiency focuses on the ability of your environment to change to meet required performance in the cloud. In your virtual desktop environment, you can meet your required performance with ideal efficiency by using a scaling plan. |
-| Operational excellence | Apply the principles of DevOps to achieve superior operational practices by standardizing deployments, adding monitoring, and applying automation where applicable. The deployments must be consistent and stable and must follow a repeatable structure. |
+| Cost Optimization | When you optimize your virtual desktop environment for cost, you meet performance expectations and reduce the total cost of ownership. Optimizing costs for Virtual Desktop involves several steps. Examples include choosing the right size virtual machines (VMs), using reserved instances or savings plans, setting up scaling plans, and using Microsoft Cost Management to monitor and optimize spending. |
+| Performance Efficiency | Performance Efficiency focuses on the ability of your environment to change to meet required performance in the cloud. In your virtual desktop environment, you can meet your required performance with ideal efficiency by using a scaling plan. |
+| Operational Excellence | Apply the principles of DevOps to achieve superior operational practices by standardizing deployments, adding monitoring, and applying automation where applicable. The deployments must be consistent and stable and must follow a repeatable structure. |
+
+> [!IMPORTANT]
+> This article is part of the [Azure Well-Architected Framework Azure Virtual Desktop workload](./index.yml) series. If you aren't familiar with this series, we recommend that you start with [What is an Azure Virtual Desktop workload?](./overview.md#what-is-a-virtual-desktop-workload).
 
 ## Reliability
 
@@ -43,7 +46,7 @@ In a shared-responsibility model:
 - Organizations are primarily responsible for managing and operating Virtual Desktop workloads.
 - Microsoft manages the control plane that supports a Virtual Desktop workload.
 
-We strongly recommended that you regularly assess your services and technologies to help ensure that your security posture adapts to evolving threat landscapes. When you collaborate with vendors to implement suitable security measures, it's essential to establish a clear understanding of the shared responsibility model.
+We strongly recommended that you regularly assess your services and technologies to help ensure that your security posture adapts to evolving threat landscapes. When you collaborate with vendors to implement suitable security measures, it's essential to establish a clear understanding of the shared-responsibility model.
 
 You can use several methods to help secure your virtual desktop environment:
 
@@ -58,9 +61,9 @@ You can use several methods to help secure your virtual desktop environment:
   - Principle of least privilege: Minimize the potential for misuse by applying the principle of least privilege. Use this principle to restrict access to resources according to roles that focus on just-enough access (JEA) and just-in-time access (JIT) methods.
   - Role-based access control (RBAC): Promote controlled access by using Azure RBAC to assign permissions that are based on predefined roles.
 
-## Cost optimization
+## Cost Optimization
 
-Cost-effective workloads that align with business goals and provide a positive return on investment (ROI) are essential for staying within budget. The principles of cost optimization are critical considerations that can help you achieve business objectives and cost justification for Virtual Desktop.
+Cost-effective workloads that align with business goals and provide a positive return on investment (ROI) are essential for staying within budget. The principles of Cost Optimization are critical considerations that can help you achieve business objectives and cost justification for Virtual Desktop.
 
 Some key considerations and methods for optimizing Virtual Desktop costs include:
 
@@ -71,7 +74,7 @@ Some key considerations and methods for optimizing Virtual Desktop costs include
 
 Keep in mind that the capabilities of Azure hardware expand frequently. As a result, opportunities regularly come up for workloads to further optimize costs, eliminate waste, and improve performance-to-cost ratios. Organizations find it beneficial to revisit and tweak their cost-saving measures periodically.
 
-## Performance efficiency
+## Performance Efficiency
 
 This pillar focuses on optimizing workloads that run your Virtual Desktop environment. That focus includes many aspects:
 
@@ -81,9 +84,9 @@ This pillar focuses on optimizing workloads that run your Virtual Desktop enviro
 
 Considering each of these aspects helps you build a Virtual Desktop environment that delivers a consistent, cohesive user experience.
 
-## Operational excellence
+## Operational Excellence
 
-In Virtual Desktop, operational excellence means ensuring the consistency, repeatability, and stability of your operational procedures in the development, deployment, and operating phases.
+In Virtual Desktop, Operational Excellence means ensuring the consistency, repeatability, and stability of your operational procedures in the development, deployment, and operating phases.
 
 - Using infrastructure as code (IaC) for repeatable, consistent deployment.
 - Proper monitoring of resources to maintain the health of your environment.
