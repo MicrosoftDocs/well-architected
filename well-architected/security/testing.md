@@ -148,7 +148,7 @@ A perspective on type of testing is black-box testing and white-box testing. In 
 
 ##### Tests that simulate attacks through penetration testing (pentesting)
 
-Pentesting is a form of black-box testing. It's conducted by security experts who aren't part of the organization\'s IT or application teams. They look at the system in a way that malicious actors scope an attack surface. The goal is to find security gaps by gathering information, analyzing vulnerabilities, and reporting.
+Pentesting is conducted by security experts who aren't part of the organization\'s IT or application teams. They look at the system in a way that malicious actors scope an attack surface. The goal is to find security gaps by gathering information, analyzing vulnerabilities, and reporting.
 
 > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Penetration tests are ad hoc and can also be expensive in terms of disruptions and financially because pentesting is typically a paid offering by third-party practitioners.
 
