@@ -44,14 +44,18 @@ Optimizing code logic for performance efficiency refers to the process of improv
 
 **Optimize tools.** Use native SDKs or performance optimized libraries. Native SDKs are designed to interact with the services and resources on a platform or within a framework. For example, cloud native SDKs work better with cloud service data planes than custom API access. The SDKs are often more performant handling network requests and excel at optimizing their interactions. Performance-optimized libraries, such as Math.NET, contain performance optimized functions that can improve performance when applied appropriately.
 
+:::image type="icon" source="../_images/trade-off.svg"::: *Tradeoff:* While SDKs provide convenience and abstract away the complexities of interacting with APIs, they may limit the level of control and customization you have over your custom code.
+
 #### Optimize memory management
 
-Efficient memory management can improve the performance of the code by reducing the overhead of memory operations.
+Optimizing code memory refers to the process of efficiently managing and reducing the memory usage in a codebase. Efficient memory management can improve the performance of the code by reducing the overhead of memory operations.
 
 **Debug memory leaks.** Memory leaks deplete available memory if unaddressed. Monitor memory usage and identify sections of code responsible for memory leaks.
 Analyze stack traces to pinpoint the source of the memory leak.
 
-**Reduce memory allocations.** Too many memory allocations can degrade application performance generate errors.
+**Reduce memory allocations.** By minimizing memory allocations, you reduce the overall memory footprint of the code. The workload can utilize the available memory more efficiently. There's less need for the garbage collector to reclaim unused memory, and it reduces the frequency and duration of garbage collection cycles. Memory allocations can be a costly operation, especially when performed frequently. By reducing the number of memory allocations, the code can execute faster and more efficiently, leading to improved performance.
+
+Caches play a crucial role in improving performance by storing frequently accessed data closer to the processor. When memory allocations are minimized, there's less contention for cache space, allowing the cache to be utilized more effectively and improving overall performance. Too many memory allocations can degrade application performance generate errors.
 
 - *Local variables:* Use local variables instead of global variables to minimize memory consumption.
 - *Lazy initialization.* Implement lazy initialization to defer the creation of objects or resources until needed.
@@ -80,6 +84,12 @@ Concurrency and parallelism allow multiple tasks to be executed simultaneously, 
 
 - *Queues:* A queue is a storage buffer located between a requesting component (producer) and the processing component (consumer) of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The requesting component places tasks in the queue, the queue stores them until the processing component has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. To learn more about queue-based load leveling, see [Queue-based load leveling pattern](/azure/architecture/patterns/queue-based-load-leveling). Also see [Storage queues and Service Bus queues compared and contrasted](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
+#### Use retry mechanisms
+
+Retry mechanisms are techniques used in code to handle and recover from transient errors or failures. They provide a way to automatically retry an operation that failed due to temporary issues such as network errors, service unavailability, or resource congestion.
+
+Retry mechanisms often incorporate techniques such as exponential backoff, where the delay between retries gradually increases. This approach helps to alleviate resource congestion by reducing the number of simultaneous retry attempts. Introducing a delay between retries you can minimize the strain on resources, resulting in more efficient resource utilization.
+
 #### Use connection pooling
 
 Establishing a connection to a database is an expensive operation. It requires creating an authenticated network connection to the remote database server. Database connections are especially expensive for applications that open new connections frequently. Connection pooling reuses existing connections and avoids the expense of opening a new connection for each request. Connection pooling reduces connection latency and enables higher database throughput (transactions per second) on the server. You should choose a pool size that can handle more connections than you currently have. The goal is to have the connection pool quickly handle a new incoming request.
@@ -87,7 +97,7 @@ Establishing a connection to a database is an expensive operation. It requires c
 - *Understand connection pooling limits.* Some services limit the number of network connections. Exceeding this limit causes connections to be slowed down or terminated. With connection pooling, a fixed set of connections is established at startup time and maintained. In many cases, a default pool size might consist only of a small handful of connections that perform quickly in basic test scenarios. Your application might exhaust the default pool size under scale and create a bottleneck. You should establish a pool size that maps to the number of concurrent transactions supported on each application instance.
 - *Test the connection pool.* Each database and application platform has slightly different requirements for the right way to set up and use the pool. In all cases, testing is important to ensure a connection pool is properly established and works as designed under load.
 
- :::image type="icon" source="../_images/risk.svg"::: *Risk:* Connection pooling could create [pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation) and degrade performance.
+     :::image type="icon" source="../_images/risk.svg"::: *Risk:* Connection pooling could create [pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation) and degrade performance.
 
 #### Optimize background jobs
 
@@ -109,13 +119,15 @@ Optimizing infrastructure performance involves tuning the performance of hardwar
 **Optimize the network.** Optimizing a workload network for performance refers to the process of configuring and fine-tuning the network infrastructure. The goal is to ensure that the workload can operate at its highest level of efficiency and deliver optimal performance.
 
 - *Network protocols.* Upgrade to modern protocols like HTTP/2, which enables multiple requests to be sent over a single connection, reducing the overhead of establishing new connections.
+
+    :::image type="icon" source="../_images/trade-off.svg":::*Tradeoff:* Newer protocol can exclude older clients.
 - *Network chattiness.* Reduce the number of network requests by batching them together. Instead of making multiple small requests, combine them into larger requests to reduce network overhead.
 - *Database queries.* Ensure that database queries retrieve only the necessary information. Avoid retrieving large amounts of unnecessary data, which can lead to increased network traffic and slower performance.
 - *Static data.* Utilize a content delivery network (CDN) to cache frequently accessed static content closer to the users. Caching reduces the need for data to travel over long distances, improving response times and reducing network traffic.
 - *Log collection.* Collect and retain only the necessary log data to support your requirements. Configure data collection rules and consider design considerations for optimizing your Log Analytics costs.
 - *Data compression.* Compressing and bundling [HTTP content](/iis/configuration/system.webserver/httpcompression/) and [file data](/windows/win32/fileio/file-compression-and-decompression) allows faster transmission between clients and servers. Compression shrinks the data returned from a page or API back to the browser or client app. It optimizes network traffic that can potentially accelerate application communication.
 
-:::image type="icon" source="../_images/trade-off.svg":::
+    :::image type="icon" source="../_images/trade-off.svg":::
 *Tradeoff:* Compressions adds extra server side and client side processing. The application must compress, send, and decompress data. Multi-cast communication (multiple recipients) can create even more decompression overhead. You need to test and measure the performance variations before and after implementing data compression to determine if it's a good fit for your workload. For more information, see [Response compression in ASP.NET Core](/aspnet/core/performance/response-compression?preserve-view=true&view=aspnetcore-3.1).
 
 ## Azure facilitation
