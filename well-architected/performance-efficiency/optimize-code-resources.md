@@ -134,16 +134,13 @@ Optimizing infrastructure performance involves tuning the performance of hardwar
 
 **Optimization tools:** Azure Perf Insights provides insights into network performance and actionable recommendations for optimizing Azure services and resources.
 
-**Native SDKs & performance-optimized libraries:** Azure provides SDKs (Software Development Kits) and libraries for various programming languages to interact with Azure services. The SDKs are designed to simplify interactions between applications and Azure resources. These SDKs provide optimal interaction with Azure services, reducing latency and enhancing efficiency
+**Native SDKs & performance-optimized libraries:** Azure provides [SDKs](https://azure.microsoft.com/downloads/) and libraries for various programming languages to interact with Azure services. The SDKs are designed to simplify interactions between applications and Azure resources. These SDKs provide optimal interaction with Azure services, reducing latency and enhancing efficiency
 
-**Memory management:** Azure Application Insights Smart Detection analyzes memory consumption and helps identify and address potential memory leaks. Azure offers best practices and guidelines for efficient memory management.
+**Memory management:** [Azure Application Insights Smart Detection](/azure/azure-monitor/alerts/proactive-diagnostics) analyzes memory consumption and helps identify and address potential memory leaks. Azure offers best practices and guidelines for efficient memory management.
 
-**Concurrency and parallelism:** Azure provides services like Azure Kubernetes Service (AKS) that support deploying containerized applications for enhanced parallel processing.
-Azure Batch is a cloud-based job scheduling service that enables parallel and high-performance computing without the need for infrastructure setup.
+**Concurrency and parallelism:** Azure provides services like [Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/) that support deploying containerized applications for enhanced parallel processing. [Azure Batch](https://learn.microsoft.com/azure/batch/batch-technical-overview) is a cloud-based job scheduling service that enables parallel and high-performance computing without the need for infrastructure setup.
 
-**Infrastructure consistency:** Azure offers tools like Azure Resource Manager (ARM) templates, which allow users to define and deploy infrastructure using code for efficient, repeatable, and consistent resource deployments.
-
-Azure Policy provides governance capabilities to ensure that resource deployments adhere to organizational best practices and standards.
+**Infrastructure consistency:** Azure offers tools like [Azure Resource Manager (ARM) templates](/azure/templates/), which allow users to define and deploy infrastructure using code for efficient, repeatable, and consistent resource deployments. [Azure Policy](/azure/governance/policy/overview) provides governance capabilities to ensure that resource deployments adhere to organizational best practices and standards.
 
 **Monitoring and analysis:** Azure Log Analytics provides detailed insights into code and infrastructure performance, helping identify performance bottlenecks.
 Azure Monitor: It offers full-stack monitoring, advanced analytics, and intelligent alerting to facilitate the identification and resolution of performance issues.
