@@ -34,11 +34,11 @@ This guide describes the recommendations for scaling and partitioning a workload
 
 Both scaling and partitioning contribute to performance efficiency by ensuring that resources are utilized effectively and the system can handle varying workloads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands
 
-### Scale workload
+### Scale the workload
 
 Scaling a workload refers to the process of adjusting the resources allocated to a workload. The adjustments include increasing or decreasing the number of servers, instances, or resources, to meet the changing demands of the workload. Scaling allows the workload to handle increased traffic or workload demands without experiencing performance degradation or downtime.
 
-#### Understand scaling
+#### Pick a scaling strategy
 
 Picking the right scaling strategy refers to selecting the appropriate approach, either vertical or horizontal scaling. You base the choice on the specific characteristics and requirements of a workload.
 
@@ -114,13 +114,13 @@ As you scale a workload, you must design the application to distribute load. Jus
 
 Implementing scaling in a workload refers to the ability to adjust the available resources, such as computing power and storage, based on the changing demands of the workload. It involves adding or removing resources dynamically to accommodate variations in workload requirements.
 
-**Understand scaling boundaries.** When you understand the service scaling limits, increments, and restrictions, you can make informed decisions when selecting a service. It ensures that the chosen service can handle the expected workload, scale efficiently, and meet the performance requirements of your application.
+**Use services with autoscaling.** Autoscaling automatically scales infrastructure to meet demand. Use platform-as-a-service (PaaS) offerings with built-in autoscaling. The ease of scaling on PaaS is a major advantage. For example, scaling out virtual machines (IaaS) requires a separate load balancer, client-request handling, and storing state externally. PaaS offerings handle most of these tasks.
+
+**Understand service scaling boundaries.** When you understand the service scaling limits, increments, and restrictions, you can make informed decisions when selecting a service. It ensures that the chosen service can handle the expected workload, scale efficiently, and meet the performance requirements of your application.
 
 - *Scaling limits.* Scaling limits refer to the maximum capacity that a location or service can handle. It's important to know these limits to ensure that the service can accommodate the expected workload and handle peak usage without performance degradation. Every resource has an upper scale limit. If you need to go beyond scale limits, you should partition your workload. You must verify the capacity can meet your workload requirements.
 - *Scaling increments:* Services scale at defined increments. Compute services might scale by instances and pods. Databases might scale by transaction units, virtual cores, or instances. It's important to understand these increments to optimize resource allocation and prevent resource flapping.
 - *Scaling restrictions:* Some services allow you to scale (up or out) but limit your ability to undo that scaling automatically. You need to scale in manually, sometimes redeploying a new resource. The limitations are often to protect the workload. Scaling down or scaling in can have implications on the availability and performance of the workload. A service may enforce certain limitations or constraints to ensure that the workload has sufficient resources to operate effectively. It can affect data consistency and synchronization, especially in distributed systems. The service may have mechanisms in place to handle data replication and consistency during scaling up or out but may not provide the same level of support for scaling down or in.
-
-**Use services with autoscaling.** Autoscaling automatically scales infrastructure to meet demand. Use platform-as-a-service (PaaS) offerings with built-in autoscaling. The ease of scaling on PaaS is a major advantage. For example, scaling out virtual machines (IaaS) requires a separate load balancer, client-request handling, and storing state externally. PaaS offerings handle most of these tasks.
 
 **Use meaningful load metrics.** Scaling should use meaningful load metrics as scaling triggers. Meaningful load metrics include simple metrics (CPU, memory) or more advanced metrics (queue depth, SQL queries, custom metrics queries, HTTP queue length). You should consider using a combination of simple and advanced load metrics as your scaling trigger.
 
