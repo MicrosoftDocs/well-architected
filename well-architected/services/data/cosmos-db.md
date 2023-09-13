@@ -55,7 +55,7 @@ As with any cloud service, failures can occur both on the service and the worklo
 | --- | --- |
 | Distribute your Azure Cosmos DB account across availability zones (when available). | Availability zones provide distinct power, networking, and cooling isolating hardware failures to a subset of your replicas. Using availability zones provides an RTO and RPO of 0. |
 | Configure your Azure Cosmos DB account to span at least two regions. | Spanning multiple regions prevents your account from being entirely unavailable if there's an isolated region outage. |
-| Enable service-managed failover for your account. | Service-managed failover allows Azure Cosmos DB to change the write region of a multiple-region account to preserve availability. Understand the tradeoffs with service-managed failover and plan for forced failover if necessary. |
+| Enable service-managed failover for your account. | Service-managed failover allows Azure Cosmos DB to change the write region of a multiple-region account to preserve availability. Understand the tradeoffs with service-managed failover and plan for forced failover if necessary. For more information, see [building highly available applications](/azure/cosmos-db/high-availability#tips-for-building-highly-available-applications). |
 | Validate availability by testing failover manually with service-managed failover temporarily disabled. | Temporarily disabling service-manage failover allows you to validate the end-to-end high availability of your application with a manual failover started using a script or the Azure portal. Afterwards, you can reenable service-managed failover. |
 
 ### Azure Policy definitions
