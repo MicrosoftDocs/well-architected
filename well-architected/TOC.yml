@@ -25,14 +25,16 @@
           items:
             - name: Reliability patterns
               href: reliability/design-patterns.md
+            - name: Disaster recovery strategy  
+              href: reliability/disaster-recovery.md
             - name: Failure mode analysis
               href: reliability/failure-mode-analysis.md
-            - name: Handling transient faults 
-              href: reliability/handle-transient-faults.md 
             - name: High-availability multi-region design
               href: reliability/highly-available-multi-region-design.md   
             - name: Regions and availability zones
               href: reliability/regions-availability-zones.md
+            - name: Transient faults handling 
+              href: reliability/handle-transient-faults.md 
       - name: Security
         items: 
         - name: Quick links
