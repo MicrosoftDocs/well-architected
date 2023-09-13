@@ -3,7 +3,7 @@ title: Recommendations for using availability zones and regions
 description: This article provides guidance to help you understand when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
-ms.date: 09/05/2023
+ms.date: 09/13/2023
 ms.topic: conceptual
 ms.custom:
   - guide
@@ -360,6 +360,9 @@ You can create a multi-region solution even when the regions aren't paired. Howe
 #### Combine multi-zone and multi-region approaches
 
 You can also combine multi-zone and multi-region approaches. For example, you might deploy zone-redundant components into each region and also configure replication between the regions. Configuring this type of approach can be complicated, and this approach can be expensive, but for some solutions it provides a very high degree of reliability.
+
+> [!IMPORTANT]
+> Mission-critical workloads should use both multiple availability zones *and* multiple regions. For more information about the considerations that you should give when designing mission-critical workloads, see [Mission-critical workload documentation](../mission-critical/index.yml).
 
 ## Examples
 
