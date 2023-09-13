@@ -12,6 +12,7 @@ ms.topic: conceptual
 This guide describes the best practices for selecting the right services for your workload. Selecting the right services is about choosing the appropriate cloud services that best meet the requirements and demands of your specific workload. By choosing services that are designed to handle the workload's requirements, you can ensure that your workload meets the performance targets. On the other hand, if you pick the wrong services for your workload. The services may not be able to handle the workload's demands, leading to slow response times, bottlenecks, or even workload failures.
 
 **Definitions**
+
 |  Term| Definition|
 |---|---|
 |  Infrastructure |The physical components of cloud computing, such as datacenters, networking, and hardware, and their location in the world.|
@@ -126,6 +127,8 @@ Choose storage services that align with your data access patterns, durability re
 **Understand requirements:** Azure Monitor helps you collect and analyze data from your workload. It provides insights into the performance and health of your workloads, allowing you to identify and troubleshoot issues.
 
 **Understand services:** Azure had detailed documentation on all it [services and products](/azure/) to determine if they meet your performance requirements. Azure offers multiple services to accomplish the same outcome. It gives you the flexibility to align service choices to your performance needs, team's skill set, and cost requirement.
+
+**Understand service limits:** For a list of the most common Azure limits, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits). The [ResourceLimits](https://github.com/mspnp/samples/tree/master/OperationalExcellence/ResourceLimits) sample shows how to query the limits and quotas for commonly used resources.
 
 **Choose the right services:** Azure has a range of services to accommodate any workload. Azure provides [service selection guidance](/azure/architecture/guide/technology-choices/technology-choices-overview) for each service type. The guidance helps streamline your selection based on your requirements:
 

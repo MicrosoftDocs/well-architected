@@ -117,8 +117,8 @@
               href: performance-efficiency/scale-partition.md
             - name: Set performance targets
               href: performance-efficiency/performance-targets.md
-            - name: Test 
-              href: performance-efficiency/test.md
+            - name: Performance testing
+              href: performance-efficiency/performance-testing.md
             - name: Optimize code and infrastructure 
               href: performance-efficiency/optimize-code-infrastructure.md
             - name: Optimize data performance 
