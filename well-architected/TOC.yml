@@ -115,8 +115,8 @@
               href: performance-efficiency/scale-partition.md
             - name: Test 
               href: performance-efficiency/test.md
-            - name: Optimize code and resource use 
-              href: performance-efficiency/optimize-code-resources.md
+            - name: Optimize code and infrastructure 
+              href: performance-efficiency/optimize-code-infrastructure.md
             - name: Optimize data performance 
               href: performance-efficiency/optimize-data-performance.md
             - name: Prioritize critical flows and users 
