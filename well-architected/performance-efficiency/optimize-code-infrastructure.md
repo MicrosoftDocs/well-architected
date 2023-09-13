@@ -1,13 +1,13 @@
 ---
-title: Recommendations for optimizing code and resource use
-description: Learn best practices for optimizing code and resource use.  
+title: Recommendations for optimizing code and infrastructure
+description: Learn best practices for optimizing code and infrastructure.  
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing code and infrastructure use: PE 07
+# Recommendations for optimizing code and infrastructure: PE 07
 
 This guide describes the best practices for optimizing code and infrastructure performance. Optimizing code and infrastructure focuses on using components for their core purpose and only using them when necessary. Overuse of code and infrastructure creates unnecessary resource consumption, bottlenecks, and slow responsiveness. To compensate, you need to add more resources to accomplish the same tasks, reducing performance efficiency.
 
