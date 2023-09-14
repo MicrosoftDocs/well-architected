@@ -42,15 +42,11 @@ Optimizing data usage involves ensuring that data stores, partitions, and indexe
 
 Data profiling involves analyzing and understanding the structure, volume, and relationships of your data. It helps you gain insights into your data and identify areas for optimization to actual usage. Here's an overview of how to perform data profiling:
 
-**Understand the data structure.** Examine the structure of your data, including tables, columns, and relationships. Determine the data types, lengths, and constraints applied to each column. It helps you understand how the data is organized and how it relates to other data elements.
-
-**Analyze data volume.** Assess the volume of your data to understand the overall size and growth patterns. Determine the number of records or documents, and the size of individual tables or collections. This information helps you estimate storage requirements and identify potential scalability issues.
-
-**Identify data relationships.** Explore the relationships between different data elements, such as primary and foreign key relationships. Knowing the relationship allows you to understand how data is connected and how changes in one table or document may affect related data.
-
-**Assess data quality.** Evaluate the quality of your data by examining factors such as completeness, accuracy, consistency, and uniqueness. Identify any data anomalies, missing values, or duplicate records that may affect data integrity and query performance. This step helps you identify areas for data cleansing and improvement.
-
-**Capture data distribution.** Analyze the distribution of values within each column to understand data patterns. Identify frequent and rare values, outliers, and data skews. Knowing the distribution helps you optimize query performance by choosing appropriate indexing strategies and query optimization techniques.
+- *Understand the data structure:* Examine the structure of your data, including tables, columns, and relationships. Determine the data types, lengths, and constraints applied to each column. It helps you understand how the data is organized and how it relates to other data elements.
+- *Analyze data volume:* Assess the volume of your data to understand the overall size and growth patterns. Determine the number of records or documents, and the size of individual tables or collections. This information helps you estimate storage requirements and identify potential scalability issues.
+- *Identify data relationships.* Explore the relationships between different data elements, such as primary and foreign key relationships. Knowing the relationship allows you to understand how data is connected and how changes in one table or document may affect related data.
+- *Assess data quality.* Evaluate the quality of your data by examining factors such as completeness, accuracy, consistency, and uniqueness. Identify any data anomalies, missing values, or duplicate records that may affect data integrity and query performance. This step helps you identify areas for data cleansing and improvement.
+- *Capture data distribution.* Analyze the distribution of values within each column to understand data patterns. Identify frequent and rare values, outliers, and data skews. Knowing the distribution helps you optimize query performance by choosing appropriate indexing strategies and query optimization techniques.
 
 ### Monitor data
 
