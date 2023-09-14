@@ -42,8 +42,8 @@ Optimizing data usage involves ensuring that data stores, partitions, and indexe
 
 Data profiling involves analyzing and understanding the structure, volume, and relationships of your data. It helps you gain insights into your data and identify areas for optimization to actual usage. Here's an overview of how to perform data profiling:
 
-- *Understand the data structure:* Examine the structure of your data, including tables, columns, and relationships. Determine the data types, lengths, and constraints applied to each column. It helps you understand how the data is organized and how it relates to other data elements.
-- *Analyze data volume:* Assess the volume of your data to understand the overall size and growth patterns. Determine the number of records or documents, and the size of individual tables or collections. This information helps you estimate storage requirements and identify potential scalability issues.
+- *Understand the data structure.* Examine the structure of your data, including tables, columns, and relationships. Determine the data types, lengths, and constraints applied to each column. It helps you understand how the data is organized and how it relates to other data elements.
+- *Analyze data volume.* Assess the volume of your data to understand the overall size and growth patterns. Determine the number of records or documents, and the size of individual tables or collections. This information helps you estimate storage requirements and identify potential scalability issues.
 - *Identify data relationships.* Explore the relationships between different data elements, such as primary and foreign key relationships. Knowing the relationship allows you to understand how data is connected and how changes in one table or document may affect related data.
 - *Assess data quality.* Evaluate the quality of your data by examining factors such as completeness, accuracy, consistency, and uniqueness. Identify any data anomalies, missing values, or duplicate records that may affect data integrity and query performance. This step helps you identify areas for data cleansing and improvement.
 - *Capture data distribution.* Analyze the distribution of values within each column to understand data patterns. Identify frequent and rare values, outliers, and data skews. Knowing the distribution helps you optimize query performance by choosing appropriate indexing strategies and query optimization techniques.
@@ -52,9 +52,8 @@ Data profiling involves analyzing and understanding the structure, volume, and r
 
 Continuously monitor the performance of your data stores, partitions, and indexes in real-time. Collect and analyze performance metrics to identify areas of improvement and potential performance degradation. Utilize tools and techniques to collect performance metrics from your data stores, partitions, and indexes. Tools include system-level monitoring tools, database-specific monitoring features, or third-party monitoring solutions. Collect metrics such as CPU usage, memory utilization, disk I/O, query response times, and data throughput.
 
-**Set up alerts.** Configure alerts based on predefined thresholds or anomalies in the performance metrics. Alerts enable you to receive notifications when performance metrics exceed acceptable ranges or show abnormal behavior. Alerts can be set up using monitoring tools or custom scripts that trigger actions when specific conditions are met.
-
-**Diagnose issues.** Regularly analyze the collected performance metrics to identify areas of improvement and potential performance degradation. Use visualization tools or dashboards to gain insights into performance trends, bottlenecks, and anomalies. Identify the root causes of performance issues and determine appropriate actions for resolution.
+- *Set up alerts.* Configure alerts based on predefined thresholds or anomalies in the performance metrics. Alerts enable you to receive notifications when performance metrics exceed acceptable ranges or show abnormal behavior. Alerts can be set up using monitoring tools or custom scripts that trigger actions when specific conditions are met.
+- *Diagnose issues.* Regularly analyze the collected performance metrics to identify areas of improvement and potential performance degradation. Use visualization tools or dashboards to gain insights into performance trends, bottlenecks, and anomalies. Identify the root causes of performance issues and determine appropriate actions for resolution.
 
 ### Partition data
 
@@ -85,19 +84,13 @@ For more information, see [partitioning best practices](/azure/architecture/best
 
 Optimize your database queries by rewriting, reordering, or restructuring them to improve their efficiency. Use query optimization techniques such as index hints, query caching, and query plan analysis. Here are some techniques and considerations for optimizing database queries:
 
-**Rewrite queries.** Review and analyze complex queries to identify opportunities for rewriting them in a more efficient way. You should consider restructuring the query logic, eliminating redundant operations, or simplifying the query syntax.
-
-Avoid N+1 query problem. Minimize the number of round-trips to the database by using joins and batch fetching to retrieve related data efficiently.
-
-**Reorder joins.** The order in which tables are joined can affect query performance. Evaluate the query execution plan and consider rearranging the join order to minimize the number of rows involved in each join operation.
-
-**Use index hints.** Index hints allow the database engine to specify the use of specific indexes for query execution. By analyzing query execution plans and understanding the data access patterns, index hints can be utilized to guide the optimizer in selecting the most appropriate indexes for efficient data retrieval.
-
-**Cache queries.** Implementing query caching can improve performance by storing the results of frequently executed queries in memory. It avoids the need for redundant execution of the same query and reduces the overhead associated with query processing.
-
-**Optimizing locking.** Efficient locking strategies can enhance query performance and concurrency. Avoid unnecessary or restrictive lock hints in queries, and apply optimized locking mechanisms provided by the database system. Analyze and adjust isolation levels as required to balance data consistency and query performance.
-
-**Monitor and tune.** Regularly monitor query performance metrics such as execution time, resource utilization, and query throughput. Use database profiling tools and monitoring functionalities to identify poorly performing queries and areas for optimization. Evaluate and fine-tune query execution plans based on collected performance data. Analyze query execution plans and WAIT STATS to identify potential bottlenecks and optimize query performance.
+- *Rewrite queries.* Review and analyze complex queries to identify opportunities for rewriting them in a more efficient way. You should consider restructuring the query logic, eliminating redundant operations, or simplifying the query syntax.
+- *Avoid N+1 query problem.* Minimize the number of round-trips to the database by using joins and batch fetching to retrieve related data efficiently.
+- *Reorder joins.* The order in which tables are joined can affect query performance. Evaluate the query execution plan and consider rearranging the join order to minimize the number of rows involved in each join operation.
+- *Use index hints.* Index hints allow the database engine to specify the use of specific indexes for query execution. Index hints guide the optimizer in selecting the most appropriate indexes for efficient data retrieval.
+- *Cache queries.* Implementing query caching can improve performance by storing the results of frequently executed queries in memory. It avoids the need for redundant execution of the same query and reduces the overhead associated with query processing.
+- *Optimize locking.* Efficient locking strategies can enhance query performance and concurrency. Avoid unnecessary or restrictive lock hints in queries, and apply optimized locking mechanisms provided by the database system. Analyze and adjust isolation levels as required to balance data consistency and query performance.
+- *Monitor and tune.* Regularly monitor query performance metrics such as execution time, resource utilization, and query throughput. Use database profiling tools and monitoring functionalities to identify poorly performing queries and areas for optimization. Evaluate and fine-tune query execution plans based on collected performance data. Analyze query execution plans and WAIT STATS to identify potential bottlenecks and optimize query performance.
 
 ### Optimize indexes
 
@@ -105,25 +98,18 @@ Optimizing an index refers to the process of improving the performance and effic
 
 Index optimization improves the efficiency of sorting and join operations, leading to faster query execution times. Efficient indexes reduce the amount of disk input/output (I/O) operations needed for query execution. They reduce the duration of locks and contention on data pages, allowing multiple users to access and modify data concurrently. Well-planned indexing strategies can also reduce the storage space required by eliminating redundant or unnecessary indexes.
 
-**Analyze query patterns.** Understand the query patterns that are executed on your database. Identify the queries that are frequently executed and affect performance. Analyzing query patterns helps you determine which indexes are most beneficial for optimizing performance.
-
-**Evaluate existing indexes.** Review the existing indexes in your database. Evaluate their usage, performance effects, and relevance to the query patterns. Identify any redundant or unused indexes that can be removed to improve write performance and reduce storage overhead.
-
-**Identify columns for indexing.** Identify the columns that are frequently used in the WHERE, JOIN, and ORDER BY clauses of your queries. These columns are potential candidates for indexing as they can improve query execution by enabling faster data retrieval.
-
-**Choose the right index type.** Select the appropriate index type based on your database system. Common options include B-tree indexes for equality and range queries, hash indexes for exact match queries, and full-text indexes for text search operations. Choose the index type that best matches your query requirements.
+- *Analyze query patterns.* Understand the query patterns that are executed on your database. Identify the queries that are frequently executed and affect performance. Analyzing query patterns helps you determine which indexes are most beneficial for optimizing performance.
+- *Evaluate existing indexes.* Review the existing indexes in your database. Evaluate their usage, performance effects, and relevance to the query patterns. Identify any redundant or unused indexes that can be removed to improve write performance and reduce storage overhead.
+- *Identify columns for indexing.* Identify the columns that are frequently used in the WHERE, JOIN, and ORDER BY clauses of your queries. These columns are potential candidates for indexing as they can improve query execution by enabling faster data retrieval.
+- *Choose the right index type.* Select the appropriate index type based on your database system. Common options include B-tree indexes for equality and range queries, hash indexes for exact match queries, and full-text indexes for text search operations. Choose the index type that best matches your query requirements.
+- *Consider index column order.* When creating composite indexes (indexes with multiple columns), consider the order of the columns. Place the columns most frequently used in queries at the beginning of the index. It helps ensure that the index is effectively used for a wider range of queries.
+- *Balance index size.* Avoid creating indexes on columns with low cardinality (where the number of distinct values is low). Such indexes can be inefficient and increase the size of your database. Instead, focus on indexing columns that have a higher selectivity.
+- *Maintain index usage.* Continuously monitor the usage and performance of your indexes. Look for opportunities to create new indexes or modify existing ones based on changes in query patterns or performance requirements. Remove or update indexes that are no longer beneficial. Keep in mind the maintenance overhead associated with indexes. As data changes, indexes can become fragmented and affect performance. Regularly perform index maintenance tasks such as rebuilding or reorganizing indexes to ensure optimal performance.
+- *Test and validate.* Before implementing any index changes in a production environment, perform thorough testing and validation. Measure the performance effect of index changes using representative workloads and verify the improvements against predefined benchmarks.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** B-tree indexes may have higher storage overhead, slower for exact match queries.
 Hash indexes aren't suitable for range queries or comparison operators.
 Full-text indexes may have higher storage requirements, slower for nontextual data.
-
-**Consider index column order.** When creating composite indexes (indexes with multiple columns), consider the order of the columns. Place the columns most frequently used in queries at the beginning of the index. It helps ensure that the index is effectively used for a wider range of queries.
-
-**Balance index size:** Avoid creating indexes on columns with low cardinality (where the number of distinct values is low). Such indexes can be inefficient and increase the size of your database. Instead, focus on indexing columns that have a higher selectivity.
-
-**Maintain index usage:** Continuously monitor the usage and performance of your indexes. Look for opportunities to create new indexes or modify existing ones based on changes in query patterns or performance requirements. Remove or update indexes that are no longer beneficial. Keep in mind the maintenance overhead associated with indexes. As data changes, indexes can become fragmented and affect performance. Regularly perform index maintenance tasks such as rebuilding or reorganizing indexes to ensure optimal performance.
-
-**Test and validate.** Before implementing any index changes in a production environment, perform thorough testing and validation. Measure the performance effect of index changes using representative workloads and verify the improvements against predefined benchmarks.
 
 ### Consider data compression
 
