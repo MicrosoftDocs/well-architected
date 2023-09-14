@@ -37,6 +37,8 @@
               href: reliability/redundancy.md
             - name: Regions and availability zones
               href: reliability/regions-availability-zones.md
+            - name: Reliability testing
+              href: reliability/testing-strategy.md
             - name: Transient faults handling 
               href: reliability/handle-transient-faults.md 
       - name: Security

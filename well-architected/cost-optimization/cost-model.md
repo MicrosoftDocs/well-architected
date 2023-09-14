@@ -157,5 +157,4 @@ When you extend your existing investments in software licenses to the cloud, you
 
 - [Conduct cost reviews](monitor-reviews.md)
 - [Consumption and fixed cost models](design-price.md)
-- [Develop a cost model](design-model.md)
 - [Set budgets and alerts](monitor-alert.md)
