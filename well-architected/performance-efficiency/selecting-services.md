@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for selecting the right services: PE 03
 
-This guide describes the best practices for selecting the right services for your workload. Selecting the right services is about choosing the appropriate cloud services that best meet the requirements and demands of your specific workload. By choosing services that are designed to handle the workload's requirements, you can ensure that your workload meets the performance targets. On the other hand, if you pick the wrong services for your workload. The services may not be able to handle the workload's demands, leading to slow response times, bottlenecks, or even workload failures.
+This guide describes the best practices for selecting the right services for your workload. Selecting the right services is about choosing the appropriate services that best meet the requirements and demands of your specific workload. By choosing services that are designed to handle the workload's requirements, you can ensure that your workload meets the performance targets. On the other hand, if you pick the wrong services for your workload. The services may not be able to handle the workload's demands, leading to slow response times, bottlenecks, or even workload failures.
 
 **Definitions**
 
@@ -57,7 +57,7 @@ Understanding services before choosing them involves considering various factors
 
 ### Evaluate the location
 
-Choosing the right infrastructure refers to selecting the appropriate region and availability zones for hosting your workload. The region refers to a specific geographic location, while availability zones are separate physical data centers within a region. By choosing the right infrastructure, you ensure that your workload runs on a robust and efficient infrastructure that can meet your performance and availability requirements. Different regions and availability zones may have varying levels of network latency and compute resources. By selecting the infrastructure with low latency and ample resources, you can optimize the performance of your workload.
+Evaluating the location refers to selecting the appropriate region and availability zones for hosting your workload. The region refers to a specific geographic location, while availability zones are separate physical data centers within a region. Different regions and availability zones may have varying levels of network latency and compute resources. By selecting the infrastructure with low latency and ample resources, you can optimize the performance of your workload.
 
 **Understand available features.** Different regions have different features available. These features include the number of services and availability zones. Understand the features available in a region before selecting it. Ensure a region meets workload performance needs.
 
