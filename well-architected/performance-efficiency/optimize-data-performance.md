@@ -9,12 +9,12 @@ ms.topic: conceptual
 
 # Recommendations for optimizing data performance: PE 08
 
-This guide describes the best practices for optimizing data performance. Data performance optimization includes designing the right data solutions and maintaining their performance over time. Optimizing data performance helps ensure a workload is responsive to data requests which can be a bottleneck in workloads. Poor data performance results in slow response times, processing delays, and poor user experience.
+Optimizing workload data performance refers to improving the efficiency and performance of data processing and storage within a workload. This involves optimizing data access, retrieval, storage, and processing operations to enhance the overall performance of the workload. Optimizing workload data performance is important for workload performance efficiency because it can have a significant impact on the overall performance of a system. Failure to optimize workload data performance leads to slower response times, increased latency, and degraded performance. It also hinders scalability and limit the ability to handle increasing workloads effectively.
 
-## Definitions
+**Definitions**
 
-|  Terms|Definitions|
-  |-|-|
+|Terms|Definitions|
+|---|---|
 Data store| A resource that stores data such as a database, object store, file share, etc.|
 |  Eventual consistency|A data synchronization model that allows for temporary inconsistency in data replicas before eventually becoming the same.|
 | Optimistic concurrency|An approach for updating databases that uses snapshots to make updates instead of database locks. |
