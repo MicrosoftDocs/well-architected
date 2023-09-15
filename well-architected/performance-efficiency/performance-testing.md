@@ -25,15 +25,6 @@ This guide describes the best practices for testing. Performance testing helps y
 
 Performance testing helps you gather measurable data on a workload. It also helps you build workloads to the right specifications when done early enough. You should conduct performance tests as early in the software development lifecycle as possible. Early testing allows you to catch and fix performance issues earlier in development. You can use a proof-of-concept if production code isn't ready.
 
-### Establish baselines
-
-Establishing baselines provides a reference point to compare performance results and helps track the progress of performance optimization efforts over time. Start by conducting initial tests to establish baselines for the performance metrics you want to measure, such as response time, throughput, and resource utilization. Use these baseline measurements as a benchmark for future performance tests, allowing you to identify any degradation or improvement. To establish baselines for performance testing and use them as a benchmark for future performance tests, follow these steps:
-
-- *Conduct initial tests:* Start by performing initial tests on the workload to gather performance metrics such as response time, throughput, and resource utilization. These tests serve as the baseline measurements.
-Identify performance metrics: Determine the specific performance metrics that you want to measure and track. Examples include response time (how quickly the workload responds to requests), throughput (the number of requests processed per unit of time), and resource utilization (CPU, memory, disk usage).
-- *Record measurements:* Record the performance metrics obtained during the initial tests as the baseline measurements. These measurements represent the starting point against which you compare future performance tests.
-- *Compare future tests:* In subsequent performance tests, compare the performance metrics against the established baselines and thresholds. The comparison allows you to identify any improvements or degradation in performance.
-
 ### Prepare the test
 
 Preparing performance tests refers to the activities involved in setting up and arranging the necessary resources, configurations, and test scenarios to conduct performance testing effectively.
@@ -61,11 +52,9 @@ When defining acceptance criteria, it's important to focus on the user and their
 
 When selecting the right type of performance test, it's important to align it with the acceptance criteria. The acceptance criteria define the conditions that need to be met for a requirement or bug fix to be considered done. Performance tests should aim to validate whether a workload meets these acceptance criteria and performs as expected under specified conditions. Aligning the performance test type with the acceptance criteria ensures that the test focuses on meeting the performance expectations defined by the criteria.
 
-**Understand acceptance criteria.** Review the acceptance criteria for the requirement or bug fix. They outline the specific conditions and functionalities to be met.
-
-**Identify relevant performance metrics.** Based on the acceptance criteria, determine the performance metrics that are critical to achieving the desired outcomes. For example, if the acceptance criteria focus on response time, prioritizing load testing may be appropriate.
-
-**Select appropriate test type.** Evaluate the available test types (load testing, stress testing, etc.) and choose the one that best aligns with the identified performance metrics and acceptance criteria. Here's a sample of test types and their use cases.
+- *Understand acceptance criteria.* Review the acceptance criteria for the requirement or bug fix. They outline the specific conditions and functionalities to be met.
+- *Identify relevant performance metrics.* Based on the acceptance criteria, determine the performance metrics that are critical to achieving the desired outcomes. For example, if the acceptance criteria focus on response time, prioritizing load testing may be appropriate.
+- *Select appropriate test type.* Evaluate the available test types (load testing, stress testing, etc.) and choose the one that best aligns with the identified performance metrics and acceptance criteria. Here's a sample of test types and their use cases.
 
 | Test type | Description | Use case |
 | --- | --- | --- |
@@ -130,7 +119,13 @@ Analyzing the test results involves examining the collected data and metrics fro
 **Iterate and refine.**  Make other adjustments and improvements as needed. Use the collected data and metrics to diagnose specific performance issues. The diagnosis may involve tracing through the workload components, examining log files, monitoring resource usage, or analyzing error messages. Dig deeper into the data to understand the underlying causes of performance problems.
 Based on the analysis of the test results, prioritize the identified performance issues and implement the necessary improvements. The improvements could involve optimizing code, tuning database queries, improving caching mechanisms, or optimizing network configurations.
 
-**Document new baselines.** Document the findings from the test result analysis, including the identified bottlenecks, recommended improvements, and any insights gained. This documentation serves as a reference for future performance testing, tracking progress, and guiding performance optimization efforts.
+### Establish baselines
+
+Establishing baselines provides a reference point to compare performance results over time. Baselines should be meaningful snapshots of workload performance, meaning you don't need to use every test as a baseline. Consider the workload objectives and document performance snapshots that allow you to learn over time and optimize. Use these baseline measurements as a benchmark for future performance tests, allowing you to identify any degradation or improvement. To establish baselines for performance testing and use them as a benchmark for future performance tests, follow these steps:
+
+- *Identify performance metrics:* Determine the specific performance metrics that you want to measure and track. Examples include response time (how quickly the workload responds to requests), throughput (the number of requests processed per unit of time), and resource utilization (CPU, memory, disk usage).
+- *Record meaningful measurements:* Record the performance metrics obtained during the test as the baseline measurements. These measurements represent the starting point against which you compare future performance tests.
+- *Compare future tests:* In subsequent performance tests, compare the performance metrics against the established baselines and thresholds. The comparison allows you to identify any improvements or degradation in performance.
 
 ### Test continuously
 
