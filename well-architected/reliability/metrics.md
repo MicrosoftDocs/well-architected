@@ -1,88 +1,101 @@
 ---
 title: Recommendations for defining reliability targets
-description: Learn how to define reliability targets for your critical workloads and flows.
+description: Learn how to define reliability targets for your critical workloads and flows. Discover key design strategies such as taking a customer-focused approach, defining service-level objectives (SLOs) and service-level agreements (SLAs), and building a health model to ensure appropriate operational prioritization. Explore examples of composite SLAs, recovery targets, and reporting strategies.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for defining reliability targets RE:03
+# Recommendations for defining reliability targets
 
-This guide describes the best practices for defining availability and recovery target metrics for critical workloads and flows. These are derived through workshop exercises with business stakeholders and refined through monitoring and testing. Creating realistic expectations for workload reliability with your internal stakeholders helps ensure that they are able to communicate those expectations to customers through contractual agreements. Realistic expectations also help stakeholders understand and support your architectural design decisions, knowing that you are designing to optimally meet the targets you have agreed upon.
+**Applies to: RE 03**
 
-## Business metrics
+This guide describes the recommendations for defining availability and recovery target metrics for critical workloads and flows. Reliability targets are derived through workshop exercises with business stakeholders. The targets are refined through monitoring and testing. 
 
-Here are some of the metrics that you should consider to quality the business requirements.
+With your internal stakeholders, set realistic expectations for workload reliability so that stakeholders can communicate those expectations to customers through contractual agreements. Realistic expectations also help stakeholders understand and support your architectural design decisions and know that you're designing to optimally meet the targets you agreed on.
+
+Consider using the following metrics to quantify the business requirements.
 
 |Term  |Definition  |
 |---------|---------|
-|Service-level objectives (SLO)    | A percentage target that represents the health of the component and the reliability tier. The higher the tier, the more reliable the component. Composite SLO represents aggregate target of the entire workload considering the individual component SLOs.        |
-|Service-level indicators (SLIs)     | Metrics emitted by a service, which are aggregated to quantify an SLO value.        |
-|Service-level agreements (SLAs)     | Contractual agreement between the service provider and service user on the SLOs. Failure to meet the commitment may have financial consequences for the service provider.        |
-|Mean time to recover (MTTR)     | Time taken to restore a component after a failure is detected.        |
-|Mean time between failures (MTBF)     |Duration that the workload can perform the expected function without interruption, until it next fails.         |
-|Recovery time objective (RTO)     | Maximum acceptable time an application can be unavailable after an incident.        |
-|Recovery point objective (RPO)     | Maximum duration of data loss that\'s acceptable during a incident.        |
+|Service-level objective (SLO)    | A percentage target that represents the health of the component and the reliability tier. The higher the tier, the more reliable the component. *Composite SLO* represents the aggregate target of the entire workload and accounts for the component SLOs.        |
+|Service-level indicator (SLI)     | A metric emitted by a service. SLI metrics are aggregated to quantify an SLO value.        |
+|Service-level agreement (SLA)     | A contractual agreement between the service provider and the service customer. The agreement defines the SLOs. Failure to meet the agreement might have financial consequences for the service provider.        |
+|Mean time to recover (MTTR)     | The time taken to restore a component after a failure is detected.        |
+|Mean time between failure (MTBF)     |The duration for which the workload can perform the expected function without interruption, until it fails.         |
+|Recovery time objective (RTO)     | The maximum acceptable time that an application can be unavailable after an incident.        |
+|Recovery point objective (RPO)     | The maximum acceptable duration of data loss during an incident.        |
 
-Target values for the metrics in the preceding table must be defined for the workload in the context of the user and system flows you have identified and scored by their criticality (link to RE01), given a set of requirements. The values will drive the design of your workload in terms of architecture, review, testing, and incident management operations. Failure to meet the targets will cause a business impact that's beyond the tolerance level.
+Define the workload's target values for these metrics in the context of user flows and system flows. [Identify and score those flows](identify-flows.md) by how critical they are to your requirements. Use the values to drive the design of your workload in terms of architecture, review, testing, and incident management operations. Failure to meet the targets will affect the business beyond the tolerance level.
 
 ## Key design strategies
 
-The various activities involved in the exercise of defining reliability targets for your critical flows should not be driven by technical discussions. Using a customer-focused perspective, business stakeholders define the requirements that the workload must meet, and technical experts should help the stakeholders assign realistic numerical values that correlate to those requirements. This interaction should be a knowledge-sharing exercise that allows for negotiation and ultimately, mutual consensus on what realistic SLOs look like. As an example of mapping the requirements to measurable numerical values, the stakeholders may estimate that for a critical user flow, an hour of downtime during regular business hours will result in a loss of X dollars in monthly revenue. That dollar amount should be compared to the estimated costs of designing the flow to have an availability SLO of 99.95% rather than something lower, like 99.9%., A decision will need to be made about whether the risk of that revenue loss outweighs the added costs and management burden required to protect against it. Take a similar approach to this as you walk through the flows, building a complete list of targets.
+Technical discussions shouldn't drive how you define reliability targets for your critical flows. Instead, business stakeholders should focus on customers as they define a workload's requirements. Technical experts help the stakeholders assign realistic numerical values that correlate to those requirements. As they share knowledge, technical experts allow for negotiation and mutual consensus about realistic SLOs. 
 
-Remember that reliability targets differ from performance targets. Reliability targets focus on availability and recovery. The reliability targets defining exercise should take a top-down approach with the broadest requirements defined first and then more specific metrics can be defined to meet the higher-level requirements. Examples of the highest-level reliability and recovery requirements and correlated metrics include an application availability of 99.9% for all regions or assigning a target RTO of 5 hours for the Americas region. Defining these types of targets will help you identify which critical flows are involved in meeting those targets and you can then start to think about component-level targets.
+Consider an example of how to map requirements to measurable numerical values. Stakeholders estimate that for a critical user flow, an hour of downtime during regular business hours results in a loss of *X* dollars in monthly revenue. That dollar amount is compared to the estimated cost of designing a flow that has an availability SLO of 99.95 percent rather than 99.9 percent. Decision makers must discuss whether the risk of that revenue loss outweighs the added costs and management burden required to protect against it. Follow this pattern as you examine flows and build a complete list of targets.
 
-## Availability metrics
+Remember that reliability targets differ from performance targets. Reliability targets focus on availability and recovery. To set reliability targets, start by defining the broadest requirements and then define more specific metrics to meet the high-level requirements. 
 
-### Service-level objectives (SLOs) and service-level agreements (SLAs)
+Highest-level reliability and recovery requirements and correlated metrics might include, for example, an application availability of 99.9 percent for all regions or a target RTO of 5 hours for the Americas region. Defining these types of targets helps you identify which critical flows are involved in those targets. Then you can consider component-level targets.
 
-Availability metrics correlate to service-level objectives (SLOs) which are used to define your service-level agreements (SLAs). The workload SLO will define the amount of downtime tolerable in a given time period (less than 1 hour per month, for example). To ensure that you are able to meet the SLO target, review the Microsoft SLAs for each component, paying attention to the redundancy requirements to meet higher SLAs. For example, Microsoft guarantees higher SLAs for multi-region deployments of Cosmos DB than it does for single region deployments.
+### Availability metrics
+
+#### SLOs and SLAs
+
+Availability metrics correlate to SLOs, which you use to define SLAs. The workload SLO determines how much downtime is tolerable in a given period, for example, less than 1 hour per month. To make sure you can meet the SLO target, review the Microsoft SLAs for each component. Pay attention to how much redundancy you need to meet high SLAs. For example, Microsoft guarantees higher SLAs for multi-region deployments of Azure Cosmos DB than it guarantees for single-region deployments.
 
 > [!NOTE]
-> Azure SLAs do not always cover all aspects of a given service. For example, there is an availability SLA for Application Gateway, but no guarantee for the WAF functionality to stop malicious traffic from passing through. Be sure to take this limitation into account when developing your SLAs and SLOs.
+> Azure SLAs don't always cover all aspects of a service. For example, Azure Application Gateway has an availability SLA, but the Azure Well-Architected Framework functionality provides no guarantee to stop malicious traffic from passing through. Consider this limitation when you develop your SLAs and SLOs.
 
-After you have gathered the SLAs for the individual workload components, you can calculate a composite SLA, which should match the workload target SLO. There are several factors involved in calculating a composite SLA, depending on your architecture design.
+After you gather the SLAs for the individual workload components, calculate a composite SLA. The composite SLA should match the workload's target SLO. Calculating a composite SLA involves several factors, depending on your architecture design. Consider the following examples.
 
-**The SLA values provided in the examples below are hypothetical and are used for demonstration purposes only. They should not be assumed to be current values supported by Microsoft**
+> [!NOTE]
+> The SLA values in the following examples are **hypothetical** and are for **demonstration purposes only.** They **aren't intended to represent current values** supported by Microsoft.
 
-Composite SLAs involve multiple services supporting an application, with differing levels of availability. For example, consider an App Service web app that writes to Azure SQL Database. Hypothetically, these SLAs could be:
+Composite SLAs involve multiple services that support an application, with differing levels of availability. For example, consider an Azure App Service web app that writes to Azure SQL Database. Hypothetically, these SLAs might be:
 
--   App Service web apps = 99.95%
+-   App Service web apps = 99.95 percent
 
--   SQL Database = 99.99%
+-   SQL Database = 99.99 percent
 
-What is the maximum downtime you would expect for this application? If either service fails, the whole application fails. The probability of each service failing is independent, so the composite SLA for this application is 99.95% × 99.99% = 99.94%. That value is lower than the individual SLAs, which isn\'t surprising because an application that relies on multiple services has more potential failure points.
+What's the maximum downtime you can expect for this application? If either service fails, the whole application fails. The probability of each service failing is independent, so the composite SLA for this application is 99.95 percent × 99.99 percent = 99.94 percent. That value is lower than the individual SLAs. This conclusion is unsurprising because an application that relies on multiple services has more potential failure points.
 
 You can improve the composite SLA by creating independent fallback paths. For example, if SQL Database is unavailable, put transactions into a queue to be processed later:
 
-:::image type="content" source="media/metrics/independent-fallback-paths.png" alt-text="Diagram that shows fallback paths. The web app box shows arrows branching to SQL Database or to queue." border="false" lightbox="media/metrics/independent-fallback-paths.png":::
+:::image type="content" source="media/metrics/independent-fallback-paths.png" alt-text="Diagram that shows fallback paths. The web app box shows arrows branching to SQL Database or to a queue." border="false" lightbox="media/metrics/independent-fallback-paths.png":::
 
-With this design, the application is still available even if it can\'t connect to the database. However, it fails if the database and the queue both fail at the same time. The expected percentage of time for a simultaneous failure is 0.0001 × 0.001, so the composite SLA for this combined path is:
+In this design, the application is still available even if it can\'t connect to the database. However, it fails if the database and the queue fail at the same time. The expected percentage of time for a simultaneous failure is 0.0001 × 0.001, so here's the composite SLA for this combined path:
 
-Database or queue = 1.0 − (0.0001 × 0.001) = 99.99999%
+Database or queue = 1.0 − (0.0001 × 0.001) = 99.99999 percent
 
-The total composite SLA is:
+The total composite SLA:
 
-Web app and (database or queue) = 99.95% × 99.99999% = \~99.95%
+Web app and (database or queue) = 99.95 percent × 99.99999 percent = \~99.95 percent
 
-There are tradeoffs to this approach. The application logic is more complex, you\'re paying for the queue, and you need to consider data consistency issues.
+This approach poses tradeoffs: 
+
+- The application logic is more complex. 
+- You pay for the queue. 
+- You need to consider data consistency issues.
 
 For multi-region deployments, the composite SLA is calculated as follows:
 
--   N is the composite SLA for the application deployed in one region.
+-  *N* is the composite SLA for the application that's deployed in one region.
 
--   R is the number of regions where the application is deployed.
+-  *R* is the number of regions where the application is deployed.
 
-The expected chance that the application fails in all regions at the same time is ((1 − N) \^ R). For example, if the hypothetical single-region SLA is 99.95%:
+The expected chance that the application fails in all regions at the same time is ((1 − N) \^ R). For example, if the hypothetical single-region SLA is 99.95 percent:
 
--   The combined SLA for two regions = (1 − (1 − 0.9995) \^ 2) = 99.999975%
+-   The combined SLA for two regions = (1 − (1 − 0.9995) \^ 2) = 99.999975 percent
 
--   The combined SLA for four regions = (1 − (1 − 0.9995) \^ 4) = 99.999999%
+-   The combined SLA for four regions = (1 − (1 − 0.9995) \^ 4) = 99.999999 percent
 
-Defining proper SLOs takes time and careful consideration. The business stakeholders should understand how key customers use the app and their reliability tolerance and use this feedback to inform their targets.
+Defining proper SLOs takes time and careful consideration. Business stakeholders should understand how key customers use the app. They should also understand the reliability tolerance. This feedback should inform the targets.
 
-### SLA values
+#### SLA values
+
+The following table defines common SLA values. 
 
 |SLA  |Downtime per week  |Downtime per month  |Downtime per year  |
 |---------|---------|---------|---------|
@@ -92,61 +105,63 @@ Defining proper SLOs takes time and careful consideration. The business stakehol
 |99.99%      | 1.01 minutes        |  4.32 minutes       |  52.56 minutes       |
 |99.999%     |  6 seconds        | 25.9 seconds         |  5.26 minutes       |
 
-When thinking about composite SLAs in the context of flows, remember that different flows have different criticality definitions, so be sure to consider this when building your composite SLAs. Non-critical flows may have components that should not be included in your calculations as they do not effect the user experience if they are unavailable for a given amount of time.
+When you think about composite SLAs in the context of flows, remember that different flows have different criticality definitions. Consider these differences when you build your composite SLAs. Noncritical flows might have components that you should omit from your calculations because they don't affect the customer experience if they're briefly unavailable.
 
 > [!NOTE]
-> There will be different SLOs for customer-facing and internal-use workloads. Typically, internal-use workloads can have much less restrictive availability SLOs than customer-facing workloads.
+> Customer-facing workloads and internal-use workloads have different SLOs. Typically, internal-use workloads can have much less restrictive availability SLOs than customer-facing workloads.
 
-### Service-level indicators (SLIs)
+#### SLIs
 
-SLIs can be thought of as component-level metrics that contribute to an SLO. The SLIs that matter most are the ones which can impact your critical flows most from the perspective of your customers. For many flows this includes latency, throughput, error rate, and availability. A good SLI helps you identify when an SLO is at risk of being breached and should be correlated to specific customers when possible.
+Think of SLIs as component-level metrics that contribute to an SLO. The most significant SLIs are the ones that affect your critical flows from the perspective of your customers. For many flows, SLIs include latency, throughput, error rate, and availability. A good SLI helps you identify when an SLO is at risk of being breached. Correlate the SLI to specific customers when possible.
 
-In order to avoid collecting metrics that aren't useful, be economical about the number of SLIs that you identify for each flow: try to target three SLIs per flow if possible.
+To avoid collecting useless metrics, limit the number of SLIs for each flow. Aim for three SLIs per flow if possible.
 
-## Recovery metrics
+### Recovery metrics
 
-Recovery targets correspond to recovery time objectives (RTOs), recovery point objectives (RPOs), mean-time to recovery (MMTR) and mean-time between failure (MTBF) metrics. Defining targets for these measurements is less tightly bound to Microsoft SLAs than availability targets as Microsoft only publishes RTO and RPO guarantees for certain products like [Azure SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview?view=azuresql#recover-a-database-to-the-existing-server).
+Recovery targets correspond to RTO, RPO, MMTR, and MTBF metrics. In contrast to availability targets, recovery targets for these measurements don't depend heavily on Microsoft SLAs. Microsoft publishes RTO and RPO guarantees only for some products, like [SQL Database](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview).
 
-Defining realistic recovery targets relies on work that you have done in your failure mode analysis (link to RE:02) and your business continuity and disaster recovery (link to RE:09 here) planning and testing. Before this work has been completed, you can discuss aspirational targets with stakeholders and ensure that your architecture design will support the recovery targets to the best of your understanding. Be clear with stakeholders that any flows or entire workloads that have not been thoroughly tested for recovery metrics should not have guaranteed SLAs associated with them. It is also important to ensure that stakeholders understand that all of the recovery targets can change over time as updates to workloads happen: the workload may become more complex as more customers are added, or you may adopt new technologies to improve the user experience, and these changes can increase or decrease your recovery metrics.
-
-> [!NOTE]
-> MTBF will be challenging to define and provide guarantees for in some cases. PaaS or SaaS services can fail and recover without any notification from the cloud provider and the process can be completely transparent to you or your customers. If you define targets for this metric, ensure that your targets only cover those components that are under your control.
-
-As part of the exercise of defining recovery targets, you should also define thresholds for initiating a recovery. For example, if a web node has been unavailable for more than 5 minutes, a new node will automatically be added to the pool. Go through this exercise for all components, taking into consideration what recovery for that specific component involves including impact on other components and dependencies. Be sure to consider transient faults (link to re06-transient-fault-handling) when determining your thresholds to ensure that you aren't initiating recovery actions too quickly. Document and share with the stakeholders the potential risks involved with recovery operations, like data loss or session interruptions for end users.
-
-## Building a health model 
-
-Using the data you have gathered while building your reliability targets, you can then build your health model for each workload and associated critical flows. A health model defines "healthy", "degraded", and "unhealthy" states for the flows and workloads to ensure that appropriate operational prioritization is applied. This model is also known as a *traffic light model*, that assigns green for healthy, yellow for degraded and red for unhealthy states. The overall purpose of a health model is to ensure that you know when the state of a given flow changes from a healthy to state to a degraded or unhealthy state. How you define healthy, degraded and unhealthy states depends on the work you have done with stakeholders to identify reliability targets, but examples of ways you might define them are:
-
--   A green or healthy state indicates that key nonfunctional requirements and targets are fully satisfied and when resources are optimally utilized. For example, 95 percent of requests are processed in \<=500 ms with AKS node utilization at x%.
-
--   A yellow or degraded state indicates that one or more components of the flow are alerting against their defined threshold, but the flow is operational. For example, storage throttling has been detected.
-
--   A red or unhealthy state indicates that degradation has persisted for a longer period than deemed allowable by your reliability targets or the flow has become unavailable.
+Definitions for realistic recovery targets rely on your [failure mode analysis](failure-mode-analysis.md) and your plans and testing for business continuity and [disaster recovery](disaster-recovery.md). Before you finish this work, discuss aspirational targets with stakeholders and ensure that your architecture design supports the recovery targets to the best of your understanding. Clearly communicate to stakeholders that any flows or entire workloads that aren't thoroughly tested for recovery metrics shouldn't have guaranteed SLAs. Make sure that stakeholders understand that recovery targets can change over time as workloads are updated. The workload can become more complex as customers are added or as you adopt new technologies to improve the customer experience. These changes can increase or decrease your recovery metrics.
 
 > [!NOTE]
-> The health model shouldn't treat all failures the same. The health model should distinguish between *transient* and *non-transient* faults. It should clearly distinguish between expected-transient but recoverable failures and a true disaster state.
+> MTBF can be challenging to define and guarantee. Platforms as a service (PaaS) or software as a service (SaaS) can fail and recover without any notification from the cloud provider, and the process can be completely transparent to you or your customers. If you define targets for this metric, cover only components that are under your control.
 
-The method by which this model functions is through a monitoring and alerting strategy developed and operated in the principles of continuous improvement. As your workloads evolve, your health models will need to evolve with them.
+As you define recovery targets, define thresholds for initiating a recovery. For example, if a web node is unavailable for more than 5 minutes, a new node is automatically added to the pool. Define thresholds for all components, considering what recovery for a specific component involves, including the effect on other components and dependencies. Your thresholds should also account for [transient faults](handle-transient-faults.md) to ensure that you don't start recovery actions too quickly. Document and share with the stakeholders the potential risks of recovery operations, like data loss or session interruptions for customers.
 
-Refer to the [health modeling guidance](/azure/well-architected/mission-critical/mission-critical-health-modeling) found in the mission-critical workload design areas to find detailed design considerations and recommendations for building a layered application health model. Refer to the health monitoring (link to RE: 10) guide in this series for detailed guidance on monitoring and alerting configurations.
+### Building a health model 
 
-## Visualization
+Use the data you gathered for your reliability targets to build your health model for each workload and associated critical flows. A health model defines *healthy*, *degraded*, and *unhealthy* states for the flows and workloads. The states ensure appropriate operational prioritization. This model is also known as a *traffic light model*. The model assigns green for healthy, yellow for degraded, and red for unhealthy. A health model ensures that you know when a flow's state changes from healthy to degraded or unhealthy. 
 
-To keep your operations teams and workload stakeholders apprised of the real-time status and overall trends of the workload health model, consider creating [dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards) in your monitoring solution. Ensure that the visualization solution is another topic that you discuss with the stakeholders to ensure that you are delivering the information that they deem important and in a way that is easily consumable for them. Instead, or in addition to, of dashboards, they may prefer that reports are generated on a regular reoccurring basis (like weekly, monthly or quarterly, for example).
+How you define healthy, degraded, and unhealthy states depends on your reliability targets. Here are some examples of ways you might define the states:
+
+-   A **green or healthy** state indicates that key nonfunctional requirements and targets are fully satisfied and that resources are used optimally. For example, 95 percent of requests are processed in \<=500 ms with Azure Kubernetes Service (AKS) node use at *X* percent.
+
+-   A **yellow or degraded** state indicates that one or more components of the flow are alerting against their defined threshold, but the flow is operational. For example, storage throttling has been detected.
+
+-   A **red or unhealthy** state indicates that degradation has persisted longer than allowable by your reliability targets or that the flow has become unavailable.
+
+> [!NOTE]
+> The health model shouldn't treat all failures the same. The health model should distinguish between *transient* and *nontransient* faults. It should clearly distinguish between expected-transient but recoverable failures and a true disaster state.
+
+This model works by using a monitoring and alerting strategy that's developed and operated on the principles of continuous improvement. As your workloads evolve, your health models must evolve with them.
+
+For detailed design considerations and recommendations for a layered application health model, see the [health modeling guidance](/azure/well-architected/mission-critical/mission-critical-health-modeling) found in the mission-critical workload design areas. For detailed guidance about monitoring and alerting configurations, see the [health monitoring](monitoring-alerting-strategy.md) guide.
+
+### Visualization
+
+To keep your operations teams and workload stakeholders informed about the real-time status and overall trends of the workload health model, consider creating [dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards) in your monitoring solution. Discuss visualization solutions with the stakeholders to ensure that you deliver the information that they value and that's easy to consume. They might also want to see generated reports weekly, monthly, or quarterly.
 
 ## Azure facilitation
 
-Azure SLAs provide Microsoft\'s commitments for uptime and connectivity. Different services have different SLAs, and in some cases different SKUs within a given service have different SLAs. For detailed information, see [Service Level Agreement](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1).
+Azure SLAs provide the Microsoft commitments for uptime and connectivity. Different services have different SLAs, and sometimes SKUs within a service have different SLAs. For more information, see [Service-level agreements for online services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
 
-Azure SLA also includes procedures for obtaining a service credit if the SLA isn\'t met, along with specific definitions of availability for each service. That aspect of the SLA acts as an enforcement policy.
+The Azure SLA includes procedures for obtaining a service credit if the SLA isn\'t met, along with definitions of availability for each service. That aspect of the SLA acts as an enforcement policy.
 
 ## Tradeoffs 
 
-Be aware that there might be a conceptual gap between the technical limitations inherent in components of your workload and what that means for the business (for example, throughput in Mbit/s vs transactions per second). Creating a model between these two "views" might be challenging, so it is important that you don't over-engineer the solution, but try to approach it in an economic, yet meaningful way.
+A conceptual gap might exist between the technical limitations of your workload's components and what that means for the business, for example, throughput in megabits per second versus transactions per second. Creating a model between these two views might be challenging. Rather than overengineering the solution, try to approach it in an economical but meaningful way.
 
 ## Related links
 
-- Cloud Adoption Framework guidance for SLOs and SLIs: [Cloud monitoring service level objectives - Cloud Adoption Framework](/azure/cloud-adoption-framework/manage/monitor/service-level-objectives#how-do-you-define-slis)
+- Cloud Adoption Framework guidance for SLOs and SLIs: [Cloud monitoring SLOs](/azure/cloud-adoption-framework/manage/monitor/service-level-objectives#how-do-you-define-slis)
 
-- Well-Architected Framework mission-critical guidance for health modeling: [Health modeling and observability of mission-critical workloads on Azure - Microsoft Azure Well-Architected Framework](/azure/well-architected/mission-critical/mission-critical-health-modeling)
+- Well-Architected Framework mission-critical guidance for health modeling: [Health modeling and observability of mission-critical workloads on Azure](/azure/well-architected/mission-critical/mission-critical-health-modeling)
