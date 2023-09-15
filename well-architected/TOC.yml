@@ -32,11 +32,19 @@
             - name: High-availability multi-region design
               href: reliability/highly-available-multi-region-design.md  
             - name: Monitoring and alerting
-              href: reliability/monitoring-alerting-strategy.md 
+              href: reliability/monitoring-alerting-strategy.md
+            - name: Redundancy
+              href: reliability/redundancy.md
             - name: Regions and availability zones
               href: reliability/regions-availability-zones.md
-            - name: Transient faults handling 
-              href: reliability/handle-transient-faults.md 
+            - name: Scaling
+              href: reliability/scaling.md
+            - name: Target metrics
+              href: reliability/metrics.md
+            - name: Testing
+              href: reliability/testing-strategy.md
+            - name: Transient faults 
+              href: reliability/handle-transient-faults.md
       - name: Security
         items: 
         - name: Quick links
