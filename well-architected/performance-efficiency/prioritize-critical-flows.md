@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 This guide describes the best practices for prioritizing critical flows in a workload. Critical flows represent crucial business processes that drive revenue generation or high-priority operations. Prioritizing critical flows means ensuring these flows receive the resources they need before lower priority flows. By giving priority to critical flows, you can ensure that critical users and important processes are not adversely impacted by other less important flows. Failure to prioritize the performance of critical flows could have disproportionate negative effects on workload priorities, affecting the workload and user experience.
 
-## Definitions
+**Definitions**
 
 |Term|Definition|
 |-|-|
@@ -82,16 +82,10 @@ Balancing the needs of critical flows with the overall performance of a workload
 
 ## Azure facilitation
 
-**Collecting metrics.** Use tools like Azure Monitor to gather this data.
+**Collecting metrics:** Azure provides various monitoring solutions that can help you monitor the performance of critical flows in your workload. Azure Monitor, Azure Application Insights, and Azure Log Analytics are some of the services that offer comprehensive monitoring capabilities for different types of applications and workloads.
 
-**Rate limiting.** Some Azure services provide built-in policies for rate limiting such as [Azure API Management](/azure/api-management/rate-limit-by-key-policy).
+**Rate limiting:** Some Azure services provide built-in policies for rate limiting such as [Azure API Management](/azure/api-management/rate-limit-by-key-policy). Azure has detailed guidance with a sample implementation of the [Rate Limiting](/azure/architecture/patterns/rate-limiting-pattern) design pattern.
 
--   [Azure Service Bus](/azure/architecture/patterns/priority-queue) has features that support priority queue processing.
+**Priority queue processing:** Azure Functions provides event-driven functions that you can trigger in various ways, including by a new message in a queue or topic. Combine Azure Functions with Azure Queue Storage or [Azure Service Bus](/azure/architecture/patterns/priority-queue) to process messages based on their priority.
 
--   [Azure Front Door](/azure/frontdoor/routing-methods#priority) and [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-configure-priority-routing-method) allow you to distribute and route traffic based on priority.
-
-## Tradeoff
-
--   Prioritizing flows and users adds complexity to workload management. The added complexity could affect operational efficiency.
-
--   Prioritizing flows and users might requires resource isolation and duplication to implement. For example, a priority queue instance and a general queue instance. There's added cost for this duplication
+**Optimizing capacity allocations:** Certain Azure services support resource segmentation, logical segmentation, and capacity allocation techniques to allocate capacity and resources to critical flows. You can isolate critical flows through techniques such as creating separate resources, increasing density, using virtualization and containerization, and explicitly allocating resources to critical flows.
