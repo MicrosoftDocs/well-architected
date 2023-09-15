@@ -37,12 +37,14 @@
               href: reliability/redundancy.md
             - name: Regions and availability zones
               href: reliability/regions-availability-zones.md
-            - name: Reliability testing
-              href: reliability/testing-strategy.md
             - name: Scaling
               href: reliability/scaling.md
-            - name: Transient faults handling 
-              href: reliability/handle-transient-faults.md 
+            - name: Target metrics
+              href: reliability/metrics.md
+            - name: Testing
+              href: reliability/testing-strategy.md
+            - name: Transient faults 
+              href: reliability/handle-transient-faults.md
       - name: Security
         items: 
         - name: Quick links
