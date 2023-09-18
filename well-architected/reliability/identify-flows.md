@@ -1,6 +1,6 @@
 ---
 title: Recommendations for identifying and rating flows
-description: Learn how to identify and rate flows for your workload.
+description: Learn how to create a catalog of user and system flows for your workload to better understand the basis for your design decisions as they relate to reliability.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
@@ -11,165 +11,176 @@ ms.topic: conceptual
 
 **Applies to: RE 01**
 
-This guide describes the best practices for building a catalog of user and system flows for a proposed workload in ideation. By understanding and modelling your flows, you can ensure that you focus your reliability efforts on the parts of your workload that are most critical, and de-prioritize those flows that don't have stringent availability requirement Taking the time to build this catalog as one of the first steps in the process of designing your workload architecture will give you the details that you will use as the basis for your design decisions as they relate to reliability. In this series of reliability guides, the activities performed in this guide serve as a pre-requisite to all activities covered in the other guides. The design decisions covered in this guide extend out from the workload architecture design to the operational processes and procedures necessary to support the workload (like monitoring and alerting; testing; and business continuity/disaster recovery functions).
+This guide describes the recommendations for creating a catalog of user and system flows for your workload. Understand and model your flows to ensure that your reliability efforts benefit the most critical parts of your workload. Deprioritize the flows that don't have stringent availability requirements.
 
-## Definitions
+Create this catalog as you start to design your workload architecture so you can better understand the basis for your design decisions as they relate to reliability.
 
-|Term  |Definition  |
+This guide serves as a prerequisite for the other reliability guides in this series. The following sections provide recommendations for workload design decisions and operational processes and procedures that support the workload, like monitoring and alerting, testing, business continuity, and disaster recovery functions.
+
+**Definitions**
+
+| Term | Definition |
 |---------|---------|
-|User flow     |  Workflow that an end-user of the system follows to utilize the workload       |
-|System flow     |    Workflow that the system automatically follows to enable user flows or general workload functionality     |
+| User flow | The sequence that a user follows to accomplish a task. |
+| System flow | The workflow that the system automatically follows to enable user flows or workload functionality. |
 
-## Key design strategy
+## Key design strategies
 
-The first step in designing a reliable workload takes place in ideation. Before you finalize your decision on an architectural design for your workload, you should take the opportunity to determine what the user and system flows for your workload will look like and then assign a measure of criticality to those flows. This exercise is one that you should undertake with business stakeholders to ensure that the business requirements are captured in the context of flows. Examples of user flows are the checkout experience for an ecommerce app, or the navigation component of an emergency response app. Examples of system flows are the back-end credit card processing flow for an ecommerce app or batch database updates for an ERP system. For each flow, discuss with stakeholders and identify the following:
+Before you choose the architectural design for your workload, determine what the user and system flows for your workload look like. Assign a measure of criticality to those flows. Perform this exercise with business stakeholders to ensure that you capture the business requirements in the context of flows. Examples of a user flow include an ecommerce app checkout experience or the navigation component of an emergency response app. Examples of a system flow include the back-end credit card processing flow for an ecommerce app or batch database updates for an enterprise resource planning (ERP) system. For each flow, identify the:
 
--   Business process(es) this flow supports
+- Business processes that the flow supports.
 
--   The \'process owner\' - the individual responsible for making critical decisions
+- Process owner, or the individual that's responsible for making critical decisions.
 
--   The business escalation path for issues like security concerns, urgent updates, and failovers
+- Business escalation path for problems, like security concerns, urgent updates, and failovers.
 
--   The technical escalation path for incidents affecting the health of the flow
+- Technical escalation path for incidents that affect the health of the flow.
 
--   Business expectations like throughput, availability, and business hours
+- Business expectations, like throughput, availability, and business hours.
 
--   Business impact if expectations are not met (for example: revenue impact and reputation impact)
+- Business consequences if expectations aren't met, for example the effect on revenue or reputation.
 
--   Criticality and priority
+- Criticality and priority.
 
-Assigning criticality to your flows will help you with your eventual architectural design by identifying the components that will need higher levels of resiliency and security. To get started with thinking about criticality, you can use a simple *high, medium, low* rating system, based on the impact of a given flow being unavailable. Generally speaking, these criticality ratings can be defined as:
+Assign criticality to your flows to help you design your architecture. Identify the components that need higher levels of resiliency and security. To get started with criticality, use a *high*, *medium*, and *low* rating system that's based on the potential consequences when a given flow is unavailable. These criticality ratings are defined as:
 
--   **High**: A flow that impacts the user experience, can have a monetary impact, or can have real-world human implications.
+- **High**: A flow that affects the customer experience, finances, or human health or safety.
 
-    -   The user flow examples given above are examples of high criticality as they can directly impact finances, user experience and human health and safety.
+- **Medium**: A flow that's necessary for the workload to fully function but doesn't directly affect the customer. For example, a flow might have a medium criticality rating if you can retry the flow after you resolve the problem without disrupting the customer experience.
 
--   **Medium**: A flow that is necessary for the workload to fully function but does not directly affect the user.
-
-    -   The system flow examples given above are examples of medium criticality as the flows can be retried after the issue has been resolved without disrupting the user experience.
-
--   **Low**: A flow that is not directly tied to the functionality of the workload
-
-    -   Examples could include nightly log shipping to a monitoring system or a pop-up survey feature
+- **Low**: A flow that's not directly tied to the functionality of the workload. For example, a nightly log transfer to a monitoring system or a pop-up survey feature might have a low criticality rating.
 
 ## Azure facilitation
+<!--Looks like this article might not be complete. This section was blank. Leaving just in case.-->
 
-## Tradeoff
+## Tradeoffs
 
-Ensure that stakeholders understand that higher expectations for reliability can potentially come at the expense of higher setup and operational costs as well as a higher management burden for operators.
+Ensure that stakeholders understand that higher expectations for reliability sometimes coincide with higher setup costs, operational costs, and management burden for operators.
 
 ## Example
 
-To provide a more complete scenario and further illustrate the points discussed in the guidance, use the following example to help you in your efforts in defining flows.
+The following example provides a complete scenario and illustrates important points to help you define your flows.
 
-In this scenario, we will use the Reliable Web Pattern [reference architecture](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation) as the basis for our example flows.
+This scenario uses the [reliable web app pattern reference architecture](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation) as the basis for the example flows.
 
-:::image type="content" source="media/identify-flows/relecloud-flow.png" alt-text="Diagram that shows an example flow based on Relecloud." border="false" lightbox="media/identify-flows/relecloud-flow.png":::
+:::image type="content" source="media/identify-flows/relecloud-flow.png" alt-text="Diagram that shows an example flow that's based on Relecloud." border="false" lightbox="media/identify-flows/relecloud-flow.png":::
 
 ### Workload
+<!--There are comments here in the original Sharepoint doc. It sounds like this section is a placeholder for future ideas. Leaving it just in case.-->
+Relecloud (eCommerce, line-of-business web app)
 
-1.  Relecloud (eCommerce, line-of-business web app)
+#### User flows
 
-#### User Flows
+The following user flows comprise the example architecture.
 
-1.  Create Upcoming Concerts: call center employees use the application to create an upcoming concert.
+##### User flow 1: Create upcoming concerts
 
-    -   Business process(es) this flow supports: while it supports the Purchasing Ticket process, it is in an asynchronous way making this not too critical.
-    
-    -   The Process owner: Sales Department.
-    
-    -   The business escalation path: Stakeholders
-    
-    -   The technical escalation path: Platform and/or Application teams
-    
-    -   Business expectations: This flow does not require high availability since concerts are created on a weekly basis, proactively.
-    
-    -   Business impact: If this flow does not meet the expectation of being available when a concert must be created it impacts revenue and reputation.
-    
-    -   Criticality: Medium
+Call center employees use the application to create an upcoming concert.
 
-2.  Search Concerts: call center employees use the application to search for upcoming concerts
+- **Business processes that this flow supports**: This flow supports the *purchasing ticket* process, but in an asynchronous way that makes it less critical.
 
-    -   Business process(es) this flow supports: while it supports the Purchasing Ticket process, application users can opt to simply list concerts if not available.
-    
-    -   The Process owner: UX (User Experience) Department.
-    
-    -   The business escalation path: Stakeholders
-    
-    -   The technical escalation path: Platform and/or Application teams
-    
-    -   Business expectations: This flow does not require high availability since concerts can be listed as well.
-    
-    -   Business impact: If this flow does not meet the expectation of being available when a concert must be searched it impacts the application's reputation, degrading the user's experience and user's time in call that can impact productivity.
-    
-    -   Criticality: Low
+- **Process owner**: The sales department.
 
-3.  Get Upcoming Concerts: call center employees use the application to list the upcoming concerts.
+- **Business escalation path**: Stakeholders.
 
-    -   Business process(es) this flow supports: it directly supports the Purchasing Ticket process.
-    
-    -   The Process owner: Sales Department.
-    
-    -   The business escalation path: Stakeholders
-    
-    -   The technical escalation path: Platform and/or Application teams
-    
-    -   Business expectations: This flow does require high availability since tickets cannot be purchased if it is not working properly.
-    
-    -   Business impact: If this flow does not meet the expectation of being available, it directly impacts revenue as well as reputation
-    
-    -   Criticality: High
+- **Technical escalation path**: Platform or application teams.
 
-4.  Purchase Ticket: call center employees use the application (Authentication and authorization) to buy tickets for an upcoming concert (Get Upcoming Concerts) on behalf of Relecloud customers.
+- **Business expectations**: This flow doesn't require high availability because concerts are proactively created on a weekly basis.
 
-    -   Business process(es) this flow supports: this is the core feature and flow of the application.
-    
-    -   The Process owner: Sales Department.
-    
-    -   The business escalation path: Stakeholders
-    
-    -   The technical escalation path: Platform and/or Application teams
-    
-    -   Business expectations: This flow does require high availability since tickets cannot be purchased if it is not working properly.
-    
-    -   Business impact: If this flow does not meet the expectation of being available, it directly impacts revenue as well as reputation
-    
-    -   Criticality: High
+- **Business consequences**: If this flow isn't available when a call center employee needs to create a concert, it affects revenue and reputation.
 
-5.  Authentication and authorization: call center employees will need to secure sign-in into the application and be provided with proper roles so they can Purchase Tickets.
+- **Criticality**: Medium.
 
-    -   Business process(es) this flow supports: it directly supports the Purchasing Ticket process since without this functionality call center users can't sign-in into the application to buy tickets.
-    
-    -   The Process owner: Sales Department.
-    
-    -   The business escalation path: Stakeholders
-    
-    -   The technical escalation path: Platform and/or Application teams
-    
-    -   Business expectations: This flow does require high availability since tickets cannot be purchased if it is not working properly.
-    
-    -   Business impact: If this flow does not meet the expectation of being available, it directly impacts revenue as well as reputation
-    
-    -   Criticality: High
+##### User flow 2: Search concerts
 
-#### System Flows
+Call center employees use the application to search for upcoming concerts.
 
-1.  Telemetry Collection: web application and api instances will collect and send information, errors, warning, and more to understand state changes in production system. This will help the operations team with anomalies detection, troubleshooting and profiling.
+- **Business processes that this flow supports**: This flow supports the *purchasing ticket* process, but call center employees can opt to list concerts if the search function isn't available.
 
-    -   Business process(es) this flow supports: No business processes are supported by this flow, but it provides highly important data for the operations team
-    
-    -   The Process owner: Operations team.
-    
-    -   The business escalation path: Operations team.
-    
-    -   The technical escalation path: Operations team.
-    
-    -   Business expectations: This flow requires as much redundancy and resiliency as possible and operations teams should strive to recover it from failure, otherwise they are blind in production.
-    
-    -   Business impact: If this flow does not meet the expected availability, there is a risk of missing issues in production that could lead to severe impacts
-    
-    -   Criticality: Medium
+- **Process owner**: The UX (user experience) department.
+
+- **Business escalation path**: Stakeholders.
+
+- **Technical escalation path**: Platform or application teams.
+
+- **Business expectations**: This flow doesn't require high availability because call center employees can also list concerts.
+
+- **Business consequences**: If this flow isn't available when a call center employee searches for a concert, it affects the application's reputation. The call center employee's experience might degrade and it might affect productivity because the employee spends more time on a call.
+
+- **Criticality**: Low.
+
+##### User flow 3: Get a list of the concerts
+
+Call center employees use the application to get a list of concerts.
+
+- **Business processes that this flow supports**: This flow directly supports the *purchasing ticket* process.
+
+- **Process owner**: The sales department.
+
+- **Business escalation path**: Stakeholders.
+
+- **Technical escalation path**: Platform or application teams.
+
+- **Business expectations**: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly.
+
+- **Business consequences**: If this flow isn't available, it directly affects revenue and reputation.
+
+- **Criticality**: High.
+
+##### User flow 4: Purchase ticket
+
+Call center employees use the application (the *authentication and authorization* process) to buy tickets for an upcoming concert (the *list upcoming concerts* process) on behalf of Relecloud customers.
+
+- **Business processes that this flow supports**: This flow is the core feature and flow of the application.
+
+- **Process owner**: The sales department.
+
+- **Business escalation path**: Stakeholders.
+
+- **Technical escalation path**: Platform or application teams.
+
+- **Business expectations**: This flow requires high availability because customers can't purchase tickets if this flow isn't working properly.
+
+- **Business consequences**: If this flow isn't available, it directly affects revenue and reputation.
+
+- **Criticality**: High.
+
+##### User flow 5: Authentication and authorization
+
+Call center employees securely sign in to the application and are provided with proper roles so that they can purchase tickets on behalf of Relecloud customers.
+
+- **Business processes that this flow supports**: This flow directly supports the *purchasing ticket* process. Without this functionality, call center employees can't sign in to the application to buy tickets.
+
+- **Process owner**: The sales department.
+
+- **Business escalation path**: Stakeholders.
+
+- **Technical escalation path**: Platform or application teams.
+
+- **Business expectations**: This flow requires high availability because call center employees can't purchase tickets if this flow isn't working properly.
+
+- **Business consequences**: If this flow isn't available, it directly affects revenue and reputation.
+
+- **Criticality**: High.
+
+### System flow: Collect telemetry
+
+To understand state changes in the production system, web application and API instances are used to collect and send information, errors, and warnings. This data helps the operations team perform anomaly detection, troubleshooting, and profiling.
+
+- **Business processes that this flow supports**: This flow doesn't support any business processes, but it provides important data for the operations team.
+
+- **Process owner**: The operations team.
+
+- **Business escalation path**: The operations team.
+
+- **Technical escalation path**: The operations team.
+
+- **Business expectations**: This flow requires as much redundancy and resiliency as possible. The operations team should strive to recover this flow from failure, so they don't miss important information and warnings.
+
+- **Business consequences**: If this flow doesn't meet the expected availability, there's a risk of missing problems in production, which can cause serious consequences.
+
+- **Criticality**: Medium
 
 ## Related links
 
-Learn about determining [business criticality in cloud management](/azure/cloud-adoption-framework/manage/considerations/criticality)
+Learn about determining [business criticality in cloud management](/azure/cloud-adoption-framework/manage/considerations/criticality).

@@ -33,6 +33,8 @@
               href: reliability/failure-mode-analysis.md
             - name: High-availability multi-region design
               href: reliability/highly-available-multi-region-design.md  
+            - name: Identify and rate flows
+              href: reliability/identify-flows.md
             - name: Monitoring and alerting
               href: reliability/monitoring-alerting-strategy.md
             - name: Redundancy
