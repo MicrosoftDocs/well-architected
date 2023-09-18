@@ -53,11 +53,7 @@ Optimizing workload deployments refers to the process of fine-tuning and configu
 
 **Use multiple builds.** Different types of builds can help optimize build times and ensure the quality of deployments. For example, you can have continuous integration (CI) builds that trigger with every code commit. You could have nightly builds that run automated tests regularly, and release builds that are used for deploying to production. Each type of build should have a specific purpose, such as continuous integration, automated testing, or production deployment. Testing and validation of the workload before deployment help identify and address issues or bugs early in the development process.
 
-**Consider feature flags.** Feature flags are a technique used in software development to control the visibility and behavior of certain features in an application. With feature flags, developers can enable or disable specific features without the need for redeployment.
-
-Feature flags work by introducing conditional logic in the code that determines whether a feature should be enabled or disabled. This logic can be based on various factors such as user roles, user preferences, or specific conditions defined by the development team. By using feature flags, developers can gradually roll out new features to a subset of users or enable features for specific groups for testing (canary testing).
-
-The main benefit of feature flags is that they decouple the deployment of new features from their exposure to users. Developers can release new features to production without making them immediately available to all users. Developers can monitor and test the effect of new features on performance and user experience before fully enabling them.
+**Consider feature flags.** Feature flags are a technique used in software development to control the visibility and behavior of certain features in an application. With feature flags, developers can enable or disable specific features without the need for redeployment. Feature flags work by introducing conditional logic in the code that determines whether a feature should be enabled or disabled. This logic can be based on various factors such as user roles, user preferences, or specific conditions defined by the development team. By using feature flags, developers can gradually roll out new features to a subset of users or enable features for specific groups for testing (canary testing).
 
 ### Optimize upgrades
 
