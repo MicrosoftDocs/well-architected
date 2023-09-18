@@ -133,11 +133,11 @@
               href: performance-efficiency/optimize-code-infrastructure.md
             - name: Optimize data performance 
               href: performance-efficiency/optimize-data-performance.md
-            - name: Prioritize critical flows and users 
-              href: performance-efficiency/prioritize-flows-users.md
-            - name: Minimize operations effects 
-              href: performance-efficiency/minimize-operations-effects.md
-            - name: Respond to live-site issues 
+            - name: Prioritize critical flows 
+              href: performance-efficiency/prioritize-critical-flows.md
+            - name: Optimize operational tasks
+              href: performance-efficiency/optimize-operational-tasks.md
+            - name: Respond to live issues 
               href: performance-efficiency/respond-live-performance-issues.md
             - name: Continuous performance optimization
               href: performance-efficiency/continuous-performance-optimize.md
