@@ -1,6 +1,6 @@
 ---
 title: Recommendations for developing background jobs
-description: Learn design strategies for developing background jobs.
+description: Learn how to develop background jobs to help minimize the load on the application UI, which improves availability and reduces interactive response time.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
@@ -11,357 +11,366 @@ ms.topic: conceptual
 
 **Applies to: RE 06**
 
-Many types of applications require background tasks that run independently of the user interface (UI). Examples include batch jobs, intensive processing tasks, and long-running processes such as workflows. Background jobs can be executed without requiring user interaction--the application can start the job and then continue to process interactive requests from users. This can help to minimize the load on the application UI, which can improve availability and reduce interactive response times.
+This guide describes the recommendations for developing background jobs.
+Background jobs run automatically without the need for user interaction. Many applications require background jobs that run independent of the UI.
 
-For example, if an application is required to generate thumbnails of images that are uploaded by users, it can do this as a background job and save the thumbnail to storage when it is complete--without the user needing to wait for the process to be completed. In the same way, a user placing an order can initiate a background workflow that processes the order, while the UI allows the user to continue browsing the web app. When the background job is complete, it can update the stored orders data and send an email to the user that confirms the order.
+Some examples of background jobs include batch jobs, intensive processing tasks, and long-running processes, such as workflows. The application starts the job and processes interactive requests from users. For example, if an application needs to generate thumbnails of images that users upload, a background job can be performed to generate the thumbnail and save it to storage. The user doesn't have to wait for the process to complete. As another example, a customer places an order, which initiates a background workflow that processes the order. The customer continues to browse the web app while the background job runs. After the background job finishes, it updates the stored order data and sends an email to the customer to confirm the order.
+
+Background jobs help minimize the load on the application UI, which improves availability and reduces interactive response time.
 
 ## Key design strategies
 
-When you consider whether to implement a task as a background job, the main criteria is whether the task can run without user interaction and without the UI needing to wait for the job to be completed. Tasks that require the user or the UI to wait while they are completed might not be appropriate as background jobs.
+To choose which task to designate as a background job, consider whether the task runs without user interaction and whether the UI needs to wait for the task to complete. Tasks that require the user or the UI to wait while they run are typically not appropriate background jobs.
 
-## Types of background jobs
+### Types of background jobs
 
-Background jobs typically include one or more of the following types of jobs:
+Some examples of background jobs are:
 
--   CPU-intensive jobs, such as mathematical calculations or structural model analysis.
+- CPU-intensive jobs, such as mathematical calculations or structural model analysis.
 
--   I/O-intensive jobs, such as executing a series of storage transactions or indexing files.
+- I/O-intensive jobs, such as running a series of storage transactions or indexing files.
 
--   Batch jobs, such as nightly data updates or scheduled processing.
+- Batch jobs, such as nightly data updates or scheduled processing.
 
--   Long-running workflows, such as order fulfillment, or provisioning services and systems.
+- Long-running workflows, such as order fulfillment or provisioning services and systems.
 
--   Sensitive-data processing where the task is handed off to a more secure location for processing. For example, you might not want to process sensitive data within a web app. Instead, you might use a pattern such as the [Gatekeeper pattern](/azure/architecture/patterns/gatekeeper) to transfer the data to an isolated background process that has access to protected storage.
+- Sensitive-data processing that transfers the task to a more secure location for processing. For example, you might not want to process sensitive data within a web app. Instead, you might use a pattern such as the [Gatekeeper pattern](/azure/architecture/patterns/gatekeeper) to transfer the data to an isolated background process that has access to protected storage.
 
-## Triggers
+### Triggers
 
-Background jobs can be initiated in several different ways. They fall into one of the following categories:
+Initiate background jobs with:
 
--   [**Event-driven triggers**](#event-driven-triggers). The task is started in response to an event, typically an action taken by a user or a step in a workflow.
+- [Event-driven triggers](#event-driven-triggers): An event, typically a user action or a step in a workflow, triggers the task.
 
--   [**Schedule-driven triggers**](#schedule-driven-triggers). The task is invoked on a schedule based on a timer. This might be a recurring schedule or a one-off invocation that is specified for a later time.
+- [Schedule-driven triggers](#schedule-driven-triggers): A schedule that's based on a timer invokes the task. The job can be scheduled on a recurring basis or for a single run.
 
-### Event-driven triggers
+#### Event-driven triggers
 
-Event-driven invocation uses a trigger to start the background task. Examples of using event-driven triggers include:
+An action triggers an event-driven invocation that starts the background task. Examples of event-driven triggers include:
 
--   The UI or another job places a message in a queue. The message contains data about an action that has taken place, such as the user placing an order. The background task listens on this queue and detects the arrival of a new message. It reads the message and uses the data in it as the input to the background job. This pattern is known as [asynchronous message-based communication](/dotnet/architecture/microservices/architect-microservice-container-applications/asynchronous-message-based-communication).
+- The UI or a different job places a message in a queue. The message contains data about a previously performed action, such as a customer that placed an order. The background job monitors this queue and detects the arrival of a new message. It reads the message and uses the message's data as the input for the background job. This pattern is called [asynchronous message-based communication](/dotnet/architecture/microservices/architect-microservice-container-applications/asynchronous-message-based-communication).
 
--   The UI or another job saves or updates a value in storage. The background task monitors the storage and detects changes. It reads the data and uses it as the input to the background job.
+- The UI or a different job saves or updates a value that's in storage. The background job monitors the storage and detects changes. It reads the data and uses it as the input for the background job.
 
--   The UI or another job makes a request to an endpoint, such as an HTTPS URI, or an API that is exposed as a web service. It passes the data that is required to complete the background task as part of the request. The endpoint or web service invokes the background task, which uses the data as its input.
+- The UI or a different job makes a request to an endpoint, such as an HTTPS URI or an API that's exposed as a web service. As part of the request, the UI or job transfers the data that the background task requires. The endpoint or web service invokes the background task, which uses the data as its input.
 
-Typical examples of tasks that are suited to event-driven invocation include image processing, workflows, sending information to remote services, sending email messages, and provisioning new users in multitenant applications.
+Other examples of tasks that are suited to event-driven invocation include image processing, workflows, sending information to remote services, sending email messages, and provisioning new users in multitenant applications.
 
-### Schedule-driven triggers
+#### Schedule-driven triggers
 
-Schedule-driven invocation uses a timer to start the background task. Examples of using schedule-driven triggers include:
+A timer triggers a schedule-driven invocation that starts the background task. Examples of schedule-driven triggers include:
 
--   A timer that is running locally within the application or as part of the application\'s operating system invokes a background task on a regular basis.
+- A timer that runs locally within the application or as part of the application's operating system regularly invokes a background task.
 
--   A timer that is running in a different application, such as Azure Logic Apps, sends a request to an API or web service on a regular basis. The API or web service invokes the background task.
+- A timer that runs in a different application, such as Azure Logic Apps, regularly sends a request to an API or web service. The API or web service invokes the background task.
 
--   A separate process or application starts a timer that causes the background task to be invoked once after a specified time delay, or at a specific time.
+- A separate process or application starts a timer that invokes the background task after a time delay or at a specific time.
 
-Typical examples of tasks that are suited to schedule-driven invocation include batch-processing routines (such as updating related-products lists for users based on their recent behavior), routine data processing tasks (such as updating indexes or generating accumulated results), data analysis for daily reports, data retention cleanup, and data consistency checks.
+Other examples of tasks that are suited to schedule-driven invocation include batch-processing routines (such as updating related products lists for customers based on their recent behavior), routine data-processing tasks (such as updating indexes or generating accumulated results), data analysis for daily reports, data retention cleanup, and data consistency checks.
 
-If you use a schedule-driven task that must run as a single instance, be aware of the following:
+If you use a schedule-driven task that must run as a single instance, review the following considerations:
 
--   If the compute instance that is running the scheduler (such as a virtual machine using Windows scheduled tasks) is scaled, you will have multiple instances of the scheduler running. These could start multiple instances of the task. For more information about this, read this [blog post about idempotence](https://particular.net/blog/what-does-idempotent-mean).
+- If the compute instance that runs the scheduler, such as a virtual machine (VM) that uses Windows scheduled tasks, is scaled, then you are running multiple instances of the scheduler. Multiple instances of the scheduler can start multiple instances of the task. For more information, see [What does idempotent mean in software systems?](https://particular.net/blog/what-does-idempotent-mean)
 
--   If tasks run for longer than the period between scheduler events, the scheduler may start another instance of the task while the previous one is still running.
+- If tasks run longer than the period between the scheduler events, the scheduler might start another instance of the task while the previous task runs.
 
-## Returning results
+### Return results
 
-Background jobs execute asynchronously in a separate process, or even in a separate location, from the UI or the process that invoked the background task. Ideally, background tasks are "fire and forget" operations, and their execution progress has no impact on the UI or the calling process. This means that the calling process does not wait for completion of the tasks. Therefore, it cannot automatically detect when the task ends.
+Background jobs run asynchronously in a separate process, or even in a separate location, from the UI or the process that invoked the background job. Ideally, background jobs are *fire and forget* operations. Their runtime progress doesn't have an effect on the UI or the calling process, which means that the calling process doesn't wait for the tasks to complete. The UI and the calling process can't detect when the task ends.
 
-If you require a background task to communicate with the calling task to indicate progress or completion, you must implement a mechanism for this. Some examples are:
+If you require a background task to communicate with the calling task to indicate progress or completion, you must implement a mechanism. Some examples are to:
 
--   Write a status indicator value to storage that is accessible to the UI or caller task, which can monitor or check this value when required. Other data that the background task must return to the caller can be placed into the same storage.
+- Write a status indicator value to storage that's accessible to the UI or the caller task, which can monitor or check this value. Other data that the background task returns to the caller can be placed in the same storage.
 
--   Establish a reply queue that the UI or caller listens on. The background task can send messages to the queue that indicate status and completion. Data that the background task must return to the caller can be placed into the messages. If you are using Azure Service Bus, you can use the **ReplyTo** and **CorrelationId** properties to implement this capability.
+- Establish a reply queue that the UI or caller monitors. The background task can send messages to the queue that indicate the status. Data that the background task returns to the caller can be placed in the messages. For Azure Service Bus, use the `ReplyTo` and `CorrelationId` properties to implement this capability.
 
--   Expose an API or endpoint from the background task that the UI or caller can access to obtain status information. Data that the background task must return to the caller can be included in the response.
+- Expose an API or endpoint from the background task that the UI or caller can access to obtain status information. The response can include the data that the background task returns to the caller.
 
--   Have the background task call back to the UI or caller through an API to indicate status at predefined points or on completion. This might be through events raised locally or through a publish-and-subscribe mechanism. Data that the background task must return to the caller can be included in the request or event payload.
+- Configure the background task to call back to the UI or caller via an API to indicate the status at predefined points or on completion. You can use events raised locally or a publish-and-subscribe mechanism. The request or the event payload can include the data that the background task returns to the caller.
 
-## Partitioning
+### Partition background jobs
 
-If you decide to include background tasks within an existing compute instance, you must consider how this will affect the quality attributes of the compute instance and the background task itself. These factors will help you to decide whether to colocate the tasks with the existing compute instance or separate them out into a separate compute instance:
+If you include background jobs in an existing compute instance, consider how these changes affect the quality attributes of the compute instance and the background job. Consider these factors to decide whether to colocate the tasks with the existing compute instance or separate them into a different compute instance:
 
--   **Availability**: Background tasks might not need to have the same level of availability as other parts of the application, in particular the UI and other parts that are directly involved in user interaction. Background tasks might be more tolerant of latency, retried connection failures, and other factors that affect availability because the operations can be queued. However, there must be sufficient capacity to prevent the backup of requests that could block queues and affect the application as a whole.
+- **Availability**: Background tasks might not need the same level of availability as other parts of the application, in particular the UI and parts that directly involve user interaction. Background tasks might have a higher tolerance for latency, retried connection failures, and other factors that affect availability because the operations can be queued. However, there must be sufficient capacity to prevent backed up requests that can block queues and affect the entire application.
 
--   **Scalability**: Background tasks are likely to have a different scalability requirement than the UI and the interactive parts of the application. Scaling the UI might be necessary to meet peaks in demand, while outstanding background tasks might be completed during less busy times by fewer compute instances.
+- **Scalability**: Background tasks likely have different scalability requirements compared to the UI and the interactive parts of the application. You might need to scale the UI to meet peaks in demand. Outstanding background tasks can run during less busy times and with fewer compute instances.
 
--   **Resiliency**: Failure of a compute instance that just hosts background tasks might not fatally affect the application as a whole if the requests for these tasks can be queued or postponed until the task is available again. If the compute instance and/or tasks can be restarted within an appropriate interval, users of the application might not be affected.
+- **Resiliency**:  If a compute instance that only hosts background tasks fails, it might not fatally affect the entire application. The requests for these tasks can be queued or postponed until the task is available. If the compute instance or tasks can restart within an appropriate interval, it might not affect the application users.
 
--   **Security**: Background tasks might have different security requirements or restrictions than the UI or other parts of the application. By using a separate compute instance, you can specify a different security environment for the tasks. You can also use patterns such as Gatekeeper to isolate the background compute instances from the UI in order to maximize security and separation.
+- **Security**: Background tasks might have different security requirements or restrictions compared to the UI or other parts of the application. Use a separate compute instance to specify a different security environment for the tasks. To maximize security and separation, you can also use patterns such as Gatekeeper to isolate the background compute instances from the UI.
 
--   **Performance**: You can choose the type of compute instance for background tasks to specifically match the performance requirements of the tasks. This might mean using a less expensive compute option if the tasks do not require the same processing capabilities as the UI, or a larger instance if they require additional capacity and resources.
+- **Performance**: Choose the type of compute instance for background tasks that specifically matches the task's performance requirements. You might use a less expensive compute option if the tasks don't require the same processing capabilities as the UI. Or you might use a larger instance if the tasks require more capacity and resources.
 
--   **Manageability**: Background tasks might have a different development and deployment rhythm from the main application code or the UI. Deploying them to a separate compute instance can simplify updates and versioning.
+- **Manageability**: Background tasks might have a different development and deployment rhythm compared to the main application code or the UI. To simplify updates and versioning, deploy background tasks to a separate compute instance.
 
--   **Cost**: Adding compute instances to execute background tasks increases hosting costs. You should carefully consider the trade-off between additional capacity and these extra costs.
+- **Cost**: If you add compute instances to run background tasks, hosting costs increase. Carefully consider the tradeoff between more capacity and extra costs.
 
--   For more information, see the [Leader Election pattern](/azure/architecture/patterns/leader-election) and the [Competing Consumers pattern](/azure/architecture/patterns/competing-consumers).
+For more information, see [Leader Election pattern](/azure/architecture/patterns/leader-election) and [Competing Consumers pattern](/azure/architecture/patterns/competing-consumers).
 
-## Conflicts
+### Conflicts
 
-If you have multiple instances of a background job, it is possible that they will compete for access to resources and services, such as databases and storage. This concurrent access can result in resource contention, which might cause conflicts in availability of the services and in the integrity of data in storage. You can resolve resource contention by using a pessimistic locking approach. This prevents competing instances of a task from concurrently accessing a service or corrupting data.
+If you have multiple instances of a background job, they might compete for access to resources and services, such as databases and storage. This concurrent access can result in resource contention, which might cause service availability conflicts and harm the integrity of the data that's in storage. Resolve resource contention by using a pessimistic-locking approach. This approach prevents competing instances of a task from concurrently accessing a service or corrupting data.
 
-Another approach to resolve conflicts is to define background tasks as a singleton, so that there is only ever one instance running. However, this eliminates the reliability and performance benefits that a multiple-instance configuration can provide. This is especially true if the UI can supply sufficient work to keep more than one background task busy.
+Another approach to resolve conflicts is to define background tasks as a singleton, so that only one instance runs. However, this approach eliminates the reliability and performance benefits that a multiple-instance configuration provides. This disadvantage is especially true if the UI supplies enough work to keep more than one background task busy.
 
-It is vital to ensure that the background task can automatically restart and that it has sufficient capacity to cope with peaks in demand. You can achieve this by allocating a compute instance with sufficient resources, by implementing a queueing mechanism that can store requests for later execution when demand decreases, or by using a combination of these techniques.
+Ensure that the background task can automatically restart and that it has sufficient capacity to handle peaks in demand. Allocate a compute instance with sufficient resources, implement a queueing mechanism that stores requests to run when demand decreases, or use a combination of these techniques.
 
-## Coordination
+### Coordination
 
-The background tasks might be complex and might require multiple individual tasks to execute to produce a result or to fulfill all the requirements. It is common in these scenarios to divide the task into smaller discreet steps or subtasks that can be executed by multiple consumers. Multistep jobs can be more efficient and more flexible because individual steps might be reusable in multiple jobs. It is also easy to add, remove, or modify the order of the steps.
+Background tasks can be complex and require multiple tasks to run. In these scenarios, it's common to divide the task into smaller discrete steps or subtasks that multiple consumers can run. Multistep jobs are more efficient and more flexible because individual steps are often reusable in multiple jobs. It's also easy to add, remove, or modify the order of the steps.
 
-Coordinating multiple tasks and steps can be challenging, but there are three common patterns that you can use to guide your implementation of a solution:
+It can be a challenge to coordinate multiple tasks and steps, but there are three common patterns to guide your solution:
 
--   Decomposing a task into multiple reusable steps. An application might be required to perform a variety of tasks of varying complexity on the information that it processes. A straightforward but inflexible approach to implementing this application might be to perform this processing as a monolithic module. However, this approach is likely to reduce the opportunities for refactoring the code, optimizing it, or reusing it if parts of the same processing are required elsewhere within the application. For more information, see the [Pipes and Filters pattern](/azure/architecture/patterns/pipes-and-filters).
+- **Decompose a task into multiple reusable steps**. An application might be required to perform various tasks of different complexity on the information that it processes. A straightforward but inflexible approach to implementing such an application is to perform this processing as a monolithic module. But this approach is likely to reduce the opportunities for refactoring the code, optimizing it, or reusing it if the application requires parts of the same processing elsewhere. For more information, see the [Pipes and Filters pattern](/azure/architecture/patterns/pipes-and-filters).
 
--   **Managing execution of the steps for a task**. An application might perform tasks that comprise a number of steps (some of which might invoke remote services or access remote resources). The individual steps might be independent of each other, but they are orchestrated by the application logic that implements the task. For more information, see [Scheduler Agent Supervisor pattern](/azure/architecture/patterns/scheduler-agent-supervisor).
+- **Manage the orchestration of the steps for a task**. An application might perform tasks that comprise many steps, some of which might invoke remote services or access remote resources. Sometimes the individual steps are independent of each other, but they're orchestrated by the application logic that implements the task. For more information, see [Scheduler Agent Supervisor pattern](/azure/architecture/patterns/scheduler-agent-supervisor).
 
--   **Managing recovery for task steps that fail**. An application might need to undo the work that is performed by a series of steps (which together define an eventually consistent operation) if one or more of the steps fail. For more information, see the [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction.
+- **Manage the recovery for task steps that fail**. If one or more of the steps fail, an application might need to undo the work that a series of steps performs, which together defines an eventually consistent operation. For more information, see [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction).
 
-## Resiliency considerations
+### Resiliency considerations
 
-Background tasks must be resilient in order to provide reliable services to the application. When you are planning and designing background tasks, consider the following points:
+Create resilient background tasks to provide reliable services for the application. When you plan and design background tasks, consider the following points:
 
--   Background tasks must be able to gracefully handle restarts without corrupting data or introducing inconsistency into the application. For long-running or multistep tasks, consider using *check pointing* by saving the state of jobs in persistent storage, or as messages in a queue if this is appropriate. For example, you can persist state information in a message in a queue and incrementally update this state information with the task progress so that the task can be processed from the last known good checkpoint--instead of restarting from the beginning. When using Azure Service Bus queues, you can use message sessions to enable the same scenario. Sessions allow you to save and retrieve the application processing state by using the [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate?view=azureservicebus-4.0.0&preserve-view=true) and [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate?view=azureservicebus-4.0.0&preserve-view=true) methods. For more information about designing reliable multistep processes and workflows, see the [Scheduler Agent Supervisor pattern](/azure/architecture/patterns/scheduler-agent-supervisor).
+- Background tasks need to gracefully handle restarts without corrupting data or introducing inconsistency into the application. For long-running or multistep tasks, consider using *checkpoints*. Use checkpoints to save the state of jobs in persistent storage or as messages in a queue. For example, you can store state information in a message that's in a queue and incrementally update this state information with the task progress. The task can be processed from the last known checkpoint instead of restarting from the beginning.
 
--   When you use queues to communicate with background tasks, the queues can act as a buffer to store requests that are sent to the tasks while the application is under higher than usual load. This allows the tasks to catch up with the UI during less busy periods. It also means that restarts will not block the UI. For more information, see the [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling). If some tasks are more important than others, consider implementing the [Priority Queue pattern](/azure/architecture/patterns/priority-queue) to ensure that these tasks run before less important ones.
+  For Service Bus queues, use message sessions for this purpose. With message sessions, save and retrieve the application processing state by using the [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate) and [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate) methods. For more information about designing reliable multistep processes and workflows, see [Scheduler Agent Supervisor pattern](/azure/architecture/patterns/scheduler-agent-supervisor).
 
--   Background tasks that are initiated by messages or process messages must be designed to handle inconsistencies, such as messages arriving out of order, messages that repeatedly cause an error (often referred to as *poison messages*), and messages that are delivered more than once. Consider the following:
+- When you use queues to communicate with background tasks, the queues can act as a buffer to store requests that are sent to the tasks while the application is under higher than usual load. The tasks can catch up with the UI during less busy periods, and restarts don't block the UI. For more information, see [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling). If some tasks are more important than others, consider implementing the [Priority Queue pattern](/azure/architecture/patterns/priority-queue) to ensure that these tasks run first.
 
--   Messages that must be processed in a specific order, such as those that change data based on the existing data value (for example, adding a value to an existing value), might not arrive in the original order in which they were sent. Alternatively, they might be handled by different instances of a background task in a different order due to varying loads on each instance. Messages that must be processed in a specific order should include a sequence number, key, or some other indicator that background tasks can use to ensure that they are processed in the correct order. If you are using Azure Service Bus, you can use message sessions to guarantee the order of delivery. However, it is usually more efficient, where possible, to design the process so that the message order is not important.
+#### Messages
 
--   Typically, a background task will peek at messages in the queue, which temporarily hides them from other message consumers. Then it deletes the messages after they have been successfully processed. If a background task fails when processing a message, that message will reappear on the queue after the peek time-out expires. It will be processed by another instance of the task or during the next processing cycle of this instance. If the message consistently causes an error in the consumer, it will block the task, the queue, and eventually the application itself when the queue becomes full. Therefore, it is vital to detect and remove poison messages from the queue. If you are using Azure Service Bus, messages that cause an error can be moved automatically or manually to an associated [dead letter queue](/azure/service-bus-messaging/service-bus-dead-letter-queues).
+Configure background tasks that are initiated by messages or that process messages to handle inconsistencies, such as messages that arrive out of order, messages that repeatedly cause an error (*poison messages*), and messages that are delivered more than once. Consider the following recommendations:
 
--   Queues are guaranteed at *least once* delivery mechanisms, but they might deliver the same message more than once. In addition, if a background task fails after processing a message but before deleting it from the queue, the message will become available for processing again. Background tasks should be idempotent, which means that processing the same message more than once does not cause an error or inconsistency in the application\'s data. Some operations are naturally idempotent, such as setting a stored value to a specific new value. However, operations such as adding a value to an existing stored value without checking that the stored value is still the same as when the message was originally sent will cause inconsistencies. Azure Service Bus queues can be configured to automatically remove duplicated messages. For more information on the challenges with at-least-once message delivery, see [the guidance on idempotent message processing](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#idempotent-message-processing).
+- Sometimes you need messages to be processed in a specific order, like messages that change data based on the existing data value, for example adding a value to an existing value. Messages don't always arrive in the order that they were sent. Also, different instances of a background task might process messages in a different order due to varying loads on each instance.
+  
+  For messages that must be processed in a specific order, include a sequence number, key, or another indicator that background tasks can use to process messages in the correct order. For Service Bus, use message sessions to guarantee the correct order of delivery. It's more efficient to design the process so that the message order isn't important.
 
--   Some messaging systems, such as Azure storage queues and Azure Service Bus queues, support a de-queue count property that indicates the number of times a message has been read from the queue. This can be useful in handling repeated and poison messages. For more information, see [Asynchronous Messaging Primer](/previous-versions/msp-n-p/dn589781(v=pandp.10)) and [Idempotency Patterns](https://blog.jonathanoliver.com/idempotency-patterns).
+- Typically, a background task peeks at messages in the queue, which temporarily hides them from other message consumers. After the task successfully processes the message, it deletes the message. If a background task fails when it processes a message, that message reappears in the queue after the peek timeout expires. A different instance of the task processes the message, or the next processing cycle of the original instance processes the message.
 
-## Scaling and performance considerations
+  If the message consistently causes an error in the consumer, it blocks the task, the queue, and eventually the application itself when the queue becomes full. It's vital to detect and remove poison messages from the queue. If you use Service Bus, automatically or manually move poison messages to an associated [dead letter queue](/azure/service-bus-messaging/service-bus-dead-letter-queues).
 
-Background tasks must offer sufficient performance to ensure they do not block the application, or cause inconsistencies due to delayed operation when the system is under load. Typically, performance is improved by scaling the compute instances that host the background tasks. When you are planning and designing background tasks, consider the following points around scalability and performance:
+- Queues are *at-least-once* delivery mechanisms, but they might deliver the same message more than once. If a background task fails after it processes a message but before it deletes it from the queue, the message is available for processing again.
 
--   Azure supports autoscaling (both scaling out and scaling back in) based on current demand and load or on a predefined schedule, for Web Apps and Virtual Machines hosted deployments. Use this feature to ensure that the application as a whole has sufficient performance capabilities while minimizing runtime costs.
+  Background tasks should be idempotent, which means that when the task processes the same message more than once, it doesn't cause an error or inconsistency in the application's data. Some operations are naturally idempotent, for example if a stored value is set to a specific new value. However, some operations cause inconsistencies, for example if a value is added to an existing stored value without verifying that the stored value is still the same as when the message was originally sent. Configure Service Bus queues to automatically remove duplicated messages. For more information, see [Idempotent message processing](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#idempotent-message-processing).
 
--   Where background tasks have a different performance capability from the other parts of an application (for example, the UI or components such as the data access layer), hosting the background tasks together in a separate compute service allows the UI and background tasks to scale independently to manage the load. If multiple background tasks have significantly different performance capabilities from each other, consider dividing them and scaling each type independently. However, note that this might increase runtime costs.
+- Some messaging systems, such as Azure Storage queues and Service Bus queues, support a dequeue count property that indicates how many times a message from the queue is read. This data is useful for handling repeated messages and poison messages. For more information, see [Asynchronous messaging primer](/previous-versions/msp-n-p/dn589781(v=pandp.10)) and [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns).
 
--   Simply scaling the compute resources might not be sufficient to prevent loss of performance under load. You might also need to scale storage queues and other resources to prevent a single point of the overall processing chain from becoming a bottleneck. Also, consider other limitations, such as the maximum throughput of storage and other services that the application and the background tasks rely on.
+### Scaling and performance considerations
 
--   Background tasks must be designed for scaling. For example, they must be able to dynamically detect the number of storage queues in use in order to listen on or send messages to the appropriate queue.
+Background tasks must offer sufficient performance to ensure that they don't block the application or delay operation when the system is under load. Typically, performance improves when you scale the compute instances that host the background tasks. When you plan and design background tasks, consider the following points related to scalability and performance:
 
--   By default, WebJobs scale with their associated Azure Web Apps instance. However, if you want a WebJob to run as only a single instance, you can create a Settings.job file that contains the JSON data **{ \"is_singleton\": true }**. This forces Azure to only run one instance of the WebJob, even if there are multiple instances of the associated web app. This can be a useful technique for scheduled jobs that must run as only a single instance.
+- Azure Virtual Machines and the Web Apps feature of Azure App Service can host deployments. They support automatic scaling, both scaling out and scaling in. The automatic scaling is determined by the demand and load or a predefined schedule. Use automatic scaling to help ensure that the application has sufficient performance capabilities while minimizing runtime costs.
+
+- Some background tasks have a different performance capability compared to other parts of an application, for example the UI or components, such as the data access layer. In that scenario, host the background tasks together in a separate compute service so the UI and background tasks can scale independently to manage the load. If multiple background tasks have significantly different performance capabilities, divide them and scale each type independently. This technique might increase runtime costs.
+
+- To prevent the loss of performance under load, you might also need to scale storage queues and other resources so a single point of the processing chain doesn't cause a bottleneck. Consider other limitations, such as the maximum throughput of storage and other services that the application and the background tasks rely on.
+
+- Design background tasks for scaling. For example, background tasks must dynamically detect the number of utilized storage queues to monitor messages or send messages to the appropriate queue.
+
+- By default, a WebJob scales with its associated Web Apps instance. However, if you want a WebJob to run as only a single instance, you can create a Settings.job file that contains the JSON data `{ "is_singleton": true }`. This method forces Azure to only run one instance of the WebJob, even if there are multiple instances of the associated web app. This technique is useful for scheduled jobs that must run as only a single instance.
 
 ## Azure facilitation
 
-### Hosting environment
+The following sections describe the Azure services that you can use to host, run, configure, and manage background jobs.
 
-You can host background tasks by using a range of different Azure platform services:
+### Host environments
 
--   [**Azure Web Apps and WebJobs**](#azure-web-apps-and-webjobs). You can use WebJobs to execute custom jobs based on a range of different types of scripts or executable programs within the context of a web app.
+There are several Azure platform services that can host background tasks:
 
--   [**Azure Functions**](#azure-functions). You can use functions for background jobs that don\'t run for a long time. Another use case is if your workload is already hosted on App Service plan and is underutilized.
+- [Web Apps and WebJobs](#web-apps-and-webjobs): Use the WebJobs feature of App Service to run custom jobs that are based on different scripts or programs that you can run in a web app.
 
--   [**Azure Virtual Machines**](#azure-virtual-machines). If you have a Windows service or want to use the Windows Task Scheduler, it is common to host your background tasks within a dedicated virtual machine.
+- [Azure Functions](#azure-functions): Use function apps for background jobs that don't run for a long time. You can also use function apps if you host your workload on an underutilized App Service plan.
 
--   [**Azure Batch**](#azure-batch). Batch is a platform service that schedules compute-intensive work to run on a managed collection of virtual machines. It can automatically scale compute resources.
+- [Virtual Machines](#virtual-machines): If you have a Windows service or want to use Windows Task Scheduler, host your background tasks in a dedicated VM.
 
--   [**Azure Kubernetes Service**](#azure-kubernetes-service) (AKS). Azure Kubernetes Service provides a managed hosting environment for Kubernetes on Azure.
+- [Azure Batch](#batch): Batch is a platform service that you can use to schedule compute-intensive work to run on a managed collection of VMs. It can automatically scale compute resources.
 
--   [**Azure Container Apps**](#azure-container-apps). Azure Container Apps enables you to build serverless microservices based on containers.
+- [Azure Kubernetes Service (AKS)](#azure-kubernetes-service): AKS provides a managed hosting environment for Kubernetes on Azure.
 
-The following sections describe each of these options in more detail and include considerations to help you choose the appropriate option.
+- [Azure Container Apps](#container-apps): With Container Apps, you can build serverless microservices that are based on containers.
 
-#### Azure Web Apps and WebJobs
+The following sections provide considerations for each of these options to help you choose the best option for you.
 
-You can use Azure WebJobs to execute custom jobs as background tasks within an Azure Web App. WebJobs run within the context of your web app as a continuous process. WebJobs also run in response to a trigger event from Azure Logic Apps or external factors, such as changes to storage blobs and message queues. Jobs can be started and stopped on demand, and shut down gracefully. If a continuously running WebJob fails, it is automatically restarted. Retry and error actions are configurable.
+### Web Apps and WebJobs
+
+You can use the WebJobs feature to run custom jobs as background jobs in a web app. A WebJob runs as a continuous process in the context of your web app. A WebJob can also run in response to a trigger event from Logic Apps or external factors, such as changes to storage blobs or message queues. WebJobs can be started and stopped on demand, and shut down gracefully. If a continuously running WebJob fails, it's automatically restarted. You can configure retry and error actions.
 
 When you configure a WebJob:
 
--   If you want the job to respond to an event-driven trigger, you should configure it as **Run continuously**. The script or program is stored in the folder named site/wwwroot/app_data/jobs/continuous.
+- If you want the job to respond to an event-driven trigger, configure it to **Run continuously**. The script or program is stored in the folder that's named site/wwwroot/app_data/jobs/continuous.
 
--   If you want the job to respond to a schedule-driven trigger, you should configure it as **Run on a schedule**. The script or program is stored in the folder named site/wwwroot/app_data/jobs/triggered.
+- If you want the job to respond to a schedule-driven trigger, configure it to **Run on a schedule**. The script or program is stored in the folder named site/wwwroot/app_data/jobs/triggered.
 
--   If you choose the **Run on demand** option when you configure a job, it will execute the same code as the **Run on a schedule** option when you start it.
+- If you choose the **Run on demand** option when you configure a job, it runs the same code as the **Run on a schedule** option when you start the job.
 
-Azure WebJobs run within the sandbox of the web app. This means that they can access environment variables and share information, such as connection strings, with the web app. The job has access to the unique identifier of the machine that is running the job. The connection string named **AzureWebJobsStorage** provides access to Azure storage queues, blobs, and tables for application data, and access to Service Bus for messaging and communication. The connection string named **AzureWebJobsDashboard** provides access to the job action log files.
+A WebJob runs in the sandbox of the web app. It has access to environment variables and it can share information, such as connection strings, with the web app. The WebJob has access to the unique identifier of the machine that runs the WebJob. The connection string named `AzureWebJobsStorage` provides access to Storage queues, blobs, and tables for application data. It also provides access to Service Bus for messaging and communication. The connection string named `AzureWebJobsDashboard` provides access to the WebJob action log files.
 
-Azure WebJobs have the following characteristics:
+WebJobs have the following characteristics:
 
--   **Security**: WebJobs are protected by the deployment credentials of the web app.
+- **Security**: The deployment credentials of the web app provide protection for WebJobs.
 
--   **Supported file types**: You can define WebJobs by using command scripts (.cmd), batch files (.bat), PowerShell scripts (.ps1), bash shell scripts (.sh), PHP scripts (.php), Python scripts (.py), JavaScript code (.js), and executable programs (.exe, .jar, and more).
+- **Supported file types**: Define WebJobs by using command scripts (.cmd), batch files (.bat), PowerShell scripts (.ps1), Bash shell scripts (.sh), PHP scripts (.php), Python scripts (.py), JavaScript code (.js), and executable programs (.exe and .jar).
 
--   **Deployment**: You can deploy scripts and executables by using the [Azure portal](/azure/app-service-web/web-sites-create-web-jobs), by using [Visual Studio](/azure/app-service-web/websites-dotnet-deploy-webjobs), by using the [Azure WebJobs SDK](/azure/app-service/webjobs-sdk-get-started), or by copying them directly to the following locations:
+- **Deployment**: You can deploy scripts and executables by using the [Azure portal](/azure/app-service-web/web-sites-create-web-jobs), [Visual Studio](/azure/app-service-web/websites-dotnet-deploy-webjobs), or the [WebJobs SDK](/azure/app-service/webjobs-sdk-get-started), or you can copy them directly to the following locations:
 
-    -   For triggered execution: site/wwwroot/app_data/jobs/triggered/{job name}
+  - For triggered deployment: site/wwwroot/app_data/jobs/triggered/\<job name\>
 
-    -   For continuous execution: site/wwwroot/app_data/jobs/continuous/{job name}
+  - For continuous deployment: site/wwwroot/app_data/jobs/continuous/\<job name\>
 
--   **Logging**: Console.Out is treated (marked) as INFO. Console.Error is treated as ERROR. You can access monitoring and diagnostics information by using the Azure portal. You can download log files directly from the site. They are saved in the following locations:
+- **Log files**: `Console.Out` is treated, or marked, as `INFO`. `Console.Error` is treated as `ERROR`. Use the portal to access monitoring and diagnostics information. Download log files directly from the website. Log files are saved in the following locations:
 
-    -   For triggered execution: Vfs/data/jobs/triggered/jobName
+  - For triggered deployment: Vfs/data/jobs/triggered/\<job name\>
 
-    -   For continuous execution: Vfs/data/jobs/continuous/jobName
+  - For continuous deployment: Vfs/data/jobs/continuous/\<job name\>
 
--   **Configuration**: You can configure WebJobs by using the portal, the REST API, and PowerShell. You can use a configuration file named settings.job in the same root directory as the job script to provide configuration information for a job. For example:
+- **Configuration**: Configure WebJobs by using the portal, the REST API, and PowerShell. Use a configuration file named settings.job, which is in the same root directory as the WebJob script, to provide configuration information for a WebJob. For example:
 
-    -   { \"stopping_wait_time\": 60 }
+  - `{ "stopping_wait_time": 60 }`
 
-    -   { \"is_singleton\": true }
+  - `{ "is_singleton": true }`
 
-##### Considerations
+#### Web Apps and WebJobs considerations
 
--   By default, WebJobs scale with the web app. However, you can configure jobs to run on single instance by setting the **is_singleton** configuration property to **true**. Single instance WebJobs are useful for tasks that you do not want to scale or run as simultaneous multiple instances, such as reindexing, data analysis, and similar tasks.
+- By default, WebJobs scale with the web app. To configure WebJobs to run on a single instance, set the `is_singleton` configuration property to `true`. Single instance WebJobs are useful for tasks that you don't want to scale or run as simultaneous multiple instances, such as reindexing or data analysis.
 
--   To minimize the impact of jobs on the performance of the web app, consider creating an empty Azure Web App instance in a new App Service plan to host long-running or resource-intensive WebJobs.
+- To minimize the effect of WebJobs on the performance of the web app, create an empty web app instance in a new App Service plan to host long-running or resource-intensive WebJobs.
 
-#### Azure Functions
+### Azure Functions
 
-An option that is similar to WebJobs is Azure Functions. This service is serverless that is most suitable for event-driven triggers that run for a short period. A function can also be used to run scheduled jobs through timer triggers, when configured to run at set times.
+Azure Functions is similar to WebJobs. Azure Functions is serverless and is most suitable for event-driven triggers that run for a short period. You can also use Azure Functions to run scheduled jobs via timer triggers if you configure a function to run at specified times.
 
-Azure Functions is not a recommended option for large, long-running tasks because they can cause unexpected timeout issues. However, depending on the hosting plan, they can be considered for schedule-driven triggers.
+Azure Functions isn't recommended for large, long-running tasks because a function can cause unexpected timeouts. However, depending on your hosting plan, consider using functions for schedule-driven triggers.
 
-##### Considerations
+#### Azure Functions considerations
 
-If the background task is expected to run for a short duration in response to an event, consider running the task in a Consumption plan. The execution time is configurable up to a maximum time. A function that runs for longer costs more. Also CPU-intensive jobs that consume more memory can be more expensive. If you use additional triggers for services as part of your task, those are billed separately.
+If you expect the background task to run for a short duration in response to an event, consider running the task in the consumption plan. You can configure the runtime to a maximum time. A function that runs for longer costs more. CPU-intensive jobs that consume more memory can be more expensive. If you use additional triggers for services as part of your task, they're billed separately.
 
-The Premium plan is more suitable if you have a high number of tasks that are short but expected to run continuously. This plan is more expensive because it needs more memory and CPU. The benefit is that you can use features such as virtual network integration.
+The premium plan is suitable if you have several tasks that are short but they run continuously. This plan is more expensive because it needs more memory and CPU. As a benefit, you can use other features, such as virtual network integration.
 
-The Dedicated plan is most suitable for background jobs if your workload already runs on it. If you have underutilized VMs, you can run it on the same VM and share compute costs.
-
-For more information, see these articles:
-
--   [Azure Functions hosting options](/azure/azure-functions/functions-scale)
-
--   [Timer trigger for Azure Functions](/azure/azure-functions/functions-bindings-timer?tabs=csharp)
-
-#### Azure Virtual Machines
-
-Background tasks might be implemented in a way that prevents them from being deployed to Azure Web Apps, or these options might not be convenient. Typical examples are Windows services, and third-party utilities and executable programs. Another example might be programs written for an execution environment that is different than that hosting the application. For example, it might be a Unix or Linux program that you want to execute from a Windows or .NET application. You can choose from a range of operating systems for an Azure virtual machine, and run your service or executable on that virtual machine.
-
-To help you choose when to use Virtual Machines, see [Azure App Services, Cloud Services and Virtual Machines comparison](/azure/app-service-web/choose-web-site-cloud-service-vm). For information about the options for Virtual Machines, see [Sizes for Windows virtual machines in Azure](/azure/virtual-machines/windows/sizes). For more information about the operating systems and prebuilt images that are available for Virtual Machines, see [Azure Virtual Machines Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute).
-
-To initiate the background task in a separate virtual machine, you have a range of options:
-
--   You can execute the task on demand directly from your application by sending a request to an endpoint that the task exposes. This passes in any data that the task requires. This endpoint invokes the task.
-
--   You can configure the task to run on a schedule by using a scheduler or timer that is available in your chosen operating system. For example, on Windows you can use Windows Task Scheduler to execute scripts and tasks. Or, if you have SQL Server installed on the virtual machine, you can use the SQL Server Agent to execute scripts and tasks.
-
--   You can use Azure Logic Apps to initiate the task by adding a message to a queue that the task listens on, or by sending a request to an API that the task exposes.
-
-See the earlier section [Triggers](#triggers) for more information about how you can initiate background tasks.
-
-##### Considerations
-
-Consider the following points when you are deciding whether to deploy background tasks in an Azure virtual machine:
-
--   Hosting background tasks in a separate Azure virtual machine provides flexibility and allows precise control over initiation, execution, scheduling, and resource allocation. However, it will increase runtime cost if a virtual machine must be deployed just to run background tasks.
-
--   There is no facility to monitor the tasks in the Azure portal and no automated restart capability for failed tasks--although you can monitor the basic status of the virtual machine and manage it by using the [Azure Resource Manager Cmdlets](/powershell/module/?view=azps-1.0.0&preserve-view=true). However, there are no facilities to control processes and threads in compute nodes. Typically, using a virtual machine will require additional effort to implement a mechanism that collects data from instrumentation in the task, and from the operating system in the virtual machine. One solution that might be appropriate is to use the [System Center Management Pack for Azure](https://www.microsoft.com/download/details.aspx?id=50013).
-
--   You might consider creating monitoring probes that are exposed through HTTP endpoints. The code for these probes could perform health checks, collect operational information and statistics--or collate error information and return it to a management application. For more information, see the [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring).
+The dedicated plan is suitable for background jobs if your workload already runs on the dedicated plan. If you have underutilized VMs, you can run the dedicated plan on the same VM and share compute costs.
 
 For more information, see:
 
--   [Virtual Machines](https://azure.microsoft.com/services/virtual-machines)
+- [Azure Functions hosting options](/azure/azure-functions/functions-scale)
+- [Timer trigger for Azure Functions](/azure/azure-functions/functions-bindings-timer)
 
--   [Azure Virtual Machines FAQ](/azure/virtual-machines/linux/faq)
+### Virtual Machines
 
-#### Azure Batch
-
-Consider [Azure Batch](/azure/batch) if you need to run large, parallel high-performance computing (HPC) workloads across tens, hundreds, or thousands of VMs.
-
-The Batch service provisions the VMs, assign tasks to the VMs, runs the tasks, and monitors the progress. Batch can automatically scale out the VMs in response to the workload. Batch also provides job scheduling. Azure Batch supports both Linux and Windows VMs.
-
-##### Considerations
-
-Batch works well with intrinsically parallel workloads. It can also perform parallel calculations with a reduce step at the end, or run [Message Passing Interface (MPI) applications](/azure/batch/batch-mpi) for parallel tasks that require message passing between nodes.
-
-An Azure Batch job runs on a pool of nodes (VMs). One approach is to allocate a pool only when needed and then delete it after the job completes. This maximizes utilization, because nodes are not idle, but the job must wait for nodes to be allocated. Alternatively, you can create a pool ahead of time. That approach minimizes the time that it takes for a job to start, but can result in having nodes that sit idle. For more information, see [Pool and compute node lifetime](/azure/batch/batch-api-basics#pool-and-compute-node-lifetime).
+You can implement background tasks so that they're not deployed to Web Apps. For example, you can implement tasks by using Windows services, third-party utilities, or executable programs. You can also use programs that are written for a runtime environment that's different than the environment that hosts the application. For example, you might use a Unix or Linux program that you want to run from a Windows or .NET application. Choose from several operating systems for an Azure VM, and run your service or executable on that VM.
 
 For more information, see:
 
--   [What is Azure Batch?](/azure/batch/batch-technical-overview)
+- [Choose an Azure compute service](/azure/app-service-web/choose-web-site-cloud-service-vm)
+- [Sizes for VMs in Azure](/azure/virtual-machines/windows/sizes)
+- [Virtual Machines Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute)
 
--   [Develop large-scale parallel compute solutions with Batch](/azure/batch/batch-api-basics)
+To initiate the background task in a separate VM, you can:
 
--   [Batch and HPC solutions for large-scale computing workloads](/azure/architecture/topics/high-performance-computing)
+- Send a request to an endpoint that the task exposes to run the task on demand directly from your application. The request transfers data that the task requires. The endpoint invokes the task.
 
-#### Azure Kubernetes Service
+- Use a scheduler or timer from your chosen operating system to configure the task to run on a schedule. For example, on Windows, you can use Windows Task Scheduler to run scripts and tasks. If you have SQL Server installed on the VM, use SQL Server Agent to run scripts and tasks.
 
-Azure Kubernetes Service (AKS) manages your hosted Kubernetes environment, which makes it easy to deploy and manage containerized applications.
+- Use Logic Apps to initiate the task by adding a message to a queue that the task monitors or by sending a request to an API that the task exposes.
 
-Containers can be useful for running background jobs. Some of the benefits include:
+For more information about how you can initiate background tasks, see the previous [Triggers](#triggers) section.
 
--   Containers support high-density hosting. You can isolate a background task in a container, while placing multiple containers in each VM.
+#### Virtual Machines considerations
 
--   The container orchestrator handles internal load balancing, configuring the internal network, and other configuration tasks.
+Consider the following points when you deploy background tasks in an Azure VM:
 
--   Containers can be started and stopped as needed.
+- Host background tasks in a separate Azure VM to provide flexibility and precise control over initiation, deployment, scheduling, and resource allocation. However, runtime costs increase if you deploy a VM solely for background tasks.
 
--   Azure Container Registry allows you to register your containers inside Azure boundaries. This comes with security, privacy, and proximity benefits.
+- There's no facility to monitor the tasks in the portal and no automated restart capability for failed tasks. But you can use the [Azure Resource Manager cmdlets](https://devblogs.microsoft.com/scripting/work-with-the-azurerm-cmdlets-part-1) to monitor the status of the VM and manage it. There are no facilities to control processes and threads in compute nodes. Typically, if you use a VM, you have to implement a mechanism that collects data from instrumentation in the task, and also from the operating system in the VM. You can use the [System Center Management Pack for Azure](https://www.microsoft.com/download/details.aspx?id=50013) for this purpose.
 
-##### Considerations
-
-Requires an understanding of how to use a container orchestrator. Depending on the skill set of your DevOps team, this may or may not be an issue.
-
-For more information, see:
-
--   [Overview of containers in Azure](https://azure.microsoft.com/overview/containers)
-
--   [Introduction to private Docker container registries](/azure/container-registry/container-registry-intro)
-
-#### Azure Container Apps
-
-Azure Container Apps enables you to build serverless microservices based on containers. Distinctive features of Container Apps include:
-
--   Optimized for running general purpose containers, especially for applications that span many microservices deployed in containers.
-
--   Powered by Kubernetes and open-source technologies like [Dapr](https://dapr.io/), [KEDA](https://keda.sh/), and [envoy](https://www.envoyproxy.io/).
-
--   Supports Kubernetes-style apps and microservices with features like [service discovery](/azure/container-apps/connect-apps) and [traffic splitting](/azure/container-apps/revisions).
-
--   Enables event-driven application architectures by supporting scale based on traffic and pulling from [event sources like queues](/azure/container-apps/scale-app), including [scale to zero](/azure/container-apps/scale-app).
-
--   Support of long running processes and can run [background tasks](/azure/container-apps/background-processing).
-
-##### Considerations
-
-Azure Container Apps doesn\'t provide direct access to the underlying Kubernetes APIs. If you require access to the Kubernetes APIs and control plane, you should use [Azure Kubernetes Service](/azure/aks/intro-kubernetes). However, if you would like to build Kubernetes-style applications and don\'t require direct access to all the native Kubernetes APIs and cluster management, Container Apps provides a fully managed experience based on best-practices. For these reasons, many teams may prefer to start building container microservices with Azure Container Apps.
+- Consider creating monitoring probes that are exposed through HTTP endpoints. You can configure the code for these probes to perform health checks and collect operational information and statistics. You can also use the probes to collate error information and return it to a management application.
 
 For more information, see:
 
--   [Overview of Azure Containers App](/azure/container-apps/overview)
+- [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring)
+- [Virtual Machines](https://azure.microsoft.com/services/virtual-machines)
+- [Virtual Machines FAQ](/azure/virtual-machines/linux/faq)
 
-You can get started building your first container app [using the quickstarts](/azure/container-apps/get-started).
+### Batch
+
+Consider [Batch](/azure/batch) if you need to run large, parallel high-performance computing (HPC) workloads across tens, hundreds, or thousands of VMs.
+
+Use Batch to prepare the VMs, assign tasks to the VMs, run the tasks, monitor the progress, and automatically scale out the VMs in response to the workload. Batch also provides job scheduling and supports Linux and Windows VMs.
+
+#### Batch considerations
+
+Batch is suitable for intrinsically parallel workloads. You can use Batch to perform parallel calculations with a reduce step at the end, or run [Message Passing Interface (MPI) applications](/azure/batch/batch-mpi) for parallel tasks that require message passing between nodes.
+
+A Batch job runs on a pool of nodes, or VMs. You can allocate a pool only when needed and then delete it after the job finishes. This approach maximizes utilization because nodes aren't idle, but the job must wait for you to allocate nodes. Alternatively, you can create a pool in advance. This approach minimizes the time that it takes for a job to start but can result in nodes that sit idle.
+
+For more information, see:
+
+- [Nodes and pools in Batch](/azure/batch/nodes-and-pools)
+- [What is Batch?](/azure/batch/batch-technical-overview)
+- [Jobs and tasks in Batch](/azure/batch/jobs-and-tasks)
+- [HPC on Azure](/azure/architecture/topics/high-performance-computing#azure-batch)
+- [Batch service workflow and resources](/azure/batch/batch-service-workflow-features)
+
+### Azure Kubernetes Service
+
+Use AKS to manage your hosted Kubernetes environment so you can easily deploy and manage containerized applications.
+
+Containers are useful for running background jobs. Some of the benefits include:
+
+- Containers support high-density hosting. You can isolate a background task in a container, while placing multiple containers in each VM.
+
+- Use the container orchestrator to perform internal load balancing, configure the internal network, and perform other configuration tasks.
+
+- You can start and stop containers as needed.
+
+- With Azure Container Registry, you can register your containers inside Azure boundaries, which provides security, privacy, and proximity benefits.
+
+#### AKS considerations
+
+AKS requires an understanding of how to use a container orchestrator.
+
+For more information, see:
+
+- [Overview of containers in Azure](https://azure.microsoft.com/overview/containers)
+- [Introduction to container registries in Azure](/azure/container-registry/container-registry-intro)
+
+### Container Apps
+
+With Container Apps, you can build serverless microservices that are based on containers. Container Apps:
+
+- Is optimized for running general purpose containers, especially applications that span many microservices that are deployed in containers.
+
+- Is powered by Kubernetes and open-source technologies, like [Dapr](https://dapr.io), [Kubernetes Event-driven Autoscaling (KEDA)](https://keda.sh/), and [Envoy](https://www.envoyproxy.io).
+
+- Supports Kubernetes-style apps and microservices with features like [service discovery](/azure/container-apps/connect-apps) and [traffic splitting](/azure/container-apps/traffic-splitting).
+
+- Enables event-driven application architectures by supporting scaling that's based on traffic and pulling from event sources like [queues](/azure/container-apps/scale-app), including scale to zero.
+
+- Supports long-running processes and can run [background tasks](/azure/container-apps/background-processing).
+
+#### Container Apps considerations
+
+Container Apps doesn't provide direct access to the underlying Kubernetes APIs. If you require access to the Kubernetes APIs and control plane, use [AKS](/azure/aks/intro-kubernetes). If you want to build Kubernetes-style applications and you don't require direct access to the native Kubernetes APIs and cluster management, use Container Apps for a fully managed experience. Container Apps is best suited for building container microservices.
+
+For more information, see:
+
+- [Container Apps overview](/azure/container-apps/overview)
+- [Quickstart: Deploy your first container app](/azure/container-apps/get-started)
 
 ## Tradeoffs
 
--   Background jobs introduce more components and dependencies to the system, which can increase the complexity and maintenance costs of the solution. For example, background jobs may require a separate queue service, a worker service, a monitoring service, and a retry mechanism.
+- Background jobs introduce more components and dependencies to the system, which can increase the complexity and maintenance costs of the solution. For example, background jobs might require a separate queue service, worker service, monitoring service, and retry mechanism.
 
--   Background jobs may also create challenges for data synchronization and process coordination, especially if the background tasks depend on each other or on other data sources. For example, background jobs may need to handle data consistency issues, race conditions, deadlocks, or timeouts.
+- Background jobs can create challenges for data synchronization and process coordination, especially if the background tasks depend on each other or on other data sources. For example, background jobs might handle data consistency problems, race conditions, deadlocks, or timeouts.
 
--   Background jobs may affect the user experience if the results of the background tasks need to be presented to the user. For example, background jobs may require the user to wait for a notification, refresh the page, or check the status of the task manually. This can increase the complexity of the user interaction and negatively impact the user experience.
+- Background jobs might affect the user experience if the results of the background tasks are presented to the user. For example, background jobs might require the user to wait for a notification, refresh the page, or manually check the status of the task. These behaviors can increase the complexity of the user interaction and negatively affect the user experience.
 
 ## Related links
 
--   [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling)
-
--   [Priority Queue pattern](/azure/architecture/patterns/priority-queue)
-
--   [Pipes and Filters pattern](/azure/architecture/patterns/pipes-and-filters)
-
--   [Scheduler Agent Supervisor pattern](/azure/architecture/patterns/scheduler-agent-supervisor)
-
--   [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction)
-
--   [Leader Election pattern](/azure/architecture/patterns/leader-election)
-
--   [Competing Consumers pattern](/azure/architecture/patterns/competing-consumers)
-
+- [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction)
+- [Competing Consumers pattern](/azure/architecture/patterns/competing-consumers)
+- [Leader Election pattern](/azure/architecture/patterns/leader-election)
+- [Pipes and Filters pattern](/azure/architecture/patterns/pipes-and-filters)
+- [Priority Queue pattern](/azure/architecture/patterns/priority-queue)
+- [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling)
+- [Scheduler Agent Supervisor pattern](/azure/architecture/patterns/scheduler-agent-supervisor)

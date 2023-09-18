@@ -25,6 +25,8 @@
           items:
             - name: Reliability patterns
               href: reliability/design-patterns.md
+            - name: Background jobs
+              href: reliability/background-jobs.md
             - name: Disaster recovery strategy  
               href: reliability/disaster-recovery.md
             - name: Failure mode analysis
