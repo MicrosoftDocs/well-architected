@@ -97,7 +97,7 @@ Establishing a connection to a database is an expensive operation. It requires c
 - *Understand connection pooling limits.* Some services limit the number of network connections. Exceeding this limit causes connections to be slowed down or terminated. With connection pooling, a fixed set of connections is established at startup time and maintained. In many cases, a default pool size might consist only of a small handful of connections that perform quickly in basic test scenarios. Your application might exhaust the default pool size under scale and create a bottleneck. You should establish a pool size that maps to the number of concurrent transactions supported on each application instance.
 - *Test the connection pool.* Each database and application platform has slightly different requirements for the right way to set up and use the pool. In all cases, testing is important to ensure a connection pool is properly established and works as designed under load.
 
-     :::image type="icon" source="../_images/risk.svg"::: *Risk:* Connection pooling could create [pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation) and degrade performance.
+     :::image type="icon" source="../_images/risk.svg"::: *Risk:* Connection pooling could create [pool fragmentation]([/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation](https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation)) and degrade performance.
 
 #### Optimize background jobs
 
