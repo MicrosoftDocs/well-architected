@@ -13,7 +13,7 @@ This guide describes the best practices for responding to live performance issue
 
 If live performance issues aren't addressed, it can lead to various negative consequences. The workload may experience slowdowns, crashes, or unresponsiveness, resulting in a poor user experience. It can also affect productivity. Users may be unable to perform their tasks efficiently, leading to reputation damage.
 
-## Definitions
+**Definitions**
 
 |  Term|                                Definition|
 |-|-|
