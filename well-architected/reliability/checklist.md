@@ -1,33 +1,35 @@
 ---
-title: Well-Architected checklist for Reliability
-description: Review a checklist for Reliability in application design. Considerations include uptime (availability), high resiliency, low latency, and cost.
+title: Design review checklist for Reliability
+description: Use this checklist for Reliability to identify the best infrastructure and application design for your workload.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
-# Recommendations for Reliability
+# Design review checklist for Reliability
 
-This checklist presents a set of recommendations as a way for you to gauge reliability, resiliency, and failure recovery strategies in your architecture design. The goal of reliability is to ensure that you have identified the best infrastructure and application design for your workload based on business requirements that are mapped to availability and recoverability target metrics. Arriving at a reliable design requires a thorough consideration of many decision points and a holistic understanding of the impacts of the decisions you make throughout your design process, as detailed in this checklist and accompanying guides. Moreover, make workload reliability concerns a central consideration throughout the workload design, development, and ops lifecycle.
+This checklist presents a set of recommendations for you to use to evaluate the reliability, resiliency, and failure recovery strategies in your architecture design. To ensure reliability, identify the best infrastructure and application design for your workload. Make these decisions based on your business requirements that are mapped to availability and recoverability target metrics.
 
-## Checklist 
+To implement a reliable design, thoroughly consider decision points in your design and be aware of how those decisions affect your workload. This checklist and the accompanying guides provide resources to help you make those decisions. Make workload reliability a central consideration throughout the workload design, development, and operation lifecycle.
 
-Approaching your design with a focus on reliability will help you ensure that you are designing a workload that is resilient, manageable, and repeatable. If you haven't checked the boxes and considered the tradeoffs, the design could be at risk. Careful consideration of all the points covered in the checklist will give you confidence in success.
+## Checklist
 
-|Code  |Recommendation  |
-|-|-|
-|RE:&nbsp;01     |  **Identify user and system flows** of the workload and **prioritize using a criticality scale** that's derived from the business requirements.       |
-|RE:&nbsp;02     |  **Use Failure Mode Analysis (FMA) to identify and prioritize potential failures in your solution components.** FMA helps you assess the risk and impact of each failure mode and plan how the workload would respond and recover.       |
-|RE:&nbsp;03     |   **Define reliability and recovery targets** for the components, flows, and the overall solution. Visualize the targets to **negotiate, gain consensus, set expectations, and drive actions** to achieve the ideal state. Use the defined targets to build the health model. The health model defines what healthy, degraded, and unhealthy states look like.      |
-|RE:&nbsp;04     | **Add redundancy at different levels, especially for critical flows.** Apply redundancy to the compute, data, network and other infrastructure tiers in accordance with the identified reliability targets.        |
-|RE:&nbsp;05     | **Implement a timely & reliable scaling strategy at application, data, and infrastructure level.**        |
-|RE:&nbsp;06     |  **Strengthen the resiliency and recoverability of your workload by implementing self-preservation and self-healing measures.** Build capabilities in the solution using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. And build capabilities in the system to detect solution component failures and automatically initiate corrective action while the workload continues to operate at full or reduced functionality.       |
-|RE:&nbsp;07      |  **Test for resiliency and availability scenarios by applying the principles of chaos engineering in your test and production environments.** Your testing should prove your graceful degradation implementation and scaling strategies through active malfunction and simulated load testing.       |
-|RE:&nbsp;08     |  **Have structured, tested, and documented business continuity and disaster recovery (BCDR) plans aligned with the negotiated recovery targets.** Plans must cover all components as well as the system as a whole.       |
-|RE:&nbsp;09     |  **Measure and publish the solution's health indicators.** Continuously capture uptime and other reliability data, from across the workload and more granularly from individual components and key flows.       |
-|RE:&nbsp;10     |  **Design your workload to align with business objectives and avoid unnecessary complexity or overhead.** Design decisions should be based on a practical and balanced approach that can deliver the desired results effectively, with a smaller surface area to reduce inefficiencies and potential problems.       |
+Approach your design with a focus on reliability to help ensure that you design a workload that's resilient, manageable, and repeatable. If you don't include reliability practices and consider the tradeoffs, your design is potentially at risk. Carefully consider all the points covered in the checklist to instill confidence in your system's success.
+
+|&nbsp;|Code  |Recommendation  |
+|-|-|-|
+| &#9744; |[RE:&nbsp;01](identify-flows.md)    |  **Identify the user and system flows** of your workload. **Prioritize importance by using a criticality scale** that's based on your business requirements.       |
+| &#9744; |[RE:&nbsp;02](failure-mode-analysis.md)     |  **Use failure mode analysis (FMA) to identify and prioritize potential failures in your solution components**. Perform FMA to help you assess the risk and effect of each failure mode. Determine how the workload responds and recovers.       |
+| &#9744; |[RE:&nbsp;03](business-metrics.md)     |   **Define reliability and recovery targets** for the components, the flows, and the overall solution. Visualize the targets to **negotiate, gain consensus, set expectations, and drive actions** to achieve the ideal state. Use the defined targets to build the health model. The health model defines what healthy, degraded, and unhealthy states look like.      |
+| &#9744; |[RE:&nbsp;04](redundancy.md) <br> [RE:&nbsp;04](highly-available-multi-region-design.md)     | **Add redundancy at different levels, especially for critical flows**. Apply redundancy to the compute, data, network, and other infrastructure tiers in accordance with the identified reliability targets.        |
+| &#9744; |[RE:&nbsp;05](partition-data.md) <br> [RE:&nbsp;05](scaling.md)    | **Implement a timely and reliable scaling strategy at the application, data, and infrastructure levels**.        |
+| &#9744; |[RE:&nbsp;06](background-jobs.md) <br> [RE:&nbsp;06](self-preservation.md) <br> [RE:&nbsp;06](handle-transient-faults.md)  |  **Strengthen the resiliency and recoverability of your workload by implementing self-preservation and self-healing measures**. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. Build capabilities into the system to detect solution component failures and automatically initiate corrective action while the workload continues to operate at full or reduced functionality.       |
+| &#9744; |[RE:&nbsp;07](testing-strategy.md)      |  **Test for resiliency and availability scenarios by applying the principles of chaos engineering in your test and production environments**. Use testing to ensure that your graceful degradation implementation and scaling strategies are effective by performing active malfunction and simulated load testing.       |
+| &#9744; |[RE:&nbsp;08](disaster-recovery.md)     |  **Implement structured, tested, and documented business continuity and disaster recovery (BCDR) plans that align with the recovery targets**. Plans must cover all components and the system as a whole.       |
+| &#9744; |[RE:&nbsp;09](monitoring-alerting-strategy.md)     |  **Measure and publish the solution's health indicators**. Continuously capture uptime and other reliability data from across the workload and also from individual components and key flows.       |
+| &#9744; |[RE:&nbsp;10](simplify.md)     |  **Design your workload to align with business objectives and avoid unnecessary complexity or overhead**. Use a practical and balanced approach to make design decisions that deliver the desired results. Contain your design to the necessities to reduce inefficiencies and potential problems.       |
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Tradeoffs for performance efficiency](tradeoffs.md)
+> [Tradeoffs for reliability](tradeoffs.md)
