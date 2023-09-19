@@ -22,8 +22,7 @@ The guidance is based on the five pillars of architectural excellence:
 - Operational excellence
 - Performance efficiency
 
-> [!NOTE]  
-> This article provides implementation guidance and recommendations for Azure Database for PostgreSQL. For Azure Cosmos DB for PostgreSQL, see [Build scalable apps in Azure Cosmos DB for PostgreSQL](/azure/cosmos-db/PostgreSQL/quickstart-build-scalable-apps-overview).
+
 
 ## Prerequisites
 
@@ -31,7 +30,9 @@ Understanding the Well-Architected Framework pillars can help produce a high-qua
 
 [Azure Database for PostgreSQL](/azure/PostgreSQL/overview) is a relational database service in Azure based on the PostgreSQL open-source relational database. It's a fully managed database as a service offering that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability. Azure Database for PostgreSQL is built on the community edition of the PostgreSQL database engine. It's compatible with the PostgreSQL server community edition and supports PostgreSQL extension features such as PostGIS and TimescaleDB.
 
-To explore a light-weight solution idea that uses Azure Database for PostgreSQL to store analytical results from the Cognitive Services API, see [Intelligent apps using Azure Database for PostgreSQL](/azure/architecture/solution-ideas/articles/intelligent-apps-using-azure-database-for-postgresql). 
+> [!NOTE]  
+> To explore a light-weight solution idea that uses Azure Database for PostgreSQL to store analytical results from the Cognitive Services API, see [Intelligent apps using Azure Database for PostgreSQL](/azure/architecture/solution-ideas/articles/intelligent-apps-using-azure-database-for-postgresql).
+> This article provides implementation guidance and recommendations for Azure Database for PostgreSQL. For Azure Cosmos DB for PostgreSQL, see [Build scalable apps in Azure Cosmos DB for PostgreSQL](/azure/cosmos-db/PostgreSQL/quickstart-build-scalable-apps-overview).
 
 ## Reliability
 
