@@ -32,7 +32,8 @@ Understanding the Well-Architected Framework pillars can help produce a high-qua
 
 > [!NOTE]  
 > To explore a light-weight solution idea that uses Azure Database for PostgreSQL to store analytical results from the Cognitive Services API, see [Intelligent apps using Azure Database for PostgreSQL](/azure/architecture/solution-ideas/articles/intelligent-apps-using-azure-database-for-postgresql).
-> This article provides implementation guidance and recommendations for Azure Database for PostgreSQL. For Azure Cosmos DB for PostgreSQL, see [Build scalable apps in Azure Cosmos DB for PostgreSQL](/azure/cosmos-db/PostgreSQL/quickstart-build-scalable-apps-overview).
+> 
+> For implementation guidance, see product documentation: [Build scalable apps in Azure Cosmos DB for PostgreSQL](/azure/cosmos-db/PostgreSQL/quickstart-build-scalable-apps-overview).
 
 ## Reliability
 
