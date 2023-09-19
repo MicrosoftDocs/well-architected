@@ -22,14 +22,18 @@ The guidance is based on the five pillars of architectural excellence:
 - Operational excellence
 - Performance efficiency
 
-> [!NOTE]  
-> This article provides implementation guidance and recommendations for Azure Database for PostgreSQL. For Azure Cosmos DB for PostgreSQL, see [Build scalable apps in Azure Cosmos DB for PostgreSQL](/azure/cosmos-db/PostgreSQL/quickstart-build-scalable-apps-overview).
+
 
 ## Prerequisites
 
 Understanding the Well-Architected Framework pillars can help produce a high-quality, stable, and efficient cloud architecture. We recommend you review your workload using the [Azure Well-Architected Framework Review](/assessments/?id=azure-architecture-review&mode=pre-assessment) assessment.
 
 [Azure Database for PostgreSQL](/azure/PostgreSQL/overview) is a relational database service in Azure based on the PostgreSQL open-source relational database. It's a fully managed database as a service offering that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability. Azure Database for PostgreSQL is built on the community edition of the PostgreSQL database engine. It's compatible with the PostgreSQL server community edition and supports PostgreSQL extension features such as PostGIS and TimescaleDB.
+
+> [!NOTE]  
+> To explore a light-weight solution idea that uses Azure Database for PostgreSQL to store analytical results from the Cognitive Services API, see [Intelligent apps using Azure Database for PostgreSQL](/azure/architecture/solution-ideas/articles/intelligent-apps-using-azure-database-for-postgresql).
+> 
+> For implementation guidance, see product documentation: [Build scalable apps in Azure Cosmos DB for PostgreSQL](/azure/cosmos-db/PostgreSQL/quickstart-build-scalable-apps-overview).
 
 ## Reliability
 
@@ -52,9 +56,9 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 | Recommendation | Benefit |
 | --- | --- |
-| Defined targets for RPO (Recovery Point Objective) and RTO (Recovery Time Objective) for workloads | Derive these values by conducting a risk assessment and ensuring you understand the cost and risk of downtime and data loss. These are nonfunctional requirements of a system and should be dictated by business requirements. |
-| Select the appropriate high availability configuration | Azure Database for PostgreSQL Server offers high availability configurations, ensuring that the service remains available if there's a zone outage and no data is lost. When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. |
-| Configure geo-redundancy backup | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery in the event the primary server region is down. |
+| Defined targets for RPO (Recovery Point Objective) and RTO (Recovery Time Objective) for workloads. | Derive these values by conducting a risk assessment and ensuring you understand the cost and risk of downtime and data loss. These are nonfunctional requirements of a system and should be dictated by business requirements. |
+| Select the appropriate high availability configuration. | Azure Database for PostgreSQL Server offers high availability configurations, ensuring that the service remains available if there's a zone outage and no data is lost. When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. |
+| Configure geo-redundancy backup. | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo Redundant backups are enabled in selected regions and help with disaster recovery in the event the primary server region is down. |
 | Test your disaster recovery plan to ensure rapid data restoration if there's a failure. | Read replicas can be deployed on a different region and promoted to a read-write server if disaster recovery is needed. |
 | Monitor your server to ensure it's healthy and performing as expected. | We have database monitoring in place to monitor and alert on database-level failures. |
 
@@ -78,7 +82,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | Recommendation | Benefit |
 | --- | --- |
 | SSL and enforce encryption to secure data in transit. | Deploy the DigiCert Global Root certificate from a trusted Certificate Authority (CA) certificate needed to communicate over SSL with client applications. |
-| Implement network security groups and firewalls to control access to your database. | As part of the Zero Trust Model for security, network segmentation is recommended where communication paths between components (in this case, application and database server) are restricted to only what's needed. This can be implemented using Network Security Group and Application Security Groups |
+| Implement network security groups and firewalls to control access to your database. | As part of the Zero Trust Model for security, network segmentation is recommended where communication paths between components (in this case, application and database server) are restricted to only what's needed. This can be implemented using Network Security Group and Application Security Groups. |
 | Use Azure Active Directory for authentication and authorization to enhance identity management. | Microsoft Azure Active Directory (Azure AD) authentication is a mechanism of connecting to Azure Database for PostgreSQL using identities defined in Azure AD. |
 | Configure row-level security. | [Row level security (RLS)](https://www.postgresql.org/docs/current/ddl-rowsecurity.html) is a PostgreSQL security feature that allows database administrators to define policies to control how specific rows of data display and operate for one or more roles. Row-level security is an additional filter you can apply to a PostgreSQL database table. |
 
@@ -107,17 +111,17 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 
 | Recommendations | Benefits |
 | --- | --- |
-| Pick the right tier and SKU | Pick the pricing tier and compute SKUs that support the specific needs of your workload. Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
-| Understand high availability mode | High availability makes a standby server always available within the same zone or region. Enabling high availability doubles your cost. |
-| Adjust compute and storage tiers | You should manually adjust the compute and storage tiers to meet the application's requirements over time.
-| Use Start/Stop feature | The Flexible server has a Start/Stop feature that you can use to stop the server from running when you don't need it.
-| Consider reserved instances | Consider a one or three-year reservation to receive significant discounts on computing. Use these reservations for workloads with consistent compute usage for a year or more. |
-| Use your provisioned storage | There's no extra charge for backup storage up to 100% of your total provisioned server storage.
-| Understand redundancy costs | Geo-redundant storage (GRS) costs twice as much as local redundant storage (LRS). GRS requires double the storage capacity of LRS.
-| Evaluate storage scale-up decisions | You should evaluate your current and future storage needs before scaling up your storage. After you scale up storage, you can't scale down.
-| Deploy to the same region as the app | Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. To grant them access, you need to configure virtual network peering. Virtual network peering has nominal inbound and outbound data transfer costs. |
-| High availability oriented cost description | It's a trade-off of HA and costs. HA is double the cost for non-HA configuration, but it's needed. |
-| Consolidate databases and servers | You can consolidate multiple databases and servers into a single server to reduce costs. |
+| Pick the right tier and SKU. | Pick the pricing tier and compute SKUs that support the specific needs of your workload. Azure Advisor gives you recommendations to optimize and reduce your overall Azure spending. Recommendations include server right-sizing that you should follow. |
+| Understand high availability mode. | High availability makes a standby server always available within the same zone or region. Enabling high availability doubles your cost. |
+| Adjust compute and storage tier.s | You should manually adjust the compute and storage tiers to meet the application's requirements over time.
+| Use Start/Stop feature. | The Flexible server has a Start/Stop feature that you can use to stop the server from running when you don't need it.
+| Consider reserved instances. | Consider a one or three-year reservation to receive significant discounts on computing. Use these reservations for workloads with consistent compute usage for a year or more. |
+| Use your provisioned storage. | There's no extra charge for backup storage up to 100% of your total provisioned server storage.
+| Understand redundancy costs. | Geo-redundant storage (GRS) costs twice as much as local redundant storage (LRS). GRS requires double the storage capacity of LRS.
+| Evaluate storage scale-up decisions. | You should evaluate your current and future storage needs before scaling up your storage. After you scale up storage, you can't scale down.
+| Deploy to the same region as the app. | Deploy to the same region as the application(s) to minimize transfer costs. When you use virtual network integration, applications in a different virtual network don't have direct access to flexible servers. To grant them access, you need to configure virtual network peering. Virtual network peering has nominal inbound and outbound data transfer costs. |
+| High availability oriented cost description. | It's a trade-off of HA and costs. HA is double the cost for non-HA configuration, but it's needed. |
+| Consolidate databases and servers. | You can consolidate multiple databases and servers into a single server to reduce costs. |
 
 ### Azure policy definitions
 
