@@ -16,7 +16,7 @@ Remember that cost optimization is a continuous process where you optimize costs
 
 | &nbsp;| Code  |Recommendation |
 |---|---|---|
-| &#9744; | [CO:&nbsp;01](create-financial-responsbility.md) | **Create a culture of financial responsibility.** Personnel should receive training that keeps technical skills sharp. The work environment should foster creativity and fiscal accountability. Investments should be made in tooling and implementing automation.|
+| &#9744; | [CO:&nbsp;01](create-culture-financial-responsbility.md) | **Create a culture of financial responsibility.** Personnel should receive training that keeps technical skills sharp. The work environment should foster creativity and fiscal accountability. Investments should be made in tooling and implementing automation.|
 | &#9744; | [CO:&nbsp;02](cost-model.md) | **Create and maintain a cost model.** The cost model should estimate the initial cost, run rates, and ongoing costs. A budget should be negotiated that covers the cost model and has a buffer for unplanned spending.|
 | &#9744; | [CO:&nbsp;03](collect-review-cost-data.md) | **Collect and review cost data.** Data collection should capture daily costs. Cost reports should include incurred costs (metered), pre-paid costs (amortized), trends, and forecasts. Stakeholders should regularly review spending against the budget and cost model. Automated alerts should trigger notifications at key thresholds and anomaly detection should indicate deviations from trend baselines. |
 | &#9744; | [CO:&nbsp;04](set-spending-guardrails.md) | **Setting spending guardrails.** Guardrails should include release gates, governance policies, resource limits, and access controls. There should be a preference for platform automation over manual processes. |
