@@ -68,7 +68,7 @@ Personnel need ways to receive and relay cost optimization ideas. Creating commu
 
 **Partner ecosystem**: Azure has a partner ecosystem that includes [training partners](https://azure.microsoft.com/partners/) who can provide expertise and guidance.
 
-**Cloud skills challenge**: Microsoft offers the [Cloud Skills Challenge](https://www.microsoft.com/sites/cloud-skills-challenge/), which allows individuals to test and improve their Azure skills. The Microsoft Cloud Skills Challenge is a fun, free and interactive skilling program that provides you with access to Microsoft skilling resources for your specific solution area. Gain access to Microsoft learn paths, virtual training days and a virtual leader board to compete with peers in the industry.
+**Cloud skills challenge**: Microsoft offers the Cloud Skills Challenge, which allows individuals to test and improve their Azure skills. The Microsoft Cloud Skills Challenge is a fun, free and interactive skilling program that provides you with access to Microsoft skilling resources for your specific solution area. Gain access to Microsoft learn paths, virtual training days and a virtual leader board to compete with peers in the industry.
 
 **Cloud Solution Architects**: Organizations can talk to Microsoft and engage with a CSA (Cloud Solution Architect) to receive assistance and guidance in creating a culture of fiscal responsibility.
 
