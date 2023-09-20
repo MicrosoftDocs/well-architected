@@ -89,8 +89,14 @@
           items:
             - name: Cost optimization patterns
               href: cost-optimization/design-patterns.md
+            - name: Create culture of financial responsibility
+              href: cost-optimization/create-culture-financial-responsibility.md
             - name: Create a cost model
               href: cost-optimization/cost-model.md
+            - name: Collect and review cost Data
+              href: cost-optimization/collect-review-cost-data.md
+            - name: Set spending guardrails
+              href: cost-optimization/set-spending-guardrails.md
       - name: Operational Excellence
         items: 
         - name: Quick links
