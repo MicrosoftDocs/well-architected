@@ -85,37 +85,37 @@ Testing should occur on all code, including application code, infrastructure tem
 
 Prefer automated testing when possible to ensure consistency. The following types of testing should be included in your supply chain design and should be automated to the extent possible.
 
-    -   **Unit testing**
-    
-        Unit tests are tests typically run as part of the continuous integration routine. Unit Tests should be extensive and quick, ideally covering 100% of the code, and running in under 30 seconds.
-        
-        Unit testing can verify that the syntax and functionality of individual modules of code are working the way they should, for example, producing a defined output for a known input. Unit tests can also be used to verify that infrastructure as code assets are valid.
-        
-        Unit tests should be applied to all code assets, including templates and scripts.
-    
-    -   **Smoke testing**
-    
-        Smoke tests verify that a workload can be stood up in a test environment and performs as expected. Smoke tests don\'t go to the extent of integration tests as smoke tests don\'t verify the interoperability of different components.
-        
-        Instead, they verify that the deployment methodology for both the infrastructure and the application works and that the system responds as intended once the process is complete.
-    
-    -   **Integration testing**
-    
-        After making sure that the different application components operate individually, integration testing determines whether they can interact with each other as they should.
-        
-        Running a large integration test suite can take a considerable amount of time, which is why tests should be performed as early as possible (the shift-left principle) in the software development lifecycle. Integration tests should be reserved to scenarios that can\'t be tested with a smoke or unit test.
-        
-        Long running test processes can be run on a regular interval if needed. A regular interval offers a good compromise, detecting interoperability issues between application components no later than one day after they were introduced.
-        
-        There are some testing scenarios that benefit from being run manually. Use manual testing when you need to introduce human interactivity elements into the tests.
-        
-    -   **Acceptance testing**
-    
-        Depending on the context, acceptance testing is sometimes performed manually. It can be partially or fully automated. Its purpose is to determine whether the software system has met the requirement specifications.
-        
-        The main purpose of this test is to evaluate the system\'s compliance with the business requirements and verify if it has met the required criteria for delivery to end users.
+   - **Unit testing**
 
--   **Build quality gates throughout your code promotion process through your testing**
+    Unit tests are tests typically run as part of the continuous integration routine. Unit Tests should be extensive and quick, ideally covering 100% of the code, and running in under 30 seconds.
+    
+    Unit testing can verify that the syntax and functionality of individual modules of code are working the way they should, for example, producing a defined output for a known input. Unit tests can also be used to verify that infrastructure as code assets are valid.
+    
+    Unit tests should be applied to all code assets, including templates and scripts.
+
+   - **Smoke testing**
+
+    Smoke tests verify that a workload can be stood up in a test environment and performs as expected. Smoke tests don\'t go to the extent of integration tests as smoke tests don\'t verify the interoperability of different components.
+    
+    Instead, they verify that the deployment methodology for both the infrastructure and the application works and that the system responds as intended once the process is complete.
+
+   - **Integration testing**
+
+    After making sure that the different application components operate individually, integration testing determines whether they can interact with each other as they should.
+    
+    Running a large integration test suite can take a considerable amount of time, which is why tests should be performed as early as possible (the shift-left principle) in the software development lifecycle. Integration tests should be reserved to scenarios that can\'t be tested with a smoke or unit test.
+    
+    Long running test processes can be run on a regular interval if needed. A regular interval offers a good compromise, detecting interoperability issues between application components no later than one day after they were introduced.
+    
+    There are some testing scenarios that benefit from being run manually. Use manual testing when you need to introduce human interactivity elements into the tests.
+    
+   - **Acceptance testing**
+
+    Depending on the context, acceptance testing is sometimes performed manually. It can be partially or fully automated. Its purpose is to determine whether the software system has met the requirement specifications.
+    
+    The main purpose of this test is to evaluate the system\'s compliance with the business requirements and verify if it has met the required criteria for delivery to end users.
+
+- **Build quality gates throughout your code promotion process through your testing**
 
 As you deploy your code into lower environments (like dev/test) and up through higher environments (like staging and production), you should pass through quality gates to ensure that your quality targets are met before changes hit production. Your business requirements will determine what the distinct focus of your quality gates will be, but they should take into consideration fundamental WAF principles: security, reliability, and performance. See the security (link to security testing guide), reliability (link to reliability testing guide), and performance (link to performance testing guide) guides for further testing guidance.
 
