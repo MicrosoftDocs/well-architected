@@ -105,7 +105,7 @@ The creation of deployment environments can be scripted, and the environments ca
 
 **Logic Apps and Power Automate**
 
-When building custom automation digital process automation (DPA) to handle workload tasks like approval flows or building ChatOps integrations, consider the use of [Logic Apps](/azure/logic-apps/) or [Power Automate](https://azure.microsoft.com/en-us/products/power-automate/) from the Microsoft Power Platform. Workflows can be easily constructed from built-in connectors and templates. Both Logic Apps and Power Automate are built on the same underlying technology and are both well suited for trigger-based or time-based tasks.
+When building custom automation digital process automation (DPA) to handle workload tasks like approval flows or building ChatOps integrations, consider the use of [Logic Apps](/azure/logic-apps/) or [Power Automate](https://azure.microsoft.com/products/power-automate/) from the Microsoft Power Platform. Workflows can be easily constructed from built-in connectors and templates. Both Logic Apps and Power Automate are built on the same underlying technology and are both well suited for trigger-based or time-based tasks.
 
 **Autoscaling**
 
