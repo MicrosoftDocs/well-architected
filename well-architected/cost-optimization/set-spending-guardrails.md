@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for setting spending guardrails: CO <##>
+# Recommendations for setting spending guardrails: CO 04
 
 This guide describes the recommendations for setting spending guardrails. Setting spending guardrails means implementing measures to control and manage your costs within a specified budget. It helps prevent unexpected or excessive spending. By setting spending guardrails, you can establish controls and guidelines to ensure that your cloud resources are utilized efficiently and cost-effectively. Without guardrails, your workload costs may exceed your budget, leading to unplanned expenses that can strain your financial resources.
 
