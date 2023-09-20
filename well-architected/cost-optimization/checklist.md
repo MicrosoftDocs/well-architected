@@ -1,13 +1,32 @@
 ---
-title: Cost checklist
-description: Cost checklist guidance for design concerns
-author: martinekuan
-ms.author: martinek
-ms.reviewer: tozimmergren
-ms.date: 10/14/2022
+title: Design review checklist for Cost Optimization 
+description: Use this checklist to assess and verify the completeness of your design for cost optimization.   
+author: stephen-sumner 
+ms.author: ssumner 
+ms.date: 11/15/2023 
 ms.topic: conceptual
-ms.custom:
-  - checklist
-  - internal-intro
-  - engagement-fy23
 ---
+# Design review checklist for Cost Optimization 
+
+This checklist presents a set of recommendations for your system to achieve a high return on investment (ROI), based on the business value it is delivering. Cost optimization balances actual costs vs. perceived value, team efficiency, focus, and effort, while obtaining negotiated functional and non-functional requirements of the workload. 
+
+Every workload has direct and indirect costs, and every workload is designed to deliver value. If you haven’t checked the boxes and considered the tradeoffs, the design might not be making the best use of your investment of time and money. Careful consideration of all the points covered in the checklist will give you confidence in success. 
+
+Remember that cost optimization is a continuous process where you optimize costs of workload as well as align with broader governance discipline of cost management. What was important today might not be important tomorrow; what options and features were offered today by your platform or technology choices might be different tomorrow. Take time to learn from production and non-production environments, be aware of platform changes, and apply your learnings to your workload as well as their applicable dependencies. 
+
+| Code  |Recommendation | 
+|:----|:----| 
+| [CO: 01](create-financial-responsbility.md) | **Create a culture of financial responsibility.** Personnel should receive training that keeps technical skills sharp. The work environment should foster creativity and fiscal accountability. Investments should be made in tooling and implementing automation.| 
+| [CO: 02](cost-model.md) | **Create and maintain a cost model.** The cost model should estimate the initial cost, run rates, and ongoing costs. A budget should be negotiated that covers the cost model and has a buffer for unplanned spending.| 
+| [CO: 03](collect-review-cost-data.md) | **Collect and review cost data.** Data collection should capture daily costs. Cost reports should include incurred costs (metered), pre-paid costs (amortized), trends, and forecasts. Stakeholders should regularly review spending against the budget and cost model. Automated alerts should trigger notifications at key thresholds and anomaly detection should indicate deviations from trend baselines. | 
+| CO:04 | Establish spending guardrails. Guardrails should include release gates, governance policies, resource limits, and access controls. There should be a preference for platform automation over manual processes. | 
+| CO:05 | Use the best rates on cloud resources and licenses. Cost savings reviews should be regular. Cost reviews should include regional pricing, pricing tiers, pricing models (consumption, fixed), reservations, savings plans, license portability, corporate purchasing plans, price sheets, and pre-commitments.| 
+| CO:06 | Align billing and usage. You should understand component billing increments (meters) and align usage accordingly. You should align usage to workload design or workload design to usage. A proof-of-concept should validate billing knowledge and design choices for major cost drivers and reveal ways to align billing and usage.| 
+| CO:07 | Eliminate waste. Workloads components and application features should have no excess. Prepaid reservations and saving plans should be fully used. | 
+| CO:08 | Optimize each environment. Spending should align with the priority of pre-production, production, operations, and disaster recovery environments. Consider the availability, licensing, operating hours/conditions, and security required for each environment. Non-production environments should emulate the production environment with strategic tradeoffs.| 
+| CO:09 | Optimize each flow. Flow costs must align with flow priority. Prioritizing flows should consider the features, functionality, and non-functional requirements of each flow. Optimizing flow spend often requires strategic compromises.| 
+| CO:10 | Optimize data. Data costs should align with data priority. Data optimization should include automatic data tiering and data retention policies.| 
+| CO:11 | Optimize code. Evaluate and modify code to meet functional and non-functional requirements with fewer or cheaper resources. | 
+| CO:12 | Optimize scaling. Evaluate alternative scaling within your scale units. Scaling optimization should consider alternative scaling configurations and align with the cost model. Considerations should include utilization against the inherit limits of every instance, resource, and scale unit boundary.| 
+| CO:13 | Optimize personnel time. The time personnel spend on tasks should align with the priority of the task. The goal is to reduce the time spent on tasks without degrading the outcome. Optimization efforts should include minimizing noise, reducing build times, high fidelity debugging, and production mocking.| 
+| CO:14 | Consolidate resources. Within the workload, look for ways to increase density. Outside the workload, use existing centralized resources and services that allow you to save money.| 
