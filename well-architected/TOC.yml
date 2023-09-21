@@ -97,6 +97,10 @@
               href: cost-optimization/collect-review-cost-data.md
             - name: Set spending guardrails
               href: cost-optimization/set-spending-guardrails.md
+            - name: Get the best rates
+              href: cost-optimization/get-the-best-rates.md
+            - name: Align billing and usage
+              href: cost-optimization/align-billing-and-usage.md
       - name: Operational Excellence
         items: 
         - name: Quick links

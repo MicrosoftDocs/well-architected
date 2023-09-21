@@ -1,8 +1,10 @@
 ---
-title: Recommendations for getting the best rates from providers
-description: Learn how to get the best rates from providers.
+title: Recommendations for aligning billing and usage
+description: Learn how to align billing and usage.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
+
+# 
