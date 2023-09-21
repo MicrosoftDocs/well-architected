@@ -11,21 +11,20 @@ ms.topic: conceptual
 
 **Applies to: SE 11**
 
-This guide provides recommendations on network design with a focus on security controls that can filter, block, and detect adversaries crossing network boundaries at various depths of your architecture. Identity should always be your first line of defense. Along with identity-based access control, network-based access control is still a high priority for protecting assets. Proper network security controls can provide a defense in depth element that can help detect, contain, and prevent attackers from gaining entry into your workload.
+This guide provides recommendations on network design. The focus is on security controls that can filter, block, and detect adversaries crossing network boundaries at various depths of your architecture. Identity should always be your first line of defense. Along with identity-based access control, network-based access control is still a high priority for protecting assets. Proper network security controls can provide a defense-in-depth element that can help detect, contain, and prevent attackers from gaining entry into your workload.
 
-**Definitions** 
+**Definitions**
 
-
-|Terms   |Definition   |
+| Term |Definition |
 |---------|---------|
-|Hostile network     |  All networks that aren't deployed as part of the workload. They must be considered a threat vector.       |
-|Network segmentation     |  Strategy where network security used to be at the isolation boundaries to protect the resources from hostile networks, such as the internet.       |
-|Network filtering      | Mechanism to allow or block network traffic based on certain rules.        |
-|Network transformation     |  Mechanism to change or mutate network packets for the purposes of obscurity.       |
-|Ingress flow     |  Inbound traffic to the workload.       |
-|Egress flow        |  Outbound traffic from the workload.       |
-|North-south traffic     | Network traffic that moves from trusted boundary to external and potentially hostile networks, and vice versa.        |
-|East-west traffic     | Network traffic moving within a trusted boundary.        |
+|Hostile network | A network that isn't deployed as part of the workload. A hostile network is considered a threat vector. |
+|Network segmentation | Strategy where network security used to be at the isolation boundaries to protect the resources from hostile networks, such as the internet. |
+|Network filtering | Mechanism to allow or block network traffic based on certain rules. |
+|Network transformation | Mechanism to change or mutate network packets for the purposes of obscurity. |
+|Ingress flow | Inbound traffic to the workload. |
+|Egress flow | Outbound traffic from the workload. |
+|North-south traffic | Network traffic that moves from trusted boundary to external and potentially hostile networks, and vice versa. |
+|East-west traffic | Network traffic moving within a trusted boundary. |
 
 ## Key design strategies
 
