@@ -37,11 +37,14 @@ All of the functions of the monitoring framework should be automated to the exte
 
 The monitoring framework can be thought of and visualized as a workflow pipeline as shown below. 
 
-![Diagram showing the stages of a comprehensive monitoring framework as a pipeline.](media/observability/monitor-pipeline.png)
+:::image type="content" source="media/observability/monitor-pipeline.png" alt-text="Diagram showing the stages of a comprehensive monitoring framework as a pipeline.":::
+
+
 
 ### Collection
 
-_For your application running on top of the infrastructure, you will need to instrument the application to enable logging. See the instrumentation guide (link to Instrument an application guide) for detailed guidance on this topic._
+> [!Note]
+> For your application running on top of the infrastructure, you will need to instrument the application to enable logging. See the instrumentation guide (link to Instrument an application guide) for detailed guidance on this topic.
 
 All workload components, whether they are infrastructure resources or application functions, should be configured to capture telemetry and/or events as logs and metrics.
 
@@ -105,7 +108,7 @@ For scalability, you can run multiple instances of the storage writing service. 
 
 The data collected from a single instance of an application gives a localized view of the health and performance of that instance. To assess the overall health of the system, it's necessary to consolidate some aspects of the data in the local views. You can perform this after the data has been stored, but in some cases, you can also achieve it as the data is collected.
 
-![Diagram that shows an example of using a service to consolidate instrumentation data.](media/observability/service-instrumentation-data.png)
+:::image type="content" source="media/observability/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="media/observability/service-instrumentation-data.png":::
 
 The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, instrumentation data that includes the same correlation information such as an activity ID can be amalgamated. (It's possible that a user starts performing a business operation on one node and then gets transferred to another node if a node fails, or depending on how load balancing is configured.) This process can also detect and remove any duplicated data (always a possibility if the telemetry service uses message queues to push instrumentation data out to storage).
 
