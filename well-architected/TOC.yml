@@ -45,6 +45,8 @@
               href: reliability/regions-availability-zones.md
             - name: Scaling
               href: reliability/scaling.md
+            - name: Simplicity and efficiency
+              href: reliability/simplify.md
             - name: Target metrics
               href: reliability/metrics.md
             - name: Testing
