@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# # Recommendations for eliminating waste: CO 07
+# Recommendations for eliminating waste: CO 07
 
 This guide describes the recommendations for eliminating workload waste. The guidance applies to an existing workload, not one in the design phase. Waste reduction is fundamental for both financial savings and operational efficiency. You can reduce waste removing unused and underutilized workload components. It's also important to spot and address underutilized, prepaid commitments to further eliminate wastage. To ensure the highest return on investment, workload components and application features should be actively delivering value, and prepaid reservations and savings plans should be maximized.
 
@@ -17,7 +17,7 @@ This guide describes the recommendations for eliminating workload waste. The gui
 |----|----|
 | Application feature | A distinct capability within the application software that enables users to perform specific tasks or access specific information.|
 | Platform feature | A specific functionality or capability provided by a platform. It can vary depending on the platform, but generally, platform features are designed to enhance the user experience, improve productivity, or enable specific tasks or actions. |
-| Resource| <use canonical definition> |
+| Resource| **!!use canonical definition!!** |
 
 ## Key strategies
 
