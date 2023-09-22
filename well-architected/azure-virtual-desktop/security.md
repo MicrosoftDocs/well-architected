@@ -34,22 +34,7 @@ Do you use RBAC and security groups to separate duties and limit access to Virtu
 - Define Azure built-in roles to separate management responsibilities for host pools, application groups, and workspaces.
 - Create a security group for each role.
 
-## Use Microsoft Entra ID Conditional Access policies
-
-*Impact: Security*
-
-Virtual Desktop has many built-in security controls. Virtual Desktop is also fully integrated and supported by Microsoft Entra ID Conditional Access. The Conditional Access feature is a [Zero Trust policy engine](/security/zero-trust/deploy/identity) from Microsoft that takes signals from various sources into account when enforcing policy decisions.
-
-##### Assessment question
-
-Which built-in security features do you use to help protect your Virtual Desktop environment?
-
-##### Recommendations
-
-- Require multifactor authentication. To improve the security of your entire deployment, require multifactor authentication for all users and admins in Virtual Desktop. To learn more, see [Enforce Microsoft Entra ID multifactor authentication for Azure Virtual Desktop using Conditional Access](/azure/virtual-desktop/set-up-mfa).
-- Turn on Conditional Access. When you use Conditional Access, you can manage risks before you grant users access to your Virtual Desktop environment. In the process of deciding which users to grant access to, you should also consider who each user is, how they sign in, and which device they're using.
-
-## Enhance session host security
+## Enhance the security of your session hosts
 
 *Impact: Security*
 
@@ -70,11 +55,13 @@ What measures do you take to improve the security of your session hosts?
 
 ##### Recommendations
 
-- Control device redirection by redirecting drives, printers, and USB devices to the user's local device in a remote desktop session. We recommend that you first evaluate your security requirements and check whether you should disable this feature.
 - Restrict Windows Explorer access by hiding local and remote drive mappings. This strategy prevents users from discovering sensitive information about system configurations and users.
-- Avoid direct RDP access to session hosts in your environment. If you need direct RDP access for administrative purposes or troubleshooting, enable just-in-time access to limit the potential attack surface on the session host.
-- Grant users limited permissions when they access local and remote file systems. You can restrict permissions by using access control lists that are built by applying the principle of least privilege. This way, users can only access what they need and can't change or delete critical resources.
 - Prevent unwanted software from running on session hosts. You can enable AppLocker for extra security on session hosts. This feature helps ensure that only the apps that you specify can run on the host.
+- Use screen capture protection and watermarking to help prevent sensitive information from being captured on client endpoints. When you turn on screen capture protection, remote content is automatically blocked or hidden in screenshots and screen sharing. The Remote Desktop client also hides content from malicious software that captures the screen.
+- Use Microsoft Defender Antivirus to help protect your VMs. For more information, see [Configure Microsoft Defender Antivirus on a remote desktop or virtual desktop infrastructure environment](/microsoft-365/security/defender-endpoint/deployment-vdi-microsoft-defender-antivirus).
+- Turn on Windows Defender Application Control. Define policies for your drivers and applications, whether or not you trust them.
+- Sign out users when they're inactive to preserve resources and prevent unauthorized access. For more information, see [Establish maximum inactive time and disconnection policies](/azure/virtual-desktop/security-guide#establish-maximum-inactive-time-and-disconnection-policies).
+- Turn on Microsoft Defender for Cloud for cloud security posture management (CSPM). For more information, see [Onboard non-persistent virtual desktop infrastructure (VDI) devices in Microsoft 365 Defender](/microsoft-365/security/defender-endpoint/configure-endpoints-vdi).
 
 ## Design considerations for central platform, identity, and networking teams
 
@@ -103,9 +90,25 @@ What's your IAM strategy for Virtual Desktop?
 
 ##### Recommendations
 
-- Enforce network and application security. Network and application security controls are baseline security measures for every Virtual Desktop workload. The Virtual Desktop session host network and application require rigorous security review and baseline controls.
+- Create a dedicated user account with least privileges. When you deploy session hosts, use this account to join the session hosts to a Microsoft Entra Domain Services or AD DS domain.
+- Require multifactor authentication. To improve the security of your entire deployment, enforce multifactor authentication for all users and admins in Virtual Desktop. To learn more, see [Enforce Microsoft Entra ID multifactor authentication for Azure Virtual Desktop using Conditional Access](/azure/virtual-desktop/set-up-mfa).
+- Turn on Microsoft Entra ID Conditional Access. When you use Conditional Access, you can manage risks before you grant users access to your Virtual Desktop environment. In the process of deciding which users to grant access to, you should also consider who each user is, how they sign in, and which device they're using.
+
+### Secure network design for Virtual Desktop
+
+Without network security measures in place, attackers can gain access to your assets. To protect your resources, it's important to place controls on network traffic. Proper network security controls can help you detect and stop attackers who gain entry into your cloud deployments.
+
+##### Assessment question
+
+How do you implement network security in Virtual Desktop?
+
+##### Recommendations
+
 - Use a hub-spoke architecture. It's critical to differentiate between shared services and Virtual Desktop application services. A hub-spoke architecture is a good approach to security. You should keep workload-specific resources in their own virtual network that's separate from shared services in the hub. Examples of shared services include management and Domain Name System (DNS) services.
 - Use network security groups. You can use network security groups to filter network traffic to and from your Virtual Desktop workload. Service tags and network security group rules provide a way for you to allow or deny access to your Virtual Desktop application. For instance, you can allow access to the Virtual Desktop application ports from on-premises IP address ranges, and you can deny access from the public internet. For more information, see [Network security groups](/azure/virtual-network/network-security-groups-overview). In order to deploy Virtual Desktop and make it available to your users, you must allow specific URLs that your session host VMs can access anytime. For a list of these URLs, see [Required URLs for Azure Virtual Desktop](/azure/virtual-desktop/safe-url-list?tabs=azure).
+- Isolate your host pools by placing each host pool in a separate virtual network. Use network security groups with the URLs that Virtual Desktop requires for each subnet.
+- Enforce network and application security. Network and application security controls are baseline security measures for every Virtual Desktop workload. The Virtual Desktop session host network and application require rigorous security review and baseline controls.
+- Avoid direct RDP access to session hosts in your environment by disabling or blocking the RDP port. If you need direct RDP access for administrative purposes or troubleshooting, use Azure Bastion to connect to session hosts.
 - Use Azure Private Link with Virtual Desktop to [keep traffic within the Microsoft network and help improve security](/azure/private-link/private-link-overview). When you create a [private endpoint](/azure/private-link/private-endpoint-overview), traffic between your virtual network and the service remains on the Microsoft network. You no longer need to expose your service to the public internet. You can also use a virtual private network (VPN) or Azure ExpressRoute so that users with a Remote Desktop client can connect to your virtual network.
 - Use Azure Firewall to help protect Virtual Desktop. Virtual Desktop session hosts run in your virtual network and are subject to the virtual network security controls. If your applications or users need outbound internet access, we recommended that you use Azure Firewall to help protect them and lock down your environment.
 
