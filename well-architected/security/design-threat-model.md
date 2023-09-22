@@ -21,7 +21,7 @@ Start by gathering information about each component of the application. The answ
 
 |Ask this question ...|To determine controls that ...|
 |---|---|
-|Are connections authenticated using Azure AD, TLS (with mutual authentication), or another modern security protocol approved by the security team?<ul><li>Between users and the application</li><li>Between different application components and services</li></ul>|Prevent unauthorized access to the application component and data.|
+|Are connections authenticated using Azure AD, TLS (with mutual authentication), or another modern security protocol approved by the security team? <br><br> - Between users and the application <br> - Between different application components and services</li></ul>|Prevent unauthorized access to the application component and data.|
 |Are you limiting access to only those accounts that have the need to write or modify data in the application| Prevent unauthorized data tampering or alteration.|
 |Is the application activity logged and fed into a Security Information and Event Management (SIEM) through Azure Monitor or a similar solution?|Detect and investigate attacks quickly.|
 |Is critical data protected with encryption that has been approved by the security team?| Prevent unauthorized copying of data at rest.|
