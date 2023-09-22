@@ -50,7 +50,7 @@ An application feature refers to a specific functionality or capability of appli
 
     :::image type="icon" source="../_images/risk.svg" ::: **Risk:** You could inadvertently remove features that are critical for certain users or scenarios and may negatively impact performance, security, operations, and security.
 
-- *Reinvest*P Some application features might not be adding enough value in its current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential impact on the application.
+- *Reinvest*: Some application features might not be adding enough value in its current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential impact on the application.
 - *Monetize*: Monetizing an application feature involves turning it into a revenue-generating opportunity. Sometimes features might provide value to users but aren’t worth the current investment. Explore opportunities to monetize these and other features, such as offering them as separate paid add-ons or licensing them to other companies.
 
 ### Eliminate waste from workload resources
