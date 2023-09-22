@@ -1,8 +1,8 @@
 ---
 title: Recommendations for collecting and reviewing cost data
 description: Learn how to collect and review cost data for a workload.
-author: claytonsiemens77
-ms.author: csiemens
+author: stephen-sumner
+ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
