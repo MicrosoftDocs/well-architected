@@ -1,6 +1,13 @@
+---
+title: Recommendations for optimizing environment costs
+description: Learn how to optimize environment costs.
+author: stephen-sumner
+ms.author: ssumner
+ms.date: 11/15/2023
+ms.topic: conceptual
+---
 
-
-# Recommendations for optimizing each environment: CO 08
+# Recommendations for optimizing environment costs: CO 08
 
 This guide describes the recommendations for cost optimizing each workload environment. Each environment should be tailored for its specific purpose and optimized for cost-effectiveness. It's important to make strategic tradeoffs and allocate resources where they matter the most, without compromising on critical aspects. By treating environments differently and optimizing them accordingly, you can achieve a balance between cost optimization and meeting the required objectives.
 
