@@ -27,6 +27,8 @@
               href: reliability/design-patterns.md
             - name: Background jobs
               href: reliability/background-jobs.md
+            - name: Data partitioning
+              href: reliability/partition-data.md
             - name: Disaster recovery strategy  
               href: reliability/disaster-recovery.md
             - name: Failure mode analysis
