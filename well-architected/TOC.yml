@@ -26,6 +26,8 @@ items:
                 href: resiliency/data-management.md
               - name: Application resiliency
                 href: /azure/architecture/reliability/architect?toc=/azure/architecture/framework/toc.json&bc=/azure/architecture/framework/breadcrumb/toc.json
+              - name: Regions and availability zones
+                href: resiliency/regions-availability-zones.md
               - name: Business metrics
                 href: resiliency/business-metrics.md
               - name: Best practices
@@ -578,7 +580,7 @@ items:
                   - name: Cost optimization
                     href: services/data/azure-db-mysql/cost-optimization.md
               - name: Azure Database for PostgreSQL
-                href: services/data/azure-db-postgresql-well-architected-framework.md
+                href: services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework.md
               - name: Azure SQL Database
                 href: services/data/azure-sql-database-well-architected-framework.md
               - name: Azure SQL Managed Instance
