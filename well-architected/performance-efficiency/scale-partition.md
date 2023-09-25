@@ -18,9 +18,9 @@ This guide describes the recommendations for scaling and partitioning a workload
 | Scalability | The ability of a workload to dynamically change its capacity limits to accommodate varying levels of demand.|
 | Autoscale | A feature that automatically adjusts the capacity limits of a service based on predefined configurations, allowing it to scale up or down as needed.|
 | Capacity | The upper limit or maximum capacity of a given service or service feature.|
-| Partitioning | The process of dividing a workload or data into smaller parts to manage it more efficiently.|
-| Vertical scaling| Increasing the capacity of a resource by upgrading to a higher tier or size to handle increased demand.|
-| Horizontal scaling| Adding more instances of a resource with the same capacity to handle increased demand.|
+| Partitioning | The process of physically dividing data into separate data stores.|
+| Vertical scaling| A scaling approach that adds compute capacity to existing resources. (Scaling from a D4s_v3 to a D8s_v3, for example.)|
+| Horizontal scaling| A scaling approach that adds instances of a given type of resource. (Expanding a web pool from two to four VMs, for example.)|
 | Scale unit| A group of resources that need to scale proportionately together to maintain balanced performance. |
 | Client affinity (session affinity) | The intentional routing of requests from a single client to a single server instance, ensuring consistent session management.|
 | Data locking| A mechanism used to prevent simultaneous updates to the same piece of data, ensuring data integrity.|
@@ -30,7 +30,7 @@ This guide describes the recommendations for scaling and partitioning a workload
 | Consistency (relational database)| The property of a transaction bringing a database from one valid state to another, maintaining data integrity. |
 | Consistency level| A configuration that defines how and when data is replicated in a distributed database system, determining the trade-off between consistency and performance. |
 
-## Key strategies
+## Key design strategies
 
 Both scaling and partitioning contribute to performance efficiency by ensuring that resources are utilized effectively and the system can handle varying workloads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands
 
@@ -42,9 +42,9 @@ Scaling a workload refers to the process of adjusting the resources allocated to
 
 Picking the right scaling strategy refers to selecting the appropriate approach, either vertical or horizontal scaling. You base the choice on the specific characteristics and requirements of a workload.
 
-**Understand vertical scaling (scaling up).** Vertical scaling involves increasing the capacity of a single resource, such as upgrading to a larger server or instance size. It's suitable when the workload can benefit from increased processing power, memory, or other resources within a single instance. Vertical scaling is advantageous when the workload isn't easily divided into smaller parts or when the application architecture doesn't support horizontal scaling.
+**Understand vertical scaling.** Vertical scaling involves increasing the capacity of a single resource, such as upgrading to a larger server or instance size. It's suitable when the workload can benefit from increased processing power, memory, or other resources within a single instance. Vertical scaling is advantageous when the workload isn't easily divided into smaller parts or when the application architecture doesn't support horizontal scaling.
 
-**Understand horizontal scaling (scaling out).** Horizontal scaling involves adding more instances or resources to distribute the workload across multiple servers. It's suitable when the workload can be divided into smaller parts that can run independently. Horizontal scaling offers benefits such as improved resiliency, increased capacity, and the ability to handle increased traffic or workload demands. It's effective for cloud-native applications designed to run on multiple nodes.
+**Understand horizontal scaling.** Horizontal scaling involves adding more instances or resources to distribute the workload across multiple servers. It's suitable when the workload can be divided into smaller parts that can run independently. Horizontal scaling offers benefits such as improved resiliency, increased capacity, and the ability to handle increased traffic or workload demands. It's effective for cloud-native applications designed to run on multiple nodes.
 
 **Understand the workload.** It's important to note that the suitability of vertical or horizontal scaling depends on the specific characteristics and requirements of the workload. Regular performance monitoring and testing can help optimize the scaling strategy over time.
 
@@ -213,3 +213,10 @@ Partitioning refers to the process of dividing a large dataset or workload into 
 - [Overview of autoscale in Azure](/azure/azure-monitor/platform/autoscale-overview)
 - [Horizontal, vertical, and functional data partitioning](/azure/architecture/best-practices/data-partitioning)
 - [Application design considerations](/azure/architecture/best-practices/data-partitioning#application-design-considerations)
+
+## Next steps
+
+We recommend that you review the Performance Efficiency checklist to explore other concepts.
+
+> [!div class="nextstepaction"]
+> [Performance Efficiency checklist](checklist.md)
