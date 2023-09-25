@@ -111,6 +111,8 @@
               href: cost-optimization/optimize-environment-costs.md
             - name: Optimize flow costs
               href: cost-optimization/optimize-flow-costs.md
+            - name: Optimize data costs
+              href: cost-optimization/optimize-data-costs.md
       - name: Operational Excellence
         items: 
         - name: Quick links
