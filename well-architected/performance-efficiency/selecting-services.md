@@ -139,8 +139,8 @@ Choose storage services that align with your data access patterns, durability re
 - [Compute services](/azure/architecture/guide/technology-choices/compute-decision-tree)
 - [Container services](/azure/container-apps/compare-options)
 - [Data store services](/azure/architecture/guide/technology-choices/data-store-overview)
-- [Storage services](/azure/architecture/guide/technology-choices/storage-options)
 - [Load balancing services](/azure/architecture/guide/technology-choices/load-balancing-overview)
+- [Storage services](/azure/architecture/guide/technology-choices/storage-options)
 
 ## Related links
 
