@@ -131,6 +131,8 @@
               href: operational-excellence/enable-automation.md
             - name: Observability framework development
               href: operational-excellence/observability.md
+            - name: Respond to emergencies
+              href: operational-excellence/emergency-response.md
             - name: Supply chain for workload development
               href: operational-excellence/workload-supply-chain.md
       - name: Performance Efficiency
