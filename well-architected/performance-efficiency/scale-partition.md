@@ -32,29 +32,29 @@ This guide describes the recommendations for scaling and partitioning a workload
 
 ## Key design strategies
 
-Both scaling and partitioning contribute to performance efficiency by ensuring that resources are utilized effectively and the system can handle varying workloads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands
+Both scaling and partitioning contribute to performance efficiency by ensuring that resources are utilized effectively and the system can handle varying workloads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands.
 
 ### Scale the workload
 
-Scaling a workload refers to the process of adjusting the resources allocated to a workload. The adjustments include increasing or decreasing the number of servers, instances, or resources, to meet the changing demands of the workload. Scaling allows the workload to handle increased traffic or workload demands without experiencing performance degradation or downtime.
+Scaling adjustments include increasing or decreasing the number of servers, instances, or resources, to meet the changing demands of the workload. Scaling allows the workload to handle increased traffic or workload demands without experiencing performance degradation or downtime.
 
 #### Pick a scaling strategy
 
-Picking the right scaling strategy refers to selecting the appropriate approach, either vertical or horizontal scaling. You base the choice on the specific characteristics and requirements of a workload.
+It's important to pick the right scaling strategy, either vertical or horizontal, based on the specific characteristics and requirements of your workload.
 
 **Understand vertical scaling.** Vertical scaling involves increasing the capacity of a single resource, such as upgrading to a larger server or instance size. It's suitable when the workload can benefit from increased processing power, memory, or other resources within a single instance. Vertical scaling is advantageous when the workload isn't easily divided into smaller parts or when the application architecture doesn't support horizontal scaling.
 
 **Understand horizontal scaling.** Horizontal scaling involves adding more instances or resources to distribute the workload across multiple servers. It's suitable when the workload can be divided into smaller parts that can run independently. Horizontal scaling offers benefits such as improved resiliency, increased capacity, and the ability to handle increased traffic or workload demands. It's effective for cloud-native applications designed to run on multiple nodes.
 
-**Understand the workload.** It's important to note that the suitability of vertical or horizontal scaling depends on the specific characteristics and requirements of the workload. Regular performance monitoring and testing can help optimize the scaling strategy over time.
+**Understand the workload.** The suitability of vertical or horizontal scaling depends on the specific characteristics and requirements of the workload. Regular performance monitoring and testing in the following areas can help optimize the scaling strategy over time:
 
-- *Requirements:* Understand the specific requirements of the workload. Consider factors such as resource demands, scalability needs, and the limitations of the workload.
-- *Scale units.* A scale unit typically consists of multiple resources that support a flow or entire workload. You should document a scale unit design for components expected to be scaled together. For example, 100 virtual machines might require two queues and three storage accounts to handle the extra workload. The scale unit would be 100 virtual machines, two queues, and three storage accounts. You should independently scale all the components that experience capacity-use fluctuation
-- *Architecture:* Assess the design of the application architecture. Some applications may be inherently designed to scale horizontally, with stateless components that can be easily distributed across multiple instances. Other applications may have stateful components or dependencies that make vertical scaling more suitable. Evaluate the scalability and elasticity requirements of the workload.
+- **Requirements**: Understand the specific requirements of the workload. Consider factors such as resource demands, scalability needs, and the limitations of the workload.
+- **Scale units**: Document a scale unit design for components expected to be scaled together. For example, 100 virtual machines might require two queues and three storage accounts to handle the extra workload. The scale unit would be 100 virtual machines, two queues, and three storage accounts. You should independently scale all the components that experience capacity-use fluctuation.
+- **Architecture**: Assess the design of the application architecture. Some applications may be inherently designed to scale horizontally, with stateless components that can be easily distributed across multiple instances. Other applications may have stateful components or dependencies that make vertical scaling more appropriate. Evaluate the scalability and elasticity requirements of the workload.
 
 #### Design for infrastructure scalability
 
-Designing for infrastructure scalability refers to the process of creating an architecture that can handle increasing demands and workload by adding or adjusting resources as needed. It involves planning and implementing solutions that can scale horizontally (adding more instances) or vertically (increasing the capacity of existing instances) to accommodate growth. When you design a workload to be scalable, it can effectively distribute the workload across multiple resources, preventing bottlenecks and maximizing resource utilization.
+Designing for infrastructure scalability is the process of creating an architecture that can handle increasing demands and workload by adding or adjusting resources as needed. It involves planning and implementing solutions that can scale horizontally (adding more instances) or vertically (increasing the capacity of existing instances) to accommodate growth. When you design a workload to be scalable, it can effectively distribute the workload across multiple resources, preventing bottlenecks, and maximizing resource utilization.
 
 **Avoid singletons.** Avoid the use of a single, centralized resource for the entire workload. Instead, distribute the workload across multiple resources to achieve better scalability, fault tolerance, and performance. Avoiding singletons in workload resources is crucial for improving performance and scalability. Let's explore some specific examples and design considerations to avoid singletons in different aspects of workload resources:
 
@@ -134,7 +134,7 @@ To avoid flapping, it's important to choose an adequate margin between the scale
 
 **Use deployment stamps.** There are techniques that make it easier to scale a workload. You can use the [deployment stamps](/azure/architecture/patterns/deployment-stamp) pattern, so that it's easily scaled by adding one or more scale units.
 
-:::image type="icon" source="../_images/risk.svg"::: *Risk:* While scaling helps optimize costs by adjusting capacity to meet demand, it can also increase cost during long periods of increased demand.
+> ![Risk icon](../_images/risk.svg) **Risk**: While scaling helps optimize costs by adjusting capacity to meet demand, it can also increase cost during long periods of increased demand.
 
 #### Test scaling
 
@@ -149,7 +149,7 @@ Conduct load and stress tests to evaluate the performance of the workload under 
 1. *Find dependency issues.* Scaling or partitioning in one area of a workload might cause performance issues on a dependency. The stateful parts of a system, such as databases, are the most common cause of dependency performance issues. Databases require careful design to scale horizontally. You need to consider measures, such as [optimistic concurrency](/dotnet/framework/data/adonet/sql/linq/optimistic-concurrency-overview) or data partitioning, to enable more throughput to the database.
 1. *Repeat and validate:* Repeat the scalability tests after implementing optimizations to validate the improvements and ensure the system can handle the expected workloads efficiently.
 
-:::image type="icon" source="../_images/trade-off.svg":::*Tradeoff:* Evaluate the cost implications of vertical and horizontal scaling. Vertical scaling may involve higher costs due to the need for larger and more powerful resources. Horizontal scaling can offer cost savings by utilizing smaller instances that can be added or removed based on demand. Consider the budget constraints and cost-efficiency goals of the workload.
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Evaluate the cost implications of vertical and horizontal scaling. Vertical scaling may involve higher costs due to the need for larger and more powerful resources. Horizontal scaling can offer cost savings by utilizing smaller instances that can be added or removed based on demand. Consider the budget constraints and cost-efficiency goals of the workload.
 
 ### Partition workload
 
@@ -169,11 +169,11 @@ Partitioning refers to the process of dividing a large dataset or workload into 
 - *Vertical partitioning:* Vertical partitioning involves dividing the dataset based on specific attributes or columns. Use vertical partitioning when different parts of the dataset have distinct access patterns or usage frequencies. It's useful when certain attributes or columns are frequently accessed, while others are accessed less frequently. Vertical partitioning allows for efficient access to the required data by minimizing the amount of unnecessary data retrieval.
 - *Functional partitioning:* Functional partitioning involves dividing the data based on specific functions or operations. Use functional partitioning when different parts of the dataset are associated with different functions or bounded contexts in the system. It's beneficial when different functions require different subsets of the data and can be processed independently. Functional partitioning can optimize performance by allowing each partition to focus on the specific operations it's designed for.
 
-:::image type="icon" source="../_images/trade-off.svg":::*Tradeoff:* It's important to note that partitioning adds complexity to the design and development of a system. It requires conversations and planning between developers and database administrators.
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: It's important to note that partitioning adds complexity to the design and development of a system. It requires conversations and planning between developers and database administrators.
 
 **Test partitioning.** Testing and optimizing the partitioning scheme involves verifying the effectiveness and efficiency of the partitioning strategy and making adjustments to improve performance. Execute test scenarios to evaluate the performance of the partitioning scheme. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
 
-:::image type="icon" source="../_images/risk.svg"::: *Risk:* Partitioning introduces some potential problems that need to be considered and addressed:
+> ![Risk icon](../_images/risk.svg) **Risk**: Partitioning introduces some potential problems that need to be considered and addressed:
 
 - *Data skew:* Partitioning can lead to data skew, where certain partitions receive a disproportionate amount of data or workload compared to others. Data skew can result in performance imbalances and increased contention on specific partitions.
 - *Query performance:* Poorly designed partitioning schemes can negatively affect query performance. If queries need to access data across multiple partitions, it may require extra coordination and communication between partitions, leading to increased latency.
