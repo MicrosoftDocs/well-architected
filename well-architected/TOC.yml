@@ -411,7 +411,7 @@
               - name: Data management
                 href: resiliency/data-management.md
               - name: Application resiliency
-                href: /azure/architecture/reliability/architect?toc=/azure/well-architected/toc.json&bc=/azure/well-architected/breadcrumb/toc.json
+                href: /azure/architecture/reliability/architect?toc=/azure/architecture/framework/toc.json&bc=/azure/architecture/framework/breadcrumb/toc.json
               - name: Regions and availability zones
                 href: resiliency/regions-availability-zones.md
               - name: Business metrics
