@@ -131,7 +131,7 @@ Here are some data management strategies:
 
 ## Azure facilitation
 
-**Taking a data inventory**: [Microsoft Purview](/azure/purview/purview) is a family of data governance, risk, and compliance solutions that can help your organization govern, protect, and manage your entire data estate. Microsoft Purview solutions provide integrated coverage and help address the recent increases in remote user connectivity, the fragmentation of data across organizations, and the blurring of traditional IT management roles.
+**Taking a data inventory**: [Microsoft Purview](https://learn.microsoft.com/purview/purview) is a family of data governance, risk, and compliance solutions that can help your organization govern, protect, and manage your entire data estate. Microsoft Purview solutions provide integrated coverage and help address the recent increases in remote user connectivity, the fragmentation of data across organizations, and the blurring of traditional IT management roles.
 
 **Optimizing data lifecycle management**: Azure Storage and Data Lake Storage has [different data access tiers](/azure/storage/blobs/access-tiers-overview) and has [data lifecycle management policies](/azure/storage/blobs/lifecycle-management-overview) that automate data tiering and retention. It offers a rule-based policy that you can use to transition blob data to the appropriate access tiers or to expire data at the end of its lifecycle. It allows you to transition blobs from cool, or cold to hot immediately when they’re accessed, to optimize for performance. For more information, see [Data lifecycle management.](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/govern-lifecycle)
 
