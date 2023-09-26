@@ -171,13 +171,9 @@ To ensure operational excellence, review the [design principles](/azure/well-arc
 
 > [!div class="checklist"]
 > - [Monitor](/azure/virtual-machines/monitor-vm) and measure health.
-<<<<<<< HEAD:well-architected/service-guides/virtual-machines-review.md
-> - [Automate](/azure/well-architected/devops/automation-tasks) tasks like provisioning and updating.
-=======
 > - Setup Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) for detecting configuration changes in your environment.
     > - Use the [Application Insights](/azure/azure-monitor/app/app-insights-overview) extension to proactively understand how an application is performing and reactively review application execution data to determine the cause of an incident.
-> - [Automate](/azure/architecture/framework/devops/automation-tasks) tasks like provisioning and updating.
->>>>>>> 44d03f5718db458cb0af0acbf50ac842382db7d5:well-architected/services/compute/virtual-machines/virtual-machines-review.md
+> - [Automate](/azure/well-architected/devops/automation-tasks) tasks like provisioning and updating.
 > - Build a robust testing environment.
 > - Right size your VMs.
 > - Manage your quota.
@@ -190,12 +186,8 @@ To ensure operational excellence, review the [design principles](/azure/well-arc
 | Recommendation | Benefit |
 |--------|----|
 | Monitor and measure health | In a production environment, it's important to [monitor](/azure/virtual-machines/monitor-vm) the health, and performance of your VMs.  |
-<<<<<<< HEAD:well-architected/service-guides/virtual-machines-review.md
-| Automate tasks | Building [automation](/azure/well-architected/devops/automation-tasks) reduces deviations from your plans and reduces that time it takes to manage your workload.  |
-=======
 | Setup Azure Monitor alert rules | Determine important conditions in your monitoring data to identify and address issues found in your system before customers are impacted. |
-| Automate tasks | Building [automation](/azure/architecture/framework/devops/automation-tasks) reduces deviations from your plans and reduces that time it takes to manage your workload.  |
->>>>>>> 44d03f5718db458cb0af0acbf50ac842382db7d5:well-architected/services/compute/virtual-machines/virtual-machines-review.md
+| Automate tasks | Building [automation](/azure/well-architected/devops/automation-tasks) reduces deviations from your plans and reduces that time it takes to manage your workload.  |
 | Build a robust testing environment | Ideally, an organization will have multiple environments in which to test deployments. These test environments should be similar enough to production that deployment and run time issues are detected before deployment to production. |
 | Right-size your VMs | Choose the right [VM family](/azure/virtual-machines/sizes) for your workload. | 
 | Manage your quota | Plan what level of quota will be required and review that level regularly as the workload evolves and grows and [request changes early](/azure/azure-portal/supportability/per-vm-quota-requests)  |
