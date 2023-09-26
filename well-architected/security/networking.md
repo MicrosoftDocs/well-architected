@@ -17,80 +17,78 @@ This guide provides recommendations on network design. The focus is on security 
 
 | Term |Definition |
 |---------|---------|
-|Hostile network | A network that isn't deployed as part of the workload. A hostile network is considered a threat vector. |
-|Network segmentation | Strategy where network security used to be at the isolation boundaries to protect the resources from hostile networks, such as the internet. |
-|Network filtering | Mechanism to allow or block network traffic based on certain rules. |
-|Network transformation | Mechanism to change or mutate network packets for the purposes of obscurity. |
-|Ingress flow | Inbound traffic to the workload. |
-|Egress flow | Outbound traffic from the workload. |
-|North-south traffic | Network traffic that moves from trusted boundary to external and potentially hostile networks, and vice versa. |
-|East-west traffic | Network traffic moving within a trusted boundary. |
+|Hostile network | A network that isn't deployed as part of your workload. A hostile network is considered a threat vector. |
+|Network segmentation | A strategy that divides a network into small, isolated segments, with security controls applied at the boundaries. This technique helps protect resources from hostile networks, such as the internet. |
+|Network filtering | A mechanism that allows or blocks network traffic based on specified rules. |
+|Network transformation | A mechanism that changes or mutates network packets for the purpose of obscuring them. |
+|Ingress flow | Inbound workload traffic. |
+|Egress flow | Outbound workload traffic. |
+|North-south traffic | Network traffic that moves from a trusted boundary to external networks that are potentially hostile, and vice versa. |
+|East-west traffic | Network traffic that moves within a trusted boundary. |
 
 ## Key design strategies
 
-Network security protects workload assets from hostile networks through obscurity. Resources behind a network boundary are hidden until the boundary controls mark the traffic as safe to move forward. Network security design is built on three main strategies.
+Network security uses obscurity to protect workload assets from hostile networks. Resources that are behind a network boundary are hidden until the boundary controls mark the traffic as safe to move forward. Network security design is built on three main strategies:
 
--   **Segment**. This isolates different traffic on separate networks by adding boundaries. For example, traffic to and from an application tier passes a boundary to communicate with other tiers, which have different security requirements. Layers of segmentation actualize the defense in depth approach.
+- **Segment**. This technique isolates traffic on separate networks by adding boundaries. For example, traffic to and from an application tier passes a boundary to communicate with other tiers, which have different security requirements. Layers of segmentation actualize the defense-in-depth approach.
 
-    The foremost security boundary is the networking edge between your application and public networks. It's important to have a crisp definition of this perimeter so that you can place a definitive boundary to isolate hostile networks. The controls on the edge must be highly effective because this is the first line of defense. Virtual networks are a technical boundary. A virtual network inherently cannot communicate with another virtual network unless the boundary has been intentionally broken through peering. Your architecture must take advantage of this strong platform-provided security measure.
-    
-    There are also logical boundaries, such as carved out subnets within a virtual network. The benefit is that you can group resources with similar security assurances in an isolation boundary with the ability to filter out traffic through configured controls.
-    
--   **Filter**. Makes sure that traffic entering a boundary is expected, allowed, and safe. From a Zero-Trust perspective, this explicitly verifies all available data points at the network level. You can place rules on the boundary to check for specific conditions.
+  The foremost security boundary is the networking edge between your application and public networks. It's important to clearly define this perimeter so that you establish a boundary for isolating hostile networks. The controls on this edge must be highly effective, because this boundary is your first line of defense. Virtual networks provide a logical boundary. By design, a virtual network cannot communicate with another virtual network unless the boundary has been intentionally broken through peering. Your architecture should take advantage of this strong, platform-provided security measure.
 
-    For example, at the header level, the rules can verify if the traffic originates from an expected location or is an expected volume. Even if it's expected traffic, do we allow it? However, that's not enough. The payload might not be safe as per the validation checks, such as SQL injection.
+  You can also use other logical boundaries, such as carved-out subnets within a virtual network. A benefit of subnets is that you can group resources that have similar security assurances together within an isolation boundary. You can then configure controls on the boundary to filter traffic.
 
--   **Transform**. Mutate the packet at the boundary as a security measure. For example, you can remove HTTP headers for the risk of exposure. Or, you can choose to drop TLS at a point and reestablish at another hop with a certificate that's managed more rigorously.
+- **Filter**. This strategy ensures that traffic that enters a boundary is expected, allowed, and safe. From a Zero-Trust perspective, filtering explicitly verifies all available data points at the network level. You can place rules on the boundary to check for specific conditions.
+
+  For example, at the header level, the rules can verify that the traffic originates from an expected location or has an expected volume. But these checks aren't sufficient. Even if the traffic exhibits expected characteristics, the payload might not be safe. Validation checks might reveal an SQL injection attack.
+
+- **Transform**. Mutate packets at the boundary as a security measure. For example, you can remove HTTP headers to eliminate the risk of exposure. Or you can turn off Transport Layer Security (TLS) at one point and reestablish it at another hop with a certificate that's managed more rigorously.
 
 ### Classify the traffic flows
 
-Given an initial schematic of the workload architecture, determine the intent and characteristics of the flow with respect to the functional utility and the operational aspects of the workload.
+The first step in classifying flows is to study an schematic of your workload architecture. From the schematic, determine the intent and characteristics of the flow with respect to the functional utility and operational aspects of your workload. Use the following questions to help classify the flow:
 
--   Does this workload need communication from external networks and what should be the required level of proximity from those networks?
+- If the workload needs to communicate with external networks, what should the required level of proximity to those networks be?
 
--   What are the network characteristics of the flow, such as the expected protocol, source, and shape of the packets? Are there any compliance requirements at the networking level?
+- What are the network characteristics of the flow, such as the expected protocol and the source and shape of the packets? Are there any compliance requirements at the networking level?
 
-While there are many ways to classify traffic flows, here are the commonly used criteria:
+There are many ways to classify traffic flows. The following sections discuss commonly used criteria.
 
 #### Visibility from external networks
 
--   **Public**. The workload is public facing if its application and other components are reachable from the public internet. The application is exposed with one or more public IP addresses and public DNS.
+- **Public**. A workload is public facing if its application and other components are reachable from the public internet. The application is exposed through one or more public IP addresses and public Domain Name System (DNS) servers.
 
--   **Private**. The workload is private if it can only be accessed through a private network such as VPN. It's exposed by one or more private IPs and potentially private DNS.
+- **Private**. A workload is private if it can only be accessed through a private network such as a virtual private network (VPN). It's exposed only through one or more private IP addresses and potentially through a private DNS server.
 
-    In a private network, there's no line of sight from public internet to the workload. Technology choices for the gateway can be a load balancer or firewall. Those options can provide security assurances.
+  In a private network, there's no line of sight from the public internet to the workload. For the gateway, you can use a load balancer or firewall. These options can provide security assurances.
 
-Even with public workloads, strive to keep much of the workload private as possible. Packets cross from public to private boundary. A gateway in that path acts as the transition point by acting as a reverse proxy.
+Even with public workloads, strive to keep as much of the workload private as possible. Then packets have to cross through a private boundary when they arrive from a public network. A gateway in that path can function as a transition point by acting as a reverse proxy.
 
-#### Traffic direction 
+#### Traffic direction
 
--   **Ingress**. Inbound traffic toward the workload or its components. For secure ingress, apply the preceding set of key strategies. What is the source and is it expected, allowed, and safe? Attackers scanning public cloud provider IP ranges can successfully penetrate defenses, if ingress isn't checked and doesn't have the basic network security measures.
+- **Ingress**. Inbound traffic flows toward the workload or its components. For secure ingress, apply the preceding set of key strategies. Determine what the source is and whether it's expected, allowed, and safe. Attackers who scan public cloud provider IP address ranges can successfully penetrate your defenses if you don't check ingress or implement basic network security measures.
 
--   **Egress**. Outbound traffic from the workload or its components. Where is this traffic headed? Is that expected, allowed, and safe? The destination might be potentially malicious and cause data exfiltration risks.
+- **Egress**. Outbound traffic flows away from the workload or its components. To check egress, determine where the traffic is headed and whether the destination is expected, allowed, and safe. The destination might be malicious or associated with data exfiltration risks.
 
 :::image type="content" source="images/networking/internet-network-flow-public-cloud.png" alt-text="Diagram of internet network flow for Azure deployments." border="false" lightbox="images/networking/internet-network-flow-public-cloud.png":::
 
-The level of exposure can also be determined by the workload's proximity to the public IP. For example, The application platform typically serves the public IP/DNS. The workload component is the face of the solution.
+You can also determine your level of exposure by considering your workload's proximity to the public internet. For example, the application platform typically serves public IP addresses. The workload component is the face of the solution.
 
-#### Scope of influence 
+#### Scope of influence
 
--   **North-south**. Traffic flow between the workload network and external networks. It's traffic that crosses the edge. External networks can be the public internet, corporate network, or any other network that's outside your scope of control.
+- **North-south**. Traffic that flows between a workload network and external networks is north-south traffic. This traffic crosses the edge of your network. External networks can be the public internet, a corporate network, or any other network that's outside your scope of control.
 
-    Both ingress and egress flows can be north-south traffic.
-    
-    As an example, consider the egress flow of a hub-spoke network topology. Depending on your definition of networking edge for the workload, the hub can be an external network. In that case, outbound traffic from the virtual network of the spoke is north-south traffic. However, if you consider the hub network within your sphere of control, north-south traffic could be extended to the firewall in the hub because the next hop is the internet, which is potentially hostile.
-    
--   **East-west**. Traffic flows within the workload network. This represents various components of your workload communicating with each other.
+  Ingress and egress flows can both be north-south traffic.
 
-    For example, traffic between the tiers of an n-tier application. Or in microservices, service to service communication would be considered as east-west traffic.
-    
-    To provide defense in depth, have end-to-end control of security affordances included in each hop or when packets cross internal segments. Those represent different risk levels, and different risk remediations.
-    
-    :::image type="content" source="images/networking/network-defense-depth-private-cloud.png" alt-text="Diagram that shows network defense in depth for private cloud." border="false" lightbox="images/networking/network-defense-depth-private-cloud.png":::
-    
-    Comparing this image to the public cloud image, notice that the public IP has shifted significantly away from the workload. There are now added layers. DNS has shifted right and there's a transition from public IP space to private IP space at this layer.
+  As an example, consider the egress flow of a hub-spoke network topology. You can define the networking edge of your workload so that the hub is an external network. In that case, outbound traffic from the virtual network of the spoke is north-south traffic. But if you consider the hub network within your sphere of control, north-south traffic is extended to the firewall in the hub, because the next hop is the internet, which is potentially hostile.
 
-> [!NOTE] 
+- **East-west**. Traffic that flows within a workload network is east-west traffic. This type of traffic results when components in your workload communicate with each other. An example is traffic between the tiers of an n-tier application. In microservices, service-to-service communication is east-west traffic.
+
+  To provide defense in depth, maintain end-to-end control of security affordances that are included in each hop or that you use when packets cross internal segments. Different risk levels require different risk remediations.
+
+  :::image type="content" source="images/networking/network-defense-depth-private-cloud.png" alt-text="Diagram that shows network defense in depth for a private cloud." border="false" lightbox="images/networking/network-defense-depth-private-cloud.png":::
+
+  If you compare this image to the public cloud image, you can see that the public IP is shifted significantly away from the workload in this image. There are now added layers. DNS has shifted right and there's a transition from public IP space to private IP space at this layer.
+
+> [!NOTE]
 > Identity is always the primary perimeter. Access management must be applied to networking flows. Use managed identities when using Azure role-base access controls between the components of the network.
 
 After classification, do a segmentation exercise to identify the firewall injection points on communication paths of the network segments. When you design your network defense in depth across all segments and all traffic types, assume breach at all points. Use a combination of various localized network controls at all available boundaries. For information, see [Segmentation strategies](segmentation.md).
