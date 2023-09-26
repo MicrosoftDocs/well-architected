@@ -1,6 +1,6 @@
 ---
 title: Code and infrastructure optimization recommendations
-description: Learn best practices for optimizing code and infrastructure.  
+description: Learn how to optimize your code and infrastructure by using components only for their core purpose and only when necessary.  
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to: PE 07**
 
-This guide describes the recommendations for optimizing code and infrastructure performance. Optimizing code and infrastructure consists of using components for their core purpose and only using them when necessary. Overusing code and infrastructure creates unnecessary resource consumption, bottlenecks, and slow response. To compensate, you need to add more resources to accomplish the same tasks, which reduces performance efficiency.
+This guide describes the recommendations for optimizing code and infrastructure performance. Optimizing code and infrastructure consists of  Overusing code and infrastructure creates unnecessary resource consumption, bottlenecks, and slow response. To compensate, you need to add more resources to accomplish the same tasks, which reduces performance efficiency.
 
 **Definitions**
 
@@ -95,61 +95,61 @@ Retry mechanisms often incorporate techniques such as exponential backoff. This 
 
 When you establish a connection to a database, it can be expensive. It requires creating an authenticated network connection to the remote database server. Database connections are especially expensive for applications that frequently open new connections. Connection pooling reuses existing connections and avoids the expense of opening a new connection for each request. Connection pooling reduces connection latency and enables higher database throughput (transactions per second) on the server. You should choose a pool size that can handle more connections than you currently have. The goal is to have the connection pool quickly handle new incoming requests.
 
-- *Understand connection pooling limits*. Some services limit the number of network connections. Exceeding this limit causes connections to be slowed down or terminated. With connection pooling, a fixed set of connections is established at startup time and maintained. In many cases, a default pool size might consist only of a small handful of connections that perform quickly in basic test scenarios. Your application might exhaust the default pool size under scale and create a bottleneck. You should establish a pool size that maps to the number of concurrent transactions supported on each application instance.
-- *Test the connection pool*. Each database and application platform has slightly different requirements for the right way to set up and use the pool. In all cases, testing is important to ensure a connection pool is properly established and works as designed under load.
+- *Understand connection pooling limits*. Some services limit the number of network connections. When you exceed this limit, connections might slow down or terminate. Use connection pooling to establish a fixed set of connections at startup time and then maintain the connections. In many cases, a default pool size might consist of only a few connections that perform quickly in basic test scenarios. Your application might exhaust the default pool size under scale and create a bottleneck. You should establish a pool size that maps to the number of concurrent transactions that are supported on each application instance.
+- *Test the connection pool*. Each database and application platform has slightly different requirements for setting up and using the pool. Test your connection pool to ensure that it's properly established and works efficiently under load.
 
-  > :::image type="icon" source="../_images/risk.svg"::: *Risk*: Connection pooling could create [pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation) and degrade performance.
+  > :::image type="icon" source="../_images/risk.svg"::: *Risk*: Connection pooling can create [pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation) and degrade performance.
 
 #### Optimize background jobs
 
-Many types of applications require background tasks that run independently of the user interface. The application can start the job and continue to process interactive requests from users. Examples include batch jobs, intensive processing tasks, and long-running processes such as workflows. Background tasks shouldn't block the application or cause inconsistencies due to delayed operation when the system is under load. You can improve performance by scaling the compute instances that host the background tasks. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs) and[Background jobs scaling and performance considerations](/azure/architecture/best-practices/background-jobs#scaling-and-performance-considerations).
+Many types of applications require background tasks that run independently of the UI. The application can start the job and continue to process interactive requests from users. Examples include batch jobs, intensive-processing tasks, and long-running processes such as workflows. Background tasks shouldn't block the application or cause inconsistencies due to delayed operation when the system is under load. You can improve performance by scaling the compute instances that host the background tasks. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs) and [Background jobs scaling and performance considerations](/azure/architecture/best-practices/background-jobs#scaling-and-performance-considerations).
 
 ### Optimize infrastructure performance
 
-Optimizing infrastructure performance involves tuning the performance of hardware and network components to ensure optimal operation and resource utilization.
+To optimize infrastructure performance, tune the performance of hardware and network components to ensure optimal operation and resource utilization.
 
-**Add usage limits**. You can put utilization limits on some workload components. For example, you can define [pod CPU and memory limits](/azure/aks/developer-best-practices-resource-management) in AKS to remove unstable pods. You can define memory limits in [Java virtual machines](/azure/spring-apps/concepts-for-java-memory-management) to optimize performance.
+**Add usage limits**. You can implement utilization limits on some workload components. For example, to remove unstable pods, you can define [pod CPU and memory limits](/azure/aks/developer-best-practices-resource-management) in Azure Kubernetes Service (AKS). To optimize performance, you can define memory limits in [Java virtual machines (VMs)](/azure/spring-apps/concepts-for-java-memory-management).
 
-**Eliminate infrastructure**. Simplifying your workload reduces the potential for issues related to interactions, dependencies, and compatibility. By removing these elements, you optimize resource utilization of memory, processing power, and storage for essential resources.
+**Eliminate infrastructure**. Simplify your workload to reduce the potential for interaction, dependency, and compatibility issues. When you simplify your workload, you optimize resource utilization of memory, processing power, and storage for essential resources.
 
-**Reduce load**. Reducing the load on a workload involves minimizing the work or demand placed on an application and allowing resources to focus on their primary tasks. For example, it's recommended to avoid running security solutions within your code or on individual compute instances. Instead, web servers should focus on serving HTTP requests, while web application firewalls and gateway resources can handle security checks. Here are two strategies to help reduce the load on your workload:
+**Reduce load**. To reduce the load on a workload, minimize the work or demand that's placed on an application and allow resources to focus on their primary tasks. For example, it's recommended to avoid running security solutions within your code or on individual compute instances. Instead, web servers should focus on serving HTTP requests, while web application firewalls and gateway resources can handle security checks. Here are two strategies to help reduce the load on your workload:
 
-- *Eventual consistency*: Adopting an eventual consistency model can enhance performance by allowing data to be slightly dated. Eventual consistency reduces the immediate demand on CPU cycles and network bandwidth for constant data updates.
-- *Delegate tasks*: Delegate certain server tasks to clients or intermediaries, such as search indexes and caches. This delegation can include tasks like sorting data, filtering data, or rendering views. By offloading these tasks, you can reduce the workload on your servers and improve performance.
+- *Eventual consistency*: Adopt an eventual consistency model to enhance performance by allowing data to be slightly dated. Eventual consistency reduces the immediate demand on CPU cycles and network bandwidth for constant data updates.
+- *Delegate tasks*: Delegate server tasks to clients or intermediaries, such as search indexes and caches. This delegation can include tasks like sorting data, filtering data, or rendering views. When you offload these tasks, you reduce the workload on your servers and improve performance.
 
-**Optimize the network**. Optimizing a workload network for performance refers to the process of configuring and fine-tuning the network infrastructure. The goal is to ensure that the workload can operate at its highest level of efficiency and deliver optimal performance.
+**Optimize the network**. To optimize a workload network for performance, configure and fine-tune the network infrastructure. Ensure that the workload can operate at its highest level of efficiency and deliver optimal performance.
 
-- *Network protocols*. Upgrade to modern protocols like HTTP/2, which enables multiple requests to be sent over a single connection, reducing the overhead of establishing new connections.
+- *Network protocols*. Upgrade to modern protocols like HTTP/2, which enables multiple requests to be sent over a single connection. Modern protocols reduce the overhead of establishing new connections.
 
-    > :::image type="icon" source="../_images/trade-off.svg":::*Tradeoff*: Newer protocol can exclude older clients.
+    > :::image type="icon" source="../_images/trade-off.svg":::*Tradeoff*: Newer protocols might exclude older clients.
 
-- *Network chattiness*. Reduce the number of network requests by batching them together. Instead of making multiple small requests, combine them into larger requests to reduce network overhead.
-- *Database queries*. Ensure that database queries retrieve only the necessary information. Avoid retrieving large amounts of unnecessary data, which can lead to increased network traffic and slower performance.
-- *Static data*. Utilize a content delivery network (CDN) to cache frequently accessed static content closer to the users. Caching reduces the need for data to travel over long distances, improving response times and reducing network traffic.
-- *Log collection*. Collect and retain only the necessary log data to support your requirements. Configure data collection rules and consider design considerations for optimizing your Log Analytics costs.
-- *Data compression*. Compressing and bundling [HTTP content](/iis/configuration/system.webserver/httpcompression) and [file data](/windows/win32/fileio/file-compression-and-decompression) allows faster transmission between clients and servers. Compression shrinks the data returned from a page or API back to the browser or client app. It optimizes network traffic that can potentially accelerate application communication.
+- *Network chattiness*. Batch network requests together to reduce the number of requests. Instead of making multiple small requests, combine them into larger requests to reduce network overhead.
+- *Database queries*. Ensure that database queries retrieve only the necessary information. Avoid retrieving large amounts of unnecessary data, which can lead to increased network traffic and slow performance.
+- *Static data*. Utilize a content delivery network (CDN) to cache frequently accessed static content that's close to the users. When you use caching, data doesn't have to travel over long distances. Caching improves response times and reduces network traffic.
+- *Log collection*. Collect and retain only the log data that's necessary to support your requirements. Configure data collection rules and design considerations for optimizing your Log Analytics costs.
+- *Data compression*. Compress and bundle [HTTP content](/iis/configuration/system.webserver/httpcompression) and [file data](/windows/win32/fileio/file-compression-and-decompression) to allow fast transmission between clients and servers. Compression shrinks the data that's returned from a page or API back to the browser or client app. Compression optimizes network traffic, which can accelerate application communication.
 
     > :::image type="icon" source="../_images/trade-off.svg":::
-*Tradeoff*: Compressions adds extra server side and client side processing. The application must compress, send, and decompress data. Multi-cast communication (multiple recipients) can create even more decompression overhead. You need to test and measure the performance variations before and after implementing data compression to determine if it's a good fit for your workload. For more information, see [Response compression in ASP.NET Core](/aspnet/core/performance/response-compression).
+*Tradeoff*: Compression adds extra server-side and client-side processing. The application must compress, send, and decompress data. Multi-cast communication, or communication to multiple recipients, can create more decompression overhead. You need to test and measure the performance variations before and after implementing data compression to determine if it's a good fit for your workload. For more information, see [Response compression in ASP.NET Core](/aspnet/core/performance/response-compression).
 
 ## Azure facilitation
 
-**Optimization tools**: Azure Perf Insights provides insights into network performance and actionable recommendations for optimizing Azure services and resources.
+**Optimization tools**: PerfInsights is a tool that provides insights into network performance and provides recommendations for optimizing Azure services and resources.
 
-**Native SDKs & performance-optimized libraries**: Azure provides [SDKs](https://azure.microsoft.com/downloads) and libraries for various programming languages to interact with Azure services. The SDKs are designed to simplify interactions between applications and Azure resources. These SDKs provide optimal interaction with Azure services, reducing latency and enhancing efficiency
+**Native SDKs and performance-optimized libraries**: Azure provides [SDKs](https://azure.microsoft.com/downloads) and libraries for various programming languages to interact with Azure services. The SDKs are designed to simplify interactions between applications and Azure resources. These SDKs provide optimal interaction with Azure services, which reduces latency and enhances efficiency.
 
-**Memory management**: [Azure Application Insights Smart Detection](/azure/azure-monitor/alerts/proactive-diagnostics) analyzes memory consumption and helps identify and address potential memory leaks. Azure offers best practices and guidelines for efficient memory management.
+**Memory management**: [Application Insights smart detection](/azure/azure-monitor/alerts/proactive-diagnostics) is used to analyze memory consumption and helps identify and address memory leaks.
 
-**Concurrency and parallelism**: Azure provides services like [Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks) that support deploying containerized applications for enhanced parallel processing. [Azure Batch](https://learn.microsoft.com/azure/batch/batch-technical-overview) is a cloud-based job scheduling service that enables parallel and high-performance computing without the need for infrastructure setup.
+**Concurrency and parallelism**: [AKS](https://learn.microsoft.com/azure/aks) supports deploying containerized applications, which enhances parallel processing. [Azure Batch](https://learn.microsoft.com/azure/batch/batch-technical-overview) is a cloud-based job scheduling service that you can use to enable parallel and high-performance computing without the need for infrastructure setup.
 
-**Infrastructure consistency**: Azure offers tools like [Azure Resource Manager (ARM) templates](/azure/templates), which allow users to define and deploy infrastructure using code for efficient, repeatable, and consistent resource deployments. [Azure Policy](/azure/governance/policy/overview) provides governance capabilities to ensure that resource deployments adhere to organizational best practices and standards.
+**Infrastructure consistency**: Use [Azure Resource Manager (ARM) templates](/azure/templates) to define and deploy infrastructure by using code. Use these templates to implement efficient, repeatable, and consistent resource deployments. [Azure Policy](/azure/governance/policy/overview) provides governance capabilities to ensure that resource deployments adhere to organizational best practices and standards.
 
-**Monitoring and analysis**: Azure Log Analytics provides detailed insights into code and infrastructure performance, helping identify performance bottlenecks.
-Azure Monitor: It offers full-stack monitoring, advanced analytics, and intelligent alerting to facilitate the identification and resolution of performance issues.
+**Monitor and analyze**: Log Analytics provides insights into code and infrastructure performance, which helps identify performance bottlenecks.
+Azure Monitor offers full-stack monitoring, advanced analytics, and intelligent alerting to facilitate the identification and resolution of performance issues.
 
-**Asynchronous programming**: Azure provides scalable queuing services like Azure Queue Storage and Azure Service Bus, which facilitate asynchronous programming by allowing tasks to be queued and processed independently.
+**Asynchronous programming**: Use scalable queuing services, like Azure Queue Storage and Azure Service Bus, which facilitate asynchronous programming. You can queue tasks and independently process them.
 
-Azure Marketplace offers various third-party queues and tools that can be easily integrated with Azure services to support asynchronous operations.
+Azure Marketplace offers third-party queues and tools that you can integrate with Azure services to support asynchronous operations.
 
 ## Related links
 
