@@ -7,11 +7,11 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for selecting the appropriate services
+# Recommendations for selecting appropriate services
 
 **Applies to: PE 03**
 
-This guide describes the recommendations for selecting the appropriate services for your workload. The following recommendations help you choose the services that best meet the requirements and demands of your workload. When you use services that are designed to handle your workload's requirements, you can ensure that your workload meets the performance targets. If you choose inappropriate services for your workload, the services might not be capable of handling your workload's demands. Insufficient services can lead to slow response times, bottlenecks, or workload failures.
+This guide describes the recommendations for selecting appropriate services for your workload. The following recommendations help you choose services that best meet the requirements and demands of your workload. When you use services that are designed to handle your workload's requirements, you can ensure that your workload meets your performance targets. If you choose inappropriate services for your workload, the services might not be capable of handling your workload's demands. Insufficient services can lead to slow response times, bottlenecks, or workload failures.
 
 **Definitions**
 
@@ -35,23 +35,23 @@ Select appropriate services that align with the requirements and demands of your
 
 ### Understand workload requirements
 
-Evaluate the needs and characteristics of your workload to determine the requirements. Align your workload requirements to the performance targets at every tier. You must account for constraints or dependencies. When you understand your workload requirements, you can make informed decisions. You can determine the right infrastructure and implement strategies to handle peak loads or variations in demand.
+Evaluate the needs and characteristics of your workload to determine the requirements. Align your workload requirements to your performance targets at every tier. You must account for constraints or dependencies. When you understand your workload requirements, you can make informed decisions. You can determine the right infrastructure and implement strategies to handle peak loads or variations in demand.
 
-**Meet performance targets**. Select services that enable you to meet the performance targets for your workload. Ensure that the service supports the performance needs and allows you to monitor its performance. Collect performance data for critical components.
+**Meet performance targets**. Select services that enable you to meet the performance targets for your workload. Ensure that a service can support the performance needs and that you can monitor its performance. Collect performance data for critical components.
 
 **Consider organizational restrictions**. Be familiar with restrictions that your organization might have on services that you deploy. Consider these restrictions when you design your solution.
 
-**Consider compliance and security requirements**. Compliance and security requirements can affect the services and configurations that you select. Ensure that the services you choose meet the requirements that are related to storage, encryption, access controls, audit logs, and data locations.
+**Consider compliance and security requirements**. Compliance and security requirements can affect services and configurations that you select. Ensure that a service you choose meets the requirements that are related to storage, encryption, access controls, audit logs, and data locations.
 
-**Consider team skills**. Your team builds and maintains workloads. Different services require different skills. Choose services that your team knows how to use, or commit to training them before you choose a service. Ensure that team members possess the expertise and knowledge to effectively use the services and to optimize its performance.
+**Consider team skills**. Your team builds and maintains workloads. Different services require different skills. Choose services that your team knows how to use, or commit to training them before you choose a service. Ensure that team members possess the expertise and knowledge to effectively use services and to optimize their performance.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Specialized services offer specific functionalities but might limit customization. Flexible resources require more management and configuration compared to specialized services. Managed services offer ease of management, but you might have less control over the underlying infrastructure compared to self-managed resources.
 
-### Understand the services
+### Understand services
 
-Consider various factors and gain a comprehensive understanding of the service before you choose it. Research and assess the services and tools that the cloud provider offers. Determine the services and tools that best align with your workload requirements. Consider factors like managed services, serverless options, and specialized services.
+Consider various factors and gain a comprehensive understanding of a service before you choose it. Research and assess services and tools that the cloud provider offers. Determine which services and tools best align with your workload requirements. Consider factors like managed services, serverless options, and specialized services.
 
-**Understand service limits**. Service limits are the predefined thresholds or boundaries that service providers set. Service limits define the maximum usage of resources or capabilities within that service. When you're familiar with the service limits, you can avoid issues such as resource contention, performance degradation, or unexpected service interruptions. You can plan and scale the infrastructure appropriately, taking into account factors such as data volume, processing capacity, and data residency requirements.
+**Understand service limits**. Service limits are the predefined thresholds or boundaries that service providers set. Service limits define the maximum usage of resources or capabilities within that service. When you're familiar with service limits, you can avoid issues such as resource contention, performance degradation, or unexpected service interruptions. You can plan and scale the infrastructure appropriately, taking into account factors such as data volume, processing capacity, and data residency requirements.
 
 **Offload functionality**. Service features are designed to handle specific tasks efficiently and at scale, which allows you to take advantage of the optimized infrastructure. Service features are also regularly maintained. Choose services that allow you to offload functionality to service features instead of writing and maintaining your own custom code. Custom code adds complexity and makes the workload prone to performance issues. Only develop custom code when service features aren't sufficient.
 
@@ -72,7 +72,7 @@ Select the appropriate region and availability zones for hosting your workload. 
 Assess your network needs to determine the appropriate workload services and configurations. Ensure that the network can support your workload. To evaluate networking requirements, consider:
 
 - **Network traffic**: Assess the expected network traffic for the workload. Understand the data transfer needs and the frequency of network requests.
-- **Bandwidth requirements**: Determine the bandwidth requirements for the workload. Consider the amount of data that is transmitted and received over the network.
+- **Bandwidth requirements**: Determine the bandwidth requirements for the workload. Consider the amount of data that's transmitted and received over the network.
 - **Latency**: Evaluate the desired latency for the workload. Use private virtual networks and backbone networks instead of traversing the public internet. This technique decreases the latency of the workload.
 - **Throughput**: Consider the required throughput for the workload. Throughput refers to the amount of data that can be transmitted over a network in a given time. Configure the network routing options to take advantage of network throughput benefits.
 
@@ -106,7 +106,7 @@ Load balancing ensures that network traffic is distributed evenly and prevents a
 - **Traffic type**: Determine whether the load balancing service needs to handle web traffic, like HTTP and HTTPS, or other protocols, such as Transmission Control Protocol (TCP) or User Datagram Protocol (UDP).
 - **Global or regional**: Determine whether your workload requires load balancing within a specific region or across multiple regions.
 - **Service-level objectives (SLOs)**: Consider the service-level agreement (SLA). Different load balancing services offer different levels of performance.
-- **Features**: Consider load balancing services that provide site acceleration, optimal traffic distribution, and low-latency Layer 4 load balancing.
+- **Features**: Consider load balancing services that provide site acceleration, optimal traffic distribution, and low-latency layer-4 load balancing.
 
 ### Evaluate database requirements
 
