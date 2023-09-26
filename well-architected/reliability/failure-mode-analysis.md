@@ -44,7 +44,7 @@ After you determine the critical flows, you can plan their required components. 
 
 As you move from ideation to design, you need to identify the component types that are required to support your workload. Your workload determines the necessary components that you must plan for. Typically, you need to plan for ingress control, networking, compute, data, storage, supporting services (like authentication, messaging, and secret or key management), and egress control. At this stage in your design work, you might not know the specific technologies that you'll deploy, so your design might look like the following example.
 
-:::image type="content" source="../_images/failure-mode-example.png" alt-text="Diagram that shows the design example." border="false" lightbox="../_images/failure-mode-example.png":::
+:::image type="content" source="media/failure-mode-analysis/failure-mode-example.png" alt-text="Diagram that shows the design example." border="false" lightbox="../_images/failure-mode-example.png":::
 
 After you create your initial architecture design, you can overlay your flows to identify the discrete components that are used in those flows and create lists or workflow diagrams that describe the flows and their components. To understand the criticality of the components, use the criticality definitions that you have assigned to the flows. Consider the effect of a component malfunction on your flows.
 
@@ -147,3 +147,10 @@ The following table shows an FMA example for an e-commerce website that's hosted
 
 - [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis)
 - [Resiliency and dependencies](../resiliency/design-resiliency.md)
+ 
+## Next steps
+
+We recommend that you review the Reliability checklist to explore other concepts.
+
+> [!div class="nextstepaction"]
+> [Reliability checklist](checklist.md) 
