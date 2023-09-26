@@ -1,5 +1,5 @@
 ---
-title: Recommendations for performing failure mode analysis
+title: Failure mode analysis recommendations
 description: Learn how to identify potential points of failure within your workload and the associated flows, and plan mitigation actions accordingly.
 author: claytonsiemens77
 ms.author: csiemens
