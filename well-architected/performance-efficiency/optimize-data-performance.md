@@ -180,49 +180,49 @@ For more information, see the [CQRS pattern](/azure/architecture/patterns/cqrs).
 
 **Use eventual consistency**. Eventual consistency is a consistency model. Over time, updates are propagated to replicas or nodes in a distributed workload. There might be temporary inconsistencies between replicas, but the workload eventually converges to a consistent state.
 
-Eventual consistency helps optimize data updates because it increases availability and scalability. With strict consistency, every update has to be immediately visible on all replicas. With eventual consistency, there's a tradeoff between consistency and performance. Updates can be processed asynchronously, which reduces the delay and increases the throughput of data updates.
+Eventual consistency helps optimize data updates because it increases availability and scalability. With strict consistency, every update has to be immediately visible on all replicas. With eventual consistency, there's a tradeoff between consistency and performance. Updates can be processed asynchronously, which reduces delay and increases throughput of data updates.
 
 ### Optimize data updates
 
 You can use optimistic concurrency to handle concurrent updates to the same data. Instead of locking data and preventing other updates, optimistic concurrency allows multiple users or processes to work concurrently and assumes that conflicts are rare.
 
-With optimistic concurrency, each update operation includes a version or timestamp that represents the state of the data at the time of the update. When a conflicting update is detected, the system can resolve the conflict by either rejecting the update or merging the changes.
+With optimistic concurrency, each update operation includes a version or timestamp that represents the state of the data at the time of the update. When a conflicting update is detected, the system resolves the conflict by rejecting the update or merging the changes.
 
-Optimistic concurrency helps in optimizing data updates by minimizing contention and allowing concurrent updates to proceed without unnecessary locking. It improves performance by reducing the time spent waiting for resources and allows for higher overall throughput.
+Optimistic concurrency minimizes contention and allows concurrent updates to proceed without unnecessary locking. It reduces wait time for resources and provides high throughput.
 
 ### Optimize data movement and processing
 
-Optimizing data movement and processing involves improving the efficiency and performance of operations related to data extraction, transformation, loading, and processing. Here are some key aspects of optimizing data movement and processing:
+Optimizing data movement and processing involves improving the efficiency and performance of operations related to data extraction, transformation, loading, and processing. Consider the following key aspects of optimizing data movement and processing:
 
-- *ETL optimization*: Extract, Transform, Load (ETL) processes can be optimized to minimize processing time. ETL optimization includes streamlining the extraction process, implementing efficient transformation algorithms, and optimizing the loading process. By reducing the time taken for each step and optimizing the overall workflow, the ETL process can be made more efficient.
+- *Extract, transform, and load (ETL) optimization*: Optimize ETL processes to minimize processing time. You can streamline the extraction process, implement efficient transformation algorithms, and optimize the loading process. When you make each step efficient, you can optimize the overall workflow.
 
-- *Parallel processing*: Utilizing parallel processing techniques can significantly improve data processing performance. By distributing data processing tasks across multiple threads or nodes, the workload can be divided and processed concurrently, leading to faster processing times and improved overall performance.
+- *Parallel processing*: Utilize parallel processing techniques to improve data processing performance. When you distribute data processing tasks across multiple threads or nodes, you can divide and process the workload concurrently, which results in fast processing.
 
-- *Batch processing*: Implementing batch processing involves grouping similar tasks together to reduce overhead from repeated operations. Processing multiple tasks in a batch can reduce the overall processing time.
+- *Batch processing*: Group similar tasks together to reduce overhead cause by repeated operations. Process multiple tasks in a batch to reduce overall processing time.
 
 ### Optimize storage design
 
-By carefully designing the data storage structure and utilizing appropriate storage technologies, you can optimize data access, retrieval, and manipulation, resulting in improved performance and efficiency.
+Carefully design the data storage structure and utilize appropriate storage technologies to optimize data access, retrieval, and manipulation.
 
-**Use close proximity**. Choose a solution that supports data synchronization across regions if you need to bring data closer to a distributed user base.
+**Use close proximity**. If you need to bring data close to a distributed user base, choose a solution that supports data synchronization across regions.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: If the underlying data changes frequently, you need to implement cache invalidation mechanisms to ensure the cached data remains up to date.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: If underlying data changes frequently, implement a cache invalidation mechanism to ensure that the cached data remains up to date.
 
-**Use polyglot persistence**. Polyglot persistence refers to the practice of using multiple data storage technologies to store and manage different types of data within an application or system. It recognizes that different types of databases or storage solutions serve different data requirements.
+**Use polyglot persistence**. Polyglot persistence is the practice of using multiple data storage technologies to store and manage different types of data within an application or system. Different types of databases or storage solutions serve different data requirements.
 
-The goal of polyglot persistence is to use the strengths of each data storage technology to ensure optimal performance and scalability for different types of data and use cases. For example, a relational database may be used to store structured, transactional data, while a NoSQL database may be used to store unstructured or semi-structured data.
+Polyglot persistence takes advantage of the benefits of each data storage technology to ensure optimal performance and scalability for each type of data. For example, you might use a relational database to store structured, transactional data. And you might use a NoSQL database to store unstructured or semi-structured data.
 
-Design the schema for each data storage technology based on the specific requirements of the data. For relational databases, the design may involve creating normalized tables with appropriate relationships. For NoSQL databases, the design may involve defining document structures or key-value pairs. Develop the necessary components to interact with each data storage technology, such as APIs, data access layers, or data integration pipelines. Ensure that the application can read and write data to the appropriate data stores.
+Design the schema for each data storage technology based on the requirements of the data. For relational databases, you might create normalized tables with appropriate relationships. For NoSQL databases, you might define document structures or key-value pairs. Develop the necessary components to interact with each data storage technology, such as APIs, data access layers, or data integration pipelines. Ensure that the application can read and write data to the appropriate data stores.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A less normalized data structure can improve performance but introduce complexities.
 
-**Separate OLTP and OLAP systems**. Separating [OLTP](/azure/architecture/data-guide/relational-data/online-transaction-processing) (Online Transaction Processing) and [OLAP](/azure/architecture/data-guide/relational-data/online-analytical-processing) (Online Analytical Processing) systems involves designing and deploying distinct systems for transactional processing and analytical processing tasks. This separation allows you to optimize each system for its specific workload and characteristics.
+**Separate OLTP (online transaction processing) and OLAP (online analytical processing) systems**. To separate [OLTP](/azure/architecture/data-guide/relational-data/online-transaction-processing) and [OLAP](/azure/architecture/data-guide/relational-data/online-analytical-processing) systems, design and deploy distinct systems for transactional processing and analytical processing tasks. This separation allows you to optimize each system for its specific workload and characteristics.
 
-OLTP systems are for real-time transactional processing. They provide efficient and reliable handling of individual transactions. They're typically used for day-to-day operational tasks such as online order processing, inventory management, and customer data management. OLTP systems prioritize responsiveness, consistency, and concurrency.
+OLTP systems are used for real-time transactional processing. They efficiently and reliably handle individual transactions. OLTP systems are typically used to perform day-to-day operational tasks, such as online order processing, inventory management, and customer data management. OLTP systems prioritize responsiveness, consistency, and concurrency.
 
-OLAP systems for complex analytical processing and reporting. They handle large volumes of data and perform intensive calculations and aggregations. OLAP systems are used for tasks such as business intelligence, data mining, and decision support. They prioritize query performance, data aggregation, and multidimensional analysis.
+OLAP systems are used for complex analytical processing and reporting. They handle large volumes of data and perform intensive calculations and aggregations. OLAP systems are used for tasks such as business intelligence, data mining, and decision support. OLAP systems prioritize query performance, data aggregation, and multidimensional analysis.
 
-By separating the two, you can allocate appropriate resources and optimize each system for its specific workload, resulting in improved performance. Separation allows you to apply different data modeling techniques to each system. OLTP systems typically use normalized schemas for efficient transactional processing, while OLAP systems may use denormalized schemas or data warehousing techniques to optimize query performance.
+When you separate OLTP and OLAP systems, you can allocate appropriate resources and optimize each system for its specific workload. Separation allows you to apply different data modeling techniques to each system. OLTP systems typically use normalized schemas for efficient transactional processing. OLAP systems might use denormalized schemas or data warehousing techniques to optimize query performance.
 
 ## Azure facilitation
 
