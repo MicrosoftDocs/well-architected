@@ -159,7 +159,7 @@ Better skills lead to increased efficiency and fewer mistakes. Invest in the dev
 
 ## Azure facilitation
 
-**Defining success metrics.** [Azure DevOps](/azure/devops/what-is-devops) provides a suite of tools for defining objectives, selecting metrics, and setting targets. It offers features such as work item tracking, dashboards, and reporting capabilities. It includes features for source code management, continuous integration, continuous delivery, project management, and more. By leveraging Azure DevOps, teams can automate processes, collaborate effectively, and reduce manual effort.
+**Defining success metrics.** [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) provides a suite of tools for defining objectives, selecting metrics, and setting targets. It offers features such as work item tracking, dashboards, and reporting capabilities. It includes features for source code management, continuous integration, continuous delivery, project management, and more. By leveraging Azure DevOps, teams can automate processes, collaborate effectively, and reduce manual effort.
 
 **Optimizing development.** Azure provides various tools and features to optimize developer time, including:
 
