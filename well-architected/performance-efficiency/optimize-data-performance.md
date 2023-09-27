@@ -1,5 +1,5 @@
 ---
-title: Data performance optimization recommendations
+title: Recommendations for optimizing data performance
 description: Learn best practices for optimizing data performance.  
 author: stephen-sumner
 ms.author: ssumner
