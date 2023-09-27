@@ -17,7 +17,7 @@ This guide describes the recommendations for optimizing workload data performanc
 
 |Term|Definition|
 |---|---|
-| Data store| A resource that stores data such as a database, object store, file share, etc.|
+| Data store| A resource that stores data such as a database, object store, or file share.|
 |  Eventual consistency|A data synchronization model that allows for temporary inconsistency in data replicas before eventually becoming the same.|
 | Optimistic concurrency|An approach for updating databases that uses snapshots to make updates instead of database locks. |
 |  PACELC theorem | A framework that considers partition tolerance, availability, consistency, and latency to help explain the tradeoffs in data consistency.|
@@ -33,11 +33,11 @@ This guide describes the recommendations for optimizing workload data performanc
 
 ## Key strategies
 
-Optimizing data usage involves ensuring that data stores, partitions, and indexes are optimized for both their intended use and actual use in a workload. It's important for workload performance efficiency because optimized data usage can improve query performance, reduce resource consumption, and enhance overall system efficiency. Here are some high-level strategies:
+To optimize data usage, ensure that data stores, partitions, and indexes are optimized for their intended use and for their actual use in a workload. Optimized data usage can improve query performance, reduce resource consumption, and enhance overall system efficiency. Consider the following strategies:
 
-- *Profile data*: Understand the data and ensure the data model is well-suited for the workload. Consider factors such as data normalization, indexing strategies, and partitioning techniques. Ensure you're selecting appropriate data types, defining relationships between entities, and determining the optimal indexing strategy for efficient data retrieval.
-- *Fine-tune data storage configuration*: Configure the data storage infrastructure to align with the workload requirements. You should include selecting the appropriate storage technology (for example, relational databases, NoSQL databases, data warehouses) and optimizing storage settings such as buffer size, caching mechanisms, and compression.
-- *Optimize query performance*: Analyze and optimize the queries executed in the workload. Use techniques such as query optimization, indexing, and caching. Use query execution plans and performance monitoring tools to identify bottlenecks and make necessary optimizations.
+- *Profile data*: Understand your data and ensure that your data model is well-suited for the workload. Consider factors such as data normalization, indexing strategies, and partitioning techniques. For efficient data retrieval, ensure that you select appropriate data types, define relationships between entities, and determine the optimal indexing strategy.
+- *Fine-tune your data storage configuration*: Configure your data storage infrastructure to align with your workload requirements. Select an appropriate storage technology, for example relational databases, NoSQL databases, and data warehouses. Optimize storage settings, such as buffer size, caching mechanisms, and compression.
+- *Optimize query performance*: Analyze and optimize the queries that run in the workload. Use techniques such as query optimization, indexing, and caching. Use query execution plans and performance monitoring tools to identify bottlenecks and make necessary improvements.
 - *Regularly monitor and tune the system*: Continuously monitor the performance of the workload and iterate on the data storage configuration and query optimizations. Include analyzing system metrics, identifying areas of improvement, and implementing changes based on performance tuning best practices.
 
 ### Profile data
