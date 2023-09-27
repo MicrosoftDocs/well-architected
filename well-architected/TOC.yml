@@ -75,6 +75,8 @@
               href: security/identity-access.md
             - name: Networking
               href: security/networking.md
+            - name: Security development lifecycle
+              href: security/secure-development-lifecycle.md
             - name: Segmentation
               href: security/segmentation.md
             - name: Testing and validation
