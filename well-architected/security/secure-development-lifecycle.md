@@ -214,3 +214,10 @@ Validate the security of any open-source code added to your application. Free to
 - [Configure the Microsoft Security DevOps Azure DevOps extension - Microsoft Defender for Cloud | Microsoft Learn](/azure/defender-for-cloud/azure-devops-extension)
 - [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/stable-en/)
 - [OWASP Top Ten | OWASP Foundation](https://owasp.org/www-project-top-ten/)  
+
+## Next steps
+
+We recommend that you review the Security checklist to explore other concepts.
+
+> [!div class="nextstepaction"]
+> [Security checklist](checklist.md)

@@ -73,6 +73,8 @@
               href: security/classify-data.md
             - name: Encryption
               href: security/encryption.md
+            - name: Hardening resources
+              href: security/hardening.md
             - name: Identity and access
               href: security/identity-access.md
             - name: Networking

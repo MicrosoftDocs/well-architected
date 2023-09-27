@@ -329,3 +329,10 @@ The security of preshared secrets is critical for any application. Azure Key Vau
 - [Managed identities for Azure resources - Microsoft Entra](/azure/active-directory/managed-identities-azure-resources/overview)
 - [Users, groups, workload identity in Conditional Access policy - Microsoft Entra](/azure/active-directory/conditional-access/concept-conditional-access-users-groups)
 - [Azure AD Connect sync: Configure filtering - Microsoft Entra](/azure/active-directory/hybrid/connect/how-to-connect-sync-configure-filtering)
+ 
+## Next steps
+
+We recommend that you review the Security checklist to explore other concepts.
+
+> [!div class="nextstepaction"]
+> [Security checklist](checklist.md)
