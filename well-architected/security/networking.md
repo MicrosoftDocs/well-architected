@@ -82,11 +82,11 @@ You can also determine your level of exposure by considering your workload's pro
 
 - **East-west**. Traffic that flows within a workload network is east-west traffic. This type of traffic results when components in your workload communicate with each other. An example is traffic between the tiers of an n-tier application. In microservices, service-to-service communication is east-west traffic.
 
-  To provide defense in depth, maintain end-to-end control of security affordances that are included in each hop or that you use when packets cross internal segments. Different risk levels require different risk remediations.
+  To provide defense in depth, maintain end-to-end control of security affordances that are included in each hop or that you use when packets cross internal segments. Different risk levels require different risk remediation methods.
 
   :::image type="content" source="images/networking/network-defense-depth-private-cloud.png" alt-text="Diagram that shows network defense in depth for a private cloud." border="false" lightbox="images/networking/network-defense-depth-private-cloud.png":::
 
-  If you compare this image to the public cloud image, you can see that the public IP is shifted significantly away from the workload in this image. There are now added layers. DNS has shifted right and there's a transition from public IP space to private IP space at this layer.
+  The preceding diagram illustrates network defense in depth in the private cloud. In that diagram, the border between the public and private IP address spaces is significantly farther from the workload than in the public cloud diagram. The border with the public IP space is shifted to the right. Multiple layers separate the Azure deployments from the public IP space.
 
 > [!NOTE]
 > Identity is always the primary perimeter. Access management must be applied to networking flows. Use managed identities when using Azure role-base access controls between the components of the network.
