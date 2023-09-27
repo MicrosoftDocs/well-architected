@@ -457,7 +457,7 @@ Following are some reference architectures and example scenarios for multi-zone 
 - [Multi-region N-tier application](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
 - [Multi-tier web application built for HA/DR](/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)
 
-Many Azure services support provide guidance about how to use multiple availability zones, including the following examples:
+Many Azure services provide guidance about how to use multiple availability zones, including the following examples:
 - [Azure Site Recovery: Enable Azure VM disaster recovery between availability zones](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)
 - [Azure NetApp Files: Understand cross-zone replication of Azure NetApp Files](/azure/azure-netapp-files/cross-zone-replication-introduction)
 - [Azure Storage redundancy](/azure/storage/common/storage-redundancy)
