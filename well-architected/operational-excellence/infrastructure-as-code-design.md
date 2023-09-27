@@ -76,13 +76,13 @@ _[Expand on the tradeoff mentioned in the checklist.]_
 
 ## Example
 
-See the [Azure Virtual Desktop Landing Zone Accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone) architecture and the associated_ [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of an Azure Virtual Desktop implementation that can be deployed with ARM, Bicep or Terraform using the files included in the implementation. 
+See the [Azure Virtual Desktop Landing Zone Accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone) architecture and the associated [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of an Azure Virtual Desktop implementation that can be deployed with ARM, Bicep or Terraform using the files included in the implementation. 
 
 ## Related links
 
 [Enterprise infrastructure as code using Bicep and Azure Container Registry - Azure Architecture Center | Microsoft Learn](/azure/architecture/guide/azure-resource-manager/advanced-templates/enterprise-infrastructure-bicep-container-registry)  
 
-[What is infrastructure as code (IaC)? - Azure DevOps | Microsoft Learn](/devops/deliver/what-is-infrastructure-as-code?view=azure-devops)
+[What is infrastructure as code (IaC)? - Azure DevOps | Microsoft Learn](/devops/deliver/what-is-infrastructure-as-code)
 
 ## Next steps
 
