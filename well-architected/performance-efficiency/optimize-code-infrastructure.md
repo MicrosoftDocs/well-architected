@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to: PE 07**
 
-This guide describes the recommendations for optimizing code and infrastructure performance. To optimize your code and infrastructure, you should use your components only for their core purpose and only when necessary. When you overuse code and infrastructure, it creates unnecessary resource consumption, bottlenecks, and slow response. To compensate for those inefficiencies, you must add more resources to accomplish the same tasks, which reduces performance efficiency.
+This guide describes the recommendations for optimizing code and infrastructure performance. To optimize your code and infrastructure, you should use your components only for their core purpose and only when necessary. When you overuse code and infrastructure, it creates unnecessary resource consumption, bottlenecks, and slow responses. To compensate for those inefficiencies, you must add more resources to accomplish the same tasks, which reduces performance efficiency.
 
 **Definitions**
 
@@ -58,32 +58,32 @@ To optimize code memory, efficiently manage and reduce the memory usage in a cod
 
 Caches store frequently accessed data close to the processor, which improves performance. When you minimize memory allocations, there's less contention for cache space, so you can effectively utilize the cache. A high number of memory allocations can degrade application performance and generate errors. Other ways to minimize memory allocations include:
 
-- *Local variables*: Use local variables instead of global variables to minimize memory consumption.
-- *Lazy initialization*: Implement lazy initialization to defer the creation of objects or resources until they're needed.
-- *Buffers*: Manage buffers effectively to avoid allocating large memory buffers.
-- *Object pooling*: Consider object pooling to reuse large objects instead of allocating and deallocating them.
+- *Local variables*. Use local variables instead of global variables to minimize memory consumption.
+- *Lazy initialization*. Implement lazy initialization to defer the creation of objects or resources until they're needed.
+- *Buffers*. Manage buffers effectively to avoid allocating large memory buffers.
+- *Object pooling*. Consider object pooling to reuse large objects instead of allocating and deallocating them.
 
 For more information, see [Reduce memory allocations](/dotnet/csharp/advanced-topics/performance) and [The large object heap on Windows systems](/dotnet/standard/garbage-collection/large-object-heap).
 
 #### Use concurrency and parallelism
 
-Use concurrency and parallelism to run multiple tasks. These techniques increase the overall throughput and the number tasks that a workload can process. When you run tasks concurrently or in parallel, it reduces the runtime of the application, which decreases latency and increases response times. Concurrency and parallelism enable efficient utilization of computing resources, such as CPU cores or distributed systems. Concurrency and parallelism effectively distribute the workload among the computing resources.
+Use concurrency and parallelism to run multiple tasks. These techniques increase the overall throughput and the number of tasks that a workload can process. When you run tasks concurrently or in parallel, it reduces the runtime of the application, which decreases latency and increases response times. Concurrency and parallelism enable efficient utilization of computing resources, such as CPU cores or distributed systems. Concurrency and parallelism effectively distribute the workload among the computing resources.
 
 **Use parallelism**. Parallelism is the ability of a system to simultaneously trigger multiple tasks or processes on multiple computing resources. Parallelism divides a workload into smaller tasks that are run in parallel. You can achieve parallelism by using techniques like multiprocessing, in which multiple processes run in parallel, or by using distributed computing, in which tasks are distributed across multiple machines. Distribute tasks across multicore processors to optimize workload management. Optimize code to take advantage of the CPU architecture, threading models, and multicore processors. When you run code in parallel, performance improves because the workload is distributed across multiple cores.
 
-**Use concurrency**. Concurrency is the ability of a system to run multiple tasks or processes. Concurrency enables different parts of a program to make progress independently, which can improve overall performance. You can implement concurrency by using techniques like multithreading, in which multiple threads run concurrently within a single process. You can also use asynchronous programming, in which tasks are triggered concurrently without blocking the main thread.
+**Use concurrency**. Concurrency is the ability of a system to run multiple tasks or processes. Concurrency enables different parts of a program to make progress independently, which can improve overall performance. You can implement concurrency by using techniques like multithreading, in which multiple threads run concurrently within a single process. You can also use asynchronous programming, in which tasks are triggered concurrently.
 
 - *Asynchronous programming*: Asynchronous programming is an approach that's used to trigger tasks without blocking the main thread. Asynchronous programming enables a program to trigger tasks while waiting for long-running operations to finish.
 
-    With asynchronous programming, the program can initiate multiple tasks and wait for them to complete asynchronously. The main thread isn't blocked, and the program doesn't have to wait for each task to finish before moving on to the next one.
+    With asynchronous programming, the program can initiate multiple tasks and wait for them to complete asynchronously. The program doesn't have to wait for each task to finish before moving on to the next one.
 
-  There are many techniques and patterns, depending on the programming language and platform. One common approach is to use asynchronous keywords and constructs, such as `async` and `await`, in languages like C#. With these keywords, you can define asynchronous methods. For HTTP traffic, consider using the [Asynchronous Request-Reply pattern](/azure/architecture/patterns/async-request-reply).
+  There are many asynchronous programming techniques and patterns, depending on the programming language and platform. One common approach is to use asynchronous keywords and constructs, such as `async` and `await`, in languages like C#. With these keywords, you can define asynchronous methods. For HTTP traffic, consider using the [Asynchronous Request-Reply pattern](/azure/architecture/patterns/async-request-reply).
 
     Many frameworks and libraries provide built-in support for asynchronous programming. For example, in the .NET platform, you can implement asynchronous operations by using patterns like [Task-Based Asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) and [Event-Based Asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-eap).
 
-    The specific implementation of asynchronous programming might vary depending on the programming language, platform, and requirements of the application.
+    The specific implementation of asynchronous programming varies depending on the programming language, platform, and requirements of the application.
 
-- *Queues*: A queue is a storage buffer that's located between a requesting component, or the producer, and the processing component, or the consumer, of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The producer places tasks in a queue. The queue stores the tasks until the consumer has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. For more information, see [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling) and [Storage queues and Service Bus queues](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+- *Queues*: A queue is a storage buffer that's located between a requesting component, or the producer, and the processing component, or the consumer, of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The producer places tasks in a queue. The queue stores the tasks until a consumer has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. For more information, see [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling) and [Storage queues and Service Bus queues](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
 #### Use retry mechanisms
 
@@ -103,7 +103,7 @@ It can be expensive to establish a connection to a database. You have to create 
 
 #### Optimize background jobs
 
-Many applications require background tasks that run independently of the UI. The application can start the job and continue to process interactive requests from users. Examples of background jobs include batch jobs, processor-intensive tasks, and long-running processes, such as workflows. Background tasks shouldn't block the application or cause inconsistencies due to delayed operation when the system is under load. To can improve performance, you can scale compute instances that host background tasks. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs) and [Scaling and performance considerations](/azure/architecture/best-practices/background-jobs#scaling-and-performance-considerations).
+Many applications require background tasks that run independently of the UI. The application can start the job and continue to process interactive requests from users. Examples of background jobs include batch jobs, processor-intensive tasks, and long-running processes, such as workflows. Background tasks shouldn't block the application or cause inconsistencies due to delayed operation when the system is under load. To improve performance, you can scale compute instances that host background tasks. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs) and [Scaling and performance considerations](/azure/architecture/best-practices/background-jobs#scaling-and-performance-considerations).
 
 ### Optimize infrastructure performance
 
@@ -113,7 +113,7 @@ To optimize infrastructure performance, tune the performance of hardware and net
 
 **Streamline infrastructure**. Simplify your workload to reduce the potential for interaction, dependency, and compatibility issues. When you simplify your workload, you optimize resource utilization of memory, processing power, and storage.
 
-**Reduce load**. To reduce load on a workload, minimize the work or demand that's placed on an application and enable resources to perform their primary tasks. For example, it's common practice to avoid running security solutions within your code or on individual compute instances. Instead, web servers should serve HTTP requests. Web application firewalls and gateway resources can handle security checks. The following strategies help reduce the load on your workload:
+**Reduce load**. To reduce load on a workload, minimize the work or demand that's placed on an application, and enable resources to perform their primary tasks. For example, it's common practice to avoid running security solutions within your code or on individual compute instances. Instead, web servers should serve HTTP requests. Web application firewalls and gateway resources can handle security checks. The following strategies help reduce the load on your workload:
 
 - *Eventual consistency*: Adopt an eventual consistency model to enhance performance by allowing data to be slightly dated. Eventual consistency reduces the immediate demand on CPU cycles and network bandwidth for constant data updates.
 - *Delegate tasks*: Delegate server tasks to clients or intermediaries, such as search indexes and caches. Delegate tasks like sorting data, filtering data, or rendering views. When you offload these tasks, you reduce the workload on your servers and improve performance.
@@ -126,7 +126,7 @@ To optimize infrastructure performance, tune the performance of hardware and net
 
 - *Network chattiness*: Batch network requests together to reduce the number of requests. Instead of making multiple small requests, combine them into larger requests to reduce network overhead.
 - *Database queries*: Ensure that database queries retrieve only the necessary information. Avoid retrieving large amounts of unnecessary data, which can lead to increased network traffic and slow performance.
-- *Static data*: Utilize a content delivery network (CDN) to cache frequently accessed static content that's close to the users. When you cache data, it doesn't have to travel over long distances. Caching improves response times and reduces network traffic.
+- *Static data*: Utilize a content delivery network to cache frequently accessed static content that's close to the users. When you cache data, it doesn't have to travel over long distances. Caching improves response times and reduces network traffic.
 - *Log collection*: Collect and retain only the log data that's necessary to support your requirements. Configure data collection rules and implement design considerations to optimize your Log Analytics costs.
 - *Data compression*: Compress and bundle [HTTP content](/iis/configuration/system.webserver/httpcompression) and [file data](/windows/win32/fileio/file-compression-and-decompression) to allow fast transmission between clients and servers. Compression shrinks the data that a page or API returns and sends back to the browser or client app. Compression optimizes network traffic, which can accelerate application communication.
 
