@@ -112,7 +112,7 @@ Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics offe
 
 For more information, see [Data Discovery & Classification - Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse](/azure/azure-sql/database/data-discovery-and-classification-overview).
 
-### Organizational alignment
+## Organizational alignment
 
 Cloud Adoption Framework provides guidance for central teams about how to classify data so that workload teams can follow the organizational taxonomy. 
 
