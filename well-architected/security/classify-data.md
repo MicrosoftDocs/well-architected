@@ -110,7 +110,7 @@ For more information, see [What is Microsoft Purview?](/purview/purview).
 
 Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics offer built-in classification features. Take advantage to discover, classify, label, and report the sensitive data in your databases.
 
-For more information, see [Data Discovery & Classification - Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse](/azure/azure-sql/database/data-discovery-and-classification-overview?view=azuresql).
+For more information, see [Data Discovery & Classification - Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse](/azure/azure-sql/database/data-discovery-and-classification-overview).
 
 ### Organizational alignment
 
