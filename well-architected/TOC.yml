@@ -62,7 +62,7 @@
         - name: Checklist
           href: security/checklist.md
         - name: Tradeoffs
-          href: security/security-tradeoffs.md
+          href: security/tradeoffs.md
         - name: Recommendations    
           items:
             - name: Security patterns
