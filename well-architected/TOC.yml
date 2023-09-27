@@ -115,6 +115,8 @@
               href: cost-optimization/optimize-data-costs.md
             - name: Optimize code
               href: cost-optimization/optimize-code.md
+            - name: Optimize scaling
+              href: cost-optimization/optimize-scaling.md
       - name: Operational Excellence
         items: 
         - name: Quick links
