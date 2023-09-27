@@ -41,7 +41,7 @@ Here are other considerations:
 
 **Trusted source**. Part of the hardening exercise is related to the software supply chain. This guidance assumes that all components are obtained from trusted sources. Software procured from third-party vendors is approved by the organization. That’s a prerequisite and applies to sources of the operating system, images, and other third-party tools, which are in scope for the workload. Without that assumption, hardening can be an infinite drain of security assurances on untrusted sources. 
 
-Recommendations about security your supply chain is described in [Secure SDLC Practices](security-development-lifecycle.md).
+Recommendations about security your supply chain is described in [Secure SDLC Practices](secure-development-lifecycle.md).
 
 **Training**. Hardening is a specialized skill, and the actual exercise of hardening is methodical and requires a high level of competency.  Not only do you need to understand the functionality of the component but understand the impact of changes. The practitioner must be able discern guidance given by industry experts and the platform, from uncertain sources. Educate your team members in creating a security-aware culture. The team should be proficient in security best practices, have awareness of potential threats, and learn from post-incident retrospectives.
 
@@ -85,7 +85,7 @@ In addition, discover and disable other unused capabilities or features that mig
 
 As part of your “stay current, get current” mindset, always keep up with the Azure roadmap and the workload roadmap. Apply patching and versioning updates offered by Azure services. Don’t block platform-provided updates and subscribe to automated update channels.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Cloud resources often have requirements for allowances or must run in documented configuration to be considered "supported."_  _Some hardening techniques (such as aggressively blocking outbound traffic) can cause a service to fall outside of a supported configuration, even if the service_ _is operating normally. Ensure you understand each cloud resource's runtime requirements from your platform to ensure_ _you're maintaining supportability of that resource._
+> ![Risk icon](../_images/risk.svg) **Risk**: Cloud resources often have requirements for allowances or must run in documented configuration to be considered "supported."  Some hardening techniques (such as aggressively blocking outbound traffic) can cause a service to fall outside of a supported configuration, even if the service is operating normally. Ensure you understand each cloud resource's runtime requirements from your platform to ensure you're maintaining supportability of that resource.
 
 ### Applications
 
@@ -105,7 +105,7 @@ Inspect some of these areas for application hardening:
 
 - **API Security**: Secure your APIs with proper authentication and authorization mechanisms. Implement rate limiting, request validation, and access controls for API endpoints to further enhance security.
 
-In general, follow secure coding practices when developing and maintaining applications.  Regularly scan applications for vulnerabilities and conduct code reviews. For more information, see [Recommendations on Secure development lifecycle](security-development-lifecycle.md).
+In general, follow secure coding practices when developing and maintaining applications.  Regularly scan applications for vulnerabilities and conduct code reviews. For more information, see [Recommendations on Secure development lifecycle](secure-development-lifecycle.md).
 
 ### Management operations
 
@@ -137,19 +137,19 @@ Here’s an example of how you might start hardening the operating system. The t
 
 1. Reducing footprint.
 
-  **Remove unnecessary components** in the image. Install only what you need. 
+   **Remove unnecessary components** in the image. Install only what you need. 
 
-1. Fine tune configurations.
+1. Fine-tune configurations.
 
-  **Disable unused accounts**. Default configuration of operating systems have extra accounts that are linked to security groups. If they aren’t going to be used, disable or remove them from the system. Extra identities are threat vectors that are used to gain access to the server.
+   **Disable unused accounts**. Default configuration of operating systems have extra accounts that are linked to security groups. If they aren’t going to be used, disable or remove them from the system. Extra identities are threat vectors that are used to gain access to the server.
 
-  **Disable unnecessary access to the file system**. Encrypt the filesystem and fine tune access controls for both identity and networking. 
+   **Disable unnecessary access to the file system**. Encrypt the filesystem and fine tune access controls for both identity and networking. 
 
-  **Run only what’s needed**. Block applications and services from running by default and approve only those that are need for workload’s functionality.
+   **Run only what’s needed**. Block applications and services from running by default and approve only those that are need for workload’s functionality.
 
 1. Maintain defenses.
 
-  Regularly update OS components with the latest security updates and patches to mitigate known vulnerabilities. 
+   Regularly update OS components with the latest security updates and patches to mitigate known vulnerabilities. 
 
 ### Organizational alignment
 
