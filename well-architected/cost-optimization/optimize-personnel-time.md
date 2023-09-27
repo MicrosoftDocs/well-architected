@@ -179,7 +179,7 @@ Azure Monitor is a comprehensive monitoring service that provides visibility int
 
 [Azure Automation](/azure/automation/) provides a way to automate manual, repetitive tasks in Azure. It allows you to create and manage runbooks, which are sets of instructions for performing specific tasks. By automating routine tasks, you can save time and free up personnel to focus on more critical activities.
 
-**Optimizing personnel skills.** Microsoft provides a comprehensive suite of [training](/azure/training/) materials and activities to upskill personnel. There’s training for developers, architects, and business stakeholders.
+**Optimizing personnel skills.** Microsoft provides a comprehensive suite of [training](/training/) materials and activities to upskill personnel. There’s training for developers, architects, and business stakeholders.
 
 ## Related links
 
