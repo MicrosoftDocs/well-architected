@@ -72,8 +72,11 @@ Select the appropriate region and availability zones for hosting your workload. 
 Assess your network needs to determine the appropriate workload services and configurations. Ensure that the network can support your workload. To evaluate networking requirements, consider:
 
 - **Network traffic**: Assess the expected network traffic for the workload. Understand the data transfer needs and the frequency of network requests.
+
 - **Bandwidth requirements**: Determine the bandwidth requirements for the workload. Consider the amount of data that's transmitted and received over the network.
+
 - **Latency**: Evaluate the desired latency for the workload. Use private virtual networks and backbone networks instead of traversing the public internet. This technique decreases the latency of the workload.
+
 - **Throughput**: Consider the required throughput for the workload. Throughput refers to the amount of data that can be transmitted over a network in a given time. Configure the network routing options to take advantage of network throughput benefits.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Private virtual networking limits public access and makes it difficult to deploy and manage resources.
@@ -89,8 +92,11 @@ Choose the appropriate compute service to optimize performance efficiency. Diffe
 **Consider containerization**. Containers provide performance advantages compared to a noncontainerized workload. Consider using containerization if it suits your architectural needs. Containers improve compute performance in several ways:
 
 - *Isolation*: Containers provide isolated environments for applications. Containers ensure that application resources don't interfere with each other. This isolation ensures that compute resources that are assigned to a container are dedicated to running that specific application, which results in optimal performance.
+
 - *Resource efficiency*: Containers are lightweight and share the host operating system's kernel, which allows for efficient resource utilization. Multiple containers can run on the same virtualized infrastructure, which maximizes the use of compute resources.
+
 - *Fast startup time*: Container images are prebuilt and are quickly started when needed. This fast startup time enables rapid scalability. It allows applications to scale up or down based on demand and avoid performance bottlenecks.
+
 - *Portability*: Containers encapsulate all the required dependencies and libraries within the image. With containers, it's easier to move applications across different operating systems or environments. This portability enables flexibility in deploying applications and allows for easy migration between cloud providers or on-premises environments.
 
 When you use containers, consider design factors such as containerizing all application components. Use Linux-based container runtimes for lightweight images. Give containers short lifecycles to make them immutable and replaceable. Gather relevant logs and metrics from containers, container hosts, and the underlying cluster. Use this data to monitor and analyze performance. Containers are just one component of an overall architecture. Choose an appropriate container orchestrator, like Kubernetes, to further enhance performance and scalability.
@@ -104,8 +110,11 @@ When you use containers, consider design factors such as containerizing all appl
 Load balancing ensures that network traffic is distributed evenly and prevents any single server from being overwhelmed with requests. Load balancing helps prevent bottlenecks and reduce response times, which maintains optimal performance. Evaluate the different load balancing services that your cloud provider offers. Review the cloud provider's documentation and comparison tools to understand the features. Select the most suitable service for your workload. To select a load balancing service, consider:
 
 - **Traffic type**: Determine whether the load balancing service needs to handle web traffic, like HTTP and HTTPS, or other protocols, such as Transmission Control Protocol (TCP) or User Datagram Protocol (UDP).
+
 - **Global or regional**: Determine whether your workload requires load balancing within a specific region or across multiple regions.
+
 - **Service-level objectives (SLOs)**: Consider the service-level agreement (SLA). Different load balancing services offer different levels of performance.
+
 - **Features**: Consider load balancing services that provide site acceleration, optimal traffic distribution, and low-latency layer-4 load balancing.
 
 ### Evaluate database requirements
@@ -113,8 +122,11 @@ Load balancing ensures that network traffic is distributed evenly and prevents a
 The database can affect factors such as data storage and retrieval, transaction processing, consistency guarantees, and handling of large or rapidly changing data. Assess the needs and criteria for your database. Select a database system that can meet those requirements. Evaluate the database requirements before you choose a database. To evaluate the database requirements and choose the appropriate database, follow these steps:
 
 - **Identify the workload needs**. Understand the specific requirements of your workload, such as data volume, expected transaction rates, concurrency, data types, and expected growth. Evaluate different database systems based on your workload needs. For example, if your workload requires high-performance real-time data processing, you might choose a database system that's optimized for fast data ingestion and low latency.
+
 - **Consider the data model**. Determine the data model that best suits your workload. Evaluate the database requirements to ensure that the chosen database supports the required data structures, relationships, and integrity constraints. For example, if your data has a highly relational structure, you might opt for a relational database management system (RDBMS) that provides robust support for transactions and referential integrity. The data model might be hierarchical, network, relational, object-oriented, or NoSQL. Assess the complexity of your data model. Ensure that the chosen database supports the required data structures and relationships.
+
 - **Evaluate the capabilities**. Consider factors such as read/write patterns, query complexity, latency requirements, and scalability needs. Evaluate the performance capabilities of different database systems accordingly. Some databases excel in read-heavy workloads, while others are optimized for write-intensive or analytical workloads.
+
 - **Assess the load**. Consider factors such as data volume, transaction rates, read/write ratios, and expected growth. Choose a database that can handle the anticipated workload to ensure smooth operation and prevent performance bottlenecks as your workload is scaled. Consider the scalability requirements of your workload. These requirements include anticipated data growth, concurrent user access, and the need for horizontal or vertical scaling. Evaluate the scalability options and availability features that different database systems provide.
 
 ### Evaluate cache requirements
