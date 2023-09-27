@@ -62,7 +62,7 @@
         - name: Checklist
           href: security/checklist.md
         - name: Tradeoffs
-          href: security/security-tradeoffs.md
+          href: security/tradeoffs.md
         - name: Recommendations    
           items:
             - name: Security patterns
@@ -75,6 +75,8 @@
               href: security/identity-access.md
             - name: Networking
               href: security/networking.md
+            - name: Security development lifecycle
+              href: security/secure-development-lifecycle.md
             - name: Segmentation
               href: security/segmentation.md
             - name: Testing and validation
@@ -113,6 +115,8 @@
               href: cost-optimization/optimize-flow-costs.md
             - name: Optimize data costs
               href: cost-optimization/optimize-data-costs.md
+            - name: Optimize code
+              href: cost-optimization/optimize-code.md
       - name: Operational Excellence
         items: 
         - name: Quick links
@@ -175,7 +179,7 @@
               href: performance-efficiency/respond-live-performance-issues.md
             - name: Continuous performance optimization
               href: performance-efficiency/continuous-performance-optimize.md
-            
+
     - name: Workloads
       items:
       - name: Overview
@@ -411,7 +415,9 @@
               - name: Data management
                 href: resiliency/data-management.md
               - name: Application resiliency
-                href: /azure/architecture/reliability/architect?toc=/azure/well-architected/toc.json&bc=/azure/well-architected/breadcrumb/toc.json
+                href: /azure/architecture/reliability/architect?toc=/azure/architecture/framework/toc.json&bc=/azure/architecture/framework/breadcrumb/toc.json
+              - name: Regions and availability zones
+                href: resiliency/regions-availability-zones.md
               - name: Business metrics
                 href: resiliency/business-metrics.md
               - name: Best practices
@@ -749,6 +755,32 @@
             href: scalability/old-tradeoffs.md
       - name: Workloads
         items:
+          - name: Azure VMware Solution
+            items:
+              - name: Quick links
+                href: azure-vmware/index.yml
+              - name: Get started
+                href: azure-vmware/overview.md
+              - name: Design principles
+                href: azure-vmware/design-principles.md
+              - name: Design areas
+                items:
+                - name: Infrastructure
+                  href: azure-vmware/infrastructure.md
+                - name: Applications
+                  href: azure-vmware/application-platform.md
+                - name: Networking
+                  href: azure-vmware/networking.md
+                - name: Monitoring
+                  href: azure-vmware/monitoring.md
+                - name: Security
+                  href: azure-vmware/security.md
+                - name: Operations
+                  href: azure-vmware/operations.md
+              - name: Azure landing zone integration
+                href: azure-vmware/landing-zone-integration.md
+              - name: Assessment
+                href: azure-vmware/assessment.md
           - name: Mission-critical
             items:
               - name: Quick links

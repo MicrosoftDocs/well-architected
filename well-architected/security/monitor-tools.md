@@ -29,7 +29,7 @@ Azure provides several monitoring tools that observe the operations and detect a
 |[**Azure DDoS Protection**](/azure/virtual-network/ddos-protection-overview)| Defend against distributed denial of service (DDoS) attacks.|
 |[**Azure Rights Management (RMS)**](/azure/information-protection/what-is-azure-rms)| Protect files and emails across multiple devices.|
 |[**Microsoft Purview Information Protection**](/information-protection/develop/overview)| Secure email, documents, and sensitive data that you share outside your company.|
-|[**Azure Governance Visualizer**](https://github.com/microsoft/CloudAdoptionframework/tree/master/govern/AzureGovernanceVisualizer)|Gain granular insight into policies, Azure role-based access control (Azure RBAC), Azure Blueprints, subscriptions, and more.|
+|[**Azure Governance Visualizer**](https://aka.ms/alz/azgovviz)|Gain granular insight into policies, Azure role-based access control (Azure RBAC), Azure Blueprints, subscriptions, and more.|
 |[**PSRule for Azure**](https://aka.ms/ps-rule-azure)| Scans Azure Infrastructure as Code (IaC) artifacts for issues across Azure Well-Architected pillars.|
 
 ## Microsoft Defender for Cloud
@@ -42,7 +42,7 @@ Beyond just observability, Defender for Cloud offers an advanced mode through it
 
 Your organization might run workloads on multiple cloud platforms, and, or across cloud and on-premises, or managed by various teams within the organization. Having a centralized view of all data is recommended. To get that view you need security information event management (SIEM) and security orchestration automated response (SOAR) solutions. These solutions connect to all security sources, monitor them, and analyze the correlated data.
 
-Microsoft Sentinel and is a native control that combines SIEM and SOAR capabilities. It analyzes events and logs from various connected sources. Based on the data sources and their alerts, Sentinel creates incidents, performs threat analysis for early detection. Through intelligent analytics and queries, you can be proactive with hunting activities. In case of incidents, you can automate workflows. Also, with workbook templates you can quickly gain insights through visualization.
+Microsoft Sentinel is a native offering that combines SIEM and SOAR capabilities. It analyzes events and logs from various connected sources. Based on the data sources and their alerts, Sentinel creates incidents, performs threat analysis for early detection. Through intelligent analytics and queries, you can be proactive with hunting activities. In case of incidents, you can automate workflows. Also, with workbook templates you can quickly gain insights through visualization.
 
 ## Azure DDoS Protection
 
