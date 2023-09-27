@@ -136,3 +136,10 @@ Reliability scaling guide (re05-scaling)
 Reliability testing guide (re07-testing)
 
 Reliability self-preservation guide (re06-self-preservation)
+
+## Next steps
+
+We recommend that you review the Operational Excellence checklist to explore other concepts. 
+
+> [!div class="nextstepaction"] 
+> [Operational Excellence checklist](checklist.md) 
