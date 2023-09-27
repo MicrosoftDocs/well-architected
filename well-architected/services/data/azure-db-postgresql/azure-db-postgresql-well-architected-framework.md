@@ -199,3 +199,8 @@ Consider more resources related to Azure Database for PostgreSQL.
 ### Cloud Adoption Framework guidance
 
 - [Batch Data application with Azure Database for PostgreSQL](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/data-landing-zone-data-products#batch-data-application)
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Azure pricing calculator to estimate and manage your costs effectively](https://azure.microsoft.com/pricing/calculator/)

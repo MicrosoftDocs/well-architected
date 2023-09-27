@@ -159,6 +159,8 @@ landingContent:
             url: /azure/advisor/azure-advisor-score
           - text: Azure Kubernetes Service (AKS)
             url: /azure/aks/availability-zones
+          - text: Azure Virtual Machines 
+            url: /azure/virtual-machines/reliability-virtual-machines
           - text: Azure SQL Database
             url: /azure/azure-sql/database/high-availability-sla
           - text: Azure API Management
