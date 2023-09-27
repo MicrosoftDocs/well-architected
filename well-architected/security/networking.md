@@ -288,27 +288,32 @@ Scope the rules as much as possible. In the following example, the rule is set t
 
 To summarize:
 
-- Be precise. Only allow what your application needs to function. Deny everything else. This will minimize network line of sight to just those network flows that are necessary to support the operation of the workload. Supporting more network flows than necessary leads to unnecessary attack vectors and extends the surface area.
+- Be precise. Only allow the traffic that your application needs to function. Deny everything else. This approach limits the network line of sight to network flows that are necessary to support the operation of the workload. Supporting more network flows than necessary leads to unnecessary attack vectors and extends the surface area.
 
-    This doesn't imply that the allowed flows are beyond the scope of an attack*.* Because network security groups work at layer 3 and 4 on the OSI stack, they only contain shape and direction information. For example, if your workload needed DNS traffic to the internet, that would be an network security group of Internet:53:UDP, an attacker might be able to exfiltrate data through UDP on port 53 to some other service.
+  Restricting traffic doesn't imply that allowed flows are beyond the scope of an attack. Because network security groups work at layers 3 and 4 on the Open Systems Interconnection (OSI) stack, they only contain shape and direction information. For example, if your workload needs to allow DNS traffic to the internet, you would use a network security group of Internet:53:UDP. In this case, an attacker might be able to exfiltrate data through UDP on port 53 to some other service.
 
-- Network security groups might differ slightly from one another. It's easy to skip the intent of the differences. It's always safer to create more network security groups to have granular filtering. At least have one network security group.
+- Understand that network security groups can differ slightly from one another. It's easy to overlook the intent of the differences. To have granular filtering, it's safer to create extra network security groups. Have at least one network security group.
 
-    - Adding an network security group unlocks many diagnostics tools: Flow Logs and Network Traffic Analytics.
+  - Adding a network security group unlocks many diagnostics tools, such as flow logs and network traffic analytics.
 
-    - Use Azure Policy to enforce subnets that don't have network security groups.
+  - Use Azure Policy to help control traffic in subnets that don't have network security groups.
 
--   If a subnet supports network security groups, add one. Even if it's minimally meaningful.
+- If a subnet supports network security groups, add a group, even if it's minimally impactful.
 
 #### Azure service firewalls
 
-Most Azure services offer service-level firewall. This feature inspects ingress traffic to the service by the specified CIDR ranges. There are benefits. They provide a basic level of security. There's a tolerable performance impact and are offered without additional costs for most services. Service firewalls emit logs well through Azure diagnostics, which can be useful to analyze access patterns.
+Most Azure services offer a service-level firewall. This feature inspects ingress traffic to the service from specified classless inter-domain routing (CIDR) ranges. There are benefits to these firewalls:
 
-However, there are security concerns and there are limitations in providing parameters. For example, if you're applying to Microsoft-hosted build agents, you have to open the IP range for all Microsoft hosted build agents, regardless of whether it\'s your build agent, another tenant, or an adversary trying to abuse your service.
+- They provide a basic level of security.
+- There's a tolerable performance impact.
+- Most services offer these firewalls at no additional cost.
+- The firewalls emit logs through Azure diagnostics, which can be useful for analyzing access patterns.
 
-If you do have access patterns to the service, which can be configured as service firewall rulesets, you should enable it. You can enforce enablement through Azure policy. Make sure you don't enable trusted Azure services option if it isn't enabled by default. Doing so will bring in all dependent services in scope of the rules.
+But there are also security concerns associated with these firewalls, and there are limitations to providing parameters. For example, if you use Microsoft-hosted build agents, you have to open the IP range for all Microsoft-hosted build agents. The range is then open to your build agent, other tenants, and adversaries who might abuse your service.
 
-For more information, check product documentation for Azure services.
+If you have access patterns to the service, which can be configured as service firewall rule sets, you should enable the service. You can use Azure Policy to enable the service. Make sure you don't enable the trusted Azure services option if it isn't enabled by default. Doing so brings in all dependent services that are in the scope of the rules.
+
+For more information, see the product documentation for individual Azure services.
 
 #### Private endpoints
 
