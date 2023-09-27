@@ -1,5 +1,5 @@
 ---
-title: Code and infrastructure optimization recommendations
+title: Recommendations for optimizing code and infrastructure
 description: Learn how to optimize your code and infrastructure by using components only for their core purpose and only when necessary.  
 author: stephen-sumner
 ms.author: ssumner
@@ -46,7 +46,7 @@ To optimize code logic to improve performance efficiency, analyze and modify cod
 
 **Optimize tools**. Use native SDKs or performance-optimized libraries. Native SDKs are designed to interact with the services and resources on a platform or within a framework. For example, cloud-native SDKs work better with cloud service data planes than with custom API access. SDKs excel at handling network requests and optimizing interactions. Performance-optimized libraries, such as Math.NET, contain performance-optimized functions. When you apply the functions appropriately, you can improve your workload's performance.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: *Tradeoff*: SDKs provide convenience and eliminate the complexities of interacting with APIs. But SDKs might limit your control and customization options for custom code.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: SDKs provide convenience and eliminate the complexities of interacting with APIs. But SDKs might limit your control and customization options for custom code.
 
 #### Optimize memory management
 
@@ -99,7 +99,7 @@ It can be expensive to establish a connection to a database. You have to create 
 
 **Test the connection pool**. Each database and application platform has slightly different requirements for setting up and using a pool. Test your connection pool to ensure that it's properly established and works efficiently under load.
 
-  > :::image type="icon" source="../_images/risk.svg"::: *Risk*: Connection pooling can create [pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation) and degrade performance.
+  > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Connection pooling can create [pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation) and degrade performance.
 
 #### Optimize background jobs
 
@@ -122,7 +122,7 @@ To optimize infrastructure performance, tune the performance of hardware and net
 
 - *Network protocols*: Upgrade to modern protocols like HTTP/2, which enable multiple requests to be sent over a single connection. Modern protocols reduce the overhead of establishing new connections.
 
-    > :::image type="icon" source="../_images/trade-off.svg":::*Tradeoff*: Modern protocols might exclude older clients.
+    > :::image type="icon" source="../_images/trade-off.svg":::**Tradeoff**: Modern protocols might exclude older clients.
 
 - *Network chattiness*: Batch network requests together to reduce the number of requests. Instead of making multiple small requests, combine them into larger requests to reduce network overhead.
 - *Database queries*: Ensure that database queries retrieve only the necessary information. Avoid retrieving large amounts of unnecessary data, which can lead to increased network traffic and slow performance.
@@ -131,7 +131,7 @@ To optimize infrastructure performance, tune the performance of hardware and net
 - *Data compression*: Compress and bundle [HTTP content](/iis/configuration/system.webserver/httpcompression) and [file data](/windows/win32/fileio/file-compression-and-decompression) to allow fast transmission between clients and servers. Compression shrinks the data that a page or API returns and sends back to the browser or client app. Compression optimizes network traffic, which can accelerate application communication.
 
     > :::image type="icon" source="../_images/trade-off.svg":::
-*Tradeoff*: Compression adds server-side and client-side processing. The application must compress, send, and decompress data. Multicast communication, or communication to multiple recipients, can create decompression overhead. You need to test and measure the performance variations before and after implementing data compression to determine if it's a good fit for your workload. For more information, see [Response compression in ASP.NET Core](/aspnet/core/performance/response-compression).
+**Tradeoff**: Compression adds server-side and client-side processing. The application must compress, send, and decompress data. Multicast communication, or communication to multiple recipients, can create decompression overhead. You need to test and measure the performance variations before and after implementing data compression to determine if it's a good fit for your workload. For more information, see [Response compression in ASP.NET Core](/aspnet/core/performance/response-compression).
 
 ## Azure facilitation
 
@@ -161,6 +161,7 @@ To support asynchronous operations, Azure Marketplace offers third-party queues 
 - [Azure Batch](/azure/batch/batch-technical-overview)
 - [Azure Policy](/azure/governance/policy/overview)
 - [Azure Resource Manager templates](/azure/templates)
+- [Azure SDKs](https://azure.microsoft.com/downloads)
 - [Background jobs](/azure/architecture/best-practices/background-jobs)
 - [Background jobs scaling and performance considerations](/azure/architecture/best-practices/background-jobs#scaling-and-performance-considerations)
 - [Compress file data](/windows/win32/fileio/file-compression-and-decompression)
@@ -174,10 +175,6 @@ To support asynchronous operations, Azure Marketplace offers third-party queues 
 - [Response compression in ASP.NET Core](/aspnet/core/performance/response-compression)
 - [Storage queues and Service Bus queues](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)
 - [Task-Based Asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap)
-
-## Community links
-
-- [Azure SDKs](https://azure.microsoft.com/downloads)
 
 ## Next steps
 
