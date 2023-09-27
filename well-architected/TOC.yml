@@ -135,16 +135,18 @@
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
-            - name: Automate tasks
+            - name: Automating tasks
               href: operational-excellence/automate-tasks.md
-            - name: Enable automation
+            - name: Emergency response
+              href: operational-excellence/emergency-response.md
+            - name: Enabling automation
               href: operational-excellence/enable-automation.md
             - name: Observability framework development
               href: operational-excellence/observability.md
-            - name: Respond to emergencies
-              href: operational-excellence/emergency-response.md
             - name: Supply chain for workload development
               href: operational-excellence/workload-supply-chain.md
+            - name: Using infrastructure as code
+              href: operational-excellence/infrastructure-as-code-design.md
       - name: Performance Efficiency
         items: 
         - name: Quick links
