@@ -75,8 +75,8 @@
               href: security/encryption.md
             - name: Identity and access
               href: security/identity-access.md
-            - name: Incidence response 
-              href: security/incidence-response.md
+            - name: Incident response 
+              href: security/incident-response.md
             - name: Networking
               href: security/networking.md
             - name: Security development lifecycle

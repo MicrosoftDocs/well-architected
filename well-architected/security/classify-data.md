@@ -24,9 +24,9 @@ Most workloads store various types of data. Not all are equally sensitive. Data 
 
 ## Key design strategies
 
-Classification is a crucial exercise and often a forcing function for building a system of records. It also **helps you in right-sizing the security assurances and helps the triage team expediate discovery** during incident response. A prerequisite to the design process is having a **clear understanding whether data should be treated as confidential, restricted, public, or other sensitivity considerations**. It’s also essential to determine the locations where all that data is stored, because it might be distributed across multiple environments. Data discovery is necessary to locate all the data. Without that knowledge, most designs adopt a middle ground approach, which may or may not serve the security requirements. Data might be overprotected resulting in cost and performance inefficiencies. Worse cases, it might not be protected enough, which will only add to the attack surface. 
+Classification is a crucial exercise and often a forcing function for building a system of records. It also **helps you in right-sizing the security assurances and helps the triage team expediate discovery** during incident response. A prerequisite to the design process is having a **clear understanding whether data should be treated as confidential, restricted, public, or other sensitivity considerations**. It's also essential to determine the locations where all that data is stored, because it might be distributed across multiple environments. Data discovery is necessary to locate all the data. Without that knowledge, most designs adopt a middle ground approach, which may or may not serve the security requirements. Data might be overprotected resulting in cost and performance inefficiencies. Worse cases, it might not be protected enough, which will only add to the attack surface. 
 
-Data classification is a cumbersome exercise and there are tools available that can discover data assets and suggest classification. However, don’t just rely on tooling. **Have a process in place** where team members diligently do the exercise and **use tooling to automate** when practical. 
+Data classification is a cumbersome exercise and there are tools available that can discover data assets and suggest classification. However, don't just rely on tooling. **Have a process in place** where team members diligently do the exercise and **use tooling to automate** when practical. 
 
 In addition to these best practices, refer to [Create a well-designed data classification framework - Microsoft Service Assurance](/compliance/assurance/assurance-create-data-classification-framework).
 
@@ -34,7 +34,7 @@ In addition to these best practices, refer to [Create a well-designed data class
 
 _Taxonomy_ is a hierarchical representation of classification that has named entities to indicate categorization criteria.
 
-In general, there isn’t a universal standard for classification or defining taxonomy. It’s purely driven by organization’s motivation for protecting data. It may be compliance requirements, promise to the workload users, and other criteria that are usually driven by business needs.
+In general, there isn't a universal standard for classification or defining taxonomy. It's purely driven by organization's motivation for protecting data. It may be compliance requirements, promise to the workload users, and other criteria that are usually driven by business needs.
 
 Here are some example classification labels for sensitivity levels, information type, and scope of compliance.
 
@@ -42,7 +42,7 @@ Here are some example classification labels for sensitivity levels, information 
 |---|---|---|
 | Public <br> General <br> Confidential <br> Highly Confidential <br> Secret <br> Top Secret <br> Sensitive <br> Business Confidential | Financial <br> Credit Card <br> Name <br> Contact Info <br> Credentials <br> Banking <br> Networking <br> SSN <br> Health fields <br> Date of Birth <br> Intellectual property <br> Personally Identifiable Information (PII) | GDPR <br> HIPAA <br> PCI <br> CCPA <br> SOX <br> RTB |
 
-As a workload owner, rely on your organization to provide you with a well-defined taxonomy. All workload roles must have a shared understanding of the structure, nomenclature, and definition of the sensitivity levels. Don’t define your own classification system.  
+As a workload owner, rely on your organization to provide you with a well-defined taxonomy. All workload roles must have a shared understanding of the structure, nomenclature, and definition of the sensitivity levels. Don't define your own classification system.  
 
 ### Define the classification scope
 
@@ -54,15 +54,15 @@ Clearly identify which data assets and components are in-scope and out-of-scope 
 
 Start with these simple questions and expand as necessary based on the complexity of the system:
 
-- What’s the origin of data and information type.
-- What’s the expected restriction based on access. For example, is it public information data, regulatory, and other expected use cases.  
+- What's the origin of data and information type.
+- What's the expected restriction based on access. For example, is it public information data, regulatory, and other expected use cases.  
 - What is the data footprint, where all is data stored, how long should the data be retained.
 - Which components of the architecture interact with the data. 
 - How does the data move through the system.
 - What information is expected in the audit reports.
 - Do you need to classify preproduction data.
 
-If you have an existing system, take inventory of all data stores and components that are in scope. On the other hand, if you are designing a new system, create a data flow dimension of the architecture and have an initial categorization per taxonomy definitions.  Classification applies to the system as a whole. It’s distinctly different from classification of configuration secrets and non-secrets.
+If you have an existing system, take inventory of all data stores and components that are in scope. On the other hand, if you are designing a new system, create a data flow dimension of the architecture and have an initial categorization per taxonomy definitions.  Classification applies to the system as a whole. It's distinctly different from classification of configuration secrets and non-secrets.
 
 Be granular and explicit when defining the scope. Suppose your data store is a tabular system. You want to classify sensitivity at the table level or even the columns within the table. Also extend classification to non-data store components that might be related or have a part in processing the data. For example, have you classified the backup of your highly sensitive data store? If you are caching user sensitive data, is the caching data store in scope? If you use analytical data stores, how is the aggregated data classified.
 
@@ -124,3 +124,9 @@ Cloud Adoption Framework provides guidance for central teams about how to classi
 
 [Create a well-designed data classification framework - Microsoft Service Assurance](/compliance/assurance/assurance-create-data-classification-framework)
 
+## Next steps
+
+We recommend that you review the Security checklist to explore other concepts.
+
+> [!div class="nextstepaction"]
+> [Security checklist](checklist.md)
