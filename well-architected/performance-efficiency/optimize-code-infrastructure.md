@@ -69,9 +69,9 @@ For more information, see [Reduce memory allocations](/dotnet/csharp/advanced-to
 
 Use concurrency and parallelism to run multiple tasks. These techniques increase the overall throughput and the number tasks that a workload can process. When you run tasks concurrently or in parallel, it reduces the runtime of the application, which decreases latency and increases response times. Concurrency and parallelism enable efficient utilization of computing resources, such as CPU cores or distributed systems. Concurrency and parallelism effectively distribute the workload among the computing resources.
 
-**Use parallelism**. Parallelism is the ability of a system to simultaneously trigger multiple tasks or processes on multiple computing resources. Parallelism divides a workload into smaller tasks that are run in parallel. You can achieve parallelism by using techniques like multi-processing, in which multiple processes run in parallel, or by using distributed computing, in which tasks are distributed across multiple machines. Distribute tasks across multi-core processors to optimize workload management. Optimize code to take advantage of the CPU architecture, threading models, and multi-core processors. When you run code in parallel, performance improves because the workload is distributed across multiple cores.
+**Use parallelism**. Parallelism is the ability of a system to simultaneously trigger multiple tasks or processes on multiple computing resources. Parallelism divides a workload into smaller tasks that are run in parallel. You can achieve parallelism by using techniques like multiprocessing, in which multiple processes run in parallel, or by using distributed computing, in which tasks are distributed across multiple machines. Distribute tasks across multicore processors to optimize workload management. Optimize code to take advantage of the CPU architecture, threading models, and multicore processors. When you run code in parallel, performance improves because the workload is distributed across multiple cores.
 
-**Use concurrency**. Concurrency is the ability of a system to run multiple tasks or processes. Concurrency enables different parts of a program to make progress independently, which can improve overall performance. You can implement concurrency by using techniques like multi-threading, in which multiple threads run concurrently within a single process. You can also use asynchronous programming, in which tasks are triggered concurrently without blocking the main thread.
+**Use concurrency**. Concurrency is the ability of a system to run multiple tasks or processes. Concurrency enables different parts of a program to make progress independently, which can improve overall performance. You can implement concurrency by using techniques like multithreading, in which multiple threads run concurrently within a single process. You can also use asynchronous programming, in which tasks are triggered concurrently without blocking the main thread.
 
 - *Asynchronous programming*: Asynchronous programming is an approach that's used to trigger tasks without blocking the main thread. Asynchronous programming enables a program to trigger tasks while waiting for long-running operations to finish.
 
@@ -79,11 +79,11 @@ Use concurrency and parallelism to run multiple tasks. These techniques increase
 
   There are many techniques and patterns, depending on the programming language and platform. One common approach is to use asynchronous keywords and constructs, such as `async` and `await`, in languages like C#. With these keywords, you can define asynchronous methods. For HTTP traffic, consider using the [Asynchronous Request-Reply pattern](/azure/architecture/patterns/async-request-reply).
 
-    Many frameworks and libraries provide built-in support for asynchronous programming. For example, in the .NET platform, you can implement asynchronous operations by using patterns like [Task-Based Asynchronous Pattern](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) and [Event-Based Asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-eap).
+    Many frameworks and libraries provide built-in support for asynchronous programming. For example, in the .NET platform, you can implement asynchronous operations by using patterns like [Task-Based Asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) and [Event-Based Asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-eap).
 
     The specific implementation of asynchronous programming might vary depending on the programming language, platform, and requirements of the application.
 
-- *Queues*: A queue is a storage buffer that's located between a requesting component, or the producer, and the processing component, or the consumer, of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The producer places tasks in a queue. The queue stores the tasks until the consumer has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. For more information, see [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling) and [Storage queues and Service Bus queues compared and contrasted](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+- *Queues*: A queue is a storage buffer that's located between a requesting component, or the producer, and the processing component, or the consumer, of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The producer places tasks in a queue. The queue stores the tasks until the consumer has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. For more information, see [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling) and [Storage queues and Service Bus queues](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
 #### Use retry mechanisms
 
@@ -103,13 +103,13 @@ It can be expensive to establish a connection to a database. You have to create 
 
 #### Optimize background jobs
 
-Many applications require background tasks that run independently of the UI. The application can start the job and continue to process interactive requests from users. Examples of background jobs include batch jobs, intensive-processing tasks, and long-running processes, such as workflows. Background tasks shouldn't block the application or cause inconsistencies due to delayed operation when the system is under load. To can improve performance, you can scale compute instances that host background tasks. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs) and [Background jobs scaling and performance considerations](/azure/architecture/best-practices/background-jobs#scaling-and-performance-considerations).
+Many applications require background tasks that run independently of the UI. The application can start the job and continue to process interactive requests from users. Examples of background jobs include batch jobs, processor-intensive tasks, and long-running processes, such as workflows. Background tasks shouldn't block the application or cause inconsistencies due to delayed operation when the system is under load. To can improve performance, you can scale compute instances that host background tasks. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs) and [Scaling and performance considerations](/azure/architecture/best-practices/background-jobs#scaling-and-performance-considerations).
 
 ### Optimize infrastructure performance
 
 To optimize infrastructure performance, tune the performance of hardware and network components to ensure optimal operation and resource utilization.
 
-**Add usage limits**. You can implement usage limits on some workload components. For example, to remove unstable pods, you can define [pod CPU and memory limits](/azure/aks/developer-best-practices-resource-management) in Azure Kubernetes Service (AKS). To optimize performance, you can define memory limits in [Java virtual machines (VMs)](/azure/spring-apps/concepts-for-java-memory-management).
+**Add usage limits**. You can implement usage limits on some workload components. For example, to remove unstable pods, you can [define pod CPU and memory limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) in Azure Kubernetes Service (AKS). To optimize performance, you can [define memory limits in Java virtual machines (VMs)](/azure/spring-apps/concepts-for-java-memory-management).
 
 **Streamline infrastructure**. Simplify your workload to reduce the potential for interaction, dependency, and compatibility issues. When you simplify your workload, you optimize resource utilization of memory, processing power, and storage.
 
@@ -120,61 +120,64 @@ To optimize infrastructure performance, tune the performance of hardware and net
 
 **Optimize the network**. To optimize a workload network for performance, configure and fine-tune the network infrastructure. Ensure that the workload can operate at its highest level of efficiency.
 
-- *Network protocols*. Upgrade to modern protocols like HTTP/2, which enables multiple requests to be sent over a single connection. Modern protocols reduce the overhead of establishing new connections.
+- *Network protocols*: Upgrade to modern protocols like HTTP/2, which enable multiple requests to be sent over a single connection. Modern protocols reduce the overhead of establishing new connections.
 
     > :::image type="icon" source="../_images/trade-off.svg":::*Tradeoff*: Modern protocols might exclude older clients.
 
-- *Network chattiness*. Batch network requests together to reduce the number of requests. Instead of making multiple small requests, combine them into larger requests to reduce network overhead.
-- *Database queries*. Ensure that database queries retrieve only the necessary information. Avoid retrieving large amounts of unnecessary data, which can lead to increased network traffic and slow performance.
-- *Static data*. Utilize a content delivery network (CDN) to cache frequently accessed static content that's close to the users. When you use caching, data doesn't have to travel over long distances. Caching improves response times and reduces network traffic.
-- *Log collection*. Collect and retain only the log data that's necessary to support your requirements. Configure data collection rules and design considerations for optimizing your Log Analytics costs.
-- *Data compression*. Compress and bundle [HTTP content](/iis/configuration/system.webserver/httpcompression) and [file data](/windows/win32/fileio/file-compression-and-decompression) to allow fast transmission between clients and servers. Compression shrinks the data that's returned from a page or API back to the browser or client app. Compression optimizes network traffic, which can accelerate application communication.
+- *Network chattiness*: Batch network requests together to reduce the number of requests. Instead of making multiple small requests, combine them into larger requests to reduce network overhead.
+- *Database queries*: Ensure that database queries retrieve only the necessary information. Avoid retrieving large amounts of unnecessary data, which can lead to increased network traffic and slow performance.
+- *Static data*: Utilize a content delivery network (CDN) to cache frequently accessed static content that's close to the users. When you cache data, it doesn't have to travel over long distances. Caching improves response times and reduces network traffic.
+- *Log collection*: Collect and retain only the log data that's necessary to support your requirements. Configure data collection rules and implement design considerations to optimize your Log Analytics costs.
+- *Data compression*: Compress and bundle [HTTP content](/iis/configuration/system.webserver/httpcompression) and [file data](/windows/win32/fileio/file-compression-and-decompression) to allow fast transmission between clients and servers. Compression shrinks the data that a page or API returns and sends back to the browser or client app. Compression optimizes network traffic, which can accelerate application communication.
 
     > :::image type="icon" source="../_images/trade-off.svg":::
-*Tradeoff*: Compression adds extra server-side and client-side processing. The application must compress, send, and decompress data. Multi-cast communication, or communication to multiple recipients, can create more decompression overhead. You need to test and measure the performance variations before and after implementing data compression to determine if it's a good fit for your workload. For more information, see [Response compression in ASP.NET Core](/aspnet/core/performance/response-compression).
+*Tradeoff*: Compression adds server-side and client-side processing. The application must compress, send, and decompress data. Multicast communication, or communication to multiple recipients, can create decompression overhead. You need to test and measure the performance variations before and after implementing data compression to determine if it's a good fit for your workload. For more information, see [Response compression in ASP.NET Core](/aspnet/core/performance/response-compression).
 
 ## Azure facilitation
 
-**Optimization tools**: PerfInsights is a tool that provides insights into network performance and provides recommendations for optimizing Azure services and resources.
+**Optimization tools**. PerfInsights is a tool that provides insights into network performance and provides recommendations for optimizing Azure services and resources.
 
-**Native SDKs and performance-optimized libraries**: Azure provides [SDKs](https://azure.microsoft.com/downloads) and libraries for various programming languages to interact with Azure services. The SDKs are designed to simplify interactions between applications and Azure resources. These SDKs provide optimal interaction with Azure services, which reduces latency and enhances efficiency.
+**Native SDKs and performance-optimized libraries**. Azure offers [SDKs](https://azure.microsoft.com/downloads) and libraries for various programming languages to interact with Azure services. Use SDKs to simplify interactions between applications and Azure resources. SDKs provide optimal interaction with Azure services, which reduces latency and enhances efficiency.
 
-**Memory management**: [Application Insights smart detection](/azure/azure-monitor/alerts/proactive-diagnostics) is used to analyze memory consumption and helps identify and address memory leaks.
+**Memory management**. Use [the smart detection feature of Application Insights](/azure/azure-monitor/alerts/proactive-diagnostics) to analyze memory consumption and help to identify and address memory leaks.
 
-**Concurrency and parallelism**: [AKS](/azure/aks) supports deploying containerized applications, which enhances parallel processing. [Azure Batch](/azure/batch/batch-technical-overview) is a cloud-based job scheduling service that you can use to enable parallel and high-performance computing without the need for infrastructure setup.
+**Concurrency and parallelism**. [AKS](/azure/aks) supports deploying containerized applications, which improves parallel processing. [Azure Batch](/azure/batch/batch-technical-overview) is a cloud-based job scheduling service that you can use to enable parallel and high-performance computing without the need for infrastructure setup.
 
-**Infrastructure consistency**: Use [Azure Resource Manager (ARM) templates](/azure/templates) to define and deploy infrastructure by using code. Use these templates to implement efficient, repeatable, and consistent resource deployments. [Azure Policy](/azure/governance/policy/overview) provides governance capabilities to ensure that resource deployments adhere to organizational best practices and standards.
+**Infrastructure consistency**. Implement [Azure Resource Manager templates](/azure/templates) to define and deploy infrastructure by using code. Use these templates to implement efficient, repeatable, and consistent resource deployments. [Azure Policy](/azure/governance/policy/overview) provides governance capabilities to ensure that resource deployments adhere to organizational best practices and standards.
 
-**Monitor and analyze**: Log Analytics provides insights into code and infrastructure performance, which helps identify performance bottlenecks.
+**Monitor and analyze**. Log Analytics provides insights into code and infrastructure performance, which helps identify performance bottlenecks.
 Azure Monitor offers full-stack monitoring, advanced analytics, and intelligent alerting to facilitate the identification and resolution of performance issues.
 
-**Asynchronous programming**: Use scalable queuing services, like Azure Queue Storage and Azure Service Bus, which facilitate asynchronous programming. You can queue tasks and independently process them.
+**Asynchronous programming**. Use scalable queuing services, like Azure Queue Storage and Azure Service Bus, to facilitate asynchronous programming. You can queue tasks and independently process them.
 
-Azure Marketplace offers third-party queues and tools that you can integrate with Azure services to support asynchronous operations.
+To support asynchronous operations, Azure Marketplace offers third-party queues and tools that you can integrate with Azure services.
 
 ## Related links
 
-- [Azure Batch](/azure/batch/batch-technical-overview)
 - [AKS](/azure/aks)
-- [Application Insights smart detection](/azure/azure-monitor/alerts/proactive-diagnostics)
+- [Application Insights smart detection feature](/azure/azure-monitor/alerts/proactive-diagnostics)
 - [Asynchronous Request-Reply pattern](/azure/architecture/patterns/async-request-reply)
 - [Avoid memory allocations](/dotnet/csharp/advanced-topics/performance)
+- [Azure Batch](/azure/batch/batch-technical-overview)
 - [Azure Policy](/azure/governance/policy/overview)
-- [Azure Resource Manager (ARM) templates](/azure/templates)
+- [Azure Resource Manager templates](/azure/templates)
 - [Background jobs](/azure/architecture/best-practices/background-jobs)
 - [Background jobs scaling and performance considerations](/azure/architecture/best-practices/background-jobs#scaling-and-performance-considerations)
+- [Compress file data](/windows/win32/fileio/file-compression-and-decompression)
+- [Compress HTTP content](/iis/configuration/system.webserver/httpcompression)
+- [Define pod CPU and memory limits](/azure/aks/developer-best-practices-resource-management)
 - [Event-Based Asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-eap)
-- [File data](/windows/win32/fileio/file-compression-and-decompression)
-- [HTTP content](/iis/configuration/system.webserver/httpcompression)
 - [Java virtual machines (VMs)](/azure/spring-apps/concepts-for-java-memory-management)
-- [Large object heap (LOH)](/dotnet/standard/garbage-collection/large-object-heap)
-- [Pod CPU and memory limits](/azure/aks/developer-best-practices-resource-management)
-- [pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation)
+- [Large object heap](/dotnet/standard/garbage-collection/large-object-heap)
+- [Pool fragmentation](/dotnet/framework/data/adonet/sql-server-connection-pooling#pool-fragmentation)
 - [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling)
 - [Response compression in ASP.NET Core](/aspnet/core/performance/response-compression)
-- [SDKs](https://azure.microsoft.com/downloads)
-- [Storage queues and Service Bus queues compared and contrasted](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)
-- [Task-Based Asynchronous Pattern](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap)
+- [Storage queues and Service Bus queues](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)
+- [Task-Based Asynchronous pattern](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap)
+
+## Community links
+
+- [Azure SDKs](https://azure.microsoft.com/downloads)
 
 ## Next steps
 
