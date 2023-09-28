@@ -137,6 +137,8 @@
           href: operational-excellence/principles.md
         - name: Checklist
           href: operational-excellence/checklist.md
+        - name: Safe deployments
+          href: operational-excellence/safe-deployments.md
         - name: Tradeoffs
           href: operational-excellence/tradeoffs.md
         - name: Recommendations
