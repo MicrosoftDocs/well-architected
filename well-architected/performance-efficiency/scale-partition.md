@@ -1,26 +1,28 @@
 ---
 title: Recommendations for scaling and partitioning
-description: Learn best practices for scaling and partitioning.  
+description: Learn best practices for scaling and partitioning to achieve performance efficiency in workloads.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for scaling and partitioning: PE 05
+# Recommendations for scaling and partitioning
+
+**Applies to: PE 05**
 
 This guide describes the recommendations for scaling and partitioning a workload. Scaling and partitioning are important strategies for achieving performance efficiency in workloads. Scaling is the ability to increase or decrease the resources allocated to a workload based on demand. Partitioning involves dividing the workload into smaller, manageable units to distribute data and processing across multiple resources. A workload that doesn't scale or partition might experience poor performance in high demand periods and underutilizes capacity in low demand periods.
 
 **Definitions**
 
-|Terms| Definition|
+|Term| Definition|
 |---|---|
 | Scalability | The ability of a workload to dynamically change its capacity limits to accommodate varying levels of demand.|
 | Autoscale | A feature that automatically adjusts the capacity limits of a service based on predefined configurations, allowing it to scale up or down as needed.|
 | Capacity | The upper limit or maximum capacity of a given service or service feature.|
 | Partitioning | The process of physically dividing data into separate data stores.|
-| Vertical scaling| A scaling approach that adds compute capacity to existing resources. (Scaling from a D4s_v3 to a D8s_v3, for example.)|
-| Horizontal scaling| A scaling approach that adds instances of a given type of resource. (Expanding a web pool from two to four VMs, for example.)|
+| Vertical scaling| A scaling approach that adds compute capacity to existing resources. For example, scaling from a D4s_v3 to a D8s_v3.|
+| Horizontal scaling| A scaling approach that adds instances of a given type of resource. For example, expanding a web pool from two to four VMs.|
 | Scale unit| A group of resources that need to scale proportionately together to maintain balanced performance. |
 | Client affinity (session affinity) | The intentional routing of requests from a single client to a single server instance, ensuring consistent session management.|
 | Data locking| A mechanism used to prevent simultaneous updates to the same piece of data, ensuring data integrity.|
@@ -92,18 +94,18 @@ As you scale a workload, you must design the application to distribute the load.
 
 **Use dynamic service discovery.** Dynamic service discovery is the process of automatically detecting and registering services in a distributed system. It allows clients to discover available services without being tightly coupled to specific instances. Clients shouldn't be able to take a direct dependency on a specific instance in the workload. This approach provides flexibility and scalability to the system. To avoid these dependencies, you should use a proxy to distribute and redistribute client connections. The proxy acts as an intermediary between clients and services, distributing client requests and managing connections. It provides a layer of abstraction that allows services to be added or removed without affecting clients.
 
-**Add retry logic.** Adding retry logic to an application when scaling is important to handle temporary failures and maintain application availability and reliability. When you scale an application, especially in a distributed system, there's a possibility of increased load and potential failures due to various factors such as network issues, resource limitations, or service disruptions. The retry logic allows the application to automatically retry failed operations, such as connecting to a service or making a network request, after a certain period of time. Retry logic helps to mitigate transient failures and gives the system a chance to recover without causing disruptions or affecting user experience. To add retry logic to your application, you can follow these steps:
+**Add retry logic.** Adding retry logic to an application when scaling is important to handle temporary failures and maintain application availability and reliability. When you scale an application, especially in a distributed system, there's a possibility of increased load and potential failures due to various factors such as network issues, resource limitations, or service disruptions. The retry logic allows the application to automatically retry failed operations, such as connecting to a service or making a network request, after a certain period of time. Retry logic helps to mitigate transient failures and gives the system a chance to recover without causing disruptions or affecting user experience. To add retry logic to your application:
 
-- **Identify the operations or services that require retry logic.** These operations or services can include database connections, API calls, or any other external dependencies.
-- **Determine the appropriate retry strategy based on the specific requirements of your application.** The configuration might involve setting the number of retries, the time interval between retries, and any extra conditions for retrying.
-- **Implement the retry logic in your application code.** Wrap the relevant operations or service calls in a retry loop, or, use libraries or frameworks that provide built-in retry functionality.
+- Identify the operations or services that require retry logic. These operations or services can include database connections, API calls, or any other external dependencies.
+- Determine the appropriate retry strategy based on the specific requirements of your application. The configuration might involve setting the number of retries, the time interval between retries, and any extra conditions for retrying.
+- Implement the retry logic in your application code. Wrap the relevant operations or service calls in a retry loop, or, use libraries or frameworks that provide built-in retry functionality.
 
 **Use background tasks.** When an application scales, it means that it can handle an increasing workload or a higher number of concurrent requests. Offloading intensive tasks as background tasks allows the main application to handle user requests without resource-intensive operations overwhelming it. To offload tasks as background tasks, you can follow these steps:
 
-1. *Identify the tasks:* Find the CPU-intensive and I/O-intensive tasks in your application that you can offload. These tasks typically involve heavy computations or interactions with external resources such as databases or network operations.
-1. *Support background tasks:* Design your application to support background tasks. Decouple the intensive tasks from the main application logic and provide a mechanism to start and manage background tasks.
-1. *Implement the background tasks:* Implement background task processing with appropriate technologies or frameworks. Include features provided by your programming language or platform, such as asynchronous programming, threading, or task queues. Contain intensive operations in separate tasks or threads. These tasks can be run concurrently or scheduled to run at specific intervals.
-1. *Distribute background tasks.* If there are many background tasks, or the tasks require substantial time or resources, spread the work across multiple compute units, such as worker roles or background jobs. For one possible solution, see the [Competing consumers pattern](/azure/architecture/patterns/competing-consumers).
+1. Find the CPU-intensive and I/O-intensive tasks in your application that you can offload. These tasks typically involve heavy computations or interactions with external resources such as databases or network operations.
+1. Design your application to support background tasks. Decouple the intensive tasks from the main application logic and provide a mechanism to start and manage background tasks.
+1. Implement background task processing with appropriate technologies or frameworks. Include features provided by your programming language or platform, such as asynchronous programming, threading, or task queues. Contain intensive operations in separate tasks or threads. These tasks can be run concurrently or scheduled to run at specific intervals.
+1. Distribute background tasks if there are many background tasks, or the tasks require substantial time or resources. For one possible solution, see the [Competing consumers pattern](/azure/architecture/patterns/competing-consumers).
 
 **Enable distributed tracing.** Distributed tracing is a technique used to track and monitor requests as they flow through a distributed system. It allows you to trace the path of a request as it travels across multiple services and components, providing valuable insights into the performance and efficiency of your system. Distributed tracing is important for performance efficiency because it helps identify bottlenecks, latency issues, and areas for optimization within a distributed system. You can pinpoint where delays or inefficiencies occur and take appropriate actions to improve performance by visualizing the flow of a request. To enable distributed tracing, consider:
 
@@ -177,25 +179,25 @@ Partitioning is the process of dividing a large dataset or workload into smaller
 
 > ![Risk icon](../_images/risk.svg) **Risk**: Partitioning introduces some potential problems that need to be considered and addressed, including:
 >
-> - **Data skew**: Partitioning can lead to data skew, where certain partitions receive a disproportionate amount of data or workload compared to others. Data skew can result in performance imbalances and increased contention on specific partitions.
-> - **Query performance**: Poorly designed partitioning schemes can negatively affect query performance. If queries need to access data across multiple partitions, it might require extra coordination and communication between partitions, leading to increased latency.
-> - **Data distribution**: Incorrectly partitioning data can result in uneven data distribution. Some partitions might become overloaded with data, while others remain underused.
+> - *Data skew*: Partitioning can lead to data skew, where certain partitions receive a disproportionate amount of data or workload compared to others. Data skew can result in performance imbalances and increased contention on specific partitions.
+> - *Query performance*: Poorly designed partitioning schemes can negatively affect query performance. If queries need to access data across multiple partitions, it might require extra coordination and communication between partitions, leading to increased latency.
+> - *Data distribution*: Incorrectly partitioning data can result in uneven data distribution. Some partitions might become overloaded with data, while others remain underused.
 
 ## Azure facilitation
 
-**Implement scaling**: Azure has the infrastructure capacity to support vertical and horizontal scaling. Azure services have different performance tiers known as stock-keeping units (SKUs). SKUs allow you to scale vertically. Many of Azure's resources support autoscaling or other in-place scale options. Some support advanced metrics or custom input to support fine-tuning scaling behavior. Most scaling implementations in Azure can set limits and support the necessary observability to be alerted to change.
+**Implement scaling:** Azure has the infrastructure capacity to support vertical and horizontal scaling. Azure services have different performance tiers known as stock-keeping units (SKUs). SKUs allow you to scale vertically. Many of Azure's resources support autoscaling or other in-place scale options. Some support advanced metrics or custom input to support fine-tuning scaling behavior. Most scaling implementations in Azure can set limits and support the necessary observability to be alerted to change.
 
 [Azure Monitor](/azure/azure-monitor/overview) allows you to monitor various metrics and conditions in your applications and infrastructure, and trigger automated scaling actions based on predefined rules. For example, in Azure Kubernetes Service (AKS), you can use Azure Monitor to enable horizontal pod autoscaling (HPA) and cluster autoscaling. Using Azure Monitor's monitoring and alerting capabilities, you can effectively facilitate scaling in Azure and ensure that your applications and infrastructure can dynamically adjust to meet demand.
 
-**Build custom autoscaling**: For resources that don't have autoscale, you can use alerts in Azure Monitor. You can set up these alerts to be query-based or metric-based and can perform actions using [Azure Automation](/azure/automation/overview). Azure Automation provides a platform for hosting and running PowerShell and Python code across Azure, the cloud, and on-premises environments. It offers features such as deploying runbooks on demand or on a schedule, execution history and logging, integrated secrets store, and source control integration.
+**Build custom autoscaling:** For resources that don't have autoscale, you can use alerts in Azure Monitor. You can set up these alerts to be query-based or metric-based and can perform actions using [Azure Automation](/azure/automation/overview). Azure Automation provides a platform for hosting and running PowerShell and Python code across Azure, the cloud, and on-premises environments. It offers features such as deploying runbooks on demand or on a schedule, execution history and logging, integrated secrets store, and source control integration.
 
-**Eliminate data locking**: In Azure SQL Database, you can enable [optimized locking](/sql/relational-databases/performance/optimized-locking) to improve performance on databases that require strong consistency.
+**Eliminate data locking:** In Azure SQL Database, you can enable [optimized locking](/sql/relational-databases/performance/optimized-locking) to improve performance on databases that require strong consistency.
 
-**Use background tasks**: Azure offer services and guidance for implementing background jobs. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs).
+**Use background tasks:** Azure offer services and guidance for implementing background jobs. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs).
 
-**Load balancing**: Azure provides load balancers that don't require client affinity. These load balancers include [Azure Front Door](/azure/frontdoor/routing-methods#session-affinity), [Azure Application Gateway](/azure/application-gateway/features#session-affinity), and [Azure Load Balancer](/azure/load-balancer/load-balancer-distribution-mode?tabs=azure-portal).
+**Load balancing:** Azure provides load balancers that don't require client affinity. These load balancers include [Azure Front Door](/azure/frontdoor/routing-methods#session-affinity), [Azure Application Gateway](/azure/application-gateway/features#session-affinity), and [Azure Load Balancer](/azure/load-balancer/load-balancer-distribution-mode?tabs=azure-portal).
 
-**Implement partitioning**: Azure offers various partitioning strategies for different data stores. These strategies help improve performance and scalability by distributing the data across multiple partitions. For more information, see the following links:
+**Implement partitioning:** Azure offers various partitioning strategies for different data stores. These strategies help improve performance and scalability by distributing the data across multiple partitions. For more information, see the following links:
 
 - [Partitioning Azure SQL Databases](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-azure-sql-database)
 - [Partitioning Azure table storage](/azure/architecture/best-practices/data-partitioning-strategies#partitioning-azure-table-storage)
