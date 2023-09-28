@@ -85,7 +85,7 @@ Your emergency SDP protocols should be aligned with your emergency response plan
 
 ## Azure facilitation
 
-- [Azure DevOps Pipelines](/azure/devops/pipelines/process/stages?view=azure-devops) and [GitHub Actions](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) support multi-stage deployments with approval gates, which can help you design your progressive exposure rollout for deployments.
+- [Azure DevOps Pipelines](/azure/devops/pipelines/process/stages) and [GitHub Actions](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) support multi-stage deployments with approval gates, which can help you design your progressive exposure rollout for deployments.
 - Use [Azure App Service staging slots](/azure/app-service/deploy-staging-slots) to easily swap between versions of code. These slots are helpful for testing in staging environments or can be used for blue-green deployments.
 - Store and manage your web app feature flags in [Azure App Configuration](/azure/azure-app-configuration/manage-feature-flags). Using this function gives you a unified management plane to create, modify and deploy features.
 - Deploy workload application in your Virtual Machines using [VM Applications](/azure/virtual-machines/vm-applications-how-to).
@@ -93,8 +93,8 @@ Your emergency SDP protocols should be aligned with your emergency response plan
 - [The Application Health Extension](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension) is deployed inside a Virtual Machine Scale Set instance and reports on application health from inside the scale set instance. The extension probes on a local application endpoint and will update the health status based on TCP/HTTP(S) responses received from the application.
 - [Azure Logic Apps](/azure/logic-apps/manage-logic-apps-with-azure-portal) create a new version of the application whenever an update is made to it. Azure maintains a history of versions and can revert or promote any previous version.
 - Many Azure database services provide point-in-time restore functionality that can help you when you need to roll back.
-  - [Azure SQL Database](/azure/azure-sql/database/recovery-using-backups?view=azuresql)
-  - [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/point-in-time-restore?view=azuresql)
+  - [Azure SQL Database](/azure/azure-sql/database/recovery-using-backups)
+  - [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/point-in-time-restore)
   - [Cosmos DB](/azure/cosmos-db/continuous-backup-restore-introduction)
   - [Azure Database for MySQL](/azure/mysql/flexible-server/concepts-backup-restore)
   - [Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-backup-restore)
