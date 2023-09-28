@@ -1,6 +1,6 @@
 ---
 title: Recommendations for optimizing data performance
-description: Learn best practices for optimizing data performance.  
+description: Learn how to optimize data access, retrieval, storage, and processing operations to enhance the overall performance of your workload.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
@@ -11,25 +11,25 @@ ms.topic: conceptual
 
 **Applies to: PE 08**
 
-This guide describes the recommendations for optimizing workload data performance. Optimizing workload data performance refers to improving the efficiency and performance of data processing and storage within a workload. It involves optimizing data access, retrieval, storage, and processing operations to enhance the overall performance of the workload. Optimizing workload data performance is important for workload performance efficiency because it can have a significant effect on the overall performance of a system. Failure to optimize workload data performance leads to slower response times, increased latency, and degraded performance. It also hinders scalability and limits the ability to handle increasing workloads effectively.
+This guide describes the recommendations for optimizing workload data performance. Optimizing workload data performance refers to improving the efficiency and performance of data processing and storage within a workload. It involves  Optimizing workload data performance is important for workload performance efficiency because it can have a significant effect on the overall performance of a system. Failure to optimize workload data performance leads to slower response times, increased latency, and degraded performance. It also hinders scalability and limits the ability to handle increasing workloads effectively.
 
 **Definitions**
 
 |Term|Definition|
 |---|---|
+| CAP theorem |A framework that's used to consider consistency, availability, and partition tolerance to help explain the tradeoffs in data consistency.|
+|  Database index rebuilding |A maintenance activity that drops and recreates an index.|
+|  Database index reorganization |A maintenance activity that optimizes a database index. |
 | Data store| A resource that stores data such as a database, object store, or file share.|
-|  Eventual consistency|A data synchronization model that allows for temporary inconsistency in data replicas before eventually becoming the same.|
-| Optimistic concurrency|An approach for updating databases that uses snapshots to make updates instead of database locks. |
-|  PACELC theorem | A framework that considers partition tolerance, availability, consistency, and latency to help explain the tradeoffs in data consistency.|
-| CAP theorem |A framework that considers consistency, availability, and partition tolerance to help explain the tradeoffs in data consistency.|
-|Partitioning|A database performance optimization strategy that divides data into different segments so it's more manageable.|
-|  Index|A data structure that improves the speed of data retrieval by providing quick access to specific items in a database.|
-|  Database index reorganization |A maintenance activity that optimizes the current database index. |
-|  Database index rebuilding |A maintenance activity that drops and recreates the index.|
-| Query tuning| Optimizing the speed of database queries|
+|  Eventual consistency|A data synchronization model that allows for temporary inconsistency in data replicas before they eventually sync.|
+|  Index|A database structure that provides quick access to items.|
 | Online analytical processing (OLAP)|A technology that organizes large business databases, supports complex analysis, and performs complex analytical queries without negatively affecting transactional systems.|
-|  Online transaction processing (OLTP)|A technology that records business interactions as they occur in the day-to-day operation of the organization, and supports querying of this data to make inferences|
-|  Read replica| A live copy of the primary database that allows you to offload read traffic from a write database.|
+|  Online transaction processing (OLTP)|A technology that records business interactions as they occur in day-to-day operations of an organization. |
+| Optimistic concurrency|An approach for updating databases that uses snapshots to make updates instead of traditional locking mechanisms, improving performance and scalability. |
+|  PACELC theorem | A framework that's used to consider partition tolerance, availability, consistency, and latency to help explain the tradeoffs in data consistency.|
+|Partitioning|The process of physically dividing data into separate data stores.|
+| Query tuning| A process that optimizes the speed of a database query.|
+|  Read replica| A live copy of a primary database that enables you to offload read traffic from a write database.|
 
 ## Key strategies
 
@@ -94,7 +94,7 @@ To implement vertical or horizontal partitioning:
 
 - *Configure and implement*: Configure the database system to support partitioning or sharding. Consider creating the necessary infrastructure, defining the partitions or shards, and configuring the data distribution.
 
-For more information, see [Partitioning best practices](/azure/architecture/best-practices/data-partitioning).
+For more information, see [Data partitioning guidance](/azure/architecture/best-practices/data-partitioning).
 
 ### Optimize queries
 
@@ -170,13 +170,13 @@ Carefully consider factors like cache expiration policies, cache eviction strate
 
 - *Database query caching*: Use this technique to cache the results of database queries to avoid running the same query multiple times. Database query caching is useful for complex and time-consuming database queries. When you cache the results of a query, subsequent requests for the same query return quickly.
 
-- *Content delivery network (CDN) caching*: Use this technique to cache web content on distributed network servers to reduce latency and improve content delivery. CDN caching is effective for static content, like images, CSS files, and JavaScript files. CDNs store copies of content in multiple locations worldwide, so users can access the content from a server that's near them geographically.
+- *Content delivery network caching*: Use this technique to cache web content on distributed network servers to reduce latency and improve content delivery. Content deliver network caching is effective for static content, like images, CSS files, and JavaScript files. Content delivery networks store copies of content in multiple locations worldwide, so users can access the content from a server that's near them geographically.
 
 **Use read replicas**. Many databases support multiple read replicas. Distribute read queries across replicas to minimize the demand on the write database. Read replicas can individually take a subset of traffic and potentially improve performance.
 
 When you have a workload with multiple data replicas that you expect to stay in sync, it's helpful to model this distributed system by using the PACELC theorem. The PACELC theorem helps you understand the latency versus constancy tradeoff choice in the nonpartitioned state of the system. Classifying workload can help you choose a database engine and data sync strategy that best addresses the system in a partitioned and nonpartitioned state.
 
-For more information, see the [CQRS pattern](/azure/architecture/patterns/cqrs).
+For more information, see [Command and Query Responsibility Segregation (CQRS) pattern](/azure/architecture/patterns/cqrs).
 
 **Use eventual consistency**. Eventual consistency is a consistency model. Over time, updates are propagated to replicas or nodes in a distributed workload. There might be temporary inconsistencies between replicas, but the workload eventually converges to a consistent state.
 
@@ -226,31 +226,47 @@ When you separate OLTP and OLAP systems, you can allocate appropriate resources 
 
 ## Azure facilitation
 
-**Profile data**: Azure provides various tools and services for data profiling, such as Azure Data Factory, Azure Purview, and Azure Synapse Analytics. These tools enable you to extract, transform, and load data from various sources, perform data quality checks, and gain insights into the data.
+**Profile data**. Azure offers tools and services that you can use to profile data, such as Azure Data Factory, Azure Purview, and Azure Synapse Analytics. These tools enable you to extract, transform, and load data from various sources, perform data quality checks, and gain insights into the data.
 
-**Monitor data**: To monitor data performance, you can use Azure Monitor's capabilities such as collecting and analyzing infrastructure metrics, logs, and application data. Azure Monitor integrates with other services like Application Insights, which provides application performance monitoring and supports multiple platforms.
+**Monitor data**. To monitor data performance, you can use Azure Monitor to collect and analyze infrastructure metrics, logs, and application data. You can integrate Azure Monitor with other services like Application Insights, which provides application performance monitoring and supports many platforms.
 
-Additionally, you can use Log Analytics to correlate usage and performance data collected by Application Insights with configuration and performance data across Azure resources.
+Application Insights collects usage and performance data. You can use Log Analytics to correlate that data with configuration and performance data across Azure resources.
 
-[Azure SQL](/azure/azure-sql/database/sql-insights-overview) and [Cosmos DB](/azure/cosmos-db/insights-overview) have an Insights feature that monitors your database. It allows you to diagnose and tune database performance issues.
+You can use the insights feature of [Azure SQL](/azure/azure-sql/database/sql-insights-overview) and [Azure Cosmos DB](/azure/cosmos-db/insights-overview) to monitor your database. This feature enables you to diagnose and tune database performance issues.
 
-**Partition**: Azure provides various partitioning strategies for different data stores. Each data store may have different considerations and configuration options for data partitioning. For more information, see [partitioning strategies by service](/azure/architecture/best-practices/data-partitioning-strategies).
+**Partition data**. Azure offers various partitioning strategies for different data stores. Each data store might have different considerations and configuration options for data partitioning. For more information, see [Data partitioning strategies](/azure/architecture/best-practices/data-partitioning-strategies).
 
-**Optimize queries and indexes**: Use Query Performance Insights and Performance Recommendations to optimize your queries, tables, and databases.
+**Optimize queries and indexes**. Use the Query Performance insight feature of Azure SQL Database to optimize queries, tables, and databases. You can use this feature to identify and troubleshoot query performance issues.
 
-For relational databases, you should follow the [index design guide](/sql/relational-databases/sql-server-index-design-guide#General_Design), [SQL Server indexes](/sql/relational-databases/indexes/indexes), and [Azure Cosmos DB indexes.](/azure/cosmos-db/index-overview). Azure SQL Database performs [automatic tuning](/azure/azure-sql/database/automatic-tuning-overview) for queries to improve their performance. It also has a Query Performance Insight feature to identify and troubleshoot query performance issues.
+For relational databases, you should follow the [index design guidelines](/sql/relational-databases/sql-server-index-design-guide#General_Design), [SQL Server index guidance](/sql/relational-databases/indexes/indexes), and [Azure Cosmos DB index guidance](/azure/cosmos-db/index-overview). Use SQL Database to perform [automatic tuning](/azure/azure-sql/database/automatic-tuning-overview) for queries to improve their performance.
 
-In SQL databases, you should [reorganize or rebuild](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes) indexes regularly. You need to identify slow queries and tune them to improve performance. Many database engines have query tuning features that you should use. For more information, see [tune queries in nonrelational databases](/azure/cosmos-db/nosql/query-metrics#best-practices-for-query-performance).
+In SQL databases, you should regularly [reorganize or rebuild indexes](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes). Identify slow queries and tune them to improve performance. Many database engines have query tuning features. For more information, see [Best practices for query performance](/azure/cosmos-db/nosql/query-metrics#best-practices-for-query-performance).
 
-Cosmos DB has [default indexing policy](/azure/cosmos-db/index-policy) that indexes every property of every item and enforces range indexes for any string or number. It allows you to get good query performance without having to think about indexing and index management upfront.
+Azure Cosmos DB has a [default indexing policy](/azure/cosmos-db/index-policy) that indexes every property of every item and enforces range indexes for any string or number. With this policy, you have efficient query performance without having to manage indexes upfront.
 
-**Choose a data store**. Azure offers many different data store options to fit your workload needs. There's guidance to help you [understand data store types](/azure/architecture/guide/technology-choices/data-store-overview) and [pick the right data store](/azure/architecture/guide/technology-choices/data-store-decision-tree) for your data.
+**Choose a data store**. Azure offers many different data stores to fit your workload needs. [Understand data store types](/azure/architecture/guide/technology-choices/data-store-overview) and [select an Azure data store for your application](/azure/architecture/guide/technology-choices/data-store-decision-tree).
 
-**Read replicas**. Many Azure database services support read replicas. The availability and configuration of read replicas may vary depending on the specific database service in Azure. It's recommended to refer to the official documentation for each service to understand the details and options available.
+**Read replicas**. Many Azure database services support read replicas. The availability and configuration of read replicas vary depending on the Azure database service. Refer to the official documentation for each service to understand the details and options.
 
 ## Related links
 
-## Community links
+- [Automatic tuning in SQL Database](/azure/azure-sql/database/automatic-tuning-overview)
+- [Azure Cosmos DB](/azure/cosmos-db/insights-overview)
+- [Azure Cosmos DB index guidance](/azure/cosmos-db/index-overview)
+- [Azure SQL](/azure/azure-sql/database/sql-insights-overview)
+- [Best practices for query performance](/azure/cosmos-db/nosql/query-metrics#best-practices-for-query-performance)
+- [Command and Query Responsibility Segregation (CQRS) pattern](/azure/architecture/patterns/cqrs)
+- [Data partitioning guidance](/azure/architecture/best-practices/data-partitioning)
+- [Data partitioning strategies](/azure/architecture/best-practices/data-partitioning-strategies)
+- [Default indexing policy](/azure/cosmos-db/index-policy)
+- [Index design guidance](/sql/relational-databases/sql-server-index-design-guide#General_Design)
+- [OLAP overview](/azure/architecture/data-guide/relational-data/online-analytical-processing)
+- [OLTP overview](/azure/architecture/data-guide/relational-data/online-transaction-processing)
+- [Partitioning best practices](/azure/architecture/best-practices/data-partitioning)
+- [Reorganize or rebuild indexes](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)
+- [Select an Azure data store for your application](/azure/architecture/guide/technology-choices/data-store-decision-tree)
+- [SQL Server index guidance](/sql/relational-databases/indexes/indexes)
+- [Understand data store types](/azure/architecture/guide/technology-choices/data-store-overview)
 
 ## Next steps
 
