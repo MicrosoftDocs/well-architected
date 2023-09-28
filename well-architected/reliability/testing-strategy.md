@@ -132,7 +132,7 @@ Integrate the following recommendations and considerations to optimize your chao
 
 ## Azure facilitation
 
-[Azure Test Plans](https://learn.microsoft.com/en-us/azure/devops/test/overview?view=azure-devops) is an easy-to-use, browser-based test management solution provides all the capabilities required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
+[Azure Test Plans](https://learn.microsoft.com/en-us/azure/devops/test/overview?view=azure-devops) is an easy-to-use, browser-based test management solution that provides all the capabilities required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
 
 [Azure Chaos Studio Preview](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
 
