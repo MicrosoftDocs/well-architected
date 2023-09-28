@@ -401,4 +401,5 @@ Network security groups at the subnet level of the compute resources restrict eg
 We recommend that you review the Security checklist to explore other concepts.
 
 > [!div class="nextstepaction"]
-> [<pillar name> checklist](checklist.md)
+> [Security checklist](checklist.md)
+

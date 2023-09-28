@@ -22,7 +22,7 @@ This guide serves as a prerequisite for the other reliability guides in this ser
 | Term | Definition |
 |---------|---------|
 | User flow | The sequence that a user follows to accomplish a task. |
-| System flow | The workflow that the system automatically follows to enable user flows or workload functionality. |
+| System flow | The flow of information and processes within a system. The system automatically follows this flow to enable user flows or workload functionality. |
 
 ## Key design strategies
 

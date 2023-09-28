@@ -51,12 +51,12 @@ Besides the documentation on [Service Bus Premium and Standard messaging tiers](
 - Dedicated resources.
 - Virtual network integration: Limits the networks that can connect to the Service Bus instance. Requires Service Endpoints to be enabled on the subnet. There are Trusted Microsoft services that are not supported when implementing Virtual Networks(for example, integration with Event Grid). For more information, reference [Allow access to Azure Service Bus namespace from specific virtual networks](/azure/service-bus-messaging/service-bus-service-endpoints).
 - Private endpoints.
-- IP Filtering/Firewall: Restrict connections to only defined `IPv4` addresses or `IPv4` address ranges.
+- [IP Filtering/Firewall](/azure/service-bus-messaging/service-bus-ip-filtering): Restrict connections to only defined `IPv4` addresses or `IPv4` address ranges.
 - [Availability zones](/azure/availability-zones/az-overview): Provides enhanced availability by spreading replicas across availability zones within one region at no extra cost.
 - Event Grid integration: [Available event types](/azure/event-grid/event-schema-service-bus?tabs=event-grid-event-schema).
-- Scale messaging units.
+- [Scale messaging units](/azure/service-bus-messaging/service-bus-premium-messaging#how-many-messaging-units-are-needed).
 - [Geo-Disaster Recovery](/azure/service-bus-messaging/service-bus-geo-dr) (paired namespace).
-- BYOK (Bring Your Own Key): Azure Service Bus encrypts data at rest and automatically decrypts it when accessed, but customers can also bring their own customer-managed key.
+- [CMK (Customer Managed Key)](/azure/service-bus-messaging/configure-customer-managed-key): Azure Service Bus encrypts data at rest and automatically decrypts it when accessed, but customers can also bring their own customer-managed key.
 
 When deploying Service Bus with Geo-disaster recovery and in availability zones, the Service Level Operation (SLO) increases dramatically, but does not change the uptime SLA.
 
@@ -65,7 +65,7 @@ When deploying Service Bus with Geo-disaster recovery and in availability zones,
 **Have you configured Azure Service Bus with reliability in mind?**
 
 > [!div class="checklist"]
-> - Evaluate Premier-tier benefits of Azure Service Bus.
+> - Evaluate Premium tier benefits of Azure Service Bus.
 > - Ensure that [Service Bus Messaging Exceptions](/azure/service-bus-messaging/service-bus-messaging-exceptions) are handled properly.
 > - Connect to Service Bus with the Advanced Messaging Queue Protocol (AMQP) and use Service Endpoints or Private Endpoints when possible.
 > - Review the [Best Practices for performance improvements using Service Bus Messaging](/azure/service-bus-messaging/service-bus-performance-improvements?tabs=net-standard-sdk-2).
@@ -78,6 +78,7 @@ When deploying Service Bus with Geo-disaster recovery and in availability zones,
 > - Evaluate different Java Messaging Service (JMS) features through the JMS API.
 > - Use .NET Nuget packages to communicate with Service Bus messaging entities.
 > - Implement resilience for transient fault handling when sending or receiving messages.
+> - Implement auto-scaling of messaging units.
 
 ## Configuration recommendations
 
@@ -85,7 +86,7 @@ Consider the following recommendations to optimize reliability when configuring 
 
 |Recommendation|Description|
 |--------------|-----------|
-|Evaluate Premier-tier benefits of Azure Service Bus.|Consider migrating to the Premium tier of Service Bus to take advantage of platform-supported outage and disaster protection.|
+|Evaluate Premium tier benefits of Azure Service Bus.|Consider migrating to the Premium tier of Service Bus to take advantage of platform-supported outage and disaster protection.|
 |Connect to Service Bus with the AMQP protocol and use Service Endpoints or Private Endpoints when possible.|This recommendation keeps traffic on the Azure Backbone. *Note: The default connection protocol for `Microsoft.Azure.ServiceBus` and `Windows.Azure.ServiceBus` namespaces is `AMQP`.*|
 |Implement geo-replication on the sender and receiver side to protect against outages and disasters.|Standard tier supports only the implementation of sender and receiver-side geo-redundancy. An outage or disaster in an Azure Region could cause downtime for your solution.|
 |Configure Geo-Disaster.|- [Active/Active](/azure/service-bus-messaging/service-bus-outages-disasters#active-replication) <br>- [Active/Passive](/azure/service-bus-messaging/service-bus-outages-disasters#passive-replication) <br>- [Paired Namespace (Active/Passive)](/azure/service-bus-messaging/service-bus-geo-dr) <br>- *Note: The secondary region should preferably be an [Azure paired region](/azure/availability-zones/cross-region-replication-azure)*.|
@@ -95,6 +96,7 @@ Consider the following recommendations to optimize reliability when configuring 
 |Ensure related messages are delivered in guaranteed order.|Be aware of the requirement to set a Partition Key, Session ID, or Message ID on each message to ensure related messages send to the same partition in the messaging entity.|
 |Evaluate different JMS features through the JMS API.|Features available through the JMS 2.0 API (and its Software Development Kit (SDK)) are not the same as the features available through the native SDK. For example, Service Bus Sessions are not available in JMS.|
 |Implement resilience for transient fault handling when sending or receiving messages.|It is essential to implement suitable transient fault handling and error handling for send and receive operations to maintain throughput and to prevent message loss.|
+|Implement [auto-scaling of messaging units](/azure/service-bus-messaging/automate-update-messaging-units), to ensure that you have enough resources available for your workloads.|
 
 ## Source artifacts
 

@@ -38,7 +38,7 @@ A comprehensive health monitoring system enables you to drill down to view the h
 - Set out [critical application performance targets and non-functional requirements](#performance-targets-and-non-functional-requirements-nfrs) with clarity.
 - Identify [known gaps](#gaps-in-application-monitoring) in application observability that led to missed incidents or false positives in the past.
 - Consider different [log aggregation technologies](#log-aggregation-technologies) to collect logs and metrics from Azure resources.
-- Make logs and metrics available for [critical internal dependencies]#logs-for-internal-dependencies).
+- Make logs and metrics available for [critical internal dependencies](#logs-for-internal-dependencies).
 - Implement [black-box monitoring](#black-box-monitoring) to measure platform services and the resulting customer experience.
 - Implement [detailed instrumentation](#instrumentation) in the application code to better understand the customer experience.
 - Apply [white-box monitoring](#white-box-monitoring) to instrument the application with semantic logs and metrics.
