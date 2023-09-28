@@ -20,9 +20,13 @@ Occasionally, despite the maturity of your development practices, issues with de
 A deployment failure mitigation strategy is composed of 5 broad phases:
 
 1. Detection: To respond to a failed deployment, you must first detect the failure. Detection can take several forms, like failed smoke tests, user reported issues, or alerts generated through your monitoring platform.
+
 1. Decision: You must decide what the best mitigation strategy is for the specific failure type.
+
 1. Mitigation: Perform the identified mitigation action. Mitigations can come in the form of fall back, rollback, roll forward, or using a runtime configuration to bypass the offending function.
+
 1. Communications: Stakeholders and affected end users must be made aware of the status as you detect and work through the issue as required by your [emergency response plan](emergency-response.md).
+
 1. Post-mortems: Blameless post-mortems provide opportunities for the workload team to identify areas for improvement and create plans to apply learnings.
 
 The following sections will provide recommendations for these phases in more detail. These sections assume that you have deployed your changes to one or more groups of users or systems before an issue is detected, but not all groups in your rollout plan have been updated.
