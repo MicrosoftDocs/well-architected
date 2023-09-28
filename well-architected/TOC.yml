@@ -151,6 +151,8 @@
               href: operational-excellence/emergency-response.md
             - name: Enabling automation
               href: operational-excellence/enable-automation.md
+            - name: Failure mitigation
+              href: operational-excellence/mitigation-strategy.md
             - name: Observability framework development
               href: operational-excellence/observability.md
             - name: Supply chain for workload development
