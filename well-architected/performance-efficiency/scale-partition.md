@@ -21,10 +21,10 @@ This guide describes the recommendations for scaling and partitioning a workload
 | Autoscale | A feature that automatically adjusts the capacity limits of a service based on predefined configurations, allowing it to scale up or down as needed.|
 | Capacity | The upper limit or maximum capacity of a given service or feature.|
 | Partitioning | The process of physically dividing data into separate data stores.|
-| Vertical scaling| A scaling approach that adds compute capacity to existing resources. For example, scaling from a D4s_v3 to a D8s_v3.|
-| Horizontal scaling| A scaling approach that adds instances of a given type of resource. For example, expanding a web pool from two to four virtual machines (VMs).|
+| Vertical scaling| A scaling approach that adds compute capacity to existing resources. (Scaling from a D4s_v3 to a D8s_v3, for example.)|
+| Horizontal scaling| A scaling approach that adds instances of a given type of resource. (Expanding a web pool from two to four VMs, for example.)|
 | Scale unit| A group of resources that must scale proportionately together to maintain balanced performance. |
-| Client affinity (session affinity) | The intentional routing of requests from a single client to a single server instance to ensure consistent session management.|
+| Client affinity (session affinity) | The intentional routing of requests from a single client to a single server instance to help ensure consistent session management.|
 | Data locking| A mechanism used to prevent simultaneous updates to the same piece of data.|
 | State affinity | The storage of client session data on a single server so that subsequent requests from the same client are handled by the same server. |
 | Optimistic concurrency| An approach for updating databases that uses snapshots to make updates instead of traditional locking mechanisms. |
