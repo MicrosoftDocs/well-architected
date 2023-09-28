@@ -15,7 +15,7 @@ It's not realistic to assume failures won't occur, especially when the workload 
 
 Workload architectures should have **reliability assurances in application code, infrastructure, and operations**. Design choices shouldn't change the intent that's specified by business requirements. Such changes should be considered significant tradeoffs.
 
-The **design principle approaches aren't checklist items**. They're intended to provide guidance for aspects of reliability that you should consider throughout the development lifecycle. Start with the recommended approaches and **justify the benefits for a set of requirements**. After you set your strategy, drive actions by using the [**Reliability checklist**](./checklist.md).
+The **design principles** are intended to provide guidance for aspects of reliability that you should consider throughout the development lifecycle. Start with the recommended approaches and **justify the benefits for a set of requirements**. After you set your strategy, drive actions by using the [**Reliability checklist**](./checklist.md).
 
 If you don't apply these principles to your design, the workload most likely won't be prepared to **anticipate or handle problems in production**. The outcome might be service disruptions that lead to financial loss. In the case of critical workloads, failing to apply these principles could jeopardize safety.
 
