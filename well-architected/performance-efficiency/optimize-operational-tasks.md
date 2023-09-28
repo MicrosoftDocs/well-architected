@@ -1,6 +1,6 @@
 ---
 title: Recommendations for optimizing operational tasks
-description: Learn how to optimize operational tasks.  
+description: Learn about Well-Architected Framework recommendations for optimizing operational tasks.  
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
