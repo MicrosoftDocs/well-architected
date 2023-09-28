@@ -13,20 +13,20 @@ ms.topic: conceptual
 
 This guide describes the recommendations for network design. The focus is on security controls that can filter, block, and detect adversaries crossing network boundaries at various depths of your architecture.
 
-Identity should always be your first line of defense. Along with identity-based access control, network-based access control is a high priority for protecting assets. Proper network security controls can provide a defense-in-depth element that can help detect, contain, and prevent attackers from gaining entry into your workload.
+Identity should always be your first line of defense. Along with identity-based access control, network-based access control is a high priority for protecting assets. Proper network security controls can provide a defense-in-depth element that can help detect and contain threats, and prevent attackers from gaining entry into your workload.
 
 **Definitions**
 
 | Term |Definition |
 |---------|---------|
-|Hostile network | A network that isn't deployed as part of your workload. A hostile network is considered a threat vector. |
-|Network segmentation | A strategy that divides a network into small, isolated segments, with security controls applied at the boundaries. This technique helps protect resources from hostile networks, such as the internet. |
-|Network filtering | A mechanism that allows or blocks network traffic based on specified rules. |
-|Network transformation | A mechanism that changes or mutates network packets to obscure them. |
-|Ingress flow | Inbound workload traffic. |
-|Egress flow | Outbound workload traffic. |
-|North-south traffic | Network traffic that moves from a trusted boundary to external networks that are potentially hostile, and vice versa. |
 |East-west traffic | Network traffic that moves within a trusted boundary. |
+|Egress flow | Outbound workload traffic. |
+|Hostile network | A network that isn't deployed as part of your workload. A hostile network is considered a threat vector. |
+|Ingress flow | Inbound workload traffic. |
+|Network filtering | A mechanism that allows or blocks network traffic based on specified rules. |
+|Network segmentation | A strategy that divides a network into small, isolated segments, with security controls applied at the boundaries. This technique helps protect resources from hostile networks, such as the internet. |
+|Network transformation | A mechanism that mutates network packets to obscure them. |
+|North-south traffic | Network traffic that moves from a trusted boundary to external networks that are potentially hostile, and vice versa. |
 
 ## Key design strategies
 
@@ -40,7 +40,7 @@ Network security uses obscurity to protect workload assets from hostile networks
 
   You can also use other logical boundaries, such as carved-out subnets within a virtual network. A benefit of subnets is that you can use them to group together resources that are within an isolation boundary and have similar security assurances. You can then configure controls on the boundary to filter traffic.
 
-- **Filter**. This strategy ensures that traffic that enters a boundary is expected, allowed, and safe. From a Zero-Trust perspective, filtering explicitly verifies all available data points at the network level. You can place rules on the boundary to check for specific conditions.
+- **Filter**. This strategy helps ensure that traffic that enters a boundary is expected, allowed, and safe. From a Zero-Trust perspective, filtering explicitly verifies all available data points at the network level. You can place rules on the boundary to check for specific conditions.
 
   For example, at the header level, the rules can verify that the traffic originates from an expected location or has an expected volume. But these checks aren't sufficient. Even if the traffic exhibits expected characteristics, the payload might not be safe. Validation checks might reveal an SQL injection attack.
 
@@ -84,7 +84,7 @@ You can also determine your level of exposure by considering your workload's pro
 
   As an example, consider the egress flow of a hub-spoke network topology. You can define the networking edge of your workload so that the hub is an external network. In that case, outbound traffic from the virtual network of the spoke is north-south traffic. But if you consider the hub network within your sphere of control, north-south traffic is extended to the firewall in the hub, because the next hop is the internet, which is potentially hostile.
 
-- **East-west**. Traffic that flows within a workload network is east-west traffic. This type of traffic results when components in your workload communicate with each other. An example is traffic between the tiers of an n-tier application. In microservices, service-to-service communication is east-west traffic.
+- **East-west**. Traffic that flows within a workload network is east-west traffic. This type of traffic results when components in your workload communicate with each other. An example is traffic between the tiers of an *n*-tier application. In microservices, service-to-service communication is east-west traffic.
 
 To provide defense in depth, maintain end-to-end control of security affordances that are included in each hop or that you use when packets cross internal segments. Different risk levels require different risk remediation methods.
 
@@ -164,9 +164,9 @@ If you expect a service to be exposed to the internet, take advantage of the ser
 
 #### Connectivity to platform as a service (PaaS) services
 
-Consider securing access to PaaS services by using private endpoints. A private endpoint is assigned a private IP address from your virtual network. The endpoint allows other resources in the network to communicate with the PaaS service over the private IP address.
+Consider using private endpoints to help secure access to PaaS services. A private endpoint is assigned a private IP address from your virtual network. The endpoint allows other resources in the network to communicate with the PaaS service over the private IP address.
 
-Communication with a PaaS service is achieved by using the service's public IP address and DNS record. That communication is over the internet. You can make that communication private.
+Communication with a PaaS service is achieved by using the service's public IP address and DNS record. That communication occurs over the internet. You can make that communication private.
 
 A tunnel from the PaaS service into one of your subnets creates a private channel. All communication takes place from the component's private IP address to a private endpoint in that subnet, which then communicates with the PaaS service.
 
@@ -185,7 +185,7 @@ A DDoS attack attempts to exhaust an application's resources to make the applica
 
 A DDoS attack is usually a massive, widespread, geographically dispersed abuse of your system's resources that makes it hard to pinpoint and block the source.
 
-For Azure support to protect against these attacks, see the [Azure DDoS Protection](#azure-ddos-protection) section in this article.
+For Azure support to help protect against these attacks, see the [Azure DDoS Protection](#azure-ddos-protection) section in this article.
 
 ## Azure facilitation
 
@@ -193,9 +193,9 @@ You can use the following Azure services to add defense-in-depth capabilities to
 
 ### Azure Virtual Network
 
-[Virtual Network](/azure/virtual-network/virtual-networks-overview) makes it possible for Azure resources to securely communicate with each other, the internet, and on-premises networks.
+[Virtual Network](/azure/virtual-network/virtual-networks-overview) helps your Azure resources securely communicate with each other, the internet, and on-premises networks.
 
-By default, all resources in a virtual network can engage in outbound communication with the internet by default. But inbound communication is restricted by default.
+By default, all resources in a virtual network can engage in outbound communication with the internet. But inbound communication is restricted by default.
 
 Virtual Network offers features for filtering traffic. You can restrict access at the virtual-network level by using a user-defined route (UDR) and a firewall component. At the subnet level, you can filter traffic by using network security groups.
 
@@ -215,7 +215,7 @@ The following technology choices are recommended:
 
   If you don't use a virtual WAN topology, you must deploy a UDR with a `NextHopType` of `Internet` to your NVA's private IP address. UDRs are applied at the subnet level. By default, subnet-to-subnet traffic doesn't flow through the NVA.
 
-  You can also use Azure Firewall simultaneously for ingress. It can route HTTP and HTTPS traffic. In higher SKUs, Azure Firewall offers TLS termination so that you can implement payload-level inspections.
+  You can also use Azure Firewall simultaneously for ingress. It can route HTTP and HTTPS traffic. In higher-tiered SKUs, Azure Firewall offers TLS termination so that you can implement payload-level inspections.
 
   The following practices are recommended:
 
@@ -225,9 +225,9 @@ The following technology choices are recommended:
 
   - Where it's practical, avoid FQDN service tags. But when you use them, use the regional variant, which allows communication with all endpoints of the service.
 
-  - Use IP groups to define sources that must share the same rules over the life of the IP group. In this way, IP groups should reflect your segmentation strategy.
+  - Use IP groups to define sources that must share the same rules over the life of the IP group. IP groups should reflect your segmentation strategy.
 
-  - Override the infrastructure FQDN **allow** rule only if your workload requires absolute egress control. Overriding this rule comes with a reliability tradeoff, because Azure platform requirements change on services.
+  - Override the infrastructure FQDN allow rule only if your workload requires absolute egress control. Overriding this rule comes with a reliability tradeoff, because Azure platform requirements change on services.
 
   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Azure Firewall can impact your performance. Rule order, quantity, TLS inspection, and other factors can cause significant latency.
   >
@@ -243,7 +243,7 @@ The following technology choices are recommended:
 
   You can integrate Azure Web Application Firewall with routers, such as Azure Application Gateway or Azure Front Door. Azure Web Application Firewall implementations for those kinds of routers can vary.
 
-You're not limited to an either-or choice between Azure Firewall and Azure Web Application Firewall. For your edge security solution, various options are available. For examples, see [Firewall and Application Gateway for virtual networks](/azure/architecture/example-scenario/gateway/firewall-application-gateway).
+Azure Firewall and Azure Web Application Firewall aren't mutually exclusive choices. For your edge security solution, various options are available. For examples, see [Firewall and Application Gateway for virtual networks](/azure/architecture/example-scenario/gateway/firewall-application-gateway).
 
 ### Network security groups
 
@@ -282,7 +282,7 @@ In the preceding image, network security groups are applied at the NIC. Internet
 
 When you use service tags, use regional versions when possible, such as `Storage.WestUS` instead of `Storage`. By taking this approach, you limit the scope to all endpoints in a particular region.
 
-Some tags are exclusively for **inbound** or **outbound** traffic. Others are for both types. **Inbound** tags usually allow traffic from all hosting workloads, such as `AzureFrontDoor.Backend`, or from Azure to support service runtimes, such as `LogicAppsManagement`. Similarly, **outbound** tags allow traffic to all hosting workloads or from Azure to support service runtimes.
+Some tags are exclusively for inbound or outbound traffic. Others are for both types. Inbound tags usually allow traffic from all hosting workloads, such as `AzureFrontDoor.Backend`, or from Azure to support service runtimes, such as `LogicAppsManagement`. Similarly, outbound tags allow traffic to all hosting workloads or from Azure to support service runtimes.
 
 Scope the rules as much as possible. In the following example, the rule is set to specific values. Any other type of traffic is denied.
 
@@ -355,9 +355,9 @@ You can use [Azure Bastion](/azure/bastion/bastion-overview) to connect to a V
 
 ### Azure DDoS Protection
 
-Every property in Azure is protected by Azure DDoS infrastructure protection at no extra cost and no added configuration. The level of protection is basic, but the protection has high thresholds. It also doesn't provide telemetry or alerting, and it's workload-agnostic.
+Every property in Azure is protected by Azure DDoS infrastructure protection at no extra cost and with no added configuration. The level of protection is basic, but the protection has high thresholds. It also doesn't provide telemetry or alerting, and it's workload-agnostic.
 
-Higher SKUs of DDoS Protection are available but aren't free. The scale and capacity of the globally deployed Azure network offers protection against common network-layer attacks. Technologies like always-on traffic monitoring and real-time mitigation provide this capability.
+Higher-tiered SKUs of DDoS Protection are available but aren't free. The scale and capacity of the globally deployed Azure network offers protection against common network-layer attacks. Technologies like always-on traffic monitoring and real-time mitigation provide this capability.
 
 For more information, see [Azure DDoS Protection overview](/azure/ddos-protection/ddos-protection-overview).
 
@@ -371,7 +371,7 @@ This example architecture combines the network controls that are described in th
 
 Application Gateway is a web traffic load balancer that you can use to manage traffic to your web applications. You deploy Application Gateway in a dedicated subnet that has network security group controls and web application firewall controls in place.
 
-Communication with all PaaS services is conducted through private endpoints. All endpoints are placed in a dedicated subnet. DDoS Protection helps protect all public IP addresses that are configured for a basic or greater level of firewall protection.
+Communication with all PaaS services is conducted through private endpoints. All endpoints are placed in a dedicated subnet. DDoS Protection helps protect all public IP addresses that are configured for a basic or higher level of firewall protection.
 
 Management traffic is restricted through Azure Bastion, which helps provide secure and seamless RDP and SSH connectivity to your VMs directly from the Azure portal over TLS. Build agents are placed in the virtual network so that they have a network view to workload resources such as compute resources, container registries, and databases. This approach helps provide a secure and isolated environment for your build agents, which boosts protection for your code and artifacts.
 
@@ -389,7 +389,7 @@ Network security groups at the subnet level of the compute resources restrict eg
 - [Azure Firewall](/azure/firewall/overview)
 - [Azure Web Application Firewall](/azure/web-application-firewall/overview)
 - [Firewall and Application Gateway for virtual networks](/azure/architecture/example-scenario/gateway/firewall-application-gateway)
-- [Network security group](/azure/virtual-network/manage-network-security-group)
+- [Network security groups](/azure/virtual-network/manage-network-security-group)
 - [Service tags](/azure/virtual-network/service-tags-overview#available-service-tags)
 - [Azure Private Link](/azure/private-link/private-link-overview)
 - [Private endpoints](/azure/private-link/private-endpoint-overview)
