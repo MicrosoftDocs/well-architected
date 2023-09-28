@@ -73,8 +73,12 @@
               href: security/classify-data.md
             - name: Encryption
               href: security/encryption.md
+            - name: Hardening resources
+              href: security/hardening.md
             - name: Identity and access
               href: security/identity-access.md
+            - name: Incident response 
+              href: security/incident-response.md
             - name: Monitoring & threat detection
               href: security/monitoring.md
             - name: Networking
@@ -123,6 +127,8 @@
               href: cost-optimization/optimize-code.md
             - name: Optimize scaling
               href: cost-optimization/optimize-scaling.md
+            - name: Optimize personnel time
+              href: cost-optimization/optimize-personnel-time.md
       - name: Operational Excellence
         items: 
         - name: Quick links
@@ -137,16 +143,18 @@
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
-            - name: Automate tasks
+            - name: Automating tasks
               href: operational-excellence/automate-tasks.md
-            - name: Enable automation
+            - name: Emergency response
+              href: operational-excellence/emergency-response.md
+            - name: Enabling automation
               href: operational-excellence/enable-automation.md
             - name: Observability framework development
               href: operational-excellence/observability.md
-            - name: Respond to emergencies
-              href: operational-excellence/emergency-response.md
             - name: Supply chain for workload development
               href: operational-excellence/workload-supply-chain.md
+            - name: Using infrastructure as code
+              href: operational-excellence/infrastructure-as-code-design.md
       - name: Performance Efficiency
         items: 
         - name: Quick links
