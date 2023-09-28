@@ -129,3 +129,10 @@ Also consider the skill set that your team brings to the table when designing yo
 
 [GitOps Flux v2 configurations with AKS and Azure Arc-enabled Kubernetes - Azure Arc](/azure/azure-arc/kubernetes/conceptual-gitops-flux2)
 
+
+## Next steps
+
+We recommend that you review the Operational Excellence checklist to explore other concepts. 
+
+> [!div class="nextstepaction"] 
+> [Operational Excellence checklist](checklist.md) 

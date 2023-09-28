@@ -173,3 +173,10 @@ There are other extensions that you can install in the deployment pipelines. For
 [Configure the Microsoft Security DevOps Azure DevOps extension - Microsoft Defender for Cloud](/azure/defender-for-cloud/azure-devops-extension)
 
 [Configure GitHub Advanced Security for Azure DevOps features - Azure Repos](/azure/devops/repos/security/configure-github-advanced-security-features)
+
+## Next steps
+
+We recommend that you review the Security checklist to explore other concepts.
+
+> [!div class="nextstepaction"]
+> [Security checklist](checklist.md)

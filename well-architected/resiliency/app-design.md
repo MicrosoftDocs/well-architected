@@ -3,7 +3,7 @@ title: Design reliable Azure applications
 description: Review design considerations for making sure that Azure applications are reliable, scalable, and resilient to failure.
 author: martinekuan
 ms.author: martinek
-ms.date: 04/21/2023
+ms.date: 08/03/2023
 ms.topic: conceptual
 ms.custom:
   - How have you ensured that your application is resilient to failures?
@@ -26,12 +26,18 @@ Building a reliable application in the cloud differs from traditional applicatio
 
 Design your application architecture to use [availability zones](/azure/reliability/availability-zones-overview) within a region. Availability zones can be used to optimize application availability within a region by providing datacenter-level fault tolerance. However, the application architecture must not share dependencies between zones to use them effectively.
 
-> [!NOTE]
-> Availability zones might introduce performance and cost considerations for applications that are extremely "chatty" across zones given the implied physical separation between each zone and inter-zone bandwidth charges. For this reason, availability zones can be considered to achieve a higher SLA for lower cost.
+Many Azure services provide a *zone-redundant* configuration. Zone redundancy distributes multiple replicas of the service across availability zones. Your workload can take advantage of these benefits offered by Azure as part of the feature:
 
-Consider if component proximity is required for application performance reasons. If all or part of the application is highly sensitive to latency, components might need to be co-located which can limit the applicability of multi-region and multi-zone strategies.
+- Multiple instances of the service are spread across availability zones.
+- Incoming requests are automatically distributed across the instances.
+- Changes in your data and configuration are automatically replicated across instances in each zone.
+- If a datacenter or availability zone outage occurs, during the failover, traffic is automatically sent to instances in the surviving availability zones.
 
-If your requirements demand even greater failure isolation than availability zones alone can offer, consider deploying to multiple regions. Multiple regions should be used for failover purposes in a disaster state. Other cost needs should be considered. Examples of cost needs are data and networking, and services such as [Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
+Consider if component proximity is required for application performance reasons. If the application is highly "chatty", it might be sensitive to extra latency. When traffic goes between availability zones that are geographically separated, extra latency is introduced. While the amount of latency is very small, chatty applications might make many requests, so the total latency is much higher. In this scenario, consider whether you should co-locate your resources. Some Azure services enable *zonal* deployments, which are sometimes called *zone-pinned* deployments. When you use a zonal deployment approach, the resource is deployed to a specific zone. Multiple components can be deployed to the same zone to reduce the communication latency.
+
+You should also consider whether the use of multiple availability zones could increase your costs. For example, inter-zone bandwidth charges might be incurred when your resources synchronize data.
+
+If you have business requirements that require mitigating the risk of an outage of an entire region, consider deploying to multiple regions. Multiple regions can be used for failover purposes in a disaster state. A multi-region solution is often more complicated to deploy and operate. Other cost needs should be considered, including the extra data and networking charges, and for services such as [Azure Site Recovery](/azure/site-recovery/site-recovery-overview).
 
 ## Respond to failure
 
