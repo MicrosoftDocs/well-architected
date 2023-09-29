@@ -1,17 +1,17 @@
 ---
-title: Recommendations for designing and building an observability framework
-description: Learn the recommendations for designing and building an observability framework. The framework provides a foundation for monitoring, detection, and alerting.
+title: Recommendations for designing and creating an observability framework
+description: Learn the recommendations for designing and creating an observability framework. The framework provides a foundation for monitoring, detection, and alerting.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for designing and building an observability framework
+# Recommendations for designing and creating an observability framework
 
 **Applies to: OE 07**
 
-This guide describes the recommendations for designing and building an observability framework. To effectively monitor your workload for security, performance, and reliability, you need a comprehensive framework that provides the foundation for all monitoring, detection, and alerting functions. 
+This guide describes the recommendations for designing and creating an observability framework. To effectively monitor your workload for security, performance, and reliability, you need a comprehensive framework that provides the foundation for all monitoring, detection, and alerting functions. 
 
 **Definitions**
 
@@ -25,88 +25,96 @@ This guide describes the recommendations for designing and building an observabi
 To implement a comprehensive monitoring framework design for your workload, follow these core tenets:
 
 - Collect logs and metrics from the entire workload stack. All infrastructure resources and application functions should be configured to produce standardized, meaningful data, and that data needs to be collected.
+
 - Store the collected data in a standardized, reliable, and secure storage solution.
+
 - Process stored data needs so that it can be handled by analysis and visualization solutions.
+
 - Analyze processed data to accurately determine the state of the workload.
+
 - Visualize the state of the workload in meaningful dashboards or reports for workload teams and other stakeholders.
+
 - Configure actionable alerts and other automatic responses to intelligently defined thresholds to notify workload teams when issues arise.
+
 - Include monitoring and alerting systems in your overall workload testing practices.
+
 - Ensure that monitoring and alerting systems are in scope for continuous improvement. Application and infrastructure behavior in production provides continuous learning opportunities. Incorporate those lessons into monitoring and alerting designs.
 
 You should automate all functions of the monitoring framework as much as possible, and they should all run continuously, all day, every day. 
 
 This workflow pipeline illustrates the monitoring framework: 
 
-:::image type="content" source="media/observability/monitor-pipeline.png" alt-text="Diagram that shows the stages of a comprehensive monitoring framework as a pipeline." lightbox=media/observability/monitor-pipeline.png border="false":::
+:::image type="content" source="media/observability/monitor-pipeline.png" alt-text="Diagram that shows the stages of a comprehensive monitoring framework as a pipeline." lightbox="media/observability/monitor-pipeline.png" border="false":::
 
 ### Collection
 
 > [!Note]
-> For your application running on top of the infrastructure, you will need to instrument the application to enable logging. See the instrumentation guide (link to Instrument an application guide) for detailed guidance on this topic.
+> You need to instrument your application to enable logging. For more information, see the instrumentation guide (link to Instrument an application guide).
 
-All workload components, whether they are infrastructure resources or application functions, should be configured to capture telemetry and/or events as logs and metrics.
+You should configure all workload components, whether they're infrastructure resources or application functions, to capture telemetry and/or events like logs and metrics.
 
-Logs are primarily useful when detecting and investigating anomalies. Typically, logs are produced by the workload component and then sent to the monitoring platform or pulled by the monitoring platform via automation.
+Logs are primarily useful for detecting and investigating anomalies. Typically, logs are produced by the workload component and then sent to the monitoring platform or pulled by the monitoring platform via automation.
 
-Metrics are primarily useful for building a health model (link to reliability/metrics.md/building a health model anchor) and identifying trends in workload performance and reliability. Metrics are also useful for helping to identify trends in the usage behaviors of your customers, which can help guide decisions about improvements from the end-user perspective. Typically, metrics are defined in the monitoring platform and the monitoring platform and other tools poll the workload to capture metrics. 
+Metrics are primarily useful for [building a health model](../reliability/metrics#building-a-health-model) and identifying trends in workload performance and reliability. Metrics are also useful for identifying trends in the usage behaviors of your customers, which can help guide decisions about improvements from the customer perspective. Typically, metrics are defined in the monitoring platform, and the monitoring platform and other tools poll the workload to capture metrics.
 
 #### Application data
 
-For applications, the collecting service can be an Application Performance Management (APM) tool that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you'll have clear visibility of important metrics both in real time and historically. Consider an appropriate level of logging. Verbose logging can incur significant costs. Log levels should be set according to the environment; lower environments do not need the same level of verbosity as production for example.
+For applications, the collecting service can be an application performance management (APM) tool that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you'll have clear visibility into important metrics, in real time and historically. Use an appropriate level of logging. Verbose logging can incur significant costs. Set log levels according to the environment. Lower environments don't need the same level of verbosity as production, for example.
 
-Application logs support the end-to-end application lifecycle. Logging is essential in understanding how the application operates in various environments and what events occur and under which conditions.
+Application logs support the end-to-end application lifecycle. Logging is essential to understanding how the application operates in various environments, which events occur, and the conditions in which they occur.
 
-Collecting application logs and events across all major environments is recommended. Separate the data between environments as much as possible by using different data stores for each environment, if practical. Have filters to ensure non-critical environments do not convolute production log interpretation. Furthermore, corresponding log entries across the application should capture a correlation ID for their respective transactions.
+We recommend that you collect application logs and events across all major environments. Separate the data between environments as much as possible by using different data stores for each environment, if doing so is practical. Use filters to ensure that non-critical environments don't complicate the interpretation of production logs. Finally, corresponding log entries across the application should capture a correlation ID for their respective transactions.
 
-Application events should be captured as a structured data type with machine-readable data points rather than unstructured string types. A structured format, following well-known schema can help in parsing and analyzing logs. Also, structured data can easily be indexed and searched, and reporting can be greatly simplified.
+You should capture application events in structured data types with machine-readable data points rather than unstructured string types. A structured format that uses a well-known schema can make parsing and analyzing logs easier. Also, structured data can easily be indexed and searched, and reporting can be greatly simplified.
 
-Also the data should be an agnostic format that's independent of the machine, operating system, or network protocol. For example, emit information in a self-describing format such as JSON, MessagePack, or Protobuf rather than ETL/ETW. Using a standard format enables the system to construct processing pipelines; components that read, transform, and send data in the agreed format can be easily integrated.
+Data should be in an agnostic format that's independent of the machine, operating system, or network protocol. For example, emit information in a self-describing format like JSON, MessagePack, or Protobuf rather than ETL/ETW. A standard format enables the system to construct processing pipelines. Components that read, transform, and send data in the standard format can be easily integrated.
 
 #### Infrastructure data
 
-For infrastructure resources in your workload, ensure you are collecting both logs and metrics. Capture OS, application-layer and diagnostic logs for infrastructure-as-a-service (IaaS) systems as well as metrics related to workload health. For platform-as-a-service (PaaS) resources, you may be limited in your ability to capture logs related to underlying infrastructure, but ensure that you are able to capture diagnostic logs as well as metrics related to workload health. 
+For infrastructure resources in your workload, ensure that you collect both logs and metrics. For infrastructure as a service (IaaS) systems, capture OS, application-layer, and diagnostic logs in addition to metrics related to workload health. For platform as a service (PaaS) resources, you might be limited in your ability to capture logs that are related to underlying infrastructure, but be sure that you can capture diagnostic logs in addition to metrics related to workload health. 
 
-To the extent that you are able to, collect logs from your cloud platform. You may be able to collect activity logs for your subscription and diagnostic logs for the management plane. 
+As much as possible, collect logs from your cloud platform. You might be able to collect activity logs for your subscription and diagnostic logs for the management plane. 
 
 #### Collection strategies
 
-Avoid retrieving telemetry data manually from every component. Have a way of moving the data to a central location and be consolidated there. For a multi-region solution, it's recommended that you first collect, consolidate, and store data on a region-by-region basis, and then aggregate the regional data into a single central system. 
+Avoid retrieving telemetry data manually from every component. Move data to a central location and consolodate it there. For a multi-region solution, we recommend that you first collect, consolidate, and store data on a region-by-region basis, and then aggregate the regional data into a single central system. 
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Be aware that there are cost implications of having regional data stores and centralized data stores.
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Be aware that there are cost implications to having regional and centralized data stores.
 
-To optimize the use of bandwidth, prioritize based on the importance of data. You can transfer less urgent data in batches. However, the data must not be delayed indefinitely, especially if it contains time-sensitive information.
+To optimize the use of bandwidth, prioritize based on the importance of data. You can transfer less urgent data in batches. However, this data must not be delayed indefinitely, especially if it contains time-sensitive information.
 
-The collection service can collect instrumentation data in mainly two models:
+There are two primary models that the collection service can use to collect instrumentation data:
 
-- **Pull model:** Actively retrieves data from the various logs and other sources for each instance of the application.
-- **Push model:** Passively waits for the data to be sent from the components that constitute each instance of the application.
+- **Pull model**: Actively retrieves data from the various logs and other sources for each instance of the application.
+
+- **Push model**: Passively waits for the data to be sent from the components that constitute each instance of the application.
 
 **Monitoring agents**
 
-Monitoring agents can be used in the pull model. Agents run locally in a separate process with each instance of the application and periodically pull data and write this information directly to common storage shared by all instances of the application. 
+You can use monitoring agents in the pull model. Agents run locally in a separate process with each instance of the application, periodically pulling data and writing the information directly to common storage that's shared by all instances of the application. 
 
-![Diagram that shows using a monitoring agent to pull information and write to shared storage.](media/observability/monitor-write-shared-storage.png)
+:::image type="content" source="media/observability/monitor-write-shared-storage.png" alt-text="Diagram that shows the use of a monitoring agent to pull information and write it to shared storage." lightbox="media/observability/monitor-write-shared-storage.png" border="false":::
 
 > [!NOTE]
-> Using a monitoring agent is ideally suited to capturing instrumentation data that's naturally pulled from a data source. It's appropriate for a small-scale application running on a limited number of nodes in a single location. An example is information from SQL Server Dynamic Management Views or the length of an Azure Service Bus queue.
+> Using a monitoring agent is ideally suited to capturing instrumentation data that's naturally pulled from a data source. It's appropriate for a small-scale application that runs on a limited number of nodes in a single location. Examples include information from SQL Server dynamic management views or the length of an Azure Service Bus queue.
 
 **Performance considerations**
 
-A complex, highly scalable, application might generate huge volumes of data. The amount of data can easily overwhelm the I/O bandwidth available with a single, central location. The telemetry solution must not act as bottleneck and must be scalable as the system expands. Ideally, the solution should incorporate a degree of redundancy to reduce the risks of losing important monitoring information (such as auditing or billing data) if part of the system fails.
+A complex and highly scalable application might generate huge volumes of data. The amount of data can easily overwhelm the I/O bandwidth available for a single, central location. The telemetry solution must not act as bottleneck and must be scalable as the system expands. Ideally, the solution should incorporate a degree of redundancy to reduce the risks of losing important monitoring information (like auditing or billing data) if part of the system fails.
 
-One approach is through queuing.
+One way to buffer instrumentation data is to use queuing:
 
-![Diagram that shows using a queue to buffer instrumentation data.](media/observability/queue-buffer-data.png)
+:::image type="content" source="media/observability/queue-buffer-data.png" alt-text="Diagram that shows how you can use a queue to buffer instrumentation data." lightbox="media/media/observability/queue-buffer-data.png" border="false":::
 
-In this architecture, the data-collection service posts data to a queue. A message queue is suitable because it provides "at least once" semantics that help ensure that queued data will not be lost after it's posted. You can implement the storage writing service by using a separate worker role. You can implement this with the [Priority Queue pattern](/azure/architecture/patterns/priority-queue).
+In this architecture, the data-collection service posts data to a queue. A message queue is suitable because it provides "at least once" semantics that helps ensure that queued data won't be lost after it's posted. You can implement the storage-writing service by using a separate worker role. You can use the [Priority Queue pattern](/azure/architecture/patterns/priority-queue) to implement this architecure.
 
-For scalability, you can run multiple instances of the storage writing service. If there is a high volume of events or a high number of data points being monitored, you can use Event Hubs to dispatch the data to a different compute for processing and storage.
+For scalability, you can run multiple instances of the storage-writing service. If there's a high volume of events or a high number of data points being monitored, you can use Azure Event Hubs to dispatch the data to a different compute instance for processing and storage.
 
 **Consolidation strategies**
 
-The data collected from a single instance of an application gives a localized view of the health and performance of that instance. To assess the overall health of the system, it's necessary to consolidate some aspects of the data in the local views. You can perform this after the data has been stored, but in some cases, you can also achieve it as the data is collected.
+The data collected from a single instance of an application provides a localized view of the health and performance of that instance. To assess the overall health of the system, you need to consolidate some aspects of the data from the local views. You can do that after the data is stored, but, in some cases, you can do it as the data is collected.
 
-:::image type="content" source="media/observability/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="media/observability/service-instrumentation-data.png":::
+:::image type="content" source="media/observability/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="media/observability/service-instrumentation-data.png" border="false":::
 
 The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, instrumentation data that includes the same correlation information such as an activity ID can be amalgamated. (It's possible that a user starts performing a business operation on one node and then gets transferred to another node if a node fails, or depending on how load balancing is configured.) This process can also detect and remove any duplicated data (always a possibility if the telemetry service uses message queues to push instrumentation data out to storage).
 
