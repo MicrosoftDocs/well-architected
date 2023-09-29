@@ -1,6 +1,6 @@
 ---
 title: Recommendations for designing and building an observability framework
-description: Learn about the recommendations for designing and building an observability framework. Create a comprehensive framework that provides the foundation for all monitoring, detection and alerting functions.
+description: Learn the recommendations for designing and building an observability framework. The framework provides a foundation for monitoring, detection, and alerting.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
