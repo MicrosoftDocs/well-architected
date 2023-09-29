@@ -9,51 +9,53 @@ ms.topic: conceptual
 
 # Recommendations for implementing automation
 
-This guide describes the best practices for adopting automation in your workload management. Automating tasks that are repetitive and prone to human error can help your teams gain efficiency and adhere to standards, making the management of the workload less complicated and more consistent. Additionally, you can empower your operations and engineering teams by giving them more time to concentrate on workload or other improvements. Automation is a powerful tool in all aspects of workload management and implementing it thoughtfully will empower your organization in many ways.
+**Applies to: OE 09**
+
+This guide describes the recommendations for adopting automation in your workload management. You can automate tasks that are repetitive and prone to human error to help your teams gain efficiency and adhere to standards. Automate tasks to make your workload less complex and more consistent. Automation enables your operations and engineering teams to be more efficient because it gives them more time to work on other improvements. Automation is a powerful tool in all aspects of workload management. Thoughtfully implement automation to empower your organization.
 
 ## Key design strategies
 
-As you develop your workload, there will be many opportunities to leverage automation to reduce management burden and minimize the risk of human error when performing operational tasks. Evaluate these opportunities from the perspective of the value they bring to your organization. To maximize the value of your investment in automation, be thoughtful about your approach by focusing on those tasks that are straightforward, procedural and have a long shelf life. Be mindful that applying automation is not an all-or-nothing tactic; there will be workstreams that may have one or more operations that require human intervention, like decision-making points, but may still benefit from automation to perform the actions associated with the operations.
+As you develop your workload, there are opportunities to take advantage of automation to reduce management burden and minimize human error. Evaluate these opportunities, and consider the value that they bring to your organization. To maximize the value of your investment in automation, prioritize tasks that are straightforward, procedural, and have a long shelf life. Applying automation isn't an all-or-nothing tactic. There are workstreams that might have operations that require human intervention, like decision-making points. These workstreams can still benefit from automation to perform the actions associated with operations.
 
-### Targeting tasks to automate
+### Target tasks to automate
 
-Use the following recommendations to ensure that you are targeting the tasks that will benefit most from automation:
+Consider the following recommendations to ensure that you prioritize tasks that benefit the most from automation:
 
-- **Aim for easy wins:** Focus first on the tasks that are both highly procedural and susceptible to human error. These tasks are highly automatable, meaning they are clearly defined, free from variables that add complexity, and they are performed as part of normal operations. Conversely, do not prioritize automating tasks that would require writing complex scripts to account for variable phenomena or tasks that happen rarely.
+- **Aim for easy wins:** Focus on tasks that are highly procedural and susceptible to human error. These tasks are highly automatable. They're clearly defined, free from variables that add complexity, and they're performed as part of normal operations. Conversely, don't prioritize automating tasks that require writing complex scripts to account for variable phenomena, or tasks that rarely occur.
 
-  - Some examples of highly automatable tasks include rebooting servers, creating accounts, and shipping logs to a data store. These tasks may occur on a schedule, as a response to an event or monitoring alert, or ad-hoc based on external factors.
+  - Examples of highly automatable tasks include rebooting servers, creating accounts, and shipping logs to a data store. These tasks might occur on a schedule, as a response to an event or monitoring alert, or as needed based on external factors.
 
-- **Look for ways to empower operators and free up your SMEs:** You may have experts in your organization that are relied upon for escalations that may be unnecessary. For example, your database administrators might routinely get requests to provision new databases when you onboard new customers to your multi-tenant solution. Building a self-service portal for your help desk team could allow them to safely create an empty database themselves. Or as an intermediary step, you could automate the requests and the steps for the SME to perform through scripts that would be run.
+- **Look for ways to empower operators and free up your SMEs:** You might have experts in your organization that are relied upon for escalations that might be unnecessary. For example, your database administrators might routinely get requests to provision new databases when you onboard new customers to your multitenant solution. If you build a self-service portal for your help desk team, you can enable them to safely create an empty database themselves. Or as an intermediary step, you can automate the requests and the steps for the SME to perform by creating scripts to run.
 
-- **Focus on your return on investment:** High value automation requires very little management overhead and adds a demonstrable degree of efficiency. If you can save your operations team an hour each day by automating database entries, for example, you will give them time to find other areas for improvement.
+- **Focus on your return on investment:** High-value automation requires minimal management overhead and adds a demonstrable degree of efficiency. If you can save your operations team an hour each day by automating database entries, for example, you give them time to find other areas for improvement.
 
 ### Workload aspects that can benefit from automation
 
-Plan to adopt automation throughout the entire workload lifecycle, from development through day-to-day management. The following list of examples is not exhaustive and is meant to help you think about the broad areas of your workload lifecycle that can benefit from automation.
+Adopt automation throughout the entire workload lifecycle, from development to day-to-day management. Use the following list of examples to help you consider the broad areas of your workload lifecycle that can benefit from automation.
 
-- **Automated pipeline definition, execution and management**: CI/CD tools like Azure DevOps and other DevOps tools allow you to automatically define a pipeline and its execution. This can help you automate CI and CD tasks or other tasks like creating reports.
+- **Automated pipeline definition, execution, and management**: Use continuous integration and continuous delivery (CI/CD) tools, like Azure DevOps and other DevOps tools, to automatically define a pipeline and how it runs. These tools can help you automate CI and CD tasks or other tasks, like creating reports.
 
-- **Automated deployments**: Use tools like ARM templates, Bicep, Terraform and Ansible to automate your workload development and release processes. Deploy and update your infrastructure through the same automation platforms using an infrastructure-as-code approach.
+- **Automated deployments**: Use tools like Azure Resource Manager templates, Bicep, Terraform, and Ansible to automate your workload development and release processes. Deploy and update your infrastructure with the same automation platforms by using an infrastructure as code (IaC) approach.
 
-- **Automated testing:** Many tools are available for automating your testing processes. These can relieve a significant burden from your quality assurance team and ensure that tests are standardized and reliable.
+- **Automated testing:** Many tools are available for automating your testing processes. These tools can relieve a significant burden from your quality assurance team and ensure that tests are standardized and reliable.
 
-- **Automatic scaling**: Make use of platform-provided functionality and other tools (like orchestration tools for example) to automatically scale your infrastructure when load increases or decreases.
+- **Automatic scaling**: Make use of platform-provided functionality and other tools, like orchestration tools, to automatically scale your infrastructure when load increases or decreases.
 
-- **Automated monitoring and alerting**: Use tooling available in your monitoring solution to automatically enroll newly deployed resources and configure alert-triggered actions to help hasten remediation when issues arise.
+- **Automated monitoring and alerting**: Use tooling that's available in your monitoring solution to automatically enroll newly deployed resources and configure alert-triggered actions to help hasten remediation when issues arise.
 
-- **Automated self-healing:** Using alerts generated by your monitoring system, automate actions to recover malfunctioning components or jobs. See the (self-preservation reliability guide) for more information.
+- **Automated self-healing:** Use alerts that are generated by your monitoring system to automate actions and recover malfunctioning components or jobs. For more information, see the [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md).
 
-- **Automated configuration management**: Make use of orchestration and policy tooling to ensure that all of your resources are running the same configuration and that compliance requirements are enforced across your workload.
+- **Automated configuration management**: Make use of orchestration and policy tooling to ensure that all of your resources run the same configuration and that compliance requirements are enforced across your workload.
 
 - **Automation of other administrative tasks**: Use scripts to automate repetitive tasks like updating database records or DNS records.
 
-- **Automated approvals:** You can make workflows that have approval gates more efficient by allowing systems to make approval decisions automatically based on predefined rules. This will also encourage the use of standardized forms and templates which will further increase the efficiency of the processes. Be judicious with this kind of automation, as there are risks with automatically granting approval in higher environments. Ensure that your automated approvals are very tightly focused and tested to ensure that only very specific criteria are defined to grant approval.
+- **Automated approvals:** To improve efficiency for workflows that have approval gates, allow systems to automatically make approval decisions based on predefined rules. This method encourages the use of standardized forms and templates, which increases the efficiency of the processes. Automatic approval in high environments can be risky. Be cautious with this type of automation. Ensure that your automated approvals are very tightly focused and tested to ensure that specific criteria are defined to grant approval.
 
-- **Automate new user and new employee onboarding:** Many of the tasks involved in onboarding new application users or new employees can be automated, like database updates and credential creation, for example.
+- **Automate new user and new employee onboarding:** You can automate many tasks associated with onboarding new application users or new employees, like database updates and credential creation.
 
-- **Automate monitoring and alerting to the extent possible:** Take advantage of the automation functionality provided by your observability platform to automatically enroll new devices into monitoring and alert on anomalies.
+- **Automate monitoring and alerting when possible:** Take advantage of the automation functionality that your observability platform provides. Automatically enroll new devices into monitoring and alert on anomalies.
 
-### Choosing the right automation tool
+### Choose the appropriate automation tool
 
 Developing your own automation in-house is time intensive and can introduce more management burden to your development team as they will need to maintain it as they would any other in-house software. For that reason, prefer off-the-shelf tools whenever they can meet your needs. Between commercial, open source and cloud platform provided tools, there are many options available, and it is likely that you will use a variety of them to build the automation that you need. Rely on your in-house expertise to help guide your decisions when evaluating tools. Your team may have more familiarity with certain development languages and frameworks, and you can initially focus on off-the-shelf tools that they can use without a high learning curve. Finally, reflect on the tasks that you plan to address with automation and invest in the tools that can specifically address those tasks rather than procuring tools that you prefer generally and then thinking about the tasks afterward.
 
@@ -139,7 +141,7 @@ Reliability self-preservation guide (re06-self-preservation)
 
 ## Next steps
 
-We recommend that you review the Operational Excellence checklist to explore other concepts. 
+We recommend that you review the Operational Excellence checklist to explore other concepts.
 
-> [!div class="nextstepaction"] 
-> [Operational Excellence checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Operational Excellence checklist](checklist.md)
