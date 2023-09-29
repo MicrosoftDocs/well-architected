@@ -24,7 +24,7 @@ This guide describes design patterns that focus on self-preservation and self-he
 
 | Term | Definition |
 |------|------------|
-| Self-healing | The ability of your workload to automatically recover affected components and fail over to redundant infrastructure. |
+| Self-healing | The ability to automatically repair issues without human intervention. |
 | Self-preservation | The ability of your workload to be resilient against potential problems. |
 
 ## Key design strategies

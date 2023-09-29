@@ -10,7 +10,7 @@ products: azure-application-gateway
 
 # Azure Well-Architected Framework review - Azure Application Gateway v2
 
-This article provides architectural best practices for the Azure Application Gateway v2 family of SKUs. The guidance is based on the five pillars of architecture excellence:
+This article provides architectural best practices for the Azure Application Gateway v2 family of SKUs. The guidance is based on the five pillars of architectural excellence:
 
 - [Reliability](#reliability)
 - [Security](#security)
@@ -18,7 +18,7 @@ This article provides architectural best practices for the Azure Application Gat
 - [Operational excellence](#operational-excellence)
 - [Performance efficiency](#performance-efficiency)
 
-We assume that you have working knowledge of Azure Application Gateway and are well versed with v2 SKU features. For more information, see [Azure Application Gateway features](/azure/application-gateway/features).
+We assume that you have a working knowledge of Azure Application Gateway and are well-versed with v2 SKU features. For more information, see [Azure Application Gateway features](/azure/application-gateway/features).
 
 ## Prerequisites
 
@@ -35,8 +35,8 @@ As you make design choices for Application Gateway, review the [Reliability desi
 
 > [!div class="checklist"]
 > - Deploy the instances in a [zone-aware configuration](/azure/application-gateway/application-gateway-autoscaling-zone-redundant), where available.
-> - Use Application Gateway with Web Application Firewall (WAF) within an application virtual network to protect inbound `HTTP/S` traffic from the Internet.
-> - In new deployments, use Application Gateway v2 unless there is a compelling reason to use v1.
+> - Use Application Gateway with Web Application Firewall (WAF) within a virtual network to protect inbound `HTTP/S` traffic from the Internet.
+> - In new deployments, use Azure Application Gateway v2 unless there is a compelling reason to use Azure Application Gateway v1.
 > - Plan for rule updates
 > - Use health probes to detect backend unavailability
 > - Review the impact of the interval and threshold settings on health probes
@@ -172,7 +172,7 @@ Performance efficiency is the ability of your workload to scale to meet the dema
 > - Define the maximum instance count
 > - Define the minimum instance count
 > - Define Application Gateway subnet size
-> - Take advantage features for autoscaling and performance benefits
+> - Take advantage of Application Gateway V2 features for autoscaling and performance benefits
 
 ### Recommendations
 
@@ -184,13 +184,13 @@ Explore the following table of recommendations to optimize your Application Gate
 | Define the minimum instance count | For Application Gateway v2 SKU, autoscaling takes some time (approximately six to seven minutes) before the additional set of instances is ready to serve traffic. During that time, if there are short spikes in traffic, expect transient latency or loss of traffic.<br><br>We recommend that you set your minimum instance count to an optimal level. After you estimate the average instance count and determine your Application Gateway autoscaling trends, define the minimum instance count based on your application patterns. For information, see [Application Gateway high traffic support](/azure/application-gateway/high-traffic-support).<br><br>Check the Current Compute Units for the past one month. This metric represents the gateway's CPU utilization. To define the minimum instance count, divide the peak usage by 10. For example, if your average Current Compute Units in the past month is 50, set the minimum instance count to five. |
 | Define the maximum instance count | We recommend 125 as the maximum autoscale instance count. Make sure the subnet that has the Application Gateway has sufficient available IP addresses to support the scale-up set of instances.<br><br>Setting the maximum instance count to 125 has no cost implications because you're billed only for the consumed capacity. |
 | Define Application Gateway subnet size | Application Gateway needs a dedicated subnet within a virtual network. The subnet can have multiple instances of the deployed Application Gateway resource. You can also deploy other Application Gateway resources in that subnet, v1 or v2 SKU.<br><br>Here are some considerations for defining the subnet size:<br><br>- Application Gateway uses one private IP address per instance and another private IP address if a private front-end IP is configured.<br>- Azure reserves five IP addresses in each subnet for internal use.<br>- Application Gateway (Standard or WAF SKU) can support up to 32 instances. Taking 32 instance IP addresses + 1 private front-end IP + 5 Azure reserved, a minimum subnet size of /26 is recommended. Because the Standard_v2 or WAF_v2 SKU can support up to 125 instances, using the same calculation, a subnet size of /24 is recommended.<br>- If you want to deploy additional Application Gateway resources in the same subnet, consider the additional IP addresses that will be required for their maximum instance count for both, Standard and Standard v2. |
-| Take advantage features for autoscaling and performance benefits | The v2 SKU offers autoscaling to ensure that your Application Gateway can scale up as traffic increases. When compared to v1 SKU, v2 has capabilities that enhance the performance of the workload. For example, better TLS offload performance, quicker deployment and update times, zone redundancy, and more. For more information about autoscaling features, see [Scaling Application Gateway v2 and WAF v2](/azure/application-gateway/application-gateway-autoscaling-zone-redundant).<br><br>If you are running v1 SKU gateways, consider migrating to the v2 SKU. For more information, see [Migrate Azure Application Gateway and Web Application Firewall from v1 to v2](/azure/application-gateway/migrate-v1-v2). |
+| Take advantage of features for autoscaling and performance benefits | The v2 SKU offers autoscaling to ensure that your Application Gateway can scale up as traffic increases. When compared to v1 SKU, v2 has capabilities that enhance the performance of the workload. For example, better TLS offload performance, quicker deployment and update times, zone redundancy, and more. For more information about autoscaling features, see [Scaling Application Gateway v2 and WAF v2](/azure/application-gateway/application-gateway-autoscaling-zone-redundant).<br><br>If you are running v1 SKU Application gateway, consider migrating to the Application gateway v2 SKU. For more information, see [Migrate Azure Application Gateway and Web Application Firewall from v1 to v2](/azure/application-gateway/migrate-v1-v2). |
 
 Azure Advisor helps you ensure and improve continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 
 ## Azure Advisor recommendations
 
-[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your Application Gateway.
+[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost-effectiveness, performance, and operational excellence of your Application Gateway.
 
 ### Reliability
 

@@ -1,5 +1,5 @@
 ---
-title: Recommendations for performing failure mode analysis
+title: Failure mode analysis recommendations
 description: Learn how to identify potential points of failure within your workload and the associated flows, and plan mitigation actions accordingly.
 author: claytonsiemens77
 ms.author: csiemens
@@ -32,7 +32,7 @@ If you skip FMA altogether or perform an incomplete analysis, your workload is a
 
 ### Prerequisites
 
-Review and implement the [recommendations for identifying flows](identify-flows.md)<!---RE01: verify link after file is named-->. It’s assumed that you have identified and prioritized user and system flows based on criticality.
+Review and implement the [recommendations for identifying flows](identify-flows.md). It’s assumed that you have identified and prioritized user and system flows based on criticality.
 
 The data that you have gathered and the artifacts that you have created in your work provide you with a concrete description of your data paths involved throughout the flows. To be successful in your FMA work, accuracy and thoroughness in your artifacts is critical.
 
@@ -44,7 +44,7 @@ After you determine the critical flows, you can plan their required components. 
 
 As you move from ideation to design, you need to identify the component types that are required to support your workload. Your workload determines the necessary components that you must plan for. Typically, you need to plan for ingress control, networking, compute, data, storage, supporting services (like authentication, messaging, and secret or key management), and egress control. At this stage in your design work, you might not know the specific technologies that you'll deploy, so your design might look like the following example.
 
-:::image type="content" source="../_images/failure-mode-example.png" alt-text="Diagram that shows the design example." border="false" lightbox="../_images/failure-mode-example.png":::
+:::image type="content" source="media/failure-mode-analysis/failure-mode-example.png" alt-text="Diagram that shows the design example." border="false" lightbox="media/failure-mode-analysis/failure-mode-example.png":::
 
 After you create your initial architecture design, you can overlay your flows to identify the discrete components that are used in those flows and create lists or workflow diagrams that describe the flows and their components. To understand the criticality of the components, use the criticality definitions that you have assigned to the flows. Consider the effect of a component malfunction on your flows.
 
@@ -84,7 +84,7 @@ Consider the likelihood of each type of failure mode. Some are very unlikely, li
 
 Mitigation strategies fall into two broad categories: building more resiliency and designing for degraded performance.
 
-Building more resiliency includes adding redundancy to your components, like infrastructure, data, and networking, and ensuring that your application design follows best practices for durability, for example breaking up monolithic applications into isolated apps and microservices. For more information, see [Recommendations for redundancy](redundancy.md)<!---RE04: verify link after file is named--> and [Recommendations for self-preservation](self-preservation.md)<!---RE06: verify link after file is named-->.
+Building more resiliency includes adding redundancy to your components, like infrastructure, data, and networking, and ensuring that your application design follows best practices for durability, for example breaking up monolithic applications into isolated apps and microservices. For more information, see [Recommendations for redundancy](redundancy.md) and [Recommendations for self-preservation](self-preservation.md).
 
 To design for degraded performance, identify potential failure points that might disable one or more components of your flow but don't fully disable that flow. To maintain the functionality of the end-to-end flow, you might need to reroute one or more steps to other components or accept that a failed component runs a function, so the function is no longer available in the user experience. To return to the e-commerce application example, a failed component like a microservice might cause your recommendation engine to be unavailable, but the customers can still search for products and complete their transaction.
 
@@ -96,7 +96,7 @@ If the application lifecycle is closely coupled with the lifecycle of its depend
 
 #### Detection
 
-Failure detection is essential to ensure that you have correctly identified failure points in your analysis and properly planned your mitigation strategies. Detection in this context means the monitoring of your infrastructure, data and application, and alerting when issues arise. Automate detection as much as possible, and build redundancy into your operations processes to ensure that alerts are always caught and are responded to quickly enough to meet your business requirements. For more information, see the [recommendations for the monitoring guide](monitoring-guide.md)<!---RE10: verify link after file is named-->.
+Failure detection is essential to ensure that you have correctly identified failure points in your analysis and properly planned your mitigation strategies. Detection in this context means the monitoring of your infrastructure, data and application, and alerting when issues arise. Automate detection as much as possible, and build redundancy into your operations processes to ensure that alerts are always caught and are responded to quickly enough to meet your business requirements. For more information, see the [Recommendations for monitoring](monitoring-alerting-strategy.md).
 
 #### Outcome
 
@@ -147,3 +147,10 @@ The following table shows an FMA example for an e-commerce website that's hosted
 
 - [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis)
 - [Resiliency and dependencies](../resiliency/design-resiliency.md)
+ 
+## Next steps
+
+We recommend that you review the Reliability checklist to explore other concepts.
+
+> [!div class="nextstepaction"]
+> [Reliability checklist](checklist.md) 

@@ -27,6 +27,8 @@
               href: reliability/design-patterns.md
             - name: Background jobs
               href: reliability/background-jobs.md
+            - name: Data partitioning
+              href: reliability/partition-data.md
             - name: Disaster recovery strategy  
               href: reliability/disaster-recovery.md
             - name: Failure mode analysis
@@ -43,6 +45,8 @@
               href: reliability/regions-availability-zones.md
             - name: Scaling
               href: reliability/scaling.md
+            - name: Simplicity and efficiency
+              href: reliability/simplify.md
             - name: Target metrics
               href: reliability/metrics.md
             - name: Testing
@@ -58,23 +62,35 @@
         - name: Checklist
           href: security/checklist.md
         - name: Tradeoffs
-          href: security/security-tradeoffs.md
+          href: security/tradeoffs.md
         - name: Recommendations    
           items:
-            - name: Security patterns
+            - name: Security patterns            
               href: security/design-patterns.md
-            - name: Application secrets
-              href: security/application-secrets.md
-            - name: Encryption
-              href: security/encryption.md
-            - name: Identity and access
-              href: security/identity-access.md
-            - name: Networking
-              href: security/networking.md
-            - name: Segmentation
+            - name: SE:02 Security development lifecycle
+              href: security/secure-development-lifecycle.md
+            - name: SE:02 Threat analysis
+              href: security/threat-model.md              
+            - name: SE:03 Data classification
+              href: security/classify-data.md
+            - name: SE:04 Segmentation strategy
               href: security/segmentation.md
-            - name: Testing and validation
-              href: security/testing.md
+            - name: SE:05 Identity and access management
+              href: security/identity-access.md
+            - name: SE:06 Network controls
+              href: security/networking.md
+            - name: SE:07 Encryption
+              href: security/encryption.md
+            - name: SE:08Hardening resources
+              href: security/hardening.md              
+            - name: SE:09 Application secrets
+              href: security/application-secrets.md
+            - name: SE:10 Monitoring and threat detection
+              href: security/monitoring.md
+            - name: SE:11 Testing and validation
+              href: security/testing.md              
+            - name: SE:12 Incident response 
+              href: security/incident-response.md
       - name: Cost Optimization
         items: 
         - name: Quick links
@@ -105,6 +121,18 @@
               href: cost-optimization/eliminate-waste.md
             - name: Optimize environment costs
               href: cost-optimization/optimize-environment-costs.md
+            - name: Optimize flow costs
+              href: cost-optimization/optimize-flow-costs.md
+            - name: Optimize data costs
+              href: cost-optimization/optimize-data-costs.md
+            - name: Optimize code
+              href: cost-optimization/optimize-code.md
+            - name: Optimize scaling
+              href: cost-optimization/optimize-scaling.md
+            - name: Optimize personnel time
+              href: cost-optimization/optimize-personnel-time.md
+            - name: Consolidate
+              href: cost-optimization/consolidation.md
       - name: Operational Excellence
         items: 
         - name: Quick links
@@ -113,20 +141,28 @@
           href: operational-excellence/principles.md
         - name: Checklist
           href: operational-excellence/checklist.md
+        - name: Safe deployments
+          href: operational-excellence/safe-deployments.md
         - name: Tradeoffs
           href: operational-excellence/tradeoffs.md
         - name: Recommendations
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
-            - name: Automate tasks
+            - name: Automating tasks
               href: operational-excellence/automate-tasks.md
-            - name: Enable automation
+            - name: Emergency response
+              href: operational-excellence/emergency-response.md
+            - name: Enabling automation
               href: operational-excellence/enable-automation.md
+            - name: Failure mitigation
+              href: operational-excellence/mitigation-strategy.md
             - name: Observability framework development
               href: operational-excellence/observability.md
             - name: Supply chain for workload development
               href: operational-excellence/workload-supply-chain.md
+            - name: Using infrastructure as code
+              href: operational-excellence/infrastructure-as-code-design.md
       - name: Performance Efficiency
         items: 
         - name: Quick links
@@ -165,7 +201,7 @@
               href: performance-efficiency/respond-live-performance-issues.md
             - name: Continuous performance optimization
               href: performance-efficiency/continuous-performance-optimize.md
-            
+
     - name: Workloads
       items:
       - name: Overview
@@ -401,7 +437,9 @@
               - name: Data management
                 href: resiliency/data-management.md
               - name: Application resiliency
-                href: /azure/architecture/reliability/architect?toc=/azure/well-architected/toc.json&bc=/azure/well-architected/breadcrumb/toc.json
+                href: /azure/architecture/reliability/architect?toc=/azure/architecture/framework/toc.json&bc=/azure/architecture/framework/breadcrumb/toc.json
+              - name: Regions and availability zones
+                href: resiliency/regions-availability-zones.md
               - name: Business metrics
                 href: resiliency/business-metrics.md
               - name: Best practices
@@ -739,6 +777,32 @@
             href: scalability/old-tradeoffs.md
       - name: Workloads
         items:
+          - name: Azure VMware Solution
+            items:
+              - name: Quick links
+                href: azure-vmware/index.yml
+              - name: Get started
+                href: azure-vmware/overview.md
+              - name: Design principles
+                href: azure-vmware/design-principles.md
+              - name: Design areas
+                items:
+                - name: Infrastructure
+                  href: azure-vmware/infrastructure.md
+                - name: Applications
+                  href: azure-vmware/application-platform.md
+                - name: Networking
+                  href: azure-vmware/networking.md
+                - name: Monitoring
+                  href: azure-vmware/monitoring.md
+                - name: Security
+                  href: azure-vmware/security.md
+                - name: Operations
+                  href: azure-vmware/operations.md
+              - name: Azure landing zone integration
+                href: azure-vmware/landing-zone-integration.md
+              - name: Assessment
+                href: azure-vmware/assessment.md
           - name: Mission-critical
             items:
               - name: Quick links

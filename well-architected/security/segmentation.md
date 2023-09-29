@@ -1,6 +1,6 @@
 ---
-title: Recommendations for building a segmentation strategy
-description: Learn about the recommendations for building a unified segmentation strategy with the goal of using isolation boundaries in workload design, its presence in the organization, and workload team structure.
+title: Segmentation strategy recommendations
+description: Learn about the recommendations for building a unified segmentation strategy using perimeters and isolation boundaries. 
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
@@ -11,246 +11,232 @@ ms.topic: conceptual
 
 **Applies to: SE 04**
 
-This guide describes recommendations for building a unified segmentation strategy with the goal of using isolation boundaries in workload design, its presence in the organization, and workload team structure.
+This guide describes the recommendations for building a unified segmentation strategy. Using perimeters and isolation boundaries in workloads, you can design a security approach that works for you.
 
 **Definitions** 
 
 |Term   |Definition   |
 |---------|---------|
 |Segment      |   A logical unit that's isolated from other entities and protected by a set of security measures.      |
-|Perimeter     |  Trust boundary around a segment.       |
+|Perimeter     |  The trust boundary around a segment.       |
 |Containment     |  A technique to contain the blast radius if an attacker gains access to a segment.       |
 |Role     |  A set of permissions needed to complete a job function.       |
-|Least-privilege access     | Zero-Trust principle that aims at minimizing a set of permissions to complete a job function.        |
+|Least-privilege access     | A Zero Trust principle that aims at minimizing a set of permissions to complete a job function.        |
 |Resource organization     | A strategy to group related resources by flows within a segment.        |
 
 ## Key design strategies
 
-A segment is a logical section of your solution that needs to be secured as one unit. A segmentation strategy defines how this unit should be intentionally separated from other units, having its own set of security requirements with measures to follow.
+A segment is a logical section of your solution that needs to be secured as one unit. A segmentation strategy defines how one unit should be separated from other units with its own set of security requirements and measures.
 
-Commonly, the concept of segmentation is used for networks. However, the same underlying principle should be used throughout a solution, including segmenting resources for management purposes and for access control.
+The concept of segmentation is commonly used for networks. However, the same underlying principle can be used throughout a solution, including segmenting resources for management purposes and access control.
 
-Segmentation helps you to design a security approach based on the principles of the Zero-Trust model, including applying defense in depth. By segmenting your workloads, you ensure that an attacker who breaches one network segment won\'t gain access to another. Similarly, if an attacker breaches a segment that\'s protected by one set of identity controls, they won\'t be able to gain access to another segment because it\'s got a separate set of identity controls. In a secure system, identity and network attributes must block unauthorized access and hide the assets from being exposed.
+Segmentation helps you design a security approach that applies defense in depth based on the principles of the Zero Trust model. Ensure that an attacker who breaches one network segment can't gain access to another by segmenting workloads with different identity controls. In a secure system, identity and network attributes block unauthorized access and hide the assets from being exposed. Here are some examples of segments:
 
-Here are some example representations of segments:
+- Subscriptions that isolate workloads of an organization
+- Resource groups that isolate workload assets
+- Deployment environments that isolate deployment by stages
+- Teams and roles that isolate job functions related to workload development and management
+- Application tiers that isolate by workload utility
+- Microservices that isolate one service from another
 
--   Subscriptions that isolate workloads of an organization.
+Consider these key elements of segmentation to make sure you're building a comprehensive defense in depth strategy:
 
--   Resource groups that isolate workload assets.
+- The **boundary or perimeter** is the entry edge of a segment where you apply security controls. Perimeter controls should block access to the segment unless explicitly allowed. The goal is to prevent an attacker from breaking through the perimeter and gaining control of the system. For example, an application tier might accept an end user's access token when it processes a request. But the *data* tier might require a different access token that has a specific permission, which only the application tier can request.
 
--   Deployment environments that isolate deployment by stages of development.
+- **Containment** is the exit edge of a segment that prevents lateral movement in the system. The goal of containment is to minimize the effect of a breach. For example, an Azure virtual network might be used to configure routing and network security groups to only allow traffic patterns that you expect, avoiding traffic to arbitrary network segments.
 
--   Teams and roles that isolate job functions related to workload development and management.
+- **Isolation** is the practice of grouping entities with similar assurances together to protect them with a boundary. The goal is ease of management and the containment of an attack within an environment. For example, you might group the resources that relate to a specific workload into one Azure subscription, and then apply access control so that only specific workload teams can access the subscription.
 
--   Application tiers that isolate by workload utility. Further, microservices isolate one service from another.
+It's important to note the distinction between perimeters and isolation. Perimeter refers to the points of location that should be checked. Isolation is about grouping. Actively contain an attack by using these concepts together.
 
-These are the key elements of segmentation that should be considered to make sure you are building a comprehensive defense-in-depth strategy:
+Isolation doesn't mean creating silos in the organization. A unified segmentation strategy provides alignment between the technical teams and sets clear lines of responsibility. Clarity reduces the risk of human error and automation failures that can lead to security vulnerabilities, operational downtime, or both. Suppose a security breach is detected in a component of a complex enterprise system. It's important that everyone understands who's responsible for that resource so that the appropriate person is included in the triage team. By creating and documenting a good segmentation strategy, the organization and stakeholders can quickly identify how to respond to different kinds of incidents.
 
--   **Boundary or perimeter**. The entry edge of a segment where you apply security controls. The controls should block access to the segment unless explicitly allowed. The goal is to prevent an adversary from breaking through the perimeter and gaining control of the system. For example, an application tier might accept an end user's access token when it processes a request. The data tier might require a different access token that's got a specific permission, which only the application tier can request.
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Segmentation introduces complexity because there's overhead in management. There's also a tradeoff in cost. For example, more resources are provisioned when deployment environments that run side by side are segmented.
 
--   **Containment**. The exit edge of a segment that prevents lateral movement of adversaries in the system. The goal is to minimize the blast radius. For example, when you configure an Azure virtual network you might configure routing and network security groups to only allow traffic patterns that you expect, and avoid traffic going to arbitrary network segments.
+> ![Risk icon](../_images/risk.svg) **Risk**: Micro-segmentation beyond a reasonable limit loses the benefit of isolation. When you create too many segments, it becomes difficult to identify points of communication or to allow for valid communication paths within the segment.
 
--   **Isolation**. Entities that need to/can be secured by similar assurances are grouped together and protected by a boundary. The goal is ease of management. Also, the containment of attack vectors within an environment is critical. For example, you might group all of the resources that relate to a specific workload into one Azure subscription, and then apply access control so that only the workload teams can access the subscription.
+### Identity as the perimeter
 
-It is important to note the distinction between perimeters and isolation. Perimeter refers to the points of location that should be checked. Isolation is about grouping. These concepts must be used together so that you can contain the impact aggressively.
+Various identities such as people, software components, or devices access workload segments. Identity is a perimeter that should be the primary line of defense to authenticate and authorize access across isolation boundaries, regardless of where the access request originates. Use identity as a perimeter to:
 
-Isolation, however, does not mean creating silos in the organization. Instead, a unified segmentation strategy aims to bring alignment between the technical teams and set clear lines of responsibilities. This clarity reduces the risk of human errors and automation failures that can lead to security vulnerabilities, operational downtime, or both. Suppose a security breach is detected in a component of a complex enterprise system. It\'s important that everybody understands who is responsible for that resource, and that the correct person is included in the triage team. By creating and documenting a good segmentation strategy, the organization can quickly identify how to respond to different kinds of incidents and the stakeholders to be included.
+- **Assign access by role.**
+    Identities only need access to the segments required to do their job. Minimize anonymous access by understanding the roles and responsibilities of the requesting identity so that you know the entity that's requesting access to a segment and for what purpose.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Segmentation introduces complexity because there is overhead in management. There is also a tradeoff in cost. For example, segmenting deployment environments that run side by side will cause more resources to be provisioned.
+    An identity might have different access scopes in different segments. Consider a typical environment setup, with separate segments for each stage. Identities associated with the developer role have read-write access to the development environment. As the deployment moves to staging, those permissions are curbed. By the time the workload is promoted to production, scope for developers is reduced to read-only access.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Micro-segmentation beyond a reasonable limit loses the benefit of isolation. When you create too many segments, it becomes difficult to identify points of communication or to allow all of the valid communication paths within the segment.
+- **Consider application and management identities separately.**
+    In most solutions, users have a different level of access than developers or operators. In some applications, you might use different identity systems or directories for each type of identity. Consider using access scopes and creating separate roles for each identity.
 
-### Identity as the perimeter 
+- **Assign least-privilege access.**
+    If the identity is allowed access, determine the level of access. Start with the least privilege for each segment and broaden that scope only when needed.
 
-Workload segments will be accessed by various identities whether that's people, software components, or devices. Identity is a non-negotiable perimeter that should be considered as the primary line of defense that authenticates and authorizes access across isolation boundaries, regardless of where the access request originates.
+    By applying the least privilege, you limit the negative effects if the identity is ever compromised. If access is limited by time, the attack surface is reduced further. Time-limited access is especially applicable to critical accounts, such as administrators or software components that have a compromised identity.
 
--   **Assign access by role**
-
-    Identities must only have access to segments needed to do the job. Understanding roles and responsibilities of requesting identity is key. This minimizes anonymous access because you know the entity that is requesting access to a segment and for what purpose.
-    
-    An identity might have different access scopes in different segments. Consider a typical environment setup, where there are separate segments for each stage. Identities associated with the developer role have read-write access to the development environment. As the deployment moves to staging, those permissions are curbed. By the time the workload is promoted to production, scope for developers is reduced to read-only access.
-    
--   **Consider application and management identities separately**
-
-    In most solutions, users have a different level of access than do developers or operators. In some applications, you might use different identity systems or directories for each type of identity. Consider access scopes and roles separately for each.
-    
--   **Assign least-privilege access**
-
-    If the identity is allowed access, determine the level of access. Start with the least privilege per segment and broaden that scope only if/when needed.
-    
-    By applying the least privilege, you limit the impact if the identity is ever compromised. If access is limited by time, the attack surface will be reduced further. This is especially applicable to critical impact accounts, such as Administrators, who should only have limited time access. Or, a software component whose identity is compromised.
-    
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: The performance of the workload can be impacted. Verifying each request explicitly requires extra compute cycles and extra network IO. 
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: The performance of the workload can be affected by identity perimeters. Verifying each request explicitly requires extra compute cycles and extra network IO.
 >
-> There is also a management overhead with role-based access. Keeping track of identities and their access scopes can become complex in role assignments. The workaround is to assign roles to security groups instead of individual identity.
+> Role-based access control (RBAC) also results in management overhead. Keeping track of identities and their access scopes can become complex in role assignments. The workaround is to assign roles to security groups instead of individual identities.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Identity settings can be complex. Misconfigurations can impact reliability of the workload. Suppose there's a misconfigured role assignment that's denied access to database. The requests will start failing, eventually causing reliability issues that cannot otherwise be detected until runtime.
+> ![Risk icon](../_images/risk.svg) **Risk**: Identity settings can be complex. Misconfigurations can affect the reliability of the workload. For example, suppose there's a misconfigured role assignment that's denied access to a database. The requests start failing, eventually causing reliability issues that can't otherwise be detected until runtime.
 
 For information about identity controls, see [Identity and access management](identity-access.md).
 
-In contrast to network access controls, identity validates access control at access time. Conducting regular access reviews is highly recommended. Especially require an approval workflow to obtain privileges for critical impact accounts.
-
-For example, patterns related to identity segmentation, see [Identity segmentation patterns](#identity-segmentation-patterns).
+In contrast to network access controls, identity validates access control at access time. It's highly recommended to conduct regular access review and require an approval workflow to obtain privileges for critical impact accounts. For example, see [Identity segmentation patterns](#identity-segmentation-patterns).
 
 ### Networking as a perimeter
 
-Identity perimeters are network agnostic. Network perimeters augment identity but never replaces it. Network perimeters are established to control blast radius, block unexpected, prohibited, and unsafe access, and obfuscate workload resources.
+Identity perimeters are network agnostic while network perimeters augment identity but never replace it. Network perimeters are established to control blast radius, block unexpected, prohibited, and unsafe access, and obfuscate workload resources.
 
-While the primary focus of the identity perimeter is least privilege, assume breach should be the mindset when you're designing the network perimeter.
+While the primary focus of the identity perimeter is least privilege, you should assume there will be a breach when you're designing the network perimeter.
 
-You can create software-defined perimeters in your networking footprint by using the various Azure services and features. When a workload (or parts of a given workload) is placed into separate segments, you can control traffic from/to those segments to secure communication paths. If a segment is compromised, you will be able to better contain the impact and prevent it from laterally spreading through the rest of your network.
+Create software-defined perimeters in your networking footprint using Azure services and features. When a workload (or parts of a given workload) is placed into separate segments, you control traffic from or to those segments to secure communication paths. If a segment is compromised, it's contained and prevented from laterally spreading through the rest of your network.
 
-Think like an attacker to achieve a foothold at various points within the workload and establish controls to mitigate further expansion. The controls should detect, contain, and stop attackers from gaining access to an entire workload.
+Think like an attacker to achieve a foothold within the workload and establish controls to minimize further expansion. The controls should detect, contain, and stop attackers from gaining access to the entire workload. Here are some examples of network controls as a perimeter:
 
--   Define your edge perimeter between public networks and the network in which your workload is placed. Restrict line of sight from public networks to your network as much as possible.
+- Define your edge perimeter between public networks and the network where your workload is placed. Restrict line of sight from public networks to your network as much as possible.
+- Implement demilitarized zones (DMZs) in front of the application with proper controls via firewalls.
+- Create micro-segmentation within your private network by grouping parts of the workload into separate segments. Establish secure communication paths between them.
+- Create boundaries based on intent. For example, segment workload functional networks from operational networks.
 
--   Implement demilitarized zones (DMZs) in front of the application with proper controls through firewalls.
+For common patterns related to networking segmentation, see [Networking segmentation patterns](#networking-segmentation-patterns).
 
--   Create micro-segmentation within your private network by grouping parts of the workload into separate segments. Secure communication paths between them.
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**:  Network security controls are often expensive because they're included with the premium SKUs. Configuring rules on firewalls often results in overwhelming complexity requiring broad exceptions.  
+>
+> Private connectivity changes architectural design, often adding more components such as jump boxes for private access to compute nodes.
+>
+> Because network perimeters are based on control points, or hops, on the network, each hop can be a potential point of failure. These points can have an effect on the reliability of the system.
 
--   Creating boundaries based on the intent. For example, segment workload functional network from operational networks.
-
-For common patterns related to networking segmentation, see the [Networking segmentation patterns section](#networking-segmentation-patterns) in this article.
-
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**:  Network security controls are expensive as often they are included as part of the premium SKUs. There's cost of operations. Configuring rules on firewalls often results in overwhelming complexity requiring broad exceptions.  
-> 
-> Private connectivity will change architecture design, often adding more components. For example, adding jump boxes for private access to compute nodes. 
-> 
-> Because network perimeter is based on control points (or hops) on the network, each hop can be a potential point of failure. These points can have an impact on the reliability of the system.
-
-> ![Risk icon](../_images/risk.svg) **Risk**: Network controls are rule based and there's a significant chance of misconfiguration, which is a reliability concern.
+> ![Risk icon](../_images/risk.svg) **Risk**: Network controls are rule-based and there's a significant chance of misconfiguration, which is a reliability concern.
 
 For information about network controls, see [Networking and connectivity](networking.md).
 
 ### Roles and responsibilities
 
-Defining clear lines of responsibility within a workload team and central teams is also a form of segmentation. This delineation avoids confusion that can create security risks.
+Segmentation that prevents confusion and security risks is achieved by clearly defining lines of responsibility within a workload team.
 
-Clearly documenting and sharing the roles and functions creates consistency and facilitates communication. Designate groups (or individual roles) that are responsible for key functions. Consider the built-in roles in Azure before creating custom roles for objects.
+Document and share roles and functions to create consistency and facilitate communication. Designate groups or individual roles that are responsible for key functions. Consider the built-in roles in Azure before creating custom roles for objects.
 
-When assigning permissions for a segment, consider consistency while allowing flexibility to accommodate several organizational models. These models can range from a single centralized IT group to mostly independent IT and DevOps teams.
+Consider consistency while accommodating several organizational models when assigning permissions for a segment. These models can range from a single centralized IT group to mostly independent IT and DevOps teams.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Membership of groups can change over time as employees join or leave teams or change roles. Management of roles across segments can be a management overhead.
-
-For an example of how roles and responsibilities are segmented in a workload team, [Roles and responsibilities](#roles-and-responsibilities).
+> ![Risk icon](../_images/risk.svg) **Risk**: Membership of groups can change over time as employees join or leave teams or change roles. Management of roles across segments can result in management overhead.
 
 ### Resource organization
 
-Segmentation allows you to isolate workload resources from other parts of the organization or even within the team. Azure constructs such as management groups, subscriptions, environments, resource groups, are ways of organizing your resources that promote segmentation. Here are some examples of resource level isolation.
+Segmentation allows you to isolate workload resources from other parts of the organization or even within the team. Azure constructs, such as management groups, subscriptions, environments, and resource groups, are ways of organizing your resources that promote segmentation. Here are some examples of resource-level isolation:
 
-Using polyglot persistence supports segmentation by using a mix of data store technologies instead of a single database system. The reason might be separation by various data models, separation of functionalities such as data storage and analytics, or the need to separate by access patterns.
+- Polyglot persistence involves a combination of data storing technologies instead of a single database system to support segmentation. Use polyglot persistence for separation by various data models, separation of functionalities such as data storage and analytics, or to separate by access patterns.
+- Allocate one service for each server when organizing your compute. This level of isolation minimizes complexity and can help contain an attack.
+- Azure provides built-in isolation for some services, for example separation of compute from storage. For other examples, see [Isolation in the Azure public cloud](/azure/security/fundamentals/isolation-choices).
 
-When organizing your compute, you can allocate one service per server. This level of isolation minimizes complexity and can help in containing an attack.
-
-Azure also provides built-in isolation in some of the services. For example, separation of compute from storage. For other examples, see [Isolation in the Azure Public Cloud](/azure/security/fundamentals/isolation-choices).
-
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**:  There is an increase in total cost of ownership (TCO). For data stores, there might be added complexity and coordination during disaster recovery.
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**:  Resource isolation might result in an increase in total cost of ownership (TCO). For data stores, there might be added complexity and coordination during disaster recovery.
 
 ## Azure facilitation
 
+Certain Azure services are available for use in implementing a segmentation strategy, as outlined in the following sections.
+
 ### Identity
 
-Azure role-based access control (RBAC) supports segmentation by isolating access by job functions. Only certain actions are allowed for certain roles and scopes.
+Azure RBAC supports segmentation by isolating access by job function. Only certain actions are allowed for certain roles and scopes. For example, job functions that only need to observe the system can be assigned reader permissions versus contributor permissions that allow the identity to manage resources.
 
-For example, job functions that only need to observe the system can be assigned Reader permissions versus Contributor permissions that allows the identity to manage resources.
-
-For more information, see [Best practices for Azure RBAC](/azure/role-based-access-control/best-practices).
+For more information, see [Best practices for RBAC](/azure/role-based-access-control/best-practices).
 
 ### Networking
 
 :::image type="content" source="images/segmentation/azure-facilitation-networking.png" alt-text="Diagram that shows networking options for segmentation." border="false" lightbox="images/segmentation/azure-facilitation-networking.png":::
 
-[Virtual Network (VNets)](/azure/virtual-network/virtual-networks-overview): Created within a subscription in private address spaces. They provide network level containment of resources with no traffic allowed by default between any two virtual networks. Like subscriptions, any communication between virtual networks needs to be explicitly provisioned.
+[Virtual networks](/azure/virtual-network/virtual-networks-overview): Virtual networks provide network-level containment of resources without adding traffic between two virtual networks. Virtual networks are created in private address spaces within a subscription
 
-Network Security Groups (NSG): An access control mechanism for controlling traffic between resources within a virtual network and with external networks, such as the internet, other virtual networks. Use User Defined Routes (UDR) to control the next hop for traffic. NSGs can take your segmentation strategy to a granular level by creating perimeters for a subnet, a VM, or a group of VMs. For information about possible operations with subnets in Azure, see [Subnets (Azure Virtual Networks)](/rest/api/virtualnetwork/subnets).
+Network security groups (NSG): An access control mechanism for controlling traffic between resources in virtual networks and external networks, such as the internet. Implement user-defined routes (UDR) to control the next hop for traffic. NSGs can take your segmentation strategy to a granular level by creating perimeters for a subnet, a virtual machine (VM), or a group of VMs. For information about possible operations with subnets in Azure, see [Subnets](/rest/api/virtualnetwork/subnets).
 
-[Application Security Groups (ASGs)](/azure/virtual-network/application-security-groups): Similar to NSGs but are referenced with an application context. It allows you to group a set of VMs under an application tag and define traffic rules that are then applied to each of the underlying VMs.
+[Application security groups (ASGs)](/azure/virtual-network/application-security-groups): ASGs allow you to group a set of VMs under an application tag and define traffic rules that are then applied to each of the underlying VMs.
 
-[Azure Firewall](/azure/firewall/): A cloud native stateful Firewall as a service, which can be deployed in your VNet or in [Azure Virtual WAN](/azure/virtual-wan/virtual-wan-about) hub deployments for filtering traffic flowing between cloud resources, the internet, and on-premise. You create rules or policies (using Azure Firewall or [Azure Firewall Manager](/azure/firewall-manager/overview)) specifying allow/deny traffic using layer 3 to layer 7 controls. You can also filter traffic going to the internet using both Azure Firewall and third parties by directing some or all traffic through third-party security providers for advanced filtering & user protection. Azure supports network virtual appliance deployment which helps segmentation with third-party firewalls.
+[Azure Firewall](/azure/firewall/): A cloud-native service, which can be deployed in your virtual network or in [Azure Virtual WAN](/azure/virtual-wan/virtual-wan-about) hub deployments. Use Azure Firewall to filter traffic flowing between cloud resources, the internet, and on-premises resources. Use Azure Firewall or [Azure Firewall Manager](/azure/firewall-manager/overview) to create rules or policies that allow or deny traffic using layer 3 to layer 7 controls. Filter internet traffic using Azure Firewall and third parties by directing traffic through third-party security providers for advanced filtering and user protection. Azure supports network virtual appliance deployment, which helps segmentation from third-party firewalls.
 
 ## Example
 
-Here are some common patterns for segmenting a workload in Azure. Choose a pattern based on your organization\'s needs.
+Here are some common patterns for segmenting a workload in Azure. Choose a pattern based on your needs.
 
 ### Identity segmentation patterns
 
 #### Pattern 1: Job title-based grouping
 
-One way to organize security groups is by job title. This approach involves creating security groups for your workload team based on their roles, not considering the work that needs to be accomplished. Grant those security groups RBAC permissions (standing or JIT as needed) according to their responsibilities in the workload. Assign human and service principles to security groups based on their as-needed access.
+One way to organize security groups is by job title like software engineer, database administrator, site reliability engineer, quality assurance engineer, or security analyst. This approach involves creating security groups for your workload team based on their roles, without considering the work that needs to be accomplished. Grant security groups RBAC permissions, standing or just in time (JIT), according to their responsibilities in the workload. Assign human and service principles to security groups based on their as-needed access.
 
-Examples of job titles include Software Engineer, DBA, SRE, QA, and Security Analyst.
-
-Membership is highly visible at the role assignment level, making it easy to see to what all "role" has access to. Each human is usually only a member of one security group, making onboarding and offboarding easy.
-
-However, unless job titles overlap perfectly with responsibilities, this won't lead to the tightest least privilege implementation. You might end up mixing in function-based grouping which then leads to a mixed implementation.
+Membership is highly visible at the role assignment level, making it easy to see what a *role* has access to. Each person is usually only a member of one security group, which makes onboarding and offboarding easy. However, unless job titles overlap perfectly with responsibilities, title-based grouping isn't ideal for least-privilege implementation. You might end up combining implementation with function-based grouping.
 
 #### Pattern 2: Function-based grouping
 
-Function-based grouping is a security group organization method that reflects discrete work that needs to be accomplished, not taking into account your team structure. This approach involves creating security groups for your workload that reflect discrete work that needs to be accomplished, again not taking into account your team structure. Grant those security groups RBAC permissions (standing or JIT as needed) according to their required function in the workload.
+Function-based grouping is a security group organization method that reflects discrete work that needs to be accomplished, not taking into account your team structure. With this pattern, you grant security groups RBAC permissions, standing or JIT as needed, according to their required function in the workload.
 
-Assign human and service principles to security groups based on their as-needed access. Where possible, use existing homogeneous groups as members of the function-based groups, such as those groups from Pattern 1.
+Assign human and service principles to security groups based on their as-needed access. Where possible, use existing homogeneous groups as members of the function-based groups, such as those groups from pattern 1. Examples of function-based groups include:
 
-Examples of function-based groups include Production Database Operators, Pre-production Database Operators, Production Certificate Rotation Operators, Pre-production Certificate Rotation Operators, Production live-site/triage, and Pre-production all access.
+- Production database operators
+- Preproduction database operators
+- Production certificate rotation operators
+- Preproduction certificate rotation operators
+- Production live-site/triage
+- Preproduction all access
 
-This approach maintains the tightest least privilege access and provides self-describing security groups (scope is evident), which makes it easy to audit membership relative to job duties performed. Often a built-in Azure role exists to match this job function.
+This approach maintains the strictest least-privilege access and provides security groups where scope is evident, which makes it easy to audit memberships relative to job duties performed. Often a built-in Azure role exists to match this job function.
 
-However, membership is abstracted at least one layer, forcing you to go to the IdP to understand who is in the group when looking from the resource perspective. One person needs to have multiple memberships maintained for complete coverage. The matrix of overlapping security groups can be complex.
+However, membership is abstracted at least one layer, forcing you to go to the identity provider to understand who's in the group when looking from the resource perspective. Additionally, one person needs to have multiple memberships maintained for complete coverage. The matrix of overlapping security groups can be complex.
 
-Pattern 2 is recommended to make the access patterns the focus, not the org chart. Org charts and members in roles sometimes change often, and capturing your workload's identity and access management from a "functional" perspective allows you to abstract your team organization from the secure management of the workload.
+Pattern 2 is recommended to make the access patterns the focus, not the organization chart. Organization charts and member roles sometimes change. Capturing your workload's identity and access management from a functional perspective allows you to abstract your team organization from the secure management of the workload.
 
 ### Networking segmentation patterns
 
 #### Pattern 1: Segmentation within a workload (soft boundaries)
 
-In this pattern, workload is placed in a single VNet using subnets to mark off boundaries. Segmentation is achieved by using two subnets, one for database and another for the web workloads. You must configure NSGs that allow Subnet1 to only communicate with Subnet2 and Subnet2 can only communicate with the internet. You can only have Layer 3 level control.
-
 :::image type="content" source="images/segmentation/segmentation-workload-soft-boundaries.png" alt-text="Diagram that shows a single virtual network." border="false" lightbox="images/segmentation/segmentation-workload-soft-boundaries.png":::
+
+In this pattern, the workload is placed in a single virtual network using subnets to mark boundaries. Segmentation is achieved using two subnets, one for database and one for web workloads. You must configure NSGs that allow Subnet1 to only communicate with Subnet2 and Subnet2 to only communicate with the internet. This pattern provides layer 3 level control.
 
 #### Pattern 2: Segmentation within a workload
 
-:::image type="content" source="images/segmentation/segmentation-workload.png" alt-text="Diagram that shows a multiple virtual networks." border="false" lightbox="images/segmentation/segmentation-workload.png":::
+:::image type="content" source="images/segmentation/segmentation-workload.png" alt-text="Diagram that shows multiple virtual networks." border="false" lightbox="images/segmentation/segmentation-workload.png":::
 
-This is an example of platform-level segmentation. Workload components are spread across multiple VNets without peering between them. All communication is routed through an intermediary that serves as a public access point. All networks are owned by the workload team.
+This pattern is an example of platform-level segmentation. Workload components are spread across multiple networks without peering between them. All communication is routed through an intermediary that serves as a public access point. The workload team owns all networks.
 
-Pattern 2 provides containment but has added complexity of VNet management and sizing. Communication between the two VNets is over the public internet and that can be considered as a risk. There's also latency with public connections. The two networks can be peered. However, peering breaks segmentation by connecting the two networks creating a larger segment. Peering should be done when no other public endpoint are needed.
+Pattern 2 provides containment but has the added complexity of virtual network management and sizing. Communication between the two networks takes place over the public internet, which can be a risk. There's also latency with public connections. However, the two networks can be peered, breaking segmentation by connecting them to create a larger segment. Peering should be done when no other public endpoints are needed.
 
-
-|Considerations  |Pattern 1    |Pattern 2  |
+|Considerations  |Pattern 1   |Pattern 2  |
 |---------|---------|---------|
-|**Connectivity/routing: how each segment communicates to each other**     |  System routing provides default connectivity to workload components. No external component can communicate with the workload.       | Within the VNet, same as a pattern 1. <br> Between VNet, the traffic goes over the public internet. There's no direct connectivity between the networks.       |
-|**Network level traffic filtering**     |  Traffic between the segments is allowed by default. Use NSG, ASG to filter traffic.                                           | Within the VNets, same as a pattern 1. <br> Between the networks you can filter traffic through a firewall that can filter both ingress and egress traffic.   |
-|**Unintended open public endpoints**     |   NICs don't get public IPs. VNet also isn't exposed to internet API management.      |  Same as a pattern 1. Intended open public endpoint on one virtual network. That could be misconfigured to accept more traffic.       |
+|**Connectivity and routing: How each segment communicates**     |  System routing provides default connectivity to workload components. No external component can communicate with the workload.       | Within the virtual network, same as pattern 1. <br> Between networks, the traffic goes over the public internet. There's no direct connectivity between the networks.       |
+|**Network-level traffic filtering**     |  Traffic between the segments is allowed by default. Use NSGs or ASGs to filter traffic.                                           | Within the virtual network, same as pattern 1. <br> Between the networks, you can filter both ingress and egress traffic through a firewall.   |
+|**Unintended open public endpoints**     |   Network interface cards (NICs) don't get public IPs. Virtual networks aren't exposed to internet API management.      |  Same as pattern 1. Intended open public endpoint on one virtual network, which can be misconfigured to accept more traffic.       |
 
 ### Resource organization
 
-**Organize Azure resources based on ownership responsibility**
-
-Consider an Azure estate that contains multiple workloads, as well as shared services components like hub virtual networks, firewalls, identity services, and security services like Microsoft Sentinel:
+#### Organize Azure resources based on ownership responsibility
 
 :::image type="content" source="images/segmentation/organize-resources-ownership.png" alt-text="Diagram of an Azure estate that contains multiple workloads." border="false" lightbox="images/segmentation/organize-resources-ownership.png":::
 
-Components throughout the estate should be grouped based on their functional areas, workloads, and ownership. For example, shared networking resources should be grouped together into a single subscription and managed by a networking team. Components that are dedicated to individual workloads should be in their own segment and might be further divided based on application tiers or other organizational principles.
+Consider an Azure estate that contains multiple workloads and shared service components like hub virtual networks, firewalls, identity services, and security services like Microsoft Sentinel. Components throughout the estate should be grouped based on their functional areas, workloads, and ownership. For example, shared networking resources should be grouped together into a single subscription and managed by a networking team. Components that are dedicated to individual workloads should be in their own segment and might be further divided based on application tiers or other organizational principles.
 
-You can then grant access to manage resources within individual segments by creating Azure RBAC role assignments. For example, the cloud networking team might be granted administrative access to the subscription that contains their resources, but not to individual workload subscriptions.
+Grant access to manage resources within individual segments by creating RBAC role assignments. For example, the cloud networking team might be granted administrative access to the subscription that contains their resources, but not to individual workload subscriptions.
 
-When you create a good segmentation strategy, it should be possible to easily identify the owners of each segment. Consider using Azure resource tags to annotate resource groups or subscriptions with the owner team.
+A good segmentation strategy makes it possible to easily identify the owners of each segment. Consider using Azure resource tags to annotate resource groups or subscriptions with the owner team.
 
-**Configure and review access control**
+#### Configure and review access control
 
-When your segments are clearly defined for your resources, you can grant appropriate access based on need.
+Grant appropriate access based on need by clearly defining segments for your resources.
 
-Carefully consider the principle of least privilege when you define access control policies. It's also important to distinguish between *control plane operations* (management of the resource itself) from *data plane operations* (access to the data stored by the resource). For example, suppose you have a workload that contains a database with sensitive information about employees. You might grant management access to some users who need to configure settings like database backups and who monitor the performance of the database server. However, these individuals shouldn't be able to query the sensitive data stored in the database, so be sure to select permissions that grant the minimum scope they need to perform their duties.
+Consider the principle of least privilege when you define access control policies. It's important to distinguish between *control plane operations* (management of the resource itself) and *data plane operations* (access to the data stored by the resource). For example, suppose you have a workload that contains a database with sensitive information about employees. You might grant management access to some users that need to configure settings like database backups or users that monitor the performance of the database server. However, these users shouldn't be able to query the sensitive data stored in the database. Select permissions that grant the minimum scope needed for users to perform their duties. Regularly review role assignments for each segment and remove access that's no longer required.
 
-Regularly review the role assignments for each segment and remove access that's no longer required.
-
-> [!NOTE] 
-> Some highly privileged roles, like the Owner role in Azure RBAC, give users the ability to grant other users access to a resource. Limit how many users or groups are assigned the Owner role, and regularly review audit logs to ensure they are only performing valid operations.
+> [!NOTE]
+> Some highly privileged roles, like the owner role in RBAC, give users the ability to grant other users access to a resource. Limit how many users or groups are assigned the owner role, and regularly review audit logs to ensure they only perform valid operations.
 
 ## Related links
 
-- [Isolation in the Azure Public Cloud](/azure/security/fundamentals/isolation-choices)
-- [Recommendations for Azure RBAC](/azure/role-based-access-control/best-practices)
-- [VNets overview](/azure/virtual-network/virtual-networks-overview)
+- [Isolation in the Azure public cloud](/azure/security/fundamentals/isolation-choices)
+- [Recommendations for RBAC](/azure/role-based-access-control/best-practices)
+- [Virtual networks overview](/azure/virtual-network/virtual-networks-overview)
 - [ASGs](/azure/virtual-network/application-security-groups)
 - [Azure Firewall](/azure/firewall/)
-- [Azure Firewall Manager overview](/azure/firewall-manager/overview)
+- [Firewall Manager overview](/azure/firewall-manager/overview)
+
+## Next steps
+
+We recommend that you review the Security checklist to explore other concepts.
+
+> [!div class="nextstepaction"]
+> [Security checklist](checklist.md)

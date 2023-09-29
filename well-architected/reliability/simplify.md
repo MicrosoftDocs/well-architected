@@ -11,156 +11,176 @@ ms.topic: conceptual
 
 **Applies to: RE 10**
 
-This guide describes the recommendations for minimizing unnecessary complexity and overhead by focusing on keeping your workloads simple and efficient. This focus will help you optimize the reliability of your workload by choosing the best components to perform the necessary workload tasks and taking advantage of efficiencies offered by platform-provided services to lessen your development and management burdens. This design methodology will help you deliver a workload architecture that is resilient, repeatable, scalable, and manageable.
+This guide describes the recommendations for minimizing unnecessary complexity and overhead to keep your workloads simple and efficient. Choose the best components to perform the necessary workload tasks to optimize the reliability of your workload. To lessen your development and management burdens, take advantage of efficiencies that platform-provided services offer. This design helps you create a workload architecture that's resilient, repeatable, scalable, and manageable.
 
 **Definitions**
 
 |Term  |Definition  |
 |---------|---------|
-|Workload     | A discrete capability or computing task that can logically be separated from other tasks        |
+|Workload | A discrete capability or computing task that you can logically separate from other tasks. |
 
 ## Key design strategies
 
-A key tenet of designing for reliability is to keep things simple and efficient. If you narrowly focus your workload design on meeting business requirements, you can reduce the risk of having unnecessary complexity or overhead to manage. The principles discussed in this guide can help you make decisions about your design that will help you meet the goal of a lean, efficient, and reliable workload. Workload in the context of this guide and the other guides in this series means a discrete capability or computing task that can logically be separated from other tasks. Different workloads might have different requirements for availability, scalability, data consistency, and disaster recovery.
+A key tenet of designing for reliability is to keep things simple and efficient. Focus your workload design on meeting business requirements to reduce the risk of unnecessary complexity or excess overhead. Consider the recommendations in this article to help you make decisions about your design to create a lean, efficient, and reliable workload. Different workloads might have different requirements for availability, scalability, data consistency, and disaster recovery.
 
-Every design decision must be justified by a business requirement. This design principle might seem obvious, but is crucial to keep in mind when designing workloads. Must your application support millions of users, or a few thousand? Are there large traffic bursts, or a steady workload? What level of application outage is acceptable? Ultimately, business requirements drive these design considerations.
+You must justify every design decision with a business requirement. This design principle might seem obvious, but it's crucial for workload design. Does your application support millions of users, or a few thousand? Are there large traffic bursts, or a steady workload? What level of application outage is acceptable? Business requirements drive these design considerations.
 
 Work with stakeholders to:
 
--   Define and assign a measure of criticality to the user and system flows for your workload. Approaching your design with a focus on critical flows will help you determine the components required and the approach to achieving the required level of resilience. Refer to the Recommendations for identifying and rating flows (link to re01-identifying-flows) guide for further guidance on this topic.
+- **Define and assign a criticality level to your workload's user flows and system flows**. Focus your design on [critical flows](identify-flows.md) to help you determine the required components and the best approach to achieve the required resiliency level.
 
--   Define functional and nonfunctional requirements. Functional requirements determine whether an application performs its task. Nonfunctional requirements determine how well the application performs. Make sure you understand nonfunctional requirements like scalability, availability, and latency. These requirements influence design decisions and technology choices.
+- **Define functional and nonfunctional requirements**. Consider functional requirements to determine whether an application performs a task. Consider nonfunctional requirements to determine how well the application performs a task. Ensure that you understand nonfunctional requirements like scalability, availability, and latency. These requirements influence design decisions and technology choices.
 
--   Decompose workloads into components. As you begin to plan your design with a focus on simplicity, efficiency, and reliability, determine what types of components you will need to have in place to support your flows. Some components will support multiple flows and others may not but strive to identify which challenge the component conceptually addresses, and consider whether removing a component from individual flows might simplify the overall design while still allowing full functionality. Refer to the Recommendations for Failure Mode Analysis (link to re02-failure-mode-analysis) guide for further guidance on this topic.
+- **Decompose workloads into components**. Prioritize simplicity, efficiency, and reliability in your design. Determine the components that you need to support your flows. Some components support multiple flows. Identify which challenge a component conceptually addresses, and consider removing a component from individual flows to simplify the overall design while still providing full functionality. For more information, see [Recommendations for performing failure mode analysis](failure-mode-analysis.md).
 
--   Use failure mode analysis to identify single points of failure and potential risks. Consider whether you need to account for less likely situations, like a geographic area experiencing a major natural disaster that might affect all of the availability zones in the region. Mitigating these uncommon risks is generally more expensive and involves significant tradeoffs, so have a clear understanding of the business\'s tolerance for risk. Refer to the Recommendations for Failure Mode Analysis (link to re02-failure-mode-analysis) guide for further guidance on this topic.
+- **Use failure mode analysis** to identify single points of failure and potential risks. Consider whether you need to account for unlikely situations, for example a geographic area that experiences a major natural disaster that affects all the availability zones in the region. It's expensive and involves significant tradeoffs to mitigate these uncommon risks. Clearly understand your business's tolerance for risk. For more information, see [Recommendations for performing failure mode analysis](failure-mode-analysis.md).
 
--   Define availability and recovery targets for the workload in the context of your flows to inform your architecture. Business metrics include those focusing on availability like service level objectives (SLOs) and service level agreements (SLAs) and those focusing on recovery like mean time to recover (MTTR), mean time between failure (MTBF), recovery time objectives (RTOs) and recovery point objectives (RPOs). Defining target values for these metrics is an exercise in compromise and mutual understanding between technology and business teams to ensure that they both meet business objectives and are realistic. Refer to the Define reliability targets (link to re03-business-metrics) guide for further guidance on this topic.
+- **Define availability and recovery targets** for your flows to inform your workload's architecture. Business metrics include service-level objectives (SLOs), service-level agreements (SLAs), mean time to recover (MTTR), mean time between failure (MTBF), recovery time objectives (RTOs), and recovery point objectives (RPOs). Define target values for these metrics. This exercise might require compromise and mutual understanding between technology and business teams to ensure that each team's goals meet business objectives and are realistic. For more information, see [Recommendations for defining reliability targets](metrics.md).
 
-The following recommendations can be performed outside of the scope of stakeholder engagement:
+You can perform the following recommendations without stakeholder engagement:
 
--   Strive for simplicity and clarity in your design. Use the appropriate level of abstraction and granularity for your components and services. Avoid over-engineering or under-engineering your solution. For example: breaking down your code into too many small functions can make it harder to understand, test, and maintain.
+- **Strive for simplicity and clarity** in your design. Use the appropriate level of abstraction and granularity for your components and services. Avoid overengineering or under-engineering your solution. For example, if you break down your code into multiple small functions, it's hard to understand, test, and maintain.
 
--   All successful applications change over time, whether to fix bugs, add new features, bring in new technologies, or make existing systems more scalable and resilient.
+- **Concede that all successful applications change over time**, whether to fix bugs, implement new features or technologies, or make existing systems more scalable and resilient.
 
--   Use platform as a service (PaaS) options. When it\'s possible, use PaaS instead of infrastructure-as-a-service (IaaS). IaaS is like having a box of parts. You can build anything, but you have to assemble it yourself. PaaS options are easier to configure and administer. You don\'t need to set up virtual machines (VMs) or virtual networks. You also don\'t have to handle maintenance tasks, such as installing patches and updates.
+- **Use platform as a service (PaaS) options** instead of infrastructure as a service (IaaS) when possible. IaaS is like having a box of parts. You can build anything, but you have to assemble it yourself. PaaS options are easier to configure and administer. You don't need to set up virtual machines (VMs) or virtual networks. You also don't have to perform maintenance tasks, such as installing patches and updates.
 
--   Use asynchronous messaging. Asynchronous messaging is a way to decouple the message producer from the consumer.
+- **Use asynchronous messaging** to decouple the message producer from the consumer.
 
--   Abstract infrastructure away from domain logic. Don\'t let domain logic get mixed up with infrastructure-related functionality, such as messaging or persistence.
+- **Abstract infrastructure away from domain logic**. Ensure that domain logic doesn't interfere with infrastructure-related functionality, such as messaging or persistence.
 
--   Offload cross-cutting concerns to a separate service. For example, if several services need to authenticate requests, you could move this functionality into its own service. Then you could evolve the authentication service --- for example, by adding a new authentication flow --- without touching any of the services that use it.
+- **Offload cross-cutting concerns to a separate service**. For example, if several services need to authenticate requests, you can move this functionality into its own service. Then you can evolve the authentication service. For example, you can add a new authentication flow without touching any of the services that use it.
 
--   Evaluate the suitability of common patterns and practices for your specific needs. Avoid blindly following trends or recommendations that may not be the best fit for your context or requirements. For example: microservices are not always the best option for every application, as they can introduce complexity, overhead, and dependency issues.
+- **Evaluate the suitability of common patterns and practices** for your needs. Avoid following trends or recommendations that might not be best for your context or requirements. For example, microservices aren't the best option for every application because they can introduce complexity, overhead, and dependency issues.
 
 ### Develop just enough code
 
-The principles of simplicity, efficiency and reliability do not only apply to your workload components. Apply these principles to your development practices as well. In a loosely coupled, componentized workload, you can focus on only the functionality provided by a given component and develop to best take advantage of that functionality in the context of your flows. Use these recommendations to help you in your development practices:
+The principles of simplicity, efficiency, and reliability also apply to your development practices. In a loosely coupled, componentized workload, determine the functionality that a component provides. Develop your flows to take advantage of that functionality. Consider these recommendations for your development practices:
 
--   Use platform capabilities when they meet your business requirements. For example, you can use low-code, no-code, and serverless solutions offered by your cloud provider to offload development and management.
+- Use platform capabilities when they meet your business requirements. For example, to offload development and management, use low-code, no-code, or serverless solutions that your cloud provider offers.
 
--   Consider using libraries and frameworks if possible.
+- Use libraries and frameworks.
 
--   Consider introducing pair programming or dedicated code review sessions as part of your development practices.
+- Introduce pair programming or dedicated code review sessions as a development practice.
 
--   Consider introducing an approach to identify "dead code" (be skeptical about code that is not covered by your automated tests).
+- Implement an approach to identify *dead code*. Be skeptical of the code that your automated tests don't cover.
 
-## Use the best data store for your data
+### Use the best data store for your data
 
-In the past, many organizations stored all their data in large relational SQL databases. Relational databases are good at providing atomic, consistent, isolated, and durable (ACID) guarantees for transactions that involve relational data. But these databases come with costs:
+In the past, many organizations stored all their data in large relational SQL databases. Relational databases provide atomic, consistent, isolated, and durable (ACID) guarantees for relational data transactions. But these databases come with disadvantages:
 
--   Queries can require expensive joins.
+- Queries can require expensive joins.
 
--   You need to normalize the data and restructure it for schema on write.
+- You need to normalize the data and restructure it for schema on write.
 
--   Lock contention can affect performance.
+- Lock contention can affect performance.
 
-### Alternatives to relational databases
+#### Alternatives to relational databases
 
-In a large solution, a single data store technology probably doesn\'t meet all your needs. Alternatives to relational databases include:
+In a large solution, a single data store technology likely doesn't meet all your needs. Alternatives to relational databases include:
 
--   Key/value stores
+- Key-value stores
 
--   Document databases
+- Document databases
 
--   Search engine databases
+- Search engine databases
 
--   Time series databases
+- Time series databases
 
--   Column family databases
+- Column family databases
 
--   Graph databases
+- Graph databases
 
-Each has pros and cons, and different types of data fit more naturally into different data store types. Pick the storage technology that\'s the best fit for your data and how you use it.
+Each option has pros and cons. Different data types are better suited for different data store types. Pick the storage technology that's the best fit for your data and how you use it.
 
-For example, you might store a product catalog in a document database, such as Azure Cosmos DB, which supports a flexible schema. In that case, each product description is a self-contained document. For queries over the entire catalog, you might index the catalog and store the index in Azure Cognitive Search. Product inventory might go into a SQL database, because that data requires ACID guarantees.
+For example, you might store a product catalog in a document database, such as Azure Cosmos DB, which supports a flexible schema. Each product description is a self-contained document. For queries over the entire catalog, you might index the catalog and store the index in Azure Cognitive Search. Product inventory might go into a SQL database because that data requires ACID guarantees.
 
-### Recommendations
+#### Recommendations
 
--   Don\'t use a relational database for everything. Consider other data stores when it\'s appropriate. For information on common storage models, see [Understand data store models](https://learn.microsoft.com/azure/architecture/guide/technology-choices/data-store-overview).
+- Consider other data stores. Relational databases aren't always appropriate. For more information, see [Understand data store models](/azure/architecture/guide/technology-choices/data-store-overview).
 
--   Remember that data includes more than just persisted application data. It also includes application logs, events, messages, and caches.
+- Remember that data includes more than just persisted application data. It also includes application logs, events, messages, and caches.
 
--   Embrace polyglot persistence, or solutions that use a mix of data store technologies.
+- Embrace polyglot persistence or solutions that use a combination of data store technologies.
 
--   Consider the type of data that you have. For example:
+- Consider the type of data that you have. For example, store:
 
-    -   Put transactional data into a SQL database.
+  - Transactional data in a SQL database.
 
-    -   Store JSON documents in a document database.
+  - JSON documents in a document database.
 
-    -   Use a time series database for telemetry.
+  - Telemetry in a time series database.
 
-    -   Put application logs into Azure Cognitive Search.
+  - Application logs in Azure Cognitive Search.
 
-    -   Choose Azure Blob Storage for blobs.
+  - Blobs in Azure Blob Storage.
 
--   Prefer availability over (strong) consistency. The CAP theorem implies that distributed systems have to make trade-offs between availability and consistency. You can never completely avoid network partitions, the other leg of the CAP theorem. But you can often achieve higher availability by adopting an eventual consistency model.
+- Prioritize availability over consistency. The [CAP theorem](/azure/well-architected/carrier-grade/carrier-grade-design-area-data-model#cap-theorem) implies that you have to make tradeoffs between availability and consistency in a distributed system. You can't completely avoid network partitions, which is the other component of the CAP theorem. But you can adopt an eventual consistency model to achieve higher availability.
 
--   Consider the skill set of your development team. There are advantages to using polyglot persistence, but it\'s possible to go overboard. Adopting a new data storage technology requires a new set of skills. To get the most out of the technology, the development team needs to understand how to:
+- Consider the skill set of your development team. There are advantages to using polyglot persistence, but it's possible to go overboard. It requires new skill sets to adopt a new data storage technology. To get the most out of the technology, your development team must:
 
-    -   Optimize queries.
+  - Optimize queries.
 
-    -   Tune for performance.
+  - Tune for performance.
 
-    -   Work with appropriate usage patterns.
+  - Work with the appropriate usage patterns.
 
-Consider these factors when you choose a storage technology.
+Consider these factors when you choose a storage technology:
 
--   Use compensating transactions. A side effect of polyglot persistence is that a single transaction might write data to multiple stores. If something fails, use compensating transactions to undo any steps that have already finished.
+- Use compensating transactions. With polyglot persistence, a single transaction might write data to multiple stores. If there's a failure, use compensating transactions to undo any steps that have finished.
 
--   Look at bounded contexts, a concept from domain-driven design. A bounded context is an explicit boundary around a domain model. A bounded context defines which parts of the domain the model applies to. Ideally, a bounded context maps to a subdomain of the business domain. The bounded contexts in your system are a natural place to consider polyglot persistence. For example, products might appear in the Product Catalog subdomain and the Product Inventory subdomain. But most likely, these two subdomains have different requirements for storing, updating, and querying products.
+- Consider bounded contexts, which is a domain-driven design concept. A bounded context is an explicit boundary around a domain model. A bounded context defines which parts of the domain that the model applies to. Ideally, a bounded context maps to a subdomain of the business domain. Consider polyglot persistence for bounded contexts in your system. For example, products might appear in the product catalog subdomain and the product inventory subdomain. But most likely, these two subdomains have different requirements for storing, updating, and querying products.
 
 ## Azure facilitation
 
-Azure offers low-code, no-code and serverless services including:
+Azure offers the following services:
 
-[Azure Functions](https://learn.microsoft.com/azure/azure-functions/functions-overview?pivots=programming-language-csharp) is a serverless compute service that allows you to build orchestration through developing minimal code.
+- [Azure Functions](https://azure.microsoft.com/products/functions) is a serverless compute service that you can use to build orchestration with minimal code.
 
-[Azure Logic Apps](https://learn.microsoft.com/azure/logic-apps/logic-apps-overview) is a serverless workflow integration platform that allows you to build orchestration through a GUI or by editing a configuration file.
+- [Azure Logic Apps](https://azure.microsoft.com/products/logic-apps) is a serverless workflow integration platform that you can use to build orchestration with a GUI or by editing a configuration file.
 
-[Azure Event Grid](https://learn.microsoft.com/azure/event-grid/overview) is a highly scalable, fully managed Pub Sub message distribution service that offers flexible message consumption patterns using the MQTT and HTTP protocols. With Azure Event Grid, you can build data pipelines with device data, integrate applications, and build event-driven serverless architectures.
+- [Azure Event Grid](https://azure.microsoft.com/products/event-grid) is a highly scalable, fully managed publish-subscribe message distribution service that offers flexible message consumption patterns that use the MQTT and HTTP protocols. With Event Grid, you can build data pipelines with device data, build event-driven serverless architectures, and integrate applications.
 
-Refer to the [Choose an Azure compute service - Azure Architecture Center](https://learn.microsoft.com/azure/architecture/guide/technology-choices/compute-decision-tree) [Choose a compute option for microservices - Azure Architecture Center](https://learn.microsoft.com/azure/architecture/microservices/design/compute-options) guides to learn about these and other Azure compute and serverless services to help determine which technologies might be the best fit for your workload design.
+For more information, see:
 
-Azure offers many relational and non-relational database services. Refer to the [Review your data options](https://learn.microsoft.com/azure/architecture/guide/technology-choices/data-options) guide to learn more about all of the database services in Azure and how they compare to each other.
+- [Choose an Azure compute service](/azure/architecture/guide/technology-choices/compute-decision-tree)
+- [Choose a compute option for microservices](/azure/architecture/microservices/design/compute-options)
+- [Review your data options](/azure/architecture/guide/technology-choices/data-options)
 
-## Tradeoff
+## Tradeoffs
 
-Complex solutions may offer more features and flexibility, but they may have a potential impact on reliability because they require more coordination, communication, and management of different components. On the other hand, a simpler solution may not fully meet user expectations or may have a negative impact on scalability and extensibility as the workload evolves over time.
+A complex solution can offer more features and flexibility, but it might affect the reliability of the workload because it requires more coordination, communication, and management of components.
 
-Refer to the other guides in this series for tradeoffs related to the points discussed in this guide.
+Alternatively, a simpler solution might not fully meet user expectations, or it might have a negative effect on scalability and extensibility as the workload evolves.
 
-Link to each guide -- Tradeoff anchor
+Refer to the other guides in this series for tradeoffs related to the points in this guide:
+
+- [Background jobs](background-jobs.md#tradeoffs)
+- [Data partitioning](partition-data.md#tradeoffs)
+- [Define reliability targets](metrics.md#tradeoffs)
+- [Disaster recovery](disaster-recovery.md#tradeoffs)
+- [Failure mode analysis](failure-mode-analysis.md#tradeoff)
+- [Identify and rate flows](identify-flows.md#tradeoffs)
+- [Monitoring and alerting](monitoring-alerting-strategy.md#tradeoffs)
+- [Redundancy](redundancy.md#tradeoffs)
+- [Scaling strategy](scaling.md#tradeoffs)
+- [Self-healing and self-preservation](self-preservation.md#tradeoffs)
+- [Testing strategy](testing-strategy.md#tradeoffs)
+- [Transient faults](handle-transient-faults.md#tradeoffs)
 
 ## Example
 
-Refer to the Reliable Web Pattern [reference architecture](https://learn.microsoft.com/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation) for an example of a workload that uses requirements to base decisions about components on.
+For an example workload that determines components and their features based on requirements, see [Reliable Web App pattern](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation).
 
 ## Related links
 
-[Cloud-Native Applications](https://azure.microsoft.com/solutions/cloud-native-apps)
+- [Azure serverless](https://azure.microsoft.com/solutions/serverless)
+- [Cloud-native applications](https://azure.microsoft.com/solutions/cloud-native-apps)
+- [Types of databases on Azure](https://azure.microsoft.com/products/category/databases)
 
-[Azure Serverless](https://azure.microsoft.com/solutions/serverless/)
+## Next steps  
 
-[Azure Databases - Types of Databases on Azure](https://azure.microsoft.com/products/category/databases/)
+We recommend that you review the Reliability checklist to explore other concepts.
+
+> [!div class="nextstepaction"]
+> [Reliability checklist](checklist.md)

@@ -367,3 +367,10 @@ At the subnet level, egress traffic is restricted by NSG at the subnet level of 
 - [Azure Private Link](/azure/private-link/private-link-overview)
 - [Azure Bastion](/azure/bastion/bastion-overview)
 - [Azure DDoS Protection Overview](/azure/ddos-protection/ddos-protection-overview)
+
+## Next steps
+
+We recommend that you review the Security checklist to explore other concepts.
+
+> [!div class="nextstepaction"]
+> [Security checklist](checklist.md)

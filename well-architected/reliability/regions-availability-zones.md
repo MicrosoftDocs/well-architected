@@ -3,7 +3,7 @@ title: Recommendations for using availability zones and regions
 description: This article provides guidance to help you understand when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
-ms.date: 09/13/2023
+ms.date: 09/28/2023
 ms.topic: conceptual
 ms.custom:
   - guide
@@ -142,9 +142,6 @@ It's a good practice to avoid unnecessary complexity in your solution architectu
 ## Azure facilitation
 
 By providing regions and availability zones, Azure enables you to select a deployment approach that fits your needs. There are many approaches that you can choose from, each of which provides benefits and incurs costs.
-
-> [!NOTE]
-> It's important to understand the specific details of the Azure services that you use. For example, some Azure services require that you configure their availability zone configuration when you first deploy the resource, while others support changing the deployment approach later. Similarly, some service features might not be available with every deployment approach.
 
 To illustrate the deployment approaches that you can use, consider an example scenario. Suppose you're thinking about deploying a new solution that includes an application that writes data to some sort of storage:
 
@@ -396,6 +393,12 @@ You can also combine multi-zone and multi-region approaches. For example, you mi
 > [!IMPORTANT]
 > Mission-critical workloads should use both multiple availability zones *and* multiple regions. For more information about the considerations that you should give when designing mission-critical workloads, see [Mission-critical workload documentation](../mission-critical/index.yml).
 
+### How Azure services support deployment approaches
+
+It's important to understand the specific details of the Azure services that you use. For example, some Azure services require that you configure their availability zone configuration when you first deploy the resource, while others support changing the deployment approach later. Similarly, some service features might not be available with every deployment approach.
+
+To learn more about the specific deployment options and approaches to consider for each Azure service, visit the [Reliability hub](/azure/reliability/reliability-guidance-overview).
+
 ## Examples
 
 This section describes some common use cases and the key requirements that you typically need to consider for each workload. For each workload, a suggested deployment approach is provided, based on the requirements and approaches described in this article.
@@ -456,7 +459,7 @@ Following are some reference architectures and example scenarios for multi-zone 
 - [Multi-region N-tier application](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
 - [Multi-tier web application built for HA/DR](/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)
 
-Many Azure services support provide guidance about how to use multiple availability zones, including the following examples:
+Many Azure services provide guidance about how to use multiple availability zones, including the following examples:
 - [Azure Site Recovery: Enable Azure VM disaster recovery between availability zones](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)
 - [Azure NetApp Files: Understand cross-zone replication of Azure NetApp Files](/azure/azure-netapp-files/cross-zone-replication-introduction)
 - [Azure Storage redundancy](/azure/storage/common/storage-redundancy)
