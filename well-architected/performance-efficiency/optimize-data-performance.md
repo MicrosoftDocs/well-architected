@@ -21,7 +21,7 @@ It's important to optimize a workload's data performance because it can have a s
 |---|---|
 | CAP theorem |A framework that's used to consider consistency, availability, and partition tolerance to help explain the tradeoffs in data consistency.|
 |  Database index rebuilding |A maintenance activity that drops and recreates an index.|
-|  Database index reorganization |A maintenance activity that optimizes a database index. |
+|  Database index reorganization |A maintenance activity that optimizes the current database index. |
 | Data store| A resource that stores data such as a database, object store, or file share.|
 |  Eventual consistency|A data synchronization model that allows for temporary inconsistency in data replicas before they eventually sync.|
 |  Index|A database structure that provides quick access to items.|
