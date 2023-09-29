@@ -19,7 +19,7 @@ This guide describes the recommendations for optimizing operational tasks. Optim
 |-|-|
 |Blue-green deployment|   A deployment strategy that uses two identical environments and controls the direction of traffic to new deployments (green deployments).|
 |Database index rebuilding|     A maintenance activity that recreates an index.|
-|Database reindexing|      A maintenance activity that optimizes the current database index.|
+|Database index reorganization|      A maintenance activity that optimizes the current database index.|
 |Database schema| The general structure of a database and its relationships to other data.|
 |Deployment slot |    A feature of Azure App Service that enables you to deploy live apps with their own host names.|
 |In-place upgrades|  The process of upgrading a component or an application without replacing it or migrating it to a new environment.|
@@ -27,13 +27,14 @@ This guide describes the recommendations for optimizing operational tasks. Optim
 
 ## Key design strategies
 
-You need to take measures to reduce the effects of the software development lifecycle and other routine operations on workload performance. The goal is to ensure that routine operations, like virus scans, secret rotations, backups, index optimization (reindex or rebuilding), and deployments, don't significantly degrade the performance of the workload.
+You need to take measures to reduce the effects of the software development lifecycle and other routine operations on workload performance. The goal is to ensure that routine operations, like virus scans, secret rotations, backups, index optimization (reorganization or rebuilding), and deployments, don't significantly degrade the performance of the workload.
 
 ### Account for operational tasks
 
 It's important to consider operational tasks when you set performance targets. By incorporating routine, regular, and ad-hoc tasks into performance targets, you can ensure that the workload operates efficiently. Here are some key points to consider:
 
-- *Identify operational tasks*. Identify and include relevant operational tasks in performance targets. Examples of routine tasks can include virus scanning, reindexing databases, database index rebuilding, disk or database backups, certificate rotations, patching an operating system, rotating passwords, rotating API keys, penetration testing, and audit reviews in production.
+- *Identify operational tasks*. Identify and include relevant operational tasks in performance targets. Examples of routine tasks can include virus scanning, database index reorganization, database index rebuilding, disk or database backups, certificate rotations, patching an operating system, rotating passwords, rotating API keys, penetration testing, and audit reviews in production.
+
 - *Evaluate performance targets*. Evaluate current performance targets and adjust them to account for operational tasks that are specific to the workload. Doing so ensures that performance targets align with the workload's operational requirements.
 
 ### Optimize deployments
@@ -47,10 +48,15 @@ Optimizing workload deployments is the process of fine-tuning and configuring th
 **Use a blue-green deployment strategy**. Deployments can cause service interruptions and downtime. To mitigate these issues, select a deployment strategy that minimizes performance impact, like a blue-green deployment. These approaches allow for seamless transitions between environments and reduce the risk of service disruptions. When you use the blue-green deployment approach, you have two separate environments: the blue and green environments. If any issues or performance degradation is detected in the green environment, you can easily roll back to the stable blue environment. This strategy helps you ensure minimal downtime and allows you to maintain a high level of performance for your workload. To deploy by using the blue-green approach, follow these general steps:
 
 - *Deploy the new environment*. Set up the new environment (green) alongside the existing environment (blue) with the updated version of your application.
+
 - *Validate the new environment*. Deployments can introduce latency and increase response times. Consider prewarming instances before cutover. Prewarming involves preparing the new environment by simulating production-like traffic and workload to ensure that the environment is ready to handle the expected load. It helps minimize the effects on latency and response times. Thoroughly test and validate the new environment to ensure that it functions correctly and meets performance expectations. Testing helps warm up caches, establish database connections, and ensure that the environment is ready to handle the expected load.
+
 - *Gradually shift traffic*. After the new environment is prewarmed and validated, gradually shift production traffic from the old environment (blue) to the new environment (green). Initially, direct a small percentage of traffic to the green environment and gradually increase it after verifying its stability and expected application health. You can use a global load balancer or traffic management mechanism. The controlled traffic shifting allows you to identify any performance issues early and take corrective actions before fully transitioning the workload to the new environment.
+
 - *Monitor and optimize*. Deployments might use shared computing resources. Continuously monitor the performance and health of the new environment after you shift traffic. Make any necessary optimizations or adjustments to ensure the desired performance and user experience.
+
 - *Remove the old environment*. After you successfully transition all traffic to the green environment, remove the blue environment from existing connections. This step helps optimize the cost of maintaining the old environment and ensures that new environments are free of configuration drift.
+
 - *Repeat the process*. For future deployments, reverse the roles of the blue and green environments. Deploy changes to the new blue environment, validate them, orchestrate traffic transition, and decommission the old green environment.
 
 **Use multiple builds**. Different types of builds can help you optimize build times and ensure the quality of deployments. For example, you can have continuous integration (CI) builds that trigger with every code commit. You could have nightly builds that run automated tests regularly, and release builds that are used for deploying to production. Each type of build should have a specific purpose, like continuous integration, automated testing, or production deployment. Testing and validation of the workload before deployment help identify and address issues or bugs early in the development process.
