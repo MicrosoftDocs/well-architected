@@ -97,7 +97,7 @@ Azure Front Door and Azure Traffic Manager enable you to implement a [blue-green
 
 ## Related links
 
-- [Infrastructure-as-code](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code)
+- [Infrastructure as code](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code)
 - [Deployment slots](/azure/app-service/deploy-staging-slots)
 - [Blue-green deployment strategy](/azure/architecture/guide/aks/blue-green-deployment-for-aks)
 - [Azure SQL Database](/azure/azure-sql/database/automated-backups-overview)
