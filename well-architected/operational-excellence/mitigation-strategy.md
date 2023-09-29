@@ -11,29 +11,35 @@ ms.topic: conceptual
 
 **Applies to: OE 12**
 
-This guide describes the best practices for designing a standardized strategy to effectively handle deployment failures. Like other workload issues, deployment failures are an inevitable part of a workload lifecycle, and they should be expected. With this mindset, being proactive with a well-designed, intentional strategy to deal with deployment failures will enable your workload team to efficiently mitigate failures with as little impact as possible on your end users. An absence of such a plan can lead to chaotic and potentially detrimental responses to issues which can have serious impacts on team and organizational cohesion, customer trust and finances.
+This guide describes the best practices for designing a standardized strategy to effectively handle deployment failures. Like other workload issues, deployment failures are an inevitable part of a workload lifecycle. With this mindset, you can be proactive by having a well-designed, intentional strategy for dealing with deployment failures. Such a strategy enables your workload team to efficiently mitigate failures with as little impact as possible on your end users. The absence of such a plan can lead to chaotic and potentially detrimental responses to issues, which can have serious impacts on team and organizational cohesion, customer trust, and finances.
 
 ## Key design strategies
 
-Occasionally, despite the maturity of your development practices, issues with deployments will happen. Using [safe deployment practices](safe-deployments.md) and operating a robust [workload supply chain](workload-supply-chain.md) will help you minimize the frequency of failed deployments. However, you will also need to design a standardized strategy to handle failed deployments when they happen. A key to having the right foundation for minimizing the effects on your customers or internal users when deployments fail and to be able to mitigate the issue efficiently is to use a progressive exposure deployment model as your standard practice. 
+Occasionally, despite the maturity of your development practices, deployment issues occur. Using [safe deployment practices](safe-deployments.md) and operating a robust [workload supply chain](workload-supply-chain.md) helps you minimize the frequency of failed deployments. But you also need to design a standardized strategy to handle failed deployments when they happen. When you use a progressive exposure deployment model as your standard practice:
 
-A deployment failure mitigation strategy is composed of 5 broad phases:
+- You have the right foundation for minimizing the effects on your customers or internal users when deployments fail.
+- You can mitigate issues efficiently.
 
-1. Detection: To respond to a failed deployment, you must first detect the failure. Detection can take several forms, like failed smoke tests, user reported issues, or alerts generated through your monitoring platform.
+A deployment failure mitigation strategy is composed of five broad phases:
 
-1. Decision: You must decide what the best mitigation strategy is for the specific failure type.
+- Detection: To respond to a failed deployment, you must first detect the failure. Detection can take several forms, like failed smoke tests, user reported issues, or alerts that your monitoring platform generates.
 
-1. Mitigation: Perform the identified mitigation action. Mitigations can come in the form of fall back, rollback, roll forward, or using a runtime configuration to bypass the offending function.
+- Decision: You must decide what the best mitigation strategy is for the specific failure type.
 
-1. Communications: Stakeholders and affected end users must be made aware of the status as you detect and work through the issue as required by your [emergency response plan](emergency-response.md).
+- Mitigation: You perform the identified mitigation action. The mitigation can take the form of a fall back, rollback, roll forward, or using a runtime configuration to bypass the offending function.
 
-1. Post-mortems: Blameless post-mortems provide opportunities for the workload team to identify areas for improvement and create plans to apply learnings.
+- Communications: Stakeholders and affected end users must be made aware of the status as you detect and work through the issue as required by your [emergency response plan](emergency-response.md).
 
-The following sections will provide recommendations for these phases in more detail. These sections assume that you have deployed your changes to one or more groups of users or systems before an issue is detected, but not all groups in your rollout plan have been updated.
+- Postmortems: Blameless postmortems provide opportunities for the workload team to identify areas for improvement and create plans to apply learnings.
+
+The following sections provide detailed recommendations for these phases. These sections assume that you have deployed your changes to one or more groups of users or systems before an issue is detected, but not all groups in your rollout plan have been updated.
 
 ### Detection
 
-To quickly identify issues with deployments, you need robust testing and [observability practices](observability.md) as they relate to deployments. Using an Application Performance Management tool and enabling logging through instrumentation (link to OpEx instrumentation guide) will complement your workload monitoring and alerting to help you quickly catch anomalies. 
+To quickly identify issues with deployments, you need robust testing and [observability practices](observability.md) as they relate to deployments. To help you quickly catch anomalies, you can complement your workload monitoring and alerting by taking the following steps:
+
+- Use an application performance management tool.
+- Enable logging through instrumentation (link to OpEx instrumentation guide).
 
 Smoke testing and other quality testing should happen at each phase of your rollout. Successful tests in one deployment group should not influence decisions to test in subsequent groups.
 
