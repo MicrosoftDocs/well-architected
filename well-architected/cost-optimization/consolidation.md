@@ -22,7 +22,7 @@ This guide describes the recommendations for consolidating workload resources an
 
 ## Key strategies
 
-The primary objective of consolidation isn't just reduction, but optimization. It involves restructuring workloads, resources, and team roles to achieve maximum cost efficiency. Unlike waste elimination, consolidation isn’t a direct process. It comes with certain trade-offs and risks. It's important to analyze both the potential benefits and the associated trade-offs. All consolidation strategies follow a similar blueprint:
+The primary objective of consolidation is optimization, not reduction. Consolidation involves restructuring workloads, resources, and team roles to achieve maximum cost efficiency. Unlike [eliminating workload waste](eliminate-waste.md), consolidation is a process that requires careful consideration. Almost every consolidation efforts has trade-offs and potential risks. However, consolidation efforts can have a significant positive affect on cost optimization. It's important to analyze both the potential benefits and the associated trade-offs. All consolidation strategies follow a similar blueprint:
 
 - *Assessment*: Begin with a thorough evaluation to identify areas where consolidation might be advantageous.
 - *Identification and evaluation*: Pinpoint and assess potential consolidation targets to understand if the potential cost benefits, along with other trade-offs, justify the effort needed for consolidation.
@@ -30,23 +30,23 @@ The primary objective of consolidation isn't just reduction, but optimization. I
 
 ### Consolidate resources
 
-Consolidating resources is about combining resources within a workload. It involves colocating different functionalities or consumers into a combined resource. For example, you might consolidate three web servers into a single server or three databases to a single database server. You might use a single load balancer or firewall across multiple environments. The aim is to maximize the cost efficiency of each resource by increasing resource density. Intensify the use of a resource and eliminate any excess.
+Consolidating resources is about combining resources within a workload. It involves colocating different functionalities or consumers into a combined resource. For example, you might consolidate three web servers into a single server or three databases to a single database server. You might consolidate multiple firewalls into a single firewall that serves multiple environments. The aim is to maximize the cost efficiency of each resource by increasing resource density. You look to intensify the use of a resource and minimize resource redundancy.
 
 Common types of services that you can consolidate include application platforms, databases, network appliances, gateways, and DDoS protection. To consolidate resources within a workload, consider these recommendations:
 
-**Assess the workload resources.** Evaluate the current state of the workload, including its performance, resource utilization, and dependencies. Identify any inefficiencies or areas where consolidation could be beneficial.
+**Assess the workload resources.** Assess the existing workload and its resource utilization. This includes analyzing factors such as CPU usage, memory usage, storage capacity, and network bandwidth. Identify areas where consolidation could be beneficial. It could involve optimizing resource allocation, eliminating redundant or underutilized resources, or reconfiguring the workload to run more efficiently. Consider factors such as workload dependencies, performance requirements, and scalability
 
-**Identify consolidation target.** Determine the resource to consolidate on. It can be an existing resource or a new resource created within the workload. When consolidating to an existing resource, identify any existing resources that you use for consolidation. For example, you may have underutilized servers that can accommodate some of the workload components. If no existing resources meet the consolidation requirements or if it's more beneficial to move to a new platform, consider creating a new resource for consolidation.
+**Identify consolidation target.** Determine the resource to consolidate on. It can be an existing resource or a new resource created within the workload. Identify any existing resources that you use for consolidation. For example, you may have underutilized servers that can accommodate some of the workload components. If no existing resources meet the consolidation requirements or if it's more beneficial to move to a new resource, consider creating a new resource for consolidation.
 
-**Evaluate consolidation viability.** Ensure functional and technical requirements support consolidation such as CPU, memory, growth. Avoid compromising requirements like performance, reliability, and security. For instance, don't create an undesired cross-regional dependency or consolidate resources across preproduction and production environments.
+**Evaluate consolidation viability.** Ensure functional and technical requirements support consolidation such as CPU, memory, growth. Avoid compromising requirements like performance, reliability, and security. For example, don't create an undesired cross-regional dependency or consolidate resources across preproduction and production environments.
 
-**Estimate the cost.** Understand the effort and potential complications of consolidation. You should calculate costs including resource, licensing, and operational expenses. Consider the implications, such as potential challenges in resource monitoring due to consolidation.
+**Estimate the cost.** Understand the effort and potential complications of consolidation. You should calculate costs, including resource, licensing, and operational expenses. Consider the implications, such as potential challenges in resource monitoring due to consolidation.
 
-**Communicate and coordinate.** Ensure that all stakeholders are informed about upcoming changes, their effects, and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth implementation. Establish a mechanism for continuous feedback between teams. It helps in addressing concerns, improving collaboration, and refining processes over time.
+**Communicate and coordinate.** Ensure you inform all stakeholders about upcoming changes and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth implementation.
 
-**Risk:** Consider the effects of resource density, such as noisy neighbors, scale unit effects, and reduced redundancy. Resource consolidation is often too risky for mission and business critical workload flows.
+:::image type="icon" source="../_images/risk.svg"::: **Risk:** Consider the effects of resource density, such as noisy neighbors, scale unit effects, and reduced redundancy. Resource consolidation is often too risky for mission and business critical workload flows.
 
-**Tradeoffs:**
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs:**
 
 - Resource consolidation result in less isolation and could create a noisy neighbor scenario in workload. Look for other ways of logical isolation and increased capacity for the hosting environment. For example, firewall capacity needs to be increased if it starts supporting multiple workloads.
 - Consolidation eliminates segmentation and can increase security risk, making it easier for attackers to move horizontally. It also makes some compliance standards harder to reach. Always prioritize compliance over consolidation.
@@ -54,15 +54,15 @@ Common types of services that you can consolidate include application platforms,
 
 ### Consolidate responsibility
 
-Consolidating workload responsibility is about reducing the set of responsibilities that workload team has. It’s a strategic cost optimization effort that requires organizational awareness and collaboration outside the workload team. There are two principal options. You can use external shared or centralized resources and not manage that resource in the workload environment. You can also offload workload responsibilities to other teams in the organization and not manage the associated tasks or personnel.
+Consolidating workload responsibility is about reducing the set of responsibilities that workload team has. It’s a strategic cost optimization effort that requires organizational awareness and collaboration outside the workload team. There are two principal ways to consolidate the workload team's responsibility. You can use external shared or centralized resources, choosing not to run that resource in the workload environment. You can also offload workload responsibilities to other teams in the organization and not bear the direct responsibility for those tasks or personnel.
 
 #### Use external centralized resources
 
-External centralized resources refer to shared resources that multiple workloads use. The goal is to minimize duplication and overhead. Instead of your workload having a dedicated resource, you use a shared resource to optimize costs.
+Using external centralized resources refer to shared resources outside the workload environment. For example, an organization might have a centralized gateway that serves multiple workloads. The goal is to minimize duplication and overhead. Instead of your workload having a dedicated resource, you use a shared resource to optimize costs.
 
 **Assess the workload resources.** Evaluate the current state of the workload and identify any areas where consolidation could be beneficial.
 
-**Find external opportunities.** Survey your organization to locate any pre-existing centralized resources. These resources could be potential solutions for your workload. For example, instead of setting up an independent security information and event management (SIEM) tool, you could use a centralized SIEM.
+**Find external opportunities.** Survey your organization to locate any pre-existing centralized resources. These resources could be potential solutions for your workload. For example, instead of setting up an independent security information and event management (SIEM) tool, you could use a shared SIEM.
 
 **Consider change control.** Familiarize yourself with the process of managing changes to the centralized resource. You should include the approval workflow, testing protocols, and deployment methods. Analyze potential challenges with reduced control over resource modifications.
 
@@ -72,7 +72,7 @@ External centralized resources refer to shared resources that multiple workloads
 
 **Document and track changes.** Maintain detailed documentation of all approved changes, including their scope, implementation steps, and any associated risks or issues. Use a centralized system or change management tool to track and monitor the status of changes throughout their lifecycle.
 
-**Tradeoffs:** Over-consolidation can result in resource contention, leading to performance issues. Consolidation may limit the flexibility and agility of individual teams and workloads as they must adhere to centralized standards that could inhibit customization.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs:** Over-consolidation can result in resource contention, leading to performance issues. Consolidation may limit the flexibility and agility of individual teams and workloads as they must adhere to centralized standards that could inhibit customization.
 
 #### Offload responsibility to external teams
 
