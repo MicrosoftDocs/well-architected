@@ -18,7 +18,7 @@ This guide describes the recommendations for optimizing operational tasks. Optim
 |Term|                           Definition|
 |-|-|
 |Blue-green deployment|   A deployment strategy that uses two identical environments and controls the direction of traffic to new deployments (green deployments).|
-|Database index rebuilding|     A maintenance activity that recreates an index.|
+|Database index rebuilding|     A maintenance activity that drops and recreates an index.|
 |Database index reorganization|      A maintenance activity that optimizes the current database index.|
 |Database schema| The general structure of a database and its relationships to other data.|
 |Deployment slot |    A feature of Azure App Service that enables you to deploy live apps with their own host names.|
