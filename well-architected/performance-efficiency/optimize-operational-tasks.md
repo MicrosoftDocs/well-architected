@@ -19,7 +19,7 @@ This guide describes the recommendations for optimizing operational tasks. Optim
 |-|-|
 |Blue-green deployment|   A deployment strategy that uses two identical environments and controls the direction of traffic to new deployments (green deployments).|
 |Database index rebuilding|     A maintenance activity that recreates the index.|
-|Database index reorganization |      A maintenance activity that optimizes the current database index.|
+|Database reindexing|      A maintenance activity that optimizes the current database index.|
 |Database schema| The general structure of a database and its relationships to other data.|
 |Deployment slot |    A feature of Azure App Service that enables you to deploy live apps with their own host names.|
 |In-place upgrades|  The process of upgrading a component or an application without replacing it or migrating it to a new environment.|
@@ -27,13 +27,13 @@ This guide describes the recommendations for optimizing operational tasks. Optim
 
 ## Key design strategies
 
-You need to take measures to reduce the effects of the software development lifecycle and other routine operations on workload performance. The goal is to ensure that routine operations, like virus scans, secret rotations, backups, reindexing databases, and deployments, don't significantly degrade the performance of the workload.
+You need to take measures to reduce the effects of the software development lifecycle and other routine operations on workload performance. The goal is to ensure that routine operations, like virus scans, secret rotations, backups, index optimization (reindex or rebuilding), and deployments, don't significantly degrade the performance of the workload.
 
 ### Account for operational tasks
 
 It's important to consider operational tasks when you set performance targets. By incorporating routine, regular, and ad-hoc tasks into performance targets, you can ensure that the workload operates efficiently. Here are some key points to consider:
 
-- *Identity operational tasks*. Identify and include relevant operational tasks in performance targets. Examples of routine tasks can include virus scanning, reindexing databases, disk or database backups, certificate rotations, patching an operating system, rotating passwords, rotating API keys, penetration testing, and audit reviews in production.
+- *Identity operational tasks*. Identify and include relevant operational tasks in performance targets. Examples of routine tasks can include virus scanning, reindexing databases, database index rebuilding, disk or database backups, certificate rotations, patching an operating system, rotating passwords, rotating API keys, penetration testing, and audit reviews in production.
 - *Evaluate performance targets*. Evaluate current performance targets and adjust them to account for operational tasks that are specific to the workload. Doing so ensures that performance targets align with the workload's operational requirements.
 
 ### Optimize deployments
