@@ -18,7 +18,7 @@ This guide describes the recommendations for optimizing operational tasks. Optim
 |Term|                           Definition|
 |-|-|
 |Blue-green deployment|   A deployment strategy that uses two identical environments and controls the direction of traffic to new deployments (green deployments).|
-|Database index rebuilding|     A maintenance activity that recreates the index.|
+|Database index rebuilding|     A maintenance activity that recreates an index.|
 |Database reindexing|      A maintenance activity that optimizes the current database index.|
 |Database schema| The general structure of a database and its relationships to other data.|
 |Deployment slot |    A feature of Azure App Service that enables you to deploy live apps with their own host names.|
@@ -33,7 +33,7 @@ You need to take measures to reduce the effects of the software development life
 
 It's important to consider operational tasks when you set performance targets. By incorporating routine, regular, and ad-hoc tasks into performance targets, you can ensure that the workload operates efficiently. Here are some key points to consider:
 
-- *Identity operational tasks*. Identify and include relevant operational tasks in performance targets. Examples of routine tasks can include virus scanning, reindexing databases, database index rebuilding, disk or database backups, certificate rotations, patching an operating system, rotating passwords, rotating API keys, penetration testing, and audit reviews in production.
+- *Identify operational tasks*. Identify and include relevant operational tasks in performance targets. Examples of routine tasks can include virus scanning, reindexing databases, database index rebuilding, disk or database backups, certificate rotations, patching an operating system, rotating passwords, rotating API keys, penetration testing, and audit reviews in production.
 - *Evaluate performance targets*. Evaluate current performance targets and adjust them to account for operational tasks that are specific to the workload. Doing so ensures that performance targets align with the workload's operational requirements.
 
 ### Optimize deployments
@@ -44,7 +44,7 @@ Optimizing workload deployments is the process of fine-tuning and configuring th
 
 **Deploy at current instance count**. You should also avoid deployments that cause immediate scale operations. You shouldn't deploy resources into a live system with an instance count so low that it forces the system to immediately perform a scale operation. For example, your [infrastructure-as-code](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code) (IaC) template might not match the number of instances that you need at the time of deployment. It might have an instance count of two, even though the current deployed environment is running eight instances. The deployment would remove six instances and negatively affect performance.
 
-**Use a blue-green deployment strategy**. Deployments can cause service interruptions and downtime. To mitigate these issues, select a deployment strategy that minimizes performance effect, like a blue-green deployment. These approaches allow for seamless transitions between environments and reduce the risk of service disruptions. When you use the blue-green deployment approach, you have two separate environments: the blue and green environments. If any issues or performance degradation is detected in the green environment, you can easily roll back to the stable blue environment. This strategy helps you ensure minimal downtime and allows you to maintain a high level of performance for your workload. To deploy by using the blue-green approach, follow these general steps:
+**Use a blue-green deployment strategy**. Deployments can cause service interruptions and downtime. To mitigate these issues, select a deployment strategy that minimizes performance impact, like a blue-green deployment. These approaches allow for seamless transitions between environments and reduce the risk of service disruptions. When you use the blue-green deployment approach, you have two separate environments: the blue and green environments. If any issues or performance degradation is detected in the green environment, you can easily roll back to the stable blue environment. This strategy helps you ensure minimal downtime and allows you to maintain a high level of performance for your workload. To deploy by using the blue-green approach, follow these general steps:
 
 - *Deploy the new environment*. Set up the new environment (green) alongside the existing environment (blue) with the updated version of your application.
 - *Validate the new environment*. Deployments can introduce latency and increase response times. Consider prewarming instances before cutover. Prewarming involves preparing the new environment by simulating production-like traffic and workload to ensure that the environment is ready to handle the expected load. It helps minimize the effects on latency and response times. Thoroughly test and validate the new environment to ensure that it functions correctly and meets performance expectations. Testing helps warm up caches, establish database connections, and ensure that the environment is ready to handle the expected load.
@@ -69,11 +69,11 @@ Essential tools for file integrity monitoring, virus scanning, intrusion detecti
 
 ### Optimize database operations
 
-Database operations and maintenance are the activities involved in managing and optimizing the performance of a database. These operations include tasks like backups, schema changes, performance tuning, and monitoring.
+Database operations and maintenance are activities that are performed to manage and optimize the performance of a database. These operations include tasks like backups, schema changes, performance tuning, and monitoring.
 
 Schema changes involve modifying the structure of a database, such as adding or altering tables, columns, or indexes. These changes might require extra processing and resource utilization during the deployment process, potentially affecting the overall performance of the workload. Schema changes can disrupt performance to active queries, indexes, or transactions or cause data to be unavailable.
 
-To minimize these effects, you should plan and test schema changes in a nonproduction environment. You can use different deployment techniques to implement schema updates. You should also use available schema changing tools to optimize the process. Archiving data and partitioning can help reduce the effects of schema changes.
+To minimize these effects, you should plan and test schema changes in a nonproduction environment. You can use various deployment techniques to implement schema updates. You should also use available schema changing tools to optimize the process. Archiving data and partitioning can help reduce the effects of schema changes.
 
 ### Optimize backups
 
@@ -81,11 +81,11 @@ Backups consume workload resources like processing power, network bandwidth, and
 
 ### Optimize monitoring and debugging
 
-Excessive or poorly implemented logging, telemetry, instrumentation, and distributed tracing capture and collection can affect performance. Likewise, convenience features like remote debugging can also affect performance. You need to measure and know their performance effects on the environment. You don't want these processes to degrade performance. You should configure or disable any processes whose performance affects outweigh their benefits.
+Excessive or poorly implemented logging, telemetry, instrumentation, and distributed tracing capture and collection can affect performance. Likewise, convenience features like remote debugging can also affect performance. You need to measure and know their performance effects on the environment. You don't want these processes to degrade performance. You should configure or disable any processes whose performance effects outweigh their benefits.
 
 ## Azure facilitation
 
-**Accounting for operational tasks**: Azure DevOps is a set of development tools and services that enable teams to plan, develop, test, and deliver software efficiently. It includes features like version control, continuous integration and delivery, project management, and more. Azure provides service-to-service integration that minimizes the effects of many operational tasks. For example, services that integrate with Azure Key Vault often support seamless certificate rotation or secret rotation that minimize effects on performance.
+**Accounting for operational tasks**: Azure DevOps is a set of development tools and services that enable teams to plan, develop, test, and deliver software efficiently. It includes features like version control, continuous integration and delivery, project management, and more. Azure provides service-to-service integration that minimizes the effects of many operational tasks. For example, services that integrate with Azure Key Vault often support seamless certificate rotation or secret rotation that minimizes effects on performance.
 
 **Optimizing deployments**: App Service provides [deployment slots](/azure/app-service/deploy-staging-slots). You can use deployment slots to deploy code to a nonproduction environment. You can swap app content and configuration elements between two deployment slots. For example, you can switch app content from a nonproduction slot to the production slot.
 
