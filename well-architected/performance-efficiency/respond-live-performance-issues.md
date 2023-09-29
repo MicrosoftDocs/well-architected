@@ -22,7 +22,7 @@ If you don't address live performance issues, various negative consequences can 
 | Root cause analysis | A process for identifying the underlying factors that are responsible for a problem. |
 | Data correlation | Aligning logs, metrics, and events from various parts of your workload to pinpoint underlying causes. |
 | Self-healing | The ability to automatically repair issues without human intervention. |
-| Self-prevention | The ability of your workload to be resilient against potential problems. |
+| Self-prevention | Implementations within a workload to prevent potential issues and failures. |
 
 ## Key design strategies
 
