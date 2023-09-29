@@ -65,28 +65,32 @@
           href: security/tradeoffs.md
         - name: Recommendations    
           items:
-            - name: Security patterns
+            - name: Security patterns            
               href: security/design-patterns.md
-            - name: Application secrets
-              href: security/application-secrets.md
-            - name: Data classification
-              href: security/classify-data.md
-            - name: Encryption
-              href: security/encryption.md
-            - name: Hardening resources
-              href: security/hardening.md
-            - name: Identity and access
-              href: security/identity-access.md
-            - name: Incident response 
-              href: security/incident-response.md
-            - name: Networking
-              href: security/networking.md
-            - name: Security development lifecycle
+            - name: SE:02 Security development lifecycle
               href: security/secure-development-lifecycle.md
-            - name: Segmentation
+            - name: SE:02 Threat analysis
+              href: security/threat-model.md              
+            - name: SE:03 Data classification
+              href: security/classify-data.md
+            - name: SE:04 Segmentation strategy
               href: security/segmentation.md
-            - name: Testing and validation
-              href: security/testing.md
+            - name: SE:05 Identity and access management
+              href: security/identity-access.md
+            - name: SE:06 Network controls
+              href: security/networking.md
+            - name: SE:07 Encryption
+              href: security/encryption.md
+            - name: SE:08Hardening resources
+              href: security/hardening.md              
+            - name: SE:09 Application secrets
+              href: security/application-secrets.md
+            - name: SE:10 Monitoring and threat detection
+              href: security/monitoring.md
+            - name: SE:11 Testing and validation
+              href: security/testing.md              
+            - name: SE:12 Incident response 
+              href: security/incident-response.md
       - name: Cost Optimization
         items: 
         - name: Quick links
@@ -127,6 +131,8 @@
               href: cost-optimization/optimize-scaling.md
             - name: Optimize personnel time
               href: cost-optimization/optimize-personnel-time.md
+            - name: Consolidate
+              href: cost-optimization/consolidation.md
       - name: Operational Excellence
         items: 
         - name: Quick links
@@ -135,6 +141,8 @@
           href: operational-excellence/principles.md
         - name: Checklist
           href: operational-excellence/checklist.md
+        - name: Safe deployments
+          href: operational-excellence/safe-deployments.md
         - name: Tradeoffs
           href: operational-excellence/tradeoffs.md
         - name: Recommendations
@@ -147,6 +155,8 @@
               href: operational-excellence/emergency-response.md
             - name: Enabling automation
               href: operational-excellence/enable-automation.md
+            - name: Failure mitigation
+              href: operational-excellence/mitigation-strategy.md
             - name: Observability framework development
               href: operational-excellence/observability.md
             - name: Supply chain for workload development
