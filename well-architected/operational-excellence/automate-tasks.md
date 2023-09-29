@@ -57,87 +57,77 @@ Adopt automation throughout the entire workload lifecycle, from development to d
 
 ### Choose the appropriate automation tool
 
-Developing your own automation in-house is time intensive and can introduce more management burden to your development team as they will need to maintain it as they would any other in-house software. For that reason, prefer off-the-shelf tools whenever they can meet your needs. Between commercial, open source and cloud platform provided tools, there are many options available, and it is likely that you will use a variety of them to build the automation that you need. Rely on your in-house expertise to help guide your decisions when evaluating tools. Your team may have more familiarity with certain development languages and frameworks, and you can initially focus on off-the-shelf tools that they can use without a high learning curve. Finally, reflect on the tasks that you plan to address with automation and invest in the tools that can specifically address those tasks rather than procuring tools that you prefer generally and then thinking about the tasks afterward.
+Developing your own automation in-house is time intensive and can introduce management burden to your development team. They need to maintain an in-house automation tool like they do any other in-house software. It's recommended that you use off-the-shelf tools whenever they can meet your needs. Between commercial, open source, and cloud platform provided tools, there are many options available.  It's likely that you'll use a variety of tools to build the automation that you need. Rely on your in-house expertise to help guide your decisions when evaluating tools. Your team might be more familiar with certain development languages and frameworks. You can initially focus on off-the-shelf tools that they can use without a high learning curve. Reflect on the tasks that you plan to address with automation and invest in the tools that can specifically address those tasks. Don't procure tools that you generally prefer and then think about the tasks afterward.
 
-Be mindful of factors that can complicate your operations when building your automation like version lock-in and plugin overuse. Plugins (like Jenkins or Azure DevOps plugins for example) are a great way to add functionality easily, and you should adopt them when it benefits your automation goals. Be mindful that using multiple plugins to perform any single task can make updates to the automation difficult and issues hard to troubleshoot, so be judicious in your use of plugins. Likewise, avoid solutions that have framework version dependencies as they will become a burden to maintain over time. To help minimize the risk of these types of issues, standardize on your selection of automation tools and plugins and use source control for all of your automation projects.
+Be mindful of factors that can complicate your operations when you build your automation, like version lock-in and plugin overuse. Plugins, like Jenkins or Azure DevOps plugins, are a great way to add functionality. You should adopt them when it benefits your automation goals. When you use multiple plugins to perform any single task, it can make updates to the automation difficult and issues hard to troubleshoot. Be judicious in your use of plugins. Likewise, avoid solutions that have framework version dependencies because they're a burden to maintain over time. To help minimize the risk of these types of issues, standardize your selection of automation tools and plugins, and use source control for all of your automation projects.
 
 ### Treat your workload automation as a part of your workload
 
-No matter which tools you use to build your automation, focus on making it easily accessible and manageable for your operators. To help make it accessible and manageable, provide clear and easy-to-use interfaces for your workload team. Useful interfaces can include providing access to CI/CD pipelines, APIs and libraries. Like the workload the automation supports, the automation needs to be managed holistically: it should be secured to the same degree as all other workload components, it should be monitored alongside other workload components and it should be subject to the same testing protocols as the other workload components.
+No matter which tools you use to build your automation, focus on making it easily accessible and manageable for your operators. To help make it accessible and manageable, provide clear and easy-to-use interfaces for your workload team. Useful interfaces can include providing access to continuous integration and continuous delivery (CI/CD) pipelines, APIs, and libraries. Like the workload that the automation supports, you need to manage the automation holistically. Secure automation to the same degree as all other workload components. Monitor automation and subject it to the same testing protocols as other workload components.
 
 ## Azure facilitation
 
-Azure offers multiple tools to help you automate tasks for your workload.
+Azure offers many tools to help you automate tasks for your workload.
 
-**IaC tools**
+**IaC tools**: You can use Terraform, Bicep, and Azure Resource Manager for IaC deployments. Depending on your requirements and your team's familiarity with the tools, you might use one or more of these tools for your deployments and management of resources.
 
-Terraform, Bicep and ARM can all be used for IaC deployments. Depending on your requirements and your team's familiarity with the tools, you may use one or more of these tools for your deployments and management of the resources.
+**Azure Functions**: [Azure Functions](/azure/azure-functions/functions-overview) is a serverless tool that you can use to automate tasks by using your preferred development language. Functions provides a comprehensive set of event-driven triggers and bindings that connect your functions to other services without having to write extra code.
 
-**Azure Functions**
+**GitHub Actions for Azure**: You use [GitHub Actions for Azure](https://azure.github.io/actions/#automate) to automate CI/CD processes. GitHub Actions integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request in your repository, or deploy merged pull requests to production.
 
-[Azure Functions](/azure/azure-functions/functions-overview) is a serverless tool that allows you to easily automate tasks using the development language you prefer. Functions provides a comprehensive set of event-driven triggers and bindings that connect your functions to other services without having to write extra code.
+GitHub Actions goes beyond just DevOps and enables you to run workflows when other events occur in your repository. For example, you can run a workflow to automatically add appropriate labels when someone creates a new issue in your repository.
 
-**GitHub Actions for Azure**
+**Azure Automation**: PowerShell and Python are popular programming languages for automating operational tasks. Use these languages to perform operations like restarting services, moving logs between data stores, and scaling infrastructure to meet demand. You can express these operations in code and run them on demand. Alone, these languages don't offer a platform for centralized management, version control, or run history. The languages also lack a native mechanism for responding to events like monitoring driven alerts. To provide these capabilities, you need an automation platform.
 
-[GitHub Actions for Azure](https://azure.github.io/actions/#automate) allows you to automate CI/CD processes and integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
-
-GitHub Actions goes beyond just DevOps and lets you run workflows when other events happen in your repository. For example, you can run a workflow to automatically add the appropriate labels whenever someone creates a new issue in your repository.
-
-**Azure Automation**
-
-PowerShell and Python are popular programming languages for automating operational tasks. Using these languages, performing operations like restarting services, moving logs between data stores, and scaling infrastructure to meet demand can be expressed in code and executed on demand. Alone, these languages do not offer a platform for centralized management, version control, or execution history. The languages also lack a native mechanism for responding to events like monitoring driven alerts. To provide these capabilities, an automation platform is needed.
-
-[Azure Automation](/azure/automation/overview) provides an Azure-hosted platform for hosting and running PowerShell and Python code across Azure, non-Azure cloud, and on-premises environments. PowerShell and Python code is stored in an Azure Automation Runbook, which has the following attributes:
+[Automation](/azure/automation/overview) provides an Azure-hosted platform for hosting and running PowerShell and Python code across Azure, non-Azure cloud, and on-premises environments. PowerShell and Python code is stored in an Automation runbook. The Automation runbook has the following attributes:
 
 - Execute Runbooks on demand, on a schedule, or through a webhook.
 
-- Execution history and logging.
+- Run history and logging.
 
 - Integrated secrets store.
 
-- Source Control integration.
+- Source control integration.
 
-**Azure Deployment Environments**
+**Azure Deployment Environments**: [Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments) enables development teams to quickly spin up consistent app infrastructure by using project-based templates, minimizing setup time while maximizing security, compliance, and cost efficiency. A deployment environment is a collection of Azure resources that are deployed in predefined subscriptions. Development infrastructure administrators can enforce enterprise security policies and provide a curated set of predefined IaC templates.
 
-[Azure Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments) enables development teams to quickly spin up consistent app infrastructure by using project-based templates, minimizing setup time while maximizing security, compliance, and cost efficiency. A deployment environment is a collection of Azure resources deployed in predefined subscriptions. Development infrastructure (dev infra) admins can enforce enterprise security policies and provide a curated set of predefined infrastructure as code (IaC) templates.
-
-Dev infra admins define deployment environments as catalog items hosted in a GitHub or Azure DevOps repository called a catalog. A catalog item consists of an IaC template and a manifest.yaml file.
+Development infrastructure administrators define deployment environments as catalog items that are hosted in a GitHub or Azure DevOps repository, called a catalog. A catalog item consists of an IaC template and a manifest.yaml file.
 
 The creation of deployment environments can be scripted, and the environments can be managed programmatically.
 
-**Logic Apps and Power Automate**
+**Azure Logic Apps and Microsoft Power Automate**: When you build custom automation digital process automation (DPA) to handle workload tasks like approval flows or building ChatOps integrations, consider using [Logic Apps](/azure/logic-apps/) or [Power Automate](https://azure.microsoft.com/products/power-automate/). You can construct workflows from built-in connectors and templates. Logic Apps and Power Automate are built on the same underlying technology and are both well-suited for trigger-based or time-based tasks.
 
-When building custom automation digital process automation (DPA) to handle workload tasks like approval flows or building ChatOps integrations, consider the use of [Logic Apps](/azure/logic-apps/) or [Power Automate](https://azure.microsoft.com/products/power-automate/) from the Microsoft Power Platform. Workflows can be easily constructed from built-in connectors and templates. Both Logic Apps and Power Automate are built on the same underlying technology and are both well suited for trigger-based or time-based tasks.
+**Automatic scaling**: Many Azure technologies have built-in automatic scaling capabilities. You can program many other services to automatically scale by using APIs. For more information, see [Recommendations for designing a reliable scaling strategy](../reliability/scaling.md).
 
-**Autoscaling**
-
-Many Azure technologies have built-in autoscaling capabilities and many others can be programmed to automatically scale using APIs. Refer to the (Reliabilty scaling guide) for more information.
-
-**Azure Monitor action groups**
-
-Use [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups) to automatically run self-healing operations when an alert is triggered. These operations can be defined by a runbook, an Azure Function or a webhook.
+**Azure Monitor action groups**: Use [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups) to automatically run self-healing operations when an alert is triggered. You can define these operations by using a runbook, an Azure function, or a webhook.
 
 ## Tradeoffs
 
-There may be times when the efficiencies you will gain from automation outweigh the management burden of developing your own solution when no off-the-shelf solutions fit the requirements. In these cases, be judicious in your development efforts; narrowly focus on developing only what you need to cover gaps that can't be solved with off-the-shelf solutions and minimize complexities like dependencies
+Sometimes the efficiencies you gain from automation outweigh the management burden of developing your own solution if no off-the-shelf solutions fit your requirements. In these cases, be judicious in your development efforts. Narrowly focus on developing only what you need to cover gaps that you can't solve with off-the-shelf solutions, and minimize complexities like dependencies.
 
-Complex automation that requires a high degree of maintenance can be difficult for operations teams to manage and troubleshoot. Strive to keep automated tasks tightly focused on only performing discreet jobs and try to minimize dependencies on other tools or components.
+Complex automation that requires a high degree of maintenance can be difficult for operations teams to manage and troubleshoot. Keep automated tasks tightly focused on only performing discreet jobs. Try to minimize dependencies on other tools or components.
 
-Be thoughtful about using manual processes. If you decide not to automate something, be sure to thoroughly document the manual process by creating a step-by-step checklist that operators manually execute. This practice reduces the chances of human error, like an operator mistakenly running the wrong process. The documentation will also help you design automation for that process in the future if you decide to automate it later.
+Be thoughtful about using manual processes. If you decide not to automate an operation, thoroughly document the manual process by creating a step-by-step checklist for operators. This practice reduces the chances of human error, like an operator mistakenly running the wrong process. The documentation also helps you design automation for that process in the future.
 
-When using a hybrid manual and automated approach, you need to be especially careful. If a script runs the majority of a process but then defers to a human for a specific part or a decision, it's very important that you give the human the necessary context and information to be able to make an informed decision.
+When you use a hybrid manual and automated approach, you need to be especially careful. If a script runs the majority of a process but then defers to a human for a specific part or a decision, it's very important that you give the human the necessary context and information to make an informed decision.
 
 ## Example
 
-Refer to the [Ops automation using Event Grid](/azure/architecture/solution-ideas/articles/ops-automation-using-event-grid) solution idea for an example of using Azure Automation in tandem with other Azure services like Logic Apps and Event Grid to automate operational tasks.
+For an example of using Automation in tandem with other Azure services, see [Ops automation using Event Grid](/azure/architecture/solution-ideas/articles/ops-automation-using-event-grid). This example uses Logic Apps and Event Grid to automate operational tasks.
 
 ## Related links
 
-Reliability scaling guide (re05-scaling)
-
-Reliability testing guide (re07-testing)
-
-Reliability self-preservation guide (re06-self-preservation)
+- [Automation](/azure/automation/overview)
+- [Azure Functions](/azure/azure-functions/functions-overview)
+- [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups)
+- [Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments)
+- [GitHub Actions for Azure](https://azure.github.io/actions/#automate)
+- [Logic Apps](/azure/logic-apps/)
+- [Ops automation using Event Grid](/azure/architecture/solution-ideas/articles/ops-automation-using-event-grid)
+- [Power Automate](https://azure.microsoft.com/products/power-automate/)
+- [Recommendations for designing a reliability testing strategy](../reliability/testing-strategy.md)
+- [Recommendations for designing a reliable scaling strategy](../reliability/scaling.md)
+- [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md)
 
 ## Next steps
 
