@@ -139,3 +139,10 @@ The deployment process must follow a standard operating procedure. Any change mu
 |**Roll out updates gradually, with due diligence**. <br><br>  Use deployment models that give you the control to **progressively increase the number of instances and customers** until the update is safely adopted by all.       | Test each update in a controlled manner so that issues are fixed early in production. Avoid rolling out a faulty update that impacts your entire customer base.<br><br> Test whether the update is backward and forward compatible.       |
 | Have a mitigation strategy to quickly **recover from deployment failures**.  <br><br> The strategy should cover decision making on **rolling back or forward** based on the criticality of the issue.<br><br> Have **well-defined processes and automated systems** that can rapidly roll out fixes by using the standard deployment pipelines.| Reduce the duration of potential impact.<br><br> Restore the system back to the previous working version or roll forward to a version that has fixes that have been thoroughly tested. |
 | Have a fallback plan **that resets the system** to a working state in case of emergency and to recover from unexpected failures. Use this strategy only when necessary and with approval. <br><br>Strive to improve the plan over time. | You can fast-track high-priority fixes, such as security remediation.  <br><br>  The accelerated pipeline might not have all the checks of your standard operating procedures, but you'll get customers to a safe version in the fastest way possible, which outweighs lower-impact faults.      |
+
+## Next steps
+
+We recommend that you review the Operational Excellence checklist to explore other concepts. 
+
+> [!div class="nextstepaction"] 
+> [Operational Excellence checklist](checklist.md) 
