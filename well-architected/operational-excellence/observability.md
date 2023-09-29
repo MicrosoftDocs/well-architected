@@ -11,35 +11,33 @@ ms.topic: conceptual
 
 **Applies to: OE 07**
 
-This guide describes the recommendations for designing and building an observability framework. In order to effectively monitor your workload for security, performance and reliability, you need a comprehensive framework that provides the foundation for all monitoring, detection and alerting functions. 
+This guide describes the recommendations for designing and building an observability framework. To effectively monitor your workload for security, performance, and reliability, you need a comprehensive framework that provides the foundation for all monitoring, detection, and alerting functions. 
 
 **Definitions**
 
 | Term | Definition |
 |---|---|
-| Logs | Logs are recorded system events. Logs can contain different types of data, be structured or free-form text, and they contain a timestamp. |
-| Metrics | Metrics are numerical values that describe an aspect of a system at a particular point in time. |
+| Logs | Recorded system events. Logs can contain different types of data in a  structured or free-form text format. They contain a timestamp. |
+| Metrics | Numerical values that are collected at regular intervals. Metrics describe some aspects of a system at a particular time. |
 
 ## Key design strategies
 
-A comprehensive monitoring framework design for your workload should follow these core tenets:
+To implement a comprehensive monitoring framework design for your workload, follow these core tenets:
 
-- Logs and metrics should be collected from the entire workload stack. All infrastructure resources and application functions should be configured to produce standardized, meaningful data and that data needs to be collected.
-- The collected data needs to be stored in a standardized, reliable and secure storage solution.
-- Stored data needs to be processed so that it can be handled by analysis and visualization solutions.
-- Processed data needs to be analyzed to accurately determine the state of the workload.
-- The state of the workload should be visualized through meaningful dashboards or reports for workload teams and other stakeholders.
-- Actionable alerts and other automatic responses to intelligently defined thresholds should be configured to notify workload teams when issues arise.
-- The monitoring and alerting systems should be included in your overall workload testing practices.
-- The monitoring and alerting systems are areas in scope for continuous improvement. Application and infrastructure behavior in production will provide continuous learning opportunities, and those learnings should be incorporated into the monitoring and alerting designs.
+- Collect logs and metrics from the entire workload stack. All infrastructure resources and application functions should be configured to produce standardized, meaningful data, and that data needs to be collected.
+- Store the collected data in a standardized, reliable, and secure storage solution.
+- Process stored data needs so that it can be handled by analysis and visualization solutions.
+- Analyze processed data to accurately determine the state of the workload.
+- Visualize the state of the workload in meaningful dashboards or reports for workload teams and other stakeholders.
+- Configure actionable alerts and other automatic responses to intelligently defined thresholds to notify workload teams when issues arise.
+- Include monitoring and alerting systems in your overall workload testing practices.
+- Ensure that monitoring and alerting systems are in scope for continuous improvement. Application and infrastructure behavior in production provides continuous learning opportunities. Incorporate those lessons into monitoring and alerting designs.
 
-All of the functions of the monitoring framework should be automated to the extent possible, and they should all run continuously 24/7/365. 
+You should automate all functions of the monitoring framework as much as possible, and they should all run continuously, all day, every day. 
 
-The monitoring framework can be thought of and visualized as a workflow pipeline as shown below. 
+This workflow pipeline illustrates the monitoring framework: 
 
-:::image type="content" source="media/observability/monitor-pipeline.png" alt-text="Diagram showing the stages of a comprehensive monitoring framework as a pipeline.":::
-
-
+:::image type="content" source="media/observability/monitor-pipeline.png" alt-text="Diagram that shows the stages of a comprehensive monitoring framework as a pipeline." lightbox=media/observability/monitor-pipeline.png border="false":::
 
 ### Collection
 
