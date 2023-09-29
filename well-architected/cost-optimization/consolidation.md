@@ -44,9 +44,9 @@ Common types of services that you can consolidate include application platforms,
 
 **Communicate and coordinate.** Ensure you inform all stakeholders about upcoming changes and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth implementation.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk:** Consider the effects of resource density, such as noisy neighbors, scale unit effects, and reduced redundancy. Resource consolidation is often too risky for mission and business critical workload flows.
+:::image type="icon" source="../_images/risk.svg"::: **Risk**: Consider the effects of resource density, such as noisy neighbors, scale unit effects, and reduced redundancy. Resource consolidation is often too risky for mission and business critical workload flows.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs:**
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs**:
 
 - Resource consolidation result in less isolation and could create a noisy neighbor scenario in workload. Look for other ways of logical isolation and increased capacity for the hosting environment. For example, firewall capacity needs to be increased if it starts supporting multiple workloads.
 - Consolidation eliminates segmentation and can increase security risk, making it easier for attackers to move horizontally. It also makes some compliance standards harder to reach. Always prioritize compliance over consolidation.
@@ -72,7 +72,7 @@ Using external centralized resources refer to shared resources outside the workl
 
 **Document and track changes.** Maintain detailed documentation of all approved changes, including their scope, implementation steps, and any associated risks or issues. Use a centralized system or change management tool to track and monitor the status of changes throughout their lifecycle.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs:** Over-consolidation can result in resource contention, leading to performance issues. Consolidation may limit the flexibility and agility of individual teams and workloads as they must adhere to centralized standards that could inhibit customization.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Over-consolidation can result in resource contention, leading to performance issues. Consolidation may limit the flexibility and agility of individual teams and workloads as they must adhere to centralized standards that could inhibit customization.
 
 #### Offload responsibility to external teams
 
@@ -90,7 +90,7 @@ Centralizing workload responsibilities involves using specialized services provi
 
 ## Azure facilitation
 
-**Density support.** Many Azure services support increased density. These services include:
+**Density support**: Many Azure services support increased density. These services include:
 
 |Azure services|Segmentation control|
 | --- | --- |
@@ -102,6 +102,6 @@ Centralizing workload responsibilities involves using specialized services provi
 |Azure App Service|Multiple web apps and APIs on an App Service Plan|
 |Azure SQL Database|Multiple databases on a server
 
-**Resource observability.** Azure Monitor provides a centralized platform for monitoring and managing the performance and health of your Azure resources. It allows you to collect and analyze telemetry data, set up alerts, and gain insights into resource utilization.
+**Resource observability**: Azure Monitor provides a centralized platform for monitoring and managing the performance and health of your Azure resources. It allows you to collect and analyze telemetry data, set up alerts, and gain insights into resource utilization.
 
 Log Analytics enables centralized log management and analysis. It allows you to collect, analyze, and visualize log data from various Azure resources, helping you identify issues, troubleshoot problems, and gain operational insights.
