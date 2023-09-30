@@ -22,7 +22,7 @@ It's important to optimize a workload's data performance because it can have a s
 | CAP theorem |A framework that's used to consider consistency, availability, and partition tolerance to help explain the tradeoffs in data consistency.|
 |  Database index rebuilding |A maintenance activity that drops and recreates an index.|
 |  Database index reorganization |A maintenance activity that optimizes the current database index. |
-| Data store| A resource that stores data such as a database, object store, or file share.|
+| Data store| A resource, such as a database, object store, or file share, that stores data.|
 |  Eventual consistency|A data synchronization model that allows for temporary inconsistency in data replicas before they eventually sync.|
 |  Index|A database structure that provides quick access to items.|
 | Online analytical processing (OLAP)|A technology that organizes large business databases, supports complex analysis, and performs complex analytical queries without negatively affecting transactional systems.|
@@ -79,7 +79,7 @@ If you have large datasets or high-volume workloads, consider partitioning your 
 
 - Different parts of the data have varying access patterns, and if you separate them, queries run more efficiently.
 
-**Horizontal partitioning (sharding).** To perform horizontal partitioning, split data into partitions based on rows or range of values. Each partition contains a subset of rows with similar characteristics. Horizontal partitioning is commonly used with large datasets to distribute data across physical storage locations. Horizontal partitioning improves performance and scalability. Implement horizontal partitioning if:
+**Horizontal partitioning (sharding).** To perform horizontal partitioning, split data into partitions based on rows or ranges of values. Each partition contains a subset of rows with similar characteristics. Horizontal partitioning is commonly used with large datasets to distribute data across physical storage locations. Horizontal partitioning improves performance and scalability. Implement horizontal partitioning if:
 
 - A dataset is too large to store in a single location or server.
 
@@ -217,7 +217,7 @@ Design a schema for each data storage technology based on the requirements of th
 
 > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: A data structure that has low normalization can improve performance but introduce complexities.
 
-**Separate OLTP (online transaction processing) and OLAP (online analytical processing) systems.** To separate [OLTP](/azure/architecture/data-guide/relational-data/online-transaction-processing) and [OLAP](/azure/architecture/data-guide/relational-data/online-analytical-processing) systems, design and deploy distinct systems for transactional processing and analytical processing tasks. This separation allows you to optimize each system for its specific workload and characteristics.
+**Separate OLTP and OLAP systems.** To separate [OLTP](/azure/architecture/data-guide/relational-data/online-transaction-processing) and [OLAP](/azure/architecture/data-guide/relational-data/online-analytical-processing) systems, design and deploy distinct systems for transactional processing and analytical processing tasks. This separation allows you to optimize each system for its specific workload and characteristics.
 
 OLTP systems are used for real-time transactional processing. They efficiently and reliably handle individual transactions. OLTP systems are typically used to perform day-to-day operational tasks, such as online order processing, inventory management, and customer data management. OLTP systems prioritize responsiveness, consistency, and concurrency.
 
@@ -237,13 +237,13 @@ You can use the insights feature of [Azure SQL](/azure/azure-sql/database/sql-in
 
 **Partition data.** Azure offers various partitioning strategies for different data stores. Each data store might have different considerations and configuration options for data partitioning. For more information, see [Data partitioning strategies](/azure/architecture/best-practices/data-partitioning-strategies).
 
-**Optimize queries and indexes.** Use the Query Performance insight feature of Azure SQL Database to optimize queries, tables, and databases. You can use this feature to identify and troubleshoot query performance issues.
+**Optimize queries and indexes.** Use the query performance insight feature of Azure SQL Database to optimize queries, tables, and databases. You can use this feature to identify and troubleshoot query performance issues.
 
 For relational databases, you should follow the [index design guidelines](/sql/relational-databases/sql-server-index-design-guide#General_Design), [SQL Server index guidance](/sql/relational-databases/indexes/indexes), and [Azure Cosmos DB index guidance](/azure/cosmos-db/index-overview). Use SQL Database to perform [automatic tuning](/azure/azure-sql/database/automatic-tuning-overview) for queries to improve their performance.
 
 In SQL databases, you should regularly [reorganize or rebuild indexes](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes). Identify slow queries and tune them to improve performance. Many database engines have query-tuning features. For more information, see [Best practices for query performance](/azure/cosmos-db/nosql/query-metrics#best-practices-for-query-performance).
 
-Azure Cosmos DB has a [default indexing policy](/azure/cosmos-db/index-policy) that indexes every property of every item and enforces range indexes for any string or number. This policy provides you with efficient query performance without having to manage indexes upfront.
+Azure Cosmos DB has a [default indexing policy](/azure/cosmos-db/index-policy) that indexes every property of every item and enforces range indexes for any string or number. This policy provides you with efficient query performance, and you don't have to manage indexes upfront.
 
 **Choose a data store.** Azure offers many different data stores to fit your workload needs. [Understand data store types](/azure/architecture/guide/technology-choices/data-store-overview) and [select an Azure data store for your application](/azure/architecture/guide/technology-choices/data-store-decision-tree).
 
