@@ -7,13 +7,16 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for encryption
+# Recommendations for data encryption
 
-**Applies to: SE 05**
+**Applies to Well-Architected Framework Security checklist recommendation:**
 
-This guide describes the recommendations for encrypting and protecting your data. Encryption is the process of using cryptography algorithms to make the data unreadable and locking the data with a key. In the encrypted state, data can't be deciphered. It can only be decrypted by using a key that's paired with the encryption key.
+|[SE:07](checklist.md)|"_Encrypt data by using modern industry-standard methods to guard confidentiality and integrity. Align encryption scope with data classifications; prioritize native platform encryption methods._"|
+|---|---|
 
 If your data isn't protected, it can be maliciously modified, which leads to loss of integrity and confidentiality.
+
+This guide describes the recommendations for encrypting and protecting your data. Encryption is the process of using cryptography algorithms to **make the data unreadable and lock the data with a key**. In the encrypted state, data can't be deciphered. It can only be decrypted by using a key that's paired with the encryption key.
 
 **Definitions** 
 
@@ -23,19 +26,19 @@ If your data isn't protected, it can be maliciously modified, which leads to los
 
 ## Key design strategies
 
-Organizational mandates or regulatory requirements might enforce encryption mechanisms. For example, there might be a requirement if data is expected to remain only in the selected region, and copies of the data are maintained in that region.
+Organizational mandates or regulatory requirements might enforce encryption mechanisms. For example, there might be a requirement that data must remain only in the selected region, and copies of the data are maintained in that region.
 
-These requirements are often the base minimum. Strive for a higher level of protection. You're responsible for preventing confidentiality leaks and tampering of sensitive data, whether it's external user data or employee data.
+These requirements are often the base minimum. Strive for a higher level of protection. You're responsible for **preventing confidentiality leaks and tampering of sensitive data**, whether it's external user data or employee data.
 
 ### Encryption scenarios
 
 Encryption mechanisms likely need to secure the data in three stages:
 
-- **Data at rest** is all the information that's kept in storage objects.
+- **Data at rest** is all information that's kept in storage objects.
 
   An example of securing data at rest is using BitLocker to encrypt data that's saved to storage on a disk.
 
-- **Data in transit** is the information that's transferred between components, locations, or programs.
+- **Data in transit** is information that's transferred between components, locations, or programs.
 
   An example of securing data in transit is encrypting data with TLS so packets that move over public and private networks are secure.
 
@@ -43,11 +46,11 @@ Encryption mechanisms likely need to secure the data in three stages:
 
   An example of securing data in use is encrypting with confidential compute to protect data as it's processed.
 
-The preceding choices aren't mutually exclusive. They are often used together in the context of the entire solution. One stage might act as a compensating control. For example, you might need to isolate data to prevent tampering when data is read from memory.
+The preceding choices aren't mutually exclusive. They're often used together in the context of the entire solution. One stage might act as a compensating control. For example, you might need to isolate data to prevent tampering when data is read from memory.
 
 ### Scope of encryption
 
-Classify data by its purpose and sensitivity level to determine what data you need to encrypt. For data that should be encrypted, determine the required level of protection. Do you need end-to-end TLS encryption for all data in transit? For data at rest, which Azure features can meet your requirements? Do you need to double encrypt data at every storage point? How do you implement information protection?
+**Classify data by its purpose and sensitivity level** to determine what data you need to encrypt. For data that should be encrypted, determine the required level of protection. Do you need end-to-end TLS encryption for all data in transit? For data at rest, which Azure features can meet your requirements? Do you need to double encrypt data at every storage point? How do you implement information protection?
 
 It's important to balance your encryption decisions because there are significant tradeoffs.
 
@@ -59,9 +62,11 @@ There are cases when encryption isn't possible because of technical limitations,
 
 Strong encryption mechanisms shouldn't be your only form of defense. Implement data theft prevention processes, proper testing methods, and anomaly detection.
 
+For information about classification, see [Recommendations on data classification](./data-classification.md).
+
 ### Native encryption mechanisms
 
-Most Azure services provide a base level of encryption. Explore platform-provided encryption options.
+Most Azure services provide a base level of encryption. **Explore platform-provided encryption options**.
 
 It's highly recommended that you don't disable platform capabilities to develop your own functionality. Platform encryption features use modern industry standards, are developed by experts, and are highly tested.
 
@@ -73,25 +78,25 @@ Developers should use cryptography APIs that are built into the operating system
 
 By default, Azure services use Microsoft-managed encryption keys to encrypt and decrypt data. Azure is responsible for key management.
 
-You can opt for customer-managed keys. Azure still uses your keys, but you're accountable for key operations. You have the flexibility to change keys when you want. Decryption is a compelling reason to use customer-managed keys.
+You can opt for **customer-managed keys**. Azure still uses your keys, but you're accountable for key operations. **You have the flexibility to change keys** when you want. Decryption is a compelling reason to use customer-managed keys.
 
-You should pair strong encryption with strong decryption. From a security perspective, protecting a decryption key is important because rotation is a common way to control the blast radius if a key is compromised. Monitor access to detect anomalous access and activities.
+You should **pair strong encryption with strong decryption**. From a security perspective, protecting a decryption key is important because rotation is a common way to control the blast radius if a key is compromised. Monitor access to detect anomalous access and activities.
 
-Store keys separate from encrypted data. This decoupling helps ensure that the compromise of one entity doesn't affect the other. If you use customer-managed keys, store them in a key store. Store highly sensitive data in a managed hardware security module (HSM).
+**Store keys separate from encrypted data**. This decoupling helps ensure that the compromise of one entity doesn't affect the other. If you use customer-managed keys, store them in a key store. Store highly sensitive data in a managed hardware security module (HSM).
 
 Both stores are protected with identity-based access. This feature enables you to deny access, even to the platform.
 
 ### Standard encryption algorithms
 
-Use well-established cryptography algorithms instead of creating custom implementations.
+**Use cryptography algorithms that are well-established and follow industry standards** instead of creating custom implementations.
 
-Industry standards for algorithms require encryption schemes to have a certain level of entropy. The entropy sources are injected during encryption. Entropy makes the algorithm strong and makes it difficult for an attacker to extract information. Determine the tolerable thresholds of entropy. Encryption procedures are processor-intensive. Find the right balance so that you're maximizing the compute cycles that are spent on the encryption, relative to the overall performance targets of the compute request.
+Industry standards for algorithms require encryption schemes to have a certain level of entropy. The entropy sources are injected during encryption. Entropy makes the algorithm strong and makes it difficult for an attacker to extract information. **Determine the tolerable thresholds of entropy**. Encryption procedures are processor-intensive. Find the right balance so that you're maximizing the compute cycles that are spent on the encryption, relative to the overall performance targets of the compute request.
 
 > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: If you choose an algorithm that's highly complex or injects more than a reasonable amount of entropy, it degrades your system's performance.
 
 ### Hashes and checksums
 
-Typically, hashing is an error detection technique. You can also use hashing for security because it detects changes to data that might be caused by tampering. Hash functions are based on cryptography, but they don't use keys. Hash functions use algorithms to produce checksums. Checksums can compare data to verify the integrity of it.
+Typically, hashing is an error detection technique. You can also use hashing for security because it **detects changes to data that might be caused by tampering**. Hash functions are based on cryptography, but they don't use keys. Hash functions use algorithms to produce checksums. Checksums can compare data to verify the integrity of it.
 
 Applications should use the SHA-2 family of hash algorithms, such as SHA-256, SHA-384, or SHA-512.
 
@@ -113,7 +118,7 @@ Classify and protect information storage objects in accordance with the internal
 
 - **Store keys in a managed HSM** that has least-privilege access control. Separate the data from the keys to the data.
 
-- **Store a limited amount of data** so that you only encrypt what's necessary. Your data shouldn't live longer than your encryption cycle. When you no longer need data, delete the encrypted data without spending decryption cycles.
+- **Store a limited amount of data** so that you only encrypt what's necessary. Your data shouldn't live longer than your encryption cycle. When data is no longer needed, delete the encrypted data without spending decryption cycles.
 
 ### Data in transit
 
@@ -155,15 +160,15 @@ Classify and protect information storage objects in accordance with the internal
 
 The following sections describe Azure services and features that you can use to encrypt your data.
 
-### Customer-managed keys
+##### Customer-managed keys
 
 Store customer-managed keys in Azure Key Vault or in a Key Vault-managed HSM.
 
-Key Vault treats the keys like any other secret. Azure role-based access controls (RBAC) access the keys via a permission model. This identity-based control must be used in conjunction with Key Vault access policies.
+Key Vault treats the keys like any other secret. Azure role-based access controls (RBAC) access the keys via a permission model. This identity-based control must be used with Key Vault access policies.
 
 For more information, see [Provide access to Key Vault keys, certificates, and secrets by using RBAC](/azure/key-vault/general/rbac-guide).
 
-### Data-at-rest protection
+##### Data-at-rest protection
 
 - **Azure Storage** automatically encrypts your data with block ciphers when the data is persisted to a storage account. For Azure Blob Storage and Azure Queue Storage, Storage also provides client-side encryption via libraries.
 
@@ -177,17 +182,17 @@ For more information, see [Provide access to Key Vault keys, certificates, and s
 
 - **SQL Database** offers a [transparent data encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) feature that's used to encrypt a database file at the page level.
 
-### Data-in-transit protection
+##### Data-in-transit protection
 
 With [Key Vault](https://azure.microsoft.com/services/key-vault/#product-overview), you can provision, manage, and deploy public and private Secure Sockets Layer (SSL) or TLS certificates. You can use the certificates with Azure and with your internal connected resources.
 
-### Data-in-use protection
+##### Data-in-use protection
 
 Azure confidential virtual machines (VMs) provide a hardware-enforced boundary. They also provide disk encryption that maintains isolation between VMs, the hypervisor, and host management code.
 
 Each Azure confidential VM has its own dedicated virtual [Trust Platform Module (TPM)](/windows/security/information-protection/tpm/trusted-platform-module-overview). Encryption is performed while the operating system components securely boot.
 
-### Secret management
+##### Secret management
 
 You can use [Key Vault](https://azure.microsoft.com/services/key-vault/#product-overview) to securely store and control access to tokens, passwords, certificates, API keys, and other secrets. Use Key Vault as a key and certificate management solution. Premium SKU supports HSMs.
 
@@ -212,9 +217,10 @@ The following example shows encryption solutions that you can use to manage keys
 
 - [Key Vault overview](https://azure.microsoft.com/services/key-vault/#product-overview)
 
-## Next steps
+## Security checklist
 
-We recommend that you review the Security checklist to explore other concepts.
+Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"]
-> [Security checklist](checklist.md)
+[Security checklist](checklist.md)
+

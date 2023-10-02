@@ -32,4 +32,4 @@ Approach your design with a focus on reliability to help ensure that you design 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Tradeoffs for reliability](tradeoffs.md)
+> [Tradeoffs for Reliability](tradeoffs.md)

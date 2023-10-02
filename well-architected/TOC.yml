@@ -70,9 +70,9 @@
             - name: SE:02 Security development lifecycle
               href: security/secure-development-lifecycle.md
             - name: SE:02 Threat analysis
-              href: security/threat-model.md              
+              href: security/threat-model              
             - name: SE:03 Data classification
-              href: security/classify-data.md
+              href: security/data-classification.md
             - name: SE:04 Segmentation strategy
               href: security/segmentation.md
             - name: SE:05 Identity and access management
@@ -81,7 +81,7 @@
               href: security/networking.md
             - name: SE:07 Encryption
               href: security/encryption.md
-            - name: SE:08Hardening resources
+            - name: SE:08 Hardening resources
               href: security/hardening.md              
             - name: SE:09 Application secrets
               href: security/application-secrets.md
