@@ -55,7 +55,7 @@ You should configure all workload components, whether they're infrastructure res
 
 Logs are primarily useful for detecting and investigating anomalies. Typically, logs are produced by the workload component and then sent to the monitoring platform or pulled by the monitoring platform via automation.
 
-Metrics are primarily useful for [building a health model](../reliability/metrics#building-a-health-model) and identifying trends in workload performance and reliability. Metrics are also useful for identifying trends in the usage behaviors of your customers, which can help guide decisions about improvements from the customer perspective. Typically, metrics are defined in the monitoring platform, and the monitoring platform and other tools poll the workload to capture metrics.
+Metrics are primarily useful for [building a health model](../reliability/metrics.md#building-a-health-model) and identifying trends in workload performance and reliability. Metrics are also useful for identifying trends in the usage behaviors of your customers, which can help guide decisions about improvements from the customer perspective. Typically, metrics are defined in the monitoring platform, and the monitoring platform and other tools poll the workload to capture metrics.
 
 #### Application data
 
@@ -104,7 +104,7 @@ A complex and highly scalable application might generate huge volumes of data. T
 
 One way to buffer instrumentation data is to use queuing:
 
-:::image type="content" source="media/observability/queue-buffer-data.png" alt-text="Diagram that shows how you can use a queue to buffer instrumentation data." lightbox="media/media/observability/queue-buffer-data.png" border="false":::
+:::image type="content" source="media/observability/queue-buffer-data.png" alt-text="Diagram that shows how you can use a queue to buffer instrumentation data." lightbox="media/observability/queue-buffer-data.png" border="false":::
 
 In this architecture, the data-collection service posts data to a queue. A message queue is suitable because it provides "at least once" semantics that helps ensure that queued data won't be lost after it's posted. You can implement the storage-writing service by using a separate worker role. You can use the [Priority Queue pattern](/azure/architecture/patterns/priority-queue) to implement this architecure.
 
@@ -116,40 +116,42 @@ The data collected from a single instance of an application provides a localized
 
 :::image type="content" source="media/observability/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="media/observability/service-instrumentation-data.png" border="false":::
 
-The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, instrumentation data that includes the same correlation information such as an activity ID can be amalgamated. (It's possible that a user starts performing a business operation on one node and then gets transferred to another node if a node fails, or depending on how load balancing is configured.) This process can also detect and remove any duplicated data (always a possibility if the telemetry service uses message queues to push instrumentation data out to storage).
+The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, you can amalgamate instrumentation data that includes the same correlation information, like an activity ID. (A user might start a business operation on one node and then get transferred to another node if the first node fails, or because of how load balancing is configured.) This process can also detect and remove any duplicated data. (Dupliation can occur if the telemetry service uses message queues to push instrumentation data out to storage.)
 
 ### Storage
 
-When deciding on a storage solution, consider the type of data, how it's used, and how urgently the data is required. 
+When you choose a storage solution, consider the type of data, how it's used, and how urgently it's required. 
 
 > [!NOTE]
-> Use separate storage solutions for non-production and production environments to ensure that data from each environment is easily identifiable and manageable.
+> Use separate storage solutions for non-production and production environments to ensure that data from each environment is easy to identify and manage.
 
 #### Storage technologies
 
-Consider a polyglot persistence approach where different types of information are stored by using technologies that are most appropriate to the way in which each type is likely to be used.
+Consider a polyglot persistence approach, where different types of information are stored in technologies that are most appropriate to the way each type is likely to be used.
 
-For example, Azure blob and table storage have some similarities in the way in which they're accessed. But they have differences in the operations you can perform for each, and the granularity of the data that they hold. If you need to perform more analytical operations or require full-text search capabilities on the data, it might be more appropriate to use data storage that provides capabilities that are optimized for specific types of queries and data access. For example:
+For example, Azure Blob Storage and Azure Table Storage share some similarities insofar as how they're accessed. But the operations that you can perform on them differ, as does the granularity of the data that they hold. If you need to perform more analytical operations or require full-text search capabilities on the data, it might be more appropriate to use data storage that provides capabilities that are optimized for specific types of queries and data access. For example:
 
 - Performance counter data can be stored in a SQL database to enable ad hoc analysis.
-- Trace logs might be better stored in Azure Monitor Logs or Azure Data Explorer.
-- Security information may be stored in an HDFS solution.
 
-The same instrumentation data might be required for more than one purpose. For example, performance counters can be used to provide a historical view of system performance over time. This information might be combined with other usage data to generate customer billing information. In these situations, the same data might be sent to more than one destination, such as a document database that can act as a long-term store for holding billing information, and a multidimensional store for handling complex performance analytics.
+- It might be better to store trace logs in Azure Monitor Logs or Azure Data Explorer.
 
-Ensure that you are enabling functionality to protect the data from accidental deletion, like resource locks and soft delete. 
+- You might store security information in an HDFS solution.
 
-Also, ensure that you are securing access to the storage through role-based access control to ensure that only those individuals who require access can access the data.
+The same instrumentation data might be required for more than one purpose. For example, you can use performance counters to provide a historical view of system performance over time. This information might be combined with other usage data to generate customer billing information. In these situations, the same data might be sent to more than one destination, like to a document database that can be a long-term store for holding billing information, and to a multidimensional store for handling complex performance analytics.
+
+Be sure to enable functionality to protect the data from accidental deletion, like resource locks and soft delete. 
+
+Also, be sure that you secure access to storage by using role-based access control to help ensure that only individuals who need to access the data can.
 
 #### Consolidation service
 
-You can implement another service that periodically retrieves the data from shared storage, partitions and filters the data according to its purpose, and then writes it to an appropriate set of data stores.
+You can implement another service that periodically retrieves the data from shared storage, partitions and filters it according to its purpose, and then writes it to an appropriate set of data stores.
 
-![Diagram showing an example of using a data partitioning service to move data to an appropriate data store based on its type.](media/observability/partition-move-data.png)
+:::image type="content" source="media/observability/partition-move-data.png" alt-text="Diagram that shows a data partitioning service that moves data to an appropriate data store based on its type." lightbox="media/observability/partition-move-data.png" border="false":::
 
 An alternative approach is to include this functionality in the consolidation and cleanup process and write the data directly to these stores as it's retrieved rather than saving it in an intermediate shared storage area.
 
-Each approach has its advantages and disadvantages. Implementing a separate partitioning service lessens the load on the consolidation and cleanup service, and it enables at least some of the partitioned data to be regenerated if necessary (depending on how much data is retained in shared storage). However, it consumes additional resources. Also, there might be a delay between the receipt of instrumentation data from each application instance and the conversion of this data into actionable information.
+Each approach has its advantages and disadvantages. Implementing a separate partitioning service reduces the load on the consolidation and cleanup service, and it enables at least some of the partitioned data to be regenerated if necessary (depending on how much data is retained in shared storage). However, this approach consumes additional resources. Also, there might be a delay between the receipt of instrumentation data from each application instance and the conversion of this data into actionable information.
 
 #### Querying considerations
 
@@ -157,38 +159,43 @@ Consider how urgently the data is required. Data that generates alerts must be a
 
 #### Data retention considerations
 
-In some cases, after the data has been processed and transferred, the original raw source data that was stored locally can be removed. In other cases, it might be necessary or useful to save the raw information. For example, data that's generated for debugging purposes might be best left available in its raw form but can then be discarded quickly after any bugs have been rectified.
+In some cases, after data is processed and transferred, you can remove the original raw source data that was stored locally. In other cases, it might be necessary or useful to save the raw information. For example, you might want to keep data that's generated for debugging available in its raw form but then discard it quickly after any bugs have been resolved.
 
-Performance data often has a longer life so that it can be used for spotting performance trends and for capacity planning. The consolidated view of this data is usually kept online for a finite period to enable fast access. After that, it can be archived or discarded.
+Performance data often has a longer life so that you can use it for spotting performance trends and for capacity planning. The consolidated view of this data is usually kept online for a finite period to enable fast access. After that, it can be archived or discarded.
 
-It's useful to store historical data so you can spot long-term trends. Rather than saving old data in its entirety, it might be possible to down-sample the data to reduce its resolution and save storage costs. As an example, rather than saving minute-by-minute performance indicators, you can consolidate data that's more than a month old to form an hour-by-hour view.
+It's useful to store historical data so you can spot long-term trends. Rather than saving old data in its entirety, you might be able to down-sample the data to reduce its resolution and save storage costs. For example, rather than saving minute-by-minute performance indicators, you can consolidate data that's more than a month old to form an hour-by-hour view.
 
-Data gathered for metering and billing customers might need to be saved indefinitely. Additionally, regulatory requirements might dictate that information collected for auditing and security purposes also needs to be archived and saved. This data is also sensitive and might need to be encrypted or otherwise protected to prevent tampering. You should never record users' passwords or other information that might be used to commit identity fraud. Such details should be scrubbed from the data before it's stored.
+Data gathered for metering and billing customers might need to be saved indefinitely. Additionally, regulatory requirements might dictate that information collected for auditing and security needs to be archived and saved. This data is also sensitive and might need to be encrypted or otherwise protected to prevent tampering. You should never record user passwords or other information that might be used to commit identity fraud. You should scrub these details from the data before it's stored.
 
-To ensure that you comply with laws like GDPR, minimize the storage of any identifiable information. If you do need to store identifiable information data, ensure that you take into account requirements that allow individuals to request that their information is deleted when designing your solution.
+To ensure that you comply with laws like GDPR, minimize the storage of any identifiable information. If you do need to store identifiable information, be sure, when you design your solution, to take into account requirements that allow individuals to request that their information be deleted.
 
 ### Analysis
 
-After you've collected data from various data sources, analyze the data to assess the overall well-being of the system. For analysis, have a clear understanding of:
+After you collect data from various data sources, analyze it to assess the overall well-being of the system. For this analysis, have a clear understanding of:
 
-- How to structure data based on KPIs and performance metrics you've defined.
-- How to correlate the data captured in different metrics and log files. This is important when tracking a sequence of events and help diagnose problems.
+- How to structure data based on KPIs and performance metrics that you've defined.
 
-In most cases, data for each part component of the architecture is captured locally and then accurately combined with data generated by other components.
+- How to correlate the data captured in different metrics and log files. This correlation is important when you're tracking a sequence of events and can help diagnose problems.
 
-For example, a three-tier application has:
+In most cases, data for each component of the architecture is captured locally and then accurately combined with data that's generated by other components.
 
-- Presentation tier that allows a user to connect to a website
-- Middle tier that hosts a set of microservices that processes business logic
-- Database tier that stores data associated with the operation
+For example, a three-tier application might have:
 
-The usage data for a single business operation might span across all three tiers. This information needs to be correlated to provide an overall view of the resource and processing usage for the operation. The correlation might involve some preprocessing and filtering of data on the database tier. On the middle tier, common tasks are aggregation and formatting.
+- A presentation tier that allows a user to connect to a website.
+
+- A middle tier that hosts a set of microservices that processes business logic.
+
+- A database tier that stores data associated with the operation.
+
+The usage data for a single business operation might span all three tiers. This information needs to be correlated to provide an overall view of the resource and processing usage for the operation. The correlation might involve some preprocessing and filtering of data on the database tier. On the middle tier, aggregation and formatting are common tasks.
 
 #### Recommendations
 
-- **Correlate application and resource level logs:** Evaluate data at both levels to optimize the detection of issues and troubleshooting of detected issues. You can aggregate the data in a single data sink or have ways to query events across both levels. Using a unified solution, such as Azure Log Analytics, is recommended to aggregate and query application and resource level logs.
-- **Define clear retention times on storage for cold analysis**: This practice is recommended to allow historic analysis over a specific period. Another benefit is control on control storage costs. Have processes that make sure data gets archived to cheaper storage and aggregate data for long-term trend analysis.
-- **Analyze long-term trends analyzed to predict operational issues:** Evaluate across long-term data to form operational strategies and also to predict what operational issues are likely to occur and when. For instance, if the average response times have been slowly increasing over time and getting closer to the maximum target.
+- **Correlate application-level and resource-level logs**: Evaluate data at both levels to optimize the detection of issues and the troubleshooting of those issues. You can aggregate the data in a single data sink or take advantage of methods that query events across both levels. We recommend a unified solution, like Azure Log Analytics, to aggregate and query application-level and resource-level logs.
+
+- **Define clear retention times on storage for cold analysis**: We recommned this practice to enable historic analysis over a specific period. It can also help you control storage costs. Implement processes that ensure data is archived to cheaper storage and aggregate data for long-term trend analysis.
+
+- **Analyze long-term trends to predict operational issues**: Evaluate long-term data to form operational strategies and also to predict what operational issues are likely to occur, and when. For example, if average response times are slowly increasing over time and approaching the maximum target.
 
 For detailed guidance on these recommendations, see the Analysis guide (link to Analyze monitoring data for cloud applications guide)
 
@@ -196,66 +203,80 @@ For detailed guidance on these recommendations, see the Analysis guide (link to 
 
 #### Dashboards
 
-The most common way to visualize data is to use dashboards that can display information as a series of charts, graphs, or some other illustration. These items can be parameterized, and an analyst can select the important parameters, such as the time period, for any specific situation.
+The most common way to visualize data is to use dashboards that can display information as a series of chart or graphs, or in some other visual form. These items can be parameterized, and an analyst can select the important parameters, like the time period, for any specific situation.
 
-Align your dashboards with your health model to indicate when the workload or components of the workload are healthy, degraded or unhealthy (link to reliability/metrics.md/building a health model anchor). 
+Align your dashboards with your [health model](../reliability/metrics.md#building-a-health-model) so that they indicate when the workload or components of the workload are healthy, degraded, or unhealthy. 
 
-For a dashboard system to work effectively, it must be meaningful to the workload team. Ensure that you are visualizing information that not only relates to the workload health, but also is actionable. When the workload or a component becomes degraded or unhealthy, the workload team should be able to easily identify where in the workload the issue is originating from and begin their corrective actions or investigations. Conversely, displaying information that isn’t actionable or not related to the workload health can make the dashboard needlessly complex and frustrating when trying to discern background noise from actionable data.
+For a dashboard system to work effectively, it must be meaningful to the workload team. Visualize information that relates to workload health and that's also actionable. When the workload or a component is degraded or unhealthy, the workload team should be able to easily identify where in the workload the issue originates and begin their corrective actions or investigations. Conversely, including information that isn't actionable or that's not related to workload health can make the dashboard needlessly complex and frustrating to team members who are trying to discern background noise from actionable data.
 
-A good dashboard doesn't only display information, it also enables an analyst to pose improvised questions about that information. Some systems provide management tools that an operator can use to complete these tasks and explore the underlying data. Instead, depending on the repository that's used to hold this information, it may be possible to query this data directly, or import it into tools such as Microsoft Excel for further analysis and reporting.
+A good dashboard doesn't just display information. It also enables an analyst to pose improvised questions about that information. Some systems provide management tools that an operator can use to complete these tasks and explore the underlying data. Instead, depending on the repository that's used to hold the information, it might be possible to query the data directly or import it into tools like Excel for further analysis and reporting.
 
 > [!NOTE]
-> You should restrict access to dashboards to authorized personnel, because this information may be commercially sensitive. You should also protect the underlying data for dashboards to prevent users from changing it.
+> Restrict access to dashboards to authorized personnel. Information on dashboards might be commercially sensitive. You should also protect the underlying data to prevent users from changing it.
 
 #### Reporting
 
-Reporting is used to generate an overall view of the system. It may incorporate historical data and current information. Reporting requirements fall into two broad categories: operational reporting and security reporting.
+Reporting is used to generate an overall view of the system. It might incorporate historical data and current information. Reporting requirements fall into two broad categories: operational reporting and security reporting.
 
-Operational reporting typically includes the following aspects:
+Operational reporting typically includes the following:
 
 - Aggregating statistics that you can use to understand resource utilization of the overall system or specified subsystems during a specified time window.
+
 - Identifying trends in resource usage for the overall system or specified subsystems during a specified period.
+
 - Monitoring exceptions that have occurred throughout the system or in specified subsystems during a specified period.
-- Determining the efficiency of the application for the deployed resources, and understanding whether the volume of resources, and their associated cost, can be reduced without affecting performance unnecessarily.
 
-Security reporting tracks customers' use of the system. It can include:
+- Determining the efficiency of the application for the deployed resources, and understanding whether the volume of resources, and their associated costs, can be reduced without affecting performance unnecessarily.
 
-- Auditing user operations: This method requires recording the individual requests that each user completes, together with dates and times. The data should be structured to enable an administrator to quickly reconstruct the sequence of operations that a user completes over a specified period.
-- Tracking resource use by user: This method requires recording how each request for a user accesses the various resources that compose the system, and for how long. An administrator can use this data to generate a utilization report, by user, over a specified period, possibly for billing purposes.
+Security reporting tracks customer use of the system. It can include:
 
-In many cases, batch processes can generate reports according to a defined schedule. Latency isn't normally an issue. Batch processes should also be available for generation on a spontaneous basis, if needed. As an example, if you are storing data in a relational database, such as Azure SQL Database, you can use a tool such as SQL Server Reporting Services to extract and format data, and present it as a set of reports.
+- Auditing user operations. This task requires recording the individual requests that each user completes, together with dates and times. The data should be structured to enable an administrator to quickly reconstruct the sequence of operations that a user completes over a specified period.
+
+- Tracking resource use by user. This task requires recording how each request from a user accesses the various resources that compose the system, and for how long. An administrator can use this data to generate a utilization report, by user, for a specified period, possibly for billing.
+
+In many cases, batch processes can generate reports according to a defined schedule. Latency isn't normally an issue. You should also have batch processes that can generate reports on a spontaneous basis, as needed. For example, if you store data in a relational database like Azure SQL Database, you can use a tool like SQL Server Reporting Services to extract and format data and present it as a set of reports.
 
 ### Alerts
 
-To ensure that the system remains healthy, responsive, and secure, set alerts so that operators can respond to them in a timely manner. An alert can contain enough contextual information to help you quickly get started on diagnostic activities. Alerting can be used to invoke remediation functions such as autoscaling or other self-healing mechanisms (link to reliability/self-preservation guide). Alerts can also enable cost-awareness by watching budgets and limits.
+To help ensure that the system remains healthy, responsive, and secure, set alerts so that operators can respond to them in a timely manner. An alert can contain enough contextual information to help them quickly get started on diagnostic activities. Alerting can be used to invoke remediation functions like [autoscaling or other self-healing mechanisms](../reliability/monitoring-alerting-strategy.md). Alerts can also enable cost-awareness by providing visibility into budgets and limits.
 
-**Recommendations**
+#### Recommendations
 
 - Define a process for alert response that identifies the accountable owners and actions.
+
 - Configure alerts for a well-defined scope (resource types and resource groups) and adjust the verbosity to minimize noise.
-- Use an automated alerting solution, such as Splunk or Azure Monitor, instead of having people actively look for issues.
-- Take advantage of alerts to operationalize remediation processes. For example, automatically create tickets to track issues and resolutions.
+
+- Use an automated alerting solution, like Splunk or Azure Monitor, instead of requiring people to actively look for issues.
+
+- Use alerts to operationalize remediation processes. For example, automatically create tickets to track issues and resolutions.
+
 - Track the health of your cloud platform services in regions, communication about outages, planned maintenance activities, and other health advisories.
 
-**Thresholds**
+#### Thresholds
 
-Alerts are generated when thresholds are crossed as detected by your monitoring system. Ensure that the thresholds that you set will generally give you enough time to implement the necessary change to your workload to avoid degradation or outages. For example, set your automatic scaling threshold to initiate scaling out before any of the running systems become overwhelmed to the point of a degraded user experience. Base the values that you assign as thresholds on your past experience in managing infrastructure and validate them through the testing that you perform as part of your testing practices.
+Alerts are generated when thresholds are crossed, as detected by your monitoring system. Ensure that the thresholds you set generally give you enough time to implement the necessary changes to your workload to avoid degradation or outages. For example, set your automatic scaling threshold to initiate scaling before any of the running systems become overwhelmed to the point of a degraded user experience. Base the threshold values that you assign on your past experience in managing infrastructure and validate them through the testing that you perform as part of your testing practices.
 
-See the alerting guide (link to Alerting for operations) for detailed guidance on alerting use cases and other alerting considerations.
+For detailed guidance on alerting use cases and other considerations, see [Designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md).
 
 ## Azure facilitation
 
 - [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to monitoring data from your cloud and on-premises environments. 
-- [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool in the Azure portal that's used to edit and run log queries against data in the Log Analytics workspace.
-- Refer to the Log Analytics workspace [architecture guide](/azure/azure-monitor/logs/workspace-design) for best practices when using multiple workspaces.
-- [Application Insights](/azure/azure-monitor/app/app-insights-overview?tabs=net) is an extension of Azure Monitor and provides application performance monitoring (APM) features.
-- [Azure Monitor Insights](/azure/azure-monitor/insights/insights-overview) are advanced analytics tools focused on specific Azure technologies (like VMs, App Services, Containers, and more) built on top of Azure Monitor and Log Analytics
-- [Azure Monitor for SAP solutions](/azure/sap/monitor/about-azure-monitor-sap-solutions) is an Azure-native monitoring product for SAP landscapes that run on Azure
-- [Azure Policy](/azure/governance/policy/overview) helps to enforce organizational standards and to assess compliance at-scale.
+
+- [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool in the Azure portal that you can use to edit and run log queries against data in the Log Analytics workspace.
+
+   -  If you're using multiple workspaces, see the Log Analytics workspace [architecture guide](/azure/azure-monitor/logs/workspace-design) for best practices.
+
+- [Application Insights](/azure/azure-monitor/app/app-insights-overview?tabs=net) is an extension of Azure Monitor. It provides APM features.
+
+- [Azure Monitor Insights](/azure/azure-monitor/insights/insights-overview) are advanced analytics tools for specific Azure technologies (like VMs, app services, and containers) that are part of Azure Monitor and Log Analytics.
+
+- [Azure Monitor for SAP solutions](/azure/sap/monitor/about-azure-monitor-sap-solutions) is an Azure monitoring tool for SAP landscapes that run on Azure
+
+- [Azure Policy](/azure/governance/policy/overview) can help you enforce organizational standards and assess compliance at scale.
 
 ## Tradeoffs
 
-Storage of logs and telemetry data, running queries against that data, and other factors like replication all have cost implications that need to be considered when planning your strategy. Consider options like archive storage and selective replication where practical.
+Storing logs and telemetry data, running queries against that data, and other factors like replication all have cost implications that you need to consider when you plan your strategy. Consider options like archive storage and selective replication when they're practical.
 
 ## Example
 
@@ -263,13 +284,10 @@ _Placeholder for IaaS baseline architecture_
 
 ## Related links
 
-Instrumentation guide (to be moved to new TOC and refactored)
-
-Reliability monitoring guide
-
-Security monitoring guide
-
-Performance monitoring guide
+- Instrumentation guide (to be moved to new TOC and refactored)
+- [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
+- [Recommendations for monitoring and threat detection](../security/monitoring.md)
+- [Recommendations for collecting performance data](../performance-efficiency/collect-metrics-logs.md)
 
 
 ## Next steps
