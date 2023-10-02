@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for designing and creating an observability framework
 
-**Applies to: OE 07**
+**Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:** 
+
+|[OE:07](checklist.md)| Design and implement an observability platform to validate design choices and inform future design and business decisions. This platform captures and exposes operational telemetry, metrics, and logs that emit from the workload's infrastructure and code.| 
+|---|---| 
 
 This guide describes the recommendations for designing and creating an observability framework. To effectively monitor your workload for security, performance, and reliability, you need a comprehensive framework that provides the foundation for all monitoring, detection, and alerting functions. 
 
@@ -77,7 +80,7 @@ As much as possible, collect logs from your cloud platform. You might be able to
 
 #### Collection strategies
 
-Avoid retrieving telemetry data manually from every component. Move data to a central location and consolodate it there. For a multi-region solution, we recommend that you first collect, consolidate, and store data on a region-by-region basis, and then aggregate the regional data into a single central system. 
+Avoid retrieving telemetry data manually from every component. Move data to a central location and consolidate it there. For a multi-region solution, we recommend that you first collect, consolidate, and store data on a region-by-region basis, and then aggregate the regional data into a single central system. 
 
 > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Be aware that there are cost implications to having regional and centralized data stores.
 
@@ -106,7 +109,7 @@ One way to buffer instrumentation data is to use queuing:
 
 :::image type="content" source="media/observability/queue-buffer-data.png" alt-text="Diagram that shows how you can use a queue to buffer instrumentation data." lightbox="media/observability/queue-buffer-data.png" border="false":::
 
-In this architecture, the data-collection service posts data to a queue. A message queue is suitable because it provides "at least once" semantics that helps ensure that queued data won't be lost after it's posted. You can implement the storage-writing service by using a separate worker role. You can use the [Priority Queue pattern](/azure/architecture/patterns/priority-queue) to implement this architecure.
+In this architecture, the data-collection service posts data to a queue. A message queue is suitable because it provides "at least once" semantics that helps ensure that queued data won't be lost after it's posted. You can implement the storage-writing service by using a separate worker role. You can use the [Priority Queue pattern](/azure/architecture/patterns/priority-queue) to implement this architecture.
 
 For scalability, you can run multiple instances of the storage-writing service. If there's a high volume of events or a high number of data points being monitored, you can use Azure Event Hubs to dispatch the data to a different compute instance for processing and storage.
 
@@ -116,7 +119,7 @@ The data collected from a single instance of an application provides a localized
 
 :::image type="content" source="media/observability/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="media/observability/service-instrumentation-data.png" border="false":::
 
-The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, you can amalgamate instrumentation data that includes the same correlation information, like an activity ID. (A user might start a business operation on one node and then get transferred to another node if the first node fails, or because of how load balancing is configured.) This process can also detect and remove any duplicated data. (Dupliation can occur if the telemetry service uses message queues to push instrumentation data out to storage.)
+The instrumentation data can pass through a separate data consolidation service that combines data and acts as a filter and cleanup process. For example, you can amalgamate instrumentation data that includes the same correlation information, like an activity ID. (A user might start a business operation on one node and then get transferred to another node if the first node fails, or because of how load balancing is configured.) This process can also detect and remove any duplicated data. (Duplication can occur if the telemetry service uses message queues to push instrumentation data out to storage.)
 
 ### Storage
 
@@ -131,7 +134,7 @@ Consider a polyglot persistence approach, where different types of information a
 
 For example, Azure Blob Storage and Azure Table Storage share some similarities insofar as how they're accessed. But the operations that you can perform on them differ, as does the granularity of the data that they hold. If you need to perform more analytical operations or require full-text search capabilities on the data, it might be more appropriate to use data storage that provides capabilities that are optimized for specific types of queries and data access. For example:
 
-- Performance counter data can be stored in a SQL database to enable ad hoc analysis.
+- Performance counter data can be stored in an SQL database to enable ad hoc analysis.
 
 - It might be better to store trace logs in Azure Monitor Logs or Azure Data Explorer.
 
@@ -193,7 +196,7 @@ The usage data for a single business operation might span all three tiers. This 
 
 - **Correlate application-level and resource-level logs**: Evaluate data at both levels to optimize the detection of issues and the troubleshooting of those issues. You can aggregate the data in a single data sink or take advantage of methods that query events across both levels. We recommend a unified solution, like Azure Log Analytics, to aggregate and query application-level and resource-level logs.
 
-- **Define clear retention times on storage for cold analysis**: We recommned this practice to enable historic analysis over a specific period. It can also help you control storage costs. Implement processes that ensure data is archived to cheaper storage and aggregate data for long-term trend analysis.
+- **Define clear retention times on storage for cold analysis**: We recommend this practice to enable historic analysis over a specific period. It can also help you control storage costs. Implement processes that ensure data is archived to cheaper storage and aggregate data for long-term trend analysis.
 
 - **Analyze long-term trends to predict operational issues**: Evaluate long-term data to form operational strategies and also to predict what operational issues are likely to occur, and when. For example, if average response times are slowly increasing over time and approaching the maximum target.
 
@@ -266,7 +269,7 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 
    -  If you're using multiple workspaces, see the Log Analytics workspace [architecture guide](/azure/azure-monitor/logs/workspace-design) for best practices.
 
-- [Application Insights](/azure/azure-monitor/app/app-insights-overview?tabs=net) is an extension of Azure Monitor. It provides APM features.
+- [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor. It provides APM features.
 
 - [Azure Monitor Insights](/azure/azure-monitor/insights/insights-overview) are advanced analytics tools for specific Azure technologies (like VMs, app services, and containers) that are part of Azure Monitor and Log Analytics.
 
@@ -289,10 +292,9 @@ _Placeholder for IaaS baseline architecture_
 - [Recommendations for monitoring and threat detection](../security/monitoring.md)
 - [Recommendations for collecting performance data](../performance-efficiency/collect-metrics-logs.md)
 
+## Operational Excellence checklist
 
-## Next steps
-
-We recommend that you review the Operational Excellence checklist to explore other concepts. 
+Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"] 
 > [Operational Excellence checklist](checklist.md) 
