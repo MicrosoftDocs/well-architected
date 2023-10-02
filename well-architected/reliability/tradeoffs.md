@@ -78,6 +78,6 @@ During the design phase of a workload, it's important to consider how decisions 
 Explore the tradeoffs for the other pillars.
 
 - [Security tradeoffs](../security/tradeoffs.md)
-- [Cost optimization tradeoffs](../cost-optimization/tradeoffs.md)
-- [Operational excellence tradeoffs](../operational-excellence/tradeoffs.md)
-- [Performance efficiency tradeoffs](../performance-efficiency/tradeoffs.md)
+- [Cost Optimization tradeoffs](../cost-optimization/tradeoffs.md)
+- [Operational Excellence tradeoffs](../operational-excellence/tradeoffs.md)
+- [Performance Efficiency tradeoffs](../performance-efficiency/tradeoffs.md)
