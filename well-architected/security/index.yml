@@ -59,7 +59,7 @@ landingContent:
           - text: Secure development lifecycle
             url: secure-development-lifecycle.md
           - text: Data classification
-            url: classify-data.md
+            url: data-classification.md
           - text: Security monitoring
             url: monitoring.md
           - text: Model threats (TODO)
