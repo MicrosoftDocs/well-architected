@@ -1,0 +1,108 @@
+### YamlMime:Landing
+
+title: Reliability quick links
+summary: Apply resiliency guidance to your architecture to make a workload resilient to malfunction and returns to a fully functioning state after a failure occurs.
+
+metadata:
+  title: Reliability quick links
+  description: Apply resiliency guidance to your architecture to make a workload resilient to malfunction and returns to a fully functioning state after a failure occurs.
+  ms.service: waf
+  ms.subservice: waf-pillar-reliability
+  ms.topic: landing-page
+  author: martinekuan
+  ms.author: martinek
+  ms.date: 09/29/2023
+
+landingContent:
+  - title: Key points
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Design principles
+            url: principles.md
+          - text: Checklist
+            url: checklist.md
+          - text: Tradeoffs
+            url: tradeoffs.md
+          - text: Reliability patterns
+            url: design-patterns.md
+          - text: Azure Well-Architected Review assessment
+            url: /assessments/azure-architecture-review/
+      - linkListType: learn
+        links:
+          - text: Reliability
+            url: /training/modules/azure-well-architected-introduction/6-reliability
+          - text: Resilience in Azure whitepaper
+            url: https://azure.microsoft.com/resources/resilience-in-azure-whitepaper/
+      - linkListType: video
+        links:
+          - text: Inside Azure data center architecture with Mark Russinovich
+            url: https://www.youtube.com/watch?v=69PrhWQorEM
+  - title: Design principles
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Design for business requirements
+            url: principles.md#design-for-business-requirements
+          - text: Design for resilience
+            url: principles.md#design-for-resilience
+          - text: Design for recovery
+            url: principles.md#design-for-recovery
+          - text: Design for operations
+            url: principles.md#design-for-operations
+          - text: Keep it simple
+            url: principles.md#keep-it-simple
+  - title: Set and measure reliability targets
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Identify flows
+            url: identify-flows.md
+          - text: Perform failure mode analysis
+            url: failure-mode-analysis.md
+          - text: Use business metrics
+            url: metrics.md
+          - text: Set reliability targets
+            url: metrics.md
+          - text: Design a monitoring & alerting strategy
+            url: monitoring-alerting-strategy.md
+  - title: Achieve reliability targets
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Design for redundancy
+            url: redundancy.md
+          - text: Use availability zones and regions
+            url: regions-availability-zones.md
+          - text: Highly available multi-region design
+            url: highly-available-multi-region-design.md
+          - text: Partition data
+            url: partition-data.md
+          - text: Reliably scale
+            url: scaling.md
+          - text: Design for self-healing & preservation
+            url: self-preservation.md
+          - text: Use background jobs
+            url: background-jobs.md
+          - text: Handle transient faults
+            url: handle-transient-faults.md
+          - text: Design with simplicity
+            url: simplify.md
+  - title: Testing and drilling
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Design a testing strategy
+            url: testing-strategy.md
+          - text: Design a recovery strategy
+            url: disaster-recovery.md
+  - title: Related resources
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: "Azure Advisor: Reliability recommendations"
+            url: /azure/advisor/advisor-reference-reliability-recommendations
+          - text: Azure reliability documentation
+            url: /azure/reliability
+          - text: Site reliability engineering documentation
+            url: /azure/site-reliability-engineering/
