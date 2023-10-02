@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for implementing automation
 
-**Applies to: OE 09**
+**Applies to OE:09**
 
 This guide describes the recommendations for adopting automation in your workload. You can automate tasks that are repetitive and prone to human error to help your teams gain efficiency and adhere to standards. Automate tasks to make your workload streamlined and consistent. Automation enables your operations and engineering teams to be more efficient because it gives them more time to work on other improvements. Automation is a powerful tool in all aspects of workload management. Thoughtfully implement automation to empower your organization.
 
