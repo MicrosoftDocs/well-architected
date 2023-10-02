@@ -17,20 +17,20 @@ This guide describes the recommendations for scaling and partitioning a workload
 
 |Term| Definition|
 |---|---|
-| Scalability | The ability of a workload to dynamically change its capacity limits to accommodate varying levels of demand.|
 | Autoscale | A feature that automatically adjusts the capacity limits of a service based on predefined configurations, allowing it to scale up or down as needed.|
 | Capacity | The upper limit or maximum capacity of a given service or feature.|
-| Partitioning | The process of physically dividing data into separate data stores.|
-| Vertical scaling| A scaling approach that adds compute capacity to existing resources.|
-| Horizontal scaling| A scaling approach that adds instances of a given type of resource.|
-| Scale unit| A group of resources that must scale proportionately together to maintain balanced performance. |
 | Client affinity (session affinity) | The intentional routing of requests from a single client to a single server instance to help ensure consistent session management.|
-| Data locking| A mechanism used to prevent simultaneous updates to the same data.|
-| State affinity | The storage of client session data on a single server so that subsequent requests from the same client are handled by the same server. |
-| Optimistic concurrency| An approach for updating databases that uses snapshots to make updates instead of traditional locking mechanisms. |
 | Consistency (distributed database)| The uniformity of data across multiple nodes in a distributed database, ensuring that all replicas have the same data at a given point in time. |
 | Consistency (relational database)| The property of a transaction bringing a database from one valid state to another, maintaining data integrity. |
 | Consistency level| A configuration that defines how and when data is replicated in a distributed database system, determining the trade off between consistency and performance. |
+| Data locking| A mechanism used to prevent simultaneous updates to the same data.|
+| Horizontal scaling| A scaling approach that adds instances of a given type of resource.|
+| Optimistic concurrency| An approach for updating databases that uses snapshots to make updates instead of traditional locking mechanisms. |
+| Partitioning | The process of physically dividing data into separate data stores.|
+| Scalability | The ability of a workload to dynamically change its capacity limits to accommodate varying levels of demand.|
+| Scale unit| A group of resources that must scale proportionately together to maintain balanced performance. |
+| State affinity | The storage of client session data on a single server so that subsequent requests from the same client are handled by the same server. |
+| Vertical scaling| A scaling approach that adds compute capacity to existing resources.|
 
 ## Key design strategies
 
@@ -50,11 +50,11 @@ It's important to choose the right scaling strategy, either vertical or horizont
 
 **Understand the workload.** The suitability of vertical or horizontal scaling depends on the specific characteristics and requirements of the workload. Regular performance monitoring and testing in the following areas can help optimize the scaling strategy over time:
 
-- **Requirements**: Understand the specific requirements of the workload by considering factors such as resource demands, scalability needs, and the limitations of the workload.
+- *Requirements*: Understand the specific requirements of the workload by considering factors such as resource demands, scalability needs, and the limitations of the workload.
 
-- **Scale units**: Create a scale unit design for components expected to be scaled together. For example, 100 virtual machines might require two queues and three storage accounts to handle the extra workload. The scale unit would be 100 virtual machines, two queues, and three storage accounts. You should independently scale all the components that experience capacity-use fluctuation.
+- *Scale units*: Create a scale unit design for components expected to be scaled together. For example, 100 virtual machines might require two queues and three storage accounts to handle the extra workload. The scale unit would be 100 virtual machines, two queues, and three storage accounts. You should independently scale all the components that experience capacity-use fluctuation.
 
-- **Architecture**: Assess the design of the application architecture. Some applications might be inherently designed to scale horizontally, with stateless components that can be easily distributed across multiple instances. Other applications might have stateful components or dependencies that make vertical scaling more appropriate. Evaluate the scalability and elasticity requirements of the workload.
+- *Architecture*: Assess the design of the application architecture. Some applications might be inherently designed to scale horizontally, with stateless components that can be easily distributed across multiple instances. Other applications might have stateful components or dependencies that make vertical scaling more appropriate. Evaluate the scalability and elasticity requirements of the workload.
 
 #### Design for infrastructure scalability
 
@@ -62,23 +62,23 @@ Designing for infrastructure scalability is the process of creating an architect
 
 **Avoid singletons.** You should avoid the use of a single, centralized resource for the entire workload. Instead, distribute your workload across multiple resources for better scalability, fault tolerance, and performance. Explore some specific examples and design considerations to avoid singletons in workload resources:
 
-- **[Queue-based load leveling](/azure/architecture/patterns/queue-based-load-leveling)**: Instead of relying on a single queue to process messages, consider partitioning the workload across multiple queues to distribute the processing load. It provides better scalability and parallel processing.
+- *[Queue-based load leveling](/azure/architecture/patterns/queue-based-load-leveling)*: Instead of relying on a single queue to process messages, consider partitioning the workload across multiple queues to distribute the processing load. It provides better scalability and parallel processing.
 
-- **Data processing**: Singleton patterns often appear in data processing scenarios where the processing doesn't fan out. Break long-running tasks into smaller tasks that can scale better to distribute the workload across multiple resources and take advantage of parallelism.
+- *Data processing*: Singleton patterns often appear in data processing scenarios where the processing doesn't fan out. Break long-running tasks into smaller tasks that can scale better to distribute the workload across multiple resources and take advantage of parallelism.
 
-- **Design patterns**: Design patterns such as [*Fan-out/Fan-in*](/azure/azure-functions/durable/durable-functions-overview#fan-in-out) or [*Pipes and Filters*](/azure/architecture/patterns/pipes-and-filters) can help avoid singletons in workflows. These patterns enable the distribution of processing tasks across multiple resources and promote scalability and flexibility.
+- *Design patterns*: Design patterns such as [Fan-out/Fan-in](/azure/azure-functions/durable/durable-functions-overview#fan-in-out) or [Pipes and Filters](/azure/architecture/patterns/pipes-and-filters) can help avoid singletons in workflows. These patterns enable the distribution of processing tasks across multiple resources and promote scalability and flexibility.
 
 **Decouple components.** Decoupling application components is an important aspect of designing for scalability. It involves breaking down the application into smaller, independent components that can operate and scale independently based on specific workload requirements. For example, if one component requires more resources due to increased demand, you can scale that component without affecting the others. This flexibility ensures efficient resource allocation and prevents bottlenecks. By decoupling components, you can isolate failures and minimize the effect on the overall application. If one component fails, the other components can continue to function independently.
 
 Decoupled components are easier to maintain and update. Changes or updates to one component can be made without affecting the others because they're independent. Follow these guidelines to decouple application components for scalability:
 
-- **Separation of concerns**: Identify the responsibilities and functionalities of your application. Divide the responsibilities into separate components based on their specific tasks. For example, you might have separate components for user authentication, data processing, and UI.
+- *Separation of concerns*: Identify the responsibilities and functionalities of your application. Divide the responsibilities into separate components based on their specific tasks. For example, you might have separate components for user authentication, data processing, and UI.
 
-- **Loose coupling**: Design the components to communicate with each other through well-defined interfaces and protocols. This design reduces dependencies between components and allows for easier replacement or scaling of individual components.
+- *Loose coupling**: Design the components to communicate with each other through well-defined interfaces and protocols. This design reduces dependencies between components and allows for easier replacement or scaling of individual components.
 
-- **Asynchronous communication**: Use asynchronous communication patterns such as message queues or event-driven architectures to decouple components further. These patterns allow components to process tasks independently at their own pace, improving overall scalability.
+- *Asynchronous communication*: Use asynchronous communication patterns such as message queues or event-driven architectures to decouple components further. These patterns allow components to process tasks independently at their own pace, improving overall scalability.
 
-- **Microservices**: Consider implementing microservices, which are small, independent services that focus on specific business functionalities. Each microservice can be developed, deployed, and scaled independently, providing greater flexibility and scalability.
+- *Microservices*: Consider implementing microservices, which are small, independent services that focus on specific business functionalities. Each microservice can be developed, deployed, and scaled independently, providing greater flexibility and scalability.
 
 #### Design for application scalability
 
@@ -138,11 +138,11 @@ Implement scaling in a workload by adjusting the available resources, such as co
 
 **Understand service scaling boundaries.** When you understand service scaling limits, increments, and restrictions, you can make informed decisions when selecting a service. Scaling boundaries determine whether or not your chosen service can handle the expected workload, scale efficiently, and meet the performance requirements of your application. Scaling boundaries to consider include:
 
-- **Scaling limits**: Scaling limits are the maximum capacity that a location or service can handle. It's important to know these limits to help ensure that the service can accommodate the expected workload and handle peak usage without performance degradation. Every resource has an upper scale limit. If you need to go beyond scale limits, you should partition your workload.
+- *Scaling limits*: Scaling limits are the maximum capacity that a location or service can handle. It's important to know these limits to help ensure that the service can accommodate the expected workload and handle peak usage without performance degradation. Every resource has an upper scale limit. If you need to go beyond scale limits, you should partition your workload.
 
-- **Scaling increments**: Services scale at defined increments. For example, compute services might scale by instances and pods while databases might scale by instances, transaction units, and virtual cores. It's important to understand these increments to optimize resource allocation and prevent resource flapping.
+- *Scaling increments*: Services scale at defined increments. For example, compute services might scale by instances and pods while databases might scale by instances, transaction units, and virtual cores. It's important to understand these increments to optimize resource allocation and prevent resource flapping.
 
-- **Scaling restrictions**: Some services allow you to scale up or out but limit your ability to automatically reverse scaling. You're forced to scale in manually, or you might have to redeploy a new resource. These limitations are often to protect the workload. Scaling down or scaling in can have implications on the availability and performance of the workload. A service might enforce certain limitations or constraints to help ensure that the workload has sufficient resources to operate effectively. This can affect data consistency and synchronization, especially in distributed systems. The service might have mechanisms in place to handle data replication and consistency during scaling up or out but might not provide the same level of support for scaling down or in.
+- *Scaling restrictions*: Some services allow you to scale up or out but limit your ability to automatically reverse scaling. You're forced to scale in manually, or you might have to redeploy a new resource. These limitations are often to protect the workload. Scaling down or scaling in can have implications on the availability and performance of the workload. A service might enforce certain limitations or constraints to help ensure that the workload has sufficient resources to operate effectively. This can affect data consistency and synchronization, especially in distributed systems. The service might have mechanisms in place to handle data replication and consistency during scaling up or out but might not provide the same level of support for scaling down or in.
 
 **Use meaningful load metrics.** Scaling should use meaningful load metrics as scaling triggers. Meaningful load metrics include simple metrics, like CPU or memory, or more advanced metrics, such as queue depth, SQL queries, custom metrics queries, and HTTP queue length. Consider using a combination of simple and advanced load metrics as your scaling trigger.
 
@@ -186,21 +186,21 @@ Partitioning is the process of dividing a large dataset or workload into smaller
 
 **Understand partitioning.** The specific partitioning approach you use depends on the type of data or workload you have and the technology you're using. Some common strategies for partitioning include:
 
-- **Horizontal partitioning**: In this approach, the dataset or workload is divided based on specific criteria, such as ranges of values or specific attributes. Each partition contains a subset of the data that meets the defined criteria.
+- *Horizontal partitioning*: In this approach, the dataset or workload is divided based on specific criteria, such as ranges of values or specific attributes. Each partition contains a subset of the data that meets the defined criteria.
 
-- **Vertical partitioning**: In this approach, the dataset or workload is divided based on specific attributes or columns. Each partition contains a subset of the columns or attributes, allowing for more efficient access to the required data.
+- *Vertical partitioning*: In this approach, the dataset or workload is divided based on specific attributes or columns. Each partition contains a subset of the columns or attributes, allowing for more efficient access to the required data.
 
-- **Functional partitioning**: In this approach, the data or workload is divided based on the specific functions or operations that need to be performed. Each partition contains the data or components necessary for a specific function, enabling optimized processing and performance.
+- *Functional partitioning*: In this approach, the data or workload is divided based on the specific functions or operations that need to be performed. Each partition contains the data or components necessary for a specific function, enabling optimized processing and performance.
 
 **Plan partitioning.** It's important to consider factors such as data distribution, query patterns, data growth, and system requirements when partitioning. Proper planning and design are essential to help ensure the effectiveness of partitioning and maximize performance efficiency. If you address partitioning as an afterthought, it's more challenging because you already have a live system to maintain. You might need to change data access logic, distribute large quantities of data across partitions, and support continued usage during data distribution.
 
 **Implement partitioning.** It's important to analyze the characteristics of your data, access patterns, concurrency requirements, and scalability goals when deciding which type of partitioning to use. Each type of partitioning has its own advantages and considerations. Here are some factors to consider for each type of partitioning:
 
-- **Horizontal partitioning** is appropriate when you want to distribute the data across multiple resources or servers for better scalability and performance. It's effective when the workload can be parallelized and processed independently on each partition. Consider horizontal partitioning when multiple users or processes need to be able to access or update the dataset concurrently.
+- *Horizontal partitioning* is appropriate when you want to distribute the data across multiple resources or servers for better scalability and performance. It's effective when the workload can be parallelized and processed independently on each partition. Consider horizontal partitioning when multiple users or processes need to be able to access or update the dataset concurrently.
 
-- **Vertical partitioning** is appropriate when certain attributes or columns are frequently accessed, while others are accessed less frequently. Vertical partitioning allows for efficient access to the required data by minimizing unnecessary data retrieval.
+- *Vertical partitioning* is appropriate when certain attributes or columns are frequently accessed, while others are accessed less frequently. Vertical partitioning allows for efficient access to the required data by minimizing unnecessary data retrieval.
 
-- **Functional partitioning** is appropriate when different functions require different subsets of the data and can be processed independently. Functional partitioning can optimize performance by allowing each partition to focus on the specific operations it's designed for.
+- *Functional partitioning* is appropriate when different functions require different subsets of the data and can be processed independently. Functional partitioning can optimize performance by allowing each partition to focus on the specific operations it's designed for.
 
 **Test and optimize partitioning.** Test the partitioning scheme to verify the effectiveness and efficiency of the strategy so you can make adjustments to improve performance. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
 
@@ -208,25 +208,25 @@ Partitioning is the process of dividing a large dataset or workload into smaller
 
 > ![Risk icon](../_images/risk.svg) **Risk**: Partitioning introduces some potential problems that need to be considered and addressed, including:
 >
-> - **Data skew**: Partitioning can lead to data skew, where certain partitions receive a disproportionate amount of data or workload compared to others. Data skew can result in performance imbalances and increased contention on specific partitions.
+> - *Data skew*: Partitioning can lead to data skew, where certain partitions receive a disproportionate amount of data or workload compared to others. Data skew can result in performance imbalances and increased contention on specific partitions.
 >
-> - **Query performance**: Poorly designed partitioning schemes can negatively affect query performance. If queries need to access data across multiple partitions, it might require extra coordination and communication between partitions, leading to increased latency.
+> - *Query performance*: Poorly designed partitioning schemes can negatively affect query performance. If queries need to access data across multiple partitions, it might require extra coordination and communication between partitions, leading to increased latency.
 
 ## Azure facilitation
 
-**Implement scaling:** Azure has the infrastructure capacity to support vertical and horizontal scaling. Azure services have different performance tiers known as SKUs. SKUs allow you to scale vertically. Many of Azure's resources support automatic scaling or other in-place scale options. Some resources support advanced metrics or custom input to support fine-tuning scaling behavior. Most scaling implementations in Azure can set limits and support the necessary observability to be alerted to change.
+**Implement scaling.** Azure has the infrastructure capacity to support vertical and horizontal scaling. Azure services have different performance tiers known as SKUs. SKUs allow you to scale vertically. Many of Azure's resources support automatic scaling or other in-place scale options. Some resources support advanced metrics or custom input to support fine-tuning scaling behavior. Most scaling implementations in Azure can set limits and support the necessary observability to be alerted to change.
 
 [Azure Monitor](/azure/azure-monitor/overview) allows you to monitor various metrics and conditions in your applications and infrastructure. You can use Monitor to trigger automated scaling actions based on predefined rules. For example, in Azure Kubernetes Service (AKS), you can use Monitor to enable horizontal pod automatic scaling (HPA) and cluster automatic scaling. Using Monitor's monitoring and alerting capabilities, you can effectively facilitate scaling in Azure and help ensure that your applications and infrastructure can dynamically adjust to meet demand.
 
-**Build custom automatic scaling:** You can use alerts in Monitor for resources that don't have an autoscale feature. These alerts can be set up to be query-based or metric-based and can perform actions using [Azure Automation](/azure/automation/overview). Automation provides a platform for hosting and running PowerShell and Python code across Azure, the cloud, and on-premises environments. It offers features such as deploying runbooks on demand or on a schedule, run history and logging, integrated secrets store, and source control integration.
+**Build custom automatic scaling.** You can use alerts in Monitor for resources that don't have an autoscale feature. These alerts can be set up to be query-based or metric-based and can perform actions using [Azure Automation](/azure/automation/overview). Automation provides a platform for hosting and running PowerShell and Python code across Azure, the cloud, and on-premises environments. It offers features such as deploying runbooks on demand or on a schedule, run history and logging, integrated secrets store, and source control integration.
 
-**Eliminate data locking:** In Azure SQL Database, you can enable [optimized locking](/sql/relational-databases/performance/optimized-locking) to improve performance on databases that require strict consistency.
+**Eliminate data locking.** In Azure SQL Database, you can enable [optimized locking](/sql/relational-databases/performance/optimized-locking) to improve performance on databases that require strict consistency.
 
-**Use background tasks:** Azure offer services and guidance for implementing background jobs. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs).
+**Use background tasks.** Azure offer services and guidance for implementing background jobs. For more information, see [Background jobs](/azure/architecture/best-practices/background-jobs).
 
-**Implement load balancing:** Azure provides load balancers that don't require client affinity. These load balancers include [Azure Front Door](/azure/frontdoor/routing-methods#session-affinity), [Azure Application Gateway](/azure/application-gateway/features#session-affinity), and [Azure Load Balancer](/azure/load-balancer/load-balancer-distribution-mode?tabs=azure-portal).
+**Implement load balancing.** Azure provides load balancers that don't require client affinity. These load balancers include [Azure Front Door](/azure/frontdoor/routing-methods#session-affinity), [Azure Application Gateway](/azure/application-gateway/features#session-affinity), and [Azure Load Balancer](/azure/load-balancer/load-balancer-distribution-mode?tabs=azure-portal).
 
-**Implement partitioning:** Azure offers various partitioning strategies for different data stores. These strategies help improve performance and scalability by distributing the data across multiple partitions. For more information, see [Data partition strategies](/azure/architecture/best-practices/data-partitioning-strategies).
+**Implement partitioning.** Azure offers various partitioning strategies for different data stores. These strategies help improve performance and scalability by distributing the data across multiple partitions. For more information, see [Data partition strategies](/azure/architecture/best-practices/data-partitioning-strategies).
 
 ## Related links
 
