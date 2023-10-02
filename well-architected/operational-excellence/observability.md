@@ -31,7 +31,7 @@ To implement a comprehensive monitoring framework design for your workload, foll
 
 - Store the collected data in a standardized, reliable, and secure storage solution.
 
-- Process stored data needs so that it can be handled by analysis and visualization solutions.
+- Process stored data so that it can be handled by analysis and visualization solutions.
 
 - Analyze processed data to accurately determine the state of the workload.
 
@@ -58,13 +58,13 @@ You should configure all workload components, whether they're infrastructure res
 
 Logs are primarily useful for detecting and investigating anomalies. Typically, logs are produced by the workload component and then sent to the monitoring platform or pulled by the monitoring platform via automation.
 
-Metrics are primarily useful for [building a health model](../reliability/metrics.md#building-a-health-model) and identifying trends in workload performance and reliability. Metrics are also useful for identifying trends in the usage behaviors of your customers, which can help guide decisions about improvements from the customer perspective. Typically, metrics are defined in the monitoring platform, and the monitoring platform and other tools poll the workload to capture metrics.
+Metrics are primarily useful for [building a health model](../reliability/metrics.md#building-a-health-model) and identifying trends in workload performance and reliability. Metrics are also useful for identifying trends in the usage behavior of your customers. These trends can help guide decisions about improvements from the customer perspective. Typically, metrics are defined in the monitoring platform, and the monitoring platform and other tools poll the workload to capture metrics.
 
 #### Application data
 
 For applications, the collecting service can be an application performance management (APM) tool that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you'll have clear visibility into important metrics, in real time and historically. Use an appropriate level of logging. Verbose logging can incur significant costs. Set log levels according to the environment. Lower environments don't need the same level of verbosity as production, for example.
 
-Application logs support the end-to-end application lifecycle. Logging is essential to understanding how the application operates in various environments, which events occur, and the conditions in which they occur.
+Application logs support the end-to-end application lifecycle. Logging is essential to understanding how the application operates in various environments, which events occur, and the conditions under which they occur.
 
 We recommend that you collect application logs and events across all major environments. Separate the data between environments as much as possible by using different data stores for each environment, if doing so is practical. Use filters to ensure that non-critical environments don't complicate the interpretation of production logs. Finally, corresponding log entries across the application should capture a correlation ID for their respective transactions.
 
@@ -111,7 +111,7 @@ One way to buffer instrumentation data is to use queuing:
 
 In this architecture, the data-collection service posts data to a queue. A message queue is suitable because it provides "at least once" semantics that helps ensure that queued data won't be lost after it's posted. You can implement the storage-writing service by using a separate worker role. You can use the [Priority Queue pattern](/azure/architecture/patterns/priority-queue) to implement this architecture.
 
-For scalability, you can run multiple instances of the storage-writing service. If there's a high volume of events or a high number of data points being monitored, you can use Azure Event Hubs to dispatch the data to a different compute instance for processing and storage.
+For scalability, you can run multiple instances of the storage-writing service. If a high volume of events or a high number of data points is being monitored, you can use Azure Event Hubs to dispatch the data to a different compute instance for processing and storage.
 
 **Consolidation strategies**
 
@@ -144,7 +144,7 @@ The same instrumentation data might be required for more than one purpose. For e
 
 Be sure to enable functionality to protect the data from accidental deletion, like resource locks and soft delete. 
 
-Also, be sure that you secure access to storage by using role-based access control to help ensure that only individuals who need to access the data can.
+Also, be sure that you secure access to storage by using role-based access control to help ensure that only individuals who need to access the data can do so.
 
 #### Consolidation service
 
@@ -158,11 +158,11 @@ Each approach has its advantages and disadvantages. Implementing a separate part
 
 #### Querying considerations
 
-Consider how urgently the data is required. Data that generates alerts must be accessed quickly, so it should be held in fast data storage and indexed or structured to optimize the queries that the alerting system performs. In some cases, it might be necessary for the collection service to format and save data locally so that a local instance of the alerting system can send notifications quickly. The same data can be dispatched to the storage writing service shown in the previous images and stored centrally if it's also required for other purposes.
+Consider how urgently the data is required. Data that generates alerts must be accessed quickly, so it should be held in fast data storage and indexed or structured to optimize the queries that the alerting system performs. In some cases, it might be necessary for the collection service to format and save data locally so that a local instance of the alerting system can send notifications quickly. The same data can be dispatched to the storage writing service shown in the previous diagrams and stored centrally if it's also required for other purposes.
 
 #### Data retention considerations
 
-In some cases, after data is processed and transferred, you can remove the original raw source data that was stored locally. In other cases, it might be necessary or useful to save the raw information. For example, you might want to keep data that's generated for debugging available in its raw form but then discard it quickly after any bugs have been resolved.
+In some cases, after data is processed and transferred, you can remove the original raw source data that was stored locally. In other cases, it might be necessary or useful to save the raw information. For example, you might want to keep data that's generated for debugging available in its raw form but then discard it quickly after any bugs are resolved.
 
 Performance data often has a longer life so that you can use it for spotting performance trends and for capacity planning. The consolidated view of this data is usually kept online for a finite period to enable fast access. After that, it can be archived or discarded.
 
@@ -178,7 +178,7 @@ After you collect data from various data sources, analyze it to assess the overa
 
 - How to structure data based on KPIs and performance metrics that you've defined.
 
-- How to correlate the data captured in different metrics and log files. This correlation is important when you're tracking a sequence of events and can help diagnose problems.
+- How to correlate the data captured in different metrics and log files. This correlation is important when you're tracking a sequence of events and can help you diagnose problems.
 
 In most cases, data for each component of the architecture is captured locally and then accurately combined with data that's generated by other components.
 
