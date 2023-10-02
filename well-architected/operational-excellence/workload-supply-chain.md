@@ -9,13 +9,13 @@ ms.topic: conceptual
 
 # Recommendations for designing a workload development supply chain
 
-**Applies to: OE 06**
+**Applies to OE:06**
 
 This guide describes the recommendations for designing a workload development supply chain that's based on continuous integration and continuous delivery (CI/CD) pipelines. Develop a supply chain to ensure that you have a predictable, standardized method of maintaining your workload. CI/CD pipelines are the manifestation of the supply chain, but you should have a single supply chain. And you might have several pipelines that follow the same processes and use the same tools.
 
 Incorporate a supply chain to protect your workload from self-inflicted damage caused by a lack of managing changes that your workload undergoes. Always be aware of the state of your workload, so you're not at risk of experiencing unpredictable behavior. This risk compounds if you need to spend critical time retracing unaccounted for changes when issues arise. To minimize these risks, standardize the processes and tools that define your supply chain, and ensure that your workload team fully commits to their use.
 
-**Definitions**
+**Definition**
 
 |Term  |Definition  |
 |---------|---------|
