@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for security incidence response
 
-**Applies to: SE 12**
+**Applies to Well-Architected Framework Security checklist recommendation:**
+
+|[SE:12](checklist.md)|"_Define and test effective incident response operational procedures that cover a spectrum of incidents, from localized to disaster recovery. Procedures must state clear ownership for execution._"|
+|---|---|
 
 If there's a security compromise to the system, a systematic incident response approach helps to reduce the time to identify, manage, and mitigate security incidents that may threaten the confidentiality, integrity, or availability of software systems and data. 
 
@@ -120,9 +123,9 @@ Cloud Adoption Framework provides guidance of incident response planning and sec
 
 [Incident response overview | Microsoft Learn](/security/operations/incident-response-overview)
 
-## Next steps
+## Security checklist
 
-We recommend that you review the Security checklist to explore other concepts.
+Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"]
-> [Security checklist](checklist.md)
+[Security checklist](checklist.md)
