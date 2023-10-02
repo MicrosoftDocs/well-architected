@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for designing a reliability testing strategy
 
-**Applies to: RE 07**
+**Applies to this Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:07](checklist.md)| Test for resiliency and availability scenarios by applying the principles of chaos engineering in your test and production environments. Use testing to ensure that your graceful degradation implementation and scaling strategies are effective by performing active malfunction and simulated load testing. |
+|---|---|
 
 This guide describes the recommendations for designing a reliability testing strategy to validate and optimize the reliability of your workload. Reliability testing focuses on the resiliency and availability of your workload, specifically the critical flows that you identify when you design your solution. This guide provides general testing guidance and guidance that's specific to fault injection and chaos engineering.
 
@@ -147,3 +150,10 @@ To guard against unintended outages in production, ensure that you plan for suff
 - [Backup and disaster recovery for Azure applications](../resiliency/backup-and-recovery.md)
 - [Checklist for reliability testing](checklist.md)
 - [Test applications for availability and resiliency](../resiliency/testing.md)
+
+## Reliability checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 

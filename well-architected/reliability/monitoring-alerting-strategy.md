@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for designing a reliable monitoring and alerting strategy
 
-**Applies to: RE 09**
+**Applies to this Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:09](checklist.md)| Measure and publish the solution's health indicators. Continuously capture uptime and other reliability data from across the workload and also from individual components and key flows.  |
+|---|---|
 
 This guide describes the recommendations for designing a reliable monitoring and alerting strategy. Implement this strategy to keep your operations teams informed of your environment's health status and ensure that you meet the established reliability targets for your workload.
 
@@ -147,3 +150,10 @@ For examples of real-world monitoring solutions, see [Web application monitoring
 - [Alerting for operations](../devops/monitor-alerts.md)
 - [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring)
 - [Web application monitoring on Azure](/azure/architecture/web-apps/guides/monitoring/app-monitoring)
+
+## Reliability checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 

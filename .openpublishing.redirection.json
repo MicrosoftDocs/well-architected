@@ -7,7 +7,7 @@
 		},
 		{
 			"source_path": "well-architected/resiliency/reliability-patterns.md",
-			"redirect_url": "/azure/well-architected/reliability/self-preservation",
+			"redirect_url": "/azure/well-architected/reliability/design-patterns",
 			"redirect_document_id": true
 		},
 		{

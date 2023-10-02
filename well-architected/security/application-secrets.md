@@ -9,9 +9,9 @@ ms.topic: conceptual
 
 # Recommendations for protecting application secrets
 
-**Applies to Well-Architected Framework Security checklist recommendation:**
+**Applies to this Well-Architected Framework Security checklist recommendation:**
 
-|[SE:09](checklist.md)|"_Protect application secrets by hardening their storage, restricting access and manipulation, and auditing those actions. Execute a reliable and regular rotation process that has the ability to do ad-hoc rotations for emergencies._"|
+|[SE:09](checklist.md)|Protect application secrets by hardening their storage, restricting access and manipulation, and auditing those actions. Execute a reliable and regular rotation process that has the ability to do ad-hoc rotations for emergencies.|
 |---|---|
 
 Improper handling of secrets can be catastrophic because it decreases attackers' costs. It can lead to data breaches, service disruption, regulatory violations, and other issues.
@@ -186,4 +186,4 @@ There are other extensions that you can install in the deployment pipelines. For
 Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"]
-[Security checklist](checklist.md)
+> [Security checklist](checklist.md)

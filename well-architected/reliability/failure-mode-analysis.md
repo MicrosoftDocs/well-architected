@@ -12,7 +12,11 @@ categories:
 ---
 # Recommendations for performing failure mode analysis
 
-**Applies to: RE 02**
+**Applies to this Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:02](checklist.md)| Use failure mode analysis (FMA) to identify and prioritize potential failures in your solution components. Perform FMA to help you assess the risk and effect of each failure mode. Determine how the workload responds and recovers.  |
+|---|---|
+
 
 This guide describes the best practices for performing failure mode analysis (FMA) for your workload. FMA is the practice of identifying potential points of failure within your workload and the associated flows and planning mitigation actions accordingly. At each step of the flow, you identify the blast radius of multiple failure types, which helps you design a new workload or refactor an existing workload to minimize the widespread effect of failures.
 
@@ -148,9 +152,9 @@ The following table shows an FMA example for an e-commerce website that's hosted
 - [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis)
 - [Resiliency and dependencies](../resiliency/design-resiliency.md)
  
-## Next steps
+## Reliability checklist  
 
-We recommend that you review the Reliability checklist to explore other concepts.
+Refer to the complete set of recommendations. 
 
-> [!div class="nextstepaction"]
+> [!div class="nextstepaction"] 
 > [Reliability checklist](checklist.md) 
