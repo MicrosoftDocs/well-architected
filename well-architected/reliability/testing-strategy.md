@@ -45,7 +45,7 @@ This guide describes the recommendations for designing a reliability testing str
 
 - Test your workload's ability to withstand transient failures. For more information, see [Recommendations for handling transient faults](handle-transient-faults.md).
 
-- Test your workload's ability to respond to changes in load patterns and spikes in usage. Use this information to help you test your [scaling strategy](scaling.md). For information about load and stress testing, see [Recommendations for testing](../performance-efficiency/test.md).
+- Test your workload's ability to respond to changes in load patterns and spikes in usage. Use this information to help you test your [scaling strategy](scaling.md). For information about load and stress testing, see [Recommendations for testing](../performance-efficiency/performance-testing.md).
 
 - Test how your workload handles failures in dependent services or other dependencies by using fault injection.
 
@@ -132,7 +132,7 @@ Integrate the following recommendations and considerations to optimize your chao
 
 ## Azure facilitation
 
-[Azure Test Plans](https://learn.microsoft.com/en-us/azure/devops/test/overview?view=azure-devops) is an easy-to-use, browser-based test management solution that provides all the capabilities required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
+[Azure Test Plans](/azure/devops/test/overview) is an easy-to-use, browser-based test management solution that provides all the capabilities required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
 
 [Azure Chaos Studio Preview](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
 
@@ -145,5 +145,5 @@ To guard against unintended outages in production, ensure that you plan for suff
 ## Related links
 
 - [Backup and disaster recovery for Azure applications](../resiliency/backup-and-recovery.md)
-- [Checklist for reliability testing](test-checklist.md)
+- [Checklist for reliability testing](checklist.md)
 - [Test applications for availability and resiliency](../resiliency/testing.md)

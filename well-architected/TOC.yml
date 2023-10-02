@@ -70,7 +70,7 @@
             - name: SE:02 Security development lifecycle
               href: security/secure-development-lifecycle.md
             - name: SE:02 Threat analysis
-              href: security/threat-model              
+              href: security/threat-model.md              
             - name: SE:03 Data classification
               href: security/data-classification.md
             - name: SE:04 Segmentation strategy
@@ -416,64 +416,6 @@
       items:
       - name: Overview
         href: old-index.md
-      - name: Reliability
-        items:
-          - name: About
-            href: resiliency/index.yml
-          - name: Overview
-            href: resiliency/overview.md
-          - name: Principles
-            href: resiliency/old-principles.md
-          - name: Design
-            items:
-              - name: Checklist
-                href: resiliency/design-checklist.md
-              - name: Requirements
-                href: resiliency/design-requirements.md
-              - name: Application design
-                href: resiliency/app-design.md
-              - name: Resiliency & dependencies
-                href: resiliency/design-resiliency.md
-              - name: Data management
-                href: resiliency/data-management.md
-              - name: Application resiliency
-                href: /azure/architecture/reliability/architect?toc=/azure/architecture/framework/toc.json&bc=/azure/architecture/framework/breadcrumb/toc.json
-              - name: Regions and availability zones
-                href: resiliency/regions-availability-zones.md
-              - name: Business metrics
-                href: resiliency/business-metrics.md
-              - name: Best practices
-                href: resiliency/design-best-practices.md
-          - name: Testing
-            items:
-              - name: Checklist
-                href: resiliency/test-checklist.md
-              - name: Resiliency testing
-                href: resiliency/testing.md
-              - name: Backup & recovery
-                items:
-                  - name: Backup and recovery
-                    href: resiliency/backup-and-recovery.md
-                  - name: Automatic retry of failed backup jobs
-                    href: resiliency/auto-retry.md
-              - name: Error handling
-                href: resiliency/app-design-error-handling.md
-              - name: Chaos engineering
-                href: resiliency/chaos-engineering.md
-              - name: Best practices
-                href: resiliency/test-best-practices.md
-          - name: Monitoring
-            items:
-              - name: Checklist
-                href: resiliency/monitor-checklist.md
-              - name: Application health
-                href: resiliency/monitoring.md
-              - name: Health modeling
-                href: resiliency/monitor-model.md
-              - name: Best practices
-                href: resiliency/monitor-best-practices.md
-          - name: Reliability patterns
-            href: resiliency/reliability-patterns.md
       - name: Security
         items:
           - name: About
@@ -543,7 +485,7 @@
                   - name: Application classification
                     href: security/design-apps-considerations.md
                   - name: Threat analysis
-                    href: security/design-threat-model.md
+                    href: security/threat-model.md
                   - name: Secure PaaS deployments
                     href: /azure/security/fundamentals/paas-deployments
                   - name: Configuration and dependencies
@@ -1149,19 +1091,3 @@
                     href: service-guides/application-insights/cost-optimization.md
                   - name: Operational excellence
                     href: service-guides/application-insights/operational-excellence.md
-      - name: Implementing Recommendations
-        href: ./implementing-recommendations.md
-    - name: Orphans
-      items:
-      - name: Security resilience
-        href: security\resilience.md
-      - name: Security operations
-        href: security\security-operations.md
-      - name: Security storage data encryption
-        href: security\storage-data-encryption.md
-      - name: Security architecture type
-        href: security\architecture-type.md
-      - name: DevOps alerts
-        href: devops\alerts.md
-      - name: Overview
-        href: cost-optimization/overview.md        
