@@ -31,11 +31,11 @@ This guide describes design patterns that focus on self-preservation and self-he
 
 ### Self-preservation guidance
 
-To design your workload for self-preservation, follow infrastructure and application architecture design patterns to optimize your workload's resiliency. To minimize the chance of experiencing a full application outage, increase the resiliency of your solution by eliminating single points of failure and minimizing the blast radius of failures. The design approaches in this article provide several options to strengthen the resilience of your workload and meet your workload's defined [reliability targets](business-metrics.md).
+To design your workload for self-preservation, follow infrastructure and application architecture design patterns to optimize your workload's resiliency. To minimize the chance of experiencing a full application outage, increase the resiliency of your solution by eliminating single points of failure and minimizing the blast radius of failures. The design approaches in this article provide several options to strengthen the resilience of your workload and meet your workload's defined [reliability targets](metrics.md).
 
 #### Infrastructure design guidance and patterns
 
-At the infrastructure level, a [redundant architecture design](business-metrics.md) should support your critical flows, with resources deployed across [availability zones](regions-availability-zones.md) or [regions](highly-available-multi-region-design.md). Implement [autoscaling](scaling.md) when possible. Autoscaling helps protect your workload against unanticipated bursts in activity, further reinforcing your infrastructure.
+At the infrastructure level, a [redundant architecture design](metrics.md) should support your critical flows, with resources deployed across [availability zones](regions-availability-zones.md) or [regions](highly-available-multi-region-design.md). Implement [autoscaling](scaling.md) when possible. Autoscaling helps protect your workload against unanticipated bursts in activity, further reinforcing your infrastructure.
 
 Use the Deployment Stamps pattern or the Bulkhead pattern to minimize the blast radius when problems arise. These patterns help to keep your workload available if an individual component is unavailable. Use the following application design patterns in combination with your autoscaling strategy.
 
@@ -84,11 +84,11 @@ For more information, see [Recommendations for background jobs](background-jobs.
 
 ### Self-healing guidance
 
-To design your workload for self-healing, implement failure detection so automatic responses are triggered and critical flows gracefully recover. Enable logging to provide operational insights about the nature of the failure and the success of the recovery. The approaches that you take to achieve self-healing for a critical flow depend on the [reliability targets](business-metrics.md) that are defined for that flow and the flow's components and dependencies.
+To design your workload for self-healing, implement failure detection so automatic responses are triggered and critical flows gracefully recover. Enable logging to provide operational insights about the nature of the failure and the success of the recovery. The approaches that you take to achieve self-healing for a critical flow depend on the [reliability targets](metrics.md) that are defined for that flow and the flow's components and dependencies.
 
 #### Infrastructure design guidance
 
-At the infrastructure level, your critical flows should be supported by a [redundant architecture design](business-metrics.md) with automated failover enabled for components that support it. You can enable automated failover for the following types of services:
+At the infrastructure level, your critical flows should be supported by a [redundant architecture design](metrics.md) with automated failover enabled for components that support it. You can enable automated failover for the following types of services:
 
 - **Compute resources**: Azure Virtual Machine Scale Sets and most platform as a service (PaaS) compute services can be configured for automatic failover.
 
@@ -155,6 +155,6 @@ For example use cases of some patterns, see the [reliable web app pattern for .N
 
 ## Related links
 
-- [Reliability patterns](reliability-patterns.md)
+- [Reliability patterns](design-patterns.md)
 - [Cloud design patterns](/azure/architecture/patterns)
 - [Design for self-healing](/azure/architecture/guide/design-principles/self-healing)
