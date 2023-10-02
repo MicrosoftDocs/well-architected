@@ -53,7 +53,7 @@ To develop core skills in-house means to invest in training and developing the e
 
 ### Communicate financial expectations
 
-Personnel need ways to receive and relay cost optimization ideas. Creating communication channels allows for the exchange of knowledge, collaboration, and the identification of cost-saving opportunities.
+Personnel need ways to receive and relay cost optimization ideas. You should clearly communicate financial expectations to the workload team. Create communication channels that allow you to exchange knowledge, collaborate, and identify cost-saving opportunities.
 
 - *Reshape values*: Review and update values and mission statements to include financial responsibility. Ensure that these values are communicated and reinforced throughout the organization, aligning them with the overall business objectives. Recognize and reward individuals and teams who demonstrate financial responsibility and contribute to cost optimization efforts. Use performance evaluations, incentives, or other recognition programs.
 - *Establish clear expectations*: Set clear expectations and goals for all stakeholders that are aligned with the mission and encourage accountability and responsibility for all actions taken. Establish and promote success metrics aligned with individual teams' goals.
