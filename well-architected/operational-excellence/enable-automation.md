@@ -17,7 +17,7 @@ This guide describes the recommendations for designing and implementing your wor
 
 You can design your workload for automation from the ideation phase to the on-going improvement phase. First, consider how you want to leverage automation to ensure that you're putting the necessary pieces in place when planning your workload. Think about the workload in terms of the Well-Architected Framework pillars to help plan for the types of automation you'll enable. You can automate many of the functions you'll have in place for security, reliability, performance, operations and cost control.
 
-Design with automation in mind to minimize the need to refactor once your workload is running. Your workload requirements inform your plans for implementing automation and help you decide which automation tools you'll use. There might be off-the-shelf automation tools, like orchestration tools, that your team is already familiar with. Adopting those tools can make the path towards automating your workload easier, but be mindful of their limitations and compatibility with your cloud platform. For example, some tools might integrate well with CLI tooling, while others might require REST interfaces. Always investigate the tools that your cloud platform provides to ensure they are compatible and provide the functionality you require. Using proprietary tools for your cloud platform ensures that the automation handled by those tools is easily manageable for your team.
+Design with automation in mind to minimize the need to refactor once your workload is running. Your workload requirements inform your plans for implementing automation and help you decide which automation tools you'll use. There might be off-the-shelf automation tools, like orchestration tools, that your team is already familiar with. Adopting those tools can make the path towards automating your workload easier, but be mindful of their limitations and compatibility with your cloud platform. For example, some tools might integrate well with CLI tooling, while others might require REST interfaces. Always investigate the tools that your cloud platform provides to ensure they're compatible and provide the functionality you require. Using proprietary tools for your cloud platform ensures that the automation handled by those tools is easily manageable for your team.
 
 Examples of ways that you can proactively plan for automation include:
 
@@ -35,7 +35,7 @@ The following sections of this guide offer recommendations on specific areas of 
 
 ### Bootstrapping
 
-Bootstrapping refers to configuration updates to a resource, like a virtual machine (VM), that must be made after the resource is provisioned, but before it's available to the workload as part of the workload pool. Bootstrapping is often thought of in relation to VMs, but many other resources need to be set up as part of the deployment process including platform as a service (PaaS) app hosting technologies and container hosting technologies like Kubernetes.
+Bootstrapping refers to configuration updates to a resource that must be made after the resource is provisioned, but before it's available to the workload as part of the workload pool. Bootstrapping is often thought of in relation to VMs, but many other resources need to be set up as part of the deployment process including platform as a service (PaaS) app hosting technologies and container hosting technologies like Kubernetes.
 
 Bootstrapping solutions might be provided by your cloud platform, which you should use instead of developing your own if they provide the functionality that you need. For example, you can take advantage of VM Extensions in Azure that will allow you to make certain pre-defined configuration changes during the deployment process or you can customize your configuration changes by injecting PowerShell scripts.
 
@@ -66,7 +66,7 @@ Design your application and infrastructure to allow you to automate user onboard
 You can automate the desired state configuration (DSC) of your resources to help ensure that they meet your compliance and business requirements. DSC automation helps ensure that configuration drift is caught and remediated quickly. You can implement this automation with orchestration tools or policy management tools. Orchestration tools that are integrated into your CI/CD pipeline (for example, Azure DevOps or Jenkins) can be thought of as a push-based mechanism, meaning that configuration updates are pushed out through a workflow event, like a manual or automated deployment. These updates are run as part of a task sequence defined in your deployment script. On the other hand, policy management tools can be thought of as a pull-based mechanism, meaning that a system runs at the foundational level of your workload that periodically polls the workload to check its state against your defined DSC and takes corrective action when it identifies misalignment. Consider the following factors when deciding between orchestration and policy management tools:
 
 - Orchestration tools don't have built-in capabilities to proactively poll your workload for configuration drift. Orchestration tools should be integrated into your CI/CD pipeline to maintain a standard for infrastructure as code (IaC) deployment and management. An advantage of using orchestration is that resources are always fully configured when deployed.
-- Policy management tools allow you to define policies that affect one or more groups of resources. These policies are enforced when the resource checks in with the policy management system and misalignments are caught during audits performed by the system. An advantage of using policy management is that these systems are not code driven, so they might be easier for operators to adopt.
+- Policy management tools allow you to define policies that affect one or more groups of resources. These policies are enforced when the resource checks in with the policy management system and misalignments are caught during audits performed by the system. An advantage of using policy management is that these systems aren't code driven, so they might be easier for operators to adopt.
 
 When weighing your options, consider whether configuration updates must be present at deployment time or they can happen sometime afterward. Also consider whether defining them in code and updating that code, when necessary, will fit your operational practices. Additionally, consider how many different configurations of a given resource type you'll need to deploy. If there are many different configurations across resource types, policies might be an easier way to manage those updates rather than adding complexity to your pipeline.
 
@@ -74,55 +74,47 @@ When weighing your options, consider whether configuration updates must be prese
 
 ### Policy management
 
-**Azure Policy**
-
-[Azure Policy](/azure/governance/policy/overview) is a unified policy management platform that allows organizations to enforce organizational standards and to assess compliance at-scale. Through its compliance dashboard, it provides an aggregated view to evaluate the overall state of the environment, with the ability to drill down to the per-resource, per-policy granularity. It also helps to bring your resources to compliance through bulk remediation for existing resources and automatic remediation for new resources.
+**Azure Policy:** Using [Azure Policy](/azure/governance/policy/overview), organizations can enforce standards and assess compliance at scale. Through its compliance dashboard, Azure Policy provides an aggregated view to evaluate the overall state of the environment, with the ability to drill down to per-resource or per-policy granularity. You can also use Azure Policy to remediate existing resources in bulk or new resources automatically.
 
 ### Bootstrap automation
 
-**Azure VM extensions**
+**Azure VM extensions:** Azure VM extensions are small packages that run post-deployment configuration and automation on Azure VMs. Several extensions are available for many different configuration tasks, such as running scripts, configuring anti-malware solutions, and configuring logging solutions. These extensions can be installed and run on VMs by using an ARM template, the Azure CLI, Azure PowerShell module, or the Azure portal. Each Azure VM has a VM Agent installed, and this agent manages the lifecycle of the extension.
 
-Azure VM extensions are small packages that run post-deployment configuration and automation on Azure VMs. Several extensions are available for many different configuration tasks, such as running scripts, configuring antimalware solutions, and configuring logging solutions. These extensions can be installed and run on VMs by using an ARM template, the Azure CLI, Azure PowerShell module, or the Azure portal. Each Azure VM has a VM Agent installed, and this agent manages the lifecycle of the extension.
+A typical VM extension use case is to use a custom script extension to install software, run commands, and perform configurations on a virtual machine or Azure Virtual Machine Scale Sets. The custom script extension uses the Azure VM Agent to download and run a script. The custom script extensions can be set up to run as part of IaC deployments so that they run on new VMs. Extensions can also be run outside of an Azure deployment by using the Azure CLI, PowerShell module, or the Azure portal.
 
-A typical VM extension use case is to use a custom script extension to install software, run commands, and perform configurations on a virtual machine or Azure Virtual Machine Scale Sets. The custom script extension uses the Azure VM Agent to download and run a script. The custom script extensions can be set up to run as part of infrastructure as code deployments such that the VM is created, and then the script extension is run on the VM. Extensions can also be run outside of an Azure deployment by using the Azure CLI, PowerShell module, or the Azure portal.
+**Cloud-init:** Cloud-init is a known industry tool for configuring Linux virtual machines on first boot. Much like Azure custom script extensions, cloud-init lets you install packages and run commands on Linux virtual machines. Cloud-init can be used for software installation, system configuration, and content staging. Azure includes many cloud-init enabled Marketplace virtual machine images across some of the most well-known Linux distributions. For a full list, see [cloud-init support for virtual machines in Azure](/azure/virtual-machines/linux/using-cloud-init).
 
-**cloud-init**
-
-cloud-init is a known industry tool for configuring Linux virtual machines on first boot. Much like the Azure custom script extension, cloud-init lets you install packages and run commands on Linux virtual machines. cloud-init can be used for things like software installation, system configurations, and content staging. Azure includes many cloud-init enabled Marketplace virtual machine images across many of the most well-known Linux distributions. For a full list, see cloud-init support for virtual machines in Azure.
-
-**Azure deployment script resource**
-
-When you perform Azure deployments, you might need to run arbitrary code for bootstrapping things like managing user accounts, Kubernetes pods, or querying data from a non-Azure system. Because none of these operations are accessible through the Azure control plane, some other mechanism is required for performing this automation. To run arbitrary code with an Azure deployment, see the Microsoft.Resources/deploymentScripts Azure resource.
+**Azure deployment script resources**: When you deploy using Azure, you might need to run arbitrary code for bootstrapping things like managing user accounts, Kubernetes pods, or querying data from a non-Azure system. Because none of these operations are accessible through the Azure control plane, some other mechanism is required for to perform this automation. For more information, see the [Microsoft.Resources deploymentScripts Azure resource](/azure/templates/microsoft.resources/deploymentscripts?pivots=deployment-language-bicep).
 
 The deployment script resource behaves like any other Azure resource in the following ways:
 
 - Can be used in an ARM template.
 - Contains ARM template dependencies on other resources.
-- Consumes input, produces output.
+- Consumes input and produces output.
 - Uses a user-assigned managed identity for authentication.
 
-When deployed, the deployment script runs PowerShell or Azure CLI commands and scripts. Script running and logging can be observed in the Azure portal or with the Azure CLI and PowerShell module. Many options can be set up like environment variables for the run environment, timeout options, and what to do with the resource after a script failure.
+When deployed, the deployment script runs PowerShell or Azure CLI commands and scripts. Script running and logging can be observed in the Azure portal or with the Azure CLI and PowerShell module. Many options can be set up like environment variables for the run environment, timeout options, and resource management after a script failure.
 
-**Bootstrapping AKS clusters with GitOps**
+**Bootstrap Azure Kubernetes Service (AKS) clusters with GitOps.** You can bootstrap a newly provisioned AKS cluster using GitOps and the Flux v2 cluster extension. To bootstrap your cluster in this method, declare your configuration settings in Git repositories. Because these files are stored in a Git repository, they're versioned, and changes between versions are easily tracked. Kubernetes controllers run in the clusters and continually reconcile the cluster state with the desired state declared in the Git repository. These operators pull the files from the Git repositories and apply the desired state to the clusters. The operators also continuously assure that the cluster remains in the desired state. For more information and guidance, see [AKS Baseline reference architecture bootstrapping](/azure/architecture/reference-architectures/containers/aks/baseline-aks).
 
-You can bootstrap a newly provisioned AKS cluster using GitOps and the Flux v2 cluster extension. To bootstrap your cluster in this method, you declare your configuration settings in Git repositories. Because these files are stored in a Git repository, they're versioned, and changes between versions are easily tracked. Kubernetes controllers run in the clusters and continually reconcile the cluster state with the desired state declared in the Git repository. These operators pull the files from the Git repositories and apply the desired state to the clusters. The operators also continuously assure that the cluster remains in the desired state. See the AKS Baseline reference architecture bootstrapping [section](/azure/architecture/reference-architectures/containers/aks/baseline-aks) for more information and guidance.
+### Configuration management
 
-### Configuration Management
+[**Azure Automanage State Configuration**](/azure/governance/machine-configuration/overview) is a DSC management tool built on top of Azure Policy that extends its capabilities to performing tasks usually associated with orchestration tools. Using a VM extension, you can apply many pre-defined configuration updates directly to individual VMs or to groups of VMs as defined within Azure Policy.
 
-**Azure Automanage State Configuration**
-
-[Azure Automanage State Configuration](/azure/governance/machine-configuration/overview) is a DSC management tool built on top of Azure Policy that extends its capabilities to performing tasks usually associated with orchestration tools. Using a VM extension, you can apply many pre-defined configuration updates directly to individual VMs or to groups of VMs as defined within Azure Policy.
-
-**Azure App Configuration**
-
-[Azure App Configuration](/azure/azure-app-configuration/overview) provides a service to centrally manage application settings and feature flags.  It works in concert with Azure Key Vault to let you easily manage a wide variety of application configurations across your environments securely.
+[**Azure App Configuration**](/azure/azure-app-configuration/overview) provides a service to centrally manage application settings and feature flags. It works in concert with Azure Key Vault to let you easily manage a wide variety of application configurations across your environments securely.
 
 ## Tradeoffs
 
-When designing your workload to enable automation, consider the degree of control that you want to maintain vs the efficiency you can gain through automation. In some cases, your workload might not be mature enough to automate some functions or you might need some level of flexibility that automation limits.
+When designing your workload to enable automation, consider the degree of control that you want to maintain versus the efficiency you can gain through automation. In some cases, your workload might not be mature enough to automate some functions or you might need a level of flexibility that automation limits.
 
-Also consider the skill set that your team brings to the table when designing your workload. If a high degree of automation will ultimately require tools that your team isn’t equipped to support, then you might need to use a less comprehensive design as an intermediate step.
+Also consider the skillset that your team brings to the table when designing your workload. If a high degree of automation will ultimately require tools that your team isn’t equipped to support, then you may need to use a less comprehensive design as an intermediate step.
 
 ## Related links
 
 [GitOps Flux v2 configurations with AKS and Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-gitops-flux2)
+
+## Operational Excellence checklist
+
+Refer to the complete set of recommendations.
+
+[Operational Excellence checklist](checklist.md)
