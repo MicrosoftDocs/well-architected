@@ -21,10 +21,11 @@ During the design phase of a workload, it's important to consider how decisions 
 - Similarly, _disaster recovery_ solutions, such as backups, increase the workload's surface area. However, they are often isolated from the workload's runtime. This requires the implementation of additional security controls, which might be specific to the disaster recovery solution.
 - To achieve reliability goals, _additional components_ might be needed for the architecture, increasing the surface area. For example, a message bus to make requests resilient. This increased complexity increases the surface area of the workload by adding new components that must be secured, in possibly unique ways from other components already in the system. Typically, these components are accompanied by _additional code and libraries_ to support their use or general reliability patterns, which also increases the applications' surface area.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Emergency access security control bypass.** Security prefers that all controls remain active in both normal and stressed systems.
+:::image type="icon" source="../_images/trade-off.svg"::: **Security control bypass.** Security prefers that all controls remain active in both normal and stressed systems.
 
 - When a workload is experiencing a reliability event that is being addressed under active _incident response_, urgency might act as inappropriate pressure for workload teams to bypass security controls that are optimized for routine access. Likewise, the incident response could see the team temporarily disabling a security control as part of troubleshooting, which leaves the workload further exposed and risks not being re-enabled post incident.
 - _Troubleshooting activities_ could lead to temporary disablement of security protocols leaving an already stressed system potentially leaving it exposed to additional security risks. There's also the risk of the security protocols not being reestablished promptly.
+- Granular implementations of security controls such as role-based access control assignments or firewall rules introduces configuration complexity and sensitivity, increasing the chance for misconfiguration. Mitigating this potential reliability impact by using broad rules erodes all three zero-trust architecture principles.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Old software versions.** Security encourages a "get current, stay current" approach to vendor security patches.
 
