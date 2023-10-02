@@ -24,7 +24,7 @@ Creating a culture of financial responsibility helps organizations manage their 
 
 ### Make costs transparent
 
-Making budgets transparent means openly sharing and communicating financial information related to a workload or project. It involves sharing budget details and financials with relevant stakeholders and creating a broad sense of financial responsibility.
+Making budgets and workload costs transparent means openly sharing and communicating financial information related to a workload or project. It involves sharing budget details and financials with relevant stakeholders and creating a broad sense of financial responsibility.
 
 - *Involve everyone*: Ensure that everyone involved in the project or workload has access to the budget information. Include team members, managers, and decision-makers. Sharing the budget information makes everyone feel accountable for their actions and decisions, fostering a sense of ownership. 
 - *Share budget details*: Communicate the budget information openly with relevant stakeholders. Consider sharing the allocated budget, cost breakdowns, and financial goals associated with the workload or project.
