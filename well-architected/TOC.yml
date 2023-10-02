@@ -67,6 +67,8 @@
           items:
             - name: Security patterns            
               href: security/design-patterns.md
+            - name: SE:01 Establish a baseline
+              href: security/establish-baseline.md
             - name: SE:02 Security development lifecycle
               href: security/secure-development-lifecycle.md
             - name: SE:02 Threat analysis
