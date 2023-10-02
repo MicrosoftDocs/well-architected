@@ -149,8 +149,6 @@
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
-            - name: Automating tasks
-              href: operational-excellence/automate-tasks.md
             - name: Emergency response
               href: operational-excellence/emergency-response.md
             - name: Enabling automation
@@ -163,6 +161,8 @@
               href: operational-excellence/workload-supply-chain.md
             - name: Using infrastructure as code
               href: operational-excellence/infrastructure-as-code-design.md
+            - name: OE:09 Automate tasks
+              href: operational-excellence/automate-tasks.md
       - name: Performance Efficiency
         items: 
         - name: Quick links
