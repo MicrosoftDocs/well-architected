@@ -74,7 +74,7 @@ Decoupled components are easier to maintain and update. Changes or updates to on
 
 - *Separation of concerns*: Identify the responsibilities and functionalities of your application. Divide the responsibilities into separate components based on their specific tasks. For example, you might have separate components for user authentication, data processing, and UI.
 
-- *Loose coupling**: Design the components to communicate with each other through well-defined interfaces and protocols. This design reduces dependencies between components and allows for easier replacement or scaling of individual components.
+- *Loose coupling*: Design the components to communicate with each other through well-defined interfaces and protocols. This design reduces dependencies between components and allows for easier replacement or scaling of individual components.
 
 - *Asynchronous communication*: Use asynchronous communication patterns such as message queues or event-driven architectures to decouple components further. These patterns allow components to process tasks independently at their own pace, improving overall scalability.
 
