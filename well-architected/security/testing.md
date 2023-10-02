@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for security testing
 
-**Applies to: SE 08**
+**Applies to Well-Architected Framework Security checklist recommendation:**
+
+|[SE:10](checklist.md)|"_Establish a comprehensive testing regimen that combines various testing approaches to prevent security issues, validate threat prevention implementations, and test threat detection mechanisms._"|
+|---|---|
 
 A good security design must be backed by rigorous testing. Testing is a tactical form of validation to make sure the controls in place are working as intended. Testing is also a proactive way to detect vulnerabilities in the system.
 
@@ -201,3 +204,10 @@ You can simulate Denial of Service (DoS) attacks in Azure. Be sure to follow the
 [Penetration Testing Execution Standard (PTES)](http://www.pentest-standard.org/index.php/Main_Page) provides guidelines about common scenarios and the activities required to establish a baseline.
 
 [OWASP Top Ten | OWASP Foundation](https://owasp.org/www-project-top-ten/) provides security best practices for applications and the test cases covering common threats.
+
+## Security checklist
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"]
+[Security checklist](checklist.md)
