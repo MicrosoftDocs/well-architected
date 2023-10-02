@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for designing a disaster recovery strategy
 
-**Applies to: RE 08**
+**Applies to this Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:08](checklist.md)|Implement structured, tested, and documented business continuity and disaster recovery (BCDR) plans that align with the recovery targets. Plans must cover all components and the system as a whole.   |
+|---|---|
 
 This guide describes recommendations for designing a reliable disaster recovery strategy for a workload. To meet internal service-level objectives (SLOs) or even a service-level agreement (SLA) that you have guaranteed for your customers, you must have a robust and reliable disaster recovery strategy. Failures and other major issues are expected. Your preparations to deal with these incidents determine how much your customers can trust your business to reliably deliver for them. A disaster recovery strategy is the backbone of preparation for major incidents.
 
@@ -30,9 +33,9 @@ This guide assumes that you have already performed the following tasks as part o
 
 -   Identify [reliability targets](metrics.md).
 
--   Design for reliability through [redundancy](redundancy.md), [scaling](scale.md), [self-preservation, and self-healing](self-preservation.md).
+-   Design for reliability through [redundancy](redundancy.md), [scaling](scaling.md), [self-preservation, and self-healing](self-preservation.md).
 
--   Design a robust [testing strategy](design-testing-strategy.md).
+-   Design a robust [testing strategy](testing-strategy.md).
 
 A reliable disaster recovery (DR) strategy builds on the foundation of a reliable workload architecture. Address reliability at every stage of building your workload to ensure that necessary pieces for optimized recovery are in place before you start designing your DR strategy. This foundation ensures that your workload's reliability targets, like recovery time objective (RTO) and recovery point objective (RPO), are realistic and achievable.
 
@@ -130,7 +133,7 @@ For IaaS (infrastructure as a service) systems, use [Azure Site Recovery](/azure
 
 Performing DR drills in production can cause unexpected catastrophic failures. Be sure to test recovery procedures in nonproduction environments during your initial deployments. 
 
-Give your team as much maintenance time as possible during drills. When planning for maintenance time, use the recovery metrics that you capture during [testing](design-testing-strategy.md) as *minimum time necessary* allotments. 
+Give your team as much maintenance time as possible during drills. When planning for maintenance time, use the recovery metrics that you capture during [testing](testing-strategy.md) as *minimum time necessary* allotments. 
 
 As your DR drill practices mature, you learn which procedures you can run in parallel and which you must run in sequence. Early in your drill practices, assume that every procedure must be run in sequence and that you need extra time in each step to handle unanticipated issues.
 
@@ -146,3 +149,9 @@ See the [DR for Azure data platform series](/azure/architecture/data-guide/disas
 
 -   [Recommendations for using availability zones and regions](regions-availability-zones.md)
 
+## Reliability checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 
