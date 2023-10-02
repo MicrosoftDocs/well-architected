@@ -41,8 +41,11 @@ Standards for development planning:
 - Produce standardized reporting for stakeholders that provides useful metrics focusing on change. Focusing on change allows you to track product acceleration or deceleration. These metrics can include:
 
   - Change in monthly growth rate of adoption
+
   - Change in performance
+
   - Change in time to learn
+
   - Change in frequency of incidents
 
   Reporting shouldn't be used as a tool to evaluate the work of individuals, so avoid metrics like story points per engineer or lines of code per engineer. 

@@ -150,7 +150,7 @@
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
             - name: OE:03 Formalizing software development practices
-              href: operational-excellence/formalize-development-planning.md
+              href: operational-excellence/formalize-development-practices.md
             - name: OE:05 Using infrastructure as code
               href: operational-excellence/infrastructure-as-code-design.md
             - name: OE:06 Supply chain for workload development
