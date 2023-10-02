@@ -1,67 +1,427 @@
-items:
-  - name: Microsoft Azure Well-Architected Framework
-    href: ./index.md
-    items:
+- name: Microsoft Azure Well-Architected Framework
+  href: ./index.yml
+  items:
+    - name: What's new
+      items:
+      - name: Azure Well-Architected Framework
+        href: whats-new.md
+      - name: How to use this documentation
+        href: how-to-use-documentation.md
+    - name: Pillars
+      items: 
       - name: Overview
-        href: ./index.md
+        href: pillars.md
       - name: Reliability
-        items:
-          - name: About
-            href: resiliency/index.yml
-          - name: Overview
-            href: resiliency/overview.md
-          - name: Principles
-            href: resiliency/principles.md
-          - name: Design
-            items:
-              - name: Checklist
-                href: resiliency/design-checklist.md
-              - name: Requirements
-                href: resiliency/design-requirements.md
-              - name: Application design
-                href: resiliency/app-design.md
-              - name: Resiliency & dependencies
-                href: resiliency/design-resiliency.md
-              - name: Data management
-                href: resiliency/data-management.md
-              - name: Application resiliency
-                href: /azure/architecture/reliability/architect?toc=/azure/architecture/framework/toc.json&bc=/azure/architecture/framework/breadcrumb/toc.json
-              - name: Regions and availability zones
-                href: resiliency/regions-availability-zones.md
-              - name: Business metrics
-                href: resiliency/business-metrics.md
-              - name: Best practices
-                href: resiliency/design-best-practices.md
-          - name: Testing
-            items:
-              - name: Checklist
-                href: resiliency/test-checklist.md
-              - name: Resiliency testing
-                href: resiliency/testing.md
-              - name: Backup & recovery
-                items:
-                  - name: Backup and recovery
-                    href: resiliency/backup-and-recovery.md
-                  - name: Automatic retry of failed backup jobs
-                    href: resiliency/auto-retry.md
-              - name: Error handling
-                href: resiliency/app-design-error-handling.md
-              - name: Chaos engineering
-                href: resiliency/chaos-engineering.md
-              - name: Best practices
-                href: resiliency/test-best-practices.md
-          - name: Monitoring
-            items:
-              - name: Checklist
-                href: resiliency/monitor-checklist.md
-              - name: Application health
-                href: resiliency/monitoring.md
-              - name: Health modeling
-                href: resiliency/monitor-model.md
-              - name: Best practices
-                href: resiliency/monitor-best-practices.md
-          - name: Reliability patterns
-            href: resiliency/reliability-patterns.md
+        items: 
+        - name: Quick links
+          href: reliability/index.yml
+        - name: Design principles
+          href: reliability/principles.md
+        - name: Checklist
+          href: reliability/checklist.md
+        - name: Tradeoffs
+          href: reliability/tradeoffs.md
+        - name: Recommendations   
+          items:
+            - name: Reliability patterns
+              href: reliability/design-patterns.md
+            - name: RE:01 Identify and rate flows
+              href: reliability/identify-flows.md
+            - name: RE:02 Failure mode analysis
+              href: reliability/failure-mode-analysis.md
+            - name: RE:03 Target metrics
+              href: reliability/metrics.md
+            - name: RE:04 High-availability multi-region design
+              href: reliability/highly-available-multi-region-design.md  
+            - name: RE:04 Redundancy
+              href: reliability/redundancy.md
+            - name: RE:04 Regions and availability zones
+              href: reliability/regions-availability-zones.md
+            - name: RE:05 Data partitioning
+              href: reliability/partition-data.md
+            - name: RE:05 Scaling
+              href: reliability/scaling.md
+            - name: RE:06 Background jobs
+              href: reliability/background-jobs.md
+            - name: RE:06 Transient faults 
+              href: reliability/handle-transient-faults.md
+            - name: RE:06 Self-preservation
+              href: reliability/self-preservation.md
+            - name: RE:07 Testing
+              href: reliability/testing-strategy.md
+            - name: RE:08 Disaster recovery strategy  
+              href: reliability/disaster-recovery.md
+            - name: RE:09 Monitoring and alerting
+              href: reliability/monitoring-alerting-strategy.md
+            - name: RE:10 Simplicity and efficiency
+              href: reliability/simplify.md
+      - name: Security
+        items: 
+        - name: Quick links
+          href: security/index.yml
+        - name: Design principles
+          href: security/principles.md
+        - name: Checklist
+          href: security/checklist.md
+        - name: Tradeoffs
+          href: security/tradeoffs.md
+        - name: Recommendations    
+          items:
+            - name: Security patterns            
+              href: security/design-patterns.md
+            - name: SE:01 Establish a baseline
+              href: security/establish-baseline.md
+            - name: SE:02 Security development lifecycle
+              href: security/secure-development-lifecycle.md
+            - name: SE:02 Threat analysis
+              href: security/threat-model.md              
+            - name: SE:03 Data classification
+              href: security/data-classification.md
+            - name: SE:04 Segmentation strategy
+              href: security/segmentation.md
+            - name: SE:05 Identity and access management
+              href: security/identity-access.md
+            - name: SE:06 Network controls
+              href: security/networking.md
+            - name: SE:07 Encryption
+              href: security/encryption.md
+            - name: SE:08 Hardening resources
+              href: security/hardening.md              
+            - name: SE:09 Application secrets
+              href: security/application-secrets.md
+            - name: SE:10 Monitoring and threat detection
+              href: security/monitoring.md
+            - name: SE:11 Testing and validation
+              href: security/testing.md              
+            - name: SE:12 Incident response 
+              href: security/incident-response.md
+      - name: Cost Optimization
+        items: 
+        - name: Quick links
+          href: cost-optimization/index.yml
+        - name: Design principles
+          href: cost-optimization/principles.md
+        - name: Checklist
+          href: cost-optimization/checklist.md
+        - name: Tradeoffs
+          href: cost-optimization/tradeoffs.md
+        - name: Recommendations   
+          items:
+            - name: Cost optimization patterns
+              href: cost-optimization/design-patterns.md
+            - name: Create culture of financial responsibility
+              href: cost-optimization/create-culture-financial-responsibility.md
+            - name: Create a cost model
+              href: cost-optimization/cost-model.md
+            - name: Collect and review cost Data
+              href: cost-optimization/collect-review-cost-data.md
+            - name: Set spending guardrails
+              href: cost-optimization/set-spending-guardrails.md
+            - name: Get the best rates
+              href: cost-optimization/get-the-best-rates.md
+            - name: Align usage to billing increments
+              href: cost-optimization/align-usage-to-billing-increments.md
+            - name: Eliminate waste
+              href: cost-optimization/eliminate-waste.md
+            - name: Optimize environment costs
+              href: cost-optimization/optimize-environment-costs.md
+            - name: Optimize flow costs
+              href: cost-optimization/optimize-flow-costs.md
+            - name: Optimize data costs
+              href: cost-optimization/optimize-data-costs.md
+            - name: Optimize code
+              href: cost-optimization/optimize-code.md
+            - name: Optimize scaling
+              href: cost-optimization/optimize-scaling.md
+            - name: Optimize personnel time
+              href: cost-optimization/optimize-personnel-time.md
+            - name: Consolidate
+              href: cost-optimization/consolidation.md
+      - name: Operational Excellence
+        items: 
+        - name: Quick links
+          href: operational-excellence/index.yml
+        - name: Design principles
+          href: operational-excellence/principles.md
+        - name: Checklist
+          href: operational-excellence/checklist.md
+        - name: Safe deployments
+          href: operational-excellence/safe-deployments.md
+        - name: Tradeoffs
+          href: operational-excellence/tradeoffs.md
+        - name: Recommendations
+          items:
+            - name: Operational excellence patterns
+              href: operational-excellence/design-patterns.md 
+            - name: OE:03 Formalizing software development practices
+              href: operational-excellence/formalize-development-practices.md
+            - name: OE:05 Using infrastructure as code
+              href: operational-excellence/infrastructure-as-code-design.md
+            - name: OE:06 Supply chain for workload development
+              href: operational-excellence/workload-supply-chain.md
+            - name: OE:07 Observability framework development
+              href: operational-excellence/observability.md
+            - name: OE:08 Emergency response
+              href: operational-excellence/emergency-response.md
+            - name: OE:09 Automating tasks
+              href: operational-excellence/automate-tasks.md
+            - name: OE:10 Enabling automation
+              href: operational-excellence/enable-automation.md
+            - name: OE:12 Failure mitigation
+              href: operational-excellence/mitigation-strategy.md
+      - name: Performance Efficiency
+        items: 
+        - name: Quick links
+          href: performance-efficiency/index.yml
+        - name: Design principles
+          href: performance-efficiency/principles.md
+        - name: Checklist
+          href: performance-efficiency/checklist.md
+        - name: Tradeoffs
+          href: performance-efficiency/tradeoffs.md
+        - name: Recommendations   
+          items:
+            - name: Performance efficiency patterns
+              href: performance-efficiency/design-patterns.md
+            - name: Set performance targets
+              href: performance-efficiency/performance-targets.md
+            - name: Conduct capacity planning
+              href: performance-efficiency/capacity-planning.md
+            - name: Select the right services 
+              href: performance-efficiency/selecting-services.md
+            - name: Collect metrics and logs 
+              href: performance-efficiency/collect-metrics-logs.md
+            - name: Scale and partition 
+              href: performance-efficiency/scale-partition.md
+            - name: Performance testing
+              href: performance-efficiency/performance-testing.md
+            - name: Optimize code and infrastructure 
+              href: performance-efficiency/optimize-code-infrastructure.md
+            - name: Optimize data performance 
+              href: performance-efficiency/optimize-data-performance.md
+            - name: Prioritize critical flows 
+              href: performance-efficiency/prioritize-critical-flows.md
+            - name: Optimize operational tasks
+              href: performance-efficiency/optimize-operational-tasks.md
+            - name: Respond to live issues 
+              href: performance-efficiency/respond-live-performance-issues.md
+            - name: Continuous performance optimization
+              href: performance-efficiency/continuous-performance-optimize.md
+
+    - name: Workloads
+      items:
+      - name: Overview
+        href: workloads.md
+      - name: Azure VMware Solution
+        href: azure-vmware/index.yml
+      - name: Carrier-grade
+        href: carrier-grade/index.yml    
+      - name: Hybrid
+        href: hybrid/hybrid-overview.md                                 
+      - name: IoT
+        href: iot/iot-overview.md
+      - name: Mission-critical
+        href: mission-critical/index.yml                     
+      - name: Oracle
+        href: oracle-iaas/overview.md        
+      - name: SAP
+        href: sap/quick-links.yml        
+      - name: Sustainability
+        href: sustainability/index.yml        
+    - name: Service guides
+      items:
+        - name: Quick links
+          href: service-guides/index.yml
+        - name: Overview
+          href: service-guides/overview.md
+        - name: API Management
+          items:
+            - name: Reliability
+              href: service-guides/api-management/reliability.md
+            - name: Cost optimization
+              href: service-guides/api-management/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/api-management/operational-excellence.md
+        - name: Application delivery
+          items:
+            - name: Reliability
+              href: service-guides/application-delivery/reliability.md
+            - name: Operational excellence
+              href: service-guides/application-delivery/operational-excellence.md
+        - name: Application Gateway
+          href: service-guides/azure-application-gateway.md
+        - name: Application Insights
+          items:
+            - name: Security
+              href: service-guides/application-insights/security.md
+            - name: Cost optimization
+              href: service-guides/application-insights/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/application-insights/operational-excellence.md
+        - name: Azure Firewall
+          href: service-guides/azure-firewall.md
+        - name: Azure Front Door
+          items:
+            - name: Reliability
+              href: service-guides/azure-front-door/reliability.md
+            - name: Security
+              href: service-guides/azure-front-door/security.md
+            - name: Operational excellence
+              href: service-guides/azure-front-door/operational-excellence.md
+        - name: Azure App Service
+          items:
+            - name: Reliability
+              href: service-guides/azure-app-service/reliability.md
+            - name: Cost optimization
+              href: service-guides/azure-app-service/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/azure-app-service/operational-excellence.md
+        - name: Azure Batch
+          items:
+            - name: Reliability
+              href: service-guides/azure-batch/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-batch/operational-excellence.md
+            - name: Performance efficiency
+              href: service-guides/azure-batch/performance-efficiency.md
+        - name: Azure Cache for Redis
+          items:
+            - name: Reliability
+              href: service-guides/azure-cache-redis/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-cache-redis/operational-excellence.md
+        - name: Azure Cosmos DB
+          items:
+            - name: Reliability
+              href: service-guides/cosmos-db/reliability.md
+            - name: Operational excellence
+              href: service-guides/cosmos-db/operational-excellence.md
+        - name: Azure Databricks
+          href: service-guides/azure-databricks-security.md
+        - name: Azure Database for MySQL
+          href: service-guides/azure-db-mysql-cost-optimization.md
+        - name: Azure Database for PostgreSQL
+          href: service-guides/azure-db-postgresql-well-architected-framework.md
+        - name: Azure Kubernetes Service
+          href: service-guides/azure-kubernetes-service.md
+        - name: Azure Load Balancer
+          items:
+            - name: Reliability
+              href: service-guides/azure-load-balancer/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-load-balancer/operational-excellence.md
+        - name: Azure Service Fabric
+          href: service-guides/azure-service-fabric-well-architected-framework.md
+        - name: Azure SQL Database
+          href: service-guides/azure-sql-database-well-architected-framework.md
+        - name: Azure SQL Managed Instance
+          items:
+            - name: Reliability
+              href: service-guides/azure-sql-managed-instance/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-sql-managed-instance/operational-excellence.md
+        - name: Azure Stack Hub
+          items:
+            - name: Reliability
+              href: service-guides/azure-stack-hub/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-stack-hub/operational-excellence.md
+        - name: Azure Virtual Network
+          items:
+            - name: Reliability
+              href: service-guides/azure-virtual-network/reliability.md
+            - name: Operational excellence
+              href: service-guides/azure-virtual-network/operational-excellence.md
+        - name: Disks
+          href: service-guides/azure-disks-cost-optimization.md
+        - name: Event Grid
+          items:
+            - name: Reliability
+              href: service-guides/event-grid/reliability.md
+            - name: Operational excellence
+              href: service-guides/event-grid/operational-excellence.md
+        - name: Event Hubs
+          items:
+            - name: Reliability
+              href: service-guides/event-hubs/reliability.md
+            - name: Operational excellence
+              href: service-guides/event-hubs/operational-excellence.md
+        - name: ExpressRoute
+          href: service-guides/azure-expressroute.md
+        - name: Functions
+          href: service-guides/azure-functions-security.md
+        - name: IoT Hub
+          items:
+            - name: Reliability
+              href: service-guides/iot-hub/reliability.md
+            - name: Operational excellence
+              href: service-guides/iot-hub/operational-excellence.md
+        - name: IoT Hub Device Provisioning Service
+          items:
+            - name: Reliability
+              href: service-guides/iot-hub-dps/reliability.md
+            - name: Operational excellence
+              href: service-guides/iot-hub-dps/operational-excellence.md
+        - name: IP addresses
+          href: service-guides/ip-addresses-cost-optimization.md
+        - name: Log Analytics
+          href: service-guides/log-analytics-cost-optimization.md
+        - name: Network connectivity
+          items:
+            - name: Reliability
+              href: service-guides/network-connectivity/reliability.md
+            - name: Cost optimization
+              href: service-guides/network-connectivity/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/network-connectivity/operational-excellence.md
+        - name: Network Virtual Appliances (NVA)
+          items:
+            - name: Reliability
+              href: service-guides/network-virtual-appliances/reliability.md
+            - name: Cost optimization
+              href: service-guides/network-virtual-appliances/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/network-virtual-appliances/operational-excellence.md
+        - name: Queue Storage
+          items:
+            - name: Reliability
+              href: service-guides/queue-storage/reliability.md
+            - name: Operational excellence
+              href: service-guides/queue-storage/operational-excellence.md
+        - name: Service Bus
+          items:
+            - name: Reliability
+              href: service-guides/service-bus/reliability.md
+            - name: Operational excellence
+              href: service-guides/service-bus/operational-excellence.md
+        - name: Storage Accounts
+          items:
+            - name: Reliability
+              href: service-guides/storage-accounts/reliability.md
+            - name: Security
+              href: service-guides/storage-accounts/security.md
+            - name: Cost optimization
+              href: service-guides/storage-accounts/cost-optimization.md
+            - name: Operational excellence
+              href: service-guides/storage-accounts/operational-excellence.md
+        - name: Traffic Manager
+          items:
+            - name: Reliability
+              href: service-guides/traffic-manager/reliability.md
+            - name: Operational excellence
+              href: service-guides/traffic-manager/operational-excellence.md
+        - name: Virtual Machines
+          href: service-guides/virtual-machines-review.md
+    - name: Cross-cutting guides
+      items:
+      - name: Health model
+        href: ./cross-cutting-guides/health-model.md        
+      - name: Implementing recommendations
+        href: ./cross-cutting-guides/implementing-recommendations.md        
+    - name: Old TOC
+      items:
+      - name: Overview
+        href: old-index.md
       - name: Security
         items:
           - name: About
@@ -69,7 +429,7 @@ items:
           - name: Overview
             href: security/overview.md
           - name: Principles
-            href: security/security-principles.md
+            href: security/old-principles.md
           - name: Design
             items:
               - name: Governance
@@ -131,7 +491,7 @@ items:
                   - name: Application classification
                     href: security/design-apps-considerations.md
                   - name: Threat analysis
-                    href: security/design-threat-model.md
+                    href: security/threat-model.md
                   - name: Secure PaaS deployments
                     href: /azure/security/fundamentals/paas-deployments
                   - name: Configuration and dependencies
@@ -165,80 +525,80 @@ items:
               - name: Security operations
                 href: security/monitor-security-operations.md
           - name: Tradeoffs
-            href: security/security-tradeoffs.md
+            href: security/old-tradeoffs.md
           - name: Security patterns
             href: security/security-patterns.md
       - name: Cost Optimization
         items:
           - name: About
-            href: cost/index.yml
+            href: cost-optimization/index.yml
           - name: Overview
-            href: cost/overview.md
+            href: cost-optimization/overview.md
           - name: Principles
-            href: cost/principles.md
+            href: cost-optimization/old-principles.md
           - name: Design
             items:
               - name: Checklist
-                href: cost/design-checklist.md
+                href: cost-optimization/old-checklist.md
               - name: Cost model
-                href: cost/design-model.md
+                href: cost-optimization/design-model.md
               - name: Capture requirements
-                href: cost/design-capture-requirements.md
+                href: cost-optimization/design-capture-requirements.md
               - name: Azure regions
-                href: cost/design-regions.md
+                href: cost-optimization/design-regions.md
               - name: Azure resources
-                href: cost/design-resources.md
+                href: cost-optimization/design-resources.md
               - name: Governance
-                href: cost/design-governance.md
+                href: cost-optimization/design-governance.md
               - name: Initial estimate
-                href: cost/design-initial-estimate.md
+                href: cost-optimization/design-initial-estimate.md
               - name: Managed services
-                href: cost/design-paas.md
+                href: cost-optimization/design-paas.md
               - name: Performance and price options
-                href: cost/design-price.md
+                href: cost-optimization/design-price.md
           - name: Provision
             items:
               - name: Checklist
-                href: cost/provision-checklist.md
+                href: cost-optimization/provision-checklist.md
               - name: AI + Machine Learning
-                href: cost/provision-ai-ml.md
+                href: cost-optimization/provision-ai-ml.md
               - name: Big data
-                href: cost/provision-analytics.md
+                href: cost-optimization/provision-analytics.md
               - name: Compute
-                href: cost/provision-compute.md
+                href: cost-optimization/provision-compute.md
               - name: Data stores
-                href: cost/provision-datastores.md
+                href: cost-optimization/provision-datastores.md
               - name: Messaging
-                href: cost/provision-messaging.md
+                href: cost-optimization/provision-messaging.md
               - name: Networking
-                href: cost/provision-networking.md
+                href: cost-optimization/provision-networking.md
                 items:
                   - name: Cost for networking services
-                    href: cost/provision-networking-services.md
+                    href: cost-optimization/provision-networking-services.md
               - name: Web apps
-                href: cost/provision-webapps.md
+                href: cost-optimization/provision-webapps.md
           - name: Monitor
             items:
               - name: Checklist
-                href: cost/monitor-checklist.md
+                href: cost-optimization/monitor-checklist.md
               - name: Budgets and alerts
-                href: cost/monitor-alert.md
+                href: cost-optimization/monitor-alert.md
               - name: Reports
-                href: cost/monitor-reports.md
+                href: cost-optimization/monitor-reports.md
               - name: Reviews
-                href: cost/monitor-reviews.md
+                href: cost-optimization/monitor-reviews.md
           - name: Optimize
             items:
               - name: Checklist
-                href: cost/optimize-checklist.md
+                href: cost-optimization/optimize-checklist.md
               - name: Autoscale
-                href: cost/optimize-autoscale.md
+                href: cost-optimization/optimize-autoscale.md
               - name: VM instances
-                href: cost/optimize-vm.md
+                href: cost-optimization/optimize-vm.md
               - name: Caching
-                href: cost/optimize-cache.md
+                href: cost-optimization/optimize-cache.md
           - name: Tradeoffs
-            href: cost/tradeoffs.md
+            href: cost-optimization/old-tradeoffs.md
       - name: Operational Excellence
         items:
           - name: About
@@ -246,7 +606,7 @@ items:
           - name: Overview
             href: devops/overview.md
           - name: Principles
-            href: devops/principles.md
+            href: devops/old-principles.md
           - name: Automation
             items:
               - name: Automation overview
@@ -274,7 +634,7 @@ items:
           - name: Monitor
             items:
               - name: Checklist
-                href: devops/checklist.md
+                href: devops/old-checklist.md
               - name: Monitor cloud applications
                 items:
                   - name: Monitoring stages
@@ -312,7 +672,7 @@ items:
           - name: Overview
             href: scalability/overview.md
           - name: Principles
-            href: scalability/principles.md
+            href: scalability/old-principles.md
           - name: Design
             items:
               - name: Distributed architecture challenges
@@ -340,7 +700,7 @@ items:
           - name: Monitoring
             items:
               - name: Checklist
-                href: scalability/checklist.md
+                href: scalability/old-checklist.md
               - name: Application profiling
                 href: scalability/monitor-application.md
               - name: Analyze infrastructure
@@ -362,7 +722,7 @@ items:
           - name: Checklist
             href: scalability/performance-efficiency.md
           - name: Tradeoffs
-            href: scalability/tradeoffs.md
+            href: scalability/old-tradeoffs.md
       - name: Workloads
         items:
           - name: Azure VMware Solution
@@ -538,206 +898,202 @@ items:
           - name: Compute
             items:
               - name: Azure Service Fabric
-                href: services/compute/azure-service-fabric-well-architected-framework.md
+                href: service-guides/azure-service-fabric-well-architected-framework.md
               - name: Azure App Service
                 items:
                   - name: Reliability
-                    href: services/compute/azure-app-service/reliability.md
+                    href: service-guides/azure-app-service/reliability.md
                   - name: Cost optimization
-                    href: services/compute/azure-app-service/cost-optimization.md
+                    href: service-guides/azure-app-service/cost-optimization.md
                   - name: Operational excellence
-                    href: services/compute/azure-app-service/operational-excellence.md
+                    href: service-guides/azure-app-service/operational-excellence.md
               - name: Azure Batch
                 items:
                   - name: Reliability
-                    href: services/compute/azure-batch/reliability.md
+                    href: service-guides/azure-batch/reliability.md
                   - name: Operational excellence
-                    href: services/compute/azure-batch/operational-excellence.md
+                    href: service-guides/azure-batch/operational-excellence.md
                   - name: Performance efficiency
-                    href: services/compute/azure-batch/performance-efficiency.md
+                    href: service-guides/azure-batch/performance-efficiency.md
               - name: Azure Kubernetes Service
-                href: services/compute/azure-kubernetes-service/azure-kubernetes-service.md
+                href: service-guides/azure-kubernetes-service.md
               - name: Functions
                 items:
                   - name: Security
-                    href: services/compute/functions/security.md
+                    href: service-guides/azure-functions-security.md
               - name: Virtual Machines
-                href: services/compute/virtual-machines/virtual-machines-review.md
+                href: service-guides/virtual-machines-review.md
           - name: Data
             items:
               - name: Azure Cache for Redis
                 items:
                   - name: Reliability
-                    href: services/data/azure-cache-redis/reliability.md
+                    href: service-guides/azure-cache-redis/reliability.md
                   - name: Operational excellence
-                    href: services/data/azure-cache-redis/operational-excellence.md
+                    href: service-guides/azure-cache-redis/operational-excellence.md
               - name: Azure Databricks
                 items:
                   - name: Security
-                    href: services/data/azure-databricks/security.md
+                    href: service-guides/azure-databricks-security.md
               - name: Azure Database for MySQL
-                items:
-                  - name: Cost optimization
-                    href: services/data/azure-db-mysql/cost-optimization.md
+                href: service-guides/azure-db-mysql-cost-optimization.md
               - name: Azure Database for PostgreSQL
-                href: services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework.md
+                href: service-guides/azure-db-postgresql-well-architected-framework.md
               - name: Azure SQL Database
-                href: services/data/azure-sql-database-well-architected-framework.md
+                href: service-guides/azure-sql-database-well-architected-framework.md
               - name: Azure SQL Managed Instance
                 items:
                   - name: Reliability
-                    href: services/data/azure-sql-managed-instance/reliability.md
+                    href: service-guides/azure-sql-managed-instance/reliability.md
                   - name: Operational excellence
-                    href: services/data/azure-sql-managed-instance/operational-excellence.md
+                    href: service-guides/azure-sql-managed-instance/operational-excellence.md
               - name: Azure Cosmos DB
                 items:
                   - name: Reliability
-                    href: services/data/cosmos-db/reliability.md
+                    href: service-guides/cosmos-db/reliability.md
                   - name: Operational excellence
-                    href: services/data/cosmos-db/operational-excellence.md
+                    href: service-guides/cosmos-db/operational-excellence.md
           - name: Hybrid
             items:
               - name: Azure Stack Hub
                 items:
                   - name: Reliability
-                    href: services/hybrid/azure-stack-hub/reliability.md
+                    href: service-guides/azure-stack-hub/reliability.md
                   - name: Operational excellence
-                    href: services/hybrid/azure-stack-hub/operational-excellence.md
+                    href: service-guides/azure-stack-hub/operational-excellence.md
           - name: Storage
             items:
               - name: Storage Accounts
                 items:
                   - name: Reliability
-                    href: services/storage/storage-accounts/reliability.md
+                    href: service-guides/storage-accounts/reliability.md
                   - name: Security
-                    href: services/storage/storage-accounts/security.md
+                    href: service-guides/storage-accounts/security.md
                   - name: Cost optimization
-                    href: services/storage/storage-accounts/cost-optimization.md
+                    href: service-guides/storage-accounts/cost-optimization.md
                   - name: Operational excellence
-                    href: services/storage/storage-accounts/operational-excellence.md
+                    href: service-guides/storage-accounts/operational-excellence.md
               - name: Disks
                 items:
                   - name: Cost optimization
-                    href: services/storage/disks/cost-optimization.md
+                    href: service-guides/azure-disks-cost-optimization.md
           - name: Messaging
             items:
               - name: Event Grid
                 items:
                   - name: Reliability
-                    href: services/messaging/event-grid/reliability.md
+                    href: service-guides/event-grid/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/event-grid/operational-excellence.md
+                    href: service-guides/event-grid/operational-excellence.md
               - name: Event Hubs
                 items:
                   - name: Reliability
-                    href: services/messaging/event-hubs/reliability.md
+                    href: service-guides/event-hubs/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/event-hubs/operational-excellence.md
+                    href: service-guides/event-hubs/operational-excellence.md
               - name: Service Bus
                 items:
                   - name: Reliability
-                    href: services/messaging/service-bus/reliability.md
+                    href: service-guides/service-bus/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/service-bus/operational-excellence.md
+                    href: service-guides/service-bus/operational-excellence.md
               - name: Queue Storage
                 items:
                   - name: Reliability
-                    href: services/messaging/queue-storage/reliability.md
+                    href: service-guides/queue-storage/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/queue-storage/operational-excellence.md
+                    href: service-guides/queue-storage/operational-excellence.md
               - name: IoT Hub
                 items:
                   - name: Reliability
-                    href: services/messaging/iot-hub/reliability.md
+                    href: service-guides/iot-hub/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/iot-hub/operational-excellence.md
+                    href: service-guides/iot-hub/operational-excellence.md
               - name: IoT Hub Device Provisioning Service
                 items:
                   - name: Reliability
-                    href: services/messaging/iot-hub-dps/reliability.md
+                    href: service-guides/iot-hub-dps/reliability.md
                   - name: Operational excellence
-                    href: services/messaging/iot-hub-dps/operational-excellence.md
+                    href: service-guides/iot-hub-dps/operational-excellence.md
           - name: Networking
             items: 
               - name: Application Delivery (General)
                 items:
                   - name: Reliability
-                    href: services/networking/application-delivery/reliability.md
+                    href: service-guides/application-delivery/reliability.md
                   - name: Operational excellence
-                    href: services/networking/application-delivery/operational-excellence.md
+                    href: service-guides/application-delivery/operational-excellence.md
               - name: Application Gateway v2
-                href: services/networking/azure-application-gateway.md
+                href: service-guides/azure-application-gateway.md
               - name: Azure Firewall
-                href: services/networking/azure-firewall.md
+                href: service-guides/azure-firewall.md
               - name: ExpressRoute
-                href: services/networking/azure-expressroute.md
+                href: service-guides/azure-expressroute.md
               - name: API Management
                 items:
                   - name: Reliability
-                    href: services/networking/api-management/reliability.md
+                    href: service-guides/api-management/reliability.md
                   - name: Cost optimization
-                    href: services/networking/api-management/cost-optimization.md
+                    href: service-guides/api-management/cost-optimization.md
                   - name: Operational excellence
-                    href: services/networking/api-management/operational-excellence.md
+                    href: service-guides/api-management/operational-excellence.md
               - name: Azure Front Door
                 items:
                   - name: Reliability
-                    href: services/networking/azure-front-door/reliability.md
+                    href: service-guides/azure-front-door/reliability.md
                   - name: Security
-                    href: services/networking/azure-front-door/security.md
+                    href: service-guides/azure-front-door/security.md
                   - name: Operational excellence
-                    href: services/networking/azure-front-door/operational-excellence.md
+                    href: service-guides/azure-front-door/operational-excellence.md
               - name: Network Virtual Appliances (NVA)
                 items:
                   - name: Reliability
-                    href: services/networking/network-virtual-appliances/reliability.md
+                    href: service-guides/network-virtual-appliances/reliability.md
                   - name: Cost optimization
-                    href: services/networking/network-virtual-appliances/cost-optimization.md
+                    href: service-guides/network-virtual-appliances/cost-optimization.md
                   - name: Operational excellence
-                    href: services/networking/network-virtual-appliances/operational-excellence.md
+                    href: service-guides/network-virtual-appliances/operational-excellence.md
               - name: Network Connectivity
                 items:
                   - name: Reliability
-                    href: services/networking/network-connectivity/reliability.md
+                    href: service-guides/network-connectivity/reliability.md
                   - name: Cost optimization
-                    href: services/networking/network-connectivity/cost-optimization.md
+                    href: service-guides/network-connectivity/cost-optimization.md
                   - name: Operational excellence
-                    href: services/networking/network-connectivity/operational-excellence.md
+                    href: service-guides/network-connectivity/operational-excellence.md
               - name: Azure Virtual Network
                 items:
                   - name: Reliability
-                    href: services/networking/azure-virtual-network/reliability.md
+                    href: service-guides/azure-virtual-network/reliability.md
                   - name: Operational excellence
-                    href: services/networking/azure-virtual-network/operational-excellence.md
+                    href: service-guides/azure-virtual-network/operational-excellence.md
               - name: Azure Load Balancer
                 items:
                   - name: Reliability
-                    href: services/networking/azure-load-balancer/reliability.md
+                    href: service-guides/azure-load-balancer/reliability.md
                   - name: Operational excellence
-                    href: services/networking/azure-load-balancer/operational-excellence.md
+                    href: service-guides/azure-load-balancer/operational-excellence.md
               - name: Traffic Manager
                 items:
                   - name: Reliability
-                    href: services/networking/traffic-manager/reliability.md
+                    href: service-guides/traffic-manager/reliability.md
                   - name: Operational excellence
-                    href: services/networking/traffic-manager/operational-excellence.md
+                    href: service-guides/traffic-manager/operational-excellence.md
               - name: IP addresses
                 items:
                   - name: Cost optimization
-                    href: services/networking/ip-addresses/cost-optimization.md            
+                    href: service-guides/ip-addresses-cost-optimization.md            
           - name: Monitoring
             items:
               - name: Log Analytics
                 items:
                   - name: Cost optimization
-                    href: services/monitoring/log-analytics/cost-optimization.md
+                    href: service-guides/log-analytics-cost-optimization.md
               - name: Application Insights
                 items:
                   - name: Security
-                    href: services/monitoring/application-insights/security.md
+                    href: service-guides/application-insights/security.md
                   - name: Cost optimization
-                    href: services/monitoring/application-insights/cost-optimization.md
+                    href: service-guides/application-insights/cost-optimization.md
                   - name: Operational excellence
-                    href: services/monitoring/application-insights/operational-excellence.md
-      - name: Implementing Recommendations
-        href: ./implementing-recommendations.md
+                    href: service-guides/application-insights/operational-excellence.md
