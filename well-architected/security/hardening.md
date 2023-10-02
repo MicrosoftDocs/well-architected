@@ -1,5 +1,5 @@
 ---
-title: Hardening recommendations for resource security
+title: Recommendations for hardening resources
 description: Learn about hardening resources recommendations for security. Reduce the attack surface and increase attackers’ costs in the remaining area to limit the opportunities for malicious actors to exploit vulnerabilities.
 author: PageWriter-MSFT
 ms.author: prwilk 

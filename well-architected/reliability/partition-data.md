@@ -9,7 +9,12 @@ ms.topic: conceptual
 
 # Recommendations for data partitioning
 
-**Applies to: RE 05** 
+**Applies to this Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:05](checklist.md)| Implement a timely and reliable scaling strategy at the application, data, and infrastructure levels. |
+|---|---|
+
+**Related guide:** [Scaling](scaling.md)
 
 This guide describes the recommendations for designing a data partitioning strategy for the database and data storage technology that you deploy. This strategy helps you improve the reliability of your data estate.
 
@@ -22,17 +27,17 @@ In many large-scale solutions, *partitions* are used to divide data so that it c
 
 ### Why partition data?
 
-- **Improve scalability**. When you scale up a single database system, the database eventually reaches a physical hardware limit. If you divide data across multiple partitions, with each partition hosted on a separate server, you can scale out the system almost indefinitely.
+- **Improve scalability.** When you scale up a single database system, the database eventually reaches a physical hardware limit. If you divide data across multiple partitions, with each partition hosted on a separate server, you can scale out the system almost indefinitely.
 
-- **Improve performance**. In each partition, data access operations are performed over a smaller volume of data compared to data that isn't partitioned. Partition data to make your system more efficient. Operations that affect more than one partition can run in parallel.
+- **Improve performance.** In each partition, data access operations are performed over a smaller volume of data compared to data that isn't partitioned. Partition data to make your system more efficient. Operations that affect more than one partition can run in parallel.
 
-- **Improve security**. In some cases, you can separate sensitive and nonsensitive data into different partitions, and apply different security controls to the sensitive data.
+- **Improve security.** In some cases, you can separate sensitive and nonsensitive data into different partitions, and apply different security controls to the sensitive data.
 
-- **Provide operational flexibility**. You can partition data to fine-tune operations, maximize administrative efficiency, and minimize cost. For example, you can define strategies for management, monitoring, backup and restore, and other administrative tasks based on the importance of the data in each partition.
+- **Provide operational flexibility.** You can partition data to fine-tune operations, maximize administrative efficiency, and minimize cost. For example, you can define strategies for management, monitoring, backup and restore, and other administrative tasks based on the importance of the data in each partition.
 
-- **Match the data store to the pattern of use**. You can deploy each partition on a different type of data store based on the cost and the built-in features that the data store offers. For example, you can store large binary data in blob storage, and store structured data in a document database. For more information, see [Understand data store models](/azure/architecture/guide/technology-choices/data-store-overview).
+- **Match the data store to the pattern of use.** You can deploy each partition on a different type of data store based on the cost and the built-in features that the data store offers. For example, you can store large binary data in blob storage, and store structured data in a document database. For more information, see [Understand data store models](/azure/architecture/guide/technology-choices/data-store-overview).
 
-- **Improve availability**. To avoid a single point of failure, you can separate data across multiple servers. If one instance fails, only the data in that partition is unavailable. Operations continue in other partitions. This consideration is less relevant for managed platform as a service (PaaS) data stores because they have built-in redundancy.
+- **Improve availability.** To avoid a single point of failure, you can separate data across multiple servers. If one instance fails, only the data in that partition is unavailable. Operations continue in other partitions. This consideration is less relevant for managed platform as a service (PaaS) data stores because they have built-in redundancy.
 
 ### Design partitions
 
@@ -40,9 +45,9 @@ There are three typical strategies for partitioning data:
 
 - **Horizontal partitioning** (often called *sharding*). In this strategy, each partition is a separate data store, but all partitions have the same schema. Each partition is known as a *shard* and holds a subset of the data, such as a set of customer orders.
 
-- **Vertical partitioning**. In this strategy, each partition holds a subset of the fields for items in the data store. The fields are divided according to their pattern of use. For example, frequently accessed fields might be placed in one vertical partition and less frequently accessed fields in another.
+- **Vertical partitioning.** In this strategy, each partition holds a subset of the fields for items in the data store. The fields are divided according to their pattern of use. For example, frequently accessed fields might be placed in one vertical partition and less frequently accessed fields in another.
 
-- **Functional partitioning**. In this strategy, data is aggregated according to how each bounded context in the system uses the data. For example, an e-commerce system might store invoice data in one partition and product inventory data in another.
+- **Functional partitioning.** In this strategy, data is aggregated according to how each bounded context in the system uses the data. For example, an e-commerce system might store invoice data in one partition and product inventory data in another.
 
 Consider combining these strategies when you design a partitioning scheme. For example, you might divide data into shards and then use vertical partitioning to further subdivide the data in each shard.
 
@@ -140,7 +145,7 @@ Partition data to improve the availability of applications. Partitioning ensures
 
 Consider the following factors that affect availability:
 
-**Determine the criticality of the data**. Identify the critical business data, such as transactions, and the less critical operational data, such as log files.
+**Determine the criticality of the data.** Identify the critical business data, such as transactions, and the less critical operational data, such as log files.
 
 - Store critical data in highly available partitions, and create an appropriate backup plan.
 
@@ -148,13 +153,13 @@ Consider the following factors that affect availability:
 
 - Place data that has the same level of criticality in the same partition so that it can be backed up at the same frequency. For example, you might need to back up partitions that hold transaction data more often than partitions that hold logging or trace information.
 
-**Manage individual partitions**. Design partitions to support independent management and maintenance. This practice provides several advantages, for example:
+**Manage individual partitions.** Design partitions to support independent management and maintenance. This practice provides several advantages, for example:
 
 - If a partition fails, it can be recovered independently without applications that access data in other partitions.
 
 - Partitioning data by geographic area allows scheduled maintenance tasks to occur at off-peak hours for each location. Ensure that partitions aren't so large that they prevent planned maintenance from finishing during this period.
 
-**Replicate critical data across partitions**. This strategy improves availability and performance but can also introduce consistency issues. It takes time to synchronize changes with every replica. During synchronization, different partitions contain different data values.
+**Replicate critical data across partitions.** This strategy improves availability and performance but can also introduce consistency issues. It takes time to synchronize changes with every replica. During synchronization, different partitions contain different data values.
 
 ### Application design considerations
 
@@ -172,35 +177,35 @@ Some small data stores also benefit from partitioning. For example, hundreds of 
 
 Consider the following points when you design a data partitioning scheme:
 
-**Minimize cross-partition data access operations**. Try to keep data for the most common database operations together in a partition to minimize cross-partition data access operations. It can be more time-consuming to query across partitions rather than querying within a single partition. But optimizing partitions for one set of queries might adversely affect other sets of queries. If you must query across partitions, minimize query time by running parallel queries and aggregating the results within the application. In some cases, you can't use this approach, for example if the result from one query is used in the next query.
+**Minimize cross-partition data access operations.** Try to keep data for the most common database operations together in a partition to minimize cross-partition data access operations. It can be more time-consuming to query across partitions rather than querying within a single partition. But optimizing partitions for one set of queries might adversely affect other sets of queries. If you must query across partitions, minimize query time by running parallel queries and aggregating the results within the application. In some cases, you can't use this approach, for example if the result from one query is used in the next query.
 
-**Replicate static reference data**. If queries use relatively static reference data, such as postal code tables or product lists, consider replicating this data in all the partitions to reduce separate lookup operations in different partitions. This approach can also reduce the likelihood of the reference data becoming a *hot* dataset with heavy traffic from across the entire system. There are extra costs associated with synchronizing changes to the reference data.
+**Replicate static reference data.** If queries use relatively static reference data, such as postal code tables or product lists, consider replicating this data in all the partitions to reduce separate lookup operations in different partitions. This approach can also reduce the likelihood of the reference data becoming a *hot* dataset with heavy traffic from across the entire system. There are extra costs associated with synchronizing changes to the reference data.
 
-**Minimize cross-partition joins**. Where possible, minimize requirements for referential integrity across vertical and functional partitions. In these schemes, the application is responsible for maintaining referential integrity across partitions. Queries that join data across multiple partitions are inefficient because the application typically performs consecutive queries that are based on a key and then a foreign key. Instead, consider replicating or de-normalizing the relevant data. If cross-partition joins are necessary, run parallel queries over the partitions and join the data within the application.
+**Minimize cross-partition joins.** Where possible, minimize requirements for referential integrity across vertical and functional partitions. In these schemes, the application is responsible for maintaining referential integrity across partitions. Queries that join data across multiple partitions are inefficient because the application typically performs consecutive queries that are based on a key and then a foreign key. Instead, consider replicating or de-normalizing the relevant data. If cross-partition joins are necessary, run parallel queries over the partitions and join the data within the application.
 
-**Embrace eventual consistency**. Evaluate whether strong consistency is a requirement. A common approach in distributed systems is to implement eventual consistency. The data in each partition is updated separately, and the application logic ensures that the updates finish successfully. The application logic also handles the inconsistencies that arise from querying data while an eventually consistent operation runs.
+**Embrace eventual consistency.** Evaluate whether strong consistency is a requirement. A common approach in distributed systems is to implement eventual consistency. The data in each partition is updated separately, and the application logic ensures that the updates finish successfully. The application logic also handles the inconsistencies that arise from querying data while an eventually consistent operation runs.
 
-**Consider how queries locate the correct partition**. If a query must scan all partitions to locate the required data, it significantly affects performance, even when multiple parallel queries run. With vertical and functional partitioning, queries can specify the partition. On the other hand, horizontal partitioning can make locating an item difficult because every shard has the same schema. A typical solution is to maintain a map that's used to look up the shard location of items. Implement this map in the sharding logic of the application. It can also be maintained by the data store if the data store supports transparent sharding.
+**Consider how queries locate the correct partition.** If a query must scan all partitions to locate the required data, it significantly affects performance, even when multiple parallel queries run. With vertical and functional partitioning, queries can specify the partition. On the other hand, horizontal partitioning can make locating an item difficult because every shard has the same schema. A typical solution is to maintain a map that's used to look up the shard location of items. Implement this map in the sharding logic of the application. It can also be maintained by the data store if the data store supports transparent sharding.
 
-**Rebalance shards periodically**. With horizontal partitioning, rebalancing shards can help evenly distribute the data by size and workload. Rebalance shards to minimize hotspots, maximize query performance, and work around physical storage limitations. This task is complex and often requires a custom tool or process.
+**Rebalance shards periodically.** With horizontal partitioning, rebalancing shards can help evenly distribute the data by size and workload. Rebalance shards to minimize hotspots, maximize query performance, and work around physical storage limitations. This task is complex and often requires a custom tool or process.
 
-**Replicate partitions**. Replicate each partition to provide added protection against failure. If a single replica fails, queries are directed to a working copy.
+**Replicate partitions.** Replicate each partition to provide added protection against failure. If a single replica fails, queries are directed to a working copy.
 
-**Extend scalibility to a different level**. If you reach the physical limits of a partitioning strategy, you might need to extend the scalability to a different level. For example, if partitioning is at the database level, you might need to locate or replicate partitions in multiple databases. If partitioning is already at the database level, and there are physical limitations, you might need to locate or replicate partitions in multiple hosting accounts.
+**Extend scalibility to a different level.** If you reach the physical limits of a partitioning strategy, you might need to extend the scalability to a different level. For example, if partitioning is at the database level, you might need to locate or replicate partitions in multiple databases. If partitioning is already at the database level, and there are physical limitations, you might need to locate or replicate partitions in multiple hosting accounts.
 
-**Avoid transactions that access data in multiple partitions**. Some data stores implement transactional consistency and integrity for operations that modify data but only when the data is located in a single partition. If you need transactional support across multiple partitions, implement it as part of your application logic because most partitioning systems don't provide native support.
+**Avoid transactions that access data in multiple partitions.** Some data stores implement transactional consistency and integrity for operations that modify data but only when the data is located in a single partition. If you need transactional support across multiple partitions, implement it as part of your application logic because most partitioning systems don't provide native support.
 
 All data stores require some operational management and monitoring activity. These tasks include loading data, backing up and restoring data, reorganizing data, and ensuring that the system performs correctly and efficiently.
 
 Consider the following factors that affect operational management:
 
-- **Implement appropriate management and operational tasks when the data is partitioned**. These tasks might include backup and restore, archiving data, monitoring the system, and other administrative tasks. For example, it can be challenging to maintain logical consistency during backup and restore operations.
+- **Implement appropriate management and operational tasks when the data is partitioned.** These tasks might include backup and restore, archiving data, monitoring the system, and other administrative tasks. For example, it can be challenging to maintain logical consistency during backup and restore operations.
 
-- **Load data into multiple partitions, and add new data that comes from other sources**. Some tools and utilities might not support sharded data operations, such as loading data into the correct partition.
+- **Load data into multiple partitions, and add new data that comes from other sources.** Some tools and utilities might not support sharded data operations, such as loading data into the correct partition.
 
-- **Archive and delete data regularly**. To prevent the excessive growth of partitions, archive and delete data every month. You might need to transform the data to match a different archive schema.
+- **Archive and delete data regularly.** To prevent the excessive growth of partitions, archive and delete data every month. You might need to transform the data to match a different archive schema.
 
-- **Locate data integrity problems**. Consider running a periodic process to locate data integrity problems, such as data in one partition that references missing information in another. The process can either automatically attempt to fix these issues or generate a report for manual review.
+- **Locate data integrity problems.** Consider running a periodic process to locate data integrity problems, such as data in one partition that references missing information in another. The process can either automatically attempt to fix these issues or generate a report for manual review.
 
 ### Rebalance partitions
 
@@ -337,9 +342,9 @@ Data partitioning introduces some challenges and complexities that you need to c
 - [Use elastic pools to manage and scale multiple databases in SQL Database](/azure/azure-sql/database/elastic-pool-overview)
 - [What is SQL Data Sync for Azure?](/azure/azure-sql/database/sql-data-sync-data-sql-server-sql-database) 
 
-## Next steps
+## Reliability checklist  
 
-We recommend that you review the Reliability checklist to explore other concepts.
+Refer to the complete set of recommendations. 
 
-> [!div class="nextstepaction"]
-> [Reliability checklist](checklist.md)
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 

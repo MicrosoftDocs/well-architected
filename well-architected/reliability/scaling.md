@@ -9,9 +9,14 @@ ms.topic: conceptual
 
 # Design a reliable scaling strategy
 
-**Applies to: RE 05**
+**Applies to this Well-Architected Framework Reliability checklist recommendation:**
 
-This guide describes recommendations for designing a reliable scaling strategy.
+|[RE:05](checklist.md)|Implement a timely and reliable scaling strategy at the application, data, and infrastructure levels.  |
+|---|---|
+
+**Related guide:** [Data partitioning](partition-data.md)
+
+This guide describes the recommendations for designing a reliable scaling strategy.
 
 **Definitions**
 
@@ -107,8 +112,9 @@ Refer to the AKS baseline reference architecture [scaling guidance](/azure/archi
 - [Performance efficiency scaling](/azure/well-architected/scalability/principles)
 - [Best practices for autoscale](/azure/azure-monitor/autoscale/autoscale-best-practices#choose-the-thresholds-carefully-for-all-metric-types)
 
-## Next steps
-We recommend that you review the Reliability checklist to explore other concepts.
+## Reliability checklist  
 
-> [!div class="nextstepaction"]
-> [Reliability checklist](checklist.md)
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 
