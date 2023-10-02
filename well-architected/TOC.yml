@@ -473,18 +473,24 @@ items:
                 href: iot/iot-performance.md
           - name: Oracle
             items:
-              - name: Overview
-                href: oracle-iaas/overview.md
-              - name: Reliability
-                href: oracle-iaas/reliability.md
-              - name: Security
-                href: oracle-iaas/security.md
-              - name: Cost Optimization
-                href: oracle-iaas/cost-optimization.md
-              - name: Operational Excellence
-                href: oracle-iaas/operational-excellence.md
-              - name: Performance Efficiency
-                href: oracle-iaas/performance-efficiency.md
+              - name: Get Started
+                href: oracle-iaas/get-started.md
+              - name: Design Principles
+                href: oracle-iaas/design-principles.md
+              - name: Design Areas
+                items:
+                - name: Compute and Storage
+                  href: oracle-iaas/compute-and-storage.md
+                - name: Business Continuity and Disaster Recovery (BCDR)
+                  href: oracle-iaas/bcdr.md
+                - name: Security
+                  href: oracle-iaas/security-new.md
+                - name: Monitoring
+                  href: oracle-iaas/monitoring.md
+                - name: Oracle Applications
+                  href: oracle-iaas/oracle-applications.de
+                - name: Decouple from your Exadata
+                  href: oracle-iaas/exadata-decouple.md  
           - name: SAP
             items:
               - name: Quick links
