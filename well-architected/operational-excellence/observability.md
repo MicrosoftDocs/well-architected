@@ -62,7 +62,7 @@ Metrics are primarily useful for [building a health model](../reliability/metric
 
 #### Application data
 
-For applications, the collecting service can be an application performance management (APM) tool that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you'll have clear visibility into important metrics, in real time and historically. Use an appropriate level of logging. Verbose logging can incur significant costs. Set log levels according to the environment. Lower environments don't need the same level of verbosity as production, for example.
+For applications, the collecting service can be an application performance management (APM) tool that can run autonomously from the application that generates the instrumentation data. After APM is enabled, you have clear visibility into important metrics, in real time and historically. Use an appropriate level of logging. Verbose logging can incur significant costs. Set log levels according to the environment. Lower environments don't need the same level of verbosity as production, for example.
 
 Application logs support the end-to-end application lifecycle. Logging is essential to understanding how the application operates in various environments, which events occur, and the conditions under which they occur.
 
@@ -132,9 +132,9 @@ When you choose a storage solution, consider the type of data, how it's used, an
 
 Consider a polyglot persistence approach, where different types of information are stored in technologies that are most appropriate to the way each type is likely to be used.
 
-For example, Azure Blob Storage and Azure Table Storage share some similarities insofar as how they're accessed. But the operations that you can perform on them differ, as does the granularity of the data that they hold. If you need to perform more analytical operations or require full-text search capabilities on the data, it might be more appropriate to use data storage that provides capabilities that are optimized for specific types of queries and data access. For example:
+For example, Azure Blob Storage and Azure Table Storage are accessed in similar ways. But the operations that you can perform on them differ, as does the granularity of the data that they hold. If you need to perform more analytical operations or require full-text search capabilities on the data, it might be more appropriate to use data storage that provides capabilities that are optimized for specific types of queries and data access. For example:
 
-- Performance counter data can be stored in an SQL database to enable ad hoc analysis.
+- Performance counter data can be stored in a SQL database to enable ad hoc analysis.
 
 - It might be better to store trace logs in Azure Monitor Logs or Azure Data Explorer.
 
@@ -215,7 +215,7 @@ For a dashboard system to work effectively, it must be meaningful to the workloa
 A good dashboard doesn't just display information. It also enables an analyst to pose improvised questions about that information. Some systems provide management tools that an operator can use to complete these tasks and explore the underlying data. Instead, depending on the repository that's used to hold the information, it might be possible to query the data directly or import it into tools like Excel for further analysis and reporting.
 
 > [!NOTE]
-> Restrict access to dashboards to authorized personnel. Information on dashboards might be commercially sensitive. You should also protect the underlying data to prevent users from changing it.
+> Restrict dashboard access to authorized personnel. Information on dashboards might be commercially sensitive. You should also protect the underlying data to prevent users from changing it.
 
 #### Reporting
 
@@ -273,7 +273,7 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 
 - [Azure Monitor Insights](/azure/azure-monitor/insights/insights-overview) are advanced analytics tools for specific Azure technologies (like VMs, app services, and containers). These tools are part of Azure Monitor and Log Analytics.
 
-- [Azure Monitor for SAP solutions](/azure/sap/monitor/about-azure-monitor-sap-solutions) is an Azure monitoring tool for SAP landscapes that run on Azure
+- [Azure Monitor for SAP solutions](/azure/sap/monitor/about-azure-monitor-sap-solutions) is an Azure monitoring tool for SAP landscapes that run on Azure.
 
 - [Azure Policy](/azure/governance/policy/overview) can help you enforce organizational standards and assess compliance at scale.
 
@@ -281,9 +281,11 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 
 Storing logs and telemetry data, running queries against that data, and other factors like replication all have cost implications that you need to consider when you plan your strategy. Consider options like archive storage and selective replication when they're practical.
 
+<!--
 ## Example
 
 _Placeholder for IaaS baseline architecture_
+-->
 
 ## Related links
 
