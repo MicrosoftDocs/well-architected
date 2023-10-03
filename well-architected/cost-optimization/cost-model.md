@@ -56,17 +56,19 @@ If you ensure that these often-overlooked factors are incorporated early in the 
 
 The cost model is an estimate of all costs associated with the workload. These costs include infrastructure, software licenses, personnel, maintenance, and support costs.
 
-**Align estimates to cost drivers**. Determine the factors that drive the costs for each cost category, like services or licenses. Cost drivers are factors that directly affect the cost, such as usage volume, number of customers, and storage capacity. Assign quantitative values to the identified cost drivers. Quantify the effect of each cost driver by using methods such as estimating usage volumes or determining the number of customers or resources.
+#### Align estimates to cost drivers
 
-Based on the cost categories and drivers, establish mathematical models or formulas that relate the cost drivers to the associated costs. These models can include simple linear relationships or complex calculations, depending on the cost category.
+Determine the factors that drive the costs for each cost category, like services or licenses. Cost drivers are factors that directly affect the cost, such as usage volume, number of customers, and storage capacity. Assign quantitative values to the identified cost drivers. Quantify the effect of each cost driver by using methods such as estimating usage volumes or determining the number of customers or resources. Based on the cost categories and drivers, establish mathematical models or formulas that relate the cost drivers to the associated costs. These models can include simple linear relationships or complex calculations, depending on the cost category.
 
-**Associate costs with business metrics**. Associate costs with the relevant business metrics, such as the cost of each customer or the cost of each unit sold. Link the costs directly to the business metrics to gain visibility into the financial effect of different activities. For example, if you expect the number of customers to grow, you can estimate how much it costs to support those customers.
+#### Associate costs with business metrics
 
-Many businesses prioritize this visibility in their cost model. It requires making the cost model adaptable and adds complexity to cost modeling. An adaptable cost model supports a scenario analysis that allows you to estimate the cost of workload or business changes.
+Associate costs with the relevant business metrics, such as the cost of each customer or the cost of each unit sold. Link the costs directly to the business metrics to gain visibility into the financial effect of different activities. For example, if you expect the number of customers to grow, you can estimate how much it costs to support those customers.
 
-Determine the estimated cost of a customer by dividing the total cost of the workload by the number of customers. This calculation provides an estimate of how much it costs to support each customer within the workload. To determine a more accurate cost of a customer, consider the specific resources and services for each customer. For example, the customer's workload might include cloud services such as virtual machines, storage, networking, software licenses, or data transfer.
+Many businesses prioritize this visibility in their cost model. It requires making the cost model adaptable and adds complexity to cost modeling. An adaptable cost model supports a scenario analysis that allows you to estimate the cost of workload or business changes. Determine the estimated cost of a customer by dividing the total cost of the workload by the number of customers. This calculation provides an estimate of how much it costs to support each customer within the workload. To determine a more accurate cost of a customer, consider the specific resources and services for each customer. For example, the customer's workload might include cloud services such as virtual machines, storage, networking, software licenses, or data transfer.
 
-**Publish the cost model**. Document the cost categories, drivers, and mathematical relationships that are used to calculate the costs. Create comprehensive and easily understood documentation for stakeholders. Ensure that the cost model is accessible to all relevant stakeholders. Publish the cost model in a format or on a platform that allows for seamless data exchange and enables efficient collaboration between stakeholders.
+### Publish the cost model
+
+Document the cost categories, drivers, and mathematical relationships that are used to calculate the costs. Create comprehensive and easily understood documentation for stakeholders. Ensure that the cost model is accessible to all relevant stakeholders. Publish the cost model in a format or on a platform that allows for seamless data exchange and enables efficient collaboration between stakeholders.
 
 ### Set a budget
 
