@@ -33,7 +33,7 @@ It's important to optimize a workload's data performance because it can have a s
 | Query tuning| A process that optimizes the speed of a database query.|
 |  Read replica| A live copy of a primary database that enables you to offload read traffic from a write database.|
 
-## Key strategies
+## Key design strategies
 
 To optimize data usage, ensure that data stores, partitions, and indexes are optimized for their intended use and for their actual use in a workload. Optimized data usage can improve query performance, reduce resource consumption, and enhance overall system efficiency. Consider the following strategies:
 
