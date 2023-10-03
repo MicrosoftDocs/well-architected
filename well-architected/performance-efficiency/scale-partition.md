@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for scaling and partitioning
 
-**Applies to: PE 05**
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
+
+|[PE:05](checklist.md)| **Optimize scaling and partitioning**. Incorporate reliable and controlled scaling and partitioning. The scale unit design of the workload is the basis of the scaling and partitioning strategy.|
+|---|---|
 
 This guide describes the recommendations for scaling and partitioning a workload. Scaling and partitioning are important strategies for achieving performance efficiency in workloads. Scaling is the ability to increase or decrease the resources allocated to a workload based on demand. Partitioning involves dividing the workload into smaller, manageable units to distribute data and processing across multiple resources. A workload that doesn't scale or partition might experience poor performance in high-demand periods and underutilized capacity in low-demand periods.
 
@@ -235,3 +238,10 @@ Partitioning is the process of dividing a large dataset or workload into smaller
 - [Overview of the autoscale feature in Azure](/azure/azure-monitor/platform/autoscale-overview)
 - [Horizontal, vertical, and functional data partitioning](/azure/architecture/best-practices/data-partitioning)
 - [Application design considerations](/azure/architecture/best-practices/data-partitioning#application-design-considerations)
+
+## Performance Efficiency checklist
+
+Refer to the complete set of recommendations.
+
+> [!div class="nextstepaction"]
+> [Performance Efficiency checklist](checklist.md)
