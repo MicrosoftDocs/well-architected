@@ -9,8 +9,8 @@ metadata:
   ms.service: waf
   ms.subservice: waf-pillar-security
   ms.topic: landing-page
-  author: martinekuan
-  ms.author: martinek
+  author: PageWriter-MSFT
+  ms.author: prwilk
   ms.date: 09/29/2023
 
 landingContent:
@@ -55,7 +55,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Security baseline (TODO)
-            url: TODO.md
+            url: establish-baseline.md
           - text: Secure development lifecycle
             url: secure-development-lifecycle.md
           - text: Data classification
@@ -63,7 +63,7 @@ landingContent:
           - text: Security monitoring
             url: monitoring.md
           - text: Model threats (TODO)
-            url: design-threat-model.md
+            url: threat-model.md
   - title: Protect workload assets
     linkLists:
       - linkListType: how-to-guide

@@ -5,13 +5,16 @@ author: claytonsiemens77
 ms.author: csiemens 
 ms.date: 11/15/2023
 ms.topic: conceptual
-ms.custom:
-  - guide
 ---
 
 # Recommendations for highly available multi-region design
 
-**Applies to: RE 04**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:04](checklist.md)| Add redundancy at different levels, especially for critical flows. Apply redundancy to the compute, data, network, and other infrastructure tiers in accordance with the identified reliability targets. |
+|---|---|
+
+**Related guides:** [Redundancy](redundancy.md) | [Using availability zones and regions](regions-availability-zones.md) 
 
 This guide describes the recommendations for designing a highly available multi-region cloud environment. High availability is a foundational tenet of designing for reliability. A highly available architecture can help you avoid downtime as much as possible and recover efficiently if downtime does occur.
 
@@ -100,3 +103,10 @@ The following sections describe the design options of the two patterns.
 
 - [Multi-region N-tier application](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
 - [Multi-region load balancing ](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway)
+
+## Reliability checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md)  

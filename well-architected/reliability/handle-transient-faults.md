@@ -5,13 +5,16 @@ author: claytonsiemens77
 ms.author: csiemens 
 ms.date: 11/15/2023
 ms.topic: conceptual
-ms.custom:
-  - guide
 ---
 
 # Recommendations for handling transient faults
 
-**Applies to: RE 06**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:06](checklist.md)| Strengthen the resiliency and recoverability of your workload by implementing self-preservation and self-healing measures. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. Build capabilities into the system to detect solution component failures and automatically initiate corrective action while the workload continues to operate at full or reduced functionality. |
+|---|---|
+
+**Related guides:** [Background jobs](background-jobs.md) | [Self-preservation](self-preservation.md)
 
 This guide describes the recommendations for handling transient faults in your cloud applications. All applications that communicate with remote services and resources must be sensitive to transient faults. This is especially true for applications that run in the cloud, where, because of the nature of the environment and connectivity over the internet, this type of fault is likely to be encountered more often. Transient faults include the momentary loss of network connectivity to components and services, the temporary unavailability of a service, and timeouts that occur when a service is busy. These faults are often self-correcting, so, if the action is repeated after a suitable delay, it's likely to succeed.
 
@@ -197,6 +200,13 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 - [Idempotency patterns][idempotency-patterns] 
 - [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency) 
 - [Data Points - EF Core 1.1](/archive/msdn-magazine/2017/january/data-points-ef-core-1-1-a-few-of-my-favorite-things) 
+
+## Reliability checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 
 
 <!-- links -->
 

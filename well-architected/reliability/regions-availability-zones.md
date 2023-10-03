@@ -5,15 +5,16 @@ author: johndowns
 ms.author: jodowns
 ms.date: 09/28/2023
 ms.topic: conceptual
-ms.custom:
-  - guide
-categories:
-  - management-and-governance
 ---
 
 # Recommendations for using availability zones and regions
 
-**Applies to: RE 04**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:04](checklist.md)| Add redundancy at different levels, especially for critical flows. Apply redundancy to the compute, data, network, and other infrastructure tiers in accordance with the identified reliability targets. |
+|---|---|
+
+**Related guides:** [Highly availabile multiregional design](highly-available-multi-region-design.md) | [Redundancy](redundancy.md)
 
 This guide describes the recommendations for determining when to deploy workloads across availability zones or regions. 
 
@@ -464,6 +465,13 @@ Many Azure services provide guidance about how to use multiple availability zone
 - [Azure NetApp Files: Understand cross-zone replication of Azure NetApp Files](/azure/azure-netapp-files/cross-zone-replication-introduction)
 - [Azure Storage redundancy](/azure/storage/common/storage-redundancy)
 
+## Reliability checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 
+
 <!-- Links -->
 
 [availability-zones-overview]: </azure/reliability/availability-zones-overview>
@@ -473,6 +481,6 @@ Many Azure services provide guidance about how to use multiple availability zone
 [regions-with-availability-zones-and-no-region-pair]: </azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair>
 [metro-dr]: </azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery>
 [round-trip-latency]: </azure/networking/azure-network-latency>
-[composite-slas]: <business-metrics.md#composite-slas>
+[composite-slas]: <metrics.md#slos-and-slas>
 [front-door-global-traffic-acceleration]: </azure/frontdoor/front-door-overview>
 [traffic-manager]: </azure/traffic-manager/traffic-manager-overview>

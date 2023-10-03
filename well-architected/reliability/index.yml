@@ -61,7 +61,7 @@ landingContent:
           - text: Perform failure mode analysis
             url: failure-mode-analysis.md
           - text: Use business metrics
-            url: business-metrics.md
+            url: metrics.md
           - text: Set reliability targets
             url: metrics.md
           - text: Design a monitoring & alerting strategy

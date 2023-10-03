@@ -9,6 +9,11 @@ ms.topic: conceptual
 
 # Recommendations for implementing automation
 
+**Applies to this Well-Architected Framework Operational Excellence checklist recommendation:** 
+
+|[OE:09](checklist.md)| Automate all tasks that do not benefit from the insight and adaptability of human intervention, are highly procedural, and have a shelf-life that will yield a return on the automation investment. Prefer off-the-shelf software for automation vs custom implementations where available. Treat all automation as workload components, applying Well-Architected pillars to their design and implementation. | 
+|---|---| 
+
 This guide describes the best practices for adopting automation in your workload management. Automating tasks that are repetitive and prone to human error can help your teams gain efficiency and adhere to standards, making the management of the workload less complicated and more consistent. Additionally, you can empower your operations and engineering teams by giving them more time to concentrate on workload or other improvements. Automation is a powerful tool in all aspects of workload management and implementing it thoughtfully will empower your organization in many ways.
 
 ## Key design strategies
@@ -137,9 +142,8 @@ Reliability testing guide (re07-testing)
 
 Reliability self-preservation guide (re06-self-preservation)
 
-## Next steps
+## Operational Excellence checklist
 
-We recommend that you review the Operational Excellence checklist to explore other concepts. 
+Refer to the complete set of recommendations. 
 
-> [!div class="nextstepaction"] 
-> [Operational Excellence checklist](checklist.md) 
+[Operational Excellence checklist](checklist.md)

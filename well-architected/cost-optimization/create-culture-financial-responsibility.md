@@ -24,7 +24,7 @@ Creating a culture of financial responsibility helps organizations manage their 
 
 ### Make costs transparent
 
-Making budgets transparent means openly sharing and communicating financial information related to a workload or project. It involves sharing budget details and financials with relevant stakeholders and creating a broad sense of financial responsibility.
+Making budgets and workload costs transparent means openly sharing and communicating financial information related to a workload or project. It involves sharing budget details and financials with relevant stakeholders and creating a broad sense of financial responsibility.
 
 - *Involve everyone*: Ensure that everyone involved in the project or workload has access to the budget information. Include team members, managers, and decision-makers. Sharing the budget information makes everyone feel accountable for their actions and decisions, fostering a sense of ownership. 
 - *Share budget details*: Communicate the budget information openly with relevant stakeholders. Consider sharing the allocated budget, cost breakdowns, and financial goals associated with the workload or project.
@@ -53,7 +53,7 @@ To develop core skills in-house means to invest in training and developing the e
 
 ### Communicate financial expectations
 
-Personnel need ways to receive and relay cost optimization ideas. Creating communication channels allows for the exchange of knowledge, collaboration, and the identification of cost-saving opportunities.
+Personnel need ways to receive and relay cost optimization ideas. You should clearly communicate financial expectations to the workload team. Create communication channels that allow you to exchange knowledge, collaborate, and identify cost-saving opportunities.
 
 - *Reshape values*: Review and update values and mission statements to include financial responsibility. Ensure that these values are communicated and reinforced throughout the organization, aligning them with the overall business objectives. Recognize and reward individuals and teams who demonstrate financial responsibility and contribute to cost optimization efforts. Use performance evaluations, incentives, or other recognition programs.
 - *Establish clear expectations*: Set clear expectations and goals for all stakeholders that are aligned with the mission and encourage accountability and responsibility for all actions taken. Establish and promote success metrics aligned with individual teams' goals.
