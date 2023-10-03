@@ -1,5 +1,5 @@
 ---
-title: Hardening recommendations for resource security
+title: Recommendations for hardening resources
 description: Learn about hardening resources recommendations for security. Reduce the attack surface and increase attackers’ costs in the remaining area to limit the opportunities for malicious actors to exploit vulnerabilities.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 
-|[SE:08](checklist.md)|"_Harden all workload components by reducing extraneous surface area and tightening configuration, to increase attacker cost._"|
+|[SE:08](checklist.md)|Harden all workload components by reducing extraneous surface area and tightening configuration, to increase attacker cost.|
 |---|---|
 
 Security hardening is an intentional self-preservation exercise. The goal is to **reduce the attack surface** and **increase attackers’ costs in the remaining area** to limit the opportunities for malicious actors to exploit vulnerabilities. This is typically done by implementing a set of security best practices and configurations.
@@ -24,9 +24,11 @@ This guide provides recommendations on building localized controls within the wo
 
 | Terms | Definition |
 |---|---|
-| Hardening | |
-| PAWS | |
-| SAWS | |
+|Surface area|A logical footprint of the workload, which contains vulnerabilities. |
+| Hardening |The practice of reducing the attack surface area by removing extraneous resources or configuration.|
+| Privileged Access Workstations (PAWs) | Dedicated and secure machines used for doing sensitive tasks to reduce the risk of compromise.|
+| Secure Administrative Workstations (SAWs) | Specialized PAWs intended to by used by critical impact accounts.|
+
 
 ## Key design strategies
 
@@ -84,7 +86,7 @@ DNS hardening another aspect of network security. To ensure that the DNS infrast
 
 The preceding hardening recommendations for networking and identity apply to individual cloud services. For networking, pay special attention to **service-level firewalls**. Evaluate their inbound rules.
 
-In addition, **discover and disable other unused capabilities** or features that might be covered by other components, such as unused data plane access and product features. For example, Azure App Services supports Kudu, which offers FTP deployments, remote debugging, and other features. If you don’t need them, turn those features off. 
+In addition, **discover and disable other unused capabilities** or features that might be covered by other components, such as unused data plane access and product features. For example, Azure App Services supports Kudu, which offers FTP deployments, remote debugging, and other features. If you don’t need them, turn off those features. 
 
 As part of your 'stay current, get current' mindset, always **keep up with the Azure roadmap and the workload roadmap**. Apply patching and versioning updates offered by Azure services. Don’t block platform-provided updates and subscribe to automated update channels.
 
@@ -112,7 +114,7 @@ In general, follow secure coding practices when developing and maintaining appli
 
 ### Management operations
 
-Other non-runtime resources must also be hardened. For instance, **reduce your build operations footprint** by taking an inventory of all assets and removing all unused ones from your pipeline. Then, **pull in tasks that are published by trusted source**s and only run tasks that have been validated. 
+Other nonruntime resources must also be hardened. For instance, **reduce your build operations footprint** by taking an inventory of all assets and removing all unused ones from your pipeline. Then, **pull in tasks that are published by trusted source**s and only run tasks that have been validated. 
 
 Evaluate the choice of Microsoft-hosted or self-hosted build agents.  **Self-hosted build agents need extra management and must be hardened**.   
 
@@ -144,7 +146,7 @@ Here’s an example of how you might start hardening the operating system. The t
 
 1. Fine-tune configurations.
 
-   **Disable unused accounts**. Default configuration of operating systems have extra accounts that are linked to security groups. If they aren’t going to be used, disable or remove them from the system. Extra identities are threat vectors that are used to gain access to the server.
+   **Disable unused accounts**. Default configuration of operating systems has extra accounts that are linked to security groups. If they aren’t going to be used, disable or remove them from the system. Extra identities are threat vectors that are used to gain access to the server.
 
    **Disable unnecessary access to the file system**. Encrypt the filesystem and fine tune access controls for both identity and networking. 
 

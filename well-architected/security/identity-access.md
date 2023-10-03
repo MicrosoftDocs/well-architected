@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 
-|[SE:05](checklist.md)|"_Implement strict, conditional, and auditable identity and access management (IAM) control across all workload users, team members, and system components. Limit access exclusively to as-necessary. Use modern industry standards for all authentication and authorization implementations. Nonidentity based access is restricted and rigorously audited._"|
+|[SE:05](checklist.md)|Implement strict, conditional, and auditable identity and access management (IAM) control across all workload users, team members, and system components. Limit access exclusively to as-necessary. Use modern industry standards for all authentication and authorization implementations. Nonidentity based access is restricted and rigorously audited.|
 |---|---|
 
 From a technical control perspective, **identity is always the primary perimeter**. This scope not only includes the edges of your workload, but inside at the individual component level. Typical identities include:
@@ -40,6 +40,7 @@ This guide provides guidance on authenticating and authorizing identities attemp
 |User identity      |  People such as employees and external users.       |
 |Security principal     |  A security principal is an identity that gets permissions. It could be a user, group or a service principal. It needs the same level of access.       |
 |Persona     |   A job function or a title that has a set of responsibilities and actions.      |
+|Conditional access|A set of rules that allows actions based on specified criteria. |
 
 > [!Note] 
 > An identity can be grouped with other similar identities under a parent called *security principal*. A security group is an example of a security principal. This hierarchical relationship provides ease of maintenance and consistency. Because identity attributes aren't handled at the individual level, chances of errors are also reduced. In this article, the term identity is inclusive of security principals.

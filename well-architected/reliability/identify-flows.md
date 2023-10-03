@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for identifying and rating flows
 
-**Applies to: RE 01**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:01](checklist.md)| Identify the user and system flows of your workload. Prioritize importance by using a criticality scale that's based on your business requirements. |
+|---|---|
 
 This guide describes the recommendations for creating a catalog of user and system flows for your workload. Understand and model your flows to ensure that your reliability efforts benefit the most critical parts of your workload. Deprioritize the flows that don't have stringent availability requirements.
 
@@ -184,3 +187,10 @@ To understand state changes in the production system, web application and API in
 ## Related links
 
 Learn about determining [business criticality in cloud management](/azure/cloud-adoption-framework/manage/considerations/criticality).
+
+## Reliability checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 

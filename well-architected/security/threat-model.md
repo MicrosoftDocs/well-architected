@@ -13,7 +13,7 @@ ms.custom:
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 
-|[SE:02](checklist.md)|"_Establish a security baseline aligned to compliance requirements, industry standards, and platform recommendations. Regularly measure your workload architecture and operations against the baseline to sustain or improve your security posture over time._"|
+|[SE:02](checklist.md)|Establish a security baseline aligned to compliance requirements, industry standards, and platform recommendations. Regularly measure your workload architecture and operations against the baseline to sustain or improve your security posture over time.|
 |---|---|
 
 **Related guide**: [Secure development lifecycle](secure-development-lifecycle.md)

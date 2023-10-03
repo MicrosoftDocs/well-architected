@@ -86,9 +86,7 @@ You need to have contact information available for your personnel. Vendors might
 
 ### Learn from findings
 
-After you fix a live-site performance issue, you need to review what happened. The goal is to learn from performance issues, not just identify problems.
-
-The best way to learn is through documentation. Document each issue and explain how to fix it. If a vendor helped, work with the vendor to enhance your documentation, train your team, and modify your workload accordingly.
+After you fix a live-site performance issue, you need to review what happened. The goal is to learn from performance issues, not just identify problems. The best way to learn is through documentation. Document each issue and explain how to fix it. If a vendor helped, work with the vendor to enhance your documentation, train your team, and modify your workload accordingly.
 
 The documentation should indicate how to prevent each problem from happening again. One way to avoid recurring problems is to introduce automation to respond to common issues. Automation should add self-healing and self-prevention qualities to a workload. Along with the automation, you can create refined alerts that help you respond early to performance issue indicators.
 

@@ -25,34 +25,36 @@
           items:
             - name: Reliability patterns
               href: reliability/design-patterns.md
-            - name: Background jobs
-              href: reliability/background-jobs.md
-            - name: Data partitioning
-              href: reliability/partition-data.md
-            - name: Disaster recovery strategy  
-              href: reliability/disaster-recovery.md
-            - name: Failure mode analysis
-              href: reliability/failure-mode-analysis.md
-            - name: High-availability multi-region design
-              href: reliability/highly-available-multi-region-design.md  
-            - name: Identify and rate flows
+            - name: RE:01 Identify and rate flows
               href: reliability/identify-flows.md
-            - name: Monitoring and alerting
-              href: reliability/monitoring-alerting-strategy.md
-            - name: Redundancy
-              href: reliability/redundancy.md
-            - name: Regions and availability zones
-              href: reliability/regions-availability-zones.md
-            - name: Scaling
-              href: reliability/scaling.md
-            - name: Simplicity and efficiency
-              href: reliability/simplify.md
-            - name: Target metrics
+            - name: RE:02 Failure mode analysis
+              href: reliability/failure-mode-analysis.md
+            - name: RE:03 Target metrics
               href: reliability/metrics.md
-            - name: Testing
-              href: reliability/testing-strategy.md
-            - name: Transient faults 
+            - name: RE:04 High-availability multi-region design
+              href: reliability/highly-available-multi-region-design.md  
+            - name: RE:04 Redundancy
+              href: reliability/redundancy.md
+            - name: RE:04 Regions and availability zones
+              href: reliability/regions-availability-zones.md
+            - name: RE:05 Data partitioning
+              href: reliability/partition-data.md
+            - name: RE:05 Scaling
+              href: reliability/scaling.md
+            - name: RE:06 Background jobs
+              href: reliability/background-jobs.md
+            - name: RE:06 Transient faults 
               href: reliability/handle-transient-faults.md
+            - name: RE:06 Self-preservation
+              href: reliability/self-preservation.md
+            - name: RE:07 Testing
+              href: reliability/testing-strategy.md
+            - name: RE:08 Disaster recovery strategy  
+              href: reliability/disaster-recovery.md
+            - name: RE:09 Monitoring and alerting
+              href: reliability/monitoring-alerting-strategy.md
+            - name: RE:10 Simplicity and efficiency
+              href: reliability/simplify.md
       - name: Security
         items: 
         - name: Quick links
@@ -67,6 +69,8 @@
           items:
             - name: Security patterns            
               href: security/design-patterns.md
+            - name: SE:01 Establish a baseline
+              href: security/establish-baseline.md
             - name: SE:02 Security development lifecycle
               href: security/secure-development-lifecycle.md
             - name: SE:02 Threat analysis
@@ -149,20 +153,22 @@
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
-            - name: Automating tasks
-              href: operational-excellence/automate-tasks.md
-            - name: Emergency response
-              href: operational-excellence/emergency-response.md
-            - name: Enabling automation
-              href: operational-excellence/enable-automation.md
-            - name: Failure mitigation
-              href: operational-excellence/mitigation-strategy.md
-            - name: Observability framework development
-              href: operational-excellence/observability.md
-            - name: Supply chain for workload development
-              href: operational-excellence/workload-supply-chain.md
-            - name: Using infrastructure as code
+            - name: OE:03 Formalizing software development practices
+              href: operational-excellence/formalize-development-practices.md
+            - name: OE:05 Using infrastructure as code
               href: operational-excellence/infrastructure-as-code-design.md
+            - name: OE:06 Supply chain for workload development
+              href: operational-excellence/workload-supply-chain.md
+            - name: OE:07 Observability framework development
+              href: operational-excellence/observability.md
+            - name: OE:08 Emergency response
+              href: operational-excellence/emergency-response.md
+            - name: OE:09 Automating tasks
+              href: operational-excellence/automate-tasks.md
+            - name: OE:10 Enabling automation
+              href: operational-excellence/enable-automation.md
+            - name: OE:12 Failure mitigation
+              href: operational-excellence/mitigation-strategy.md
       - name: Performance Efficiency
         items: 
         - name: Quick links

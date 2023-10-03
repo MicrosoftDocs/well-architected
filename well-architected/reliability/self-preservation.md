@@ -12,7 +12,12 @@ categories:
 ---
 # Recommendations for self-healing and self-preservation
 
-**Applies to: RE 06**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:06](checklist.md)| Strengthen the resiliency and recoverability of your workload by implementing self-preservation and self-healing measures. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. Build capabilities into the system to detect solution component failures and automatically initiate corrective action while the workload continues to operate at full or reduced functionality.   |
+|---|---|
+
+**Related guides:** [Background jobs](background-jobs.md) | [Transient faults](handle-transient-faults.md)
 
 This guide describes the recommendations for building self-healing and self-preservation capabilities into your application architecture to optimize reliability.
 
@@ -158,3 +163,10 @@ For example use cases of some patterns, see the [reliable web app pattern for .N
 - [Reliability patterns](design-patterns.md)
 - [Cloud design patterns](/azure/architecture/patterns)
 - [Design for self-healing](/azure/architecture/guide/design-principles/self-healing)
+
+## Reliability checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 

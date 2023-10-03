@@ -27,9 +27,7 @@ This guide describes the best practices for creating a cost model for your workl
 
 ## Key strategies
 
-A cost model provides a projection of the workload cost, derived from existing data. The purpose of a cost model isn't to gain visibility into expenses or control them. It's centered on forecasting the predicted expenses and considering all available known factors. The objective isn't to find the least expensive solution but to determine the best solution for your workload. The best solution is one that aligns spending to your workload priorities.
-
-A cost model enables you to establish a workload budget, ensure alignment with this budget, and allocate funds for cloud resources.
+A cost model provides a projection of the workload cost, derived from existing data. The objective isn't to find the least expensive solution but to determine the best solution for your workload. The best solution is one that aligns spending to your workload priorities. A cost model enables you to establish a workload budget, ensure alignment with this budget, and allocate funds for cloud resources.
 
 ### Understand cost and saving options
 
