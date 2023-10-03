@@ -10,14 +10,14 @@ ms.topic: conceptual
 # Design review checklist for Security
 
 This checklist presents a set of security recommendations to help you ensure your workload is secure and aligned with the Zero Trust model. If you haven't checked the following boxes and considered the tradeoffs, then your design might be at risk. Carefully consider all of the points covered in the checklist to gain confidence in your workload's security.
-
+## Checklist
 |&nbsp;|Code|Recommendation|
 |---|---|---|
 |&#9744;|[SE:01](./establish-baseline.md)|**Establish a security baseline** that's aligned to compliance requirements, industry standards, and platform recommendations. Regularly measure your workload architecture and operations against the baseline to sustain or improve your security posture over time.|
 |&#9744;|[SE:02](./secure-development-lifecycle.md)<br>[SE:02](./threat-model.md)|**Maintain a secure development lifecycle** by using a hardened, mostly automated, and auditable software supply chain. Incorporate a secure design by using threat modeling to safeguard against security-defeating implementations.|
 |&#9744;|[SE:03](./data-classification.md)|**Classify and consistently apply sensitivity and information type labels** on all workload data and systems involved in data processing. Use classification to influence workload design, implementation, and security prioritization.|
 |&#9744;|[SE:04](./segmentation.md)|**Create intentional segmentation and perimeters** in your architecture design and in the workload's footprint on the platform. The segmentation strategy must include networks, roles and responsibilities, workload identities, and resource organization.|
-|&#9744;|[SE:05](./identity-access.md)|**Implement strict, conditional, and auditable identity and access management (IAM)** across all workload users, team members, and system components. Limit access exclusively to *as necessary*. Use modern industry standards for all authentication and authorization implementations. Restrict and rigorously audit nonidentity-based access.|
+|&#9744;|[SE:05](./identity-access.md)|**Implement strict, conditional, and auditable identity and access management (IAM)** across all workload users, team members, and system components. Limit access exclusively to *as necessary*. Use modern industry standards for all authentication and authorization implementations. Restrict and rigorously audit access that's not based on identity.|
 |&#9744;|[SE:06](./networking.md)|**Isolate, filter, and control network traffic** across both ingress and egress flows. Apply defense-in-depth principles by using localized network controls at all available network boundaries across both east-west and north-south traffic.|
 |&#9744;|[SE:07](./encryption.md)|**Encrypt data by using modern, industry-standard methods** to guard confidentiality and integrity. Align the encryption scope with data classifications, and prioritize native platform encryption methods.|
 |&#9744;|[SE:08](./hardening.md)|**Harden all workload components** by reducing extraneous surface area and tightening configurations to increase attacker cost.|
