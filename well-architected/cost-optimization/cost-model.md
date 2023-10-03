@@ -82,16 +82,6 @@ The resulting budget should be realistic, but include a buffer for predicted usa
 
 **Set budget alerts**. Implement alerts for cost management. Set up alerts to notify you when spending reaches certain thresholds. This practice allows you to take immediate action and make necessary adjustments to stay within the budget. Monitor usage and set alerts to help identify trends, peak usage times, and opportunities for cost optimization.
 
-### Budget reporting and allocation
-
-Budget reporting and allocation involves tracking and managing financial resources within an organization. Gain visibility into how funds are utilized so you can make informed decisions and optimize resource allocation. It's important that your budget reporting and allocation system accounts for cost drivers outside of the workload.
-
-You can defer workload costs to consumers and to the workload provider. Your approach might vary depending on the context and agreements between the parties involved. In some cases, you might pass costs directly on to the consumers of the workload. In other cases, the workload provider might bear the costs. The decision about how to allocate the costs and who should bear them depends on factors such as the nature of the workload, the agreement between the parties, and the financial arrangements.
-
-*Showback* is a common practice in budget reporting where the costs of services or resources are shown to the relevant teams or individuals. It helps create awareness among teams regarding their resource consumption. Each team should be able to perform showback to understand the costs associated with their activities.
-
-*Chargeback* shows the costs but also bills the costs back to the teams or departments based on their actual resource usage. This approach promotes cost responsibility and encourages efficient resource utilization.
-
 ### Use and maintain the cost model
 
 A cost model isn't just an analytical tool. It's a decision-making aid. Use the cost model for budgeting, scenario analysis, and resource optimization.
