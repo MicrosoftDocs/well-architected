@@ -198,7 +198,7 @@ The usage data for a single business operation might span all three tiers. This 
 
 - **Define clear retention times on storage for cold analysis**: We recommend this practice to enable historic analysis over a specific period. It can also help you control storage costs. Implement processes that ensure data is archived to cheaper storage and aggregate data for long-term trend analysis.
 
-- **Analyze long-term trends to predict operational issues**: Evaluate long-term data to form operational strategies and also to predict what operational issues are likely to occur, and when. For example, if average response times are slowly increasing over time and approaching the maximum target.
+- **Analyze long-term trends to predict operational issues**: Evaluate long-term data to form operational strategies and also to predict what operational issues are likely to occur, and when. For example, you might note that average response times are slowly increasing over time and approaching the maximum target.
 
 For detailed guidance on these recommendations, see the Analysis guide (link to Analyze monitoring data for cloud applications guide)
 
@@ -210,7 +210,7 @@ The most common way to visualize data is to use dashboards that can display info
 
 Align your dashboards with your [health model](../reliability/metrics.md#building-a-health-model) so that they indicate when the workload or components of the workload are healthy, degraded, or unhealthy. 
 
-For a dashboard system to work effectively, it must be meaningful to the workload team. Visualize information that relates to workload health and that's also actionable. When the workload or a component is degraded or unhealthy, the workload team should be able to easily identify where in the workload the issue originates and begin their corrective actions or investigations. Conversely, including information that isn't actionable or that's not related to workload health can make the dashboard needlessly complex and frustrating to team members who are trying to discern background noise from actionable data.
+For a dashboard system to work effectively, it must be meaningful to the workload team. Visualize information that relates to workload health and that's also actionable. When the workload or a component is degraded or unhealthy, members of the workload team should be able to easily identify where in the workload the issue originates and begin their corrective actions or investigations. Conversely, including information that isn't actionable or that's not related to workload health can make the dashboard needlessly complex and frustrating to team members who are trying to discern background noise from actionable data.
 
 A good dashboard doesn't just display information. It also enables an analyst to pose improvised questions about that information. Some systems provide management tools that an operator can use to complete these tasks and explore the underlying data. Instead, depending on the repository that's used to hold the information, it might be possible to query the data directly or import it into tools like Excel for further analysis and reporting.
 
@@ -233,7 +233,7 @@ Operational reporting typically includes the following:
 
 Security reporting tracks customer use of the system. It can include:
 
-- Auditing user operations. This task requires recording the individual requests that each user completes, together with dates and times. The data should be structured to enable an administrator to quickly reconstruct the sequence of operations that a user completes over a specified period.
+- Auditing user operations. This task requires recording the individual requests that each user completes, together with dates and times. The data should be structured to enable an administrator to quickly reconstruct the sequence of operations that a user completes during a specified period.
 
 - Tracking resource use by user. This task requires recording how each request from a user accesses the various resources that compose the system, and for how long. An administrator can use this data to generate a utilization report, by user, for a specified period, possibly for billing.
 
@@ -271,7 +271,7 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 
 - [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor. It provides APM features.
 
-- [Azure Monitor Insights](/azure/azure-monitor/insights/insights-overview) are advanced analytics tools for specific Azure technologies (like VMs, app services, and containers) that are part of Azure Monitor and Log Analytics.
+- [Azure Monitor Insights](/azure/azure-monitor/insights/insights-overview) are advanced analytics tools for specific Azure technologies (like VMs, app services, and containers). These tools are part of Azure Monitor and Log Analytics.
 
 - [Azure Monitor for SAP solutions](/azure/sap/monitor/about-azure-monitor-sap-solutions) is an Azure monitoring tool for SAP landscapes that run on Azure
 
