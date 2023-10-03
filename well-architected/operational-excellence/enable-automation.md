@@ -9,13 +9,18 @@ ms.topic: conceptual
 
 # Recommendations for enabling automation in your workload
 
+**Applies to this Azure Well-Architected Framework Operation Excellence checklist recommendation:**
+
+|[OE:10](checklist.md)| Design and implement the workload with the expectation of using automation for items such as lifecycle concerns, bootstrapping, and applying governance & compliance guardrails up front instead of retrofitting automation later. Prefer the use of automation features provided natively by your platform.|
+|---|---|
+
 This guide describes the recommendations for designing and implementing your workload to enable automation. Design your workload with automation in mind to ensure that routine tasks such as provisioning resources, scaling, and deployments are performed quickly and reliably. Automation simplifies maintenance tasks, which allows you to update, patch, and upgrade your systems more efficiently and reliably.
 
 ## Key design strategies
 
 ### Workload design
 
-You can design your workload for automation from the ideation phase to the on-going improvement phase. First, consider how you want to leverage automation to ensure that you're putting the necessary pieces in place when planning your workload. Think about the workload in terms of the Well-Architected Framework pillars to help plan for the types of automation you'll enable. You can automate many of the functions you'll have in place for security, reliability, performance, operations and cost control.
+You can design your workload for automation from the ideation phase to the on-going improvement phase. First, consider how you want to apply automation to ensure that you're putting the necessary pieces in place when planning your workload. Think about your workload in terms of the Well-Architected Framework pillars to help plan for the types of automation you'll need. You can automate many of the functions for security, reliability, performance, operations and cost control.
 
 Design with automation in mind to minimize the need to refactor once your workload is running. Your workload requirements inform your plans for implementing automation and help you decide which automation tools you'll use. There might be off-the-shelf automation tools, like orchestration tools, that your team is already familiar with. Adopting those tools can make the path towards automating your workload easier, but be mindful of their limitations and compatibility with your cloud platform. For example, some tools might integrate well with CLI tooling, while others might require REST interfaces. Always investigate the tools that your cloud platform provides to ensure they're compatible and provide the functionality you require. Using proprietary tools for your cloud platform ensures that the automation handled by those tools is easily manageable for your team.
 
@@ -23,13 +28,13 @@ Examples of ways that you can proactively plan for automation include:
 
 - Automate your application and infrastructure deployments to ensure a predictable standard. Plan for automation by developing deployment standards, training your team on the tools that you'll use, and implementing the necessary infrastructure.
 - Automatically validate compliance requirements against your workload. Identify the validation mechanism and plan for the required systems to be in place, for example, orchestration servers.
-- Use automatic scaling throughout your infrastructure to help you achieve your reliability and performance requirements. You should allocate IP address space and subnets in your workload to account for the systems that are brought online during scaling operations, in addition to planning for redundancy and natural growth.
+- Use automatic scaling throughout your infrastructure to help you achieve your reliability and performance requirements. You should allocate IP address space and subnets in your workload to account for new systems during scaling operations, in addition to planning for redundancy and natural growth.
 
-### On-going workload improvements
+### Continuous workload improvements
 
-Once your workload is running in the cloud, it's important to view it through the lens of continuous improvement. New tools will become available to help automate functions of your workload, you should evaluate and adopt those that can replace functions that you have in place or bolster existing automation. Likewise, over time the workload will evolve: New functionality will be added or you might find that using different infrastructure components will benefit you in a significant way.
+Once your workload is running in the cloud, it's important to view it through the lens of continuous improvement. New tools might become available to help automate workload functions, you should evaluate and adopt tools that can replace functions or bolster existing automation.
 
-Observe your workload in action to identify areas where automation can be improved. Analyze usage patterns and customer behavior related to your workload and look for ways that existing automation can be enhanced or new automation can help your customer experience. For example, you might have automated scaling enabled to scale out your compute nodes when a load threshold is exceeded. If that load increase is short-lived, you might want to integrate scale-in automation to decrease the number of compute nodes in use when the load drops below the threshold for a certain number of minutes.
+Observe your workload in action to identify areas where automation can be improved. Analyze usage patterns and customer behavior related to your workload. Look for ways that existing automation can be enhanced or new automation can be introduced to help your customer experience. For example, you have automated scaling enabled, but the load increase is short-lived, so you integrate scale-in automation to decrease the number of compute nodes in use when the load drops below the threshold for a certain number of minutes.
 
 The following sections of this guide offer recommendations on specific areas of automation that can help you in your workload design and implementation.
 
@@ -37,15 +42,15 @@ The following sections of this guide offer recommendations on specific areas of 
 
 Bootstrapping refers to configuration updates to a resource that must be made after the resource is provisioned, but before it's available to the workload as part of the workload pool. Bootstrapping is often thought of in relation to VMs, but many other resources need to be set up as part of the deployment process including platform as a service (PaaS) app hosting technologies and container hosting technologies like Kubernetes.
 
-Bootstrapping solutions might be provided by your cloud platform, which you should use instead of developing your own if they provide the functionality that you need. For example, you can take advantage of VM Extensions in Azure that will allow you to make certain pre-defined configuration changes during the deployment process or you can customize your configuration changes by injecting PowerShell scripts.
+Your cloud platform might provide bootstrapping solutions for you, which you should use instead of developing your own where possible. For example, you can take advantage of VM Extensions in Azure that allow you to make certain pre-defined configuration changes during the deployment process or you can customize your configuration changes by injecting PowerShell scripts.
 
 ### Authentication and authorization
 
-Take automation into account when designing your authentication and authorization strategy. It's important to maintain the highest level of security for authentication and authorization in production workloads, but this can affect your automation strategy. For example, the use of biometric or multifactor authentication adds complexity that must be accounted for in your automation design. Use non-human, secure accounts for automated authentication to run services and tasks. These accounts include managed identities, workload identities, or certificates. Ensure that you have included secret and key management in your authentication automation.
+Take automation into account when designing your authentication and authorization strategy. It's important to maintain the highest level of security in production workloads, but this can affect your automation strategy. For example, the use of biometric or multifactor authentication adds complexity that must be accounted for in your automation design. Use non-human, secure accounts for automated authentication to run services and tasks. These accounts include managed identities, workload identities, or certificates. Ensure that you have included secret and key management in your authentication automation.
 
 ### Design variability into your workload
 
-Avoid unnecessarily deploying new infrastructure when small changes are made by designing a level of variability into your artifacts. For example, rather than redeploying your infrastructure when a feature flag changes, you can use parameters that can be set to update things like app configurations. Be sure to clearly define and document how variability is used to avoid its overuse and the risk of configuration drift.
+Avoid unnecessarily deploying new infrastructure when small changes are made by building a level of flexibility into your artifacts. For example, rather than redeploying your infrastructure when a feature flag changes, you can use parameters that are set to update things like app configurations. Be sure to clearly define and document how variability is used to avoid its overuse and the risk of configuration drift.
 
 ### Build a control plane
 
@@ -55,7 +60,7 @@ Expose maintenance operations through the control plane that allow you to encaps
 
 ### Monitoring and logging
 
-Develop your monitoring strategy to capture metrics that drive the type of automation you require. Use structured logging and custom metrics that provide the information required by automation in a manner that is easy to recognize with the automation tools. The metrics that you capture should be combined with thresholds defined in the monitoring system that will trigger alerts and automated actions when appropriate. These actions can include things like automatic notifications and self-healing mechanisms For more information, see [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md).
+Develop your monitoring strategy to capture metrics that drive the type of automation you require. Use structured logging and custom metrics that provide the information required by automation in a manner that is easy to recognize with the automation tools. The metrics that you capture should be combined with thresholds defined in the monitoring system that trigger alerts and automated actions when appropriate. These actions can include things like automatic notifications and self-healing mechanisms For more information, see [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md).
 
 ### User lifecycle
 
@@ -63,12 +68,12 @@ Design your application and infrastructure to allow you to automate user onboard
 
 ### Orchestration and policy use
 
-You can automate the desired state configuration (DSC) of your resources to help ensure that they meet your compliance and business requirements. DSC automation helps ensure that configuration drift is caught and remediated quickly. You can implement this automation with orchestration tools or policy management tools. Orchestration tools that are integrated into your CI/CD pipeline (for example, Azure DevOps or Jenkins) can be thought of as a push-based mechanism, meaning that configuration updates are pushed out through a workflow event, like a manual or automated deployment. These updates are run as part of a task sequence defined in your deployment script. On the other hand, policy management tools can be thought of as a pull-based mechanism, meaning that a system runs at the foundational level of your workload that periodically polls the workload to check its state against your defined DSC and takes corrective action when it identifies misalignment. Consider the following factors when deciding between orchestration and policy management tools:
+You can automate the desired state configuration (DSC) of your resources to help ensure that they meet compliance and business requirements. DSC automation helps ensure that configuration drift is caught and remediated quickly. You can implement this automation with orchestration tools or policy management tools. Orchestration tools that are integrated into your CI/CD pipeline, like Azure DevOps or Jenkins, can be thought of as a push-based mechanism, meaning that configuration updates are pushed out through a workflow event, like a manual or automated deployment. These updates are run as part of a task sequence defined in your deployment script. On the other hand, policy management tools can be thought of as a pull-based mechanism, meaning that a system runs at the foundational level of your workload that periodically polls the workload to check its state against your defined DSC and takes corrective action when it identifies misalignment. Consider the following factors when deciding between orchestration and policy management tools:
 
 - Orchestration tools don't have built-in capabilities to proactively poll your workload for configuration drift. Orchestration tools should be integrated into your CI/CD pipeline to maintain a standard for infrastructure as code (IaC) deployment and management. An advantage of using orchestration is that resources are always fully configured when deployed.
-- Policy management tools allow you to define policies that affect one or more groups of resources. These policies are enforced when the resource checks in with the policy management system and misalignments are caught during audits performed by the system. An advantage of using policy management is that these systems aren't code driven, so they might be easier for operators to adopt.
+- Policy management tools allow you to define policies that affect one or more groups of resources. These policies are enforced when the resource checks in with the policy management system. An advantage of using policy management is that these systems aren't code driven, so they might be easier for operators to adopt.
 
-When weighing your options, consider whether configuration updates must be present at deployment time or they can happen sometime afterward. Also consider whether defining them in code and updating that code, when necessary, will fit your operational practices. Additionally, consider how many different configurations of a given resource type you'll need to deploy. If there are many different configurations across resource types, policies might be an easier way to manage those updates rather than adding complexity to your pipeline.
+When weighing your options, consider whether configuration updates must be made at the time of deployment or not. Also consider whether defining updates in code fits your operational practices and how many different configurations of a given resource type you'll need to deploy. If there are many different configurations across resource types, policy tools might be an easier way to manage those updates rather than adding complexity to your pipeline.
 
 ## Azure facilitation
 
@@ -107,7 +112,7 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 
 When designing your workload to enable automation, consider the degree of control that you want to maintain versus the efficiency you can gain through automation. In some cases, your workload might not be mature enough to automate some functions or you might need a level of flexibility that automation limits.
 
-Also consider the skillset that your team brings to the table when designing your workload. If a high degree of automation will ultimately require tools that your team isn’t equipped to support, then you may need to use a less comprehensive design as an intermediate step.
+Also consider the skillset of your team when designing your workload. If a high degree of automation requires tools that your team isn’t equipped to support, then you may need to use a less comprehensive design as an intermediate step.
 
 ## Related links
 
