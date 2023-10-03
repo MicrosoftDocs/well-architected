@@ -74,25 +74,23 @@ Document the cost categories, drivers, and mathematical relationships that are u
 
 The cost model provides a foundation for negotiating your workload budget. The cost model is an estimate. The budget is a reality. Sometimes you have to negotiate to align the two. It's important that everyone understands how the workload supports business objectives. Present the cost model in alignment with business objectives to help clarify the value of the workload.
 
-**Share the cost model**. When you share the cost model with stakeholders, make sure the estimates are clear. Stakeholders should be able to see the cost distribution, cost variables, and optimization efforts.
-
-**Modify the cost model to fit the budget**. Stakeholders might not agree to the proposed budget and they might offer a budget that's less than the cost model. It's important that stakeholders know how the budget affects the workload. Create a second cost model that fits the budget and includes a buffer. Explain any functionality loss with the reduced budget.
+- *Share the cost model*: When you share the cost model with stakeholders, make sure the estimates are clear. Stakeholders should be able to see the cost distribution, cost variables, and optimization efforts.
+- *Modify the cost model to fit the budget*: Stakeholders might not agree to the proposed budget and they might offer a budget that's less than the cost model. It's important that stakeholders know how the budget affects the workload. Create a second cost model that fits the budget and includes a buffer. Explain any functionality loss with the reduced budget.
 
 The resulting budget should be realistic, but include a buffer for predicted usage changes over the budget period. The cost model helps predict these changes. A budget should also include a small and reasonable buffer for unplanned overages that result from a mistake or an unplanned business change.
 
-**Set budget caps and quotas**. Define budget caps and quotas to control costs and limit spending. This practice ensures that you don't exceed the allocated budget for your workload. By setting budget caps and quotas, you can monitor and manage your spending effectively.
+- *Set budget caps and quotas*: Define budget caps and quotas to control costs and limit spending. This practice ensures that you don't exceed the allocated budget for your workload. By setting budget caps and quotas, you can monitor and manage your spending effectively.
+- *Set budget alerts*: Implement alerts for cost management. Set up alerts to notify you when spending reaches certain thresholds. This practice allows you to take immediate action and make necessary adjustments to stay within the budget. Monitor usage and set alerts to help identify trends, peak usage times, and opportunities for cost optimization.
 
-**Set budget alerts**. Implement alerts for cost management. Set up alerts to notify you when spending reaches certain thresholds. This practice allows you to take immediate action and make necessary adjustments to stay within the budget. Monitor usage and set alerts to help identify trends, peak usage times, and opportunities for cost optimization.
-
-### Use and maintain the cost model
+### Use the cost model
 
 A cost model isn't just an analytical tool. It's a decision-making aid. Use the cost model for budgeting, scenario analysis, and resource optimization.
 
 - *Budgeting*: Use the cost model to project future expenses, allocate funds effectively, and avoid financial pitfalls. Regularly compare actual expenses against the budget and make adjustments if there are deviations.
-
 - *Scenario analysis*: Using the cost model for scenario analysis involves considering different scenarios and the associated costs with each one. Scenario analysis can help stakeholders understand the financial implications of business model changes, such as modifications to pricing, product offerings, or revenue streams. Scenario analysis also enables you to anticipate how changes in customer acquisition, retention, or churn rates might affect costs. You can forecast increased expenses and plan for scaling.
-
 - *Resource optimization*: Use the cost model to help identify areas where cloud resources are underutilized and make adjustments for significant cost savings. The cost model can also forecast the financial implications of scaling up resources in response to increased customer traffic or processing needs. It also helps compare the costs that are associated with cloud providers’ billing models, which allows you to choose the most economical option.
+
+### Maintain the cost model
 
 It's important to regularly update the cost model to reflect the latest data, business conditions, and any changes in the external environment. You should engage stakeholders, including product owners and the technical team, in discussions around the cost model to ensure its relevance and alignment with different teams' needs. Run simulations and review the findings to inform decision-making. Educate all team members on how to use the cost model to foster a culture of data-driven decision-making. Consider the following recommendations:
 
