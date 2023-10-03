@@ -68,7 +68,7 @@ Determine the estimated cost of a customer by dividing the total cost of the wor
 
 **Publish the cost model**. Document the cost categories, drivers, and mathematical relationships that are used to calculate the costs. Create comprehensive and easily understood documentation for stakeholders. Ensure that the cost model is accessible to all relevant stakeholders. Publish the cost model in a format or on a platform that allows for seamless data exchange and enables efficient collaboration between stakeholders.
 
-### Negotiate a budget
+### Set a budget
 
 The cost model provides a foundation for negotiating your workload budget. The cost model is an estimate. The budget is a reality. Sometimes you have to negotiate to align the two. It's important that everyone understands how the workload supports business objectives. Present the cost model in alignment with business objectives to help clarify the value of the workload.
 
