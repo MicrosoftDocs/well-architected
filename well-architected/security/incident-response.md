@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 
-|[SE:12](checklist.md)|"_Define and test effective incident response operational procedures that cover a spectrum of incidents, from localized to disaster recovery. Procedures must state clear ownership for execution._"|
+|[SE:12](checklist.md)|Define and test effective incident response operational procedures that cover a spectrum of incidents, from localized to disaster recovery. Procedures must state clear ownership for execution.|
 |---|---|
 
 If there's a security compromise to the system, a systematic incident response approach helps to reduce the time to identify, manage, and mitigate security incidents that may threaten the confidentiality, integrity, or availability of software systems and data. 
@@ -22,12 +22,12 @@ Most enterprises have a central function of security operations center (SOC). Th
 
 | Terms | Definition |
 |---|---|
-| | |
-| | |
-| | |
-| | |
-| | |
-| | |
+|Incident |An event that indicates an unauthorized access to the system.|
+|Incident response| The process to detect, respond, and mitigate risks associated with an incident.|
+|Alert |A notification that contains information about an incident. |
+|Alert fidelity|The quality of an alert. High fidelity alerts contain enough security context to take immediate actions. Low fidelity alerts lack information or contain noise.|
+|False positive|A false alarm that indicates an incident but it didn't happen. |
+|Triage|A part of incident response that analyzes security issues and prioritizes the mitigation.  |
 
 ## Key design strategies
 
@@ -55,11 +55,11 @@ In this initial phase, the triage team is responsible for determining the potent
 
 Within the categories of CIA, assign an initial severity level that indicates the depth of damage and urgency of remediation. This level is expected to change over time as more information is known through several levels of triage. 
 
-In the discovery phase it's also important to decide on an immediate course of action and communication. Are there any changes to the running state of the system? How can the attack be contained to stop further exploitation. Does the team need to send out internal or external communication, such as responsible disclosure? Consider detection and response time. You might have legal obligations to report some types of breaches to a regulatory authority within a prescribed time period, which is often measured in hours or days.
+In the discovery phase, it's also important to decide on an immediate course of action and communication. Are there any changes to the running state of the system? How can the attack be contained to stop further exploitation. Does the team need to send out internal or external communication, such as responsible disclosure? Consider detection and response time. You might have legal obligations to report some types of breaches to a regulatory authority within a prescribed time period, which is often measured in hours or days.
 
 If the decision is to shut down the system, the next steps will eventually lead to the workload's disaster recovery process. 
 
-If the resolution is not to shut down the system, determine how to remediate the incident without impacting the functionality of the system. 
+If the resolution isn't to shut down the system, determine how to remediate the incident without impacting the functionality of the system. 
 
 ### Recover from the incident
 
@@ -81,7 +81,7 @@ It's highly recommended that you conduct structured post incident reviews, such 
 
 Improvement plans should include updates to security drills and testing. This should work with BCDR drills and security compromise should ideally be a scenario for doing a BCDR drill. Drills are a good way to validate how the documented processes work. There shouldn't be multiple playbooks. Instead use a single source that can be adjusted based on the size of the item, how widespread or localized the impact is. Always optimize keeping in mind that drills are based on hypothetical situations. The drills must be conducted in a low-risk environment and should include the learning phase. 
 
-Conduct post-incident reviews (post-mortems) to identify weaknesses in the response process and areas for improvement.  Update the Incident Response plan (IRP) and any security controls based on the lessons learned from the incident.
+Conduct post-incident reviews (postmortems) to identify weaknesses in the response process and areas for improvement.  Update the Incident Response plan (IRP) and any security controls based on the lessons learned from the incident.
 
 ### Send necessary communication
 

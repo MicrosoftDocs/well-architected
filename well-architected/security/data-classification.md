@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 
-|[SE:03](checklist.md)|"_Classify and consistently apply sensitivity labels on all workload data and systems involved in data processing. Use classification to influence workload design, implementation, and security prioritization._"|
+|[SE:03](checklist.md)|Classify and consistently apply sensitivity labels on all workload data and systems involved in data processing. Use classification to influence workload design, implementation, and security prioritization.|
 |---|---|
 
 Most workloads store various types of data. Not all are equally sensitive. **Data classification is a way to categorize data based on its sensitivity levels, information type, and scope of compliance**  so that you can apply the right level of protection. Protection can involve assigning access controls, retention policies to different information types, and so on. While the actual security controls based on data classification are out of scope for this guide, it provides recommendations on categorizing data based on the preceding set of criteria that are set by the organization. 

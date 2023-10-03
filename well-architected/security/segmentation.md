@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 
-|[SE:04](checklist.md)|"_Create intentional segmentation and perimeters in your architecture design and the workload’s footprint on the platform. The segmentation strategy must include networks, roles and responsibilities, workload identities, and resource organization._"|
+|[SE:04](checklist.md)|Create intentional segmentation and perimeters in your architecture design and the workload’s footprint on the platform. The segmentation strategy must include networks, roles and responsibilities, workload identities, and resource organization.|
 |---|---|
 
 A segment is a logical section of your solution that needs to be secured as one unit. A segmentation strategy defines how one unit should be separated from other units with its own set of security requirements and measures.

@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 
-|[SE:10](checklist.md)|"_Establish a comprehensive testing regimen that combines various testing approaches to prevent security issues, validate threat prevention implementations, and test threat detection mechanisms._"|
+|[SE:10](checklist.md)|Establish a comprehensive testing regimen that combines various testing approaches to prevent security issues, validate threat prevention implementations, and test threat detection mechanisms.|
 |---|---|
 
 A good security design must be backed by rigorous testing. Testing is a tactical form of validation to make sure the controls in place are working as intended. Testing is also a proactive way to detect vulnerabilities in the system.
@@ -25,12 +25,15 @@ This guide provides recommendations for testing the security posture of your wor
 
 |Terms   |Definition   |
 |---------|---------|
-|AST     |         |
-|Penetration testing     |         |
-|Read team     |         |
-|Blue team     |         |
-|Microsoft Security Development Lifecycle (SDL)     |         |
-|Software development life cycle (SDLC)     |         |
+|Microsoft Security Development Lifecycle (SDL)     |   A set of practice provided by Microsoft that serves to support security assurance and compliance requirements.      |
+|Software development life cycle (SDLC)     |  A multi-stage systematic process for developing software systems.       |
+|White box testing|A testing methodology where the structure of the code is known to the practitioner.|
+|Black box testing|A testing methodology that validates the  externally visible application behavior without knowledge of the internals of the system.|
+|Application security testing (AST) | An SDL technique to check for security vulnerabilities in code using white box and black box testing methodologies.|
+|Penetration testing | A testing that validates the security defense of a system with ethical hacking techniques.|
+|Red team     |  A team in a war game exercise, which plays the role of an adversary and attempt to hack the system.|
+|Blue team     | A team in a war game exercise, which defends against the attacks of the red team.        |
+
 
 ## Key design strategies
 
@@ -49,11 +52,11 @@ Microsoft Security Development Lifecycle (SDL) suggests several types of testing
 
 **Run tests in a structured manner and with a repeatable process**. It's recommended that you build your testing rigor around cadence, types of tests, driving factors, and intended outcomes.
 
-**Use the right tool for the job**. Appropriate tooling that's configured to work with the characteristic of the workload. If you don't have a tool, buy the tool. Don't build it. Security tools are highly specialized, and building your own tool might introduce risks that need the expertise to remediate. Take advantage of the expertise and tooling offered by central SecOps team or through other external means if expertise is not embedded in the workload team.
+**Use the right tool for the job**. Appropriate tooling that's configured to work with the characteristic of the workload. If you don't have a tool, buy the tool. Don't build it. Security tools are highly specialized, and building your own tool might introduce risks that need the expertise to remediate. Take advantage of the expertise and tooling offered by central SecOps team or through other external means if expertise isn't embedded in the workload team.
 
-**Set up separate environments**. Tests can be classified as destructive and non-destructive. Non-destructive aren't invasive as in they can indicate there's a problem but don't necessarily prove the damage. Destructive tests might try to demonstrate the damage, such as deleting data from a database.
+**Set up separate environments**. Tests can be classified as destructive and nondestructive. Nondestructive aren't invasive as in they can indicate there's a problem but don't necessarily prove the damage. Destructive tests might try to demonstrate the damage, such as deleting data from a database.
 
-Production environments give you the best information but are the most disruptive. You tend to only do the non-destructive tests. Non-production environments are typically non-disruptive and non-destructive but might not always accurately represent the production environment\'s configuration in ways that are important to security tests.
+Production environments give you the best information but are the most disruptive. You tend to only do the nondestructive tests. Nonproduction environments are typically nondisruptive and nondestructive but might not always accurately represent the production environment\'s configuration in ways that are important to security tests.
 
 If you deploy by using IaC and automation, consider whether you can create an isolated clone of your production environment to test against. If you have a continuous process for routine tests, having a dedicated environment is recommended.
 
@@ -73,11 +76,11 @@ The workload must be tested regularly to make sure changes don't introduce secur
 
 Routine tests are conducted at regular cadence, as part of your standard operating procedures. They can also be driven by compliance requirements. Various tests may be run at different cadences, the key is that they're conducted periodically on a schedule.
 
-These tests should be integrated into your software development life cycle (SDLC) because they provide defense in depth at each stage. The test suite must also be diverse in that they verify various assurances for identity, data storage and transmission, communication channels, and others. Because the same tests are conducted in different points of the life cycle and ensure that there aren't any regressions. Routine tests can help establish an initial benchmark. However that's just a starting point. As new issues are uncovered at same points of the lifecycle, new test cases are added and the tests themselves become better with repetition.
+These tests should be integrated into your software development life cycle (SDLC) because they provide defense in depth at each stage. The test suite must also be diverse in that they verify various assurances for identity, data storage and transmission, communication channels, and others. Because the same tests are conducted in different points of the life cycle, they ensure that there aren't any regressions. Routine tests can help establish an initial benchmark. However that's just a starting point. As new issues are uncovered at same points of the lifecycle, new test cases are added and the tests themselves become better with repetition.
 
 At each stage, these tests should validate new code that's added or removed, or configuration settings that are changed. You want to detect the security impact of those changes. Efficacy should be improved with automation and balanced with peer reviews.
 
-Consider running security tests as part of an automated pipelines or scheduled test runs. The sooner we can discover new security issues, the easier it is to relate it to the code or configuration changes that might have caused it.
+Consider running security tests as part of an automated pipelines or scheduled test runs. The sooner we can discover new security issues, the easier it's to relate it to the code or configuration changes that might have caused it.
 
 Don't only rely on automated tests. Add manual testing to detect vulnerabilities that can only be caught by human expertise. Manual testing is good for exploratory use cases and finding unknown risks.
 
@@ -113,7 +116,7 @@ By adding multiple tests and types of tests, you can uncover:
 
 -   Gaps in observability and detection methods.
 
-A good threat modeling exercise can point to key areas to ensure test coverage and their frequency. Recommendations of threat modeling is covered in [Secure Development Lifecycle](security-development-lifecycle.md) (SDL).
+A good threat modeling exercise can point to key areas to ensure test coverage and their frequency. Recommendations on threat modeling is covered in [Secure Development Lifecycle](security-development-lifecycle.md) (SDL).
 
 Most tests described in these sections can be run as routine tests. However, repeatability can incur costs in some cases and cause disruption. Consider those tradeoffs carefully.
 
@@ -145,7 +148,7 @@ Some examples of simulated tests include penetration testing, war game exercises
 
 ##### Black-box and white-box testing
 
-A perspective on type of testing is black-box testing and white-box testing. In black-box tests, the internals of the system isn't visible. In white-box testing, the tester has a good understanding of the application and even have access to code, logs, and resource topology and configuration to conduct the experiment.
+A perspective on type of testing is black-box testing and white-box testing. In black-box tests, the internals of the system aren't visible. In white-box testing, the tester has a good understanding of the application and even has access to code, logs, and resource topology and configuration to conduct the experiment.
 
 > ![Risk icon](../_images/risk.svg) **Risk**: The difference between the two types is upfront cost. White-box testing can be expensive in terms of time taken to understand the requirement. In some cases, also monetary investment because it might require purchasing of specialized tools. Black-box testing doesn't need ramp up time. But it might not be as effective or take extra effort to uncover issues. It\'s a time investment tradeoff.
 
@@ -163,9 +166,9 @@ the practitioners may need access to sensitive data of the entire organization. 
 
 In this methodology of simulated attacks, there are two teams:
 
--   The *red* team is the adversary attempting to model real-world attacks. If they're successful, you will be able to find gaps in your security design and evaluate the blast radius containment of their breaches.
+-   The *red* team is the adversary attempting to model real-world attacks. If they're successful, you'll be able to find gaps in your security design and evaluate the blast radius containment of their breaches.
 
--   The *blue* team is the workload team that defends against the attacks. They test their ability to detect, respond, and remediate the attacks. They will be able to validate defenses that have been put in place to protect workload resources.
+-   The *blue* team is the workload team that defends against the attacks. They test their ability to detect, respond, and remediate the attacks. They'll be able to validate defenses that have been put in place to protect workload resources.
 
 If conducted as routine tests, war game exercises can help provide ongoing visibility and assurance that your defenses work as designed, potentially testing across different levels within your workload(s).
 
