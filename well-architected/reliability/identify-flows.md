@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for identifying and rating flows
 
-**Applies to this Well-Architected Framework Reliability checklist recommendation:**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
 |[RE:01](checklist.md)| Identify the user and system flows of your workload. Prioritize importance by using a criticality scale that's based on your business requirements. |
 |---|---|

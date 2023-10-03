@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[SE:01](checklist.md)| Establish a security baseline aligned to compliance requirements, industry standards, and platform recommendations. Regularly measure your workload architecture and operations against the baseline to sustain or improve your security posture over time.| 
 |---|---| 
 
-A security baseline is a document that specifies your organization's security requirements and expectations across a range of areas. A good security baseline helps you to keep your data and systems secure, comply with regulatory requirements, minimize risk of inadvertent oversight, and reduce the likelihood of breaches and subsequent business impact. Security baselines should be published widely throughout your organization so that all stakeholders are aware of your expectations. 
+A security baseline is a document that specifies your organization's bare minimum security requirements and expectations across a range of areas. A good security baseline helps you to keep your data and systems secure, comply with regulatory requirements, minimize risk of inadvertent oversight, and reduce the likelihood of breaches and subsequent business impact. Security baselines should be published widely throughout your organization so that all stakeholders are aware of your expectations. 
 
 This guide provides recommendations about setting a security baseline that's based on internal factors, such as business requirements, risks, and asset evaluation, and external factors such as industry benchmarks and regulatory standards.
 
@@ -22,13 +22,15 @@ This guide provides recommendations about setting a security baseline that's bas
 
 | Term | Definition |
 |---|---|
-| | |
-| | |
+|Baseline|The minimum level of security affordances that a workload should have below it's considered to exploitable. |
+|Benchmark|A standard that signifies the security posture that the organization aspires to. It's evaluated, measured, and improved over time.|
+|Regulatory requirements | A set of business requirements driven by industry standards that are imposed by laws and authorities.|
+|Controls|Technical or operational controls on the workload that increases attacker costs.|
 
 
 ## Key design strategies
 
-Security baseline is a structured document that defines a set of security criteria and capabilities that the workload must fulfill in order to increase security. In a more mature form, a baseline could extended to include a set of policies that are used to set guardrails. 
+Security baseline is a structured document that defines a set of security criteria and capabilities that the workload must fulfill in order to increase security. In a more mature form, a baseline could be extended to include a set of policies that are used to set guardrails. 
 
 The baseline should be considered the standard for measuring your security posture. The goal should always be full attainment while keeping a broad scope.
 
@@ -50,15 +52,15 @@ Creating a baseline should be a methodical process. Here are some recommendation
 
 - **Configuration standards**. For each asset, define and document specific security configurations and settings.  If possible, templatize or find a repeatable, automated way to apply the settings consistently across the environment.
 
-- **Access Control and Authentication**. Specify the role-based access control (RBAC) and multi-factor authentication (MFA) requirements. Document what "just enough access" means at the asset level. Always start with the principle of least privilege.
+- **Access Control and Authentication**. Specify the role-based access control (RBAC) and multifactor authentication (MFA) requirements. Document what "just enough access" means at the asset level. Always start with the principle of least privilege.
 
 - **Patch management**. Apply latest versions on all the resource types to strengthen against attack.
 
 - **Documentation and communication**. Document all configurations, policies and procedures. and communicate to the relevant stakeholders. 
 
-- **Enforcement and accountability**. Establish clear enforcement mechanisms and consequences for non-compliance with the security baseline. Hold individuals and teams accountable for maintaining security standards.
+- **Enforcement and accountability**. Establish clear enforcement mechanisms and consequences for noncompliance with the security baseline. Hold individuals and teams accountable for maintaining security standards.
 
-- **Continuously monitor**. Assessing the effectiveness of the security baseline through observability and make improvements overtime.
+- **Continuously monitor**. Assessing the effectiveness of the security baseline through observability and making improvements overtime.
 
 ### Composition of a baseline
 
@@ -114,7 +116,7 @@ Continuously improve security standards incrementally towards the ideal state to
 
 Measure the system against the new baseline prioritize remediations based on their relevance and impact to the workload. 
 
-Ensure that the security posture does not degrade naturally over time by instituting auditing and monitoring compliance with organizational standards.
+Ensure that the security posture doesn't degrade naturally over time by instituting auditing and monitoring compliance with organizational standards.
 
 ## Azure facilitation
 

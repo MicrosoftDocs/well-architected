@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for data partitioning
 
-**Applies to this Well-Architected Framework Reliability checklist recommendation:**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
 |[RE:05](checklist.md)| Implement a timely and reliable scaling strategy at the application, data, and infrastructure levels. |
 |---|---|

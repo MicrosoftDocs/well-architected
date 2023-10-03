@@ -23,17 +23,16 @@ This guide provides recommendations about securing sensitive information that's 
 
 |Terms   |Definition   |
 |---------|---------|
-|Secret     |         |
-|Nonsecret     |         |
-|Credentials     |         |
-|Noncredentials     |         |
-|Certificate/X.509 certificate     |         |
-|Key     |         |
-|Managed identity     | A managed identity represents the identity of an Azure resource. When the resource needs to authenticate, Azure automatically identifies the resource without the need for you to store or manage credentials.        |
-|Rotation     |         |
-|Configuration setting     |         |
-|Encryption     |         |
-|Credential scanning     |         |
+|Secret |  A confidential component of the system that facilitates communication between workload components. If leaked, secrets can cause a breach.|
+|Nonsecret |Information if leaked doesn't jeopardize the security posture of the workload.|
+|Credentials | Information that's used to verify the identity of the publisher or consumer in a communication channel.|
+|Certificates|Digital files that hold the public keys for encryption or decryption.|
+|X.509| A standard that defines the format of public key certificates.|
+|Keys|A secret code that's used to lock or unlock encrypted data.|
+|Managed identity | An identity assigned to resources, whose operations are managed by Azure. |
+|Rotation     | The process of regularly updating secrets so that if compromised, the secret is only available for a limited time. |
+|Encryption|The process by which data is made unreadable and locked with a secret code.|
+|Credential scanning| The process of validating source code to make sure secrets aren't included.|
 
 An application secret is a confidential component of the system that facilitates access of a workload component or its dependency to another component that's in scope of the system.
 

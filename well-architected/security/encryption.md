@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 
-|[SE:07](checklist.md)|"_Encrypt data by using modern industry-standard methods to guard confidentiality and integrity. Align encryption scope with data classifications; prioritize native platform encryption methods._"|
+|[SE:07](checklist.md)|Encrypt data by using modern industry-standard methods to guard confidentiality and integrity. Align encryption scope with data classifications; prioritize native platform encryption methods.|
 |---|---|
 
 If your data isn't protected, it can be maliciously modified, which leads to loss of integrity and confidentiality.
@@ -23,6 +23,16 @@ This guide describes the recommendations for encrypting and protecting your data
 |Terms   |Definition   |
 |---------|---------|
 |Cipher suite     |  A set of algorithms that are used to encrypt and decrypt information to secure a network connection over Transport Layer Security (TLS). |
+|Encryption|The process by which data is made unreadable and locked with a secret code.|
+|Decryption|The process by which encrypted data is unlocked by using a secret code. |
+|Signature|An encrypted stamp of authentication on data. |
+|Signing|The process of verifying data's authenticity by using a signature.|
+|Hashing|The process of transforming data to text or numbers with the intent of hiding information.|
+|Double encryption|The process of encrypting data by using two or more independent layers of encryption.|
+|Keys|A secret code that's used to lock or unlock encrypted data.|
+|Certificates|Digital files that hold the public keys for encryption or decryption.|
+|X.509| A standard that defines the format of public key certificates.|
+
 
 ## Key design strategies
 

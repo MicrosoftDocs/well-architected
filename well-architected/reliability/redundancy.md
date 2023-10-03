@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for designing for redundancy
 
-**Applies to this Well-Architected Framework Reliability checklist recommendation:**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
 |[RE:04](checklist.md)| Add redundancy at different levels, especially for critical flows. Apply redundancy to the compute, data, network, and other infrastructure tiers in accordance with the identified reliability targets.  |
 |---|---|
