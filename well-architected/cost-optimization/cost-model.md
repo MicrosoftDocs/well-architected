@@ -27,17 +27,13 @@ This guide describes the best practices for creating a cost model for your workl
 
 ## Key strategies
 
-A cost model provides a projection of the workload cost, derived from existing data. The purpose of a cost model isn't to gain visibility into expenses or control them. It's centered on forecasting the predicted expenses and considering all available known factors. The objective isn't to find the least expensive solution but to determine the best solution for your workload. The best solution is one that aligns spending to your workload priorities.
-
-A cost model enables you to establish a workload budget, ensure alignment with this budget, and allocate funds for cloud resources.
+A cost model provides a projection of the workload cost, derived from existing data. The purpose of a cost model isn't to gain visibility into expenses or control them. It's centered on forecasting the predicted expenses and considering all available known factors. The objective isn't to find the least expensive solution but to determine the best solution for your workload. The best solution is one that aligns spending to your workload priorities. A cost model enables you to establish a workload budget, ensure alignment with this budget, and allocate funds for cloud resources.
 
 ### Understand cost and saving options
 
 Cloud service providers offer many ways to save money. It's important to be familiar with them all so you can optimize costs and build your cost model around them. Common ways to save include using different billing models, making customer agreements, selecting services, and purchasing licenses.
 
-**Determine your workload needs**. Determine the short-term and long-term cost objectives of your workload. Analyze workload characteristics to determine which available discounts are most suitable for your workload. For example, if your workload has predictable usage patterns, you might consider using compute reservations or prepaid models to optimize costs.
-
-To determine the efficiency and effectiveness of your workload:
+**Determine your workload needs**. Determine the short-term and long-term cost objectives of your workload. Analyze workload characteristics to determine which available discounts are most suitable for your workload. For example, if your workload has predictable usage patterns, you might consider using compute reservations or prepaid models to optimize costs. To determine the efficiency and effectiveness of your workload:
 
 - Analyze the key components of your workload, including essential resources such as servers, databases, networks, and licenses.
 - Understand the workload's stability, predictability, and sensitivity to external factors like downtime and degraded performance.
