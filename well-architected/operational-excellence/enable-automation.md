@@ -11,20 +11,18 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Operation Excellence checklist recommendation:**
 
-|[OE:10](checklist.md)| Design and implement the workload with the expectation of using automation for items such as lifecycle concerns, bootstrapping, and applying governance & compliance guardrails up front instead of retrofitting automation later. Prefer the use of automation features provided natively by your platform.|
+|[OE:10](checklist.md)| **Design and implement automation upfront** for operations such as lifecycle concerns, bootstrapping, and applying governance and compliance guardrails. Don't try to retrofit automation later. Choose automation features that your platform provides. |
 |---|---|
 
-This guide describes the recommendations for designing and implementing your workload to enable automation. Design your workload with automation in mind to ensure that routine tasks such as provisioning resources, scaling, and deployments are performed quickly and reliably. Automation simplifies maintenance tasks, which allows you to update, patch, and upgrade your systems more efficiently and reliably.
+This guide describes the recommendations for designing and implementing your workload to enable automation. Design your workload with automation in mind to ensure that routine tasks such as provisioning resources, scaling, and deployments are performed quickly and reliably. Automation simplifies maintenance tasks and allows you to update, patch, and upgrade your systems more efficiently and reliably.
 
 ## Key design strategies
 
 ### Workload design
 
-You can design your workload for automation from the ideation phase to the on-going improvement phase. First, consider how you want to apply automation to ensure that you're putting the necessary pieces in place when planning your workload. Think about your workload in terms of the Well-Architected Framework pillars to help plan for the types of automation you'll need. You can automate many of the functions for security, reliability, performance, operations and cost control.
+You can design your workload for automation from the ideation phase to the on-going improvement phase. First, consider how you want to apply automation to ensure that you're putting the necessary pieces in place when planning your workload. Think about your workload in terms of the Well-Architected Framework pillars to help plan for the types of automation you'll need. You can automate many functions of security, reliability, performance, operations and cost control.
 
-Design with automation in mind to minimize the need to refactor once your workload is running. Your workload requirements inform your plans for implementing automation and help you decide which automation tools you'll use. There might be off-the-shelf automation tools, like orchestration tools, that your team is already familiar with. Adopting those tools can make the path towards automating your workload easier, but be mindful of their limitations and compatibility with your cloud platform. For example, some tools might integrate well with CLI tooling, while others might require REST interfaces. Always investigate the tools that your cloud platform provides to ensure they're compatible and provide the functionality you require. Using proprietary tools for your cloud platform ensures that the automation handled by those tools is easily manageable for your team.
-
-Examples of ways that you can proactively plan for automation include:
+Design with automation in mind to minimize the need to refactor once your workload is running. Your workload requirements inform your plans for implementing automation and help you decide which automation tools you'll use. There might be off-the-shelf automation tools that your team is already familiar with. Adopting those tools can make the path towards automating your workload easier, but be mindful of their limitations and compatibility with your cloud platform. For example, some tools might integrate well with CLI tooling, while others might require REST interfaces. Always investigate the tools that your cloud platform provides to ensure they're compatible and provide the functionality you require. Examples of ways that you can proactively plan for automation include:
 
 - Automate your application and infrastructure deployments to ensure a predictable standard. Plan for automation by developing deployment standards, training your team on the tools that you'll use, and implementing the necessary infrastructure.
 - Automatically validate compliance requirements against your workload. Identify the validation mechanism and plan for the required systems to be in place, for example, orchestration servers.
@@ -32,9 +30,9 @@ Examples of ways that you can proactively plan for automation include:
 
 ### Continuous workload improvements
 
-Once your workload is running in the cloud, it's important to view it through the lens of continuous improvement. New tools might become available to help automate workload functions, you should evaluate and adopt tools that can replace functions or bolster existing automation.
+Once your workload is running in the cloud, it's important to view it through the lens of continuous improvement. You should evaluate and adopt new tools that can replace outdated functions or bolster existing automation.
 
-Observe your workload in action to identify areas where automation can be improved. Analyze usage patterns and customer behavior related to your workload. Look for ways that existing automation can be enhanced or new automation can be introduced to help your customer experience. For example, you have automated scaling enabled, but the load increase is short-lived, so you integrate scale-in automation to decrease the number of compute nodes in use when the load drops below the threshold for a certain number of minutes.
+Observe your workload in action to identify areas where automation can be improved. Analyze usage patterns and customer behavior related to your workload. Look for ways that existing automation can be enhanced or new automation can be introduced to improve your customer experience. For example, you might have automated scaling enabled, but the load increase is short-lived, so you integrate scale-in automation to decrease the number of compute nodes in use when the load drops below the threshold.
 
 The following sections of this guide offer recommendations on specific areas of automation that can help you in your workload design and implementation.
 
