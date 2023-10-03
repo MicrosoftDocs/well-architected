@@ -42,7 +42,9 @@ Design custom views if they're required for your specific workload. Beyond nativ
 
 > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Retaining cost data for longer periods enables historical analysis and trend identification. However, storing data can be costly. To minimize cost, store older data as aggregated data points without the granularity of newer data. Also, determine the best retention period based on your analysis needs.
 
-**Group data**. Grouping data allows you to gain better insights to manage costs effectively. You can break down costs based on different dimensions, such as departments or projects, allowing you to accurately allocate costs to the respective stakeholders. This promotes transparency, accountability, and cost awareness.
+### Group data
+
+Grouping data allows you to gain better insights to manage costs effectively. You can break down costs based on different dimensions, such as departments or projects, allowing you to accurately allocate costs to the respective stakeholders. This promotes transparency, accountability, and cost awareness.
 
  Group cost data into meaningful categories such as resources, services, environments, regions, departments, projects, or teams. For example, understanding the cost breakdown at the resource and service level can help you make informed decisions about resource allocation, scaling, or even decommissioning. Grouping cost data by environment, such as production, disaster recovery, or quality assurance, can help you identify cost discrepancies and optimize resource usage based on the specific needs of each environment. Group data by:
 
