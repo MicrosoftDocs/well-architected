@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for designing for simplicity and efficiency
 
-**Applies to this Well-Architected Framework Reliability checklist recommendation:**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
 |[RE:10](checklist.md)| Design your workload to align with business objectives and avoid unnecessary complexity or overhead. Use a practical and balanced approach to make design decisions that deliver the desired results. Contain your design to the necessities to reduce inefficiencies and potential problems. |
 |---|---|
