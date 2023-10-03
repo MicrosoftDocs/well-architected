@@ -29,7 +29,7 @@ This guide describes the recommendations for selecting appropriate services for 
 | SKU | A tier of a service that provides unique capabilities.|
 |Storage service| A service that provides storage for objects, blocks, and files.|
 
-## Key strategies
+## Key design strategies
 
 Select appropriate services that align with the requirements and demands of your workload. Consider factors such as resource utilization, scalability, and latency. When you choose appropriate services, you ensure that your workload runs efficiently, maximizes resource utilization, and delivers optimal performance.
 
