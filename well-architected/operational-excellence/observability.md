@@ -200,7 +200,7 @@ The usage data for a single business operation might span all three tiers. This 
 
 - **Analyze long-term trends to predict operational issues**: Evaluate long-term data to form operational strategies and also to predict what operational issues are likely to occur, and when. For example, you might note that average response times are slowly increasing over time and approaching the maximum target.
 
-For detailed guidance on these recommendations, see the Analysis guide (link to Analyze monitoring data for cloud applications guide)
+For detailed guidance on these recommendations, see [Analyze monitoring data for cloud applications](../devops/monitor-analysis.md)
 
 ### Visualization
 
