@@ -9,8 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for monitoring and threat detection
 
-
-**Applies to Well-Architected Framework Security checklist recommendation:**
+**Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
 |[SE:11](checklist.md)|Have a holistic monitoring strategy that relies on modern threat detection mechanisms that can be integrated with the platform. Mechanisms should reliably alert for triage and feed signals into existing SecOps processes.|
 |---|---|
