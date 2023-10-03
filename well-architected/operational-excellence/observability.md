@@ -200,7 +200,7 @@ The usage data for a single business operation might span all three tiers. This 
 
 - **Analyze long-term trends to predict operational issues.** Evaluate long-term data to form operational strategies and also to predict what operational issues are likely to occur, and when. For example, you might note that average response times are slowly increasing over time and approaching the maximum target.
 
-For detailed guidance on these recommendations, see [Analyze monitoring data for cloud applications](../devops/monitor-analysis.md)
+For detailed guidance about these recommendations, see [Analyze monitoring data for cloud applications](../devops/monitor-analysis.md).
 
 ### Visualization
 
@@ -267,7 +267,7 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 
 - [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool in the Azure portal that you can use to edit and run log queries against data in the Log Analytics workspace.
 
-   -  If you're using multiple workspaces, see the Log Analytics workspace [architecture guide](/azure/azure-monitor/logs/workspace-design) for best practices.
+   If you're using multiple workspaces, see the Log Analytics workspace [architecture guide](/azure/azure-monitor/logs/workspace-design) for best practices.
 
 - [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor. It provides APM features.
 
