@@ -194,11 +194,11 @@ The usage data for a single business operation might span all three tiers. This 
 
 #### Recommendations
 
-- **Correlate application-level and resource-level logs**: Evaluate data at both levels to optimize the detection of issues and the troubleshooting of those issues. You can aggregate the data in a single data sink or take advantage of methods that query events across both levels. We recommend a unified solution, like Azure Log Analytics, to aggregate and query application-level and resource-level logs.
+- **Correlate application-level and resource-level logs.** Evaluate data at both levels to optimize the detection of issues and the troubleshooting of those issues. You can aggregate the data in a single data sink or take advantage of methods that query events across both levels. We recommend a unified solution, like Azure Log Analytics, to aggregate and query application-level and resource-level logs.
 
-- **Define clear retention times on storage for cold analysis**: We recommend this practice to enable historic analysis over a specific period. It can also help you control storage costs. Implement processes that ensure data is archived to cheaper storage and aggregate data for long-term trend analysis.
+- **Define clear retention times on storage for cold analysis.** We recommend this practice to enable historic analysis over a specific period. It can also help you control storage costs. Implement processes that ensure data is archived to cheaper storage and aggregate data for long-term trend analysis.
 
-- **Analyze long-term trends to predict operational issues**: Evaluate long-term data to form operational strategies and also to predict what operational issues are likely to occur, and when. For example, you might note that average response times are slowly increasing over time and approaching the maximum target.
+- **Analyze long-term trends to predict operational issues.** Evaluate long-term data to form operational strategies and also to predict what operational issues are likely to occur, and when. For example, you might note that average response times are slowly increasing over time and approaching the maximum target.
 
 For detailed guidance on these recommendations, see [Analyze monitoring data for cloud applications](../devops/monitor-analysis.md)
 
