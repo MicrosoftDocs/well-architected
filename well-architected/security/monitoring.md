@@ -14,7 +14,6 @@ ms.topic: conceptual
 |[SE:11](checklist.md)|Have a holistic monitoring strategy that relies on modern threat detection mechanisms that can be integrated with the platform. Mechanisms should reliably alert for triage and feed signals into existing SecOps processes.|
 |---|---|
 
-
 The process of monitoring is fundamentally about **getting information about events that have already occurred**. Security monitoring is a practice of capturing information at different altitudes of the workload (infrastructure, application, operations) to **gain awareness of suspicious activities**. The goal is to predict an incident and learn from past events. Monitoring data provides the basis of post-incident analysis of what transpired, helping in incident response and forensic investigations.
 
 Monitoring is an Operational Excellence concept that's applied across all Well-Architected pillars. This guide provides recommendations only from Security perspective. General concepts of monitoring, such as code instrumentation, data collection, analysis, are out of scope for this guide. For information about core monitoring concepts, see [Recommendations for designing and building an observability framework](../operational-excellence/observability.md)
