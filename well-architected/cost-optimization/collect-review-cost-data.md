@@ -48,11 +48,11 @@ Grouping data allows you to gain better insights to manage costs effectively. Yo
 
  Group cost data into meaningful categories such as resources, services, environments, regions, departments, projects, or teams. For example, understanding the cost breakdown at the resource and service level can help you make informed decisions about resource allocation, scaling, or even decommissioning. Grouping cost data by environment, such as production, disaster recovery, or quality assurance, can help you identify cost discrepancies and optimize resource usage based on the specific needs of each environment. Group data by:
 
-- Usage and component data: Collect detailed information about the usage and cost of each component in your workload. You can analyze costs from different angles and gain insights into the cost breakdown by capturing this data.
+- *Usage and component data*: Collect detailed information about the usage and cost of each component in your workload. You can analyze costs from different angles and gain insights into the cost breakdown by capturing this data.
 
-- Different dimensions: Break down your daily expenses by technical dimensions (for example, resource types or service categories), resource organization dimensions (for example, departments or teams), and business model dimensions (for example, projects or cost centers). This breakdown allows you to analyze costs based on the dimensions that matter the most to your specific problem or scenario.
+- *Different dimensions*: Break down your daily expenses by technical dimensions (for example, resource types or service categories), resource organization dimensions (for example, departments or teams), and business model dimensions (for example, projects or cost centers). This breakdown allows you to analyze costs based on the dimensions that matter the most to your specific problem or scenario.
 
-- Metadata: Metadata can be used to group data and help generate meaningful cost reports. It enables you to identify areas of high cost and implement accountability measures or cost optimization strategies at the department or project level. Using metadata, you can design a mechanism to group costs in a way that reflects your application's core business model. For example, tagging resources with tenant identifiers instead of shared resources in a multi-tenant solution. The ability to pivot cost data based on your application's pricing model can deliver key insights.
+- *Metadata*: Metadata can be used to group data and help generate meaningful cost reports. It enables you to identify areas of high cost and implement accountability measures or cost optimization strategies at the department or project level. Using metadata, you can design a mechanism to group costs in a way that reflects your application's core business model. For example, tagging resources with tenant identifiers instead of shared resources in a multi-tenant solution. The ability to pivot cost data based on your application's pricing model can deliver key insights.
 
 ### Generate cost reports
 
@@ -60,15 +60,15 @@ After collecting cost data, you need to use it to generate cost reports. Cost re
 
 **Address common scenarios**. When generating cost reports for workload costs, you want to be able to address common cost concerns. Gathering data in common concern areas helps ensure that the necessary data sets, such as costs, metrics, and usage, are interpreted cooperatively. Common concern areas include:
 
-- Granular costs: Cost reports should provide information on the amount allocated per user and the cost per device.
+- *Granular costs*: Cost reports should provide information on the amount allocated per user and the cost per device.
 
-- Resource utilization: Cost reports should help assess if current resources are fully utilized and identify potential savings.
+- *Resource utilization*: Cost reports should help assess if current resources are fully utilized and identify potential savings.
 
-- Alternative solutions: Cost reports should compare the costs and potential savings of transitioning to a new solution. They should also evaluate the feasibility of switching to a dynamic solution.
+- *Alternative solutions*: Cost reports should compare the costs and potential savings of transitioning to a new solution. They should also evaluate the feasibility of switching to a dynamic solution.
 
-- Return on investment: Cost reports should help determine what percentage of revenue goes into system operation. If the system doesn't boost revenue, other ROI metrics should be measured.
+- *Return on investment*: Cost reports should help determine what percentage of revenue goes into system operation. If the system doesn't boost revenue, other ROI metrics should be measured.
 
-- Spending patterns: Cost reports should analyze spending patterns to identify trends and patterns in costs over time. Spending patterns help in making informed decisions about cost optimization and budget planning.
+- *Spending patterns*: Cost reports should analyze spending patterns to identify trends and patterns in costs over time. Spending patterns help in making informed decisions about cost optimization and budget planning.
 
 **Align to accounting standards**. Cost reports should accommodate your internal accounting standards. Common systems are showback and chargeback. Showback is about visibility, and chargeback is about accountability.
 
