@@ -52,7 +52,7 @@ This workflow pipeline illustrates the monitoring framework:
 ### Collection
 
 > [!Note]
-> You need to instrument your application to enable logging. For more information, see the instrumentation guide (link to Instrument an application guide).
+> You need to instrument your application to enable logging. For more information, see the [instrumentation guide](../devops/monitor-instrument.md).
 
 You should configure all workload components, whether they're infrastructure resources or application functions, to capture telemetry and/or events like logs and metrics.
 
@@ -287,7 +287,7 @@ _Placeholder for IaaS baseline architecture_
 
 ## Related links
 
-- Instrumentation guide (to be moved to new TOC and refactored)
+- [Instrumentation guide](../devops/monitor-instrument.md)
 - [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
 - [Recommendations for monitoring and threat detection](../security/monitoring.md)
 - [Recommendations for collecting performance data](../performance-efficiency/collect-metrics-logs.md)
