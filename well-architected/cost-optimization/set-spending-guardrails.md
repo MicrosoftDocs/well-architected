@@ -34,7 +34,7 @@ Governance policies provide spending guardrails on various aspects of resources,
 - *Set resource limits*: Set resource limits to prevent overprovisioning and control costs. Include limits on the number of resources that you can provision, the size of resources, or the duration of resource usage. Setting these limits can prevent excessive spending and optimize resource utilization. For example, it helps limit the effects of unauthorized account breach for incidents relating to crypto mining.
 - *Define resource configurations*: Policies can define specific configurations for resources. For instance, you can enforce settings on resources that promote cost optimization such as autoscaling and data archiving.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk:** Set a maximum scaling threshold based on testing so that you avoid massive scaling spikes that cause cost overruns. You also don’t want to set a maximum that’s too low and negatively affects performance.
+ :::image type="icon" source="../_images/risk.svg"::: **Risk:** Set a maximum scaling threshold based on testing so that you avoid massive scaling spikes that cause cost overruns. You also don’t want to set a maximum that’s too low and negatively affects performance.
 
 - *Restrict locations*: Policies can restrict the deployment of resources to specific regions or locations. It helps avoid costly data transfer fees or comply with data sovereignty regulations.
 - *Manage data*: Policies can enforce data management practices that help optimize costs. For example, you can have policies that require the use of lower-cost storage tiers for less frequently accessed data or define expiration rules for data retention.
