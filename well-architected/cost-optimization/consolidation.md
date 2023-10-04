@@ -67,7 +67,7 @@ Using external centralized resources refer to shared resources outside the workl
 
 #### Offload responsibility to external teams
 
-Centralizing workload responsibilities involves using specialized services provided by expert centralized teams. The goal is to using existing teams to offload responsibility. It not only helps with cost optimization but also ensures expertise in specific functions.
+Offloading workload responsibilities to external teams refers to using specialized services provided by expert centralized teams, such as a security operations team. The goal is to using existing teams to offload responsibility. It not only helps with cost optimization but also ensures expertise in specific functions.
 
 - *Evaluate team skills*: Assess the current skill set of your team. Identify any skill gaps or areas where delegating tasks to a centralized team would bring about cost efficiency.
 - *Find available opportunities*: Explore your organization for available services, such as security operation team. Ensure that the centralized teams can accommodate the added responsibilities without compromising on quality.
