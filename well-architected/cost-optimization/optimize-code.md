@@ -144,7 +144,7 @@ By employing these techniques, you can optimize data access, retrieval, and stor
 
 ### Optimize architecture
 
-Evaluate your workload architecture to identify opportunities for resource optimization. The goal is to use the right services for the right job. To reach this goal, you might need to redesign parts of the architecture to use fewer resources. Consider serverless or managed services and optimize resource allocation. By optimizing your architecture, you can achieve your functional and nonfunctional requirements while consuming fewer per-instance resources.
+Optimizing architecture means evaluating your workload architecture to identify opportunities for resource optimization. The goal is to use the right services for the right job. To reach this goal, you might need to redesign parts of the architecture to use fewer resources. Consider serverless or managed services and optimize resource allocation. By optimizing your architecture, you can achieve your functional and nonfunctional requirements while consuming fewer per-instance resources.
 
 **Use design patterns.** Design patterns are reusable solutions to common software design problems. They provide a structured approach to designing code that is efficient, maintainable, and scalable. Design patterns help developers solve recurring design problems and promote code reusability.
 
