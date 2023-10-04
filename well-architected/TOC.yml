@@ -1101,3 +1101,5 @@
                     href: service-guides/application-insights/cost-optimization.md
                   - name: Operational excellence
                     href: service-guides/application-insights/operational-excellence.md
+      - name: Implementing Recommendations
+        href: ./implementing-recommendations.md
