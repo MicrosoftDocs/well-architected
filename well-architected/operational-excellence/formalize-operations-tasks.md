@@ -1,6 +1,6 @@
 ---
 title: Recommendations for formalizing routine and nonroutine tasks
-description: Learn how to incorporate an operational excellence approach in your workload for repeatable, reliable, and safe deployments of infrastructure and code.
+description: Learn how to formalize routine and nonroutine tasks by using documentation, checklists, or automation.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[OE:02](checklist.md)| Formalize the way you run routine, as needed, and emergency operational tasks by using documentation, checklists, or automation. Strive for consistency and predictability for team processes and deliverables by adopting industry-leading practices and approaches, such as a *shift left* approach. | 
 |---|---| 
 
-This guide describes the recommendations for formalizing routine and nonroutine tasks. Efficient and successful workload teams have consistent and predictable workload management practices. Efficiency and consistency are optimized through adopting industry-proven tools and practices and by automating processes when practical. By being consistent about how routine, ad-hoc and emergency tasks are handled, you can minimize the risk of being unprepared when issues arise and by taking a continuous improvement approach to workload management, you can increase your team's consistency and efficiency throughout the workload's lifecycle.
+This guide describes the recommendations for formalizing routine and nonroutine tasks. Efficient and successful workload teams have consistent and predictable workload management practices. Efficiency and consistency are optimized through adopting industry-proven tools and practices and by automating processes when practical. By being consistent about how routine, ad-hoc, and emergency tasks are handled, you can minimize the risk of being unprepared when issues arise and by taking a continuous improvement approach to workload management, you can increase your team's consistency and efficiency throughout the workload's lifecycle.
 
 ## Key design strategies
 
