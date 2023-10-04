@@ -34,21 +34,21 @@ The main purpose of security monitoring is **threat detection**. The primary obj
 
 Monitoring can be approached from various perspectives: 
 
-**Monitor at various altitudes.** Observing from **various altitudes** is the process of getting information about user flows, data access, identity, networking, and even the operating system. Each of these areas offers unique insights that can help you identify deviations from expected behaviors that are established against the security baseline. Conversely, continuously monitoring a system and applications over time can **help establish that baseline posture**. For example, you might typically see around 1,000 sign-in attempts in your identity system every hour. If your monitoring detects a spike of 50,000 sign-in attempts during a short period, that might indicate that an attacker is trying to gain access to your system.
+- **Monitor at various altitudes.** Observing from **various altitudes** is the process of getting information about user flows, data access, identity, networking, and even the operating system. Each of these areas offers unique insights that can help you identify deviations from expected behaviors that are established against the security baseline. Conversely, continuously monitoring a system and applications over time can **help establish that baseline posture**. For example, you might typically see around 1,000 sign-in attempts in your identity system every hour. If your monitoring detects a spike of 50,000 sign-in attempts during a short period, that might indicate that an attacker is trying to gain access to your system.
 
-**Monitor at various scopes of impact.** It's critical to **observe the application and the platform**. Assume an application user accidentally gets escalated privileges or a security breach occurs. If the user performs actions beyond their designated scope, the impact might be confined to actions that other users can perform. 
+- **Monitor at various scopes of impact.** It's critical to **observe the application and the platform**. Assume an application user accidentally gets escalated privileges or a security breach occurs. If the user performs actions beyond their designated scope, the impact might be confined to actions that other users can perform. 
    
-However, if an internal entity compromises a database, the extent of the potential damage is uncertain. 
+   However, if an internal entity compromises a database, the extent of the potential damage is uncertain. 
 
-If a compromise occurs on the Azure resource side, the impact could be global, affecting all entities that interact with the resource. 
+   If a compromise occurs on the Azure resource side, the impact could be global, affecting all entities that interact with the resource. 
 
-The blast radius or impact scope could be significantly different, depending on which of these scenarios occurs. 
+   The blast radius or impact scope could be significantly different, depending on which of these scenarios occurs. 
 
-**Use specialized monitoring tools.** It's critical to invest in **specialized tools** that can continuously scan for anomalous behavior that might indicate an attack. Most of these tools have **threat intelligence capabilities** that can perform predictive analysis based on a large volume of data and known threats. Most tools aren't stateless and incorporate a deep understanding of telemetry in a security context.
+- **Use specialized monitoring tools.** It's critical to invest in **specialized tools** that can continuously scan for anomalous behavior that might indicate an attack. Most of these tools have **threat intelligence capabilities** that can perform predictive analysis based on a large volume of data and known threats. Most tools aren't stateless and incorporate a deep understanding of telemetry in a security context.
 
-The tools need to be platform-integrated or at least platform-aware to get deep signals from the platform and make predictions with high fidelity. They must be able to generate alerts in a timely manner with enough information to conduct proper triage. Using too many diverse tools can lead to complexity. 
+  The tools need to be platform-integrated or at least platform-aware to get deep signals from the platform and make predictions with high fidelity. They must be able to generate alerts in a timely manner with enough information to conduct proper triage. Using too many diverse tools can lead to complexity. 
 
-**Use monitoring for incident response.** Aggregated data, transformed into actionable intelligence, **enables swift and effective reactions** to incidents. Monitoring **helps with post-incident activities**. The goal is to collect enough data to analyze and understand what happened. The process of monitoring captures information on past events to enhance reactive capabilities and potentially predict future incidents.
+- **Use monitoring for incident response.** Aggregated data, transformed into actionable intelligence, **enables swift and effective reactions** to incidents. Monitoring **helps with post-incident activities**. The goal is to collect enough data to analyze and understand what happened. The process of monitoring captures information on past events to enhance reactive capabilities and potentially predict future incidents.
 
 The following sections provide recommended practices that incorporate the preceding monitoring perspectives.
 
