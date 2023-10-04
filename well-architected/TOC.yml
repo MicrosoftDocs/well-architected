@@ -159,7 +159,7 @@
               href: operational-excellence/infrastructure-as-code-design.md
             - name: OE:06 Supply chain for workload development
               href: operational-excellence/workload-supply-chain.md
-            - name: OE:07 Observability framework development
+            - name: OE:07 Developing an observability framework
               href: operational-excellence/observability.md
             - name: OE:08 Emergency response
               href: operational-excellence/emergency-response.md
@@ -187,7 +187,7 @@
               href: performance-efficiency/performance-targets.md
             - name: Conduct capacity planning
               href: performance-efficiency/capacity-planning.md
-            - name: Select the right services 
+            - name: Select the appropriate services 
               href: performance-efficiency/selecting-services.md
             - name: Collect metrics and logs 
               href: performance-efficiency/collect-metrics-logs.md
