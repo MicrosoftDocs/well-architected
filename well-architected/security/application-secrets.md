@@ -16,6 +16,8 @@ ms.topic: conceptual
 
 This guide describes the recommendations for securing sensitive information in applications. Proper management of application secrets is crucial for maintaining the security and integrity of your application, workload, and associated data. Improper handling of secrets can lead to data breaches, service disruption, regulatory violations, and other issues.
 
+Credentials, such as API keys, OAuth tokens, and SSH keys are secrets. Credentials can be static or dynamically created at runtime, such as OAuth tokens that live on the client side. Dynamic secrets still need to be safeguarded despite their transient nature. Non-credential information can be sensitive too. For example, certificates and digital signature keys should be considered secrets.
+
 **Definitions** 
 
 |Term   |Definition   |
@@ -31,16 +33,10 @@ This guide describes the recommendations for securing sensitive information in a
 |Secret |  A confidential component of the system that facilitates communication between workload components. If leaked, secrets can cause a breach.|
 |X.509| A standard that defines the format of public key certificates.|
 
-Credentials, such as API keys, OAuth tokens, SSH keys are typical examples of secrets. They can be static information that needs protection. Credentials can also be dynamically created at runtime, such as OAuth tokens that live on the client side. Dynamic secrets still need to be handled properly. You shouldn't rely on their transient nature as a security assurance and relax the safeguarding.
-
-Non-credential information can be sensitive too. For example, certificates and digital signature keys should be considered as secrets.
-
 > [!IMPORTANT]
-> **Do not treat non-secrets like secrets**. Secrets are subject to operational rigor. Using that level of diligence for non-secrets will result in unnecessary costs.
+> Don't treat non-secrets like secrets. Secrets require operational rigor that is unnecessary for non-secrets and might result in extra costs.
 >
-> Application configuration settings are a fitting example of non-secrets, such as URLs for APIs that the application uses. This information shouldn't be stored with the application code or application secrets. Consider using a dedicated configuration management system such as Azure App Configuration. Using a dedicated secret store like Azure Key Vault for this purpose isn't recommended.
-
-Compliance requirements might explicitly cause configuration settings to be treated as application secrets, even when they aren't typically considered secret.
+> Application configuration settings, such as URLs for APIs, are a fitting example of non-secrets. This information shouldn't be stored with the application code or application secrets. Consider using a dedicated configuration management system such as Azure App Configuration. Compliance requirements might explicitly cause configuration settings to be treated as application secrets, even when they aren't typically considered secret.
 
 ## Key design strategies
 
@@ -147,12 +143,12 @@ To secure access to your key vaults, control permissions to keys and secrets usi
 
 Implement processes that detect suspicious activity and periodically check for exposed keys in your application code. Some options include:
 
-- [Credential Scanner task](/azure/security/develop/security-code-analysis-customize#credential-scanner-task).
-- [Detect exposed secrets in code with Defender for Cloud](/azure/defender-for-cloud/detect-exposed-secrets).
-- [Microsoft Defender for Key Vault](/azure/defender-for-cloud/defender-for-key-vault-introduction).
+- [Azure Devops Credential Scanner task](/azure/security/develop/security-code-analysis-customize#credential-scanner-task)
+- [Defender for Cloud secret scanning](/azure/defender-for-cloud/detect-exposed-secrets)
+- [Microsoft Defender for Key Vault](/azure/defender-for-cloud/defender-for-key-vault-introduction)
 - [GitHub Secret Scanner](https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning)
 
-Make sure no keys and secrets for any environment types (Dev, Test, or Production) are stored in application configuration files or CI/CD pipelines. Developers can use [Visual Studio Connected Services](/azure/key-vault/general/vs-key-vault-add-connected-service) or local-only files to access credentials.
+Don't store keys and secrets for any environment type in application configuration files or CI/CD pipelines. Developers can use [Visual Studio Connected Services](/azure/key-vault/general/vs-key-vault-add-connected-service) or local-only files to access credentials.
 
 ## Related links
 
