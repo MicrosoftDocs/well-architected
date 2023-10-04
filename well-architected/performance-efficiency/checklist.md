@@ -15,7 +15,7 @@ For every system, there's a limit to how much you can scale it without redesigni
 
 | &nbsp; | Code | Recommendation |
 |-|-|-|
-| &#9744; | [PE:01](performance-targets.md) | **Define performance targets.** Performance targets are numerical values that derive from your requirements. You should implement performance targets for all workload flows. |
+| &#9744; | [PE:01](performance-targets.md) | **Define performance targets.** Performance targets should be numerical values that are tied to workload requirements. You should implement performance targets for all workload flows. |
 | &#9744; | [PE:02](capacity-planning.md) | **Conduct capacity planning.** Perform capacity planning before there are predicted changes in usage patterns, such as seasonal variations, product updates, marketing campaigns, special events, or regulatory changes. |
 | &#9744; | [PE:03](selecting-services.md) | **Select the right services.** The services, infrastructure, and tier selections must support your ability to reach the workload's performance targets and accommodate expected capacity changes. The selections should also weigh the benefits of using platform features or building a custom implementation.||
 | &#9744; | [PE:04](collect-metrics-logs.md) | **Collect performance data.** Workload components and flows should provide automatic, continuous, and meaningful metrics and logs. Collect data at different levels of the workload, such as the application, platform, data, and operating system levels. |
