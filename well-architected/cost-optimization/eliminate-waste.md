@@ -17,7 +17,7 @@ This guide describes the recommendations for eliminating workload waste. The gui
 |----|----|
 | Application feature | A distinct capability within the application software that enables users to perform specific tasks or access specific information.|
 | Platform feature | A specific functionality or capability provided by a platform. It can vary depending on the platform, but generally, platform features are designed to enhance the user experience, improve productivity, or enable specific tasks or actions. |
-| Resource| **!!use canonical definition!!** |
+| Resource| A single entity or component that you can create, configure, and utilize within a cloud service provider. |
 
 ## Key strategies
 
