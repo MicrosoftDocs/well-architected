@@ -111,7 +111,7 @@ By following these steps and using appropriate design patterns, you can reduce r
 
 #### Control supply
 
-Controlling supply refers to defining an upper limit on the amount that you're willing to spend on a particular resource or service. It's an important strategy because it helps control costs and ensures that expenses don't exceed a certain level. Establish a budget and monitor the spending to ensure it stays within the defined threshold. You can use cost management platforms, budget alerts, or tracking usage and spending patterns.
+Controlling supply refers to defining an upper limit on the amount that you're willing to spend on a particular resource or service. It's an important strategy because it helps control costs and ensures that expenses don't exceed a certain level. Establish a budget and monitor the spending to ensure it stays within the defined threshold. You can use cost management platforms, budget alerts, or tracking usage and spending patterns. Some services allow you to throttle supply and limit rates, and you should use those features where helpful.
 
 **Tradeoff:** Stricter limits may result in missed opportunities to scale when demand increases, potentially impacting user experience. It could cause shutdowns or unable to respond to load. It's important to strike a balance between cost optimization and ensuring that you have sufficient resources to meet your business needs.
 
