@@ -33,7 +33,9 @@ A cost model provides a projection of the workload cost, derived from existing d
 
 Cloud service providers offer many ways to save money. It's important to be familiar with them all so you can optimize costs and build your cost model around them. Common ways to save include using different billing models, making customer agreements, selecting services, and purchasing licenses.
 
-**Determine your workload needs**. Determine the short-term and long-term cost objectives of your workload. Analyze workload characteristics to determine which available discounts are most suitable for your workload. For example, if your workload has predictable usage patterns, you might consider using compute reservations or prepaid models to optimize costs. To determine the efficiency and effectiveness of your workload, consider these recommendations:
+#### Determine your workload needs
+
+Determine the short-term and long-term cost objectives of your workload. Analyze workload characteristics to determine which available discounts are most suitable for your workload. For example, if your workload has predictable usage patterns, you might consider using compute reservations or prepaid models to optimize costs. To determine the efficiency and effectiveness of your workload, consider these recommendations:
 
 - *Analyze key components*: Analyze the key components of your workload, including essential resources such as servers, databases, networks, and licenses.
 - *Understand workload*: Understand the workload's stability, predictability, and sensitivity to external factors like downtime and degraded performance.
@@ -43,7 +45,9 @@ Don't overlook the need for supporting services. Services that support observabi
 
 If you ensure that these often-overlooked factors are incorporated early in the budgeting phase, your cost modeling strategy will be comprehensive and effective, and it will help prevent unexpected costs in the future.
 
-**Estimate workload costs.** Estimating workload costs means assigning cost estimates to every category of workload spending. It includes direct costs from vendors and the operational costs to maintain the workload over time. These estimates provide a foundation for building a quality cost model that allows you to forecast costs and establish a budget. To estimate workload costs, consider the following strateiges:
+#### Estimate workload costs
+
+Estimating workload costs means assigning cost estimates to every category of workload spending. It includes direct costs from vendors and the operational costs to maintain the workload over time. These estimates provide a foundation for building a quality cost model that allows you to forecast costs and establish a budget. To estimate workload costs, consider the following strateiges:
 
 *Identify the best billing model*: A billing model determines how the cloud service provider charges for their services. Billing models include pay-as-you-go, prepaid, compute reservations, and spot pricing. Identify the most suitable and cost-effective billing model by understanding the specific requirements and usage patterns of each model. Each billing model has advantages and disadvantages of cost structure and flexibility. For example, pay-as-you-go might provide flexibility but might be more expensive over time compared to prepaid or reserved instances.
 
