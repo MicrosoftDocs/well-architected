@@ -97,6 +97,15 @@ Use governance to control spend in preproduction environments and mitigate risk.
 - *Constrain scaling*: To optimize cost, you can constrain automation to mitigate runaway automation. For example, set a maximum scaling limit in the development environment at three and 10 in the production environment. It helps control the resource usage and cost associated with automation.
 - *Turn off unneeded resources*: Turn off resources when they aren't being actively used, such as during off hours and weekends. You can use automation tools or scripts to schedule the shutdown and startup of the resources. Some vendors provide APIs also allow you to programmatically stop and start the resources. Consider using infrastructure as code to create ephemeral environments that you tear down when done.
 
+#### Balance similarity with production
+
+The preproduction environment should be tailored to manage risks effectively while still being able to identify and address potential risks before transitioning to production. It's important to ensure that each instance of an environment is sufficiently different from production to avoid unnecessary costs. If the preproduction environment mirrors production exactly, it can lead to overspending.
+
+- *Avoid exact replicas*: Avoid making the preproduction environment an exact copy of production. It can escalate costs unnecessarily. The goal is to create a preproduction setting that is cost-effective yet still capable of uncovering and addressing potential risks before deployment.
+- *Avoid extreme deviations*: Avoid over deviating from production, like using different services. They may not accurately simulate real-world risks. Determine a risk threshold that shouldn't be crossed solely for cost-saving reasons.
+- *Shorten runtimes*: Consider shortening the runtime of specific processes in the preproduction stage to save money. Be cautious of new vulnerabilities that may arise, such as undetected memory leaks.
+- *Review licenses*. Review the licensing plans for your security tools. If the number of nodes varies significantly between your production and preproduction setups, reassess your needs to fine-tune costs without compromising on security.
+
 #### Optimize development environments
 
 Development environments are designed for development, testing, and debugging purposes. They have shorter lifecycles and are often created as needed and exist for a short time. Development environments typically have lower requirements for reliability, capacity, and security compared to other preproduction and production environments. They may have fewer capabilities and can accept lower resource utilization.
@@ -107,15 +116,6 @@ Development environments are designed for development, testing, and debugging pu
 - *Regularly clean up*: Routinely clean up and optimize your development environment to avoid the accumulation of orphaned resources, unused data, and proof-of-concept experiments. Implement a clean-up process or automated tools to identify and remove unused resources, keeping only essential and active components. It helps reduce storage costs and ensures efficient resource utilization.
 - *Implement sampled scaling*: Instead of scaling all components to their maximum capacity, consider a sampled approach where you selectively scale vital components. This approach can be cost-effective while minimizing risks. Evaluate the risk-to-benefit ratio of not scaling certain elements and consider the potential impact on the environment.
 - *Optimize data management*: Development environments may have lower needs for data retention and backup frequency.
-
-#### Balance similarity with production
-
-The preproduction environment should be tailored to manage risks effectively while still being able to identify and address potential risks before transitioning to production. It's important to ensure that each instance of an environment is sufficiently different from production to avoid unnecessary costs. If the preproduction environment mirrors production exactly, it can lead to overspending.
-
-- *Avoid exact replicas*: Avoid making the preproduction environment an exact copy of production. It can escalate costs unnecessarily. The goal is to create a preproduction setting that is cost-effective yet still capable of uncovering and addressing potential risks before deployment.
-- *Avoid extreme deviations*: Avoid over deviating from production, like using different services. They may not accurately simulate real-world risks. Determine a risk threshold that shouldn't be crossed solely for cost-saving reasons.
-- *Shorten runtimes*: Consider shortening the runtime of specific processes in the preproduction stage to save money. Be cautious of new vulnerabilities that may arise, such as undetected memory leaks.
-- *Review licenses*. Review the licensing plans for your security tools. If the number of nodes varies significantly between your production and preproduction setups, reassess your needs to fine-tune costs without compromising on security.
 
 #### Consider endpoint emulation 
 
