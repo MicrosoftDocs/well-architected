@@ -35,9 +35,11 @@ By following these steps, you gain a comprehensive understanding of your workloa
 
 ### Determine billing model
 
-Implementing consumption-based pricing (pay-as-you-go) and preprovisioned where appropriate can help generate the best rates for your workload. You need to consider the characteristics and usage patterns of your workload to make the correct decision. Determining the right billing model for a component involves considering various factors. Consider usage patterns and budget. You need to understand financial constraints to decide whether upfront payment is feasible. Assess if you have a long-term commitment to the component or if it's a short-term project. Consider the potential cost savings offered by prepaid plans and compare them with the expected usage and pay-as-you-go costs.
+Using a consumption billing model (pay-as-you-go) and preprovisioned billing model (prepaid) on the appropriate resources can help generate the best rates for your workload. You need to consider the characteristics and usage patterns of your workload to make the correct decision. Determining the right billing model for a component involves considering various factors. Consider usage patterns and budget. You need to understand financial constraints to decide whether upfront payment is feasible. Assess if you have a long-term commitment to the component or if it's a short-term project. Consider the potential cost savings offered by prepaid plans and compare them with the expected usage and pay-as-you-go costs.
 
-**Understand consumption pricing.** Consumption pricing is a flexible pricing model that allows you to pay for the services you use on a consumption basis. It’s also known as pay-as-you-go pricing. With consumption pricing, you're charged based on the actual usage of the service. Cost variables include how long a resource is running, and service meters have different billing increments, such as per hour or per second. This model provides flexibility and cost control as you only pay for what you use. Consumption pricing is best suited for the following scenarios:
+#### Understand consumption pricing
+
+Consumption pricing is a flexible pricing model that allows you to pay for the services you use on a consumption basis. It’s also known as pay-as-you-go pricing. With consumption pricing, you're charged based on the actual usage of the service. Cost variables include how long a resource is running, and service meters have different billing increments, such as per hour or per second. This model provides flexibility and cost control as you only pay for what you use. Consumption pricing is best suited for the following scenarios:
 
 - *Variable workload*: A variable workload has unpredictable spikes or seasonal variations in usage. Consumption-based pricing allows you to scale resources up or down to meet the fluctuations in demand while providing the required performance always and not overpaying during low usage times.
 - *Preproduction environments*: Consumption-based pricing is preferred for development and test environments that are ephemeral. It offers the advantage of paying only during the project. Ensure you provide resources aligned with the development effort, where resources cost less when development is scaled down.
@@ -45,26 +47,34 @@ Implementing consumption-based pricing (pay-as-you-go) and preprovisioned where 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Many on-premises environments are always on and always available. Being intentional about services may lower rates, but you must account for some spin up time and operational overhead.
 
-**Understand prepaid pricing.** Prepaid pricing allows you to reserve a specific amount for a specific duration and pay for it in advance. By reserving the usage upfront, you can receive a discounted rate compared to pay-as-you-go pricing. The cost savings achieved through prepaid pricing depend on factors such as the duration of the reservation, the amount of capacity reserved, and the specific service. Prepaid pricing is best suited for the following scenarios:
+#### Understand prepaid pricing
+
+Prepaid pricing allows you to reserve a specific amount for a specific duration and pay for it in advance. By reserving the usage upfront, you can receive a discounted rate compared to pay-as-you-go pricing. The cost savings achieved through prepaid pricing depend on factors such as the duration of the reservation, the amount of capacity reserved, and the specific service. Prepaid pricing is best suited for the following scenarios:
 
 - *Predictable workloads*: If your workload has a consistent usage pattern, you can commit to a certain capacity over time and receive a significant discount over pay-as-you-go pricing. Those instances incur charges whether you use them or not.
 - *Production environments*: Reserved capacity pricing is suitable for production environments where you have a good understanding of the workload's resource needs
 - *Long-term projects*: Reserved capacity pricing can be cost-effective for projects with long-term resource requirements, even if they aren't highly predictable
 
-**Discuss options with the workload team.** To ensure effective workload cost optimization, it's crucial for the development team/architect and the purchasing team to collaborate and work together. Combining their expertise enables you to identify opportunities to optimize costs and make informed decisions. Here's a suggested process:
+#### Discuss options with the workload team
+
+To ensure effective workload cost optimization, it's crucial for the development team/architect and the purchasing team to collaborate and work together. Combining their expertise enables you to identify opportunities to optimize costs and make informed decisions. Here's a suggested process:
 
 - *Identify cost optimization opportunities*: Together, the teams should identify potential areas for cost optimization, such as infrastructure, cloud resources, licenses, and third-party services. Consider factors like utilization patterns, scalability, and workload requirements.
 - *Assess resource requirements*: Determine the resources needed to support the component or workload. Consider factors such as infrastructure, maintenance, and ongoing support. Understanding these requirements can help you gauge the long-term commitment involved.
 - *Evaluate different options*: Assess different cost optimization options, such as pay-as-you-go versus prepaid plans. Evaluate the pros and cons of each option in terms of cost savings and impact on performance. Evaluate the different performance tiers in each service and the pricing differences between them.
 
-**Determine component permanence.** It's important to assess how long you need a particular component to determine if committing to a prepaid plan makes sense. If the expected usage duration is less than a year, don’t to commit to a prepaid plan. Consider the flexibility of pay-as-you-go options for shorter-term requirements. To determine the duration of component usage, you can follow the process:
+#### Determine component permanence
+
+It's important to assess how long you need a particular component to determine if committing to a prepaid plan makes sense. If the expected usage duration is less than a year, don’t to commit to a prepaid plan. Consider the flexibility of pay-as-you-go options for shorter-term requirements. To determine the duration of component usage, you can follow the process:
 
 - *Gather usage data*: Collect data on the historical usage of the component or workload. This data can include information on how long the component has been in operation, the frequency of usage, and any patterns or trends in its utilization.
 - *Analyze usage patterns*: Analyze the collected usage data to identify patterns and trends. Look for consistent usage over a specific period of time or recurring usage patterns. This analysis helps you understand the typical duration of component usage.
 - *Consider future requirements*: Consider any future requirements or changes in your workload. Evaluate if there are any upcoming changes that may impact its usage duration.
 - *Assess business needs*: Evaluate the business needs and objectives associated with the component or workload. Consider factors such as project timelines, budget constraints, and the overall strategy of your organization. Evaluate any planned changes or updates to the component or workload. Understanding future developments can help you assess the long-term commitment required and whether it aligns with your objectives. This assessment helps you determine the appropriate duration for component usage.
 
-**Determine utilization consistency**. When considering prepaid commitments, it's recommended to commit to the maximum consistent utilization of a component. By committing to the maximum consistent utilization, you can maximize the potential savings and cost optimization. However, there are a few factors to consider:
+#### Determine utilization consistency
+
+When considering prepaid commitments, it's recommended to commit to the maximum consistent utilization of a component. By committing to the maximum consistent utilization, you can maximize the potential savings and cost optimization. However, there are a few factors to consider:
 
 - *Utilization patterns*: Analyze the historical utilization patterns of the component. If the utilization is consistently high and stable, committing to the maximum consistent utilization makes sense. However, if the utilization is highly variable or unpredictable, committing to the maximum utilization may not be feasible or cost-effective.
 - *Flexibility and scalability*: Consider the scalability and flexibility of the component. If the component can easily scale up or down based on demand, it may be more suitable to opt for flexible pricing models that allow you to adjust resources dynamically. This way, you can align your costs with the actual utilization of the component.

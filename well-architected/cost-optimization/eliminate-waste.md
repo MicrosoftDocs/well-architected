@@ -17,7 +17,7 @@ This guide describes the recommendations for eliminating workload waste. The gui
 |----|----|
 | Application feature | A distinct capability within the application software that enables users to perform specific tasks or access specific information.|
 | Platform feature | A specific functionality or capability provided by a platform. It can vary depending on the platform, but generally, platform features are designed to enhance the user experience, improve productivity, or enable specific tasks or actions. |
-| Resource| **!!use canonical definition!!** |
+| Resource| A single entity or component that you can create, configure, and utilize within a cloud service provider. |
 
 ## Key strategies
 
@@ -115,9 +115,9 @@ Maximizing the usage of prepaid plans starts with buying the right plan and full
 - *Modify the prepaid plan*: Consider changing the scope of the reservation to share, allowing it to apply more broadly across your resources. It can help increase utilization and maximize savings. If you find underused prepaid plans, try exchanging unused quantity or canceling and refunding plans.
 - *Review prepaid plans*: Regularly review and analyze your charges and usage data. Understand the breakdown between actual cost and amortized costs and reconcile the data to ensure accurate billing.
 
-### Eliminate introducing waste
+### Avoid introducing waste
 
-The best way to get rid of waste is to avoid it in the first place. You want to use strategies that prevent it from being introduced and allow you to catch waste faster. Here are several strategies you can use:
+The best way to get rid of waste is to avoid it in the first place. You want to use strategies that prevent it from being introduced and allow you to catch waste faster. Audit processes to avoid introducing waste. To help avoid introducing waste, consider these strateiges:
 
 - *Find the root cause before changing solutions*: Before you fix a problem, make sure you know what's actually causing it. For example, if your website is slow, don't just switch to a new system. First, figure out why it's slow. You might find out that the real issue is something else, like bad database queries. Fixing the real problem saves you time and money.
 - *Apply metadata* Applying metadata provides a way to organize and track resources. You can categorize and group resources, making it easier to track, delete, and avoid orphaned resources. Create a consistent metadata strategy and apply consistently across resources. Consider adding owners, anticipated resource duration (`sunset-30d`), and others.

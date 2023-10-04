@@ -22,8 +22,8 @@ This guide describes the recommendations for designing a reliable scaling strate
 
 | Term | Definition |
 | --------- | ---------------- |
-| Vertical scaling | A scaling approach that adds compute capacity to existing resources. (Scaling from a D4s_v3 to a D8s_v3, for example.) |
-| Horizontal scaling | A scaling approach that adds instances of a given type of resource. (Expanding a web pool from two to four VMs, for example.) |
+| Vertical scaling | A scaling approach that adds compute capacity to existing resources.|
+| Horizontal scaling | A scaling approach that adds instances of a given type of resource.|
 | Autoscaling | A scaling approach that lets you automatically scale horizontally when a set of conditions are met. Many Azure products support autoscaling.  |
 
 > [!NOTE]
