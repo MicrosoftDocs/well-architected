@@ -59,7 +59,7 @@ Release gates refer to the checkpoints or conditions that you need to met before
 - *Integrate with deployment pipeline*: Incorporate the release gates into the deployment pipeline, ensuring that resource deployments are subject to the defined criteria. You can use automation tools or custom scripts.
 - *Monitor and enforce*: Continuously monitor spending and resource usage against the defined criteria. If the spending thresholds or other conditions are exceeded, the release gates should prevent further deployments until the issues are addressed.
 
-### Setup budgets and alerts
+### Configure cost alerts
 
 Setting alerts on budgets, cost anomalies, and prepaid plan utilization is an important aspect of cost optimization. These alerts serve as spending guardrails by providing visibility into your cloud spending and enabling proactive cost management. You need to manage who receives notifications on alerts. Ensure you keep the recipients up to date and in line with current responsibilities and access.
 
