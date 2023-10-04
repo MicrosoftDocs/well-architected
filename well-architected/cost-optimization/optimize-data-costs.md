@@ -39,7 +39,11 @@ Data prioritization is the process of categorizing and assigning importance leve
 - *Define priority levels:* Establish priority levels for data (such as high, medium, and low) based on its value to the organization, regulatory requirements, and potential effect of data loss. The goal is to align data priority to appropriate data solution.
 - *Assign labels:* Label each data set with its sensitivity and criticality. Labels can be applied at the row, column, or file level, depending on the data structure and usage. For databases, you can use a special tool to label and relate the sensitivity and criticality of data to specific rows and columns. It provides granular control over the management and access of data.
 
-### Optimize data lifecycle management
+### Optimize data management
+
+Data management refers to the process of storing, moving, and securing workload data. By optimizing data management, you can align spending to data priority and dervie more value from your data. Consider the following data management strategies:
+
+#### Optimize data lifecycle management
 
 Data lifecycle management refers to the process of managing data throughout its entire lifecycle, from creation or acquisition to deletion or archival. It involves various stages, including data creation, storage, usage, sharing, retention, and disposal. The goal of data lifecycle management is to optimize data storage solutions while complying with relevant regulations and policies. Data storage has three critical cost components:
 
@@ -57,6 +61,20 @@ Data tiering and data retention policies are foundational to data lifecycle mana
 :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs:** Managing data retention policies require ongoing monitoring and maintenance. It can introduce more overhead for data management processes. They may also affect storage costs. Longer retention periods or the use of higher-cost storage tiers can increase storage expenses.
 
 :::image type="icon" source="../_images/risk.svg"::: **Risk:** A poor implementation of data lifecycle management could lead to data loss or limited access to critical data. You should have proper backup and recovery mechanisms in place to mitigate the risk of data loss.
+
+#### Optimize data segmentation
+
+Segment different types of data onto separate resources based on their characteristics and usage patterns. By doing so, you can allocate resources tailored to the needs of each data type. The segmentation can help optimize performance and cost. For example, you can place data that requires high-performance storage on resources with faster storage solutions, while less frequently accessed or archival data can be stored on lower-cost resources with slower storage solutions. This approach allows you to match the requirements and cost of each data type efficiently.
+
+Alternatively, you can group similar types of data together and run them on the same resource. This strategy is beneficial when multiple data types have similar usage patterns or require similar storage solutions. By consolidating the data onto a single resource, you can reduce costs by eliminating the need for separate resources for each data type and potentially optimize resource utilization. Grouping similar data together can also simplify data management and improve efficiency in data processing. For more information, see [consolidation](consolidation.md).
+
+#### Minimize data transfer
+
+Ensure data is close to the client. Data proximity reduces network travel, speeding up access and optimizing costs. Choose the appropriate storage location. Select a location that is closest to where most network packets are going. Consider the benefits of caching to minimize data transfer. A content delivery network (CDN) can store frequently read static data closer to users. It reduces data movement across the network and helps offload bandwidth usage.
+
+#### Optimize security and compliance
+
+Certain production data demands higher security and compliance requirements. These measures may impose extra costs related to data protection, encryption, backup, retention, and auditing. You must ensure that changes in data storage solutions adhere to these requirements. Data that has lower security and compliance requirements often presents an opportunity to optimize cost.
 
 ### Optimize data volume
 
@@ -115,18 +133,6 @@ You need to make sure you’re using the right storage solution for your data. S
 - *Query optimized versus data storage stores*: Query-optimized stores are designed for fast data retrieval and analysis, focusing on quick data ingestion and reads but not frequent updates. They're great for time-series data and rapid access to recent data but not for heavy transactional tasks. Data storage stores handle large volumes of flexible data, especially unstructured or semi-structured data. While they can support analytics, complex tasks may need specialized databases. They're best for storing lots of variable data like logs or user-generated content in scenarios like NoSQL use cases.
 
 It's important to evaluate the specific requirements of your data and consider factors like performance, scalability, cost, and ease of management when choosing a storage solution.
-
-### Optimize data management
-
-Here are some data management strategies:
-
-**Separate dissimilar data.** Segment different types of data onto separate resources based on their characteristics and usage patterns. By doing so, you can allocate resources tailored to the needs of each data type. The segmentation can help optimize performance and cost. For example, you can place data that requires high-performance storage on resources with faster storage solutions, while less frequently accessed or archival data can be stored on lower-cost resources with slower storage solutions. This approach allows you to match the requirements and cost of each data type efficiently.
-
-**Group similar data.** Alternatively, you can group similar types of data together and run them on the same resource. This strategy is beneficial when multiple data types have similar usage patterns or require similar storage solutions. By consolidating the data onto a single resource, you can reduce costs by eliminating the need for separate resources for each data type and potentially optimize resource utilization. Grouping similar data together can also simplify data management and improve efficiency in data processing. For more information, see [consolidation](consolidation.md).
-
-**Minimize data transfer.** Ensure data is close to the client. Data proximity reduces network travel, speeding up access and optimizing costs. Choose the appropriate storage location. Select a location that is closest to where most network packets are going. Consider the benefits of caching to minimize data transfer. A content delivery network (CDN) can store frequently read static data closer to users. It reduces data movement across the network and helps offload bandwidth usage.
-
-**Security and compliance:** Certain production data demands higher security and compliance requirements. These measures may impose extra costs related to data protection, encryption, backup, retention, and auditing. You must ensure that changes in data storage solutions adhere to these requirements. Data that has lower security and compliance requirements often presents an opportunity to optimize cost.
 
 ## Azure facilitation
 
