@@ -63,7 +63,7 @@ To validate your understanding of billing increments, you can build a proof of c
 As you understand how resources are billed, you can align the workload design accordingly. You must understand the billing increments specific to each component. You have two primary options for cost optimization.
 
 - *Modify the service:* Modifying the services means using different configurations, service tiers, or services to align the workload to billing thresholds. For example, your workload might move 5 TB of data daily, but you’re charged in 4-TB increments. You can find a different service tier or configuration to transfer the data at a cheaper or faster rate.
-- *Modify the usage:* Modifying the usage means redesign the usage pattern workload to align with a billing increment. For example, you can compress the 5TB data to 4 TB before transferring. You can also extend the usage to the billing increment. For example, if you need to transfer 2 TBs of data every day, you could modify the schedule to transfer 4 TB of data every other day.
+- *Modify the usage:* Modifying the usage means redesigning the usage pattern workload to align with a billing increment. For example, you can compress the 5TB data to 4 TB before transferring. You can also extend the usage to the billing increment. For example, if you need to transfer 2 TBs of data every day, you could modify the schedule to transfer 4 TB of data every other day.
 
 If neither is feasible, then you need to accept the extra cost. Rework the budgets as needed if the extra cost wasn’t included.
 
