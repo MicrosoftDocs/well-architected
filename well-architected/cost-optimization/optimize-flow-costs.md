@@ -48,7 +48,7 @@ Flow prioritization involves classifying flows based on their influence on busin
 
 - *Identify flow value*: When optimizing workload flow costs, it's important to identify the flow that provides the most value. You don’t want to spend more than a flow is worth. Instead of simply cutting costs, consider shifting costs to prioritize the more valuable flows. For example, your checkout flow is critical for business, but the purchase history isn't. You should allocate more resources and budget to the checkout flow.
 
-Low-priority flows have lower expectations around availability, recovery, and performance. You can reduce costs by choosing cheaper configuration for less performance, availability, or business continuity spending.
+  Low-priority flows have lower expectations around availability, recovery, and performance. You can reduce costs by choosing cheaper configuration for less performance, availability, or business continuity spending.
 
 - *Compare against metrics*: If you’re struggling to prioritize your flows, consider availability and recovery goals you assigned to them. Critical flows often have high availability requirements and service level agreements (SLAs). Flows associated with a lower RPO and RTO are more important than flows with a higher RPO and RTO.
 
