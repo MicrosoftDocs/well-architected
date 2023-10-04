@@ -1,6 +1,6 @@
 ---
 title: What's new in Azure Well-Architected Framework
-description: Learn about what's new in the Azure Well-Architected Framework.
+description: Find out what's new in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
 ms.date: 11/15/2023
@@ -11,9 +11,9 @@ ms.topic: conceptual
 
 ## November 2023
 
-The Azure Well-Architected Framework launched a significant content refresh across all five pillars. We're breaking from our standard "What's new" format this month because the changes that launched with [Microsoft Ignite 2023](https://ignite.microsoft.com/) go beyond bullet points.
+The Azure Well-Architected Framework completed a significant content refresh across all five pillars. We're breaking from our standard "What's new" format this month because the changes that launched with [Microsoft Ignite 2023](https://ignite.microsoft.com/) go beyond bullet points.
 
-### The five core pillars of architecture have been restructured
+### The core pillars of architecture have been restructured
 
 All five pillars of the Well-Architected Framework now follow a common structure that consists exclusively of design principles, design review checklists, tradeoffs, recommendation guides, and cloud design patterns.
 
@@ -25,7 +25,7 @@ All five pillars of the Well-Architected Framework now follow a common structure
   - [Operational Excellence design principles](./operational-excellence/principles.md)
   - [Performance Efficiency design principles](./performance-efficiency/principles.md)
 
-- **Design review checklist**. Lists roughly codified recommendations that drive action. Use the checklist during the design phase of your new workload and to evaluate brownfield workloads.
+- **Design review checklists**. Lists roughly codified recommendations that drive action. Use the checklist during the design phase of your new workload and to evaluate brownfield workloads.
 
   - [Design review checklist for Reliability](./reliability/checklist.md)
   - [Design review checklist for Security](./security/checklist.md)
@@ -43,13 +43,15 @@ All five pillars of the Well-Architected Framework now follow a common structure
 
 - **Recommendation guides**. Every design review checklist recommendation is associated with one or more guides. They explain the key strategies to fulfill that recommendation. They also include how Azure can facilitate workload design to help achieve that recommendation. Some of these guides are new, and others are refreshed versions of guides that covered a similar concept.
 
-   The recommendation guides also include tradeoffs along with risks. Tradeoffs are noted with this icon: :::image type="icon" source="./_images/trade-off.svg":::. Risks are noted with this icon: :::image type="icon" source="./_images/risk.svg":::.
+   The recommendation guides include tradeoffs along with risks.
+  - This icon indicates a tradeoff: :::image type="icon" source="./_images/trade-off.svg":::
+  - This icon indicates a risk: :::image type="icon" source="./_images/risk.svg":::
 
 - **Cloud design patterns**. Build your design on proven, common architecture patterns. The Azure Architecture Center maintains the [Cloud Design Patterns](/azure/architecture/patterns/) catalog. Each pillar includes descriptions of the cloud design patterns that are relevant to the goals of the pillar and how they support the pillar.
 
 ### Well-Architected Framework assessments
 
-The [Well-Architected Review assessment](/assessments/azure-architecture-review/) has been refreshed. Specifically, the "Core Well-Architected Review" is now aligned to the new content structure in the Well-Architected Framework. Every question in every pillar maps to the design review checklist for that pillar. All choices for the questions are tied to the recommendation guides for the related checklist item.
+The [Well-Architected Review assessment](/assessments/azure-architecture-review/) has been refreshed. Specifically, the "Core Well-Architected Review" now aligns to the new content structure in the Well-Architected Framework. Every question in every pillar maps to the design review checklist for that pillar. All choices for the questions are tied to the recommendation guides for the related checklist item.
 
 No other assessments were changed as part of this refresh.
 
@@ -88,7 +90,7 @@ In addition to the changes in structure and consistency, you should note some th
 
 ## August 2023
 
-- New WAF workload: [Azure VMware Solution workloads](./azure-vmware/overview)
+- New Well-Architected Framework workload: [Azure VMware Solution workloads](./azure-vmware/overview)
 - Updated Reliability pillar guide: [Design reliable Azure applications](./resiliency/app-design.md)
 - Updated Reliability pillar guide: [Target functional and nonfunctional requirements](./resiliency/design-requirements.md)
 - Updated service guide: [Azure Well-Architected Framework review - Virtual Machines](./service-guides/virtual-machines-review.md)
