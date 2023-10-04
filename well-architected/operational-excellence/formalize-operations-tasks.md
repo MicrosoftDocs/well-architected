@@ -63,3 +63,9 @@ Codifying standard operating procedures can carry the risk of leading to stagnat
 - [Recommendations for implementing automation](automate-tasks.md)
 - [Recommendations for enabling automation in your workload](enable-automation.md)
 - [Recommendations for formalizing software development management practices](formalize-development-practices.md)
+
+## Operational Excellence checklist
+
+Refer to the complete set of recommendations. 
+
+[Operational Excellence checklist](checklist.md)
