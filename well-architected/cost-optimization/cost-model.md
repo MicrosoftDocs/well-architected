@@ -33,13 +33,9 @@ A cost model provides a projection of the workload cost, derived from existing d
 
 Cloud service providers offer many ways to save money. It's important to be familiar with them all so you can optimize costs and build your cost model around them. Common ways to save include using different billing models, making customer agreements, selecting services, and purchasing licenses.
 
-<<<<<<< HEAD
 #### Determine your workload needs
 
 Determine the short-term and long-term cost objectives of your workload. Analyze workload characteristics to determine which available discounts are most suitable for your workload. For example, if your workload has predictable usage patterns, you might consider using compute reservations or prepaid models to optimize costs. To determine the efficiency and effectiveness of your workload, consider these recommendations:
-=======
-**Determine your workload needs**. Determine the short-term and long-term cost objectives of your workload. Analyze workload characteristics to determine which available discounts are most suitable for your workload. For example, if your workload has predictable usage patterns, you might consider using compute reservations or prepaid models to optimize costs. To determine the efficiency and effectiveness of your workload, consider these recommendations:
->>>>>>> c217651c25910778537d17b9abb7f2940bc8c73d
 
 - *Analyze key components*: Analyze the key components of your workload, including essential resources such as servers, databases, networks, and licenses.
 - *Understand workload*: Understand the workload's stability, predictability, and sensitivity to external factors like downtime and degraded performance.
@@ -49,10 +45,9 @@ Don't overlook the need for supporting services. Services that support observabi
 
 If you ensure that these often-overlooked factors are incorporated early in the budgeting phase, your cost modeling strategy will be comprehensive and effective, and it will help prevent unexpected costs in the future.
 
-<<<<<<< HEAD
 #### Estimate workload costs
 
-Estimating workload costs means assigning cost estimates to every category of workload spending. It includes direct costs from vendors and the operational costs to maintain the workload over time. These estimates provide a foundation for building a quality cost model that allows you to forecast costs and establish a budget. To estimate workload costs, consider the following strateiges:
+Estimating workload costs means assigning cost estimates to every category of workload spending. It includes direct costs from vendors and the operational costs to maintain the workload over time. These estimates provide a foundation for building a quality cost model that allows you to forecast costs and establish a budget. To estimate workload costs, consider the following strategies:
 
 *Identify the best billing model*: A billing model determines how the cloud service provider charges for their services. Billing models include pay-as-you-go, prepaid, compute reservations, and spot pricing. Identify the most suitable and cost-effective billing model by understanding the specific requirements and usage patterns of each model. Each billing model has advantages and disadvantages of cost structure and flexibility. For example, pay-as-you-go might provide flexibility but might be more expensive over time compared to prepaid or reserved instances.
 
@@ -69,16 +64,6 @@ Consider the cost advantages and disadvantages of each service. Service-level ob
 *Estimate operational costs*: To estimate the cost of workload maintenance, consider the ongoing operational expenses for monitoring, testing, and maintenance of the infrastructure. These costs include monitoring the performance and health of the infrastructure by using monitoring tools and services to help track system metrics, detect issues, and ensure availability.
 
 You should estimate the cost of regular testing activities such as load testing, security testing, and performance testing. These tests are essential for maintaining the integrity of your workload. Include the resources and tools that are required for testing the system's resilience, scalability, and security. You also need to include Regular maintenance tasks, such as applying software patches, updates, and security fixes, are necessary to keep the system up to date. Routine tasks like data backup, system optimization, and configuration management contribute to ongoing maintenance costs.
-=======
-**Estimate workload costs.** Estimating workload costs means assigning cost estimates to every category of workload spending. It includes direct costs from vendors and the operational costs to maintain the workload over time. These estimates provide a foundation for building a quality cost model that allows you to forecast costs and establish a budget. To estimate workload costs, consider the following strateiges:
-
-- *Identify the best billing model*: A billing model determines how the cloud service provider charges for their services. Billing models include pay-as-you-go, prepaid, compute reservations, and spot pricing. Identify the most suitable and cost-effective billing model by understanding the specific requirements and usage patterns of each model. Each billing model has advantages and disadvantages of cost structure and flexibility. For example, pay-as-you-go might provide flexibility but might be more expensive over time compared to prepaid or reserved instances.
-- *Take advantage of customer agreements*: Cloud service providers offer customer agreements or enterprise agreements for customers. Some agreements offer discounts through available programs or allow you to use your existing licenses to save money. Implement these cost optimization strategies to maximize the value of your resources and reduce your overall expenses.
-- *Estimate license costs*: Calculate estimates for license costs to create an accurate cost model. To find the best deal, contact the software provider or the software reseller. If you're an existing customer, use existing licensing benefits and discounts.
-- *Estimate service costs*: Cloud service providers provide many services to support your workload. Choose services that help you meet your short-term and long-term cost objectives. For example, you might want to move an on-premises workload to the cloud with minimal changes to your workload. Choose a cloud service that supports your workload goals and provides the greatest return on your investment. Use the cloud platform's cost calculator to estimate your workload's resource costs. These tools help you understand the different cost meters in a resource and the billing model cost implications. Consider the cost advantages and disadvantages of each service. Service-level objectives (SLOs) and platform features have cost implications. For example, downtime might cost your organization a considerable amount of money. If you invest more money into reaching higher SLOs, you can generate revenue by avoiding downtime and increasing customer satisfaction. Use built-in features as a cost-efficient alternative to building custom features that you need to develop and maintain.
-- *Estimate resiliency costs*: To estimate resiliency costs, consider factors such as infrastructure, maintenance, data replication, data storage, disaster recovery, and performance. Consider the specific requirements and goals of your application or system, including the required level of resiliency, the desired SLOs, and the availability goals for each dependency on the critical path. The costs vary based on the cloud services and technologies that you choose.
-- *Estimate operational costs*: To estimate the cost of workload maintenance, consider the ongoing operational expenses for monitoring, testing, and maintenance of the infrastructure. These costs include monitoring the performance and health of the infrastructure by using monitoring tools and services to help track system metrics, detect issues, and ensure availability. You should estimate the cost of regular testing activities such as load testing, security testing, and performance testing. These tests are essential for maintaining the integrity of your workload. Include the resources and tools that are required for testing the system's resilience, scalability, and security. You also need to include Regular maintenance tasks, such as applying software patches, updates, and security fixes, are necessary to keep the system up to date. Routine tasks like data backup, system optimization, and configuration management contribute to ongoing maintenance costs.
->>>>>>> c217651c25910778537d17b9abb7f2940bc8c73d
 
 ### Develop the cost model
 
@@ -114,7 +99,6 @@ The cost model provides a foundation for negotiating your workload budget. The c
 
 A cost model isn't just an analytical tool. It's a decision-making aid. Use the cost model for budgeting, scenario analysis, and resource optimization. To maximize the use of the cost model, consider these strategies:
 
-<<<<<<< HEAD
 - *Budgeting*: Use the cost model to project future expenses, allocate funds effectively, and avoid financial pitfalls. Regularly compare actual expenses against the budget and make adjustments if there are deviations.
 - *Scenario analysis*: Using the cost model for scenario analysis involves considering different scenarios and the associated costs with each one. Scenario analysis can help stakeholders understand the financial implications of business model changes, such as modifications to pricing, product offerings, or revenue streams. Scenario analysis also enables you to anticipate how changes in customer acquisition, retention, or churn rates might affect costs. You can forecast increased expenses and plan for scaling.
 - *Resource optimization*: Use the cost model to help identify areas where cloud resources are underutilized and make adjustments for significant cost savings. The cost model can also forecast the financial implications of scaling up resources in response to increased customer traffic or processing needs. It also helps compare the costs that are associated with cloud providers’ billing models, which allows you to choose the most economical option.
@@ -130,27 +114,6 @@ It's important to regularly update the cost model to reflect the latest data, bu
 *Update the cost model*: Review the cost model periodically to ensure that the workload receives the budget it needs. Use the metrics from the workload in production to inform budget reviews. The potential effect of services or technology changes can create the need for review. As services and technologies evolve, you might need to make changes to the workload design to optimize costs or take advantage of new features. Regular review ensures that the cost model remains aligned with the changing landscape. Review the cost model before and after workload design changes.
 
 Update the cost model whenever you change services. Use the cloud platform's calculator to estimate the cost of the cloud resources that your workload needs. For new workloads, some of the cost variables, such as data transfer and storage amount, can be difficult to estimate. A business target can help you generate estimates. For example, to create a customer-based estimation, divide the daily revenue target ($100,000) by the average purchase per visitor ($100) to get the estimated number of daily visitors that you need to support (1,000).
-=======
-### Use and maintain the cost model
-
-A cost model isn't just an analytical tool. It's a decision-making aid. Use the cost model for budgeting, scenario analysis, and resource optimization.
-
-- *Budgeting*: Use the cost model to project future expenses, allocate funds effectively, and avoid financial pitfalls. Regularly compare actual expenses against the budget and make adjustments if there are deviations.
-
-- *Scenario analysis*: Using the cost model for scenario analysis involves considering different scenarios and the associated costs with each one. Scenario analysis can help stakeholders understand the financial implications of business model changes, such as modifications to pricing, product offerings, or revenue streams. Scenario analysis also enables you to anticipate how changes in customer acquisition, retention, or churn rates might affect costs. You can forecast increased expenses and plan for scaling.
-
-- *Resource optimization*: Use the cost model to help identify areas where cloud resources are underutilized and make adjustments for significant cost savings. The cost model can also forecast the financial implications of scaling up resources in response to increased customer traffic or processing needs. It also helps compare the costs that are associated with cloud providers’ billing models, which allows you to choose the most economical option.
-
-It's important to regularly update the cost model to reflect the latest data, business conditions, and any changes in the external environment. You should engage stakeholders, including product owners and the technical team, in discussions around the cost model to ensure its relevance and alignment with different teams' needs. Run simulations and review the findings to inform decision-making. Educate all team members on how to use the cost model to foster a culture of data-driven decision-making. Consider the following recommendations:
-
-- *Track resource usage*: Monitor the usage of resources in your workload. Tracking resource usage is critical for adjusting cost models and identifying opportunities for cost optimization. Conduct utilization audits to identify underutilized resources and adjust cost estimates accordingly.
-
-- *Generate and review forecasts*: Utilize usage data to generate forecasts and project the cost of the workload. Update forecasts regularly and view them often. Investigate any forecasts that deviate significantly from the current cost model. When you find an issue, update the cost model accordingly. The definition of a significant deviation from the cost model is different for each workload. The deviation might be due to changes in workload usage patterns, resource requirements, or pricing changes. By using a forecast, you can foresee exceeding your budget and make changes to the budget or workload design.
-
-- *Update the cost model*: Review the cost model periodically to ensure that the workload receives the budget it needs. Use the metrics from the workload in production to inform budget reviews. The potential effect of services or technology changes can create the need for review. As services and technologies evolve, you might need to make changes to the workload design to optimize costs or take advantage of new features. Regular review ensures that the cost model remains aligned with the changing landscape. Review the cost model before and after workload design changes.
-
-  Update the cost model whenever you change services. Use the cloud platform's calculator to estimate the cost of the cloud resources that your workload needs. For new workloads, some of the cost variables, such as data transfer and storage amount, can be difficult to estimate. A business target can help you generate estimates. For example, to create a customer-based estimation, divide the daily revenue target ($100,000) by the average purchase per visitor ($100) to get the estimated number of daily visitors that you need to support (1,000).
->>>>>>> c217651c25910778537d17b9abb7f2940bc8c73d
 
 ## Azure facilitation
 
