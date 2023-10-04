@@ -67,7 +67,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Get the best rates
-            url: get-the-best-rates.md
+            url: get-best-rates.md
           - text: Align usage to billing increments
             url: align-usage-to-billing-increments.md
           - text: Eliminate waste

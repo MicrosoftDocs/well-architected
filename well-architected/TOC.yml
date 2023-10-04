@@ -118,7 +118,7 @@
             - name: Set spending guardrails
               href: cost-optimization/set-spending-guardrails.md
             - name: Get the best rates
-              href: cost-optimization/get-the-best-rates.md
+              href: cost-optimization/get-best-rates.md
             - name: Align usage to billing increments
               href: cost-optimization/align-usage-to-billing-increments.md
             - name: Eliminate waste
