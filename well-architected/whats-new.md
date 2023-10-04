@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 ## November 2023
 
-The Azure Well-Architected Framework launched a significant content refresh across all five pillars. We're breaking from our standard "What's new" format for this month because the changes launched with [Microsoft Ignite 2023](https://ignite.microsoft.com/) go beyond bullet points.
+The Azure Well-Architected Framework launched a significant content refresh across all five pillars. We're breaking from our standard "What's new" format this month because the changes that launched with [Microsoft Ignite 2023](https://ignite.microsoft.com/) go beyond bullet points.
 
 ### The five core pillars of architecture have been restructured
 
@@ -25,7 +25,7 @@ All five pillars of the Well-Architected Framework now follow a common structure
   - [Operational Excellence design principles](./operational-excellence/principles.md)
   - [Performance Efficiency design principles](./performance-efficiency/principles.md)
 
-- **Design review checklist**. Lists roughly codified recommendations that help drive action. Use the checklist during the design phase of your new workload and to evaluate brownfield workloads.
+- **Design review checklist**. Lists roughly codified recommendations that drive action. Use the checklist during the design phase of your new workload and to evaluate brownfield workloads.
 
   - [Design review checklist for Reliability](./reliability/checklist.md)
   - [Design review checklist for Security](./security/checklist.md)
@@ -41,9 +41,9 @@ All five pillars of the Well-Architected Framework now follow a common structure
   - [Operational Excellence tradeoffs](./operational-excellence/tradeoffs.md)
   - [Performance Efficiency tradeoffs](./performance-efficiency/tradeoffs.md)
 
-  The recommendation guides include tradeoffs along with risks. Tradeoffs are noted with this icon: :::image type="icon" source="../_images/trade-off.svg":::. Risks are noted with this icon: :::image type="icon" source="../_images/risk.svg":::.
-
 - **Recommendation guides**. Every design review checklist recommendation is associated with one or more guides. They explain the key strategies to fulfill that recommendation. They also include how Azure can facilitate workload design to help achieve that recommendation. Some of these guides are new, and others are refreshed versions of guides that covered a similar concept.
+
+   The recommendation guides also include tradeoffs along with risks. Tradeoffs are noted with this icon: :::image type="icon" source="./_images/trade-off.svg":::. Risks are noted with this icon: :::image type="icon" source="./_images/risk.svg":::.
 
 - **Cloud design patterns**. Build your design on proven, common architecture patterns. The Azure Architecture Center maintains the [Cloud Design Patterns](/azure/architecture/patterns/) catalog. Each pillar includes descriptions of the cloud design patterns that are relevant to the goals of the pillar and how they support the pillar.
 
@@ -55,15 +55,15 @@ No other assessments were changed as part of this refresh.
 
 ### Thematic changes
 
-In addition to the changes in structure and consistency, you should note that the Well-Architected Framework also saw some thematic changes within the content. See the following key examples of these changes.
+In addition to the changes in structure and consistency, you should note some thematic changes within the content. See the following key examples of these changes.
 
 - **Workloads are more than technology**. The scope of the Well-Architected Framework is your workload. The principles and the guides provide recommendations for **people and processes** of the workload team along with technical guidance.
 
 - Workloads exist within the context of the organization. The Well-Architected Framework frequently addresses **workload responsibility to organizational expectations**. The Well-Architected Framework calls out the benefits and tradeoffs of organizational influence.
 
-- Prior to this refresh, the guidance was more focused on the infrastructure than on the application running on that infrastructure. Now, every pillar has **developer-centric content** .
+- Prior to this refresh, the guidance was more focused on the infrastructure than on the application running on that infrastructure. Now, every pillar has **developer-centric content**.
 
-- **Specific service configuration has been minimized**. The Well-Architected Framework pillar content is design content, not implementation content. Prior to the refresh, the Well-Architected Framework interwove Azure service-specific guidance and design guidance. Now, the Well-Architected Framework limits service-specific content to dedicated sections in the recommendation guides. The Well-Architected Framework service guides continue to exist to serve as the primary source for service-centric perspectives.
+- **Specific service configuration has been minimized**. The Well-Architected Framework pillar content is design content, not implementation content. Before the refresh, the Well-Architected Framework interwove Azure service-specific guidance and design guidance. Now, the Well-Architected Framework limits service-specific content to dedicated sections in the recommendation guides. The Well-Architected Framework service guides continue to exist to serve as the primary source for service-centric perspectives.
 
 > [!IMPORTANT]
 > As part of this restructuring, many pages have been added, moved, removed, or changed. Redirection is in place where possible, but we're aware that many existing links to the Well-Architected Framework might no longer point to the same content.
