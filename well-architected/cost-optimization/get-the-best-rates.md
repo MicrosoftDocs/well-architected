@@ -35,7 +35,7 @@ By following these steps, you gain a comprehensive understanding of your workloa
 
 ### Determine billing model
 
-Implementing consumption-based pricing (pay-as-you-go) and preprovisioned where appropriate can help generate the best rates for your workload. You need to consider the characteristics and usage patterns of your workload to make the correct decision. Determining the right billing model for a component involves considering various factors. Consider usage patterns and budget. You need to understand financial constraints to decide whether upfront payment is feasible. Assess if you have a long-term commitment to the component or if it's a short-term project. Consider the potential cost savings offered by prepaid plans and compare them with the expected usage and pay-as-you-go costs.
+Using a consumption billing model (pay-as-you-go) and preprovisioned billing model (prepaid) on the appropriate resources can help generate the best rates for your workload. You need to consider the characteristics and usage patterns of your workload to make the correct decision. Determining the right billing model for a component involves considering various factors. Consider usage patterns and budget. You need to understand financial constraints to decide whether upfront payment is feasible. Assess if you have a long-term commitment to the component or if it's a short-term project. Consider the potential cost savings offered by prepaid plans and compare them with the expected usage and pay-as-you-go costs.
 
 #### Understand consumption pricing
 
