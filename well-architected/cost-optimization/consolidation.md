@@ -34,15 +34,11 @@ Consolidating resources is about combining resources within a workload. It invol
 
 Common types of services that you can consolidate include application platforms, databases, network appliances, gateways, and DDoS protection. To consolidate resources within a workload, consider these recommendations:
 
-**Assess the workload resources.** Assess the existing workload and its resource utilization. This includes analyzing factors such as CPU usage, memory usage, storage capacity, and network bandwidth. Identify areas where consolidation could be beneficial. It could involve optimizing resource allocation, eliminating redundant or underutilized resources, or reconfiguring the workload to run more efficiently. Consider factors such as workload dependencies, performance requirements, and scalability
-
-**Identify consolidation target.** Determine the resource to consolidate on. It can be an existing resource or a new resource created within the workload. Identify any existing resources that you use for consolidation. For example, you may have underutilized servers that can accommodate some of the workload components. If no existing resources meet the consolidation requirements or if it's more beneficial to move to a new resource, consider creating a new resource for consolidation.
-
-**Evaluate consolidation viability.** Ensure functional and technical requirements support consolidation such as CPU, memory, growth. Avoid compromising requirements like performance, reliability, and security. For example, don't create an undesired cross-regional dependency or consolidate resources across preproduction and production environments.
-
-**Estimate the cost.** Understand the effort and potential complications of consolidation. You should calculate costs, including resource, licensing, and operational expenses. Consider the implications, such as potential challenges in resource monitoring due to consolidation.
-
-**Communicate and coordinate.** Ensure you inform all stakeholders about upcoming changes and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth implementation.
+- *Assess the workload resources*: Assess the existing workload and its resource utilization. This includes analyzing factors such as CPU usage, memory usage, storage capacity, and network bandwidth. Identify areas where consolidation could be beneficial. It could involve optimizing resource allocation, eliminating redundant or underutilized resources, or reconfiguring the workload to run more efficiently. Consider factors such as workload dependencies, performance requirements, and scalability.
+- *Identify consolidation target*: Determine the resource to consolidate on. It can be an existing resource or a new resource created within the workload. Identify any existing resources that you use for consolidation. For example, you may have underutilized servers that can accommodate some of the workload components. If no existing resources meet the consolidation requirements or if it's more beneficial to move to a new resource, consider creating a new resource for consolidation.
+- *Evaluate consolidation viability*: Ensure functional and technical requirements support consolidation such as CPU, memory, growth. Avoid compromising requirements like performance, reliability, and security. For example, don't create an undesired cross-regional dependency or consolidate resources across preproduction and production environments.
+- *Estimate the cost*: Understand the effort and potential complications of consolidation. You should calculate costs, including resource, licensing, and operational expenses. Consider the implications, such as potential challenges in resource monitoring due to consolidation.
+- *Communicate and coordinate*: Ensure you inform all stakeholders about upcoming changes and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth implementation.
 
 :::image type="icon" source="../_images/risk.svg"::: **Risk**: Consider the effects of resource density, such as noisy neighbors, scale unit effects, and reduced redundancy. Resource consolidation is often too risky for mission and business critical workload flows.
 
@@ -60,17 +56,12 @@ Consolidating workload responsibility is about reducing the set of responsibilit
 
 Using external centralized resources refer to shared resources outside the workload environment. For example, an organization might have a centralized gateway that serves multiple workloads. The goal is to minimize duplication and overhead. Instead of your workload having a dedicated resource, you use a shared resource to optimize costs.
 
-**Assess the workload resources.** Evaluate the current state of the workload and identify any areas where consolidation could be beneficial.
-
-**Find external opportunities.** Survey your organization to locate any pre-existing centralized resources. These resources could be potential solutions for your workload. For example, instead of setting up an independent security information and event management (SIEM) tool, you could use a shared SIEM.
-
-**Consider change control.** Familiarize yourself with the process of managing changes to the centralized resource. You should include the approval workflow, testing protocols, and deployment methods. Analyze potential challenges with reduced control over resource modifications.
-
-**Estimate the cost.** Before moving to centralized resources, it's important to clearly quantify the expected savings against the costs associated with a transition. Weigh the cost-saving benefits against these risks to make an informed decision.
-
-**Communicate and coordinate.** Ensure that all stakeholders are informed about upcoming changes, their effect, and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth implementation. Establish a mechanism for continuous feedback between teams. It helps in addressing concerns, improving collaboration, and refining processes over time.
-
-**Document and track changes.** Maintain detailed documentation of all approved changes, including their scope, implementation steps, and any associated risks or issues. Use a centralized system or change management tool to track and monitor the status of changes throughout their lifecycle.
+- *Assess the workload resources*: Evaluate the current state of the workload and identify any areas where consolidation could be beneficial.
+- *Find external opportunities*: Survey your organization to locate any pre-existing centralized resources. These resources could be potential solutions for your workload. For example, instead of setting up an independent security information and event management (SIEM) tool, you could use a shared SIEM.
+- *Consider change control*: Familiarize yourself with the process of managing changes to the centralized resource. You should include the approval workflow, testing protocols, and deployment methods. Analyze potential challenges with reduced control over resource modifications.
+- *Estimate the cost*: Before moving to centralized resources, it's important to clearly quantify the expected savings against the costs associated with a transition. Weigh the cost-saving benefits against these risks to make an informed decision.
+- *Communicate and coordinate*: Ensure that all stakeholders are informed about upcoming changes, their effect, and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth implementation. Establish a mechanism for continuous feedback between teams. It helps in addressing concerns, improving collaboration, and refining processes over time.
+- *Document and track changes*: Maintain detailed documentation of all approved changes, including their scope, implementation steps, and any associated risks or issues. Use a centralized system or change management tool to track and monitor the status of changes throughout their lifecycle.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Over-consolidation can result in resource contention, leading to performance issues. Consolidation may limit the flexibility and agility of individual teams and workloads as they must adhere to centralized standards that could inhibit customization.
 
@@ -78,15 +69,11 @@ Using external centralized resources refer to shared resources outside the workl
 
 Centralizing workload responsibilities involves using specialized services provided by expert centralized teams. The goal is to using existing teams to offload responsibility. It not only helps with cost optimization but also ensures expertise in specific functions.
 
-**Evaluate team skills.** Assess the current skill set of your team. Identify any skill gaps or areas where delegating tasks to a centralized team would bring about cost efficiency.
-
-**Find available opportunities.** Explore your organization for available services, such as security operation team. Ensure that the centralized teams can accommodate the added responsibilities without compromising on quality.
-
-**Consider change control.** Familiarize yourself with how the centralized team handles changes—from approval workflows and testing protocols to deployment strategies. Recognize potential challenges that might arise from having less direct control over these functions.
-
-**Communicate and coordinate.** Ensure that all stakeholders are informed about upcoming changes, their effect, and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth transition. Establish a mechanism for continuous feedback between teams. It helps in addressing concerns, improving collaboration, and refining processes over time. The  teams should familiarize themselves with each other's processes, tools, and expectations. Consider a phased transition or pilot period to ease the shift and identify potential challenges early.
-
-**Document and track changes.** Maintain detailed documentation of all approved changes, including their scope, implementation steps, and any associated risks or issues. Use a centralized system or change management tool to track and monitor the status of changes throughout their lifecycle.
+- *Evaluate team skills*: Assess the current skill set of your team. Identify any skill gaps or areas where delegating tasks to a centralized team would bring about cost efficiency.
+- *Find available opportunities*: Explore your organization for available services, such as security operation team. Ensure that the centralized teams can accommodate the added responsibilities without compromising on quality.
+- *Consider change control*: Familiarize yourself with how the centralized team handles changes—from approval workflows and testing protocols to deployment strategies. Recognize potential challenges that might arise from having less direct control over these functions.
+- *Communicate and coordinate*: Ensure that all stakeholders are informed about upcoming changes, their effect, and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth transition. Establish a mechanism for continuous feedback between teams. It helps in addressing concerns, improving collaboration, and refining processes over time. The  teams should familiarize themselves with each other's processes, tools, and expectations. Consider a phased transition or pilot period to ease the shift and identify potential challenges early.
+- *Document and track changes*: Maintain detailed documentation of all approved changes, including their scope, implementation steps, and any associated risks or issues. Use a centralized system or change management tool to track and monitor the status of changes throughout their lifecycle.
 
 ## Azure facilitation
 
