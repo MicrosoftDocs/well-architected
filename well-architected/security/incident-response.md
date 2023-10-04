@@ -22,11 +22,11 @@ Most enterprises have a central security operations center (SOC). That team hand
 
 | Term | Definition |
 |---|---|
-|Incident |An event that indicates unauthorized access to a system.|
-|Incident response| A process that detects, responds to, and mitigates risks that are associated with an incident.|
 |Alert |A notification that contains information about an incident. |
 |Alert fidelity|The accuracy of the data that determines an alert. High-fidelity alerts contain the security context that's needed to take immediate actions. Low-fidelity alerts lack information or contain noise.|
-|False positive|An alert that indicates an incident, but the incident didn't happen. |
+|False positive|An alert that indicates an incident that didn't happen. |
+|Incident |An event that indicates unauthorized access to a system.|
+|Incident response| A process that detects, responds to, and mitigates risks that are associated with an incident.|
 |Triage|An incident response operation that analyzes security issues and prioritizes their mitigation.  |
 
 ## Key design strategies
@@ -37,23 +37,23 @@ You and your team perform incident response operations when there's a signal or 
 
 Security alerts need to reach the appropriate people on your team and in your organization. Establish a designated point of contact on your workload team to receive incident notifications. These notifications should include as much information as possible about the resource that's compromised and the system. The alert must include the next steps, so your team can expedite actions.
 
-It's recommended that you log and manage incident notifications and actions by using specialized tooling that keeps an audit trail. By using standard tools, you can preserve evidence that might be required for potential legal investigations. Look for opportunities to implement automation that can send notifications based on the responsibilities of accountable parties. Keep a clear chain of communication and reporting during an incident.
+We recommend that you log and manage incident notifications and actions by using specialized tooling that keeps an audit trail. By using standard tools, you can preserve evidence that might be required for potential legal investigations. Look for opportunities to implement automation that can send notifications based on the responsibilities of accountable parties. Keep a clear chain of communication and reporting during an incident.
 
 Take advantage of security information event management (SIEM) solutions and security orchestration automated response (SOAR) solutions that your organization provides. Alternatively, you can procure incident management tools and encourage your organization to standardize them for all workload teams.
 
 ### Investigate with a triage team
 
-The team member that receives an incident notification is responsible for setting up a triage process that involves the appropriate people based on the available data. The triage team, often called the *bridge team*, must agree on the mode and process of communication. Does this incident require asynchronous discussions or have bridge calls? How should the team track and communicate the progress of investigations?  Where can the team access incident assets?
+The team member that receives an incident notification is responsible for setting up a triage process that involves the appropriate people based on the available data. The triage team, often called the *bridge team*, must agree on the mode and process of communication. Does this incident require asynchronous discussions or bridge calls? How should the team track and communicate the progress of investigations?  Where can the team access incident assets?
 
 Incident response is a crucial reason to keep documentation up to date, like the architectural layout of the system, information at a component level, privacy or security classification, owners, and key points of contact. If the information is inaccurate or outdated, the bridge team wastes valuable time trying to understand how the system works, who's responsible for each area, and what the effect of the event might be.
 
-For further investigations, involve the appropriate people. You might include an incident manager, security officer, or workload-centric leads. To keep the triage focused, exclude people that are outside of the scope of the problem. Sometimes separate teams investigate the incident. There might be a team that initially investigates the issue and tries to mitigate the incident, and another specialized team that might perform forensics for a deep investigation to ascertain wide issues. You can quarantine the workload environment for the forensics team to do their investigations. In some cases, the same team might handle the entire investigation.
+For further investigations, involve the appropriate people. You might include an incident manager, security officer, or workload-centric leads. To keep the triage focused, exclude people that are outside of the scope of the problem. Sometimes separate teams investigate the incident. There might be a team that initially investigates the issue and tries to mitigate the incident, and another specialized team that might perform forensics for a deep investigation to ascertain wide issues. You can quarantine the workload environment to enable the forensics team to do their investigations. In some cases, the same team might handle the entire investigation.
 
 In the initial phase, the triage team is responsible for determining the potential vector and its effect on the confidentiality, integrity, and availability, or the CIA, of the system.
 
 Within the categories of CIA, assign an initial severity level that indicates the depth of the damage and the urgency of remediation. This level is expected to change over time as more information is discovered in the levels of triage.
 
-In the discovery phase, it's important to determine an immediate course of action and communication plans. Are there any changes to the running state of the system? How can the attack be contained to stop further exploitation? Does the team need to send out internal or external communication, such as a responsible disclosure? Consider detection and response time. You might have legal obligations to report some types of breaches to a regulatory authority within a specific time period, which is often hours or days.
+In the discovery phase, it's important to determine an immediate course of action and communication plans. Are there any changes to the running state of the system? How can the attack be contained to stop further exploitation? Does the team need to send out internal or external communication, such as a responsible disclosure? Consider detection and response time. You might be legally obligated to report some types of breaches to a regulatory authority within a specific time period, which is often hours or days.
 
 If you decide to shut down the system, the next steps lead to the workload's disaster recovery (DR) process.
 
@@ -73,9 +73,9 @@ Recovery metrics measure how long it takes to fix an issue. In the event of a sh
 
 ### Learn from an incident
 
-An incident uncovers gaps or vulnerable points in a design or implementation. It's an improvement opportunity that's driven by lessons in technical aspects, product development processes including testing, automation, and the effectiveness of the incident response process. Maintain detailed incident records, including actions taken, timelines, and findings.
+An incident uncovers gaps or vulnerable points in a design or implementation. It's an improvement opportunity that's driven by lessons in technical design aspects, automation, product development processes that include testing, and the effectiveness of the incident response process. Maintain detailed incident records, including actions taken, timelines, and findings.
 
-It's highly recommended that you conduct structured post-incident reviews, such as root-cause analysis and retrospectives. Track and prioritize the outcome of those reviews, and consider using what you learn in future workload designs.
+We highly recommended that you conduct structured post-incident reviews, such as root-cause analysis and retrospectives. Track and prioritize the outcome of those reviews, and consider using what you learn in future workload designs.
 
 Improvement plans should include updates to security drills and testing, like business continuity and disaster recovery (BCDR) drills. Use security compromise as a scenario for performing a BCDR drill. Drills can validate how the documented processes work. There shouldn't be multiple incident response playbooks. Use a single source that you can adjust based on the size of the incident and how widespread or localized the effect is. Drills are based on hypothetical situations. Conduct drills in a low-risk environment, and include the learning phase in the drills.
 
@@ -119,4 +119,4 @@ Cloud Adoption Framework for Azure provides guidance about incident response pla
 Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
-[Security checklist](checklist.md)
+> [Security checklist](checklist.md)
