@@ -23,10 +23,10 @@ This guide describes the recommendations for optimizing the cost of each workloa
 
 ## Key strategies
 
-Invest more in high-priority flows than in lower-priority flows. Aligning flow priority and spending could involve either decoupling flows that currently share the same resource. It could also involve combining flows that have similar requirements but are run on separate resources. For example, suppose you have a web application that includes multiple flows, such as user registration, login, and data processing. All of these flows run on a single server, despite having different resource needs. To optimize both costs and performance, you might:
+Invest more in high-priority flows than in lower-priority flows. Aligning flow priority and spending could involve either decoupling flows that currently share the same resource. It could also involve combining flows that have similar requirements but are run on separate resources. For example, suppose you have a web application that includes multiple flows, such as user registration, login, and data processing. All of these flows run on a single server, despite having different resource needs. To optimize both costs and performance, you might separate flows or combine flows:
 
-- *Decouple*: Decouple the user registration flow from the others and move it to a dedicated, lower-cost server. This flow is important but not resource-intensive, making it a good candidate for a less expensive server.
-- *Combine*: Combine the login and data processing flows, which both have higher resource requirements, and run them together on a high-performance server. Combining these flows allows the server to efficiently handle the resource-intensive needs of both flows. It optimizes performance and costs.
+- *Separate flows*: For example, you could decouple the user registration flow from the others and move it to a dedicated, lower-cost server. This flow is important but not resource-intensive, making it a good candidate for a less expensive server.
+- *Combine flows*: For example, you could coombine the login and data processing flows, which both have higher resource requirements, and run them together on a high-performance server. Combining these flows allows the server to efficiently handle the resource-intensive needs of both flows. It optimizes performance and costs.
 
 In a workload, there can be different types of flows or paths that need to be considered. This guide focuses on the following categories:
 
