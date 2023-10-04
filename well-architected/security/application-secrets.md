@@ -11,73 +11,66 @@ ms.topic: conceptual
 
 **Applies to this Well-Architected Framework Security checklist recommendation:**
 
-|[SE:09](checklist.md)|Protect application secrets by hardening their storage, restricting access and manipulation, and auditing those actions. Execute a reliable and regular rotation process that has the ability to do ad-hoc rotations for emergencies.|
+|[SE:09](checklist.md)| Protect application secrets by hardening their storage and restricting access and manipulation and by auditing those actions. Run a reliable and regular rotation process that can improvise rotations for emergencies.|
 |---|---|
 
 Improper handling of secrets can be catastrophic because it decreases attackers' costs. It can lead to data breaches, service disruption, regulatory violations, and other issues.
 
 This guide provides recommendations about securing sensitive information that's necessary for the applications to perform their function. Properly management of application secrets is crucial for maintaining the security and integrity of your application, workload and its associated data.
 
-
 **Definitions** 
 
-|Terms   |Definition   |
+|Term   |Definition   |
 |---------|---------|
-|Secret |  A confidential component of the system that facilitates communication between workload components. If leaked, secrets can cause a breach.|
-|Nonsecret |Information if leaked doesn't jeopardize the security posture of the workload.|
+|Certificates| Digital files that hold the public keys for encryption or decryption.|
 |Credentials | Information that's used to verify the identity of the publisher or consumer in a communication channel.|
-|Certificates|Digital files that hold the public keys for encryption or decryption.|
-|X.509| A standard that defines the format of public key certificates.|
-|Keys|A secret code that's used to lock or unlock encrypted data.|
-|Managed identity | An identity assigned to resources, whose operations are managed by Azure. |
-|Rotation     | The process of regularly updating secrets so that if compromised, the secret is only available for a limited time. |
-|Encryption|The process by which data is made unreadable and locked with a secret code.|
 |Credential scanning| The process of validating source code to make sure secrets aren't included.|
-
-An application secret is a confidential component of the system that facilitates access of a workload component or its dependency to another component that's in scope of the system.
+|Encryption| The process by which data is made unreadable and locked with a secret code.|
+|Key| A secret code that's used to lock or unlock encrypted data.|
+|Managed identity | An identity assigned to resources, whose operations are managed by Azure. |
+|Non-secret | Information that won't jeopardize the security posture of the workload if it's leaked.|
+|Rotation | The process of regularly updating secrets so that, if compromised, they are only available for a limited time. |
+|Secret |  A confidential component of the system that facilitates communication between workload components. If leaked, secrets can cause a breach.|
+|X.509| A standard that defines the format of public key certificates.|
 
 Credentials, such as API keys, OAuth tokens, SSH keys are typical examples of secrets. They can be static information that needs protection. Credentials can also be dynamically created at runtime, such as OAuth tokens that live on the client side. Dynamic secrets still need to be handled properly. You shouldn't rely on their transient nature as a security assurance and relax the safeguarding.
 
-Noncredential information can be sensitive too. For example, certificates and digital signature keys should be considered as secrets.
+Non-credential information can be sensitive too. For example, certificates and digital signature keys should be considered as secrets.
 
-> [!IMPORTANT] 
-> **Do not treat non-secrets like secrets**. Non-secret is information, if leaked doesn't jeopardize the security posture of the workload.
->
-> Secrets are subject to operational rigor. Using that level of diligence for non-secrets will accrue unnecessary costs.
+> [!IMPORTANT]
+> **Do not treat non-secrets like secrets**. Secrets are subject to operational rigor. Using that level of diligence for non-secrets will result in unnecessary costs.
 >
 > Application configuration settings are a fitting example of non-secrets, such as URLs for APIs that the application uses. This information shouldn't be stored with the application code or application secrets. Consider using a dedicated configuration management system such as Azure App Configuration. Using a dedicated secret store like Azure Key Vault for this purpose isn't recommended.
 
-Compliance requirements might explicitly cause configuration settings to be treated as application secrets, even when they aren't typically deemed as secret.
+Compliance requirements might explicitly cause configuration settings to be treated as application secrets, even when they aren't typically considered secret.
 
 ## Key design strategies
 
-Your secret management strategy should strive to **minimize secrets as much as possible** and integrate them into the environment by taking advantage of platform features. For example, if you use a managed identity for your application, access information is no longer embedded in connection strings, and it's safe to store the information in a configuration file.
+Your secret management strategy should strive to minimize secrets as much as possible and integrate them into the environment by taking advantage of platform features. For example, if you use a managed identity for your application, access information is no longer embedded in connection strings, and it's safe to store the information in a configuration file. Consider the following areas of concern before storing secrets:
 
-If you do need to store secrets, here are the primary areas of concern:
+- How do you create secrets and **keep them in secure storage** with strict access controls.
 
--   How do you create secrets and **keep them in secure storage** with strict access controls.
+- What's the operational aspect of secrets? **Secret rotation is a proactive operation** whereas revocation is reactive.
 
--   What's the operational aspect of secrets? **Secret rotation is a proactive operation** whereas revocation is reactive.
+- Are **only trusted identities allowed** to access secrets.
 
--   Are **only trusted identities allowed** to access secrets.
-
--   Do you maintain an **audit trail** to inspect and validate access.
+- Do you maintain an **audit trail** to inspect and validate access.
 
 By building a strategy around those points, you'll be able to prevent identity theft, exposure to information, and then avoid repudiation.
 
 ### Safe practices for secret management
 
-If possible, avoid creating secrets. Find ways to **delegate that responsibility to the platform**. For example, use the platform\'s built-in managed identities to handle credentials. Lesser secrets mean reduced surface area also less time spent on operations.
+If possible, avoid creating secrets by finding ways to delegate responsibility to the platform. For example, use the platform's built-in managed identities to handle credentials. Fewer secrets mean reduced surface area and less time spent on operations.
 
-It's recommended that keys have three distinct roles: user, administrator, and auditor to make sure **only trusted identities access secrets** with just the right level of permission. Educate developers, administrators, and other relevant personnel about the importance of secret management and security best practices.
+It's recommended that keys have three distinct roles: user, administrator, and auditor to make sure trusted identities access secrets with the appropriate level of permission. Educate developers, administrators, and other relevant personnel about the importance of secret management and security best practices.
 
-##### Distinct access using preshared keys
+#### Distinct access using preshared keys
 
 **Create distinct keys per consumer**. Don't share keys even if two consumers have the same access patterns or roles. Their scopes might change over time, and you won't be able to independently update permission. Also, you won't be able to distinguish usage patterns from one another.
 
-Distinct access makes revocation easier. If a consumer's key is compromised, it\'s easier to revoke/rotate that key without impacting other consumers.
+Distinct access makes revocation easier. If a consumer's key is compromised, it's easier to revoke/rotate that key without impacting other consumers.
 
-For example, a client communicates with a third-party API using a preshared key. If another client needs to access the same API, it must use another key.
+For example, a client communicates with a third-party API using a pre-shared key. If another client needs to access the same API, it must use another key.
 
 This guidance applies to different environments. The same key shouldn't be used for both preproduction and production environments. Create separate keys per environment.
 
@@ -103,27 +96,27 @@ Implement auditing and monitoring for secret access. **Log who accesses secrets 
 
 For information about logging from a security perspective, see [Recommendations on security monitoring and threat detection](./monitoring.md).
 
-##### Secret rotation
+#### Secret rotation
 
 **Have a process in place that maintains secret hygiene**. The longevity of the secret influences the operational procedures.
 
 To reduce the attack vectors, **secrets should be retired and replaced with new secrets**, as frequently as tolerable. Handle OAuth access tokens carefully, taking into consideration their time-to-live. The exposure window might need to be adjusted to a shorter period. **Refresh tokens must be stored securely with limited exposure to the application**. Renewed certificates should also use a new key. For information about refresh tokens, see [Secure OAuth 2.0 On-Behalf-Of refresh tokens for web services - Azure Example Scenarios](/azure/architecture/example-scenario/secrets/secure-refresh-tokens).
 
-Replace secrets after they\'ve reached the end of life, no longer used by the workload, or if they\'ve been compromised. Conversely, **don't retire secrets are in active use, unless it's an emergency**. You can determine its use by viewing access logs. Secret rotation processes shouldn't impact the reliability or performance of the workload. **Use strategies that build redundancy in secrets, consumers, access methods** so that rotation is done gracefully. For an example about how Azure Storage handles rotation, see [Manage account access keys - Azure Storage](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal).
+Replace secrets after they've reached the end of life, no longer used by the workload, or if they've been compromised. Conversely, don't retire secrets are in active use, unless it's an emergency. You can determine its use by viewing access logs. Secret rotation processes shouldn't impact the reliability or performance of the workload. **Use strategies that build redundancy in secrets, consumers, access methods** so that rotation is done gracefully. For an example about how Azure Storage handles rotation, see [Manage account access keys - Azure Storage](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal).
 
-**Rotation processes should be automated** and executed without any human interactions. Storing secrets in a secret management store that natively supports rotation concepts can simply this operational task.
+**Rotation processes should be automated** and deployed without any human interactions. Storing secrets in a secret management store that natively supports rotation concepts can simply this operational task.
 
 Your **disaster recovery plans should include secret recovery procedures**. Have a process for situations where a key get compromised (leaked) and needs to be regenerated on-demand. For example, a database user credential.
 
-##### Secret distribution
+#### Secret distribution
 
 As a secret generator or operator, you should be able to distribute secrets in a safe manner. Many organizations use tools to securely share secrets both within the organization or externally to partners. In absence of a tool, have a process to secure credential handoff to authorized recipients.
 
 ### Safe practices for using secrets
 
-##### Prevent hardcoding 
+#### Prevent hardcoding
 
-**Don\'t hard code secrets as static text**, in code artifacts such as application code, configuration files, and build-deployment pipelines. This is a high-risk practice that makes the code vulnerable because secrets are exposed to everyone with read access.
+Don't hard code secrets as static text in code artifacts such as application code, configuration files, and build-deployment pipelines. This is a high-risk practice that makes the code vulnerable because secrets are exposed to everyone with read access.
 
 You can avoid this situation **by using managed identities to eliminate the need to store credentials**. Your application uses its assigned identity to authenticate against other resources through the Identity Provider (IdP).
 
@@ -131,10 +124,10 @@ Test with mock secrets during development and testing to prevent accidental expo
 
 **Have tools that periodically and automatically detect exposed secrets** in your application code and build artifacts. Use git pre-commit hooks to use tooling that will scan for credentials before source code commits happen. Review and sanitize application logs regularly to ensure that no secrets are inadvertently recorded. You can reinforce detection through processes, such as peer reviews.
 
-> [!NOTE] 
+> [!NOTE]
 > In case the scanning tools discover a secret, that secret must be considered as compromised and revoked.
 
-##### Respond to secret rotation
+#### Respond to secret rotation
 
 As a workload owner, you need to **understand the secret rotation plan** and policies so that you can incorporate the new secret with minimal disruption to the users.
 
@@ -148,11 +141,11 @@ Work with the operations team and **be part of the change management process**. 
 
 ## Azure facilitation
 
-##### Secret storage
+### Secret storage
 
-Store all secrets in Azure's secret management system, Azure Key Vault, Azure Managed HSM, and others. For more information, see [How to choose the right key management solution - How to choose between Azure Key Vault, Azure Managed HSM, Azure Dedicated HSM, and Azure Payment HSM](/azure/security/fundamentals/key-management-choose).
+Store all secrets in Azure's secret management system, Azure Key Vault, Azure Managed HSM, and others. For more information, see [How to choose the right key management solution](/azure/security/fundamentals/key-management-choose).
 
-##### Identity-based access control
+### Identity-based access control
 
 Azure Active Directory (Azure AD) and managed identities helps minimize the need for secrets.
 
@@ -162,7 +155,7 @@ Use Azure role-based access controls (RBAC) to assign permissions to users, grou
 
 To secure access to your key vaults, control permissions to keys and secrets through an access model. For more information, reference [Access model overview](/azure/key-vault/general/secure-your-key-vault#access-model-overview).
 
-##### Secret exposure detection
+### Secret exposure detection
 
 Have processes that periodically detect exposed keys in your application code. An option is Credential Scanner. For information about the configuring task, reference [Credential Scanner task](/azure/security/develop/security-code-analysis-customize#credential-scanner-task).
 
@@ -174,15 +167,14 @@ Secret scanning tools like [GitHub Secret Scanner](https://docs.github.com/en/c
 
 Defender for Cloud also provides capabilities to scan secrets in your source code and your build output. For more information, see [Detect exposed secrets in code - Microsoft Defender for Cloud](/azure/defender-for-cloud/detect-exposed-secrets)
 
-There are other extensions that you can install in the deployment pipelines. For more information, see these articles:
+## Related links
 
-[Configure the Microsoft Security DevOps Azure DevOps extension - Microsoft Defender for Cloud](/azure/defender-for-cloud/azure-devops-extension)
-
-[Configure GitHub Advanced Security for Azure DevOps features - Azure Repos](/azure/devops/repos/security/configure-github-advanced-security-features)
+- [Configure the Microsoft Security DevOps Azure DevOps extension](/azure/defender-for-cloud/azure-devops-extension)
+- [Configure GitHub Advanced Security for Azure DevOps features](/azure/devops/repos/security/configure-github-advanced-security-features)
 
 ## Security checklist
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Security checklist](checklist.md)
