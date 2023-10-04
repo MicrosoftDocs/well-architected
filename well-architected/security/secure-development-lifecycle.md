@@ -1,5 +1,5 @@
 ---
-title: Development lifecycle security recommendations
+title: Recommendations for securing the development lifecycle
 description: Learn about security recommendations for the development lifecycle. Ensure that your code and the process of developing code are free of security defects to provide guarantees of confidentiality, integrity, and availability.
 author: PageWriter-MSFT
 ms.author: prwilk 
