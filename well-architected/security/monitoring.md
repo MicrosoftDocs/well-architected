@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[SE:10](checklist.md)|Implement a holistic monitoring strategy that relies on modern threat detection mechanisms that can be integrated with the platform. Mechanisms should reliably alert for triage and send signals into existing SecOps processes.|
 |---|---|
 
-This guide describes the recommendations for monitoring and threat detection. Monitoring is fundamentally a process of **getting information about events that have already occurred**. Security monitoring is a practice of capturing information at different altitudes of the workload (infrastructure, application, operations) to **gain awareness of suspicious activities**. The goal is to predict incidents and learn from past events. Monitoring data provides the basis of post-incident analysis of what transpired to help incident response and forensic investigations.
+This guide describes the recommendations for monitoring and threat detection. Monitoring is fundamentally a process of **getting information about events that have already occurred**. Security monitoring is a practice of capturing information at different altitudes of the workload (infrastructure, application, operations) to **gain awareness of suspicious activities**. The goal is to predict incidents and learn from past events. Monitoring data provides the basis of post-incident analysis of what ocurred to help incident response and forensic investigations.
 
 Monitoring is an Operational Excellence approach that's applied across all Well-Architected Framework pillars. This guide provides recommendations only from a security perspective. General concepts of monitoring, like code instrumentation, data collection, and analysis, are out of scope for this guide. For information about core monitoring concepts, see [Recommendations for designing and building an observability framework](../operational-excellence/observability.md).
 
@@ -26,7 +26,7 @@ Monitoring is an Operational Excellence approach that's applied across all Well-
 |Security information and event management (SIEM)| An approach that uses built-in threat detection and intelligence capabilities based on data that's aggregated from multiple sources.|
 | Threat detection |A strategy for detecting deviations from expected actions by using collected, analyzed, and correlated data. |
 | Threat intelligence |A strategy for interpreting threat detection data to detect suspicious activity or threats by examining patterns. |
-| Threat prevention |Security controls that are placed in a workload at various levels to protect its assets. |
+| Threat prevention |Security controls that are placed in a workload at various altitudes to protect its assets. |
 
 ## Key design strategies
 
@@ -34,21 +34,21 @@ The main purpose of security monitoring is **threat detection**. The primary obj
 
 Monitoring can be approached from various perspectives: 
 
-- **Monitor at various altitudes.** Observing from **various altitudes** refers to the process of getting information about user flows, data access, identity, networking, and even the operating system. Each of these areas offers unique insights that can help you identify deviations from expected behaviors that are established against the security baseline. Conversely, continuously monitoring a system and applications over time can **help establish that baseline posture**. For example, you might typically see around 1,000 sign-in attempts in your identity system every hour. If your monitoring detects a spike of 50,000 sign-in attempts during a short period, that might indicate that an attacker is trying to gain access to your system.
+**Monitor at various altitudes.** Observing from **various altitudes** is the process of getting information about user flows, data access, identity, networking, and even the operating system. Each of these areas offers unique insights that can help you identify deviations from expected behaviors that are established against the security baseline. Conversely, continuously monitoring a system and applications over time can **help establish that baseline posture**. For example, you might typically see around 1,000 sign-in attempts in your identity system every hour. If your monitoring detects a spike of 50,000 sign-in attempts during a short period, that might indicate that an attacker is trying to gain access to your system.
 
-- **Monitor at various scopes of impact.** It's critical to **observe the application and the platform**. Assume an application user accidentally gets escalated privileges or a security breach occurs. If the user performs actions beyond their designated scope, the impact might be confined to actions that other users can perform. 
+**Monitor at various scopes of impact.** It's critical to **observe the application and the platform**. Assume an application user accidentally gets escalated privileges or a security breach occurs. If the user performs actions beyond their designated scope, the impact might be confined to actions that other users can perform. 
    
-   However, if an internal entity compromises a database, the extent of the potential damage is uncertain. 
+However, if an internal entity compromises a database, the extent of the potential damage is uncertain. 
 
-   If a compromise occurs on the Azure resource side, the impact could be global, affecting all entities that interact with the resource. 
+If a compromise occurs on the Azure resource side, the impact could be global, affecting all entities that interact with the resource. 
 
-   The blast radius or impact scope could be significantly different, depending on which of these scenarios occurs. 
+The blast radius or impact scope could be significantly different, depending on which of these scenarios occurs. 
 
-- **Use specialized monitoring tools.** It's critical to invest in **specialized tools** that can continuously scan for anomalous behavior that might indicate an attack. Most of these tools have **threat intelligence capabilities** that can perform predictive analysis based on a large volume of data and known threats. Most tools aren't stateless and incorporate a deep understanding of telemetry in a security context.
+**Use specialized monitoring tools.** It's critical to invest in **specialized tools** that can continuously scan for anomalous behavior that might indicate an attack. Most of these tools have **threat intelligence capabilities** that can perform predictive analysis based on a large volume of data and known threats. Most tools aren't stateless and incorporate a deep understanding of telemetry in a security context.
 
-   The tools need to be platform-integrated or at least platform-aware to get deep signals from the platform and predict with high fidelity. They must be able to generate alerts in a timely manner with enough information to conduct proper triage. Having too many diverse tools can lead to complexity. 
+The tools need to be platform-integrated or at least platform-aware to get deep signals from the platform and make predictions with high fidelity. They must be able to generate alerts in a timely manner with enough information to conduct proper triage. Using too many diverse tools can lead to complexity. 
 
-- **Use monitoring for incident response.** Aggregated data, transformed into actionable intelligence, **enables swift and effective reactions** to incidents. Monitoring **helps with post-incident activities**. The goal is to collect enough data to analyze and understand what happened. The process of monitoring captures information on past events to enhance reactive capabilities and potentially predict future incidents.
+**Use monitoring for incident response.** Aggregated data, transformed into actionable intelligence, **enables swift and effective reactions** to incidents. Monitoring **helps with post-incident activities**. The goal is to collect enough data to analyze and understand what happened. The process of monitoring captures information on past events to enhance reactive capabilities and potentially predict future incidents.
 
 The following sections provide recommended practices that incorporate the preceding monitoring perspectives.
 
@@ -91,7 +91,7 @@ Capturing DNS flows is a significant requirement for many organizations. For ins
 
 It's important to monitor unexpected DNS requests or DNS requests that are directed toward known command and control endpoints.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Logging all network activities can result in large amount of data.** Every request from layer 3 can be recorded in a flow log, including every transaction that crosses a subnet boundary. Unfortunately, it's not possible to capture only adverse events because they can only be identified post-occurrence. Make strategic decisions about the type of events to capture and how long to store them. If you're not careful, managing the data can be overwhelming. There's also a tradeoff on the cost of storing that data.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Logging all network activities can result in large amount of data.** Every request from layer 3 can be recorded in a flow log, including every transaction that crosses a subnet boundary. Unfortunately, it's not possible to capture only adverse events because they can only be identified after they occur. Make strategic decisions about the type of events to capture and how long to store them. If you're not careful, managing the data can be overwhelming. There's also a tradeoff on the cost of storing that data.
 
 Because of the tradeoffs, you should consider whether the benefit of network monitoring of your workload is sufficient to justify the costs. If you have a web application solution with a high request volume and your system makes extensive use of managed Azure resources, the cost might outweigh the benefits. On the other hand, if you have a solution that's designed to use virtual machines with various ports and applications, it might be important to capture and analyze network logs.
 
@@ -120,13 +120,13 @@ In your test plans, **include the validation of logging and alerting** as priori
 
 Data collected from these monitoring activities must be stored in data sinks where it can be thoroughly **examined, normalized, and correlated**. Security data should be persisted outside the system's own data stores. Monitoring sinks, whether they're localized or central, must outlive the data sources. The **sinks can't be ephemeral** because sinks are the source for intrusion detection systems.
 
-Networking logs can be verbose and take up storage. **Explore different tiers in storage systems**. Logs can naturally transition to colder storage over time. This approach is beneficial because older flow logs typically aren't used actively and are only needed on-demand. This method ensures efficient storage management while ensuring  that you can access historical data when you need to.
+Networking logs can be verbose and take up storage. **Explore different tiers in storage systems**. Logs can naturally transition to colder storage over time. This approach is beneficial because older flow logs typically aren't used actively and are only needed on demand. This method ensures efficient storage management while also ensuring  that you can access historical data when you need to.
 
 The flows of your workload are typically a composite of multiple logging sources. Monitoring data must be **analyzed intelligently across all those sources**. For example, your firewall will only block traffic that reaches it. If you have a network security group that has already blocked certain traffic, that traffic isn't visible to the firewall. To reconstruct the sequence of events, you need to aggregate data from all components that are in flow and then aggregate data from all flows. This data is particularly useful in a post-incident response scenario when you're trying to understand what happened. Accurate timekeeping is essential. For security purposes, all systems need to use a network time source so that they're always in sync.
 
 ##### Centralized threat detection with correlated logs
 
-You can use a system like security information and event management (SIEM) to **consolidate security data in a central location** where it can be correlated across various services. It has **built-in threat detection** mechanisms. These systems have the capability to **connect to external feeds** to obtain threat intelligence data. Microsoft, for example, publishes threat intelligence data that you can used. You can also buy threat intelligence feeds from other providers, like Anomali and FireEye. These feeds can provide valuable insights and enhance your security posture. For threat insights from Microsoft, see [Security Insider](https://www.microsoft.com/security/business/security-insider/). 
+You can use a system like security information and event management (SIEM) to **consolidate security data in a central location** where it can be correlated across various services. These systems have **built-in threat detection** mechanisms. They can **connect to external feeds** to obtain threat intelligence data. Microsoft, for example, publishes threat intelligence data that you can use. You can also buy threat intelligence feeds from other providers, like Anomali and FireEye. These feeds can provide valuable insights and enhance your security posture. For threat insights from Microsoft, see [Security Insider](https://www.microsoft.com/security/business/security-insider/). 
 
 A SIEM system can **generate alerts** based on correlated and normalized data. These alerts are a significant resource during an incident response process.
 
@@ -142,15 +142,15 @@ By combining several smaller tools, you can emulate some functions of a SIEM sys
 
 **Be proactive about threat detection** and be vigilant for signs of abuse, like identity brute force attacks on an SSH component or an RDP endpoint. Although external threats might generate a lot of noise, especially if the application is exposed to the internet, **internal threats are often a greater concern**. An unexpected brute force attack from a trusted network source or an inadvertent misconfiguration, for instance, should be investigated immediately.
 
-**Keep up with your hardening practices.** Monitoring isn't a substitute for proactively hardening your environment. A larger surface area is prone to more attacks. Tighten controls as much as practice. Detect and disable unused accounts, remove unused ports, and user a web application firewall, for example. For more information about hardening techniques, see [Recommendations on security hardening](hardening.md).
+**Keep up with your hardening practices.** Monitoring isn't a substitute for proactively hardening your environment. A larger surface area is prone to more attacks. Tighten controls as much as practice. Detect and disable unused accounts, remove unused ports, and use a web application firewall, for example. For more information about hardening techniques, see [Recommendations on security hardening](hardening.md).
 
-**Signature-based detection** can inspect a system in detail. It involves looking for signs or correlations between activities that might indicate a potential attack. A detection mechanism might identify certain characteristics that are indicative of a specific type of attack. It might not always be possible to directly detect the command-and-control mechanism of an attack. However, there are often hints or patterns associated with a particular command and control process. For example, an attack might be indicated by a certain flow rate from a request perspective, or it might frequently access domains that have specific endings.
+**Signature-based detection** can inspect a system in detail. It involves looking for signs or correlations between activities that might indicate a potential attack. A detection mechanism might identify certain characteristics that are indicative of a specific type of attack. It might not always be possible to directly detect the command-and-control mechanism of an attack. However, there are often hints or patterns associated with a particular command-and-control process. For example, an attack might be indicated by a certain flow rate from a request perspective, or it might frequently access domains that have specific endings.
 
-Detect **anomalous user access patterns** so that you can identify and investigate deviations from expected patterns. This involves comparing current user behavior with past behavior to spot anomalies. Although it might not be feasible to perform this task manually, you can threat intelligence tools to do it. Invest in **User and Entity Behavior Analytics (UEBA) tools** that collect user behavior from monitoring data and analyze it. These tools can often do predictive analysis that maps suspicious behaviors to potential types of attack.
+Detect **anomalous user access patterns** so that you can identify and investigate deviations from expected patterns. This involves comparing current user behavior with past behavior to spot anomalies. Although it might not be feasible to perform this task manually, you can use threat intelligence tools to do it. Invest in **User and Entity Behavior Analytics (UEBA) tools** that collect user behavior from monitoring data and analyze it. These tools can often perform predictive analysis that maps suspicious behaviors to potential types of attack.
 
 **Detect threats during pre-deployment and post-deployment stages.** During the pre-deployment phase, incorporate vulnerability scanning into pipelines and take necessary actions based on the results. Post-deployment, continue to conduct vulnerability scanning. You can use tools like Defender for Containers, which scans container images. Include the results in the collected data. For information about secure development practices, see [Recommendations for using safe deployment practices](../operational-excellence/safe-deployments.md). 
 
-**Take advantage of the platform-provided detection mechanisms and measures.** For example, Azure Firewall can analyze traffic and block connections to untrusted destinations. Azure also provides ways to detect and protect against distributed denial-of-service (DDoS) attacks. 
+**Take advantage of platform-provided detection mechanisms and measures.** For example, Azure Firewall can analyze traffic and block connections to untrusted destinations. Azure also provides ways to detect and protect against distributed denial-of-service (DDoS) attacks. 
 
 ## Azure facilitation
 
@@ -191,7 +191,7 @@ Review all logs, including raw traffic, from your network devices.
 
    Packet capture tracks traffic in and out of virtual machines. You can use it to run proactive captures based on defined network anomalies, including information about network intrusions.
 
-   For an example, see [Scenario: Get alerts when VM is sending you more TCP segments than usual](/azure/network-watcher/network-watcher-alert-triggered-packet-capture).
+   For an example, see [Monitor networks proactively with alerts and Azure Functions using Packet Capture](/azure/network-watcher/network-watcher-alert-triggered-packet-capture).
 
 ### Identity
 
@@ -220,7 +220,7 @@ DevOps advocates change management of workloads via continuous integration and c
 - [Identify advanced threats with User and Entity Behavior Analytics (UEBA) in Microsoft Sentinel](/azure/sentinel/identify-threats-with-entity-behavior-analytics)
 - [Flow logs](/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 - [Packet capture](/azure/network-watcher/network-watcher-alert-triggered-packet-capture)
-- [Scenario: Get alerts when VM is sending you more TCP segments than usual](/azure/network-watcher/network-watcher-alert-triggered-packet-capture)
+- [Monitor networks proactively with alerts and Azure Functions using Packet Capture](/azure/network-watcher/network-watcher-alert-triggered-packet-capture)
 - [What is Identity Protection?](/azure/active-directory/reports-monitoring/concept-user-at-risk) 
 - [Identity Protection](/azure/active-directory/active-directory-identityprotection)
 - [riskDetection](/graph/api/resources/riskdetection) 
