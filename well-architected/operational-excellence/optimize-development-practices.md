@@ -32,10 +32,10 @@ Optimizing your development practices starts with standardization of tools and p
 
     -   Code development
 
-In some cases, one tool or suite of tools may provide many functions, but ensure that you understand your tools capabilities and limitations to make sure that they meet your requirements across functions.
-
-When deciding on whether to invest in more expensive tools or premium versions of tools, weigh the time and effort involved in developing your own solutions that would otherwise be provided by those tools vs the one-time and recurring costs. In most cases, the off-the-shelf tools will be the better value to your team.
-
+    In some cases, one tool or suite of tools may provide many functions, but ensure that you understand your tools capabilities and limitations to make sure that they meet your requirements across functions.
+    
+    When deciding on whether to invest in more expensive tools or premium versions of tools, weigh the time and effort involved in developing your own solutions that would otherwise be provided by those tools vs the one-time and recurring costs. In most cases, the off-the-shelf tools will be the better value to your team.
+    
 -   Use low-code, no-code, and artificial intelligence (AI) tools when practical. Low-code and no-code tools not only save experienced developers time by allowing them to easily plug in functionality rather than going through the entire code development process, but they also allow other workload team members that may not be trained developers to contribute to the operation of the workload. AI tools can help with code development, review, and optimization.
 
 -   Standardize your branching strategy, preferring a trunk-based model. Trunk-based branching keeps the workload development team in sync at all times and encourages continuous delivery. Define branch policies to protect the important branches, like main. See the [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance) article for detailed guidance about building an effective branching strategy and the [Branch policies and settings](/azure/devops/repos/git/branch-policies) article for guidance about creating branch policies.
@@ -50,7 +50,7 @@ When deciding on whether to invest in more expensive tools or premium versions o
 
     -   **Change failure rate**: the percentage of changes that result in a failure of some kind
 
-Visualize KPIs using dashboards or other reporting tools to help stakeholders and the workload team easily track velocity.
+    Visualize KPIs using dashboards or other reporting tools to help stakeholders and the workload team easily track velocity.
 
 -   Standardize the way that the workload team writes, reviews, and documents code through a style guide. A standard style will make collaboration easier and help with on-boarding new developers. New developers need to know how the workload team operates to be effective and standards that are clearly laid out in a style guide will ease their ramping process. The style guide should define standards for development languages, libraries, frameworks and other conventions.
 
@@ -92,13 +92,13 @@ Visualize KPIs using dashboards or other reporting tools to help stakeholders an
 
     -   Azure Pipelines provides build and release services to support continuous integration and delivery of your applications.
 
-    -   [Azure Boards](/azure/devops/boards/get-started/what-is-azure-boards?view=azure-devops) is a web-based work management tool that supports Agile practices like Scrum and Kanban boards.
+    -   [Azure Boards](/azure/devops/boards/get-started/what-is-azure-boards?view=azure-devops&preserve-view=true) is a web-based work management tool that supports Agile practices like Scrum and Kanban boards.
 
-    -   Azure Repos is a version control tool that supports the [Git](/azure/devops/repos/get-started/what-is-repos?view=azure-devops#git) distributed version control system and the [Team Foundation Version Control](/azure/devops/repos/get-started/what-is-repos?view=azure-devops#tfvc) centralized version control system.
+    -   Azure Repos is a version control tool that supports the [Git](/azure/devops/repos/get-started/what-is-repos?view=azure-devops#git&preserve-view=true) distributed version control system and the [Team Foundation Version Control](/azure/devops/repos/get-started/what-is-repos?view=azure-devops#tfvc&preserve-view=true) centralized version control system.
 
-    -   [Azure Test Plans](/azure/devops/test/overview?view=azure-devops) is an easy-to-use, browser-based test management solution that provides all the capabilities required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
+    -   [Azure Test Plans](/azure/devops/test/overview?view=azure-devops&preserve-view=true) is an easy-to-use, browser-based test management solution that provides all the capabilities required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
 
-    -   [Azure Artifacts](/azure/devops/artifacts/start-using-azure-artifacts?view=azure-devops&tabs=nuget%2Corgstorage) enables developers to share their code efficiently and manage all their packages from one place.
+    -   [Azure Artifacts](/azure/devops/artifacts/start-using-azure-artifacts?view=azure-devops&preserve-view=true) enables developers to share their code efficiently and manage all their packages from one place.
 
 -   [GitHub for Actions for Azure](https://azure.github.io/actions/) allows you to automate CI/CD processes and integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production. 
 
