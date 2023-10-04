@@ -3,12 +3,12 @@
 		{
 			"source_path": "well-architected/devops/devops-patterns.md",
 			"redirect_url": "/azure/well-architected/operational-excellence/design-patterns",
-			"redirect_document_id": false
+			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/resiliency/reliability-patterns.md",
 			"redirect_url": "/azure/well-architected/reliability/design-patterns",
-			"redirect_document_id": false
+			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/security/security-patterns.md",
@@ -573,7 +573,7 @@
 		{
 			"source_path": "well-architected/scalability/principles.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/principles",
-			"redirect_document_id": false
+			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/scalability/test-checklist.md",
@@ -588,7 +588,7 @@
 		{
 			"source_path": "well-architected/scalability/tradeoffs.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/tradeoffs",
-			"redirect_document_id": false
+			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/resiliency/app-design-error-handling.md",
