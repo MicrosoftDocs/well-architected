@@ -70,7 +70,7 @@ This guidance applies to different environments. The same key shouldn't be used 
 
 For more information, see [Recommendations for identity and access management](identity-access.md).
 
-#### Secret store
+#### Secret storage
 
 If you need to store application secrets, keep them outside the source code for easy periodic rotation. Use a secret management system, like Azure Key Vault. Secret management systems are designed to store secrets in a hardened environment, encrypt at rest and in transit, and audit access and changes to secrets.
 
@@ -114,7 +114,7 @@ Don't hard code secrets as static text in code artifacts such as application cod
 
 You can avoid this situation by using managed identities to eliminate the need to store credentials. Your application uses its assigned identity to authenticate against other resources through the Identity Provider (IdP). Test in non-production environments with mock secrets during development to prevent accidental exposure of real secrets.
 
-**Have tools that periodically and automatically detect exposed secrets** in your application code and build artifacts. Use git pre-commit hooks to use tooling that will scan for credentials before source code commits happen. Review and sanitize application logs regularly to help ensure that no secrets are inadvertently recorded. You can also reinforce detection through peer reviews.
+Implement tools that periodically detect exposed secrets in your application code and build artifacts. You can add these tools as git pre-commit hooks that scan for credentials before source code commits happen. Review and sanitize application logs regularly to help ensure that no secrets are inadvertently recorded. You can also reinforce detection through peer reviews.
 
 > [!NOTE]
 > If the scanning tools discover a secret, that secret must be considered as compromised and revoked.
@@ -125,37 +125,34 @@ As a workload owner, you need to **understand the secret rotation plan** and pol
 
 When the secret is getting rotated, there might be a window when the old secret isn't valid, but the new secret hasn't been placed. During that window, the component that the application is trying to reach won't acknowledge the request. The application can mitigate by building retry logic in the code. You can also use concurrent access patterns that allow you to have multiple credentials that you can safely change, one without impacting the other.
 
-Work with the operations team and be part of the change management process. You also need to let the credential owners know when you decommission a part of the application that uses credentials that are no longer needed.
+Work with the operations team and be part of the change management process. You should let credential owners know when you decommission a part of the application that uses credentials that are no longer needed.
 
 **Integrate secret retrieval and configuration into your automated deployment** pipeline. This ensures secrets are automatically fetched during deployment. You can also use secret injection patterns to insert secrets into application code or configuration at runtime. This helps prevent secrets from being accidentally exposed to logs or version control.
 
 ## Azure facilitation
 
-### Secret storage
+### Store secrets with Azure Key Vault
 
-Store all secrets in Azure's secret management system, Azure Key Vault, Azure Managed HSM, and others. For more information, see [How to choose the right key management solution](/azure/security/fundamentals/key-management-choose).
+Store secrets in Azure's secret management system, Key Vault, Azure Managed HSM, and others. For more information, see [How to choose the right key management solution](/azure/security/fundamentals/key-management-choose).
 
 ### Identity-based access control
 
-Azure Active Directory (Azure AD) and managed identities helps minimize the need for secrets.
-
-It offers secure and usable experience for access control with built-in mechanisms for handling key rotation, monitoring for anomalies, and others.
+Azure Active Directory (Azure AD) and managed identities help minimize the need for secrets. Azure AD offers secure and usable experience for access control with built-in mechanisms for handling key rotation, monitoring for anomalies, and more.
 
 Use Azure role-based access controls (RBAC) to assign permissions to users, groups, and applications at a certain scope.
 
-To secure access to your key vaults, control permissions to keys and secrets through an access model. For more information, reference [Access model overview](/azure/key-vault/general/secure-your-key-vault#access-model-overview).
+To secure access to your key vaults, control permissions to keys and secrets using an access model. For more information, see [Access model overview](/azure/key-vault/general/secure-your-key-vault#access-model-overview).
 
 ### Secret exposure detection
 
-Have processes that periodically detect exposed keys in your application code. An option is Credential Scanner. For information about the configuring task, reference [Credential Scanner task](/azure/security/develop/security-code-analysis-customize#credential-scanner-task).
+Implement processes that detect suspicious activity and periodically check for exposed keys in your application code. Some options include:
 
-Microsoft Defender for Key Vault can detect threats and suspicious activities. For details, see [Microsoft Defender for Key Vault - the benefits and features - Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-key-vault-introduction)
+- [Credential Scanner task](/azure/security/develop/security-code-analysis-customize#credential-scanner-task).
+- [Detect exposed secrets in code with Defender for Cloud](/azure/defender-for-cloud/detect-exposed-secrets).
+- [Microsoft Defender for Key Vault](/azure/defender-for-cloud/defender-for-key-vault-introduction).
+- [GitHub Secret Scanner](https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning)
 
 Make sure no keys and secrets for any environment types (Dev, Test, or Production) are stored in application configuration files or CI/CD pipelines. Developers can use [Visual Studio Connected Services](/azure/key-vault/general/vs-key-vault-add-connected-service) or local-only files to access credentials.
-
-Secret scanning tools like [GitHub Secret Scanner](https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning) can be used to scan for existing hard-coded credentials. Add the scanning process in your continuous integration (CI) pipeline to prevent new hard-coded credentials from being added.
-
-Defender for Cloud also provides capabilities to scan secrets in your source code and your build output. For more information, see [Detect exposed secrets in code - Microsoft Defender for Cloud](/azure/defender-for-cloud/detect-exposed-secrets)
 
 ## Related links
 
