@@ -44,7 +44,7 @@ Understanding workload flows aids in reallocating resources effectively. The goa
 
 ### Prioritize the flows
 
-Flow prioritization involves classifying flows based on their influence on business outcomes, implications on user experience, and the resources they consume. Critical flows might have higher expectations around availability, recovery, and performance due to the criticality of associated business scenarios and functionality. They're crucial for business operations. They often require higher levels of availability, faster recovery times, and better performance to meet workload objectives.
+Flow prioritization involves classifying flows based on their influence on business outcomes, implications on user experience, and the resources they consume. Critical flows might have higher expectations around availability, recovery, and performance due to the criticality of associated business scenarios and functionality. They often require higher levels of availability, faster recovery times, and better performance to meet workload objectives. By prioritizing flows, you can align spending to flow priority. To prioritize flows, consider the following steps:
 
 - *Identify flow value*: When optimizing workload flow costs, it's important to identify the flow that provides the most value. You don’t want to spend more than a flow is worth. Instead of simply cutting costs, consider shifting costs to prioritize the more valuable flows. For example, your checkout flow is critical for business, but the purchase history isn't. You should allocate more resources and budget to the checkout flow.
 
