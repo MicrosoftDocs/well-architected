@@ -54,7 +54,7 @@ Tuning the autoscaling policy involves refining autoscaling to react to load cha
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Lowering the number of scaling events raises the chances of encountering issues related to scaling. It means you're eliminating the extra cushion or buffer that could help manage potential problems or delays from scaling.
 
-### Use event-based scaling
+### Consider event-based scaling
 
 Event-driven autoscaling allows the application to dynamically adjust resources based on specific events or triggers rather than traditional metrics like CPU or memory utilization. For example, Kubernetes event-driven autoscaling (KEDA) can scale applications based on scalers such as the length of a Kafka topic. Precision helps prevent unnecessary scaling fluctuations, resource waste, and ultimately optimizes costs. To implement this guidance, the following steps can be taken:
 
