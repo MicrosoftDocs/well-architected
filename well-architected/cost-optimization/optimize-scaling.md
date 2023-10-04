@@ -87,7 +87,7 @@ Offloading demand refers to the practice of distributing or transferring resourc
 
 #### Reduce demand
 
-Reducing resource refers to implementing strategies and techniques that help minimize the utilization of resources in a workload. Offloading demand shifts demand to other resources. Reducing demand decreases demand on the workload. Reducing demand allows you to avoid overprovisioning resources and paying for unused or underutilized capacity. You should use code-level design patterns to reduce the demand on workload resources. To reduce demand through design patterns, the following steps can be taken:
+Reducing resource demand refers to implementing strategies and techniques that help minimize the utilization of resources in a workload. Offloading demand shifts demand to other resources. Reducing demand decreases demand on the workload. Reducing demand allows you to avoid overprovisioning resources and paying for unused or underutilized capacity. You should use code-level design patterns to reduce the demand on workload resources. To reduce demand through design patterns, the following steps can be taken:
 
 - *Understand design patterns*: Familiarize yourself with various design patterns that promote resource optimization (see list in the following paragraph).
 - *Analyze workload requirements*: Assess the specific requirements of your workload, including its expected demand patterns, peak loads, and resource needs.
