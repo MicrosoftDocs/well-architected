@@ -99,9 +99,8 @@ Backups involve creating periodic snapshots or copies of data and storing them s
 
 File formats influence cost optimization by optimizing input/output (I/O) patterns and query patterns. Some file Different file formats cater to various scenarios.
 
-**Avro:** Avro file format is a good choice when dealing with more write-heavy I/O patterns or when query patterns necessitate fetching multiple rows of records in their entirety. Its serialization and deserialization processes are efficient, making it compatible with message buses like Kafka that produce a series of events and messages in quick succession.
-
-**Parquet and ORC**: In contrast, the Parquet and ORC file formats excel in scenarios characterized by read-heavy I/O patterns or when the query patterns zero in on specific columns of the records. Both formats are columnar storage, which means that data is stored column-by-column rather than row-by-row. It allows for improved compression and more efficient read operations, as only the required columns need to be fetched, avoiding unnecessary I/O for irrelevant data.
+- *Consider using Avro*: Avro file format is a good choice when dealing with more write-heavy I/O patterns or when query patterns necessitate fetching multiple rows of records in their entirety. Its serialization and deserialization processes are efficient, making it compatible with message buses like Kafka that produce a series of events and messages in quick succession.
+- *Consider using parquet and ORC*: In contrast, the Parquet and ORC file formats excel in scenarios characterized by read-heavy I/O patterns or when the query patterns zero in on specific columns of the records. Both formats are columnar storage, which means that data is stored column-by-column rather than row-by-row. It allows for improved compression and more efficient read operations, as only the required columns need to be fetched, avoiding unnecessary I/O for irrelevant data.
 
 By aligning the file format with your workload requirements, you can realize cost optimization and see improved performance by catering to the specific I/O and query patterns of your data.
 
