@@ -25,7 +25,7 @@ The goal is to find the right balance between value, cost, and risk for each env
 
 ### Assess environment value
 
-Understand the value of each environment. Value is more than revenue generation. It refers to business impact, user satisfaction, and strategic alignment with organizational objectives. This analysis helps prioritize spending based value and ensures alignment with workload goals. To assess the value of each environment, consider these factors:
+Understand the value of each environment. Value is more than revenue generation. Value refers to business impact, user satisfaction, and strategic alignment with organizational objectives. This analysis helps prioritize spending based value and ensures alignment with workload goals. To assess the value of each environment, consider these factors:
 
 - *Consider the user*: Think about who uses each environment and what they need from it. For instance, customers use the production environment, which must be reliable and meet specific service level agreements (SLAs) for performance and uptime. On the other hand, the development environment is mainly for the workload team, such as developers and testers. While this environment doesn't have to meet customer-facing SLAs, it should have the necessary tools and resources for the team to work effectively. By understanding the unique needs of users in each environment, you can better allocate resources and avoid extra costs, ensuring that each setting is both functional and cost-effective.
 - *Align with organizational measures of value*: Align your cost-cutting efforts with what the organization values most, like profits or employee satisfaction. Make sure you know how success is defined in each case to keep your actions on target. For example, if the organization focuses on profit maximization or employee satisfaction, align your spending decisions with those metrics.
@@ -34,7 +34,7 @@ Understand the value of each environment. Value is more than revenue generation.
 
 Know the costs of each environment. Include infrastructure, services, licenses, and operational expenses. Use cost management tools to gain insights into spending patterns and trends.
 
-- *Identify cost drivers***:** Identify the key factors driving costs in each environment. Consider could include resource utilization, storage usage, data retention, data transfer, or specific services.
+- *Identify cost drivers*: Identify the key factors driving costs in each environment. Consider could include resource utilization, storage usage, data retention, data transfer, or specific services.
 - *Evaluate risks*: Assess the risks associated with different spending decisions and their potential impact on the environment and business operations. Consider factors such as data security, compliance, performance, audit, and SLA requirements.
 - *Monitor and adjust*: Continuously monitor and analyze spending patterns, value delivery, and risk factors. Regularly review and adjust your spending optimization strategies as the needs of the environment and business evolve.
 
