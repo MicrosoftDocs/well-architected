@@ -60,7 +60,11 @@ A disaster recovery (DR) environment refers to the infrastructure and processes 
 - *Optimize a hot DR environment*: A hot DR environment has all the infrastructure and services running and data mirrors the primary site in real-time. It provides near-instantaneous failover and minimal data loss if there's a disaster. Consider switching to an active-active deployment to optimize cost.
 - *Optimize a warm DR environment*: A warm DR approach is a middle ground between cold and hot DR. It’s partially active and is periodically synchronized with the primary site. It offers a balance between cost and recovery time. However, it’s the least cost-optimized approach. Consider shifting toward a cold or hot approach to optimize costs.
 
-### Have the right preproduction environments
+### Optimize preproduction environments
+
+Preproduction workload environments are used to validate and stage deployment operations before releasing to the production environment. These environments help ensure agility, separation of production and preproduction assets, and thorough testing of operations. Consider these strategies to optimize preproduction environments. In general, you want to find and apply preproduction discounts. Using preproduction discounts is one of the safest and least risky strategies. Cloud service providers and vendors often offer discounts for preproduction environments.
+
+#### Evaluate preproduction environments
 
 Insufficient or improper allocation of preproduction environments may lead to over-provisioning or under-provisioning of resources. To evaluate your preproduction environments for your workload, consider the following guidance:
 
@@ -80,34 +84,18 @@ The following table provides examples of common preproduction environments.
 | User acceptance testing environment | In this environment, end users or stakeholders test the application to validate its functionality and ensure it meets their requirements and expectations. |
 | Staging environment| The staging environment closely resembles the production environment and is used to perform final testing and validation before deploying to production.|
 
-### Optimize preproduction environments
+#### Apply governance
 
-Preproduction workload environments are used to validate and stage deployment operations before releasing to the production environment. These environments help ensure agility, separation of production and preproduction assets, and thorough testing of operations. Consider these strategies to optimize preproduction environments.
+Use governance to control spend in preproduction environments and mitigate risk. In the preproduction, you have more flexibility to tailor configurations and deploy different resources. The more the preproduction environment deviates from the production environment the greater the potential risk. Use governance to constrain preproduction environments limiting cost overruns and minimizing risk. Consider the following guidelines:
 
-**Apply governance**. Use governance to control spend in preproduction environments and mitigate risk. In the preproduction, you have more flexibility to tailor configurations and deploy different resources. The more the preproduction environment deviates from the production environment the greater the potential risk. Use governance to constrain preproduction environments limiting cost overruns and minimizing risk. Consider the following guidelines:
-
-- *Limit performance tiers*: Evaluate the performance requirements of your preproduction environments and choose the appropriate performance tiers that balance cost and performance. Opt for lower performance tiers if the workload doesn't require high performance.
+- *Limit performance tiers*: Evaluate the performance requirements of your preproduction environments and choose the appropriate performance tiers that balance cost and performance. Services often have different tiers, and some provide of these tiers are more suitable for testing. Some services have tiers that offer production-like features but don't come with a Service Level Agreement (SLA). They reduce costs while still providing the necessary functionality for testing and development.
+- *Preproduction SKUs*: Some SKUs are designed for development environments.Understand these services and the tiers available to optimize costs. Opt for lower performance tiers if the workload doesn't require high performance.
 - *Control the number of instances/CPU*: Determine the optimal number of instances and CPU resources needed for your preproduction environments based on workload demands. Avoid overprovisioning resources to minimize costs.
 - *Limit retention and logging*: Define retention policies for logs and data in preproduction environments. Consider the necessary duration for retaining logs and data based on compliance requirements and cost considerations. Avoid excessive logging and retention to reduce storage costs.
 - *Use a consistent CPU architecture*: Use the same CPU architectures in preproduction and production. Applications compiled for the x86 architecture don't run natively on ARM, and vice versa. Use to the same CPU architecture as your production environment to ensure compatibility and minimize any potential issues.
 - *Use the same operating system*: Avoid changing the operating system or kernel in preproduction environments (Windows to Linux). Software built for Windows often doesn't run natively on Linux without a compatibility layer and vice versa. The file systems and directory structures are different, which can cause application pathing issues. Consistency between environments helps reduce the risk of compatibility issues and ensures smoother deployments.
-
-**Find and apply discounts.** Using preproduction discounts is one of the safest and least risky strategies. Cloud service providers and vendors often offer discounts for preproduction environments.
-
-**Constrain scaling.** To optimize cost, you can constrain automation to mitigate runaway automation. For example, set a maximum scaling limit in the development environment at three and 10 in the production environment. It helps control the resource usage and cost associated with automation.
-
-**Turn off unneeded resources.** Turn off resources when they aren't being actively used, such as during off hours and weekends. You can use automation tools or scripts to schedule the shutdown and startup of the resources. Some vendors provide APIs also allow you to programmatically stop and start the resources. Consider using infrastructure as code to create ephemeral environments that you tear down when done.
-
-**Consider cheaper tiers.** have different tiers, and some provide are more suitable for testing. Understand these services and the tiers available to optimize costs.
-
-- *No SLA*:**** Some services have SKUs that offer production-like features but don't come with a Service Level Agreement (SLA). They reduce costs while still providing the necessary functionality for testing and development.
-- *Preproduction SKUs*: Some SKUs are designed for development environments.
-
-**Consider endpoint emulation**. Cost optimization in a preproduction environment can be achieved using endpoint emulation or mock endpoints, particularly for expensive resources like GPUs.
-
-Identify the components or services in your preproduction environment that are most expensive or resource intensive. Use mock endpoints to simulate the responses of these costly components without invoking them. Tools like WireMock, Postman's mock server, or custom implementations can be used to simulate API responses.
-
-While emulation and mock endpoints help save costs, ensure they accurately represent the production environment to a sufficient degree for testing. Striking a balance between accuracy and cost helps avoid future issues in production. For example, if GPUs are a major cost factor, consider GPU emulation for tasks that don't require real GPU processing power in preproduction stages. Emulation may not fully represent the performance or quirks of real GPUs, so use it when exact GPU behavior isn't critical for preproduction testing.
+- *Constrain scaling*: To optimize cost, you can constrain automation to mitigate runaway automation. For example, set a maximum scaling limit in the development environment at three and 10 in the production environment. It helps control the resource usage and cost associated with automation.
+- *Turn off unneeded resources*: Turn off resources when they aren't being actively used, such as during off hours and weekends. You can use automation tools or scripts to schedule the shutdown and startup of the resources. Some vendors provide APIs also allow you to programmatically stop and start the resources. Consider using infrastructure as code to create ephemeral environments that you tear down when done.
 
 #### Optimize development environments
 
@@ -129,6 +117,11 @@ The preproduction environment should be tailored to manage risks effectively whi
 - *Shorten runtimes*: Consider shortening the runtime of specific processes in the preproduction stage to save money. Be cautious of new vulnerabilities that may arise, such as undetected memory leaks.
 - *Review licenses*. Review the licensing plans for your security tools. If the number of nodes varies significantly between your production and preproduction setups, reassess your needs to fine-tune costs without compromising on security.
 
+#### Consider endpoint emulation 
+
+Cost optimization in a preproduction environment can be achieved using endpoint emulation or mock endpoints, particularly for expensive resources like GPUs. Identify the components or services in your preproduction environment that are most expensive or resource intensive. Use mock endpoints to simulate the responses of these costly components without invoking them. Tools like WireMock, Postman's mock server, or custom implementations can be used to simulate API responses.
+
+While emulation and mock endpoints help save costs, ensure they accurately represent the production environment to a sufficient degree for testing. Striking a balance between accuracy and cost helps avoid future issues in production. For example, if GPUs are a major cost factor, consider GPU emulation for tasks that don't require real GPU processing power in preproduction stages. Emulation may not fully represent the performance or quirks of real GPUs, so use it when exact GPU behavior isn't critical for preproduction testing.
 ## Azure facilitation
 
 **Governance.** Azure Policy allows you to limit resource types, SKUs, and instances by defining policy rules that enforce restrictions on the types of resources that can be deployed in your Azure environment. It helps you maintain control over the resources being provisioned and ensures compliance with your organization's policies and best practices.
