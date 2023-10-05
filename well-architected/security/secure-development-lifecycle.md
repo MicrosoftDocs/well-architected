@@ -146,7 +146,7 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
   Custom build agents add management complexity and can become an attack vector. **Build machine credentials must be stored securely**, and you need to regularly remove any temporary build artifacts from the file system. You can achieve network isolation by only allowing outgoing traffic from the build agent, because it's using the pull model of communication with Azure DevOps.
 
-  **The source code repository must be safeguarded** as well. Grant access to code repositories on a need-to-know basis and reduce vulnerability exposure as much as possible to delay the unintended attack exploits. **Have a thorough process to review the code** for security vulnerabilities. Use security groups for that purpose and have an approval process based on business justifications.
+  **The source code repository must be safeguarded** as well. Grant access to code repositories on a need-to-know basis and reduce exposure of vulnerabilities as much as possible to delay the unintended attack exploits. **Have a thorough process to review the code** for security vulnerabilities. Use security groups for that purpose and have an approval process based on business justifications.
 
 - **Secure code deployments.**
 
