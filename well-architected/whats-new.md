@@ -75,21 +75,21 @@ Besides the structure and consistency changes noted above, it's important to als
 
 - WAF has recommendations to **help you make informed and justified decisions**. WAF doesn't know your business requirements or constraints, so it can't make decisions for you.
 
-- [WAF workloads](./workloads.md) and [WAF service guides](./service-guides/overview.md) did not experience significant changes with this refresh. New workloads and service guides are ongoing additions to WAF. Keep checking this page for updates. 
+- [WAF workloads](./workloads.md) and [WAF service guides](./service-guides/index.yml) did not experience significant changes with this refresh. New workloads and service guides are ongoing additions to WAF. Keep checking this page for updates. 
 
 <!-- TODO: Some of these links are broken and some articles haven't shown up yet. -->
 ## October 2023
 
-- Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB](./services/data/azure-cosmos-db/)
+- Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB](./service-guides/cosmos-db/reliability.md)
 
 ## September 2023
 
-- New Reliability pillar guide: [Recommendations for using availability zones and regions](./resiliency/regions-availablity-zones.md)
+- New Reliability pillar guide: [Recommendations for using availability zones and regions](./reliability/regions-availability-zones.md)
 - Updated service guide: [Azure Well-Architected Framework review - Azure Database for PostgreSQL](./services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework.md)
 
 ## August 2023
 
-- New WAF workload: [Azure VMware Solution workloads](./azure-vmware/overview)
+- New WAF workload: [Azure VMware Solution workloads](./azure-vmware/index.yml)
 - Updated Reliability pillar guide: [Design reliable Azure applications](./resiliency/app-design.md)
 - Updated Reliability pillar guide: [Target functional and nonfunctional requirements](./resiliency/design-requirements.md)
 - Updated service guide: [Azure Well-Architected Framework review - Virtual Machines](./service-guides/virtual-machines-review.md)
