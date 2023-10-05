@@ -118,7 +118,7 @@ As a workload owner, you need to **understand the secret rotation plan and polic
 
 ## Azure facilitation
 
-**Store secrets with Key Vault.** Store secrets in the Azure secret management system, Key Vault, Azure Managed HSM, and others. For more information, see [How to choose the right key management solution](/azure/security/fundamentals/key-management-choose).
+**Store secrets by using Key Vault.** Store secrets in the Azure secret management system, Key Vault, Azure Managed HSM, and other locations. For more information, see [How to choose the right key management solution](/azure/security/fundamentals/key-management-choose).
 
 **Integrate identity-based access control.** Microsoft Entra ID and managed identities help minimize the need for secrets. Microsoft Entra ID offers a highly secure and usable experience for access control with built-in mechanisms for handling key rotation, monitoring for anomalies, and more.
 
@@ -152,7 +152,7 @@ Don't store keys and secrets for any environment type in application configurati
 
 ## Community links
 
-- [GitHub Secret Scanner](https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning)
+- [GitHub secret scanner](https://docs.github.com/code-security/secret-scanning/about-secret-scanning)
 
 ## Security checklist
 
