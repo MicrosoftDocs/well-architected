@@ -191,7 +191,7 @@ Consider the following points when you design a data partitioning scheme:
 
 **Replicate partitions.** Replicate each partition to provide added protection against failure. If a single replica fails, queries are directed to a working copy.
 
-**Extend scalibility to a different level.** If you reach the physical limits of a partitioning strategy, you might need to extend the scalability to a different level. For example, if partitioning is at the database level, you might need to locate or replicate partitions in multiple databases. If partitioning is already at the database level, and there are physical limitations, you might need to locate or replicate partitions in multiple hosting accounts.
+**Extend scalability to a different level.** If you reach the physical limits of a partitioning strategy, you might need to extend the scalability to a different level. For example, if partitioning is at the database level, you might need to locate or replicate partitions in multiple databases. If partitioning is already at the database level, and there are physical limitations, you might need to locate or replicate partitions in multiple hosting accounts.
 
 **Avoid transactions that access data in multiple partitions.** Some data stores implement transactional consistency and integrity for operations that modify data but only when the data is located in a single partition. If you need transactional support across multiple partitions, implement it as part of your application logic because most partitioning systems don't provide native support.
 

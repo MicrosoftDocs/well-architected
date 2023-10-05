@@ -1,12 +1,12 @@
 - name: Microsoft Azure Well-Architected Framework
   href: ./index.yml
   items:
-    - name: What's new
+    - name: About
       items:
-      - name: Azure Well-Architected Framework
+      - name: What's new
         href: whats-new.md
-      - name: How to use this documentation
-        href: how-to-use-documentation.md
+      - name: What is WAF
+        href: what-is-waf.md
     - name: Pillars
       items: 
       - name: Overview
@@ -118,7 +118,7 @@
             - name: Set spending guardrails
               href: cost-optimization/set-spending-guardrails.md
             - name: Get the best rates
-              href: cost-optimization/get-the-best-rates.md
+              href: cost-optimization/get-best-rates.md
             - name: Align usage to billing increments
               href: cost-optimization/align-usage-to-billing-increments.md
             - name: Eliminate waste
@@ -153,6 +153,8 @@
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
+            - name: OE:01 Fostering a DevOps culture
+              href: operational-excellence/devops-culture.md
             - name: OE:02 Formalize tasks
               href: operational-excellence/formalize-operations-tasks.md
             - name: OE:03 Formalize software development practices
@@ -236,8 +238,6 @@
       items:
         - name: Quick links
           href: service-guides/index.yml
-        - name: Overview
-          href: service-guides/overview.md
         - name: API Management
           items:
             - name: Reliability
