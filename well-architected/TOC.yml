@@ -1,12 +1,12 @@
 - name: Microsoft Azure Well-Architected Framework
   href: ./index.yml
   items:
-    - name: What's new
+    - name: About
       items:
-      - name: Azure Well-Architected Framework
+      - name: What's new
         href: whats-new.md
-      - name: How to use this documentation
-        href: how-to-use-documentation.md
+      - name: What is WAF
+        href: what-is-waf.md
     - name: Pillars
       items: 
       - name: Overview
@@ -118,7 +118,7 @@
             - name: Set spending guardrails
               href: cost-optimization/set-spending-guardrails.md
             - name: Get the best rates
-              href: cost-optimization/get-the-best-rates.md
+              href: cost-optimization/get-best-rates.md
             - name: Align usage to billing increments
               href: cost-optimization/align-usage-to-billing-increments.md
             - name: Eliminate waste
@@ -153,13 +153,19 @@
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
-            - name: OE:03 Formalizing software development practices
+            - name: OE:01 Fostering a DevOps culture
+              href: operational-excellence/devops-culture.md
+            - name: OE:02 Formalize tasks
+              href: operational-excellence/formalize-operations-tasks.md
+            - name: OE:03 Formalize software development practices
               href: operational-excellence/formalize-development-practices.md
+            - name: OE:04 Optimize development practices
+              href: operational-excellence/optimize-development-practices.md
             - name: OE:05 Using infrastructure as code
               href: operational-excellence/infrastructure-as-code-design.md
             - name: OE:06 Supply chain for workload development
               href: operational-excellence/workload-supply-chain.md
-            - name: OE:07 Observability framework development
+            - name: OE:07 Developing an observability framework
               href: operational-excellence/observability.md
             - name: OE:08 Emergency response
               href: operational-excellence/emergency-response.md
@@ -187,7 +193,7 @@
               href: performance-efficiency/performance-targets.md
             - name: Conduct capacity planning
               href: performance-efficiency/capacity-planning.md
-            - name: Select the right services 
+            - name: Select the appropriate services 
               href: performance-efficiency/selecting-services.md
             - name: Collect metrics and logs 
               href: performance-efficiency/collect-metrics-logs.md
@@ -232,8 +238,6 @@
       items:
         - name: Quick links
           href: service-guides/index.yml
-        - name: Overview
-          href: service-guides/overview.md
         - name: API Management
           items:
             - name: Reliability

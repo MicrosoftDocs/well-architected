@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[RE:04](checklist.md)| Add redundancy at different levels, especially for critical flows. Apply redundancy to the compute, data, network, and other infrastructure tiers in accordance with the identified reliability targets. |
 |---|---|
 
-**Related guides:** [Highly availabile multiregional design](highly-available-multi-region-design.md) | [Redundancy](redundancy.md)
+**Related guides:** [Highly available multiregional design](highly-available-multi-region-design.md) | [Redundancy](redundancy.md)
 
 This guide describes the recommendations for determining when to deploy workloads across availability zones or regions. 
 
@@ -109,7 +109,7 @@ It would be ideal to mitigate every possible risk for every workload, but it's n
 
 ##### Resiliency requirements
 
-It's important to understand the resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you decide which approaches to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Target functional and nonfunctional requirements](identify-flows.md). <!-- Update this to RE:01 when staged. need to verify link -->
+It's important to understand the resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you decide which approaches to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Target functional and nonfunctional requirements](identify-flows.md). 
 
 ##### Service-level agreements
 
@@ -302,6 +302,7 @@ You can extend a zone-redundant deployment by performing regular backups of your
 When you implement this approach, you need to carefully consider your RTO and RPO:
 
 - **Recovery time**: If a regional outage does occur, you might need to rebuild your solution in another Azure region, which affects your recovery time. Consider building your solution by using an IaC approach so that you can quickly redeploy into another region during a major disaster. Ensure that your deployment tools and processes are just as resilient as your applications so that you can use them to redeploy your solution even if an outage occurs. Plan for and rehearse the steps required to restore your solution back to a working state.
+
 - **Recovery point**: Your backup frequency determines the amount of data loss that you might experience (your recovery point). You can typically control the frequency of backups to meet your RPO.
 
 > [!TIP]

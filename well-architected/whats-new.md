@@ -76,21 +76,21 @@ In addition to the changes in structure and consistency, you should note some th
 
 - The Well-Architected Framework provides recommendations to **help you make informed and justified decisions**. The Well-Architected Framework doesn't know your business requirements or constraints, so it can't make decisions for you.
 
-- The [Well-Architected Framework workloads](./workloads.md) and the [Well-Architected Framework service guides](./service-guides/overview.md) didn't undergo significant changes with this refresh. New workloads and service guides are ongoing additions to the Well-Architected Framework. Keep checking this page for updates.
+- The [Well-Architected Framework workloads](./workloads.md) and the [Well-Architected Framework service guides](./service-guides/index.yml) didn't undergo significant changes with this refresh. New workloads and service guides are ongoing additions to the Well-Architected Framework. Keep checking this page for updates.
 
 <!-- TODO: Some of these links are broken and some articles haven't shown up yet. -->
 ## October 2023
 
-- Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB](./services/data/azure-cosmos-db/)
+- Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB](./service-guides/cosmos-db/reliability.md)
 
 ## September 2023
 
-- New Reliability pillar guide: [Recommendations for using availability zones and regions](./resiliency/regions-availablity-zones.md)
+- New Reliability pillar guide: [Recommendations for using availability zones and regions](./reliability/regions-availability-zones.md)
 - Updated service guide: [Azure Well-Architected Framework review - Azure Database for PostgreSQL](./services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework.md)
 
 ## August 2023
 
-- New Well-Architected Framework workload: [Azure VMware Solution workloads](./azure-vmware/overview)
+- New Well-Architected Framework workload: [Azure VMware Solution workloads](./azure-vmware/index.yml)
 - Updated Reliability pillar guide: [Design reliable Azure applications](./resiliency/app-design.md)
 - Updated Reliability pillar guide: [Target functional and nonfunctional requirements](./resiliency/design-requirements.md)
 - Updated service guide: [Azure Well-Architected Framework review - Virtual Machines](./service-guides/virtual-machines-review.md)

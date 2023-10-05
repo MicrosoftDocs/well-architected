@@ -328,7 +328,7 @@ Containers are useful for running background jobs. Some of the benefits include:
 
 - You can start and stop containers as needed.
 
-- With Azure Container Registry, you can register your containers inside Azure boundaries, which provides security, privacy, and proximity benefits.
+- With Azure Container Registry, you can register your containers inside Azure boundaries to provide security, privacy, and proximity benefits.
 
 #### AKS considerations
 

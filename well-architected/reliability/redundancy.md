@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[RE:04](checklist.md)| Add redundancy at different levels, especially for critical flows. Apply redundancy to the compute, data, network, and other infrastructure tiers in accordance with the identified reliability targets.  |
 |---|---|
 
-**Related guides:** [Highly availabile multiregional design](highly-available-multi-region-design.md) | [Using availability zones and regions](regions-availability-zones.md) 
+**Related guides:** [Highly available multiregional design](highly-available-multi-region-design.md) | [Using availability zones and regions](regions-availability-zones.md) 
 
 This guide describes the recommendations for adding redundancy throughout critical flows at different workload layers, which optimizes resiliency. Meet the requirements of your defined reliability targets by applying the proper levels of redundancy to your compute, data, networking, and other infrastructure tiers. Apply this redundancy to give your workload a strong, reliable foundation to build on. When you build your workload without infrastructure redundancy, there's a high risk of extended downtime due to [potential failures](failure-mode-analysis.md).
 
