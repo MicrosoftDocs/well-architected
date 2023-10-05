@@ -62,7 +62,7 @@ Many Azure regions provide *availability zones*, which are separated groups of d
 
 The following diagram shows several example Azure regions. Regions 1 and 2 support availability zones.
 
-:::image type="content" border="false" source="media/regions-availability-zones/regions-availability-zones.png" alt-text="Diagram that shows datacenters, availability zones, and regions":::
+:::image type="content" border="false" source="media/regions-availability-zones/regions-availability-zones.png" alt-text="Diagram that shows datacenters, availability zones, and regions.":::
 
 If you deploy into an [Azure region that contains availability zones][azure-regions-with-availability-zone-support], you can use multiple availability zones together. By using multiple availability zones, you can keep separate copies of your application and data within separate physical datacenters in a large metropolitan area.
 
