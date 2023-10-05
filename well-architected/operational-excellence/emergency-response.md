@@ -9,9 +9,12 @@ ms.topic: conceptual
 
 # Recommendations for designing an emergency response strategy
 
-**Applies to: OE 08**
+**Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-This guide describes the best practices for designing an emergency response strategy. It is inevitable that issues will arise over the course of your workload’s lifecycle and that some of these issues will be critical enough to warrant declaring them emergencies. In these cases, you need a very tightly controlled and focused set of processes and procedures that everyone involved in the response will follow to ensure that the issue is handled in a calm, orderly manner. Emergencies naturally raise the stress of everyone involved and can lead to a chaotic environment if the team isn’t well-prepared, so designing your response strategy, sharing it with your organization, and training on it regularly will help you decrease stress and chaos.
+|[OE:08](checklist.md)| Develop an effective emergency operations practice. Ensure that your workload emits meaningful health signals across infrastructure and code. Collect the resulting data and use it to generate actionable alerts that enact emergency responses via dashboards and queries. Clearly define human responsibilities, such as on-call rotations, incident management, emergency resource access, and running post-mortems.|
+|---|---|
+
+This guide describes the recommendations for designing an emergency response strategy. It is inevitable that issues will arise over the course of your workload’s lifecycle and that some of these issues will be critical enough to warrant declaring them emergencies. In these cases, you need a very tightly controlled and focused set of processes and procedures that everyone involved in the response will follow to ensure that the issue is handled in a calm, orderly manner. Emergencies naturally raise the stress of everyone involved and can lead to a chaotic environment if the team isn’t well-prepared, so designing your response strategy, sharing it with your organization, and training on it regularly will help you decrease stress and chaos.
 
 ## Key design strategies
 
@@ -26,7 +29,7 @@ Your emergency response strategy should be an orderly, well-defined set of proce
   - **Triage**
 - **Post-incident phases**
   - **Root cause analysis (RCA)**
-  - **Post-mortem:** 
+  - **Post-mortem:**
 - **Ongoing activity: emergency response drills**
 
 The following sections in this guide provide recommendations for each of these phases.
@@ -45,21 +48,30 @@ See the observability guide (link to oe07-observability) for detailed guidance o
 
 ### Incident response plan
 
-The foundation of your emergency response strategy is your incident response plan. Like your disaster recovery plan, your incident response plan needs to be very clear and thorough about roles, responsibilities, and procedures to follow. The plan should be a version-controlled document that is subject to regularly occurring reviews to ensure that it is kept up to date. 
+The foundation of your emergency response strategy is your incident response plan. Like your disaster recovery plan, your incident response plan needs to be very clear and thorough about roles, responsibilities, and procedures to follow. The plan should be a version-controlled document that is subject to regularly occurring reviews to ensure that it is kept up to date.
 
 The following items should be clearly defined in your plan:
 
 - **Roles to be defined**
-  - An incident response manager should be identified. This individual owns the incident from initiation to remediation and root cause analysis processes. Furthermore, this person is responsible for ensuring that processes are followed, and the appropriate parties are kept informed as the response team does their work. 
+
+  - An incident response manager should be identified. This individual owns the incident from initiation to remediation and root cause analysis processes. Furthermore, this person is responsible for ensuring that processes are followed, and the appropriate parties are kept informed as the response team does their work.
+  
   - A post-mortem leader should be identified. This individual ensures that post-mortems are performed soon after the incident is resolved and produces a report that can be used for applying the learnings that come out of the incident.
+
 - **Processes and procedures to be documented**
   - Emergency criteria should be defined and understood by the workload team. In more severe cases, a disaster will be declared, and the disaster recovery plan should be initiated. In less severe cases, the issue might not meet the criteria of a disaster, but should still be considered an emergency, which necessitates the initiation of your emergency response plan. Remember that emergencies can be issues that are internal to your workload or they can be a result of an issue with a dependency of your workload, so the support team needs to be able to determine whether an issue that is reported by external users meets the emergency criteria, even though they have no visibility into the underlying issue.
+
   - Communication and escalation plans should be well-defined. Ensure that your Tier 1 support can easily find the appropriate teams to escalate issues to based on the type of alert notification they receive and that they know what type of communication is appropriate for internal and external parties. Ensure that the on-call schedule and staff lists are included or linked to in these plans.
+
   - Containment and triage scripts should be included in the overall plan. These are the step-by-step procedures that teams will follow when performing their containment and triage functions.
+
   - Definition of incident closure
+
 - **Other items to include**
   - Emergency credentials, otherwise known as “break-glass accounts” should be documented along with a step-by-step guide describing how they are to be used.
+
   - Emergency response drill instructions and a record of when drills have been performed.
+
   - Any legal or regulatory measures necessary, like communicating data breaches for example.
 
 ### Incident detection
@@ -72,7 +84,7 @@ The first step in the remediation of the issue is to contain it to protect the r
 
 ### Triage
 
-After you have successfully contained the issue, you can begin the triage work. The steps that you follow during triage will depend on the type of issue. Procedures specific to the type of incident should be built by teams responsible for different areas of workload support. For example, security issues should be triaged by security teams following scripts that they have developed. The important piece for building your plan is that teams follow well-defined scripts as they work through their triage efforts. These scripts should be step-by-step processes that include rollback processes to undo changes that are ineffective or can cause additional issues. Use off-the-shelf log aggregation and analysis tools to efficiently investigate issues that need deeper analysis. Once the issue has been resolved, ensure that there are well-defined processes to bring the affected component(s) back into the workload flow paths safely. 
+After you have successfully contained the issue, you can begin the triage work. The steps that you follow during triage will depend on the type of issue. Procedures specific to the type of incident should be built by teams responsible for different areas of workload support. For example, security issues should be triaged by security teams following scripts that they have developed. The important piece for building your plan is that teams follow well-defined scripts as they work through their triage efforts. These scripts should be step-by-step processes that include rollback processes to undo changes that are ineffective or can cause additional issues. Use off-the-shelf log aggregation and analysis tools to efficiently investigate issues that need deeper analysis. Once the issue has been resolved, ensure that there are well-defined processes to bring the affected component(s) back into the workload flow paths safely.
 
 ### RCA reporting
 
@@ -83,7 +95,9 @@ Your SLAs to your customers may dictate that you issue RCA reports within a cert
 An impartial individual should lead blameless post-mortems. These sessions are meant to shine a light on what learnings can come out of the incident. Each team that was involved in the incident response should be represented by individuals that worked on the incident. Those individuals should come prepared to the session with examples of the things that they were involved in that went right and that can be improved on. There needs to be a common understanding that the session is not the right forum for assigning blame for the incident itself or issues that may have come up during the response. The post-mortem leader should come out of the session with a clear list of action items that focus on improvement. Improvement can include one or more of the following:
 
 - Improvements to the response plan – processes or procedures may need to be reevaluated and rewritten to better capture appropriate actions.
+
 - Improvements to the observability platform – thresholds may need to be reevaluated to catch the specific type of incident earlier or new monitoring may need to be enabled to catch behavior that had not been accounted for previously.
+
 - Improvements to the workload – the incident may expose a vulnerability in the workload that must be addressed as a permanent remediation.
 
 ## Azure facilitation
@@ -116,10 +130,9 @@ RE Monitoring guide
 
 RE Self-preservation guide
 
-
 ## Next steps
 
-We recommend that you review the Operational Excellence checklist to explore other concepts. 
+We recommend that you review the Operational Excellence checklist to explore other concepts.
 
-> [!div class="nextstepaction"] 
-> [Operational Excellence checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Operational Excellence checklist](checklist.md)
