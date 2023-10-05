@@ -132,7 +132,7 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
 - **Write just enough code.**
 
-  Reduced code footprint also means reduced chances of security defects. **Reuse code and libraries that’s already in use and have been through security validations** instead of duplicating code.
+  When you reduce your code footprint, you also reduce the chances of security defects. **Reuse code and libraries that’s already in use and have been through security validations** instead of duplicating code.
 
   Taking advantage of Azure features is another way to prevent unnecessary code. One way is to use managed services. For more information, see [Use platform as a service (PaaS) options - Azure Architecture Center](/azure/architecture/guide/design-principles/managed-services).
 
