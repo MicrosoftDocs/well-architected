@@ -1,6 +1,6 @@
 ---
 title: Recommendations for designing an emergency response strategy
-description: Learn how to set up emergency response processes and procedures that your team follows to ensure that an issue is handled in a calm, orderly manner.
+description: Learn how to set up emergency response processes and procedures that your team can follow to ensure that an issue is handled in a calm, orderly manner.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
@@ -131,8 +131,8 @@ Placeholder for the IaaS baseline architecture (WIP)
 ## Related links
 
 - [Recommendations for designing and creating an observability framework](observability.md)
-- [Recommendations for designing a reliable monitoring and alerting strategy](./reliability/monitoring-alerting-strategy.md)
-- [Recommendations for self-healing and self-preservation](./reliability/self-preservation.md)
+- [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
+- [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md)
 
 ## Operational Excellence checklist  
 

@@ -194,7 +194,7 @@
             - name: Conduct capacity planning
               href: performance-efficiency/capacity-planning.md
             - name: Select the appropriate services 
-              href: performance-efficiency/selecting-services.md
+              href: performance-efficiency/select-services.md
             - name: Collect metrics and logs 
               href: performance-efficiency/collect-metrics-logs.md
             - name: Scale and partition 

@@ -57,7 +57,7 @@ landingContent:
           - text: Set performance targets
             url: performance-targets.md
           - text: Select the right services
-            url: selecting-services.md
+            url: select-services.md
           - text: Conduct capacity planning
             url: capacity-planning.md
           - text: Collect performance data
