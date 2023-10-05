@@ -1,13 +1,13 @@
 ---
-title: Recommendations for security incidence response
-description: Learn how to reduce the time it takes to identify, manage, and mitigate security incidents that threaten the confidentiality and integrity of software systems.
+title: Recommendations for security incident response
+description: Learn how to reduce the time that's required to identify, manage, and mitigate security incidents that threaten the confidentiality and integrity of software systems.
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for security incidence response
+# Recommendations for security incident response
 
 **Applies to Azure Well-Architected Framework Security checklist recommendation:**
 
@@ -49,7 +49,7 @@ Incident response is a crucial reason to keep documentation up to date, like the
 
 For further investigations, involve the appropriate people. You might include an incident manager, security officer, or workload-centric leads. To keep the triage focused, exclude people that are outside of the scope of the problem. Sometimes separate teams investigate the incident. There might be a team that initially investigates the issue and tries to mitigate the incident, and another specialized team that might perform forensics for a deep investigation to ascertain wide issues. You can quarantine the workload environment to enable the forensics team to do their investigations. In some cases, the same team might handle the entire investigation.
 
-In the initial phase, the triage team is responsible for determining the potential vector and its effect on the confidentiality, integrity, and availability, or the CIA, of the system.
+In the initial phase, the triage team is responsible for determining the potential vector and its effect on the confidentiality, integrity, and availability (also called the *CIA*) of the system.
 
 Within the categories of CIA, assign an initial severity level that indicates the depth of the damage and the urgency of remediation. This level is expected to change over time as more information is discovered in the levels of triage.
 
