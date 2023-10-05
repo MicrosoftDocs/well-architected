@@ -19,7 +19,7 @@ The Azure Well-Architected Framework (WAF) is a design framework that can improv
 
 The framework is founded on the five pillars of architectural excellence, which are mapped to those goals. They are: [**Reliability**](./reliability/index.yml), [**Security**](./security/index.yml), [**Cost Optimization**](./cost-optimization/index.yml), [**Operational Excellence**](./operational-excellence/index.yml), and [**Performance Efficiency**](./performance-efficiency/index.yml).
 
-Each pillar provides recommended architectural practices, risk considerations, and tradeoffs. The design decisions must be balanced across all pillars, given the business requirements. The technical and actionable guidance is broad enough to be considered by all workloads and intended to be applied to a specific scenario. This guidance is centered on Azure.
+Each pillar provides recommended practices, risk considerations, and tradeoffs. The design decisions must be balanced across all pillars, given the business requirements. The technical and actionable guidance is broad enough to be considered by all workloads and intended to be applied to a specific scenario. This guidance is centered on Azure.
 
 Workload architecture isn’t the same as its implementation. WAF can set you up for success through architectural design, but the implementation choices depend on the business requirements and constraints of the organization. 
 
@@ -51,7 +51,7 @@ The Well-Architected Framework is structured in a layered approach: pillars, wor
 
 - **Pillars**: The foundation of this framework lies in the pillars. Without a comprehensive understanding of these pillars, the subsequent layers - the workload layer and service guides - may not be fully comprehensible. 
 
-    At the pillar level, start your journey with the **Design principles**, each of which has a specific goal. Within each principle, follow the approaches to crafting your design strategy. These approaches aren't optional and must be taken into account. 
+    At the pillar level, start your journey with the **Design principles**, each of which has a specific goal. Within each principle, follow the approaches to craft your design strategy. These approaches aren't optional and must be taken into account. 
     
     Next, move on to the **Checklist**, which should always be your starting point for evaluation. Each item on the checklist is accompanied by one or more **Recommendation guides** that describe key strategies and how Azure helps you attain the recommendation. 
 
@@ -61,13 +61,13 @@ The Well-Architected Framework is structured in a layered approach: pillars, wor
 
     > Refer to: [About WAF pillars](./pillars.md).
 
-- **Workload**: The workload layer represents the application of these pillars to a specific class of workload. During the initial design phase, workload architecture is segmented based on their utility, which becomes your prioritized or design areas. These design areas are specific to the class of the workload and serve as focal points for optimization. WAF includes several workloads, find one that closely matches your business requirements.
+- **Workload**: The workload layer represents the application of these pillars to a specific class of workload. During the initial design phase, workload architecture is segmented based on their utility, and each segment represents the prioritized or design areas. These design areas are specific to the class of the workload and serve as focal points for optimization. WAF includes several workloads, find one that closely matches your business requirements.
 
     - Start with the **Get started** to understand the solution context. As a refresher, read the **Design principles** to understand how the workload adopts the pillar guidance. Then, dive deep into **Design areas** that focus on the technical decision points with recommendations to follow. Workload guidance also includes an Assessment that is intended to help you evaluate your readiness in production.
 
     > Refer to: [About WAF workloads](./workloads.md).
 
-- **Service guides**: Service guides are instrumental in decision-making related to the individual Azure components that resides within the workload. They offer the core features and capabilities of each service that are necessary to attain a well-architected state. It’s important to note that these guides aren’t configuration guides. Also, they aren’t a compiled list of all features and capabilities. The intent is to highlight the utility of the features through Well-Architected pillar perspectives.
+- **Service guides**: Service guides are instrumental in decision-making related to the individual Azure components that reside within the workload. They offer the core features and capabilities of each service that are necessary to attain a well-architected state. It’s important to note that these guides aren’t configuration guides. Also, they aren’t a compiled list of all features and capabilities. The intent is to highlight the utility of the features through Well-Architected pillar perspectives.
 
     > [Browse the available guides](./service-guides/index.yml)
  
