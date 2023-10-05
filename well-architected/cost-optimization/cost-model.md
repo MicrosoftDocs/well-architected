@@ -47,7 +47,7 @@ If you ensure that these often-overlooked factors are incorporated early in the 
 
 #### Estimate workload costs
 
-Estimating workload costs means assigning cost estimates to every category of workload spending. It includes direct costs from vendors and the operational costs to maintain the workload over time. These estimates provide a foundation for building a quality cost model that allows you to forecast costs and establish a budget. To estimate workload costs, consider the following strateiges:
+Estimating workload costs means assigning cost estimates to every category of workload spending. It includes direct costs from vendors and the operational costs to maintain the workload over time. These estimates provide a foundation for building a quality cost model that allows you to forecast costs and establish a budget. To estimate workload costs, consider the following strategies:
 
 *Identify the best billing model*: A billing model determines how the cloud service provider charges for their services. Billing models include pay-as-you-go, prepaid, compute reservations, and spot pricing. Identify the most suitable and cost-effective billing model by understanding the specific requirements and usage patterns of each model. Each billing model has advantages and disadvantages of cost structure and flexibility. For example, pay-as-you-go might provide flexibility but might be more expensive over time compared to prepaid or reserved instances.
 

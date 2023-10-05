@@ -1,12 +1,12 @@
 - name: Microsoft Azure Well-Architected Framework
   href: ./index.yml
   items:
-    - name: What's new
+    - name: About
       items:
-      - name: Azure Well-Architected Framework
+      - name: What's new
         href: whats-new.md
-      - name: How to use this documentation
-        href: how-to-use-documentation.md
+      - name: How to use WAF
+        href: how-to-use-waf.md
     - name: Pillars
       items: 
       - name: Overview
@@ -236,8 +236,6 @@
       items:
         - name: Quick links
           href: service-guides/index.yml
-        - name: Overview
-          href: service-guides/overview.md
         - name: API Management
           items:
             - name: Reliability
