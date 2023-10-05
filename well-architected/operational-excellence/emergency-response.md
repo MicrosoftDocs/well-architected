@@ -117,9 +117,9 @@ RE Monitoring guide
 RE Self-preservation guide
 
 
-## Next steps
+## Operational Excellence checklist  
 
-We recommend that you review the Operational Excellence checklist to explore other concepts. 
+Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"] 
 > [Operational Excellence checklist](checklist.md) 

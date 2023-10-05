@@ -153,6 +153,8 @@
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
+            - name: OE:01 Fostering a DevOps culture
+              href: operational-excellence/devops-culture.md
             - name: OE:02 Formalize tasks
               href: operational-excellence/formalize-operations-tasks.md
             - name: OE:03 Formalize software development practices
