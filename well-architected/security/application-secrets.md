@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[SE:09](checklist.md)| Protect application secrets by hardening their storage and restricting access and manipulation and by auditing those actions. Run a reliable and regular rotation process that can improvise rotations for emergencies.|
 |---|---|
 
-This guide describes the recommendations for securing sensitive information in applications. Proper management of secrets is crucial for maintaining the security and integrity of your application, workload, and associated data. Improper handling of secrets can lead to data breaches, service disruption, regulatory violations, and other issues.
+This guide describes the recommendations for securing sensitive information in applications. Proper management of secrets is cmrucial for maintaining the security and integrity of your application, workload, and associated data. Improper handling of secrets can lead to data breaches, service disruption, regulatory violations, and other issues.
 
 Credentials, such as API keys, Open Authorization (OAuth) tokens, and Secure Shell (SSH) keys are secrets. Some credentials, such as client-side OAuth tokens, can be dynamically created at runtime. Dynamic secrets still need to be safeguarded despite their temporary nature. Non-credential information, like certificates and digital signature keys, can also be sensitive. Compliance requirements might cause configuration settings that aren't typically considered secret to be treated as application secrets.
 
@@ -29,15 +29,15 @@ Credentials, such as API keys, Open Authorization (OAuth) tokens, and Secure She
 |Key| A secret code that's used to lock or unlock encrypted data.|
 |Least-privilege access | A Zero Trust principle that aims at minimizing a set of permissions to complete a job function. |
 |Managed identity | An identity that's assigned to resources and managed by Azure. |
-|Non-secret | Information that doesn't jeopardize the security posture of the workload if it's leaked.|
+|Nonsecret | Information that doesn't jeopardize the security posture of the workload if it's leaked.|
 |Rotation | The process of regularly updating secrets so that, if they're compromised, they're available only for a limited time. |
 |Secret |  A confidential component of the system that facilitates communication between workload components. If leaked, secrets can cause a breach.|
 |X.509| A standard that defines the format of public key certificates.|
 
 > [!IMPORTANT]
-> **Don't treat non-secrets like secrets.** Secrets require operational rigor that's unnecessary for non-secrets and that might result in extra costs.
+> **Don't treat nonsecrets like secrets.** Secrets require operational rigor that's unnecessary for nonsecrets and that might result in extra costs.
 >
-> Application configuration settings, such as URLs for APIs that the application uses, are an example of non-secrets. This information shouldn't be stored with the application code or application secrets. Consider using a dedicated configuration management system such as Azure App Configuration to manage these settings. For more information, see [What is Azure App Configuration?](/azure/azure-app-configuration/overview).
+> Application configuration settings, such as URLs for APIs that the application uses, are an example of nonsecrets. This information shouldn't be stored with the application code or application secrets. Consider using a dedicated configuration management system such as Azure App Configuration to manage these settings. For more information, see [What is Azure App Configuration?](/azure/azure-app-configuration/overview).
 
 ## Key design strategies
 
