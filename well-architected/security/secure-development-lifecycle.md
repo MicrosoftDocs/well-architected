@@ -104,31 +104,31 @@ During this phase, **the security requirements are converted to technical requir
 
 ### Development and testing phase
 
-From a security perspective, the goal is to **prevent security defects** and tampering in code, build, and deployment pipelines. 
+During this phase, the goal is to **prevent security defects** and tampering in code, build, and deployment pipelines. 
 
 - **Be well-trained in secure code practices.**
 
-  The development team should **have formal and specialized training in secure coding practices**. For example, web and API developers might need specific training to protect against cross-site scripting attacks, and backend developers would benefit from in-depth training to avoid database-level attacks like SQL injection attacks.
+  The development team should **have formal and specialized training in secure coding practices**. For example, web and API developers might need specific training to protect against cross-site scripting attacks, and backend developers can benefit from in-depth training to avoid database-level attacks like SQL injection attacks.
 
-  This training should be required to gain access to production source code.
+  Developers should be required to complete this training before they can gain access to production source code.
 
-  Perform internal peer code reviews as a method of continuous learning.  
+  You should also perform internal peer code reviews to promote continuous learning.  
 
 - **Use security test tools.**
 
-  Do threat modeling to evaluate the security of the application's architecture.
+  Perform threat modeling to evaluate the security of the application's architecture.
 
-  Ensure coding standards by using **static application security testing (SAST)**. These tools should be integrated in the developer environment so that vulnerabilities can be detected in real time.  
+  Use **static application security testing (SAST)** to analyze code for vulnerabilities. Intagrate this methodology into the developer environment to detect vulnerabilities in real time.  
 
-  Also utilize **dynamic application security testing (DAST)** during run time. This tool chain can check for errors in security domains and simulate a set of attacks to test the application’s security resilience. These tools should be integrated into your build pipelines, when possible. 
+  Use **dynamic application security testing (DAST)** during runtime. This tool chain can check for errors in security domains and simulate a set of attacks to test the application's security resilience. When possible, integrate this tool into your build pipelines. 
 
-  As part of your secure coding practices, follow industry standards on secure practices. For reference, see the links under [Community resources](#community-resoures). 
+  Follow industry standards for secure coding practices. For more information, see the [Community resources](#community-resources) section of this article. 
 
   Use linters and code analyzers to prevent credentials from getting pushed to the source code repository. For example, .NET Compiler Platform (Roslyn) Analyzers inspect your application code.
 
-  During the build process, **use pipeline add-ons to catch credentials in the source code**. Scan all dependencies, such as third-party libraries and framework components, as part of the continuous integration process. Investigate vulnerable components that are flagged by the tool. Combine this task with other code scanning tasks that inspect code churn, test results, and coverage.
+  During the build process, **use pipeline add-ons to catch credentials in the source code**. Scan all dependencies, like third-party libraries and framework components, as part of the continuous integration process. Investigate vulnerable components that are flagged by the tool. Combine this task with other code scanning tasks that inspect code churn, test results, and coverage.
 
-  Use a combination of various tests. For information about security testing in general, see [Recommendations for security testing](testing.md).
+  Use a combination of tests. For information about security testing in general, see [Recommendations for security testing](testing.md).
 
 - **Write just enough code.**
 
