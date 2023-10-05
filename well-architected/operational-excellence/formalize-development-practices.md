@@ -9,12 +9,12 @@ ms.topic: conceptual
 
 # Recommendations for formalizing software development management practices
 
-**Applies to this Well-Architected Framework Operational Excellence checklist recommendation:** 
+**Applies to this Well-Architected Framework Operational Excellence checklist recommendation:**
 
 |[OE:03](checklist.md)| Formalize the software ideation and planning process, drawing from established industry and organizational standards. Use a common, prioritized backlog and sufficiently detailed specifications. Drive continuous improvements in the planning process based on outcomes. | 
-|---|---| 
+|---|---|
 
-This guide describes the best practices for establishing standards for managing your workload team's software development practices. A team's ability to consistently produce high quality software relies on a structured, collaborative approach to development planning. Product owners and project managers must be able to clearly understand and articulate to stakeholders the work that developers are doing at any given time in a development cycle. Conversely, developers need to clearly understand the goals of each development cycle through well-written features, user stories and acceptance criteria. A set of agreed-upon standards defining how development practices are performed allows the entire workload team to collaborate effectively, reducing the risk of confusion about goals and expectations.
+This guide describes the recommendations for establishing standards for managing your workload team's software development practices. A team's ability to consistently produce high quality software relies on a structured, collaborative approach to development planning. Product owners and project managers must be able to clearly understand and articulate to stakeholders the work that developers are doing at any given time in a development cycle. Conversely, developers need to clearly understand the goals of each development cycle through well-written features, user stories and acceptance criteria. A set of agreed-upon standards defining how development practices are performed allows the entire workload team to collaborate effectively, reducing the risk of confusion about goals and expectations.
 
 ## Key design strategies
 
@@ -34,7 +34,7 @@ Standards for development planning:
 
 - Standardize on a specific template that acceptance criteria must be created with. Ensure that acceptance criteria relates specifically to the user story and can be unambiguously proven using one or more acceptance tests.
 
-- Ensure that you have a method to produce traceability throughout the development process. You should be able to clearly trace the state of your production workload and the associated code back to quality assurance testing, acceptance criteria, user stories and features. This may be a regulatory requirement in cases like healthcare for example. 
+- Ensure that you have a method to produce traceability throughout the development process. You should be able to clearly trace the state of your production workload and the associated code back to quality assurance testing, acceptance criteria, user stories and features. This may be a regulatory requirement in cases like healthcare for example.
 
 - Regularly perform internal audits of your development practices through sprint retrospectives and post-mortems. Like incident post-mortems, reflecting on processes should be blameless and should focus on learnings that can be applied as improvements.
 
@@ -54,7 +54,7 @@ Standards for development planning:
 
 [Azure DevOps Boards](/azure/devops/boards/get-started/what-is-azure-boards) is a web-based service that enables teams to plan, track, and discuss work across the entire development process and is well suited for Agile-based development practices.
 
-[GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) is a customizable project management tool that can organize projects and integrates with issues and pull requests in GitHub. 
+[GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) is a customizable project management tool that can organize projects and integrates with issues and pull requests in GitHub.
 
 ## Tradeoff
 
@@ -62,10 +62,16 @@ Agile methodology can become too strict if it is overly prescriptive. Strive for
 
 ## Related links
 
-[Best practices for Agile project management - Azure Boards | Microsoft Learn](/azure/devops/boards/best-practices-agile-project-management)
+- [Best practices for Agile project management](/azure/devops/boards/best-practices-agile-project-management)
+- [Azure DevOps Boards](/azure/devops/boards/get-started/what-is-azure-boards)
+
+## Community links
+
+- [GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
 
 ## Operational Excellence checklist
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-[Operational Excellence checklist](checklist.md)
+> [!div class="nextstepaction"]
+> [Operational Excellence checklist](checklist.md)
