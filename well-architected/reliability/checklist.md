@@ -16,7 +16,7 @@ To implement a reliable design, thoroughly consider decision points in your desi
 
 Approach your design with a focus on reliability to help ensure that you design a workload that's resilient, manageable, and repeatable. If you don't include reliability practices and consider the tradeoffs, your design is potentially at risk. Carefully consider all the points covered in the checklist to instill confidence in your system's success.
 
-|&nbsp;|Code  |Recommendation  |
+|&nbsp; |Code  |Recommendation  |
 |-|-|-|
 | &#9744; |[RE:01](identify-flows.md)    |  **Identify the user and system flows** of your workload. **Prioritize importance by using a criticality scale** that's based on your business requirements.       |
 | &#9744; |[RE:02](failure-mode-analysis.md)     |  **Use failure mode analysis (FMA) to identify and prioritize potential failures in your solution components**. Perform FMA to help you assess the risk and effect of each failure mode. Determine how the workload responds and recovers.       |
