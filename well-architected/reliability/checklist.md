@@ -1,12 +1,12 @@
 ---
-title: Design review checklist for reliability
-description: Use this checklist for reliability to identify the best infrastructure and application design for your workload.
+title: Design review checklist for Reliability
+description: Use this checklist for Reliability to identify the best infrastructure and application design for your workload.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
-# Design review checklist for reliability
+# Design review checklist for Reliability
 
 This checklist presents a set of recommendations for you to use to evaluate the reliability, resiliency, and failure recovery strategies in your architecture design. To ensure reliability, identify the best infrastructure and application design for your workload. Make these decisions based on your business requirements that are mapped to availability and recoverability target metrics.
 
