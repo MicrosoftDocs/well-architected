@@ -132,19 +132,19 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
 - **Write just enough code.**
 
-  When you reduce your code footprint, you also reduce the chances of security defects. **Reuse code and libraries that’s already in use and have been through security validations** instead of duplicating code.
+  When you reduce your code footprint, you also reduce the chances of security defects. **Reuse code and libraries that are already in use and have been through security validations** instead of duplicating code.
 
-  Taking advantage of Azure features is another way to prevent unnecessary code. One way is to use managed services. For more information, see [Use platform as a service (PaaS) options - Azure Architecture Center](/azure/architecture/guide/design-principles/managed-services).
+  Taking advantage of Azure features is another way to prevent unnecessary code. One way is to use managed services. For more information, see [Use platform as a service (PaaS) options](/azure/architecture/guide/design-principles/managed-services).
 
-  **Write code with a deny-all mindset by default.** Create allow lists only for entities that need access.  For example, if your code that needs to determine whether some privileged operation should be allowed or denied, it should be written such that the "deny" outcome is the default case, and the "allow" outcome only happens when specifically permitted by code.
+  **Write code with a deny-all approach by default.** Create allow lists only for entities that need access.  For example, if you have code that needs to determine whether a privileged operation should be allowed, you should write it so that the *deny* outcome is the default case and the *allow* outcome  occurs only when specifically permitted by code.
 
 - **Protect developer environments.**
 
-  **Developer workstations need to be protected** through strong network and identity controls prevent any exposure. Make sure security updates are applied diligently. 
+  **Developer workstations need to be protected** with strong network and identity controls to prevent exposure. Make sure security updates are applied diligently. 
 
-  Build agents are highly privileged and have access to the build server and the code. They must be protected with the same rigor as your workload components.  This means **access to build agents must be authenticated and authorized**, they should be network segmented with firewall controls, they should be subject to vulnerability scanning, and so on. The choice of Microsoft-hosted build agents should be preferred over self-hosted build agents. There are benefits such as clean virtual machine for each run of a pipeline. 
+  Build agents are highly privileged and have access to the build server and the code. They must be protected with the same rigor as your workload components. This means that **access to build agents must be authenticated and authorized**, they should be network-segmented with firewall controls, they should be subject to vulnerability scanning, and so on. Microsoft-hosted build agents should be preferred over self-hosted build agents. Microsoft-hosted agents provide benefits like clean virtual machines for each run of a pipeline. 
 
-  Custom build agents add management complexity and can become an attack vector. **Build machine credentials must be stored securely** and the file system needs to be cleaned of any temporary build artifacts regularly. Network isolation can be achieved by only allowing outgoing traffic from the build agent, because it's using the pull model of communication with Azure DevOps.
+  Custom build agents add management complexity and can become an attack vector. **Build machine credentials must be stored securely**, and you need to regularly remove any temporary build artifacts from the file system. You can achieve network isolation by only allowing outgoing traffic from the build agent, because it's using the pull model of communication with Azure DevOps.
 
   **The source code repository must be safeguarded** as well. Grant access to code repositories on a need-to-know basis and reduce vulnerability exposure as much as possible to delay the unintended attack exploits. **Have a thorough process to review the code** for security vulnerabilities. Use security groups for that purpose and have an approval process based on business justifications.
 
