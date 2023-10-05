@@ -1,6 +1,26 @@
 {
 	"redirections": [
 		{
+			"source_path": "well-architected/devops/devops-patterns.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/design-patterns",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/reliability-patterns.md",
+			"redirect_url": "/azure/well-architected/reliability/design-patterns",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/security/security-patterns.md",
+			"redirect_url": "/azure/well-architected/security/design-patterns",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/performance-efficiency-patterns.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-patterns",
+			"redirect_document_id": true
+		},
+		{
 			"source_path": "well-architected/services/compute/virtual-machines/cost-optimization.md",
 			"redirect_url": "/azure/architecture/framework/services/compute/virtual-machines/virtual-machines-review",
 			"redirect_document_id": false
@@ -146,10 +166,6 @@
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "well-architected/scalability/design-checklist.md",
-			"redirect_url": "/azure/well-architected/scalability/performance-efficiency",
-		},
-		{
 			"source_path": "well-architected/scalability/monitor.md",
 			"redirect_url": "/azure/well-architected/scalability/checklist",
 			"redirect_document_id": false
@@ -157,12 +173,877 @@
 		{
 			"source_path": "well-architected/services/data/azure-db-postgresql/cost-optimization.md",
 			"redirect_url": "/azure/well-architected/services/data/azure-db-postgresql-well-architected-framework",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/checklist.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/design-capture-requirements.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/design-capture-requirements",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/design-checklist.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/design-checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/design-governance.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/design-governance",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/design-initial-estimate.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/design-initial-estimate",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/design-model.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/design-model",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/design-paas.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/design-paas",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/design-price.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/design-price",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/design-regions.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/design-regions",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/design-resources.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/design-resources",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/monitor-alert.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/monitor-alert",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/monitor-checklist.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/monitor-checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/monitor-reports.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/monitor-reports",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/monitor-reviews.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/monitor-reviews",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/optimize-autoscale.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-autoscale",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/optimize-cache.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-cache",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/optimize-checklist.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/optimize-vm.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-vm",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/overview.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/overview",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/principles.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/principles",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/provision-ai-ml.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/provision-ai-ml",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/provision-analytics.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/provision-analytics",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/provision-checklist.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/provision-checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/provision-compute.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/provision-compute",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/provision-datastores.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/provision-datastores",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/provision-messaging.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/provision-messaging",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/provision-networking-services.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/provision-networking-services",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/provision-networking.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/provision-networking",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/provision-webapps.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/provision-webapps",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/tradeoffs.md",
+			"redirect_url": "/azure/well-architected/cost-optimization/tradeoffs",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/cost/index.yml",
+			"redirect_url": "/azure/well-architected/cost-optimization/index",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/alerts.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/alerts",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/auditing.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/auditing",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/automation-configuration.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/automation-configuration",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/automation-infrastructure.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/automation-infrastructure",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/automation-overview.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/automation-overview",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/automation-tasks.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/automation-tasks",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/checklist.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/health-monitoring.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/health-monitoring",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/issue-tracking.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/issue-tracking",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/monitor-alerts.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/monitor-alerts",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/monitor-analysis.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/monitor-analysis",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/monitor-collection-data-storage.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/monitor-collection-data-storage",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/monitor-data-sources.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/monitor-data-sources",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/monitor-instrument.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/monitor-instrument",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/monitor-pipeline.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/monitor-pipeline",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/monitor-visualize-data.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/monitor-visualize-data",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/overview.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/overview",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/principles.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/principles",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/release-engineering-app-dev.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-app-dev",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/release-engineering-cd.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-cd",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/release-engineering-ci.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-ci",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/release-engineering-performance.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-performance",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/release-engineering-rollback.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-rollback",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/release-engineering-testing.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-testing",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/tracing.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/tracing",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/usage.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/usage",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/devops/index.yml",
+			"redirect_url": "/azure/well-architected/operational-excellence/index",
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "well-architected/services/data/azure-db-postgresql-well-architected-framework.md",
-			"redirect_url": "/azure/well-architected/services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework",
+			"source_path": "well-architected/scalability/checklist.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/monitor-performance",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/capacity.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/capacity",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/design-apps.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-apps",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/design-capacity.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-capacity",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/design-checklist.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-efficiency",
 			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/scalability/design-distributed.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-distributed",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/design-efficiency.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-efficiency",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/design-scale.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/design-scale",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/index.yml",
+			"redirect_url": "/azure/well-architected/performance-efficiency/index",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/load-testing.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/load-testing",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/monitor-analyze.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/monitor-analyze",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/monitor-application.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/monitor-application",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/monitor-infrastructure.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/monitor-infrastructure",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/monitor-scalability-reliability.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/monitor-scalability-reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/optimize-cache.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-cache",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/optimize-partition.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-partition",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/optimize-sustain.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-sustain",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/optimize.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/overview.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/overview",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/performance-efficiency.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-efficiency",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/performance-test.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-test",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/principles.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/principles",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/test-checklist.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/test-checklist",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/test-tools.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/test-tools",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/scalability/tradeoffs.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/tradeoffs",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/resiliency/app-design-error-handling.md",
+			"redirect_url": "/azure/well-architected/reliability/self-preservation",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/app-design.md",
+			"redirect_url": "/azure/well-architected/reliability/checklist",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/auto-retry.md",
+			"redirect_url": "/azure/well-architected/reliability/handle-transient-faults",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/backup-and-recovery.md",
+			"redirect_url": "/azure/well-architected/reliability/disaster-recovery",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/business-metrics.md",
+			"redirect_url": "/azure/well-architected/reliability/metrics",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/chaos-engineering.md",
+			"redirect_url": "/azure/well-architected/reliability/testing-strategy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/checklist.md",
+			"redirect_url": "/azure/well-architected/reliability/checklist",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/data-management.md",
+			"redirect_url": "/azure/well-architected/reliability/redundancy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/design-best-practices.md",
+			"redirect_url": "/azure/well-architected/reliability/checklist",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/design-checklist.md",
+			"redirect_url": "/azure/well-architected/reliability/checklist",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/design-requirements.md",
+			"redirect_url": "/azure/well-architected/reliability/checklist",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/design-resiliency.md",
+			"redirect_url": "/azure/well-architected/reliability/failure-mode-analysis",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/index.yml",
+			"redirect_url": "/azure/well-architected/reliability/index",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/monitor-best-practices.md",
+			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy.md",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/monitor-checklist.md",
+			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy.md",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/monitor-model.md",
+			"redirect_url": "/azure/well-architected/reliability/metrics",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/monitoring.md",
+			"redirect_url": "/azure/well-architected/reliability/monitoring-alerting-strategy.md",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/overview.md",
+			"redirect_url": "/azure/well-architected/reliability/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/principles.md",
+			"redirect_url": "/azure/well-architected/reliability/principles",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/test-best-practices.md",
+			"redirect_url": "/azure/well-architected/reliability/testing-strategy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/test-checklist.md",
+			"redirect_url": "/azure/well-architected/reliability/testing-strategy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/testing.md",
+			"redirect_url": "/azure/well-architected/reliability/testing-strategy",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/tradeoffs.md",
+			"redirect_url": "/azure/well-architected/reliability/tradeoffs",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/resiliency/regions-availability-zones.md",
+			"redirect_url": "/azure/well-architected/reliability/regions-availability-zones",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-service-fabric-well-architected-framework.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-service-fabric-well-architected-framework",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-app-service/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-app-service/cost-optimization",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-app-service/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-app-service/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-app-service/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-app-service/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-batch/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-batch/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-batch/performance-efficiency.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-batch/performance-efficiency",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-batch/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-batch/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/compute/azure-kubernetes-service/azure-kubernetes-service.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-kubernetes-service",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/compute/functions/security.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-functions-security",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/compute/virtual-machines/virtual-machines-review.md",
+			"redirect_url": "/azure/well-architected/service-guides/virtual-machines-review",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/data/azure-db-postgresql-well-architected-framework.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-db-postgresql-well-architected-framework",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/data/azure-sql-database-well-architected-framework.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-sql-database-well-architected-framework",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/data/azure-cache-redis/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-cache-redis/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/data/azure-cache-redis/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-cache-redis/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/data/azure-databricks/security.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-databricks-security",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/data/azure-db-mysql/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-db-mysql-cost-optimization",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/data/azure-sql-managed-instance/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-sql-managed-instance/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/data/azure-sql-managed-instance/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-sql-managed-instance/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/data/cosmos-db/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/cosmos-db/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/data/cosmos-db/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/cosmos-db/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/hybrid/azure-stack-hub/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-stack-hub/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/hybrid/azure-stack-hub/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-stack-hub/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/event-grid/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/event-grid/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/event-grid/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/event-grid/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/event-hubs/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/event-hubs/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/event-hubs/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/event-hubs/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/iot-hub/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/iot-hub/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/iot-hub/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/iot-hub/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/iot-hub-dps/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/iot-hub-dps/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/iot-hub-dps/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/iot-hub-dps/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/queue-storage/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/queue-storage/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/queue-storage/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/queue-storage/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/service-bus/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/service-bus/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/messaging/service-bus/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/service-bus/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/monitoring/application-insights/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights/cost-optimization",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/monitoring/application-insights/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/monitoring/application-insights/security.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-insights/security",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/monitoring/log-analytics/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/log-analytics-cost-optimization",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-application-gateway.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-application-gateway",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-expressroute.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-expressroute",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-firewall.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-firewall",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/api-management/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/api-management/cost-optimization",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/api-management/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/api-management/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/api-management/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/api-management/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/application-delivery/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-delivery/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/application-delivery/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/application-delivery/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-front-door/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-front-door/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-front-door/security.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-front-door/security",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-load-balancer/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-load-balancer/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-load-balancer/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-load-balancer/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-virtual-network/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-virtual-network/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/azure-virtual-network/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-virtual-network/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/ip-addresses/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/ip-addresses-cost-optimization",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/network-connectivity/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/network-connectivity/cost-optimization",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/network-connectivity/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/network-connectivity/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/network-connectivity/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/network-connectivity/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/network-virtual-appliances/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/network-virtual-appliances/cost-optimization",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/network-virtual-appliances/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/network-virtual-appliances/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/network-virtual-appliances/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/network-virtual-appliances/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/traffic-manager/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/traffic-manager/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/networking/traffic-manager/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/traffic-manager/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/storage/disks/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-disks-cost-optimization",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/storage/storage-accounts/cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/storage-accounts/cost-optimization",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/storage/storage-accounts/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/storage-accounts/operational-excellence",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/storage/storage-accounts/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/storage-accounts/reliability",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/services/storage/storage-accounts/security.md",
+			"redirect_url": "/azure/well-architected/service-guides/storage-accounts/security",
+			"redirect_document_id": true
 		}
 	]
 }
