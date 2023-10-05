@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[SE:09](checklist.md)| Protect application secrets by hardening their storage and restricting access and manipulation and by auditing those actions. Run a reliable and regular rotation process that can improvise rotations for emergencies.|
 |---|---|
 
-This guide describes the recommendations for securing sensitive information in applications. Proper management of secrets is cmrucial for maintaining the security and integrity of your application, workload, and associated data. Improper handling of secrets can lead to data breaches, service disruption, regulatory violations, and other issues.
+This guide describes the recommendations for securing sensitive information in applications. Proper management of secrets is crucial for maintaining the security and integrity of your application, workload, and associated data. Improper handling of secrets can lead to data breaches, service disruption, regulatory violations, and other issues.
 
 Credentials, such as API keys, Open Authorization (OAuth) tokens, and Secure Shell (SSH) keys are secrets. Some credentials, such as client-side OAuth tokens, can be dynamically created at runtime. Dynamic secrets still need to be safeguarded despite their temporary nature. Non-credential information, like certificates and digital signature keys, can also be sensitive. Compliance requirements might cause configuration settings that aren't typically considered secret to be treated as application secrets.
 
