@@ -146,94 +146,109 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
   Custom build agents add management complexity and can become an attack vector. **Build machine credentials must be stored securely**, and you need to regularly remove any temporary build artifacts from the file system. You can achieve network isolation by only allowing outgoing traffic from the build agent, because it's using the pull model of communication with Azure DevOps.
 
-  **The source code repository must be safeguarded** as well. Grant access to code repositories on a need-to-know basis and reduce exposure of vulnerabilities as much as possible to delay the unintended attack exploits. **Have a thorough process to review the code** for security vulnerabilities. Use security groups for that purpose and have an approval process based on business justifications.
+  **The source code repository must be safeguarded** as well. Grant access to code repositories on a need-to-know basis and reduce exposure of vulnerabilities as much as possible to avoid attacks. **Have a thorough process to review code** for security vulnerabilities. Use security groups for that purpose, and implement an approval process that's based on business justifications.
 
 - **Secure code deployments.**
 
-  It's not enough to just secure code. If it runs in exploitable pipelines, then all security efforts are futile and incomplete. **Build and release environments must also be protected** because you want to prevent a bad actor from running malicious code in your pipeline. 
+  It's not enough to just secure code. If it runs in exploitable pipelines, all security efforts are futile and incomplete. **Build and release environments must also be protected** because you want to prevent bad actors from running malicious code in your pipeline. 
 
-- **Maintain an up-to-date inventory of every component that is integrated into the software product.**
+- **Maintain an up-to-date inventory of every component that's integrated into your application.**
 
-  Every new component that is integrated into the application increases the attack surface.  To ensure proper accountability and alerting when new components are added or updated, you should always have an inventory of these components which is stored outside of the build environment. **Check regularly that your manifest matches what is in your build process regularly.** This will help ensure that no new components are added unexpectedly which may contain back doors or other malware.
+  Every new component that's integrated into an application increases the attack surface. To ensure proper accountability and alerting when new components are added or updated, you should have an inventory of these components. Store it outside of the build environment. **On a regular basis, check that your manifest matches what's in your build process.** Doing so will help ensure that no new components that contain back doors or other malware are added unexpectedly.
 
-  **Pipeline tasks.** **Pull tasks in your pipeline from trusted sources**, such as Azure Marketplace. Run tasks authored by your pipeline vendor. GitHub tasks or GitHub actions are recommended. If you're using GitHub workflows, prefer Microsoft-authored tasks. Also, validate the tasks because they run in the security context of your pipeline. 
+  **Pipeline tasks.** **Pull tasks in your pipeline from trusted sources**, like Azure Marketplace. Run tasks that are written by your pipeline vendor. We recommend GitHub tasks or GitHub Actions. If you use GitHub workflows, prefer Microsoft-authored tasks. Also, validate tasks because they run in the security context of your pipeline. 
 
-  **Pipeline secrets.**  Deployment assets that run inside of a pipeline have access to all the secrets in that pipeline. **Have proper segmentation in place for different stages of the pipeline** to avoid unnecessary exposure. Use secret stores that are built-into the pipeline. As a reminder, you can avoid secrets in some situations. Explore the use of workload identities (for pipeline authentication) and managed identities (for service-to-service authentication).
+  **Pipeline secrets.**  Deployment assets that run inside a pipeline have access to all the secrets in that pipeline. **Have proper segmentation in place for different stages of the pipeline** to avoid unnecessary exposure. Use secret stores that are built into the pipeline. Remember that you can avoid using secrets in some situations. Explore the use of workload identities (for pipeline authentication) and managed identities (for service-to-service authentication).
 
 ### Production phase
 
-Production phase is the **last responsible opportunity to fix security gaps**. Keep a record of the golden image released in production. 
+The production phase presents the **last responsible opportunity to fix security gaps**. Keep a record of the golden image that's released in production. 
 
 - **Keep versioned artifacts.**
 
-  **Keep a catalog of all deployed assets with versions**. This information is useful during incident triage, mitigating issues, and getting the system back to working state. Also versioned assets can be compared against any published Common Vulnerabilities and Exposures (CVE) notice, which should be done through automation.
+  **Keep a catalog of all deployed assets and their versions.** This information is useful during incident triage, when you're mitigating issues, and when you're getting the system back to working state. Versioned assets can also be compared against published Common Vulnerabilities and Exposures (CVE) notices. You should use automation to perform these comparisons.
 
 - **Emergency fixes.**
 
-  Your automated pipeline design should have the flexibility to **support both regular and emergency deployments**. This is important to support the rapid and responsible security fixes. 
+  Your automated pipeline design should have the flexibility to **support both regular and emergency deployments**. This flexibility is important to support rapid and responsible security fixes. 
 
-  A release is typically associated with multiple approval gates. Consider building an emergency process to accelerate security fixes. The process might be business and, or communication process between teams. The pipeline should allow for quick roll-forward and rollback deployments that address security fixes, critical bugs, and code updates outside of the regular deployment life cycle.
+  A release is typically associated with multiple approval gates. Consider creating an emergency process to accelerate security fixes. The process might involve communication among teams. The pipeline should allow for quick roll-forward and rollback deployments that address security fixes, critical bugs, and code updates that occur outside of the regular deployment lifecycle.
 
   > [!Note] 
-  > Always favor security fixes over convenience. A security fix shouldn't introduce a regression or bug. If you want to accelerate the fix through an emergency pipeline, carefully consider which automated tests can be bypassed. Evaluate the value of each test against the execution time. For example, unit tests usually complete quickly. Integration or end-to-end tests can run for a long time.
+  > Always prioritize security fixes over convenience. A security fix shouldn't introduce a regression or bug. If you want to accelerate the fix through an emergency pipeline, carefully consider which automated tests can be bypassed. Evaluate the value of each test against the execution time. For example, unit tests usually complete quickly. Integration or end-to-end tests can run for a long time.
 
-- **Keep the sanctity of different environments.**
+- **Keep different environments separate.**
 
-  Data used in different environments must be kept separate. **Production data shouldn’t be used in lower environments** because they might not have strict security controls like production. Avoid connecting from a non-production application to a production database, and avoid connecting non-production components to production networks.
+  Data used in different environments must be kept separate. **Production data shouldn't be used in lower environments** because those environments might not have the strict security controls that production has. Avoid connecting from a non-production application to a production database, and avoid connecting non-production components to production networks.
 
 - **Progressive exposure.**
 
-  Use progressive exposure as a practice to **release features to a subset of users** based on certain criteria. If there are issues, the impact is minimized to those users. This approach is a common risk mitigation strategy because it reduces surface area.  As the feature matures and there’s confidence in security assurances, gradually release it to a broader set. 
+  Use progressive exposure to **release features to a subset of users** based on chosen criteria. If there are issues, the impact is minimized to those users. This approach is a common risk mitigation strategy because it reduces surface area. As the feature matures and you have more confidence in security assurances, you can gradually release it to a broader set of users. 
 
 ### Maintenance phase
 
-The goal of this phase is to **make sure security posture doesn’t decay over time**. SDLC is an ongoing agile process. Concepts covered in the preceding phases apply to this phase because of changing requirements over time.
+The goal of this phase is to **make sure security posture doesn't decay over time**. SDLC is an ongoing agile process. Concepts covered in the preceding phases apply to this phase because requirements change over time.
 
 **Patch management.** Keep software, libraries, and infrastructure components up to date with security patches and updates.
 
-**Continuous improvement.** Continuously assess and improve the security of the software development process based on code reviews, feedback, lessons learned, and evolving threats.
+**Continuous improvement.** Continuously assess and improve the security of the software development process by taking into account code reviews, feedback, lessons learned, and evolving threats.
 
-Also, **decommission legacy assets** that are stale or no longer in use. This will reduce the surface area of the application.
+**Decommission legacy assets** that are stale or no longer in use. Doing so reduces the surface area of the application.
 
-Maintenance also includes incident fixes. If there are issues found in production, they need to be promptly integrated back in the process, so that there isn’t a recurrence. 
+Maintenance also includes incident fixes. If issues are found in production, they need to be promptly integrated back in the process so that they don't recur. 
 
 Continuously improve your secure coding practices to keep up with the threat landscape. 
 
 ## Azure facilitation
 
-Microsoft Security Development Lifecycle (SDL) recommends secure practices that can be applied to your development lifecycle. For more information, see [Microsoft Security Development Lifecycle](https://www.microsoft.com/securityengineering/sdl/).
+Microsoft Security Development Lifecycle (SDL) recommends secure practices that you can apply to your development lifecycle. For more information, see [Microsoft Security Development Lifecycle](https://www.microsoft.com/securityengineering/sdl/).
 
-Defender for DevOps and the SAST tools are included as part of GitHub advanced security or Azure DevOps. They can help track secure score of the organization.
+Defender for DevOps and the SAST tools are included as part of GitHub Advanced Security or Azure DevOps. These tools can help you track a security score for your organization.
 
-Follow Azure security recommendations described in these articles:
+Follow the Azure security recommendations that are described in these resources:
 
-[Design secure applications on Microsoft Azure | Microsoft Learn](/azure/security/develop/secure-design)
+- [Design secure applications on Azure](/azure/security/develop/secure-design)
 
-[Develop secure applications on Microsoft Azure | Microsoft Learn](/azure/security/develop/secure-develop)
+- [Develop secure applications on Azure](/azure/security/develop/secure-develop)
 
-[Deploy secure applications on Microsoft Azure | Microsoft Learn](/azure/security/develop/secure-deploy) 
+- [Deploy secure applications on Azure](/azure/security/develop/secure-deploy) 
 
-[Secure development best practices on Microsoft Azure | Microsoft Learn](/azure/security/develop/secure-dev-overview)
+- [Secure development best practices on Azure](/azure/security/develop/secure-dev-overview)
 
-[Learn how Microsoft supports secure software development as part of a cybersecurity solution - Training | Microsoft Learn](/training/paths/secure-software-development-for-cybersecurity/)
+- [Training: Learn how Microsoft supports secure software development as part of a cybersecurity solution](/training/paths/secure-software-development-for-cybersecurity/)
+
+## Related links
+
+- [Cloud design patterns that support security](design-patterns.md)
+- [Design secure applications on Azure](/azure/security/develop/secure-design)
+- [Deploy secure applications on Azure](/azure/security/develop/secure-deploy)
+- [Develop secure applications on Azure](/azure/security/develop/secure-develop)- [Microsoft Security Development Lifecycle](https://www.microsoft.com/securityengineering/sdl/)
+- [Recommendations for building a segmentation strategy](segmentation.md)
+- [Recommendations for hardening resources](hardening.md)
+- [Recommendations for managing application secrets](application-secrets.md)
+- [Recommendations for security testing](testing.md)
+- [Recommendations for threat analysis](threat-model.md)
+- [Secure development best practices on Azure](/azure/security/develop/secure-dev-overview)
+- [Training: Learn how Microsoft supports secure software development as part of a cybersecurity solution](/training/paths/secure-software-development-for-cybersecurity/)
+- [Use platform as a service (PaaS) options](/azure/architecture/guide/design-principles/managed-services)
 
 ## Community resources
 
- To catch credentials in the source code, consider using tools such as, [GitHub Advanced Security](https://docs.github.com/en/github/getting-started-with-github/about-github-advanced-security) and [OWASP source code analysis tools](https://owasp.org/www-community/Source_Code_Analysis_Tools).
+ To find credentials the source code, consider using tools like [GitHub Advanced Security](https://docs.github.com/en/github/getting-started-with-github/about-github-advanced-security) and [OWASP source code analysis tools](https://owasp.org/www-community/Source_Code_Analysis_Tools).
 
-Validate the security of any open-source code added to your application. Free tools to help with this assessment include:
+Validate the security of any open-source code in your application. These free tools and resources can help you with your assessment:
 
-- Mend Bolt
+- [Mend Bolt](https://www.mend.io/free-developer-tools/bolt/)
 - [npm-audit](https://docs.npmjs.com/cli/audit)
 - [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/)
 - [GitHub Dependabot](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates)
-- [Configure the Microsoft Security DevOps Azure DevOps extension - Microsoft Defender for Cloud | Microsoft Learn](/azure/defender-for-cloud/azure-devops-extension)
+- [Microsoft Security DevOps Azure DevOps extension](/azure/defender-for-cloud/azure-devops-extension)
 - [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/stable-en/)
-- [OWASP Top Ten | OWASP Foundation](https://owasp.org/www-project-top-ten/)  
+- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)  
 
 ## Security checklist
 
 Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"]
->[Security checklist](checklist.md)
+> [Security checklist](checklist.md)
