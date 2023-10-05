@@ -4,7 +4,7 @@ description: Design considerations and recommendations for each pillar as relate
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: conceptual
-ms.date: 09/13/2023
+ms.date: 10/05/2023
 products:
   - azure-cosmos-db
 ---
