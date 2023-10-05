@@ -91,8 +91,6 @@ In addition to the changes in structure and consistency, you should note some th
 ## August 2023
 
 - New Well-Architected Framework workload: [Azure VMware Solution workloads](./azure-vmware/index.yml)
-- Updated Reliability pillar guide: [Design reliable Azure applications](./reliability/app-design.md)
-- Updated Reliability pillar guide: [Target functional and nonfunctional requirements](./reliability/design-requirements.md)
 - Updated service guide: [Azure Well-Architected Framework review - Virtual Machines](./service-guides/virtual-machines-review.md)
 
 ## Related resources
