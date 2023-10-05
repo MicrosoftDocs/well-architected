@@ -78,7 +78,6 @@ In addition to the changes in structure and consistency, you should note some th
 
 - The [Well-Architected Framework workloads](./workloads.md) and the [Well-Architected Framework service guides](./service-guides/index.yml) didn't undergo significant changes with this refresh. New workloads and service guides are ongoing additions to the Well-Architected Framework. Keep checking this page for updates.
 
-<!-- TODO: Some of these links are broken and some articles haven't shown up yet. -->
 ## October 2023
 
 - Updated service guide: [Azure Well-Architected Framework review - Azure Cosmos DB](./service-guides/cosmos-db/reliability.md)
