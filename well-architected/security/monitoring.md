@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[SE:10](checklist.md)|Implement a holistic monitoring strategy that relies on modern threat detection mechanisms that can be integrated with the platform. Mechanisms should reliably alert for triage and send signals into existing SecOps processes.|
 |---|---|
 
-This guide describes the recommendations for monitoring and threat detection. Monitoring is fundamentally a process of **getting information about events that have already occurred**. Security monitoring is a practice of capturing information at different altitudes of the workload (infrastructure, application, operations) to **gain awareness of suspicious activities**. The goal is to predict incidents and learn from past events. Monitoring data provides the basis of post-incident analysis of what ocurred to help incident response and forensic investigations.
+This guide describes the recommendations for monitoring and threat detection. Monitoring is fundamentally a process of **getting information about events that have already occurred**. Security monitoring is a practice of capturing information at different altitudes of the workload (infrastructure, application, operations) to **gain awareness of suspicious activities**. The goal is to predict incidents and learn from past events. Monitoring data provides the basis of post-incident analysis of what occurred to help incident response and forensic investigations.
 
 Monitoring is an Operational Excellence approach that's applied across all Well-Architected Framework pillars. This guide provides recommendations only from a security perspective. General concepts of monitoring, like code instrumentation, data collection, and analysis, are out of scope for this guide. For information about core monitoring concepts, see [Recommendations for designing and building an observability framework](../operational-excellence/observability.md).
 
@@ -54,7 +54,7 @@ The following sections provide recommended practices that incorporate the preced
 
 ### Capture data to keep a trail of activities
 
-The objective is to maintain a **comprehensive audit trail** of events that are interesting from a security perspective. Logging is the most common way to capture access patterns. Logging must be performed for the application and the platform. 
+The objective is to maintain a **comprehensive audit trail** of events that are significant from a security perspective. Logging is the most common way to capture access patterns. Logging must be performed for the application and the platform. 
 
 For an audit trail, you need to **establish the *what*, *when*, and *who* that's associated with actions**. You need to identify the specific timeframes when actions are performed. This should be covered in your threat modeling. To counteract a repudiation threat, you should establish strong logging and auditing systems that result in a  record of activities and transactions.
 
@@ -91,7 +91,7 @@ Capturing DNS flows is a significant requirement for many organizations. For ins
 
 It's important to monitor unexpected DNS requests or DNS requests that are directed toward known command and control endpoints.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Logging all network activities can result in large amount of data.** Every request from layer 3 can be recorded in a flow log, including every transaction that crosses a subnet boundary. Unfortunately, it's not possible to capture only adverse events because they can only be identified after they occur. Make strategic decisions about the type of events to capture and how long to store them. If you're not careful, managing the data can be overwhelming. There's also a tradeoff on the cost of storing that data.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Logging all network activities can result in a large amount of data.** Every request from layer 3 can be recorded in a flow log, including every transaction that crosses a subnet boundary. Unfortunately, it's not possible to capture only adverse events because they can only be identified after they occur. Make strategic decisions about the type of events to capture and how long to store them. If you're not careful, managing the data can be overwhelming. There's also a tradeoff on the cost of storing that data.
 
 Because of the tradeoffs, you should consider whether the benefit of network monitoring of your workload is sufficient to justify the costs. If you have a web application solution with a high request volume and your system makes extensive use of managed Azure resources, the cost might outweigh the benefits. On the other hand, if you have a solution that's designed to use virtual machines with various ports and applications, it might be important to capture and analyze network logs.
 
@@ -109,7 +109,7 @@ Have a comprehensive view, from a patching perspective, of whether the system is
 
 **Change detection also applies to the operating system.** This involves tracking whether services are added or turned off. It also includes monitoring for the addition of new users to the system. There are tools that are designed to target an operating system. They help with context-less monitoring in the sense that they don't target the functionality of the workload. For example, file integrity monitoring is a critical tool that enables you to track changes in system files. 
 
-You should set up alerts for these changes, particularly if you don't expect them to occur commonly. 
+You should set up alerts for these changes, particularly if you don't expect them to occur often. 
 
 > [!IMPORTANT] 
 > When you roll out to production, be sure that alerts are configured to catch anomalous activity that's detected on the application resources and build process.
@@ -130,7 +130,7 @@ You can use a system like security information and event management (SIEM) to **
 
 A SIEM system can **generate alerts** based on correlated and normalized data. These alerts are a significant resource during an incident response process.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: SIEM systems can be expensive and complex and require specialized skills. However, if you don't have one, you might need to correlate data on your own. This can be a time-consuming and complex process.
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: SIEM systems can be expensive, complex, and require specialized skills. However, if you don't have one, you might need to correlate data on your own. This can be a time-consuming and complex process.
 
 SIEM systems are usually managed by an organization's central teams. If your organization doesn't have one, consider advocating for it. It could alleviate the burden of manual log analysis and correlation to allow more efficient and effective security management.
 
@@ -148,7 +148,7 @@ By combining several smaller tools, you can emulate some functions of a SIEM sys
 
 Detect **anomalous user access patterns** so that you can identify and investigate deviations from expected patterns. This involves comparing current user behavior with past behavior to spot anomalies. Although it might not be feasible to perform this task manually, you can use threat intelligence tools to do it. Invest in **User and Entity Behavior Analytics (UEBA) tools** that collect user behavior from monitoring data and analyze it. These tools can often perform predictive analysis that maps suspicious behaviors to potential types of attack.
 
-**Detect threats during pre-deployment and post-deployment stages.** During the pre-deployment phase, incorporate vulnerability scanning into pipelines and take necessary actions based on the results. Post-deployment, continue to conduct vulnerability scanning. You can use tools like Defender for Containers, which scans container images. Include the results in the collected data. For information about secure development practices, see [Recommendations for using safe deployment practices](../operational-excellence/safe-deployments.md). 
+**Detect threats during pre-deployment and post-deployment stages.** During the pre-deployment phase, incorporate vulnerability scanning into pipelines and take necessary actions based on the results. Post-deployment, continue to conduct vulnerability scanning. You can use tools like Microsoft Defender for Containers, which scans container images. Include the results in the collected data. For information about secure development practices, see [Recommendations for using safe deployment practices](../operational-excellence/safe-deployments.md). 
 
 **Take advantage of platform-provided detection mechanisms and measures.** For example, Azure Firewall can analyze traffic and block connections to untrusted destinations. Azure also provides ways to detect and protect against distributed denial-of-service (DDoS) attacks. 
 
@@ -205,20 +205,20 @@ Microsoft Entra ID uses adaptive machine learning algorithms, heuristics, and kn
 
 ### Azure Pipelines
 
-DevOps advocates change management of workloads via continuous integration and continuous delivery (CI/CD). Be sure to add security validation in the pipelines. Follow the guidance described in [Learn how to add continuous security validation to your CI/CD pipeline](/azure/devops/migrate/security-validation-cicd-pipeline).
+DevOps advocates change management of workloads via continuous integration and continuous delivery (CI/CD). Be sure to add security validation in the pipelines. Follow the guidance described in [Securing Azure Pipelines](/azure/devops/migrate/security-validation-cicd-pipeline).
 
 ## Related links
 
-- [Recommendations for designing and building an observability framework](../operational-excellence/observability.md)
+- [Recommendations for designing and creating an observability framework](../operational-excellence/observability.md)
 - [Security Insider](https://www.microsoft.com/security/business/security-insider/)
-- [Recommendations on security hardening](hardening.md)
+- [Recommendations for hardening resources](hardening.md)
 - [Recommendations for using safe deployment practices](../operational-excellence/safe-deployments.md)
 - [Azure Monitor documentation](/azure/azure-monitor/)
 - [What is Microsoft Defender for Cloud?](/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [What is Microsoft Sentinel?](/azure/sentinel/overview)
 - [Threat intelligence integration in Microsoft Sentinel](/azure/sentinel/threat-intelligence-integration)
 - [Identify advanced threats with User and Entity Behavior Analytics (UEBA) in Microsoft Sentinel](/azure/sentinel/identify-threats-with-entity-behavior-analytics)
-- [Flow logs](/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [Tutorial: Log network traffic to and from a virtual machine using the Azure portal](/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 - [Packet capture](/azure/network-watcher/network-watcher-alert-triggered-packet-capture)
 - [Monitor networks proactively with alerts and Azure Functions using Packet Capture](/azure/network-watcher/network-watcher-alert-triggered-packet-capture)
 - [What is Identity Protection?](/azure/active-directory/reports-monitoring/concept-user-at-risk) 
