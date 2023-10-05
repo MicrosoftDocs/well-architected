@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for optimizing data performance
 
-**Applies to: PE 08**
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
+
+|[PE:08](checklist.md)| Optimize data usage. Optimize data stores, partitions, and indexes for their intended and actual use in the workload.| 
+|---|---| 
 
 This guide describes the recommendations for optimizing data performance. Optimizing data performance refers to improving the efficiency and performance of data processing and storage within a workload.
 
@@ -167,11 +170,11 @@ Implement strategies that reduce the processing burden on the data store. To opt
 
 Carefully consider factors like cache expiration policies, cache eviction strategies, and cache size management. To maximize the benefits of caching, you might need to tune caching parameters, such as time to live (TTL). Consider the following caching techniques:
 
-- *In-memory caching:* Perform in-memory caching to store frequently accessed data in memory for fast retrieval. You can use this technique for application data that's expensive to compute or retrieve from a database. In-memory caching is useful for data that's read frequently but doesn't frequently change.
+- *In-memory caching*: Perform in-memory caching to store frequently accessed data in memory for fast retrieval. You can use this technique for application data that's expensive to compute or retrieve from a database. In-memory caching is useful for data that's read frequently but doesn't frequently change.
 
-- *Database query caching:* Use this technique to cache the results of database queries to avoid running the same query multiple times. Database query caching is useful for complex and time-consuming database queries. When you cache the results of a query, subsequent requests for the same query are returned quickly.
+- *Database query caching*: Use this technique to cache the results of database queries to avoid running the same query multiple times. Database query caching is useful for complex and time-consuming database queries. When you cache the results of a query, subsequent requests for the same query are returned quickly.
 
-- *Content delivery network caching:* Use this technique to cache web content on distributed network servers to reduce latency and improve content delivery. Content delivery network caching is effective for static content, like images, CSS files, and JavaScript files. Content delivery networks store copies of content in multiple locations worldwide, so users can access the content from a server that's near them geographically.
+- *Content delivery network caching*: Use this technique to cache web content on distributed network servers to reduce latency and improve content delivery. Content delivery network caching is effective for static content, like images, CSS files, and JavaScript files. Content delivery networks store copies of content in multiple locations worldwide, so users can access the content from a server that's near them geographically.
 
 **Use read replicas.** Many databases support multiple read replicas. Distribute read queries across replicas to minimize the demand on the write database. Each read replica can serve a subset of traffic, which can improve performance.
 
@@ -195,11 +198,11 @@ Optimistic concurrency minimizes contention and allows concurrent updates to pro
 
 Optimizing data movement and processing involves improving the efficiency and performance of operations related to data extraction, transformation, loading, and processing. Consider the following key aspects of optimizing data movement and processing:
 
-- *Extract, transform, and load (ETL) optimization:* Optimize ETL processes to minimize processing time. You can streamline the extraction process, implement efficient transformation algorithms, and optimize the loading process. When you make each step efficient, you can optimize the overall workflow.
+- *Extract, transform, and load (ETL) optimization*: Optimize ETL processes to minimize processing time. You can streamline the extraction process, implement efficient transformation algorithms, and optimize the loading process. When you make each step efficient, you can optimize the overall workflow.
 
-- *Parallel processing:* Utilize parallel processing techniques to improve performance. When you distribute data processing tasks across multiple threads or nodes, you can divide and process the workload concurrently, which results in fast processing.
+- *Parallel processing*: Utilize parallel processing techniques to improve performance. When you distribute data processing tasks across multiple threads or nodes, you can divide and process the workload concurrently, which results in fast processing.
 
-- *Batch processing:* Group similar tasks together to reduce overhead that's caused by repeated operations. Process multiple tasks in a batch to reduce overall processing time.
+- *Batch processing*: Group similar tasks together to reduce overhead that's caused by repeated operations. Process multiple tasks in a batch to reduce overall processing time.
 
 ### Optimize storage design
 
@@ -269,9 +272,9 @@ Azure Cosmos DB has a [default indexing policy](/azure/cosmos-db/index-policy) t
 - [SQL Server index guidance](/sql/relational-databases/indexes/indexes)
 - [Understand data store types](/azure/architecture/guide/technology-choices/data-store-overview)
 
-## Next steps
+## Performance Efficiency checklist  
 
-We recommend that you review the Performance Efficiency checklist to explore other concepts.
+Refer to the complete set of recommendations. 
 
-> [!div class="nextstepaction"]
-> [Performance Efficiency checklist](checklist.md)
+> [!div class="nextstepaction"] 
+> [Performance Efficiency checklist](checklist.md) 

@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for responding to live performance issues
 
-**Applies to: PE 11**
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
+
+|[PE:11](checklist.md)| Respond to live issues. Plan how to address performance problems by incorporating clear lines of communication and responsibilities. When a problematic situation occurs, use what you learn to identify preventive measures and incorporate them in your workload. Implement methods to return to normal operations faster when similar situations occur.| 
+|---|---| 
 
 This guide describes the best practices for responding to live performance issues. Response steps include identifying and addressing issues and bottlenecks that might affect the performance of a workload in real time. Addressing live issues allows for immediate detection and resolution of performance problems, and it helps ensure that the workload meets its performance requirements.
 
@@ -42,17 +45,17 @@ The ideal response to live-site performance issues is precise and fast. Precisio
 
 Planning for issues helps create better and faster responses to them. A triage plan is a strategy for responding to live-site performance issues. Most performance issues don't merit disaster recovery protocols, but they can affect workload functionality enough to require preplanning. Any triage plans that you create to respond to live performance issues should include the following components:
 
-- *Identification and monitoring*. Implement a system to identify and monitor performance issues in real time. You should have a list of the contact information of people who are capable of making decisions or escalating issues to higher levels. The plan should also identify roles and responsibilities. It needs to document which accounts gain access to protected information and for how long.
+- *Identification and monitoring*: Implement a system to identify and monitor performance issues in real time. You should have a list of the contact information of people who are capable of making decisions or escalating issues to higher levels. The plan should also identify roles and responsibilities. It needs to document which accounts gain access to protected information and for how long.
 
-- *Escalation process*. Define a clear escalation process to ensure that performance issues are escalated to the appropriate teams or individuals in a timely manner. The process definition should include contact information and guidelines for escalating issues.
+- *Escalation process*: Define a clear escalation process to ensure that performance issues are escalated to the appropriate teams or individuals in a timely manner. The process definition should include contact information and guidelines for escalating issues.
 
-- *Root cause analysis*. Develop a process for conducting a root cause analysis to identify the underlying cause of each performance issue. The process should involve analyzing logs and performance metrics and conducting diagnostic tests to pinpoint the source of each problem.
+- *Root cause analysis*: Develop a process for conducting a root cause analysis to identify the underlying cause of each performance issue. The process should involve analyzing logs and performance metrics and conducting diagnostic tests to pinpoint the source of each problem.
 
-- *Prioritization*. Establish a prioritization framework to determine the severity of performance issues and prioritize them based on their effect on the workload and users.
+- *Prioritization*: Establish a prioritization framework to determine the severity of performance issues and prioritize them based on their effect on the workload and users.
 
-- *Communication*. Create a communication plan to keep stakeholders informed about the status of performance issues and the progress of their resolution. Consider regular updates, status reports, and clear communication channels.
+- *Communication*: Create a communication plan to keep stakeholders informed about the status of performance issues and the progress of their resolution. Consider regular updates, status reports, and clear communication channels.
 
-- *Documentation*. Document the triage plan, including all its steps, processes, and best practices. This documentation should be easily accessible to the team members who are involved in responding to performance issues.
+- *Documentation*: Document the triage plan, including all its steps, processes, and best practices. This documentation should be easily accessible to the team members who are involved in responding to performance issues.
 
 ### Identify and resolve issues
 
@@ -60,19 +63,19 @@ Resolving live performance issues involves identifying and addressing any factor
 
 **Use root cause analysis.** Root cause analysis requires hypothesis testing. After you review monitoring data, you should list potential causes of the performance issue and test them. To conduct a root cause analysis on a live performance issue, you can follow these steps:
 
-1. *Gather information*. Collect as much information as possible about the performance issue. Examples include error messages, logs, performance metrics, and any other relevant data.
+1. *Gather information.* Collect as much information as possible about the performance issue. Examples include error messages, logs, performance metrics, and any other relevant data.
 
-1. *Define the problem*. Clearly define the problem by identifying the symptoms and the effect that the problem has on the workload or users.
+1. *Define the problem.* Clearly define the problem by identifying the symptoms and the effect that the problem has on the workload or users.
 
-1. *Investigate potential causes*. Narrow down the scope of the analysis by identifying the specific component or area of the workload where the performance issue is occurring. Identify potential causes of the performance issue based on the gathered information. This process can involve analyzing code, configuration settings, infrastructure, or external dependencies.
+1. *Investigate potential causes.* Narrow down the scope of the analysis by identifying the specific component or area of the workload where the performance issue is occurring. Identify potential causes of the performance issue based on the gathered information. This process can involve analyzing code, configuration settings, infrastructure, or external dependencies.
 
-1. *Correlate data*. Dive deeper into the collected data to identify patterns, anomalies, or correlations that might contribute to the performance issue. Data correlation is key to identifying performance issues and causes. It can involve reviewing logs, analyzing performance metrics, and conducting tests.
+1. *Correlate data.* Dive deeper into the collected data to identify patterns, anomalies, or correlations that might contribute to the performance issue. Data correlation is key to identifying performance issues and causes. It can involve reviewing logs, analyzing performance metrics, and conducting tests.
 
-1. *Test hypotheses*. Formulate hypotheses based on the potential causes that you identify. Conduct tests to validate or refute your hypotheses. You should use a test environment to see whether you can replicate the error.
+1. *Test hypotheses.* Formulate hypotheses based on the potential causes that you identify. Conduct tests to validate or refute your hypotheses. You should use a test environment to see whether you can replicate the error.
 
-1. *Implement solutions*. Once you identify a root cause, develop and implement solutions to address the performance issue.
+1. *Implement solutions.* Once you identify a root cause, develop and implement solutions to address the performance issue.
 
-1. *Monitor and validate*. After you implement the solutions, continuously monitor the workload to ensure that the performance issue is resolved. Validate the effectiveness of the solutions by monitoring performance metrics and user feedback.
+1. *Monitor and validate.* After you implement the solutions, continuously monitor the workload to ensure that the performance issue is resolved. Validate the effectiveness of the solutions by monitoring performance metrics and user feedback.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: The steps of a root cause analysis, such as identifying possible causes, testing hypotheses, and documenting the analysis, can be time consuming. To correlate performance issues, you also need to collect and store data. The required time and infrastructure can add significant work to the operations teams and cost to the workload.
 
@@ -104,9 +107,9 @@ Azure provides several tools to help you respond to live performance issues:
 
 - [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md)
 
-## Next steps
+## Performance Efficiency checklist  
 
-We recommend that you review the Performance Efficiency checklist to explore other concepts.
+Refer to the complete set of recommendations. 
 
-> [!div class="nextstepaction"]
-> [Performance Efficiency checklist](checklist.md)
+> [!div class="nextstepaction"] 
+> [Performance Efficiency checklist](checklist.md) 
