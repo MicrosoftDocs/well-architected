@@ -26,7 +26,7 @@ All pillars of the Azure Well-Architected Framework were significantly restructu
   - [Operational Excellence design principles](./operational-excellence/principles.md)
   - [Performance Efficiency design principles](./performance-efficiency/principles.md)
 
-- ** Design review checklist**. Helps drive action through roughly codified recommendations. Use the checklist during the design phase of your new workload and also to evaluate brownfield workloads. 
+- **Design review checklist**. Helps drive action through roughly codified recommendations. Use the checklist during the design phase of your new workload and also to evaluate brownfield workloads. 
 
   - [Design review checklist for Reliability](./reliability/checklist.md)
   - [Design review checklist for Security](./security/checklist.md)
