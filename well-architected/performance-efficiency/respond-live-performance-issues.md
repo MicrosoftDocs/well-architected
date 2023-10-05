@@ -102,9 +102,7 @@ Azure provides several tools to help you respond to live performance issues:
 
 ## Related links
 
-- [Health monitoring](../operational-excellence/health-monitoring.md)
 - [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md)
-- [Alerting for operations](../operational-excellence/monitor-alerts.md)
 
 ## Next steps
 

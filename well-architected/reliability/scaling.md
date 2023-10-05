@@ -34,29 +34,41 @@ This guide describes the recommendations for designing a reliable scaling strate
 To design a reliable scaling strategy for your workloads, focus on identifying load patterns for the user and system flows for each workload that leads to a scaling operation. Here are examples of the different load patterns:
 
 - **Static**: Every night by 11 PM EST, the number of active users is below 100 and the CPU utilization for the app servers drops by 90% across all nodes.
+
 - **Dynamic, regular, and predictable**: Every Monday morning, 1000 employees across multiple regions sign in to the ERP system.
+
 - **Dynamic, irregular, and predictable**: A product launch happens on the first day of the month and there's historical data from previous launches on how the traffic increases in these situations.
+
 - **Dynamic, irregular, and unpredictable**: A large scale event causes a spike in demand for a product. For example, companies manufacturing and selling dehumidifiers can experience a sudden surge in traffic after a hurricane or other flooding event when people in affected areas need to dry rooms in their home.
 
 After you've identified these types of load patterns, you can:
 
 - Identify how the load change associated with each pattern affects your infrastructure.
+
 - Build automation to address the scaling reliably.
 
 For the previous examples, your scaling strategies could be:
 
 - **Static**: You have a scheduled scale of your compute nodes to the minimum count (2) between 11 PM and 6 AM EST.
+
 - **Dynamic, regular, and predictable**: You have a scheduled scale out of your compute nodes to the normal daily capacity before the first region starts work.
+
 - **Dynamic, irregular, and predictable**: You define a one-time scheduled scale up of your compute and database instances on the morning of a product launch, and you scale back down after one week.
+
 - **Dynamic, irregular, and unpredictable**: You have autoscale thresholds defined to account for unplanned traffic spikes.
 
 When designing your scaling automation, be sure to account for these issues:
 
 - **That all components of your workload should be candidates for scaling implementation**. In most cases, global services like [Microsoft Entra ID](/azure/active-directory/fundamentals/whatis) scale automatically and transparently to you and your customers. Be sure to understand the scaling capabilities of your networking ingress and egress controllers and your load balancing solution.
+
 - **Those components that can't be scaled out**. An example would be large, relational databases that don't have sharding enabled and can't be refactored without significant impact. Document the resource limits published by your cloud provider and monitor those resources closely. Include those specific resources in your future planning for migrating to scalable services.
+
 - **The time it takes to perform the scaling operation so that you properly schedule the operation to happen before the extra load hits your infrastructure**. For example, if a component like API Management takes 45 minutes to scale, adjusting the scaling threshold to 65% instead of 90% might help you scale earlier and prepare for the anticipated increase in load.
+
 - **The relationship of the flow’s components in terms of order of scale operations**. Ensure that you don’t inadvertently overload a downstream component by scaling an upstream component first.
+
 - **Any stateful application elements that might be interrupted by a scaling operation and any session affinity (or session stickiness) that's implemented**. Stickiness can limit your scaling ability and introduces single points of failure.
+
 - **Potential bottlenecks**. Scaling out doesn't fix every performance issue. For example, if your backend database is the bottleneck, it doesn't help to add more web servers. Identify and resolve the bottlenecks in the system first before just adding more instances. Stateful parts of the system are the most likely cause of bottlenecks.
 
 Following the [deployment stamp](/azure/architecture/patterns/deployment-stamp) design pattern helps with your overall infrastructure management. Basing your scaling design on stamps as units of scale is also beneficial. And it helps you tightly control your scaling operations across multiple workloads and subsets of workloads. Rather than managing the scaling schedules and autoscaling thresholds of many distinct resources, you can apply a limited set of scaling definitions to a deployment stamp and then mirror that across stamps as needed.

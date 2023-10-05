@@ -59,7 +59,7 @@ Release gates refer to the checkpoints or conditions that you need to met before
 - *Integrate with deployment pipeline*: Incorporate the release gates into the deployment pipeline, ensuring that resource deployments are subject to the defined criteria. You can use automation tools or custom scripts.
 - *Monitor and enforce*: Continuously monitor spending and resource usage against the defined criteria. If the spending thresholds or other conditions are exceeded, the release gates should prevent further deployments until the issues are addressed.
 
-### Setup budgets and alerts
+### Configure cost alerts
 
 Setting alerts on budgets, cost anomalies, and prepaid plan utilization is an important aspect of cost optimization. These alerts serve as spending guardrails by providing visibility into your cloud spending and enabling proactive cost management. You need to manage who receives notifications on alerts. Ensure you keep the recipients up to date and in line with current responsibilities and access.
 
@@ -82,7 +82,7 @@ Infrastructure as code provides a structured and repeatable approach to managing
 
 ### Azure Facilitation
 
-**Governance policies.** Azure Policy enables you to define and enforce governance policies that align with your cost optimization goals. You can use Azure Policy to set rules on management groups, subscriptions, and resource groups. These policies can control various aspects, including resource provisioning, usage limits, and cost allocation. You can promote rightsizing of resources, identify and eliminate idle or underutilized resources, and encourage the use of cost-effective services and architectures. Azure allows you to set limits or quotas to prevent unexpected costs. You can define limits on the number of resources that can be provisioned, the size of resources, or the duration of resource usage. By setting these limits, you can prevent overprovisioning and control costs.
+**Governance policies.** [Azure Policy](/azure/governance/policy/overview) enables you to define and enforce governance policies that align with your cost optimization goals. You can use Azure Policy to set rules on management groups, subscriptions, and resource groups. These policies can control various aspects, including resource provisioning, usage limits, and cost allocation. You can promote rightsizing of resources, identify and eliminate idle or underutilized resources, and encourage the use of cost-effective services and architectures. Azure allows you to set limits or quotas to prevent unexpected costs. You can define limits on the number of resources that can be provisioned, the size of resources, or the duration of resource usage. By setting these limits, you can prevent overprovisioning and control costs.
 
 **Identifying underused or idle resources.** [Azure Advisor](/azure/advisor/advisor-cost-recommendations) helps you optimize and reduce your overall Azure spend by identifying idle and underutilized resources. You can get cost recommendations from the Cost section in the Advisor dashboard.
 

@@ -134,9 +134,9 @@ Placeholder for the IaaS baseline architecture (WIP)
 - [Recommendations for designing a reliable monitoring and alerting strategy](./reliability/monitoring-alerting-strategy.md)
 - [Recommendations for self-healing and self-preservation](./reliability/self-preservation.md)
 
-## Next steps
+## Operational Excellence checklist  
 
-We recommend that you review the Operational Excellence checklist to explore other concepts.
+Refer to the complete set of recommendations. 
 
-> [!div class="nextstepaction"]
-> [Operational Excellence checklist](checklist.md)
+> [!div class="nextstepaction"] 
+> [Operational Excellence checklist](checklist.md) 
