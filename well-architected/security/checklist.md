@@ -10,6 +10,7 @@ ms.topic: conceptual
 # Design review checklist for Security
 
 This checklist presents a set of security recommendations to help you ensure your workload is secure and aligned with the Zero Trust model. If you haven't checked the following boxes and considered the tradeoffs, then your design might be at risk. Carefully consider all of the points covered in the checklist to gain confidence in your workload's security.
+
 ## Checklist
 |&nbsp;|Code|Recommendation|
 |---|---|---|

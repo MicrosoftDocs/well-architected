@@ -85,7 +85,7 @@ Common examples of background jobs are:
 - Batch jobs, such as updating data regularly or processing tasks at a specific time.
 - Long-running workflows, such as completing an order or provisioning services and systems.
 
-For more information, see [Recommendations for background jobs](background-jobs.md)<!--RE:06 check link after file is named-->.
+For more information, see [Recommendations for background jobs](background-jobs.md).
 
 ### Self-healing guidance
 
