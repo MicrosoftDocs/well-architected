@@ -50,30 +50,24 @@ By instrumenting your code, you can measure the resource consumption for differe
 - *Measure performance*: Use profiling tools or performance testing frameworks to measure the execution time and resource consumption of different code paths. It helps identify bottlenecks and areas for improvement.
 - *Consider business logic and user effect*: Evaluate the importance of different code paths based on their relevance to the application's functionality or critical business operations. Determine which code paths are crucial for delivering value to users or meeting performance requirements.
 
+#### Optimize code operations
+
 Review the performance recommendations specific to the programming language you're working with. Evaluate your code against these recommendations to identify areas for improvement. You should remove any unnecessary operations within the code path that may affect performance. To optimize code, consider the following strategies:
 
 - *Remove unnecessary function calls*: Review your code and identify any functions that aren't essential for the desired functionality and may affect performance negatively. For example, if a function call performs a validation that has already been done earlier in the code, you can remove that unnecessary validation function call.
 - *Minimize logging operations*: Logging can be helpful for debugging and analysis, but excessive logging can affect performance. Evaluate the necessity of each logging operation and remove any unnecessary logging calls that aren't critical for performance analysis.
-- *Optimize loops and conditionals*: Analyze loops and conditionals in your code and identify any unnecessary iterations or conditions that can be eliminated. Simplifying and optimizing these structures can improve the performance of your code.
+- *Optimize loops and conditionals*: Analyze loops and conditionals in your code and identify any unnecessary iterations or conditions that can be eliminated. Simplifying and optimizing these structures can improve the performance of your code. Minimize function calls within loops, and eliminate redundant calculations. Consider moving computations outside the loop or utilizing loop unrolling.
 - *Reduce unnecessary data processing*: Review your code for any unnecessary data processing operations, such as redundant calculations or transformations. Eliminate these unnecessary operations to improve the efficiency of your code.
+- *Optimize data structures.* To efficiently store and retrieve data, select appropriate data structures, such as arrays, linked lists, trees, and hash tables. Choose the best data structure for a specific problem. A suitable data structure improves application performance.
 - *Minimize network requests*: If your code involves making network requests, minimize the number of requests and optimize their usage. Batch requests when possible and avoid unnecessary round trips to improve performance.
 - *Minimize allocations*: Identify areas where excessive memory allocation occurs. Optimize the code by reducing unnecessary allocations and reusing existing resources when possible. By minimizing allocations, you can improve memory efficiency and overall performance. Use the appropriate memory management and garbage collection strategies for your programming language.
 - *Reduce data structure size*: Assess the size of your data structures, such as classes, and identify areas where reduction is possible. Review the data requirements and eliminate any unnecessary fields or properties. Optimize memory usage by selecting appropriate data types and packing data efficiently.
+- *Use performance-optimized SDKs and libraries.* Use native SDKs or performance-optimized libraries. Native SDKs are designed to interact with the services and resources on a platform or within a framework. For example, cloud-native SDKs work better with cloud service data planes than with custom API access. SDKs excel at handling network requests and optimizing interactions. Performance-optimized libraries, such as Math.NET, contain performance-optimized functions. When you apply the functions appropriately, you can improve your workload's performance.
 - *Cross-cutting implementation*: Consider the effects of cross-cutting implementations, such as middleware or token checks, and assess if they're affecting performance negatively.
 
-:::image type="icon" source="../_images/trade-off.svg"::: Tradeoff: Optimizing code and hot paths requires developer expertise in identifying code inefficiencies is subjective and might be highly skilled individual required for other tasks.
-
-#### Optimize code logic
-
-To optimize code logic to improve performance efficiency, analyze and modify code to minimize unnecessary computations, reduce memory usage, and optimize algorithms and data structures.
-
-*Optimize data structures.* To efficiently store and retrieve data, select appropriate data structures, such as arrays, linked lists, trees, and hash tables. Choose the best data structure for a specific problem. A suitable data structure improves application performance.
-
-*Optimize loops.* Loops are commonly used in programming. Optimize loops for faster runtime. To make your code more efficient, reduce unnecessary iterations, minimize function calls within loops, and eliminate redundant calculations. To further enhance performance, consider moving computations outside the loop or utilizing loop unrolling.
-
-*Optimize tools.* Use native SDKs or performance-optimized libraries. Native SDKs are designed to interact with the services and resources on a platform or within a framework. For example, cloud-native SDKs work better with cloud service data planes than with custom API access. SDKs excel at handling network requests and optimizing interactions. Performance-optimized libraries, such as Math.NET, contain performance-optimized functions. When you apply the functions appropriately, you can improve your workload's performance.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: SDKs provide convenience and eliminate the complexities of interacting with APIs. But SDKs might limit your control and customization options for custom code.
+:::image type="icon" source="../_images/trade-off.svg"::: Tradeoffs: 
+- Optimizing code and hot paths requires developer expertise in identifying code inefficiencies is subjective and might be highly skilled individual required for other tasks.
+- SDKs provide convenience and eliminate the complexities of interacting with APIs. But SDKs might limit your control and customization options for custom code.
 
 #### Optimize memory management
 
