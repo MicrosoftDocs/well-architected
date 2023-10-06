@@ -15,11 +15,11 @@ This guide describes the best practices for testing. Performance testing helps y
 
 |  Term|                                Definition|
 |-|-|
+| Chaos testing | A performance test that aims to test the resilience and stability of a system by deliberately introducing random and unpredictable failures or disruptions. |
   |Performance baseline|A set of metrics that represent the behavior of a workload under normal conditions as validated by testing.
 | Load test|A performance test that measures system performance under typical and heavy load.|
  | Stress test|A performance test that overloads a system until it breaks.|
   |Synthetic test|A performance test that simulates user requests in an application.|
-| Chaos testing | A performance test that aims to test the resilience and stability of a system by deliberately introducing random and unpredictable failures or disruptions. |
 
 ## Key strategies
 
