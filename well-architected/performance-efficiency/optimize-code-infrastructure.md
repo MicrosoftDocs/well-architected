@@ -20,11 +20,11 @@ This guide describes the recommendations for optimizing code and infrastructure 
 
 |Term| Definition|
 |---|---|
+| Concurrency | When multiple tasks or processes are performed at once but not necessarily at the exact same time.|
 | CPU architecture | The components and principles that affect how the computer works. |
 | Data compression | The action of reducing the size of files by minimizing redundant data.|
 |Heap|An area in memory that's used for runtime memory allocations.|
 | Memory leak | When a workload fails to release allocated memory after the memory is no longer needed.|
-| Concurrency | When multiple tasks or processes are performed at once but not necessarily at the exact same time.|
 | Parallelism | When multiple tasks or processes are performed at the same time. |
 
 ## Key strategies

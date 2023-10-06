@@ -22,12 +22,12 @@ By prioritizing critical flows, you can ensure that less-important flows don't a
 
 |Term|Definition|
 |-|-|
-| Flow | In a workload, the sequence of actions that performs a specific function. A flow involves the movement of data and the running of processes between components of the workload. |
 |Data flow | The movement of data within a workload.  |
+| Flow | In a workload, the sequence of actions that performs a specific function. A flow involves the movement of data and the running of processes between components of the workload. |
+| Priority queue processing |The act of processing high-priority tasks before low-priority tasks.|
+| Rate limiting |The act of limiting how many requests can access a resource.|
 |System flow |The flow of information and processes within a system. The system automatically follows this flow to enable user flows or workload functionality. |
 |User flow | The sequence that a user follows to accomplish a task. |
-| Rate limiting |The act of limiting how many requests can access a resource.|
-| Priority queue processing |The act of processing high-priority tasks before low-priority tasks.|
 
 ## Key design strategies
 
