@@ -30,7 +30,7 @@ It's not enough to secure just the infrastructure plane by using controls on ide
 
 | Term | Definition |
 |--|--|
-| Security Development Lifecycle (SDL) | A set of pratices provided by Microsoft that supports security assurance and compliance requirements. |
+| Security Development Lifecycle (SDL) | A set of practices provided by Microsoft that supports security assurance and compliance requirements. |
 | Software Development Lifecycle (SDLC) | A multi-stage systematic process for developing software systems. |
 
 ## Key design strategies
@@ -98,7 +98,7 @@ During this phase, **the security requirements are converted to technical requir
   > [!NOTE] 
   > Perform threat modeling during this phase. Threat modeling can confirm that design choices are aligned with security requirements and expose gaps that you should mitigate. If your workload handles highly sensitive data, invest in security experts who can help you conduct threat modelling. 
 
-  The initial threat modeling exercise should occur during the design phase when the software's architecture and high-level design are being defined. Doing it during that phase helps you to identify potential security issues before they're incorporated into the system's structure. However, this excercise isn't a one-time activity. It's a continuous process that should continue throughout the software's evolution.
+  The initial threat modeling exercise should occur during the design phase when the software's architecture and high-level design are being defined. Doing it during that phase helps you to identify potential security issues before they're incorporated into the system's structure. However, this exercise isn't a one-time activity. It's a continuous process that should continue throughout the software's evolution.
 
   For more information, see [Recommendations for threat analysis](threat-model.md).
 
@@ -118,7 +118,7 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
   Perform threat modeling to evaluate the security of the application's architecture.
 
-  Use **static application security testing (SAST)** to analyze code for vulnerabilities. Intagrate this methodology into the developer environment to detect vulnerabilities in real time.  
+  Use **static application security testing (SAST)** to analyze code for vulnerabilities. Integrate this methodology into the developer environment to detect vulnerabilities in real time.  
 
   Use **dynamic application security testing (DAST)** during runtime. This tool chain can check for errors in security domains and simulate a set of attacks to test the application's security resilience. When possible, integrate this tool into your build pipelines. 
 
@@ -136,7 +136,7 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
   Taking advantage of Azure features is another way to prevent unnecessary code. One way is to use managed services. For more information, see [Use platform as a service (PaaS) options](/azure/architecture/guide/design-principles/managed-services).
 
-  **Write code with a deny-all approach by default.** Create allow lists only for entities that need access.  For example, if you have code that needs to determine whether a privileged operation should be allowed, you should write it so that the *deny* outcome is the default case and the *allow* outcome  occurs only when specifically permitted by code.
+  **Write code with a deny-all approach by default.** Create allowlists only for entities that need access.  For example, if you have code that needs to determine whether a privileged operation should be allowed, you should write it so that the *deny* outcome is the default case and the *allow* outcome  occurs only when specifically permitted by code.
 
 - **Protect developer environments.**
 
