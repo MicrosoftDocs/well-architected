@@ -5,8 +5,6 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
-ms.custom:
-  - guide
 ---
 
 # Recommendations for improving build velocity
@@ -64,7 +62,7 @@ The types of builds needed by your organization depend on factors including your
 
 [GitHub for Actions for Azure](https://azure.github.io/actions/) allows you to automate CI/CD processes and integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
 
-[Microsoft-hosted agents](/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true&tabs=yaml) are available natively in [Azure Pipeline](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops). These agents are single-use VMs that are only used for one job and then discarded, which provides an easy to manage option for your builds.
+[Microsoft-hosted agents](/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true&tabs=yaml) are available natively in [Azure Pipeline](/azure/devops/pipelines/get-started/what-is-azure-pipelines). These agents are single-use VMs that are only used for one job and then discarded, which provides an easy to manage option for your builds.
 
 ## Related links
 

@@ -175,7 +175,7 @@
               href: operational-excellence/automate-tasks.md
             - name: OE:10 Enable automation
               href: operational-excellence/enable-automation.md
-            - name: OE:11 Safe deployments
+            - name: OE:11 Deploy safely
               href: operational-excellence/safe-deployments.md
             - name: OE:12 Mitigate failures 
               href: operational-excellence/mitigation-strategy.md
