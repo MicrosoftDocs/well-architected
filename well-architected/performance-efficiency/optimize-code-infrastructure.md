@@ -43,7 +43,7 @@ Instrumenting code refers to the practice of adding code snippets or libraries t
 
 In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code issue, the cheaper it's to fix it. You want to automate as much of this code analysis as possible. Use dynamic and static code analysis tools to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
 
-:::image type="icon" source="../_images/trade-off.svg"::: Tradeoff: Code monitoring tools are likely to increase costs.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
 
 #### Identify hot paths
 
@@ -79,7 +79,7 @@ Optimizing code logic means refining the structure and design of code to perform
 
 Review the performance recommendations specific to the programming language you're working with. Evaluate your code against these recommendations to identify areas for improvement.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: Tradeoffs:
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs**:
 > - Optimizing code and hot paths requires developer expertise in identifying code inefficiencies is subjective and might be highly skilled individual required for other tasks.
 > - SDKs provide convenience and eliminate the complexities of interacting with APIs. But SDKs might limit your control and customization options for custom code.
 
@@ -90,9 +90,13 @@ Optimizing memory management involves refining the way a workload uses, allocate
 **Debug memory issues.** Memory dumps are application memory snapshots. They capture the memory state of an application at a specific point in time. Memory dumps enable retrospective analysis of memory-related issues. Select the appropriate type of memory dump based on the nature of the problem you're trying to diagnose and the resources available. You should use miniature dumps for routine debugging and full dumps for complex, critical issues. This strategy provides a balance between resource usage and diagnostic capabilities. Many code hosting services support memory debugging. You should prefer services that support memory analysis over those that don't. Here are the basic steps to debugging memory issues:
 
 1. *Capture memory dumps*: Begin by setting up a mechanism to capture memory dumps during your application's runtime. This can be triggered manually, automatically, or when specific conditions (like excessive memory consumption) are met. Some cloud services might already offer this process.
+
 1. *Analyze memory dumps*: After you collect the memory dumps, analyze them. Numerous tools can assist you in inspecting these dumps, such as WinDbg for Windows applications or GDB for Unix-based systems.
+
 1. *Identify memory leaks*: Focus on identifying memory leaks during the analysis. Memory leaks arise when your application allocates memory but fails to release it when the memory is no longer required. Search for objects or data structures that remain in memory even though they should have been deallocated.
+
 1. *Fix and test*: Upon identifying the problematic code, concentrate on resolving the memory issues. Resolutions might involve releasing memory correctly, optimizing data structures, or reevaluating memory management practices. Confirm that your solutions undergo rigorous testing to ensure their efficacy.
+
 1. *Iterate and monitor*: Memory management is a continuous process. Routinely monitor your application's memory usage and persist in collecting memory dumps in production. Regularly revisit the analysis and optimization stages to make sure memory issues don't reappear with subsequent code modifications.
 
 By incorporating memory dump analysis into your software development lifecycle, you can amplify the reliability and efficiency of your applications. It helps to reduce the likelihood of memory-related issues in production.
@@ -102,8 +106,11 @@ By incorporating memory dump analysis into your software development lifecycle, 
 Caches store frequently accessed data close to the processor, which improves performance. When you minimize memory allocations, there's less contention for cache space, so you can effectively utilize the cache. A high number of memory allocations can degrade application performance and generate errors. Other ways to minimize memory allocations include:
 
 - *Local variables*: Use local variables instead of global variables to minimize memory consumption.
+
 - *Lazy initialization*: Implement lazy initialization to defer the creation of objects or resources until they're needed.
+
 - *Buffers*: Manage buffers effectively to avoid allocating large memory buffers.
+
 - *Object pooling*: Consider object pooling to reuse large objects instead of allocating and deallocating them.
 
 For more information, see [Reduce memory allocations](/dotnet/csharp/advanced-topics/performance) and [The large object heap on Windows systems](/dotnet/standard/garbage-collection/large-object-heap).
@@ -153,6 +160,7 @@ To optimize infrastructure performance, tune the performance of hardware and net
 **Reduce load.** To reduce load on a workload, minimize the work or demand that's placed on an application, and enable resources to perform their primary tasks. For example, it's common practice to avoid running security solutions within your code or on individual compute instances. Instead, web servers should serve HTTP requests. Web application firewalls and gateway resources can handle security checks. The following strategies help reduce the load on your workload:
 
 - *Eventual consistency*: Adopt an eventual consistency model to enhance performance by allowing data to be slightly dated. Eventual consistency reduces the immediate demand on CPU cycles and network bandwidth for constant data updates.
+
 - *Delegate tasks*: Delegate server tasks to clients or intermediaries, such as search indexes and caches. Delegate tasks like sorting data, filtering data, or rendering views. When you offload these tasks, you reduce the workload on your servers and improve performance.
 
 **Optimize the network.** To optimize a workload network for performance, configure and fine-tune the network infrastructure. Ensure that the workload can operate at its highest level of efficiency.
@@ -162,9 +170,13 @@ To optimize infrastructure performance, tune the performance of hardware and net
     > :::image type="icon" source="../_images/trade-off.svg":::**Tradeoff**: Modern protocols might exclude older clients.
 
 - *Network chattiness*: Batch network requests together to reduce the number of requests. Instead of making multiple small requests, combine them into larger requests to reduce network overhead.
+
 - *Database queries*: Ensure that database queries retrieve only the necessary information. Avoid retrieving large amounts of unnecessary data, which can lead to increased network traffic and slow performance.
+
 - *Static data*: Utilize a content delivery network to cache frequently accessed static content that's close to the users. When you cache data, it doesn't have to travel over long distances. Caching improves response times and reduces network traffic.
+
 - *Log collection*: Collect and retain only the log data that's necessary to support your requirements. Configure data collection rules and implement design considerations to optimize your Log Analytics costs.
+
 - *Data compression*: Compress and bundle [HTTP content](/iis/configuration/system.webserver/httpcompression) and [file data](/windows/win32/fileio/file-compression-and-decompression) to allow fast transmission between clients and servers. Compression shrinks the data that a page or API returns and sends back to the browser or client app. Compression optimizes network traffic, which can accelerate application communication.
 
     > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Compression adds server-side and client-side processing. The application must compress, send, and decompress data. Multicast communication, or communication to multiple recipients, can create decompression overhead. You need to test and measure the performance variations before and after implementing data compression to determine if it's a good fit for your workload. For more information, see [Response compression in ASP.NET Core](/aspnet/core/performance/response-compression).
