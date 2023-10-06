@@ -102,15 +102,6 @@ For more information, see [Azure Load Balancer pricing](https://azure.microsoft.
 
 - [Configure ExpressRoute and Site-to-Site coexisting connections](/azure/expressroute/expressroute-howto-coexist-resource-manager): Network traffic from the VPN gateway is routed to the cloud application through an internal load balancer. The load balancer resides in the front-end subnet of the application.
 
-## Azure NAT Gateway
-
-Azure NAT Gateway is charged at a fixed rate per deployment hour. There’s additional cost for the amount of data transferred.
-NAT Gateway resource hours billing begins immediately upon deployment.
-
-Data processing for NAT Gateway is charged per GB of data transferred through NAT Gateway. Data transfer charges for NAT gateway include both outbound and return traffic. Unsolicited inbound traffic does not pass through a NAT gateway.
-
-For more information, see [NAT Gateway pricing](https://azure.microsoft.com/pricing/details/azure-nat-gateway/).
-
 ## Azure VPN Gateway
 
 When provisioning a VPN Gateway resource, choose between two gateway types:

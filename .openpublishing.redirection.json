@@ -341,7 +341,6 @@
 			"redirect_document_id": false
 		},
 		{
-<<<<<<< HEAD
 			"source_path": "well-architected/devops/automation-configuration.md",
 			"redirect_url": "/azure/well-architected/operational-excellence/automation-configuration",
 			"redirect_document_id": false
@@ -1045,16 +1044,6 @@
 			"source_path": "well-architected/services/storage/storage-accounts/security.md",
 			"redirect_url": "/azure/well-architected/service-guides/storage-accounts/security",
 			"redirect_document_id": true
-=======
-			"source_path": "well-architected/services/data/cosmos-db/reliability.md",
-			"redirect_url": "/azure/well-architected/services/data/cosmos-db",
-			"redirect_document_id": false
-		},
-		{
-			"source_path": "well-architected/services/data/cosmos-db/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/services/data/cosmos-db",
-			"redirect_document_id": false
->>>>>>> 924175332cdc45f0ed3443117c2ef34044297eab
 		}
 	]
 }
