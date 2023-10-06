@@ -52,7 +52,7 @@ By instrumenting your code, you can measure the resource consumption for differe
 
 #### Optimize code logic
 
-Optimizing code logic means refining the structure and design of code to perform tasks with fewer resources. Improved logic reduces unnecessary operations. It creates faster execution with less resource consumption. You should remove any unnecessary operations within the code path that may affect performance. Prioritize optimizing hot paths to see the greatest performance efficiency gains. To optimize code, consider the following strategies:
+Optimizing code logic means refining the structure and design of code to perform tasks with fewer resources. Improved logic reduces unnecessary operations. It creates faster execution with less resource consumption. You should remove any unnecessary operations within the code path that may affect performance. Prioritize optimizing hot paths to see the greatest performance efficiency gains. To optimize code logic, consider the following strategies:
 
 - *Remove unnecessary function calls*: Review your code and identify any functions that aren't essential for the desired functionality and may affect performance negatively. For example, if a function call performs a validation that has already been done earlier in the code, you can remove that unnecessary validation function call.
 - *Minimize logging operations*: Logging can be helpful for debugging and analysis, but excessive logging can affect performance. Evaluate the necessity of each logging operation and remove any unnecessary logging calls that aren't critical for performance analysis.
