@@ -39,9 +39,9 @@ Critical flows refer to the key user flows for paying customers or the flows for
 
 To identify critical flows, complete these tasks:
 
-- **Map the flows.** Identify the paths or sequences of user interaction within your workload. Map the dependencies between components or services within your application. Understand how these components interact to support the user flows. Also map the flows and identify the paths or sequences of user interaction within your application. To map the flows, you can use flowcharts, user journey maps, and prototyping tools.
+- **Map the flows**. Identify the paths or sequences of user interaction within your workload. Map the dependencies between components or services within your application. Understand how these components interact to support the user flows. Also map the flows and identify the paths or sequences of user interaction within your application. To map the flows, you can use flowcharts, user journey maps, and prototyping tools.
 
-- **Collect data.** Monitor and collect data that's related to the performance of each user flow. Collect metrics such as response times, error rates, throughput, and resource use. You can use these tools to collect data:
+- **Collect data**. Monitor and collect data that's related to the performance of each user flow. Collect metrics such as response times, error rates, throughput, and resource use. You can use these tools to collect data:
 
     - *Analytic and tracking tools*: These tools provide insights into user behavior and interactions within your application. By analyzing user data, you can identify the most common flows, bottlenecks, or potential issues.
     
@@ -49,7 +49,7 @@ To identify critical flows, complete these tasks:
     
     - *Logging and debugging tools*: Use these tools to capture and analyze logs and debug information while your application runs. Review logs and debugging information to trace how flows are running and identify issues or errors.
     
-- **Align flow importance with workload objectives.** In your workload, assess the significance of each user flow. Assess the actual usage to determine the flow's significance. Data about flows, queries, and code paths is key to identifying what's critical as you align flows with workload priorities. For example, a free tier might receive more traffic than a paid tier, but the free tier might be less critical than the paid tier.
+- **Align flow importance with workload objectives**. In your workload, assess the significance of each user flow. Assess the actual usage to determine the flow's significance. Data about flows, queries, and code paths is key to identifying what's critical as you align flows with workload priorities. For example, a free tier might receive more traffic than a paid tier, but the free tier might be less critical than the paid tier.
 
     Consider factors such as how important the flow is to your business goals, the number of users that rely on the flow, and the potential consequences of any failures or performance issues in the flow. Assess how each flow affects the user experience or business outcomes. Consider factors such as user satisfaction, conversion rates, revenue generation, and customer retention. 
 

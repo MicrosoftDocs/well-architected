@@ -11,7 +11,7 @@ metadata:
   ms.topic: landing-page
   author: martinekuan
   ms.author: martinek
-  ms.date: 09/28/2023
+  ms.date: 10/06/2023
 
 landingContent:
   - title: Key points
@@ -73,7 +73,7 @@ landingContent:
           - text: Eliminate waste
             url: eliminate-waste.md
           - text: Consolidate
-            url: consolidate.md
+            url: consolidation.md
   - title: Optimization targets
     linkLists:
       - linkListType: how-to-guide

@@ -35,36 +35,76 @@ Avoid unnecessary complexity and design. Utilize each component for its intended
 
 ### Optimize code performance
 
-To optimize code performance, modify code to reduce resource usage, minimize runtime, and enhance performance. You can modify code to improve the efficiency and speed of a software program.
+To optimize code performance, modify code to reduce resource usage, minimize runtime, and enhance performance. You can modify code to improve the efficiency and speed of a software program. Don't mask performance issues with brute force. Brute force means adding compute resources to compensate for code performance, like adding extra capacity instead of addressing the source. You need to fix performance issues with optimization. When you optimize code performance, it helps maximize the utilization of system resources, improves response time, reduces latency, and enhances the user experience.
 
-Don't mask performance issues with brute force. Brute force means adding compute resources to compensate for code performance, like adding extra capacity instead of addressing the source. You need to fix performance issues with optimization. When you optimize code performance, it helps maximize the utilization of system resources, improves response time, reduces latency, and enhances the user experience.
+#### Instrument your code
+
+Instrumenting code refers to the practice of adding code snippets or libraries to code that collect data and monitor code performance during runtime. Code instrumentation allows developers to gather information about key metrics such as resource consumption (CPU, memory usage) and execution time. By instrumenting code, developers can gain insights into code hot paths, identify performance bottlenecks, and optimize the code for better performance efficiency .
+
+In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code issue, the cheaper it's to fix it. You want to automate as much of this code analysis as possible. Use dynamic and static code analysis tools to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
+
+:::image type="icon" source="../_images/trade-off.svg"::: Tradeoff: Code monitoring tools are likely to increase costs.
+
+#### Identify hot paths
+
+By instrumenting your code, you can measure the resource consumption for different code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. They are critical or frequently executed sections of a program that require high performance and low latency. To identify code hot paths, consider these steps:
+
+- *Analyze runtime data*: Collect runtime data and analyze it to identify areas of the code that consume significant resources, such as CPU, memory, or I/O operations. Look for patterns or sections of code that are frequently executed or take a long time to complete.
+- *Measure performance*: Use profiling tools or performance testing frameworks to measure the execution time and resource consumption of different code paths. It helps identify bottlenecks and areas for improvement.
+- *Consider business logic and user effect*: Evaluate the importance of different code paths based on their relevance to the application's functionality or critical business operations. Determine which code paths are crucial for delivering value to users or meeting performance requirements.
 
 #### Optimize code logic
 
-To optimize code logic to improve performance efficiency, analyze and modify code to minimize unnecessary computations, reduce memory usage, and optimize algorithms and data structures.
+Optimizing code logic means refining the structure and design of code to perform tasks with fewer resources. Improved logic reduces unnecessary operations. It creates faster execution with less resource consumption. You should remove any unnecessary operations within the code path that might affect performance. Prioritize optimizing hot paths to see the greatest performance efficiency gains. To optimize code logic, consider the following strategies:
 
-**Optimize data structures.** To efficiently store and retrieve data, select appropriate data structures, such as arrays, linked lists, trees, and hash tables. Choose the best data structure for a specific problem. A suitable data structure improves application performance.
+- *Remove unnecessary function calls*: Review your code and identify any functions that aren't essential for the desired functionality and might affect performance negatively. For example, if a function call performs a validation that has already been done earlier in the code, you can remove that unnecessary validation function call.
 
-**Optimize loops.** Loops are commonly used in programming. Optimize loops for faster runtime. To make your code more efficient, reduce unnecessary iterations, minimize function calls within loops, and eliminate redundant calculations. To further enhance performance, consider moving computations outside the loop or utilizing loop unrolling.
+- *Minimize logging operations*: Logging can be helpful for debugging and analysis, but excessive logging can affect performance. Evaluate the necessity of each logging operation and remove any unnecessary logging calls that aren't critical for performance analysis.
 
-**Optimize tools.** Use native SDKs or performance-optimized libraries. Native SDKs are designed to interact with the services and resources on a platform or within a framework. For example, cloud-native SDKs work better with cloud service data planes than with custom API access. SDKs excel at handling network requests and optimizing interactions. Performance-optimized libraries, such as Math.NET, contain performance-optimized functions. When you apply the functions appropriately, you can improve your workload's performance.
+- *Optimize loops and conditionals*: Analyze loops and conditionals in your code and identify any unnecessary iterations or conditions that can be eliminated. Simplifying and optimizing these structures can improve the performance of your code. Minimize function calls within loops, and eliminate redundant calculations. Consider moving computations outside the loop or using loop unrolling.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: SDKs provide convenience and eliminate the complexities of interacting with APIs. But SDKs might limit your control and customization options for custom code.
+- *Reduce unnecessary data processing*: Review your code for any unnecessary data processing operations, such as redundant calculations or transformations. Eliminate these unnecessary operations to improve the efficiency of your code.
+
+- *Optimize data structures.* To efficiently store and retrieve data, select appropriate data structures, such as arrays, linked lists, trees, and hash tables. Choose the best data structure for a specific problem. A suitable data structure improves application performance.
+
+- *Minimize network requests*: If your code involves making network requests, minimize the number of requests and optimize their usage. Batch requests when possible and avoid unnecessary round trips to improve performance.
+
+- *Minimize allocations*: Identify areas where excessive memory allocation occurs. Optimize the code by reducing unnecessary allocations and reusing existing resources when possible. By minimizing allocations, you can improve memory efficiency and overall performance. Use the appropriate memory management and garbage collection strategies for your programming language.
+
+- *Reduce data structure size*: Assess the size of your data structures, such as classes, and identify areas where reduction is possible. Review the data requirements and eliminate any unnecessary fields or properties. Optimize memory usage by selecting appropriate data types and packing data efficiently.
+
+- *Use performance-optimized SDKs and libraries.* Use native SDKs or performance-optimized libraries. Native SDKs are designed to interact with the services and resources on a platform or within a framework. For example, cloud-native SDKs work better with cloud service data planes than with custom API access. SDKs excel at handling network requests and optimizing interactions. Performance-optimized libraries, such as Math.NET, contain performance-optimized functions. When you apply the functions appropriately, you can improve your workload's performance.
+
+- *Cross-cutting implementation*: Consider the effects of cross-cutting implementations, such as middleware or token checks, and assess whether they negatively affect performance.
+
+Review the performance recommendations specific to the programming language you're working with. Evaluate your code against these recommendations to identify areas for improvement.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: Tradeoffs:
+> - Optimizing code and hot paths requires developer expertise in identifying code inefficiencies is subjective and might be highly skilled individual required for other tasks.
+> - SDKs provide convenience and eliminate the complexities of interacting with APIs. But SDKs might limit your control and customization options for custom code.
 
 #### Optimize memory management
 
-To optimize code memory, efficiently manage and reduce the memory usage in a codebase. Proper memory management improves code performance because it reduces the overhead of memory operations.
+Optimizing memory management involves refining the way a workload uses, allocates, and releases memory resources to improve efficiency. Proper memory management improves code performance because it reduces the overhead of memory operations. Efficient memory usage reduces latency, prevents system slowdowns or crashes, and maximizes the throughput of computational tasks. Consider the following stragies to optimize memory management.
 
-**Debug memory leaks.** If you don't address memory leaks, they deplete available memory. Monitor memory usage, and identify sections of code that are responsible for memory leaks. Analyze stack traces to pinpoint the source of the memory leak.
+**Debug memory issues.** Memory dumps are application memory snapshots. They capture the memory state of an application at a specific point in time. Memory dumps enable retrospective analysis of memory-related issues. Select the appropriate type of memory dump based on the nature of the problem you're trying to diagnose and the resources available. You should use miniature dumps for routine debugging and full dumps for complex, critical issues. This strategy provides a balance between resource usage and diagnostic capabilities. Many code hosting services support memory debugging. You should prefer services that support memory analysis over those that don't. Here are the basic steps to debugging memory issues:
+
+1. *Capture memory dumps*: Begin by setting up a mechanism to capture memory dumps during your application's runtime. This can be triggered manually, automatically, or when specific conditions (like excessive memory consumption) are met. Some cloud services might already offer this process.
+1. *Analyze memory dumps*: After you collect the memory dumps, analyze them. Numerous tools can assist you in inspecting these dumps, such as WinDbg for Windows applications or GDB for Unix-based systems.
+1. *Identify memory leaks*: Focus on identifying memory leaks during the analysis. Memory leaks arise when your application allocates memory but fails to release it when the memory is no longer required. Search for objects or data structures that remain in memory even though they should have been deallocated.
+1. *Fix and test*: Upon identifying the problematic code, concentrate on resolving the memory issues. Resolutions might involve releasing memory correctly, optimizing data structures, or reevaluating memory management practices. Confirm that your solutions undergo rigorous testing to ensure their efficacy.
+1. *Iterate and monitor*: Memory management is a continuous process. Routinely monitor your application's memory usage and persist in collecting memory dumps in production. Regularly revisit the analysis and optimization stages to make sure memory issues don't reappear with subsequent code modifications.
+
+By incorporating memory dump analysis into your software development lifecycle, you can amplify the reliability and efficiency of your applications. It helps to reduce the likelihood of memory-related issues in production.
 
 **Reduce memory allocations.** Minimize memory allocations to reduce the overall memory footprint of the code. Your workload can utilize the available memory efficiently. There's less need for the garbage collector to reclaim unused memory, and it reduces the frequency and duration of garbage collection cycles. Memory allocations can be costly, especially if you perform them frequently. Minimize memory allocations, so the code can run quickly and efficiently.
 
 Caches store frequently accessed data close to the processor, which improves performance. When you minimize memory allocations, there's less contention for cache space, so you can effectively utilize the cache. A high number of memory allocations can degrade application performance and generate errors. Other ways to minimize memory allocations include:
 
-- *Local variables*. Use local variables instead of global variables to minimize memory consumption.
-- *Lazy initialization*. Implement lazy initialization to defer the creation of objects or resources until they're needed.
-- *Buffers*. Manage buffers effectively to avoid allocating large memory buffers.
-- *Object pooling*. Consider object pooling to reuse large objects instead of allocating and deallocating them.
+- *Local variables*: Use local variables instead of global variables to minimize memory consumption.
+- *Lazy initialization*: Implement lazy initialization to defer the creation of objects or resources until they're needed.
+- *Buffers*: Manage buffers effectively to avoid allocating large memory buffers.
+- *Object pooling*: Consider object pooling to reuse large objects instead of allocating and deallocating them.
 
 For more information, see [Reduce memory allocations](/dotnet/csharp/advanced-topics/performance) and [The large object heap on Windows systems](/dotnet/standard/garbage-collection/large-object-heap).
 
@@ -87,12 +127,6 @@ Use concurrency and parallelism to run multiple tasks. These techniques increase
     The specific implementation of asynchronous programming varies depending on the programming language, platform, and requirements of the application.
 
 - *Queues*: A queue is a storage buffer that's located between a requesting component, or the producer, and the processing component, or the consumer, of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The producer places tasks in a queue. The queue stores the tasks until a consumer has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. For more information, see [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling) and [Storage queues and Service Bus queues](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
-
-#### Use retry mechanisms
-
-Retry mechanisms are operations that are used in code to handle and recover from transient errors or failures. Retry mechanisms provide a way to automatically retry an operation that failed due to temporary issues, such as network errors, service unavailability, or resource congestion.
-
-Retry mechanisms often incorporate algorithms like exponential backoff. This algorithm gradually increases the delay between retries. Exponential backoff reduces the number of simultaneous retry attempts, which helps alleviate resource congestion. When you introduce a delay between retries, you can minimize the strain on resources, which results in efficient resource utilization.
 
 #### Use connection pooling
 
@@ -141,7 +175,9 @@ To optimize infrastructure performance, tune the performance of hardware and net
 
 **Native SDKs and performance-optimized libraries**: Azure offers [SDKs](https://azure.microsoft.com/downloads) and libraries for various programming languages to interact with Azure services. Use SDKs to simplify interactions between applications and Azure resources. SDKs provide optimal interaction with Azure services, which reduces latency and enhances efficiency.
 
-**Memory management**: Use [the smart detection feature of Application Insights](/azure/azure-monitor/alerts/proactive-diagnostics) to analyze memory consumption and help to identify and address memory leaks.
+**Memory management**: Use [the smart detection feature of Application Insights](/azure/azure-monitor/alerts/proactive-diagnostics) to analyze memory consumption and help to identify and address memory leaks. 
+
+[**Azure App Service**](/troubleshoot/azure/app-service/capture-memory-dumps-app-service): App Service has a profiler and memory dump collection and analysis feature. The App Service [auto-healing feature](/azure/app-service/overview-diagnostics#auto-healing) can automatically take memory dumps and profile traces of .NET and Java apps.
 
 **Concurrency and parallelism**: [AKS](/azure/aks) supports deploying containerized applications, which improves parallel processing. [Azure Batch](/azure/batch/batch-technical-overview) is a cloud-based job scheduling service that you can use to enable parallel and high-performance computing without the need for infrastructure setup.
 
