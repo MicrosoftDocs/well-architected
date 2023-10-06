@@ -145,35 +145,39 @@
           href: operational-excellence/principles.md
         - name: Checklist
           href: operational-excellence/checklist.md
-        - name: Safe deployments
-          href: operational-excellence/safe-deployments.md
         - name: Tradeoffs
           href: operational-excellence/tradeoffs.md
         - name: Recommendations
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
-            - name: OE:01 Fostering a DevOps culture
+            - name: OE:01 Foster a DevOps culture
               href: operational-excellence/devops-culture.md
             - name: OE:02 Formalize tasks
               href: operational-excellence/formalize-operations-tasks.md
             - name: OE:03 Formalize software development practices
               href: operational-excellence/formalize-development-practices.md
+            - name: OE:04 Improve build velocity
+              href: operational-excellence/release-engineering-performance.md
             - name: OE:04 Optimize development practices
               href: operational-excellence/optimize-development-practices.md
-            - name: OE:05 Using infrastructure as code
+            - name: OE:04 Use continuous integration 
+              href: operational-excellence/release-engineering-continuous-integration.md
+            - name: OE:05 Use infrastructure as code
               href: operational-excellence/infrastructure-as-code-design.md
-            - name: OE:06 Supply chain for workload development
+            - name: OE:06 Design a supply chain for workload development
               href: operational-excellence/workload-supply-chain.md
-            - name: OE:07 Developing an observability framework
+            - name: OE:07 Develop an observability framework
               href: operational-excellence/observability.md
-            - name: OE:08 Emergency response
+            - name: OE:08 Respond to emergencies
               href: operational-excellence/emergency-response.md
-            - name: OE:09 Automating tasks
+            - name: OE:09 Automate tasks
               href: operational-excellence/automate-tasks.md
-            - name: OE:10 Enabling automation
+            - name: OE:10 Enable automation
               href: operational-excellence/enable-automation.md
-            - name: OE:12 Failure mitigation
+            - name: OE:11 Safe deployments
+              href: operational-excellence/safe-deployments.md
+            - name: OE:12 Mitigate failures 
               href: operational-excellence/mitigation-strategy.md
       - name: Performance Efficiency
         items: 
