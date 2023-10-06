@@ -85,12 +85,6 @@ Use concurrency and parallelism to run multiple tasks. These techniques increase
 
 - *Queues*: A queue is a storage buffer that's located between a requesting component, or the producer, and the processing component, or the consumer, of the workload. There can be multiple consumers for a single queue. As the tasks increase, you should scale the consumers to meet the demand. The producer places tasks in a queue. The queue stores the tasks until a consumer has capacity. A queue is often the best way to hand off work to a processing service that experiences peaks in demand. For more information, see [Queue-Based Load Leveling pattern](/azure/architecture/patterns/queue-based-load-leveling) and [Storage queues and Service Bus queues](/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
-#### Use retry mechanisms
-
-Retry mechanisms are operations that are used in code to handle and recover from transient errors or failures. Retry mechanisms provide a way to automatically retry an operation that failed due to temporary issues, such as network errors, service unavailability, or resource congestion.
-
-Retry mechanisms often incorporate algorithms like exponential backoff. This algorithm gradually increases the delay between retries. Exponential backoff reduces the number of simultaneous retry attempts, which helps alleviate resource congestion. When you introduce a delay between retries, you can minimize the strain on resources, which results in efficient resource utilization.
-
 #### Use connection pooling
 
 It can be expensive to establish a connection to a database. You have to create an authenticated network connection to the remote database server. Database connections are especially expensive for applications that frequently open new connections. Connection pooling reuses existing connections and eliminates the expense of opening a new connection for each request. Connection pooling reduces connection latency and enables high database throughput (transactions per second) on the server. You should choose a pool size that can handle more connections than you currently have. The goal is to have the connection pool quickly handle new incoming requests.
