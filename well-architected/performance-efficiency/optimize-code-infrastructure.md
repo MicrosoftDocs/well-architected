@@ -52,7 +52,7 @@ By instrumenting your code, you can measure the resource consumption for differe
 
 #### Optimize code logic
 
-Review the performance recommendations specific to the programming language you're working with. Evaluate your code against these recommendations to identify areas for improvement. You should remove any unnecessary operations within the code path that may affect performance. To optimize code, consider the following strategies:
+Optimizing code logic means refining the structure and design of code to perform tasks with fewer resources. Improved logic reduces unnecessary operations. It creates faster execution with less resource consumption. You should remove any unnecessary operations within the code path that may affect performance. To optimize code, consider the following strategies:
 
 - *Remove unnecessary function calls*: Review your code and identify any functions that aren't essential for the desired functionality and may affect performance negatively. For example, if a function call performs a validation that has already been done earlier in the code, you can remove that unnecessary validation function call.
 - *Minimize logging operations*: Logging can be helpful for debugging and analysis, but excessive logging can affect performance. Evaluate the necessity of each logging operation and remove any unnecessary logging calls that aren't critical for performance analysis.
@@ -64,6 +64,8 @@ Review the performance recommendations specific to the programming language you'
 - *Reduce data structure size*: Assess the size of your data structures, such as classes, and identify areas where reduction is possible. Review the data requirements and eliminate any unnecessary fields or properties. Optimize memory usage by selecting appropriate data types and packing data efficiently.
 - *Use performance-optimized SDKs and libraries.* Use native SDKs or performance-optimized libraries. Native SDKs are designed to interact with the services and resources on a platform or within a framework. For example, cloud-native SDKs work better with cloud service data planes than with custom API access. SDKs excel at handling network requests and optimizing interactions. Performance-optimized libraries, such as Math.NET, contain performance-optimized functions. When you apply the functions appropriately, you can improve your workload's performance.
 - *Cross-cutting implementation*: Consider the effects of cross-cutting implementations, such as middleware or token checks, and assess if they're affecting performance negatively.
+
+Review the performance recommendations specific to the programming language you're working with. Evaluate your code against these recommendations to identify areas for improvement.
 
 :::image type="icon" source="../_images/trade-off.svg"::: Tradeoffs:
 
