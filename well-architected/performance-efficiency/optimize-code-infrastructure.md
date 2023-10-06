@@ -65,7 +65,7 @@ Review the performance recommendations specific to the programming language you'
 - *Use performance-optimized SDKs and libraries.* Use native SDKs or performance-optimized libraries. Native SDKs are designed to interact with the services and resources on a platform or within a framework. For example, cloud-native SDKs work better with cloud service data planes than with custom API access. SDKs excel at handling network requests and optimizing interactions. Performance-optimized libraries, such as Math.NET, contain performance-optimized functions. When you apply the functions appropriately, you can improve your workload's performance.
 - *Cross-cutting implementation*: Consider the effects of cross-cutting implementations, such as middleware or token checks, and assess if they're affecting performance negatively.
 
-:::image type="icon" source="../_images/trade-off.svg"::: Tradeoffs: 
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs:** 
 - Optimizing code and hot paths requires developer expertise in identifying code inefficiencies is subjective and might be highly skilled individual required for other tasks.
 - SDKs provide convenience and eliminate the complexities of interacting with APIs. But SDKs might limit your control and customization options for custom code.
 
