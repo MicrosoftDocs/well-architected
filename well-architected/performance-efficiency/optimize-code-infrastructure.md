@@ -52,16 +52,24 @@ To optimize code logic to improve performance efficiency, analyze and modify cod
 
 To optimize code memory, efficiently manage and reduce the memory usage in a codebase. Proper memory management improves code performance because it reduces the overhead of memory operations.
 
-**Debug memory leaks**. If you don't address memory leaks, they deplete available memory. Monitor memory usage, and identify sections of code that are responsible for memory leaks. Analyze stack traces to pinpoint the source of the memory leak.
+**Debug memory issues.** Memory dumps are application memory snapshots. They capture the memory state of an application at a specific point in time. Memory dumps enable retrospective analysis of memory-related issues. You want select the appropriate type of memory dump based on the nature of the problem you're trying to diagnose and the resources available. You should use mini dumps for routine debugging and full dumps for complex, critical issues. It provides a balance between resource usage and diagnostic capabilities. Time-travel debugging dumps, while powerful, are less commonly used due to their complexity and resource demands. However, they can assist in detecting a buildup of objects in memory over time. To debug memory issues, consider the following steps:
+
+- *Capture memory dumps*: Begin by setting up a mechanism to capture memory dumps during your application's runtime. This can be triggered manually, automatically, or when specific conditions (like excessive memory consumption) are met. Some cloud services may already offer this process.
+- *Analyze memory dumps*: After collecting the memory dumps, it's time to analyze them. Numerous tools can assist you in inspecting these dumps, such as WinDbg for Windows applications or GDB for Unix-based systems.
+- *Identify memory leaks*: Focus on identifying memory leaks during the analysis. Memory leaks arise when your application allocates memory but fails to release it when no longer required. Search for objects or data structures that remain in memory even though they should have been deallocated.
+- *Fix and test*: Upon identifying the problematic code, concentrate on resolving the memory issues. This may involve releasing memory correctly, optimizing data structures, or reevaluating memory management practices. Confirm that your solutions undergo rigorous testing to ensure their efficacy.
+- *Iterate and monitor*: Memory management is a continuous process. Routinely monitor your application's memory usage and persist in collecting memory dumps in production. Regularly revisit the analysis and optimization stages to make sure memory issues don't reappear with subsequent code modifications.
+
+By incorporating memory dump analysis into your software development lifecycle, you can amplify the reliability and efficiency of your applications. It helps to reduce the likelihood of memory-related issues in production.
 
 **Reduce memory allocations**. Minimize memory allocations to reduce the overall memory footprint of the code. Your workload can utilize the available memory efficiently. There's less need for the garbage collector to reclaim unused memory, and it reduces the frequency and duration of garbage collection cycles. Memory allocations can be costly, especially if you perform them frequently. Minimize memory allocations, so the code can run quickly and efficiently.
 
 Caches store frequently accessed data close to the processor, which improves performance. When you minimize memory allocations, there's less contention for cache space, so you can effectively utilize the cache. A high number of memory allocations can degrade application performance and generate errors. Other ways to minimize memory allocations include:
 
-- *Local variables*. Use local variables instead of global variables to minimize memory consumption.
-- *Lazy initialization*. Implement lazy initialization to defer the creation of objects or resources until they're needed.
-- *Buffers*. Manage buffers effectively to avoid allocating large memory buffers.
-- *Object pooling*. Consider object pooling to reuse large objects instead of allocating and deallocating them.
+- *Local variables*: Use local variables instead of global variables to minimize memory consumption.
+- *Lazy initialization*: Implement lazy initialization to defer the creation of objects or resources until they're needed.
+- *Buffers*: Manage buffers effectively to avoid allocating large memory buffers.
+- *Object pooling*: Consider object pooling to reuse large objects instead of allocating and deallocating them.
 
 For more information, see [Reduce memory allocations](/dotnet/csharp/advanced-topics/performance) and [The large object heap on Windows systems](/dotnet/standard/garbage-collection/large-object-heap).
 
@@ -133,7 +141,9 @@ To optimize infrastructure performance, tune the performance of hardware and net
 
 **Native SDKs and performance-optimized libraries**. Azure offers [SDKs](https://azure.microsoft.com/downloads) and libraries for various programming languages to interact with Azure services. Use SDKs to simplify interactions between applications and Azure resources. SDKs provide optimal interaction with Azure services, which reduces latency and enhances efficiency.
 
-**Memory management**. Use [the smart detection feature of Application Insights](/azure/azure-monitor/alerts/proactive-diagnostics) to analyze memory consumption and help to identify and address memory leaks.
+**Memory management**. Use [the smart detection feature of Application Insights](/azure/azure-monitor/alerts/proactive-diagnostics) to analyze memory consumption and help to identify and address memory leaks. 
+
+[App Service](/troubleshoot/azure/app-service/capture-memory-dumps-app-service) has a profiler and memory dump collection and analysis feature. The App Service [auto-healing feature](/azure/app-service/overview-diagnostics#auto-healing) can automatically take memory dumps and profile traces of .NET and Java apps
 
 **Concurrency and parallelism**. [AKS](/azure/aks) supports deploying containerized applications, which improves parallel processing. [Azure Batch](/azure/batch/batch-technical-overview) is a cloud-based job scheduling service that you can use to enable parallel and high-performance computing without the need for infrastructure setup.
 
