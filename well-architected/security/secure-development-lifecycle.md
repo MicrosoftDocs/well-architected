@@ -47,7 +47,7 @@ Security measures should be integrated at multiple points into your existing Sof
 
 - Vulnerabilities revealed through incidents are mitigated.  
 
-- Unused assets used are properly decommissioned.  
+- Unused assets are properly decommissioned.  
 
 - Compliance requirements aren't compromised or reduced.  
 
@@ -108,7 +108,7 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
 - **Be well-trained in secure code practices.**
 
-  The development team should **have formal and specialized training in secure coding practices**. For example, web and API developers might need specific training to protect against cross-site scripting attacks, and backend developers can benefit from in-depth training to avoid database-level attacks like SQL injection attacks.
+  The development team should **have formal and specialized training in secure coding practices**. For example, web and API developers might need specific training to protect against cross-site scripting attacks, and back-end developers can benefit from in-depth training to avoid database-level attacks like SQL injection attacks.
 
   Developers should be required to complete this training before they can gain access to production source code.
 
@@ -122,7 +122,7 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
   Use **dynamic application security testing (DAST)** during runtime. This tool chain can check for errors in security domains and simulate a set of attacks to test the application's security resilience. When possible, integrate this tool into your build pipelines. 
 
-  Follow industry standards for secure coding practices. For more information, see the [Community resources](#community-resources) section of this article. 
+  Follow industry standards for secure coding practices. For more information, see the [Community resources](#community-links) section of this article. 
 
   Use linters and code analyzers to prevent credentials from getting pushed to the source code repository. For example, .NET Compiler Platform (Roslyn) Analyzers inspect your application code.
 
@@ -154,7 +154,7 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
 - **Maintain an up-to-date inventory of every component that's integrated into your application.**
 
-  Every new component that's integrated into an application increases the attack surface. To ensure proper accountability and alerting when new components are added or updated, you should have an inventory of these components. Store it outside of the build environment. **On a regular basis, check that your manifest matches what's in your build process.** Doing so will help ensure that no new components that contain back doors or other malware are added unexpectedly.
+  Every new component that's integrated into an application increases the attack surface. To ensure proper accountability and alerting when new components are added or updated, you should have an inventory of these components. Store it outside of the build environment. **On a regular basis, check that your manifest matches what's in your build process.** Doing so helps ensure that no new components that contain back doors or other malware are added unexpectedly.
 
   **Pipeline tasks.** **Pull tasks in your pipeline from trusted sources**, like Azure Marketplace. Run tasks that are written by your pipeline vendor. We recommend GitHub tasks or GitHub Actions. If you use GitHub workflows, prefer Microsoft-authored tasks. Also, validate tasks because they run in the security context of your pipeline. 
 
@@ -217,7 +217,7 @@ Follow the Azure security recommendations that are described in these resources:
 
 - [Training: Learn how Microsoft supports secure software development as part of a cybersecurity solution](/training/paths/secure-software-development-for-cybersecurity/)
 
-## Community resources
+## Community links
 
  To find credentials in source code, consider using tools like [GitHub Advanced Security](https://docs.github.com/en/github/getting-started-with-github/about-github-advanced-security) and [OWASP source code analysis tools](https://owasp.org/www-community/Source_Code_Analysis_Tools).
 
