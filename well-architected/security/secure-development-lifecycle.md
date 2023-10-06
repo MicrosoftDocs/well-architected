@@ -59,7 +59,7 @@ The following sections provide security strategies for the commonly practiced ph
 
 The goal of the requirements phase is to **gather and analyze the functional and non-functional requirements** for an application or a new feature of an application. This phase is important because it facilitates the creation of guardrails that are tailored to the objectives of the application. Protecting the data and integrity of your application should be a core requirement throughout every phase of the development lifecycle.  
 
-For example, the application needs to support critical user flows that enable the user to upload and manipulate data. The security design choices should cover assurances for the user's interaction with the application, like authenticating and authorizing the user identity, allowing only permitted actions on the data, and preventing SQL injection. Similarly, cover non-functional requirements, like availability, scalability, and maintainability. Security choices should include segmentation boundaries, firewall ingress and egress, and other cross-cutting security concerns. 
+For example, consider an application that needs to support critical user flows that enable the user to upload and manipulate data. The security design choices should cover assurances for the user's interaction with the application, like authenticating and authorizing the user identity, allowing only permitted actions on the data, and preventing SQL injection. Similarly, cover non-functional requirements like availability, scalability, and maintainability. Security choices should include segmentation boundaries, firewall ingress and egress, and other cross-cutting security concerns. 
 
 All these decisions should lead to a good definition of the security posture of the application. **Document the security requirements in an agreed-upon specification** and reflect it in the backlog. It should explicitly state the security investments and the tradeoffs and risks that the business is willing to take on if the investments aren't approved by business stakeholders. For example, you might document the need to use a web application firewall (WAF) in front of your application, like Azure Front Door or Azure Application Gateway. If business stakeholders aren't prepared to accept the additional cost of running a WAF, they need to accept the risk that application-layer attacks might be directed toward the application.
 
@@ -83,7 +83,7 @@ During this phase, **the security requirements are converted to technical requir
 
   To ensure that this guidance is followed by all contributors to the software, **maintain a list of approved and/or unapproved frameworks, libraries, and vendors**. When possible, place guardrails in the development pipelines to support the list. As much as possible, **automate the use of tools to scan dependencies** for vulnerabilities. 
 
-- **Determine the security design patterns that the application code should implement.** Patterns can support security concepts like segmentation and isolation, strong authorization, uniform application security, and modern protocols.
+- **Determine the security design patterns that the application code should implement.** Patterns can support security concerns like segmentation and isolation, strong authorization, uniform application security, and modern protocols.
 
   For more information, see [Cloud design patterns that support security](design-patterns.md).
 
@@ -195,7 +195,7 @@ The goal of this phase is to **make sure security posture doesn't decay over tim
 
 **Decommission legacy assets** that are stale or no longer in use. Doing so reduces the surface area of the application.
 
-Maintenance also includes incident fixes. If issues are found in production, they need to be promptly integrated back in the process so that they don't recur. 
+Maintenance also includes incident fixes. If issues are found in production, they need to be promptly integrated back into the process so that they don't recur. 
 
 Continuously improve your secure coding practices to keep up with the threat landscape. 
 
@@ -217,24 +217,9 @@ Follow the Azure security recommendations that are described in these resources:
 
 - [Training: Learn how Microsoft supports secure software development as part of a cybersecurity solution](/training/paths/secure-software-development-for-cybersecurity/)
 
-## Related links
-
-- [Cloud design patterns that support security](design-patterns.md)
-- [Design secure applications on Azure](/azure/security/develop/secure-design)
-- [Deploy secure applications on Azure](/azure/security/develop/secure-deploy)
-- [Develop secure applications on Azure](/azure/security/develop/secure-develop)- [Microsoft Security Development Lifecycle](https://www.microsoft.com/securityengineering/sdl/)
-- [Recommendations for building a segmentation strategy](segmentation.md)
-- [Recommendations for hardening resources](hardening.md)
-- [Recommendations for managing application secrets](application-secrets.md)
-- [Recommendations for security testing](testing.md)
-- [Recommendations for threat analysis](threat-model.md)
-- [Secure development best practices on Azure](/azure/security/develop/secure-dev-overview)
-- [Training: Learn how Microsoft supports secure software development as part of a cybersecurity solution](/training/paths/secure-software-development-for-cybersecurity/)
-- [Use platform as a service (PaaS) options](/azure/architecture/guide/design-principles/managed-services)
-
 ## Community resources
 
- To find credentials the source code, consider using tools like [GitHub Advanced Security](https://docs.github.com/en/github/getting-started-with-github/about-github-advanced-security) and [OWASP source code analysis tools](https://owasp.org/www-community/Source_Code_Analysis_Tools).
+ To find credentials in source code, consider using tools like [GitHub Advanced Security](https://docs.github.com/en/github/getting-started-with-github/about-github-advanced-security) and [OWASP source code analysis tools](https://owasp.org/www-community/Source_Code_Analysis_Tools).
 
 Validate the security of any open-source code in your application. These free tools and resources can help you with your assessment:
 
@@ -245,6 +230,22 @@ Validate the security of any open-source code in your application. These free to
 - [Microsoft Security DevOps Azure DevOps extension](/azure/defender-for-cloud/azure-devops-extension)
 - [OWASP Secure Coding Practices](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/stable-en/)
 - [OWASP Top Ten](https://owasp.org/www-project-top-ten/)  
+
+## Related links
+
+- [Cloud design patterns that support security](design-patterns.md)
+- [Design secure applications on Azure](/azure/security/develop/secure-design)
+- [Deploy secure applications on Azure](/azure/security/develop/secure-deploy)
+- [Develop secure applications on Azure](/azure/security/develop/secure-develop)
+- [Microsoft Security Development Lifecycle](https://www.microsoft.com/securityengineering/sdl/)
+- [Recommendations for building a segmentation strategy](segmentation.md)
+- [Recommendations for hardening resources](hardening.md)
+- [Recommendations for managing application secrets](application-secrets.md)
+- [Recommendations for security testing](testing.md)
+- [Recommendations for threat analysis](threat-model.md)
+- [Secure development best practices on Azure](/azure/security/develop/secure-dev-overview)
+- [Training: Learn how Microsoft supports secure software development as part of a cybersecurity solution](/training/paths/secure-software-development-for-cybersecurity/)
+- [Use platform as a service (PaaS) options](/azure/architecture/guide/design-principles/managed-services)
 
 ## Security checklist
 
