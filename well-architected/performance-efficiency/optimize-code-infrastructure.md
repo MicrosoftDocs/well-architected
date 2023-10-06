@@ -50,7 +50,7 @@ By instrumenting your code, you can measure the resource consumption for differe
 - *Measure performance*: Use profiling tools or performance testing frameworks to measure the execution time and resource consumption of different code paths. It helps identify bottlenecks and areas for improvement.
 - *Consider business logic and user effect*: Evaluate the importance of different code paths based on their relevance to the application's functionality or critical business operations. Determine which code paths are crucial for delivering value to users or meeting performance requirements.
 
-#### Optimize code operations
+#### Optimize code logic
 
 Review the performance recommendations specific to the programming language you're working with. Evaluate your code against these recommendations to identify areas for improvement. You should remove any unnecessary operations within the code path that may affect performance. To optimize code, consider the following strategies:
 
