@@ -32,9 +32,36 @@ Avoid unnecessary complexity and design. Utilize each component for its intended
 
 ### Optimize code performance
 
-To optimize code performance, modify code to reduce resource usage, minimize runtime, and enhance performance. You can modify code to improve the efficiency and speed of a software program.
+To optimize code performance, modify code to reduce resource usage, minimize runtime, and enhance performance. You can modify code to improve the efficiency and speed of a software program. Don't mask performance issues with brute force. Brute force means adding compute resources to compensate for code performance, like adding extra capacity instead of addressing the source. You need to fix performance issues with optimization. When you optimize code performance, it helps maximize the utilization of system resources, improves response time, reduces latency, and enhances the user experience.
 
-Don't mask performance issues with brute force. Brute force means adding compute resources to compensate for code performance, like adding extra capacity instead of addressing the source. You need to fix performance issues with optimization. When you optimize code performance, it helps maximize the utilization of system resources, improves response time, reduces latency, and enhances the user experience.
+#### Instrument your code
+
+Instrumenting code refers to the practice of adding code snippets or libraries to code that collect data and monitor code performance during runtime. Code instrumentation allows developers to gather information about key metrics such as resource consumption (CPU, memory usage) and execution time. By instrumenting code, developers can gain insights into code hot paths, identify performance bottlenecks, and optimize the code for better performance efficiency .
+
+In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code issue, the cheaper it's to fix it. You want to automate as much of this code analysis as possible. Use dynamic and static code analysis tools to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
+
+:::image type="icon" source="../_images/trade-off.svg"::: Tradeoff: Code monitoring tools are likely to increase costs.
+
+#### Identify and optimize hot paths
+
+By instrumenting your code, you can measure the resource consumption for different code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. They are critical or frequently executed sections of a program that require high performance and low latency. To identify code hot paths, consider these steps:
+
+- *Analyze runtime data*: Collect runtime data and analyze it to identify areas of the code that consume significant resources, such as CPU, memory, or I/O operations. Look for patterns or sections of code that are frequently executed or take a long time to complete.
+- *Measure performance*: Use profiling tools or performance testing frameworks to measure the execution time and resource consumption of different code paths. It helps identify bottlenecks and areas for improvement.
+- *Consider business logic and user effect*: Evaluate the importance of different code paths based on their relevance to the application's functionality or critical business operations. Determine which code paths are crucial for delivering value to users or meeting performance requirements.
+
+Review the performance recommendations specific to the programming language you're working with. Evaluate your code against these recommendations to identify areas for improvement. You should remove any unnecessary operations within the code path that may affect performance. To optimize code, consider the following strategies:
+
+- *Remove unnecessary function calls*: Review your code and identify any functions that aren't essential for the desired functionality and may affect performance negatively. For example, if a function call performs a validation that has already been done earlier in the code, you can remove that unnecessary validation function call.
+- *Minimize logging operations*: Logging can be helpful for debugging and analysis, but excessive logging can affect performance. Evaluate the necessity of each logging operation and remove any unnecessary logging calls that aren't critical for performance analysis.
+- *Optimize loops and conditionals*: Analyze loops and conditionals in your code and identify any unnecessary iterations or conditions that can be eliminated. Simplifying and optimizing these structures can improve the performance of your code.
+- *Reduce unnecessary data processing*: Review your code for any unnecessary data processing operations, such as redundant calculations or transformations. Eliminate these unnecessary operations to improve the efficiency of your code.
+- *Minimize network requests*: If your code involves making network requests, minimize the number of requests and optimize their usage. Batch requests when possible and avoid unnecessary round trips to improve performance.
+- *Minimize allocations*: Identify areas where excessive memory allocation occurs. Optimize the code by reducing unnecessary allocations and reusing existing resources when possible. By minimizing allocations, you can improve memory efficiency and overall performance. Use the appropriate memory management and garbage collection strategies for your programming language.
+- *Reduce data structure size*: Assess the size of your data structures, such as classes, and identify areas where reduction is possible. Review the data requirements and eliminate any unnecessary fields or properties. Optimize memory usage by selecting appropriate data types and packing data efficiently.
+- *Cross-cutting implementation*: Consider the effects of cross-cutting implementations, such as middleware or token checks, and assess if they're affecting performance negatively.
+
+:::image type="icon" source="../_images/trade-off.svg"::: Tradeoff: Optimizing code and hot paths requires developer expertise in identifying code inefficiencies is subjective and might be highly skilled individual required for other tasks.
 
 #### Optimize code logic
 
