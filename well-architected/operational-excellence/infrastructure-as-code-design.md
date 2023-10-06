@@ -1,5 +1,5 @@
 ---
-title: Using infrastructure as code in deployments
+title: Recommendations for using infrastructure-as-code
 description: Learn how to use infrastructure as code (IaC) as the standard for all of your infrastructure deployments.
 author: claytonsiemens77
 ms.author: csiemens
