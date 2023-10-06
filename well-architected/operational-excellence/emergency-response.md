@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[OE:08](checklist.md)| Develop an effective emergency operations practice. Ensure that your workload emits meaningful health signals across infrastructure and code. Collect the resulting data and use it to generate actionable alerts that enact emergency responses via dashboards and queries. Clearly define human responsibilities, such as on-call rotations, incident management, emergency resource access, and running post-mortems.|
 |---|---|
 
-This guide describes the recommendations for designing an emergency response strategy. Some issues that arise over the course of a workload’s lifecycle are critical enough to warrant declaring them emergencies. You can implement tightly controlled and focused processes and procedures that your team can follow to ensure that an issue is handled in a calm, orderly manner. Emergencies naturally raise everyone's stress levels and can lead to a chaotic environment if your team isn’t well-prepared. To help minimize stress and confusion, design a response strategy, share the response strategy with your organization, and perform regular emergency response training.
+This guide describes the recommendations for designing an emergency response strategy. Some issues that arise over the course of a workload's lifecycle are critical enough to warrant declaring them emergencies. You can implement tightly controlled and focused processes and procedures that your team can follow to ensure that an issue is handled in a calm, orderly manner. Emergencies naturally raise everyone's stress levels and can lead to a chaotic environment if your team isn't well-prepared. To help minimize stress and confusion, design a response strategy, share the response strategy with your organization, and perform regular emergency response training.
 
 ## Key design strategies
 
@@ -53,7 +53,7 @@ For more information, see [Recommendations for designing and creating an observa
 
 ### Incident response plan
 
-The foundation of an emergency response strategy is an incident response plan. Like a disaster recovery plan, you need to clearly and thoroughly define roles, responsibilities, and procedures for an incident response plan. The plan should be a version-controlled document that's subject to regular reviews that ensure it's up to date.
+The foundation of an emergency response strategy is an incident response plan. Like a disaster recovery plan, clearly and thoroughly define roles, responsibilities, and procedures for an incident response plan. The plan should be a version-controlled document that's subject to regular reviews that ensure it's up to date.
 
 Clearly define the following components in your plan:
 
@@ -61,7 +61,7 @@ Clearly define the following components in your plan:
 
 Identify an incident response manager. This person owns the incident from initiation to remediation to the root cause analysis. An incident response manager ensures that processes are followed and the appropriate parties are informed as the response team performs their work.
   
-Identify a postmortem leader. This individual ensures that postmortems are performed soon after the incident is resolved. They produce a report, which helps you apply the findings that come out of the incident.
+Identify a postmortem leader. This individual ensures that post-mortems are performed soon after the incident is resolved. They produce a report, which helps you apply the findings that come out of the incident.
 
 ##### Processes and procedures
 
@@ -81,11 +81,11 @@ Document any legal or regulatory measures necessary, for example communicating d
 
 ### Incident detection
 
-When you have a well-designed observability platform that monitors for anomalies and automatically alerts on them, you can quickly detect issues and determine their severity. If the severity is deemed an emergency, the plan can be initiated. In some cases, the support team isn't notified via the observability platform. Customers might report issues to support by using support team communication avenues. Or they might reach out to people that they regularly work with, like account executives or VPs. No matter how the support team is notified, they should always follow the same steps to validate the issue and determine the severity. Deviation from the response plan can add stress and confusion.
+When you have a well-designed observability platform that monitors for anomalies and automatically alerts on them, you can quickly detect issues and determine their severity. If the issue is deemed an emergency, the plan can be initiated. In some cases, the support team isn't notified via the observability platform. Customers might report issues to support by using support team communication avenues. Or they might reach out to people that they regularly work with, like account executives or VPs. No matter how the support team is notified, they should always follow the same steps to validate the issue and determine the severity. Deviation from the response plan can add stress and confusion.
 
 ### Containment
 
-The first step in issue remediation is to contain the issue to protect the rest of your workload. Containment strategies depend on the type of issue, but it usually involves removing the affected component from the workload flow paths. For example, you might shut down a resource or remove it from network routing paths. System administrators, engineers, and senior developers should work together to design containment strategies. The containment should limit the blast radius of issues and maintain workload functionality in a degraded state until the issue is resolved. If an affected component needs to be accessible to perform triage, it's vital that its access to the rest of the workload is blocked. You should only access the component via a path that's separated from the workload and the rest of the systems, to the extent possible.
+The first step in issue remediation is to contain the issue to protect the rest of your workload. A containment strategy depends on the type of issue, but it usually involves removing the affected component from the workload flow paths. For example, you might shut down a resource or remove it from network routing paths. System administrators, engineers, and senior developers should work together to design containment strategies. The containment should limit the blast radius of issues and maintain workload functionality in a degraded state until the issue is resolved. If an affected component needs to be accessible to perform triage, it's vital that its access to the rest of the workload is blocked. As much as possible, you should only access the component via a path that's separated from the workload and the rest of the systems.
 
 ### Triage
 
@@ -95,9 +95,9 @@ After you successfully contain the issue, you can begin triage work. The steps t
 
 The service-level agreements (SLAs) to your customers might dictate that you have to issue RCA reports within a certain time period after the incident is resolved. The incident owner should create the RCA reports. If that's not possible, another person that worked closely with the incident owner can create the RCA reports, which ensures an accurate accounting of the incident.
 
-### Incident postmortems
+### Incident post-mortems
 
-An impartial individual should lead blameless postmortems. In postmortem sessions, everyone shares their findings from an incident. Each team that was involved in the incident response should be represented by individuals that worked on the incident. Those individuals should come to the session prepared with examples of the areas that were successful and areas that can be improved. The session isn't a forum for assigning blame for the incident or issues that might have come up during the response. The postmortem leader should leave the session with a clear list of action items that focus on improvement, such as:
+An impartial individual should lead blameless post-mortems. In postmortem sessions, everyone shares their findings from an incident. Each team that was involved in the incident response should be represented by individuals that worked on the incident. Those individuals should come to the session prepared with examples of the areas that were successful and areas that can be improved. The session isn't a forum for assigning blame for the incident or issues that might have come up during the response. The postmortem leader should leave the session with a clear list of action items that focus on improvement, such as:
 
 - **Improvements to the response plan.** Processes or procedures might need to be reevaluated and rewritten to better capture appropriate actions.
 
@@ -120,7 +120,7 @@ Microsoft offers Azure-related incident readiness training. For more information
 
 An overly aggressive response strategy can lead to false alarms or unnecessary escalations.
 
-Similarly, aggressively implementing automatic scaling or other self-healing actions to respond to threshold breaches can lead to unnecessary expenditures and management burden. You might not know the exact thresholds to set for alerting and automatic actions, like scaling. Perform testing in lower environments and in production to help you determine the right thresholds for your requirements.
+Similarly, aggressively implementing automatic scaling or other self-healing actions to respond to threshold breaches can lead to unnecessary expenditures and management burden. You might not know the exact thresholds to set for alerting and automatic actions like scaling. Perform testing in lower environments and in production to help you determine the right thresholds for your requirements.
 
 <!--
 ## Example
