@@ -40,11 +40,11 @@ Don't mask performance issues with brute force. Brute force means adding compute
 
 To optimize code logic to improve performance efficiency, analyze and modify code to minimize unnecessary computations, reduce memory usage, and optimize algorithms and data structures.
 
-**Optimize data structures**. To efficiently store and retrieve data, select appropriate data structures, such as arrays, linked lists, trees, and hash tables. Choose the best data structure for a specific problem. A suitable data structure improves application performance.
+*Optimize data structures.* To efficiently store and retrieve data, select appropriate data structures, such as arrays, linked lists, trees, and hash tables. Choose the best data structure for a specific problem. A suitable data structure improves application performance.
 
-**Optimize loops**. Loops are commonly used in programming. Optimize loops for faster runtime. To make your code more efficient, reduce unnecessary iterations, minimize function calls within loops, and eliminate redundant calculations. To further enhance performance, consider moving computations outside the loop or utilizing loop unrolling.
+*Optimize loops.* Loops are commonly used in programming. Optimize loops for faster runtime. To make your code more efficient, reduce unnecessary iterations, minimize function calls within loops, and eliminate redundant calculations. To further enhance performance, consider moving computations outside the loop or utilizing loop unrolling.
 
-**Optimize tools**. Use native SDKs or performance-optimized libraries. Native SDKs are designed to interact with the services and resources on a platform or within a framework. For example, cloud-native SDKs work better with cloud service data planes than with custom API access. SDKs excel at handling network requests and optimizing interactions. Performance-optimized libraries, such as Math.NET, contain performance-optimized functions. When you apply the functions appropriately, you can improve your workload's performance.
+*Optimize tools.* Use native SDKs or performance-optimized libraries. Native SDKs are designed to interact with the services and resources on a platform or within a framework. For example, cloud-native SDKs work better with cloud service data planes than with custom API access. SDKs excel at handling network requests and optimizing interactions. Performance-optimized libraries, such as Math.NET, contain performance-optimized functions. When you apply the functions appropriately, you can improve your workload's performance.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: SDKs provide convenience and eliminate the complexities of interacting with APIs. But SDKs might limit your control and customization options for custom code.
 
