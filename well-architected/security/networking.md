@@ -3,7 +3,7 @@ title: Recommendations for networking and connectivity
 description: Learn about network design with a focus on security controls that can filter, block, and detect adversaries crossing network boundaries at various depths of your architecture.
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 11/15/2023
+ms.date: 10/05/2023
 ms.topic: conceptual
 ---
 
@@ -182,6 +182,8 @@ For more information, the [Private endpoints section](#private-endpoints) in thi
 > Using private endpoints in conjunction with service firewalls is recommended. Service firewall will block incoming internet traffic, then expose the service privately to internal users using private endpoint.
 
 Another advantage for using private endpoints is that you don\'t need to open the ports on the firewall for outbound traffic. **Private endpoints lock down all outbound traffic on the port for public internet**, and keeps connectivity to only resources within the network.
+
+> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Private Link is a paid service and has meters for inbound and outbound data processed. Private endpoints are charged as well.
 
 ### Protect against distributed denial of service
 

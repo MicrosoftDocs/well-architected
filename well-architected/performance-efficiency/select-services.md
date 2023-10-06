@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for selecting appropriate services
 
-**Applies to: PE 03**
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
+
+|[PE:03](checklist.md)| Select the right services. The services, infrastructure, and tier selections must support your ability to reach the workload's performance targets and accommodate expected capacity changes. The selections should also weigh the benefits of using platform features or building a custom implementation.| 
+|---|---| 
 
 This guide describes the recommendations for selecting appropriate services for your workload. The following recommendations help you choose services that best meet the requirements and demands of your workload. When you use services that are designed to handle your workload's requirements, you can ensure that your workload meets your performance targets. If you choose inappropriate services for your workload, the services might not be capable of handling your workload's demands. Insufficient services can lead to slow response times, bottlenecks, or workload failures.
 
@@ -37,13 +40,13 @@ Select appropriate services that align with the requirements and demands of your
 
 Evaluate the needs and characteristics of your workload to determine the requirements. Align your workload requirements to your performance targets at every tier. You must account for constraints or dependencies. When you understand your workload requirements, you can make informed decisions. You can determine the right infrastructure and implement strategies to handle peak loads or variations in demand.
 
-**Meet performance targets**. Select services that enable you to meet the performance targets for your workload. Ensure that a service can support the performance needs and that you can monitor its performance. Collect performance data for critical components.
+**Meet performance targets.** Select services that enable you to meet the performance targets for your workload. Ensure that a service can support the performance needs and that you can monitor its performance. Collect performance data for critical components.
 
-**Consider organizational restrictions**. Be familiar with restrictions that your organization might have on services that you deploy. Consider these restrictions when you design your solution.
+**Consider organizational restrictions.** Be familiar with restrictions that your organization might have on services that you deploy. Consider these restrictions when you design your solution.
 
-**Consider compliance and security requirements**. Compliance and security requirements can affect services and configurations that you select. Ensure that a service you choose meets the requirements that are related to storage, encryption, access controls, audit logs, and data locations.
+**Consider compliance and security requirements.** Compliance and security requirements can affect services and configurations that you select. Ensure that a service you choose meets the requirements that are related to storage, encryption, access controls, audit logs, and data locations.
 
-**Consider team skills**. Your team builds and maintains workloads. Different services require different skills. Choose services that your team knows how to use, or commit to training them before you choose a service. Ensure that team members possess the expertise and knowledge to effectively use services and to optimize their performance.
+**Consider team skills.** Your team builds and maintains workloads. Different services require different skills. Choose services that your team knows how to use, or commit to training them before you choose a service. Ensure that team members possess the expertise and knowledge to effectively use services and to optimize their performance.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Specialized services offer specific functionalities but might limit customization. Flexible resources require more management and configuration compared to specialized services. Managed services offer ease of management, but you might have less control over the underlying infrastructure compared to self-managed resources.
 
@@ -51,9 +54,9 @@ Evaluate the needs and characteristics of your workload to determine the require
 
 Consider various factors and gain a comprehensive understanding of a service before you choose it. Research and assess services and tools that the cloud provider offers. Determine which services and tools best align with your workload requirements. Consider factors like managed services, serverless options, and specialized services.
 
-**Understand service limits**. Service limits are the predefined thresholds or boundaries that service providers set. Service limits define the maximum usage of resources or capabilities within that service. When you're familiar with service limits, you can avoid issues such as resource contention, performance degradation, or unexpected service interruptions. You can plan and scale the infrastructure appropriately, taking into account factors such as data volume, processing capacity, and data residency requirements.
+**Understand service limits.** Service limits are the predefined thresholds or boundaries that service providers set. Service limits define the maximum usage of resources or capabilities within that service. When you're familiar with service limits, you can avoid issues such as resource contention, performance degradation, or unexpected service interruptions. You can plan and scale the infrastructure appropriately, taking into account factors such as data volume, processing capacity, and data residency requirements.
 
-**Offload functionality**. Service features are designed to handle specific tasks efficiently and at scale, which allows you to take advantage of the optimized infrastructure. Service features are also regularly maintained. Choose services that allow you to offload functionality to service features instead of writing and maintaining your own custom code. Custom code adds complexity and makes the workload prone to performance issues. Only develop custom code when service features aren't sufficient.
+**Offload functionality.** Service features are designed to handle specific tasks efficiently and at scale, which allows you to take advantage of the optimized infrastructure. Service features are also regularly maintained. Choose services that allow you to offload functionality to service features instead of writing and maintaining your own custom code. Custom code adds complexity and makes the workload prone to performance issues. Only develop custom code when service features aren't sufficient.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: The best service for your workload might be a technology that your team isn't skilled at, can't afford, or it might require extra security layers. For example, a public load balancer might fit your performance needs. But if you don't have a web application firewall, you might have to deploy a firewall to secure the workload.
 
@@ -61,11 +64,11 @@ Consider various factors and gain a comprehensive understanding of a service bef
 
 Select the appropriate region and availability zones for hosting your workload. The region refers to a specific geographic location. The availability zones are separate physical datacenters within a region. Different regions and availability zones might have varying levels of network latency and compute resources. Latency refers to the time it takes for data to travel from the source to the destination. Select the infrastructure with low latency and ample resources so you can optimize the performance of your workload.
 
-**Understand available features**. Different regions have different available features, such as the number of services and availability zones. Understand the features that are available in a region before you select it. Ensure that a region meets your workload performance needs.
+**Understand available features.** Different regions have different available features, such as the number of services and availability zones. Understand the features that are available in a region before you select it. Ensure that a region meets your workload performance needs.
 
-**Consider latency**. When your workload communicates across regions and availability zones, it increases latency. Determine the workload components that communicate frequently, and place them in the same region. Select a region that's close to users to minimize network latency and provide an optimal user experience.
+**Consider latency.** When your workload communicates across regions and availability zones, it increases latency. Determine the workload components that communicate frequently, and place them in the same region. Select a region that's close to users to minimize network latency and provide an optimal user experience.
 
-**Understand datacenter mapping**. Availability zones don't always map to the same datacenters. Availability zones only map to the same datacenters within a subscription. For example, *Zone 1* in *Subscription A* might not map to the same datacenters as *Zone 1* in *Subscription B*. For multi-subscription workloads, consider the zone mapping between regions, and choose the availability zones that maximize performance.
+**Understand datacenter mapping.** Availability zones don't always map to the same datacenters. Availability zones only map to the same datacenters within a subscription. For example, *Zone 1* in *Subscription A* might not map to the same datacenters as *Zone 1* in *Subscription B*. For multi-subscription workloads, consider the zone mapping between regions, and choose the availability zones that maximize performance.
 
 ### Evaluate networking requirements
 
@@ -85,11 +88,11 @@ Assess your network needs to determine the appropriate workload services and con
 
 Choose the appropriate compute service to optimize performance efficiency. Different compute services have varying capabilities and characteristics that can affect the performance of your workload. Select the optimal compute service to ensure that your workload runs efficiently.
 
-**Understand instance types**. Different instance types are optimized for different workloads, such as CPU-optimized, memory-optimized, and GPU instances. Choose the instance type that aligns with your needs.
+**Understand instance types.** Different instance types are optimized for different workloads, such as CPU-optimized, memory-optimized, and GPU instances. Choose the instance type that aligns with your needs.
 
-**Consider automatic scaling**. If your workload has variable demand, consider a compute service with an autoscale feature that can automatically adjust the compute capacity based on demand. Automatically scaling helps ensure that you have enough resources during peak times and prevents overprovisioning during low demand periods.
+**Consider automatic scaling.** If your workload has variable demand, consider a compute service with an autoscale feature that can automatically adjust the compute capacity based on demand. Automatically scaling helps ensure that you have enough resources during peak times and prevents overprovisioning during low demand periods.
 
-**Consider containerization**. Containers provide performance advantages compared to a noncontainerized workload. Consider using containerization if it suits your architectural needs. Containers improve compute performance in several ways:
+**Consider containerization.** Containers provide performance advantages compared to a noncontainerized workload. Consider using containerization if it suits your architectural needs. Containers improve compute performance in several ways:
 
 - *Isolation*: Containers provide isolated environments for applications. Containers ensure that application resources don't interfere with each other. This isolation ensures that compute resources that are assigned to a container are dedicated to running that specific application, which results in optimal performance.
 
@@ -101,21 +104,21 @@ Choose the appropriate compute service to optimize performance efficiency. Diffe
 
 When you use containers, consider design factors such as containerizing all application components. Use Linux-based container runtimes for lightweight images. Give containers short lifecycles to make them immutable and replaceable. Gather relevant logs and metrics from containers, container hosts, and the underlying cluster. Use this data to monitor and analyze performance. Containers are just one component of an overall architecture. Choose an appropriate container orchestrator, like Kubernetes, to further enhance performance and scalability.
 
-**Choose the appropriate tier**. Within each compute service, you can set the compute capacity, select features, and enable capabilities. Based on your performance targets, choose the appropriate service tier for your compute service.
+**Choose the appropriate tier.** Within each compute service, you can set the compute capacity, select features, and enable capabilities. Based on your performance targets, choose the appropriate service tier for your compute service.
 
-**Determine the instance count**. Determine the minimum instance count that your workload requires. Some workloads, even at minimal load, might require more than one instance of a compute resource. Set the minimum instance count accordingly.
+**Determine the instance count.** Determine the minimum instance count that your workload requires. Some workloads, even at minimal load, might require more than one instance of a compute resource. Set the minimum instance count accordingly.
 
 ### Evaluate load balancing requirements
 
 Load balancing ensures that network traffic is distributed evenly and prevents any single server from being overwhelmed with requests. Load balancing helps prevent bottlenecks and reduce response times, which maintains optimal performance. Evaluate the different load balancing services that your cloud provider offers. Review the cloud provider's documentation and comparison tools to understand the features. Select the most suitable service for your workload. To select a load balancing service, consider:
 
-- **Traffic type**: Determine whether the load balancing service needs to handle web traffic, like HTTP and HTTPS, or other protocols, such as Transmission Control Protocol (TCP) or User Datagram Protocol (UDP).
+- *Traffic type*: Determine whether the load balancing service needs to handle web traffic, like HTTP and HTTPS, or other protocols, such as Transmission Control Protocol (TCP) or User Datagram Protocol (UDP).
 
-- **Global or regional**: Determine whether your workload requires load balancing within a specific region or across multiple regions.
+- *Global or regional*: Determine whether your workload requires load balancing within a specific region or across multiple regions.
 
-- **Service-level objectives (SLOs)**: Consider the service-level agreement (SLA). Different load balancing services offer different levels of performance.
+- *Service-level objectives (SLOs)*: Consider the service-level agreement (SLA). Different load balancing services offer different levels of performance.
 
-- **Features**: Consider load balancing services that provide site acceleration, optimal traffic distribution, and low-latency layer-4 load balancing.
+- *Features*: Consider load balancing services that provide site acceleration, optimal traffic distribution, and low-latency layer-4 load balancing.
 
 ### Evaluate database requirements
 
@@ -139,13 +142,13 @@ Choose storage services that align with your data access patterns, durability re
 
 ## Azure facilitation
 
-**Understand requirements**. Use Azure Monitor to collect and analyze data from your workload. Monitor provides insights into the performance and health of your workloads, allowing you to identify and troubleshoot issues.
+**Understand requirements.** Use Azure Monitor to collect and analyze data from your workload. Monitor provides insights into the performance and health of your workloads, allowing you to identify and troubleshoot issues.
 
-**Understand services**. Review Azure [services and products](/azure/) to determine if they meet your performance requirements. Azure offers several services that accomplish the same outcome. You have the flexibility to align your choice of service to your performance needs, team skill sets, and cost requirements.
+**Understand services.** Review Azure [services and products](/azure/) to determine if they meet your performance requirements. Azure offers several services that accomplish the same outcome. You have the flexibility to align your choice of service to your performance needs, team skill sets, and cost requirements.
 
-**Understand service limits**. For a list of the most common Azure limits, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits). The [ResourceLimits](https://github.com/mspnp/samples/tree/master/OperationalExcellence/ResourceLimits) sample shows how to query the limits and quotas for commonly used resources.
+**Understand service limits.** For a list of the most common Azure limits, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits). The [ResourceLimits](https://github.com/mspnp/samples/tree/master/OperationalExcellence/ResourceLimits) sample shows how to query the limits and quotas for commonly used resources.
 
-**Choose the appropriate services**. Azure has many services that can accommodate any workload. Review the [selection guidance](/azure/architecture/guide/technology-choices/technology-choices-overview) for each service type to help you streamline your selection based on your requirements. See the following guides to choose:
+**Choose the appropriate services.** Azure has many services that can accommodate any workload. Review the [selection guidance](/azure/architecture/guide/technology-choices/technology-choices-overview) for each service type to help you streamline your selection based on your requirements. See the following guides to choose:
 
 - [A region](https://azure.microsoft.com/explore/global-infrastructure/geographies/#choose-your-region)
 - [Compute services](/azure/architecture/guide/technology-choices/compute-decision-tree)
@@ -161,9 +164,9 @@ Choose storage services that align with your data access patterns, durability re
 - [Recommendations for using availability zones and regions](../reliability/regions-availability-zones.md)
 - [What are availability zones?](/azure/reliability/availability-zones-overview)
 
-## Next steps
+## Performance Efficiency checklist
 
-We recommend that you review the Performance Efficiency checklist to explore other concepts.
+Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Performance Efficiency checklist](checklist.md)
