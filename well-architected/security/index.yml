@@ -11,7 +11,7 @@ metadata:
   ms.topic: landing-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 09/29/2023
+  ms.date: 10/06/2023
 
 landingContent:
   - title: Key points
@@ -50,19 +50,19 @@ landingContent:
             url: principles.md#design-to-protect-availability
           - text: Sustain and evolve your security posture
             url: principles.md#sustain-and-evolve-your-security-posture
-  - title: Establish a security foundation
+  - title: Build a security foundation
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Security baseline (TODO)
+          - text: Establish a security baseline
             url: establish-baseline.md
-          - text: Secure development lifecycle
+          - text: Use a secure development lifecycle
             url: secure-development-lifecycle.md
-          - text: Data classification
+          - text: Classify data
             url: data-classification.md
-          - text: Security monitoring
+          - text: Monitor workload security
             url: monitoring.md
-          - text: Model threats (TODO)
+          - text: Model threats
             url: threat-model.md
   - title: Protect workload assets
     linkLists:

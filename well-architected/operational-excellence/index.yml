@@ -11,7 +11,7 @@ metadata:
   ms.topic: landing-page
   author: martinekuan
   ms.author: martinek
-  ms.date: 09/29/2023
+  ms.date: 10/06/2023
 
 landingContent:
   - title: Key points
@@ -52,34 +52,42 @@ landingContent:
             url: principles.md#automate-for-efficiency
           - text: Adopt safe deployment practices
             url: principles.md#adopt-safe-deployment-practices
-  - title: Category 1 TBD (TODO)
+  - title: Start with the fundamentals
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Task automation
+          - text: Start with a DevOps culture
+            url: devops-culture.md
+          - text: Formalize operational tasks
+            url: formalize-operations-tasks.md
+          - text: Use an industry planning process
+            url: formalize-development-practices.md
+          - text: Define development and testing standards
+            url: optimize-development-practices.md
+          - text: Agree on safe deployment practices (SPD)
+            url: safe-deployments.md
+  - title: Use automation
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Automate pragmatically
             url: automate-tasks.md
-          - text: Emergency Response
-            url: emergency-response.md
-          - text: Workload automation
+          - text: Design for automation
             url: enable-automation.md
-          - text: Observability framework
+  - title: Ship safely and support what is shipped
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Design for supportability
             url: observability.md
-          - text: Workload supply chain
-            url: workload-supply-chain.md
-          - text: IaC
+          - text: Use infrastructure-as-code
             url: infrastructure-as-code-design.md
-  - title: Category 2 TBD (TODO)
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Topic 1 TBD (TODO)
-            url: TODO.md
-  - title: Category 3 TBD (TODO)
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Topic 1 TBD (TODO)
-            url: TODO.md
+          - text: Build a reliable workload supply chain
+            url: workload-supply-chain.md
+          - text: Handle deployment failures
+            url: mitigation-strategy.md
+          - text: Be ready for emergency response
+            url: emergency-response.md
   - title: Related resources
     linkLists:
       - linkListType: reference
