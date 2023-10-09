@@ -47,6 +47,8 @@ After you've identified these types of load patterns, you can:
 
 - Build automation to address the scaling reliably.
 
+- Identify the scaling units, like number of nodes or the specific VM type, that each resource will scale up or out to. You may need different units for different scenarios, or multiple units in some cases. For example, regular, predictable scenarios may require a small number of nodes or a small VM type as scaling units that are statically defined. Conversely, irregular, unpredictable scenarios may require larger units that can be scaled further depending on the load behavior. Ensure that you include a cool down time, which is a short amount of time to allow all of the workload functions to normalize at the new size before scaling again.
+
 For the previous examples, your scaling strategies could be:
 
 - **Static**: You have a scheduled scale of your compute nodes to the minimum count (2) between 11 PM and 6 AM EST.
