@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:** 
 
-|[OE:05](checklist.md)| Formalize the way you run routine, as needed, and emergency operational tasks by using documentation, checklists, or automation. Strive for consistency and predictability for team processes and deliverables by adopting industry-leading practices and approaches, such as a shift left approach.| 
+|[OE:05](checklist.md)| Prepare resources and their configurations by using a standardized infrastructure as code (IaC) approach. Like other code, design IaC with consistent styles, appropriate modularization, and quality assurance. Prefer a declarative approach when possible.| 
 |---|---|
 
 This guide describes the recommendations for using infrastructure as code (IaC) as the standard for your infrastructure deployments. Using IaC enables you to integrate your infrastructure deployments and management into your existing software development practices. It provides a consistent, standard methodology for development and deployment for all components of your workload. Relying on manual deployments puts your workload at risk of inconsistent configurations and potentially insecure design.
@@ -36,7 +36,7 @@ As discussed in the [supply chain](workload-supply-chain.md) and [optimizing dep
 
 **Use the right tools for specific tasks and infrastructure types.** Multiple tasks, beyond deployments, are involved in an infrastructure lifecycle. Configuration needs to be applied and maintained, for example, and the tool you use to script deployments, like Bicep, might not be the best tool for every management operation. 
 
-Likewise, applying desired state configuration (DSC) for different infrastructure types might require different tools. For example, there are specific tools like Ansible for managing DSC for VMs, whereas Flux is a good tool for managing DSC on Kubernetes clusters. Platfom as a service (PaaS) services might provide different tools for configuration management (like Azure App Configuration) that can be handled through IaC. Software as a service (SaaS) services might be more limited because they're more tightly controlled by the platform. 
+Likewise, applying desired state configuration (DSC) for different infrastructure types might require different tools. For example, there are specific tools like Ansible for managing DSC for VMs, whereas Flux is a good tool for managing DSC on Kubernetes clusters. Platform as a service (PaaS) services might provide different tools for configuration management (like Azure App Configuration) that can be handled through IaC. Software as a service (SaaS) services might be more limited because they're more tightly controlled by the platform. 
 
 Think about all the tasks and types of infrastructure that are in scope for your IaC practices and standardize on tools that do the jobs that you need them to do and can be integrated into your development and management practices.
 
@@ -85,23 +85,36 @@ You can use Microsoft Defender for Cloud to [discover misconfigurations in IaC](
 
 **Increased maintenance effort:** Code base and tooling maintenance are required to keep your IaC implementation current and secure. Properly track your technical debt and foster a culture where reducing debt is rewarded.
 
-**Increased time for configuration changes:** Deploying infrastructure by using command-line instructions or directly from a portal requires no coding time and/or testing artifacts. Minimize this time to deploy by following recommended practices like code reviews and quality assurance practices.
+**Increased time for configuration changes:** Deploying infrastructure by using command-line instructions or directly from a portal requires no coding time and/or testing artifacts. Minimize deployment time by following recommended practices like code reviews and quality assurance practices.
 
-**Increased Complexity through Modularization:** having more modules and parametrization will increase time to document and debug, and adds a custom layer of abstraction. Balance the use of modularization in favor of reducing the complexity and to avoid over-engineering. 
+**Increased complexity of modularization:** Having more modules and parameterization increases the time it takes to debug and document the system and adds a custom layer of abstraction. Balance the use of modularization to reduce complexity and avoid over-engineering. 
 
 ## Example
 
-See the [Azure Virtual Desktop Landing Zone Accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone) architecture and the associated [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of an Azure Virtual Desktop implementation that can be deployed with ARM, Bicep or Terraform using the files included in the implementation. 
+See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone) architecture and the associated [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of a Virtual Desktop implementation that can be deployed via ARM, Bicep, or Terraform files that are provided. 
 
 ## Related links
 
-[Enterprise infrastructure as code using Bicep and Azure Container Registry - Azure Architecture Center | Microsoft Learn](/azure/architecture/guide/azure-resource-manager/advanced-templates/enterprise-infrastructure-bicep-container-registry)  
-
-[What is infrastructure as code (IaC)? - Azure DevOps | Microsoft Learn](/devops/deliver/what-is-infrastructure-as-code)
+- [Infrastructure as Code](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code)
+- [What is infrastructure as code (IaC)?](/devops/deliver/what-is-infrastructure-as-code)
+- [Enterprise infrastructure as code using Bicep and Azure Container Registry](/azure/architecture/guide/azure-resource-manager/advanced-templates/enterprise-infrastructure-bicep-container-registry) 
+- [Discover misconfigurations in IaC](/azure/defender-for-cloud/iac-vulnerabilities)
+- [Recommendations for designing a workload development supply chain](workload-supply-chain.md)
+- [Recommendations for optimizing development practices through standardization](optimize-development-practices.md)
+- [Recommendations for securing a development lifecycle](../security/secure-development-lifecycle.md)
+- [Recommendations for using safe deployment practices](safe-deployments.md) 
+- [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
+- [Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview)
+- [Bicep](/azure/azure-resource-manager/bicep/overview)
+- [Azure DevOps pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines)
+- [GitHub Actions](/devops/deliver/iac-github-actions) 
+- [Terraform](/azure/developer/terraform/overview)
+- [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone)
+- [Azure Virtual Desktop landing zone accelerator implementation](https://github.com/Azure/avdaccelerator/)
 
 ## Next steps
 
-We recommend that you review the Operational Excellence checklist to explore other concepts. 
+Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"] 
 > [Operational Excellence checklist](checklist.md) 
