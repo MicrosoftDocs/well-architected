@@ -5,7 +5,7 @@ summary: Apply cost optimization guidance in your architecture to sustain and im
 
 metadata:
   title: Cost optimization quick links
-  description: Learn about resouces that can help you apply cost optimization guidance in your architecture to sustain and improve your return on investment (ROI).
+  description: Learn about resources that can help you apply cost optimization guidance in your architecture to sustain and improve your return on investment (ROI).
   ms.service: waf
   ms.subservice: waf-pillar-optimization
   ms.topic: landing-page
@@ -50,7 +50,7 @@ landingContent:
             url: principles.md#design-for-rate-optimization
           - text: Monitor and optimize over time
             url: principles.md#monitor-and-optimize-over-time
-  - title: Set, measure, and protect financial targets
+  - title: Setting, measuring, and protecting financial targets
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -62,7 +62,7 @@ landingContent:
             url: collect-review-cost-data.md
           - text: Set spending guardrails
             url: set-spending-guardrails.md
-  - title: Take cost optimization actions
+  - title: Cost optimization actions
     linkLists:
       - linkListType: how-to-guide
         links:

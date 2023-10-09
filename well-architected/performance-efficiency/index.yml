@@ -5,13 +5,13 @@ summary: Apply performance efficiency guidance to your architecture to efficient
 
 metadata:
   title: Performance efficiency quick links
-  description: Apply performance efficiency guidance to your architecture to efficiently meet workload demands.
+  description: Learn about resources that you can use to apply performance efficiency guidance to your architecture.
   ms.service: waf
   ms.subservice: waf-pillar-efficiency
   ms.topic: landing-page
   author: martinekuan
   ms.author: martinek
-  ms.date: 09/29/2023
+  ms.date: 11/15/2023
 
 landingContent:
   - title: Key points
@@ -40,17 +40,13 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Design Principle 1 TBD (TODO)
-            url: principles.md#TODO
-          - text: Design Principle 2 TBD (TODO)
-            url: principles.md#TODO
-          - text: Design Principle 3 TBD (TODO)
-            url: principles.md#TODO
-          - text: Design Principle 4 TBD (TODO)
-            url: principles.md#TODO
-          - text: Design Principle 5 TBD (TODO)
-            url: principles.md#TODO
-  - title: Achieve performance targets
+          - text: Design for horizontal scaling  
+            url: principles.md#design-for-horizontal-scaling
+          - text: Shift-left on performance testing
+            url: principles.md#shift-left-on-performance-testing
+          - text: Continuously monitor for performance in production
+            url: principles.md#continuously-monitor-for-performance-in-production
+  - title: Achieving performance targets
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -62,7 +58,7 @@ landingContent:
             url: capacity-planning.md
           - text: Collect performance data
             url: collect-metrics-logs.md
-  - title: Improve efficiency
+  - title: Improving efficiency
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -76,7 +72,7 @@ landingContent:
             url: prioritize-critical-flows.md
           - text: Operational tasks
             url: optimize-operational-tasks.md
-          - text: Workload over time
+          - text: Continuous optimization 
             url: continuous-performance-optimize.md
   - title: Testing and incident response
     linkLists:

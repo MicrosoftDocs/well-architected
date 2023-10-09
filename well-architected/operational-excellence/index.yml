@@ -52,7 +52,7 @@ landingContent:
             url: principles.md#automate-for-efficiency
           - text: Adopt safe deployment practices
             url: principles.md#adopt-safe-deployment-practices
-  - title: Start with the fundamentals
+  - title: Fundamentals
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -66,7 +66,7 @@ landingContent:
             url: optimize-development-practices.md
           - text: Use safe deployment practices (SPD)
             url: safe-deployments.md
-  - title: Use automation
+  - title: Automation
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -74,7 +74,7 @@ landingContent:
             url: automate-tasks.md
           - text: Design for automation
             url: enable-automation.md
-  - title: Ship safely and support what you ship
+  - title: Shipping safely and supporting what you ship
     linkLists:
       - linkListType: how-to-guide
         links:

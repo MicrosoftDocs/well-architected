@@ -50,7 +50,7 @@ landingContent:
             url: principles.md#design-to-protect-availability
           - text: Sustain and evolve your security posture
             url: principles.md#sustain-and-evolve-your-security-posture
-  - title: Create a security foundation
+  - title: Creating a security foundation
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -64,7 +64,7 @@ landingContent:
             url: monitoring.md
           - text: Model threats
             url: threat-model.md
-  - title: Protect workload assets
+  - title: Protecting workload assets
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -80,7 +80,7 @@ landingContent:
             url: hardening.md
           - text: Guard application secrets
             url: application-secrets.md
-  - title: Validate and improve
+  - title: Validating and improving security
     linkLists:
       - linkListType: how-to-guide
         links:
