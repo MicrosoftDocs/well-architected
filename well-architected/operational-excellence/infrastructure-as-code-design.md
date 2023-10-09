@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[OE:05](checklist.md)| Prepare resources and their configurations by using a standardized infrastructure as code (IaC) approach. Like other code, design IaC with consistent styles, appropriate modularization, and quality assurance. Prefer a declarative approach when possible.| 
 |---|---|
 
-This guide describes the recommendations for using infrastructure as code (IaC) as the standard for your infrastructure deployments. Using IaC enables you to integrate your infrastructure deployments and management into your existing software development practices. It provides a consistent, standard methodology for development and deployment for all components of your workload. Relying on manual deployments puts your workload at risk of inconsistent configurations and potentially insecure design.
+This guide describes the recommendations for using IaC as the standard for your infrastructure deployments. Using IaC enables you to integrate your infrastructure deployments and management into your existing software development practices. It provides a consistent, standard methodology for development and deployment for all components of your workload. Relying on manual deployments puts your workload at risk of inconsistent configurations and potentially insecure design.
 
 **Definitions**
 
@@ -30,7 +30,7 @@ This guide describes the recommendations for using infrastructure as code (IaC) 
 
 As discussed in the [supply chain](workload-supply-chain.md) and [optimizing deployment practices](optimize-development-practices.md) guides, you should have a strict policy of  deploying infrastructure changes (including configuration changes) only through code. You should deploy IaC through your continuous integration and continuous delivery (CI/CD) pipelines. Adopting these policies enforces consistency in processes for all IaC deployments, minimizes the risk of configuration drift across your environments, and ensures infrastructure consistency across your environments. Additionally, you should standardize your IaC development and deployment tools and processes in a style guide. Recommendations for your style guide include:
 
-**Prefer declarative over imperative tools.** Declarative tools and their associated files are a better overall choice for deploying and managing IaC than imperative tools. Declarative tools use a simpler syntax for their definition files, only defining what you want the environment to look like after the deployment completes. Imperative tools depend on you defining the steps required to get to the desired end-state, so the files can be much more complex than declarative files. Declarative definition files also help reduce the technical debt of maintaining imperative code, like deployment scripts, that can accrue over time.
+**Prefer declarative over imperative tools.** Declarative tools and their associated files are a better overall choice for deploying and managing IaC than imperative tools. Declarative tools use a simpler syntax for their definition files, defining only the desired state of the environment after the deployment completes. Imperative tools depend on you defining the steps required to get to the desired end-state, so the files can be much more complex than declarative files. Declarative definition files also help reduce the technical debt of maintaining imperative code, like deployment scripts, that can accrue over time.
 
 **Use your cloud platform's native tools and other industry-proven tools that natively integrate into the platform.** Your cloud platform has tools that they provide to make deploying IaC easy and straightforward. Take advantage of these tools and other third-party tools that have native integration, like Terraform, rather than developing your own solutions. Native tools are supported by the platform and include  built-in functionality for most of your needs. They're continuously updated by the platform provider, making them more useful as the platform evolves.
 
@@ -47,9 +47,9 @@ Think about all the tasks and types of infrastructure that are in scope for your
 
 **Strategize and standardize on the use of modules.** Like parameters and variables, [modules](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code) can make your infrastructure deployments repeatable. Be thoughtful, however, about how you use them. A standardized abstraction strategy helps ensure that modules are built to meet specific, agreed upon goals. Use modules to encapsulate complex configurations or combinations of resources. Avoid modules if you're using only the default configuration of the resource. Additionally, be judicious in developing new modules. Use maintained open-source modules when appropriate, in, for example, non-sensitive scenarios.
 
-**Document standards for manual steps.** There might be steps related to deploying and maintaining infrastructure that are particular to your environment and that require manual intervention. Ensure that these steps are minimized to the extent possible and clearly documented. As part of your style guide and standard operating procedures, ensure that manual steps are standardized to ensure that tasks are performed safely and consistently.
+**Document standards for manual steps.** There might be steps related to deploying and maintaining infrastructure that are particular to your environment and that require manual intervention. Ensure that these steps are minimized as much as possible and clearly documented. In your style guide and standard operating procedures, standarardize manual steps to ensure that tasks are performed safely and consistently.
 
-**Document standards to deal with orphaned resources.** Depending on the tools you use for configuration management and their limitations, there might be times when a particular resource is no longer needed by your workload and your IaC tools can't automatically remove the resource. For example, say you're moving from VMs to a PaaS service for some function, and the IaC tooling doesn't have logic to remove the retired resources. Those resources can then become orphaned if the workload team doesn't remember to manually delete them. To deal with these scenarios, standardize a strategy to scan for orphaned resources and delete them. You also need to consider how to ensure that your templates are up to date. Research the limitations of your IaC tooling to understand what you might need to plan for in these situations.
+**Document standards to handle orphaned resources.** Depending on the tools you use for configuration management and their limitations, there might be times when a particular resource is no longer needed by your workload and your IaC tools can't automatically remove the resource. For example, say you're moving from VMs to a PaaS service for some function, and the IaC tooling doesn't have logic to remove the retired resources. Those resources can become orphaned if the workload team doesn't remember to manually delete them. To handle these scenarios, standardize a strategy to scan for orphaned resources and delete them. You also need to consider how to ensure that your templates are up to date. Research the limitations of your IaC tooling to understand what you might need to plan for in these situations.
 
 ### Other IaC strategies
 
@@ -65,7 +65,7 @@ Core infrastructure like networking resources rarely need changes more complex t
 
 **Apply the principle of "security as code" to ensure that security is part of the deployment pipeline.** Include vulnerability scanning and configuration hardening as part of the IaC development process. Scan your IaC repos for keys and secrets that are exposed. One advantage of using IaC is that security-focused team members can review code before deployment to ensure that the configuration that's approved of for release by security is actually what's deployed to production. For detailed guidance, see [Recommendations for securing a development lifecycle](../security/secure-development-lifecycle.md).
 
-**Test routine and non-routine activities.** Test deployments, configuration updates, and recovery processes, including deployment rollback processes. 
+**Test routine and non-routine activities.** Test deployments, configuration updates, and recovery processes, including deployment rollback-processes. 
 
 ### Mutable vs. immutable infrastructure
 
@@ -87,11 +87,11 @@ You can use Microsoft Defender for Cloud to [discover misconfigurations in IaC](
 
 **Increased time for configuration changes:** Deploying infrastructure by using command-line instructions or directly from a portal requires no coding time and/or testing artifacts. Minimize deployment time by following recommended practices like code reviews and quality assurance practices.
 
-**Increased complexity of modularization:** Having more modules and parameterization increases the time it takes to debug and document the system and adds a custom layer of abstraction. Balance the use of modularization to reduce complexity and avoid over-engineering. 
+**Increased complexity of modularization:** Using more modules and parameterization increases the time it takes to debug and document the system and adds a layer of abstraction. Balance the use of modularization to reduce complexity and avoid over-engineering. 
 
 ## Example
 
-See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone) architecture and the associated [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of a Virtual Desktop implementation that can be deployed via ARM, Bicep, or Terraform files that are provided. 
+See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone) architecture and the associated [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of a Virtual Desktop implementation that can be deployed via provided ARM, Bicep, or Terraform files. 
 
 ## Related links
 
