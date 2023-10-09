@@ -78,7 +78,7 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Execute performance testing
+          - text: Run performance testing
             url: performance-testing.md
           - text: Address performance incidents
             url: respond-live-performance-issues.md
