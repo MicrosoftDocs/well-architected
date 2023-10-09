@@ -210,9 +210,9 @@ Optimizing data movement and processing involves improving the efficiency and pe
 
 ### Optimize storage design
 
-Carefully design a data storage structure and utilize appropriate storage technologies to optimize data access, retrieval, and manipulation.
+Optimizing storage design entails crafting a precise data storage architecture and selecting appropriate storage technologies. A streamlined storage design enhances data access, retrieval, and manipulation. Through strategic storage design, a workload achieves improved response times and overall functionality.
 
-#### Use close proximity
+#### Design for data proximity
 
 Data proximity refers to the strategic placement of data closer to the users or services that access it most frequently. By reducing the physical or logical distance between data and its users, data proximity ensures faster data access and improved responsiveness. To optimize design for close proximity, consider these strategies:
 
