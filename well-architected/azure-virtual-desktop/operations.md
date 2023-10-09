@@ -113,23 +113,21 @@ The following table provides examples of how many input/output operations per se
 
 The following factors can affect host pool scaling:
 
-- The Azure template is limited to 800 objects, and each VM creates six objects. As a result, you can create only 132 VMs each time that you run the template. (For 132 VMs, each with 6 objects, you have a total of 792 objects.) *Why not 133 VMs, which would result in 798 objects? Do you have to create VMs in pairs?*
+- The Azure template limits the number of objects that you can create, and each VM creates a certain number of objects. As a result, there's a limit to the number of VMs that you can create each time that you run the template. For more information, see [Is there a scale limit for host pools created in the Azure portal?](/azure/virtual-desktop/faq#is-there-a-scale-limit-for-host-pools-created-in-the-azure-portal-).
 - For vCPUs, there's a limit on the number that you can create per region, per subscription, and type of subscription. Enterprise Agreement subscriptions have a limit of 350 vCPUs by default. To determine the number of VMs that you can create per template run, divide your vCPU limit by the number of vCPUs that you have per VM.
 
 ### Service limits
 
-All resources that are used in Virtual Desktop, such as VMs, storage space, and networking, are subject to restrictions and limitations.
+All resources that are used in Virtual Desktop, such as VMs, storage space, and networking, are subject to restrictions and limitations. For example, there's a service limit of 10,000 on session host objects. Crossing these limits can impact your service availability.
 
-The following table lists service limits for various types of objects.
+The Azure Virtual Desktop infrastructure uses the following components. For the corresponding service limits, see [Azure Virtual Desktop service limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-virtual-desktop-service-limits).
 
-| Object | Parent container object | Service limit |
-| --- | --- | --- |
-| Application group | Microsoft Entra ID tenant | 500 |
-| Host pool | Workspace | 400 |
-| `RemoteApp` | Application group | 500 |
-| Role assignment | Any Virtual Desktop object | 200 |
-| Session host | Host pool | 10,000 |
-| Workspace | Microsoft Entra ID tenant | 1,300 |
+- Application group
+- Host pool
+- RemoteApp
+- Role assignment
+- Session host
+- Workspace
 
 ### VM token expirations
 
@@ -213,30 +211,6 @@ How do you ensure that the versions that you use are supported?
 
 - Regularly review release notes and other articles about developments in Virtual Desktop components.
 - Install updates when they become available.
-
-## Shared responsibility with central teams
-
-*Impact: Operational Excellence, Security*
-
-Organizations sometimes have centralized teams that are responsible for establishing roles for providing consistent, governed support across all workload teams. The following table lists Virtual Desktop roles. If your Virtual Desktop team isn't solely responsible for each of these roles, consult guidance for aligning responsibilities across teams. Specifically, understand how your workload team should interface with your cloud platform team, central IT department, and cloud center of excellence.
-
-| Role | Typical group for the role | Responsibilities |
-| --- | --- | --- |
-| Network security | An existing network security team | The configuration and maintenance of cross-network traffic components. Examples include Azure Firewall, network virtual appliances and their associated routing, Azure Web Application Firewall, network security groups, and application security groups. |
-| Network management | An existing network operations team | Enterprise-wide virtual network and subnet allocation. |
-| Server endpoint security | IT operations, security, or both teams jointly | Monitoring server security and remediating problems. Includes patching, configuration, and endpoint security. |
-| Incident monitoring and response | A security operations team | Incident monitoring and response. Includes using Microsoft Defender for Identity or other security information and event management (SIEM) tools to investigate and remediate security incidents. |
-| Policy management | A governance, risk, and compliance (GRC) team and an architecture team | Applying governance that's based on risk analysis and compliance requirements. Includes setting direction for the use of Azure role-based access control (Azure RBAC), Microsoft Defender for Cloud, administrator protection strategy, and Azure Policy to govern Azure resources. |
-| Identity and security standards | A security team and an identity team jointly | Setting direction for Microsoft Entra ID directories, privileged identity management (PIM) and privileged access management (PAM) usage, multifactor authentication, password and synchronization configuration, and application identity standards. |
-
-##### Assessment question
-
-Which roles does your Virtual Desktop team perform to manage your workload?
-
-##### Recommendations
-
-- Familiarize yourself with governance and management responsibilities that are associated with Virtual Desktop workloads.
-- Establish clear roles for your Virtual Desktop team to take on for governing and managing your workload.
 
 ## Next steps
 
