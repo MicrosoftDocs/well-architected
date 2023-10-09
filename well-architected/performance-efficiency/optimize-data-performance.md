@@ -14,9 +14,7 @@ ms.topic: conceptual
 |[PE:08](checklist.md)| Optimize data usage. Optimize data stores, partitions, and indexes for their intended and actual use in the workload.| 
 |---|---| 
 
-This guide describes the recommendations for optimizing data performance. Optimizing data performance refers to improving the efficiency and performance of data processing and storage within a workload.
-
-It's important to optimize a workload's data performance because it can have a significant effect on the overall performance of a system. Failure to optimize data performance leads to slower response times, increased latency, degraded performance, and decreased scalability.
+This guide describes the recommendations for optimizing data performance. At its core, optimizing data performance means refining the efficiency with which the workload processes and stores data. Every workload operation, transaction, or computation typically relies on the quick and accurate retrieval, processing, and storage of data. When data performance is optimized, the workload runs smoothly, but when it's compromised, it creates a domino effect of poor performance efficiency. Failure to optimize data performance results in response delays, heightened latency, and curtailed scalability. It jeopardizes the efficiency of the entire workload.
 
 **Definitions**
 
