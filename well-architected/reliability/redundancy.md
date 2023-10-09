@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 **Related guides:** [Highly available multiregional design](highly-available-multi-region-design.md) | [Using availability zones and regions](regions-availability-zones.md) 
 
-This guide describes the recommendations for adding redundancy throughout critical flows at different workload layers, which optimizes resiliency. Meet the requirements of your defined reliability targets by applying the proper levels of redundancy to your compute, data, networking, and other infrastructure tiers. Apply this redundancy to give your workload a strong, reliable foundation to build on. When you build your workload without infrastructure redundancy, there's a high risk of extended downtime due to [potential failures](failure-mode-analysis.md).
+This guide describes the recommendations for adding redundancy throughout your workload flows at different workload layers, which optimizes resiliency. Meet the requirements of your defined reliability targets by applying the proper levels of redundancy to your compute, data, networking, and other infrastructure tiers. Apply this redundancy to give your workload a strong, reliable foundation to build on. When you build your workload without infrastructure redundancy, there's a high risk of extended downtime due to [potential failures](failure-mode-analysis.md).
 
 **Definitions**
 
@@ -30,7 +30,7 @@ This guide describes the recommendations for adding redundancy throughout critic
 
 ## Key design strategies
 
-In the context of reliability, use redundancy to contain problems that affect a single resource and ensure that those problems don't affect the reliability of the entire system. Use the information that you identified about your critical flows and reliability targets to make informed decisions that are required for each flow's redundancy.
+In the context of reliability, use redundancy to contain problems that affect a single resource and ensure that those problems don't affect the reliability of the entire system. Use the information that you identified about your flows and reliability targets to make informed decisions that are required for each flow's redundancy.
 
 For example, you might have multiple web server nodes running at once. The criticality of the flow that they support might require that all of them have replicas that are ready to accept traffic if there's a problem that affects the entire pool, for example a regional outage. Alternatively, because large-scale problems are rare and it's costly to deploy an entire set of replicas, you might deploy a limited number of replicas so the flow operates in a degraded state until you resolve the problem.
 
