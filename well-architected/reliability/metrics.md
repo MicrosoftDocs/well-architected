@@ -42,6 +42,8 @@ Remember that reliability targets differ from performance targets. Reliability t
 
 Highest-level reliability and recovery requirements and correlated metrics might include, for example, an application availability of 99.9 percent for all regions or a target RTO of 5 hours for the Americas region. Defining these types of targets helps you identify which critical flows are involved in those targets. Then you can consider component-level targets.
 
+Remeber to include internal and external dependencies as you define your targets as they can affect individual flows or the overall workload while being out of your direct control. For example, if you use a third-party payment system and that system is malfunctioning for some reason, you may be unable to process orders until the system is functional or a workaround is implemented.
+
 ### Availability metrics
 
 #### SLOs and SLAs
