@@ -72,23 +72,12 @@ Continuously monitor the performance of your data stores, partitions, and indexe
 
 If you have large datasets or high-volume workloads, consider partitioning your data across multiple storage resources. Partitioning can help distribute the workload and improve parallel processing. You can partition data vertically or horizontally. Horizontal partitioning is also called sharding.
 
-**Vertical partitioning.** To perform vertical partitioning, divide a table into multiple smaller tables by selecting the columns or fields that you want to place in each partition. Each partition represents a subset of the complete data. This technique is useful if you have columns that are frequently accessed together, but not necessarily accessed together with other columns. Implement vertical partitioning if:
+| Strategy |Definition | Example | Use cases|
+|---|---|---|---|
+| **Vertical Partitioning** | Divide a table into smaller tables by selecting specific columns or fields for each partition. Each partition represents a subset of the complete data.| If you have a table with columns A, B, C, and D, you could create one table with columns A and B and another with columns C and D. | - A table contains many columns, but queries don't access all columns together.<br>- Some columns are larger than others and separating them can boost I/O performance.<br>- Different data parts have diverse access patterns. |
+| **Horizontal Partitioning** | Split data based on rows or ranges of values (also known as sharding). Each partition contains a subset of rows with similar characteristics.| If you have a table with rows 1 to 1000, you might create one partition with rows 1 to 500 and another with rows 501 to 1000.| - A dataset is too large for a single location or server.<br>- Data is accessed based on specific ranges or filters.<br>- Need to distribute the workload across physical nodes or servers for enhanced performance.| 
 
-- A table contains a large number of columns, but not all columns are accessed together in most queries.
-
-- Some columns are larger than others, and separating them can improve I/O performance.
-
-- Different parts of the data have varying access patterns, and if you separate them, queries run more efficiently.
-
-**Horizontal partitioning (sharding).** To perform horizontal partitioning, split data into partitions based on rows or ranges of values. Each partition contains a subset of rows with similar characteristics. Horizontal partitioning is commonly used with large datasets to distribute data across physical storage locations. Horizontal partitioning improves performance and scalability. Implement horizontal partitioning if:
-
-- A dataset is too large to store in a single location or server.
-
-- Data is accessed or queried based on specific ranges or filters, so it's efficient to search within a small subset of partitions.
-
-- You need to distribute your workload evenly across physical nodes or servers to improve performance and scalability.
-
-To implement vertical or horizontal partitioning:
+To partition your data, consider the following steps:
 
 - *Analyze data and queries.* Analyze data and query patterns to identify suitable partitioning or sharding strategies. Understand the nature of the data, access patterns, and distribution requirements.
 
