@@ -186,11 +186,9 @@ When you have a workload with multiple data replicas that you expect to stay in 
 
 #### Optimize data consistency
 
-In a distributed workload, where data resides across multiple nodes or locations, the level of consistency you select determines how quickly changes in one location reflect in others. Opting for stricter consistency consumes more compute resources and can impact performance efficiency negatively. On the other hand, a less strict consistency level might introduce temporary inconsistencies among nodes but can boost performance efficiency.
+In a distributed workload, where data resides across multiple nodes or locations, the level of consistency you select determines how quickly changes in one location reflect in others. Opting for stricter consistency consumes more compute resources and can negatively affect performance efficiency. On the other hand, a less strict consistency level, like eventual consistency introduces temporary inconsistencies among nodes but can boost performance efficiency. 
 
-- *Strict consistency*: In this approach, every data change immediately reflects across all nodes, ensuring uniformity throughout the workload at all moments.
-
-- *Eventual consistency*: This strategy strikes a balance between data accuracy and workload performance. Changes spread gradually instead of instantly, boosting workload responsiveness and data processing speed. Although this might introduce short-lived inconsistencies, the workload eventually presents consistent data across all nodes. Choosing eventual consistency can elevate a workload's performance and further enhance its availability and scalability.
+Eventual consistency strikes a balance between data accuracy and workload performance. Changes spread gradually instead of instantly, boosting workload responsiveness and data processing speed. Although this introduces short-lived inconsistencies, the workload eventually presents consistent data across all nodes. Choosing eventual consistency can elevate a workload's performance and further enhance its availability and scalability.
 
 ### Optimize data updates
 
