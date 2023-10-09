@@ -39,7 +39,7 @@ Critical flows refer to the key user flows for paying customers or the flows for
 
 #### Map the flows
 
-refers to the process of identifying and outlining the paths or sequences of user interaction within a workload, as well as understanding the interdependencies between its components or services. This mapping provides a visual representation of how different components interact to support user actions. By mapping the flows, you gain clarity on the user journey. Mapping makes it easier to pinpoint crucial interactions and dependencies that are important for functionality.
+Mapping flows refers to the process of identifying and outlining the paths or sequences of user interaction within a workload, as well as understanding the interdependencies between its components or services. This mapping provides a visual representation of how different components interact to support user actions. By mapping the flows, you gain clarity on the user journey. Mapping makes it easier to pinpoint crucial interactions and dependencies that are important for functionality.
 
 Identify the paths or sequences of user interaction within your workload. Map the dependencies between components or services within your application. Understand how these components interact to support the user flows. Also map the flows and identify the paths or sequences of user interaction within your application. To map the flows, you can use flowcharts, user journey maps, and prototyping tools.
 
