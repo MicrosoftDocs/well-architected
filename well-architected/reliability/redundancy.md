@@ -93,6 +93,7 @@ Whether you deploy an active-active or an active-passive design, take advantage 
 #### Networking
 
 - Decide on a reliable and scalable network topology. Use a hub-and-spoke model or an Azure Virtual WAN model to help you organize your cloud infrastructure in logical patterns that make your redundancy design easier to build and scale.
+  - Ensure that you design your network in such a way that your workload can maintain functionality if a zone or region becomes unavailable. Understand the cross-zone or cross-region redundancy options and limitations of your workload components and ensure that your design accounts for any accomodations that you need to include. For example, if you will use different outbound IP addresses between regions, you will need to ensure that third-parties that whitelist your IP addresses are aware of your primary and secondary IPs to maintain functionality.
 
 - Select the appropriate [network service](/azure/architecture/guide/technology-choices/load-balancing-overview) to balance and redirect requests within or across regions. Use global or zone-redundant load balancing services when possible to meet your reliability targets.
 
