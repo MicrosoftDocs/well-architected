@@ -50,13 +50,13 @@ landingContent:
             url: principles.md#design-to-protect-availability
           - text: Sustain and evolve your security posture
             url: principles.md#sustain-and-evolve-your-security-posture
-  - title: Build a security foundation
+  - title: Create a security foundation
     linkLists:
       - linkListType: how-to-guide
         links:
           - text: Establish a security baseline
             url: establish-baseline.md
-          - text: Use a secure development lifecycle
+          - text: Improve the security of your development lifecycle
             url: secure-development-lifecycle.md
           - text: Classify data
             url: data-classification.md
@@ -92,12 +92,12 @@ landingContent:
     linkLists:
       - linkListType: reference
         links:
-          - text: "Microsoft Defender for Cloud: Azure Security recommendations"
+          - text: "Microsoft Defender for Cloud: Azure security recommendations"
             url: /azure/defender-for-cloud/recommendations-reference
           - text: "Microsoft Defender for Cloud: AWS recommendations"
             url: /azure/defender-for-cloud/recommendations-reference-aws
           - text: "Microsoft Defender for Cloud: Google Cloud recommendations"
-            url: /azure/defender-for-cloud/recommendations-reference-aws
+            url: /azure/defender-for-cloud/recommendations-reference-gcp
           - text: Azure security documentation
             url: /azure/security
           - text: Microsoft cloud security benchmark
