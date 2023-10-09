@@ -1,17 +1,17 @@
 ### YamlMime:Landing
 
 title: Security quick links
-summary: Apply security guidance to your architecture to guard confidentiality, integrity, and availability of your data and systems.
+summary: Apply security guidance to your architecture to help ensure the confidentiality, integrity, and availability of your data and systems.
 
 metadata:
   title: Security quick links
-  description: Apply security guidance to your architecture to guard confidentiality, integrity, and availability of your data and systems.
+  description: Apply security guidance to your architecture to help ensure the confidentiality, integrity, and availability of your data and systems.
   ms.service: waf
   ms.subservice: waf-pillar-security
   ms.topic: landing-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 10/06/2023
+  ms.date: 11/15/2023
 
 landingContent:
   - title: Key points
