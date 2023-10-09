@@ -54,6 +54,7 @@ Follow these recommendations to develop your DR plan:
 -   Build the DR plan on your FMA documentation. Ensure that your DR plan captures the failure modes and mitigation strategies for outages that are defined as disasters. Update both your DR plan and your FMA documents in parallel so they're accurate when the environment changes or when testing uncovers unexpected behaviors.
 
     -   Whether you develop DR plans for nonproduction environments depends on your business requirements and cost impacts. For example, if you offer quality-assurance (QA) environments to certain customers for prerelease testing, you might want to include those environments in your DR planning.
+-   Capture the timeframe required for operating recovery tasks to update and validate RTO and RPO times.
 
 -   Clearly define roles and responsibilities within the workload team and understand any related external roles within your organization. Roles should include:
 
