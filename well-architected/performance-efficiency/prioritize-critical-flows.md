@@ -35,9 +35,7 @@ Typically, critical flows significantly affect the user experience or business o
 
 ### Identify critical flows
 
-Critical flows refer to the key user flows for paying customers or the flows for operations that are crucial to the workload functionality. These flows can include actions such as user registrations, sign-ins, product purchases, accessing pages behind a paywall, or any other key path or process within your workload. 
-
-To identify critical flows, complete these tasks:
+Critical flows refer to the key user flows for paying customers or the flows for operations that are crucial to the workload functionality. These flows can include actions such as user registrations, sign-ins, product purchases, accessing pages behind a paywall, or any other key path or process within your workload. To identify critical flows, complete these tasks:
 
 - **Map the flows**. Identify the paths or sequences of user interaction within your workload. Map the dependencies between components or services within your application. Understand how these components interact to support the user flows. Also map the flows and identify the paths or sequences of user interaction within your application. To map the flows, you can use flowcharts, user journey maps, and prototyping tools.
 
@@ -71,9 +69,7 @@ To identify critical flows, complete these tasks:
 
 ### Optimize capacity allocation
 
-Where you can't isolate critical flows, prioritize capacity allocations. Understand where your tightest constraints are and optimize capacity allocations where they're needed. For example, queues can process only a certain number of messages per minute, but some storage limits are hard to reach. 
-
-To decide how to allocate capacity:
+Where you can't isolate critical flows, prioritize capacity allocations. Understand where your tightest constraints are and optimize capacity allocations where they're needed. For example, queues can process only a certain number of messages per minute, but some storage limits are hard to reach. To decide how to allocate capacity, consider these strategies:
 
 - *Assess resource capacity*: Evaluate how much resource capacity can be allocated to the flows. Capacity might include resources such as CPU, memory, storage, and network bandwidth. Understand the limitations and constraints of your infrastructure or environment.
 
