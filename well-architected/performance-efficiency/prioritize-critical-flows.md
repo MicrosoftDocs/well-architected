@@ -53,13 +53,15 @@ Monitoring flow metrics involves consistently observing and recording performanc
     
 - *Logging and debugging tools*: Use these tools to capture and analyze logs and debug information while your application runs. Review logs and debugging information to trace how flows are running and identify issues or errors.
     
-#### Align flow importance with workload objectives
+#### Prioritize flows
 
-In your workload, assess the significance of each user flow. Assess the actual usage to determine the flow's significance. Data about flows, queries, and code paths is key to identifying what's critical as you align flows with workload priorities. For example, a free tier might receive more traffic than a paid tier, but the free tier might be less critical than the paid tier.
+Prioritizing flows involves evaluating each user flow's importance in relation to your workload's main objectives. Effective flow prioritization ensures that the most important user interactions receive the necessary resources and attention. It optimizes the user experience and workload efficiency. To prioritize flows in your application, consider these steps:
 
-Consider factors such as how important the flow is to your business goals, the number of users that rely on the flow, and the potential consequences of any failures or performance issues in the flow. Assess how each flow affects the user experience or business outcomes. Consider factors such as user satisfaction, conversion rates, revenue generation, and customer retention. 
+- *Assess user flows*: Begin by evaluating the significance of each user flow in your application. Consider factors like actual usage, alignment with business goals, user impact, and the potential consequences of failures. For example, a free tier might receive more traffic than a paid tier, but the paid tier might be more critical to your business objectives.
 
- Analyze the collected performance data to identify patterns or anomalies that might indicate critical flows. Based on your analysis of the performance data, prioritize the user flows that are critical to your workload. These flows significantly affect the user experience or business outcomes. Pay special attention to flows that have high user traffic or flows that directly contribute to revenue generation.
+- *Analyze performance data*: Dive deep into the performance metrics associated with each user flow. Look for patterns, anomalies, or standout metrics that can provide insights into the flow's efficiency and importance. Metrics such as user satisfaction, conversion rates, and revenue generation can be particularly revealing.
+
+- *Prioritize flows*: Based on your comprehensive assessment and data analysis, prioritize the user flows. Allocate resources and attention to those flows that are essential for optimal user experience or significant business outcomes. Especially focus on flows with high user traffic or those that have a direct impact on revenue generation.
     
 | Critical flows | Noncritical flows
 |-|-|
