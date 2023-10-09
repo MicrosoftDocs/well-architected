@@ -425,4 +425,4 @@
       - name: Health model
         href: ./cross-cutting-guides/health-model.md        
       - name: Implementing recommendations
-        href: ./cross-cutting-guides/implementing-recommendations.md        
+        href: implementing-recommendations.md        

@@ -163,6 +163,8 @@ The Azure SLA includes procedures for obtaining a service credit if the SLA isn\
 
 ## Tradeoffs 
 
+Having higher reliability targets normally means you will incur higher costs as extra redundancy and other resiliency measures will need to be added to the workload design to meet those targets. Provide stakeholders with multiple cost models that align to different reliability targets, like 99.9% vs 99.95% for example, so they can understand the full impact of deciding between those targets for each flow. Ensure that all parties also understand the risks that are inherent in the design when using a less resilient design for cost efficiency. For example, having only one active region deployed carries a risk of a full outage if a regional issue occurs.
+
 A conceptual gap might exist between the technical limitations of your workload's components and what that means for the business, for example, throughput in megabits per second versus transactions per second. Creating a model between these two views might be challenging. Rather than overengineering the solution, try to approach it in an economical but meaningful way.
 
 ## Related links
