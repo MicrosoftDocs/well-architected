@@ -55,7 +55,7 @@ For more information, see [Recommendations for designing and creating an observa
 
 The foundation of an emergency response strategy is an incident response plan. Like a disaster recovery plan, clearly and thoroughly define roles, responsibilities, and procedures for an incident response plan. The plan should be a version-controlled document that's subject to regular reviews that ensure it's up to date.
 
-Clearly define the following components in your plan:
+Clearly define the following components in your plan.
 
 ##### Roles
 
@@ -73,7 +73,7 @@ In the overall plan, include containment and triage scripts. Teams follow these 
 
 ##### Other items to include
 
-Document emergency credentials, otherwise known as *break-glass accounts*. Include a step-by-step guide that describes how they should be used.
+Document your emergency credentials, otherwise known as *break-glass accounts*. Include a step-by-step guide that describes how they should be used.
 
 Create emergency response drill instructions, and keep a record of when drills have been performed.
 
