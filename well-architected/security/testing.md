@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[SE:11](checklist.md)|Establish a comprehensive testing regimen that combines approaches to prevent security issues, validate threat prevention implementations, and test threat detection mechanisms.|
 |---|---|
 
-A good security design must be backed by rigorous testing. Testing is a tactical form of validation to make sure controls are working as intended. Testing is also a proactive way to detect vulnerabilities in the system.
+Rigorous testing is the foundation of good security design. Testing is a tactical form of validation to make sure controls are working as intended. Testing is also a proactive way to detect vulnerabilities in the system.
 
 Establish testing rigor through cadence and verification from multiple perspectives. You want to include both inside-out viewpoints that test platform and infrastructure and outside-in evaluations that test the system like an external attacker.
 
@@ -29,7 +29,7 @@ This guide provides recommendations for testing the security posture of your wor
 |Blue team     | A team that defends against the attacks of the red team in a war game exercise.        |
 |Penetration testing | A testing methodology that uses ethical hacking techniques to validate the security defense of a system.|
 |Red team     |  A team that plays the role of an adversary and attempts to hack the system in a war game exercise.|
-|Security Development Lifecycle (SDL)     |   A set of practices provided by Microsoft that supports security assurance and compliance requirements.      |
+|Secure Development Lifecycle (SDL)     |   A set of practices provided by Microsoft that supports security assurance and compliance requirements.      |
 |Software development life cycle (SDLC)     |  A multi-stage systematic process for developing software systems.       |
 |White box testing| A testing methodology where the structure of the code is known to the practitioner.|
 
@@ -42,7 +42,7 @@ The scope of testing must include the application, infrastructure, and automated
 > [!NOTE]
 > This guidance makes a distinction between testing and incident response. While testing is a detection mechanism that ideally fixes issues prior to production, it shouldn't be confused with the remediation or investigation that's done as part of incident response. The aspect of recovering from security incidents is described in [Incident Response recommendations](incident-response.md).
 
-Microsoft Security Development Lifecycle (SDL) suggests several types of testing that catch vulnerabilities in code, verify runtime components, and use ethical hacking as a way to test the security resilience of the system. SDL is a key shift-left activity. You should run tests like static code analysis and automated scanning of Infrastructure-as-Code (IaC) as early in the development process as possible.
+Microsoft Secure Development Lifecycle (SDL) includes several types of tests that catch vulnerabilities in code, verify runtime components, and use ethical hacking to test the security resilience of the system. SDL is a key, shift-left activity. You should run tests like static code analysis and automated scanning of Infrastructure-as-Code (IaC) as early in the development process as possible.
 
 **Be involved in test planning.** The workload team might not design the test cases. That task is often centralized in the enterprise or completed by external security experts. The workload team should be involved in that design process to ensure that security assurances integrate with the application's functionality.
 
@@ -62,7 +62,7 @@ If you deploy by using IaC and automation, consider whether you can create an is
 
 When you're designing your test plans, think about the following questions:
 
-- How often do you expect the test to run, and what's the impact on your environment?
+- How often do you expect the test to run, and how does it affect your environment?
 
 - What are the different test types that you should run?
 
@@ -72,7 +72,7 @@ Test the workload regularly to make sure changes don't introduce security risks 
 
 #### Routine tests
 
-Routine tests are conducted at a regular cadence, as part of your standard operating procedures. They're also driven by compliance requirements. Various tests might be run at different cadences, but the key is that they're conducted periodically and on a schedule.
+Routine tests are conducted at a regular cadence, as part of your standard operating procedures and to meet compliance requirements. Various tests might be run at different cadences, but the key is that they're conducted periodically and on a schedule.
 
 You should integrate these tests into your software development lifecycle (SDLC) because they provide defense in depth at each stage. Diversify the test suite to verify assurances for identity, data storage and transmission, and communication channels. Conduct the same tests at different points in the lifecycle to ensure that there aren't any regressions. Routine tests help establish an initial benchmark. However that's just a starting point. As you uncover new issues at the same points of the lifecycle, you add new test cases. The tests also improve with repetition.
 
@@ -80,15 +80,15 @@ At each stage, these tests should validate code that's added or removed or confi
 
 Consider running security tests as part of an automated pipeline or scheduled test run. The sooner you discover security issues, the easier it is to find the code or configuration change that might have caused them.
 
-Don't rely only on automated tests. Use manual testing to detect vulnerabilities that can only be caught by human expertise. Manual testing is good for exploratory use cases and finding unknown risks.
+Don't rely only on automated tests. Use manual testing to detect vulnerabilities that only human expertise can catch. Manual testing is good for exploratory use cases and finding unknown risks.
 
 #### Improvised tests
 
-Improvised tests provide point-in-time validation of security defenses. These tests are usually triggered by security alerts that might have an impact on the workload at that time. Organizational mandates might require a pause-and-test mindset to verify the effectiveness of defense strategies if the alert escalates to an emergency.
+Improvised tests provide point-in-time validation of security defenses. Security alerts that might affect the workload at that time trigger these tests. Organizational mandates might require a pause-and-test mindset to verify the effectiveness of defense strategies if the alert escalates to an emergency.
 
 The benefit of improvised tests is preparedness for a real incident. These tests can be a forcing function to do user acceptance testing (UAT).
 
-The security team might audit all workloads and run these tests as needed. As a workload owner, you need to facilitate and collaborate with security teams. Negotiate enough lead time with security teams so that you can prepare. Acknowledge and communicate to your team and stakeholders that these are necessary disruptions.
+The security team might audit all workloads and run these tests as needed. As a workload owner, you need to facilitate and collaborate with security teams. Negotiate enough lead time with security teams so that you can prepare. Acknowledge and communicate to your team and stakeholders that these disruptions are necessary.
 
 In other cases, you might be required to run tests and report the security state of the system against the potential threat.
 
@@ -100,7 +100,7 @@ In other cases, you might be required to run tests and report the security state
 
 There are tests that detect the cause of a security incident at its source. These security gaps must be resolved to make sure the incident isn't repeated.
 
-Incidents also indicate existing gaps in the test cases, which improves them over time. The team should apply the lessons learned from the incident and routinely incorporate improvements.
+Incidents also improve test cases over time by uncovering existing gaps. The team should apply the lessons learned from the incident and routinely incorporate improvements.
 
 ### What are the different types of tests?
 
@@ -114,19 +114,19 @@ By adding multiple tests and types of tests, you can uncover:
 
 - Gaps in observability and detection methods.
 
-A good threat modeling exercise can point to key areas to ensure test coverage and frequency. Recommendations on threat modeling are covered in [Security Development Lifecycle](security-development-lifecycle.md) (SDL).
+A good threat modeling exercise can point to key areas to ensure test coverage and frequency. Recommendations on threat modeling are covered in [Secure Development Lifecycle](secure-development-lifecycle.md) (SDL).
 
 Most tests described in these sections can be run as routine tests. However, repeatability can incur costs in some cases and cause disruption. Consider those tradeoffs carefully.
 
 #### Tests that validate the technology stack
 
-Here are some examples of types of tests and their focus areas. This isn't an exhaustive list. Test the entire stack, including the application stack, frontend, backend, APIs, databases, and any external integrations.
+Here are some examples of types of tests and their focus areas. This list isn't exhaustive. Test the entire stack, including the application stack, frontend, backend, APIs, databases, and any external integrations.
 
 - Data security: Test the effectiveness of data encryption and access controls to ensure data is properly protected from unauthorized access and tampering.
 
 - Network and connectivity: Test your firewalls to ensure they only allow expected, allowed, and safe traffic to the workload.
 
-- Application: Test source code through application security testing (AST) techniques to make sure you're following secure coding practices and to catch runtime errors like memory corruption and privilege issues. For details, see these [community resources](#community-resources).
+- Application: Test source code through application security testing (AST) techniques to make sure you're following secure coding practices and to catch runtime errors like memory corruption and privilege issues. For details, see these [community links](#community-links).
 
 - Identity: Evaluate if the role assignments and conditional checks work as intended.
 
@@ -136,11 +136,11 @@ There are many perspectives on testing methodologies. We recommend tests that en
 
 Here are some advantages of testing through real-world attacks:
 
-- By integrating these attacks as part of routine testing, the workload is checked through an outside-in perspective to make sure the defense can withstand an attack.
+- When you make these attacks a part of routine testing, you use an outside-in perspective to check the workload and make sure the defense can withstand an attack.
 
 - Based on the lessons they've learned, the team upgrades their knowledge and skill level. The team improves situational awareness and can self-assess their readiness to respond to incidents.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Testing in general can impact performance. There might be business continuity problems if destructive tests delete or corrupt data. There are also risks associated with information exposure; make sure to maintain the confidentiality of data. Ensure the integrity of data after you complete testing.
+> ![Risk icon](../_images/risk.svg) **Risk**: Testing in general can affect performance. There might be business continuity problems if destructive tests delete or corrupt data. There are also risks associated with information exposure; make sure to maintain the confidentiality of data. Ensure the integrity of data after you complete testing.
 
 Some examples of simulated tests include black-box and white-box testing, penetration testing, and war game exercises.
 
@@ -178,7 +178,7 @@ For information about red-team and blue-team setup, see [Microsoft Cloud Red Tea
 
 ## Azure facilitation
 
-Microsoft Sentinel is a native control that combines security information event management (SIEM) and security orchestration automated response (SOAR) capabilities. It analyzes events and logs from various connected sources. Based on data sources and their alerts, Microsoft Sentinel creates incidents and performs threat analysis for early detection. Through intelligent analytics and queries, you can proactively hunt for security issues. In case of incidents, you can automate workflows. Also, with workbook templates, you can quickly gain insights through visualization.
+Microsoft Sentinel is a native control that combines security information event management (SIEM) and security orchestration automated response (SOAR) capabilities. It analyzes events and logs from various connected sources. Based on data sources and their alerts, Microsoft Sentinel creates incidents and performs threat analysis for early detection. Through intelligent analytics and queries, you can proactively hunt for security issues. If there's an incident, you can automate workflows. Also, with workbook templates, you can quickly gain insights through visualization.
 
 For product documentation, see [Hunting capabilities in Microsoft Sentinel](/azure/sentinel/hunting).
 
