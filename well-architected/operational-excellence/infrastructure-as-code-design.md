@@ -65,7 +65,7 @@ Core infrastructure like networking resources rarely need changes more complex t
 
 **Apply the principle of "security as code" to ensure that security is part of the deployment pipeline.** Include vulnerability scanning and configuration hardening as part of the IaC development process. Scan your IaC repos for keys and secrets that are exposed. One advantage of using IaC is that security-focused team members can review code before deployment to ensure that the configuration that's approved of for release by security is actually what's deployed to production. For detailed guidance, see [Recommendations for securing a development lifecycle](../security/secure-development-lifecycle.md).
 
-**Test routine and non-routine activities.** Test deployments, configuration updates, and recovery processes, including deployment rollback-processes. 
+**Test routine and non-routine activities.** Test deployments, configuration updates, and recovery processes, including deployment-rollback processes. 
 
 ### Mutable vs. immutable infrastructure
 
