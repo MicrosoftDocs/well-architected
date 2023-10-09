@@ -1,17 +1,17 @@
 ### YamlMime:Landing
 
 title: Reliability quick links
-summary: Apply reliability guidance to your architecture to make a workload resilient to malfunction and returns to a fully functioning state after a failure occurs.
+summary: Apply reliability guidance to your architecture to make your workload resilient to malfunction and to ensure that it returns to a fully functioning state after a failure occurs.
 
 metadata:
   title: Reliability quick links
-  description: Apply resiliency guidance to your architecture to make a workload resilient to malfunction and returns to a fully functioning state after a failure occurs.
+  description: Apply reliability guidance to your architecture to make your workload resilient to malfunction.
   ms.service: waf
   ms.subservice: waf-pillar-reliability
   ms.topic: landing-page
   author: martinekuan
   ms.author: martinek
-  ms.date: 09/29/2023
+  ms.date: 11/15/2023
 
 landingContent:
   - title: Key points
@@ -36,7 +36,7 @@ landingContent:
             url: https://azure.microsoft.com/resources/resilience-in-azure-whitepaper/
       - linkListType: video
         links:
-          - text: Inside Azure data center architecture with Mark Russinovich
+          - text: Inside Azure datacenter architecture with Mark Russinovich
             url: https://www.youtube.com/watch?v=69PrhWQorEM
   - title: Design principles
     linkLists:
@@ -52,7 +52,7 @@ landingContent:
             url: principles.md#design-for-operations
           - text: Keep it simple
             url: principles.md#keep-it-simple
-  - title: Set and measure reliability targets
+  - title: Setting and measuring reliability targets
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -60,13 +60,11 @@ landingContent:
             url: identify-flows.md
           - text: Perform failure mode analysis
             url: failure-mode-analysis.md
-          - text: Use business metrics
-            url: metrics.md
           - text: Set reliability targets
             url: metrics.md
-          - text: Design a monitoring & alerting strategy
+          - text: Design a monitoring and alerting strategy
             url: monitoring-alerting-strategy.md
-  - title: Achieve reliability targets
+  - title: Achieving reliability targets
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -74,13 +72,13 @@ landingContent:
             url: redundancy.md
           - text: Use availability zones and regions
             url: regions-availability-zones.md
-          - text: Highly available multi-region design
+          - text: Implement highly available multi-region design
             url: highly-available-multi-region-design.md
           - text: Partition data
             url: partition-data.md
           - text: Reliably scale
             url: scaling.md
-          - text: Design for self-healing & preservation
+          - text: Design for self-healing and preservation
             url: self-preservation.md
           - text: Use background jobs
             url: background-jobs.md
@@ -88,7 +86,7 @@ landingContent:
             url: handle-transient-faults.md
           - text: Design with simplicity
             url: simplify.md
-  - title: Testing and drilling
+  - title: Testing and conducting drills
     linkLists:
       - linkListType: how-to-guide
         links:
