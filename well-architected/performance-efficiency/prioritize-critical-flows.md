@@ -37,9 +37,15 @@ Typically, critical flows significantly affect the user experience or business o
 
 Critical flows refer to the key user flows for paying customers or the flows for operations that are crucial to the workload functionality. These flows can include actions such as user registrations, sign-ins, product purchases, accessing pages behind a paywall, or any other key path or process within your workload. To identify critical flows, complete these tasks:
 
-- **Map the flows**. Identify the paths or sequences of user interaction within your workload. Map the dependencies between components or services within your application. Understand how these components interact to support the user flows. Also map the flows and identify the paths or sequences of user interaction within your application. To map the flows, you can use flowcharts, user journey maps, and prototyping tools.
+#### Map the flows
 
-- **Collect data**. Monitor and collect data that's related to the performance of each user flow. Collect metrics such as response times, error rates, throughput, and resource use. You can use these tools to collect data:
+refers to the process of identifying and outlining the paths or sequences of user interaction within a workload, as well as understanding the interdependencies between its components or services. This mapping provides a visual representation of how different components interact to support user actions. By mapping the flows, you gain clarity on the user journey. Mapping makes it easier to pinpoint crucial interactions and dependencies that are important for functionality.
+
+Identify the paths or sequences of user interaction within your workload. Map the dependencies between components or services within your application. Understand how these components interact to support the user flows. Also map the flows and identify the paths or sequences of user interaction within your application. To map the flows, you can use flowcharts, user journey maps, and prototyping tools.
+
+#### Monitor flow metrics
+
+Monitoring flow metrics involves consistently observing and recording performance-related measurements of user flows within a workload. These metrics provide insights into aspects like response times, error rates, and throughput. By focusing on these metrics, you can identify and prioritize the most vital user flows, ensuring optimal performance and user satisfaction. To monitor flow metrics, you can use the following tools to collect data:
 
     - *Analytic and tracking tools*: These tools provide insights into user behavior and interactions within your application. By analyzing user data, you can identify the most common flows, bottlenecks, or potential issues.
     
@@ -47,7 +53,9 @@ Critical flows refer to the key user flows for paying customers or the flows for
     
     - *Logging and debugging tools*: Use these tools to capture and analyze logs and debug information while your application runs. Review logs and debugging information to trace how flows are running and identify issues or errors.
     
-- **Align flow importance with workload objectives**. In your workload, assess the significance of each user flow. Assess the actual usage to determine the flow's significance. Data about flows, queries, and code paths is key to identifying what's critical as you align flows with workload priorities. For example, a free tier might receive more traffic than a paid tier, but the free tier might be less critical than the paid tier.
+#### Align flow importance with workload objectives
+
+In your workload, assess the significance of each user flow. Assess the actual usage to determine the flow's significance. Data about flows, queries, and code paths is key to identifying what's critical as you align flows with workload priorities. For example, a free tier might receive more traffic than a paid tier, but the free tier might be less critical than the paid tier.
 
     Consider factors such as how important the flow is to your business goals, the number of users that rely on the flow, and the potential consequences of any failures or performance issues in the flow. Assess how each flow affects the user experience or business outcomes. Consider factors such as user satisfaction, conversion rates, revenue generation, and customer retention. 
 
