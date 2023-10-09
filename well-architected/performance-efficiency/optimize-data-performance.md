@@ -162,7 +162,7 @@ Implement data archiving and purging strategies to remove obsolete or infrequent
 
 ### Optimize storage load
 
-Implement strategies that reduce the processing burden on the data store. To optimize data store load:
+Optimizing storage load efers to the process of reducing unnecessary or redundant requests to the storage system, streamlining data retrieval processes, and ensuring that the storage workload isn't overwhelmed with excessive demands. This optimization ensures that the storage system can respond to legitimate requests and maintain a high-performance level. Implement strategies that reduce the processing burden on the data store. To optimize data store load, consider the following strategies:
 
 **Use caching.** Cache data by storing frequently accessed data in a high-speed data storage layer. For hot data scenarios, caching increases read throughput and improves client response times. Caching is most effective for scenarios in which data is relatively static or doesn't change frequently.
 
