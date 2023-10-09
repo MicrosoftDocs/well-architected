@@ -44,6 +44,8 @@ Consider two approaches when you design a redundant architecture: active-active 
 
 Whether you deploy in an active-active or active-passive model, follow the [Deployment Stamps design pattern](/azure/architecture/patterns/deployment-stamp) to ensure that you deploy your workload in a repeatable, scalable way. Deployment stamps are the groupings of resources that are required to deliver your workload to a given subset of your customers. For example, the subset might be a regional subset or a subset with all the same data privacy requirements as your workload. Think of each stamp as a *unit of scale* that you can duplicate to scale your workload horizontally or to perform blue-green deployments. Design your workload with deployment stamps to optimize your active-active or active-passive implementation for resiliency and management burden.
 
+Use an [infrastructure-as-code](./operational-excellence/infrastructure-as-code-design.md) approach to deploying and updating your workload infrastructure to ensure that you can deploy the workload stamps efficiently and consistently.
+
 #### Availability zones within Azure regions
 
 Whether you deploy an active-active or an active-passive design, take advantage of [availability zones](regions-availability-zones.md) within the active regions to fully optimize your resiliency. Many Azure regions provide multiple availability zones, which are separated groups of data centers within a region. Depending on the Azure service, you can take advantage of availability zones by deploying elements of your workload redundantly across zones or pinning elements to specific zones. For more information, see [Recommendations for using availability zones and regions](regions-availability-zones.md).
