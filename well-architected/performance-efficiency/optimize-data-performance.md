@@ -166,7 +166,9 @@ Archiving and purging are instrumental in maintaining peak performance efficienc
 
 Optimizing storage load efers to the process of reducing unnecessary or redundant requests to the storage system, streamlining data retrieval processes, and ensuring that the storage workload isn't overwhelmed with excessive demands. This optimization ensures that the storage system can respond to legitimate requests and maintain a high-performance level. Implement strategies that reduce the processing burden on the data store. To optimize data store load, consider the following strategies:
 
-**Use caching.** Cache data by storing frequently accessed data in a high-speed data storage layer. For hot data scenarios, caching increases read throughput and improves client response times. Caching is most effective for scenarios in which data is relatively static or doesn't change frequently.
+#### Use caching
+
+Cache data by storing frequently accessed data in a high-speed data storage layer. For hot data scenarios, caching increases read throughput and improves client response times. Caching is most effective for scenarios in which data is relatively static or doesn't change frequently.
 
 Carefully consider factors like cache expiration policies, cache eviction strategies, and cache size management. To maximize the benefits of caching, you might need to tune caching parameters, such as time to live (TTL). Consider the following caching techniques:
 
@@ -176,15 +178,15 @@ Carefully consider factors like cache expiration policies, cache eviction strate
 
 - *Content delivery network caching*: Use this technique to cache web content on distributed network servers to reduce latency and improve content delivery. Content delivery network caching is effective for static content, like images, CSS files, and JavaScript files. Content delivery networks store copies of content in multiple locations worldwide, so users can access the content from a server that's near them geographically.
 
-**Use read replicas.** Many databases support multiple read replicas. Distribute read queries across replicas to minimize the demand on the write database. Each read replica can serve a subset of traffic, which can improve performance.
+#### Use read replicas
 
-When you have a workload with multiple data replicas that you expect to stay in sync, it's helpful to model this distributed system by using the PACELC theorem. The PACELC theorem helps you understand latency versus constancy tradeoff choices in the nonpartitioned state of the system. Use this information to help you choose a database engine and data sync strategy that best addresses the system in a partitioned and nonpartitioned state.
+Many databases support multiple read replicas. Distribute read queries across replicas to minimize the demand on the write database. Each read replica can serve a subset of traffic, which can improve performance.
 
-For more information, see [Command and Query Responsibility Segregation (CQRS) pattern](/azure/architecture/patterns/cqrs).
+When you have a workload with multiple data replicas that you expect to stay in sync, it's helpful to model this distributed system by using the PACELC theorem. The PACELC theorem helps you understand latency versus constancy tradeoff choices in the nonpartitioned state of the system. Use this information to help you choose a database engine and data sync strategy that best addresses the system in a partitioned and nonpartitioned state. For more information, see [Command and Query Responsibility Segregation (CQRS) pattern](/azure/architecture/patterns/cqrs).
 
-**Use eventual consistency.** Eventual consistency is a consistency model. Over time, updates are propagated to replicas or nodes in a distributed workload. There might be temporary inconsistencies between replicas, but the workload eventually converges to a consistent state.
+#### Use eventual consistency
 
-Eventual consistency helps optimize data updates because it increases availability and scalability. With strict consistency, every update has to be immediately visible on all replicas. With eventual consistency, there's a tradeoff between consistency and performance. Updates can be processed asynchronously, which reduces delay and increases throughput of data updates.
+Eventual consistency is a consistency model. Over time, updates are propagated to replicas or nodes in a distributed workload. There might be temporary inconsistencies between replicas, but the workload eventually converges to a consistent state. Eventual consistency helps optimize data updates because it increases availability and scalability. With strict consistency, every update has to be immediately visible on all replicas. With eventual consistency, there's a tradeoff between consistency and performance. Updates can be processed asynchronously, which reduces delay and increases throughput of data updates.
 
 ### Optimize data updates
 
