@@ -5,7 +5,7 @@ summary: Apply reliability guidance to your architecture to make your workload r
 
 metadata:
   title: Reliability quick links
-  description: Apply reliability guidance to your architecture to make your workload resilient to malfunction.
+  description: Learn about resources that can help you apply reliability guidance to your architecture to make your workload resilient to malfunction.
   ms.service: waf
   ms.subservice: waf-pillar-reliability
   ms.topic: landing-page
