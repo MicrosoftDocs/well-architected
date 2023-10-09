@@ -14,11 +14,11 @@ ms.topic: conceptual
 |[OE:03](checklist.md)| Formalize software ideation and planning processes. Draw from established industry and organizational standards. Use a common, prioritized backlog and sufficiently detailed specifications. Based on outcomes, drive continuous improvements in your planning process. |
 |---|---|
 
-This guide describes the recommendations for managing software development practices via established standards. Your team's ability to produce high quality software relies on a structured, collaborative approach to development planning. Product owners and managers must be able to clearly understand and articulate to stakeholders the work that developers are doing at any time in a development cycle. Conversely, developers must understand the goals of the development cycle via well-written features, user stories, and acceptance criteria. Established standards define how development practices should be performed and allow the workload team to collaborate effectively, reducing the risk of confusion on goals and expectations.
+This guide describes the recommendations for managing software development practices in accordance with established standards. Your team's ability to produce high quality software relies on a structured, collaborative approach to development planning. Product owners and managers must be able to clearly understand and articulate to stakeholders the work that developers are doing at any time in a development cycle. Conversely, developers must understand the goals of the development cycle via well-written features, user stories, and acceptance criteria. Established standards define how development practices should be performed and allow the workload team to collaborate effectively, reducing the risk of confusion on goals and expectations.
 
 ## Key design strategies
 
-Formalize your software development practices to help ensure that product owners, project managers, and developers understand the goals of each sprint and deliver consistent quality for stakeholders.
+Formalize your software development practices to help ensure that product owners, project managers, and developers understand the goals of each sprint and deliver consistent quality to stakeholders.
  To review guidance on development practices, see the [continuous integration and continuous delivery (CI/CD) guide](release-engineering-continuous-integration.md).
 
 ### Standards for development planning
@@ -35,21 +35,21 @@ Formalize your software development practices to help ensure that product owners
 
 - **Acceptance criteria**: Standardize a template for acceptance criteria. Ensure that acceptance criteria relates specifically to the user story and can be unambiguously proven using one or more acceptance tests.
 
-- **Tracing**: Ensure that the development process is traceable. You should clearly trace the state of your production workload and the associated code back to quality assurance testing, acceptance criteria, user stories, and features. Detailed tracing may also be a regulatory requirement in some cases, like healthcare, for example.
+- **Tracing**: Ensure that the development process is traceable. You should clearly trace the state of your production workload and the associated code back to quality assurance testing, acceptance criteria, user stories, and features. Detailed tracing might also be a regulatory requirement in some cases, like healthcare, for example.
 
 - **Review**: Regularly perform internal audits of your development practices via sprint retrospectives and postmortems. Process reflection should be blameless and should focus on learning that can be applied as improvements.
 
-- **Reports**: Standardize reports for stakeholders that provide useful metrics focusing on change. Focusing on change allows you to track product acceleration and deceleration. Helpful metrics can include:
+- **Reports**: Standardize reports for stakeholders that provide useful metrics focusing on change. Focusing on change allows you to track product acceleration and deceleration. Helpful metrics can include changes in:
 
-  - Change in monthly growth rate of adoption.
+  - The monthly growth rate of adoption.
 
-  - Change in performance.
+  - Performance.
 
-  - Change in time to learn.
+  - Training time.
 
-  - Change in frequency of incidents.
+  - The frequency of incidents.
 
-  Reporting shouldn't be used as a tool to evaluate the work of individuals, so avoid metrics like story points per-engineer or lines of code per-engineer.
+  Reporting shouldn't be used as a tool to evaluate the work of individuals, so avoid metrics like story points or lines of code for each engineer.
 
 ## Azure facilitation
 
