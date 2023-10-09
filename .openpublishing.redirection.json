@@ -588,7 +588,7 @@
 		{
 			"source_path": "well-architected/scalability/tradeoffs.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/checklist",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/resiliency/app-design-error-handling.md",
