@@ -172,8 +172,8 @@
 		},
 		{
 			"source_path": "well-architected/services/data/azure-db-postgresql/cost-optimization.md",
-			"redirect_url": "/azure/well-architected/services/data/azure-db-postgresql-well-architected-framework",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/service-guides/azure-db-postgresql-well-architected-framework",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/checklist.md",
