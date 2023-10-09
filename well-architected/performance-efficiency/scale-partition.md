@@ -25,7 +25,7 @@ This guide describes the recommendations for scaling and partitioning a workload
 | Client affinity (session affinity) | The intentional routing of requests from a single client to a single server instance to help ensure consistent session management.|
 | Consistency (distributed database)| The uniformity of data across multiple nodes in a distributed database, ensuring that all replicas have the same data at a given point in time. |
 | Consistency (relational database)| The property of a transaction bringing a database from one valid state to another, maintaining data integrity. |
-| Consistency level| A configuration that defines how and when data is replicated in a distributed database system, determining the trade off between consistency and performance. |
+| Consistency level| A configuration that defines how and when data is replicated in a distributed database system, determining the tradeoff between consistency and performance. |
 | Data locking| A mechanism used to prevent simultaneous updates to the same data.|
 | Horizontal scaling| A scaling approach that adds instances of a given type of resource.|
 | Optimistic concurrency| An approach for updating databases that uses snapshots to make updates instead of traditional locking mechanisms. |
