@@ -57,23 +57,23 @@ Monitoring flow metrics involves consistently observing and recording performanc
 
 In your workload, assess the significance of each user flow. Assess the actual usage to determine the flow's significance. Data about flows, queries, and code paths is key to identifying what's critical as you align flows with workload priorities. For example, a free tier might receive more traffic than a paid tier, but the free tier might be less critical than the paid tier.
 
-    Consider factors such as how important the flow is to your business goals, the number of users that rely on the flow, and the potential consequences of any failures or performance issues in the flow. Assess how each flow affects the user experience or business outcomes. Consider factors such as user satisfaction, conversion rates, revenue generation, and customer retention. 
+Consider factors such as how important the flow is to your business goals, the number of users that rely on the flow, and the potential consequences of any failures or performance issues in the flow. Assess how each flow affects the user experience or business outcomes. Consider factors such as user satisfaction, conversion rates, revenue generation, and customer retention. 
 
-    Analyze the collected performance data to identify patterns or anomalies that might indicate critical flows. Based on your analysis of the performance data, prioritize the user flows that are critical to your workload. These flows significantly affect the user experience or business outcomes. Pay special attention to flows that have high user traffic or flows that directly contribute to revenue generation.
+ Analyze the collected performance data to identify patterns or anomalies that might indicate critical flows. Based on your analysis of the performance data, prioritize the user flows that are critical to your workload. These flows significantly affect the user experience or business outcomes. Pay special attention to flows that have high user traffic or flows that directly contribute to revenue generation.
     
-    | Critical flows | Noncritical flows
-    |-|-|
-    | High usage | Low usage |
-    | Business critical | Not business critical |
-    | Expensive operations | Small operations |
-    | Time-sensitive | Not time-sensitive |
-    |Production | Preproduction |
-    | Real-time processing | Batch processing |
-    | Latency sensitive | Not latency sensitive |
-    | Paying user | Nonpaying user |
-    | Premium tier | Basic tier|
-    | Important tasks | Nonessential tasks |
-    | High-revenue accounts | Low-revenue accounts |
+| Critical flows | Noncritical flows
+|-|-|
+| High usage | Low usage |
+| Business critical | Not business critical |
+| Expensive operations | Small operations |
+| Time-sensitive | Not time-sensitive |
+|Production | Preproduction |
+| Real-time processing | Batch processing |
+| Latency sensitive | Not latency sensitive |
+| Paying user | Nonpaying user |
+| Premium tier | Basic tier|
+| Important tasks | Nonessential tasks |
+| High-revenue accounts | Low-revenue accounts |
 
 ### Optimize capacity allocation
 
