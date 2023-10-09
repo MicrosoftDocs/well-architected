@@ -46,7 +46,7 @@ After you determine the critical flows, you can plan their required components. 
 
 #### Decompose the workload
 
-As you move from ideation to design, you need to identify the component types that are required to support your workload. Your workload determines the necessary components that you must plan for. Typically, you need to plan for ingress control, networking, compute, data, storage, supporting services (like authentication, messaging, and secret or key management), and egress control. At this stage in your design work, you might not know the specific technologies that you'll deploy, so your design might look like the following example.
+As you move from ideation to design, you need to identify the component types that are required to support your workload. Your workload determines the necessary components that you must plan for. Typically, you need to plan for ingress control, networking, compute, data, storage, supporting services (like authentication, messaging, and secret or key management), and egress control. Incorporate services that will support your workload from an administrative or operational perspective like jump boxes, monitoring infrastructure and DevOps infrastructure. At this stage in your design work, you might not know the specific technologies that you'll deploy, so your design might look like the following example.
 
 :::image type="content" source="media/failure-mode-analysis/failure-mode-example.png" alt-text="Diagram that shows the design example." border="false" lightbox="media/failure-mode-analysis/failure-mode-example.png":::
 
