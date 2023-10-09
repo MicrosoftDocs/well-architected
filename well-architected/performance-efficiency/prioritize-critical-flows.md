@@ -77,6 +77,18 @@ Prioritizing flows involves evaluating each user flow's importance in relation t
 | Important tasks | Nonessential tasks |
 | High-revenue accounts | Low-revenue accounts |
 
+### Isolate critical flows
+
+Isolating critical flows means providing dedicated resources or capacity to support critical flows. The goal is to ensure critical flows receive enough computing power, network bandwidth, and resources to operate efficiently and effectively. By isolating critical flows, you can more easily manage their resources. Segmentation is a good strategy to isolate critical flows.
+
+- *Resource segmentation*: Create separate resources for critical flows, allowing them to operate independently without interference from other processes. For example, you can isolate critical flows on dedicated network segments or by using dedicated servers to handle the processing needs of these flows. This approach helps minimize how noncritical flows can negatively affect critical flows.
+
+- *Logical segmentation*: Use virtualization and containerization tools like Docker or Kubernetes to isolate flows at the software level. You can separate critical flows into virtual machines (VMs). By doing so, you create an isolated environment, reducing dependencies and potential interference from other flows.
+
+- *Capacity allocation*: For critical flows, explicitly allocate a fixed set of capacity such as CPU, memory, and disk I/O. This allocation ensures that critical flows always have enough resources to operate efficiently. Set resource quotas or limits by using orchestration platforms. By explicitly allocating resources to critical flows, you prevent resource contention and prioritize how they run.
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Resource segmentation affects costs. When you dedicate resources to particular flows, you often increase the cost and leave some resources underutilized.
+
 ### Optimize capacity allocation
 
 Where you can't isolate critical flows, prioritize capacity allocations. Understand where your tightest constraints are and optimize capacity allocations where they're needed. For example, queues can process only a certain number of messages per minute, but some storage limits are hard to reach. To decide how to allocate capacity, consider these strategies:
@@ -90,16 +102,6 @@ Where you can't isolate critical flows, prioritize capacity allocations. Underst
 **Use rate limiting.** To ensure that critical flows can consume the resources they need to meet their performance targets, apply rate limits to nonpriority flows and tasks. Rate limits cap the number of requests nonpriority flows and users can make to constrained resources. For example, you might rate-limit nonpriority requests to an API. For more information, see the [Rate Limiting pattern](/azure/architecture/patterns/rate-limiting-pattern) and [Rate limiting an HTTP handler in .NET](/dotnet/core/extensions/http-ratelimiter).
 
 **Use priority queue processing.** Priority queue processing gives high priority to certain requests. Queues usually have a first in, first out (FIFO) structure, but you can update your application to assign a priority to messages it adds to the queue. Use this capability to prioritize critical flows and users. For more information, see the [Priority Queue pattern](/azure/architecture/patterns/priority-queue).
-
-**Isolate critical flows.** Isolating critical flows means providing dedicated resources or capacity to support critical flows. The goal is to ensure critical flows receive enough computing power, network bandwidth, and resources to operate efficiently and effectively. By isolating critical flows, you can more easily manage their resources. Segmentation is a good strategy to isolate critical flows.
-
-- *Resource segmentation*: Create separate resources for critical flows, allowing them to operate independently without interference from other processes. For example, you can isolate critical flows on dedicated network segments or by using dedicated servers to handle the processing needs of these flows. This approach helps minimize how noncritical flows can negatively affect critical flows.
-
-- *Logical segmentation*: Use virtualization and containerization tools like Docker or Kubernetes to isolate flows at the software level. You can separate critical flows into virtual machines (VMs). By doing so, you create an isolated environment, reducing dependencies and potential interference from other flows.
-
-- *Capacity allocation*: For critical flows, explicitly allocate a fixed set of capacity such as CPU, memory, and disk I/O. This allocation ensures that critical flows always have enough resources to operate efficiently. Set resource quotas or limits by using orchestration platforms. By explicitly allocating resources to critical flows, you prevent resource contention and prioritize how they run.
-
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Resource segmentation affects costs. When you dedicate resources to particular flows, you often increase the cost and leave some resources underutilized.
 
 ### Find the balance
 
