@@ -112,6 +112,8 @@ Refer to the following [example table](#example) for a documentation starting po
 
 During your initial FMA exercise, the documents you produce will be mostly theoretical planning. Chaos testing and real-world experiences will help you refine your analyses over time.
 
+FMA should not be a one-time only exercise. Approach FMA as a requirement of your regularly occuring workload maintenance tasks, like disaster recovery drills or standard operating procedure reviews.
+
 ## Azure facilitation
 
 Use [Azure Monitor](/azure/azure-monitor/overview) and [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) to detect issues in your workload. For further insight into issues related to your infrastructure, apps, and databases, use tools like [Application Insights](/azure/azure-monitor/app/app-insights-overview), [Container Insights](/azure/azure-monitor/containers/container-insights-overview), [Network Insights](/azure/network-watcher/network-insights-overview), [VM Insights](/azure/azure-monitor/vm/vminsights-overview), and [SQL Insights](/azure/azure-sql/database/sql-insights-overview).
