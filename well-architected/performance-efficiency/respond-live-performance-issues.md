@@ -27,7 +27,7 @@ This guide describes the best practices for responding to live performance issue
 
 ## Key design strategies
 
-When you experience a live performance issue, you need to be prepared with the right data and a plan to respond to the issue. This plan should include clear lines of communication and responsibilities. The goal is to use methods that allow you to quickly return to normal operations and learn from the event. You should try to prevent the same issue from recurring. Or if the issue comes up again, you should minimize its effect on performance issues. A key strategy is to identify preventive measures to incorporate into your workflow.
+When you experience a live performance issue, you need to be prepared with the right data and a plan to respond to the issue. This plan should include clear lines of communication and responsibilities. The primary objective is to implement solutions that facilitate a quick return to regular operations and provide insights from the incident. Integrating preventive measures into your workflow is a pivotal strategy. It's crucial to either prevent the same issue from happening again or lessen its effects on performance if it isn't preventable.
 
 ### Prepare for issues
 
