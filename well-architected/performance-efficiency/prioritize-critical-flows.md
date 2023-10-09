@@ -91,17 +91,17 @@ Isolating critical flows means providing dedicated resources or capacity to supp
 
 ### Optimize capacity allocation
 
-Where you can't isolate critical flows, prioritize capacity allocations. Understand where your tightest constraints are and optimize capacity allocations where they're needed. For example, queues can process only a certain number of messages per minute, but some storage limits are hard to reach. To decide how to allocate capacity, consider these strategies:
+Where you can't isolate critical flows, prioritize capacity allocations. Optimizing capacity allocation refers to the process of strategically distributing available capacity, like CPU, memory, storage, and network bandwidth, to different flows based on their priority and requirements. The goal is to ensure that the most critical flows (those with the highest priority) receive the necessary capacity to operate effectively. To decide how to allocate capacity, consider these strategies:
 
 - *Assess resource capacity*: Evaluate how much resource capacity can be allocated to the flows. Capacity might include resources such as CPU, memory, storage, and network bandwidth. Understand the limitations and constraints of your infrastructure or environment.
 
-- *Analyze flow requirements*: Analyze the resource requirements of each flow. Understand the resources the flow needs to operate efficiently. For each flow, identify the resource demands, such as CPU utilization, memory requirements, and network bandwidth.
+- *Analyze flow requirements*: Analyze the resource requirements of each flow. Understand the resources the flow needs to operate efficiently. For each flow, identify the resource demands, such as CPU utilization, memory requirements, and network bandwidth. 
 
-- *Prioritize allocations*: Match the available resource capacity to the resource requirements of the flows. Allocate resources based on flow priorities, ensuring that higher-priority flows receive the necessary resources to meet their requirements.
+- *Prioritize allocations*: Match the available resource capacity to the resource requirements of the flows. Allocate resources based on flow priorities, ensuring that higher-priority flows receive the necessary resources to meet their requirements. Understand where your tightest constraints are and optimize capacity allocations where they're needed. For example, queues can process only a certain number of messages per minute, but some storage limits are hard to reach.
+  
+- *Use rate limiting*: To ensure that critical flows can consume the resources they need to meet their performance targets, apply rate limits to nonpriority flows and tasks. Rate limits cap the number of requests nonpriority flows and users can make to constrained resources. For example, you might rate-limit nonpriority requests to an API. For more information, see the [Rate Limiting pattern](/azure/architecture/patterns/rate-limiting-pattern) and [Rate limiting an HTTP handler in .NET](/dotnet/core/extensions/http-ratelimiter).
 
-**Use rate limiting.** To ensure that critical flows can consume the resources they need to meet their performance targets, apply rate limits to nonpriority flows and tasks. Rate limits cap the number of requests nonpriority flows and users can make to constrained resources. For example, you might rate-limit nonpriority requests to an API. For more information, see the [Rate Limiting pattern](/azure/architecture/patterns/rate-limiting-pattern) and [Rate limiting an HTTP handler in .NET](/dotnet/core/extensions/http-ratelimiter).
-
-**Use priority queue processing.** Priority queue processing gives high priority to certain requests. Queues usually have a first in, first out (FIFO) structure, but you can update your application to assign a priority to messages it adds to the queue. Use this capability to prioritize critical flows and users. For more information, see the [Priority Queue pattern](/azure/architecture/patterns/priority-queue).
+- *Use priority queue processing*: Priority queue processing gives high priority to certain requests. Queues usually have a first in, first out (FIFO) structure, but you can update your application to assign a priority to messages it adds to the queue. Use this capability to prioritize critical flows and users. For more information, see the [Priority Queue pattern](/azure/architecture/patterns/priority-queue).
 
 ### Find the balance
 
