@@ -50,7 +50,7 @@ Use the Deployment Stamps pattern or the Bulkhead pattern to minimize the blast 
 
 #### Application design guidance and patterns
 
-Avoid building monolithic applications in your application design. Use loosely coupled services or microservices that communicate with each other via well-defined standards to reduce the risk of extensive problems when malfunctions happen to a single component. Implement this practice to create a more manageable workload. The following design patterns help you organize your workload and define the communications between components in a way that best meets your business requirements.
+Avoid building monolithic applications in your application design. Use loosely coupled services or microservices that communicate with each other via well-defined standards to reduce the risk of extensive problems when malfunctions happen to a single component. Standardize the communication mechanisms and use those mechansims consistently throughout the workload design. Implement this practice to create a more manageable workload. The following design patterns help you organize your workload and define the communications between components in a way that best meets your business requirements. 
 
 - [**Ambassador pattern**](/azure/architecture/patterns/ambassador): Separate your business logic from your networking code and resiliency logic. Create helper services that send network requests on behalf of a consumer service or application. You can use this pattern to implement retry mechanisms or circuit breaking.
 
