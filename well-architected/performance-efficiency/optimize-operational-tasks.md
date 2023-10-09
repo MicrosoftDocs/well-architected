@@ -112,9 +112,9 @@ Azure Front Door and Azure Traffic Manager enable you to implement a [blue-green
 - [Azure SQL Database](/azure/azure-sql/database/automated-backups-overview)
 - [Azure Cosmos DB](/azure/cosmos-db/online-backup-and-restore)
 
-## Next steps
+## Performance Efficiency checklist  
 
-We recommend that you review the Performance Efficiency checklist to explore other concepts. 
+Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"] 
 > [Performance Efficiency checklist](checklist.md) 

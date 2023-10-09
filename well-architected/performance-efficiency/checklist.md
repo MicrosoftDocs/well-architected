@@ -13,6 +13,8 @@ This checklist presents a set of recommendations for you to scale your system so
 
 For every system, there's a limit to how much you can scale it without redesigning, introducing a workaround, or incorporating human involvement. If you don't include performance efficiency practices and consider the tradeoffs, your design is potentially at risk. Carefully consider all the points covered in the checklist to instill confidence in your system's success.
 
+## Checklist
+
 | &nbsp; | Code | Recommendation |
 |-|-|-|
 | &#9744; | [PE:01](performance-targets.md) | **Define performance targets.** Performance targets should be numerical values that are tied to workload requirements. You should implement performance targets for all workload flows. |
