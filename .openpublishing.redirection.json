@@ -337,42 +337,42 @@
 		},
 		{
 			"source_path": "well-architected/devops/auditing.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/auditing",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/automation-configuration.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/automation-configuration",
+			"redirect_url": "/azure/well-architected/operational-excellence/infrastructure-as-code-design",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/automation-infrastructure.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/automation-infrastructure",
+			"redirect_url": "/azure/well-architected/operational-excellence/infrastructure-as-code-design",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/automation-overview.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/automation-overview",
+			"redirect_url": "/azure/well-architected/operational-excellence/automate-tasks",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/automation-tasks.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/automation-tasks",
+			"redirect_url": "/azure/well-architected/operational-excellence/automate-tasks",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/checklist.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/checklist",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/devops/health-monitoring.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/health-monitoring",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/issue-tracking.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/issue-tracking",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
@@ -382,17 +382,17 @@
 		},
 		{
 			"source_path": "well-architected/devops/monitor-analysis.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/monitor-analysis",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/monitor-collection-data-storage.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/monitor-collection-data-storage",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/monitor-data-sources.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/monitor-data-sources",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
@@ -402,18 +402,18 @@
 		},
 		{
 			"source_path": "well-architected/devops/monitor-pipeline.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/monitor-pipeline",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/monitor-visualize-data.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/monitor-visualize-data",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/overview.md",
 			"redirect_url": "/azure/well-architected/operational-excellence/overview",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/principles.md",
@@ -422,42 +422,42 @@
 		},
 		{
 			"source_path": "well-architected/devops/release-engineering-app-dev.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-app-dev",
+			"redirect_url": "/azure/well-architected/operational-excellence/formalize-development-practices",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/release-engineering-cd.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-cd",
+			"redirect_url": "/azure/well-architected/operational-excellence/optimize-development-practices",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/release-engineering-ci.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-ci",
-			"redirect_document_id": false
+			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-continuous-integration",
+			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/devops/release-engineering-performance.md",
 			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-performance",
-			"redirect_document_id": false
+			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/devops/release-engineering-rollback.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-rollback",
+			"redirect_url": "/azure/well-architected/operational-excellence/safe-deployments",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/release-engineering-testing.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/release-engineering-testing",
+			"redirect_url": "/azure/well-architected/operational-excellence/optimize-development-practices",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/tracing.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/tracing",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/usage.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/usage",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
@@ -468,7 +468,7 @@
 		{
 			"source_path": "well-architected/scalability/checklist.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/checklist",
-			"redirect_document_id": false
+			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/scalability/capacity.md",
@@ -558,7 +558,7 @@
 		{
 			"source_path": "well-architected/scalability/overview.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/overview",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/scalability/performance-efficiency.md",
@@ -653,7 +653,7 @@
 		{
 			"source_path": "well-architected/resiliency/index.yml",
 			"redirect_url": "/azure/well-architected/reliability/index",
-			"redirect_document_id": false
+			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/resiliency/monitor-best-practices.md",
@@ -683,7 +683,7 @@
 		{
 			"source_path": "well-architected/resiliency/principles.md",
 			"redirect_url": "/azure/well-architected/reliability/principles",
-			"redirect_document_id": false
+			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/resiliency/test-best-practices.md",
