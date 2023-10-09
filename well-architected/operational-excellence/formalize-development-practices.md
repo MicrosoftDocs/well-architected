@@ -68,7 +68,7 @@ Agile methodology can become too strict if it's overly prescriptive. Strive for 
 
 ## Community links
 
-- [GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
+- [GitHub Projects](https://docs.github.com/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
 
 ## Operational Excellence checklist
 
