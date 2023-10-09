@@ -30,7 +30,7 @@ landingContent:
             url: /assessments/azure-architecture-review/
       - linkListType: learn
         links:
-          - text: Operational Excellence
+          - text: Operational excellence
             url: /training/modules/azure-well-architected-introduction/4-operational-excellence
       - linkListType: video
         links:
@@ -60,11 +60,11 @@ landingContent:
             url: devops-culture.md
           - text: Formalize operational tasks
             url: formalize-operations-tasks.md
-          - text: Use an industry planning process
+          - text: Formalize software development and management
             url: formalize-development-practices.md
           - text: Define development and testing standards
             url: optimize-development-practices.md
-          - text: Agree on safe deployment practices (SPD)
+          - text: Use safe deployment practices (SPD)
             url: safe-deployments.md
   - title: Use automation
     linkLists:
@@ -78,9 +78,9 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Design for supportability
+          - text: Design for observability
             url: observability.md
-          - text: Use infrastructure-as-code
+          - text: Use infrastructure as code
             url: infrastructure-as-code-design.md
           - text: Build a reliable workload supply chain
             url: workload-supply-chain.md
