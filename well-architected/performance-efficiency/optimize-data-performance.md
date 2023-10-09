@@ -184,9 +184,13 @@ Many databases support multiple read replicas. Distribute read queries across re
 
 When you have a workload with multiple data replicas that you expect to stay in sync, it's helpful to model this distributed system by using the PACELC theorem. The PACELC theorem helps you understand latency versus constancy tradeoff choices in the nonpartitioned state of the system. Use this information to help you choose a database engine and data sync strategy that best addresses the system in a partitioned and nonpartitioned state. For more information, see [Command and Query Responsibility Segregation (CQRS) pattern](/azure/architecture/patterns/cqrs).
 
-#### Use eventual consistency
+#### Optimize data consistency
 
-Eventual consistency is a consistency model. Over time, updates are propagated to replicas or nodes in a distributed workload. There might be temporary inconsistencies between replicas, but the workload eventually converges to a consistent state. Eventual consistency helps optimize data updates because it increases availability and scalability. With strict consistency, every update has to be immediately visible on all replicas. With eventual consistency, there's a tradeoff between consistency and performance. Updates can be processed asynchronously, which reduces delay and increases throughput of data updates.
+In a distributed workload, where data resides across multiple nodes or locations, the level of consistency you select determines how quickly changes in one location reflect in others. Opting for stricter consistency consumes more compute resources and can impact performance efficiency negatively. On the other hand, a less strict consistency level might introduce temporary inconsistencies among nodes but can boost performance efficiency.
+
+- *Strict consistency*: In this approach, every data change immediately reflects across all nodes, ensuring uniformity throughout the workload at all moments.
+
+- *Eventual consistency*: This strategy strikes a balance between data accuracy and workload performance. Changes spread gradually instead of instantly, boosting workload responsiveness and data processing speed. Although this might introduce short-lived inconsistencies, the workload eventually presents consistent data across all nodes. Choosing eventual consistency can elevate a workload's performance and further enhance its availability and scalability.
 
 ### Optimize data updates
 
