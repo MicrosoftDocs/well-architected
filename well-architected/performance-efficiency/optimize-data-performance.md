@@ -212,7 +212,16 @@ Optimizing data movement and processing involves improving the efficiency and pe
 
 Carefully design a data storage structure and utilize appropriate storage technologies to optimize data access, retrieval, and manipulation.
 
-**Use close proximity.** If you need to bring data close to a distributed user base, choose a solution that supports data synchronization across regions.
+#### Use close proximity
+
+Data proximity refers to the strategic placement of data closer to the users or services that access it most frequently. By reducing the physical or logical distance between data and its users, data proximity ensures faster data access and improved responsiveness. To optimize design for close proximity, consider these strategies:
+
+- *Evaluate data access patterns*: Assess your workload's access patterns and frequently accessed data. This analysis can help determine where to place data for maximum benefit.
+ 
+- *Choose solutions that support data relocation*: Consider solutions that offer dynamic data relocation based on changing access patterns, ensuring optimal data positioning at all times.
+ 
+- *Choose solutions that support data synchronization*: If catering to a distributed user base, opt for solutions that facilitate data synchronization across various regions, ensuring that data replicas are available in proximity to users.
+
 
 > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: If underlying data changes frequently, implement a cache invalidation mechanism to ensure that the cached data remains up to date.
 
