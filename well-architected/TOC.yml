@@ -1,12 +1,12 @@
 - name: Microsoft Azure Well-Architected Framework
   href: ./index.yml
   items:
-    - name: What's new
+    - name: About
       items:
-      - name: Azure Well-Architected Framework
+      - name: What's new
         href: whats-new.md
-      - name: How to use this documentation
-        href: how-to-use-documentation.md
+      - name: What is WAF
+        href: what-is-waf.md
     - name: Pillars
       items: 
       - name: Overview
@@ -71,7 +71,7 @@
               href: security/design-patterns.md
             - name: SE:01 Establish a baseline
               href: security/establish-baseline.md
-            - name: SE:02 Security development lifecycle
+            - name: SE:02 Secure a development lifecycle
               href: security/secure-development-lifecycle.md
             - name: SE:02 Threat analysis
               href: security/threat-model.md              
@@ -118,7 +118,7 @@
             - name: Set spending guardrails
               href: cost-optimization/set-spending-guardrails.md
             - name: Get the best rates
-              href: cost-optimization/get-the-best-rates.md
+              href: cost-optimization/get-best-rates.md
             - name: Align usage to billing increments
               href: cost-optimization/align-usage-to-billing-increments.md
             - name: Eliminate waste
@@ -145,33 +145,39 @@
           href: operational-excellence/principles.md
         - name: Checklist
           href: operational-excellence/checklist.md
-        - name: Safe deployments
-          href: operational-excellence/safe-deployments.md
         - name: Tradeoffs
           href: operational-excellence/tradeoffs.md
         - name: Recommendations
           items:
             - name: Operational excellence patterns
               href: operational-excellence/design-patterns.md 
+            - name: OE:01 Foster a DevOps culture
+              href: operational-excellence/devops-culture.md
             - name: OE:02 Formalize tasks
               href: operational-excellence/formalize-operations-tasks.md
             - name: OE:03 Formalize software development practices
               href: operational-excellence/formalize-development-practices.md
+            - name: OE:04 Improve build velocity
+              href: operational-excellence/release-engineering-performance.md
             - name: OE:04 Optimize development practices
               href: operational-excellence/optimize-development-practices.md
-            - name: OE:05 Using infrastructure as code
+            - name: OE:04 Use continuous integration 
+              href: operational-excellence/release-engineering-continuous-integration.md
+            - name: OE:05 Use infrastructure as code
               href: operational-excellence/infrastructure-as-code-design.md
-            - name: OE:06 Supply chain for workload development
+            - name: OE:06 Design a supply chain for workload development
               href: operational-excellence/workload-supply-chain.md
-            - name: OE:07 Developing an observability framework
+            - name: OE:07 Develop an observability framework
               href: operational-excellence/observability.md
-            - name: OE:08 Emergency response
+            - name: OE:08 Respond to emergencies
               href: operational-excellence/emergency-response.md
-            - name: OE:09 Automating tasks
+            - name: OE:09 Automate tasks
               href: operational-excellence/automate-tasks.md
-            - name: OE:10 Enabling automation
+            - name: OE:10 Enable automation
               href: operational-excellence/enable-automation.md
-            - name: OE:12 Failure mitigation
+            - name: OE:11 Deploy safely
+              href: operational-excellence/safe-deployments.md
+            - name: OE:12 Mitigate failures 
               href: operational-excellence/mitigation-strategy.md
       - name: Performance Efficiency
         items: 
@@ -187,29 +193,29 @@
           items:
             - name: Performance efficiency patterns
               href: performance-efficiency/design-patterns.md
-            - name: Set performance targets
+            - name: PE:01 Set performance targets
               href: performance-efficiency/performance-targets.md
-            - name: Conduct capacity planning
+            - name: PE:02 Conduct capacity planning
               href: performance-efficiency/capacity-planning.md
-            - name: Select the appropriate services 
-              href: performance-efficiency/selecting-services.md
-            - name: Collect metrics and logs 
+            - name: PE:03 Select the appropriate services 
+              href: performance-efficiency/select-services.md
+            - name: PE:04 Collect metrics and logs 
               href: performance-efficiency/collect-metrics-logs.md
-            - name: Scale and partition 
+            - name: PE:05 Scale and partition 
               href: performance-efficiency/scale-partition.md
-            - name: Performance testing
+            - name: PE:06 Performance testing
               href: performance-efficiency/performance-testing.md
-            - name: Optimize code and infrastructure 
+            - name: PE:07 Optimize code and infrastructure 
               href: performance-efficiency/optimize-code-infrastructure.md
-            - name: Optimize data performance 
+            - name: PE:08 Optimize data performance 
               href: performance-efficiency/optimize-data-performance.md
-            - name: Prioritize critical flows 
+            - name: PE:09 Prioritize critical flows 
               href: performance-efficiency/prioritize-critical-flows.md
-            - name: Optimize operational tasks
+            - name: PE:10 Optimize operational tasks
               href: performance-efficiency/optimize-operational-tasks.md
-            - name: Respond to live issues 
+            - name: PE:11 Respond to live issues 
               href: performance-efficiency/respond-live-performance-issues.md
-            - name: Continuous performance optimization
+            - name: PE:12 Continuous performance optimization
               href: performance-efficiency/continuous-performance-optimize.md
 
     - name: Workloads
@@ -236,8 +242,6 @@
       items:
         - name: Quick links
           href: service-guides/index.yml
-        - name: Overview
-          href: service-guides/overview.md
         - name: API Management
           items:
             - name: Reliability
@@ -1101,5 +1105,3 @@
                     href: service-guides/application-insights/cost-optimization.md
                   - name: Operational excellence
                     href: service-guides/application-insights/operational-excellence.md
-      - name: Implementing Recommendations
-        href: ./implementing-recommendations.md
