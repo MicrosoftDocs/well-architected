@@ -47,11 +47,11 @@ Identify the paths or sequences of user interaction within your workload. Map th
 
 Monitoring flow metrics involves consistently observing and recording performance-related measurements of user flows within a workload. These metrics provide insights into aspects like response times, error rates, and throughput. By focusing on these metrics, you can identify and prioritize the most vital user flows, ensuring optimal performance and user satisfaction. To monitor flow metrics, you can use the following tools to collect data:
 
-    - *Analytic and tracking tools*: These tools provide insights into user behavior and interactions within your application. By analyzing user data, you can identify the most common flows, bottlenecks, or potential issues.
+- *Analytic and tracking tools*: These tools provide insights into user behavior and interactions within your application. By analyzing user data, you can identify the most common flows, bottlenecks, or potential issues.
     
-    - *Application performance monitoring (APM) tools*: Use APM tools to monitor the performance of your application and track how flows run. These tools provide visibility into response times, errors, and other performance metrics, allowing you to identify critical flows and optimize their performance.
+ - *Application performance monitoring (APM) tools*: Use APM tools to monitor the performance of your application and track how flows run. These tools provide visibility into response times, errors, and other performance metrics, allowing you to identify critical flows and optimize their performance.
     
-    - *Logging and debugging tools*: Use these tools to capture and analyze logs and debug information while your application runs. Review logs and debugging information to trace how flows are running and identify issues or errors.
+- *Logging and debugging tools*: Use these tools to capture and analyze logs and debug information while your application runs. Review logs and debugging information to trace how flows are running and identify issues or errors.
     
 #### Align flow importance with workload objectives
 
