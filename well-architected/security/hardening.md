@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 This guide describes the recommendations for hardening resources by building localized controls within a workload and maintaining them to withstand repeated attacks.
 
-Security hardening is an intentional self-preservation exercise. The goal is to **reduce the attack surface** and **increase attackers' costs in the remaining area** to limit the opportunities for malicious actors to exploit vulnerabilities. To help achieve this goal, you can implement a set of security best practices and configurations in your workload.
+Security hardening is an intentional self-preservation exercise. The goal is to **reduce the attack surface** and **increase attackers' costs in the other areas**, which limits opportunities for malicious actors to exploit vulnerabilities. To protect your workload, implement security best practices and configurations.
 
 **Security hardening is an ongoing process** that requires continuous monitoring and adaptation to evolving threats and vulnerabilities.
 
@@ -24,153 +24,146 @@ Security hardening is an intentional self-preservation exercise. The goal is to 
 
 | Term | Definition |
 |---|---|
-|Surface area|A logical footprint of the workload that contains vulnerabilities. |
-| Hardening |The practice of reducing the attack surface area by removing extraneous resources or adjusting configurations.|
-| Privileged Access Workstation (PAW) | A dedicated and secure machine that's used for performing sensitive tasks to reduce the risk of compromise.|
-| Secure Administrative Workstation (SAW) | A specialized PAW that's intended to be used by critical impact accounts.|
+|Surface area|A logical footprint of a workload that contains vulnerabilities. |
+| Hardening |The practice of reducing an attack surface area by removing extraneous resources or adjusting configurations.|
+| Privileged Access Workstation (PAW) | A dedicated and secure machine that you use to perform sensitive tasks, which reduces the risk of compromise.|
+| Secure Administrative Workstation (SAW) | A specialized PAW that critical impact accounts use.|
 
 ## Key design strategies
 
-Security hardening is a highly localized exercise that **strengthens controls at the component level**, whether that's resources or processes. When you tighten the security of each component, it improves the aggregate security assurance of the workload.
+Security hardening is a highly localized exercise that **strengthens controls at the component level**, whether it's resources or processes. When you tighten the security of each component, it improves the aggregate security assurance of your workload.
 
-The exercise itself doesn't take into consideration the functionality of the workload. And it's not about detecting threats or automated scanning. **The focus is on configuration tuning with an assume-breach and defense in depth mentality**. The goal is to make it difficult for the attacker to gain control of the system. Keep in mind that hardening shouldn't alter the intended utility of the workload or its operations.
+Security hardening doesn't consider the functionality of the workload, and it doesn't detect threats or perform automated scanning. **The focus is on configuration tuning with an assume-breach and defense in depth mentality.** The goal is to make it difficult for an attacker to gain control of the system. Hardening shouldn't alter the intended utility of the workload or its operations.
 
-The hardening process starts with a comprehensive inventory of all hardware, software, and data assets. Keep the inventory up to date with new assets and decommissioned assets. For all assets in the inventory, consider the following concepts:
+The hardening process starts with a comprehensive inventory of all hardware, software, and data assets. Keep your inventory up to date with new assets and decommissioned assets. For all assets in your inventory, consider the following concepts:
 
-- **Reduce footprint**. Remove extraneous surface area or reduce the scope. You want to **eliminate easy targets**, or cheap and well-established attack vectors, such as unpatched software exploits and brute force attacks. Prior to the production deployment, build components, identities, and other nonrequired assets should be cleaned from the source tree.
+- **Reduce footprint**. Remove extraneous surface area or reduce the scope. **Eliminate easy targets**, or cheap and well-established attack vectors, such as unpatched software exploits and brute force attacks. Prior to the production deployment, identities, build components, and other nonrequired assets should be cleaned from the source tree.
+
 - **Fine tune configurations**. Evaluate and **tighten the remaining surface area**. When resources are hardened, tried and tested methods that attackers use are no longer successful. It forces attackers to acquire and use advanced or untested attack methods, which increases their costs.
+
 - **Maintain defenses**. Maintain protective measures by performing **continuous threat detection** to make sure hardening efforts don't decay over time.
 
-Also consider the:
+Also consider the following factors.
 
 **Trusted source**. Part of the hardening exercise is related to the software supply chain. This guidance assumes that **all components are obtained from trusted sources**. Your organization must approve software that's procured from third-party vendors. This approval applies to sources of the operating system, images, and other third-party tools. Without trusted resources, hardening can be an infinite drain of security assurances on untrusted sources.
 
-For recommendations about security for your supply chain, see [Secure Software Development Lifecycle (SDLC) practices](secure-development-lifecycle.md).
+For recommendations about security for your supply chain, see [Recommendations for securing a development lifecycle](secure-development-lifecycle.md).
 
-**Training**. Hardening is a specialized skill. It's methodical and requires a high level of competency. You need to understand the functionality of a component and also understand the affect of changes. A practitioner must be able discern the guidance that's given by industry experts and the platform, from uncertain sources. Educate your team members in creating a security-aware culture. Ensure that your team is **proficient in security best practices, has awareness of potential threats, and learns from post-incident retrospectives**.
+**Training**. Hardening is a specialized skill. It's methodical and requires a high level of competency. You need to understand the functionality of a component and also understand how changes affect a component. A practitioner must be able discern the guidance from industry experts and the platform compared to guidance from uncertain sources. Educate your team members in creating a security-aware culture. Ensure that your team is **proficient in security best practices, has awareness of potential threats, and learns from post-incident retrospectives**.
 
-**Documentation**. Document and publish hardening requirements, decisions, and the agreed upon methods. **Document exceptions or deviations** from those requirements as a way to publish explicit decisions.
+**Documentation**. Document and publish hardening requirements, decisions, and defined methods. For transparency, also **document exceptions or deviations** from those requirements.
 
-Hardening can be cumbersome, but it's a crucial security exercise that you must document. Harden the core components first, and then expand to other areas, such as automated processes and human processes, to tighten up potential gaps. Be meticulous about changes. For example, a necessary step is to examine the default settings and remove them because any change to default values must not affect the stability of the system. Even if the replacement configuration is the same as the default, it must be defined. The following sections describe common targets for hardening. Evaluate key design areas of your workload and follow the key strategies to harden at a component level.
+Hardening can be cumbersome, but it's a crucial security exercise that you must document. Harden the core components first, and then expand to other areas, such as automated processes and human processes, to tighten up potential gaps. Be meticulous about changes. For example, a necessary step is to disable the default settings because changes to default values can't affect the stability of the system. Even if the replacement configuration is the same as the default, it must be defined. The following sections describe common targets for hardening. Evaluate key design areas of your workload and follow the key strategies to harden at a component level.
 
 ### Networking
 
-**Divide the network into segments** to isolate critical assets and sensitive data from less secure assets, reducing the potential for lateral movement by attackers. In those segments, apply a *deny-by-default* approach. Only add someone to the allowlist if access is justified.
+**Divide the network into segments** to isolate critical assets and sensitive data from less secure assets, which reduces lateral movements by attackers. In those segments, apply a *deny-by-default* approach. Only add access to the allowlist if it's justified.
 
-**Disable ports and protocols that aren't actively used**. For example, on Azure App Service, if you don't need to deploy via FTP, you can disable it. If you perform management operations via an internal network, you can disable administrative access from the internet.
+**Disable ports and protocols that aren't actively used**. For example, on Azure App Service, if you don't need to deploy via FTP, you can disable it. Or if you perform management operations via an internal network, you can disable administrative access from the internet.
 
-**Remove or disable the use of legacy protocols**. Attackers exploit systems that use old versions. Review logs by using an Azure detection system to discover protocol usage. It might be difficult to remove protocols because it can disrupt the functionality of the system. Test all changes before implementation to mitigate the risk of operational interruption.
+**Remove or disable legacy protocols**. Attackers exploit systems that use old versions. Review logs by using an Azure detection system to discover protocol usage. It might be difficult to remove protocols because it can disrupt the functionality of the system. Test all changes before implementation to mitigate the risk of operational interruption.
 
-**Treat public IP (PIP) addresses as high-risk assets** because they're easy to access and have a broad worldwide reach. To reduce exposure, remove unnecessary access to the workload over the internet. Use shared public IP addresses that Microsoft services, like Azure Front Door, provide that are designed to be internet-facing. These services are designed to block access to disallowed protocols. Many such services perform initial checks on incoming requests at the network edge. With a dedicated PIP, you're responsible for managing its security aspects, allowing or blocking ports, and scanning incoming requests to ensure their validity.
+**Treat public IP (PIP) addresses as high-risk assets** because they're easy to access and have a broad worldwide reach. To reduce exposure, remove unnecessary internet access to the workload. Use shared public IP addresses that Microsoft services, like Azure Front Door, provide. These services are designed to be internet-facing, and they block access to disallowed protocols. Many such services perform initial checks on incoming requests at the network edge. With a dedicated PIP, you're responsible for managing its security aspects, allowing or blocking ports, and scanning incoming requests to ensure their validity.
 
 For internet-facing applications, **restrict access by adding a layer 7** service that can filter invalid traffic. Explore native services that enforce distributed denial-of-service (DDoS) protection, have web application firewalls, and provide protection at the edge before traffic reaches the application tier.
 
-DNS hardening is another network security practice. To ensure that the DNS infrastructure is secure, we recommended that you **use trusted DNS resolvers**. Where supported, DNS security protocol can also be used for highly sensitive DNS zones to validate information provided by DNS resolvers and provides an extra layer of security. To prevent attacks such as DNS cache poisoning, DDoS attacks, and amplification attacks, explore other DNS-related security controls such as Query Rate Limiting, Response Rate Limiting, and DNS Cookies.
+DNS hardening is another network security practice. To ensure that the DNS infrastructure is secure, we recommended that you **use trusted DNS resolvers**. To validate information from DNS resolvers and provide an extra layer of security, when possible, use a DNS security protocol for highly sensitive DNS zones. To prevent attacks such as DNS cache poisoning, DDoS attacks, and amplification attacks, explore other DNS-related security controls such as query rate limiting, response rate limiting, and DNS cookies.
 
 ### Identity
 
 **Remove unused or default accounts.** Disable unused authentication and authorization methods.
 
-**Disable legacy authentication methods** because they're top attack vectors. Old protocols frequently lack other attack-counter measures, such as account lockouts. Externalize your authentication requirements to your identity provider (IdP), such as Microsoft Entra ID.
+**Disable legacy authentication methods** because they're frequently attack vectors. Old protocols often lack attack-counter measures, such as account lockouts. Externalize your authentication requirements to your identity provider (IdP), such as Microsoft Entra ID.
 
 **Prefer federation over creating duplicate identities.** If an identity is compromised, it's easier to revoke its access when it's centrally managed.
 
-**Have a good understanding of platform capabilities** for enhanced authentication and authorization. Harden access controls by taking advantage of multifactor authentication, passwordless authentication, conditional access, and other features that Microsof Entra ID offers to verify identity. You can add extra protection around sign-in events and reduce the scope in which an attacker can make a request.
+**Understand platform capabilities** for enhanced authentication and authorization. Harden access controls by taking advantage of multifactor authentication, passwordless authentication, conditional access, and other features that Microsof Entra ID offers to verify identity. You can add extra protection around sign-in events and reduce the scope in which an attacker can make a request.
 
-**Use managed identities** and workload identities without credentials where possible. Credentials can be leaked. For more information, see [Recommendations for protecting application secrets](application-secrets.md).
+**Use managed identities** and workload identities with no credentials where possible. Credentials can be leaked. For more information, see [Recommendations for protecting application secrets](application-secrets.md).
 
-**Use the least privilege approach for your management processes.** Remove unnecessary role assignments and perform regular Microsoft Entra ID access reviews. Use role assignment descriptions to keep a paper trail of justifications, which are crucial for audits.
+**Use the least privilege approach for your management processes.** Remove unnecessary role assignments and perform regular Microsoft Entra ID access reviews. Use role assignment descriptions to keep a paper trail of justifications, which is crucial for audits.
 
 ### Cloud resources
 
-The preceding hardening recommendations for networking and identity apply to individual cloud services. For networking, pay special attention to **service-level firewalls**. Evaluate their inbound rules.
+The preceding hardening recommendations for networking and identity apply to individual cloud services. For networking, pay special attention to **service-level firewalls**, and evaluate their inbound rules.
 
-**Discover and disable unused capabilities** or features that might be covered by other components, such as unused data plane access and product features. For example, App Service supports Kudu, which offers FTP deployments, remote debugging, and other features. If you don't need those features, turn them off.
+**Discover and disable unused capabilities** or features, such as unused data plane access and product features, that other components might cover. For example, App Service supports Kudu, which provides FTP deployments, remote debugging, and other features. If you don't need those features, turn them off.
 
-As part of your *stay current, get current* mindset, always **keep up with the Azure roadmap and the workload roadmap**. Apply patching and versioning updates that Azure services offer. Don't block platform-provided updates, and subscribe to automated update channels.
+Always **keep up with the Azure roadmap and the workload roadmap**. Apply patching and versioning updates that Azure services offer. Allow platform-provided updates, and subscribe to automated update channels.
 
 > ![Risk icon](../_images/risk.svg) **Risk**: Cloud resources often have requirements for allowances or must run in documented configuration to be considered *supported*. Some hardening techniques, such as aggressively blocking outbound traffic, can cause a service to fall outside of a supported configuration, even if the service operates normally. Understand each cloud resource's runtime requirements from your platform to ensure that you maintain supportability of that resource.
 
 ### Applications
 
-Evaluate where your application might inadvertently leak information. For example, suppose you have an API that retrieves user information. If a request has a valid user ID and your application returns a 403, but with an invalid customer ID it returns a 404, then you're effectively leaking information about your user IDs.
+Evaluate areas where your application might inadvertently leak information. For example, suppose you have an API that retrieves user information. A request might have a valid user ID and your application returns a 403. But with an invalid customer ID, the request returns a 404, then you're effectively leaking information about your user IDs.
 
 There might be more subtle cases. For example, the response latency with a valid user ID is higher than an invalid customer ID.
 
-Inspect some of these areas for application hardening:
+Consider implementing application hardening in the following areas:
 
-- **Input validation and sanitization**: Prevent injection attacks such as SQL injection and cross-site scripting (XSS) by validating and sanitizing all user inputs. Automate input sanitization using input validation libraries and frameworks.
+- **Input validation and sanitization**: Prevent injection attacks such as SQL injection and cross-site scripting (XSS) by validating and sanitizing all user inputs. Automate input sanitization by using input validation libraries and frameworks.
 
-- **Session management**: Protect session identifiers and tokens from theft or session fixation attacks using secure session management techniques. Implement session timeouts and enforce reauthentication for sensitive actions.
+- **Session management**: Protect session identifiers and tokens from theft or session fixation attacks by using secure session management techniques. Implement session timeouts, and enforce reauthentication for sensitive actions.
 
-- **Error handling**: Implement custom error handling to prevent the exposure of sensitive information to attackers. Securely log errors and monitor these logs for any suspicious activities.
+- **Error management**: Implement custom error handling to minimize exposing sensitive information to attackers. Securely log errors and monitor these logs for suspicious activity.
 
-- **HTTP security headers**: Mitigate common web vulnerabilities by utilizing security headers in HTTP responses, such as Content Security Policy (CSP), X-Content-Type-Options, and X-Frame-Options.
+- **HTTP security headers**: Mitigate common web vulnerabilities by utilizing security headers in HTTP responses, such as the Content Security Policy (CSP), X-Content-Type-Options, and X-Frame-Options.
 
 - **API security**: Secure your APIs with proper authentication and authorization mechanisms. To further enhance security, implement rate limiting, request validation, and access controls for API endpoints.
 
-In general, follow secure coding practices when developing and maintaining applications. Regularly scan applications for vulnerabilities and conduct code reviews. For more information, see [Recommendations for securing a development lifecycle](secure-development-lifecycle.md).
+Follow secure coding practices when you develop and maintain applications. Regularly scan applications for vulnerabilities and conduct code reviews. For more information, see [Recommendations for securing a development lifecycle](secure-development-lifecycle.md).
 
 ### Management operations
 
-Also harden other nonruntime resources. For instance, **reduce your build operations footprint** by taking an inventory of all assets and removing unused assets from your pipeline. Then, **pull in tasks that are published by trusted sources**, and only run tasks that are validated.
+Also harden other non-runtime resources. For example, **reduce your build operations footprint** by taking an inventory of all assets and removing unused assets from your pipeline. Then, **pull in tasks that are published by trusted sources**, and only run tasks that are validated.
 
-Evaluate the choice of Microsoft-hosted or self-hosted build agents.  **Self-hosted build agents need extra management and must be hardened**.
+Determine if you need Microsoft-hosted or self-hosted build agents.  **Self-hosted build agents need extra management and must be hardened**.
 
 From an observability perspective, **implement a process for reviewing logs** for potential breaches. Regularly review and update access control rules based on access logs. Work with central teams to analyze security information event management (SIEM) and security orchestration automated response (SOAR) logs to detect anomalies.
 
-Consider requiring PAWs or SAWs for privileged management operations. These are hardened physical devices. PAWs and SAWs offer significant security advantages, but their implementation requires careful planning and management. For more information, see [Why are privileged access devices important?](/security/privileged-access-workstations/privileged-access-devices)
+Consider requiring PAWs or SAWs for privileged management operations. PAWs and SAWs are hardened physical devices that offer significant security advantages, but their implementation requires careful planning and management. For more information, see [Securing devices as part of the privileged access story](/security/privileged-access-workstations/privileged-access-devices).
 
 ## Azure facilitation
 
-Microsoft Defender for Cloud offers several hardening recommendations:
+Microsoft Defender for Cloud offers several hardening capabilities:
 
 - [Server hardening](/azure/defender-for-cloud/apply-security-baseline)
 - [Adaptive network hardening](/azure/defender-for-cloud/adaptive-network-hardening)
 - Docker host hardening
 
-As a preferred solution in the marketplace, Microsoft offers hardened images in partnership with the Center for Internet Security.
+The Center for Internet Security (CIS) offers hardened images in Azure Marketplace.
 
-Azure Image Builder can help you build a repeatable process for hardened OS images. Microsoft's Common Base Linux-Mariner is a hardened Linux distribution that follows security standards and industry certifications. It's used by Azure infrastructure products. Workload implementations can also be built with this image.
+You can use Azure VM Image Builder to build a repeatable process for hardened OS images. Microsoft's Common Base Linux-Mariner is a hardened Linux distribution that follows security standards and industry certifications. You can use it with Azure infrastructure products to build workload implementations.
 
 ## Example
 
-The following example describes how you might start hardening an operating system. The techniques listed here are for learning purposes and aren't an exhaustive list.
+The following procedure is an example of how to harden an operating system:
 
-### Harden an operating system
+1. **Reduce the footprint**. Remove unnecessary components in an image. Install only what you need.
 
-1. **Reduce footprint**.
+1. **Fine tune configurations**. Disable unused accounts. The default configuration of operating systems has extra accounts that are linked to security groups. If you don't use those accounts, disable or remove them from the system. Extra identities are threat vectors that can be used to gain access to the server.
 
-   *Remove unnecessary components* in the image. Install only what you need.
+   Disable unnecessary access to the file system. Encrypt the file system and fine tune access controls for identity and networking.
 
-1. **Fine tune configurations**.
+   Run only what's needed. Block applications and services that run by default. Approve only applications and services that are needed for workload functionality.
 
-   *Disable unused accounts.* The default configuration of operating systems has extra accounts that are linked to security groups. If you aren't going to use those accounts, disable or remove them from the system. Extra identities are threat vectors that are used to gain access to the server.
-
-   *Disable unnecessary access to the file system.* Encrypt the file system and fine tune access controls for both identity and networking.
-
-   *Run only what's needed.* Block applications and services from running by default and approve only those that are needed for workload functionality.
-
-1. **Maintain defenses**.
-
-   *Regularly update OS components* with the latest security updates and patches to mitigate known vulnerabilities.
+1. **Maintain defenses**. Regularly update operating system components with the latest security updates and patches to mitigate known vulnerabilities.
 
 ## Organizational alignment
 
-Cloud Adoption Framework for Azure provides guidance on creating centralized identity and access management functions. For more information, see [Azure identity and access management design area](/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access).
+Cloud Adoption Framework for Azure provides guidance about creating centralized identity and access management functions. For more information, see [Azure identity and access management design area](/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access).
 
 ## Related links
 
 - [Adaptive network hardening](/azure/defender-for-cloud/adaptive-network-hardening)
-- [Recommendations for securing a development lifecycle](secure-development-lifecycle.md)
 - [Recommendations for protecting application secrets](application-secrets.md)
-- [Secure SDLC practices](secure-development-lifecycle.md)
+- [Recommendations for securing a development lifecycle](secure-development-lifecycle.md)
+- [Securing devices as part of the privileged access story](/security/privileged-access-workstations/privileged-access-devices)
 - [Server hardening](/azure/defender-for-cloud/apply-security-baseline)
-- [Why are privileged access devices important?](/security/privileged-access-workstations/privileged-access-devices)
 
 ## Community links
 
-[CIS Benchmarks (cisecurity.org)](https://www.cisecurity.org/cis-benchmarks)
+[CIS benchmarks (cisecurity.org)](https://www.cisecurity.org/cis-benchmarks)
 
 ## Security checklist
 
