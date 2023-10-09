@@ -61,8 +61,9 @@ Implement the following recommendations to design a monitoring and alerting stra
   Threshold configuration is a practice of continuous improvement. As your workload evolves, the thresholds you define might change. In some cases, [dynamic thresholds](/azure/azure-monitor/alerts/alerts-dynamic-thresholds) are a good option for your monitoring strategy.
 
 - Consider using alerts when states improve, such as red to yellow or red to green, so that the operations teams can track these events for future reference.
+- Carefully plan your alerting strategy to ensure that the appropriate parties recieve alerts that they should receive, and not others that they don't have some interest in to avoid alert fatigue.
 
-- Visualize the real-time health of your environment by using [custom dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards).
+- Visualize the real-time health of your environment by using [custom dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards). Having individual dashboard visualizations for each flow will help the workload team understand the health of each flow in real-time.
 
 - Use data that's gathered during incidents to continuously improve your [health models](metrics.md) and your monitoring and alerting strategy.
 
