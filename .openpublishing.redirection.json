@@ -477,7 +477,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/design-apps.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/select-right-services",
+			"redirect_url": "/azure/well-architected/performance-efficiency/select-services",
 			"redirect_document_id": false
 		},
 		{
@@ -487,7 +487,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/design-checklist.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-code-resources",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-code-infrastructure",
 			"redirect_document_id": false
 		},
 		{
@@ -497,7 +497,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/design-efficiency.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-code-resources",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-code-infrastructure",
 			"redirect_document_id": false
 		},
 		{
@@ -512,7 +512,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/load-testing.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/test",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-testing",
 			"redirect_document_id": false
 		},
 		{
@@ -537,7 +537,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/optimize-cache.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/select-right-services",
+			"redirect_url": "/azure/well-architected/performance-efficiency/select-services",
 			"redirect_document_id": false
 		},
 		{
@@ -567,7 +567,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/performance-test.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/test",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-testing",
 			"redirect_document_id": false
 		},
 		{
@@ -582,7 +582,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/test-tools.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/test",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-testing",
 			"redirect_document_id": false
 		},
 		{
