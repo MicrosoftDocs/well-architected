@@ -91,7 +91,7 @@ You can use Microsoft Defender for Cloud to [discover misconfigurations in IaC](
 
 ## Example
 
-See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone) architecture and the associated [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of a Virtual Desktop implementation that can be deployed via provided ARM, Bicep, or Terraform files. 
+See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone) architecture and the associated [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of a Virtual Desktop implementation that can be deployed via provided Resource Manager, Bicep, or Terraform files. 
 
 ## Related links
 
