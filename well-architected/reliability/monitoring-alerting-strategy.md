@@ -48,7 +48,7 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - Enable [logging](/azure/azure-monitor/essentials/resource-logs) for all cloud resources. Use automation and governance in your deployments to enable diagnostic logging throughout your environment.
 
-- Forward all diagnostic logs to a centralized data sink and analytics platform, like a [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview). If you have regional data sovereignty requirements, you must use local data sinks in the regions that are subject to those requirements.
+- Forward all diagnostic logs to data sinks and an analytics platform, like a [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview). If you have regional data sovereignty requirements, you must use local data sinks in the regions that are subject to those requirements.
 
 - If your workloads are subject to one or more compliance frameworks, some of the component logs that handle sensitive information are also subject to those frameworks. Send the relevant component logs to a security information and event management (SIEM) system, like [Microsoft Sentinel](/azure/sentinel/overview).
 
@@ -82,6 +82,7 @@ Implement the following recommendations to design a monitoring and alerting stra
   - Successful and failed backups and recoveries.
   
   - The recovery duration to inform your [disaster recovery planning](disaster-recovery.md).
+  - Ensure that your monitoring platform design incorporates the same reliability concerns as your infrastructure and application designs. It should be resilient and secure to the same degree as other critical componenents.
 
 ### Monitor applications
 
