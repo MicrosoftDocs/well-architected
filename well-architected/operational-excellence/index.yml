@@ -1,17 +1,17 @@
 ### YamlMime:Landing
 
 title: Operational excellence quick links
-summary: Apply operational excellence guidance to your workload to assure workload quality through standardized processes and team cohesion.
+summary: Apply operational excellence guidance to your workload to ensure workload quality through standardized processes and team cohesion.
 
 metadata:
   title: Operational excellence quick links
-  description: Apply operational excellence guidance to your workload to assure workload quality through standardized processes and team cohesion.
+  description: Apply operational excellence guidance to your workload to ensure workload quality through standardized processes and team cohesion.
   ms.service: waf
   ms.subservice: waf-pillar-excellence
   ms.topic: landing-page
   author: martinekuan
   ms.author: martinek
-  ms.date: 10/06/2023
+  ms.date: 11/15/2023
 
 landingContent:
   - title: Key points
@@ -74,7 +74,7 @@ landingContent:
             url: automate-tasks.md
           - text: Design for automation
             url: enable-automation.md
-  - title: Ship safely and support what is shipped
+  - title: Ship safely and support what you ship
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -86,7 +86,7 @@ landingContent:
             url: workload-supply-chain.md
           - text: Handle deployment failures
             url: mitigation-strategy.md
-          - text: Be ready for emergency response
+          - text: Design an emergency response strategy 
             url: emergency-response.md
   - title: Related resources
     linkLists:
@@ -94,7 +94,7 @@ landingContent:
         links:
           - text: "Azure Advisor: Operational excellence recommendations"
             url: /azure/advisor/advisor-reference-operational-excellence-recommendations
-          - text: DevOps practice resource center
+          - text: DevOps resource center
             url: /devops/
           - text: Azure DevOps
             url: /azure/devops/
