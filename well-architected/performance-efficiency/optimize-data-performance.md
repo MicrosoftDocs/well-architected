@@ -152,13 +152,15 @@ Compress data to reduce your storage footprint and improve data access times. Wh
 
 ### Archive and purge data
 
-Implement data archiving and purging strategies to remove obsolete or infrequently accessed data. These strategies can help reduce storage costs and improve data operation performance by:
+Archiving and purging are strategies that streamline data storage. Archiving relocates older, less-frequently accessed data to a more cost-effective storage. Purging data permanently removes redundant data. They contribute to performance efficiency by reducing data volume, increases data access speed, and reducing backup and recovery times:
 
-- *Reducing data volume.* Eliminate unnecessary data to reduce the amount of data that you need to process.
+- *Reducing data volume*: Less data means faster processing times, ensuring quick responses to user requests.
+  
+- *Increasing data access speed*: A trimmed dataset allows for swifter queries and data retrieval, optimizing system responsiveness.
 
-- *Increasing data access speed.* With a small dataset to search, queries and data access operations can be fast.
+- *Reducing backup and recovery times*: Smaller datasets expedite backup and restoration processes, minimizing downtime and ensuring consistent performance.
 
-- *Reducing backup and recovery.* By reducing the amount of data that you need to back up and restore, you can save time and improve efficiency.
+Archiving and purging are instrumental in maintaining peak performance efficiency in data-driven systems.
 
 ### Optimize storage load
 
