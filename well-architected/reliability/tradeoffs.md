@@ -60,7 +60,7 @@ During the design phase of a workload, it's important to consider how decisions 
 - As a workload becomes more robust by adding additional reliability-centric components, more time is required to maintain _operational procedures and artifact documentation_.
 - The training needs to grow in relation to the components within the workload. This affects the ramp-up time for onboarding and expands the knowledge necessary to track _product roadmaps and service-level guidance._
 
-## Reliability tradeoffs for Performance Efficiency
+## Reliability tradeoffs with Performance Efficiency
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Increased latency.** Performance Efficiency requires a system to achieve performance targets for user and data flows.
 

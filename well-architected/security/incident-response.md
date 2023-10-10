@@ -3,7 +3,7 @@ title: Recommendations for security incident response
 description: Learn how to reduce the time that's required to identify, manage, and mitigate security incidents that threaten the confidentiality and integrity of software systems.
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 11/15/2023
+ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
@@ -16,7 +16,13 @@ ms.topic: conceptual
 
 This guide describes the recommendations for implementing a security incident response for a workload. If there's a security compromise to a system, a systematic incident response approach helps to reduce the time that it takes to identify, manage, and mitigate security incidents. These incidents can threaten the confidentiality, integrity, and availability of software systems and data.
 
-Most enterprises have a central security operations center (SOC). That team handles incidents. However, you also have a responsibility to protect your workload. This guide provides recommendations for you and your workload team to help you rapidly detect, triage, and investigate attacks.
+Most enterprises have a central security operation team (also known as Security Operations Center (SOC), or SecOps). The responsibility of the security operation team  is to rapidly detect, prioritize, and triage potential attacks. The team also monitors security-related telemetry data and investigates security breaches. 
+
+:::image type="content" source="./images/incident-response.png" alt-text="Conceptual art that shows collaborative approach to mitigate potential and realized risk.":::
+
+However, you also have a responsibility to protect your workload. It's important that any communication, investigation, and hunting activities is a collaborative effort between workload team and SecOps team.
+
+This guide provides recommendations for you and your workload team to help you rapidly detect, triage, and investigate attacks.
 
 **Definitions** 
 
@@ -69,7 +75,7 @@ Diagnosis is an interactive process until the vector, and a potential fix and fa
 
 Recovery metrics measure how long it takes to fix an issue. In the event of a shutdown, there might be an urgency regarding the remediation times. To stabilize the system, it takes time to apply fixes, patches, and tests, and deploy updates. Determine containment strategies to prevent further damage and the spread of the incident. Develop eradication procedures to completely remove the threat from the environment.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: There's a tradeoff between reliability targets and remediation times. During an incident, it's likely that you don't meet other nonfunctional or functional requirements. For example, you might need to disable parts of your system while you investigate the incident, or you might even need to take the entire system offline until you determine the scope of the incident. Business decision-makers need to explicitly decide what the acceptable targets are during the incident. Clearly specify the person that's accountable for that decision.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There's a tradeoff between reliability targets and remediation times. During an incident, it's likely that you don't meet other nonfunctional or functional requirements. For example, you might need to disable parts of your system while you investigate the incident, or you might even need to take the entire system offline until you determine the scope of the incident. Business decision-makers need to explicitly decide what the acceptable targets are during the incident. Clearly specify the person that's accountable for that decision.
 
 ### Learn from an incident
 

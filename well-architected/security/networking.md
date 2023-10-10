@@ -115,7 +115,7 @@ For egress, **send all internet bound traffic through a single firewall** that p
     
     The decision to use native features as opposed to partner solutions should be based on your organization's experience and requirements.
     
-    > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Partner capabilities often provide advanced features that can protect against sophisticated (but typically uncommon) attacks. Configuration of partner solutions can be complex and more fragile because they do not integrate with cloud's fabric controllers. From a cost perspective, native control is cheaper than partner solutions.
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Partner capabilities often provide advanced features that can protect against sophisticated (but typically uncommon) attacks. Configuration of partner solutions can be complex and more fragile because they do not integrate with cloud's fabric controllers. From a cost perspective, native control is cheaper than partner solutions.
 
 The technological options should provide security controls and monitoring for both ingress and egress flows. To see options available for Azure, see the [Edge security section](#edge-security) in this article.
 
@@ -183,7 +183,7 @@ For more information, the [Private endpoints section](#private-endpoints) in thi
 
 Another advantage for using private endpoints is that you don\'t need to open the ports on the firewall for outbound traffic. **Private endpoints lock down all outbound traffic on the port for public internet**, and keeps connectivity to only resources within the network.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Private Link is a paid service and has meters for inbound and outbound data processed. Private endpoints are charged as well.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Private Link is a paid service and has meters for inbound and outbound data processed. Private endpoints are charged as well.
 
 ### Protect against distributed denial of service
 
@@ -226,7 +226,7 @@ Recommended technology choices:
     -	Use IP Groups to define sources that must share the same rules over the life of that IP Group. In this way, IP Groups should reflect your segmentation strategy.      
     -	Only override the Infrastructure FQDN **allow** rule if absolute egress control is required in your workload; doing so will have a reliability tradeoff as Azure platform requirements change on services.
     
-    > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Azure Firewall can impact your performance. There might be significant latency from rule order, quantity, TLS inspection, and others.
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Azure Firewall can impact your performance. There might be significant latency from rule order, quantity, TLS inspection, and others.
     >
     > There can also be an impact on the reliability of the workload. It might experience SNAT port exhaustion. Add Public IPs as necessary.
     
@@ -246,7 +246,7 @@ Firewall and WAF aren't an either, or choice. See various patterns here: [Firewa
 
 A [network security group](/azure/virtual-network/manage-network-security-group) (NSG) is a layer 3, 4 firewall applied at the subnet or network interface card (NIC) level.
 
-**NSG rules act as firewall **to stop traffic flowing in and out at the perimeter of the subnet. NSGs aren't created or applied by default. An NSG has a default ruleset that's overly permissive. For example, the default rule doesn't set a firewall for egress perspective and no inbound internet for ingress.
+**NSG rules act as firewall** to stop traffic flowing in and out at the perimeter of the subnet. NSGs aren't created or applied by default. An NSG has a default ruleset that's overly permissive. For example, the default rule doesn't set a firewall for egress perspective and no inbound internet for ingress.
 
 Start with the default NSG, and create rules based on a 5-Tuple of information: Protocol, Source IP address, Source port, Destination IP address, Destination port.
 
@@ -314,7 +314,7 @@ Here are some recommendations:
 -   Consider not just runtime **line-of-sight concerns** when implementing private endpoints, but also **DevOps and monitoring concerns**.
 -   Use Azure Policy to **enforce resource configuration**.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Service SKUs with private endpoints are more expensive. It can complicate operations because of network obscurity. You will have to add self-hosted agents, jump boxes, VPN, and other components to your architecture.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Service SKUs with private endpoints are more expensive. It can complicate operations because of network obscurity. You will have to add self-hosted agents, jump boxes, VPN, and other components to your architecture.
 
 DNS management can be complex in common network topologies. You may have to introduce DNS forwarders and other components.
 

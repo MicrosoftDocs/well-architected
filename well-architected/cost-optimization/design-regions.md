@@ -26,7 +26,7 @@ See the [Azure global infrastructure](https://azure.microsoft.com/global-infrast
 
 To see product availability by region, see [Products available by region](https://azure.microsoft.com/global-infrastructure/services/).
 
-## Tradeoff
+## Tradeoffs
 
 - Locating resources in a cheaper region shouldn't negate the cost of network ingress and egress or by degraded application performance because of increased latency.
 - Hosting an application in a single region can cost less than an application that's hosted across regions because of replication costs or the need for extra nodes.

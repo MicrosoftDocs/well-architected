@@ -32,5 +32,7 @@ For every system, there's a limit to how much you can scale it without redesigni
 
 ## Next steps
 
+We recommend that you review the Performance Efficiency tradeoffs to explore other concepts.
+
 > [!div class="nextstepaction"]
-> [Tradeoffs for Performance Efficiency](tradeoffs.md)
+> [Performance Efficiency tradeoffs](tradeoffs.md)
