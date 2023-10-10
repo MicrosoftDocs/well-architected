@@ -34,7 +34,7 @@ highlightedContent:
 
 productDirectory:
   title: Browse the Well-Architected Framework service guides
-  summary: Service guides are intented to help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a well-architected state. They are not configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
+  summary: Service guides are intended to help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a well-architected state. They aren't configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
   items:
     # Card
     - title: API Management
@@ -243,7 +243,7 @@ productDirectory:
         - databases
     # Card
     - title: Azure Stack Hub
-      summary: Azure Stack Hub is sold as an integrated hardware system, with software pre-installed on validated hardware
+      summary: Azure Stack Hub is sold as an integrated hardware system, with software preinstalled on validated hardware
       imageSrc: https://static.docs.com/ui/media/product/azure/stack-hub.svg
       url: ./azure-stack-hub/reliability.md
       azureCategories:
