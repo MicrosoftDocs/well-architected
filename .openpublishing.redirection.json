@@ -1241,11 +1241,6 @@
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "well-architected/security/security-patterns.md",
-			"redirect_url": "/azure/well-architected/security/design-patterns",
-			"redirect_document_id": true
-		},
-		{
 			"source_path": "well-architected/security/security-principles.md",
 			"redirect_url": "/azure/well-architected/security/principles",
 			"redirect_document_id": true
