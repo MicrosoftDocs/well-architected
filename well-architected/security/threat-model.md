@@ -32,7 +32,7 @@ This guide provides recommendations on the common approaches for doing threat mo
 
 ## Key design strategies
 
-Threat modeling is a crucial process that an organization should integrate into the SDLC. It's not solely a developer's task. It's a shared responsibility between:
+Threat modeling is a crucial process that an organization should integrate into its SDLC. It's not solely a developer's task. It's a shared responsibility between:
 
 - The workload team, which is responsible for the technical aspects of the system.
 - Business stakeholders, who understand the business outcomes and have a vested interest in security.
@@ -45,7 +45,7 @@ The security requirements serve as guide for the entire process of threat modeli
 
 ### Understand the scope of the exercise
 
-A clear understanding of the scope is crucial for effective threat modeling. It helps focus efforts and resources on the most critical areas. This strategy involves defining the boundaries of the system, taking inventory of the assets that need to be protected, and understanding the level of investment required in security controls.
+A clear understanding of the scope is crucial for effective threat modeling. It helps focus efforts and resources on the most critical areas. This strategy involves defining the boundaries of the system, taking inventory of the assets that need to be protected, and understanding the level of investment that's required in security controls.
 
 ### Gather information about each component
 
@@ -63,7 +63,7 @@ One methodology for classifying threats is [STRIDE](/azure/security/develop/thre
 
 ### Mitigate the threats
 
-Document all the identified threats. For each threat, define secure controls and the response to an attack if that control fails. Define a process and timeline that minimize exposure to any identified vulnerabilities in the workload, so that those vulnerabilities can't be left unaddressed.
+Document all the identified threats. For each threat, define security controls and the response to an attack if those controls fail. Define a process and timeline that minimize exposure to any identified vulnerabilities in the workload, so that those vulnerabilities can't be left unaddressed.
 
 Use the **assume breach** approach. It can help identify controls needed in the design to mitigate risk if a primary security control fails. Evaluate how likely it is for the primary control to fail. If it does fail, what is the extent of the potential organizational risk? Also, what is the effectiveness of the compensating control? Based on the evaluation, apply defense-in-depth measures to address potential failures of security controls.
 
@@ -71,7 +71,7 @@ Here's an example:
 
 |Ask this question|To determine controls that...|
 |---|---|
-|Are connections authenticated through Microsoft Entra ID, Transport Layer Security (TLS) with mutual authentication, or another modern security protocol that the security team approved: <br><br> - Between users and the application? <br><br> - Between different application components and services?|Prevent unauthorized access to the application component and data.|
+|Are connections authenticated through Microsoft Entra ID, Transport Layer Security (TLS) with mutual authentication, or another modern security protocol that the security team approved: <br><br> - Between users and the application? <br><br> - Between application components and services?|Prevent unauthorized access to the application components and data.|
 |Are you limiting access to only accounts that need to write or modify data in the application?| Prevent unauthorized data tampering or alteration.|
 |Is the application activity logged and fed into a security information and event management (SIEM) system through Azure Monitor or a similar solution?|Detect and investigate attacks quickly.|
 |Is critical data protected with encryption that the security team approved?| Prevent unauthorized copying of data at rest.|
@@ -84,9 +84,9 @@ Here's an example:
 
 We highly recommend that you use a **threat modeling tool**. Tools can automate the process of identifying threats and produce a comprehensive report of all identified threats. Be sure to communicate the results to all interested teams.
 
-Track the results as part of the workload team's backlog to allow for accountability in a timely manner. Assign tasks to individuals who are responsible for mitigating a particular risk that threat modeling identified.
+Track the results as part of the workload team's backlog to allow for accountability in a timely way. Assign tasks to individuals who are responsible for mitigating a particular risk that threat modeling identified.
 
-As you add new features to the solution, update the threat model and integrate it into the code management process. If you find a security problem, make sure there's a process to triage based on severity and determine when and how to remediate the problem (such as in the next release cycle or in a faster release).
+As you add new features to the solution, update the threat model and integrate it into the code management process. If you find a security problem, make sure there's a process to triage the problem based on severity. The process should help you determine when and how to remediate the problem (for example, in the next release cycle or in a faster release).
 
 ### Regularly review business-critical workload requirements
 
