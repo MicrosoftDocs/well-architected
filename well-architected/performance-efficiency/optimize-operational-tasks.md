@@ -42,7 +42,7 @@ It's important to consider operational tasks when you set performance targets. B
 
 ### Optimize deployments
 
-Optimizing workload deployments is the process of fine-tuning and configuring the deployment of workloads. It involves making strategic decisions and implementing best practices to ensure that the workload can handle the demands placed on it by users in an efficient manner. It allows you to maximize the utilization of resources, minimize response times, and improve overall system performance.
+Optimizing deployments refers to refining the process of releasing resources and code to guarantee seamless performance and minimal interruptions. It involves planning, effective resource distribution, and thorough testing of both the infrastructure-as-code (IaC) and the application code before they are introduced to a live environment. Deployment inadequacies can lead to reduced speed and efficiency of a workload, potential resource constraints, and a compromised user experience in the operational setting. To optimize deployments, consider these strategies:
 
 **Assess acceptable downtime.** If downtime is acceptable, you can implement deployment strategies that prioritize speed and efficiency. However, it's important to carefully assess the effect of downtime on business requirements before you make that decision. On the other hand, if downtime isn't acceptable, you need to implement deployment strategies that ensure continuous availability of the workload. Consider using techniques like blue-green deployments or canary deployments, where you gradually roll out new versions of the workload while you monitor for issues. These strategies help minimize the effect of downtime and ensure a seamless user experience.
 
