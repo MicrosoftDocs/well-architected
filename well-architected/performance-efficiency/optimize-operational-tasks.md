@@ -34,7 +34,7 @@ You need to take measures to reduce the effects of the software development life
 
 ### Account for operational tasks
 
-It's important to consider operational tasks when you set performance targets. By incorporating routine, regular, and ad-hoc tasks into performance targets, you can ensure that the workload operates efficiently. Here are some key points to consider:
+It's important to consider operational tasks when you set performance targets. By incorporating routine, regular, and ad-hoc tasks into performance targets, you can ensure that the workload operates efficiently. To account for operational tasks in performance targets, here are some key points to consider:
 
 - *Identify operational tasks.* Identify and include relevant operational tasks in performance targets. Examples of routine tasks can include virus scanning, database index reorganization, database index rebuilding, disk or database backups, certificate rotations, patching an operating system, rotating passwords, rotating API keys, penetration testing, and audit reviews in production.
 
