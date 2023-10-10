@@ -70,19 +70,19 @@ You should also set guidelines and standards for the allowable degree of varianc
 
 **Implement a shift-left approach to testing** by performing unit testing early and often throughout the development process. Frequent testing in each development environment helps developers gain confidence in their applications. To help create your testing strategy with a shift-left approach, consider the following principles:
 
-- *Write tests at the lowest level possible*. Favor tests with the fewest external dependencies and prioritize running most tests as part of the build.
+- *Write tests at the lowest level possible*. Favor tests with the fewest external dependencies, and run tests as part of the build.
 
-- *Write tests once, and run tests everywhere including production*. Write tests that you can run in every development environment without modifications to account for factors like encrypted secrets or configurations that are specific to one environment.
+- *Write tests once, and run tests everywhere including production*. Write tests that you can run in every development environment without accounting for factors that are specific to one environment, like encrypted secrets or configurations.
 
 - *Design your workload for testing*. When you develop your application, make testability a requirement.
 
-- *Treat test code as application code*. Apply the same attention to quality and the same development standards to application code and test code. Store test code alongside application code. Develop and maintain test code with application code. To ensure the quality of tests, discard tests that aren't reliable.
+- *Treat test code as application code*. Apply the same quality and development standards to application code and test code. Store test code alongside application code. Develop and maintain test code with application code. To ensure the quality of tests, discard tests that aren't reliable.
 
 - *Consider test ownership, which is based on workload ownership*. Your workload team owns their testing and shouldn't rely on other teams to test their code.
 
 - *Automate tests as much as possible*. Automated code relieves burden on your workload team and enforces consistent quality.
 
-For detailed guidance about implementing a DevOps test strategy, see [Shift left with unit tests](/devops/develop/shift-left-make-testing-fast-reliable).
+For detailed guidance about implementing a DevOps test strategy, see [Shift testing left with unit tests](/devops/develop/shift-left-make-testing-fast-reliable).
 
 **Require [DevSecOps](/devops/operate/security-in-devops) practices as part of your standard operating procedures.** Your workload team should understand the security practices related to software development and quality assurance. They must follow these practices without exception. For more information, see [Security development lifecycle guide](../security/secure-development-lifecycle.md).
 
@@ -92,9 +92,9 @@ For detailed guidance about implementing a DevOps test strategy, see [Shift left
 
   - Azure Pipelines provides build and release services to support the CI/CD of your applications.
 
-  - [Azure Boards](/azure/devops/boards/get-started/what-is-azure-boards) is a web-based work management tool that supports Agile practices like Scrum and Kanban.
+  - [Azure Boards](/azure/devops/boards/get-started/what-is-azure-boards) is a web-based work-management tool that supports Agile practices like Scrum and Kanban.
 
-  - Azure Repos is a version control tool that supports the [Git](/azure/devops/repos/get-started/what-is-repos) distributed version control system and the [Team Foundation Version Control](/azure/devops/repos/get-started/what-is-repos) centralized version control system.
+  - Azure Repos is a version control tool that supports the [Git distributed version control system](/azure/devops/repos/get-started/what-is-repos#git) and the [Team Foundation Version Control](/azure/devops/repos/get-started/what-is-repos#tfvc) system.
 
   - [Azure Test Plans](/azure/devops/test/overview) is a browser-based test management solution that provides capabilities that are required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
 
@@ -114,7 +114,7 @@ For detailed guidance about implementing a DevOps test strategy, see [Shift left
 
 - [Azure Resource Manager templates](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview) are Azure-native tools that you can use to deploy IaC. [Terraform](/azure/developer/terraform/overview) is another Azure-supported IaC tool that you can use to deploy and manage infrastructure.
 
-- [Visual Studio](/visualstudio/windows) is a robust development tool that supports many languages and integrates with Azure.
+- [Visual Studio](/visualstudio/windows) is a robust development tool that integrates with Azure and supports many languages.
 
 - [GitHub Copilot](https://docs.github.com/copilot/overview-of-github-copilot/about-github-copilot-for-individuals) is an AI service that acts as a pair programmer and provides autocomplete style suggestions as you code. Copilot is available as an extension in Visual Studio and several other development tools.
 
@@ -122,19 +122,21 @@ For detailed guidance about implementing a DevOps test strategy, see [Shift left
 
 ## Tradeoffs
 
-Investing in powerful commercial tools can be costly, so ensure that you choose just the right tools to meet your requirements.
+Investing in powerful commercial tools can be costly, so ensure that you choose the appropriate tools to meet your requirements.
 
 ## Related links
 
-[Introduction to GitHub CoPilot](/shows/introduction-to-github-copilot): a six-part video series providing instructions for using GitHub Copilot.
-
-[DevOps resource center](/devops): learn more about DevOps practices and how Microsoft applies them.
-
-[Cloud design patterns](/azure/architecture/patterns): learn more about design patterns
-
-[Enable DevSecOps with Azure and GitHub](/devops/devsecops/enable-devsecops-azure-github): learn more about Azure and GitHub tools to apply DevSecOps practices
-
-## Community links
+- [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance)
+- [Branch policies and settings](/azure/devops/repos/git/branch-policies)
+- [Cloud design patterns](/azure/architecture/patterns)
+- [Developer velocity](https://azure.microsoft.com/solutions/developer-velocity)
+- [DevOps resource center](/devops)
+- [Enable DevSecOps with Azure and GitHub](/devops/devsecops/enable-devsecops-azure-github)
+- [Overview of source code analysis](/visualstudio/code-quality/roslyn-analyzers-overview)
+- [Security development lifecycle guide](../security/secure-development-lifecycle.md)
+- [Security in DevOps (DevSecOps)](/devops/operate/security-in-devops)
+- [Shift testing left with unit tests](/devops/develop/shift-left-make-testing-fast-reliable)
+- [Video series: Introduction to GitHub CoPilot](/shows/introduction-to-github-copilot/what-is-github-copilot-1-of-6)
 
 ## Operational Excellence checklist
 
