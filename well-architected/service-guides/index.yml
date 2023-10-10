@@ -320,11 +320,11 @@ additionalContent:
     - title: Other resources
       items:
         # Card
-        - title: What's new
+        - title: What's new?
           summary: Updates for the Azure Well-Architected Framework
           url: ../whats-new.md
         # Card
-        - title: What is WAF
+        - title: What is WAF?
           summary: How to use WAF and audience profile
           url: ../what-is-waf.md
 
