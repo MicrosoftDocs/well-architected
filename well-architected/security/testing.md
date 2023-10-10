@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 Rigorous testing is the foundation of good security design. Testing is a tactical form of validation to make sure controls are working as intended. Testing is also a proactive way to detect vulnerabilities in the system.
 
-Establish testing rigor through cadence and verification from multiple perspectives. You want to include both inside-out viewpoints that test platform and infrastructure and outside-in evaluations that test the system like an external attacker.
+Establish testing rigor through cadence and verification from multiple perspectives. You want to include inside-out viewpoints that test platform and infrastructure and outside-in evaluations that test the system like an external attacker.
 
 This guide provides recommendations for testing the security posture of your workload. Implement these testing methods to improve your workload's resistance to attacks and maintain confidentiality, integrity, and availability of resources.
 
@@ -24,14 +24,14 @@ This guide provides recommendations for testing the security posture of your wor
 
 |Term   |Definition   |
 |---------|---------|
-|Application security testing (AST) | An SDL technique that uses white box and black box testing methodologies to check for security vulnerabilities in code.|
-|Black box testing| A testing methodology that validates the externally visible application behavior without knowledge of the internals of the system.|
+|Application security testing (AST) | A Secure Development Lifecycle (SDL) technique that uses white-box and black-box testing methodologies to check for security vulnerabilities in code.|
+|Black-box testing| A testing methodology that validates the externally visible application behavior without knowledge of the internals of the system.|
 |Blue team     | A team that defends against the attacks of the red team in a war game exercise.        |
 |Penetration testing | A testing methodology that uses ethical hacking techniques to validate the security defense of a system.|
 |Red team     |  A team that plays the role of an adversary and attempts to hack the system in a war game exercise.|
 |Secure Development Lifecycle (SDL)     |   A set of practices provided by Microsoft that supports security assurance and compliance requirements.      |
-|Software development life cycle (SDLC)     |  A multi-stage systematic process for developing software systems.       |
-|White box testing| A testing methodology where the structure of the code is known to the practitioner.|
+|Software development life cycle (SDLC)     |  A multistage, systematic process for developing software systems.       |
+|White-box testing| A testing methodology where the structure of the code is known to the practitioner.|
 
 ## Key design strategies
 
@@ -58,7 +58,7 @@ Testing in production environments gives you the best information but causes the
 
 If you deploy by using IaC and automation, consider whether you can create an isolated clone of your production environment for testing. If you have a continuous process for routine tests, we recommend using a dedicated environment.
 
-**Always evaluate the test results.** Testing is a wasted effort if the results aren't used to prioritize actions and make improvements upstream. Document the security guidelines, including best practices, that you uncover. Proper documentation that captures the results and remediation plans educates the team about the various ways that attackers might try to breach security. Conduct regular security training for developers, admins, and testers.
+**Always evaluate the test results.** Testing is a wasted effort if the results aren't used to prioritize actions and make improvements upstream. Document the security guidelines, including best practices, that you uncover. Documentation that captures results and remediation plans educates the team about the various ways that attackers might try to breach security. Conduct regular security training for developers, admins, and testers.
 
 When you're designing your test plans, think about the following questions:
 
