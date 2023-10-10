@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 
 title: Performance efficiency quick links
-summary: Apply performance efficiency guidance to your architecture to meet workload demands efficiently.
+summary: Apply performance efficiency guidance to your architecture to efficiently meet workload demands.
 
 metadata:
   title: Performance efficiency quick links
-  description: Apply performance efficiency guidance to your architecture to meet workload demands efficiently.
+  description: Learn about resources that you can use to apply performance efficiency guidance to your architecture.
   ms.service: waf
   ms.subservice: waf-pillar-efficiency
   ms.topic: landing-page
   author: martinekuan
   ms.author: martinek
-  ms.date: 09/29/2023
+  ms.date: 11/15/2023
 
 landingContent:
-  - title: Key points
+  - title: Learn key points
     linkLists:
       - linkListType: quickstart
         links:
@@ -34,22 +34,22 @@ landingContent:
             url: /training/modules/azure-well-architected-introduction/5-performance-efficiency
       - linkListType: video
         links:
-          - text: "Performance Efficiency: Fast & Furious"
+          - text: "Performance efficiency: Fast & furious"
             url: /events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency
-  - title: Design principles
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Design Principle 1 TBD (TODO)
-            url: principles.md#TODO
-          - text: Design Principle 2 TBD (TODO)
-            url: principles.md#TODO
-          - text: Design Principle 3 TBD (TODO)
-            url: principles.md#TODO
-          - text: Design Principle 4 TBD (TODO)
-            url: principles.md#TODO
-          - text: Design Principle 5 TBD (TODO)
-            url: principles.md#TODO
+  #- title: Design principles
+  #  linkLists:
+  #    - linkListType: concept
+  #      links:
+  #        - text: Design Principle 1 TBD (TODO)
+  #          url: principles.md#TODO
+  #        - text: Design Principle 2 TBD (TODO)
+  #          url: principles.md#TODO
+  #        - text: Design Principle 3 TBD (TODO)
+  #          url: principles.md#TODO
+  #        - text: Design Principle 4 TBD (TODO)
+  #          url: principles.md#TODO
+  #        - text: Design Principle 5 TBD (TODO)
+  #          url: principles.md#TODO
   - title: Achieve performance targets
     linkLists:
       - linkListType: how-to-guide
@@ -76,17 +76,17 @@ landingContent:
             url: prioritize-critical-flows.md
           - text: Operational tasks
             url: optimize-operational-tasks.md
-          - text: Workload over time
+          - text: Continuous optimization 
             url: continuous-performance-optimize.md
-  - title: Testing and incident response
+  - title: Implement testing and incident response
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Execute performance testing
+          - text: Run performance testing
             url: performance-testing.md
           - text: Address performance incidents
             url: respond-live-performance-issues.md
-  - title: Related resources
+  - title: Explore related resources
     linkLists:
       - linkListType: reference
         links:
