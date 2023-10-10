@@ -13,7 +13,7 @@ ms.custom:
 
 **Applies to this Well-Architected Framework Security checklist recommendation:**
 
-|[SE:02](checklist.md)|Establish a security baseline aligned to compliance requirements, industry standards, and platform recommendations. Regularly measure your workload architecture and operations against the baseline to sustain or improve your security posture over time.|
+|[SE:02](checklist.md)|Establish a security baseline that's aligned to compliance requirements, industry standards, and platform recommendations. Regularly measure your workload architecture and operations against the baseline to sustain or improve your security posture over time.|
 |---|---|
 
 **Related guide**: [Secure development lifecycle](secure-development-lifecycle.md)
@@ -39,9 +39,9 @@ Threat modeling is a crucial process that an organization should integrate into 
 
 There's often a disconnect between organizational leadership and technical teams regarding business requirements for critical workloads. This disconnect can lead to unwanted outcomes, particularly for security investments.
 
-When teams are doing a threat modeling exercise, they should consider both business and technical requirements. They must agree on security-specific needs of the workload so that they can make adequate investments in the countermeasures.
+When the workload team is doing a threat modeling exercise, it should consider both business and technical requirements. The workload team and business stakeholders must agree on security-specific needs of the workload so that they can make adequate investments in the countermeasures.
 
-The security requirements serve as guide for the entire process of threat modeling. To make it an effective exercise, the teams should have a security mindset and be trained in threat modeling tools.
+The security requirements serve as guide for the entire process of threat modeling. To make it an effective exercise, the workload team should have a security mindset and be trained in threat modeling tools.
 
 ### Understand the scope of the exercise
 
@@ -84,7 +84,7 @@ Here's an example:
 
 We highly recommend that you use a **threat modeling tool**. Tools can automate the process of identifying threats and produce a comprehensive report of all identified threats. Be sure to communicate the results to all interested teams.
 
-Track the results as part of the teams' backlog to allow for accountability in a timely manner. Assign tasks to individuals who are responsible for mitigating a particular risk that threat modeling identified.
+Track the results as part of the workload team's backlog to allow for accountability in a timely manner. Assign tasks to individuals who are responsible for mitigating a particular risk that threat modeling identified.
 
 As you add new features to the solution, update the threat model and integrate it into the code management process. If you find a security problem, make sure there's a process to triage based on severity and determine when and how to remediate the problem (such as in the next release cycle or in a faster release).
 
