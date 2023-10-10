@@ -159,7 +159,7 @@ It's important to choose an adequate margin between the scale-out and scale-in t
 
 **Use Deployment Stamps.** There are techniques that make it easier to scale a workload. You can use the [Deployment Stamps](/azure/architecture/patterns/deployment-stamp) pattern to easily scale a workload by adding one or more scale units.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: While scaling helps optimize costs by adjusting capacity to meet demand, it can result in overall increased cost during long periods of high demand.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: While scaling helps optimize costs by adjusting capacity to meet demand, it can result in overall increased cost during long periods of high demand.
 
 #### Test scaling
 
@@ -181,7 +181,7 @@ Conduct load and stress tests to evaluate the performance of the workload under 
 
 1. Repeat the scalability tests after implementing optimizations to validate the improvements and help ensure the system can handle the expected workloads efficiently.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**:  Consider the budget constraints and cost-efficiency goals of your workload. Vertical scaling might involve higher costs due to the need for larger and more powerful resources. Horizontal scaling offers cost savings by using smaller instances that can be added or removed based on demand.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Consider the budget constraints and cost-efficiency goals of your workload. Vertical scaling might involve higher costs due to the need for larger and more powerful resources. Horizontal scaling offers cost savings by using smaller instances that can be added or removed based on demand.
 
 ### Partition workload
 
@@ -209,7 +209,7 @@ Partitioning is the process of dividing a large dataset or workload into smaller
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Partitioning adds complexity to the design and development of a system. Partitioning requires conversations and planning between developers and database administrators.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Partitioning introduces some potential problems that need to be considered and addressed, including:
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Partitioning introduces some potential problems that need to be considered and addressed, including:
 >
 > - *Data skew*: Partitioning can lead to data skew, where certain partitions receive a disproportionate amount of data or workload compared to others. Data skew can result in performance imbalances and increased contention on specific partitions.
 >

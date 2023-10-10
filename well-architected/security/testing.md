@@ -96,7 +96,7 @@ In other cases, you might be required to run tests and report the security state
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Because they are disruptive events, expect reprioritization of tasks, which may delay other planned work.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: There's risk of the unknown. They might be one-time efforts without established processes or tools. But the predominant risk is the potential interruption of the rhythm of business, we need to evaluate those risks relative to the benefit gained by this action.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: There's risk of the unknown. They might be one-time efforts without established processes or tools. But the predominant risk is the potential interruption of the rhythm of business, we need to evaluate those risks relative to the benefit gained by this action.
 
 #### Security incident tests
 
@@ -142,7 +142,7 @@ Here are some advantages of testing through real-world attacks:
 
 -   Based on the lessons learned, the team will be able to upgrade their knowledge and skill level. The team will be able to improve situational awareness and self-assess their readiness to incidents.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Testing in general can impact performance. There might be business continuity problems if destructive tests delete or corrupt data. There's also risks associated with information exposure; make sure that the confidentiality of data is maintained. Integrity of data also should be ensured after testing is completed.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Testing in general can impact performance. There might be business continuity problems if destructive tests delete or corrupt data. There's also risks associated with information exposure; make sure that the confidentiality of data is maintained. Integrity of data also should be ensured after testing is completed.
 
 Some examples of simulated tests include penetration testing, war game exercises, and others.
 
@@ -150,7 +150,7 @@ Some examples of simulated tests include penetration testing, war game exercises
 
 A perspective on type of testing is black-box testing and white-box testing. In black-box tests, the internals of the system aren't visible. In white-box testing, the tester has a good understanding of the application and even has access to code, logs, and resource topology and configuration to conduct the experiment.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: The difference between the two types is upfront cost. White-box testing can be expensive in terms of time taken to understand the requirement. In some cases, also monetary investment because it might require purchasing of specialized tools. Black-box testing doesn't need ramp up time. But it might not be as effective or take extra effort to uncover issues. It\'s a time investment tradeoff.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: The difference between the two types is upfront cost. White-box testing can be expensive in terms of time taken to understand the requirement. In some cases, also monetary investment because it might require purchasing of specialized tools. Black-box testing doesn't need ramp up time. But it might not be as effective or take extra effort to uncover issues. It\'s a time investment tradeoff.
 
 ##### Tests that simulate attacks through penetration testing (pentesting)
 
@@ -158,7 +158,7 @@ Pentesting is conducted by security experts who aren't part of the organization\
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Penetration tests are ad hoc and can also be expensive in terms of disruptions and financially because pentesting is typically a paid offering by third-party practitioners.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: A pentesting exercise might affect the runtime environment and might disrupt the availability for normal traffic.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: A pentesting exercise might affect the runtime environment and might disrupt the availability for normal traffic.
 
 the practitioners may need access to sensitive data of the entire organization. Follow the rules of engagement to make sure that access and the intent isn't misused. See the resources listed in [Related links](#related-links).
 

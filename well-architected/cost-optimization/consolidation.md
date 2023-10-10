@@ -40,7 +40,7 @@ Common types of services that you can consolidate include application platforms,
 - *Estimate the cost*: Understand the effort and potential complications of consolidation. You should calculate costs, including resource, licensing, and operational expenses. Consider the implications, such as potential challenges in resource monitoring due to consolidation.
 - *Communicate and coordinate*: Ensure you inform all stakeholders about upcoming changes and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth implementation.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk**: Consider the effects of resource density, such as noisy neighbors, scale unit effects, and reduced redundancy. Resource consolidation is often too risky for mission and business critical workload flows.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Consider the effects of resource density, such as noisy neighbors, scale unit effects, and reduced redundancy. Resource consolidation is often too risky for mission and business critical workload flows.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs**:
 

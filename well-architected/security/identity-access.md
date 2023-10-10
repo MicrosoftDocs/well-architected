@@ -179,7 +179,7 @@ Protecting privileged access against determined adversaries requires you to take
 
 Use single identity across environments and associate single identity with the user or principal. Consistency of identities across cloud and on-premises reduce human errors and the resulting security risk. Teams managing resources in both environments need a consistent authoritative source to achieve security assurances. Work with your central identity team to make sure identities in hybrid environments are synchronized.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: There's a risk associated with synchronizing high privilege identities. An attacker can get full control of on-premises assets leading to a successful compromise of a cloud account. Evaluate your synchronization strategy by filtering out accounts that can add to the attack surface.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: There's a risk associated with synchronizing high privilege identities. An attacker can get full control of on-premises assets leading to a successful compromise of a cloud account. Evaluate your synchronization strategy by filtering out accounts that can add to the attack surface.
 
 ### Establish processes to manage the identity lifecycle
 
