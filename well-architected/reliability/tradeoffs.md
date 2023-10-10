@@ -1,6 +1,6 @@
 ---
 title: Reliability tradeoffs
-description: Reliability tradeoffs in the Azure Well-Architected Framework
+description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for reliability.
 author: ckittel
 ms.author: chkittel
 ms.date: 10/02/2023
