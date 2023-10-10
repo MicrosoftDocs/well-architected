@@ -14,7 +14,7 @@ metadata:
   ms.date: 11/15/2023
 
 landingContent:
-  - title: Key points
+  - title: Learn key points
     linkLists:
       - linkListType: quickstart
         links:
@@ -36,7 +36,7 @@ landingContent:
         links:
           - text: Inside Azure datacenter architecture with Mark Russinovich
             url: https://www.youtube.com/watch?v=69PrhWQorEM
-  - title: Design principles
+  - title: Review design principles
     linkLists:
       - linkListType: concept
         links:
@@ -50,7 +50,7 @@ landingContent:
             url: principles.md#design-for-operations
           - text: Keep it simple
             url: principles.md#keep-it-simple
-  - title: Setting and measuring reliability targets
+  - title: Set and measure reliability targets
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -62,7 +62,7 @@ landingContent:
             url: metrics.md
           - text: Design a monitoring and alerting strategy
             url: monitoring-alerting-strategy.md
-  - title: Achieving reliability targets
+  - title: Achieve reliability targets
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -84,7 +84,7 @@ landingContent:
             url: handle-transient-faults.md
           - text: Design with simplicity
             url: simplify.md
-  - title: Testing and conducting drills
+  - title: Test and conduct drills
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -92,7 +92,7 @@ landingContent:
             url: testing-strategy.md
           - text: Design a recovery strategy
             url: disaster-recovery.md
-  - title: Related resources
+  - title: Explore related resources
     linkLists:
       - linkListType: reference
         links:
