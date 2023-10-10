@@ -30,7 +30,7 @@ This guide provides recommendations for testing the security posture of your wor
 |Penetration testing | A testing methodology that uses ethical hacking techniques to validate the security defenses of a system.|
 |Red team     |  A team that plays the role of an adversary and attempts to hack the system in a war game exercise.|
 |Security Development Lifecycle (SDL)     |   A set of practices provided by Microsoft that supports security assurance and compliance requirements.      |
-|Software Development Lifecycle (SDLC)     |  A multistage, systematic process for developing software systems.       |
+|Software development lifecycle (SDLC)     |  A multistage, systematic process for developing software systems.       |
 |White-box testing| A testing methodology where the structure of the code is known to the practitioner.|
 
 ## Key design strategies

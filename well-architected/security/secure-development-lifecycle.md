@@ -35,7 +35,7 @@ It's not enough to secure just the infrastructure plane by using controls on ide
 | Term | Definition |
 |--|--|
 | Security Development Lifecycle (SDL) | A set of practices provided by Microsoft that supports security assurance and compliance requirements. |
-| Software Development Lifecycle (SDLC) | A multi-stage systematic process for developing software systems. |
+| Software development lifecycle (SDLC) | A multistage, systematic process for developing software systems. |
 
 ## Key design strategies
 
