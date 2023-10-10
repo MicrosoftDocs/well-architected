@@ -34,7 +34,7 @@ landingContent:
             url: /training/modules/azure-well-architected-introduction/5-performance-efficiency
       - linkListType: video
         links:
-          - text: "Performance Efficiency: Fast & Furious"
+          - text: "Performance efficiency: Fast & furious"
             url: /events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency
   #- title: Design principles
   #  linkLists:
