@@ -107,7 +107,7 @@ Run the performance tests using the chosen testing tool. Monitor and collect per
 
 ### Analyze the results
 
-Analyzing the test results involves examining the collected data and metrics from the performance tests to gain insights into the workload's performance. The goal is to identify any performance issues and make informed decisions for improvement. Here are the key steps involved in analyzing the test results:
+Analyzing the test results involves examining the collected data and metrics from the performance tests to gain insights into the performance of the workload. The goal is to identify any performance issues and use the feedback to update the priorities in application development. Here are the key steps involved in analyzing the test results:
 
 **Review performance metrics.** Look at the performance metrics collected during the performance testing, such as response times, throughput, error rates, CPU and memory utilization, and network latency. Analyze these metrics to understand the overall performance of the workload.
 

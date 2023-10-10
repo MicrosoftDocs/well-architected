@@ -3,7 +3,7 @@ title: Recommendations for security incident response
 description: Learn how to reduce the time that's required to identify, manage, and mitigate security incidents that threaten the confidentiality and integrity of software systems.
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 11/15/2023
+ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
@@ -16,7 +16,13 @@ ms.topic: conceptual
 
 This guide describes the recommendations for implementing a security incident response for a workload. If there's a security compromise to a system, a systematic incident response approach helps to reduce the time that it takes to identify, manage, and mitigate security incidents. These incidents can threaten the confidentiality, integrity, and availability of software systems and data.
 
-Most enterprises have a central security operations center (SOC). That team handles incidents. However, you also have a responsibility to protect your workload. This guide provides recommendations for you and your workload team to help you rapidly detect, triage, and investigate attacks.
+Most enterprises have a central security operation team (also known as Security Operations Center (SOC), or SecOps). The responsibility of the security operation team  is to rapidly detect, prioritize, and triage potential attacks. The team also monitors security-related telemetry data and investigates security breaches. 
+
+:::image type="content" source="./images/incident-response.png" alt-text="Conceptual art that shows collaborative approach to mitigate potential and realized risk.":::
+
+However, you also have a responsibility to protect your workload. It's important that any communication, investigation, and hunting activities is a collaborative effort between workload team and SecOps team.
+
+This guide provides recommendations for you and your workload team to help you rapidly detect, triage, and investigate attacks.
 
 **Definitions** 
 

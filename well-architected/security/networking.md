@@ -246,7 +246,7 @@ Firewall and WAF aren't an either, or choice. See various patterns here: [Firewa
 
 A [network security group](/azure/virtual-network/manage-network-security-group) (NSG) is a layer 3, 4 firewall applied at the subnet or network interface card (NIC) level.
 
-**NSG rules act as firewall **to stop traffic flowing in and out at the perimeter of the subnet. NSGs aren't created or applied by default. An NSG has a default ruleset that's overly permissive. For example, the default rule doesn't set a firewall for egress perspective and no inbound internet for ingress.
+**NSG rules act as firewall** to stop traffic flowing in and out at the perimeter of the subnet. NSGs aren't created or applied by default. An NSG has a default ruleset that's overly permissive. For example, the default rule doesn't set a firewall for egress perspective and no inbound internet for ingress.
 
 Start with the default NSG, and create rules based on a 5-Tuple of information: Protocol, Source IP address, Source port, Destination IP address, Destination port.
 

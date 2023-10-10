@@ -85,7 +85,7 @@ In addition to the changes in structure and consistency, you should note some th
 ## September 2023
 
 - New Reliability pillar guide: [Recommendations for using availability zones and regions](./reliability/regions-availability-zones.md)
-- Updated service guide: [Azure Well-Architected Framework review - Azure Database for PostgreSQL](./services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework.md)
+- Updated service guide: [Azure Well-Architected Framework review - Azure Database for PostgreSQL](service-guides/azure-db-postgresql-well-architected-framework.md)
 
 ## August 2023
 

@@ -26,7 +26,7 @@ ms.custom:
 
     Evaluate the budget constraints on each business unit. Determine the governance policies in Azure to lower cost by reducing wastage, over-provisioning, or expensive provisioning of resources.
 
-1. [**Consider tradeoffs**](tradeoffs.md)
+1. [**Consider Cost Optimization tradeoffs**](tradeoffs.md)
 
     Optimal design doesn't equate to a lowest-cost design.
 
@@ -105,7 +105,7 @@ Here are some considerations for determining the governance policies that can as
 ### Next step
 
 > [!div class="nextstepaction"]
-> [Consider tradeoffs](./tradeoffs.md)
+> [Consider Cost Optimization tradeoffs](./tradeoffs.md)
 
 ## Functional requirements
 

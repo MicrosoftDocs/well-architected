@@ -14,9 +14,7 @@ ms.topic: conceptual
 |[PE:11](checklist.md)| Respond to live issues. Plan how to address performance problems by incorporating clear lines of communication and responsibilities. When a problematic situation occurs, use what you learn to identify preventive measures and incorporate them in your workload. Implement methods to return to normal operations faster when similar situations occur.| 
 |---|---| 
 
-This guide describes the best practices for responding to live performance issues. Response steps include identifying and addressing issues and bottlenecks that might affect the performance of a workload in real time. Addressing live issues allows for immediate detection and resolution of performance problems, and it helps ensure that the workload meets its performance requirements.
-
-If you don't address live performance issues, various negative consequences can result. The workload can experience slowdowns, crashes, or unresponsiveness, resulting in a poor user experience. Productivity can also be affected. Users might be unable to perform their tasks efficiently, leading to reputation damage.
+This guide describes the best practices for responding to live performance issues. Live performance issues refer to real-time challenges and bottlenecks that can hinder the optimal functioning of a workload. Addressing these issues promptly not only facilitates the immediate detection and rectification of performance hiccups but also ensures that the workload consistently meets its performance benchmarks. Failing to address them can lead to complications, including slowdowns, crashes, and system unresponsiveness, and degrade the user experience. They can also prevent users from completing their tasks efficiently, and, in turn, tarnish the reputation of the organization.
 
 **Definitions**
 
@@ -29,7 +27,7 @@ If you don't address live performance issues, various negative consequences can 
 
 ## Key design strategies
 
-When you experience a live performance issue, you need to be prepared with the right data and a plan to respond to the issue. This plan should include clear lines of communication and responsibilities. The goal is to use methods that allow you to quickly return to normal operations and learn from the event. You should try to prevent the same issue from recurring. Or if the issue comes up again, you should minimize its effect on performance issues. A key strategy is to identify preventive measures to incorporate into your workflow.
+When you experience a live performance issue, you need to be prepared with the right data and a plan to respond to the issue. This plan should include clear lines of communication and responsibilities. The primary objective is to implement solutions that facilitate a quick return to regular operations and provide insights from the incident. Integrating preventive measures into your workflow is a pivotal strategy. It's crucial to either prevent the same issue from happening again or lessen its effects on performance if it isn't preventable.
 
 ### Prepare for issues
 
