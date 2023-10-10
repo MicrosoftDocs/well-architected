@@ -40,7 +40,6 @@ To learn how Azure Firewall supports workloads reliably, see the following artic
 As you make design choices for Azure Firewall, review the [design principles](../../resiliency/principles.md) for reliability.
 
 > [!div class="checklist"]
-
 > - Deploy Azure Firewall in hub virtual networks or as part of Azure Virtual WAN hubs.
 > - Leverage Availability Zones resiliency.  
 > - Create Azure Firewall Policy structure.
@@ -76,7 +75,6 @@ Security is one of the most important aspects of any architecture. [Azure Firewa
 As you make design choices for Azure Firewall, review the [design principles](../../security/security-principles.md) for security.
 
 > [!div class="checklist"]
-
 > - Determine if you need *Forced Tunneling*.
 > - Create rules for Policies based on least privilege access criteria.
 > - Leverage *Threat Intelligence*.
@@ -140,7 +138,6 @@ Cost optimization is about looking at ways to reduce unnecessary expenses and im
 As you make design choices for Azure Firewall, review the [design principles](../../cost/principles.md) for cost optimization.
 
 > [!div class="checklist"]
-
 > - Select the Azure Firewall *SKU* to deploy.
 > - Determine if some instances don't need permanent 24x7 allocation.
 > - Determine where you can optimize firewall use across workloads.
@@ -176,7 +173,6 @@ Monitoring and diagnostics are crucial. You can measure performance statistics a
 As you make design choices for Azure Firewall, review the [design principles](../../devops/principles.md) for operational excellence.
 
 > [!div class="checklist"]
-
 > - Maintain inventory and backup of Azure Firewall configuration and Policies.
 > - Leverage diagnostic logs for firewall monitoring and troubleshooting.
 > - Leverage Azure Firewall Monitoring workbook.
@@ -211,7 +207,6 @@ Performance efficiency is the ability of your workload to scale to efficiently m
 As you make design choices for Azure Firewall, review the [design principles](../../scalability/principles.md) for performance efficiency.
 
 > [!div class="checklist"]
-
 > - Regularly review and optimize firewall rules.
 > - Review policy requirements and opportunities to summarize IP ranges and URLs list.
 > - Assess your SNAT port requirements.
