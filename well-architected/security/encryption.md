@@ -3,7 +3,7 @@ title: Encryption strategy recommendations
 description: Learn about recommendations for encryption, including encryption mechanisms, encryption keys, encryption algorithms, hashes, checksums, and secret management.
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 11/15/2023
+ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
@@ -128,7 +128,7 @@ Classify and protect information storage objects in accordance with the internal
 
 - **Store keys in a managed HSM** that has least-privilege access control. Separate the data from the keys to the data.
 
-- **Store a limited amount of data** so that you only encrypt what's necessary. Your data shouldn't live longer than your encryption cycle. When data is no longer needed, delete the encrypted data without spending decryption cycles.
+- **Store limited amount of data** so that you only encrypt what's necessary. Your data shouldn't live longer than your encryption cycle. When data is no longer needed, delete the encrypted data without spending decryption cycles.
 
 ### Data in transit
 

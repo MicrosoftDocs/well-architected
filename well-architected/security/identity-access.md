@@ -3,7 +3,7 @@ title: Recommendations for managing identity and access
 description: Learn about the identity and access management recommendations for Azure workloads.
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 11/15/2023
+ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
@@ -173,7 +173,7 @@ Protecting privileged access against determined adversaries requires you to take
 
 -   **Use modern access protocols** such as passwordless authentication or multifactor authentication (MFA). Externalize those mechanisms to your IdP.
 
--   Enforce key security attributes by using conditional access policies**.
+-   Enforce key security attributes by using **conditional access policies**.
 
 -   **Decommission administrative accounts** that are unused.
 
