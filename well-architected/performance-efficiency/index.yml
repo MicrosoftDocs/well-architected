@@ -40,12 +40,16 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Design for horizontal scaling  
-            url: principles.md#design-for-horizontal-scaling
-          - text: Shift-left on performance testing
-            url: principles.md#shift-left-on-performance-testing
-          - text: Continuously monitor for performance in production
-            url: principles.md#continuously-monitor-for-performance-in-production
+          - text: Design Principle 1 TBD (TODO)
+            url: principles.md#TODO
+          - text: Design Principle 2 TBD (TODO)
+            url: principles.md#TODO
+          - text: Design Principle 3 TBD (TODO)
+            url: principles.md#TODO
+          - text: Design Principle 4 TBD (TODO)
+            url: principles.md#TODO
+          - text: Design Principle 5 TBD (TODO)
+            url: principles.md#TODO
   - title: Achieving performance targets
     linkLists:
       - linkListType: how-to-guide
