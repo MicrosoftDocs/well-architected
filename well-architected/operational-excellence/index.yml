@@ -14,7 +14,7 @@ metadata:
   ms.date: 11/15/2023
 
 landingContent:
-  - title: Key points
+  - title: Learn key points
     linkLists:
       - linkListType: quickstart
         links:
@@ -36,7 +36,7 @@ landingContent:
         links:
           - text: Achieve Operational Excellence
             url: /shows/azure-enablement/achieve-operational-excellence-with-azure-well-architected-framework
-  - title: Design principles
+  - title: Review design principles
     linkLists:
       - linkListType: concept
         links:
@@ -52,7 +52,7 @@ landingContent:
             url: principles.md#automate-for-efficiency
           - text: Adopt safe deployment practices
             url: principles.md#adopt-safe-deployment-practices
-  - title: Fundamentals
+  - title: Start with the fundamentals
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -66,7 +66,7 @@ landingContent:
             url: optimize-development-practices.md
           - text: Use safe deployment practices (SPD)
             url: safe-deployments.md
-  - title: Automation
+  - title: Use automation
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -74,7 +74,7 @@ landingContent:
             url: automate-tasks.md
           - text: Design for automation
             url: enable-automation.md
-  - title: Shipping safely and supporting what you ship
+  - title: Ship safely and support what you ship
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -88,7 +88,7 @@ landingContent:
             url: mitigation-strategy.md
           - text: Design an emergency response strategy 
             url: emergency-response.md
-  - title: Related resources
+  - title: Explore related resources
     linkLists:
       - linkListType: reference
         links:

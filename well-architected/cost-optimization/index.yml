@@ -14,7 +14,7 @@ metadata:
   ms.date: 11/15/2023
 
 landingContent:
-  - title: Key points
+  - title: Learn key points
     linkLists:
       - linkListType: quickstart
         links:
@@ -36,7 +36,7 @@ landingContent:
         links:
           - text: What tradeoffs have you made to optimize for cost?
             url: https://www.microsoft.com/videoplayer/embed/RE4zw3n
-  - title: Design principles
+  - title: Review design principles
     linkLists:
       - linkListType: concept
         links:
@@ -50,7 +50,7 @@ landingContent:
             url: principles.md#design-for-rate-optimization
           - text: Monitor and optimize over time
             url: principles.md#monitor-and-optimize-over-time
-  - title: Setting, measuring, and protecting financial targets
+  - title: Set, measure, and protect financial targets
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -62,7 +62,7 @@ landingContent:
             url: collect-review-cost-data.md
           - text: Set spending guardrails
             url: set-spending-guardrails.md
-  - title: Cost optimization actions
+  - title: Take cost optimization actions
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -74,7 +74,7 @@ landingContent:
             url: eliminate-waste.md
           - text: Consolidate
             url: consolidation.md
-  - title: Optimization targets
+  - title: Optimize
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -90,7 +90,7 @@ landingContent:
             url: optimize-scaling.md
           - text: Personnel time
             url: optimize-personnel-time.md
-  - title: Related resources
+  - title: Explore related resources
     linkLists:
       - linkListType: reference
         links:
