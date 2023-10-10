@@ -78,7 +78,7 @@ Essential tools for file integrity monitoring, virus scanning, intrusion detecti
 
 ### Optimize database operations
 
-Database operations and maintenance are activities that are performed to manage and optimize the performance of a database. These operations include tasks like backups, schema changes, performance tuning, and monitoring.
+Database operations are activities you perform to manage and optimize the performance of a database. These operations include tasks like backups, schema changes, performance tuning, and monitoring.
 
 Schema changes involve modifying the structure of a database, such as adding or altering tables, columns, or indexes. These changes might require extra processing and resource utilization during the deployment process, potentially affecting the overall performance of the workload. Schema changes can disrupt performance to active queries, indexes, or transactions or cause data to be unavailable.
 
