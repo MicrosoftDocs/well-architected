@@ -230,7 +230,7 @@ Recommended technology choices:
     >
     > There can also be an impact on the reliability of the workload. It might experience SNAT port exhaustion. Add Public IPs as necessary.
     
-    > ![Risk icon](../_images/risk.svg) **Risk**: For egress traffic, Azure assigns a public IP. This can have a downstream security impact on external security gate.
+    > :::image type="icon" source="../_images/risk.svg"::: **Risk**: For egress traffic, Azure assigns a public IP. This can have a downstream security impact on external security gate.
     
 -   [Azure Web Application Firewall (WAF)](/azure/web-application-firewall/overview) supports inbound filtering and only targets HTTP(s) traffic.
 
@@ -257,7 +257,7 @@ The lack of support for FQDN limits NSG functionality. You need to provide speci
 
 However, for Azure services, source and Destination IP ranges can be summarized, with [Service Tags](/azure/virtual-network/service-tags-overview#available-service-tags). From a security perspective, the benefit is that **Service Tags are opaque to the user and the responsibility is offloaded to Azure**. You can also assign application security group (ASG) as a destination type to route traffic using a named group for resources that have similar inbound or outbound access needs.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Service Tag ranges are very broad to accommodate the widest range of customers. Updates to Service Tags lag behind changes in the service.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Service Tag ranges are very broad to accommodate the widest range of customers. Updates to Service Tags lag behind changes in the service.
 
 :::image type="content" source="images/networking/virtual-network-default-isolation-peering.png" alt-text="Diagram that shows virtual network default isolation with peering." border="false" lightbox="images/networking/virtual-network-default-isolation-peering.png":::
 

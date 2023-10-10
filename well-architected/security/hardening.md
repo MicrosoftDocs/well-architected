@@ -91,7 +91,7 @@ The preceding hardening recommendations for networking and identity apply to ind
 
 Always **keep up with the Azure roadmap and the workload roadmap**. Apply patching and versioning updates that Azure services offer. Allow platform-provided updates, and subscribe to automated update channels.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Cloud resources often have requirements for allowances or must run in documented configurations to be considered *supported*. Some hardening techniques, such as aggressively blocking outbound traffic, can cause a service to fall outside a supported configuration, even if the service operates normally. Understand each cloud resource's runtime requirements from your platform to ensure that you maintain support for that resource.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Cloud resources often have requirements for allowances or must run in documented configurations to be considered *supported*. Some hardening techniques, such as aggressively blocking outbound traffic, can cause a service to fall outside a supported configuration, even if the service operates normally. Understand each cloud resource's runtime requirements from your platform to ensure that you maintain support for that resource.
 
 ### Applications
 

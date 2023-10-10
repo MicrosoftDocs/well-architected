@@ -99,7 +99,7 @@ Configuring a test environment refers to the process of setting up the necessary
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Maintaining separate test environments, storing data, using tooling, and running tests costs money. Know the cost of performance testing and find way to optimize spending.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk:** Production data can contain sensitive information and using it for testing can create risk of leaking sensitive data without a robust scrubbing and masking strategy.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Production data can contain sensitive information and using it for testing can create risk of leaking sensitive data without a robust scrubbing and masking strategy.
 
 ### Perform the test
 

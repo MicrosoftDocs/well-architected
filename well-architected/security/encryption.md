@@ -136,7 +136,7 @@ Classify and protect information storage objects in accordance with the internal
 
     Don't use versions lower than TLS 1.2. Migrate solutions to support TLS 1.2, and use this version by default. All Azure services support TLS 1.2 on public HTTPS endpoints.
 
-    > ![Risk icon](../_images/risk.svg) **Risk**: Older clients that don't support TLS 1.2 might not work properly if backward compatibility isn't supported.
+    > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Older clients that don't support TLS 1.2 might not work properly if backward compatibility isn't supported.
     >
     > All website communication should use HTTPS, regardless of the sensitivity of the transferred data. During a client-server handshake, negotiate the use of the HTTP Strict Transport Security (HSTS) policy so that HTTPS transport is maintained and doesn't drop to HTTP during communication. This policy protects against man-in-the-middle attacks.
     >

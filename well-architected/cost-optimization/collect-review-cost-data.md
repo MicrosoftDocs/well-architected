@@ -126,7 +126,7 @@ Based on the analysis of cost anomalies, determine the necessary actions to addr
 
 Implement automated processes to identify and address cost variances in realtime. Options include automatically scaling resources, automating shutdowns, or establishing workflows for investigation and mitigation of cost anomalies. Establish key performance indicators (KPIs) to measure the accuracy of cost forecasts, cost versus budget, the number of unexpected anomalies, and the time to react to forecast alerts. Regularly review forecasts, track variance, and ensure alignment with budget expectations.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Automating the collection and review of cost data can save time and effort. However, relying solely on automation might overlook certain cost optimization opportunities that require manual review and analysis. Finding the right balance between automation and manual review is crucial.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Automating the collection and review of cost data can save time and effort. However, relying solely on automation might overlook certain cost optimization opportunities that require manual review and analysis. Finding the right balance between automation and manual review is crucial.
 
 ## Azure facilitation
 

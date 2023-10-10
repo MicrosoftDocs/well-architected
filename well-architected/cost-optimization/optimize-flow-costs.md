@@ -77,7 +77,7 @@ Similar types of flows share similar attributes. Like dissimilar flows, these at
 - *Log processing*: Instead of allowing multiple applications or services to each operate their own log processing instances, consider directing them all to a shared log processing tool. This approach minimizes the number of active instances, translating to direct cost savings.
 - *Authentication services*: If multiple applications deploy their own distinct authentication mechanisms, it introduces redundancy. Integrating a single sign-on (SSO) solution or a communal authentication service reduces this duplication and optimizes resource usage, leading to lower costs.
 
-**Risk:** However, don't mistake coincidence with design. Just because two flows look similar doesn't mean they serve the same purpose. You need to understand the function and design of each flow before merging or altering them. Misinterpreting a flow based solely on its appearance can lead to unintended consequences and could disrupt the service or process it supports. If multiple flows serve the same function and there are no discernible differences in their design or intent, consider consolidating them.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: However, don't mistake coincidence with design. Just because two flows look similar doesn't mean they serve the same purpose. You need to understand the function and design of each flow before merging or altering them. Misinterpreting a flow based solely on its appearance can lead to unintended consequences and could disrupt the service or process it supports. If multiple flows serve the same function and there are no discernible differences in their design or intent, consider consolidating them.
 
 ### Continuously monitor flows
 

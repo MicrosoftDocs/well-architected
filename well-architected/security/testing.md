@@ -94,7 +94,7 @@ In other cases, you might be required to run tests and report the security state
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Because improvised tests are disruptive events, expect to reprioritize tasks, which may delay other planned work.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: There's risk of the unknown. Improvised tests might be one-time efforts without established processes or tools. But the predominant risk is the potential interruption of the rhythm of business. You need to evaluate those risks relative to the benefits.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: There's risk of the unknown. Improvised tests might be one-time efforts without established processes or tools. But the predominant risk is the potential interruption of the rhythm of business. You need to evaluate those risks relative to the benefits.
 
 #### Security incident tests
 
@@ -140,7 +140,7 @@ Here are some advantages of testing through real-world attacks:
 
 - Based on the lessons they learned, the team upgrades their knowledge and skill level. The team improves situational awareness and can self-assess their readiness to respond to incidents.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Testing in general can affect performance. There might be business continuity problems if destructive tests delete or corrupt data. There are also risks associated with information exposure; make sure to maintain the confidentiality of data. Ensure the integrity of data after you complete testing.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Testing in general can affect performance. There might be business continuity problems if destructive tests delete or corrupt data. There are also risks associated with information exposure; make sure to maintain the confidentiality of data. Ensure the integrity of data after you complete testing.
 
 Some examples of simulated tests include black-box and white-box testing, penetration testing, and war game exercises.
 
@@ -148,7 +148,7 @@ Some examples of simulated tests include black-box and white-box testing, penetr
 
 These test types offer two different perspectives. In black-box tests, the internals of the system aren't visible. In white-box tests, the tester has a good understanding of the application and even has access to code, logs, resource topology, and configurations for conducting the experiment.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: The difference between the two types is upfront cost. White-box testing can be expensive in terms of time taken to understand the system. In some cases, white-box testing requires you to purchase specialized tools. Black-box testing doesn't need ramp-up time, but it might not be as effective. You might need to put in extra effort to uncover issues. It's a time investment tradeoff.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: The difference between the two types is upfront cost. White-box testing can be expensive in terms of time taken to understand the system. In some cases, white-box testing requires you to purchase specialized tools. Black-box testing doesn't need ramp-up time, but it might not be as effective. You might need to put in extra effort to uncover issues. It's a time investment tradeoff.
 
 ##### Tests that simulate attacks through penetration testing
 
@@ -156,7 +156,7 @@ Security experts who aren't part of the organization's IT or application teams c
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Penetration tests are improvised and can be expensive in terms of disruptions and monetary investment because pentesting is typically a paid offering by third-party practitioners.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: A pentesting exercise might affect the runtime environment and might disrupt the availability for normal traffic.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: A pentesting exercise might affect the runtime environment and might disrupt the availability for normal traffic.
 
 The practitioners might need access to sensitive data in the entire organization. Follow the rules of engagement to ensure that access isn't misused. See the resources listed in [Related links](#related-links).
 

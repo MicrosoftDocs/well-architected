@@ -60,7 +60,7 @@ Data tiering and data retention policies are foundational to data lifecycle mana
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Managing data retention policies require ongoing monitoring and maintenance. It can introduce more overhead for data management processes. They may also affect storage costs. Longer retention periods or the use of higher-cost storage tiers can increase storage expenses.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk:** A poor implementation of data lifecycle management could lead to data loss or limited access to critical data. You should have proper backup and recovery mechanisms in place to mitigate the risk of data loss.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: A poor implementation of data lifecycle management could lead to data loss or limited access to critical data. You should have proper backup and recovery mechanisms in place to mitigate the risk of data loss.
 
 #### Optimize data segmentation
 
