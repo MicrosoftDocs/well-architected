@@ -22,7 +22,7 @@ There are four important guidelines to keep in mind when implementing safe deplo
 
 - **Safety and consistency**: All changes to the production workload are inherently risky and must be made with a focus on safety and consistency.
 
-- **Progressive exposure deployment**: You can minimize the potential blast radius of deployment-caused issues by adopting progressive exposure deployments.
+- **Progressive exposure**: You can minimize the potential blast radius of deployment-caused issues by adopting a progressive exposure deployment model.
 
 - **Health models**: Deployments must pass health checks before each phase of progressive exposure can begin.
 
@@ -32,25 +32,25 @@ The following sections provide detailed recommendations on each of these points.
 
 ### Safety and consistency
 
-Whether you're deploying an update to your application code, infrastructure as code (IaC), feature flags, or a configuration update, you're introducing risk to the workload. There are no *low-risk* deployments to production. Every deployment must follow a standard pattern and should be automated to enforce consistency and minimize the risk of human error. Treat every deployment as a possible risk and subject every deployment to the same level of risk management. It's critical that your workload supply chain and deployment pipelines are reliable, secure, and have clearly defined deployment standards. However, you should continue to deploy regular changes to your workload. Failing to deploy regular updates introduces risks like security vulnerabilities that must be addressed through deployments. For more information, see [Recommendations for designing a workload development supply chain](workload-supply-chain.md).
+Whether you're deploying an update to your application code, infrastructure as code (IaC), feature flag, or a configuration update, you're introducing risk to the workload. There are no *low-risk* deployments to production. Every deployment must follow a standard pattern and should be automated to enforce consistency and minimize the risk of human error. It's critical that your workload supply chain and deployment pipelines are reliable, secure, and have clearly defined deployment standards. Treat every deployment as a possible risk and subject every deployment to the same level of risk management. Despite the risks, you should continue to deploy regular changes to your workload. Failing to deploy regular updates introduces other risks like security vulnerabilities that must be addressed through deployments. For more information, see [Recommendations for designing a workload development supply chain](workload-supply-chain.md).
 
-Frequent small deployments are preferable to infrequent large deployments. Small changes are easier to resolve when issues arise and frequent deployments help your team build confidence in the deployment process. It's also important that you learn from production by reviewing your workload processes when you encounter an anomaly during deployment. You might find weaknesses in the design of your infrastructure or rollout, among other possible areas for improvement. When issues arise during deployments, ensure that _blameless_ postmortems are part of your SDP process to capture learnings about the incident.
+Frequent small deployments are preferable to infrequent large deployments. Small changes are easier to resolve when issues arise and frequent deployments help your team build confidence in the deployment process. It's also important that you learn from production by reviewing your workload processes when you encounter an anomaly during deployment. You might find weaknesses in the design of your infrastructure or rollout. When issues occur during deployments, ensure that _blameless_ postmortems are part of your SDP process to capture learnings about the incident.
 
 ### Progressive exposure deployment
 
 When deployment issues occur, the goal is to catch them as early as possible to minimize the effect on end-users. Implement a gradual rollout deployment model, also known as a progressive exposure model, to accomplish this goal. Canary deployments are a common example of progressive exposure. In this deployment model, a small group of internal or external users receive the new feature first. After the first group runs the new version without issue, the feature is deployed to successively larger groups until the entire user population is running the new version. Feature flags are typically used to enable the new version for the target users in canary deployments.
 
-Another common deployment model is a blue-green approach. In this model, two identical sets, or pools, of workload infrastructure are deployed, both able to handle a full production load. The first, blue, pool runs the current version of the deployment where all users land. The second, green, pool is updated with the new feature and internally tested. After internal testing, a subset of the production traffic is routed from the blue pool to the green pool. Like canary deployments, the rollout is progressive as you shift more of the traffic over to the green pool in successively larger rollout waves. After you finish the rollout, the update pool becomes the blue pool and the green pool is ready for the next deployment. The two pools are logically separated from each other to protect from malfunctions. If you deploy your workload in the [Deployment Stamps](/azure/architecture/patterns/deployment-stamp) design pattern, a variation of the blue-green model can be run by deploying on one stamp at a time.
+Another common deployment model is a blue-green approach. In this model, two identical sets, or pools, of workload infrastructure are deployed. Both pools are able to handle a full production load. The first, blue, pool runs the current version of the deployment where all users land. The second, green, pool is updated with the new feature and internally tested. After internal testing, a subset of the production traffic is routed from the blue pool to the green pool. Like canary deployments, the rollout is progressive as you shift more of the traffic over to the green pool in successively larger rollout waves. After you finish the rollout, the update pool becomes the blue pool and the green pool is ready for the next deployment. The two pools are logically separated from each other to protect from malfunctions. If you deploy your workload in the [Deployment Stamps](/azure/architecture/patterns/deployment-stamp) design pattern, a variation of the blue-green model can be run by deploying on one stamp at a time.
 
 In both of these models, the time between each phase of the rollout is critical to monitor the health metrics of the workload. You should provide ample *bake time*, time between rollout groups, to help ensure that users from different regions or users who perform different tasks have time to use the workload in their normal capacity. Bake times should be measured in hours and days rather than minutes. Bake times should also increase for each rollout group so that you can account for different time zones and usage patterns over the course of the day.
 
 ### Health models
 
-Develop a robust health model as part of your observability platform and reliability strategies. Your health model should provide in-depth visibility into the components and overall health of the workload. During a rollout, if you receive an alert about a health change relating to an end-user, the rollout should immediately halt and an investigation into the cause of the alert must be performed to help determine the next course of action. If there are no issues reported by end-users and all health indicators stay green throughout the bake time, the rollout should continue. Be sure to include usage metrics in your health model to help ensure that a lack of user reported issues and negative health signals aren't hiding an issue. For more information, see [Building a health model](../reliability/metrics.md#building-a-health-model).
+Develop a robust health model as part of your observability platform and reliability strategies. Your health model should provide in-depth visibility into the components and overall health of the workload. During a rollout, if you receive an alert about a health change relating to an end-user, the rollout should immediately halt and an investigation into the cause of the alert should be performed to help determine the next course of action. If there are no issues reported by end-users and all health indicators stay green throughout the bake time, the rollout should continue. Be sure to include usage metrics in your health model to help ensure that a lack of user reported issues and negative health signals aren't hiding an issue. For more information, see [Building a health model](../reliability/metrics.md#building-a-health-model).
 
 ### Issue detection
 
-When your deployment causes an issue in one of the rollout groups, the deployment rollout must halt immediately. An investigation into the cause of the issue and the severity of the effects must be performed as soon as the alert is received. Recovery from the issue can include:
+When your deployment causes an issue in one of the rollout groups, the rollout must stop immediately. An investigation into the cause of the issue and the severity of the effects must be performed as soon as the alert is received. Recovery from the issue can include:
 
 - **Rolling back** the deployment by undoing the changes made in the deployment and reverting back to the last known working configuration.
 
@@ -68,7 +68,7 @@ Rolling back changes, especially database, schema, or other stateful component c
 
 - Automate as much of your SDP as possible. For detailed guidance on automating IaC and application continuous integration and continuous delivery (CI/CD) processes, see [Recommendations for implementing automation](automate-tasks.md).
 
-- Use CI practices to regularly integrate code changes into repositories. CI practices can help you identify integration conflicts and reduces the likelihood of large, risky merges. For more information, see the [Continuous integration guide](/azure/well-architected/devops/release-engineering-ci).
+- Use CI practices to regularly integrate code changes into repositories. CI practices can help you identify integration conflicts and reduce the likelihood of large, risky merges. For more information, see the [Continuous integration guide](/azure/well-architected/devops/release-engineering-ci).
 
 - Use feature flags to selectively enable or disable new features or changes in production. Feature flags can help you control the exposure of new code and quickly roll back deployment if issues arise.
 
@@ -106,7 +106,7 @@ In some cases, the emergency might result in limited quality and testing gates, 
 
 - Use [Azure Logic Apps](/azure/logic-apps/logic-apps-overview#more-about-azure-logic-apps) to create a new version of the application whenever an update is made to it. Azure maintains a history of application versions and can revert or promote to any previous version.
 
-- Many Azure database services provide point-in-time restore functionality that can help you roll back. Services that support point-in-time restore include:
+- Many Azure Database services provide point-in-time restore functionality that can help you roll back. Services that support point-in-time restore include:
 
   - [Azure SQL Database](/azure/azure-sql/database/recovery-using-backups)
   - [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/point-in-time-restore)
@@ -118,7 +118,7 @@ In some cases, the emergency might result in limited quality and testing gates, 
 
 Building and maintaining safe deployment practices is complex and your success in fully implementing robust standards depends on the maturity of your practices across many areas of software development.  Use of automation, IaC-only for infrastructure changes, consistency in branching strategies, use of feature flags, and many other practices can help to ensure safe deployment. Use this guide to optimize your workload and inform your plans for improvement as your practices evolve.
 
-There are tradeoffs for each deployment model discussed in this guide. For example, two versions of an application are supported on the same infrastructure during canary deployments, which increases the management burden on the workload and support teams. Conversely, two sets of production infrastructure are run at the same time during blue-green deployments, which results in extra cost and increased management workload.
+There are tradeoffs for each deployment model discussed in this guide. For example, during canary deployments, two versions of an application are supported on the same infrastructure, which increases the management burden on the workload and support teams. Conversely, during blue-green deployment, two sets of production infrastructure are run at the same time, which might result in extra cost and increased management workload.
 
 ## Example
 
@@ -148,7 +148,7 @@ See the [blue-green deployment of Azure Kubernetes Service (AKS) clusters](/azur
 - [Testing your application and Azure environment](/azure/well-architected/devops/release-engineering-testing)
 - [VM Applications](/azure/virtual-machines/vm-applications-how-to)
 
-## Community links
+## Community resources
 
 - [Advancing safe deployment practices](https://azure.microsoft.com/blog/advancing-safe-deployment-practices/)
 - [GitHub Actions](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)
