@@ -14,7 +14,7 @@ ms.topic: conceptual
 [PE:12](continuous-performance-optimize.md)| **Continuously optimize performance. Focus on components that show deteriorating performance over time, such as databases and networking features.**|
 |---|---|
 
-This guide describes the recommendations for continuous performance optimization. Continuous performance optimization is to the process of constantly monitoring, analyzing, and improving performance efficiency. Performance efficiency adapts to increases and decreases in demand. Performance optimization needs to be an ongoing activity throughout the life of the workload. Workload performance often degrades or becomes excessive over time, and factors to consider include changes in usage patterns, demand, features, and technical debt.
+This guide describes the recommendations for continuous performance optimization. Continuous performance optimization is the process of constantly monitoring, analyzing, and improving performance efficiency. Performance efficiency adapts to increases and decreases in demand. Performance optimization needs to be an ongoing activity throughout the life of the workload. Workload performance often degrades or becomes excessive over time, and factors to consider include changes in usage patterns, demand, features, and technical debt.
 
 **Definitions**
 
@@ -30,13 +30,13 @@ Performance efficiency is when workload capacity aligns to actual usage. A workl
 
 ### Prioritize optimization efforts
 
-Proactively optimizing performance in a workload means taking proactive measures to improve and enhance the performance of the workload before any performance issues arise. Using proactive measures involves identifying potential bottlenecks, monitoring performance metrics, and implementing optimizations to ensure that the workload operates efficiently and meets the desired performance goals. Based on the analysis of deteriorating components, critical flows, and technical debt, you can implement performance optimizations specific to each area. It might involve code changes, infrastructure adjustments, or configuration updates.
+Proactively optimizing performance in a workload means taking proactive measures to improve and enhance the performance of the workload before any performance issues arise. Using proactive measures involves identifying potential bottlenecks, monitoring performance metrics, and implementing optimizations to ensure that the workload operates efficiently and meets the desired performance goals. Based on the analysis of deteriorating components, critical flows, and technical debt, you can implement performance optimizations specific to each area. Improvements might involve code changes, infrastructure adjustments, or configuration updates.
 
-**Prioritize deteriorating components.** A workload often has components such as databases and networking components that are prone to performance degradations over time. As the workload evolves and usage patterns change, these changes often affect the performance of individual components in the workload. Increased data in databases can lead to longer query execution times and slower data retrieval. Changes in usage patterns might result in suboptimal query design. Queries that were once efficient can become inefficient as the workload evolves. Inefficient queries can consume excessive resources and degrade database performance. Increased workload usage can lead to higher network traffic, causing congestion and latency issues.
+**Prioritize deteriorating components.** A workload often has components such as databases and networking components that are prone to performance degradations over time. As the workload evolves and usage patterns change, these changes often affect the performance of individual components in the workload. Increased data in databases can lead to longer query run times and slower data retrieval. Changes in usage patterns might result in suboptimal query design. Queries that were once efficient can become inefficient as the workload evolves. Inefficient queries can consume excessive resources and degrade database performance. Increased workload usage can lead to higher network traffic, causing congestion and latency issues.
 
-It is important to make continuous efforts to optimize the performance of these components. Be proactive in identifying and addressing performance issues in your workload. By prioritizing known deteriorating components, you can proactively address potential performance issues and ensure the smooth operation of your workload. It might involve implementing performance tuning techniques, optimizing resource allocation, or upgrading hardware or software components as needed.
+It's important to make continuous efforts to optimize the performance of these components. Proactively identify and address performance issues in your workload. By prioritizing known deteriorating components, you can proactively address potential performance issues and ensure the smooth operation of your workload. It might involve implementing performance tuning techniques, optimizing resource allocation, or upgrading hardware or software components as needed.
 
-**Prioritize critical flows.** *Critical flows* are the most important and high-priority processes or workflows in the workload. By prioritizing these critical flows, you ensure that the most essential parts of the workload are optimized for performance. Knowing which flows are critical helps prioritize optimization efforts. Optimizing the performance efficiency of the most important areas of your application provides the highest return on investment. You should monitor critical flows and the most popular pages and look for ways to make them more efficient.
+**Prioritize critical flows.** *Critical flows* are the most important and high-priority processes or workflows in the workload. By prioritizing these critical flows, you ensure that the most essential parts of the workload are optimized for performance. Knowing which flows are critical helps prioritize optimization efforts. Optimizing the performance efficiency of the most important areas of your application provides the highest return on investment. You should monitor critical flows and the most popular pages. Look for ways to make them more efficient.
 
 **Address technical debt.** *Technical debt* refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. You might have introduced technical debt to meet a deadline, but you need to address the technical debt in your workload in the optimization process.
 
@@ -46,27 +46,27 @@ Take advantage of the many platform features and tooling that can provide perfor
 
 ### Automate performance optimization
 
-Automation can eliminate repetitive and time-consuming manual processes, allowing them to be performed efficiently. Automation reduces the chances of human error and ensures consistency in executing optimization tasks. By automating these tasks, you can also free up people to focus on more complex and value-added activities. You can apply automation to various tasks, such as performance testing, deployment, and monitoring:
+Automation can eliminate repetitive and time-consuming manual processes, allowing them to be performed efficiently. Automation reduces the chances of human error and ensures consistency in running optimization tasks. By automating these tasks, you can also free up people to focus on more complex activities and activities that add value. You can apply automation to various tasks, such as performance testing, deployment, and monitoring:
 
 - *Automated performance testing*: Use automated performance testing tools like JMeter, K6, or Selenium to simulate different workloads and scenarios.
 
-- *Automated deployment*: Implement automated deployment processes to ensure consistent and error-free deployments. Use CI/CD tools to automate the deployment process. These tools can help you identify performance bottlenecks by testing against endpoints, checking HTTP statuses, and even validating data quality and variations.
+- *Automated deployment*: Implement automated deployment processes to ensure consistent and error-free deployments. Use CI/CD tools to automate the deployment process. These tools can help you identify performance bottlenecks as you use them to test against endpoints, check HTTP statuses, and even validate data quality and variations.
 
 - *Monitoring and alerting*: Set up automated monitoring and alerting systems to continuously monitor performance metrics and detect any deviations or anomalies. When performance issues are detected, automated alerts can be triggered to notify the appropriate teams or individuals.
 
-- *Incident management*: Implement an automated incident management system that can receive alerts, create tickets, and assign them to the appropriate teams for resolution. Doing so helps ensure that performance issues are promptly addressed and assigned to the right resources.
+- *Incident management*: Implement an automated incident management system that can receive alerts, create tickets, and assign tickets to the appropriate teams for resolution. These steps help ensure that performance issues are promptly addressed and assigned to the right resources.
 
 - *Automated diagnostics*: Develop automated diagnostic tools or scripts that can analyze performance data and identify the root causes of performance issues. These tools can help pinpoint specific areas or components of the system that are causing performance problems.
 
 - *Automated remediation actions*: Define and implement automated remediation actions that can be triggered when specific performance issues are detected. These actions can include restarting services, adjusting resource allocation, clearing caches, or implementing other performance optimization techniques.
 
-- *Self-healing systems*: Build self-healing capabilities into your system by automating the recovery process for known performance issues. This capability can involve automatically applying fixes or adjustments to the system configuration to restore optimal performance.
+- *Self-healing systems*: Build self-healing capabilities into your system by automating the recovery process for known performance issues. This capability can involve automatically fixing or adjusting the system configuration to restore optimal performance.
 
 ### Optimize databases
 
 Continuously optimizing databases involves identifying and implementing optimizations to ensure that databases can handle loads, deliver fast response times, and minimize resource utilization. By regularly optimizing databases, you can improve application performance, reduce downtime, and enhance the overall user experience.
 
-- *Optimize database queries*: Poorly written SQL statements can degrade database performance. Inefficient JOIN conditions can cause unneeded data processing. Complex subqueries, nested queries, and excessive functions can cause slow execution. Queries that retrieve too much data should be rewritten. You should identify your most common or critical database queries and optimize them. The optimization helps ensure faster query execution.
+- *Optimize database queries*: Poorly written SQL statements can degrade database performance. Inefficient JOIN conditions can cause unneeded data processing. Complex subqueries, nested queries, and excessive functions can reduce running speed. Queries that retrieve too much data should be rewritten. You should identify your most common or critical database queries and optimize them. The optimization helps ensure faster queries.
 
 - *Maintain indexes*: Evaluate your indexing strategy to ensure that indexes are properly designed and maintained. Index maintenance includes identifying unused or redundant indexes and creating indexes that align with the query patterns. Database indexes help accelerate data retrieval operations. For relational databases, you need to monitor index fragmentation. You should rebuild or reorganize indexes regularly. For nonrelational databases, you need to pick the correct indexing policy for your workload. Use automatic tuning on databases where available. These features include automatically creating missing indexes, dropping unused indexes, and plan correction. For more information, see [Maintaining indexes to improve performance](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
@@ -80,15 +80,15 @@ Optimizing data efficiency is the process of ensuring that data is stored, proce
 
 - *Use data tiering*: Data tiering involves categorizing data based on its importance or frequency of access and storing data in different tiers accordingly. Setting up data tiering allows for more efficient use of storage resources and improves performance. Frequently accessed or critical data can be stored in high-performance tiers, while less frequently accessed or less critical data can be stored in lower-cost tiers. The goal is to review data usage over time to ensure data is in the correct tier. As data priorities change, data should move from one tier to another.
 
-- *Implement time-to-live*: TTL is a mechanism that sets an expiration time for data. TTL allows data to be automatically deleted or archived after a certain period, reducing storage requirements and improving data management. By setting an appropriate TTL, your unnecessary data can be removed, freeing up storage space and improving overall efficiency. Session data, temporary files, and cache data are frequent targets for TTL. Database entries can also have a TTL.
+- *Implement time-to-live*: TTL is a mechanism that sets an expiration time for data. TTL allows data to be automatically deleted or archived after a certain period, reducing storage requirements and improving data management. By setting an appropriate TTL, you allow unnecessary data to be removed, freeing up storage space and improving overall efficiency. Session data, temporary files, and cache data are frequent targets for TTL. Database entries can also have a TTL.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk:** Setting a TTL that's too short can create performance issues.
+:::image type="icon" source="../_images/risk.svg"::: **Risk:** A TTL that's too short can create performance issues.
 
 ### Develop a performance culture
 
-A performance culture is an environment in which continuous improvement is expected and the team learns from production. Performance optimization requires specialized skills. Workload teams need the right skills and mindset for optimizing their performance to meet increases and decreases in demand. You also need to allocate their time to support the required monitoring and remediation of performance issues as they arise. These teams need clear expectations. For example, performance targets, baselines, and deviation thresholds (how far from baseline is acceptable) need to be highly visible and socialized.
+A performance culture is an environment in which continuous improvement is expected and the team learns from production. Performance optimization requires specialized skills. Workload teams need the right skills and mindset to optimize their performance to meet increases and decreases in demand. You also need to allocate their time to support the required monitoring and remediation of performance issues as they arise. These teams need clear expectations. For example, performance targets, baselines, and deviation thresholds (how far from baseline is acceptable) need to be highly visible and socialized.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Continuous performance optimizations require a team with the right skills and time to find and fix performance issues. Dedicating personnel to performance does add operational cost. With limited personnel resources, continuous performance optimization could take time away from other operational tasks.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Continuous performance optimizations require a team that has the right skills and time to find and fix performance issues. Dedicating personnel to performance adds operational cost. If you have limited personnel resources, continuous performance optimization could take time away from other operational tasks.
 
 ## Azure facilitation
 
@@ -111,7 +111,7 @@ You can [customize your indexing policies](/azure/cosmos-db/index-policy) by usi
 - [Optimize index maintenance to improve query performance and reduce resource consumption](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)
 - [Improve the performance of Azure applications by using Azure Advisor](/azure/advisor/advisor-performance-recommendations)
 - [Automatic tuning in Azure SQL Database and Azure SQL Managed Instance](/azure/azure-sql/database/automatic-tuning-overview)
-- [Indexing policies in Azure Cosmos DB](/en-us/azure/cosmos-db/index-policy)
+- [Indexing policies in Azure Cosmos DB](/azure/cosmos-db/index-policy)
 
 ## Performance Efficiency checklist
 
