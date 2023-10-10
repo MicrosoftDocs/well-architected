@@ -15,10 +15,10 @@ Use this matrix to familiarize yourself with the key concepts:
 
 | Pillar | Workload concern | Apply the principles | Strike a balance
 |--------|-------------|-------------------|-----------
-| [**Reliability**][resiliency-pillar] | Resiliency, availability, recovery| Design for business requirements, resilience, recovery, operations, while keeping it simple. <br> [Design principles](reliability/principles.md) | [Tradeoffs](./reliability/tradeoffs.md)
+| [**Reliability**][resiliency-pillar] | Resiliency, availability, recovery| Design for business requirements, resilience, recovery, operations, while keeping it simple. <br> [Design principles](reliability/principles.md) | [Tradeoffs](reliability/tradeoffs.md)
 | [**Security**][security-pillar] | Data protection, threat detection, mitigation |Protect confidentiality, integrity, and availability. <br> [Design principles](security/principles.md)|[Tradeoffs](security/tradeoffs.md)
 | [**Cost Optimization**][cost-pillar] | Cost modeling, budgets, reduce waste|Optimize on usage and rate utilization keeping a cost-efficient mindset. <br> [Design principles](./cost-optimization/principles.md)|[Tradeoffs](cost-optimization/tradeoffs.md)|
-| [**Operational Excellence**][devops-pillar] | Holistic observability, DevOps practices |Streamline operations with standards, comprehensive monitoring, and safe deployment practices. <br> [Design principles](operational-excellence/principles.md)|[Tradeoffs](./operational-excellence/tradeoffs.md)|
+| [**Operational Excellence**][devops-pillar] | Holistic observability, DevOps practices |Streamline operations with standards, comprehensive monitoring, and safe deployment practices. <br> [Design principles](operational-excellence/principles.md)|[Tradeoffs](operational-excellence/tradeoffs.md)|
 | [**Performance Efficiency**][scalability-pillar] |Scalability, load testing| Scale horizontally, test early and often, and monitor health of the solution. <br>[Design principles](./performance-efficiency/principles.md)|[Tradeoffs](performance-efficiency/tradeoffs.md)|
 
 > [!IMPORTANT]
