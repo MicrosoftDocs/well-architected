@@ -32,8 +32,6 @@ landingContent:
         links:
           - text: Reliability
             url: /training/modules/azure-well-architected-introduction/6-reliability
-          - text: Resilience in Azure whitepaper
-            url: https://azure.microsoft.com/resources/resilience-in-azure-whitepaper/
       - linkListType: video
         links:
           - text: Inside Azure datacenter architecture with Mark Russinovich
