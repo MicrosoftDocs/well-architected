@@ -104,9 +104,13 @@ Each cost item should have a directly responsible individual (DRI) as the *resou
 
 Regularly review spending against the budget and cost model with stakeholders. Regular reviews help in identifying cost trends, outliers, and areas for optimization. It's important to involve stakeholders such as finance teams, operations teams, and decision-makers in these reviews to drive cost optimization initiatives. Reviews ensure that costs are aligned with expectations and allow for adjustments if necessary. Monitor changes in usage patterns, adjust resource allocations as needed, and implement cost-saving measures based on ongoing analysis of cost data.
 
-**Analyze cost data**. Review the cost data collected from your workload to gain insights into your spending patterns. Reviews can include analyzing resource utilization, identifying cost drivers, and understanding the distribution of costs across different components of your workload. You should also notice increases and decreases in costs, for example, in compute usage and network transfer costs. Look for areas where you can optimize costs without sacrificing performance or functionality. For example, identify underutilized resources, rightsizing instances, or cost-saving features provided by your cloud provider.
+#### Analyze cost data
 
-**Review architectural choices**. Assess the architectural choices you make for your workload and evaluate their affect on cost. Consider whether there are alternative architectural patterns or cloud-native offerings that can provide cost savings, such as using platform as a service (PaaS) or software as a service (SaaS) solutions instead of infrastructure as a service (IaaS).
+Review the cost data collected from your workload to gain insights into your spending patterns. Reviews can include analyzing resource utilization, identifying cost drivers, and understanding the distribution of costs across different components of your workload. You should also notice increases and decreases in costs, for example, in compute usage and network transfer costs. Look for areas where you can optimize costs without sacrificing performance or functionality. For example, identify underutilized resources, rightsizing instances, or cost-saving features provided by your cloud provider.
+
+#### Review architectural choices
+
+When examining the architectural decisions of your workload, it's essential to focus on cost implications. Utilizing alternative patterns or cloud-native offerings can lead to significant cost savings. Opting for Platform as a Service (PaaS) or Software as a Service (SaaS) over Infrastructure as a Service (IaaS) can be more economical. With PaaS, not only are infrastructure expenses part of the service's pricing, but the platform also simplifies the provisioning and management of these resources under a unified cost. For instance, deploying a lower tier virtual machine as a jump box might introduce additional costs for storage, server management, and public IP configuration. In contrast, PaaS handles these complexities, offering a consolidated cost that often encompasses enhanced security.
 
 ### Automate alerts
 
@@ -126,11 +130,21 @@ Implement automated processes to identify and address cost variances in realtime
 
 ## Azure facilitation
 
-- **Data collection**: Azure provides services like Microsoft Cost Management and Azure Advisor that help track and analyze your Azure spending and usage. These services capture the necessary data to calculate costs accurately. Use Azure tags to group costs to align with different business units, engineering environments, and cost departments. Tags provide the visibility needed for businesses to manage and allocate costs across different groups.
+**Data collection**: Azure provides services like Microsoft Cost Management and Azure Advisor that help track and analyze your Azure spending and usage. These services capture the necessary data to calculate costs accurately. Use Azure tags to group costs to align with different business units, engineering environments, and cost departments. Tags provide the visibility needed for businesses to manage and allocate costs across different groups.
 
-- **Cost reports**: Cost Management offers customizable reports that provide insights into your incurred costs, prepaid costs, trends, and forecasts. These reports can be tailored to your specific requirements and provide a comprehensive view of your costs. Microsoft Power BI can help with collecting and reviewing cost data. Power BI provides a comprehensive solution for collecting, reviewing, and analyzing cost data. It enables you to gain insights, track trends, and optimize costs effectively. It integrates with Cost Management and allows you to import cost data into Power BI.
+**Cost reports**: Cost Management offers customizable reports that provide insights into your incurred costs, prepaid costs, trends, and forecasts. These reports can be tailored to your specific requirements and provide a comprehensive view of your costs. Microsoft Power BI can help with collecting and reviewing cost data. Power BI provides a comprehensive solution for collecting, reviewing, and analyzing cost data. It enables you to gain insights, track trends, and optimize costs effectively. It integrates with Cost Management and allows you to import cost data into Power BI.
 
-- **Automated alerts**: Cost Management enables you to set up automated alerts based on spending thresholds. These alerts can trigger notifications to stakeholders when costs exceed predefined limits or deviate from expected patterns. You should use Advisor cost alerts and create cost anomaly alerts with your subscription. This feature can highlight unexpected spikes or drops in costs, allowing for timely investigation and action.
+**Review architecture design choices**: Azure provides a wide range of PaaS resources. Here are some examples of when you might consider PaaS options:
+
+|Task|Use|
+|---|---|
+|Host a web server| [Azure App Service](/azure/app-service/) instead of setting up IIS servers.|
+|Indexing and querying heterogenous data|[Azure Cognitive Search](/azure/search/search-what-is-azure-search) instead of ElasticSearch.|
+|Host a database server|Azure offers many SQL and no-SQL options such as Azure SQL Database and Azure Cosmos DB.|
+|Secure access to virtual machine|[Azure Bastion](/azure/bastion) instead of virtual machines as jump boxes.|
+|Network security|[Azure Firewall](/azure/firewall/) instead of virtual network appliances.|
+
+**Automated alerts**: Cost Management enables you to set up automated alerts based on spending thresholds. These alerts can trigger notifications to stakeholders when costs exceed predefined limits or deviate from expected patterns. You should use Advisor cost alerts and create cost anomaly alerts with your subscription. This feature can highlight unexpected spikes or drops in costs, allowing for timely investigation and action.
 
 ## Related links
 
