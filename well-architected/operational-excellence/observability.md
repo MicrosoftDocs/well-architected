@@ -82,7 +82,7 @@ As much as possible, collect logs from your cloud platform. You might be able to
 
 Avoid retrieving telemetry data manually from every component. Move data to a central location and consolidate it there. For a multi-region solution, we recommend that you first collect, consolidate, and store data on a region-by-region basis, and then aggregate the regional data into a single central system. 
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Be aware that there are cost implications to having regional and centralized data stores.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Be aware that there are cost implications to having regional and centralized data stores.
 
 To optimize the use of bandwidth, prioritize based on the importance of data. You can transfer less urgent data in batches. However, this data must not be delayed indefinitely, especially if it contains time-sensitive information.
 

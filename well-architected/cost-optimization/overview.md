@@ -48,7 +48,7 @@ The Azure Well-Architected Framework includes the following articles in the cost
 |[Provision cloud resources](./provision-checklist.md)|Deployment of workload cloud resources can optimize cost.|
 |[Monitor cost](./monitor-alert.md)|Azure Cost Management has an alert feature. Alerts are generated when consumption reaches a threshold.|
 |[Optimize cost](./optimize-checklist.md)|Monitor and optimize the workload by using the right resources and sizes.
-|[Tradeoffs for costs](./tradeoffs.md)|As you design the workload, consider tradeoffs between cost optimization and other aspects of the design, such as security, scalability, resilience, and operability.
+|[Cost Optimization tradeoffs](./tradeoffs.md)|As you design the workload, consider tradeoffs between cost optimization and other aspects of the design, such as reliability, security, operability, and performance.
 
 ## Next section
 

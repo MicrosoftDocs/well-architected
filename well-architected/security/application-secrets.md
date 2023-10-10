@@ -3,7 +3,7 @@ title: Recommendations for protecting application secrets
 description: Learn about recommendations for managing application secrets. Find out how to create, store, and distribute secrets securely.
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 11/15/2023
+ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
@@ -73,7 +73,7 @@ For more information, see [Recommendations for identity and access management](i
 
 Certificates should only be stored in Key Vault or in the OS's certificate store. For example, storing an X.509 certificate in a PFX file or on a disk isn't recommended. If you need a higher level of security, choose systems that have hardware security module (HSM) capabilities instead of software-based secret stores.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: HSM solutions are offered at a higher cost. You might also see an effect on application performance due to added layers of security.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: HSM solutions are offered at a higher cost. You might also see an effect on application performance due to added layers of security.
 
 A dedicated secret management system makes it easy to store, distribute, and control access to application secrets. Only authorized identities and services should have access to secret stores. Access to the system can be restricted via permissions. Always apply the least-privilege approach when assigning permissions.
 
@@ -95,7 +95,7 @@ Rotation processes should be automated and deployed without any human interactio
 
 ### Safe practices for using secrets
 
-As a secret generator or operator, you should be able to distribute secrets in a safe manner. Many organizations use tools to securely share secrets both within the organization and externally to partners. In absence of a tool, have a process to secure credential handoff to authorized recipients. Your disaster recovery plans should include secret recovery procedures. Have a process for situations where a key is compromised or leaked and needs to be regenerated on demand. Consider the following best practices for safety when using secrets:
+As a secret generator or operator, you should be able to distribute secrets in a safe manner. Many organizations use tools to securely share secrets both within the organization and externally to partners. In absence of a tool, have a process for properly  handing off credentials to authorized recipients. Your disaster recovery plans should include secret recovery procedures. Have a process for situations where a key is compromised or leaked and needs to be regenerated on demand. Consider the following best practices for safety when using secrets:
 
 #### Prevent hardcoding
 
@@ -103,7 +103,7 @@ As a secret generator or operator, you should be able to distribute secrets in a
 
 You can avoid this situation by using managed identities to eliminate the need to store credentials. Your application uses its assigned identity to authenticate against other resources via the identity provider (IdP). Test in non-production environments with fake secrets during development to prevent accidental exposure of real secrets.
 
-**Implement tools that periodically detect exposed secrets** in your application code and build artifacts. You can add these tools as Git pre-commit hooks that scan for credentials before source code commits deploy. Review and sanitize application logs regularly to help ensure that no secrets are inadvertently recorded. You can also reinforce detection via peer reviews.
+**Use tools that periodically detect exposed secrets** in your application code and build artifacts. You can add these tools as Git pre-commit hooks that scan for credentials before source code commits deploy. Review and sanitize application logs regularly to help ensure that no secrets are inadvertently recorded. You can also reinforce detection via peer reviews.
 
 > [!NOTE]
 > If the scanning tools discover a secret, that secret must be considered compromised. It should be revoked.

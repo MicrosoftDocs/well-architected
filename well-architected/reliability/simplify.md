@@ -162,7 +162,7 @@ Refer to the other guides in this series for tradeoffs related to the points in 
 - [Data partitioning](partition-data.md#tradeoffs)
 - [Define reliability targets](metrics.md#tradeoffs)
 - [Disaster recovery](disaster-recovery.md#tradeoffs)
-- [Failure mode analysis](failure-mode-analysis.md#tradeoff)
+- [Failure mode analysis](failure-mode-analysis.md#tradeoffs)
 - [Identify and rate flows](identify-flows.md#tradeoffs)
 - [Monitoring and alerting](monitoring-alerting-strategy.md#tradeoffs)
 - [Redundancy](redundancy.md#tradeoffs)

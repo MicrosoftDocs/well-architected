@@ -181,7 +181,7 @@ Conduct load and stress tests to evaluate the performance of the workload under 
 
 1. Repeat the scalability tests after implementing optimizations to validate the improvements and help ensure the system can handle the expected workloads efficiently.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**:  Consider the budget constraints and cost-efficiency goals of your workload. Vertical scaling might involve higher costs due to the need for larger and more powerful resources. Horizontal scaling offers cost savings by using smaller instances that can be added or removed based on demand.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**:  Consider the budget constraints and cost-efficiency goals of your workload. Vertical scaling might involve higher costs due to the need for larger and more powerful resources. Horizontal scaling offers cost savings by using smaller instances that can be added or removed based on demand.
 
 ### Partition workload
 
@@ -207,7 +207,7 @@ Partitioning is the process of dividing a large dataset or workload into smaller
 
 **Test and optimize partitioning.** Test the partitioning scheme to verify the effectiveness and efficiency of the strategy so you can make adjustments to improve performance. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Partitioning adds complexity to the design and development of a system. Partitioning requires conversations and planning between developers and database administrators.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Partitioning adds complexity to the design and development of a system. Partitioning requires conversations and planning between developers and database administrators.
 
 > ![Risk icon](../_images/risk.svg) **Risk**: Partitioning introduces some potential problems that need to be considered and addressed, including:
 >

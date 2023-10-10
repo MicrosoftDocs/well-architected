@@ -92,7 +92,11 @@ The security team might audit all workloads and run these tests as needed. As a 
 
 In other cases, you might be required to run tests and report the security state of the system against the potential threat.
 
+<<<<<<< HEAD
 > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Because improvised tests are disruptive events, expect to reprioritize tasks, which may delay other planned work.
+=======
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Because they are disruptive events, expect reprioritization of tasks, which may delay other planned work.
+>>>>>>> 6693d6ea5d8914a1035a129d58fde9029924fbf2
 
 > ![Risk icon](../_images/risk.svg) **Risk**: There's risk of the unknown. Improvised tests might be one-time efforts without established processes or tools. But the predominant risk is the potential interruption of the rhythm of business. You need to evaluate those risks relative to the benefits.
 
@@ -154,7 +158,11 @@ These test types offer two different perspectives. In black-box tests, the inter
 
 Security experts who aren't part of the organization's IT or application teams conduct penetration testing, or pentesting. They look at the system in the way that malicious actors scope an attack surface. Their goal is to find security gaps by gathering information, analyzing vulnerabilities, and reporting the results.
 
+<<<<<<< HEAD
 > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Penetration tests are improvised and can be expensive in terms of disruptions and monetary investment because pentesting is typically a paid offering by third-party practitioners.
+=======
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Penetration tests are ad hoc and can also be expensive in terms of disruptions and financially because pentesting is typically a paid offering by third-party practitioners.
+>>>>>>> 6693d6ea5d8914a1035a129d58fde9029924fbf2
 
 > ![Risk icon](../_images/risk.svg) **Risk**: A pentesting exercise might affect the runtime environment and might disrupt the availability for normal traffic.
 

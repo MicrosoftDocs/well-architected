@@ -130,7 +130,7 @@ You can use a system like security information and event management (SIEM) to **
 
 A SIEM system can **generate alerts** based on correlated and normalized data. These alerts are a significant resource during an incident response process.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: SIEM systems can be expensive, complex, and require specialized skills. However, if you don't have one, you might need to correlate data on your own. This can be a time-consuming and complex process.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: SIEM systems can be expensive, complex, and require specialized skills. However, if you don't have one, you might need to correlate data on your own. This can be a time-consuming and complex process.
 
 SIEM systems are usually managed by an organization's central teams. If your organization doesn't have one, consider advocating for it. It could alleviate the burden of manual log analysis and correlation to allow more efficient and effective security management.
 

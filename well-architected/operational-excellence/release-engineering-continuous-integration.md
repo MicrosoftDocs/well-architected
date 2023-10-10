@@ -1,19 +1,24 @@
 ---
-title: Release engineering continuous integration
-description: Learn how to use continuous integration (CI) in release engineering by using Azure CI pipelines, source control integration, test integration, and more.
-author: martinekuan
-ms.author: martinek
-ms.date: 05/01/2023
+title: Recommendations for using continuous integration
+description: Learn how to use continuous integration (CI) in release engineering, source control integration, test integration, and more.
+author: claytonsiemens77
+ms.author: csiemens
+ms.date: 11/15/2023
 ms.topic: conceptual
+ms.custom:
+  - guide
 ---
 
-# Release engineering: Continuous integration
+# Recommendations for using continuous integration
+
+**Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:** 
+
+|[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. | 
+|---|---| 
 
 As code is developed, updated, or even removed, having a friction-free and safe method to integrate these changes into the main code branch is paramount to enabling developers to provide value fast. As a developer, you can make small code changes, push these changes to a code repository, and get almost instantaneous feedback on the quality, test coverage, and introduced bugs. This process lets you work faster and with more confidence and less risk. Continuous integration (CI) is a practice where source control systems and software deployment pipelines are integrated to provide automated build, test, and feedback mechanisms for software development teams.
 
-Continuous integration is about ensuring that software is ready for deployment but doesn't include the deployment itself. This article covers the basics of continuous integration and offers links and examples for more in-depth content.
-
-## Continuous integration
+## Key design strategies
 
 Continuous integration is a software development practice with which developers integrate software updates into a source control system on a regular cadence. The continuous integration process starts when an engineer creates a pull request signaling to the CI system that code changes are ready to be integrated. Ideally, integration validates the code against several baselines and tests and provides quick feedback to the requesting engineer on the status of these tests. Assuming baseline checks and testing have gone well, the integration process produces and stages assets such as compiled code and container images that will deploy the updated software.
 
@@ -39,14 +44,7 @@ A continuous integration pipeline involves a piece of software, in many cases cl
 
 In most cases, the pipeline software is attached to source control such that when pull requests are created or software is merged into a specific branch, the continuous integration pipeline is run. Source control integration also provides the opportunity for providing CI feedback directly on pull requests.
 
-Many solutions provide continuous integration pipeline capabilities.
-
-**Learn more**
-
-To learn how to create a continuous integration pipeline with either GitHub or Azure DevOps, see:
-
-- [Create your first pipeline](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops)
-- [Using starter workflows](https://docs.github.com/en/free-pro-team@latest/actions/guides/setting-up-continuous-integration-using-workflow-templates)
+Many solutions like Azure DevOps Pipelines or GitHub Actions provide continuous integration pipeline capabilities.
 
 ### Source control integration
 
@@ -58,7 +56,7 @@ The integration of your continuous integration pipeline with your source control
 
 The following image shows the integration between GitHub and an Azure DevOps pipeline. In this example, a pull request has been created, which in turn has triggered an Azure DevOps pipeline. The pipeline status can be seen directly in the pull request.
 
-![Screenshot of an Azure DevOps status badge in a GitHub repository.](../devops/ado-github-status.png)
+![Screenshot of an Azure DevOps status badge in a GitHub repository.](media/release-engineering-continuous-integration/ado-github-status.png)
 
 #### Test integration
 
@@ -86,7 +84,7 @@ The following code snippet shows a test step from an Azure DevOps pipeline. Ther
 
 The following image shows the test results as seen in the Azure DevOps portal:
 
-![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](../devops/ado-tests.png)
+![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](media/release-engineering-continuous-integration/ado-tests.png)
 
 #### Failed tests
 
@@ -96,16 +94,29 @@ Failed tests should temporarily block a deployment and lead to a deeper analysis
 
 Many developers show that their code quality is high by displaying a status badge in their repo. The following image shows an Azure Pipelines badge as displayed on the Readme file for an open-source project on GitHub:
 
-![Screenshot of an Azure Pipelines badge on a Readme file on GitHub.](../devops/github-status-badge.png)
+![Screenshot of an Azure Pipelines badge on a Readme file on GitHub.](media/release-engineering-continuous-integration/github-status-badge.png)
 
-**Learn more**
+## Azure facilitation
 
-To learn how to display badges in your repositories, see:
+[Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) is a collection of services that help you build a collaborative, efficient, and consistent development practice.
 
-- [Add an Azure Pipeline status badge to your repository](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&tabs=java%2ctfs-2018-2%2cbrowser&view=azure-devops#add-a-status-badge-to-your-repository).
-- [Add a GitHub workflow status badge to your repository](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/adding-a-workflow-status-badge).
+[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) provides build and release services to support continuous integration and delivery of your applications.
+
+[GitHub for Actions for Azure](https://azure.github.io/actions/) allows you to automate CI/CD processes and integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production. 
+
+## Related links
+
+Learn how to create a continuous integration pipeline with either GitHub or Azure DevOps:
+
+- [Create your first pipeline](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops)
+- [Using starter workflows](https://docs.github.com/free-pro-team@latest/actions/guides/setting-up-continuous-integration-using-workflow-templates)
+
+Learn how to display badges in your repositories:
+
+- [Add an Azure Pipeline status badge to your repository](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&tabs=java%2ctfs-2018-2%2cbrowser&view=azure-devops#add-a-status-badge-to-your-repository)
+- [Add a GitHub workflow status badge to your repository](https://docs.github.com/free-pro-team@latest/actions/managing-workflow-runs/adding-a-workflow-status-badge)
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Release Engineering: Testing](./release-engineering-testing.md)
+> [Operational Excellence checklist](checklist.md) 

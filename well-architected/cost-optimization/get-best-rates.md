@@ -45,7 +45,7 @@ Consumption pricing is a flexible pricing model that allows you to pay for the s
 - *Preproduction environments*: Consumption-based pricing is preferred for development and test environments that are ephemeral. It offers the advantage of paying only during the project. Ensure you provide resources aligned with the development effort, where resources cost less when development is scaled down.
 - *Short-term projects*: Short-term projects often have specific resource requirements. Pay-as-you-go pricing allows you to pay for the resources only during the project.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Many on-premises environments are always on and always available. Being intentional about services may lower rates, but you must account for some spin up time and operational overhead.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Many on-premises environments are always on and always available. Being intentional about services may lower rates, but you must account for some spin up time and operational overhead.
 
 #### Understand prepaid pricing
 

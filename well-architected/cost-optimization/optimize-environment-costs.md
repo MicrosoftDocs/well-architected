@@ -55,7 +55,7 @@ A disaster recovery (DR) environment refers to the infrastructure and processes 
 - *Determine recovery time objectives (RTO) and recovery point objectives (RPO):* Define the acceptable downtime and data loss limits for each system or application to guide the design of the DR environment.
 - *Optimize a cold DR environment*: A cold DR environment has limited to no infrastructure or running services. Many use infrastructure-as-code to quickly deploy infrastructure in a disruptive event. Your backup and storage policies need to meet the RPO and RTO of the environment. Ensure the amount and frequency of data backups isn't more robust than needed.
 
-:::image type="icon" source="../_images/trade-off.svg"::: It’s a cost-effective option but may involve longer recovery times.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: It's a cost-effective option but may involve longer recovery times.
 
 - *Optimize a hot DR environment*: A hot DR environment has all the infrastructure and services running and data mirrors the primary site in real-time. It provides near-instantaneous failover and minimal data loss if there's a disaster. Consider switching to an active-active deployment to optimize cost.
 - *Optimize a warm DR environment*: A warm DR approach is a middle ground between cold and hot DR. It’s partially active and is periodically synchronized with the primary site. It offers a balance between cost and recovery time. However, it’s the least cost-optimized approach. Consider shifting toward a cold or hot approach to optimize costs.
