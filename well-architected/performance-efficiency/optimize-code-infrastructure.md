@@ -149,7 +149,7 @@ Many applications require background tasks that run independently of the UI. The
 
 ### Optimize infrastructure performance
 
-To optimize infrastructure performance, tune the performance of hardware and network components to ensure optimal operation and resource utilization.
+Optimizing infrastructure performance means enhancing and adjusting infrastructure elements to ensure peak operation and the best use of resources for a workload. By fine-tuning infrastructure, you can minimize waste, reduce lags, and achieve more with the available resources. It ensures that workloads run reliably and swiftly, leading to improved user experiences and cost savings. To optimize infrastructure performance, consider the following strategies:
 
 **Add usage limits.** You can implement usage limits on some workload components. For example, to remove unstable pods, you can [define pod CPU and memory limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) in Azure Kubernetes Service (AKS). To optimize performance, you can [define memory limits in Java virtual machines (VMs)](/azure/spring-apps/concepts-for-java-memory-management).
 
