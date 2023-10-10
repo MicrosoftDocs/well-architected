@@ -91,7 +91,7 @@ Isolating critical flows means providing dedicated resources or capacity to supp
 
 ### Optimize capacity allocation
 
-Where you can't isolate critical flows, prioritize capacity allocations. Optimizing capacity allocation refers to the process of strategically distributing available capacity, like CPU, memory, storage, and network bandwidth, to different flows based on their priority and requirements. The goal is to ensure that the most critical flows (those with the highest priority) receive the necessary capacity to operate effectively. To decide how to allocate capacity, consider these strategies:
+Where you can't isolate critical flows, prioritize critical flows in capacity allocation. Optimizing capacity allocation refers to the process of strategically distributing available capacity, like CPU, memory, storage, and network bandwidth, to different flows based on their priority and requirements. The goal is to ensure that the most critical flows (those with the highest priority) receive the necessary capacity to operate effectively. To decide how to allocate capacity, consider these strategies:
 
 - *Assess resource capacity*: Evaluate how much resource capacity can be allocated to the flows. Capacity might include resources such as CPU, memory, storage, and network bandwidth. Understand the limitations and constraints of your infrastructure or environment.
 
