@@ -88,7 +88,7 @@ Optimizing data efficiency is the process of ensuring that data is stored, proce
 
 A performance culture is an environment in which continuous improvement is expected and the team learns from production. Performance optimization requires specialized skills. Workload teams need the right skills and mindset to optimize their performance to meet increases and decreases in demand. You also need to allocate their time to support the required monitoring and remediation of performance issues as they arise. These teams need clear expectations. For example, performance targets, baselines, and deviation thresholds (how far from baseline is acceptable) need to be highly visible and socialized.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Continuous performance optimizations require a team that has the right skills and time to find and fix performance issues. Dedicating personnel to performance adds operational cost. If you have limited personnel resources, continuous performance optimization could take time away from other operational tasks.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Continuous performance optimizations require a team that has the right skills and time to find and fix performance issues. Dedicating personnel to performance adds operational cost. If you have limited personnel resources, continuous performance optimization could take time away from other operational tasks.
 
 ## Azure facilitation
 

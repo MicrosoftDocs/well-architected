@@ -43,7 +43,7 @@ Instrumenting code refers to the practice of adding code snippets or libraries t
 
 In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code issue, the cheaper it's to fix it. You want to automate as much of this code analysis as possible. Use dynamic and static code analysis tools to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
 
 #### Identify hot paths
 

@@ -58,7 +58,7 @@ Data tiering and data retention policies are foundational to data lifecycle mana
 - *Define data lifecycle policies*. Data lifecycle policies that specify when and how data should be moved between storage tiers based on predefined criteria. For example, a policy can state that data must be retained in the hot tier for 30 days, in the cool tier for 90 days, and in the archive tier for one year. These policies ensure you keep data in the appropriate tier for the required duration. You should set the retention period based on factors such as legal requirements, industry regulations, or internal policies.
 - *Use automation*: Retention policies can trigger the movement of data between tiers. You should automate policies, using platform features before custom building of any solution. When the retention period for a particular tier expires, the policy can automatically move the data to the next lower-cost tier. For example, when the retention period for the hot tier ends, the policy can move the data to the cool tier, and so on. The policy ensures that data is continuously optimized based on its access patterns and cost requirements.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs:** Managing data retention policies require ongoing monitoring and maintenance. It can introduce more overhead for data management processes. They may also affect storage costs. Longer retention periods or the use of higher-cost storage tiers can increase storage expenses.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Managing data retention policies require ongoing monitoring and maintenance. It can introduce more overhead for data management processes. They may also affect storage costs. Longer retention periods or the use of higher-cost storage tiers can increase storage expenses.
 
 :::image type="icon" source="../_images/risk.svg"::: **Risk:** A poor implementation of data lifecycle management could lead to data loss or limited access to critical data. You should have proper backup and recovery mechanisms in place to mitigate the risk of data loss.
 
@@ -83,7 +83,7 @@ Optimizing data storage means finding strategies to decrease the amount of data 
 - *Capture less data*: Take a closer look at the data that is currently being captured. Determine if all the data is necessary for your needs or if there's any unnecessary data being captured. Stop capturing unnecessary data: Once you have identified the data that isn't needed, modify your data capture process to exclude that data. Consider updating your data capture settings or configurations to only capture the essential data.
 - *Compress data*: Compression saves money by reducing the size of data. It's most effective in write-once, read-never or read-rarely scenarios and is more suitable for colder storage.
 
-  :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Compression requires more CPU time both during compression and when decompressing the data.
+  :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Compression requires more CPU time both during compression and when decompressing the data.
 
 - *Delete unneeded data*: Implement policies to streamline the process of storing and keeping relevant information. Evaluate the retention period for backups and snapshots and delete data that is no longer needed. You often want to have a process that leads up to eventual data deletion, such as first archiving data and enabling a soft delete period. Always consider recoverability before deleting data.
 
@@ -106,7 +106,7 @@ Backups involve creating periodic snapshots or copies of data and storing them s
 - *Data classification*: Classify your data based on its importance and prioritization for backup. It allows you to focus resources on backing up critical data while minimizing backup costs for less important data.
 - *Incremental backups*: Instead of performing full backups every time, consider implementing incremental backups. Incremental backups only capture changes made since the last backup, reducing storage and network bandwidth requirements.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** When it comes to restoring data, incremental backups require more steps and time to restore. You need to restore the full backup first and then apply each incremental backup in sequence until you reach the desired restore point.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: When it comes to restoring data, incremental backups require more steps and time to restore. You need to restore the full backup first and then apply each incremental backup in sequence until you reach the desired restore point.
 
 - *Backup compression*: Enable compression during the backup process to reduce the size of backup files. Compressed backups require less storage space, resulting in cost savings.
 - *Backup storage tiers*: Evaluate your backup retention policies and consider moving older backups to lower-cost storage tiers, such as cold storage or archive storage. It helps optimize costs by storing less frequently accessed backups in cost-effective storage options.

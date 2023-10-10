@@ -64,7 +64,7 @@ The preceding choices aren't mutually exclusive. They're often used together in 
 
 It's important to balance your encryption decisions because there are significant tradeoffs.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Every encryption hop can introduce performance latency. Operational complexities can occur in relation to troubleshooting and observability. Recovery can be a challenge.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Every encryption hop can introduce performance latency. Operational complexities can occur in relation to troubleshooting and observability. Recovery can be a challenge.
 >
 > Scope these tradeoffs. Anticipate tradeoffs for data that's classified as sensitive. Requirements might even determine the tradeoffs, for example if a certain type of data must be encrypted and stored within certain thresholds.
 
@@ -102,7 +102,7 @@ Both stores are protected with identity-based access. This feature enables you t
 
 Industry standards for algorithms require encryption schemes to have a certain level of entropy. The entropy sources are injected during encryption. Entropy makes the algorithm strong and makes it difficult for an attacker to extract information. **Determine the tolerable thresholds of entropy**. Encryption procedures are processor-intensive. Find the right balance so that you're maximizing the compute cycles that are spent on the encryption, relative to the overall performance targets of the compute request.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: If you choose an algorithm that's highly complex or injects more than a reasonable amount of entropy, it degrades your system's performance.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: If you choose an algorithm that's highly complex or injects more than a reasonable amount of entropy, it degrades your system's performance.
 
 ### Hashes and checksums
 
@@ -156,13 +156,13 @@ Classify and protect information storage objects in accordance with the internal
     >
     > If a key is compromised, the certificate must be revoked immediately. A certificate authority (CA) provides a certificate revocation list (CRL) that indicates the certificates that are invalidated before their expiration. Your validation check should account for CRLs.
 
-    > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: The certification validation process can be cumbersome and usually involves a CA. Determine the data that you must encrypt with certificates. For other types of communication, determine if you can implement localized compensating controls to add security.
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: The certification validation process can be cumbersome and usually involves a CA. Determine the data that you must encrypt with certificates. For other types of communication, determine if you can implement localized compensating controls to add security.
     >
     > One way of localizing controls is with mutual TLS (mTLS). It establishes trust in both directions between the client and the server. Both the client and the server have their own certificates, and each certificate is authenticated with their public or private key pair. With mTLS, you're not dependent on the external CA. The tradeoff is the added complexity of managing two certificates.
 
 - **Double encrypt VPN connections if needed**. Perform double encryption to add defense in depth to your VPN tunnel. When you use two VPN servers, you can hide the IP address between the servers, and also hide the IP address between the server and the destination. During this process, data in transit is also encrypted twice.
 
-    > ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Compared to single VPN setups, double VPN setups are often more expensive, and connections are often slower.
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Compared to single VPN setups, double VPN setups are often more expensive, and connections are often slower.
 
 - **Implement logging and monitoring processes**. Keep track of access sign-in resources that store information about clients, like their source IP, port, and protocol. Use this information to detect anomalies.
 

@@ -40,7 +40,7 @@ Design custom views if they're required for your specific workload. Beyond nativ
 
 **Centralize cost data**. Centralized cost data allows for easier management and analysis of that data. It ensures you have a unified view, through a common data schema, of all workload costs and enables better cost optimization strategies. You need to combine usage data, and the data should flow into a central analytical sink. You can use a cost management tool provided by your cloud provider or integrate the data with third-party cost management solutions. The goal is to have a low-cost solution that's easily accessible by authorized stakeholders and provides robust data analysis capabilities.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Retaining cost data for longer periods enables historical analysis and trend identification. However, storing data can be costly. To minimize cost, store older data as aggregated data points without the granularity of newer data. Also, determine the best retention period based on your analysis needs.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Retaining cost data for longer periods enables historical analysis and trend identification. However, storing data can be costly. To minimize cost, store older data as aggregated data points without the granularity of newer data. Also, determine the best retention period based on your analysis needs.
 
 ### Group data
 

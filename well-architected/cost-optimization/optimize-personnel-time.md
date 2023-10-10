@@ -74,7 +74,7 @@ The goal is for developers to get a fast feedback loop on changes. Make the nece
 
 In general, the closer preproduction environments are to production, the more time you save. It also helps minimize risk. The closer to production you're the better you can test and validate the functionality and performance of your releases before deploying them to the production environment. It helps identify and address any issues or bottlenecks early on, reducing the risk of problems occurring in the production environment.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** You need to balance personnel time with resource cost. The closer you get to production the more your environment is going to cost.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: You need to balance personnel time with resource cost. The closer you get to production the more your environment is going to cost.
 
 #### Reuse components and libraries
 

@@ -70,7 +70,7 @@ Optimizing deployments refers to refining the process of releasing resources and
 
 An in-place upgrade is an upgrade to an existing resource or application. In-place  upgrades can temporarily slow down or interrupt a workload. It's important to ensure that upgrades are compatible with the workload. Before you apply an upgrade, we recommend that you test it in a separate environment to identify any potential issues. Provide a rollback plan in case any issues arise during the upgrade process. It's crucial to take a complete backup of critical data and configurations before you apply the upgrade. Monitor the upgraded system closely after the upgrade to ensure that everything functions as expected. The backup allows you to restore to a good state if you need to. You should prioritize scheduling the upgrade during off-peak hours to minimize the effect on users and workload performance. Notify users in advance about the planned upgrade, including the expected downtime and any necessary actions they need to take.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Waiting to perform operations activities during off-peak hours can affect operational efficiency. It might be less convenient to have the personnel with the right skill set work during off-peak hours.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Waiting to perform operations activities during off-peak hours can affect operational efficiency. It might be less convenient to have the personnel with the right skill set work during off-peak hours.
 
 ### Optimize tooling
 

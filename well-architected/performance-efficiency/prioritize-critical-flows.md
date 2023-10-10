@@ -87,7 +87,7 @@ Isolating critical flows means providing dedicated resources or capacity to supp
 
 - *Capacity allocation*: For critical flows, explicitly allocate a fixed set of capacity such as CPU, memory, and disk I/O. This allocation ensures that critical flows always have enough resources to operate efficiently. Set resource quotas or limits by using orchestration platforms. By explicitly allocating resources to critical flows, you prevent resource contention and prioritize how they run.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Resource segmentation affects costs. When you dedicate resources to particular flows, you often increase the cost and leave some resources underutilized.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Resource segmentation affects costs. When you dedicate resources to particular flows, you often increase the cost and leave some resources underutilized.
 
 ### Optimize capacity allocation
 

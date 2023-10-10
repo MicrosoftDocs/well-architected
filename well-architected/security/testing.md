@@ -94,7 +94,7 @@ The security team might audit all workloads and run these tests as needed. As a 
 
 In other cases, you might be required to run tests and report the security state of the system against the potential threat.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Because they are disruptive events, expect reprioritization of tasks, which may delay other planned work.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Because they are disruptive events, expect reprioritization of tasks, which may delay other planned work.
 
 > ![Risk icon](../_images/risk.svg) **Risk**: There's risk of the unknown. They might be one-time efforts without established processes or tools. But the predominant risk is the potential interruption of the rhythm of business, we need to evaluate those risks relative to the benefit gained by this action.
 
@@ -156,7 +156,7 @@ A perspective on type of testing is black-box testing and white-box testing. In 
 
 Pentesting is conducted by security experts who aren't part of the organization\'s IT or application teams. They look at the system in a way that malicious actors scope an attack surface. The goal is to find security gaps by gathering information, analyzing vulnerabilities, and reporting.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Penetration tests are ad hoc and can also be expensive in terms of disruptions and financially because pentesting is typically a paid offering by third-party practitioners.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Penetration tests are ad hoc and can also be expensive in terms of disruptions and financially because pentesting is typically a paid offering by third-party practitioners.
 
 > ![Risk icon](../_images/risk.svg) **Risk**: A pentesting exercise might affect the runtime environment and might disrupt the availability for normal traffic.
 

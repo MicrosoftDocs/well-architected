@@ -32,7 +32,7 @@ Instrumenting code refers to the practice of adding code snippets or libraries t
 
 In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code issue, the cheaper it's to fix it. You want to automate as much of this code analysis as possible. Use dynamic and static code analysis tools to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Code monitoring tools are likely to increase costs.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
 
 ### Identify and optimize hot paths
 
@@ -53,7 +53,7 @@ Review the performance recommendations specific to the programming language you'
 - *Reduce data structure size*: Assess the size of your data structures, such as classes, and identify areas where reduction is possible. Review the data requirements and eliminate any unnecessary fields or properties. Optimize memory usage by selecting appropriate data types and packing data efficiently.
 - *Cross-cutting implementation*: Consider the effects of cross-cutting implementations, such as middleware or token checks, and assess if they're affecting performance negatively.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Optimizing code and hot paths requires developer expertise in identifying code inefficiencies is subjective and might be highly skilled individual required for other tasks.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Optimizing code and hot paths requires developer expertise in identifying code inefficiencies is subjective and might be highly skilled individual required for other tasks.
 
 ### Evalaute the use of concurrency
 
@@ -162,7 +162,7 @@ To implement design patterns, developers need to understand the principles and g
 
 **Modify resource sizes.** Continuously monitor and analyze the resource utilization of your workload. Based on the observed patterns and trends, make adjustments to resource sizing and configuration settings to optimize resource consumption. Consider rightsizing virtual machine instances, adjusting memory allocation, and optimizing storage capacity. By right-sizing resources, you can avoid unnecessary costs associated with underutilization or overprovisioning.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Code and architecture rework might not fit with current project schedules and might lead to schedule and cost slippage
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code and architecture rework might not fit with current project schedules and might lead to schedule and cost slippage
 
 ## Azure facilitation
 

@@ -125,7 +125,7 @@ There are scenarios where users need more access because of their organizational
 
 **Avoid permissions that specifically reference individual resources or users**. Granular and custom permissions create complexity and confusion as they don\'t carry the intention to new similar resources. This can turn into a complex legacy configuration that's difficult to maintain and negatively impact both security and reliability.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: A granular access control approach allows for better auditing and monitoring of user activities.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A granular access control approach allows for better auditing and monitoring of user activities.
 
 A role also has an *associated scope*. The role can operate at the allowed management group, subscriptions, resource groups, resources, or other custom scope. Even if the identity has a limited set of permissions, widening the scope to include resources that are outside their job function, is risky. For example, read access to all source code and data can be dangerous and must be controlled for information exposure.
 
@@ -245,7 +245,7 @@ Azure AD can be used for authentication and authorization of custom applications
 
 Get current, stay current by getting improvements on an ongoing basis. For more information, see [What\'s new? Release notes - Microsoft Entra](/azure/active-directory/fundamentals/whats-new).
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Azure AD is a single point of failure just like any other foundational service. There's no workaround until the outage is fixed by Azure. However, the rich feature set of Azure AD outweighs the risk of using other custom solutions.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Azure AD is a single point of failure just like any other foundational service. There's no workaround until the outage is fixed by Azure. However, the rich feature set of Azure AD outweighs the risk of using other custom solutions.
 
 Azure supports open protocols like OAuth2, OpenID Connect, and others. It's recommended that you use those standard authentication and authorization mechanisms instead of designing your own flows.
 
@@ -305,7 +305,7 @@ For information about filtering in Azure AD, [Azure AD Connect sync: Configure f
 
 **Enable Diagnostic setting on Azure resources** to emit information that can be used as audit trail. You'll be able to know which identity attempted access to what resource and what was the outcome. The collected logs are sent to Azure Monitor.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: There is a tradeoff on cost because of the data storage provisioned to store the logs. There might be a performance impact, especially on the code aspect and logging solutions that's added to the application.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There is a tradeoff on cost because of the data storage provisioned to store the logs. There might be a performance impact, especially on the code aspect and logging solutions that's added to the application.
 
 ## Example
 
