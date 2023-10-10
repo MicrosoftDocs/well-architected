@@ -36,6 +36,7 @@ landingContent:
         links:
           - text: "Performance Efficiency: Fast & Furious"
             url: /events/all-around-azure-well-architected-the-backstage-tour/performance-efficiency
+  <!--
   - title: Design principles
     linkLists:
       - linkListType: concept
@@ -49,7 +50,7 @@ landingContent:
           - text: Design Principle 4 TBD (TODO)
             url: principles.md#TODO
           - text: Design Principle 5 TBD (TODO)
-            url: principles.md#TODO
+            url: principles.md#TODO  -->
   - title: Achieving performance targets
     linkLists:
       - linkListType: how-to-guide
