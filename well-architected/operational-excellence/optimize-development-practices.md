@@ -1,6 +1,6 @@
 ---
-title: Recommendations for optimizing development practices through standardization
-description: Learn how to optimize your development practices by standardizing your tools and processes.
+title: Recommendations for standardizing tools and processes
+description: Learn how to optimize development practices by standardizing tools and processes. Define consistent practices to optimize efficiency and quality of work.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
 |---|---|
 
-This guide describes the recommendations for defining standards for your software development tools and processes. Defining consistent practices leads to an efficient workload team and high-quality work. High-performing teams use industry-proven tools and processes to minimize wasted effort and potential errors in their code.
+This guide describes the recommendations for defining standards for your software development tools and processes. Defining consistent practices leads to an efficient workload team and high quality work. High-performing teams use industry-proven tools and processes to minimize wasted effort and potential errors in their code.
 
 ## Key design strategies
 
