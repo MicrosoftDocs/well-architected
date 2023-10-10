@@ -78,7 +78,7 @@ Essential tools for file integrity monitoring, virus scanning, intrusion detecti
 
 ### Optimize database operations
 
-Optimizing database operations refers to the process of refining and fine-tuning database tasks to ensure maximum efficiency and minimal resource utilization. These operations include tasks like backups, schema changes, performance tuning, and monitoring. Efficient database operations lead to faster query responses, reduced system overhead, and an overall smoother user experience, minimizing potential bottlenecks and disruptions. 
+Optimizing database operations refers to the process of refining and fine-tuning database tasks to ensure maximum efficiency and minimal resource utilization. These operations include tasks like backups, schema changes, performance tuning, and monitoring. Efficient database operations lead to faster query responses, reduced system overhead, and an overall smoother user experience. 
 
 Schema changes involve modifying the structure of a database, such as adding or altering tables, columns, or indexes. These changes might require extra processing and resource utilization during the deployment process, potentially affecting the overall performance of the workload. Schema changes can disrupt performance to active queries, indexes, or transactions or cause data to be unavailable.
 
