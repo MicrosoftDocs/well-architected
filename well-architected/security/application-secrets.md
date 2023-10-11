@@ -73,7 +73,7 @@ For more information, see [Recommendations for identity and access management](i
 
 Certificates should only be stored in Key Vault or in the OS's certificate store. For example, storing an X.509 certificate in a PFX file or on a disk isn't recommended. If you need a higher level of security, choose systems that have hardware security module (HSM) capabilities instead of software-based secret stores.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: HSM solutions are offered at a higher cost. You might also see an effect on application performance due to added layers of security.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: HSM solutions are offered at a higher cost. You might also see an effect on application performance due to added layers of security.
 
 A dedicated secret management system makes it easy to store, distribute, and control access to application secrets. Only authorized identities and services should have access to secret stores. Access to the system can be restricted via permissions. Always apply the least-privilege approach when assigning permissions.
 

@@ -74,7 +74,7 @@ The goal is for developers to get a fast feedback loop on changes. Make the nece
 
 In general, the closer preproduction environments are to production, the more time you save. It also helps minimize risk. The closer to production you're the better you can test and validate the functionality and performance of your releases before deploying them to the production environment. It helps identify and address any issues or bottlenecks early on, reducing the risk of problems occurring in the production environment.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** You need to balance personnel time with resource cost. The closer you get to production the more your environment is going to cost.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: You need to balance personnel time with resource cost. The closer you get to production the more your environment is going to cost.
 
 #### Reuse components and libraries
 
@@ -99,23 +99,18 @@ Removing technical debt is an ongoing process. It requires a proactive approach 
 
 Effective collaboration minimizes wasted time from misunderstandings or duplicated efforts, making the overall process smoother. Enhance teamwork, ensuring members work seamlessly together. Implement team-building exercises, employ collaboration tools, and regularly review team dynamics to ensure efficient communication.
 
-**Eliminate silos.** Silos can lead to a lack of shared knowledge and unnecessary replication of tasks. Cross-functional collaboration can save time and improve results. Break down barriers between departments or teams, promoting inter-departmental cooperation. Foster cross-departmental meetings, workshops, and joint projects. Encourage open communication channels across teams.
-
-**Optimize standards.** Unnecessary standards can lead to wasted time and resources without contributing to better outcomes. Assess, improve, or eliminate standards or protocols that don't add value but increase the workload. Periodically review standards and protocols, seeking feedback from the ground level. If a standard doesn't add value, consider eliminating or revising it.
-
-**Create a shared knowledge repository.** A shared knowledge base prevents repeated mistakes, aids training, and reduces the time spent searching for information. Develop a centralized place where all members can access and contribute to collective knowledge. Employ knowledge management tools, regularly update the repository, and incentivize contributions from team members.
-
-**Invest in Training**: Make a substantial investment in training for the process, tools, and project. It ensures that there's a baseline requirement met before people start contributing to the project. Ensure that teams are trained on the established standards and processes. It enables them to work efficiently and effectively within the defined guidelines. Teams should be trained on those standards and process so that they don't waste effort identifying themselves.
+- *Eliminate silos*: Silos can lead to a lack of shared knowledge and unnecessary replication of tasks. Cross-functional collaboration can save time and improve results. Break down barriers between departments or teams, promoting inter-departmental cooperation. Foster cross-departmental meetings, workshops, and joint projects. Encourage open communication channels across teams.
+- *Optimize standards*: Unnecessary standards can lead to wasted time and resources without contributing to better outcomes. Assess, improve, or eliminate standards or protocols that don't add value but increase the workload. Periodically review standards and protocols, seeking feedback from the ground level. If a standard doesn't add value, consider eliminating or revising it.
+- *Create a shared knowledge repository*: A shared knowledge base prevents repeated mistakes, aids training, and reduces the time spent searching for information. Develop a centralized place where all members can access and contribute to collective knowledge. Employ knowledge management tools, regularly update the repository, and incentivize contributions from team members.
+- *Invest in Training**: Make a substantial investment in training for the process, tools, and project. It ensures that there's a baseline requirement met before people start contributing to the project. Ensure that teams are trained on the established standards and processes. It enables them to work efficiently and effectively within the defined guidelines. Teams should be trained on those standards and process so that they don't waste effort identifying themselves.
 
 ### Optimize processes
 
 By optimizing processes, you can streamline workflows, eliminate unnecessary steps, and reduce manual effort. The increased efficiency can lead to cost savings by reducing the amount of time and resources required to complete tasks. To optimize processes, consider the following recommendations:
 
-**Refine the software development lifecycle (SDLC) approach.** Adopting an optimal SDLC can achieve high quality with less overhead. Assess your current SDLC method and consider more efficient alternatives. Explore and adopt methodologies like Scrum, Kanban, or Waterfall. Periodically reassess chosen frameworks for better efficiency, recognizing that SDLC is inherently collaborative.
-
-**Optimize per role.** Defined roles ensure clear responsibilities and expectations, leading to increased efficiency. Understand and define the requirements of each role like developers, solution architects. When you want to expand the team, you should know what each role needs in terms of hardware, licenses, access, etc.
-
-**Streamline change management.** Positive receptiveness to change ensures smoother transitions and better outcomes. Make the process of implementing change smoother and more accepted. Cultivate a culture of active participation over resistance. Promote change adoption using coaching and continuous learning. Adapt to change constructively.
+- *Refine the software development lifecycle (SDLC) approach*: Adopting an optimal SDLC can achieve high quality with less overhead. Assess your current SDLC method and consider more efficient alternatives. Explore and adopt methodologies like Scrum, Kanban, or Waterfall. Periodically reassess chosen frameworks for better efficiency, recognizing that SDLC is inherently collaborative.
+- *Optimize per role*: Defined roles ensure clear responsibilities and expectations, leading to increased efficiency. Understand and define the requirements of each role like developers, solution architects. When you want to expand the team, you should know what each role needs in terms of hardware, licenses, access, etc.
+- *Streamline change management*: Positive receptiveness to change ensures smoother transitions and better outcomes. Make the process of implementing change smoother and more accepted. Cultivate a culture of active participation over resistance. Promote change adoption using coaching and continuous learning. Adapt to change constructively.
 
 ### Optimize operations
 

@@ -54,7 +54,7 @@ See the Cloud Adoption Framework [Azure landing zone design areas](/azure/cloud-
 
 Additionally, the Well-Architected Framework exists to provide detailed guidance on the processes and procedures that should be codified to ensure that your workload and workload team are run according to industry standards.
 
-## Tradeoff
+## Tradeoffs
 
 Codifying standard operating procedures can carry the risk of leading to stagnation or complacency. Standards must be followed, but they must also not be set in stone. Strive to find a balance between strict adherence and allowing for innovation so that your processes can evolve safely over time.
 

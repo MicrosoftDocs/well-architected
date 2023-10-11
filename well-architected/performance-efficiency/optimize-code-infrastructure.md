@@ -43,7 +43,7 @@ Instrumenting code refers to the practice of adding code snippets or libraries t
 
 In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code issue, the cheaper it's to fix it. You want to automate as much of this code analysis as possible. Use dynamic and static code analysis tools to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
 
 #### Identify hot paths
 
@@ -119,7 +119,7 @@ For more information, see [Reduce memory allocations](/dotnet/csharp/advanced-to
 
 #### Use concurrency and parallelism
 
-Use concurrency and parallelism to run multiple tasks. These techniques increase the overall throughput and the number of tasks that a workload can process. When you run tasks concurrently or in parallel, it reduces the runtime of the application, which decreases latency and increases response times. Concurrency and parallelism enable efficient utilization of computing resources, such as CPU cores or distributed systems. Concurrency and parallelism effectively distribute the workload among the computing resources.
+Using concurrency and parallelism involves executing multiple tasks or processes either simultaneously or in an overlapping manner to make efficient use of computing resources. These techniques increase the overall throughput and the number of tasks that a workload can process. When you run tasks concurrently or in parallel, it reduces the runtime of the application and decreases latency and increases response times. Concurrency and parallelism enable efficient utilization of computing resources, such as CPU cores or distributed systems. Concurrency and parallelism effectively distribute the workload among the computing resources.
 
 **Use parallelism.** Parallelism is the ability of a system to simultaneously trigger multiple tasks or processes on multiple computing resources. Parallelism divides a workload into smaller tasks that are run in parallel. You can achieve parallelism by using techniques like multiprocessing, in which multiple processes run in parallel, or by using distributed computing, in which tasks are distributed across multiple machines. Distribute tasks across multicore processors to optimize workload management. Optimize code to take advantage of the CPU architecture, threading models, and multicore processors. When you run code in parallel, performance improves because the workload is distributed across multiple cores.
 
@@ -135,7 +135,7 @@ Use concurrency and parallelism to run multiple tasks. These techniques increase
 
 #### Use connection pooling
 
-It can be expensive to establish a connection to a database. You have to create an authenticated network connection to the remote database server. Database connections are especially expensive for applications that frequently open new connections. Connection pooling reuses existing connections and eliminates the expense of opening a new connection for each request. Connection pooling reduces connection latency and enables high database throughput (transactions per second) on the server. You should choose a pool size that can handle more connections than you currently have. The goal is to have the connection pool quickly handle new incoming requests.
+Connection pooling is the practice of reusing established database connections instead of creating a new connection for every request. It can be expensive to establish a connection to a database. You have to create an authenticated network connection to the remote database server. Database connections are especially expensive for applications that frequently open new connections. Connection pooling reuses existing connections and eliminates the expense of opening a new connection for each request. Connection pooling reduces connection latency and enables high database throughput (transactions per second) on the server. You should choose a pool size that can handle more connections than you currently have. The goal is to have the connection pool quickly handle new incoming requests.
 
 **Understand connection pooling limits.** Some services limit the number of network connections. When you exceed this limit, connections might slow down or terminate. You can use connection pooling to establish a fixed set of connections at startup time and then maintain those connections. In many cases, a default pool size might consist of only a few connections that perform quickly in basic test scenarios. Your application might exhaust the default pool size under scale and create a bottleneck. You should establish a pool size that maps to the number of concurrent transactions that are supported on each application instance.
 
@@ -149,7 +149,7 @@ Many applications require background tasks that run independently of the UI. The
 
 ### Optimize infrastructure performance
 
-To optimize infrastructure performance, tune the performance of hardware and network components to ensure optimal operation and resource utilization.
+Optimizing infrastructure performance means enhancing and adjusting infrastructure elements to ensure peak operation and the best use of resources for a workload. By fine-tuning infrastructure, you can minimize waste, reduce lags, and achieve more with the available resources. It ensures that workloads run reliably and swiftly, leading to improved user experiences and cost savings. To optimize infrastructure performance, consider the following strategies:
 
 **Add usage limits.** You can implement usage limits on some workload components. For example, to remove unstable pods, you can [define pod CPU and memory limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) in Azure Kubernetes Service (AKS). To optimize performance, you can [define memory limits in Java virtual machines (VMs)](/azure/spring-apps/concepts-for-java-memory-management).
 
