@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
 |---|---|
 
-This guide describes the recommendations for defining standards for software development tools and processes. Defining consistent practices leads to an efficient workload team and high quality work. High-performing teams use industry-proven tools and processes to minimize wasted effort and potential code errors.
+This guide describes the recommendations for defining standards for software development tools and processes. Defining consistent practices leads to an efficient workload team and high-quality work. High-performing teams use industry-proven tools and processes to minimize wasted effort and potential code errors.
 
 ## Key design strategies
 
@@ -60,9 +60,23 @@ To ensure consistency and avoid potential confusion, the style guide should incl
 
 You should also set guidelines and standards for the allowable degree of variance in your environments. If there are new languages, frameworks, or other technologies that workload team members want to add to the standard list, implement a process for using those tools in a sandbox or lower environment. Test their viability, and replace existing technologies when appropriate.
 
-**Use architecture decision records (ADRs)** to keep a historical record of your workload team's design decisions. Ensure that ADRs are version controlled. Document specific tools and technologies, for example using SQL or NoSQL, that your team chooses and the reasons for their decision. Include other options that were considered, which helps contextualize the final decision. Also include functional and nonfunctional requirements that are factored into decisions. Add the context of the decision-making process, like the problem that was addressed. ADRs help your teams maintain a fresh understanding of the workload. They also help new team members learn about the design decisions that are made during the workload's lifecycle.
+**Use architecture decision records (ADRs)** to keep a historical record of your workload team's design decisions. ADRs help your teams maintain a fresh understanding of the workload. They also help new team members learn about the design decisions that are made during the workload's lifecycle. Ensure that ADRs are version controlled.
 
-**Implement standards and guidelines for addressing technical debt.** Adopt a mindset that technical debt is intentional and necessary for your workload team's deliverables. This mindset motivates your team to consider and address technical debt regularly to avoid accumulation. Address technical debt as a regularly recurring task in the backlog. For example, suppose your team standardized on a library. Over time, you need to switch to a different library for new functionality in the workload. That transition might result in technical debt. Frequently, transitions like this can leave the workload team supporting two technologies because they can't fully transition smoothly. The workload team must prioritize completing the transition because when the workload achieves the new functionality, stakeholders are satisfied and are less likely to consider the technical debt.
+In your ADR, include:
+
+- Specific tools and technologies, for example using SQL or NoSQL, that your team chooses.
+
+- The reasons for your team's decisions.
+
+- Other options that were considered, which helps contextualize the final decision.
+
+- Functional and nonfunctional requirements that are factored into decisions.
+
+- The context of the decision-making process, like the problem that was addressed.
+
+**Implement standards and guidelines for addressing technical debt.** Adopt a mindset that technical debt is intentional and necessary for your workload team's deliverables. This mindset motivates your team to consider and address technical debt regularly to avoid accumulation. Address technical debt as a regularly recurring task in the backlog.
+
+For example, suppose your team standardized on a library. Over time, you need to switch to a different library for new functionality in the workload. That transition might result in technical debt. Frequently, transitions like this can leave the workload team supporting two technologies because they can't fully transition smoothly. The workload team must prioritize completing the transition because when the workload achieves the new functionality, stakeholders are satisfied and are less likely to consider the technical debt.
 
 **Standardize how you apply versioning to your artifacts** and how versioning is exposed internally and externally. For example, client-facing systems should expose their running version in the user interface. This technique is helpful when the workload team troubleshoots issues because the customer can easily communicate which version they use. REST interfaces can expose versions for certain components or databases. You might use a specific table in the metadata for a schema to expose the schema version.
 
@@ -72,7 +86,7 @@ You should also set guidelines and standards for the allowable degree of varianc
 
 - *Write tests at the lowest level possible*. Favor tests with the fewest external dependencies, and run tests as part of the build.
 
-- *Write tests once, and run tests everywhere including production*. Write tests that you can run in every development environment without accounting for factors that are specific to one environment, like encrypted secrets or configurations.
+- *Write tests once, and run tests everywhere, including production*. Write tests that you can run in every development environment without accounting for factors that are specific to one environment, like encrypted secrets or configurations.
 
 - *Design your workload for testing*. When you develop your application, make testability a requirement.
 
@@ -80,7 +94,7 @@ You should also set guidelines and standards for the allowable degree of varianc
 
 - *Consider test ownership, which is based on workload ownership*. Your workload team owns their testing and shouldn't rely on other teams to test their code.
 
-- *Automate tests as much as possible*. Automated code relieves burden on your workload team and enforces consistent quality.
+- *Automate tests as much as possible*. Automated code relieves the burden on your workload team and enforces consistent quality.
 
 For detailed guidance about implementing a DevOps test strategy, see [Shift testing left with unit tests](/devops/develop/shift-left-make-testing-fast-reliable).
 
