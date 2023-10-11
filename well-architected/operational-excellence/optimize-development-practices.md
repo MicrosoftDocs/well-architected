@@ -14,13 +14,13 @@ ms.topic: conceptual
 |[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
 |---|---|
 
-This guide describes the recommendations for defining standards for your software development tools and processes. Defining consistent practices leads to an efficient workload team and high quality work. High-performing teams use industry-proven tools and processes to minimize wasted effort and potential errors in their code.
+This guide describes the recommendations for defining standards for software development tools and processes. Defining consistent practices leads to an efficient workload team and high quality work. High-performing teams use industry-proven tools and processes to minimize wasted effort and potential code errors.
 
 ## Key design strategies
 
-The first step of optimizing development practices is standardizing tools and processes. When possible, use industry-proven solutions rather than developing in-house solutions. To further optimize your practices, adopt low-code and no-code tools. These tools enable you to focus efforts on your application rather than the problems that these tools solve. For all tools and processes that you standardize, implement training so your teams understand and use them efficiently. To define standards that help optimize your development practices, consider the following recommendations.
+The first step of optimizing development practices is standardizing tools and processes. When possible, use industry-proven solutions rather than developing in-house solutions. To further optimize your practices, adopt low-code and no-code tools. These tools enable you to focus efforts on your application and help you save time. For all tools and processes that you standardize, implement training so your teams understand and use them efficiently. To define standards that help optimize your development practices, consider the following recommendations.
 
-**Use well-known and mature off-the-shelf tools** and standardize their use. Highly effective engineering teams adopt the best-in-class tools. This practice minimizes the need to develop solutions for planning, development, testing, collaboration, and continuous integration and continuous delivery (CI/CD). Many enterprises give developers a choice between a few tools, but all options are standard tools for the organization and are validated internally. Most importantly, choose tools that meet the requirements for your workload. Off-the-shelf tools should provide the following functions:
+**Use well-known and mature off-the-shelf tools**, and standardize their use. Highly effective engineering teams adopt the best-in-class tools. This approach minimizes the need to develop solutions for planning, development, testing, collaboration, and continuous integration and continuous delivery (CI/CD). Many enterprises give developers a choice between a few tools, but all options are standard tools for the organization and are validated internally. Most importantly, choose tools that meet the requirements for your workload. Off-the-shelf tools should provide the following functions:
 
 - Work planning and backlog management
 
@@ -40,11 +40,11 @@ Determine if you should invest in expensive tools or premium versions of tools. 
 
 **Standardize your branching strategy.** Choose a trunk-based model when possible. Trunk-based branching keeps the workload development team in sync and encourages continuous delivery. Define branch policies to protect important branches, like the main branch. For more information, see [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance) and [Branch policies and settings](/azure/devops/repos/git/branch-policies).
 
-**Evaluate metrics to quanity effectiveness.** Software development and quality assurance teams can only improve if they can quantify their effectiveness. To quantify effectiveness, they must identify the metrics that measure [developer velocity](https://azure.microsoft.com/solutions/developer-velocity) and define KPIs. Examples of these metrics include:
+**Evaluate metrics to quantify effectiveness.** Software development and quality assurance teams can only improve if they can quantify their effectiveness. To quantify effectiveness, they must identify the metrics that measure [developer velocity](https://azure.microsoft.com/solutions/developer-velocity) and define KPIs. Examples of these metrics include:
 
-- *Deployment frequency*: The number of deployments that each developer deploys every day.
+- *Deployment frequency*: The number of deployments that each developer deploys each day.
 
-- *Lead time*: The time that it takes for a task or user story to go from being added to the backlog to a production deployment.
+- *Lead time*: The time that it takes for a task or user story to go from the backlog to a production deployment.
 
 - *Mean time to resolution*: The average time that's spent fixing bugs or defects in code.
 
@@ -122,7 +122,7 @@ For detailed guidance about implementing a DevOps test strategy, see [Shift test
 
 ## Tradeoffs
 
-Investing in powerful commercial tools can be costly, so ensure that you choose the appropriate tools to meet your requirements.
+Investing in powerful commercial tools can be costly, so choose the appropriate tools to meet your requirements.
 
 ## Related links
 
