@@ -1,5 +1,5 @@
 ---
-title: Recommendations for using safe deployment practices
+title: Recommendations for safe deployment practices
 description: Learn about recommendations for safe deployment practices (SDP). Define how to safely make any change to your workload through deployments.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,157 +7,155 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for using safe deployment practices
+# Recommendations for safe deployment practices
 
-**Applies to: OE 11**
+**Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-This guide describes the best practices for using safe deployment practices (SDP). SDP is a collection of processes and procedures codified by your organization that define how to safely make any change to your workload through deployments. SDP also requires a mind shift to think about deployments through the lens of managing risk. By putting the right practices into place, you can minimize the risk of introducing human error in your deployments and limit the effects of problematic deployments on your end users.
+|[OE:11](checklist.md)| Clearly define your workload's safe deployment practices. Emphasize the ideals of small, incremental, quality-gated release methods. Use modern deployment patterns and progressive exposure techniques to control risk. Account for routine deployments and emergency, or hotfix, deployments.|
+|---|---|
+
+This guide describes the recommendations for using safe deployment practices (SDP). Safe deployment processes and procedures define how to safely make and deploy changes to your workload. Implementing SDP requires you to think about deployments through the lens of managing risk. You can minimize the risk of human error in your deployments and limit the effects of problematic deployments on your users by implementing SDP.
 
 ## Key design strategies
 
-Safe deployment practices follow four themes:
+There are four important guidelines to keep in mind when implementing safe deployment practices:
 
-- All changes to the production workload are inherently risky and therefore must be done with a focus on safety and consistency.
+- **Safety and consistency**: All changes to the production workload are inherently risky and must be made with a focus on safety and consistency.
 
-- Minimize the potential blast radius of deployment-caused issues by adopting progressive exposure deployments.
+- **Progressive exposure**: You can minimize the potential blast radius of deployment-caused issues by adopting a progressive exposure deployment model.
 
-- Deployments must pass health checks before each phase of progressive exposure can begin
+- **Health models**: Deployments must pass health checks before each phase of progressive exposure can begin.
 
-- When issues are detected, the deployment is halted and recovery initiates immediately.
+- **Issue detection**: When issues are detected, the deployment should be immediately halted and recovery initiated.
 
-The following sections provide detailed recommendations about each of the themes.
+The following sections provide detailed recommendations on each of these points.
 
-**All changes to the production workload are inherently risky and therefore must be done with a focus on safety and consistency.**
+### Safety and consistency
 
-Whether you are deploying an update to your application code, infrastructure as code, feature flags, or a configuration update, you are introducing risk to the workload; there are no "low-risk" deployments to production. As such, every deployment must follow a consistent standard pattern and should be automated to the extent possible to enforce consistency and minimize risks of human error.  Your workload team and the organization at large should adopt a philosophy of treating every deployment as an introduction of risk and every deployment is subject to the same level of risk management. For this reason, it is critical that your workload supply chain and deployment pipelines are reliable and secure (link to OpEx supply chain guide) and you have clearly defined deployment standards. Be aware that this philosophy should not discourage or scare you away from deploying (and deploying frequently in fact) changes to your workload. To the contrary, failing to deploy regularly introduces risks like security vulnerabilities that must be addressed through deployments. This philosophy is a mindset of approaching deployments with a consistent, clearly defined set of standards.
+Whether you're deploying an update to your application code, infrastructure as code (IaC), feature flag, or a configuration update, you're introducing risk to the workload. There are no *low-risk* deployments to production. Every deployment must follow a standard pattern and should be automated to enforce consistency and minimize the risk of human error. It's critical that your workload supply chain and deployment pipelines are reliable, secure, and have clearly defined deployment standards. Treat every deployment as a possible risk and subject every deployment to the same level of risk management. Despite the risks, you should continue to deploy regular changes to your workload. Failing to deploy regular updates introduces other risks, like security vulnerabilities that must be addressed through deployments. For more information, see [Recommendations for designing a workload development supply chain](workload-supply-chain.md).
 
-Although it may seem counterintuitive at first, a standard of frequent small deployments is preferable to infrequent large deployments. Small changes are easier to recover from when issues arise and frequent deployments help your team build confidence in the deployment processes.
+Frequent small deployments are preferable to infrequent large deployments. Small changes are easier to resolve when issues arise and frequent deployments help your team build confidence in the deployment process. It's also important that you learn from production by reviewing your workload processes when you encounter an anomaly during deployment. You might find weaknesses in the design of your infrastructure or rollout. When issues occur during deployments, ensure that _blameless_ postmortems are part of your SDP process to capture lessons about the incident.
 
-Another key tenet is that you should learn from production. Learning from production means that every time there is an anomaly during a deployment, you can learn something about your processes or about your workload. You may find weaknesses in your infrastructure design or in the way that you have designed your rollout stages, among many other possible areas for improvement. When issues arise during deployments, ensure that _blameless_ post-mortems are part of your SDP processes to capture learnings about the incident.
+### Progressive exposure deployment
 
-**General SDP recommendations**
+When deployment issues occur, the goal is to catch them as early as possible to minimize the effect on end users. Implement a gradual rollout deployment model, also known as a *progressive exposure model*, to accomplish this goal. Canary deployments are a common example of progressive exposure. In this deployment model, a small group of internal or external users receive the new feature first. After the first group runs the new version without issue, the feature is deployed to successively larger groups until the entire user population is running the new version. Feature flags are typically used to enable the new version for the target users in canary deployments.
 
-- Implement versioning across your build artifacts to ensure that you can roll back and forward when necessary. 
+Another common deployment model is a blue-green approach. In this model, two identical sets, or pools, of workload infrastructure are deployed. Both pools are able to handle a full production load. The first (blue) pool runs the current version of the deployment where all users land. The second (green) pool is updated with the new feature and internally tested. After internal testing, a subset of the production traffic is routed from the blue pool to the green pool. Like canary deployments, the rollout is progressive as you shift more of the traffic over to the green pool in successively larger rollout waves. After you finish the rollout, the update pool becomes the blue pool and the green pool is ready for the next deployment. The two pools are logically separated from each other to protect from malfunctions. You can deploy a variation of the blue-green model in a workload that uses the [Deployment Stamps](/azure/architecture/patterns/deployment-stamp) design pattern by deploying on one stamp at a time.
 
-- Rather than a Gitflow or environment-based branching structure with long-lived dev, QA or release branches, use a release flow or trunk-based branching structure, which enforces tightly synced collaboration across the development team.
+In both of these models, the time between each phase of the rollout should be long enough to enable you to monitor the health metrics of the workload. You should provide ample *bake time*, time between rollout groups, to help ensure that users from different regions or users who perform different tasks have time to use the workload in their normal capacity. Bake times should be measured in hours and days rather than minutes. Bake times should also increase for each rollout group so that you can account for different time zones and usage patterns over the course of the day.
 
-- Use CI practices to regularly integrate code changes into repositories. This helps identify integration conflicts and reduces the likelihood of large, risky merges. See the [Continuous integration guide](/azure/well-architected/devops/release-engineering-ci) for detailed guidance.
+### Health models
 
-- Automate as much of your SDP as possible. See the automate tasks (link to OpEx automate tasks guide) guide for detailed guidance on automating infrastructure-as-code (IaC) and application CI/CD processes.
+Develop a robust health model as part of your observability platform and reliability strategies. Your health model should provide in-depth visibility into the components and overall health of the workload. During a rollout, if you receive an alert about a health change relating to an end user, the rollout should immediately halt and an investigation into the cause of the alert should be performed to help determine the next course of action. If there are no issues reported by end users and all health indicators stay green throughout the bake time, the rollout should continue. Be sure to include usage metrics in your health model to help ensure that a lack of user-reported issues and negative health signals aren't hiding an issue. For more information, see [Building a health model](../reliability/metrics.md#building-a-health-model).
 
-- Utilize feature flags to selectively enable or disable new features or changes in production. This allows you to control the exposure of new code and quickly roll back if issues arise. 
+### Issue detection
 
-- Deploy changes to staging environments that mirror your production environment. This allows you to test changes in a controlled setting before deploying to the live environment. 
+When your deployment causes an issue in one of the rollout groups, the rollout must stop immediately. An investigation into the cause of the issue and the severity of the effects must be performed as soon as the alert is received. Recovery from the issue can include:
 
-- Establish a checklist of pre-deployment checks, including code review, security scans, and compliance checks, to ensure that changes are safe to deploy. 
+- **Rolling back** the deployment by undoing the changes made in the deployment and reverting back to the last known working configuration.
 
-- Implement circuit breakers to automatically halt traffic to a service experiencing issues, preventing further degradation of the system.
+- **Rolling forward** the deployment by addressing the issue in the midst of the rollout. You can address issues mid-rollout by applying a hotfix or otherwise minimizing the issue.
 
-**Minimize the potential blast radius of deployment-caused issues by adopting progressive exposure deployments.**
+- **Deploying new infrastructure** by using the last known working configuration.
 
-When deployment issues happen, the goal is to catch them as early as possible and minimize the impact on end-users to the extent possible. To help accomplish this goal, adopt a gradual rollout deployment model, also known as a progressive exposure model. Canary deployments are a common example of progressive exposure. In this model, you identify a small group of internal or external users that will receive the new features first and after that group has had a chance to run the new version without issue, you deploy to a larger group, followed by successively larger groups until the entire user population is running the new version.  In this model, you typically use feature flags to enable the new version for the target users.
+Rolling back changes, especially database, schema, or other stateful component changes, can be complex. Your SDP guidelines should provide clear instructions on how to deal with data changes according to the data estate design for your workload. Similarly, rolling forward must be handled carefully to ensure that SDP isn't neglected and that the hotfix or other minimizing efforts are performed safely.
 
-Another common deployment model is a blue-green approach. In this model, two identical sets (or pools) of workload infrastructure are deployed, both able to handle a full production load.  One pool (the blue pool) runs the current version of the deployment and all users land on this pool. Meanwhile, the other pool (the green pool) is updated with the new version and internally tested. After internal testing a subset of the production traffic is routed to the updated pool.  Like canary deployments, the rollout happens progressively as you shift more of the traffic over to the green pool in successively larger rollout waves. After you have finished the whole rollout, the updated pool then becomes the blue pool and the new green pool is ready for the next deployment. The two pools are logically separated from each other to protect from malfunctions.  If you have deployed your workload in the [Deployment Stamps](/azure/architecture/patterns/deployment-stamp) design pattern, a variation of the blue-green model can be run by deploying on one stamp at a time.
+### General SDP recommendations
 
-In either model, the time between each phase of the rollout is critical for monitoring the workload closely to watch for changes in health metrics, and you should provide ample "bake time" (time between roll out groups) to ensure that users from different regions or performing different tasks have time to use the workload in their normal capacity. Generally speaking bake times should be measured in hours and days rather than minutes. The bake times will likely be longer for each group as you progressively move forward with the rollouts so that you can account for more users using the workload over different time zones and usage patterns changing over the course of the day.
+- Implement versioning across your build artifacts to help ensure that you can roll back and roll forward when necessary.
 
-**Deployments must pass health checks before each phase of progressive exposure can begin**
+- Use a release flow or trunk-based branching structure, which enforces tightly synced collaboration across the development team, instead of a Gitflow or environment-based branching structure.
 
-As part of building your observability platform and your reliability strategies, you should have developed a robust health model for your workload (link to reliability/metrics.md/building a health model anchor) that gives you in-depth visibility into the workload components and the overall health of the workload. As you monitor the workload during each phase of the rollout, if an alert about a health change occurs and it is correlated with one or more of the groups that has been moved onto the new version, the rollout should immediately halt and an investigation into the cause of the alert must be performed to help determine the next course of action. Conversely, if all health indicators stay green throughout the bake time and no end-user reported issues come in, you can give the all-clear signal to move forward with the rollout. Be sure to include some metrics about usage at each rollout stage to ensure that a lack of user reported issues and negative health signals isn’t a false positive hiding an issue. If you can see that users in each rollout group are actively using the new version, that will give you an extra measure of confidence.
+- Automate as much of your SDP as possible. For detailed guidance on automating IaC and application continuous integration and continuous delivery (CI/CD) processes, see [Recommendations for implementing automation](automate-tasks.md).
 
-**When issues are detected, the deployment is halted and recovery initiates immediately.**
+- Use CI practices to regularly integrate code changes into repositories. CI practices can help you identify integration conflicts and reduce the likelihood of large, risky merges. For more information, see the [Continuous integration guide](/azure/well-architected/devops/release-engineering-ci).
 
-When your deployment causes an issue in one of the rollout groups, the deployment rollout must halt immediately. Whether you are alerted by your observability platform or by an end-user, the decision about how to proceed must happen as quickly as possible, so an investigation into the cause of the issue and the severity of the effects must be performed as soon as the alert is received.  
+- Use feature flags to selectively enable or disable new features or changes in production. Feature flags can help you control the exposure of new code and quickly roll back deployment if issues arise.
 
-Your recovery from a deployment issue can follow one of the following paths:
+- Deploy changes to staging environments that mirror your production environment. Practice environments allow you to test changes in a controlled setting before deploying to the live environment.
 
-- Rollback: this is the process of undoing the changes made in the deployment and reverting back to the last known good configuration.
+- Establish predeployment checks, including code review, security scans, and compliance checks, to help ensure that changes are safe to deploy.
 
-- Roll forward: this is the process of addressing the issue in the midst of the rollout by applying a hotfix or otherwise mitigating the issue.
+- Implement circuit breakers to automatically halt traffic to a service that's experiencing issues. Doing so can help to prevent further degradation of the system.
 
-- Deploy new infrastructure with the last known good configuration
+### Emergency SDP protocols
 
-Rolling back changes can be complex, especially with regard to dealing with databases and schema changes and other stateful components. Ensure that your SDP guidelines provide clear instructions on how to deal with data changes according to the data estate design for your workload.
+Establish prescriptive protocols that define how your SDP can be adjusted for a hotfix or for emergency issues like a security breach or vulnerability exposure. For example, your emergency SDP protocols might include:
 
-Likewise, rolling forward must be handled very carefully to ensure that SDP is not neglected, and the hotfix or other mitigation efforts are performed safely.
+- Promotion and approval stage acceleration.
 
-**Emergency SDP protocols**
+- Smoke testing and integration testing acceleration.
 
-When you need to deploy a hotfix to respond to a rollout that has encountered issues, or in cases of emergencies like security breaches or vulnerability exposures, you should have prescriptive protocols documented that define how your SDP can be modified in limited ways to respond to these cases:
+- Bake time reduction.
 
-- Promotion and approval stages can be accelerated, but should still happen to ensure quality
-
-- Smoke testing and integration testing can be accelerated, but should still happen 
-
-- Bake times can be reduced
-
-In some cases, the emergency might be critical enough to force you to perform limited quality and testing gates, but they should still be run in full as quickly as possible as an out of band exercise.
-
-Ensure that you have defined who can approve accelerating your SDP and the criteria that must be met to be approved.
-
-Your emergency SDP protocols should be aligned with your emergency response plan (link to OpEx emergency response guide) to ensure that all emergencies are handled according to the same protocols.
+In some cases, the emergency might limit quality and testing gates, but gates should still be run as quickly as possible as an out-of-band exercise. Make sure that you define who can approve SDP acceleration in an emergency and the criteria that must be met for acceleration to be approved. Align your emergency SDP protocols with your [emergency response plan](./emergency-response.md) to help ensure that all emergencies are handled according to the same protocols.
 
 ## Azure facilitation
 
-- [Azure DevOps Pipelines](/azure/devops/pipelines/process/stages) and [GitHub Actions](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) support multi-stage deployments with approval gates, which can help you design your progressive exposure rollout for deployments.
+- [Azure Pipelines](/azure/devops/pipelines/process/stages) and [GitHub Actions](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment) support multi-stage deployments by using approval gates, which can help you design your progressive exposure rollout for deployments.
 
-- Use [Azure App Service staging slots](/azure/app-service/deploy-staging-slots) to easily swap between versions of code. These slots are helpful for testing in staging environments or can be used for blue-green deployments.
+- Use [Azure App Service staging slots](/azure/app-service/deploy-staging-slots) to easily swap between versions of code. Staging slots are helpful for testing in staging environments and can be used for blue-green deployments.
 
-- Store and manage your web app feature flags in [Azure App Configuration](/azure/azure-app-configuration/manage-feature-flags). Using this function gives you a unified management plane to create, modify and deploy features.
+- Store and manage your web app feature flags in [Azure App Configuration](/azure/azure-app-configuration/manage-feature-flags). By using this service, you can create, change, and deploy features in a unified management plane.
 
-- Deploy workload application in your Virtual Machines using [VM Applications](/azure/virtual-machines/vm-applications-how-to).
+- Deploy workload applications in your virtual machine by using [VM Applications](/azure/virtual-machines/vm-applications-how-to).
 
-- [Azure Load Balancers](/azure/architecture/guide/technology-choices/load-balancing-overview) can be used to implement some of the described deployment strategies and some options provide with native resources to expose the health of your workload applications.
+- Use [Azure load balancers](/azure/architecture/guide/technology-choices/load-balancing-overview) to implement deployment strategies and expose the health of your workload applications by using native resources.
 
-- [The Application Health Extension](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension) is deployed inside a Virtual Machine Scale Set instance and reports on application health from inside the scale set instance. The extension probes on a local application endpoint and will update the health status based on TCP/HTTP(S) responses received from the application.
+- Use [Application Health extension](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension) to report on application health from inside a Virtual Machine Scale Set instance. The extension probes on a local application endpoint and updates the health status based on TCP/HTTP(S) responses received from the application.
 
-- [Azure Logic Apps](/azure/logic-apps/manage-logic-apps-with-azure-portal) create a new version of the application whenever an update is made to it. Azure maintains a history of versions and can revert or promote any previous version.
+- Use [Azure Logic Apps](/azure/logic-apps/logic-apps-overview#more-about-azure-logic-apps) to create a new version of the application whenever an update is made to it. Azure maintains a history of application versions and can revert or promote to any previous version.
 
-- Many Azure database services provide point-in-time restore functionality that can help you when you need to roll back.
+- Many Azure Database services provide point-in-time restore functionality that can help you roll back. Services that support point-in-time restore include:
 
   - [Azure SQL Database](/azure/azure-sql/database/recovery-using-backups)
-
   - [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/point-in-time-restore)
-
-  - [Cosmos DB](/azure/cosmos-db/continuous-backup-restore-introduction)
-
+  - [Azure Cosmos DB](/azure/cosmos-db/continuous-backup-restore-introduction)
   - [Azure Database for MySQL](/azure/mysql/flexible-server/concepts-backup-restore)
-
   - [Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-backup-restore)
 
 ## Tradeoffs
 
-Building and maintaining safe deployment practices is _hard_ and your success in fully implementing robust standards depends to some extent on the maturity of your practices across many areas of software development.  Your team’s embrace of recommended practices like a robust use of automation, strict use of IaC-only for infrastructure changes, and consistency in branching strategies, use of feature flags, among many other practices will help you adopt many of the recommendations given in this guide. However, use this guide to optimize your practices to the extent that is practical for where your team is at in terms of the maturity of your development practices and use it to inform your plans for improvement as your practices evolve.
+Building and maintaining safe deployment practices is complex. Your success in fully implementing robust standards depends on the maturity of your practices across many areas of software development.  Use of automation, IaC-only for infrastructure changes, consistency in branching strategies, use of feature flags, and many other practices can help to ensure safe deployment. Use this guide to optimize your workload and inform your plans for improvement as your practices evolve.
 
-There are tradeoffs for each deployment model discussed in this guide.
-
-For canary deployments, there will be times that you have to support two versions of the application on the same infrastructure, which increases the management burden on the workload and support teams.
-
-For blue-green deployments, there will be times when you have two sets of production infrastructure running at the same time, which is costly from a financial standpoint and from a management standpoint.
+There are tradeoffs for each deployment model discussed in this guide. For example, during canary deployments, two versions of an application are supported on the same infrastructure, which increases the management burden on the workload and support teams. Conversely, during blue-green deployment, two sets of production infrastructure are run at the same time, which might result in extra cost and increased management workload.
 
 ## Example
 
-See the [Blue-green deployment of AKS clusters](/azure/architecture/guide/aks/blue-green-deployment-for-aks) architecture guide for an example of using this deployment model.
+See the [blue-green deployment of Azure Kubernetes Service (AKS) clusters](/azure/architecture/guide/aks/blue-green-deployment-for-aks) architecture guide for an example of how to use this deployment model.
 
 ## Related links
 
-[Release engineering: Deployment](/azure/well-architected/devops/release-engineering-cd) 
+- [Application Health extension](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension)
+- [Azure App Configuration](/azure/azure-app-configuration/manage-feature-flags)
+- [Azure App Service staging slots](/azure/app-service/deploy-staging-slots)
+- [Azure Cosmos DB](/azure/cosmos-db/continuous-backup-restore-introduction)
+- [Azure Database for MySQL](/azure/mysql/flexible-server/concepts-backup-restore)
+- [Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-backup-restore)
+- [Azure load balancers](/azure/architecture/guide/technology-choices/load-balancing-overview)
+- [Azure Logic Apps](/azure/logic-apps/logic-apps-overview#more-about-azure-logic-apps)
+- [Azure Pipelines](/azure/devops/pipelines/process/stages)
+- [Azure SQL Database](/azure/azure-sql/database/recovery-using-backups)
+- [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/point-in-time-restore)
+- [Building a health model](../reliability/metrics.md#building-a-health-model)
+- [Continuous integration guide](/azure/well-architected/devops/release-engineering-ci)
+- [Deployment Stamps](/azure/architecture/patterns/deployment-stamp)
+- [Performance considerations for your deployment infrastructure](/azure/well-architected/devops/release-engineering-performance)
+- [Release engineering: Application development](/azure/well-architected/devops/release-engineering-app-dev)
+- [Release engineering: Continuous integration](/azure/well-architected/devops/release-engineering-ci)
+- [Release engineering: Deployment](/azure/well-architected/devops/release-engineering-cd)
+- [Release engineering: Rollback](/azure/well-architected/devops/release-engineering-rollback)
+- [Testing your application and Azure environment](/azure/well-architected/devops/release-engineering-testing)
+- [VM Applications](/azure/virtual-machines/vm-applications-how-to)
 
-[Performance considerations for your deployment infrastructure](/azure/well-architected/devops/release-engineering-performance) 
+## Community links
 
-[Release engineering: Rollback](/azure/well-architected/devops/release-engineering-rollback) 
+- [Advancing safe deployment practices](https://azure.microsoft.com/blog/advancing-safe-deployment-practices/)
+- [GitHub Actions](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)
 
-[Release engineering: Application development](/azure/well-architected/devops/release-engineering-app-dev)
+## Operational Excellence checklist  
 
-[Release engineering: Continuous integration](/azure/well-architected/devops/release-engineering-ci) 
+Refer to the complete set of recommendations.
 
-[Testing your application and Azure environment](/azure/well-architected/devops/release-engineering-testing)
-
-[Advancing safe deployment practices](https://azure.microsoft.com/blog/advancing-safe-deployment-practices/)
-
-## Next steps
-
-We recommend that you review the Operational Excellence checklist to explore other concepts. 
-
-> [!div class="nextstepaction"] 
-> [Operational Excellence checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Operational Excellence checklist](checklist.md)
