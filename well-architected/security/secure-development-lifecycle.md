@@ -18,7 +18,7 @@ ms.topic: conceptual
 
 This guide describes the **recommendations for hardening your code, development environment, and software supply chain** by applying security best practices throughout the development cycle. To understand this guidance, you should have knowledge of DevSecOps. 
 
-:::image type="content" source="./images/devops-security.png" alt-text="A diagram of the security cycle.":::
+:::image type="content" source="images/secure-development-lifecycle/devops-security.png" alt-text="A diagram of the security cycle.":::
 
 DevSecOps integrates security into DevOps processes by: 
 
