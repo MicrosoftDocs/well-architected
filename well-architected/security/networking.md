@@ -94,7 +94,7 @@ The **level of exposure can also be determined by the workload's proximity to th
     
     :::image type="content" source="images/networking/network-defense-depth-private-cloud.png" alt-text="Diagram that shows network defense in depth for private cloud." border="false" lightbox="images/networking/network-defense-depth-private-cloud.png":::
     
-    By comparing this image to the public cloud image, notice that the public IP has shifted away from the workload. There are now added layers. DNS has shifted right and there's a transition from public IP space to private IP space at this layer.
+    By comparing this image to the public cloud image, you'll notice that the public IP has shifted away from the workload. There are now added layers. DNS has shifted right and there's a transition from public IP space to private IP space at this layer.
 
 > [!NOTE] 
 > Identity is always the primary perimeter. Access management must be applied to networking flows. Use managed identities when using Azure role-base access controls between the components of the network.
@@ -170,7 +170,7 @@ Consider **securing access to PaaS services by using private endpoints**. That e
 
 Communication with a PaaS service is done by using the service's public IP and DNS record. That communication is over the internet. You can make that communication private.
 
-A tunnel from the PaaS service into one of your subnets create a private channel. All communication takes place from the component's private IP to a private endpoint in that subnet, which then talks to the PaaS service.
+A tunnel from the PaaS service into one of your subnets creates a private channel. All communication takes place from the component's private IP to a private endpoint in that subnet, which then talks to the PaaS service.
 
 In this example, the left image shows the flow for publicly exposed endpoints. On the right, that flow is secured using private endpoints.
 
@@ -214,7 +214,7 @@ Recommended technology choices:
     > [!NOTE] 
     > Most organizations have a force tunneling policy. This means traffic must be forced through an NVA.
     
-    If not using VWan topology, **you must deploy a user-defined route (UDR)** with NextHopType of internet to your NVA's private IP address. UDRs are applied at the subnet level. By default, subnet to subnet traffic doesn't route through the NVA.
+    If you're not using VWan topology, **you must deploy a user-defined route (UDR)** with the NextHopType of `internet` to your NVA's private IP address. UDRs are applied at the subnet level. By default, subnet-to-subnet traffic doesn't route through the NVA.
     
     Azure Firewall can also be simultaneously used for ingress and can route HTTP(s) traffic. In higher SKUs, it offers TLS termination to do payload-level inspection.
     
@@ -316,7 +316,7 @@ Here are some recommendations:
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Service SKUs with private endpoints are more expensive. It can complicate operations because of network obscurity. You will have to add self-hosted agents, jump boxes, VPN, and other components to your architecture.
 
-DNS management can be complex in common network topologies. You may have to introduce DNS forwarders and other components.
+DNS management can be complex in common network topologies. You might have to introduce DNS forwarders and other components.
 
 #### VNET Injection
 
