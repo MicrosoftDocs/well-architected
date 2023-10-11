@@ -26,7 +26,7 @@ Continuous integration (CI) is a practice where source control systems and softw
 
 Continuous integration is a software development practice that developers use to integrate software updates into a source control system on a regular cadence.
 
-The continuous integration process starts when an engineer creates a GitHub pull request to signal to the CI system that code changes are ready to be integrated. Ideally, the integration process validates the code against several baselines and tests. It then provides quick feedback to the requesting engineer on the status of these tests.
+The continuous integration process starts when an engineer creates a GitHub pull request to signal to the CI system that code changes are ready to be integrated. Ideally, the integration process validates the code against several baselines and tests. It then provides feedback to the requesting engineer on the status of these tests.
 
 If baseline checks and testing go well, the integration process produces and stages assets that will deploy the updated software. These assets include compiled code and container images.
 
@@ -52,7 +52,7 @@ A continuous integration pipeline involves a piece of software (often cloud host
 
 In most cases, the pipeline software is attached to source control such that when pull requests are created or software is merged into a specific branch, the continuous integration pipeline is run. Source control integration also provides the opportunity to give CI feedback directly on pull requests.
 
-Many solutions, like Azure Pipelines or GitHub Actions, provide capabilities of continuous integration pipelines.
+Many solutions, like Azure Pipelines or GitHub Actions, provide the capabilities of continuous integration pipelines.
 
 ### Source control integration
 
@@ -96,7 +96,7 @@ The following image shows test results that appear in the Azure DevOps portal.
 
 #### Failed tests
 
-Failed tests should temporarily block a deployment and lead to a deeper analysis of what happened. Failed tests should also lead to either a refinement of the test or an improvement in the change that caused the test to fail.
+Failed tests should temporarily block a deployment and lead to a deeper analysis of what happened. Failed tests should also lead to either a refinement of the tests or an improvement in the change that caused the tests to fail.
 
 #### CI result badges
 
@@ -108,16 +108,16 @@ Many developers show that their code quality is high by displaying a status badg
 
 [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) is a collection of services that help you build a collaborative, efficient, and consistent development practice.
 
-[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) provides build and release services to support continuous integration and delivery of your applications.
+[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) provides build and release services to support continuous integration and continuous delivery (CI/CD) of your applications.
 
-[GitHub for Actions for Azure](https://azure.github.io/actions/) enables the automation of continuous integration and continuous delivery (CI/CD) processes. It integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request in your repository, or that deploy merged pull requests to production.
+[GitHub for Actions for Azure](https://azure.github.io/actions/) enables the automation of CI/CD processes. It integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request in your repository, or that deploy merged pull requests to production.
 
 ## Related links
 
 Learn how to create a continuous integration pipeline by using either GitHub or Azure DevOps:
 
 - [Create your first pipeline](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops)
-- [Using starter workflows](https://docs.github.com/free-pro-team@latest/actions/guides/setting-up-continuous-integration-using-workflow-templates)
+- [Use starter workflows](https://docs.github.com/free-pro-team@latest/actions/guides/setting-up-continuous-integration-using-workflow-templates)
 
 Learn how to display badges in your repositories:
 
