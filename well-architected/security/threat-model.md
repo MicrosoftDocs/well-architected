@@ -30,7 +30,7 @@ This guide provides recommendations on the common approaches for doing threat mo
 
 ## Key design strategies
 
-Threat modeling is a crucial process that an organization should integrate into its SDLC. It's not solely a developer's task. It's a shared responsibility between:
+Threat modeling is a crucial process that an organization should integrate into its SDLC. Threat modeling is not solely a developer's task. It's a shared responsibility between:
 
 - The workload team, which is responsible for the technical aspects of the system.
 - Business stakeholders, who understand the business outcomes and have a vested interest in security.
@@ -92,7 +92,7 @@ Meet regularly with executive sponsors to define requirements. These reviews pro
 
 ## Azure facilitation
 
-The Microsoft Security Development Lifecycle provides a tool called the Threat Modeling Tool to assist with the threat modeling process. It's available at no additional cost. For more information, see the [Threat Modeling page](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling).
+The Microsoft Security Development Lifecycle provides a threat modeling tool to assist with the threat modeling process. This tool is available at no additional cost. For more information, see the [Threat Modeling page](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling).
 
 ## Community resources
 
