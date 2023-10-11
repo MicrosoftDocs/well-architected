@@ -87,27 +87,29 @@ No matter which choice you make, you should include appropriate approvals in you
 
 It's important to have clearly defined communication responsibilities to help minimize chaos during incidents. These responsibilities should establish how the workload team engages with support teams, stakeholders, and emergency response team personnel, like the emergency response manager. Standardize the status update cadence that the workload team follows. Ensure that stakeholders are aware of this standard so that they know when to expect updates. If the workload team needs to communicate directly with end users, clarify the type of information and level of detail that are appropriate for sharing with users. Also communicate to the workload team any other requirements that apply to these cases.
 
-### Post-mortems
+### Postmortems
 
-Post-mortems should follow all failed deployments, without exception. Every failed deployment is an opportunity for learning. You may be able to identify weaknesses in your deployment and development processes, or you may identify misconfigurations in your infrastructure, among many other possibilities. Post-mortems should always be blameless so that individuals involved in the incident feel safe while sharing their perspectives on what can be improved. Post-mortem leaders should follow up with plans for implementing the improvements that have been identified and add these plans to the workload backlog.
+Postmortems should follow all failed deployments, without exception. Every failed deployment is an opportunity for learning. Postmortems might help you identify weaknesses in your deployment and development processes. You also might identify misconfigurations in your infrastructure, among many other possibilities.
+
+Postmortems should always be blameless so that individuals who are involved in the incident feel safe when they share their perspectives on what can be improved. Postmortem leaders should follow up with plans for implementing the improvements that have been identified and adding these plans to the workload backlog.
 
 ### Considerations and general recommendations
 
-Ensure that deployments are thoroughly tested when deploying to lower development environments to catch bugs and misconfigurations before they get to production.
+Ensure that deployments are thoroughly tested when you deploy to lower development environments. This approach helps you catch bugs and misconfigurations before they get to production.
 
-Ensure that your deployment pipeline can accept distinct versions as parameters so that you can deploy last known good configurations easily.
+Ensure that your deployment pipeline can accept distinct versions as parameters so that you can easily deploy last known good configurations.
 
-Ensure that you maintain consistency with the management and data planes as you roll back or roll forward. Keys, secrets, database state and configuration specific to resources and policies  (link to perf re: scaling issues when rolling back) all need to be in scope and accounted for. For example, pay attention to how your infrastructure scaling was designed in your last known good deployment and determine if you need to adjust those configurations when you redeploy your code.
+Ensure that you maintain consistency with the management and data planes as you roll back or roll forward. Keys, secrets, database state data, and configurations that are specific to resources and policies all need to be in scope and accounted for (link to perf re: scaling issues when rolling back). For example, pay attention to the design of your infrastructure scaling in your last known good deployment. Determine whether you need to adjust that configuration when you redeploy your code.
 
-Prefer small frequent changes over infrequent large changes so that the delta between new and last known good is small.
+Prefer small frequent changes over infrequent large changes so that the delta between your new and last known good deployments is small.
 
-Perform [failure mode analysis (FMA)](../reliability/failure-mode-analysis.md) on your CI/CD pipelines to help identify issues that can complicate mitigations. Like your workload as a whole, you can analyze your pipelines to identify areas that may be problematic when attempting a given mitigation type. 
+Perform [failure mode analysis (FMA)](../reliability/failure-mode-analysis.md) on your CI/CD pipelines to help identify issues that can complicate mitigations. Like your workload as a whole, your pipelines can be analyzed to identify areas that might be problematic when you attempt a given mitigation type.
 
-Use automated rollback functionality judiciously. Some CI/CD tools like Azure DevOps have automatic rollback functionality built-in and you should consider using it if it provides tangible value to you. If you decide it is valuable, only adopt it if you have tested thoroughly and regularly to ensure that your pipeline is mature enough to introduce additional issues if an automatic rollback is triggered. You need to trust that the automation is going to only deploy the necessary changes and that it is only triggered when necessary. Design your triggers carefully to minimize these risks. 
+Use automated rollback functionality judiciously. Some CI/CD tools like Azure DevOps have automatic rollback functionality that's built in. Consider using this functionality if it provides tangible value to you. If you decide it's valuable, only adopt it if you've tested your pipeline thoroughly and regularly to ensure that it's mature enough to introduce additional issues if an automatic rollback is triggered. You need to trust that the automation only deploys necessary changes and that it's only triggered when necessary. Design your triggers carefully to minimize these risks.
 
-Use platform provided capabilities to help rollbacks. For example, backups and point-in-time restores can help with storage and data rollbacks, or if you use VMs for hosting your application, restoring to a checkpoint immediately before the incident can be a helpful strategy.
+Use platform-provided capabilities to help rollbacks. For example, backups and point-in-time restores can help with storage and data rollbacks, or if you use VMs for hosting your application, it can be helpful to restore your enviornment to a checkpoint immediately before the incident.
 
-Test your entire deployment failure mitigation strategy frequently. Like emergency response plans and disaster recovery plans, your deployment failure plan will only be successful if your team is trained on it and practices it regularly. Chaos engineering and [fault injection testing](../reliability/testing-strategy.md) can be effective techniques for testing your deployment mitigation strategy.
+Test your entire deployment failure mitigation strategy frequently. Like emergency response plans and disaster recovery plans, your deployment failure plan is only successful if your team is trained on it and practices it regularly. Chaos engineering and [fault injection testing](../reliability/testing-strategy.md) can be effective techniques for testing your deployment mitigation strategy.
 
 ## Azure facilitation
 
