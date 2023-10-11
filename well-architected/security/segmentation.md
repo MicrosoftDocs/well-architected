@@ -164,7 +164,7 @@ Here are some common patterns for segmenting a workload in Azure. Choose a patte
 
 One way to organize security groups is by job title like software engineer, database administrator, site reliability engineer, quality assurance engineer, or security analyst. This approach involves **creating security groups for your workload team** based on their roles, without considering the work that needs to be accomplished. Grant security groups RBAC permissions, standing or just in time (JIT), according to their responsibilities in the workload. Assign human and service principles to security groups based on their as-needed access.
 
-Membership is highly visible at the role assignment level, making it easy to see what a *role* has access to. Each person is usually only a member of one security group, which makes onboarding and offboarding easy. However, unless job titles overlap perfectly with responsibilities, title-based grouping isn't ideal for least-privilege implementation. You might end up combining implementation with function-based grouping.
+Membership is highly visible at the role assignment level, making it easy to see what a *role* has access to. Each person is usually a member of only one security group, which makes onboarding and offboarding easy. However, unless job titles overlap perfectly with responsibilities, title-based grouping isn't ideal for least-privilege implementation. You might end up combining implementation with function-based grouping.
 
 #### Pattern 2: Function-based grouping
 

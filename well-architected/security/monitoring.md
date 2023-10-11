@@ -34,7 +34,7 @@ The main purpose of security monitoring is **threat detection**. The primary obj
 
 Monitoring can be approached from various perspectives: 
 
-- **Monitor at various altitudes.** Observing from **various altitudes** is the process of getting information about user flows, data access, identity, networking, and even the operating system. Each of these areas offers unique insights that can help you identify deviations from expected behaviors that are established against the security baseline. Conversely, continuously monitoring a system and applications over time can **help establish that baseline posture**. For example, you might typically see around 1,000 sign-in attempts in your identity system every hour. If your monitoring detects a spike of 50,000 sign-in attempts during a short period, that might indicate that an attacker is trying to gain access to your system.
+- **Monitor at various altitudes.** Observing from **various altitudes** is the process of getting information about user flows, data access, identity, networking, and even the operating system. Each of these areas offers unique insights that can help you identify deviations from expected behaviors that are established against the security baseline. Conversely, continuously monitoring a system and applications over time can **help establish that baseline posture**. For example, you might typically see around 1,000 sign-in attempts in your identity system every hour. If your monitoring detects a spike of 50,000 sign-in attempts during a short period, an attacker might be trying to gain access to your system.
 
 - **Monitor at various scopes of impact.** It's critical to **observe the application and the platform**. Assume an application user accidentally gets escalated privileges or a security breach occurs. If the user performs actions beyond their designated scope, the impact might be confined to actions that other users can perform. 
    
@@ -56,7 +56,7 @@ The following sections provide recommended practices that incorporate the preced
 
 The objective is to maintain a **comprehensive audit trail** of events that are significant from a security perspective. Logging is the most common way to capture access patterns. Logging must be performed for the application and the platform. 
 
-For an audit trail, you need to **establish the *what*, *when*, and *who* that's associated with actions**. You need to identify the specific timeframes when actions are performed. This should be covered in your threat modeling. To counteract a repudiation threat, you should establish strong logging and auditing systems that result in a  record of activities and transactions.
+For an audit trail, you need to **establish the *what*, *when*, and *who* that's associated with actions**. You need to identify the specific timeframes when actions are performed. Make this assessment in your threat modeling. To counteract a repudiation threat, you should establish strong logging and auditing systems that result in a  record of activities and transactions.
 
 The following sections describe use cases for some common altitudes of a workload.
 
@@ -148,7 +148,7 @@ By combining several smaller tools, you can emulate some functions of a SIEM sys
 
 Detect **anomalous user access patterns** so that you can identify and investigate deviations from expected patterns. This involves comparing current user behavior with past behavior to spot anomalies. Although it might not be feasible to perform this task manually, you can use threat intelligence tools to do it. Invest in **User and Entity Behavior Analytics (UEBA) tools** that collect user behavior from monitoring data and analyze it. These tools can often perform predictive analysis that maps suspicious behaviors to potential types of attack.
 
-**Detect threats during pre-deployment and post-deployment stages.** During the pre-deployment phase, incorporate vulnerability scanning into pipelines and take necessary actions based on the results. Post-deployment, continue to conduct vulnerability scanning. You can use tools like Microsoft Defender for Containers, which scans container images. Include the results in the collected data. For information about secure development practices, see [Recommendations for using safe deployment practices](../operational-excellence/safe-deployments.md). 
+**Detect threats during pre-deployment and post-deployment stages.** During the predeployment phase, incorporate vulnerability scanning into pipelines and take necessary actions based on the results. Post-deployment, continue to conduct vulnerability scanning. You can use tools like Microsoft Defender for Containers, which scans container images. Include the results in the collected data. For information about secure development practices, see [Recommendations for using safe deployment practices](../operational-excellence/safe-deployments.md). 
 
 **Take advantage of platform-provided detection mechanisms and measures.** For example, Azure Firewall can analyze traffic and block connections to untrusted destinations. Azure also provides ways to detect and protect against distributed denial-of-service (DDoS) attacks. 
 
