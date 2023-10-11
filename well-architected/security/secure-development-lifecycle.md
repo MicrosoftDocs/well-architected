@@ -18,7 +18,7 @@ ms.topic: conceptual
 
 This guide describes the **recommendations for hardening your code, development environment, and software supply chain** by applying security best practices throughout the development cycle. To understand this guidance, you should have knowledge of DevSecOps. 
 
-:::image type="content" source="./images/devops-security.png" alt-text="A diagram of the security cycle.":::
+:::image type="content" source="images/secure-development-lifecycle/devops-security.png" alt-text="A diagram of the security cycle.":::
 
 DevSecOps integrates security into DevOps processes by: 
 
@@ -35,7 +35,7 @@ It's not enough to secure just the infrastructure plane by using controls on ide
 | Term | Definition |
 |--|--|
 | Security Development Lifecycle (SDL) | A set of practices provided by Microsoft that supports security assurance and compliance requirements. |
-| Software Development Lifecycle (SDLC) | A multi-stage systematic process for developing software systems. |
+| Software development lifecycle (SDLC) | A multistage, systematic process for developing software systems. |
 
 ## Key design strategies
 
