@@ -120,7 +120,7 @@ Optimizing your development practices starts with standardization of tools and p
 
 -   [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a fully managed load-testing service that enables you to generate high-scale load by simulating traffic for your applications, regardless of where they\'re hosted.
 
-## Tradeoff
+## Tradeoffs
 
 Investing in powerful commercial tools can be costly, so ensure that you choose just the right tools to meet your requirements.
 

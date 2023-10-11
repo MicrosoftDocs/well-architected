@@ -129,7 +129,7 @@ Test your entire deployment failure mitigation strategy frequently. Like emergen
 
 - Azure Chaos Studio Preview is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
 
-## Tradeoff
+## Tradeoffs
 
 The support team needs to be able to perform their normal duties along with supporting emergencies, so additional headcount may be needed to ensure that the support team is properly staffed to carry out all of the required duties.
 

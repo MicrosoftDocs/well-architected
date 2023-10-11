@@ -15,11 +15,11 @@ This guide describes the best practices for testing. Performance testing helps y
 
 |  Term|                                Definition|
 |-|-|
+| Chaos testing | A performance test that aims to test the resilience and stability of a system by deliberately introducing random and unpredictable failures or disruptions. |
   |Performance baseline|A set of metrics that represent the behavior of a workload under normal conditions as validated by testing.
 | Load test|A performance test that measures system performance under typical and heavy load.|
  | Stress test|A performance test that overloads a system until it breaks.|
   |Synthetic test|A performance test that simulates user requests in an application.|
-| Chaos testing | A performance test that aims to test the resilience and stability of a system by deliberately introducing random and unpredictable failures or disruptions. |
 
 ## Key strategies
 
@@ -97,9 +97,9 @@ Configuring a test environment refers to the process of setting up the necessary
 - *Replicate network conditions.* Configure the network settings in the test environment to replicate the expected network conditions during the actual workload deployment. You need to include bandwidth, latency, and network protocols.
 - *Install and configure dependencies.* Install the necessary software, libraries, databases, or other dependencies required for the workload to run correctly. Configure these dependencies to match the expected production environment.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Maintaining separate test environments, storing data, using tooling, and running tests costs money. Know the cost of performance testing and find way to optimize spending.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Maintaining separate test environments, storing data, using tooling, and running tests costs money. Know the cost of performance testing and find way to optimize spending.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk:** Production data can contain sensitive information and using it for testing can create risk of leaking sensitive data without a robust scrubbing and masking strategy.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Production data can contain sensitive information and using it for testing can create risk of leaking sensitive data without a robust scrubbing and masking strategy.
 
 ### Perform the test
 
@@ -107,7 +107,7 @@ Run the performance tests using the chosen testing tool. Monitor and collect per
 
 ### Analyze the results
 
-Analyzing the test results involves examining the collected data and metrics from the performance tests to gain insights into the workload's performance. The goal is to identify any performance issues and make informed decisions for improvement. Here are the key steps involved in analyzing the test results:
+Analyzing the test results involves examining the collected data and metrics from the performance tests to gain insights into the performance of the workload. The goal is to identify any performance issues and use the feedback to update the priorities in application development. Here are the key steps involved in analyzing the test results:
 
 **Review performance metrics.** Look at the performance metrics collected during the performance testing, such as response times, throughput, error rates, CPU and memory utilization, and network latency. Analyze these metrics to understand the overall performance of the workload.
 
@@ -149,4 +149,4 @@ Continuous testing involves ongoing monitoring and refinement of the tests to ma
 
 **Monitoring.** [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to telemetry from your cloud and on-premises environments. [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor and provides application performance monitoring (APM) features. It allows you to monitor applications from development, through test, and into production.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Testing takes time and skill to execute and can affect operational efficiency.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Testing takes time and skill to execute and can affect operational efficiency.
