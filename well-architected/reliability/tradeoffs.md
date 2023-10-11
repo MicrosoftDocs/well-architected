@@ -87,13 +87,13 @@ During the design phase of a workload, you need to consider how decisions based 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Increased over-provisioning.** The Performance Efficiency pillar discourages over-provisioning, recommending that you use just enough resources to satisfy demand.
 
-- Autoscaling operations aren't instantaneous and therefore can't reliably handle a sudden and dramatic spike in demand that can't be shaped or smoothed. As such, over-provisioning through either larger or _more instances_ are a critical reliability tactic to account for this lag between demand signal and supply creation. Unused capacity counters the efficiency aspect of performance efficiency.
+- Autoscaling operations aren't instantaneous and therefore can't reliably handle a sudden and dramatic spike in demand that can't be shaped or smoothed. Therefore, over-provisioning via either larger instances or more instances is a critical reliability tactic to account for the lag between demand signal and supply creation. Unused capacity hinders performance efficiency.
 
-- Sometimes a component cannot be scaled in reaction to demand, and that demand is not fully predictable. _Large instances_ used to cover the 'worst case' leads to over-provisioning waste for situations that are outside that use case.
+- Sometimes a component can't be scaled in reaction to demand, and that demand isn't fully predictable. Using large instances to cover the worst case leads to over-provisioning waste in situations that are outside that use case.
 
 ## Related resources
 
-Explore the tradeoffs for the other pillars.
+Explore the tradeoffs for the other pillars:
 
 - [Security tradeoffs](../security/tradeoffs.md)
 - [Cost Optimization tradeoffs](../cost-optimization/tradeoffs.md)
