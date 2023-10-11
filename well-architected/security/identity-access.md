@@ -1,9 +1,9 @@
 ---
-title: Recommendations for managing identity and access
-description: Learn about the identity and access management recommendations for Azure workloads.
+title: Recommendations for identity and access management 
+description: Learn about recommendations for authenticating and authorizing identities that are attempting to access workload resources.
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 10/09/2023
+ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
