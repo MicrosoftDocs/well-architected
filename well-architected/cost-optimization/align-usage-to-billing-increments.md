@@ -67,7 +67,7 @@ As you understand how resources are billed, you can align the workload design ac
 
 If neither is feasible, then you need to accept the extra cost. Rework the budgets as needed if the extra cost wasn’t included.
 
-:::image type="icon" source="../_images/risk.svg"::: Risk:** Cost optimization decisions shouldn't compromise security requirements or compliance regulations. Opting for cheaper solutions without adequate security measures can expose the workload to potential vulnerabilities.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Cost optimization decisions shouldn't compromise security requirements or compliance regulations. Opting for cheaper solutions without adequate security measures can expose the workload to potential vulnerabilities.
 
 ## Azure facilitation
 

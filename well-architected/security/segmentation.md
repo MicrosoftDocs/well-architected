@@ -56,7 +56,7 @@ Isolation doesn't mean creating silos in the organization. **A unified segmentat
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Segmentation introduces complexity because there's overhead in management. There's also a tradeoff in cost. For example, more resources are provisioned when deployment environments that run side by side are segmented.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Micro-segmentation beyond a reasonable limit loses the benefit of isolation. When you create too many segments, it becomes difficult to identify points of communication or to allow for valid communication paths within the segment.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Micro-segmentation beyond a reasonable limit loses the benefit of isolation. When you create too many segments, it becomes difficult to identify points of communication or to allow for valid communication paths within the segment.
 
 ### Identity as the perimeter
 
@@ -79,7 +79,7 @@ Various identities such as people, software components, or devices access worklo
 >
 > Role-based access control (RBAC) also results in management overhead. Keeping track of identities and their access scopes can become complex in role assignments. The workaround is to assign roles to security groups instead of individual identities.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Identity settings can be complex. Misconfigurations can affect the reliability of the workload. For example, suppose there's a misconfigured role assignment that's denied access to a database. The requests start failing, eventually causing reliability issues that can't otherwise be detected until runtime.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Identity settings can be complex. Misconfigurations can affect the reliability of the workload. For example, suppose there's a misconfigured role assignment that's denied access to a database. The requests start failing, eventually causing reliability issues that can't otherwise be detected until runtime.
 
 For information about identity controls, see [Identity and access management](identity-access.md).
 
@@ -102,13 +102,13 @@ Think like an attacker to achieve a foothold within the workload and establish c
 
 For common patterns related to networking segmentation, see [Networking segmentation patterns](#networking-segmentation-patterns).
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**:  Network security controls are often expensive because they're included with the premium SKUs. Configuring rules on firewalls often results in overwhelming complexity requiring broad exceptions.  
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Network security controls are often expensive because they're included with the premium SKUs. Configuring rules on firewalls often results in overwhelming complexity requiring broad exceptions.  
 >
 > Private connectivity changes architectural design, often adding more components such as jump boxes for private access to compute nodes.
 >
 > Because network perimeters are based on control points, or hops, on the network, each hop can be a potential point of failure. These points can have an effect on the reliability of the system.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Network controls are rule-based and there's a significant chance of misconfiguration, which is a reliability concern.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Network controls are rule-based and there's a significant chance of misconfiguration, which is a reliability concern.
 
 For information about network controls, see [Networking and connectivity](networking.md).
 
@@ -120,7 +120,7 @@ Document and share roles and functions to create consistency and facilitate comm
 
 Consider consistency while accommodating several organizational models when assigning permissions for a segment. These models can range from a single centralized IT group to mostly independent IT and DevOps teams.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Membership of groups can change over time as employees join or leave teams or change roles. Management of roles across segments can result in management overhead.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Membership of groups can change over time as employees join or leave teams or change roles. Management of roles across segments can result in management overhead.
 
 ### Resource organization
 
@@ -130,7 +130,7 @@ Segmentation allows you to **isolate workload resources from other parts of the 
 - Allocate one service for each server when organizing your compute. This level of isolation minimizes complexity and can help contain an attack.
 - Azure provides built-in isolation for some services, for example separation of compute from storage. For other examples, see [Isolation in the Azure public cloud](/azure/security/fundamentals/isolation-choices).
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**:  Resource isolation might result in an increase in total cost of ownership (TCO). For data stores, there might be added complexity and coordination during disaster recovery.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Resource isolation might result in an increase in total cost of ownership (TCO). For data stores, there might be added complexity and coordination during disaster recovery.
 
 ## Azure facilitation
 

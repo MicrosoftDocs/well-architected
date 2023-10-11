@@ -72,7 +72,7 @@ Insufficient or improper allocation of preproduction environments may lead to ov
 - *Align with users' requirements*: Before setting up preproduction environments, understand the requirements and expectations of the users. Tailor the features and specifications based on their needs to avoid unnecessary expenses on unneeded features or resources.
 - *Environment consolidation*: Evaluate if certain environments can be combined without compromising their functionality. It’s relevant where the functions of the environments don’t overlap. For instance, you could merge a user acceptance environment with the quality assurance environment. The functions are distinct and one is usually idle when the other is in use.
 
-:::image type="icon" source="../_images/risk.svg"::: Be cautious when combining environments to ensure that it doesn't introduce conflicts or compromise the testing or development processes.
+> :::image type="icon" source="../_images/risk.svg"::: Be cautious when combining environments to ensure that it doesn't introduce conflicts or compromise the testing or development processes.
 
 The following table provides examples of common preproduction environments.
 
