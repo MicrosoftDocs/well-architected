@@ -3,7 +3,7 @@ title: Recommendations for networking and connectivity
 description: Learn about network design with a focus on security controls that can filter, block, and detect adversaries crossing network boundaries at various depths of your architecture.
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 10/05/2023
+ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 

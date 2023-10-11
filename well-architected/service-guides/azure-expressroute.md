@@ -72,7 +72,7 @@ Azure Advisor provides many recommendations for ExpressRoute circuits as they re
 
 ## Security
 
-Security is one of the most important aspects of any architecture. ExpressRoute provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../security/security-principles.md).
+Security is one of the most important aspects of any architecture. ExpressRoute provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../security/principles.md).
 
 ### Design checklist
 
