@@ -25,9 +25,9 @@ During the design phase of a workload, you need to consider how decisions based 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Security control bypass.** The Security pillar recommends that all controls remain active in both normal and stressed systems.
 
-- When a workload is experiencing a reliability event that's being addressed under active incident response, urgency might create inappropriate pressure for workload teams to bypass security controls that are optimized for routine access. 
+- When a workload is experiencing a reliability event that's being addressed under active incident response, urgency might create pressure for workload teams to bypass security controls that are optimized for routine access. 
 
-- Troubleshooting activities could cause the team to temporary disable security protocols, leaving an already stressed system potentially exposed to additional security risks. There's also a risk that the security protocols won't be reestablished promptly.
+- Troubleshooting activities can cause the team to temporary disable security protocols, leaving an already stressed system potentially exposed to additional security risks. There's also a risk that the security protocols won't be reestablished promptly.
 
 - Granular implementations of security controls, like role-based access control assignments or firewall rules, introduce configuration complexity and sensitivity, increasing the chance for misconfiguration. Mitigating this potential liability by using broad rules erodes all three Zero Trust architecture principles.
 
@@ -39,7 +39,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 ## Reliability tradeoffs with Cost Optimization
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased implementation redundancy or waste.** A cost optimized workload minimizes underutilized resources and avoids over-provisioning resources.
+:::image type="icon" source="../_images/trade-off.svg"::: **Increased implementation redundancy or waste.** A cost-optimized workload minimizes underutilized resources and avoids over-provisioning resources.
 
 - Replication is a key strategy for reliability. Specifically, the strategy is to have enough replication to handle a given number of concurrent node failures. The tolerance for more concurrent node failures requires a higher replica count, which leads to increased costs.
 
@@ -67,7 +67,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 - Having a comprehensive monitoring strategy for a workload is a key part of operational excellence. Introducing additional components into an architecture to implement reliability design patterns results in more data sources to manage, increasing the complexity of implementing distributed tracing and observability.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased effort to generate team knowledge and awareness.** The Operational Excellence pillar recommends that you a maintain a documentation repository for procedures and topologies.
+:::image type="icon" source="../_images/trade-off.svg"::: **Increased effort to generate team knowledge and awareness.** The Operational Excellence pillar recommends that you maintain a documentation repository for procedures and topologies.
 
 - As a workload becomes more robust through the addition of reliability components, it takes more time to maintain operational procedures and artifact documentation.
 
@@ -87,11 +87,11 @@ During the design phase of a workload, you need to consider how decisions based 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Increased over-provisioning.** The Performance Efficiency pillar discourages over-provisioning, recommending that you use just enough resources to satisfy demand.
 
-- Autoscaling operations aren't instantaneous and therefore can't reliably handle a sudden and dramatic spike in demand that can't be shaped or smoothed. Therefore, over-provisioning via either larger instances or more instances is a critical reliability tactic to account for the lag between demand signal and supply creation. Unused capacity counters the goals of performance efficiency.
+- Automatic scaling operations aren't instantaneous and therefore can't reliably handle a sudden and dramatic spike in demand that can't be shaped or smoothed. Therefore, over-provisioning via either larger instances or more instances is a critical reliability tactic to account for the lag between demand signal and supply creation. Unused capacity counters the goals of performance efficiency.
 
 - Sometimes a component can't be scaled in reaction to demand, and that demand isn't fully predictable. Using large instances to cover the worst case leads to over-provisioning waste in situations that are outside that use case.
 
-## Related resources
+## Related links
 
 Explore the tradeoffs for the other pillars:
 
