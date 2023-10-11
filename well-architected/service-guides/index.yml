@@ -326,7 +326,7 @@ additionalContent:
         # Card
         - title: What is WAF
           summary: How to use WAF and audience profile
-          url: ../what-is-waf.md
+          url: ../what-is-well-architected-framework.md
 
 
 
