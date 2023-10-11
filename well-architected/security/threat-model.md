@@ -9,24 +9,24 @@ ms.topic: conceptual
 
 # Recommendations for threat analysis
 
-**Applies to this Well-Architected Framework Security checklist recommendation:**
+**Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
 |[SE:02](checklist.md)|Establish a security baseline that's aligned to compliance requirements, industry standards, and platform recommendations. Regularly measure your workload architecture and operations against the baseline to sustain or improve your security posture over time.|
 |---|---|
 
-**Related guide**: [Secure development lifecycle](secure-development-lifecycle.md)
+**Related guide**: [Recommendations for securing a development lifecycle](secure-development-lifecycle.md)
 
-A comprehensive analysis to identify threats, attacks, vulnerabilities, and countermeasures is crucial during the design phase of a workload. **Threat modeling** is an engineering exercise that includes defining security requirements, identifying and mitigating threats, and validating those mitigations. You can use this technique at any stage of application development or production, but it's most effective during the design stages of a new functionality.
+A comprehensive analysis to identify threats, attacks, vulnerabilities, and countermeasures is crucial during the design phase of a workload. *Threat modeling* is an engineering exercise that includes defining security requirements, identifying and mitigating threats, and validating those mitigations. You can use this technique at any stage of application development or production, but it's most effective during the design stages of new functionality.
 
-This guide provides recommendations on the common approaches for doing threat modeling so that you can identify security gaps quickly and design your security defenses.
+This guide describes the recommendations for doing threat modeling so that you can identify security gaps quickly and design your security defenses.
 
 **Definitions** 
 
 |Term   |Definition|
 |---------|---------|
+|Software development lifecycle (SDLC)|A multistage, systematic process for developing software systems. |
+|STRIDE| A Microsoft-defined taxonomy for categorizing types of threats.|
 |Threat modeling| A process for identifying potential security vulnerabilities in the application and system, mitigating risks, and validating security controls.|
-|Software development lifecycle (SDLC)|A multi-stage systematic process for developing software systems. |
-|STRIDE| Microsoft-defined taxonomy for categorizing types of threats.|
 
 ## Key design strategies
 
@@ -63,7 +63,7 @@ One methodology for classifying threats is [STRIDE](/azure/security/develop/thre
 
 Document all the identified threats. For each threat, define security controls and the response to an attack if those controls fail. Define a process and timeline that minimize exposure to any identified vulnerabilities in the workload, so that those vulnerabilities can't be left unaddressed.
 
-Use the **assume breach** approach. It can help identify controls needed in the design to mitigate risk if a primary security control fails. Evaluate how likely it is for the primary control to fail. If it does fail, what is the extent of the potential organizational risk? Also, what is the effectiveness of the compensating control? Based on the evaluation, apply defense-in-depth measures to address potential failures of security controls.
+Use the *assume breach* approach. It can help identify controls needed in the design to mitigate risk if a primary security control fails. Evaluate how likely it is for the primary control to fail. If it does fail, what is the extent of the potential organizational risk? Also, what is the effectiveness of the compensating control? Based on the evaluation, apply defense-in-depth measures to address potential failures of security controls.
 
 Here's an example:
 
@@ -94,7 +94,12 @@ Meet regularly with executive sponsors to define requirements. These reviews pro
 
 The Microsoft Security Development Lifecycle provides a threat modeling tool to assist with the threat modeling process. This tool is available at no additional cost. For more information, see the [Threat Modeling page](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling).
 
-## Community resources
+## Related links
+
+- [STRIDE](/azure/security/develop/threat-modeling-tool-threats)
+- [Threat Modeling](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
+
+## Community links
 
 [Open Web Application Security Project (OWASP)](https://owasp.org/www-community/Threat_Modeling_Process) has documented a threat modeling approach for applications.
 
