@@ -41,7 +41,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Increased implementation redundancy or waste.** A cost optimized workload minimizes underutilized resources and avoids over-provisioning resources.
 
-- Replication is a key strategy for reliability. Specifically, the strategy is to have enough replication to handle a specific number of concurrent node failures. The tolerance for more concurrent node failures requires a higher replica count, leading to increased costs.
+- Replication is a key strategy for reliability. Specifically, the strategy is to have enough replication to handle a given number of concurrent node failures. The tolerance for more concurrent node failures requires a higher replica count, which leads to increased costs.
 
 - Over-provisioning is another technique for absorbing unexpected load on a system that could otherwise lead to a reliability issue. Any excess capacity that's not utilized is considered wasteful.
 
@@ -87,7 +87,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Increased over-provisioning.** The Performance Efficiency pillar discourages over-provisioning, recommending that you use just enough resources to satisfy demand.
 
-- Autoscaling operations aren't instantaneous and therefore can't reliably handle a sudden and dramatic spike in demand that can't be shaped or smoothed. Therefore, over-provisioning via either larger instances or more instances is a critical reliability tactic to account for the lag between demand signal and supply creation. Unused capacity hinders performance efficiency.
+- Autoscaling operations aren't instantaneous and therefore can't reliably handle a sudden and dramatic spike in demand that can't be shaped or smoothed. Therefore, over-provisioning via either larger instances or more instances is a critical reliability tactic to account for the lag between demand signal and supply creation. Unused capacity counters the goals of performance efficiency.
 
 - Sometimes a component can't be scaled in reaction to demand, and that demand isn't fully predictable. Using large instances to cover the worst case leads to over-provisioning waste in situations that are outside that use case.
 
