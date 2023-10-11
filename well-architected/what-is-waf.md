@@ -66,7 +66,7 @@ Next, move on to the **Checklist**, which should always be your starting point f
 
 Make sure you cover **cloud design patterns**. They're mapped to the pillars they directly support.
 
-Each architectural decision entails a series of considerations. These **tradeoffs** represent recognized and accepted compromises that balance the various aspects of the framework. Tradeoffs are noted with this icon :::image type="content" source="./_images/trade-off.svg" alt-text="Tradeoff icon"::: and risks are noted with this icon :::image type="content" source="./_images/risk.svg" alt-text="Risk icon":::.
+Each architectural decision entails a series of considerations. These **tradeoffs** represent recognized and accepted compromises that balance the various aspects of the framework. Tradeoffs are noted with this icon :::image type="icon" source="./_images/trade-off.svg"::: and risks are noted with this icon :::image type="icon" source="./_images/risk.svg":::.
 
 > Refer to: [About WAF pillars](./pillars.md).
 

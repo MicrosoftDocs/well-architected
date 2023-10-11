@@ -97,9 +97,9 @@ Configuring a test environment refers to the process of setting up the necessary
 - *Replicate network conditions.* Configure the network settings in the test environment to replicate the expected network conditions during the actual workload deployment. You need to include bandwidth, latency, and network protocols.
 - *Install and configure dependencies.* Install the necessary software, libraries, databases, or other dependencies required for the workload to run correctly. Configure these dependencies to match the expected production environment.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Maintaining separate test environments, storing data, using tooling, and running tests costs money. Know the cost of performance testing and find way to optimize spending.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Maintaining separate test environments, storing data, using tooling, and running tests costs money. Know the cost of performance testing and find way to optimize spending.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk:** Production data can contain sensitive information and using it for testing can create risk of leaking sensitive data without a robust scrubbing and masking strategy.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Production data can contain sensitive information and using it for testing can create risk of leaking sensitive data without a robust scrubbing and masking strategy.
 
 ### Perform the test
 
@@ -149,4 +149,4 @@ Continuous testing involves ongoing monitoring and refinement of the tests to ma
 
 **Monitoring.** [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to telemetry from your cloud and on-premises environments. [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor and provides application performance monitoring (APM) features. It allows you to monitor applications from development, through test, and into production.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Testing takes time and skill to execute and can affect operational efficiency.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Testing takes time and skill to execute and can affect operational efficiency.

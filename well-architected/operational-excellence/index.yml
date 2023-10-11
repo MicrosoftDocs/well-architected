@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 
 title: Operational excellence quick links
-summary: Apply operational excellence guidance to your workload to assure workload quality through standardized processes and team cohesion.
+summary: Apply operational excellence guidance to your workload to ensure workload quality through standardized processes and team cohesion.
 
 metadata:
   title: Operational excellence quick links
-  description: Apply operational excellence guidance to your workload to assure workload quality through standardized processes and team cohesion.
+  description: Learn about resources that can help you apply operational excellence guidance to your architectures.
   ms.service: waf
   ms.subservice: waf-pillar-excellence
   ms.topic: landing-page
   author: martinekuan
   ms.author: martinek
-  ms.date: 10/06/2023
+  ms.date: 11/15/2023
 
 landingContent:
-  - title: Key points
+  - title: Learn key points
     linkLists:
       - linkListType: quickstart
         links:
@@ -30,13 +30,13 @@ landingContent:
             url: /assessments/azure-architecture-review/
       - linkListType: learn
         links:
-          - text: Operational Excellence
+          - text: Operational excellence
             url: /training/modules/azure-well-architected-introduction/4-operational-excellence
       - linkListType: video
         links:
           - text: Achieve Operational Excellence
             url: /shows/azure-enablement/achieve-operational-excellence-with-azure-well-architected-framework
-  - title: Design principles
+  - title: Review design principles
     linkLists:
       - linkListType: concept
         links:
@@ -60,11 +60,11 @@ landingContent:
             url: devops-culture.md
           - text: Formalize operational tasks
             url: formalize-operations-tasks.md
-          - text: Use an industry planning process
+          - text: Formalize software development and management
             url: formalize-development-practices.md
           - text: Define development and testing standards
             url: optimize-development-practices.md
-          - text: Agree on safe deployment practices (SPD)
+          - text: Use safe deployment practices (SPD)
             url: safe-deployments.md
   - title: Use automation
     linkLists:
@@ -74,27 +74,27 @@ landingContent:
             url: automate-tasks.md
           - text: Design for automation
             url: enable-automation.md
-  - title: Ship safely and support what is shipped
+  - title: Ship safely and support what you ship
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Design for supportability
+          - text: Design for observability
             url: observability.md
-          - text: Use infrastructure-as-code
+          - text: Use infrastructure as code
             url: infrastructure-as-code-design.md
-          - text: Build a reliable workload supply chain
+          - text: Design a reliable workload supply chain
             url: workload-supply-chain.md
           - text: Handle deployment failures
             url: mitigation-strategy.md
-          - text: Be ready for emergency response
+          - text: Design an emergency response strategy 
             url: emergency-response.md
-  - title: Related resources
+  - title: Explore related resources
     linkLists:
       - linkListType: reference
         links:
           - text: "Azure Advisor: Operational excellence recommendations"
             url: /azure/advisor/advisor-reference-operational-excellence-recommendations
-          - text: DevOps practice resource center
+          - text: DevOps resource center
             url: /devops/
           - text: Azure DevOps
             url: /azure/devops/

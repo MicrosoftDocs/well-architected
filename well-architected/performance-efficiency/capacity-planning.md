@@ -104,7 +104,7 @@ Determining resource requirements for capacity planning involves assessing the r
 
 **Test conclusions.** Capacity planning is an iterative process. You should test the conclusions of your capacity planning and adjust estimates accordingly.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Misjudged capacity planning can lead to over-provisioning or under-provisioning of resources. Over-provisioning leads to higher costs. Under-provisioning can result in poor performance. Try to find the right balance.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Misjudged capacity planning can lead to over-provisioning or under-provisioning of resources. Over-provisioning leads to higher costs. Under-provisioning can result in poor performance. Try to find the right balance.
 
 ## Azure facilitation
 

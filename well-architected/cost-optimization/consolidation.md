@@ -22,10 +22,10 @@ This guide describes the recommendations for consolidating workload resources an
 
 ## Key strategies
 
-The primary objective of consolidation is optimization, not reduction. Consolidation involves restructuring workloads, resources, and team roles to achieve maximum cost efficiency. Unlike [eliminating workload waste](eliminate-waste.md), consolidation is a process that requires careful consideration. Almost every consolidation efforts has trade-offs and potential risks. However, consolidation efforts can have a significant positive affect on cost optimization. It's important to analyze both the potential benefits and the associated trade-offs. All consolidation strategies follow a similar blueprint:
+The primary objective of consolidation is optimization, not reduction. Consolidation involves restructuring workloads, resources, and team roles to achieve maximum cost efficiency. Unlike [eliminating workload waste](eliminate-waste.md), consolidation is a process that requires careful consideration. Almost every consolidation efforts has tradeoffs and potential risks. However, consolidation efforts can have a significant positive affect on cost optimization. It's important to analyze both the potential benefits and the associated tradeoffs. All consolidation strategies follow a similar blueprint:
 
 - *Assessment*: Begin with a thorough evaluation to identify areas where consolidation might be advantageous.
-- *Identification and evaluation*: Pinpoint and assess potential consolidation targets to understand if the potential cost benefits, along with other trade-offs, justify the effort needed for consolidation.
+- *Identification and evaluation*: Pinpoint and assess potential consolidation targets to understand if the potential cost benefits, along with other tradeoffs, justify the effort needed for consolidation.
 - *Communication and implementation*: If the assessment confirms that consolidation is beneficial, announce the impending changes and then execute them.
 
 ### Consolidate resources
@@ -40,7 +40,7 @@ Common types of services that you can consolidate include application platforms,
 - *Estimate the cost*: Understand the effort and potential complications of consolidation. You should calculate costs, including resource, licensing, and operational expenses. Consider the implications, such as potential challenges in resource monitoring due to consolidation.
 - *Communicate and coordinate*: Ensure you inform all stakeholders about upcoming changes and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth implementation.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk**: Consider the effects of resource density, such as noisy neighbors, scale unit effects, and reduced redundancy. Resource consolidation is often too risky for mission and business critical workload flows.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Consider the effects of resource density, such as noisy neighbors, scale unit effects, and reduced redundancy. Resource consolidation is often too risky for mission and business critical workload flows.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs**:
 
@@ -63,7 +63,7 @@ Using external centralized resources refer to shared resources outside the workl
 - *Communicate and coordinate*: Ensure that all stakeholders are informed about upcoming changes, their effect, and any necessary actions they need to take. Coordinate with different teams to avoid conflicts and ensure a smooth implementation. Establish a mechanism for continuous feedback between teams. It helps in addressing concerns, improving collaboration, and refining processes over time.
 - *Document and track changes*: Maintain detailed documentation of all approved changes, including their scope, implementation steps, and any associated risks or issues. Use a centralized system or change management tool to track and monitor the status of changes throughout their lifecycle.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Over-consolidation can result in resource contention, leading to performance issues. Consolidation may limit the flexibility and agility of individual teams and workloads as they must adhere to centralized standards that could inhibit customization.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Over-consolidation can result in resource contention, leading to performance issues. Consolidation may limit the flexibility and agility of individual teams and workloads as they must adhere to centralized standards that could inhibit customization.
 
 #### Offload responsibility to external teams
 
