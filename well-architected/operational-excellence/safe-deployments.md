@@ -148,7 +148,7 @@ See the [blue-green deployment of Azure Kubernetes Service (AKS) clusters](/azur
 - [Testing your application and Azure environment](/azure/well-architected/devops/release-engineering-testing)
 - [VM Applications](/azure/virtual-machines/vm-applications-how-to)
 
-## Community resources
+## Community links
 
 - [Advancing safe deployment practices](https://azure.microsoft.com/blog/advancing-safe-deployment-practices/)
 - [GitHub Actions](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)
