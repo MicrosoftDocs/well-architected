@@ -9,85 +9,87 @@ ms.topic: conceptual
 
 # Recommendations for identity and access management 
 
-**Applies to Well-Architected Framework Security checklist recommendation:**
+**Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
-|[SE:05](checklist.md)|Implement strict, conditional, and auditable identity and access management (IAM) control across all workload users, team members, and system components. Limit access exclusively to as-necessary. Use modern industry standards for all authentication and authorization implementations. Nonidentity based access is restricted and rigorously audited.|
+|[SE:05](checklist.md)|Implement strict, conditional, and auditable identity and access management (IAM) across all workload users, team members, and system components. Limit access exclusively to as necessary. Use modern industry standards for all authentication and authorization implementations. Restrict and rigorously audit access that's not based on identity.|
 |---|---|
 
-From a technical control perspective, **identity is always the primary perimeter**. This scope not only includes the edges of your workload, but inside at the individual component level. Typical identities include:
+This guide describes the recommendations for authenticating and authorizing identities that are attempting to access your workload resources.
 
--   **Humans**: Application users, admins, operators, auditors, bad actors.
+From a technical control perspective, **identity is always the primary perimeter**. This scope doesn't just include the edges of your workload. It also includes individual components that are inside your workload. Typical identities include:
 
--   **Systems**: Workload identities, managed identities, API keys, service principals, Azure resources.
+-   **Humans**: Application users, admins, operators, auditors, and bad actors.
+
+-   **Systems**: Workload identities, managed identities, API keys, service principals, and Azure resources.
 
 -   **Anonymous**. Entities who haven't provided any evidence about who they are.
 
-This guide provides guidance on authenticating and authorizing identities attempting to access workload resources.
+
 
 **Definitions** 
 
 
 |Terms   |Definition   |
 |---------|---------|
-|Authentication (AuthN)     | A process that verifies the identity. They're who or what they say they are.        |
-|Authorization (AuthZ)     |  A process that verifies whether the identity has the permission to do the requested action.       |
-| IdP     |  Identity provider such as Azure Active Directory.       |
-| Role     |  A set of permissions that can be assigned to identities.       |
-|Scope     | Different levels of organizational hierarchy where a role is permitted to operate. Also a group of features in a system.        |
-|Preshared keys     |  A type of secret that's shared between the provider and consumer and used through a secure and agreed upon mechanism.       |
-|Workload identity       |   System identity for an application, service, script, container, or other components of a workload that's used to authenticate itself to other services and resources.      |
-|Resource identity     |   Identities defined for cloud resources that's managed by the platform.      |
-|User identity      |  People such as employees and external users.       |
-|Security principal     |  A security principal is an identity that gets permissions. It could be a user, group or a service principal. It needs the same level of access.       |
-|Persona     |   A job function or a title that has a set of responsibilities and actions.      |
+|Authentication (AuthN)     | A process that verifies that an identity is who or what it says it is.       |
+|Authorization (AuthZ)     | A process that verifies whether an identity has permission to perform the requested action.       |
 |Conditional access|A set of rules that allows actions based on specified criteria. |
+|IdP     |  An identity provider, like Microsoft Entra ID.       |
+|Persona     |   A job function or a title that has a set of responsibilities and actions.      |
+|Preshared keys     |  A type of secret that's shared between a provider and consumer and used through a secure and agreed upon mechanism.       |
+|Resource identity     |   An identity defined for cloud resources that's managed by the platform.      |
+|Role     |  A set of permissions that define what a user or group can do.      |
+|Scope     | Different levels of organizational hierarchy where a role is permitted to operate. Also a group of features in a system.        |
+|Security principal     | An identity that provides permissions. It can be a user, a group, or a service principal. Any group members get the same level of access.   |
+|User identity      |  An identity for a person, like an employee or an external user.     |
+|Workload identity       |   A system identity for an application, service, script, container, or other component of a workload that's used to authenticate itself to other services and resources.    |
 
 > [!Note] 
-> An identity can be grouped with other similar identities under a parent called *security principal*. A security group is an example of a security principal. This hierarchical relationship provides ease of maintenance and consistency. Because identity attributes aren't handled at the individual level, chances of errors are also reduced. In this article, the term identity is inclusive of security principals.
+> An identity can be grouped with other, similar identities under a parent called a *security principal*. A security group is an example of a security principal. This hierarchical relationship simplifies maintenance and improves consistency. Because identity attributes aren't handled at the individual level, chances of errors are also reduced. In this article, the term *identity* is inclusive of security principals.
 
-### Role of an identity provider
+### The role of an identity provider
 
 An identity provider (IdP) is a cloud-hosted service that stores and manages users as digital identities.
 
-**Take advantage of the capabilities provided by a trusted IdP** for your identity and access management. Don't implement custom systems to replace IdP. IdP systems are improved frequently based on the latest attack vectors by capturing billions of signals across multiple tenants each day. Azure Active Directory (Azure AD) is the IdP for Azure cloud platform.
+**Take advantage of the capabilities provided by a trusted IdP** for your identity and access management. Don't implement custom systems to replace an IdP. IdP systems are improved frequently based on the latest attack vectors by capturing billions of signals across multiple tenants each day. Microsoft Entra ID is the IdP for Azure cloud platform.
 
 #### Authentication
 
-Authentication is a process that verifies identities. The requesting identity is required to provide some form of verifiable identification. For example,
+Authentication is a process that verifies identities. The requesting identity is required to provide some form of verifiable identification. For example:
 
--   Username and password
+-   A user name and password.
 
--   Preshared secrets such as API key that grants access.
+-   A pre-shared secret, like an API key that grants access.
 
--   Shared Access Signature (SAS) tokens.
+-   A shared access signature (SAS) token.
 
--   Certificates used in TLS mutual authentication.
+-   A certificate that's used in TLS mutual authentication.
 
-The verification process should be handled by the identity provider (IdP), as much as possible.
+As much as possible, the verification process should be handled by the IdP.
 
 #### Authorization
 
-Authorization is a process that allows or denies actions requested by the verified identity. The action might be operational or related to resource management.
+Authorization is a process that allows or denies actions that are requested by the verified identity. The action might be operational or related to resource management.
 
-Authorization requires assignment of permissions to the identity, which must be done through the features offered by your IdP.
+Authorization requires that you assign permissions to the identities, which you need to do by using the functionality provided by your IdP.
 
 ## Key design strategies
 
-To get a holistic view of the identity dimension for the workload, you need to catalog the flows, workload assets, personas, and the actions they'll perform. Your strategy must cover all use cases that handle **flows reaching the workload or its components (outside-in access) and flows reaching out from workload to other sources (inside-out access)**.
+To get a holistic view of the identity needs for a workload, you need to catalog the flows, workload assets, and personas, and the actions the assets and personas will perform. Your strategy must cover all use cases that handle **the flows that reach the workload or its components (outside-in access) and flows that reach out from the workload to other sources (inside-out access)**.
 
-Each case will likely have their own set of controls that must be designed with an assume-breach mindset. Based on the identity requirements of the use case or the personas, identify the conditional choices. Avoid using one solution for all use cases, and conversely the controls shouldn't be so granular that there's unnecessary management overhead.
+Each use case probably have its own set of controls that you need to design with an assume-breach mindset. Based on the identity requirements of the use case or the personas, identify the conditional choices. Avoid using one solution for all use cases. Conversely, the controls shouldn't be so granular that you introduce unnecessary management overhead.
 
-The identity access trail must be logged. This helps validate the controls and be used for compliance audits.
+You need to log the identity access trail. Doing so helps validate the controls, and you can use the logs for compliance audits.
 
-### Identify all identities for authentication
+### Determine all identities for authentication
 
 -   **Outside-in access**. Your identity design must authenticate all users that access the workload for various purposes. For example, an end user who accesses the application by calling APIs.
 
     At a granular level, components of the workload might also need access from outside. For example, an operator who needs access through the portal or access to the compute to run commands.
 
-    Both are examples of **user identities** with different personas.
+    Both are examples of **user identities** that have different personas.
 
--   **Inside-out access**. The application needs to access other resources. For example, reading or writing to the data platform, retrieving secrets from the secret store, logging telemetry to monitoring services. It might even need to access third-party services. For this, **workload identity** is needed so that it can authenticate itself against the other resources.
+-   **Inside-out access**. Your application will need to access other resources. For example, reading from or writing to the data platform, retrieving secrets from the secret store, and logging telemetry to monitoring services. It might even need to access third-party services. These access needs require **workload identity**, which enables the application to authenticate itself against the other resources.
 
     The concept applies at the component level. In this example, the container might need access to get its configuration from deployment pipelines. It needs to get images from a container registry. For this, **resource identity** is needed.
 
