@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 This guide describes the recommendations for securing sensitive information in applications. Proper management of secrets is crucial for maintaining the security and integrity of your application, workload, and associated data. Improper handling of secrets can lead to data breaches, service disruption, regulatory violations, and other issues.
 
-Credentials, such as API keys, Open Authorization (OAuth) tokens, and Secure Shell (SSH) keys are secrets. Some credentials, such as client-side OAuth tokens, can be dynamically created at runtime. Dynamic secrets still need to be safeguarded despite their temporary nature. Non-credential information, like certificates and digital signature keys, can also be sensitive. Compliance requirements might cause configuration settings that aren't typically considered secret to be treated as application secrets.
+Credentials, such as API keys, Open Authorization (OAuth) tokens, and Secure Shell (SSH) keys are secrets. Some credentials, such as client-side OAuth tokens, can be dynamically created at runtime. Dynamic secrets still need to be safeguarded despite their temporary nature. Noncredential information, like certificates and digital signature keys, can also be sensitive. Compliance requirements might cause configuration settings that aren't typically considered secret to be treated as application secrets.
 
 **Definitions** 
 
@@ -59,11 +59,11 @@ If possible, avoid creating secrets. Find ways to **delegate responsibility to t
 
 We recommended that keys have three distinct roles: user, administrator, and auditor. Role distinction helps to ensure only trusted identities have access to secrets with the appropriate level of permission. Educate developers, administrators, and other relevant personnel about the importance of secret management and security best practices.
 
-#### Pre-shared keys
+#### Preshared keys
 
-**You can control access by creating distinct keys for each consumer.** For example, a client communicates with a third-party API using a pre-shared key. If another client needs to access the same API, they must use another key. Don't share keys even if two consumers have the same access patterns or roles. Consumer scopes might change over time, and you can't independently update permissions or distinguish usage patterns after a key is shared. Distinct access also makes revocation easier. If a consumer's key is compromised, it's easier to revoke or rotate that key without affecting other consumers.
+**You can control access by creating distinct keys for each consumer.** For example, a client communicates with a third-party API using a preshared key. If another client needs to access the same API, they must use another key. Don't share keys even if two consumers have the same access patterns or roles. Consumer scopes might change over time, and you can't independently update permissions or distinguish usage patterns after a key is shared. Distinct access also makes revocation easier. If a consumer's key is compromised, it's easier to revoke or rotate that key without affecting other consumers.
 
-This guidance applies to different environments. The same key shouldn't be used for both pre-production and production environments. If you're responsible for creating pre-shared keys, make sure you create multiple keys to support multiple clients.
+This guidance applies to different environments. The same key shouldn't be used for both preproduction and production environments. If you're responsible for creating preshared keys, make sure you create multiple keys to support multiple clients.
 
 For more information, see [Recommendations for identity and access management](identity-access.md).
 
@@ -99,11 +99,11 @@ As a secret generator or operator, you should be able to distribute secrets in a
 
 #### Prevent hardcoding
 
-**Don't hard code secrets as static text** in code artifacts such as application code, configuration files, and build-deployment pipelines. This is a high-risk practice that makes the code vulnerable because secrets are exposed to everyone with read access.
+**Don't hard code secrets as static text** in code artifacts such as application code, configuration files, and build-deployment pipelines. This high-risk practice makes the code vulnerable because secrets are exposed to everyone with read access.
 
-You can avoid this situation by using managed identities to eliminate the need to store credentials. Your application uses its assigned identity to authenticate against other resources via the identity provider (IdP). Test in non-production environments with fake secrets during development to prevent accidental exposure of real secrets.
+You can avoid this situation by using managed identities to eliminate the need to store credentials. Your application uses its assigned identity to authenticate against other resources via the identity provider (IdP). Test in nonproduction environments with fake secrets during development to prevent accidental exposure of real secrets.
 
-**Use tools that periodically detect exposed secrets** in your application code and build artifacts. You can add these tools as Git pre-commit hooks that scan for credentials before source code commits deploy. Review and sanitize application logs regularly to help ensure that no secrets are inadvertently recorded. You can also reinforce detection via peer reviews.
+**Use tools that periodically detect exposed secrets** in your application code and build artifacts. You can add these tools as Git precommit hooks that scan for credentials before source code commits deploy. Review and sanitize application logs regularly to help ensure that no secrets are inadvertently recorded. You can also reinforce detection via peer reviews.
 
 > [!NOTE]
 > If the scanning tools discover a secret, that secret must be considered compromised. It should be revoked.
@@ -128,7 +128,7 @@ Use an access model to control key vaults, permissions, and secrets. For more in
 
 **Implement secret exposure detection.** Integrate processes in your workload that detect suspicious activity and periodically check for exposed keys in your application code. Some options include:
 
-- [Azure Devops Credential Scanner task](/azure/security/develop/security-code-analysis-customize#credential-scanner-task)
+- [Azure DevOps Credential Scanner task](/azure/security/develop/security-code-analysis-customize#credential-scanner-task)
 - [Defender for Cloud secret scanning](/azure/defender-for-cloud/detect-exposed-secrets)
 - [Microsoft Defender for Key Vault](/azure/defender-for-cloud/defender-for-key-vault-introduction)
 - [GitHub Secret Scanner](https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning)
@@ -138,7 +138,7 @@ Don't store keys and secrets for any environment type in application configurati
 ## Related links
 
 - [Access model overview](/azure/key-vault/general/secure-your-key-vault#access-model-overview)
-- [Azure Devops Credential Scanner task](/azure/security/develop/security-code-analysis-customize#credential-scanner-task)
+- [Azure DevOps Credential Scanner task](/azure/security/develop/security-code-analysis-customize#credential-scanner-task)
 - [Configure the Microsoft Security DevOps Azure DevOps extension](/azure/defender-for-cloud/azure-devops-extension)
 - [Configure GitHub Advanced Security for Azure DevOps](/azure/devops/repos/security/configure-github-advanced-security-features)
 - [Defender for Cloud secret scanning](/azure/defender-for-cloud/detect-exposed-secrets)
