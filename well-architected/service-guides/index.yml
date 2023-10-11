@@ -34,7 +34,7 @@ highlightedContent:
 
 productDirectory:
   title: Browse the Well-Architected Framework service guides
-  summary: Best practices and recommendations for Azure services
+  summary: Service guides are intented to help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a well-architected state. They are not configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
   items:
     # Card
     - title: API Management
@@ -324,14 +324,9 @@ additionalContent:
           summary: Updates for the Azure Well-Architected Framework
           url: ../whats-new.md
         # Card
-        - title: Cross-cutting guides
-          summary: Health modeling and how to implement recommendations
-          url: ../cross-cutting-guides/health-model.md
-        # Card
-        - title: Old TOC
-          summary: The previous Azure Well-Architected Framework TOC
-          url: ../old-index.md
-        # Card
-        - title: Orphans
-          summary: Other resources
-          url: ../security/resilience.md
+        - title: What is WAF
+          summary: How to use WAF and audience profile
+          url: ../what-is-well-architected-framework.md
+
+
+

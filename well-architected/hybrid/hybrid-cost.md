@@ -1,6 +1,6 @@
 ---
 title: Cost optimization in a hybrid workload
-description: Includes guidance and recommendations that apply to the Cost pillar in a hybrid and multi-cloud environment.
+description: Includes guidance and recommendations that apply to the Cost pillar in a hybrid and multicloud environment.
 author: martinekuan
 ms.author: martinek
 ms.date: 12/08/2021
@@ -17,13 +17,13 @@ A key benefit of hybrid cloud environments is the ability to scale dynamically a
 
 Azure Arc helps minimize or even eliminate the need for on-premises management and monitoring systems, which reduces operational complexity and cost, especially in large, diverse, and distributed environments. This helps offset additional costs associated with Azure Arc-related services. For example, advanced data security for Azure Arc enabled SQL Server instance requires Microsoft Defender for Cloud functionality of Microsoft Defender for Cloud, which has [pricing implications](https://azure.microsoft.com/pricing/details/security-center/).
 
-Other considerations are described in the [Principles of cost optimization](../cost-optimization/design-model.md) section in the Microsoft Azure Well-Architected Framework.
+Other considerations are described in the [Principles of cost optimization](../cost-optimization/cost-model.md) section in the Microsoft Azure Well-Architected Framework.
 
 ## Workload definitions
 
 Define the following for your workloads:
 
-- **Monitor cloud spend with hybrid workloads**. Track cost trends and forecast future spend with dashboards in Azure for your on-prem data estates with Azure Arc.
+- **Monitor cloud spend with hybrid workloads**. Track cost trends and forecast future spend with dashboards in Azure for your on-premises data estates with Azure Arc.
 - **Keep within cost constraints**.
    - Create, apply, and enforce standardized and custom tags and policies.
    - Enforce run-time conformance and audit resources with Azure Policy.
@@ -59,7 +59,7 @@ For budget concerns, you get a considerable amount of functionality at no cost t
 
 - [Manage configurations for Azure Arc enabled servers](/azure/architecture/hybrid/azure-arc-hybrid-config)
 - [Azure Arc hybrid management and deployment for Kubernetes clusters](/azure/architecture/hybrid/arc-hybrid-kubernetes)
-- [Optimize administration of SQL Server instances in on-premises and multi-cloud environments by leveraging Azure Arc](/azure/architecture/hybrid/azure-arc-sql-server)
+- [Optimize administration of SQL Server instances in on-premises and multicloud environments by leveraging Azure Arc](/azure/architecture/hybrid/azure-arc-sql-server)
 - [Disaster Recovery for Azure Stack Hub virtual machines](/azure/architecture/hybrid/azure-stack-vm-dr)
 - [Build high availability into your BCDR strategy](/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
 - [Use Azure Stack HCI switchless interconnect and lightweight quorum for Remote Office/Branch Office](/azure/architecture/hybrid/azure-stack-robo)
@@ -69,7 +69,7 @@ For budget concerns, you get a considerable amount of functionality at no cost t
 
 Azure Stack HCI can help in cost-savings by using your existing Hyper-V and Windows Server skills to consolidate aging servers and storage. Azure Stack HCI pricing follows the monthly subscription billing model, with a flat rate per physical processor core in an Azure Stack HCI cluster.
 
-Use Azure Stack HCI to modernize on-prem workloads with hyperconverged infra. Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used is automatically uploaded and assessed for billing purposes. Cost doesn't vary with consumption beyond the physical processor cores. This means that more VMs don't cost more, and customers who are able to run denser virtual environments are rewarded.
+Use Azure Stack HCI to modernize on-premises workloads with hyperconverged infra. Azure Stack HCI billing is based on a monthly subscription fee per physical processor core, not a perpetual license. When customers connect to Azure, the number of cores used is automatically uploaded and assessed for billing purposes. Cost doesn't vary with consumption beyond the physical processor cores. This means that more VMs don't cost more, and customers who are able to run denser virtual environments are rewarded.
 
 If you are currently using VMware, you can take advantage of cost savings only available with Azure VMware Solution. Easily move VMware workloads to Azure and increase your productivity with elasticity, scale, and fast provisioning cycles. This will help enhance your workloads with the full range of Azure compute, monitor, backup, database, IoT, and AI services.
 
@@ -77,7 +77,7 @@ Lastly, you can slowly begin migrating out of your datacenter and use Azure Arc 
 
 ### Capacity planning
 
-Check out our checklist under the [Cost Optimization pillar](../cost-optimization/design-checklist.md) in the Well-Framework to learn more about capacity planning, and build a checklist to design cost-effective workloads.
+Check out our checklist under the [Cost Optimization pillar](../cost-optimization/checklist.md) in the Well-Framework to learn more about capacity planning, and build a checklist to design cost-effective workloads.
 
 - Define SLAs
 - Determine regulatory needs
@@ -92,7 +92,7 @@ Click the following links for guidance in provisioning:
 - [Azure Arc Jumpstart for templates](https://github.com/microsoft/azure_arc) (in GitHub)
 - [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci)
    - Azure Stack HCI can reduce costs by saving in server, storage, and network infrastructure.
-- [Azure VMware Solution pricing - Run your VMware workloads natively on Azure](https://azure.microsoft.com/pricing/details/azure-vmware)
+- [Azure VMware Solution pricing - Run your VMware workloads natively on Azure](/azure/azure-vmware/)
    - Run your VMware workloads natively on Azure.
 - [Azure Stack Hub pricing](https://azure.microsoft.com/pricing/details/azure-stack/hub)
 

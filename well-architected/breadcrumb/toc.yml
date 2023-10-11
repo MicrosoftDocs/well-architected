@@ -29,6 +29,9 @@
       tocHref: /azure/well-architected/workloads/
       topicHref: /azure/well-architected/workloads
       items:
+      - name: Azure VMware Solution
+        tocHref: /azure/well-architected/azure-vmware/
+        topicHref: /azure/well-architected/azure-vmware/index
       - name: Mission-critical
         tocHref: /azure/well-architected/mission-critical/
         topicHref: /azure/well-architected/mission-critical/index

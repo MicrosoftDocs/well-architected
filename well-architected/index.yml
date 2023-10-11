@@ -2,9 +2,13 @@
 title: Azure Well-Architected Framework
 sections:
   # Intro
-  - componentType: text
+  - componentType: text 
     title: Azure Well-Architected Framework
-    summary: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
+    summary: The Azure Well-Architected Framework (WAF) is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
+    links:
+    - componentType: link
+      url: what-is-well-architected-framework.md
+      text: What is WAF?    
   # Navigation Section
   - componentType: navigation
     size: large # optionally make section larger
@@ -24,8 +28,8 @@ sections:
         url: workloads.md
         text: Workloads
       - componentType: icon-link
-        icon: book-solid
-        url: service-guides/overview.md
+        icon: book-open
+        url: service-guides/index.yml
         text: Azure offerings
       - componentType: icon-link
         icon: topic-learn
@@ -33,7 +37,7 @@ sections:
         text: Training    
       - componentType: icon-link
         icon: developer-tools
-        url: /assessments/?id=azure-architecture-review&mode=pre-assessment
+        url: /assessments/azure-architecture-review/
         text: Assessment tool      
       - componentType: icon-link
         icon: topic-architecture
@@ -47,98 +51,72 @@ sections:
     summary: As solution architects, you want to build reliable, secure, and performant workloads that maximize the value of investment in Azure infrastructure. Start with the Pillars, and align your design choices with the principles. Then, build a strong foundation for your workload based on technical design areas. Finally, use review tools to assess your readiness in deploying to production.
     image:
       componentType: image
-      src: ./_images/waf-diagram-revised.png   
+      src: ./_images/waf-hub.svg   
 
   # bifold with image and text blocks
   - componentType: bifold
     alignment: center
     blocks:
-      - componentType: video
-        src: https://learn-video.azurefd.net/vod/player?id=fd8c4e50-9d7f-4df0-97cb-d0474b581398&embedUrl=/azure/well-architected/mission-critical/mission-critical-health-modeling   
-        id: lofi-hip-hop-beats
-        label: Health modeling for highly reliable workloads    
-      - title: Featured update - Health modeling for highly reliable workloads 
-        summary: Health modeling is an exercise to maximize observability by using raw monitoring logs and metrics with key business requirements to quantify application health. Quick evaluation of health states will lead to quick troubleshooting and expedited remediations.
+      - componentType: image
+        src: ./_images/waf-refresh.png   
+        alt: WAF refresh update   
+      - title: Featured update - Core pillars restructured and refreshed 
+        summary: The Azure Well-Architected Framework published a significant content refresh across all five pillars. 
         componentType: text
         links:
           - componentType: link
-            url: /azure/well-architected/mission-critical/mission-critical-health-modeling
-            text: What is health modeling?
+            url: whats-new.md
+            text: What's new?
         list:
           componentType: list
           style: checklist
           children:
-            - Identify various user and system flows of your workload
-            - Quantify ‘healthy’, 'degraded', and ‘unhealthy’ states
-            - Visualize the health states to quickly identify issues
-            - Set alerts to send notifications about incidents immediately
+            - Design principles include a set of recommended approaches and benefits.
+            - Design review checklist drive action through codified recommendations. 
+            - Design tradeoffs with other pillars. 
+            - Recommedations on building key strategies for fulfilling the principles of design.
+            - Design patterns based on proven, common architecture patterns, mapped to pillar.
+            - Azure Well-Architected Review has been refreshed to aligned with the new content.  
  
-
 # cards section (4)
-  - componentType: cards
+  - componentType: grid
     title: Pillars
-    backgroundColor: "alternating-grey"
     blocks:
-      - componentType: card
-        title: Reliability
-        summary: Ensures that the workload meets the uptime and recovery targets by building redundancy and resiliency at scale. 
-        links:
-          - componentType: link
-            url: ./resiliency/principles.md
-            text: Design principles           
-          - componentType: link
-            url: ./resiliency/index.yml
-            text: Quick links
-      - componentType: card
-        title: Security
-        summary: Protect the workload from attacks by maintaining confidentiality and data integrity. 
-        links:
-          - componentType: link
-            url: ./security/security-principles.md
-            text: Design principles
-          - componentType: link
-            url: ./security/security-tradeoffs.md
-            text: Tradeoffs             
-          - componentType: link
-            url: ./security/index.yml
-            text: Quick links
-      - componentType: card
-        title: Cost Optimization
-        summary: Adopt an optimization mindset by at organizational, architectural, and tactical levels to keep your spending within budget. 
-        links:
-          - componentType: link
-            url: ./cost-optimization/principles.md
-            text: Design principles
-          - componentType: link
-            url: ./cost-optimization/tradeoffs.md
-            text: Tradeoffs             
-          - componentType: link
-            url: ./cost-optimization/index.yml
-            text: Quick links
-      - componentType: card
-        title: Operational Excellence
-        summary: Reduce issues in production by building holistic observability and automated systems. 
-        links:
-          - componentType: link
-            url: ./devops/principles.md
-            text: Design principles
-          - componentType: link
-            url: ./devops/index.yml
-            text: Quick links
-      - componentType: card
-        title: Performance Efficiency
-        summary: Adjust to changes in demands placed on the workload by through horizontal scaling and testing changes before deploying to production. 
-        links:
-          - componentType: link
-            url: ./scalability/principles.md
-            text: Design principles
-          - componentType: link
-            url: ./scalability/tradeoffs.md
-            text: Tradeoffs              
-          - componentType: link
-            url: ./scalability/index.yml
-            text: Quick links             
-
+    - componentType: icon-card
+      title: Reliability
+      summary: Ensures that the workload meets the uptime and recovery targets by building redundancy and resiliency at scale. 
+      url: ./reliability/index.yml 
+      icon: 
+        componentType: image
+        src: _images/resiliency.svg                         
+    - componentType: icon-card
+      title: Security
+      summary: Protect the workload from attacks by maintaining confidentiality and data integrity. 
+      url: ./security/index.yml    
+      icon: 
+        componentType: image
+        src: _images/security.svg      
+    - componentType: icon-card
+      title: Cost Optimization
+      summary: Adopt an optimization mindset by at organizational, architectural, and tactical levels to keep your spending within budget. 
+      url: ./cost-optimization/index.yml
+      icon: 
+        componentType: image
+        src: _images/cost.svg             
+    - componentType: icon-card
+      title: Operational Excellence
+      summary: Reduce issues in production by building holistic observability and automated systems. 
+      url: ./cost-optimization/index.yml
+      icon: 
+        componentType: image
+        src: _images/devops.svg         
+    - componentType: icon-card
+      title: Performance Efficiency
+      summary: Adjust to changes in demands placed on the workload by through horizontal scaling and testing changes before deploying to production. 
+      url: ./performance-efficiency/index.yml    
+      icon: 
+        componentType: image
+        src: _images/scalability.svg   
      
   # Summary cards grid
   - componentType: grid
@@ -169,11 +147,24 @@ sections:
         title: IoT
         summary: Resolve architectural challenges for designing, building, and operating IoT solutions according to your requirements and constraints.
         url: ./iot/iot-overview.md
+      - componentType: summary-card
+        title: Azure VMware Solution
+        summary: Relocate legacy application virtual machines to Azure VMware Solution as a staging area for the first phase of your migration and modernization strategy.
+        url: ./azure-vmware/index.yml
     addendum:
       text: See example workloads that apply Well-Architected tenets in the 
       link:
         text: Azure Architecture Center
         url: /azure/architecture/browse/
+  
+  #Text section
+  - componentType: text
+    title: Azure service guides
+    links:
+    - componentType: link
+      url: ./service-guides/
+      text: Browse the service guides
+
   # social section
   - componentType: social
     title: Follow us on the web

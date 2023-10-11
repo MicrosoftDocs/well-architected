@@ -15,7 +15,7 @@ It's not realistic to assume failures won't occur, especially when the workload 
 
 Workload architectures should have **reliability assurances in application code, infrastructure, and operations**. Design choices shouldn't change the intent that's specified by business requirements. Such changes should be considered significant tradeoffs.
 
-The **design principle approaches aren't checklist items**. They're intended to provide guidance for aspects of reliability that you should consider throughout the development lifecycle. Start with the recommended approaches and **justify the benefits for a set of requirements**. After you set your strategy, drive actions by using the [**Reliability checklist**](./checklist.md).
+The **design principles** are intended to provide guidance for aspects of reliability that you should consider throughout the development lifecycle. Start with the recommended approaches and **justify the benefits for a set of requirements**. After you set your strategy, drive actions by using the [**Reliability checklist**](./checklist.md).
 
 If you don't apply these principles to your design, the workload most likely won't be prepared to **anticipate or handle problems in production**. The outcome might be service disruptions that lead to financial loss. In the case of critical workloads, failing to apply these principles could jeopardize safety.
 
@@ -29,7 +29,7 @@ Requirements must cover user experience, data, workflows, and characteristics th
 |Approach|Benefit| 
 |-|-|
 |**Quantify success by setting targets on indicators** for individual components, system flows, and the system as a whole. **Do those targets make user flows more reliable?**|Metrics quantify expectations. They enable you to **understand complexities** and determine whether the downstream costs of those complexities are within the investment limit. <br>The target values indicate an ideal state. You can use the values as test thresholds that help you **detect deviations** from that state and how long it takes to return to the target state.  <br>Compliance requirements must also have predictable outcomes for in-scope flows. Prioritizing these flows **bring attention to areas that are the most sensitive**. |
-|Understand Azure commitments. **Consider the limits, quotas, and capacity constraints** of Azure services.|Azure service-level agreements (SLAs) vary by service. Not all services and features are covered equally. Having a good **understanding of coverage and Azure limits** can help you detect drift and build resiliency and recovery mechanisms.| 
+|Understand platform commitments. **Consider the limits, quotas, and capacity constraints** for services.|Service-level agreements (SLAs) vary by service. Not all services and features are covered equally. Having a good **understanding of coverage and limits** can help you detect drift and build resiliency and recovery mechanisms.| 
 |**Determine dependencies** and their effect on resiliency.|Keeping track of dependent infrastructure, services, APIs, and functions developed by other teams or third parties helps you determine **whether the workload can operate in absence of those dependencies**. It also helps you **understand cascading failures** and **improve downstream operations**.<br>Developers can **implement resilient design patterns** to handle potential failures when you use external services that might be susceptible to failures. |
 
 ## Design for resilience 
