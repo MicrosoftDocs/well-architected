@@ -211,7 +211,8 @@ To implement design patterns, developers need to understand the principles and g
 **Design patterns and architecture:** Azure provides architectural guidance and design patterns for designing scalable, resilient, and performant applications.
 
 ## Related links
-
+- 
+- 
 ## Cost Optimization checklist
 
 Refer to the complete set of recommendations.
