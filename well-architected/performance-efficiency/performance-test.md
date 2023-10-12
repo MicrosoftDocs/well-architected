@@ -21,7 +21,7 @@ This guide describes the best practices for testing. Performance testing helps y
  | Stress test|A performance test that overloads a system until it breaks.|
   |Synthetic test|A performance test that simulates user requests in an application.|
 
-## Key strategies
+## Key design strategies
 
 Performance testing helps you gather measurable data on a workload. It also helps you build workloads to the right specifications when done early enough. You should conduct performance tests as early in the software development lifecycle as possible. Early testing allows you to catch and fix performance issues earlier in development. You can use a proof-of-concept if production code isn't ready.
 
