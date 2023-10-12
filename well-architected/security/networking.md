@@ -214,7 +214,7 @@ Recommended technology choices:
     > [!NOTE] 
     > Most organizations have a force tunneling policy. This means traffic must be forced through an NVA.
     
-    If you're not using VWan topology, **you must deploy a user-defined route (UDR)** with NextHopType of internet to your NVA's private IP address. UDRs are applied at the subnet level. By default, subnet to subnet traffic doesn't route through the NVA.
+    If you're not using VWan topology, **you must deploy a user-defined route (UDR)** with the NextHopType of `internet` to your NVA's private IP address. UDRs are applied at the subnet level. By default, subnet-to-subnet traffic doesn't route through the NVA.
     
     Azure Firewall can also be simultaneously used for ingress and can route HTTP(s) traffic. In higher SKUs, it offers TLS termination to do payload-level inspection.
     
