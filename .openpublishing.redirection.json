@@ -1049,6 +1049,216 @@
 			"source_path": "well-architected/services/storage/storage-accounts/security.md",
 			"redirect_url": "/azure/well-architected/service-guides/storage-accounts/security",
 			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/security/architecture-type.md",
+			"redirect_url": "/azure/well-architected/security/principles",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/deploy.md",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/deploy-code.md",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/deploy-governance.md",
+			"redirect_url": "/azure/well-architected/security/hardening",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/deploy-infrastructure.md",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-admins.md",
+			"redirect_url": "/azure/well-architected/security/hardening",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-app-dependencies.md",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-apps-considerations.md",
+			"redirect_url": "/azure/well-architected/security/data-classification",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-apps-services.md",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-governance.md",
+			"redirect_url": "/azure/well-architected/security/establish-baseline",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-governance-landing-zone.md",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-identity.md",
+			"redirect_url": "/azure/well-architected/security/identity-access",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-identity-authentication.md",
+			"redirect_url": "/azure/well-architected/security/identity-access",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-identity-authorization.md",
+			"redirect_url": "/azure/well-architected/security/identity-access",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-identity-control-plane.md",
+			"redirect_url": "/azure/well-architected/security/identity-access",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-identity-role-definitions.md",
+			"redirect_url": "/azure/well-architected/security/identity-access",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-management-groups.md",
+			"redirect_url": "/azure/well-architected/security/segmentation",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-network.md",
+			"redirect_url": "/azure/well-architected/security/networking",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-network-connectivity.md",
+			"redirect_url": "/azure/well-architected/security/networking",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-network-endpoints.md",
+			"redirect_url": "/azure/well-architected/security/networking",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-network-flow.md",
+			"redirect_url": "/azure/well-architected/security/networking",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-network-segmentation.md",
+			"redirect_url": "/azure/well-architected/security/networking",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-regulatory-compliance.md",
+			"redirect_url": "/azure/well-architected/security/establish-baseline",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-segmentation.md",
+			"redirect_url": "/azure/well-architected/security/segmentation",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-storage.md",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-storage-encryption.md",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-storage-keys.md",
+			"redirect_url": "/azure/well-architected/security/application-secrets",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/design-threat-model.md",
+			"redirect_url": "/azure/well-architected/security/threat-model",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/monitor.md",
+			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/monitor-audit.md",
+			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/monitor-logs-alerts.md",
+			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/monitor-remediate.md",
+			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/monitor-resources.md",
+			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/monitor-security-operations.md",
+			"redirect_url": "/azure/well-architected/security/incident-response",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/monitor-test.md",
+			"redirect_url": "/azure/well-architected/security/testing",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/monitor-tools.md",
+			"redirect_url": "/azure/well-architected/security/monitoring",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/overview.md",
+			"redirect_url": "/azure/well-architected/security/checklist",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/resilience.md",
+			"redirect_url": "/azure/well-architected/security/principles",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/security-operations.md",
+			"redirect_url": "/azure/well-architected/security/incident-response",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/security-principles.md",
+			"redirect_url": "/azure/well-architected/security/principles",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/security/security-tradeoffs.md",
+			"redirect_url": "/azure/well-architected/security/tradeoffs",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/security/storage-data-encryption.md",
+			"redirect_url": "/azure/well-architected/security/encryption",
+			"redirect_document_id": false
 		}
 	]
 }

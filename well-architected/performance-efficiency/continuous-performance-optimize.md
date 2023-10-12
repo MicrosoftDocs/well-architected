@@ -82,7 +82,7 @@ Optimizing data efficiency is the process of ensuring that data is stored, proce
 
 - *Implement time-to-live*: TTL is a mechanism that sets an expiration time for data. TTL allows data to be automatically deleted or archived after a certain period, reducing storage requirements and improving data management. By setting an appropriate TTL, you allow unnecessary data to be removed, freeing up storage space and improving overall efficiency. Session data, temporary files, and cache data are frequent targets for TTL. Database entries can also have a TTL.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk:** A TTL that's too short can create performance issues.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: A TTL that's too short can create performance issues.
 
 ### Develop a performance culture
 

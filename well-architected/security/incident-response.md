@@ -18,9 +18,9 @@ This guide describes the recommendations for implementing a security incident re
 
 Most enterprises have a central security operation team (also known as Security Operations Center (SOC), or SecOps). The responsibility of the security operation team  is to rapidly detect, prioritize, and triage potential attacks. The team also monitors security-related telemetry data and investigates security breaches. 
 
-:::image type="content" source="./images/incident-response.png" alt-text="Conceptual art that shows collaborative approach to mitigate potential and realized risk.":::
+:::image type="content" source="images/incident-response/incident-response.png" alt-text="Conceptual art that shows collaborative approach to mitigate potential and realized risk.":::
 
-However, you also have a responsibility to protect your workload. It's important that any communication, investigation, and hunting activities is a collaborative effort between workload team and SecOps team.
+However, you also have a responsibility to protect your workload. It's important that any communication, investigation, and hunting activities are a collaborative effort between workload team and SecOps team.
 
 This guide provides recommendations for you and your workload team to help you rapidly detect, triage, and investigate attacks.
 

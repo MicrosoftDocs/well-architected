@@ -61,7 +61,7 @@ landingContent:
           - text: Classify data
             url: data-classification.md
           - text: Monitor workload security
-            url: monitoring.md
+            url: monitor-threats.md
           - text: Model threats
             url: threat-model.md
   - title: Protect workload assets
@@ -77,7 +77,7 @@ landingContent:
           - text: Use encryption
             url: encryption.md
           - text: Harden resources
-            url: hardening.md
+            url: harden-resources.md
           - text: Guard application secrets
             url: application-secrets.md
   - title: Validate and improve security
@@ -85,7 +85,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Perform security testing
-            url: testing.md
+            url: test.md
           - text: Respond to incidents
             url: incident-response.md
   - title: Explore related resources
