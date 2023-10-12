@@ -14,6 +14,8 @@ Every workload has direct and indirect costs, and every workload is designed to 
 
 Cost optimization is a continuous process in which you optimize workload costs and align your workload with the broader governance discipline of cost management. What's important today might not be important tomorrow. Technology choices or options and features that your platform offers today might be different. Learn from production and nonproduction environments, be aware of platform changes, and apply your findings to your workload and your workload's dependencies.
 
+## Checklist
+
 |&nbsp; | Code  |Recommendation |
 |---|---|---|
 | &#9744; | [CO:01](create-culture-financial-responsibility.md) | **Create a culture of financial responsibility.** Regularly train personnel so technical skills remain sharp. Foster creativity and fiscal accountability in the work environment. Invest in tooling and implementing automation.|

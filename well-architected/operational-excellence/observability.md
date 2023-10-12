@@ -291,7 +291,7 @@ _Placeholder for IaaS baseline architecture_
 
 - [Instrumentation guide](../devops/monitor-instrument.md)
 - [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
-- [Recommendations for monitoring and threat detection](../security/monitoring.md)
+- [Recommendations for monitoring and threat detection](../security/monitor-threats.md)
 - [Recommendations for collecting performance data](../performance-efficiency/collect-metrics-logs.md)
 
 ## Operational Excellence checklist
