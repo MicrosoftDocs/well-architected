@@ -125,14 +125,14 @@ Often these services or centralized platforms are offered as mere showback, so t
 Another win is that platform teams often provide self-service options to workload teams for various activities. Some examples of this might be:
 
 - Providing a documentation repository for self-guided education.
-- Onboarding to cost management though specific resource tagging.
+- Onboarding to cost management through specific resource tagging.
 - Offering subscription obtainment through a formal subscription vending process.
 
 These self-service options should be explored for their suitability for your workload’s obligations.
 
 ## Share in success, share in pain
 
-Shared responsibility with other teams also means sharing successes and challenges of a workload. When your workload meets its obligations and obtaining the value set forth, share that with teams you partnered with. Make sure they understand how they are contributing to the workload’s success. When your workload isn't meeting its obligations, involve your partners to share what isn't working and collaborate and re-calibrate on getting back to obtainment of value.
+Shared responsibility with other teams also means sharing successes and challenges of a workload. When your workload meets its obligations and obtaining the value set forth, share that with teams you partnered with. Make sure they understand how they are contributing to the workload’s success. When your workload isn't meeting its obligations, involve your partners to share what isn't working and collaborate and recalibrate on getting back to obtainment of value.
 
 Likewise, platform teams also have obligations and success criteria. You should expect to hear from your partners about how your workload is a good citizen of the offering or if it’s at risk of turning into a noisy neighbor.
 

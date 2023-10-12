@@ -26,7 +26,7 @@ A workload that is operated according to the Well-Architected Framework recommen
 
 -   **Workload teams value their work and thus take ownership and responsibility for the workload.** The workload team ultimately has end-to-end responsibility for the operation of the workload. While there might be services from other teams that are required for certain aspects of the workload operation, the workload team is responsible for collaborating with other teams and ensuring that all functions are successfully performed. Regardless of the extent that the workload team is involved in the activities that other teams perform in support of the workload, the workload team must consider every function that is involved in the support of the workload as their responsibility. This mindset helps reinforce a common sense of ownership.
 
--   **Clearly define team roles and responsibilities and decision-making responsibilities.** Decision-making should be as democratic as practical, but structure needs to be in place so that decisions can be made efficiently. When there are differing opinions about a situation and a decision needs to be made, someone must own the responsibility of making the decision based on the evidence that they are presented. Whether individuals agree with the final decision or not, the decision will affect the workload that they own, so its important that everyone feels heard and valued throughout the decision-making process.
+-   **Clearly define team roles and responsibilities and decision-making responsibilities.** Decision-making should be as democratic as practical, but structure needs to be in place so that decisions can be made efficiently. When there are differing opinions about a situation and a decision needs to be made, someone must own the responsibility of making the decision based on the evidence that they are presented. Whether individuals agree with the final decision or not, the decision will affect the workload that they own, so it's important that everyone feels heard and valued throughout the decision-making process.
 
 -   **Use enablement teams to the workload team's advantage.** Some organizations have enablement teams like platform teams, architecture review boards or cloud centers of excellence. These teams help guide workload teams and provide standards that all workload teams need to follow to ensure that there is consistency in design and processes across all teams. By following a mindset of continuous learning and improvement, the workload team should feel empowered to have open lines of communication with enablement teams and to work collaboratively with them in an effort to improve processes and share knowledge.
 
@@ -46,7 +46,7 @@ Microsoft publishes extensive documentation about DevOps culture in a dedicated 
 
 Having strictly defined roles and responsibilities in your team could result in a level of discomfort for some team members in performing functions outside of their responsibility. You should have open and honest discussions with the team about team structure and be open to making adjustments when they can help team cohesion.
 
-## Related links
+<!--- ## Related links -->
 
 
 ## Operational Excellence checklist  
