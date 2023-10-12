@@ -64,7 +64,7 @@ Data profiling involves examining the data from a source and gathering informati
 
 Data performance monitoring is the practice of consistently tracking the efficiency of data stores, partitions, and indexes in real-time. It involves collecting and analyzing performance metrics specific to data operations, using tools tailored for system-level, database-specific, or third-party monitoring solutions. Effective data performance monitoring allows you to proactively identify and mitigate potential bottlenecks, ensuring that data-related processes and tasks are efficient. To monitor data performance, consider the following strategies:
 
-- *Collect data-specific metrics.* Gather key metrics that directly relate to data performance such as query response times, data throughput, disk I/O related to data access, and the load times of specific data partitions.
+- *Collect data-specific metrics.* Gather key metrics that directly relate to data performance. These metrics include query response times, data throughput, disk I/O related to data access, and the load times of specific data partitions.
 
 - *Set up data alerts.* Set up alerts specifically for data metrics. Use predefined thresholds or anomalies in these metrics to trigger alerts. Alerts enable you to receive notifications when performance metrics exceed acceptable ranges or show abnormal behavior. For instance, if a database query takes longer than expected or if data throughput drops significantly, it would trigger an alert. You can set up these alerts using specialized monitoring tools or custom scripts.
 
@@ -155,7 +155,7 @@ Archiving and purging are instrumental in maintaining peak performance efficienc
 
 ### Optimize storage load
 
-Optimizing storage load efers to the process of reducing unnecessary or redundant requests to the storage system, streamlining data retrieval processes, and ensuring that the storage workload isn't overwhelmed with excessive demands. This optimization ensures that the storage system can respond to legitimate requests and maintain a high-performance level. Implement strategies that reduce the processing burden on the data store. To optimize data store load, consider the following strategies:
+Optimizing storage load means streamlining requests to the storage system. It helps eliminate unnecessary requests. It also enhances data retrieval and prevents overwhelming the storage. Optimizing the storage load ensures the storage system remains responsive to legitimate requests and maintains peak performance. Implement strategies to reduce the processing burden on the data store. To optimize data store load, consider the following strategies:
 
 #### Use caching
 
