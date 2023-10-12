@@ -7,9 +7,9 @@ ms.date: 03/27/2023
 ms.topic: conceptual
 ---
 
-# Microsoft Well-Architected Framework Pillars
+# Microsoft Azure Well-Architected Framework pillars
 
-The Well-Architected Framework pillars drive architectural excellence at the fundamental level of a workload. 
+The Azure Well-Architected Framework pillars drive architectural excellence at the fundamental level of a workload. 
 
 Use this matrix to familiarize yourself with the key concepts:
 
