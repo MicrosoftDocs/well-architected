@@ -35,7 +35,7 @@ Typically, critical flows significantly affect the user experience or business o
 
 ### Identify critical flows
 
-Critical flows refer to the key user flows for paying customers or the flows for operations that are crucial to the workload functionality. These flows can include actions such as user registrations, sign-ins, product purchases, accessing pages behind a paywall, or any other key path or process within your workload. To identify critical flows, complete these tasks:
+Critical flows refer to the key user flows for paying customers or the flows for operations that are crucial to the workload functionality. These flows can include actions such as user registrations, sign-ins, product purchases, accessing pages behind a paywall, or any other key path or process within your workload. To identify critical flows, complete the following tasks.
 
 #### Map the flows
 
