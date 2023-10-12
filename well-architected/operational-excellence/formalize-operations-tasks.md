@@ -38,7 +38,7 @@ Process standardization takes many shapes. Describing every way that you might a
 
 - Incorporate organizational requirements and cross-cutting functions into your standard operating procedures. Your organization might have standards for some processes that you should adopt. However, you might also be empowered to develop your own standards for other processes, so look for ways to incorporate required standards into your processes to operate smoothly. The processes that you own are likely to intersect with other teams' processes, so strive to align standards to a practicable extent.
 
-   Document where the workload team's and other team's processes diverge to ensure that the workload team can work better with other teams when there are intersection points.
+   Document where the workload team's and other team's processes diverge to ensure that the workload team can work better with other teams when there are intersection points. Central security teams might use different tools and procedures than the workload team, and the teams can collaborate more easily if they're aware of those differences.
 
 - Incorporate compliance requirements into your standard operating procedures. Depending on your industry and the regions in which you operate, there might be strict requirements about how to perform and document tasks. Make sure that you understand and incorporate those requirements while you build your standards. Regularly train the workload team on those requirements.
 
