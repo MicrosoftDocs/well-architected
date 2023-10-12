@@ -240,7 +240,7 @@ When you separate OLTP and OLAP systems, you can allocate appropriate resources 
 
 **Profile data.** Azure offers tools and services that you can use to profile data, such as Azure Data Factory, Azure Purview, and Azure Synapse Analytics. These tools enable you to extract, transform, and load data from various sources, perform data quality checks, and gain insights into the data.
 
-**Monitor data.** To monitor data performance, you can use Azure Monitor to collect and analyze infrastructure metrics, logs, and application data. You can integrate Monitor with other services like Application Insights, which provides application performance monitoring and supports many platforms.
+**Monitor data.** To monitor data performance, you can use Azure Monitor to collect and analyze infrastructure metrics, logs, and application data. You can integrate Monitor with other services like Application Insights. Application Insights provides application performance monitoring and supports many platforms.
 
 Application Insights collects usage and performance data. You can use Log Analytics to correlate that data with configuration and performance data across Azure resources.
 
