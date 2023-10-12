@@ -23,10 +23,10 @@ This guide describes the recommendations for optimizing the cost of each workloa
 
 ## Key strategies
 
-Invest more in high-priority flows than in lower-priority flows. Aligning flow priority and spending could involve either decoupling flows that currently share the same resource. It could also involve combining flows that have similar requirements but are run on separate resources. For example, suppose you have a web application that includes multiple flows, such as user registration, login, and data processing. All of these flows run on a single server, despite having different resource needs. To optimize both costs and performance, you might separate flows or combine flows:
+Invest more in high-priority flows than in lower-priority flows. Aligning flow priority and spending could involve either decoupling flows that currently share the same resource. It could also involve combining flows that have similar requirements but are run on separate resources. For example, suppose you have a web application that includes multiple flows, such as user registration, sign-in, and data processing. All of these flows run on a single server, despite having different resource needs. To optimize both costs and performance, you might separate flows or combine flows:
 
 - *Separate flows*: For example, you could decouple the user registration flow from the others and move it to a dedicated, lower-cost server. This flow is important but not resource-intensive, making it a good candidate for a less expensive server.
-- *Combine flows*: For example, you could coombine the login and data processing flows, which both have higher resource requirements, and run them together on a high-performance server. Combining these flows allows the server to efficiently handle the resource-intensive needs of both flows. It optimizes performance and costs.
+- *Combine flows*: For example, you could combine the sign-in and data processing flows, which both have higher resource requirements, and run them together on a high-performance server. Combining these flows allows the server to efficiently handle the resource-intensive needs of both flows. It optimizes performance and costs.
 
 In a workload, there can be different types of flows or paths that need to be considered. This guide focuses on the following categories:
 
@@ -58,7 +58,7 @@ Sometimes your flows are already running on different resources. In these cases,
 
 - *Eliminate unnecessary components*: Remove any extraneous elements that don't contribute to the flow's core functionality, thereby reducing complexity and cost.
 - *Redesign the flow*: Consider redesigning the flow's architecture to enhance its efficiency. You could change the sequence of operations, reduce latency, or improve data transfer speeds, among other adjustments.
-- *Choose an appropriate performance tier*: Different flows may have varying demands in terms of processing speed, memory, or other resource metrics. Make sure to choose a resource tier that aligns well with each flow's specific requirements.
+- *Choose an appropriate performance tier*: Different flows might have varying demands in terms of processing speed, memory, or other resource metrics. Make sure to choose a resource tier that aligns well with each flow's specific requirements.
 - *Adjust scaling settings*: If a flow experiences variable demand, consider implementing autoscaling to dynamically adjust resources according to real-time needs, thus optimizing costs.
 - *Tweak configurations*: Fine-tune other settings, such as networking or data storage options, to better align with the flow's performance and budgetary requirements.
 
@@ -101,7 +101,7 @@ During the analysis, identify any inefficiencies or areas where resources aren't
 
 Azure provides a comprehensive cost management and billing solution that allows you to monitor, analyze, and optimize your costs. It offers features such as cost tracking, budgeting, and cost alerts to help you manage and optimize your spending.
 
-Azure Monitor helps you gain insights into the performance and health of your applications and infrastructure. It provides monitoring and diagnostics capabilities. These capabilities allow you to identify performance bottlenecks, optimize resource utilization, and detect and troubleshoot issues that may impact costs.
+Azure Monitor helps you gain insights into the performance and health of your applications and infrastructure. It provides monitoring and diagnostics capabilities. These capabilities allow you to identify performance bottlenecks, optimize resource utilization, and detect and troubleshoot issues that might affect costs.
 
 Consider collocating logs and using dedicated solutions instead of shared ones to better manage costs. Azure Log Analytics is a tool that allows you to collect, analyze, and visualize log data from various sources. By using Log Analytics, you can gain insights into your application and infrastructure logs, identify trends, and optimize costs by managing usage and data retention.
 

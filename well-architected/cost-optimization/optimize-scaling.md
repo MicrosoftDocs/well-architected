@@ -42,6 +42,8 @@ Evaluate the cost efficiency of using a scale out or scale up approach for each 
 - *Gather usage data*: Collect actual production data or proxy data that represents the workload usage patterns and resource utilization. This data should include metrics such as CPU usage, memory usage, network traffic, and any other relevant metrics that affect the cost of scaling.
 
 - *Define cost metrics*: Identify the cost metrics that are relevant to your workload, such as the cost per hour, cost per transaction, or cost per unit of resource usage. These metrics help you compare the cost effectiveness of different scaling options.
+- *Gather usage data*: Collect actual production data or proxy data that represents the workload usage patterns and resource utilization. This data should include metrics such as CPU usage, memory usage, network traffic, and any other relevant metrics that affect the cost of scaling
+- *Define cost metrics*: Identify the cost metrics that are relevant to your workload, such as the cost per hour, cost per transaction, or cost per unit of resource usage. These metrics help you compare the cost-effectiveness of different scaling options.
 - *Refer to requirements*: When deciding between scale-out and scale-up strategies, consider the reliability, performance, and scaling requirements of your workload. Scaling out can improve reliability through redundancy. Scaling up increases the capacity of a resource, but there might be limits to how much you can scale up.
 - *Consider resource limits*: When evaluating scaling options, it's important to consider the inherent limits of every instance, resource, and scale unit boundary. Be aware of the upper scaling limits for each resource and plan accordingly. Additionally, keep in mind the limits of your subscription and other resources.
 - *Test scaling*: Create tests for different scaling scenarios, including scale out and scale up options. Applying the usage data, simulate the workload behavior under different scaling configurations. Conduct real-world testing using the modeled scaling scenarios.
@@ -72,8 +74,10 @@ Event-driven autoscaling allows the application to dynamically adjust resources 
 - *Configure scaling rules*: Define the scaling rules that specify how your scale unit should scale in response to events. These rules can be based on thresholds, patterns, or any other criteria that align with your application's requirements. Scaling thresholds should relate to business metrics. For example, if you add two more instances, you can support 50 more users in shopping cart processing.
 - *Test and monitor*: Validate the behavior of your event-based scaling implementation by testing it with different event scenarios. Monitor the scaling actions and ensure that the actions align with your expectations.
 
+
 :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff** Configuring and fine-tuning event-based autoscaling can be complex, and improper configuration might lead to over-provisioning or under-provisioning of resources.
-=======
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff** Configuring and fine-tuning event-based autoscaling can be complex, and improper configuration might lead to over or under-provisioning of resources.
 
 ### Optimize demand and supply
 
@@ -86,16 +90,18 @@ Offloading demand refers to the practice of distributing or transferring resourc
 - *Caching*: Use caching to store frequently accessed data or content, reducing the load on your backend infrastructure. For example, use content delivery networks (CDNs) to cache and serve static content, reducing the need for scaling the backend. However, not every workload can cache data. Workloads that require up-to-date and real-time data, like trading or gaming workloads, shouldn’t use a cache. The cached data would be old and irrelevant to the user.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**. Caching might introduce challenges in terms of cache invalidation, consistency, and managing cache expiration. It's important to carefully design and implement caching strategies to avoid potential tradeoffs.
-=======
+
 
 - *Content offloading*: Offload content to external services or platforms to reduce the workload on your infrastructure. For example, rather than store video files on your primary server, you can host these files in a separate storage service that's independent from your primary server. You can load these large files directly from the storage service. This approach frees up resources on your servers, allowing you to use a smaller server. It can be cheaper to store large files in a separate data store. You can use a CDN to improve performance.
+
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**. Caching might introduce challenges in terms of cache invalidation, consistency, and managing cache expiration. It's important to carefully design and implement caching strategies to avoid potential tradeoffs.
 
 
 - *Load balancing*: Distribute incoming requests across multiple servers using load balancing. Load balancing evenly distributes the workload and prevents any single server from becoming overwhelmed. Load balancers optimize resource utilization and improve the efficiency of your infrastructure.
 - *Database offloading*: Reduce the load on your main application server by offloading database operations to a separate database server or a specialized service. For example, use a CDN for static content caching and a Redis cache for dynamic content (data from database) caching. Techniques like database sharding, read replicas, or using managed database services can also reduce the load.
 
 :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Offloading specific tasks to alternate resources helps reduce or avoid extra scaling and costs associated with scaling. However, it's important to consider the operational and maintenance challenges that might arise from offloading. Conducting a comprehensive cost-benefit analysis is crucial when selecting the most appropriate offloading techniques for your workload. This analysis ensures that the chosen method is both efficient and feasible in relation to the anticipated savings and operational complexities.
-=======
 
 
 #### Reduce demand
@@ -128,10 +134,13 @@ Use these design patterns to reduce demand:
 
 #### Control supply
 
+
 Defining an upper limit on the amount that you're willing to spend on a particular resource or service is one way to control supply. It's an important strategy for controlling costs and ensuring that expenses don't exceed a certain level. Establish a budget and monitor the spending to ensure it stays within the defined amount. You can use cost management platforms, budget alerts, or tracking usage and spending patterns. Some services allow you to throttle supply and limit rates, and you should use those features where helpful.
 
-:::image type="icon" source="../_images/trade-off.svg":::  **Tradeoff:** Stricter limits might result in missed opportunities to scale when demand increases, potentially impacting user experience. It could cause shutdowns or unable to respond to load. It's important to strike a balance between cost optimization and ensuring that you have sufficient resources to meet your business needs.
-========
+Controlling supply refers to defining an upper limit on the amount that you're willing to spend on a particular resource or service. It's an important strategy because it helps control costs and ensures that expenses don't exceed a certain level. Establish a budget and monitor the spending to ensure it stays within the defined threshold. You can use cost management platforms, budget alerts, or tracking usage and spending patterns. Some services allow you to throttle supply and limit rates, and you should use those features where helpful.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Stricter limits might result in missed opportunities to scale when demand increases, potentially impacting user experience. It could cause shutdowns or unable to respond to load. It's important to strike a balance between cost optimization and ensuring that you have sufficient resources to meet your business needs.
+
 ## Azure facilitation
 
 **Optimizing scaling**: Azure provides a test environment where you can deploy and test different scaling configurations. By using the actual workload data or proxy data, you can simulate real-world scenarios and measure the effects on costs. Azure offers tools and services for performance testing, load testing, and monitoring, which can help you evaluate the cost effectiveness of scale out versus scale up options.

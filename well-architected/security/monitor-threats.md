@@ -34,7 +34,7 @@ The main purpose of security monitoring is **threat detection**. The primary obj
 
 Monitoring can be approached from various perspectives: 
 
-- **Monitor at various altitudes.** Observing from **various altitudes** is the process of getting information about user flows, data access, identity, networking, and even the operating system. Each of these areas offers unique insights that can help you identify deviations from expected behaviors that are established against the security baseline. Conversely, continuously monitoring a system and applications over time can **help establish that baseline posture**. For example, you might typically see around 1,000 sign-in attempts in your identity system every hour. If your monitoring detects a spike of 50,000 sign-in attempts during a short period, that might indicate that an attacker is trying to gain access to your system.
+- **Monitor at various altitudes.** Observing from **various altitudes** is the process of getting information about user flows, data access, identity, networking, and even the operating system. Each of these areas offers unique insights that can help you identify deviations from expected behaviors that are established against the security baseline. Conversely, continuously monitoring a system and applications over time can **help establish that baseline posture**. For example, you might typically see around 1,000 sign-in attempts in your identity system every hour. If your monitoring detects a spike of 50,000 sign-in attempts during a short period, an attacker might be trying to gain access to your system.
 
 - **Monitor at various scopes of impact.** It's critical to **observe the application and the platform**. Assume an application user accidentally gets escalated privileges or a security breach occurs. If the user performs actions beyond their designated scope, the impact might be confined to actions that other users can perform. 
    
@@ -56,7 +56,7 @@ The following sections provide recommended practices that incorporate the preced
 
 The objective is to maintain a **comprehensive audit trail** of events that are significant from a security perspective. Logging is the most common way to capture access patterns. Logging must be performed for the application and the platform. 
 
-For an audit trail, you need to **establish the *what*, *when*, and *who* that's associated with actions**. You need to identify the specific timeframes when actions are performed. This should be covered in your threat modeling. To counteract a repudiation threat, you should establish strong logging and auditing systems that result in a  record of activities and transactions.
+For an audit trail, you need to **establish the *what*, *when*, and *who* that's associated with actions**. You need to identify the specific timeframes when actions are performed. Make this assessment in your threat modeling. To counteract a repudiation threat, you should establish strong logging and auditing systems that result in a  record of activities and transactions.
 
 The following sections describe use cases for some common altitudes of a workload.
 
@@ -67,7 +67,7 @@ Your application should be designed to provide runtime visibility when events oc
 To facilitate this tracking, code should be **instrumented via structured logging**. Doing so enables easy and uniform querying and filtering of the logs.
 
 > [!IMPORTANT]
-> You need to enforce responsible logging to maintain the confidentiality and integrity of your system. Secrets and sensitive data must not appear in logs.  Be aware of leaking PII data, GDPR, and other compliance requirements when you capture this log data.
+> You need to enforce responsible logging to maintain the confidentiality and integrity of your system. Secrets and sensitive data must not appear in logs.  Be aware of leaking personal data and other compliance requirements when you capture this log data.
 
 ##### Identity and access monitoring
 
@@ -142,13 +142,13 @@ By combining several smaller tools, you can emulate some functions of a SIEM sys
 
 **Be proactive about threat detection** and be vigilant for signs of abuse, like identity brute force attacks on an SSH component or an RDP endpoint. Although external threats might generate a lot of noise, especially if the application is exposed to the internet, **internal threats are often a greater concern**. An unexpected brute force attack from a trusted network source or an inadvertent misconfiguration, for instance, should be investigated immediately.
 
-**Keep up with your hardening practices.** Monitoring isn't a substitute for proactively hardening your environment. A larger surface area is prone to more attacks. Tighten controls as much as practice. Detect and disable unused accounts, remove unused ports, and use a web application firewall, for example. For more information about hardening techniques, see [Recommendations on security hardening](hardening.md).
+**Keep up with your hardening practices.** Monitoring isn't a substitute for proactively hardening your environment. A larger surface area is prone to more attacks. Tighten controls as much as practice. Detect and disable unused accounts, remove unused ports, and use a web application firewall, for example. For more information about hardening techniques, see [Recommendations on security hardening](harden-resources.md).
 
 **Signature-based detection** can inspect a system in detail. It involves looking for signs or correlations between activities that might indicate a potential attack. A detection mechanism might identify certain characteristics that are indicative of a specific type of attack. It might not always be possible to directly detect the command-and-control mechanism of an attack. However, there are often hints or patterns associated with a particular command-and-control process. For example, an attack might be indicated by a certain flow rate from a request perspective, or it might frequently access domains that have specific endings.
 
 Detect **anomalous user access patterns** so that you can identify and investigate deviations from expected patterns. This involves comparing current user behavior with past behavior to spot anomalies. Although it might not be feasible to perform this task manually, you can use threat intelligence tools to do it. Invest in **User and Entity Behavior Analytics (UEBA) tools** that collect user behavior from monitoring data and analyze it. These tools can often perform predictive analysis that maps suspicious behaviors to potential types of attack.
 
-**Detect threats during pre-deployment and post-deployment stages.** During the pre-deployment phase, incorporate vulnerability scanning into pipelines and take necessary actions based on the results. Post-deployment, continue to conduct vulnerability scanning. You can use tools like Microsoft Defender for Containers, which scans container images. Include the results in the collected data. For information about secure development practices, see [Recommendations for using safe deployment practices](../operational-excellence/safe-deployments.md). 
+**Detect threats during pre-deployment and post-deployment stages.** During the predeployment phase, incorporate vulnerability scanning into pipelines and take necessary actions based on the results. Post-deployment, continue to conduct vulnerability scanning. You can use tools like Microsoft Defender for Containers, which scans container images. Include the results in the collected data. For information about secure development practices, see [Recommendations for using safe deployment practices](../operational-excellence/safe-deployments.md). 
 
 **Take advantage of platform-provided detection mechanisms and measures.** For example, Azure Firewall can analyze traffic and block connections to untrusted destinations. Azure also provides ways to detect and protect against distributed denial-of-service (DDoS) attacks. 
 
@@ -211,7 +211,7 @@ DevOps advocates change management of workloads via continuous integration and c
 
 - [Recommendations for designing and creating an observability framework](../operational-excellence/observability.md)
 - [Security Insider](https://www.microsoft.com/security/business/security-insider/)
-- [Recommendations for hardening resources](hardening.md)
+- [Recommendations for hardening resources](harden-resources.md)
 - [Recommendations for using safe deployment practices](../operational-excellence/safe-deployments.md)
 - [Azure Monitor documentation](/azure/azure-monitor/)
 - [What is Microsoft Defender for Cloud?](/azure/defender-for-cloud/defender-for-cloud-introduction)

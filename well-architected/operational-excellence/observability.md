@@ -66,7 +66,7 @@ For applications, the collecting service can be an application performance manag
 
 Application logs support the end-to-end application lifecycle. Logging is essential to understanding how the application operates in various environments, which events occur, and the conditions under which they occur.
 
-We recommend that you collect application logs and events across all major environments. Separate the data between environments as much as possible by using different data stores for each environment, if doing so is practical. Use filters to ensure that non-critical environments don't complicate the interpretation of production logs. Finally, corresponding log entries across the application should capture a correlation ID for their respective transactions.
+We recommend that you collect application logs and events across all major environments. Separate the data between environments as much as possible by using different data stores for each environment, if doing so is practical. Use filters to ensure that noncritical environments don't complicate the interpretation of production logs. Finally, corresponding log entries across the application should capture a correlation ID for their respective transactions.
 
 You should capture application events in structured data types with machine-readable data points rather than unstructured string types. A structured format that uses a well-known schema can make parsing and analyzing logs easier. Also, structured data can easily be indexed and searched, and reporting can be greatly simplified.
 
@@ -170,7 +170,7 @@ It's useful to store historical data so you can spot long-term trends. Rather th
 
 Data gathered for metering and billing customers might need to be saved indefinitely. Additionally, regulatory requirements might dictate that information collected for auditing and security needs to be archived and saved. This data is also sensitive and might need to be encrypted or otherwise protected to prevent tampering. You should never record user passwords or other information that might be used to commit identity fraud. You should scrub these details from the data before it's stored.
 
-To ensure that you comply with laws like GDPR, minimize the storage of any identifiable information. If you do need to store identifiable information, be sure, when you design your solution, to take into account requirements that allow individuals to request that their information be deleted.
+To ensure that you comply with laws and regulations, minimize the storage of any identifiable information. If you do need to store identifiable information, be sure, when you design your solution, to take into account requirements that allow individuals to request that their information be deleted.
 
 ### Analysis
 
@@ -291,7 +291,7 @@ _Placeholder for IaaS baseline architecture_
 
 - [Instrumentation guide](../devops/monitor-instrument.md)
 - [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
-- [Recommendations for monitoring and threat detection](../security/monitoring.md)
+- [Recommendations for monitoring and threat detection](../security/monitor-threats.md)
 - [Recommendations for collecting performance data](../performance-efficiency/collect-metrics-logs.md)
 
 ## Operational Excellence checklist

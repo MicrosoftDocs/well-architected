@@ -1,5 +1,5 @@
 ---
-title: Segmentation strategy recommendations
+title: Recommendations for building a segmentation strategy
 description: Learn about the recommendations for building a unified segmentation strategy using perimeters and isolation boundaries. 
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -22,12 +22,12 @@ This guide describes the recommendations for **building a unified segmentation s
 
 | Term                   | Definition                                                                                      |
 |------------------------|-------------------------------------------------------------------------------------------------|
-| Segment                | A logical unit that's isolated from other entities and protected by a set of security measures. |
-| Perimeter              | The trust boundary around a segment.                                                            |
 | Containment            | A technique to contain the blast radius if an attacker gains access to a segment.               |
-| Role                   | A set of permissions needed to complete a job function.                                         |
 | Least-privilege access | A Zero Trust principle that aims at minimizing a set of permissions to complete a job function. |
+| Perimeter              | The trust boundary around a segment.                                                            |
 | Resource organization  | A strategy to group related resources by flows within a segment.                                |
+| Role                   | A set of permissions needed to complete a job function.                                         |
+| Segment                | A logical unit that's isolated from other entities and protected by a set of security measures. |
 
 ## Key design strategies
 
@@ -164,7 +164,7 @@ Here are some common patterns for segmenting a workload in Azure. Choose a patte
 
 One way to organize security groups is by job title like software engineer, database administrator, site reliability engineer, quality assurance engineer, or security analyst. This approach involves **creating security groups for your workload team** based on their roles, without considering the work that needs to be accomplished. Grant security groups RBAC permissions, standing or just in time (JIT), according to their responsibilities in the workload. Assign human and service principles to security groups based on their as-needed access.
 
-Membership is highly visible at the role assignment level, making it easy to see what a *role* has access to. Each person is usually only a member of one security group, which makes onboarding and offboarding easy. However, unless job titles overlap perfectly with responsibilities, title-based grouping isn't ideal for least-privilege implementation. You might end up combining implementation with function-based grouping.
+Membership is highly visible at the role assignment level, making it easy to see what a *role* has access to. Each person is usually a member of only one security group, which makes onboarding and offboarding easy. However, unless job titles overlap perfectly with responsibilities, title-based grouping isn't ideal for least-privilege implementation. You might end up combining implementation with function-based grouping.
 
 #### Pattern 2: Function-based grouping
 
@@ -242,4 +242,4 @@ Consider the principle of least privilege when you define access control policie
 Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"]
-[Security checklist](checklist.md)
+> [Security checklist](checklist.md)
