@@ -3,7 +3,7 @@ title: Recommendations for establishing a security baseline
 description: Learn about hardening resources recommendations for security. Reduce the attack surface and increase attackers' costs in the remaining area to limit the opportunities for malicious actors to exploit vulnerabilities.
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 11/15/2023
+ms.date: 10/11/2023
 ms.topic: conceptual
 ---
 
@@ -65,6 +65,12 @@ Creating a baseline should be a methodical process. Here are some recommendation
 ### Composition of a baseline
 
 Here are some common categories that should be part of a baseline. This isn't an exhaustive list but intended to provide you with an overview of the scope of the document.
+
+#### Regulatory compliance
+
+A workload might be subject to regulatory compliance for specific industry segments, there might be some geographic restrictions, and so on. It's key to understand the requirements as given in the regulatory specifications because those influence the design choices and in some cases must be included in the architecture. 
+
+The baseline should include regular evaluation of the workload against regulatory requirements. Take advantage of the platform-provided tools, such as Microsoft Defender for Cloud, which can identify areas of noncompliance. Work with the organization's compliance team to make sure all requirements are met and maintained.
 
 #### Architecture components
 
