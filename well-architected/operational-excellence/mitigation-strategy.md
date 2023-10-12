@@ -141,7 +141,7 @@ There are potential tradeoffs with mitigation strategies to consider:
 
 ## Related links
 
-OpEx safe deployment guide 
+<!-- OpEx safe deployment guide -->
 
 [Progressive experimentation with feature flags - Azure DevOps | Microsoft Learn](/devops/operate/progressive-experimentation-feature-flags)
 
