@@ -92,12 +92,12 @@ Meet regularly with executive sponsors to define requirements. These reviews pro
 
 ## Azure facilitation
 
-The Microsoft Security Development Lifecycle provides a threat modeling tool to assist with the threat modeling process. This tool is available at no additional cost. For more information, see the [Threat Modeling page](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling).
+The Microsoft Security Development Lifecycle provides a threat modeling tool to assist with the threat modeling process. This tool is available at no additional cost. For more information, see the [Threat Modeling page](https://www.microsoft.com/securityengineering/sdl/threatmodeling).
 
 ## Related links
 
 - [STRIDE](/azure/security/develop/threat-modeling-tool-threats)
-- [Threat Modeling](https://www.microsoft.com/en-us/securityengineering/sdl/threatmodeling)
+- [Threat Modeling](https://www.microsoft.com/securityengineering/sdl/threatmodeling)
 
 ## Community links
 
