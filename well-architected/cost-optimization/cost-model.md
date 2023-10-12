@@ -20,9 +20,9 @@ This guide describes the best practices for creating a cost model for your workl
 
 | Term | Definition |
 |------|------------|
+| Chargeback | An accounting model in which you charge departments for their workload usage and receive payments from them. |
 | Cost model | The estimated cost of a workload. It captures all the dimensions of billing, including operations. |
 | Cost meter | A tracking mechanism that’s used to measure the usage of resources over time. It tracks usage, such as compute hours, data transfer, and input-output operations, and emits the records, which are used to calculate the bill for each resource based on its associated meter. |
-| Chargeback | An accounting model in which you charge departments for their workload usage and receive payments from them. |
 | Showback | An accounting model in which you show departments the cost of their workload usage, and you don't receive payment from them. |
 
 ## Key design strategies
@@ -38,7 +38,9 @@ Cloud service providers offer many ways to save money. It's important to be fami
 Determine the short-term and long-term cost objectives of your workload. Analyze workload characteristics to determine which available discounts are most suitable for your workload. For example, if your workload has predictable usage patterns, you might consider using compute reservations or prepaid models to optimize costs. To determine the efficiency and effectiveness of your workload, consider these recommendations:
 
 - *Analyze key components*: Analyze the key components of your workload, including essential resources such as servers, databases, networks, and licenses.
+
 - *Understand workload*: Understand the workload's stability, predictability, and sensitivity to external factors like downtime and degraded performance.
+
 - *Understand requirements*: Assess the specific requirements of your workload like performance, scalability, observability, backup, and disaster recovery.
 
 Don't overlook the need for supporting services. Services that support observability, security, and governance incur costs and play a pivotal role in the operation of your workload. Observability solutions, such as monitoring tools and logging mechanisms, offer insights into workload usage and performance. Robust security measures, like encryption or access controls and regular security audits, safeguard your workload and ensure regulation compliance. Governance practices and policies ensure compliance and efficient resource utilization. Incorporate the expenses for these supporting services into your budget.
@@ -133,16 +135,7 @@ Update the cost model whenever you change services. Use the cloud platform's cal
 
 When you extend your existing investments in software licenses to the cloud, you save on costs. Instead of paying the full price for using the software on the cloud, you benefit from the discounted pricing that Azure Hybrid Benefit offers.
 
-## Next steps
-
-> [!div class="nextstepaction"]
-> [Measure unit costs](/azure/cost-management-billing/finops/capabilities-unit-costs)
-
-> [!div class="nextstepaction"]
-> [View and download Azure usage and charges](/azure/cost-management-billing/understand/download-azure-daily-usage)
-
 ## Related links
 
-- [Conduct cost reviews](monitor-reviews.md)
-- [Consumption and fixed cost models](design-price.md)
-- [Set budgets and alerts](monitor-alert.md)
+- [Measure unit costs](/azure/cost-management-billing/finops/capabilities-unit-costs)
+- [View and download Azure usage and charges](/azure/cost-management-billing/understand/download-azure-daily-usage)

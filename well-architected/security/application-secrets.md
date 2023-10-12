@@ -57,7 +57,7 @@ Build a strategy around these points to help prevent identity theft, avoid repud
 
 If possible, avoid creating secrets. Find ways to **delegate responsibility to the platform**. For example, use the platform's built-in managed identities to handle credentials. Fewer secrets result in reduced surface area and less time spent on secret management.
 
-We recommended that keys have three distinct roles: user, administrator, and auditor. Role distinction helps to ensure only trusted identities have access to secrets with the appropriate level of permission. Educate developers, administrators, and other relevant personnel about the importance of secret management and security best practices.
+We recommend that keys have three distinct roles: user, administrator, and auditor. Role distinction helps to ensure that only trusted identities have access to secrets with the appropriate level of permission. Educate developers, administrators, and other relevant personnel about the importance of secret management and security best practices.
 
 #### Preshared keys
 
