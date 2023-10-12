@@ -1,6 +1,6 @@
 ---
 title: Recommendations for optimizing code
-description: Learn how to optimize costs related to code.
+description: Learn how to optimize costs related to code with specific recommendations.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
@@ -28,7 +28,7 @@ This guide describes the recommendations for optimizing costs related to code. C
 
 Optimizing code for cost optimization means improving code to achieve the same functionality with less. The goal is to use fewer per-instance resources, such as CPU cycles, memory, and storage. By reducing resource consumption, you can save money when applications handle large volumes of data or experience high traffic loads.
 
-Code improvements are most effective when following other cost optimization efforts around scaling, right-sizing, redundancy, and throttling. After these foundational elements are taken care of, then you can consider code optimization. You might not know if you have inefficient code. Serverless, autoscale, and reliability features can mask code inefficiencies. The following strategies can help you identify and fix code that is costing you more than it should.
+Code improvements are most effective when following other cost optimization efforts around scaling, right-sizing, redundancy, and throttling. After these foundational elements are taken care of, then you can consider code optimization. You might not know if you have inefficient code. Serverless, autoscale, and reliability features can mask code inefficiencies. The following strategies can help you identify and fix code that is costing more than it should.
 
 ### Instrument your code
 
@@ -40,7 +40,7 @@ In an ideal environment, you should do code analysis early in the software devel
 
 ### Identify and optimize hot paths
 
-By instrumenting your code, you can measure the resource consumption for different code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. They are critical or frequently run sections of a program that require high performance and low latency. To identify code hot paths, consider these steps:
+By instrumenting your code, you can measure the resource consumption for different code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. They're critical or frequently run sections of a program that require high performance and low latency. To identify code hot paths, consider these steps:
 
 - *Analyze runtime data*: Collect and analyze runtime data to identify areas of the code that consume significant resources, such as CPU, memory, or I/O operations. Look for patterns or sections of code that are frequently run or take a long time to complete.
 
@@ -104,15 +104,15 @@ Optimizing network traversal is about minimizing network traffic between workloa
 
 - *Support compression*: Implement compression mechanisms in your network protocols to reduce the size of data being transferred. Compression can significantly reduce the amount of data transmitted over the network, leading to improved performance and reduced bandwidth usage.
 - *Utilize connection pooling*: Connection pooling allows for the reuse of established network connections, reducing the overhead of establishing new connections for each request. Connection pooling can improve the efficiency of network communication by avoiding the overhead of connection setup and teardown.
-- *Implement other optimizations*: Explore other optimizations specific to your workload and network environment. For example, you can use techniques like content caching, load balancing, and traffic shaping to further optimize network traversal.
+- *Implement other optimizations*: Explore other optimizations specific to your workload and network environment. For example, you can use content caching, load balancing, and traffic shaping to further optimize network traversal.
 
-**Minimize network overhead.** Minimize the amount of network traffic and data transfer between different components of your workload. Consider techniques such as batching requests, using efficient data serialization formats. By reducing network overhead, you can lower costs associated with data egress and ingress and improve overall network performance.
+**Minimize network overhead.** Minimize the amount of network traffic and data transfer between different components of your workload. Consider techniques such as batching requests and using efficient data serialization formats. By reducing network overhead, you can lower costs associated with data egress and ingress and improve overall network performance.
 
-- *Reduce redundant requests*: Analyze the code to identify any duplicate or unnecessary requests being made. Instead of making multiple requests for the same data, you can modify the code to fetch the data once and reuse it as needed.
+- *Reduce redundant requests*: Analyze the code to identify any duplicate or unnecessary requests being made. Instead of making multiple requests for the same data, you can modify the code to retrieve the data once and reuse it as needed.
 
 - *Optimize data size*: Review the data being transmitted between different components or systems and look for opportunities to minimize its size. Consider techniques such as compressing the data before transmission or using more efficient data formats. By reducing the data size, you can decrease network bandwidth usage and improve overall efficiency.
 - *Batch*: If applicable, consider batching multiple smaller requests into a single larger request. Batching reduces the overhead of establishing multiple connections and decreases the overall data transmission.
-- *Use data serialization*: Data serialization refers to the process of converting complex data structures or objects into a format that can be easily transmitted over a network or stored in a persistent storage system. It involves representing the data in a standardized format, allowing it to be efficiently transmitted, processed, and reconstructed at the receiving end. Select a serialization format that is compact, fast, and suitable for your workload's requirements.
+- *Use data serialization*: Data serialization refers to the process of converting complex data structures or objects into a format that can be easily transmitted over a network or stored in a persistent storage system. This strategy involves representing the data in a standardized format, allowing the data to be efficiently transmitted, processed, and reconstructed at the receiving end. Select a serialization format that is compact, fast, and suitable for your workload's requirements.
 
 | Serialization format | Description |
 |----|---|
@@ -130,6 +130,7 @@ Optimizing data access refers to streamlining the patterns and techniques used t
 **Use caching mechanisms.** Caching involves storing frequently accessed data closer to the components that require it, reducing the need for network traversal by serving the data from the cache instead of fetching it over the network.
 
 - *Use an external cache*: Implement a caching solution that allows you to store frequently accessed data closer to the components that require it. A popular caching solution is a Content Delivery Network (CDN), which helps minimize latency and reduce network traversal by caching static content closer to consumers.
+
 - *Tune caching parameters*: Configure caching parameters, such as Time to Live (TTL), to optimize the benefit of caching while minimizing potential drawbacks. Setting an appropriate TTL ensures that cached data remains fresh and relevant.
 
 - *Use in-memory caching*: In addition to external caching solutions, consider implementing in-memory caching in your application. In-memory caching can help utilize idle compute resources and increase the compute density of allocated resources.
@@ -156,7 +157,7 @@ By employing these techniques, you can optimize data access, retrieval, and stor
 
 ### Optimize architecture
 
-Optimizing architecture means evaluating your workload architecture to identify opportunities for resource optimization. The goal is to use the right services for the right job. To reach this goal, you might need to redesign parts of the architecture to use fewer resources. Consider serverless or managed services and optimize resource allocation. By optimizing your architecture, you can achieve your functional and nonfunctional requirements while consuming fewer per-instance resources.
+Optimizing architecture means evaluating your workload architecture to identify opportunities for resource optimization. The goal is to use the right services for the right job. To reach this goal, you might need to redesign parts of the architecture to use fewer resources. Consider serverless or managed services and optimize resource allocation. By optimizing your architecture, you can meet the functional and nonfunctional requirements while consuming fewer per-instance resources.
 
 **Use design patterns.** Design patterns are reusable solutions to common software design problems. They provide a structured approach to designing code that is efficient, maintainable, and scalable. Design patterns help developers solve recurring design problems and promote code reusability.
 
@@ -167,13 +168,13 @@ Design patterns can help cost optimize code in several ways. They help optimize 
 - *Improved maintainability*: Design patterns promote modular and structured code, making it easier to understand, modify, and maintain. They can lead to cost savings in terms of reduced debugging and maintenance efforts.
 - *Scalability and performance*: Design patterns help in designing scalable and performant systems. Patterns like the Cache-Aside pattern can improve performance by caching frequently accessed data, reducing the need for expensive computations or external calls.
 
-To implement design patterns, developers need to understand the principles and guidelines of each pattern and apply them in their code. Consider identifying the appropriate pattern for a given problem, understanding its structure and components, and integrating it into the overall design. There are various resources available such as documentation, tutorials, and sample code. These resources can help developers learn and implement design patterns effectively.
+To implement design patterns, developers need to understand the principles and guidelines of each pattern and apply them in the code. Consider identifying the appropriate pattern for a given problem, understanding its structure and components, and integrating the pattern into the overall design. There are various resources available such as documentation, tutorials, and sample code. These resources can help developers learn and implement design patterns effectively.
 
 **Change configurations.** Regularly review and update your workload configuration to ensure it aligns with your current requirements. Consider adjusting resource sizing and configuration settings based on workload demands. By optimizing configuration, you can effectively allocate resources and avoid overprovisioning, leading to cost savings.
 
 **Refactor architecture.** Evaluate your workload architecture and identify opportunities for refactoring or redesigning components to optimize resource consumption. Consider techniques such as adopting microservices architecture, implementing the circuit breaker pattern, and using serverless computing. By optimizing your architecture, you can achieve better resource utilization and cost efficiency.
 
-**Modify resource sizes.** Continuously monitor and analyze the resource utilization of your workload. Based on the observed patterns and trends, make adjustments to resource sizing and configuration settings to optimize resource consumption. Consider rightsizing virtual machine instances, adjusting memory allocation, and optimizing storage capacity. By right-sizing resources, you can avoid unnecessary costs associated with underutilization or overprovisioning.
+**Modify resource sizes.** Continuously monitor and analyze the resource utilization of your workload. Based on the observed patterns and trends, adjust resource sizing and configuration settings to optimize resource consumption. Consider rightsizing virtual machine instances, adjusting memory allocation, and optimizing storage capacity. By rightsizing resources, you can avoid unnecessary costs associated with underutilization or overprovisioning.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Reworking code and architecture might not fit with current project schedules and could lead to schedule and cost slippage.
 
