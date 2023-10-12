@@ -16,10 +16,10 @@ ms.topic: conceptual
 
 This guide describes the recommendations for establishing a security baseline. A security baseline is a document that specifies your organization's bare minimum security requirements and expectations across a range of areas. A good security baseline helps you:
 
-- Keep your data and systems secure
-- Comply with regulatory requirements
-- Minimize risk of inadvertent oversight
-- Reduce the likelihood of breaches and subsequent business effects
+- Keep your data and systems secure.
+- Comply with regulatory requirements.
+- Minimize risk of oversight.
+- Reduce the likelihood of breaches and subsequent business effects.
 
 Security baselines should be published widely throughout your organization so that all stakeholders are aware of the expectations.
 
@@ -80,16 +80,16 @@ The baseline needs prescriptive recommendations for the main components of the w
 
 The baseline must have recommendations about:
 
-- System classification
-- Approved set of resource types
-- Tracking the resources
-- Enforcing policies for using or configuring resources
+- System classification.
+- The approved set of resource types.
+- Tracking the resources.
+- Enforcing policies for using or configuring resources.
 
 The development team needs to have a clear understanding of the scope for security checks. For example, threat modeling is a requirement in making sure that potential threats are identified in code and in deployment pipelines. Be specific about static checks and vulnerability scanning in your pipeline and how regularly the team needs to perform those scans.  
 
 For more information, see [Recommendations on threat analysis](threat-model.md).
 
-The development process should also set standards on various testing methodologies and their cadence. For more information, see [Recommendations on security testing](testing.md).
+The development process should also set standards on various testing methodologies and their cadence. For more information, see [Recommendations on security testing](test.md).
 
 #### Operations
 
@@ -109,7 +109,7 @@ Develop and maintain a security training program to ensure the workload team is 
 
 Use the baseline to drive initiatives, such as:
 
-- **Preparedness toward design decisions**. Ideally, the security baseline should exist and be published before the architecture design process. Ensure team members are fully aware of your organization's expectations early, which avoids costly rework caused by a lack of clarity. You can use baseline criteria as workload requirements that the organization has committed to and design and validate controls against those constraints.  
+- **Preparedness toward design decisions**. Create the security baseline and publish it before you start the architecture design process. Ensure team members are fully aware of your organization's expectations early, which avoids costly rework caused by a lack of clarity. You can use baseline criteria as workload requirements that the organization has committed to and design and validate controls against those constraints.  
 
 - **Measure your design**. Grade the current decisions against the current baseline. The baseline sets actual thresholds for criteria. Document any deviations that are deferred or deemed long-term acceptable.
 
@@ -119,7 +119,7 @@ Use the baseline to drive initiatives, such as:
 
 - **Set guardrails**. Where possible, your baseline criteria must have guardrails. Guardrails enforce required security configurations, technologies, and operations, based on internal factors and external factors. Internal factors include business requirements, risks, and asset evaluation. External factors include benchmarks, regulatory standards, and threat environment. Guardrails help minimize the risk of inadvertent oversight and punitive fines for noncompliance.
 
-Explore custom Azure Policies or use built-in initiatives like CIS benchmarks or Azure Security Benchmark to enforce security configurations and compliance requirements. Consider creating Azure Policies and initiatives out of baselines.
+Explore Azure Policy for custom options or use built-in initiatives like CIS benchmarks or Azure Security Benchmark to enforce security configurations and compliance requirements. Consider creating Azure Policies and initiatives out of baselines.
 
 ### Evaluate the baseline regularly
 
@@ -161,7 +161,7 @@ Cloud Adoption Framework provides guidance for central teams about establishing 
 
 - [What is incident response? Plan and steps](https://www.microsoft.com/security/business/security-101/what-is-incident-response)
 
-## Community resources
+## Community links
 
 - [CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/)
 
