@@ -112,7 +112,7 @@ See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-f
 - [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone)
 - [Azure Virtual Desktop landing zone accelerator implementation](https://github.com/Azure/avdaccelerator/)
 
-## Next steps
+## Operational Excellence checklist
 
 Refer to the complete set of recommendations. 
 
