@@ -72,11 +72,11 @@ Build a culture that continuously improves quality by monitoring the workload an
 
 Monitoring operations is key in proactive maintenance of the application, quality and security assurance, capacity planning, and product management.
 
-A crucial aspect of monitoring is application health modeling that helps you anticipate issues before they become incidents and impact customer experience. Efficient monitoring reduces reactive cycles spent on incident management.
+A crucial aspect of monitoring is application health modeling that helps you anticipate issues before they become incidents and affect customer experience. Efficient monitoring reduces reactive cycles spent on incident management.
 
 |Approach   | Benefit   |
 |---------|---------|
-|**Build a monitoring system with its own stack and flows**. <br><br> Treat the monitoring system as a dimension of the workload that's decoupled from its utility. The stack must cover all layers, including infrastructure, application health, and build and release processes. <br><br> **Capturing or sampling business data** is out of scope for observability implementations. | Decouple monitoring and workload stacks to **separate functional requirements and observability requirements** and make independent evolution possible. Changes in code shouldn't impact monitoring, and vice versa. <br><br> Because observability requirements are separate from functional requirements, **business data** **won't be disrupted** by monitoring configuration changes or outages.  |
+|**Build a monitoring system with its own stack and flows**. <br><br> Treat the monitoring system as a dimension of the workload that's decoupled from its utility. The stack must cover all layers, including infrastructure, application health, and build and release processes. <br><br> **Capturing or sampling business data** is out of scope for observability implementations. | Decouple monitoring and workload stacks to **separate functional requirements and observability requirements** and make independent evolution possible. Changes in code shouldn't affect monitoring, and vice versa. <br><br> Because observability requirements are separate from functional requirements, **business data** **won't be disrupted** by monitoring configuration changes or outages.  |
 |**Drive consistency** in the collection process for each **type of data source**. <br><br> Standardize instrumentation in code by using industry standards for telemetry, collection of infrastructure metrics, and tooling. | Consistency prevents variance in sensing and measurement because familiarity across similar resources **reduces time spent correlating and analyzing data**. You have a holistic perspective to anticipate issues. <br><br>  |
 |**Emit telemetry** from application code that correlates the key points of the execution flow and gives an end-to-end view at different levels of granularity.        | Prioritize actions based on the severity level, and understand the context given its verbosity. This information is crucial for troubleshooting purposes.  |
 |**Own the responsibility of emitting and collecting data**, even when data sinks are shared by multiple teams and managed by central teams.      | By localizing monitoring data to the workload environment, the team can access logs and metrics to address workload concerns. |
@@ -124,7 +124,7 @@ Through automation, you save time, effort, and money, and you avoid mistakes.
 
 ## Adopt safe deployment practices
 
-|![Goal icon](../_images/goal.svg) Implement guardrails in the deployment process to minimize the impact of errors or unexpected conditions.|
+|![Goal icon](../_images/goal.svg) Implement guardrails in the deployment process to minimize the effect of errors or unexpected conditions.|
 |--|
 
 During the development cycle, workload artifacts go through many changes as they get implemented and tested and as bugs are fixed.

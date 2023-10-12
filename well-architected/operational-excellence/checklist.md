@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Design review checklist for Operational Excellence  
 
-This checklist presents a set of recommendations to help you build a culture of operational excellence. Start with a DevOps approach to integrate specializations from multiple disciplines, which creates a rigorous design and development practice. This approach leads to repeatable, reliable, and safe deployments of infrastructure and code.
+This checklist presents a set of recommendations to help you build a culture of operational excellence. Start with a DevOps approach to integrate specializations from multiple disciplines. This approach creates a rigorous design and development practice. This approach leads to repeatable, reliable, and safe deployments of infrastructure and code.
 
 Prioritize human intervention in areas that benefit from it, and incorporate automation in other areas. Observability serves operational excellence by monitoring health events and also for validating the current workload design and implementation to inform future product development.
 

@@ -93,7 +93,7 @@ After you successfully contain the issue, you can begin triage work. The steps t
 
 ### RCA reporting
 
-The service-level agreements (SLAs) to your customers might dictate that you have to issue RCA reports within a certain time period after the incident is resolved. The incident owner should create the RCA reports. If that's not possible, another person that worked closely with the incident owner can create the RCA reports, which ensures an accurate accounting of the incident.
+The service-level agreements (SLAs) to your customers might dictate that you have to issue RCA reports within a certain time period after the incident is resolved. The incident owner should create the RCA reports. If that's not possible, another person who worked closely with the incident owner can create the RCA reports. This strategy ensures an accurate accounting of the incident.
 
 ### Incident post-mortems
 
