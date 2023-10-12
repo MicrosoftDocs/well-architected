@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
-|[SE:05](checklist.md)|Implement strict, conditional, and auditable identity and access management (IAM) across all workload users, team members, and system components. Limit access exclusively to as necessary. Use modern industry standards for all authentication and authorization implementations. Restrict and rigorously audit access that's not based on identity.|
+|[SE:05](checklist.md)|Implement strict, conditional, and auditable identity and access management (IAM) across all workload users, team members, and system components. Limit access exclusively to *as necessary*. Use modern industry standards for all authentication and authorization implementations. Restrict and rigorously audit access that's not based on identity.|
 |---|---|
 
 This guide describes the recommendations for authenticating and authorizing identities that are attempting to access your workload resources.
@@ -59,7 +59,7 @@ Authentication is a process that verifies identities. The requesting identity is
 
 -   A user name and password.
 
--   A pre-shared secret, like an API key that grants access.
+-   A preshared secret, like an API key that grants access.
 
 -   A shared access signature (SAS) token.
 
@@ -119,7 +119,14 @@ Consider a workload identity as an exmaple. The application must have data plane
 
 A role is a *set of permissions* that's assigned to an identity. Assign roles that only allow the identity to complete the task, and no more. When user's permissions are restricted to their job requirements, it's easier to identify suspicious or unauthorized behavior in the system.
 
+Ask questions like these: 
+
+- Is read-only access enough? 
+- Does the identity need permissions to delete resources?
+
 **Limiting the level of access that users, applications, or services have to Azure resources reduces the potential attack surface.** If you grant only the minimum permissions that are required to perform specific tasks, the risk of a successful attack or unauthorized access is significantly reduced. For example, security teams only need read-only access to security attributes for all technical environments. That level is enough to assess risk factors, identify potential mitigations, and report on the risks.
+
+There are scenarios in which users need more access because of the organizational structure and team organization. There might be an overlap between various roles, or single users might perform multiple standard roles. In this case, use multiple role assignments that are based on the business function instead of creating a custom role for each such user. Doing so makes the roles easier to manage.
 
 **Avoid permissions that specifically reference individual resources or users.** Granular and custom permissions create complexity and confusion because they don't pass on the intention to new resources that are similar. This can create  a complex legacy configuration that's difficult to maintain and negatively impact both security and reliability.
 
@@ -202,6 +209,8 @@ The following list provides a summary of guidance. For more information, see [Re
 -   Apply operational practices that handle tasks like **key rotation and expiration**.
 
 For information about rotation policies, see [Automate the rotation of a secret for resources that have two sets of authentication credentials](/azure/key-vault/secrets/tutorial-rotation-dual) and [Tutorial: Updating certificate auto-rotation frequency in Key Vault](/azure/key-vault/certificates/tutorial-rotate-certificates).
+
+### Keep the development environments safe
 
 All code and scripts, pipeline tooling, source control system should be considered workload assets. **Access to writes should be gated** with automation and peer review. **Read access to source code should be limited** to roles on a need-to-know basis. Code repositories must have versioning, and **security code reviews** by peers must be a regular practice that's integrated with the development lifecycle. You need to have a process in place that **scans resources regularly** and identify latest vulnerabilities.
 
