@@ -188,7 +188,7 @@
 		{
 			"source_path": "well-architected/cost/design-checklist.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/design-governance.md",
@@ -198,12 +198,12 @@
 		{
 			"source_path": "well-architected/cost/design-initial-estimate.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/cost-model",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/design-model.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/cost-model",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/design-paas.md",
@@ -213,7 +213,7 @@
 		{
 			"source_path": "well-architected/cost/design-price.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/cost-model",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/design-regions.md",
@@ -223,27 +223,27 @@
 		{
 			"source_path": "well-architected/cost/design-resources.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/cost-model",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/monitor-alert.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/collect-review-cost-data",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/monitor-checklist.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/monitor-reports.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/collect-review-cost-data",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/monitor-reviews.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/collect-review-cost-data",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/optimize-autoscale.md",
@@ -253,12 +253,12 @@
 		{
 			"source_path": "well-architected/cost/optimize-cache.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/optimize-scaling",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/optimize-checklist.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/optimize-vm.md",
@@ -268,7 +268,7 @@
 		{
 			"source_path": "well-architected/cost/overview.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/principles.md",
@@ -288,7 +288,7 @@
 		{
 			"source_path": "well-architected/cost/provision-checklist.md",
 			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-compute.md",
