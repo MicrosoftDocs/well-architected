@@ -15,7 +15,7 @@ During the design phase of a workload, it's important to consider how decisions 
 
 ## Security tradeoffs with Reliability
 
- :::image type="icon" source="../_images/trade-off.svg"::: **Increased complexity.** Reliability favors simplicity and looks to minimize points of failure.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased complexity.** Reliability favors simplicity and looks to minimize points of failure.
 
 - Some security controls can increase the risk of *misconfiguration*, which could potentially lead to service disruption. Some examples include configuring network traffic rules, identity providers, virus scanning exclusions, and role- or attribute-based access control assignments.
 
@@ -23,7 +23,7 @@ During the design phase of a workload, it's important to consider how decisions 
 
 - Workload security tooling is often woven into many layers of the workload's architecture, operations, and runtime requirements; and may come with their own implications on resiliency, availability, and capacity planning. Failure to account for limitations in the tooling could lead to a reliability event, such as experiencing SNAT port exhaustion on an egress firewall.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased critical dependencies.** Reliability favors minimizing critical dependencies. A workload that minimizes critical dependencies, especially external ones, has better control of its points of failure.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased critical dependencies.** Reliability favors minimizing critical dependencies. A workload that minimizes critical dependencies, especially external ones, has better control of its points of failure.
 
 Security demands that a workload 'verifies explicitly.' Verification happens through critical dependencies on key security components. If those components aren't available or malfunction, the verification task might not complete. This causes the workload to be in a degraded state. Some examples of these critical single points of failure dependencies are:
 
@@ -32,7 +32,7 @@ Security demands that a workload 'verifies explicitly.' Verification happens thr
 - Accurate system time provided by a network time protocol (NTP) server
 - Identity providers, such as Microsoft Entra ID
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased disaster recovery complexity.** A workload must reliably recover from all forms of disaster.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased disaster recovery complexity.** A workload must reliably recover from all forms of disaster.
 
 - Security controls might impact recovery time objectives. This can happen through additional steps needed to address encryption of backed up data or through operational access delays for site reliability triage.
 
@@ -40,7 +40,7 @@ Security demands that a workload 'verifies explicitly.' Verification happens thr
 
 - Security or compliance requirements might limit data residency options or access control restrictions for backups, potentially further complicating recovery by segmenting even offline replicas.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased rate of change.** A workload that experiences runtime change is exposed to more risk of a reliability impact due to that change.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased rate of change.** A workload that experiences runtime change is exposed to more risk of a reliability impact due to that change.
 
 - Stricter patching and update policies will lead to more changes in the workload's production environment. This change comes from sources such as these:
   - Application code being released more frequently due to updates in libraries or updates in base container images
@@ -52,7 +52,7 @@ Security demands that a workload 'verifies explicitly.' Verification happens thr
 
 ## Security tradeoffs with Cost Optimization
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Additional infrastructure.** One approach when cost optimizing a workload is to look for ways to reduce the diversity and quantity of components and looking for ways to increase density.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Additional infrastructure.** One approach when cost optimizing a workload is to look for ways to reduce the diversity and quantity of components and looking for ways to increase density.
 
 Some workload components or design decisions only exist to protect the security (confidentiality, integrity, and availability) of systems and data. These components, while enhancing the security of the environment, also become a driver for cost, and must be subject to cost-optimization themselves. Some example sources for these security-centric additional resources or licensing costs are:
 
@@ -64,7 +64,7 @@ Some workload components or design decisions only exist to protect the security 
 - Dedicated testing environments and testing tools to both validate security controls are functioning and to discover previously undiscovered gaps in coverage
 - Items above often extend beyond production environments, and into pre-production and disaster recovery resources as well
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased demand on infrastructure.** Cost Optimization looks to drive down demand on resources to enable the usage of cheeper SKUs, fewer instances, or reduced consumption.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased demand on infrastructure.** Cost Optimization looks to drive down demand on resources to enable the usage of cheeper SKUs, fewer instances, or reduced consumption.
 
 - *Premium SKUs*: Some security measures in cloud and vendor offerings that can benefit the security posture of a workload might only be found in higher cost SKUs or tiers.
 
@@ -72,7 +72,7 @@ Some workload components or design decisions only exist to protect the security 
 
 - *Increased resource consumption*: In-process and on-host security controls can introduce additional demand for resources. Likewise, so can encryption for data at rest and in transit. In both cases potentially needing larger instance count or larger SKUs.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased process and operational costs.** Personnel process costs are part of the overall total cost of ownership and are factored into the workload's return on investment. Optimizing these costs is a recommendation of Cost Optimization.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased process and operational costs.** Personnel process costs are part of the overall total cost of ownership and are factored into the workload's return on investment. Optimizing these costs is a recommendation of Cost Optimization.
 
 - A more comprehensive and strict patch management regime leads to an increase in time and money spent on these routine tasks. This is often coupled with expectation of investing in preparedness for ad-hoc patching for zero-day exploits.
 
@@ -92,7 +92,7 @@ Some workload components or design decisions only exist to protect the security 
 
 ## Security tradeoffs with Operational Excellence
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Complications in observability and serviceability.** Operational Excellence requires architectures to be serviceable and observable. The most "serviceable" architectures are the ones that are the most transparent to everyone involved.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Complications in observability and serviceability.** Operational Excellence requires architectures to be serviceable and observable. The most "serviceable" architectures are the ones that are the most transparent to everyone involved.
 
 - Security benefits from having extensive logging to provide high fidelity insight into the workload for both alerting on deviations from baselines and for incident response. This can generate a significant volume of logs, which can make it harder to provide insights targeted at reliability or performance.
 
@@ -102,7 +102,7 @@ Some workload components or design decisions only exist to protect the security 
 
 - Some security controls, by design, impede access. During incident response, these controls may slow emergency access by workload operators. As such, incident response plans require more emphasis on planning and drilling to reach acceptable efficacy.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Decreased agility and increased complexity.** Workload teams measure their velocity so they can improve quality, frequency, and efficiency of delivery activities over time. Workload complexity factors into effort and risk involved in operations.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Decreased agility and increased complexity.** Workload teams measure their velocity so they can improve quality, frequency, and efficiency of delivery activities over time. Workload complexity factors into effort and risk involved in operations.
 
 - Stricter change control and approval policies to reduce the risk of introducing security vulnerabilities can slow down the development and safe deployment of new features, yet the expectation of addressing security updates and patching could increase demand for more frequent deployments. Additionally, human-gated approval policies in operational processes could make it more difficult to automate that process.
 
@@ -114,7 +114,7 @@ Some workload components or design decisions only exist to protect the security 
 
 - Increased number of routine operational tasks associated with security, such as certificate management, increase the number of processes to automate.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased coordination efforts.** A team that minimizes external points of contact and review can control their operations and timeline more effectively.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased coordination efforts.** A team that minimizes external points of contact and review can control their operations and timeline more effectively.
 
 - As external compliance requirements increase, either from the organizational level or from external entities, so does the complexity of being able to achieve and prove compliance with auditors.
 
@@ -124,7 +124,7 @@ Some workload components or design decisions only exist to protect the security 
 
 ## Security tradeoffs with Performance Efficiency
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased latency and overhead.** A workload that is performant reduces latency and optimizes by removing overhead.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased latency and overhead.** A workload that is performant reduces latency and optimizes by removing overhead.
 
 - Inspection security controls, such as firewalls and content filters, are placed in line with the flows they are securing. Those flows are then subject to additional verification, which adds latency to those requests.
 
@@ -136,7 +136,7 @@ Some workload components or design decisions only exist to protect the security 
 
 - Resource segmentation will often introduce additional network hops in the workload's architecture.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased chance of misconfiguration.** Reliably obtaining performance targets depends on predictable implementations of the design.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased chance of misconfiguration.** Reliably obtaining performance targets depends on predictable implementations of the design.
 
 A misconfiguration or over-extending of security controls can lead to performance impact through an inefficient configuration. Some examples of where security control configuration could impact performance are:
 
