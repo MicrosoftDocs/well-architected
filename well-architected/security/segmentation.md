@@ -22,12 +22,12 @@ This guide describes the recommendations for **building a unified segmentation s
 
 | Term                   | Definition                                                                                      |
 |------------------------|-------------------------------------------------------------------------------------------------|
-| Segment                | A logical unit that's isolated from other entities and protected by a set of security measures. |
-| Perimeter              | The trust boundary around a segment.                                                            |
 | Containment            | A technique to contain the blast radius if an attacker gains access to a segment.               |
-| Role                   | A set of permissions needed to complete a job function.                                         |
 | Least-privilege access | A Zero Trust principle that aims at minimizing a set of permissions to complete a job function. |
+| Perimeter              | The trust boundary around a segment.                                                            |
 | Resource organization  | A strategy to group related resources by flows within a segment.                                |
+| Role                   | A set of permissions needed to complete a job function.                                         |
+| Segment                | A logical unit that's isolated from other entities and protected by a set of security measures. |
 
 ## Key design strategies
 
@@ -242,4 +242,4 @@ Consider the principle of least privilege when you define access control policie
 Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"]
-[Security checklist](checklist.md)
+> [Security checklist](checklist.md)

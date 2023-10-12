@@ -112,7 +112,7 @@ Complex automation that requires a high degree of maintenance can be difficult f
 
 Be thoughtful about using manual processes. If you decide not to automate an operation, thoroughly document the manual process by creating a step-by-step checklist for operators. This practice reduces the chances of human error, like an operator mistakenly running the wrong process. This documentation also helps you design automation for that process in the future.
 
-When you use a hybrid manual and automated approach, you need to be especially careful. If a script runs most of a process, but then defers to a human for a specific part or decision, it's important that you give the person the necessary context and information to make an informed decision.
+When you use a hybrid manual and automated approach, you need to be especially careful. If a script runs most of a process but then defers to a human for a specific part or decision, it's important that you give the person the necessary context and information to make an informed decision.
 
 ## Example
 
