@@ -67,7 +67,7 @@ Your application should be designed to provide runtime visibility when events oc
 To facilitate this tracking, code should be **instrumented via structured logging**. Doing so enables easy and uniform querying and filtering of the logs.
 
 > [!IMPORTANT]
-> You need to enforce responsible logging to maintain the confidentiality and integrity of your system. Secrets and sensitive data must not appear in logs.  Be aware of leaking PII data, GDPR, and other compliance requirements when you capture this log data.
+> You need to enforce responsible logging to maintain the confidentiality and integrity of your system. Secrets and sensitive data must not appear in logs.  Be aware of leaking personal data and other compliance requirements when you capture this log data.
 
 ##### Identity and access monitoring
 
