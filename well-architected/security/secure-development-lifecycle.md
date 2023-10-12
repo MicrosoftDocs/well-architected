@@ -28,7 +28,7 @@ DevSecOps integrates security into DevOps processes by:
 
 At the core of a workload is the application code that implements business logic. The code and the process of developing code must be **free of security defects** to ensure confidentiality, integrity, and availability.  
 
-It's not enough to secure just the infrastructure plane by using controls on identity and networking and other measures. **Prevent bad implementation of code or a compromised code block** to strengthen your overall security posture. The usage plane, that is, the application code, must also be hardened. The process of integrating security into your development lifecycle is essentially a hardening process. Like resource hardening, tightening up code development is also context-agnostic. The focus is on enhancing security and not the functional requirements of the application. For information related to hardening, see [Recommendations for hardening resources](hardening.md).
+It's not enough to secure just the infrastructure plane by using controls on identity and networking and other measures. **Prevent bad implementation of code or a compromised code block** to strengthen your overall security posture. The usage plane, that is, the application code, must also be hardened. The process of integrating security into your development lifecycle is essentially a hardening process. Like resource hardening, tightening up code development is also context-agnostic. The focus is on enhancing security and not the functional requirements of the application. For information related to hardening, see [Recommendations for hardening resources](harden-resources.md).
 
 **Definitions** 
 
@@ -133,7 +133,7 @@ During this phase, the goal is to **prevent security defects** and tampering in 
 
   During the build process, **use pipeline add-ons to catch credentials in the source code**. Scan all dependencies, like third-party libraries and framework components, as part of the continuous integration process. Investigate vulnerable components that are flagged by the tool. Combine this task with other code scanning tasks that inspect code churn, test results, and coverage.
 
-  Use a combination of tests. For information about security testing in general, see [Recommendations for security testing](testing.md).
+  Use a combination of tests. For information about security testing in general, see [Recommendations for security testing](test.md).
 
 - **Write just enough code.**
 
@@ -244,9 +244,9 @@ Validate the security of any open-source code in your application. These free to
 - [Develop secure applications on Azure](/azure/security/develop/secure-develop)
 - [Microsoft Security Development Lifecycle](https://www.microsoft.com/securityengineering/sdl/)
 - [Recommendations for building a segmentation strategy](segmentation.md)
-- [Recommendations for hardening resources](hardening.md)
+- [Recommendations for hardening resources](harden-resources.md)
 - [Recommendations for managing application secrets](application-secrets.md)
-- [Recommendations for security testing](testing.md)
+- [Recommendations for security testing](test.md)
 - [Recommendations for threat analysis](threat-model.md)
 - [Secure development best practices on Azure](/azure/security/develop/secure-dev-overview)
 - [Training: Learn how Microsoft supports secure software development as part of a cybersecurity solution](/training/paths/secure-software-development-for-cybersecurity/)

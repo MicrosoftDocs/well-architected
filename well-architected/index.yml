@@ -58,7 +58,7 @@ sections:
     alignment: center
     blocks:
       - componentType: image
-        src: ./_images/waf-refresh.png   
+        src: ./_images/waf-refresh.svg   
         alt: WAF refresh update   
       - title: Featured update - Core pillars restructured and refreshed 
         summary: The Azure Well-Architected Framework published a significant content refresh across all five pillars. 

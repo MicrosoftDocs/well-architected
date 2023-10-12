@@ -84,7 +84,7 @@ The development team should have a clear understanding of the scope of security 
 
 For more information, see Recommendations on [threat analysis](threat-model.md).
 
-The development process should also set standards on various testing methodologies and their cadence. For more information, see [Recommendations on security testing](testing.md).
+The development process should also set standards on various testing methodologies and their cadence. For more information, see [Recommendations on security testing](test.md).
 
 #### Operations
 

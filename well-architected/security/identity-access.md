@@ -225,7 +225,7 @@ An aspect of identity management is making sure the system is auditable. Audits 
 
 Most resources have data plane access. You want to know which identities access resources and what actions were performed. That information can be considered as security diagnostics for detection purposes.
 
-For more information, see [Recommendations on security monitoring and threat analysis](./monitoring.md).
+For more information, see [Recommendations on security monitoring and threat analysis](./monitor-threats.md).
 
 ## Azure facilitation
 
