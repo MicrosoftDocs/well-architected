@@ -14,6 +14,8 @@ ms.topic: conceptual
 |[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. | 
 |---|---| 
 
+**Related guide**: [Optimize development practices](optimize-development-practices.md) | [Use continuous integration](release-engineering-continuous-integration.md)
+
 Build status shows if your product is in a deployable state, so builds are the heartbeat of your continuous delivery system. It's important to have a build process up and running the first day of your product development. Since builds provide such crucial information about the status of your product, you should always strive for fast builds.
 
 It's difficult to fix a build problem if it takes longer to build. When delays happen and become normalized, teams tend to become less motivated to fix the problem.

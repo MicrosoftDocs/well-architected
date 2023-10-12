@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|[OE:08](checklist.md)| Develop an effective emergency operations practice. Ensure that your workload emits meaningful health signals across infrastructure and code. Collect the resulting data and use it to generate actionable alerts that enact emergency responses via dashboards and queries. Clearly define human responsibilities, such as on-call rotations, incident management, emergency resource access, and running post-mortems.|
+|[OE:08](checklist.md)| Develop an effective emergency operations practice. Ensure that your workload emits meaningful health signals across infrastructure and code. Collect the resulting data and use it to generate actionable alerts that enact emergency responses via dashboards and queries. Clearly define human responsibilities, such as on-call rotations, incident management, emergency resource access, and running postmortems.|
 |---|---|
 
 This guide describes the recommendations for designing an emergency response strategy. Some issues that arise over the course of a workload's lifecycle are critical enough to warrant declaring them emergencies. You can implement tightly controlled and focused processes and procedures that your team can follow to ensure that an issue is handled in a calm, orderly manner. Emergencies naturally raise everyone's stress levels and can lead to a chaotic environment if your team isn't well-prepared. To help minimize stress and confusion, design a response strategy, share the response strategy with your organization, and perform regular emergency response training.
@@ -61,7 +61,7 @@ Clearly define the following components in your plan.
 
 Identify an incident response manager. This person owns the incident from initiation to remediation to the root cause analysis. An incident response manager ensures that processes are followed and the appropriate parties are informed as the response team performs their work.
   
-Identify a postmortem leader. This individual ensures that post-mortems are performed soon after the incident is resolved. They produce a report, which helps you apply the findings that come out of the incident.
+Identify a postmortem leader. This individual ensures that postmortems are performed soon after the incident is resolved. They produce a report, which helps you apply the findings that come out of the incident.
 
 ##### Processes and procedures
 
@@ -95,9 +95,9 @@ After you successfully contain the issue, you can begin triage work. The steps t
 
 The service-level agreements (SLAs) to your customers might dictate that you have to issue RCA reports within a certain time period after the incident is resolved. The incident owner should create the RCA reports. If that's not possible, another person who worked closely with the incident owner can create the RCA reports. This strategy ensures an accurate accounting of the incident.
 
-### Incident post-mortems
+### Incident postmortems
 
-An impartial individual should lead blameless post-mortems. In postmortem sessions, everyone shares their findings from an incident. Each team that was involved in the incident response should be represented by individuals that worked on the incident. Those individuals should come to the session prepared with examples of the areas that were successful and areas that can be improved. The session isn't a forum for assigning blame for the incident or issues that might have come up during the response. The postmortem leader should leave the session with a clear list of action items that focus on improvement, such as:
+An impartial individual should lead blameless postmortems. In postmortem sessions, everyone shares their findings from an incident. Each team that was involved in the incident response should be represented by individuals that worked on the incident. Those individuals should come to the session prepared with examples of the areas that were successful and areas that can be improved. The session isn't a forum for assigning blame for the incident or issues that might have come up during the response. The postmortem leader should leave the session with a clear list of action items that focus on improvement, such as:
 
 - **Improvements to the response plan.** Processes or procedures might need to be reevaluated and rewritten to better capture appropriate actions.
 
