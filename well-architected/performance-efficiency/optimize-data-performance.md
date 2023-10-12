@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[PE:08](checklist.md)| Optimize data usage. Optimize data stores, partitions, and indexes for their intended and actual use in the workload.| 
 |---|---| 
 
-This guide describes the recommendations for optimizing data performance. At its core, optimizing data performance means refining the efficiency with which the workload processes and stores data. Every workload operation, transaction, or computation typically relies on the quick and accurate retrieval, processing, and storage of data. When data performance is optimized, the workload runs smoothly, but when it's compromised, it creates a domino effect of poor performance efficiency. Failure to optimize data performance results in response delays, heightened latency, and curtailed scalability. It jeopardizes the efficiency of the entire workload.
+This guide describes the recommendations for optimizing data performance. Optimizing data performance is about refining the efficiency with which the workload processes and stores data. Every workload operation, transaction, or computation typically relies on the quick and accurate retrieval, processing, and storage of data. When data performance is optimized, the workload runs smoothly, but when it's compromised, it creates a domino effect of poor performance efficiency. Failure to optimize data performance results in response delays, heightened latency, and curtailed scalability. It jeopardizes the efficiency of the entire workload.
 
 **Definitions**
 
@@ -23,7 +23,7 @@ This guide describes the recommendations for optimizing data performance. At its
 | CAP theorem |A framework that's used to consider consistency, availability, and partition tolerance to help explain the tradeoffs in data consistency.|
 |  Database index rebuilding |A maintenance activity that drops and recreates an index.|
 |  Database index reorganization |A maintenance activity that optimizes the current database index. |
-| Data store| A resource, such as a database, object store, or file share, that stores data.|
+| Data store| A resource that stores data such as a database, object store, or file share. |
 |  Eventual consistency|A data synchronization model that allows for temporary inconsistency in data replicas before they eventually sync.|
 |  Index|A database structure that provides quick access to items.|
 | Online analytical processing (OLAP)|A technology that organizes large business databases, supports complex analysis, and performs complex analytical queries without negatively affecting transactional systems.|
@@ -159,7 +159,7 @@ Optimizing storage load means streamlining requests to the storage system. It he
 
 #### Use caching
 
-Caching is a technique where you store frequently accessed data in a high-speed storage layer. It provices for quicker retrieval compared to fetching it from the primary data source. It plays a pivotal role in data performance optimization by reducing data access times and minimizing unnecessary repeated data fetches. Particularly in hot data scenarios, caching can amplify read throughput and enhance client response times. This method proves most effective when dealing with data that remains static or undergoes infrequent changes.
+Caching is a technique where you store frequently accessed data in a high-speed storage layer. It provides for quicker retrieval compared to fetching it from the primary data source. It plays a pivotal role in data performance optimization by reducing data access times and minimizing unnecessary repeated data fetches. Particularly in hot data scenarios, caching can amplify read throughput and enhance client response times. This method proves most effective when dealing with data that remains static or undergoes infrequent changes.
 
 It's crucial to weigh factors such as cache expiration policies, cache eviction strategies, and cache size management. Fine-tune parameters like the time to live (TTL). To use a cache to optimize storage load, consider the following strategies:
 
@@ -179,7 +179,7 @@ When you have a workload with multiple data replicas that you expect to stay in 
 
 In a distributed workload, where data resides across multiple nodes or locations, the level of consistency you select determines how quickly changes in one location reflect in others. Opting for stricter consistency consumes more compute resources and can negatively affect performance efficiency. On the other hand, a less strict consistency level, like eventual consistency introduces temporary inconsistencies among nodes but can boost performance efficiency. 
 
-Eventual consistency strikes a balance between data accuracy and workload performance. Changes spread gradually instead of instantly, boosting workload responsiveness and data processing speed. Although this introduces short-lived inconsistencies, the workload eventually presents consistent data across all nodes. Choosing eventual consistency can elevate a workload's performance and further enhance its availability and scalability.
+Eventual consistency strikes a balance between data accuracy and workload performance. Changes spread gradually instead of instantly, boosting workload responsiveness and data processing speed. Although it introduces short-lived inconsistencies, the workload eventually presents consistent data across all nodes. Choosing eventual consistency can elevate a workload's performance and further enhance its availability and scalability.
 
 ### Optimize data updates
 
@@ -197,7 +197,7 @@ Optimizing data movement and processing involves improving the efficiency and pe
 
 - *Parallel processing*: Utilize parallel processing techniques to improve performance. When you distribute data processing tasks across multiple threads or nodes, you can divide and process the workload concurrently, which results in fast processing.
 
-- *Batch processing*: Group similar tasks together to reduce overhead that's caused by repeated operations. Process multiple tasks in a batch to reduce overall processing time.
+- *Batch processing*: Group similar tasks together to reduce overhead caused by repeated operations. Process multiple tasks in a batch to reduce overall processing time.
 
 ### Optimize storage design
 
@@ -209,7 +209,7 @@ Data proximity refers to the strategic placement of data closer to the users or 
 
 - *Evaluate data access patterns*: Assess your workload's access patterns and frequently accessed data. This analysis can help determine where to place data for maximum benefit.
  
-- *Choose solutions that support data relocation*: Consider solutions that offer dynamic data relocation based on changing access patterns, ensuring optimal data positioning at all times.
+- *Choose solutions that support data relocation*: Consider solutions that offer dynamic data relocation based on changing access patterns, ensuring optimal data positioning.
  
 - *Choose solutions that support data synchronization*: If catering to a distributed user base, opt for solutions that facilitate data synchronization across various regions, ensuring that data replicas are available in proximity to users.
 
