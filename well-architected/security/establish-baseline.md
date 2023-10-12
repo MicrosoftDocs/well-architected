@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for establishing a security baseline
 
-**Applies to Well-Architected Framework Security checklist recommendation:** 
+**Applies to Azure Well-Architected Framework Security checklist recommendation:** 
 
 |[SE:01](checklist.md)| Establish a security baseline aligned to compliance requirements, industry standards, and platform recommendations. Regularly measure your workload architecture and operations against the baseline to sustain or improve your security posture over time.|
 |---|---|
@@ -29,22 +29,22 @@ This guide provides recommendations about setting a security baseline that's bas
 
 | Term | Definition |
 |---|---|
-| Baseline | The minimum level of security affordances that a workload must have before it's considered exploitable. |
+| Baseline | The minimum level of security affordances that a workload must have to avoid being exploited. |
 | Benchmark | A standard that signifies the security posture that the organization aspires to. It's evaluated, measured, and improved over time. |
-| Controls | Technical or operational controls on the workload that increases attacker costs. |
+| Controls | Technical or operational controls on the workload that help prevent attacks and increase attacker costs. |
 | Regulatory requirements | A set of business requirements, driven by industry standards, that laws and authorities impose. |
 
 ## Key design strategies
 
-Security baseline is a structured document that defines a set of security criteria and capabilities that the workload must fulfill in order to increase security. In a more mature form, you can extend a baseline to include a set of policies that you use to set guardrails.
+A security baseline is a structured document that defines a set of security criteria and capabilities that the workload must fulfill in order to increase security. In a more mature form, you can extend a baseline to include a set of policies that you use to set guardrails.
 
 The baseline should be considered the standard for measuring your security posture. The goal should always be full attainment while keeping a broad scope.
 
-Your security baseline should never be an ad-hoc effort. Industry standards, compliance (internal or external) or regulatory requirements, regional requirements, and the cloud platform benchmarks are main drivers for the baseline. Examples include, Center for Internet Security (CIS) Controls, National Institute of Standards and Technology (NIST), and platform-driven standards, such as Microsoft cloud security benchmark (MCSB). All of these standards are considered a starting point for your baseline. Build the foundation by incorporating security requirements from the business requirements.
+Your security baseline should never be an ad-hoc effort. Industry standards, compliance (internal or external) or regulatory requirements, regional requirements, and the cloud platform benchmarks are main drivers for the baseline. Examples include Center for Internet Security (CIS) Controls, National Institute of Standards and Technology (NIST), and platform-driven standards, such as Microsoft cloud security benchmark (MCSB). All of these standards are considered a starting point for your baseline. Build the foundation by incorporating security requirements from the business requirements.
 
 For links to the preceding assets, see [Related links](#related-links).
 
-Create the baseline by gaining consensus among business and technical leaders. The baseline shouldn't be restricted to technical controls but also include the operational aspects of managing and maintaining the security posture. So, the baseline document also serves as the organization's commitment to investment towards workload security. The security baseline document should be distributed widely within your organization to ensure there's awareness about the workload's security posture.
+Create the baseline by gaining consensus among business and technical leaders. The baseline shouldn't be restricted to technical controls. It should also include the operational aspects of managing and maintaining the security posture. So, the baseline document also serves as the organization's commitment to investment toward workload security. The security baseline document should be distributed widely within your organization to ensure there's awareness about the workload's security posture.
 
 As the workload grows and the ecosystem evolves, it's vital to keep your baseline in synch with the changes to ensure the fundamental controls are still effective.
 
@@ -66,11 +66,11 @@ Creating a baseline is a methodical process. Here are some recommendations about
 
 - **Enforcement and accountability**. Establish clear enforcement mechanisms and consequences for noncompliance with the security baseline. Hold individuals and teams accountable for maintaining security standards.
 
-- **Continuously monitor**. Assess the effectiveness of the security baseline through observability and making improvements overtime.
+- **Continuous monitoring**. Assess the effectiveness of the security baseline through observability and make improvements overtime.
 
 ### Composition of a baseline
 
-Here are some common categories that should be part of a baseline. The following list isn't exhaustive but intended as an overview of the document's scope.
+Here are some common categories that should be part of a baseline. The following list isn't exhaustive. It's intended as an overview of the document's scope.
 
 #### Architecture components
 
@@ -78,14 +78,14 @@ The baseline needs prescriptive recommendations for the main components of the w
 
 #### Development processes
 
-The baseline must have:
+The baseline must have recommendations about:
 
-- Recommendations about system classification
+- System classification
 - Approved set of resource types
 - Tracking the resources
 - Enforcing policies for using or configuring resources
 
-The development team needs a clear understanding of the scope for security checks. For example, threat modeling is a requirement in making sure that potential threats are identified in code and in deployment pipelines. Be specific about static checks and vulnerability scanning in your pipeline and how regularly staff needs to perform those scans.  
+The development team needs to have a clear understanding of the scope for security checks. For example, threat modeling is a requirement in making sure that potential threats are identified in code and in deployment pipelines. Be specific about static checks and vulnerability scanning in your pipeline and how regularly the team needs to perform those scans.  
 
 For more information, see [Recommendations on threat analysis](threat-model.md).
 
@@ -95,15 +95,15 @@ The development process should also set standards on various testing methodologi
 
 The baseline must set standards on using threat detection capabilities and raising alerts on anomalous activities that indicate actual incidents. Threat detection needs to include all layers of the workload, including all the endpoints that are reachable from hostile networks.
 
-The baseline should include recommendations for setting up incident response processes, including communication and a recovery plan, and which of those processes can be automated to expedite detection and analysis. For examples, see [Security baselines for Azure overview | Microsoft Learn](/security/benchmark/azure/security-baselines-overview).
+The baseline should include recommendations for setting up incident response processes, including communication and a recovery plan, and which of those processes can be automated to expedite detection and analysis. For examples, see [Security baselines for Azure overview](/security/benchmark/azure/security-baselines-overview).
 
-The incident response should also include a recovery plan and the requirements for that plan, such as resources for regularly keeping and protecting backups.
+The incident response should also include a recovery plan and the requirements for that plan, such as resources for regularly taking and protecting backups.
 
-You develop data breach plans using industry standards and recommendations provided by the platform. The team then has a comprehensive plan to follow when a breach is discovered. Also, check with your organization to see if there's coverage through cyberinsurance.
+You develop data breach plans by using industry standards and recommendations provided by the platform. The team then has a comprehensive plan to follow when a breach is discovered. Also, check with your organization to see if there's coverage through cyberinsurance.
 
 #### Training
 
-Develop and maintain a security training program to ensure the workload team is equipped with the appropriate skills to support the security goals and requirements. The team needs fundamental security training but use what you can from your organization to support specialized roles. Role-based security training compliance and drilling participation are part of your security baseline.
+Develop and maintain a security training program to ensure the workload team is equipped with the appropriate skills to support the security goals and requirements. The team needs fundamental security training, but use what you can from your organization to support specialized roles. Role-based security training compliance and participation in drills are part of your security baseline.
 
 ### Use the baseline
 
@@ -113,11 +113,11 @@ Use the baseline to drive initiatives, such as:
 
 - **Measure your design**. Grade the current decisions against the current baseline. The baseline sets actual thresholds for criteria. Document any deviations that are deferred or deemed long-term acceptable.
 
-- **Drive improvements**. While baseline sets attainable goals, there are always gaps along the way. Prioritize those gaps in your backlog and remediate based on prioritization.
+- **Drive improvements**. While the baseline sets attainable goals, there are always gaps. Prioritize the gaps in your backlog and remediate based on prioritization.
 
-- **Track your progress against the baseline**. Continuous monitoring of security measures against a set baseline is essential. Trend analysis is a good way of reviewing security progress over time and can reveal consistent deviations from the baseline. Use automation as much as possible pulling data from various sources, internal and external, to address current issues and prepare for future threats.
+- **Track your progress against the baseline**. Continuous monitoring of security measures against a set baseline is essential. Trend analysis is a good way of reviewing security progress over time and can reveal consistent deviations from the baseline. Use automation as much as possible, pulling data from various sources, internal and external, to address current issues and prepare for future threats.
 
-- **Help set guardrails**. Where possible, your baseline criteria must have guardrails. Guardrails enforce required security configurations, technologies, and operations, based on internal factors and external factors. Internal factors include business requirements, risks, and asset evaluation. External factors include benchmarks, regulatory standards, and threat environment. Guardrails help to minimize the risk of inadvertent oversight and the risk of punitive fines from noncompliance.
+- **Set guardrails**. Where possible, your baseline criteria must have guardrails. Guardrails enforce required security configurations, technologies, and operations, based on internal factors and external factors. Internal factors include business requirements, risks, and asset evaluation. External factors include benchmarks, regulatory standards, and threat environment. Guardrails help minimize the risk of inadvertent oversight and punitive fines for noncompliance.
 
 Explore custom Azure Policies or use built-in initiatives like CIS benchmarks or Azure Security Benchmark to enforce security configurations and compliance requirements. Consider creating Azure Policies and initiatives out of baselines.
 
@@ -127,39 +127,39 @@ Continuously improve security standards incrementally towards the ideal state to
 
 Measure the system against the new baseline and prioritize remediations based on their relevance and effect on the workload.
 
-Ensure that the security posture doesn't degrade naturally over time by instituting auditing and monitoring compliance with organizational standards.
+Ensure that the security posture doesn't degrade over time by instituting auditing and monitoring compliance with organizational standards.
 
 ## Azure facilitation
 
-The Microsoft cloud security benchmark (MCSB) is a comprehensive security best practice framework that you use as a starting point for your security baseline. Use it along with other resources that provide input to your baseline.
+The Microsoft cloud security benchmark (MCSB) is a comprehensive security best practice framework that you can use as a starting point for your security baseline. Use it along with other resources that provide input to your baseline.
 
-For more information, see [Introduction to the Microsoft cloud security benchmark | Microsoft Learn](/security/benchmark/azure/introduction).
+For more information, see [Introduction to the Microsoft cloud security benchmark](/security/benchmark/azure/introduction).
 
-Use The Microsoft Defender for Cloud (MDC) regulatory compliance dashboard to track those baselines and be alerted if a pattern outside of a baseline is detected. For more information, see the [regulatory compliance dashboard - Microsoft Defender for Cloud | Microsoft Learn](/azure/defender-for-cloud/update-regulatory-compliance-packages).
+Use the Microsoft Defender for Cloud (MDC) regulatory compliance dashboard to track those baselines and be alerted if a pattern outside of a baseline is detected. For more information, see the [Customize the set of standards in your regulatory compliance dashboard](/azure/defender-for-cloud/update-regulatory-compliance-packages).
 
 Other features that help in establishing and improving the baseline:
 
-- [Create custom Azure security policies - Microsoft Defender for Cloud | Microsoft Learn](/azure/defender-for-cloud/custom-security-policies?pivots=azure-portal)
+- [Create custom Azure security policies](/azure/defender-for-cloud/custom-security-policies?pivots=azure-portal)
 
-- [Understand security policies, initiatives, and recommendations - Microsoft Defender for Cloud | Microsoft Learn](/azure/defender-for-cloud/security-policy-concept)
+- [Understand security policies, initiatives, and recommendations](/azure/defender-for-cloud/security-policy-concept)
 
-- [Regulatory compliance checks - Microsoft Defender for Cloud | Microsoft Learn](/azure/defender-for-cloud/regulatory-compliance-dashboard)
+- [Regulatory compliance checks](/azure/defender-for-cloud/regulatory-compliance-dashboard)
 
 ## Organizational alignment
 
 Cloud Adoption Framework provides guidance for central teams about establishing a baseline with a suggested template:
 
-- [Security Baseline discipline overview - Cloud Adoption Framework | Microsoft Learn](/azure/cloud-adoption-framework/govern/security-baseline/)
+- [Security Baseline discipline overview](/azure/cloud-adoption-framework/govern/security-baseline/)
 
-- [Security Baseline discipline template - Cloud Adoption Framework | Microsoft Learn](/azure/cloud-adoption-framework/govern/security-baseline/template)
+- [Security Baseline discipline template](/azure/cloud-adoption-framework/govern/security-baseline/template)
 
 ## Related links
 
-- [Microsoft compliance | Microsoft Learn](/compliance/)
+- [Microsoft compliance](/compliance/)
 
-- [Security baselines for Azure overview | Microsoft Learn](/security/benchmark/azure/security-baselines-overview)
+- [Security baselines for Azure overview](/security/benchmark/azure/security-baselines-overview)
 
-- [What is incident response? Plan and steps | Microsoft Security](https://www.microsoft.com/security/business/security-101/what-is-incident-response)
+- [What is incident response? Plan and steps](https://www.microsoft.com/security/business/security-101/what-is-incident-response)
 
 ## Community resources
 
@@ -171,4 +171,5 @@ Cloud Adoption Framework provides guidance for central teams about establishing 
 
 Refer to the complete set of recommendations.
 
-[Security checklist](checklist.md)
+> [!div class="nextstepaction"]
+> [Security checklist](checklist.md)
