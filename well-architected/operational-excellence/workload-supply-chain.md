@@ -95,7 +95,7 @@ When possible, use automated testing to ensure consistency. Include the followin
 
     The main purpose of this test is to evaluate the system's compliance with the business requirements and determine whether the system meets the required criteria for delivery to end users.
 
-**Implement quality gates throughout your code promotion process via testing**. Deploy your code into lower environments, like development and testing, and up through higher environments, like staging and production. As your deployment passes through quality gates, ensure that it meets your quality targets before changes go to production. Your business requirements determine what the focus of your quality gates are. Also consider the fundamental Well-Architected Framework principles: [Security](../security/testing.md), [Reliability](../reliability/testing-strategy.md), and [Performance Efficiency](../performance-efficiency/performance-testing.md).
+**Implement quality gates throughout your code promotion process via testing**. Deploy your code into lower environments, like development and testing, and up through higher environments, like staging and production. As your deployment passes through quality gates, ensure that it meets your quality targets before changes go to production. Your business requirements determine what the focus of your quality gates are. Also consider the fundamental Well-Architected Framework principles: [Security](../security/test.md), [Reliability](../reliability/testing-strategy.md), and [Performance Efficiency](../performance-efficiency/performance-testing.md).
 
 Also integrate approval workflows into your quality gates. Clearly define and automate approval workflows when appropriate. Define quality acceptance criteria into your automation, so you can move through your gates efficiently and safely.
 
@@ -127,7 +127,7 @@ For an example that shows how to use Azure Pipelines to build a CI/CD pipeline, 
 - [Landing zones](/azure/cloud-adoption-framework/ready/landing-zone)
 - [Performance Efficiency pillar](../performance-efficiency/performance-testing.md)
 - [Reliability pillar](../reliability/testing-strategy.md)
-- [Security pillar](../security/testing.md)
+- [Security pillar](../security/test.md)
 
 ## Operation Excellence checklist
 

@@ -79,7 +79,7 @@ A dedicated secret management system makes it easy to store, distribute, and con
 
 **You also need to control access at the secret level.** Each secret should only have access to a single resource scope. Create isolation boundaries so that a component is only able to use secrets that it needs. If an isolated component is compromised, it can't gain control of other secrets and potentially the entire workload. One way to isolate secrets is to use multiple key vaults. There's no added costs for creating extra key vaults.
 
-**Implement auditing and monitoring for secret access.** Log who accesses secrets and when to identify unauthorized or suspicious activity. For information about logging from a security perspective, see [Recommendations on security monitoring and threat detection](./monitoring.md).
+**Implement auditing and monitoring for secret access.** Log who accesses secrets and when to identify unauthorized or suspicious activity. For information about logging from a security perspective, see [Recommendations on security monitoring and threat detection](./monitor-threats.md).
 
 #### Secret rotation
 
@@ -120,7 +120,7 @@ As a workload owner, you need to **understand the secret rotation plan and polic
 
 **Store secrets by using Key Vault.** Store secrets in the Azure secret management system, Key Vault, Azure Managed HSM, and other locations. For more information, see [How to choose the right key management solution](/azure/security/fundamentals/key-management-choose).
 
-**Integrate identity-based access control.** Microsoft Entra ID and managed identities help minimize the need for secrets. Microsoft Entra ID offers a highly secure and usable experience for access control with built-in mechanisms for handling key rotation, monitoring for anomalies, and more.
+**Integrate identity-based access control.** Microsoft Entra ID and managed identities help minimize the need for secrets. Microsoft Entra ID offers a highly secure and usable experience for access control with built-in mechanisms for handling key rotation, security/test.md for anomalies, and more.
 
 Use Azure role-based access control (RBAC) to assign permissions to users, groups, and applications at a certain scope.
 
@@ -145,7 +145,7 @@ Don't store keys and secrets for any environment type in application configurati
 - [How to choose the right key management solution](/azure/security/fundamentals/key-management-choose)
 - [Manage account access keys](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal)
 - [Microsoft Defender for Key Vault](/azure/defender-for-cloud/defender-for-key-vault-introduction)
-- [Recommendations on security monitoring and threat detection](./monitoring.md)
+- [Recommendations on security monitoring and threat detection](./monitor-threats.md)
 - [Recommendations for identity and access management](identity-access.md)
 - [Secure OAuth 2.0 On-Behalf-Of refresh tokens for web services](/azure/architecture/example-scenario/secrets/secure-refresh-tokens)
 - [Visual Studio Connected Services](/azure/key-vault/general/vs-key-vault-add-connected-service)
