@@ -18,9 +18,9 @@ This guide describes the recommendations for authenticating and authorizing iden
 
 From a technical control perspective, **identity is always the primary perimeter**. This scope doesn't just include the edges of your workload. It also includes individual components that are inside your workload. Typical identities include:
 
--   **Humans**: Application users, admins, operators, auditors, and bad actors.
+-   **Humans**. Application users, admins, operators, auditors, and bad actors.
 
--   **Systems**: Workload identities, managed identities, API keys, service principals, and Azure resources.
+-   **Systems**. Workload identities, managed identities, API keys, service principals, and Azure resources.
 
 -   **Anonymous**. Entities who haven't provided any evidence about who they are.
 
@@ -32,7 +32,7 @@ From a technical control perspective, **identity is always the primary perimeter
 |Terms   |Definition   |
 |---------|---------|
 |Authentication (AuthN)     | A process that verifies that an identity is who or what it says it is.       |
-|Authorization (AuthZ)     | A process that verifies whether an identity has permission to perform the requested action.       |
+|Authorization (AuthZ)     | A process that verifies whether an identity has permission to perform a requested action.       |
 |Conditional access|A set of rules that allows actions based on specified criteria. |
 |IdP     |  An identity provider, like Microsoft Entra ID.       |
 |Persona     |   A job function or a title that has a set of responsibilities and actions.      |
@@ -65,7 +65,7 @@ Authentication is a process that verifies identities. The requesting identity is
 
 -   A certificate that's used in TLS mutual authentication.
 
-As much as possible, the verification process should be handled by the IdP.
+As much as possible, the verification process should be handled by your IdP.
 
 #### Authorization
 
@@ -77,7 +77,7 @@ Authorization requires that you assign permissions to the identities, which you 
 
 To get a holistic view of the identity needs for a workload, you need to catalog the flows, workload assets, and personas, and the actions the assets and personas will perform. Your strategy must cover all use cases that handle **the flows that reach the workload or its components (outside-in access) and flows that reach out from the workload to other sources (inside-out access)**.
 
-Each use case probably have its own set of controls that you need to design with an assume-breach mindset. Based on the identity requirements of the use case or the personas, identify the conditional choices. Avoid using one solution for all use cases. Conversely, the controls shouldn't be so granular that you introduce unnecessary management overhead.
+Each use case will probably have its own set of controls that you need to design with an assume-breach mindset. Based on the identity requirements of the use case or the personas, identify the conditional choices. Avoid using one solution for all use cases. Conversely, the controls shouldn't be so granular that you introduce unnecessary management overhead.
 
 You need to log the identity access trail. Doing so helps validate the controls, and you can use the logs for compliance audits.
 
@@ -111,9 +111,9 @@ Applications typically target data plane operations, while operations often acce
 
 ### Provide role-based authorization
 
-Based on the responsibility of each identity, authorize actions that should be permitted. *An identity must not be allowed to do more than it needs to do*. Before you set authorization rules, you need a clear understanding of who or what is making requests, what that role is allowed to do, and to what extent it can do it. Those factors lead to choices that combine identity, role, and scope.
+Based on the responsibility of each identity, authorize actions that should be permitted. **An identity must not be allowed to do more than it needs to do**. Before you set authorization rules, you need to have a clear understanding of who or what is making requests, what that role is allowed to do, and to what extent it can do it. Those factors lead to choices that combine identity, role, and scope.
 
-Consider a workload identity as an exmaple. The application must have data plane access to the database, so read and write actions to the data resource must be allowed. However, does the application need control plane access to the secret store? If the workload identity is compromised by a bad actor, what would be the impact to the system, in terms of confidentiality, integrity, and availability?
+Consider a workload identity as an exmaple. The application must have data plane access to the database, so read and write actions to the data resource must be allowed. However, does the application need control plane access to the secret store? If the workload identity is compromised by a bad actor, what would the impact to the system be, in terms of confidentiality, integrity, and availability?
 
 ##### Role assignment
 
@@ -126,7 +126,7 @@ Ask questions like these:
 
 **Limiting the level of access that users, applications, or services have to Azure resources reduces the potential attack surface.** If you grant only the minimum permissions that are required to perform specific tasks, the risk of a successful attack or unauthorized access is significantly reduced. For example, security teams only need read-only access to security attributes for all technical environments. That level is enough to assess risk factors, identify potential mitigations, and report on the risks.
 
-There are scenarios in which users need more access because of the organizational structure and team organization. There might be an overlap between various roles, or single users might perform multiple standard roles. In this case, use multiple role assignments that are based on the business function instead of creating a custom role for each such user. Doing so makes the roles easier to manage.
+There are scenarios in which users need more access because of the organizational structure and team organization. There might be an overlap between various roles, or single users might perform multiple standard roles. In this case, use multiple role assignments that are based on the business function instead of creating a custom role for each of these users. Doing so makes the roles easier to manage.
 
 **Avoid permissions that specifically reference individual resources or users.** Granular and custom permissions create complexity and confusion because they don't pass on the intention to new resources that are similar. This can create  a complex legacy configuration that's difficult to maintain and negatively impact both security and reliability.
 
@@ -136,7 +136,7 @@ A role also has an *associated scope*. The role can operate at the allowed manag
 
 You assign roles to identities by using role-based access control (RBAC). **Always use IdP-provided RBAC** to take advantage of features that enable you to apply access control consistently and revoke it rigorously.
 
-**Use built-in roles.** They're designed to cover most use cases. Custom roles are powerful and sometimes useful, but you should be reserved for scenarios in which built-in roles won't work. Customization leads to complexity that increases confusion and makes automation more complex, challenging, and fragile. These factors all negatively impact security.
+**Use built-in roles.** They're designed to cover most use cases. Custom roles are powerful and sometimes useful, but you should reserve them for scenarios in which built-in roles won't work. Customization leads to complexity that increases confusion and makes automation more complex, challenging, and fragile. These factors all negatively impact security.
 
 **Grant roles that start with least privilege and add more based your operational or data access needs**. Your technical teams must have clear guidance to implement permissions.
 
@@ -160,7 +160,7 @@ Although time and privilege are the primary factors, there are other conditions 
 
 **Use strong controls that filter, detect, and block unauthorized access**, including parameters like user identity and location, device health, workload context, data classification, and anomalies.
 
-For example, your workload might need to be accessed by third-party identities, entities like vendors, partners, and customers. They need the appropriate level of access rather than the default permissions that you provide to full-time employees. Clear differentiation of external accounts makes it easier to prevent and detect attacks that come from these vectors.
+For example, your workload might need to be accessed by third-party identities like vendors, partners, and customers. They need the appropriate level of access rather than the default permissions that you provide to full-time employees. Clear differentiation of external accounts makes it easier to prevent and detect attacks that come from these vectors.
 
 Your choice of IdP must be able to provide that differentiation, provide built-in features that grant permissions based on the least privilege, and provide built-in threat intelligence. This includes monitoring of access requests and sign-ins. The Azure IdP is Microsoft Entra ID. For more information, see the [Azure facilitation section](#azure-facilitation) of this article.
 
@@ -176,7 +176,7 @@ Protecting privileged access against determined adversaries requires you to take
 
 -   **Avoid permanent or standing access** by using the JIT features of your IdP. For break glass situations, follow an emergency access process.
 
--   **Use modern access protocols** like passwordless authentication or multifactor authentication (MFA). Externalize those mechanisms to your IdP.
+-   **Use modern access protocols** like passwordless authentication or multifactor authentication. Externalize those mechanisms to your IdP.
 
 -   Enforce key security attributes by using **conditional access policies**.
 
@@ -188,7 +188,7 @@ Use a single identity across environments and associate a single identity with t
 
 ### Establish processes to manage the identity lifecycle
 
-**Access to identities must not last longer than the resources that the identities access.** Ensure that you have a process for disabling or deleting identities when there are changes in team structure, or software components.
+**Access to identities must not last longer than the resources that the identities access.** Ensure that you have a process for disabling or deleting identities when there are changes in team structure or software components.
 
 This guidance applies to source control, data, control planes, workload users, infrastructure, tooling, the monitoring of data, logs, metrics, and other entities.
 
@@ -196,7 +196,7 @@ This guidance applies to source control, data, control planes, workload users, i
 
 ### Protect nonidentity based secrets
 
-Application secrets like preshared keys should be considered as vulnerable points in the system. In the two-way communication, if the provider or consumer is compromised, significant security risks can be introduced. Those keys can also be burdensome because they introduce operational processes.
+Application secrets like preshared keys should be considered vulnerable points in the system. In the two-way communication, if the provider or consumer is compromised, significant security risks can be introduced. Those keys can also be burdensome because they introduce operational processes.
 
 **When you can, avoid using secrets** and consider using identity-based authentication for user access to the application itself, not just to its resources.
 
@@ -210,9 +210,9 @@ The following list provides a summary of guidance. For more information, see [Re
 
 For information about rotation policies, see [Automate the rotation of a secret for resources that have two sets of authentication credentials](/azure/key-vault/secrets/tutorial-rotation-dual) and [Tutorial: Updating certificate auto-rotation frequency in Key Vault](/azure/key-vault/certificates/tutorial-rotate-certificates).
 
-### Keep the development environments safe
+### Keep development environments safe
 
-All code and scripts, pipeline tooling, source control system should be considered workload assets. **Access to writes should be gated** with automation and peer review. **Read access to source code should be limited** to roles on a need-to-know basis. Code repositories must have versioning, and **security code reviews** by peers must be a regular practice that's integrated with the development lifecycle. You need to have a process in place that **scans resources regularly** and identify latest vulnerabilities.
+All code and scripts, pipeline tooling, and source control systems should be considered workload assets. **Access to writes should be gated** with automation and peer review. **Read access to source code should be limited** to roles on a need-to-know basis. Code repositories must have versioning, and **security code reviews** by peers must be a regular practice that's integrated with the development lifecycle. You need to have a process in place that **scans resources regularly** and identifies the latest vulnerabilities.
 
 Use workload identities to grant access to resources from deployment environments, such as GitHub.
 
@@ -238,7 +238,7 @@ We recommend that you always use modern authentication protocols that take into 
 
 These capabilities natively integrate into the same Microsoft Entra ID identity and permission model for user segments:
 
--   [Microsoft Entra ID](/azure/active-directory/). Employees and Enterprise resources.
+-   [Microsoft Entra ID](/azure/active-directory/). Employees and enterprise resources.
 
 -   [Microsoft Entra External ID](/azure/active-directory/b2b/). Partners.
 
@@ -260,7 +260,7 @@ Azure RBAC represents security principals in Microsoft Entra ID. All role assign
 
 Here are some use cases:
 
--   By assigning users to roles, you can control access to Azure resources. For more information, see [Overview of Azure Active Directory role-based access control (RBAC)](/azure/active-directory/roles/custom-overview).
+-   By assigning users to roles, you can control access to Azure resources. For more information, see [Overview of role-based access control in Microsoft Entra ID](/azure/active-directory/roles/custom-overview).
 
 -   You can use Privileged Identity Management to provide time-based and approval-based role activation for roles that are associated with high-impact identities. For more information, see [What is Privileged Identity Management?](/azure/active-directory/privileged-identity-management/pim-configure).
 
@@ -284,7 +284,7 @@ The concept of **managed identities can be extended to Azure resources**. Azure 
 
 ### Conditional access policies
 
-**Conditional access describes your policy** for an access decision. To use conditional access, you need to understand the restrictions that are required for the use case. Configure Microsoft Entra ID conditional access by setting up an access policy for that's based on your operational needs.
+**Conditional access describes your policy** for an access decision. To use conditional access, you need to understand the restrictions that are required for the use case. Configure Microsoft Entra Conditional Access by setting up an access policy for that's based on your operational needs.
 
 For more information, see [Conditional access: Users, groups, and workload identities](/azure/active-directory/conditional-access/concept-conditional-access-users-groups).
 
@@ -296,7 +296,7 @@ For more information, see [Secure access control using groups in Microsoft Entra
 
 ### Threat detection
 
-Microsoft Entra ID Protection can help you detect, investigate, and remediate identity-based risks. For more information, see [What is Azure Active Directory Identity Protection?](/azure/active-directory/identity-protection/overview-identity-protection).
+Microsoft Entra ID Protection can help you detect, investigate, and remediate identity-based risks. For more information, see [What is Identity Protection?](/azure/active-directory/identity-protection/overview-identity-protection).
 
 Threat detection can take the form of reacting to an alert of suspicious activity or proactively searching for anomalous events in activity logs. User and Entity Behavior Analytics (UEBA) in Microsoft Sentinel makes it easy to detect suspicious activities. For more information, see [Identify advanced threats with UEBA](/azure/sentinel/identify-threats-with-entity-behavior-analytics).
 
@@ -308,7 +308,7 @@ For information about filtering in Microsoft Entra ID, see [Microsoft Entra Conn
 
 ### Identity logging
 
-**Enable Diagnostic setting on Azure resources** to emit information that you can use as an audit trail. The diagnostic information shows you which identities attempt to access which resources and the outcome of those attempts. The collected logs are sent to Azure Monitor.
+**Enable diagnostic settings on Azure resources** to emit information that you can use as an audit trail. The diagnostic information shows which identities attempt to access which resources and the outcome of those attempts. The collected logs are sent to Azure Monitor.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Logging incurs costs because of the data storage that's used to store the logs. It also might cause a performance impact, especially on the code and on logging solutions that you add to the application.
 
