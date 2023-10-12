@@ -125,6 +125,8 @@ A role is a *set of permissions* that's assigned to an identity. Assign roles th
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A granular access control approach enables better auditing and monitoring of user activities.
 
+A role also has an *associated scope*. The role can operate at the allowed management group, subscription, resource group, or resource scope, or at another custom scope. Even if the identity has a limited set of permissions, widening the scope to include resources that are outside the identity's job function is risky. For example, read access to all source code and data can be dangerous and must be controlled.
+
 You assign roles to identities by using role-based access control (RBAC). **Always use IdP-provided RBAC** to take advantage of features that enable you to apply access control consistently and revoke it rigorously.
 
 **Use built-in roles.** They're designed to cover most use cases. Custom roles are powerful and sometimes useful, but you should be reserved for scenarios in which built-in roles won't work. Customization leads to complexity that increases confusion and makes automation more complex, challenging, and fragile. These factors all negatively impact security.
@@ -207,140 +209,139 @@ Use workload identities to grant access to resources from deployment environment
 
 ### Maintain an audit trail
 
-One aspect of identity management is ensuring the system is auditable. Audits validate whether the assume-breach strategies are effective. Maintaining a paper trail helps:
+One aspect of identity management is ensuring that the system is auditable. Audits validate whether assume-breach strategies are effective. Maintaining an audit trail helps you:
 
--   Verify that identity has been authenticated with strong authentication. **Any action must be traceable** to prevent repudiation attacks.
+-   Verify that identity is authenticated with strong authentication. **Any action must be traceable** to prevent repudiation attacks.
 
--   **Detect weak or missing authentication protocols** and provides visibility and insights about user and application sign-ins.
+-   **Detect weak or missing authentication protocols** and get visibility into and insights about user and application sign-ins.
 
--   Evaluate access from identities to the workload based on security and **compliance requirements** and considers user account risk, device status, and other criteria and policies that you set.
+-   Evaluate access from identities to the workload based on security and **compliance requirements** and consider user account risk, device status, and other criteria and policies that you set.
 
 -   **Track progress or deviation** from compliance requirements.
 
-Most resources have data plane access. You want to know which identities access resources and what actions were performed. That information can be considered as security diagnostics for detection purposes.
+Most resources have data plane access. You need to know the identities that access resources and the actions that they perform. You can use that information for security diagnostics.
 
 For more information, see [Recommendations on security monitoring and threat analysis](./monitoring.md).
 
 ## Azure facilitation
 
-It's recommended that you always use modern authentication protocols based on all available data points with conditional access. **Azure Active Directory (Azure AD) is the one-stop-shop for identity and access management in Azure**. It covers the management plane of Azure and is well-integrated with data plane of most Azure services. Azure AD is the tenant associated with the workload subscription. Azure AD tracks and manages identities, and their allowed permissions simplifies overall management minimizing the risk of oversights or human errors.
+We recommend that you always use modern authentication protocols that take into account all available data points and use conditional access. **Microsoft Entra ID provides identity and access management in Azure**. It covers the management plane of Azure and is integrated with the data planes of most Azure services. Microsoft Entra ID is the tenant that's associated with the workload subscription. It tracks and manages identities and their allowed permissions and simplifies overall management to minimize the risk of oversight or human error.
 
-These capabilities natively integrate into the same Azure AD identity and permission model for the user segments:
+These capabilities natively integrate into the same Microsoft Entra ID identity and permission model for user segments:
 
--   [Azure AD](/azure/active-directory/) - Employees and Enterprise resources
+-   [Microsoft Entra ID](/azure/active-directory/). Employees and Enterprise resources.
 
--   [Azure AD B2B](/azure/active-directory/b2b/) - Partners
+-   [Microsoft Entra External ID](/azure/active-directory/b2b/). Partners.
 
--   [Azure AD B2C](/azure/active-directory-b2c/) - Customers
+-   [Azure AD B2C](/azure/active-directory-b2c/). Customers.
 
--   [Azure AD federation compatibility list - Microsoft Entra](/azure/active-directory/hybrid/connect/how-to-connect-fed-compatibility) - Third-party federation solutions
+-   [Microsoft Entra federation compatibility list](/azure/active-directory/hybrid/connect/how-to-connect-fed-compatibility). Third-party federation solutions.
 
-Azure AD can be used for authentication and authorization of custom applications through Microsoft Authentication Library (MSAL) or platform features, for example authentication setup for WebApps. It covers management plane of Azure, data plane of most of Azure services but also provides the integration capabilities for your applications.
+You can use Microsoft Entra ID for authentication and authorization of custom applications via Microsoft Authentication Library (MSAL) or platform features, like authentication for web apps. It covers the management plane of Azure, the data planes of most of Azure services, and integration capabilities for your applications.
 
-Get current, stay current by getting improvements on an ongoing basis. For more information, see [What\'s new? Release notes - Microsoft Entra](/azure/active-directory/fundamentals/whats-new).
+You can stay current by visiting [What's new in Microsoft Entra ID](/azure/active-directory/fundamentals/whats-new).
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Azure AD is a single point of failure just like any other foundational service. There's no workaround until the outage is fixed by Azure. However, the rich feature set of Azure AD outweighs the risk of using other custom solutions.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Microsof Entra ID is a single point of failure just like any other foundational service. There's no workaround until the outage is fixed by Microsoft. However, the rich feature set of Microsoft Entra ID outweighs the risk of using custom solutions.
 
-Azure supports open protocols like OAuth2, OpenID Connect, and others. It's recommended that you use those standard authentication and authorization mechanisms instead of designing your own flows.
+Azure supports open protocols like OAuth2 and OpenID Connect. We recommend that you use these standard authentication and authorization mechanisms instead of designing your own flows.
 
 ### Azure RBAC
 
-Azure RBAC represents security principals in Azure AD. *All role assignments* are done through Azure RBAC. Take advantage of built-in roles that provide most permissions you need. For more information, see [Azure AD built-in roles - Microsoft Entra](/azure/active-directory/roles/permissions-reference).
+Azure RBAC represents security principals in Microsoft Entra ID. All role assignments are done via Azure RBAC. Take advantage of built-in roles that provide most of the permissions that you need. For more information, see [Microsoft Entra built-in roles](/azure/active-directory/roles/permissions-reference).
 
 Here are some use cases:
 
--   By assigning users to roles, you can control access to Azure resources. For more information, see [Overview of Azure Active Directory role-based access control (RBAC) - Microsoft Entra](/azure/active-directory/roles/custom-overview).
+-   By assigning users to roles, you can control access to Azure resources. For more information, see [Overview of Azure Active Directory role-based access control (RBAC)](/azure/active-directory/roles/custom-overview).
 
--   You can use Privileged Identity Management (PIM) to provide time-based and approval-based role activation roles that are associated with high impact identities. For more information, see [What is Privileged Identity Management? - Microsoft Entra](/azure/active-directory/privileged-identity-management/pim-configure).
+-   You can use Privileged Identity Management to provide time-based and approval-based role activation for roles that are associated with high-impact identities. For more information, see [What is Privileged Identity Management?](/azure/active-directory/privileged-identity-management/pim-configure).
 
-For more information, see [Best practices for Azure RBAC](/azure/role-based-access-control/best-practices).
+For more information about RBAC, see [Best practices for Azure RBAC](/azure/role-based-access-control/best-practices).
 
-For information about attributes-based controls, see [What is Azure attribute-based access control (Azure ABAC)?](/azure/role-based-access-control/conditions-overview).
+For information about attribute-based controls, see [What is Azure ABAC?](/azure/role-based-access-control/conditions-overview).
 
 ### Workload identity
 
-**Your application's identity can be handled by Azure AD**. The service principal associated with the application can dictate its access scope.
+**Microsoft Entra ID can handle your application's identity.** The service principal that's associated with the application can dictate its access scope.
 
-For more information, see [Workload identities - Microsoft Entra](/azure/active-directory/workload-identities/workload-identities-overview).
+For more information, see [What are workload identities?](/azure/active-directory/workload-identities/workload-identities-overview).
 
-**The service principal is also abstracted by using a managed identity**. The advantage is that Azure manages all credentials for the application.
+**The service principal is also abstracted when you use a managed identity.** The advantage is that Azure manages all credentials for the application.
 
-Not all services support managed identities. In those cases, you can use service principals. However, there's a tradeoff in added management. For more information, see [Managed identities for Azure resources - Microsoft Entra](/azure/active-directory/managed-identities-azure-resources/overview).
+Not all services support managed identities. If you can't use managed identities, you can use service principals. However, using service principals increases your management overhead. For more information, see [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ### Resource identity
 
-The concept of **managed identities can be extended to Azure resources**. Azure resources can use managed identities to authenticate themselves to other services that support Azure AD authentication. For a list of supported Azure services, see [services that support managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
+The concept of **managed identities can be extended to Azure resources**. Azure resources can use managed identities to authenticate themselves to other services that support Microsoft Entra ID authentication. For more information, see [Azure services that can use managed identities to access other services](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
 
 ### Conditional access policies
 
-**Conditional access describes your policy** for an access decision. To enable conditional access, understand what restrictions are required for the use case. Configure Azure AD Conditional Access by setting up Access policy for Azure management based on your operational needs.
+**Conditional access describes your policy** for an access decision. To use conditional access, you need to understand the restrictions that are required for the use case. Configure Microsoft Entra ID conditional access by setting up an access policy for that's based on your operational needs.
 
-For more information, see [Users, groups, workload identity in Conditional Access policy - Microsoft Entra](/azure/active-directory/conditional-access/concept-conditional-access-users-groups).
+For more information, see [Conditional access: Users, groups, and workload identities](/azure/active-directory/conditional-access/concept-conditional-access-users-groups).
 
 ### Group access management
 
-Instead of granting permissions to specific users, assign access to groups in Azure AD. Work with the central identity team to create a group if a group doesn't exist. You can then add and remove group members externally to Azure and make sure that permissions are current, while also using the group for other purposes, such as mailing lists.
+Instead of granting permissions to specific users, assign access to groups in Microsoft Entra ID. If a group doesn't exist, work with your identity team to create one. You can then add and remove group members outside of Azure and make sure that permissions are current. You can also use the group for other purposes, like mailing lists.
 
-For more information, see [Secure access control using groups in Azure AD - Microsoft Entra](/azure/active-directory/develop/secure-group-access-control).
+For more information, see [Secure access control using groups in Microsoft Entra ID](/azure/active-directory/develop/secure-group-access-control).
 
 ### Threat detection
 
-Azure AD Identity Protection helps organizations detect, investigate, and remediate identity-based risks. For example, see [What is Azure Active Directory Identity Protection? - Microsoft Entra](/azure/active-directory/identity-protection/overview-identity-protection).
+Microsoft Entra ID Protection can help you detect, investigate, and remediate identity-based risks. For more information, see [What is Azure Active Directory Identity Protection?](/azure/active-directory/identity-protection/overview-identity-protection).
 
-Detection can take the form of reacting to an alert of suspicious activity or proactively hunting for anomalous events in the activity logs. The User and Entity Behavior Analytics (UEBA) capability in Microsoft Sentinel makes it easy to detect suspicious activities. For more information, see [Identify advanced threats with User and Entity Behavior Analytics (UEBA) in Microsoft Sentinel](/azure/sentinel/identify-threats-with-entity-behavior-analytics).
+Threat detection can take the form of reacting to an alert of suspicious activity or proactively searching for anomalous events in activity logs. User and Entity Behavior Analytics (UEBA) in Microsoft Sentinel makes it easy to detect suspicious activities. For more information, see [Identify advanced threats with UEBA](/azure/sentinel/identify-threats-with-entity-behavior-analytics).
 
 ### Hybrid systems
 
-For Azure, **don't synchronize accounts to Azure AD that have high privileges in your existing Active Directory**. This is blocked by default in the default Azure AD Connect configuration, so you only need to confirm that you haven't customized this configuration.
+On Azure, **don't synchronize accounts to Microsoft Entra ID that have high privileges in your existing Active Directory**. This synchronization is blocked in the default Microsoft Entra Connect Sync configuration, so you only need to confirm that you haven't customized this configuration.
 
-For information about filtering in Azure AD, [Azure AD Connect sync: Configure filtering - Microsoft Entra](/azure/active-directory/hybrid/connect/how-to-connect-sync-configure-filtering).
+For information about filtering in Microsoft Entra ID, see [Microsoft Entra Connect Sync: Configure filtering](/azure/active-directory/hybrid/connect/how-to-connect-sync-configure-filtering).
 
 ### Identity logging
 
-**Enable Diagnostic setting on Azure resources** to emit information that can be used as audit trail. You'll be able to know which identity attempted access to what resource and what was the outcome. The collected logs are sent to Azure Monitor.
+**Enable Diagnostic setting on Azure resources** to emit information that you can use as an audit trail. The diagnostic information shows you which identities attempt to access which resources and the outcome of those attempts. The collected logs are sent to Azure Monitor.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There is a tradeoff on cost because of the data storage provisioned to store the logs. There might be a performance impact, especially on the code aspect and logging solutions that's added to the application.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Logging incurs costs because of the data storage that's used to store the logs. It also might cause a performance impact, especially on the code and on logging solutions that you add to the application.
 
 ## Example
 
-This example shows the identity dimensions of architecture design. Different types of identities are used in conjunction to provide the required level of access.
+The following example shows an identity implementation. Different types of identities are used together to provide the required levels of access.
 
-:::image type="content" source="images/identity-access/identity-architecture-design.png" alt-text="Diagram that shows the identity dimensions of architecture design." border="false" lightbox="images/identity-access/identity-architecture-design.png":::
-
+:::image type="content" source="images/identity-access/identity-architecture-design.png" alt-text="Diagram that shows an identity implementation." border="false" lightbox="images/identity-access/identity-architecture-design.png":::
 
 ### Identity components
 
--   **System-managed identities**. Entra ID-based access to non-user-facing service data planes, such as key vault, data stores. They're also used to control access to Azure management plane for workload components, deployment agents, and team members, through RBAC.
+-   **System-managed identities**. Microsoft Entra ID provides access to service data planes that don't face users, like Azure Key Vault and data stores. These identities also control access, via RBAC, to the Azure management plane for workload components, deployment agents, and team members.
 
--   **Workload identities**. The application services within the Azure Kubernetes Service (AKS) cluster use workload identities to authenticate themselves to other components in the solution.
+-   **Workload identities**. The application services in the Azure Kubernetes Service (AKS) cluster use workload identities to authenticate themselves to other components in the solution.
 
 -   **Managed identities**. System components in the client role use system-managed identities, including build agents.
 
--   **Human identities**. The user and operator authentication is delegated to Azure AD (native, B2B or B2C).
+-   **Human identities**. User and operator authentication is delegated to Microsoft Entra ID or Azure AD (native, B2B, or B2C).
 
 The security of preshared secrets is critical for any application. Azure Key Vault provides a secure storage mechanism for these secrets, including Redis and third-party secrets. 
 
-To ensure that the secrets are not compromised, a rotation mechanism is established. Tokens for OAuth2 and OpenID Connect implementation from Microsoft identity platform are used to authenticate users. 
+A rotation mechanism is used to help ensure that secrets aren't compromised. Tokens for the Microsoft identity platform implementation of OAuth 2 and OpenID Connect are used to authenticate users. 
 
-Azure policy is used to enforce identity configuration, such as Key Vault to use RBAC instead of access policies. Just-In-Time (JIT) and Just-Enough-Administration (JEA) are used to provide traditional standing permissions for human operators. 
+Azure Policy is used to ensure that identity components like Key Vault use RBAC instead of access policies. JIT and JEA provide traditional standing permissions for human operators. 
 
-Access logs are enabled across all components through Azure Diagnostics or code for code components.
+Access logs are enabled across all components via Azure Diagnostics, or via code for code components.
 
 ## Related links
 
-- [Rotation tutorial for resources with two sets of credentials](/azure/key-vault/secrets/tutorial-rotation-dual) 
-- [Tutorial - Updating certificate autorotation frequency in Key Vault](/azure/key-vault/certificates/tutorial-rotate-certificates)
-- [What's new? Release notes - Microsoft Entra](/azure/active-directory/fundamentals/whats-new)
-- [Azure AD built-in roles - Microsoft Entra](/azure/active-directory/roles/permissions-reference)
-- [Overview of Azure Active Directory role-based access control (RBAC) - Microsoft Entra](/azure/active-directory/roles/custom-overview)
-- [Workload identities - Microsoft Entra](/azure/active-directory/workload-identities/workload-identities-overview)
-- [Managed identities for Azure resources - Microsoft Entra](/azure/active-directory/managed-identities-azure-resources/overview)
-- [Users, groups, workload identity in Conditional Access policy - Microsoft Entra](/azure/active-directory/conditional-access/concept-conditional-access-users-groups)
-- [Azure AD Connect sync: Configure filtering - Microsoft Entra](/azure/active-directory/hybrid/connect/how-to-connect-sync-configure-filtering)
+- [Tutorial: Automate the rotation of a secret for resources that have two sets of authentication credentials](/azure/key-vault/secrets/tutorial-rotation-dual) 
+- [Tutorial: Updating certificate auto-rotation frequency in Key Vault](/azure/key-vault/certificates/tutorial-rotate-certificates)
+- [What's new in Microsoft Entra ID?](/azure/active-directory/fundamentals/whats-new)
+- [Microsoft Entra built-in roles](/azure/active-directory/roles/permissions-reference)
+- [Overview of role-based access control in Microsoft Entra ID](/azure/active-directory/roles/custom-overview)
+- [What are workload identities?](/azure/active-directory/workload-identities/workload-identities-overview)
+- [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview)
+- [Conditional access: Users, groups, and workload identities](/azure/active-directory/conditional-access/concept-conditional-access-users-groups)
+- [Microsoft Entra Connect Sync: Configure filtering](/azure/active-directory/hybrid/connect/how-to-connect-sync-configure-filtering)
  
 ## Security checklist
 
 Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"]
-[Security checklist](checklist.md)
+> [Security checklist](checklist.md)
