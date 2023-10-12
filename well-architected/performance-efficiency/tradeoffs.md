@@ -1,9 +1,9 @@
 ---
 title: Performance Efficiency tradeoffs
-description: Performance Efficiency tradeoffs in the Azure Well-Architected Framework
+description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for performance efficiency.
 author: ckittel
 ms.author: chkittel
-ms.date: 10/12/2023
+ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
