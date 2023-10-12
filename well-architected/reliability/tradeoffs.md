@@ -15,7 +15,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 ## Reliability tradeoffs with Security
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased workload surface area.** The Security pillar prioritizes a reduced and contained surface area to minimize attack vectors and reduce the management of security controls.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Increased workload surface area. The Security pillar prioritizes a reduced and contained surface area to minimize attack vectors and reduce the management of security controls.
 
 - Reliability is often obtained through replication. Replication can occur at the component level, at the data level, or even at a geographic level. Replicas, by design, increase the surface area of a workload. From a security perspective, a reduced and contained surface area is preferred to minimize potential attack vectors and streamline the management of security controls.
 
@@ -23,7 +23,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 - For the sake of reliability goals, additional components might be needed for the architecture, which increases the surface area. For example, a message bus might be added to make requests resilient. This increased complexity increases the surface area of the workload by adding new components that need to be secured, possibly in ways that aren't already used in the system. Typically, these components are accompanied by additional code and libraries to support their use or general reliability patterns, which also increases the application's surface area.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Security control bypass.** The Security pillar recommends that all controls remain active in both normal and stressed systems.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Security control bypass. The Security pillar recommends that all controls remain active in both normal and stressed systems.
 
 - When a workload is experiencing a reliability event that's being addressed under active incident response, urgency might create pressure for workload teams to bypass security controls that are optimized for routine access. 
 
@@ -31,7 +31,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 - Granular implementations of security controls, like role-based access control assignments or firewall rules, introduce configuration complexity and sensitivity, increasing the chance for misconfiguration. Mitigating this potential reliability impact by using broad rules erodes all three Zero Trust architecture principles.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Old software versions.** The Security pillar encourages a "get current, stay current" approach to vendor security patches.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Old software versions. The Security pillar encourages a "get current, stay current" approach to vendor security patches.
 
 - Applying security patches or software updates can potentially disrupt the target component, causing unavailability during the software change. Delaying or avoiding patching might avoid the potential reliability risks, but it leaves the system unprotected against evolving threats.
 
@@ -39,7 +39,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 ## Reliability tradeoffs with Cost Optimization
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased implementation redundancy or waste.** A cost-optimized workload minimizes underutilized resources and avoids over-provisioning resources.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Increased implementation redundancy or waste. A cost-optimized workload minimizes underutilized resources and avoids over-provisioning resources.
 
 - Replication is a key strategy for reliability. Specifically, the strategy is to have enough replication to handle a given number of concurrent node failures. The tolerance for more concurrent node failures requires a higher replica count, which leads to increased costs.
 
@@ -49,7 +49,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 - Workload deployments themselves are a potential source for reliability impact, and that impact is often mitigated by redundancy at deployment time via a deployment strategy like blue/green. This transient duplication of resources during safe deployment typically increases the overall cost of the workload during those periods. Costs increase with frequency of deployments.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased investment in operations that aren't aligned with functional requirements.** One approach to cost optimization is evaluating the value that's provided by any deployed solution.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Increased investment in operations that aren't aligned with functional requirements. One approach to cost optimization is evaluating the value that's provided by any deployed solution.
 
 - To achieve reliability, a system requires observability. Monitoring systems require observability data transfer and collection. As monitoring capabilities increase, the frequency and volume of data increase, leading to additional costs.
 
@@ -61,13 +61,13 @@ During the design phase of a workload, you need to consider how decisions based 
 
 ## Reliability tradeoffs with Operational Excellence
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased operational complexity.** Operational Excellence, like Reliability itself, prioritizes simplicity.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Increased operational complexity. Operational Excellence, like Reliability itself, prioritizes simplicity.
 
 - Reliability usually increases the complexity of a workload. As the complexity of a workload increases, the operational elements of the workload can also increase to support the added components and processes in terms of deployment coordination and configuration surface area.
 
 - Having a comprehensive monitoring strategy for a workload is a key part of operational excellence. Introducing additional components into an architecture to implement reliability design patterns results in more data sources to manage, increasing the complexity of implementing distributed tracing and observability.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased effort to generate team knowledge and awareness.** The Operational Excellence pillar recommends keeping and maintaining a documentation repository for procedures and topologies.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Increased effort to generate team knowledge and awareness. The Operational Excellence pillar recommends keeping and maintaining a documentation repository for procedures and topologies.
 
 - As a workload becomes more robust through the addition of reliability components and patterns, it takes more time to maintain operational procedures and artifact documentation.
 
@@ -75,7 +75,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 ## Reliability tradeoffs with Performance Efficiency
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased latency.** Performance Efficiency requires a system to achieve performance targets for user and data flows.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Increased latency. Performance Efficiency requires a system to achieve performance targets for user and data flows.
 
 - Reliability patterns often incorporate data replication to survive replica malfunction. Replication introduces additional latency for reliable data-write operations, which consumes a part of the performance budget for a specific user or data flow.
 
@@ -85,7 +85,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 - Extensive processes are used to observe the health of a workload. Although monitoring is critical for reliability, instrumentation can affect system performance. As observability increases, performance might decrease.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased over-provisioning.** The Performance Efficiency pillar discourages over-provisioning, instead recommending the use of just enough resources to satisfy demand.
+:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Increased over-provisioning. The Performance Efficiency pillar discourages over-provisioning, instead recommending the use of just enough resources to satisfy demand.
 
 - Automatic scaling operations aren't instantaneous and therefore can't reliably handle a sudden and dramatic spike in demand that can't be shaped or smoothed. Therefore, over-provisioning via either larger instances or more instances is a critical reliability tactic to account for the lag between demand signal and supply creation. Unused capacity counters the goals of performance efficiency.
 
