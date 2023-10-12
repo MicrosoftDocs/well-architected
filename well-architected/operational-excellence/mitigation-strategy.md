@@ -43,7 +43,7 @@ Finally, be ready to respond to user reported issues immediately. Whenever pract
 
 ### Decision
 
-Deciding on what the appropriate mitigation strategy will be for a given deployment issue should relies on many factors including, but not limited to:
+Deciding on what the appropriate mitigation strategy will be for a given deployment issue should rely on many factors including, but not limited to:
 
 - What type of progressive exposure model is used (blue-green or canary, for example).
 
@@ -141,7 +141,7 @@ There are potential tradeoffs with mitigation strategies to consider:
 
 ## Related links
 
-OpEx safe deployment guide 
+<!-- OpEx safe deployment guide -->
 
 [Progressive experimentation with feature flags - Azure DevOps | Microsoft Learn](/devops/operate/progressive-experimentation-feature-flags)
 

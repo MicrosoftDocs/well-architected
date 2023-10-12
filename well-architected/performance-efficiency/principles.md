@@ -17,7 +17,7 @@ Performance efficiency is the ability of your workload to adjust to changes in d
 
 ## Design for horizontal scaling
 
-|![Goal icon](../_images/goal.svg) *Horizontal scaling allows for elasticity.*|
+|![Goal icon](../_images/goal.svg) Horizontal scaling allows for elasticity.|
 |--| 
 
 Instances are added (scale-out) or removed (scale-in) in response to changes in load. Scaling out can improve resiliency by building redundancy. Scaling in can help reduce costs by shutting down excess capacity.
@@ -29,11 +29,11 @@ Instances are added (scale-out) or removed (scale-in) in response to changes in 
   |Choose the right resources and right-size                    |    Determine if the resources can support the anticipated load. Also, justify the cost implications of the choices.|
 |  Apply strategies in your design early    |                        Accelerate adoption without significant changes. For example, **strive for stateless application** and store state externally in a database or distributed cache. **Use caching** where possible, to minimize the processing load.|
 
-An alternate approach is vertical scaling (scale up). However, you eventually may reach a limit where there isn\'t a larger system, and you can\'t scale up anymore. At that point, any further scaling must be horizontal. So it\'s good practice to employ a scale-out architecture early on.
+An alternate approach is vertical scaling (scale up). However, you eventually might reach a limit where there isn\'t a larger system, and you can\'t scale up anymore. At that point, any further scaling must be horizontal. So it\'s good practice to employ a scale-out architecture early on.
 
 ## Shift-left on performance testing
 
-|![Goal icon](../_images/goal.svg) *Test early and test often to catch issues early.*|
+|![Goal icon](../_images/goal.svg) Test early and test often to catch issues early.|
 |--| 
 
 |  Approach                                              |Benefit|
@@ -44,20 +44,20 @@ An alternate approach is vertical scaling (scale up). However, you eventually ma
 
 ## Continuously monitor for performance in production
 
-|![Goal icon](../_images/goal.svg) *Observe the system holistically to evaluate the overall health of the solution.*|
+|![Goal icon](../_images/goal.svg) Observe the system holistically to evaluate the overall health of the solution.|
 |--| 
 
 Capture the test results not only in dev/test environment but also in production. Monitoring and logging in production can help identify bottlenecks and opportunities for improvement.
 
-  |Approach|                                        Benefit|
+|Approach|                                        Benefit|
 |-|-|
   |Monitor the health of the entire solution          | Know about the scalability and resiliency of the infrastructure, application, and dependent services. Gather and review key performance counters regularly.|
 |  Capture data from repeatable processes            |  Evaluate the metrics over time that would allow for autoscaling with demand. For reliability, look for early warning signs that might require proactive intervention.|
- | Reevaluate the needs of the workload continuously|   Identify improvement opportunities with resolution planning. This effort may require updated configurations and deprecations in favor of more-appropriate solutions.|
+ | Reevaluate the needs of the workload continuously|   Identify improvement opportunities with resolution planning. This effort might require updated configurations and deprecations in favor of more-appropriate solutions.|
 
-##  Next section
+##  Next steps
 
 Use this checklist to review your application architecture from a performance design standpoint.
 
-[**Design checklist**](/azure/well-architected/scalability/design-checklist)
+[**Design checklist**](checklist.md)
 
