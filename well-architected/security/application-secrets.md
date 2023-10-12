@@ -120,7 +120,7 @@ As a workload owner, you need to **understand the secret rotation plan and polic
 
 **Store secrets by using Key Vault.** Store secrets in the Azure secret management system, Key Vault, Azure Managed HSM, and other locations. For more information, see [How to choose the right key management solution](/azure/security/fundamentals/key-management-choose).
 
-**Integrate identity-based access control.** Microsoft Entra ID and managed identities help minimize the need for secrets. Microsoft Entra ID offers a highly secure and usable experience for access control with built-in mechanisms for handling key rotation, security/test.md for anomalies, and more.
+**Integrate identity-based access control.** Microsoft Entra ID and managed identities help minimize the need for secrets. Microsoft Entra ID offers a highly secure and usable experience for access control with built-in mechanisms for handling key rotation, for anomalies, and more.
 
 Use Azure role-based access control (RBAC) to assign permissions to users, groups, and applications at a certain scope.
 
