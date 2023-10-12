@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for designing for simplicity and efficiency
 
-**Applies to: RE 10**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:10](checklist.md)| Design your workload to align with business objectives and avoid unnecessary complexity or overhead. Use a practical and balanced approach to make design decisions that deliver the desired results. Contain your design to the necessities to reduce inefficiencies and potential problems. |
+|---|---|
 
 This guide describes the recommendations for minimizing unnecessary complexity and overhead to keep your workloads simple and efficient. Choose the best components to perform the necessary workload tasks to optimize the reliability of your workload. To lessen your development and management burdens, take advantage of efficiencies that platform-provided services offer. This design helps you create a workload architecture that's resilient, repeatable, scalable, and manageable.
 
@@ -159,7 +162,7 @@ Refer to the other guides in this series for tradeoffs related to the points in 
 - [Data partitioning](partition-data.md#tradeoffs)
 - [Define reliability targets](metrics.md#tradeoffs)
 - [Disaster recovery](disaster-recovery.md#tradeoffs)
-- [Failure mode analysis](failure-mode-analysis.md#tradeoff)
+- [Failure mode analysis](failure-mode-analysis.md#tradeoffs)
 - [Identify and rate flows](identify-flows.md#tradeoffs)
 - [Monitoring and alerting](monitoring-alerting-strategy.md#tradeoffs)
 - [Redundancy](redundancy.md#tradeoffs)
@@ -178,9 +181,9 @@ For an example workload that determines components and their features based on r
 - [Cloud-native applications](https://azure.microsoft.com/solutions/cloud-native-apps)
 - [Types of databases on Azure](https://azure.microsoft.com/products/category/databases)
 
-## Next steps  
+## Reliability checklist  
 
-We recommend that you review the Reliability checklist to explore other concepts.
+Refer to the complete set of recommendations. 
 
-> [!div class="nextstepaction"]
-> [Reliability checklist](checklist.md)
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 

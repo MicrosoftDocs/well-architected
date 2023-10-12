@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for defining reliability targets
 
-**Applies to: RE 03**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:03](checklist.md)| Define reliability and recovery targets for the components, the flows, and the overall solution. Visualize the targets to negotiate, gain consensus, set expectations, and drive actions to achieve the ideal state. Use the defined targets to build the health model. The health model defines what healthy, degraded, and unhealthy states look like. |
+|---|---|
 
 This guide describes the recommendations for defining availability and recovery target metrics for critical workloads and flows. Reliability targets are derived through workshop exercises with business stakeholders. The targets are refined through monitoring and testing. 
 
@@ -165,3 +168,10 @@ A conceptual gap might exist between the technical limitations of your workload'
 - Cloud Adoption Framework guidance for SLOs and SLIs: [Cloud monitoring SLOs](/azure/cloud-adoption-framework/manage/monitor/service-level-objectives#how-do-you-define-slis)
 
 - Well-Architected Framework mission-critical guidance for health modeling: [Health modeling and observability of mission-critical workloads on Azure](/azure/well-architected/mission-critical/mission-critical-health-modeling)
+
+## Reliability checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 

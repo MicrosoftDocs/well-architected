@@ -1,22 +1,26 @@
 ---
-title: Performance of deployment infrastructure
+title: Recommendations for improving build velocity
 description: Learn about boosting the performance of your deployment infrastructure. Review the considerations about build times and human intervention.
-author: UmarMohamedUsman
-ms.author: martinek
-ms.date: 05/09/2023
+author: claytonsiemens77
+ms.author: csiemens
+ms.date: 11/15/2023
 ms.topic: conceptual
-ms.custom:
-  - fasttrack-edit
-  - article
 ---
 
-# Performance considerations for your deployment infrastructure
+# Recommendations for improving build velocity
+
+**Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:** 
+
+|[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. | 
+|---|---| 
 
 Build status shows if your product is in a deployable state, so builds are the heartbeat of your continuous delivery system. It's important to have a build process up and running the first day of your product development. Since builds provide such crucial information about the status of your product, you should always strive for fast builds.
 
 It's difficult to fix a build problem if it takes longer to build. When delays happen and become normalized, teams tend to become less motivated to fix the problem.
 
-## Build times
+## Key design strategies
+
+### Build times
 
 Here are few ways you can achieve faster builds:
 
@@ -38,7 +42,7 @@ Here are few ways you can achieve faster builds:
 
   * Publish the build artifacts to a package management solution, such as NuGet or Maven. Publishing to a package management solution lets you reuse your build artifact more easily.
 
-## Human intervention
+### Human intervention
 
 Your organization might choose to create several different kinds of builds to optimize build times.
 
@@ -50,7 +54,31 @@ Your organization might choose to create several different kinds of builds to op
 
 The types of builds needed by your organization depend on factors including your team's and organization's maturity, the kind of product you're working on, and your deployment strategy.
 
+## Azure facilitation
+
+[Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) is a collection of services that help you build a collaborative, efficient, and consistent development practice.
+
+[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) provides build and release services to support continuous integration and delivery of your applications.
+
+[GitHub for Actions for Azure](https://azure.github.io/actions/) allows you to automate CI/CD processes and integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
+
+[Microsoft-hosted agents](/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true&tabs=yaml) are available natively in [Azure Pipeline](/azure/devops/pipelines/get-started/what-is-azure-pipelines). These agents are single-use VMs that are only used for one job and then discarded, which provides an easy to manage option for your builds.
+
+## Related links
+
+[Create and manage agent pools](/azure/devops/pipelines/agents/pools-queues?tabs=yaml&view=azure-devops&preserve-view=true)
+
+[Configure and pay for parallel jobs](/azure/devops/pipelines/licensing/concurrent-jobs?view=azure-devops&preserve-view=true)
+
+[Run tests in parallel for any test runner](/azure/devops/pipelines/test/parallel-testing-any-test-runner?view=azure-devops&preserve-view=true)
+
+[Specify jobs in your pipeline](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true)
+
+[Specify events that trigger pipelines](/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops&preserve-view=true)
+
+[Configure schedules for pipelines](/azure/devops/pipelines/process/scheduled-triggers)
+
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Release Engineering: Deployment ](./release-engineering-cd.md)
+>  [Operational Excellence checklist](checklist.md) 

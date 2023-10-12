@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for defining performance targets 
 
-**Applies to: PE 01**
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
+
+|[PE:01](checklist.md)| Define performance targets. Performance targets should be numerical values that are tied to workload requirements. You should implement performance targets for all workload flows.| 
+|---|---| 
 
 This guide describes the recommendations for establishing and exposing performance targets. Performance targets are metrics that define performance objectives. These metrics are expressed as a single numerical value or a numerical range. They're clear and specific metrics that drive continuous improvement. Performance targets are a numerical foundation for improvements. They help teams align their efforts toward specific goals.
 
@@ -19,13 +22,14 @@ Without clear performance targets, teams might lack focus, resulting in ineffici
 
 |  Term|                  Definition|
 |-|-|
-  |Metrics|              Numerical values that are collected at regular intervals. Metrics describe some aspects of a system at a particular time.
-  |Performance targets|   Metrics that define performance objectives. These metrics are expressed as a single numerical value or a numerical range.|
-  |Flow|                  In a workload, a sequence of operations that performs a specific function. It involves the movement of data and the running of processes between components of the workload.|
-  |User flow             |The sequence that a user follows to accomplish a task.|
-|Workflow          |    The sequence of steps that a workload runs to accomplish a task.|
-  |Data flow|             The movement of data within a workload.|
+|Data flow|             The movement of data within a workload.|
 |Dependency            |A component that a workload relies on.|
+|Flow|                  In a workload, a sequence of operations that performs a specific function. It involves the movement of data and the running of processes between components of the workload.|
+|Metrics|              Numerical values that are collected at regular intervals. Metrics describe some aspects of a system at a particular time.
+|Performance targets|   Metrics that define performance objectives. These metrics are expressed as a single numerical value or a numerical range.|
+|User flow             |The sequence that a user follows to accomplish a task.|
+|Workflow          |    The sequence of steps that a workload runs to accomplish a task.|
+
 
 ## Key strategies
 
@@ -47,9 +51,9 @@ To establish performance targets, identify metrics that are critical for measuri
 
 **Set specific targets.** After you identify the key metrics, specify targets or thresholds for each metric. Targets should be measurable, realistic, and aligned with your workload objectives. For example, you might set a target response time of less than 500 milliseconds (ms) or a target error rate of less than 1 percent. Avoid qualitative assessments of performance like *fast* or *slow*. By using numerical targets, you can objectively assess performance over time.
 
-- *Consider the customer:* When you set performance targets, adopt a customer-centric perspective. Recognizing the customer as the ultimate judge of performance helps ensure that performance targets align with customer expectations. This alignment involves considering both organizational objectives and the distinct requirements of the customer base. When you integrate these two aspects, you can tailor performance targets to reflect the desired customer experience and overall workload effectiveness. By defining performance objectives that consider customer expectations, you can strive to provide a high-quality customer experience and meet the needs of your customers.
+- *Consider the customer*: When you set performance targets, adopt a customer-centric perspective. Recognizing the customer as the ultimate judge of performance helps ensure that performance targets align with customer expectations. This alignment involves considering both organizational objectives and the distinct requirements of the customer base. When you integrate these two aspects, you can tailor performance targets to reflect the desired customer experience and overall workload effectiveness. By defining performance objectives that consider customer expectations, you can strive to provide a high-quality customer experience and meet the needs of your customers.
 
-- *Use percentiles:* Percentiles, such as P99, P95, and P50, are the industry standard way to represent the result of performance assessments. Percentiles are statistical measures that indicate how much data the number includes. In the context of performance assessments, percentiles help quantify the distribution of response times or other performance metrics. The P99 represents the value that encompasses 99 percent of the data. The P95 represents 95 percent of the data, and P50 represents 50 percent of the data. 
+- *Use percentiles*: Percentiles, such as P99, P95, and P50, are the industry standard way to represent the result of performance assessments. Percentiles are statistical measures that indicate how much data the number includes. In the context of performance assessments, percentiles help quantify the distribution of response times or other performance metrics. The P99 represents the value that encompasses 99 percent of the data. The P95 represents 95 percent of the data, and P50 represents 50 percent of the data. 
 
    Use percentiles, rather than simple averages, to provide a more comprehensive understanding of system performance. Outliers heavily affect the average value. Percentiles give insights into the overall distribution and variability of performance metrics. You can then set more realistic and meaningful performance targets based on different percentiles, ensuring better customer experiences and system reliability. 
 
@@ -105,18 +109,18 @@ Continual customer feedback helps you understand customer expectations so you ca
 
 ## Azure facilitation
 
-**Set performance targets:** Azure Advisor provides [performance recommendations](/azure/advisor/advisor-performance-recommendations) that can inform your performance targets.
+**Set performance targets.** Azure Advisor provides [performance recommendations](/azure/advisor/advisor-performance-recommendations) that can inform your performance targets.
 
-**Monitor:** [Azure Monitor](/azure/azure-monitor/overview) is a full-stack monitoring service that provides a complete set of features to monitor your Azure resources and measure performance targets. It collects platform metrics and provides ready-to-use dashboards. It allows you to configure alerts based on metrics. It also stores and correlates metrics to ensure a single source of truth.
+**Monitor.** [Azure Monitor](/azure/azure-monitor/overview) is a full-stack monitoring service that provides a complete set of features to monitor your Azure resources and measure performance targets. It collects platform metrics and provides ready-to-use dashboards. It allows you to configure alerts based on metrics. It also stores and correlates metrics to ensure a single source of truth.
 
 ## Related links
 
 - [Azure Advisor performance recommendations](/azure/advisor/advisor-performance-recommendations)
 - [Azure Monitor](/azure/azure-monitor/overview)
 
-## Next steps
+## Performance Efficiency checklist  
 
-We recommend that you review the Performance Efficiency checklist to explore other concepts.
+Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"] 
 > [Performance Efficiency checklist](checklist.md) 

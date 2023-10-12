@@ -32,17 +32,15 @@ Instrumenting code refers to the practice of adding code snippets or libraries t
 
 In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code issue, the cheaper it's to fix it. You want to automate as much of this code analysis as possible. Use dynamic and static code analysis tools to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
 
-**Tradeoff:** These tools are likely to increase short-term costs.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
 
-### Identify hot paths
+### Identify and optimize hot paths
 
-By instrumenting your code, you can measure the resource consumption for different code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. Hot path is the critical or frequently executed sections of a program that require high performance and low latency. Here’s how to identity hot path:
+By instrumenting your code, you can measure the resource consumption for different code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. They are critical or frequently executed sections of a program that require high performance and low latency. To identify code hot paths, consider these steps:
 
 - *Analyze runtime data*: Collect runtime data and analyze it to identify areas of the code that consume significant resources, such as CPU, memory, or I/O operations. Look for patterns or sections of code that are frequently executed or take a long time to complete.
 - *Measure performance*: Use profiling tools or performance testing frameworks to measure the execution time and resource consumption of different code paths. It helps identify bottlenecks and areas for improvement.
 - *Consider business logic and user effect*: Evaluate the importance of different code paths based on their relevance to the application's functionality or critical business operations. Determine which code paths are crucial for delivering value to users or meeting performance requirements.
-
-### Optimize hot paths
 
 Review the performance recommendations specific to the programming language you're working with. Evaluate your code against these recommendations to identify areas for improvement. You should remove any unnecessary operations within the code path that may affect performance.
 
@@ -55,17 +53,17 @@ Review the performance recommendations specific to the programming language you'
 - *Reduce data structure size*: Assess the size of your data structures, such as classes, and identify areas where reduction is possible. Review the data requirements and eliminate any unnecessary fields or properties. Optimize memory usage by selecting appropriate data types and packing data efficiently.
 - *Cross-cutting implementation*: Consider the effects of cross-cutting implementations, such as middleware or token checks, and assess if they're affecting performance negatively.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Optimizing code and hot paths requires developer expertise in identifying code inefficiencies is subjective and might be highly skilled individual required for other tasks.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Optimizing code and hot paths requires developer expertise in identifying code inefficiencies is subjective and might be highly skilled individual required for other tasks.
 
-### Consider concurrency
+### Evalaute the use of concurrency
 
-Evaluate if using asynchronous processing, multithreading, or multiprocessing can improve performance in your specific scenario. Identify code segments that can be transformed into asynchronous operations to allow parallel execution and better resource utilization. Be cautious of thread-safety and ensure proper synchronization when working with shared resources. To implement asynchronous processing, multithreading, or multiprocessing, you can follow these guidelines:
+Evaluate if using asynchronous processing, multithreading, or multiprocessing can improve performance in your specific scenario. Identify code segments that can use concurrent operations for better resource utilization. Be cautious of thread-safety and ensure proper synchronization when working with shared resources. To help evaluate if concurrency is a good fit, you can follow these guidelines:
 
-- *Asynchronous processing*: Determine the components or operations in your code that can be executed asynchronously. Identify the programming language or framework you're using and understand the asynchronous programming model it supports, such as async/await in .NET or promises in JavaScript. Restructure your code to use asynchronous programming constructs, enabling nonblocking execution of tasks. Decouple long-running or I/O-intensive operations from the main execution thread by using asynchronous methods or callbacks. Utilize asynchronous APIs or libraries provided by your programming language or framework to handle asynchronous workflows.
-- *Multithreading*: Identify sections of your code that can be executed concurrently and independently. Read the documentation or guidelines specific to the programming language or framework you're using for multithreading best practices. Create multiple threads or thread pools to handle parallel execution of tasks. Implement synchronization mechanisms, such as locks, mutexes, or semaphores, to ensure thread safety and prevent race conditions when accessing shared resources. Consider using higher-level abstractions, like thread pools or task-based parallelism libraries, to streamline the management of multiple threads and simplify concurrency control.
-- *Multiprocessing*: Determine whether the workload or operations in your code lend themselves to parallel processing. Identify the programming language or framework you're using and explore its multiprocessing capabilities, such as the multiprocessing module in Python or parallel streams in Java. Design your code to split the workload into multiple independent tasks that can be processed concurrently. Use multiprocessing APIs or libraries to create and manage parallel processes, distributing the workload among them. Implement communication mechanisms, such as interprocess communication (IPC), shared-memory, or message passing, depending on your programming language or framework, to enable coordination and data sharing between multiple processes.
+- *Asynchronous processing*: Aynchronous processing allows non-blocking execution. For example, you can start a process, and then paused it to allow a second process to complete. Determine the components or operations in your code that can be executed asynchronously. Identify the programming language or framework you're using and understand the asynchronous programming model it supports, such as async/await in .NET or promises in JavaScript. Restructure your code to use asynchronous programming constructs, enabling nonblocking execution of tasks. Decouple long-running or I/O-intensive operations from the main execution thread by using asynchronous methods or callbacks. Utilize asynchronous APIs or libraries provided by your programming language or framework to handle asynchronous workflows.
+- *Multithreading*: Multithreading lets you execute multiple threads of a single process concurrently.Identify sections of your code that can be executed concurrently and independently. Read the documentation or guidelines specific to the programming language or framework you're using for multithreading best practices. Create multiple threads or thread pools to handle parallel execution of tasks. Implement synchronization mechanisms, such as locks, mutexes, or semaphores, to ensure thread safety and prevent race conditions when accessing shared resources. Consider using higher-level abstractions, like thread pools or task-based parallelism libraries, to streamline the management of multiple threads and simplify concurrency control.
+- *Multiprocessing*: Multiprocessing can have processes run in parallel. It can provide better utilization of multiple CPU cores than multithreading. Determine whether the workload or operations in your code lend themselves to parallel processing. Identify the programming language or framework you're using and explore its multiprocessing capabilities, such as the multiprocessing module in Python or parallel streams in Java. Design your code to split the workload into multiple independent tasks that can be processed concurrently. Use multiprocessing APIs or libraries to create and manage parallel processes, distributing the workload among them. Implement communication mechanisms, such as interprocess communication (IPC), shared-memory, or message passing, depending on your programming language or framework, to enable coordination and data sharing between multiple processes.
 
-### Use the correct software development kits (SDKs)
+### Optimize software development kits (SDKs)
 
 Picking the correct SDKs for cost optimization involves selecting software development kits that are designed to optimize resource usage and improve performance. It's important to evaluate the features and capabilities of each SDK, considering compatibility with your programming language and development environment. Here's guidance to help pick the best SDKs for your workload:
 
@@ -146,7 +144,7 @@ By employing these techniques, you can optimize data access, retrieval, and stor
 
 ### Optimize architecture
 
-Evaluate your workload architecture to identify opportunities for resource optimization. The goal is to use the right services for the right job. To reach this goal, you might need to redesign parts of the architecture to use fewer resources. Consider serverless or managed services and optimize resource allocation. By optimizing your architecture, you can achieve your functional and nonfunctional requirements while consuming fewer per-instance resources.
+Optimizing architecture means evaluating your workload architecture to identify opportunities for resource optimization. The goal is to use the right services for the right job. To reach this goal, you might need to redesign parts of the architecture to use fewer resources. Consider serverless or managed services and optimize resource allocation. By optimizing your architecture, you can achieve your functional and nonfunctional requirements while consuming fewer per-instance resources.
 
 **Use design patterns.** Design patterns are reusable solutions to common software design problems. They provide a structured approach to designing code that is efficient, maintainable, and scalable. Design patterns help developers solve recurring design problems and promote code reusability.
 
@@ -164,7 +162,7 @@ To implement design patterns, developers need to understand the principles and g
 
 **Modify resource sizes.** Continuously monitor and analyze the resource utilization of your workload. Based on the observed patterns and trends, make adjustments to resource sizing and configuration settings to optimize resource consumption. Consider rightsizing virtual machine instances, adjusting memory allocation, and optimizing storage capacity. By right-sizing resources, you can avoid unnecessary costs associated with underutilization or overprovisioning.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Code and architecture rework might not fit with current project schedules and might lead to schedule and cost slippage
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code and architecture rework might not fit with current project schedules and might lead to schedule and cost slippage
 
 ## Azure facilitation
 

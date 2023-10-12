@@ -23,10 +23,10 @@ This guide describes the recommendations for optimizing the cost of each workloa
 
 ## Key strategies
 
-Invest more in high-priority flows than in lower-priority flows. Aligning flow priority and spending could involve either decoupling flows that currently share the same resource. It could also involve combining flows that have similar requirements but are run on separate resources. For example, suppose you have a web application that includes multiple flows, such as user registration, login, and data processing. All of these flows run on a single server, despite having different resource needs. To optimize both costs and performance, you might:
+Invest more in high-priority flows than in lower-priority flows. Aligning flow priority and spending could involve either decoupling flows that currently share the same resource. It could also involve combining flows that have similar requirements but are run on separate resources. For example, suppose you have a web application that includes multiple flows, such as user registration, login, and data processing. All of these flows run on a single server, despite having different resource needs. To optimize both costs and performance, you might separate flows or combine flows:
 
-- *Decouple*: Decouple the user registration flow from the others and move it to a dedicated, lower-cost server. This flow is important but not resource-intensive, making it a good candidate for a less expensive server.
-- *Combine*: Combine the login and data processing flows, which both have higher resource requirements, and run them together on a high-performance server. Combining these flows allows the server to efficiently handle the resource-intensive needs of both flows. It optimizes performance and costs.
+- *Separate flows*: For example, you could decouple the user registration flow from the others and move it to a dedicated, lower-cost server. This flow is important but not resource-intensive, making it a good candidate for a less expensive server.
+- *Combine flows*: For example, you could coombine the login and data processing flows, which both have higher resource requirements, and run them together on a high-performance server. Combining these flows allows the server to efficiently handle the resource-intensive needs of both flows. It optimizes performance and costs.
 
 In a workload, there can be different types of flows or paths that need to be considered. This guide focuses on the following categories:
 
@@ -44,11 +44,11 @@ Understanding workload flows aids in reallocating resources effectively. The goa
 
 ### Prioritize the flows
 
-Flow prioritization involves classifying flows based on their influence on business outcomes, implications on user experience, and the resources they consume. Critical flows might have higher expectations around availability, recovery, and performance due to the criticality of associated business scenarios and functionality. They're crucial for business operations. They often require higher levels of availability, faster recovery times, and better performance to meet workload objectives.
+Flow prioritization involves classifying flows based on their influence on business outcomes, implications on user experience, and the resources they consume. Critical flows might have higher expectations around availability, recovery, and performance due to the criticality of associated business scenarios and functionality. They often require higher levels of availability, faster recovery times, and better performance to meet workload objectives. By prioritizing flows, you can align spending to flow priority. To prioritize flows, consider the following steps:
 
 - *Identify flow value*: When optimizing workload flow costs, it's important to identify the flow that provides the most value. You don’t want to spend more than a flow is worth. Instead of simply cutting costs, consider shifting costs to prioritize the more valuable flows. For example, your checkout flow is critical for business, but the purchase history isn't. You should allocate more resources and budget to the checkout flow.
 
-Low-priority flows have lower expectations around availability, recovery, and performance. You can reduce costs by choosing cheaper configuration for less performance, availability, or business continuity spending.
+  Low-priority flows have lower expectations around availability, recovery, and performance. You can reduce costs by choosing cheaper configuration for less performance, availability, or business continuity spending.
 
 - *Compare against metrics*: If you’re struggling to prioritize your flows, consider availability and recovery goals you assigned to them. Critical flows often have high availability requirements and service level agreements (SLAs). Flows associated with a lower RPO and RTO are more important than flows with a higher RPO and RTO.
 
@@ -77,7 +77,7 @@ Similar types of flows share similar attributes. Like dissimilar flows, these at
 - *Log processing*: Instead of allowing multiple applications or services to each operate their own log processing instances, consider directing them all to a shared log processing tool. This approach minimizes the number of active instances, translating to direct cost savings.
 - *Authentication services*: If multiple applications deploy their own distinct authentication mechanisms, it introduces redundancy. Integrating a single sign-on (SSO) solution or a communal authentication service reduces this duplication and optimizes resource usage, leading to lower costs.
 
-**Risk:** However, don't mistake coincidence with design. Just because two flows look similar doesn't mean they serve the same purpose. You need to understand the function and design of each flow before merging or altering them. Misinterpreting a flow based solely on its appearance can lead to unintended consequences and could disrupt the service or process it supports. If multiple flows serve the same function and there are no discernible differences in their design or intent, consider consolidating them.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: However, don't mistake coincidence with design. Just because two flows look similar doesn't mean they serve the same purpose. You need to understand the function and design of each flow before merging or altering them. Misinterpreting a flow based solely on its appearance can lead to unintended consequences and could disrupt the service or process it supports. If multiple flows serve the same function and there are no discernible differences in their design or intent, consider consolidating them.
 
 ### Continuously monitor flows
 

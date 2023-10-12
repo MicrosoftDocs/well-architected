@@ -52,9 +52,9 @@ Tuning the autoscaling policy involves refining autoscaling to react to load cha
 - *Adjust a cooldown period*: Adjust the cooldown period to prevent excessive scaling activities triggered by temporary load spikes. A cooldown period introduces a delay between scaling events, allowing the system to stabilize before further scaling actions.
 - *Monitor and fine-tune*: Continuously monitor the system's behavior and performance. Analyze the scaling activities and adjust the policy as needed to optimize cost while still meeting the desired nonfunctional requirements.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Lowering the number of scaling events raises the chances of encountering issues related to scaling. It means you're eliminating the extra cushion or buffer that could help manage potential problems or delays from scaling.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Lowering the number of scaling events raises the chances of encountering issues related to scaling. It means you're eliminating the extra cushion or buffer that could help manage potential problems or delays from scaling.
 
-### Use event-based scaling
+### Consider event-based scaling
 
 Event-driven autoscaling allows the application to dynamically adjust resources based on specific events or triggers rather than traditional metrics like CPU or memory utilization. For example, Kubernetes event-driven autoscaling (KEDA) can scale applications based on scalers such as the length of a Kafka topic. Precision helps prevent unnecessary scaling fluctuations, resource waste, and ultimately optimizes costs. To implement this guidance, the following steps can be taken:
 
@@ -65,7 +65,7 @@ Event-driven autoscaling allows the application to dynamically adjust resources 
 - *Configure scaling rules*: Define the scaling rules that specify how your scale unit should scale in response to the events. These rules can be based on thresholds, patterns, or any other criteria that align with your application's requirements. Scaling thresholds should relate to business metrics. For example, if you add two more instances, you can support 50 more users in shopping cart processing.
 - *Test and monitor*: Validate the behavior of your event-based scaling implementation by testing it with different event scenarios. Monitor the scaling actions and ensure that they align with your expectations.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff** Configuring and fine-tuning event-based autoscaling can be complex, and improper configuration may lead to over or under-provisioning of resources.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff** Configuring and fine-tuning event-based autoscaling can be complex, and improper configuration may lead to over or under-provisioning of resources.
 
 ### Optimize demand and supply
 
@@ -77,17 +77,17 @@ Offloading demand refers to the practice of distributing or transferring resourc
 
 - *Caching*: Use caching to store frequently accessed data or content, reducing the load on your backend infrastructure. For example, use a content delivery networks (CDNs) to cache and serve static content, reducing the need for scaling the backend. However, not every workload can cache data. Workloads that require up-to-date and real-time data, like trading or gaming workloads, shouldn’t use a cache. The data would be old and irrelevant to the user.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**. Caching may introduce challenges in terms of cache invalidation, consistency, and managing cache expiration. It's important to carefully design and implement caching strategies to avoid potential tradeoffs.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**. Caching may introduce challenges in terms of cache invalidation, consistency, and managing cache expiration. It's important to carefully design and implement caching strategies to avoid potential tradeoffs.
 
 - *Content offloading*: Offload content to external services or platforms to reduce the workload on your infrastructure. For example, rather than store video files on your primary server, you can host these files in a separate storage service that’s independent of your primary server. You can load these large files directly from the storage service. This approach frees up resources on your servers, allowing you to use a smaller server. It can be cheaper to store large files in a separate data store. You can use a CDN to improve performance.
 - *Load balancing*: Distribute incoming requests across multiple servers using load balancing. It evenly distributes the workload and prevents any single server from becoming overwhelmed. Load balancers optimize resource utilization and improve the efficiency of your infrastructure.
 - *Database offloading*: Reduce the load on your main application server by offloading database operations to a separate database server or a specialized service. For example, use a CDN for static content caching and a Redis cache for dynamic content (data from database) caching. Techniques like database sharding, read replicas, or using managed database services can as well.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Offloading specific tasks to alternate resources helps reduce or avoid extra scaling and costs associated with scaling. However, it's important to consider the operational and maintenance challenges that may arise from offloading. Conducting a comprehensive cost-benefit analysis is crucial when selecting the most appropriate offloading techniques for your workload. This analysis ensures that the chosen method is both efficient and feasible in relation to the anticipated savings and operational complexities.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Offloading specific tasks to alternate resources helps reduce or avoid extra scaling and costs associated with scaling. However, it's important to consider the operational and maintenance challenges that may arise from offloading. Conducting a comprehensive cost-benefit analysis is crucial when selecting the most appropriate offloading techniques for your workload. This analysis ensures that the chosen method is both efficient and feasible in relation to the anticipated savings and operational complexities.
 
 #### Reduce demand
 
-Reducing resource refers to implementing strategies and techniques that help minimize the utilization of resources in a workload. Offloading demand shifts demand to other resources. Reducing demand decreases demand on the workload. Reducing demand allows you to avoid overprovisioning resources and paying for unused or underutilized capacity. To reduce demand through design patterns, the following steps can be taken:
+Reducing resource demand refers to implementing strategies and techniques that help minimize the utilization of resources in a workload. Offloading demand shifts demand to other resources. Reducing demand decreases demand on the workload. Reducing demand allows you to avoid overprovisioning resources and paying for unused or underutilized capacity. You should use code-level design patterns to reduce the demand on workload resources. To reduce demand through design patterns, the following steps can be taken:
 
 - *Understand design patterns*: Familiarize yourself with various design patterns that promote resource optimization (see list in the following paragraph).
 - *Analyze workload requirements*: Assess the specific requirements of your workload, including its expected demand patterns, peak loads, and resource needs.
@@ -111,11 +111,9 @@ By following these steps and using appropriate design patterns, you can reduce r
 
 #### Control supply
 
-Setting a maximum threshold in cost optimization refers to defining an upper limit or cap on the amount of cost that you're willing to spend on a particular resource or service. It's an important strategy because it helps control costs and ensures that expenses don't exceed a certain level.
+Controlling supply refers to defining an upper limit on the amount that you're willing to spend on a particular resource or service. It's an important strategy because it helps control costs and ensures that expenses don't exceed a certain level. Establish a budget and monitor the spending to ensure it stays within the defined threshold. You can use cost management platforms, budget alerts, or tracking usage and spending patterns. Some services allow you to throttle supply and limit rates, and you should use those features where helpful.
 
-Establish a budget and monitor the spending to ensure it stays within the defined threshold. You can use cost management platforms, budget alerts, or tracking usage and spending patterns.
-
-**Tradeoff:** Stricter limits may result in missed opportunities to scale when demand increases, potentially impacting user experience. It could cause shutdowns or unable to respond to load. It's important to strike a balance between cost optimization and ensuring that you have sufficient resources to meet your business needs.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Stricter limits may result in missed opportunities to scale when demand increases, potentially impacting user experience. It could cause shutdowns or unable to respond to load. It's important to strike a balance between cost optimization and ensuring that you have sufficient resources to meet your business needs.
 
 ## Azure facilitation
 

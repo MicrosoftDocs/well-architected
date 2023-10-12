@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for identifying and rating flows
 
-**Applies to: RE 01**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:01](checklist.md)| Identify the user and system flows of your workload. Prioritize importance by using a criticality scale that's based on your business requirements. |
+|---|---|
 
 This guide describes the recommendations for creating a catalog of user and system flows for your workload. Understand and model your flows to ensure that your reliability efforts benefit the most critical parts of your workload. Deprioritize the flows that don't have stringent availability requirements.
 
@@ -50,8 +53,7 @@ Assign criticality to your flows to help you design your architecture. Identify 
 
 - **Low**: A flow that's not directly tied to the functionality of the workload. For example, a nightly log transfer to a monitoring system or a pop-up survey feature might have a low criticality rating.
 
-## Azure facilitation
-<!--Looks like this article might not be complete. This section was blank. Leaving just in case.-->
+<!-- ## Azure facilitation -->
 
 ## Tradeoffs
 
@@ -65,9 +67,9 @@ This scenario uses the [reliable web app pattern reference architecture](/azure/
 
 :::image type="content" source="media/identify-flows/relecloud-flow.png" alt-text="Diagram that shows an example flow that's based on Relecloud." border="false" lightbox="media/identify-flows/relecloud-flow.png":::
 
-### Workload
-<!--There are comments here in the original Sharepoint doc. It sounds like this section is a placeholder for future ideas. Leaving it just in case.-->
-Relecloud (eCommerce, line-of-business web app)
+<!-- ### Workload
+There are comments here in the original Sharepoint doc. It sounds like this section is a placeholder for future ideas. Leaving it just in case.
+Relecloud (eCommerce, line-of-business web app) -->
 
 #### User flows
 
@@ -184,3 +186,10 @@ To understand state changes in the production system, web application and API in
 ## Related links
 
 Learn about determining [business criticality in cloud management](/azure/cloud-adoption-framework/manage/considerations/criticality).
+
+## Reliability checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 

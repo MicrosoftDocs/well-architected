@@ -24,7 +24,7 @@ Creating a culture of financial responsibility helps organizations manage their 
 
 ### Make costs transparent
 
-Making budgets transparent means openly sharing and communicating financial information related to a workload or project. It involves sharing budget details and financials with relevant stakeholders and creating a broad sense of financial responsibility.
+Making budgets and workload costs transparent means openly sharing and communicating financial information related to a workload or project. It involves sharing budget details and financials with relevant stakeholders and creating a broad sense of financial responsibility.
 
 - *Involve everyone*: Ensure that everyone involved in the project or workload has access to the budget information. Include team members, managers, and decision-makers. Sharing the budget information makes everyone feel accountable for their actions and decisions, fostering a sense of ownership. 
 - *Share budget details*: Communicate the budget information openly with relevant stakeholders. Consider sharing the allocated budget, cost breakdowns, and financial goals associated with the workload or project.
@@ -34,7 +34,7 @@ A benefit of sharing these cost details is early detection of overspending. Tran
 
 ### Invest in cultural change
 
-Cultural change encourages the workload team to embrace a nonfixed mindset and constantly seek opportunities to learn about new technologies and cost optimization strategies. Foster a culture that values and rewards contributions in this area. Promote a mindset of continuous improvement and cost awareness among personnel. Encourage them to proactively identify cost optimization opportunities in their day-to-day work and share them with the team. Consider the following key steps:
+Investing in cultural change should encourage the workload team to embrace a growth mindset and seek opportunities to learn cost optimization strategies. Foster a culture that values and rewards contributions in this area. Promote a mindset of continuous improvement and cost awareness among personnel. Encourage them to proactively identify cost optimization opportunities in their day-to-day work and share them with the team. Consider the following key steps:
 
 - *Cost workshops*: Conduct workshops or training sessions for leaders to enhance their understanding of financial responsibility and its importance. These workshops can cover topics such as budgeting, cost management, and financial decision-making. Evaluate the current financial practices and culture within the organization. Identify areas that require improvement and determine the specific interventions needed to address those areas. Collaborate with subject matter experts or external consultants, if necessary, to design and develop engaging and informative workshop content. 
 - *Team-building activities*: Organize team-building activities that focus on financial responsibility. These activities can include group exercises, case studies, or simulations that encourage collaboration and problem-solving related to financial matters. Foster a culture of knowledge sharing. Encourage the workload team to share their expertise and best practices with their colleagues through internal forums, presentations, or mentoring programs. 
@@ -43,7 +43,7 @@ Cultural change encourages the workload team to embrace a nonfixed mindset and c
 
 ### Develop skills in-house
 
-To develop core skills in-house means to invest in training and developing the existing workforce to acquire the necessary expertise and knowledge required to optimize costs within a workload. It involves providing training programs, resources, and support to enhance the skills and capabilities of employees within the organization. It allows you to use the existing talent pool and empower employees to take ownership of cost optimization initiatives. To develop skills in-house, consider following these steps:
+To develop skills in-house means to invest in training and developing the existing workforce to acquire the necessary expertise and knowledge required to optimize costs within a workload. It involves providing training programs, resources, and support to enhance the skills and capabilities of employees within the organization. It allows you to use the existing talent pool and empower employees to take ownership of cost optimization initiatives. To develop skills in-house, consider following these steps:
 
 - *Assess skills*: Evaluate the existing skills and knowledge of the workload team to identify areas that need improvement in terms of workload cost optimization.
 - *Define training objectives*: Determine the specific skills and expertise required to optimize costs within the workload. Include areas such as cloud cost management, resource optimization techniques, budgeting, and data analysis.
@@ -53,7 +53,7 @@ To develop core skills in-house means to invest in training and developing the e
 
 ### Communicate financial expectations
 
-Personnel need ways to receive and relay cost optimization ideas. Creating communication channels allows for the exchange of knowledge, collaboration, and the identification of cost-saving opportunities.
+Personnel need ways to receive and relay cost optimization ideas. You should clearly communicate financial expectations to the workload team. Create communication channels that allow you to exchange knowledge, collaborate, and identify cost-saving opportunities.
 
 - *Reshape values*: Review and update values and mission statements to include financial responsibility. Ensure that these values are communicated and reinforced throughout the organization, aligning them with the overall business objectives. Recognize and reward individuals and teams who demonstrate financial responsibility and contribute to cost optimization efforts. Use performance evaluations, incentives, or other recognition programs.
 - *Establish clear expectations*: Set clear expectations and goals for all stakeholders that are aligned with the mission and encourage accountability and responsibility for all actions taken. Establish and promote success metrics aligned with individual teams' goals.

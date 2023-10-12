@@ -9,7 +9,12 @@ ms.topic: conceptual
 
 # Recommendations for designing for redundancy
 
-**Applies to: RE 04**
+**Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
+
+|[RE:04](checklist.md)| Add redundancy at different levels, especially for critical flows. Apply redundancy to the compute, data, network, and other infrastructure tiers in accordance with the identified reliability targets.  |
+|---|---|
+
+**Related guides:** [Highly available multiregional design](highly-available-multi-region-design.md) | [Using availability zones and regions](regions-availability-zones.md) 
 
 This guide describes the recommendations for adding redundancy throughout critical flows at different workload layers, which optimizes resiliency. Meet the requirements of your defined reliability targets by applying the proper levels of redundancy to your compute, data, networking, and other infrastructure tiers. Apply this redundancy to give your workload a strong, reliable foundation to build on. When you build your workload without infrastructure redundancy, there's a high risk of extended downtime due to [potential failures](failure-mode-analysis.md).
 
@@ -138,6 +143,7 @@ The Azure platform helps you optimize the resiliency of your workload and add re
 For an example of a multi-region redundant deployment, see [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
 
 The following diagram shows another example:
+
 :::image type="content" source="media/redundancy/reliable-web-app-dotnet.png" alt-text="Diagram that shows the architecture of the reference implementation." border="false" lightbox="media/redundancy/reliable-web-app-dotnet.png":::
 
 ## Related links
@@ -148,3 +154,10 @@ To learn more about stateful data service redundancy, see the following resource
 - [Zone-redundant storage](/azure/storage/common/storage-redundancy#zone-redundant-storage)
 - [Azure SQL Database active geo-replication](/azure/azure-sql/database/active-geo-replication-overview)
 - [Configure replication between two managed instances](/azure/azure-sql/managed-instance/replication-between-two-instances-configure-tutorial)
+
+## Reliability checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Reliability checklist](checklist.md) 

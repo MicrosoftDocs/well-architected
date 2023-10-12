@@ -34,7 +34,7 @@ Governance policies provide spending guardrails on various aspects of resources,
 - *Set resource limits*: Set resource limits to prevent overprovisioning and control costs. Include limits on the number of resources that you can provision, the size of resources, or the duration of resource usage. Setting these limits can prevent excessive spending and optimize resource utilization. For example, it helps limit the effects of unauthorized account breach for incidents relating to crypto mining.
 - *Define resource configurations*: Policies can define specific configurations for resources. For instance, you can enforce settings on resources that promote cost optimization such as autoscaling and data archiving.
 
-:::image type="icon" source="../_images/risk.svg"::: **Risk:** Set a maximum scaling threshold based on testing so that you avoid massive scaling spikes that cause cost overruns. You also don’t want to set a maximum that’s too low and negatively affects performance.
+ :::image type="icon" source="../_images/risk.svg"::: **Risk**: Set a maximum scaling threshold based on testing so that you avoid massive scaling spikes that cause cost overruns. You also don’t want to set a maximum that’s too low and negatively affects performance.
 
 - *Restrict locations*: Policies can restrict the deployment of resources to specific regions or locations. It helps avoid costly data transfer fees or comply with data sovereignty regulations.
 - *Manage data*: Policies can enforce data management practices that help optimize costs. For example, you can have policies that require the use of lower-cost storage tiers for less frequently accessed data or define expiration rules for data retention.
@@ -59,7 +59,7 @@ Release gates refer to the checkpoints or conditions that you need to met before
 - *Integrate with deployment pipeline*: Incorporate the release gates into the deployment pipeline, ensuring that resource deployments are subject to the defined criteria. You can use automation tools or custom scripts.
 - *Monitor and enforce*: Continuously monitor spending and resource usage against the defined criteria. If the spending thresholds or other conditions are exceeded, the release gates should prevent further deployments until the issues are addressed.
 
-### Setup budgets and alerts
+### Configure cost alerts
 
 Setting alerts on budgets, cost anomalies, and prepaid plan utilization is an important aspect of cost optimization. These alerts serve as spending guardrails by providing visibility into your cloud spending and enabling proactive cost management. You need to manage who receives notifications on alerts. Ensure you keep the recipients up to date and in line with current responsibilities and access.
 
@@ -71,7 +71,7 @@ Setting alerts on budgets, cost anomalies, and prepaid plan utilization is an im
 
 Infrastructure as code refers to the practice of managing and provisioning infrastructure resources using code, typically in the form of configuration files. It allows you to define and automate the deployment and configuration of infrastructure resources, such as virtual machines, networks, and storage, using code-based templates.
 
-Infrastructure provides a structured and repeatable approach to managing and controlling infrastructure resources. You can provision resources whenever needed and delete once the need is over without running it continuously. It helps optimize costs by ensuring you provision and configure resources according to predefined rules and best practices. To use IaC for cost optimization, you can follow these steps:
+Infrastructure as code provides a structured and repeatable approach to managing and controlling infrastructure resources. You can provision resources whenever needed and delete once the need is over without running it continuously. It helps optimize costs by ensuring you provision and configure resources according to predefined rules and best practices. To use IaC for cost optimization, you can follow these steps:
 
 - *Create infrastructure templates*: Use a code-based template language to define your infrastructure resources and their configurations. These templates allow you to specify the desired state of your infrastructure resources in a declarative manner. Implement best practices for cost optimization in your infrastructure code. Consider right-sizing your resources and using reserved instances or savings plans. Use cost-effective storage options and apply resource metadata for cost allocation and tracking.
 - *Version your templates*: Store your infrastructure templates in a version control system, such as Git, to track changes and manage different versions. It ensures you have a history of your infrastructure configurations and allows for collaboration among team members.
@@ -82,7 +82,7 @@ Infrastructure provides a structured and repeatable approach to managing and con
 
 ### Azure Facilitation
 
-**Governance policies.** Azure Policy enables you to define and enforce governance policies that align with your cost optimization goals. You can use Azure Policy to set rules on management groups, subscriptions, and resource groups. These policies can control various aspects, including resource provisioning, usage limits, and cost allocation. You can promote rightsizing of resources, identify and eliminate idle or underutilized resources, and encourage the use of cost-effective services and architectures. Azure allows you to set limits or quotas to prevent unexpected costs. You can define limits on the number of resources that can be provisioned, the size of resources, or the duration of resource usage. By setting these limits, you can prevent overprovisioning and control costs.
+**Governance policies.** [Azure Policy](/azure/governance/policy/overview) enables you to define and enforce governance policies that align with your cost optimization goals. You can use Azure Policy to set rules on management groups, subscriptions, and resource groups. These policies can control various aspects, including resource provisioning, usage limits, and cost allocation. You can promote rightsizing of resources, identify and eliminate idle or underutilized resources, and encourage the use of cost-effective services and architectures. Azure allows you to set limits or quotas to prevent unexpected costs. You can define limits on the number of resources that can be provisioned, the size of resources, or the duration of resource usage. By setting these limits, you can prevent overprovisioning and control costs.
 
 **Identifying underused or idle resources.** [Azure Advisor](/azure/advisor/advisor-cost-recommendations) helps you optimize and reduce your overall Azure spend by identifying idle and underutilized resources. You can get cost recommendations from the Cost section in the Advisor dashboard.
 

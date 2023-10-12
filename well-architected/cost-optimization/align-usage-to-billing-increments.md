@@ -30,7 +30,7 @@ Different services have different billing factors. Billing factors include insta
 - *Data transfer*: Data transfer refers to the movement of data into and out of a resource. It includes inbound and outbound data transfer. Data transfer costs can vary based on the volume of data transferred. Understanding data transfer costs helps in optimizing data transfer patterns, selecting appropriate network configurations, and minimizing costs associated with data movement.
 - *Specialized services*: Specialized services are other services or features that may be used with other resources. These services can include specialized databases, AI services, or other advanced capabilities. It's important to understand the cost implications of using specialized services as they may have separate pricing models or extra charges associated with them.
 - *vCPUs*: vCPU usage represents the utilization of virtual CPUs (vCPUs) within a resource. It's an important billing factor because resources such as virtual machines (VMs) are often billed based on the number of vCPUs allocated to them. By monitoring and optimizing vCPU usage, you can ensure efficient utilization of resources and minimize unnecessary costs.
-- *Uptime guarantees*: Uptime guarantees refer to the service level agreements (SLAs) provided by cloud providers regarding the availability and reliability of their services. While uptime guarantees aren't directly related to billing, they're important to consider when optimizing costs. Higher uptime guarantees may come with higher costs, so it's essential to evaluate the trade-off between cost and service availability.
+- *Uptime guarantees*: Uptime guarantees refer to the service level agreements (SLAs) provided by cloud providers regarding the availability and reliability of their services. While uptime guarantees aren't directly related to billing, they're important to consider when optimizing costs. Higher uptime guarantees may come with higher costs, so it's essential to evaluate the tradeoff between cost and service availability.
 
 Billing increments determine how resource usage is measured and billed. Here are some common billing increments:
 
@@ -62,12 +62,12 @@ To validate your understanding of billing increments, you can build a proof of c
 
 As you understand how resources are billed, you can align the workload design accordingly. You must understand the billing increments specific to each component. You have two primary options for cost optimization.
 
-- *Modify service:* Use different configurations, service tiers, or services to align the workload to billing thresholds. For example, your workload might move 5 TB of data daily, but you’re charged in 4-TB increments. You can find a different service tier or configuration to transfer the data at a cheaper or faster rate.
-- *Modify usage:* Redesign the usage pattern workload to align with a billing increment. For example, you can compress the data to 4 TB before transferring. Or you can extend the usage to the billing increment. For example, you could transfer 8 TB of data every other day.
+- *Modify the service:* Modifying the services means using different configurations, service tiers, or services to align the workload to billing thresholds. For example, your workload might move 5 TB of data daily, but you’re charged in 4-TB increments. You can find a different service tier or configuration to transfer the data at a cheaper or faster rate.
+- *Modify the usage:* Modifying the usage means redesigning the usage pattern workload to align with a billing increment. For example, you can compress the 5TB data to 4 TB before transferring. You can also extend the usage to the billing increment. For example, if you need to transfer 2 TBs of data every day, you could modify the schedule to transfer 4 TB of data every other day.
 
 If neither is feasible, then you need to accept the extra cost. Rework the budgets as needed if the extra cost wasn’t included.
 
-:::image type="icon" source="../_images/risk.svg"::: Risk:** Cost optimization decisions shouldn't compromise security requirements or compliance regulations. Opting for cheaper solutions without adequate security measures can expose the workload to potential vulnerabilities.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Cost optimization decisions shouldn't compromise security requirements or compliance regulations. Opting for cheaper solutions without adequate security measures can expose the workload to potential vulnerabilities.
 
 ## Azure facilitation
 
