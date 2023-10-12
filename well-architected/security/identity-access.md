@@ -91,131 +91,123 @@ You need to log the identity access trail. Doing so helps validate the controls,
 
 -   **Inside-out access**. Your application will need to access other resources. For example, reading from or writing to the data platform, retrieving secrets from the secret store, and logging telemetry to monitoring services. It might even need to access third-party services. These access needs require **workload identity**, which enables the application to authenticate itself against the other resources.
 
-    The concept applies at the component level. In this example, the container might need access to get its configuration from deployment pipelines. It needs to get images from a container registry. For this, **resource identity** is needed.
+    The concept applies at the component level. In the following example, the container might need access to deployment pipelines to get its configuration. These access needs require **resource identity**.
 
 All these identities should be authenticated by your IdP.
 
-Here's an example that shows the identity dimension of an architecture.
+Here's an example of how identity can be implemented in an architecture:
 
-:::image type="content" source="images/identity-access/architecture-identity.png" alt-text="Diagram that shows an example of the identity dimension of an architecture." border="false" lightbox="images/identity-access/architecture-identity.png":::
+:::image type="content" source="images/identity-access/architecture-identity.png" alt-text="Diagram that shows how identity can be implemented in an architecture." border="false" lightbox="images/identity-access/architecture-identity.png":::
 
 ### Determine actions for authorization
 
-Next, you want to know what each authenticated identity is trying to do so that those actions can be authorized. The actions can be divided into data plane access and control plane access.
+Next, you need to know what each authenticated identity is trying to do so that those actions can be authorized. The actions can be divided by the type of access that they require:
 
--   **Data plane access**. These actions cause data transfer for inside-out or outside-in access. For example, an application reading and writing data to a database, fetching secrets, or writing logs to a monitoring sink. At the component level, compute that's pulling or pushing images to a registry are considered as data plane operations.
+-   **Data plane access**. Actions that take place in the data plane cause data transfer for inside-out or outside-in access. For example, an application reading data from a database and writing data to a database, fetching secrets, or writing logs to a monitoring sink. At the component level, compute that's pulling or pushing images to or from a registry are considered data plane operations.
 
--   **Control plane access**. These actions cause an Azure resource to be created, modified, or deleted. For example, changes to resource properties.
+-   **Control plane access**. Actions that take place in the control plane cause an Azure resource to be created, modified, or deleted. For example, changes to resource properties.
 
-Applications typically target data plane operations, while operations often access both control and data planes. For authorization, note the operational actions that can be performed on the resource. For information about the permitted actions per resource, see [Azure resource provider operations](/azure/role-based-access-control/resource-provider-operations).
+Applications typically target data plane operations, while operations often access both control and data planes. To identify authorization needs, note the operational actions that can be performed on the resource. For information about the permitted actions for each resource, see [Azure resource provider operations](/azure/role-based-access-control/resource-provider-operations).
 
 ### Provide role-based authorization
 
-Based on the responsibility of each identity, authorize actions that should be permitted. *The identity must not be allowed to do more than needed*. Before setting authorization rules, have a clear understanding of who is asking, what are they allowed to do, and to what extent? Those factors lead to choices that combine identity, role, and scope.
+Based on the responsibility of each identity, authorize actions that should be permitted. *An identity must not be allowed to do more than it needs to do*. Before you set authorization rules, you need a clear understanding of who or what is making requests, what that role is allowed to do, and to what extent it can do it. Those factors lead to choices that combine identity, role, and scope.
 
-Consider the example of a workload identity. The application must have data plane access to the database. So, read and write actions must be allowed to the data resource. However, does the application need control plane access to the secret store? If the workload identity gets compromised by a bad actor, what would be the impact to the system, in terms of confidentiality, integrity, and availability.
+Consider a workload identity as an exmaple. The application must have data plane access to the database, so read and write actions to the data resource must be allowed. However, does the application need control plane access to the secret store? If the workload identity is compromised by a bad actor, what would be the impact to the system, in terms of confidentiality, integrity, and availability?
 
 ##### Role assignment
 
-A role is a *set of permissions* assigned to an identity. Assign roles that allow the identity to just complete the task, and no more. When user\'s permissions are restricted to their job requirements, it becomes easier to identify suspicious or unauthorized behavior in the system.
+A role is a *set of permissions* that's assigned to an identity. Assign roles that only allow the identity to complete the task, and no more. When user's permissions are restricted to their job requirements, it's easier to identify suspicious or unauthorized behavior in the system.
 
-Ask questions, such as, is read-only access good enough? Does the identity need permission to delete resources?
+**Limiting the level of access that users, applications, or services have to Azure resources reduces the potential attack surface.** If you grant only the minimum permissions that are required to perform specific tasks, the risk of a successful attack or unauthorized access is significantly reduced. For example, security teams only need read-only access to security attributes for all technical environments. That level is enough to assess risk factors, identify potential mitigations, and report on the risks.
 
-**Limiting the level of access that users, applications, or services have to Azure resources reduces the potential attack surface**. By granting only the minimum permissions required to perform specific tasks, the risk of a successful attack or unauthorized access is significantly reduced. For example, security teams need only read-only access to security attributes for all technical environments. That level is enough to assess risk factors, identify potential mitigations, and report on the risks.
+**Avoid permissions that specifically reference individual resources or users.** Granular and custom permissions create complexity and confusion because they don't pass on the intention to new resources that are similar. This can create  a complex legacy configuration that's difficult to maintain and negatively impact both security and reliability.
 
-There are scenarios where users need more access because of their organizational structure and teams organization. They might have an overlap between various roles or single users performing multiple standard roles. In this case, have multiple role assignments based on the business function instead of creating custom role for each such user for better manageability.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A granular access control approach enables better auditing and monitoring of user activities.
 
-**Avoid permissions that specifically reference individual resources or users**. Granular and custom permissions create complexity and confusion as they don\'t carry the intention to new similar resources. This can turn into a complex legacy configuration that's difficult to maintain and negatively impact both security and reliability.
+You assign roles to identities by using role-based access control (RBAC). **Always use IdP-provided RBAC** to take advantage of features that enable you to apply access control consistently and revoke it rigorously.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A granular access control approach allows for better auditing and monitoring of user activities.
-
-A role also has an *associated scope*. The role can operate at the allowed management group, subscriptions, resource groups, resources, or other custom scope. Even if the identity has a limited set of permissions, widening the scope to include resources that are outside their job function, is risky. For example, read access to all source code and data can be dangerous and must be controlled for information exposure.
-
-Roles are assigned to identities by using role-based access controls (RBAC). **Always use IdP-provided RBAC** to take advantage of features, which can be applied with consistency and revoked with rigor.
-
-**Use built-in roles** because they're designed to cover most use cases. Custom roles are a powerful and sometimes useful capability, but they should be reserved for cases when built in roles won\'t work. Customization leads to complexity that increases confusion and makes automation more complex, challenging, and fragile. These factors all negatively impact security.
+**Use built-in roles.** They're designed to cover most use cases. Custom roles are powerful and sometimes useful, but you should be reserved for scenarios in which built-in roles won't work. Customization leads to complexity that increases confusion and makes automation more complex, challenging, and fragile. These factors all negatively impact security.
 
 **Grant roles that start with least privilege and add more based your operational or data access needs**. Your technical teams must have clear guidance to implement permissions.
 
-If you want fine-grained control on RBAC, add conditions on the role assignment based on context such as actions, attributes, and so on.
+If you want fine-grained control on RBAC, add conditions on the role assignment based on context, such as actions and attributes.
 
 ### Make conditional access choices
 
-Don't give all identities the same level of access. Base your decision on two main factors:
+Don't give all identities the same level of access. Base your decisions on two main factors:
 
--   **Time**: The duration that the identity can access your environment.
+-   **Time**. How long the identity can access your environment.
 
--   **Privilege**: The level of permissions.
+-   **Privilege**. The level of permissions.
 
-Those factors aren't an either, or choice. A compromised identity with more privileges and unlimited timed access, will gain more control of the system and data or use the access to continue to change the environment. Constrain those aspects both as a preventive measure and to control the blast radius.
+Those factors aren't mutually exclusive. A compromised identity that has more privileges and unlimited duration of access can gain more control over the system and data or use that access to continue to change the environment. Constrain those access factors both as a preventive measure and to control the blast radius.
 
--   *Just in Time (JIT)* approaches provide the required privileged only when needed.
+-   *Just in Time (JIT)* approaches provide the required privileges only when they're needed.
 
 -   *Just Enough Access (JEA)* provides only the required privileges.
 
-While time and privilege are primary ways, there are other conditions that apply. For example, the device, network, and location, where the access originated can also be used to set policies.
+Although time and privilege are the primary factors, there are other conditions that apply. For example, you can also use the device, network, and location from which the access originated to set policies.
 
-**Use strong controls that filter, detect, and block unauthorized access** including parameters such as user identity and location, device health, workload context, data classification and anomalies.
+**Use strong controls that filter, detect, and block unauthorized access**, including parameters like user identity and location, device health, workload context, data classification, and anomalies.
 
-For example, your workload might need to be accessed by third-party identities, entities such as vendors, partners, and customers. They need the appropriate level of access instead of the default permission given to full-time employees. Clear differentiation of external accounts makes it easier to prevent and detect attacks coming in from these vectors.
+For example, your workload might need to be accessed by third-party identities, entities like vendors, partners, and customers. They need the appropriate level of access rather than the default permissions that you provide to full-time employees. Clear differentiation of external accounts makes it easier to prevent and detect attacks that come from these vectors.
 
-Your choice of IdP must be able to provide that differentiation and provide built-in features that grant permission based on the least privilege and have built in threat intelligence. This includes monitoring of access requests and sign-ins. Azure-provided IdP is Azure Active Directory. For more information, see the [Azure facilitation section](#azure-facilitation) in this article.
+Your choice of IdP must be able to provide that differentiation, provide built-in features that grant permissions based on the least privilege, and provide built-in threat intelligence. This includes monitoring of access requests and sign-ins. The Azure IdP is Microsoft Entra ID. For more information, see the [Azure facilitation section](#azure-facilitation) of this article.
 
 ### Critical impact accounts
 
-Administrative identities introduce some of the highest impact security risks because performing these tasks require privileged access to a broad set of these systems and applications. Compromise or misuse can have a detrimental effect on the business and its information systems. Security of administration is one of the most critical security areas.
+Administrative identities introduce some of the highest impact security risks because the tasks they perform require privileged access to a broad set of these systems and applications. Compromise or misuse can have a detrimental effect on your business and its information systems. Security of administration is one of the most critical security areas.
 
 Protecting privileged access against determined adversaries requires you to take a complete and thoughtful approach to isolate these systems from risks. Here are some strategies:
 
--   **Minimize the number of critical impact accounts**.
+-   **Minimize the number of critical impact accounts.**
 
--   **Have separate roles** instead of elevating privileges for existing identities.
+-   **Use separate roles** instead of elevating privileges for existing identities.
 
--   **Avoid permanent or standing access** by using JIT features of the IdP. For break glass situations, follow an emergency access process.
+-   **Avoid permanent or standing access** by using the JIT features of your IdP. For break glass situations, follow an emergency access process.
 
--   **Use modern access protocols** such as passwordless authentication or multifactor authentication (MFA). Externalize those mechanisms to your IdP.
+-   **Use modern access protocols** like passwordless authentication or multifactor authentication (MFA). Externalize those mechanisms to your IdP.
 
 -   Enforce key security attributes by using **conditional access policies**.
 
--   **Decommission administrative accounts** that are unused.
+-   **Decommission administrative accounts** that aren't being used.
 
-Use single identity across environments and associate single identity with the user or principal. Consistency of identities across cloud and on-premises reduce human errors and the resulting security risk. Teams managing resources in both environments need a consistent authoritative source to achieve security assurances. Work with your central identity team to make sure identities in hybrid environments are synchronized.
+Use a single identity across environments and associate a single identity with the user or principal. Consistency of identities across cloud and on-premises environments reduces human errors and the resulting security risks. Teams in both environments that manage resources need a consistent, authoritative source in order to meet security assurances. Work with your central identity team to ensure that identities in hybrid environments are synchronized.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: There's a risk associated with synchronizing high privilege identities. An attacker can get full control of on-premises assets leading to a successful compromise of a cloud account. Evaluate your synchronization strategy by filtering out accounts that can add to the attack surface.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: There's a risk associated with synchronizing high privilege identities. An attacker can get full control of on-premises assets, and this can lead to a successful compromise of a cloud account. Evaluate your synchronization strategy by filtering out accounts that can add to the attack surface.
 
 ### Establish processes to manage the identity lifecycle
 
-**Access to identities must not live longer than the resources they access**. Ensure you have a process for disabling or deleting identities when there are changes in team structure, or software components.
+**Access to identities must not last longer than the resources that the identities access.** Ensure that you have a process for disabling or deleting identities when there are changes in team structure, or software components.
 
-This applies to source control, data, control planes, workload users, infrastructure, tooling, monitoring data, logs, metrics, and other entities.
+This guidance applies to source control, data, control planes, workload users, infrastructure, tooling, the monitoring of data, logs, metrics, and other entities.
 
-**Establish identity governance process** to manage the lifecycle of digital identities, high-privileged users, external/guest users, workload users. Implement access reviews to ensure that identities are detected which have left the organization or the team and their workload permissions are removed.
+**Establish an identity governance process** to manage the lifecycle of digital identities, high-privileged users, external/guest users, and workload users. Implement access reviews to ensure that when identities leave the organization or the team, their workload permissions are removed.
 
 ### Protect nonidentity based secrets
 
-Application secrets such as preshared keys should be considered as vulnerable points in the system. In the two-way communication, if the provider or consumer is compromised, it can introduce significant security risks. They can also be burdensome because of extra operational processes.
+Application secrets like preshared keys should be considered as vulnerable points in the system. In the two-way communication, if the provider or consumer is compromised, significant security risks can be introduced. Those keys can also be burdensome because they introduce operational processes.
 
-**Where possible, avoid using secrets** and consider identity-based authentication for user access to the application itself, not just its resources.
+**When you can, avoid using secrets** and consider using identity-based authentication for user access to the application itself, not just to its resources.
 
-This list provides a summary of guidance. For details on application secrets, see [Recommendations on application secrets](./application-secrets.md).
+The following list provides a summary of guidance. For more information, see [Recommendations for application secrets](./application-secrets.md).
 
--   Treat them as secrets that can be dynamically pulled from a secret store. They shouldn't be hard coded your application code, IaC scripts, deployment pipelines or any other artifact.
+-   Treat these secrets as entities that can be dynamically pulled from a secret store. They shouldn't be hard coded in your application code, IaC scripts, deployment pipelines, or in any other artifact.
 
--   Have the **ability to revoke secrets**.
+-   Be sure that you have the **ability to revoke secrets**.
 
--   Apply operational practices that handle tasks such as **key rotation and expiration**.
+-   Apply operational practices that handle tasks like **key rotation and expiration**.
 
-For information about rotation policies, see [Rotation tutorial for resources with two sets of credentials](/azure/key-vault/secrets/tutorial-rotation-dual) and [Tutorial - Updating certificate autorotation frequency in Key Vault](/azure/key-vault/certificates/tutorial-rotate-certificates).
+For information about rotation policies, see [Automate the rotation of a secret for resources that have two sets of authentication credentials](/azure/key-vault/secrets/tutorial-rotation-dual) and [Tutorial: Updating certificate auto-rotation frequency in Key Vault](/azure/key-vault/certificates/tutorial-rotate-certificates).
 
-### Keep the development environments safe
-
-All code and scripts, pipeline tooling, source control system should be considered as workload assets. **Access to writes should be gated** with automation and peer review. **Read access to source code should be limited** to roles on a need-to-know basis. Code repository must have versioning and perform **security code reviews** by peers as a regular practice that's integrated with the development lifecycle. Have a process in place that **scans resources regularly** and identify latest vulnerabilities.
+All code and scripts, pipeline tooling, source control system should be considered workload assets. **Access to writes should be gated** with automation and peer review. **Read access to source code should be limited** to roles on a need-to-know basis. Code repositories must have versioning, and **security code reviews** by peers must be a regular practice that's integrated with the development lifecycle. You need to have a process in place that **scans resources regularly** and identify latest vulnerabilities.
 
 Use workload identities to grant access to resources from deployment environments, such as GitHub.
 
-### Have an audit trail
+### Maintain an audit trail
 
-An aspect of identity management is making sure the system is auditable. Audits validate whether the assume-breach strategies are effective. Maintaining a paper trail helps:
+One aspect of identity management is ensuring the system is auditable. Audits validate whether the assume-breach strategies are effective. Maintaining a paper trail helps:
 
 -   Verify that identity has been authenticated with strong authentication. **Any action must be traceable** to prevent repudiation attacks.
 
