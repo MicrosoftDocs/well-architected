@@ -40,11 +40,11 @@ The following sections of this guide offer recommendations on specific areas of 
 
 Bootstrapping refers to the configuration updates to a resource that must be made after it's provisioned, but before it's available as part of the workload pool. Bootstrapping is often associated with virtual machines (VMs), but many other resources must be set up as part of the deployment process including platform as a service (PaaS) technologies and container hosting technologies like Azure Kubernetes Service (AKS).
 
-Your cloud platform might provide bootstrapping solutions for you, which you should use where possible. For example, you can use VM extensions in Azure to make pre-defined configuration changes during the deployment process and customize your configuration changes by injecting PowerShell scripts.
+Your cloud platform might provide bootstrapping solutions for you, which you should use where possible. For example, you can use VM extensions in Azure to make predefined configuration changes during the deployment process and customize your configuration changes by injecting PowerShell scripts.
 
 ### Authentication and authorization
 
-Take automation into account when designing your authentication and authorization strategy. It's important to maintain the highest level of security in production workloads, but this can affect automation. For example, the use of biometric or multifactor authentication adds complexity that must be accounted for in your automation design. Use non-human, secure accounts for automated authentication, such as managed identities, workload identities, or certificates. Ensure that you have included secret and key management in your automation for increased authentication security.
+Take automation into account when designing your authentication and authorization strategy. It's important to maintain the highest level of security in production workloads, but this can affect automation. For example, the use of biometric or multifactor authentication adds complexity that must be accounted for in your automation design. Use nonhuman, secure accounts for automated authentication, such as managed identities, workload identities, or certificates. Ensure that you have included secret and key management in your automation for increased authentication security.
 
 ### Design variability into your workload
 
@@ -66,7 +66,7 @@ Design your application and infrastructure to allow for automated user onboardin
 
 ### Orchestration and policy use
 
-As part of your continuous workload management, you can automate Desired State Configuration (DSC) in your resources to help ensure that they meet compliance and business requirements. DSC automation helps ensure that configuration drift is caught and remediated quickly. You can automate DSC using orchestration tools or policy management tools. Think of orchestration tools, like Azure DevOps services or Jenkins, as push-based mechanisms. Using orchestration tools, configuration updates are pushed out through a workflow event, like a manual or automated deployment. These updates are run as part of a task sequence defined in your deployment script. Policy management tools use pull-based mechanisms, meaning that a system runs at the foundational level of your workload that periodically polls the workload to check its state against your defined DSC. If the poll identifies a misalignment or configuration drift, the tool takes corrective action. Consider the following factors when deciding between orchestration and policy management tools:
+As part of your continuous workload management, you can automate Desired State Configuration (DSC) in your resources to help ensure that they meet compliance and business requirements. DSC automation helps ensure that configuration drift is caught and remediated quickly. You can automate DSC using orchestration tools or policy management tools. Think of orchestration tools, like Azure DevOps services or Jenkins, as push-based mechanisms. Orchestration tools allow configuration updates to be pushed out through a workflow event, like a manual or automated deployment. These updates are run as part of a task sequence defined in your deployment script. Policy management tools use pull-based mechanisms, meaning that a system runs at the foundational level of your workload that periodically polls the workload to check its state against your defined DSC. If the poll identifies a misalignment or configuration drift, the tool takes corrective action. Consider the following factors when deciding between orchestration and policy management tools:
 
 - Orchestration tools don't have built-in capabilities to proactively poll your workload for configuration drift. Orchestration tools should be integrated into your continuous integration and continuous delivery (CI/CD) pipeline to maintain a standard for infrastructure as code (IaC) deployment and management. An advantage of using orchestration tools is that resources are always fully configured when deployed.
 
@@ -104,7 +104,7 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 
 ### Configuration management
 
-[**Azure Automanage State Configuration**](/azure/automation/automation-dsc-overview) is a DSC management tool built on top of Azure Policy that performs as an orchestration tool. Using a VM extension, you can directly apply pre-defined configuration updates to individual VMs or groups of VMs as defined within Azure Policy.
+[**Azure Automanage State Configuration**](/azure/automation/automation-dsc-overview) is a DSC management tool built on top of Azure Policy that performs as an orchestration tool. Using a VM extension, you can directly apply predefined configuration updates to individual VMs or groups of VMs as defined within Azure Policy.
 
 [**Azure App Configuration**](/azure/azure-app-configuration/overview) provides a service to centrally manage application settings and feature flags. It works with Azure Key Vault to let you securely manage a wide variety of application configurations across your environment.
 
