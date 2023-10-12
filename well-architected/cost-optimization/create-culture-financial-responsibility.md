@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for creating a culture of financial responsibility: CO 01
 
-Creating a culture of financial responsibility means to foster a mindset of accountability and collaboration within an organization to optimize workload costs. It involves setting clear expectations and goals for all stakeholders that are aligned with the mission and encouraging accountability and responsibility for all actions taken. Establishing success metrics aligned with the workload are also important aspects of creating a culture of financial responsibility. Without this focus, you may miss cost-saving opportunities and struggle to align cloud spending with business objectives.
+Creating a culture of financial responsibility means to foster a mindset of accountability and collaboration within an organization to optimize workload costs. It involves setting clear expectations and goals for all stakeholders that are aligned with the mission and encouraging accountability and responsibility for all actions taken. Establishing success metrics aligned with the workload are also important aspects of creating a culture of financial responsibility. Without this focus, you might miss cost-saving opportunities and struggle to align cloud spending with business objectives.
 
 **Definitions** 
 

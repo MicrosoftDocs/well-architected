@@ -14,6 +14,8 @@ ms.topic: conceptual
 |[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. | 
 |---|---| 
 
+**Related guide**: [Improve build velocity](release-engineering-performance.md) | [Use continuous integration](release-engineering-continuous-integration.md)
+
 This guide describes the recommendations for defining standards for your software development tools and processes. Defining consistent practices will lead to a more productive workload team and higher quality work than can be achieved with this structure. High-performing teams use industry-proven tools and processes to minimize wasted effort and risk of introducing risks in their code.
 
 ## Key design strategies

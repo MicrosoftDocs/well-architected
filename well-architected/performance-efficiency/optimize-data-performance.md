@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[PE:08](checklist.md)| Optimize data usage. Optimize data stores, partitions, and indexes for their intended and actual use in the workload.| 
 |---|---| 
 
-This guide describes the recommendations for optimizing data performance. At its core, optimizing data performance means refining the efficiency with which the workload processes and stores data. Every workload operation, transaction, or computation typically relies on the quick and accurate retrieval, processing, and storage of data. When data performance is optimized, the workload runs smoothly, but when it's compromised, it creates a domino effect of poor performance efficiency. Failure to optimize data performance results in response delays, heightened latency, and curtailed scalability. It jeopardizes the efficiency of the entire workload.
+This guide describes the recommendations for optimizing data performance. Optimizing data performance is about refining the efficiency with which the workload processes and stores data. Every workload operation, transaction, or computation typically relies on the quick and accurate retrieval, processing, and storage of data. When data performance is optimized, the workload runs smoothly, but when it's compromised, it creates a domino effect of poor performance efficiency. Failure to optimize data performance results in response delays, heightened latency, and curtailed scalability. It jeopardizes the efficiency of the entire workload.
 
 **Definitions**
 
@@ -23,7 +23,7 @@ This guide describes the recommendations for optimizing data performance. At its
 | CAP theorem |A framework that's used to consider consistency, availability, and partition tolerance to help explain the tradeoffs in data consistency.|
 |  Database index rebuilding |A maintenance activity that drops and recreates an index.|
 |  Database index reorganization |A maintenance activity that optimizes the current database index. |
-| Data store| A resource, such as a database, object store, or file share, that stores data.|
+| Data store| A resource that stores data such as a database, object store, or file share. |
 |  Eventual consistency|A data synchronization model that allows for temporary inconsistency in data replicas before they eventually sync.|
 |  Index|A database structure that provides quick access to items.|
 | Online analytical processing (OLAP)|A technology that organizes large business databases, supports complex analysis, and performs complex analytical queries without negatively affecting transactional systems.|
@@ -48,7 +48,7 @@ To optimize data usage, ensure that data stores, partitions, and indexes are opt
 
 ### Profile data
 
-To profile your data, analyze and understand the structure, volume, and relationships of your data. You can gain insights into your data and identify areas that need improvement. To perform data profiling, you need to:
+Data profiling involves examining the data from a source and gathering information about it. The objective is to understand the quality, structure, and characteristics of workload data. This process allows for the identification of issues such as missing values, duplicates, inconsistent formats, and other anomalies. For effective data profiling, consider the following strategies:
 
 - *Understand the data structure.* Examine the structure of your data, including tables, columns, and relationships. Determine the data types, lengths, and constraints that are applied to each column. Data structure evaluation helps you understand how the data is organized and how it relates to other data elements.
 
@@ -60,13 +60,15 @@ To profile your data, analyze and understand the structure, volume, and relation
 
 - *Capture data distribution.* Analyze the distribution of values within each column to determine data patterns. Identify frequent and rare values, outliers, and data skews. To optimize query performance, choose appropriate indexing strategies and query optimization techniques based on the distribution.
 
-### Monitor data
+### Monitor data performance
 
-Continuously monitor the performance of your data stores, partitions, and indexes in real time. To identify areas of improvement and performance degradation, collect and analyze performance metrics. Use tools like system-level monitoring tools, database-specific monitoring features, or third-party monitoring solutions. Collect metrics such as CPU usage, memory utilization, disk I/O, query response times, and data throughput. You can also:
+Data performance monitoring is the practice of consistently tracking the efficiency of data stores, partitions, and indexes in real-time. It involves collecting and analyzing performance metrics specific to data operations, using tools tailored for system-level, database-specific, or third-party monitoring solutions. Effective data performance monitoring allows you to proactively identify and mitigate potential bottlenecks, ensuring that data-related processes and tasks are efficient. To monitor data performance, consider the following strategies:
 
-- *Set up alerts.* Configure alerts based on predefined thresholds or anomalies in the performance metrics. Alerts enable you to receive notifications when performance metrics exceed acceptable ranges or show abnormal behavior. You can set up alerts by using monitoring tools or custom scripts that trigger actions when conditions are met.
+- *Collect data-specific metrics.* Gather key metrics that directly relate to data performance. These metrics include query response times, data throughput, disk I/O related to data access, and the load times of specific data partitions.
 
-- *Diagnose issues.* Regularly analyze the collected performance metrics to identify areas of improvement and performance degradation. Use visualization tools or dashboards to gain insights into performance trends, bottlenecks, and anomalies. Identify the root causes of performance issues and determine the appropriate actions for resolution.
+- *Set up data alerts.* Set up alerts specifically for data metrics. Use predefined thresholds or anomalies in these metrics to trigger alerts. Alerts enable you to receive notifications when performance metrics exceed acceptable ranges or show abnormal behavior. For instance, if a database query takes longer than expected or if data throughput drops significantly, it would trigger an alert. You can set up these alerts using specialized monitoring tools or custom scripts.
+
+- *Diagnose data performance issues.* Regularly review the collected data metrics to pinpoint potential performance bottlenecks or degradation in data operations. Visualization tools or dashboards can be invaluable in this process, helping to highlight trends, bottlenecks, and outliers in data performance. Once identified, delve into the root causes of these issues and strategize appropriate remediation steps.
 
 ### Partition data
 
@@ -153,11 +155,11 @@ Archiving and purging are instrumental in maintaining peak performance efficienc
 
 ### Optimize storage load
 
-Optimizing storage load efers to the process of reducing unnecessary or redundant requests to the storage system, streamlining data retrieval processes, and ensuring that the storage workload isn't overwhelmed with excessive demands. This optimization ensures that the storage system can respond to legitimate requests and maintain a high-performance level. Implement strategies that reduce the processing burden on the data store. To optimize data store load, consider the following strategies:
+Optimizing storage load means streamlining requests to the storage system. It helps eliminate unnecessary requests. It also enhances data retrieval and prevents overwhelming the storage. Optimizing the storage load ensures the storage system remains responsive to legitimate requests and maintains peak performance. Implement strategies to reduce the processing burden on the data store. To optimize data store load, consider the following strategies:
 
 #### Use caching
 
-Caching is a technique where you store frequently accessed data in a high-speed storage layer. It provices for quicker retrieval compared to fetching it from the primary data source. It plays a pivotal role in data performance optimization by reducing data access times and minimizing unnecessary repeated data fetches. Particularly in hot data scenarios, caching can amplify read throughput and enhance client response times. This method proves most effective when dealing with data that remains static or undergoes infrequent changes.
+Caching is a technique where you store frequently accessed data in a high-speed storage layer. It provides for quicker retrieval compared to fetching it from the primary data source. It plays a pivotal role in data performance optimization by reducing data access times and minimizing unnecessary repeated data fetches. Particularly in hot data scenarios, caching can amplify read throughput and enhance client response times. This method proves most effective when dealing with data that remains static or undergoes infrequent changes.
 
 It's crucial to weigh factors such as cache expiration policies, cache eviction strategies, and cache size management. Fine-tune parameters like the time to live (TTL). To use a cache to optimize storage load, consider the following strategies:
 
@@ -177,7 +179,7 @@ When you have a workload with multiple data replicas that you expect to stay in 
 
 In a distributed workload, where data resides across multiple nodes or locations, the level of consistency you select determines how quickly changes in one location reflect in others. Opting for stricter consistency consumes more compute resources and can negatively affect performance efficiency. On the other hand, a less strict consistency level, like eventual consistency introduces temporary inconsistencies among nodes but can boost performance efficiency. 
 
-Eventual consistency strikes a balance between data accuracy and workload performance. Changes spread gradually instead of instantly, boosting workload responsiveness and data processing speed. Although this introduces short-lived inconsistencies, the workload eventually presents consistent data across all nodes. Choosing eventual consistency can elevate a workload's performance and further enhance its availability and scalability.
+Eventual consistency strikes a balance between data accuracy and workload performance. Changes spread gradually instead of instantly, boosting workload responsiveness and data processing speed. Although it introduces short-lived inconsistencies, the workload eventually presents consistent data across all nodes. Choosing eventual consistency can elevate a workload's performance and further enhance its availability and scalability.
 
 ### Optimize data updates
 
@@ -195,7 +197,7 @@ Optimizing data movement and processing involves improving the efficiency and pe
 
 - *Parallel processing*: Utilize parallel processing techniques to improve performance. When you distribute data processing tasks across multiple threads or nodes, you can divide and process the workload concurrently, which results in fast processing.
 
-- *Batch processing*: Group similar tasks together to reduce overhead that's caused by repeated operations. Process multiple tasks in a batch to reduce overall processing time.
+- *Batch processing*: Group similar tasks together to reduce overhead caused by repeated operations. Process multiple tasks in a batch to reduce overall processing time.
 
 ### Optimize storage design
 
@@ -207,7 +209,7 @@ Data proximity refers to the strategic placement of data closer to the users or 
 
 - *Evaluate data access patterns*: Assess your workload's access patterns and frequently accessed data. This analysis can help determine where to place data for maximum benefit.
  
-- *Choose solutions that support data relocation*: Consider solutions that offer dynamic data relocation based on changing access patterns, ensuring optimal data positioning at all times.
+- *Choose solutions that support data relocation*: Consider solutions that offer dynamic data relocation based on changing access patterns, ensuring optimal data positioning.
  
 - *Choose solutions that support data synchronization*: If catering to a distributed user base, opt for solutions that facilitate data synchronization across various regions, ensuring that data replicas are available in proximity to users.
 
@@ -238,7 +240,7 @@ When you separate OLTP and OLAP systems, you can allocate appropriate resources 
 
 **Profile data.** Azure offers tools and services that you can use to profile data, such as Azure Data Factory, Azure Purview, and Azure Synapse Analytics. These tools enable you to extract, transform, and load data from various sources, perform data quality checks, and gain insights into the data.
 
-**Monitor data.** To monitor data performance, you can use Azure Monitor to collect and analyze infrastructure metrics, logs, and application data. You can integrate Monitor with other services like Application Insights, which provides application performance monitoring and supports many platforms.
+**Monitor data.** To monitor data performance, you can use Azure Monitor to collect and analyze infrastructure metrics, logs, and application data. You can integrate Monitor with other services like Application Insights. Application Insights provides application performance monitoring and supports many platforms.
 
 Application Insights collects usage and performance data. You can use Log Analytics to correlate that data with configuration and performance data across Azure resources.
 

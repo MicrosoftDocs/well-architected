@@ -16,6 +16,8 @@ ms.custom:
 |[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For clear role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
 |---|---|
 
+**Related guide**: [Improve build velocity](release-engineering-performance.md) | [Optimize development practices](optimize-development-practices.md)
+
 As code is developed, updated, or even removed, having an intuitive and safe method to integrate these changes into the main code branch enables developers to provide value.
 
 As a developer, you can make small code changes, push these changes to a code repository, and get almost instantaneous feedback on the quality, test coverage, and introduced bugs. This process lets you work faster and with more confidence and less risk.
@@ -64,7 +66,7 @@ Another popular practice is building small reports or badges that can be present
 
 The following image shows the integration between GitHub and an Azure DevOps pipeline. In this example, the creation of a pull request triggers an Azure DevOps pipeline. The pipeline status appears in the pull request.
 
-![Screenshot of an Azure DevOps status badge in a GitHub repository.](media/release-engineering-continuous-integration/ado-github-status.png)
+![Screenshot of an Azure DevOps status badge in a GitHub repository.](media/release-engineering-continuous-integration/azure-devops-github-status.png)
 
 #### Test integration
 
@@ -92,7 +94,7 @@ The following code snippet shows a test step from an Azure DevOps pipeline. The 
 
 The following image shows test results that appear in the Azure DevOps portal.
 
-![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](media/release-engineering-continuous-integration/ado-tests.png)
+![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](media/release-engineering-continuous-integration/azure-devops-tests.png)
 
 #### Failed tests
 

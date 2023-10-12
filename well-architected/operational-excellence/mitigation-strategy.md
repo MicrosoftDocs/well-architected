@@ -27,7 +27,7 @@ A deployment failure mitigation strategy is composed of five broad phases:
 
 1. Communications: Stakeholders and affected end users must be made aware of the status as you detect and work through the issue as required by your [emergency response plan](emergency-response.md).
 
-1. Post-mortems: Blameless post-mortems provide opportunities for the workload team to identify areas for improvement and create plans to apply learnings.
+1. Postmortems: Blameless postmortems provide opportunities for the workload team to identify areas for improvement and create plans to apply learnings.
 
 The following sections will provide recommendations for these phases in more detail. These sections assume that you have deployed your changes to one or more groups of users or systems before an issue is detected, but not all groups in your rollout plan have been updated.
 
@@ -45,7 +45,7 @@ Finally, be ready to respond to user reported issues immediately. Whenever pract
 
 Deciding on what the appropriate mitigation strategy will be for a given deployment issue should relies on many factors including, but not limited to:
 
-- What type of progressive exposure model is used (blue-green or canary, for example)
+- What type of progressive exposure model is used (blue-green or canary, for example).
 
   If you use a blue-green model, falling back is more practical than rolling back as you can easily shift traffic back to the stack running the non-updated configuration. You can then fix the issue in the problematic environment and try your deployment again at the appropriate time.
 
@@ -81,9 +81,9 @@ Whatever choice you make, the decision tree should be codified with appropriate 
 
 Having clearly defined communication responsibilities for the workload team to engage with support teams, emergency response team personnel, like the emergency response manager, and stakeholders will help minimize chaos during the incident. Standardize the status update cadence that the workload team must follow and ensure that stakeholders are aware of this standard, so they know when to expect updates. Likewise, if the workload team needs to communicate directly with end-users, define the appropriate details that can be shared and any other requirements that they must follow in these cases.
 
-### Post-mortems
+### Postmortems
 
-Post-mortems should follow all failed deployments, without exception. Every failed deployment is an opportunity for learning. You might be able to identify weaknesses in your deployment and development processes, or you might identify misconfigurations in your infrastructure, among many other possibilities. Post-mortems should always be blameless so that individuals involved in the incident feel safe while sharing their perspectives on what can be improved. Post-mortem leaders should follow up with plans for implementing the improvements that have been identified and add these plans to the workload backlog.
+Postmortems should follow all failed deployments, without exception. Every failed deployment is an opportunity for learning. You might be able to identify weaknesses in your deployment and development processes, or you might identify misconfigurations in your infrastructure, among many other possibilities. Postmortems should always be blameless so that individuals involved in the incident feel safe while sharing their perspectives on what can be improved. Postmortem leaders should follow up with plans for implementing the improvements that have been identified and add these plans to the workload backlog.
 
 ### Considerations and general recommendations
 
@@ -91,7 +91,7 @@ Ensure that deployments are thoroughly tested when deploying to lower developmen
 
 Ensure that your deployment pipeline can accept distinct versions as parameters so that you can deploy last known good configurations easily.
 
-Ensure that you maintain consistency with the management and data planes as you roll back or roll forward. Keys, secrets, database state and configuration specific to resources and policies  (link to perf re: scaling issues when rolling back) all need to be in scope and accounted for. For example, pay attention to how your infrastructure scaling was designed in your last known good deployment and determine if you need to adjust those configurations when you redeploy your code.
+Ensure that you maintain consistency with the management and data planes as you roll back or roll forward. Keys, secrets, database state and configuration specific to resources and policies <!-- (link to perf re: scaling issues when rolling back) -->all need to be in scope and accounted for. For example, pay attention to how your infrastructure scaling was designed in your last known good deployment and determine if you need to adjust those configurations when you redeploy your code.
 
 Prefer small frequent changes over infrequent large changes so that the delta between new and last known good is small.
 

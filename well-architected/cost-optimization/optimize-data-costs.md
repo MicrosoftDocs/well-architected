@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for optimizing data costs: CO 10
 
-This guide describes the recommendations for optimizing data costs. It outlines the strategies to align data spending to data priority. It involves considering various factors such as data tiering, retention policies, and data redundancy to optimize the storage and management of data. Without optimization data costs, you may end up incurring higher storage, transfer, and transaction costs.
+This guide describes the recommendations for optimizing data costs. It outlines the strategies to align data spending to data priority. It involves considering various factors such as data tiering, retention policies, and data redundancy to optimize the storage and management of data. Without optimization data costs, you might end up incurring higher storage, transfer, and transaction costs.
 
 **Definitions**
 
@@ -41,14 +41,14 @@ Data prioritization is the process of categorizing and assigning importance leve
 
 ### Optimize data management
 
-Data management refers to the process of storing, moving, and securing workload data. By optimizing data management, you can align spending to data priority and dervie more value from your data. Consider the following data management strategies:
+Data management refers to the process of storing, moving, and securing workload data. By optimizing data management, you can align spending to data priority and derive more value from your data. Consider the following data management strategies:
 
 #### Optimize data lifecycle management
 
 Data lifecycle management refers to the process of managing data throughout its entire lifecycle, from creation or acquisition to deletion or archival. It involves various stages, including data creation, storage, usage, sharing, retention, and disposal. The goal of data lifecycle management is to optimize data storage solutions while complying with relevant regulations and policies. Data storage has three critical cost components:
 
 - *Storage cost*: The expense associated with storing data, such as per GB.
-- *Transaction cost*: Costs linked to data operations, such as write operations, read operations, and data retrieval (per GB). It's important to note that reading and writing data may have different costs.
+- *Transaction cost*: Costs linked to data operations, such as write operations, read operations, and data retrieval (per GB). It's important to note that reading and writing data might have different costs.
 - *Latency cost*: Represents the speed or delay in accessing the data.
 
 Data tiering and data retention policies are foundational to data lifecycle management. Here are considerations for a data lifecycle management schema:
@@ -58,7 +58,7 @@ Data tiering and data retention policies are foundational to data lifecycle mana
 - *Define data lifecycle policies*. Data lifecycle policies that specify when and how data should be moved between storage tiers based on predefined criteria. For example, a policy can state that data must be retained in the hot tier for 30 days, in the cool tier for 90 days, and in the archive tier for one year. These policies ensure you keep data in the appropriate tier for the required duration. You should set the retention period based on factors such as legal requirements, industry regulations, or internal policies.
 - *Use automation*: Retention policies can trigger the movement of data between tiers. You should automate policies, using platform features before custom building of any solution. When the retention period for a particular tier expires, the policy can automatically move the data to the next lower-cost tier. For example, when the retention period for the hot tier ends, the policy can move the data to the cool tier, and so on. The policy ensures that data is continuously optimized based on its access patterns and cost requirements.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Managing data retention policies require ongoing monitoring and maintenance. It can introduce more overhead for data management processes. They may also affect storage costs. Longer retention periods or the use of higher-cost storage tiers can increase storage expenses.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Managing data retention policies require ongoing monitoring and maintenance. It can introduce more overhead for data management processes. They might also affect storage costs. Longer retention periods or the use of higher-cost storage tiers can increase storage expenses.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: A poor implementation of data lifecycle management could lead to data loss or limited access to critical data. You should have proper backup and recovery mechanisms in place to mitigate the risk of data loss.
 
@@ -74,7 +74,7 @@ Ensure data is close to the client. Data proximity reduces network travel, speed
 
 #### Optimize security and compliance
 
-Certain production data demands higher security and compliance requirements. These measures may impose extra costs related to data protection, encryption, backup, retention, and auditing. You must ensure that changes in data storage solutions adhere to these requirements. Data that has lower security and compliance requirements often presents an opportunity to optimize cost.
+Certain production data demands higher security and compliance requirements. These measures might impose extra costs related to data protection, encryption, backup, retention, and auditing. You must ensure that changes in data storage solutions adhere to these requirements. Data that has lower security and compliance requirements often presents an opportunity to optimize cost.
 
 ### Optimize data volume
 
@@ -110,7 +110,7 @@ Backups involve creating periodic snapshots or copies of data and storing them s
 
 - *Backup compression*: Enable compression during the backup process to reduce the size of backup files. Compressed backups require less storage space, resulting in cost savings.
 - *Backup storage tiers*: Evaluate your backup retention policies and consider moving older backups to lower-cost storage tiers, such as cold storage or archive storage. It helps optimize costs by storing less frequently accessed backups in cost-effective storage options.
-- *Backup retention period*: Review and adjust the retention periods for your backups based on business requirements and compliance regulations. Maintaining backups for longer durations may lead to extra storage costs, so optimize the retention periods to align with your regulatory and compliance needs.
+- *Backup retention period*: Review and adjust the retention periods for your backups based on business requirements and compliance regulations. Maintaining backups for longer durations might lead to extra storage costs, so optimize the retention periods to align with your regulatory and compliance needs.
 - *Backup frequency*: Analyze the backup frequency for different types of data. Adjust the backup schedule based on the frequency of data changes and the importance of the data. It helps eliminate unnecessary backups and reduces storage costs.
 
 ### Optimize file formats
@@ -126,11 +126,11 @@ By aligning the file format with your workload requirements, you can realize cos
 
 You need to make sure you’re using the right storage solution for your data. Sometimes changing storage solutions is the best way to cost optimize. There are costs associated with switching databases or swapping services, but storing data in the wrong storage solution can cost you extra money. Here are a few use cases:
 
-- *Switching database*: You could consider switching to a different database system that better suits your needs. For instance, if you have been using a relational database, you may explore the option of moving to a NoSQL database if your data is more document-oriented or requires flexible schemas.
+- *Switching database*: You could consider switching to a different database system that better suits your needs. For instance, if you have been using a relational database, you might explore the option of moving to a NoSQL database if your data is more document-oriented or requires flexible schemas.
 - *From relational database to flat file store*: In some cases, storing data in flat files instead of a traditional relational database can provide advantages such as simplicity and cost-effectiveness. Flat files are well-suited for certain types of data, such as log files or data that doesn't require complex querying. For example, you can store binary images in a SQL database, but it's more cost effective to store them in a storage service specifically for handling binary data.
 - *From infrastructure as a service to platform as a service*: IaaS database solutions can be time-consuming and resource-intensive, diverting technical team's attention from core tasks. The growth in data volume and the challenges of manual scaling, backups, and infrastructure maintenance can make a PaaS solution more cost-effective and efficient.
-- *Adding a cache*: Consider using cache solution for caching complex query results and reduce resource usage on main database server. Right sizing the database server may help optimizing the cost. With applicable use cases, consider using time to live (TTL) with the cached data to reduce the storage needs and reduce the cost.
-- *Query optimized versus data storage stores*: Query-optimized stores are designed for fast data retrieval and analysis, focusing on quick data ingestion and reads but not frequent updates. They're great for time-series data and rapid access to recent data but not for heavy transactional tasks. Data storage stores handle large volumes of flexible data, especially unstructured or semi-structured data. While they can support analytics, complex tasks may need specialized databases. They're best for storing lots of variable data like logs or user-generated content in scenarios like NoSQL use cases.
+- *Adding a cache*: Consider using cache solution for caching complex query results and reduce resource usage on main database server. Right sizing the database server might help optimizing the cost. With applicable use cases, consider using time to live (TTL) with the cached data to reduce the storage needs and reduce the cost.
+- *Query optimized versus data storage stores*: Query-optimized stores are designed for fast data retrieval and analysis, focusing on quick data ingestion and reads but not frequent updates. They're great for time-series data and rapid access to recent data but not for heavy transactional tasks. Data storage stores handle large volumes of flexible data, especially unstructured or semi-structured data. While they can support analytics, complex tasks might need specialized databases. They're best for storing lots of variable data like logs or user-generated content in scenarios like NoSQL use cases.
 
 It's important to evaluate the specific requirements of your data and consider factors like performance, scalability, cost, and ease of management when choosing a storage solution.
 
