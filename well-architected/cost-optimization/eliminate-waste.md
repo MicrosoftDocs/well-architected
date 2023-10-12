@@ -46,9 +46,9 @@ An application feature refers to a specific functionality or capability of appli
 
 **Determine the future of the feature**. Based on the analysis and evaluation, determine the future of the application features. Remove, reinvest, or monetize any application feature not providing a return on investment.
 
-- *Remove the application feature.* Consider the planned end of life of an application feature based on data. Reasons for removing the feature may include low customer demand, high maintenance costs, complexity, or redundancy that’s not worth the effort to fix. Create a plan for removing the identified features. It may involve refactoring the code, updating dependencies, or reorganizing the user interface.
+- *Remove the application feature.* Consider the planned end of life of an application feature based on data. Reasons for removing the feature might include low customer demand, high maintenance costs, complexity, or redundancy that’s not worth the effort to fix. Create a plan for removing the identified features. It might involve refactoring the code, updating dependencies, or reorganizing the user interface.
 
-    :::image type="icon" source="../_images/risk.svg"::: **Risk**: You could inadvertently remove features that are critical for certain users or scenarios and may negatively impact performance, security, operations, and security.
+    > :::image type="icon" source="../_images/risk.svg"::: **Risk**: You could inadvertently remove features that are critical for certain users or scenarios and might negatively affect performance, security, operations, and security.
 
 - *Reinvest*: Some application features might not be adding enough value in its current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential impact on the application.
 - *Monetize*: Monetizing an application feature involves turning it into a revenue-generating opportunity. Sometimes features might provide value to users but aren’t worth the current investment. Explore opportunities to monetize these and other features, such as offering them as separate paid add-ons or licensing them to other companies.
@@ -100,7 +100,7 @@ Eliminating wasteful platform features involves identifying and removing unneces
 - *Disable unused features*: Identify and disable platform features that cost money and aren't utilized.
 - *Use the right features*: Newer versions of a service can provide similar performance for the same price. For example, a virtual machine with hardware updates could provide the same performance for less.
 - *Use the right configurations*: You might be paying for more availability or performance than you need. Eliminate availability or performance guarantees the workload doesn’t need.
-- *Eliminate unneeded automation*: Evaluate your automation processes and eliminate any unnecessary automation that may incur extra costs.
+- *Eliminate unneeded automation*: Evaluate your automation processes and eliminate any unnecessary automation that might incur extra costs.
 - *Eliminate tool redundancy*: Get rid of tools that you don't really need or that do the same thing as other tools you already have. Consider tools used for building software, writing code, security, or monitoring how things are running. For instance, if you're already using GitHub actions to build your software, you don't need to buy another tool that does the same thing. Before you buy more features or tools, check if what you already have can do the job. This way, you avoid wasting money and make the most of what you already have.
 
 ### Eliminate waste from operational processes
@@ -117,7 +117,7 @@ Maximizing the usage of prepaid plans starts with buying the right plan and full
 
 ### Avoid introducing waste
 
-The best way to get rid of waste is to avoid it in the first place. You want to use strategies that prevent it from being introduced and allow you to catch waste faster. Audit processes to avoid introducing waste. To help avoid introducing waste, consider these strateiges:
+The best way to get rid of waste is to avoid it in the first place. You want to use strategies that prevent it from being introduced and allow you to catch waste faster. Audit processes to avoid introducing waste. To help avoid introducing waste, consider these strategies:
 
 - *Find the root cause before changing solutions*: Before you fix a problem, make sure you know what's actually causing it. For example, if your website is slow, don't just switch to a new system. First, figure out why it's slow. You might find out that the real issue is something else, like bad database queries. Fixing the real problem saves you time and money.
 - *Apply metadata* Applying metadata provides a way to organize and track resources. You can categorize and group resources, making it easier to track, delete, and avoid orphaned resources. Create a consistent metadata strategy and apply consistently across resources. Consider adding owners, anticipated resource duration (`sunset-30d`), and others.
@@ -132,6 +132,6 @@ The best way to get rid of waste is to avoid it in the first place. You want to 
 
 **Finding orphaned resources:** Azure Monitor supports Workbooks. These workbooks allow you to create custom reports that can find and report orphaned resources across a defined scope.
 
-**Eliminating unused reservations and savings plans**: To eliminate unused reservations and savings plans, you can use the Azure Cost Management and Billing tools. They provide insights into your reservation and savings plan usage, allowing you to identify any unused or underutilized commitments and make adjustments accordingly. Utilization can be viewed in the Azure portal under the Reservations section.
+**Eliminating unused reservations and savings plans**: To eliminate unused reservations and savings plans, you can use the Microsoft Cost Management and Billing tools. They provide insights into your reservation and savings plan usage, allowing you to identify any unused or underutilized commitments and make adjustments accordingly. Utilization can be viewed in the Azure portal under the Reservations section.
 
 **Eliminating idle resources in disaster recovery environments**: Azure load balancers can distribute load across availability zones and regions. These load balancers can help eliminate waste in disaster recovery approaches. You can use Azure Automation and Azure Logic Apps to schedule resource shutdowns during periods of inactivity. It can help reduce costs by minimizing the usage of idle resources. Azure Autoscale allows you to automatically scale your application based on predefined conditions, so you don’t have to overprovision capacity. It helps ensure that resources are allocated efficiently and cost-effectively.

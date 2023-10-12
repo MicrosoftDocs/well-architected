@@ -19,7 +19,7 @@ This guide describes the recommendations for optimizing personnel time. It’s a
 | Signal| A signal refers to meaningful and relevant information that provides insights into the behavior and performance of a system or application. |
 | Noise | Noise refers to irrelevant or misleading information that can distract from the actual issues or trends.|
 
-## Key strategies
+## Key design strategies
 
 As a rule of thumb, personnel often account for the most significant expense in a workload, underscoring the importance of efficient time management. This guide is about maximizing the potential of every hour worked. Considering that individuals can't operate around the clock, the emphasis is on ensuring that each person is more effective within their designated hours or equally effective in a reduced timeframe. The goal is to achieve better utilization of their time for the benefit of the individual and the workload.
 

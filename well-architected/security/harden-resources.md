@@ -169,4 +169,6 @@ Cloud Adoption Framework for Azure provides guidance about creating centralized 
 
 Refer to the complete set of recommendations.
 
-[Security checklist](checklist.md)
+> [!div class="nextstepaction"]
+> [Security checklist](checklist.md)
+
