@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
 |---|---|
 
-**Related guide**: [Recommendations for optimizing development practices through standardization](optimize-development-practices.md) |[Recommendations for using continuous integration](release-engineering-continuous-integration.md)
+**Related guides**: [Recommendations for optimizing development practices through standardization](optimize-development-practices.md) | [Recommendations for using continuous integration](release-engineering-continuous-integration.md)
 
  It's important to have a build process up and running the first day of your product development. The build status shows if your product is deployable, so builds are the heartbeat of your continuous delivery system. Since builds provide such crucial information about the status of your product, you should always strive for fast builds.
 
@@ -24,11 +24,11 @@ It's difficult to fix a build problem if it takes longer to build. When delays h
 
 ### Build times
 
-Here are few ways you can achieve faster builds:
+There are a few ways you can achieve faster builds, such as:
 
-- **Choose agents that meet your performance requirements**: Speed up your builds by selecting the right build machines. Fast machines can make the difference between hours and minutes. If your pipelines are in Azure Pipelines, then you've got a convenient option to run your jobs by using a Microsoft-hosted agent. With Microsoft-hosted agents, maintenance and upgrades are taken care of for you. For more information, see [Microsoft-hosted agents](/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true).
+- **Choose agents that meet your performance requirements**: Speed up your builds by selecting the right build machines. Fast machines can make the difference between hours and minutes. If your pipelines are in Azure Pipelines, you can run your jobs conveniently by using a Microsoft-hosted agent. Using Microsoft-hosted agents, maintenance and upgrades are taken care of for you. For more information, see [Microsoft-hosted agents](/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true).
 
-- **Build server location**: When you're building your code, data is sent across the wire. Inputs to the builds are fetched from a source control repository and the artifact repository. The output from the build process needs to be copied, including the compiled artifacts, test reports, the code coverage results, and the debug symbols. It's important that these copy actions are fast. If you use your own build server, ensure that the build server is located near the sources and a target location. Fast uploads and downloads can reduce the overall build time.
+- **Build server location**: When you're building your code, data is sent across the wire. Inputs to the builds are fetched from a source control repository and the artifact repository. The output from the build process needs to be copied, including the compiled artifacts, test reports, the code coverage results, and the debug symbols. It's important that these copy actions are run quickly. If you use your own build server, ensure that the build server is located near the sources and a target location. Fast uploads and downloads can reduce the overall build time.
 
 - **Scale out build servers**: A single build server might be sufficient for a small product. As the size and scope of the product and the number of teams working on the product increases, a single server might not be enough. Scale your infrastructure horizontally over multiple machines when you reach the limit. For more information, see [Create and manage agent pools](/azure/devops/pipelines/agents/pools-queues?tabs=yaml&view=azure-devops&preserve-view=true).
 
@@ -46,11 +46,11 @@ Here are few ways you can achieve faster builds:
 
 ### Human intervention
 
-Your organization might choose to create several different kinds of builds to optimize build times. For example, you might have the following builds:
+Your organization might choose to create several different kinds of builds to optimize build times. Possible builds include: 
 
 - **Continuous integration (CI) build**: The purpose of this build is to ensure code compiles and unit tests are run. This build gets triggered at each commit. It serves as the heartbeat of the project and provides quality feedback to the team immediately. For more information, see [Specify events that trigger pipelines](/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops&preserve-view=true).
 
-- **Nightly build**: The purpose of a nightly build isn't only to compile the code, but also to ensure any larger test suites that are inefficient run for each build on a regular cadence. Usually, these cadences are integration, UI, or smoke tests. For more information, see [Configure schedules for pipelines](/azure/devops/pipelines/process/scheduled-triggers).
+- **Nightly build**: The purpose of a nightly build isn't only to compile the code, but also to ensure any larger test suites that are inefficient run on a regular cadence for each build. Usually, these cadences are integration, UI, or smoke tests. For more information, see [Configure schedules for pipelines](/azure/devops/pipelines/process/scheduled-triggers).
 
 - **Release build**: In addition to compiling and running tests, this build also compiles the API documentation, compliance reports, code signing, and other steps that aren't required every time the code is built. This build provides the golden copy that's pushed to the release pipeline to finally deploy in the production environment.
 
@@ -64,7 +64,7 @@ Use [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) to
 
 [GitHub Actions for Azure](https://azure.github.io/actions/) allows you to automate continuous integration and continuous delivery (CI/CD) processes and integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
 
-[Microsoft-hosted agents](/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true&tabs=yaml) are available natively in [Azure Pipeline](/azure/devops/pipelines/get-started/what-is-azure-pipelines). These agents are single-use virtual machines that are only used for one job and then discarded, which provides an easy-to-manage option for your builds.
+[Microsoft-hosted agents](/azure/devops/pipelines/agents/hosted?view=azure-devops&preserve-view=true&tabs=yaml) are available natively in [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines). These agents are single-use virtual machines that are only used for one job and then discarded, which provides an easy-to-manage option for your builds.
 
 ## Related links
 
