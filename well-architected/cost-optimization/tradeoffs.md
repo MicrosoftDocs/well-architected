@@ -112,9 +112,9 @@ Cost Optimization and Performance Efficiency both strive to maximize the value f
 - Removing access *performance testing or monitoring tools* not only increases the risk of undetected performance issues but limits the ability for a workload team to execute on measure-improve cycles.
 - Neglecting areas prone to performance degradation, like data stores, can gradually deteriorate query performance and elevate overall system usage.
 
-## Related resources
+## Related links
 
-Explore the tradeoffs for the other pillars.
+Explore the tradeoffs for the other pillars:
 
 - [Reliability tradeoffs](../reliability/tradeoffs.md)
 - [Security tradeoffs](../security/tradeoffs.md)

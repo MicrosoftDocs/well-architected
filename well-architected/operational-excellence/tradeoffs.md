@@ -93,9 +93,9 @@ A workload team purchases tools and hardware to support activities performed acr
 - Many deployment models require the use of gateway routing access patterns which can introduce latency, which draws against the performance target budget for the related flows.
 - Some cloud design patterns that support "independent change over time" approaches to support the ideals of incremental improvements can introduce additional latency through the traversal of additional components. This latency can come through the introduction of gateways, messaging brokers, or anti-correction layers.
 
-## Related resources
+## Related links
 
-Explore the tradeoffs for the other pillars.
+Explore the tradeoffs for the other pillars:
 
 - [Reliability tradeoffs](../reliability/tradeoffs.md)
 - [Security tradeoffs](../security/tradeoffs.md)
