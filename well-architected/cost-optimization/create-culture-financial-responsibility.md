@@ -24,7 +24,7 @@ Establishing success metrics that are aligned with the workload is also importan
 | Term |Definition |
 |---|---|
 | Financial responsibility | The sense of shared ownership of cost outcomes.|
-| Microsoft learning partner | An organization that meets program requirements to teach training content developed by Microsoft and that employs Microsoft Certified Trainers to deliver content. |
+| Microsoft learning partner | An organization that meets program requirements to teach training content developed by Microsoft and that employs Microsoft Certified Trainers to deliver content.|
 
 ## Key design strategies
 
