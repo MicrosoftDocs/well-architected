@@ -48,7 +48,7 @@ To optimize data usage, ensure that data stores, partitions, and indexes are opt
 
 ### Profile data
 
-To profile your data, analyze and understand the structure, volume, and relationships of your data. You can gain insights into your data and identify areas that need improvement. To perform data profiling, you need to:
+Data profiling involves examining the data from a source and gathering information about it. The objective is to understand the quality, structure, and characteristics of workload data. This process allows for the identification of issues such as missing values, duplicates, inconsistent formats, and other anomalies. For effective data profiling, consider the following strategies:
 
 - *Understand the data structure.* Examine the structure of your data, including tables, columns, and relationships. Determine the data types, lengths, and constraints that are applied to each column. Data structure evaluation helps you understand how the data is organized and how it relates to other data elements.
 
