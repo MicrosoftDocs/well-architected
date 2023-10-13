@@ -25,7 +25,7 @@ Cut down on workload waste by making sure you only pay for the computer resource
 
 ### Eliminate waste from the application
 
-An application feature refers to a specific functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that aren't providing value to the workload or aren’t worth their current investment. Removing unnecessary or underutilized features reduces costs associated with maintaining and supporting them. It allows you to allocate resources more efficiently to features that bring more value to the users and the business.
+Eliminating waste from an application involves identifying and removing underutilized or unnecessary features to reduce costs and reallocate resources more efficiently. The evaluation should be based on the value of application features to users and their alignment with business goals. An application feature refers to a specific functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that aren't providing value to the workload or aren’t worth their current investment. Removing unnecessary or underutilized features reduces costs associated with maintaining and supporting them. It allows you to allocate resources more efficiently to features that bring more value to the users and the business.
 
 **Evaluate the value.** To determine the value of a feature, consider its impact on the overall application and the value it provides to the customers. Some factors to consider include:
 
