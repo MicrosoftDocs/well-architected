@@ -55,7 +55,7 @@ Creating a triage plan involves devising a structured approach to identify, esca
 
 - *Documentation*: Document the triage plan, including all its steps, processes, and best practices. This documentation should be easily accessible to the team members who are involved in responding to performance issues.
 
-### Identify and resolve issues
+### Develop methods to identify and resolve issues
 
 Resolving live performance issues involves identifying and addressing any factors that can cause performance degradation or inefficiencies in a live workload. Data that you collect during monitoring is invaluable when you investigate and resolve performance-related incidents. This data provides a historical record of performance metrics. When you have monitoring data available, you can analyze root causes and identify contributing factors. You should use all relevant monitoring data to understand and fix each performance issue.
 
