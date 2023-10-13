@@ -59,7 +59,7 @@ Use a progressive-exposure approach to reduce the risk of introducing undetected
 
 When you define your deployment method, adopt a standard policy of only deploying the smallest viable change in each deployment. Depending on factors like the criticality of the workload and complexity of the components, determine the smallest viable change. If you use an immutable infrastructure, the smallest viable change is typically the deployment of resources with the latest configuration to replace resources that run the previous version. If you use a mutable infrastructure, you might decide that the smallest viable change is only a single update on the group of resources in scope.
 
-**Follow a layered approach to reflect different lifecycles.** Foundational layers should remain static throughout most of the workload lifecycle, and application layers change frequently. To account for these differences, you should have different pipelines to affect changes at each layer.
+**Follow a layered approach to reflect different lifecycles.** Foundational layers should remain static throughout most of the workload lifecycle, and application layers change frequently. To account for these differences, you should have different pipelines to effect changes at each layer.
 
 A [landing zone](/azure/cloud-adoption-framework/ready/landing-zone) is at the lowest layer. A landing zone is a logical grouping of foundational elements, like subscriptions, management groups, resource groups, governance functions, and networking topology. A landing zone enables you to easily deploy and manage your workload, and provides central operations teams, or platform teams, with a repeatable approach to an environmental configuration. To deliver consistent environments, all Azure landing zones provide a set of common design areas, a reference architecture, a reference implementation, and a process to modify a deployment to fit your design requirements. The [Azure landing zone design principles](/azure/cloud-adoption-framework/ready/landing-zone/design-principles) provide recommended practices based on policy-driven governance alongside subscription democratization. A landing zone should require minimal changes over the course of your workload lifecycle.
 
@@ -95,7 +95,7 @@ When possible, use automated testing to ensure consistency. Include the followin
 
     The main purpose of this test is to evaluate the system's compliance with the business requirements and determine whether the system meets the required criteria for delivery to end users.
 
-**Implement quality gates throughout your code promotion process via testing**. Deploy your code into lower environments, like development and testing, and up through higher environments, like staging and production. As your deployment passes through quality gates, ensure that it meets your quality targets before changes go to production. Your business requirements determine what the focus of your quality gates are. Also consider the fundamental Well-Architected Framework principles: [Security](../security/test.md), [Reliability](../reliability/testing-strategy.md), and [Performance Efficiency](../performance-efficiency/performance-testing.md).
+**Implement quality gates throughout your code promotion process via testing**. Deploy your code into lower environments, like development and testing, and up through higher environments, like staging and production. As your deployment passes through quality gates, ensure that it meets your quality targets before changes go to production. Your business requirements determine what the focus of your quality gates are. Also consider the fundamental Well-Architected Framework principles: [Security](../security/test.md), [Reliability](../reliability/testing-strategy.md), and [Performance Efficiency](../performance-efficiency/performance-test.md).
 
 Also integrate approval workflows into your quality gates. Clearly define and automate approval workflows when appropriate. Define quality acceptance criteria into your automation, so you can move through your gates efficiently and safely.
 
@@ -125,7 +125,7 @@ For an example that shows how to use Azure Pipelines to build a CI/CD pipeline, 
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
 - [GitHub Actions for Azure](https://azure.github.io/actions)
 - [Landing zones](/azure/cloud-adoption-framework/ready/landing-zone)
-- [Performance Efficiency pillar](../performance-efficiency/performance-testing.md)
+- [Performance Efficiency pillar](../performance-efficiency/performance-test.md)
 - [Reliability pillar](../reliability/testing-strategy.md)
 - [Security pillar](../security/test.md)
 

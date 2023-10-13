@@ -18,7 +18,7 @@ This guide describes the recommendations for aligning resource usage to billing 
 | Billing increment | A usage amount that incurs a cost, such as units of time (per minute or hour), number of instances, data size (per GB or TB). Also known as a meter. |
 | Billing factors  | The types of usage that incur costs, such as time, storage amount, data transfer amount, number of requests.                     |
 
-## Key strategies
+## Key design strategies
 
 You can save a significant amount by aligning your actual usage with the billing increments and factors that your service provider employs. Aim to minimize costs by using resources only when essential. Be cautious of choices that could lead to unnecessary expenses. Costs can arise from factors like time, the number of transactions, data size, regional boundaries, storage use, and reaching certain thresholds. For instance, just deploying a new instance of a service might result in a charge. Sometimes, starting and stopping a service might cost more than letting it run. You need to understand the workload's specific needs and familiarize yourself with how different resources bill you. Based on your findings, adjust the usage or the resource to optimize cost.
 

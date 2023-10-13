@@ -17,7 +17,7 @@ After you understand the ROI of a workload, you can start improving it. To impro
 
 The cost of a service disruption must be measured against the cost to prevent or recover from one. If the cost of disruptions exceeds the cost of reliability design, then you should invest more to prevent or mitigate disruptions. Conversely, the cost of the reliability efforts might be more than the cost of a disruption, including factors such as compliance requirements and reputation. Only then, should you consider strategic divestment in reliability design.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Reduced resiliency.** A workload employs resiliency measures to attempt to avoid and withstand specific types and quantities of malfunction.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Reduced resiliency.** A workload employs resiliency measures to attempt to avoid and withstand specific types and quantities of malfunction.
 
 - Cost-saving measures might underprovision a component or overconstrain its scaling, making it more likely to fail with sudden spikes in demand.
 
@@ -33,7 +33,7 @@ The cost of a service disruption must be measured against the cost to prevent or
 
 - Without reliability testing tools or tests, the reliability of the workload is unknown and less likely to reach its reliability targets.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Limited recovery strategy.** A workload that is reliable has a tested incident response and recovery plan for disaster scenarios.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Limited recovery strategy.** A workload that is reliable has a tested incident response and recovery plan for disaster scenarios.
 
 - Less *testing or drilling* of the workload's disaster recovery plan increases might affect the speed and effectiveness of recovery operations.
 
@@ -41,7 +41,7 @@ The cost of a service disruption must be measured against the cost to prevent or
 
 - Selecting a lower-cost support contract may increase workload recovery time due to potential delays in technical assistance.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased complexity.** The workload that uses straight forward approaches and avoids unnecessary or over-engineered complexity is, generally, the easier to manage reliability expectations against.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased complexity.** The workload that uses straight forward approaches and avoids unnecessary or over-engineered complexity is, generally, the easier to manage reliability expectations against.
 
 - Using cost-optimization cloud patterns can add new components, such as content delivery network (CDN), or shift duties to edge and client devices that a workload must provide reliability targets for.
 
@@ -53,7 +53,7 @@ The cost of a service disruption must be measured against the cost to prevent or
 
 The cost of a compromise to confidentiality, integrity, and availability within a workload must always be balanced against the cost of the effort to prevent that compromise. The impact of a security incident can have a very wide range of reputation, legal, and monetary impact. Investing in security is a risk mitigation activity, and the cost of experiencing the risks must be rationalized relative to the investment. As a rule, don't compromise on security with cost optimizations below the point of responsible and agreed upon risk mitigation. Optimizing security costs by 'right sizing' solutions is an important optimization practice but be aware of tradeoffs such as these when doing so.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Reduced security controls.** Security controls are established across multiple layers, sometimes redundant, to provide a defense in depth.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Reduced security controls.** Security controls are established across multiple layers, sometimes redundant, to provide a defense in depth.
 
 A cost optimization tactic is to look for ways to remove components or processes that accrue unit or operational costs. Be aware that the choice to remove any security-centric items such items like the following examples for the sake of cost will have a security impact you'll need to carefully perform a risk analysis on.
 
@@ -67,7 +67,7 @@ A cost optimization tactic is to look for ways to remove components or processes
 
 - Removing network controls, such as firewalls, might fail to block malicious inbound and outbound traffic.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased workload surface area.** Security prefers a reduced and contained surface area to minimize attack vectors and minimize the management of security controls.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased workload surface area.** Security prefers a reduced and contained surface area to minimize attack vectors and minimize the management of security controls.
 
 Cost-centric cloud design patterns sometimes necessitate the introduction of *additional components*. These additional components increase the surface area of the workload. Those components and the data within them must be secured, in possibly unique ways from other components and data already in the system and are often included in compliance scope. Some examples are using:
 
@@ -75,7 +75,7 @@ Cost-centric cloud design patterns sometimes necessitate the introduction of *ad
 - The valet key pattern to offload processing and secure access to resources to client compute
 - Queue-based load leveling to smooth costs involves introducing a message bus
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Removed segmentation.** Security stresses strong segmentation to support applying targeted security controls and to control blast radius.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Removed segmentation.** Security stresses strong segmentation to support applying targeted security controls and to control blast radius.
 
 Sharing resources, such as in multi-tenancy situations or co-locating multiple applications on a shared application platform, is an approach to reduce costs through *increased density* and smaller management surface. This increased density can lead to security concerns such as the following.
 
@@ -89,7 +89,7 @@ Sharing resources, such as in multi-tenancy situations or co-locating multiple a
 
 ## Cost Optimization tradeoffs with Operational Excellence
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Compromised software development lifecycle (SDLC) capacities.** A workload's SDLC process is established to provide rigor, consistency, specificity, and prioritization to change management within a workload.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Compromised software development lifecycle (SDLC) capacities.** A workload's SDLC process is established to provide rigor, consistency, specificity, and prioritization to change management within a workload.
 
 - Reducing *testing efforts* to save time and the cost associated with test personnel, resources, and tooling can result in more bugs in production.
 
@@ -105,7 +105,7 @@ Sharing resources, such as in multi-tenancy situations or co-locating multiple a
 
 - Avoiding or reducing *continuous improvement* activities, like retrospectives and after-incident reports, to keep the workload team focused on delivery can overlook chances to optimize routine, unplanned, and emergency processes.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Reduced observability.** Observability is necessary to ensure the workload can have meaningful alerting and successful incident response.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Reduced observability.** Observability is necessary to ensure the workload can have meaningful alerting and successful incident response.
 
 - *Decreasing log and metric volume* to save on storage and transfer costs reduces system observability and can lead to:
 
@@ -117,7 +117,7 @@ Sharing resources, such as in multi-tenancy situations or co-locating multiple a
 
 - Reducing investment in *observability tooling and maintaining effective dashboards* can reduce the ability to learn from production, validate design choices, and inform product design. This reduction can also hamper incident response activities and make it harder to hit the recovery time objective and service level objective.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Deferred maintenance.** Keeping code, tooling, software packages, operating systems patched and up to date in a timely and orderly manor is an expectation of a workload team.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Deferred maintenance.** Keeping code, tooling, software packages, operating systems patched and up to date in a timely and orderly manor is an expectation of a workload team.
 
 - Not renewing maintenance contracts with tooling vendors may result in missing new optimization features, bug resolutions, and potential security updates.
 
@@ -127,7 +127,7 @@ Sharing resources, such as in multi-tenancy situations or co-locating multiple a
 
 Cost Optimization and Performance Efficiency both strive to maximize the value for the workload's cost. Performance Efficiency attempts to meet performance targets without spending more than necessary. Cost Optimization strives to maximize the value of a workload's resources without exceeding performance targets.  As a result, cost optimization often improves performance efficiency. However, there are performance efficiency tradeoffs associated with cost optimization. These tradeoffs can make it harder to reach performance target and hinder ongoing performance optimization.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Under-provisioned or under-scaled resources.** A performance-efficient workload has enough resources available to serve demand without excessive unused overhead, even as usage patterns fluctuate.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Under-provisioned or under-scaled resources.** A performance-efficient workload has enough resources available to serve demand without excessive unused overhead, even as usage patterns fluctuate.
 
 - Reducing costs through *downsizing resources* can starve applications of resources, and the application may not be able to handle significant usage pattern fluctuations.
 
@@ -135,7 +135,7 @@ Cost Optimization and Performance Efficiency both strive to maximize the value f
 
 - Autoscale settings that *scale down aggressively* to reduce costs might leave a service unprepared for sudden spike in demand or cause frequent scaling fluctuations (flapping).
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Not optimized over time.** Evaluating the effects of functionality changes, usage patterns change, new technologies, and different approaches on the workload is one way to seek additional efficiency.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Not optimized over time.** Evaluating the effects of functionality changes, usage patterns change, new technologies, and different approaches on the workload is one way to seek additional efficiency.
 
 - Limiting the focus on *developing expertise* in performance optimization to prioritize delivery can overlook opportunities to improve resource usage efficiency.
 

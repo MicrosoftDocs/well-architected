@@ -92,7 +92,7 @@ In addition to the changes in structure and consistency, you should note some th
 - New Well-Architected Framework workload: [Azure VMware Solution workloads](./azure-vmware/index.yml)
 - Updated service guide: [Azure Well-Architected Framework review - Virtual Machines](./service-guides/virtual-machines-review.md)
 
-## Related resources
+## Related links
 
 - [What's new in Azure Architecture Center](/azure/architecture/changelog)
 - [What's new in the Microsoft Cloud Adoption Framework for Azure](/azure/cloud-adoption-framework/get-started/whats-new)

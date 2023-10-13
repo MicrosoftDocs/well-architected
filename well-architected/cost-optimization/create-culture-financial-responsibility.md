@@ -30,9 +30,9 @@ Establishing success metrics that are aligned with the workload is also importan
 
 Creating a culture of financial responsibility helps organizations manage their cloud costs more effectively. It aligns cloud spending with business goals and drives greater business value from cloud infrastructure. It helps ensure that the workload team prioritizes cost and makes decisions that increase the business value of the workload. It involves cost transparency, skill development, and clear communication.
 
-### Make costs transparent
+### Make budgets and costs transparent
 
-Making costs transparent means openly communicating budgets and other financial information about a workload or project with stakeholders.
+Making budgets and costs transparent means openly communicating financial information about a workload or project with stakeholders.
 
 When you're making costs transparent:
 
@@ -42,13 +42,11 @@ When you're making costs transparent:
 
 A benefit of sharing cost details is early detection of overspending. Transparent budgets provide a clear threshold for spending. If a team is approaching or exceeding a budget, it can take corrective actions early to avoid overspending.
 
-### Invest in cultural change
+### Encourage continuous improvement
 
-Investing in cultural change should encourage the workload team to embrace a growth mindset and seek opportunities to learn cost optimization strategies.
+Encouraging a culture of continuous improvement is about fostering an environment where the workload team is empowered to explore and propose cost-saving measures. It requires open dialogue, training, and team-building focused on cost optimization. With this mindset, the workload team is more likely to be proactive in identifying and implementing cost optimization strategies.
 
-Foster a culture that values and rewards contributions in this area. Promote a mindset of continuous improvement and cost awareness among personnel. Encourage them to proactively identify cost optimization opportunities in their day-to-day work and share those opportunities with the team.
-
-Consider these key points:
+Consider the following strategies:
 
 - *Cost workshops*: Conduct workshops or training sessions to help leaders enhance their understanding of financial responsibility and its importance. These workshops can cover topics such as budgeting, cost management, and financial decision-making.
 
@@ -61,9 +59,11 @@ Consider these key points:
 
 ### Develop skills in-house
 
-Developing skills in-house means investing in training and developing the workforce to acquire the necessary expertise to optimize costs within a workload. It involves providing training programs, resources, and support to enhance the skills and capabilities of employees in the organization. It allows you to use the existing talent pool and empower employees to take ownership of cost optimization initiatives.
+Developing skills in-house means investing in training the workload team. The goal is for the team to gain the necessary expertise to optimize costs within a workload.
 
-To develop skills in-house, consider following these steps:
+This effort involves providing training programs, resources, and support to enhance the skills and capabilities of employees in the organization. It allows you to use the existing talent pool and empower employees to take ownership of cost optimization initiatives.
+
+Consider following these steps:
 
 1. *Assess skills*: Evaluate the existing skills and knowledge of the workload team to identify areas that need improvement in terms of workload cost optimization.
 1. *Define training objectives*: Determine the specific skills and expertise that are required to optimize costs within the workload. Include topics such as cloud cost management, resource optimization techniques, budgeting, and data analysis.
@@ -79,15 +79,15 @@ To develop skills in-house, consider following these steps:
 
 ### Communicate financial expectations
 
-Employees need ways to receive and relay cost optimization ideas. You should clearly communicate financial expectations to the workload team. Create communication channels that allow you to exchange knowledge, collaborate, and identify cost-saving opportunities.
+Communicating financial expectations to a workload team involves conveying financial goals and establishing open channels for exchanging cost-saving ideas and knowledge. This process includes reshaping organizational values to emphasize financial responsibility, clear goals, and cross-functional communication.
 
-Here are some tips:
+Consider the following recommendations:
 
 - *Reshape values*: Review and update values and mission statements to include financial responsibility. Ensure that these values are communicated and reinforced throughout the organization, and that they're aligned with the overall business objectives.
 
   Recognize and reward individuals and teams who demonstrate financial responsibility and contribute to cost optimization efforts. Use performance evaluations, incentives, or other recognition programs.
 - *Establish expectations*: Set clear expectations and goals for all stakeholders who are aligned with the mission. Encourage accountability and responsibility for all actions taken. Establish and promote success metrics that are aligned with individual teams' goals.
-- *Establish communication channels*: Use email groups, chat platforms, or dedicated collaboration tools as communication channels. Encourage team members to share their ideas and insights about cost optimization. This work environment allows for cross-functional collaboration and the sharing of diverse perspectives.
+- *Establish communication channels*: Use email groups, chat platforms, or dedicated collaboration tools as communication channels. Encourage team members to share their ideas and insights about cost optimization. This work environment allows for the sharing of diverse perspectives.
 
   Communicate the availability of communication channels to the workload team on a volunteer basis. Make sure everyone is aware of the channels and how to access them.
 - *Extend communication channels*: Make the communication channels available to the broader organization or department to encourage cross-functional collaboration and knowledge sharing. Identify power users or go-to people in the organization who can act as champions for cost optimization. These individuals can help drive the adoption of cost-saving practices and help others understand the importance of cost optimization.
