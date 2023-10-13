@@ -29,9 +29,9 @@ This guide describes the best practices for responding to live performance issue
 
 When you experience a live performance issue, you need to be prepared with the right data and a plan to respond to the issue. This plan should include clear lines of communication and responsibilities. The primary objective is to implement solutions that facilitate a quick return to regular operations and provide insights from the incident. Integrating preventive measures into your workflow is a pivotal strategy. It's crucial to either prevent the same issue from happening again or lessen its effects on performance if it isn't preventable.
 
-### Prepare for live performance issues
+### Prepare for issues
 
-Preparing for live performance issues means proactively setting up mechanisms to detect, diagnose, and resolve site performance disruptions. It involves monitoring key performance metrics and maintaining up-to-date architecture diagrams. A plan for granting access to logs is essential, and you should be able to act on automated alerts. The ideal response to live-site performance issues is precise and fast. Precision and speed in performance remediation require preparation. Prepration enables a swift and accurate response to performance issues, ensuring minimal disruptions to users and business activities. To prepare for live performance issues, consider these recommendations:
+The ideal response to live-site performance issues is precise and fast. Precision and speed in performance remediation require preparation. To effectively respond to live performance issues, it's crucial to monitor key performance metrics, identify the root cause of the issues, and implement appropriate solutions or optimizations. To take these steps, you might need to analyze workload logs, conduct performance testing, optimize code or configurations, and scale resources. The following examples outline a few critical areas of preparation:
 
 - *Have accurate architecture diagrams.* Your architecture diagrams should include all components and show how they interact. Visual representation can help identify bottlenecks and single points of failure that can lead to performance degradation or unavailability. Ideally, you catch and remove these issues before they cause problems, but having an up-to-date diagram can help you pinpoint issues in high-stress moments.
 
@@ -59,9 +59,7 @@ Creating a triage plan involves devising a structured approach to identify, esca
 
 Resolving live performance issues involves identifying and addressing any factors that can cause performance degradation or inefficiencies in a live workload. Data that you collect during monitoring is invaluable when you investigate and resolve performance-related incidents. This data provides a historical record of performance metrics. When you have monitoring data available, you can analyze root causes and identify contributing factors. You should use all relevant monitoring data to understand and fix each performance issue.
 
-#### Use root cause analysis
-
-Root cause analysis is a systematic approach used to identify the underlying reasons for performance issues. It ensures that disruptions are understood and comprehensively resolved. It helps prevent recurring issues and optimal site functionality. To conduct a root cause analysis on a live performance issue, follow these steps:
+**Use root cause analysis.** Root cause analysis requires hypothesis testing. After you review monitoring data, you should list potential causes of the performance issue and test them. To conduct a root cause analysis on a live performance issue, you can follow these steps:
 
 1. *Gather information.* Collect as much information as possible about the performance issue. Examples include error messages, logs, performance metrics, and any other relevant data.
 
@@ -81,9 +79,7 @@ Root cause analysis is a systematic approach used to identify the underlying rea
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: If you perform a root cause analysis without proper security guardrails, there's a risk that you expose sensitive information when you provide access to logs and data.
 
-#### Engage vendor support
-
-Vendor support can be an essential step when you deal with ongoing performance issues. Vendors have the expertise, tools, resources, and experience to help fix issues with their products. Your support agreement with your supplier determines the level of support a vendor provides.
+**Engage vendor support.** Vendor support can be an essential step when you deal with ongoing performance issues. Vendors have the expertise, tools, resources, and experience to help fix issues with their products. Your support agreement with your supplier determines the level of support a vendor provides.
 
 It's often best to work in parallel with vendors. You should create a plan to have some team members collaborate with vendor support while others continue to triage and fix performance issues. Vendor support teams can also make suggestions on how to help prevent and automate responses to similar events.
 
@@ -115,3 +111,4 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"] 
 > [Performance Efficiency checklist](checklist.md) 
+

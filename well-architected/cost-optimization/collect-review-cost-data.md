@@ -112,7 +112,7 @@ Review the cost data collected from your workload to gain insights into your spe
 
 When examining the architectural decisions of your workload, it's essential to focus on cost implications. Utilizing alternative patterns or cloud-native offerings can lead to significant cost savings. Opting for Platform as a Service (PaaS) or Software as a Service (SaaS) over Infrastructure as a Service (IaaS) can be more economical. With PaaS, not only are infrastructure expenses part of the service's pricing, but the platform also simplifies the provisioning and management of these resources under a unified cost. For instance, deploying a lower tier virtual machine as a jump box might introduce additional costs for storage, server management, and public IP configuration. In contrast, PaaS handles these complexities, offering a consolidated cost that often encompasses enhanced security.
 
-### Automate alerts
+### Automate cost alerts
 
 Implementing automated alerts can trigger budget notifications at key thresholds. These alerts can be set up to notify stakeholders and DRIs when costs exceed predefined limits or when there are significant deviations from expected spending patterns. Budget alerts and forecast alerts are two different types of cost alerts used for automating cost alerts.
 

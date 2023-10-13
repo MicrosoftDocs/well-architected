@@ -182,93 +182,93 @@
 		},
 		{
 			"source_path": "well-architected/cost/design-capture-requirements.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/design-capture-requirements",
+			"redirect_url": "/azure/well-architected/cost-optimization/cost-model",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/cost/design-checklist.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/design-checklist",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/design-governance.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/design-governance",
+			"redirect_url": "/azure/well-architected/cost-optimization/set-spending-guardrails",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/cost/design-initial-estimate.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/design-initial-estimate",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/cost-model",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/design-model.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/design-model",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/cost-model",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/design-paas.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/design-paas",
+			"redirect_url": "/azure/well-architected/cost-optimization/collect-review-cost-data",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/cost/design-price.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/design-price",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/cost-model",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/design-regions.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/design-regions",
-			"redirect_document_id": true
+			"redirect_url": "/azure/architecture/data-guide/technology-choices/cognitive-services",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/design-resources.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/design-resources",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/cost-model",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/monitor-alert.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/monitor-alert",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/collect-review-cost-data",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/monitor-checklist.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/monitor-checklist",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/monitor-reports.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/monitor-reports",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/collect-review-cost-data",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/monitor-reviews.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/monitor-reviews",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/collect-review-cost-data",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/optimize-autoscale.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/optimize-autoscale",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-scaling",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/cost/optimize-cache.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/optimize-cache",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-scaling",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/optimize-checklist.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/optimize-checklist",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/optimize-vm.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/optimize-vm",
+			"redirect_url": "/azure/well-architected/cost-optimization/eliminate-waste",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/cost/overview.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/overview",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/principles.md",
@@ -277,48 +277,48 @@
 		},
 		{
 			"source_path": "well-architected/cost/provision-ai-ml.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/provision-ai-ml",
-			"redirect_document_id": true
+			"redirect_url": "/azure/architecture/data-guide/technology-choices/cognitive-services",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-analytics.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/provision-analytics",
-			"redirect_document_id": true
+			"redirect_url": "/azure/architecture/data-guide/technology-choices/analytical-data-stores",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-checklist.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/provision-checklist",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-optimization/checklist",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-compute.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/provision-compute",
-			"redirect_document_id": true
+			"redirect_url": "/azure/architecture/guide/technology-choices/compute-decision-tree",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-datastores.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/provision-datastores",
+			"redirect_url": "/azure/well-architected/cost-optimization/optimize-data-costs",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/cost/provision-messaging.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/provision-messaging",
-			"redirect_document_id": true
+			"redirect_url": "/azure/architecture/guide/technology-choices/messaging",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-networking-services.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/provision-networking-services",
-			"redirect_document_id": true
+			"redirect_url": "/azure/architecture/guide/technology-choices/load-balancing-overview",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-networking.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/provision-networking",
-			"redirect_document_id": true
+			"redirect_url": "/azure/architecture/guide/technology-choices/load-balancing-overview",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-webapps.md",
-			"redirect_url": "/azure/well-architected/cost-optimization/provision-webapps",
-			"redirect_document_id": true
+			"redirect_url": "/azure/architecture/web-apps/",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/tradeoffs.md",
@@ -332,7 +332,7 @@
 		},
 		{
 			"source_path": "well-architected/devops/alerts.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/alerts",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
@@ -377,7 +377,7 @@
 		},
 		{
 			"source_path": "well-architected/devops/monitor-alerts.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/monitor-alerts",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
@@ -397,7 +397,7 @@
 		},
 		{
 			"source_path": "well-architected/devops/monitor-instrument.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/monitor-instrument",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
 			"redirect_document_id": false
 		},
 		{
@@ -412,7 +412,7 @@
 		},
 		{
 			"source_path": "well-architected/devops/overview.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/overview",
+			"redirect_url": "/azure/well-architected/operational-excellence/checklist",
 			"redirect_document_id": false
 		},
 		{
@@ -482,7 +482,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/design-capacity.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/design-capacity",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-code-infrastructure",
 			"redirect_document_id": false
 		},
 		{
@@ -512,7 +512,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/load-testing.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/performance-testing",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-test",
 			"redirect_document_id": false
 		},
 		{
@@ -552,17 +552,17 @@
 		},
 		{
 			"source_path": "well-architected/scalability/optimize.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/optimize",
+			"redirect_url": "/azure/well-architected/performance-efficiency/optimize-code-infrastructure",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/scalability/overview.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/overview",
+			"redirect_url": "/azure/well-architected/performance-efficiency/checklist",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/scalability/performance-efficiency.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/performance-efficiency",
+			"redirect_url": "/azure/well-architected/performance-efficiency/checklist",
 			"redirect_document_id": false
 		},
 		{
@@ -577,7 +577,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/test-checklist.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/test-checklist",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-test",
 			"redirect_document_id": false
 		},
 		{

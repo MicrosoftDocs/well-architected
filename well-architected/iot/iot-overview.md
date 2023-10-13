@@ -16,7 +16,7 @@ categories:
 
 This section of the Microsoft Azure Well-Architected Framework aims to address the challenges of building IoT workloads on Azure. This article describes the IoT design areas, architecture patterns, and architecture layers in the IoT workload.
 
-[Five pillars of architectural excellence](../index.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the design areas described in this article. The remaining articles in this series delve into how to evaluate the design areas using IoT-specific design principles in the reliability, security, cost optimization, operational excellence, and performance efficiency pillars.
+[Five pillars of architectural excellence](../pillars.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the design areas described in this article. The remaining articles in this series delve into how to evaluate the design areas using IoT-specific design principles in the reliability, security, cost optimization, operational excellence, and performance efficiency pillars.
 
 > [!TIP]
 > To assess your IoT workload through the lenses of reliability, security, cost optimization, operational excellence, and performance efficiency, see the [Azure Well-Architected Review](/assessments/azure-architecture-review/).
