@@ -33,9 +33,9 @@ Understanding the workload is the first step to finding and using the best rates
 
 By following these steps, you gain a comprehensive understanding of your workload's cost structure and identify areas where you can optimize rates.
 
-### Determine billing model
+### Determine the right billing model
 
-Using a consumption billing model (pay-as-you-go) and preprovisioned billing model (prepaid) on the appropriate resources can help generate the best rates for your workload. You need to consider the characteristics and usage patterns of your workload to make the correct decision. Determining the right billing model for a component involves considering various factors. Consider usage patterns and budget. You need to understand financial constraints to decide whether upfront payment is feasible. Assess if you have a long-term commitment to the component or if it's a short-term project. Consider the potential cost savings offered by prepaid plans and compare them with the expected usage and pay-as-you-go costs.
+Determining the billing model involves choosing between consumption-based (pay-as-you-go) and prepaid pricing strategies. The selection should be based on the predictability, duration, and utilization consistency of workload components. This decision requires collaboration between development and purchasing teams to evaluate resource needs, usage patterns, and potential cost optimizations. Selecting the right billing model is crucial to ensure cost-effectiveness. It helps align the workload with business objectives and get the best rates for the specific requirements of a workload. To determine the right billing model, consider the following strategies:
 
 #### Understand consumption pricing
 
@@ -81,7 +81,7 @@ When considering prepaid commitments, it's recommended to commit to the maximum 
 - *Engage with the vendor/supplier*: Communicate with the vendor or supplier to gather information about their plans, roadmap, and commitment to the component or workload. This dialogue provides valuable insights into their long-term vision and commitment level.
 - *Cost analysis*: Perform a cost analysis to compare the potential savings from committing to the maximum utilization with the potential risks of underutilization. Evaluate the cost implications of committing to a higher utilization level and assess whether the potential savings outweigh the risks of not fully utilizing the commitment.
 
-### Evaluate available discounts
+### Evaluate and commit to available discounts
 
 Evaluating available discounts for a workload refers to the process of assessing and analyzing the potential cost savings or discounts that can be applied to a specific workload. Assessing available supplier discounts allows you to identify opportunities for cost reduction and optimize the expenditure associated with the workload. It helps you identify potential savings and allocate resources more efficiently.
 
@@ -91,8 +91,6 @@ Evaluating available discounts for a workload refers to the process of assessing
 - *Evaluate contract terms*: Review the terms and conditions of existing contracts or agreements to identify any potential discount options. Consider understanding the duration of the commitment, renewal terms, and the possibility of negotiating better rates.
 - *Communicate with vendors*: Know the actual and anticipated usage of a workload when you discuss discounts. Let the vendor know what environment the discussion is about. For example, you can often get discounts on preproduction environments. Ask vendors or suppliers to discuss available discount options, such as product bundling products. Ask specific questions about discount programs, eligibility criteria, and any negotiation possibilities.
 - *Understand reseller options*: Consider engaging with resellers who can provide extra insights into available discounts or offer alternative pricing models. Resellers might have access to specialized programs or discounts that can benefit your workload.
-
-### Commit to the right discounts
 
 Committing to the right discount options is where you act on your evaluation. You’re equipped with the available option. You’ve communicated your needs and workload data to the various vendors. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing.
 
