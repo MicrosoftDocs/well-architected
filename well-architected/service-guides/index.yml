@@ -1,12 +1,12 @@
 ### YamlMime:Hub
 
 title: Azure Well-Architected Framework
-summary: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
+summary: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
 brand: azure
 
 metadata:
   title: Azure Well-Architected Framework
-  description: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
+  description: The Azure Well-Architected Framework is a set of quality-driven tenets, architectural decision points, and review tools that help solution architects build a technical foundation for their workloads.
   services: azure-resource-manager
   ms.service: waf
   ms.custom: ignite-2022
@@ -34,11 +34,11 @@ highlightedContent:
 
 productDirectory:
   title: Browse the Well-Architected Framework service guides
-  summary: Service guides are intended to help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a well-architected state. They aren't configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
+  summary: Service guides help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a well-architected state. They aren't configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
   items:
     # Card
     - title: API Management
-      summary: Publish APIs to developers, partners, and employees securely and at scale
+      summary: Publish APIs to developers, partners, and employees securely and at scale.
       imageSrc: https://static.docs.com/ui/media/product/azure/api-management.svg
       url: ././api-management/reliability.md
       azureCategories:
@@ -48,14 +48,14 @@ productDirectory:
         - web
     # Card
     - title: Application delivery
-      summary: Deliver internal-facing and external-facing applications in the Azure network
+      summary: Deliver internal-facing and external-facing applications in the Azure network.
       imageSrc: /media/common/i_web-apps.svg
       url: ././application-delivery/reliability.md
       azureCategories:
         - web
     # Card
     - title: Azure Application Gateway
-      summary: Build highly secure, scalable, and available web front ends in Azure
+      summary: Build highly secure, scalable, and available web front ends in Azure.
       imageSrc: https://static.docs.com/ui/media/product/azure/application-gateways.svg
       url: azure-application-gateway.md
       azureCategories:
@@ -63,7 +63,7 @@ productDirectory:
         - security
     # Card
     - title: Azure App Service
-      summary: Quickly create powerful cloud apps for web and mobile
+      summary: Quickly create powerful cloud apps for web and mobile.
       imageSrc: https://static.docs.com/ui/media/product/azure/app-service.svg
       url: ./azure-app-service/reliability.md
       azureCategories:
@@ -73,14 +73,14 @@ productDirectory:
         - web
     # Card
     - title: Azure Batch
-      summary: Cloud-scale job scheduling and compute management
+      summary: Use cloud-scale job scheduling and compute management.
       imageSrc: https://static.docs.com/ui/media/product/azure/batch-accounts.svg
       url: ./azure-batch/reliability.md
       azureCategories:
         - compute
     # Card
     - title: Application Insights
-      summary: Full observability into your applications, infrastructure, and network
+      summary: Build full observability into your applications, infrastructure, and network.
       imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
       url: ./application-insights/security.md
       azureCategories:
@@ -88,14 +88,14 @@ productDirectory:
         - management-and-governance
     # Card
     - title: Azure Cache for Redis
-      summary: Power applications with high-throughput, low-latency data access
+      summary: Power applications with high-throughput, low-latency data access.
       imageSrc: https://static.docs.com/ui/media/product/azure/cache-redis.svg
       url: ./azure-cache-redis/reliability.md
       azureCategories:
         - databases
     # Card
     - title: Azure Cosmos DB
-      summary: Fast NoSQL database with open APIs for any scale
+      summary: Use a fast NoSQL database with open APIs for any scale.
       imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
       url: ./cosmos-db/reliability.md
       azureCategories:
@@ -104,14 +104,14 @@ productDirectory:
         - iot
     # Card
     - title: Azure Database for MySQL
-      summary: Managed MySQL database service for app developers
+      summary: Use managed MySQL database service for app developers.
       imageSrc: https://static.docs.com/ui/media/product/azure/database-mysql-server.svg
       url: azure-db-mysql-cost-optimization.md
       azureCategories:
         - databases
     # Card
     - title: Azure Database for PostgreSQL
-      summary: Managed PostgreSQL database service for app developers
+      summary: Use managed PostgreSQL database service for app developers.
       imageSrc: https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg
       url: azure-db-postgresql-well-architected-framework.md
       azureCategories:
@@ -119,7 +119,7 @@ productDirectory:
         - hybrid
     # Card
     - title: Azure Databricks
-      summary: Fast, easy, and collaborative Apache Spark-based analytics platform
+      summary: Fast, easy, and collaborative Apache Spark-based analytics platform.
       imageSrc: https://static.docs.com/ui/media/product/azure/databricks.svg
       url: azure-databricks-security.md
       azureCategories:
@@ -127,7 +127,7 @@ productDirectory:
         - analytics
     # Card
     - title: Azure Event Grid
-      summary: Get reliable event delivery at massive scale
+      summary: Get reliable event delivery at massive scale.
       imageSrc: https://static.docs.com/ui/media/product/azure/event-grid-domains.svg
       url: ./event-grid/reliability.md
       azureCategories:
@@ -135,14 +135,14 @@ productDirectory:
         - iot
     # Card
     - title: Azure Event Hubs
-      summary: Receive telemetry from millions of devices
+      summary: Receive event data from millions of devices.
       imageSrc: https://static.docs.com/ui/media/product/azure/event-hubs.svg
       url: ./event-hubs/reliability.md
       azureCategories:
         - analytics
     # Card
     - title: Azure ExpressRoute
-      summary: Dedicated private network fiber connections to Azure
+      summary: Dedicated private network fiber connections to Azure.
       imageSrc: https://static.docs.com/ui/media/product/azure/expressroute.svg
       url: azure-expressroute.md
       azureCategories:
@@ -150,7 +150,7 @@ productDirectory:
         - networking
     # Card
     - title: Azure Firewall
-      summary: Native firewalling capabilities with built-in high availability, unrestricted cloud scalability, and zero maintenance
+      summary: Use native firewall capabilities with built-in high availability, unrestricted cloud scalability, and zero maintenance.
       imageSrc: https://static.docs.com/ui/media/product/azure/firewall.svg
       url: azure-firewall.md
       azureCategories:
@@ -158,7 +158,7 @@ productDirectory:
         - security
     # Card
     - title: Azure Front Door
-      summary: Scalable, security-enhanced delivery point for global, microservice-based web applications
+      summary: Scalable, security-enhanced delivery point for global, microservice-based web applications.
       imageSrc: https://static.docs.com/ui/media/product/azure/front-door.svg
       url: ./azure-front-door/reliability.md
       azureCategories:
@@ -166,7 +166,7 @@ productDirectory:
         - security
     # Card
     - title: Azure Functions
-      summary: Process events with serverless code
+      summary: Process events with serverless code.
       imageSrc: https://static.docs.com/ui/media/product/azure/functions.svg
       url: azure-functions-security.md
       azureCategories:
@@ -177,21 +177,21 @@ productDirectory:
         - web
     # Card
     - title: Azure IoT Hub
-      summary: Connect, monitor and manage billions of IoT assets
+      summary: Connect, monitor, and manage billions of IoT assets.
       imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
       url: ./iot-hub/reliability.md
       azureCategories:
         - iot
     # Card
     - title: Azure IoT Hub Device Provisioning Service
-      summary: Automate zero-touch, just-in-time provisioning to an IoT Hub
+      summary: Automate zero-touch, just-in-time provisioning to an IoT Hub.
       imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
       url: ./iot-hub-dps/reliability.md
       azureCategories:
         - iot
     # Card
     - title: Azure Kubernetes Service
-      summary: Simplify the deployment, management, and operations of Kubernetes
+      summary: Simplify the deployment, management, and operations of Kubernetes.
       imageSrc: https://static.docs.com/ui/media/product/azure/kubernetes-services.svg
       url: azure-kubernetes-service.md
       azureCategories:
@@ -200,28 +200,28 @@ productDirectory:
         - containers
     # Card
     - title: Azure Load Balancer
-      summary: Deliver high availability and network performance to your applications
+      summary: Deliver high availability and network performance to your applications.
       imageSrc: https://static.docs.com/ui/media/product/azure/load-balancer.svg
       url: ./azure-load-balancer/reliability.md
       azureCategories:
         - networking
     # Card
     - title: Azure Queue Storage
-      summary: Effectively scale apps according to traffic
+      summary: Effectively scale apps according to traffic.
       imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
       url: ./queue-storage/reliability.md
       azureCategories:
         - storage
     # Card
     - title: Azure Service Bus
-      summary: Connect across private and public cloud environments
+      summary: Connect across private and public cloud environments.
       imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
       url: ./service-bus/reliability.md
       azureCategories:
         - integration
     # Card
     - title: Azure Service Fabric
-      summary: Develop microservices and orchestrate containers on Windows or Linux
+      summary: Develop microservices and orchestrate containers on Windows or Linux.
       imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
       url: azure-service-fabric-well-architected-framework.md
       azureCategories:
@@ -229,28 +229,28 @@ productDirectory:
         - containers
     # Card
     - title: Azure SQL Database
-      summary: Managed, intelligent SQL in the cloud
+      summary: Use managed, intelligent SQL in the cloud.
       imageSrc: https://static.docs.com/ui/media/product/azure/sql-database.svg
       url: azure-sql-database-well-architected-framework.md
       azureCategories:
         - databases
     # Card
     - title: Azure SQL Managed Instance
-      summary: Managed, always up-to-date SQL instance in the cloud
+      summary: Use a managed, always up-to-date SQL instance in the cloud.
       imageSrc: https://static.docs.com/ui/media/product/azure/sql-managed-instance.svg
       url: ./azure-sql-managed-instance/reliability.md
       azureCategories:
         - databases
     # Card
     - title: Azure Stack Hub
-      summary: Azure Stack Hub is sold as an integrated hardware system, with software preinstalled on validated hardware
+      summary: Use Azure Stack Hub as an integrated hardware system, with software preinstalled on validated hardware.
       imageSrc: https://static.docs.com/ui/media/product/azure/stack-hub.svg
       url: ./azure-stack-hub/reliability.md
       azureCategories:
         - hybrid
     # Card
     - title: Azure Traffic Manager
-      summary: Route incoming traffic for high performance and availability
+      summary: Route incoming traffic for high performance and availability.
       imageSrc: https://static.docs.com/ui/media/product/azure/traffic-manager.svg
       url: ./traffic-manager/reliability.md
       azureCategories:
@@ -258,7 +258,7 @@ productDirectory:
         - networking
     # Card
     - title: Azure Virtual Machines
-      summary: Provision Azure virtual machines in seconds
+      summary: Configure Azure virtual machines in seconds.
       imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
       url: virtual-machines-review.md
       azureCategories:
@@ -266,21 +266,21 @@ productDirectory:
         - compute
     # Card
     - title: Azure Virtual Network
-      summary: Provision private networks, optionally connect to on-premises datacenters
+      summary: Configure private networks and optionally connect to on-premises datacenters.
       imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg
       url: ./azure-virtual-network/reliability.md
       azureCategories:
         - networking
     # Card
     - title: Disk storage
-      summary: High-performance, highly durable block storage for Azure Virtual Machines
+      summary: Use high-performance, highly durable block storage for Azure Virtual Machines.
       imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
       url: azure-disks-cost-optimization.md
       azureCategories:
         - storage
     # Card
     - title: Log Analytics
-      summary: Full observability into your applications, infrastructure, and network
+      summary: Build full observability into your applications, infrastructure, and network.
       imageSrc: https://static.docs.com/ui/media/product/azure/log-analytics.svg
       url: log-analytics-cost-optimization.md
       azureCategories:
@@ -288,28 +288,28 @@ productDirectory:
         - management-and-governance
     # Card
     - title: IP addresses
-      summary: IP address-related services that enable communication in an Azure virtual network
+      summary: Establish IP address-related services that enable communication in an Azure virtual network.
       imageSrc: /media/common/i_web.svg
       url: ip-addresses-cost-optimization.md
       azureCategories:
         - networking
     # Card
     - title: Network connectivity
-      summary: Three Azure models for private network connectivity
+      summary: Choose from three Azure models for private network connectivity.
       imageSrc: /media/common/i_multi-connect.svg
       url: ./network-connectivity/reliability.md
       azureCategories:
         - networking
     # Card
     - title: Network virtual appliance (NVA)
-      summary: Control the flow of traffic between network segments classified with different security levels
+      summary: Control the flow of traffic between network segments classified with different security levels.
       imageSrc: /media/common/i_agile.svg
       url: ./network-virtual-appliances/reliability.md
       azureCategories:
         - networking
     # Card
     - title: Storage accounts
-      summary: Storage accounts contain all your Azure Storage data objects
+      summary: Use storage accounts to contain all your Azure Storage data objects.
       imageSrc: /media/common/i_generic-database.svg
       url: ./storage-accounts/reliability.md
       azureCategories:
