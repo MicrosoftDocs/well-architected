@@ -6,7 +6,7 @@
       - name: What's new
         href: whats-new.md
       - name: What is WAF
-        href: what-is-well-architected-framework.md
+        href: what-is-waf.md
     - name: Pillars
       items: 
       - name: Overview
@@ -86,13 +86,13 @@
             - name: SE:07 Encryption
               href: security/encryption.md
             - name: SE:08 Hardening resources
-              href: security/harden-resources.md              
+              href: security/hardening.md              
             - name: SE:09 Application secrets
               href: security/application-secrets.md
             - name: SE:10 Monitoring and threat detection
-              href: security/monitor-threats.md
+              href: security/monitoring.md
             - name: SE:11 Testing and validation
-              href: security/test.md              
+              href: security/testing.md              
             - name: SE:12 Incident response 
               href: security/incident-response.md
       - name: Cost Optimization
