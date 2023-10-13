@@ -9,11 +9,12 @@ ms.topic: conceptual
 
 # Recommendations for optimizing data performance
 
-**Applies to: PE 08**
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
 
-This guide describes the recommendations for optimizing data performance. Optimizing data performance refers to improving the efficiency and performance of data processing and storage within a workload.
+|[PE:08](checklist.md)| Optimize data usage. Optimize data stores, partitions, and indexes for their intended and actual use in the workload.| 
+|---|---| 
 
-It's important to optimize a workload's data performance because it can have a significant effect on the overall performance of a system. Failure to optimize data performance leads to slower response times, increased latency, degraded performance, and decreased scalability.
+This guide describes the recommendations for optimizing data performance. Optimizing data performance is about refining the efficiency with which the workload processes and stores data. Every workload operation, transaction, or computation typically relies on the quick and accurate retrieval, processing, and storage of data. When data performance is optimized, the workload runs smoothly, but when it's compromised, it creates a domino effect of poor performance efficiency. Failure to optimize data performance results in response delays, heightened latency, and curtailed scalability. It jeopardizes the efficiency of the entire workload.
 
 **Definitions**
 
@@ -22,7 +23,7 @@ It's important to optimize a workload's data performance because it can have a s
 | CAP theorem |A framework that's used to consider consistency, availability, and partition tolerance to help explain the tradeoffs in data consistency.|
 |  Database index rebuilding |A maintenance activity that drops and recreates an index.|
 |  Database index reorganization |A maintenance activity that optimizes the current database index. |
-| Data store| A resource, such as a database, object store, or file share, that stores data.|
+| Data store| A resource that stores data such as a database, object store, or file share. |
 |  Eventual consistency|A data synchronization model that allows for temporary inconsistency in data replicas before they eventually sync.|
 |  Index|A database structure that provides quick access to items.|
 | Online analytical processing (OLAP)|A technology that organizes large business databases, supports complex analysis, and performs complex analytical queries without negatively affecting transactional systems.|
@@ -47,7 +48,7 @@ To optimize data usage, ensure that data stores, partitions, and indexes are opt
 
 ### Profile data
 
-To profile your data, analyze and understand the structure, volume, and relationships of your data. You can gain insights into your data and identify areas that need improvement. To perform data profiling, you need to:
+Data profiling involves examining the data from a source and gathering information about it. The objective is to understand the quality, structure, and characteristics of workload data. This process allows for the identification of issues such as missing values, duplicates, inconsistent formats, and other anomalies. For effective data profiling, consider the following strategies:
 
 - *Understand the data structure.* Examine the structure of your data, including tables, columns, and relationships. Determine the data types, lengths, and constraints that are applied to each column. Data structure evaluation helps you understand how the data is organized and how it relates to other data elements.
 
@@ -59,49 +60,40 @@ To profile your data, analyze and understand the structure, volume, and relation
 
 - *Capture data distribution.* Analyze the distribution of values within each column to determine data patterns. Identify frequent and rare values, outliers, and data skews. To optimize query performance, choose appropriate indexing strategies and query optimization techniques based on the distribution.
 
-### Monitor data
+### Monitor data performance
 
-Continuously monitor the performance of your data stores, partitions, and indexes in real time. To identify areas of improvement and performance degradation, collect and analyze performance metrics. Use tools like system-level monitoring tools, database-specific monitoring features, or third-party monitoring solutions. Collect metrics such as CPU usage, memory utilization, disk I/O, query response times, and data throughput. You can also:
+Data performance monitoring is the practice of consistently tracking the efficiency of data stores, partitions, and indexes in real-time. It involves collecting and analyzing performance metrics specific to data operations, using tools tailored for system-level, database-specific, or third-party monitoring solutions. Effective data performance monitoring allows you to proactively identify and mitigate potential bottlenecks, ensuring that data-related processes and tasks are efficient. To monitor data performance, consider the following strategies:
 
-- *Set up alerts.* Configure alerts based on predefined thresholds or anomalies in the performance metrics. Alerts enable you to receive notifications when performance metrics exceed acceptable ranges or show abnormal behavior. You can set up alerts by using monitoring tools or custom scripts that trigger actions when conditions are met.
+- *Collect data-specific metrics.* Gather key metrics that directly relate to data performance. These metrics include query response times, data throughput, disk I/O related to data access, and the load times of specific data partitions.
 
-- *Diagnose issues.* Regularly analyze the collected performance metrics to identify areas of improvement and performance degradation. Use visualization tools or dashboards to gain insights into performance trends, bottlenecks, and anomalies. Identify the root causes of performance issues and determine the appropriate actions for resolution.
+- *Set up data alerts.* Set up alerts specifically for data metrics. Use predefined thresholds or anomalies in these metrics to trigger alerts. Alerts enable you to receive notifications when performance metrics exceed acceptable ranges or show abnormal behavior. For instance, if a database query takes longer than expected or if data throughput drops significantly, it would trigger an alert. You can set up these alerts using specialized monitoring tools or custom scripts.
+
+- *Diagnose data performance issues.* Regularly review the collected data metrics to pinpoint potential performance bottlenecks or degradation in data operations. Visualization tools or dashboards can be invaluable in this process, helping to highlight trends, bottlenecks, and outliers in data performance. Once identified, delve into the root causes of these issues and strategize appropriate remediation steps.
 
 ### Partition data
 
-If you have large datasets or high-volume workloads, consider partitioning your data across multiple storage resources. Partitioning can help distribute the workload and improve parallel processing. You can partition data vertically or horizontally. Horizontal partitioning is also called sharding.
+Partitioning involves dividing large datasets or high-volume workloads into smaller, manageable subsets. Partitioning enhances data performance efficiency by distributing the workload and improving parallel processing. It also ensures more effective data access based on specific needs and query patterns. You can partition data vertically or horizontally (also called sharding).
 
-**Vertical partitioning.** To perform vertical partitioning, divide a table into multiple smaller tables by selecting the columns or fields that you want to place in each partition. Each partition represents a subset of the complete data. This technique is useful if you have columns that are frequently accessed together, but not necessarily accessed together with other columns. Implement vertical partitioning if:
+| Strategy |Definition | Example | Use cases|
+|---|---|---|---|
+| **Vertical partitioning** | Divide a table into smaller tables by selecting specific columns or fields for each partition. Each partition represents a subset of the complete data.| If you have a table with columns A, B, C, and D, you could create one table with columns A and B and another with columns C and D. | - A table contains many columns, but queries don't access all columns together.<br>- Some columns are larger than others and separating them can boost I/O performance.<br>- Different data parts have diverse access patterns. |
+| **Horizontal partitioning** | Split data based on rows or ranges of values (also known as sharding). Each partition contains a subset of rows with similar characteristics.| If you have a table with rows 1 to 1000, you might create one partition with rows 1 to 500 and another with rows 501 to 1000.| - A dataset is too large for a single location or server.<br>- Data is accessed based on specific ranges or filters.<br>- Need to distribute the workload across physical nodes or servers for enhanced performance.| 
 
-- A table contains a large number of columns, but not all columns are accessed together in most queries.
-
-- Some columns are larger than others, and separating them can improve I/O performance.
-
-- Different parts of the data have varying access patterns, and if you separate them, queries run more efficiently.
-
-**Horizontal partitioning (sharding).** To perform horizontal partitioning, split data into partitions based on rows or ranges of values. Each partition contains a subset of rows with similar characteristics. Horizontal partitioning is commonly used with large datasets to distribute data across physical storage locations. Horizontal partitioning improves performance and scalability. Implement horizontal partitioning if:
-
-- A dataset is too large to store in a single location or server.
-
-- Data is accessed or queried based on specific ranges or filters, so it's efficient to search within a small subset of partitions.
-
-- You need to distribute your workload evenly across physical nodes or servers to improve performance and scalability.
-
-To implement vertical or horizontal partitioning:
+To partition your data, consider the following steps:
 
 - *Analyze data and queries.* Analyze data and query patterns to identify suitable partitioning or sharding strategies. Understand the nature of the data, access patterns, and distribution requirements.
 
 - *Determine a key.* Choose a partitioning or sharding key to distribute data across partitions or shards. Carefully select the key based on data characteristics and query requirements.
 
-- *Design logic.* Determine a partitioning or sharding logic based on the chosen key. Consider dividing the data into ranges, applying hashing algorithms, or using other partitioning techniques.
+- *Determine logic.* Determine a partitioning or sharding logic based on the chosen key. Consider dividing the data into ranges, applying hashing algorithms, or using other partitioning techniques.
 
 - *Configure the infrastructure.* Configure the database system to support partitioning or sharding. Consider creating the necessary infrastructure, defining the partitions or shards, and configuring the data distribution.
 
 For more information, see [Data partitioning guidance](/azure/architecture/best-practices/data-partitioning).
 
-### Optimize queries
+### Optimize database queries
 
-Optimize your database queries by rewriting, reordering, or restructuring them to improve efficiency. Use query optimization techniques, such as index hints, query caching, and query plan analysis. Optimize database queries by implementing the following techniques and considerations:
+Optimizing database queries refines queries using techniques such index hints and caching. These adjustments increase efficiency and speed of data retrieval. As a result, the database has a lighter workload, resources work more effectively, and users enjoy smoother interactions. To optimize database queries, consider the following strategies:
 
 - *Rewrite queries.* Review and analyze complex queries to identify opportunities to rewrite them. Consider restructuring query logic, eliminating redundant operations, or simplifying query syntax.
 
@@ -117,11 +109,9 @@ Optimize your database queries by rewriting, reordering, or restructuring them t
 
 - *Monitor and tune.* Monitor query performance metrics, such as runtime, resource utilization, and query throughput. Use database profiling tools and monitoring functionalities to identify poorly performing queries. Evaluate and fine-tune query plans based on collected performance data. Analyze query plans and wait statistics to identify bottlenecks. Use that information to optimize query performance.
 
-### Optimize indexes
+### Optimize index performance
 
- Indexes increase the speed of data retrieval because the database can quickly locate data based on specific columns or fields. Optimize indexes to improve the efficiency of sorting and join operations, which decreases query runtimes.
-
- Efficient indexes reduce the number of disk I/O operations that are needed for running queries. Optimize queries to reduce the duration of locks and contention on data pages, which allows multiple users to concurrently access and modify data. When you eliminate redundant or unnecessary indexes, you can make better use of that storage space.
+Indexes enhance data retrieval speed by allowing databases to swiftly find data using specific columns or fields. By optimizing these indexes, sorting and join operations become more efficient, leading to faster queries. Well-optimized indexes cut down on the disk I/O operations required for queries. Removing unneeded or redundant indexes also frees up valuable storage space. To optimize index performance, consider the following strategies:
 
 - *Analyze query patterns.* Understand the query patterns that run on your database. Identify the queries that run frequently and might degrade performance. Analyze query patterns to determine which indexes are beneficial for optimizing performance.
 
@@ -139,49 +129,55 @@ Optimize your database queries by rewriting, reordering, or restructuring them t
 
 - *Test and validate.* Before you revise indexes in a production environment, perform thorough testing and validation. Measure the performance effect of index revisions by using representative workloads. Verify the improvements against predefined benchmarks.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: B-tree indexes might have high storage overhead, and exact-match queries might be slow. Hash indexes aren't suitable for range queries or comparison operators. Full-text indexes might have high storage requirements, and nontextual data queries might be slow.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: B-tree indexes might have high storage overhead, and exact-match queries might be slow. Hash indexes aren't suitable for range queries or comparison operators. Full-text indexes might have high storage requirements, and nontextual data queries might be slow.
 
 ### Consider data compression
 
-Data compression is the process of reducing the size of data to optimize storage space and improve workload performance efficiency. Compressed data requires less storage space and less bandwidth for transmitting, which results in fast data transfer.
+Data compression is the process of reducing the size of data to optimize storage space and improve workload performance efficiency. Compressed data requires less storage space and less bandwidth for transmitting, which results in fast data transfer. You would compress data to reduce your storage footprint and improve data access times. When you compress data, it reduces I/O operations and network bandwidth requirements. 
 
-Compress data to reduce your storage footprint and improve data access times. When you compress data, it reduces I/O operations and network bandwidth requirements. Lossless compression and lossy compression are data compression algorithms. Lossless compression algorithms reduce the size of data without losing any information. Lossy compression algorithms achieve high compression ratios by removing less important or redundant information.
+Lossless compression and lossy compression are data compression algorithms. Lossless compression algorithms reduce the size of data without losing any information. Lossy compression algorithms achieve high compression ratios by removing less important or redundant information.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: To compress and decompress data, you need computational resources, like CPU and memory. The more data that you compress, the more resources you need.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: To compress and decompress data, you need computational resources, like CPU and memory. The more data that you compress, the more resources you need.
 
 ### Archive and purge data
 
-Implement data archiving and purging strategies to remove obsolete or infrequently accessed data. These strategies can help reduce storage costs and improve data operation performance by:
+Archiving and purging are strategies that streamline data storage. Archiving relocates older, less-frequently accessed data to a more cost-effective storage. Purging data permanently removes redundant data. They contribute to performance efficiency by reducing data volume, increases data access speed, and reducing backup and recovery times:
 
-- *Reducing data volume.* Eliminate unnecessary data to reduce the amount of data that you need to process.
+- *Reducing data volume*: Less data means faster processing times, ensuring quick responses to user requests.
+  
+- *Increasing data access speed*: A trimmed dataset allows for swifter queries and data retrieval, optimizing system responsiveness.
 
-- *Increasing data access speed.* With a small dataset to search, queries and data access operations can be fast.
+- *Reducing backup and recovery times*: Smaller datasets expedite backup and restoration processes, minimizing downtime and ensuring consistent performance.
 
-- *Reducing backup and recovery.* By reducing the amount of data that you need to back up and restore, you can save time and improve efficiency.
+Archiving and purging are instrumental in maintaining peak performance efficiency in data-driven systems.
 
 ### Optimize storage load
 
-Implement strategies that reduce the processing burden on the data store. To optimize data store load:
+Optimizing storage load means streamlining requests to the storage system. It helps eliminate unnecessary requests. It also enhances data retrieval and prevents overwhelming the storage. Optimizing the storage load ensures the storage system remains responsive to legitimate requests and maintains peak performance. Implement strategies to reduce the processing burden on the data store. To optimize data store load, consider the following strategies:
 
-**Use caching.** Cache data by storing frequently accessed data in a high-speed data storage layer. For hot data scenarios, caching increases read throughput and improves client response times. Caching is most effective for scenarios in which data is relatively static or doesn't change frequently.
+#### Use caching
 
-Carefully consider factors like cache expiration policies, cache eviction strategies, and cache size management. To maximize the benefits of caching, you might need to tune caching parameters, such as time to live (TTL). Consider the following caching techniques:
+Caching stores commonly accessed data in a fast-access storage area, making data retrieval quicker than pulling it from the main source. This technique boosts data performance by cutting down on access times and avoiding repetitive data fetches. Caching improves read speeds and user response times, especially for frequently accessed data  This method is most effective on static data or data that rarely changes.
 
-- *In-memory caching:* Perform in-memory caching to store frequently accessed data in memory for fast retrieval. You can use this technique for application data that's expensive to compute or retrieve from a database. In-memory caching is useful for data that's read frequently but doesn't frequently change.
+To ensure optimal caching efficiency, consider factors like expiration policies, eviction strategies, and managing cache size. Adjust settings, such as the time to live (TTL), for optimal performance. To use a cache to optimize storage load, consider the following strategies:
 
-- *Database query caching:* Use this technique to cache the results of database queries to avoid running the same query multiple times. Database query caching is useful for complex and time-consuming database queries. When you cache the results of a query, subsequent requests for the same query are returned quickly.
+- *In-memory caching*: Perform in-memory caching to store frequently accessed data in memory for fast retrieval. You can use this technique for application data that's expensive to compute or retrieve from a database. In-memory caching is useful for data that's read frequently but doesn't frequently change.
 
-- *Content delivery network caching:* Use this technique to cache web content on distributed network servers to reduce latency and improve content delivery. Content delivery network caching is effective for static content, like images, CSS files, and JavaScript files. Content delivery networks store copies of content in multiple locations worldwide, so users can access the content from a server that's near them geographically.
+- *Database query caching*: Use this technique to cache the results of database queries to avoid running the same query multiple times. Database query caching is useful for complex and time-consuming database queries. When you cache the results of a query, subsequent requests for the same query are returned quickly.
 
-**Use read replicas.** Many databases support multiple read replicas. Distribute read queries across replicas to minimize the demand on the write database. Each read replica can serve a subset of traffic, which can improve performance.
+- *Content delivery network caching*: Use this technique to cache web content on distributed network servers to reduce latency and improve content delivery. Content delivery network caching is effective for static content, like images, CSS files, and JavaScript files. Content delivery networks store copies of content in multiple locations worldwide, so users can access the content from a server that's near them geographically.
 
-When you have a workload with multiple data replicas that you expect to stay in sync, it's helpful to model this distributed system by using the PACELC theorem. The PACELC theorem helps you understand latency versus constancy tradeoff choices in the nonpartitioned state of the system. Use this information to help you choose a database engine and data sync strategy that best addresses the system in a partitioned and nonpartitioned state.
+#### Use read replicas
 
-For more information, see [Command and Query Responsibility Segregation (CQRS) pattern](/azure/architecture/patterns/cqrs).
+Many databases support multiple read replicas. Distribute read queries across replicas to minimize the demand on the write database. Each read replica can serve a subset of traffic, which can improve performance.
 
-**Use eventual consistency.** Eventual consistency is a consistency model. Over time, updates are propagated to replicas or nodes in a distributed workload. There might be temporary inconsistencies between replicas, but the workload eventually converges to a consistent state.
+When you have a workload with multiple data replicas that you expect to stay in sync, it's helpful to model this distributed system by using the PACELC theorem. The PACELC theorem helps you understand latency versus constancy tradeoff choices in the nonpartitioned state of the system. Use this information to help you choose a database engine and data sync strategy that best addresses the system in a partitioned and nonpartitioned state. For more information, see [Command and Query Responsibility Segregation (CQRS) pattern](/azure/architecture/patterns/cqrs).
 
-Eventual consistency helps optimize data updates because it increases availability and scalability. With strict consistency, every update has to be immediately visible on all replicas. With eventual consistency, there's a tradeoff between consistency and performance. Updates can be processed asynchronously, which reduces delay and increases throughput of data updates.
+#### Optimize data consistency
+
+In a distributed workload, where data resides across multiple nodes or locations, the level of consistency you select determines how quickly changes in one location reflect in others. Opting for stricter consistency consumes more compute resources and can negatively affect performance efficiency. On the other hand, a less strict consistency level, like eventual consistency introduces temporary inconsistencies among nodes but can boost performance efficiency. 
+
+Eventual consistency strikes a balance between data accuracy and workload performance. Changes spread gradually instead of instantly, boosting workload responsiveness and data processing speed. Although it introduces short-lived inconsistencies, the workload eventually presents consistent data across all nodes. Choosing eventual consistency can elevate a workload's performance and further enhance its availability and scalability.
 
 ### Optimize data updates
 
@@ -195,29 +191,42 @@ Optimistic concurrency minimizes contention and allows concurrent updates to pro
 
 Optimizing data movement and processing involves improving the efficiency and performance of operations related to data extraction, transformation, loading, and processing. Consider the following key aspects of optimizing data movement and processing:
 
-- *Extract, transform, and load (ETL) optimization:* Optimize ETL processes to minimize processing time. You can streamline the extraction process, implement efficient transformation algorithms, and optimize the loading process. When you make each step efficient, you can optimize the overall workflow.
+- *Extract, transform, and load (ETL) optimization*: Optimize ETL processes to minimize processing time. You can streamline the extraction process, implement efficient transformation algorithms, and optimize the loading process. When you make each step efficient, you can optimize the overall workflow.
 
-- *Parallel processing:* Utilize parallel processing techniques to improve performance. When you distribute data processing tasks across multiple threads or nodes, you can divide and process the workload concurrently, which results in fast processing.
+- *Parallel processing*: Utilize parallel processing techniques to improve performance. When you distribute data processing tasks across multiple threads or nodes, you can divide and process the workload concurrently, which results in fast processing.
 
-- *Batch processing:* Group similar tasks together to reduce overhead that's caused by repeated operations. Process multiple tasks in a batch to reduce overall processing time.
+- *Batch processing*: Group similar tasks together to reduce overhead caused by repeated operations. Process multiple tasks in a batch to reduce overall processing time.
 
 ### Optimize storage design
 
-Carefully design a data storage structure and utilize appropriate storage technologies to optimize data access, retrieval, and manipulation.
+Optimizing storage design entails crafting a precise data storage architecture and selecting appropriate storage technologies. A streamlined storage design enhances data access, retrieval, and manipulation. Through strategic storage design, a workload achieves improved response times and overall functionality.
 
-**Use close proximity.** If you need to bring data close to a distributed user base, choose a solution that supports data synchronization across regions.
+#### Design for data proximity
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: If underlying data changes frequently, implement a cache invalidation mechanism to ensure that the cached data remains up to date.
+Data proximity refers to the strategic placement of data closer to the users or services that access it most frequently. By reducing the physical or logical distance between data and its users, data proximity ensures faster data access and improved responsiveness. To optimize design for close proximity, consider these strategies:
 
-**Use polyglot persistence.** Polyglot persistence is the practice of using multiple data storage technologies to store and manage different types of data within an application or system. Different types of databases or storage solutions serve different data requirements.
+- *Evaluate data access patterns*: Assess your workload's access patterns and frequently accessed data. This analysis can help determine where to place data for maximum benefit.
+ 
+- *Choose solutions that support data relocation*: Consider solutions that offer dynamic data relocation based on changing access patterns, ensuring optimal data positioning.
+ 
+- *Choose solutions that support data synchronization*: If catering to a distributed user base, opt for solutions that facilitate data synchronization across various regions, ensuring that data replicas are available in proximity to users.
+
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: If underlying data changes frequently, implement a cache invalidation mechanism to ensure that the cached data remains up to date.
+
+#### Use polyglot persistence
+
+Polyglot persistence is the practice of using multiple data storage technologies to store and manage different types of data within an application or system. Different types of databases or storage solutions serve different data requirements.
 
 Polyglot persistence takes advantage of the benefits of each data storage technology to ensure optimal performance and scalability for each type of data. For example, you might use a relational database to store structured, transactional data. And you might use a NoSQL database to store unstructured or semi-structured data.
 
 Design a schema for each data storage technology based on the requirements of the data. For relational databases, you might create normalized tables with appropriate relationships. For NoSQL databases, you might define document structures or key-value pairs. Develop the necessary components to interact with each data storage technology, such as APIs, data access layers, or data integration pipelines. Ensure that the application can read and write data to the appropriate data stores.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: A data structure that has low normalization can improve performance but introduce complexities.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A data structure that has low normalization can improve performance but introduce complexities.
 
-**Separate OLTP and OLAP systems.** To separate [OLTP](/azure/architecture/data-guide/relational-data/online-transaction-processing) and [OLAP](/azure/architecture/data-guide/relational-data/online-analytical-processing) systems, design and deploy distinct systems for transactional processing and analytical processing tasks. This separation allows you to optimize each system for its specific workload and characteristics.
+#### Separate OLTP and OLAP systems
+
+To separate [OLTP](/azure/architecture/data-guide/relational-data/online-transaction-processing) and [OLAP](/azure/architecture/data-guide/relational-data/online-analytical-processing) systems, design and deploy distinct systems for transactional processing and analytical processing tasks. This separation allows you to optimize each system for its specific workload and characteristics.
 
 OLTP systems are used for real-time transactional processing. They efficiently and reliably handle individual transactions. OLTP systems are typically used to perform day-to-day operational tasks, such as online order processing, inventory management, and customer data management. OLTP systems prioritize responsiveness, consistency, and concurrency.
 
@@ -229,7 +238,7 @@ When you separate OLTP and OLAP systems, you can allocate appropriate resources 
 
 **Profile data.** Azure offers tools and services that you can use to profile data, such as Azure Data Factory, Azure Purview, and Azure Synapse Analytics. These tools enable you to extract, transform, and load data from various sources, perform data quality checks, and gain insights into the data.
 
-**Monitor data.** To monitor data performance, you can use Azure Monitor to collect and analyze infrastructure metrics, logs, and application data. You can integrate Monitor with other services like Application Insights, which provides application performance monitoring and supports many platforms.
+**Monitor data.** To monitor data performance, you can use Azure Monitor to collect and analyze infrastructure metrics, logs, and application data. You can integrate Monitor with other services like Application Insights. Application Insights provides application performance monitoring and supports many platforms.
 
 Application Insights collects usage and performance data. You can use Log Analytics to correlate that data with configuration and performance data across Azure resources.
 
@@ -269,9 +278,9 @@ Azure Cosmos DB has a [default indexing policy](/azure/cosmos-db/index-policy) t
 - [SQL Server index guidance](/sql/relational-databases/indexes/indexes)
 - [Understand data store types](/azure/architecture/guide/technology-choices/data-store-overview)
 
-## Next steps
+## Performance Efficiency checklist  
 
-We recommend that you review the Performance Efficiency checklist to explore other concepts.
+Refer to the complete set of recommendations. 
 
-> [!div class="nextstepaction"]
-> [Performance Efficiency checklist](checklist.md)
+> [!div class="nextstepaction"] 
+> [Performance Efficiency checklist](checklist.md) 

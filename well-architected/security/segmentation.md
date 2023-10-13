@@ -1,5 +1,5 @@
 ---
-title: Segmentation strategy recommendations
+title: Recommendations for building a segmentation strategy
 description: Learn about the recommendations for building a unified segmentation strategy using perimeters and isolation boundaries. 
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -22,12 +22,12 @@ This guide describes the recommendations for **building a unified segmentation s
 
 | Term                   | Definition                                                                                      |
 |------------------------|-------------------------------------------------------------------------------------------------|
-| Segment                | A logical unit that's isolated from other entities and protected by a set of security measures. |
-| Perimeter              | The trust boundary around a segment.                                                            |
 | Containment            | A technique to contain the blast radius if an attacker gains access to a segment.               |
-| Role                   | A set of permissions needed to complete a job function.                                         |
 | Least-privilege access | A Zero Trust principle that aims at minimizing a set of permissions to complete a job function. |
+| Perimeter              | The trust boundary around a segment.                                                            |
 | Resource organization  | A strategy to group related resources by flows within a segment.                                |
+| Role                   | A set of permissions needed to complete a job function.                                         |
+| Segment                | A logical unit that's isolated from other entities and protected by a set of security measures. |
 
 ## Key design strategies
 
@@ -54,9 +54,9 @@ It's important to note the distinction between perimeters and isolation. Perimet
 
 Isolation doesn't mean creating silos in the organization. **A unified segmentation strategy provides alignment between the technical teams and sets clear lines of responsibility.** Clarity reduces the risk of human error and automation failures that can lead to security vulnerabilities, operational downtime, or both. Suppose a security breach is detected in a component of a complex enterprise system. It's important that everyone understands who's responsible for that resource so that the appropriate person is included in the triage team. The organization and stakeholders can quickly identify how to respond to different kinds of incidents by creating and documenting a good segmentation strategy.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Segmentation introduces complexity because there's overhead in management. There's also a tradeoff in cost. For example, more resources are provisioned when deployment environments that run side by side are segmented.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Segmentation introduces complexity because there's overhead in management. There's also a tradeoff in cost. For example, more resources are provisioned when deployment environments that run side by side are segmented.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Micro-segmentation beyond a reasonable limit loses the benefit of isolation. When you create too many segments, it becomes difficult to identify points of communication or to allow for valid communication paths within the segment.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Micro-segmentation beyond a reasonable limit loses the benefit of isolation. When you create too many segments, it becomes difficult to identify points of communication or to allow for valid communication paths within the segment.
 
 ### Identity as the perimeter
 
@@ -75,11 +75,11 @@ Various identities such as people, software components, or devices access worklo
 
     By applying the least privilege, you limit the negative effects if the identity is ever compromised. If access is limited by time, the attack surface is reduced further. Time-limited access is especially applicable to critical accounts, such as administrators or software components that have a compromised identity.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: The performance of the workload can be affected by identity perimeters. Verifying each request explicitly requires extra compute cycles and extra network IO.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: The performance of the workload can be affected by identity perimeters. Verifying each request explicitly requires extra compute cycles and extra network IO.
 >
 > Role-based access control (RBAC) also results in management overhead. Keeping track of identities and their access scopes can become complex in role assignments. The workaround is to assign roles to security groups instead of individual identities.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Identity settings can be complex. Misconfigurations can affect the reliability of the workload. For example, suppose there's a misconfigured role assignment that's denied access to a database. The requests start failing, eventually causing reliability issues that can't otherwise be detected until runtime.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Identity settings can be complex. Misconfigurations can affect the reliability of the workload. For example, suppose there's a misconfigured role assignment that's denied access to a database. The requests start failing, eventually causing reliability issues that can't otherwise be detected until runtime.
 
 For information about identity controls, see [Identity and access management](identity-access.md).
 
@@ -102,13 +102,13 @@ Think like an attacker to achieve a foothold within the workload and establish c
 
 For common patterns related to networking segmentation, see [Networking segmentation patterns](#networking-segmentation-patterns).
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**:  Network security controls are often expensive because they're included with the premium SKUs. Configuring rules on firewalls often results in overwhelming complexity requiring broad exceptions.  
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Network security controls are often expensive because they're included with the premium SKUs. Configuring rules on firewalls often results in overwhelming complexity requiring broad exceptions.  
 >
 > Private connectivity changes architectural design, often adding more components such as jump boxes for private access to compute nodes.
 >
 > Because network perimeters are based on control points, or hops, on the network, each hop can be a potential point of failure. These points can have an effect on the reliability of the system.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Network controls are rule-based and there's a significant chance of misconfiguration, which is a reliability concern.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Network controls are rule-based and there's a significant chance of misconfiguration, which is a reliability concern.
 
 For information about network controls, see [Networking and connectivity](networking.md).
 
@@ -120,7 +120,7 @@ Document and share roles and functions to create consistency and facilitate comm
 
 Consider consistency while accommodating several organizational models when assigning permissions for a segment. These models can range from a single centralized IT group to mostly independent IT and DevOps teams.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Membership of groups can change over time as employees join or leave teams or change roles. Management of roles across segments can result in management overhead.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Membership of groups can change over time as employees join or leave teams or change roles. Management of roles across segments can result in management overhead.
 
 ### Resource organization
 
@@ -130,7 +130,7 @@ Segmentation allows you to **isolate workload resources from other parts of the 
 - Allocate one service for each server when organizing your compute. This level of isolation minimizes complexity and can help contain an attack.
 - Azure provides built-in isolation for some services, for example separation of compute from storage. For other examples, see [Isolation in the Azure public cloud](/azure/security/fundamentals/isolation-choices).
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**:  Resource isolation might result in an increase in total cost of ownership (TCO). For data stores, there might be added complexity and coordination during disaster recovery.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Resource isolation might result in an increase in total cost of ownership (TCO). For data stores, there might be added complexity and coordination during disaster recovery.
 
 ## Azure facilitation
 
@@ -164,7 +164,7 @@ Here are some common patterns for segmenting a workload in Azure. Choose a patte
 
 One way to organize security groups is by job title like software engineer, database administrator, site reliability engineer, quality assurance engineer, or security analyst. This approach involves **creating security groups for your workload team** based on their roles, without considering the work that needs to be accomplished. Grant security groups RBAC permissions, standing or just in time (JIT), according to their responsibilities in the workload. Assign human and service principles to security groups based on their as-needed access.
 
-Membership is highly visible at the role assignment level, making it easy to see what a *role* has access to. Each person is usually only a member of one security group, which makes onboarding and offboarding easy. However, unless job titles overlap perfectly with responsibilities, title-based grouping isn't ideal for least-privilege implementation. You might end up combining implementation with function-based grouping.
+Membership is highly visible at the role assignment level, making it easy to see what a *role* has access to. Each person is usually a member of only one security group, which makes onboarding and offboarding easy. However, unless job titles overlap perfectly with responsibilities, title-based grouping isn't ideal for least-privilege implementation. You might end up combining implementation with function-based grouping.
 
 #### Pattern 2: Function-based grouping
 
@@ -242,4 +242,4 @@ Consider the principle of least privilege when you define access control policie
 Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"]
-[Security checklist](checklist.md)
+> [Security checklist](checklist.md)

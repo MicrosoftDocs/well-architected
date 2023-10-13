@@ -53,8 +53,7 @@ Assign criticality to your flows to help you design your architecture. Identify 
 
 - **Low**: A flow that's not directly tied to the functionality of the workload. For example, a nightly log transfer to a monitoring system or a pop-up survey feature might have a low criticality rating.
 
-## Azure facilitation
-<!--Looks like this article might not be complete. This section was blank. Leaving just in case.-->
+<!-- ## Azure facilitation -->
 
 ## Tradeoffs
 
@@ -68,9 +67,9 @@ This scenario uses the [reliable web app pattern reference architecture](/azure/
 
 :::image type="content" source="media/identify-flows/relecloud-flow.png" alt-text="Diagram that shows an example flow that's based on Relecloud." border="false" lightbox="media/identify-flows/relecloud-flow.png":::
 
-### Workload
-<!--There are comments here in the original Sharepoint doc. It sounds like this section is a placeholder for future ideas. Leaving it just in case.-->
-Relecloud (eCommerce, line-of-business web app)
+<!-- ### Workload
+There are comments here in the original Sharepoint doc. It sounds like this section is a placeholder for future ideas. Leaving it just in case.
+Relecloud (eCommerce, line-of-business web app) -->
 
 #### User flows
 

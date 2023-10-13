@@ -25,7 +25,7 @@ This guide describes the recommendations for scaling and partitioning a workload
 | Client affinity (session affinity) | The intentional routing of requests from a single client to a single server instance to help ensure consistent session management.|
 | Consistency (distributed database)| The uniformity of data across multiple nodes in a distributed database, ensuring that all replicas have the same data at a given point in time. |
 | Consistency (relational database)| The property of a transaction bringing a database from one valid state to another, maintaining data integrity. |
-| Consistency level| A configuration that defines how and when data is replicated in a distributed database system, determining the trade off between consistency and performance. |
+| Consistency level| A configuration that defines how and when data is replicated in a distributed database system, determining the tradeoff between consistency and performance. |
 | Data locking| A mechanism used to prevent simultaneous updates to the same data.|
 | Horizontal scaling| A scaling approach that adds instances of a given type of resource.|
 | Optimistic concurrency| An approach for updating databases that uses snapshots to make updates instead of traditional locking mechanisms. |
@@ -101,7 +101,7 @@ As you scale a workload, you should design the application to distribute the loa
 
 **Review your load balancing algorithm.** A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. This can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
 
-**Eliminate data locking.** Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Non-relational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
+**Eliminate data locking.** Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
 
 **Use dynamic service discovery.** Dynamic service discovery is the process of automatically detecting and registering services in a distributed system. It allows clients to discover available services without being tightly coupled to specific instances. Clients shouldn't be able to take a direct dependency on a specific instance in the workload. To avoid these dependencies, you should use a proxy to distribute and redistribute client connections. The proxy acts as an intermediary between clients and services, providing a layer of abstraction that allows services to be added or removed without affecting clients.
 
@@ -159,7 +159,7 @@ It's important to choose an adequate margin between the scale-out and scale-in t
 
 **Use Deployment Stamps.** There are techniques that make it easier to scale a workload. You can use the [Deployment Stamps](/azure/architecture/patterns/deployment-stamp) pattern to easily scale a workload by adding one or more scale units.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: While scaling helps optimize costs by adjusting capacity to meet demand, it can result in overall increased cost during long periods of high demand.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: While scaling helps optimize costs by adjusting capacity to meet demand, it can result in overall increased cost during long periods of high demand.
 
 #### Test scaling
 
@@ -181,7 +181,7 @@ Conduct load and stress tests to evaluate the performance of the workload under 
 
 1. Repeat the scalability tests after implementing optimizations to validate the improvements and help ensure the system can handle the expected workloads efficiently.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**:  Consider the budget constraints and cost-efficiency goals of your workload. Vertical scaling might involve higher costs due to the need for larger and more powerful resources. Horizontal scaling offers cost savings by using smaller instances that can be added or removed based on demand.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Consider the budget constraints and cost-efficiency goals of your workload. Vertical scaling might involve higher costs due to the need for larger and more powerful resources. Horizontal scaling offers cost savings by using smaller instances that can be added or removed based on demand.
 
 ### Partition workload
 
@@ -207,9 +207,9 @@ Partitioning is the process of dividing a large dataset or workload into smaller
 
 **Test and optimize partitioning.** Test the partitioning scheme to verify the effectiveness and efficiency of the strategy so you can make adjustments to improve performance. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
 
-> ![Tradeoff icon](../_images/trade-off.svg) **Tradeoff**: Partitioning adds complexity to the design and development of a system. Partitioning requires conversations and planning between developers and database administrators.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Partitioning adds complexity to the design and development of a system. Partitioning requires conversations and planning between developers and database administrators.
 
-> ![Risk icon](../_images/risk.svg) **Risk**: Partitioning introduces some potential problems that need to be considered and addressed, including:
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Partitioning introduces some potential problems that need to be considered and addressed, including:
 >
 > - *Data skew*: Partitioning can lead to data skew, where certain partitions receive a disproportionate amount of data or workload compared to others. Data skew can result in performance imbalances and increased contention on specific partitions.
 >

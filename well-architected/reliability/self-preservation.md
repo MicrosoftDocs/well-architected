@@ -29,7 +29,7 @@ This guide describes design patterns that focus on self-preservation and self-he
 
 | Term | Definition |
 |------|------------|
-| Self-healing | The ability to automatically repair issues without human intervention. |
+| Self-healing | The ability of your workload to automatically resolve issues by recovering affected components and if needed, failing over to redundant infrastructure. |
 | Self-preservation | The ability of your workload to be resilient against potential problems. |
 
 ## Key design strategies
@@ -85,7 +85,7 @@ Common examples of background jobs are:
 - Batch jobs, such as updating data regularly or processing tasks at a specific time.
 - Long-running workflows, such as completing an order or provisioning services and systems.
 
-For more information, see [Recommendations for background jobs](background-jobs.md)<!--RE:06 check link after file is named-->.
+For more information, see [Recommendations for background jobs](background-jobs.md).
 
 ### Self-healing guidance
 
@@ -119,7 +119,7 @@ At the infrastructure level, your critical flows should be supported by a [redun
 
 #### Automated self-healing actions
 
-Another approach to self-healing is the use of automated actions that are triggered by your monitoring solution when pre-determined health status changes are detected. For example, if your monitoring detects that a web app isn't responding to requests, you can build automation through a Powershell script to restart the app service. Depending on your team's skill set and preferred development technologies, use a webhook or function to build more complex automation actions. See the [Event-based cloud automation](/azure/architecture/reference-architectures/serverless/cloud-automation) reference architecture for an example of using a function to respond to database throttling. Using automated actions can help you recover quickly and minimize the necessity of human intervention.
+Another approach to self-healing is the use of automated actions that are triggered by your monitoring solution when pre-determined health status changes are detected. For example, if your monitoring detects that a web app isn't responding to requests, you can build automation through a PowerShell script to restart the app service. Depending on your team's skill set and preferred development technologies, use a webhook or function to build more complex automation actions. See the [Event-based cloud automation](/azure/architecture/reference-architectures/serverless/cloud-automation) reference architecture for an example of using a function to respond to database throttling. Using automated actions can help you recover quickly and minimize the necessity of human intervention.
 
 ## Azure facilitation
 

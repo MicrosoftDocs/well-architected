@@ -34,7 +34,7 @@ You need to take measures to reduce the effects of the software development life
 
 ### Account for operational tasks
 
-It's important to consider operational tasks when you set performance targets. By incorporating routine, regular, and ad-hoc tasks into performance targets, you can ensure that the workload operates efficiently. Here are some key points to consider:
+It's important to consider operational tasks when you set performance targets. By incorporating routine, regular, and ad-hoc tasks into performance targets, you can ensure that the workload operates efficiently. To account for operational tasks in performance targets, here are some key points to consider:
 
 - *Identify operational tasks.* Identify and include relevant operational tasks in performance targets. Examples of routine tasks can include virus scanning, database index reorganization, database index rebuilding, disk or database backups, certificate rotations, patching an operating system, rotating passwords, rotating API keys, penetration testing, and audit reviews in production.
 
@@ -42,7 +42,7 @@ It's important to consider operational tasks when you set performance targets. B
 
 ### Optimize deployments
 
-Optimizing workload deployments is the process of fine-tuning and configuring the deployment of workloads. It involves making strategic decisions and implementing best practices to ensure that the workload can handle the demands placed on it by users in an efficient manner. It allows you to maximize the utilization of resources, minimize response times, and improve overall system performance.
+Optimizing deployments refers to refining the process of releasing resources and code to guarantee seamless performance and minimal interruptions. It involves planning, effective resource distribution, and thorough testing of both the infrastructure-as-code (IaC) and the application code before they are introduced to a live environment. Deployment inadequacies can lead to reduced speed and efficiency of a workload, potential resource constraints, and a compromised user experience in the operational setting. To optimize deployments, consider these strategies:
 
 **Assess acceptable downtime.** If downtime is acceptable, you can implement deployment strategies that prioritize speed and efficiency. However, it's important to carefully assess the effect of downtime on business requirements before you make that decision. On the other hand, if downtime isn't acceptable, you need to implement deployment strategies that ensure continuous availability of the workload. Consider using techniques like blue-green deployments or canary deployments, where you gradually roll out new versions of the workload while you monitor for issues. These strategies help minimize the effect of downtime and ensure a seamless user experience.
 
@@ -70,7 +70,7 @@ Optimizing workload deployments is the process of fine-tuning and configuring th
 
 An in-place upgrade is an upgrade to an existing resource or application. In-place  upgrades can temporarily slow down or interrupt a workload. It's important to ensure that upgrades are compatible with the workload. Before you apply an upgrade, we recommend that you test it in a separate environment to identify any potential issues. Provide a rollback plan in case any issues arise during the upgrade process. It's crucial to take a complete backup of critical data and configurations before you apply the upgrade. Monitor the upgraded system closely after the upgrade to ensure that everything functions as expected. The backup allows you to restore to a good state if you need to. You should prioritize scheduling the upgrade during off-peak hours to minimize the effect on users and workload performance. Notify users in advance about the planned upgrade, including the expected downtime and any necessary actions they need to take.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Waiting to perform operations activities during off-peak hours can affect operational efficiency. It might be less convenient to have the personnel with the right skill set work during off-peak hours.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Waiting to perform operations activities during off-peak hours can affect operational efficiency. It might be less convenient to have the personnel with the right skill set work during off-peak hours.
 
 ### Optimize tooling
 
@@ -78,7 +78,7 @@ Essential tools for file integrity monitoring, virus scanning, intrusion detecti
 
 ### Optimize database operations
 
-Database operations and maintenance are activities that are performed to manage and optimize the performance of a database. These operations include tasks like backups, schema changes, performance tuning, and monitoring.
+Optimizing database operations refers to the process of refining and fine-tuning database tasks to ensure maximum efficiency and minimal resource utilization. These operations include tasks like backups, schema changes, performance tuning, and monitoring. Efficient database operations lead to faster query responses, reduced system overhead, and an overall smoother user experience. 
 
 Schema changes involve modifying the structure of a database, such as adding or altering tables, columns, or indexes. These changes might require extra processing and resource utilization during the deployment process, potentially affecting the overall performance of the workload. Schema changes can disrupt performance to active queries, indexes, or transactions or cause data to be unavailable.
 
@@ -112,9 +112,9 @@ Azure Front Door and Azure Traffic Manager enable you to implement a [blue-green
 - [Azure SQL Database](/azure/azure-sql/database/automated-backups-overview)
 - [Azure Cosmos DB](/azure/cosmos-db/online-backup-and-restore)
 
-## Next steps
+## Performance Efficiency checklist  
 
-We recommend that you review the Performance Efficiency checklist to explore other concepts. 
+Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"] 
 > [Performance Efficiency checklist](checklist.md) 

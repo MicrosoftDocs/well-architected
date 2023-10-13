@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 
 title: Security quick links
-summary: Apply security guidance to your architecture to guard confidentiality, integrity, and availability of your data and systems.
+summary: Apply security guidance to your architecture to help ensure the confidentiality, integrity, and availability of your data and systems.
 
 metadata:
   title: Security quick links
-  description: Apply security guidance to your architecture to guard confidentiality, integrity, and availability of your data and systems.
+  description: Learn about documentation and training resources that can help you apply security guidance to your architecture.
   ms.service: waf
   ms.subservice: waf-pillar-security
   ms.topic: landing-page
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 09/29/2023
+  ms.date: 11/15/2023
 
 landingContent:
-  - title: Key points
+  - title: Learn key points
     linkLists:
       - linkListType: quickstart
         links:
@@ -36,7 +36,7 @@ landingContent:
         links:
           - text: Defense in depth security in Azure
             url: /shows/azure-videos/defense-in-depth-security-in-azure
-  - title: Design principles
+  - title: Review design principles
     linkLists:
       - linkListType: concept
         links:
@@ -50,19 +50,19 @@ landingContent:
             url: principles.md#design-to-protect-availability
           - text: Sustain and evolve your security posture
             url: principles.md#sustain-and-evolve-your-security-posture
-  - title: Establish a security foundation
+  - title: Create a security foundation
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Security baseline (TODO)
+          - text: Establish a security baseline
             url: establish-baseline.md
-          - text: Secure development lifecycle
+          - text: Improve the security of your development lifecycle
             url: secure-development-lifecycle.md
-          - text: Data classification
+          - text: Classify data
             url: data-classification.md
-          - text: Security monitoring
-            url: monitoring.md
-          - text: Model threats (TODO)
+          - text: Monitor workload security
+            url: monitor-threats.md
+          - text: Model threats
             url: threat-model.md
   - title: Protect workload assets
     linkLists:
@@ -77,27 +77,27 @@ landingContent:
           - text: Use encryption
             url: encryption.md
           - text: Harden resources
-            url: hardening.md
+            url: harden-resources.md
           - text: Guard application secrets
             url: application-secrets.md
-  - title: Validate and improve
+  - title: Validate and improve security
     linkLists:
       - linkListType: how-to-guide
         links:
           - text: Perform security testing
-            url: testing.md
+            url: test.md
           - text: Respond to incidents
             url: incident-response.md
-  - title: Related resources
+  - title: Explore related resources
     linkLists:
       - linkListType: reference
         links:
-          - text: "Microsoft Defender for Cloud: Azure Security recommendations"
+          - text: "Microsoft Defender for Cloud: Azure security recommendations"
             url: /azure/defender-for-cloud/recommendations-reference
           - text: "Microsoft Defender for Cloud: AWS recommendations"
             url: /azure/defender-for-cloud/recommendations-reference-aws
           - text: "Microsoft Defender for Cloud: Google Cloud recommendations"
-            url: /azure/defender-for-cloud/recommendations-reference-aws
+            url: /azure/defender-for-cloud/recommendations-reference-gcp
           - text: Azure security documentation
             url: /azure/security
           - text: Microsoft cloud security benchmark

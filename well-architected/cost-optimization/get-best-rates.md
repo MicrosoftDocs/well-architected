@@ -45,7 +45,7 @@ Consumption pricing is a flexible pricing model that allows you to pay for the s
 - *Preproduction environments*: Consumption-based pricing is preferred for development and test environments that are ephemeral. It offers the advantage of paying only during the project. Ensure you provide resources aligned with the development effort, where resources cost less when development is scaled down.
 - *Short-term projects*: Short-term projects often have specific resource requirements. Pay-as-you-go pricing allows you to pay for the resources only during the project.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Many on-premises environments are always on and always available. Being intentional about services may lower rates, but you must account for some spin up time and operational overhead.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Many on-premises environments are always on and always available. Being intentional about services might lower rates, but you must account for some spin up time and operational overhead.
 
 #### Understand prepaid pricing
 
@@ -69,15 +69,15 @@ It's important to assess how long you need a particular component to determine i
 
 - *Gather usage data*: Collect data on the historical usage of the component or workload. This data can include information on how long the component has been in operation, the frequency of usage, and any patterns or trends in its utilization.
 - *Analyze usage patterns*: Analyze the collected usage data to identify patterns and trends. Look for consistent usage over a specific period of time or recurring usage patterns. This analysis helps you understand the typical duration of component usage.
-- *Consider future requirements*: Consider any future requirements or changes in your workload. Evaluate if there are any upcoming changes that may impact its usage duration.
+- *Consider future requirements*: Consider any future requirements or changes in your workload. Evaluate if there are any upcoming changes that might affect its usage duration.
 - *Assess business needs*: Evaluate the business needs and objectives associated with the component or workload. Consider factors such as project timelines, budget constraints, and the overall strategy of your organization. Evaluate any planned changes or updates to the component or workload. Understanding future developments can help you assess the long-term commitment required and whether it aligns with your objectives. This assessment helps you determine the appropriate duration for component usage.
 
 #### Determine utilization consistency
 
 When considering prepaid commitments, it's recommended to commit to the maximum consistent utilization of a component. By committing to the maximum consistent utilization, you can maximize the potential savings and cost optimization. However, there are a few factors to consider:
 
-- *Utilization patterns*: Analyze the historical utilization patterns of the component. If the utilization is consistently high and stable, committing to the maximum consistent utilization makes sense. However, if the utilization is highly variable or unpredictable, committing to the maximum utilization may not be feasible or cost-effective.
-- *Flexibility and scalability*: Consider the scalability and flexibility of the component. If the component can easily scale up or down based on demand, it may be more suitable to opt for flexible pricing models that allow you to adjust resources dynamically. This way, you can align your costs with the actual utilization of the component.
+- *Utilization patterns*: Analyze the historical utilization patterns of the component. If the utilization is consistently high and stable, committing to the maximum consistent utilization makes sense. However, if the utilization is highly variable or unpredictable, committing to the maximum utilization might not be feasible or cost-effective.
+- *Flexibility and scalability*: Consider the scalability and flexibility of the component. If the component can easily scale up or down based on demand, it might be more suitable to opt for flexible pricing models that allow you to adjust resources dynamically. This way, you can align your costs with the actual utilization of the component.
 - *Engage with the vendor/supplier*: Communicate with the vendor or supplier to gather information about their plans, roadmap, and commitment to the component or workload. This dialogue provides valuable insights into their long-term vision and commitment level.
 - *Cost analysis*: Perform a cost analysis to compare the potential savings from committing to the maximum utilization with the potential risks of underutilization. Evaluate the cost implications of committing to a higher utilization level and assess whether the potential savings outweigh the risks of not fully utilizing the commitment.
 
@@ -90,7 +90,7 @@ Evaluating available discounts for a workload refers to the process of assessing
 - *Analyze usage and consumption*: Assess the workload's usage and consumption patterns to determine if it meets the eligibility criteria for specific discount programs. This analysis helps you identify the most suitable discounts for your workload.
 - *Evaluate contract terms*: Review the terms and conditions of existing contracts or agreements to identify any potential discount options. Consider understanding the duration of the commitment, renewal terms, and the possibility of negotiating better rates.
 - *Communicate with vendors*: Know the actual and anticipated usage of a workload when you discuss discounts. Let the vendor know what environment the discussion is about. For example, you can often get discounts on preproduction environments. Ask vendors or suppliers to discuss available discount options, such as product bundling products. Ask specific questions about discount programs, eligibility criteria, and any negotiation possibilities.
-- *Understand reseller options*: Consider engaging with resellers who can provide extra insights into available discounts or offer alternative pricing models. Resellers may have access to specialized programs or discounts that can benefit your workload.
+- *Understand reseller options*: Consider engaging with resellers who can provide extra insights into available discounts or offer alternative pricing models. Resellers might have access to specialized programs or discounts that can benefit your workload.
 
 ### Commit to the right discounts
 
@@ -102,28 +102,28 @@ Committing to the right discount options is where you act on your evaluation. Yo
 
 ### Determine to build or buy a solution
 
-Building a solution in-house allows for granular control over the features and configuration, which can help eliminate unnecessary functionality and optimize rates. However, building a solution in-house requires significant upfront investment in terms of development time and maintenance over time. When you buy a solution, such as from a marketplace, it offers quicker deployment with potentially lower upfront costs, but buying a solution may involve ongoing subscription or licensing fees. Here are key considerations when choosing to build or buy a solution:
+Building a solution in-house allows for granular control over the features and configuration, which can help eliminate unnecessary functionality and optimize rates. However, building a solution in-house requires significant upfront investment in terms of development time and maintenance over time. When you buy a solution, such as from a marketplace, it offers quicker deployment with potentially lower upfront costs, but buying a solution might involve ongoing subscription or licensing fees. Here are key considerations when choosing to build or buy a solution:
 
-- *Control and customization*: Assess the specific functionality needed for your product or solution. Determine whether buying a solution meets your requirements or if building allows for more customization and flexibility that provide better rates. Building a solution offers greater control over component selection and configuration. You can add customization to fit business needs and minimize unneeded features that might incur charges. Buying solutions provide preconfigured options with limited customization capabilities.
-- *Time-to-Market*: Assess the urgency and time constraints for deploying the workload component/solution. Building a solution in-house may take longer due to development and testing, while buying a solution allows for quicker deployment.
-- *Technical expertise*: Building may require higher technical expertise to ensure proper configuration and maintenance over time. A custom solution requires effort over time and not only upfront. Buying a solution is often more user-friendly and requires less technical knowledge.
-- *Cost*: Evaluate the total cost of building a solution, including development resources, infrastructure, ongoing maintenance, and support. Compare the cost of building a solution with the cost of buying a solution. Include any support plans, licensing, or subscription fees. Buying a solution may provide more predictable pricing and potential discounts due to economies of scale.
+- *Control and customization*: Assess the specific functionality needed for your product or solution. Determine whether buying a solution meet your requirements or if building allows for more customization and flexibility that provide better rates. Building a solution offers greater control over component selection and configuration. You can add customization to fit business needs and minimize unneeded features that might incur charges. Buying solutions provide preconfigured options with limited customization capabilities.
+- *Time-to-Market*: Assess the urgency and time constraints for deploying the workload component/solution. Building a solution in-house might take longer due to development and testing, while buying a solution allows for quicker deployment.
+- *Technical expertise*: Building might require higher technical expertise to ensure proper configuration and maintenance over time. A custom solution requires effort over time and not only upfront. Buying a solution is often more user-friendly and requires less technical knowledge.
+- *Cost*: Evaluate the total cost of building a solution, including development resources, infrastructure, ongoing maintenance, and support. Compare the cost of building a solution with the cost of buying a solution. Include any support plans, licensing, or subscription fees. Buying a solution might provide more predictable pricing and potential discounts due to economies of scale.
 - *Support and updates*: Consider the availability of support and updates for both building and buying. Assess the level of technical expertise required for each option and the ease of accessing support resources. Updates for custom solutions add costs, requiring separate environments, testing, and backups. For purchased solutions, research the reputation and track record of the marketplace vendors. Consider factors such as vendor reliability, customer reviews, and the level of support provided. Consider the billing cycles. For example, subscription billing cycles are incentivized to maintain the quality of the solution over time. One-time purchases don’t have same cost incentive to maintain the solution.
 
 ### Optimize licensing costs
 
-Explore licensing programs offered by your vendor to reduce licensing costs. Include any license across your design, build, and run stack. Include software development tooling, security tooling, observability tooling, and design tools. These programs may include options for hybrid use, bundling, negotiations, dev/test pricing, and per-seat/site-wide purchases.
+Explore licensing programs offered by your vendor to reduce licensing costs. Include any license across your design, build, and run stack. Include software development tooling, security tooling, observability tooling, and design tools. These programs might include options for hybrid use, bundling, negotiations, dev/test pricing, and per-seat/site-wide purchases.
 
 - *Explore licensing programs*: It's important to investigate the licensing programs offered by your provider to identify potential cost-saving options.
 - *Hybrid use and bundling*: In addition to exploring licensing programs, consider using hybrid use and bundling options. These programs can provide extra cost savings by optimizing licensing for both on-premises and cloud environments.
 - *Negotiations*: Don't hesitate to negotiate with your provider to secure better licensing terms. Negotiations can often lead to more favorable pricing and discounts.
 - *Dev/test pricing*: Take advantage of dev/test pricing options offered by your provider. These programs typically provide discounted rates for nonproduction environments, allowing you to save costs during development and testing phases.
-- *Volume discounts*: As your usage increases, you may become eligible for volume discounts. Cloud service providers often offer discounted rates based on the scale of usage, so it's important to monitor your usage and explore opportunities for cost optimization.
+- *Volume discounts*: As your usage increases, you might become eligible for volume discounts. Cloud service providers often offer discounted rates based on the scale of usage, so it's important to monitor your usage and explore opportunities for cost optimization.
 - *Existing enterprise agreements*: Check your existing enterprise agreements to see if there are any licensing benefits or cost-saving opportunities available. Your procurement department or license reseller can provide valuable insights in this regard.
 
 ## Azure facilitation
 
-**Cost Management and Billing**: Azure provides tools and features for managing and optimizing costs, such as Azure Cost Management and Billing. These tools allow you to track and analyze your cloud spending, set budgets, receive cost alerts, and access detailed cost reports.
+**Cost Management and Billing**: Azure provides tools and features for managing and optimizing costs, such as Microsoft Cost Management and Billing. These tools allow you to track and analyze your cloud spending, set budgets, receive cost alerts, and access detailed cost reports.
 
 **Azure Reservations and Azure Savings Plans**: Azure offers Reservations and Savings Plans. Both allow you to commit to using specific resources for a term and receive significant discounts in return. By committing to reserved capacity, you can achieve cost savings on various Azure services.
 
