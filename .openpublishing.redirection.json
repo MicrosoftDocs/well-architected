@@ -577,7 +577,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/test-checklist.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/performance-testing",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-test",
 			"redirect_document_id": false
 		},
 		{
