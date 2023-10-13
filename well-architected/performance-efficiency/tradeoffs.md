@@ -17,7 +17,7 @@ During the process of negotiating a workload's performance targets and designing
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced replication and increased density.** A cornerstone of reliability is ensuring resilience by using replication and limiting the blast radius of malfunctions.
 
-- A workload that achieves efficiency by delaying scaling to the last responsible moment closely meets demand but is vulnerable to unforeseen node failures and scaling delays.
+- A workload that achieves efficiency by delaying scaling until the last responsible moment closely meets demand but is vulnerable to unforeseen node failures and scaling delays.
 
 - Consolidating workload resources can use excess capacity and improve efficiency. However, it increases the blast radius of a malfunction in the collocated component or application platform.
 
@@ -48,9 +48,9 @@ During the process of negotiating a workload's performance targets and designing
 
 One performance optimization strategy is to remove or bypass components or processes that contribute to delays in a flow, especially when their processing time isn't justified. However, this strategy can compromise security and should be accompanied by a thorough risk analysis. Consider the following examples:
 
-- Removing encryption in transit or rest to improve transfer speeds exposes the data to potential integrity or confidentiality breaches.
+- Removing encryption in transit or at rest to improve transfer speeds exposes the data to potential integrity or confidentiality breaches.
 
-- Removing or reducing security scanning or inspecting tools to reduce processing times could compromise the confidential, integrity, or availability those tools protect.
+- Removing or reducing security scanning or inspecting tools to reduce processing times could compromise the confidentiality, integrity, or availability that those tools protect.
 
 - Decreasing the frequency of security patching to limit the performance impact can leave a workload more vulnerable to emerging threats.
 
@@ -58,7 +58,7 @@ One performance optimization strategy is to remove or bypass components or proce
 
 - Minimizing data validation for quicker data processing might compromise data integrity, especially if inputs are malicious.
 
-- Using less entropy in encryption or hashing algorithms, for example on the initialization vector (IV), is more efficient but makes the encryption easier to crack.
+- Using less entropy in encryption or hashing algorithms, for example, on the initialization vector (IV), is more efficient but makes the encryption easier to crack.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased workload surface area.** Security prioritizes a reduced and contained surface area to minimize attack vectors and reduce the management of security controls.
 
@@ -76,7 +76,7 @@ Performance-centric cloud design patterns sometimes necessitate the introduction
 
 Sharing resources is an approach for improving efficiency. It increases density to optimize capacity usage. Examples include multitenancy scenarios or combining disparate applications in an architecture on a common application platform. The increased density can lead to the following security concerns:
 
-- Increased risk of unauthorized lateral movement from one tenet to another.
+- Increased risk of unauthorized lateral movement from one tenant to another.
 
 - A shared workload identity that violates the principle of least privilege and obscures individual audit trails in access logs.
 
@@ -108,14 +108,14 @@ Sharing resources is an approach for improving efficiency. It increases density 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased investment on items that aren't aligned with functional requirements.** One approach to cost optimization is evaluating the value provided by any solution that's deployed.
 
-- Premium services and SKUs can help a workload meet performance targets. These services usually cost more and can provide extra features. They might be underutilized if many of the premium features aren't used specifically for meeting performance targets.
+- Premium services and SKUs can help a workload meet performance targets. These services usually cost more and can provide extra features. They might be underutilized if a lot of the premium features aren't used specifically for meeting performance targets.
 
 - A performant workload requires telemetry data for observability that must be transferred and stored. An increase in the performance telemetry being collected can increase the cost of telemetry data transfer and storage.
 
 - Performance testing activities add costs that aren't associated with the value of the production system. Following are some examples of performance testing costs:
   - Instantiating environments that are dedicated to performance-centric tests
   - Using specialized performance tooling
-  - Spending the time running performance tests
+  - Spending time to run the tests
 
 - Training team members for specialized performance optimization tasks or paying for performance tuning services adds to the cost of a workload.
 
@@ -128,7 +128,7 @@ Sharing resources is an approach for improving efficiency. It increases density 
   - It leads to gaps in coverage for incident response activities.
   - It limits observability in security-sensitive or compliance-sensitive interactions and boundaries.
 
-- When performance design patterns are implemented, the complexity of the workload often increases. Components are added to critical flows. The workload monitoring strategy and performance monitoring must cover those components. When a flow spans multiple components or application boundaries, the complexity of monitoring the performance of that flow increases. Flow performance needs to be correlated across all the interconnected components.
+- When performance design patterns are implemented, the complexity of the workload often increases. Components are added to critical flows. The workload monitoring strategy and performance monitoring must include those components. When a flow spans multiple components or application boundaries, the complexity of monitoring the performance of that flow increases. Flow performance needs to be correlated across all the interconnected components.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased complexity in operations.** A complex environment has more complex interactions and a higher likelihood of a negative impact from routine, ad-hoc, and emergency operations.
 
