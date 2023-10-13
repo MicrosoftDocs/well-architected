@@ -23,9 +23,9 @@ This guide describes the recommendations for optimizing personnel time. It’s a
 
 As a rule of thumb, personnel often account for the most significant expense in a workload, underscoring the importance of efficient time management. This guide is about maximizing the potential of every hour worked. Considering that individuals can't operate around the clock, the emphasis is on ensuring that each person is more effective within their designated hours or equally effective in a reduced timeframe. The goal is to achieve better utilization of their time for the benefit of the individual and the workload.
 
-### Define success metrics
+### Set optimization targets
 
-As a first step, define the metrics to measure the success of personnel time optimization efforts. Determine the specific objectives you want to achieve through optimization. For example, reducing time spent on administrative tasks or improving response time to customer inquiries.
+Setting personnel time optimization targets means establishing clear, measurable goals that indicate how much improvement is desired in personnel tasks. These targets serve as a roadmap to desired improvements in tasks and functions. By having these benchmarks, organizations can evaluate outcomes against the targets.  As a first step, define the metrics to measure the success of personnel time optimization efforts. Determine the specific objectives you want to achieve through optimization. For example, reducing time spent on administrative tasks or improving response time to customer inquiries. To set optimization targets for personnel time optimization, consider the following strateiges:
 
 - *Select quantitative metrics:* Choose the metrics that align with your objectives and can be measured accurately. Consider metrics such as time saved, productivity increase, efficiency improvement, and task completion time.
 - *Gather qualitative metrics*: In addition to quantitative metrics, gather feedback from personnel to measure their satisfaction with their roles. This feedback can provide valuable insights into the effects of personnel time optimization efforts on employee morale and engagement.
