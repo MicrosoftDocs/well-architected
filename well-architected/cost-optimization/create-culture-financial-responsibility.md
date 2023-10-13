@@ -44,7 +44,7 @@ A benefit of sharing cost details is early detection of overspending. Transparen
 
 ### Encourage continuous improvement
 
-Encouraging a culture of continuous improvement is about fostering an environment where the workload team is empowered to explore and propose cost-saving measures. It requires open dialogue, training, and team-building focused on cost optimization. With this mindset, the workload team is more likely to be proactive in identifying and implementing cost optimization strategies.
+Encouraging a culture of continuous improvement is about fostering an environment where the workload team is empowered to explore and propose cost-saving measures. It requires open dialog, training, and team-building focused on cost optimization. With this mindset, the workload team is more likely to be proactive in identifying and implementing cost optimization strategies.
 
 Consider these suggestions:
 
@@ -54,7 +54,7 @@ Consider these suggestions:
 - *Team-building activities*: Organize team-building activities that focus on financial responsibility. These activities can include group exercises, case studies, or simulations that encourage collaboration and problem-solving in financial matters.
 
   Foster a culture of knowledge sharing. Encourage the workload team to share its expertise and best practices with colleagues through internal forums, presentations, or mentoring programs.
-- *Open dialogue*: Create an environment where personnel feel comfortable speaking up about cost optimization ideas. Encourage open discussions, provide a platform for feedback, and welcome alternative suggestions. This environment helps create a culture of continuous improvement and innovation.
+- *Open dialog*: Create an environment where personnel feel comfortable speaking up about cost optimization ideas. Encourage open discussions, provide a platform for feedback, and welcome alternative suggestions. This environment helps create a culture of continuous improvement and innovation.
 - *Empowerment:* Give the workload team the authority and responsibility to evaluate and propose the adoption of new technologies. The workload team should assess the suitability of new tools and technologies for their specific workload. They should consider factors such as compatibility, scalability, ease of integration, and potential cost savings.
 
 ### Develop skills in-house
