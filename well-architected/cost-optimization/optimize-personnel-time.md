@@ -114,7 +114,7 @@ Optimizing processes involves refining workflows to eliminate unnecessary steps,
 
 ### Optimize operational tasks
 
-Optimizing workload operational tasks is about making job tasks quicker and more straightforward. The goal is to streamline job-related activities to enhance efficiency and ensure the most effective use of resources.This streamlining ensures tasks are executed with fewer errors, distractions, and delays. By doing so, it conserves personnel time, leading to faster decision-making, reduced troubleshooting durations, and overall improved efficiency and cost savings. To optimize operational tasks, consider the following strategies:
+Optimizing workload operational tasks is about making job tasks quicker and more straightforward. The goal is to streamline job-related activities to enhance efficiency and ensure the most effective use of resources. This streamlining ensures tasks are executed with fewer errors, distractions, and delays. It conserves personnel time, leading to faster decision-making, reduced troubleshooting durations, and overall improved efficiency and cost savings. To optimize operational tasks, consider the following strategies:
 
 #### Reduce noise to signal ratio
 
