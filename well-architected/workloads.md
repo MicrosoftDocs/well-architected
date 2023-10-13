@@ -12,14 +12,14 @@ ms.topic: conceptual
 
 The term _workload_ in the context of Azure Well-Architected Framework refers to a collection of application resources, data, and supporting infrastructure that function together towards defined business outcomes. It's not just about the components that have been deployed as part of the workload; it also involves the development and operational procedures. 
 
-Workloads are designed by architects and implemented by a workload team to achieve its functional and non-functional business requirements.
+Workloads are designed by architects and implemented by a workload team to achieve its functional and nonfunctional business requirements.
 Workloads can be classified into types based on a variety of perspectives. 
 
 Typical criteria for classification are:
 
 - Their utility, characteristics, and usage patterns; such as web applications, batch processing, and real-time analytics.
 - The key influential drivers; such as specific technology platforms or alignment with an industry.
-- Their intended target audience, which can range from internal line-of-business applications within enterprises, to a purchased Independent Software Vendor (ISV) solution, or even a multi-tenant SaaS solution for public use.
+- Their intended target audience, which can range from internal line-of-business applications within enterprises, to a purchased Independent Software Vendor (ISV) solution, or even a multitenant SaaS solution for public use.
 
 Workloads within the same class share similarities including their target audiences, compliance requirements, and in some cases even similar technology stacks. The five pillars of the Well-Architected Framework, their principles, checklists, and tradeoffs are, by intent, designed to be agnostic to the class of workload.
 
@@ -28,7 +28,7 @@ The workload layer of Well-Architected Framework focuses on the common prioritie
 ## What is a Well-Architected workload
 No matter the complexity, resource requirements, or categorization of the workload, design and operations of the workload will always be forced to contend with the five architectural pillars of Reliability, Security, Cost Optimization, Operational Excellence, and Performance Efficiency. A Well-Architected workload has the following traits:
 
-- has functional and non-function requirements defined and prioritized to achieve a meaningful purpose.
+- has functional and nonfunctional requirements defined and prioritized to achieve a meaningful purpose.
 - is intentionally designed to achieve those requirements and purpose by strategic use of available resources through design patterns and tradeoffs.
 - is built to the specification of the design and purpose.
 - is operated to the specification of the design and purpose.
@@ -68,7 +68,7 @@ The Cloud Adoption Framework for Azure has established that democratization of c
 
 #### Azure landing zone integration
 
-The Well-Architected Framework acknowledges that your organization may have rigorously formalized its cloud platform offering, fully aligning with Azure landing zones or maybe on a completely different adoption strategy. Likewise, your organization might have no such implementation, leaving workload teams nearly fully autonomous entities. 
+The Well-Architected Framework acknowledges that your organization might have rigorously formalized its cloud platform offering, fully aligning with Azure landing zones or maybe on a completely different adoption strategy. Likewise, your organization might have no such implementation, leaving workload teams nearly fully autonomous entities. 
 
 No matter what platform and governance your workload finds itself under, applying principles of Well-Architected is still a requirement. The Well-Architected Framework will often reference Azure landing zones, but the architecture framework isn't inherently dependent on a specific platform implementation; as its pillars, principles, checklists, and guides are mostly cloud platform agnostic; much like they are mostly workload type agnostic.
 
@@ -82,7 +82,7 @@ It's absolutely required that the workload team build a working relationship wit
 
 ## Learn the constraints
 
-Centralized teams support a portfolio of diverse workloads through core capabilities and core infrastructure. To provide this support on an organizational scale, uniformity and constraints may have been intentionally placed on the service offered or infrastructure. As you design your workload, it's critical that you understand those constraints and, where possible, partner with enterprise architects that know those constraints, seeking guidance from prior implementations.
+Centralized teams support a portfolio of diverse workloads through core capabilities and core infrastructure. To provide this support on an organizational scale, uniformity and constraints might have been intentionally placed on the service offered or infrastructure. As you design your workload, it's critical that you understand those constraints and, where possible, partner with enterprise architects that know those constraints, seeking guidance from prior implementations.
 
 While every platform governance implementation will be different, here are some constraints that workload teams might find themselves faced with.
 
@@ -116,7 +116,7 @@ While every platform partnership will be different, here are some common areas t
 
 Shared responsibility isn't just about tradeoffs, constraints, or compromise. Platform teams often have highly specialized skills and dedicated budgets that can augment beyond what an individual workload team could individually sustain. Some examples of this are:
 
-- **Security specialists**. Your workload may have a secure development lifecycle, a centralized security team might be able to perform routine black-box penetration testing above and beyond your efforts as they perform these tasks at-scale across the organization. They may also be able to help with incident response planning and execution.
+- **Security specialists**. Your workload might have a secure development lifecycle, a centralized security team might be able to perform routine black-box penetration testing above and beyond your efforts as they perform these tasks at-scale across the organization. They might also be able to help with incident response planning and execution.
 - **Enterprise architecture guidance**. Aligning to patterns and practices set forth by enterprise architecture teams often can prevent workload teams from solving problems that have already been solved or prevent rework when a solution is not possible within the partnership without negotiation.
 - **Big-ticket expenditures**. Platform teams often host components or services that are often untenable from a pricing or management perspective at the individual workload team level. They can afford to do so by amortizing the cost of the component or service across its consuming workloads.
 
@@ -125,14 +125,14 @@ Often these services or centralized platforms are offered as mere showback, so t
 Another win is that platform teams often provide self-service options to workload teams for various activities. Some examples of this might be:
 
 - Providing a documentation repository for self-guided education.
-- Onboarding to cost management though specific resource tagging.
+- Onboarding to cost management through specific resource tagging.
 - Offering subscription obtainment through a formal subscription vending process.
 
 These self-service options should be explored for their suitability for your workload’s obligations.
 
 ## Share in success, share in pain
 
-Shared responsibility with other teams also means sharing successes and challenges of a workload. When your workload meets its obligations and obtaining the value set forth, share that with teams you partnered with. Make sure they understand how they are contributing to the workload’s success. When your workload isn't meeting its obligations, involve your partners to share what isn't working and collaborate and re-calibrate on getting back to obtainment of value.
+Shared responsibility with other teams also means sharing successes and challenges of a workload. When your workload meets its obligations and obtaining the value set forth, share that with teams you partnered with. Make sure they understand how they are contributing to the workload’s success. When your workload isn't meeting its obligations, involve your partners to share what isn't working and collaborate and recalibrate on getting back to obtainment of value.
 
 Likewise, platform teams also have obligations and success criteria. You should expect to hear from your partners about how your workload is a good citizen of the offering or if it’s at risk of turning into a noisy neighbor.
 

@@ -67,7 +67,7 @@ Your application should be designed to provide runtime visibility when events oc
 To facilitate this tracking, code should be **instrumented via structured logging**. Doing so enables easy and uniform querying and filtering of the logs.
 
 > [!IMPORTANT]
-> You need to enforce responsible logging to maintain the confidentiality and integrity of your system. Secrets and sensitive data must not appear in logs.  Be aware of leaking PII data, GDPR, and other compliance requirements when you capture this log data.
+> You need to enforce responsible logging to maintain the confidentiality and integrity of your system. Secrets and sensitive data must not appear in logs.  Be aware of leaking personal data and other compliance requirements when you capture this log data.
 
 ##### Identity and access monitoring
 
@@ -142,7 +142,7 @@ By combining several smaller tools, you can emulate some functions of a SIEM sys
 
 **Be proactive about threat detection** and be vigilant for signs of abuse, like identity brute force attacks on an SSH component or an RDP endpoint. Although external threats might generate a lot of noise, especially if the application is exposed to the internet, **internal threats are often a greater concern**. An unexpected brute force attack from a trusted network source or an inadvertent misconfiguration, for instance, should be investigated immediately.
 
-**Keep up with your hardening practices.** Monitoring isn't a substitute for proactively hardening your environment. A larger surface area is prone to more attacks. Tighten controls as much as practice. Detect and disable unused accounts, remove unused ports, and use a web application firewall, for example. For more information about hardening techniques, see [Recommendations on security hardening](hardening.md).
+**Keep up with your hardening practices.** Monitoring isn't a substitute for proactively hardening your environment. A larger surface area is prone to more attacks. Tighten controls as much as practice. Detect and disable unused accounts, remove unused ports, and use a web application firewall, for example. For more information about hardening techniques, see [Recommendations on security hardening](harden-resources.md).
 
 **Signature-based detection** can inspect a system in detail. It involves looking for signs or correlations between activities that might indicate a potential attack. A detection mechanism might identify certain characteristics that are indicative of a specific type of attack. It might not always be possible to directly detect the command-and-control mechanism of an attack. However, there are often hints or patterns associated with a particular command-and-control process. For example, an attack might be indicated by a certain flow rate from a request perspective, or it might frequently access domains that have specific endings.
 
@@ -211,7 +211,7 @@ DevOps advocates change management of workloads via continuous integration and c
 
 - [Recommendations for designing and creating an observability framework](../operational-excellence/observability.md)
 - [Security Insider](https://www.microsoft.com/security/business/security-insider/)
-- [Recommendations for hardening resources](hardening.md)
+- [Recommendations for hardening resources](harden-resources.md)
 - [Recommendations for using safe deployment practices](../operational-excellence/safe-deployments.md)
 - [Azure Monitor documentation](/azure/azure-monitor/)
 - [What is Microsoft Defender for Cloud?](/azure/defender-for-cloud/defender-for-cloud-introduction)
