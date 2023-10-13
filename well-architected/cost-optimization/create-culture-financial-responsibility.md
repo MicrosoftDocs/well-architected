@@ -22,7 +22,7 @@ Creating a culture of financial responsibility means to foster a mindset of acco
 
 Creating a culture of financial responsibility helps organizations manage their cloud costs more effectively. It aligns cloud spending with business goals and drives greater business value from cloud infrastructure. It helps ensure the workload team prioritizes cost and makes decisions that increase the business value of the workload. It involves cost transparency, skill development, and clear communication.
 
-### Make costs transparent
+### Make budgets and costs transparent
 
 Making budgets and workload costs transparent means openly sharing and communicating financial information related to a workload or project. It involves sharing budget details and financials with relevant stakeholders and creating a broad sense of financial responsibility.
 
@@ -53,7 +53,7 @@ To develop skills in-house means to invest in training and developing the existi
 
 ### Communicate financial expectations
 
-Personnel need ways to receive and relay cost optimization ideas. You should clearly communicate financial expectations to the workload team. Create communication channels that allow you to exchange knowledge, collaborate, and identify cost-saving opportunities.
+Communicating financial expectations to a workload team involves conveying financial goals and establishing open channels for exchanging cost-saving ideas and knowledge. This process includes reshaping organizational values to emphasize financial responsibility, setting clear goals, and promoting cross-functional communication tools. By ensuring everyone understands and aligns with these financial expectations, it fosters a culture of accountability and financial responsibility. It enables the team to actively participate in cost optimization and contribute to the overall business objectives. To communicate financial expectations, consider the following recommendations:
 
 - *Reshape values*: Review and update values and mission statements to include financial responsibility. Ensure that these values are communicated and reinforced throughout the organization, aligning them with the overall business objectives. Recognize and reward individuals and teams who demonstrate financial responsibility and contribute to cost optimization efforts. Use performance evaluations, incentives, or other recognition programs.
 - *Establish clear expectations*: Set clear expectations and goals for all stakeholders that are aligned with the mission and encourage accountability and responsibility for all actions taken. Establish and promote success metrics aligned with individual teams' goals.

@@ -83,7 +83,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Run performance testing
-            url: performance-testing.md
+            url: performance-test.md
           - text: Address performance incidents
             url: respond-live-performance-issues.md
   - title: Explore related resources

@@ -15,7 +15,7 @@ When negotiating a workload's performance targets and while designing a workload
 
 ## Performance Efficiency tradeoffs with Reliability
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Reduced replication and increased density.** A cornerstone of reliability is ensuring resilience through replication and limiting the blast radius of malfunctions.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Reduced replication and increased density.** A cornerstone of reliability is ensuring resilience through replication and limiting the blast radius of malfunctions.
 
 - A workload that is efficient by delaying scaling to the last responsible moment closely meets demand but is vulnerable to unforeseen node failures and scaling delays.
 
@@ -23,7 +23,7 @@ When negotiating a workload's performance targets and while designing a workload
 
 - Scaling in or scaling down to minimize surplus capacity can leave a workload *underprovisioned* during usage spikes, leading to service disruptions due to insufficient supply.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased complexity.** Reliability favors simplicity.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased complexity.** Reliability favors simplicity.
 
 - Using *autoscaling* to balance workload supply against demand introduces variability in its topology and adds a component that must work correctly for the system to be reliable. Autoscaling leads to triggering more application lifecycle events, such as "starting" and "stopping."
 
@@ -36,7 +36,7 @@ When negotiating a workload's performance targets and while designing a workload
   - Load balancer for auto-scaled replicas, which requires reliable operation and enlistment of replicas
   - Offloading data to caches, which require reliable cache invalidation approaches
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Testing and observation on active environments.** A self-preservation approach for reliability is to avoid unnecessary usage of production systems.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Testing and observation on active environments.** A self-preservation approach for reliability is to avoid unnecessary usage of production systems.
 
 - Performance testing in active environments, like using synthetic transactions, carries the risk of causing malfunctions due to the test actions or configurations.
 
@@ -44,7 +44,7 @@ When negotiating a workload's performance targets and while designing a workload
 
 ## Performance Efficiency tradeoffs with Security
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Reduction of security controls.** Security controls are established across multiple layers, sometimes redundantly, to provide a defense in depth.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Reduction of security controls.** Security controls are established across multiple layers, sometimes redundantly, to provide a defense in depth.
 
 One performance optimization strategy is to remove or bypass components or processes that contribute to delays in a flow, especially when their processing time isn't justified. However, this can compromise security should be accompanied by a thorough risk analysis. Consider the following examples:
 
@@ -55,7 +55,7 @@ One performance optimization strategy is to remove or bypass components or proce
 - Minimizing *data validation* for quicker data processing might compromise data integrity, especially with malicious inputs.
 - Using less entropy in encryption or hashing algorithm, for example on the initialization vector (IV), is more efficient but makes it easier to crack the encryption.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased workload surface area.** Security prefers a reduced and contained surface area to minimize attack vectors and minimize the management of security controls.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased workload surface area.** Security prefers a reduced and contained surface area to minimize attack vectors and minimize the management of security controls.
 
 Performance-centric cloud design patterns sometimes necessitate the introduction of *additional components*. More components increase the surface area of the workload. The new components must be secured in possibly unique ways from other components already in the system and are often expand the compliance scope. Consider these commonly added components:
 
@@ -64,7 +64,7 @@ Performance-centric cloud design patterns sometimes necessitate the introduction
 - Offloading data to caches, application delivery networks (ADN), or content delivery networks (CDN)
 - Offloading processing to background jobs or even client compute
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Removing segmentation.** Security stresses strong segmentation for fine-grained security controls and minimal blast radius.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Removing segmentation.** Security stresses strong segmentation for fine-grained security controls and minimal blast radius.
 
 Sharing resources is an approach to improve efficiency. It increases density to optimize capacity usage. Examples include multi-tenancy situations or combining disparate applications in an architecture to a common application platform. The increased density can lead to the following security concerns:
 
@@ -76,7 +76,7 @@ Sharing resources is an approach to improve efficiency. It increases density to 
 
 ## Performance Efficiency tradeoffs with Cost Optimization
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Too much supply for demand.** Both Cost Optimization and Performance Efficiency stress the importance of having just enough supply to serve demand.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Too much supply for demand.** Both Cost Optimization and Performance Efficiency stress the importance of having just enough supply to serve demand.
 
 - *Overprovisioning* is a risk when trying to mitigate performance issues in a workload. The following examples are common sources of overprovisioning:
   - Initial capacity planning was misjudged by only focusing on peak load estimates, neglecting strategies for peak smoothing in the workload design.
@@ -88,13 +88,13 @@ Sharing resources is an approach to improve efficiency. It increases density to 
 
 - Expanding into multiple regions can enhance performance by bringing workloads closer to the user, but it also adds complexity and resource duplication.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **More components.** A technique for cost optimization is to consolidate on a smaller number of resources by increasing density, removing duplication, and co-locating functionality.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **More components.** A technique for cost optimization is to consolidate on a smaller number of resources by increasing density, removing duplication, and co-locating functionality.
 
 - Performance-centric cloud design patterns sometimes necessitate the introduction of *extra components*. These extra components usually come with an overall cost increase for the workload. For example, you might include a message bus for load leveling or offload tasks to an application or content delivery network for improved response times.
 
 - *Resource segmentation* allows different parts of a workload to have distinct performance characteristics, enabling independent tuning for each segment. However, it can increase the total ownership costs with multiple optimized segments rather than a single, generalized component.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased investment on items not aligned with functional requirements.** One approach to cost optimization is evaluating the value provided by any solution deployed.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased investment on items not aligned with functional requirements.** One approach to cost optimization is evaluating the value provided by any solution deployed.
 
 - When pursing peek performance, *premium services and SKUs* can help a workload meet performance targets. These services usually come at a higher cost and can come with extra features. They might be underutilized if many of the premium features aren't used specifically for meeting performance targets.
 
@@ -109,7 +109,7 @@ Sharing resources is an approach to improve efficiency. It increases density to 
 
 ## Performance Efficiency tradeoffs with Operational Excellence
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Reduced observability.** Observability is necessary to ensure the workload can have meaningful alerting and successful incident response.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Reduced observability.** Observability is necessary to ensure the workload can have meaningful alerting and successful incident response.
 
 - *Reducing log and metric volume* to reduce the processing time spent on collecting telemetry instead of other tasks reduces the overall observability in the system. The following bullets are examples of resulting reduced observability:
   - Limits the data points to build meaningful alerts
@@ -118,13 +118,13 @@ Sharing resources is an approach to improve efficiency. It increases density to 
 
 - As performance design patterns are implemented, the complexity of the workload often increases, adding components to critical flows. The workload monitoring strategy and performance monitoring must cover those components. A flow that spans multiple components or application boundaries introduces complexity in monitoring the performance of that flow. Flow performance needs to be correlated across all the interconnected components.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased complexity in operations.** The complexity of the environment increases the complexity of the interactions and the chances of negative impact from routine, ad-hoc, and emergency operations.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased complexity in operations.** The complexity of the environment increases the complexity of the interactions and the chances of negative impact from routine, ad-hoc, and emergency operations.
 
 - Improving performance efficiency through increased *density* elevates the risk in operational tasks. An error in a single process can have large blast radius.
 
 - As performance design patterns are implemented, those patterns influence operational procedures such as backups, key rotations, and recovery strategies. For example, data partitioning and sharding may complicate routine tasks to ensure those tasks do not impact data consistency.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Culture stress.** Operational Excellence is rooted in a culture of blamelessness, respect, and continuous improvement.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Culture stress.** Operational Excellence is rooted in a culture of blamelessness, respect, and continuous improvement.
 
 - Conducting *root cause analysis* on performance issues will identify deficiencies in processes or implementations that require correction. If team members are blamed for issues instead of using it as a team learning opportunity, it can severely hurt team morale.
 

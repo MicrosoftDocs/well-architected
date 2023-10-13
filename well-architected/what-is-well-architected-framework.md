@@ -41,7 +41,7 @@ WAF’s primary objective is to set you up for success when deploying your workl
 
 - **Confidence in success**: The tenets of the framework are backed by proven assessments seen on numerous workloads deployed on Azure. 
 
-- **Understanding tradeoffs and risks**: The framework helps you understand that adopting the recommendations may require making choices against the other pillars. It highlights the impact that you might choose to accept. It will also highlight potential risks that you might want to address in the short term.
+- **Understanding tradeoffs and risks**: The framework helps you understand that adopting the recommendations might require making choices against the other pillars. It highlights the impact that you might choose to accept. It will also highlight potential risks that you might want to address in the short term.
 
 - **Optimization over time**: It’s designed for iterative use and as a tool for continuous improvement. Measure the maturity of your workload against the guidance. Treat that evaluation as a moving score that evolves with your workload, ensuring that the design remains efficient and effective in meeting your business objectives.
 
@@ -51,7 +51,7 @@ The Well-Architected Framework is structured in a layered approach: pillars, wor
 
 ##### Pillars
 
-The foundation of this framework lies in the pillars. Without a comprehensive understanding of these pillars, the subsequent layers - the workload layer and service guides - may not be fully comprehensible. 
+The foundation of this framework lies in the pillars. Without a comprehensive understanding of these pillars, the subsequent layers - the workload layer and service guides - might not be fully comprehensible. 
 
 At the pillar level, start your journey with the **Design principles**, each of which has a specific goal. Within each principle, follow the approaches to craft your design strategy. These approaches aren't optional and must be taken into account. 
 
