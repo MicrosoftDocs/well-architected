@@ -218,7 +218,7 @@
 		{
 			"source_path": "well-architected/cost/design-regions.md",
 			"redirect_url": "/azure/architecture/data-guide/technology-choices/cognitive-services",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/design-resources.md",
@@ -278,12 +278,12 @@
 		{
 			"source_path": "well-architected/cost/provision-ai-ml.md",
 			"redirect_url": "/azure/architecture/data-guide/technology-choices/cognitive-services",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-analytics.md",
 			"redirect_url": "/azure/architecture/data-guide/technology-choices/analytical-data-stores",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-checklist.md",
@@ -293,7 +293,7 @@
 		{
 			"source_path": "well-architected/cost/provision-compute.md",
 			"redirect_url": "/azure/architecture/guide/technology-choices/compute-decision-tree",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-datastores.md",
@@ -303,22 +303,22 @@
 		{
 			"source_path": "well-architected/cost/provision-messaging.md",
 			"redirect_url": "/azure/architecture/guide/technology-choices/messaging",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-networking-services.md",
 			"redirect_url": "/azure/architecture/guide/technology-choices/load-balancing-overview",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-networking.md",
 			"redirect_url": "/azure/architecture/guide/technology-choices/load-balancing-overview",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/provision-webapps.md",
 			"redirect_url": "/azure/architecture/web-apps/",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/cost/tradeoffs.md",
@@ -512,7 +512,7 @@
 		},
 		{
 			"source_path": "well-architected/scalability/load-testing.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/performance-testing",
+			"redirect_url": "/azure/well-architected/performance-efficiency/performance-test",
 			"redirect_document_id": false
 		},
 		{
