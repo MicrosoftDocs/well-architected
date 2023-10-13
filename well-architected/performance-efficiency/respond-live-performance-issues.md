@@ -61,7 +61,7 @@ Resolving live performance issues involves identifying and addressing any factor
 
 #### Use root cause analysis
 
-Root cause analysis requires hypothesis testing. After you review monitoring data, you should list potential causes of the performance issue and test them. To conduct a root cause analysis on a live performance issue, you can follow these steps:
+Root cause analysis is a systematic approach used to identify the underlying reasons for performance issues. It ensures that disruptions are understood and comprehensively resolved. It helps prevent recurring issues and optimal site functionality. To conduct a root cause analysis on a live performance issue, follow these steps:
 
 1. *Gather information.* Collect as much information as possible about the performance issue. Examples include error messages, logs, performance metrics, and any other relevant data.
 
