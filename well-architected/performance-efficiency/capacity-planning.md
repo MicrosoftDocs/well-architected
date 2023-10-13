@@ -14,17 +14,16 @@ ms.topic: conceptual
 |[PE:02](checklist.md)| Conduct capacity planning. Perform capacity planning before there are predicted changes in usage patterns, such as seasonal variations, product updates, marketing campaigns, special events, or regulatory changes. | 
 |---|---| 
 
-
 This guide describes the recommendations for capacity planning. You should perform formal capacity planning during key points in the lifecycle of a workload. Capacity planning enables you to anticipate short-term and long-term demand and effectively manage workload performance. Your analysis of historical usage patterns and growth trends can help you identify potential bottlenecks, scalability challenges, and performance constraints.
 
 **Definitions**
 
 |  Term|                                Definition|
 |-|-|
- |  Capacity planning |                  The process of predicting the resources a workload needs to meet its performance targets.|
-|  Trend analysis                      |Historical data analysis to forecast future demand.|
+|  Capacity planning |                  The process of predicting the resources a workload needs to meet its performance targets.|
 | Functional requirements|             The features and capabilities a workload must have to fulfill its intended purpose.|
 |  Technical requirements|              The code and infrastructure needed to meet functional requirements.|
+|  Trend analysis                      |Historical data analysis to forecast future demand.|
 
 ## Key design strategies
 

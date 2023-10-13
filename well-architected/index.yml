@@ -51,14 +51,14 @@ sections:
     summary: As solution architects, you want to build reliable, secure, and performant workloads that maximize the value of investment in Azure infrastructure. Start with the Pillars, and align your design choices with the principles. Then, build a strong foundation for your workload based on technical design areas. Finally, use review tools to assess your readiness in deploying to production.
     image:
       componentType: image
-      src: ./_images/waf-hub.svg   
+      src: ./_images/well-architected-hub.svg   
 
   # bifold with image and text blocks
   - componentType: bifold
     alignment: center
     blocks:
       - componentType: image
-        src: ./_images/waf-refresh.svg   
+        src: ./_images/well-architected-refresh.svg   
         alt: WAF refresh update   
       - title: Featured update - Core pillars restructured and refreshed 
         summary: The Azure Well-Architected Framework published a significant content refresh across all five pillars. 
