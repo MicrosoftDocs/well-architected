@@ -55,14 +55,14 @@ The foundation of this framework lies in the pillars. Without a comprehensive un
 
 At the pillar level, start your journey with the **Design principles**, each of which has a specific goal. Within each principle, follow the approaches to craft your design strategy. These approaches aren't optional and must be taken into account. 
 
-:::image source="_images/principles.png" alt-text="Design principles of Well-Architected Framework":::
+:::image source="_images/principles.png" alt-text="Screenshot that shows some design principles of Well-Architected Framework.":::
 
    
 Next, move on to the **Checklist**, which should always be your starting point for evaluation. Each item on the checklist is accompanied by one or more **Recommendation guides** that describe key strategies and how Azure helps you attain the recommendation. 
 
-:::image  source="_images/checklists.png" alt-text="Checklist of Well-Architected Framework":::
+:::image  source="_images/checklists.png" alt-text="Screenshot that shows a checklist of Well-Architected Framework.":::
 
-:::image source="_images/guide.png" alt-text="Recommendation guides for  Well-Architected Framework":::
+:::image source="_images/guide.png" alt-text="Screenshot that shows recommendation guides for  Well-Architected Framework.":::
 
 Make sure you cover **cloud design patterns**. They're mapped to the pillars they directly support.
 
