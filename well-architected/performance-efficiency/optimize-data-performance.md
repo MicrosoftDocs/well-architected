@@ -72,7 +72,7 @@ Data performance monitoring is the practice of consistently tracking the efficie
 
 ### Partition data
 
-If you have large datasets or high-volume workloads, consider partitioning your data across multiple storage resources. Partitioning can help distribute the workload and improve parallel processing. You can partition data vertically or horizontally. Horizontal partitioning is also called sharding.
+Partitioning involves dividing large datasets or high-volume workloads into smaller, manageable subsets. Partitioning enhances data performance efficiency by distributing the workload and improving parallel processing. It also ensures more effective data access based on specific needs and query patterns. You can partition data vertically or horizontally (also called sharding).
 
 | Strategy |Definition | Example | Use cases|
 |---|---|---|---|
@@ -91,9 +91,9 @@ To partition your data, consider the following steps:
 
 For more information, see [Data partitioning guidance](/azure/architecture/best-practices/data-partitioning).
 
-### Optimize queries
+### Optimize database queries
 
-Optimize your database queries by rewriting, reordering, or restructuring them to improve efficiency. Use query optimization techniques, such as index hints, query caching, and query plan analysis. Optimize database queries by implementing the following techniques and considerations:
+Optimizing database queries refines queries using techniques such index hints and caching. These adjustments increase efficiency and speed of data retrieval. As a result, the database has a lighter workload, resources work more effectively, and users enjoy smoother interactions. To optimize database queries, consider the following strategies:
 
 - *Rewrite queries.* Review and analyze complex queries to identify opportunities to rewrite them. Consider restructuring query logic, eliminating redundant operations, or simplifying query syntax.
 
@@ -109,11 +109,9 @@ Optimize your database queries by rewriting, reordering, or restructuring them t
 
 - *Monitor and tune.* Monitor query performance metrics, such as runtime, resource utilization, and query throughput. Use database profiling tools and monitoring functionalities to identify poorly performing queries. Evaluate and fine-tune query plans based on collected performance data. Analyze query plans and wait statistics to identify bottlenecks. Use that information to optimize query performance.
 
-### Optimize indexes
+### Optimize index performance
 
- Indexes increase the speed of data retrieval because the database can quickly locate data based on specific columns or fields. Optimize indexes to improve the efficiency of sorting and join operations, which decreases query runtimes.
-
- Efficient indexes reduce the number of disk I/O operations that are needed for running queries. Optimize queries to reduce the duration of locks and contention on data pages, which allows multiple users to concurrently access and modify data. When you eliminate redundant or unnecessary indexes, you can make better use of that storage space.
+Indexes enhance data retrieval speed by allowing databases to swiftly find data using specific columns or fields. By optimizing these indexes, sorting and join operations become more efficient, leading to faster queries. Well-optimized indexes cut down on the disk I/O operations required for queries. Removing unneeded or redundant indexes also frees up valuable storage space. To optimize index performance, consider the following strategies:
 
 - *Analyze query patterns.* Understand the query patterns that run on your database. Identify the queries that run frequently and might degrade performance. Analyze query patterns to determine which indexes are beneficial for optimizing performance.
 
@@ -135,9 +133,9 @@ Optimize your database queries by rewriting, reordering, or restructuring them t
 
 ### Consider data compression
 
-Data compression is the process of reducing the size of data to optimize storage space and improve workload performance efficiency. Compressed data requires less storage space and less bandwidth for transmitting, which results in fast data transfer.
+Data compression is the process of reducing the size of data to optimize storage space and improve workload performance efficiency. Compressed data requires less storage space and less bandwidth for transmitting, which results in fast data transfer. You would compress data to reduce your storage footprint and improve data access times. When you compress data, it reduces I/O operations and network bandwidth requirements. 
 
-Compress data to reduce your storage footprint and improve data access times. When you compress data, it reduces I/O operations and network bandwidth requirements. Lossless compression and lossy compression are data compression algorithms. Lossless compression algorithms reduce the size of data without losing any information. Lossy compression algorithms achieve high compression ratios by removing less important or redundant information.
+Lossless compression and lossy compression are data compression algorithms. Lossless compression algorithms reduce the size of data without losing any information. Lossy compression algorithms achieve high compression ratios by removing less important or redundant information.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: To compress and decompress data, you need computational resources, like CPU and memory. The more data that you compress, the more resources you need.
 
@@ -159,9 +157,9 @@ Optimizing storage load means streamlining requests to the storage system. It he
 
 #### Use caching
 
-Caching is a technique where you store frequently accessed data in a high-speed storage layer. It provides for quicker retrieval compared to fetching it from the primary data source. It plays a pivotal role in data performance optimization by reducing data access times and minimizing unnecessary repeated data fetches. Particularly in hot data scenarios, caching can amplify read throughput and enhance client response times. This method proves most effective when dealing with data that remains static or undergoes infrequent changes.
+Caching stores commonly accessed data in a fast-access storage area, making data retrieval quicker than pulling it from the main source. This technique boosts data performance by cutting down on access times and avoiding repetitive data fetches. Caching improves read speeds and user response times, especially for frequently accessed data  This method is most effective on static data or data that rarely changes.
 
-It's crucial to weigh factors such as cache expiration policies, cache eviction strategies, and cache size management. Fine-tune parameters like the time to live (TTL). To use a cache to optimize storage load, consider the following strategies:
+To ensure optimal caching efficiency, consider factors like expiration policies, eviction strategies, and managing cache size. Adjust settings, such as the time to live (TTL), for optimal performance. To use a cache to optimize storage load, consider the following strategies:
 
 - *In-memory caching*: Perform in-memory caching to store frequently accessed data in memory for fast retrieval. You can use this technique for application data that's expensive to compute or retrieve from a database. In-memory caching is useful for data that's read frequently but doesn't frequently change.
 
