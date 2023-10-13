@@ -14,7 +14,7 @@ categories:
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|[RE:07](checklist.md)| Strengthen the resiliency and recoverability of your workload by implementing self-preservation and self-healing measures. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. Build capabilities into the system to detect solution component failures and automatically initiate corrective action while the workload continues to operate at full or reduced functionality.   |
+|[RE:06](checklist.md)| Strengthen the resiliency and recoverability of your workload by implementing self-preservation and self-healing measures. Build capabilities into the solution by using infrastructure-based reliability patterns and software-based design patterns to handle component failures and transient errors. Build capabilities into the system to detect solution component failures and automatically initiate corrective action while the workload continues to operate at full or reduced functionality.   |
 |---|---|
 
 **Related guides:** [Background jobs](background-jobs.md) | [Transient faults](handle-transient-faults.md)
@@ -29,7 +29,7 @@ This guide describes design patterns that focus on self-preservation and self-he
 
 | Term | Definition |
 |------|------------|
-| Self-healing | The ability to automatically repair issues without human intervention. |
+| Self-healing | The ability of your workload to automatically resolve issues by recovering affected components and if needed, failing over to redundant infrastructure. |
 | Self-preservation | The ability of your workload to be resilient against potential problems. |
 
 ## Key design strategies
@@ -50,7 +50,7 @@ Use the Deployment Stamps pattern or the Bulkhead pattern to minimize the blast 
 
 #### Application design guidance and patterns
 
-Avoid building monolithic applications in your application design. Use loosely coupled services or microservices that communicate with each other via well-defined standards to reduce the risk of extensive problems when malfunctions happen to a single component. Standardize the communication mechanisms and use those mechansims consistently throughout the workload design. Implement this practice to create a more manageable workload. The following design patterns help you organize your workload and define the communications between components in a way that best meets your business requirements. 
+Avoid building monolithic applications in your application design. Use loosely coupled services or microservices that communicate with each other via well-defined standards to reduce the risk of extensive problems when malfunctions happen to a single component. Implement this practice to create a more manageable workload. The following design patterns help you organize your workload and define the communications between components in a way that best meets your business requirements.
 
 - [**Ambassador pattern**](/azure/architecture/patterns/ambassador): Separate your business logic from your networking code and resiliency logic. Create helper services that send network requests on behalf of a consumer service or application. You can use this pattern to implement retry mechanisms or circuit breaking.
 
@@ -85,7 +85,7 @@ Common examples of background jobs are:
 - Batch jobs, such as updating data regularly or processing tasks at a specific time.
 - Long-running workflows, such as completing an order or provisioning services and systems.
 
-For more information, see [Recommendations for background jobs](background-jobs.md)<!--RE:06 check link after file is named-->.
+For more information, see [Recommendations for background jobs](background-jobs.md).
 
 ### Self-healing guidance
 

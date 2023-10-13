@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|[RE:10](checklist.md)| Measure and publish the solution's health indicators. Continuously capture uptime and other reliability data from across the workload and also from individual components and key flows.  |
+|[RE:09](checklist.md)| Measure and publish the solution's health indicators. Continuously capture uptime and other reliability data from across the workload and also from individual components and key flows.  |
 |---|---|
 
 This guide describes the recommendations for designing a reliable monitoring and alerting strategy. Implement this strategy to keep your operations teams informed of your environment's health status and ensure that you meet the established reliability targets for your workload.
@@ -38,7 +38,7 @@ Before you create a monitoring and alerting strategy, perform the following task
 
 - Design a robust [testing strategy](testing-strategy.md).
 
-Create a monitoring and alerting strategy to ensure that your workload operates reliably. A monitoring and alerting strategy provides awareness to your operations teams so they're notified of changes in your workload's condition and can quickly address issues. Build a robust and reliable monitoring strategy on the [health models](metrics.md) that you develop for your critical and non-critical flows. The health model defines healthy, degraded, and unhealthy states. Design your monitoring posture to immediately catch changes in these states. When health states change from healthy to degraded or unhealthy, alerting mechanisms trigger the [automatic corrective measures](testing-strategy.md) and the alerts to the appropriate teams.
+Create a monitoring and alerting strategy to ensure that your workload operates reliably. A monitoring and alerting strategy provides awareness to your operations teams so they're notified of changes in your workload's condition and can quickly address issues. Build a robust and reliable monitoring strategy on the [health models](metrics.md) that you develop for your critical flows and the workloads that the critical flows comprise. The health model defines healthy, degraded, and unhealthy states. Design your monitoring posture to immediately catch changes in these states. When health states change from healthy to degraded or unhealthy, alerting mechanisms trigger the [automatic corrective measures](testing-strategy.md) and the alerts to the appropriate teams.
 
 Implement the following recommendations to design a monitoring and alerting strategy that meets the requirements of your business.
 
@@ -48,7 +48,7 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - Enable [logging](/azure/azure-monitor/essentials/resource-logs) for all cloud resources. Use automation and governance in your deployments to enable diagnostic logging throughout your environment.
 
-- Forward all diagnostic logs to data sinks and an analytics platform, like a [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview). If you have regional data sovereignty requirements, you must use local data sinks in the regions that are subject to those requirements.
+- Forward all diagnostic logs to a centralized data sink and analytics platform, like a [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview). If you have regional data sovereignty requirements, you must use local data sinks in the regions that are subject to those requirements.
 
 - If your workloads are subject to one or more compliance frameworks, some of the component logs that handle sensitive information are also subject to those frameworks. Send the relevant component logs to a security information and event management (SIEM) system, like [Microsoft Sentinel](/azure/sentinel/overview).
 
@@ -61,9 +61,8 @@ Implement the following recommendations to design a monitoring and alerting stra
   Threshold configuration is a practice of continuous improvement. As your workload evolves, the thresholds you define might change. In some cases, [dynamic thresholds](/azure/azure-monitor/alerts/alerts-dynamic-thresholds) are a good option for your monitoring strategy.
 
 - Consider using alerts when states improve, such as red to yellow or red to green, so that the operations teams can track these events for future reference.
-- Carefully plan your alerting strategy to ensure that the appropriate parties recieve alerts that they should receive, and not others that they don't have some interest in to avoid alert fatigue.
 
-- Visualize the real-time health of your environment by using [custom dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards). Having individual dashboard visualizations for each flow will help the workload team understand the health of each flow in real-time.
+- Visualize the real-time health of your environment by using [custom dashboards](/azure/azure-monitor/visualize/tutorial-logs-dashboards).
 
 - Use data that's gathered during incidents to continuously improve your [health models](metrics.md) and your monitoring and alerting strategy.
 
@@ -82,7 +81,6 @@ Implement the following recommendations to design a monitoring and alerting stra
   - Successful and failed backups and recoveries.
   
   - The recovery duration to inform your [disaster recovery planning](disaster-recovery.md).
-  - Ensure that your monitoring platform design incorporates the same reliability concerns as your infrastructure and application designs. It should be resilient and secure to the same degree as other critical componenents.
 
 ### Monitor applications
 

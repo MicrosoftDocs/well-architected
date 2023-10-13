@@ -18,7 +18,7 @@ The [Assessment](/assessments/?mode=pre-assessment&id=23513bdb-e8a2-4f0b-8b6b-19
 
 We recommend that the team doing the assessment is well versed in the architecture of the specific workload and has a strong understanding of cloud principles and patterns. These roles include, but aren't limited to, cloud architect, operators, DevOps engineer. 
 
-The assessment is a set of questions based on the [mission-critical design methodology](/azure/architecture/framework/mission-critical/mission-critical-design-principles?branch=main) as a way of checking the foundational design choices of a workload’s architecture and the end-to-end operational approach.
+The assessment is a set of questions based on the [mission-critical design methodology](/azure/well-architected/mission-critical/mission-critical-design-principles?branch=main) as a way of checking the foundational design choices of a workload’s architecture and the end-to-end operational approach.
 
 [![Screenshot of the mission-critical review tool.](./images/assessment-review.png)](./images/assessment-review.png)
 
