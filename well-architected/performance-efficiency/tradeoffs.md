@@ -108,7 +108,7 @@ Sharing resources is an approach for improving efficiency. It increases density 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased investment on items that aren't aligned with functional requirements.** One approach to cost optimization is evaluating the value provided by any solution that's deployed.
 
-- Premium services and SKUs can help a workload meet performance targets. These services usually cost more and can provide extra features. They might be underutilized if a lot of the premium features aren't used specifically for meeting performance targets.
+- Premium services and SKUs can help a workload meet performance targets. These services usually cost more and can provide extra features. They might be underutilized if many of the premium features aren't used specifically for meeting performance targets.
 
 - A performant workload requires telemetry data for observability that must be transferred and stored. An increase in the performance telemetry being collected can increase the cost of telemetry data transfer and storage.
 
