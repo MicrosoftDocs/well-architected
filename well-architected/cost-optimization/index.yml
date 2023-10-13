@@ -1,0 +1,106 @@
+### YamlMime:Landing
+
+title: Cost optimization quick links
+summary: Apply cost optimization guidance in your architecture to sustain and improve your return on investment (ROI).
+
+metadata:
+  title: Cost optimization quick links
+  description: Learn about resources that can help you apply cost optimization guidance in your architecture to sustain and improve your return on investment (ROI).
+  ms.service: waf
+  ms.subservice: waf-pillar-optimization
+  ms.topic: landing-page
+  author: martinekuan
+  ms.author: martinek
+  ms.date: 11/15/2023
+
+landingContent:
+  - title: Learn key points
+    linkLists:
+      - linkListType: quickstart
+        links:
+          - text: Design principles
+            url: principles.md
+          - text: Checklist
+            url: checklist.md
+          - text: Tradeoffs
+            url: tradeoffs.md
+          - text: Cost optimization patterns
+            url: design-patterns.md
+          - text: Azure Well-Architected Review assessment
+            url: /assessments/azure-architecture-review/
+      - linkListType: learn
+        links:
+          - text: Cost optimization
+            url: /training/modules/azure-well-architected-introduction/3-cost-optimization
+      - linkListType: video
+        links:
+          - text: What tradeoffs have you made to optimize for cost?
+            url: https://www.microsoft.com/videoplayer/embed/RE4zw3n
+  - title: Review design principles
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Develop cost-management discipline
+            url: principles.md#develop-cost-management-discipline
+          - text: Design with a cost-efficiency mindset
+            url: principles.md#design-with-a-cost-efficiency-mindset
+          - text: Design for usage optimization
+            url: principles.md#design-for-usage-optimization
+          - text: Design for rate optimization
+            url: principles.md#design-for-rate-optimization
+          - text: Monitor and optimize over time
+            url: principles.md#monitor-and-optimize-over-time
+  - title: Set, measure, and protect financial targets
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Create a culture of financial responsibility
+            url: create-culture-financial-responsibility.md
+          - text: Create a cost model
+            url: cost-model.md
+          - text: Collect and review cost data
+            url: collect-review-cost-data.md
+          - text: Set spending guardrails
+            url: set-spending-guardrails.md
+  - title: Take cost optimization actions
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Get the best rates
+            url: get-best-rates.md
+          - text: Align usage to billing increments
+            url: align-usage-to-billing-increments.md
+          - text: Eliminate waste
+            url: eliminate-waste.md
+          - text: Consolidate
+            url: consolidation.md
+  - title: Optimize
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Environments
+            url: optimize-environment-costs.md
+          - text: User, data, and system flows
+            url: optimize-flow-costs.md
+          - text: Data
+            url: optimize-data-costs.md
+          - text: Application code
+            url: optimize-code.md
+          - text: Scaling
+            url: optimize-scaling.md
+          - text: Personnel time
+            url: optimize-personnel-time.md
+  - title: Explore related resources
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: "Azure Advisor: Cost recommendations"
+            url: /azure/advisor/advisor-reference-cost-recommendations
+          - text: Azure Pricing Calculator
+            url: https://azure.microsoft.com/pricing/calculator
+          - text: Microsoft Azure Total Cost of Ownership (TCO) Calculator
+            url: https://azure.microsoft.com/pricing/tco/calculator/
+          - text: Microsoft Cost Management
+            url: /azure/cost-management-billing/costs/cost-mgt-best-practices
+          - text: Visualize cost reports
+            url: /power-bi/connect-data/desktop-connect-azure-cost-management
