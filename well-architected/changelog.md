@@ -25,7 +25,7 @@ The following new and updated articles have recently been published in the Azure
 
 ### New articles
 
-- [Review - Azure Cosmos DB for NoSQL](./services/data/cosmos-db.md)
+- [Review - Azure Cosmos DB for NoSQL](service-guides/cosmos-db.md)
 
 ### Updated articles
 
