@@ -75,7 +75,7 @@ The Operational Excellence pillar never recommends activities that reduce produc
 
 - While not directly a resource, for observability platforms to be effective, telemetry data needs to be persisted. Most operational data stores have pricing based on a combination of ingestion rates and volume. This generally means that as the amount of low-latency, high-diversity telemetry increases so too will the costs. For multi-region deployments, these operational data sinks are expected to be found per-region, so any per-resource costs become a factor.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Decreased focus on delivery activities.** Workload team members deliver increased workload value by efficiently performing tasks aligned to their capabilities.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Decreased focus on delivery activities.** Workload team members deliver increased workload value by efficiently performing tasks aligned to their capabilities.
 
 - Workload teams that spend time building and refining a healthy and responsible support structure and incident response are providing valuable service to its users. As the effort increases in support functions, such as formal on-call rotations, usually with a corresponding change in business critically, the costs of these activities will increase. This increase can come from direct staff increase or can come indirectly from shifted attention away from delivery activities to supporting functions.
 
@@ -83,7 +83,7 @@ The Operational Excellence pillar never recommends activities that reduce produc
 
 - Standardized routine operational tasks to protect the reliability, security, and performance efficiency of a workload takes time to define, refine, and execute, which is not time directly spent on delivery. Some examples of these are comprehensive change impact analysis, change control processes, thorough testing, and increased patch management. As the frequency, comprehensiveness, or operational burden of the tasks increases, so will the time needed to be invested.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased tooling demands and diversity.** Cost optimization looks to reduce tooling sprawl, perform vendor consolidation, and prefers a 'right sized' approach to all tooling purchases.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased tooling demands and diversity.** Cost optimization looks to reduce tooling sprawl, perform vendor consolidation, and prefers a 'right sized' approach to all tooling purchases.
 
 A workload team purchases tools and hardware to support activities performed across the entire software development lifecycle (SDLC); from planning and design through development and testing and into monitoring. The marketplace for tooling in this space is ever-growing and exists at various price points usually aligned with their features and capabilities. Outside of free offerings, this tooling comes with initial licensing costs, that might be per-seat or site-wide, and often ongoing maintenance contracts. New vendor relationships might also need to be established. Here are some examples of where tooling or hardware spending is expected in association with the principles of Operational Excellence:
 

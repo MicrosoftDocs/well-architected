@@ -1,0 +1,33 @@
+- name: Mission-critical
+  href: index.yml
+  items:
+    - name: Get started
+      href: mission-critical-overview.md
+    - name: Design methodology
+      href: mission-critical-design-methodology.md
+    - name: Design principles
+      href: mission-critical-design-principles.md
+    - name: Architecture pattern
+      href: mission-critical-architecture-pattern.md                
+    - name: Cross-cutting concerns
+      href: mission-critical-cross-cutting-issues.md
+    - name: Design areas
+      items:
+      - name: Application design
+        href: mission-critical-application-design.md
+      - name: Application platform
+        href: mission-critical-application-platform.md
+      - name: Data platform
+        href: mission-critical-data-platform.md
+      - name: Networking and connectivity
+        href: mission-critical-networking-connectivity.md                  
+      - name: Health modeling
+        href: mission-critical-health-modeling.md
+      - name: Deployment and testing
+        href: mission-critical-deployment-testing.md
+      - name: Security
+        href: mission-critical-security.md
+      - name: Operational procedures
+        href: mission-critical-operational-procedures.md
+    - name: Assessment tool
+      href: mission-critical-assessment.md

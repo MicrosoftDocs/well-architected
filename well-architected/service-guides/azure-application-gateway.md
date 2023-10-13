@@ -58,7 +58,7 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Security
 
-Security is one of the most important aspects of any architecture. Application Gateway provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../security/security-principles.md).
+Security is one of the most important aspects of any architecture. Application Gateway provides features to employ both the principle of least privilege and defense-in-defense. We recommend you review the [Security design principles](../security/principles.md).
 
 ### Design checklist
 

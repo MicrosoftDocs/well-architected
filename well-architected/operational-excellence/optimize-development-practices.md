@@ -1,144 +1,162 @@
 ---
-title: Recommendations for optimizing development practices through standardization
-description: Learn how to optimize your development practices by standardizing your tools and processes.
+title: Recommendations for standardizing tools and processes
+description: Learn how to optimize development practices by standardizing tools and processes. Define consistent practices to optimize efficiency and quality of work.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing development practices through standardization
+# Recommendations for standardizing tools and processes
 
-**Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:** 
+**Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. | 
-|---|---| 
+|[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
+|---|---|
 
 **Related guide**: [Improve build velocity](release-engineering-performance.md) | [Use continuous integration](release-engineering-continuous-integration.md)
 
-This guide describes the recommendations for defining standards for your software development tools and processes. Defining consistent practices will lead to a more productive workload team and higher quality work than can be achieved with this structure. High-performing teams use industry-proven tools and processes to minimize wasted effort and risk of introducing risks in their code.
+This guide describes the recommendations for defining standards for software development tools and processes. Defining consistent practices leads to an efficient workload team and high-quality work. High-performing teams use industry-proven tools and processes to minimize wasted effort and potential code errors.
 
 ## Key design strategies
 
-Optimizing your development practices starts with standardization of tools and processes. Moreover, your standard tools and processes should be industry-proven solutions rather than developed in-house as much as possible. This standardization using existing tools extends to adopting low-code and no-code tools, which further optimizes your practices by allowing you to focus your efforts on your application rather than problems that have already been solved. For all of the tools and processes that you standardize on, training is essential for the team to become familiar and efficient in their use. Consider the following recommendations to develop the standards that will help optimize your development practices:
+The first step of optimizing development practices is standardizing tools and processes. When possible, use industry-proven solutions rather than developing in-house solutions. To further optimize your practices, adopt low-code and no-code tools. These tools enable you to focus efforts on your application and help you save time. For all tools and processes that you standardize, implement training so your teams understand and use them efficiently. To define standards that help optimize your development practices, consider the following recommendations.
 
--   Use well-known and mature off-the-shelf tools and standardize their use. Highly effective engineering teams minimize the development of bespoke solutions for planning, development, testing, collaboration and continuous integration and delivery (CI/CD) by adopting best-in-class tools. Choose tools that meet specific requirements for your workload first and foremost. Many enterprises give developers some degree of choice between a few tools, but all of the tools that can be chosen are standard tools for the organization and have been validated internally. The following functions are some of those that should be provided by off-the-shelf tools
+**Use well-known and mature off-the-shelf tools**, and standardize their use. Highly effective engineering teams adopt the best-in-class tools. This approach minimizes the need to develop solutions for planning, development, testing, collaboration, and continuous integration and continuous delivery (CI/CD). Many enterprises give developers a choice between a few tools, but all options are standard tools for the organization and are validated internally. Most importantly, choose tools that meet the requirements for your workload. Off-the-shelf tools should provide the following functions:
 
-    -   Work planning / backlog management
+- Work planning and backlog management
 
-    -   Version control and repositories (repos)
+- Version control and repositories
 
-    -   CI/CD pipelines
+- CI/CD pipelines
 
-    -   Testing (integration, smoke, synthetic user, simulation and chaos testing among other quality tests)
+- Testing, such as integration, smoke, synthetic user, simulation, chaos, and other quality tests
 
-    -   Code development
+- Code development
 
-    In some cases, one tool or suite of tools might provide many functions, but ensure that you understand your tools capabilities and limitations to make sure that they meet your requirements across functions.
-    
-    When deciding on whether to invest in more expensive tools or premium versions of tools, weigh the time and effort involved in developing your own solutions that would otherwise be provided by those tools vs the one-time and recurring costs. In most cases, the off-the-shelf tools will be the better value to your team.
-    
--   Use low-code, no-code, and artificial intelligence (AI) tools when practical. Low-code and no-code tools not only save experienced developers time by allowing them to easily plug in functionality rather than going through the entire code development process, but they also allow other workload team members that might not be trained developers to contribute to the operation of the workload. AI tools can help with code development, review, and optimization.
+In some cases, one tool or a suite of tools might provide several functions. Ensure that you understand the capabilities of your tools and their limitations so they meet your requirements across functions.
 
--   Standardize your branching strategy, preferring a trunk-based model. Trunk-based branching keeps the workload development team in sync at all times and encourages continuous delivery. Define branch policies to protect the important branches, like main. See the [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance) article for detailed guidance about building an effective branching strategy and the [Branch policies and settings](/azure/devops/repos/git/branch-policies) article for guidance about creating branch policies.
+Determine if you should invest in expensive tools or premium versions of tools. Consider the time and effort of developing your own solutions compared to features that the premium tools provide. Consider one-time costs versus recurring costs. In most cases, off-the-shelf tools provide higher value to your team.
 
--   Software development and quality assurance teams can only improve if they can quantify their effectiveness. To be able to quantify effectiveness, they must identify the metrics that can be used to measure [developer velocity](https://azure.microsoft.com/solutions/developer-velocity/) and define KPIs. Examples of these metrics include:
+**Use low-code, no-code, and AI tools** when practical. Low-code and no-code tools save experienced developers time by allowing them to easily plug in functionality rather than performing the entire code development process. These tools also allow workload team members that might not be trained developers to contribute to the operation of the workload. AI tools can help with code development, reviews, and optimization.
 
-    -   **Deployment frequency**: the number of deployments per developer, per day
+**Standardize your branching strategy.** Choose a trunk-based model when possible. Trunk-based branching keeps the workload development team in sync and encourages continuous delivery. Define branch policies to protect important branches, like the main branch. For more information, see [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance) and [Branch policies and settings](/azure/devops/repos/git/branch-policies).
 
-    -   **Lead time**: how long it takes for a task or user story to go from being added to the backlog to a production deployment
+**Evaluate metrics to quantify effectiveness.** Software development and quality assurance teams can only improve if they can quantify their effectiveness. To quantify effectiveness, they must identify the metrics that measure [developer velocity](https://azure.microsoft.com/solutions/developer-velocity) and define KPIs. Examples of these metrics include:
 
-    -   **Mean time to resolution**: the average time spent fixing bugs or defects in code
+- *Deployment frequency*: The number of deployments that each developer deploys each day.
 
-    -   **Change failure rate**: the percentage of changes that result in a failure of some kind
+- *Lead time*: The time that it takes for a task or user story to go from the backlog to a production deployment.
 
-    Visualize KPIs using dashboards or other reporting tools to help stakeholders and the workload team easily track velocity.
+- *Mean time to resolution*: The average time that's spent fixing bugs or defects in code.
 
--   Standardize the way that the workload team writes, reviews, and documents code through a style guide. A standard style will make collaboration easier and help with on-boarding new developers. New developers need to know how the workload team operates to be effective and standards that are clearly laid out in a style guide will ease their ramping process. The style guide should define standards for development languages, libraries, frameworks and other conventions.
+- *Change failure rate*: The percentage of changes that result in a failure.
 
-    Use tooling when practical to enforce code formatting standards. For example, Visual Studio offers several [tools](/visualstudio/code-quality/roslyn-analyzers-overview) to scan code for style, quality, maintainability, design, and other issues. Likewise, for IaC code, you can use Checkov or Terrascan for Terraform.
+To help stakeholders and the workload team easily track velocity, visualize KPIs by using dashboards or other reporting tools.
 
-    The style guide should include standard naming conventions for artifacts, environments, branches, builds and runs to ensure consistency and avoid potential confusion among the team.
-    
-    You should also set guidelines and standards for the allowable degree of variance in your environments. If there are new languages, frameworks or other technologies that workload team members are interested in adding to the standard list, there should be a standardized process for using those tools in sandbox and lower environments to test their viability and replacing existing technologies when appropriate.
+**Standardize how your workload team writes, reviews, and documents code** by using a style guide. A standard style makes collaboration easy and helps with on-boarding new developers. To work effectively, new developers need to know how the workload team operates. A style guide with clearly defined standards can ease their training process. In the style guide, define standards for development languages, libraries, frameworks, and other conventions.
 
--   Use architecture decision records (ADRs) to keep a historical record of the design decisions that the workload team makes. ADRs should be version controlled and should document specific tools and technologies that have been chosen (using SQL or NoSQL for example) and specific reasons why they were chosen. Be sure to include the other options that were considered to help contextualize the reasons for the choices that were made. Also include functional and non-functional requirements that contributed to decisions and a description of the context for the decision-making process (what was the problem that was being addressed). ADRs help teams keep a fresh understanding of the workload and especially help new team members learn about the design decisions that have been made over the course of the workload's lifecycle.
+When it's practical, use tooling to enforce code-formatting standards. For example, Visual Studio offers several [tools](/visualstudio/code-quality/roslyn-analyzers-overview) that scan code for style, quality, maintainability, design, and other issues. For infrastructure as code (IaC), you can use Checkov or Terrascan for Terraform.
 
--   Have standards and guidelines for addressing technical debt. The workload team should adopt a mindset that technical debt is intentional and necessary for their deliverables. By adopting this mindset, the team can be motivated to care about and address technical debt regularly to avoid accumulation. Include work to address technical debt as a regularly recurring task in the backlog. As an example, if your team has standardized on a specific library and over time it becomes necessary to move to a different library to add new functionality to the workload that transition might result in technical debt. Often, transitions like this can leave the workload team supporting two technologies because they are unable to fully transition smoothly. The workload team must prioritize completing the transition because once the workload has achieved the new functionality stakeholders will be satisfied and will be less likely to care about the technical debt.
+To ensure consistency and avoid potential confusion, the style guide should include standard naming conventions for artifacts, environments, branches, builds, and runs.
 
--   Standardize how you apply versioning to your artifacts and how versioning is exposed internally and externally. For example, client facing systems should expose their running version through the user interface, which is helpful for the workload team when troubleshooting issues, as the end-user can easily communicate which version they are using. Other ways of exposing the version would be REST interfaces for certain components or for databases, you might use a specific table in the metadata for a schema to expose the schema version.
+You should also set guidelines and standards for the allowable degree of variance in your environments. If there are new languages, frameworks, or other technologies that workload team members want to add to the standard list, implement a process for using those tools in a sandbox or lower environment. Test their viability, and replace existing technologies when appropriate.
 
--   Use industry-proven application [design patterns](/azure/architecture/patterns/) to ensure that your application is reliable, performant and secure. Using these patterns will save you time and effort in developing your own optimizations for your application. Choose the patterns that will benefit your workload and review design patterns regularly to ensure that as your workload evolves, you are using the right patterns for the current state and planned future state.
+**Use architecture decision records (ADRs)** to keep a historical record of your workload team's design decisions. ADRs help your teams maintain a fresh understanding of the workload. They also help new team members learn about the design decisions that are made during the workload's lifecycle. Ensure that ADRs are version controlled.
 
--   Take a shift-left approach to testing by performing unit testing early and often throughout the development process. Frequent testing in each development environment helps developers gain confidence in their applications. The following principles will help you build your testing strategy with a shift-left approach:
+In your ADR, include:
 
-    -   **Tests should be written at the lowest level possible.** favor tests with the fewest external dependencies and focus on running most tests as part of the build.
+- Specific tools and technologies, for example using SQL or NoSQL, that your team chooses.
 
-    -   **Write once, run everywhere including production.** write tests that can be run in every development environment without modifications to account for things like encrypted secrets or configurations specific to one environment.
+- The reasons for your team's decisions.
 
-    -   **The workload is designed for testing.** When developing your application, testability should be a requirement.
+- Other options that were considered, which helps contextualize the final decision.
 
-    -   **Treat test code as application code.** The same attention to quality and the same development standards should apply to application code and test code. Test code should be stored alongside application code and should be built and maintained with the application code. Be rigorous with your dedication to quality tests by discarding tests that do not prove reliable.
+- Functional and nonfunctional requirements that are factored into decisions.
 
-    -   **Test ownership follows workload ownership.** the workload team owns their testing. The workload team should not rely on other teams to test their code.
+- The context of the decision-making process, like the problem that was addressed.
 
-    -   **Automate tests to the extent practical.** automated code relieves burden on the workload team and enforces consistent quality.
+**Implement standards and guidelines for addressing technical debt.** Adopt a mindset that technical debt is intentional and necessary for your workload team's deliverables. This mindset motivates your team to consider and address technical debt regularly to avoid accumulation. Address technical debt as a regularly recurring task in the backlog.
 
-    See the [Shift left with unit tests](/devops/develop/shift-left-make-testing-fast-reliable) article for detailed guidance about implementing a DevOps test strategy.
+For example, suppose your team standardized on a library. Over time, you need to switch to a different library for new functionality in the workload. That transition might result in technical debt. Frequently, transitions like this can leave the workload team supporting two technologies because they can't fully transition smoothly. The workload team must prioritize completing the transition because when the workload achieves the new functionality, stakeholders are satisfied and are less likely to consider the technical debt.
 
--   [DevSecOps](/devops/operate/security-in-devops) practices should be required as part of your standard operating procedures. Everyone on the workload team should understand the security practices related to software development and quality assurance and must adopt the mindset these practices must be followed without exception. See the [security development lifecycle guide](../security/secure-development-lifecycle.md) for detailed guidance on DevSecOps practices.
+**Standardize how you apply versioning to your artifacts** and how versioning is exposed internally and externally. For example, client-facing systems should expose their running version in the user interface. This technique is helpful when the workload team troubleshoots issues because the customer can easily communicate which version they use. REST interfaces can expose versions for certain components or databases. You might use a specific table in the metadata for a schema to expose the schema version.
+
+**Use industry-proven application [design patterns](/azure/architecture/patterns)** to ensure that your application is reliable, performant, and secure. Use these patterns to save time and effort compared to developing your own solutions for your application. Choose the patterns that benefit your workload. Regularly review design patterns to ensure that you use the right patterns as your workload evolves.
+
+**Implement a shift-left approach to testing** by performing unit testing early and often throughout the development process. Frequent testing in each development environment helps developers gain confidence in their applications. To help create your testing strategy with a shift-left approach, consider the following principles:
+
+- *Write tests at the lowest level possible*. Favor tests with the fewest external dependencies, and run tests as part of the build.
+
+- *Write tests once, and run tests everywhere, including production*. Write tests that you can run in every development environment without accounting for factors that are specific to one environment, like encrypted secrets or configurations.
+
+- *Design your workload for testing*. When you develop your application, make testability a requirement.
+
+- *Treat test code as application code*. Apply the same quality and development standards to application code and test code. Store test code alongside application code. Develop and maintain test code with application code. To ensure the quality of tests, discard tests that aren't reliable.
+
+- *Consider test ownership, which is based on workload ownership*. Your workload team owns their testing and shouldn't rely on other teams to test their code.
+
+- *Automate tests as much as possible*. Automated code relieves the burden on your workload team and enforces consistent quality.
+
+For detailed guidance about implementing a DevOps test strategy, see [Shift testing left with unit tests](/devops/develop/shift-left-make-testing-fast-reliable).
+
+**Require [DevSecOps](/devops/operate/security-in-devops) practices as part of your standard operating procedures.** Your workload team should understand the security practices related to software development and quality assurance. They must follow these practices without exception. For more information, see [Security development lifecycle guide](../security/secure-development-lifecycle.md).
 
 ## Azure facilitation
 
--   [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) is a collection of services that help you build a collaborative, efficient, and consistent development practice. Azure DevOps bundles the following solutions:
+- [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops) is a collection of services that you can use to build a collaborative, efficient, and consistent development practice. Azure DevOps bundles the following solutions:
 
-    -   Azure Pipelines provides build and release services to support continuous integration and delivery of your applications.
+  - Azure Pipelines provides build and release services to support the CI/CD of your applications.
 
-    -   [Azure Boards](/azure/devops/boards/get-started/what-is-azure-boards?view=azure-devops&preserve-view=true) is a web-based work management tool that supports Agile practices like Scrum and Kanban boards.
+  - [Azure Boards](/azure/devops/boards/get-started/what-is-azure-boards) is a web-based work-management tool that supports Agile practices like Scrum and Kanban.
 
-    -   Azure Repos is a version control tool that supports the [Git](/azure/devops/repos/get-started/what-is-repos?view=azure-devops#git&preserve-view=true) distributed version control system and the [Team Foundation Version Control](/azure/devops/repos/get-started/what-is-repos?view=azure-devops#tfvc&preserve-view=true) centralized version control system.
+  - Azure Repos is a version control tool that supports the [Git distributed version control system](/azure/devops/repos/get-started/what-is-repos#git) and the [Team Foundation Version Control](/azure/devops/repos/get-started/what-is-repos#tfvc) system.
 
-    -   [Azure Test Plans](/azure/devops/test/overview?view=azure-devops&preserve-view=true) is an easy-to-use, browser-based test management solution that provides all the capabilities required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
+  - [Azure Test Plans](/azure/devops/test/overview) is a browser-based test management solution that provides capabilities that are required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
 
-    -   [Azure Artifacts](/azure/devops/artifacts/start-using-azure-artifacts?view=azure-devops&preserve-view=true) enables developers to share their code efficiently and manage all their packages from one place.
+  - [Azure Artifacts](/azure/devops/artifacts/start-using-azure-artifacts) is used to enable developers to efficiently share their code and manage their packages.
 
--   [GitHub for Actions for Azure](https://azure.github.io/actions/) allows you to automate CI/CD processes and integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production. 
+- [GitHub Actions for Azure](https://azure.github.io/actions) is a tool that you can use to automate CI/CD processes. It integrates directly with Azure to simplify deployments. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
 
--   [GitHub Projects](https://docs.github.com/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) is a work management tool that you can use to create Kanban boards, reports, dashboards and other functions.
+- [GitHub Projects](https://docs.github.com/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) is a work-management tool that you can use to create Kanban boards, reports, dashboards, and other functions.
 
--   Low-code and no-code tools include:
+- Low-code and no-code tools include:
 
-    -   [Azure Logic Apps](/azure/logic-apps/logic-apps-overview)
+  - [Azure Logic Apps](/azure/logic-apps/logic-apps-overview)
 
-    -   [Azure Functions](/azure/azure-functions/functions-overview)
+  - [Azure Functions](/azure/azure-functions/functions-overview)
 
-    -   [Microsoft Power Platform](https://powerapps.microsoft.com/low-code-platform/)
+  - [Microsoft Power Platform](https://powerapps.microsoft.com/low-code-platform)
 
--   [Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview?tabs=bicep) are Azure-native tools to deploy infrastructure-as-code (IaC). [Terraform](/azure/developer/terraform/overview) is another IaC tool that is fully supported in Azure that can be used to deploy and manage infrastructure.
+- [Azure Resource Manager templates](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview) are Azure-native tools that you can use to deploy IaC. [Terraform](/azure/developer/terraform/overview) is another Azure-supported IaC tool that you can use to deploy and manage infrastructure.
 
--   [Visual Studio](/visualstudio/windows) is a robust development tool supporting numerous languages with native Azure integration.
+- [Visual Studio](/visualstudio/windows) is a robust development tool that integrates with Azure and supports many languages.
 
--   [GitHub Copilot](https://docs.github.com/copilot/overview-of-github-copilot/about-github-copilot-for-individuals) is an AI service that acts as a pair programmer, offering auto-complete style suggestions as you code. It is available as an extension in Visual Studio and several other development tools.
+- [GitHub Copilot](https://docs.github.com/copilot/overview-of-github-copilot/about-github-copilot-for-individuals) is an AI service that acts as a pair programmer and provides autocomplete style suggestions as you code. Copilot is available as an extension in Visual Studio and several other development tools.
 
--   [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a fully managed load-testing service that enables you to generate high-scale load by simulating traffic for your applications, regardless of where they\'re hosted.
+- [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a fully managed load testing service that you can use to generate high-scale load by simulating traffic for your applications, regardless of where they're hosted.
 
 ## Tradeoffs
 
-Investing in powerful commercial tools can be costly, so ensure that you choose just the right tools to meet your requirements.
+Investing in powerful commercial tools can be costly, so choose the appropriate tools to meet your requirements.
 
 ## Related links
 
-[Introduction to GitHub CoPilot](/shows/introduction-to-github-copilot/): a six-part video series providing instructions for using GitHub Copilot.
-
-[DevOps resource center - Azure DevOps](/devops/): learn more about DevOps practices and how Microsoft applies them.
-
-[Cloud design patterns - Azure Architecture Center](/azure/architecture/patterns/): learn more about design patterns
-
-[Enable DevSecOps with Azure and GitHub - Azure DevOps](/devops/devsecops/enable-devsecops-azure-github): learn more about Azure and GitHub tools to apply DevSecOps practices
+- [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance)
+- [Branch policies and settings](/azure/devops/repos/git/branch-policies)
+- [Cloud design patterns](/azure/architecture/patterns)
+- [Developer velocity](https://azure.microsoft.com/solutions/developer-velocity)
+- [DevOps resource center](/devops)
+- [Enable DevSecOps with Azure and GitHub](/devops/devsecops/enable-devsecops-azure-github)
+- [Overview of source code analysis](/visualstudio/code-quality/roslyn-analyzers-overview)
+- [Security development lifecycle guide](../security/secure-development-lifecycle.md)
+- [Security in DevOps (DevSecOps)](/devops/operate/security-in-devops)
+- [Shift testing left with unit tests](/devops/develop/shift-left-make-testing-fast-reliable)
+- [Video series: Introduction to GitHub CoPilot](/shows/introduction-to-github-copilot/what-is-github-copilot-1-of-6)
 
 ## Operational Excellence checklist
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Operational Excellence checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Operational Excellence checklist](checklist.md)

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id/>
+    <title>Azure Well-Architected Framework</title>
+    <updated>2023-10-10T16:01:58.935Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <subtitle>Updated articles for Azure Well-Architected Framework</subtitle>
+    <rights>https://learn.microsoft.com/legal/termsofuse</rights>
+    <category term="new"/>
+    <category term="updated"/>
+    <entry>
+        <title type="html"><![CDATA[Review - Azure Cosmos DB for NoSQL]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/services/data/cosmos-db</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/services/data/cosmos-db"/>
+        <updated>2023-10-05T15:43:06.000Z</updated>
+        <summary type="html"><![CDATA[Design considerations and recommendations for each pillar as related to solutions using Azure Cosmos DB for NoSQL.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Networking resources provisioning]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/cost/provision-networking-services</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/cost/provision-networking-services"/>
+        <updated>2023-10-05T17:35:29.000Z</updated>
+        <summary type="html"><![CDATA[Learn about cost strategies for networking design choices for various Azure services, with links to reference architectures.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Microsoft Azure Well-Architected Framework review for Azure Database for PostgreSQL]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework"/>
+        <updated>2023-09-19T19:54:11.000Z</updated>
+        <summary type="html"><![CDATA[Provides a template for a Well-Architected Framework (WAF) article that is specific for Azure Database for PostgreSQL.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Recommendations for using availability zones and regions]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/resiliency/regions-availability-zones</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/resiliency/regions-availability-zones"/>
+        <updated>2023-09-20T03:06:55.000Z</updated>
+        <summary type="html"><![CDATA[This article provides guidance to help you understand when to deploy workloads across availability zones or regions.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Architecture pattern for mission-critical workloads on Azure]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/mission-critical/mission-critical-architecture-pattern</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/mission-critical/mission-critical-architecture-pattern"/>
+        <updated>2023-09-30T21:18:04.000Z</updated>
+        <summary type="html"><![CDATA[The design areas represent the architecturally significant topics that must be discussed and designed for when defining a target architecture]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Recommendations for using availability zones and regions]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/resiliency/regions-availability-zones</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/resiliency/regions-availability-zones"/>
+        <updated>2023-08-31T23:58:31.000Z</updated>
+        <summary type="html"><![CDATA[This article provides guidance to help you understand when to deploy workloads across availability zones or regions.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Application considerations for Azure VMware Solution workloads]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/azure-vmware/application-platform</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/azure-vmware/application-platform"/>
+        <updated>2023-08-15T15:50:37.000Z</updated>
+        <summary type="html"><![CDATA[Understand Azure VMware Solution application platforms. See how to design for scalability, resiliency, efficient resource distribution, and enhanced security.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Azure VMware Solution assessment]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/azure-vmware/assessment</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/azure-vmware/assessment"/>
+        <updated>2023-08-15T15:50:37.000Z</updated>
+        <summary type="html"><![CDATA[See how to use the Azure VMware Solution assessment to gauge how well your workload aligns with best practices for the Azure Well-Architected Framework pillars.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Azure VMware Solution design principles]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/azure-vmware/design-principles</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/azure-vmware/design-principles"/>
+        <updated>2023-08-15T15:50:37.000Z</updated>
+        <summary type="html"><![CDATA[Review the design principles of the Azure Well-Architected Framework. See how to apply these principles to Azure VMware Solution workloads.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Infrastructure considerations for Azure VMware Solution workloads]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/azure-vmware/infrastructure</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/azure-vmware/infrastructure"/>
+        <updated>2023-08-15T15:50:37.000Z</updated>
+        <summary type="html"><![CDATA[Understand Azure VMware Solution infrastructure concepts. See how to design for resilience, security, scalability, automation, and disaster recovery.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Integrate an Azure VMware Solution workload with Azure landing zones]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/azure-vmware/landing-zone-integration</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/azure-vmware/landing-zone-integration"/>
+        <updated>2023-08-15T15:50:37.000Z</updated>
+        <summary type="html"><![CDATA[Examine Azure landing zones and cloud operating models. See the responsibilities of platform teams and workload teams in Azure VMware Solution design areas.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Monitoring considerations for Azure VMware Solution workloads]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/azure-vmware/monitoring</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/azure-vmware/monitoring"/>
+        <updated>2023-08-15T15:50:37.000Z</updated>
+        <summary type="html"><![CDATA[See best practices for monitoring Azure VMware Solution workloads at the infrastructure and application levels.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Networking considerations for Azure VMware Solution workloads]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/azure-vmware/networking</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/azure-vmware/networking"/>
+        <updated>2023-08-15T15:50:37.000Z</updated>
+        <summary type="html"><![CDATA[Understand Azure VMware Solution networking concepts. See techniques for improving the security, operations, and scalability of networks.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Operations considerations for Azure VMware Solution workloads]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/azure-vmware/operations</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/azure-vmware/operations"/>
+        <updated>2023-08-15T15:50:37.000Z</updated>
+        <summary type="html"><![CDATA[Examine Azure VMware Solution operational procedures. See how to use tools and practices like tagging and incident management to efficiently operate workloads.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Azure VMware Solution workloads]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/azure-vmware/overview</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/azure-vmware/overview"/>
+        <updated>2023-08-15T15:50:37.000Z</updated>
+        <summary type="html"><![CDATA[See general guidance and resources for using Azure VMware Solution to run an on-premises VMware technology stack on Azure.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Security considerations for Azure VMware Solution workloads]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/azure-vmware/security</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/azure-vmware/security"/>
+        <updated>2023-08-15T15:50:37.000Z</updated>
+        <summary type="html"><![CDATA[Examine Azure VMware Solution security considerations. See how to encrypt data, use network segmentation, detect threats, and implement other security measures.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Target functional and nonfunctional requirements]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements"/>
+        <updated>2023-08-15T15:50:37.000Z</updated>
+        <summary type="html"><![CDATA[Learn about reliability targets for availability, recovery, and nonfunctionality, which involve application and data platforms, networking, and connectivity.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Design reliable Azure applications]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/resiliency/app-design</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/resiliency/app-design"/>
+        <updated>2023-08-08T02:47:28.000Z</updated>
+        <summary type="html"><![CDATA[Review design considerations for making sure that Azure applications are reliable, scalable, and resilient to failure.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Azure Well-Architected Framework review - Virtual Machines]]></title>
+        <id>https://learn.microsoft.com/azure/architecture/framework/services/compute/virtual-machines/virtual-machines-review</id>
+        <link href="https://learn.microsoft.com/azure/architecture/framework/services/compute/virtual-machines/virtual-machines-review"/>
+        <updated>2023-08-02T14:16:59.000Z</updated>
+        <summary type="html"><![CDATA[Design considerations and recommendations about Azure virtual machines.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+</feed>

@@ -1,0 +1,21 @@
+- name: SAP
+  href: quick-links.yml        
+  items:
+    - name: Get started
+      href: get-started.md
+    - name: Design principles
+      href: design-principles.md
+    - name: Design areas
+      items:
+        - name: Application design
+          href: design-areas/application-design.md
+        - name: Application platform
+          href: design-areas/application-platform.md
+        - name: Data platform
+          href: design-areas/data-platform.md
+        - name: Networking and connectivity
+          href: design-areas/networking-and-connectivity.md
+        - name: Security
+          href: design-areas/security.md
+        - name: Operational procedures
+          href: design-areas/operational-procedures.md
