@@ -81,7 +81,7 @@ When considering prepaid commitments, it's recommended to commit to the maximum 
 - *Engage with the vendor/supplier*: Communicate with the vendor or supplier to gather information about their plans, roadmap, and commitment to the component or workload. This dialogue provides valuable insights into their long-term vision and commitment level.
 - *Cost analysis*: Perform a cost analysis to compare the potential savings from committing to the maximum utilization with the potential risks of underutilization. Evaluate the cost implications of committing to a higher utilization level and assess whether the potential savings outweigh the risks of not fully utilizing the commitment.
 
-### Evaluate available discounts
+### Evaluate and commit to available discounts
 
 Evaluating available discounts for a workload refers to the process of assessing and analyzing the potential cost savings or discounts that can be applied to a specific workload. Assessing available supplier discounts allows you to identify opportunities for cost reduction and optimize the expenditure associated with the workload. It helps you identify potential savings and allocate resources more efficiently.
 
@@ -91,8 +91,6 @@ Evaluating available discounts for a workload refers to the process of assessing
 - *Evaluate contract terms*: Review the terms and conditions of existing contracts or agreements to identify any potential discount options. Consider understanding the duration of the commitment, renewal terms, and the possibility of negotiating better rates.
 - *Communicate with vendors*: Know the actual and anticipated usage of a workload when you discuss discounts. Let the vendor know what environment the discussion is about. For example, you can often get discounts on preproduction environments. Ask vendors or suppliers to discuss available discount options, such as product bundling products. Ask specific questions about discount programs, eligibility criteria, and any negotiation possibilities.
 - *Understand reseller options*: Consider engaging with resellers who can provide extra insights into available discounts or offer alternative pricing models. Resellers might have access to specialized programs or discounts that can benefit your workload.
-
-### Commit to the right discounts
 
 Committing to the right discount options is where you act on your evaluation. You’re equipped with the available option. You’ve communicated your needs and workload data to the various vendors. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing.
 
