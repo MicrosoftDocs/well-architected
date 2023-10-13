@@ -1,6 +1,6 @@
 ---
 title: Operational Excellence tradeoffs
-description: Operational Excellence tradeoffs in the Azure Well-Architected Framework
+description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for operational excellence.
 author: ferantivero
 ms.author: chkittel
 ms.date: 10/09/2023
