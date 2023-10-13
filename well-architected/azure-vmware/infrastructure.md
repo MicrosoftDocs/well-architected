@@ -72,7 +72,7 @@ Before you deploy an application in Azure VMware Solution, it's crucial to ensur
 
 ##### Recommendations
 
-- Before you migrate to Azure, use [Azure Migrate](https://learn.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) to get insights into resource usage and recommendations for sizing.
+- Before you migrate to Azure, use [Azure Migrate](/azure/migrate/how-to-create-azure-vmware-solution-assessment) to get insights into resource usage and recommendations for sizing.
 - Analyze resource utilization patterns over a specific time frame to help establish baseline usage, identify peak periods, and predict resource spikes.
 - Create a dependency map that outlines the components on your critical path. Actively maintain the map, and regularly check it for changes in the solution.
 

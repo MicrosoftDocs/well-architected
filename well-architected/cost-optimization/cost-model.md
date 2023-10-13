@@ -77,9 +77,9 @@ Determine the factors that drive the costs for each cost category, like services
 
 #### Associate costs with business metrics
 
-Associate costs with the relevant business metrics, such as the cost of each customer or the cost of each unit sold. Link the costs directly to the business metrics to gain visibility into the financial effect of different activities. For example, if you expect the number of customers to grow, you can estimate how much it costs to support those customers.
+Associating costs with business metrics means linking workload expenses to specific business indicators, like cost per customer served or cost per transaction processed. This practice provides a clearer understanding of how the workload consumes resources. Implementing this in cost modeling allows you to anticipate costs related to workload fluctuations and ensures efficient resource utilization based on demand. For example, if you expect the number of customers to grow, you can estimate how much it costs to support those customers.
 
-Many businesses prioritize this visibility in their cost model. It requires making the cost model adaptable and adds complexity to cost modeling. An adaptable cost model supports a scenario analysis that allows you to estimate the cost of workload or business changes. Determine the estimated cost of a customer by dividing the total cost of the workload by the number of customers. This calculation provides an estimate of how much it costs to support each customer within the workload. To determine a more accurate cost of a customer, consider the specific resources and services for each customer. For example, the customer's workload might include cloud services such as virtual machines, storage, networking, software licenses, or data transfer.
+You should emphasize clear visibility in the workload cost models. While this can make the model more intricate, it also allows for adaptability. Such a flexible cost model aids in scenario analysis, helping to predict expenses tied to workload or business shifts. To estimate the cost associated with each customer, divide the total workload cost by the number of customers. For a precise cost per customer, account for specific resources and services they utilize, like cloud services or software licenses.
 
 ### Publish the cost model
 
