@@ -32,9 +32,9 @@ Making budgets and workload costs transparent means openly sharing and communica
 
 A benefit of sharing these cost details is early detection of overspending. Transparent budgets provide a clear threshold for spending. If a team is approaching or exceeding the budget, they can take corrective actions early to avoid overspending.
 
-### Invest in cultural change
+### Encourage continuous improvement
 
-Investing in cultural change should encourage the workload team to embrace a growth mindset and seek opportunities to learn cost optimization strategies. Foster a culture that values and rewards contributions in this area. Promote a mindset of continuous improvement and cost awareness among personnel. Encourage them to proactively identify cost optimization opportunities in their day-to-day work and share them with the team. Consider the following key steps:
+Encouraging a culture of continuous improvement means fostering an environment where the workload team is empowered to explore and propose cost-saving measures. It requires open dialogue, training, and team-building focused on cost optimization. By nurturing this mindset, the workload is more likely to be proactive in identifying and implementing cost optimization strategies. To encourage continous improvement, consider the following strategies:
 
 - *Cost workshops*: Conduct workshops or training sessions for leaders to enhance their understanding of financial responsibility and its importance. These workshops can cover topics such as budgeting, cost management, and financial decision-making. Evaluate the current financial practices and culture within the organization. Identify areas that require improvement and determine the specific interventions needed to address those areas. Collaborate with subject matter experts or external consultants, if necessary, to design and develop engaging and informative workshop content. 
 - *Team-building activities*: Organize team-building activities that focus on financial responsibility. These activities can include group exercises, case studies, or simulations that encourage collaboration and problem-solving related to financial matters. Foster a culture of knowledge sharing. Encourage the workload team to share their expertise and best practices with their colleagues through internal forums, presentations, or mentoring programs. 
