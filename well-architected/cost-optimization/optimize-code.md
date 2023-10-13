@@ -212,5 +212,5 @@ To implement design patterns, developers need to understand the principles and g
 
 Refer to the complete set of recommendations.
 
-[!div class="nextstepaction"]
-[Cost Optimization checklist](checklist.md)
+> [!div class="nextstepaction"]
+> [Cost Optimization checklist](checklist.md)
