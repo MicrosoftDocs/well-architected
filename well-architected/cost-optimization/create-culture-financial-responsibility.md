@@ -43,7 +43,7 @@ Encouraging a culture of continuous improvement means fostering an environment w
 
 ### Develop skills in-house
 
-To develop skills in-house means to invest in training and developing the existing workforce to acquire the necessary expertise and knowledge required to optimize costs within a workload. It involves providing training programs, resources, and support to enhance the skills and capabilities of employees within the organization. It allows you to use the existing talent pool and empower employees to take ownership of cost optimization initiatives. To develop skills in-house, consider following these steps:
+Developomg skills in-house means investing in training the workload team. The goal is to have them gain the necessary expertise and knowledge required to optimize costs within a workload. It involves providing training programs, resources, and support to enhance the skills and capabilities of employees within the organization. It allows you to use the existing talent pool and empower employees to take ownership of cost optimization initiatives. To develop skills in-house, consider following these steps:
 
 - *Assess skills*: Evaluate the existing skills and knowledge of the workload team to identify areas that need improvement in terms of workload cost optimization.
 - *Define training objectives*: Determine the specific skills and expertise required to optimize costs within the workload. Include areas such as cloud cost management, resource optimization techniques, budgeting, and data analysis.
