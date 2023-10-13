@@ -103,10 +103,6 @@ Eliminating wasteful platform features involves identifying and removing unneces
 - *Eliminate unneeded automation*: Evaluate your automation processes and eliminate any unnecessary automation that might incur extra costs.
 - *Eliminate tool redundancy*: Get rid of tools that you don't really need or that do the same thing as other tools you already have. Consider tools used for building software, writing code, security, or monitoring how things are running. For instance, if you're already using GitHub actions to build your software, you don't need to buy another tool that does the same thing. Before you buy more features or tools, check if what you already have can do the job. This way, you avoid wasting money and make the most of what you already have.
 
-### Eliminate waste from operational processes
-
-Cut out unnecessary steps in your work process to save time and money. Look for tasks that you're doing too much or don't really need, like excessive security tests. Focus on the biggest time-wasters first. You can make things more efficient by simplifying how you work, automating repetitive tasks, or changing who does what. For example, you could do fewer security tests or make them less detailed to save resources.
-
 ### Eliminate waste from prepaid agreements
 
 Maximizing the usage of prepaid plans starts with buying the right plan and fully utilizing it. Strategic usage of reservations and savings plans can significantly minimize costs for applicable resources. It allows you to effectively plan and allocate resources, optimize spending, and achieve significant cost reductions.
