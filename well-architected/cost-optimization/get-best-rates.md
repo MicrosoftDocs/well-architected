@@ -33,9 +33,9 @@ Understanding the workload is the first step to finding and using the best rates
 
 By following these steps, you gain a comprehensive understanding of your workload's cost structure and identify areas where you can optimize rates.
 
-### Determine billing model
+### Determine the right billing model
 
-Using a consumption billing model (pay-as-you-go) and preprovisioned billing model (prepaid) on the appropriate resources can help generate the best rates for your workload. You need to consider the characteristics and usage patterns of your workload to make the correct decision. Determining the right billing model for a component involves considering various factors. Consider usage patterns and budget. You need to understand financial constraints to decide whether upfront payment is feasible. Assess if you have a long-term commitment to the component or if it's a short-term project. Consider the potential cost savings offered by prepaid plans and compare them with the expected usage and pay-as-you-go costs.
+Determining the billing model involves choosing between consumption-based (pay-as-you-go) and prepaid pricing strategies. The selection should be based on the predictability, duration, and utilization consistency of workload components. This decision requires collaboration between development and purchasing teams to evaluate resource needs, usage patterns, and potential cost optimizations. Selecting the right billing model is crucial to ensure cost-effectiveness. It helps align the workload with business objectives and get the best rates for the specific requirements of a workload. To determine the right billing model, consider the following strategies:
 
 #### Understand consumption pricing
 
