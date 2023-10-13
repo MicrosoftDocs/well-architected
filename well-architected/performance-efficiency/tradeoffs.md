@@ -50,7 +50,7 @@ One performance optimization strategy is to remove or bypass components or proce
 
 - Removing encryption in transit or at rest to improve transfer speeds exposes the data to potential integrity or confidentiality breaches.
 
-- Removing or reducing security scanning or inspecting tools to reduce processing times could compromise the confidentiality, integrity, or availability that those tools protect.
+- Removing or reducing security scanning or inspecting tools to reduce processing times can compromise the confidentiality, integrity, or availability that those tools protect.
 
 - Decreasing the frequency of security patching to limit the performance impact can leave a workload more vulnerable to emerging threats.
 
@@ -68,7 +68,7 @@ Performance-centric cloud design patterns sometimes necessitate the introduction
 
 - A load balancer for autoscaled replicas
 
-- Offloading data to caches, application delivery networks (ADN), or content delivery networks (CDN)
+- Offloading data to caches, application delivery networks, or content delivery networks
 
 - Offloading processing to background jobs or even client compute
 
@@ -90,11 +90,11 @@ Sharing resources is an approach for improving efficiency. It increases density 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Too much supply for demand.** Both Cost Optimization and Performance Efficiency prioritize having just enough supply to serve demand.
 
-- Overprovisioning is a risk when teams try to mitigate performance issues in a workload. Following are some common causes of overprovisioning:
+- Overprovisioning is a risk when teams try to mitigate performance issues in a workload. Some common causes of overprovisioning include:
   - Initial capacity planning was misjudged because the team focused only on peak load estimates, neglecting strategies for peak smoothing in the workload design.
   - Scaling a resource up or out during a troubleshooting step of an incident response.
 
-- Autoscaling can be misconfigured. Following are some examples of misconfigured autoscaling:
+- Autoscaling can be misconfigured. Some examples of misconfigured autoscaling include:
   - Scaling up with minimal changes in demand or an extended cooldown period can incur more cost than demand requires.
   - Using autoscaling without a set upper limit can lead to uncontrolled growth due to system malfunctions or abuse and exceed the expected workload requirements.
 
@@ -112,10 +112,10 @@ Sharing resources is an approach for improving efficiency. It increases density 
 
 - A performant workload requires telemetry data for observability that must be transferred and stored. An increase in the performance telemetry being collected can increase the cost of telemetry data transfer and storage.
 
-- Performance testing activities add costs that aren't associated with the value of the production system. Following are some examples of performance testing costs:
-  - Instantiating environments that are dedicated to performance-centric tests
-  - Using specialized performance tooling
-  - Spending time to run the tests
+- Performance testing activities add costs that aren't associated with the value of the production system. Examples of performance testing costs include:
+  - Instantiating environments that are dedicated to performance-centric tests.
+  - Using specialized performance tooling.
+  - Spending time to run the tests.
 
 - Training team members for specialized performance optimization tasks or paying for performance tuning services adds to the cost of a workload.
 
@@ -123,14 +123,14 @@ Sharing resources is an approach for improving efficiency. It increases density 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced observability.** Observability is necessary to provide a workload with meaningful alerting and help ensure successful incident response.
 
-- Reducing log and metric volume to reduce the processing time spent on collecting telemetry instead of other tasks reduces the overall observability of the system. Following are some examples of the resulting reduced observability:
+- Reducing log and metric volume to reduce the processing time spent on collecting telemetry instead of other tasks reduces the overall observability of the system. Some examples of the resulting reduced observability include:
   - It limits the data points that are used to build meaningful alerts.
   - It leads to gaps in coverage for incident response activities.
   - It limits observability in security-sensitive or compliance-sensitive interactions and boundaries.
 
 - When performance design patterns are implemented, the complexity of the workload often increases. Components are added to critical flows. The workload monitoring strategy and performance monitoring must include those components. When a flow spans multiple components or application boundaries, the complexity of monitoring the performance of that flow increases. Flow performance needs to be correlated across all the interconnected components.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased complexity in operations.** A complex environment has more complex interactions and a higher likelihood of a negative impact from routine, ad-hoc, and emergency operations.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased complexity in operations.** A complex environment has more complex interactions and a higher likelihood of a negative impact from routine, ad hoc, and emergency operations.
 
 - Improving performance efficiency by increasing density elevates the risk in operational tasks. An error in a single process can have a large blast radius.
 
@@ -140,7 +140,7 @@ Sharing resources is an approach for improving efficiency. It increases density 
 
 - Conducting root cause analysis of performance issues identifies deficiencies in processes or implementations that require correction. The team should consider the exercise a learning opportunity. If team members are blamed for issues, morale can be affected.
 
-- Routine and ad-hoc processes can affect workload performance. It's often best to perform these activities during off-peak hours. However, off-peak hours can be inconvenient or outside of regular hours for the team members who are responsible for or skilled in these tasks.
+- Routine and ad hoc processes can affect workload performance. It's often best to perform these activities during off-peak hours. However, off-peak hours can be inconvenient or outside of regular hours for the team members who are responsible for or skilled in these tasks.
 
 ## Related links
 
