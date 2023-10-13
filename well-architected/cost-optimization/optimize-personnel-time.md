@@ -31,7 +31,7 @@ Setting personnel time optimization targets means establishing clear, measurable
 - *Gather qualitative metrics*: In addition to quantitative metrics, gather feedback from personnel to measure their satisfaction with their roles. This feedback can provide valuable insights into the effects of personnel time optimization efforts on employee morale and engagement.
 - *Set targets:* Set realistic and achievable targets for each selected metric. These targets should be based on the current performance levels and the desired level of improvement.
 
-### Optimize development
+### Optimize development time
 
 Optimizing development means to refine the software development processes to achieve greater efficiency. As a result, developers can invest more time in refining features, innovating within the constraints of that particular workload, and addressing any unique challenges it presents.
 
