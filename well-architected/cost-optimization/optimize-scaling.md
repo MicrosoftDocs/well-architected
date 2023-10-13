@@ -76,7 +76,7 @@ Event-driven autoscaling allows the application to dynamically adjust resources 
 - *Test and monitor*: Validate the behavior of your event-based scaling implementation by testing it with different event scenarios. Monitor the scaling actions and ensure that the actions align with your expectations.
 
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff** Configuring and fine-tuning event-based autoscaling can be complex, and improper configuration might lead to over-provisioning or under-provisioning of resources.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff** Configuring and fine-tuning event-based autoscaling can be complex, and improper configuration might lead to over-provisioning or under-provisioning of resources.
 
 
 ### Optimize demand and supply
