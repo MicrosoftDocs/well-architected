@@ -14,9 +14,7 @@ ms.topic: conceptual
 |[PE:11](checklist.md)| Respond to live issues. Plan how to address performance problems by incorporating clear lines of communication and responsibilities. When a problematic situation occurs, use what you learn to identify preventive measures and incorporate them in your workload. Implement methods to return to normal operations faster when similar situations occur.| 
 |---|---| 
 
-This guide describes the best practices for responding to live performance issues. Response steps include identifying and addressing issues and bottlenecks that might affect the performance of a workload in real time. Addressing live issues allows for immediate detection and resolution of performance problems, and it helps ensure that the workload meets its performance requirements.
-
-If you don't address live performance issues, various negative consequences can result. The workload can experience slowdowns, crashes, or unresponsiveness, resulting in a poor user experience. Productivity can also be affected. Users might be unable to perform their tasks efficiently, leading to reputation damage.
+This guide describes the best practices for responding to live performance issues. Live performance issues refer to real-time challenges and bottlenecks that can hinder the optimal functioning of a workload. Addressing these issues promptly not only facilitates the immediate detection and rectification of performance hiccups but also ensures that the workload consistently meets its performance benchmarks. Failing to address them can lead to complications, including slowdowns, crashes, and system unresponsiveness, and degrade the user experience. They can also prevent users from completing their tasks efficiently, and, in turn, tarnish the reputation of the organization.
 
 **Definitions**
 
@@ -29,7 +27,7 @@ If you don't address live performance issues, various negative consequences can 
 
 ## Key design strategies
 
-When you experience a live performance issue, you need to be prepared with the right data and a plan to respond to the issue. This plan should include clear lines of communication and responsibilities. The goal is to use methods that allow you to quickly return to normal operations and learn from the event. You should try to prevent the same issue from recurring. Or if the issue comes up again, you should minimize its effect on performance issues. A key strategy is to identify preventive measures to incorporate into your workflow.
+When you experience a live performance issue, you need to be prepared with the right data and a plan to respond to the issue. This plan should include clear lines of communication and responsibilities. The primary objective is to implement solutions that facilitate a quick return to regular operations and provide insights from the incident. Integrating preventive measures into your workflow is a pivotal strategy. It's crucial to either prevent the same issue from happening again or lessen its effects on performance if it isn't preventable.
 
 ### Prepare for issues
 
@@ -43,7 +41,7 @@ The ideal response to live-site performance issues is precise and fast. Precisio
 
 ### Create a triage plan
 
-Planning for issues helps create better and faster responses to them. A triage plan is a strategy for responding to live-site performance issues. Most performance issues don't merit disaster recovery protocols, but they can affect workload functionality enough to require preplanning. Any triage plans that you create to respond to live performance issues should include the following components:
+Creating a triage plan involves devising a structured approach to identify, escalate, analyze, prioritize, and communicate live-site performance issues. A triage plan is a strategy for responding to live performance issues. It ensures that performance disruptions are addressed promptly and effectively, with clear roles and procedures. Most performance issues don't merit disaster recovery protocols, but they can affect workload functionality enough to require triage planning. A well-documented triage plan ensures all team members are aligned and can act swiftly, minimizing the impact on users and workloads. A triage plans should include the following components:
 
 - *Identification and monitoring*: Implement a system to identify and monitor performance issues in real time. You should have a list of the contact information of people who are capable of making decisions or escalating issues to higher levels. The plan should also identify roles and responsibilities. It needs to document which accounts gain access to protected information and for how long.
 
@@ -57,13 +55,11 @@ Planning for issues helps create better and faster responses to them. A triage p
 
 - *Documentation*: Document the triage plan, including all its steps, processes, and best practices. This documentation should be easily accessible to the team members who are involved in responding to performance issues.
 
-### Identify and resolve issues
+### Develop methods to identify and resolve issues
 
 Resolving live performance issues involves identifying and addressing any factors that can cause performance degradation or inefficiencies in a live workload. Data that you collect during monitoring is invaluable when you investigate and resolve performance-related incidents. This data provides a historical record of performance metrics. When you have monitoring data available, you can analyze root causes and identify contributing factors. You should use all relevant monitoring data to understand and fix each performance issue.
 
-#### Use root cause analysis
-
-Root cause analysis requires hypothesis testing. After you review monitoring data, you should list potential causes of the performance issue and test them. To conduct a root cause analysis on a live performance issue, you can follow these steps:
+**Use root cause analysis.** Root cause analysis requires hypothesis testing. After you review monitoring data, you should list potential causes of the performance issue and test them. To conduct a root cause analysis on a live performance issue, you can follow these steps:
 
 1. *Gather information.* Collect as much information as possible about the performance issue. Examples include error messages, logs, performance metrics, and any other relevant data.
 
@@ -83,9 +79,7 @@ Root cause analysis requires hypothesis testing. After you review monitoring dat
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: If you perform a root cause analysis without proper security guardrails, there's a risk that you expose sensitive information when you provide access to logs and data.
 
-#### Engage vendor support
-
-Vendor support can be an essential step when you deal with ongoing performance issues. Vendors have the expertise, tools, resources, and experience to help fix issues with their products. Your support agreement with your supplier determines the level of support a vendor provides.
+**Engage vendor support.** Vendor support can be an essential step when you deal with ongoing performance issues. Vendors have the expertise, tools, resources, and experience to help fix issues with their products. Your support agreement with your supplier determines the level of support a vendor provides.
 
 It's often best to work in parallel with vendors. You should create a plan to have some team members collaborate with vendor support while others continue to triage and fix performance issues. Vendor support teams can also make suggestions on how to help prevent and automate responses to similar events.
 
@@ -117,3 +111,4 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"] 
 > [Performance Efficiency checklist](checklist.md) 
+
