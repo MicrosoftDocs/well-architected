@@ -152,7 +152,7 @@ These test types offer two different perspectives. In black-box tests, the inter
 
 ##### Tests that simulate attacks through penetration testing
 
-Security experts who aren't part of the organization's IT or application teams conduct penetration testing, or pentesting. They look at the system in the way that malicious actors scope an attack surface. Their goal is to find security gaps by gathering information, analyzing vulnerabilities, and reporting the results.
+Security experts who aren't part of the organization's IT or application teams conduct penetration testing, or *pentesting*. They look at the system in the way that malicious actors scope an attack surface. Their goal is to find security gaps by gathering information, analyzing vulnerabilities, and reporting the results.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Penetration tests are improvised and can be expensive in terms of disruptions and monetary investment because pentesting is typically a paid offering by third-party practitioners.
 

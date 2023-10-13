@@ -86,13 +86,13 @@
             - name: SE:07 Encryption
               href: security/encryption.md
             - name: SE:08 Hardening resources
-              href: security/hardening.md              
+              href: security/harden-resources.md              
             - name: SE:09 Application secrets
               href: security/application-secrets.md
             - name: SE:10 Monitoring and threat detection
-              href: security/monitoring.md
+              href: security/monitor-threats.md
             - name: SE:11 Testing and validation
-              href: security/testing.md              
+              href: security/test.md              
             - name: SE:12 Incident response 
               href: security/incident-response.md
       - name: Cost Optimization
@@ -204,7 +204,7 @@
             - name: PE:05 Scale and partition 
               href: performance-efficiency/scale-partition.md
             - name: PE:06 Performance testing
-              href: performance-efficiency/performance-testing.md
+              href: performance-efficiency/performance-test.md
             - name: PE:07 Optimize code and infrastructure 
               href: performance-efficiency/optimize-code-infrastructure.md
             - name: PE:08 Optimize data performance 

@@ -52,7 +52,7 @@ Grouping data allows you to gain better insights to manage costs effectively. Yo
 
 - *Different dimensions*: Break down your daily expenses by technical dimensions (for example, resource types or service categories), resource organization dimensions (for example, departments or teams), and business model dimensions (for example, projects or cost centers). This breakdown allows you to analyze costs based on the dimensions that matter the most to your specific problem or scenario.
 
-- *Metadata*: Metadata can be used to group data and help generate meaningful cost reports. It enables you to identify areas of high cost and implement accountability measures or cost optimization strategies at the department or project level. Using metadata, you can design a mechanism to group costs in a way that reflects your application's core business model. For example, tagging resources with tenant identifiers instead of shared resources in a multi-tenant solution. The ability to pivot cost data based on your application's pricing model can deliver key insights.
+- *Metadata*: Metadata can be used to group data and help generate meaningful cost reports. It enables you to identify areas of high cost and implement accountability measures or cost optimization strategies at the department or project level. Using metadata, you can design a mechanism to group costs in a way that reflects your application's core business model. For example, tagging resources with tenant identifiers instead of shared resources in a multitenant solution. The ability to pivot cost data based on your application's pricing model can deliver key insights.
 
 ### Generate cost reports
 
@@ -112,7 +112,7 @@ Review the cost data collected from your workload to gain insights into your spe
 
 When examining the architectural decisions of your workload, it's essential to focus on cost implications. Utilizing alternative patterns or cloud-native offerings can lead to significant cost savings. Opting for Platform as a Service (PaaS) or Software as a Service (SaaS) over Infrastructure as a Service (IaaS) can be more economical. With PaaS, not only are infrastructure expenses part of the service's pricing, but the platform also simplifies the provisioning and management of these resources under a unified cost. For instance, deploying a lower tier virtual machine as a jump box might introduce additional costs for storage, server management, and public IP configuration. In contrast, PaaS handles these complexities, offering a consolidated cost that often encompasses enhanced security.
 
-### Automate alerts
+### Automate cost alerts
 
 Implementing automated alerts can trigger budget notifications at key thresholds. These alerts can be set up to notify stakeholders and DRIs when costs exceed predefined limits or when there are significant deviations from expected spending patterns. Budget alerts and forecast alerts are two different types of cost alerts used for automating cost alerts.
 
@@ -124,7 +124,7 @@ Implementing automated alerts can trigger budget notifications at key thresholds
 
 Based on the analysis of cost anomalies, determine the necessary actions to address the situation. Action plans might involve optimizing resource utilization, resizing virtual machines, implementing Azure Policy controls, or adjusting budgets. It's important to align cost control measures with business values and obtain the necessary approvals for budget adjustments.
 
-Implement automated processes to identify and address cost variances in realtime. Options include automatically scaling resources, automating shutdowns, or establishing workflows for investigation and mitigation of cost anomalies. Establish key performance indicators (KPIs) to measure the accuracy of cost forecasts, cost versus budget, the number of unexpected anomalies, and the time to react to forecast alerts. Regularly review forecasts, track variance, and ensure alignment with budget expectations.
+Implement automated processes to identify and address cost variances in real-time. Options include automatically scaling resources, automating shutdowns, or establishing workflows for investigation and mitigation of cost anomalies. Establish key performance indicators (KPIs) to measure the accuracy of cost forecasts, cost versus budget, the number of unexpected anomalies, and the time to react to forecast alerts. Regularly review forecasts, track variance, and ensure alignment with budget expectations.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Automating the collection and review of cost data can save time and effort. However, relying solely on automation might overlook certain cost optimization opportunities that require manual review and analysis. Finding the right balance between automation and manual review is crucial.
 

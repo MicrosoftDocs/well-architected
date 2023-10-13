@@ -13,7 +13,7 @@ metadata:
   ms.topic: hub-page
   author: martinekuan
   ms.author: martinek
-  ms.date: 08/08/2023
+  ms.date: 08/10/2023
   featureFlags:
   - clicktale
 highlightedContent:
@@ -59,6 +59,7 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/application-gateways.svg
       url: azure-application-gateway.md
       azureCategories:
+        - featured
         - networking
         - security
     # Card
@@ -67,7 +68,6 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/app-service.svg
       url: ./azure-app-service/reliability.md
       azureCategories:
-        - featured
         - compute
         - mobile
         - web
@@ -99,7 +99,6 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
       url: ./cosmos-db/reliability.md
       azureCategories:
-        - featured
         - databases
         - iot
     # Card
@@ -146,6 +145,7 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/expressroute.svg
       url: azure-expressroute.md
       azureCategories:
+        - featured
         - hybrid
         - networking
     # Card
@@ -154,6 +154,7 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/firewall.svg
       url: azure-firewall.md
       azureCategories:
+        - featured
         - networking
         - security
     # Card
@@ -170,7 +171,6 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/functions.svg
       url: azure-functions-security.md
       azureCategories:
-        - featured
         - compute
         - containers
         - iot
@@ -225,6 +225,7 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
       url: azure-service-fabric-well-architected-framework.md
       azureCategories:
+        - featured
         - compute
         - containers
     # Card
@@ -262,7 +263,6 @@ productDirectory:
       imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
       url: virtual-machines-review.md
       azureCategories:
-        - featured
         - compute
     # Card
     - title: Azure Virtual Network
@@ -330,9 +330,3 @@ additionalContent:
 
 
 
-
-
-
-
-  
-  

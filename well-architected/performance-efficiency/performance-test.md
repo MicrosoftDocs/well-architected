@@ -21,7 +21,7 @@ This guide describes the best practices for testing. Performance testing helps y
  | Stress test|A performance test that overloads a system until it breaks.|
   |Synthetic test|A performance test that simulates user requests in an application.|
 
-## Key strategies
+## Key design strategies
 
 Performance testing helps you gather measurable data on a workload. It also helps you build workloads to the right specifications when done early enough. You should conduct performance tests as early in the software development lifecycle as possible. Early testing allows you to catch and fix performance issues earlier in development. You can use a proof-of-concept if production code isn't ready.
 
@@ -42,7 +42,7 @@ When defining acceptance criteria, it's important to focus on the user and their
 - *User requirements:* Understand the user needs and goals for the workload. Consider how the workload should perform to satisfy these requirements.
 - *User experience:* Define acceptance criteria that capture the desired user experience. Include factors such as response time, usability, accessibility, and overall satisfaction.
 - *Functional requirements:* Address the specific functionality that the user expects to see in the workload. Define acceptance criteria around these functional requirements to ensure they're met.
-- *Use cases:* Consider different scenarios or use cases that the user may encounter. Define acceptance criteria based on these use cases to validate the workload's performance in real-world situations.
+- *Use cases:* Consider different scenarios or use cases that the user might encounter. Define acceptance criteria based on these use cases to validate the workload's performance in real-world situations.
 
 **Set acceptance thresholds.** Determine the thresholds within the acceptance criteria that indicate whether the workload meets the performance targets. These thresholds define the acceptable range of performance for each metric. For example, if the acceptance criterion for response time is less than 2 seconds, the threshold could be set at 2.5 seconds, indicating that any response time over 2.5 seconds would be considered a performance issue.
 
@@ -53,7 +53,7 @@ When defining acceptance criteria, it's important to focus on the user and their
 When selecting the right type of performance test, it's important to align it with the acceptance criteria. The acceptance criteria define the conditions that need to be met for a requirement or bug fix to be considered done. Performance tests should aim to validate whether a workload meets these acceptance criteria and performs as expected under specified conditions. Aligning the performance test type with the acceptance criteria ensures that the test focuses on meeting the performance expectations defined by the criteria.
 
 - *Understand acceptance criteria.* Review the acceptance criteria for the requirement or bug fix. They outline the specific conditions and functionalities to be met.
-- *Identify relevant performance metrics.* Based on the acceptance criteria, determine the performance metrics that are critical to achieving the desired outcomes. For example, if the acceptance criteria focus on response time, prioritizing load testing may be appropriate.
+- *Identify relevant performance metrics.* Based on the acceptance criteria, determine the performance metrics that are critical to achieving the desired outcomes. For example, if the acceptance criteria focus on response time, prioritizing load testing might be appropriate.
 - *Select appropriate test type.* Evaluate the available test types (load testing, stress testing, etc.) and choose the one that best aligns with the identified performance metrics and acceptance criteria. Here's a sample of test types and their use cases.
 
 | Test type | Description | Use case |
@@ -76,7 +76,7 @@ Choose appropriate tools based on the type of performance testing you want to ex
 - *Consider compatibility and integration:* Determine the compatibility of the testing tools with your existing infrastructure and technologies. Ensure that the tools can be easily integrated into your testing environment and can communicate with the necessary workload for monitoring and analysis.
 - *Evaluate cost and licensing:* Assess the cost structure and licensing terms associated with the testing tools. Consider factors such as the initial investment, maintenance,- and support costs, and any other licensing requirements based on the number of users or virtual users.
 - *Conduct Proof of Concept (POC):* Select a few tools that appear to be the most suitable based on your evaluation. Conduct a small-scale proof of concept to validate the usability, features, and effectiveness of the tools in your specific testing scenario.
-- *Consider support and training:* Evaluate the level of support and training provided by the tool's vendor or community. Determine the availability of documentation, tutorials, and technical support channels to assist with any challenges or issues that may arise during the testing process.
+- *Consider support and training:* Evaluate the level of support and training provided by the tool's vendor or community. Determine the availability of documentation, tutorials, and technical support channels to assist with any challenges or issues that might arise during the testing process.
 
 #### Create test scenarios
 
@@ -116,7 +116,7 @@ Analyzing the test results involves examining the collected data and metrics fro
 
 **Evaluate acceptance criteria.** Compare the retest results against the predefined acceptance criteria and performance goals. Assess whether the workload now meets the desired performance standards. If the workload doesn't meet the acceptance criteria, further investigate and refine the optimizations.
 
-**Iterate and refine.**  Make other adjustments and improvements as needed. Use the collected data and metrics to diagnose specific performance issues. The diagnosis may involve tracing through the workload components, examining log files, monitoring resource usage, or analyzing error messages. Dig deeper into the data to understand the underlying causes of performance problems.
+**Iterate and refine.**  Make other adjustments and improvements as needed. Use the collected data and metrics to diagnose specific performance issues. The diagnosis might involve tracing through the workload components, examining log files, monitoring resource usage, or analyzing error messages. Dig deeper into the data to understand the underlying causes of performance problems.
 Based on the analysis of the test results, prioritize the identified performance issues and implement the necessary improvements. The improvements could involve optimizing code, tuning database queries, improving caching mechanisms, or optimizing network configurations.
 
 ### Establish baselines
@@ -135,7 +135,7 @@ Continuous testing involves ongoing monitoring and refinement of the tests to ma
 
 **Include quality assurance.** Incorporate performance requirements, such as CPU utilization and maximum requests per second, into the quality assurance process. Treat performance requirements with the same level of importance as functional requirements. This process ensures the workload meets the defined performance requirements before deploying it to production.
 
-**Automate alerting.** Implement automated alerting mechanisms that are based on the performance baseline. Utilize the performance baseline as a reference point to identify any significant performance fluctuations that may occur. Automated alerting enables quick detection and response to performance issues.
+**Automate alerting.** Implement automated alerting mechanisms that are based on the performance baseline. Utilize the performance baseline as a reference point to identify any significant performance fluctuations that might occur. Automated alerting enables quick detection and response to performance issues.
 
 **Test changes.** Apply thorough testing practices for proposed code and infrastructure changes. Use code instrumentation to gain insights into the application's performance characteristics, such as hot paths, memory allocations, and garbage collection. Ensure that all changes undergo testing to prevent any degradation of performance beyond the defined threshold.
 
