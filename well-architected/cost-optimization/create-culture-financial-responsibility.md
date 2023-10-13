@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected-Framework Cost Optimization checklist recommendation:**
 
-[CO:01](create-culture-financial-responsibility.md) | Create a culture of financial responsibility. Regularly train personnel so technical skills remain sharp. Foster creativity and fiscal accountability in the work environment. Invest in tooling and implementing automation. |
+[CO:01](checklist.md) | Create a culture of financial responsibility. Regularly train personnel so technical skills remain sharp. Foster creativity and fiscal accountability in the work environment. Invest in tooling and implementing automation. |
 |---|---|
 
 This guide describes the recommendations for creating a culture of financial responsibility in an organization.
@@ -72,7 +72,7 @@ Consider following these steps:
    Gather or create learning resources such as documentation, tutorials, videos, and case studies to support the training. These resources should provide step-by-step guidance on optimizing costs in the workload.
 1. *Give hands-on experience*: Provide opportunities for employees to apply their newly acquired skills in real-world scenarios. Assign them to cost optimization projects, or give them responsibilities that allow them to refine their skills.
 
-   Create a workspace or sandbox where employees can explore, practice, and learn new concepts related to cost optimization. Allocate a budget for experimentation, to encourage employees to think about the financial impact of their actions.
+   Create a workspace or sandbox where employees can explore, practice, and learn new concepts related to cost optimization. Allocate a budget for experimentation to encourage employees to think about the financial impact of their actions.
 
    Set aside time (a day or a week) for people to explore new technologies, build new tools, and express their creative thinking. Employees are closest to the challenges they face daily. They often find ways to optimize their time when they're given space to think about it.
 1. *Encourage continuous learning*: Encourage employees to attend conferences, webinars, and industry events, and to participate in online communities and forums. Arrange opportunities for employees to shadow and learn from experienced individuals who have a deep understanding of cost optimization practices. This practical experience can provide valuable insights and guidance.
@@ -112,8 +112,8 @@ Azure offers Microsoft Developer Network (MSDN) subscriptions with credits to tr
 
 - [Find an Azure partner](https://azure.microsoft.com/partners/)
 
-## Cost optimization checklist
+## Cost Optimization checklist
 
 Refer to the complete set of recommendations.
 > [!div class="nextstepaction"]
-> [Cost optimization checklist](checklist.md)
+> [Cost Optimization checklist](checklist.md)
