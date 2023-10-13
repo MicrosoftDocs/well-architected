@@ -22,7 +22,7 @@ Creating a culture of financial responsibility means to foster a mindset of acco
 
 Creating a culture of financial responsibility helps organizations manage their cloud costs more effectively. It aligns cloud spending with business goals and drives greater business value from cloud infrastructure. It helps ensure the workload team prioritizes cost and makes decisions that increase the business value of the workload. It involves cost transparency, skill development, and clear communication.
 
-### Make costs transparent
+### Make budgets and costs transparent
 
 Making budgets and workload costs transparent means openly sharing and communicating financial information related to a workload or project. It involves sharing budget details and financials with relevant stakeholders and creating a broad sense of financial responsibility.
 
