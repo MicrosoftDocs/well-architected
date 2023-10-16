@@ -104,7 +104,6 @@ Based on the forecasted demand, calculate the resources needed to meet that dema
 - *Storage capacity*: Estimate the amount of data that the workload generates or processes during the forecasted demand. Consider factors like database size, file storage requirements, and any other data storage needs that are specific to your application.
 
 - *Personnel*: Assess the human resources that are required to manage and maintain the infrastructure, handle customer support, perform system maintenance, and ensure smooth operations. Take into account factors like workload distribution, skill sets, and required expertise.
-- 
 
 ### Understand resource limitations
 
