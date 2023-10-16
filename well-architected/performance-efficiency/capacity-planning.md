@@ -59,17 +59,13 @@ Understanding a new workload for capacity planning refers to predicting the reso
 
 - *External data sources*: External data sources like industry reports, market studies, or customer surveys can provide additional information for estimating demand for a new workload. These sources can offer valuable insights into customer preferences, market trends, and potential demand drivers.
 
-### Align capacity with workload objectives
-
-Aligning capacity data with workload objectives means comparing utilization data against the strategic objectives. The goal is to accurately predict and plan for future capacity needs. For example, if the goal is to support an API that facilitates file uploads for 1 million users with an average file size of 1 MB and ensures storage within a second, this poses certain demands on the system. However, if the current data indicates potential bottlenecks or shortfalls in write speeds, it becomes evident that capacity adjustments are necessary. This alignment helps inform where capacity enhancements and allows you to plan for them.
-
-Workload requirements include functional and technical requirements. You should meet with stakeholders to ensure that you understand the functional requirements of the workload and define technical requirements to meet the functional requirements. For example, a great user experience requires a response time of 100 ms. You should agree on a maximum median response time that aligns with your performance targets. You should then consider the service-level agreements (SLAs) that your service provider offers. Align your capacity planning with the SLAs to ensure that you meet your performance targets. You generate technical requirements to support functional requirements. You also need to understand the workload architecture so you can identify the correct components to modify.
-
 ### Forecast demand
 
 Forecasting demand involves using workload data to predict future needs for a service or product. It's essential for capacity planning to ensure efficient resource allocation, anticipate growth patterns, and prepare for potential surges in demand. When you forecast future demand, you use data to get a sense of future needs. You apply statistical analysis, trend analysis, or predictive modeling techniques to the data you have to forecast future demand. These methods take into account historical or anticipated patterns and project them into the future to provide estimates of the expected workload demand. To forecast demand, consider these strategies:
 
-**Account for various scenarios.** When you perform capacity planning, you need to plan for different scenarios that might occur. This planning should include both predictable growth patterns and unexpected surges in demand. Usage patterns can grow or shrink. They can be organic (more or less users) or inorganic (an event or security incident). You need to conduct capacity planning before usage changes, at key times:
+#### Account for various scenarios
+
+When you perform capacity planning, you need to plan for different scenarios that might occur. This planning should include both predictable growth patterns and unexpected surges in demand. Usage patterns can grow or shrink. They can be organic (more or less users) or inorganic (an event or security incident). You need to conduct capacity planning before usage changes, at key times:
 
 - Design (prediction)
 - Regular spikes (8:00 AM sign-in rush)
@@ -81,7 +77,13 @@ Forecasting demand involves using workload data to predict future needs for a se
 - Feature launch
 - Periodically
 
-**Use prediction techniques.** Forecasting future demand for a service or product involves using techniques like statistical analysis, trend analysis, and predictive modeling. Here's an overview of how you can use these techniques:
+#### Align forecasts with workload objectives
+
+Aligning forecasts with workload objectives involves adjusting predictive capacity models to ensure they meet the specific goals and demands of a given workload. This alignment ensures resources are adequately provisioned, preventing both underutilization and potential workload overloads. For example, if you aim to support an API for 1 million users to upload 1 MB files in a second, but current data shows slow write speeds, you'll need to adjust your system. It's essential to talk with stakeholders to grasp the workload's requirements. Make sure your plans align with the promises (SLAs) of your service providers. This ensures your capacity meets the expected demand and helps pinpoint areas of the system that might need changes.
+
+#### Use prediction techniques
+
+Forecasting future demand for a service or product involves using techniques like statistical analysis, trend analysis, and predictive modeling. Here's an overview of how you can use these techniques:
 
 - *Statistical analysis*: Statistical methods can you help uncover patterns and relationships within historical data. You can use these patterns to forecast future demand. You can use techniques like time series analysis, regression analysis, and moving averages to identify trends, seasonality, and other patterns in the data.
 
