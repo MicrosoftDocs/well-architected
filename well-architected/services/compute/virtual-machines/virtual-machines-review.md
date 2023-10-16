@@ -170,7 +170,6 @@ To ensure operational excellence, review the [design principles](/azure/architec
 > - Setup Azure Monitor [alerts](/azure/virtual-network/monitor-virtual-network#alerts) for detecting configuration changes in your environment.
 > - [Automate](/azure/architecture/framework/devops/automation-tasks) tasks like provisioning and updating.
 > - Build a robust testing environment by having a separate testing environment that closely mirrors your production environment and test updates and changes before deploying to production.
-> - Right size your VMs by choosing the appropriate VM size based on your workload requirements and monitor resource utilization to ensure optimal performance and cost.
 > - Manage your quota with monitoring resource usage and adjust your quota as needed to ensure that you have enough resources to meet your needs
 > - Optimize with managed disks for better scalability, availability, performance, and consider using [Azure Disk Encryption](/azure/virtual-machines/disk-encryption-overview) to encrypt your managed disks.
 
@@ -220,6 +219,7 @@ As you make design choices for your virtual machine deployment, review [Microsof
 > - Optimize with managed disks to improve scalability, availability, and performance, and simplify disk management tasks such as backup and restore.
 > - Consider locally attached NVMe or similar devices for high-performance use cases such as big data analytics, machine learning, and high-performance computing.
 > - Enable Accelerated Networking to improve network performance and latency.
+> - Right size your VMs by choosing the appropriate VM size based on your workload requirements and monitor resource utilization to ensure optimal performance and cost.
 > - Autoscale your Flexible scale sets to automatically increase or decrease the number of VM instances that run your application based on demand or a set schedule.
 
 
