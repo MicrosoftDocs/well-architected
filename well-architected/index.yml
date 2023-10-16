@@ -7,7 +7,7 @@ sections:
     summary: The Azure Well-Architected Framework (WAF) is a set of quality-driven tenets, architectural decision points, and review tools intended to help solution architects build a technical foundation for their workloads.
     links:
     - componentType: link
-      url: what-is-well-architected-framework.md
+      url: what-is-well-architected-framework
       text: What is WAF?    
   # Navigation Section
   - componentType: navigation
