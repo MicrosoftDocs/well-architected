@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|[RE:04](checklist.md)| Define reliability and recovery targets for the components, the flows, and the overall solution. Visualize the targets to negotiate, gain consensus, set expectations, and drive actions to achieve the ideal state. Use the defined targets to build the health model. The health model defines what healthy, degraded, and unhealthy states look like. |
+|[RE:03](checklist.md)| Define reliability and recovery targets for the components, the flows, and the overall solution. Visualize the targets to negotiate, gain consensus, set expectations, and drive actions to achieve the ideal state. Use the defined targets to build the health model. The health model defines what healthy, degraded, and unhealthy states look like. |
 |---|---|
 
 This guide describes the recommendations for defining availability and recovery target metrics for critical workloads and flows. Reliability targets are derived through workshop exercises with business stakeholders. The targets are refined through monitoring and testing. 
@@ -41,8 +41,6 @@ Consider an example of how to map requirements to measurable numerical values. S
 Remember that reliability targets differ from performance targets. Reliability targets focus on availability and recovery. To set reliability targets, start by defining the broadest requirements and then define more specific metrics to meet the high-level requirements. 
 
 Highest-level reliability and recovery requirements and correlated metrics might include, for example, an application availability of 99.9 percent for all regions or a target RTO of 5 hours for the Americas region. Defining these types of targets helps you identify which critical flows are involved in those targets. Then you can consider component-level targets.
-
-Remeber to include internal and external dependencies as you define your targets as they can affect individual flows or the overall workload while being out of your direct control. For example, if you use a third-party payment system and that system is malfunctioning for some reason, you may be unable to process orders until the system is functional or a workaround is implemented.
 
 ### Availability metrics
 
@@ -162,8 +160,6 @@ Azure SLAs provide the Microsoft commitments for uptime and connectivity. Differ
 The Azure SLA includes procedures for obtaining a service credit if the SLA isn\'t met, along with definitions of availability for each service. That aspect of the SLA acts as an enforcement policy.
 
 ## Tradeoffs 
-
-Having higher reliability targets normally means you will incur higher costs as extra redundancy and other resiliency measures will need to be added to the workload design to meet those targets. Provide stakeholders with multiple cost models that align to different reliability targets, like 99.9% vs 99.95% for example, so they can understand the full impact of deciding between those targets for each flow. Ensure that all parties also understand the risks that are inherent in the design when using a less resilient design for cost efficiency. For example, having only one active region deployed carries a risk of a full outage if a regional issue occurs.
 
 A conceptual gap might exist between the technical limitations of your workload's components and what that means for the business, for example, throughput in megabits per second versus transactions per second. Creating a model between these two views might be challenging. Rather than overengineering the solution, try to approach it in an economical but meaningful way.
 

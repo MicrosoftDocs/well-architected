@@ -14,7 +14,11 @@ categories:
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
+<<<<<<< HEAD
 |[RE:03](checklist.md)| Use failure mode analysis (FMA) to identify and prioritize potential failures in your solution components. Perform FMA to help you assess the risk and effect of each failure mode. Determine how the workload responds and recovers.  |
+=======
+|[RE:02](checklist.md)| Use failure mode analysis (FMA) to identify and prioritize potential failures in your solution components. Perform FMA to help you assess the risk and effect of each failure mode. Determine how the workload responds and recovers.  |
+>>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e
 |---|---|
 
 
@@ -46,7 +50,11 @@ After you determine the critical flows, you can plan their required components. 
 
 #### Decompose the workload
 
+<<<<<<< HEAD
 As you move from ideation to design, you need to identify the component types that are required to support your workload. Your workload determines the necessary components that you must plan for. Typically, you need to plan for ingress control, networking, compute, data, storage, supporting services (like authentication, messaging, and secret or key management), and egress control. Incorporate services that will support your workload from an administrative or operational perspective like jump boxes, monitoring infrastructure and DevOps infrastructure. At this stage in your design work, you might not know the specific technologies that you'll deploy, so your design might look like the following example.
+=======
+As you move from ideation to design, you need to identify the component types that are required to support your workload. Your workload determines the necessary components that you must plan for. Typically, you need to plan for ingress control, networking, compute, data, storage, supporting services (like authentication, messaging, and secret or key management), and egress control. At this stage in your design work, you might not know the specific technologies that you'll deploy, so your design might look like the following example.
+>>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e
 
 :::image type="content" source="media/failure-mode-analysis/failure-mode-example.png" alt-text="Diagram that shows the design example." border="false" lightbox="media/failure-mode-analysis/failure-mode-example.png":::
 
@@ -104,7 +112,11 @@ Failure detection is essential to ensure that you have correctly identified fail
 
 #### Outcome
 
+<<<<<<< HEAD
 For the outcome of your analysis, create a set of documents that effectively communicate your findings, the decisions that you have made relative to the flow components and mitigation, and the effect of the failure on your workload. When estimating the effect of a paticular failure mode take into consideration the impact on the workload functionality, operations and the overall business.
+=======
+For the outcome of your analysis, create a set of documents that effectively communicate your findings, the decisions that you have made relative to the flow components and mitigation, and the effect of the failure on your workload.
+>>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e
 
 In your analysis, prioritize the failure modes and mitigation strategies that you have identified based on severity and likelihood. Use this prioritization to focus your documentation on those failure modes that are common and severe enough to warrant spending the time, effort, and resources on designing mitigation strategies around. For example, there might be some failure modes that are very rare in occurrence or detection. Designing mitigation strategies around them isn't worth the cost.
 
@@ -112,8 +124,11 @@ Refer to the following [example table](#example) for a documentation starting po
 
 During your initial FMA exercise, the documents you produce will be mostly theoretical planning. Chaos testing and real-world experiences will help you refine your analyses over time.
 
+<<<<<<< HEAD
 FMA should not be a one-time only exercise. Approach FMA as a requirement of your regularly occuring workload maintenance tasks, like disaster recovery drills or standard operating procedure reviews.
 
+=======
+>>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e
 ## Azure facilitation
 
 Use [Azure Monitor](/azure/azure-monitor/overview) and [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) to detect issues in your workload. For further insight into issues related to your infrastructure, apps, and databases, use tools like [Application Insights](/azure/azure-monitor/app/app-insights-overview), [Container Insights](/azure/azure-monitor/containers/container-insights-overview), [Network Insights](/azure/network-watcher/network-insights-overview), [VM Insights](/azure/azure-monitor/vm/vminsights-overview), and [SQL Insights](/azure/azure-sql/database/sql-insights-overview).
@@ -122,7 +137,7 @@ Use [Azure Monitor](/azure/azure-monitor/overview) and [Log Analytics](/azure/az
 
 For information about applying FMA principles to common Azure services, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
 
-## Tradeoff
+## Tradeoffs
 
 As with all resiliency and reliability decisions, the amount of resiliency you build into your systems has cost and management overhead implications. Apply the principles of FMA to help keep costs to a minimum. Your analysis provides you with a comprehensive list of failure points to address, and it helps you decide the level of resilience to apply for a given flow.
 
@@ -159,4 +174,8 @@ The following table shows an FMA example for an e-commerce website that's hosted
 Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"] 
+<<<<<<< HEAD
 > [Reliability checklist](checklist.md) 
+=======
+> [Reliability checklist](checklist.md) 
+>>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e

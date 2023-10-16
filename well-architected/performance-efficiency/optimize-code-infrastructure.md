@@ -87,7 +87,7 @@ Review the performance recommendations specific to the programming language you'
 
 #### Optimize memory management
 
-Optimizing memory management involves refining the way a workload uses, allocates, and releases memory resources to improve efficiency. Proper memory management improves code performance because it reduces the overhead of memory operations. Efficient memory usage reduces latency, prevents system slowdowns or crashes, and maximizes the throughput of computational tasks. Consider the following strategies to optimize memory management.
+Optimizing memory management involves refining the way a workload uses, allocates, and releases memory resources to improve efficiency. Proper memory management improves code performance because it reduces the overhead of memory operations. Efficient memory usage reduces latency, prevents system slowdowns or crashes, and maximizes the throughput of computational tasks. Consider the following stragies to optimize memory management.
 
 **Debug memory issues.** Memory dumps are application memory snapshots. They capture the memory state of an application at a specific point in time. Memory dumps enable retrospective analysis of memory-related issues. Select the appropriate type of memory dump based on the nature of the problem you're trying to diagnose and the resources available. You should use miniature dumps for routine debugging and full dumps for complex, critical issues. This strategy provides a balance between resource usage and diagnostic capabilities. Many code hosting services support memory debugging. You should prefer services that support memory analysis over those that don't. Here are the basic steps to debugging memory issues:
 
@@ -187,7 +187,7 @@ Optimizing infrastructure performance means enhancing and adjusting infrastructu
 
 **Memory management**: Use [the smart detection feature of Application Insights](/azure/azure-monitor/alerts/proactive-diagnostics) to analyze memory consumption and help to identify and address memory leaks. 
 
-[**Azure App Service**](/troubleshoot/azure/app-service/capture-memory-dumps-app-service): App Service has a profiler and memory dump collection and analysis feature. The App Service [autohealing feature](/azure/app-service/overview-diagnostics#auto-healing) can automatically take memory dumps and profile traces of .NET and Java apps.
+[**Azure App Service**](/troubleshoot/azure/app-service/capture-memory-dumps-app-service): App Service has a profiler and memory dump collection and analysis feature. The App Service [auto-healing feature](/azure/app-service/overview-diagnostics#auto-healing) can automatically take memory dumps and profile traces of .NET and Java apps.
 
 **Concurrency and parallelism**: [AKS](/azure/aks) supports deploying containerized applications, which improves parallel processing. [Azure Batch](/azure/batch/batch-technical-overview) is a cloud-based job scheduling service that you can use to enable parallel and high-performance computing without the need for infrastructure setup.
 

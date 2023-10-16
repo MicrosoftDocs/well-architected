@@ -1,0 +1,25 @@
+- name: Sustainability
+  href: index.yml        
+  items:
+    - name: Get started
+      href: sustainability-get-started.md
+    - name: Design methodology
+      href: sustainability-design-methodology.md
+    - name: Design principles
+      href: sustainability-design-principles.md
+    - name: Design areas
+      items:
+      - name: Application design
+        href: sustainability-application-design.md
+      - name: Application platform 
+        href: sustainability-application-platform.md
+      - name: Testing
+        href: sustainability-testing.md
+      - name: Operational procedures
+        href: sustainability-operational-procedures.md
+      - name: Networking and connectivity
+        href: sustainability-networking.md
+      - name: Storage
+        href: sustainability-storage.md
+      - name: Security
+        href: sustainability-security.md
