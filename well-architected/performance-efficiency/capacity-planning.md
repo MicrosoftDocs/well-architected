@@ -33,7 +33,7 @@ Capacity planning is a forward-looking process that involves making decisions ba
 
 Understanding business goals is about identifying the strategic and operational objectives of a workload and translating them into specific technical requirements. Before you can predict the capacity requirements of a workload, you need to understand your business goals and the workload. The information gathering includes understanding the purpose, requirements, and behavior of the workload. If your goal is to offer an API supporting file uploads from 1 million users with an average file size of 1 MB and storage within one second, you'd require disks with a write speed of 277.7 MBps and hardware capable of handling 277 concurrent writes. By analyzing this information, you can allocate resources to support the attainment of business objectives.
 
-### Gather workload data
+### Gather utilization data
 
 Gathering workload data entails collecting and analyzing information on how a workload uses resources, based on both historical patterns for existing workloads and predictive measures for new ones. This process helps translate business objectives into technical requirements and is essential for forecasting capacity. Consider the following recommendations:
 
