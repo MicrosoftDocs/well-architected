@@ -14,9 +14,7 @@ ms.topic: conceptual
 |[PE:01](checklist.md)| Define performance targets. Performance targets should be numerical values that are tied to workload requirements. You should implement performance targets for all workload flows.|
 |---|---|
 
-This guide describes the recommendations for establishing and exposing performance targets. Performance targets are metrics that define performance objectives. These metrics are expressed as a single numerical value or a numerical range. They're clear and specific metrics that drive continuous improvement. Performance targets are a numerical foundation for improvements. They help teams align their efforts toward specific goals.
-
-Without clear performance targets, teams might lack focus, resulting in inefficiency and uncertainty. The absence of performance targets can also lead to a lack of accountability for performance issues. By setting performance targets, teams can work toward specific objectives and drive continuous improvement.
+This guide describes the recommendations for establishing and exposing performance targets. Performance targets are metrics that define performance objectives. These metrics are expressed as a single numerical value or a numerical range. They're clear and specific metrics that drive continuous improvement. Performance targets are a numerical foundation for improvements, and they help teams align their efforts toward specific goals. Without clear performance targets, teams might lack focus and lack of accountability for performance issues. By setting performance targets, teams can work toward specific objectives and drive continuous improvement.
 
 **Definitions**
 
