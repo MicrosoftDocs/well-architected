@@ -11,8 +11,8 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
 
-|[PE:02](checklist.md)| Conduct capacity planning. Perform capacity planning before there are predicted changes in usage patterns, such as seasonal variations, product updates, marketing campaigns, special events, or regulatory changes. | 
-|---|---| 
+|[PE:02](checklist.md)| Conduct capacity planning. Perform capacity planning before there are predicted changes in usage patterns, such as seasonal variations, product updates, marketing campaigns, special events, or regulatory changes. |
+|---|---|
 
 This guide describes the recommendations for capacity planning. Capacity planning refers to the process of determining the resources required to meet workload performance targets. It involves estimating the amount of computing resources such as CPU, memory, storage, and network bandwidth needed to support the workload's performance requirements. Capacity planning helps avoid underprovisioning and ensures the workload has sufficient resources to handle the expected workload demands without experiencing performance degradation or bottlenecks. It also helps prevent overprovisioning and unnecessary costs. A lack of capacity planning can lead to performance issues, resource bottlenecks, increased costs, inefficient allocation, scalability challenges, and unpredictable workload performance.
 
@@ -31,7 +31,7 @@ Capacity planning is a forward-looking process that involves making decisions ba
 
 ### Gather capacity data
 
-Gathering workload utilization data entails collecting and analyzing information on how a workload uses resources, based on both historical patterns for existing workloads and predictive measures for new ones. This process helps translate business objectives into technical requirements and is essential for forecasting capacity. Consider the following recommendations:
+Gathering workload utilization data entails collecting and analyzing information on how a workload uses resources. You should collect data on historical patterns for existing workloads and predictive measures for new workloads. This process helps translate business objectives into technical requirements and is essential for forecasting capacity. Consider the following recommendations:
 
 #### Understand an existing workload
 
@@ -49,7 +49,7 @@ Understanding an existing workload for capacity planning involves analyzing hist
 
 #### Understand a new workload
 
-Understanding a new workload for capacity planning refers to predicting the resource requirements of a future task without historical data, often relying on methods such as market research, expert judgment, pilot projects, and external data sources. Predicting the future needs of new a workload without historical data can be more challenging. This process is vital to ensure that resources are efficiently allocated and aligned with business objectives when the workload is introduced. In such cases, you should consider alternative approaches:
+Understanding a new workload for capacity planning refers to predicting the resource requirements of a future task without historical data. Predicting the future needs of new a workload without historical data can be more challenging. This process ensures you allocate resources efficiently and align allocations with workload objectives when the workload is introduced. Consider the following recommendations:
 
 - *Market research*: Conducting market research to understand the demand for similar products or services can provide valuable insights into the potential demand for a new workload. The research can involve analyzing market trends, conducting surveys, or studying competitor offerings.
 
@@ -89,7 +89,7 @@ Forecasting future demand for a service or product involves using techniques lik
 
 ### Align forecasts with workload objectives
 
-Aligning forecasts with workload objectives involves adjusting predictive capacity models to ensure they meet the specific goals and demands of a given workload. This alignment ensures resources are adequately provisioned, preventing both underutilization and potential workload overloads. For example, if you aim to support an API for 1 million users to upload 1 MB files in a second, but current data shows slow write speeds, you'll need to adjust your system. It's essential to talk with stakeholders to grasp the workload's requirements. Make sure your plans align with the promises (SLAs) of your service providers. This ensures your capacity meets the expected demand and helps pinpoint areas of the system that might need changes.
+Aligning forecasts with workload objectives involves adjusting predictive capacity models to ensure they meet the specific goals and demands of a given workload. This alignment ensures resources are adequately provisioned, preventing both underutilization and potential workload overloads. For example, if you aim to support an API for 1 million users to upload 1-MB files in a second, but current data shows slow write speeds, you need to adjust your system. It's essential to talk with stakeholders to grasp the workload's requirements. Make sure your plans align with the promises (SLAs) of your service providers. This alignment ensures your capacity meets the expected demand and helps pinpoint areas of the system that might need changes.
 
 ### Determine resource requirements
 
@@ -103,7 +103,7 @@ Based on the forecasted demand, calculate the resources needed to meet that dema
 
 - *Storage capacity*: Estimate the amount of data that the workload generates or processes during the forecasted demand. Consider factors like database size, file storage requirements, and any other data storage needs that are specific to your application.
 
-- *Personnel*: Assess the human resources that are required to manage and maintain the infrastructure, handle customer support, perform system maintenance, and ensure smooth operations. Take into account factors like workload distribution, skill sets, and required expertise.
+- *Personnel*: Assess the human resources that are required to manage and maintain the infrastructure, handle customer support, perform system maintenance, and ensure smooth operations. Take into account factors like workload distribution, skill set, and required expertise.
 
 ### Understand resource limitations
 
@@ -120,7 +120,7 @@ You also need to identify reachable limits. It refers to pinpointing the maximum
 
 Azure Monitor allows you to analyze historical data and apply forecasting techniques to predict future workload trends and capacity requirements. You can generate forecasts that can help you with capacity planning. These forecasts help estimate server capacity, network bandwidth, storage capacity, and other resource needs by using predicted demand patterns.
 
-**Scaling**: Azure provides scalability options like autoscaling, which can automatically adjust resources based on workload demand. You can scale vertically by increasing the capacity of a resource, such as by using a larger virtual machine size, or horizontally by adding new instances of a resource. Azure services that have autoscaling capabilities can automatically scale out to ensure capacity during workload peaks and return to normal when the load decreases.
+**Scaling**: Azure provides scalability options like autoscaling, which can automatically adjust resources based on workload demand. You can scale vertically by increasing the capacity of a resource by using a larger virtual machine size, or you can scale horizontally by adding new instances of a resource. Azure services that have autoscaling capabilities can automatically scale out to ensure capacity during workload peaks and return to normal when the load decreases.
 
 **Defining technical requirements**: Because they provide a wide range of configurations, Azure tools and services can help you define technical requirements. You can align your workload requirements with available Azure resources, ensuring that you select the appropriate components and settings to meet your functional needs.
 
