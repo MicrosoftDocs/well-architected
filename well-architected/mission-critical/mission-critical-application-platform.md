@@ -67,7 +67,7 @@ Not every workload supports or requires running multiple regions simultaneously.
   If suitable Azure regions don't all offer capabilities that you need, be prepared to compromise on the consistency of regional deployment stamps to prioritize geographical distribution and maximize reliability. If only a single Azure region is suitable, deploy multiple deployment stamps (regional scale units) in the selected region to mitigate some risk, and use availability zones to provide datacenter-level fault tolerance. However, such a significant compromise in geographical distribution dramatically constrains the attainable composite SLA and overall reliability.
 
   > [!IMPORTANT]
-  > For scenarios that target an SLO that's greater than or equal to 99.99%, we recommend a minimum of three deployment regions to maximize the composite SLA and overall reliability. Calculate the [composite SLA](/azure/architecture/framework/resiliency/business-metrics#composite-slas) for all user flows. Ensure that the composite SLA is aligned with business targets.
+  > For scenarios that target an SLO that's greater than or equal to 99.99%, we recommend a minimum of three deployment regions to maximize the composite SLA and overall reliability. Calculate the [composite SLA](/azure/well-architected/resiliency/business-metrics#composite-slas) for all user flows. Ensure that the composite SLA is aligned with business targets.
 
 - For high-scale application scenarios that have significant volumes of traffic, design the solution to scale across multiple regions to navigate potential capacity constraints within a single region. Additional regional deployment stamps will achieve a higher composite SLA. Using global resources constrains the increase in composite SLA that you achieve by adding more regions.
 
@@ -123,7 +123,7 @@ There are advantages and disadvantages associated with each of these platforms. 
 
 #### Design considerations and recommendations for Azure Kubernetes Service
 
-AKS, a managed Kubernetes service, enables quick cluster provisioning without requiring complex cluster administration activities and offers a feature set that includes advanced networking and identity capabilities. For a complete set of recommendations, see [Azure Well-Architected Framework review - AKS](/azure/architecture/framework/services/compute/azure-kubernetes-service/azure-kubernetes-service).
+AKS, a managed Kubernetes service, enables quick cluster provisioning without requiring complex cluster administration activities and offers a feature set that includes advanced networking and identity capabilities. For a complete set of recommendations, see [Azure Well-Architected Framework review - AKS](/azure/well-architected/services/compute/azure-kubernetes-service/azure-kubernetes-service).
 
 > [!IMPORTANT]
 > There are some foundational configuration decisions that you can't change without re-deploying the AKS cluster. Examples include the choice between public and private AKS clusters, enabling Azure Network Policy, Azure AD integration, and the use of managed identities for AKS instead of service principals.
@@ -215,13 +215,13 @@ Use policies to apply centralized safeguards to AKS clusters in a consistent way
 
 #### Design considerations and recommendations for Azure App Service
 
-For web and API-based workload scenarios, [App Service](https://azure.microsoft.com/services/app-service/containers) might be a feasible alternative to AKS. It provides a low-friction container platform without the complexity of Kubernetes. For a complete set of recommendations, see [Reliability considerations for App Service](/azure/architecture/framework/services/compute/azure-app-service/reliability) and [Operational excellence for App Service](/azure/architecture/framework/services/compute/azure-app-service/operational-excellence).
+For web and API-based workload scenarios, [App Service](https://azure.microsoft.com/services/app-service/containers) might be a feasible alternative to AKS. It provides a low-friction container platform without the complexity of Kubernetes. For a complete set of recommendations, see [Reliability considerations for App Service](/azure/well-architected/services/compute/azure-app-service/reliability) and [Operational excellence for App Service](/azure/well-architected/services/compute/azure-app-service/operational-excellence).
 
 ###### Reliability
 
 Evaluate the use of TCP and SNAT ports. TCP connections are used for all outbound connections. SNAT ports are used for outbound connections to public IP addresses. SNAT port exhaustion is a common failure scenario. You should predictively detect this problem by load testing while using Azure Diagnostics to monitor ports. If SNAT errors occur, you need to either scale across more or larger workers or implement coding practices to help preserve and reuse SNAT ports. Examples of coding practices that you can use include connection pooling and the lazy loading of resources.
 
-TCP port exhaustion is another failure scenario. It occurs when the sum of outbound connections from a given worker exceeds capacity. The number of available TCP ports depends on the size of the worker. For recommendations, see [TCP and SNAT ports](/azure/architecture/framework/services/compute/azure-app-service/reliability#tcp-and-snat-ports).
+TCP port exhaustion is another failure scenario. It occurs when the sum of outbound connections from a given worker exceeds capacity. The number of available TCP ports depends on the size of the worker. For recommendations, see [TCP and SNAT ports](/azure/well-architected/services/compute/azure-app-service/reliability#tcp-and-snat-ports).
 
 ###### Scalability
 
@@ -369,7 +369,7 @@ This section focuses on the best ways to use Azure Virtual Machines and associat
 - Don't access individual virtual machines directly. Use load balancers in front of them when possible.
 
 - To protect against regional outages, deploy application virtual machines across multiple Azure regions.
-  - See the [networking and connectivity design area](/azure/architecture/framework/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for details about how to optimally route traffic between active deployment regions.
+  - See the [networking and connectivity design area](/azure/well-architected/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for details about how to optimally route traffic between active deployment regions.
 
 - For workloads that don't support multi-region active/active deployments, consider implementing active/passive deployments by using hot/warm standby virtual machines for regional failover.
 
@@ -379,7 +379,7 @@ This section focuses on the best ways to use Azure Virtual Machines and associat
 
 - Implement chaos experiments to inject application faults into virtual machine components, and observe the mitigation of faults. For more information, see [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing).
 
-- Monitor virtual machines and ensure that diagnostic logs and metrics are ingested into a [unified data sink](/azure/architecture/framework/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
+- Monitor virtual machines and ensure that diagnostic logs and metrics are ingested into a [unified data sink](/azure/well-architected/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
 
 - Implement security practices for mission-critical application scenarios, when applicable, and the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
 
