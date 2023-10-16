@@ -41,7 +41,7 @@ Set performance targets before you deploy your workload. For a workload in a des
 
 ### Understand workload requirements
 
-Understanding workload requirements means being aware of essential performance metrics like response time, throughput, and latency that are critical for your application. Aligning these performance targets with your organization's business goals ensures that the system meets the desired standards, whether for a best-in-class or average product. For example, you might aim to reduce response times, increase throughput rates, or optimize resource use. 
+Understanding workload requirements means being aware of essential performance metrics like response time, throughput, and latency that are critical for your application. Aligning these performance targets with your organization's business goals ensures the workload meets the desired standards, whether for a best-in-class or average product. For example, you might aim to reduce response times, increase throughput rates, or optimize resource use. 
 
 ### Identify key metrics
 
