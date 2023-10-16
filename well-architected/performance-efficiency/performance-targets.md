@@ -35,57 +35,41 @@ Without clear performance targets, teams might lack focus, resulting in ineffici
 
 Establishing performance targets is an essential step for achieving workload performance efficiency. Performance targets define the desired level of performance for your workload and help you gauge its effectiveness in meeting those objectives. Performance targets provide a benchmark to measure and compare a workload's efficiency. This benchmark can help you highlight improvement areas. The targets also align tasks with your organization's objectives and enhance business outcomes. Additionally, performance targets offer guidance in resource allocation, helping you ensure that workloads can adapt to varying demands while maintaining optimal performance.
 
-### Set workload performance targets
+### Set performance targets early
 
-To establish performance targets, identify metrics that are critical for measuring the performance of your workload. Performance targets can help you monitor workload performance over time, spot trends, and make informed changes for better results.
+Set performance targets before you deploy your workload. For a workload in a design, performance targets require research. Conduct market research, competitive analysis, and surveys to generate your performance target ranges. For a production workload that has no performance targets, use production data and customer feedback to establish performance targets.
 
-**Identify workload objectives.** Determine the objectives for your workload and understand your performance goals. For example, you might aim to reduce response times, increase throughput rates, or optimize resource use. A best-in-class product likely has more ambitious performance targets than an average product. Performance targets should align with business goals.
+### Understand workload requirements
 
-**Identify key metrics.** Based on your workload objectives, identify the key metrics that help measure progress toward your goals. Consider metrics related to availability, capacity, and response time.
+Understanding workload requirements means being aware of essential performance metrics like response time, throughput, and latency that are critical for your application. Aligning these performance targets with your organization's business goals ensures the workload meets the desired standards, whether for a best-in-class or average product. For example, you might aim to reduce response times, increase throughput rates, or optimize resource use. 
 
-- *Availability* is measured by the error rate, which represents the percentage of successful requests. For example, a success rate of 99.9 percent of requests is a common target.
+When setting performance goals, it's important to harmonize the organization's objectives with the distinct needs of the user base. Users ultimately determine the success of performance, emphasizing the need to align performance targets with their expectations. This balance ensures that performance targets capture the intended user experience and the overall efficiency of the workload.
 
-- *Capacity* is evaluated based on throughput, which refers to the ability to handle a specific number of transactions within a given time period. For instance, an application might need to sustain 100 million transactions per month.
+### Identify key metrics
 
-- *Response time* is assessed by analyzing the response time of the application. A common target is a completion rate of 99 percent of sign-in requests in less than 1 second.
+Based on your workload objectives, identify the key metrics that help measure progress toward your goals. Consider metrics related to availability, capacity, and response time.
 
-**Set specific targets.** After you identify the key metrics, specify targets or thresholds for each metric. Targets should be measurable, realistic, and aligned with your workload objectives. For example, you might set a target response time of less than 500 milliseconds (ms) or a target error rate of less than 1 percent. Avoid qualitative assessments of performance like *fast* or *slow*. By using numerical targets, you can objectively assess performance over time.
+- *Availability*: Avaliability is measured by the error rate, which represents the percentage of successful requests. A common target for availability is a success rate of 99.9 percent of requests.
+
+- *Capacity*: Capacity is evaluated based on throughput, which refers to the ability to handle a specific number of transactions within a given time period. For instance, an application might need to sustain 100 million transactions per month.
+
+- *Response time:* Response time is assessed by analyzing the time it takes for the application to respond to a request. A common target is a completion rate of 99 percent of sign-in requests in less than 1 second.
+
+### Set specific targets 
+
+After you identify the key metrics, specify targets or thresholds for each metric. Targets should be measurable, realistic, and aligned with your workload objectives. For example, you might set a target response time of less than 500 milliseconds (ms) or a target error rate of less than 1 percent. Avoid qualitative assessments of performance like *fast* or *slow*. By using numerical targets, you can objectively assess performance over time.
 
 - *Consider the customer*: When you set performance targets, adopt a customer-centric perspective. Recognizing the customer as the ultimate judge of performance helps ensure that performance targets align with customer expectations. This alignment involves considering both organizational objectives and the distinct requirements of the customer base. When you integrate these two aspects, you can tailor performance targets to reflect the desired customer experience and overall workload effectiveness. By defining performance objectives that consider customer expectations, you can strive to provide a high-quality customer experience and meet the needs of your customers.
 
 - *Use percentiles*: Percentiles, such as P99, P95, and P50, are the industry standard way to represent the result of performance assessments. Percentiles are statistical measures that indicate how much data the number includes. In the context of performance assessments, percentiles help quantify the distribution of response times or other performance metrics. The P99 represents the value that encompasses 99 percent of the data. The P95 represents 95 percent of the data, and P50 represents 50 percent of the data. 
 
-   Use percentiles, rather than simple averages, to provide a more comprehensive understanding of system performance. Outliers heavily affect the average value. Percentiles give insights into the overall distribution and variability of performance metrics. You can then set more realistic and meaningful performance targets based on different percentiles, ensuring better customer experiences and system reliability. 
+   Use percentiles, rather than simple averages, to provide a more comprehensive understanding of workload performance. Outliers heavily affect the average value. Percentiles give insights into the overall distribution and variability of performance metrics. You can then set more realistic and meaningful performance targets based on different percentiles, ensuring better customer experiences and system reliability. 
 
    To measure percentiles, collect performance data over a period of time, typically using monitoring tools or logging mechanisms. Then analyze this data to determine the response time values at different percentiles. By establishing performance targets based on specific percentiles, you can focus on optimizing critical flows to meet desired levels of customer experience and system efficiency.
 
-**Set performance targets early.** Set performance targets before you deploy your workload. For a workload in a design, performance targets require research. Conduct market research, competitive analysis, and surveys to generate your performance target ranges. For a production workload that has no performance targets, use production data and customer feedback to establish performance targets.
+### Set performance targets for flows
 
-### Set performance targets for critical flows
-
-In addition to establishing targets for the whole workload, establish performance targets for critical flows. These flows are essential to the workload's objectives. Performance targets for critical flows help you focus on the most important aspects of your workload.
-
-**Identify critical workload flows.** Determine the flows within your workload that are critical for the successful operation of your business. These flows can be customer interactions, transactional processes, or any other operations that are vital to business objectives.
-
-Clearly state the beginning point and end point of the flow to make it measurable. By stating these points, you define the performance targets and you can effectively track and monitor the targets. For example, in a shopping cart transaction, you can define the precondition as *customer is logged in*. The starting point can be when the customer selects a button to add an item to the shopping cart. The ending point can be when the number on the shopping cart icon increases to reflect the added item. 
-
-By clearly defining beginning and end points, you can track and measure the efficiency and effectiveness of the process. These definitions also provide a basis for analyzing and improving the process over time.
-
-After you identify the critical flows, decompose each critical flow. Break down, or decompose, the critical flow into its architectural components. Then create relevant targets for each component. Example targets include API access time, database latency, and network latency.
-
-Remember to factor in the customer and billing models in your workload. A workload can have different access tiers. Higher-paying customers should experience the best performance. For example, multitenant solutions require performance targets to be available at the tenant level. Paid versus free access tiers might have distinct performance expectations and should have distinct performance targets.
-
-**Identify dependencies.** A critical flow can have upstream dependencies and downstream dependencies within the workload. Identify all upstream and downstream dependencies. Then identify the guarantees that the upstream dependencies provide for this flow. Also identify the guarantees that this flow provides to downstream dependencies. 
-
-For example, a critical flow might need to have a 500-ms response time, and the customer flow has an external API call that takes 200 ms. The performance target for the customer flow should exclude the API call (200 ms) and should be within 300 ms. For the performance targets for the critical flow, exclude all upstream dependencies that lack performance guarantees. 
-
-Sometimes dependencies aren't under your control. Invest time to understand the performance profile of those dependencies. Learn about the guarantees that the dependencies have on your critical flow. Factor these guarantees into your performance targets.
-
-**Identify key metrics.** Determine the key metrics that help you measure the performance of the critical flows. Consider metrics that directly affect the efficiency, responsiveness, and reliability of the critical flows. For example, consider response time, error rates, transaction throughput, resource use, and other relevant measurements.
-
-**Set targets.** Set performance goals or targets for each identified metric. These targets should align with your business objectives and reflect the desired level of performance for the critical flows. Consider factors such as acceptable response times, maximum error rates, and desired transaction throughput. For example, you might set a performance target for a checkout flow at 3 seconds and a throughput at 100 checkouts per minute. 
-
-Focus on the important flows to improve efficiency and reduce noise. The goal for a flow should determine the performance targets.
+In addition to establishing targets for the whole workload, establish performance targets for workload flows. These flows are essential to the workload's objectives. Performance targets for critical flows help you focus on the most important aspects of your workload.
 
 ### Monitor performance
 

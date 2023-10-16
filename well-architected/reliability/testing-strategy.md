@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|[RE:08](checklist.md)| Test for resiliency and availability scenarios by applying the principles of chaos engineering in your test and production environments. Use testing to ensure that your graceful degradation implementation and scaling strategies are effective by performing active malfunction and simulated load testing. |
+|[RE:07](checklist.md)| Test for resiliency and availability scenarios by applying the principles of chaos engineering in your test and production environments. Use testing to ensure that your graceful degradation implementation and scaling strategies are effective by performing active malfunction and simulated load testing. |
 |---|---|
 
 This guide describes the recommendations for designing a reliability testing strategy to validate and optimize the reliability of your workload. Reliability testing focuses on the resiliency and availability of your workload, specifically the critical flows that you identify when you design your solution. This guide provides general testing guidance and guidance that's specific to fault injection and chaos engineering.
@@ -48,7 +48,7 @@ This guide describes the recommendations for designing a reliability testing str
 
 - Test your workload's ability to withstand transient failures. For more information, see [Recommendations for handling transient faults](handle-transient-faults.md).
 
-- Test your workload's ability to respond to changes in load patterns and spikes in usage. Use this information to help you test your [scaling strategy](scaling.md). For information about load and stress testing, see [Recommendations for testing](../performance-efficiency/performance-testing.md).
+- Test your workload's ability to respond to changes in load patterns and spikes in usage. Use this information to help you test your [scaling strategy](scaling.md). For information about load and stress testing, see [Recommendations for testing](../performance-efficiency/performance-test.md).
 
 - Test how your workload handles failures in dependent services or other dependencies by using fault injection.
 

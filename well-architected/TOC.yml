@@ -204,7 +204,7 @@
             - name: PE:05 Scale and partition 
               href: performance-efficiency/scale-partition.md
             - name: PE:06 Performance testing
-              href: performance-efficiency/performance-testing.md
+              href: performance-efficiency/performance-test.md
             - name: PE:07 Optimize code and infrastructure 
               href: performance-efficiency/optimize-code-infrastructure.md
             - name: PE:08 Optimize data performance 
@@ -426,3 +426,4 @@
         href: ./cross-cutting-guides/health-model.md        
       - name: Implementing recommendations
         href: ./cross-cutting-guides/implementing-recommendations.md        
+        
