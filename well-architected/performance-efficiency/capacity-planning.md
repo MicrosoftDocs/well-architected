@@ -33,9 +33,9 @@ Capacity planning is a forward-looking process that involves making decisions ba
 
 Understanding business goals is about identifying the strategic and operational objectives of a workload and translating them into specific technical requirements. Before you can predict the capacity requirements of a workload, you need to understand your business goals and the workload. The information gathering includes understanding the purpose, requirements, and behavior of the workload. If your goal is to offer an API supporting file uploads from 1 million users with an average file size of 1 MB and storage within one second, you'd require disks with a write speed of 277.7 MBps and hardware capable of handling 277 concurrent writes. By analyzing this information, you can allocate resources to support the attainment of business objectives.
 
-### Gather workload capacity data
+### Gather workload data
 
-Gathering workload capacity data entails collecting and analyzing information on how a workload uses resources, based on both historical patterns for existing workloads and predictive measures for new ones. This process helps translate business objectives into technical requirements and is essential for forecasting capacity. Consider the following recommendations:
+Gathering workload data entails collecting and analyzing information on how a workload uses resources, based on both historical patterns for existing workloads and predictive measures for new ones. This process helps translate business objectives into technical requirements and is essential for forecasting capacity. Consider the following recommendations:
 
 #### Understand an existing workload
 
@@ -63,9 +63,9 @@ Understanding a new workload for capacity planning refers to predicting the reso
 
 - *External data sources*: External data sources like industry reports, market studies, or customer surveys can provide additional information for estimating demand for a new workload. These sources can offer valuable insights into customer preferences, market trends, and potential demand drivers.
 
-### Forecast future demand
+### Forecast demand
 
-When you forecast future demand, you use data to get a sense of future needs. For a workload with or without historical data, you can apply statistical analysis, trend analysis, or predictive modeling techniques to the data you have to forecast future demand. These methods take into account historical or anticipated patterns and project them into the future to provide estimates of the expected workload demand.
+Forecasting demand involves using workload data to predict future needs for a service or product. It's essential for capacity planning to ensure efficient resource allocation, anticipate growth patterns, and prepare for potential surges in demand. When you forecast future demand, you use data to get a sense of future needs. You apply statistical analysis, trend analysis, or predictive modeling techniques to the data you have to forecast future demand. These methods take into account historical or anticipated patterns and project them into the future to provide estimates of the expected workload demand. To forecast demand, consider these strategies:
 
 **Account for various scenarios.** When you perform capacity planning, you need to plan for different scenarios that might occur. This planning should include both predictable growth patterns and unexpected surges in demand. Usage patterns can grow or shrink. They can be organic (more or less users) or inorganic (an event or security incident). You need to conduct capacity planning before usage changes, at key times:
 
