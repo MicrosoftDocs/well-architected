@@ -35,7 +35,7 @@ Understanding business goals is about identifying the strategic and operational 
 
 ### Gather utilization data
 
-Gathering workload data entails collecting and analyzing information on how a workload uses resources, based on both historical patterns for existing workloads and predictive measures for new ones. This process helps translate business objectives into technical requirements and is essential for forecasting capacity. Consider the following recommendations:
+Gathering workload utilization data entails collecting and analyzing information on how a workload uses resources, based on both historical patterns for existing workloads and predictive measures for new ones. This process helps translate business objectives into technical requirements and is essential for forecasting capacity. Consider the following recommendations:
 
 #### Understand an existing workload
 
