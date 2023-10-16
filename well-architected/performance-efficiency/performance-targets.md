@@ -61,7 +61,7 @@ To establish performance targets, identify metrics that are critical for measuri
 
 **Set performance targets early.** Set performance targets before you deploy your workload. For a workload in a design, performance targets require research. Conduct market research, competitive analysis, and surveys to generate your performance target ranges. For a production workload that has no performance targets, use production data and customer feedback to establish performance targets.
 
-### Set performance targets for critical flows
+### Set performance targets for flows
 
 In addition to establishing targets for the whole workload, establish performance targets for critical flows. These flows are essential to the workload's objectives. Performance targets for critical flows help you focus on the most important aspects of your workload.
 
