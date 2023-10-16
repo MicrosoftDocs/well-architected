@@ -37,7 +37,9 @@ Understanding business goals is about identifying the strategic and operational 
 
 Gathering workload capacity data entails collecting and analyzing information on how a workload uses resources, based on both historical patterns for existing workloads and predictive measures for new ones. This process helps translate business objectives into technical requirements and is essential for forecasting capacity. Consider the following recommendations:
 
-*Understand an existing workload.* Understanding an existing workload for capacity planning involves analyzing historical data related to how the workload utilizes resources. It encompasses metrics like resource utilization, performance data, and workload patterns. This understanding ensures efficient resource allocation, translates business goals into technical requirements, and helps identify potential bottlenecks.
+#### Understand an existing workload
+
+Understanding an existing workload for capacity planning involves analyzing historical data related to how the workload utilizes resources. It encompasses metrics like resource utilization, performance data, and workload patterns. This understanding ensures efficient resource allocation, translates business goals into technical requirements, and helps identify potential bottlenecks.
 
 - *Understand the data*: Review the available historical data and understand its structure, format, and relevance to capacity planning. The review might include resource utilization metrics, workload patterns, performance metrics, and other relevant data points.
 
@@ -49,7 +51,9 @@ Gathering workload capacity data entails collecting and analyzing information on
 
 - *Visualize the data*: Create visualizations, like charts or plots, to gain better insights into historical data. Visualizations can help you identify patterns, trends, and anomalies in data to give you a clearer understanding of workload behavior.
 
-*Understand a new workload.* Understanding a new workload for capacity planning refers to predicting the resource requirements of a future task without historical data, often relying on methods such as market research, expert judgment, pilot projects, and external data sources. Predicting the future needs of new a workload without historical data can be more challenging. This process is vital to ensure that resources are efficiently allocated and aligned with business objectives when the workload is introduced. In such cases, you should consider alternative approaches:
+#### Understand a new workload
+
+Understanding a new workload for capacity planning refers to predicting the resource requirements of a future task without historical data, often relying on methods such as market research, expert judgment, pilot projects, and external data sources. Predicting the future needs of new a workload without historical data can be more challenging. This process is vital to ensure that resources are efficiently allocated and aligned with business objectives when the workload is introduced. In such cases, you should consider alternative approaches:
 
 - *Market research*: Conducting market research to understand the demand for similar products or services can provide valuable insights into the potential demand for a new workload. The research can involve analyzing market trends, conducting surveys, or studying competitor offerings.
 
