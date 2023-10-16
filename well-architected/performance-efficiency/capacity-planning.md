@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[PE:02](checklist.md)| Conduct capacity planning. Perform capacity planning before there are predicted changes in usage patterns, such as seasonal variations, product updates, marketing campaigns, special events, or regulatory changes. | 
 |---|---| 
 
-This guide describes the recommendations for capacity planning. You should perform formal capacity planning during key points in the lifecycle of a workload. Capacity planning enables you to anticipate short-term and long-term demand and effectively manage workload performance. Your analysis of historical usage patterns and growth trends can help you identify potential bottlenecks, scalability challenges, and performance constraints.
+This guide describes the recommendations for capacity planning. Capacity planning refers to the process of determining the resources required to meet workload performance targets. It involves estimating the amount of computing resources such as CPU, memory, storage, and network bandwidth needed to support the workload's performance requirements. Capacity planning helps avoid underprovisioning and ensures the workload has sufficient resources to handle the expected workload demands without experiencing performance degradation or bottlenecks. It also helps prevent overprovisioning and unnecessary costs. A lack of capacity planning can lead to performance issues, resource bottlenecks, increased costs, inefficient allocation, scalability challenges, and unpredictable workload performance.
 
 **Definitions**
 
@@ -27,13 +27,19 @@ This guide describes the recommendations for capacity planning. You should perfo
 
 ## Key design strategies
 
-Capacity planning is a predictive exercise. It's the process of making informed decisions based on load predictions and workload behavior. The objective is to ensure efficient workload performance, not just when demand grows or shrinks, but by recognizing the nuances of continuous load versus peak load events.
+Capacity planning is a forward-looking process that involves making decisions based on anticipated workload demands and patterns. Its goal is to optimize workload performance across both continuous and peak load scenarios. By understanding changes in usage, such as seasonal shifts or product releases, you can allocate resources strategically, preventing system strain during high demand periods. This proactive strategy reduces disruptions and bolsters performance efficiency. By analyzing past usage trends and growth data, you can forecast short and long-term needs. You can pinpoint potential bottlenecks and scaling issues, ensuring consistent and efficient workload performance.
 
 ### Gather workload data
 
 Before you can predict the capacity requirements of a workload, you need to understand your business goals and the workload. The information gathering includes understanding the purpose, requirements, and behavior of the workload. You should gather historical workload data for existing workloads. For new workloads, you should gather data during the design phase.
 
-**Consider business goals.** Consider your business goals and translate them into technical requirements. For example, assume your goal is to provide an API that can handle file uploads from 1 million users, with an average file size of 1 MB and a storage time of one second or less. You'll need disks that have a write speed of 277.7 MBps and a CPU/NIC/memory configuration that can support 277 concurrent writes.
+#### Understand business goals
+
+Consider your business goals and translate them into technical requirements. For example, assume your goal is to provide an API that can handle file uploads from 1 million users, with an average file size of 1 MB and a storage time of one second or less. You'll need disks that have a write speed of 277.7 MBps and a CPU/NIC/memory configuration that can support 277 concurrent writes.
+
+#### Understand the workload
+
+For the purposes of capacity planning, understanding a workload means comprehensively analyzing how workload resources are used based on historical data for existing workloads, and forecasting demand for new workload using predictive methods. This process helps ensure resources are allocated efficiently.
 
 **Understand an existing workload.** Gather the historical data that's related to the workload. Include metrics like resource utilization, performance data, workload patterns, and any other relevant data points.
 
