@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 This guide describes the recommendations for optimizing code. Code optimization is the process of improving the efficiency, performance, and cost-effectiveness of application code. Effective code optimization involves making changes to the code to reduce resource consumption, minimize execution time, and improve overall performance.
 
-By optimizing code, you can identify and eliminate inefficiencies that might lead to increased resource consumption and higher costs. You can reduce processing time, memory usage, and network overhead, which can lead to faster and more responsive applications. Improved performance enhances the user experience and enables your system to handle larger workloads efficiently.
+By optimizing code, you can identify and eliminate inefficiencies that might lead to increased resource consumption and higher costs. You can reduce processing time, memory usage, and network overhead, which can lead to applications that are faster and more responsive. Improved performance enhances the user experience and enables your system to handle larger workloads efficiently.
 
 **Definitions**
 
@@ -37,9 +37,9 @@ You might not know if you have inefficient code. Serverless, autoscale, and reli
 
 ### Instrument your code
 
-Instrumenting code is the practice of adding code snippets or libraries that collect data and monitor code performance during runtime. Code instrumentation allows developers to gather information about key metrics such as resource consumption (CPU or memory usage) and execution time. By instrumenting code, developers can gain insights into code hot paths, identify performance bottlenecks, and optimize the code for better efficiency and cost-effectiveness.
+Instrumenting code is the practice of adding code snippets or libraries that collect data and monitor code performance during runtime. Code instrumentation allows developers to gather information about key metrics, such as resource consumption (CPU or memory usage) and execution time. By instrumenting code, developers can gain insights into code hot paths, identify performance bottlenecks, and optimize the code for better efficiency and cost-effectiveness.
 
-In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code problem, the cheaper it is to fix. You want to automate as much of this code analysis as possible. Use dynamic and static code-analysis tools to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
+In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code problem, the cheaper it is to fix. You want to automate as much of this code analysis as possible. Use dynamic and static tools for code analysis to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
 
@@ -47,17 +47,17 @@ In an ideal environment, you should do code analysis early in the software devel
 
 By instrumenting your code, you can measure the resource consumption of code paths. These measurements help you identify hot paths. Hot paths have a significant effect on performance and resource usage. They're critical or frequently run sections of a program that require high performance and low latency.
 
-To identify code hot paths, consider these tasks:
+To identify hot paths, consider these tasks:
 
 - *Analyze runtime data*: Collect and analyze runtime data to identify areas of the code that consume significant resources, such as CPU, memory, or I/O operations. Look for patterns or sections of code that are frequently run or take a long time to complete.
 
-- *Measure performance*: Use profiling tools or performance testing frameworks to measure the execution time and resource consumption of code paths. It helps identify bottlenecks and areas for improvement.
+- *Measure performance*: Use profiling tools or performance testing frameworks to measure the execution time and resource consumption of code paths. This measurement helps identify bottlenecks and areas for improvement.
 
 - *Consider business logic and user effect*: Evaluate the importance of code paths based on their relevance to the application's functionality or critical business operations. Determine which code paths are crucial for delivering value to users or meeting performance requirements.
 
   Review performance recommendations that are specific to the programming language you're working with. Evaluate your code against these recommendations to identify areas for improvement. Remove any unnecessary operations within the code path that might affect performance.
 
-- *Remove unnecessary function calls*: Review your code. Identify any functions that aren't essential for the desired functionality and that might negatively affect performance. For example, if a function call performs a validation that was done earlier in the code, you can remove that unnecessary function call.
+- *Remove unnecessary function calls*: Review your code. Identify any functions that aren't essential for the desired functionality and might negatively affect performance. For example, if a function call performs a validation that happened earlier in the code, you can remove that unnecessary function call.
 
 - *Minimize logging operations*: Logging can be helpful for debugging and analysis, but excessive logging can affect performance. Evaluate the necessity of each logging operation and remove any unnecessary logging calls that aren't critical for performance analysis.
 
@@ -79,11 +79,11 @@ To identify code hot paths, consider these tasks:
 
 ### Evaluate the use of concurrency
 
-Evaluating the use of concurrency involves assessing if asynchronous processing, multithreading, or multiprocessing can maximize resource utilization and reduce expenses. By using asynchronous processing, multithreading, or multiprocessing, you can handle more tasks with the same resources. However, it's crucial to ensure proper implementation to avoid additional overhead and to maintain cost-effectiveness.
+Evaluating the use of concurrency involves assessing whether asynchronous processing, multithreading, or multiprocessing can maximize resource utilization and reduce expenses. By using asynchronous processing, multithreading, or multiprocessing, you can handle more tasks with the same resources. However, it's crucial to ensure proper implementation to avoid additional overhead and to maintain cost-effectiveness.
 
-To evaluate if using concurrency is a good fit, you can follow these guidelines:
+To evaluate whether using concurrency is a good fit, you can follow these guidelines:
 
-- *Asynchronous processing*: Aynchronous processing allows nonblocking execution. For example, you can start a process and then pause it to allow a second process to finish.
+- *Asynchronous processing*: Asynchronous processing allows nonblocking execution. For example, you can start a process and then pause it to allow a second process to finish.
 
   Determine the code components or operations that can be executed asynchronously. Identify the programming language or framework that you're using and understand the asynchronous programming model that it supports, such as `async`/`await` in .NET or promises in JavaScript.
 
@@ -178,7 +178,7 @@ Consider these techniques:
 
 ### Optimize data access
 
-Optimizing data access refers to streamlining the patterns and techniques for retrieving and storing data, to minimize unnecessary operations. By optimizing data access, you can save costs by reducing resource usage, reducing data retrieval, and improving data processing efficiency. Consider techniques such as data caching, efficient data querying, and data compression.
+Optimizing data access refers to streamlining the patterns and techniques for retrieving and storing data, to minimize unnecessary operations. By optimizing data access, you can save costs by reducing resource usage, reducing data retrieval, and improving the efficiency of data processing. Consider techniques such as data caching, efficient data querying, and data compression.
 
 #### Use caching mechanisms
 
@@ -278,15 +278,15 @@ Consider rightsizing virtual machine instances, adjusting memory allocation, and
 
 **Caching:** Azure provides caching services like Azure Cache for Redis. You can use caching to store frequently accessed data closer to the application, resulting in faster retrieval and reduced back-end load.
 
-**Data serialization:** Azure supports various serialization formats like JSON, XML, and Protocol Buffers. Choose the appropriate serialization format based on data size, performance requirements, and interoperability needs.
+**Data serialization:** Azure supports various serialization formats, including JSON, XML, and Protocol Buffers. Choose the appropriate serialization format based on data size, performance requirements, and interoperability needs.
 
 **Indexing and query optimization:** Azure services like Azure SQL Database and Azure Cosmos DB provide indexing capabilities to optimize query performance. By choosing the right indexing strategy and optimizing queries, you can improve the overall efficiency of data retrieval.
 
 **Object-relational mapping:** Azure provides ORM frameworks like Entity Framework and Azure Cosmos DB SDKs. These frameworks simplify data access and mapping between object-oriented code and relational or NoSQL databases.
 
-**Optimizing stored procedures:** Azure services like Azure SQL Database allow you to create and optimize stored procedures. Stored procedures can enhance performance by reducing network round-trips and pre-compiling SQL statements.
+**Optimizing stored procedures:** You can use Azure services like Azure SQL Database to create and optimize stored procedures. Stored procedures can enhance performance by reducing network round trips and precompiling SQL statements.
 
-**Partitioning and sharding:** Azure offers partitioning and sharding capabilities in services like Azure Cosmos DB and Azure SQL Database. Partitioning allows you to distribute data across multiple nodes for scalability and performance optimization.
+**Partitioning and sharding:** Azure offers partitioning and sharding capabilities in services like Azure Cosmos DB and Azure SQL Database. You can use partitioning to distribute data across multiple nodes for scalability and performance optimization.
 
 **Compressing data:** Azure services support data compression techniques like GZIP and DEFLATE.
 
