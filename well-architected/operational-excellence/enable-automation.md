@@ -114,6 +114,8 @@ When designing your workload to enable automation, consider the degree of contro
 
 Also consider the skill set of your team when designing your workload. If a high degree of automation requires tools that your team isn’t equipped to support, then you might need to use a less comprehensive design as an intermediate step.
 
+Offloading automation from your CI/CD pipeline to platform tools or services, like Azure Policy, can simplify your pipeline, but has drawbacks like the additional management burden of using multiple systems. For example, execution failures in a platform service will not be caught in your pipeline logs and will have to fed into your observability platform intelligently so the appropriate parties are notified.
+
 ## Related links
 
 - [AKS baseline reference architecture](/azure/architecture/reference-architectures/containers/aks/baseline-aks#cluster-bootstrapping)
