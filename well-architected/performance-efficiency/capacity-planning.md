@@ -37,7 +37,7 @@ Gathering workload utilization data entails collecting and analyzing information
 
 Understanding an existing workload for capacity planning involves analyzing historical data related to how the workload utilizes resources. It encompasses metrics like resource utilization, performance data, and workload patterns. This understanding ensures efficient resource allocation, translates business goals into technical requirements, and helps identify potential bottlenecks.
 
-- *Understand the data*: Review the available historical data and understand its structure, format, and relevance to capacity planning. The review might include resource utilization metrics, workload patterns, performance metrics, and other relevant data points.
+- *Understand the data*: Review the available historical data and understand its structure, format, and relevance to capacity planning. The review might include resource utilization metrics, workload patterns, performance metrics, and other relevant data points. Understand the business processes and the criticality of the applications. Identify the peak usage times, user load, transaction rates, and other relevant metrics.
 
 - *Clean and preprocess the data*: Prepare the data for analysis by removing any inconsistencies, errors, or outliers. Preparing the data might involve data cleaning techniques like data imputation, the handling of missing values, or normalization.
 
@@ -61,7 +61,9 @@ Understanding a new workload for capacity planning refers to predicting the reso
 
 ### Align capacity with workload objectives
 
-Aligning utilization data with workload objectives means comparing utilization data against the strategic objectives. The goal is to accurately predict and plan for future capacity needs. For example, if the goal is to support an API that facilitates file uploads for 1 million users with an average file size of 1 MB and ensures storage within a second, this poses certain demands on the system. However, if the current data indicates potential bottlenecks or shortfalls in write speeds, it becomes evident that capacity adjustments are necessary. This alignment helps inform where capacity enhancements and allows you to plan for them.
+Aligning capacity data with workload objectives means comparing utilization data against the strategic objectives. The goal is to accurately predict and plan for future capacity needs. For example, if the goal is to support an API that facilitates file uploads for 1 million users with an average file size of 1 MB and ensures storage within a second, this poses certain demands on the system. However, if the current data indicates potential bottlenecks or shortfalls in write speeds, it becomes evident that capacity adjustments are necessary. This alignment helps inform where capacity enhancements and allows you to plan for them.
+
+Workload requirements include functional and technical requirements. You should meet with stakeholders to ensure that you understand the functional requirements of the workload and define technical requirements to meet the functional requirements. For example, a great user experience requires a response time of 100 ms. You should agree on a maximum median response time that aligns with your performance targets. You should then consider the service-level agreements (SLAs) that your service provider offers. Align your capacity planning with the SLAs to ensure that you meet your performance targets. You generate technical requirements to support functional requirements. You also need to understand the workload architecture so you can identify the correct components to modify.
 
 ### Forecast demand
 
@@ -91,7 +93,7 @@ Forecasting demand involves using workload data to predict future needs for a se
 
 Determining resource requirements for capacity planning involves assessing the resources that you need to meet forecasted demand. A workload can have many components, so there's no one metric to observe. You need to measure capacity at the component level to get meaningful results. Estimate the expected demand for your components based on historical data, market trends, and business projections. Consider the number of transactions, concurrent users, or any other relevant metrics.
 
-**Calculate resource needs.** Based on the forecasted demand, calculate the resources needed to meet that demand. Consider factors such as server capacity, network bandwidth, storage capacity, and personnel.
+Based on the forecasted demand, calculate the resources needed to meet that demand. Consider factors such as server capacity, network bandwidth, storage capacity, and personnel.
 
 - *Server capacity*: Determine the required server capacity based on the estimated number of concurrent users or transactions. Consider factors like CPU, memory, and disk space requirements to ensure that your servers can handle the expected workload.
 
@@ -100,14 +102,14 @@ Determining resource requirements for capacity planning involves assessing the r
 - *Storage capacity*: Estimate the amount of data that the workload generates or processes during the forecasted demand. Consider factors like database size, file storage requirements, and any other data storage needs that are specific to your application.
 
 - *Personnel*: Assess the human resources that are required to manage and maintain the infrastructure, handle customer support, perform system maintenance, and ensure smooth operations. Take into account factors like workload distribution, skill sets, and required expertise.
+- 
 
-**Identify reachable limits.** Capacity planning should find hard limits in the workload and evaluate whether those limits are in reach. These limits usually apply to infrastructure (compute, memory, storage, network), application (concurrent database connections, response times, availability), service (requests per second), and scaling. When capacity planning identifies reachable limits, you need to modify the workload before the limit creates a performance problem. Performance baselines, continuous monitoring, and testing are essential to validating the limits and the solution.
+### Understand resource limitations
 
-**Define technical requirements.** Workload requirements include functional and technical requirements. You should meet with stakeholders to ensure that you understand the functional requirements of the workload and define technical requirements to meet the functional requirements. For example, a great user experience requires a response time of 100 ms. You should agree on a maximum median response time that aligns with your performance targets. You should then consider the service-level agreements (SLAs) that your service provider offers. Align your capacity planning with the SLAs to ensure that you meet your performance targets. You generate technical requirements to support functional requirements. You also need to understand the workload architecture so you can identify the correct components to modify.
+Resources in your workload have performance limitations. Performance limitations apply to services and SKUs within each service. You need to understand the limitations of the resources in your workload and factor those limitations into your design decisions. For example, you should know whether resource limitations require you to change SKUs or to change resources altogether.
 
-**Understand resource limitations.** Resources in your workload have performance limitations. Performance limitations apply to services and SKUs within each service. You need to understand the limitations of the resources in your workload and factor those limitations into your design decisions. For example, you should know whether resource limitations require you to change SKUs or to change resources altogether.
+You also need to identify reachable limits. It refers to pinpointing the maximum thresholds or boundaries of a workload. These limits usually apply to infrastructure (compute, memory, storage, network), application (concurrent database connections, response times, availability), service (requests per second), and scaling. When capacity planning identifies reachable limits, you need to modify the workload before the limit creates a performance problem. Performance baselines, continuous monitoring, and testing are essential to validating the limits and the solution.
 
-**Test conclusions.** Capacity planning is an iterative process. You should test the conclusions of your capacity planning and adjust estimates accordingly.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Misjudged capacity planning can lead to over-provisioning or under-provisioning of resources. Over-provisioning leads to higher costs. Under-provisioning can result in poor performance. Try to find the right balance.
 
