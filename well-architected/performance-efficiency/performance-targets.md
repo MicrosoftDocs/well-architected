@@ -49,11 +49,11 @@ When setting performance goals, it's important to harmonize the organization's o
 
 Based on your workload objectives, identify the key metrics that help measure progress toward your goals. Consider metrics related to availability, capacity, and response time.
 
-- *Availability* is measured by the error rate, which represents the percentage of successful requests. For example, a success rate of 99.9 percent of requests is a common target.
+- *Availability*: Avaliability is measured by the error rate, which represents the percentage of successful requests. A common target for availability is a success rate of 99.9 percent of requests.
+- 
+- *Capacity*: Capacity is evaluated based on throughput, which refers to the ability to handle a specific number of transactions within a given time period. For instance, an application might need to sustain 100 million transactions per month.
 
-- *Capacity* is evaluated based on throughput, which refers to the ability to handle a specific number of transactions within a given time period. For instance, an application might need to sustain 100 million transactions per month.
-
-- *Response time* is assessed by analyzing the response time of the application. A common target is a completion rate of 99 percent of sign-in requests in less than 1 second.
+- *Response time:* Response time is assessed by analyzing the time it takes for the application to respond to a request. A common target is a completion rate of 99 percent of sign-in requests in less than 1 second.
 
 ### Set specific targets 
 
