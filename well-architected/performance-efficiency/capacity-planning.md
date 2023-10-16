@@ -29,7 +29,7 @@ This guide describes the recommendations for capacity planning. Capacity plannin
 
 Capacity planning is a forward-looking process that involves making decisions based on anticipated workload demands and patterns. Its goal is to optimize workload performance across both continuous and peak load scenarios. By understanding changes in usage, such as seasonal shifts or product releases, you can allocate resources strategically, preventing system strain during high demand periods. This proactive strategy reduces disruptions and bolsters performance efficiency. By analyzing past usage trends and growth data, you can forecast short and long-term needs. You can pinpoint potential bottlenecks and scaling issues, ensuring consistent and efficient workload performance.
 
-### Gather utilization data
+### Gather capacity data
 
 Gathering workload utilization data entails collecting and analyzing information on how a workload uses resources, based on both historical patterns for existing workloads and predictive measures for new ones. This process helps translate business objectives into technical requirements and is essential for forecasting capacity. Consider the following recommendations:
 
@@ -59,7 +59,7 @@ Understanding a new workload for capacity planning refers to predicting the reso
 
 - *External data sources*: External data sources like industry reports, market studies, or customer surveys can provide additional information for estimating demand for a new workload. These sources can offer valuable insights into customer preferences, market trends, and potential demand drivers.
 
-### Align utilization with workload objectives
+### Align capacity with workload objectives
 
 Aligning utilization data with workload objectives means comparing utilization data against the strategic objectives. The goal is to accurately predict and plan for future capacity needs. For example, if the goal is to support an API that facilitates file uploads for 1 million users with an average file size of 1 MB and ensures storage within a second, this poses certain demands on the system. However, if the current data indicates potential bottlenecks or shortfalls in write speeds, it becomes evident that capacity adjustments are necessary. This alignment helps inform where capacity enhancements and allows you to plan for them.
 
