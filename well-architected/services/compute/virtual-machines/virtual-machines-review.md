@@ -215,7 +215,7 @@ As you make design choices for your virtual machine deployment, review [Microsof
 
 > [!div class="checklist"]
 > - Reduce latency by deploying VMs closer together in proximity placement groups.
-> - Convert disks from standard HDD to premium SSD to improve the performance of your virtual machines, especially for I/O-intensive workloads.
+> - Use premium SSD to improve the performance of your virtual machines, especially for I/O-intensive workloads.
 > - Utilize Premium SSD v2 effectively as it is a newer version of premium SSD that offers even better performance and scalability.
 > - Optimize with managed disks to improve scalability, availability, and performance, and simplify disk management tasks such as backup and restore.
 > - Consider locally attached NVMe or similar devices for high-performance use cases such as big data analytics, machine learning, and high-performance computing.
