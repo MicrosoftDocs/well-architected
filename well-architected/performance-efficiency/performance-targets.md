@@ -83,7 +83,7 @@ After you identify the key metrics, you need to specify targets or thresholds fo
 
 ### Document and expose performance target
 
-Meeting performance targets is a shared responsibility between development and operations teams. To ensure that the workload consistently meets or exceeds these targets, provide teams with the information and access to take action. To document and expose perfomance targets, consider these recommendations:
+Meeting performance targets is a shared responsibility between development and operations teams. To ensure that the workload consistently meets or exceeds these targets, provide teams with the information and access to take action. To document and expose performance targets, consider these recommendations:
 
 - *Document performance targets*: Document all performance targets. Ensure that all performance targets are documented in a centralized location, easily accessible by both development and operations teams. It promotes alignment and aids in real-time decision-making.
   
@@ -93,11 +93,7 @@ Meeting performance targets is a shared responsibility between development and o
 
 ### Evaluate customer feedback
 
-When you engage with customers, gather feedback, and adapt performance targets, you can enhance the performance of your workload and deliver optimal customer experiences. To ensure performance targets are aligned with customer expectations, maintain a dialog with customers. Gather customer feedback to learn about evolving preferences, requirements, and technology trends. Regular communication with customers allows you to refine and adapt performance targets based on the changing needs of customers.
-
-Incorporate a customer-centric perspective into the performance optimization strategy to create a foundation for a workload that resonates with customers. This approach not only ensures that the workload meets technical benchmarks but also establishes a dynamic feedback loop for continuous improvement based on customer needs. By prioritizing customer satisfaction and loyalty, you position the workload for sustained success.
-
-Continual customer feedback helps you understand customer expectations so you can tailor performance targets and optimize the workload. The ongoing conversation ensures that the workload constantly evolves to meet customer needs and delivers an enhanced experience.
+Evaluating customer feedback involves actively seeking out and analyzing the responses and suggestions of your customers. Actively collecting and analyzing customer feedback offers valuable insights into their needs and expectations. Regular communication helps in adjusting performance targets in line with changing preferences and tech trends. By focusing on customer needs, the workload not only aligns with technical benchmarks but also undergoes continuous refinement. This approach, emphasizing customer satisfaction, ensures that the workload remains relevant and successful in the long run.
 
 ## Azure facilitation
 
