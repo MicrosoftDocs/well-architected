@@ -19,9 +19,9 @@ During the process of negotiating a workload's performance targets and designing
 
 - A workload that achieves efficiency by delaying scaling until the last responsible moment closely meets demand but is vulnerable to unforeseen node failures and scaling delays.
 
-- Consolidating workload resources can use excess capacity and improve efficiency. However, it increases the blast radius of a malfunction in the collocated component or application platform.
+- Consolidating workload resources can use excess capacity and improve efficiency. However, it increases the blast radius of a malfunction in the co-located component or application platform.
 
-- Scaling in or scaling down to minimize surplus capacity can leave a workload underprovisioned during usage spikes, which leads to service disruptions.
+- Scaling in or scaling down to minimize surplus capacity can leave a workload underprovisioned during usage spikes, which leads to service disruptions due to insufficient supply.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased complexity.** Reliability prioritizes simplicity.
 
@@ -40,7 +40,7 @@ During the process of negotiating a workload's performance targets and designing
 
 - Performance testing in active environments, like the use of synthetic transactions, carries the risk of causing malfunctions due to the test actions or configurations.
 
-- Workloads should be instrumented with an application performance monitoring (APM) system that provides information from active environments. The APM tooling is installed and configured in application code or in the hosting environment. Improper use, exceeding limitations, or misconfiguration of the tool can compromise its functionality and maintenance, potentially undermining reliability.
+- Workloads should be instrumented with an application performance monitoring (APM) system that enables teams to learn from active environments. The APM tooling is installed and configured in application code or in the hosting environment. Improper use, exceeding limitations, or misconfiguration of the tool can compromise its functionality and maintenance, potentially undermining reliability.
 
 ## Performance Efficiency tradeoffs with Security
 
@@ -80,11 +80,11 @@ Sharing resources is an approach for improving efficiency. It increases density 
 
 - A shared workload identity that violates the principle of least privilege and obscures individual audit trails in access logs.
 
-- Perimeter security controls, for example network rules, that are reduced to cover all collocated components, giving individual components more access than necessary.
+- Perimeter security controls, for example network rules, that are reduced to cover all co-located components, giving individual components more access than necessary.
 
-- A compromise of the application platform host or an individual component due to a larger blast radius. This increase is caused by easier access to collocated components.
+- A compromise of the application platform host or an individual component due to a larger blast radius. This increase is caused by easier access to co-located components.
 
-- Collocating disparate components leading to more components in scope for compliance because of their shared host.
+- Co-locating disparate components leading to more components in scope for compliance because of their shared host.
 
 ## Performance Efficiency tradeoffs with Cost Optimization
 
@@ -100,7 +100,7 @@ Sharing resources is an approach for improving efficiency. It increases density 
 
 - Expanding into multiple regions can enhance performance by bringing workloads closer to the user, but it also adds complexity and resource duplication.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: More components.** One cost optimization technique is to consolidate with a smaller number of resources by increasing density, removing duplication, and collocating functionality.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: More components.** One cost optimization technique is to consolidate with a smaller number of resources by increasing density, removing duplication, and co-locating functionality.
 
 - Performance-centric cloud design patterns sometimes necessitate the introduction of extra components. These extra components usually lead to an overall cost increase for the workload. For example, you might include a message bus for load leveling or offload tasks to an application or content delivery network for improved response times.
 
@@ -140,7 +140,7 @@ Sharing resources is an approach for improving efficiency. It increases density 
 
 - Conducting root cause analysis of performance issues identifies deficiencies in processes or implementations that require correction. The team should consider the exercise a learning opportunity. If team members are blamed for issues, morale can be affected.
 
-- Routine and ad hoc processes can affect workload performance. It's often best to perform these activities during off-peak hours. However, off-peak hours can be inconvenient or outside of regular hours for the team members who are responsible for or skilled in these tasks.
+- Routine and ad hoc processes can affect workload performance. It's often considered preferable to perform these activities during off-peak hours. However, off-peak hours can be inconvenient or outside of regular hours for the team members who are responsible for or skilled in these tasks.
 
 ## Related links
 
