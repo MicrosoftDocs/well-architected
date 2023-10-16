@@ -171,7 +171,8 @@ To ensure operational excellence, review the [design principles](/azure/architec
 > - [Automate](/azure/architecture/framework/devops/automation-tasks) tasks like provisioning and updating.
 > - Build a robust testing environment by having a separate testing environment that closely mirrors your production environment and test updates and changes before deploying to production.
 > - Manage your quota with monitoring resource usage and adjust your quota as needed to ensure that you have enough resources to meet your needs
-> - Optimize with managed disks for better scalability, availability, performance, and consider using [Azure Disk Encryption](/azure/virtual-machines/disk-encryption-overview) to encrypt your managed disks.
+> - Optimize with managed disks for better scalability, availability, performance, and consider using [Automatic
+VM Guest patching](/azure/virtual-machines/automatic-vm-guest-patching) to encrypt your managed disks.
 
 
 ### Recommendations
