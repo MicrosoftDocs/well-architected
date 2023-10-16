@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[OE:04](checklist.md)| Optimize software development and quality assurance processes by following industry-proven practices for development and testing. For unambiguous role designation, standardize practices across components such as tooling, source control, application design patterns, documentation, and style guides. |
 |---|---|
 
-**Related guides**: [Recommendations for standardizing tools and processes](optimize-development-practices.md) | [Recommendations for using continuous integration](release-engineering-continuous-integration.md)
+**Related guides**: [Recommendations for standardizing tools and processes](tools-processes.md) | [Recommendations for using continuous integration](release-engineering-continuous-integration.md)
 
  This guide describes the recommendations for improving the performance of your deployment infrastructure. It's important to have a build process up and running the first day of your product development. Builds are the heartbeat of your continuous delivery system because the build status shows when your product is deployable. Builds provide crucial information about the status of your product, so you should always strive for fast builds.
 
