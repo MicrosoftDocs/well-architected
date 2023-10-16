@@ -53,7 +53,7 @@ Observability platforms ingest data of all types to gain insights into a workloa
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced segmentation.** A key security approach for isolating access and function is to design a strong segmentation strategy. This design is implemented through resource isolation and identity controls.
 
-- Co-locating disparate application components into shared compute, network, and data resources to make management easier reverses segmentation or makes role-based segmentation harder to achieve. Co-located components might also need to share a workload identity, which can lead to over-assignment of permissions or a lack of traceability.
+- Co-locating disparate application components in shared compute, network, and data resources to make management easier reverses segmentation or makes role-based segmentation harder to achieve. Co-located components might also need to share a workload identity, which can lead to over-assignment of permissions or a lack of traceability.
 
 - Collecting all logs from across the system in a unified log sink can make querying and building alerts easier. However, doing so can also make it harder or impossible to provide row-based security in order to treat sensitive data with the required audit controls.
 
@@ -73,11 +73,11 @@ The Operational Excellence pillar never recommends activities that reduce produc
 
 - Increasing the parity of preproduction environments with the production environment, in terms of resource count, SKUs, and data volumes, improves the quality assurance process. The cost increases as parity increases.
 
-- Although telemetry data isn't directly a resource, to enable the effectiveness of observability platforms, this data needs to be persisted. Most operational data stores have pricing that's based on a combination of ingestion rates and volume. Generally, as the amount of low-latency, high-diversity telemetry increases, costs also increase. For multi-region deployments, these operational data sinks are expected to be deployed per-region, so any per-resource costs become a factor.
+- Although telemetry data isn't directly a resource, to enable the effectiveness of observability platforms, this data needs to be persisted. Most operational data stores have pricing that's based on a combination of ingestion rates and volume. Generally, as the amount of low-latency, high-diversity telemetry increases, costs also increase. For multi-region deployments, these operational data sinks are expected to be deployed per region, so any per-resource costs become a factor.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Decreased focus on delivery activities.** Workload team members deliver increased workload value by efficiently performing tasks that are aligned to their capabilities.
 
-- Workload teams that spend time creating and refining a healthy and responsible support structure and incident response are providing a valuable service to the workload's users. As the support effort increases (for example, formal on-call rotations), usually because of a change in business critically, the costs of these activities increase. This cost increase can be the result of an increase in staff or can be incurred indirectly in the form of attention that's shifted from delivery activities to supporting functions.
+- Workload teams that spend time creating and refining a healthy and responsible support structure and incident response are providing a valuable service to the workload's users. As the support effort increases (for example, formal on-call rotations), usually because of a change in business criticality, the costs of these activities increase. This cost increase can be the result of an increase in staff or can be incurred indirectly in the form of attention that's shifted from delivery activities to supporting functions.
 
 - Training is a critical part of a workload team's personal continuous improvement process. This training can be formal or self-directed during personal enrichment time. As the amount of training time increases, the amount of time available for direct development of the workload decreases. Investment in training is diminished when the training isn't role-based or specifically relevant to the workload or its future.
 
@@ -102,7 +102,7 @@ A workload team purchases tools and hardware to support activities that are perf
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased resource utilization.** The Performance Efficiency pillar recommends the allocation of as much of the available compute and network as possible to the requirements of the workload.
 
-- A workload's observability framework requires that the components in the architecture allocate time and resources to create, collect, and stream logs and metrics. These data points help ensure that effective alerting and monitoring is possible for reliability, security, and performance. As the level of instrumentation increases, the strain to system resources might also increase.
+- A workload's observability framework requires that the components in the architecture allocate time and resources to create, collect, and stream logs and metrics. These data points help ensure that effective alerting and monitoring is possible for reliability, security, and performance. As the level of instrumentation increases, the strain on system resources might also increase.
 
 - Some deployment models, like blue/green deployment, which a workload might use for safe deployment, might introduce side-by-side deployments on the production application platform. These deployments require preemptive scaling to provide enough supply to meet future demand, or leave a mostly dormant deployment in place for a period of time to support rollback.
 
