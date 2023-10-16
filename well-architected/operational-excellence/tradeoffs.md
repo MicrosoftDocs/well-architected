@@ -45,7 +45,7 @@ During the design phase of a workload and over its lifecycle, as continuous impr
 
 - Build agents, externalized configuration and feature toggle stores, and side-by-side deployment approaches all increase the application surface area that requires security.
 
-- A higher deployment frequency caused small, incremental changes or by "get current, stay current" efforts results in more security testing in the software development lifecycle.
+- A higher deployment frequency caused by small, incremental changes or by "get current, stay current" efforts results in more security testing in the software development lifecycle.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased desire for transparency.** A secure workload is based on designs that protect the confidentiality of data that flows through the components of the system.
 
@@ -53,7 +53,7 @@ Observability platforms ingest data of all types to gain insights into a workloa
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced segmentation.** A key security approach for isolating access and function is to design a strong segmentation strategy. This design is implemented through resource isolation and identity controls.
 
-- Collocating disparate application components into shared compute, network, and data resources to make management easier reverses segmentation or makes role-based segmentation harder to achieve. Collocated components might also need to share a workload identity, which can lead to over-assignment of permissions or a lack of traceability.
+- Co-locating disparate application components into shared compute, network, and data resources to make management easier reverses segmentation or makes role-based segmentation harder to achieve. Co-located components might also need to share a workload identity, which can lead to over-assignment of permissions or a lack of traceability.
 
 - Collecting all logs from across the system in a unified log sink can make querying and building alerts easier. However, doing so can also make it harder or impossible to provide row-based security in order to treat sensitive data with the required audit controls.
 
@@ -65,9 +65,9 @@ The Operational Excellence pillar never recommends activities that reduce produc
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased resource spending.** A major cost driver for a workload is the cost of its resources. Deploying fewer resources, right-sizing resources, and reducing consumption generally helps keep costs low.
 
-- Implementing safe deployment practices, even if the changes are relatively small, can lead to an increase in the number of resources concurrently deployed. These patterns require the deployment of multiple concurrent instances of the application or infrastructure component so that traffic can be shifted in a controlled way. This increase is more pronounced in a workload that uses an immutable infrastructure approach.
+- Implementing safe deployment practices, even if the changes are relatively small, can lead to an increase in the number of resources that are concurrently deployed. These patterns require the deployment of multiple concurrent instances of the application or infrastructure component so that traffic can be shifted in a controlled way. This increase is more pronounced in a workload that uses an immutable infrastructure approach.
 
-- The team might need to introduce additional workload components in order to implement operationally aligned cloud design patterns or workload automation. For example, to support deployment agility, they might add a gateway routing component. To support better configuration management, they might add an external configuration store. to support tenant lifecycle events, they might build a control plane. These resources also influence the costs of preproduction environments.
+- The team might need to introduce additional workload components in order to implement operationally aligned cloud design patterns or workload automation. For example, to support deployment agility, they might add a gateway routing component. To support better configuration management, they might add an external configuration store. To support tenant lifecycle events, they might build a control plane. These resources also influence the costs of preproduction environments.
 
 - Increasing the number of preproduction environments to improve the development and testing experience through isolation also increases the number of resources. These resources, which aren't used to deliver supply against production demand, increase the cost of the solution.
 
@@ -108,7 +108,7 @@ A workload team purchases tools and hardware to support activities that are perf
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased latency.** To create performant workloads, teams look for ways to reduce the time and resources that workloads consume to perform their tasks.
 
-- Many deployment models require the use of gateway routing access patterns, which can introduce latency. This latency draws on the performance target budget for the related flows.
+- Many deployment models require the use of gateway routing access patterns, which can introduce latency. This latency draws against the performance target budget for the related flows.
 
 - Some cloud design patterns that support "independent change over time" approaches to support the ideals of incremental improvement can introduce latency due to the traversal of additional components. This latency can be introduced by gateways, messaging brokers, or anti-corruption layers.
 
