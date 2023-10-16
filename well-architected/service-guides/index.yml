@@ -34,7 +34,7 @@ highlightedContent:
 
 productDirectory:
   title: Browse the Well-Architected Framework service guides
-  summary: Service guides help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities essential for achieving a well-architected state. They aren't configuration guides or exhaustive lists of all features and capabilities, but rather emphasize the usefulness of features from the perspective of the Well-Architected pillars.
+  summary: Service guides help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities that are essential for achieving a well-architected state.
   items:
     # Card
     - title: API Management
@@ -104,14 +104,14 @@ productDirectory:
         - iot
     # Card
     - title: Azure Database for MySQL
-      summary: Use managed MySQL database service for app developers.
+      summary: Use a managed MySQL database service for app developers.
       imageSrc: https://static.docs.com/ui/media/product/azure/database-mysql-server.svg
       url: azure-db-mysql-cost-optimization.md
       azureCategories:
         - databases
     # Card
     - title: Azure Database for PostgreSQL
-      summary: Use managed PostgreSQL database service for app developers.
+      summary: Use a managed PostgreSQL database service for app developers.
       imageSrc: https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg
       url: azure-db-postgresql-well-architected-framework.md
       azureCategories:
@@ -119,7 +119,7 @@ productDirectory:
         - hybrid
     # Card
     - title: Azure Databricks
-      summary: Fast, easy, and collaborative Apache Spark-based analytics platform.
+      summary: Use the fast, easy, and collaborative Apache Spark-based analytics platform.
       imageSrc: https://static.docs.com/ui/media/product/azure/databricks.svg
       url: azure-databricks-security.md
       azureCategories:
@@ -142,7 +142,7 @@ productDirectory:
         - analytics
     # Card
     - title: Azure ExpressRoute
-      summary: Dedicated private network fiber connections to Azure.
+      summary: Use dedicated private network fiber connections to Azure.
       imageSrc: https://static.docs.com/ui/media/product/azure/expressroute.svg
       url: azure-expressroute.md
       azureCategories:
@@ -158,7 +158,7 @@ productDirectory:
         - security
     # Card
     - title: Azure Front Door
-      summary: Scalable, security-enhanced delivery point for global, microservice-based web applications.
+      summary: Learn about the scalable, security-enhanced delivery point for global, microservice-based web applications.
       imageSrc: https://static.docs.com/ui/media/product/azure/front-door.svg
       url: ./azure-front-door/reliability.md
       azureCategories:
@@ -184,7 +184,7 @@ productDirectory:
         - iot
     # Card
     - title: Azure IoT Hub Device Provisioning Service
-      summary: Automate zero-touch, just-in-time provisioning to an IoT Hub.
+      summary: Automate zero-touch, just-in-time provisioning to an IoT hub.
       imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
       url: ./iot-hub-dps/reliability.md
       azureCategories:
@@ -302,7 +302,7 @@ productDirectory:
         - networking
     # Card
     - title: Network virtual appliance (NVA)
-      summary: Control the flow of traffic between network segments classified with different security levels.
+      summary: Control the flow of traffic between network segments that are classified with different security levels.
       imageSrc: /media/common/i_agile.svg
       url: ./network-virtual-appliances/reliability.md
       azureCategories:
@@ -321,11 +321,11 @@ additionalContent:
       items:
         # Card
         - title: What's new?
-          summary: Updates for the Azure Well-Architected Framework
+          summary: Learn about the updates for the Azure Well-Architected Framework.
           url: ../whats-new.md
         # Card
         - title: What is WAF?
-          summary: How to use WAF and audience profile
+          summary: Learn how to use WAF and audience profile.
           url: ../what-is-well-architected-framework.md
 
 
