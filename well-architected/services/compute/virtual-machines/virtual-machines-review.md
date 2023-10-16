@@ -75,7 +75,7 @@ As you make design choices for your virtual machine deployment, review the [desi
 > - Review the [Linux security baseline](/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline).
 > - Review the [Windows security baseline](/security/benchmark/azure/baselines/virtual-machines-windows-security-baseline).
 > - Manage authentication and access control by ensuring strong passwords, multi-factor authentication, and role-based access control are in place for your VMs.
-> - Protect against malicious actor scenarios: Implement security best practices such as firewalls, anti-virus software, and intrusion detection systems to protect against malware attacks, phishing attempts, and DoS attacks
+> - Protect against malicious actor scenarios: Implement security best practices such as firewalls, anti-virus software, and intrusion detection systems to protect against malware attacks, and DoS attacks
 > - Plan and implement managed updates: Test updates in a non-production environment before deploying them to production, and consider using Azure Update Management to automate the update process.
 > - Classify and configure encryption based on data sensitivity and include using Azure Disk Encryption and SSL/TLS encryption.
 
