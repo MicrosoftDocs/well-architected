@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for capacity planning
 
-**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
 |[PE:02](checklist.md)| Conduct capacity planning. Perform capacity planning before there are predicted changes in usage patterns, such as seasonal variations, product updates, marketing campaigns, special events, or regulatory changes. |
 |---|---|
@@ -111,7 +111,6 @@ Resources in your workload have performance limitations. Performance limitations
 
 You also need to identify reachable limits. It refers to pinpointing the maximum thresholds or boundaries of a workload. These limits usually apply to infrastructure (compute, memory, storage, network), application (concurrent database connections, response times, availability), service (requests per second), and scaling. When capacity planning identifies reachable limits, you need to modify the workload before the limit creates a performance problem. Performance baselines, continuous monitoring, and testing are essential to validating the limits and the solution.
 
-
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Misjudged capacity planning can lead to over-provisioning or under-provisioning of resources. Over-provisioning leads to higher costs. Under-provisioning can result in poor performance. Try to find the right balance.
 
 ## Azure facilitation
@@ -140,4 +139,4 @@ Azure Monitor allows you to analyze historical data and apply forecasting techni
 Refer to the complete set of recommendations. 
 
 > [!div class="nextstepaction"] 
-> [Performance Efficiency checklist](checklist.md) 
+> [Performance Efficiency checklist](checklist.md)
