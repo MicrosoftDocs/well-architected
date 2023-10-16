@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Operational Excellence tradeoffs
 
-Operational Excellence provides workload quality through the implementation of clear team standards, understood responsibility and accountability, attention to customer outcomes, and team cohesion. The implentation of these goals is rooted in DevOps, which recommends minimizing process variance, reducing human error, and ultimately increasing the return of value for the workload. That value isn't just measured against the functional requirements served by the components of the workload. It's also measured by the value that the team delivers in striving for improvement.
+Operational Excellence provides workload quality through the implementation of clear team standards, understood responsibility and accountability, attention to customer outcomes, and team cohesion. The implementation of these goals is rooted in DevOps, which recommends minimizing process variance, reducing human error, and ultimately increasing the return of value for the workload. That value isn't just measured against the functional requirements served by the components of the workload. It's also measured by the value that the team delivers in striving for improvement.
 
 During the design phase of a workload and over its lifecycle, as continuous improvement steps are taken, it's important to consider how decisions based on the [Operational Excellence design principles](./principles.md) and the recommendations in the [Design review checklist for Operational Excellence](./checklist.md) might influence the goals and optimizations of other pillars. Certain decisions might benefit some pillars but constitute tradeoffs for others. This article describes example tradeoffs that a workload team might encounter when designing workload architecture and operations.
 
@@ -73,44 +73,44 @@ The Operational Excellence pillar never recommends activities that reduce produc
 
 - Increasing the parity of preproduction environments with the production environment, in terms of resource count, SKUs, and data volumes, improves the quality assurance process. The cost increases as parity increases.
 
-- Although telemetry data isn't directly a resource, to enable the effectiveness of observability platforms, this data needs to be persisted. Most operational data stores have pricing based on a combination of ingestion rates and volume. This generally means that as the amount of low-latency, high-diversity telemetry increases so too will the costs. For multi-region deployments, these operational data sinks are expected to be found per-region, so any per-resource costs become a factor.
+- Although telemetry data isn't directly a resource, to enable the effectiveness of observability platforms, this data needs to be persisted. Most operational data stores have pricing that's based on a combination of ingestion rates and volume. Generally, as the amount of low-latency, high-diversity telemetry increases, costs also increase. For multi-region deployments, these operational data sinks are expected to be deployed per-region, so any per-resource costs become a factor.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Decreased focus on delivery activities.** Workload team members deliver increased workload value by efficiently performing tasks aligned to their capabilities.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Decreased focus on delivery activities.** Workload team members deliver increased workload value by efficiently performing tasks that are aligned to their capabilities.
 
-- Workload teams that spend time building and refining a healthy and responsible support structure and incident response are providing valuable service to its users. As the effort increases in support functions, such as formal on-call rotations, usually with a corresponding change in business critically, the costs of these activities will increase. This increase can come from direct staff increase or can come indirectly from shifted attention away from delivery activities to supporting functions.
+- Workload teams that spend time creating and refining a healthy and responsible support structure and incident response are providing a valuable service to the workload's users. As the support effort increases (for example, formal on-call rotations), usually because of a change in business critically, the costs of these activities increase. This cost increase can be the result of an increase in staff or can be incurred indirectly in the form of attention that's shifted from delivery activities to supporting functions.
 
-- Training is a critical part of a workload team's personal continuous improvement process. This training can be formal or self-directed through personal enrichment time. As the amount of training time increases, the amount of time available to participate in direct development of the workload decreases. The investment in training is diminished when the training is not role-based and nor specifically relevant to the workload or its future.
+- Training is a critical part of a workload team's personal continuous improvement process. This training can be formal or self-directed during personal enrichment time. As the amount of training time increases, the amount of time available for direct development of the workload decreases. Investment in training is diminished when the training isn't role-based or specifically relevant to the workload or its future.
 
-- Standardized routine operational tasks to protect the reliability, security, and performance efficiency of a workload takes time to define, refine, and execute, which is not time directly spent on delivery. Some examples of these are comprehensive change impact analysis, change control processes, thorough testing, and increased patch management. As the frequency, comprehensiveness, or operational burden of the tasks increases, so will the time needed to be invested.
+- Standardized routine operational tasks for protecting the reliability, security, and performance efficiency of a workload take time to define, refine, and perform. This time isn't directly spent on delivery. Some examples of these tasks are comprehensive change impact analysis, change control processes, thorough testing, and increased patch management. As the frequency, comprehensiveness, or operational burden of these tasks increases, the time invested also increases.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased tooling demands and diversity.** Cost optimization looks to reduce tooling sprawl, perform vendor consolidation, and prefers a 'right sized' approach to all tooling purchases.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:  Increased tooling demands and diversity.** The Cost Optimization pillar recommends the reduction of tooling sprawl, consolidation of vendors, and a right-sized approach to all tooling purchases.
 
-A workload team purchases tools and hardware to support activities performed across the entire software development lifecycle (SDLC); from planning and design through development and testing and into monitoring. The marketplace for tooling in this space is ever-growing and exists at various price points usually aligned with their features and capabilities. Outside of free offerings, this tooling comes with initial licensing costs, that might be per-seat or site-wide, and often ongoing maintenance contracts. New vendor relationships might also need to be established. Here are some examples of where tooling or hardware spending is expected in association with the principles of Operational Excellence:
+A workload team purchases tools and hardware to support activities that are performed during the entire software development lifecycle (SDLC), including planning and design, development and testing, and monitoring. The marketplace for tooling in this space is growing. Tools are offered at various price points that usually correspond to the tools' features and capabilities. With the exception of free offerings, these tools incur initial licensing costs, which might be per-seat or site-wide. They often also require ongoing maintenance contracts. New vendor relationships might need to be established. Here are some examples of expected tooling or hardware spending that's associated with the principles of operational excellence:
 
 - Requirements and backlog management
-- Architecture design tooling
-- UI/UX design tooling
+- Architecture design tools
+- UI/UX design tools
 - Code and asset hosting
 - Code and low-code development environments
-- Automation tooling
+- Automation tools
 - Development and quality assurance workstations
 - Development and deployment pipelines
 - Test execution and tracking
-- Observability tooling
+- Observability tools
 
 ## Operational Excellence tradeoffs with Performance Efficiency
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased resource utilization.** Performance Efficiency strives to allocate as much of the available compute and network possible to perform the requirements of the workload.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased resource utilization.** The Performance Efficiency pillar recommends the allocation of as much of the available compute and network as possible to the requirements of the workload.
 
-- A workload's observability framework requires that the components in the architecture allocate time and resources to create, collect, and steam logs and metrics. These data points ensure effective alerting and monitoring is possible for reliability, security, and performance. As the level of instrumentation increases, the strain to system resources might likewise increase.
+- A workload's observability framework requires that the components in the architecture allocate time and resources to create, collect, and stream logs and metrics. These data points help ensure that effective alerting and monitoring is possible for reliability, security, and performance. As the level of instrumentation increases, the strain to system resources might also increase.
 
-- Some deployment models, such as blue/green, that the workload uses for safe deployment practices might introduce side-by-side deployments on the production application platform, requiring preemptive scaling to have sufficient supply available to meet future demand or leaving a mostly dormant deployment in place for a period to support rollback.
+- Some deployment models, like blue/green deployment, which a workload might use for safe deployment, might introduce side-by-side deployments on the production application platform. These deployments require preemptive scaling to provide enough supply to meet future demand, or leave a mostly dormant deployment in place for a period of time to support rollback.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Increased latency.** Performant workloads look for ways to reduce time spent and resources consumed performing their functionality.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased latency.** To create performant workloads, teams look for ways to reduce the time and resources that workloads consume to perform their tasks.
 
-- Many deployment models require the use of gateway routing access patterns which can introduce latency, which draws against the performance target budget for the related flows.
+- Many deployment models require the use of gateway routing access patterns, which can introduce latency. This latency draws on the performance target budget for the related flows.
 
-- Some cloud design patterns that support "independent change over time" approaches to support the ideals of incremental improvements can introduce additional latency through the traversal of additional components. This latency can come through the introduction of gateways, messaging brokers, or anti-correction layers.
+- Some cloud design patterns that support "independent change over time" approaches to support the ideals of incremental improvement can introduce latency due to the traversal of additional components. This latency can be introduced by gateways, messaging brokers, or anti-corruption layers.
 
 ## Related links
 
