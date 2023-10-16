@@ -29,19 +29,15 @@ This guide describes the recommendations for capacity planning. Capacity plannin
 
 Capacity planning is a forward-looking process that involves making decisions based on anticipated workload demands and patterns. Its goal is to optimize workload performance across both continuous and peak load scenarios. By understanding changes in usage, such as seasonal shifts or product releases, you can allocate resources strategically, preventing system strain during high demand periods. This proactive strategy reduces disruptions and bolsters performance efficiency. By analyzing past usage trends and growth data, you can forecast short and long-term needs. You can pinpoint potential bottlenecks and scaling issues, ensuring consistent and efficient workload performance.
 
-### Gather workload data
+### Understand business goals
 
-Before you can predict the capacity requirements of a workload, you need to understand your business goals and the workload. The information gathering includes understanding the purpose, requirements, and behavior of the workload. You should gather historical workload data for existing workloads. For new workloads, you should gather data during the design phase.
+Understanding business goals is about identifying the strategic and operational objectives of a workload and translating them into specific technical requirements. Before you can predict the capacity requirements of a workload, you need to understand your business goals and the workload. The information gathering includes understanding the purpose, requirements, and behavior of the workload. If your goal is to offer an API supporting file uploads from 1 million users with an average file size of 1 MB and storage within one second, you'd require disks with a write speed of 277.7 MBps and hardware capable of handling 277 concurrent writes. By analyzing this information, you can allocate resources to support the attainment of business objectives.
 
-#### Understand business goals
+### Gather workload capacity data
 
-Consider your business goals and translate them into technical requirements. For example, assume your goal is to provide an API that can handle file uploads from 1 million users, with an average file size of 1 MB and a storage time of one second or less. You'll need disks that have a write speed of 277.7 MBps and a CPU/NIC/memory configuration that can support 277 concurrent writes.
+Gathering workload capacity data entails collecting and analyzing information on how a workload uses resources, based on both historical patterns for existing workloads and predictive measures for new ones. This process helps translate business objectives into technical requirements and is essential for forecasting capacity. Consider the following recommendations:
 
-#### Understand the workload
-
-For the purposes of capacity planning, understanding a workload means comprehensively analyzing how workload resources are used based on historical data for existing workloads, and forecasting demand for new workload using predictive methods. This process helps ensure resources are allocated efficiently.
-
-**Understand an existing workload.** Gather the historical data that's related to the workload. Include metrics like resource utilization, performance data, workload patterns, and any other relevant data points.
+*Understand an existing workload.* Understanding an existing workload for capacity planning involves analyzing historical data related to how the workload utilizes resources. It encompasses metrics like resource utilization, performance data, and workload patterns. This understanding ensures efficient resource allocation, translates business goals into technical requirements, and helps identify potential bottlenecks.
 
 - *Understand the data*: Review the available historical data and understand its structure, format, and relevance to capacity planning. The review might include resource utilization metrics, workload patterns, performance metrics, and other relevant data points.
 
@@ -53,7 +49,7 @@ For the purposes of capacity planning, understanding a workload means comprehens
 
 - *Visualize the data*: Create visualizations, like charts or plots, to gain better insights into historical data. Visualizations can help you identify patterns, trends, and anomalies in data to give you a clearer understanding of workload behavior.
 
-**Understand a new workload.** Predicting the future needs of new a workload without historical data can be more challenging. In such cases, you should consider alternative approaches:
+*Understand a new workload.* Understanding a new workload for capacity planning refers to predicting the resource requirements of a future task without historical data, often relying on methods such as market research, expert judgment, pilot projects, and external data sources. Predicting the future needs of new a workload without historical data can be more challenging. This process is vital to ensure that resources are efficiently allocated and aligned with business objectives when the workload is introduced. In such cases, you should consider alternative approaches:
 
 - *Market research*: Conducting market research to understand the demand for similar products or services can provide valuable insights into the potential demand for a new workload. The research can involve analyzing market trends, conducting surveys, or studying competitor offerings.
 
