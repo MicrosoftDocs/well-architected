@@ -33,15 +33,15 @@ Understanding the workload is the first step to finding and using the best rates
 
 By following these steps, you gain a comprehensive understanding of your workload's cost structure and identify areas where you can optimize rates.
 
-### Determine billing model
+### Determine the right billing model
 
-Using a consumption billing model (pay-as-you-go) and preprovisioned billing model (prepaid) on the appropriate resources can help generate the best rates for your workload. You need to consider the characteristics and usage patterns of your workload to make the correct decision. Determining the right billing model for a component involves considering various factors. Consider usage patterns and budget. You need to understand financial constraints to decide whether upfront payment is feasible. Assess if you have a long-term commitment to the component or if it's a short-term project. Consider the potential cost savings offered by prepaid plans and compare them with the expected usage and pay-as-you-go costs.
+Determining the billing model involves choosing between consumption-based (pay-as-you-go) and prepaid pricing strategies. The selection should be based on the predictability, duration, and utilization consistency of workload components. This decision requires collaboration between development and purchasing teams to evaluate resource needs, usage patterns, and potential cost optimizations. Selecting the right billing model is crucial to ensure cost-effectiveness. It helps align the workload with business objectives and get the best rates for the specific requirements of a workload. To determine the right billing model, consider the following strategies:
 
 #### Understand consumption pricing
 
 Consumption pricing is a flexible pricing model that allows you to pay for the services you use on a consumption basis. It’s also known as pay-as-you-go pricing. With consumption pricing, you're charged based on the actual usage of the service. Cost variables include how long a resource is running, and service meters have different billing increments, such as per hour or per second. This model provides flexibility and cost control as you only pay for what you use. Consumption pricing is best suited for the following scenarios:
 
-- *Variable workload*: A variable workload has unpredictable spikes or seasonal variations in usage. Consumption-based pricing allows you to scale resources up or down to meet the fluctuations in demand while providing the required performance always and not overpaying during low usage times.
+- *Variable workload*: A variable workload has unpredictable spikes or seasonal variations in usage. Consumption-based pricing allows you to scale resources up or down to meet the fluctuations in demand while always providing the required performance and not overpaying during low usage times.
 - *Preproduction environments*: Consumption-based pricing is preferred for development and test environments that are ephemeral. It offers the advantage of paying only during the project. Ensure you provide resources aligned with the development effort, where resources cost less when development is scaled down.
 - *Short-term projects*: Short-term projects often have specific resource requirements. Pay-as-you-go pricing allows you to pay for the resources only during the project.
 
@@ -65,7 +65,7 @@ To ensure effective workload cost optimization, it's crucial for the development
 
 #### Determine component permanence
 
-It's important to assess how long you need a particular component to determine if committing to a prepaid plan makes sense. If the expected usage duration is less than a year, don’t to commit to a prepaid plan. Consider the flexibility of pay-as-you-go options for shorter-term requirements. To determine the duration of component usage, you can follow the process:
+It's important to assess how long you need a particular component to determine if committing to a prepaid plan makes sense. If the expected usage duration is less than a year, don’t commit to a prepaid plan. Consider the flexibility of pay-as-you-go options for shorter-term requirements. To determine the duration of component usage, you can follow the process:
 
 - *Gather usage data*: Collect data on the historical usage of the component or workload. This data can include information on how long the component has been in operation, the frequency of usage, and any patterns or trends in its utilization.
 - *Analyze usage patterns*: Analyze the collected usage data to identify patterns and trends. Look for consistent usage over a specific period of time or recurring usage patterns. This analysis helps you understand the typical duration of component usage.
@@ -81,7 +81,7 @@ When considering prepaid commitments, it's recommended to commit to the maximum 
 - *Engage with the vendor/supplier*: Communicate with the vendor or supplier to gather information about their plans, roadmap, and commitment to the component or workload. This dialogue provides valuable insights into their long-term vision and commitment level.
 - *Cost analysis*: Perform a cost analysis to compare the potential savings from committing to the maximum utilization with the potential risks of underutilization. Evaluate the cost implications of committing to a higher utilization level and assess whether the potential savings outweigh the risks of not fully utilizing the commitment.
 
-### Evaluate available discounts
+### Evaluate and commit to available discounts
 
 Evaluating available discounts for a workload refers to the process of assessing and analyzing the potential cost savings or discounts that can be applied to a specific workload. Assessing available supplier discounts allows you to identify opportunities for cost reduction and optimize the expenditure associated with the workload. It helps you identify potential savings and allocate resources more efficiently.
 
@@ -91,8 +91,6 @@ Evaluating available discounts for a workload refers to the process of assessing
 - *Evaluate contract terms*: Review the terms and conditions of existing contracts or agreements to identify any potential discount options. Consider understanding the duration of the commitment, renewal terms, and the possibility of negotiating better rates.
 - *Communicate with vendors*: Know the actual and anticipated usage of a workload when you discuss discounts. Let the vendor know what environment the discussion is about. For example, you can often get discounts on preproduction environments. Ask vendors or suppliers to discuss available discount options, such as product bundling products. Ask specific questions about discount programs, eligibility criteria, and any negotiation possibilities.
 - *Understand reseller options*: Consider engaging with resellers who can provide extra insights into available discounts or offer alternative pricing models. Resellers might have access to specialized programs or discounts that can benefit your workload.
-
-### Commit to the right discounts
 
 Committing to the right discount options is where you act on your evaluation. You’re equipped with the available option. You’ve communicated your needs and workload data to the various vendors. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing.
 
@@ -129,7 +127,7 @@ Explore licensing programs offered by your vendor to reduce licensing costs. Inc
 
 - Azure [Reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations): Azure Reservations help you save money by committing to one-year or three-year plans for multiple products. Committing allows you to get a discount on the resources you use. Reservations can significantly reduce your resource costs from pay-as-you-go prices. Reservations provide a billing discount and don't affect the runtime state of your resources. After you purchase a reservation, the discount automatically applies to matching resources. You should use reserved instances when certain services, SKUs, and locations aren't expected to change over time. It's highly recommended to begin with a reservation for optimal cost savings.
 
-- [Azure Savings Plan](/azure/cost-management-billing/reservations/save-compute-costs-reservations): Azure savings plan for compute is a flexible pricing model. It provides savings off pay-as-you-go pricing when you commit to spend a fixed hourly amount on compute services for one or three years. Committing to a savings plan allows you to get discounts, up to the hourly commitment amount, on the resources you use. Savings plan commitments are priced in USD for MCA and CSP customers, and in local currency for EA customers. Savings plan discounts vary by meter and by commitment term (1-year or 3-year), not commitment amount. Savings plans provide a billing discount and don't affect the runtime state of your resources. You should use Azure Savings Plans more flexibility in covering diverse compute expenses, committing to a specific hourly spend.
+- [Azure Savings Plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview): Azure savings plan for compute is a flexible pricing model. It provides savings off pay-as-you-go pricing when you commit to spend a fixed hourly amount on compute services for one or three years. Committing to a savings plan allows you to get discounts, up to the hourly commitment amount, on the resources you use. Savings plan commitments are priced in USD for MCA and CSP customers, and in local currency for EA customers. Savings plan discounts vary by meter and by commitment term (1-year or 3-year), not commitment amount. Savings plans provide a billing discount and don't affect the runtime state of your resources. You should use Azure Savings Plans more flexibility in covering diverse compute expenses, committing to a specific hourly spend.
 
 **Azure Dev/Test**: [Azure Dev/Test](/azure/devtest/offer/overview-what-is-devtest-offer-visual-studio) is an offer that comes with your Visual Studio subscription benefits. With this offer, you get some Azure monthly credits to explore and try various Azure services at no cost. Credit amounts vary by subscription level. Users can also benefit from discounted Azure dev/test rates for various Azure services, enabling cost-efficient development and testing.
 

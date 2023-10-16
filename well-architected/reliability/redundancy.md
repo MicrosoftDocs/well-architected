@@ -11,12 +11,12 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|[RE:05](checklist.md)| Add redundancy at different levels, especially for critical flows. Apply redundancy to the compute, data, network, and other infrastructure tiers in accordance with the identified reliability targets.  |
+|[RE:04](checklist.md)| Add redundancy at different levels, especially for critical flows. Apply redundancy to the compute, data, network, and other infrastructure tiers in accordance with the identified reliability targets.  |
 |---|---|
 
 **Related guides:** [Highly available multiregional design](highly-available-multi-region-design.md) | [Using availability zones and regions](regions-availability-zones.md) 
 
-This guide describes the recommendations for adding redundancy throughout your workload flows at different workload layers, which optimizes resiliency. Meet the requirements of your defined reliability targets by applying the proper levels of redundancy to your compute, data, networking, and other infrastructure tiers. Apply this redundancy to give your workload a strong, reliable foundation to build on. When you build your workload without infrastructure redundancy, there's a high risk of extended downtime due to [potential failures](failure-mode-analysis.md).
+This guide describes the recommendations for adding redundancy throughout critical flows at different workload layers, which optimizes resiliency. Meet the requirements of your defined reliability targets by applying the proper levels of redundancy to your compute, data, networking, and other infrastructure tiers. Apply this redundancy to give your workload a strong, reliable foundation to build on. When you build your workload without infrastructure redundancy, there's a high risk of extended downtime due to [potential failures](failure-mode-analysis.md).
 
 **Definitions**
 
@@ -30,7 +30,7 @@ This guide describes the recommendations for adding redundancy throughout your w
 
 ## Key design strategies
 
-In the context of reliability, use redundancy to contain problems that affect a single resource and ensure that those problems don't affect the reliability of the entire system. Use the information that you identified about your flows and reliability targets to make informed decisions that are required for each flow's redundancy.
+In the context of reliability, use redundancy to contain problems that affect a single resource and ensure that those problems don't affect the reliability of the entire system. Use the information that you identified about your critical flows and reliability targets to make informed decisions that are required for each flow's redundancy.
 
 For example, you might have multiple web server nodes running at once. The criticality of the flow that they support might require that all of them have replicas that are ready to accept traffic if there's a problem that affects the entire pool, for example a regional outage. Alternatively, because large-scale problems are rare and it's costly to deploy an entire set of replicas, you might deploy a limited number of replicas so the flow operates in a degraded state until you resolve the problem.
 
@@ -43,8 +43,6 @@ Consider two approaches when you design a redundant architecture: active-active 
 #### Deployment stamps and units of scale
 
 Whether you deploy in an active-active or active-passive model, follow the [Deployment Stamps design pattern](/azure/architecture/patterns/deployment-stamp) to ensure that you deploy your workload in a repeatable, scalable way. Deployment stamps are the groupings of resources that are required to deliver your workload to a given subset of your customers. For example, the subset might be a regional subset or a subset with all the same data privacy requirements as your workload. Think of each stamp as a *unit of scale* that you can duplicate to scale your workload horizontally or to perform blue-green deployments. Design your workload with deployment stamps to optimize your active-active or active-passive implementation for resiliency and management burden.
-
-Use an [infrastructure-as-code](./operational-excellence/infrastructure-as-code-design.md) approach to deploying and updating your workload infrastructure to ensure that you can deploy the workload stamps efficiently and consistently.
 
 #### Availability zones within Azure regions
 
@@ -93,7 +91,6 @@ Whether you deploy an active-active or an active-passive design, take advantage 
 #### Networking
 
 - Decide on a reliable and scalable network topology. Use a hub-and-spoke model or an Azure Virtual WAN model to help you organize your cloud infrastructure in logical patterns that make your redundancy design easier to build and scale.
-  - Ensure that you design your network in such a way that your workload can maintain functionality if a zone or region becomes unavailable. Understand the cross-zone or cross-region redundancy options and limitations of your workload components and ensure that your design accounts for any accomodations that you need to include. For example, if you will use different outbound IP addresses between regions, you will need to ensure that third-parties that whitelist your IP addresses are aware of your primary and secondary IPs to maintain functionality.
 
 - Select the appropriate [network service](/azure/architecture/guide/technology-choices/load-balancing-overview) to balance and redirect requests within or across regions. Use global or zone-redundant load balancing services when possible to meet your reliability targets.
 

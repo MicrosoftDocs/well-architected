@@ -111,7 +111,7 @@ _Green Software Foundation alignment: [Energy efficiency](sustainability-design-
 **Recommendation:**
 
 - Make sure you are logging and retaining only data that is relevant to your needs.
-- Read more about the [Cost optimization and Log Analytics](/azure/architecture/framework/services/monitoring/log-analytics/cost-optimization).
+- Read more about the [Cost optimization and Log Analytics](/azure/well-architected/services/monitoring/log-analytics/cost-optimization).
 
 ## Next step
 

@@ -15,7 +15,7 @@ ms.custom:
 Continuous testing and validation can detect and help resolve issues before they become potentially life threatening. Consider well-known testing methodologies such as chaos testing. Testing should be conducted for the lifetime of the application because the deployment environment is complex and multi-layered.
 
 > [!IMPORTANT]
-> More details on how to implement continuous validation for your mission-critical workload is available [here](/azure/architecture/framework/mission-critical/mission-critical-deployment-testing#video-continuously-validate-your-mission-critical-workload).
+> More details on how to implement continuous validation for your mission-critical workload is available [here](/azure/well-architected/mission-critical/mission-critical-deployment-testing#video-continuously-validate-your-mission-critical-workload).
 
 Also, supportability must be strong throughout the application lifetime. Highly available systems rely on high quality support teams able to rapidly respond to and resolve issues in the field, conduct root cause analysis and look for systematic design flaws.
 
@@ -44,5 +44,5 @@ Common client libraries are also part of the end-to-end system and need equivale
 Revisit the five pillars of architectural excellence to form a solid foundation for your carrier-grade workloads.
 
 > [!div class="nextstepaction"]
-> [ Azure Well-Architected Framework](../index.md)
+> [ Azure Well-Architected Framework](../pillars.md)
 

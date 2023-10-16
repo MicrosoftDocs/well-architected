@@ -1,0 +1,25 @@
+- name: Azure VMware Solution
+  href: index.yml
+  items:
+    - name: Get started
+      href: overview.md
+    - name: Design principles
+      href: design-principles.md
+    - name: Design areas
+      items:
+      - name: Infrastructure
+        href: infrastructure.md
+      - name: Applications
+        href: application-platform.md
+      - name: Networking
+        href: networking.md
+      - name: Monitoring
+        href: monitoring.md
+      - name: Security
+        href: security.md
+      - name: Operations
+        href: operations.md
+    - name: Azure landing zone integration
+      href: landing-zone-integration.md
+    - name: Assessment
+      href: assessment.md
