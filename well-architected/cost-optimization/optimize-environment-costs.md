@@ -92,7 +92,7 @@ Insufficient or improper allocation of preproduction environments might lead to 
 
 - *Consolidate the environment*: Determine if you can combine environments without compromising their functionality. Combine environments that have functions that don’t overlap. For instance, you can merge a user acceptance environment with a quality assurance environment. The functions are distinct, and one environment is usually idle when the other is in use.
 
-  > :::image type="icon" source="../_images/risk.svg"::: Be cautious when you combine environments to ensure that you don't introduce conflicts or compromise the testing or development processes.
+  > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Be cautious when you combine environments to ensure that you don't introduce conflicts or compromise the testing or development processes.
 
 The following table provides examples of common preproduction environments.
 
