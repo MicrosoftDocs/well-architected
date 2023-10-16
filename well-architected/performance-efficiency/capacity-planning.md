@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[PE:02](checklist.md)| Conduct capacity planning. Perform capacity planning before there are predicted changes in usage patterns, such as seasonal variations, product updates, marketing campaigns, special events, or regulatory changes. | 
 |---|---| 
 
-This guide describes the recommendations for capacity planning. You should perform formal capacity planning during key points in the lifecycle of a workload. Capacity planning enables you to anticipate short-term and long-term demand and effectively manage workload performance. Your analysis of historical usage patterns and growth trends can help you identify potential bottlenecks, scalability challenges, and performance constraints.
+This guide describes the recommendations for capacity planning. Capacity planning refers to the process of determining the resources required to meet workload performance targets. It involves estimating the amount of computing resources such as CPU, memory, storage, and network bandwidth needed to support the workload's performance requirements. Capacity planning helps avoid underprovisioning and ensures the workload has sufficient resources to handle the expected workload demands without experiencing performance degradation or bottlenecks. It also helps prevent overprovisioning and unnecessary costs. A lack of capacity planning can lead to performance issues, resource bottlenecks, increased costs, inefficient allocation, scalability challenges, and unpredictable workload performance.
 
 **Definitions**
 
@@ -27,7 +27,7 @@ This guide describes the recommendations for capacity planning. You should perfo
 
 ## Key design strategies
 
-Capacity planning is a predictive exercise. It's the process of making informed decisions based on load predictions and workload behavior. The objective is to ensure efficient workload performance, not just when demand grows or shrinks, but by recognizing the nuances of continuous load versus peak load events.
+Capacity planning is a forward-looking process that involves making decisions based on anticipated workload demands and patterns. Its goal is to optimize workload performance across both continuous and peak load scenarios. By understanding changes in usage, such as seasonal shifts or product releases, you can allocate resources strategically, preventing system strain during high demand periods. This proactive strategy reduces disruptions and bolsters performance efficiency. By analyzing past usage trends and growth data, you can forecast short and long-term needs. You can pinpoint potential bottlenecks and scaling issues, ensuring consistent and efficient workload performance.
 
 ### Gather workload data
 
