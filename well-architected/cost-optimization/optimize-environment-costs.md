@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[CO:08](checklist.md)| Optimize environment costs. Align spending to prioritize preproduction, production, operations, and disaster recovery environments. For each environment, consider the required availability, licensing, operating hours and conditions, and security. Nonproduction environments should emulate the production environment. Implement strategic tradeoffs into nonproduction environments. |
 |---|---|
 
-This guide describes the recommendations for cost optimizing workload environments. Each environment should be tailored for its specific purpose and optimized for cost effectiveness. It's important to make strategic tradeoffs and allocate resources where they matter the most, without compromising on critical aspects. By treating environments differently and optimizing them accordingly, you can achieve a balance between cost optimization and meeting the required objectives.
+This guide describes the recommendations for cost optimizing workload environments. Each environment should be tailored for its specific purpose and optimized for cost effectiveness. It's important to make strategic tradeoffs and allocate resources where they matter the most, without compromising on critical components. By treating environments differently and optimizing them accordingly, you can achieve a balance between cost optimization and meeting the required objectives.
 
 **Definitions**
 
@@ -30,7 +30,7 @@ The goal of optimizing environment costs is to find the right balance of value, 
 
 ### Assess environment value
 
-Understand the value of each environment. Value is more than revenue generation. Value refers to the effect on business, user satisfaction, and strategic alignment with organizational objectives. Analyze the value of an environment. Prioritize spending based on value to ensure alignment with the workload goals. To assess the value of each environment, consider the following factors.
+Understand the value of each environment. Value is more than revenue generation. *Value* refers to the effect on business, user satisfaction, and strategic alignment with organizational objectives. Analyze the value of an environment. Prioritize spending based on value to ensure alignment with the workload goals. To assess the value of each environment, consider the following factors.
 
 **The user**: Consider who uses each environment and what they need from it. For example, customers use the production environment, which must be reliable and meet specific SLAs for performance and uptime.
 
@@ -52,7 +52,7 @@ Determine the costs for each environment, including infrastructure, services, li
 
 ### Optimize the production environment
 
-Optimizing costs in the production environment involves implementing strategies to reduce unnecessary expenses and improve operational efficiencies. Focus on differentiating production deployments and meeting the needs of the users. For example, you can:
+Optimizing costs in the production environment involves implementing strategies to reduce unnecessary expenses and improve operational efficiencies. Focus on differentiating production deployments and meeting the needs of users. For example, you can:
 
 - *Differentiate regions*: Spend less on regions that serve fewer customers. For example, you should invest more in a region that serves 90 percent of your users than in a region that serves 10 percent of your users. Adjust your deployment strategy to meet the requirements of each region and user segment.
 
@@ -70,25 +70,25 @@ A DR environment refers to infrastructure and processes that a workload uses to 
 
 - *Determine RTOs and RPOs*: To help determine the design of the DR environment, define the acceptable downtime and data loss limits for each system or application.
 
-- *Optimize a cold DR environment*: A cold DR environment has limited to no infrastructure or running services. You can use infrastructure as code (IaC) to quickly deploy infrastructure in a disruptive event. Your backup and storage policies need to meet the RPOs and RTOs of the environment. Ensure that the amount and frequency of data backups isn't more robust than needed.
+- *Optimize a cold DR environment*: A cold DR environment has limited or no infrastructure or running services. You can use infrastructure as code (IaC) to quickly deploy infrastructure during a disruptive event. Your backup and storage policies need to meet the RPOs and RTOs of the environment. Ensure that the amount and frequency of data backups isn't more robust than needed.
 
   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: A cold DR environment is a cost-effective option, but you might have long recovery times.
 
 - *Optimize a hot DR environment*: All infrastructure and services run in a hot DR environment. The data mirrors the primary site in real time. It provides near-instantaneous failover and minimal data loss if there's a disaster. Consider an active-active deployment to optimize costs.
 
-- *Optimize a warm DR environment*: A warm DR approach is a middle ground between a cold DR environment and a hot DR environment. A warm approach is partially active and periodically syncs with the primary site. It offers a balance between cost and recovery time. However, it’s the least cost-optimized approach. Consider a cold or hot approach to optimize costs.
+- *Optimize a warm DR environment*: A warm DR approach is a middle ground between a cold DR environment and a hot DR environment. A warm environment is partially active and periodically syncs with the primary site. It offers a balance between cost and recovery time. However, it’s the least cost-optimized approach. Consider a cold or hot approach to optimize costs.
 
 ### Optimize preproduction environments
 
-Use preproduction workload environments to validate and stage deployment operations before releasing them to the production environment. These environments help ensure agility, separation of production and preproduction assets, and thorough testing of operations. Try to find and apply preproduction discounts, which are safe and low risk. Cloud service providers and vendors often offer discounts for preproduction environments. Consider the following strategies to optimize preproduction environments.
+Use preproduction workload environments to validate and stage deployment operations before releasing them to the production environment. These environments help ensure agility, separation of production and preproduction assets, and thorough testing of operations. Try to find and apply preproduction discounts. Cloud service providers and vendors often offer discounts for preproduction environments. Consider the following strategies to optimize preproduction environments.
 
 #### Evaluate preproduction environments
 
-Insufficient or improper allocation of preproduction environments might lead to over-provisioning or under-provisioning resources. To evaluate your preproduction environments for your workload, consider the following guidance:
+Insufficient or improper allocation of preproduction environments might lead to over-provisioning or under-provisioning of resources. To evaluate your preproduction environments for your workload, consider the following guidance:
 
 - *Understand the environment types*: Identify the types of preproduction environments, such as development, testing, and staging, that you need for your workload. Each environment should have a defined role and specific function to ensure efficient resource allocation.
 
-- *Align with users' requirements*: Before you set up preproduction environments, understand the requirements and expectations of the users. Tailor the features and specifications based on their needs to avoid unnecessary expenses of features or resources.
+- *Align with users' requirements*: Before you set up preproduction environments, understand the requirements and expectations of your users. Tailor the features and specifications based on their needs to avoid unnecessary expenses of features or resources.
 
 - *Consolidate the environment*: Determine if you can combine environments without compromising their functionality. Combine environments that have functions that don’t overlap. For instance, you can merge a user acceptance environment with a quality assurance environment. The functions are distinct, and one environment is usually idle when the other is in use.
 
@@ -108,7 +108,7 @@ The following table provides examples of common preproduction environments.
 
 Use governance to control expenses and mitigate risks in preproduction environments. In preproduction, you have flexibility to tailor configurations and deploy resources. The more the preproduction environment deviates from the production environment, the greater the potential risk. Use governance to constrain preproduction environments. Consider the following guidelines:
 
-- *Limit performance tiers*: Evaluate the performance requirements of your preproduction environments. Choose the appropriate performance tiers that balance cost and performance. Services often have different tiers, and some of these tiers are more suitable for testing. Some services have tiers that offer production-like features but don't come with an SLA. These services reduce costs but still provide the necessary functionality for testing and development.
+- *Limit performance tiers*: Evaluate the performance requirements of your preproduction environments. Choose performance tiers that balance cost and performance. Services often have different tiers, and some of these tiers are more suitable for testing. Some services have tiers that offer production-like features but don't come with an SLA. These services reduce costs but still provide the necessary functionality for testing and development.
 
 - *Understand preproduction SKUs*: Some SKUs are designed for development environments. To optimize costs, evaluate services and tiers. Opt for low-performance tiers if the workload doesn't require high performance.
 
@@ -116,23 +116,23 @@ Use governance to control expenses and mitigate risks in preproduction environme
 
 - *Limit retention and logging*: Define retention policies for logs and data in preproduction environments. Consider the necessary duration for retaining logs and data based on compliance requirements and cost considerations. Avoid excessive logging and retention to reduce storage costs.
 
-- *Use a consistent CPU architecture*: Use the same CPU architecture in preproduction and production. For example, applications that are for the x86 architecture don't run natively on Azure Resource Manager and vice versa. Use the same CPU architecture as your production environment to ensure compatibility and minimize potential issues.
+- *Use a consistent CPU architecture*: Use the same CPU architecture in preproduction and production. For example, x86 applications don't run natively on Azure Resource Manager, and vice versa. Use the same CPU architecture as your production environment to ensure compatibility and minimize potential issues.
 
-- *Use the same operating system*: Avoid changing the operating system, for example Windows to Linux, or kernel in preproduction environments. Software that's built for Windows often doesn't run natively on Linux without a compatibility layer and vice versa. The file systems and directory structures are different, which can cause application pathing issues. Consistent environments help reduce the risk of compatibility issues and ensure smooth deployments.
+- *Use the same operating system*: Avoid changing the operating system (for example from Windows to Linux) or kernel in preproduction environments. Software that's built for Windows often doesn't run natively on Linux without a compatibility layer, and vice versa. The file systems and directory structures are different, which can cause application pathing issues. Consistent environments help reduce the risk of compatibility issues and ensure smooth deployments.
 
 - *Constrain scaling*: To optimize cost, you can constrain automation to mitigate runaway automation. For example, set a maximum scaling limit at three in the development environment, and set it at ten in the production environment. Constrain scaling to help control the resource usage and automation cost.
 
-- *Turn off unneeded resources*: Turn off resources when they aren't actively used, such as off hours and weekends. You can use automation tools or scripts to schedule the shutdown and startup of resources. Some vendors provide APIs that you can use to programmatically stop and start the resources. Consider using IaC to create ephemeral environments that you can tear down after using.
+- *Turn off unneeded resources*: Turn off resources when they aren't actively used, such as during off hours and weekends. You can use automation tools or scripts to schedule the shutdown and startup of resources. Some vendors provide APIs that you can use to programmatically stop and start the resources. Consider using IaC to create ephemeral environments that you can remove when you no longer need them.
 
 #### Balance similarity with production
 
 Tailor the preproduction environment to effectively manage risks while still identifying and addressing potential risks before transitioning to production. Ensure that each instance of an environment is sufficiently different from production to avoid unnecessary costs. It can be expensive to mirror the preproduction environment exactly with production. Consider the following factors:
 
-- *Avoid exact replicas*: Avoid making the preproduction environment an exact copy of production. It can unnecessarily increase costs. Create a preproduction environment that's cost-effective but can still uncover and address potential risks before deployment.
+- *Avoid exact replicas*: Avoid making the preproduction environment an exact copy of production. It can unnecessarily increase costs. Create a preproduction environment that's cost-effective but enable you to uncover and address potential risks before deployment.
 
-- *Avoid extreme deviations*: Avoid excessive deviation from production, like using different services. Different services might not accurately simulate real-world risks. Determine a risk threshold, and don't cross the threshold solely for cost-saving reasons.
+- *Avoid extreme deviations*: Avoid excessive deviation from production, like the use of different services. Different services might not accurately simulate real-world risks. Determine a risk threshold, and don't cross the threshold solely to save money.
 
-- *Shorten runtimes*: Consider shortening the runtime of processes in the preproduction stage to save money. Be cautious of new vulnerabilities that might arise, such as undetected memory leaks.
+- *Shorten runtimes*: Consider shortening the runtimes of processes in the preproduction stage to save money. Be cautious of new vulnerabilities that might arise, such as undetected memory leaks.
 
 - *Review licenses*: Review the licensing plans for your security tools. If the number of nodes vary significantly between your production and preproduction setups, reassess your needs to fine-tune costs without compromising security.
 
@@ -156,23 +156,23 @@ Development environments are designed for development, testing, and debugging pu
 
 You can optimize costs in a preproduction environment by using endpoint emulation or mock endpoints, particularly for expensive resources like GPUs. Identify components or services in your preproduction environment that are the most expensive or resource-intensive. Use mock endpoints to simulate the responses of these costly components without invoking them. To simulate API responses, you can use tools like WireMock, Postman's mock server, or custom implementations.
 
-Emulation and mock endpoints help save costs, but you must ensure that they accurately represent the production environment to a sufficient degree for testing. Strike a balance between accuracy and cost to help avoid future issues in production. For example, if GPUs are a major cost factor, consider GPU emulation for tasks that don't require real GPU processing power in preproduction stages. Emulation might not fully represent the performance or quirks of real GPUs, so use it when exact GPU behavior isn't critical for preproduction testing.
+Emulation and mock endpoints help save costs, but you must ensure that they represent the production environment to a sufficient degree for testing. Strike a balance between accuracy and cost to help avoid future issues in production. For example, if GPUs are a major cost factor, consider GPU emulation for tasks that don't require real GPU processing power in preproduction stages. Emulation might not fully represent the performance or quirks of real GPUs, so use it when exact GPU behavior isn't critical for preproduction testing.
 
 ## Azure facilitation
 
-**Governance:** With Azure Policy, you can limit resource types, SKUs, and instances by defining policy rules that enforce restrictions on the types of resources that you can deploy in your Azure environment. You can maintain control over the provisioned resources and ensure compliance with your organization's policies and best practices.
+**Consider governance:** With Azure Policy, you can limit resource types, SKUs, and instances by defining policy rules that enforce restrictions on the types of resources that you can deploy in your Azure environment. You can maintain control over the provisioned resources and ensure compliance with your organization's policies and best practices.
 
 To limit resource types by using Azure Policy, you can define policy rules that specify the allowed resource types. Apply those rules to the relevant Azure subscriptions or resource groups. Azure Policy prevents users from deploying resources that aren't allowed.
 
-**Turn off resources:** You can use Azure Automation or Azure Logic Apps to create a schedule that turns off the resources during specific time periods, such as outside of normal working hours or on weekends.
+**Turn off resources:** You can use Azure Automation or Azure Logic Apps to create a schedule that turns off resources during specific time periods, such as outside of normal working hours or on weekends.
 
-**Cost visibility and analysis:** Azure Advisor is a tool that provides cost optimization recommendations, including identifying areas of virtual machine usage that need optimization. Use Advisor to help you make informed decisions and optimize costs in your Azure environment. Azure provides cost management tools and features that help prioritize spending. You can use these tools to track and analyze costs across environments, set budgets, and receive cost optimization recommendations.
+**Improve cost visibility and analysis:** Azure Advisor is a tool that provides cost optimization recommendations, including identifying areas of virtual machine usage that need optimization. Use Advisor to help you make informed decisions and optimize costs in your Azure environment. Azure provides cost management tools and features that help prioritize spending. You can use these tools to track and analyze costs across environments, set budgets, and receive cost optimization recommendations.
 
 **Configure resources:** Use Azure Resource Manager to define and manage resources in a declarative manner. You can tune resources that are allocated to each environment based on their specific requirements. Use templates and parameterize resource configurations to optimize costs.
 
-**Preproduction discounts:** Azure offers dev/test pricing options that provide discounted rates for nonproduction environments. You can allocate more resources and budget to critical production environments, which optimizes costs in nonproduction environments. You can also use the Azure licensing offer, Azure Hybrid Benefit.
+**Take advantage of preproduction discounts:** Azure offers dev/test pricing options that provide discounted rates for nonproduction environments. You can allocate more resources and budget to critical production environments, which optimizes costs in nonproduction environments. You can also use the Azure licensing offer, Azure Hybrid Benefit.
 
-**Endpoint emulation:** You can use [Azure API Management](/azure/api-management/api-management-key-concepts) for API mocking. API Management acts as a facade to the back-end services, which allows API providers to abstract API implementations and evolve back-end architecture without affecting API consumers.
+**Enable endpoint emulation:** You can use [Azure API Management](/azure/api-management/api-management-key-concepts) for API mocking. API Management acts as a facade to back-end services, which allows API providers to abstract API implementations and evolve back-end architecture without affecting API consumers.
 
 ## Related links
 
