@@ -77,10 +77,6 @@ When you perform capacity planning, you need to plan for different scenarios tha
 - Feature launch
 - Periodically
 
-#### Align forecasts with workload objectives
-
-Aligning forecasts with workload objectives involves adjusting predictive capacity models to ensure they meet the specific goals and demands of a given workload. This alignment ensures resources are adequately provisioned, preventing both underutilization and potential workload overloads. For example, if you aim to support an API for 1 million users to upload 1 MB files in a second, but current data shows slow write speeds, you'll need to adjust your system. It's essential to talk with stakeholders to grasp the workload's requirements. Make sure your plans align with the promises (SLAs) of your service providers. This ensures your capacity meets the expected demand and helps pinpoint areas of the system that might need changes.
-
 #### Use prediction techniques
 
 Forecasting future demand for a service or product involves using techniques like statistical analysis, trend analysis, and predictive modeling. Here's an overview of how you can use these techniques:
@@ -90,6 +86,10 @@ Forecasting future demand for a service or product involves using techniques lik
 - *Trend analysis*: Trend analysis involves examining historical data to identify consistent patterns and extrapolating those patterns into the future. For example, if workload demand has increased by 10 percent during the past year, you might forecast a continuation of this trend. When you analyze historical demand data over a period of time, you can identify growth or reduction trends. Use these trends as a basis for forecasting future demand. Trend analysis can also identify the effects of one-time events that cause rapid shifts in traffic (inorganic). For example, feature releases might consistently increase demand by 5 percent. If you have four major releases a year, you should plan for 5 percent growth each time.
 
 - *Predictive modeling*: Predictive modeling is the process of building mathematical models that use historical data and other relevant variables to make predictions about future demand. You can use techniques like machine learning algorithms, neural networks, or decision trees. These models can take into account multiple factors and variables to provide more accurate forecasts.
+
+### Align forecasts with workload objectives
+
+Aligning forecasts with workload objectives involves adjusting predictive capacity models to ensure they meet the specific goals and demands of a given workload. This alignment ensures resources are adequately provisioned, preventing both underutilization and potential workload overloads. For example, if you aim to support an API for 1 million users to upload 1 MB files in a second, but current data shows slow write speeds, you'll need to adjust your system. It's essential to talk with stakeholders to grasp the workload's requirements. Make sure your plans align with the promises (SLAs) of your service providers. This ensures your capacity meets the expected demand and helps pinpoint areas of the system that might need changes.
 
 ### Determine resource requirements
 
