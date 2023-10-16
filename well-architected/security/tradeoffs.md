@@ -54,57 +54,58 @@ The Security pillar requires a workload to verify explicitly. Verification occur
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Additional infrastructure.** One approach to cost optimizing a workload is to look for ways to reduce the diversity and quantity of components and increase density.
 
-Some workload components or design decisions exist only to protect the security (confidentiality, integrity, and availability) of systems and data. These components, although they enhance the security of the environment, also become a driver for cost. They must also be subject to cost optimization themselves. Some example sources for these security-centric additional resources or licensing costs are:
+Some workload components or design decisions exist only to protect the security (confidentiality, integrity, and availability) of systems and data. These components, although they enhance the security of the environment, also increase costs. They must also be subject to cost optimization themselves. Some example sources for these security-centric additional resources or licensing costs are:
 
-- Compute, network, and data segmentation for isolation sometimes involves running separate instances, avoiding co-location and density
-- Specialized observability tooling, such as a SIEM that can perform aggregation and threat intelligence
-- Specialized networking appliances or capabilities, such as firewalls or distributed denial-of-service prevention
-- Data classification tools required to capture the sensitivity and information type labels
-- Specialized storage or compute capabilities to support encryption at rest and in transit, such as an HSM or confidential compute offerings
-- Dedicated testing environments and testing tools to both validate security controls are functioning and to discover previously undiscovered gaps in coverage
-- Items above often extend beyond production environments, and into pre-production and disaster recovery resources as well
+- Compute, network, and data segmentation for isolation, which sometimes involves running separate instances, preventing co-location and reducing density.
+- Specialized observability tooling, like a SIEM that can perform aggregation and threat intelligence.
+- Specialized networking appliances or capabilities, like firewalls or distributed denial-of-service prevention.
+- Data classification tools that are required for capturing sensitivity and information-type labels.
+- Specialized storage or compute capabilities to support encryption at rest and in transit, like an HSM or confidential-compute functionality.
+- Dedicated testing environments and testing tools to validate that security controls are functioning and to uncover previously undiscovered gaps in coverage.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased demand on infrastructure.** Cost Optimization looks to drive down demand on resources to enable the usage of cheeper SKUs, fewer instances, or reduced consumption.
+The preceding items often exist outside of production environments, in preproduction and disaster recovery resources.
 
-- *Premium SKUs*: Some security measures in cloud and vendor offerings that can benefit the security posture of a workload might only be found in higher cost SKUs or tiers.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased demand on infrastructure.** The Cost Optimization pillar prioritizes driving down demand on resources to enable the use of cheaper SKUs, fewer instances, or reduced consumption.
 
-- *Log storage*: Increased storage costs for broad-coverage, higher fidelity security monitoring and audit data. Security observability data is also often stored for longer periods of time than what is typically needed for operational insights.
+- *Premium SKUs*: Some security measures in cloud and vendor services that can benefit the security posture of a workload might only be found in more expensive SKUs or tiers.
 
-- *Increased resource consumption*: In-process and on-host security controls can introduce additional demand for resources. Likewise, so can encryption for data at rest and in transit. In both cases potentially needing larger instance count or larger SKUs.
+- *Log storage*: Broad-coverage, higher-fidelity security monitoring and audit data increases storage costs. Security observability data is also often stored for longer periods of time than would typically be needed for operational insights.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased process and operational costs.** Personnel process costs are part of the overall total cost of ownership and are factored into the workload's return on investment. Optimizing these costs is a recommendation of Cost Optimization.
+- *Increased resource consumption*: In-process and on-host security controls can introduce additional demand for resources. Encryption for data at rest and in transit can also increase demand. Both scenarios can require higher instance counts or larger SKUs.
 
-- A more comprehensive and strict patch management regime leads to an increase in time and money spent on these routine tasks. This is often coupled with expectation of investing in preparedness for ad-hoc patching for zero-day exploits.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased process and operational costs.** Personnel process costs are part of the overall total cost of ownership and are factored into the workload's return on investment. Optimizing these costs is a recommendation of the Cost Optimization pillar.
+
+- A more comprehensive and strict patch management regime leads to an increase in time and money spent on these routine tasks. This increase is often coupled with the expectation of investing in preparedness for ad hoc patching for zero-day exploits.
 
 - Stricter access controls to reduce the risk of unauthorized access can lead to more complex user management and operational access.
 
-- Security training and awareness for security tools and processes come at a cost not only to personnel time but also for materials, instructors, and potentially training environments.
+- Training and awareness for security tools and processes take up enployee time and also incur costs for materials, instructors, and possibly training environments.
 
-- Complying with regulation might necessitate additional investments in supporting audits and generating compliance reporting.
+- Complying with regulations might necessitate additional investments for audits and generating compliance reporting.
 
-- Building security incident response preparedness takes an investment of time through planning and drilling.
+- Planning for and conductiong drills for security-incident response preparedness takes time.
 
-- Time to design and execute routine and ad-hoc processes associated with security, such as key or certificate rotation, needs to be allocated.
+- Time needs to be allocated for designing and performing routine and ad hoc processes that are associated with security, like key or certificate rotation.
 
-- Security validation as part of the SDLC usually brings specialized, sometimes paid, tooling. Results of tests also need time dedicated to both the prioritization of the results and the remediation of them.
+- The security validation of the SDLC usually requires specialized tools. Your organization might need to pay for these tools. Prioritizing and remediating issues found during testing also takes time.
 
-- Hiring third-party security practitioners to perform white-box or black-box testing, including penetration testing services.
+- Hiring third-party security practitioners to perform white-box testing or testing that's performed without the knowledge of a system's internal workings (sometimes known as black-box testing), including penetration testing, incurs costs.
 
 ## Security tradeoffs with Operational Excellence
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Complications in observability and serviceability.** Operational Excellence requires architectures to be serviceable and observable. The most "serviceable" architectures are the ones that are the most transparent to everyone involved.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complications in observability and serviceability.** Operational Excellence requires architectures to be serviceable and observable. The most serviceable architectures are the ones that are the most transparent to everyone involved.
 
-- Security benefits from having extensive logging to provide high fidelity insight into the workload for both alerting on deviations from baselines and for incident response. This can generate a significant volume of logs, which can make it harder to provide insights targeted at reliability or performance.
+- Security benefits from extensive logging that provides high fidelity insight into the workload for alerting on deviations from baselines and for incident response. This logging can generate a significant volume of logs, which can make it harder to provide insights that are targeted at reliability or performance.
 
-- When data masking compliance guidelines are followed, specific segments of logs or even large amounts of tabular data are redacted to protect confidentiality. A workload needs to evaluate how this observability gap might impact the ability to alert or be a hinderance in incident response.
+- When compliance guidelines for data masking are followed, specific segments of logs or even large amounts of tabular data are redacted to protect confidentiality. The team needs to evaluate how this observability gap might affect alerting or hinder incident response.
 
-- Strong resource segmentation increases observability complexity through requiring additional cross-service distributed tracing and correlation to capture flow traces. The segmentation also increases the surface area of compute and data to service.
+- Strong resource segmentation increases the complexity of observability by requiring additional cross-service distributed tracing and correlation for capturing flow traces. The segmentation also increases the surface area of compute and data to service.
 
-- Some security controls, by design, impede access. During incident response, these controls may slow emergency access by workload operators. As such, incident response plans require more emphasis on planning and drilling to reach acceptable efficacy.
+- Some security controls impede access by design. During incident response, these controls can slow down workload operators' emergency access. Therefore, incident response plans need to include more emphasis on planning and drills in order to reach acceptable efficacy.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Decreased agility and increased complexity.** Workload teams measure their velocity so they can improve quality, frequency, and efficiency of delivery activities over time. Workload complexity factors into effort and risk involved in operations.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Decreased agility and increased complexity.** Workload teams measure their speed so that they can improve the quality, frequency, and efficiency of delivery activities over time. Workload complexity factors into the effort and risk involved in operations.
 
-- Stricter change control and approval policies to reduce the risk of introducing security vulnerabilities can slow down the development and safe deployment of new features, yet the expectation of addressing security updates and patching could increase demand for more frequent deployments. Additionally, human-gated approval policies in operational processes could make it more difficult to automate that process.
+- Stricter change control and approval policies to reduce the risk of introducing security vulnerabilities can slow down the development and safe deployment of new features. However, the expectation of addressing security updates and patching can increase demand for more frequent deployments. Additionally, human-gated approval policies in operational processes could make it more difficult to automate that process.
 
 - Security testing will result in findings that need to be prioritized, potentially blocking planned work.
 
