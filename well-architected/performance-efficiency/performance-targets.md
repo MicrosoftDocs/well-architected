@@ -81,9 +81,9 @@ After you identify the key metrics, you need to specify targets or thresholds fo
 
 - *Use percentiles*: Percentiles, such as P99, P95, and P50, are the industry standard to represent the result of performance assessments. Percentiles are measures that indicate how much data the number includes. For example, P99 covers 99% of the data. Use percentiles, rather than simple averages, to provide a more comprehensive understanding of workload performance. To measure percentiles, collect performance data over a period of time, typically using monitoring tools or logging mechanisms. Then analyze this data to determine the response time values at different percentiles.
 
-### Facilitate collaboration
+### Document and expose performance target
 
-Meeting performance targets is a shared responsibility between development and operations teams. To ensure that the workload consistently meets or exceeds these targets, provide teams with the information and access to take action. To facilitate collaboration, consider these recommendations:
+Meeting performance targets is a shared responsibility between development and operations teams. To ensure that the workload consistently meets or exceeds these targets, provide teams with the information and access to take action. To document and expose perfomance targets, consider these recommendations:
 
 - *Document performance targets*: Document all performance targets. Ensure that all performance targets are documented in a centralized location, easily accessible by both development and operations teams. It promotes alignment and aids in real-time decision-making.
   
