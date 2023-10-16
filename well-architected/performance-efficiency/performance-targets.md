@@ -35,13 +35,17 @@ Without clear performance targets, teams might lack focus, resulting in ineffici
 
 Establishing performance targets is an essential step for achieving workload performance efficiency. Performance targets define the desired level of performance for your workload and help you gauge its effectiveness in meeting those objectives. Performance targets provide a benchmark to measure and compare a workload's efficiency. This benchmark can help you highlight improvement areas. The targets also align tasks with your organization's objectives and enhance business outcomes. Additionally, performance targets offer guidance in resource allocation, helping you ensure that workloads can adapt to varying demands while maintaining optimal performance.
 
-### Set workload performance targets
+### Set performance targets early
 
-To establish performance targets, identify metrics that are critical for measuring the performance of your workload. Performance targets can help you monitor workload performance over time, spot trends, and make informed changes for better results.
+Set performance targets before you deploy your workload. For a workload in a design, performance targets require research. Conduct market research, competitive analysis, and surveys to generate your performance target ranges. For a production workload that has no performance targets, use production data and customer feedback to establish performance targets.
 
-**Identify workload objectives.** Determine the objectives for your workload and understand your performance goals. For example, you might aim to reduce response times, increase throughput rates, or optimize resource use. A best-in-class product likely has more ambitious performance targets than an average product. Performance targets should align with business goals.
+### Understand workload requirements
 
-**Identify key metrics.** Based on your workload objectives, identify the key metrics that help measure progress toward your goals. Consider metrics related to availability, capacity, and response time.
+Understanding workload requirements means being aware of essential performance metrics like response time, throughput, and latency that are critical for your application. Aligning these performance targets with your organization's business goals ensures that the system meets the desired standards, whether for a best-in-class or average product. For example, you might aim to reduce response times, increase throughput rates, or optimize resource use. 
+
+### Identify key metrics
+
+Based on your workload objectives, identify the key metrics that help measure progress toward your goals. Consider metrics related to availability, capacity, and response time.
 
 - *Availability* is measured by the error rate, which represents the percentage of successful requests. For example, a success rate of 99.9 percent of requests is a common target.
 
@@ -49,17 +53,17 @@ To establish performance targets, identify metrics that are critical for measuri
 
 - *Response time* is assessed by analyzing the response time of the application. A common target is a completion rate of 99 percent of sign-in requests in less than 1 second.
 
-**Set specific targets.** After you identify the key metrics, specify targets or thresholds for each metric. Targets should be measurable, realistic, and aligned with your workload objectives. For example, you might set a target response time of less than 500 milliseconds (ms) or a target error rate of less than 1 percent. Avoid qualitative assessments of performance like *fast* or *slow*. By using numerical targets, you can objectively assess performance over time.
+### Set specific targets 
+
+After you identify the key metrics, specify targets or thresholds for each metric. Targets should be measurable, realistic, and aligned with your workload objectives. For example, you might set a target response time of less than 500 milliseconds (ms) or a target error rate of less than 1 percent. Avoid qualitative assessments of performance like *fast* or *slow*. By using numerical targets, you can objectively assess performance over time.
 
 - *Consider the customer*: When you set performance targets, adopt a customer-centric perspective. Recognizing the customer as the ultimate judge of performance helps ensure that performance targets align with customer expectations. This alignment involves considering both organizational objectives and the distinct requirements of the customer base. When you integrate these two aspects, you can tailor performance targets to reflect the desired customer experience and overall workload effectiveness. By defining performance objectives that consider customer expectations, you can strive to provide a high-quality customer experience and meet the needs of your customers.
 
 - *Use percentiles*: Percentiles, such as P99, P95, and P50, are the industry standard way to represent the result of performance assessments. Percentiles are statistical measures that indicate how much data the number includes. In the context of performance assessments, percentiles help quantify the distribution of response times or other performance metrics. The P99 represents the value that encompasses 99 percent of the data. The P95 represents 95 percent of the data, and P50 represents 50 percent of the data. 
 
-   Use percentiles, rather than simple averages, to provide a more comprehensive understanding of system performance. Outliers heavily affect the average value. Percentiles give insights into the overall distribution and variability of performance metrics. You can then set more realistic and meaningful performance targets based on different percentiles, ensuring better customer experiences and system reliability. 
+   Use percentiles, rather than simple averages, to provide a more comprehensive understanding of workload performance. Outliers heavily affect the average value. Percentiles give insights into the overall distribution and variability of performance metrics. You can then set more realistic and meaningful performance targets based on different percentiles, ensuring better customer experiences and system reliability. 
 
    To measure percentiles, collect performance data over a period of time, typically using monitoring tools or logging mechanisms. Then analyze this data to determine the response time values at different percentiles. By establishing performance targets based on specific percentiles, you can focus on optimizing critical flows to meet desired levels of customer experience and system efficiency.
-
-**Set performance targets early.** Set performance targets before you deploy your workload. For a workload in a design, performance targets require research. Conduct market research, competitive analysis, and surveys to generate your performance target ranges. For a production workload that has no performance targets, use production data and customer feedback to establish performance targets.
 
 ### Set performance targets for flows
 
