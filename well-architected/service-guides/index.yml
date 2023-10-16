@@ -34,7 +34,7 @@ highlightedContent:
 
 productDirectory:
   title: Browse the Well-Architected Framework service guides
-  summary: Service guides help you in decision-making for individual Azure components within a workload. Each guide highlights the core features and capabilities that are essential for achieving a well-architected state.
+  summary: Service guides help you make decisions about Azure components within a workload. Each guide highlights the core features and capabilities that are essential for achieving a well-architected state.
   items:
     # Card
     - title: API Management
@@ -324,6 +324,6 @@ additionalContent:
           summary: Learn about the updates for the Azure Well-Architected Framework.
           url: ../whats-new.md
         # Card
-        - title: What is WAF?
-          summary: Learn how to use WAF and audience profile.
+        - title: What is Well-Architected Framework?
+          summary: Learn how to use Well-Architected Framework and audience profile.
           url: ../what-is-well-architected-framework.md
