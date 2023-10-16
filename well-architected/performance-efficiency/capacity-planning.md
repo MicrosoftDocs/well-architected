@@ -29,10 +29,6 @@ This guide describes the recommendations for capacity planning. Capacity plannin
 
 Capacity planning is a forward-looking process that involves making decisions based on anticipated workload demands and patterns. Its goal is to optimize workload performance across both continuous and peak load scenarios. By understanding changes in usage, such as seasonal shifts or product releases, you can allocate resources strategically, preventing system strain during high demand periods. This proactive strategy reduces disruptions and bolsters performance efficiency. By analyzing past usage trends and growth data, you can forecast short and long-term needs. You can pinpoint potential bottlenecks and scaling issues, ensuring consistent and efficient workload performance.
 
-### Understand business goals
-
-Understanding business goals is about identifying the strategic and operational objectives of a workload and translating them into specific technical requirements. Before you can predict the capacity requirements of a workload, you need to understand your business goals and the workload. The information gathering includes understanding the purpose, requirements, and behavior of the workload. If your goal is to offer an API supporting file uploads from 1 million users with an average file size of 1 MB and storage within one second, you'd require disks with a write speed of 277.7 MBps and hardware capable of handling 277 concurrent writes. By analyzing this information, you can allocate resources to support the attainment of business objectives.
-
 ### Gather utilization data
 
 Gathering workload utilization data entails collecting and analyzing information on how a workload uses resources, based on both historical patterns for existing workloads and predictive measures for new ones. This process helps translate business objectives into technical requirements and is essential for forecasting capacity. Consider the following recommendations:
@@ -62,6 +58,10 @@ Understanding a new workload for capacity planning refers to predicting the reso
 - *Pilot projects or prototypes*: Small-scale pilot projects or prototypes can help you gather real-time data and feedback. You can then use this data to inform the capacity planning process and adjust the forecasted demand.
 
 - *External data sources*: External data sources like industry reports, market studies, or customer surveys can provide additional information for estimating demand for a new workload. These sources can offer valuable insights into customer preferences, market trends, and potential demand drivers.
+
+### Align utilization with workload objectives
+
+Aligning utilization data with workload objectives means comparing utilization data against the strategic objectives. The goal is to accurately predict and plan for future capacity needs. For example, if the goal is to support an API that facilitates file uploads for 1 million users with an average file size of 1 MB and ensures storage within a second, this poses certain demands on the system. However, if the current data indicates potential bottlenecks or shortfalls in write speeds, it becomes evident that capacity adjustments are necessary. This alignment helps inform where capacity enhancements and allows you to plan for them.
 
 ### Forecast demand
 
