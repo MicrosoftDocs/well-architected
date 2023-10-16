@@ -71,36 +71,6 @@ After you identify the key metrics, specify targets or thresholds for each metri
 
 In addition to establishing targets for the whole workload, establish performance targets for workload flows. These flows are essential to the workload's objectives. Performance targets for critical flows help you focus on the most important aspects of your workload.
 
-#### Identify critical workload flows
-
-Determine the flows within your workload that are critical for the successful operation of your business. These flows can be customer interactions, transactional processes, or any other operations that are vital to business objectives.
-
-Clearly state the beginning point and end point of the flow to make it measurable. By stating these points, you define the performance targets and you can effectively track and monitor the targets. For example, in a shopping cart transaction, you can define the precondition as *customer is logged in*. The starting point can be when the customer selects a button to add an item to the shopping cart. The ending point can be when the number on the shopping cart icon increases to reflect the added item. 
-
-By clearly defining beginning and end points, you can track and measure the efficiency and effectiveness of the process. These definitions also provide a basis for analyzing and improving the process over time.
-
-After you identify the critical flows, decompose each critical flow. Break down, or decompose, the critical flow into its architectural components. Then create relevant targets for each component. Example targets include API access time, database latency, and network latency.
-
-Remember to factor in the customer and billing models in your workload. A workload can have different access tiers. Higher-paying customers should experience the best performance. For example, multitenant solutions require performance targets to be available at the tenant level. Paid versus free access tiers might have distinct performance expectations and should have distinct performance targets.
-
-#### Identify dependencies
-
-A critical flow can have upstream dependencies and downstream dependencies within the workload. Identify all upstream and downstream dependencies. Then identify the guarantees that the upstream dependencies provide for this flow. Also identify the guarantees that this flow provides to downstream dependencies. 
-
-For example, a critical flow might need to have a 500-ms response time, and the customer flow has an external API call that takes 200 ms. The performance target for the customer flow should exclude the API call (200 ms) and should be within 300 ms. For the performance targets for the critical flow, exclude all upstream dependencies that lack performance guarantees. 
-
-Sometimes dependencies aren't under your control. Invest time to understand the performance profile of those dependencies. Learn about the guarantees that the dependencies have on your critical flow. Factor these guarantees into your performance targets.
-
-#### Identify key metrics
-
-Determine the key metrics that help you measure the performance of the critical flows. Consider metrics that directly affect the efficiency, responsiveness, and reliability of the critical flows. For example, consider response time, error rates, transaction throughput, resource use, and other relevant measurements.
-
-#### Set targets
-
-Set performance goals or targets for each identified metric. These targets should align with your business objectives and reflect the desired level of performance for the critical flows. Consider factors such as acceptable response times, maximum error rates, and desired transaction throughput. For example, you might set a performance target for a checkout flow at 3 seconds and a throughput at 100 checkouts per minute. 
-
-Focus on the important flows to improve efficiency and reduce noise. The goal for a flow should determine the performance targets.
-
 ### Monitor performance
 
 Track the performance of the workload and critical flows against performance targets. Then adjust resources to drive peak performance.
