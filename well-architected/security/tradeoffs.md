@@ -3,58 +3,58 @@ title: Security tradeoffs
 description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for security.
 author: ckittel
 ms.author: chkittel
-ms.date: 10/12/2023
+ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
 # Security tradeoffs
 
-Security provides confidentiality, integrity, and availability assurances of a workload's system and its users' data. Security controls are in place not only for the workload, but for software development and operational aspects of the system. When designing and operating a workload you can almost never compromise on security controls.
+Security provides confidentiality, integrity, and availability assurances of a workload's system and its users' data. Security controls are required for the workload and for the software development and operational components of the system. When teams design and operate a workload, they can almost never compromise on security controls.
 
-During the design phase of a workload, it's important to consider how decisions based on the [Security design principles](./principles.md) and recommendations in the [Design review checklist for Security](./checklist.md) might influence the goals and optimization efforts of other pillars. Certain security decisions may benefit some pillars, while being tradeoffs for others. This article lists example tradeoffs that a workload team might encounter when establishing security assurances.
+During the design phase of a workload, it's important to consider how decisions based on the [Security design principles](./principles.md) and the recommendations in the [Design review checklist for Security](./checklist.md) might influence the goals and optimizations of other pillars. Certain security decisions might benefit some pillars but constitute tradeoffs for others. This article describes example tradeoffs that a workload team might encounter when establishing security assurances.
 
 ## Security tradeoffs with Reliability
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased complexity.** Reliability favors simplicity and looks to minimize points of failure.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased complexity.** The Reliability pillar prioritizes simplicity and recommnds that points of failure are minimized.
 
-- Some security controls can increase the risk of *misconfiguration*, which could potentially lead to service disruption. Some examples include configuring network traffic rules, identity providers, virus scanning exclusions, and role- or attribute-based access control assignments.
+- Some security controls can increase the risk of misconfiguration, which could lead to service disruption. Examples of security controls that can introduce risk include network traffic rules, identity providers, virus scanning exclusions, and role-based or attribute-based access control assignments.
 
-- Increasing *segmentation* usually results in a more complex environment in terms of both resource & network topology and means of operator access. This complexity can lead to more points of failure in both processes and in workload execution.
+- Increased segmentation usually results in a more complex environment in terms of resource and network topology and operator access. This complexity can lead to more points of failure in processes and in workload execution.
 
-- Workload security tooling is often woven into many layers of the workload's architecture, operations, and runtime requirements; and may come with their own implications on resiliency, availability, and capacity planning. Failure to account for limitations in the tooling could lead to a reliability event, such as experiencing SNAT port exhaustion on an egress firewall.
+- Workload security tooling is often incorporated into many layers of a workload's architecture, operations, and runtime requirements. These tools might introduce their own implications for resiliency, availability, and capacity planning. Failure to account for limitations in the tooling can lead to a reliability event, like SNAT port exhaustion on an egress firewall.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased critical dependencies.** Reliability favors minimizing critical dependencies. A workload that minimizes critical dependencies, especially external ones, has better control of its points of failure.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:  Increased critical dependencies.** The Reliability pillar recommends minimizing critical dependencies. A workload that minimizes critical dependencies, especially external ones, has more control over its points of failure.
 
-Security demands that a workload 'verifies explicitly.' Verification happens through critical dependencies on key security components. If those components aren't available or malfunction, the verification task might not complete. This causes the workload to be in a degraded state. Some examples of these critical single points of failure dependencies are:
+The Security pillar requires a workload to verify explicitly. Verification occurs via critical dependencies on key security components. If those components aren't available or if they malfunction, verification might not complete. This failure puts the workload in a degraded state. Some examples of these critical single-point-of-failure dependencies are:
 
-- Ingress and egress firewalls
-- Certificate revocation lists
-- Accurate system time provided by a network time protocol (NTP) server
-- Identity providers, such as Microsoft Entra ID
+- Ingress and egress firewalls.
+- Certificate revocation lists.
+- Accurate system time provided by a Network Time Protocol (NTP) server.
+- Identity providers, like Microsoft Entra ID.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased disaster recovery complexity.** A workload must reliably recover from all forms of disaster.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:  Increased complexity of disaster recovery.** A workload must reliably recover from all forms of disaster.
 
-- Security controls might impact recovery time objectives. This can happen through additional steps needed to address encryption of backed up data or through operational access delays for site reliability triage.
+- Security controls might affect recovery time objectives. This effect can be caused by the additional steps that are needed encrypt backed up data or by operational access delays created by site reliability triage.
 
-- Security controls themselves, for example secret vaults and their contents or edge DDoS protection, need to be part of the disaster recovery plan of the workload and must be validated with recovery drilling.
+- Security controls themselves, for example secret vaults and their contents or edge DDoS protection, need to be part of the disaster recovery plan of the workload and must be validated via recovery drills.
 
 - Security or compliance requirements might limit data residency options or access control restrictions for backups, potentially further complicating recovery by segmenting even offline replicas.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased rate of change.** A workload that experiences runtime change is exposed to more risk of a reliability impact due to that change.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased rate of change.** A workload that experiences runtime change is exposed to more risk of reliability impact due to that change.
 
-- Stricter patching and update policies will lead to more changes in the workload's production environment. This change comes from sources such as these:
-  - Application code being released more frequently due to updates in libraries or updates in base container images
+- Stricter patching and update policies lead to more changes in a workload's production environment. This change comes from sources like these:
+  - Application code being released more frequently because of updates in libraries or updates in base container images
   - Increased routine patching to operating systems
   - Staying current with versioned applications or data platforms
   - Applying vendor patches to software in the environment
 
-- Key, service principal credentials, and certificate rotation activities increase risk of transient issues due to timing involved with the rotation operation and clients using the new value.
+- Rotation activities for keys, service principal credentials, and certificates increase the risk of transient issues due to the timing of the rotation and clients using the new value.
 
 ## Security tradeoffs with Cost Optimization
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Additional infrastructure.** One approach when cost optimizing a workload is to look for ways to reduce the diversity and quantity of components and looking for ways to increase density.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Additional infrastructure.** One approach to cost optimizing a workload is to look for ways to reduce the diversity and quantity of components and increase density.
 
-Some workload components or design decisions only exist to protect the security (confidentiality, integrity, and availability) of systems and data. These components, while enhancing the security of the environment, also become a driver for cost, and must be subject to cost-optimization themselves. Some example sources for these security-centric additional resources or licensing costs are:
+Some workload components or design decisions exist only to protect the security (confidentiality, integrity, and availability) of systems and data. These components, although they enhance the security of the environment, also become a driver for cost. They must also be subject to cost optimization themselves. Some example sources for these security-centric additional resources or licensing costs are:
 
 - Compute, network, and data segmentation for isolation sometimes involves running separate instances, avoiding co-location and density
 - Specialized observability tooling, such as a SIEM that can perform aggregation and threat intelligence
