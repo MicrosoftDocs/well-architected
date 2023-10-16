@@ -33,7 +33,13 @@ Capacity planning is a forward-looking process that involves making decisions ba
 
 Before you can predict the capacity requirements of a workload, you need to understand your business goals and the workload. The information gathering includes understanding the purpose, requirements, and behavior of the workload. You should gather historical workload data for existing workloads. For new workloads, you should gather data during the design phase.
 
-**Consider business goals.** Consider your business goals and translate them into technical requirements. For example, assume your goal is to provide an API that can handle file uploads from 1 million users, with an average file size of 1 MB and a storage time of one second or less. You'll need disks that have a write speed of 277.7 MBps and a CPU/NIC/memory configuration that can support 277 concurrent writes.
+#### Understand business goals
+
+Consider your business goals and translate them into technical requirements. For example, assume your goal is to provide an API that can handle file uploads from 1 million users, with an average file size of 1 MB and a storage time of one second or less. You'll need disks that have a write speed of 277.7 MBps and a CPU/NIC/memory configuration that can support 277 concurrent writes.
+
+#### Understand the workload
+
+For the purposes of capacity planning, understanding a workload means comprehensively analyzing how workload resources are used based on historical data for existing workloads, and forecasting demand for new workload using predictive methods. This process helps ensure resources are allocated efficiently.
 
 **Understand an existing workload.** Gather the historical data that's related to the workload. Include metrics like resource utilization, performance data, workload patterns, and any other relevant data points.
 
