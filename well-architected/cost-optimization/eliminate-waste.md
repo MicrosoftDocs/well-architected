@@ -25,6 +25,7 @@ Cut down on workload waste by making sure you only pay for the computer resource
 
 ### Eliminate waste from the application
 
+<<<<<<< HEAD
 An application feature refers to a specific functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that aren't providing value to the workload or aren’t worth their current investment. Removing unnecessary or underutilized features reduces costs associated with maintaining and supporting them. It allows you to allocate resources more efficiently to features that bring more value to the users and the business.
 
 **Evaluate the value.** To determine the value of a feature, consider its impact on the overall application and the value it provides to the customers. Some factors to consider include:
@@ -32,15 +33,30 @@ An application feature refers to a specific functionality or capability of appli
 - *Customer needs*: Assess how well the feature meets the needs and expectations of the customers. Customer feedback, surveys, and usage data can be valuable in understanding the perceived value.
 - *Business goals*: Evaluate how the feature aligns with the strategic objectives of the business. Consider how it supports revenue generation, customer satisfaction, or competitive advantage.
 - *Impact on user experience*: Determine the impact the feature has on enhancing the user experience and improving usability or productivity.
+=======
+Eliminating waste from an application involves identifying and removing underutilized or unnecessary features to reduce costs and reallocate resources more efficiently. The evaluation should be based on the value of application features to users and their alignment with business goals. An application feature refers to a specific functionality or capability of application software that serves a specific purpose or provides a specific service to the users. Identify and eliminate features that aren't providing value to the workload or aren’t worth their current investment. Removing unnecessary or underutilized features reduces costs associated with maintaining and supporting them. It allows you to allocate resources more efficiently to features that bring more value to the users and the business.
+
+**Evaluate the value.** To determine the value of a feature, consider its effects on the overall application and the value it provides to the customers. Some factors to consider include:
+
+- *Customer needs*: Assess how well the feature meets the needs and expectations of the customers. Customer feedback, surveys, and usage data can be valuable in understanding the perceived value.
+- *Business goals*: Evaluate how the feature aligns with the strategic objectives of the business. Consider how it supports revenue generation, customer satisfaction, or competitive advantage.
+- *Effect on user experience*: Determine the effect the feature has on enhancing the user experience and improving usability or productivity.
+>>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e
 - *Differentiation*: Assess whether the feature provides a unique selling point or competitive advantage compared to other applications in the market.
 
 **Evaluate the cost.** Understanding the cost associated with each feature is essential for effective resource allocation and optimization. The cost evaluation involves considering various aspects, such as:
 
 - *Development effort*: Assess the time, resources, and expertise required to develop and maintain the feature or surrounding features. Underutilized features often become a key source of technical debt.
 - *Maintenance and support*: Consider the ongoing costs associated with maintaining and supporting the feature, including bug fixes, security updates, and troubleshooting.
+<<<<<<< HEAD
 - *Infrastructure and resource utilization*: Evaluate the impact of the feature on infrastructure requirements, including server resources, storage, and bandwidth.
 - *Integration complexity*: Assess the complexity and cost of integrating the feature with other systems or third-party services.
 - *Performance considerations*: Evaluate the impact of the feature on the application's performance, including scalability, response time, and resource usage.
+=======
+- *Infrastructure and resource utilization*: Evaluate the effect of the feature on infrastructure requirements, including server resources, storage, and bandwidth.
+- *Integration complexity*: Assess the complexity and cost of integrating the feature with other systems or third-party services.
+- *Performance considerations*: Evaluate the effect of the feature on the application's performance, including scalability, response time, and resource usage.
+>>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e
 
 **Seek input.** Get everyone involved when you're trying to figure out if an application feature is worth the cost and effort. Talk to people like product managers, software developers, and business analysts. Collect data and study it to understand how a feature affects your business goals. Your development team can give you important information about how much work it takes to maintain certain features. Encourage them to speak up about features that might be more trouble than they're worth, especially if these features distract from creating new ones.
 
@@ -50,7 +66,11 @@ An application feature refers to a specific functionality or capability of appli
 
     > :::image type="icon" source="../_images/risk.svg"::: **Risk**: You could inadvertently remove features that are critical for certain users or scenarios and might negatively affect performance, security, operations, and security.
 
+<<<<<<< HEAD
 - *Reinvest*: Some application features might not be adding enough value in its current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential impact on the application.
+=======
+- *Reinvest*: Some application features might not be adding enough value in its current state but could add value if you reinvest in them. Reinvestment means reworking or promoting the application feature. Prioritize the identified improvements based on their value and feasibility. Determine the roadmap and timeline for implementing the changes, considering factors such as development resources, dependencies, and potential effect on the application.
+>>>>>>> 133a762bbe1df40b4fd76619bddc78880982651e
 - *Monetize*: Monetizing an application feature involves turning it into a revenue-generating opportunity. Sometimes features might provide value to users but aren’t worth the current investment. Explore opportunities to monetize these and other features, such as offering them as separate paid add-ons or licensing them to other companies.
 
 ### Eliminate waste from workload resources
@@ -102,10 +122,6 @@ Eliminating wasteful platform features involves identifying and removing unneces
 - *Use the right configurations*: You might be paying for more availability or performance than you need. Eliminate availability or performance guarantees the workload doesn’t need.
 - *Eliminate unneeded automation*: Evaluate your automation processes and eliminate any unnecessary automation that might incur extra costs.
 - *Eliminate tool redundancy*: Get rid of tools that you don't really need or that do the same thing as other tools you already have. Consider tools used for building software, writing code, security, or monitoring how things are running. For instance, if you're already using GitHub actions to build your software, you don't need to buy another tool that does the same thing. Before you buy more features or tools, check if what you already have can do the job. This way, you avoid wasting money and make the most of what you already have.
-
-### Eliminate waste from operational processes
-
-Cut out unnecessary steps in your work process to save time and money. Look for tasks that you're doing too much or don't really need, like excessive security tests. Focus on the biggest time-wasters first. You can make things more efficient by simplifying how you work, automating repetitive tasks, or changing who does what. For example, you could do fewer security tests or make them less detailed to save resources.
 
 ### Eliminate waste from prepaid agreements
 

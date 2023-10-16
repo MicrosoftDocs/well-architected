@@ -72,7 +72,7 @@ Security is one of the most important aspects of any architecture. [Azure Firewa
 
 ### Design checklist
 
-As you make design choices for Azure Firewall, review the [design principles](../security/security-principles.md) for security.
+As you make design choices for Azure Firewall, review the [design principles](../security/principles.md) for security.
 
 > [!div class="checklist"]
 > - Determine if you need *Forced Tunneling*.

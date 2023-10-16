@@ -46,7 +46,7 @@ Microsoft publishes extensive documentation about DevOps culture in a dedicated 
 
 Having strictly defined roles and responsibilities in your team could result in a level of discomfort for some team members in performing functions outside of their responsibility. You should have open and honest discussions with the team about team structure and be open to making adjustments when they can help team cohesion.
 
-<!-- ## Related links -->
+<!--- ## Related links -->
 
 
 ## Operational Excellence checklist  

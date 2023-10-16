@@ -33,7 +33,7 @@ To assess your IoT workload through the lenses of the Well-Architected Framework
 
 ## Design Principles
 
-[Five pillars of architectural excellence](../index.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Operational Excellence](../devops/overview.md).
+[Five pillars of architectural excellence](../pillars.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Operational Excellence](../devops/overview.md).
 
 |Design principle|Considerations|
 |---|---|
@@ -304,7 +304,7 @@ When you implement automation and DevOps in IoT systems, follow specific automat
 - [DPS X.509 attestation](/azure/iot-dps/concepts-x509-attestation)
 - [Azure IoT Hub scaling](/azure/iot-hub/iot-hub-scaling)
 - [Control access to Azure IoT Hub by using Azure Active Directory](/azure/iot-hub/iot-hub-dev-guide-azure-ad-rbac)
-- [Plan for capacity - Microsoft Azure Well-Architected Framework](/azure/architecture/framework/scalability/design-capacity)
+- [Plan for capacity - Microsoft Azure Well-Architected Framework](/azure/well-architected/scalability/design-capacity)
 - [Operational excellence design principles](../devops/principles.md)
 - [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot)
 - [Azure IoT documentation](/azure/iot-fundamentals)
