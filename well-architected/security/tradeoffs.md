@@ -79,17 +79,17 @@ The preceding items often exist outside of production environments, in preproduc
 
 - Stricter access controls to reduce the risk of unauthorized access can lead to more complex user management and operational access.
 
-- Training and awareness for security tools and processes take up enployee time and also incur costs for materials, instructors, and possibly training environments.
+- Training and awareness for security tools and processes take up employee time and also incur costs for materials, instructors, and possibly training environments.
 
 - Complying with regulations might necessitate additional investments for audits and generating compliance reporting.
 
-- Planning for and conductiong drills for security-incident response preparedness takes time.
+- Planning for and conducting drills for security-incident response preparedness takes time.
 
 - Time needs to be allocated for designing and performing routine and ad hoc processes that are associated with security, like key or certificate rotation.
 
 - The security validation of the SDLC usually requires specialized tools. Your organization might need to pay for these tools. Prioritizing and remediating issues found during testing also takes time.
 
-- Hiring third-party security practitioners to perform white-box testing or testing that's performed without the knowledge of a system's internal workings (sometimes known as black-box testing), including penetration testing, incurs costs.
+- Hiring third-party security practitioners to perform white-box testing or testing that's performed without the knowledge of a system's internal workings (sometimes known as *black-box testing*), including penetration testing, incurs costs.
 
 ## Security tradeoffs with Operational Excellence
 
@@ -105,45 +105,47 @@ The preceding items often exist outside of production environments, in preproduc
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Decreased agility and increased complexity.** Workload teams measure their speed so that they can improve the quality, frequency, and efficiency of delivery activities over time. Workload complexity factors into the effort and risk involved in operations.
 
-- Stricter change control and approval policies to reduce the risk of introducing security vulnerabilities can slow down the development and safe deployment of new features. However, the expectation of addressing security updates and patching can increase demand for more frequent deployments. Additionally, human-gated approval policies in operational processes could make it more difficult to automate that process.
+- Stricter change control and approval policies to reduce the risk of introducing security vulnerabilities can slow down the development and safe deployment of new features. However, the expectation of addressing security updates and patching can increase demand for more frequent deployments. Additionally, human-gated approval policies in operational processes can make it more difficult to automate those processes.
 
-- Security testing will result in findings that need to be prioritized, potentially blocking planned work.
+- Security testing results in findings that need to be prioritized, potentially blocking planned work.
 
-- Routine, ad-hoc, and emergency processes might require audit logging for compliance requirements, increasing the rigidity of executing the process.
+- Routine, ad hoc, and emergency processes might require audit logging to meet compliance requirements, which increases the rigidity of running the processes.
 
-- Workload teams that increase complexity for identity management activities as the granularity of role definitions and assignments are increased.
+- Workload teams might increase the complexity of identity management activities as the granularity of role definitions and assignments is increased.
 
-- Increased number of routine operational tasks associated with security, such as certificate management, increase the number of processes to automate.
+- An increased number of routine operational tasks that are associated with security, like certificate management, increases the number of processes to automate.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased coordination efforts.** A team that minimizes external points of contact and review can control their operations and timeline more effectively.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased coordination efforts.** A team that minimizes external points of contact and review can control their operations and timeline more effectively.
 
-- As external compliance requirements increase, either from the organizational level or from external entities, so does the complexity of being able to achieve and prove compliance with auditors.
+- As external compliance requirements from the larger organization or from external entities increase, the complexity of achieving and proving compliance with auditors also increases.
 
-- Security involves specialties not typically found on workload teams. Those proficiencies are then often sourced from the organization or from third parties. In both cases, coordination of effort, access, and responsibility needs to be established.
+- Security requires specialized skills that workload teams don't typically have. Those proficiencies are often sourced from the larger organization or from third parties. In both cases, coordination of effort, access, and responsibility needs to be established.
 
-- Compliance or organizational requirements often require maintained communications plans for responsible disclosure of breach, which must be factored into security coordination efforts.
+- Compliance or organizational requirements often require maintained communication plans for responsible disclosure of breaches. These plans must be factored into security coordination efforts.
 
 ## Security tradeoffs with Performance Efficiency
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased latency and overhead.** A workload that is performant reduces latency and optimizes by removing overhead.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased latency and overhead.** A performant workload reduces latency and overhead.
 
-- Inspection security controls, such as firewalls and content filters, are placed in line with the flows they are securing. Those flows are then subject to additional verification, which adds latency to those requests.
+- Inspection security controls, like firewalls and content filters, are placed in the flows they secure. Those flows are subject to additional verification, which adds latency to requests.
 
-- Identity controls require each invocation of the controlled component to be verified explicitly, which consume extra compute cycles and could require network traversal for authorization.
+- Identity controls require each invocation of a controlled component to be verified explicitly. This verification consumes compute cycles and might require network traversal for authorization.
 
-- Encryption and decryption need dedicated compute cycles which requires additional time and system resources spent on those flows. Factors for this increase are usually correlated with algorithm complexity and generation of high-entropy and diverse initialization vectors (IV).
+- Encryption and decryption require dedicated compute cycles. These cycles increase the time and resources consumed by those flows. This increase is usually correlated with complexity of the algorithm and the generation of high-entropy and diverse initialization vectors (IV).
 
-- As the extensiveness of logging increases so can the impact on system resources and network bandwidth to stream those logs.
+- As the extensiveness of logging increases, the impact on system resources and network bandwidth for streaming those logs can also increase.
 
-- Resource segmentation will often introduce additional network hops in the workload's architecture.
+- Resource segmentation frequently introduces network hops in the workload's architecture.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased chance of misconfiguration.** Reliably obtaining performance targets depends on predictable implementations of the design.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased chance of misconfiguration.** Reliably meeting performance targets depends on predictable implementations of the design.
 
-A misconfiguration or over-extending of security controls can lead to performance impact through an inefficient configuration. Some examples of where security control configuration could impact performance are:
+A misconfiguration or over-extension of security controls can lead to performance impact because of inefficient configuration. Examples of security control configurations that can affect performance include:
 
-- Firewall rule ordering, complexity, and quantity (granularity)
-- Not excluding key files from file integrity monitors or virus scanners leading to lock contention
-- Web application firewalls doing deep packet inspection for languages or platforms that are irrelevant for the components being protected
+- Firewall rule ordering, complexity, and quantity (granularity).
+
+- The inclusion of key files in file integrity monitors or virus scanners, which can lead to lock contention.
+
+- Web application firewalls performing deep packet inspection for languages or platforms that are irrelevant for the components that are being protected.
 
 ## Related links
 
