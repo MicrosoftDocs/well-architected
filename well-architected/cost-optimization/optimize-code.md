@@ -31,13 +31,13 @@ By optimizing code, you can identify and eliminate inefficiencies that might lea
 
 Optimizing code for cost optimization means improving code to achieve the same functionality with less. The goal is to use fewer per-instance resources, such as CPU cycles, memory, and storage. By reducing resource consumption, you can save money when applications handle large volumes of data or experience high traffic loads.
 
-Code improvements are most effective when you're following other cost optimization efforts around scaling, right-sizing, redundancy, and throttling. After you take care of these foundational elements, you can consider code optimization.
+Code improvements are most effective when you're following other cost optimization efforts around scaling, rightsizing, redundancy, and throttling. After you take care of these foundational elements, you can consider code optimization.
 
 You might not know if you have inefficient code. Serverless, autoscale, and reliability features can mask code inefficiencies. The following strategies can help you identify and fix code that costs more than it should.
 
 ### Instrument your code
 
-Instrumenting code is the practice of adding code snippets or libraries that collect data and monitor code performance during runtime. Code instrumentation allows developers to gather information about key metrics, such as resource consumption (CPU or memory usage) and execution time. By instrumenting code, developers can gain insights into code hot paths, identify performance bottlenecks, and optimize the code for better efficiency and cost-effectiveness.
+Instrumenting code is the practice of adding code snippets or libraries that collect data and monitor code performance during runtime. It allows developers to gather information about key metrics, such as resource consumption (CPU or memory usage) and execution time. By instrumenting code, developers can gain insights into code hot paths, identify performance bottlenecks, and optimize the code for better efficiency and cost-effectiveness.
 
 In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code problem, the cheaper it is to fix. You want to automate as much of this code analysis as possible. Use dynamic and static tools for code analysis to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
 
@@ -274,7 +274,7 @@ Consider rightsizing virtual machines, adjusting memory allocation, and optimizi
 
 **Network protocols:** Various Azure services support high-speed network protocols like HTTP/2 and QUIC for efficient communication between services and applications.
 
-**Connection pooling:** Azure services, such as [Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/), [Azure Cosmos DB](https://azure.microsoft.com/products/cosmos-db/), and [Azure Cache for Redis](https://azure.microsoft.com/en-us/products/cache/), automatically handle connection pooling. Connection pooling enables efficient reuse of database connections to reduce the overhead of establishing new connections.
+**Connection pooling:** Azure services, such as [Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/), [Azure Cosmos DB](https://azure.microsoft.com/products/cosmos-db/), and [Azure Cache for Redis](https://azure.microsoft.com/products/cache/), automatically handle connection pooling. Connection pooling enables efficient reuse of database connections to reduce the overhead of establishing new connections.
 
 **Batching:** Azure supports batch processing in various services, so you can group multiple operations together and run them in a single request. Batch processing can significantly improve efficiency and reduce network overhead.
 
@@ -298,7 +298,7 @@ Consider rightsizing virtual machines, adjusting memory allocation, and optimizi
 
 - [Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/)
 - [Azure Cosmos DB](https://azure.microsoft.com/products/cosmos-db/)
-- [Azure Cache for Redis](https://azure.microsoft.com/en-us/products/cache/)
+- [Azure Cache for Redis](https://azure.microsoft.com/products/cache/)
 
 ## Cost Optimization checklist
 
