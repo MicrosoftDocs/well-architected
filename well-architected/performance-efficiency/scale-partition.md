@@ -41,15 +41,15 @@ Both scaling and partitioning contribute to performance efficiency by ensuring t
 
 ### Optimize scaling
 
-Scaling adjustments include increasing or decreasing the number of servers, instances, or resources to meet the changing demands of the workload. Scaling allows the workload to handle increased traffic or workload demands without experiencing performance degradation or downtime.
+Optimize scaling is the process of adjusting the number of servers, instances, or resources to meet the fluctuating demands of a workload. It ensures that the workload can handle increased traffic or demands without experiencing performance degradation or downtime.
 
 #### Choose a scaling strategy
 
-It's important to choose the right scaling strategy, either vertical or horizontal, based on the specific characteristics and requirements of your workload.
+Choosing a scaling strategy involves deciding between vertical or horizontal methods to enhance the capacity of a workload based on its specific requirements. Selecting the right strategy ensures that resources are adjusted efficiently to meet workload demands without overuse or waste. To choose the right scaling strategy, you need to understand the uses cases for vertical and horizontal scaling and how they meet the needs of your workload.
 
-**Understand vertical scaling.** Using vertical scaling, you can increase the capacity of a single resource, such as upgrading to a larger server or instance size. Vertical scaling is useful when the workload can benefit from increased processing power, memory, or other resources within a single instance. Vertical scaling is appropriate for workloads that aren't easily divided into smaller parts or when the application architecture doesn't support horizontal scaling.
+- *Understand vertical scaling.* Using vertical scaling, you can increase the capacity of a single resource, such as upgrading to a larger server or instance size. Vertical scaling is useful when the workload can benefit from increased processing power, memory, or other resources within a single instance. Vertical scaling is appropriate for workloads that aren't easily divided into smaller parts or when the application architecture doesn't support horizontal scaling.
 
-**Understand horizontal scaling.** Using horizontal scaling, you can add more instances or resources to distribute the workload across multiple servers. Horizontal scaling offers benefits such as improved resiliency, increased capacity, and the ability to handle increased traffic or workload demands. It's effective for cloud-native applications designed to run on multiple nodes. Horizontal scaling is appropriate for workloads that can be divided into smaller parts that run independently.
+- *Understand horizontal scaling.* Using horizontal scaling, you can add more instances or resources to distribute the workload across multiple servers. Horizontal scaling offers benefits such as improved resiliency, increased capacity, and the ability to handle increased traffic or workload demands. It's effective for cloud-native applications designed to run on multiple nodes. Horizontal scaling is appropriate for workloads that can be divided into smaller parts that run independently.
 
 **Understand the workload.** The suitability of vertical or horizontal scaling depends on the specific characteristics and requirements of the workload. Regular performance monitoring and testing in the following areas can help optimize the scaling strategy over time:
 
