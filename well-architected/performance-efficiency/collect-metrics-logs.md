@@ -113,9 +113,7 @@ By collecting platform data, you can gain insights into the health and behavior 
 
 ### Collect database data and storage data
 
-Collect database data and storage performance data so you can identify bottlenecks, diagnose issues, and make informed decisions to improve the overall performance and reliability of your workload. Many database and storage systems provide their own monitoring tools. These tools collect performance data specific to those systems. Database and storage systems often generate logs that contain performance-related events and indicators, and you should collect those logs.
-
-Collect various types of database data and storage performance data:
+Collect database data and storage performance data so you can identify bottlenecks, diagnose issues, and make informed decisions to improve the overall performance and reliability of your workload. Many database and storage systems provide their own monitoring tools. These tools collect performance data specific to those systems. Database and storage systems often generate logs that contain performance-related events and indicators, and you should collect those logs. Collect various types of database data and storage performance data:
 
 - *Throughput*: Data about the amount of data that's read from or written to the storage system over a period of time. Throughput data indicates the data transfer capabilities.
 
@@ -159,15 +157,9 @@ At a minimum, collect data about the following performance areas.
 
 Your performance data should align with the performance targets. The data needs to represent workload or flow performance completely and accurately as it relates to performance targets. For example, the response time for a web service has a performance target of 500 ms. Collect response times at regular intervals to fully understand response times. Regularly analyze the performance data you collect. Regular analysis helps you catch and resolve performance issues promptly.
 
-### Create alerts
+**Create alerts.** Actionable alerts allow you to identify and resolve performance issues. They communicate the violated threshold, business effects, and components that are involved. Set up alerts for architecture components and critical flows. To begin, pick common and recommended alert rules. You can later change the rules as needed. Alerts should help you predict potential performance degradation before it becomes a problem. When you can't create an alert on a dependency that's outside your control, create a solution that collects proxy measurements, such as dependency call duration.
 
-Actionable alerts allow you to identify and resolve performance issues. They communicate the violated threshold, business effects, and components that are involved. Set up alerts for architecture components and critical flows. To begin, pick common and recommended alert rules. You can later change the rules as needed.
-
-Alerts should help you predict potential performance degradation before it becomes a problem. When you can't create an alert on a dependency that's outside your control, create a solution that collects proxy measurements, such as dependency call duration.
-
-### Set data limits
-
-Set sensible limits for how much data to collect and how long to retain it. Telemetry can be verbose and provide too much data to sift through. You need to capture key performance signals or be able to efficiently pull a signal from your metrics sink.
+**Set data limits.** Set sensible limits for how much data to collect and how long to retain it. Telemetry can be verbose and provide too much data to sift through. You need to capture key performance signals or be able to efficiently pull a signal from your metrics sink.
 
 ## Azure facilitation
 
