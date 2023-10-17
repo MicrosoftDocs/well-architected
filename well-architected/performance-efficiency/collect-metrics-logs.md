@@ -163,8 +163,6 @@ Your performance data should align with the performance targets. The data needs 
 
 ## Azure facilitation
 
-Azure services can help you collect metrics in your workload.
-
 **Collecting and analyzing performance data:** Azure Monitor is a cloud monitoring service that provides visibility into the health and performance of your applications. Use it to collect and analyze metrics, logs, and other telemetry data. You can configure Azure Monitor to collect performance data for your workload.
 
 Within Azure Monitor, you can use Azure Monitor Logs to collect, analyze, and visualize log data from your applications and systems. You can configure Azure Monitor Logs to ingest logs from your application, including application-level logs and infrastructure logs. By aggregating logs, you can cross-query events and gain insights into the performance of your application. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) and [Pricing for Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
