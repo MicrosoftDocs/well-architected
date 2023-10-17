@@ -1,6 +1,6 @@
 ---
 title: Security tradeoffs
-description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for security.
+description: Learn about tradeoffs that you might encounter when designing workload architectures and operations to establish security assurances.
 author: ckittel
 ms.author: chkittel
 ms.date: 11/15/2023
@@ -17,7 +17,7 @@ During the design phase of a workload, it's important to consider how decisions 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased complexity.** The Reliability pillar prioritizes simplicity and recommends that points of failure are minimized.
 
-- Some security controls can increase the risk of misconfiguration, which can lead to service disruption. Examples of security controls that can introduce risk include network traffic rules, identity providers, virus scanning exclusions, and role-based or attribute-based access control assignments.
+- Some security controls can increase the risk of misconfiguration, which can lead to service disruption. Examples of security controls that can introduce misconfiguration include network traffic rules, identity providers, virus scanning exclusions, and role-based or attribute-based access control assignments.
 
 - Increased segmentation usually results in a more complex environment in terms of resource and network topology and operator access. This complexity can lead to more points of failure in processes and in workload execution.
 
@@ -25,7 +25,7 @@ During the design phase of a workload, it's important to consider how decisions 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:  Increased critical dependencies.** The Reliability pillar recommends minimizing critical dependencies. A workload that minimizes critical dependencies, especially external ones, has more control over its points of failure.
 
-The Security pillar requires a workload to verify explicitly. Verification occurs via critical dependencies on key security components. If those components aren't available or if they malfunction, verification might not complete. This failure puts the workload in a degraded state. Some examples of these critical single-point-of-failure dependencies are:
+The Security pillar requires a workload to explicitly verify identities and actions. Verification occurs via critical dependencies on key security components. If those components aren't available or if they malfunction, verification might not complete. This failure puts the workload in a degraded state. Some examples of these critical single-point-of-failure dependencies are:
 
 - Ingress and egress firewalls.
 - Certificate revocation lists.
@@ -139,7 +139,7 @@ The preceding items often also exist outside of production environments, in prep
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased chance of misconfiguration.** Reliably meeting performance targets depends on predictable implementations of the design.
 
-A misconfiguration or over-extension of security controls can lead to performance impact because of inefficient configuration. Examples of security control configurations that can affect performance include:
+A misconfiguration or overextension of security controls can impact performance because of inefficient configuration. Examples of security control configurations that can affect performance include:
 
 - Firewall rule ordering, complexity, and quantity (granularity).
 
