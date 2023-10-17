@@ -73,6 +73,8 @@ In the overall plan, include containment and triage scripts. Teams follow these 
 
 ##### Other items to include
 
+Document all standard tools that will be used during incidents for internal communication, like Microsoft Teams, and for tracking the activities over the course of the incident, like ticketing tools or backlog planning tools.
+
 Document your emergency credentials, otherwise known as *break-glass accounts*. Include a step-by-step guide that describes how they should be used.
 
 Create emergency response drill instructions, and keep a record of when drills have been performed.
@@ -81,7 +83,7 @@ Document any legal or regulatory measures necessary, for example communicating d
 
 ### Incident detection
 
-When you have a well-designed observability platform that monitors for anomalies and automatically alerts on them, you can quickly detect issues and determine their severity. If the issue is deemed an emergency, the plan can be initiated. In some cases, the support team isn't notified via the observability platform. Customers might report issues to support by using support team communication avenues. Or they might reach out to people that they regularly work with, like account executives or VPs. No matter how the support team is notified, they should always follow the same steps to validate the issue and determine the severity. Deviation from the response plan can add stress and confusion.
+When you have a well-designed observability platform that monitors for anomalies and automatically alerts on them, you can quickly detect issues and determine their severity. If the issue is deemed an emergency, the plan can be initiated. In some cases, the support team isn't notified via the observability platform. Customers might report issues to support by using support team communication avenues. Or they might reach out to people that they regularly work with, like account executives or VPs. No matter how the support team is notified, they should always follow the same steps to validate the issue and determine the severity. Deviation from the response plan can add stress and confusion.   
 
 ### Containment
 
@@ -93,7 +95,7 @@ After you successfully contain the issue, you can begin triage work. The steps t
 
 ### RCA reporting
 
-The service-level agreements (SLAs) to your customers might dictate that you have to issue RCA reports within a certain time period after the incident is resolved. The incident owner should create the RCA reports. If that's not possible, another person who worked closely with the incident owner can create the RCA reports. This strategy ensures an accurate accounting of the incident.
+The service-level agreements (SLAs) to your customers might dictate that you have to issue RCA reports within a certain time period after the incident is resolved. The incident owner should create the RCA reports. If that's not possible, another person who worked closely with the incident owner can create the RCA reports. This strategy ensures an accurate accounting of the incident. Typically, organizations have a defined RCA template with guidelines about how information is presented and what kinds of information can or can't be shared. If you need to create your own template and guidelines, ensure that they are reviewed and approved by stakeholders.
 
 ### Incident postmortems
 
