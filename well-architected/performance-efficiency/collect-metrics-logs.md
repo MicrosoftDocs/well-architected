@@ -43,7 +43,7 @@ Without data-driven insights, you might be unaware of underlying performance iss
 
 Performance optimization requires data to measure the current performance of a workload or a flow against its performance targets. You need to collect the right amount and diversity of data to measure the performance of the code and the infrastructure against [performance targets](performance-targets.md). Ensure that every component and flow within the system automatically generates continuous and meaningful metrics and logs. You need to source this data from diverse levels like the application, platform, storage, and operating system. Comprehensive performance data collection allows for a holistic understanding of performance, enabling precise identification of inefficiencies and avenues for improvement.
 
-### Centralize the data
+### Centralize performance data
 
 Centralizing performance metrics and logs is the process of collecting performance metrics and logs from various sources and storing them a central location. Create a central metrics sink and a central log sink. This centralization allows for easy access, analysis, and monitoring of performance metrics and logs across different systems and components. By centralizing metrics and logs, you gain visibility into the performance of your workload. Choose a suitable platform or tool that can aggregate and store workload performance metrics and logs.
 
