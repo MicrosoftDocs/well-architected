@@ -35,11 +35,12 @@ This guide describes the recommendations for selecting appropriate services for 
 ## Key design strategies
 
 The services you choose should align with your workload's performance targets and be adaptable to future capacity needs. As the workload expands or evolves, the services you use should match your performance standards without requiring major adjustments. Consider the balance between platform features and custom implementations. Platform features provide immediate solutions, but custom-built options offer precise tailoring. Your service selections should be both forward-thinking and tailored to your specific needs, taking into account the trade-offs between convenience and customization.
+
 ### Understand workload requirements
 
 Understanding workload requirements refers to grasping the technical and functional demands of a workload. This analysis helps determine the resources, storage, compute, network, and other specifications needed to run the workload. Aligning services with the specific needs of a workload helps prevent overprovisioning or underutilizing resources.
 
-Evaluate the needs and characteristics of your workload to determine the requirements. Align your workload requirements to your performance targets at every tier. You must account for constraints or dependencies. When you understand your workload requirements, you can make informed decisions. You can determine the right infrastructure and implement strategies to handle peak loads or variations in demand.
+Evaluate the needs and characteristics of your workload to determine the requirements, and align your workload requirements to your performance targets at every tier. You must account for constraints or dependencies. When you understand your workload requirements, you can make informed decisions. You can determine the right infrastructure and implement strategies to handle peak loads or variations in demand.
 
 - *Meet performance targets.* Select services that enable you to meet the performance targets for your workload. Ensure that a service can support the performance needs and that you can monitor its performance. Collect performance data for critical components.
 
