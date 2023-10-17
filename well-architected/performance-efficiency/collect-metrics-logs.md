@@ -14,10 +14,7 @@ ms.topic: conceptual
 |[PE:04](checklist.md)| Collect performance data. Workload components and flows should provide automatic, continuous, and meaningful metrics and logs. Collect data at different levels of the workload, such as the application, platform, data, and operating system levels. |
 |---|---|
 
-Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes:
-
-- Numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time.
-- Logs that contain different types of data that's organized into records.
+Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time. It also includes logs that contain different types of data that's organized into records.
 
 By collecting performance data, you can monitor and analyze the performance of a workload. You can use this information to identify performance bottlenecks, to troubleshoot issues, to optimize resource allocation, and to make data-driven decisions to improve the overall performance efficiency of the workload.  
 
