@@ -171,7 +171,9 @@ To ensure that your system scales efficiently under real-world conditions, it's 
 
 Partitioning is the process of dividing a large dataset or workload into smaller, more manageable parts called partitions. Each partition contains a subset of the data or workload and is typically stored or processed separately. Partitioning enables parallel processing and reduces contention. Dividing the workload into smaller units allows the application to process each unit independently. The result is better use of resources and faster processing times. Partitioning also helps distribute the data across multiple storage devices, reducing the load on individual devices and improving overall performance.
 
-**Understand partitioning.** The specific partitioning approach you use depends on the type of data or workload you have and the technology you're using. Some common strategies for partitioning include:
+#### Understand partitioning
+
+The specific partitioning approach you use depends on the type of data or workload you have and the technology you're using. Some common strategies for partitioning include:
 
 - *Horizontal partitioning*: In this approach, the dataset or workload is divided based on specific criteria, such as ranges of values or specific attributes. Each partition contains a subset of the data that meets the defined criteria.
 
@@ -179,9 +181,13 @@ Partitioning is the process of dividing a large dataset or workload into smaller
 
 - *Functional partitioning*: In this approach, the data or workload is divided based on the specific functions or operations that need to be performed. Each partition contains the data or components necessary for a specific function, enabling optimized processing and performance.
 
-**Plan partitioning.** It's important to consider factors such as data distribution, query patterns, data growth, and system requirements when partitioning. Proper planning and design are essential to help ensure the effectiveness of partitioning and maximize performance efficiency. If you address partitioning as an afterthought, it's more challenging because you already have a live system to maintain. You might need to change data access logic, distribute large quantities of data across partitions, and support continued usage during data distribution.
+#### Plan partitioning
 
-**Implement partitioning.** It's important to analyze the characteristics of your data, access patterns, concurrency requirements, and scalability goals when deciding which type of partitioning to use. Each type of partitioning has its own advantages and considerations. Here are some factors to consider for each type of partitioning:
+It's important to consider factors such as data distribution, query patterns, data growth, and system requirements when partitioning. Proper planning and design are essential to help ensure the effectiveness of partitioning and maximize performance efficiency. If you address partitioning as an afterthought, it's more challenging because you already have a live system to maintain. You might need to change data access logic, distribute large quantities of data across partitions, and support continued usage during data distribution.
+
+#### Implement partitioning
+
+It's important to analyze the characteristics of your data, access patterns, concurrency requirements, and scalability goals when deciding which type of partitioning to use. Each type of partitioning has its own advantages and considerations. Here are some factors to consider for each type of partitioning:
 
 - *Horizontal partitioning* is appropriate when you want to distribute the data across multiple resources or servers for better scalability and performance. It's effective when the workload can be parallelized and processed independently on each partition. Consider horizontal partitioning when multiple users or processes need to be able to access or update the dataset concurrently.
 
@@ -189,7 +195,9 @@ Partitioning is the process of dividing a large dataset or workload into smaller
 
 - *Functional partitioning* is appropriate when different functions require different subsets of the data and can be processed independently. Functional partitioning can optimize performance by allowing each partition to focus on the specific operations it's designed for.
 
-**Test and optimize partitioning.** Test the partitioning scheme to verify the effectiveness and efficiency of the strategy so you can make adjustments to improve performance. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
+#### Test and optimize partitioning
+
+Test the partitioning scheme to verify the effectiveness and efficiency of the strategy so you can make adjustments to improve performance. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Partitioning adds complexity to the design and development of a system. Partitioning requires conversations and planning between developers and database administrators.
 
