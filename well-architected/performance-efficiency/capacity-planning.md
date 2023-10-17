@@ -93,7 +93,9 @@ Aligning forecasts with workload objectives involves adjusting predictive capaci
 
 ### Determine resource requirements
 
-Determining resource requirements for capacity planning involves assessing the resources that you need to meet forecasted demand. For example, if a SaaS application anticipates a 50% increase in users during a promotional campaign, it might need to allocate more cloud instances or adjust its auto-scaling parameters to handle the increased load. A workload can have many resources, so there's no one metric to observe to determine resource requirements. You need to measure capacity at the resource level to get meaningful results. Estimate the expected demand for your resources based on historical data, market trends, and business projections. Consider the number of transactions, concurrent users, or any other relevant metrics.
+Determining resource requirements for capacity planning involves assessing the resources that you need to meet forecasted demand. For example, if an application anticipates a 50% increase in users during a promotional campaign, it might need to allocate more cloud instances or adjust its auto-scaling parameters to handle the increased load. 
+
+A workload can have many resources, so there's no one metric to observe to determine resource requirements. You need to measure capacity at the resource level to get meaningful results. Estimate the expected demand for your resources based on historical data, market trends, and business projections. Consider the number of transactions, concurrent users, or any other relevant metrics.
 
 Based on the forecasted demand, calculate the resources needed to meet that demand. Consider factors such as server capacity, network bandwidth, storage capacity, and personnel:
 
