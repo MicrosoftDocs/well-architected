@@ -68,15 +68,15 @@ Preferring platform features means to using built-in functionalities provided by
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: The best service for your workload might be a technology that your team isn't skilled at, can't afford, or it might require extra security layers. For example, a public load balancer might fit your performance needs. But if you don't have a web application firewall, you might have to deploy a firewall to secure the workload.
 
-### Evaluate the location
+### Select the right location
 
 Select the appropriate region and availability zones for hosting your workload. The region refers to a specific geographic location. The availability zones are separate physical datacenters within a region. Different regions and availability zones might have varying levels of network latency and compute resources. Latency refers to the time it takes for data to travel from the source to the destination. Select the infrastructure with low latency and ample resources so you can optimize the performance of your workload.
 
-**Understand available features.** Different regions have different available features, such as the number of services and availability zones. Understand the features that are available in a region before you select it. Ensure that a region meets your workload performance needs.
+- *Understand available features.* Different regions have different available features, such as the number of services and availability zones. Understand the features that are available in a region before you select it. Ensure that a region meets your workload performance needs.
 
-**Consider latency.** When your workload communicates across regions and availability zones, it increases latency. Determine the workload components that communicate frequently, and place them in the same region. Select a region that's close to users to minimize network latency and provide an optimal user experience.
+- *Consider latency.* When your workload communicates across regions and availability zones, it increases latency. Determine the workload components that communicate frequently, and place them in the same region. Select a region that's close to users to minimize network latency and provide an optimal user experience.
 
-**Understand datacenter mapping.** Availability zones don't always map to the same datacenters. Availability zones only map to the same datacenters within a subscription. For example, *Zone 1* in *Subscription A* might not map to the same datacenters as *Zone 1* in *Subscription B*. For multi-subscription workloads, consider the zone mapping between regions, and choose the availability zones that maximize performance.
+- *Understand datacenter mapping.* Availability zones don't always map to the same datacenters. Availability zones only map to the same datacenters within a subscription. For example, *Zone 1* in *Subscription A* might not map to the same datacenters as *Zone 1* in *Subscription B*. For multi-subscription workloads, consider the zone mapping between regions, and choose the availability zones that maximize performance.
 
 ### Evaluate networking requirements
 
