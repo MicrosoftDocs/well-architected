@@ -115,13 +115,12 @@ Use pipelines, such as Azure Pipelines, to automate the build, test, and deploym
 [Azure Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments) empower development teams to quickly and easily create app infrastructure by using project-based templates that establish consistency and best practices while maximizing security. On-demand access to secure environments accelerates the stages of the software development lifecycle in a compliant and cost-efficient way.
 
 The [Azure Developer CLI](/azure/developer/azure-developer-cli/overview) is an open-source tool that accelerates the time it takes for you to get your application from a local development environment to Azure. The Azure Developer CLI provides best practice, developer-friendly commands that map to key stages in your workflow, whether you’re working in the terminal, an integrated development environment (IDE), or CI/CD.
-The [Azure Developer CLI](/azure/developer/azure-developer-cli/overview) (`azd`) is an open-source tool that accelerates the time it takes for you to get your application from local development environment to Azure. The Azure Developer CLI provides best practice, developer-friendly commands that map to key stages in your workflow, whether you’re working in the terminal, your editor or integrated development environment (IDE), or CI/CD (continuous integration/continuous deployment).
 
 ## Organizational alignment
 
-Cloud Adoption Framework provides guidance for central teams on how to set up cost guardrails across the organization so workload teams can know what is possibly being provided by central teams.
+The Cloud Adoption Framework provides guidance for central teams on how to set up spending guardrails across the organization so workload teams know what is possibly provided by central teams.
 
-For more information, see [Cost Management policy compliance processes](/azure/cloud-adoption-framework/govern/cost-management/compliance-processes) and [Develop cost governance policy statements](/azure/cloud-adoption-framework/govern/cost-management/#develop-governance-policy-statements). The organization is generally encouraged to [Adopt policy-driven guardrails](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) for the implementation.
+For more information, see [Cost Management policy compliance processes](/azure/cloud-adoption-framework/govern/cost-management/compliance-processes) and [Develop cost governance policy statements](/azure/cloud-adoption-framework/govern/cost-management/#develop-governance-policy-statements). The organization is generally encouraged to [Adopt policy-driven guardrails](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) for implementation.
 
 ## Related links
 
