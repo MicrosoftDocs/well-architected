@@ -109,7 +109,7 @@ The preceding items often also exist outside of production environments, in prep
 
 - Security testing results in findings that need to be prioritized, potentially blocking planned work.
 
-- Routine, ad hoc, and emergency processes might require audit logging to meet compliance requirements, which increases the rigidity of running the processes.
+- Routine, ad hoc, and emergency processes might require audit logging to meet compliance requirements. This logging increases the rigidity of running the processes.
 
 - Workload teams might increase the complexity of identity management activities as the granularity of role definitions and assignments is increased.
 
