@@ -35,13 +35,13 @@ Almost every consolidation effort has tradeoffs and potential risks but can sign
 
 1. *Assessment*: Perform a thorough evaluation to identify areas where consolidation might be advantageous.
 
-1. *Identification and evaluation*: Pinpoint and assess potential consolidation targets to determine if potential cost benefits and tradeoffs justify the effort of consolidating.
+1. *Identification and evaluation*: Pinpoint and assess potential consolidation targets to determine whether potential cost benefits and tradeoffs justify the effort of consolidating.
 
 1. *Communication and implementation*: If you determine that consolidation is beneficial, announce the impending changes and apply them.
 
 ### Consolidate resources
 
-Consolidating resources involves combining resources within a workload. You can colocate functionalities or consumers into a combined resource. For example, you might consolidate three web servers into a single server or three databases into a single database server. You might consolidate multiple firewalls into a single firewall that serves multiple environments.
+Consolidating resources involves combining resources within a workload. You can collocate functionalities or consumers. For example, you might consolidate three web servers into a single server or three databases into a single database server. You might consolidate multiple firewalls into a single firewall that serves multiple environments.
 
 The aim is to increase resource density, so you can maximize the cost efficiency of each resource. Expand the use of a resource and minimize resource redundancy.
 
@@ -49,7 +49,7 @@ Common types of services that you can consolidate include application platforms,
 
 **Assess the workload resources.** Assess the existing workload and its resource utilization. Analyze factors such as CPU usage, memory usage, storage capacity, and network bandwidth. Identify areas in which consolidation might be beneficial. Consolidation might involve optimizing resource allocation, eliminating redundant or underutilized resources, or reconfiguring the workload to run more efficiently. Consider factors such as workload dependencies, performance requirements, and scalability.
 
-**Identify a consolidation target.** Choose a resource to consolidate. It can be an existing resource or a new resource that's created within the workload. Identify existing resources that you might use for consolidation. For example, you might have underutilized servers that can accommodate some of the workload components. If no existing resources meet the consolidation requirements or if it's more beneficial to consolidate to a new resource, consider creating a new resource.
+**Identify a consolidation target.** Choose a resource to consolidate. It can be an existing resource or a new resource that's created within the workload. Identify existing resources that you might use for consolidation. For example, you might have underutilized servers that can accommodate some of the workload components. If no existing resources meet the consolidation requirements or if it's more beneficial to consolidate a new resource, consider creating a new resource.
 
 **Evaluate the consolidation viability.** Ensure that functional and technical requirements, such as CPU, memory, and growth, support consolidation. Avoid compromising requirements like performance, reliability, and security. For example, don't create an undesired cross-regional dependency or consolidate resources across preproduction and production environments.
 
@@ -61,7 +61,7 @@ Common types of services that you can consolidate include application platforms,
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs**:
 >
-> - Resource consolidation results in less isolation and can create a noisy neighbor scenario in a workload. Find other ways to implement logical isolation and increased capacity for the hosting environment. For example, increase firewall capacity if it supports multiple workloads.
+> - Resource consolidation reduces isolation and can create a noisy neighbor scenario in a workload. Find other ways to implement logical isolation and increased capacity for the hosting environment. For example, increase firewall capacity if it supports multiple workloads.
 >
 > - Consolidation eliminates segmentation and can increase security risk, which makes it easier for attackers to move horizontally. It also makes some compliance standards hard to achieve. Prioritize compliance over consolidation.
 >
@@ -115,7 +115,7 @@ Offloading workload responsibilities to external teams refers to using expert ce
 |Azure Firewall|Network and application rules|
 |Azure Application Gateway|Listeners, URL path-based routing|
 |API Management|API policies|
-|Azure Kubernetes Service (AKS)| Namespace, node pools|
+|Azure Kubernetes Service (AKS)| Namespaces, node pools|
 |Azure App Service|Multiple web apps and APIs on an App Service plan|
 |Azure SQL Database|Multiple databases on a server
 
