@@ -119,16 +119,6 @@ Data locking ensures consistency but has performance disadvantages. It can cause
 
 Dynamic service discovery is the process of automatically detecting and registering services in a distributed system. It allows clients to discover available services without being tightly coupled to specific instances. Clients shouldn't be able to take a direct dependency on a specific instance in the workload. To avoid these dependencies, you should use a proxy to distribute and redistribute client connections. The proxy acts as an intermediary between clients and services, providing a layer of abstraction that allows services to be added or removed without affecting clients.
 
-##### Add retry logic
-
-It's important to add retry logic to an application when scaling to handle temporary failures and maintain application availability and reliability. Scaled applications, especially in a distributed system, might result in increased load and potential failures due to network issues, resource limitations, or service disruptions. Retry logic allows the application to automatically retry failed operations, such as connecting to a service or making a network request, after a certain period of time. Retry logic helps to mitigate transient failures and gives the system a chance to recover without causing disruptions or affecting user experience. To add retry logic to your application:
-
-1. Identify the operations or services that require retry logic. These operations or services can include database connections, API calls, or any other external dependencies.
-
-1. Determine the appropriate retry strategy based on the specific requirements of your application. The configuration might involve setting the number of retries, the time interval between retries, and any extra conditions for retrying.
-
-1. Implement the retry logic in your application code. Wrap the relevant operations or service calls in a retry loop, or, use libraries or frameworks that provide built-in retry functionality.
-
 ##### Use background tasks
 
 When an application is scaled, it can handle an increasing workload or a higher number of concurrent requests. Offloading intensive tasks as background tasks allows the main application to handle user requests without resource-intensive operations overwhelming it. Follow these steps to offload tasks as background tasks:
