@@ -69,7 +69,7 @@ The preceding items often also exist outside of production environments, in prep
 
 - *Premium SKUs*: Some security measures in cloud and vendor services that can benefit the security posture of a workload might only be found in more expensive SKUs or tiers.
 
-- *Log storage*: Broad-coverage, higher-fidelity security monitoring and audit data increases storage costs. Security observability data is also often stored for longer periods of time than would typically be needed for operational insights.
+- *Log storage*: High fidelity security monitoring and audit data that provide broad coverage increase storage costs. Security observability data is also often stored for longer periods of time than would typically be needed for operational insights.
 
 - *Increased resource consumption*: In-process and on-host security controls can introduce additional demand for resources. Encryption for data at rest and in transit can also increase demand. Both scenarios can require higher instance counts or larger SKUs.
 
