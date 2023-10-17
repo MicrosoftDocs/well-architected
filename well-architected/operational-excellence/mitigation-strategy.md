@@ -14,9 +14,9 @@ ms.topic: conceptual
 |[OE:12](checklist.md)| Implement a deployment failure mitigation strategy that addresses unexpected mid-rollout issues with rapid recovery. Combine multiple approaches, such as rollback, feature disablement, or using your deployment pattern's native capabilities. |
 |---|---|
 
-This guide describes the best practices for designing a standardized strategy to effectively handle deployment failures. Like other workload issues, deployment failures are an inevitable part of a workload lifecycle. With this mindset, you can be proactive by having a well-designed, intentional strategy for dealing with deployment failures. Such a strategy enables your workload team to efficiently mitigate failures with as little impact as possible on your end users.
+This guide describes the recommendations for designing a standardized strategy to effectively handle deployment failures. Like other workload issues, deployment failures are an inevitable part of a workload lifecycle. With this mindset, you can be proactive by having a well-designed, intentional strategy for dealing with deployment failures. Such a strategy enables your workload team to efficiently mitigate failures with as little impact as possible on your end users.
 
-The absence of such a plan can lead to chaotic and potentially detrimental responses to issues, which can have serious impacts on team and organizational cohesion, customer trust, and finances.
+The absence of such a plan can lead to chaotic and potentially detrimental responses to issues, which can significantly affect team and organizational cohesion, customer trust, and finances.
 
 ## Key design strategies
 
@@ -43,16 +43,16 @@ The following sections provide detailed recommendations for these phases. These 
 
 ### Detection
 
-To quickly identify issues with deployments, you need robust testing and [observability practices](observability.md) as they relate to deployments. To help catch anomalies quickly, you can complement your workload monitoring and alerting by taking the following steps:
+To quickly identify issues with deployments, you need robust testing and [observability practices](observability.md) as they relate to deployments. To help detect anomalies quickly, you can complement your workload monitoring and alerting by taking the following steps:
 
 - Use an application performance management tool.
 - Enable logging through instrumentation. <!-- Link to Operational Excellence instrumentation guide -->
 
 Smoke testing and other quality testing should happen at each phase of your rollout. Successful tests in one deployment group shouldn't influence decisions to test in subsequent groups.
 
-Having telemetry in place that can correlate user issues with a deployment phase helps you quickly identify which rollout group a particular user is associated with. This approach is especially important with progressive exposure deployments, because you might have multiple configurations running across your user base at any given point in the deployment.
+You can implement telemetry that correlates user issues with a deployment phase. Then you can quickly identify which rollout group a particular user is associated with. This approach is especially important for progressive exposure deployments, because you might have multiple configurations running across your user base at any given point in the deployment.
 
-You should be ready to respond to user-reported issues immediately. Whenever practical, deploy your rollout phases during working hours, when you have a full support team available. Ensure support staff is trained on how to escalate deployment issues for proper routing. Escalations should align with your workload [emergency response plan](emergency-response.md).
+You should be ready to respond to user-reported issues immediately. Whenever practical, deploy your rollout phase during working hours, when you have a full support team available. Ensure support staff is trained on how to escalate deployment issues for proper routing. Escalations should align with your workload [emergency response plan](emergency-response.md).
 
 ### Decision
 
@@ -82,7 +82,7 @@ Deciding on an appropriate mitigation strategy for a given deployment issue invo
 
   If your workload is designed to use mutable infrastructure, rolling forward can make sense, because it involves updating infrastructure in place. Conversely, rolling back or falling back can make sense when you use immutable infrastructure.
 
-No matter which choice you make, you should include appropriate approvals in your decision-making process and codify them in your decision tree.
+No matter which choices you make, you should include appropriate approvals in your decision-making process and codify them in your decision tree.
 
 ### Mitigation
 
@@ -120,7 +120,7 @@ Postmortems should always be blameless so that individuals who are involved in t
 
 ### Considerations and general recommendations
 
-Test deployments thoroughly when you deploy to lower development environments. This practice helps you catch bugs and misconfigurations before they get to production.
+Test deployments thoroughly when you deploy to lower development environments. This practice helps you detect bugs and misconfigurations before they get to production.
 
 Ensure that your deployment pipeline can accept distinct versions as parameters so that you can easily deploy last-known-good configurations.
 
@@ -142,7 +142,7 @@ Test your entire deployment failure mitigation strategy frequently. Like emergen
 
 ## Azure facilitation
 
-- [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) provides build and release services to support continuous integration and delivery of your applications.
+- [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) provides build and release services to support CI/CD of your applications.
 
 - [Azure Test Plans](/azure/devops/test/overview) is a browser-based test management solution that's easy to use. This solution offers capabilities that are required for planned manual testing, user acceptance testing, and exploratory testing. Azure Test Plans also provides a way for you to gather feedback from stakeholders.
 
@@ -190,7 +190,7 @@ Also consider these other potential tradeoffs that are associated with mitigatio
 
 ## Operational Excellence checklist
 
-We recommend that you review the Operational Excellence checklist to explore other concepts.
+Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Operational Excellence checklist](checklist.md)
