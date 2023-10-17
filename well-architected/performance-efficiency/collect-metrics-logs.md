@@ -67,37 +67,39 @@ Retention policies dictate how long performance data should be kept. Establishin
 
 Application performance data provides valuable insights into the health and performance of an application. By monitoring and analyzing performance data, you can identify and troubleshoot issues, optimize application performance, and make informed decisions for your application.
 
-**Instrument code.** Instrumenting code involves adding specific code and tools to gather data about the performance of an application during runtime. You need to collect metrics for key flows. The metrics should target throughput, latency, or time-to-complete values. Data about business flows should remain distinct from data about nonbusiness flows. For business flow data, ensure that the metadata allows you to track and store the data separately.
+#### Instrument code
 
-Instrumenting code is important for collecting workload performance data. It helps you:
+Instrumentation refers to the process of embedding specific code snippets or integrating tools into an application to capture performance data while it runs. It's essential to gather metrics that highlight the application's critical operations. Focus on metrics like throughput, latency, and completion time. It's vital to differentiate between data from business-related operations and those that aren't. For data pertaining to business operations, make sure its metadata is structured in a way that allows distinct tracking and storage. The primary reason for code instrumentation is to collect data on how the application handles its workload. It provides the following benefits:
 
-- *Identify performance bottlenecks*. By tracking metrics such as CPU use and memory use, you can identify bottlenecks and optimize the code accordingly.
+- *Identifying performance bottlenecks:* By tracking metrics such as CPU use and memory use, you can identify bottlenecks and optimize the code accordingly.
 
-- *Evaluate system behavior under a load*. You can see how the application performs under different workloads and stress scenarios. This data can help you identify issues related to scalability, concurrency, and resource use.
+- *Evaluating system behavior under a load:* You can see how the application performs under different workloads and stress scenarios. This data can help you identify issues related to scalability, concurrency, and resource use.
 
-- *Track application health and availability*. Because key performance indicators are monitored in real time, you can get alerts about potential issues that affect the application's performance and availability.
+- *Tracking application health and availability:* Because key performance indicators are monitored in real time, you can get alerts about potential issues that affect the application's performance and availability.
 
-- *Improve user experience*. You can gain insights into how users interact with the application. Use this information to optimize the user experience and identify areas for improvement.
+- *Improve user experience:* You can gain insights into how users interact with the application. Use this information to optimize the user experience and identify areas for improvement.
 
-- *Plan capacity and allocate resources*. The performance data that instrumentation gathers can provide valuable insights into the resource requirements of an application. This information can inform your decisions about planning capacity and allocating resources.
+- *Plan capacity and allocate resources:* The performance data that instrumentation gathers can provide valuable insights into the resource requirements of an application. This information can inform your decisions about planning capacity and allocating resources.
 
-To instrument code for performance monitoring, developers can use various tools and techniques:
+When you instrument code for performance monitoring, consider the following strategies:
 
-- *APM tools*: Tools like Azure Application Insights can collect and analyze performance data, including metrics, traces, and logs. APM tools offer features like code-level instrumentation, transaction tracing, and performance profiling.
+- *Use APM tools*: APM tools can collect and analyze performance data, including metrics, traces, and logs. APM tools offer features like code-level instrumentation, transaction tracing, and performance profiling.
 
-- *Logging and tracing frameworks*: By incorporating logging and tracing frameworks into the code base, developers can capture relevant data during runtime. The data can include information about the running path, I/O, and performance.
+- *Use logging and tracing frameworks*: Logging and tracing frameworks are tools or libraries that developers integrate into their applications to facilitate logging and tracing. These frameworks provide functions to generate logs, trace requests, and sometimes even format or transport the generated data. By incorporating logging and tracing frameworks into the code base, developers can capture relevant data during runtime. The data can include information about the running path, I/O, and performance.
 
 - *Custom instrumentation*: Developers can add custom code to collect performance metrics that are unique to their application and workload. The custom instrumentation can measure runtimes, track resource usage, or capture specific events. Write custom code instrumentation only when platform metrics are insufficient. In some situations, the platform resource can measure aggregate or even granular perspectives of your application. Weigh the question of whether to duplicate that effort by using custom code against excess code tradeoffs or dependency on a platform feature.
 
-**Capture transaction times.** Application-level metrics should include end-to-end transaction times. These transaction times should cover key technical functions such as database queries, response times for external API calls, and failure rates of processing steps.
+- *Capture transaction times.* Capturing transaction times relates to measuring the end-to-end times for key technical functions as a part of performance monitoring. Application-level metrics should include end-to-end transaction times. These transaction times should cover key technical functions such as database queries, response times for external API calls, and failure rates of processing steps.
 
-**Implement distributed tracing.** Use [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) to monitor the timing and performance relationships between the request flow and the involved components. Configure distributed tracing for all flows. To build end-to-end transaction flows, correlate events that come from different application components or tiers.
+- *Use telemetry standards.* Consider using APM tool instrumentation libraries and tools that are built around a telemetry standard, such as OpenTelemetry.
 
-**Collect application logs.** Logging helps you understand how the application runs in various environments. Application logs record the conditions that produce application events. Collect application logs across all application environments. Corresponding log entries across the application should capture a correlation ID for their respective transactions. The correlation ID should correlate application log events across critical system flows such as user sign-in. Use this correlation to assess the health of key scenarios in the context of targets and nonfunctional requirements.
+- *Implement distributed tracing.* Use [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) to monitor the timing and performance relationships between the request flow and the involved components. Configure distributed tracing for all flows. To build end-to-end transaction flows, correlate events that come from different application components or tiers.
 
-**Use structured logging.**  Structured logging speeds up log parsing and analysis. It makes the logs easier to index, query, and report without complexity. Add and use a structured logging library in your application code. Sometimes log entries can help you correlate data that you couldn't correlate by other means.
+#### Collect application logs
 
-**Use telemetry standards.** Consider using APM instrumentation libraries and tools that are built around a telemetry standard, such as OpenTelemetry.
+When you instrument code, one of the primary outputs should be application logs. Logging helps you understand how the application runs in various environments. Application logs record the conditions that produce application events. Collect application logs across all application environments. Corresponding log entries across the application should capture a correlation ID for their respective transactions. The correlation ID should correlate application log events across critical system flows such as user sign-in. Use this correlation to assess the health of key scenarios in the context of targets and nonfunctional requirements.
+
+You should use structured logging. Structured logging speeds up log parsing and analysis. It makes the logs easier to index, query, and report without complexity. Add and use a structured logging library in your application code. Sometimes log entries can help you correlate data that you couldn't correlate by other means.
 
 ### Capture platform data
 
