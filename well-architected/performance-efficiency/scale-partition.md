@@ -91,7 +91,9 @@ Decoupled components are easier to maintain and update. Changes or updates to on
 
 As you scale a workload, you should design the application to distribute the load. Just because you can add more replicas at the infrastructure level doesn't mean your application can use the replicas. Avoid solutions that require client affinity, data locking, or state affinity for a single instance if possible. You want to route a client or process to a resource that has available capacity.
 
-**Eliminate server-side session state.** You should design applications to be stateless where possible. For stateful applications, you should use a state store that's external to your server. Externalizing session state is the practice of storing session data outside of the application server or container. You can externalize session state to distribute session data across multiple servers or services, enabling seamless session management in a distributed environment. Consider the following when externalizing session state:
+##### Eliminate server-side session state
+
+You should design applications to be stateless where possible. For stateful applications, you should use a state store that's external to your server. Externalizing session state is the practice of storing session data outside of the application server or container. You can externalize session state to distribute session data across multiple servers or services, enabling seamless session management in a distributed environment. Consider the following when externalizing session state:
 
 - *Evaluate your session requirements.* Understand the session data that needs to be stored and managed. Consider session attributes, session timeouts, and any specific requirements for session replication or persistence. Determine the size of your session state and the frequency of read and write operations.
 
@@ -101,15 +103,25 @@ As you scale a workload, you should design the application to distribute the loa
 
 - *Update your logic.* Change your application's session management logic to store and retrieve session data from the external storage solution. You might need to use APIs or libraries provided by the storage solution to manage session state.
 
-**Eliminate client affinity.** Client affinity is also known as session affinity or sticky sessions. When you eliminate client affinity, you distribute client requests evenly across multiple replicas or servers, without routing all requests from a client to the same replica. This configuration can improve the scalability and performance of applications by allowing any available replica to process the requests.
+##### Eliminate client affinity
 
-**Review your load balancing algorithm.** A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. This can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
+Client affinity is also known as session affinity or sticky sessions. When you eliminate client affinity, you distribute client requests evenly across multiple replicas or servers, without routing all requests from a client to the same replica. This configuration can improve the scalability and performance of applications by allowing any available replica to process the requests.
 
-**Eliminate data locking.** Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
+##### Review your load balancing algorithm
 
-**Use dynamic service discovery.** Dynamic service discovery is the process of automatically detecting and registering services in a distributed system. It allows clients to discover available services without being tightly coupled to specific instances. Clients shouldn't be able to take a direct dependency on a specific instance in the workload. To avoid these dependencies, you should use a proxy to distribute and redistribute client connections. The proxy acts as an intermediary between clients and services, providing a layer of abstraction that allows services to be added or removed without affecting clients.
+A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. This can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
 
-**Add retry logic.** It's important to add retry logic to an application when scaling to handle temporary failures and maintain application availability and reliability. Scaled applications, especially in a distributed system, might result in increased load and potential failures due to network issues, resource limitations, or service disruptions. Retry logic allows the application to automatically retry failed operations, such as connecting to a service or making a network request, after a certain period of time. Retry logic helps to mitigate transient failures and gives the system a chance to recover without causing disruptions or affecting user experience. To add retry logic to your application:
+##### Eliminate data locking
+
+Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
+
+##### Use dynamic service discovery
+
+Dynamic service discovery is the process of automatically detecting and registering services in a distributed system. It allows clients to discover available services without being tightly coupled to specific instances. Clients shouldn't be able to take a direct dependency on a specific instance in the workload. To avoid these dependencies, you should use a proxy to distribute and redistribute client connections. The proxy acts as an intermediary between clients and services, providing a layer of abstraction that allows services to be added or removed without affecting clients.
+
+##### Add retry logic
+
+It's important to add retry logic to an application when scaling to handle temporary failures and maintain application availability and reliability. Scaled applications, especially in a distributed system, might result in increased load and potential failures due to network issues, resource limitations, or service disruptions. Retry logic allows the application to automatically retry failed operations, such as connecting to a service or making a network request, after a certain period of time. Retry logic helps to mitigate transient failures and gives the system a chance to recover without causing disruptions or affecting user experience. To add retry logic to your application:
 
 1. Identify the operations or services that require retry logic. These operations or services can include database connections, API calls, or any other external dependencies.
 
@@ -117,7 +129,9 @@ As you scale a workload, you should design the application to distribute the loa
 
 1. Implement the retry logic in your application code. Wrap the relevant operations or service calls in a retry loop, or, use libraries or frameworks that provide built-in retry functionality.
 
-**Use background tasks.** When an application is scaled, it can handle an increasing workload or a higher number of concurrent requests. Offloading intensive tasks as background tasks allows the main application to handle user requests without resource-intensive operations overwhelming it. Follow these steps to offload tasks as background tasks:
+##### Use background tasks
+
+When an application is scaled, it can handle an increasing workload or a higher number of concurrent requests. Offloading intensive tasks as background tasks allows the main application to handle user requests without resource-intensive operations overwhelming it. Follow these steps to offload tasks as background tasks:
 
 1. Find the CPU-intensive and I/O-intensive tasks in your application that you can offload. These tasks typically involve heavy computations or interactions with external resources such as databases or network operations.
 
@@ -127,7 +141,9 @@ As you scale a workload, you should design the application to distribute the loa
 
 1. Distribute background tasks if there are many of them, or if the tasks require substantial time or resources. For one possible solution, see the [Competing Consumers pattern](/azure/architecture/patterns/competing-consumers).
 
-**Enable distributed tracing.** Distributed tracing is a technique used to track and monitor requests as they flow through a distributed system. It allows you to trace the path of a request as it travels across multiple services and components, providing valuable insights into the performance and efficiency of your system. Distributed tracing is important for performance efficiency because it helps identify bottlenecks, latency issues, and areas for optimization within a distributed system. You can pinpoint where delays or inefficiencies occur and take appropriate actions to improve performance by visualizing the flow of a request. Follow these steps to enable distributed tracing:
+##### Enable distributed tracing
+
+Distributed tracing is a technique used to track and monitor requests as they flow through a distributed system. It allows you to trace the path of a request as it travels across multiple services and components, providing valuable insights into the performance and efficiency of your system. Distributed tracing is important for performance efficiency because it helps identify bottlenecks, latency issues, and areas for optimization within a distributed system. You can pinpoint where delays or inefficiencies occur and take appropriate actions to improve performance by visualizing the flow of a request. Follow these steps to enable distributed tracing:
 
 1. Start by instrumenting your applications and services to generate trace data. Use libraries or frameworks that support distributed tracing, such as OpenTelemetry.
 
