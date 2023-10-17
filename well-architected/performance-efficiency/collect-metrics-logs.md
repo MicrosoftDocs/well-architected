@@ -41,21 +41,27 @@ Without data-driven insights, you might be unaware of underlying performance iss
 
 ## Key design strategies
 
-Performance optimization requires data to measure the current performance of a workload or a flow against its performance targets. You need to collect the right amount and diversity of data to measure the performance of the code and the infrastructure against [performance targets](performance-targets.md).
+Performance optimization requires data to measure the current performance of a workload or a flow against its performance targets. You need to collect the right amount and diversity of data to measure the performance of the code and the infrastructure against [performance targets](performance-targets.md). Ensure that every component and flow within the system automatically generates continuous and meaningful metrics and logs. You need to source this data from diverse levels like the application, platform, storage, and operating system. Comprehensive performance data collection allows for a holistic understanding of performance, enabling precise identification of inefficiencies and avenues for improvement.
 
-**Centralize the data.** Centralizing performance metrics and logs is the process of collecting performance metrics and logs from various sources and storing them a central location. Create a central metrics sink and a central log sink. This centralization allows for easy access, analysis, and monitoring of performance metrics and logs across different systems and components. By centralizing metrics and logs, you gain visibility into the performance of your workload. Choose a suitable platform or tool that can aggregate and store workload performance metrics and logs.
+### Centralize the data
+
+Centralizing performance metrics and logs is the process of collecting performance metrics and logs from various sources and storing them a central location. Create a central metrics sink and a central log sink. This centralization allows for easy access, analysis, and monitoring of performance metrics and logs across different systems and components. By centralizing metrics and logs, you gain visibility into the performance of your workload. Choose a suitable platform or tool that can aggregate and store workload performance metrics and logs.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Understand the cost of collecting metrics and logs. In general, the more metrics and logs you collect, the higher the cost.
 
-**Segment data.** Performance data monitors the performance of each environment. Each environment might contain distinct types of data, such as workload performance metrics and business metrics. Use a separate metrics and log sink for each purpose.
+### Segment performance data
+
+Segmenting performance data involves organizing and categorizing metrics and logs based on their origin, purpose, or environment. For example, you should separate production data from nonproduction data or distinguish between performance targets and business metrics. Segmenting data helps with optimizing specific environments, facilitates troubleshooting, and limits inaccuracies in performance monitoring. By maintaining a clear distinction between different data types, you can capture, analyze, and respond to relevant metrics more efficiently and better align system health with workload objectives. To segment performance data, consider the following recommendations:
 
 - *Keep production data and nonproduction data separate*. By separating data by environment, you can ensure focused monitoring and optimization of each environment. In production environments, you can better identify and address performance issues that directly affect users and business operations. In nonproduction environments, the data separation facilitates effective troubleshooting and fine-tuning during the testing phase before you deploy to production.
- 
+
 - *Use one set of data within each environment*. Don't use one set of data for performance targets and another set of data for alerts related to the performance targets. Using different sets of data leads to inaccurate alerts that undermine the effectiveness of performance monitoring.
 
 - *Separate performance targets and business metrics*. The operations and development teams use performance targets to monitor system health and meet business targets. Business metrics relate to business goals or customer reporting. Capture business metrics in a separate data stream, even if the data directly overlaps. The separation gives you flexibility to capture the right data and independently analyze the data.
 
-**Define retention policies.** For your performance metrics and logs, base the retention period on your organization's requirements and compliance regulations. Decide how long to retain the data for analysis and audit purposes. Archive the data that you don't need for immediate analysis.
+### Define retention policies
+
+Retention policies dictate how long performance data should be kept. Establishing these policies helps manage storage efficiently and ensures only necessary data is accessible for analysis. Such policies support better performance and meet compliance standards. You should configure retention policies for the log and metrics data to enable effective troubleshooting and monitoring in all environments. For example, the logs and metrics might need to be kept for longer time in a production environment than in the testing environment. The retention period should match your organization's requirements and compliance regulations. Decide how long to retain the data for analysis and audit purposes. Archive the data that you don't need for immediate analysis.
 
 ### Collect application data
 
