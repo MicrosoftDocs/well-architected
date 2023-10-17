@@ -54,11 +54,17 @@ Evaluate the needs and characteristics of your workload to determine the require
 
 ### Understand services
 
-Consider various factors and gain a comprehensive understanding of a service before you choose it. Research and assess services and tools that the cloud provider offers. Determine which services and tools best align with your workload requirements. Consider factors like managed services, serverless options, and specialized services.
+To understand services means to grasp the capabilities, limits, and functionalities of a vendor's tools and offerings. An understanding of services helps you use built-in features, reducing the need for complex custom solutions and improving performance efficiency.
 
-**Understand service limits.** Service limits are the predefined thresholds or boundaries that service providers set. Service limits define the maximum usage of resources or capabilities within that service. When you're familiar with service limits, you can avoid issues such as resource contention, performance degradation, or unexpected service interruptions. You can plan and scale the infrastructure appropriately, taking into account factors such as data volume, processing capacity, and data residency requirements.
+Consider various factors and gain a comprehensive understanding of a service before you choose it. Research and assess services and tools that the provider offers. Determine which services and tools best align with your workload requirements. Consider factors like managed services, serverless options, and specialized services.
 
-**Offload functionality.** Service features are designed to handle specific tasks efficiently and at scale, which allows you to take advantage of the optimized infrastructure. Service features are also regularly maintained. Choose services that allow you to offload functionality to service features instead of writing and maintaining your own custom code. Custom code adds complexity and makes the workload prone to performance issues. Only develop custom code when service features aren't sufficient.
+#### Understand service limits
+
+Service limits are the predefined thresholds or boundaries that service providers set. Service limits define the maximum usage of resources or capabilities within that service. When you're familiar with service limits, you can avoid issues such as resource contention, performance degradation, or unexpected service interruptions. You can plan and scale the infrastructure appropriately, taking into account factors such as data volume, processing capacity, and data residency requirements.
+
+#### Offload functionality
+
+Service features are designed to handle specific tasks efficiently and at scale, which allows you to take advantage of the optimized infrastructure. Service features are also regularly maintained. Choose services that allow you to offload functionality to service features instead of writing and maintaining your own custom code. Custom code adds complexity and makes the workload prone to performance issues. Only develop custom code when service features aren't sufficient.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: The best service for your workload might be a technology that your team isn't skilled at, can't afford, or it might require extra security layers. For example, a public load balancer might fit your performance needs. But if you don't have a web application firewall, you might have to deploy a firewall to secure the workload.
 
