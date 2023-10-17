@@ -61,7 +61,7 @@ Choosing a scaling strategy involves deciding between vertical or horizontal met
 
 #### Design for infrastructure scalability
 
-Designing for infrastructure scalability is the process of creating an architecture that can handle increasing demands and workload by adding or adjusting resources as needed. It involves planning and implementing solutions that can scale horizontally or vertically to accommodate growth. When you design a workload to be scalable, it can effectively distribute the workload across multiple resources, which prevents bottlenecks and maximizes resource utilization.
+Designing for infrastructure scalability is the process of creating an architecture that can handle increasing demands and workload by adding or adjusting resources as needed. It involves planning and implementing solutions that can scale horizontally or vertically to accommodate growth. Strategies include avoiding singletons that can become bottlenecks and decoupling application components to ensure independent scalability. When you design a workload to be scalable, it can effectively distribute the workload across multiple resources, which prevents bottlenecks and maximizes resource utilization.
 
 ##### Avoid singletons
 
