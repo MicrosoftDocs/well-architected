@@ -130,7 +130,7 @@ Azure Advisor helps you ensure and improve continuity of your business-critical 
 
 ## Operational excellence
 
-Monitoring and diagnostics are crucial for ensuring operational excellence of your Application Gateway. Not only can you measure performance statistics but also use metrics to troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../../devops/principles.md).
+Monitoring and diagnostics are crucial for ensuring operational excellence of your Application Gateway and the web applications or backends behind the application gateway. Not only can you measure performance statistics but also use metrics to troubleshoot and remediate issues quickly. We recommend you review the [Operational excellence design principles](../../devops/principles.md).
 
 ### Design checklist
 
