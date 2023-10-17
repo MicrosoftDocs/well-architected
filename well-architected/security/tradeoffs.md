@@ -143,7 +143,7 @@ A misconfiguration or overextension of security controls can impact performance 
 
 - Firewall rule ordering, complexity, and quantity (granularity).
 
-- Neglecting to exclude key files from file integrity monitors or virus scanners, which can lead to lock contention.
+- Failing to exclude key files from file integrity monitors or virus scanners. Neglecting this step can lead to lock contention.
 
 - Web application firewalls performing deep packet inspection for languages or platforms that are irrelevant for the components that are being protected.
 
