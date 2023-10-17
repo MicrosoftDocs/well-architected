@@ -143,11 +143,11 @@ The database can affect factors such as data storage and retrieval, transaction 
 
 ### Evaluate cache requirements
 
-A cache stores frequently accessed data. Caching reduces data access latency and lowers the load on data storage components. It allows the workload to handle more requests without scaling. It's common to cache workload data and static content. A Redis cache can store session data, database results, API responses, and reference data, such as configuration settings. A content delivery network or static web app can cache and serve static content. Consider caching data to improve your workload performance.
+A cache stores frequently accessed data. Caching reduces data access latency and lowers the load on data storage components. It allows the workload to handle more requests without scaling. It's common to cache workload data and static content. A Redis cache can store session data, database results, API responses, and reference data, such as configuration settings. A content delivery network or static web app can cache and serve static content. Consider caching data to improve your workload performance. Choose the right caching option for your workload, preferring the platform caching services, such as Azure Redis Cache, over custom or self-hosted ones.
 
 ### Evaluate storage requirements
 
-Choose storage services that align with your data access patterns, durability requirements, and performance needs. Most cloud workloads use a combination of storage technologies. This technique is known as the polyglot persistence approach. Determine the appropriate combination of storage services for your workload. You might also want to separate data to avoid contamination. For example, you might have separate storage accounts for monitoring data and business data.
+Choose storage services that align with your data access patterns, durability requirements, and performance needs. Most cloud workloads use a combination of storage technologies. This technique is known as the polyglot persistence approach. Determine the appropriate combination of storage services for your workload. You might also want to separate data to avoid contamination. For example, you might have separate storage accounts for monitoring data and business data. Choosing the right mix and correct implementation is extremely important for optimizing application performance.
 
 ## Azure facilitation
 
