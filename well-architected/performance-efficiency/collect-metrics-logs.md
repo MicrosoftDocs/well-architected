@@ -1,6 +1,6 @@
 ---
-title: Collect workload performance metrics and logs
-description: Learn recommendations for collecting metrics and logs to help you assess the performance of a workload.  
+title: Collect workload performance data
+description: Learn recommendations for collecting performance data (metrics and logs) to help you assess the performance of a workload.  
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023    
@@ -155,7 +155,7 @@ Your performance data should align with the performance targets. The data needs 
 
 ### Create alerts
 
-Actionable alerts allow you to identify and resolve performance issues. They communicate the violated threshold, business effects, and components that are involved. Set up alerts for architecture components and critical flows. To begin, pick common and recommended alert rules. You can later change the rules as needed. 
+Actionable alerts allow you to identify and resolve performance issues. They communicate the violated threshold, business effects, and components that are involved. Set up alerts for architecture components and critical flows. To begin, pick common and recommended alert rules. You can later change the rules as needed.
 
 Alerts should help you predict potential performance degradation before it becomes a problem. When you can't create an alert on a dependency that's outside your control, create a solution that collects proxy measurements, such as dependency call duration.
 
