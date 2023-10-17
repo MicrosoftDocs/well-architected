@@ -108,9 +108,9 @@ By collecting resource performance data, you can gain insights into the health a
 
 - *Monitor network traffic.* Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
 
-### Collect database data and storage data
+### Collect database and storage data
 
-Collect database data and storage performance data so you can identify bottlenecks, diagnose issues, and make informed decisions to improve the overall performance and reliability of your workload. Many database and storage systems provide their own monitoring tools. These tools collect performance data specific to those systems. Database and storage systems often generate logs that contain performance-related events and indicators, and you should collect those logs. Collect various types of database data and storage performance data:
+Many database and storage systems provide their own monitoring tools. These tools collect performance data specific to those systems. Database and storage systems often generate logs that contain performance-related events and indicators. Collect database data and storage performance data so you can identify bottlenecks, diagnose issues, and make informed decisions to improve the overall performance and reliability of your workload. Consider collecting the following types of performance data:
 
 - *Throughput*: Data about the amount of data that's read from or written to the storage system over a period of time. Throughput data indicates the data transfer capabilities.
 
