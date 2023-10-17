@@ -117,7 +117,7 @@ As you scale a workload, you should design the application to distribute the loa
 
 #### Configure scaling
 
-Implement scaling in a workload by adjusting the available resources, such as computing power and storage, based on the changing demands of the workload. You can add or remove resources dynamically to accommodate variations in workload requirements.
+Configuring scaling is the process of setting up and adjusting system parameters to dynamically allocate resources based on workload demands. It encompasses strategies such as using autoscaling features, understanding service scaling boundaries, and implementing meaningful load metrics. Proper configuration ensures that an application can respond to varying demands while maximizing efficiency. When you configure scaling, consider the following strategies:
 
 *Use services with autoscaling.* The autoscale feature automatically scales infrastructure to meet demand. Use platform as a service (PaaS) offerings with built-in autoscale features. The ease of scaling on PaaS is a major advantage. For example, scaling out virtual machines requires a separate load balancer, client-request handling, and externally stored state. PaaS offerings handle most of these tasks.
 
@@ -131,7 +131,7 @@ Implement scaling in a workload by adjusting the available resources, such as co
 
 *Use meaningful load metrics.* Scaling should use meaningful load metrics as scaling triggers. Meaningful load metrics include simple metrics, like CPU or memory, or more advanced metrics, such as queue depth, SQL queries, custom metrics queries, and HTTP queue length. Consider using a combination of simple and advanced load metrics as your scaling trigger.
 
-Constrain autoscaling.* Set automatic scaling limits to minimize over-scaling that could result in unnecessary costs. Sometimes you can't set scaling limits. In these cases, you should set alerts to notify you when the component has reached the maximum scale limit and when it's over-scaled.
+*Constrain autoscaling.* Set automatic scaling limits to minimize over-scaling that could result in unnecessary costs. Sometimes you can't set scaling limits. In these cases, you should set alerts to notify you when the component has reached the maximum scale limit and when it's over-scaled.
 
 *Use a buffer.* A buffer is unused capacity that can be used to handle spikes in demand. A well-designed workload plans for unexpected spikes in workload. You should add a buffer to handle spikes for horizontal and vertical scaling.
 
