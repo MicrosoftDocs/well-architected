@@ -1262,8 +1262,8 @@
 		},
 		{
 			"source_path": "well-architected/implementing-recommendations.md",
-			"redirect_url": "/azure/well-architected/cost-cutting-guides/implementing-recommendations",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/cost-cutting-guides/implementing-recommendations", 
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/security/storage-data-encryption.md",
