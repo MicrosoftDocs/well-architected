@@ -31,27 +31,27 @@ The cost of a service disruption must be measured against the cost of preventing
 
 - Setting hard spending limits can prevent a workload from scaling to meet legitimate demand.
 
-- Without reliability testing tools or tests, the reliability of the workload is unknown and less likely to reach its reliability targets.
+- Without reliability testing tools or tests, the reliability of a workload is unknown, and it's less likely to meet reliability targets.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Limited recovery strategy.** A workload that is reliable has a tested incident response and recovery plan for disaster scenarios.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Limited recovery strategy.** A workload that's reliable has a tested incident response and recovery plan for disaster scenarios.
 
-- Less *testing or drilling* of the workload's disaster recovery plan increases might affect the speed and effectiveness of recovery operations.
+- Reduced testing or drilling of a workload's disaster recovery plan might affect the speed and effectiveness of recovery operations.
 
-- Taking or retaining fewer backups decreases possible recovery points and increases the chance of losing data.
+- Creating or retaining fewer backups decreases possible recovery points and increases the chance of losing data.
 
-- Selecting a lower-cost support contract may increase workload recovery time due to potential delays in technical assistance.
+- A less expensive support contract might increase workload recovery time due to potential delays in technical assistance.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased complexity.** The workload that uses straight forward approaches and avoids unnecessary or over-engineered complexity is, generally, the easier to manage reliability expectations against.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased complexity.** A workload that uses straightforward approaches and avoids unnecessary or overengineered complexity is, generally, easier to manage in terms of reliability.
 
-- Using cost-optimization cloud patterns can add new components, such as content delivery network (CDN), or shift duties to edge and client devices that a workload must provide reliability targets for.
+- Using cost-optimization cloud patterns can add new components, like a content delivery network (CDN), or shift duties to edge and client devices that a workload must provide reliability targets for.
 
-- *Event-based scaling* can be more complex to tune and validate than resource-based scaling.
+- Event-based scaling can be more complex to tune and validate than resource-based scaling.
 
-- Reducing *data volume and tiering data* through data lifecycle actions, possibly in conjunction with implementing aggregated data points before the lifecycle event, introduces new reliability factors to consider in the workload.
+- Reducing data volume and tiering data through data lifecycle actions, possibly in conjunction with implementing aggregated data points before a lifecycle event, introduces reliability factors to consider in the workload.
 
 ## Cost Optimization tradeoffs with Security
 
-The cost of a compromise to confidentiality, integrity, and availability within a workload must always be balanced against the cost of the effort to prevent that compromise. The impact of a security incident can have a very wide range of reputation, legal, and monetary impact. Investing in security is a risk mitigation activity, and the cost of experiencing the risks must be rationalized relative to the investment. As a rule, don't compromise on security with cost optimizations below the point of responsible and agreed upon risk mitigation. Optimizing security costs by 'right sizing' solutions is an important optimization practice but be aware of tradeoffs such as these when doing so.
+The cost of a compromise to confidentiality, integrity, and availability in a workload must always be balanced against the cost of the effort to prevent that compromise. The impact of a security incident can have a wide range of reputation, legal, and monetary impact. Investing in security is a risk mitigation activity, and the cost of experiencing the risks must be rationalized relative to the investment. As a rule, don't compromise on security with cost optimizations below the point of responsible and agreed upon risk mitigation. Optimizing security costs by 'right sizing' solutions is an important optimization practice but be aware of tradeoffs such as these when doing so.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Reduced security controls.** Security controls are established across multiple layers, sometimes redundant, to provide a defense in depth.
 
