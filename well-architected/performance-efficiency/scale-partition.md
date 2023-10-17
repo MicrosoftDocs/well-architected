@@ -91,9 +91,7 @@ Decoupled components are easier to maintain and update. Changes or updates to on
 
 As you scale a workload, you should design the application to distribute the load. Just because you can add more replicas at the infrastructure level doesn't mean your application can use the replicas. Avoid solutions that require client affinity, data locking, or state affinity for a single instance if possible. You want to route a client or process to a resource that has available capacity.
 
-- *Eliminate server-side session state.*
-
-You should design applications to be stateless where possible. For stateful applications, you should use a state store that's external to your server. Externalizing session state is the practice of storing session data outside of the application server or container. You can externalize session state to distribute session data across multiple servers or services, enabling seamless session management in a distributed environment. Consider the following when externalizing session state:
+- *Eliminate server-side session state.* You should design applications to be stateless where possible. For stateful applications, you should use a state store that's external to your server. Externalizing session state is the practice of storing session data outside of the application server or container. You can externalize session state to distribute session data across multiple servers or services, enabling seamless session management in a distributed environment. Consider the following when externalizing session state:
 
     - *Evaluate your session requirements.* Understand the session data that needs to be stored and managed. Consider session attributes, session timeouts, and any specific requirements for session replication or persistence. Determine the size of your session state and the frequency of read and write operations.
 
