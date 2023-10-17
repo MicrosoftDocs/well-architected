@@ -109,33 +109,33 @@
           items:
             - name: Cost optimization patterns
               href: cost-optimization/design-patterns.md
-            - name: Create culture of financial responsibility
+            - name: CO:01 Create a culture of financial responsibility
               href: cost-optimization/create-culture-financial-responsibility.md
-            - name: Create a cost model
+            - name: CO:02 Create a cost model
               href: cost-optimization/cost-model.md
-            - name: Collect and review cost Data
+            - name: CO:03 Collect and review cost data
               href: cost-optimization/collect-review-cost-data.md
-            - name: Set spending guardrails
+            - name: CO:04 Set spending guardrails
               href: cost-optimization/set-spending-guardrails.md
-            - name: Get the best rates
+            - name: CO:05 Get the best rates
               href: cost-optimization/get-best-rates.md
-            - name: Align usage to billing increments
+            - name: CO:06 Align usage to billing increments
               href: cost-optimization/align-usage-to-billing-increments.md
-            - name: Eliminate waste
+            - name: CO:07 Eliminate waste
               href: cost-optimization/eliminate-waste.md
-            - name: Optimize environment costs
+            - name: CO:08 Optimize environment costs
               href: cost-optimization/optimize-environment-costs.md
-            - name: Optimize flow costs
+            - name: CO:09 Optimize flow costs
               href: cost-optimization/optimize-flow-costs.md
-            - name: Optimize data costs
+            - name: CO:10 Optimize data costs
               href: cost-optimization/optimize-data-costs.md
-            - name: Optimize code
+            - name: CO:11 Optimize code
               href: cost-optimization/optimize-code.md
-            - name: Optimize scaling
+            - name: CO:12 Optimize scaling
               href: cost-optimization/optimize-scaling.md
-            - name: Optimize personnel time
+            - name: CO:13 Optimize personnel time
               href: cost-optimization/optimize-personnel-time.md
-            - name: Consolidate
+            - name: CO:14 Consolidate resources and responsibilities
               href: cost-optimization/consolidation.md
       - name: Operational Excellence
         items: 

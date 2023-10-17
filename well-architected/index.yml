@@ -106,7 +106,7 @@ sections:
     - componentType: icon-card
       title: Operational Excellence
       summary: Reduce issues in production by building holistic observability and automated systems. 
-      url: ./cost-optimization/index.yml
+      url: ./operational-excellence/index.yml
       icon: 
         componentType: image
         src: _images/devops.svg         
