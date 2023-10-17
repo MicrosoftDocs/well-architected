@@ -39,7 +39,9 @@ You might not know if you have inefficient code. Serverless, autoscale, and reli
 
 Instrumenting code is the practice of adding code snippets or libraries that collect data and monitor code performance during runtime. It allows developers to gather information about key metrics, such as resource consumption (CPU or memory usage) and execution time. By instrumenting code, developers can gain insights into code hot paths, identify performance bottlenecks, and optimize the code for better efficiency and cost-effectiveness.
 
-In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code problem, the cheaper it is to fix. You want to automate as much of this code analysis as possible. Use dynamic and static tools for code analysis to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
+In an ideal environment, you should do code analysis early in the software development lifecycle. The earlier you catch a code problem, the cheaper it is to fix.
+
+Automate as much of this code analysis as possible. Use dynamic and static tools for code analysis to reduce the manual effort. However, keep in mind that this testing is still a simulation of production. Production provides the clearest understanding of code optimization.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Code monitoring tools are likely to increase costs.
 
@@ -65,7 +67,7 @@ To identify hot paths, consider these tasks:
 
 - *Reduce unnecessary data processing*: Review your code for any unnecessary data-processing operations, such as redundant calculations or transformations. Eliminate these unnecessary operations to improve the efficiency of your code.
 
-- *Minimize network requests*: If your code involves making network requests, minimize the number of requests and optimize their usage. Batch requests when possible and avoid unnecessary round trips to improve performance.
+- *Minimize network requests*: If your code makes network requests, minimize the number of requests and optimize their usage. Batch requests when possible and avoid unnecessary round trips to improve performance.
 
 - *Minimize allocations*: Identify areas where excessive memory allocation occurs. Optimize the code by reducing unnecessary allocations and reusing existing resources when possible.
 
@@ -75,7 +77,7 @@ To identify hot paths, consider these tasks:
 
 - *Assess cross-cutting implementations*: Consider the effects of cross-cutting implementations, such as middleware or token checks. Assess whether they're negatively affecting performance.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Optimizing code and hot paths requires developer expertise in identifying code inefficiencies. This highly skilled individual might be required to spend time on other tasks.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Optimizing code and hot paths requires developer expertise in identifying code inefficiencies. These highly skilled individuals might need to spend time on other tasks.
 
 ### Evaluate the use of concurrency
 
@@ -93,13 +95,13 @@ To evaluate whether using concurrency is a good fit, you can follow these guidel
 
   Identify sections of your code that you can run concurrently and independently. Read documentation or guidelines that are specific to the programming language or framework you're using for multithreading best practices. Create multiple threads or thread pools to handle parallel execution of tasks.
 
-  Implement synchronization mechanisms, such as locks, mutexes, or semaphores, to ensure thread safety and prevent race conditions when you're accessing shared resources. Consider using higher-level abstractions, like thread pools or task-based parallelism libraries, to streamline the management of multiple threads and simplify concurrency control.
+  Implement synchronization mechanisms, such as locks, mutexes, or semaphores, to ensure thread safety and prevent race conditions when code accesses shared resources. Consider using higher-level abstractions, like thread pools or task-based parallelism libraries, to streamline the management of multiple threads and simplify concurrency control.
 
 - *Multiprocessing*: Multiprocessing can have processes run in parallel. It can provide better utilization of multiple CPU cores than multithreading.
 
   Determine whether the workload or operations in your code lend themselves to parallel processing. Identify the programming language or framework that you're using and explore its multiprocessing capabilities. For example, consider the multiprocessing module in Python or parallel streams in Java. Design your code to split the workload into multiple independent tasks that can be processed concurrently.
 
-  Use multiprocessing APIs or libraries to create and manage parallel processes. Distribute the workload among these APIs or libraries. To enable coordination and data sharing between multiple processes, implement communication mechanisms like interprocess communication (IPC), shared memory, or message passing, depending on your programming language or framework.
+  Use multiprocessing APIs or libraries to create and manage parallel processes. Distribute the workload among these APIs or libraries. To enable coordination and data sharing among multiple processes, implement communication mechanisms like interprocess communication (IPC), shared memory, or message passing, depending on your programming language or framework.
 
 ### Use the right SDKs
 
@@ -113,13 +115,13 @@ Here's guidance to help choose the best SDKs for your workload:
 
 ### Choose the right operating system
 
-Most coding languages can run on various operating systems, so it's important to evaluate your operating system against cheaper alternatives. If an alternative operating system supports the same or similar functionality, using the cheaper option is worth considering. By choosing a cheaper operating system, you can potentially reduce the cost of licensing fees and infrastructure costs.
+Most coding languages can run on various operating systems, so it's important to evaluate your operating system against cheaper alternatives. If an alternative operating system supports the same or similar functionality at less cost, it's worth considering. By choosing a cheaper operating system, you can potentially reduce the cost of licensing fees and infrastructure costs.
 
 The right operating system can contribute to overall cost optimization for your workload. To choose the right operating system for your workload, try these activities:
 
 - *Evaluate your requirements*: Understand the specific needs of your workload, including the coding languages and frameworks that you're using. Consider any dependencies or integrations with other systems.
 
-- *Consider compatibility*: Ensure that the operating system that you choose is compatible with your coding languages, frameworks, and any third-party libraries or tools that you rely on. Check the documentation and community support for your chosen operating system to ensure that it has good compatibility with your technology stack.
+- *Consider compatibility*: Ensure that the operating system that you choose is compatible with your coding languages, frameworks, and any third-party libraries or tools that you rely on. Check the documentation and community support for the operating system to ensure that it has good compatibility with your technology stack.
 
 - *Assess functionality*: Determine if the alternative operating system supports the same or similar functionality as your current operating system. Evaluate whether it provides the necessary features and capabilities that your workload requires.
 
@@ -147,7 +149,7 @@ Consider these suggestions:
 
 - *Support compression*: Implement compression mechanisms in your network protocols to reduce the size of data being transferred. Compression can significantly reduce the amount of data transmitted over the network, leading to improved performance and reduced bandwidth usage.
 
-- *Utilize connection pooling*: Connection pooling allows for the reuse of established network connections, to reduce the overhead of establishing new connections for each request. Connection pooling can improve the efficiency of network communication by avoiding the overhead of connection setup and teardown.
+- *Utilize connection pooling*: Connection pooling allows for the reuse of established network connections to reduce the overhead of establishing new connections for each request. Connection pooling can improve the efficiency of network communication by avoiding the overhead of connection setup and teardown.
 
 - *Implement other optimizations*: Explore other optimizations that are specific to your workload and network environment. For example, you can use content caching, load balancing, and traffic shaping to further optimize network traversal.
 
@@ -163,7 +165,7 @@ Consider these techniques:
 
 - *Batch requests*: If applicable, consider batching multiple smaller requests into a single larger request. Batching reduces the overhead of establishing multiple connections and decreases the overall data transmission.
 
-- *Use data serialization*: Data serialization refers to the process of converting complex data structures or objects into a format that can be easily transmitted over a network or stored in a persistent storage system. This strategy involves representing the data in a standardized format, so the data can be efficiently transmitted, processed, and reconstructed at the receiving end.
+- *Use data serialization*: Data serialization is the process of converting complex data structures or objects into a format that can be easily transmitted over a network or stored in a persistent storage system. This strategy involves representing the data in a standardized format, so the data can be efficiently transmitted, processed, and reconstructed at the receiving end.
 
   Select a serialization format that's compact, fast, and suitable for your workload's requirements.
 
@@ -172,7 +174,7 @@ Consider these techniques:
   | Protocol Buffers (protobuf) | A binary serialization format that offers efficient encoding and decoding of structured data. It uses typed definition files to define message structures.|
   | MessagePack| A binary serialization format for compact transmission over the wire. It supports various data types and provides fast serialization and deserialization performance.|
   | JavaScript Object Notation (JSON) | A widely used data serialization format that's human-readable and easy to work with. JSON is text based and has broad cross-platform support.|
-  | Binary JSON (BSON)| A binary serialization format that's similar to JSON but designed for efficient serialization and deserialization. BSON includes extra data types not available in JSON.|
+  | Binary JSON (BSON)| A binary serialization format that's similar to JSON but designed for efficient serialization and deserialization. BSON includes extra data types that aren't available in JSON.|
 
   Depending on the serialization format, you need to implement logic to serialize objects or data structures into the chosen format and deserialize them back into their original form. You can implement this logic by using libraries or frameworks that provide serialization capabilities for the format.
 
@@ -186,7 +188,7 @@ Caching involves storing frequently accessed data closer to the components that 
 
 Consider these caching mechanisms:
 
-- *Use an external cache*: A popular caching solution is a content delivery network. It helps minimize latency and reduce network traversal by caching static content closer to consumers.
+- *Use an external cache*: One popular caching solution is a content delivery network. It helps minimize latency and reduce network traversal by caching static content closer to consumers.
 
 - *Tune caching parameters*: Configure caching parameters, such as time to live (TTL), to optimize the benefit of caching while minimizing potential drawbacks. Setting an appropriate TTL ensures that cached data remains fresh and relevant.
 
