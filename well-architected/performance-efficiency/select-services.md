@@ -70,7 +70,7 @@ Preferring platform features means to using built-in functionalities provided by
 
 ### Evaluate infrastructure requirements
 
-The performance efficiency of services is tied to the infrastructure they reside on. It makes the selection of the right infrastructure paramount. Evaluating infrastructure requirements means identifying the geographical region and availability zones best suited to support your workload. Key considerations in this decision-making include:
+The performance efficiency of services is tied to the infrastructure they reside on. It makes the selection of the right infrastructure critical to service performance efficiency. Evaluating infrastructure requirements means identifying the geographical region and availability zones best suited to support your workload. Key considerations in this decision-making include:
 
 - *Understand regions and availability zones.* Every region corresponds to a distinct geographic location. Availability zones represent individual physical datacenters within a given region.
 
@@ -84,13 +84,13 @@ The performance efficiency of services is tied to the infrastructure they reside
 
 Assess your network needs to determine the appropriate workload services and configurations. Ensure that the network can support your workload. To evaluate networking requirements, consider:
 
-- **Network traffic**: Assess the expected network traffic for the workload. Understand the data transfer needs and the frequency of network requests.
+- *Understand network traffic.* Assess the expected network traffic for the workload. Understand the data transfer needs and the frequency of network requests.
 
-- **Bandwidth requirements**: Determine the bandwidth requirements for the workload. Consider the amount of data that's transmitted and received over the network.
+- *Understand bandwidth requirements.* Determine the bandwidth requirements for the workload. Consider the amount of data that's transmitted and received over the network.
 
-- **Latency**: Evaluate the desired latency for the workload. Use private virtual networks and backbone networks instead of traversing the public internet. This technique decreases the latency of the workload.
+- *Understand network Latency.* Evaluate the desired latency for the workload. Use private virtual networks and backbone networks instead of traversing the public internet. This technique decreases the latency of the workload.
 
-- **Throughput**: Consider the required throughput for the workload. Throughput refers to the amount of data that can be transmitted over a network in a given time. Configure the network routing options to take advantage of network throughput benefits.
+- *Understand throughput.* Consider the required throughput for the workload. Throughput refers to the amount of data that can be transmitted over a network in a given time. Configure the network routing options to take advantage of network throughput benefits.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Private virtual networking limits public access and makes it difficult to deploy and manage resources.
 
@@ -98,25 +98,24 @@ Assess your network needs to determine the appropriate workload services and con
 
 Choose the appropriate compute service to optimize performance efficiency. Different compute services have varying capabilities and characteristics that can affect the performance of your workload. Select the optimal compute service to ensure that your workload runs efficiently.
 
-**Understand instance types.** Different instance types are optimized for different workloads, such as CPU-optimized, memory-optimized, and GPU instances. Choose the instance type that aligns with your needs.
+- *Understand instance types.* Different instance types are optimized for different workloads, such as CPU-optimized, memory-optimized, and GPU instances. Choose the instance type that aligns with your needs.
 
-**Consider automatic scaling.** If your workload has variable demand, consider a compute service with an autoscale feature that can automatically adjust the compute capacity based on demand. Automatically scaling helps ensure that you have enough resources during peak times and prevents overprovisioning during low demand periods.
+- *Consider automatic scaling.* If your workload has variable demand, consider a compute service with an autoscale feature that can automatically adjust the compute capacity based on demand. Automatically scaling helps ensure that you have enough resources during peak times and prevents overprovisioning during low demand periods.
 
-**Consider containerization.** Containers provide performance advantages compared to a noncontainerized workload. Consider using containerization if it suits your architectural needs. Containers improve compute performance in several ways:
+- *Consider containerization.* Containers provide performance advantages compared to a noncontainerized workload. Consider using containerization if it suits your architectural needs. Containers improve compute performance through isolation, resource efficiency, fast startup time, and portability.
 
-- *Isolation*: Containers provide isolated environments for applications. Containers ensure that application resources don't interfere with each other. This isolation ensures that compute resources that are assigned to a container are dedicated to running that specific application, which results in optimal performance.
-
-- *Resource efficiency*: Containers are lightweight and share the host operating system's kernel, which allows for efficient resource utilization. Multiple containers can run on the same virtualized infrastructure, which maximizes the use of compute resources.
-
-- *Fast startup time*: Container images are prebuilt and are quickly started when needed. This fast startup time enables rapid scalability. It allows applications to scale up or down based on demand and avoid performance bottlenecks.
-
-- *Portability*: Containers encapsulate all the required dependencies and libraries within the image. With containers, it's easier to move applications across different operating systems or environments. This portability enables flexibility in deploying applications and allows for easy migration between cloud providers or on-premises environments.
+| Container benefit | Description |
+| --- | --- |
+| Isolation | Containers provide isolated environments for applications. Containers ensure that application resources don't interfere with each other. This isolation ensures that compute resources that are assigned to a container are dedicated to running that specific application, which results in optimal performance.
+| Resource efficiency | Containers are lightweight and share the host operating system's kernel, which allows for efficient resource utilization. Multiple containers can run on the same virtualized infrastructure, which maximizes the use of compute resources.
+| Fast startup time | Container images are prebuilt and are quickly started when needed. This fast startup time enables rapid scalability. It allows applications to scale up or down based on demand and avoid performance bottlenecks.
+| Portability | Containers encapsulate all the required dependencies and libraries within the image. With containers, it's easier to move applications across different operating systems or environments. This portability enables flexibility in deploying applications and allows for easy migration between cloud providers or on-premises environments.
 
 When you use containers, consider design factors such as containerizing all application components. Use Linux-based container runtimes for lightweight images. Give containers short lifecycles to make them immutable and replaceable. Gather relevant logs and metrics from containers, container hosts, and the underlying cluster. Use this data to monitor and analyze performance. Containers are just one component of an overall architecture. Choose an appropriate container orchestrator, like Kubernetes, to further enhance performance and scalability.
 
-**Choose the appropriate tier.** Within each compute service, you can set the compute capacity, select features, and enable capabilities. Based on your performance targets, choose the appropriate service tier for your compute service.
+- *Choose the appropriate tier.* Within each compute service, you can set the compute capacity, select features, and enable capabilities. Based on your performance targets, choose the appropriate service tier for your compute service.
 
-**Determine the instance count.** Determine the minimum instance count that your workload requires. Some workloads, even at minimal load, might require more than one instance of a compute resource. Set the minimum instance count accordingly.
+- *Determine the instance count.* Determine the minimum instance count that your workload requires. Some workloads, even at minimal load, might require more than one instance of a compute resource. Set the minimum instance count accordingly.
 
 ### Evaluate load balancing requirements
 
