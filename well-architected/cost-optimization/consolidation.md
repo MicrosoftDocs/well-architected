@@ -107,7 +107,7 @@ Offloading workload responsibilities to external teams refers to using expert ce
 
 ## Azure facilitation
 
-**Density support**: Many Azure services support increased resource density. The following table shows these services.
+**Density support:** Many Azure services support increased resource density. The following table shows these services.
 
 |Azure service|Segmentation control|
 | --- | --- |
@@ -119,7 +119,7 @@ Offloading workload responsibilities to external teams refers to using expert ce
 |Azure App Service|Multiple web apps and APIs on an App Service plan|
 |Azure SQL Database|Multiple databases on a server
 
-**Resource observability**: Azure Monitor provides a centralized platform for monitoring and managing the performance and health of your Azure resources. You can collect and analyze telemetry data, set up alerts, and gain insight into resource utilization.
+**Resource observability:** Azure Monitor provides a centralized platform for monitoring and managing the performance and health of your Azure resources. You can collect and analyze telemetry data, set up alerts, and gain insight into resource utilization.
 
 Log Analytics provides centralized log management and analysis. You can collect, analyze, and visualize log data from various Azure resources, which helps to identify issues, troubleshoot problems, and gain operational insight.
 
