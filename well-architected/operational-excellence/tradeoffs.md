@@ -39,7 +39,7 @@ During the design phase of a workload and over its lifecycle, as continuous impr
 
 - Components that surround the workload and support its operations, like automation or a custom control plane, must also be in scope for regular security hardening and testing.
 
-- Routine, ad hoc, and emergency operations increase the points of contact with the workload. A Zero Trust approach requires that these processes are considered attack vectors and must be included in the security controls and validation for the workload.
+- Routine, ad hoc, and emergency operations increase the points of contact with the workload. A zero trust approach requires that these processes are considered attack vectors and must be included in the security controls and validation for the workload.
 
 - The observability platform of the system collects logs and metrics about the workload, which can be a valuable source of information disclosure. Therefore, the workload's security needs to extend to protect data sinks from internal and external threats.
 
