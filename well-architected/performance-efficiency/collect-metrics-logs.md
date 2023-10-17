@@ -69,7 +69,7 @@ Collecting application data involves monitoring and analyzing an application's p
 
 #### Instrument code
 
-Instrumentation refers to the process of embedding specific code snippets or integrating tools into an application to capture performance data while it runs. It's essential to gather metrics that highlight the application's critical operations. Focus on metrics like throughput, latency, and completion time. It's vital to differentiate between data from business-related operations and those that aren't. For data pertaining to business operations, make sure its metadata is structured in a way that allows distinct tracking and storage. The primary reason for code instrumentation is to collect data on how the application handles its workload. It provides the following benefits:
+Instrumentation refers to the process of embedding code snippets or integrating tools into an application code to capture performance data while it runs. It's essential to gather metrics that highlight the application's critical operations. Focus on metrics like throughput, latency, and completion time. It's important to differentiate between business-related operations and operations that aren't. For data pertaining to business operations, make sure its metadata is structured in a way that allows distinct tracking and storage. The primary reason for code instrumentation is to collect data on how the application handles its workload. It provides the following benefits:
 
 - *Identifying performance bottlenecks:* By tracking metrics such as CPU use and memory use, you can identify bottlenecks and optimize the code accordingly.
 
@@ -155,11 +155,11 @@ At a minimum, collect data about the following performance areas.
 
 ### Validate and analyze data
 
-Your performance data should align with the performance targets. The data needs to represent workload or flow performance completely and accurately as it relates to performance targets. For example, the response time for a web service has a performance target of 500 ms. Collect response times at regular intervals to fully understand response times. Regularly analyze the performance data you collect. Regular analysis helps you catch and resolve performance issues promptly.
+Your performance data should align with the performance targets. The data needs to represent workload or flow performance completely and accurately as it relates to performance targets. For example, the response time for a web service has a performance target of 500 ms. Make it a routine to analyze the data, as frequent evaluations allow for early detection and mitigation of performance issues.
 
-**Create alerts.** Actionable alerts allow you to identify and resolve performance issues. They communicate the violated threshold, business effects, and components that are involved. Set up alerts for architecture components and critical flows. To begin, pick common and recommended alert rules. You can later change the rules as needed. Alerts should help you predict potential performance degradation before it becomes a problem. When you can't create an alert on a dependency that's outside your control, create a solution that collects proxy measurements, such as dependency call duration.
+- *Create alerts.* It's beneficial to have alerts that are actionable, enabling prompt identification and rectification of performance problems. These alerts should clearly indicate which performance threshold has been breached, the potential business effect, and the involved components. Start by setting common and recommended alert. Over time, you can modify these criteria based on your specific needs. The primary objective of these alerts should be to forecast potential performance drops before they escalate into significant issues. If you can't set an alert for an external dependency, consider devising a method to gather indirect measurements, like the duration of a dependency call.
 
-**Set data limits.** Set sensible limits for how much data to collect and how long to retain it. Telemetry can be verbose and provide too much data to sift through. You need to capture key performance signals or be able to efficiently pull a signal from your metrics sink.
+- *Set data collection limits.* Determine and set logical limits on the volume of data you collect and its retention duration. Telemetry can sometimes produce overwhelming amounts of data. It's essential to focus on capturing only the most vital performance indicators or have an efficient system in place to extract meaningful insights from your performance data.
 
 ## Azure facilitation
 
