@@ -65,7 +65,7 @@ Retention policies dictate how long performance data should be kept. Establishin
 
 ### Collect application data
 
-Application performance data provides valuable insights into the health and performance of an application. By monitoring and analyzing performance data, you can identify and troubleshoot issues, optimize application performance, and make informed decisions for your application.
+Collecting application data involves monitoring and analyzing an application's performance metrics, such as throughput, latency, and completion times, primarily gathered through instrumenting code. Application performance data provides valuable insights into the health and performance of an application. By monitoring and analyzing performance data, you can identify and troubleshoot issues, optimize application performance, and make informed decisions for your application.
 
 #### Instrument code
 
