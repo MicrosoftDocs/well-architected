@@ -63,7 +63,9 @@ Choosing a scaling strategy involves deciding between vertical or horizontal met
 
 Designing for infrastructure scalability is the process of creating an architecture that can handle increasing demands and workload by adding or adjusting resources as needed. It involves planning and implementing solutions that can scale horizontally or vertically to accommodate growth. When you design a workload to be scalable, it can effectively distribute the workload across multiple resources, which prevents bottlenecks and maximizes resource utilization.
 
-**Avoid singletons.** You should avoid the use of a single, centralized resource for the entire workload. Instead, distribute your workload across multiple resources for better scalability, fault tolerance, and performance. Explore some specific examples and design considerations to avoid singletons in workload resources:
+##### Avoid singletons
+
+You should avoid the use of a single, centralized resource for the entire workload. Instead, distribute your workload across multiple resources for better scalability, fault tolerance, and performance. Explore some specific examples and design considerations to avoid singletons in workload resources:
 
 - *[Queue-based load leveling](/azure/architecture/patterns/queue-based-load-leveling)*: Instead of relying on a single queue to process messages, consider partitioning the workload across multiple queues to distribute the processing load. It provides better scalability and parallel processing.
 
@@ -71,7 +73,9 @@ Designing for infrastructure scalability is the process of creating an architect
 
 - *Design patterns*: Design patterns such as [Fan-out/Fan-in](/azure/azure-functions/durable/durable-functions-overview#fan-in-out) or [Pipes and Filters](/azure/architecture/patterns/pipes-and-filters) can help avoid singletons in workflows. These patterns enable the distribution of processing tasks across multiple resources and promote scalability and flexibility.
 
-**Decouple components.** Decoupling application components is an important aspect of designing for scalability. It involves breaking down the application into smaller, independent components that can operate and scale independently based on specific workload requirements. For example, if one component requires more resources due to increased demand, you can scale that component without affecting the others. This flexibility ensures efficient resource allocation and prevents bottlenecks. By decoupling components, you can isolate failures and minimize the effect on the overall application. If one component fails, the other components can continue to function independently.
+##### Decouple components
+
+Decoupling application components is an important aspect of designing for scalability. It involves breaking down the application into smaller, independent components that can operate and scale independently based on specific workload requirements. For example, if one component requires more resources due to increased demand, you can scale that component without affecting the others. This flexibility ensures efficient resource allocation and prevents bottlenecks. By decoupling components, you can isolate failures and minimize the effect on the overall application. If one component fails, the other components can continue to function independently.
 
 Decoupled components are easier to maintain and update. Changes or updates to one component can be made without affecting the others because they're independent. Follow these guidelines to decouple application components for scalability:
 
