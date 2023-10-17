@@ -29,15 +29,15 @@ When you use a progressive exposure deployment model as your standard practice:
 
 A deployment failure mitigation strategy is composed of five broad phases:
 
-- Detection: To respond to a failed deployment, you must first detect the failure. Detection can take several forms, like failed smoke tests, user reported issues, or alerts that your monitoring platform generates.
+1. Detection: To respond to a failed deployment, you must first detect the failure. Detection can take several forms, like failed smoke tests, user reported issues, or alerts that your monitoring platform generates.
 
-- Decision: You must decide what the best mitigation strategy is for the specific failure type.
+1. Decision: You must decide what the best mitigation strategy is for the specific failure type.
 
-- Mitigation: You perform the identified mitigation action. The mitigation can take the form of a fallback, rollback, roll forward, or the use of a runtime configuration to bypass the offending function.
+1. Mitigation: You perform the identified mitigation action. The mitigation can take the form of a fallback, rollback, roll forward, or the use of a runtime configuration to bypass the offending function.
 
-- Communications: Stakeholders and affected end users must be made aware of the status as you detect and work through the issue as required by your [emergency response plan](emergency-response.md).
+1. Communication: Stakeholders and affected end users must be made aware of the status as you detect and work through the issue as required by your [emergency response plan](emergency-response.md).
 
-- Postmortems: Blameless postmortems provide opportunities for the workload team to identify areas for improvement and create plans to apply learnings.
+1. Postmortem: Blameless postmortems provide opportunities for the workload team to identify areas for improvement and create plans to apply learnings.
 
 The following sections provide detailed recommendations for these phases. These sections assume that you detect an issue after you deploy your changes to one or more groups of users or systems but before you update all groups in your rollout plan.
 
@@ -84,7 +84,7 @@ Deciding on an appropriate mitigation strategy for a given deployment issue invo
 
 No matter which choice you make, you should include appropriate approvals in your decision-making process and codify them in your decision tree.
 
-### Mitigations
+### Mitigation
 
 - **Rollback**: In a rollback scenario, you revert updated systems to the last-known-good configuration state.
 
@@ -104,7 +104,7 @@ No matter which choice you make, you should include appropriate approvals in you
 
   Like any other code, hot fixes need to go through your safe deployment practices. But with a hot fix, the timeline is considerably accelerated. You need to use a code promotion strategy throughout your environments. You also need to check hot fix code at all quality gates. But you might need to dramatically shorten bake times, and you might need to modify tests to accelerate them. Ensure that you can run full tests on the updated code as soon as possible after deployment. Automating quality assurance testing to a high degree helps make testing efficient in these scenarios.
 
-### Communications
+### Communication
 
 It's important to have clearly defined communication responsibilities to help minimize chaos during incidents. These responsibilities should establish how the workload team engages with support teams, stakeholders, and emergency response team personnel, like the emergency response manager.
 
@@ -112,7 +112,7 @@ Standardize the cadence that the workload team follows for providing status upda
 
 If the workload team needs to communicate directly with end users, clarify the type of information and level of detail that are appropriate for sharing with users. Also communicate to the workload team any other requirements that apply to these cases.
 
-### Postmortems
+### Postmortem
 
 Postmortems should follow all failed deployments, without exception. Every failed deployment is an opportunity for learning. Postmortems can help you identify weaknesses in your deployment and development processes. You also might identify misconfigurations in your infrastructure, among many other possibilities.
 
