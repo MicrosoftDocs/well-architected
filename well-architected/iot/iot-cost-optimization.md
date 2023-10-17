@@ -27,7 +27,7 @@ To assess your IoT workload through the lenses of the Well-Architected Framework
 
 ## Design principles
 
-[Five pillars of architectural excellence](../pillars.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Cost Optimization](../cost-optimization/index.md).
+[Five pillars of architectural excellence](../pillars.md) underpin the IoT workload design methodology. These pillars serve as a compass for subsequent design decisions across the [key IoT design areas](iot-overview.md#iot-design-areas). The following design principles extend the quality pillar of the Azure Well-Architected Framework - [Cost Optimization](../cost-optimization/index.yml). 
 
 |Design principle|Considerations|
 |---|---|

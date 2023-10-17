@@ -91,7 +91,7 @@ Meeting performance targets is a shared responsibility between development and o
 
 ### Evaluate customer feedback
 
-Evaluating customer feedback involves actively seeking out and analyzing the responses and suggestions of your customers. Actively collecting and analyzing customer feedback offers valuable insights into their needs and expectations. Regular communication helps in adjusting performance targets in line with changing preferences and tech trends. By focusing on customer needs, the workload not only aligns with technical benchmarks but also undergoes continuous refinement. This approach, emphasizing customer satisfaction, ensures that the workload remains relevant and successful in the long run.
+Evaluating customer feedback involves actively seeking out and analyzing the responses and suggestions of your customers. Actively collecting and analyzing customer feedback offers valuable insights into their needs and expectations. Regular communication helps in adjusting performance targets in line with changing preferences and tech trends. A focus on customer needs means that the workload not only aligns with technical benchmarks but also undergoes continuous refinement. This approach, emphasizing customer satisfaction, ensures that the workload remains relevant and successful in the long run.
 
 ## Azure facilitation
 
