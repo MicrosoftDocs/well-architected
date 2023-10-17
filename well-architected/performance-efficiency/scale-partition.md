@@ -91,37 +91,27 @@ Decoupled components are easier to maintain and update. Changes or updates to on
 
 As you scale a workload, you should design the application to distribute the load. Just because you can add more replicas at the infrastructure level doesn't mean your application can use the replicas. Avoid solutions that require client affinity, data locking, or state affinity for a single instance if possible. You want to route a client or process to a resource that has available capacity.
 
-##### Eliminate server-side session state
+- *Eliminate server-side session state.*
 
 You should design applications to be stateless where possible. For stateful applications, you should use a state store that's external to your server. Externalizing session state is the practice of storing session data outside of the application server or container. You can externalize session state to distribute session data across multiple servers or services, enabling seamless session management in a distributed environment. Consider the following when externalizing session state:
 
-- *Evaluate your session requirements.* Understand the session data that needs to be stored and managed. Consider session attributes, session timeouts, and any specific requirements for session replication or persistence. Determine the size of your session state and the frequency of read and write operations.
+    - *Evaluate your session requirements.* Understand the session data that needs to be stored and managed. Consider session attributes, session timeouts, and any specific requirements for session replication or persistence. Determine the size of your session state and the frequency of read and write operations.
 
-- *Choose a solution.* Select a storage solution that aligns with your performance and scalability needs. Options include using a distributed cache, a database, or a session state service. Consider factors such as data consistency, latency, and scalability when making your choice.
+    - *Choose a solution.* Select a storage solution that aligns with your performance and scalability needs. Options include using a distributed cache, a database, or a session state service. Consider factors such as data consistency, latency, and scalability when making your choice.
 
-- *Set up your application.* Update your application to use the chosen session state storage solution. You might need to change your application's configuration files or code to connect to the external storage service.
+    - *Set up your application.* Update your application to use the chosen session state storage solution. You might need to change your application's configuration files or code to connect to the external storage service.
 
-- *Update your logic.* Change your application's session management logic to store and retrieve session data from the external storage solution. You might need to use APIs or libraries provided by the storage solution to manage session state.
+    - *Update your logic.* Change your application's session management logic to store and retrieve session data from the external storage solution. You might need to use APIs or libraries provided by the storage solution to manage session state.
 
-##### Eliminate client affinity
+- *Eliminate client affinity.* Client affinity is also known as session affinity or sticky sessions. When you eliminate client affinity, you distribute client requests evenly across multiple replicas or servers, without routing all requests from a client to the same replica. This configuration can improve the scalability and performance of applications by allowing any available replica to process the requests.
 
-Client affinity is also known as session affinity or sticky sessions. When you eliminate client affinity, you distribute client requests evenly across multiple replicas or servers, without routing all requests from a client to the same replica. This configuration can improve the scalability and performance of applications by allowing any available replica to process the requests.
+- *Review your load balancing algorithm.* A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. This can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
 
-##### Review your load balancing algorithm
+- *Eliminate data locking.* Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
 
-A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. This can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
+- *Use dynamic service discovery.* Dynamic service discovery is the process of automatically detecting and registering services in a distributed system. It allows clients to discover available services without being tightly coupled to specific instances. Clients shouldn't be able to take a direct dependency on a specific instance in the workload. To avoid these dependencies, you should use a proxy to distribute and redistribute client connections. The proxy acts as an intermediary between clients and services, providing a layer of abstraction that allows services to be added or removed without affecting clients.
 
-##### Eliminate data locking
-
-Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
-
-##### Use dynamic service discovery
-
-Dynamic service discovery is the process of automatically detecting and registering services in a distributed system. It allows clients to discover available services without being tightly coupled to specific instances. Clients shouldn't be able to take a direct dependency on a specific instance in the workload. To avoid these dependencies, you should use a proxy to distribute and redistribute client connections. The proxy acts as an intermediary between clients and services, providing a layer of abstraction that allows services to be added or removed without affecting clients.
-
-##### Use background tasks
-
-When an application is scaled, it can handle an increasing workload or a higher number of concurrent requests. Offloading intensive tasks as background tasks allows the main application to handle user requests without resource-intensive operations overwhelming it. Follow these steps to offload tasks as background tasks:
+- *Use background tasks.* When an application is scaled, it can handle an increasing workload or a higher number of concurrent requests. Offloading intensive tasks as background tasks allows the main application to handle user requests without resource-intensive operations overwhelming it. Follow these steps to offload tasks as background tasks:
 
 1. Find the CPU-intensive and I/O-intensive tasks in your application that you can offload. These tasks typically involve heavy computations or interactions with external resources such as databases or network operations.
 
@@ -139,11 +129,11 @@ Implement scaling in a workload by adjusting the available resources, such as co
 
 - *Understand service scaling boundaries.* When you understand service scaling limits, increments, and restrictions, you can make informed decisions when selecting a service. Scaling boundaries determine whether or not your chosen service can handle the expected workload, scale efficiently, and meet the performance requirements of your application. Scaling boundaries to consider include:
 
-    - *Scaling limits*: Scaling limits are the maximum capacity that a location or service can handle. It's important to know these limits to help ensure that the service can accommodate the expected workload and handle peak usage without performance degradation. Every resource has an upper scale limit. If you need to go beyond scale limits, you should partition your workload.
-
-    - *Scaling increments*: Services scale at defined increments. For example, compute services might scale by instances and pods while databases might scale by instances, transaction units, and virtual cores. It's important to understand these increments to optimize resource allocation and prevent resource flapping.
-
-    - *Scaling restrictions*: Some services allow you to scale up or out but limit your ability to automatically reverse scaling. You're forced to scale in manually, or you might have to redeploy a new resource. These limitations are often to protect the workload. Scaling down or scaling in can have implications on the availability and performance of the workload. A service might enforce certain limitations or constraints to help ensure that the workload has sufficient resources to operate effectively. This can affect data consistency and synchronization, especially in distributed systems. The service might have mechanisms in place to handle data replication and consistency during scaling up or out but might not provide the same level of support for scaling down or in.
+  - *Scaling limits*: Scaling limits are the maximum capacity that a location or service can handle. It's important to know these limits to help ensure that the service can accommodate the expected workload and handle peak usage without performance degradation. Every resource has an upper scale limit. If you need to go beyond scale limits, you should partition your workload.
+  
+  - *Scaling increments*: Services scale at defined increments. For example, compute services might scale by instances and pods while databases might scale by instances, transaction units, and virtual cores. It's important to understand these increments to optimize resource allocation and prevent resource flapping.
+  
+  - *Scaling restrictions*: Some services allow you to scale up or out but limit your ability to automatically reverse scaling. You're forced to scale in manually, or you might have to redeploy a new resource. These limitations are often to protect the workload. Scaling down or scaling in can have implications on the availability and performance of the workload. A service might enforce certain limitations or constraints to help ensure that the workload has sufficient resources to operate effectively. This can affect data consistency and synchronization, especially in distributed systems. The service might have mechanisms in place to handle data replication and consistency during scaling up or out but might not provide the same level of support for scaling down or in.
 
 - *Use meaningful load metrics.* Scaling should use meaningful load metrics as scaling triggers. Meaningful load metrics include simple metrics, like CPU or memory, or more advanced metrics, such as queue depth, SQL queries, custom metrics queries, and HTTP queue length. Consider using a combination of simple and advanced load metrics as your scaling trigger.
 
@@ -153,7 +143,7 @@ Implement scaling in a workload by adjusting the available resources, such as co
 
 - *Prevent flapping.* Flapping is a looping condition that occurs when one scale event triggers an opposite scale event, creating a continuous back-and-forth scaling action. For example, if scaling in reduces the number of instances, it might cause the CPU usage to rise in the remaining instances, triggering a scale-out event. The scale-out event, in turn, causes the CPU usage to drop, repeating the process.
 
-It's important to choose an adequate margin between the scale-out and scale-in thresholds to avoid flapping. You can prevent frequent and unnecessary scale-in and scale-out actions by setting thresholds that provide a significant difference in CPU usage.
+    It's important to choose an adequate margin between the scale-out and scale-in thresholds to avoid flapping. You can prevent frequent and unnecessary scale-in and scale-out actions by setting thresholds that provide a significant difference in CPU usage.
 
 - *Use Deployment Stamps.* There are techniques that make it easier to scale a workload. You can use the [Deployment Stamps](/azure/architecture/patterns/deployment-stamp) pattern to easily scale a workload by adding one or more scale units.
 
