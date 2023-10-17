@@ -89,8 +89,8 @@ As you make design choices for Azure Service Fabric, review the [design principl
 > - **Cluster architecture:** Ensure Network Security Groups (NSG) are configured to restrict traffic flow between subnets and node types. Ensure that the [correct ports](/azure/service-fabric/service-fabric-best-practices-networking#cluster-networking) are opened for application deployment and workloads.
 > - **Cluster architecture:** When using the Service Fabric Secret Store to distribute secrets, use a separate data encipherment certificate to encrypt the values.
 > - **Cluster architecture:** [Deploy client certificates by adding them to Azure Key Vault](/azure/service-fabric/how-to-managed-cluster-application-secrets) and referencing the URI in your deployment.
-> - **Cluster architecture:** Enable Azure Active Directory integration for your cluster to ensure users can access Service Fabric Explorer using their Azure Active Directory (AAD) credentials. Don't distribute the cluster client certificates among users to access Explorer.
-> - **Cluster architecture:** For client authentication, use admin and read-only client certificates and/or AAD authentication.
+> - **Cluster architecture:** Enable Microsoft Entra integration for your cluster to ensure users can access Service Fabric Explorer using their Microsoft Entra credentials. Don't distribute the cluster client certificates among users to access Explorer.
+> - **Cluster architecture:** For client authentication, use admin and read-only client certificates and/or Microsoft Entra authentication.
 > - **Cluster and workload architectures:** Create a process for monitoring the expiration date of client certificates.
 > - **Cluster and workload architectures:** Maintain separate clusters for development, staging, and production.
 
@@ -118,7 +118,7 @@ Azure Advisor helps you ensure and improve the security of Azure Service Fabric.
 Azure Policy helps maintain organizational standards and assess compliance across your resources. Keep the following built-in policies in mind as you configure Azure Service Fabric:
 
 * Service Fabric clusters should have the ClusterProtectionLevel property set to `EncryptAndSign`. This is the default value for managed clusters and isn't changeable. **Standard cluster:** Ensure you set ClusterProtectionLevel to `EncryptAndSign`.
-* Service Fabric clusters should only use Azure Active Directory for client authentication.
+* Service Fabric clusters should only use Microsoft Entra ID for client authentication.
 
 All built-in policy definitions related to Azure Service Fabric are listed in [Built-in policies - Service Fabric](/azure/governance/policy/samples/built-in-policies#service-fabric).
 
@@ -232,7 +232,7 @@ For more suggestions, see [Principles of the performance efficiency pillar](/azu
 ### Security
 
 * Service Fabric clusters should have the ClusterProtectionLevel property set to `EncryptAndSign`. This is the default value for managed clusters and isn't changeable. **Standard cluster:** Ensure you set ClusterProtectionLevel to `EncryptAndSign`.
-* Service Fabric clusters should only use Azure Active Directory for client authentication.
+* Service Fabric clusters should only use Microsoft Entra ID for client authentication.
 
 ## Additional resources
 

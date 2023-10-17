@@ -34,7 +34,8 @@ All users' notebooks and notebook results are encrypted at rest, by default. If 
 ***
 
 > [!div class="checklist"]
-> - Use Azure Active Directory [credential passthrough](/azure/databricks/security/credential-passthrough/adls-passthrough) to avoid the need for service principals when communicating with Azure Data Lake Storage.
+>
+> - Use Microsoft Entra ID [credential passthrough](/azure/databricks/security/credential-passthrough/adls-passthrough) to avoid the need for service principals when communicating with Azure Data Lake Storage.
 > - Isolate your workspaces, compute, and data from public access. Make sure that only the right people have access and only through secure channels.
 > - Ensure that the cloud workspaces for your analytics are only accessible by properly [managed users](/azure/databricks/administration-guide/users-groups/).
 > - Implement Azure Private Link.
@@ -50,7 +51,7 @@ Explore the following table of recommendations to optimize your Azure Databricks
 
 |Recommendation|Description|
 |--------------|-----------|
-|Ensure that the cloud workspaces for your analytics are only accessible by properly [managed users](/azure/databricks/administration-guide/users-groups/).|Azure Active Directory can handle single sign-on for remote access. For extra security, reference [Conditional Access](/azure/databricks/administration-guide/access-control/conditional-access).|
+|Ensure that the cloud workspaces for your analytics are only accessible by properly [managed users](/azure/databricks/administration-guide/users-groups/).|Microsoft Entra ID can handle single sign-on for remote access. For extra security, reference [Conditional Access](/azure/databricks/administration-guide/access-control/conditional-access).|
 |Implement Azure Private Link.|Ensure all traffic between users of your platform, the notebooks, and the compute clusters that process queries are encrypted and transmitted over the cloud provider's network backbone, inaccessible to the outside world.|
 |Restrict and monitor your virtual machines.|Clusters, which execute queries, should have SSH and network access restricted to prevent installation of arbitrary packages. Clusters should use only images that are periodically scanned for vulnerabilities.|
 |Use the [VNet injection](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject) functionality to enable more secure scenarios.|Such as: <br>- Connecting to other Azure services using service endpoints. <br>- Connecting to on-premises data sources, taking advantage of user-defined routes. <br>- Connecting to a network virtual appliance to inspect all outbound traffic and take actions according to allow and deny rules. <br>- Using custom DNS. <br>-  Deploying Azure Databricks clusters in existing virtual networks.|
