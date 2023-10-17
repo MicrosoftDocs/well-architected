@@ -590,11 +590,7 @@ items:
                   - name: Operational excellence
                     href: services/data/azure-sql-managed-instance/operational-excellence.md
               - name: Azure Cosmos DB
-                items:
-                  - name: Reliability
-                    href: services/data/cosmos-db/reliability.md
-                  - name: Operational excellence
-                    href: services/data/cosmos-db/operational-excellence.md
+                href: services/data/cosmos-db.md
           - name: Hybrid
             items:
               - name: Azure Stack Hub
