@@ -57,7 +57,7 @@ The Azure VMware Solution platform team ensures that the infrastructure is ready
 - **Requesting capacity** by ensuring that the Azure VMware Solution software-defined datacenter (SDDC) activation has occurred and has defined the regions, nodes, and network settings. The platform team then allocates compute resources, resource pools, virtual storage area network (vSAN) storage, and clustering.
 - **Designing to meet recovery point objective (RPO) and recovery time objective (RTO) targets** by strategically building infrastructure to meet service-level agreements (SLAs).
 - **Securing and optimizing connectivity** to on-premises systems, Azure, and the internet. This task includes routing, setting up firewall entries, and managing centralized network appliances.
-- **Managing Azure integrations**, such as integrations with Azure DNS, Azure Backup, Azure Monitor, Log Analytics, Azure Active Directory (Azure AD), and Azure Key Vault.
+- **Managing Azure integrations**, such as integrations with Azure DNS, Azure Backup, Azure Monitor, Log Analytics, Microsoft Entra ID, and Azure Key Vault.
 
 ### Shared responsibilities
 

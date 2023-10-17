@@ -30,7 +30,7 @@ Microsoft Sentinel can help simplify data collection across different sources, i
 ### Azure Arc management security capabilities
 
 - Access unique Azure security capabilities such as Microsoft Defender for Cloud.
-- Centrally manage access for resources with Role-Based Access Control.
+- Centrally manage access for resources with role-based access control.
 - Centrally manage and enforce compliance and simplify audit reporting with Azure Policy.
 
 ### Azure Arc enabled data services security capabilities

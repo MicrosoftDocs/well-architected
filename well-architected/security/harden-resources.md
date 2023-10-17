@@ -81,7 +81,7 @@ Domain Name System (DNS) hardening is another network security practice. To ensu
 
 **Use managed identities** and workload identities with no credentials where possible. Credentials can be leaked. For more information, see [Recommendations for protecting application secrets](application-secrets.md).
 
-**Use the least-privilege approach for your management processes.** Remove unnecessary role assignments and perform regular Microsoft Entra ID access reviews. Use role assignment descriptions to keep a paper trail of justifications, which is crucial for audits.
+**Use the least-privilege approach for your management processes.** Remove unnecessary role assignments and perform regular Microsoft Entra access reviews. Use role assignment descriptions to keep a paper trail of justifications, which is crucial for audits.
 
 ### Cloud resources
 
@@ -171,4 +171,3 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Security checklist](checklist.md)
-

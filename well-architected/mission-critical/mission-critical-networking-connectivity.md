@@ -43,7 +43,7 @@ This section explores the key differences Azure routing services to define how e
 
 - Azure Front Door and Azure Traffic Manager are globally distributed services with built-in multi-region redundancy and availability.
   - Hypothetical failure scenarios of a scale large enough to threaten the global availability of these resilient routing services presents a broader risk to the application in terms of cascading and correlated failures.
-    - Failure scenarios of this scale are only feasibly caused by shared foundational services, such as Azure DNS or Azure AD, which serve as global platform dependencies for almost all Azure services. If a redundant Azure technology is applied, it's likely that the secondary service will also be experiencing unavailability or a degraded service.
+    - Failure scenarios of this scale are only feasibly caused by shared foundational services, such as Azure DNS or Microsoft Entra ID, which serve as global platform dependencies for almost all Azure services. If a redundant Azure technology is applied, it's likely that the secondary service will also be experiencing unavailability or a degraded service.
     - Global routing service failure scenarios are highly likely to significantly impact many other services used for key application components through interservice dependencies. Even if a third-party technology is used, the application will likely be in an unhealthy state due to the broader impact of the underlying issue, meaning that routing to application endpoints on Azure will provide little value anyway.
 
 - Global routing service redundancy provides mitigation for an extremely small number of hypothetical failure scenarios, where the impact of a global outage is constrained to the routing service itself.
