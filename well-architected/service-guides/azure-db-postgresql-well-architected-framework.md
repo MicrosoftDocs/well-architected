@@ -74,7 +74,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 >  
 > - SSL and enforce encryption to secure data in transit.
 > - Implement network security groups and firewalls to control access to your database.
-> - Use Azure Active Directory for authentication and authorization to enhance identity management.
+> - Use Microsoft Entra ID for authentication and authorization to enhance identity management.
 > - Configure row-level security.
 
 ### Security recommendations
@@ -83,7 +83,7 @@ You should review the [design principles](/azure/architecture/framework/cost/pri
 | --- | --- |
 | SSL and enforce encryption to secure data in transit. | Deploy the DigiCert Global Root certificate from a trusted Certificate Authority (CA) certificate needed to communicate over SSL with client applications. |
 | Implement network security groups and firewalls to control access to your database. | As part of the Zero Trust Model for security, network segmentation is recommended where communication paths between components (in this case, application and database server) are restricted to only what's needed. This can be implemented using Network Security Group and Application Security Groups. |
-| Use Azure Active Directory for authentication and authorization to enhance identity management. | Microsoft Azure Active Directory (Azure AD) authentication is a mechanism of connecting to Azure Database for PostgreSQL using identities defined in Azure AD. |
+| Use Microsoft Entra ID for authentication and authorization to enhance identity management. | Microsoft Entra authentication is a mechanism of connecting to Azure Database for PostgreSQL using identities defined in Microsoft Entra ID. |
 | Configure row-level security. | [Row level security (RLS)](https://www.postgresql.org/docs/current/ddl-rowsecurity.html) is a PostgreSQL security feature that allows database administrators to define policies to control how specific rows of data display and operate for one or more roles. Row-level security is an additional filter you can apply to a PostgreSQL database table. |
 
 ## Cost optimization
