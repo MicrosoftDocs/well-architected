@@ -104,14 +104,14 @@ Choose the appropriate compute service to optimize performance efficiency. Diffe
 
 - *Consider containerization.* Containers provide performance advantages compared to a noncontainerized workload. Consider using containerization if it suits your architectural needs. Containers improve compute performance through isolation, resource efficiency, fast startup time, and portability.
 
+    When you use containers, consider design factors such as containerizing all application components. Use Linux-based container runtimes for lightweight images. Give containers short lifecycles to make them immutable and replaceable. Gather relevant logs and metrics from containers, container hosts, and the underlying cluster. Use this data to monitor and analyze performance. Containers are just one component of an overall architecture. Choose an appropriate container orchestrator, like Kubernetes, to further enhance performance and scalability.
+
     | Container benefit | Description |
     | --- | --- |
     | Isolation | Containers provide isolated environments for applications. Containers ensure that application resources don't interfere with each other. This isolation ensures that compute resources that are assigned to a container are dedicated to running that specific application, which results in optimal performance.
     | Resource efficiency | Containers are lightweight and share the host operating system's kernel, which allows for efficient resource utilization. Multiple containers can run on the same virtualized infrastructure, which maximizes the use of compute resources.
     | Fast startup time | Container images are prebuilt and are quickly started when needed. This fast startup time enables rapid scalability. It allows applications to scale up or down based on demand and avoid performance bottlenecks.
     | Portability | Containers encapsulate all the required dependencies and libraries within the image. With containers, it's easier to move applications across different operating systems or environments. This portability enables flexibility in deploying applications and allows for easy migration between cloud providers or on-premises environments.
-
-    When you use containers, consider design factors such as containerizing all application components. Use Linux-based container runtimes for lightweight images. Give containers short lifecycles to make them immutable and replaceable. Gather relevant logs and metrics from containers, container hosts, and the underlying cluster. Use this data to monitor and analyze performance. Containers are just one component of an overall architecture. Choose an appropriate container orchestrator, like Kubernetes, to further enhance performance and scalability.
 
 - *Choose the appropriate tier.* Within each compute service, you can set the compute capacity, select features, and enable capabilities. Based on your performance targets, choose the appropriate service tier for your compute service.
 
