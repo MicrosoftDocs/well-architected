@@ -116,19 +116,21 @@ Use pipelines, such as Azure Pipelines, to automate the build, test, and deploym
 
 The [Azure Developer CLI](/azure/developer/azure-developer-cli/overview) is an open-source tool that accelerates the time it takes for you to get your application from a local development environment to Azure. The Azure Developer CLI provides best practice, developer-friendly commands that map to key stages in your workflow, whether you’re working in the terminal, an integrated development environment (IDE), or CI/CD.
 
+## Organizational alignment
+
+Cloud Adoption Framework provides guidance for central teams on how to set up cost guardrails across the organization so workload teams can know what is possibly being provided by central teams.
+
+For more information, see [Cost Management policy compliance processes](/azure/cloud-adoption-framework/govern/cost-management/compliance-processes) and [Develop cost governance policy statements](/azure/cloud-adoption-framework/govern/cost-management/#develop-governance-policy-statements). The organization is generally encouraged to [Adopt policy-driven guardrails](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) for the implementation.
+
 ## Related links
 
-- [Adopt policy-driven guardrails](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance)
+- [Cost Management tools in Azure](/azure/cloud-adoption-framework/govern/cost-management/toolchain)
+- [Create and manage budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets)
 - [Assign access to Cost Management data](/azure/cost-management-billing/costs/assign-access-acm-data)
-- [Cost Management policy compliance processes](/azure/cloud-adoption-framework/govern/cost-management/compliance-processes)
-- [Cost Management sample policy statements](/azure/cloud-adoption-framework/govern/cost-management/policy-statements)
-- [Cost Management tools in Azure](/azure/cloud-adoption-framework/govern/cost-management/toolchain) 
-- [Create and manage budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) 
-- [Develop governance policy statements](/azure/cloud-adoption-framework/govern/cost-management/#develop-governance-policy-statements)
-- [Identify anomalies and unexpected changes in cost](/azure/cost-management-billing/understand/analyze-unexpected-charges)
 - [Monitor usage and spending with cost alerts](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending)
+- [Identify anomalies and unexpected changes in cost](/azure/cost-management-billing/understand/analyze-unexpected-charges)
 
-## Cost Optimization checklist  
+## Cost Optimization checklist
 
 Refer to the complete set of recommendations.
 

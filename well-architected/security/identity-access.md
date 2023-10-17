@@ -236,7 +236,7 @@ For more information, see [Recommendations on security monitoring and threat ana
 
 We recommend that you always use modern authentication protocols that take into account all available data points and use conditional access. **Microsoft Entra ID provides identity and access management in Azure**. It covers the management plane of Azure and is integrated with the data planes of most Azure services. Microsoft Entra ID is the tenant that's associated with the workload subscription. It tracks and manages identities and their allowed permissions and simplifies overall management to minimize the risk of oversight or human error.
 
-These capabilities natively integrate into the same Microsoft Entra ID identity and permission model for user segments:
+These capabilities natively integrate into the same Microsoft Entra identity and permission model for user segments:
 
 -   [Microsoft Entra ID](/azure/active-directory/). Employees and enterprise resources.
 
@@ -250,7 +250,7 @@ You can use Microsoft Entra ID for authentication and authorization of custom ap
 
 You can stay current by visiting [What's new in Microsoft Entra ID](/azure/active-directory/fundamentals/whats-new).
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Microsof Entra ID is a single point of failure just like any other foundational service. There's no workaround until the outage is fixed by Microsoft. However, the rich feature set of Microsoft Entra ID outweighs the risk of using custom solutions.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Microsof Microsoft Entra ID is a single point of failure just like any other foundational service. There's no workaround until the outage is fixed by Microsoft. However, the rich feature set of Microsoft Entra outweighs the risk of using custom solutions.
 
 Azure supports open protocols like OAuth2 and OpenID Connect. We recommend that you use these standard authentication and authorization mechanisms instead of designing your own flows.
 
@@ -280,7 +280,7 @@ Not all services support managed identities. If you can't use managed identities
 
 ### Resource identity
 
-The concept of **managed identities can be extended to Azure resources**. Azure resources can use managed identities to authenticate themselves to other services that support Microsoft Entra ID authentication. For more information, see [Azure services that can use managed identities to access other services](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
+The concept of **managed identities can be extended to Azure resources**. Azure resources can use managed identities to authenticate themselves to other services that support Microsoft Entra authentication. For more information, see [Azure services that can use managed identities to access other services](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
 
 ### Conditional access policies
 
@@ -326,7 +326,7 @@ The following example shows an identity implementation. Different types of ident
 
 -   **Managed identities**. System components in the client role use system-managed identities, including build agents.
 
--   **Human identities**. User and operator authentication is delegated to Microsoft Entra ID or Azure AD (native, B2B, or B2C).
+-   **Human identities**. User and operator authentication is delegated to Microsoft Entra ID or Microsoft Entra ID (native, B2B, or B2C).
 
 The security of preshared secrets is critical for any application. Azure Key Vault provides a secure storage mechanism for these secrets, including Redis and third-party secrets. 
 

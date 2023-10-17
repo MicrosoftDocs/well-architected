@@ -341,15 +341,15 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 - `Session` is the default and most widely used [consistency level](/azure/cosmos-db/consistency-levels) since data is received in the same order as writes.
 
-- Azure Cosmos DB supports authentication via either an Azure Active Directory identity or Azure Cosmos DB keys and resource tokens, which provide overlapping capabilities.
+- Azure Cosmos DB supports authentication via either a Microsoft Entra identity or Azure Cosmos DB keys and resource tokens, which provide overlapping capabilities.
 
 ![Azure Cosmos DB Access Capabilities](/azure/cosmos-db/media/how-to-restrict-user-data/operations.png "Azure Cosmos DB Access Capabilities")
 
-- It's possible to disable resource management operations using keys or resource tokens to limit keys and resource tokens to data operations only, allowing for fine-grained resource access control using Azure Active Directory Role-Based Access Control (RBAC).
+- It's possible to disable resource management operations using keys or resource tokens to limit keys and resource tokens to data operations only, allowing for fine-grained resource access control using Microsoft Entra role-based access control (RBAC).
   - Restricting control plane access via keys or resource tokens will disable control plane operations for clients using Azure Cosmos DB SDKs and should therefore be thoroughly [evaluated and tested](/azure/cosmos-db/role-based-access-control#check-list-before-enabling).
   - The `disableKeyBasedMetadataWriteAccess` setting can be configured via [ARM Template](/azure/cosmos-db/role-based-access-control#set-via-arm-template) IaC definitions, or via a [Built-In Azure Policy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4750c32b-89c0-46af-bfcb-2e4541a818d5).
 
-- Azure Cosmos DB Azure Active Directory RBAC support applies to account and resource control plane management operations.
+- Microsoft Entra RBAC support in Azure Cosmos DB applies to account and resource control plane management operations.
   - Application administrators can create role assignments for users, groups, service principals or managed identities to grant or deny access to resources and operations on Azure Cosmos DB resources.
   - There are several [Built-in RBAC Roles](/azure/cosmos-db/role-based-access-control#built-in-roles) available for role assignment, and [custom RBAC roles](/azure/cosmos-db/role-based-access-control#custom-roles) can also be used to form specific [privilege combinations](/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb).
     - [Cosmos DB Account Reader](/azure/role-based-access-control/built-in-roles#cosmos-db-account-reader-role) enables read-only access to the Azure Cosmos DB resource.

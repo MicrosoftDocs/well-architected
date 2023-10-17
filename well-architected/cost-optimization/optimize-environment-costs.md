@@ -174,9 +174,11 @@ To limit resource types by using Azure Policy, you can define policy rules that 
 
 **Enable endpoint emulation:** You can use [Azure API Management](/azure/api-management/api-management-key-concepts) for API mocking. API Management acts as a facade to back-end services, which allows API providers to abstract API implementations and evolve back-end architecture without affecting API consumers.
 
-## Related links
+## Organizational alignment
 
-- [Best practices for costing and sizing Azure resources](/azure/cloud-adoption-framework/govern/cost-management/best-practices#best-practice-reduce-nonproduction-costs)
+Cloud Adoption Framework provides guidance to stress the importance of optimizing environment costs across the organization.
+
+For more information, see [Best practices for costing and sizing Azure resources](/azure/cloud-adoption-framework/govern/cost-management/best-practices#best-practice-reduce-nonproduction-costs).
 
 ## Cost Optimization checklist
 

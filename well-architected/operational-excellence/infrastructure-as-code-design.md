@@ -79,6 +79,12 @@ The choice between deploying mutable versus immutable infrastructure depends on 
 
 You can use Microsoft Defender for Cloud to [discover misconfigurations in IaC](/azure/defender-for-cloud/iac-vulnerabilities).
 
+## Organizational alignment
+
+Cloud Adoption Framework provides guidance for central teams on how to standardized infrastructure as code across the organization's workload teams.
+
+For more information, see [Infrastructure as Code](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code) in the Cloud Adoption Framework.
+
 ## Tradeoffs
 
 **Increased specialization:** In some cases, introducing new languages in your workload team comes with a learning curve, and vendor lock-in can make it a poor choice. Training your team members and analyzing the right tool based on your cloud providers' tooling support is required.
@@ -87,34 +93,31 @@ You can use Microsoft Defender for Cloud to [discover misconfigurations in IaC](
 
 **Increased time for configuration changes:** Deploying infrastructure by using command-line instructions or directly from a portal requires no coding time and/or testing artifacts. Minimize deployment time by following recommended practices like code reviews and quality assurance practices.
 
-**Increased complexity of modularization:** Using more modules and parameterization increases the time it takes to debug and document the system and adds a layer of abstraction. Balance the use of modularization to reduce complexity and avoid over-engineering. 
+**Increased complexity of modularization:** Using more modules and parameterization increases the time it takes to debug and document the system and adds a layer of abstraction. Balance the use of modularization to reduce complexity and avoid over-engineering.
 
 ## Example
 
-See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone) architecture and the associated [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of a Virtual Desktop implementation that can be deployed via provided Resource Manager, Bicep, or Terraform files. 
+See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone) architecture and the associated [reference implementation](https://github.com/Azure/avdaccelerator/) for an example of a Virtual Desktop implementation that can be deployed via provided Resource Manager, Bicep, or Terraform files.
 
 ## Related links
 
-- [Infrastructure as Code](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code)
 - [What is infrastructure as code (IaC)?](/devops/deliver/what-is-infrastructure-as-code)
-- [Enterprise infrastructure as code using Bicep and Azure Container Registry](/azure/architecture/guide/azure-resource-manager/advanced-templates/enterprise-infrastructure-bicep-container-registry) 
+- [Enterprise infrastructure as code using Bicep and Azure Container Registry](/azure/architecture/guide/azure-resource-manager/advanced-templates/enterprise-infrastructure-bicep-container-registry)
 - [Discover misconfigurations in IaC](/azure/defender-for-cloud/iac-vulnerabilities)
 - [Recommendations for designing a workload development supply chain](workload-supply-chain.md)
 - [Recommendations for optimizing development practices through standardization](optimize-development-practices.md)
 - [Recommendations for securing a development lifecycle](../security/secure-development-lifecycle.md)
-- [Recommendations for using safe deployment practices](safe-deployments.md) 
+- [Recommendations for using safe deployment practices](safe-deployments.md)
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
 - [Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview)
 - [Bicep](/azure/azure-resource-manager/bicep/overview)
 - [Azure DevOps pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines)
-- [GitHub Actions](/devops/deliver/iac-github-actions) 
+- [GitHub Actions](/devops/deliver/iac-github-actions)
 - [Terraform](/azure/developer/terraform/overview)
-- [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-framework/scenarios/wvd/enterprise-scale-landing-zone)
-- [Azure Virtual Desktop landing zone accelerator implementation](https://github.com/Azure/avdaccelerator/)
 
 ## Next steps
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Operational Excellence checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Operational Excellence checklist](checklist.md)

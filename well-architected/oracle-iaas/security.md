@@ -17,31 +17,32 @@ Oracle on Azure is delivered in the infrastructure as a service (IaaS) cloud mod
 
 Identity management is a framework that controls access to critical resources. Especially within Oracle applications lifecycle management is crucial. Part-time workers joining only during summer season, interns joining companies, or full-time employees. Many of these are in need of different accesses, which need to be checked and maintained, but also removed as soon as they leave the company. There are two identity management use cases to consider for your Oracle workload, and the identity management solution differs for each.
 
-**(1) Operating system** - Operating system - Organizations can improve the security of Windows and Linux virtual machines in Azure by integrating with Azure Active Directory (Azure AD). Azure AD is a fully managed identity and access management service. For more information, see:
+**(1) Operating system** - Operating system - Organizations can improve the security of Windows and Linux virtual machines in Azure by integrating with Microsoft Entra ID. Microsoft Entra ID is a fully managed identity and access management service. For more information, see:
 
-- [Sign in to a Windows virtual machine in Azure by using Azure AD]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows)
-- [Sign in to a Linux virtual machine in Azure by using Azure AD and OpenSSH]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
-- [Sign in to a Windows virtual machine in Azure by using Azure AD]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows)
+- [Sign in to a Windows virtual machine in Azure by using Microsoft Entra ID]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows)
+- [Sign in to a Linux virtual machine in Azure by using Microsoft Entra ID and OpenSSH]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
+- [Sign in to a Windows virtual machine in Azure by using Microsoft Entra ID]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows)
 
-**(2) Oracle application** – Oracle Applications usually require a SSH (Port 22) and/or http(s) (Port 443) access. We recommend configuring single sign-on (SSO) using Azure Active Directory). SSO allows end users to connect to the Oracle applications via browser. For more information, see Azure Active Directory [documentation.](/azure/active-directory/)
+**(2) Oracle application** – Oracle Applications usually require a SSH (Port 22) and/or HTTP(S) (Port 443) access. We recommend configuring single sign-on (SSO) using Microsoft Entra ID. SSO allows end users to connect to the Oracle applications via browser. For more information, see [Microsoft Entra ID](/azure/active-directory/).
 
 The table below provides a summary of the recommended SSO method for the given Oracle solution.
 
 | Oracle solution | SSO methods |
 | --- | --- |
 |Siebel|Security Assertion Markup Language (SAML). <br>From version IP18.1 and onwards:<br>OAuth |
-|Peoplesoft |From Version 8.53 and later: <br>- Kerberos <br>From Version 8.53 and later:<br>- SAML<br>- OAuth2.0 <br> For more information, see [Datawiza Azure AD](/azure/active-directory/manage-apps/datawiza-azure-ad-sso-oracle-peoplesoft)  |
+|Peoplesoft |From Version 8.53 and later: <br>- Kerberos <br>From Version 8.53 and later:<br>- SAML<br>- OAuth2.0 <br> For more information, see [Datawiza SSO for Microsoft Entra ID](/azure/active-directory/manage-apps/datawiza-azure-ad-sso-oracle-peoplesoft). |
 |Hyperion |SAML 2.0|
 |E-business suite (EBS) |SAML|
-|JD Edwards (JDE) |SAML.<br>For more information, see [Datawiza JDE.](/azure/active-directory/manage-apps/datawiza-azure-ad-sso-oracle-jde)|
+|JD Edwards (JDE) |SAML.<br>For more information, see [Datawiza JDE](/azure/active-directory/manage-apps/datawiza-azure-ad-sso-oracle-jde). |
 
-Microsoft also offers customers coming from on-premises application to use an application proxy. The application proxy allows SAML authentication and can be used for all Oracle applications providing you the opportunity to establish a Single-Sign-On for external users. For more information, see:
-- [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy) documentation.
-- [Tutorial](/azure/active-directory/saas-apps/ssogen-tutorial) on setting up Azure AD SSO Gateway for Oracle E-Business Suite - EBS, PeopleSoft, and JDE.
+Microsoft also offers customers coming from on-premises application to use an application proxy. The application proxy allows SAML authentication and can be used for all Oracle applications providing you the opportunity to establish single sign-on for external users. For more information, see:
+
+- [Microsoft Entra application proxy](/azure/active-directory/app-proxy/what-is-application-proxy)
+- [Tutorial](/azure/active-directory/saas-apps/ssogen-tutorial) on setting up Microsoft Entra SSO Gateway for Oracle E-Business Suite - EBS, PeopleSoft, and JDE
 
 ## Use role-based access control (RBAC)
 
-Role Based Access Control is a method to grant certain accesses to certain individuals. Azure RBAC is an authorization system build on the [Azure Resource Manager](/azure/azure-resource-manager/management/overview). It provides a management layer to you that enables you to create, update, and delete resources according to the need of certain roles and individuals. For more information, see [Azure RBAC documentation.](/azure/role-based-access-control/overview)
+Role-based access control is a method to grant certain accesses to certain individuals. Azure RBAC is an authorization system build on the [Azure Resource Manager](/azure/azure-resource-manager/management/overview). It provides a management layer to you that enables you to create, update, and delete resources according to the need of certain roles and individuals. For more information, see [Azure role-based access control](/azure/role-based-access-control/overview).
 
 ## Enforce network and application security
 

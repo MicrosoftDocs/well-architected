@@ -109,6 +109,12 @@ Also integrate approval workflows into your quality gates. Clearly define and au
 
 You can use Terraform, Bicep, and Azure Resource Manager for IaC deployments. Depending on your requirements and your team's familiarity with the tools, you might use one or more of these tools for your deployments and management of the resources.
 
+## Organizational alignment
+
+Cloud Adoption Framework provides guidance for central teams to provide workload landing zones. The workload landing zones are where the workload's custom supply chain will deploy applications into.
+
+For more information, see [Landing zones](/azure/cloud-adoption-framework/ready/landing-zone) and the [Azure landing zone design principles](/azure/cloud-adoption-framework/ready/landing-zone/design-principles).
+
 ## Tradeoffs
 
 In your lower environments, there's a tradeoff between cost and infrastructure parity with production. Each successively higher environment should be closer in parity to production to ensure that your quality gates are as effective as possible.
@@ -120,7 +126,6 @@ For an example that shows how to use Azure Pipelines to build a CI/CD pipeline, 
 ## Related links
 
 - [Azure DevOps](/azure/devops/user-guide/what-is-azure-devops)
-- [Azure landing zone design principles](/azure/cloud-adoption-framework/ready/landing-zone/design-principles)
 - [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines)
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
 - [GitHub Actions for Azure](https://azure.github.io/actions)
