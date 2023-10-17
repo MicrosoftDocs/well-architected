@@ -138,7 +138,7 @@ It's important to evaluate the specific requirements of your data and consider f
 
 **Taking a data inventory**: [Microsoft Purview](https://learn.microsoft.com/purview/purview) is a family of data governance, risk, and compliance solutions that can help your organization govern, protect, and manage your entire data estate. Microsoft Purview solutions provide integrated coverage and help address the recent increases in remote user connectivity, the fragmentation of data across organizations, and the blurring of traditional IT management roles.
 
-**Optimizing data lifecycle management**: Azure Storage and Data Lake Storage has [different data access tiers](/azure/storage/blobs/access-tiers-overview) and has [data lifecycle management policies](/azure/storage/blobs/lifecycle-management-overview) that automate data tiering and retention. It offers a rule-based policy that you can use to transition blob data to the appropriate access tiers or to expire data at the end of its lifecycle. It allows you to transition blobs from cool, or cold to hot immediately when they’re accessed, to optimize for performance. For more information, see [Data lifecycle management.](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/govern-lifecycle)
+**Optimizing data lifecycle management**: Azure Storage and Data Lake Storage has [different data access tiers](/azure/storage/blobs/access-tiers-overview) and has [data lifecycle management policies](/azure/storage/blobs/lifecycle-management-overview) that automate data tiering and retention. It offers a rule-based policy that you can use to transition blob data to the appropriate access tiers or to expire data at the end of its lifecycle. It allows you to transition blobs from cool, or cold to hot immediately when they’re accessed, to optimize for performance.
 
 **Optimizing backups**: Azure Backup is the native backup solution in Azure that provides multiple capabilities to streamline your backups. It offers features such as native database backup compatibility and storage backup using disk snapshots. It supports virtual machine backup, long-term retention, and backup management
 
@@ -148,3 +148,16 @@ It's important to evaluate the specific requirements of your data and consider f
 - [*Archive tier*](/azure/backup/archive-tier-support): Customers rely on Azure Backup to store backup data including their Long-Term Retention (LTR) backup data as per the retention needs defined by the organization's compliance rules. In most cases, the older backup data is rarely accessed and is only stored for compliance needs. Azure Backup supports backup of Long-Term Retention points in the archive tier, in addition to Snapshots and the Standard tier.
 
 **Optimizing storage solutions**: Azure has many different storage solutions. They offer various features and capabilities to help optimize costs based on your specific requirements. Azure has guidance to help you [choose the right data store](/azure/architecture/guide/technology-choices/data-store-decision-tree). It's important to assess your data access patterns, retention needs, and performance requirements to choose the most suitable storage solution and configuration. Additionally, regularly monitoring and optimizing your storage usage with tools like Azure Advisor can help you further optimize costs
+
+## Organizational alignment
+
+Cloud Adoption Framework provides guidance for recommendations optimizing data costs for organizational analytics platforms.
+
+For more information, see [Data lifecycle management](/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/govern-lifecycle).
+
+## Cost Optimization checklist
+
+Refer to the complete set of recommendations.
+
+> [!div class="nextstepaction"]
+> [Cost Optimization checklist](checklist.md)

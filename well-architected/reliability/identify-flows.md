@@ -53,7 +53,11 @@ Assign criticality to your flows to help you design your architecture. Identify 
 
 - **Low**: A flow that's not directly tied to the functionality of the workload. For example, a nightly log transfer to a monitoring system or a pop-up survey feature might have a low criticality rating.
 
-<!-- ## Azure facilitation -->
+## Organizational alignment
+
+Cloud Adoption Framework provides guidance for workloads that require a business criticality classification.
+
+For more information, see [business criticality in cloud management](/azure/cloud-adoption-framework/manage/considerations/criticality).
 
 ## Tradeoffs
 
@@ -183,13 +187,9 @@ To understand state changes in the production system, web application and API in
 
 - **Criticality**: Medium
 
-## Related links
-
-Learn about determining [business criticality in cloud management](/azure/cloud-adoption-framework/manage/considerations/criticality).
-
 ## Reliability checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Reliability checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Reliability checklist](checklist.md)

@@ -63,7 +63,7 @@ As you assess the security posture of the application, start with these question
   - *Can service-managed keys be used for data integrity protection?*
   - *If customer-managed keys are required, how is the secure and reliable key lifecycle?* 
 
-- CI/CD tooling should require Azure AD service principals with sufficient subscription level access to facilitate control plane access for Azure resource deployments to all considered environment subscriptions.
+- CI/CD tooling should require Microsoft Entra service principals with sufficient subscription level access to facilitate control plane access for Azure resource deployments to all considered environment subscriptions.
   - *When application resources are locked down within private networks, is there a private data-plane connectivity path so that CI/CD tooling can perform application level deployments and maintenance.*
     - This introduces additional complexity and requires a sequence within the deployment process through requisite private build agents.
 
@@ -71,13 +71,13 @@ As you assess the security posture of the application, start with these question
 
 - Use Azure Policy to enforce security and reliability configurations for all service, ensuring that any deviation is either remediated or prohibited by the control plane at configuration-time, helping to mitigate threats associated with 'malicious admin' scenarios.
 
-- Use Azure AD Privileged Identity Management (PIM) within production subscriptions to revoke sustained control plane access to production environments. This will significantly reduce the risk posed from 'malicious admin' scenarios through additional 'checks and balances'.
+- Use Microsoft Entra Privileged Identity Management (PIM) within production subscriptions to revoke sustained control plane access to production environments. This will significantly reduce the risk posed from 'malicious admin' scenarios through additional 'checks and balances'.
 
 - Use [Azure Managed Identities](/azure/active-directory/managed-identities-azure-resources/overview) for all services that support the capability, since it facilitates the removal of credentials from application code and removes the operational burden of identity management for service to service communication.
 
-- Use Azure AD Role Based Access Control (RBAC) for data plane authorization with all services that support the capability.
+- Use Microsoft Entra role-based access control (RBAC) for data plane authorization with all services that support the capability.
 
-- Use first-party [Microsoft identity platform authentication libraries](/azure/active-directory/develop/reference-v2-libraries) within application code to integrate with Azure AD.
+- Use first-party [Microsoft identity platform authentication libraries](/azure/active-directory/develop/reference-v2-libraries) within application code to integrate with Microsoft Entra ID.
 
 - Consider secure token caching to allow for a degraded but available experience if the chosen identity platform, isn't available or is only partially available for application authorization.
   - If the provider is unable to issue new access tokens, but still validates existing ones, the application and dependent services can operate without issues until their tokens expire.
@@ -179,7 +179,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
   
 - The completion of administration and maintenance tasks is a further scenario requiring connectivity to the data plane of Azure resources.
 
-- Service Connections with a corresponding Azure AD service principal can be used within Azure DevOps to apply RBAC through Azure AD.
+- Service Connections with a corresponding Microsoft Entra service principal can be used within Azure DevOps to apply RBAC through Microsoft Entra ID.
 
 - Service Tags can be applied to Network Security Groups to facilitate connectivity with Azure PaaS services.
 
@@ -235,7 +235,7 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
     - Granular [object-level permissions](/azure/key-vault/general/rbac-guide?tabs=azure-cli#best-practices-for-individual-keys-secrets-and-certificates) to a specific key, secret, or certificate are now possible.
 
 - After a role assignment is changed, there's a latency of up to 10 minutes (600 seconds) for the role to be applied.
-  - There's an Azure AD limit of 2,000 Azure role assignments per subscription.
+  - There's a limit of 2,000 Azure role assignments per subscription.
 
 - Azure Key Vault underlying hardware security modules (HSMs) are FIPS 140-2 Level 2 compliant.
   - A dedicated [Azure Key Vault managed HSM](/azure/key-vault/managed-hsm/overview) is available for scenarios requiring FIPS 140-2 Level 3 compliance.
@@ -268,7 +268,7 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
 - Deploy a separate Azure Key Vault instance within each regional deployment stamp, providing fault isolation and performance benefits through localization, as well as navigating the scale limits imposed by a single Key Vault instance.
   - Use a dedicated Azure Key Vault instance for application global resources.
 
-- Follow a least privilege model by limiting authorization to permanently delete secrets, keys, and certificates to specialized custom Azure AD roles.
+- Follow a least privilege model by limiting authorization to permanently delete secrets, keys, and certificates to specialized custom Microsoft Entra roles.
 
 - Ensure encryption keys, and certificates stored within Key Vault are backed up, providing an offline copy in the unlikely event Key Vault becomes unavailable.
 
@@ -334,10 +334,10 @@ This section will therefore explore key considerations and recommendations surro
 
 > If the application is subscribed to Microsoft Mission-Critical Support, ensure that the applied tagging schema provides meaningful context to enrich the support experience with deep application understanding.
 
-- Export Azure AD activity logs to the global Log Analytics Workspace used by the application.
+- Export Microsoft Entra activity logs to the global Log Analytics Workspace used by the application.
   - Ensure Azure activity logs are archived within the global Storage Account along with operational data for long-term retention.
 
-> In an Azure landing zone, Azure AD activity logs will also be ingested into the centralized platform Log Analytics workspace. It needs to be evaluated in this case if Azure AD are still required in the global Log Analytics workspace.
+> In an Azure landing zone, Microsoft Entra activity logs will also be ingested into the centralized platform Log Analytics workspace. It needs to be evaluated in this case if Microsoft Entra ID are still required in the global Log Analytics workspace.
 
 - Integrate security information and event management with Microsoft Defender for Cloud (formerly known as Azure Security Center).
 

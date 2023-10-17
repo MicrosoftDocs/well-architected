@@ -14,10 +14,7 @@ ms.topic: conceptual
 |[PE:04](checklist.md)| Collect performance data. Workload components and flows should provide automatic, continuous, and meaningful metrics and logs. Collect data at different levels of the workload, such as the application, platform, data, and operating system levels. |
 |---|---|
 
-Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes:
-
-- Numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time.
-- Logs that contain different types of data that's organized into records.
+Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time. It also includes logs that contain different types of data that's organized into records.
 
 By collecting performance data, you can monitor and analyze the performance of a workload. You can use this information to identify performance bottlenecks, to troubleshoot issues, to optimize resource allocation, and to make data-driven decisions to improve the overall performance efficiency of the workload.  
 
@@ -63,13 +60,13 @@ Segmenting performance data involves organizing and categorizing metrics and log
 
 Retention policies dictate how long performance data should be kept. Establishing these policies helps manage storage efficiently and ensures only necessary data is accessible for analysis. Such policies support better performance and meet compliance standards. You should configure retention policies for the log and metrics data to enable effective troubleshooting and monitoring in all environments. For example, the logs and metrics might need to be kept for longer time in a production environment than in the testing environment. The retention period should match your organization's requirements and compliance regulations. Decide how long to retain the data for analysis and audit purposes. Archive the data that you don't need for immediate analysis.
 
-### Collect application data
+### Collect application performance data
 
-Application performance data provides valuable insights into the health and performance of an application. By monitoring and analyzing performance data, you can identify and troubleshoot issues, optimize application performance, and make informed decisions for your application.
+Collecting application data involves monitoring and analyzing an application's performance metrics, such as throughput, latency, and completion times, primarily gathered through instrumenting code. Application performance data provides valuable insights into the health and performance of an application. By monitoring and analyzing performance data, you can identify and troubleshoot issues, optimize application performance, and make informed decisions for your application.
 
 #### Instrument code
 
-Instrumentation refers to the process of embedding specific code snippets or integrating tools into an application to capture performance data while it runs. It's essential to gather metrics that highlight the application's critical operations. Focus on metrics like throughput, latency, and completion time. It's vital to differentiate between data from business-related operations and those that aren't. For data pertaining to business operations, make sure its metadata is structured in a way that allows distinct tracking and storage. The primary reason for code instrumentation is to collect data on how the application handles its workload. It provides the following benefits:
+Instrumentation refers to the process of embedding code snippets or integrating tools into an application code to capture performance data while it runs. It's essential to gather metrics that highlight the application's critical operations. Focus on metrics like throughput, latency, and completion time. It's important to differentiate between business-related operations and operations that aren't. For data pertaining to business operations, make sure its metadata is structured in a way that allows distinct tracking and storage. The primary reason for code instrumentation is to collect data on how the application handles its workload. It provides the following benefits:
 
 - *Identifying performance bottlenecks:* By tracking metrics such as CPU use and memory use, you can identify bottlenecks and optimize the code accordingly.
 
@@ -93,7 +90,17 @@ When you instrument code for performance monitoring, consider the following stra
 
 - *Use telemetry standards.* Consider using APM tool instrumentation libraries and tools that are built around a telemetry standard, such as OpenTelemetry.
 
-- *Implement distributed tracing.* Use [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) to monitor the timing and performance relationships between the request flow and the involved components. Configure distributed tracing for all flows. To build end-to-end transaction flows, correlate events that come from different application components or tiers.
+##### Enable distributed tracing
+
+Distributed tracing is a technique used to track and monitor requests as they flow through a distributed system. It allows you to trace the path of a request as it travels across multiple services and components, providing valuable insights into the performance and efficiency of your system. Distributed tracing is important for performance efficiency because it helps identify bottlenecks, latency issues, and areas for optimization within a distributed system. You can pinpoint where delays or inefficiencies occur and take appropriate actions to improve performance by visualizing the flow of a request. Follow these steps to enable distributed tracing:
+
+1. Start by instrumenting your applications and services to generate trace data. Use libraries or frameworks that support distributed tracing, such as OpenTelemetry.
+
+1. Ensure that trace information is propagated across service boundaries. You should typically pass a unique trace ID and other contextual information with each request.
+
+1. Set up a centralized trace collection system. This system collects and stores the trace data generated by your applications and services.
+
+1. Use the trace data collected to visualize the end-to-end flow of requests and analyze the performance characteristics of your distributed system.
 
 #### Collect application logs
 
@@ -101,9 +108,9 @@ When you instrument code, one of the primary outputs should be application logs.
 
 You should use structured logging. Structured logging speeds up log parsing and analysis. It makes the logs easier to index, query, and report without complexity. Add and use a structured logging library in your application code. Sometimes log entries can help you correlate data that you couldn't correlate by other means.
 
-### Capture platform data
+### Collect resource performance data
 
-By collecting platform data, you can gain insights into the health and behavior of your workload. Platform data provides information about resource use, which is key for capacity planning. Platform data also provides insights into the health of a workload and can help you detect issues and troubleshoot.
+By collecting resource performance data, you can gain insights into the health and behavior of your workload. Resource performance data provides information about resource use, which is key for capacity planning. This data also provides insights into the health of a workload and can help you detect issues and troubleshoot. Consider the following recommendations:
 
 - *Collect metrics and logs for every resource.* Each Azure service has a set of metrics that's unique to the functionality of the resource. These metrics help you understand the resource's health and performance. Add a [diagnostic setting](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) for each resource to send metrics to a location that your workload team can access as they build alerts and dashboards. Metric data is available for short-term access. For long-term access or for access from a system that's outside of Azure Monitor, send the metric data to your unified sink to the access location.
 
@@ -111,11 +118,9 @@ By collecting platform data, you can gain insights into the health and behavior 
 
 - *Monitor network traffic.* Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
 
-### Collect database data and storage data
+### Collect database and storage data
 
-Collect database data and storage performance data so you can identify bottlenecks, diagnose issues, and make informed decisions to improve the overall performance and reliability of your workload. Many database and storage systems provide their own monitoring tools. These tools collect performance data specific to those systems. Database and storage systems often generate logs that contain performance-related events and indicators, and you should collect those logs.
-
-Collect various types of database data and storage performance data:
+Many database and storage systems provide their own monitoring tools. These tools collect performance data specific to those systems. Database and storage systems often generate logs that contain performance-related events and indicators. Collect database data and storage performance data so you can identify bottlenecks, diagnose issues, and make informed decisions to improve the overall performance and reliability of your workload. Consider collecting the following types of performance data:
 
 - *Throughput*: Data about the amount of data that's read from or written to the storage system over a period of time. Throughput data indicates the data transfer capabilities.
 
@@ -152,32 +157,24 @@ At a minimum, collect data about the following performance areas.
 | CPU  | - CPU usage (user mode or privileged mode)<br>- CPU queue length (number of processes that are waiting for CPU time) |
 | Process | - Process thread count<br>- Process handle count |
 | Memory | - Committed memory<br>- Available memory <br>- Pages per second<br>- Swap space usage |
-| Disk | - Disk read<br>- Disk write    <br>- Disk throughput       <br>- Disk space usage|
+| Disk | - Disk read<br>- Disk writes    <br>- Disk throughput       <br>- Disk space usage|
 | Network| - Network interface throughput<br>- Network interface Rx/Tx errors |
 
 ### Validate and analyze data
 
-Your performance data should align with the performance targets. The data needs to represent workload or flow performance completely and accurately as it relates to performance targets. For example, the response time for a web service has a performance target of 500 ms. Collect response times at regular intervals to fully understand response times. Regularly analyze the performance data you collect. Regular analysis helps you catch and resolve performance issues promptly.
+Your performance data should align with the performance targets. The data needs to represent workload or flow performance completely and accurately as it relates to performance targets. For example, the response time for a web service has a performance target of 500 ms. Make it a routine to analyze the data, as frequent evaluations allow for early detection and mitigation of performance issues.
 
-### Create alerts
+- *Create alerts.* It's beneficial to have alerts that are actionable, enabling prompt identification and rectification of performance problems. These alerts should clearly indicate which performance threshold has been breached, the potential business effect, and the involved components. Start by setting common and recommended alert. Over time, you can modify these criteria based on your specific needs. The primary objective of these alerts should be to forecast potential performance drops before they escalate into significant issues. If you can't set an alert for an external dependency, consider devising a method to gather indirect measurements, like the duration of a dependency call.
 
-Actionable alerts allow you to identify and resolve performance issues. They communicate the violated threshold, business effects, and components that are involved. Set up alerts for architecture components and critical flows. To begin, pick common and recommended alert rules. You can later change the rules as needed.
-
-Alerts should help you predict potential performance degradation before it becomes a problem. When you can't create an alert on a dependency that's outside your control, create a solution that collects proxy measurements, such as dependency call duration.
-
-### Set data limits
-
-Set sensible limits for how much data to collect and how long to retain it. Telemetry can be verbose and provide too much data to sift through. You need to capture key performance signals or be able to efficiently pull a signal from your metrics sink.
+- *Set data collection limits.* Determine and set logical limits on the volume of data you collect and its retention duration. Telemetry can sometimes produce overwhelming amounts of data. It's essential to focus on capturing only the most vital performance indicators or have an efficient system in place to extract meaningful insights from your performance data.
 
 ## Azure facilitation
-
-Azure services can help you collect metrics in your workload.
 
 **Collecting and analyzing performance data:** Azure Monitor is a cloud monitoring service that provides visibility into the health and performance of your applications. Use it to collect and analyze metrics, logs, and other telemetry data. You can configure Azure Monitor to collect performance data for your workload.
 
 Within Azure Monitor, you can use Azure Monitor Logs to collect, analyze, and visualize log data from your applications and systems. You can configure Azure Monitor Logs to ingest logs from your application, including application-level logs and infrastructure logs. By aggregating logs, you can cross-query events and gain insights into the performance of your application. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) and [Pricing for Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
-**Application performance data:** Application Insights is a feature of Azure Monitor that helps you monitor the performance and availability of your application. It provides application-level insights by collecting telemetry data such as request rates, response times, and exception details. You can enable Application Insights for your application and configure it to collect the necessary performance data. Application Insights also supports [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation).
+**Application performance data:** Application Insights is a feature of Azure Monitor that helps you monitor the performance and availability of your application. It provides application-level insights by collecting telemetry data such as request rates, response times, and exception details. You can enable Application Insights for your application and configure it to collect the necessary performance data. Application Insights also supports [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation). Configure distributed tracing for all flows. To build end-to-end transaction flows, correlate events that come from different application components or tiers.
 
 Performance counters are a powerful way to monitor the performance of your application. Azure provides various performance counters that you can use to collect data about CPU usage, memory usage, disk I/O, network traffic, and more. If you configure your application to emit performance counter data, Azure Monitor collects and stores the data for analysis.
 
