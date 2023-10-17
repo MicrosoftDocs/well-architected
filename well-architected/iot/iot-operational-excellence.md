@@ -153,9 +153,9 @@ DevOps includes role and user management, metrics collection, monitoring, and au
 
 A key decision early in a solution design phase is to define the roles that implement and manage the solution. Determine the roles that are responsible for developing, managing, and operating the IoT solution at scale, and the users assigned to those roles.
 
-Ideally, the solution should trust a centralized identity provider, such as [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis), and only let the appropriate users in those roles perform management or operation activities, such as creating and provisioning new devices, sending commands to hardware in the field, deploying updates, and modifying user permissions.
+Ideally, the solution should trust a centralized identity provider, such as [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis), and only let the appropriate users in those roles perform management or operation activities, such as creating and provisioning new devices, sending commands to hardware in the field, deploying updates, and modifying user permissions.
 
-In an IoT Hub-based solution, you can use Azure AD to authenticate requests to IoT Hub service APIs, such as creating device identities or invoking direct methods. You can develop a custom management UI for solution operators and administrators, that authenticates users against Azure AD and executes API requests to the IoT solution back end on behalf of those users.
+In an IoT Hub-based solution, you can use Microsoft Entra ID to authenticate requests to IoT Hub service APIs, such as creating device identities or invoking direct methods. You can develop a custom management UI for solution operators and administrators, that authenticates users against Microsoft Entra ID and executes API requests to the IoT solution back end on behalf of those users.
 
 ### IoT Edge Metrics Collector
 
@@ -303,7 +303,7 @@ When you implement automation and DevOps in IoT systems, follow specific automat
 - [Azure IoT Edge managed certification requirements](/azure/certification/program-requirements-edge-managed)
 - [DPS X.509 attestation](/azure/iot-dps/concepts-x509-attestation)
 - [Azure IoT Hub scaling](/azure/iot-hub/iot-hub-scaling)
-- [Control access to Azure IoT Hub by using Azure Active Directory](/azure/iot-hub/iot-hub-dev-guide-azure-ad-rbac)
+- [Control access to Azure IoT Hub by using Microsoft Entra ID](/azure/iot-hub/iot-hub-dev-guide-azure-ad-rbac)
 - [Plan for capacity - Microsoft Azure Well-Architected Framework](/azure/well-architected/scalability/design-capacity)
 - [Operational excellence design principles](../devops/principles.md)
 - [Azure IoT reference architecture](/azure/architecture/reference-architectures/iot)
