@@ -131,7 +131,7 @@ The preceding items often also exist outside of production environments, in prep
 
 - Identity controls require each invocation of a controlled component to be verified explicitly. This verification consumes compute cycles and might require network traversal for authorization.
 
-- Encryption and decryption require dedicated compute cycles. These cycles increase the time and resources consumed by those flows. This increase is usually correlated with the complexity of the algorithm and the generation of high-entropy and diverse initialization vectors (IV).
+- Encryption and decryption require dedicated compute cycles. These cycles increase the time and resources consumed by those flows. This increase is usually correlated with the complexity of the algorithm and the generation of high-entropy and diverse initialization vectors (IVs).
 
 - As the extensiveness of logging increases, the impact on system resources and network bandwidth for streaming those logs can also increase.
 
