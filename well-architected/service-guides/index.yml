@@ -325,5 +325,5 @@ additionalContent:
           url: ../whats-new.md
         # Card
         - title: What is Well-Architected Framework?
-          summary: Learn how to use WAF and audience profile.
+          summary: Learn how to use Well-Architected Framework and audience profile.
           url: ../what-is-well-architected-framework.md
