@@ -121,6 +121,8 @@ Configuring scaling is the process of setting up and adjusting system parameters
 
 *Use services with autoscaling.* The autoscale feature automatically scales infrastructure to meet demand. Use platform as a service (PaaS) offerings with built-in autoscale features. The ease of scaling on PaaS is a major advantage. For example, scaling out virtual machines requires a separate load balancer, client-request handling, and externally stored state. PaaS offerings handle most of these tasks.
 
+*Constrain autoscaling.* Set automatic scaling limits to minimize over-scaling that could result in unnecessary costs. Sometimes you can't set scaling limits. In these cases, you should set alerts to notify you when the component has reached the maximum scale limit and when it's over-scaled.
+
 *Understand service scaling boundaries.* When you understand service scaling limits, increments, and restrictions, you can make informed decisions when selecting a service. Scaling boundaries determine whether or not your chosen service can handle the expected workload, scale efficiently, and meet the performance requirements of your application. Scaling boundaries to consider include:
 
 - *Scaling limits*: Scaling limits are the maximum capacity that a location or service can handle. It's important to know these limits to help ensure that the service can accommodate the expected workload and handle peak usage without performance degradation. Every resource has an upper scale limit. If you need to go beyond scale limits, you should partition your workload.
@@ -130,8 +132,6 @@ Configuring scaling is the process of setting up and adjusting system parameters
 - *Scaling restrictions*: Some services allow you to scale up or out but limit your ability to automatically reverse scaling. You're forced to scale in manually, or you might have to redeploy a new resource. These limitations are often to protect the workload. Scaling down or scaling in can have implications on the availability and performance of the workload. A service might enforce certain limitations or constraints to help ensure that the workload has sufficient resources to operate effectively. This can affect data consistency and synchronization, especially in distributed systems. The service might have mechanisms in place to handle data replication and consistency during scaling up or out but might not provide the same level of support for scaling down or in.
 
 *Use meaningful load metrics.* Scaling should use meaningful load metrics as scaling triggers. Meaningful load metrics include simple metrics, like CPU or memory, or more advanced metrics, such as queue depth, SQL queries, custom metrics queries, and HTTP queue length. Consider using a combination of simple and advanced load metrics as your scaling trigger.
-
-*Constrain autoscaling.* Set automatic scaling limits to minimize over-scaling that could result in unnecessary costs. Sometimes you can't set scaling limits. In these cases, you should set alerts to notify you when the component has reached the maximum scale limit and when it's over-scaled.
 
 *Use a buffer.* A buffer is unused capacity that can be used to handle spikes in demand. A well-designed workload plans for unexpected spikes in workload. You should add a buffer to handle spikes for horizontal and vertical scaling.
 
