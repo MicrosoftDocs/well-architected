@@ -147,7 +147,7 @@ At a minimum, collect data about the following performance areas.
 | CPU  | - CPU usage (user mode or privileged mode)<br>- CPU queue length (number of processes that are waiting for CPU time) |
 | Process | - Process thread count<br>- Process handle count |
 | Memory | - Committed memory<br>- Available memory <br>- Pages per second<br>- Swap space usage |
-| Disk | - Disk read<br>- Disk write    <br>- Disk throughput       <br>- Disk space usage|
+| Disk | - Disk read<br>- Disk writes    <br>- Disk throughput       <br>- Disk space usage|
 | Network| - Network interface throughput<br>- Network interface Rx/Tx errors |
 
 ### Validate and analyze data
