@@ -34,7 +34,7 @@ The Security pillar requires a workload to explicitly verify identities and acti
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:  Increased complexity of disaster recovery.** A workload must reliably recover from all forms of disaster.
 
-- Security controls might affect recovery time objectives. This effect can be caused by the additional steps that are needed to encrypt backed up data or by operational access delays created by site reliability triage.
+- Security controls might affect recovery time objectives. This effect can be caused by the additional steps that are needed to decrypt backed up data or by operational access delays created by site reliability triage.
 
 - Security controls themselves, for example secret vaults and their contents or edge DDoS protection, need to be part of the disaster recovery plan of the workload and must be validated via recovery drills.
 
@@ -103,7 +103,7 @@ The preceding items often also exist outside of production environments, in prep
 
 - Some security controls impede access by design. During incident response, these controls can slow down workload operators' emergency access. Therefore, incident response plans need to include more emphasis on planning and drills in order to reach acceptable efficacy.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Decreased agility and increased complexity.** Workload teams measure their speed so that they can improve the quality, frequency, and efficiency of delivery activities over time. Workload complexity factors into the effort and risk involved in operations.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Decreased agility and increased complexity.** Workload teams measure their velocity so that they can improve the quality, frequency, and efficiency of delivery activities over time. Workload complexity factors into the effort and risk involved in operations.
 
 - Stricter change control and approval policies to reduce the risk of introducing security vulnerabilities can slow down the development and safe deployment of new features. However, the expectation of addressing security updates and patching can increase demand for more frequent deployments. Additionally, human-gated approval policies in operational processes can make it more difficult to automate those processes.
 
@@ -143,7 +143,7 @@ A misconfiguration or overextension of security controls can impact performance 
 
 - Firewall rule ordering, complexity, and quantity (granularity).
 
-- The inclusion of key files in file integrity monitors or virus scanners, which can lead to lock contention.
+- Neglecting to exclude key files from file integrity monitors or virus scanners, which can lead to lock contention.
 
 - Web application firewalls performing deep packet inspection for languages or platforms that are irrelevant for the components that are being protected.
 
