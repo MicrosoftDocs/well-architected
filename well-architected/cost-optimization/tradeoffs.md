@@ -51,31 +51,33 @@ The cost of a service disruption must be measured against the cost of preventing
 
 ## Cost Optimization tradeoffs with Security
 
-The cost of a compromise to confidentiality, integrity, and availability in a workload must always be balanced against the cost of the effort to prevent that compromise. The impact of a security incident can have a wide range of reputation, legal, and monetary impact. Investing in security is a risk mitigation activity, and the cost of experiencing the risks must be rationalized relative to the investment. As a rule, don't compromise on security with cost optimizations below the point of responsible and agreed upon risk mitigation. Optimizing security costs by 'right sizing' solutions is an important optimization practice but be aware of tradeoffs such as these when doing so.
+The cost of a compromise to confidentiality, integrity, and availability in a workload must always be balanced against the cost of the effort to prevent that compromise. A security incident can have a wide range of financial and legal impacts and harm a company's reputation. Investing in security is a risk mitigation activity. The cost of experiencing the risks must be balanced against the investment. As a rule, don't compromise on security to gain cost optimizations that are below the point of responsible and agreed upon risk mitigation. Optimizing security costs by rightsizing solutions is an important optimization practice, but be aware of tradeoffs like the following when doing so.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Reduced security controls.** Security controls are established across multiple layers, sometimes redundant, to provide a defense in depth.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced security controls.** Security controls are established across multiple layers, sometimes redundantly, to provide a defense in depth.
 
-A cost optimization tactic is to look for ways to remove components or processes that accrue unit or operational costs. Be aware that the choice to remove any security-centric items such items like the following examples for the sake of cost will have a security impact you'll need to carefully perform a risk analysis on.
+One cost optimization tactic is to look for ways to remove components or processes that accrue unit or operational costs. Be aware that removing security components like the following examples for the sake of saving money impacts security. You need to carefully perform a risk analysis on this impact.
 
-- Reducing or simplifying authentication and authorization techniques compromises the 'verify explicitly' principle of zero-trust architecture. For example using a basic authentication scheme such as pre-shared keys over investing time to learn industry OAuth approaches or using simplified role-based access control assignments to reduce management overhead.
+- Reducing or simplifying authentication and authorization techniques compromises the *verify explicitly* principle of zero-trust architecture. Examples of these simpliciations include using a basic authentication scheme like preshared keys rather than investing time to learn industry OAuth approaches, or using simplified role-based access control assignments to reduce management overhead.
 
-- Removing *encryption* in transit or rest to reduce costs on certificates and their operational processes will expose that data to potential integrity or confidentiality breaches.
+- Removing encryption in transit or at rest to reduce costs on certificates and their operational processes exposes data to potential integrity or confidentiality breaches.
 
-- Removing or reducing *security scanning or inspecting tooling* or security testing because of the associated cost and time investment could directly impact the confidential, integrity, or availability that tooling and testing was in place to protect.
+- Removing or reducing security scanning or inspection tooling or security testing because of the associated cost and time investment can directly impact the confidentiality, integrity, or availability that the tooling and testing is intended to protect.
 
-- Reducing the frequency of *security patching* because of operational time invested in cataloging and performing the patching will impact a workload's ability to address evolving threats.
+- Reducing the frequency of security patching because of the operational time invested in cataloging and performing the patching affects a workload's ability to address evolving threats.
 
-- Removing network controls, such as firewalls, might fail to block malicious inbound and outbound traffic.
+- Removing network controls like firewalls might lead to malicious inbound and outbound traffic.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Increased workload surface area.** Security prefers a reduced and contained surface area to minimize attack vectors and minimize the management of security controls.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased workload surface area.** The Security pillar prioritizes a reduced and contained surface area to minimize attack vectors and the management of security controls.
 
-Cost-centric cloud design patterns sometimes necessitate the introduction of *additional components*. These additional components increase the surface area of the workload. Those components and the data within them must be secured, in possibly unique ways from other components and data already in the system and are often included in compliance scope. Some examples are using:
+Cloud design patterns that optimize costs sometimes necessitate the introduction of additional components. These additional components increase the surface area of the workload. The components and the data within them must be secured, possibly in ways that aren't already used in the system. These components and data are often subject to compliance. Examples include:
 
-- Static content hosting to offload data to a new content delivery network component
-- The valet key pattern to offload processing and secure access to resources to client compute
-- Queue-based load leveling to smooth costs involves introducing a message bus
+- Using static content hosting to offload data to a new content delivery network component.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Removed segmentation.** Security stresses strong segmentation to support applying targeted security controls and to control blast radius.
+- Using the Valet Key pattern to offload processing and secure resource access to client compute.
+
+- Using queue-based load leveling to smooth costs by introducing a message bus.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Removed segmentation.** Security stresses strong segmentation to support applying targeted security controls and to control blast radius.
 
 Sharing resources, such as in multi-tenancy situations or co-locating multiple applications on a shared application platform, is an approach to reduce costs through *increased density* and smaller management surface. This increased density can lead to security concerns such as the following.
 
