@@ -37,7 +37,7 @@ This guide describes the recommendations for scaling and partitioning a workload
 
 ## Key design strategies
 
-Both scaling and partitioning contribute to performance efficiency by ensuring that resources are used effectively and the system can handle varying workloads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands.
+Both scaling and partitioning contribute to performance efficiency by ensuring that resources are used effectively and the system can handle varying workloads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands. Scaling ensures you can expand workload capacity to meet increasing demands. Partitioning allows you to divide tasks or data efficiently to handle these growing needs. The foundation of both these processes is the scale unit design of the workload. It dictates how your workload should grow and distribute tasks. By incorporating a reliable and controlled approach to scaling and partitioning, you can sidestep potential system inefficiencies.
 
 ### Scale the workload
 
