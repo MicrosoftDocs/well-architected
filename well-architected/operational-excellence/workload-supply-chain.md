@@ -111,7 +111,7 @@ You can use Terraform, Bicep, and Azure Resource Manager for IaC deployments. De
 
 ## Organizational alignment
 
-Cloud Adoption Framework provides guidance for central teams to provide workload landing zones. The workload landing zones is where the workload's custom supply chain will deploy applications into.
+Cloud Adoption Framework provides guidance for central teams to provide workload landing zones. The workload landing zones are where the workload's custom supply chain will deploy applications into.
 
 For more information, see [Landing zones](/azure/cloud-adoption-framework/ready/landing-zone) and the [Azure landing zone design principles](/azure/cloud-adoption-framework/ready/landing-zone/design-principles).
 
