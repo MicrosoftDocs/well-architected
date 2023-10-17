@@ -105,13 +105,11 @@ You should use structured logging. Structured logging speeds up log parsing and 
 
 By collecting platform data, you can gain insights into the health and behavior of your workload. Platform data provides information about resource use, which is key for capacity planning. Platform data also provides insights into the health of a workload and can help you detect issues and troubleshoot.
 
-**Collect metrics and logs for every resource.** Each Azure service has a set of metrics that's unique to the functionality of the resource. These metrics help you understand the resource's health and performance. Add a [diagnostic setting](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) for each resource to send metrics to a location that your workload team can access as they build alerts and dashboards.
+- *Collect metrics and logs for every resource.* Each Azure service has a set of metrics that's unique to the functionality of the resource. These metrics help you understand the resource's health and performance. Add a [diagnostic setting](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) for each resource to send metrics to a location that your workload team can access as they build alerts and dashboards. Metric data is available for short-term access. For long-term access or for access from a system that's outside of Azure Monitor, send the metric data to your unified sink to the access location.
 
-Metric data is available for short-term access. For long-term access or for access from a system that's outside of Azure Monitor, send the metric data to your unified sink to the access location.
+- *Use platform tooling.* Gather inspiration from built-in and integrated monitoring solutions, such as Azure Monitor Insights. This tooling streamlines performance operations. Consider platform tooling as you select a platform and invest in custom tooling or reporting.
 
-**Use platform tooling.** Gather inspiration from built-in and integrated monitoring solutions, such as Azure Monitor Insights. This tooling streamlines performance operations. Consider platform tooling as you select a platform and invest in custom tooling or reporting.
-
-**Monitor network traffic.** Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
+- *Monitor network traffic.* Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
 
 ### Collect database data and storage data
 
