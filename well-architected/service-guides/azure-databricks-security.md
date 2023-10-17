@@ -34,7 +34,6 @@ All users' notebooks and notebook results are encrypted at rest, by default. If 
 ***
 
 > [!div class="checklist"]
->
 > - Use Microsoft Entra ID [credential passthrough](/azure/databricks/security/credential-passthrough/adls-passthrough) to avoid the need for service principals when communicating with Azure Data Lake Storage.
 > - Isolate your workspaces, compute, and data from public access. Make sure that only the right people have access and only through secure channels.
 > - Ensure that the cloud workspaces for your analytics are only accessible by properly [managed users](/azure/databricks/administration-guide/users-groups/).
