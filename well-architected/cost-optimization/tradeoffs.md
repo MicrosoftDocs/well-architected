@@ -3,31 +3,31 @@ title: Cost Optimization tradeoffs
 description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for cost optimization.
 author: ckittel
 ms.author: chkittel
-ms.date: 10/12/2023
+ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
 # Cost Optimization tradeoffs
 
-Several factors come into play when designing a workload to maximize return on investment (ROI) under financial constraints. You first need clearly defined functional and non-functional requirements. A work and effort prioritization strategy are essential. The foundation is a team with a strong sense of financial responsibility. They should have a good understanding of available technology and their billing models.
+When you design a workload to maximize return on investment (ROI) under financial constraints, you first need clearly defined functional and non-functional requirements. A work and effort prioritization strategy is essential. The foundation is a team that has a strong sense of financial responsibility. The team should have a strong understanding of available technologies and their billing models.
 
-After you understand the ROI of a workload, you can start improving it. To improve the ROI, you should consider how aligning to the [Cost Optimization design principles](./principles.md) and recommendations in the [Design review checklist for Cost Optimization](./checklist.md) might influence the efforts in other pillars. For cost optimization, it's important to avoid the trap of focusing on a cheaper solution. Choices that focus only on minimizing spend can increase the risk of undermining your workload's business goals and reputation. This article lists example tradeoffs that a workload team might encounter when considering the target setting, design, and operations for cost optimization.
+After you understand the ROI of a workload, you can start improving it. To improve the ROI, consider how decisions based on the [Cost Optimization design principles](./principles.md) and the recommendations in the [Design review checklist for Cost Optimization](./checklist.md) might influence the goals and optimizations of other Azure Well-Architected Framwork pillars. For cost optimization, it's important to avoid focusing on a cheaper solution. Choices that focus only on minimizing spending can increase the risk of undermining your workload's business goals and reputation. This article describes example tradeoffs that a workload team might encounter when considering the target setting, design, and operations for cost optimization.
 
 ## Cost Optimization tradeoffs with Reliability
 
-The cost of a service disruption must be measured against the cost to prevent or recover from one. If the cost of disruptions exceeds the cost of reliability design, then you should invest more to prevent or mitigate disruptions. Conversely, the cost of the reliability efforts might be more than the cost of a disruption, including factors such as compliance requirements and reputation. Only then, should you consider strategic divestment in reliability design.
+The cost of a service disruption must be measured against the cost of preventing or recovering from one. If the cost of disruptions exceeds the cost of reliability design, you should invest more to prevent or mitigate disruptions. Conversely, the cost of the reliability efforts might be more than the cost of a disruption, including factors like compliance requirements and reputation. You should consider strategic divestment in reliability design only in this scenario.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: **Reduced resiliency.** A workload employs resiliency measures to attempt to avoid and withstand specific types and quantities of malfunction.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced resiliency.** A workload incorporates resiliency measures to attempt to avoid and withstand specific types and quantities of malfunction.
 
-- Cost-saving measures might underprovision a component or overconstrain its scaling, making it more likely to fail with sudden spikes in demand.
+- To save money, the workload team might underprovision a component or overconstrain its scaling, making the component more likely to fail during sudden spikes in demand.
 
-- Consolidating workload resources (*increasing density*) for cost optimization makes individual component more likely to fail during spikes in demand and maintenance operations (such as updates).
+- Consolidating workload resources (*increasing density*) for cost optimization makes individual components more likely to fail during spikes in demand and during maintenance operations like updates.
 
-- Removing components that support *resiliency design patterns*, such as a message bus, and creating a direct dependency reduces self-preservation capabilities.
+- Removing components that support resiliency design patterns, like a message bus, and creating a direct dependency reduces self-preservation capabilities.
 
-- Cost reductions made by *reducing redundancy* can cause a workload to be able to handle fewer concurrent malfunctions.
+- Saving money by reducing redundancy can reduce a workload's ability to handle concurrent malfunctions.
 
-- Selecting *budget SKUs* may limit the maximum service level objective (SLO) the workload can reach.
+- Using budget SKUs might limit the maximum service-level objective (SLO) that the workload can reach.
 
 - Setting hard spending limits can prevent a workload from scaling to meet legitimate demand.
 
