@@ -52,7 +52,11 @@ The following recommendations can help you adopt and implement DevOps practices 
 
 ## Azure facilitation
 
-Microsoft publishes extensive documentation about DevOps culture in a dedicated [DevOps resource center](/devops/what-is-devops) and in the [Cloud Adoption Framework](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices).
+Microsoft publishes extensive documentation about DevOps culture in a dedicated [DevOps resource center](/devops/what-is-devops).
+
+## Organizational alignment
+
+Cloud Adoption Framework provides [DevOps considerations](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices) for organizational adoption, which includes a perspective on [DevOps team topologies](/azure/cloud-adoption-framework/ready/considerations/devops-teams-topologies).
 
 ## Tradeoffs
 
