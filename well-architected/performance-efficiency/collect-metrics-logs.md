@@ -9,15 +9,15 @@ ms.topic: conceptual
 
 # Recommendations for collecting performance data
 
-**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|[PE:04](checklist.md)| Collect performance data. Workload components and flows should provide automatic, continuous, and meaningful metrics and logs. Collect data at different levels of the workload, such as the application, platform, data, and operating system levels. | 
-|---|---| 
+|[PE:04](checklist.md)| Collect performance data. Workload components and flows should provide automatic, continuous, and meaningful metrics and logs. Collect data at different levels of the workload, such as the application, platform, data, and operating system levels. |
+|---|---|
 
-Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes: 
+Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes:
 
-- Numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time. 
-- Logs that contain different types of data that's organized into records. 
+- Numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time.
+- Logs that contain different types of data that's organized into records.
 
 By collecting performance data, you can monitor and analyze the performance of a workload. You can use this information to identify performance bottlenecks, to troubleshoot issues, to optimize resource allocation, and to make data-driven decisions to improve the overall performance efficiency of the workload.  
 
@@ -61,7 +61,7 @@ Performance optimization requires data to measure the current performance of a w
 
 Application performance data provides valuable insights into the health and performance of an application. By monitoring and analyzing performance data, you can identify and troubleshoot issues, optimize application performance, and make informed decisions for your application.
 
-**Instrument code.** Instrumenting code involves adding specific code and tools to gather data about the performance of an application during runtime. You need to collect metrics for key flows. The metrics should target throughput, latency, or time-to-complete values. Data about business flows should remain distinct from data about nonbusiness flows. For business flow data, ensure that the metadata allows you to track and store the data separately. 
+**Instrument code.** Instrumenting code involves adding specific code and tools to gather data about the performance of an application during runtime. You need to collect metrics for key flows. The metrics should target throughput, latency, or time-to-complete values. Data about business flows should remain distinct from data about nonbusiness flows. For business flow data, ensure that the metadata allows you to track and store the data separately.
 
 Instrumenting code is important for collecting workload performance data. It helps you:
 
@@ -97,7 +97,7 @@ To instrument code for performance monitoring, developers can use various tools 
 
 By collecting platform data, you can gain insights into the health and behavior of your workload. Platform data provides information about resource use, which is key for capacity planning. Platform data also provides insights into the health of a workload and can help you detect issues and troubleshoot.
 
-**Collect metrics and logs for every resource.** Each Azure service has a set of metrics that's unique to the functionality of the resource. These metrics help you understand the resource's health and performance. Add a [diagnostic setting](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) for each resource to send metrics to a location that your workload team can access as they build alerts and dashboards. 
+**Collect metrics and logs for every resource.** Each Azure service has a set of metrics that's unique to the functionality of the resource. These metrics help you understand the resource's health and performance. Add a [diagnostic setting](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) for each resource to send metrics to a location that your workload team can access as they build alerts and dashboards.
 
 Metric data is available for short-term access. For long-term access or for access from a system that's outside of Azure Monitor, send the metric data to your unified sink to the access location.
 
@@ -137,7 +137,7 @@ For databases, you should also collect database-specific metrics:
 
 ### Collect operating system data (if applicable)
 
-A platform as a service (PaaS) solution eliminates the need to collect operating system performance data. However, if your workload runs on virtual machines (infrastructure as a service), you need to collect performance data about the operating system. You need to understand the demand on your operating system and virtual machine. Frequently sample operating system performance counters. For example, you could sample the performance counters every minute. 
+A platform as a service (PaaS) solution eliminates the need to collect operating system performance data. However, if your workload runs on virtual machines (infrastructure as a service), you need to collect performance data about the operating system. You need to understand the demand on your operating system and virtual machine. Frequently sample operating system performance counters. For example, you could sample the performance counters every minute.
 
 At a minimum, collect data about the following performance areas.
 
@@ -203,7 +203,7 @@ When you create an alert rule, you can define the criteria that determine when a
 
 ## Performance Efficiency checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Performance Efficiency checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Performance Efficiency checklist](checklist.md)
