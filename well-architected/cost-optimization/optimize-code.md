@@ -61,7 +61,7 @@ To identify hot paths, consider these tasks:
 
 - *Minimize logging operations*: Logging can be helpful for debugging and analysis, but excessive logging can affect performance. Evaluate the necessity of each logging operation and remove any unnecessary logging calls that aren't critical for performance analysis.
 
-- *Optimize loops and conditionals*: Analyze loops and conditionals in your code. Identify any unnecessary iterations or conditions that can be eliminated. Simplifying and optimizing these structures can improve the performance of your code.
+- *Optimize loops and conditionals*: Analyze loops and conditionals in your code. Identify any unnecessary iterations or conditions that you can eliminate. Simplifying and optimizing these structures can improve the performance of your code.
 
 - *Reduce unnecessary data processing*: Review your code for any unnecessary data-processing operations, such as redundant calculations or transformations. Eliminate these unnecessary operations to improve the efficiency of your code.
 
@@ -85,13 +85,13 @@ To evaluate whether using concurrency is a good fit, you can follow these guidel
 
 - *Asynchronous processing*: Asynchronous processing allows nonblocking execution. For example, you can start a process and then pause it to allow a second process to finish.
 
-  Determine the code components or operations that can be executed asynchronously. Identify the programming language or framework that you're using and understand the asynchronous programming model that it supports, such as `async`/`await` in .NET or promises in JavaScript.
+  Determine the code components or operations that you can run asynchronously. Identify the programming language or framework that you're using and understand the asynchronous programming model that it supports, such as `async`/`await` in .NET or promises in JavaScript.
 
   Restructure your code to use asynchronous programming constructs by enabling nonblocking execution of tasks. Decouple long-running or I/O-intensive operations from the main execution thread by using asynchronous methods or callbacks. Use asynchronous APIs or libraries that your programming language or framework provides to handle asynchronous workflows.
 
 - *Multithreading*: In multithreading, you run multiple threads of a single process concurrently.
 
-  Identify sections of your code that can be run concurrently and independently. Read documentation or guidelines that are specific to the programming language or framework you're using for multithreading best practices. Create multiple threads or thread pools to handle parallel execution of tasks.
+  Identify sections of your code that you can run concurrently and independently. Read documentation or guidelines that are specific to the programming language or framework you're using for multithreading best practices. Create multiple threads or thread pools to handle parallel execution of tasks.
 
   Implement synchronization mechanisms, such as locks, mutexes, or semaphores, to ensure thread safety and prevent race conditions when you're accessing shared resources. Consider using higher-level abstractions, like thread pools or task-based parallelism libraries, to streamline the management of multiple threads and simplify concurrency control.
 
@@ -99,11 +99,11 @@ To evaluate whether using concurrency is a good fit, you can follow these guidel
 
   Determine whether the workload or operations in your code lend themselves to parallel processing. Identify the programming language or framework that you're using and explore its multiprocessing capabilities. For example, consider the multiprocessing module in Python or parallel streams in Java. Design your code to split the workload into multiple independent tasks that can be processed concurrently.
 
-  Use multiprocessing APIs or libraries to create and manage parallel processes. Distribute the workload among these APIs or libraries. To enable coordination and data sharing between multiple processes implement communication mechanisms like interprocess communication (IPC), shared memory, or message passing, depending on your programming language or framework.
+  Use multiprocessing APIs or libraries to create and manage parallel processes. Distribute the workload among these APIs or libraries. To enable coordination and data sharing between multiple processes, implement communication mechanisms like interprocess communication (IPC), shared memory, or message passing, depending on your programming language or framework.
 
 ### Use the right SDKs
 
-Using the right SDKs for cost optimization involves selecting software development kits that are designed to optimize resource usage and improve performance. It's important to evaluate the features and capabilities of each SDK. Consider its compatibility with your programming language and development environment.
+For cost optimization, select SDKs that are designed to optimize resource usage and improve performance. It's important to evaluate the features and capabilities of each SDK. Consider its compatibility with your programming language and development environment.
 
 Here's guidance to help choose the best SDKs for your workload:
 
@@ -113,7 +113,7 @@ Here's guidance to help choose the best SDKs for your workload:
 
 ### Choose the right operating system
 
-Most coding languages can run on various operating systems, so it's important to evaluate your operating system against cheaper alternatives. If an alternative operating system supports the same or similar functionality, using the cheaper option is worth considering. By choosing a cheaper operating system, you can potentially reduce the cost of licensing fees and infrastructure costs associated with the operating system.
+Most coding languages can run on various operating systems, so it's important to evaluate your operating system against cheaper alternatives. If an alternative operating system supports the same or similar functionality, using the cheaper option is worth considering. By choosing a cheaper operating system, you can potentially reduce the cost of licensing fees and infrastructure costs.
 
 The right operating system can contribute to overall cost optimization for your workload. To choose the right operating system for your workload, try these activities:
 
@@ -129,13 +129,13 @@ The right operating system can contribute to overall cost optimization for your 
 
 - *Review security and stability*: Assess the security and stability of the alternative operating system. Look for security updates, patches, and community support to ensure that the operating system is actively maintained and is secure and stable overall.
 
-- *Consider vendor support*: Evaluate the level of vendor support that's available for the alternative operating system. Check if there are official support channels, documentation, and a community of users who can provide assistance if needed.
+- *Consider vendor support*: Evaluate the level of vendor support that's available for the alternative operating system. Check if there are official support channels, documentation, and a community of users who can provide assistance if you need it.
 
 ### Optimize network traversal
 
-Optimizing network traversal is about minimizing network traffic between workload components. Data transfer often has an associated cost. By minimizing network traffic, you can reduce the amount of data that needs to be transferred while lowering costs. You can reduce unnecessary data transfers, optimize network protocols, and apply caching mechanisms.
+Optimizing network traversal is about minimizing network traffic between workload components. Data transfer often has an associated cost. By minimizing network traffic, you can reduce the amount of data that needs to be transferred while lowering costs.
 
-Analyze your workload and identify any unnecessary data transfers between components. Avoid transferring redundant or duplicate data, and transmit only essential information.
+Analyze your workload and identify any unnecessary data transfers between components. Avoid transferring redundant or duplicate data, and transmit only essential information. Optimizing network protocols and applying caching mechanisms can also help.
 
 #### Optimize network protocols
 
@@ -149,7 +149,7 @@ Consider these suggestions:
 
 - *Utilize connection pooling*: Connection pooling allows for the reuse of established network connections, to reduce the overhead of establishing new connections for each request. Connection pooling can improve the efficiency of network communication by avoiding the overhead of connection setup and teardown.
 
-- *Implement other optimizations*: Explore other optimizations specific to your workload and network environment. For example, you can use content caching, load balancing, and traffic shaping to further optimize network traversal.
+- *Implement other optimizations*: Explore other optimizations that are specific to your workload and network environment. For example, you can use content caching, load balancing, and traffic shaping to further optimize network traversal.
 
 #### Minimize network overhead
 
@@ -161,7 +161,7 @@ Consider these techniques:
 
 - *Optimize data size*: Review the data being transmitted between components or systems, and look for opportunities to minimize its size. Consider techniques such as compressing the data before transmission or using more efficient data formats. By reducing the data size, you can decrease network bandwidth usage and improve overall efficiency.
 
-- *Batch*: If applicable, consider batching multiple smaller requests into a single larger request. Batching reduces the overhead of establishing multiple connections and decreases the overall data transmission.
+- *Batch requests*: If applicable, consider batching multiple smaller requests into a single larger request. Batching reduces the overhead of establishing multiple connections and decreases the overall data transmission.
 
 - *Use data serialization*: Data serialization refers to the process of converting complex data structures or objects into a format that can be easily transmitted over a network or stored in a persistent storage system. This strategy involves representing the data in a standardized format, so the data can be efficiently transmitted, processed, and reconstructed at the receiving end.
 
@@ -171,14 +171,14 @@ Consider these techniques:
   |----|---|
   | Protocol Buffers (protobuf) | A binary serialization format that offers efficient encoding and decoding of structured data. It uses typed definition files to define message structures.|
   | MessagePack| A binary serialization format for compact transmission over the wire. It supports various data types and provides fast serialization and deserialization performance.|
-  | JavaScript Object Notation (JSON) | A widely used data serialization format that is human-readable and easy to work with. JSON is text based and has broad cross-platform support.|
+  | JavaScript Object Notation (JSON) | A widely used data serialization format that's human-readable and easy to work with. JSON is text based and has broad cross-platform support.|
   | Binary JSON (BSON)| A binary serialization format that's similar to JSON but designed for efficient serialization and deserialization. BSON includes extra data types not available in JSON.|
 
-  Depending on the serialization format, you need to implement logic to serialize objects or data structures into the chosen format and deserialize them back into their original form. You can implement this logic by using libraries or frameworks that provide serialization capabilities for the selected format.
+  Depending on the serialization format, you need to implement logic to serialize objects or data structures into the chosen format and deserialize them back into their original form. You can implement this logic by using libraries or frameworks that provide serialization capabilities for the format.
 
 ### Optimize data access
 
-Optimizing data access refers to streamlining the patterns and techniques for retrieving and storing data, to minimize unnecessary operations. By optimizing data access, you can save costs by reducing resource usage, reducing data retrieval, and improving the efficiency of data processing. Consider techniques such as data caching, efficient data querying, and data compression.
+Optimizing data access refers to streamlining the patterns and techniques for retrieving and storing data, to minimize unnecessary operations. When you optimize data access, you can save costs by reducing resource usage, reducing data retrieval, and improving the efficiency of data processing. Consider techniques such as data caching, efficient data querying, and data compression.
 
 #### Use caching mechanisms
 
@@ -202,7 +202,7 @@ You can enhance the efficiency of application communication to the database. Her
 
 - *Optimize queries*: Design efficient queries by considering the specific data requirements and minimizing unnecessary data retrieval. Start by using appropriate join types (for example, inner join and left join), based on the relationship between tables. Use query optimization techniques such as query hints, query plan analysis, and query rewriting to improve performance.
 
-- *Cache query results*: Caching query results involves storing the results of frequently run queries in memory or a cache. It allows subsequent executions of the same query to be served from the cache, which eliminates the need for expensive database operations.
+- *Cache query results*: You can store the results of frequently run queries in memory or a cache. Subsequent executions of the same query can then be served from the cache, which eliminates the need for expensive database operations.
 
 - *Use an object-relational mapping (ORM) framework:* Use ORM features such as lazy loading, caching, and batch processing to optimize data retrieval and minimize database round trips. Use ORM frameworks such as Entity Framework for C# or Hibernate for Java.
 
@@ -214,13 +214,13 @@ Organizing data for efficient access and retrieval involves structuring and stor
 
 Here are some techniques for organizing data efficiently:
 
-- *Partition*: Partitioning involves dividing a large dataset into smaller, more manageable subsets called partitions. Each partition can be stored separately, allowing for parallel processing and improved query performance. For example, you can partition data based on a specific range of values or by distributing data across servers. This technique can enhance scalability, reduce contention, and optimize resource utilization.
+- *Partition*: Partitioning involves dividing a large dataset into smaller, more manageable subsets called partitions. You can store each partition separately to allow for parallel processing and improved query performance. For example, you can partition data based on a specific range of values or by distributing data across servers. This technique can enhance scalability, reduce contention, and optimize resource utilization.
 
-- *Shard*: Sharding is a technique where data is horizontally divided across multiple database instances or servers. Each shard contains a subset of the data, and queries can be processed in parallel across these shards. Sharding can improve query performance by distributing the workload and reducing the amount of data that each query accesses.
+- *Shard*: Sharding is a technique of horizontally dividing data across multiple database instances or servers. Each shard contains a subset of the data, and queries can be processed in parallel across these shards. Sharding can improve query performance by distributing the workload and reducing the amount of data that each query accesses.
 
-- *Compress*: Data compression involves reducing the size of data to minimize storage requirements and improve the efficiency of data transfer. Because compressed data takes up less disk space, it allows for savings in storage costs. Additionally, compressed data can be transferred more quickly over networks, which reduces data transfer costs.
+- *Compress*: Data compression involves reducing the size of data to minimize storage requirements and improve the efficiency of data transfer. Because compressed data takes up less disk space, it allows for savings in storage costs. Compressed data can also be transferred more quickly over networks, which reduces data transfer costs.
 
-For example, consider a scenario where you have a large dataset of customer information. By partitioning the data based on customer regions or demographics, you can distribute the workload across multiple servers and improve query performance. Additionally, you can compress the data to reduce storage costs and improve the efficiency of data transfer.
+For example, consider a scenario where you have a large dataset of customer information. By partitioning the data based on customer regions or demographics, you can distribute the workload across multiple servers and improve query performance. You can also compress the data to reduce storage costs and improve the efficiency of data transfer.
 
 ### Optimize architecture
 
@@ -230,11 +230,13 @@ To reach this goal, you might need to redesign parts of the architecture to use 
 
 #### Use design patterns
 
-Design patterns are reusable solutions to common software design problems. They provide a structured approach to designing code that's efficient, maintainable, and scalable. Design patterns help developers solve recurring design problems and promote code reusability.
+Design patterns are reusable solutions that help developers solve recurring design problems. They provide a structured approach to designing code that's efficient, maintainable, and scalable.
 
-Design patterns can help cost optimize code in the following ways. They help optimize the use of system resources by providing guidelines for efficient resource allocation and management. For example, the Circuit Breaker pattern helps prevent unnecessary resource consumption by providing a mechanism to handle and recover from failures in a controlled way.
+Design patterns help optimize the use of system resources by providing guidelines for efficient resource allocation and management. For example, the Circuit Breaker pattern helps prevent unnecessary resource consumption by providing a mechanism to handle and recover from failures in a controlled manner.
 
-- *Reduced development time*: Design patterns provide proven solutions to common design problems, which can save development time. By following established patterns, developers can avoid repetitive work and focus on implementing the specific requirements of their application.
+Design patterns can help cost optimize code in the following ways:
+
+- *Reduced development time*: Design patterns provide proven solutions to common design problems, which can save development time. By following established patterns, developers can avoid repetitive work and focus on implementing the specific requirements of their applications.
 
 - *Improved maintainability*: Design patterns promote modular and structured code that's easier to understand, modify, and maintain. They can lead to cost savings in terms of reduced debugging and maintenance efforts.
 
@@ -246,37 +248,37 @@ Various resources are available, such as documentation, tutorials, and sample co
 
 #### Change configurations
 
-Regularly review and update your workload configuration to ensure that it aligns with your current requirements. Consider adjusting resource sizing and configuration settings based on workload demands. By optimizing configuration, you can effectively allocate resources and avoid overprovisioning to save costs.
+Regularly review and update your workload configuration to ensure that it aligns with your current requirements. Consider adjusting resource sizing and configuration settings based on workload demands. By optimizing configurations, you can effectively allocate resources and avoid overprovisioning to save costs.
 
 #### Refactor architecture
 
-Evaluate your workload architecture and identify opportunities for refactoring or redesigning components to optimize resource consumption. Consider techniques such as adopting microservices architecture, implementing the Circuit Breaker pattern, and using serverless computing. By optimizing your architecture, you can achieve better resource utilization and cost efficiency.
+Evaluate your workload architecture and identify opportunities for refactoring or redesigning components to optimize resource consumption. Consider techniques such as adopting a microservices architecture, implementing the Circuit Breaker pattern, and using serverless computing. By optimizing your architecture, you can achieve better resource utilization and cost efficiency.
 
 #### Modify resource sizes
 
 Continuously monitor and analyze the resource utilization of your workload. Based on the observed patterns and trends, adjust resource sizing and configuration settings to optimize resource consumption.
 
-Consider rightsizing virtual machine instances, adjusting memory allocation, and optimizing storage capacity. By rightsizing resources, you can avoid unnecessary costs associated with underutilization or overprovisioning.
+Consider rightsizing virtual machines, adjusting memory allocation, and optimizing storage capacity. By rightsizing resources, you can avoid unnecessary costs associated with underutilization or overprovisioning.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Reworking code and architecture might not fit with current project schedules and could lead to schedule and cost slippage.
 
 ## Azure facilitation
 
-**Instrumenting code:** Azure provides various monitoring and logging tools like Azure Monitor, Application Insights, and Log Analytics. You can use these tools to track and analyze the performance and behavior of your code in real time.
+**Instrumenting code:** Azure provides monitoring and logging tools like Azure Monitor, Application Insights, and Log Analytics. You can use these tools to track and analyze the performance and behavior of your code in real time.
 
 **Identifying hot paths:** Application Insights and profiling tools like Profiler help identify the hot paths in your code by analyzing execution times and resource usage.
 
-**Minimizing allocations:** Minimize unnecessary memory allocations and optimize memory usage by using tools like Profiler and optimizing your code for efficient memory management.
+**Minimizing allocations:** You can minimize unnecessary memory allocations and optimize memory usage by using tools like Profiler and optimizing your code for efficient memory management.
 
 **Performant SDKs:** Azure offers SDKs in multiple programming languages, optimized for performance and ease of use. These SDKs provide prebuilt functions and libraries that interact with Azure services to reduce the need for custom implementation.
 
 **Network protocols:** Various Azure services support high-speed network protocols like HTTP/2 and QUIC for efficient communication between services and applications.
 
-**Connection pooling:** Azure services, such as Azure SQL Database, Azure Cosmos DB, and Azure Cache for Redis, automatically handle connection pooling. Connection pooling enables efficient reuse of database connections to reduce the overhead of establishing new connections.
+**Connection pooling:** Azure services, such as [Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/), [Azure Cosmos DB](https://azure.microsoft.com/products/cosmos-db/), and [Azure Cache for Redis](https://azure.microsoft.com/en-us/products/cache/), automatically handle connection pooling. Connection pooling enables efficient reuse of database connections to reduce the overhead of establishing new connections.
 
 **Batching:** Azure supports batch processing in various services, so you can group multiple operations together and run them in a single request. Batch processing can significantly improve efficiency and reduce network overhead.
 
-**Caching:** Azure provides caching services like Azure Cache for Redis. You can use caching to store frequently accessed data closer to the application, resulting in faster retrieval and reduced back-end load.
+**Caching:** Azure provides caching services like Azure Cache for Redis. You can use caching to store frequently accessed data closer to the application, which results in faster retrieval and reduced back-end load.
 
 **Data serialization:** Azure supports various serialization formats, including JSON, XML, and Protocol Buffers. Choose the appropriate serialization format based on data size, performance requirements, and interoperability needs.
 
@@ -294,7 +296,9 @@ Consider rightsizing virtual machine instances, adjusting memory allocation, and
 
 ## Related links
 
-Coming soon.
+- [Azure SQL Database](https://azure.microsoft.com/products/azure-sql/database/)
+- [Azure Cosmos DB](https://azure.microsoft.com/products/cosmos-db/)
+- [Azure Cache for Redis](https://azure.microsoft.com/en-us/products/cache/)
 
 ## Cost Optimization checklist
 
