@@ -145,23 +145,25 @@ It's important to choose an adequate margin between the scale-out and scale-in t
 
 #### Test scaling
 
-Conduct load and stress tests to evaluate the performance of the workload under different scaling scenarios. You can use nonproduction environments to test vertical and horizontal scaling. Testing can help determine which scaling approach is most effective in improving performance efficiency. To test scaling in a workload, follow these steps:
+Testing scaling involves simulating various workload scenarios in a controlled environment to evaluate how a workload responds to different levels of demand. It helps ensure the workload scales efficiently, maximizing performance efficiency during varied loads.
 
-1. Identify the key workload scenarios that you need to test, such as increasing user traffic, concurrent requests, data volume, or resource use.
+To ensure that your system scales efficiently under real-world conditions, it's essential to perform load and stress tests in an environment that mirrors your production setup. These tests, conducted in nonproduction environments, enable you to evaluate both vertical and horizontal scaling strategies and determine which one optimizes performance most effectively. Here's a recommended approach to testing scaling:
 
-1. Create a separate testing environment that closely resembles the production environment in terms of infrastructure, configuration, and data.
+- *Define workload scenarios.* Identify the key workload scenarios that you need to test, such as increasing user traffic, concurrent requests, data volume, or resource use.
 
-1. Define the performance metrics to measure, such as response time, throughput, CPU and memory utilization, and error rates.
+- *Use production-like test environment.* Create a separate testing environment that closely resembles the production environment in terms of infrastructure, configuration, and data.
 
-1. Develop test cases that simulate different workload scenarios, gradually increasing the load to assess the performance at various levels.
+- *Set performance metrics.* Define the performance metrics to measure, such as response time, throughput, CPU and memory utilization, and error rates.
 
-1. Run the tests using the defined test cases and collect performance data at each load level. Monitor system behavior, resource consumption, and performance degradation.
+- *Develop test cases.* Develop test cases that simulate different workload scenarios, gradually increasing the load to assess the performance at various levels.
 
-1. Analyze the test results to identify performance bottlenecks, scalability limitations, or areas for improvement. Optimize the system configuration, infrastructure, or code to enhance scalability and performance. It takes time for scaling to complete, so test the effects of scaling delays.
+- *Execute and monitor tests.* Run the tests using the defined test cases and collect performance data at each load level. Monitor system behavior, resource consumption, and performance degradation.
 
-1. Find potential dependency issues. Scaling or partitioning in one area of a workload might cause performance issues on a dependency. The stateful parts of a system, such as databases, are the most common cause of dependency performance issues. Databases require careful design to scale horizontally. You should consider measures, such as [optimistic concurrency](/dotnet/framework/data/adonet/sql/linq/optimistic-concurrency-overview) or data partitioning, to enable more throughput to the database.
+- *Analyze and optimize scaling.* Analyze the test results to identify performance bottlenecks, scalability limitations, or areas for improvement. Optimize the system configuration, infrastructure, or code to enhance scalability and performance. It takes time for scaling to complete, so test the effects of scaling delays.
 
-1. Repeat the scalability tests after implementing optimizations to validate the improvements and help ensure the system can handle the expected workloads efficiently.
+- *Address dependencies.* Find potential dependency issues. Scaling or partitioning in one area of a workload might cause performance issues on a dependency. The stateful parts of a system, such as databases, are the most common cause of dependency performance issues. Databases require careful design to scale horizontally. You should consider measures, such as [optimistic concurrency](/dotnet/framework/data/adonet/sql/linq/optimistic-concurrency-overview) or data partitioning, to enable more throughput to the database.
+
+- *Retest after adjustments.* Repeat the scalability tests after implementing optimizations to validate the improvements and help ensure the system can handle the expected workloads efficiently.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Consider the budget constraints and cost-efficiency goals of your workload. Vertical scaling might involve higher costs due to the need for larger and more powerful resources. Horizontal scaling offers cost savings by using smaller instances that can be added or removed based on demand.
 
