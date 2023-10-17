@@ -37,21 +37,21 @@ This guide describes the recommendations for scaling and partitioning a workload
 
 ## Key design strategies
 
-Both scaling and partitioning contribute to performance efficiency by ensuring that resources are used effectively and the system can handle varying workloads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands.
+Both scaling and partitioning contribute to performance efficiency by ensuring that resources are used effectively and the system can handle varying workloads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands. Scaling ensures you can expand workload capacity to meet increasing demands. Partitioning allows you to divide tasks or data efficiently to handle these growing needs. The foundation of both these processes is the scale unit design of the workload. It dictates how your workload should grow and distribute tasks. By incorporating a reliable and controlled approach to scaling and partitioning, you can sidestep potential system inefficiencies.
 
-### Scale the workload
+### Optimize scaling
 
-Scaling adjustments include increasing or decreasing the number of servers, instances, or resources to meet the changing demands of the workload. Scaling allows the workload to handle increased traffic or workload demands without experiencing performance degradation or downtime.
+Optimize scaling is the process of adjusting the number of servers, instances, or resources to meet the fluctuating demands of a workload. It ensures that the workload can handle increased traffic or demands without experiencing performance degradation or downtime.
 
 #### Choose a scaling strategy
 
-It's important to choose the right scaling strategy, either vertical or horizontal, based on the specific characteristics and requirements of your workload.
+Choosing a scaling strategy involves deciding between vertical or horizontal methods to enhance the capacity of a workload based on its specific requirements. Selecting the right strategy ensures that resources are adjusted efficiently to meet workload demands without overuse or waste. To choose the right scaling strategy, you need to understand the uses cases for vertical and horizontal scaling and how they meet the needs of your workload.
 
-**Understand vertical scaling.** Using vertical scaling, you can increase the capacity of a single resource, such as upgrading to a larger server or instance size. Vertical scaling is useful when the workload can benefit from increased processing power, memory, or other resources within a single instance. Vertical scaling is appropriate for workloads that aren't easily divided into smaller parts or when the application architecture doesn't support horizontal scaling.
+*Understand vertical scaling.* Using vertical scaling, you can increase the capacity of a single resource, such as upgrading to a larger server or instance size. Vertical scaling is useful when the workload can benefit from increased processing power, memory, or other resources within a single instance. Vertical scaling is appropriate for workloads that aren't easily divided into smaller parts or when the application architecture doesn't support horizontal scaling.
 
-**Understand horizontal scaling.** Using horizontal scaling, you can add more instances or resources to distribute the workload across multiple servers. Horizontal scaling offers benefits such as improved resiliency, increased capacity, and the ability to handle increased traffic or workload demands. It's effective for cloud-native applications designed to run on multiple nodes. Horizontal scaling is appropriate for workloads that can be divided into smaller parts that run independently.
+*Understand horizontal scaling.* Using horizontal scaling, you can add more instances or resources to distribute the workload across multiple servers. Horizontal scaling offers benefits such as improved resiliency, increased capacity, and the ability to handle increased traffic or workload demands. It's effective for cloud-native applications designed to run on multiple nodes. Horizontal scaling is appropriate for workloads that can be divided into smaller parts that run independently.
 
-**Understand the workload.** The suitability of vertical or horizontal scaling depends on the specific characteristics and requirements of the workload. Regular performance monitoring and testing in the following areas can help optimize the scaling strategy over time:
+*Understand the workload.* The suitability of vertical or horizontal scaling depends on the specific characteristics and requirements of the workload. Regular performance monitoring and testing in the following areas can help optimize the scaling strategy over time:
 
 - *Requirements*: Understand the specific requirements of the workload by considering factors such as resource demands, scalability needs, and the limitations of the workload.
 
@@ -61,9 +61,11 @@ It's important to choose the right scaling strategy, either vertical or horizont
 
 #### Design for infrastructure scalability
 
-Designing for infrastructure scalability is the process of creating an architecture that can handle increasing demands and workload by adding or adjusting resources as needed. It involves planning and implementing solutions that can scale horizontally or vertically to accommodate growth. When you design a workload to be scalable, it can effectively distribute the workload across multiple resources, which prevents bottlenecks and maximizes resource utilization.
+Designing for infrastructure scalability is the process of creating an architecture that can handle increasing demands and workload by adding or adjusting resources as needed. It involves planning and implementing solutions that can scale horizontally or vertically to accommodate growth. Strategies include avoiding singletons that can become bottlenecks and decoupling application components to ensure independent scalability. When you design a workload to be scalable, it can effectively distribute the workload across multiple resources, which prevents bottlenecks and maximizes resource utilization.
 
-**Avoid singletons.** You should avoid the use of a single, centralized resource for the entire workload. Instead, distribute your workload across multiple resources for better scalability, fault tolerance, and performance. Explore some specific examples and design considerations to avoid singletons in workload resources:
+##### Avoid singletons
+
+You should avoid the use of a single, centralized resource for the entire workload. Instead, distribute your workload across multiple resources for better scalability, fault tolerance, and performance. Explore some specific examples and design considerations to avoid singletons in workload resources:
 
 - *[Queue-based load leveling](/azure/architecture/patterns/queue-based-load-leveling)*: Instead of relying on a single queue to process messages, consider partitioning the workload across multiple queues to distribute the processing load. It provides better scalability and parallel processing.
 
@@ -71,7 +73,9 @@ Designing for infrastructure scalability is the process of creating an architect
 
 - *Design patterns*: Design patterns such as [Fan-out/Fan-in](/azure/azure-functions/durable/durable-functions-overview#fan-in-out) or [Pipes and Filters](/azure/architecture/patterns/pipes-and-filters) can help avoid singletons in workflows. These patterns enable the distribution of processing tasks across multiple resources and promote scalability and flexibility.
 
-**Decouple components.** Decoupling application components is an important aspect of designing for scalability. It involves breaking down the application into smaller, independent components that can operate and scale independently based on specific workload requirements. For example, if one component requires more resources due to increased demand, you can scale that component without affecting the others. This flexibility ensures efficient resource allocation and prevents bottlenecks. By decoupling components, you can isolate failures and minimize the effect on the overall application. If one component fails, the other components can continue to function independently.
+##### Decouple components
+
+Decoupling application components is an important aspect of designing for scalability. It involves breaking down the application into smaller, independent components that can operate and scale independently based on specific workload requirements. For example, if one component requires more resources due to increased demand, you can scale that component without affecting the others. This flexibility ensures efficient resource allocation and prevents bottlenecks. By decoupling components, you can isolate failures and minimize the effect on the overall application. If one component fails, the other components can continue to function independently.
 
 Decoupled components are easier to maintain and update. Changes or updates to one component can be made without affecting the others because they're independent. Follow these guidelines to decouple application components for scalability:
 
@@ -87,7 +91,9 @@ Decoupled components are easier to maintain and update. Changes or updates to on
 
 As you scale a workload, you should design the application to distribute the load. Just because you can add more replicas at the infrastructure level doesn't mean your application can use the replicas. Avoid solutions that require client affinity, data locking, or state affinity for a single instance if possible. You want to route a client or process to a resource that has available capacity.
 
-**Eliminate server-side session state.** You should design applications to be stateless where possible. For stateful applications, you should use a state store that's external to your server. Externalizing session state is the practice of storing session data outside of the application server or container. You can externalize session state to distribute session data across multiple servers or services, enabling seamless session management in a distributed environment. Consider the following when externalizing session state:
+##### Eliminate server-side session state
+
+You should design applications to be stateless where possible. For stateful applications, you should use a state store that's external to your server. Externalizing session state is the practice of storing session data outside of the application server or container. You can externalize session state to distribute session data across multiple servers or services, enabling seamless session management in a distributed environment. Consider the following when externalizing session state:
 
 - *Evaluate your session requirements.* Understand the session data that needs to be stored and managed. Consider session attributes, session timeouts, and any specific requirements for session replication or persistence. Determine the size of your session state and the frequency of read and write operations.
 
@@ -97,15 +103,25 @@ As you scale a workload, you should design the application to distribute the loa
 
 - *Update your logic.* Change your application's session management logic to store and retrieve session data from the external storage solution. You might need to use APIs or libraries provided by the storage solution to manage session state.
 
-**Eliminate client affinity.** Client affinity is also known as session affinity or sticky sessions. When you eliminate client affinity, you distribute client requests evenly across multiple replicas or servers, without routing all requests from a client to the same replica. This configuration can improve the scalability and performance of applications by allowing any available replica to process the requests.
+##### Eliminate client affinity
 
-**Review your load balancing algorithm.** A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. This can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
+Client affinity is also known as session affinity or sticky sessions. When you eliminate client affinity, you distribute client requests evenly across multiple replicas or servers, without routing all requests from a client to the same replica. This configuration can improve the scalability and performance of applications by allowing any available replica to process the requests.
 
-**Eliminate data locking.** Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
+##### Review your load balancing algorithm
 
-**Use dynamic service discovery.** Dynamic service discovery is the process of automatically detecting and registering services in a distributed system. It allows clients to discover available services without being tightly coupled to specific instances. Clients shouldn't be able to take a direct dependency on a specific instance in the workload. To avoid these dependencies, you should use a proxy to distribute and redistribute client connections. The proxy acts as an intermediary between clients and services, providing a layer of abstraction that allows services to be added or removed without affecting clients.
+A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. This can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
 
-**Add retry logic.** It's important to add retry logic to an application when scaling to handle temporary failures and maintain application availability and reliability. Scaled applications, especially in a distributed system, might result in increased load and potential failures due to network issues, resource limitations, or service disruptions. Retry logic allows the application to automatically retry failed operations, such as connecting to a service or making a network request, after a certain period of time. Retry logic helps to mitigate transient failures and gives the system a chance to recover without causing disruptions or affecting user experience. To add retry logic to your application:
+##### Eliminate data locking
+
+Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
+
+##### Use dynamic service discovery
+
+Dynamic service discovery is the process of automatically detecting and registering services in a distributed system. It allows clients to discover available services without being tightly coupled to specific instances. Clients shouldn't be able to take a direct dependency on a specific instance in the workload. To avoid these dependencies, you should use a proxy to distribute and redistribute client connections. The proxy acts as an intermediary between clients and services, providing a layer of abstraction that allows services to be added or removed without affecting clients.
+
+##### Add retry logic
+
+It's important to add retry logic to an application when scaling to handle temporary failures and maintain application availability and reliability. Scaled applications, especially in a distributed system, might result in increased load and potential failures due to network issues, resource limitations, or service disruptions. Retry logic allows the application to automatically retry failed operations, such as connecting to a service or making a network request, after a certain period of time. Retry logic helps to mitigate transient failures and gives the system a chance to recover without causing disruptions or affecting user experience. To add retry logic to your application:
 
 1. Identify the operations or services that require retry logic. These operations or services can include database connections, API calls, or any other external dependencies.
 
@@ -113,7 +129,9 @@ As you scale a workload, you should design the application to distribute the loa
 
 1. Implement the retry logic in your application code. Wrap the relevant operations or service calls in a retry loop, or, use libraries or frameworks that provide built-in retry functionality.
 
-**Use background tasks.** When an application is scaled, it can handle an increasing workload or a higher number of concurrent requests. Offloading intensive tasks as background tasks allows the main application to handle user requests without resource-intensive operations overwhelming it. Follow these steps to offload tasks as background tasks:
+##### Use background tasks
+
+When an application is scaled, it can handle an increasing workload or a higher number of concurrent requests. Offloading intensive tasks as background tasks allows the main application to handle user requests without resource-intensive operations overwhelming it. Follow these steps to offload tasks as background tasks:
 
 1. Find the CPU-intensive and I/O-intensive tasks in your application that you can offload. These tasks typically involve heavy computations or interactions with external resources such as databases or network operations.
 
@@ -122,16 +140,6 @@ As you scale a workload, you should design the application to distribute the loa
 1. Implement background task processing with appropriate technologies or frameworks. Include features provided by your programming language or platform, such as asynchronous programming, threading, or task queues. Contain intensive operations in separate tasks or threads, these tasks can be run concurrently or scheduled to run at specific intervals.
 
 1. Distribute background tasks if there are many of them, or if the tasks require substantial time or resources. For one possible solution, see the [Competing Consumers pattern](/azure/architecture/patterns/competing-consumers).
-
-**Enable distributed tracing.** Distributed tracing is a technique used to track and monitor requests as they flow through a distributed system. It allows you to trace the path of a request as it travels across multiple services and components, providing valuable insights into the performance and efficiency of your system. Distributed tracing is important for performance efficiency because it helps identify bottlenecks, latency issues, and areas for optimization within a distributed system. You can pinpoint where delays or inefficiencies occur and take appropriate actions to improve performance by visualizing the flow of a request. Follow these steps to enable distributed tracing:
-
-1. Start by instrumenting your applications and services to generate trace data. Use libraries or frameworks that support distributed tracing, such as OpenTelemetry.
-
-1. Ensure that trace information is propagated across service boundaries. You should typically pass a unique trace ID and other contextual information with each request.
-
-1. Set up a centralized trace collection system. This system collects and stores the trace data generated by your applications and services.
-
-1. Use the trace data collected to visualize the end-to-end flow of requests and analyze the performance characteristics of your distributed system.
 
 #### Implement scaling
 

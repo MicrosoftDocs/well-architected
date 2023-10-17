@@ -108,7 +108,7 @@ A container includes application code and the related configuration files, libra
 
 - Be sure to gather all relevant logs and metrics from the container, container host, and underlying cluster. Send the gathered logs and metrics to a unified data sink for further processing and analysis.
 
-- Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry). Use [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Microsoft Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Azure Active Directory (Azure AD).
+- Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry). Use [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Microsoft Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Microsoft Entra ID.
 
 ## Container hosting and orchestration
 
@@ -126,7 +126,7 @@ There are advantages and disadvantages associated with each of these platforms. 
 AKS, a managed Kubernetes service, enables quick cluster provisioning without requiring complex cluster administration activities and offers a feature set that includes advanced networking and identity capabilities. For a complete set of recommendations, see [Azure Well-Architected Framework review - AKS](/azure/well-architected/services/compute/azure-kubernetes-service/azure-kubernetes-service).
 
 > [!IMPORTANT]
-> There are some foundational configuration decisions that you can't change without re-deploying the AKS cluster. Examples include the choice between public and private AKS clusters, enabling Azure Network Policy, Azure AD integration, and the use of managed identities for AKS instead of service principals.
+> There are some foundational configuration decisions that you can't change without re-deploying the AKS cluster. Examples include the choice between public and private AKS clusters, enabling Azure Network Policy, Microsoft Entra integration, and the use of managed identities for AKS instead of service principals.
 
 ###### Reliability
 
@@ -167,9 +167,9 @@ Default vanilla Kubernetes requires significant configuration to ensure a suitab
 
 - Use AKS features for handling cluster identity and access management to reduce operational overhead and apply consistent access management.
 
-- Use managed identities instead of service principals to avoid management and rotation of credentials. You can add [managed identities](/azure/aks/use-managed-identity) at the cluster level. At the pod level, you can use managed identities via [Azure AD workload identity](/azure/aks/workload-identity-overview).
+- Use managed identities instead of service principals to avoid management and rotation of credentials. You can add [managed identities](/azure/aks/use-managed-identity) at the cluster level. At the pod level, you can use managed identities via [Microsoft Entra Workload ID](/azure/aks/workload-identity-overview).
 
-- Use [Azure AD integration](/azure/aks/managed-aad) for centralized account management and passwords, application access management, and enhanced identity protection. Use Kubernetes RBAC with Azure AD for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to help protect configuration and secrets access. Also, limit access to the [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file by using Azure role-based access control. Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources), provide the least number of permissions, and avoid the use of root privilege escalation.
+- Use [Microsoft Entra integration](/azure/aks/managed-aad) for centralized account management and passwords, application access management, and enhanced identity protection. Use Kubernetes RBAC with Microsoft Entra ID for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to help protect configuration and secrets access. Also, limit access to the [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file by using Azure role-based access control. Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources), provide the least number of permissions, and avoid the use of root privilege escalation.
 
 ###### Upgrades
 
@@ -274,7 +274,7 @@ You need to configure your container registries for mission-critical workloads c
 
 #### Design considerations and recommendations for Azure Container Registry
 
-This native service provides a range of features, including geo-replication, Azure AD authentication, automated container building, and patching via Container Registry tasks.
+This native service provides a range of features, including geo-replication, Microsoft Entra authentication, automated container building, and patching via Container Registry tasks.
 
 ###### Reliability
 
@@ -295,7 +295,7 @@ If you want to protect the Container Registry instance from deletion, use [resou
 
 ###### Identity and access management
 
- Use Azure AD integrated authentication to push and pull images instead of relying on access keys. For enhanced security, fully disable the use of the admin access key.
+ Use Microsoft Entra integrated authentication to push and pull images instead of relying on access keys. For enhanced security, fully disable the use of the admin access key.
 
 ## Serverless compute
 
