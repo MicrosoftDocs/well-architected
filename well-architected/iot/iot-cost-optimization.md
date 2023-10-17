@@ -284,7 +284,7 @@ Based on your requirements, implement hot, warm, or cold path processing for IoT
 
 To get started, determine which types of data go through the hot, warm, or cold path:
 
-- Hot path data is kept in memory and analyzed in near real-time, typically using stream processing. The output may trigger an alert or be written to a structured format that analytics tools can query immediately.
+- Hot path data is kept in memory and analyzed in near real-time, typically using stream processing. The output might trigger an alert or be written to a structured format that analytics tools can query immediately.
 - Warm path data, such as from the last day, week, or month, is kept in a storage service that can be queried immediately.
 - Cold path historical data is kept in lower-cost storage to be queried in large batches.
 
@@ -392,7 +392,7 @@ Cloud governance is essential for compliance, security, and preventing unnecessa
 
 - Cost management APIs let you explore cost and usage data through multidimensional analysis. You can create customized filters and expressions that help answer Azure resource consumption-related questions. Cost management APIs can generate alerts when consumption reaches configured thresholds. Cost management APIs are available for [IoT Central](/rest/api/iotcentral), [IoT Hub](/rest/api/iothub), and [DPS](/rest/api/iot-dps).
 
-- Resource tagging applies labels to deployed resources. Along with Azure Cost Management, tagging provides insights on ongoing costs based on the labels. For more information, see [Common cost analysis uses](/azure/cost-management-billing/costs/cost-analysis-common-uses).
+- Resource tagging applies labels to deployed resources. Along with Microsoft Cost Management, tagging provides insights on ongoing costs based on the labels. For more information, see [Common cost analysis uses](/azure/cost-management-billing/costs/cost-analysis-common-uses).
 
 - Azure Policy comes with built-in policies to label resources automatically, or flag resources without tagging. To learn more, see [Assign policy definitions for tag compliance](/azure/azure-resource-manager/management/tag-policies). Another use case for Azure Policy is to prevent provisioning of certain tiers, which helps prevent over-provisioning in development or production environments.
 

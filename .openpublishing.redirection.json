@@ -1262,7 +1262,7 @@
 		},
 		{
 			"source_path": "well-architected/implementing-recommendations.md",
-			"redirect_url": "/azure/well-architected/cost-cutting-guides/implementing-recommendations", 
+			"redirect_url": "/azure/well-architected/cross-cutting-guides/implementing-recommendations", 
 			"redirect_document_id": false
 		},
 		{
