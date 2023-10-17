@@ -1,6 +1,6 @@
 ---
-title: Collect workload performance metrics and logs
-description: Learn recommendations for collecting metrics and logs to help you assess the performance of a workload.  
+title: Collect workload performance data
+description: Learn recommendations for collecting performance data (metrics and logs) to help you assess the performance of a workload.  
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023    
@@ -9,15 +9,15 @@ ms.topic: conceptual
 
 # Recommendations for collecting performance data
 
-**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:** 
+**Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|[PE:04](checklist.md)| Collect performance data. Workload components and flows should provide automatic, continuous, and meaningful metrics and logs. Collect data at different levels of the workload, such as the application, platform, data, and operating system levels. | 
-|---|---| 
+|[PE:04](checklist.md)| Collect performance data. Workload components and flows should provide automatic, continuous, and meaningful metrics and logs. Collect data at different levels of the workload, such as the application, platform, data, and operating system levels. |
+|---|---|
 
-Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes: 
+Collecting performance data is the process of gathering metrics and logs that provide information about the performance of a workload. This data includes:
 
-- Numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time. 
-- Logs that contain different types of data that's organized into records. 
+- Numerical values, which are known as *metrics*. Metrics describe the state of the system at a particular point in time.
+- Logs that contain different types of data that's organized into records.
 
 By collecting performance data, you can monitor and analyze the performance of a workload. You can use this information to identify performance bottlenecks, to troubleshoot issues, to optimize resource allocation, and to make data-driven decisions to improve the overall performance efficiency of the workload.  
 
@@ -41,69 +41,75 @@ Without data-driven insights, you might be unaware of underlying performance iss
 
 ## Key design strategies
 
-Performance optimization requires data to measure the current performance of a workload or a flow against its performance targets. You need to collect the right amount and diversity of data to measure the performance of the code and the infrastructure against [performance targets](performance-targets.md).
+Performance optimization requires data to measure the current performance of a workload or a flow against its performance targets. You need to collect the right amount and diversity of data to measure the performance of the code and the infrastructure against [performance targets](performance-targets.md). Ensure that every component and flow within the system automatically generates continuous and meaningful metrics and logs. You need to source this data from diverse levels like the application, platform, storage, and operating system. Comprehensive performance data collection allows for a holistic understanding of performance, enabling precise identification of inefficiencies and avenues for improvement.
 
-**Centralize the data.** Centralizing performance metrics and logs is the process of collecting performance metrics and logs from various sources and storing them a central location. Create a central metrics sink and a central log sink. This centralization allows for easy access, analysis, and monitoring of performance metrics and logs across different systems and components. By centralizing metrics and logs, you gain visibility into the performance of your workload. Choose a suitable platform or tool that can aggregate and store workload performance metrics and logs.
+### Centralize performance data
+
+Centralizing performance metrics and logs is the process of collecting performance metrics and logs from various sources and storing them a central location. Create a central metrics sink and a central log sink. This centralization allows for easy access, analysis, and monitoring of performance metrics and logs across different systems and components. By centralizing metrics and logs, you gain visibility into the performance of your workload. Choose a suitable platform or tool that can aggregate and store workload performance metrics and logs.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Understand the cost of collecting metrics and logs. In general, the more metrics and logs you collect, the higher the cost.
 
-**Segment data.** Performance data monitors the performance of each environment. Each environment might contain distinct types of data, such as workload performance metrics and business metrics. Use a separate metrics and log sink for each purpose.
+### Segment performance data
+
+Segmenting performance data involves organizing and categorizing metrics and logs based on their origin, purpose, or environment. For example, you should separate production data from nonproduction data or distinguish between performance targets and business metrics. Segmenting data helps with optimizing specific environments, facilitates troubleshooting, and limits inaccuracies in performance monitoring. By maintaining a clear distinction between different data types, you can capture, analyze, and respond to relevant metrics more efficiently and better align system health with workload objectives. To segment performance data, consider the following recommendations:
 
 - *Keep production data and nonproduction data separate*. By separating data by environment, you can ensure focused monitoring and optimization of each environment. In production environments, you can better identify and address performance issues that directly affect users and business operations. In nonproduction environments, the data separation facilitates effective troubleshooting and fine-tuning during the testing phase before you deploy to production.
- 
+
 - *Use one set of data within each environment*. Don't use one set of data for performance targets and another set of data for alerts related to the performance targets. Using different sets of data leads to inaccurate alerts that undermine the effectiveness of performance monitoring.
 
 - *Separate performance targets and business metrics*. The operations and development teams use performance targets to monitor system health and meet business targets. Business metrics relate to business goals or customer reporting. Capture business metrics in a separate data stream, even if the data directly overlaps. The separation gives you flexibility to capture the right data and independently analyze the data.
 
-**Define retention policies.** For your performance metrics and logs, base the retention period on your organization's requirements and compliance regulations. Decide how long to retain the data for analysis and audit purposes. Archive the data that you don't need for immediate analysis.
+### Define retention policies
+
+Retention policies dictate how long performance data should be kept. Establishing these policies helps manage storage efficiently and ensures only necessary data is accessible for analysis. Such policies support better performance and meet compliance standards. You should configure retention policies for the log and metrics data to enable effective troubleshooting and monitoring in all environments. For example, the logs and metrics might need to be kept for longer time in a production environment than in the testing environment. The retention period should match your organization's requirements and compliance regulations. Decide how long to retain the data for analysis and audit purposes. Archive the data that you don't need for immediate analysis.
 
 ### Collect application data
 
-Application performance data provides valuable insights into the health and performance of an application. By monitoring and analyzing performance data, you can identify and troubleshoot issues, optimize application performance, and make informed decisions for your application.
+Collecting application data involves monitoring and analyzing an application's performance metrics, such as throughput, latency, and completion times, primarily gathered through instrumenting code. Application performance data provides valuable insights into the health and performance of an application. By monitoring and analyzing performance data, you can identify and troubleshoot issues, optimize application performance, and make informed decisions for your application.
 
-**Instrument code.** Instrumenting code involves adding specific code and tools to gather data about the performance of an application during runtime. You need to collect metrics for key flows. The metrics should target throughput, latency, or time-to-complete values. Data about business flows should remain distinct from data about nonbusiness flows. For business flow data, ensure that the metadata allows you to track and store the data separately. 
+#### Instrument code
 
-Instrumenting code is important for collecting workload performance data. It helps you:
+Instrumentation refers to the process of embedding specific code snippets or integrating tools into an application to capture performance data while it runs. It's essential to gather metrics that highlight the application's critical operations. Focus on metrics like throughput, latency, and completion time. It's vital to differentiate between data from business-related operations and those that aren't. For data pertaining to business operations, make sure its metadata is structured in a way that allows distinct tracking and storage. The primary reason for code instrumentation is to collect data on how the application handles its workload. It provides the following benefits:
 
-- *Identify performance bottlenecks*. By tracking metrics such as CPU use and memory use, you can identify bottlenecks and optimize the code accordingly.
+- *Identifying performance bottlenecks:* By tracking metrics such as CPU use and memory use, you can identify bottlenecks and optimize the code accordingly.
 
-- *Evaluate system behavior under a load*. You can see how the application performs under different workloads and stress scenarios. This data can help you identify issues related to scalability, concurrency, and resource use.
+- *Evaluating system behavior under a load:* You can see how the application performs under different workloads and stress scenarios. This data can help you identify issues related to scalability, concurrency, and resource use.
 
-- *Track application health and availability*. Because key performance indicators are monitored in real time, you can get alerts about potential issues that affect the application's performance and availability.
+- *Tracking application health and availability:* Because key performance indicators are monitored in real time, you can get alerts about potential issues that affect the application's performance and availability.
 
-- *Improve user experience*. You can gain insights into how users interact with the application. Use this information to optimize the user experience and identify areas for improvement.
+- *Improve user experience:* You can gain insights into how users interact with the application. Use this information to optimize the user experience and identify areas for improvement.
 
-- *Plan capacity and allocate resources*. The performance data that instrumentation gathers can provide valuable insights into the resource requirements of an application. This information can inform your decisions about planning capacity and allocating resources.
+- *Plan capacity and allocate resources:* The performance data that instrumentation gathers can provide valuable insights into the resource requirements of an application. This information can inform your decisions about planning capacity and allocating resources.
 
-To instrument code for performance monitoring, developers can use various tools and techniques:
+When you instrument code for performance monitoring, consider the following strategies:
 
-- *APM tools*: Tools like Azure Application Insights can collect and analyze performance data, including metrics, traces, and logs. APM tools offer features like code-level instrumentation, transaction tracing, and performance profiling.
+- *Use APM tools*: APM tools can collect and analyze performance data, including metrics, traces, and logs. APM tools offer features like code-level instrumentation, transaction tracing, and performance profiling.
 
-- *Logging and tracing frameworks*: By incorporating logging and tracing frameworks into the code base, developers can capture relevant data during runtime. The data can include information about the running path, I/O, and performance.
+- *Use logging and tracing frameworks*: Logging and tracing frameworks are tools or libraries that developers integrate into their applications to facilitate logging and tracing. These frameworks provide functions to generate logs, trace requests, and sometimes even format or transport the generated data. By incorporating logging and tracing frameworks into the code base, developers can capture relevant data during runtime. The data can include information about the running path, I/O, and performance.
 
 - *Custom instrumentation*: Developers can add custom code to collect performance metrics that are unique to their application and workload. The custom instrumentation can measure runtimes, track resource usage, or capture specific events. Write custom code instrumentation only when platform metrics are insufficient. In some situations, the platform resource can measure aggregate or even granular perspectives of your application. Weigh the question of whether to duplicate that effort by using custom code against excess code tradeoffs or dependency on a platform feature.
 
-**Capture transaction times.** Application-level metrics should include end-to-end transaction times. These transaction times should cover key technical functions such as database queries, response times for external API calls, and failure rates of processing steps.
+- *Capture transaction times.* Capturing transaction times relates to measuring the end-to-end times for key technical functions as a part of performance monitoring. Application-level metrics should include end-to-end transaction times. These transaction times should cover key technical functions such as database queries, response times for external API calls, and failure rates of processing steps.
 
-**Implement distributed tracing.** Use [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) to monitor the timing and performance relationships between the request flow and the involved components. Configure distributed tracing for all flows. To build end-to-end transaction flows, correlate events that come from different application components or tiers.
+- *Use telemetry standards.* Consider using APM tool instrumentation libraries and tools that are built around a telemetry standard, such as OpenTelemetry.
 
-**Collect application logs.** Logging helps you understand how the application runs in various environments. Application logs record the conditions that produce application events. Collect application logs across all application environments. Corresponding log entries across the application should capture a correlation ID for their respective transactions. The correlation ID should correlate application log events across critical system flows such as user sign-in. Use this correlation to assess the health of key scenarios in the context of targets and nonfunctional requirements.
+- *Implement distributed tracing.* Use [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) to monitor the timing and performance relationships between the request flow and the involved components. Configure distributed tracing for all flows. To build end-to-end transaction flows, correlate events that come from different application components or tiers.
 
-**Use structured logging.**  Structured logging speeds up log parsing and analysis. It makes the logs easier to index, query, and report without complexity. Add and use a structured logging library in your application code. Sometimes log entries can help you correlate data that you couldn't correlate by other means.
+#### Collect application logs
 
-**Use telemetry standards.** Consider using APM instrumentation libraries and tools that are built around a telemetry standard, such as OpenTelemetry.
+When you instrument code, one of the primary outputs should be application logs. Logging helps you understand how the application runs in various environments. Application logs record the conditions that produce application events. Collect application logs across all application environments. Corresponding log entries across the application should capture a correlation ID for their respective transactions. The correlation ID should correlate application log events across critical system flows such as user sign-in. Use this correlation to assess the health of key scenarios in the context of targets and nonfunctional requirements.
+
+You should use structured logging. Structured logging speeds up log parsing and analysis. It makes the logs easier to index, query, and report without complexity. Add and use a structured logging library in your application code. Sometimes log entries can help you correlate data that you couldn't correlate by other means.
 
 ### Capture platform data
 
 By collecting platform data, you can gain insights into the health and behavior of your workload. Platform data provides information about resource use, which is key for capacity planning. Platform data also provides insights into the health of a workload and can help you detect issues and troubleshoot.
 
-**Collect metrics and logs for every resource.** Each Azure service has a set of metrics that's unique to the functionality of the resource. These metrics help you understand the resource's health and performance. Add a [diagnostic setting](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) for each resource to send metrics to a location that your workload team can access as they build alerts and dashboards. 
+- *Collect metrics and logs for every resource.* Each Azure service has a set of metrics that's unique to the functionality of the resource. These metrics help you understand the resource's health and performance. Add a [diagnostic setting](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) for each resource to send metrics to a location that your workload team can access as they build alerts and dashboards. Metric data is available for short-term access. For long-term access or for access from a system that's outside of Azure Monitor, send the metric data to your unified sink to the access location.
 
-Metric data is available for short-term access. For long-term access or for access from a system that's outside of Azure Monitor, send the metric data to your unified sink to the access location.
+- *Use platform tooling.* Gather inspiration from built-in and integrated monitoring solutions, such as Azure Monitor Insights. This tooling streamlines performance operations. Consider platform tooling as you select a platform and invest in custom tooling or reporting.
 
-**Use platform tooling.** Gather inspiration from built-in and integrated monitoring solutions, such as Azure Monitor Insights. This tooling streamlines performance operations. Consider platform tooling as you select a platform and invest in custom tooling or reporting.
-
-**Monitor network traffic.** Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
+- *Monitor network traffic.* Collect traffic analytics and monitor the traffic that traverses subnet boundaries. Your goal is to analyze and optimize network performance.
 
 ### Collect database data and storage data
 
@@ -137,7 +143,7 @@ For databases, you should also collect database-specific metrics:
 
 ### Collect operating system data (if applicable)
 
-A platform as a service (PaaS) solution eliminates the need to collect operating system performance data. However, if your workload runs on virtual machines (infrastructure as a service), you need to collect performance data about the operating system. You need to understand the demand on your operating system and virtual machine. Frequently sample operating system performance counters. For example, you could sample the performance counters every minute. 
+A platform as a service (PaaS) solution eliminates the need to collect operating system performance data. However, if your workload runs on virtual machines (infrastructure as a service), you need to collect performance data about the operating system. You need to understand the demand on your operating system and virtual machine. Frequently sample operating system performance counters. For example, you could sample the performance counters every minute.
 
 At a minimum, collect data about the following performance areas.
 
@@ -155,7 +161,7 @@ Your performance data should align with the performance targets. The data needs 
 
 ### Create alerts
 
-Actionable alerts allow you to identify and resolve performance issues. They communicate the violated threshold, business effects, and components that are involved. Set up alerts for architecture components and critical flows. To begin, pick common and recommended alert rules. You can later change the rules as needed. 
+Actionable alerts allow you to identify and resolve performance issues. They communicate the violated threshold, business effects, and components that are involved. Set up alerts for architecture components and critical flows. To begin, pick common and recommended alert rules. You can later change the rules as needed.
 
 Alerts should help you predict potential performance degradation before it becomes a problem. When you can't create an alert on a dependency that's outside your control, create a solution that collects proxy measurements, such as dependency call duration.
 
@@ -203,7 +209,7 @@ When you create an alert rule, you can define the criteria that determine when a
 
 ## Performance Efficiency checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Performance Efficiency checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Performance Efficiency checklist](checklist.md)
