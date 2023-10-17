@@ -60,7 +60,7 @@ Segmenting performance data involves organizing and categorizing metrics and log
 
 Retention policies dictate how long performance data should be kept. Establishing these policies helps manage storage efficiently and ensures only necessary data is accessible for analysis. Such policies support better performance and meet compliance standards. You should configure retention policies for the log and metrics data to enable effective troubleshooting and monitoring in all environments. For example, the logs and metrics might need to be kept for longer time in a production environment than in the testing environment. The retention period should match your organization's requirements and compliance regulations. Decide how long to retain the data for analysis and audit purposes. Archive the data that you don't need for immediate analysis.
 
-### Collect application data
+### Collect application performance data
 
 Collecting application data involves monitoring and analyzing an application's performance metrics, such as throughput, latency, and completion times, primarily gathered through instrumenting code. Application performance data provides valuable insights into the health and performance of an application. By monitoring and analyzing performance data, you can identify and troubleshoot issues, optimize application performance, and make informed decisions for your application.
 
@@ -98,11 +98,11 @@ When you instrument code, one of the primary outputs should be application logs.
 
 You should use structured logging. Structured logging speeds up log parsing and analysis. It makes the logs easier to index, query, and report without complexity. Add and use a structured logging library in your application code. Sometimes log entries can help you correlate data that you couldn't correlate by other means.
 
-### Capture platform data
+### Collect resource performance data
 
-By collecting platform data, you can gain insights into the health and behavior of your workload. Platform data provides information about resource use, which is key for capacity planning. Platform data also provides insights into the health of a workload and can help you detect issues and troubleshoot. Consider the following recommendations:
+By collecting resource performance data, you can gain insights into the health and behavior of your workload. Resource performance data provides information about resource use, which is key for capacity planning. This data also provides insights into the health of a workload and can help you detect issues and troubleshoot. Consider the following recommendations:
 
-- *Collect metrics and logs for every resource.* Most platform resources have a unique set of metrics that aligns to its functionality. These metrics help you understand the resource's health and performance. Configure each platform resource to send metrics to data sink that your workload team can access as they build alerts and dashboards.
+- *Collect metrics and logs for every resource.* Each Azure service has a set of metrics that's unique to the functionality of the resource. These metrics help you understand the resource's health and performance. Add a [diagnostic setting](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) for each resource to send metrics to a location that your workload team can access as they build alerts and dashboards. Metric data is available for short-term access. For long-term access or for access from a system that's outside of Azure Monitor, send the metric data to your unified sink to the access location.
 
 - *Use platform tooling.* Gather inspiration from built-in and integrated monitoring solutions, such as Azure Monitor Insights. This tooling streamlines performance operations. Consider platform tooling as you select a platform and invest in custom tooling or reporting.
 
@@ -160,7 +160,7 @@ Your performance data should align with the performance targets. The data needs 
 
 ## Azure facilitation
 
-**Collecting and analyzing performance data:** Azure Monitor is a cloud monitoring service that provides visibility into the health and performance of your applications. Use it to collect and analyze metrics, logs, and other telemetry data. You can configure Azure Monitor to collect performance data for your workload. Add a [diagnostic setting](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) for each resource to send metrics to a location that your workload team can access as they build alerts and dashboards. Metric data is available for short-term access. For long-term access or for access from a system that's outside of Azure Monitor, send the metric data to your unified sink to the access location.
+**Collecting and analyzing performance data:** Azure Monitor is a cloud monitoring service that provides visibility into the health and performance of your applications. Use it to collect and analyze metrics, logs, and other telemetry data. You can configure Azure Monitor to collect performance data for your workload.
 
 Within Azure Monitor, you can use Azure Monitor Logs to collect, analyze, and visualize log data from your applications and systems. You can configure Azure Monitor Logs to ingest logs from your application, including application-level logs and infrastructure logs. By aggregating logs, you can cross-query events and gain insights into the performance of your application. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) and [Pricing for Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
