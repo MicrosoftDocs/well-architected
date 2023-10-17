@@ -54,7 +54,7 @@ _DevSecOps_ expands the DevOps model by integrating security monitoring, applica
 
   You can also use the common engineering criteria and associated artifacts, like Azure policies and Terraform resources for common design patterns, across other workloads within your organization's broader application ecosystem.
 
-- Apply a zero-trust model in critical application environments. Use technologies like Azure AD Privileged Identity Management to ensure that operations are consistent and occur only through CI/CD processes or automated operational procedures. 
+- Apply a zero-trust model in critical application environments. Use technologies like Microsoft Entra Privileged Identity Management to ensure that operations are consistent and occur only through CI/CD processes or automated operational procedures.
 
   Team members shouldn't have standing write access to any environment. You might want to make exceptions in development environments to enable easier testing and debugging.
 
@@ -128,7 +128,7 @@ Mission-critical design strongly endorses the principle of ephemeral stateless a
 
 Key, secret, and certificate expirations are a common cause of application outage. Secret management for a mission-critical application must provide the needed security and offer an appropriate level of availability to align with your maximum-reliability requirements. You need to perform key, secret, and certificate rotation on a regular basis by using a managed service or as part of update management, and apply processes for code and configuration changes.
 
-Many Azure services support Azure Active Directory (Azure AD) authentication instead of relying on connection strings / keys. Using Azure AD greatly reduces operational overhead. If you do use a secret management solution, it should integrate with other services, support zonal and regional redundancy, and provide integration with Azure AD for authentication and authorization. Key Vault provides these features. 
+Many Azure services support Microsoft Entra authentication instead of relying on connection strings / keys. Using Microsoft Entra ID greatly reduces operational overhead. If you do use a secret management solution, it should integrate with other services, support zonal and regional redundancy, and provide integration with Microsoft Entra ID for authentication and authorization. Key Vault provides these features.
 
 ### Design considerations
 
@@ -154,7 +154,7 @@ There are three common approaches to secret management. Each approach reads secr
 
 ### Design recommendations
 
-- When possible, use Azure AD authentication to connect to services instead of using connection strings or keys. Use this authentication method together with Azure managed identities so you don't need to store secrets on the application platform.
+- When possible, use Microsoft Entra authentication to connect to services instead of using connection strings or keys. Use this authentication method together with Azure managed identities so you don't need to store secrets on the application platform.
 
 - Take advantage of the expiry setting in Key Vault, and [configure alerting](/azure/key-vault/general/event-grid-tutorial) for upcoming expirations. Perform all key, secret, and certificate updates by using the standard release process.
 

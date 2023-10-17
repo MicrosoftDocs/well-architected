@@ -16,21 +16,23 @@ Azure provides all the tools needed to secure your SAP workload. SAP application
 
 Identity management is a framework to enforce the policies that control access to critical resources. Identity management controls access your SAP workload within or outside its virtual network. There are three identity management use cases to consider for your SAP workload, and the identity management solution differs for each.
 
-### Use Azure Active Directory
+<a name='use-azure-active-directory'></a>
 
-Organizations can improve the security of Windows and Linux virtual machines in Azure by integrating with Azure Active Directory (Azure AD). Azure AD is a fully managed identity and access management service. Azure AD can authenticate and authorize end user’s access to the SAP operating system. You can use Azure AD to create domains that exist on Azure, or use it integrate with your on-premises Active Directory identities. Azure AD also integrates with Microsoft 365, Dynamics CRM Online, and many Software-as-a-Service (SaaS) applications from partners. We recommend using System for Cross-Domain Identity Management (SCIM) for identity propagation. This pattern enables optimal user life cycle.
+### Use Microsoft Entra ID
+
+Organizations can improve the security of Windows and Linux virtual machines in Azure by integrating with Microsoft Entra ID, a fully managed identity and access management service. Microsoft Entra ID can authenticate and authorize end user’s access to the SAP operating system. You can use Microsoft Entra ID to create domains that exist on Azure, or use it integrate with your on-premises Active Directory identities. Microsoft Entra ID also integrates with Microsoft 365, Dynamics CRM Online, and many Software-as-a-Service (SaaS) applications from partners. We recommend using System for Cross-Domain Identity Management (SCIM) for identity propagation. This pattern enables optimal user life cycle.
 
 For more information, see:
 
-- [SCIM synchronization with Azure Active Directory](/azure/active-directory/fundamentals/sync-scim)
+- [SCIM synchronization with Microsoft Entra ID](/azure/active-directory/fundamentals/sync-scim)
 - [Configure SAP Cloud Platform Identity Authentication for automatic user provisioning](/azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial)
-- [Azure Active Directory Single sign-on (SSO) integration with SAP NetWeaver](/azure/active-directory/saas-apps/sap-netweaver-tutorial)
-- [Sign in to a Linux virtual machine in Azure by using Azure AD and OpenSSH]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
-- [Sign in to a Windows virtual machine in Azure by using Azure AD]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows)
+- [Microsoft Entra single sign-on (SSO) integration with SAP NetWeaver](/azure/active-directory/saas-apps/sap-netweaver-tutorial)
+- [Sign in to a Linux virtual machine in Azure by using Microsoft Entra ID and OpenSSH]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-linux)
+- [Sign in to a Windows virtual machine in Azure by using Microsoft Entra ID]( /azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows)
 
 ### Configure single sign-on
 
-You can access the SAP application with the SAP frontend software (SAP GUI) or a browser with HTTP/S. We recommend configuring single sign-on (SSO) using Azure Active Directory or Active Directory Federation Services (AD FS). SSO allows end users to connect to SAP applications via browser where possible.
+You can access the SAP application with the SAP frontend software (SAP GUI) or a browser with HTTP/S. We recommend configuring single sign-on (SSO) using Microsoft Entra ID or Active Directory Federation Services (AD FS). SSO allows end users to connect to SAP applications via browser where possible.
 
 For more information, see:
 
@@ -39,35 +41,35 @@ For more information, see:
 - [SAP Fiori SSO](/azure/active-directory/saas-apps/sap-fiori-tutorial)
 - [SAP Cloud Platform SSO](/azure/active-directory/saas-apps/sap-hana-cloud-platform-tutorial)
 - [SuccessFactors SSO](/azure/active-directory/saas-apps/successfactors-tutorial)
-- [Azure Active Directory overview](/azure/active-directory/)
+- [Microsoft Entra overview](/azure/active-directory/)
 
 ### Use application-specific guidance
 
-We recommend consulting the SAP Identity Authentication Service for SAP Analytics Cloud, SuccessFactors, and SAP Business Technology Platform. You can also integrate services from the SAP Business Technology Platform with Microsoft Graph using Azure AD and the SAP Identity Authentication Service.
+We recommend consulting the SAP Identity Authentication Service for SAP Analytics Cloud, SuccessFactors, and SAP Business Technology Platform. You can also integrate services from the SAP Business Technology Platform with Microsoft Graph using Microsoft Entra ID and the SAP Identity Authentication Service.
 
 For more information, see:
 
-- [Using Azure Active Directory to secure access to SAP platforms and applications](/azure/active-directory/fundamentals/scenario-azure-first-sap-identity-integration).
+- [Using Microsoft Entra ID to secure access to SAP platforms and applications](/azure/active-directory/fundamentals/scenario-azure-first-sap-identity-integration).
 - [SAP Identity Authentication Service](https://help.sap.com/docs/IDENTITY_AUTHENTICATION)
 - [SAP Identity Provisioning Service](https://help.sap.com/docs/IDENTITY_PROVISIONING)
 
-A common customer scenario is deploying SAP application into Microsoft Teams. This solution requires SSO with Azure AD. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams. For more information, see [the Microsoft commercial marketplace](https://appsource.microsoft.com/marketplace/apps?page=1&search=sap).
+A common customer scenario is deploying SAP application into Microsoft Teams. This solution requires SSO with Microsoft Entra ID. We recommend browsing the Microsoft commercial marketplace to see which SAP apps are available in Microsoft Teams. For more information, see [the Microsoft commercial marketplace](https://appsource.microsoft.com/marketplace/apps?page=1&search=sap).
 
 *Table 1 - Summary of the recommended SSO methods*
 
 | SAP solution | SSO method |
 | --- | --- |
 |SAP NetWeaver based-web applications such as Fiori, WebGui|Security Assertion Markup Language (SAML)|
-|SAP GUI|Kerberos with windows active directory or AAD-Domain services or third party solution|
-|SAP PaaS and SaaS applications such as SAP Business Technology Platform (BTP), Analytics Cloud, [Cloud Identity Services](https://help.sap.com/docs/IDENTITY_AUTHENTICATION), [SuccessFactors]( /azure/active-directory/app-provisioning/sap-successfactors-integration-reference), [Cloud for Customer]( /azure/active-directory/saas-apps/sap-customer-cloud-tutorial), [Ariba](/azure/active-directory/saas-apps/ariba-tutorial)|SAML / OAuth / JSON Web Tokens (JWT) and pre-configured authentication flows with Azure AD directly or by proxy with the SAP Identity Authentication Service|
+|SAP GUI|Kerberos with windows active directory or Microsoft Entra Domain Services or third party solution|
+|SAP PaaS and SaaS applications such as SAP Business Technology Platform (BTP), Analytics Cloud, [Cloud Identity Services](https://help.sap.com/docs/IDENTITY_AUTHENTICATION), [SuccessFactors]( /azure/active-directory/app-provisioning/sap-successfactors-integration-reference), [Cloud for Customer]( /azure/active-directory/saas-apps/sap-customer-cloud-tutorial), [Ariba](/azure/active-directory/saas-apps/ariba-tutorial)|SAML / OAuth / JSON Web Tokens (JWT) and pre-configured authentication flows with Microsoft Entra ID directly or by proxy with the SAP Identity Authentication Service|
 
 ## Use role-based access control (RBAC)
 
-It’s important to control access to the SAP workload resources you deploy. Every Azure subscription has a trust relationship with an Azure AD tenant. We recommend you use Azure role-based access control (Azure RBAC) to grant users within your organization access the SAP application. Grant access by assigning Azure roles to users or groups at a certain scope. The scope can be a subscription, a resource group, or a single resource. The scope depends on the user and how you’ve grouped your SAP workload resources.
+It’s important to control access to the SAP workload resources you deploy. Every Azure subscription has a trust relationship with a Microsoft Entra tenant. We recommend you use Azure role-based access control (Azure RBAC) to grant users within your organization access the SAP application. Grant access by assigning Azure roles to users or groups at a certain scope. The scope can be a subscription, a resource group, or a single resource. The scope depends on the user and how you’ve grouped your SAP workload resources.
 
 For more information, see:
 
-- [Azure AD trust relationship](/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory)
+- [Microsoft Entra ID trust relationship](/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory)
 - [Azure RBAC](/azure/role-based-access-control/overview)
 
 ## Enforce network and application security
@@ -96,7 +98,7 @@ Encrypting data at rest is a common security requirement. Azure Storage service-
 
 We recommend you review and understand service/server-side encryption (SSE) with customer-managed keys (CMKs). The combination of server-side encryption and a customer-managed key allows you to encrypt data at rest in the operating system (OS) and data disks for available SAP OS combinations.  Azure Disk Encryption doesn’t support all SAP operating systems. The customer-managed key should be stored in Key Vault to help ensure the integrity of the operating system. We also recommend encrypting your SAP databases. Azure Key Vault supports database encryption for SQL Server from the database management system (DBMS) and other storage needs. The following image shows the encryption process.
 
-![Diagram that shows the workflow for service-side encryption with a customer managed key using Azure Active Directory and Azure Key Vault](../images/sse-cmk.png)
+![Diagram that shows the workflow for service-side encryption with a customer managed key using Microsoft Entra ID and Azure Key Vault](../images/sse-cmk.png)
 
 When you use client-side encryption, you encrypt the data and upload the data as an encrypted blob. Key management is done by the customer. For more information, see:
 
