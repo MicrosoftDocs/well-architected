@@ -811,6 +811,11 @@
 			"redirect_document_id": true
 		},
 		{
+			"source_path": "well-architected/services/data/cosmos-db.md",
+			"redirect_url": "/azure/well-architected/service-guides/cosmos-db",
+			"redirect_document_id": true
+		},
+		{
 			"source_path": "well-architected/services/data/cosmos-db/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/cosmos-db/reliability",
 			"redirect_document_id": true
@@ -1253,6 +1258,11 @@
 		{
 			"source_path": "well-architected/security/security-tradeoffs.md",
 			"redirect_url": "/azure/well-architected/security/tradeoffs",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/implementing-recommendations.md",
+			"redirect_url": "/azure/well-architected/cost-cutting-guides/implementing-recommendations",
 			"redirect_document_id": true
 		},
 		{

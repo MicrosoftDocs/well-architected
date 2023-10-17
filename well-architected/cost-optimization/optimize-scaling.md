@@ -34,7 +34,7 @@ This guide provides recommendations for optimizing scaling. Cost optimizing scal
 
 The goal of cost optimizing scaling is to scale up and out at the last responsible moment and to scale down and in as soon as it’s practical. To optimize scaling for your workload, you can evaluate alternative scaling options within the scale units and align them with the cost model. A scale unit represents a specific grouping of resources that can be scaled independently or together. You should design scale units to handle a specific amount of load, and they can comprise multiple instances, servers, or other resources. You need to evaluate the cost effectiveness of your workload scale units and model alternates.
 
-If you haven’t implemented scaling, see guidance on [scaling the workload](../performance-efficiency/scale-partition.md#scale-the-workload). You need to figure out if your application can scale. Stateless applications are easier to scale because they can handle multiple requests at the same time. Also, evaluate if the application is built using distributed systems principles. Distributed systems can handle increased load by distributing the workload across multiple nodes. However, a singleton application is designed to have only one instance running at any given time. So scaling might not be appropriate for all workloads.
+If you haven’t implemented scaling, see guidance on [scaling the workload](../performance-efficiency/scale-partition.md). You need to figure out if your application can scale. Stateless applications are easier to scale because they can handle multiple requests at the same time. Also, evaluate if the application is built using distributed systems principles. Distributed systems can handle increased load by distributing the workload across multiple nodes. However, a singleton application is designed to have only one instance running at any given time. So scaling might not be appropriate for all workloads.
 
 ### Evaluate scale out versus scale up
 
@@ -162,7 +162,7 @@ Azure maintains a list of [subscription and service limits.](/azure/azure-resour
 
 ## Related links
 
-- [Scale the workload](../performance-efficiency/scale-partition.md#scale-the-workload)
+- [Scale the workload](../performance-efficiency/scale-partition.md)
 - [Azure Advisor Cost recommendations](/azure/advisor/advisor-reference-cost-recommendations)
 - [What is Azure Load Testing?](/azure/load-testing/overview-what-is-azure-load-testing)
 - [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits)

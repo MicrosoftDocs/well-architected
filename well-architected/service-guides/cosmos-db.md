@@ -11,13 +11,13 @@ products:
 
 # Azure Well-Architected Framework review – Azure Cosmos DB for NoSQL
 
-This article describes the best practices for Azure Cosmos DB for NoSQL. These best practices ensure that you can deploy solutions on Azure Cosmos DB that are efficient, reliable, secure, optimized for cost, and operationally excellent. This guidance focuses on the five pillars of architecture excellence in the [Well-Architected Framework](../../index.md):
+This article describes the best practices for Azure Cosmos DB for NoSQL. These best practices ensure that you can deploy solutions on Azure Cosmos DB that are efficient, reliable, secure, optimized for cost, and operationally excellent. This guidance focuses on the five pillars of architecture excellence in the [Well-Architected Framework](../index.yml):
 
-- [Reliability](../../resiliency/index.yml)
-- [Security](../../security/index.yml)
-- [Cost optimization](../../cost/index.yml)
-- [Operational excellence](../../devops/index.yml)
-- [Performance efficiency](../../scalability/index.yml)
+- [Reliability](../reliability/index.yml)
+- [Security](../security/index.yml)
+- [Cost Optimization](../cost-optimization/index.yml)
+- [Operational Excellence](../operational-excellence/index.yml)
+- [Performance Efficiency](../performance-efficiency/index.yml)
 
 This review guide assumes that you have a working knowledge of Azure Cosmos DB and are well versed with its features. For more information, see [Azure Cosmos DB for NoSQL](/azure/cosmos-db/nosql/).
 

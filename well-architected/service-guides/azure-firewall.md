@@ -160,7 +160,7 @@ Explore the following table of recommendations to optimize your Azure Firewall c
 | Delete unused public IP addresses. | Validate whether all the associated public IP addresses are in use. If they aren't in use, disassociate and delete them. Evaluate SNAT port utilization before removing any IP addresses.<br><br>You'll only use the number of public IPs your firewall needs. For more information, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port utilization](/azure/firewall/logs-and-metrics#metrics).|
 | Review logging requirements. | Azure Firewall has the ability to comprehensively log metadata of all traffic it sees, to Log Analytics Workspaces, Storage or third party solutions through Event Hub. However, all logging solutions incur costs for data processing and storage. At very large volumes these costs can be significant, a cost effective approach and alternative to Log Analytics described [here](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/scale-your-azure-firewall-monitoring-with-azure-data-explorer/ba-p/3611826) should be considered and cost estimated . Consider whether it is required to log traffic metadata for all logging categories and modify in Diagnostic Settings if needed. |
 
-For more suggestions, see [Principles of the Cost optimization pillar](../cost-optimization/overview.md).
+For more suggestions, see [Design review checklist for Cost Optimization](../cost-optimization/checklist.md). 
 
 Azure Advisor helps you ensure and improve the continuity of your business-critical applications. Review the [Azure Advisor recommendations](#azure-advisor-recommendations).
 

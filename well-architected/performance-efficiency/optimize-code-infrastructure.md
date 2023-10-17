@@ -27,7 +27,7 @@ This guide describes the recommendations for optimizing code and infrastructure 
 | Memory leak | When a workload fails to release allocated memory after the memory is no longer needed.|
 | Parallelism | When multiple tasks or processes are performed at the same time. |
 
-## Key strategies
+## Key design strategies
 
 Performance and efficiency are key factors to consider when you optimize your code and infrastructure. You need code that's functional and optimized. To minimize resource usage and avoid unnecessary computations, use appropriate data structures and algorithms. You should also offload responsibilities to the platform. Take advantage of the features and services that the underlying platform provides.
 
