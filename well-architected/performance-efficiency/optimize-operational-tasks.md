@@ -46,7 +46,7 @@ Optimizing deployments refers to refining the process of releasing resources and
 
 **Assess acceptable downtime.** If downtime is acceptable, you can implement deployment strategies that prioritize speed and efficiency. However, it's important to carefully assess the effect of downtime on business requirements before you make that decision. On the other hand, if downtime isn't acceptable, you need to implement deployment strategies that ensure continuous availability of the workload. Consider using techniques like blue-green deployments or canary deployments, where you gradually roll out new versions of the workload while you monitor for issues. These strategies help minimize the effect of downtime and ensure a seamless user experience.
 
-**Deploy at current instance count.** You should also avoid deployments that cause immediate scale operations. You shouldn't deploy resources into a live system with an instance count so low that it forces the system to immediately perform a scale operation. For example, your [infrastructure-as-code](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code) (IaC) template might not match the number of instances that you need at the time of deployment. It might have an instance count of two, even though the current deployed environment is running eight instances. The deployment would remove six instances and negatively affect performance.
+**Deploy at current instance count.** You should also avoid deployments that cause immediate scale operations. You shouldn't deploy resources into a live system with an instance count so low that it forces the system to immediately perform a scale operation. For example, your infrastructure-as-code (IaC) template might not match the number of instances that you need at the time of deployment. It might have an instance count of two, even though the current deployed environment is running eight instances. The deployment would remove six instances and negatively affect performance.
 
 **Use a blue-green deployment strategy.** Deployments can cause service interruptions and downtime. To mitigate these issues, select a deployment strategy that minimizes performance impact, like a blue-green deployment. These approaches allow for seamless transitions between environments and reduce the risk of service disruptions. When you use the blue-green deployment approach, you have two separate environments: the blue and green environments. If any issues or performance degradation is detected in the green environment, you can easily roll back to the stable blue environment. This strategy helps you ensure minimal downtime and allows you to maintain a high level of performance for your workload. To deploy by using the blue-green approach, follow these general steps:
 
@@ -106,7 +106,6 @@ Azure Front Door and Azure Traffic Manager enable you to implement a [blue-green
 
 ## Related links
 
-- [Infrastructure as code](/azure/cloud-adoption-framework/ready/considerations/infrastructure-as-code)
 - [Deployment slots](/azure/app-service/deploy-staging-slots)
 - [Blue-green deployment strategy](/azure/architecture/guide/aks/blue-green-deployment-for-aks)
 - [Azure SQL Database](/azure/azure-sql/database/automated-backups-overview)
@@ -114,7 +113,7 @@ Azure Front Door and Azure Traffic Manager enable you to implement a [blue-green
 
 ## Performance Efficiency checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Performance Efficiency checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Performance Efficiency checklist](checklist.md)

@@ -60,9 +60,13 @@ Process standardization takes many shapes. Describing every way that you might a
 
 Although there are no Azure products that directly facilitate the formalization of processes and procedures, Microsoft publishes lots of guidance on this topic. Use this guidance to understand industry-proven and recommended practices and to consider how to apply them to your workload.
 
-To explore the guidance on many areas of standardizing processes and procedures, see the Cloud Adoption Framework [Azure landing zone design areas](/azure/cloud-adoption-framework/ready/landing-zone/design-areas) and [DevOps considerations](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices) documentation.
-
 The Well-Architected Framework also provides detailed guidance on the processes and procedures that should be codified to ensure that your workload and workload team run according to industry standards.
+
+## Organizational alignment
+
+Cloud Adoption Framework provides guidance for central teams on many areas of standardizing processes and procedures across an organization.
+
+For more information, see the [Azure landing zone design areas](/azure/cloud-adoption-framework/ready/landing-zone/design-areas) and [DevOps considerations](/azure/cloud-adoption-framework/ready/considerations/devops-principles-and-practices).
 
 ## Tradeoffs
 
