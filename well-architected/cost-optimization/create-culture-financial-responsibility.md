@@ -28,7 +28,7 @@ Establishing success metrics that are aligned with the workload is also importan
 
 ## Key design strategies
 
-Creating a culture of financial responsibility means cultivating an environment where individuals and teams prioritize wise financial decision-making and are held accountable for their financial actions. It involves cost transparency, skill development, and clear communication. Creating a culture of financial responsibility helps organizations manage their cloud costs more effectively. It aligns cloud spending with business goals and drives greater business value from cloud infrastructure. It helps ensure that the workload team prioritizes cost and makes decisions that increase the business value of the workload.
+Creating a culture of financial responsibility means cultivating an environment where individuals and teams prioritize wise financial decision-making and are held accountable for their financial actions. It involves cost transparency, skill development, and clear communication. Creating a culture of financial responsibility helps organizations manage their cloud costs more effectively. It helps ensure that the workload team prioritizes cost and makes decisions that increase the business value of the workload.
 
 ### Make budgets and costs transparent
 
@@ -73,9 +73,7 @@ This effort involves providing training programs, resources, and support to enha
 
 ### Communicate financial expectations
 
-Communicating financial expectations to a workload team involves conveying financial goals and establishing open channels for exchanging cost-saving ideas and knowledge. This process includes reshaping organizational values to emphasize financial responsibility, clear goals, and cross-functional communication.
-
-Consider these recommendations:
+Communicating financial expectations to a workload team involves conveying financial goals and establishing open channels for exchanging cost-saving ideas and knowledge. This process includes reshaping organizational values to emphasize financial responsibility, clear goals, and cross-functional communication. Consider these recommendations:
 
 - *Reshape values*: Review and update values and mission statements to include financial responsibility. Ensure that these values are communicated and reinforced throughout the organization, and that they're aligned with the overall business objectives.
 
