@@ -57,21 +57,19 @@ Encouraging a culture of continuous improvement is about fostering an environmen
 
 Developing skills in-house means investing in training the workload team. The goal is for the team to gain the necessary expertise to optimize costs within a workload.
 
-This effort involves providing training programs, resources, and support to enhance the skills and capabilities of employees in the organization. It allows you to use the existing talent pool and empower employees to take ownership of cost optimization initiatives.
+This effort involves providing training programs, resources, and support to enhance the skills and capabilities of employees in the organization. It allows you to use the existing talent pool and empower employees to take ownership of cost optimization initiatives. Consider following these strategies:
 
-Consider following these steps:
-
-1. *Assess skills*: Evaluate the existing skills and knowledge of the workload team to identify areas that need improvement in terms of workload cost optimization.
-1. *Define training objectives*: Determine the specific skills and expertise that are required to optimize costs within the workload. Include topics such as cloud cost management, resource optimization techniques, budgeting, and data analysis.
-1. *Provide training and resources*: Offer training programs, workshops, and resources to enhance skills in the identified areas. Include both internal training sessions and external training programs provided by vendors or industry experts.
+- *Assess skills*: Evaluate the existing skills and knowledge of the workload team to identify areas that need improvement in terms of workload cost optimization.
+- *Define training objectives*: Determine the specific skills and expertise that are required to optimize costs within the workload. Include topics such as cloud cost management, resource optimization techniques, budgeting, and data analysis.
+- *Provide training and resources*: Offer training programs, workshops, and resources to enhance skills in the identified areas. Include both internal training sessions and external training programs provided by vendors or industry experts.
 
    Gather or create learning resources such as documentation, tutorials, videos, and case studies to support the training. These resources should provide step-by-step guidance on optimizing costs in the workload.
-1. *Give hands-on experience*: Provide opportunities for employees to apply their newly acquired skills in real-world scenarios. Assign them to cost optimization projects, or give them responsibilities that allow them to refine their skills.
+- *Give hands-on experience*: Provide opportunities for employees to apply their newly acquired skills in real-world scenarios. Assign them to cost optimization projects, or give them responsibilities that allow them to refine their skills.
 
    Create a workspace or sandbox where employees can explore, practice, and learn new concepts related to cost optimization. Allocate a budget for experimentation to encourage employees to think about the financial impact of their actions.
 
    Set aside time (a day or a week) for people to explore new technologies, build new tools, and express their creative thinking. Employees are closest to the challenges they face daily. They often find ways to optimize their time when they're given space to think about it.
-1. *Encourage continuous learning*: Encourage employees to attend conferences, webinars, and industry events, and to participate in online communities and forums. Arrange opportunities for employees to shadow and learn from experienced individuals who have a deep understanding of cost optimization practices. This practical experience can provide valuable insights and guidance.
+- *Encourage continuous learning*: Encourage employees to attend conferences, webinars, and industry events, and to participate in online communities and forums. Arrange opportunities for employees to shadow and learn from experienced individuals who have a deep understanding of cost optimization practices. This practical experience can provide valuable insights and guidance.
 
 ### Communicate financial expectations
 
