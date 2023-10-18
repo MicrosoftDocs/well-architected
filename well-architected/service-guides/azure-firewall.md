@@ -14,7 +14,7 @@ products: azure-firewall
 
 This article provides architectural recommendations for Azure Firewall. The guidance is based on the five pillars of architecture excellence:
 
-- Reliability
+- Reliability 
 - Security
 - Cost optimization
 - Operational excellence
