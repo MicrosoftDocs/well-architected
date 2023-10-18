@@ -31,7 +31,7 @@ Understanding the workload is the first step to finding and using the best rates
 
 - *Take inventory*: List all the components of your workload, including infrastructure, cloud resources, licenses, third-party services, and any other expenses related to the workload.
 - *Understand spending*: Gain a clear understanding of the current spend for each item in the inventory list. It helps you identify what you are paying for and where most your expenses lie.
-- *Create an ordered list*: Create an ordered list of workload expenses, starting from the most expensive components and working down the list. It allows you to prioritize your optimization efforts and focus on the areas that have the highest impact on cost.
+- *Create an ordered list*: Create an ordered list of workload expenses, starting from the most expensive components and working down the list. It allows you to prioritize your optimization efforts and focus on the areas that have the highest effect on cost.
 
 By following these steps, you gain a comprehensive understanding of your workload's cost structure and identify areas where you can optimize rates.
 
@@ -63,7 +63,7 @@ To ensure effective workload cost optimization, it's crucial for the development
 
 - *Identify cost optimization opportunities*: Together, the teams should identify potential areas for cost optimization, such as infrastructure, cloud resources, licenses, and third-party services. Consider factors like utilization patterns, scalability, and workload requirements.
 - *Assess resource requirements*: Determine the resources needed to support the component or workload. Consider factors such as infrastructure, maintenance, and ongoing support. Understanding these requirements can help you gauge the long-term commitment involved.
-- *Evaluate different options*: Assess different cost optimization options, such as pay-as-you-go versus prepaid plans. Evaluate the pros and cons of each option in terms of cost savings and impact on performance. Evaluate the different performance tiers in each service and the pricing differences between them.
+- *Evaluate different options*: Assess different cost optimization options, such as pay-as-you-go versus prepaid plans. Evaluate the pros and cons of each option in terms of cost savings and effect on performance. Evaluate the different performance tiers in each service and the pricing differences between them.
 
 #### Determine component permanence
 
