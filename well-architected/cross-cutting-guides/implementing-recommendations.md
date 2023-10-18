@@ -1,5 +1,5 @@
 ---
-title: Implementing recommendations
+title: Use the Microsoft Azure Well-Architected Review assessment
 description: A guide for implementing recommendations for Well-Architected Review and Advisor recommendations for continuous workload improvement.
 author: ckittel
 ms.author: martinek
