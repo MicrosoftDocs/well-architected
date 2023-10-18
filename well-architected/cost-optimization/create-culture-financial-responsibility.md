@@ -28,13 +28,11 @@ Establishing success metrics that are aligned with the workload is also importan
 
 ## Key design strategies
 
-Creating a culture of financial responsibility helps organizations manage their cloud costs more effectively. It aligns cloud spending with business goals and drives greater business value from cloud infrastructure. It helps ensure that the workload team prioritizes cost and makes decisions that increase the business value of the workload. It involves cost transparency, skill development, and clear communication.
+Creating a culture of financial responsibility means cultivating an environment where individuals and teams prioritize wise financial decision-making and are held accountable for their financial actions. It involves cost transparency, skill development, and clear communication. Creating a culture of financial responsibility helps organizations manage their cloud costs more effectively. It aligns cloud spending with business goals and drives greater business value from cloud infrastructure. It helps ensure that the workload team prioritizes cost and makes decisions that increase the business value of the workload.
 
 ### Make budgets and costs transparent
 
-Making budgets and costs transparent means openly communicating financial information about a workload or project with stakeholders.
-
-When you're making costs transparent:
+Making budgets and costs transparent means openly communicating financial information about a workload or project with stakeholders. When you're making costs transparent, consider these strategies:
 
 - *Involve everyone*: Ensure that everyone involved in the project or workload has access to budget information. Include team members, managers, and decision-makers. Sharing the budget information makes everyone feel accountable for their actions and decisions by fostering a sense of ownership.
 - *Share budget details*: Consider sharing the allocated budget, cost breakdowns, and financial goals for the workload or project with stakeholders.
@@ -44,9 +42,7 @@ A benefit of sharing cost details is early detection of overspending. Transparen
 
 ### Encourage continuous improvement
 
-Encouraging a culture of continuous improvement is about fostering an environment where the workload team is empowered to explore and propose cost-saving measures. It requires open dialog, training, and team-building focused on cost optimization. With this mindset, the workload team is more likely to be proactive in identifying and implementing cost optimization strategies.
-
-Consider these suggestions:
+Encouraging a culture of continuous improvement is about fostering an environment where the workload team is empowered to explore and propose cost-saving measures. It requires open dialog, training, and team-building focused on cost optimization. With this mindset, the workload team is more likely to be proactive in identifying and implementing cost optimization strategies. To encourage continuous improvement, consider these suggestions:
 
 - *Cost workshops*: Conduct workshops or training sessions to help leaders enhance their understanding of financial responsibility and its importance. These workshops can cover topics such as budgeting, cost management, and financial decision-making.
 

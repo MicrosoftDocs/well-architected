@@ -32,12 +32,12 @@ This guide describes the recommendations for scaling and partitioning a workload
 | Partitioning | The process of physically dividing data into separate data stores.|
 | Scalability | The ability of a workload to dynamically change its capacity limits to accommodate varying levels of demand.|
 | Scale unit| A group of resources that must scale proportionately together to maintain balanced performance. |
-| State affinity | The storage of client session data on a single server so that subsequent requests from the same client are handled by the same server. |
+| State affinity | The storage of client session data on a single server so that the same server handles subsequent requests from the same client. |
 | Vertical scaling| A scaling approach that adds compute capacity to existing resources.|
 
 ## Key design strategies
 
-Both scaling and partitioning contribute to performance efficiency by ensuring that resources are used effectively and the system can handle varying workloads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands. Scaling ensures you can expand workload capacity to meet increasing demands. Partitioning allows you to divide tasks or data efficiently to handle these growing needs. The foundation of both these processes is the scale unit design of the workload. It dictates how your workload should grow and distribute tasks. By incorporating a reliable and controlled approach to scaling and partitioning, you can sidestep potential system inefficiencies.
+Both scaling and partitioning contribute to performance efficiency by ensuring that resources are used effectively and the workload can handle varying loads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands. Scaling ensures you can expand workload capacity to meet increasing demands. Partitioning allows you to divide tasks or data efficiently to handle these growing needs. The foundation of both these processes is the scale unit design of the workload. It dictates how your workload should grow and distribute tasks. By incorporating a reliable and controlled approach to scaling and partitioning, you can sidestep potential workload inefficiencies.
 
 ### Optimize scaling
 
@@ -85,7 +85,7 @@ Decoupled components are easier to maintain and update. Changes or updates to on
 
 #### Design application to scale
 
-As you scale a workload, you should design the application to distribute the load. Just because you can add more replicas at the infrastructure level doesn't mean your application can use the replicas. Designing an application to scale refers is about structuring an application so it can handle increased demands by distributing its workload across resources. Avoid solutions that require client affinity, data locking, or state affinity for a single instance if possible. You want to route a client or process to a resource that has available capacity. To design for application scalability, consider the following strategies:
+As you scale a workload, you should design the application to distribute the load. Just because you can add more replicas at the infrastructure level doesn't mean your application can use the replicas. Designing an application to scale is about structuring an application so it can handle increased demands by distributing its workload across resources. Avoid solutions that require client affinity, data locking, or state affinity for a single instance if possible. You want to route a client or process to a resource that has available capacity. To design for application scalability, consider the following strategies:
 
 *Eliminate server-side session state.* You should design applications to be stateless where possible. For stateful applications, you should use a state store that's external to your server. Externalizing session state is the practice of storing session data outside of the application server or container. You can externalize session state to distribute session data across multiple servers or services, enabling seamless session management in a distributed environment. Consider the following when externalizing session state:
 
@@ -99,7 +99,7 @@ As you scale a workload, you should design the application to distribute the loa
 
 *Eliminate client affinity.* Client affinity is also known as session affinity or sticky sessions. When you eliminate client affinity, you distribute client requests evenly across multiple replicas or servers, without routing all requests from a client to the same replica. This configuration can improve the scalability and performance of applications by allowing any available replica to process the requests.
 
-*Review your load balancing algorithm.* A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. This can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
+*Review your load balancing algorithm.* A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. Pinning can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
 
 *Eliminate data locking.* Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
 
@@ -117,7 +117,7 @@ As you scale a workload, you should design the application to distribute the loa
 
 #### Configure scaling
 
-Configuring scaling is the process of setting up and adjusting system parameters to dynamically allocate resources based on workload demands. It encompasses strategies such as using autoscaling features, understanding service scaling boundaries, and implementing meaningful load metrics. Proper configuration ensures that an application can respond to varying demands while maximizing efficiency. When you configure scaling, consider the following strategies:
+Configuring scaling is the process of setting up and adjusting parameters to dynamically allocate resources based on workload demands. It encompasses strategies such as using autoscaling features, understanding service scaling boundaries, and implementing meaningful load metrics. Proper configuration ensures that an application can respond to varying demands while maximizing efficiency. When you configure scaling, consider the following strategies:
 
 *Use services with autoscaling.* The autoscale feature automatically scales infrastructure to meet demand. Use platform as a service (PaaS) offerings with built-in autoscale features. The ease of scaling on PaaS is a major advantage. For example, scaling out virtual machines requires a separate load balancer, client-request handling, and externally stored state. PaaS offerings handle most of these tasks.
 
@@ -129,9 +129,9 @@ Configuring scaling is the process of setting up and adjusting system parameters
   
 - *Scaling increments*: Services scale at defined increments. For example, compute services might scale by instances and pods while databases might scale by instances, transaction units, and virtual cores. It's important to understand these increments to optimize resource allocation and prevent resource flapping.
   
-- *Scaling restrictions*: Some services allow you to scale up or out but limit your ability to automatically reverse scaling. You're forced to scale in manually, or you might have to redeploy a new resource. These limitations are often to protect the workload. Scaling down or scaling in can have implications on the availability and performance of the workload. A service might enforce certain limitations or constraints to help ensure that the workload has sufficient resources to operate effectively. This can affect data consistency and synchronization, especially in distributed systems. The service might have mechanisms in place to handle data replication and consistency during scaling up or out but might not provide the same level of support for scaling down or in.
+- *Scaling restrictions*: Some services allow you to scale up or out but limit your ability to automatically reverse scaling. You're forced to scale in manually, or you might have to redeploy a new resource. These limitations are often to protect the workload. Scaling down or scaling in can have implications on the availability and performance of the workload. A service might enforce certain limitations or constraints to help ensure that the workload has sufficient resources to operate effectively. These limitations can affect data consistency and synchronization, especially in distributed systems. The service might have mechanisms in place to handle data replication and consistency during scaling up or out but might not provide the same level of support for scaling down or in.
 
-*Use meaningful load metrics.* Scaling should use meaningful load metrics as scaling triggers. Meaningful load metrics include simple metrics, like CPU or memory, or more advanced metrics, such as queue depth, SQL queries, custom metrics queries, and HTTP queue length. Consider using a combination of simple and advanced load metrics as your scaling trigger.
+*Use meaningful load metrics.* Scaling should use meaningful load metrics as scaling triggers. Meaningful load metrics include simple metrics, like CPU or memory. They also include more advanced metrics, such as queue depth, SQL queries, custom metrics queries, and HTTP queue length. Consider using a combination of simple and advanced load metrics as your scaling trigger.
 
 *Use a buffer.* A buffer is unused capacity that can be used to handle spikes in demand. A well-designed workload plans for unexpected spikes in workload. You should add a buffer to handle spikes for horizontal and vertical scaling.
 
@@ -147,7 +147,7 @@ It's important to choose an adequate margin between the scale-out and scale-in t
 
 Testing scaling involves simulating various workload scenarios in a controlled environment to evaluate how a workload responds to different levels of demand. It helps ensure the workload scales efficiently, maximizing performance efficiency during varied loads.
 
-To ensure that your system scales efficiently under real-world conditions, it's essential to perform load and stress tests in an environment that mirrors your production setup. These tests, conducted in nonproduction environments, enable you to evaluate both vertical and horizontal scaling strategies and determine which one optimizes performance most effectively. Here's a recommended approach to testing scaling:
+You need to ensure that your workload scales efficiently under real-world conditions. It's essential to perform load and stress tests in an environment that mirrors your production setup. These tests, conducted in nonproduction environments, enable you to evaluate both vertical and horizontal scaling strategies and determine which one optimizes performance most effectively. Here's a recommended approach to testing scaling:
 
 - *Define workload scenarios.* Identify the key workload scenarios that you need to test, such as increasing user traffic, concurrent requests, data volume, or resource use.
 
@@ -157,13 +157,13 @@ To ensure that your system scales efficiently under real-world conditions, it's 
 
 - *Develop test cases.* Develop test cases that simulate different workload scenarios, gradually increasing the load to assess the performance at various levels.
 
-- *Execute and monitor tests.* Run the tests using the defined test cases and collect performance data at each load level. Monitor system behavior, resource consumption, and performance degradation.
+- *Execute and monitor tests.* Run the tests using the defined test cases and collect performance data at each load level. Monitor workload behavior, resource consumption, and performance degradation.
 
-- *Analyze and optimize scaling.* Analyze the test results to identify performance bottlenecks, scalability limitations, or areas for improvement. Optimize the system configuration, infrastructure, or code to enhance scalability and performance. It takes time for scaling to complete, so test the effects of scaling delays.
+- *Analyze and optimize scaling.* Analyze the test results to identify performance bottlenecks, scalability limitations, or areas for improvement. Optimize the configuration, infrastructure, or code to enhance scalability and performance. It takes time for scaling to complete, so test the effects of scaling delays.
 
-- *Address dependencies.* Find potential dependency issues. Scaling or partitioning in one area of a workload might cause performance issues on a dependency. The stateful parts of a system, such as databases, are the most common cause of dependency performance issues. Databases require careful design to scale horizontally. You should consider measures, such as [optimistic concurrency](/dotnet/framework/data/adonet/sql/linq/optimistic-concurrency-overview) or data partitioning, to enable more throughput to the database.
+- *Address dependencies.* Find potential dependency issues. Scaling or partitioning in one area of a workload might cause performance issues on a dependency. The stateful parts of a workload, such as databases, are the most common cause of dependency performance issues. Databases require careful design to scale horizontally. You should consider measures, such as [optimistic concurrency](/dotnet/framework/data/adonet/sql/linq/optimistic-concurrency-overview) or data partitioning, to enable more throughput to the database.
 
-- *Retest after adjustments.* Repeat the scalability tests after implementing optimizations to validate the improvements and help ensure the system can handle the expected workloads efficiently.
+- *Retest after adjustments.* Repeat the scalability tests after implementing optimizations to validate the improvements and help ensure the workload can handle the expected workloads efficiently.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Consider the budget constraints and cost-efficiency goals of your workload. Vertical scaling might involve higher costs due to the need for larger and more powerful resources. Horizontal scaling offers cost savings by using smaller instances that can be added or removed based on demand.
 
@@ -183,7 +183,7 @@ The specific partitioning approach you use depends on the type of data or worklo
 
 #### Plan partitioning
 
-It's important to consider factors such as data distribution, query patterns, data growth, and system requirements when partitioning. Proper planning and design are essential to help ensure the effectiveness of partitioning and maximize performance efficiency. If you address partitioning as an afterthought, it's more challenging because you already have a live system to maintain. You might need to change data access logic, distribute large quantities of data across partitions, and support continued usage during data distribution.
+It's important to consider factors such as data distribution, query patterns, data growth, and workload requirements when partitioning. Proper planning and design are essential to help ensure the effectiveness of partitioning and maximize performance efficiency. If you address partitioning as an afterthought, it's more challenging because you already have a live workload to maintain. You might need to change data access logic, distribute large quantities of data across partitions, and support continued usage during data distribution.
 
 #### Implement partitioning
 
@@ -199,7 +199,7 @@ It's important to analyze the characteristics of your data, access patterns, con
 
 Test the partitioning scheme to verify the effectiveness and efficiency of the strategy so you can make adjustments to improve performance. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Partitioning adds complexity to the design and development of a system. Partitioning requires conversations and planning between developers and database administrators.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Partitioning adds complexity to the design and development of a workload. Partitioning requires conversations and planning between developers and database administrators.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Partitioning introduces some potential problems that need to be considered and addressed, including:
 >
