@@ -56,9 +56,13 @@ Governance policies can act as spending guardrails on various aspects of resourc
 Configure access controls to set restrictions that prevent overspending and to help ensure that only authorized individuals can consume resources. Access controls can help reduce the risk of accidental or unnecessary changes that negatively affect cost optimization. To implement access controls for cost optimization, follow these steps:
 
 1. Identify the resources and services that need access controls.
+
 1. Define access policies based on the principle of least-privilege access, granting users only the necessary permissions to perform their tasks. For example, some users might need only read access, while others might also require write or delete permissions.
+
 1. Implement authentication methods, like username/password, multifactor authentication, or integration with identity providers, to help ensure that only authorized users can access resources.
+
 1. Set up role-based access controls (RBAC) to assign roles and permissions to users based on their job responsibilities. Using RBAC can help you manage resource access effectively.
+
 1. Regularly review and update access controls to ensure that they align with the changing needs of the organization. Remove unnecessary access permissions and adjust access levels as-needed.
 
 ### Use release gates
@@ -66,7 +70,9 @@ Configure access controls to set restrictions that prevent overspending and to h
 Release gates are checkpoints or conditions that must be met before a release or deployment can proceed. Use release gates to help ensure that the release is cost-effective and aligns with optimization goals. Release gates offer a structured approach to the identification and implementation of cost-saving measures. To implement release gates for workload cost optimization, consider the following steps:
 
 1. Establish the conditions or criteria that must be met before resources are released or deployed. Include factors such as spending limits, resource utilization thresholds, or project milestones.
+
 1. Incorporate the release gates into the deployment pipeline. You can use automation tools or custom scripts to ensure that resource deployments are subject to the defined criteria.
+
 1. Continuously monitor spending and resource usage against the defined criteria. If the spending thresholds or other conditions are exceeded, the release gates should prevent further deployments until the issues are addressed.
 
 ### Configure cost alerts
@@ -74,7 +80,9 @@ Release gates are checkpoints or conditions that must be met before a release or
 It's important to set alerts for budgets, cost anomalies, and prepaid plan utilization to optimize costs. These alerts provide visibility into your cloud spending and enable proactive cost management. Be careful to manage notification recipients for alerts and keep the recipient list up to date with current responsibilities and access. Some alerts you might create in order to optimize costs include:
 
 - *Budget alerts*: Set alerts on budgets to track your spending against pre-defined thresholds. You can monitor your costs and receive notifications when you approach or exceed the budgeted amount by creating a monthly budget, billing account, or resource group. Budget alerts help you to stay informed on your spending and take preventative actions to control costs.
+
 - *Cost anomaly alerts*: Anomaly alerts notify you about unexpected cost variations that might indicate inefficiencies or abnormal spending patterns. You can configure these alerts to identify anomalies in the actual or forecasted costs. Use cost anomaly alerts to investigate the underlying cause of a cost variation and take corrective actions when necessary.
+
 - *Prepaid plan utilization alerts*: If you have prepaid plans or commitments in place, alerts on plan utilization can help you effectively manage and maximize the value of these commitments. Use prepaid plan utilization alerts to monitor and optimize the usage of your prepaid resources and ensure that the benefits of your prepayment are used. You can also configure these alerts to notify stakeholders if the utilization of prepaid resources drops below a desired threshold.
 
 ### Use IaC
@@ -84,10 +92,15 @@ Infrastructure as code is the practice of managing and provisioning infrastructu
 IaC strategies provide a structured and repeatable approach to managing and controlling infrastructure resources. IaC can help you to provision resources as-needed, delete resources without running them continuously, and optimize costs by ensuring you provision and configure resources according to predefined rules. Follow these steps to use IaC for cost optimization:
 
 1. Create a code-based template language to define your infrastructure resources and their configurations. These templates let you specify the desired state of your infrastructure resources in a declarative manner. Implement best practices for cost optimization in your infrastructure code. Consider right-sizing your resources by using reserved instances or savings plans. Use cost-effective storage options and apply resource metadata for cost allocation and tracking.
+
 1. Store your infrastructure templates in a version control system, such as Git, to track changes and manage different versions. You can use version control to maintain a history of your infrastructure configurations and foster collaboration among team members.
+
 1. Use parameters in your templates to make them reusable and configurable. By using parameters, you can easily customize your infrastructure deployments for different environments or scenarios.
+
 1. Use ephemeral environments for development, testing, and staging purposes to optimize costs. Ephemeral environments should only be run when necessary. Create these environments by using IaC tools and delete the environment when you're finished.
+
 1. Use IaC tools and frameworks to automate the deployment and configuration of your infrastructure resources. Use automation to consistently and reliably provision resources according to your defined policies.
+
 1. Regularly monitor your infrastructure resources and their costs to ensure compliance with your spending policies. Use monitoring and alerting tools to identify any deviations from the defined guardrails and take corrective actions as-needed. Check for unused resources and delete them, preferably with automation.
 
 ## Azure facilitation
@@ -124,11 +137,11 @@ For more information, see [Cost Management policy compliance processes](/azure/c
 
 ## Related links
 
+- [Assign access to Cost Management data](/azure/cost-management-billing/costs/assign-access-acm-data)
 - [Cost Management tools in Azure](/azure/cloud-adoption-framework/govern/cost-management/toolchain)
 - [Create and manage budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets)
-- [Assign access to Cost Management data](/azure/cost-management-billing/costs/assign-access-acm-data)
-- [Monitor usage and spending with cost alerts](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending)
 - [Identify anomalies and unexpected changes in cost](/azure/cost-management-billing/understand/analyze-unexpected-charges)
+- [Monitor usage and spending with cost alerts](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending)
 
 ## Cost Optimization checklist
 
