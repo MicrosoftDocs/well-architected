@@ -1,6 +1,6 @@
 ---
-title: Instrument an application
-description: Provides information about instrumenting an application as it relates the health modeling and monitoring component of the Operational Excellence pillar.
+title: Recommendations for instrumenting an application
+description: Learn how to instrument an application as it relates to the health modeling and monitoring component of the Operational Excellence pillar.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
@@ -24,23 +24,23 @@ This guide describes the recommendations for implementing observability of your 
 
 To optimize the telemetry collection for your workload components, instrument your application to generate the following:
 
-- **[Logs](azure/azure-monitor/logs/data-platform-logs)** are timestamped records of discreet events. Logs can come in three forms:
+- [Logs](azure/azure-monitor/logs/data-platform-logs) are timestamped records of discreet events. Logs can come in three forms:
   - Plain text
   - Structured
   - Binary
 
-- **[Distributed tracing logs](/azure/azure-monitor/app/distributed-tracing)** allows you to see the path of a request as it travels through different services and components.
+- [Distributed tracing logs](/azure/azure-monitor/app/distributed-tracing) allow you to see the path of a request as it travels through different services and components.
 
-- **[Metrics](/azure/azure-monitor/essentials/data-platform-metrics)** are numerical values that describe an aspect of a system at a particular point in time
+- [Metrics](/azure/azure-monitor/essentials/data-platform-metrics) are numerical values that describe an aspect of a system at a particular point in time.
 
 > [!NOTE]
-> Several tools are available for automatically instrumenting your application, like Azure Application Insights, Dynatrace and Elastic APM. These tools make instrumenting your application to generate telemetry easy, but can be limited. If you use an automatic instrumentation tool, you can add more capabilities through manual instrumentation as needed.
+> Several tools are available for automatically instrumenting your application, like Azure Application Insights, Dynatrace, and Elastic APM. These tools can help you instrument your application to generate telemetry easily, but can be limiting. If you use an automatic instrumentation tool, you can add more capabilities through manual instrumentation as needed.
 
 ### Logs and distributed tracing logs
 
-Using structured logging makes it easy to ingest logs into monitoring and analysis platforms. Instrument your application to enable toggle-able levels of verbosity; having verbose logging enabled at all times can be a waste of storage resources, so being able to toggle that mode on and off as needed for troubleshooting is a better operational practice in most cases.
+Structured logging can help you easily integrate logs into monitoring and analysis platforms. Instrument your application to enable switch-able levels of verbosity. Implementing verbose logging at all times can be a waste of storage resources, so being able to toggle that mode on and off as needed for troubleshooting is a better operational practice in most cases.
 
-The contents of a trace log can be the result of textual data that's written by the application or binary data that's created as the result of a trace event, if the application is using [Event Tracing for Windows (ETW)](/azure/azure-monitor/agents/data-sources-event-tracing-windows). Trace log contents can also be generated from system logs that record events arising from parts of the infrastructure, such as a web server. Textual log messages are often designed to be human-readable, but they should also be written in a format that enables an automated system to parse them easily.
+The contents of a trace log can be the result of textual data that's written by the application or binary data that's created as the result of a trace event if the application is using [Event Tracing for Windows (ETW)](/azure/azure-monitor/agents/data-sources-event-tracing-windows). Trace log contents can also be generated from system logs that record events arising from parts of the infrastructure, such as a web server. Textual log messages are often designed to be human-readable, but they should also be written in a format that enables an automated system to parse them easily.
 
 Categorize logs and use separate logs to record the trace output from different operational aspects of the system, instead of writing all trace data to a single log. You can then quickly filter log messages by reading from the appropriate log rather than having to process a single lengthy file. Never write information that has different security requirements (such as audit information and debugging data) to the same log.
 
@@ -172,9 +172,9 @@ The following list summarizes best practices for instrumenting a distributed app
 
 ## Tradeoffs
 
-Enable profiling only when necessary because it can impose a significant overhead on the system. By using instrumentation, profiling records an event, such as a method call, every time it occurs; but, sampling records only selected events.
+Implement profiling only when necessary because it can impose a significant overhead on the system. By using instrumentation, profiling records an event, such as a method call, every time it occurs. However, sampling records only selected events.
 
-The selection can be time-based, such as once every `n` seconds, or frequency-based, such as once every `n` requests. If events occur frequently, profiling by instrumentation might cause too much of a burden and affect overall performance. In this case, the sampling approach is preferable.
+Profiling selection can be time-based, such as once every `n` seconds, or frequency-based, such as once every `n` requests. If events occur frequently, profiling by instrumentation might cause too much of a burden and affect overall performance. In this case, the sampling approach is preferable.
 
 However, if the frequency of events is low, sampling might miss them. In this case, instrumentation might be the better approach.
 
