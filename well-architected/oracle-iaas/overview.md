@@ -90,9 +90,9 @@ The following design example provides a first idea of a generic Siebel Architect
 
 Refer to the Siebel design considerations:
 
-**(1) Network & Security** - You should consider establishing an Azure AD for Single-Sign-On (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. Internal users should be routed through [ExpressRoute](/azure/expressroute/). If you desire a Firewall in front, [Azure Firewall](/azure/firewall/overview) can be configured as well.
+**(1) Network & Security** - You should consider establishing a Microsoft Entra ID for single sign-on (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Microsoft Entra application proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. Internal users should be routed through [ExpressRoute](/azure/expressroute/). If you desire a Firewall in front, [Azure Firewall](/azure/firewall/overview) can be configured as well.
 
-In cases where external users need to access your application, the [Application Gateway](/azure/application-gateway/overview) provides a Web Application Firewall, but also a Layer 7 Load Balancing. Note that Application Gateways can only be used for http/s protocols. The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [Role-Based-Access-Control (RBAC).](/azure/role-based-access-control/overview)
+In cases where external users need to access your application, the [Application Gateway](/azure/application-gateway/overview) provides a Web Application Firewall, but also a Layer 7 Load Balancing. Note that Application Gateways can only be used for http/s protocols. The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [role-based access control (RBAC).](/azure/role-based-access-control/overview)
 
 Because an SSH port is required for Siebel, a Bastion host as a jump box can also provide another security for an in-depth mature security posture.
 
@@ -119,9 +119,9 @@ We assume that external users don't cross the corporate network in the diagram b
 
 Refer to the Oracle EBS design considerations:
 
-**(1) Network & Security** - You should consider establishing an Azure AD for Single-Sign-On (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. Internal users should be routed through [ExpressRoute](/azure/expressroute/). If you desire a Firewall in front, [Azure Firewall](/azure/firewall/overview) can be configured as well.
+**(1) Network & Security** - You should consider establishing a Microsoft Entra ID for single sign-on (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Microsoft Entra application proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. Internal users should be routed through [ExpressRoute](/azure/expressroute/). If you desire a Firewall in front, [Azure Firewall](/azure/firewall/overview) can be configured as well.
 
-In cases where external users need to access your application the [Application Gateway](/azure/application-gateway/overview) provides a Web Application Firewall, but also a Layer 7 Load Balancing. Note that Application Gateways can only be used for http/s protocols. The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [Role-Based-Access-Control (RBAC).](/azure/role-based-access-control/overview)
+In cases where external users need to access your application the [Application Gateway](/azure/application-gateway/overview) provides a Web Application Firewall, but also a Layer 7 Load Balancing. Note that Application Gateways can only be used for http/s protocols. The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [role-based access control (RBAC)](/azure/role-based-access-control/overview).
 
 Because an SSH port is required for EBS, a Bastion host as a jump box can also provide another security for an in-depth mature security posture.
 
@@ -147,11 +147,11 @@ The following architecture is built to being highly available. We assumed that e
 
 Refer to the JD Edwards design considerations:
 
-**(1) Network & Security** - You should consider establishing an Azure AD for Single-Sign-On (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. JDE does only offer an ssh port. In that case we recommend you to set a Firewall in front by using [Azure Firewall](/azure/firewall/overview) to properly protect your application installation for external user.
+**(1) Network & Security** - You should consider establishing a Microsoft Entra ID for single sign-on (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates an [Microsoft Entra application proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users. JDE does only offer an ssh port. In that case we recommend you to set a Firewall in front by using [Azure Firewall](/azure/firewall/overview) to properly protect your application installation for external user.
 
 Internal users can access your application through ExpressRoute. If desired, a Web Application Firewall on Azure Front Door can be configured as well.  
 
-The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [Role-Based-Access-Control (RBAC).](/azure/role-based-access-control/overview)
+The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [role-based access control (RBAC)](/azure/role-based-access-control/overview).
 
 Because an SSH port is required for JDE, a Bastion host as a jump box is recommended and can provide another security for an in-depth mature security posture.
 
@@ -175,13 +175,13 @@ Oracle's PeopleSoft application suite contains software for human resources and 
 
 Refer to the Peoplesoft design considerations:
 
-**(1) Network & Security** - You should consider establishing an Azure AD for Single-Sign-On (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates a [Azure AD Application Proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users.
+**(1) Network & Security** - You should consider establishing a Microsoft Entra ID for single sign-on (SSO). The SSO method used is Security Assertions Markup Language (SAML). Microsoft allocates a [Microsoft Entra application proxy](/azure/active-directory/app-proxy/what-is-application-proxy). You should consider it especially for remote users.
 
 Internal users should be routed through [ExpressRoute](/azure/expressroute/). If you desire a firewall in front, you configure [Azure Firewall](/azure/firewall/overview).
 
 In cases where external users need to access your application, the [Application Gateway](/azure/application-gateway/overview) provides a Web Application Firewall, but also a Layer 7 Load Balancing. Note that the Application Gateway can only be used for http/s protocols.
 
-The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [Role-Based-Access-Control (RBAC)](/azure/role-based-access-control/overview).
+The subnets can be secured by using [Network Security Groups (NSG)](/azure/virtual-network/network-security-group-how-it-works). However if you desire to grant access only to certain individuals you can also use [role-based access control (RBAC)](/azure/role-based-access-control/overview).
 
 Because an SSH port is required for Peoplesoft, a Bastion host as a jump box can provide extra security for an in-depth mature security posture.
 

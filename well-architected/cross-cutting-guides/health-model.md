@@ -86,6 +86,5 @@ Check functions can run processes to ensure that they produce valid results, mea
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Monitoring best practices for reliability](./monitor-best-practices.md)
+> [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
 
-Go back to the main article: [Monitoring for reliability](monitor-checklist.md)

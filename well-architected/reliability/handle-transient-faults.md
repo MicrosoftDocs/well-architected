@@ -168,7 +168,7 @@ Most Azure services and client SDKs provide a retry mechanism. However, these me
 
 | Service | Retry capabilities | Policy configuration | Scope| Telemetry features| 
 | --- | --- | --- | --- | --- | 
-| [Entra ID](/azure/architecture/best-practices/retry-service-specific#azure-active-directory) |Native in the Microsoft Authentication Library (MSAL) |Embedded into the MSAL library |Internal |None | 
+| [Microsoft Entra ID](/azure/architecture/best-practices/retry-service-specific#azure-active-directory) |Native in the Microsoft Authentication Library (MSAL) |Embedded into the MSAL library |Internal |None | 
 | [Azure Cosmos DB](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) |Native in the service |Not configurable |Global |TraceSource | 
 | [Azure Data Lake Storage](/azure/architecture/best-practices/retry-service-specific#data-lake-store) |Native in the client |Not configurable |Individual operations |None | 
 | [Azure Event Hubs](/azure/architecture/best-practices/retry-service-specific#event-hubs) |Native in the client |Programmatic |Client |None | 
