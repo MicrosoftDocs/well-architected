@@ -69,7 +69,9 @@ The cost model is an estimate of all costs associated with the workload. These c
 
 #### Align estimates to cost drivers
 
-Determine the factors that drive the costs for each cost category, like services or licenses. Cost drivers are factors that directly affect the cost, such as usage volume, number of customers, and storage capacity. Assign quantitative values to the identified cost drivers. Quantify the effect of each cost driver by using methods such as estimating usage volumes or determining the number of customers or resources. Based on the cost categories and drivers, establish mathematical models or formulas that relate the cost drivers to the associated costs. These models can include simple linear relationships or complex calculations, depending on the cost category.
+Cost drivers are specific factors or variables that influence the overall cost. These drivers can include variables such as usage volume, the number of customers served, storage capacity, or any other factors that have a direct impact on the cost of resources, services, or operations within the workload.
+
+Assign quantitative values to the identified cost drivers, such as estimating usage volumes or determining the number of customers or resources. Quantify the effect of each cost driver by using methods such as estimating usage volumes or determining the number of customers or resources. Based on the cost categories and drivers, establish mathematical models or formulas that relate the cost drivers to the associated costs. These models can include simple linear relationships or complex calculations, depending on the cost category.
 
 #### Associate costs with business metrics
 
