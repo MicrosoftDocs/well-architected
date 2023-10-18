@@ -155,7 +155,9 @@ Choose storage services that align with your data access patterns, durability re
 
 **Understand services.** Review Azure [services and products](/azure/) to determine if they meet your performance requirements. Azure offers several services that accomplish the same outcome. You have the flexibility to align your choice of service to your performance needs, team skill set, and cost requirements.
 
-**Understand service limits.** For a list of the most common Azure limits, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits). The [ResourceLimits](https://github.com/mspnp/samples/tree/master/OperationalExcellence/ResourceLimits) sample shows how to query the limits and quotas for commonly used resources.
+**Understand service limits.** For a list of the most common Azure limits, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits).
+
+:::image type="icon" source="../_images/github.png"::: The [Query limits and quotas sample](https://github.com/mspnp/samples/tree/main/OperationalExcellence/ResourceLimits) shows how to query the limits and quotas for commonly used resources.
 
 **Choose the appropriate services.** Azure has many services that can accommodate any workload. Review the [selection guidance](/azure/architecture/guide/technology-choices/technology-choices-overview) for each service type to help you streamline your selection based on your requirements. See the following guides to choose:
 
