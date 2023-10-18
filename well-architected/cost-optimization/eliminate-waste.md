@@ -21,7 +21,7 @@ This guide describes the recommendations for eliminating workload waste. The gui
 
 ## Key strategies
 
-Cut down on workload waste by making sure you only pay for the computer resources and features you actually use. Keep track of what you're using and adjust your plans accordingly to save money. Regularly review and update how you manage these resources to get the most value for your money. This way you use what you have more effectively and cut down on costs.
+Eliminating waste refers to the principle of using only the necessary resources, whether it's workload components or application features, or prepaid plans. Waste leads to inflated expenses. Regularly review and update how you manage workload resources and prepaid plans to get the most value for your money.
 
 ### Eliminate waste from the application
 
