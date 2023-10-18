@@ -1,32 +1,32 @@
 ---
-title: Use the Microsoft Azure Well-Architected Review assessment
-description: A guide for implementing recommendations for Well-Architected Review and Advisor recommendations for continuous workload improvement.
+title: Complete an Azure Well-Architected Review assessment
+description: Learn about Azure Well-Architected Review and Azure Advisor recommendations that can help you continuously improve your workload.
 author: ckittel
 ms.author: martinek
-ms.date: 10/05/2023
+ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Use the Microsoft Azure Well-Architected Review assessment
+# Complete an Azure Well-Architected Review assessment
 
-The [Microsoft Azure Well-Architected Review](/assessments/azure-architecture-review/) is a self-assessment to help a workload team examine their workload through the lenses of the Azure Well-Architected Framework. It is made of approximately 60 questions that are rooted in the key recommendations provided in the pillars of the Well-Architected Framework. This tool also has the ability to pull in [Azure Advisor](/azure/advisor/) recommendations based on an Azure subscription or resource group.
+[Azure Well-Architected Review](/assessments/azure-architecture-review/) is a self-assessment that can help a workload team examine a workload from the perspective of the Azure Well-Architected Framework. It's made up of approximately 60 questions that are rooted in the key recommendations provided in the pillars of the Well-Architected Framework. The assessment tool can also pull in [Azure Advisor](/azure/advisor/) recommendations for an Azure subscription or resource group.
 
-At the end of the assessment, recommendations are generated with links into supporting material to help improve a workload's design. There is an option to export these recommendations into a file that can be used to incorporate the recommendations into the operational processes for continuous workload improvement.
+At the end of the assessment, you get recommendations together with links to supporting material that can help you improve your workload's design. You can export these recommendations into a file that you can use to incorporate the recommendations into the operational processes for continuous workload improvement.
 
 ## When to use the assessment
 
-For greenfield workloads, it's recommended to perform the assessment as part of the initial design process, inputting the proposed proposed decisions. The guidance then acts as both a baseline and starts a feedback loop to refine the workload design. As you make additional design decisions and capture them in additional assessment milestones periodically.
+For Greenfield workloads, we recommend that you perform the assessment during the initial design process, entering the proposed decisions. The guidance then acts as a baseline and starts a feedback loop that you can use to refine the workload design as you make additional design decisions and periodically capture them in additional assessment milestones.
 
-Brownfield workloads should be examined as well as part of the continuous improvement cycle of the workload. Set a cadence, for example every four months, and create a new milestone to track how the workload design could continue to improve.
+Brownfield workloads should be examined as well, as part of the continuous improvement cycle of the workload. Set a cadence, for example every four months, and create a new milestone to track how the workload design can continue to improve.
 
-![Guidance Overview](../_images/guidance-overview.svg)
+![Diagram that shows an overview of the continuous improvement cycle.](../_images/guidance-overview.svg)
 
-## Assess to receive and integrate recommendations
+## Receive and integrate recommendations
 
-Assess the workload by completing the assessment. The recommendations for your current milestone are available on the assessment's guidance page. Export these recommendations by using the **Export to CSV** button. Having an *offline* copy allows you to start socializing and enabling prioritization activities on the generated recommendations. While some teams may find using the CSV file sufficient, it's recommended to bring these recommendations into the workload's backlog so they can be integrated into the workload's software development lifecycle (SDLC).
+Assess your workload by completing the assessment. The recommendations for your current milestone are available on the assessment's guidance page. Export these recommendations by selecting the **Export to CSV** button. You can use the offline copy to share the recommendations and start to prioritize them. Although some teams might consider the CSV file sufficient, we recommend that you add the recommendations to the workload's backlog so they can be integrated into the workload's software development lifecycle (SDLC).
 
 > [!TIP]
-> To help build automation for backlog integration, there are example import scripts available at [DevOps Tooling for Well-Architected Recommendation Process](https://github.com/Azure/WellArchitected-Tools/tree/main/WARP/devops#readme). These scripts show one possible way to import the recommendations from the Well-Architected Review exported CSV into a Azure DevOps or GitHub project within your existing organization.
+> There are example import scripts available at [DevOps Tooling for Well-Architected Recommendation Process](https://github.com/Azure/WellArchitected-Tools/tree/main/WARP/devops#readme) that can help you build automation for backlog integration. These scripts show one possible way to import the recommendations from the Well-Architected Review exported CSV into a Azure DevOps or GitHub project within your existing organization.
 
 ## Prioritize and implement recommendations
 
