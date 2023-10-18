@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Azure Well-Architected Framework workloads
 
-In the context of the Azure Well-Architected Framework, the term _workload_ refers to a collection of application resources, data, and supporting infrastructure that function together to achieve defined business outcomes. A workload consists of components and also development and operational procedures.
+In the context of the Well-Architected Framework, the term _workload_ refers to a collection of application resources, data, and supporting infrastructure that function together to achieve defined business outcomes. A workload consists of components and also development and operational procedures.
 
 Architects design workloads, and a workload team implements them. A workload is designed and implemented to achieve functional and nonfunctional business requirements. Workloads can be classified into many types.
 
