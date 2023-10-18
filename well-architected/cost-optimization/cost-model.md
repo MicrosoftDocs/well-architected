@@ -12,7 +12,10 @@ categories:
 ---
 # Recommendations for creating a cost model
 
-**Applies to: CO**
+**Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:** 
+
+|[CO:02](checklist.md)|Create and maintain a cost model. A cost model should estimate the initial cost, run rates, and ongoing costs. Negotiate a budget that covers a cost model and has a buffer for unplanned spending.|
+|---|---|
 
 This guide describes the best practices for creating a cost model for your workload. A cost model is an estimate that predicts the combined costs of services and their associated expenses. It's vital to create a cost model to forecast expenses and plan a budget. A cost model provides a scenario analysis, which allows you to assess the cost implications of potential workload changes. Without a cost model, you risk unforeseen expenses, budget overruns, and missed opportunities for optimization.
 
@@ -100,7 +103,9 @@ The cost model provides a foundation for negotiating your workload budget. The c
 A cost model isn't just an analytical tool. It's a decision-making aid. Use the cost model for budgeting, scenario analysis, and resource optimization. To maximize the use of the cost model, consider these strategies:
 
 - *Use the cost model for budgeting*: Use the cost model to project future expenses, allocate funds effectively, and avoid financial pitfalls. Regularly compare actual expenses against the budget and make adjustments if there are deviations.
+
 - *Use cost model for scenario analysis*: Using the cost model for scenario analysis involves considering different scenarios and the associated costs with each one. Scenario analysis can help stakeholders understand the financial implications of business model changes, such as modifications to pricing, product offerings, or revenue streams. Scenario analysis also enables you to anticipate how changes in customer acquisition, retention, or churn rates might affect costs. You can forecast increased expenses and plan for scaling.
+
 - *Use cost model for resource optimization*: Use the cost model to help identify areas where cloud resources are underutilized and make adjustments for significant cost savings. The cost model can also forecast the financial implications of scaling up resources in response to increased customer traffic or processing needs. It also helps compare the costs that are associated with cloud providers’ billing models, which allows you to choose the most economical option.
 
 ### Maintain the cost model
@@ -137,3 +142,10 @@ When you extend your existing investments in software licenses to the cloud, you
 
 - [Measure unit costs](/azure/cost-management-billing/finops/capabilities-unit-costs)
 - [View and download Azure usage and charges](/azure/cost-management-billing/understand/download-azure-daily-usage)
+
+## Cost Optimization checklist  
+
+Refer to the complete set of recommendations. 
+
+> [!div class="nextstepaction"] 
+> [Cost Optimization checklist](checklist.md) 
