@@ -1,25 +1,30 @@
 ---
 title: Recommendations for optimizing flow costs
-description: Learn how to optimize flow costs.
+description: Learn about Azure Well-Architected Framework recommendations for strategically optimizing the cost of each of your workload's flows.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing flow costs: CO 09
+# Recommendations for optimizing flow costs
 
-This guide describes the recommendations for optimizing the cost of each workload flow. Cost-optimizing the flows in a workload involves strategically allocating and managing resources to minimize expenses while maintaining performance. This optimization is crucial as it ensures efficient utilization of invested resources, reduces unnecessary expenditures, and improves the overall return on investment for the infrastructure. If you neglect to cost-optimize the flows in a workload, you run the risk of overspending on resources, resulting in inflated operational costs and diminished profitability.
+**Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:** 
 
-**Definition**
+|[CO:09](checklist.md)| Optimize flow costs. Align the cost of each flow with flow priority. When you prioritize flows, consider the features, functionality, and nonfunctional requirements of each flow. Optimizing flow spend often requires strategic compromises.|
+|-|-|
+
+This guide describes the recommendations for optimizing the cost of each of the flows in your workload. Cost-optimizing the flows in a workload is a process of strategically allocating and managing resources to minimize expenses while maintaining performance. This optimization is crucial because it ensures efficient utilization of invested resources, reduces unnecessary expenditures, and improves the overall return on investment for the infrastructure. If you don't cost-optimize the flows in a workload, you risk overspending on resources, which results in inflated operational costs and diminished profitability.
+
+**Definitions**
 
 | Term    | Definition |
 |---|----|
-| Flow    | A flow refers to the sequence of actions and interactions that occur within a workload to achieve a specific goal or functionality. It involves the movement of data and the execution of various processes between different components of the workload. |
-| Data flow  | Data flows refer to the movement of data within a system or between different systems.|
-| System flow | The flow of information and processes within a system.                                                                                                  |
-| User flow  | User flows refer to the paths or sequences of actions that users take within an application or system.|
-| Decouple  | Separate a flow to use a separate resource |
+|Data flow  | A data flow is the movement of data within a system or between systems.|
+|Decouple  | Separate a flow to use a separate resource. |
+|Flow    | A flow refers to the sequence of actions and interactions that occur within a workload to achieve a specific goal or functionality. It involves the movement of data and the execution of various processes between different components of the workload. |
+|System flow | The flow of information and processes within a system.                             |
+|User flow  | User flows refer to the paths or sequences of actions that users take within an application or system.|
 
 ## Key strategies
 
