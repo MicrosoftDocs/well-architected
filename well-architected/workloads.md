@@ -151,6 +151,6 @@ A theme across all Well-Architected Framework pillars is continuous improvement.
 
 Workload teams have an obligation to communicate with platform teams about proposed changes to workload requirements that might have an effect on the platform team's services. Likewise, platform teams have an obligation to include their workload partners in change control processes, and clearly communicate the impactful platform changes. Establish a regular communication cadence with partners to learn about and share how a product evolves.
 
-## Grounded in organizational success
+## Achieve a successful outcome
 
 Workloads have many expectations, like user expectations, shareholder expectations, regulatory body expectations, employee expectations, center of excellence expectations, and chief experience officer expectations. Expectations can set the directional compass spinning. The Well-Architected Framework provides clarity related to the design and implementation by offering explicit architectural decision rationalization that achieves a successful outcome. Develop a successful workload, and share in that success with your organization.
