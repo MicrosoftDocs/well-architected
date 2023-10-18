@@ -22,7 +22,7 @@ This guide describes the recommendations for setting spending guardrails. Settin
 
 ## Key design strategies
 
-When it comes to setting spending guardrails, there are key strategies that can help you effectively manage and control your costs. Use governance policies, access controls, release gates, budget thresholds, alerts, and automation to optimize your spending. By combining these strategies, you can establish comprehensive spending guardrails that promote cost optimization and efficient resource management. These strategies help you stay within budget, prevent cost overruns, and maximize the value of your cloud investments.
+Setting spending guardrails means implementing measures to control and manage your costs within a specified budget to prevent unexpected or excessive spending. When it comes to setting spending guardrails, there are key strategies that can help you effectively manage and control your costs. Use governance policies, access controls, release gates, budget thresholds, alerts, and automation to optimize your spending. By combining these strategies, you can establish comprehensive spending guardrails that promote cost optimization and efficient resource management. These strategies help you stay within budget, prevent cost overruns, and maximize the value of your cloud investments.
 
 Prioritize platform automation over manual processes. Use automation tools and services provided by the cloud platform to streamline resource provisioning, configuration, and management. Automation reduces the risk of human error, improves efficiency, and enables consistent application of spending guardrails.
 
@@ -104,13 +104,13 @@ Pipelines, such as Azure Pipelines, automate the build, test, and deployment pro
 
 [Azure Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments) empowers development teams to quickly and easily spin up app infrastructure with project-based templates that establish consistency and best practices while maximizing security. This on-demand access to secure environments accelerates the stages of the software development lifecycle in a compliant and cost-efficient way.
 
-The [Azure Developer CLI](/azure/developer/azure-developer-cli/overview) (`azd`) is an open-source tool that accelerates the time it takes for you to get your application from local development environment to Azure. The Azure Developer CLI provides best practice, developer-friendly commands that map to key stages in your workflow, whether you’re working in the terminal, your editor or integrated development environment (IDE), or CI/CD (continuous integration/continuous deployment).
+The [Azure Developer CLI](/azure/developer/azure-developer-cli/overview) (`azd`) is an open-source tool that accelerates the time it takes for you to get your application from local development environment to Azure. The Azure Developer CLI provides best practice and developer-friendly commands that map to key stages in your workflow.
 
 ## Organizational alignment
 
 Cloud Adoption Framework provides guidance for central teams on how to set up cost guardrails across the organization so workload teams can know what is possibly being provided by central teams.
 
-For more information, see [Cost Management policy compliance processes](/azure/cloud-adoption-framework/govern/cost-management/compliance-processes) and [Develop cost governance policy statements](/azure/cloud-adoption-framework/govern/cost-management/#develop-governance-policy-statements). The organization is generally encouraged to [Adopt policy-driven guardrails](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) for the implementation.
+For more information, see [Cost Management policy compliance processes](/azure/cloud-adoption-framework/govern/cost-management/compliance-processes) and [Develop cost governance policy statements](/azure/cloud-adoption-framework/govern/cost-management/#develop-governance-policy-statements). The organization is encouraged to [Adopt policy-driven guardrails](/azure/cloud-adoption-framework/ready/enterprise-scale/dine-guidance) for the implementation.
 
 ## Related links
 
