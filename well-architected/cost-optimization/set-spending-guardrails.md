@@ -22,7 +22,7 @@ This guide describes the recommendations for setting spending guardrails. Settin
 
 ## Key design strategies
 
-When it comes to setting spending guardrails, there are key strategies that can help you effectively manage and control your costs. Use governance policies, access controls, release gates, budget thresholds, alerts, and automation to optimize your spending. By combining these strategies, you can establish comprehensive spending guardrails that promote cost optimization and efficient resource management. These strategies help you stay within budget, prevent cost overruns, and maximize the value of your cloud investments.
+Setting spending guardrails means implementing measures to control and manage your costs within a specified budget to prevent unexpected or excessive spending. When it comes to setting spending guardrails, there are key strategies that can help you effectively manage and control your costs. Use governance policies, access controls, release gates, budget thresholds, alerts, and automation to optimize your spending. By combining these strategies, you can establish comprehensive spending guardrails that promote cost optimization and efficient resource management. These strategies help you stay within budget, prevent cost overruns, and maximize the value of your cloud investments.
 
 Prioritize platform automation over manual processes. Use automation tools and services provided by the cloud platform to streamline resource provisioning, configuration, and management. Automation reduces the risk of human error, improves efficiency, and enables consistent application of spending guardrails.
 
