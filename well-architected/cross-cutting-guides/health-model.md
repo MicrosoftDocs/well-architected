@@ -76,7 +76,7 @@ Implement probes or check functions. Run them regularly from outside the applica
 
 Check functions can run processes to ensure that they produce valid results, measure latency and check availability, and extract information from the system.
 
-:::image type="icon" source="../_images/github.png" border="false"::: The [HealthProbesSample](https://github.com/mspnp/samples/tree/master/Reliability/HealthProbesSample) sample shows how to set up health probes. It provides an Azure Resource Manager template to set up the infrastructure. A load balancer accepts public requests and load balances to a set of virtual machines. The health probe is set up so that it can check for service's path */Health*.
+:::image type="icon" source="../_images/github.png"::: The [Health Probes sample](https://github.com/mspnp/samples/tree/main/Reliability/HealthProbesSample) shows how to set up health probes. It provides an Azure Resource Manager template to set up the infrastructure. A load balancer accepts public requests and load balances to a set of virtual machines. The health probe is set up so that it can check for service's path */Health*.
 
 ## Related links
 
