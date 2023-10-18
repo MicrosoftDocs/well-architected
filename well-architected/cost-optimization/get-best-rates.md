@@ -21,6 +21,8 @@ This guide describes the recommendations for getting the best rates from supplie
 
 ## Key strategies
 
+Finding and using the best rates is about actively searching for and choosing the most cost-effective prices for resources and licenses. This review should consider factors like price differences in different regions, various pricing models (like pay-as-you-go or fixed rates), and special deals like long-term reservations or savings plans. It's also important to think about how software licenses can be moved between platforms, corporate discount plans, and price sheets.
+
 A small percentage rate change on services you use a lot provides significant cost optimization. To get the best rates on the components and licenses in your workload, you should start with identifying and reducing costs in the most expensive areas. Evaluate the discounts available from vendors and choose the right discounts based on your workload needs. Regularly check for discounts and optimize any licensing fees, and determine if it's more cost effective to build or buy new workload solutions.
 
 ### Create an ordered expenses list
