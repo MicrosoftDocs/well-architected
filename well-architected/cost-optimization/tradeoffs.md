@@ -41,11 +41,11 @@ The cost of a service disruption must be measured against the cost of preventing
 
 - A less expensive support contract might increase workload recovery time due to potential delays in technical assistance.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased complexity.** A workload that uses straightforward approaches and avoids unnecessary or overengineered complexity is, generally, easier to manage in terms of reliability.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased complexity.** A workload that uses straightforward approaches and avoids unnecessary or overengineered complexity is generally easier to manage in terms of reliability.
 
 - Using cost-optimization cloud patterns can add new components, like a content delivery network (CDN), or shift duties to edge and client devices that a workload must provide reliability targets for.
 
-- Event-based scaling can be more complex to tune and validate than resource-based scaling.
+- Event-based scaling can be more complicated to tune and validate than resource-based scaling.
 
 - Reducing data volume and tiering data through data lifecycle actions, possibly in conjunction with implementing aggregated data points before a lifecycle event, introduces reliability factors to consider in the workload.
 
@@ -53,7 +53,7 @@ The cost of a service disruption must be measured against the cost of preventing
 
 The cost of a compromise to confidentiality, integrity, and availability in a workload must always be balanced against the cost of the effort to prevent that compromise. A security incident can have a wide range of financial and legal impacts and harm a company's reputation. Investing in security is a risk mitigation activity. The cost of experiencing the risks must be balanced against the investment. As a rule, don't compromise on security to gain cost optimizations that are below the point of responsible and agreed upon risk mitigation. Optimizing security costs by rightsizing solutions is an important optimization practice, but be aware of tradeoffs like the following when doing so.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced security controls.** Security controls are established across multiple layers, sometimes redundantly, to provide a defense in depth.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced security controls.** Security controls are established across multiple layers, sometimes redundantly, to provide defense in depth.
 
 One cost optimization tactic is to look for ways to remove components or processes that accrue unit or operational costs. Be aware that removing security components like the following examples for the sake of saving money impacts security. You need to carefully perform a risk analysis on this impact.
 
@@ -69,9 +69,9 @@ One cost optimization tactic is to look for ways to remove components or process
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased workload surface area.** The Security pillar prioritizes a reduced and contained surface area to minimize attack vectors and the management of security controls.
 
-Cloud design patterns that optimize costs sometimes necessitate the introduction of additional components. These additional components increase the surface area of the workload. The components and the data within them must be secured, possibly in ways that aren't already used in the system. These components and data are often subject to compliance. Examples include:
+Cloud design patterns that optimize costs sometimes necessitate the introduction of additional components. These additional components increase the surface area of the workload. The components and the data within them must be secured, possibly in ways that aren't already used in the system. These components and data are often subject to compliance. Examples of patterns that can introduce components include:
 
-- Using static content hosting to offload data to a new content delivery network component.
+- Using static content hosting to offload data to a new CDN component.
 
 - Using the Valet Key pattern to offload processing and secure resource access to client compute.
 
@@ -101,7 +101,7 @@ Sharing resources, for example in multi-tenancy situations or co-locating multip
 
 - A lack of investment in training leads to stagnated skills, reducing the team's ability to adopt newer technologies and practices.
 
-- Removing automation tooling to save money can result in personnel spending more time on tasks that are no longer automated. It also increases the risk of errors and inconsistencies.
+- Removing automation tooling to save money can result in personnel spending more time on the tasks that are no longer automated. It also increases the risk of errors and inconsistencies.
 
 - Reducing planning efforts, like scoping and activity prioritization, to cut expenses can increase the likelihood of rework due to vague specifications and poor implementation.
 
@@ -115,21 +115,21 @@ Sharing resources, for example in multi-tenancy situations or co-locating multip
   - Coverage gaps in incident response activities.
   - Limited observability into interactions or boundaries related to security or compliance.
 
-- Cost optimization design patterns can add components to the workload, increasing its complexity. The workload monitoring strategy must include those new components. For example, some patterns might introduce flows that span multiple components or shift processes from the server to the client. These changes can increase the complexity of correlating and tracking information.
+- Cost optimization design patterns can add components to a workload, increasing its complexity. The workload monitoring strategy must include those new components. For example, some patterns might introduce flows that span multiple components or shift processes from the server to the client. These changes can increase the complexity of correlating and tracking information.
 
-- Reduced investment in observability tooling and maintaining effective dashboards can reduce the ability to learn from production, validate design choices, and inform product design. This reduction can also hamper incident response activities and make it harder to meet the recovery time objective and service-level objective.
+- Reduced investment in observability tooling and the maintenance of effective dashboards can decrease the ability to learn from production, validate design choices, and inform product design. This reduction can also hamper incident response activities and make it harder to meet the recovery time objective and service-level objective.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Deferred maintenance.** Workload teams are expected to keep code, tooling, software packages, and operating systems patched and up to date in a timely and orderly way.
 
-- Letting maintenance contracts with tooling vendors expire can result in missing optimization features, bug resolutions, and security updates that vendors might introduce.
+- Letting maintenance contracts with tooling vendors expire can result in missed optimization features, bug resolutions, and security updates.
 
 - Increasing the time between system patches to save time can lead to missed bug fixes or a lack of protection against evolving security threats.
 
 ## Cost Optimization tradeoffs with Performance Efficiency
 
-The Cost Optimization and Performance Efficiency pillars both prioritize maximizing a workload's value. Performance Efficiency emphasizes meeting performance targets without spending more than necessary. Cost Optimization emphasizes maximizing the value produced by a workload's resources without exceeding performance targets. As a result, cost optimization often improves performance efficiency. However, there are performance efficiency tradeoffs associated with cost optimization. These tradeoffs can make it harder to reach performance targets and hinder ongoing performance optimization.
+The Cost Optimization and Performance Efficiency pillars both prioritize maximizing a workload's value. Performance Efficiency emphasizes meeting performance targets without spending more than necessary. Cost Optimization emphasizes maximizing the value produced by a workload's resources without exceeding performance targets. As a result, Cost Optimization often improves Performance Efficiency. However, there are Performance Efficiency tradeoffs associated with Cost Optimization. These tradeoffs can make it harder to reach performance targets and hinder ongoing performance optimization.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Under-provisioned or under-scaled resources.** A performance-efficient workload has sufficient resources to serve demand but doesn't have excessive unused overhead, even when usage patterns fluctuate.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Under-provisioned or under-scaled resources.** A performance-efficient workload has enough resources to serve demand but doesn't have excessive unused overhead, even when usage patterns fluctuate.
 
 - Reducing costs by downsizing resources can deprive applications of resources. The application might not be able to handle significant usage pattern fluctuations.
 
