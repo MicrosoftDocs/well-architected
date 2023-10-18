@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 When you design a workload to maximize return on investment (ROI) under financial constraints, you first need clearly defined functional and nonfunctional requirements. A work and effort prioritization strategy is essential. The foundation is a team that has a strong sense of financial responsibility. The team should have a strong understanding of available technologies and their billing models.
 
-After you understand the ROI of a workload, you can start improving it. To improve the ROI, consider how decisions based on the [Cost Optimization design principles](./principles.md) and the recommendations in the [Design review checklist for Cost Optimization](./checklist.md) might influence the goals and optimizations of other Azure Well-Architected Framework pillars. For cost optimization, it's important to avoid focusing on a cheaper solution. Choices that focus only on minimizing spending can increase the risk of undermining your workload's business goals and reputation. This article describes example tradeoffs that a workload team might encounter when considering the target setting, design, and operations for cost optimization.
+After you understand the ROI of a workload, you can start improving it. To improve the ROI, consider how decisions based on the [Cost Optimization design principles](./principles.md) and the recommendations in the [design review checklist for Cost Optimization](./checklist.md) might influence the goals and optimizations of other Azure Well-Architected Framework pillars. For cost optimization, it's important to avoid focusing on a cheaper solution. Choices that focus only on minimizing spending can increase the risk of undermining your workload's business goals and reputation. This article describes example tradeoffs that a workload team might encounter when considering the target setting, design, and operations for cost optimization.
 
 ## Cost Optimization tradeoffs with Reliability
 
@@ -71,13 +71,13 @@ One cost optimization tactic is to look for ways to remove components or process
 
 Cloud design patterns that optimize costs sometimes necessitate the introduction of additional components. These additional components increase the surface area of the workload. The components and the data within them must be secured, possibly in ways that aren't already used in the system. These components and data are often subject to compliance. Examples of patterns that can introduce components include:
 
-- Using static content hosting to offload data to a new CDN component.
+- Using the Static Content Hosting pattern to offload data to a new CDN component.
 
 - Using the Valet Key pattern to offload processing and secure resource access to client compute.
 
-- Using queue-based load leveling to smooth costs by introducing a message bus.
+- Using the Queue-Based Load Leveling pattern to smooth costs by introducing a message bus.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Removed segmentation.** The Security pillar prioritizes strong segmentation to support the application of targeted security controls and to control blast radius.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Removed segmentation.** The Security pillar prioritizes strong segmentation to support the application of targeted security controls and to control the blast radius.
 
 Sharing resources, for example in multi-tenancy situations or co-locating multiple applications on a shared application platform, is an approach for reducing costs by increasing density and reducing the management surface. This increased density can lead to security concerns like these:
 
@@ -117,7 +117,7 @@ Sharing resources, for example in multi-tenancy situations or co-locating multip
 
 - Cost optimization design patterns can add components to a workload, increasing its complexity. The workload monitoring strategy must include those new components. For example, some patterns might introduce flows that span multiple components or shift processes from the server to the client. These changes can increase the complexity of correlating and tracking information.
 
-- Reduced investment in observability tooling and the maintenance of effective dashboards can decrease the ability to learn from production, validate design choices, and inform product design. This reduction can also hamper incident response activities and make it harder to meet the recovery time objective and service-level objective.
+- Reduced investment in observability tooling and the maintenance of effective dashboards can decrease the ability to learn from production, validate design choices, and inform product design. This reduction can also hamper incident response activities and make it harder to meet the recovery time objective and SLO.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Deferred maintenance.** Workload teams are expected to keep code, tooling, software packages, and operating systems patched and up to date in a timely and orderly way.
 
@@ -129,7 +129,7 @@ Sharing resources, for example in multi-tenancy situations or co-locating multip
 
 The Cost Optimization and Performance Efficiency pillars both prioritize maximizing a workload's value. Performance Efficiency emphasizes meeting performance targets without spending more than necessary. Cost Optimization emphasizes maximizing the value produced by a workload's resources without exceeding performance targets. As a result, Cost Optimization often improves Performance Efficiency. However, there are Performance Efficiency tradeoffs associated with Cost Optimization. These tradeoffs can make it harder to reach performance targets and hinder ongoing performance optimization.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Under-provisioned or under-scaled resources.** A performance-efficient workload has enough resources to serve demand but doesn't have excessive unused overhead, even when usage patterns fluctuate.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Underprovisioned or underscaled resources.** A performance-efficient workload has enough resources to serve demand but doesn't have excessive unused overhead, even when usage patterns fluctuate.
 
 - Reducing costs by downsizing resources can deprive applications of resources. The application might not be able to handle significant usage pattern fluctuations.
 
