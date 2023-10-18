@@ -115,7 +115,7 @@ See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-f
 - [GitHub Actions](/devops/deliver/iac-github-actions)
 - [Terraform](/azure/developer/terraform/overview)
 
-## Next steps
+## Operational Excellence checklist
 
 Refer to the complete set of recommendations.
 

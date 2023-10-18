@@ -9,7 +9,10 @@ ms.topic: conceptual
 
 # Recommendations for collecting and reviewing cost data
 
-**Applies to: CO 03** 
+**Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:** 
+
+|[CO:03](checklist.md)| Collect and review cost data. Data collection should capture daily costs. In cost reports, include incurred costs (metered), prepaid costs (amortized), trends, and forecasts. Stakeholders should regularly review spending against the budget and cost model. Automate alerts to trigger notifications at key thresholds and detect anomalies to indicate deviations from trend baselines.| 
+|---|---| 
 
 This guide describes the recommendations for collecting and reviewing cost data for your workload. Gather cost data to paint a holistic picture of your workload and ensure spending is optimized. Data collection includes all indicators of cost optimization, like billing data, resource utilization, and usage patterns.
 
@@ -19,10 +22,10 @@ Collected data allows you to understand the cost of architecture decisions and b
 
 |Term  |Definition  |
 |---------|---------|
+|Billing boundary     |   The scope of what a bill includes.      |
+|Chargeback     |  An accounting model in which you charge departments for their workload usage and receive payments from them.       |
 |Resource utilization     | The amount of resource capacity a workload uses.        |
 |Showback     |  An accounting model in which you show departments the cost of their workload usage, and you don't receive payment from them.       |
-|Chargeback     |  An accounting model in which you charge departments for their workload usage and receive payments from them.       |
-|Billing boundary     |   The scope of what a bill includes.      |
 
 ## Key design strategies
 
@@ -154,9 +157,9 @@ Implement automated processes to identify and address cost variances in real-tim
 - [Group and allocate costs using tag inheritance](/azure/cost-management-billing/costs/enable-tag-inheritance).
 - [Allocate Azure costs](/azure/cost-management-billing/costs/allocate-costs)
 
-## Next steps
+## Cost Optimization checklist  
 
-We recommend that you review the Cost Optimization checklist to explore other concepts.
+Refer to the complete set of recommendations. 
 
-> [!div class="nextstepaction"]
-> [Cost Optimization checklist](checklist.md)
+> [!div class="nextstepaction"] 
+> [Cost Optimization checklist](checklist.md) 

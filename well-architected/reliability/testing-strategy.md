@@ -21,10 +21,11 @@ This guide describes the recommendations for designing a reliability testing str
 | Term | Definition  |
 |---------|---------|
 | Availability | The amount of time that an application workload runs in a healthy state without significant downtime. |
-| Resiliency | An application workload's ability to withstand and recover from failure modes. |
-| Recoverability | A synonym for resiliency. |
 | Chaos engineering | The practice of subjecting applications and services to real-world stresses and failures. The goal of chaos engineering is to build and validate resilience to unreliable conditions and missing dependencies. |
 | Fault injection | The act of introducing an error to a system to test the resiliency of the system. |
+| Recoverability | A synonym for resiliency. |
+| Resiliency | An application workload's ability to withstand and recover from failure modes. |
+
 
 ## Key design strategies
 
