@@ -9,7 +9,7 @@ ms.topic: conceptual
 
 # Recommendations for aligning usage to billing increments: CO 06
 
-This guide describes the recommendations for aligning resource usage to billing increments. Aligning billing with workload refers to the alignment of resource usage and billing increments. Resources are billed at specific increments, such as per hour or per instance. You need to align your usage to those increments for cost optimization. For example, if a workload is designed to run for 1.2 hours but the billing model rounds up to the nearest hour, you pay for two hours of usage. It’s almost a full hour of unused resources. You must either adapt the resource to workload usage or adapt the workload to the resource billing increments. Following this guidance helps ensure the workload derives maximum value from each resource. Failing to align billing and design introduces waste.
+This guide describes the recommendations for aligning resource usage to billing increments. Aligning billing with workload refers to the alignment of resource usage and billing increments. Resources are billed at specific increments, such as per hour or per instance. You need to align your usage to those increments for cost optimization. You must either adapt the resource to workload usage or adapt the workload to the resource billing increments. Following this guidance helps ensure the workload derives maximum value from each resource. Failing to align billing and design introduces waste.
 
 **Definitions**
 
@@ -20,7 +20,7 @@ This guide describes the recommendations for aligning resource usage to billing 
 
 ## Key design strategies
 
-You can save a significant amount by aligning your actual usage with the billing increments and factors that your service provider employs. Aim to minimize costs by using resources only when essential. Be cautious of choices that could lead to unnecessary expenses. Costs can arise from factors like time, the number of transactions, data size, regional boundaries, storage use, and reaching certain thresholds. For instance, just deploying a new instance of a service might result in a charge. Sometimes, starting and stopping a service might cost more than letting it run. You need to understand the workload's specific needs and familiarize yourself with how different resources bill you. Based on your findings, adjust the usage or the resource to optimize cost.
+Aligning resource usage to billing increments is about making sure your consumption of resources closely matches the intervals or quantities for which you're charged. For instance, if a service charges by the hour but you use it only for a fraction of that time, adjusting your operations to maximize that hour's use would be an alignment strategy. Understanding how you are billed for a service, especially the specific increments like hourly rates, per gigabyte of storage, or per number of requests, is can save you money. Adjusting either the service's configuration or how you consume the service to fit these billing increments can ensure you're not incurring unnecessary costs. You need to understand the workload's specific needs and familiarize yourself with how different resources bill you. Based on your findings, adjust the usage or the resource to optimize cost.
 
 ### Determine billing factors and increments
 
