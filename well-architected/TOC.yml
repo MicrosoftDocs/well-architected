@@ -4,6 +4,8 @@ items:
     items:
       - name: Overview
         href: ./index.md
+      - name: What's new
+        href: changelog.md
       - name: Reliability
         items:
           - name: About
@@ -580,7 +582,7 @@ items:
                   - name: Cost optimization
                     href: services/data/azure-db-mysql/cost-optimization.md
               - name: Azure Database for PostgreSQL
-                href: services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework.md
+                href: services/data/postgresql.md
               - name: Azure SQL Database
                 href: services/data/azure-sql-database-well-architected-framework.md
               - name: Azure SQL Managed Instance

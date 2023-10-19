@@ -1,13 +1,15 @@
 ---
 title: Microsoft Azure Well-Architected Framework review for Azure Database for PostgreSQL
-description: Provides a template for a Well-Architected Framework (WAF) article that is specific for Azure Database for PostgreSQL.
+description: Design considerations and recommendations for each pillar as related to solutions using Azure Database for PostgreSQL.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.reviewer: maghan
 ms.date: 09/13/2023
-ms.service: architecture-center
-ms.subservice: well-architected
+ms.service: waf
+ms.subservice: waf-service-guide
 ms.topic: conceptual
+products:
+  - azure-database-postgresql
 ---
 # Azure Well-Architected Framework review - Azure Database for PostgreSQL
 
