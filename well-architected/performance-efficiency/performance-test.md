@@ -33,9 +33,9 @@ Preparing performance tests refers to the activities involved in setting up and 
 
 Acceptance criteria specify the performance requirements that need to be met for the workload to be considered acceptable or successful. Define criteria that align with the performance targets.
 
-**Review performance targets:** Performance targets define the desired level of performance for your workload. Review the performance targets you established for the workload. Performance targets are metrics response time, throughput, resource utilization, or any other relevant performance indicators. For example, you might have a target for response time to be under a certain threshold (less than 2 seconds).
+*Review performance targets.* Performance targets define the desired level of performance for your workload. Review the performance targets you established for the workload. Performance targets are metrics response time, throughput, resource utilization, or any other relevant performance indicators. For example, you might have a target for response time to be under a certain threshold (less than 2 seconds).
 
-**Define acceptance criteria:** Translate the performance targets into specific acceptance criteria that can be used to evaluate the performance of the workload. For example, if the performance target for response time is to be under 2 seconds, the acceptance criterion could be "The average response time of the workload should be less than 2 seconds." Use these acceptance criteria to determine whether the workload meets the desired level of performance.
+*Define acceptance criteria.* Translate the performance targets into specific acceptance criteria that can be used to evaluate the performance of the workload. For example, if the performance target for response time is to be under 2 seconds, the acceptance criterion could be "The average response time of the workload should be less than 2 seconds." Use these acceptance criteria to determine whether the workload meets the desired level of performance.
 
 When defining acceptance criteria, it's important to focus on the user and their expectations. Acceptance criteria help ensure that the delivered work meets the user's needs and requirements. Here are some considerations for incorporating the user perspective into acceptance criteria:
 
@@ -44,9 +44,9 @@ When defining acceptance criteria, it's important to focus on the user and their
 - *Functional requirements:* Address the specific functionality that the user expects to see in the workload. Define acceptance criteria around these functional requirements to ensure they're met.
 - *Use cases:* Consider different scenarios or use cases that the user might encounter. Define acceptance criteria based on these use cases to validate the workload's performance in real-world situations.
 
-**Set acceptance thresholds.** Determine the thresholds within the acceptance criteria that indicate whether the workload meets the performance targets. These thresholds define the acceptable range of performance for each metric. For example, if the acceptance criterion for response time is less than 2 seconds, the threshold could be set at 2.5 seconds, indicating that any response time over 2.5 seconds would be considered a performance issue.
+*Set acceptance thresholds.* Determine the thresholds within the acceptance criteria that indicate whether the workload meets the performance targets. These thresholds define the acceptable range of performance for each metric. For example, if the acceptance criterion for response time is less than 2 seconds, the threshold could be set at 2.5 seconds, indicating that any response time over 2.5 seconds would be considered a performance issue.
 
-**Define passing criteria:** Establish the criteria for determining whether the workload has passed or failed the performance test. You could define passing as meeting all the acceptance criteria or achieving a certain percentage of them.
+*Define passing criteria.* Establish the criteria for determining whether the workload has passed or failed the performance test. You could define passing as meeting all the acceptance criteria or achieving a certain percentage of them.
 
 #### Select test type
 

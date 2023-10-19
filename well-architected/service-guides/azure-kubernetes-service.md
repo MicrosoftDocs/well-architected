@@ -87,8 +87,9 @@ In the **design checklist** and **list of recommendations** below, call-outs are
 ### Design checklist
 
 > [!div class="checklist"]
+>
 > - **Cluster architecture:** Use [Managed Identities](/azure/aks/use-managed-identity) to avoid managing and rotating service principles.
-> - **Cluster architecture:** Use Kubernetes role-based access control (RBAC) with Azure AD for [least privilege](/azure/aks/azure-ad-rbac) access and minimize granting administrator privileges to protect configuration, and secrets access.
+> - **Cluster architecture:** Use Kubernetes role-based access control (RBAC) with Microsoft Entra ID for [least privilege](/azure/aks/azure-ad-rbac) access and minimize granting administrator privileges to protect configuration, and secrets access.
 > - **Cluster architecture:** Use Microsoft Defender for containers with [Azure Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your cluster and workloads running on them.
 > - **Cluster architecture:** Deploy a private AKS cluster to ensure cluster management traffic to your API server remains on your private network. Or use the API server allow list for non-private clusters.
 > - **Workload architecture:** Use a Web Application Firewall to secure HTTP(S) traffic.
@@ -100,17 +101,17 @@ Explore the following table of recommendations to optimize your AKS configuratio
 
 |Recommendation|Benefit|
 |----------------------------------|-----------|
-|**Cluster architecture:** Use Azure Active Directory integration.|Using Azure AD centralizes the identity management component. Any change in user account or group status is automatically updated in access to the AKS cluster. The developers and application owners of your Kubernetes cluster need access to different resources.|
-|**Cluster architecture:** Authenticate with Azure Active Directory (Azure AD) to Azure Container Registry.|AKS and Azure AD enables authentication with Azure Container Registry without the use of `imagePullSecrets` secrets. Review [Authenticate with Azure Container Registry from Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration?tabs=azure-cli) for more information.|
+|**Cluster architecture:** Use Microsoft Entra integration.|Using Microsoft Entra ID centralizes the identity management component. Any change in user account or group status is automatically updated in access to the AKS cluster. The developers and application owners of your Kubernetes cluster need access to different resources.|
+|**Cluster architecture:** Authenticate with Microsoft Entra ID to Azure Container Registry.|AKS and Microsoft Entra ID enables authentication with Azure Container Registry without the use of `imagePullSecrets` secrets. Review [Authenticate with Azure Container Registry from Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration?tabs=azure-cli) for more information.|
 |**Cluster architecture:** Secure network traffic to your API server with [private AKS cluster](/azure/aks/private-clusters).|By default, network traffic between your node pools and the API server travels the Microsoft backbone network; by using a private cluster, you can ensure network traffic to your API server remains on the private network only.|
 |**Cluster architecture:** For non-private AKS clusters, use API server authorized IP ranges.|When using public clusters, you can still limit the traffic that can reach your clusters API server by using the authorized IP range feature. Include sources like the public IPs of your deployment build agents, operations management, and node pools' egress point (such as Azure Firewall).|
-|**Cluster architecture:** Protect the API server with Azure Active Directory RBAC.|Securing access to the Kubernetes API Server is one of the most important things you can do to secure your cluster. Integrate Kubernetes role-based access control (RBAC) with Azure AD to control access to the API server. [Disable local accounts](/azure/aks/managed-aad#disable-local-accounts) to enforce all cluster access using Azure AD-based identities.|
+|**Cluster architecture:** Protect the API server with Microsoft Entra RBAC.|Securing access to the Kubernetes API Server is one of the most important things you can do to secure your cluster. Integrate Kubernetes role-based access control (RBAC) with Microsoft Entra ID to control access to the API server. [Disable local accounts](/azure/aks/managed-aad#disable-local-accounts) to enforce all cluster access using Microsoft Entra ID-based identities.|
 |**Cluster architecture:** Use [Azure network policies](/azure/aks/use-network-policies) or Calico.| Secure and control network traffic between pods in a cluster.|
 |**Cluster architecture:** Secure clusters and pods with [Azure Policy](/azure/aks/use-azure-policy). | Azure Policy can help to apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. It can also control what functions pods are granted and if anything is running against company policy. |
 |**Cluster architecture:** Secure container access to resources.|Limit access to actions that containers can perform. Provide the least number of permissions, and avoid the use of root or privileged escalation.|
 |**Workload architecture:** Use a Web Application Firewall to secure HTTP(S) traffic.|To scan incoming traffic for potential attacks, use a web application firewall such as [Azure Web Application Firewall (WAF) on Azure Application Gateway](/azure/web-application-firewall/ag/ag-overview) or [Azure Front Door](/azure/web-application-firewall/afds/afds-overview).|
 |**Cluster architecture:** Control cluster egress traffic.|Ensure your cluster's outbound traffic is passing through a network security point such as [Azure Firewall](/azure/aks/limit-egress-traffic#restrict-egress-traffic-using-azure-firewall) or an [HTTP proxy](/azure/aks/http-proxy).|
-|**Cluster architecture:** Use the open-source [Azure AD Workload Identity](https://github.com/Azure/azure-workload-identity) and [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with Azure Key Vault.| Protect and rotate secrets, certificates, and connection strings in Azure Key Vault with strong encryption. Provides an access audit log, and keeps core secrets out of the deployment pipeline.|
+|**Cluster architecture:** Use the open-source [Microsoft Entra Workload ID](https://github.com/Azure/azure-workload-identity) and [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with Azure Key Vault.| Protect and rotate secrets, certificates, and connection strings in Azure Key Vault with strong encryption. Provides an access audit log, and keeps core secrets out of the deployment pipeline.|
 |**Cluster architecture:** Use [Microsoft Defender for Containers](/azure/defender-for-cloud/defender-for-containers-introduction). |Monitor and maintain the security of your clusters, containers, and their applications.|
 
 For more suggestions, see [Principles of the security pillar](/azure/well-architected/security/security-principles).
@@ -126,7 +127,7 @@ There are a numerous number of policies, and key policies related to this pillar
 #### Cluster architecture
 
 - Microsoft Defender for Cloud-based policies
-- Authentication mode and configuration policies (Azure AD, RBAC, disable local authentication)
+- Authentication mode and configuration policies (Microsoft Entra ID, RBAC, disable local authentication)
 - API Server network access policies, including private cluster
 
 #### Cluster and workload architecture
@@ -183,7 +184,7 @@ Explore the following table of recommendations to optimize your AKS configuratio
 |**Cluster architecture:** Sign up for [Azure Reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) or [Azure Savings Plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview). | If you properly planned for capacity, your workload is predictable and exists for an extended period of time, sign up for an [Azure Reservation](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview#determine-your-savings-plan-commitment) to further reduce your resource costs.|
 |**Cluster architecture:** Configure monitoring of cluster with [Container insights](/azure/azure-monitor/containers/container-insights-overview). | Container insights help provides actionable insights into your clusters idle and unallocated resources. Container insights also supports collecting Prometheus metrics and integrates with Azure Managed Grafana to get a holistic view of your application and infrastructure.|
 
-For more suggestions, see [Principles of the cost optimization pillar](../cost-optimization/overview.md).
+For more suggestions, see [Principles of the cost optimization pillar](../cost-optimization/index.yml).
 
 ### Policy definitions
 

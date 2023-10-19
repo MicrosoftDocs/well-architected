@@ -28,7 +28,7 @@ This guide describes the recommendations for using IaC as the standard for your 
 
 ## Key design strategies
 
-As discussed in the [supply chain](workload-supply-chain.md) and [optimizing deployment practices](optimize-development-practices.md) guides, you should have a strict policy of  deploying infrastructure changes (including configuration changes) only through code. You should deploy IaC through your continuous integration and continuous delivery (CI/CD) pipelines. Adopting these policies enforces consistency in processes for all IaC deployments, minimizes the risk of configuration drift across your environments, and ensures infrastructure consistency across your environments. Additionally, you should standardize your IaC development and deployment tools and processes in a style guide. Recommendations for your style guide include:
+As discussed in the [supply chain](workload-supply-chain.md) and [standardizing tools and processes](tools-processes.md) guides, you should have a strict policy of  deploying infrastructure changes (including configuration changes) only through code. You should deploy IaC through your continuous integration and continuous delivery (CI/CD) pipelines. Adopting these policies enforces consistency in processes for all IaC deployments, minimizes the risk of configuration drift across your environments, and ensures infrastructure consistency across your environments. Additionally, you should standardize your IaC development and deployment tools and processes in a style guide. Recommendations for your style guide include:
 
 **Prefer declarative over imperative tools.** Declarative tools and their associated files are a better overall choice for deploying and managing IaC than imperative tools. Declarative tools use a simpler syntax for their definition files, defining only the desired state of the environment after the deployment finishes. Imperative tools depend on you defining the steps required to get to the desired end-state, so the files can be much more complex than declarative files. Declarative definition files also help reduce the technical debt of maintaining imperative code, like deployment scripts, that can accrue over time.
 
@@ -105,7 +105,7 @@ See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-f
 - [Enterprise infrastructure as code using Bicep and Azure Container Registry](/azure/architecture/guide/azure-resource-manager/advanced-templates/enterprise-infrastructure-bicep-container-registry)
 - [Discover misconfigurations in IaC](/azure/defender-for-cloud/iac-vulnerabilities)
 - [Recommendations for designing a workload development supply chain](workload-supply-chain.md)
-- [Recommendations for optimizing development practices through standardization](optimize-development-practices.md)
+- [Recommendations for standardizing tools and processes](tools-processes.md)
 - [Recommendations for securing a development lifecycle](../security/secure-development-lifecycle.md)
 - [Recommendations for using safe deployment practices](safe-deployments.md)
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
@@ -115,7 +115,7 @@ See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-f
 - [GitHub Actions](/devops/deliver/iac-github-actions)
 - [Terraform](/azure/developer/terraform/overview)
 
-## Next steps
+## Operational Excellence checklist
 
 Refer to the complete set of recommendations.
 

@@ -32,12 +32,12 @@ This guide describes the recommendations for scaling and partitioning a workload
 | Partitioning | The process of physically dividing data into separate data stores.|
 | Scalability | The ability of a workload to dynamically change its capacity limits to accommodate varying levels of demand.|
 | Scale unit| A group of resources that must scale proportionately together to maintain balanced performance. |
-| State affinity | The storage of client session data on a single server so that subsequent requests from the same client are handled by the same server. |
+| State affinity | The storage of client session data on a single server so that the same server handles subsequent requests from the same client. |
 | Vertical scaling| A scaling approach that adds compute capacity to existing resources.|
 
 ## Key design strategies
 
-Both scaling and partitioning contribute to performance efficiency by ensuring that resources are used effectively and the system can handle varying workloads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands. Scaling ensures you can expand workload capacity to meet increasing demands. Partitioning allows you to divide tasks or data efficiently to handle these growing needs. The foundation of both these processes is the scale unit design of the workload. It dictates how your workload should grow and distribute tasks. By incorporating a reliable and controlled approach to scaling and partitioning, you can sidestep potential system inefficiencies.
+Both scaling and partitioning contribute to performance efficiency by ensuring that resources are used effectively and the workload can handle varying loads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands. Scaling ensures you can expand workload capacity to meet increasing demands. Partitioning allows you to divide tasks or data efficiently to handle these growing needs. The foundation of both these processes is the scale unit design of the workload. It dictates how your workload should grow and distribute tasks. By incorporating a reliable and controlled approach to scaling and partitioning, you can sidestep potential workload inefficiencies.
 
 ### Optimize scaling
 
@@ -59,13 +59,11 @@ Choosing a scaling strategy involves deciding between vertical or horizontal met
 
 - *Architecture*: Assess the design of the application architecture. Some applications might be inherently designed to scale horizontally, with stateless components that can be easily distributed across multiple instances. Other applications might have stateful components or dependencies that make vertical scaling more appropriate. Evaluate the scalability and elasticity requirements of the workload.
 
-#### Design for infrastructure scalability
+#### Design infrastructure to scale
 
-Designing for infrastructure scalability is the process of creating an architecture that can handle increasing demands and workload by adding or adjusting resources as needed. It involves planning and implementing solutions that can scale horizontally or vertically to accommodate growth. Strategies include avoiding singletons that can become bottlenecks and decoupling application components to ensure independent scalability. When you design a workload to be scalable, it can effectively distribute the workload across multiple resources, which prevents bottlenecks and maximizes resource utilization.
+Designing infrastructure to scale is the process of creating an architecture that can handle increasing demands and workload by adding or adjusting resources as needed. It involves planning and implementing solutions that can scale horizontally or vertically to accommodate growth. Strategies include avoiding singletons that can become bottlenecks and decoupling application components to ensure independent scalability. When you design a workload to be scalable, it can effectively distribute the workload across multiple resources, which prevents bottlenecks and maximizes resource utilization.
 
-##### Avoid singletons
-
-You should avoid the use of a single, centralized resource for the entire workload. Instead, distribute your workload across multiple resources for better scalability, fault tolerance, and performance. Explore some specific examples and design considerations to avoid singletons in workload resources:
+**Avoid singletons.** You should avoid the use of a single, centralized resource for the entire workload. Instead, distribute your workload across multiple resources for better scalability, fault tolerance, and performance. Explore some specific examples and design considerations to avoid singletons in workload resources:
 
 - *[Queue-based load leveling](/azure/architecture/patterns/queue-based-load-leveling)*: Instead of relying on a single queue to process messages, consider partitioning the workload across multiple queues to distribute the processing load. It provides better scalability and parallel processing.
 
@@ -73,9 +71,7 @@ You should avoid the use of a single, centralized resource for the entire worklo
 
 - *Design patterns*: Design patterns such as [Fan-out/Fan-in](/azure/azure-functions/durable/durable-functions-overview#fan-in-out) or [Pipes and Filters](/azure/architecture/patterns/pipes-and-filters) can help avoid singletons in workflows. These patterns enable the distribution of processing tasks across multiple resources and promote scalability and flexibility.
 
-##### Decouple components
-
-Decoupling application components is an important aspect of designing for scalability. It involves breaking down the application into smaller, independent components that can operate and scale independently based on specific workload requirements. For example, if one component requires more resources due to increased demand, you can scale that component without affecting the others. This flexibility ensures efficient resource allocation and prevents bottlenecks. By decoupling components, you can isolate failures and minimize the effect on the overall application. If one component fails, the other components can continue to function independently.
+**Decouple components.** Decoupling application components is an important aspect of designing for scalability. It involves breaking down the application into smaller, independent components that can operate and scale independently based on specific workload requirements. For example, if one component requires more resources due to increased demand, you can scale that component without affecting the others. This flexibility ensures efficient resource allocation and prevents bottlenecks. By decoupling components, you can isolate failures and minimize the effect on the overall application. If one component fails, the other components can continue to function independently.
 
 Decoupled components are easier to maintain and update. Changes or updates to one component can be made without affecting the others because they're independent. Follow these guidelines to decouple application components for scalability:
 
@@ -87,51 +83,29 @@ Decoupled components are easier to maintain and update. Changes or updates to on
 
 - *Microservices*: Consider implementing microservices, which are small, independent services that focus on specific business functionalities. Each microservice can be developed, deployed, and scaled independently, providing greater flexibility and scalability.
 
-#### Design for application scalability
+#### Design application to scale
 
-As you scale a workload, you should design the application to distribute the load. Just because you can add more replicas at the infrastructure level doesn't mean your application can use the replicas. Avoid solutions that require client affinity, data locking, or state affinity for a single instance if possible. You want to route a client or process to a resource that has available capacity.
+As you scale a workload, you should design the application to distribute the load. Just because you can add more replicas at the infrastructure level doesn't mean your application can use the replicas. Designing an application to scale is about structuring an application so it can handle increased demands by distributing its workload across resources. Avoid solutions that require client affinity, data locking, or state affinity for a single instance if possible. You want to route a client or process to a resource that has available capacity. To design for application scalability, consider the following strategies:
 
-##### Eliminate server-side session state
-
-You should design applications to be stateless where possible. For stateful applications, you should use a state store that's external to your server. Externalizing session state is the practice of storing session data outside of the application server or container. You can externalize session state to distribute session data across multiple servers or services, enabling seamless session management in a distributed environment. Consider the following when externalizing session state:
+*Eliminate server-side session state.* You should design applications to be stateless where possible. For stateful applications, you should use a state store that's external to your server. Externalizing session state is the practice of storing session data outside of the application server or container. You can externalize session state to distribute session data across multiple servers or services, enabling seamless session management in a distributed environment. Consider the following when externalizing session state:
 
 - *Evaluate your session requirements.* Understand the session data that needs to be stored and managed. Consider session attributes, session timeouts, and any specific requirements for session replication or persistence. Determine the size of your session state and the frequency of read and write operations.
-
+  
 - *Choose a solution.* Select a storage solution that aligns with your performance and scalability needs. Options include using a distributed cache, a database, or a session state service. Consider factors such as data consistency, latency, and scalability when making your choice.
-
+  
 - *Set up your application.* Update your application to use the chosen session state storage solution. You might need to change your application's configuration files or code to connect to the external storage service.
-
+  
 - *Update your logic.* Change your application's session management logic to store and retrieve session data from the external storage solution. You might need to use APIs or libraries provided by the storage solution to manage session state.
 
-##### Eliminate client affinity
+*Eliminate client affinity.* Client affinity is also known as session affinity or sticky sessions. When you eliminate client affinity, you distribute client requests evenly across multiple replicas or servers, without routing all requests from a client to the same replica. This configuration can improve the scalability and performance of applications by allowing any available replica to process the requests.
 
-Client affinity is also known as session affinity or sticky sessions. When you eliminate client affinity, you distribute client requests evenly across multiple replicas or servers, without routing all requests from a client to the same replica. This configuration can improve the scalability and performance of applications by allowing any available replica to process the requests.
+*Review your load balancing algorithm.* A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. Pinning can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
 
-##### Review your load balancing algorithm
+*Eliminate data locking.* Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
 
-A load balancing algorithm can cause unintentional and artificial client pinning where too many requests are sent to one back-end instance. This can happen if the algorithm is set up to always send requests from the same user to the same instance, or if the requests are too similar to each other.
+*Use dynamic service discovery.* Dynamic service discovery is the process of automatically detecting and registering services in a distributed system. It allows clients to discover available services without being tightly coupled to specific instances. Clients shouldn't be able to take a direct dependency on a specific instance in the workload. To avoid these dependencies, you should use a proxy to distribute and redistribute client connections. The proxy acts as an intermediary between clients and services, providing a layer of abstraction that allows services to be added or removed without affecting clients.
 
-##### Eliminate data locking
-
-Data locking ensures consistency but has performance disadvantages. It can cause lock escalations and negatively affect concurrency, latency, and availability. To eliminate data locking, you should implement [optimistic concurrency](/sql/connect/ado-net/optimistic-concurrency). Nonrelational databases should use [optimistic concurrency control](/azure/cosmos-db/nosql/database-transactions-optimistic-concurrency#optimistic-concurrency-control) and have the right [consistency level](/azure/cosmos-db/consistency-levels). Your data partitioning strategy should also support your concurrency needs.
-
-##### Use dynamic service discovery
-
-Dynamic service discovery is the process of automatically detecting and registering services in a distributed system. It allows clients to discover available services without being tightly coupled to specific instances. Clients shouldn't be able to take a direct dependency on a specific instance in the workload. To avoid these dependencies, you should use a proxy to distribute and redistribute client connections. The proxy acts as an intermediary between clients and services, providing a layer of abstraction that allows services to be added or removed without affecting clients.
-
-##### Add retry logic
-
-It's important to add retry logic to an application when scaling to handle temporary failures and maintain application availability and reliability. Scaled applications, especially in a distributed system, might result in increased load and potential failures due to network issues, resource limitations, or service disruptions. Retry logic allows the application to automatically retry failed operations, such as connecting to a service or making a network request, after a certain period of time. Retry logic helps to mitigate transient failures and gives the system a chance to recover without causing disruptions or affecting user experience. To add retry logic to your application:
-
-1. Identify the operations or services that require retry logic. These operations or services can include database connections, API calls, or any other external dependencies.
-
-1. Determine the appropriate retry strategy based on the specific requirements of your application. The configuration might involve setting the number of retries, the time interval between retries, and any extra conditions for retrying.
-
-1. Implement the retry logic in your application code. Wrap the relevant operations or service calls in a retry loop, or, use libraries or frameworks that provide built-in retry functionality.
-
-##### Use background tasks
-
-When an application is scaled, it can handle an increasing workload or a higher number of concurrent requests. Offloading intensive tasks as background tasks allows the main application to handle user requests without resource-intensive operations overwhelming it. Follow these steps to offload tasks as background tasks:
+*Use background tasks.* When an application is scaled, it can handle an increasing workload or a higher number of concurrent requests. Offloading intensive tasks as background tasks allows the main application to handle user requests without resource-intensive operations overwhelming it. Follow these steps to offload tasks as background tasks:
 
 1. Find the CPU-intensive and I/O-intensive tasks in your application that you can offload. These tasks typically involve heavy computations or interactions with external resources such as databases or network operations.
 
@@ -141,53 +115,55 @@ When an application is scaled, it can handle an increasing workload or a higher 
 
 1. Distribute background tasks if there are many of them, or if the tasks require substantial time or resources. For one possible solution, see the [Competing Consumers pattern](/azure/architecture/patterns/competing-consumers).
 
-#### Implement scaling
+#### Configure scaling
 
-Implement scaling in a workload by adjusting the available resources, such as computing power and storage, based on the changing demands of the workload. You can add or remove resources dynamically to accommodate variations in workload requirements.
+Configuring scaling is the process of setting up and adjusting parameters to dynamically allocate resources based on workload demands. It encompasses strategies such as using autoscaling features, understanding service scaling boundaries, and implementing meaningful load metrics. Proper configuration ensures that an application can respond to varying demands while maximizing efficiency. When you configure scaling, consider the following strategies:
 
-**Use services with autoscaling.** The autoscale feature automatically scales infrastructure to meet demand. Use platform as a service (PaaS) offerings with built-in autoscale features. The ease of scaling on PaaS is a major advantage. For example, scaling out virtual machines requires a separate load balancer, client-request handling, and externally stored state. PaaS offerings handle most of these tasks.
+*Use services with autoscaling.* The autoscale feature automatically scales infrastructure to meet demand. Use platform as a service (PaaS) offerings with built-in autoscale features. The ease of scaling on PaaS is a major advantage. For example, scaling out virtual machines requires a separate load balancer, client-request handling, and externally stored state. PaaS offerings handle most of these tasks.
 
-**Understand service scaling boundaries.** When you understand service scaling limits, increments, and restrictions, you can make informed decisions when selecting a service. Scaling boundaries determine whether or not your chosen service can handle the expected workload, scale efficiently, and meet the performance requirements of your application. Scaling boundaries to consider include:
+*Constrain autoscaling.* Set automatic scaling limits to minimize over-scaling that could result in unnecessary costs. Sometimes you can't set scaling limits. In these cases, you should set alerts to notify you when the component has reached the maximum scale limit and when it's over-scaled.
+
+*Understand service scaling boundaries.* When you understand service scaling limits, increments, and restrictions, you can make informed decisions when selecting a service. Scaling boundaries determine whether or not your chosen service can handle the expected workload, scale efficiently, and meet the performance requirements of your application. Scaling boundaries to consider include:
 
 - *Scaling limits*: Scaling limits are the maximum capacity that a location or service can handle. It's important to know these limits to help ensure that the service can accommodate the expected workload and handle peak usage without performance degradation. Every resource has an upper scale limit. If you need to go beyond scale limits, you should partition your workload.
-
+  
 - *Scaling increments*: Services scale at defined increments. For example, compute services might scale by instances and pods while databases might scale by instances, transaction units, and virtual cores. It's important to understand these increments to optimize resource allocation and prevent resource flapping.
+  
+- *Scaling restrictions*: Some services allow you to scale up or out but limit your ability to automatically reverse scaling. You're forced to scale in manually, or you might have to redeploy a new resource. These limitations are often to protect the workload. Scaling down or scaling in can have implications on the availability and performance of the workload. A service might enforce certain limitations or constraints to help ensure that the workload has sufficient resources to operate effectively. These limitations can affect data consistency and synchronization, especially in distributed systems. The service might have mechanisms in place to handle data replication and consistency during scaling up or out but might not provide the same level of support for scaling down or in.
 
-- *Scaling restrictions*: Some services allow you to scale up or out but limit your ability to automatically reverse scaling. You're forced to scale in manually, or you might have to redeploy a new resource. These limitations are often to protect the workload. Scaling down or scaling in can have implications on the availability and performance of the workload. A service might enforce certain limitations or constraints to help ensure that the workload has sufficient resources to operate effectively. This can affect data consistency and synchronization, especially in distributed systems. The service might have mechanisms in place to handle data replication and consistency during scaling up or out but might not provide the same level of support for scaling down or in.
+*Use meaningful load metrics.* Scaling should use meaningful load metrics as scaling triggers. Meaningful load metrics include simple metrics, like CPU or memory. They also include more advanced metrics, such as queue depth, SQL queries, custom metrics queries, and HTTP queue length. Consider using a combination of simple and advanced load metrics as your scaling trigger.
 
-**Use meaningful load metrics.** Scaling should use meaningful load metrics as scaling triggers. Meaningful load metrics include simple metrics, like CPU or memory, or more advanced metrics, such as queue depth, SQL queries, custom metrics queries, and HTTP queue length. Consider using a combination of simple and advanced load metrics as your scaling trigger.
+*Use a buffer.* A buffer is unused capacity that can be used to handle spikes in demand. A well-designed workload plans for unexpected spikes in workload. You should add a buffer to handle spikes for horizontal and vertical scaling.
 
-**Constrain autoscaling.** Set automatic scaling limits to minimize over-scaling that could result in unnecessary costs. Sometimes you can't set scaling limits. In these cases, you should set alerts to notify you when the component has reached the maximum scale limit and when it's over-scaled.
-
-**Use a buffer.** A buffer is unused capacity that can be used to handle spikes in demand. A well-designed workload plans for unexpected spikes in workload. You should add a buffer to handle spikes for horizontal and vertical scaling.
-
-**Prevent flapping.** Flapping is a looping condition that occurs when one scale event triggers an opposite scale event, creating a continuous back-and-forth scaling action. For example, if scaling in reduces the number of instances, it might cause the CPU usage to rise in the remaining instances, triggering a scale-out event. The scale-out event, in turn, causes the CPU usage to drop, repeating the process.
+*Prevent flapping.* Flapping is a looping condition that occurs when one scale event triggers an opposite scale event, creating a continuous back-and-forth scaling action. For example, if scaling in reduces the number of instances, it might cause the CPU usage to rise in the remaining instances, triggering a scale-out event. The scale-out event, in turn, causes the CPU usage to drop, repeating the process.
 
 It's important to choose an adequate margin between the scale-out and scale-in thresholds to avoid flapping. You can prevent frequent and unnecessary scale-in and scale-out actions by setting thresholds that provide a significant difference in CPU usage.
 
-**Use Deployment Stamps.** There are techniques that make it easier to scale a workload. You can use the [Deployment Stamps](/azure/architecture/patterns/deployment-stamp) pattern to easily scale a workload by adding one or more scale units.
+*Use Deployment Stamps.* There are techniques that make it easier to scale a workload. You can use the [Deployment Stamps](/azure/architecture/patterns/deployment-stamp) pattern to easily scale a workload by adding one or more scale units.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: While scaling helps optimize costs by adjusting capacity to meet demand, it can result in overall increased cost during long periods of high demand.
 
 #### Test scaling
 
-Conduct load and stress tests to evaluate the performance of the workload under different scaling scenarios. You can use nonproduction environments to test vertical and horizontal scaling. Testing can help determine which scaling approach is most effective in improving performance efficiency. To test scaling in a workload, follow these steps:
+Testing scaling involves simulating various workload scenarios in a controlled environment to evaluate how a workload responds to different levels of demand. It helps ensure the workload scales efficiently, maximizing performance efficiency during varied loads.
 
-1. Identify the key workload scenarios that you need to test, such as increasing user traffic, concurrent requests, data volume, or resource use.
+You need to ensure that your workload scales efficiently under real-world conditions. It's essential to perform load and stress tests in an environment that mirrors your production setup. These tests, conducted in nonproduction environments, enable you to evaluate both vertical and horizontal scaling strategies and determine which one optimizes performance most effectively. Here's a recommended approach to testing scaling:
 
-1. Create a separate testing environment that closely resembles the production environment in terms of infrastructure, configuration, and data.
+- *Define workload scenarios.* Identify the key workload scenarios that you need to test, such as increasing user traffic, concurrent requests, data volume, or resource use.
 
-1. Define the performance metrics to measure, such as response time, throughput, CPU and memory utilization, and error rates.
+- *Use production-like test environment.* Create a separate testing environment that closely resembles the production environment in terms of infrastructure, configuration, and data.
 
-1. Develop test cases that simulate different workload scenarios, gradually increasing the load to assess the performance at various levels.
+- *Set performance metrics.* Define the performance metrics to measure, such as response time, throughput, CPU and memory utilization, and error rates.
 
-1. Run the tests using the defined test cases and collect performance data at each load level. Monitor system behavior, resource consumption, and performance degradation.
+- *Develop test cases.* Develop test cases that simulate different workload scenarios, gradually increasing the load to assess the performance at various levels.
 
-1. Analyze the test results to identify performance bottlenecks, scalability limitations, or areas for improvement. Optimize the system configuration, infrastructure, or code to enhance scalability and performance. It takes time for scaling to complete, so test the effects of scaling delays.
+- *Execute and monitor tests.* Run the tests using the defined test cases and collect performance data at each load level. Monitor workload behavior, resource consumption, and performance degradation.
 
-1. Find potential dependency issues. Scaling or partitioning in one area of a workload might cause performance issues on a dependency. The stateful parts of a system, such as databases, are the most common cause of dependency performance issues. Databases require careful design to scale horizontally. You should consider measures, such as [optimistic concurrency](/dotnet/framework/data/adonet/sql/linq/optimistic-concurrency-overview) or data partitioning, to enable more throughput to the database.
+- *Analyze and optimize scaling.* Analyze the test results to identify performance bottlenecks, scalability limitations, or areas for improvement. Optimize the configuration, infrastructure, or code to enhance scalability and performance. It takes time for scaling to complete, so test the effects of scaling delays.
 
-1. Repeat the scalability tests after implementing optimizations to validate the improvements and help ensure the system can handle the expected workloads efficiently.
+- *Address dependencies.* Find potential dependency issues. Scaling or partitioning in one area of a workload might cause performance issues on a dependency. The stateful parts of a workload, such as databases, are the most common cause of dependency performance issues. Databases require careful design to scale horizontally. You should consider measures, such as [optimistic concurrency](/dotnet/framework/data/adonet/sql/linq/optimistic-concurrency-overview) or data partitioning, to enable more throughput to the database.
+
+- *Retest after adjustments.* Repeat the scalability tests after implementing optimizations to validate the improvements and help ensure the workload can handle the expected workloads efficiently.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Consider the budget constraints and cost-efficiency goals of your workload. Vertical scaling might involve higher costs due to the need for larger and more powerful resources. Horizontal scaling offers cost savings by using smaller instances that can be added or removed based on demand.
 
@@ -195,7 +171,9 @@ Conduct load and stress tests to evaluate the performance of the workload under 
 
 Partitioning is the process of dividing a large dataset or workload into smaller, more manageable parts called partitions. Each partition contains a subset of the data or workload and is typically stored or processed separately. Partitioning enables parallel processing and reduces contention. Dividing the workload into smaller units allows the application to process each unit independently. The result is better use of resources and faster processing times. Partitioning also helps distribute the data across multiple storage devices, reducing the load on individual devices and improving overall performance.
 
-**Understand partitioning.** The specific partitioning approach you use depends on the type of data or workload you have and the technology you're using. Some common strategies for partitioning include:
+#### Understand partitioning
+
+The specific partitioning approach you use depends on the type of data or workload you have and the technology you're using. Some common strategies for partitioning include:
 
 - *Horizontal partitioning*: In this approach, the dataset or workload is divided based on specific criteria, such as ranges of values or specific attributes. Each partition contains a subset of the data that meets the defined criteria.
 
@@ -203,9 +181,13 @@ Partitioning is the process of dividing a large dataset or workload into smaller
 
 - *Functional partitioning*: In this approach, the data or workload is divided based on the specific functions or operations that need to be performed. Each partition contains the data or components necessary for a specific function, enabling optimized processing and performance.
 
-**Plan partitioning.** It's important to consider factors such as data distribution, query patterns, data growth, and system requirements when partitioning. Proper planning and design are essential to help ensure the effectiveness of partitioning and maximize performance efficiency. If you address partitioning as an afterthought, it's more challenging because you already have a live system to maintain. You might need to change data access logic, distribute large quantities of data across partitions, and support continued usage during data distribution.
+#### Plan partitioning
 
-**Implement partitioning.** It's important to analyze the characteristics of your data, access patterns, concurrency requirements, and scalability goals when deciding which type of partitioning to use. Each type of partitioning has its own advantages and considerations. Here are some factors to consider for each type of partitioning:
+It's important to consider factors such as data distribution, query patterns, data growth, and workload requirements when partitioning. Proper planning and design are essential to help ensure the effectiveness of partitioning and maximize performance efficiency. If you address partitioning as an afterthought, it's more challenging because you already have a live workload to maintain. You might need to change data access logic, distribute large quantities of data across partitions, and support continued usage during data distribution.
+
+#### Implement partitioning
+
+It's important to analyze the characteristics of your data, access patterns, concurrency requirements, and scalability goals when deciding which type of partitioning to use. Each type of partitioning has its own advantages and considerations. Here are some factors to consider for each type of partitioning:
 
 - *Horizontal partitioning* is appropriate when you want to distribute the data across multiple resources or servers for better scalability and performance. It's effective when the workload can be parallelized and processed independently on each partition. Consider horizontal partitioning when multiple users or processes need to be able to access or update the dataset concurrently.
 
@@ -213,9 +195,11 @@ Partitioning is the process of dividing a large dataset or workload into smaller
 
 - *Functional partitioning* is appropriate when different functions require different subsets of the data and can be processed independently. Functional partitioning can optimize performance by allowing each partition to focus on the specific operations it's designed for.
 
-**Test and optimize partitioning.** Test the partitioning scheme to verify the effectiveness and efficiency of the strategy so you can make adjustments to improve performance. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
+#### Test and optimize partitioning
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Partitioning adds complexity to the design and development of a system. Partitioning requires conversations and planning between developers and database administrators.
+Test the partitioning scheme to verify the effectiveness and efficiency of the strategy so you can make adjustments to improve performance. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Partitioning adds complexity to the design and development of a workload. Partitioning requires conversations and planning between developers and database administrators.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Partitioning introduces some potential problems that need to be considered and addressed, including:
 >
