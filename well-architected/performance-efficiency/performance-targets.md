@@ -81,7 +81,7 @@ After you identify the key metrics, you need to specify targets or thresholds fo
 
 ### Document and expose performance target
 
-Meeting performance targets is a shared responsibility between development and operations teams. To ensure that the workload consistently meets or exceeds these targets, provide teams with the information and access to take action. To document and expose performance targets, consider these recommendations:
+Documenting and exposing performance targets is about recording all performance targets in a centralized location. Meeting performance targets is a shared responsibility between development and operations teams. To ensure that the workload consistently meets or exceeds these targets, provide teams with the information and access to take action. To document and expose performance targets, consider these recommendations:
 
 - *Document performance targets*: Document all performance targets. Ensure that all performance targets are documented in a centralized location, easily accessible by both development and operations teams. It promotes alignment and aids in real-time decision-making.
   
