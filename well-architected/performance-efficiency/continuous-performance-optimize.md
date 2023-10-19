@@ -44,7 +44,7 @@ Critical flows are the most important and high-priority processes or workflows i
 
 #### Address technical debt
 
-Technical debt refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. You might have introduced technical debt to meet a deadline, but you need to address the technical debt in your workload in the optimization process.
+Technical debt refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. You might have introduced technical debt to meet a deadline, but you need to address the technical debt as you optimize performance efficiency over time.
 
 ### Evaluate new platform features
 
