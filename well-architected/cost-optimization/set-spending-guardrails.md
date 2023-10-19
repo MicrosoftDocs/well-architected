@@ -20,8 +20,8 @@ This guide describes the recommendations for setting spending guardrails. Set sp
 
 | Term | Definition |
 |---|----|
-| Governance | A set of policies, processes, and controls that help ensure that the workload is managed effectively, securely, and in compliance with organizational and regulatory requirements.   |
 | Governance policies | A set of rules that enforce compliance and enable auditing of workload resources. |
+| Governance | A set of policies, processes, and controls that help ensure that the workload is managed effectively, securely, and in compliance with organizational and regulatory requirements.   |
 | Infrastructure as code (IaC) | A descriptive model for defining and deploying infrastructure, including networks, virtual machines, load balancers, and connection topologies. |
 | Release gate  | A condition or checkpoint in a release pipeline that must be satisfied before the deployment can proceed. A release gate helps to ensure that specific criteria are met before software is released. |
 
