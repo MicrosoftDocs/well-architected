@@ -22,15 +22,15 @@ This guide describes the recommendations for encrypting and protecting your data
 
 |Terms   |Definition   |
 |---------|---------|
+|Certificates|Digital files that hold the public keys for encryption or decryption.|
 |Cipher suite     |  A set of algorithms that are used to encrypt and decrypt information to secure a network connection over Transport Layer Security (TLS). |
-|Encryption|The process by which data is made unreadable and locked with a secret code.|
 |Decryption|The process by which encrypted data is unlocked by using a secret code. |
+|Double encryption|The process of encrypting data by using two or more independent layers of encryption.|
+|Encryption|The process by which data is made unreadable and locked with a secret code.|
+|Hashing|The process of transforming data to text or numbers with the intent of hiding information.|
+|Keys|A secret code that's used to lock or unlock encrypted data.|
 |Signature|An encrypted stamp of authentication on data. |
 |Signing|The process of verifying data's authenticity by using a signature.|
-|Hashing|The process of transforming data to text or numbers with the intent of hiding information.|
-|Double encryption|The process of encrypting data by using two or more independent layers of encryption.|
-|Keys|A secret code that's used to lock or unlock encrypted data.|
-|Certificates|Digital files that hold the public keys for encryption or decryption.|
 |X.509| A standard that defines the format of public key certificates.|
 
 

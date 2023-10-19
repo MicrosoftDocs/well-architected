@@ -30,7 +30,7 @@ Performance efficiency is when workload capacity aligns to actual usage. A workl
 
 ### Prioritize optimization efforts
 
-Proactively optimizing performance in a workload means taking proactive measures to improve and enhance the performance of the workload before any performance issues arise. Using proactive measures involves identifying potential bottlenecks, monitoring performance metrics, and implementing optimizations to ensure that the workload operates efficiently and meets the desired performance goals. Based on the analysis of deteriorating components, critical flows, and technical debt, you can implement performance optimizations specific to each area. Improvements might involve code changes, infrastructure adjustments, or configuration updates.
+Proactively optimizing performance means taking proactive measures to improve and enhance the performance of the workload before any performance issues arise. Using proactive measures involves identifying potential bottlenecks, monitoring performance metrics, and implementing optimizations to ensure that the workload operates efficiently and meets the desired performance goals. Based on the analysis of deteriorating components, critical flows, and technical debt, you can implement performance optimizations specific to each area. Improvements might involve code changes, infrastructure adjustments, or configuration updates.
 
 #### Prioritize deteriorating components
 
@@ -44,11 +44,11 @@ Critical flows are the most important and high-priority processes or workflows i
 
 #### Address technical debt
 
-Technical debt refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. You might have introduced technical debt to meet a deadline, but you need to address the technical debt in your workload in the optimization process.
+Technical debt refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. You might have introduced technical debt to meet a deadline, but you need to address the technical debt as you optimize performance efficiency over time.
 
-### Use platform features
+### Evaluate new platform features
 
-Take advantage of the many platform features and tooling that can provide performance recommendations based on actual usage. Understanding the full capabilities of your hosting platform or insights tooling is crucial. By enabling and using automation features provided by the platform, you can customize them to fit your evolving needs. Regular updates are essential to receive the best recommendations and insights from third-party tools. Capture and evaluate performance signals from your platform and tools.
+Evaluating new platform features involves examining the new functionalities and tools of a platform that can improve performance efficiency, such as optimized storage solutions, caching mechanisms, or resource management tools. New platform features can open avenues for enhancing performance efficiency. Keep your platform and tools up-to-date to ensure you're using the latest innovations and best practices. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
 
 ### Automate performance optimization
 
@@ -86,9 +86,9 @@ Optimizing data efficiency is the process of ensuring that data is stored, proce
 
 - *Use data tiering*: Data tiering involves categorizing data based on its importance or frequency of access and storing data in different tiers accordingly. Setting up data tiering allows for more efficient use of storage resources and improves performance. Frequently accessed or critical data can be stored in high-performance tiers, while less frequently accessed or less critical data can be stored in lower-cost tiers. The goal is to review data usage over time to ensure data is in the correct tier. As data priorities change, data should move from one tier to another.
 
-- *Implement time-to-live*: TTL is a mechanism that sets an expiration time for data. TTL allows data to be automatically deleted or archived after a certain period, reducing storage requirements and improving data management. By setting an appropriate TTL, you allow unnecessary data to be removed, freeing up storage space and improving overall efficiency. Session data, temporary files, and cache data are frequent targets for TTL. Database entries can also have a TTL.
+- *Implement time-to-live*: Time-to-live is a mechanism that sets an expiration time for data. Time-to-live allows data to be automatically deleted or archived after a certain period, reducing storage requirements and improving data management. By setting an appropriate time-to-live, you allow unnecessary data to be removed, freeing up storage space and improving overall efficiency. Session data, temporary files, and cache data are frequent targets for the time-to-live. Database entries can also have a time-to-live.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: A TTL that's too short can create performance issues.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: A time-to-live that's too short can create performance issues.
 
 ### Develop a performance culture
 
