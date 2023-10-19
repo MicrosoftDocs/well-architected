@@ -34,6 +34,9 @@ As discussed in the [supply chain](workload-supply-chain.md) and [standardizing 
 
 **Use your cloud platform's native tools and other industry-proven tools that natively integrate into the platform.** Your cloud platform provides tools to make deploying IaC easy and straightforward. Take advantage of these tools and other third-party tools that have native integration, like Terraform, rather than developing your own solutions. Native tools are supported by the platform and include  built-in functionality for most of your needs. They're continuously updated by the platform provider, making them more useful as the platform evolves.
 
+> [!NOTE]
+> Be mindful that as cloud providers and third-party developers update their tools and APIs, you can run the risk of unanticipated issues when using the latest version in your workload. Ensure that you thoroughly test new versions of tools and APIs before adopting them. Likewise, avoid using the 'latest' flag when calling on a tool or API in your deployment code. Be intentional about calling the latest known good version for your workload.
+
 **Use the right tools for specific tasks and infrastructure types.** Multiple tasks, beyond deployments, are involved in an infrastructure lifecycle. Configuration needs to be applied and maintained, for example, and the tool you use to script deployments, like Bicep, might not be the best tool for every management operation. 
 
 Likewise, applying desired state configuration (DSC) for different infrastructure types might require different tools. For example, there are specific tools like Ansible for managing DSC for VMs, whereas Flux is a good tool for managing DSC on Kubernetes clusters. Platform as a service (PaaS) services might provide different tools for configuration management (like Azure App Configuration) that can be handled through IaC. Software as a service (SaaS) services might be more limited because they're more tightly controlled by the platform. 
