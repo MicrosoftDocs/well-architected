@@ -761,7 +761,7 @@
 			"redirect_document_id": true
 		},
 		{
-			"source_path": "well-architected/services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework.md",
+			"source_path": "well-architected/service-guides/azure-db-postgresql-well-architected-framework.md",
 			"redirect_url": "/azure/well-architected/services/data/postgresql",
 			"redirect_document_id": false
 		},
