@@ -28,7 +28,6 @@ This guide describes the recommendations for establishing and exposing performan
 |User flow             |The sequence that a user follows to accomplish a task.|
 |Workflow          |    The sequence of steps that a workload runs to accomplish a task.|
 
-
 ## Key design strategies
 
 Establishing performance targets is an essential step for achieving workload performance efficiency. Performance targets define the desired level of performance for your workload and help you gauge its effectiveness in meeting those objectives. Performance targets provide a benchmark to measure and compare a workload's efficiency. This benchmark can help you highlight improvement areas. The targets also align tasks with your organization's objectives and enhance business outcomes. Additionally, performance targets offer guidance in resource allocation, helping you ensure that workloads can adapt to varying demands while maintaining optimal performance.
