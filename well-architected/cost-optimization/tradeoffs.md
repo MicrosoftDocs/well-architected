@@ -25,7 +25,7 @@ The cost of a service disruption must be measured against the cost of preventing
 
 - Removing components that support resiliency design patterns, like a message bus, and creating a direct dependency reduces self-preservation capabilities.
 
-- Saving money by reducing redundancy can reduce a workload's ability to handle concurrent malfunctions.
+- Saving money by reducing redundancy can limit a workload's ability to handle concurrent malfunctions.
 
 - Using budget SKUs might limit the maximum service-level objective (SLO) that the workload can reach.
 
@@ -65,7 +65,7 @@ One cost optimization tactic is to look for ways to remove components or process
 
 - Reducing the frequency of security patching because of the operational time invested in cataloging and performing the patching affects a workload's ability to address evolving threats.
 
-- Removing network controls like firewalls might lead to malicious inbound and outbound traffic.
+- Removing network controls like firewalls might lead to a failure to block malicious inbound and outbound traffic.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased workload surface area.** The Security pillar prioritizes a reduced and contained surface area to minimize attack vectors and the management of security controls.
 
@@ -83,7 +83,7 @@ Sharing resources, for example in multi-tenancy situations or co-locating multip
 
 - Lateral movement between components that share resources is easier. A security event that compromises the availability of the application platform host or an individual application also has a larger blast radius.
 
-- Co-located resources share a workload identity and have less meaningful audit trails in access logs.
+- Co-located resources might share a workload identity and have less meaningful audit trails in access logs.
 
 - Network security controls must be broad enough to cover all co-located resources. This configuration potentially violates the principle of least privilege for some resources.
 
