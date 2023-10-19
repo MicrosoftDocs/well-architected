@@ -20,12 +20,12 @@ This guide describes the recommendations for establishing and exposing performan
 
 |  Term|                  Definition|
 |-|-|
-|Data flow|             The movement of data within a workload.|
+|Data flow|             The movement of data within a system or between systems.|
 |Dependency            |A component that a workload relies on.|
 |Flow|                  In a workload, a sequence of operations that performs a specific function. It involves the movement of data and the running of processes between components of the workload.|
 |Metrics|              Numerical values that are collected at regular intervals. Metrics describe some aspects of a system at a particular time.
 |Performance targets|   Metrics that define performance objectives. These metrics are expressed as a single numerical value or a numerical range.|
-|User flow             |The sequence that a user follows to accomplish a task.|
+|User flow             |The paths or sequences of actions that users take within an application or system.|
 |Workflow          |    The sequence of steps that a workload runs to accomplish a task.|
 
 
