@@ -35,7 +35,7 @@ The following new and updated articles have recently been published in the Azure
 
 ### New articles
 
-- [Microsoft Azure Well-Architected Framework review for Azure Database for PostgreSQL](./services/data/azure-db-postgresql/azure-db-postgresql-well-architected-framework.md)
+- [Microsoft Azure Well-Architected Framework review for Azure Database for PostgreSQL](./services/data/postgresql.md)
 - [Recommendations for using availability zones and regions](./resiliency/regions-availability-zones.md)
 
 ### Updated articles
