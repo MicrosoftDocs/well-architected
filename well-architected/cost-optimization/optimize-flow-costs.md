@@ -14,7 +14,7 @@ ms.topic: conceptual
 |[CO:09](checklist.md)| Optimize flow costs. Align the cost of each flow with flow priority. When you prioritize flows, consider the features, functionality, and nonfunctional requirements of each flow. Optimizing flow spend often requires strategic compromises.|
 |-|-|
 
-This guide describes the recommendations for optimizing the cost of each of the flows in your workload. Cost-optimizing the flows in a workload is a process of strategically allocating and managing resources to minimize expenses while maintaining performance. This optimization is crucial because it ensures efficient utilization of invested resources, reduces unnecessary expenditures, and improves the overall return on investment for the infrastructure. If you don't cost-optimize the flows in a workload, you risk overspending on resources, which results in inflated operational costs and diminished profitability.
+This guide describes the recommendations for optimizing the cost of each of the flows in your workload. Cost-optimizing the flows in a workload involves strategically allocating and managing resources to minimize expenses while maintaining performance. This optimization is crucial because it ensures efficient utilization of invested resources, reduces unnecessary expenditures, and improves the overall return on investment for the infrastructure. If you don't cost-optimize the flows in a workload, you risk overspending on resources, which results in inflated operational costs and diminished profitability.
 
 **Definitions**
 
@@ -44,13 +44,13 @@ In a workload, there can be different types of flows or paths that you need to c
 
 ### Create an inventory of flows
 
-Understanding workload flows helps you to effectively reallocate resources. The goal is to ensure that financial commitments align with high-priority flows. Here are steps to understanding workload flows:
+Understanding workload flows helps you to effectively reallocate resources. The goal is to ensure that financial commitments align with high-priority flows. Here are the steps for understanding workload flows:
 
 - *Document flows*. Start by documenting and listing all existing flows in your workload to get an understanding of the comprehensive state of the system. Include every sequence of actions, data transitions, and system interactions. Familiarize yourself with every component, like external services, databases, middleware, and third-party integrations. Additionally, track or estimate the volume of requests over time.
 
-- *Visualize flows*. To get a clearer perspective, represent your findings visually, possibly in flowcharts or diagrams. Visualizations help you see the interdependencies between different components. Consider using a tool like Visio to help you with the visualizations.
+- *Visualize flows*. To get a clearer perspective, represent your findings visually, possibly in flowcharts or diagrams. Visualizations help you see the interdependencies between components. Consider using a tool like Visio to help you with the visualizations.
 
-- *Categorize flows*. Bundle similar flows, taking into account attributes like their functionality (for example, authentication, data retrieval, transaction processing), criticality to business, or the resources they use (CPU, memory, or bandwidth).
+- *Categorize flows*. Bundle similar flows, taking into account attributes like their functionality (for example, authentication, data retrieval, and transaction processing), criticality to business, or the resources they use (CPU, memory, or bandwidth).
 
 ### Prioritize flows
 
@@ -58,13 +58,13 @@ Flow prioritization is the process of classifying flows based on their influence
 
 - *Identify flow value*. When you optimize workload flow costs, you need to identify the flow that provides the most value. You don't want to spend more than a flow is worth. Instead of simply cutting costs, consider shifting costs to prioritize the more valuable flows. For example, your checkout flow is critical for business, but the purchase history isn't. You should allocate more resources and budget to the checkout flow.
 
-  Low-priority flows have lower expectations around availability, recovery, and performance. You can reduce costs by using cheaper configurations to reduce performance, availability, or business continuity spending.
+  Low-priority flows have lower expectations for availability, recovery, and performance. You can reduce costs by using cheaper configurations to reduce performance, availability, or business continuity spending.
 
 - *Consider flow metrics*. If you're struggling to prioritize your flows, consider the availability and recovery goals that you assigned to them. Critical flows often have high availability requirements and service-level agreements (SLAs). Flows associated with a lower RPO and RTO are more important than flows that have a higher RPO and RTO.
 
 ### Optimize independent flows
 
-Sometimes your flows are already running on different resources. In these cases, you can more easily evaluate and optimize spending. Evaluate the components and processes involved in each independent flow to see if there are ways to optimize or simplify them. To optimize independent flows, you can follow these steps:
+Sometimes your flows are already running on different resources. In these cases, you can more easily evaluate and optimize spending. Evaluate the components and processes involved in each independent flow to determine whether there are ways to optimize or simplify them. To optimize independent flows, you can follow these steps:
 
 - *Eliminate unnecessary components*. Remove any extraneous elements that don't contribute to the flow's core functionality, thereby reducing complexity and cost.
 
@@ -112,7 +112,7 @@ During your analysis, identify any inefficiencies or areas where resources aren'
 
 **The flexibility of the cloud:** Azure provides a flexible cloud infrastructure that enables you to scale resources up or down based on demand. This flexibility enables you to adjust your workload capacity and optimize costs accordingly.
 
-**Decision tree of services and deployment options within services:** The Azure documentation has many decision trees to help you determine the best deployment options. By carefully selecting the appropriate services and deployment options for your workload, you can optimize costs based on specific requirements and usage patterns. For more information, see [Technology choices for Azure solutions](/azure/architecture/guide/technology-choices/technology-choices-overview).
+**Decision trees of services and deployment options within services:** The Azure documentation has many decision trees to help you determine the best deployment options. By carefully selecting the appropriate services and deployment options for your workload, you can optimize costs based on specific requirements and usage patterns. For more information, see [Technology choices for Azure solutions](/azure/architecture/guide/technology-choices/technology-choices-overview).
 
 **Predeploy and postdeploy assessments:** It's important to design your workload with cost optimization in mind from the beginning. Microsoft provides predeploy and postdeploy assessments to help you optimize flow costs. Perform postdeploy assessments to identify areas where you can save money, and then make necessary adjustments.
 
@@ -120,7 +120,7 @@ During your analysis, identify any inefficiencies or areas where resources aren'
 
 Azure provides a comprehensive cost management and billing solution that enables you to monitor, analyze, and optimize your costs. It offers features like cost tracking, budgeting, and cost alerts to help you manage and optimize your spending.
 
-[Azure Monitor](https://azure.microsoft.com/eproducts/monitor) helps you gain insights into the performance and health of your applications and infrastructure. It provides monitoring and diagnostics capabilities. These capabilities enable you to identify performance bottlenecks, optimize resource utilization, and detect and troubleshoot issues that might affect costs.
+[Azure Monitor](https://azure.microsoft.com/products/monitor) helps you gain insights into the performance and health of your applications and infrastructure. It provides monitoring and diagnostics capabilities. These capabilities enable you to identify performance bottlenecks, optimize resource utilization, and detect and troubleshoot issues that might affect costs.
 
 Consider colocating logs and using dedicated solutions instead of shared ones to better manage costs. Log Analytics is a tool that enables you to collect, analyze, and visualize log data from various sources. By using Log Analytics, you can gain insights into your application and infrastructure logs, identify trends, and optimize costs by managing usage and data retention.
 
@@ -137,7 +137,7 @@ Azure Advisor is a service that provides personalized recommendations to help yo
 ## Related links
 
 - [Technology choices for Azure solutions](/azure/architecture/guide/technology-choices/technology-choices-overview)
-- [Azure Monitor](https://azure.microsoft.com/eproducts/monitor)
+- [Azure Monitor](https://azure.microsoft.com/products/monitor)
 
 ## Cost Optimization checklist
 
