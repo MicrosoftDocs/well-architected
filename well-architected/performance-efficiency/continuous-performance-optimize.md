@@ -48,7 +48,7 @@ Technical debt refers to the accumulated inefficiencies, suboptimal design choic
 
 ### Evaluate new platform features
 
-Evaluating new platform features involves examining the new functionalities and tools of a platform that can improve performance efficiency, such as optimized storage solutions, caching mechanisms, or resource management tools. New platform features can open avenues for enhancing performance efficiency. Keep your platform and tools up-to-date to ensure you're leveraging the latest innovations and best practices. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
+Evaluating new platform features involves examining the new functionalities and tools of a platform that can improve performance efficiency, such as optimized storage solutions, caching mechanisms, or resource management tools. New platform features can open avenues for enhancing performance efficiency. Keep your platform and tools up-to-date to ensure you're using the latest innovations and best practices. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
 
 ### Automate performance optimization
 
