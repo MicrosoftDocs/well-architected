@@ -38,7 +38,7 @@ Without data-driven insights, you might be unaware of underlying performance iss
 
 ## Key design strategies
 
-Performance optimization requires data to measure the current performance of a workload or a flow against its performance targets. You need to collect the right amount and diversity of data to measure the performance of the code and the infrastructure against [performance targets](performance-targets.md). Ensure that every component and flow within the system automatically generates continuous and meaningful metrics and logs. You need to source this data from diverse levels like the application, platform, storage, and operating system. Comprehensive performance data collection allows for a holistic understanding of performance, enabling precise identification of inefficiencies and avenues for improvement.
+Performance optimization requires data to measure the current performance of a workload or a flow against its performance targets. You need to collect the right amount and diversity of data to measure the performance of the code and the infrastructure against [performance targets](performance-targets.md). Ensure that every component and flow within the workload automatically generates continuous and meaningful metrics and logs. You need to source this data from diverse levels like the application, platform, storage, and operating system. Comprehensive performance data collection allows for a holistic understanding of performance, enabling precise identification of inefficiencies and avenues for improvement.
 
 ### Centralize performance data
 
@@ -48,13 +48,13 @@ Centralizing performance metrics and logs is the process of collecting performan
 
 ### Segment performance data
 
-Segmenting performance data involves organizing and categorizing metrics and logs based on their origin, purpose, or environment. For example, you should separate production data from nonproduction data or distinguish between performance targets and business metrics. Segmenting data helps with optimizing specific environments, facilitates troubleshooting, and limits inaccuracies in performance monitoring. By maintaining a clear distinction between different data types, you can capture, analyze, and respond to relevant metrics more efficiently and better align system health with workload objectives. To segment performance data, consider the following recommendations:
+Segmenting performance data involves organizing and categorizing metrics and logs based on their origin, purpose, or environment. For example, you should separate production data from nonproduction data or distinguish between performance targets and business metrics. Segmenting data helps with optimizing specific environments, facilitates troubleshooting, and limits inaccuracies in performance monitoring. By maintaining a clear distinction between different data types, you can capture, analyze, and respond to relevant metrics more efficiently and better align workload health with workload objectives. To segment performance data, consider the following recommendations:
 
 - *Keep production data and nonproduction data separate*. By separating data by environment, you can ensure focused monitoring and optimization of each environment. In production environments, you can better identify and address performance issues that directly affect users and business operations. In nonproduction environments, the data separation facilitates effective troubleshooting and fine-tuning during the testing phase before you deploy to production.
 
 - *Use one set of data within each environment*. Don't use one set of data for performance targets and another set of data for alerts related to the performance targets. Using different sets of data leads to inaccurate alerts that undermine the effectiveness of performance monitoring.
 
-- *Separate performance targets and business metrics*. The operations and development teams use performance targets to monitor system health and meet business targets. Business metrics relate to business goals or customer reporting. Capture business metrics in a separate data stream, even if the data directly overlaps. The separation gives you flexibility to capture the right data and independently analyze the data.
+- *Separate performance targets and business metrics*. The operations and development teams use performance targets to monitor workload health and meet business targets. Business metrics relate to business goals or customer reporting. Capture business metrics in a separate data stream, even if the data directly overlaps. The separation gives you flexibility to capture the right data and independently analyze the data.
 
 ### Define retention policies
 
@@ -92,7 +92,7 @@ When you instrument code for performance monitoring, consider the following stra
 
 ##### Enable distributed tracing
 
-Distributed tracing is a technique used to track and monitor requests as they flow through a distributed system. It allows you to trace the path of a request as it travels across multiple services and components, providing valuable insights into the performance and efficiency of your system. Distributed tracing is important for performance efficiency because it helps identify bottlenecks, latency issues, and areas for optimization within a distributed system. You can pinpoint where delays or inefficiencies occur and take appropriate actions to improve performance by visualizing the flow of a request. Follow these steps to enable distributed tracing:
+Distributed tracing is a technique used to track and monitor requests as they flow through a distributed system. It allows you to trace the path of a request as it travels across multiple services and components, providing valuable insights into the performance and efficiency of your workload. Distributed tracing is important for performance efficiency because it helps identify bottlenecks, latency issues, and areas for optimization within a distributed system. You can pinpoint where delays or inefficiencies occur and take appropriate actions to improve performance by visualizing the flow of a request. Follow these steps to enable distributed tracing:
 
 1. Start by instrumenting your applications and services to generate trace data. Use libraries or frameworks that support distributed tracing, such as OpenTelemetry.
 
@@ -104,7 +104,7 @@ Distributed tracing is a technique used to track and monitor requests as they fl
 
 #### Collect application logs
 
-When you instrument code, one of the primary outputs should be application logs. Logging helps you understand how the application runs in various environments. Application logs record the conditions that produce application events. Collect application logs across all application environments. Corresponding log entries across the application should capture a correlation ID for their respective transactions. The correlation ID should correlate application log events across critical system flows such as user sign-in. Use this correlation to assess the health of key scenarios in the context of targets and nonfunctional requirements.
+When you instrument code, one of the primary outputs should be application logs. Logging helps you understand how the application runs in various environments. Application logs record the conditions that produce application events. Collect application logs across all application environments. Corresponding log entries across the application should capture a correlation ID for their respective transactions. The correlation ID should correlate application log events across critical application flows such as user sign-in. Use this correlation to assess the health of key scenarios in the context of targets and nonfunctional requirements.
 
 You should use structured logging. Structured logging speeds up log parsing and analysis. It makes the logs easier to index, query, and report without complexity. Add and use a structured logging library in your application code. Sometimes log entries can help you correlate data that you couldn't correlate by other means.
 

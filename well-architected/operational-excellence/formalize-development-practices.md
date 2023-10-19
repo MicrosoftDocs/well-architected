@@ -35,10 +35,15 @@ Formalize your software development practices to help ensure that product owners
 
 - **User stories**: Standardize a template for user stories. Ensure that each user story is a discrete unit of work, written from the perspective of the end user. Well-written user stories should have the following characteristics:
   - Each user story should be wholly independent from each other. Keeping user stories independent of each other avoids any confusion with overlapping work and helps the team understand whether work on a given user story relies on the work on any others, which helps with scheduling and prioritization.
+
   - Each user story is negotiable. The end user and workload team members' perspectives are both essential to capture realistic user stories that can be accomplished over a short amount of time.
+
   - User stories are valuable to the end user. When you write user stories from the perspective of the end user, you capture the changes that they are interested in seeing and that will add value to their experience. Keeping this focus as the user story is broken down into work items helps ensure that each deployment provides an improved experience.
+
   - The effort required for a user story is estimable with a high degree of confidence. Without being able to have a close approximation of the hours required for a given user story, planning will be difficult and the potential for missing deadlines increases, potentially causing cascading effects on other planned work.
+
   - Well-written user stories are small, so that they can be completed within a few weeks. Smaller scoped stories help keep them estimable and manageable and help keep work items accomplishable.
+
   - User stories should be testable. Without being able to test that a feature has been delivered, the end user can't have confidence that the goal has been accomplished. Even if a test hasn't been written already for a given user story, there should be a clear understanding of how a test can be developed to prove the delivery of the feature.
 
 - **Acceptance criteria**: Standardize a template for acceptance criteria. Ensure that acceptance criteria relates specifically to the user story and can be unambiguously proven using one or more acceptance tests.
