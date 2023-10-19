@@ -86,9 +86,9 @@ Optimizing data efficiency is the process of ensuring that data is stored, proce
 
 - *Use data tiering*: Data tiering involves categorizing data based on its importance or frequency of access and storing data in different tiers accordingly. Setting up data tiering allows for more efficient use of storage resources and improves performance. Frequently accessed or critical data can be stored in high-performance tiers, while less frequently accessed or less critical data can be stored in lower-cost tiers. The goal is to review data usage over time to ensure data is in the correct tier. As data priorities change, data should move from one tier to another.
 
-- *Implement time-to-live*: TTL is a mechanism that sets an expiration time for data. TTL allows data to be automatically deleted or archived after a certain period, reducing storage requirements and improving data management. By setting an appropriate TTL, you allow unnecessary data to be removed, freeing up storage space and improving overall efficiency. Session data, temporary files, and cache data are frequent targets for TTL. Database entries can also have a TTL.
+- *Implement time-to-live*: Time-to-live is a mechanism that sets an expiration time for data. Time-to-live allows data to be automatically deleted or archived after a certain period, reducing storage requirements and improving data management. By setting an appropriate time-to-live, you allow unnecessary data to be removed, freeing up storage space and improving overall efficiency. Session data, temporary files, and cache data are frequent targets for the time-to-live. Database entries can also have a time-to-live.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: A TTL that's too short can create performance issues.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: A time-to-live that's too short can create performance issues.
 
 ### Develop a performance culture
 
