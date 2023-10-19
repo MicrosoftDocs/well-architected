@@ -4,7 +4,7 @@ description: New and updated articles in Azure Well-Architected Framework
 author: martinekuan
 ms.date: 10/10/2023
 ms.topic: article
-ms.service: architecture-center
+ms.service: waf
 ms.author: martinek
 categories: 
 - management-and-governance
