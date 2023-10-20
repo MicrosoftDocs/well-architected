@@ -61,7 +61,7 @@ landingContent:
           - text: Conduct capacity planning
             url: capacity-planning.md
           - text: Collect performance data
-            url: collect-metrics-logs.md
+            url: collect-performance-data.md
   - title: Improve efficiency
     linkLists:
       - linkListType: how-to-guide

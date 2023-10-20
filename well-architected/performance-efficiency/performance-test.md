@@ -1,6 +1,7 @@
 ---
 title: Recommendations for testing
 description: Learn best practices for testing. See how to select tools, configure environments, analyze results, and take other steps to help workloads meet performance targets.
+
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
@@ -134,14 +135,14 @@ Use the defined test scenarios to put the workload under expected loads.  Conduc
 
 Analyzing the test results involves examining the collected data and metrics from the performance tests to gain insights into the performance of the workload. The goal is to identify performance issues and use the feedback to adjust priorities in application development. Here are the key steps for analyzing test results:
 
-**Review performance metrics.** Look at the performance metrics that you collect during performance testing, such as response times, throughput, error rates, CPU and memory utilization, and network latency. Analyze these metrics to understand the overall performance of the workload.
+*Review performance metrics.* Look at the performance metrics that you collect during performance testing, such as response times, throughput, error rates, CPU and memory utilization, and network latency. Analyze these metrics to understand the overall performance of the workload.
 
 - *Identify bottlenecks*: Evaluate the performance metrics to identify any bottlenecks or areas of inefficient performance. The evaluation can include high response times, resource constraints, database issues, network latency, and scalability limitations. Pinpointing the root causes of these bottlenecks helps you prioritize performance improvements.
 - *Correlate metrics*: Assess the relationships and correlations between various performance metrics. For example, analyze how increased load or resource utilization affects response times. Understanding these correlations can provide valuable insights into workload behavior under different conditions. Look for patterns and trends in the performance data over time. Analyze performance under different load levels or during specific periods. Detecting trends can help identify seasonal variations, peak usage times, or recurring performance issues.
 
-**Evaluate acceptance criteria.** Compare the retest results against the predefined acceptance criteria and performance goals. Assess whether the workload meets the desired performance standards. If the workload doesn't meet the acceptance criteria, further investigate and refine the optimizations.
+*Evaluate acceptance criteria.* Compare the retest results against the predefined acceptance criteria and performance goals. Assess whether the workload meets the desired performance standards. If the workload doesn't meet the acceptance criteria, further investigate and refine the optimizations.
 
-**Iterate and refine.**  Make other adjustments and improvements as needed. Use the collected data and metrics to diagnose specific performance issues. The diagnosis might involve tracing through the workload components, examining log files, monitoring resource usage, or analyzing error messages. Dig deeper into the data to understand the underlying causes of performance problems.
+*Iterate and refine.*  Make other adjustments and improvements as needed. Use the collected data and metrics to diagnose specific performance issues. The diagnosis might involve tracing through the workload components, examining log files, monitoring resource usage, or analyzing error messages. Dig deeper into the data to understand the underlying causes of performance problems.
 
 Based on the analysis of the test results, prioritize identified performance issues and implement necessary improvements. The improvements can involve optimizing code, tuning database queries, improving caching mechanisms, and optimizing network configurations.
 
@@ -164,13 +165,13 @@ To establish baselines for performance testing and use them as a benchmark for f
 
 Continuous testing involves the ongoing monitoring and refinement of your tests. Continuous testing helps you maintain consistent and acceptable levels of performance. A workload should provide a consistent and acceptable level of performance relative to the baseline. You should tune the workload over time to produce consistent performance that's within the acceptable limits of performance. Here are some key practices:
 
-**Set degradation limits.** Define numeric thresholds that specify the level of performance degradation that's acceptable over time. By setting these limits, you can monitor performance fluctuations and receive alerts when the performance falls below the defined threshold.
+- *Set degradation limits.* Define numeric thresholds that specify the level of performance degradation that's acceptable over time. By setting these limits, you can monitor performance fluctuations and receive alerts when the performance falls below the defined threshold.
 
-**Include quality assurance.** Incorporate performance requirements, such as CPU utilization and maximum requests per second, into the quality assurance process. Treat performance requirements with the same level of importance as functional requirements. This process helps ensure that the workload meets the defined performance requirements before you deploy it to production.
+- *Include quality assurance.* Incorporate performance requirements, such as CPU utilization and maximum requests per second, into the quality assurance process. Treat performance requirements with the same level of importance as functional requirements. This process helps ensure that the workload meets the defined performance requirements before you deploy it to production.
 
-**Automate alerting.** Implement automated alerting mechanisms that are based on the performance baseline. Utilize the performance baseline as a reference point to identify any significant performance fluctuations that might occur. Automated alerting enables quick detection and response to performance issues.
+- *Automate alerting.* In live environments, rapid detection and response are crucial. Set up automated alerting systems that use the performance baseline as their reference. If there's a significant deviation in performance, the necessary teams are alerted immediately to act.
 
-**Test changes.** Apply thorough testing practices for proposed code and infrastructure changes. Use code instrumentation to gain insights into the application's performance characteristics, such as hot paths, memory allocations, and garbage collection. Ensure that all changes undergo testing to prevent any degradation of performance beyond the defined threshold.
+- *Test changes.* Some performance issues may only manifest in a live setting. Apply thorough testing practices for proposed code and infrastructure changes. Use code instrumentation to gain insights into the application's performance characteristics, such as hot paths, memory allocations, and garbage collection. This testing ensures that any change introduced doesn't degrade performance beyond the acceptable limits.
 
 ## Azure facilitation
 
