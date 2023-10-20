@@ -129,15 +129,15 @@ Establishing baselines provides a reference point to compare performance results
 
 ### Test continuously
 
-Continuous testing involves ongoing monitoring and refinement of the tests to maintain consistent and acceptable levels of performance. A workload should provide a consistent and acceptable level of performance relative to the baseline. You should tune the workload over time to produce consistent performance that's within the acceptable limits of performance. Here are some key practices:
+Continuous testing involves real-time monitoring and ongoing refinement of the testing processes to ensure the live environment maintains acceptable levels of performance. A workload should provide a consistent and acceptable level of performance relative to the baseline. You should tune the workload over time to produce consistent performance that's within the acceptable limits of performance. For continuous testing, consider the following strategies:
 
-**Set degradation limits.** Define numeric thresholds that specify the acceptable level of performance degradation over time. By setting these limits, you can monitor performance fluctuations and receive alerts when the performance falls below the defined threshold.
+- *Set degradation limits.* It's critical to define specific metrics that denote acceptable levels of performance degradation. Establish numeric values that indicate when the live performance deviates significantly from the baseline. Monitoring against these thresholds ensures timely detection of any performance decline.
 
-**Include quality assurance.** Incorporate performance requirements, such as CPU utilization and maximum requests per second, into the quality assurance process. Treat performance requirements with the same level of importance as functional requirements. This process ensures the workload meets the defined performance requirements before deploying it to production.
+- *Include quality assurance.* Extend your quality assurance measures to monitor live performance metrics, like CPU utilization and requests per second. In a production setting, performance metrics are as critical as functional requirements. Ensuring that the application adheres to these live metrics reduces the chances of any disruptions or slowdowns.
 
-**Automate alerting.** Implement automated alerting mechanisms that are based on the performance baseline. Utilize the performance baseline as a reference point to identify any significant performance fluctuations that might occur. Automated alerting enables quick detection and response to performance issues.
+- *Automate alerting.* In live environments, rapid detection and response are crucial. Set up automated alerting systems that use the performance baseline as their reference. If there's a significant deviation in performance, the necessary teams are alerted immediately to act.
 
-**Test changes.** Apply thorough testing practices for proposed code and infrastructure changes. Use code instrumentation to gain insights into the application's performance characteristics, such as hot paths, memory allocations, and garbage collection. Ensure that all changes undergo testing to prevent any degradation of performance beyond the defined threshold.
+- *Test changes.* Some performance issues may only manifest in a live setting. Apply thorough testing practices for proposed code and infrastructure changes. Use code instrumentation to gain insights into the application's performance characteristics, such as hot paths, memory allocations, and garbage collection. This testing ensures that any change introduced doesn't degrade performance beyond the acceptable limits.
 
 ## Azure facilitation
 
