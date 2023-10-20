@@ -517,22 +517,22 @@
 		},
 		{
 			"source_path": "well-architected/scalability/monitor-analyze.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/collect-metrics-logs",
+			"redirect_url": "/azure/well-architected/performance-efficiency/collect-performance-data",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/scalability/monitor-application.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/collect-metrics-logs",
+			"redirect_url": "/azure/well-architected/performance-efficiency/collect-performance-data",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/scalability/monitor-infrastructure.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/collect-metrics-logs",
+			"redirect_url": "/azure/well-architected/performance-efficiency/collect-performance-data",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/scalability/monitor-scalability-reliability.md",
-			"redirect_url": "/azure/well-architected/performance-efficiency/collect-metrics-logs",
+			"redirect_url": "/azure/well-architected/performance-efficiency/collect-performance-data",
 			"redirect_document_id": false
 		},
 		{
