@@ -1,14 +1,13 @@
 ---
-title: Recommendations for testing
-description: Learn best practices for testing. See how to select tools, configure environments, analyze results, and take other steps to help workloads meet performance targets.
-
+title: Recommendations for performance testing
+description: Learn best practices for performance testing. See how to select tools, configure environments, and take other steps to help workloads meet performance targets.
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for testing
+# Recommendations for performance testing
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
@@ -194,7 +193,7 @@ Continuous testing involves the ongoing monitoring and refinement of your tests.
 
 - *Automate alerting*. In live environments, rapid detection and response are crucial. Set up automated alerting systems that use the performance baseline as their reference. If there's a significant deviation in performance, the necessary teams are alerted immediately to act.
 
-- *Test changes*. Some performance issues may only manifest in a live setting. Apply thorough testing practices for proposed code and infrastructure changes. Use code instrumentation to gain insights into the application's performance characteristics, such as hot paths, memory allocations, and garbage collection. This testing ensures that any change introduced doesn't degrade performance beyond the acceptable limits.
+- *Test changes*. Some performance issues might only manifest in a live setting. Apply thorough testing practices for proposed code and infrastructure changes. Use code instrumentation to gain insights into the application's performance characteristics, such as hot paths, memory allocations, and garbage collection. This testing ensures that any change introduced doesn't degrade performance beyond the acceptable limits.
 
 ## Azure facilitation
 
