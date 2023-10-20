@@ -183,7 +183,7 @@ Optimizing infrastructure performance means enhancing and adjusting infrastructu
 
 **Native SDKs and performance-optimized libraries**: Azure offers [SDKs](https://azure.microsoft.com/downloads) and libraries for various programming languages to interact with Azure services. Use SDKs to simplify interactions between applications and Azure resources. SDKs provide optimal interaction with Azure services, which reduces latency and enhances efficiency.
 
-**Memory management**: Use [the smart detection feature of Application Insights](/azure/azure-monitor/alerts/proactive-diagnostics) to analyze memory consumption and help to identify and address memory leaks. 
+**Memory management**: Use [the smart detection feature of Application Insights](/azure/azure-monitor/alerts/proactive-diagnostics) to analyze memory consumption and help to identify and address memory leaks.
 
 [**Azure App Service**](/troubleshoot/azure/app-service/capture-memory-dumps-app-service): App Service has a profiler and memory dump collection and analysis feature. The App Service [auto-healing feature](/azure/app-service/overview-diagnostics#auto-healing) can automatically take memory dumps and profile traces of .NET and Java apps.
 
@@ -224,7 +224,7 @@ To support asynchronous operations, Azure Marketplace offers third-party queues 
 
 ## Performance Efficiency checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Performance Efficiency checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Performance Efficiency checklist](checklist.md)
