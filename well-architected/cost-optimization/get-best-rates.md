@@ -40,7 +40,7 @@ Here are actions that you can take to understand the workload rates:
 
 - *Take inventory*: List all the components of your workload, including infrastructure, cloud resources, licenses, third-party services, and any other expenses related to the workload.
 - *Understand spending*: Gain a clear understanding of the current spending for each item in the inventory list. Identify what you're paying for and where most of your expenses lie.
-- *Create a list of expenses*: Create an ordered list of workload expenses. Start from the most expensive components and work down to the least expensive. This exercise helps you prioritize your optimization efforts and focus on the areas that have the highest impact on cost.
+- *Create an ordered list of workload expenses*: List the most expensive components and work your way down to the least expensive. This exercise helps you prioritize your optimization efforts and focus on the areas that have the highest impact on cost.
 
 ### Determine the right billing model
 
