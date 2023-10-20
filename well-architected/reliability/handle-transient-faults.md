@@ -124,7 +124,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Implement retries in many places, even in the simplest application, and in every layer of more complex applications. Rather than hard-coding the elements of each policy at multiple locations, consider using a central point to store all policies. For example, store values like the interval and retry count in application configuration files, read them at runtime, and programmatically build the retry policies. Doing so makes it easier to manage the settings and to modify and fine-tune the values in order to respond to changing requirements and scenarios. However, design the system to store the values rather than rereading a configuration file every time, and use suitable defaults if the values can't be obtained from configuration.
 
--   In an Azure Cloud Services application, consider storing the values that are used to build the retry policies at runtime in the service configuration file so that you can change them without needing to restart the application.
+-   Storing the values that are used to build the retry policies at runtime in the application's configuration system so that you can change them without needing to restart the application.
 
 -   Take advantage of built-in or default retry strategies that are available in the client APIs that you use, but only when they're appropriate for your scenario. These strategies are typically generic. In some scenarios, they might be all you need, but in other scenarios they don't offer the full range of options to suit your specific requirements. To determine the most appropriate values, you need to perform testing to understand how the settings affect your application.
 
@@ -168,21 +168,21 @@ The following guidelines can help you design suitable transient fault handling m
 
 Most Azure services and client SDKs provide a retry mechanism. However, these mechanisms differ because each service has different characteristics and requirements, and each retry mechanism is tuned to the specific service. This section summarizes the retry mechanism features for some commonly used Azure services.
 
-| Service | Retry capabilities | Policy configuration | Scope| Telemetry features| 
-| --- | --- | --- | --- | --- | 
-| [Microsoft Entra ID](/azure/architecture/best-practices/retry-service-specific#azure-active-directory) |Native in the Microsoft Authentication Library (MSAL) |Embedded into the MSAL library |Internal |None | 
-| [Azure Cosmos DB](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) |Native in the service |Not configurable |Global |TraceSource | 
-| [Azure Data Lake Storage](/azure/architecture/best-practices/retry-service-specific#data-lake-store) |Native in the client |Not configurable |Individual operations |None | 
-| [Azure Event Hubs](/azure/architecture/best-practices/retry-service-specific#event-hubs) |Native in the client |Programmatic |Client |None | 
-| [Azure IoT Hub](/azure/architecture/best-practices/retry-service-specific#iot-hub) |Native in the client SDK |Programmatic |Client |None | 
-| [Azure Cache for Redis](/azure/architecture/best-practices/retry-service-specific#azure-cache-for-redis) |Native in the client |Programmatic |Client |TextWriter | 
-| [Azure Cognitive Search](/azure/architecture/best-practices/retry-service-specific#azure-search) |Native in the client |Programmatic |Client |ETW or custom | 
-| [Azure Service Bus](/azure/architecture/best-practices/retry-service-specific#service-bus) |Native in the client |Programmatic |NamespaceManager, MessagingFactory, and client |ETW | 
-| [Azure Service Fabric](/azure/architecture/best-practices/retry-service-specific#service-fabric) |Native in the client |Programmatic |Client |None | 
-| [Azure SQL Database with ADO.NET](/azure/architecture/best-practices/retry-service-specific#sql-database-using-adonet) |[Polly](/azure/architecture/best-practices/retry-service-specific#transient-fault-handling-with-polly) |Declarative and programmatic |Single statements or blocks of code |Custom | 
-| [SQL Database with Entity Framework](/azure/architecture/best-practices/retry-service-specific#sql-database-using-entity-framework-6) |Native in the client |Programmatic |Global per AppDomain |None | 
-| [SQL Database with Entity Framework Core](/azure/architecture/best-practices/retry-service-specific#sql-database-using-entity-framework-core) |Native in the client |Programmatic |Global per AppDomain |None | 
-| [Azure Storage](/azure/architecture/best-practices/retry-service-specific#azure-storage) |Native in the client |Programmatic |Client and individual operations |TraceSource | 
+| Service | Retry capabilities | Policy configuration | Scope| Telemetry features|
+| --- | --- | --- | --- | --- |
+| [Microsoft Entra ID](/azure/architecture/best-practices/retry-service-specific#azure-active-directory) |Native in the Microsoft Authentication Library (MSAL) |Embedded into the MSAL library |Internal |None |
+| [Azure Cosmos DB](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) |Native in the service |Not configurable |Global |TraceSource |
+| [Azure Data Lake Storage](/azure/architecture/best-practices/retry-service-specific#data-lake-store) |Native in the client |Not configurable |Individual operations |None |
+| [Azure Event Hubs](/azure/architecture/best-practices/retry-service-specific#event-hubs) |Native in the client |Programmatic |Client |None |
+| [Azure IoT Hub](/azure/architecture/best-practices/retry-service-specific#iot-hub) |Native in the client SDK |Programmatic |Client |None |
+| [Azure Cache for Redis](/azure/architecture/best-practices/retry-service-specific#azure-cache-for-redis) |Native in the client |Programmatic |Client |TextWriter |
+| [Azure Cognitive Search](/azure/architecture/best-practices/retry-service-specific#azure-search) |Native in the client |Programmatic |Client |ETW or custom |
+| [Azure Service Bus](/azure/architecture/best-practices/retry-service-specific#service-bus) |Native in the client |Programmatic |NamespaceManager, MessagingFactory, and client |ETW |
+| [Azure Service Fabric](/azure/architecture/best-practices/retry-service-specific#service-fabric) |Native in the client |Programmatic |Client |None |
+| [Azure SQL Database with ADO.NET](/azure/architecture/best-practices/retry-service-specific#sql-database-using-adonet) |[Polly](/azure/architecture/best-practices/retry-service-specific#transient-fault-handling-with-polly) |Declarative and programmatic |Single statements or blocks of code |Custom |
+| [SQL Database with Entity Framework](/azure/architecture/best-practices/retry-service-specific#sql-database-using-entity-framework-6) |Native in the client |Programmatic |Global per AppDomain |None |
+| [SQL Database with Entity Framework Core](/azure/architecture/best-practices/retry-service-specific#sql-database-using-entity-framework-core) |Native in the client |Programmatic |Global per AppDomain |None |
+| [Azure Storage](/azure/architecture/best-practices/retry-service-specific#azure-storage) |Native in the client |Programmatic |Client and individual operations |TraceSource |
 
 > [!NOTE]
 > For most of the Azure built-in retry mechanisms, there's currently no way to apply a different retry policy for different types of errors or exceptions. You should configure a policy that provides the optimum average performance and availability. One way to fine-tune your policy is to analyze log files to determine the type of transient faults that are occurring.

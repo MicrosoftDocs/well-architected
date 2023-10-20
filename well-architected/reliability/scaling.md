@@ -79,7 +79,7 @@ An autoscaling feature is available in [many Azure services](/azure/azure-monito
 
 Many Azure services offer APIs that you can use to design custom automatic scaling operations using [Azure Automation](/azure/automation/overview), such as the code samples at [Autoscale your Azure IoT Hub](/samples/azure-samples/iot-hub-dotnet-autoscale/iot-hub-dotnet-autoscale/). You can use tools like KEDA for event-driven autoscaling, which is available in [Azure Kubernetes Service](/azure/aks/intro-kubernetes) and [Azure Container Apps](/azure/container-apps/overview).
 
-[Azure Monitor autoscale](/azure/azure-monitor/autoscale/autoscale-get-started) provides a common set of autoscaling functionality for Azure Virtual Machine Scale Sets, Azure App Service, and Azure Cloud Services. Scaling can be performed on a schedule or based on a runtime metric, such as CPU or memory usage. See the [Azure Monitor guide](/azure/azure-monitor/best-practices-plan) for best practices.
+[Azure Monitor autoscale](/azure/azure-monitor/autoscale/autoscale-get-started) provides a common set of autoscaling functionality for Azure Virtual Machine Scale Sets, Azure App Service, Azure Spring Apps and more. Scaling can be performed on a schedule or based on a runtime metric, such as CPU or memory usage. See the [Azure Monitor guide](/azure/azure-monitor/best-practices-plan) for best practices.
 
 ## Tradeoffs
 
@@ -126,7 +126,7 @@ Refer to the AKS baseline reference architecture [scaling guidance](/azure/archi
 
 ## Reliability checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Reliability checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Reliability checklist](checklist.md)

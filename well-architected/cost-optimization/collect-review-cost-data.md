@@ -159,7 +159,7 @@ Implement automated processes to identify and address cost variances in real-tim
 
 ## Cost Optimization checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Cost Optimization checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Cost Optimization checklist](checklist.md)
