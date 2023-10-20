@@ -29,7 +29,7 @@ Use this matrix to familiarize yourself with the key concepts:
 
 Assess your workload by using the core pillars to **identify and prioritize opportunities** for improving the posture of your workloads.
 
-Start your assessment with the [**Azure Well-Architected Review**](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+Start your assessment with the [**Azure Well-Architected Review**](/assessments/azure-architecture-review/).
 
 :::image type="content" source="./_images/well-architected-review.png" alt-text="Screenshot of the Microsoft Azure Well-Architected Review." lightbox="./_images/well-architected-review.png":::
 

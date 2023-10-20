@@ -87,7 +87,7 @@ Service guides are instrumental in decision-making related to the individual Azu
 
 Microsoft Azure Well-Architected Review is offered at no charge. It’s a collection of questionnaires that’s tied to the pillar checklists as a way to evaluate your design choices. Track your score through iterative runs to identify possible areas for enhancement.
 
-> Refer to: [Azure Well-Architected Review tool](/assessments/?id=azure-architecture-review&mode=pre-assessment).
+> Refer to: [Azure Well-Architected Review tool](/assessments/azure-architecture-review/).
 
 ## Resources
 
