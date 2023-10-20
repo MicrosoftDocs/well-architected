@@ -112,7 +112,7 @@ productDirectory:
     - title: Azure Database for PostgreSQL
       summary: Managed PostgreSQL database service for app developers
       imageSrc: https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg
-      url: azure-db-postgresql-well-architected-framework.md
+      url: postgresql.md
       azureCategories:
         - databases
         - hybrid
