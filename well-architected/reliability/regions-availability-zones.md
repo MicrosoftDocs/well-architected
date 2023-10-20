@@ -38,19 +38,19 @@ However you design your solution, the Security pillar applies. Usually, decision
 
 | Term | Definition |
 |-|-|
-| Region | A geographic perimeter that contains a set of datacenters. |
-| Datacenter | A facility that contains servers, networking equipment, and other hardware to support Azure resources and workloads. |
-| Availability zone | [A separated group of datacenters within a region.][availability-zones-overview] Each availability zone is independent of the others, with its own power, cooling, and networking infrastructure. [Many regions support availability zones.][azure-regions-with-availability-zone-support] |
-| Paired regions |A relationship between two Azure regions. [Some Azure regions][azure-region-pairs] are connected to another defined region to enable specific types of multi-region solutions. [Newer Azure regions aren't paired.][regions-with-availability-zones-and-no-region-pair] |
-| Region architecture | The specific configuration of the Azure region, including the number of availability zones and whether the region is paired with another region. |
-| Locally redundant deployment | A deployment model in which a resource is deployed into a single region without reference to an availability zone. In a region that supports availability zones, the resource might be deployed in any of the region's availability zones. |
-| Zonal (pinned) deployment | A deployment model in which a resource is deployed into a specific availability zone. |
-| Zone-redundant deployment | A deployment model in which a resource is deployed across multiple availability zones. Microsoft manages data synchronization, traffic distribution, and failover if a zone experiences an outage. |
-| Multi-region deployment| A deployment model in which resources are deployed into multiple Azure regions. |
-| Asynchronous replication | A data replication approach in which data is written and committed to one location. At a later time, the changes are replicated to another location. |
-| Synchronous replication | A data replication approach in which data is written and committed to multiple locations. Each location must acknowledge completion of the write operation before the overall write operation is considered complete. |
 | Active-active | An architecture in which multiple instances of a solution actively process requests at the same time. |
 | Active-passive | An architecture in which one instance of a solution is designated as the *primary* and processes traffic, and one or more *secondary* instances are deployed to serve traffic if the primary is unavailable. |
+| Asynchronous replication | A data replication approach in which data is written and committed to one location. At a later time, the changes are replicated to another location. |
+| Availability zone | [A separated group of datacenters within a region.][availability-zones-overview] Each availability zone is independent of the others, with its own power, cooling, and networking infrastructure. [Many regions support availability zones.][azure-regions-with-availability-zone-support] |
+| Datacenter | A facility that contains servers, networking equipment, and other hardware to support Azure resources and workloads. |
+| Locally redundant deployment | A deployment model in which a resource is deployed into a single region without reference to an availability zone. In a region that supports availability zones, the resource might be deployed in any of the region's availability zones. |
+| Multi-region deployment| A deployment model in which resources are deployed into multiple Azure regions. |
+| Paired regions |A relationship between two Azure regions. [Some Azure regions][azure-region-pairs] are connected to another defined region to enable specific types of multi-region solutions. [Newer Azure regions aren't paired.][regions-with-availability-zones-and-no-region-pair] |
+| Region | A geographic perimeter that contains a set of datacenters. |
+| Region architecture | The specific configuration of the Azure region, including the number of availability zones and whether the region is paired with another region. |
+| Synchronous replication | A data replication approach in which data is written and committed to multiple locations. Each location must acknowledge completion of the write operation before the overall write operation is considered complete. |
+| Zonal (pinned) deployment | A deployment model in which a resource is deployed into a specific availability zone. |
+| Zone-redundant deployment | A deployment model in which a resource is deployed across multiple availability zones. Microsoft manages data synchronization, traffic distribution, and failover if a zone experiences an outage. |
 
 ## Key design strategies
 
@@ -62,7 +62,7 @@ Many Azure regions provide *availability zones*, which are separated groups of d
 
 The following diagram shows several example Azure regions. Regions 1 and 2 support availability zones.
 
-:::image type="content" border="false" source="media/regions-availability-zones/regions-availability-zones.png" alt-text="Diagram that shows datacenters, availability zones, and regions":::
+:::image type="content" border="false" source="media/regions-availability-zones/regions-availability-zones.png" alt-text="Diagram that shows datacenters, availability zones, and regions.":::
 
 If you deploy into an [Azure region that contains availability zones][azure-regions-with-availability-zone-support], you can use multiple availability zones together. By using multiple availability zones, you can keep separate copies of your application and data within separate physical datacenters in a large metropolitan area.
 
