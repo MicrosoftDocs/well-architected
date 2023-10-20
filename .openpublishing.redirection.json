@@ -1,6 +1,11 @@
 {
 	"redirections": [
 		{
+			"source_path": "well-architected/services/data/postgresql.md",
+			"redirect_url": "/azure/well-architected/service-guides/postgresql",
+			"redirect_document_id": true
+		},
+		{
 			"source_path": "well-architected/devops/devops-patterns.md",
 			"redirect_url": "/azure/well-architected/operational-excellence/design-patterns",
 			"redirect_document_id": true
