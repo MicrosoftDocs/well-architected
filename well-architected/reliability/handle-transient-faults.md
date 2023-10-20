@@ -114,6 +114,8 @@ The following guidelines can help you design suitable transient fault handling m
 
     -   Use libraries or solutions that intercept and modify network traffic to replicate unfavorable scenarios from your automated tests. For example, the tests can add extra roundtrip times, drop packets, modify headers, or even change the body of the request itself. Doing so enables deterministic testing of a subset of the failure conditions, for transient faults and other types of failures.
 
+    -   When testing a client web application's resiliency to transient faults, use the browser's developer tools or your testing framework's ability to [mock](https://playwright.dev/docs/network#network-mocking) or [block](/microsoft-edge/devtools-guide-chromium/network/#block-requests) network requests.
+
     -   Perform high load factor and concurrent tests to ensure that the retry mechanism and strategy works correctly under these conditions. These tests also help ensure that the retry doesn't have an adverse effect on the operation of the client or cause cross-contamination between requests.
 
 #### Manage retry policy configurations
