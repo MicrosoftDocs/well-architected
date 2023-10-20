@@ -112,7 +112,9 @@ The following guidelines can help you design suitable transient fault handling m
 
     -   For custom services that you create and deploy, force transient errors to occur by temporarily disabling or overloading the service. (Don't attempt to overload any shared resources or shared services in Azure.)
 
-    -   For HTTP-based APIs, consider using the FiddlerCore library in your automated tests to change the outcome of HTTP requests, either by adding extra roundtrip times or by changing the response (like the HTTP status code, headers, body, or other factors). Doing so enables deterministic testing of a subset of the failure conditions, for transient faults and other types of failures. For more information, see [FiddlerCore](https://www.telerik.com/fiddler/fiddlercore). For examples of how to use the library, particularly the **HttpMangler** class, examine the [source code for the Azure Storage SDK](https://github.com/Azure/azure-storage-net/tree/master/Test).
+    -   Use libraries or solutions that intercept and modify network traffic to replicate unfavorable scenarios from your automated tests. For example, the tests can add extra roundtrip times, drop packets, modify headers, or even change the body of the request itself. Doing so enables deterministic testing of a subset of the failure conditions, for transient faults and other types of failures.
+
+    -   When testing a client web application's resiliency to transient faults, use the browser's developer tools or your testing framework's ability to [mock](https://playwright.dev/docs/network#network-mocking) or [block](/microsoft-edge/devtools-guide-chromium/network/#block-requests) network requests.
 
     -   Perform high load factor and concurrent tests to ensure that the retry mechanism and strategy works correctly under these conditions. These tests also help ensure that the retry doesn't have an adverse effect on the operation of the client or cause cross-contamination between requests.
 
@@ -195,18 +197,18 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 
 ## Related links
 
-- [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker) 
-- [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction) 
-- [Idempotency patterns][idempotency-patterns] 
-- [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency) 
-- [Data Points - EF Core 1.1](/archive/msdn-magazine/2017/january/data-points-ef-core-1-1-a-few-of-my-favorite-things) 
+- [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker)
+- [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction)
+- [Idempotency patterns][idempotency-patterns]
+- [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency)
+- [Inject mock services](/aspnet/core/test/integration-tests#inject-mock-services)
 
-## Reliability checklist  
+## Reliability checklist
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Reliability checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Reliability checklist](checklist.md)
 
 <!-- links -->
 
