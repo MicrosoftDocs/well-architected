@@ -1,13 +1,13 @@
 ---
-title: Recommendations for testing
-description: Learn best practices for testing.  
+title: Recommendations for performance testing
+description: Learn best practices for performance testing.  
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for testing: PE 06
+# Recommendations for performance testing: PE 06
 
 This guide describes the best practices for testing. Performance testing helps you evaluate the functionality of a workload in different scenarios. It involves testing the workload's response time, throughput, resource utilization, and stability to ensure that it meets the performance requirements. Testing helps prevent performance issues and ensures your workload can meet its service level agreements. Without performance testing, a workload experiences performance degradations that are often preventable. Workload performance drifts from performance targets and established baselines.
 
@@ -23,7 +23,7 @@ This guide describes the best practices for testing. Performance testing helps y
 
 ## Key design strategies
 
-Performance testing helps you gather measurable data on a workload. It also helps you build workloads to the right specifications when done early enough. You should conduct performance tests as early in the software development lifecycle as possible. Early testing allows you to catch and fix performance issues earlier in development. You can use a proof-of-concept if production code isn't ready.
+Performance testing helps you gather measurable data on a workload. It also helps you build workloads to the right specifications when done early enough. You should conduct performance tests as early in the software development lifecycle as possible. Early testing allows you to catch and fix performance issues earlier in development. You can use a proof-of-concept if production code isn't ready. Proactive performance testing assist the team in identifying and eliminating bottlenecks in the application code and infrastructure.
 
 ### Prepare the test
 
