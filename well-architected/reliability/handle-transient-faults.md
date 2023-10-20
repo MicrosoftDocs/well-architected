@@ -124,7 +124,7 @@ The following guidelines can help you design suitable transient fault handling m
 
 -   Implement retries in many places, even in the simplest application, and in every layer of more complex applications. Rather than hard-coding the elements of each policy at multiple locations, consider using a central point to store all policies. For example, store values like the interval and retry count in application configuration files, read them at runtime, and programmatically build the retry policies. Doing so makes it easier to manage the settings and to modify and fine-tune the values in order to respond to changing requirements and scenarios. However, design the system to store the values rather than rereading a configuration file every time, and use suitable defaults if the values can't be obtained from configuration.
 
--   Storing the values that are used to build the retry policies at runtime in the application's configuration system so that you can change them without needing to restart the application.
+-   Store the values that are used to build the retry policies at runtime in the application's configuration system so that you can change them without needing to restart the application.
 
 -   Take advantage of built-in or default retry strategies that are available in the client APIs that you use, but only when they're appropriate for your scenario. These strategies are typically generic. In some scenarios, they might be all you need, but in other scenarios they don't offer the full range of options to suit your specific requirements. To determine the most appropriate values, you need to perform testing to understand how the settings affect your application.
 
