@@ -1,6 +1,6 @@
 ---
 title: Cost Optimization design principles
-description: Learn about cost optimization design principles that can help you achieve business objectives and justify costs.
+description: Learn about Cost Optimization design principles that can help you achieve business objectives and justify costs.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/15/2023
